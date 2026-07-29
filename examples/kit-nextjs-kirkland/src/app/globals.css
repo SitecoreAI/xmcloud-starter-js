@@ -175,8 +175,10 @@
     h3,
     .h3,
     h4,
-    .h4 h5,
-    .h5 h6,
+    .h4,
+    h5,
+    .h5,
+    h6,
     .h6 {
         font-family: var(--font-heading);
         letter-spacing: -0.015em;
@@ -214,6 +216,66 @@
         @apply bg-primary text-primary-foreground;
     }
     main {
-        @apply text-xl;
+        @apply text-base;
     }
+}
+
+/*
+ * Kirkland's editorial layouts share one content axis. Components can use
+ * this shell directly when they are placed in a full-bleed placeholder, while
+ * the nested-container rules prevent a second set of gutters.
+ */
+.legal-content-shell {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 3vw, 2rem);
+}
+
+.container--full-width .legal-content-shell,
+.container--full-bleed.is-inset .legal-content-shell {
+    max-width: none;
+    padding-inline: 0;
+}
+
+.legal-content-shell .legal-content-shell {
+    max-width: none;
+    padding-inline: 0;
+}
+
+/*
+ * Keep authored display copy elegant but restrained. These unlayered rules
+ * intentionally cap component-level Tailwind display utilities.
+ */
+.legal-display-heading:is(h1) {
+    max-width: 18ch;
+    font-size: clamp(2.75rem, 5.5vw, 5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.legal-display-heading:is(h2) {
+    font-size: clamp(2rem, 4.25vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+}
+
+.legal-display-heading {
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+
+.main-layout h3,
+.main-layout h4 {
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+
+.main-layout main {
+    font-size: 1rem;
+    line-height: 1.625;
+}
+
+.legal-footer-wordmark {
+    font-size: clamp(5rem, 16vw, 14rem);
 }

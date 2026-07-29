@@ -15,7 +15,9 @@ import {
   imageBgExtensionRenderingParams as imageBgOptions,
 } from './promo-animated.util';
 
-export const PromoAnimatedImageRight: React.FC<PromoAnimatedProps> = (props) => {
+export const PromoAnimatedImageRight: React.FC<PromoAnimatedProps> = (
+  props,
+) => {
   const { fields, params, isPageEditing } = props;
 
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -28,7 +30,9 @@ export const PromoAnimatedImageRight: React.FC<PromoAnimatedProps> = (props) => 
 
     // To avoid a horizontal scrollbar, check for the nearest full bleed wrapper,
     // and add "overflow:hidden" to its style
-    const findContainerParent = (element: HTMLElement | null): HTMLElement | null => {
+    const findContainerParent = (
+      element: HTMLElement | null,
+    ): HTMLElement | null => {
       while (element) {
         if (
           element.className.includes('container--full-bleed') ||
@@ -56,13 +60,16 @@ export const PromoAnimatedImageRight: React.FC<PromoAnimatedProps> = (props) => 
 
     return (
       <section ref={wrapperRef} className="promo-animated @container my-10">
-        <div className="promo-animated__content-wrapper @md:grid-cols-2 @md:items-center @md:gap-10 @xl:gap-[135px] grid grid-cols-1">
+        <div className="legal-content-shell promo-animated__content-wrapper @md:grid-cols-2 @md:items-center @md:gap-10 @xl:gap-[96px] grid grid-cols-1">
           <div className="promo-animated__content @md:order-1 @md:flex @md:flex-col @md:justify-center @md:items-end min-w-0">
             {title && (
-              <AnimatedSection reducedMotion={prefersReducedMotion} isPageEditing={isPageEditing}>
+              <AnimatedSection
+                reducedMotion={prefersReducedMotion}
+                isPageEditing={isPageEditing}
+              >
                 <Text
                   tag="h2"
-                  className="font-heading @sm:text-5xl @lg:text-6xl -ml-1 mt-6 max-w-[15.5ch] text-right text-4xl font-normal leading-[1.1333] tracking-tighter antialiased"
+                  className="legal-display-heading font-heading @sm:text-5xl @lg:text-6xl -ml-1 mt-6 max-w-[15.5ch] text-right text-4xl font-normal leading-[1.1333] tracking-tighter antialiased"
                   field={title}
                 />
               </AnimatedSection>
@@ -89,7 +96,10 @@ export const PromoAnimatedImageRight: React.FC<PromoAnimatedProps> = (props) => 
                 isPageEditing={isPageEditing}
               >
                 {primaryLink && (
-                  <Button buttonLink={primaryLink} isPageEditing={isPageEditing}></Button>
+                  <Button
+                    buttonLink={primaryLink}
+                    isPageEditing={isPageEditing}
+                  ></Button>
                 )}
                 {secondaryLink && (
                   <Button

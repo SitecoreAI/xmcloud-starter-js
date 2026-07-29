@@ -23,14 +23,16 @@ export const ProductListingThreeUp: React.FC<ProductListingProps> = (props) => {
         return cn(
           'transition-opacity duration-150',
           activeCard !== null && activeCard !== productId ? 'opacity-60' : '',
-          activeCard === productId ? 'z-10' : ''
+          activeCard === productId ? 'z-10' : '',
         );
       } else {
         // Full motion version
         return cn(
           'transition-all duration-500 ease-in-out h-full',
-          activeCard !== null && activeCard !== productId ? 'opacity-50 scale-95 blur-[2px]' : '',
-          activeCard === productId ? 'scale-105 z-10' : ''
+          activeCard !== null && activeCard !== productId
+            ? 'opacity-50 scale-95 blur-[2px]'
+            : '',
+          activeCard === productId ? 'scale-105 z-10' : '',
         );
       }
     };
@@ -38,10 +40,10 @@ export const ProductListingThreeUp: React.FC<ProductListingProps> = (props) => {
     return (
       <section
         className={cn(
-          '@container @md:px-6 mx-auto max-w-screen-xl border-b-2 border-t-2 py-12 [.border-b-2+&]:border-t-0',
+          'legal-content-shell @container mx-auto border-b-2 border-t-2 py-12 [.border-b-2+&]:border-t-0',
           {
             [props?.params?.styles]: props?.params?.styles,
-          }
+          },
         )}
         data-component="ProductListingThreeUp"
         aria-labelledby="product-listing-threeup-heading"
@@ -56,12 +58,12 @@ export const ProductListingThreeUp: React.FC<ProductListingProps> = (props) => {
           <Text
             tag="h2"
             id="product-listing-threeup-heading"
-            className="w-full text-pretty text-5xl font-light tracking-tight antialiased"
+            className="legal-display-heading w-full text-pretty text-5xl font-light tracking-tight antialiased"
             field={title?.jsonValue}
           />
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {products?.targetItems?.map((product, index) => (
             <AnimatedSection
               key={JSON.stringify(`${product.productName}-${index}`)}

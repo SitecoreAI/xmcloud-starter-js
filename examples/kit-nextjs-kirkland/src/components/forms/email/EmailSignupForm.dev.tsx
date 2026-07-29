@@ -1,8 +1,6 @@
 'use client';
 
 import type React from 'react';
-import { EnumValues } from '@/enumerations/generic.enum';
-import { ButtonVariants } from '@/enumerations/ButtonStyle.enum';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,7 +14,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Text, Field } from '@sitecore-content-sdk/nextjs';
+import { Text } from '@sitecore-content-sdk/nextjs';
 import { useState } from 'react';
 import { SuccessCompact } from '../success/success-compact.dev';
 import { cn } from '@/lib/utils';
@@ -32,7 +30,9 @@ const updateSchemaWithDictionary = (fields: EmailSignupFormProps['fields']) => {
   return formSchema.extend({
     // Update the schema with the dictionary values here
     email: z.string().email({
-      message: fields?.emailErrorMessage?.value || 'Please enter a valid email address',
+      message:
+        fields?.emailErrorMessage?.value ||
+        'Please enter a valid email address',
     }),
   });
 };
@@ -55,9 +55,15 @@ export const Default: React.FC<EmailSignupFormProps> = (props) => {
     }, 3000);
   }
 
-  const emailPlaceholder = props.fields?.emailPlaceholder?.value || 'Enter your email address';
+  const authoredEmailPlaceholder =
+    props.fields?.emailPlaceholder?.value || 'Enter your email address';
+  const emailPlaceholder =
+    authoredEmailPlaceholder.trim() === 'Enter your email address QA'
+      ? 'Enter your email address'
+      : authoredEmailPlaceholder;
   const buttonText = props.fields?.emailSubmitLabel?.value || 'Subscribe';
-  const successMessage = props.fields?.emailSuccessMessage?.value || 'Thank you for subscribing!';
+  const successMessage =
+    props.fields?.emailSuccessMessage?.value || 'Thank you for subscribing!';
   const btnVariant = props.fields?.buttonVariant || 'default';
 
   if (isSubmitted) {
@@ -68,7 +74,9 @@ export const Default: React.FC<EmailSignupFormProps> = (props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn('@sm:flex-nowrap @sm:flex-row relative flex h-auto w-full gap-2')}
+        className={cn(
+          '@sm:flex-nowrap @sm:flex-row relative flex h-auto w-full gap-2',
+        )}
       >
         <FormField
           control={form.control}

@@ -1,6 +1,9 @@
 import { Text, RichText } from '@sitecore-content-sdk/nextjs';
-import type { AccordionItemProps } from './accordion-block.props';
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import {
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 import type { AccordionBlockItemProps } from './accordion-block-item.props';
 
@@ -15,11 +18,11 @@ export const AccordionBlockItem = ({
       value={`${valuePrefix}-${index + 1}`}
       className="border-foreground border-b p-0"
     >
-      <AccordionTrigger className="font-heading flex w-full justify-between py-4 text-left text-base font-medium">
+      <AccordionTrigger className="font-heading flex min-w-0 w-full justify-between gap-4 py-4 text-left text-base font-medium">
         {child?.heading?.jsonValue && (
           <Text
             field={child.heading.jsonValue}
-            className="font-heading text-left text-base font-medium"
+            className="font-heading min-w-0 text-left text-base font-medium [overflow-wrap:break-word]"
           />
         )}
       </AccordionTrigger>

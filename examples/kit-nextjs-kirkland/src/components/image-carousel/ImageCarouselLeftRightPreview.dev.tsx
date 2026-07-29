@@ -8,7 +8,11 @@ import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import type { ImageCarouselProps } from './image-carousel.props';
 import { useMatchMedia } from '@/hooks/use-match-media';
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { ImageCarouselEditMode } from './ImageCarouselEditMode.dev';
@@ -20,7 +24,7 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
   const containerClasses =
     '@container bg-background text-foreground group relative flex w-full flex-col items-center justify-center py-[99px]';
   const titleClasses =
-    'font-heading @md:text-7xl mx-auto max-w-[760px] text-pretty px-4 text-5xl font-light leading-none tracking-normal antialiased group-[.position-left]:text-left group-[.position-center]:text-center group-[.position-right]:text-right';
+    'legal-display-heading font-heading @md:text-7xl mx-auto max-w-[760px] text-pretty px-4 text-5xl font-light leading-none tracking-normal antialiased group-[.position-left]:text-left group-[.position-center]:text-center group-[.position-right]:text-right';
   const carouselWrapperClasses = 'relative mx-auto w-full max-w-screen-xl px-4';
   const previewImageBaseClasses =
     'absolute top-1/2 z-10 hidden w-1/6 -translate-y-1/2 transform opacity-70 transition-opacity hover:opacity-100 md:block';
@@ -106,9 +110,17 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
         </AnimatedSection>
 
         {/* Screen reader only live region to announce slide changes */}
-        <div ref={liveRegionRef} className="sr-only" aria-live="polite" aria-atomic="true"></div>
+        <div
+          ref={liveRegionRef}
+          className="sr-only"
+          aria-live="polite"
+          aria-atomic="true"
+        ></div>
 
-        <div className={carouselWrapperClasses} data-component-part="carousel wrapper">
+        <div
+          className={carouselWrapperClasses}
+          data-component-part="carousel wrapper"
+        >
           {/* Left preview image */}
           <button
             className={leftPreviewClasses}
@@ -186,7 +198,11 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
           isPageEditing={isPageEditing}
           reducedMotion={isReducedMotion}
         >
-          <div className={controlsWrapperClasses} role="group" aria-label="Slideshow controls">
+          <div
+            className={controlsWrapperClasses}
+            role="group"
+            aria-label="Slideshow controls"
+          >
             <Button
               variant="default"
               size="icon"
@@ -198,7 +214,10 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
             </Button>
 
             {slides[currentIndex]?.link?.jsonValue && (
-              <EditableButton variant="default" buttonLink={slides[currentIndex].link?.jsonValue} />
+              <EditableButton
+                variant="default"
+                buttonLink={slides[currentIndex].link?.jsonValue}
+              />
             )}
 
             <Button
@@ -214,7 +233,9 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
         </AnimatedSection>
 
         {/* Keyboard navigation instructions for screen readers */}
-        <div className="sr-only">Use left and right arrow keys to navigate between slides.</div>
+        <div className="sr-only">
+          Use left and right arrow keys to navigate between slides.
+        </div>
       </div>
     );
   }

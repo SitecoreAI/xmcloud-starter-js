@@ -30,15 +30,15 @@ export const GlobalFooterDefault: React.FC<GlobalFooterProps> = (props) => {
         role="contentinfo"
       >
         {/* Main footer content */}
-        <div className="border-foreground border-b-2 px-4 py-16">
-          <div className="@xl:px-8 relative z-10 mx-auto max-w-screen-2xl">
+        <div className="border-foreground border-b-2 py-16">
+          <div className="legal-content-shell relative z-10">
             <div className="@lg:grid-cols-[2fr,1fr] grid grid-cols-1 items-end justify-end gap-8">
               {/* Left section with heading */}
               <div>
                 <Text
                   tag="h2"
                   field={tagline?.jsonValue}
-                  className="font-heading mb-8 text-pretty text-5xl font-light antialiased"
+                  className="legal-display-heading font-heading mb-8 text-pretty text-5xl font-light antialiased"
                 />
                 {/* Navigation links */}
                 <FooterNavigationColumn
@@ -84,14 +84,14 @@ export const GlobalFooterDefault: React.FC<GlobalFooterProps> = (props) => {
           aria-hidden="true"
         >
           <div className="flex h-full w-full items-end justify-center leading-none">
-            <div className="bg-primary-gradient text-fill-transparent text-50-clamp -mb-14 bg-clip-text font-bold leading-none text-transparent">
+            <div className="legal-footer-wordmark bg-primary-gradient text-fill-transparent text-50-clamp -mb-14 bg-clip-text font-bold leading-none text-transparent">
               Kirkland
             </div>
           </div>
         </div>
 
         {/* Bottom footer with social icons and copyright */}
-        <div className="@md:min-h-[430px] relative z-0 mx-auto mt-8 flex max-w-screen-2xl flex-col justify-end px-4 py-8">
+        <div className="legal-content-shell @md:min-h-[300px] relative z-0 mt-8 flex flex-col justify-end py-8">
           <div className="@sm:flex-row flex flex-col items-center justify-between">
             {/* Social media icons */}
             <AnimatedHoverNav

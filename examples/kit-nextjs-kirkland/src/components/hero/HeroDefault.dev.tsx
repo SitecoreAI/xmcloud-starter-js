@@ -13,7 +13,15 @@ import { storeZipcodeInSession } from '@/utils/zipcode-storage';
 
 export const HeroDefault: React.FC<HeroProps> = (props) => {
   const { fields, isPageEditing } = props;
-  const { title, description, bannerText, bannerCTA, image, dictionary, searchLink } = fields || {};
+  const {
+    title,
+    description,
+    bannerText,
+    bannerCTA,
+    image,
+    dictionary,
+    searchLink,
+  } = fields || {};
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -31,6 +39,8 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
+    const hasConfiguredSearch =
+      isPageEditing || Boolean(searchLink?.value?.href);
 
     return (
       <section
@@ -40,11 +50,11 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
         <div
           data-class-change
           className={cn(
-            '@lg/herowrapper:grid @lg/herowrapper:gap-0 @lg/herowrapper:my-36 @lg/herowrapper:max-w-[1216px] @lg/herowrapper:mx-10 @xl/herowrapper:mx-auto @lg/herowrapper:grid-cols-[33%_11%_23%_33%] @lg/herowrapper:grid-rows-[52px_auto_2px_auto_auto] group',
+            'legal-content-shell @lg/herowrapper:grid @lg/herowrapper:gap-0 @lg/herowrapper:my-24 @lg/herowrapper:grid-cols-[33%_11%_23%_33%] @lg/herowrapper:grid-rows-[52px_auto_2px_auto_auto] group',
             {
               'position-left': !hasPagesPositionStyles,
               [props?.params?.styles]: props?.params?.styles,
-            }
+            },
           )}
         >
           {/* Title */}
@@ -57,7 +67,7 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
             <Text
               tag="h1"
               field={title}
-              className="font-heading @md/herowrapper:text-[clamp(4.5rem,9cqi,8rem)] text-box-trim-top @lg/herowrapper:p-0 text-shadow @lg/herowrapper:text-shadow-blur-3xl @lg/herowrapper:drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)] relative -ml-[2px] text-balance px-4 pt-8 text-5xl font-light leading-tight"
+              className="legal-display-heading font-heading @md/herowrapper:text-[clamp(4.5rem,9cqi,8rem)] text-box-trim-top @lg/herowrapper:p-0 text-shadow @lg/herowrapper:text-shadow-blur-3xl @lg/herowrapper:drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)] relative -ml-[2px] text-balance px-4 pt-8 text-5xl font-light leading-tight"
             />
           </AnimatedSection>
 
@@ -77,30 +87,32 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
               {description && (
                 <Text
                   tag="div"
-                  className="@sm/herowrapper:text-xl @lg/herowrapper:p-0 mt-0 text-pretty leading-tight"
+                  className="@sm/herowrapper:text-xl @lg/herowrapper:p-0 mt-0 max-w-[38ch] text-pretty leading-relaxed"
                   field={description}
                 />
               )}
             </AnimatedSection>
 
             {/* Form */}
-            <AnimatedSection
-              direction="up"
-              isPageEditing={isPageEditing}
-              reducedMotion={prefersReducedMotion}
-              delay={400}
-            >
-              <ZipcodeSearchForm
-                placeholder={dictionary.ZipPlaceholder || ''}
-                buttonText={dictionary?.SubmitCTALabel || ''}
-                onSubmit={(values) => {
-                  storeZipcodeInSession(values.zipcode);
-                  if (searchLink?.value?.href) {
-                    window.location.href = `${searchLink.value.href}`;
-                  }
-                }}
-              />
-            </AnimatedSection>
+            {hasConfiguredSearch && (
+              <AnimatedSection
+                direction="up"
+                isPageEditing={isPageEditing}
+                reducedMotion={prefersReducedMotion}
+                delay={400}
+              >
+                <ZipcodeSearchForm
+                  placeholder={dictionary.ZipPlaceholder || ''}
+                  buttonText={dictionary?.SubmitCTALabel || ''}
+                  onSubmit={(values) => {
+                    storeZipcodeInSession(values.zipcode);
+                    if (searchLink?.value?.href) {
+                      window.location.href = `${searchLink.value.href}`;
+                    }
+                  }}
+                />
+              </AnimatedSection>
+            )}
           </div>
 
           {/* Hero image */}

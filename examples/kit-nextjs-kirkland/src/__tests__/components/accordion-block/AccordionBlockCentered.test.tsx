@@ -28,7 +28,7 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
         'data-testid': 'sitecore-text',
         className,
       },
-      field?.value
+      field?.value,
     );
   },
 }));
@@ -68,7 +68,11 @@ jest.mock('@/components/accordion-block/AccordionBlockItem.dev', () => ({
     child: { heading: { jsonValue: { value?: string } } };
     valuePrefix?: string;
   }) => (
-    <div data-testid="accordion-block-item" data-index={index} data-value-prefix={valuePrefix}>
+    <div
+      data-testid="accordion-block-item"
+      data-index={index}
+      data-value-prefix={valuePrefix}
+    >
       {child?.heading?.jsonValue?.value}
     </div>
   ),
@@ -85,7 +89,11 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
     variant?: string;
     isPageEditing?: boolean;
   }) => (
-    <button data-testid="editable-button" data-variant={variant} data-editing={isPageEditing}>
+    <button
+      data-testid="editable-button"
+      data-variant={variant}
+      data-editing={isPageEditing}
+    >
       {buttonLink?.value?.text}
     </button>
   ),
@@ -111,13 +119,14 @@ describe('AccordionBlockCentered Component', () => {
       '@md:text-6xl',
       '@lg:text-7xl',
       'mx-auto',
-      'max-w-screen-md',
+      'max-w-[18ch]',
       'text-pretty',
+      'text-center',
       'text-5xl',
       'font-light',
       'leading-[1.1]',
       'tracking-tighter',
-      'antialiased'
+      'antialiased',
     );
   });
 
@@ -125,10 +134,15 @@ describe('AccordionBlockCentered Component', () => {
     render(<AccordionBlockCentered {...mockAccordionProps} />);
 
     expect(
-      screen.getByText('Find answers to common questions about our products and services.')
+      screen.getByText(
+        'Find answers to common questions about our products and services.',
+      ),
     ).toBeInTheDocument();
     expect(screen.getByTestId('editable-button')).toBeInTheDocument();
-    expect(screen.getByTestId('editable-button')).toHaveAttribute('data-variant', 'secondary');
+    expect(screen.getByTestId('editable-button')).toHaveAttribute(
+      'data-variant',
+      'secondary',
+    );
     expect(screen.getByText('Contact Support')).toBeInTheDocument();
   });
 
@@ -139,14 +153,18 @@ describe('AccordionBlockCentered Component', () => {
     expect(accordion).toHaveAttribute('data-type', 'multiple');
     expect(accordion).toHaveAttribute(
       'data-value',
-      'accordion-block-item-1,accordion-block-item-2,accordion-block-item-3,accordion-block-item-4'
+      'accordion-block-item-1,accordion-block-item-2,accordion-block-item-3,accordion-block-item-4',
     );
   });
 
   it('applies correct component structure with centered data attribute', () => {
-    const { container } = render(<AccordionBlockCentered {...mockAccordionProps} />);
+    const { container } = render(
+      <AccordionBlockCentered {...mockAccordionProps} />,
+    );
 
-    const component = container.querySelector('[data-component="AccordionBlockCentered"]');
+    const component = container.querySelector(
+      '[data-component="AccordionBlockCentered"]',
+    );
     expect(component).toBeInTheDocument();
     expect(component).toHaveClass(
       '@container',
@@ -156,24 +174,28 @@ describe('AccordionBlockCentered Component', () => {
       'text-foreground',
       'border-b-2',
       'border-t-2',
-      'py-10'
+      'py-10',
     );
 
     const contentWrapper = container.querySelector(
-      '[data-component="AccordionBlockContentWrapper"]'
+      '[data-component="AccordionBlockContentWrapper"]',
     );
     expect(contentWrapper).toBeInTheDocument();
   });
 
   it('renders centered heading section with correct spacing', () => {
-    const { container } = render(<AccordionBlockCentered {...mockAccordionProps} />);
+    const { container } = render(
+      <AccordionBlockCentered {...mockAccordionProps} />,
+    );
 
     const headingSection = container.querySelector('.mb-12');
     expect(headingSection).toBeInTheDocument();
   });
 
   it('shows primary section with centered and responsive styling', () => {
-    const { container } = render(<AccordionBlockCentered {...mockAccordionProps} />);
+    const { container } = render(
+      <AccordionBlockCentered {...mockAccordionProps} />,
+    );
 
     const primarySection = container.querySelector('.bg-primary');
     expect(primarySection).toBeInTheDocument();
@@ -193,7 +215,7 @@ describe('AccordionBlockCentered Component', () => {
       'items-center',
       'gap-4',
       'p-7',
-      'text-center'
+      'text-center',
     );
   });
 
@@ -201,7 +223,13 @@ describe('AccordionBlockCentered Component', () => {
     render(<AccordionBlockCentered {...mockAccordionProps} />);
 
     const accordion = screen.getByTestId('accordion');
-    expect(accordion).toHaveClass('@md:gap-11', 'grid', 'w-full', 'gap-8', 'p-0');
+    expect(accordion).toHaveClass(
+      '@md:gap-11',
+      'grid',
+      'w-full',
+      'gap-8',
+      'p-0',
+    );
   });
 
   it('applies custom styles from params', () => {
@@ -210,8 +238,12 @@ describe('AccordionBlockCentered Component', () => {
       params: { styles: 'custom-centered-class' },
     };
 
-    const { container } = render(<AccordionBlockCentered {...propsWithCustomStyles} />);
-    const component = container.querySelector('[data-component="AccordionBlockCentered"]');
+    const { container } = render(
+      <AccordionBlockCentered {...propsWithCustomStyles} />,
+    );
+    const component = container.querySelector(
+      '[data-component="AccordionBlockCentered"]',
+    );
     expect(component).toHaveClass('custom-centered-class');
   });
 
@@ -241,7 +273,9 @@ describe('AccordionBlockCentered Component', () => {
       isPageEditing: false,
     };
 
-    const { container } = render(<AccordionBlockCentered {...propsWithoutDescriptionAndLink} />);
+    const { container } = render(
+      <AccordionBlockCentered {...propsWithoutDescriptionAndLink} />,
+    );
     const primarySection = container.querySelector('.bg-primary');
     expect(primarySection).not.toBeInTheDocument();
   });
@@ -264,22 +298,26 @@ describe('AccordionBlockCentered Component', () => {
     render(<AccordionBlockCentered {...(propsWithoutFields as any)} />);
 
     expect(screen.getByTestId('no-data-fallback')).toBeInTheDocument();
-    expect(screen.getByText('No data for Accordion Block Centered')).toBeInTheDocument();
+    expect(
+      screen.getByText('No data for Accordion Block Centered'),
+    ).toBeInTheDocument();
   });
 
   it('renders content wrapper with correct responsive padding classes', () => {
-    const { container } = render(<AccordionBlockCentered {...mockAccordionProps} />);
+    const { container } = render(
+      <AccordionBlockCentered {...mockAccordionProps} />,
+    );
 
     const contentWrapper = container.querySelector(
-      '[data-component="AccordionBlockContentWrapper"]'
+      '[data-component="AccordionBlockContentWrapper"]',
     );
     expect(contentWrapper).toHaveClass(
-      '@xl:px-0',
+      'legal-content-shell',
       'mx-auto',
       'grid',
       'max-w-screen-xl',
       'gap-6',
-      'px-0'
+      'px-0',
     );
   });
 });

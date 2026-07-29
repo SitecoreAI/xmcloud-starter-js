@@ -6,7 +6,10 @@ import {
   ThreeUp,
   Slider,
 } from '@/components/product-listing/ProductListing';
-import { mockProductListingProps } from './product-listing.mock.props';
+import {
+  mockProductListingProps,
+  mockProductListingPropsEditMode,
+} from './product-listing.mock.props';
 
 // Mock Sitecore SDK
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
@@ -50,18 +53,65 @@ describe('ProductListing', () => {
   it('renders Default variant correctly', () => {
     render(<ProductListing {...mockProductListingProps} />);
     expect(screen.getByTestId('product-listing-default')).toBeInTheDocument();
-    expect(screen.getByText(/ProductListingDefault - Normal/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/ProductListingDefault - Normal/),
+    ).toBeInTheDocument();
   });
 
   it('renders ThreeUp variant correctly', () => {
     render(<ThreeUp {...mockProductListingProps} />);
     expect(screen.getByTestId('product-listing-three-up')).toBeInTheDocument();
-    expect(screen.getByText(/ProductListingThreeUp - Normal/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/ProductListingThreeUp - Normal/),
+    ).toBeInTheDocument();
   });
 
   it('renders Slider variant correctly', () => {
     render(<Slider {...mockProductListingProps} />);
     expect(screen.getByTestId('product-listing-slider')).toBeInTheDocument();
-    expect(screen.getByText(/ProductListingSlider - Normal/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/ProductListingSlider - Normal/),
+    ).toBeInTheDocument();
+  });
+
+  it('hides an empty listing outside of editing mode', () => {
+    const emptyProps = {
+      ...mockProductListingProps,
+      fields: {
+        data: {
+          datasource: {
+            ...mockProductListingProps.fields.data.datasource,
+            products: { targetItems: [] },
+          },
+        },
+      },
+    };
+
+    render(<ProductListing {...emptyProps} />);
+
+    expect(
+      screen.queryByTestId('product-listing-default'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('keeps an empty listing available in editing mode', () => {
+    const emptyEditingProps = {
+      ...mockProductListingPropsEditMode,
+      fields: {
+        data: {
+          datasource: {
+            ...mockProductListingPropsEditMode.fields.data.datasource,
+            products: { targetItems: [] },
+          },
+        },
+      },
+    };
+
+    render(<ProductListing {...emptyEditingProps} />);
+
+    expect(screen.getByTestId('product-listing-default')).toBeInTheDocument();
+    expect(
+      screen.getByText(/ProductListingDefault - Editing/),
+    ).toBeInTheDocument();
   });
 });

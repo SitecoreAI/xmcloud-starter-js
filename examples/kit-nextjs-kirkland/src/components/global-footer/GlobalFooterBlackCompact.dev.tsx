@@ -38,19 +38,19 @@ export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (
         role="contentinfo"
       >
         {/* Main footer content */}
-        <div className="relative  mx-auto max-w-screen-2xl">
+        <div className="legal-content-shell relative">
           <div
             className=" @md:-bottom-[55px] @md:-right-[60px] @md:inset-0 @md:inset-unset pointer-events-none absolute inset-0 -bottom-[35px] z-0 opacity-20"
             aria-hidden="true"
             data-component="footer-logo"
           >
             <div className="@md:justify-end   flex h-full w-full items-end justify-center leading-none">
-              <div className="bg-dark-gradient text-fill-transparent text-50-clamp bg-clip-text text-center font-bold leading-none text-transparent">
+              <div className="legal-footer-wordmark bg-dark-gradient text-fill-transparent text-50-clamp bg-clip-text text-center font-bold leading-none text-transparent">
                 Kirkland
               </div>
             </div>
           </div>
-          <div className=" mx-auto px-12 pb-16 pt-12">
+          <div className="mx-auto pb-16 pt-12">
             <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[1fr,auto]">
               {/* Left section with heading and subscription */}
               <div>
@@ -59,7 +59,7 @@ export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (
                   <Text
                     tag="h2"
                     field={tagline?.jsonValue}
-                    className="font-heading mb-10 text-pretty text-5xl font-light antialiased"
+                    className="legal-display-heading font-heading mb-10 text-pretty text-5xl font-light antialiased"
                   />
                   {/* Navigation links */}
                 </div>
@@ -111,7 +111,7 @@ export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (
         </div>
         {/* Bottom footer with social icons and copyright */}
         <div className="border-foreground border-t">
-          <div className="@sm:flex-row @sm:justify-between mx-auto flex max-w-screen-2xl flex-col items-center justify-start gap-4 px-4 py-12">
+          <div className="legal-content-shell @sm:flex-row @sm:justify-between flex flex-col items-center justify-start gap-4 py-12">
             {/* Social media icons - using responsive AnimatedHoverNav */}
             <div ref={socialContainerRef}>
               <AnimatedHoverNav

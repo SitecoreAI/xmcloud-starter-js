@@ -52,11 +52,11 @@ export const TextBanner01: React.FC<TextBannerProps> = (props) => {
           {
             'position-left': !hasPagesPositionStyles,
             [props?.params?.styles as string]: props?.params?.styles,
-          }
+          },
         )}
       >
         <div className="@container/textbanner">
-          <div className="@lg/textbanner:mx-auto @xl/textbanner:group-[.container--full-bleed]:px-8 @lg/textbanner:pt-28 @lg/textbanner:pb-24 @sm/textbanner:py-14 @lg/textbanner:px-20 @sm/textbanner:px-14 mx-auto max-w-screen-xl px-6 py-8">
+          <div className="legal-content-shell py-16 @md/textbanner:py-20">
             {/* Title */}
             <AnimatedSection
               direction="left"
@@ -67,7 +67,7 @@ export const TextBanner01: React.FC<TextBannerProps> = (props) => {
               <Text
                 tag="h2"
                 field={heading}
-                className="text-box-trim-both-baseline font-heading @lg/textbanner:text-8xl relative -ml-[0.1em] text-balance text-left"
+                className="legal-display-heading text-box-trim-both-baseline font-heading relative -ml-[0.04em] max-w-[18ch] text-balance text-left"
               />
             </AnimatedSection>
             {/* Description */}
@@ -81,7 +81,7 @@ export const TextBanner01: React.FC<TextBannerProps> = (props) => {
               <Text
                 tag="p"
                 field={description}
-                className="text-box-trim-both-baseline @lg/textbanner:mt-20 @md/textbanner:mt-16 @sm/textbanner:mt-12 ml-auto mt-10 max-w-[53.3855ch] text-pretty text-right leading-tight"
+                className="text-box-trim-both-baseline ml-auto mt-10 max-w-[53ch] text-pretty text-right leading-relaxed @md/textbanner:mt-12"
               />
             </AnimatedSection>
           </div>

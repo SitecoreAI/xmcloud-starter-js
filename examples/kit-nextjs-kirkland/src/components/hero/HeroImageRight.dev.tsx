@@ -13,7 +13,15 @@ import { storeZipcodeInSession } from '@/utils/zipcode-storage';
 
 export const HeroImageRight: React.FC<HeroProps> = (props) => {
   const { fields, isPageEditing } = props;
-  const { title, description, bannerText, bannerCTA, image, dictionary, searchLink } = fields || {};
+  const {
+    title,
+    description,
+    bannerText,
+    bannerCTA,
+    image,
+    dictionary,
+    searchLink,
+  } = fields || {};
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -31,6 +39,8 @@ export const HeroImageRight: React.FC<HeroProps> = (props) => {
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
+    const hasConfiguredSearch =
+      isPageEditing || Boolean(searchLink?.value?.href);
 
     return (
       <section
@@ -39,11 +49,11 @@ export const HeroImageRight: React.FC<HeroProps> = (props) => {
       >
         <div
           className={cn(
-            '@lg/herowrapper:max-w-[1440px] @lg/herowrapper:mx-auto @md/herowrapper:flex-row group flex min-h-[600px] flex-col',
+            'legal-content-shell @md/herowrapper:flex-row group flex min-h-[600px] flex-col',
             {
               'position-left': !hasPagesPositionStyles,
               [props?.params?.styles]: props?.params?.styles,
-            }
+            },
           )}
         >
           {/* Left content */}
@@ -58,7 +68,7 @@ export const HeroImageRight: React.FC<HeroProps> = (props) => {
               <Text
                 tag="h1"
                 field={title}
-                className="font-heading @md/herowrapper:text-[clamp(3rem,18cqi,6rem)] relative -ml-[2px] max-w-[15ch] text-balance text-[clamp(3rem,11cqi,4rem)] font-light leading-tight"
+                className="legal-display-heading font-heading @md/herowrapper:text-[clamp(3rem,18cqi,6rem)] relative -ml-[2px] max-w-[15ch] text-balance text-[clamp(3rem,11cqi,4rem)] font-light leading-tight"
               />
             </AnimatedSection>
 
@@ -73,31 +83,33 @@ export const HeroImageRight: React.FC<HeroProps> = (props) => {
               {description && (
                 <Text
                   tag="p"
-                  className="@xs/herocontent:text-xl max-w-[32ch] text-pretty leading-tight"
+                  className="@xs/herocontent:text-xl max-w-[38ch] text-pretty leading-relaxed"
                   field={description}
                 />
               )}
             </AnimatedSection>
 
             {/* Form */}
-            <AnimatedSection
-              direction="up"
-              isPageEditing={isPageEditing}
-              reducedMotion={prefersReducedMotion}
-              delay={400}
-              className="mt-6 w-full"
-            >
-              <ZipcodeSearchForm
-                placeholder={dictionary.ZipPlaceholder || ''}
-                buttonText={dictionary?.SubmitCTALabel || ''}
-                onSubmit={(values) => {
-                  storeZipcodeInSession(values.zipcode);
-                  if (searchLink?.value?.href) {
-                    window.location.href = `${searchLink.value.href}`;
-                  }
-                }}
-              />
-            </AnimatedSection>
+            {hasConfiguredSearch && (
+              <AnimatedSection
+                direction="up"
+                isPageEditing={isPageEditing}
+                reducedMotion={prefersReducedMotion}
+                delay={400}
+                className="mt-6 w-full"
+              >
+                <ZipcodeSearchForm
+                  placeholder={dictionary.ZipPlaceholder || ''}
+                  buttonText={dictionary?.SubmitCTALabel || ''}
+                  onSubmit={(values) => {
+                    storeZipcodeInSession(values.zipcode);
+                    if (searchLink?.value?.href) {
+                      window.location.href = `${searchLink.value.href}`;
+                    }
+                  }}
+                />
+              </AnimatedSection>
+            )}
           </div>
 
           {/* Image */}

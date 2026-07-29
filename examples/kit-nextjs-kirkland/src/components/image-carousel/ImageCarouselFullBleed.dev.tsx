@@ -29,7 +29,7 @@ export const ImageCarouselFullBleed = (props: ImageCarouselProps) => {
   const headerContentClasses =
     '@md:flex-row flex w-full flex-col items-end justify-between group-[.position-right]:justify-end group-[.position-center]:justify-center';
   const titleClasses =
-    'font-heading text-pretty px-4 font-light leading-none tracking-normal antialiased group-[.position-center]:text-center group-[.position-right]:text-right group-[.position-center]:mx-auto';
+    'legal-display-heading font-heading text-pretty px-4 font-light leading-none tracking-normal antialiased group-[.position-center]:text-center group-[.position-right]:text-right group-[.position-center]:mx-auto';
   const controlsWrapperClasses =
     '@md:mt-0 mt-8 flex items-center justify-center';
   const carouselContentClasses = '!ml-0 h-full items-stretch';

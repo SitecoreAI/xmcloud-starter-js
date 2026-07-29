@@ -9,12 +9,13 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { PageHeaderProps } from './page-header.props';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 
-export const PageHeaderDefault: React.FC<PageHeaderProps & { isPageEditing: boolean }> = (
-  props
-) => {
+export const PageHeaderDefault: React.FC<
+  PageHeaderProps & { isPageEditing: boolean }
+> = (props) => {
   const { fields, isPageEditing } = props;
   const { imageRequired, link1, link2 } = fields?.data?.datasource || {};
-  const { pageHeaderTitle, pageTitle, pageSubtitle } = fields?.data?.externalFields || {};
+  const { pageHeaderTitle, pageTitle, pageSubtitle } =
+    fields?.data?.externalFields || {};
 
   const title = pageHeaderTitle?.jsonValue?.value
     ? pageHeaderTitle?.jsonValue
@@ -23,7 +24,8 @@ export const PageHeaderDefault: React.FC<PageHeaderProps & { isPageEditing: bool
 
   const shouldShowButtons: boolean = isPageEditing
     ? true
-    : link1?.jsonValue?.value?.href !== '' || link2?.jsonValue?.value?.href !== ''
+    : link1?.jsonValue?.value?.href !== '' ||
+        link2?.jsonValue?.value?.href !== ''
       ? true
       : false;
 
@@ -43,13 +45,16 @@ export const PageHeaderDefault: React.FC<PageHeaderProps & { isPageEditing: bool
       <section
         data-component="PageHeader"
         data-class-change
-        className={cn('bg-background text-foreground group w-full overflow-hidden', {
-          'position-left': !hasPagesPositionStyles,
-          [props?.params?.styles]: props?.params?.styles,
-        })}
+        className={cn(
+          'bg-background text-foreground group w-full overflow-hidden',
+          {
+            'position-left': !hasPagesPositionStyles,
+            [props?.params?.styles]: props?.params?.styles,
+          },
+        )}
       >
         <div className="@container/headerwrapper">
-          <div className="@lg/headerwrapper:pt-20 @lg/headerwrapper:pb-16 @xl/headerwrapper:mx-auto @lg/headerwrapper:max-w-screen-xl @xl/headerwrapper:group-[.container--full-bleed]:px-8 relative mx-auto w-full py-12 group-[.container--full-bleed]:px-4">
+          <div className="legal-content-shell @lg/headerwrapper:pb-16 @lg/headerwrapper:pt-20 relative py-12">
             <div className="@md/headerwrapper:grid-cols-2 @md/headerwrapper:grid-rows-[17fr_4fr_29fr] grid grid-cols-1 gap-x-[10px] gap-y-0">
               {/* Left */}
               <div className="@container/headercontent @md/headerwrapper:row-start-1 @md/headerwrapper:row-end-4 @md/headerwrapper:col-start-1 @md/headerwrapper:col-end-2 @md/headerwrapper:mb-0 mb-10">
@@ -60,7 +65,7 @@ export const PageHeaderDefault: React.FC<PageHeaderProps & { isPageEditing: bool
                 >
                   <Text
                     tag="h1"
-                    className="font-heading @[575px]/headercontent:text-6xl @xs/headercontent:text-5xl relative -ml-[0.1em] max-w-[14ch] text-balance text-left text-4xl font-light tracking-tighter antialiased"
+                    className="legal-display-heading font-heading @[575px]/headercontent:text-6xl @xs/headercontent:text-5xl relative -ml-[0.04em] max-w-[18ch] text-balance text-left text-4xl font-light tracking-tighter antialiased"
                     field={title}
                   />
                 </AnimatedSection>

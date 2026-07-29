@@ -24,7 +24,7 @@ export const ImageCarouselThumbnails = (props: ImageCarouselProps) => {
   const containerClasses =
     '@container bg-primary text-primary-foreground group relative flex w-full flex-col items-center justify-center py-16';
   const titleClasses =
-    'font-heading @md:text-6xl mx-auto max-w-[760px] text-pretty px-4 text-4xl font-light leading-none tracking-normal antialiased';
+    'legal-display-heading font-heading @md:text-6xl mx-auto max-w-[760px] text-pretty px-4 text-4xl font-light leading-none tracking-normal antialiased';
   const carouselWrapperClasses = 'w-full max-w-screen-xl mx-auto px-4';
   const mainImageClasses =
     'relative z-0 h-auto w-full rounded-lg overflow-hidden';

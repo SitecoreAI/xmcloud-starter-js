@@ -9,12 +9,13 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { PageHeaderProps } from './page-header.props';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 
-export const PageHeaderFiftyFifty: React.FC<PageHeaderProps & { isPageEditing: boolean }> = (
-  props
-) => {
+export const PageHeaderFiftyFifty: React.FC<
+  PageHeaderProps & { isPageEditing: boolean }
+> = (props) => {
   const { fields, isPageEditing } = props;
   const { imageRequired, link1, link2 } = fields?.data?.datasource || {};
-  const { pageHeaderTitle, pageTitle, pageSubtitle } = fields?.data?.externalFields || {};
+  const { pageHeaderTitle, pageTitle, pageSubtitle } =
+    fields?.data?.externalFields || {};
 
   const title = pageHeaderTitle?.jsonValue?.value
     ? pageHeaderTitle?.jsonValue
@@ -23,7 +24,8 @@ export const PageHeaderFiftyFifty: React.FC<PageHeaderProps & { isPageEditing: b
 
   const shouldShowButtons: boolean = isPageEditing
     ? true
-    : link1?.jsonValue?.value?.href !== '' || link2?.jsonValue?.value?.href !== ''
+    : link1?.jsonValue?.value?.href !== '' ||
+        link2?.jsonValue?.value?.href !== ''
       ? true
       : false;
 
@@ -43,26 +45,35 @@ export const PageHeaderFiftyFifty: React.FC<PageHeaderProps & { isPageEditing: b
       <section
         data-component="PageHeader"
         data-class-change
-        className={cn('bg-background text-primary-foreground group w-full overflow-hidden', {
-          'position-left': !hasPagesPositionStyles,
-          [props?.params?.styles]: props?.params?.styles,
-        })}
+        className={cn(
+          'bg-background text-primary-foreground group w-full overflow-hidden',
+          {
+            'position-left': !hasPagesPositionStyles,
+            [props?.params?.styles]: props?.params?.styles,
+          },
+        )}
       >
         <div className="@container/headerwrapper">
           {/* 50-50 variant - Equal width columns */}
-          <div className="@lg/headerwrapper:py-20 @xl/headerwrapper:mx-auto @lg/headerwrapper:max-w-screen-xl @xl/headerwrapper:group-[.container--full-bleed]:px-8 @md:grid-cols-2 @md:gap-0 @md:grid-rows-[1fr_auto_1fr] relative mx-auto grid w-full grid-cols-1 gap-8 py-12 group-[.container--full-bleed]:px-4">
+          <div className="legal-content-shell @lg/headerwrapper:py-20 @md:grid-cols-2 @md:gap-0 @md:grid-rows-[1fr_auto_1fr] relative grid grid-cols-1 gap-8 py-12">
             {/* Left - 50% width */}
             <div className="@container/headercontent @md:row-start-2 @md:row-end-3 @md:col-start-1 @md:col-end-2 pr-11">
-              <AnimatedSection reducedMotion={prefersReducedMotion} isPageEditing={isPageEditing}>
+              <AnimatedSection
+                reducedMotion={prefersReducedMotion}
+                isPageEditing={isPageEditing}
+              >
                 <Text
                   tag="h1"
-                  className="font-heading @[550px]/headercontent:text-6xl @xs/headercontent:text-5xl @md/headerwrapper:pl-0 relative -ml-[0.1em] max-w-[14ch] text-balance pl-8 text-left text-4xl font-light tracking-tighter antialiased"
+                  className="legal-display-heading font-heading @[550px]/headercontent:text-6xl @xs/headercontent:text-5xl @md/headerwrapper:pl-0 relative -ml-[0.04em] max-w-[18ch] text-balance pl-8 text-left text-4xl font-light tracking-tighter antialiased"
                   field={title}
                 />
               </AnimatedSection>
               {/* Subtitle */}
               {subtitle && (
-                <AnimatedSection reducedMotion={prefersReducedMotion} isPageEditing={isPageEditing}>
+                <AnimatedSection
+                  reducedMotion={prefersReducedMotion}
+                  isPageEditing={isPageEditing}
+                >
                   <RichText
                     className="font-body @md/headerwrapper:pl-0 mt-4 max-w-[50ch] text-pretty pl-8 leading-tight"
                     field={subtitle}
@@ -70,7 +81,10 @@ export const PageHeaderFiftyFifty: React.FC<PageHeaderProps & { isPageEditing: b
                 </AnimatedSection>
               )}
               {shouldShowButtons && (
-                <AnimatedSection reducedMotion={prefersReducedMotion} isPageEditing={isPageEditing}>
+                <AnimatedSection
+                  reducedMotion={prefersReducedMotion}
+                  isPageEditing={isPageEditing}
+                >
                   <div className="@md/headerwrapper:pl-0 mt-9 flex flex-wrap gap-4 pl-8">
                     {link1?.jsonValue && (
                       <EditableButton

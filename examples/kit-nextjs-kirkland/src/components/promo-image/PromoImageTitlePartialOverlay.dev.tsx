@@ -8,7 +8,9 @@ import { useMatchMedia } from '@/hooks/use-match-media';
 
 export const PromoTitlePartialOverlay: React.FC<PromoImageProps> = (props) => {
   const { fields, isPageEditing } = props;
-  const prefersReducedMotion = useMatchMedia('(prefers-reduced-motion: reduce)');
+  const prefersReducedMotion = useMatchMedia(
+    '(prefers-reduced-motion: reduce)',
+  );
 
   if (fields) {
     const { image, heading, description, link } = fields;
@@ -31,14 +33,14 @@ export const PromoTitlePartialOverlay: React.FC<PromoImageProps> = (props) => {
               >
                 <Text
                   tag="h2"
-                  className="font-heading @md:text-6xl text-primary-foreground text-pretty text-5xl"
+                  className="legal-display-heading font-heading @md:text-6xl text-primary-foreground text-pretty text-5xl"
                   field={heading}
                 />
               </AnimatedSection>
             )}
           </div>
         </div>
-        <div className="@md:grid-cols-2 @xl:pl-0 relative z-0 mx-auto grid max-w-screen-2xl grid-cols-1 items-end gap-0 px-8">
+        <div className="legal-content-shell @md:grid-cols-2 relative z-0 grid grid-cols-1 items-end gap-0">
           <div>
             {(isPageEditing || image?.value?.src) && (
               <AnimatedSection
@@ -81,7 +83,10 @@ export const PromoTitlePartialOverlay: React.FC<PromoImageProps> = (props) => {
                     delay={1200}
                   >
                     <div className="mt-6">
-                      <Button buttonLink={link} isPageEditing={isPageEditing}></Button>
+                      <Button
+                        buttonLink={link}
+                        isPageEditing={isPageEditing}
+                      ></Button>
                     </div>
                   </AnimatedSection>
                 )}

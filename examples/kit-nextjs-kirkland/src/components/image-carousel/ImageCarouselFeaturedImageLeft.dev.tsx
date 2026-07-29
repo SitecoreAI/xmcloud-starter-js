@@ -73,7 +73,7 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
         // Reset animation state
         setIsAnimating(false);
       },
-      isReducedMotion ? 0 : 600
+      isReducedMotion ? 0 : 600,
     ); // Instant for reduced motion, otherwise match animation duration
   };
 
@@ -108,14 +108,19 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
           {
             'position-left': !hasPagesPositionStyles,
             [props?.params?.styles]: props?.params?.styles,
-          }
+          },
         )}
         role="region"
         aria-roledescription="carousel"
         data-component="ImageCarouselFeaturedImageLeft"
       >
         {/* Screen reader only live region to announce slide changes */}
-        <div ref={liveRegionRef} className="sr-only" aria-live="polite" aria-atomic="true"></div>
+        <div
+          ref={liveRegionRef}
+          className="sr-only"
+          aria-live="polite"
+          aria-atomic="true"
+        ></div>
 
         <div className="mx-auto w-full max-w-screen-2xl">
           <div className="@md:flex-row @md:justify-between flex w-full flex-col items-end justify-start group-[.position-right]:justify-end group-[.position-center]:justify-center ">
@@ -128,7 +133,7 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
               <Text
                 tag="h2"
                 field={title?.jsonValue}
-                className="font-heading @md:text-7xl max-w-[760px] text-pretty text-5xl font-light leading-none tracking-normal antialiased group-[.position-left]:text-left group-[.position-center]:text-center group-[.position-right]:text-right"
+                className="legal-display-heading font-heading @md:text-7xl max-w-[760px] text-pretty text-5xl font-light leading-none tracking-normal antialiased group-[.position-left]:text-left group-[.position-center]:text-center group-[.position-right]:text-right"
               />
             </AnimatedSection>
 
@@ -145,9 +150,13 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                 aria-label="Slideshow controls"
               >
                 {slideOrder.length > 0 &&
-                  slides[slideOrder[nextSlideIndex === 1 ? 1 : 0]]?.link?.jsonValue && (
+                  slides[slideOrder[nextSlideIndex === 1 ? 1 : 0]]?.link
+                    ?.jsonValue && (
                     <EditableButton
-                      buttonLink={slides[slideOrder[nextSlideIndex === 1 ? 1 : 0]].link?.jsonValue}
+                      buttonLink={
+                        slides[slideOrder[nextSlideIndex === 1 ? 1 : 0]].link
+                          ?.jsonValue
+                      }
                       className="mb-6"
                     />
                   )}
@@ -167,7 +176,9 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
             <div
               className={cn(
                 'mb-6 flex overflow-visible transition-all',
-                isMobile ? 'h-auto items-center justify-center' : 'h-[532px] items-end'
+                isMobile
+                  ? 'h-auto items-center justify-center'
+                  : 'h-[532px] items-end',
               )}
             >
               {/* Slide deck with animated transitions */}
@@ -180,7 +191,8 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                     {slideOrder.map((slideIndex, position) => {
                       // Determine if this slide is the active one or the next one that will animate on top
                       const isActive = position === 0;
-                      const isNext = nextSlideIndex !== null && position === nextSlideIndex;
+                      const isNext =
+                        nextSlideIndex !== null && position === nextSlideIndex;
                       const isDeckSlide = position > 1;
 
                       // On mobile, only show active slide and next slide during animation
@@ -200,8 +212,14 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                         height = 'auto';
                       } else {
                         // Desktop view
-                        width = isActive || isNext ? activeSlideWidth : thumbnailWidth;
-                        height = isActive || isNext ? activeSlideHeight : thumbnailHeight;
+                        width =
+                          isActive || isNext
+                            ? activeSlideWidth
+                            : thumbnailWidth;
+                        height =
+                          isActive || isNext
+                            ? activeSlideHeight
+                            : thumbnailHeight;
                       }
 
                       // Calculate the left position - no gaps between slides
@@ -210,14 +228,18 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                       if (isAnimating) {
                         if (isNext) {
                           // Next slide animates from right to directly on top of active slide
-                          leftPosition = isMobile ? ['100%', 0] : [activeSlideWidth, 0];
+                          leftPosition = isMobile
+                            ? ['100%', 0]
+                            : [activeSlideWidth, 0];
                         } else if (isActive) {
                           // Active slide stays in place
                           leftPosition = 0;
                         } else if (isDeckSlide && !isMobile) {
                           // Deck slides animate to the left
-                          const currentPos = activeSlideWidth + (position - 1) * thumbnailWidth;
-                          const targetPos = activeSlideWidth + (position - 2) * thumbnailWidth;
+                          const currentPos =
+                            activeSlideWidth + (position - 1) * thumbnailWidth;
+                          const targetPos =
+                            activeSlideWidth + (position - 2) * thumbnailWidth;
                           leftPosition = [currentPos, targetPos];
                         } else if (!isMobile) {
                           // Position 1 slide (which will be hidden by the animating next slide)
@@ -230,7 +252,8 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                         } else {
                           leftPosition = isActive
                             ? 0
-                            : activeSlideWidth + (position - 1) * thumbnailWidth;
+                            : activeSlideWidth +
+                              (position - 1) * thumbnailWidth;
                         }
                       }
 
@@ -242,7 +265,9 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                         topPosition = [activeSlideHeight - thumbnailHeight, 0];
                       } else if (!isMobile) {
                         // Static positioning - active slides at top (0), thumbnails aligned at bottom
-                        topPosition = isActive ? 0 : activeSlideHeight - thumbnailHeight;
+                        topPosition = isActive
+                          ? 0
+                          : activeSlideHeight - thumbnailHeight;
                       } else {
                         // On mobile, all slides are at top 0
                         topPosition = 0;
@@ -253,7 +278,9 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                           key={`slide-${slideIndex}`}
                           className={cn(
                             '@md:absolute flex-shrink-0',
-                            isMobile && (isActive || isNext) && 'aspect-[941/526] w-full'
+                            isMobile &&
+                              (isActive || isNext) &&
+                              'aspect-[941/526] w-full',
                           )}
                           style={{
                             zIndex,
@@ -267,7 +294,11 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                             scale: 1,
                           }}
                           transition={{
-                            duration: isReducedMotion ? 0 : isAnimating ? 0.6 : 0,
+                            duration: isReducedMotion
+                              ? 0
+                              : isAnimating
+                                ? 0.6
+                                : 0,
                             ease: 'easeInOut',
                             left:
                               isAnimating && !isReducedMotion
@@ -303,7 +334,7 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                               'relative overflow-hidden shadow-lg',
                               isMobile && (isActive || isNext)
                                 ? 'aspect-[941/526] w-full'
-                                : 'h-full w-full'
+                                : 'h-full w-full',
                             )}
                           >
                             <ImageWrapper

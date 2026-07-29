@@ -2,7 +2,10 @@ import type React from 'react';
 import { Text } from '@sitecore-content-sdk/nextjs';
 import { Accordion } from '@/components/ui/accordion';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
-import type { AccordionProps, AccordionItemProps } from './accordion-block.props';
+import type {
+  AccordionProps,
+  AccordionItemProps,
+} from './accordion-block.props';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { AccordionBlockItem } from './AccordionBlockItem.dev';
 import { cn } from '@/lib/utils';
@@ -10,7 +13,8 @@ import { cn } from '@/lib/utils';
 export const AccordionBlockCentered: React.FC<AccordionProps> = (props) => {
   const { fields, isPageEditing } = props;
 
-  const { heading, description, link, children } = fields?.data?.datasource ?? {};
+  const { heading, description, link, children } =
+    fields?.data?.datasource ?? {};
   const accordionItems = children?.results ?? [];
   const acordionItemValues = [
     ...accordionItems.map((_, index) => `accordion-block-item-${index + 1}`),
@@ -22,14 +26,16 @@ export const AccordionBlockCentered: React.FC<AccordionProps> = (props) => {
         className={cn(
           '@container @md:py-16 @lg:py-20 bg-background text-foreground border-b-2 border-t-2 py-10 [.border-b-2+&]:border-t-0',
           props?.params?.styles && {
-    [props.params.styles]: true,
-  }
+            [props.params.styles]: true,
+          },
         )}
         data-class-change
-        aria-labelledby={heading?.jsonValue?.value ? 'accordion-centered-heading' : undefined}
+        aria-labelledby={
+          heading?.jsonValue?.value ? 'accordion-centered-heading' : undefined
+        }
       >
         <div
-          className="@xl:px-0 mx-auto grid max-w-screen-xl gap-6 px-0 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6 "
+          className="legal-content-shell mx-auto grid max-w-screen-xl gap-6 px-0 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6"
           data-component="AccordionBlockContentWrapper"
         >
           <div className="mb-12">
@@ -37,7 +43,7 @@ export const AccordionBlockCentered: React.FC<AccordionProps> = (props) => {
               <Text
                 tag="h2"
                 id="accordion-centered-heading"
-                className="font-heading @md:text-6xl @lg:text-7xl mx-auto max-w-screen-md text-pretty text-5xl font-light leading-[1.1] tracking-tighter antialiased"
+                className="legal-display-heading font-heading @md:text-6xl @lg:text-7xl mx-auto max-w-[18ch] text-pretty text-center text-5xl font-light leading-[1.1] tracking-tighter antialiased"
                 field={heading?.jsonValue}
               />
             )}
@@ -49,11 +55,15 @@ export const AccordionBlockCentered: React.FC<AccordionProps> = (props) => {
               value={isPageEditing ? acordionItemValues : undefined} // force open all accordion items
               onValueChange={isPageEditing ? () => {} : undefined} // prevent accordion item from closing
             >
-              {accordionItems.map((child: AccordionItemProps, index: number) => (
-                <AccordionBlockItem key={index} index={index} child={child} />
-              ))}
+              {accordionItems.map(
+                (child: AccordionItemProps, index: number) => (
+                  <AccordionBlockItem key={index} index={index} child={child} />
+                ),
+              )}
             </Accordion>
-            {(isPageEditing || description?.jsonValue?.value || link?.jsonValue?.value?.href) && (
+            {(isPageEditing ||
+              description?.jsonValue?.value ||
+              link?.jsonValue?.value?.href) && (
               <div className="bg-primary @sm:flex-row @sm:text-start @md:flex-col @md:text-center @lg:flex-row @lg:text-start mx-auto mt-6 flex w-full flex-col flex-nowrap items-center gap-4 p-7 text-center">
                 <Text
                   tag="p"

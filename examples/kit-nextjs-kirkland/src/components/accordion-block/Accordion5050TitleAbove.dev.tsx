@@ -44,10 +44,12 @@ export const Accordion5050TitleAbove: React.FC<AccordionProps> = (props) => {
           },
         )}
         data-class-change
-        aria-labelledby={heading?.jsonValue?.value ? 'accordion-5050-heading' : undefined}
+        aria-labelledby={
+          heading?.jsonValue?.value ? 'accordion-5050-heading' : undefined
+        }
       >
         <div
-          className="@xl:px-0 mx-auto grid max-w-screen-xl gap-6 px-0 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6"
+          className="legal-content-shell mx-auto grid max-w-screen-xl gap-6 px-0 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6"
           data-component="AccordionBlockContentWrapper"
         >
           <div className="@md:grid @md:grid-cols-2 @md:gap-8 @lg:gap-12 @xl:gap-16 items-end">
@@ -56,7 +58,7 @@ export const Accordion5050TitleAbove: React.FC<AccordionProps> = (props) => {
                 <Text
                   tag="h2"
                   id="accordion-5050-heading"
-                  className="font-heading @md:text-6xl @lg:text-7xl mb-8 max-w-screen-sm text-pretty text-5xl font-light leading-[1.1] tracking-tighter antialiased"
+                  className="legal-display-heading font-heading @md:text-6xl @lg:text-7xl mb-8 max-w-[18ch] text-pretty text-5xl font-light leading-[1.1] tracking-tighter antialiased"
                   field={heading?.jsonValue}
                 />
               )}

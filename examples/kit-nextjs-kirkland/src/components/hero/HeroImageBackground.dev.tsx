@@ -13,7 +13,15 @@ import { storeZipcodeInSession } from '@/utils/zipcode-storage';
 
 export const HeroImageBackground: React.FC<HeroProps> = (props) => {
   const { fields, isPageEditing } = props;
-  const { title, description, bannerText, bannerCTA, image, dictionary, searchLink } = fields || {};
+  const {
+    title,
+    description,
+    bannerText,
+    bannerCTA,
+    image,
+    dictionary,
+    searchLink,
+  } = fields || {};
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -31,6 +39,8 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
+    const hasConfiguredSearch =
+      isPageEditing || Boolean(searchLink?.value?.href);
 
     return (
       <section
@@ -49,8 +59,8 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
             wrapperClass="absolute w-full inset-0 scrim-background/50 scrim-l-full group-[.position-right]:scrim-r-full group-[.position-right]:scrim-l-0 group-[.position-center]:scrim-l-0 group-[.position-center]:scrim-b-full"
             className="h-full w-full object-cover opacity-80"
             priority={true}
-            loading='eager'
-            fetchPriority='high'
+            loading="eager"
+            fetchPriority="high"
             page={props.page}
           />
 
@@ -58,7 +68,7 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
           <div className="fade-to-transparent fade-to-transparent-bottom @md/herowrapper:hidden absolute inset-0 w-full backdrop-blur-sm"></div>
 
           {/* Content */}
-          <div className="@container/herocontent @sm/herowrapper:px-5 @sm/herowrapper:pb-5 @md/herowrapper:px-10 @md/herowrapper:pb-10 @md/herowrapper:pt-20 @lg/herowrapper:px-24 @lg/herowrapper:pb-20 @lg/herowrapper:pt-36 relative z-10 mx-auto flex max-w-[1240px] flex-col pt-10 group-[.position-right]:items-end group-[.position-center]:items-center">
+          <div className="legal-content-shell @container/herocontent @sm/herowrapper:pb-5 @md/herowrapper:pb-10 @md/herowrapper:pt-20 @lg/herowrapper:pb-20 @lg/herowrapper:pt-28 relative z-10 flex flex-col pt-10 group-[.position-right]:items-end group-[.position-center]:items-center">
             {/* Title */}
             <AnimatedSection
               direction="up"
@@ -69,7 +79,7 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
               <Text
                 tag="h1"
                 field={title}
-                className="font-heading text-box-trim-both-baseline @lg/herowrapper:p-0 text-shadow text-shadow-blur-xl @sm/herowrapper:text-shadow-blur-3xl @sm/herowrapper:px-0 relative -ml-[2px] max-w-[13ch] text-balance px-5 text-[clamp(3rem,9cqi,6rem)] font-light leading-tight drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
+                className="legal-display-heading font-heading text-box-trim-both-baseline @lg/herowrapper:p-0 text-shadow text-shadow-blur-xl @sm/herowrapper:text-shadow-blur-3xl @sm/herowrapper:px-0 relative -ml-[2px] max-w-[13ch] text-balance px-5 text-[clamp(3rem,9cqi,6rem)] font-light leading-tight drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]"
               />
             </AnimatedSection>
 
@@ -88,31 +98,33 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
               {description && (
                 <Text
                   tag="p"
-                  className="@xs/herocontent:text-xl @sm/herowrapper:px-0 text-shadow text-shadow-blur-xl max-w-[32ch] text-pretty px-5 leading-tight"
+                  className="@xs/herocontent:text-xl text-shadow text-shadow-blur-xl max-w-[38ch] text-pretty leading-relaxed"
                   field={description}
                 />
               )}
             </AnimatedSection>
 
             {/* Form */}
-            <AnimatedSection
-              direction="up"
-              isPageEditing={isPageEditing}
-              reducedMotion={prefersReducedMotion}
-              delay={400}
-              className="@sm/herowrapper:px-0 @md/herowrapper:mt-7 mt-4 w-full px-5"
-            >
-              <ZipcodeSearchForm
-                placeholder={dictionary.ZipPlaceholder || ''}
-                buttonText={dictionary?.SubmitCTALabel || ''}
-                onSubmit={(values) => {
-                  storeZipcodeInSession(values.zipcode);
-                  if (searchLink?.value?.href) {
-                    window.location.href = `${searchLink.value.href}`;
-                  }
-                }}
-              />
-            </AnimatedSection>
+            {hasConfiguredSearch && (
+              <AnimatedSection
+                direction="up"
+                isPageEditing={isPageEditing}
+                reducedMotion={prefersReducedMotion}
+                delay={400}
+                className="@md/herowrapper:mt-7 mt-4 w-full"
+              >
+                <ZipcodeSearchForm
+                  placeholder={dictionary.ZipPlaceholder || ''}
+                  buttonText={dictionary?.SubmitCTALabel || ''}
+                  onSubmit={(values) => {
+                    storeZipcodeInSession(values.zipcode);
+                    if (searchLink?.value?.href) {
+                      window.location.href = `${searchLink.value.href}`;
+                    }
+                  }}
+                />
+              </AnimatedSection>
+            )}
 
             {/* Banner overlay */}
             {needsBanner && (

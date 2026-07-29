@@ -10,12 +10,13 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import type { PageHeaderProps } from './page-header.props';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 
-export const PageHeaderCentered: React.FC<PageHeaderProps & { isPageEditing: boolean }> = (
-  props
-) => {
+export const PageHeaderCentered: React.FC<
+  PageHeaderProps & { isPageEditing: boolean }
+> = (props) => {
   const { fields, isPageEditing } = props;
   const { imageRequired, link1, link2 } = fields?.data?.datasource || {};
-  const { pageHeaderTitle, pageTitle, pageSubtitle } = fields?.data?.externalFields || {};
+  const { pageHeaderTitle, pageTitle, pageSubtitle } =
+    fields?.data?.externalFields || {};
 
   const title = pageHeaderTitle?.jsonValue?.value
     ? pageHeaderTitle?.jsonValue
@@ -24,7 +25,8 @@ export const PageHeaderCentered: React.FC<PageHeaderProps & { isPageEditing: boo
 
   const shouldShowButtons: boolean = isPageEditing
     ? true
-    : link1?.jsonValue?.value?.href !== '' || link2?.jsonValue?.value?.href !== ''
+    : link1?.jsonValue?.value?.href !== '' ||
+        link2?.jsonValue?.value?.href !== ''
       ? true
       : false;
 
@@ -43,7 +45,7 @@ export const PageHeaderCentered: React.FC<PageHeaderProps & { isPageEditing: boo
         className="bg-background text-foreground @container group w-full overflow-hidden"
       >
         <div className="">
-          <div className="@lg:pt-24 @lg:pb-0 @xl:mx-auto @lg:max-w-screen-xl @xl:group-[.container--full-bleed]:px-8 border-primary-foreground relative mx-auto w-full border-l-2 border-r-2 py-16 group-[.container--full-bleed]:px-4 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6">
+          <div className="legal-content-shell @lg:pb-0 @lg:pt-20 border-primary-foreground relative border-l-2 border-r-2 py-16">
             <div className="flex flex-col items-center">
               {/* Header Content */}
               <div className=" mx-auto mb-12 px-4 text-center">
@@ -54,7 +56,7 @@ export const PageHeaderCentered: React.FC<PageHeaderProps & { isPageEditing: boo
                 >
                   <Text
                     tag="h1"
-                    className="font-heading elative mx-auto text-balance text-center text-6xl font-light tracking-tighter antialiased"
+                    className="legal-display-heading font-heading relative mx-auto max-w-[18ch] text-balance text-center text-6xl font-light tracking-tighter antialiased"
                     field={title}
                   />
                 </AnimatedSection>

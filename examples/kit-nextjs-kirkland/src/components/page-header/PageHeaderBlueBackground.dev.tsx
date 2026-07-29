@@ -10,12 +10,13 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import type { PageHeaderProps } from './page-header.props';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 
-export const PageHeaderBlueBackground: React.FC<PageHeaderProps & { isPageEditing: boolean }> = (
-  props
-) => {
+export const PageHeaderBlueBackground: React.FC<
+  PageHeaderProps & { isPageEditing: boolean }
+> = (props) => {
   const { fields, isPageEditing } = props;
   const { imageRequired, link1, link2 } = fields?.data?.datasource || {};
-  const { pageHeaderTitle, pageTitle, pageSubtitle } = fields?.data?.externalFields || {};
+  const { pageHeaderTitle, pageTitle, pageSubtitle } =
+    fields?.data?.externalFields || {};
 
   const title = pageHeaderTitle?.jsonValue?.value
     ? pageHeaderTitle?.jsonValue
@@ -24,7 +25,8 @@ export const PageHeaderBlueBackground: React.FC<PageHeaderProps & { isPageEditin
 
   const shouldShowButtons: boolean = isPageEditing
     ? true
-    : link1?.jsonValue?.value?.href !== '' || link2?.jsonValue?.value?.href !== ''
+    : link1?.jsonValue?.value?.href !== '' ||
+        link2?.jsonValue?.value?.href !== ''
       ? true
       : false;
 
@@ -42,7 +44,7 @@ export const PageHeaderBlueBackground: React.FC<PageHeaderProps & { isPageEditin
         data-class-change
         className="bg-primary text-primary-foreground border-primary-foreground @container group w-full overflow-hidden border-b-2 border-t-2"
       >
-        <div className="@lg:pt-5 @lg:pb-0 @md:grid-cols-2 relative mx-auto grid w-full max-w-screen-xl grid-cols-1 gap-0 px-0 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6">
+        <div className="legal-content-shell @lg:pb-0 @lg:pt-5 @md:grid-cols-2 relative grid grid-cols-1 gap-0">
           {/* Right Content */}
           <div className="@container @md:col-start-2 @md:col-end-3 @md:mb-0 @md:flex @md:flex-col @md:justify-center @md:py-16 py-8 pt-8">
             <AnimatedSection
@@ -53,7 +55,7 @@ export const PageHeaderBlueBackground: React.FC<PageHeaderProps & { isPageEditin
             >
               <Text
                 tag="h1"
-                className="font-heading @xs:text-6xl leading-tighter relative max-w-[14ch] text-balance text-left  text-6xl font-light tracking-tighter antialiased"
+                className="legal-display-heading font-heading @xs:text-6xl leading-tighter relative max-w-[18ch] text-balance text-left text-6xl font-light tracking-tighter antialiased"
                 field={title}
               />
             </AnimatedSection>

@@ -8,7 +8,9 @@ import { useMatchMedia } from '@/hooks/use-match-media';
 export const PromoImageRight: React.FC<PromoImageProps> = (props) => {
   const { fields, isPageEditing } = props;
 
-  const prefersReducedMotion = useMatchMedia('(prefers-reduced-motion: reduce)');
+  const prefersReducedMotion = useMatchMedia(
+    '(prefers-reduced-motion: reduce)',
+  );
 
   if (fields) {
     const { image, heading, description, link } = fields;
@@ -31,7 +33,7 @@ export const PromoImageRight: React.FC<PromoImageProps> = (props) => {
                 >
                   <Text
                     tag="h2"
-                    className="font-heading @xs:text-3xl @sm:text-4xl @lg:text-5xl text-pretty text-2xl"
+                    className="legal-display-heading font-heading @xs:text-3xl @sm:text-4xl @lg:text-5xl text-pretty text-2xl"
                     field={heading}
                   />
                 </AnimatedSection>
@@ -57,7 +59,10 @@ export const PromoImageRight: React.FC<PromoImageProps> = (props) => {
                   delay={1200}
                 >
                   <div className="mt-8">
-                    <Button buttonLink={link} isPageEditing={isPageEditing}></Button>
+                    <Button
+                      buttonLink={link}
+                      isPageEditing={isPageEditing}
+                    ></Button>
                   </div>
                 </AnimatedSection>
               )}

@@ -52,11 +52,11 @@ export const TextBanner02: React.FC<TextBannerProps> = (props) => {
           {
             'position-center': !hasPagesPositionStyles,
             [props?.params?.styles as string]: props?.params?.styles,
-          }
+          },
         )}
       >
         <div className="@container/textbanner">
-          <div className="@lg/textbanner:px-5 mx-auto max-w-screen-xl px-10 py-20">
+          <div className="legal-content-shell py-16 @md/textbanner:py-20">
             {/* Title */}
             <AnimatedSection
               direction="down"
@@ -68,7 +68,7 @@ export const TextBanner02: React.FC<TextBannerProps> = (props) => {
               <Text
                 tag="h2"
                 field={heading}
-                className="font-heading text-box-trim-both-baseline mx-auto max-w-[11.35ch] text-balance text-center"
+                className="legal-display-heading font-heading text-box-trim-both-baseline mx-auto max-w-[16ch] text-balance text-center"
               />
             </AnimatedSection>
             {/* Description */}
@@ -81,7 +81,7 @@ export const TextBanner02: React.FC<TextBannerProps> = (props) => {
               <Text
                 tag="p"
                 field={description}
-                className="text-box-trim-both-baseline mx-auto mt-10 max-w-[53.3855ch] text-pretty text-center leading-tight"
+                className="text-box-trim-both-baseline mx-auto mt-8 max-w-[53ch] text-pretty text-center leading-relaxed"
               />
             </AnimatedSection>
           </div>

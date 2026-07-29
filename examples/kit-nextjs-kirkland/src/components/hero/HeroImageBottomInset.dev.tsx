@@ -13,7 +13,15 @@ import { storeZipcodeInSession } from '@/utils/zipcode-storage';
 
 export const HeroImageBottomInset: React.FC<HeroProps> = (props) => {
   const { fields, isPageEditing } = props;
-  const { title, description, bannerText, bannerCTA, image, dictionary, searchLink } = fields || {};
+  const {
+    title,
+    description,
+    bannerText,
+    bannerCTA,
+    image,
+    dictionary,
+    searchLink,
+  } = fields || {};
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -31,6 +39,8 @@ export const HeroImageBottomInset: React.FC<HeroProps> = (props) => {
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
+    const hasConfiguredSearch =
+      isPageEditing || Boolean(searchLink?.value?.href);
 
     return (
       <section
@@ -46,7 +56,7 @@ export const HeroImageBottomInset: React.FC<HeroProps> = (props) => {
           {/* Line */}
           <div
             className={cn(
-              '@[1376px]/herowrapper:max-w-[1312px] @sm/herowrapper:max-w-[calc(100%-(theme(spacing.32)))] absolute bottom-0 left-1/2 top-0 mx-auto w-full -translate-x-[50%]'
+              '@[1376px]/herowrapper:max-w-[1312px] @sm/herowrapper:max-w-[calc(100%-(theme(spacing.32)))] absolute bottom-0 left-1/2 top-0 mx-auto w-full -translate-x-[50%]',
             )}
           >
             <div className="bg-foreground group-[.position-left]:@[1376px]/herowrapper:left-28 group-[.position-right]:@[1376px]/herowrapper:right-28 absolute bottom-0 right-[50%] top-0 block w-[2px] -translate-x-[50%] group-[.position-left]:left-12 group-[.position-left]:right-auto group-[.position-right]:right-12"></div>
@@ -54,7 +64,7 @@ export const HeroImageBottomInset: React.FC<HeroProps> = (props) => {
 
           <div
             className={cn(
-              '@[1376px]/herowrapper:max-w-[1312px] @sm/herowrapper:max-w-[calc(100%-(theme(spacing.32)))] @md/herowrapper:pb-16 relative z-10 mx-auto flex flex-col px-5 pb-8'
+              'legal-content-shell @md/herowrapper:pb-16 relative z-10 flex flex-col pb-8',
             )}
           >
             <div className="bg-background flex flex-col items-center py-6 group-[.position-left]:items-start group-[.position-right]:items-end">
@@ -68,7 +78,7 @@ export const HeroImageBottomInset: React.FC<HeroProps> = (props) => {
                 <Text
                   tag="h1"
                   field={title}
-                  className="font-heading @md/herowrapper:text-[clamp(3rem,6cqi,6rem)] text-box-trim-top relative max-w-[15ch] text-balance text-5xl font-light leading-tight"
+                  className="legal-display-heading font-heading @md/herowrapper:text-[clamp(3rem,6cqi,6rem)] text-box-trim-top relative max-w-[15ch] text-balance text-5xl font-light leading-tight"
                 />
               </AnimatedSection>
 
@@ -83,31 +93,33 @@ export const HeroImageBottomInset: React.FC<HeroProps> = (props) => {
                 {description && (
                   <Text
                     tag="p"
-                    className="@md/herowrapper:text-xl max-w-[32ch] text-pretty leading-tight"
+                    className="@md/herowrapper:text-xl max-w-[38ch] text-pretty leading-relaxed"
                     field={description}
                   />
                 )}
               </AnimatedSection>
 
               {/* Form */}
-              <AnimatedSection
-                direction="up"
-                isPageEditing={isPageEditing}
-                reducedMotion={prefersReducedMotion}
-                delay={400}
-                className="mt-6 w-full"
-              >
-                <ZipcodeSearchForm
-                  placeholder={dictionary.ZipPlaceholder || ''}
-                  buttonText={dictionary?.SubmitCTALabel || ''}
-                  onSubmit={(values) => {
-                    storeZipcodeInSession(values.zipcode);
-                    if (searchLink?.value?.href) {
-                      window.location.href = `${searchLink.value.href}`;
-                    }
-                  }}
-                />
-              </AnimatedSection>
+              {hasConfiguredSearch && (
+                <AnimatedSection
+                  direction="up"
+                  isPageEditing={isPageEditing}
+                  reducedMotion={prefersReducedMotion}
+                  delay={400}
+                  className="mt-6 w-full"
+                >
+                  <ZipcodeSearchForm
+                    placeholder={dictionary.ZipPlaceholder || ''}
+                    buttonText={dictionary?.SubmitCTALabel || ''}
+                    onSubmit={(values) => {
+                      storeZipcodeInSession(values.zipcode);
+                      if (searchLink?.value?.href) {
+                        window.location.href = `${searchLink.value.href}`;
+                      }
+                    }}
+                  />
+                </AnimatedSection>
+              )}
             </div>
           </div>
 

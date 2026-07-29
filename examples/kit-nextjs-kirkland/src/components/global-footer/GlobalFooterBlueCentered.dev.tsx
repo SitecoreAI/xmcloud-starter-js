@@ -40,21 +40,21 @@ export const GlobalFooterBlueCentered: React.FC<GlobalFooterProps> = (
           aria-hidden="true"
         >
           <div className="flex h-full w-full items-center justify-center leading-none">
-            <div className="bg-primary-gradient text-fill-transparent text-50-clamp bg-clip-text font-bold leading-none text-transparent">
+            <div className="legal-footer-wordmark bg-primary-gradient text-fill-transparent text-50-clamp bg-clip-text font-bold leading-none text-transparent">
               Kirkland
             </div>
           </div>
         </div>
         {/* Main footer content */}
-        <div className="border-foreground relative border-b-2 px-4 py-16">
-          <div className="@xl:px-8 relative z-10 mx-auto max-w-screen-2xl">
+        <div className="border-foreground relative border-b-2 py-16">
+          <div className="legal-content-shell relative z-10">
             <div className=" grid grid-cols-1 gap-8">
               {/* Left section with heading */}
               <div>
                 <Text
                   tag="h2"
                   field={tagline?.jsonValue}
-                  className="font-heading mb-8 text-pretty text-center text-5xl font-light antialiased"
+                  className="legal-display-heading font-heading mb-8 text-pretty text-center text-5xl font-light antialiased"
                 />
                 {/* Navigation links */}
                 <FooterNavigationColumn
@@ -97,7 +97,7 @@ export const GlobalFooterBlueCentered: React.FC<GlobalFooterProps> = (
         </div>
 
         {/* Bottom footer with social icons and copyright */}
-        <div className="relative mx-auto flex max-w-screen-2xl flex-col justify-center px-4 py-8 ">
+        <div className="legal-content-shell relative flex flex-col justify-center py-8">
           <div className="@sm:flex-row flex flex-col items-center justify-between">
             {/* Social media icons */}
             <AnimatedHoverNav

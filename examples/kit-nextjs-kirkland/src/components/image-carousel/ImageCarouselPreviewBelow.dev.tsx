@@ -9,7 +9,11 @@ import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import type { ImageCarouselProps } from './image-carousel.props';
 import { useMatchMedia } from '@/hooks/use-match-media';
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { ImageCarouselEditMode } from './ImageCarouselEditMode.dev';
@@ -22,12 +26,14 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
   const containerClasses =
     '@container bg-background text-foreground group relative flex w-full flex-col items-center justify-center py-[99px]';
   const titleClasses =
-    'font-heading @md:text-7xl mx-auto max-w-[760px] text-pretty px-4 text-5xl font-light leading-none tracking-normal antialiased group-[.position-left]:text-left group-[.position-center]:text-center group-[.position-right]:text-right';
+    'legal-display-heading font-heading @md:text-7xl mx-auto max-w-[760px] text-pretty px-4 text-5xl font-light leading-none tracking-normal antialiased group-[.position-left]:text-left group-[.position-center]:text-center group-[.position-right]:text-right';
   const carouselWrapperClasses = 'relative mx-auto w-full max-w-screen-xl px-4';
-  const carouselItemClasses = 'pointer-events-none flex h-full basis-full flex-col justify-stretch';
+  const carouselItemClasses =
+    'pointer-events-none flex h-full basis-full flex-col justify-stretch';
   const thumbnailWrapperClasses =
     'px-4 mt-4 @md:mt-0 @md:px-0 flex items-center justify-center gap-2 @md:gap-4 max-w-screen-xl mx-auto @md:-translate-y-1/2';
-  const thumbnailImageClasses = 'h-auto w-full transition-all border-2 border-transparent';
+  const thumbnailImageClasses =
+    'h-auto w-full transition-all border-2 border-transparent';
   const thumbnailActiveClasses = '';
 
   const { title, imageItems } = fields?.data?.datasource || {};
@@ -111,7 +117,11 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
           reducedMotion={isReducedMotion}
           delay={300}
         >
-          <div className="mb-12 flex justify-center" role="group" aria-label="Call to action">
+          <div
+            className="mb-12 flex justify-center"
+            role="group"
+            aria-label="Call to action"
+          >
             {slides[currentIndex]?.link?.jsonValue && (
               <EditableButton
                 variant="default"
@@ -123,7 +133,12 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
         </AnimatedSection>
 
         {/* Screen reader only live region to announce slide changes */}
-        <div ref={liveRegionRef} className="sr-only" aria-live="polite" aria-atomic="true"></div>
+        <div
+          ref={liveRegionRef}
+          className="sr-only"
+          aria-live="polite"
+          aria-atomic="true"
+        ></div>
         <AnimatedSection
           direction="up"
           isPageEditing={isPageEditing}
@@ -131,7 +146,10 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
           delay={600}
         >
           {/* Main Carousel */}
-          <div className={carouselWrapperClasses} data-component-part="main-carousel-wrapper">
+          <div
+            className={carouselWrapperClasses}
+            data-component-part="main-carousel-wrapper"
+          >
             <Carousel
               setApi={setMainApi}
               opts={{
@@ -185,7 +203,10 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
           delay={800}
         >
           {/* Thumbnail Navigation Carousel */}
-          <div className={thumbnailWrapperClasses} data-component-part="thumbnail-carousel-wrapper">
+          <div
+            className={thumbnailWrapperClasses}
+            data-component-part="thumbnail-carousel-wrapper"
+          >
             <Button
               variant="default"
               size="icon"
@@ -210,7 +231,10 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
               className={'w-full max-w-[390px]'}
               data-component-part="thumbnail-carousel"
             >
-              <CarouselContent className="-ml-2" data-component-part="thumbnail-carousel-content">
+              <CarouselContent
+                className="-ml-2"
+                data-component-part="thumbnail-carousel-content"
+              >
                 {slides.map((slide, index) => (
                   <CarouselItem
                     key={index}
@@ -251,7 +275,9 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
           </div>
         </AnimatedSection>
         {/* Keyboard navigation instructions for screen readers */}
-        <div className="sr-only">Use left and right arrow keys to navigate between slides.</div>
+        <div className="sr-only">
+          Use left and right arrow keys to navigate between slides.
+        </div>
       </div>
     );
   }

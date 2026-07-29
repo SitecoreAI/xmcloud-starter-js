@@ -8,7 +8,9 @@ import { useMatchMedia } from '@/hooks/use-match-media';
 
 export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
   const { fields, isPageEditing } = props;
-  const prefersReducedMotion = useMatchMedia('(prefers-reduced-motion: reduce)');
+  const prefersReducedMotion = useMatchMedia(
+    '(prefers-reduced-motion: reduce)',
+  );
 
   if (fields) {
     const { image, heading, description, link } = fields;
@@ -41,7 +43,7 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
             </div>
           )}
 
-          <div className="@xs:pl-8 @sm:pl-12 @md:pl-16 @lg:pl-[118px] @xs:pr-6 @sm:pr-12 @md:py-16 relative z-10 mx-auto flex h-full w-full max-w-screen-xl flex-col justify-center px-4 py-24">
+          <div className="legal-content-shell @md:py-16 relative z-10 flex h-full flex-col justify-center py-20">
             <div className="@xs:max-w-[90%] @sm:max-w-[80%] @md:max-w-[60%] @lg:max-w-[50%]">
               {heading && (
                 <AnimatedSection
@@ -51,7 +53,7 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
                 >
                   <Text
                     tag="h2"
-                    className="font-heading @xs:text-3xl @sm:text-4xl @lg:text-5xl text-primary-foreground text-pretty text-2xl"
+                    className="legal-display-heading font-heading @xs:text-3xl @sm:text-4xl @lg:text-5xl text-primary-foreground text-pretty text-2xl"
                     field={heading}
                   />
                 </AnimatedSection>
@@ -79,7 +81,10 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
                   delay={1200}
                 >
                   <div className="mt-8">
-                    <Button buttonLink={link} isPageEditing={isPageEditing}></Button>
+                    <Button
+                      buttonLink={link}
+                      isPageEditing={isPageEditing}
+                    ></Button>
                   </div>
                 </AnimatedSection>
               )}

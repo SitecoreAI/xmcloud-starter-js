@@ -6,9 +6,13 @@ import { mockGlobalHeaderProps } from './global-header.mock.props';
 
 // Mock Next.js Link
 jest.mock('next/link', () => {
-  const MockLink = ({ children, href }: { children: React.ReactNode; href: string }) => (
-    <a href={href}>{children}</a>
-  );
+  const MockLink = ({
+    children,
+    href,
+  }: {
+    children: React.ReactNode;
+    href: string;
+  }) => <a href={href}>{children}</a>;
   MockLink.displayName = 'Link';
   return MockLink;
 });
@@ -23,12 +27,20 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
 
 // Mock UI components
 jest.mock('@/components/ui/navigation-menu', () => ({
-  NavigationMenu: ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  NavigationMenu: ({
+    children,
+    className,
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => (
     <nav className={className} data-testid="navigation-menu">
       {children}
     </nav>
   ),
-  NavigationMenuItem: ({ children }: { children: React.ReactNode }) => <li>{children}</li>,
+  NavigationMenuItem: ({ children }: { children: React.ReactNode }) => (
+    <li>{children}</li>
+  ),
   NavigationMenuList: ({
     children,
     className,
@@ -39,24 +51,42 @@ jest.mock('@/components/ui/navigation-menu', () => ({
 }));
 
 jest.mock('@/components/ui/sheet', () => ({
-  Sheet: ({ children }: { children: React.ReactNode }) => <div data-testid="sheet">{children}</div>,
-  SheetTrigger: ({ children }: { children: React.ReactNode; asChild?: boolean }) => (
-    <div data-testid="sheet-trigger">{children}</div>
+  Sheet: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="sheet">{children}</div>
   ),
+  SheetTrigger: ({
+    children,
+  }: {
+    children: React.ReactNode;
+    asChild?: boolean;
+  }) => <div data-testid="sheet-trigger">{children}</div>,
   SheetContent: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="sheet-content">{children}</div>
   ),
 }));
 
 jest.mock('@/components/ui/button', () => ({
-  Button: ({ children, variant, size, asChild, className }: Record<string, unknown>) => {
+  Button: ({
+    children,
+    variant,
+    size,
+    asChild,
+    className,
+  }: Record<string, unknown>) => {
     if (asChild && React.isValidElement(children)) {
-      return React.cloneElement(children as React.ReactElement<{ className?: string }>, {
-        className: `${className || ''} button-${variant} button-${size}`.trim(),
-      });
+      return React.cloneElement(
+        children as React.ReactElement<{ className?: string }>,
+        {
+          className:
+            `${className || ''} button-${variant} button-${size}`.trim(),
+        },
+      );
     }
     return (
-      <button className={`button-${variant} button-${size}` as string} data-testid="button">
+      <button
+        className={`button-${variant} button-${size}` as string}
+        data-testid="button"
+      >
         {children as React.ReactNode}
       </button>
     );
@@ -86,18 +116,21 @@ jest.mock('framer-motion', () => {
   const motion = {
     header: actual.forwardRef(
       (
-        { children, className }: { children: React.ReactNode; className?: string },
-        ref: React.Ref<HTMLElement>
+        {
+          children,
+          className,
+        }: { children: React.ReactNode; className?: string },
+        ref: React.Ref<HTMLElement>,
       ) => (
         <header ref={ref} className={className}>
           {children}
         </header>
-      )
+      ),
     ),
     div: actual.forwardRef(
       (
         { children, className, onClick }: Record<string, unknown>,
-        ref: React.Ref<HTMLDivElement>
+        ref: React.Ref<HTMLDivElement>,
       ) => (
         <div
           ref={ref}
@@ -106,11 +139,17 @@ jest.mock('framer-motion', () => {
         >
           {children as React.ReactNode}
         </div>
-      )
+      ),
     ),
     nav: ({ children }: { children: React.ReactNode }) => <nav>{children}</nav>,
   };
-  return { motion, m: motion, AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</> };
+  return {
+    motion,
+    m: motion,
+    AnimatePresence: ({ children }: { children: React.ReactNode }) => (
+      <>{children}</>
+    ),
+  };
 });
 
 jest.mock('lucide-react', () => ({
@@ -127,7 +166,9 @@ jest.mock('@/hooks/use-match-media', () => ({
 
 describe('GlobalHeaderDefault Component', () => {
   it('renders without crashing', () => {
-    const { container } = render(<GlobalHeaderDefault {...mockGlobalHeaderProps} />);
+    const { container } = render(
+      <GlobalHeaderDefault {...mockGlobalHeaderProps} />,
+    );
     expect(container.querySelector('header')).toBeInTheDocument();
   });
 
@@ -137,6 +178,53 @@ describe('GlobalHeaderDefault Component', () => {
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
     expect(screen.getByTestId('navigation-menu')).toBeInTheDocument();
     expect(screen.getByTestId('animated-hover-nav')).toBeInTheDocument();
+  });
+
+  it('uses an accessible firm-name fallback when no logo image is authored', () => {
+    const propsWithoutLogo = {
+      ...mockGlobalHeaderProps,
+      fields: {
+        data: {
+          item: {
+            ...mockGlobalHeaderProps.fields.data.item,
+            logo: {
+              jsonValue: {
+                value: {},
+              },
+            },
+          },
+        },
+      },
+    };
+
+    render(<GlobalHeaderDefault {...propsWithoutLogo} />);
+
+    expect(screen.getByText('Kirkland & Ellis')).toBeInTheDocument();
+    expect(screen.queryByTestId('image-wrapper')).not.toBeInTheDocument();
+  });
+
+  it('keeps the logo field editable while showing the firm-name fallback in Page Builder', () => {
+    const editingPropsWithoutLogo = {
+      ...mockGlobalHeaderProps,
+      isPageEditing: true,
+      fields: {
+        data: {
+          item: {
+            ...mockGlobalHeaderProps.fields.data.item,
+            logo: {
+              jsonValue: {
+                value: {},
+              },
+            },
+          },
+        },
+      },
+    };
+
+    render(<GlobalHeaderDefault {...editingPropsWithoutLogo} />);
+
+    expect(screen.getByText('Kirkland & Ellis')).toBeInTheDocument();
+    expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
   });
 
   it('displays mobile menu trigger', () => {

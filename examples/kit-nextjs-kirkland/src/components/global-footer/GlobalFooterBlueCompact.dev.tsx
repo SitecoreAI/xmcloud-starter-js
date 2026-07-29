@@ -36,22 +36,22 @@ export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
           aria-hidden="true"
         >
           <div className="@md:justify-end flex h-full w-full items-end justify-center leading-none">
-            <div className="bg-primary-gradient text-fill-transparent text-50-clamp @md:-mb-[80px] -mb-[40px] bg-clip-text text-center font-bold leading-none text-transparent">
+            <div className="legal-footer-wordmark bg-primary-gradient text-fill-transparent text-50-clamp @md:-mb-[60px] -mb-[40px] bg-clip-text text-center font-bold leading-none text-transparent">
               Kirkland
             </div>
           </div>
         </div>
 
         {/* Main footer content */}
-        <div className="border-primary-foreground px-4 py-16">
-          <div className="@xl:px-8 relative z-10 mx-auto max-w-screen-2xl">
+        <div className="border-primary-foreground py-16">
+          <div className="legal-content-shell relative z-10">
             <div className="@lg:grid-cols-[2fr,1fr] grid grid-cols-1 items-end justify-end gap-8">
               {/* Left section with heading */}
               <div>
                 <Text
                   tag="h2"
                   field={tagline?.jsonValue}
-                  className="font-heading mb-8 text-pretty text-5xl font-light antialiased"
+                  className="legal-display-heading font-heading mb-8 text-pretty text-5xl font-light antialiased"
                 />
                 {/* Navigation links */}
                 <FooterNavigationColumn

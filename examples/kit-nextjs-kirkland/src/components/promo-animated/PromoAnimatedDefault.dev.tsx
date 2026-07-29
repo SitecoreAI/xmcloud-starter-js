@@ -29,11 +29,12 @@ export const PromoAnimatedDefault: React.FC<PromoAnimatedProps> = (props) => {
     const { image, title, description, primaryLink, secondaryLink } = fields;
 
     const colorScheme = params.colorScheme as EnumValues<typeof ColorScheme>;
-    const hasLinks = isPageEditing || primaryLink?.value?.href || secondaryLink?.value?.href;
+    const hasLinks =
+      isPageEditing || primaryLink?.value?.href || secondaryLink?.value?.href;
 
     return (
       <section className="promo-animated @container my-10">
-        <div className="promo-animated__content-wrapper @md:grid-cols-2 @md:items-center @md:gap-10 @xl:gap-[135px] grid grid-cols-1">
+        <div className="legal-content-shell promo-animated__content-wrapper @md:grid-cols-2 @md:items-center @md:gap-10 @xl:gap-[96px] grid grid-cols-1">
           <div className="promo-animated__image @md:flex @md:justify-end w-full">
             {image && (
               <div
@@ -75,10 +76,13 @@ export const PromoAnimatedDefault: React.FC<PromoAnimatedProps> = (props) => {
 
           <div className="promo-animated__content @md:flex @md:flex-col @md:justify-center @md:items-start min-w-0">
             {title && (
-              <AnimatedSection reducedMotion={prefersReducedMotion} isPageEditing={isPageEditing}>
+              <AnimatedSection
+                reducedMotion={prefersReducedMotion}
+                isPageEditing={isPageEditing}
+              >
                 <Text
                   tag="h2"
-                  className="font-heading @sm:text-5xl @lg:text-6xl -ml-1 mt-6 max-w-[15.5ch] text-4xl font-normal leading-[1.1333] tracking-tighter antialiased"
+                  className="legal-display-heading font-heading @sm:text-5xl @lg:text-6xl -ml-1 mt-6 max-w-[15.5ch] text-4xl font-normal leading-[1.1333] tracking-tighter antialiased"
                   field={title}
                 />
               </AnimatedSection>
@@ -105,7 +109,10 @@ export const PromoAnimatedDefault: React.FC<PromoAnimatedProps> = (props) => {
                 isPageEditing={isPageEditing}
               >
                 {primaryLink && (
-                  <Button buttonLink={primaryLink} isPageEditing={isPageEditing}></Button>
+                  <Button
+                    buttonLink={primaryLink}
+                    isPageEditing={isPageEditing}
+                  ></Button>
                 )}
                 {secondaryLink && (
                   <Button

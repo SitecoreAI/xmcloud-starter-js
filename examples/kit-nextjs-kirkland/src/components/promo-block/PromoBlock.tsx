@@ -1,4 +1,4 @@
-import { Link, RichText, Text, Field, ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
+import { Link, RichText, Text } from '@sitecore-content-sdk/nextjs';
 import { Orientation } from '@/enumerations/Orientation.enum';
 import { Variation } from '@/enumerations/Variation.enum';
 import { ButtonType } from '@/enumerations/ButtonStyle.enum';
@@ -8,7 +8,10 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { JSX } from 'react';
-import type { PromoBlockProps, PromoBlockVariationClassesProps } from './promo-block.props';
+import type {
+  PromoBlockProps,
+  PromoBlockVariationClassesProps,
+} from './promo-block.props';
 
 const PromoBlock = (props: PromoBlockProps): JSX.Element => {
   const { fields, params } = props;
@@ -52,24 +55,36 @@ const PromoBlock = (props: PromoBlockProps): JSX.Element => {
   };
 
   const variantChoice =
-    variation !== Variation.DEFAULT ? variationTwoClassesVariation : defaultClassesVariation;
+    variation !== Variation.DEFAULT
+      ? variationTwoClassesVariation
+      : defaultClassesVariation;
   if (fields) {
     return (
       <article
-        className={cn('component promo-block grid  columns-1 gap-6 align-middle sm:columns-12', [
-          `row-span-${variantChoice.row}`,
-        ])}
+        className={cn(
+          'component promo-block grid  columns-1 gap-6 align-middle sm:columns-12',
+          [`row-span-${variantChoice.row}`],
+        )}
       >
-        <Flex direction="column" justify="center" gap="4" className={variantChoice.copy}>
-          <h3>
+        <Flex
+          direction="column"
+          justify="center"
+          gap="4"
+          className={variantChoice.copy}
+        >
+          <h3 className="max-w-[22ch] text-3xl leading-tight">
             <Text field={heading} />
           </h3>
-          <RichText field={description} />
+          <RichText
+            className="max-w-[60ch] leading-relaxed"
+            field={description}
+          />
           <Flex
             gap="2"
             className={cn({
               'justify-end':
-                orientation === Orientation.IMAGE_RIGHT && variation === Variation.VERSION_TWO,
+                orientation === Orientation.IMAGE_RIGHT &&
+                variation === Variation.VERSION_TWO,
             })}
           >
             {link && (
@@ -80,7 +95,11 @@ const PromoBlock = (props: PromoBlockProps): JSX.Element => {
           </Flex>
         </Flex>
         <figure className={variantChoice.container}>
-          <ImageWrapper image={image} className={variantChoice.image} page={props.page} />
+          <ImageWrapper
+            image={image}
+            className={variantChoice.image}
+            page={props.page}
+          />
         </figure>
       </article>
     );

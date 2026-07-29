@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { AccordionBlockOneColumnTitleLeft } from '@/components/accordion-block/AccordionBlockOneColumnTitleLeft.dev';
+import type { AccordionProps } from '@/components/accordion-block/accordion-block.props';
 import {
   mockAccordionProps,
   mockAccordionPropsMinimal,
@@ -28,7 +29,7 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
         'data-testid': 'sitecore-text',
         className,
       },
-      field?.value
+      field?.value,
     );
   },
 }));
@@ -68,7 +69,11 @@ jest.mock('@/components/accordion-block/AccordionBlockItem.dev', () => ({
     child: { heading: { jsonValue: { value?: string } } };
     valuePrefix?: string;
   }) => (
-    <div data-testid="accordion-block-item" data-index={index} data-value-prefix={valuePrefix}>
+    <div
+      data-testid="accordion-block-item"
+      data-index={index}
+      data-value-prefix={valuePrefix}
+    >
       {child?.heading?.jsonValue?.value}
     </div>
   ),
@@ -85,7 +90,11 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
     variant?: string;
     isPageEditing?: boolean;
   }) => (
-    <button data-testid="editable-button" data-variant={variant} data-editing={isPageEditing}>
+    <button
+      data-testid="editable-button"
+      data-variant={variant}
+      data-editing={isPageEditing}
+    >
       {buttonLink?.value?.text}
     </button>
   ),
@@ -107,12 +116,12 @@ describe('AccordionBlockOneColumnTitleLeft Component', () => {
       .getAllByTestId('sitecore-text')
       .find((el) => el.textContent === 'Frequently Asked Questions');
     expect(heading).toHaveClass(
-      'max-w-screen-sm',
+      'max-w-[18ch]',
       'text-pretty',
       'font-light',
       'leading-tight',
       'tracking-tighter',
-      'antialiased'
+      'antialiased',
     );
   });
 
@@ -120,10 +129,15 @@ describe('AccordionBlockOneColumnTitleLeft Component', () => {
     render(<AccordionBlockOneColumnTitleLeft {...mockAccordionProps} />);
 
     expect(
-      screen.getByText('Find answers to common questions about our products and services.')
+      screen.getByText(
+        'Find answers to common questions about our products and services.',
+      ),
     ).toBeInTheDocument();
     expect(screen.getByTestId('editable-button')).toBeInTheDocument();
-    expect(screen.getByTestId('editable-button')).toHaveAttribute('data-variant', 'secondary');
+    expect(screen.getByTestId('editable-button')).toHaveAttribute(
+      'data-variant',
+      'secondary',
+    );
     expect(screen.getByText('Contact Support')).toBeInTheDocument();
   });
 
@@ -134,14 +148,18 @@ describe('AccordionBlockOneColumnTitleLeft Component', () => {
     expect(accordion).toHaveAttribute('data-type', 'multiple');
     expect(accordion).toHaveAttribute(
       'data-value',
-      'accordion-block-item-1,accordion-block-item-2,accordion-block-item-3,accordion-block-item-4'
+      'accordion-block-item-1,accordion-block-item-2,accordion-block-item-3,accordion-block-item-4',
     );
   });
 
   it('applies correct component structure and CSS classes', () => {
-    const { container } = render(<AccordionBlockOneColumnTitleLeft {...mockAccordionProps} />);
+    const { container } = render(
+      <AccordionBlockOneColumnTitleLeft {...mockAccordionProps} />,
+    );
 
-    const component = container.querySelector('[data-component="AccordionBlock"]');
+    const component = container.querySelector(
+      '[data-component="AccordionBlock"]',
+    );
     expect(component).toBeInTheDocument();
     expect(component).toHaveClass(
       '@container',
@@ -151,24 +169,30 @@ describe('AccordionBlockOneColumnTitleLeft Component', () => {
       'text-foreground',
       'border-b-2',
       'border-t-2',
-      'py-10'
+      'py-10',
     );
 
     const contentWrapper = container.querySelector(
-      '[data-component="AccordionBlockContentWrapper"]'
+      '[data-component="AccordionBlockContentWrapper"]',
     );
     expect(contentWrapper).toBeInTheDocument();
   });
 
   it('renders two-column grid layout on desktop', () => {
-    const { container } = render(<AccordionBlockOneColumnTitleLeft {...mockAccordionProps} />);
+    const { container } = render(
+      <AccordionBlockOneColumnTitleLeft {...mockAccordionProps} />,
+    );
 
-    const twoColumnGrid = container.querySelector('.\\@md\\:grid.\\@md\\:grid-cols-2');
+    const twoColumnGrid = container.querySelector(
+      '.\\@md\\:grid.\\@md\\:grid-cols-2',
+    );
     expect(twoColumnGrid).toBeInTheDocument();
   });
 
   it('shows primary section with correct responsive styling', () => {
-    const { container } = render(<AccordionBlockOneColumnTitleLeft {...mockAccordionProps} />);
+    const { container } = render(
+      <AccordionBlockOneColumnTitleLeft {...mockAccordionProps} />,
+    );
 
     const primarySection = container.querySelector('.bg-primary');
     expect(primarySection).toBeInTheDocument();
@@ -186,7 +210,7 @@ describe('AccordionBlockOneColumnTitleLeft Component', () => {
       'items-center',
       'gap-4',
       'p-7',
-      'text-center'
+      'text-center',
     );
   });
 
@@ -194,7 +218,13 @@ describe('AccordionBlockOneColumnTitleLeft Component', () => {
     render(<AccordionBlockOneColumnTitleLeft {...mockAccordionProps} />);
 
     const accordion = screen.getByTestId('accordion');
-    expect(accordion).toHaveClass('@md:gap-11', 'grid', 'w-full', 'gap-8', 'p-0');
+    expect(accordion).toHaveClass(
+      '@md:gap-11',
+      'grid',
+      'w-full',
+      'gap-8',
+      'p-0',
+    );
   });
 
   it('does not render description/button section when not in editing mode and no content', () => {
@@ -224,7 +254,7 @@ describe('AccordionBlockOneColumnTitleLeft Component', () => {
     };
 
     const { container } = render(
-      <AccordionBlockOneColumnTitleLeft {...propsWithoutDescriptionAndLink} />
+      <AccordionBlockOneColumnTitleLeft {...propsWithoutDescriptionAndLink} />,
     );
     const primarySection = container.querySelector('.bg-primary');
     expect(primarySection).not.toBeInTheDocument();
@@ -236,8 +266,12 @@ describe('AccordionBlockOneColumnTitleLeft Component', () => {
       params: { styles: 'custom-one-column-class' },
     };
 
-    const { container } = render(<AccordionBlockOneColumnTitleLeft {...propsWithCustomStyles} />);
-    const component = container.querySelector('[data-component="AccordionBlock"]');
+    const { container } = render(
+      <AccordionBlockOneColumnTitleLeft {...propsWithCustomStyles} />,
+    );
+    const component = container.querySelector(
+      '[data-component="AccordionBlock"]',
+    );
     expect(component).toHaveClass('custom-one-column-class');
   });
 
@@ -255,8 +289,11 @@ describe('AccordionBlockOneColumnTitleLeft Component', () => {
       rendering: { componentName: 'AccordionBlock' },
       isPageEditing: false,
     };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    render(<AccordionBlockOneColumnTitleLeft {...(propsWithoutFields as any)} />);
+    render(
+      <AccordionBlockOneColumnTitleLeft
+        {...(propsWithoutFields as unknown as AccordionProps)}
+      />,
+    );
 
     expect(screen.getByTestId('no-data-fallback')).toBeInTheDocument();
     expect(screen.getByText('No data for Accordion Block')).toBeInTheDocument();

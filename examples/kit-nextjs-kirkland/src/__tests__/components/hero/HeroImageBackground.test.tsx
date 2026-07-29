@@ -9,7 +9,11 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
   Text: ({ field, tag = 'span', className }: Record<string, unknown>) => {
     const TextTag = tag as keyof JSX.IntrinsicElements;
     const fieldValue = (field as { value?: string })?.value || '';
-    return React.createElement(TextTag, { className: className as string }, fieldValue);
+    return React.createElement(
+      TextTag,
+      { className: className as string },
+      fieldValue,
+    );
   },
 }));
 
@@ -28,7 +32,13 @@ jest.mock('@/components/image/ImageWrapper.dev', () => ({
 }));
 
 jest.mock('@/components/animated-section/AnimatedSection.dev', () => ({
-  Default: ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  Default: ({
+    children,
+    className,
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => (
     <div className={className} data-testid="animated-section">
       {children}
     </div>
@@ -36,7 +46,13 @@ jest.mock('@/components/animated-section/AnimatedSection.dev', () => ({
 }));
 
 jest.mock('@/components/forms/zipcode/ZipcodeSearchForm.dev', () => ({
-  Default: ({ placeholder, buttonText }: { placeholder: string; buttonText: string }) => (
+  Default: ({
+    placeholder,
+    buttonText,
+  }: {
+    placeholder: string;
+    buttonText: string;
+  }) => (
     <form data-testid="zipcode-form">
       <input placeholder={placeholder} />
       <button type="submit">{buttonText}</button>
@@ -98,7 +114,9 @@ describe('HeroImageBackground Component', () => {
 
     expect(screen.getByText('Welcome to Our Platform')).toBeInTheDocument();
     expect(
-      screen.getByText('Discover amazing features and services tailored for you.')
+      screen.getByText(
+        'Discover amazing features and services tailored for you.',
+      ),
     ).toBeInTheDocument();
   });
 
@@ -106,7 +124,50 @@ describe('HeroImageBackground Component', () => {
     render(<HeroImageBackground {...mockHeroProps} />);
 
     expect(screen.getByTestId('zipcode-form')).toBeInTheDocument();
-    expect(screen.getByText('Special Offer: Get 20% off on all services')).toBeInTheDocument();
+    expect(
+      screen.getByText('Special Offer: Get 20% off on all services'),
+    ).toBeInTheDocument();
     expect(screen.getByTestId('button-base')).toBeInTheDocument();
+  });
+
+  it('omits the automotive search form when no search destination is configured', () => {
+    const propsWithoutSearch = {
+      ...mockHeroProps,
+      fields: {
+        ...mockHeroProps.fields,
+        searchLink: {
+          value: {
+            href: '',
+            text: '',
+            linktype: 'internal',
+          },
+        },
+      },
+    };
+
+    render(<HeroImageBackground {...propsWithoutSearch} />);
+
+    expect(screen.queryByTestId('zipcode-form')).not.toBeInTheDocument();
+  });
+
+  it('keeps the search form visible for authors in editing mode', () => {
+    const editingPropsWithoutSearch = {
+      ...mockHeroProps,
+      isPageEditing: true,
+      fields: {
+        ...mockHeroProps.fields,
+        searchLink: {
+          value: {
+            href: '',
+            text: '',
+            linktype: 'internal',
+          },
+        },
+      },
+    };
+
+    render(<HeroImageBackground {...editingPropsWithoutSearch} />);
+
+    expect(screen.getByTestId('zipcode-form')).toBeInTheDocument();
   });
 });

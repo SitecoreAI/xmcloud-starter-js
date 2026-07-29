@@ -8,7 +8,9 @@ import { useMatchMedia } from '@/hooks/use-match-media';
 
 export const PromoImageMiddle: React.FC<PromoImageProps> = (props) => {
   const { fields, isPageEditing } = props;
-  const prefersReducedMotion = useMatchMedia('(prefers-reduced-motion: reduce)');
+  const prefersReducedMotion = useMatchMedia(
+    '(prefers-reduced-motion: reduce)',
+  );
 
   if (fields) {
     const { image, heading, description, link } = fields;
@@ -19,7 +21,7 @@ export const PromoImageMiddle: React.FC<PromoImageProps> = (props) => {
         data-component="Promo Image"
         className="@container @md:py-20 relative w-full overflow-hidden border-b-2 border-t-2 bg-black py-20 [.border-b-2+&]:border-t-0"
       >
-        <div className="relative mx-auto max-w-screen-xl px-8">
+        <div className="legal-content-shell relative">
           {(isPageEditing || heading?.value) && (
             <AnimatedSection
               direction="right"
@@ -30,7 +32,7 @@ export const PromoImageMiddle: React.FC<PromoImageProps> = (props) => {
             >
               <Text
                 tag="h2"
-                className="font-heading @xs:text-3xl @sm:text-4xl @lg:text-5xl text-primary-foreground text-pretty text-2xl"
+                className="legal-display-heading font-heading @xs:text-3xl @sm:text-4xl @lg:text-5xl text-primary-foreground text-pretty text-2xl"
                 field={heading}
               />
             </AnimatedSection>
@@ -75,7 +77,10 @@ export const PromoImageMiddle: React.FC<PromoImageProps> = (props) => {
                   delay={1200}
                 >
                   <div className="mt-6">
-                    <Button buttonLink={link} isPageEditing={isPageEditing}></Button>
+                    <Button
+                      buttonLink={link}
+                      isPageEditing={isPageEditing}
+                    ></Button>
                   </div>
                 </AnimatedSection>
               )}

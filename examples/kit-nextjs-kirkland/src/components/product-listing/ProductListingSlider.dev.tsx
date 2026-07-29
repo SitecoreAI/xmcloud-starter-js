@@ -26,27 +26,32 @@ export const ProductListingSlider: React.FC<ProductListingProps> = (props) => {
         return cn(
           'transition-opacity duration-150',
           activeCard !== null && activeCard !== productId ? 'opacity-60' : '',
-          activeCard === productId ? 'z-10' : ''
+          activeCard === productId ? 'z-10' : '',
         );
       } else {
         // Full motion version
         return cn(
           'transition-all duration-500 ease-in-out h-full',
-          activeCard !== null && activeCard !== productId ? 'opacity-50 scale-95 blur-[2px]' : '',
-          activeCard === productId ? 'scale-102 z-10' : ''
+          activeCard !== null && activeCard !== productId
+            ? 'opacity-50 scale-95 blur-[2px]'
+            : '',
+          activeCard === productId ? 'scale-102 z-10' : '',
         );
       }
     };
 
     return (
       <section
-        className={cn('@container transform-gpu border-b-2 border-t-2 [.border-b-2+&]:border-t-0', {
-          [props?.params?.styles]: props?.params?.styles,
-        })}
+        className={cn(
+          '@container transform-gpu border-b-2 border-t-2 [.border-b-2+&]:border-t-0',
+          {
+            [props?.params?.styles]: props?.params?.styles,
+          },
+        )}
         aria-labelledby="product-listing-slider-heading"
       >
         <div className="@md:py-20 @lg:py-28 py-12 ">
-          <div className="@xl:px-0 @md:pb-0 mx-auto max-w-screen-xl px-0 pb-10 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6">
+          <div className="legal-content-shell @md:pb-0 pb-10">
             <AnimatedSection
               direction="down"
               duration={400}
@@ -55,7 +60,12 @@ export const ProductListingSlider: React.FC<ProductListingProps> = (props) => {
               isPageEditing={isPageEditing}
             >
               <div>
-                <Text tag="h2" id="product-listing-slider-heading" className={cn('@md:w-1/2 w-full')} field={title?.jsonValue} />
+                <Text
+                  tag="h2"
+                  id="product-listing-slider-heading"
+                  className={cn('legal-display-heading @md:w-1/2 w-full')}
+                  field={title?.jsonValue}
+                />
               </div>
             </AnimatedSection>
           </div>

@@ -23,6 +23,7 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
   const { fields, isPageEditing } = props ?? {};
   const { logo, primaryNavigationLinks, headerContact } =
     fields?.data?.item ?? {};
+  const hasLogoImage = Boolean(logo?.jsonValue?.value?.src);
   const [isOpen, setIsOpen] = useState(false);
   const [sheetAnimationComplete, setSheetAnimationComplete] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -64,13 +65,13 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
         animate={{ opacity: visible ? 1 : 0 }}
         transition={{ duration: isReducedMotion ? 0 : 0.2 }}
         className={cn(
-          'bg-background/80 @container sticky top-0 z-50 flex h-[96px] w-full items-center justify-center border-b backdrop-blur-md',
+          'bg-background/80 @container sticky top-0 z-50 flex h-[88px] w-full items-center justify-center border-b backdrop-blur-md',
         )}
       >
-        <div className="@xl:px-8 relative mx-auto flex h-16 w-full max-w-screen-2xl items-center justify-between px-4">
+        <div className="legal-content-shell relative flex h-16 items-center justify-between">
           {/* Desktop Navigation */}
           <nav
-            className="@lg:flex @lg:flex-[2] z-10 hidden"
+            className="@[1200px]:flex @[1200px]:flex-[2] z-10 hidden"
             ref={navRef}
             aria-label="Primary navigation"
           >
@@ -94,7 +95,7 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
                               <Button
                                 variant="ghost"
                                 asChild
-                                className="font-body bg-transparent text-base font-medium hover:bg-transparent"
+                                className="font-body bg-transparent text-sm font-medium hover:bg-transparent"
                               >
                                 <CompatibleLink
                                   field={item.link?.jsonValue}
@@ -110,30 +111,44 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
               </div>
             </NavigationMenu>
           </nav>
-          <div className="absolute left-1/2 top-1/2 flex w-[176px] -translate-x-1/2 -translate-y-1/2 items-center justify-center [&_.image-container]:mx-auto [&_.image-container]:w-full">
+          <div className="absolute left-1/2 top-1/2 flex w-[160px] -translate-x-1/2 -translate-y-1/2 items-center justify-center [&_.image-container]:mx-auto [&_.image-container]:w-full">
             {!isPageEditing ? (
               <Link href="/" className="flex items-center justify-center">
+                {hasLogoImage ? (
+                  <ImageWrapper
+                    image={logo?.jsonValue}
+                    className="w-full object-contain"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    alt="Home"
+                    page={props.page}
+                  />
+                ) : (
+                  <span className="font-heading whitespace-nowrap text-xl font-medium leading-none tracking-tight">
+                    Kirkland &amp; Ellis
+                  </span>
+                )}
+              </Link>
+            ) : (
+              <div className="relative flex min-h-8 w-full items-center justify-center">
+                {!hasLogoImage && (
+                  <span className="font-heading pointer-events-none whitespace-nowrap text-xl font-medium leading-none tracking-tight">
+                    Kirkland &amp; Ellis
+                  </span>
+                )}
                 <ImageWrapper
                   image={logo?.jsonValue}
+                  wrapperClass={cn(!hasLogoImage && 'absolute inset-0 min-h-8')}
                   className="w-full object-contain"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   alt="Home"
                   page={props.page}
                 />
-              </Link>
-            ) : (
-              <ImageWrapper
-                image={logo?.jsonValue}
-                className="w-full object-contain"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                alt="Home"
-                page={props.page}
-              />
+              </div>
             )}
           </div>
           {/* Desktop CTA */}
           {headerContact?.jsonValue?.value && (
-            <div className="@lg:flex @lg:items-center @lg:justify-end @lg:flex-1 z-10 hidden">
+            <div className="@[1200px]:flex @[1200px]:items-center @[1200px]:justify-end @[1200px]:flex-1 z-10 hidden">
               <Button asChild className="font-heading text-base font-medium">
                 <CompatibleLink
                   field={headerContact.jsonValue}
@@ -144,7 +159,7 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
             </div>
           )}
           {/* Mobile Navigation */}
-          <div className="@lg:hidden z-10 flex flex-1 justify-end">
+          <div className="@[1200px]:hidden z-10 flex flex-1 justify-end">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <AnimatePresence>
                 {isOpen && (

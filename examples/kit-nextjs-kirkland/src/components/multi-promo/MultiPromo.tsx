@@ -38,21 +38,27 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
     });
 
     // Add mousewheel event listener and keyboard event listener
-    const debouncedHandleWheel = debounce({ delay: 100 }, (event: WheelEvent) => {
-      if (event.deltaX > 0) {
-        api.scrollNext();
-      } else if (event.deltaX < 0) {
-        api.scrollPrev();
-      }
-    });
+    const debouncedHandleWheel = debounce(
+      { delay: 100 },
+      (event: WheelEvent) => {
+        if (event.deltaX > 0) {
+          api.scrollNext();
+        } else if (event.deltaX < 0) {
+          api.scrollPrev();
+        }
+      },
+    );
 
-    const debouncedHandleKeyDown = debounce({ delay: 100 }, (event: KeyboardEvent) => {
-      if (event.key === 'ArrowLeft') {
-        api?.scrollPrev();
-      } else if (event.key === 'ArrowRight') {
-        api?.scrollNext();
-      }
-    });
+    const debouncedHandleKeyDown = debounce(
+      { delay: 100 },
+      (event: KeyboardEvent) => {
+        if (event.key === 'ArrowLeft') {
+          api?.scrollPrev();
+        } else if (event.key === 'ArrowRight') {
+          api?.scrollNext();
+        }
+      },
+    );
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
@@ -81,21 +87,21 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
         })}
         aria-labelledby={titleField?.value ? 'multi-promo-heading' : undefined}
       >
-        <div className="flex flex-col gap-4 group-[.is-inset]:px-4 sm:group-[.is-inset]:px-0 xl:flex-row xl:items-end xl:justify-between xl:gap-20">
+        <div className="legal-content-shell flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between xl:gap-20">
           {titleField && (
             <div className="flex-grow md:basis-[60] lg:basis-[50]">
               <Text
                 tag="h2"
                 id="multi-promo-heading"
                 field={titleField}
-                className="font-heading text-box-trim-both-baseline -ml-1 max-w-[20ch] text-pretty text-4xl font-normal leading-[1.1333] tracking-tighter antialiased sm:text-5xl md:max-w-[17.5ch] lg:text-6xl"
+                className="legal-display-heading font-heading text-box-trim-both-baseline -ml-1 max-w-[20ch] text-pretty text-4xl font-normal leading-[1.1333] tracking-tighter antialiased sm:text-5xl md:max-w-[18ch] lg:text-6xl"
               />
             </div>
           )}
           {descriptionField && (
             <div className="md:basis-[40] lg:basis-[50]">
               <RichText
-                className="text-body prose text-box-trim-both-baseline mt-6 max-w-[51.5ch] text-pretty text-lg leading-[1.444] tracking-tight antialiased"
+                className="text-body prose text-box-trim-both-baseline mt-6 max-w-[53ch] text-pretty text-lg leading-relaxed tracking-tight antialiased xl:mt-0"
                 field={descriptionField}
               />
             </div>
@@ -113,25 +119,27 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
                 loop: true,
                 skipSnaps: true,
               }}
-              className="relative -ml-4 -mr-4 overflow-hidden sm:ml-0 sm:group-[.is-inset]:-mr-8 md:group-[.is-inset]:-mr-16
+              className="legal-content-shell relative overflow-hidden sm:group-[.is-inset]:-mr-8 md:group-[.is-inset]:-mr-16
               2xl:group-[.is-inset]:-mr-24"
               ref={carouselRef}
             >
               <CarouselContent className="my-12 last:mb-0 sm:my-16 sm:-ml-8">
-                {children?.results?.map((item: MultiPromoItemProps, index: number) => (
-                  <CarouselItem
-                    key={index}
-                    className={cn(
-                      'min-w-[238px] max-w-[416px] basis-3/4 pl-4 transition-opacity duration-300 sm:basis-[45%] sm:pl-8 md:basis-[31%]',
-                      {
-                        [`lg:basis-[31%]`]: numColumns === '3',
-                        [`xl:basis-[23%]`]: numColumns === '4',
-                      }
-                    )}
-                  >
-                    <MultiPromoItem key={index} {...item} page={props.page} />
-                  </CarouselItem>
-                ))}
+                {children?.results?.map(
+                  (item: MultiPromoItemProps, index: number) => (
+                    <CarouselItem
+                      key={index}
+                      className={cn(
+                        'min-w-[238px] max-w-[416px] basis-3/4 pl-4 transition-opacity duration-300 sm:basis-[45%] sm:pl-8 md:basis-[31%]',
+                        {
+                          [`lg:basis-[31%]`]: numColumns === '3',
+                          [`xl:basis-[23%]`]: numColumns === '4',
+                        },
+                      )}
+                    >
+                      <MultiPromoItem key={index} {...item} page={props.page} />
+                    </CarouselItem>
+                  ),
+                )}
               </CarouselContent>
             </Carousel>
             <div className="sr-only" aria-live="polite" aria-atomic="true">

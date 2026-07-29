@@ -33,7 +33,7 @@ export const Default: React.FC<MultiPromoItemProps> = (props) => {
         <Text
           tag="h3"
           field={title}
-          className="font-heading text-box-trim-both text-2xl font-medium leading-snug tracking-tighter antialiased"
+          className="font-heading text-box-trim-both max-w-[24ch] text-2xl font-medium leading-snug tracking-tight antialiased"
         />
       )}
       {link && (

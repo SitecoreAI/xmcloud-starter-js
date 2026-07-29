@@ -26,7 +26,7 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
   const titleWrapperClasses =
     'w-full space-y-4 px-4 group-[.position-center]:text-center group-[.position-right]:text-right';
   const titleClasses =
-    'font-heading @md:text-7xl mx-auto max-w-[760px] text-pretty px-4 text-5xl text-box-trim-bottom-baseline';
+    'legal-display-heading font-heading @md:text-7xl mx-auto max-w-[760px] text-pretty px-4 text-5xl text-box-trim-bottom-baseline';
   const carouselContentClasses = '-ml-[100px] h-full items-stretch';
   const carouselItemClasses =
     '@md:basis-4/5 @lg:basis-2/3 pointer-events-none flex h-full basis-full flex-col justify-stretch pl-[100px] @md:max-w-1/2 mx-auto';
@@ -35,7 +35,7 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
   const backgroundTextWrapperClasses =
     'flex h-full w-full items-center justify-center transition-all duration-700 ease-in-out';
   const backgroundTextClasses =
-    'bg-primary-gradient text-fill-transparent text-[100px] @md:text-40-clamp bg-clip-text font-bold leading-none text-transparent';
+    'bg-primary-gradient text-fill-transparent text-[clamp(4.5rem,18vw,13.75rem)] bg-clip-text font-bold leading-none text-transparent';
   const mainImageClasses = 'relative z-0 h-auto w-full max-w-[860px] mx-auto';
   const controlsWrapperClasses = 'mt-8 flex items-center gap-4';
 

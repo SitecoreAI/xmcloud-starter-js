@@ -7,9 +7,17 @@ import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { cn } from '@/lib/utils';
 export const ImageCarouselEditMode = (
-  props: ImageCarouselProps & { componentName: string; showBackgroundText?: boolean }
+  props: ImageCarouselProps & {
+    componentName: string;
+    showBackgroundText?: boolean;
+  },
 ) => {
-  const { fields, isPageEditing, componentName, showBackgroundText = true } = props;
+  const {
+    fields,
+    isPageEditing,
+    componentName,
+    showBackgroundText = true,
+  } = props;
   const { title, imageItems } = fields?.data?.datasource || {};
   const { results: slides = [] } = imageItems || {};
   const containerClasses =
@@ -18,7 +26,9 @@ export const ImageCarouselEditMode = (
   if (fields) {
     return (
       <div
-        className={cn(containerClasses, { [props?.params?.styles]: props?.params?.styles })}
+        className={cn(containerClasses, {
+          [props?.params?.styles]: props?.params?.styles,
+        })}
         data-component="ImageCarouselEditMode"
         data-class-change
       >
@@ -26,7 +36,7 @@ export const ImageCarouselEditMode = (
           <Text
             tag="h2"
             field={title?.jsonValue}
-            className="font-heading @md:text-5xl mx-auto max-w-[760px] text-pretty text-3xl font-light leading-none tracking-normal antialiased group-[.position-center]:text-center group-[.position-right]:text-right"
+            className="legal-display-heading font-heading @md:text-5xl mx-auto max-w-[760px] text-pretty text-3xl font-light leading-none tracking-normal antialiased group-[.position-center]:text-center group-[.position-right]:text-right"
           />
         </div>
         <div className="mx-auto max-w-screen-xl space-y-6">
@@ -35,7 +45,10 @@ export const ImageCarouselEditMode = (
           </h3>
 
           {slides.map((slide, index) => (
-            <div key={index} className="overflow-hidden border-0 bg-transparent">
+            <div
+              key={index}
+              className="overflow-hidden border-0 bg-transparent"
+            >
               <div className="p-0">
                 <div className="flex flex-col items-stretch gap-4 p-4 md:flex-row">
                   {/* Image on the left */}
@@ -51,7 +64,9 @@ export const ImageCarouselEditMode = (
                   {showBackgroundText && (
                     <div className="flex flex-col items-center justify-center md:w-1/3">
                       <div className="text-center">
-                        <p className="text-primary-foreground/60 mb-2 text-sm">Background Text:</p>
+                        <p className="text-primary-foreground/60 mb-2 text-sm">
+                          Background Text:
+                        </p>
                         <Text
                           tag="p"
                           field={slide?.backgroundText?.jsonValue}
@@ -63,7 +78,9 @@ export const ImageCarouselEditMode = (
                   {/* Link button on the right */}
                   <div className="flex flex-col items-center justify-center md:w-1/3">
                     <div className="text-center">
-                      <p className="text-primary-foreground/60 mb-2 text-sm">Link:</p>
+                      <p className="text-primary-foreground/60 mb-2 text-sm">
+                        Link:
+                      </p>
                       {slide?.link?.jsonValue && (
                         <EditableButton
                           variant="secondary"

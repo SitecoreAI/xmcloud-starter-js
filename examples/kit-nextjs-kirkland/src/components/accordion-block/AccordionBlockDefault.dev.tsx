@@ -9,7 +9,8 @@ import { cn } from '@/lib/utils';
 export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
   const { fields, isPageEditing } = props;
 
-  const { heading, description, link, children } = fields?.data?.datasource ?? {};
+  const { heading, description, link, children } =
+    fields?.data?.datasource ?? {};
   const accordionItems = children?.results ?? [];
   const acordionItemValues = [
     ...accordionItems.map((_, index) => `accordion-block-item-${index + 1}`),
@@ -21,14 +22,16 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
         className={cn(
           '@container @md:py-16 @lg:py-20 border-b-2 border-t-2 py-10 [.border-b-2+&]:border-t-0',
           props?.params?.styles && {
-    [props.params.styles]: true,
-  }
+            [props.params.styles]: true,
+          },
         )}
         data-class-change
-        aria-labelledby={heading?.jsonValue?.value ? 'accordion-heading' : undefined}
+        aria-labelledby={
+          heading?.jsonValue?.value ? 'accordion-heading' : undefined
+        }
       >
         <div
-          className="@xl:px-0 mx-auto grid max-w-screen-xl gap-6 px-0 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6"
+          className="legal-content-shell mx-auto grid max-w-screen-xl gap-6 px-0 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6"
           data-component="AccordionBlockContentWrapper"
         >
           <div className="@lg:mb-0 mb-8">
@@ -36,7 +39,7 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
               <Text
                 tag="h2"
                 id="accordion-heading"
-                className="font-heading @md:text-6xl @lg:text-7xl max-w-screen-sm text-pretty text-5xl font-light leading-[1.1] tracking-tighter antialiased"
+                className="legal-display-heading font-heading @md:text-6xl @lg:text-7xl max-w-[18ch] text-pretty text-5xl font-light leading-[1.1] tracking-tighter antialiased"
                 field={heading?.jsonValue}
               />
             )}
@@ -49,12 +52,20 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
                 value={isPageEditing ? acordionItemValues : undefined} //force open all accordion items
                 onValueChange={isPageEditing ? () => {} : undefined} //prevent accordion item from closing
               >
-                {accordionItems.map((child: AccordionItemProps, index: number) => (
-                  <AccordionBlockItem key={index} index={index} child={child} />
-                ))}
+                {accordionItems.map(
+                  (child: AccordionItemProps, index: number) => (
+                    <AccordionBlockItem
+                      key={index}
+                      index={index}
+                      child={child}
+                    />
+                  ),
+                )}
               </Accordion>
             </div>
-            {(isPageEditing || description?.jsonValue?.value || link?.jsonValue?.value?.href) && (
+            {(isPageEditing ||
+              description?.jsonValue?.value ||
+              link?.jsonValue?.value?.href) && (
               <div className="bg-primary @sm:flex-row @sm:text-start @md:flex-col @md:text-center @lg:flex-row @lg:text-start mt-6 flex flex-col flex-nowrap items-center gap-4 p-7 text-center">
                 <Text
                   tag="p"

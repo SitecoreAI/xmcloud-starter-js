@@ -11,10 +11,22 @@ export const Default: React.FC<Container25252525Props> = (props) => {
 
   const { isEditing } = page.mode;
 
-  const col1Placeholder = getContainerPlaceholderProps('container-25-one', props.params);
-  const col2Placeholder = getContainerPlaceholderProps('container-25-two', props.params);
-  const col3Placeholder = getContainerPlaceholderProps('container-25-three', props.params);
-  const col4Placeholder = getContainerPlaceholderProps('container-25-four', props.params);
+  const col1Placeholder = getContainerPlaceholderProps(
+    'container-25-one',
+    props.params,
+  );
+  const col2Placeholder = getContainerPlaceholderProps(
+    'container-25-two',
+    props.params,
+  );
+  const col3Placeholder = getContainerPlaceholderProps(
+    'container-25-three',
+    props.params,
+  );
+  const col4Placeholder = getContainerPlaceholderProps(
+    'container-25-four',
+    props.params,
+  );
 
   const isEmptyPlaceholder =
     isContainerPlaceholderEmpty(rendering, col1Placeholder, col1) &&
@@ -26,7 +38,8 @@ export const Default: React.FC<Container25252525Props> = (props) => {
     return null;
   }
 
-  const excludeTopMargin = props?.params?.excludeTopMargin === '1' ? true : false;
+  const excludeTopMargin =
+    props?.params?.excludeTopMargin === '1' ? true : false;
 
   return (
     <section
@@ -35,18 +48,38 @@ export const Default: React.FC<Container25252525Props> = (props) => {
         [props.params.styles as string]: props?.params?.styles,
       })}
     >
-      <div className="w-full mx-auto max-w-[1760px] flex flex-wrap items-stretch">
+      <div className="legal-content-shell mx-auto flex w-full max-w-[1760px] flex-wrap items-stretch">
         <FlexItem>
-          <AppPlaceholder page={page} componentMap={componentMap} name={col1Placeholder.dynamicKey} rendering={rendering} />
+          <AppPlaceholder
+            page={page}
+            componentMap={componentMap}
+            name={col1Placeholder.dynamicKey}
+            rendering={rendering}
+          />
         </FlexItem>
         <FlexItem>
-          <AppPlaceholder page={page} componentMap={componentMap} name={col2Placeholder.dynamicKey} rendering={rendering} />
+          <AppPlaceholder
+            page={page}
+            componentMap={componentMap}
+            name={col2Placeholder.dynamicKey}
+            rendering={rendering}
+          />
         </FlexItem>
         <FlexItem>
-          <AppPlaceholder page={page} componentMap={componentMap} name={col3Placeholder.dynamicKey} rendering={rendering} />
+          <AppPlaceholder
+            page={page}
+            componentMap={componentMap}
+            name={col3Placeholder.dynamicKey}
+            rendering={rendering}
+          />
         </FlexItem>
         <FlexItem>
-          <AppPlaceholder page={page} componentMap={componentMap} name={col4Placeholder.dynamicKey} rendering={rendering} />
+          <AppPlaceholder
+            page={page}
+            componentMap={componentMap}
+            name={col4Placeholder.dynamicKey}
+            rendering={rendering}
+          />
         </FlexItem>
       </div>
     </section>
@@ -60,7 +93,7 @@ type FlexItemProps = {
 const FlexItem: React.FC<FlexItemProps> = (props) => {
   const { children } = props;
   return (
-    <div className="w-full p-4 mb-4 md:w-1/2 lg:w-1/4 flex flex-col items-start justify-start">
+    <div className="mb-4 flex w-full flex-col items-start justify-start p-4 md:w-1/2 lg:w-1/4">
       {children}
     </div>
   );

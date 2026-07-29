@@ -13,7 +13,15 @@ import { storeZipcodeInSession } from '@/utils/zipcode-storage';
 
 export const HeroImageBottom: React.FC<HeroProps> = (props) => {
   const { fields, isPageEditing } = props;
-  const { title, description, bannerText, bannerCTA, image, dictionary, searchLink } = fields || {};
+  const {
+    title,
+    description,
+    bannerText,
+    bannerCTA,
+    image,
+    dictionary,
+    searchLink,
+  } = fields || {};
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -31,6 +39,8 @@ export const HeroImageBottom: React.FC<HeroProps> = (props) => {
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
+    const hasConfiguredSearch =
+      isPageEditing || Boolean(searchLink?.value?.href);
 
     return (
       <section
@@ -45,7 +55,7 @@ export const HeroImageBottom: React.FC<HeroProps> = (props) => {
         >
           <div
             className={cn(
-              '@lg/herowrapper:max-w-[1216px] @lg/herowrapper:mx-10 @xl/herowrapper:mx-auto @md/herowrapper:pb-20 flex flex-col px-5 pb-8'
+              'legal-content-shell @md/herowrapper:pb-20 flex flex-col pb-8',
             )}
           >
             <div className="flex flex-col items-center group-[.position-left]:items-start group-[.position-right]:items-end">
@@ -59,7 +69,7 @@ export const HeroImageBottom: React.FC<HeroProps> = (props) => {
                 <Text
                   tag="h1"
                   field={title}
-                  className="font-heading @md/herowrapper:text-[clamp(3rem,6cqi,6rem)] relative -ml-[2px] max-w-[15ch] text-balance text-5xl font-light leading-tight"
+                  className="legal-display-heading font-heading @md/herowrapper:text-[clamp(3rem,6cqi,6rem)] relative -ml-[2px] max-w-[15ch] text-balance text-5xl font-light leading-tight"
                 />
               </AnimatedSection>
 
@@ -74,31 +84,33 @@ export const HeroImageBottom: React.FC<HeroProps> = (props) => {
                 {description && (
                   <Text
                     tag="p"
-                    className="@md/herowrapper:text-xl max-w-[32ch] text-pretty leading-tight"
+                    className="@md/herowrapper:text-xl max-w-[38ch] text-pretty leading-relaxed"
                     field={description}
                   />
                 )}
               </AnimatedSection>
 
               {/* Form */}
-              <AnimatedSection
-                direction="up"
-                isPageEditing={isPageEditing}
-                reducedMotion={prefersReducedMotion}
-                delay={400}
-                className="mt-6 w-full"
-              >
-                <ZipcodeSearchForm
-                  placeholder={dictionary.ZipPlaceholder || ''}
-                  buttonText={dictionary?.SubmitCTALabel || ''}
-                  onSubmit={(values) => {
-                    storeZipcodeInSession(values.zipcode);
-                    if (searchLink?.value?.href) {
-                      window.location.href = `${searchLink.value.href}`;
-                    }
-                  }}
-                />
-              </AnimatedSection>
+              {hasConfiguredSearch && (
+                <AnimatedSection
+                  direction="up"
+                  isPageEditing={isPageEditing}
+                  reducedMotion={prefersReducedMotion}
+                  delay={400}
+                  className="mt-6 w-full"
+                >
+                  <ZipcodeSearchForm
+                    placeholder={dictionary.ZipPlaceholder || ''}
+                    buttonText={dictionary?.SubmitCTALabel || ''}
+                    onSubmit={(values) => {
+                      storeZipcodeInSession(values.zipcode);
+                      if (searchLink?.value?.href) {
+                        window.location.href = `${searchLink.value.href}`;
+                      }
+                    }}
+                  />
+                </AnimatedSection>
+              )}
             </div>
           </div>
 
