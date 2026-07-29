@@ -8,6 +8,7 @@ import { Default as EmailSignupForm } from '@/components/forms/email/EmailSignup
 import { Default as FooterNavigationColumn } from './FooterNavigationColumn.dev';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
+import { FooterLogo } from './footer-logo.util';
 
 export const GlobalFooterDefault: React.FC<GlobalFooterProps> = (props) => {
   const { fields, isPageEditing } = props;
@@ -18,6 +19,7 @@ export const GlobalFooterDefault: React.FC<GlobalFooterProps> = (props) => {
     socialLinks,
     tagline,
     emailSubscriptionTitle,
+    footerLogo,
   } = fields.data.datasource ?? {};
 
   const footerRef = useRef<HTMLDivElement>(null);
@@ -75,23 +77,16 @@ export const GlobalFooterDefault: React.FC<GlobalFooterProps> = (props) => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Background logo - semi-transparent */}
-        <div
-          className="-z-1 pointer-events-none absolute inset-0 opacity-90"
-          aria-hidden="true"
-        >
-          <div className="flex h-full w-full items-end justify-center leading-none">
-            <div className="legal-footer-wordmark bg-primary-gradient text-fill-transparent text-50-clamp -mb-14 bg-clip-text font-bold leading-none text-transparent">
-              Kirkland
-            </div>
+            <FooterLogo
+              logo={footerLogo?.jsonValue}
+              isPageEditing={isPageEditing}
+              page={props.page}
+            />
           </div>
         </div>
 
         {/* Bottom footer with social icons and copyright */}
-        <div className="legal-content-shell @md:min-h-[300px] relative z-0 mt-8 flex flex-col justify-end py-8">
+        <div className="legal-content-shell relative z-0 flex flex-col justify-end py-8">
           <div className="@sm:flex-row flex flex-col items-center justify-between">
             {/* Social media icons */}
             <AnimatedHoverNav

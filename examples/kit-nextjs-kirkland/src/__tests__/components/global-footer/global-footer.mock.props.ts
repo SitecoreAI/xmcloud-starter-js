@@ -142,6 +142,16 @@ export const mockGlobalFooterProps: GlobalFooterProps = {
   fields: {
     data: {
       datasource: {
+        footerLogo: {
+          jsonValue: {
+            value: {
+              src: '/kirkland-footer-logo.svg',
+              alt: 'Kirkland & Ellis',
+              width: 300,
+              height: 72,
+            },
+          },
+        },
         footerNavLinks: {
           results: mockFooterNavigationLinks,
         },

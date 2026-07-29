@@ -12,6 +12,7 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
 import { Default as FooterNavigationColumn } from './FooterNavigationColumn.dev';
 import { useContainerQuery } from '@/hooks/use-container-query';
+import { FooterLogo } from './footer-logo.util';
 
 export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (
   props,
@@ -24,6 +25,7 @@ export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (
     socialLinks,
     tagline,
     emailSubscriptionTitle,
+    footerLogo,
   } = fields.data.datasource ?? {};
 
   const footerRef = useRef<HTMLDivElement>(null);
@@ -39,17 +41,6 @@ export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (
       >
         {/* Main footer content */}
         <div className="legal-content-shell relative">
-          <div
-            className=" @md:-bottom-[55px] @md:-right-[60px] @md:inset-0 @md:inset-unset pointer-events-none absolute inset-0 -bottom-[35px] z-0 opacity-20"
-            aria-hidden="true"
-            data-component="footer-logo"
-          >
-            <div className="@md:justify-end   flex h-full w-full items-end justify-center leading-none">
-              <div className="legal-footer-wordmark bg-dark-gradient text-fill-transparent text-50-clamp bg-clip-text text-center font-bold leading-none text-transparent">
-                Kirkland
-              </div>
-            </div>
-          </div>
           <div className="mx-auto pb-16 pt-12">
             <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[1fr,auto]">
               {/* Left section with heading and subscription */}
@@ -89,6 +80,11 @@ export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (
                     }}
                   />
                 </div>
+                <FooterLogo
+                  logo={footerLogo?.jsonValue}
+                  isPageEditing={isPageEditing}
+                  page={props.page}
+                />
               </div>
 
               {/* Right section with navigation links - using vertical AnimatedHoverNav */}

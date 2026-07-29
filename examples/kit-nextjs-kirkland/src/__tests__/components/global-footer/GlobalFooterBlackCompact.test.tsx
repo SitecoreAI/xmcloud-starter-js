@@ -9,7 +9,11 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
   Text: ({ field, tag = 'span', className }: Record<string, unknown>) => {
     const TextTag = tag as keyof JSX.IntrinsicElements;
     const fieldValue = (field as { value?: string })?.value || '';
-    return React.createElement(TextTag, { className: className as string }, fieldValue);
+    return React.createElement(
+      TextTag,
+      { className: className as string },
+      fieldValue,
+    );
   },
 }));
 
@@ -18,16 +22,39 @@ jest.mock('@/components/forms/email/EmailSignupForm.dev', () => ({
   Default: ({ fields }: Record<string, unknown>) => (
     <div data-testid="email-signup-form">
       <input
-        placeholder={(fields as Record<string, { value?: string }>)?.emailPlaceholder?.value}
+        placeholder={
+          (fields as Record<string, { value?: string }>)?.emailPlaceholder
+            ?.value
+        }
       />
-      <button>{(fields as Record<string, { value?: string }>)?.emailSubmitLabel?.value}</button>
+      <button>
+        {
+          (fields as Record<string, { value?: string }>)?.emailSubmitLabel
+            ?.value
+        }
+      </button>
     </div>
   ),
 }));
 
 jest.mock('@/components/global-footer/FooterNavigationColumn.dev', () => ({
   Default: ({ items }: { items?: unknown[] }) => (
-    <nav data-testid="footer-nav-column">{(items || []).length} navigation items</nav>
+    <nav data-testid="footer-nav-column">
+      {(items || []).length} navigation items
+    </nav>
+  ),
+}));
+
+jest.mock('@/components/global-footer/footer-logo.util', () => ({
+  FooterLogo: ({ logo }: { logo?: { value?: { src?: string } } }) => (
+    <div data-component="footer-logo">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        data-testid="footer-logo-image"
+        src={logo?.value?.src}
+        alt="Kirkland & Ellis"
+      />
+    </div>
   ),
 }));
 
@@ -61,7 +88,9 @@ jest.mock('@/hooks/use-container-query', () => ({
 
 describe('GlobalFooterBlackCompact Component', () => {
   it('renders without crashing', () => {
-    const { container } = render(<GlobalFooterBlackCompact {...mockGlobalFooterProps} />);
+    const { container } = render(
+      <GlobalFooterBlackCompact {...mockGlobalFooterProps} />,
+    );
     expect(container).toBeInTheDocument();
     expect(container.querySelector('footer')).toBeInTheDocument();
   });
@@ -72,6 +101,11 @@ describe('GlobalFooterBlackCompact Component', () => {
     expect(screen.getByTestId('footer-nav-column')).toBeInTheDocument();
     expect(screen.getByTestId('email-signup-form')).toBeInTheDocument();
     expect(screen.getByTestId('animated-hover-nav')).toBeInTheDocument();
+    expect(screen.getByTestId('footer-logo-image')).toHaveAttribute(
+      'src',
+      '/kirkland-footer-logo.svg',
+    );
+    expect(screen.queryByText('Kirkland')).not.toBeInTheDocument();
   });
 
   it('displays footer with vertical navigation on desktop', () => {

@@ -22,6 +22,7 @@ export type GlobalFooterFields = {
         tagline?: { jsonValue: Field<string> };
         emailSubscriptionTitle?: { jsonValue: Field<string> };
         footerCopyright?: { jsonValue: Field<string> };
+        footerLogo?: { jsonValue?: ImageField };
       };
     };
     dictionary: {
@@ -71,4 +72,3 @@ export type FooterNavigationLink = {
     jsonValue: LinkField;
   };
 };
-

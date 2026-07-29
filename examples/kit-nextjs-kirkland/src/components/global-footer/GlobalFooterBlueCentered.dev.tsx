@@ -11,6 +11,7 @@ import { Default as EmailSignupForm } from '@/components/forms/email/EmailSignup
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
 import { Default as FooterNavigationColumn } from './FooterNavigationColumn.dev';
+import { FooterLogo } from './footer-logo.util';
 
 export const GlobalFooterBlueCentered: React.FC<GlobalFooterProps> = (
   props,
@@ -23,6 +24,7 @@ export const GlobalFooterBlueCentered: React.FC<GlobalFooterProps> = (
     socialLinks,
     tagline,
     emailSubscriptionTitle,
+    footerLogo,
   } = fields.data.datasource ?? {};
 
   const footerRef = useRef<HTMLDivElement>(null);
@@ -34,17 +36,6 @@ export const GlobalFooterBlueCentered: React.FC<GlobalFooterProps> = (
         ref={footerRef}
         role="contentinfo"
       >
-        {/* Background logo - semi-transparent */}
-        <div
-          className="pointer-events-none absolute inset-0 z-0 opacity-90"
-          aria-hidden="true"
-        >
-          <div className="flex h-full w-full items-center justify-center leading-none">
-            <div className="legal-footer-wordmark bg-primary-gradient text-fill-transparent text-50-clamp bg-clip-text font-bold leading-none text-transparent">
-              Kirkland
-            </div>
-          </div>
-        </div>
         {/* Main footer content */}
         <div className="border-foreground relative border-b-2 py-16">
           <div className="legal-content-shell relative z-10">
@@ -91,6 +82,12 @@ export const GlobalFooterBlueCentered: React.FC<GlobalFooterProps> = (
                     }}
                   />
                 </div>
+                <FooterLogo
+                  logo={footerLogo?.jsonValue}
+                  isPageEditing={isPageEditing}
+                  page={props.page}
+                  align="center"
+                />
               </div>
             </div>
           </div>

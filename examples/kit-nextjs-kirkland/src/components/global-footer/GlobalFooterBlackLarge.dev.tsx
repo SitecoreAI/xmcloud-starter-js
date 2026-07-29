@@ -12,6 +12,7 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
 import { Default as FooterNavigationColumn } from './FooterNavigationColumn.dev';
 import { useContainerQuery } from '@/hooks/use-container-query';
+import { FooterLogo } from './footer-logo.util';
 
 export const GlobalFooterBlackLarge: React.FC<GlobalFooterProps> = (props) => {
   const { fields, isPageEditing } = props;
@@ -22,6 +23,7 @@ export const GlobalFooterBlackLarge: React.FC<GlobalFooterProps> = (props) => {
     socialLinks,
     tagline,
     emailSubscriptionTitle,
+    footerLogo,
   } = fields.data.datasource ?? {};
   const footerRef = useRef<HTMLDivElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
@@ -57,7 +59,7 @@ export const GlobalFooterBlackLarge: React.FC<GlobalFooterProps> = (props) => {
                   tag="p"
                 />
 
-                <div className="@md:mb-[100px] @sm:flex-row flex max-w-md flex-col gap-2">
+                <div className="@sm:flex-row flex max-w-md flex-col gap-2">
                   <EmailSignupForm
                     fields={{
                       buttonVariant: 'default',
@@ -76,16 +78,11 @@ export const GlobalFooterBlackLarge: React.FC<GlobalFooterProps> = (props) => {
                     }}
                   />
                 </div>
-                <div
-                  className="@md:bottom-0 @md:-right-[100px] @md:inset-unset pointer-events-none absolute inset-0 -z-10 opacity-30"
-                  aria-hidden="true"
-                >
-                  <div className="@md:justify-end flex h-full w-full items-end justify-center leading-none">
-                    <div className="legal-footer-wordmark bg-dark-gradient text-fill-transparent text-50-clamp @md:-mb-[90px] -mb-[60px] bg-clip-text text-center font-bold leading-none text-transparent">
-                      Kirkland
-                    </div>
-                  </div>
-                </div>
+                <FooterLogo
+                  logo={footerLogo?.jsonValue}
+                  isPageEditing={isPageEditing}
+                  page={props.page}
+                />
               </div>
 
               {/* Right section with navigation links - using vertical AnimatedHoverNav */}

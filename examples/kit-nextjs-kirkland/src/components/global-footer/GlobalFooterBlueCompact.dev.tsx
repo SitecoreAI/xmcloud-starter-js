@@ -8,6 +8,7 @@ import { Default as EmailSignupForm } from '@/components/forms/email/EmailSignup
 import { Default as FooterNavigationColumn } from './FooterNavigationColumn.dev';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
+import { FooterLogo } from './footer-logo.util';
 
 export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
   const { fields, isPageEditing } = props;
@@ -18,6 +19,7 @@ export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
     socialLinks,
     tagline,
     emailSubscriptionTitle,
+    footerLogo,
   } = fields.data.datasource ?? {};
 
   const footerRef = useRef<HTMLDivElement>(null);
@@ -29,19 +31,6 @@ export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
         ref={footerRef}
         role="contentinfo"
       >
-        {/* Background logo - semi-transparent */}
-        <div
-          className=" @md:inset-unset @md:-right-[100px] @md:bottom-0 pointer-events-none absolute inset-0 z-0 opacity-90"
-          data-component="footer-logo"
-          aria-hidden="true"
-        >
-          <div className="@md:justify-end flex h-full w-full items-end justify-center leading-none">
-            <div className="legal-footer-wordmark bg-primary-gradient text-fill-transparent text-50-clamp @md:-mb-[60px] -mb-[40px] bg-clip-text text-center font-bold leading-none text-transparent">
-              Kirkland
-            </div>
-          </div>
-        </div>
-
         {/* Main footer content */}
         <div className="border-primary-foreground py-16">
           <div className="legal-content-shell relative z-10">
@@ -84,6 +73,11 @@ export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
                       }}
                     />
                   </div>
+                  <FooterLogo
+                    logo={footerLogo?.jsonValue}
+                    isPageEditing={isPageEditing}
+                    page={props.page}
+                  />
                 </div>
               </div>
 
@@ -117,9 +111,6 @@ export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
             </div>
           </div>
         </div>
-
-        {/* Bottom footer with social icons and copyright */}
-        <div className="relative z-0 mx-auto block border-t-2   px-4 py-8"></div>
       </footer>
     );
   }
