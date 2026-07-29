@@ -30,6 +30,7 @@ Here's a quick overview of the major folders and their purpose:
     * basic-nextjs: [README](https://github.com/Sitecore/xmcloud-starter-js/tree/main/examples/basic-nextjs/README.md)
     * basic-spa: [README](https://github.com/Sitecore/xmcloud-starter-js/tree/main/examples/basic-spa/README.md)
     * kit-nextjs-article-starter: [README](https://github.com/Sitecore/xmcloud-starter-js/tree/main/examples/kit-nextjs-article-starter/README.md)
+    * kit-nextjs-kirkland: [README](examples/kit-nextjs-kirkland/README.md)
     * kit-nextjs-location-finder: [README](https://github.com/Sitecore/xmcloud-starter-js/blob/main/examples/kit-nextjs-location-finder/README.md)
     * kit-nextjs-product-listing: [README](https://github.com/Sitecore/xmcloud-starter-js/blob/main/examples/kit-nextjs-product-listing/README.md)
     * kit-nextjs-skate-park: [README](https://github.com/Sitecore/xmcloud-starter-js/blob/main/examples/kit-nextjs-skate-park/README.md)

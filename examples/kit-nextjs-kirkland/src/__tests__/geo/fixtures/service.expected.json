@@ -1,0 +1,20 @@
+{
+    "services": [
+        {
+            "name": "Mergers and Acquisitions",
+            "description": "Counsel for complex public and private mergers, acquisitions, divestitures, joint ventures, and strategic transactions.",
+            "category": "Transactional"
+        },
+        {
+            "name": "Litigation and Trial",
+            "description": "Representation in high-stakes commercial disputes, investigations, trials, and appeals across industries.",
+            "category": "Litigation"
+        },
+        {
+            "name": "Restructuring",
+            "description": "Strategic advice for companies, sponsors, creditors, and investors navigating financial distress and transformation.",
+            "category": "Restructuring"
+        }
+    ],
+    "lastModified": "2026-03-05T11:54:28Z"
+}
