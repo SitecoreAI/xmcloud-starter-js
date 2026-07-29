@@ -93,7 +93,6 @@ import * as ImageCarouselPreviewBelowdev from 'src/components/image-carousel/Ima
 import * as ImageCarouselLeftRightPreviewdev from 'src/components/image-carousel/ImageCarouselLeftRightPreview.dev';
 import * as ImageCarouselFullBleeddev from 'src/components/image-carousel/ImageCarouselFullBleed.dev';
 import * as ImageCarouselFeaturedImageLeftdev from 'src/components/image-carousel/ImageCarouselFeaturedImageLeft.dev';
-import * as ImageCarouselEditModedev from 'src/components/image-carousel/ImageCarouselEditMode.dev';
 import * as ImageCarouselDefaultdev from 'src/components/image-carousel/ImageCarouselDefault.dev';
 import * as ImageCarousel from 'src/components/image-carousel/ImageCarousel';
 import * as nextImageSrcdev from 'src/components/image/nextImageSrc.dev';
@@ -262,7 +261,6 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ImageCarouselLeftRightPreview', { ...ImageCarouselLeftRightPreviewdev }],
   ['ImageCarouselFullBleed', { ...ImageCarouselFullBleeddev }],
   ['ImageCarouselFeaturedImageLeft', { ...ImageCarouselFeaturedImageLeftdev }],
-  ['ImageCarouselEditMode', { ...ImageCarouselEditModedev }],
   ['ImageCarouselDefault', { ...ImageCarouselDefaultdev }],
   ['ImageCarousel', { ...ImageCarousel, componentType: 'client' }],
   ['nextImageSrc', { ...nextImageSrcdev }],

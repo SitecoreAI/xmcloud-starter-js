@@ -150,7 +150,7 @@ describe('HeroImageBackground Component', () => {
     expect(screen.queryByTestId('zipcode-form')).not.toBeInTheDocument();
   });
 
-  it('keeps the search form visible for authors in editing mode', () => {
+  it('does not expose an unconfigured search form in editing mode', () => {
     const editingPropsWithoutSearch = {
       ...mockHeroProps,
       isPageEditing: true,
@@ -168,6 +168,6 @@ describe('HeroImageBackground Component', () => {
 
     render(<HeroImageBackground {...editingPropsWithoutSearch} />);
 
-    expect(screen.getByTestId('zipcode-form')).toBeInTheDocument();
+    expect(screen.queryByTestId('zipcode-form')).not.toBeInTheDocument();
   });
 });

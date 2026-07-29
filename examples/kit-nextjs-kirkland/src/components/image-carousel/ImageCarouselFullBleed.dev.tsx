@@ -7,6 +7,7 @@ import { Text } from '@sitecore-content-sdk/nextjs';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import type { ImageCarouselProps } from './image-carousel.props';
 import { EditableButton } from '../button-component/ButtonComponent';
+import { linkIsValid } from '@/components/button-component/button-component.props';
 import { useMatchMedia } from '@/hooks/use-match-media';
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
 import {
@@ -15,7 +16,6 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel';
 import { NoDataFallback } from '@/utils/NoDataFallback';
-import { ImageCarouselEditMode } from './ImageCarouselEditMode.dev';
 import { cn } from '@/lib/utils';
 export const ImageCarouselFullBleed = (props: ImageCarouselProps) => {
   const { fields, isPageEditing } = props;
@@ -33,7 +33,7 @@ export const ImageCarouselFullBleed = (props: ImageCarouselProps) => {
   const controlsWrapperClasses =
     '@md:mt-0 mt-8 flex items-center justify-center';
   const carouselContentClasses = '!ml-0 h-full items-stretch';
-  const carouselItemClasses = 'pointer-events-none max-w-screen-2xl p-0 pl-0';
+  const carouselItemClasses = 'max-w-screen-2xl p-0 pl-0';
   const navButtonBaseClasses =
     'border-1 border-primary-foreground absolute top-1/2 z-20 -translate-y-1/2 transform';
   const prevButtonClasses = `${navButtonBaseClasses} @2xl:-translate-x-1/2 left-4 -ms-4`;
@@ -58,27 +58,29 @@ export const ImageCarouselFullBleed = (props: ImageCarouselProps) => {
   // Set up the carousel API and event listeners
   useEffect(() => {
     if (!api) return;
-    api.on('select', () => {
-      setCurrentIndex(api.selectedScrollSnap());
-    });
-    // Initial setup
-    setCurrentIndex(api.selectedScrollSnap());
-  }, [api]);
+
+    const syncCurrentIndex = () => {
+      const selectedIndex = api.selectedScrollSnap();
+      setCurrentIndex(
+        Math.max(0, Math.min(selectedIndex, Math.max(slides.length - 1, 0))),
+      );
+    };
+
+    api.on('select', syncCurrentIndex);
+    api.on('reInit', syncCurrentIndex);
+    syncCurrentIndex();
+
+    return () => {
+      api.off('select', syncCurrentIndex);
+      api.off('reInit', syncCurrentIndex);
+    };
+  }, [api, slides.length]);
 
   if (fields) {
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
 
-    if (isPageEditing) {
-      return (
-        <ImageCarouselEditMode
-          {...props}
-          componentName="ImageCarouselFullBleed"
-          showBackgroundText={false}
-        />
-      );
-    }
     return (
       <div
         className={cn(containerClasses, {
@@ -115,11 +117,12 @@ export const ImageCarouselFullBleed = (props: ImageCarouselProps) => {
                 role="group"
                 aria-label="Slideshow controls"
               >
-                {slides[currentIndex]?.link?.jsonValue && (
+                {linkIsValid(slides[currentIndex]?.link?.jsonValue) && (
                   <EditableButton
                     variant="secondary"
                     buttonLink={slides[currentIndex].link?.jsonValue}
                     className="mb-6"
+                    isPageEditing={isPageEditing}
                   />
                 )}
               </div>
@@ -145,6 +148,7 @@ export const ImageCarouselFullBleed = (props: ImageCarouselProps) => {
               loop: true,
               skipSnaps: false,
               containScroll: false, // Allow content to overflow
+              watchDrag: !isPageEditing,
             }}
             className="w-full overflow-visible"
             aria-labelledby={`${slideshowId}-title`}

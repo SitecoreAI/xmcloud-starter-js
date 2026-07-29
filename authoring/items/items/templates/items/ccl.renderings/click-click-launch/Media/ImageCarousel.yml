@@ -50,7 +50,9 @@ SharedFields:
   Value: 
 - ID: "a2f5d9df-8cba-4a1d-99eb-51acb94cb057"
   Hint: Page Editor Buttons
-  Value: "{2071B781-D609-4005-98C9-9518FE96F30C}"
+  Value: |
+    {31A3A929-C599-4DD3-91A6-F4A9487CC8B7}
+    {587F8FBD-E38F-4E2B-8DE4-1F474D9DDD00}
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
   Value: "{2836F40A-3A7D-4360-9BD5-1A26C56148EE}"

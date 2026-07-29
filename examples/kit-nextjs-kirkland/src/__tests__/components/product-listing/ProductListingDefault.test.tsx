@@ -11,7 +11,11 @@ import {
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
   Text: jest.fn(({ field, tag = 'span', className }) => {
     const Tag = tag as keyof JSX.IntrinsicElements;
-    return React.createElement(Tag, { className, 'data-testid': 'text-component' }, field?.value);
+    return React.createElement(
+      Tag,
+      { className, 'data-testid': 'text-component' },
+      field?.value,
+    );
   }),
 }));
 
@@ -32,7 +36,9 @@ jest.mock('@/components/product-listing/ProductListingCard.dev', () => ({
     product,
   }: {
     product: { productName: { jsonValue: { value: string } } };
-  }) => <div data-testid="product-card">{product.productName.jsonValue.value}</div>,
+  }) => (
+    <div data-testid="product-card">{product.productName.jsonValue.value}</div>
+  ),
 }));
 
 jest.mock('@/hooks/use-match-media', () => ({
@@ -47,23 +53,47 @@ describe('ProductListingDefault', () => {
   it('renders product listing with title and products', () => {
     render(<ProductListingDefault {...mockProductListingProps} />);
 
-    expect(screen.getByText('Explore Our Emergency Vehicle Fleet')).toBeInTheDocument();
+    expect(
+      screen.getByText('Explore Our Emergency Vehicle Fleet'),
+    ).toBeInTheDocument();
     expect(screen.getByText('Alaris Type I Ambulance')).toBeInTheDocument();
     expect(screen.getByText('Alaris Type III Ambulance')).toBeInTheDocument();
     expect(screen.getByText('Alaris Fire Truck Pro')).toBeInTheDocument();
   });
 
-  it('displays editor note in edit mode', () => {
+  it('keeps edit mode visually consistent without editor notes', () => {
     render(<ProductListingDefault {...mockProductListingPropsEditMode} />);
 
-    expect(
-      screen.getByText(/Only the first 3 selected products will be displayed/)
-    ).toBeInTheDocument();
-    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.queryByText(/Editor Note/i)).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.getAllByTestId('product-card')).toHaveLength(3);
+  });
+
+  it('does not render an empty listing in Page Builder', () => {
+    const emptyEditingProps = {
+      ...mockProductListingPropsEditMode,
+      fields: {
+        data: {
+          datasource: {
+            ...mockProductListingPropsEditMode.fields.data.datasource,
+            products: { targetItems: [] },
+          },
+        },
+      },
+    };
+
+    const { container } = render(
+      <ProductListingDefault {...emptyEditingProps} />,
+    );
+
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('renders NoDataFallback when fields are not provided', () => {
-    const propsWithoutFields = { ...mockProductListingProps, fields: null as never };
+    const propsWithoutFields = {
+      ...mockProductListingProps,
+      fields: null as never,
+    };
     render(<ProductListingDefault {...propsWithoutFields} />);
 
     expect(screen.getByTestId('no-data-fallback')).toBeInTheDocument();

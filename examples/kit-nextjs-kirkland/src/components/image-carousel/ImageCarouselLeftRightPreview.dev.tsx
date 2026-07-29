@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/carousel';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
-import { ImageCarouselEditMode } from './ImageCarouselEditMode.dev';
+import { linkIsValid } from '@/components/button-component/button-component.props';
 import { cn } from '@/lib/utils';
 export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
   const { fields, isPageEditing } = props;
@@ -31,7 +31,7 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
   const leftPreviewClasses = `${previewImageBaseClasses} left-0`;
   const rightPreviewClasses = `${previewImageBaseClasses} right-0`;
   const carouselItemClasses =
-    'pointer-events-none flex h-full basis-full flex-col justify-stretch md:basis-2/3';
+    'flex h-full basis-full flex-col justify-stretch md:basis-2/3';
   const controlsWrapperClasses = 'mt-8 flex items-center gap-4';
   const previewImageClasses = 'relative h-auto w-full cursor-pointer';
 
@@ -63,13 +63,22 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
   useEffect(() => {
     if (!api) return;
 
-    api.on('select', () => {
-      setCurrentIndex(api.selectedScrollSnap());
-    });
+    const syncCurrentIndex = () => {
+      const selectedIndex = api.selectedScrollSnap();
+      setCurrentIndex(
+        Math.max(0, Math.min(selectedIndex, Math.max(slides.length - 1, 0))),
+      );
+    };
 
-    // Initial setup
-    setCurrentIndex(api.selectedScrollSnap());
-  }, [api]);
+    api.on('select', syncCurrentIndex);
+    api.on('reInit', syncCurrentIndex);
+    syncCurrentIndex();
+
+    return () => {
+      api.off('select', syncCurrentIndex);
+      api.off('reInit', syncCurrentIndex);
+    };
+  }, [api, slides.length]);
 
   if (!fields) {
     return <NoDataFallback componentName="ImageCarousel" />;
@@ -79,16 +88,6 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
-
-    if (isPageEditing) {
-      return (
-        <ImageCarouselEditMode
-          {...props}
-          componentName="ImageCarouselLeftRightPreview"
-          showBackgroundText={false}
-        />
-      );
-    }
 
     return (
       <div
@@ -124,7 +123,9 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
           {/* Left preview image */}
           <button
             className={leftPreviewClasses}
-            onClick={() => api?.scrollPrev()}
+            onClick={() => {
+              if (!isPageEditing) api?.scrollPrev();
+            }}
             aria-label="Previous slide"
           >
             <ImageWrapper
@@ -141,6 +142,7 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
               loop: true,
               skipSnaps: false,
               containScroll: 'trimSnaps',
+              watchDrag: !isPageEditing,
             }}
             className="w-full overflow-visible"
             aria-labelledby={`${slideshowId}-title`}
@@ -182,7 +184,9 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
           {/* Right preview image */}
           <button
             className={rightPreviewClasses}
-            onClick={() => api?.scrollNext()}
+            onClick={() => {
+              if (!isPageEditing) api?.scrollNext();
+            }}
             aria-label="Next slide"
           >
             <ImageWrapper
@@ -213,10 +217,11 @@ export const ImageCarouselLeftRightPreview = (props: ImageCarouselProps) => {
               <ChevronLeft className="h-6 w-6" />
             </Button>
 
-            {slides[currentIndex]?.link?.jsonValue && (
+            {linkIsValid(slides[currentIndex]?.link?.jsonValue) && (
               <EditableButton
                 variant="default"
                 buttonLink={slides[currentIndex].link?.jsonValue}
+                isPageEditing={isPageEditing}
               />
             )}
 

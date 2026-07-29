@@ -30,17 +30,16 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
   }, []);
 
   if (fields) {
-    const needsBanner: boolean = isPageEditing
-      ? true
-      : bannerText?.value !== '' || bannerCTA?.value?.href !== ''
-        ? true
-        : false;
+    const hasBannerText = Boolean(bannerText?.value?.trim());
+    const hasBannerCta = Boolean(
+      bannerCTA?.value?.href || bannerCTA?.value?.text,
+    );
+    const needsBanner = hasBannerText || hasBannerCta;
 
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
-    const hasConfiguredSearch =
-      isPageEditing || Boolean(searchLink?.value?.href);
+    const hasConfiguredSearch = Boolean(searchLink?.value?.href);
 
     return (
       <section
@@ -143,7 +142,7 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
                       />
                     </AnimatedSection>
                   )}
-                  {bannerCTA && (
+                  {hasBannerCta && bannerCTA && (
                     <AnimatedSection
                       direction="up"
                       className="@[35rem]/herobanner:mt-0 mt-6"

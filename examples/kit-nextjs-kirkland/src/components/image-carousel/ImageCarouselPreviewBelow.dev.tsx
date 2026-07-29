@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/carousel';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
-import { ImageCarouselEditMode } from './ImageCarouselEditMode.dev';
+import { linkIsValid } from '@/components/button-component/button-component.props';
 import { cn } from '@/lib/utils';
 
 export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
@@ -28,8 +28,7 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
   const titleClasses =
     'legal-display-heading font-heading @md:text-7xl mx-auto max-w-[760px] text-pretty px-4 text-5xl font-light leading-none tracking-normal antialiased group-[.position-left]:text-left group-[.position-center]:text-center group-[.position-right]:text-right';
   const carouselWrapperClasses = 'relative mx-auto w-full max-w-screen-xl px-4';
-  const carouselItemClasses =
-    'pointer-events-none flex h-full basis-full flex-col justify-stretch';
+  const carouselItemClasses = 'flex h-full basis-full flex-col justify-stretch';
   const thumbnailWrapperClasses =
     'px-4 mt-4 @md:mt-0 @md:px-0 flex items-center justify-center gap-2 @md:gap-4 max-w-screen-xl mx-auto @md:-translate-y-1/2';
   const thumbnailImageClasses =
@@ -59,21 +58,29 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
   useEffect(() => {
     if (!mainApi) return;
 
-    mainApi.on('select', () => {
-      const index = mainApi.selectedScrollSnap();
+    const syncCurrentIndex = () => {
+      const selectedIndex = mainApi.selectedScrollSnap();
+      const index = Math.max(
+        0,
+        Math.min(selectedIndex, Math.max(slides.length - 1, 0)),
+      );
       setCurrentIndex(index);
-      if (thumbApi) {
-        thumbApi.scrollTo(index);
-      }
-    });
+      thumbApi?.scrollTo(index);
+    };
 
-    // Initial setup
-    setCurrentIndex(mainApi.selectedScrollSnap());
-  }, [mainApi, thumbApi]);
+    mainApi.on('select', syncCurrentIndex);
+    mainApi.on('reInit', syncCurrentIndex);
+    syncCurrentIndex();
+
+    return () => {
+      mainApi.off('select', syncCurrentIndex);
+      mainApi.off('reInit', syncCurrentIndex);
+    };
+  }, [mainApi, thumbApi, slides.length]);
 
   // Function to handle thumbnail click
   const handleThumbnailClick = (index: number) => {
-    if (mainApi) {
+    if (!isPageEditing && mainApi) {
       mainApi.scrollTo(index);
     }
   };
@@ -82,16 +89,6 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
-
-    if (isPageEditing) {
-      return (
-        <ImageCarouselEditMode
-          {...props}
-          componentName="ImageCarouselPreviewBelow"
-          showBackgroundText={false}
-        />
-      );
-    }
 
     return (
       <div
@@ -122,7 +119,7 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
             role="group"
             aria-label="Call to action"
           >
-            {slides[currentIndex]?.link?.jsonValue && (
+            {linkIsValid(slides[currentIndex]?.link?.jsonValue) && (
               <EditableButton
                 variant="default"
                 buttonLink={slides[currentIndex].link?.jsonValue}
@@ -157,6 +154,7 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
                 loop: true,
                 skipSnaps: false,
                 containScroll: 'trimSnaps',
+                watchDrag: !isPageEditing,
               }}
               className="w-full overflow-visible"
               aria-labelledby={`${slideshowId}-title`}
@@ -227,6 +225,7 @@ export const ImageCarouselPreviewBelow = (props: ImageCarouselProps) => {
                 loop: true,
                 dragFree: true,
                 slidesToScroll: 1,
+                watchDrag: !isPageEditing,
               }}
               className={'w-full max-w-[390px]'}
               data-component-part="thumbnail-carousel"

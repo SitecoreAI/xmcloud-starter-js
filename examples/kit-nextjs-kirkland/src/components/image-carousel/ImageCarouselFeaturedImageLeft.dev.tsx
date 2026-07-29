@@ -9,7 +9,7 @@ import { useMatchMedia } from '@/hooks/use-match-media';
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
-import { ImageCarouselEditMode } from './ImageCarouselEditMode.dev';
+import { linkIsValid } from '@/components/button-component/button-component.props';
 import { cn } from '@/lib/utils';
 import { m } from 'framer-motion';
 import { useContainerQuery } from '@/hooks/use-container-query';
@@ -84,16 +84,6 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
       ? props?.params?.styles.includes('position-')
       : false;
 
-    if (isPageEditing) {
-      return (
-        <ImageCarouselEditMode
-          {...props}
-          componentName="ImageCarouselFeaturedImageLeft"
-          showBackgroundText={false}
-        />
-      );
-    }
-
     // Define the dimensions for slides
     const activeSlideWidth = 941;
     const activeSlideHeight = 526;
@@ -150,14 +140,17 @@ export const ImageCarouselFeaturedImageLeft = (props: ImageCarouselProps) => {
                 aria-label="Slideshow controls"
               >
                 {slideOrder.length > 0 &&
-                  slides[slideOrder[nextSlideIndex === 1 ? 1 : 0]]?.link
-                    ?.jsonValue && (
+                  linkIsValid(
+                    slides[slideOrder[nextSlideIndex === 1 ? 1 : 0]]?.link
+                      ?.jsonValue,
+                  ) && (
                     <EditableButton
                       buttonLink={
                         slides[slideOrder[nextSlideIndex === 1 ? 1 : 0]].link
                           ?.jsonValue
                       }
                       className="mb-6"
+                      isPageEditing={isPageEditing}
                     />
                   )}
               </div>

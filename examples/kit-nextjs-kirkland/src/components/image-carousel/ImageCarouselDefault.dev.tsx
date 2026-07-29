@@ -1,236 +1,238 @@
 'use client';
 
-import { useState, useRef, useEffect, useId } from 'react';
-import { Button } from '@/components/ui/button';
+import { useEffect, useId, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Text } from '@sitecore-content-sdk/nextjs';
-import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
-import type { ImageCarouselProps } from './image-carousel.props';
-import { ButtonBase } from '../button-component/ButtonComponent';
-import { useMatchMedia } from '@/hooks/use-match-media';
+
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
+import { ButtonBase } from '@/components/button-component/ButtonComponent';
+import { linkIsValid } from '@/components/button-component/button-component.props';
+import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
+import { Button } from '@/components/ui/button';
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
-import { NoDataFallback } from '@/utils/NoDataFallback';
-import { ImageCarouselEditMode } from './ImageCarouselEditMode.dev';
+import { useMatchMedia } from '@/hooks/use-match-media';
 import { cn } from '@/lib/utils';
+import { NoDataFallback } from '@/utils/NoDataFallback';
+
+import type { ImageCarouselProps } from './image-carousel.props';
+
 export const ImageCarouselDefault = (props: ImageCarouselProps) => {
   const { fields, isPageEditing } = props;
-
-  // Common Tailwind class groups
-  const containerClasses =
-    '@container group bg-primary text-primary-foreground relative flex w-full flex-col items-center justify-center py-[99px]';
-  const titleWrapperClasses =
-    'w-full space-y-4 px-4 group-[.position-center]:text-center group-[.position-right]:text-right';
-  const titleClasses =
-    'legal-display-heading font-heading @md:text-7xl mx-auto max-w-[760px] text-pretty px-4 text-5xl text-box-trim-bottom-baseline';
-  const carouselContentClasses = '-ml-[100px] h-full items-stretch';
-  const carouselItemClasses =
-    '@md:basis-4/5 @lg:basis-2/3 pointer-events-none flex h-full basis-full flex-col justify-stretch pl-[100px] @md:max-w-1/2 mx-auto';
-  const slideContentClasses =
-    '@md:px-25 h-full w-full transform-gpu px-6 transition-all ease-in-out';
-  const backgroundTextWrapperClasses =
-    'flex h-full w-full items-center justify-center transition-all duration-700 ease-in-out';
-  const backgroundTextClasses =
-    'bg-primary-gradient text-fill-transparent text-[clamp(4.5rem,18vw,13.75rem)] bg-clip-text font-bold leading-none text-transparent';
-  const mainImageClasses = 'relative z-0 h-auto w-full max-w-[860px] mx-auto';
-  const controlsWrapperClasses = 'mt-8 flex items-center gap-4';
-
   const { title, imageItems } = fields?.data?.datasource || {};
   const { results: slides = [] } = imageItems || {};
 
-  // State for tracking current slide
   const [currentIndex, setCurrentIndex] = useState(0);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [api, setApi] = useState<any>(null);
-
+  const [api, setApi] = useState<CarouselApi>();
   const slideshowId = useId();
   const isReducedMotion = useMatchMedia('(prefers-reduced-motion: reduce)');
   const liveRegionRef = useRef<HTMLDivElement>(null);
 
-  // Update the live region when the current slide changes
   useEffect(() => {
-    if (liveRegionRef.current && api && slides && slides.length > 0) {
-      const currentSlide = slides[currentIndex];
-      liveRegionRef.current.textContent = `Showing slide ${currentIndex + 1} of ${slides?.length || 0}: ${
-        currentSlide.backgroundText?.jsonValue?.value
-      }.`;
+    if (!api || !slides.length) {
+      setCurrentIndex(0);
+      return;
     }
-  }, [currentIndex, slides, api]);
 
-  // Set up the carousel API and event listeners
-  useEffect(() => {
-    if (!api) return;
-
-    // Hide background text when slide change starts
-    api.on('select', () => {
-      setCurrentIndex(api.selectedScrollSnap());
-    });
-
-    // Initial setup
-    setCurrentIndex(api.selectedScrollSnap());
-  }, [api]);
-
-  if (fields) {
-    // Render stacked list in edit mode
-    if (isPageEditing) {
-      return (
-        <ImageCarouselEditMode
-          {...props}
-          componentName="ImageCarouselDefault"
-        />
+    const syncCurrentIndex = () => {
+      const selectedIndex = api.selectedScrollSnap();
+      setCurrentIndex(
+        Math.max(0, Math.min(selectedIndex, Math.max(slides.length - 1, 0))),
       );
-    }
+    };
 
-    const hasPagesPositionStyles: boolean = props?.params?.styles
-      ? props?.params?.styles.includes('position-')
-      : false;
+    api.on('select', syncCurrentIndex);
+    api.on('reInit', syncCurrentIndex);
+    syncCurrentIndex();
 
-    // Normal carousel view for non-edit mode
-    return (
-      <div
-        className={cn(containerClasses, {
-          'position-center': !hasPagesPositionStyles,
-          [props?.params?.styles]: props?.params?.styles,
-        })}
-        data-component="ImageCarouselDefault"
-      >
-        <AnimatedSection
-          direction="up"
-          isPageEditing={isPageEditing}
-          reducedMotion={isReducedMotion}
-        >
-          <div className={titleWrapperClasses}>
-            <Text tag="h2" field={title?.jsonValue} className={titleClasses} />
-          </div>
-        </AnimatedSection>
+    return () => {
+      api.off('select', syncCurrentIndex);
+      api.off('reInit', syncCurrentIndex);
+    };
+  }, [api, slides.length]);
 
-        {/* Screen reader only live region to announce slide changes */}
-        <div
-          ref={liveRegionRef}
-          className="sr-only"
-          aria-live="polite"
-          aria-atomic="true"
-        ></div>
+  useEffect(() => {
+    if (!liveRegionRef.current || !slides.length) return;
 
-        <div className="w-full" data-component-part="carousel wrapper">
-          <Carousel
-            setApi={setApi}
-            opts={{
-              align: 'center',
-              loop: true,
-              skipSnaps: false,
-              containScroll: 'trimSnaps',
-            }}
-            className="w-full overflow-visible"
-            aria-labelledby={`${slideshowId}-title`}
-            data-component-part="carousel"
-          >
-            <div id={`${slideshowId}-title`} className="sr-only">
-              Featured Content Slideshow, {currentIndex + 1} of{' '}
-              {slides?.length || 0}
-            </div>
+    const currentSlide = slides[currentIndex];
+    liveRegionRef.current.textContent = `Showing slide ${currentIndex + 1} of ${
+      slides.length
+    }: ${currentSlide?.backgroundText?.jsonValue?.value || ''}.`;
+  }, [currentIndex, slides]);
 
-            <CarouselContent
-              className={carouselContentClasses}
-              data-component-part="carousel content"
-            >
-              {slides?.map((slide, index) => (
-                <CarouselItem
-                  key={index}
-                  className={carouselItemClasses}
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label={`${slide?.backgroundText?.jsonValue?.value || ''}, ${
-                    index === currentIndex ? 'current slide' : ''
-                  }`}
-                  tabIndex={index === currentIndex ? 0 : -1}
-                  data-component-part="carousel item"
-                >
-                  <div
-                    className={`${slideContentClasses} ${
-                      index === currentIndex ? 'scale-100' : 'scale-95'
-                    }`}
-                  >
-                    {slide?.backgroundText?.jsonValue && (
-                      <div
-                        className={backgroundTextWrapperClasses}
-                        style={{
-                          opacity: index === currentIndex ? 1 : 0,
-                          filter:
-                            index === currentIndex ? 'blur(0px)' : 'blur(10px)',
-                          transform:
-                            index === currentIndex ? 'scale(1)' : 'scale(0.3)',
-                          transitionDelay: '200ms',
-                        }}
-                      >
-                        <Text
-                          tag="p"
-                          field={slide?.backgroundText?.jsonValue}
-                          className={backgroundTextClasses}
-                        />
-                      </div>
-                    )}
-                  </div>
-                  <ImageWrapper
-                    image={slide.image?.jsonValue}
-                    className={mainImageClasses}
-                    page={props.page}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
-
-        <AnimatedSection
-          direction="up"
-          isPageEditing={isPageEditing}
-          reducedMotion={isReducedMotion}
-        >
-          <div
-            className={controlsWrapperClasses}
-            role="group"
-            aria-label="Slideshow controls"
-          >
-            <Button
-              variant="secondary"
-              size="icon"
-              onClick={() => api?.scrollPrev()}
-              aria-label="Previous slide"
-              aria-controls={`${slideshowId}-title`}
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </Button>
-
-            {slides[currentIndex]?.link?.jsonValue && (
-              <ButtonBase
-                variant="secondary"
-                buttonLink={slides[currentIndex].link?.jsonValue}
-              />
-            )}
-
-            <Button
-              variant="secondary"
-              size="icon"
-              onClick={() => api?.scrollNext()}
-              aria-label="Next slide"
-              aria-controls={`${slideshowId}-title`}
-            >
-              <ChevronRight className="h-6 w-6" />
-            </Button>
-          </div>
-        </AnimatedSection>
-
-        {/* Keyboard navigation instructions for screen readers */}
-        <div className="sr-only">
-          Use left and right arrow keys to navigate between slides.
-        </div>
-      </div>
-    );
+  if (!fields) {
+    return <NoDataFallback componentName="ImageCarousel" />;
   }
-  return <NoDataFallback componentName="ImageCarousel" />;
+
+  const hasPagesPositionStyles = Boolean(
+    props.params.styles?.includes('position-'),
+  );
+  const currentSlide = slides[currentIndex];
+  const canNavigate = slides.length > 1;
+
+  return (
+    <section
+      className={cn(
+        'component image-carousel @container group relative w-full overflow-hidden bg-primary py-[clamp(3.5rem,8vw,6.5rem)] text-primary-foreground',
+        {
+          'position-center': !hasPagesPositionStyles,
+          [props.params.styles || '']: Boolean(props.params.styles),
+        },
+      )}
+      data-class-change
+      data-component="ImageCarouselDefault"
+    >
+      <div className="legal-content-shell">
+        <AnimatedSection
+          direction="up"
+          isPageEditing={isPageEditing}
+          reducedMotion={isReducedMotion}
+        >
+          <Text
+            id={`${slideshowId}-heading`}
+            tag="h2"
+            field={title?.jsonValue}
+            className="legal-display-heading max-w-[18ch] text-pretty text-[clamp(2rem,5.25cqw,4.75rem)] font-light leading-[0.98] tracking-[-0.025em] group-[.position-center]:mx-auto group-[.position-center]:text-center group-[.position-right]:ml-auto group-[.position-right]:text-right"
+          />
+        </AnimatedSection>
+      </div>
+
+      <div
+        ref={liveRegionRef}
+        className="sr-only"
+        aria-live="polite"
+        aria-atomic="true"
+      />
+
+      {slides.length > 0 && (
+        <>
+          <div
+            className="mt-[clamp(2rem,5vw,4.25rem)] w-full overflow-hidden"
+            data-component-part="carousel-wrapper"
+          >
+            <Carousel
+              setApi={setApi}
+              opts={{
+                align: 'center',
+                containScroll: 'trimSnaps',
+                loop: canNavigate,
+                skipSnaps: false,
+                watchDrag: !isPageEditing,
+              }}
+              className="w-full"
+              aria-labelledby={`${slideshowId}-heading`}
+              data-component-part="carousel"
+            >
+              <CarouselContent
+                className="-ml-4 items-stretch"
+                data-component-part="carousel-content"
+              >
+                {slides.map((slide, index) => {
+                  const isActive = index === currentIndex;
+
+                  return (
+                    <CarouselItem
+                      key={slide.id || index}
+                      className="@md:basis-[78%] @lg:basis-[68%] @xl:basis-[62%] basis-[88%] pl-4"
+                      role="group"
+                      aria-roledescription="slide"
+                      aria-label={`Slide ${index + 1} of ${slides.length}${
+                        isActive ? ', current slide' : ''
+                      }`}
+                      aria-hidden={!isActive && !isPageEditing}
+                      tabIndex={isActive ? 0 : -1}
+                      data-component-part="carousel-item"
+                    >
+                      <div
+                        className={cn(
+                          'relative aspect-[16/9] min-h-[300px] overflow-hidden bg-black transition-[opacity,transform] duration-500',
+                          isActive
+                            ? 'scale-100 opacity-100'
+                            : 'scale-[0.965] opacity-45',
+                        )}
+                      >
+                        <ImageWrapper
+                          image={slide.image?.jsonValue}
+                          wrapperClass="absolute inset-0 h-full w-full"
+                          className="h-full w-full object-cover"
+                          page={props.page}
+                        />
+                        <div
+                          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/5"
+                          aria-hidden="true"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 z-10 p-[clamp(1.5rem,4cqw,3.5rem)]">
+                          <Text
+                            tag="p"
+                            field={slide.backgroundText?.jsonValue}
+                            className="font-heading max-w-full break-words text-[clamp(2.35rem,7cqw,6.75rem)] font-light leading-[0.86] tracking-[-0.035em] text-white"
+                          />
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+            </Carousel>
+          </div>
+
+          <div className="legal-content-shell">
+            <AnimatedSection
+              direction="up"
+              isPageEditing={isPageEditing}
+              reducedMotion={isReducedMotion}
+            >
+              <div className="mt-7 flex flex-wrap items-center justify-between gap-5">
+                <div
+                  className="flex items-center gap-3"
+                  role="group"
+                  aria-label="Carousel controls"
+                >
+                  <Button
+                    variant="secondary"
+                    size="icon"
+                    onClick={() => api?.scrollPrev()}
+                    disabled={!canNavigate}
+                    aria-label="Previous slide"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </Button>
+
+                  <p
+                    className="min-w-[5.5rem] text-center text-sm font-medium tracking-[0.16em]"
+                    aria-hidden="true"
+                  >
+                    {String(currentIndex + 1).padStart(2, '0')} /{' '}
+                    {String(slides.length).padStart(2, '0')}
+                  </p>
+
+                  <Button
+                    variant="secondary"
+                    size="icon"
+                    onClick={() => api?.scrollNext()}
+                    disabled={!canNavigate}
+                    aria-label="Next slide"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </Button>
+                </div>
+
+                {linkIsValid(currentSlide?.link?.jsonValue) && (
+                  <ButtonBase
+                    variant="secondary"
+                    buttonLink={currentSlide.link.jsonValue}
+                    isPageEditing={isPageEditing}
+                  />
+                )}
+              </div>
+            </AnimatedSection>
+          </div>
+        </>
+      )}
+    </section>
+  );
 };

@@ -8,7 +8,7 @@ describe('AnimatedSection', () => {
     render(
       <AnimatedSection>
         <div>Test Content</div>
-      </AnimatedSection>
+      </AnimatedSection>,
     );
     expect(screen.getByText('Test Content')).toBeInTheDocument();
   });
@@ -17,9 +17,23 @@ describe('AnimatedSection', () => {
     render(
       <AnimatedSection className="custom-class">
         <div>Test Content</div>
-      </AnimatedSection>
+      </AnimatedSection>,
     );
     const container = screen.getByText('Test Content').parentElement;
     expect(container).toHaveClass('custom-class');
+  });
+
+  it('keeps content visible in Page Builder before intersection', () => {
+    render(
+      <AnimatedSection isPageEditing>
+        <div>Editable Content</div>
+      </AnimatedSection>,
+    );
+
+    expect(screen.getByText('Editable Content').parentElement).toHaveStyle({
+      opacity: '1',
+      transform: 'translate(0, 0)',
+      transition: 'none',
+    });
   });
 });

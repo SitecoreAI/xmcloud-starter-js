@@ -15,6 +15,9 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
   const acordionItemValues = [
     ...accordionItems.map((_, index) => `accordion-block-item-${index + 1}`),
   ];
+  const hasLink = Boolean(
+    link?.jsonValue?.value?.href || link?.jsonValue?.value?.text,
+  );
   if (fields) {
     return (
       <section
@@ -63,16 +66,14 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
                 )}
               </Accordion>
             </div>
-            {(isPageEditing ||
-              description?.jsonValue?.value ||
-              link?.jsonValue?.value?.href) && (
+            {(description?.jsonValue?.value || hasLink) && (
               <div className="bg-primary @sm:flex-row @sm:text-start @md:flex-col @md:text-center @lg:flex-row @lg:text-start mt-6 flex flex-col flex-nowrap items-center gap-4 p-7 text-center">
                 <Text
                   tag="p"
                   className="text-primary-foreground font-heading text-lg font-light"
                   field={description?.jsonValue}
                 />
-                {link?.jsonValue && (
+                {hasLink && link?.jsonValue && (
                   <EditableButton
                     variant="secondary"
                     buttonLink={link.jsonValue}

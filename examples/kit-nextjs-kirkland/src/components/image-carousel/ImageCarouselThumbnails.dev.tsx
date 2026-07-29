@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/carousel';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
-import { ImageCarouselEditMode } from './ImageCarouselEditMode.dev';
+import { linkIsValid } from '@/components/button-component/button-component.props';
 
 export const ImageCarouselThumbnails = (props: ImageCarouselProps) => {
   const { fields, isPageEditing } = props;
@@ -59,36 +59,34 @@ export const ImageCarouselThumbnails = (props: ImageCarouselProps) => {
   useEffect(() => {
     if (!api) return;
 
-    api.on('select', () => {
-      const index = api.selectedScrollSnap();
+    const syncCurrentIndex = () => {
+      const selectedIndex = api.selectedScrollSnap();
+      const index = Math.max(
+        0,
+        Math.min(selectedIndex, Math.max(slides.length - 1, 0)),
+      );
       setCurrentIndex(index);
+      thumbnailApi?.scrollTo(index);
+    };
 
-      // Sync thumbnail carousel
-      if (thumbnailApi) {
-        thumbnailApi.scrollTo(index);
-      }
-    });
+    api.on('select', syncCurrentIndex);
+    api.on('reInit', syncCurrentIndex);
+    syncCurrentIndex();
 
-    // Initial setup
-    setCurrentIndex(api.selectedScrollSnap());
-  }, [api, thumbnailApi]);
+    return () => {
+      api.off('select', syncCurrentIndex);
+      api.off('reInit', syncCurrentIndex);
+    };
+  }, [api, thumbnailApi, slides.length]);
 
   // Handle thumbnail click
   const handleThumbnailClick = (index: number) => {
-    if (api) {
+    if (!isPageEditing && api) {
       api.scrollTo(index);
     }
   };
 
   if (fields) {
-    if (isPageEditing) {
-      return (
-        <ImageCarouselEditMode
-          {...props}
-          componentName="ImageCarouselThumbnails"
-        />
-      );
-    }
     return (
       <div
         className={containerClasses}
@@ -128,6 +126,7 @@ export const ImageCarouselThumbnails = (props: ImageCarouselProps) => {
                 loop: true,
                 skipSnaps: false,
                 containScroll: 'trimSnaps',
+                watchDrag: !isPageEditing,
               }}
               className="mb-4 w-full"
               aria-labelledby={`${slideshowId}-title`}
@@ -145,7 +144,7 @@ export const ImageCarouselThumbnails = (props: ImageCarouselProps) => {
                 {slides.map((slide, index) => (
                   <CarouselItem
                     key={index}
-                    className="pointer-events-none flex h-full basis-full flex-col justify-stretch"
+                    className="flex h-full basis-full flex-col justify-stretch"
                     role="group"
                     aria-roledescription="slide"
                     aria-label={`${slide?.backgroundText?.jsonValue?.value || ''}, ${
@@ -207,6 +206,7 @@ export const ImageCarouselThumbnails = (props: ImageCarouselProps) => {
                 loop: true,
                 dragFree: true,
                 containScroll: 'trimSnaps',
+                watchDrag: !isPageEditing,
               }}
               className="w-full"
             >
@@ -243,10 +243,11 @@ export const ImageCarouselThumbnails = (props: ImageCarouselProps) => {
           reducedMotion={isReducedMotion}
         >
           <div className="mt-8 flex items-center justify-center">
-            {slides[currentIndex]?.link?.jsonValue && (
+            {linkIsValid(slides[currentIndex]?.link?.jsonValue) && (
               <EditableButton
                 variant="secondary"
                 buttonLink={slides[currentIndex].link?.jsonValue}
+                isPageEditing={isPageEditing}
               />
             )}
           </div>

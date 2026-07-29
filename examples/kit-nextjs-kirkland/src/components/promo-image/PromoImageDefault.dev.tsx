@@ -14,7 +14,7 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
 
   if (fields) {
     const { image, heading, description, link } = fields;
-    const hasLink = isPageEditing || link?.value?.href;
+    const hasLink = Boolean(link?.value?.href || link?.value?.text);
 
     return (
       <section
