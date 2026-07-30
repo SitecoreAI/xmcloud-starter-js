@@ -11,10 +11,17 @@ export const Default: React.FC<RichTextBlockProps> = (props) => {
     <span className="is-empty-hint">Rich text</span>
   );
   const id = props.params.RenderingIdentifier;
+  const cssStyles = [props.params.Styles, props.params.CSSStyles]
+    .find((value): value is string => typeof value === 'string')
+    ?.trim();
   if (fields) {
     return (
       <article
-        className={cn('component rich-text', props.params.styles?.trimEnd())}
+        className={cn(
+          'component rich-text',
+          props.params.styles?.trimEnd(),
+          cssStyles,
+        )}
         id={id ? id : undefined}
       >
         <div className="component-content">{text}</div>

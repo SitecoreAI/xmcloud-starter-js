@@ -44,7 +44,7 @@ SharedFields:
     
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: "/sitecore/templates/Project/sitecore-demo-1/Components/Page Content/Article Header"
+  Value: "/sitecore/templates/Project/click-click-launch/Components/Page Content/Article Header"
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0

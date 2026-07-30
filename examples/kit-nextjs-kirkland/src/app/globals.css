@@ -275,3 +275,105 @@
     font-size: 1rem;
     line-height: 1.625;
 }
+
+/*
+ * Editorial body treatment for article and long-form legal copy. This is
+ * scoped to RichTextBlock so utility components and navigation are unaffected.
+ */
+.legal-article-body {
+    width: 100%;
+    max-width: 46rem;
+    margin-inline: auto;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 3vw, 2rem);
+}
+
+.legal-article-body .component-content {
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+    line-height: 1.8;
+    overflow-wrap: break-word;
+}
+
+.legal-article-body
+    .component-content
+    :is(p, ul, ol, blockquote, figure, table) {
+    margin-block: 1.25rem;
+}
+
+.legal-article-body .component-content :is(h2, h3, h4) {
+    max-width: 24ch;
+    margin-block: 2.75rem 1rem;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.legal-article-body .component-content h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.legal-article-body .component-content h3 {
+    font-size: clamp(1.65rem, 3vw, 2.125rem);
+}
+
+.legal-article-body .component-content h4 {
+    font-size: clamp(1.35rem, 2.25vw, 1.625rem);
+}
+
+.legal-article-body .component-content > p:first-child,
+.legal-article-body .component-content > .ck-content > p:first-child {
+    margin-block: 0 1.75rem;
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 1.8vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+}
+
+.legal-article-body .component-content :is(ul, ol) {
+    padding-left: 1.5rem;
+}
+
+.legal-article-body .component-content ul {
+    list-style: disc;
+}
+
+.legal-article-body .component-content ol {
+    list-style: decimal;
+}
+
+.legal-article-body .component-content li + li {
+    margin-top: 0.5rem;
+}
+
+.legal-article-body .component-content a {
+    color: var(--color-accent);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.2em;
+}
+
+.legal-article-body .component-content blockquote {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1.5rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    line-height: 1.4;
+}
+
+.legal-article-body .component-content :is(img, video) {
+    width: 100%;
+    height: auto;
+    margin-block: 2rem;
+}
+
+.legal-article-body .component-content > :first-child,
+.legal-article-body .component-content > .ck-content > :first-child {
+    margin-top: 0;
+}
+
+.legal-article-body .component-content > :last-child,
+.legal-article-body .component-content > .ck-content > :last-child {
+    margin-bottom: 0;
+}
