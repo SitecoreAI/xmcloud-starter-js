@@ -132,10 +132,6 @@ export const PageHeaderDefault: React.FC<
                   className="@md/headerwrapper:row-start-2 @md/headerwrapper:row-end-4 @md/headerwrapper:col-start-2 @md/headerwrapper:col-end-3 @md/headerwrapper:self-end @md/headerwrapper:justify-self-end @md/headerwrapper:mt-auto relative w-full"
                   data-component-part="page-header-image"
                 >
-                  {/* Centered Line */}
-                  <div className="@md/headerwrapper:block absolute bottom-0 left-1/2 top-0 mx-auto hidden w-full -translate-x-[50%]">
-                    <div className="bg-foreground absolute -bottom-[100vw] -top-[100vw] right-[50%] block w-[2px] -translate-x-[50%]"></div>
-                  </div>
                   {/* Image */}
                   <AnimatedSection
                     reducedMotion={prefersReducedMotion}
@@ -149,10 +145,6 @@ export const PageHeaderDefault: React.FC<
                       page={props.page}
                     />
                   </AnimatedSection>
-                  {/* Right Line */}
-                  <div className="absolute bottom-0 right-0 top-0">
-                    <div className="@md/headerwrapper:bg-foreground absolute -bottom-[100vw] -top-[100vw] right-0 block w-[2px] bg-gradient-to-t from-white"></div>
-                  </div>
                 </div>
               )}
             </div>

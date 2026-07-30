@@ -1289,7 +1289,7 @@ export const FeaturesSection19 = (props: FeatureSectionProps): JSX.Element => {
             <AccordionItem
               value={feature.id}
               key={feature.id}
-              className="flex flex-col md:flex-row border border-b-0 md:border-b md:border-e-0 md:last:border-e last:border-b md:data-[state=open]:basis-full"
+              className="flex flex-col md:flex-row md:data-[state=open]:basis-full"
             >
               <AccordionTrigger noIcon className="px-10 py-8 cursor-pointer hover:no-underline">
                 <div className="flex md:flex-col items-center gap-6 w-full md:h-full">

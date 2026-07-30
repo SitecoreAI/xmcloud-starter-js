@@ -38,6 +38,34 @@ for the lawyer profile header.
 | `locations.png` | Locations page hero | City skyline at blue hour seen through a modern office |
 | `about.png` | About page hero | Historic stone colonnade integrated with modern glass architecture |
 
+## Current Sitecore assignment checklist
+
+Every current Kirkland page without a configured primary visual already has a
+matching file in this folder. Upload these files to Content Hub without
+renaming them, then assign them as follows:
+
+| Page or component | File | Sitecore target |
+| --- | --- | --- |
+| About | `about.png` | Add to the landing-page visual selected in Page Builder |
+| Careers | `careers.png` | Add to the landing-page visual selected in Page Builder |
+| Lawyers | `lawyers-landing.png` | Add to the landing-page visual selected in Page Builder |
+| Locations | `locations.png` | Add to the landing-page visual selected in Page Builder |
+| News and Insights | `news-insights.png` | Add to the landing-page visual selected in Page Builder |
+| Social Commitment | `social-commitment.png` | Add to the landing-page visual selected in Page Builder |
+| Services | `services-landing.png` | Services Header → `imageRequired` |
+| Litigation | `service-litigation.png` | Practice Header → `imageRequired`; reuse for the Services carousel item → `image` |
+| Mergers and Acquisitions | `service-mergers-acquisitions.png` | Practice Header → `imageRequired`; reuse for the Services carousel item → `image` |
+| Private Equity | `service-private-equity.png` | Practice Header → `imageRequired`; reuse for the Services carousel item → `image` |
+| Restructuring | `service-restructuring.png` | Practice Header → `imageRequired`; reuse for the Services carousel item → `image` |
+| BlackRock/Meta article | `news-blackrock-meta-data-center.png` | Article Header → `imageRequired` |
+| PAI/Pasubio article | `news-pai-pasubio-refinancing.png` | Article Header → `imageRequired` |
+| UK NSI Act article | `news-uk-nsi-act.png` | Article Header → `imageRequired` |
+
+The article component displays images at 16:9 and the default page header at
+30:19. The landscape files include crop-safe framing for both uses.
+Assign the same file to the page item's `pageThumbnail` field so cards and
+search results also have a 16:9 visual.
+
 ## Lawyer image notice
 
 The lawyer profile assets are non-identifying, AI-generated placeholders. They
@@ -48,4 +76,7 @@ or client-facing launch.
 
 ## Logo
 
-An official logo file is not required for the demo to function because the front end has a text fallback. For the most authentic brand presentation, upload an approved Kirkland wordmark—preferably SVG from the firm or its brand kit. Do not use an AI-generated imitation of the logo.
+Upload an approved Kirkland wordmark—preferably SVG from the firm or its brand
+kit—and assign it to the editable header and footer logo fields. Empty logo
+fields remain available in Page Builder without rendering an imitation
+wordmark on the public site.

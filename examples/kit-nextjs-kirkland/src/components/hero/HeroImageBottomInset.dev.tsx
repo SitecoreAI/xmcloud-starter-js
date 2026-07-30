@@ -53,15 +53,6 @@ export const HeroImageBottomInset: React.FC<HeroProps> = (props) => {
             [props?.params?.styles]: props?.params?.styles,
           })}
         >
-          {/* Line */}
-          <div
-            className={cn(
-              '@[1376px]/herowrapper:max-w-[1312px] @sm/herowrapper:max-w-[calc(100%-(theme(spacing.32)))] absolute bottom-0 left-1/2 top-0 mx-auto w-full -translate-x-[50%]',
-            )}
-          >
-            <div className="bg-foreground group-[.position-left]:@[1376px]/herowrapper:left-28 group-[.position-right]:@[1376px]/herowrapper:right-28 absolute bottom-0 right-[50%] top-0 block w-[2px] -translate-x-[50%] group-[.position-left]:left-12 group-[.position-left]:right-auto group-[.position-right]:right-12"></div>
-          </div>
-
           <div
             className={cn(
               'legal-content-shell @md/herowrapper:pb-16 relative z-10 flex flex-col pb-8',
@@ -127,7 +118,7 @@ export const HeroImageBottomInset: React.FC<HeroProps> = (props) => {
           <div className="@[1376px]/herowrapper:max-w-[1312px] @sm/herowrapper:max-w-[calc(100%-(theme(spacing.32)))] relative z-10 mx-auto w-full overflow-hidden">
             <ImageWrapper
               image={image}
-              wrapperClass="max-h-[560px] relative w-full aspect-[144/56] before:block before:w-full before:absolute before:-top-[1px] before:left-0 before:right-0 before:h-[1px] before:bg-foreground before:z-10"
+              wrapperClass="max-h-[560px] relative w-full aspect-[144/56]"
               className="absolute aspect-[144/56] w-full object-cover"
               priority={true}
               loading="eager"

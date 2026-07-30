@@ -2,13 +2,20 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { PageHeaderFiftyFifty } from '@/components/page-header/PageHeaderFiftyFifty.dev';
-import { mockPageHeaderProps, mockPageHeaderPropsWithStyles } from './page-header.mock.props';
+import {
+  mockPageHeaderProps,
+  mockPageHeaderPropsWithStyles,
+} from './page-header.mock.props';
 
 // Mock dependencies
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
   Text: jest.fn(({ field, tag = 'span', className }) => {
     const Tag = tag as keyof JSX.IntrinsicElements;
-    return React.createElement(Tag, { className, 'data-testid': 'text-component' }, field?.value);
+    return React.createElement(
+      Tag,
+      { className, 'data-testid': 'text-component' },
+      field?.value,
+    );
   }),
   RichText: jest.fn(({ field, className }) => (
     <div
@@ -48,7 +55,11 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
 jest.mock('@/components/image/ImageWrapper.dev', () => ({
   Default: ({ image }: { image: { value: { src: string; alt: string } } }) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img data-testid="image-wrapper" src={image.value.src} alt={image.value.alt} />
+    <img
+      data-testid="image-wrapper"
+      src={image.value.src}
+      alt={image.value.alt}
+    />
   ),
 }));
 
@@ -74,26 +85,44 @@ describe('PageHeaderFiftyFifty', () => {
   });
 
   it('renders 50-50 layout with title and image', () => {
-    render(<PageHeaderFiftyFifty {...mockPageHeaderProps} isPageEditing={false} />);
+    const { container } = render(
+      <PageHeaderFiftyFifty {...mockPageHeaderProps} isPageEditing={false} />,
+    );
 
-    expect(screen.getByText('Advanced Emergency Response Vehicles')).toBeInTheDocument();
+    expect(
+      screen.getByText('Advanced Emergency Response Vehicles'),
+    ).toBeInTheDocument();
     expect(screen.getByTestId('richtext-component')).toBeInTheDocument();
     expect(screen.getByTestId('image-wrapper')).toHaveAttribute(
       'src',
-      '/images/alaris-ambulance-fleet.jpg'
+      '/images/alaris-ambulance-fleet.jpg',
     );
+    expect(
+      Array.from(container.querySelectorAll('[class]'))
+        .map((element) => element.className)
+        .join(' '),
+    ).not.toContain('-top-[100vw]');
   });
 
   it('renders buttons in 50-50 layout', () => {
-    render(<PageHeaderFiftyFifty {...mockPageHeaderProps} isPageEditing={false} />);
+    render(
+      <PageHeaderFiftyFifty {...mockPageHeaderProps} isPageEditing={false} />,
+    );
 
-    expect(screen.getByTestId('button-default')).toHaveTextContent('Explore Our Fleet');
-    expect(screen.getByTestId('button-secondary')).toHaveTextContent('Contact Sales');
+    expect(screen.getByTestId('button-default')).toHaveTextContent(
+      'Explore Our Fleet',
+    );
+    expect(screen.getByTestId('button-secondary')).toHaveTextContent(
+      'Contact Sales',
+    );
   });
 
   it('applies custom styles when provided', () => {
     const { container } = render(
-      <PageHeaderFiftyFifty {...mockPageHeaderPropsWithStyles} isPageEditing={false} />
+      <PageHeaderFiftyFifty
+        {...mockPageHeaderPropsWithStyles}
+        isPageEditing={false}
+      />,
     );
 
     expect(screen.getByText('Command & Control Solutions')).toBeInTheDocument();

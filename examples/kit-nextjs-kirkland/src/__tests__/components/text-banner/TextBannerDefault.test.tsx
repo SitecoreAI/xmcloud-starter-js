@@ -81,6 +81,7 @@ describe('TextBannerDefault', () => {
 
     const section = container.querySelector('section');
     expect(section).toHaveClass('custom-style');
+    expect(section).not.toHaveClass('border-t-2', 'border-b-2');
   });
 
   it('renders without description field', () => {

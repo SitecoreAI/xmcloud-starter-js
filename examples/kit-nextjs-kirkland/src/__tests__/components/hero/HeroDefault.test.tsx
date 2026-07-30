@@ -90,6 +90,10 @@ describe('HeroDefault Component', () => {
   it('renders without crashing', () => {
     const { container } = render(<HeroDefault {...mockHeroProps} />);
     expect(container.querySelector('section')).toBeInTheDocument();
+    expect(container.innerHTML).not.toContain('h-[2px]');
+    expect(container.innerHTML).not.toContain(
+      'grid-rows-[52px_auto_2px_auto_auto]',
+    );
   });
 
   it('displays all main content sections', () => {

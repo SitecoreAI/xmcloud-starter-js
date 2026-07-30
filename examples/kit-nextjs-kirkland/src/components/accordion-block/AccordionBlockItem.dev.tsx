@@ -16,7 +16,7 @@ export const AccordionBlockItem = ({
     <AccordionItem
       key={index}
       value={`${valuePrefix}-${index + 1}`}
-      className="border-foreground border-b p-0"
+      className="p-0"
     >
       <AccordionTrigger className="font-heading flex min-w-0 w-full justify-between gap-4 py-4 text-left text-base font-medium">
         {child?.heading?.jsonValue && (

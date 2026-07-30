@@ -79,12 +79,16 @@ describe('PageHeaderBlueText', () => {
   });
 
   it('renders page header with blue text styling and buttons', () => {
-    render(<PageHeaderBlueText {...mockPageHeaderProps} isPageEditing={false} />);
+    const { container } = render(
+      <PageHeaderBlueText {...mockPageHeaderProps} isPageEditing={false} />,
+    );
 
     expect(screen.getByText('Advanced Emergency Response Vehicles')).toBeInTheDocument();
     expect(screen.getByTestId('richtext-component')).toBeInTheDocument();
     expect(screen.getByTestId('button-outline')).toHaveTextContent('Explore Our Fleet');
     expect(screen.getByTestId('button-secondary')).toHaveTextContent('Contact Sales');
+    expect(container.innerHTML).not.toContain('-top-[100vw]');
+    expect(container.innerHTML).not.toContain('w-[2px]');
   });
 
   it('renders background image with overlay content', () => {

@@ -34,7 +34,7 @@ export const TextBannerTextTop: React.FC<TextBannerProps> = (props) => {
         data-component="TextBanner"
         data-class-change
         className={cn(
-          'bg-background text-foreground border-foreground group relative w-full border-b-2 border-t-2 [.border-b-2+&]:border-t-0',
+          'bg-background text-foreground group relative w-full',
           {
             'position-left': !hasPagesPositionStyles,
             [props?.params?.styles as string]: props?.params?.styles,

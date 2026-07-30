@@ -113,7 +113,7 @@ export const HeroImageRight: React.FC<HeroProps> = (props) => {
           </div>
 
           {/* Image */}
-          <div className="@md/herowrapper:w-1/2 before:bg-foreground @md/herowrapper:before:w-[2px] @md/herowrapper:before:h-full @md/herowrapper:before:-left-[2px] @md/herowrapper:before:top-0 @md/herowrapper:before:bottom-0 relative before:absolute before:-top-[2px] before:left-0 before:right-0 before:z-10 before:block before:h-[2px] before:w-full">
+          <div className="@md/herowrapper:w-1/2 relative">
             <ImageWrapper
               image={image}
               wrapperClass="max-h-[900px] relative w-full aspect-square @md/herowrapper:aspect-auto @md/herowrapper:absolute @md/herowrapper:top-0 @md/herowrapper:right-0 @md/herowrapper:bottom-0 @md/herowrapper:left-0 "

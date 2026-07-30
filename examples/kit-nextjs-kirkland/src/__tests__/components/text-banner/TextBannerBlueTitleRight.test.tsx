@@ -47,6 +47,7 @@ describe('TextBannerBlueTitleRight', () => {
 
     const section = container.querySelector('section');
     expect(section).toHaveClass('bg-primary');
+    expect(section).not.toHaveClass('border-t-2', 'border-b-2');
   });
 
   it('renders heading and description with right-aligned title', () => {

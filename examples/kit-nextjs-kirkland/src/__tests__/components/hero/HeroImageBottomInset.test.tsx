@@ -91,6 +91,10 @@ describe('HeroImageBottomInset Component', () => {
     const { container } = render(<HeroImageBottomInset {...mockHeroProps} />);
     expect(container.querySelector('section')).toBeInTheDocument();
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+    expect(screen.getByTestId('image-wrapper')).not.toHaveClass(
+      'before:h-[1px]',
+    );
+    expect(container.innerHTML).not.toContain('w-[2px]');
   });
 
   it('displays all content elements', () => {

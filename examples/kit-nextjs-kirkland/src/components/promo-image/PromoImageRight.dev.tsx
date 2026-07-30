@@ -19,7 +19,7 @@ export const PromoImageRight: React.FC<PromoImageProps> = (props) => {
     return (
       <section
         data-component="Promo Image"
-        className="@container relative w-full overflow-hidden border-b-2 border-t-2 [.border-b-2+&]:border-t-0"
+        className="@container relative w-full overflow-hidden"
       >
         <div className="@md:flex-row @md:min-h-[500px] flex flex-col">
           <div className="@md:w-1/2 @[1216px]:pl-0 @lg:px-12  @[1216px]:pr-[113px] text-primary-foreground flex w-full flex-col justify-center px-8 py-12">

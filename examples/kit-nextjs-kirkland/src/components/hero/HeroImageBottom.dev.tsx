@@ -118,7 +118,7 @@ export const HeroImageBottom: React.FC<HeroProps> = (props) => {
           <div className="w-full">
             <ImageWrapper
               image={image}
-              wrapperClass="relative w-full aspect-[144/56] before:block before:w-full before:absolute before:-top-[1px] before:left-0 before:right-0 before:h-[1px] before:bg-foreground before:z-10 overflow-hidden"
+              wrapperClass="relative w-full aspect-[144/56] overflow-hidden"
               className="absolute aspect-[144/56] w-full object-cover"
               priority={true}
               loading="eager"

@@ -34,7 +34,6 @@ export const TailwindContainer = (): JSX.Element => {
   return (
     <>
       <div className="component conatiner container-default col-12 col-12 container mx-6 mb-4 mt-4 lg:mx-auto lg:mx-auto lg:grow lg:basis-0"></div>
-      <div className="bg-linear-to-b bg-brand-gray95 border-t my-8 border-t-md text-center border-brand-purple from-brand-purple to-white"></div>
     </>
   );
 };

@@ -59,10 +59,7 @@ const QuestionAccordionItem = (props: QuestionAccordionItemProps) => {
   switch (props.type) {
     case 'bordered':
       return (
-        <AccordionItem
-          value={props.q.id}
-          className={`border-gray-300 first:border-t ${props.className}`}
-        >
+        <AccordionItem value={props.q.id} className={props.className}>
           <AccordionTrigger className="flex-row-reverse justify-end py-6 px-2 text-base cursor-pointer">
             <ContentSdkText field={props.q.question?.jsonValue} />
           </AccordionTrigger>
@@ -73,7 +70,7 @@ const QuestionAccordionItem = (props: QuestionAccordionItemProps) => {
       );
     case 'boxed':
       return (
-        <AccordionItem value={props.q.id} className={`border last:border ${props.className}`}>
+        <AccordionItem value={props.q.id} className={props.className}>
           <AccordionTrigger className="px-8">
             <ContentSdkText field={props.q.question?.jsonValue} />
           </AccordionTrigger>
@@ -100,7 +97,7 @@ const QuestionItem = (props: QuestionItemProps) => {
   switch (props.type) {
     case 'bordered':
       return (
-        <div className="grid md:grid-cols-2 gap-4 border-t pt-6 pb-12">
+        <div className="grid md:grid-cols-2 gap-4 pt-6 pb-12">
           <h3 className="text-lg font-bold mb-4">
             <ContentSdkText field={props.q.question?.jsonValue} />
           </h3>

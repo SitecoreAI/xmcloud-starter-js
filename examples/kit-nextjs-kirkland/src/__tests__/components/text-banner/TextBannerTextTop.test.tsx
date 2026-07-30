@@ -48,6 +48,7 @@ describe('TextBannerTextTop', () => {
     const section = container.querySelector('section');
     expect(section).toBeInTheDocument();
     expect(section).toHaveAttribute('data-component', 'TextBanner');
+    expect(section).not.toHaveClass('border-t-2', 'border-b-2');
   });
 
   it('renders heading and description fields', () => {

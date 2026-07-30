@@ -50,7 +50,7 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
         <div
           data-class-change
           className={cn(
-            'legal-content-shell @lg/herowrapper:grid @lg/herowrapper:gap-0 @lg/herowrapper:my-24 @lg/herowrapper:grid-cols-[33%_11%_23%_33%] @lg/herowrapper:grid-rows-[52px_auto_2px_auto_auto] group',
+            'legal-content-shell @lg/herowrapper:grid @lg/herowrapper:gap-0 @lg/herowrapper:my-24 @lg/herowrapper:grid-cols-[33%_11%_23%_33%] @lg/herowrapper:grid-rows-[52px_auto_auto_auto] group',
             {
               'position-left': !hasPagesPositionStyles,
               [props?.params?.styles]: props?.params?.styles,
@@ -71,13 +71,8 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
             />
           </AnimatedSection>
 
-          {/* Line */}
-          <div className="@lg/herowrapper:block @lg/herowrapper:row-start-3 @lg/herowrapper:row-end-4 @lg/herowrapper:col-start-1 @lg/herowrapper:col-end-5 hidden">
-            <div className="bg-foreground absolute left-0 right-0 h-[2px] w-[100vw]"></div>
-          </div>
-
           {/* Description & Form */}
-          <div className="form @lg/herowrapper:p-0 @lg/herowrapper:col-start-1 @lg/herowrapper:col-end-2 @lg/herowrapper:row-start-4 @lg/herowrapper:row-end-5 @lg/herowrapper:self-end @lg/herowrapper:mt-6 mt-6 px-4 pb-8 [&>*+*]:mt-6">
+          <div className="form @lg/herowrapper:p-0 @lg/herowrapper:col-start-1 @lg/herowrapper:col-end-2 @lg/herowrapper:row-start-3 @lg/herowrapper:row-end-4 @lg/herowrapper:self-end @lg/herowrapper:mt-6 mt-6 px-4 pb-8 [&>*+*]:mt-6">
             <AnimatedSection
               direction="up"
               isPageEditing={isPageEditing}
@@ -118,7 +113,7 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
           {/* Hero image */}
           <ImageWrapper
             image={image}
-            wrapperClass="@lg/herowrapper:col-start-3 @lg/herowrapper:col-end-5 @lg/herowrapper:row-start-2 @lg/herowrapper:row-end-5 before:hidden @lg/herowrapper:before:block @lg/herowrapper:before:w-full @lg/herowrapper:before:aspect-[674/600] @lg/herowrapper:relative w-full"
+            wrapperClass="@lg/herowrapper:col-start-3 @lg/herowrapper:col-end-5 @lg/herowrapper:row-start-2 @lg/herowrapper:row-end-4 before:hidden @lg/herowrapper:before:block @lg/herowrapper:before:w-full @lg/herowrapper:before:aspect-[674/600] @lg/herowrapper:relative w-full"
             className="@lg/herowrapper:h-full @lg/herowrapper:aspect-auto @lg/herowrapper:absolute @lg/herowrapper:inset-0 relative z-10 aspect-video w-full object-cover"
             priority={true}
             loading="eager"
@@ -128,7 +123,7 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
 
           {/* Banner */}
           {needsBanner && (
-            <div className="bg-primary text-primary-foreground @lg/herowrapper:col-start-3 @lg/herowrapper:col-end-5 @lg/herowrapper:row-start-5 @lg/herowrapper:row-end-6 @md/herowrapper:flex @md/herowrapper:gap-10 @md/herowrapper:items-center @md/herowrapper:justify-between @md/herowrapper:p-5 p-4">
+            <div className="bg-primary text-primary-foreground @lg/herowrapper:col-start-3 @lg/herowrapper:col-end-5 @lg/herowrapper:row-start-4 @lg/herowrapper:row-end-5 @md/herowrapper:flex @md/herowrapper:gap-10 @md/herowrapper:items-center @md/herowrapper:justify-between @md/herowrapper:p-5 p-4">
               {bannerText && (
                 <AnimatedSection
                   direction="up"

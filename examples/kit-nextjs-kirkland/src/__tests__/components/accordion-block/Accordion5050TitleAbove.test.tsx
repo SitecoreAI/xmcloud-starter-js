@@ -156,6 +156,7 @@ describe('Accordion5050TitleAbove Component', () => {
       'bg-background',
       'text-foreground'
     );
+    expect(component).not.toHaveClass('border-b-2', 'border-t-2');
 
     const contentWrapper = container.querySelector(
       '[data-component="AccordionBlockContentWrapper"]'

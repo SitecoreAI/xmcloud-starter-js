@@ -170,10 +170,9 @@ describe('AccordionBlockTwoColumnTitleLeft Component', () => {
       '@lg:py-20',
       'bg-background',
       'text-foreground',
-      'border-b-2',
-      'border-t-2',
       'py-10'
     );
+    expect(component).not.toHaveClass('border-b-2', 'border-t-2');
   });
 
   it('renders three-column grid layout', () => {

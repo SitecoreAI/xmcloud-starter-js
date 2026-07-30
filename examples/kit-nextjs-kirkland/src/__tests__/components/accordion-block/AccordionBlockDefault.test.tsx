@@ -158,10 +158,9 @@ describe('AccordionBlockDefault Component', () => {
       '@container',
       '@md:py-16',
       '@lg:py-20',
-      'border-b-2',
-      'border-t-2',
       'py-10'
     );
+    expect(component).not.toHaveClass('border-b-2', 'border-t-2');
 
     const contentWrapper = container.querySelector(
       '[data-component="AccordionBlockContentWrapper"]'

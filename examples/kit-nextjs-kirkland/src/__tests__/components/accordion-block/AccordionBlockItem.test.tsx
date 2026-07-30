@@ -105,7 +105,8 @@ describe('AccordionBlockItem Component', () => {
     render(<AccordionBlockItem {...defaultProps} />);
 
     const accordionItem = screen.getByTestId('accordion-item');
-    expect(accordionItem).toHaveClass('border-foreground', 'border-b', 'p-0');
+    expect(accordionItem).toHaveClass('p-0');
+    expect(accordionItem).not.toHaveClass('border-foreground', 'border-b');
   });
 
   it('applies correct CSS classes to accordion trigger', () => {

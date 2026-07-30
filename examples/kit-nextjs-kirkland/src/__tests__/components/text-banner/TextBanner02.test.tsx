@@ -59,6 +59,7 @@ describe('TextBanner02', () => {
 
     const section = container.querySelector('section');
     expect(section).toHaveClass('position-center');
+    expect(section).not.toHaveClass('border-t-2', 'border-b-2');
   });
 
   it('renders NoDataFallback when no fields provided', () => {

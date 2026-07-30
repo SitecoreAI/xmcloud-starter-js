@@ -27,7 +27,7 @@ export const TextBannerBlueTitleRight: React.FC<TextBannerProps> = (props) => {
         data-component="TextBanner"
         data-class-change
         className={cn(
-          'bg-primary text-foreground group relative w-full overflow-hidden border-b-2 border-t-2 [.border-b-2+&]:border-t-0',
+          'bg-primary text-foreground group relative w-full overflow-hidden',
           {
             'position-left': !hasPagesPositionStyles,
             [props?.params?.styles as string]: props?.params?.styles,

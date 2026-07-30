@@ -185,7 +185,7 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
       <>
         <header
           data-component="ArticleHeader"
-          className="@container/article-header border-b border-white/20 bg-[#090e13] text-white"
+          className="@container/article-header bg-[#090e13] text-white"
         >
           <div className="legal-content-shell py-10 @md/article-header:py-14">
             <ButtonBase
@@ -250,7 +250,7 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
               </figure>
             )}
 
-            <div className="mt-6 flex flex-col gap-5 border-t border-white/20 pt-5 @md/article-header:flex-row @md/article-header:items-center @md/article-header:justify-between">
+            <div className="mt-6 flex flex-col gap-5 pt-5 @md/article-header:flex-row @md/article-header:items-center @md/article-header:justify-between">
               {authorName && (
                 <div className="flex min-w-0 items-center gap-3">
                   <Avatar>

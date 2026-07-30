@@ -42,7 +42,7 @@ export const PageHeaderBlueBackground: React.FC<
       <section
         data-component="PageHeader"
         data-class-change
-        className="bg-primary text-primary-foreground border-primary-foreground @container group w-full overflow-hidden border-b-2 border-t-2"
+        className="bg-primary text-primary-foreground @container group w-full overflow-hidden"
       >
         <div className="legal-content-shell @lg:pb-0 @lg:pt-5 @md:grid-cols-2 relative grid grid-cols-1 gap-0">
           {/* Right Content */}
@@ -102,7 +102,7 @@ export const PageHeaderBlueBackground: React.FC<
           </div>
           {/* Right Content */}
         </div>
-        <div className=" border-primary-foreground  mb-16 border-2 border-l-0 border-r-0">
+        <div className="mb-16">
           {/* Left Image */}
           <div className="@xl:mx-auto @lg:max-w-screen-xl @xl:group-[.container--full-bleed]:px-8 @md:grid-cols-2 relative mx-auto grid w-full grid-cols-1 gap-0 group-[.container--full-bleed]:px-4 ">
             <div className="@md:col-start-1 @md:col-end-2 @md:row-start-1 relative w-full">

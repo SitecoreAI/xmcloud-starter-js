@@ -70,7 +70,9 @@ describe('PageHeaderCentered', () => {
   });
 
   it('renders centered page header with title and image', () => {
-    render(<PageHeaderCentered {...mockPageHeaderProps} isPageEditing={false} />);
+    const { container } = render(
+      <PageHeaderCentered {...mockPageHeaderProps} isPageEditing={false} />,
+    );
 
     expect(screen.getByText('Advanced Emergency Response Vehicles')).toBeInTheDocument();
     expect(screen.getByTestId('richtext-component')).toBeInTheDocument();
@@ -78,6 +80,8 @@ describe('PageHeaderCentered', () => {
       'src',
       '/images/alaris-ambulance-fleet.jpg'
     );
+    expect(container.innerHTML).not.toContain('border-l-2');
+    expect(container.innerHTML).not.toContain('border-r-2');
   });
 
   it('renders buttons when links are provided', () => {

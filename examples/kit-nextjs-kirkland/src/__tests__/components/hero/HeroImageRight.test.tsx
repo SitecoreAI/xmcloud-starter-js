@@ -91,6 +91,8 @@ describe('HeroImageRight Component', () => {
     const { container } = render(<HeroImageRight {...mockHeroProps} />);
     expect(container.querySelector('section')).toBeInTheDocument();
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+    expect(container.innerHTML).not.toContain('before:h-[2px]');
+    expect(container.innerHTML).not.toContain('before:w-[2px]');
   });
 
   it('displays content on left side with form', () => {

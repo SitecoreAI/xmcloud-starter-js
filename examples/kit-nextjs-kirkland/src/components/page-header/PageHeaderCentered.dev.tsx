@@ -45,7 +45,7 @@ export const PageHeaderCentered: React.FC<
         className="bg-background text-foreground @container group w-full overflow-hidden"
       >
         <div className="">
-          <div className="legal-content-shell @lg:pb-0 @lg:pt-20 border-primary-foreground relative border-l-2 border-r-2 py-16">
+          <div className="legal-content-shell @lg:pb-0 @lg:pt-20 relative py-16">
             <div className="flex flex-col items-center">
               {/* Header Content */}
               <div className=" mx-auto mb-12 px-4 text-center">

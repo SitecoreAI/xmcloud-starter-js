@@ -80,7 +80,12 @@ describe('PageHeaderBlueBackground', () => {
   });
 
   it('renders page header with blue background styling', () => {
-    render(<PageHeaderBlueBackground {...mockPageHeaderProps} isPageEditing={false} />);
+    const { container } = render(
+      <PageHeaderBlueBackground
+        {...mockPageHeaderProps}
+        isPageEditing={false}
+      />,
+    );
 
     expect(screen.getByText('Advanced Emergency Response Vehicles')).toBeInTheDocument();
     expect(screen.getByTestId('richtext-component')).toBeInTheDocument();
@@ -88,6 +93,9 @@ describe('PageHeaderBlueBackground', () => {
       'src',
       '/images/alaris-ambulance-fleet.jpg'
     );
+    expect(container.innerHTML).not.toContain('border-t-2');
+    expect(container.innerHTML).not.toContain('border-b-2');
+    expect(container.innerHTML).not.toContain('border-2');
   });
 
   it('renders buttons with correct variants', () => {

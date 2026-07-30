@@ -19,7 +19,7 @@ export const PromoImageMiddle: React.FC<PromoImageProps> = (props) => {
     return (
       <section
         data-component="Promo Image"
-        className="@container @md:py-20 relative w-full overflow-hidden border-b-2 border-t-2 bg-black py-20 [.border-b-2+&]:border-t-0"
+        className="@container @md:py-20 relative w-full overflow-hidden bg-black py-20"
       >
         <div className="legal-content-shell relative">
           {(isPageEditing || heading?.value) && (

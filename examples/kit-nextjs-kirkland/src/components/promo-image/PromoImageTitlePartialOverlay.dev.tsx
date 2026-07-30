@@ -19,7 +19,7 @@ export const PromoTitlePartialOverlay: React.FC<PromoImageProps> = (props) => {
     return (
       <section
         data-component="Promo Image"
-        className="@container @md:py-20 bg-background relative w-full overflow-hidden border-b-2 border-t-2 py-20 [.border-b-2+&]:border-t-0"
+        className="@container @md:py-20 bg-background relative w-full overflow-hidden py-20"
       >
         <div className="@xl:absolute @md:translate-y-1 relative z-10 w-full">
           <div className="@md:w-1/2 @md:max-w-[520px] mx-auto w-full">

@@ -107,6 +107,7 @@ describe('HeroImageBackground Component', () => {
     const { container } = render(<HeroImageBackground {...mockHeroProps} />);
     expect(container.querySelector('section')).toBeInTheDocument();
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+    expect(container.innerHTML).not.toContain('h-[2px]');
   });
 
   it('displays content with proper styling', () => {

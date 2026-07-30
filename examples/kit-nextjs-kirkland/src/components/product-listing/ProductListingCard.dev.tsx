@@ -71,7 +71,7 @@ const ProductListingCard = ({
             )}
           </div>
 
-          <div className="border-muted-foreground border-t pt-4">
+          <div className="pt-4">
             <Text
               tag="h4"
               className="text-secondary-foreground font-regular text-xl mb-2"
@@ -84,7 +84,7 @@ const ProductListingCard = ({
             />
           </div>
 
-          <div className="border-muted-foreground border-t pt-4">
+          <div className="pt-4">
             <Text
               tag="h4"
               className="text-secondary-foreground font-regular text-xl"

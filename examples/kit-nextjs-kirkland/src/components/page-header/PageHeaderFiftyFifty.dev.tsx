@@ -106,10 +106,6 @@ export const PageHeaderFiftyFifty: React.FC<
             </div>
             {/* Right - 50% width */}
             <div className="@md:row-start-2 @md:row-end-3 @md:col-start-2 @md:col-end-3 relative h-full w-full">
-              {/* Line Centered on Image */}
-              <div className="@md/headerwrapper:block absolute bottom-0 left-1/2 top-0 mx-auto hidden w-full -translate-x-[50%]">
-                <div className="bg-foreground absolute -bottom-[100vw] -top-[100vw] right-[50%] block w-[2px] -translate-x-[50%]"></div>
-              </div>
               {/* Image */}
               <AnimatedSection
                 reducedMotion={prefersReducedMotion}
@@ -122,10 +118,6 @@ export const PageHeaderFiftyFifty: React.FC<
                   page={props.page}
                 />
               </AnimatedSection>
-              {/* Page centered Line */}
-              <div className="absolute bottom-0 left-0 top-0">
-                <div className="@md/headerwrapper:bg-foreground absolute -bottom-[100vw] -top-[100vw] left-0 block w-[2px] bg-gradient-to-t from-white"></div>
-              </div>
             </div>
           </div>
         </div>

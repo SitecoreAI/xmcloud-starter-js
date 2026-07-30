@@ -57,15 +57,6 @@ export const PageHeaderBlueText: React.FC<
           <div className="legal-content-shell @sm/headerwrapper:min-h-[575px] @sm/headerwrapper:py-12 @lg/headerwrapper:py-20 relative">
             {/* Blue Box */}
             <div className="@container/headercontent bg-primary text-primary-foreground relative z-10 max-w-[700px] p-10">
-              {/* Left Line */}
-              <div className="absolute bottom-0 left-0 top-0">
-                <div className="bg-foreground @md/headerwrapper:block absolute -bottom-[100vw] -top-[100vw] left-0 hidden w-[2px]"></div>
-              </div>
-              {/* Right Line */}
-              <div className="absolute bottom-0 right-0 top-0">
-                <div className="bg-foreground @md/headerwrapper:block absolute -bottom-[100vw] -top-[100vw] right-0 hidden w-[2px]"></div>
-              </div>
-
               <AnimatedSection
                 reducedMotion={prefersReducedMotion}
                 isPageEditing={isPageEditing}

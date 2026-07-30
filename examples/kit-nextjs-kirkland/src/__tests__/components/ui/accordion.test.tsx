@@ -84,6 +84,7 @@ describe('Accordion', () => {
 
     expect(screen.getByTestId('accordion')).toBeInTheDocument();
     expect(screen.getByTestId('accordion-item')).toBeInTheDocument();
+    expect(screen.getByTestId('accordion-item')).not.toHaveClass('border-b');
   });
 
   it('renders accordion trigger button', () => {

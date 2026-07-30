@@ -19,7 +19,7 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
     return (
       <section
         data-component="Promo Image"
-        className="@container border-b-2 border-t-2 [.border-b-2+&]:border-t-0"
+        className="@container"
       >
         <div className="@md:min-h-[760px] relative max-h-[759px] min-h-[450px] w-full overflow-hidden ">
           {image && (

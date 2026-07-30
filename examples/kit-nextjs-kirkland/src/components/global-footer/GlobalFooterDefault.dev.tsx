@@ -27,12 +27,12 @@ export const GlobalFooterDefault: React.FC<GlobalFooterProps> = (props) => {
   if (fields) {
     return (
       <footer
-        className="@container bg-primary text-primary-foreground border-foreground relative w-full overflow-hidden border-b-2"
+        className="@container bg-primary text-primary-foreground relative w-full overflow-hidden"
         ref={footerRef}
         role="contentinfo"
       >
         {/* Main footer content */}
-        <div className="border-foreground border-b-2 py-16">
+        <div className="py-16">
           <div className="legal-content-shell relative z-10">
             <div className="@lg:grid-cols-[2fr,1fr] grid grid-cols-1 items-end justify-end gap-8">
               {/* Left section with heading */}

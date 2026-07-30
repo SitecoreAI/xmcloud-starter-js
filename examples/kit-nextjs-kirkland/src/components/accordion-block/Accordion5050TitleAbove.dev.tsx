@@ -38,7 +38,7 @@ export const Accordion5050TitleAbove: React.FC<AccordionProps> = (props) => {
       <section
         data-component="Accordion5050TitleAbove"
         className={cn(
-          '@container @md:py-16 @lg:py-20 bg-background text-foreground border-b-2 border-t-2 py-10 [.border-b-2+&]:border-t-0',
+          '@container @md:py-16 @lg:py-20 bg-background text-foreground py-10',
           props?.params?.styles && {
             [props.params.styles]: true,
           },

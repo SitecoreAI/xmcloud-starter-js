@@ -27,7 +27,7 @@ export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
   if (fields) {
     return (
       <footer
-        className="@container bg-primary text-primary-foreground border-foreground relative w-full overflow-hidden border-b-2"
+        className="@container bg-primary text-primary-foreground relative w-full overflow-hidden"
         ref={footerRef}
         role="contentinfo"
       >

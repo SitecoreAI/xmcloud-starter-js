@@ -66,7 +66,7 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
         animate={{ opacity: visible ? 1 : 0 }}
         transition={{ duration: isReducedMotion ? 0 : 0.2 }}
         className={cn(
-          'bg-background/80 @container sticky top-0 z-50 flex h-[88px] w-full items-center justify-center border-b backdrop-blur-md',
+          'bg-background/80 @container sticky top-0 z-50 flex h-[88px] w-full items-center justify-center backdrop-blur-md',
         )}
       >
         <div className="legal-content-shell flex h-16 items-center">

@@ -114,6 +114,11 @@ describe('PageHeaderDefault', () => {
     expect(
       container.querySelector('[data-component-part="page-header-layout"]'),
     ).toHaveClass('@md/headerwrapper:grid-cols-2');
+    expect(
+      Array.from(container.querySelectorAll('[class]'))
+        .map((element) => element.className)
+        .join(' '),
+    ).not.toContain('-top-[100vw]');
   });
 
   it('uses pageTitle when pageHeaderTitle is empty', () => {

@@ -82,17 +82,13 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
               />
             </AnimatedSection>
 
-            {/* Line */}
-            <div className="@xl/herowrapper:py-10 py-8">
-              <div className="bg-foreground absolute left-1/2 h-[2px] w-[200vw] -translate-x-1/2"></div>
-            </div>
-
             {/* Description */}
             <AnimatedSection
               direction="up"
               isPageEditing={isPageEditing}
               reducedMotion={prefersReducedMotion}
               delay={200}
+              className="@xl/herowrapper:mt-20 mt-16"
             >
               {description && (
                 <Text

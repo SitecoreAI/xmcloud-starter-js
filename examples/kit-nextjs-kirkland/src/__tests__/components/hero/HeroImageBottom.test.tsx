@@ -91,6 +91,9 @@ describe('HeroImageBottom Component', () => {
     const { container } = render(<HeroImageBottom {...mockHeroProps} />);
     expect(container.querySelector('section')).toBeInTheDocument();
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+    expect(screen.getByTestId('image-wrapper')).not.toHaveClass(
+      'before:h-[1px]',
+    );
   });
 
   it('displays content sections in correct order', () => {

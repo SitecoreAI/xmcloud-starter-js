@@ -40,7 +40,7 @@ export const ProductListingThreeUp: React.FC<ProductListingProps> = (props) => {
     return (
       <section
         className={cn(
-          'legal-content-shell @container mx-auto border-b-2 border-t-2 py-12 [.border-b-2+&]:border-t-0',
+          'legal-content-shell @container mx-auto py-12',
           {
             [props?.params?.styles]: props?.params?.styles,
           },

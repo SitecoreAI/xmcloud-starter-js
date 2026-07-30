@@ -19,7 +19,7 @@ export const PromoImageLeft: React.FC<PromoImageProps> = (props) => {
     return (
       <section
         data-component="Promo Image"
-        className="@container relative w-full overflow-hidden border-b-2 border-t-2 [.border-b-2+&]:border-t-0"
+        className="@container relative w-full overflow-hidden"
       >
         <div className="@md:flex-row @md:min-h-[500px] flex flex-col">
           {image && (

@@ -74,7 +74,7 @@ const StatBox = (props: StatBoxProps): JSX.Element => {
           <h4
             className={`${
               props.isSmall ? 'text-6xl' : 'text-7xl'
-            } font-bold pb-4 mb-4 text-right border-b mt-auto`}
+            } font-bold pb-4 mb-4 text-right mt-auto`}
           >
             <ContentSdkText field={props.stat.statValue?.jsonValue} />
           </h4>

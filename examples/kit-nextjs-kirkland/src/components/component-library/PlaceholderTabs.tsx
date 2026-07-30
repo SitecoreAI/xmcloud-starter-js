@@ -47,7 +47,7 @@ export const Default = ({ rendering, params, fields, page, componentMap }: Place
       <div className="container mx-auto">
         {!!tabs.length && (
           <Tabs defaultValue={tabs[0].id} className="relative w-full">
-            <div className="sticky bg-white top-0 w-full flex justify-center pt-10 border-b-2 z-10">
+            <div className="sticky bg-white top-0 w-full flex justify-center pt-10 z-10">
               <TabsList className="relative top-[2px] w-auto self-center flex flex-row justify-center items-end">
                 {tabs.map((tab) => (
                   <TabsTrigger

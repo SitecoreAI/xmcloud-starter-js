@@ -106,7 +106,7 @@ export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (
           </div>
         </div>
         {/* Bottom footer with social icons and copyright */}
-        <div className="border-foreground border-t">
+        <div>
           <div className="legal-content-shell @sm:flex-row @sm:justify-between flex flex-col items-center justify-start gap-4 py-12">
             {/* Social media icons - using responsive AnimatedHoverNav */}
             <div ref={socialContainerRef}>

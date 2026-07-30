@@ -43,7 +43,7 @@ export const ProductListingSlider: React.FC<ProductListingProps> = (props) => {
     return (
       <section
         className={cn(
-          '@container transform-gpu border-b-2 border-t-2 [.border-b-2+&]:border-t-0',
+          '@container transform-gpu',
           {
             [props?.params?.styles]: props?.params?.styles,
           },
