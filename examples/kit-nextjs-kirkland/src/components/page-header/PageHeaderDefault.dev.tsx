@@ -6,6 +6,7 @@ import { Text, RichText } from '@sitecore-content-sdk/nextjs';
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
+import { linkIsValid } from '@/components/button-component/button-component.props';
 import { PageHeaderProps } from './page-header.props';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 
@@ -22,12 +23,16 @@ export const PageHeaderDefault: React.FC<
     : pageTitle?.jsonValue;
   const subtitle = pageSubtitle?.jsonValue;
 
-  const shouldShowButtons: boolean = isPageEditing
-    ? true
-    : link1?.jsonValue?.value?.href !== '' ||
-        link2?.jsonValue?.value?.href !== ''
-      ? true
-      : false;
+  const configuredLinks = [link1?.jsonValue, link2?.jsonValue].filter(
+    (link) => link !== undefined,
+  );
+  const shouldShowButtons =
+    isPageEditing ||
+    configuredLinks.some(
+      (link) => Boolean(link.value?.href) && linkIsValid(link),
+    );
+  const hasImage = Boolean(imageRequired?.jsonValue?.value?.src?.trim());
+  const shouldShowImage = hasImage || isPageEditing;
 
   const hasPagesPositionStyles: boolean = props?.params?.styles
     ? props?.params?.styles.includes('position-')
@@ -55,9 +60,22 @@ export const PageHeaderDefault: React.FC<
       >
         <div className="@container/headerwrapper">
           <div className="legal-content-shell @lg/headerwrapper:pb-16 @lg/headerwrapper:pt-20 relative py-12">
-            <div className="@md/headerwrapper:grid-cols-2 @md/headerwrapper:grid-rows-[17fr_4fr_29fr] grid grid-cols-1 gap-x-[10px] gap-y-0">
+            <div
+              className={cn('grid grid-cols-1 gap-y-0', {
+                '@md/headerwrapper:grid-cols-2 @md/headerwrapper:grid-rows-[17fr_4fr_29fr] gap-x-[10px]':
+                  shouldShowImage,
+              })}
+              data-component-part="page-header-layout"
+            >
               {/* Left */}
-              <div className="@container/headercontent @md/headerwrapper:row-start-1 @md/headerwrapper:row-end-4 @md/headerwrapper:col-start-1 @md/headerwrapper:col-end-2 @md/headerwrapper:mb-0 mb-10">
+              <div
+                className={cn('@container/headercontent', {
+                  '@md/headerwrapper:row-start-1 @md/headerwrapper:row-end-4 @md/headerwrapper:col-start-1 @md/headerwrapper:col-end-2 @md/headerwrapper:mb-0 mb-10':
+                    shouldShowImage,
+                  'mb-0': !shouldShowImage,
+                })}
+                data-component-part="page-header-content"
+              >
                 <AnimatedSection
                   reducedMotion={prefersReducedMotion}
                   isPageEditing={isPageEditing}
@@ -86,7 +104,10 @@ export const PageHeaderDefault: React.FC<
                     reducedMotion={prefersReducedMotion}
                     isPageEditing={isPageEditing}
                   >
-                    <div className="mt-9 flex flex-wrap gap-4">
+                    <div
+                      className="mt-9 flex flex-wrap gap-4"
+                      data-component-part="page-header-actions"
+                    >
                       {link1?.jsonValue && (
                         <EditableButton
                           buttonLink={link1?.jsonValue}
@@ -106,29 +127,34 @@ export const PageHeaderDefault: React.FC<
                 )}
               </div>
               {/* Right */}
-              <div className="@md/headerwrapper:row-start-2 @md/headerwrapper:row-end-4 @md/headerwrapper:col-start-2 @md/headerwrapper:col-end-3 @md/headerwrapper:self-end @md/headerwrapper:justify-self-end @md/headerwrapper:mt-auto relative w-full">
-                {/* Centered Line */}
-                <div className="@md/headerwrapper:block absolute bottom-0 left-1/2 top-0 mx-auto hidden w-full -translate-x-[50%]">
-                  <div className="bg-foreground absolute -bottom-[100vw] -top-[100vw] right-[50%] block w-[2px] -translate-x-[50%]"></div>
-                </div>
-                {/* Image */}
-                <AnimatedSection
-                  reducedMotion={prefersReducedMotion}
-                  isPageEditing={isPageEditing}
-                  className="relative"
+              {shouldShowImage && (
+                <div
+                  className="@md/headerwrapper:row-start-2 @md/headerwrapper:row-end-4 @md/headerwrapper:col-start-2 @md/headerwrapper:col-end-3 @md/headerwrapper:self-end @md/headerwrapper:justify-self-end @md/headerwrapper:mt-auto relative w-full"
+                  data-component-part="page-header-image"
                 >
-                  <ImageWrapper
-                    image={imageRequired?.jsonValue}
-                    wrapperClass="aspect-[30/19] w-full before:block before:w-full before:aspect-[30/19]"
-                    className="absolute inset-0 aspect-[30/19] h-full w-full object-cover"
-                    page={props.page}
-                  />
-                </AnimatedSection>
-                {/* Right Line */}
-                <div className="absolute bottom-0 right-0 top-0">
-                  <div className="@md/headerwrapper:bg-foreground absolute -bottom-[100vw] -top-[100vw] right-0 block w-[2px] bg-gradient-to-t from-white"></div>
+                  {/* Centered Line */}
+                  <div className="@md/headerwrapper:block absolute bottom-0 left-1/2 top-0 mx-auto hidden w-full -translate-x-[50%]">
+                    <div className="bg-foreground absolute -bottom-[100vw] -top-[100vw] right-[50%] block w-[2px] -translate-x-[50%]"></div>
+                  </div>
+                  {/* Image */}
+                  <AnimatedSection
+                    reducedMotion={prefersReducedMotion}
+                    isPageEditing={isPageEditing}
+                    className="relative"
+                  >
+                    <ImageWrapper
+                      image={imageRequired?.jsonValue}
+                      wrapperClass="aspect-[30/19] w-full before:block before:w-full before:aspect-[30/19]"
+                      className="absolute inset-0 aspect-[30/19] h-full w-full object-cover"
+                      page={props.page}
+                    />
+                  </AnimatedSection>
+                  {/* Right Line */}
+                  <div className="absolute bottom-0 right-0 top-0">
+                    <div className="@md/headerwrapper:bg-foreground absolute -bottom-[100vw] -top-[100vw] right-0 block w-[2px] bg-gradient-to-t from-white"></div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

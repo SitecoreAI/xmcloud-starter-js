@@ -145,6 +145,69 @@ export const mockPageHeaderPropsWithoutLinks: PageHeaderProps = {
   page: mockPageBase,
 };
 
+export const mockPageHeaderPropsWithoutImage: PageHeaderProps = {
+  rendering: {
+    componentName: 'PageHeader',
+    dataSource: 'mock-datasource',
+  },
+  params: {},
+  fields: {
+    data: {
+      datasource: {
+        imageRequired: {
+          jsonValue: {
+            value: {
+              src: '',
+              alt: '',
+              width: '',
+              height: '',
+            },
+          },
+        },
+        link1: {
+          jsonValue: {
+            value: {
+              href: '',
+              text: '',
+              linktype: 'internal',
+              target: '',
+            },
+          },
+        },
+        link2: {
+          jsonValue: {
+            value: {
+              href: '',
+              text: '',
+              linktype: 'internal',
+              target: '',
+            },
+          },
+        },
+      },
+      externalFields: {
+        pageTitle: {
+          jsonValue: {
+            value: 'Services',
+          },
+        },
+        pageHeaderTitle: {
+          jsonValue: {
+            value: 'Services',
+          },
+        },
+        pageSubtitle: {
+          jsonValue: {
+            value:
+              '<p>Strategic legal counsel for the most consequential matters.</p>',
+          },
+        },
+      },
+    },
+  },
+  page: mockPageBase,
+};
+
 export const mockPageHeaderPropsWithStyles: PageHeaderProps = {
   rendering: {
     componentName: 'PageHeader',
@@ -180,7 +243,8 @@ export const mockPageHeaderPropsWithStyles: PageHeaderProps = {
         },
         pageSubtitle: {
           jsonValue: {
-            value: '<p>Strategic mobile command centers for coordinated emergency response.</p>',
+            value:
+              '<p>Strategic mobile command centers for coordinated emergency response.</p>',
           },
         },
       },
