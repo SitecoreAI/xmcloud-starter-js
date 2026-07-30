@@ -1,0 +1,21 @@
+{
+  "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "kirkland-page-branches",
+  "description": "Kirkland page-branch insert rules and the reusable Lawyer Profile page branch.",
+  "items": {
+    "path": "kirkland-page-branches",
+    "includes": [
+      {
+        "name": "kirkland.page-branches.rules",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Page Branches",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.page-branches.lawyer-profile",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Page Branches/Lawyer Profile",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      }
+    ]
+  }
+}
