@@ -95,7 +95,7 @@ export default async function Page({ params }: PageProps) {
   const pageTitle =
     fields?.Title?.value?.toString() ||
     fields?.pageTitle?.value?.toString() ||
-    'Page';
+    'Kirkland & Ellis';
   const pageDescription =
     fields?.metadataDescription?.value?.toString() ||
     fields?.ogDescription?.value?.toString();
@@ -178,13 +178,13 @@ export const generateMetadata = async ({ params }: PageProps) => {
     routeFields?.pageTitle?.value?.toString() ||
     routeFields?.Title?.value?.toString() ||
     routeFields?.ogTitle?.value?.toString() ||
-    'Page';
+    'Kirkland & Ellis';
 
   const metadataDescription =
     routeFields?.metadataDescription?.value?.toString() ||
     routeFields?.pageSummary?.value?.toString() ||
     routeFields?.ogDescription?.value?.toString() ||
-    'Kirkland — legal counsel for complex business matters';
+    'Kirkland & Ellis advises clients on transformative transactions, high-stakes disputes, restructurings, and intellectual property matters.';
 
   const ogTitle =
     routeFields?.ogTitle?.value?.toString() ||
@@ -213,7 +213,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
     : [];
 
   const metadataAuthor =
-    routeFields?.metadataAuthor?.value?.toString() || 'Kirkland';
+    routeFields?.metadataAuthor?.value?.toString() || 'Kirkland & Ellis';
 
   return {
     title: metadataTitle,
@@ -230,7 +230,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
       description: ogDescription,
       url: pageUrl,
       type: 'website',
-      siteName: site || 'Kirkland',
+      siteName: 'Kirkland & Ellis',
       locale: locale || 'en',
       images: ogImageUrl
         ? [

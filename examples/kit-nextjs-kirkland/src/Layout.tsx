@@ -64,15 +64,15 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
   // Generate site-wide structured data (use request-derived baseUrl when provided so deployed URLs are correct)
   const baseUrl = baseUrlProp ?? getBaseUrl();
   const websiteSchema = generateWebSiteSchema(
-    'Kirkland',
+    'Kirkland & Ellis',
     baseUrl,
-    'Legal counsel, firm insights, careers, and office information',
+    'Legal services, lawyers, firm insights, careers, and global offices',
   );
   const organizationSchema = generateOrganizationSchema(
-    'Kirkland',
+    'Kirkland & Ellis',
     baseUrl,
     undefined,
-    'A global law firm advising clients on complex business and legal matters',
+    'A global law firm advising clients on transformative transactions, high-stakes disputes, restructurings, and intellectual property matters',
   );
 
   return (

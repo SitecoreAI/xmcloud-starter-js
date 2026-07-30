@@ -10,6 +10,7 @@ import { Default as AnimatedSection } from '@/components/animated-section/Animat
 import { Default as ZipcodeSearchForm } from '@/components/forms/zipcode/ZipcodeSearchForm.dev';
 import { HeroProps } from './hero.props';
 import { storeZipcodeInSession } from '@/utils/zipcode-storage';
+import { hasDistinctHeroCopy, hasRenderableHeroCta } from '@/lib/hero-copy';
 
 export const HeroDefault: React.FC<HeroProps> = (props) => {
   const { fields, isPageEditing } = props;
@@ -30,17 +31,14 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
   }, []);
 
   if (fields) {
-    const needsBanner: boolean = isPageEditing
-      ? true
-      : bannerText?.value !== '' || bannerCTA?.value?.href !== ''
-        ? true
-        : false;
+    const hasBannerText = hasDistinctHeroCopy(bannerText, title, description);
+    const hasBannerCta = hasRenderableHeroCta(bannerCTA);
+    const needsBanner = hasBannerText || hasBannerCta;
 
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
-    const hasConfiguredSearch =
-      isPageEditing || Boolean(searchLink?.value?.href);
+    const hasConfiguredSearch = Boolean(searchLink?.value?.href);
 
     return (
       <section
@@ -123,8 +121,11 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
 
           {/* Banner */}
           {needsBanner && (
-            <div className="bg-primary text-primary-foreground @lg/herowrapper:col-start-3 @lg/herowrapper:col-end-5 @lg/herowrapper:row-start-4 @lg/herowrapper:row-end-5 @md/herowrapper:flex @md/herowrapper:gap-10 @md/herowrapper:items-center @md/herowrapper:justify-between @md/herowrapper:p-5 p-4">
-              {bannerText && (
+            <div
+              data-hero-banner
+              className="bg-primary text-primary-foreground @lg/herowrapper:col-start-3 @lg/herowrapper:col-end-5 @lg/herowrapper:row-start-4 @lg/herowrapper:row-end-5 @md/herowrapper:flex @md/herowrapper:gap-10 @md/herowrapper:items-center @md/herowrapper:justify-between @md/herowrapper:p-5 p-4"
+            >
+              {hasBannerText && bannerText && (
                 <AnimatedSection
                   direction="up"
                   isPageEditing={isPageEditing}
@@ -137,7 +138,7 @@ export const HeroDefault: React.FC<HeroProps> = (props) => {
                   />
                 </AnimatedSection>
               )}
-              {bannerCTA && (
+              {hasBannerCta && bannerCTA && (
                 <AnimatedSection
                   direction="up"
                   className="@md/herowrapper:mt-0 mt-4 first:mt-0"

@@ -1,20 +1,20 @@
 {
     "items": [
         {
-            "question": "What legal services does Kirkland provide?",
-            "answer": "The demo highlights transactional, litigation, restructuring, and intellectual property capabilities, together with related practices and industry experience."
-        },
-        {
-            "question": "How can I find a lawyer?",
-            "answer": "Visit the Lawyers page to browse featured professionals and open an individual profile for biography, practice, experience, and contact information."
-        },
-        {
             "question": "Where does Kirkland have offices?",
-            "answer": "The Locations page presents office information by region, with address and contact details for each featured office."
+            "answer": "Kirkland operates as one firm across 24 cities, with no single headquarters. Visit Locations to explore offices in major business and financial centers around the world."
         },
         {
-            "question": "Where can I learn about careers?",
-            "answer": "The Careers page introduces opportunities for law students, lawyers, and business professionals and links visitors to recruiting information."
+            "question": "How can I explore careers at Kirkland?",
+            "answer": "Visit Careers to learn about opportunities for law students, lawyers, and business professionals, along with Kirkland’s approach to responsibility, training, and professional development."
+        },
+        {
+            "question": "Where can I find Kirkland news and legal insights?",
+            "answer": "Visit News & Insights for firm announcements, client achievements, publications, legal updates, and perspectives from Kirkland lawyers."
+        },
+        {
+            "question": "How can I find a Kirkland lawyer?",
+            "answer": "Visit Lawyers to explore profiles by practice and office and learn more about each lawyer’s focus and experience."
         }
     ],
     "lastModified": "2026-03-05T11:54:30Z"

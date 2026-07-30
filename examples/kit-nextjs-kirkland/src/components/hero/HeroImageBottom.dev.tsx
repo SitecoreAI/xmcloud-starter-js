@@ -10,6 +10,7 @@ import { Default as AnimatedSection } from '@/components/animated-section/Animat
 import { Default as ZipcodeSearchForm } from '@/components/forms/zipcode/ZipcodeSearchForm.dev';
 import type { HeroProps } from './hero.props';
 import { storeZipcodeInSession } from '@/utils/zipcode-storage';
+import { hasDistinctHeroCopy, hasRenderableHeroCta } from '@/lib/hero-copy';
 
 export const HeroImageBottom: React.FC<HeroProps> = (props) => {
   const { fields, isPageEditing } = props;
@@ -30,17 +31,14 @@ export const HeroImageBottom: React.FC<HeroProps> = (props) => {
   }, []);
 
   if (fields) {
-    const needsBanner: boolean = isPageEditing
-      ? true
-      : bannerText?.value !== '' || bannerCTA?.value?.href !== ''
-        ? true
-        : false;
+    const hasBannerText = hasDistinctHeroCopy(bannerText, title, description);
+    const hasBannerCta = hasRenderableHeroCta(bannerCTA);
+    const needsBanner = hasBannerText || hasBannerCta;
 
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
-    const hasConfiguredSearch =
-      isPageEditing || Boolean(searchLink?.value?.href);
+    const hasConfiguredSearch = Boolean(searchLink?.value?.href);
 
     return (
       <section
@@ -129,9 +127,12 @@ export const HeroImageBottom: React.FC<HeroProps> = (props) => {
 
           {/* Banner */}
           {needsBanner && (
-            <div className="@container/herobanner bg-primary text-primary-foreground @xl/herowrapper:w-1/2 @xl/herowrapper:absolute @xl/herowrapper:bottom-0 @xl/herowrapper:left-0 @xl/herowrapper:max-w-[45rem] @xl/herowrapper:group-[.position-right]:left-auto @xl/herowrapper:group-[.position-right]:right-0 w-full">
+            <div
+              data-hero-banner
+              className="@container/herobanner bg-primary text-primary-foreground @xl/herowrapper:w-1/2 @xl/herowrapper:absolute @xl/herowrapper:bottom-0 @xl/herowrapper:left-0 @xl/herowrapper:max-w-[45rem] @xl/herowrapper:group-[.position-right]:left-auto @xl/herowrapper:group-[.position-right]:right-0 w-full"
+            >
               <div className="@[35rem]/herobanner:flex-row @[35rem]/herobanner:items-center @[35rem]/herobanner:justify-between @[35rem]/herobanner:flex @[35rem]/herobanner:gap-10 @[35rem]/herobanner:text-left @md/herowrapper:max-w-screen-md @xl/herowrapper:max-w-none mx-auto p-5">
-                {bannerText && (
+                {hasBannerText && bannerText && (
                   <AnimatedSection
                     direction="up"
                     isPageEditing={isPageEditing}
@@ -144,7 +145,7 @@ export const HeroImageBottom: React.FC<HeroProps> = (props) => {
                     />
                   </AnimatedSection>
                 )}
-                {bannerCTA && (
+                {hasBannerCta && bannerCTA && (
                   <AnimatedSection
                     direction="up"
                     className="@[35rem]/herobanner:mt-0 mt-4"

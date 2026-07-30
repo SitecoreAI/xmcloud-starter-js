@@ -1,19 +1,19 @@
 {
     "services": [
         {
-            "name": "Mergers and Acquisitions",
-            "description": "Counsel for complex public and private mergers, acquisitions, divestitures, joint ventures, and strategic transactions.",
-            "category": "Transactional"
+            "name": "Private Equity and Mergers & Acquisitions",
+            "description": "Kirkland advises sponsors, investors, and companies on private equity transactions, strategic M&A, growth investments, and complex cross-border deals.",
+            "category": "Transactions"
         },
         {
-            "name": "Litigation and Trial",
-            "description": "Representation in high-stakes commercial disputes, investigations, trials, and appeals across industries.",
-            "category": "Litigation"
+            "name": "Litigation",
+            "description": "Kirkland represents clients in high-stakes commercial disputes, trials, appeals, investigations, and matters involving government enforcement.",
+            "category": "Disputes"
         },
         {
             "name": "Restructuring",
-            "description": "Strategic advice for companies, sponsors, creditors, and investors navigating financial distress and transformation.",
-            "category": "Restructuring"
+            "description": "Kirkland advises companies, sponsors, and creditors on complex restructurings, liability management transactions, and special situations.",
+            "category": "Financial Restructuring"
         }
     ],
     "lastModified": "2026-03-05T11:54:28Z"

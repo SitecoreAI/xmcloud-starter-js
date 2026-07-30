@@ -131,6 +131,31 @@ describe('HeroImageBackground Component', () => {
     expect(screen.getByTestId('button-base')).toBeInTheDocument();
   });
 
+  it('does not repeat punctuation-equivalent hero copy in the banner', () => {
+    const propsWithRepeatedBanner = {
+      ...mockHeroProps,
+      fields: {
+        ...mockHeroProps.fields,
+        bannerText: {
+          value: `${mockHeroProps.fields.title.value}.`,
+        },
+      },
+    };
+
+    const { container } = render(
+      <HeroImageBackground {...propsWithRepeatedBanner} />,
+    );
+
+    expect(
+      screen.getByText(mockHeroProps.fields.title.value),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText(`${mockHeroProps.fields.title.value}.`),
+    ).not.toBeInTheDocument();
+    expect(container.querySelector('[data-hero-banner]')).toBeInTheDocument();
+    expect(screen.getByTestId('button-base')).toBeInTheDocument();
+  });
+
   it('omits the automotive search form when no search destination is configured', () => {
     const propsWithoutSearch = {
       ...mockHeroProps,

@@ -10,6 +10,7 @@ import { Default as AnimatedSection } from '@/components/animated-section/Animat
 import { Default as ZipcodeSearchForm } from '@/components/forms/zipcode/ZipcodeSearchForm.dev';
 import type { HeroProps } from './hero.props';
 import { storeZipcodeInSession } from '@/utils/zipcode-storage';
+import { hasDistinctHeroCopy, hasRenderableHeroCta } from '@/lib/hero-copy';
 
 export const HeroImageBackground: React.FC<HeroProps> = (props) => {
   const { fields, isPageEditing } = props;
@@ -30,10 +31,8 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
   }, []);
 
   if (fields) {
-    const hasBannerText = Boolean(bannerText?.value?.trim());
-    const hasBannerCta = Boolean(
-      bannerCTA?.value?.href || bannerCTA?.value?.text,
-    );
+    const hasBannerText = hasDistinctHeroCopy(bannerText, title, description);
+    const hasBannerCta = hasRenderableHeroCta(bannerCTA);
     const needsBanner = hasBannerText || hasBannerCta;
 
     const hasPagesPositionStyles: boolean = props?.params?.styles
@@ -123,9 +122,12 @@ export const HeroImageBackground: React.FC<HeroProps> = (props) => {
 
             {/* Banner overlay */}
             {needsBanner && (
-              <div className="@container/herobanner bg-overlay text-primary-foreground @md/herowrapper:mt-10 @xl/herowrapper:mt-16 z-10 mt-8 w-full max-w-[50rem]">
+              <div
+                data-hero-banner
+                className="@container/herobanner bg-overlay text-primary-foreground @md/herowrapper:mt-10 @xl/herowrapper:mt-16 z-10 mt-8 w-full max-w-[50rem]"
+              >
                 <div className="@[35rem]/herobanner:flex-row @[35rem]/herobanner:items-center @[35rem]/herobanner:justify-between @[35rem]/herobanner:flex @[35rem]/herobanner:gap-10 @[35rem]/herobanner:text-left p-5">
-                  {bannerText && (
+                  {hasBannerText && bannerText && (
                     <AnimatedSection
                       direction="up"
                       isPageEditing={isPageEditing}

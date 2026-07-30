@@ -9,18 +9,18 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest): Promise<NextResponse> {
   const baseUrl = new URL(request.url).origin;
 
-  const content = `# Kirkland
+  const content = `# Kirkland & Ellis
 
-> Kirkland is a demonstration law-firm website featuring lawyers, legal services, firm insights, careers, and global offices.
+> Kirkland & Ellis is a global law firm advising clients on transformative transactions, high-stakes disputes, restructurings, and intellectual property matters.
 
-The site demonstrates an editorial, enterprise law-firm experience built with Next.js and Sitecore XM Cloud. Content is managed in Sitecore and composed from reusable components.
+Kirkland lawyers work across practices and offices as one team, combining deep legal experience with commercial judgment on matters that shape businesses and industries.
 
 ## Key pages
 
 - [Home](${baseUrl}/): Firm overview, featured matters, and recent insights
 - [Lawyers](${baseUrl}/Lawyers): Lawyers and professional profiles
 - [Services](${baseUrl}/Services): Practices and legal services
-- [News & Insights](${baseUrl}/News-Insights): News, publications, and events
+- [News & Insights](${baseUrl}/News-and-Insights): News, publications, and events
 - [Careers](${baseUrl}/Careers): Opportunities and life at the firm
 - [Locations](${baseUrl}/Locations): Global office information
 - [About](${baseUrl}/About): Firm overview and commitments
