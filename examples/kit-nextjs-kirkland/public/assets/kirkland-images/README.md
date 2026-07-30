@@ -4,7 +4,9 @@ These original, AI-generated images are intended as demonstration assets for the
 
 The images were inspired by the visual tone of a premium global law firm website. They do not reproduce photographs from kirkland.com, and no Kirkland logo or wordmark is embedded in them.
 
-All 21 assets are 1536 × 1024 RGB PNG files.
+The 21 landscape assets are 1536 × 1024 RGB PNG files. The four attorney
+headshots are 1122 × 1402 RGB PNG files, composed as crop-safe 4:5 portraits
+for the lawyer profile header.
 
 ## Asset map
 
@@ -20,6 +22,10 @@ All 21 assets are 1536 × 1024 RGB PNG files.
 | `lawyer-profile-corporate-placeholder.png` | Corporate lawyer profile placeholder | Corporate legal professional in a modern office setting |
 | `lawyer-profile-litigation-placeholder.png` | Litigation lawyer profile placeholder | Litigation professional in a refined office setting |
 | `lawyer-profile-restructuring-placeholder.png` | Restructuring lawyer profile placeholder | Restructuring professional in a city office setting |
+| `lawyer-donna-m-welch-headshot.png` | Donna M. Welch demo profile portrait | Professional portrait placeholder for the Donna M. Welch profile |
+| `lawyer-jennifer-s-perkins-headshot.png` | Jennifer S. Perkins demo profile portrait | Professional portrait placeholder for the Jennifer S. Perkins profile |
+| `lawyer-jon-a-ballis-headshot.png` | Jon A. Ballis demo profile portrait | Professional portrait placeholder for the Jon A. Ballis profile |
+| `lawyer-joshua-a-sussberg-headshot.png` | Joshua A. Sussberg demo profile portrait | Professional portrait placeholder for the Joshua A. Sussberg profile |
 | `services-landing.png` | Services landing page hero | Legal team gathered in a modern boardroom overlooking a city |
 | `service-private-equity.png` | Private Equity service page | Transaction documents on a boardroom table above a city |
 | `service-mergers-acquisitions.png` | Mergers and Acquisitions service page | Transaction documents against intersecting glass and stone architecture |
@@ -34,7 +40,11 @@ All 21 assets are 1536 × 1024 RGB PNG files.
 
 ## Lawyer image notice
 
-The lawyer profile assets are non-identifying placeholders. They are not portraits of, and should not be presented as likenesses of, any real Kirkland attorney. Replace them with approved official headshots before any public or client-facing launch.
+The lawyer profile assets are non-identifying, AI-generated placeholders. They
+are not portraits of, and should not be presented as likenesses of, any real
+Kirkland attorney. Their filenames only map each demo asset to its intended
+profile page. Replace them with approved official headshots before any public
+or client-facing launch.
 
 ## Logo
 
