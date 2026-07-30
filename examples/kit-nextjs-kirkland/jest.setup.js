@@ -68,6 +68,8 @@ jest.mock('@radix-ui/react-slot', () => ({
     return React.createElement('div', { ...props, ref }, children);
   }),
   Slottable: ({ children }) => React.createElement(React.Fragment, {}, children),
+  createSlottable: () => ({ children }) =>
+    React.createElement(React.Fragment, {}, children),
   createSlot: (name) => {
     const SlotComponent = React.forwardRef(({ children, ...props }, ref) => {
       if (React.isValidElement(children)) {

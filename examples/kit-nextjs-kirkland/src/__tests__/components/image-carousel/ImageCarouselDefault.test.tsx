@@ -226,4 +226,20 @@ describe('ImageCarouselDefault', () => {
       '/services/transactional',
     );
   });
+
+  it('renders a polished decorative fallback when a DAM image is not assigned', () => {
+    const props = createProps(true);
+    props.fields.data.datasource.imageItems.results[0].image.jsonValue.value = {
+      src: '',
+      alt: '',
+    };
+
+    const { container } = render(<ImageCarouselDefault {...props} />);
+
+    expect(
+      container.querySelector('[data-image-state="empty"]'),
+    ).toBeInTheDocument();
+    expect(screen.getAllByTestId('carousel-image')).toHaveLength(2);
+    expect(screen.getByText('Transactional')).toBeInTheDocument();
+  });
 });

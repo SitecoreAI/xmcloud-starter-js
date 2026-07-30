@@ -133,6 +133,9 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
               >
                 {slides.map((slide, index) => {
                   const isActive = index === currentIndex;
+                  const hasImage = Boolean(
+                    slide.image?.jsonValue?.value?.src?.trim(),
+                  );
 
                   return (
                     <CarouselItem
@@ -149,18 +152,32 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
                     >
                       <div
                         className={cn(
-                          'relative aspect-[16/9] min-h-[300px] overflow-hidden bg-black transition-[opacity,transform] duration-500',
+                          'relative aspect-[16/9] min-h-[300px] overflow-hidden bg-[#111827] transition-[opacity,transform] duration-500',
                           isActive
                             ? 'scale-100 opacity-100'
                             : 'scale-[0.965] opacity-45',
                         )}
+                        data-image-state={hasImage ? 'configured' : 'empty'}
                       >
-                        <ImageWrapper
-                          image={slide.image?.jsonValue}
-                          wrapperClass="absolute inset-0 h-full w-full"
-                          className="h-full w-full object-cover"
-                          page={props.page}
-                        />
+                        {hasImage ? (
+                          <ImageWrapper
+                            image={slide.image?.jsonValue}
+                            wrapperClass="absolute inset-0 h-full w-full"
+                            className="h-full w-full object-cover"
+                            page={props.page}
+                          />
+                        ) : (
+                          <div
+                            className="pointer-events-none absolute inset-0 overflow-hidden bg-[linear-gradient(135deg,#111827_0%,#25344a_52%,#0c1422_100%)]"
+                            aria-hidden="true"
+                          >
+                            <div className="absolute -right-[8%] -top-[28%] aspect-square w-[62%] rounded-full border border-white/10" />
+                            <div className="absolute -right-[1%] -top-[15%] aspect-square w-[42%] rounded-full border border-white/10" />
+                            <span className="absolute right-[clamp(1.25rem,3cqw,2.5rem)] top-[clamp(1.25rem,3cqw,2.5rem)] font-heading text-[clamp(3rem,8cqw,7rem)] font-light leading-none text-white/10">
+                              {String(index + 1).padStart(2, '0')}
+                            </span>
+                          </div>
+                        )}
                         <div
                           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/5"
                           aria-hidden="true"
