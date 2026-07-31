@@ -8,8 +8,8 @@ The demo targets the recognizable structure of a large law-firm site—prominent
 
 1. Copy `.env.remote.example` to `.env.local`.
 2. Add the XM Cloud values for `SITECORE_EDGE_CONTEXT_ID`, `NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID`, and `SITECORE_EDITING_SECRET`.
-3. Confirm that `NEXT_PUBLIC_DEFAULT_SITE_NAME` exactly matches the Sitecore Site Grouping item.
-4. Set `SITECORE_SITE_COLLECTION_NAME` to the Sitecore collection containing the site.
+3. Keep `NEXT_PUBLIC_DEFAULT_SITE_NAME` set to the exact Sitecore Site Grouping name, `kit-nextjs-kirkland`.
+4. Keep `SITECORE_SITE_COLLECTION_NAME` set to the containing Sitecore collection, `legal`.
 5. Install and run:
 
     ```bash
@@ -23,7 +23,7 @@ The application is available at `http://localhost:3000`.
 
 The root `xmcloud.build.json` registers this app as the enabled rendering host `kit-nextjs-kirkland`. When split deployment is enabled, create an editing host with that exact name.
 
-Create the Sitecore site with the existing **Alaris** site template, name it **Kirkland**, and then set its Site Grouping `RenderingHost` field to `kit-nextjs-kirkland`. The shared Alaris setup script initially points new sites at the original location starter.
+The deployed Sitecore site is named **kit-nextjs-kirkland** in the **legal** site collection. Its Site Grouping `RenderingHost` field must remain `kit-nextjs-kirkland`, and the Vercel environment variable `NEXT_PUBLIC_DEFAULT_SITE_NAME` must use that same exact value.
 
 ## Suggested Sitecore AI page composition
 

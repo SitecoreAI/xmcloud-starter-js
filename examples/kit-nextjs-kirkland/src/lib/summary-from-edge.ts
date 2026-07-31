@@ -1,6 +1,6 @@
 import scConfig from 'sitecore.config';
 import client from '@/lib/sitecore-client';
-import { buildSiteDataPath } from '@/lib/site-path';
+import { buildSiteDataPath, KIRKLAND_SITE_NAME } from '@/lib/site-path';
 
 const SUMMARY_GRAPHQL_TYPE = 'AISummary';
 const SUMMARY_DATA_PATH_SUFFIX = '/Data/AI Config/Summary';
@@ -46,8 +46,9 @@ function buildSummaryQuery(fragmentType: string): string {
 
 function buildSummaryPath(): string {
   const siteName =
-    scConfig.defaultSite || process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || '';
-  if (!siteName) return '';
+    scConfig.defaultSite ||
+    process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME ||
+    KIRKLAND_SITE_NAME;
   return buildSiteDataPath(siteName, SUMMARY_DATA_PATH_SUFFIX);
 }
 

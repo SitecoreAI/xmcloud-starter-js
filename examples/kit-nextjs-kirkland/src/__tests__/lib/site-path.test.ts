@@ -11,19 +11,23 @@ describe('buildSiteDataPath', () => {
     }
   });
 
-  it('uses the Kirkland collection by default', () => {
+  it('uses the legal collection by default', () => {
     delete process.env.SITECORE_SITE_COLLECTION_NAME;
 
-    expect(buildSiteDataPath('Kirkland', '/Data/AI Config/Summary')).toBe(
-      '/sitecore/content/Kirkland/Kirkland/Data/AI Config/Summary',
+    expect(
+      buildSiteDataPath('kit-nextjs-kirkland', '/Data/AI Config/Summary'),
+    ).toBe(
+      '/sitecore/content/legal/kit-nextjs-kirkland/Data/AI Config/Summary',
     );
   });
 
   it('uses the configured Sitecore collection name', () => {
     process.env.SITECORE_SITE_COLLECTION_NAME = ' Demo Sites ';
 
-    expect(buildSiteDataPath('Kirkland', '/Data/AI Config/FAQ')).toBe(
-      '/sitecore/content/Demo Sites/Kirkland/Data/AI Config/FAQ',
+    expect(
+      buildSiteDataPath('kit-nextjs-kirkland', '/Data/AI Config/FAQ'),
+    ).toBe(
+      '/sitecore/content/Demo Sites/kit-nextjs-kirkland/Data/AI Config/FAQ',
     );
   });
 });

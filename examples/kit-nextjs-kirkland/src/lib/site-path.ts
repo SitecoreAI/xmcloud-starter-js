@@ -1,4 +1,5 @@
-const DEFAULT_SITE_COLLECTION_NAME = 'Kirkland';
+export const KIRKLAND_SITE_NAME = 'kit-nextjs-kirkland';
+export const KIRKLAND_SITE_COLLECTION_NAME = 'legal';
 
 /**
  * Builds a content-tree path without coupling the rendering host to a specific
@@ -8,7 +9,7 @@ const DEFAULT_SITE_COLLECTION_NAME = 'Kirkland';
 export function buildSiteDataPath(siteName: string, suffix: string): string {
   const siteCollectionName =
     process.env.SITECORE_SITE_COLLECTION_NAME?.trim() ||
-    DEFAULT_SITE_COLLECTION_NAME;
+    KIRKLAND_SITE_COLLECTION_NAME;
 
   return `/sitecore/content/${siteCollectionName}/${siteName}${suffix}`;
 }

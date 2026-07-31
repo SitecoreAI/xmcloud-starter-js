@@ -1,6 +1,6 @@
 import scConfig from 'sitecore.config';
 import client from '@/lib/sitecore-client';
-import { buildSiteDataPath } from '@/lib/site-path';
+import { buildSiteDataPath, KIRKLAND_SITE_NAME } from '@/lib/site-path';
 
 const SERVICE_GRAPHQL_TYPE = 'AIService';
 const SERVICE_DATA_PATH_SUFFIX = '/Data/AI Config/Services';
@@ -67,8 +67,9 @@ function buildServiceQuery(fragmentType: string): string {
 
 function buildServicePath(): string {
   const siteName =
-    scConfig.defaultSite || process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || '';
-  if (!siteName) return '';
+    scConfig.defaultSite ||
+    process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME ||
+    KIRKLAND_SITE_NAME;
   return buildSiteDataPath(siteName, SERVICE_DATA_PATH_SUFFIX);
 }
 
