@@ -1,6 +1,6 @@
 // src/__tests__/components/article-header/ArticleHeader.dev.test.tsx
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Default as ArticleHeader } from '@/components/article-header/ArticleHeader';
 import { Page } from '@sitecore-content-sdk/nextjs';
@@ -152,11 +152,13 @@ const mockProps = {
           jsonValue: {
             id: 'author-id',
             name: 'john-doe',
+            url: '/Lawyers/John-Doe',
             fields: {
-              personFirstName: { value: 'John' },
-              personLastName: { value: 'Doe' },
-              personJobTitle: { value: 'Partner' },
-              personProfileImage: { value: { src: '/author.jpg' } },
+              pageHeaderTitle: { value: 'John Doe' },
+              pageSubtitle: { value: 'Private Equity' },
+              pageThumbnail: {
+                value: { src: '/author.jpg', alt: 'Portrait of John Doe' },
+              },
             },
           },
         },
@@ -265,7 +267,7 @@ describe('ArticleHeader Component', () => {
       'alt',
       'Data center infrastructure at dusk',
     );
-    expect(screen.getByText('John').closest('p')).toHaveTextContent('John Doe');
+    expect(screen.getByText('John Doe')).toBeInTheDocument();
     expect(screen.getByText('5 min read')).toBeInTheDocument();
     expect(screen.getByText('October 13, 2025')).toBeInTheDocument();
     expect(
@@ -398,8 +400,37 @@ describe('ArticleHeader Component', () => {
       'src',
       '/author.jpg',
     );
-    expect(screen.getByText('John').closest('p')).toHaveTextContent('John Doe');
-    expect(screen.getByText('Partner')).toBeInTheDocument();
+    expect(screen.getByTestId('avatar-img')).toHaveAttribute(
+      'alt',
+      'Portrait of John Doe',
+    );
+    const authorLink = screen.getByRole('link', { name: /John Doe/ });
+    expect(authorLink).toHaveAttribute('href', '/Lawyers/John-Doe');
+    expect(within(authorLink).getByText('Private Equity')).toBeInTheDocument();
+  });
+
+  it('keeps the lawyer card non-navigable while editing', () => {
+    const editingPage = {
+      ...mockPageBase,
+      mode: {
+        ...mockPageBase.mode,
+        isEditing: true,
+        isNormal: false,
+        name: 'edit' as const,
+      },
+    } as Page;
+
+    render(
+      <ArticleHeader
+        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
+        page={editingPage}
+      />,
+    );
+
+    expect(screen.getByText('John Doe')).toBeInTheDocument();
+    expect(
+      screen.queryByRole('link', { name: /John Doe/ }),
+    ).not.toBeInTheDocument();
   });
 
   it('handles share button clicks correctly', () => {

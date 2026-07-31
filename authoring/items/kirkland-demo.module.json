@@ -41,8 +41,13 @@
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.author-bucket",
-        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Taxonomy/People/2026",
+        "name": "kirkland.demo.author.jennifer-perkins",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Lawyers/Jennifer S Perkins",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.author.jon-ballis",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Lawyers/Jon A Ballis",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {

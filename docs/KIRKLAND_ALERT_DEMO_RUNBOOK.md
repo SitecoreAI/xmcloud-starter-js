@@ -17,7 +17,7 @@ Use the configured **BlackRock Meta Data Center Venture** alert for all four loo
 | Purpose          | Configured item                                                                  |
 | ---------------- | -------------------------------------------------------------------------------- |
 | Alert            | BlackRock Meta Data Center Venture                                               |
-| Author           | Kirkland and Ellis LLP                                                           |
+| Author           | Jennifer S. Perkins                                                              |
 | Practice         | Private Equity                                                                   |
 | Office           | New York                                                                         |
 | Content type     | Deal Announcement                                                                |
@@ -31,8 +31,8 @@ The relationship fields on the alert are `taxAuthor`, `relatedPractice`, `relate
 ## Loop 1 — public experience
 
 1. Open `/News-and-Insights/BlackRock-Meta-Data-Center-Venture` in a clean browser session.
-2. Point out the headline, summary, firm author, **Private Equity** practice, **New York** office, source material, related insights, content type, topic, and English-language context.
-3. Open the source material in a new tab, and then follow the **Private Equity** link to its configured practice page.
+2. Point out the headline, summary, linked lawyer author, **Private Equity** practice, **New York** office, source material, related insights, content type, topic, and English-language context.
+3. Open the source material in a new tab, follow **Jennifer S. Perkins** to her lawyer profile, and then follow **Private Equity** to its configured practice page.
 4. Use this sentence exactly:
 
    > SitecoreAI links approved content records that Kirkland has configured.
@@ -50,7 +50,7 @@ The relationship fields on the alert are `taxAuthor`, `relatedPractice`, `relate
    - In the summary, change the final phrase from **long-term growth** to **long-term infrastructure growth**.
    - Edit the article-body datasource in context; change the first section heading from **A framework built for scale** to **A framework designed for scale**.
    - In the CTA Banner’s content fields, change **View all News & Insights** to **Explore all News & Insights**.
-   - In the page Content panel, show the configured **Digital Infrastructure** topic, **Private Equity** practice, **New York** office, source, and related-insight selectors. Reference-derived links are managed in these fields, not by editing their rendered anchor text on the canvas.
+   - In the page Content panel, show the configured **Jennifer S. Perkins** author, **Digital Infrastructure** topic, **Private Equity** practice, **New York** office, source, and related-insight selectors. Reference-derived links are managed in these fields, not by editing their rendered anchor text on the canvas.
 4. Demonstrate the component guardrails by moving the existing CTA Banner above the article body, showing the changed order, and then using **Undo** to restore the approved Header → Body → CTA sequence.
 5. Show the responsive preview at 1024 px desktop width, tablet width, and phone width. Check headline wrapping, metadata alignment, source and related-insight cards, body margins, and CTA spacing.
 6. Save the draft. Do not approve or publish during this loop.
@@ -61,14 +61,14 @@ The relationship fields on the alert are `taxAuthor`, `relatedPractice`, `relate
 
 1. Open the alert in Content mode or Explorer, and expand the actual reference fields.
 2. Select the configured records:
-   - `taxAuthor`: **Kirkland and Ellis LLP**
+   - `taxAuthor`: **Jennifer S. Perkins**
    - `relatedPractice`: **Private Equity**
    - `relatedOffice`: **New York**
    - `sourceItem`: **Meta and BlackRock transaction announcement**
    - `relatedInsights`: **PAI Partners Pasubio Refinancing** and **UK National Security and Investment Act Update**
 3. Return to Page Builder, and show those records rendered in context. Follow the Private Equity link or one related-insight link to prove that it is a configured destination.
-4. Select **Kirkland and Ellis LLP**, and show **Used in x places**. Read the count displayed by Sitecore; do not promise a fixed count because it changes as records are added.
-5. Open **PAI Partners Pasubio Refinancing** as the second configured destination that uses the same firm-author item.
+4. Select **Jennifer S. Perkins**, and show **Used in x places**. Read the count displayed by Sitecore; do not promise a fixed count because it changes as records are added.
+5. Open **UK National Security and Investment Act Update** as the second configured destination that uses the same lawyer profile.
 
 **Value statement:** Reusable, governed references reduce duplicate data entry and make every configured destination easier to maintain.
 
@@ -90,7 +90,8 @@ The relationship fields on the alert are `taxAuthor`, `relatedPractice`, `relate
 
 5. Return as the Publisher. Show that the approved workflow state has not automatically published the alert: **Publish** remains a distinct, deliberate action.
 6. Publish only the configured dependency set:
-   - Kirkland and Ellis LLP
+   - Jennifer S. Perkins
+   - Jon A. Ballis
    - Private Equity
    - New York
    - Meta and BlackRock transaction announcement

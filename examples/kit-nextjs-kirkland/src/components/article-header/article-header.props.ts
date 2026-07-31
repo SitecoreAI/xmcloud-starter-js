@@ -20,7 +20,10 @@ export type ArticleHeaderDatasource = {
   eyebrowOptional?: GraphQLTextField;
 };
 
-export type PersonItemFields = {
+export type ArticleAuthorItemFields = {
+  pageHeaderTitle?: Field<string>;
+  pageThumbnail?: ImageField;
+  pageSubtitle?: Field<string>;
   personProfileImage?: ImageField;
   personFirstName?: Field<string>;
   personLastName?: Field<string>;
@@ -29,8 +32,13 @@ export type PersonItemFields = {
   personLinkedIn?: LinkField;
 };
 
-export type PersonItem = ReferenceField & {
-  fields?: PersonItemFields;
+export type ArticleAuthorItem = Omit<ReferenceField, 'url' | 'fields'> & {
+  url?:
+    | string
+    | {
+        href?: string;
+      };
+  fields?: ArticleAuthorItemFields;
 };
 
 export type ArticleReferenceItemFields = {
@@ -60,7 +68,7 @@ export type ArticleHeaderExternalFields = {
   pageSummary?: CompatibleField<Field<string>>;
   pageReadTime?: CompatibleField<Field<string>>;
   pageDisplayDate?: CompatibleField<Field<string>>;
-  pageAuthor?: CompatibleField<PersonItem | null>;
+  pageAuthor?: CompatibleField<ArticleAuthorItem | null>;
   contentType?: ArticleReferenceField;
   topics?: ArticleReferenceListField;
   relatedPractice?: ArticleReferenceField;
@@ -74,7 +82,7 @@ export type ArticleHeaderRouteFields = {
   pageSummary?: Field<string>;
   pageReadTime?: Field<string>;
   pageDisplayDate?: Field<string>;
-  taxAuthor?: PersonItem | null;
+  taxAuthor?: ArticleAuthorItem | null;
   taxContentType?: ArticleReferenceItem | null;
   taxTopic?: ArticleReferenceItem[];
   relatedPractice?: ArticleReferenceItem | null;

@@ -16,6 +16,7 @@ import { getFieldValue } from '@/lib/component-props';
 import type {
   ArticleHeaderDatasource,
   ArticleHeaderProps,
+  ArticleAuthorItem,
   ArticleReferenceItem,
   ArticleHeaderRouteFields,
 } from './article-header.props';
@@ -51,6 +52,12 @@ const getReferenceTitle = (item?: ArticleReferenceItem | null): string => {
 };
 
 const getReferenceHref = (item?: ArticleReferenceItem | null): string => {
+  if (!item?.url) return '';
+
+  return typeof item.url === 'string' ? item.url : item.url.href || '';
+};
+
+const getAuthorHref = (item?: ArticleAuthorItem | null): string => {
   if (!item?.url) return '';
 
   return typeof item.url === 'string' ? item.url : item.url.href || '';
@@ -238,15 +245,80 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
       },
     ];
 
-    const authorFirstName = pageAuthorField?.fields?.personFirstName?.value;
-    const authorLastName = pageAuthorField?.fields?.personLastName?.value;
-    const authorName = [authorFirstName, authorLastName]
+    const legacyAuthorFirstName =
+      pageAuthorField?.fields?.personFirstName?.value;
+    const legacyAuthorLastName = pageAuthorField?.fields?.personLastName?.value;
+    const legacyAuthorName = [legacyAuthorFirstName, legacyAuthorLastName]
       .filter(Boolean)
       .join(' ');
-    const authorInitials = [authorFirstName, authorLastName]
+    const authorName =
+      pageAuthorField?.fields?.pageHeaderTitle?.value?.toString().trim() ||
+      legacyAuthorName ||
+      pageAuthorField?.displayName ||
+      pageAuthorField?.name ||
+      '';
+    const authorNameParts = authorName.split(/\s+/).filter(Boolean);
+    const authorInitials = [
+      authorNameParts[0]?.charAt(0),
+      authorNameParts.length > 1
+        ? authorNameParts[authorNameParts.length - 1]?.charAt(0)
+        : '',
+    ]
       .filter(Boolean)
-      .map((name) => name?.charAt(0))
       .join('');
+    const authorImageField =
+      pageAuthorField?.fields?.pageThumbnail ||
+      pageAuthorField?.fields?.personProfileImage;
+    const authorImageAlt =
+      typeof authorImageField?.value?.alt === 'string'
+        ? authorImageField.value.alt
+        : authorName;
+    const authorPracticeField =
+      pageAuthorField?.fields?.pageSubtitle ||
+      pageAuthorField?.fields?.personJobTitle;
+    const authorHref = getAuthorHref(pageAuthorField);
+
+    const authorCard = (
+      <>
+        <Avatar className="h-12 w-12 border border-white/20 bg-white/10">
+          <AvatarImage
+            src={authorImageField?.value?.src}
+            alt={authorImageAlt}
+            className="object-cover"
+          />
+          <AvatarFallback className="bg-white/10 text-sm text-white">
+            {authorInitials || 'A'}
+          </AvatarFallback>
+        </Avatar>
+        <div className="min-w-0">
+          <p className="text-xs uppercase tracking-[0.12em] text-white/60">
+            Author
+          </p>
+          {authorName ? (
+            pageAuthorField?.fields?.pageHeaderTitle ? (
+              <Text
+                tag="p"
+                field={pageAuthorField.fields.pageHeaderTitle}
+                className="truncate font-medium underline-offset-4 group-hover:text-accent group-hover:underline"
+              />
+            ) : (
+              <p className="truncate font-medium underline-offset-4 group-hover:text-accent group-hover:underline">
+                {authorName}
+              </p>
+            )
+          ) : (
+            <p className="font-medium text-white/60">Select an author</p>
+          )}
+          {authorPracticeField?.value && (
+            <Text
+              tag="p"
+              field={authorPracticeField}
+              className="text-sm text-white/60"
+            />
+          )}
+        </div>
+      </>
+    );
 
     return (
       <>
@@ -417,47 +489,19 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
             )}
 
             <div className="mt-6 flex flex-col gap-5 pt-5 @md/article-header:flex-row @md/article-header:items-center @md/article-header:justify-between">
-              {(authorName || isPageEditing) && (
-                <div className="flex min-w-0 items-center gap-3">
-                  <Avatar>
-                    <AvatarImage
-                      src={
-                        pageAuthorField?.fields?.personProfileImage?.value?.src
-                      }
-                      alt={authorName}
-                    />
-                    <AvatarFallback>{authorInitials || 'A'}</AvatarFallback>
-                  </Avatar>
-                  <div className="min-w-0">
-                    <p className="text-xs uppercase tracking-[0.12em] text-white/60">
-                      Author
-                    </p>
-                    {authorName ? (
-                      <p className="truncate font-medium">
-                        <Text
-                          tag="span"
-                          field={pageAuthorField?.fields?.personFirstName}
-                        />{' '}
-                        <Text
-                          tag="span"
-                          field={pageAuthorField?.fields?.personLastName}
-                        />
-                      </p>
-                    ) : (
-                      <p className="font-medium text-white/60">
-                        Select an author
-                      </p>
-                    )}
-                    {pageAuthorField?.fields?.personJobTitle && (
-                      <Text
-                        tag="p"
-                        field={pageAuthorField.fields.personJobTitle}
-                        className="text-sm text-white/60"
-                      />
-                    )}
+              {(authorName || isPageEditing) &&
+                (authorHref && !isPageEditing ? (
+                  <a
+                    href={authorHref}
+                    className="group flex min-w-0 items-center gap-3 rounded-default focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[#090e13]"
+                  >
+                    {authorCard}
+                  </a>
+                ) : (
+                  <div className="group flex min-w-0 items-center gap-3">
+                    {authorCard}
                   </div>
-                </div>
-              )}
+                ))}
               <div className="flex items-center gap-3 @md/article-header:ml-auto">
                 <span className="text-sm text-white/60">Share</span>
                 <FloatingDock items={links} forceCollapse />
