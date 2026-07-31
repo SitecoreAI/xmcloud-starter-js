@@ -143,6 +143,36 @@ describe('RichTextBlock Component', () => {
     expect(container).not.toHaveClass('legal-article-body');
   });
 
+  it('applies article typography to branch-created Article Page bodies', () => {
+    const articlePage = {
+      ...mockPageBase,
+      layout: {
+        sitecore: {
+          context: {},
+          route: {
+            name: 'new-article',
+            placeholders: {},
+            templateName: 'Article Page',
+          },
+        },
+      },
+    } as Page;
+
+    render(
+      <RichTextBlock
+        fields={mockFields}
+        params={{}}
+        rendering={mockRendering}
+        page={articlePage}
+      />,
+    );
+
+    const container = screen
+      .getByTestId('richtext')
+      .closest('.component.rich-text');
+    expect(container).toHaveClass('legal-article-body');
+  });
+
   it('renders empty hint when text field is empty', () => {
     const emptyFields = {
       text: { value: '' },

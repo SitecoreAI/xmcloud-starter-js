@@ -7,8 +7,8 @@ Use the configured **BlackRock Meta Data Center Venture** alert for all four loo
 - Deploy the Kirkland editing host before the rehearsal, and verify the alert in Page Builder at the default 1024 px desktop width, tablet width, and phone width.
 - Pull the `Kirkland.Demo` and `kirkland-page-branches` serialization modules after connecting the Sitecore CLI. The module files define intentionally narrow boundaries; they do not replace a serialization pull and do not contain fabricated item YAML.
 - Publish the site-level `Presentation/Page Branches` rule item and the configured **News Article** branch. Confirm that **News Article** is the creation option under **News and Insights**.
-- Keep version 1 of the alert approved and published. Keep version 2, and its article-body datasource version 2, in **Draft** until the authoring loop.
-- In Content Editor, confirm that the Required validator is visible for Practice, Office, and Source material, and that approval is blocked while any one of those fields is empty.
+- Keep version 1 of the alert approved and published. Keep version 2, its article-body datasource version 2, and any page-level datasource that will be edited in **Draft** until the authoring loop.
+- In Content Editor, confirm that the Required validator is visible for Practice, Office, and Source material, and that Submit and Approve are blocked while any one of those fields is empty.
 - Verify the named Author, Reviewer, and Publisher accounts before the demo. The Reviewer must be able to execute the configured Approve and Reject commands, and the Publisher must have explicit publish rights.
 - Use a real reviewer session. If role switching is not practical, prepare a verified screenshot from that session; never imply that an unverified or simulated account is live.
 
@@ -32,21 +32,30 @@ The relationship fields on the alert are `taxAuthor`, `relatedPractice`, `relate
 
 1. Open `/News-and-Insights/BlackRock-Meta-Data-Center-Venture` in a clean browser session.
 2. Point out the headline, summary, firm author, **Private Equity** practice, **New York** office, source material, related insights, content type, topic, and English-language context.
-3. Open the source material, and then follow the **Private Equity** link to its configured practice page.
+3. Open the source material in a new tab, and then follow the **Private Equity** link to its configured practice page.
 4. Use this sentence exactly:
 
    > SitecoreAI links approved content records that Kirkland has configured.
 
 5. Describe only authored and approved record links. Do not describe inferred relationships between people, inferred interests, visitor behavior, or recommendations based on behavior.
 
+**Value statement:** Kirkland controls the approved records and relationships; the public experience renders those trusted connections consistently.
+
 ## Loop 2 — Page Builder authoring checkpoint
 
 1. Sign in as the Author, and open the Kirkland site and the alert in Page Builder.
 2. Show the configured and published **News Article** page branch as the pattern for new alerts, then continue with the existing BlackRock alert version 2.
-3. Edit the headline, summary, body, link text, and relevant metadata in context. The body is page-level data, so edit the alert’s article-body datasource rather than a shared global rich-text item.
-4. Add or rearrange one approved component within the available-rendering and placeholder guardrails. Moving the existing CTA Banner below the article body is a safe rehearsal action.
+3. Make the rehearsed edits:
+   - On the canvas, shorten the headline to **Kirkland Advises BlackRock Funds on Strategic Data Center Venture with Meta**.
+   - In the summary, change the final phrase from **long-term growth** to **long-term infrastructure growth**.
+   - Edit the article-body datasource in context; change the first section heading from **A framework built for scale** to **A framework designed for scale**.
+   - In the CTA Banner’s content fields, change **View all News & Insights** to **Explore all News & Insights**.
+   - In the page Content panel, show the configured **Digital Infrastructure** topic, **Private Equity** practice, **New York** office, source, and related-insight selectors. Reference-derived links are managed in these fields, not by editing their rendered anchor text on the canvas.
+4. Demonstrate the component guardrails by moving the existing CTA Banner above the article body, showing the changed order, and then using **Undo** to restore the approved Header → Body → CTA sequence.
 5. Show the responsive preview at 1024 px desktop width, tablet width, and phone width. Check headline wrapping, metadata alignment, source and related-insight cards, body margins, and CTA spacing.
 6. Save the draft. Do not approve or publish during this loop.
+
+**Value statement:** Authors make changes in context while approved components, page-level datasources, and placement rules keep the experience on brand.
 
 ## Loop 3 — reference fields and reuse
 
@@ -61,21 +70,23 @@ The relationship fields on the alert are `taxAuthor`, `relatedPractice`, `relate
 4. Select **Kirkland and Ellis LLP**, and show **Used in x places**. Read the count displayed by Sitecore; do not promise a fixed count because it changes as records are added.
 5. Open **PAI Partners Pasubio Refinancing** as the second configured destination that uses the same firm-author item.
 
+**Value statement:** Reusable, governed references reduce duplicate data entry and make every configured destination easier to maintain.
+
 ## Loop 4 — versioning, review, and deliberate publishing
 
-1. In Content Editor, open **Versions**, and compare current Draft version 2 with prior approved version 1. If the body changed, compare the article-body datasource versions as well.
+1. In Content Editor, open **Versions**, and compare current Draft version 2 with prior approved version 1. Compare fields in Content Editor, not a version-1 Page Builder preview, and compare the article-body and CTA datasource versions as well.
 2. Show the configured required-field validation on `relatedPractice`, `relatedOffice`, and `sourceItem`. `relatedInsights` is optional. If demonstrating an error, briefly clear one required reference, show the validation result, restore the approved value, and save.
-3. As the Author, execute **Submit**:
+3. As the Author, execute **Submit** on the alert and each changed page-level datasource, including **Article Body** and **Explore More Insights**:
 
    `Draft → Awaiting Approval`
 
-   Add a specific review comment if the command prompts for one.
+   Add a specific review comment to each submitted item.
 
 4. Switch to the verified Reviewer session. Show that **Approve** and **Reject** are the configured decisions:
    - `Awaiting Approval → Approved` through **Approve**
    - `Awaiting Approval → Draft` through **Reject**
 
-   Execute the rehearsed decision, and show the recorded comment or workflow-history entry. To demonstrate Reject, reject with a comment, let the Author correct and resubmit, and then approve in the Reviewer session.
+   Use **Approve** as the short primary path on the alert and every changed datasource, and show the recorded comment or workflow-history entry. If time permits, demonstrate Reject on the alert, correct and resubmit it as the Author, and then approve it in the Reviewer session.
 
 5. Return as the Publisher. Show that the approved workflow state has not automatically published the alert: **Publish** remains a distinct, deliberate action.
 6. Publish only the configured dependency set:
@@ -88,6 +99,12 @@ The relationship fields on the alert are `taxAuthor`, `relatedPractice`, `relate
    - both related insights and their page-level datasources
    - the BlackRock alert and its page-level datasources
 7. Reopen the clean public session, refresh the alert, and verify the approved headline, summary, links, metadata, source, and related insights.
+
+**Value statement:** Version comparison, required fields, independent review, and deliberate publishing create an auditable checkpoint before legal content reaches the public experience.
+
+## Reset for the next rehearsal
+
+After publishing the current draft, do not try to move an approved version backward in workflow. Create a new Draft version of the alert, Article Body, and CTA datasource. Restore the rehearsed starting copy, leave the prior approved version published, verify the relationship fields, and repeat the readiness gates. Update the version numbers in this runbook if the baseline is no longer version 1 versus version 2.
 
 ## Workflow and presenter guardrails
 

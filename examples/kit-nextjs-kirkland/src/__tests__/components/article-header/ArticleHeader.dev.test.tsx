@@ -289,6 +289,9 @@ describe('ArticleHeader Component', () => {
       'href',
       '/Locations/New-York',
     );
+    expect(screen.getByText('Content type')).toBeInTheDocument();
+    expect(screen.getByText('Deal Announcement')).toBeInTheDocument();
+    expect(screen.getByText('Topic')).toBeInTheDocument();
     expect(screen.getByText('Digital Infrastructure')).toBeInTheDocument();
     expect(screen.getByText('English')).toBeInTheDocument();
     expect(
@@ -303,6 +306,70 @@ describe('ArticleHeader Component', () => {
     expect(
       screen.getByRole('link', { name: 'Related Article' }),
     ).toHaveAttribute('href', '/News-and-Insights/Related-Article');
+  });
+
+  it('uses version-aware route fields instead of latest queried page fields', () => {
+    const versionedPage = {
+      ...mockPageBase,
+      layout: {
+        sitecore: {
+          context: {},
+          route: {
+            name: 'sample-article',
+            placeholders: {},
+            fields: {
+              pageHeaderTitle: { value: 'Prior approved headline' },
+              pageSummary: { value: 'Prior approved summary.' },
+              pageReadTime: { value: '4 min read' },
+              pageDisplayDate: { value: '2025-10-12T00:00:00Z' },
+            },
+          },
+        },
+      },
+    } as unknown as Page;
+
+    render(
+      <ArticleHeader
+        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
+        page={versionedPage}
+      />,
+    );
+
+    expect(screen.getByText('Prior approved headline')).toBeInTheDocument();
+    expect(screen.getByText('Prior approved summary.')).toBeInTheDocument();
+    expect(screen.queryByText('Sample Article')).not.toBeInTheDocument();
+  });
+
+  it('uses the configured source item name instead of a generic title', () => {
+    render(
+      <ArticleHeader
+        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
+        fields={{
+          ...mockProps.fields,
+          data: {
+            ...mockProps.fields.data,
+            externalFields: {
+              ...mockProps.fields.data.externalFields,
+              sourceItem: {
+                jsonValue: {
+                  ...mockProps.fields.data.externalFields.sourceItem.jsonValue,
+                  displayName: 'Meta and BlackRock transaction announcement',
+                  fields: {
+                    ...mockProps.fields.data.externalFields.sourceItem.jsonValue
+                      .fields,
+                    titleRequired: { value: 'Source material' },
+                  },
+                },
+              },
+            },
+          },
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByText('Meta and BlackRock transaction announcement'),
+    ).toBeInTheDocument();
   });
 
   it('links back to the News and Insights landing page', () => {
@@ -445,5 +512,56 @@ describe('ArticleHeader Component', () => {
     );
 
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+  });
+
+  it('keeps empty article relationships understandable in Page Builder', () => {
+    const editingPage = {
+      ...mockPageBase,
+      mode: {
+        ...mockPageBase.mode,
+        isEditing: true,
+        isNormal: false,
+        name: 'edit' as const,
+      },
+      layout: {
+        sitecore: {
+          context: {},
+          route: {
+            name: 'new-article',
+            placeholders: {},
+            fields: {
+              pageHeaderTitle: { value: '' },
+              pageSummary: { value: '' },
+              taxAuthor: null,
+              taxContentType: null,
+              taxTopic: [],
+              relatedPractice: null,
+              relatedOffice: null,
+              sourceItem: null,
+              relatedInsights: [],
+            },
+          },
+        },
+      },
+    } as unknown as Page;
+
+    render(
+      <ArticleHeader
+        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
+        page={editingPage}
+      />,
+    );
+
+    expect(screen.getByText('Select a practice')).toBeInTheDocument();
+    expect(screen.getByText('Select an office')).toBeInTheDocument();
+    expect(screen.getByText('Select a content type')).toBeInTheDocument();
+    expect(screen.getByText('Select a topic')).toBeInTheDocument();
+    expect(screen.getByText('Select an author')).toBeInTheDocument();
+    expect(
+      screen.getByText('Select source material in the Content panel.'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('Select related insights in the Content panel.'),
+    ).toBeInTheDocument();
   });
 });

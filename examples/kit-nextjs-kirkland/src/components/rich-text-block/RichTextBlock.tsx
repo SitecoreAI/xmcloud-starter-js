@@ -14,6 +14,10 @@ export const Default: React.FC<RichTextBlockProps> = (props) => {
   const cssStyles = [props.params.Styles, props.params.CSSStyles]
     .find((value): value is string => typeof value === 'string')
     ?.trim();
+  const isArticlePage =
+    props.page.layout.sitecore.route?.templateName === 'Article Page';
+  const articleBodyFallback =
+    !cssStyles && isArticlePage ? 'legal-article-body' : undefined;
   if (fields) {
     return (
       <article
@@ -21,6 +25,7 @@ export const Default: React.FC<RichTextBlockProps> = (props) => {
           'component rich-text',
           props.params.styles?.trimEnd(),
           cssStyles,
+          articleBodyFallback,
         )}
         id={id ? id : undefined}
       >

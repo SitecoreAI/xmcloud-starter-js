@@ -4,6 +4,7 @@ import type {
   LinkField,
 } from '@sitecore-content-sdk/nextjs';
 import type {
+  CompatibleField,
   GraphQLImageField,
   GraphQLTextField,
   OptionalComponentProps,
@@ -50,28 +51,36 @@ export type ArticleReferenceItem = Omit<ReferenceField, 'url' | 'fields'> & {
 
 export type ArticleReferenceField<
   T extends ArticleReferenceItem = ArticleReferenceItem,
-> = {
-  jsonValue?: T | null;
-};
+> = CompatibleField<T | null>;
 
-export type ArticleReferenceListField = {
-  jsonValue?: ArticleReferenceItem[];
-};
+export type ArticleReferenceListField = CompatibleField<ArticleReferenceItem[]>;
 
 export type ArticleHeaderExternalFields = {
-  pageHeaderTitle?: GraphQLTextField;
-  pageSummary?: GraphQLTextField;
-  pageReadTime?: GraphQLTextField;
-  pageDisplayDate?: GraphQLTextField;
-  pageAuthor?: {
-    jsonValue: PersonItem;
-  };
+  pageHeaderTitle?: CompatibleField<Field<string>>;
+  pageSummary?: CompatibleField<Field<string>>;
+  pageReadTime?: CompatibleField<Field<string>>;
+  pageDisplayDate?: CompatibleField<Field<string>>;
+  pageAuthor?: CompatibleField<PersonItem | null>;
   contentType?: ArticleReferenceField;
   topics?: ArticleReferenceListField;
   relatedPractice?: ArticleReferenceField;
   relatedOffice?: ArticleReferenceField;
   sourceItem?: ArticleReferenceField;
   relatedInsights?: ArticleReferenceListField;
+};
+
+export type ArticleHeaderRouteFields = {
+  pageHeaderTitle?: Field<string>;
+  pageSummary?: Field<string>;
+  pageReadTime?: Field<string>;
+  pageDisplayDate?: Field<string>;
+  taxAuthor?: PersonItem | null;
+  taxContentType?: ArticleReferenceItem | null;
+  taxTopic?: ArticleReferenceItem[];
+  relatedPractice?: ArticleReferenceItem | null;
+  relatedOffice?: ArticleReferenceItem | null;
+  sourceItem?: ArticleReferenceItem | null;
+  relatedInsights?: ArticleReferenceItem[];
 };
 
 export type ArticleHeaderFields = {

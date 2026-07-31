@@ -17,6 +17,7 @@ import type {
   ArticleHeaderDatasource,
   ArticleHeaderProps,
   ArticleReferenceItem,
+  ArticleHeaderRouteFields,
 } from './article-header.props';
 import { hasDocument, hasNavigator, isBrowser } from '@/utils/browser';
 
@@ -34,10 +35,15 @@ const formatArticleDate = (date: Date | null, locale: string): string => {
 const getReferenceTitle = (item?: ArticleReferenceItem | null): string => {
   const pageTitleField = getFieldValue(item?.fields?.pageHeaderTitle);
   const titleField = getFieldValue(item?.fields?.titleRequired);
+  const title = titleField?.value?.toString();
+
+  if (title?.trim().toLowerCase() === 'source material') {
+    return item?.displayName || item?.name || title;
+  }
 
   return (
     pageTitleField?.value?.toString() ||
-    titleField?.value?.toString() ||
+    title ||
     item?.displayName ||
     item?.name ||
     ''
@@ -67,7 +73,24 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
   const { fields, page } = props;
   const datasource: ArticleHeaderDatasource | undefined =
     fields?.data?.datasource;
-  const externalFields = fields?.data?.externalFields;
+  const queriedFields = fields?.data?.externalFields;
+  const routeFields = page.layout.sitecore.route
+    ?.fields as ArticleHeaderRouteFields;
+  const externalFields = routeFields
+    ? {
+        pageHeaderTitle: routeFields.pageHeaderTitle,
+        pageSummary: routeFields.pageSummary,
+        pageReadTime: routeFields.pageReadTime,
+        pageDisplayDate: routeFields.pageDisplayDate,
+        pageAuthor: routeFields.taxAuthor,
+        contentType: routeFields.taxContentType,
+        topics: routeFields.taxTopic,
+        relatedPractice: routeFields.relatedPractice,
+        relatedOffice: routeFields.relatedOffice,
+        sourceItem: routeFields.sourceItem,
+        relatedInsights: routeFields.relatedInsights,
+      }
+    : queriedFields;
   const imageField = getFieldValue(datasource?.imageRequired);
   const eyebrowField = getFieldValue(datasource?.eyebrowOptional);
   const pageHeaderTitleField = getFieldValue(externalFields?.pageHeaderTitle);
@@ -290,50 +313,81 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
               {(practiceItem ||
                 officeItem ||
                 topicItems.length > 0 ||
-                contentTypeItem) && (
-                <dl className="mt-8 grid grid-cols-2 gap-4 rounded-default bg-white/[0.055] p-5 @lg/article-header:grid-cols-4">
-                  {practiceItem && (
+                contentTypeItem ||
+                isPageEditing) && (
+                <dl className="mt-8 grid grid-cols-2 gap-4 rounded-default bg-white/[0.055] p-5 @lg/article-header:grid-cols-5">
+                  {(practiceItem || isPageEditing) && (
                     <div>
                       <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
                         Practice
                       </dt>
                       <dd className="mt-1 text-sm font-medium">
-                        <a
-                          className="text-accent underline-offset-4 hover:underline"
-                          href={getReferenceHref(practiceItem)}
-                        >
-                          {getReferenceTitle(practiceItem)}
-                        </a>
+                        {practiceItem ? (
+                          <a
+                            className="text-accent underline-offset-4 hover:underline"
+                            href={getReferenceHref(practiceItem)}
+                          >
+                            {getReferenceTitle(practiceItem)}
+                          </a>
+                        ) : (
+                          <span className="text-white/60">
+                            Select a practice
+                          </span>
+                        )}
                       </dd>
                     </div>
                   )}
-                  {officeItem && (
+                  {(officeItem || isPageEditing) && (
                     <div>
                       <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
                         Office
                       </dt>
                       <dd className="mt-1 text-sm font-medium">
-                        <a
-                          className="text-accent underline-offset-4 hover:underline"
-                          href={getReferenceHref(officeItem)}
-                        >
-                          {getReferenceTitle(officeItem)}
-                        </a>
+                        {officeItem ? (
+                          <a
+                            className="text-accent underline-offset-4 hover:underline"
+                            href={getReferenceHref(officeItem)}
+                          >
+                            {getReferenceTitle(officeItem)}
+                          </a>
+                        ) : (
+                          <span className="text-white/60">
+                            Select an office
+                          </span>
+                        )}
                       </dd>
                     </div>
                   )}
-                  {(topicItems.length > 0 || contentTypeItem) && (
+                  {(contentTypeItem || isPageEditing) && (
+                    <div>
+                      <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
+                        Content type
+                      </dt>
+                      <dd className="mt-1 text-sm font-medium">
+                        {contentTypeItem ? (
+                          getReferenceTitle(contentTypeItem)
+                        ) : (
+                          <span className="text-white/60">
+                            Select a content type
+                          </span>
+                        )}
+                      </dd>
+                    </div>
+                  )}
+                  {(topicItems.length > 0 || isPageEditing) && (
                     <div>
                       <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
                         Topic
                       </dt>
                       <dd className="mt-1 text-sm font-medium">
-                        {topicItems.length > 0
-                          ? topicItems
-                              .map(getReferenceTitle)
-                              .filter(Boolean)
-                              .join(', ')
-                          : getReferenceTitle(contentTypeItem)}
+                        {topicItems.length > 0 ? (
+                          topicItems
+                            .map(getReferenceTitle)
+                            .filter(Boolean)
+                            .join(', ')
+                        ) : (
+                          <span className="text-white/60">Select a topic</span>
+                        )}
                       </dd>
                     </div>
                   )}
@@ -363,7 +417,7 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
             )}
 
             <div className="mt-6 flex flex-col gap-5 pt-5 @md/article-header:flex-row @md/article-header:items-center @md/article-header:justify-between">
-              {authorName && (
+              {(authorName || isPageEditing) && (
                 <div className="flex min-w-0 items-center gap-3">
                   <Avatar>
                     <AvatarImage
@@ -378,16 +432,22 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
                     <p className="text-xs uppercase tracking-[0.12em] text-white/60">
                       Author
                     </p>
-                    <p className="truncate font-medium">
-                      <Text
-                        tag="span"
-                        field={pageAuthorField?.fields?.personFirstName}
-                      />{' '}
-                      <Text
-                        tag="span"
-                        field={pageAuthorField?.fields?.personLastName}
-                      />
-                    </p>
+                    {authorName ? (
+                      <p className="truncate font-medium">
+                        <Text
+                          tag="span"
+                          field={pageAuthorField?.fields?.personFirstName}
+                        />{' '}
+                        <Text
+                          tag="span"
+                          field={pageAuthorField?.fields?.personLastName}
+                        />
+                      </p>
+                    ) : (
+                      <p className="font-medium text-white/60">
+                        Select an author
+                      </p>
+                    )}
                     {pageAuthorField?.fields?.personJobTitle && (
                       <Text
                         tag="p"
@@ -404,7 +464,7 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
               </div>
             </div>
 
-            {(sourceItem || relatedInsights.length > 0) && (
+            {(sourceItem || relatedInsights.length > 0 || isPageEditing) && (
               <div className="mt-8 grid gap-7 rounded-default bg-white/[0.055] p-6 @lg/article-header:grid-cols-2">
                 <div>
                   <p className="text-xs uppercase tracking-[0.12em] text-white/55">
@@ -431,7 +491,11 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
                         </a>
                       )}
                     </>
-                  ) : null}
+                  ) : (
+                    <p className="mt-2 text-sm text-white/60">
+                      Select source material in the Content panel.
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -451,7 +515,11 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
                         </li>
                       ))}
                     </ul>
-                  ) : null}
+                  ) : (
+                    <p className="mt-2 text-sm text-white/60">
+                      Select related insights in the Content panel.
+                    </p>
+                  )}
                 </div>
               </div>
             )}

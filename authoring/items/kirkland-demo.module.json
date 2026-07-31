@@ -41,9 +41,8 @@
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.author",
-        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Taxonomy/People/2026/07/31/03/18/Kirkland and Ellis LLP",
-        "scope": "singleItem",
+        "name": "kirkland.demo.author-bucket",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Taxonomy/People/2026",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
