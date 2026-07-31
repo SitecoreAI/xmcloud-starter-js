@@ -32,13 +32,46 @@ export type PersonItem = ReferenceField & {
   fields?: PersonItemFields;
 };
 
+export type ArticleReferenceItemFields = {
+  pageHeaderTitle?: Field<string>;
+  titleRequired?: Field<string>;
+  descriptionOptional?: Field<string>;
+  linkOptional?: LinkField;
+};
+
+export type ArticleReferenceItem = Omit<ReferenceField, 'url' | 'fields'> & {
+  url?:
+    | string
+    | {
+        href?: string;
+      };
+  fields?: ArticleReferenceItemFields;
+};
+
+export type ArticleReferenceField<
+  T extends ArticleReferenceItem = ArticleReferenceItem,
+> = {
+  jsonValue?: T | null;
+};
+
+export type ArticleReferenceListField = {
+  jsonValue?: ArticleReferenceItem[];
+};
+
 export type ArticleHeaderExternalFields = {
   pageHeaderTitle?: GraphQLTextField;
+  pageSummary?: GraphQLTextField;
   pageReadTime?: GraphQLTextField;
   pageDisplayDate?: GraphQLTextField;
   pageAuthor?: {
     jsonValue: PersonItem;
   };
+  contentType?: ArticleReferenceField;
+  topics?: ArticleReferenceListField;
+  relatedPractice?: ArticleReferenceField;
+  relatedOffice?: ArticleReferenceField;
+  sourceItem?: ArticleReferenceField;
+  relatedInsights?: ArticleReferenceListField;
 };
 
 export type ArticleHeaderFields = {

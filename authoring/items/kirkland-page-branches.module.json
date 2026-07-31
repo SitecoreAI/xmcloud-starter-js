@@ -1,7 +1,7 @@
 {
   "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
   "namespace": "kirkland-page-branches",
-  "description": "Kirkland page-branch insert rules and the reusable Lawyer Profile page branch.",
+  "description": "Kirkland page-branch insert rules and the reusable Lawyer Profile, News Article, and Practice Area page branches.",
   "items": {
     "path": "kirkland-page-branches",
     "includes": [
@@ -14,6 +14,16 @@
       {
         "name": "kirkland.page-branches.lawyer-profile",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Page Branches/Lawyer Profile",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.page-branches.news-article",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Page Branches/News Article",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.page-branches.practice-area",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Page Branches/Practice Area",
         "allowedPushOperations": "CreateUpdateAndDelete"
       }
     ]

@@ -13,31 +13,50 @@ SharedFields:
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query ArticleHeader($datasource: String!, $contextItem: String!,$language: String!) {
+    query ArticleHeader($datasource: String!, $contextItem: String!, $language: String!) {
       datasource: item(path: $datasource, language: $language) {
         ... on ArticleHeader {
           imageRequired {
             jsonValue
           }
-          eyebrowOptional{
+          eyebrowOptional {
             jsonValue
           }
         }
       }
       externalFields: item(path: $contextItem, language: $language) {
-        ... on ArticlePage {
-          pageHeaderTitle {
-            jsonValue
-          }
-          pageReadTime {
-            jsonValue
-          }
-          pageDisplayDate {
-            jsonValue
-          }
-          pageAuthor: taxAuthor {
-            jsonValue
-          }
+        pageHeaderTitle: field(name: "pageHeaderTitle") {
+          jsonValue
+        }
+        pageSummary: field(name: "pageSummary") {
+          jsonValue
+        }
+        pageReadTime: field(name: "pageReadTime") {
+          jsonValue
+        }
+        pageDisplayDate: field(name: "pageDisplayDate") {
+          jsonValue
+        }
+        pageAuthor: field(name: "taxAuthor") {
+          jsonValue
+        }
+        contentType: field(name: "taxContentType") {
+          jsonValue
+        }
+        topics: field(name: "taxTopic") {
+          jsonValue
+        }
+        relatedPractice: field(name: "relatedPractice") {
+          jsonValue
+        }
+        relatedOffice: field(name: "relatedOffice") {
+          jsonValue
+        }
+        sourceItem: field(name: "sourceItem") {
+          jsonValue
+        }
+        relatedInsights: field(name: "relatedInsights") {
+          jsonValue
         }
       }
     }

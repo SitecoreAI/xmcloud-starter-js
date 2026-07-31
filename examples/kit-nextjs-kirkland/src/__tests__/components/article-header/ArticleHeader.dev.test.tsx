@@ -138,6 +138,12 @@ const mockProps = {
       },
       externalFields: {
         pageHeaderTitle: { jsonValue: { value: 'Sample Article' } },
+        pageSummary: {
+          jsonValue: {
+            value:
+              'A concise summary of the matter and its significance for clients.',
+          },
+        },
         pageReadTime: { jsonValue: { value: '5 min read' } },
         pageDisplayDate: {
           jsonValue: { value: '2025-10-13T00:00:00Z' },
@@ -153,6 +159,75 @@ const mockProps = {
               personProfileImage: { value: { src: '/author.jpg' } },
             },
           },
+        },
+        contentType: {
+          jsonValue: {
+            id: 'content-type-id',
+            name: 'Deal Announcement',
+            displayName: 'Deal Announcement',
+          },
+        },
+        topics: {
+          jsonValue: [
+            {
+              id: 'topic-id',
+              name: 'Digital Infrastructure',
+              displayName: 'Digital Infrastructure',
+            },
+          ],
+        },
+        relatedPractice: {
+          jsonValue: {
+            id: 'practice-id',
+            name: 'Private Equity',
+            displayName: 'Private Equity',
+            url: '/Services/Private-Equity',
+            fields: {
+              pageHeaderTitle: { value: 'Private Equity' },
+            },
+          },
+        },
+        relatedOffice: {
+          jsonValue: {
+            id: 'office-id',
+            name: 'New York',
+            displayName: 'New York',
+            url: '/Locations/New-York',
+            fields: {
+              pageHeaderTitle: { value: 'New York' },
+            },
+          },
+        },
+        sourceItem: {
+          jsonValue: {
+            id: 'source-id',
+            name: 'Transaction announcement',
+            fields: {
+              titleRequired: { value: 'Meta transaction announcement' },
+              descriptionOptional: {
+                value: 'The approved transaction announcement.',
+              },
+              linkOptional: {
+                value: {
+                  href: 'https://example.com/announcement',
+                  text: 'Read the announcement',
+                  target: '_blank',
+                },
+              },
+            },
+          },
+        },
+        relatedInsights: {
+          jsonValue: [
+            {
+              id: 'related-id',
+              name: 'Related Article',
+              url: '/News-and-Insights/Related-Article',
+              fields: {
+                pageHeaderTitle: { value: 'Related Article' },
+              },
+            },
+          ],
         },
       },
     },
@@ -193,6 +268,41 @@ describe('ArticleHeader Component', () => {
     expect(screen.getByText('John').closest('p')).toHaveTextContent('John Doe');
     expect(screen.getByText('5 min read')).toBeInTheDocument();
     expect(screen.getByText('October 13, 2025')).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        'A concise summary of the matter and its significance for clients.',
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it('renders configured public relationships and source material', () => {
+    render(
+      <ArticleHeader
+        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
+      />,
+    );
+
+    expect(
+      screen.getByRole('link', { name: 'Private Equity' }),
+    ).toHaveAttribute('href', '/Services/Private-Equity');
+    expect(screen.getByRole('link', { name: 'New York' })).toHaveAttribute(
+      'href',
+      '/Locations/New-York',
+    );
+    expect(screen.getByText('Digital Infrastructure')).toBeInTheDocument();
+    expect(screen.getByText('English')).toBeInTheDocument();
+    expect(
+      screen.getByText('Meta transaction announcement'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('The approved transaction announcement.'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Read the announcement' }),
+    ).toHaveAttribute('href', 'https://example.com/announcement');
+    expect(
+      screen.getByRole('link', { name: 'Related Article' }),
+    ).toHaveAttribute('href', '/News-and-Insights/Related-Article');
   });
 
   it('links back to the News and Insights landing page', () => {

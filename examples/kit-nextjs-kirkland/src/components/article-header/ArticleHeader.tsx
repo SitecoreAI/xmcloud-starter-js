@@ -16,6 +16,7 @@ import { getFieldValue } from '@/lib/component-props';
 import type {
   ArticleHeaderDatasource,
   ArticleHeaderProps,
+  ArticleReferenceItem,
 } from './article-header.props';
 import { hasDocument, hasNavigator, isBrowser } from '@/utils/browser';
 
@@ -30,6 +31,38 @@ const formatArticleDate = (date: Date | null, locale: string): string => {
   }).format(date);
 };
 
+const getReferenceTitle = (item?: ArticleReferenceItem | null): string => {
+  const pageTitleField = getFieldValue(item?.fields?.pageHeaderTitle);
+  const titleField = getFieldValue(item?.fields?.titleRequired);
+
+  return (
+    pageTitleField?.value?.toString() ||
+    titleField?.value?.toString() ||
+    item?.displayName ||
+    item?.name ||
+    ''
+  );
+};
+
+const getReferenceHref = (item?: ArticleReferenceItem | null): string => {
+  if (!item?.url) return '';
+
+  return typeof item.url === 'string' ? item.url : item.url.href || '';
+};
+
+const getLanguageLabel = (locale?: string): string => {
+  const languageCode = locale?.toLowerCase().split('-')[0];
+
+  const labels: Record<string, string> = {
+    de: 'German',
+    en: 'English',
+    fr: 'French',
+    ja: 'Japanese',
+  };
+
+  return labels[languageCode || 'en'] || locale || 'English';
+};
+
 export const Default: React.FC<ArticleHeaderProps> = (props) => {
   const { fields, page } = props;
   const datasource: ArticleHeaderDatasource | undefined =
@@ -38,9 +71,20 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
   const imageField = getFieldValue(datasource?.imageRequired);
   const eyebrowField = getFieldValue(datasource?.eyebrowOptional);
   const pageHeaderTitleField = getFieldValue(externalFields?.pageHeaderTitle);
+  const pageSummaryField = getFieldValue(externalFields?.pageSummary);
   const pageReadTimeField = getFieldValue(externalFields?.pageReadTime);
   const pageDisplayDateField = getFieldValue(externalFields?.pageDisplayDate);
   const pageAuthorField = getFieldValue(externalFields?.pageAuthor);
+  const practiceItem = getFieldValue(externalFields?.relatedPractice);
+  const officeItem = getFieldValue(externalFields?.relatedOffice);
+  const contentTypeItem = getFieldValue(externalFields?.contentType);
+  const topicItems = getFieldValue(externalFields?.topics) || [];
+  const sourceItem = getFieldValue(externalFields?.sourceItem);
+  const sourceDescriptionField = getFieldValue(
+    sourceItem?.fields?.descriptionOptional,
+  );
+  const sourceLinkField = getFieldValue(sourceItem?.fields?.linkOptional);
+  const relatedInsights = getFieldValue(externalFields?.relatedInsights) || [];
   const isPageEditing = page.mode.isEditing;
   const hasImage = Boolean(imageField?.value?.src);
   const { toast } = useToast();
@@ -213,6 +257,13 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
                 className="font-heading max-w-[22ch] text-balance text-[clamp(2.5rem,5cqi,3.875rem)] font-light leading-[1.02] tracking-[-0.025em] antialiased"
                 field={pageHeaderTitleField}
               />
+              {(pageSummaryField?.value || isPageEditing) && (
+                <Text
+                  tag="p"
+                  className="mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-white/80 antialiased @md/article-header:text-xl"
+                  field={pageSummaryField}
+                />
+              )}
               {(pageReadTimeField?.value ||
                 pageDisplayDateField?.value ||
                 isPageEditing) && (
@@ -235,10 +286,71 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
                     )}
                 </div>
               )}
+
+              {(practiceItem ||
+                officeItem ||
+                topicItems.length > 0 ||
+                contentTypeItem) && (
+                <dl className="mt-8 grid grid-cols-2 gap-4 rounded-default bg-white/[0.055] p-5 @lg/article-header:grid-cols-4">
+                  {practiceItem && (
+                    <div>
+                      <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
+                        Practice
+                      </dt>
+                      <dd className="mt-1 text-sm font-medium">
+                        <a
+                          className="text-accent underline-offset-4 hover:underline"
+                          href={getReferenceHref(practiceItem)}
+                        >
+                          {getReferenceTitle(practiceItem)}
+                        </a>
+                      </dd>
+                    </div>
+                  )}
+                  {officeItem && (
+                    <div>
+                      <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
+                        Office
+                      </dt>
+                      <dd className="mt-1 text-sm font-medium">
+                        <a
+                          className="text-accent underline-offset-4 hover:underline"
+                          href={getReferenceHref(officeItem)}
+                        >
+                          {getReferenceTitle(officeItem)}
+                        </a>
+                      </dd>
+                    </div>
+                  )}
+                  {(topicItems.length > 0 || contentTypeItem) && (
+                    <div>
+                      <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
+                        Topic
+                      </dt>
+                      <dd className="mt-1 text-sm font-medium">
+                        {topicItems.length > 0
+                          ? topicItems
+                              .map(getReferenceTitle)
+                              .filter(Boolean)
+                              .join(', ')
+                          : getReferenceTitle(contentTypeItem)}
+                      </dd>
+                    </div>
+                  )}
+                  <div>
+                    <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
+                      Language
+                    </dt>
+                    <dd className="mt-1 text-sm font-medium">
+                      {getLanguageLabel(page.locale)}
+                    </dd>
+                  </div>
+                </dl>
+              )}
             </div>
 
             {(hasImage || isPageEditing) && (
-              <figure className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-default border border-white/15 bg-white/5">
+              <figure className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-default bg-white/5">
                 <ImageWrapper
                   image={imageField}
                   className="absolute inset-0 h-full w-full object-cover"
@@ -291,6 +403,58 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
                 <FloatingDock items={links} forceCollapse />
               </div>
             </div>
+
+            {(sourceItem || relatedInsights.length > 0) && (
+              <div className="mt-8 grid gap-7 rounded-default bg-white/[0.055] p-6 @lg/article-header:grid-cols-2">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.12em] text-white/55">
+                    Source material
+                  </p>
+                  {sourceItem ? (
+                    <>
+                      <p className="mt-2 font-medium">
+                        {getReferenceTitle(sourceItem)}
+                      </p>
+                      {sourceDescriptionField?.value && (
+                        <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70">
+                          {sourceDescriptionField.value}
+                        </p>
+                      )}
+                      {sourceLinkField?.value?.href && (
+                        <a
+                          className="text-accent mt-3 inline-flex text-sm font-medium underline-offset-4 hover:underline"
+                          href={sourceLinkField.value.href}
+                          target={sourceLinkField.value.target || undefined}
+                          rel="noreferrer"
+                        >
+                          {sourceLinkField.value.text || 'View source'}
+                        </a>
+                      )}
+                    </>
+                  ) : null}
+                </div>
+
+                <div>
+                  <p className="text-xs uppercase tracking-[0.12em] text-white/55">
+                    Related insights
+                  </p>
+                  {relatedInsights.length > 0 ? (
+                    <ul className="mt-2 space-y-2">
+                      {relatedInsights.map((item) => (
+                        <li key={item.id}>
+                          <a
+                            className="text-accent text-sm font-medium underline-offset-4 hover:underline"
+                            href={getReferenceHref(item)}
+                          >
+                            {getReferenceTitle(item)}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              </div>
+            )}
           </div>
           {/* Screen reader notification */}
           <div
