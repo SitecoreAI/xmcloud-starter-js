@@ -89,7 +89,8 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
         pageSummary: routeFields.pageSummary,
         pageReadTime: routeFields.pageReadTime,
         pageDisplayDate: routeFields.pageDisplayDate,
-        pageAuthor: routeFields.taxAuthor,
+        pageAuthor: routeFields.author,
+        legacyPageAuthor: routeFields.taxAuthor,
         contentType: routeFields.taxContentType,
         topics: routeFields.taxTopic,
         relatedPractice: routeFields.relatedPractice,
@@ -104,7 +105,9 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
   const pageSummaryField = getFieldValue(externalFields?.pageSummary);
   const pageReadTimeField = getFieldValue(externalFields?.pageReadTime);
   const pageDisplayDateField = getFieldValue(externalFields?.pageDisplayDate);
-  const pageAuthorField = getFieldValue(externalFields?.pageAuthor);
+  const pageAuthorField =
+    getFieldValue(externalFields?.pageAuthor) ??
+    getFieldValue(externalFields?.legacyPageAuthor);
   const practiceItem = getFieldValue(externalFields?.relatedPractice);
   const officeItem = getFieldValue(externalFields?.relatedOffice);
   const contentTypeItem = getFieldValue(externalFields?.contentType);

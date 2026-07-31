@@ -37,7 +37,10 @@ SharedFields:
         pageDisplayDate: field(name: "pageDisplayDate") {
           jsonValue
         }
-        pageAuthor: field(name: "taxAuthor") {
+        pageAuthor: field(name: "author") {
+          jsonValue
+        }
+        legacyPageAuthor: field(name: "taxAuthor") {
           jsonValue
         }
         contentType: field(name: "taxContentType") {

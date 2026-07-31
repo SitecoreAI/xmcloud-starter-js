@@ -409,6 +409,167 @@ describe('ArticleHeader Component', () => {
     expect(within(authorLink).getByText('Private Equity')).toBeInTheDocument();
   });
 
+  it('prefers the canonical page author over the legacy taxonomy author', () => {
+    const pageWithBothAuthorFields = {
+      ...mockPageBase,
+      layout: {
+        sitecore: {
+          context: {},
+          route: {
+            name: 'sample-article',
+            placeholders: {},
+            fields: {
+              author: {
+                id: 'canonical-author-id',
+                name: 'jane-smith',
+                url: '/Lawyers/Jane-Smith',
+                fields: {
+                  pageHeaderTitle: { value: 'Jane Smith' },
+                  pageSubtitle: { value: 'Mergers and Acquisitions' },
+                  pageThumbnail: {
+                    value: {
+                      src: '/jane-smith.jpg',
+                      alt: 'Portrait of Jane Smith',
+                    },
+                  },
+                },
+              },
+              taxAuthor: {
+                id: 'legacy-author-id',
+                name: 'legacy-lawyer',
+                url: '/Lawyers/Legacy-Lawyer',
+                fields: {
+                  pageHeaderTitle: { value: 'Legacy Lawyer' },
+                  pageSubtitle: { value: 'Legacy Practice' },
+                  pageThumbnail: {
+                    value: {
+                      src: '/legacy-lawyer.jpg',
+                      alt: 'Portrait of Legacy Lawyer',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    } as unknown as Page;
+
+    render(
+      <ArticleHeader
+        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
+        page={pageWithBothAuthorFields}
+      />,
+    );
+
+    const authorLink = screen.getByRole('link', { name: /Jane Smith/ });
+    expect(authorLink).toHaveAttribute('href', '/Lawyers/Jane-Smith');
+    expect(
+      within(authorLink).getByText('Mergers and Acquisitions'),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId('avatar-img')).toHaveAttribute(
+      'src',
+      '/jane-smith.jpg',
+    );
+    expect(screen.queryByText('Legacy Lawyer')).not.toBeInTheDocument();
+  });
+
+  it('falls back to the legacy taxonomy author when no page author is selected', () => {
+    const pageWithLegacyAuthor = {
+      ...mockPageBase,
+      layout: {
+        sitecore: {
+          context: {},
+          route: {
+            name: 'legacy-article',
+            placeholders: {},
+            fields: {
+              author: null,
+              taxAuthor: {
+                id: 'legacy-author-id',
+                name: 'legacy-lawyer',
+                url: '/Lawyers/Legacy-Lawyer',
+                fields: {
+                  pageHeaderTitle: { value: 'Legacy Lawyer' },
+                  pageSubtitle: { value: 'Restructuring' },
+                  pageThumbnail: {
+                    value: {
+                      src: '/legacy-lawyer.jpg',
+                      alt: 'Portrait of Legacy Lawyer',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    } as unknown as Page;
+
+    render(
+      <ArticleHeader
+        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
+        page={pageWithLegacyAuthor}
+      />,
+    );
+
+    const authorLink = screen.getByRole('link', { name: /Legacy Lawyer/ });
+    expect(authorLink).toHaveAttribute('href', '/Lawyers/Legacy-Lawyer');
+    expect(within(authorLink).getByText('Restructuring')).toBeInTheDocument();
+    expect(screen.getByTestId('avatar-img')).toHaveAttribute(
+      'src',
+      '/legacy-lawyer.jpg',
+    );
+  });
+
+  it('falls back to the queried legacy author when route fields are unavailable', () => {
+    render(
+      <ArticleHeader
+        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
+        fields={{
+          ...mockProps.fields,
+          data: {
+            ...mockProps.fields.data,
+            externalFields: {
+              ...mockProps.fields.data.externalFields,
+              pageAuthor: { jsonValue: null },
+              legacyPageAuthor: {
+                jsonValue: {
+                  id: 'queried-legacy-author-id',
+                  name: 'queried-legacy-lawyer',
+                  url: '/Lawyers/Queried-Legacy-Lawyer',
+                  fields: {
+                    pageHeaderTitle: { value: 'Queried Legacy Lawyer' },
+                    pageSubtitle: { value: 'Capital Markets' },
+                    pageThumbnail: {
+                      value: {
+                        src: '/queried-legacy-lawyer.jpg',
+                        alt: 'Portrait of Queried Legacy Lawyer',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        }}
+      />,
+    );
+
+    const authorLink = screen.getByRole('link', {
+      name: /Queried Legacy Lawyer/,
+    });
+    expect(authorLink).toHaveAttribute(
+      'href',
+      '/Lawyers/Queried-Legacy-Lawyer',
+    );
+    expect(within(authorLink).getByText('Capital Markets')).toBeInTheDocument();
+    expect(screen.getByTestId('avatar-img')).toHaveAttribute(
+      'src',
+      '/queried-legacy-lawyer.jpg',
+    );
+  });
+
   it('keeps the lawyer card non-navigable while editing', () => {
     const editingPage = {
       ...mockPageBase,
@@ -563,6 +724,7 @@ describe('ArticleHeader Component', () => {
             fields: {
               pageHeaderTitle: { value: '' },
               pageSummary: { value: '' },
+              author: null,
               taxAuthor: null,
               taxContentType: null,
               taxTopic: [],

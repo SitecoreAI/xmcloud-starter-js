@@ -69,6 +69,7 @@ export type ArticleHeaderExternalFields = {
   pageReadTime?: CompatibleField<Field<string>>;
   pageDisplayDate?: CompatibleField<Field<string>>;
   pageAuthor?: CompatibleField<ArticleAuthorItem | null>;
+  legacyPageAuthor?: CompatibleField<ArticleAuthorItem | null>;
   contentType?: ArticleReferenceField;
   topics?: ArticleReferenceListField;
   relatedPractice?: ArticleReferenceField;
@@ -82,6 +83,7 @@ export type ArticleHeaderRouteFields = {
   pageSummary?: Field<string>;
   pageReadTime?: Field<string>;
   pageDisplayDate?: Field<string>;
+  author?: ArticleAuthorItem | null;
   taxAuthor?: ArticleAuthorItem | null;
   taxContentType?: ArticleReferenceItem | null;
   taxTopic?: ArticleReferenceItem[];
