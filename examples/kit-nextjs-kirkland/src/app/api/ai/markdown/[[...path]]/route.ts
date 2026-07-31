@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import scConfig from 'sitecore.config';
 import client from 'lib/sitecore-client';
 import { generateMarkdownFromRoute } from 'src/lib/ai-markdown';
 import { KIRKLAND_SITE_NAME } from '@/lib/site-path';
@@ -6,8 +7,7 @@ import { KIRKLAND_SITE_NAME } from '@/lib/site-path';
 export const dynamic = 'force-dynamic';
 
 const CACHE_MAX_AGE = 300;
-const DEFAULT_SITE_NAME =
-  process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || KIRKLAND_SITE_NAME;
+const DEFAULT_SITE_NAME = scConfig.defaultSite || KIRKLAND_SITE_NAME;
 const DEFAULT_LOCALE = process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || 'en';
 
 function isAiMarkdownEnabled(): boolean {
