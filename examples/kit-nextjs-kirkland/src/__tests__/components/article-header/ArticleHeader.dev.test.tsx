@@ -310,6 +310,32 @@ describe('ArticleHeader Component', () => {
     ).toHaveAttribute('href', '/News-and-Insights/Related-Article');
   });
 
+  it('does not expose related-insight authoring guidance on public articles', () => {
+    render(
+      <ArticleHeader
+        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
+        fields={{
+          ...mockProps.fields,
+          data: {
+            ...mockProps.fields.data,
+            externalFields: {
+              ...mockProps.fields.data.externalFields,
+              relatedInsights: { jsonValue: [] },
+            },
+          },
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByText('Meta transaction announcement'),
+    ).toBeInTheDocument();
+    expect(screen.queryByText('Related insights')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('Select related insights in the Content panel.'),
+    ).not.toBeInTheDocument();
+  });
+
   it('uses version-aware route fields instead of latest queried page fields', () => {
     const versionedPage = {
       ...mockPageBase,

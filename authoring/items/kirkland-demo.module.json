@@ -1,7 +1,7 @@
 {
   "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
   "namespace": "Kirkland.Demo",
-  "description": "Narrow serialization boundary for the Kirkland alert demo workflow, model, configured records, and destinations. Page branches are owned by kirkland-page-branches.module.json.",
+  "description": "Narrow serialization boundary for the Kirkland News and Insights demo workflow, model, configured records, and destinations. Page branches are owned by kirkland-page-branches.module.json.",
   "items": {
     "path": "kirkland-demo",
     "includes": [
@@ -16,55 +16,105 @@
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.alert.blackrock-meta",
+        "name": "kirkland.demo.article.blackrock-meta",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/News and Insights/BlackRock Meta Data Center Venture",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.related-insight.pai-pasubio",
+        "name": "kirkland.demo.article.pai-pasubio",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/News and Insights/PAI Partners Pasubio Refinancing",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.related-insight.uk-national-security",
+        "name": "kirkland.demo.article.uk-national-security",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/News and Insights/UK National Security and Investment Act Update",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.practice.private-equity",
-        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Services/Private Equity",
+        "name": "kirkland.demo.practice.mergers-acquisitions",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Services/Mergers and Acquisitions",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.office.new-york",
-        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Locations/New York",
+        "name": "kirkland.demo.practice.capital-markets",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Services/Capital Markets",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.author.jennifer-perkins",
-        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Lawyers/Jennifer S Perkins",
+        "name": "kirkland.demo.practice.antitrust-competition",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Services/Antitrust and Competition",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.author.jon-ballis",
-        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Lawyers/Jon A Ballis",
+        "name": "kirkland.demo.office.houston",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Locations/Houston",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.source",
+        "name": "kirkland.demo.office.london",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Locations/London",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.author.allan-kirk",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Lawyers/Allan Kirk",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.author.cedric-van-den-borren",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Lawyers/Cedric Van den Borren",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.author.mark-gardner",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Lawyers/Mark Gardner",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.source.blackrock-meta",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Calls to Action Banners/Meta and BlackRock transaction announcement",
         "scope": "singleItem",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.content-type",
+        "name": "kirkland.demo.source.pasubio-refinancing",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Calls to Action Banners/Pasubio refinancing announcement",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.source.uk-nsia-update",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Calls to Action Banners/UK National Security and Investment Act update",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.content-type.deal-announcement",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Taxonomy/Content Types/Deal Announcement",
         "scope": "singleItem",
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.topic",
+        "name": "kirkland.demo.content-type.kirkland-alert",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Taxonomy/Content Types/Kirkland Alert",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.topic.digital-infrastructure",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Taxonomy/Topics/Digital Infrastructure",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.topic.capital-markets-financing",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Taxonomy/Topics/Capital Markets and Financing",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.topic.foreign-investment-national-security",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Taxonomy/Topics/Foreign Investment and National Security",
         "scope": "singleItem",
         "allowedPushOperations": "CreateUpdateAndDelete"
       }
