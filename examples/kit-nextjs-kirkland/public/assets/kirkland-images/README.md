@@ -4,7 +4,7 @@ These original, AI-generated images are intended as demonstration assets for the
 
 The images were inspired by the visual tone of a premium global law firm website. They do not reproduce photographs from kirkland.com, and no Kirkland logo or wordmark is embedded in them.
 
-The 25 landscape assets are 1536 × 1024 RGB PNG files. The seven attorney
+The 26 landscape assets are 1536 × 1024 RGB PNG files. The seven attorney
 headshots are 1122 × 1402 RGB PNG files, composed as crop-safe 4:5 portraits
 for the lawyer profile header.
 
@@ -43,6 +43,7 @@ for the lawyer profile header.
 | `locations.png`                                | Locations page hero                                            | City skyline at blue hour seen through a modern office                  |
 | `location-houston.png`                         | Houston office page                                            | Houston skyline from a contemporary law office at blue hour             |
 | `location-london.png`                          | London office page                                             | City of London from a contemporary law office at blue hour              |
+| `location-new-york.png`                        | New York office page                                           | Midtown Manhattan from a contemporary law office at blue hour           |
 | `about.png`                                    | About page hero                                                | Historic stone colonnade integrated with modern glass architecture      |
 
 ## Current Sitecore assignment checklist
@@ -71,6 +72,7 @@ renaming them, then assign them as follows:
 | Mark Gardner              | `lawyer-mark-gardner-headshot.png`          | Profile Header → `imageRequired`; reuse for page-level `pageThumbnail`            |
 | Houston                   | `location-houston.png`                      | Office page header image and page-level `pageThumbnail`                           |
 | London                    | `location-london.png`                       | Office page header image and page-level `pageThumbnail`                           |
+| New York                  | `location-new-york.png`                     | Office page header image and page-level `pageThumbnail`                           |
 | BlackRock/Meta article    | `news-blackrock-meta-data-center.png`       | Article Header → `imageRequired`                                                  |
 | PAI/Pasubio article       | `news-pai-pasubio-refinancing.png`          | Article Header → `imageRequired`                                                  |
 | UK NSI Act article        | `news-uk-nsi-act.png`                       | Article Header → `imageRequired`                                                  |
