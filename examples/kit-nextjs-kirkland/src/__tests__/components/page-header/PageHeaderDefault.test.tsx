@@ -60,15 +60,22 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
 jest.mock('@/components/image/ImageWrapper.dev', () => ({
   Default: ({
     image,
+    className,
+    wrapperClass,
   }: {
     image?: { value?: { src?: string; alt?: string } };
+    className?: string;
+    wrapperClass?: string;
   }) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      data-testid="image-wrapper"
-      src={image?.value?.src || undefined}
-      alt={image?.value?.alt || ''}
-    />
+    <div data-testid="image-wrapper-container" className={wrapperClass}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        data-testid="image-wrapper"
+        className={className}
+        src={image?.value?.src || undefined}
+        alt={image?.value?.alt || ''}
+      />
+    </div>
   ),
 }));
 
@@ -147,7 +154,7 @@ describe('PageHeaderDefault', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('retains both editable link fields when their values are empty in editing mode', () => {
+  it('does not show empty link placeholders in editing mode', () => {
     const { container } = render(
       <PageHeaderDefault
         {...mockPageHeaderPropsWithoutLinks}
@@ -155,11 +162,64 @@ describe('PageHeaderDefault', () => {
       />,
     );
 
-    expect(screen.getByTestId('button-default')).toBeInTheDocument();
-    expect(screen.getByTestId('button-secondary')).toBeInTheDocument();
+    expect(screen.queryByTestId('button-default')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('button-secondary')).not.toBeInTheDocument();
     expect(
       container.querySelector('[data-component-part="page-header-actions"]'),
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
+  });
+
+  it('uses a full portrait frame and top alignment for portrait images', () => {
+    const portraitProps = {
+      ...mockPageHeaderPropsWithoutLinks,
+      fields: {
+        ...mockPageHeaderPropsWithoutLinks.fields,
+        data: {
+          ...mockPageHeaderPropsWithoutLinks.fields.data,
+          datasource: {
+            ...mockPageHeaderPropsWithoutLinks.fields.data.datasource,
+            imageRequired: {
+              jsonValue: {
+                value: {
+                  src: '/images/mark-gardner.jpg',
+                  alt: 'Mark Gardner',
+                  width: '1122',
+                  height: '1402',
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
+    render(<PageHeaderDefault {...portraitProps} isPageEditing={false} />);
+
+    expect(screen.getByTestId('image-wrapper-container')).toHaveClass(
+      'aspect-[4/5]',
+      'before:aspect-[4/5]',
+    );
+    expect(screen.getByTestId('image-wrapper')).toHaveClass(
+      'aspect-[4/5]',
+      'object-cover',
+      'object-top',
+    );
+    expect(screen.getByTestId('image-wrapper')).not.toHaveClass(
+      'aspect-[30/19]',
+    );
+  });
+
+  it('keeps the landscape frame for landscape images', () => {
+    render(
+      <PageHeaderDefault {...mockPageHeaderProps} isPageEditing={false} />,
+    );
+
+    expect(screen.getByTestId('image-wrapper-container')).toHaveClass(
+      'aspect-[30/19]',
+      'before:aspect-[30/19]',
+    );
+    expect(screen.getByTestId('image-wrapper')).toHaveClass('aspect-[30/19]');
+    expect(screen.getByTestId('image-wrapper')).not.toHaveClass('object-top');
   });
 
   it('collapses to a single full-width text region when no image is assigned in normal mode', () => {

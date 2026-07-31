@@ -23,16 +23,24 @@ export const PageHeaderDefault: React.FC<
     : pageTitle?.jsonValue;
   const subtitle = pageSubtitle?.jsonValue;
 
-  const configuredLinks = [link1?.jsonValue, link2?.jsonValue].filter(
-    (link) => link !== undefined,
-  );
-  const shouldShowButtons =
-    isPageEditing ||
-    configuredLinks.some(
-      (link) => Boolean(link.value?.href) && linkIsValid(link),
+  const link1Value = link1?.jsonValue;
+  const link2Value = link2?.jsonValue;
+  const shouldRenderLink = (link: typeof link1Value) =>
+    Boolean(
+      link &&
+        (isPageEditing
+          ? link.value?.text || link.value?.href || link.value?.url
+          : Boolean(link.value?.href) && linkIsValid(link)),
     );
+  const shouldShowLink1 = shouldRenderLink(link1Value);
+  const shouldShowLink2 = shouldRenderLink(link2Value);
+  const shouldShowButtons = shouldShowLink1 || shouldShowLink2;
   const hasImage = Boolean(imageRequired?.jsonValue?.value?.src?.trim());
   const shouldShowImage = hasImage || isPageEditing;
+  const imageWidth = Number(imageRequired?.jsonValue?.value?.width);
+  const imageHeight = Number(imageRequired?.jsonValue?.value?.height);
+  const isPortraitImage =
+    imageWidth > 0 && imageHeight > 0 && imageHeight > imageWidth;
 
   const hasPagesPositionStyles: boolean = props?.params?.styles
     ? props?.params?.styles.includes('position-')
@@ -108,16 +116,16 @@ export const PageHeaderDefault: React.FC<
                       className="mt-9 flex flex-wrap gap-4"
                       data-component-part="page-header-actions"
                     >
-                      {link1?.jsonValue && (
+                      {shouldShowLink1 && link1Value && (
                         <EditableButton
-                          buttonLink={link1?.jsonValue}
+                          buttonLink={link1Value}
                           variant="default"
                           isPageEditing={isPageEditing}
                         />
                       )}
-                      {link2?.jsonValue && (
+                      {shouldShowLink2 && link2Value && (
                         <EditableButton
-                          buttonLink={link2?.jsonValue}
+                          buttonLink={link2Value}
                           variant="secondary"
                           isPageEditing={isPageEditing}
                         />
@@ -140,8 +148,18 @@ export const PageHeaderDefault: React.FC<
                   >
                     <ImageWrapper
                       image={imageRequired?.jsonValue}
-                      wrapperClass="aspect-[30/19] w-full before:block before:w-full before:aspect-[30/19]"
-                      className="absolute inset-0 aspect-[30/19] h-full w-full object-cover"
+                      wrapperClass={cn(
+                        'w-full before:block before:w-full',
+                        isPortraitImage
+                          ? 'aspect-[4/5] before:aspect-[4/5]'
+                          : 'aspect-[30/19] before:aspect-[30/19]',
+                      )}
+                      className={cn(
+                        'absolute inset-0 h-full w-full object-cover',
+                        isPortraitImage
+                          ? 'aspect-[4/5] object-top'
+                          : 'aspect-[30/19]',
+                      )}
                       page={props.page}
                     />
                   </AnimatedSection>
