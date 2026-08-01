@@ -28,6 +28,9 @@ interface PageHeaderFields {
       pageSubtitle: {
         jsonValue: Field<string>;
       };
+      pageSummary?: {
+        jsonValue: Field<string>;
+      };
     };
   };
 }
@@ -36,4 +39,3 @@ export interface PageHeaderProps extends OptionalComponentProps {
   params: PageHeaderParams;
   fields: PageHeaderFields;
 }
-

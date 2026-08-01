@@ -24,6 +24,9 @@ SharedFields:
         pageSubtitle: field(name: "pageSubtitle") {
           jsonValue
         }
+        pageSummary: field(name: "pageSummary") {
+          jsonValue
+        }
       }
       datasource: item(path: $datasource, language: $language) {
         imageRequired: field(name: "imageRequired") {

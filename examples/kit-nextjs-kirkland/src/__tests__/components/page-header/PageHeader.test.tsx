@@ -71,6 +71,14 @@ jest.mock('@/components/page-header/PageHeaderOfficeBanner.dev', () => ({
   ),
 }));
 
+jest.mock('@/components/page-header/PageHeaderLawyerProfile.dev', () => ({
+  PageHeaderLawyerProfile: ({ isPageEditing }: { isPageEditing: boolean }) => (
+    <section data-testid="page-header-lawyer-profile">
+      PageHeaderLawyerProfile - {isPageEditing ? 'Editing' : 'Normal'}
+    </section>
+  ),
+}));
+
 describe('PageHeader', () => {
   it('renders Default variant correctly', () => {
     render(<PageHeader {...mockPageHeaderProps} />);
@@ -100,6 +108,58 @@ describe('PageHeader', () => {
 
     expect(screen.getByTestId('page-header-office-banner')).toBeInTheDocument();
     expect(screen.queryByTestId('page-header-default')).not.toBeInTheDocument();
+  });
+
+  it('uses the dedicated profile header for lawyer detail pages', () => {
+    const lawyerPageProps = {
+      ...mockPageHeaderProps,
+      page: {
+        ...mockPageHeaderProps.page,
+        layout: {
+          ...mockPageHeaderProps.page.layout,
+          sitecore: {
+            ...mockPageHeaderProps.page.layout.sitecore,
+            context: {
+              ...mockPageHeaderProps.page.layout.sitecore.context,
+              itemPath: '/Lawyers/Allan-Kirk',
+            },
+          },
+        },
+      },
+    };
+
+    render(<PageHeader {...lawyerPageProps} />);
+
+    expect(
+      screen.getByTestId('page-header-lawyer-profile'),
+    ).toBeInTheDocument();
+    expect(screen.queryByTestId('page-header-default')).not.toBeInTheDocument();
+  });
+
+  it('keeps the Lawyers landing page on the default header', () => {
+    const lawyerLandingProps = {
+      ...mockPageHeaderProps,
+      page: {
+        ...mockPageHeaderProps.page,
+        layout: {
+          ...mockPageHeaderProps.page.layout,
+          sitecore: {
+            ...mockPageHeaderProps.page.layout.sitecore,
+            context: {
+              ...mockPageHeaderProps.page.layout.sitecore.context,
+              itemPath: '/Lawyers',
+            },
+          },
+        },
+      },
+    };
+
+    render(<PageHeader {...lawyerLandingProps} />);
+
+    expect(screen.getByTestId('page-header-default')).toBeInTheDocument();
+    expect(
+      screen.queryByTestId('page-header-lawyer-profile'),
+    ).not.toBeInTheDocument();
   });
 
   it('renders the explicit OfficeBanner variant correctly', () => {

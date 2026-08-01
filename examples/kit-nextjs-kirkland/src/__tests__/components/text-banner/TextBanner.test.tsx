@@ -136,6 +136,103 @@ describe('TextBanner', () => {
     expect(screen.queryByTestId('text-banner-default')).not.toBeInTheDocument();
   });
 
+  it('suppresses a migrated Overview banner on lawyer detail pages', () => {
+    const lawyerOverviewProps = {
+      ...mockTextBannerProps,
+      rendering: {
+        ...mockTextBannerProps.rendering,
+        dataSource: 'local:/Data/Profile_Overview',
+      },
+      fields: {
+        ...mockTextBannerProps.fields,
+        heading: { value: 'Overview' },
+      },
+      page: {
+        ...mockTextBannerProps.page,
+        layout: {
+          ...mockTextBannerProps.page.layout,
+          sitecore: {
+            ...mockTextBannerProps.page.layout.sitecore,
+            context: {
+              ...mockTextBannerProps.page.layout.sitecore.context,
+              itemPath: '/Lawyers/Allan-Kirk',
+            },
+          },
+        },
+      },
+    };
+
+    const { container } = render(<TextBanner {...lawyerOverviewProps} />);
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('suppresses the empty legacy introduction in the lawyer page branch', () => {
+    const lawyerBranchProps = {
+      ...mockTextBannerProps,
+      rendering: {
+        ...mockTextBannerProps.rendering,
+        dataSource: 'local:/Data/Profile_Introduction',
+      },
+      fields: {
+        ...mockTextBannerProps.fields,
+        heading: { value: '' },
+        description: { value: '' },
+      },
+      page: {
+        ...mockTextBannerProps.page,
+        layout: {
+          ...mockTextBannerProps.page.layout,
+          sitecore: {
+            ...mockTextBannerProps.page.layout.sitecore,
+            context: {
+              ...mockTextBannerProps.page.layout.sitecore.context,
+              itemPath:
+                '/sitecore/content/legal/kit-nextjs-kirkland/Home/Lawyers/$name',
+            },
+          },
+        },
+      },
+    };
+
+    const { container } = render(<TextBanner {...lawyerBranchProps} />);
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('keeps the lawyer Experience banner visible', () => {
+    const lawyerExperienceProps = {
+      ...mockTextBannerProps,
+      rendering: {
+        ...mockTextBannerProps.rendering,
+        dataSource: 'local:/Data/Profile_Experience',
+      },
+      fields: {
+        ...mockTextBannerProps.fields,
+        heading: { value: 'Focused on what comes next.' },
+      },
+      page: {
+        ...mockTextBannerProps.page,
+        layout: {
+          ...mockTextBannerProps.page.layout,
+          sitecore: {
+            ...mockTextBannerProps.page.layout.sitecore,
+            context: {
+              ...mockTextBannerProps.page.layout.sitecore.context,
+              itemPath: '/Lawyers/Allan-Kirk',
+            },
+          },
+        },
+      },
+    };
+
+    render(<TextBanner {...lawyerExperienceProps} />);
+
+    expect(screen.getByTestId('text-banner-default')).toHaveTextContent(
+      'Focused on what comes next.',
+    );
+  });
+
   it('renders TextBanner01 variant', () => {
     render(<TextBanner01 {...mockTextBannerProps} />);
 

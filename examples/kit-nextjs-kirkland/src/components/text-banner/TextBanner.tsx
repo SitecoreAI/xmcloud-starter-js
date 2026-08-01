@@ -17,6 +17,21 @@ export const Default: React.FC<TextBannerProps> = (props) => {
   const isOfficeDetailPage =
     typeof itemPath === 'string' &&
     /(?:^|\/)locations\/.+/i.test(itemPath.replace(/\/+$/, ''));
+  const isLawyerDetailPage =
+    typeof itemPath === 'string' &&
+    /(?:^|\/)lawyers\/.+/i.test(itemPath.replace(/\/+$/, ''));
+
+  // Lawyer overview copy now lives in the page-level summary field and renders
+  // directly in the profile header. Suppress the legacy banner left on existing
+  // profiles and in the approved page branch so the copy is not duplicated.
+  const isLegacyLawyerOverview =
+    /^overview$/i.test(heading) ||
+    /profile[_ -]?(?:overview|introduction)$/i.test(dataSource) ||
+    /17ca14e4-59a7-482d-92ce-0402eb6c2eb3/i.test(dataSource);
+
+  if (isLawyerDetailPage && isLegacyLawyerOverview) {
+    return null;
+  }
 
   if (isOfficeDetailPage) {
     const isOfficeDetails =

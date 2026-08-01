@@ -7,6 +7,7 @@ import { PageHeaderFiftyFifty } from './PageHeaderFiftyFifty.dev';
 import { PageHeaderBlueBackground } from './PageHeaderBlueBackground.dev';
 import { PageHeaderCentered } from './PageHeaderCentered.dev';
 import { PageHeaderOfficeBanner } from './PageHeaderOfficeBanner.dev';
+import { PageHeaderLawyerProfile } from './PageHeaderLawyerProfile.dev';
 
 /* 
   This component is a page header with multiple variants:
@@ -22,11 +23,18 @@ export const Default: React.FC<PageHeaderProps> = (props) => {
   const normalizedItemPath =
     typeof itemPath === 'string' ? itemPath.replace(/\/+$/, '') : '';
   const isOfficeDetailPage = /(?:^|\/)locations\/.+/i.test(normalizedItemPath);
+  const isLawyerDetailPage = /(?:^|\/)lawyers\/.+/i.test(normalizedItemPath);
 
   // Existing office pages predate this variant. Keep them visually correct until
   // authors explicitly select OfficeBanner in the Styling panel.
   if (isOfficeDetailPage) {
     return <PageHeaderOfficeBanner {...props} isPageEditing={isEditing} />;
+  }
+
+  // Lawyer profiles use the same authorable page fields as other detail pages,
+  // but arrange the portrait and overview as one responsive profile header.
+  if (isLawyerDetailPage) {
+    return <PageHeaderLawyerProfile {...props} isPageEditing={isEditing} />;
   }
 
   return <PageHeaderDefault {...props} isPageEditing={isEditing} />;
