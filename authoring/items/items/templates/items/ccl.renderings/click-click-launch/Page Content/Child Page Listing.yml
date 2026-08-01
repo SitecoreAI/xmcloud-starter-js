@@ -20,15 +20,10 @@ SharedFields:
       datasource: item(path: $contextItem, language: $language) {
         id
         name
-        displayName
-        url {
-          href: path
-        }
-        children(hasLayout: true, first: 100) {
+        children(hasLayout: true) {
           results {
             id
             name
-            displayName
             url {
               href: path
             }
@@ -49,17 +44,6 @@ SharedFields:
             }
             pageDisplayDate: field(name: "pageDisplayDate") {
               jsonValue
-            }
-            children(first: 10) {
-              results {
-                children(first: 20) {
-                  results {
-                    imageRequired: field(name: "imageRequired") {
-                      jsonValue
-                    }
-                  }
-                }
-              }
             }
           }
         }
