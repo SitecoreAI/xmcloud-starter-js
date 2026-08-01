@@ -115,15 +115,18 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
               </div>
             </NavigationMenu>
           </nav>
-          <div className="absolute left-1/2 top-1/2 flex w-[160px] -translate-x-1/2 -translate-y-1/2 items-center justify-center [&_.image-container]:mx-auto [&_.image-container]:w-full">
+          <div className="absolute left-1/2 top-1/2 z-20 flex w-[160px] -translate-x-1/2 -translate-y-1/2 items-center justify-center [&_.image-container]:mx-auto [&_.image-container]:w-full">
             {!isPageEditing ? (
               <Link
                 href={localizedHomeHref}
-                className="flex items-center justify-center"
+                aria-label="Kirkland & Ellis home"
+                className="flex w-full items-center justify-center"
+                prefetch={false}
               >
                 {hasLogoImage ? (
                   <ImageWrapper
                     image={logo?.jsonValue}
+                    wrapperClass="pointer-events-none w-full"
                     className="w-full object-contain"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     alt="Home"

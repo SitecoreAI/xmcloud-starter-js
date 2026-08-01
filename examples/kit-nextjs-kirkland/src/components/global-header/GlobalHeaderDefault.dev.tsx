@@ -77,10 +77,16 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
           <div className="mr-6">
             <div className="flex w-[144px] items-stretch space-x-2 [&_.image-container]:w-full">
               {!isPageEditing ? (
-                <Link href={localizedHomeHref} className="" prefetch={false}>
+                <Link
+                  href={localizedHomeHref}
+                  aria-label="Kirkland & Ellis home"
+                  className="block w-full"
+                  prefetch={false}
+                >
                   {hasLogoImage ? (
                     <ImageWrapper
                       image={logo?.jsonValue}
+                      wrapperClass="pointer-events-none w-full"
                       className="w-full object-contain"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       alt="Home"

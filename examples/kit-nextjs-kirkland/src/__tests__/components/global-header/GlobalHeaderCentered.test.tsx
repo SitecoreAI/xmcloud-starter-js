@@ -9,10 +9,19 @@ jest.mock('next/link', () => {
   const MockLink = ({
     children,
     href,
+    className,
+    'aria-label': ariaLabel,
   }: {
     children: React.ReactNode;
     href: string;
-  }) => <a href={href}>{children}</a>;
+    className?: string;
+    'aria-label'?: string;
+    prefetch?: boolean;
+  }) => (
+    <a href={href} className={className} aria-label={ariaLabel}>
+      {children}
+    </a>
+  );
   MockLink.displayName = 'Link';
   return MockLink;
 });
@@ -184,8 +193,24 @@ describe('GlobalHeaderCentered Component', () => {
     render(<GlobalHeaderCentered {...mockGlobalHeaderProps} />);
 
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Kirkland & Ellis home' }),
+    ).toHaveAttribute('href', '/');
     expect(screen.getByTestId('navigation-menu')).toBeInTheDocument();
     expect(screen.getByTestId('animated-hover-nav')).toBeInTheDocument();
+  });
+
+  it('keeps the current locale when the logo links home', () => {
+    render(
+      <GlobalHeaderCentered
+        {...mockGlobalHeaderProps}
+        page={{ ...mockGlobalHeaderProps.page, locale: 'fr-FR' }}
+      />,
+    );
+
+    expect(
+      screen.getByRole('link', { name: 'Kirkland & Ellis home' }),
+    ).toHaveAttribute('href', '/fr-FR');
   });
 
   it('keeps the logo field editable while showing the firm-name fallback in Page Builder', () => {
@@ -210,6 +235,9 @@ describe('GlobalHeaderCentered Component', () => {
 
     expect(screen.getByText('Kirkland & Ellis')).toBeInTheDocument();
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+    expect(
+      screen.queryByRole('link', { name: 'Kirkland & Ellis home' }),
+    ).not.toBeInTheDocument();
   });
 
   it('displays mobile sheet navigation', () => {

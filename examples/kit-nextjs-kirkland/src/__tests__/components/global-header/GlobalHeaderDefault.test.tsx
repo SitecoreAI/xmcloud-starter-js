@@ -9,10 +9,19 @@ jest.mock('next/link', () => {
   const MockLink = ({
     children,
     href,
+    className,
+    'aria-label': ariaLabel,
   }: {
     children: React.ReactNode;
     href: string;
-  }) => <a href={href}>{children}</a>;
+    className?: string;
+    'aria-label'?: string;
+    prefetch?: boolean;
+  }) => (
+    <a href={href} className={className} aria-label={ariaLabel}>
+      {children}
+    </a>
+  );
   MockLink.displayName = 'Link';
   return MockLink;
 });
@@ -184,8 +193,24 @@ describe('GlobalHeaderDefault Component', () => {
     render(<GlobalHeaderDefault {...mockGlobalHeaderProps} />);
 
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Kirkland & Ellis home' }),
+    ).toHaveAttribute('href', '/');
     expect(screen.getByTestId('navigation-menu')).toBeInTheDocument();
     expect(screen.getByTestId('animated-hover-nav')).toBeInTheDocument();
+  });
+
+  it('keeps the current locale when the logo links home', () => {
+    render(
+      <GlobalHeaderDefault
+        {...mockGlobalHeaderProps}
+        page={{ ...mockGlobalHeaderProps.page, locale: 'fr-FR' }}
+      />,
+    );
+
+    expect(
+      screen.getByRole('link', { name: 'Kirkland & Ellis home' }),
+    ).toHaveAttribute('href', '/fr-FR');
   });
 
   it('uses an accessible firm-name fallback when no logo image is authored', () => {
@@ -233,6 +258,9 @@ describe('GlobalHeaderDefault Component', () => {
 
     expect(screen.getByText('Kirkland & Ellis')).toBeInTheDocument();
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+    expect(
+      screen.queryByRole('link', { name: 'Kirkland & Ellis home' }),
+    ).not.toBeInTheDocument();
   });
 
   it('displays mobile menu trigger', () => {
