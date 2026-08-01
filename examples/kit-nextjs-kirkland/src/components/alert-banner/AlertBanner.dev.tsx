@@ -22,7 +22,7 @@ export const Default: React.FC<AlertBannerProps> = (props) => {
         <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between gap-4 py-1 xl:px-8">
           <div className="space-y-1">
             <AlertTitle className="text-base font-semibold leading-none tracking-tight">
-              <Text className="font-heading text-lg font-semibold" field={title} />
+              <Text className="font-heading text-lg font-normal" field={title} />
             </AlertTitle>
             <AlertDescription className="text-muted-foreground text-sm">
               <Text tag="p" className="font-body" field={description} />

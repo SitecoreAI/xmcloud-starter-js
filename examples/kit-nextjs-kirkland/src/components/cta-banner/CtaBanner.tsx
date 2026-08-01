@@ -28,7 +28,7 @@ const ctaTitleVariants = cva(
   },
 );
 
-const ctaButtonVariants = cva('text-sm font-heading font-medium', {
+const ctaButtonVariants = cva('text-sm font-body font-medium', {
   variants: {
     colorScheme: {
       default: '',

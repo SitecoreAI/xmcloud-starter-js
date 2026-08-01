@@ -121,7 +121,7 @@ export const Default: React.FC<LogoTabsProps> = ({ fields }) => {
                     <Button
                       buttonLink={ctaField}
                       variant="rounded-white"
-                      className="font-heading px-8 py-2.5 text-sm font-medium"
+                      className="font-body px-8 py-2.5 text-sm font-medium"
                     />
                   )}
                 </div>

@@ -33,7 +33,7 @@ const LinkListItem = (props: LinkListItemProps) => {
 
 export const Default = (props: LinkListProps): JSX.Element => {
   const datasource = props.fields?.data?.datasource;
-  const styles = `max-w-xs p-5 font-sans ${props.params.styles}`.trimEnd();
+  const styles = `max-w-xs p-5 font-body ${props.params.styles}`.trimEnd();
   const id = props.params.RenderingIdentifier;
 
   if (datasource) {

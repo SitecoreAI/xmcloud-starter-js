@@ -161,7 +161,7 @@ export const Default: React.FC<VerticalImageAccordionProps> = (props) => {
                         <Button
                           buttonLink={ctaField}
                           variant="secondary"
-                          className="mt-4 inline-flex w-fit items-center justify-center px-8 py-2.5 text-sm font-heading font-medium"
+                          className="font-body mt-4 inline-flex w-fit items-center justify-center px-8 py-2.5 text-sm font-medium"
                           aria-label={`Learn more about ${titleItemField?.value || ''}`}
                         />
                       )}

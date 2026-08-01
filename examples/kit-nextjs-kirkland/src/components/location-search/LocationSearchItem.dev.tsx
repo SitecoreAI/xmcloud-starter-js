@@ -60,7 +60,7 @@ export const LocationSearchItem = ({
                 className="font-heading @md:text-3xl text-2xl font-normal"
               />
             )}
-            <p className="font-heading mt-3 text-lg">
+            <p className="font-body mt-3 text-lg">
               <Text field={dealership.dealershipAddress?.jsonValue} />
               {', '}
               <Text field={dealership.dealershipCity?.jsonValue} />{' '}
@@ -68,7 +68,7 @@ export const LocationSearchItem = ({
             </p>
           </div>
           {dealership.distance !== undefined && (
-            <span className="font-heading whitespace-nowrap text-right">
+            <span className="font-body whitespace-nowrap text-right">
               {dealership.distance.toFixed(1)}mi
             </span>
           )}

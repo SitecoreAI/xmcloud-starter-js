@@ -49,7 +49,7 @@ const ProductListingCard = ({
       
       <CardSpotlight className="h-full w-full" prefersReducedMotion={prefersReducedMotion}>
         <article
-          className="@md:px-12 @md:py-12 font-heading relative z-10 flex w-full flex-col gap-8 px-6 py-10"
+          className="@md:px-12 @md:py-12 relative z-10 flex w-full flex-col gap-8 px-6 py-10"
           data-component="ProductListingCard"
         >
         <div className="relative overflow-hidden">

@@ -1,4 +1,5 @@
 import './globals.css';
+import { bodyFont, headingFont } from './fonts';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,7 +10,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>{children}</body>
+      <body className={`${bodyFont.variable} ${headingFont.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

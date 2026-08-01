@@ -41,7 +41,7 @@ export const Default: React.FC<TopicListingProps> = (props) => {
                 <Text
                   tag="h2"
                   field={titleField}
-                  className="font-heading text-4xl @sm:text-5xl @md:text-6xl @lg:text-7xl font-semibold tracking-normal leading-tight text-white"
+                  className="font-heading text-4xl @sm:text-5xl @md:text-6xl @lg:text-7xl font-normal tracking-normal leading-tight text-white"
                 />
               )}
             </div>

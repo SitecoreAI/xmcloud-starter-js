@@ -166,8 +166,21 @@
 @layer base {
     * {
         @apply border-border;
-        font-family: var(--font-body);
     }
+
+    body {
+        font-family: var(--font-body), Arial, sans-serif;
+        font-weight: 400;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        font: inherit;
+    }
+
     h1,
     .h1,
     h2,
@@ -180,9 +193,9 @@
     .h5,
     h6,
     .h6 {
-        font-family: var(--font-heading);
+        font-family: var(--font-heading), Georgia, serif;
         letter-spacing: -0.015em;
-        @apply font-light leading-tight;
+        @apply font-normal leading-tight;
     }
 
     h1,
@@ -323,7 +336,7 @@
 .legal-article-body .component-content > p:first-child,
 .legal-article-body .component-content > .ck-content > p:first-child {
     margin-block: 0 1.75rem;
-    font-family: var(--font-body);
+    font-family: var(--font-body), Arial, sans-serif;
     font-size: clamp(1.125rem, 1.8vw, 1.35rem);
     font-weight: 400;
     line-height: 1.55;
@@ -357,7 +370,7 @@
 .legal-article-body .component-content blockquote {
     border-left: 2px solid var(--color-accent);
     padding-left: 1.5rem;
-    font-family: var(--font-heading);
+    font-family: var(--font-heading), Georgia, serif;
     font-size: clamp(1.35rem, 2.5vw, 1.75rem);
     line-height: 1.4;
 }

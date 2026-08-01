@@ -59,9 +59,9 @@ module.exports = {
                 center: true,
             },
             fontFamily: {
-                heading: 'var(--font-heading)',
-                body: 'var(--font-body)',
-                accent: 'var(--font-accent)',
+                heading: ['var(--font-heading)', 'Georgia', 'serif'],
+                body: ['var(--font-body)', 'Arial', 'sans-serif'],
+                accent: ['var(--font-body)', 'Arial', 'sans-serif'],
             },
             fontSize: {
                 '50-clamp': 'clamp(100px, calc(50 * 1vw), 400px)',

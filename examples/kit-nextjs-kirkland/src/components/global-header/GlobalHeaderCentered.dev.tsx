@@ -149,7 +149,7 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
           {/* Desktop CTA */}
           {headerContact?.jsonValue?.value && (
             <div className="@[1200px]:flex @[1200px]:items-center @[1200px]:justify-end @[1200px]:flex-1 z-10 hidden">
-              <Button asChild className="font-heading text-base font-medium">
+              <Button asChild className="font-body text-base font-medium">
                 <CompatibleLink
                   field={headerContact.jsonValue}
                   editable={isPageEditing}

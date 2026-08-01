@@ -192,13 +192,13 @@ export const LocationSearchDefault = (props: LocationSearchProps) => {
                 'opacity-20': googleMapsApiKey === '' && isPageEditing,
               })}
             >
-              <span className="font-heading text-lg font-light">
+              <span className="font-body text-lg font-light">
                 Locations near
               </span>
               <Button
                 variant="link"
                 onClick={() => setShowChangeZipcodeModal(true)}
-                className="font-heading flex p-0 text-lg font-bold underline decoration-current underline-offset-2 transition-all duration-200 hover:decoration-transparent "
+                className="font-body flex p-0 text-lg font-medium underline decoration-current underline-offset-2 transition-all duration-200 hover:decoration-transparent "
                 disabled={geoLoading}
               >
                 {!geoLoading ? (
@@ -209,7 +209,7 @@ export const LocationSearchDefault = (props: LocationSearchProps) => {
                 ) : (
                   <>
                     <div className="border-primary-foreground h-4 w-4 animate-spin rounded-full border-b-2"></div>
-                    <span className="font-heading flex text-lg font-bold underline underline-offset-4">
+                    <span className="font-body flex text-lg font-medium underline underline-offset-4">
                       Detecting location...
                     </span>
                   </>
