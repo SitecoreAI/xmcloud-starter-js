@@ -1,0 +1,105 @@
+﻿---
+ID: "51f34b64-e1bb-41c7-aa33-e483533b5d6e"
+Parent: "372fefa0-5f01-4dea-a4f1-f9f0059b2920"
+Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+Path: "/sitecore/layout/Renderings/Project/click-click-launch/Page Content/Child Page Listing"
+SharedFields:
+- ID: "b4bbc0be-7619-4678-b2f7-947d84aa77a9"
+  Hint: Content Dependencies
+  Value: "{B0B5B0CD-6445-4FAE-A989-6CA9C50CC29A}"
+- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
+  Hint: componentName
+  Value: ChildPageListing
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/32x32/elements_tree.png
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query ChildPageListing($contextItem: String!, $language: String!) {
+      datasource: item(path: $contextItem, language: $language) {
+        id
+        name
+        displayName
+        url {
+          href: path
+        }
+        children(hasLayout: true, first: 100) {
+          results {
+            id
+            name
+            displayName
+            url {
+              href: path
+            }
+            pageHeaderTitle: field(name: "pageHeaderTitle") {
+              jsonValue
+            }
+            pageSubtitle: field(name: "pageSubtitle") {
+              jsonValue
+            }
+            pageSummary: field(name: "pageSummary") {
+              jsonValue
+            }
+            metadataDescription: field(name: "metadataDescription") {
+              jsonValue
+            }
+            pageThumbnail: field(name: "pageThumbnail") {
+              jsonValue
+            }
+            pageDisplayDate: field(name: "pageDisplayDate") {
+              jsonValue
+            }
+            children(first: 10) {
+              results {
+                children(first: 20) {
+                  results {
+                    imageRequired: field(name: "imageRequired") {
+                      jsonValue
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
+  Hint: Open Properties after Add
+  Value: 0
+- ID: "9c6106ea-7a5a-48e2-8cad-f0f693b1e2d4"
+  Hint: __Read Only
+  Value:
+- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
+  Hint: Parameters Template
+  Value: "{D7295C76-3806-49E0-8CC1-76398B4DF788}"
+- ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
+  Hint: AddFieldEditorButton
+  Value:
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "515457b9-3111-4182-806c-d920845f9559"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260801T000000Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "62a54096-4739-4bbe-b4b1-ac4798cefc92"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260801T000000Z

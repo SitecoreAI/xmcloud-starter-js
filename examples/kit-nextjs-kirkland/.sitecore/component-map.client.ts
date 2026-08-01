@@ -36,6 +36,8 @@ import * as ProductListingSliderdev from 'src/components/product-listing/Product
 import * as ProductListingDefaultdev from 'src/components/product-listing/ProductListingDefault.dev';
 import * as ProductListingCarddev from 'src/components/product-listing/ProductListingCard.dev';
 import * as ProductListing from 'src/components/product-listing/ProductListing';
+import * as PageHeaderOfficeBannerdev from 'src/components/page-header/PageHeaderOfficeBanner.dev';
+import * as PageHeaderLawyerProfiledev from 'src/components/page-header/PageHeaderLawyerProfile.dev';
 import * as PageHeaderFiftyFiftydev from 'src/components/page-header/PageHeaderFiftyFifty.dev';
 import * as PageHeaderDefaultdev from 'src/components/page-header/PageHeaderDefault.dev';
 import * as PageHeaderCentereddev from 'src/components/page-header/PageHeaderCentered.dev';
@@ -136,6 +138,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ProductListingDefault', { ...ProductListingDefaultdev }],
   ['ProductListingCard', { ...ProductListingCarddev }],
   ['ProductListing', { ...ProductListing }],
+  ['PageHeaderOfficeBanner', { ...PageHeaderOfficeBannerdev }],
+  ['PageHeaderLawyerProfile', { ...PageHeaderLawyerProfiledev }],
   ['PageHeaderFiftyFifty', { ...PageHeaderFiftyFiftydev }],
   ['PageHeaderDefault', { ...PageHeaderDefaultdev }],
   ['PageHeaderCentered', { ...PageHeaderCentereddev }],

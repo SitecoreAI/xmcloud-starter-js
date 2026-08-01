@@ -59,6 +59,8 @@ import * as ProductListingSliderdev from 'src/components/product-listing/Product
 import * as ProductListingDefaultdev from 'src/components/product-listing/ProductListingDefault.dev';
 import * as ProductListingCarddev from 'src/components/product-listing/ProductListingCard.dev';
 import * as ProductListing from 'src/components/product-listing/ProductListing';
+import * as PageHeaderOfficeBannerdev from 'src/components/page-header/PageHeaderOfficeBanner.dev';
+import * as PageHeaderLawyerProfiledev from 'src/components/page-header/PageHeaderLawyerProfile.dev';
 import * as PageHeaderFiftyFiftydev from 'src/components/page-header/PageHeaderFiftyFifty.dev';
 import * as PageHeaderDefaultdev from 'src/components/page-header/PageHeaderDefault.dev';
 import * as PageHeaderCentereddev from 'src/components/page-header/PageHeaderCentered.dev';
@@ -152,6 +154,7 @@ import * as Container4060 from 'src/components/container/container-4060/Containe
 import * as Container3070 from 'src/components/container/container-3070/Container3070';
 import * as Container303030 from 'src/components/container/container-303030/Container303030';
 import * as Container25252525 from 'src/components/container/container-25252525/Container25252525';
+import * as ChildPageListing from 'src/components/child-page-listing/ChildPageListing';
 import * as Carousel from 'src/components/carousel/Carousel';
 import * as cardspotlightdev from 'src/components/card-spotlight/card-spotlight.dev';
 import * as Carddev from 'src/components/card/Card.dev';
@@ -228,6 +231,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ProductListingDefault', { ...ProductListingDefaultdev }],
   ['ProductListingCard', { ...ProductListingCarddev }],
   ['ProductListing', { ...ProductListing, componentType: 'client' }],
+  ['PageHeaderOfficeBanner', { ...PageHeaderOfficeBannerdev }],
+  ['PageHeaderLawyerProfile', { ...PageHeaderLawyerProfiledev }],
   ['PageHeaderFiftyFifty', { ...PageHeaderFiftyFiftydev }],
   ['PageHeaderDefault', { ...PageHeaderDefaultdev }],
   ['PageHeaderCentered', { ...PageHeaderCentereddev }],
@@ -318,6 +323,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Container3070', { ...Container3070 }],
   ['Container303030', { ...Container303030 }],
   ['Container25252525', { ...Container25252525 }],
+  ['ChildPageListing', { ...ChildPageListing }],
   ['Carousel', { ...Carousel, componentType: 'client' }],
   ['card-spotlight', { ...cardspotlightdev }],
   ['Card', { ...Carddev }],
