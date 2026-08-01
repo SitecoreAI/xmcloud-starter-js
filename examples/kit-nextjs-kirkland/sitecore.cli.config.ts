@@ -16,7 +16,10 @@ export default defineCliConfig({
       extractFiles(),
       writeImportMap({
         paths: ['src/components'],
-        exclude: ['src/components/component-library/*'],
+        exclude: [
+          'src/components/component-library/*',
+          'src/components/global-header/LocaleSelector.tsx',
+        ],
       }),
     ],
   },
@@ -31,6 +34,7 @@ export default defineCliConfig({
       'src/components/portal/*',
       'src/components/floating-dock/*',
       'src/components/promo-animated/PromoAnimatedEmptyImageEditing.tsx',
+      'src/components/global-header/LocaleSelector.tsx',
       // Exclude non-component files (props, utils, dictionaries, contexts)
       '**/*.props.ts',
       '**/*.props.tsx',

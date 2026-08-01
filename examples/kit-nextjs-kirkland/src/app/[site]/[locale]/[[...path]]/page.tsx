@@ -17,6 +17,7 @@ import {
 } from 'src/lib/structured-data/schema';
 import { StructuredData } from '@/components/structured-data/StructuredData';
 import { getFullUrl, getBaseUrl } from '@/lib/utils';
+import { getLocalizedPathname, getLocaleOption } from '@/i18n/locales';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function findHeroImageSrc(page: any): string | undefined {
@@ -100,9 +101,13 @@ export default async function Page({ params }: PageProps) {
     fields?.metadataDescription?.value?.toString() ||
     fields?.ogDescription?.value?.toString();
   const currentPath = path?.length ? `/${path.join('/')}` : '/';
+  const localizedPath = getLocalizedPathname(
+    currentPath,
+    getLocaleOption(locale).code,
+  );
   const fullUrl = baseUrl
-    ? `${baseUrl}${currentPath}`
-    : getFullUrl(currentPath);
+    ? `${baseUrl}${localizedPath}`
+    : getFullUrl(localizedPath);
   const webPageSchema = generateWebPageSchema(
     pageTitle,
     fullUrl,
@@ -161,9 +166,13 @@ export const generateMetadata = async ({ params }: PageProps) => {
 
   const { site, locale, path } = await params;
 
-  // Canonical URL: base URL + content path only (no site/locale segments)
-  const pathSegment = path?.length ? `/${path.join('/')}` : '';
-  const canonicalUrl = baseUrl ? `${baseUrl}${pathSegment}` : undefined;
+  // Canonical URL includes the public locale prefix for translated pages.
+  const contentPath = path?.length ? `/${path.join('/')}` : '/';
+  const localizedPath = getLocalizedPathname(
+    contentPath,
+    getLocaleOption(locale).code,
+  );
+  const canonicalUrl = baseUrl ? `${baseUrl}${localizedPath}` : undefined;
 
   // The same call as for rendering the page. Should be cached by default react behavior
   const page = await client.getPage(path ?? [], { site, locale });

@@ -18,12 +18,16 @@ import type { GlobalHeaderProps } from './global-header.props';
 import { Button } from '@/components/ui/button';
 import { useMatchMedia } from '@/hooks/use-match-media';
 import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
+import { getLocaleOption, getLocalizedPathname } from '@/i18n/locales';
+import { LocaleSelector } from './LocaleSelector';
 
 export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
   const { fields, isPageEditing } = props ?? {};
   const { logo, primaryNavigationLinks, headerContact } =
     fields?.data?.item ?? {};
   const hasLogoImage = Boolean(logo?.jsonValue?.value?.src);
+  const currentLocale = getLocaleOption(props.page.locale);
+  const localizedHomeHref = getLocalizedPathname('/', currentLocale.code);
   const [isOpen, setIsOpen] = useState(false);
   const [sheetAnimationComplete, setSheetAnimationComplete] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -113,7 +117,10 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
           </nav>
           <div className="absolute left-1/2 top-1/2 flex w-[160px] -translate-x-1/2 -translate-y-1/2 items-center justify-center [&_.image-container]:mx-auto [&_.image-container]:w-full">
             {!isPageEditing ? (
-              <Link href="/" className="flex items-center justify-center">
+              <Link
+                href={localizedHomeHref}
+                className="flex items-center justify-center"
+              >
                 {hasLogoImage ? (
                   <ImageWrapper
                     image={logo?.jsonValue}
@@ -146,9 +153,9 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
               </div>
             )}
           </div>
-          {/* Desktop CTA */}
-          {headerContact?.jsonValue?.value && (
-            <div className="@[1200px]:flex @[1200px]:items-center @[1200px]:justify-end @[1200px]:flex-1 z-10 hidden">
+          {/* Desktop region selector and CTA */}
+          <div className="@[1200px]:flex @[1200px]:items-center @[1200px]:justify-end @[1200px]:flex-1 z-10 hidden gap-1">
+            {headerContact?.jsonValue?.value && (
               <Button asChild className="font-body text-base font-medium">
                 <CompatibleLink
                   field={headerContact.jsonValue}
@@ -156,10 +163,12 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
                   prefetch={false}
                 />
               </Button>
-            </div>
-          )}
+            )}
+            <LocaleSelector locale={currentLocale.code} />
+          </div>
           {/* Mobile Navigation */}
-          <div className="@[1200px]:hidden z-10 flex flex-1 justify-end">
+          <div className="@[1200px]:hidden z-10 flex flex-1 items-center justify-end gap-1">
+            <LocaleSelector locale={currentLocale.code} />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <AnimatePresence>
                 {isOpen && (

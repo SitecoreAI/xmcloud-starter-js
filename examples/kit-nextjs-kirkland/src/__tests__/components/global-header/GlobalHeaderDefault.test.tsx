@@ -164,6 +164,14 @@ jest.mock('@/hooks/use-match-media', () => ({
   useMatchMedia: jest.fn(() => false),
 }));
 
+jest.mock('@/components/global-header/LocaleSelector', () => ({
+  LocaleSelector: () => (
+    <button aria-label="Region and language: United States, English">
+      US / EN
+    </button>
+  ),
+}));
+
 describe('GlobalHeaderDefault Component', () => {
   it('renders without crashing', () => {
     const { container } = render(
@@ -233,5 +241,15 @@ describe('GlobalHeaderDefault Component', () => {
     expect(screen.getByTestId('sheet')).toBeInTheDocument();
     expect(screen.getByTestId('sheet-trigger')).toBeInTheDocument();
     expect(screen.getByTestId('menu-icon')).toBeInTheDocument();
+  });
+
+  it('displays the locale selector', () => {
+    render(<GlobalHeaderDefault {...mockGlobalHeaderProps} />);
+
+    expect(
+      screen.getAllByRole('button', {
+        name: 'Region and language: United States, English',
+      }),
+    ).toHaveLength(2);
   });
 });
