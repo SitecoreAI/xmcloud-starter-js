@@ -6,6 +6,7 @@ import { PageHeaderBlueText } from './PageHeaderBlueText.dev';
 import { PageHeaderFiftyFifty } from './PageHeaderFiftyFifty.dev';
 import { PageHeaderBlueBackground } from './PageHeaderBlueBackground.dev';
 import { PageHeaderCentered } from './PageHeaderCentered.dev';
+import { PageHeaderOfficeBanner } from './PageHeaderOfficeBanner.dev';
 
 /* 
   This component is a page header with multiple variants:
@@ -17,6 +18,17 @@ import { PageHeaderCentered } from './PageHeaderCentered.dev';
 // Default display of the component
 export const Default: React.FC<PageHeaderProps> = (props) => {
   const { isEditing } = props.page.mode;
+  const itemPath = props.page.layout.sitecore.context.itemPath;
+  const normalizedItemPath =
+    typeof itemPath === 'string' ? itemPath.replace(/\/+$/, '') : '';
+  const isOfficeDetailPage = /(?:^|\/)locations\/.+/i.test(normalizedItemPath);
+
+  // Existing office pages predate this variant. Keep them visually correct until
+  // authors explicitly select OfficeBanner in the Styling panel.
+  if (isOfficeDetailPage) {
+    return <PageHeaderOfficeBanner {...props} isPageEditing={isEditing} />;
+  }
+
   return <PageHeaderDefault {...props} isPageEditing={isEditing} />;
 };
 
@@ -39,4 +51,9 @@ export const BlueBackground: React.FC<PageHeaderProps> = (props) => {
 export const Centered: React.FC<PageHeaderProps> = (props) => {
   const { isEditing } = props.page.mode;
   return <PageHeaderCentered {...props} isPageEditing={isEditing} />;
+};
+
+export const OfficeBanner: React.FC<PageHeaderProps> = (props) => {
+  const { isEditing } = props.page.mode;
+  return <PageHeaderOfficeBanner {...props} isPageEditing={isEditing} />;
 };

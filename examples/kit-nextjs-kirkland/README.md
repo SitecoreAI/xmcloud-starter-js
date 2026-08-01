@@ -34,7 +34,7 @@ Keep the first demo deliberately small:
 - **Services:** `PageHeader`, `TopicListing`, and `AccordionBlock`.
 - **News & Insights:** `PageHeader` and `MultiPromo`; detail pages use `ArticleHeader` and `RichTextBlock`.
 - **Careers:** `PageHeader.FiftyFifty`, `PromoImage`, and `TestimonialCarousel`.
-- **Locations:** office cards built with `MultiPromo`. Use `LocationSearch` only when a Google Maps key is configured.
+- **Locations:** office cards built with `MultiPromo`; detail pages use the image-backed `PageHeader.OfficeBanner`, office-specific `TextBanner` treatments, and a `CtaBanner`. Use `LocationSearch` only when a Google Maps key is configured.
 - **About:** `PageHeader`, `TextBanner`, `RichTextBlock`, and `LogoTabs`.
 
 The Sitecore AI Marketer MCP should populate and validate these pages after the rendering host has been deployed and its component map is available.

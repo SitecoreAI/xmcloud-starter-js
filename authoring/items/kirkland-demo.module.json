@@ -56,6 +56,11 @@
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
+        "name": "kirkland.demo.office.new-york",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Locations/New York",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
         "name": "kirkland.demo.author.allan-kirk",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/Lawyers/Allan Kirk",
         "allowedPushOperations": "CreateUpdateAndDelete"

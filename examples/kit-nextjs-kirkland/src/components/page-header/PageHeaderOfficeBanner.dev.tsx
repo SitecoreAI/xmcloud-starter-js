@@ -1,16 +1,20 @@
 'use client';
 
+import type React from 'react';
 import { useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
-import { Text, RichText } from '@sitecore-content-sdk/nextjs';
+import {
+  Image as SitecoreImage,
+  RichText,
+  Text,
+} from '@sitecore-content-sdk/nextjs';
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
-import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { linkIsValid } from '@/components/button-component/button-component.props';
-import { PageHeaderProps } from './page-header.props';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
+import { NoDataFallback } from '@/utils/NoDataFallback';
+import type { PageHeaderProps } from './page-header.props';
 
-export const PageHeaderBlueText: React.FC<
+export const PageHeaderOfficeBanner: React.FC<
   PageHeaderProps & { isPageEditing: boolean }
 > = (props) => {
   const { fields, isPageEditing } = props;
@@ -19,10 +23,9 @@ export const PageHeaderBlueText: React.FC<
     fields?.data?.externalFields || {};
 
   const title = pageHeaderTitle?.jsonValue?.value
-    ? pageHeaderTitle?.jsonValue
+    ? pageHeaderTitle.jsonValue
     : pageTitle?.jsonValue;
   const subtitle = pageSubtitle?.jsonValue;
-
   const link1Value = link1?.jsonValue;
   const link2Value = link2?.jsonValue;
   const shouldRenderLink = (link: typeof link1Value) =>
@@ -35,10 +38,21 @@ export const PageHeaderBlueText: React.FC<
   const shouldShowLink1 = shouldRenderLink(link1Value);
   const shouldShowLink2 = shouldRenderLink(link2Value);
   const shouldShowButtons = shouldShowLink1 || shouldShowLink2;
-
-  const hasPagesPositionStyles: boolean = props?.params?.styles
-    ? props?.params?.styles.includes('position-')
-    : false;
+  const hasImage = Boolean(imageRequired?.jsonValue?.value?.src?.trim());
+  const shouldShowImage = hasImage || isPageEditing;
+  const EmptyOfficeBannerImage = ({ className }: { className?: string }) => (
+    <div
+      className={`${className ?? ''} flex items-center justify-center bg-muted text-muted-foreground`}
+    >
+      <SitecoreImage
+        field={imageRequired?.jsonValue}
+        className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
+      />
+      <span className="bg-background/90 pointer-events-none relative z-20 px-5 py-3 text-sm font-medium">
+        Choose an office banner image
+      </span>
+    </div>
+  );
 
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -47,59 +61,74 @@ export const PageHeaderBlueText: React.FC<
     setPrefersReducedMotion(mediaQuery.matches);
   }, []);
 
-  if (fields) {
-    return (
-      <section
-        data-component="PageHeader"
-        data-class-change
-        className={cn(
-          'bg-background text-primary-foreground group relative w-full overflow-hidden',
-          {
-            'position-left': !hasPagesPositionStyles,
-            [props?.params?.styles]: props?.params?.styles,
-          },
-        )}
-      >
-        <div className="@container/headerwrapper">
-          <div className="legal-content-shell @sm/headerwrapper:min-h-[575px] @sm/headerwrapper:py-12 @lg/headerwrapper:py-20 relative">
-            {/* Blue Box */}
-            <div className="@container/headercontent bg-primary text-primary-foreground relative z-10 max-w-[700px] p-10">
+  if (!fields) {
+    return <NoDataFallback componentName="PageHeader" />;
+  }
+
+  return (
+    <section
+      data-component="PageHeader"
+      data-page-header-variant="office-banner"
+      className="bg-background text-primary-foreground group relative w-full overflow-hidden"
+    >
+      <div className="@container/officeheader">
+        <div className="@md/officeheader:min-h-[560px] @lg/officeheader:min-h-[620px] relative min-h-[460px]">
+          {shouldShowImage && (
+            <ImageWrapper
+              image={imageRequired?.jsonValue}
+              wrapperClass="absolute inset-0 h-full w-full"
+              className="absolute inset-0 h-full w-full object-cover object-center"
+              emptyFieldEditingComponent={EmptyOfficeBannerImage}
+              priority={true}
+              sizes="100vw"
+              page={props.page}
+            />
+          )}
+
+          <div className="from-background via-background/55 pointer-events-none absolute inset-0 bg-gradient-to-t to-transparent" />
+          <div className="from-background/65 pointer-events-none absolute inset-0 bg-gradient-to-r via-transparent to-transparent" />
+
+          <div className="legal-content-shell @md/officeheader:min-h-[560px] @lg/officeheader:min-h-[620px] relative z-10 flex min-h-[460px] items-end py-12 @md/officeheader:py-16">
+            <div className="max-w-3xl">
               <AnimatedSection
                 reducedMotion={prefersReducedMotion}
                 isPageEditing={isPageEditing}
               >
-                {/* Title */}
+                <p className="font-body mb-4 text-sm font-medium uppercase tracking-[0.18em] text-white/80">
+                  Office
+                </p>
                 <Text
                   tag="h1"
-                  className="legal-display-heading font-heading @[575px]/headercontent:text-6xl @xs/headercontent:text-5xl relative -ml-[0.04em] max-w-[18ch] text-balance text-left text-4xl font-light tracking-tighter antialiased"
+                  className="legal-display-heading font-heading relative -ml-[0.04em] max-w-[16ch] text-balance text-left text-5xl font-light tracking-tighter text-white antialiased"
                   field={title}
                 />
               </AnimatedSection>
-              {/* Subtitle */}
+
               {subtitle && (
                 <AnimatedSection
                   reducedMotion={prefersReducedMotion}
                   isPageEditing={isPageEditing}
                 >
                   <RichText
-                    className="font-body mt-4 max-w-[50ch] text-pretty leading-tight"
+                    className="font-body mt-5 max-w-[55ch] text-pretty text-lg leading-relaxed text-white/90"
                     field={subtitle}
                   />
                 </AnimatedSection>
               )}
+
               {shouldShowButtons && (
                 <AnimatedSection
                   reducedMotion={prefersReducedMotion}
                   isPageEditing={isPageEditing}
                 >
                   <div
-                    className="mt-9 flex flex-wrap gap-4"
+                    className="mt-8 flex flex-wrap gap-4"
                     data-component-part="page-header-actions"
                   >
                     {shouldShowLink1 && link1Value && (
                       <EditableButton
                         buttonLink={link1Value}
-                        variant="outline"
+                        variant="default"
                         isPageEditing={isPageEditing}
                       />
                     )}
@@ -115,18 +144,8 @@ export const PageHeaderBlueText: React.FC<
               )}
             </div>
           </div>
-          {/* Image */}
-          <ImageWrapper
-            image={imageRequired?.jsonValue}
-            wrapperClass="@sm/headerwrapper:absolute w-full @sm/headerwrapper:inset-0"
-            className="h-full w-full object-cover"
-            priority={true}
-            page={props.page}
-          />
         </div>
-      </section>
-    );
-  }
-
-  return <NoDataFallback componentName="PageHeader" />;
+      </div>
+    </section>
+  );
 };

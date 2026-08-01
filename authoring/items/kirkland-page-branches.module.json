@@ -1,7 +1,7 @@
 {
   "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
   "namespace": "kirkland-page-branches",
-  "description": "Kirkland page-branch insert rules, authoring guardrails, and the reusable Lawyer Profile, News Article, and Practice Area page branches.",
+  "description": "Kirkland page-branch insert rules, authoring guardrails, and the reusable Lawyer Profile, News Article, Practice Area, and Office Page branches.",
   "items": {
     "path": "kirkland-page-branches",
     "includes": [
@@ -29,6 +29,17 @@
       {
         "name": "kirkland.page-branches.practice-area",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Page Branches/Practice Area",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.page-branches.office-page",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Page Branches/Office Page",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.page-branches.office-banner-variant",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Headless Variants/Page Header/OfficeBanner",
+        "scope": "singleItem",
         "allowedPushOperations": "CreateUpdateAndDelete"
       }
     ]
