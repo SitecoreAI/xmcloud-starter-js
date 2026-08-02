@@ -2,9 +2,13 @@ import { Flex, FlexItem } from '@/components/flex/Flex.dev';
 import { cn } from '@/lib/utils';
 import { AppPlaceholder } from '@sitecore-content-sdk/nextjs';
 import { cva } from 'class-variance-authority';
+import { Children } from 'react';
 import { ArticleCtaSlotProps } from './article-cta-slot.props';
 
 const PLACEHOLDER_FRAGMENT = 'kirkland-article-cta';
+
+const hasRenderingContent = (value: unknown): boolean =>
+  Array.isArray(value) ? value.length > 0 : Boolean(value);
 
 const articleCtaSlotVariants = cva(['group @container article-cta-slot'], {
   variants: {
@@ -42,11 +46,12 @@ export const Default: React.FC<ArticleCtaSlotProps> = (props) => {
   const { isEditing } = page.mode;
 
   const placeholderName = `${PLACEHOLDER_FRAGMENT}-${props.params.DynamicPlaceholderId}`;
-  const hasPlaceholderContent = Boolean(
-    rendering?.placeholders?.[placeholderName] ||
-      rendering?.placeholders?.[`${PLACEHOLDER_FRAGMENT}-{*}`] ||
-      children,
-  );
+  const hasPlaceholderContent =
+    hasRenderingContent(rendering?.placeholders?.[placeholderName]) ||
+    hasRenderingContent(
+      rendering?.placeholders?.[`${PLACEHOLDER_FRAGMENT}-{*}`],
+    ) ||
+    Children.count(children) > 0;
 
   if (!hasPlaceholderContent && !isEditing) {
     return null;

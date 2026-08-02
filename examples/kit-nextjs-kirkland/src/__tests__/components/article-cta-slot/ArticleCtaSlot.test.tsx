@@ -55,6 +55,24 @@ describe('ArticleCtaSlot', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
+  it('does not render when Sitecore supplies an empty placeholder array', () => {
+    const propsWithLiveEmptyPlaceholder = {
+      ...emptyArticleCtaSlotProps,
+      rendering: {
+        ...emptyArticleCtaSlotProps.rendering,
+        placeholders: {
+          'kirkland-article-cta-empty': [],
+        },
+      },
+    };
+
+    const { container } = render(
+      <ArticleCtaSlot {...propsWithLiveEmptyPlaceholder} />,
+    );
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
   it('renders an empty drop zone in editing mode', () => {
     const { container } = render(
       <ArticleCtaSlot {...emptyEditingArticleCtaSlotProps} />,
