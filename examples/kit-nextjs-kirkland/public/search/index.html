@@ -27,6 +27,8 @@
                 --muted: #9aa0a6;
                 --link: #8ab4f8;
                 --active: #f1f3f4;
+                --bbQxAb: #bdc1c6;
+                --m3c23: #8ab4f8;
             }
 
             * {
@@ -137,11 +139,17 @@
                 outline: 0;
             }
 
-            .icon-button img {
+            .icon-button img,
+            .icon-button svg {
                 display: block;
                 width: 24px;
                 height: 24px;
                 object-fit: contain;
+            }
+
+            .google-search-icon {
+                color: var(--bbQxAb);
+                fill: currentColor;
             }
 
             .mono-icon {
@@ -161,10 +169,14 @@
                 height: 24px;
             }
 
-            .search-tools .lens {
-                width: 25px;
-                height: 25px;
-                border-radius: 50%;
+            .search-tools .camera {
+                width: 24px;
+                height: 24px;
+            }
+
+            .header-actions .share-action svg {
+                width: 22px;
+                height: 22px;
             }
 
             .header-actions {
@@ -271,11 +283,9 @@
             }
 
             .sparkle {
-                width: 25px;
-                height: 25px;
+                width: 24px;
+                height: 24px;
                 margin-right: 8px;
-                filter: invert(71%) sepia(54%) saturate(1265%)
-                    hue-rotate(184deg) brightness(103%);
             }
 
             .ai-heading {
@@ -769,7 +779,7 @@
                 }
 
                 .search-tools .mic,
-                .search-tools .lens,
+                .search-tools .camera,
                 .search-divider {
                     display: none;
                 }
@@ -833,7 +843,7 @@
     <body>
         <!--
       Static, self-contained presentation asset. No Google services or tracking are loaded.
-      Embedded asset provenance: Google wordmark, microphone, Lens mark, account avatar, favicon,
+      Embedded asset provenance: Google wordmark, search and action icons, account avatar, favicon,
       Material Symbols, and Google Search favicon service; GOV.UK NSI process flowchart; and the
       Norton Rose Fulbright publication image shown by Google for the cited result.
     -->
@@ -872,33 +882,53 @@
                         type="button"
                         aria-label="Search by voice"
                     >
-                        <img
-                            class="mic"
-                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACTUlEQVR4Ae2XU7fdQBiGv3Nd27aVmV23QXVT2+4vqG3jX9S2rdvaVpLjM8dIZ8pJ1rYxz1rvNt5nsHcCgjAjEFhWmrIlf4G6Oe++sjk/73fIA3VL/iL2HMQzAzbnN1C2kKu0sOUu8hZyfcj2/IZxPPLO8u4l4nIm2BJhBf0Jey3EG2yd+yvAXhuHAvl5AQjkxuMMWIFECISGEKhIcQEhIATKhUBoCIGyRBMQAkKAnIEsGutvso5D9RAOpzOBI7t//xqGiiwuWZEQeMYL5J2DjsDBTuL9FZA3598Gju8y6sQL6Cp6GgmBy7wAOQszHDMw3+8Z2ELmAIeh4lm8gKmiyxBu8s/AGl6A3j/qPKmn5S75LL+JXAQHpopPOATWhH8GTkJXToClJPsctLIvI1LPh8Ql9hpbeVlqR0uX2ZaQjLtFaiM/dT8LzpnIn/9nT+SysNvsMXCDrqGT9g0sPYNIkX8aRrPitpyGJRAktPByVpqPrknjIv1zeosXyN1X45qhoWUBl1fwUlq4wiFwHyJN4WloSk6Dzspn76lx/f/Gk47rSq9W4ANdQy0NBR11FGdJ/zEUt4BokHsO+uXsrXnJTYkSQ0OHTBVNY5szY4SrqjG4U2V229TwVFr8IHuNu/eZqkuGaKIPkfrRQgYrEEp0FWVw5aPLN6VHM1ribgjlH7pZdtHnhyaNMhT02O/yGn5NrydZAGkQT+iqqyv7FzVU6drXofjdDw2RHxrO/zoEf6CFr1PJjeYQLPHF4xbpwDiLD8Q/QiD6CAEhIBAIfgIDXvSOOYNfugAAAABJRU5ErkJggg=="
-                            alt=""
-                        />
+                        <svg
+                            class="google-search-icon mic ByCvB"
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 -960 960 960"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                fill="var(--bbQxAb)"
+                                d="M480-400q-50 0-85-35t-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35Zm-40 280v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Z"
+                            ></path>
+                        </svg>
                     </button>
                     <button
                         class="icon-button"
                         type="button"
                         aria-label="Search by image"
                     >
-                        <img
-                            class="lens"
-                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDYiIGhlaWdodD0iNDciIHZpZXdCb3g9IjAgMCA0NiA0NyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxyZWN0IHg9IjAuMTQyNTc4IiB5PSIwLjY0MjU3OCIgd2lkdGg9IjQ1LjcxNDMiIGhlaWdodD0iNDUuNzE0MyIgcng9IjIyLjg1NzIiIGZpbGw9IndoaXRlIi8+CiAgICA8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfNDQwOF8zNjcxKSI+CiAgICA8cGF0aCBkPSJNMzAuMDg1OCAzMi45MzcyQzMxLjM4ODIgMzIuOTM3MiAzMi40NDQxIDMxLjg4MTQgMzIuNDQ0MSAzMC41NzlDMzIuNDQ0MSAyOS4yNzY1IDMxLjM4ODIgMjguMjIwNyAzMC4wODU4IDI4LjIyMDdDMjguNzgzNCAyOC4yMjA3IDI3LjcyNzUgMjkuMjc2NSAyNy43Mjc1IDMwLjU3OUMyNy43Mjc1IDMxLjg4MTQgMjguNzgzNCAzMi45MzcyIDMwLjA4NTggMzIuOTM3MloiIGZpbGw9IiMzNEE4NTMiLz4KICAgIDxwYXRoIGQ9Ik0yMy4wMDkxIDI4LjIxOTNDMjQuOTYyNyAyOC4yMTkzIDI2LjU0NjUgMjYuNjM1NiAyNi41NDY1IDI0LjY4MTlDMjYuNTQ2NSAyMi43MjgzIDI0Ljk2MjcgMjEuMTQ0NSAyMy4wMDkxIDIxLjE0NDVDMjEuMDU1NCAyMS4xNDQ1IDE5LjQ3MTcgMjIuNzI4MyAxOS40NzE3IDI0LjY4MTlDMTkuNDcxNyAyNi42MzU2IDIxLjA1NTQgMjguMjE5MyAyMy4wMDkxIDI4LjIxOTNaIiBmaWxsPSIjMUE3M0U4Ii8+CiAgICA8cGF0aCBkPSJNMTIuMzg1NyAyOS4yODExQzEyLjM4NTcgMzEuOTQ1OSAxNC41NTU0IDM0LjExNTYgMTcuMjIwMiAzNC4xMTU2SDIyLjk5OFYzMS43NTczSDE3LjA5MDVDMTUuNzkzNCAzMS43NDU1IDE0Ljc0NCAzMC41MzEgMTQuNzQ0IDI5LjEwNDJWMjYuNDUxMkgxMi4zODU3VjI5LjI4MTFaIiBmaWxsPSIjRUE0MzM1Ii8+CiAgICA8cGF0aCBkPSJNMzMuNjA5NyAyMC4wODI1QzMzLjYwOTcgMTcuNDE3NyAzMS40NDAxIDE1LjI0OCAyOC43NzUyIDE1LjI0OEgyNS45NDUzTDI4Ljg5MzIgMTcuNjA2M0MzMC4xOTAyIDE3LjYwNjMgMzEuMjUxNCAxOC44MzI2IDMxLjI1MTQgMjAuMjU5NFYyNC42ODExSDMzLjYwOTdWMjAuMDgyNVoiIGZpbGw9IiNGQkJDMDUiLz4KICAgIDxwYXRoIGQ9Ik0yNS4zNTYyIDEyLjg4ODdIMjAuNjM5N0wxOC44NzEgMTUuMjQ2OUgxNy4yMjAyQzE0LjU1NTQgMTUuMjQ2OSAxMi4zODU3IDE3LjQxNjYgMTIuMzg1NyAyMC4wODE0VjIyLjkxMTNIMTQuNzQ0VjIwLjI1ODNDMTQuNzQ0IDE4LjgzMTUgMTUuODA1MiAxNy42MDUyIDE3LjEwMjMgMTcuNjA1MkgyOC44OTM2TDI1LjM1NjIgMTIuODg4N1oiIGZpbGw9IiMxQTczRTgiLz4KICAgIDwvZz4KICAgIDxkZWZzPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwMF80NDA4XzM2NzEiPgogICAgPHJlY3Qgd2lkdGg9IjIxLjIyNDQiIGhlaWdodD0iMjEuMjI0NCIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyLjM4NzcgMTIuODg4NykiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8L2RlZnM+CiAgICA8L3N2Zz4K"
-                            alt=""
-                        />
+                        <svg
+                            class="google-search-icon camera hWdRGb"
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 -960 960 960"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                fill="var(--bbQxAb)"
+                                d="M480-320q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm240 160q-33 0-56.5-23.5T640-240q0-33 23.5-56.5T720-320q33 0 56.5 23.5T800-240q0 33-23.5 56.5T720-160Zm-440 40q-66 0-113-47t-47-113v-80h80v80q0 33 23.5 56.5T280-200h200v80H280Zm480-320v-160q0-33-23.5-56.5T680-680H280q-33 0-56.5 23.5T200-600v120h-80v-120q0-66 47-113t113-47h80l40-80h160l40 80h80q66 0 113 47t47 113v160h-80Z"
+                            ></path>
+                        </svg>
                     </button>
                     <button
                         class="icon-button"
                         type="submit"
                         aria-label="Search"
                     >
-                        <img
-                            class="mono-icon"
-                            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgLTk2MCA5NjAgOTYwIiB3aWR0aD0iMjQiPjxwYXRoIGQ9Ik03ODQtMTIwIDUzMi0zNzJxLTMwIDI0LTY5IDM4dC04MyAxNHEtMTA5IDAtMTg0LjUtNzUuNVQxMjAtNTgwcTAtMTA5IDc1LjUtMTg0LjVUMzgwLTg0MHExMDkgMCAxODQuNSA3NS41VDY0MC01ODBxMCA0NC0xNCA4M3QtMzggNjlsMjUyIDI1Mi01NiA1NlpNMzgwLTQwMHE3NSAwIDEyNy41LTUyLjVUNTYwLTU4MHEwLTc1LTUyLjUtMTI3LjVUMzgwLTc2MHEtNzUgMC0xMjcuNSA1Mi41VDIwMC01ODBxMCA3NSA1Mi41IDEyNy41VDM4MC00MDBaIi8+PC9zdmc+"
-                            alt=""
-                        />
+                        <svg
+                            class="google-search-icon"
+                            focusable="false"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                            ></path>
+                        </svg>
                     </button>
                 </div>
             </form>
@@ -909,22 +939,36 @@
                     type="button"
                     aria-label="Share"
                 >
-                    <img
-                        class="mono-icon"
-                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgLTk2MCA5NjAgOTYwIiB3aWR0aD0iMjQiPjxwYXRoIGQ9Ik0yNDAtODBxLTMzIDAtNTYuNS0yMy41VDE2MC0xNjB2LTQwMHEwLTMzIDIzLjUtNTYuNVQyNDAtNjQwaDEyMHY4MEgyNDB2NDAwaDQ4MHYtNDAwSDYwMHYtODBoMTIwcTMzIDAgNTYuNSAyMy41VDgwMC01NjB2NDAwcTAgMzMtMjMuNSA1Ni41VDcyMC04MEgyNDBabTIwMC0yNDB2LTQ0N2wtNjQgNjQtNTYtNTcgMTYwLTE2MCAxNjAgMTYwLTU2IDU3LTY0LTY0djQ0N2gtODBaIi8+PC9zdmc+"
-                        alt=""
-                    />
+                    <svg
+                        class="google-search-icon"
+                        height="22"
+                        width="22"
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M16 5l-1.42 1.42-1.59-1.59V16h-1.98V4.83L9.42 6.42 8 5l4-4 4 4zm4 5v11c0 1.1-.9 2-2 2H6c-1.11 0-2-.9-2-2V10c0-1.11.89-2 2-2h3v2H6v11h12V10h-3V8h3c1.1 0 2 .89 2 2z"
+                        ></path>
+                    </svg>
                 </button>
                 <button
                     class="icon-button apps-action"
                     type="button"
                     aria-label="Google apps"
                 >
-                    <img
-                        class="mono-icon"
-                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgLTk2MCA5NjAgOTYwIiB3aWR0aD0iMjQiPjxwYXRoIGQ9Ik0xODMuNS0xODMuNVExNjAtMjA3IDE2MC0yNDB0MjMuNS01Ni41UTIwNy0zMjAgMjQwLTMyMHQ1Ni41IDIzLjVRMzIwLTI3MyAzMjAtMjQwdC0yMy41IDU2LjVRMjczLTE2MCAyNDAtMTYwdC01Ni41LTIzLjVabTI0MCAwUTQwMC0yMDcgNDAwLTI0MHQyMy41LTU2LjVRNDQ3LTMyMCA0ODAtMzIwdDU2LjUgMjMuNVE1NjAtMjczIDU2MC0yNDB0LTIzLjUgNTYuNVE1MTMtMTYwIDQ4MC0xNjB0LTU2LjUtMjMuNVptMjQwIDBRNjQwLTIwNyA2NDAtMjQwdDIzLjUtNTYuNVE2ODctMzIwIDcyMC0zMjB0NTYuNSAyMy41UTgwMC0yNzMgODAwLTI0MHQtMjMuNSA1Ni41UTc1My0xNjAgNzIwLTE2MHQtNTYuNS0yMy41Wm0tNDgwLTI0MFExNjAtNDQ3IDE2MC00ODB0MjMuNS01Ni41UTIwNy01NjAgMjQwLTU2MHQ1Ni41IDIzLjVRMzIwLTUxMyAzMjAtNDgwdC0yMy41IDU2LjVRMjczLTQwMCAyNDAtNDAwdC01Ni41LTIzLjVabTI0MCAwUTQwMC00NDcgNDAwLTQ4MHQyMy41LTU2LjVRNDQ3LTU2MCA0ODAtNTYwdDU2LjUgMjMuNVE1NjAtNTEzIDU2MC00ODB0LTIzLjUgNTYuNVE1MTMtNDAwIDQ4MC00MDB0LTU2LjUtMjMuNVptMjQwIDBRNjQwLTQ0NyA2NDAtNDgwdDIzLjUtNTYuNVE2ODctNTYwIDcyMC01NjB0NTYuNSAyMy41UTgwMC01MTMgODAwLTQ4MHQtMjMuNSA1Ni41UTc1My00MDAgNzIwLTQwMHQtNTYuNS0yMy41Wm0tNDgwLTI0MFExNjAtNjg3IDE2MC03MjB0MjMuNS01Ni41UTIwNy04MDAgMjQwLTgwMHQ1Ni41IDIzLjVRMzIwLTc1MyAzMjAtNzIwdC0yMy41IDU2LjVRMjczLTY0MCAyNDAtNjQwdC01Ni41LTIzLjVabTI0MCAwUTQwMC02ODcgNDAwLTcyMHQyMy41LTU2LjVRNDQ3LTgwMCA0ODAtODAwdDU2LjUgMjMuNVE1NjAtNzUzIDU2MC03MjB0LTIzLjUgNTYuNVE1MTMtNjQwIDQ4MC02NDB0LTU2LjUtMjMuNVptMjQwIDBRNjQwLTY4NyA2NDAtNzIwdDIzLjUtNTYuNVE2ODctODAwIDcyMC04MDB0NTYuNSAyMy41UTgwMC03NTMgODAwLTcyMHQtMjMuNSA1Ni41UTc1My02NDAgNzIwLTY0MHQtNTYuNS0yMy41WiIvPjwvc3ZnPg=="
-                        alt=""
-                    />
+                    <svg
+                        class="google-search-icon gb_H"
+                        aria-hidden="true"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"
+                        ></path>
+                    </svg>
                 </button>
                 <div class="account-avatar" aria-label="Google Account">
                     <img
@@ -963,11 +1007,19 @@
             <section class="ai-overview" aria-labelledby="ai-overview-title">
                 <div class="ai-copy">
                     <div class="ai-heading-row">
-                        <img
-                            class="sparkle"
-                            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgLTk2MCA5NjAgOTYwIiB3aWR0aD0iMjQiPjxwYXRoIGQ9Im03NjAtNjAwLTUwLTExMC0xMTAtNTAgMTEwLTUwIDUwLTExMCA1MCAxMTAgMTEwIDUwLTExMCA1MC01MCAxMTBabTAgNTYwLTUwLTExMC0xMTAtNTAgMTEwLTUwIDUwLTExMCA1MCAxMTAgMTEwIDUwLTExMCA1MC01MCAxMTBaTTM2MC0xNjAgMjYwLTM4MCA0MC00ODBsMjIwLTEwMCAxMDAtMjIwIDEwMCAyMjAgMjIwIDEwMC0yMjAgMTAwLTEwMCAyMjBabTAtMTk0IDQwLTg2IDg2LTQwLTg2LTQwLTQwLTg2LTQwIDg2LTg2IDQwIDg2IDQwIDQwIDg2Wm0wLTEyNloiLz48L3N2Zz4="
-                            alt=""
-                        />
+                        <svg
+                            class="sparkle fWWlmf JzISke"
+                            height="24"
+                            width="24"
+                            aria-hidden="true"
+                            viewBox="0 0 471 471"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                fill="var(--m3c23)"
+                                d="M235.5 471C235.5 438.423 229.22 407.807 216.66 379.155C204.492 350.503 187.811 325.579 166.616 304.384C145.421 283.189 120.498 266.508 91.845 254.34C63.1925 241.78 32.5775 235.5 0 235.5C32.5775 235.5 63.1925 229.416 91.845 217.249C120.498 204.689 145.421 187.811 166.616 166.616C187.811 145.421 204.492 120.497 216.66 91.845C229.22 63.1925 235.5 32.5775 235.5 0C235.5 32.5775 241.584 63.1925 253.751 91.845C266.311 120.497 283.189 145.421 304.384 166.616C325.579 187.811 350.503 204.689 379.155 217.249C407.807 229.416 438.423 235.5 471 235.5C438.423 235.5 407.807 241.78 379.155 254.34C350.503 266.508 325.579 283.189 304.384 304.384C283.189 325.579 266.311 350.503 253.751 379.155C241.584 407.807 235.5 438.423 235.5 471Z"
+                            ></path>
+                        </svg>
                         <h1 class="ai-heading" id="ai-overview-title">
                             AI Overview
                         </h1>
