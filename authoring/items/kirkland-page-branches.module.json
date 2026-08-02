@@ -17,6 +17,12 @@
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
+        "name": "kirkland.page-branches.article-cta-placeholder",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Placeholder Settings/Article CTA Slot",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
         "name": "kirkland.page-branches.lawyer-profile",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Presentation/Page Branches/Lawyer Profile",
         "allowedPushOperations": "CreateUpdateAndDelete"

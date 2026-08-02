@@ -7,6 +7,7 @@ Use the configured **BlackRock Meta Data Center Venture** alert for all four loo
 - Deploy the Kirkland editing host before the rehearsal, and verify the alert in Page Builder at the default 1024 px desktop width, tablet width, and phone width.
 - Pull the `Kirkland.Demo` and `kirkland-page-branches` serialization modules after connecting the Sitecore CLI. The module files define intentionally narrow boundaries; they do not replace a serialization pull and do not contain fabricated item YAML.
 - Publish the **News Article** page-branch wrapper, its configured rule, and the branch contents. Confirm that **News Article** is a creation option under **News and Insights**.
+- Deploy the editing host containing **Article CTA Slot**. In Page Builder, confirm that its empty `kirkland-article-cta-{*}` drop zone is visible only while editing and offers **CTA Banner** as its sole allowed component.
 - When validating through the marketer MCP, request the current page version explicitly. An unversioned HTML request can return version 1 instead of the latest Approved version.
 - Keep one prior version of the alert approved and published. Keep the current version, its article-body datasource, and any page-level or shared datasource that will be edited in **Draft** until the authoring loop.
 - In Content Editor, confirm that the Required validator is visible for Author, Practice, Office, and Source material, and that Submit and Approve are blocked while any one of those fields is empty.
@@ -60,7 +61,10 @@ The relationship fields on the alert are `author`, `relatedPractice`, `relatedOf
    - Edit the article-body datasource in context; change the first section heading from **A framework built for scale** to **A framework designed for scale**.
    - Select the shared **Explore More Insights** CTA Banner and change **View all news and insights** to **Explore all news and insights**. Explain that this is governed shared content and that the approved change will appear anywhere the same datasource is used.
    - In the page Content panel, show the configured **Allan Kirk** author, **Digital Infrastructure** topic, **Mergers & Acquisitions** practice, **Houston** office, source, and related-insight selectors. Reference-derived links are managed in these fields, not by editing their rendered anchor text on the canvas.
-4. Demonstrate the component guardrails by moving the existing CTA Banner above the article body, showing the changed order, and then using **Undo** to restore the approved Header → Body → CTA sequence.
+4. Demonstrate the component guardrails in the empty **Article CTA Slot** below the approved article content:
+   - Open the component picker, and point out that the slot offers **CTA Banner** but excludes unrelated components such as Rich Text.
+   - Drag **CTA Banner** into the slot, and select the existing shared **Find the Right Team for Your Matter** datasource.
+   - Show the rendered CTA in context, and then use **Undo** to restore the approved article layout.
 5. Show the responsive preview at 1024 px desktop width, tablet width, and phone width. Check headline wrapping, metadata alignment, source and related-insight cards, body margins, and CTA spacing.
 6. Save the draft. Do not approve or publish during this loop.
 
