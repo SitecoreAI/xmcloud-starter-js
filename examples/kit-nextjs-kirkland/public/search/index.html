@@ -381,6 +381,17 @@
                 border-radius: 50%;
             }
 
+            .ai-answer a.citation {
+                color: #aab0b7;
+                text-decoration: none;
+            }
+
+            .ai-answer a.citation:hover,
+            .ai-answer a.citation:focus-visible {
+                background: #484c52;
+                outline: 0;
+            }
+
             .answer-fade {
                 position: absolute;
                 right: 0;
@@ -495,6 +506,18 @@
                 padding: 6px 121px 14px 21px;
             }
 
+            .rail-entry-link {
+                position: absolute;
+                z-index: 1;
+                inset: 0;
+                border-radius: 8px;
+            }
+
+            .rail-entry-link:focus-visible {
+                outline: 2px solid var(--link);
+                outline-offset: -3px;
+            }
+
             .rail-entry + .rail-entry {
                 border-top: 1px solid #46494e;
                 padding-top: 13px;
@@ -555,6 +578,7 @@
 
             .rail-more {
                 position: absolute;
+                z-index: 2;
                 top: 3px;
                 right: 1px;
                 width: 31px;
@@ -1048,11 +1072,13 @@
                             >, meaning it involves a sensitive sector, passes
                             control thresholds, and must be cleared
                             <strong>pre-completion.</strong>
-                            <span class="citation"
+                            <a
+                                class="citation"
+                                href="/News-and-Insights/UK-National-Security-and-Investment-Act-Update"
                                 ><img
-                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAYFBMVEUdcLj///8AabUAZrQXbrcRbLYAZLMAYbL1+fxglcnp8Pf7/f6zyuNLiMPg6vQAWK8AW7Apd7uRs9cze73T4e+6z+apw+Ccutt/qNJqmct4os9EhMHB1OmGrdVWjsbJ2uwsL1baAAACzklEQVRYhe1V2ZKjMAy0ZAuMAyRgbgj8/1+uZHLM1BawQ9XWvEQPQByrLbVaslIf+9j/N8P2qwHoHABmOu1vsASwdDoJY6ICoI7xLIB2deKgLPP7ySTiC6x2PxkDA1wuYM8DRJfUWLj3rjyRgiF28lECUMXkTfj5M/8k4bh1ygx4kWOf/SwNrAAmbcgxQMdC4Hf7EwTqhfyRZnlVkegJ4F8BSKOiRDy8buRlFd5XAEI8ViUmU1MYnABSjSsAKcM9USJldeqPECgLQRvMmDXjBaDh2GkeURUsLKuPAmjFh2kLLUTZUpWSu5GVQf7KDkII9L2PIR29uDOjABwOGN26PHuphsysXx7YOdfvC8ogKSR8+/cXcG/euAq0q0ka2/5btVGElH5dMtSVxVYWQTfll+2Gewlg+Uq8Zom6LR6w5u1OivYECUJ4pi2ra2GHjSzC9hxZeO3zUD008wMNe87FKAFINmmowM5Mk4Vu9SJCjetQJS7iaJS0RbopJoNeUWgEF7zGPhGbzSN5aUgs/E5XieBWLUntTGHhGbFRdhW12pvyqHtPK1EBAIP2Oo3FCsDkEQ2kN8vYWEDexHPIxZp0Nd46nitXU3nStwpynjDdzcG0JQQh6HoxVCQudzDEOVTcWil3djxau0A3ks6z5bswvhlfhQ30j8yr28JtxVLm561ZL4jEQJXD9kwIgyjNxCf1bVxDx1FEs3XxfeZedtBKRzc7I0Hn+Tz58tryPERsE40WPPoaicgu135OuxSKbX+ZGUPMLTnCXY4h5O5oI5E+eRYX60pBvTeTDJ+YaYqYzS7SOs6EjkG+RsfXNPs7jm0HQGnup3YOY81NU75S56Y6fKXJ3XIt9/wf83zPju6X6AggO7gkpWcednEuD+acfS/G+/6Kuiptu2QsdBxHYjo840iNyVA2S3p4wfHNxuX6W2tywyNPhyP/j33sY79lfwDkeR9VYsSToAAAAABJRU5ErkJggg=="
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAb1BMVEUAR7v///8APbgAP7gAQrn4+/5pkdUbXcRIfM4ARLoAOLcWVL9Lfs+HpNt6mtcASrzU3/IAUb+sv+Xm7Pdwl9dEdMrr8PhdhM+Cn9m6yemXsuEuasjH1e7N2/CSreBxk9WhuuQ2cMomZMVri9Hd5fQA0qg9AAACLElEQVRYhe1XzZqCMAzEtoBVEPkXRBHx/Z9xkTZQoZTIYb89bE4Y7DSTSZtgWf/214xTxdjoZjqvzo57bw/mpQG4w9QbvdyI4O8Gy/LRfbEHd24MgfMI/mifyOgOCnCXxBwBvcJe51DZitTSXbnmHHTpukmAO1HcABCbCbzt8ACuCgC3BDPbD5ZXwl6QxoaOTpbHvS9yzQnoARKZw+cYLHNFDs/79fUWcSTAmC3O/T4D2YlvBGh7AvYjQKzXAPBGCHNbU3ABgB+FApmHWj8D4FDGF0z8GgDiCQULVALmACwUCXilOAIzAFqKXwly/ykAaUUCHsdtADQVCaieWAKfAFDCcYtfrwLwsOwJ2HesAtMIaqngFwRUAJpKBZElOAOQJbwrMGdQBwDXIOIa0wN4mXhav0gXAPjQDKJwkwrEhWaQ1ZsiYMw7S4TbSj9bAOg6GqQh2nYWuBvJNNinbYeJNUAiVtsEHsBiDihRYUOYXCgcOt0uOeAgpleaBSTsPY7E/FIdChJ3KOd94Q4hPFAFOQNgXxakpjfmLyCBuds1AIGfAQlEQeq680DCTjZFYLEUSJyvqyR0ABatQctiVQkYcXaq6jBkdeavldNBN2R1Wlag5dodPYx5rTonDk2uS0NjnnUZ1H75AdC1WUCojCebNtpR950GB6QoDFIsDNv9qyCvEAjquN9OFGOuU8h23yyJufDBAUEQErhp9yp/LlL4+OTRbMMY4rvn337dfgDdYBzJWPL+CwAAAABJRU5ErkJggg=="
                                     alt=""
-                                />GOV.UK +1</span
+                                />Kirkland &amp; Ellis LLP</a
                             >
                         </p>
                         <h2>Mandatory vs. Voluntary Rules</h2>
@@ -1118,7 +1144,7 @@
                                     alt=""
                                 />
                                 <img
-                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAb1BMVEX/AAD/////ODj/6en/nZ3/pqb/Kir/9/f/8fH/oaH/7Oz/qqr/Li7/gYH/n5//Ozv/4uL/mZn/3d3/Dg7/ZWX/WVn/jIz/19f/rq7/zs7/u7v/amr/kZH/ICD/x8f/eHj/R0f/QUH/cnL/X1//T09PbdenAAACD0lEQVRYhe2W2ZaCMAyGyYCsoiI7gqL4/s84bWhrNzh4N3MO/42tST/SNgk4zq5du/6f8nEqynNuN0aHg0d0OqBO1euse/QXiOs6BIi71ALIvASoMkpprmQUNL5krwD6OQz06yxx+NTgssmxRZowdnAVS27UdDQBPzKALiFK2CSBWN4usfiOIQ3ghHR+w+GbD5i2AXo6v+KwhUBx7TYBzsD3OnAQ120TwEHAiwxKHeB8AXiQQQoQqr737yJIGeijagvgiQB6+wUdTLKvvyEPaO4BtHR0RFQjJ5+tIqx5MOKwhhnxNFctAzATWdW8gam2lZEVkN9pOYn0yzgBgm4xDAbI8/xY0Me7mWSs4KO6XAEEs0+XpKNqfbYywnIHDHAp0SOy2N93CWE7C7YFPDywRjn07hqBH2JMf8OFzvcJY1gEzHd2twNIVjFEYljENXpGjO6P7PhCu1afMoAlnnTS2o7xoLX6VACD/ghoVFfamNUepQKcBxJOwhTEpusqgN3lWwD06qUZswqYS1E8N4DKAJjXpADmhOwEwOiJUKwD8OUhGhmpEKUGJ9sO9H5wwdryOUCJuJXOZxEw97GaA+QVqb2YfBWAvZi9X2k04SAZHuZy9noPMi/ilTh3AC8ix9WTWwle+G9RQ2t8OzjyB0bCG3ge4R8JNrapIaV8rS8QNqNl+SYNYzGNZhXv2rXrj+gXqj0WIyFn6wQAAAAASUVORK5CYII="
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAb1BMVEUAR7v///8APbgAP7gAQrn4+/5pkdUbXcRIfM4ARLoAOLcWVL9Lfs+HpNt6mtcASrzU3/IAUb+sv+Xm7Pdwl9dEdMrr8PhdhM+Cn9m6yemXsuEuasjH1e7N2/CSreBxk9WhuuQ2cMomZMVri9Hd5fQA0qg9AAACLElEQVRYhe1XzZqCMAzEtoBVEPkXRBHx/Z9xkTZQoZTIYb89bE4Y7DSTSZtgWf/214xTxdjoZjqvzo57bw/mpQG4w9QbvdyI4O8Gy/LRfbEHd24MgfMI/mifyOgOCnCXxBwBvcJe51DZitTSXbnmHHTpukmAO1HcABCbCbzt8ACuCgC3BDPbD5ZXwl6QxoaOTpbHvS9yzQnoARKZw+cYLHNFDs/79fUWcSTAmC3O/T4D2YlvBGh7AvYjQKzXAPBGCHNbU3ABgB+FApmHWj8D4FDGF0z8GgDiCQULVALmACwUCXilOAIzAFqKXwly/ykAaUUCHsdtADQVCaieWAKfAFDCcYtfrwLwsOwJ2HesAtMIaqngFwRUAJpKBZElOAOQJbwrMGdQBwDXIOIa0wN4mXhav0gXAPjQDKJwkwrEhWaQ1ZsiYMw7S4TbSj9bAOg6GqQh2nYWuBvJNNinbYeJNUAiVtsEHsBiDihRYUOYXCgcOt0uOeAgpleaBSTsPY7E/FIdChJ3KOd94Q4hPFAFOQNgXxakpjfmLyCBuds1AIGfAQlEQeq680DCTjZFYLEUSJyvqyR0ABatQctiVQkYcXaq6jBkdeavldNBN2R1Wlag5dodPYx5rTonDk2uS0NjnnUZ1H75AdC1WUCojCebNtpR950GB6QoDFIsDNv9qyCvEAjquN9OFGOuU8h23yyJufDBAUEQErhp9yp/LlL4+OTRbMMY4rvn337dfgDdYBzJWPL+CwAAAABJRU5ErkJggg=="
                                     alt=""
                                 />
                             </div>
@@ -1170,19 +1196,24 @@
                         </article>
 
                         <article class="rail-entry">
+                            <a
+                                class="rail-entry-link"
+                                href="/News-and-Insights/UK-National-Security-and-Investment-Act-Update"
+                                aria-label="Open UK National Security and Investment Act Update from Kirkland &amp; Ellis LLP"
+                            ></a>
                             <h3>
-                                The UK’s new NSI regime: What do you need to
-                                know?
+                                UK National Security and Investment Act Update
                             </h3>
                             <p>
-                                The NSIA also reflects a global trend for more
-                                intervention in national security issue...
+                                Jul 24, 2025 — Kirkland explains mandatory
+                                notification, review timing, and transaction
+                                planning under the NSIA.
                             </p>
                             <div class="rail-source">
                                 <img
-                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAZlBMVEXdJyD////98vLoa2b75eTuk5DwoZ7hQjzmXVjjUEr519bshoLeKiPkVlH64uHfNS7xpqP3zcveLyngNzHhPzjjTEb2xML++vrztbPyr6zqd3PocGv3z83wnZrtjYn87+7rfnr2xcQtCHCYAAAA7UlEQVQ4jdWR3XKEIBSDCYviD1JlUbRbtX3/l+wBKZ3uoL1tcyFh8nEII2P/SOqXvNMvl7nRmC+BBcDrRf6gHFye5pajlwPezoqqgT/ou6I4AbZmDOtt77J5vZjo5Jx9a/VtTX6Ekfejq2VmrEd7bOShcDd4KCE4WZJo/QZB0wFA+GPaA8PWcxAhXOE1RgAN1Ws4q1BSKTRhXNINvcakEnCHfgYKuWNJQIvVA7WXiQCrHYoArLbEZFLJ6gvwRXiYYEX4r8K1pE0mgL0TEa7onOueO5R+WSNA6C5zAFt4tD29OgeoOVo1fPwA/r4+AZFDCcEkNn9DAAAAAElFTkSuQmCC"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAb1BMVEUAR7v///8APbgAP7gAQrn4+/5pkdUbXcRIfM4ARLoAOLcWVL9Lfs+HpNt6mtcASrzU3/IAUb+sv+Xm7Pdwl9dEdMrr8PhdhM+Cn9m6yemXsuEuasjH1e7N2/CSreBxk9WhuuQ2cMomZMVri9Hd5fQA0qg9AAACLElEQVRYhe1XzZqCMAzEtoBVEPkXRBHx/Z9xkTZQoZTIYb89bE4Y7DSTSZtgWf/214xTxdjoZjqvzo57bw/mpQG4w9QbvdyI4O8Gy/LRfbEHd24MgfMI/mifyOgOCnCXxBwBvcJe51DZitTSXbnmHHTpukmAO1HcABCbCbzt8ACuCgC3BDPbD5ZXwl6QxoaOTpbHvS9yzQnoARKZw+cYLHNFDs/79fUWcSTAmC3O/T4D2YlvBGh7AvYjQKzXAPBGCHNbU3ABgB+FApmHWj8D4FDGF0z8GgDiCQULVALmACwUCXilOAIzAFqKXwly/ykAaUUCHsdtADQVCaieWAKfAFDCcYtfrwLwsOwJ2HesAtMIaqngFwRUAJpKBZElOAOQJbwrMGdQBwDXIOIa0wN4mXhav0gXAPjQDKJwkwrEhWaQ1ZsiYMw7S4TbSj9bAOg6GqQh2nYWuBvJNNinbYeJNUAiVtsEHsBiDihRYUOYXCgcOt0uOeAgpleaBSTsPY7E/FIdChJ3KOd94Q4hPFAFOQNgXxakpjfmLyCBuds1AIGfAQlEQeq680DCTjZFYLEUSJyvqyR0ABatQctiVQkYcXaq6jBkdeavldNBN2R1Wlag5dodPYx5rTonDk2uS0NjnnUZ1H75AdC1WUCojCebNtpR950GB6QoDFIsDNv9qyCvEAjquN9OFGOuU8h23yyJufDBAUEQErhp9yp/LlL4+OTRbMMY4rvn337dfgDdYBzJWPL+CwAAAABJRU5ErkJggg=="
                                     alt=""
-                                />Norton Rose Fulbright
+                                />Kirkland &amp; Ellis LLP
                             </div>
                             <img
                                 class="rail-thumb"
