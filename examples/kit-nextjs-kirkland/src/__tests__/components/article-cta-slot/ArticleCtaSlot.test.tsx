@@ -96,4 +96,14 @@ describe('ArticleCtaSlot', () => {
       container.querySelector('[data-component="ArticleCtaSlot"]'),
     ).toHaveClass('custom-article-cta-slot');
   });
+
+  it('preserves the established secondary CTA treatment by default', () => {
+    const { container } = render(
+      <ArticleCtaSlot {...populatedArticleCtaSlotProps} />,
+    );
+
+    expect(
+      container.querySelector('[data-component="ArticleCtaSlot"]'),
+    ).toHaveClass('bg-secondary', 'py-4', 'sm:py-16');
+  });
 });

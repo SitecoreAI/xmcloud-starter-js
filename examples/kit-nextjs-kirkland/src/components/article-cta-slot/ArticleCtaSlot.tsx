@@ -58,7 +58,9 @@ export const Default: React.FC<ArticleCtaSlotProps> = (props) => {
   }
 
   const backgroundImage = props.params.backgroundImagePath ?? '';
-  const backgroundColor = props.params.backgroundColor;
+  // Article CTAs use the firm's secondary blue treatment by default. Authors can
+  // still select another configured background in Page Builder.
+  const backgroundColor = props.params.backgroundColor ?? 'secondary';
   const inset =
     backgroundColor === 'transparent'
       ? false
@@ -66,7 +68,7 @@ export const Default: React.FC<ArticleCtaSlotProps> = (props) => {
         ? true
         : false;
   const padding =
-    inset || backgroundColor === 'transparent' || backgroundColor === undefined
+    inset || backgroundColor === 'transparent'
       ? 'noPadding'
       : 'backgroundPadding';
   const margin =
