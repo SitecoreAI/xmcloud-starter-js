@@ -94,6 +94,18 @@
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
+        "name": "kirkland.demo.shared-cta.explore-more-insights",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Calls to Action Banners/Explore More Insights",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.demo.shared-cta.find-right-team",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Calls to Action Banners/Find the Right Team for Your Matter",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
         "name": "kirkland.demo.content-type.deal-announcement",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Taxonomy/Content Types/Deal Announcement",
         "scope": "singleItem",

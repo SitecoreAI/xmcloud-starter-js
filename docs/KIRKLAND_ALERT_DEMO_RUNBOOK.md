@@ -8,7 +8,7 @@ Use the configured **BlackRock Meta Data Center Venture** alert for all four loo
 - Pull the `Kirkland.Demo` and `kirkland-page-branches` serialization modules after connecting the Sitecore CLI. The module files define intentionally narrow boundaries; they do not replace a serialization pull and do not contain fabricated item YAML.
 - Publish the **News Article** page-branch wrapper, its configured rule, and the branch contents. Confirm that **News Article** is a creation option under **News and Insights**.
 - When validating through the marketer MCP, request the current page version explicitly. An unversioned HTML request can return version 1 instead of the latest Approved version.
-- Keep one prior version of the alert approved and published. Keep the current version, its article-body datasource, and any page-level datasource that will be edited in **Draft** until the authoring loop.
+- Keep one prior version of the alert approved and published. Keep the current version, its article-body datasource, and any page-level or shared datasource that will be edited in **Draft** until the authoring loop.
 - In Content Editor, confirm that the Required validator is visible for Author, Practice, Office, and Source material, and that Submit and Approve are blocked while any one of those fields is empty.
 - Verify the named Author, Reviewer, and Publisher accounts before the demo. The Reviewer must be able to execute the configured Approve and Reject commands, and the Publisher must have explicit publish rights.
 - Use a real reviewer session. If role switching is not practical, prepare a verified screenshot from that session; never imply that an unverified or simulated account is live.
@@ -58,13 +58,13 @@ The relationship fields on the alert are `author`, `relatedPractice`, `relatedOf
    - On the canvas, shorten the headline to **Kirkland Advises BlackRock Funds on Strategic Data Center Venture with Meta**.
    - In the summary, change the final phrase from **long-term growth** to **long-term infrastructure growth**.
    - Edit the article-body datasource in context; change the first section heading from **A framework built for scale** to **A framework designed for scale**.
-   - In the CTA Banner’s content fields, change **View all News & Insights** to **Explore all News & Insights**.
+   - Select the shared **Explore More Insights** CTA Banner and change **View all news and insights** to **Explore all news and insights**. Explain that this is governed shared content and that the approved change will appear anywhere the same datasource is used.
    - In the page Content panel, show the configured **Allan Kirk** author, **Digital Infrastructure** topic, **Mergers & Acquisitions** practice, **Houston** office, source, and related-insight selectors. Reference-derived links are managed in these fields, not by editing their rendered anchor text on the canvas.
 4. Demonstrate the component guardrails by moving the existing CTA Banner above the article body, showing the changed order, and then using **Undo** to restore the approved Header → Body → CTA sequence.
 5. Show the responsive preview at 1024 px desktop width, tablet width, and phone width. Check headline wrapping, metadata alignment, source and related-insight cards, body margins, and CTA spacing.
 6. Save the draft. Do not approve or publish during this loop.
 
-**Value statement:** Authors make changes in context while approved components, page-level datasources, and placement rules keep the experience on brand.
+**Value statement:** Authors make changes in context while approved components, governed page-level and shared datasources, and placement rules keep the experience on brand.
 
 ## Loop 3 — reference fields and reuse
 
@@ -83,9 +83,9 @@ The relationship fields on the alert are `author`, `relatedPractice`, `relatedOf
 
 ## Loop 4 — versioning, review, and deliberate publishing
 
-1. In Content Editor, open **Versions**, and compare the current Draft with the prior approved version. Compare fields in Content Editor, not an old-version Page Builder preview, and compare the article-body and CTA datasource versions as well.
+1. In Content Editor, open **Versions**, and compare the current Draft with the prior approved version. Compare fields in Content Editor, not an old-version Page Builder preview, and compare the page-level article-body and shared CTA datasource versions as well.
 2. Show the configured required-field validation on `author`, `relatedPractice`, `relatedOffice`, and `sourceItem`. `relatedInsights` is optional. If demonstrating an error, briefly clear one required reference, show the validation result, restore the approved value, and save.
-3. As the Author, execute **Submit** on the alert and each changed page-level datasource, including **Article Body** and **Explore More Insights**:
+3. As the Author, execute **Submit** on the alert and each changed datasource, including the page-level **Article Body** and the site-level shared **Explore More Insights** CTA:
 
    `Draft → Awaiting Approval`
 
@@ -105,9 +105,10 @@ The relationship fields on the alert are `author`, `relatedPractice`, `relatedOf
    - Meta and BlackRock transaction announcement
    - Deal Announcement
    - Digital Infrastructure
-   - UK National Security and Investment Act Update, Mark Gardner, Antitrust and Competition, London, its source, its topic, and its page-level datasources
-   - PAI Partners Pasubio Refinancing, Cedric Van den Borren, Capital Markets, its source, its topic, and its page-level datasources if it is used for the shared-record demonstration
-   - the BlackRock alert and its page-level datasources
+   - UK National Security and Investment Act Update, Mark Gardner, Antitrust and Competition, London, its source, its topic, and its page-level article content
+   - PAI Partners Pasubio Refinancing, Cedric Van den Borren, Capital Markets, its source, its topic, and its page-level article content if it is used for the shared-record demonstration
+   - the BlackRock alert and its page-level article content
+   - the shared Explore More Insights CTA once, rather than a separate copy beneath each article
 7. Reopen the clean public session, refresh the alert, and verify the approved headline, summary, links, metadata, source, and related insights.
 
 **Value statement:** Version comparison, required fields, independent review, and deliberate publishing create an auditable checkpoint before legal content reaches the public experience.
