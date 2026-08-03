@@ -71,6 +71,12 @@ describe('SearchExperience', () => {
     render(<SearchExperience {...makeSearchProps()} />);
 
     expect(screen.getByRole('searchbox')).toHaveValue('national security');
+    expect(screen.getByRole('searchbox')).toHaveClass(
+      'search-experience__input',
+    );
+    expect(
+      screen.getAllByRole('button', { name: 'Clear search' }),
+    ).toHaveLength(1);
     expect(mockUseSearch).toHaveBeenLastCalledWith(
       expect.objectContaining({
         searchIndexId: 'kirkland-site-search',

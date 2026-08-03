@@ -461,7 +461,7 @@ const SearchInput = ({
           aria-disabled={disabled}
           placeholder={copy.placeholder}
           onChange={(event) => onChange(event.target.value)}
-          className="min-h-14 w-full bg-[#f8f5ee] py-4 pl-14 pr-14 text-base text-[#101820] outline-none placeholder:text-[#59636b] focus-visible:ring-2 focus-visible:ring-[#86bfe7] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0d141c]"
+          className="search-experience__input min-h-14 w-full bg-[#f8f5ee] py-4 pl-14 pr-14 text-base text-[#101820] outline-none placeholder:text-[#59636b] focus-visible:ring-2 focus-visible:ring-[#86bfe7] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0d141c] [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:hidden [&::-webkit-search-results-button]:hidden [&::-webkit-search-results-decoration]:hidden"
         />
         {value && !disabled && (
           <button
