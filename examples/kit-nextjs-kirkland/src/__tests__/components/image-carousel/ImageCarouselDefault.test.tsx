@@ -69,9 +69,20 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
 }));
 
 jest.mock('@/components/image/ImageWrapper.dev', () => ({
-  Default: ({ image }: { image?: { value?: { src?: string } } }) => (
+  Default: ({
+    image,
+    className,
+  }: {
+    image?: { value?: { src?: string } };
+    className?: string;
+  }) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={image?.value?.src} alt="" data-testid="carousel-image" />
+    <img
+      src={image?.value?.src}
+      alt=""
+      className={className}
+      data-testid="carousel-image"
+    />
   ),
 }));
 
@@ -81,11 +92,27 @@ jest.mock('@/components/ui/carousel', () => ({
     setApi?: (api: typeof mockCarouselApi) => void;
     opts?: Record<string, unknown>;
   }) => mockCarousel(props),
-  CarouselContent: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="carousel-content">{children}</div>
+  CarouselContent: ({
+    children,
+    className,
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => (
+    <div data-testid="carousel-content" className={className}>
+      {children}
+    </div>
   ),
-  CarouselItem: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="carousel-item">{children}</div>
+  CarouselItem: ({
+    children,
+    className,
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => (
+    <div data-testid="carousel-item" className={className}>
+      {children}
+    </div>
   ),
 }));
 
@@ -178,6 +205,19 @@ describe('ImageCarouselDefault', () => {
       'data-watch-drag',
       'true',
     );
+  });
+
+  it('centers the visible images with symmetric gutters at narrow widths', () => {
+    render(<ImageCarouselDefault {...createProps(false)} />);
+
+    expect(screen.getByTestId('carousel-content')).toHaveClass('ml-0');
+    screen.getAllByTestId('carousel-item').forEach((item) => {
+      expect(item).toHaveClass('basis-[88%]', 'px-2');
+      expect(item).not.toHaveClass('pl-4');
+    });
+    screen.getAllByTestId('carousel-image').forEach((image) => {
+      expect(image).toHaveClass('object-cover', 'object-center');
+    });
   });
 
   it('resynchronizes and cleans up after Manage items changes', () => {

@@ -128,7 +128,7 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
               data-component-part="carousel"
             >
               <CarouselContent
-                className="-ml-4 items-stretch"
+                className="ml-0 items-stretch"
                 data-component-part="carousel-content"
               >
                 {slides.map((slide, index) => {
@@ -140,7 +140,7 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
                   return (
                     <CarouselItem
                       key={slide.id || index}
-                      className="@md:basis-[78%] @lg:basis-[68%] @xl:basis-[62%] basis-[88%] pl-4"
+                      className="@md:basis-[78%] @lg:basis-[68%] @xl:basis-[62%] basis-[88%] px-2"
                       role="group"
                       aria-roledescription="slide"
                       aria-label={`Slide ${index + 1} of ${slides.length}${
@@ -163,7 +163,7 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
                           <ImageWrapper
                             image={slide.image?.jsonValue}
                             wrapperClass="absolute inset-0 h-full w-full"
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover object-center"
                             page={props.page}
                           />
                         ) : (
