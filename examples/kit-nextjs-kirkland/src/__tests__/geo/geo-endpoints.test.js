@@ -127,8 +127,14 @@ test('GET /robots.txt returns 200 and valid text', async () => {
   ].forEach((ua) => expect(text).toContain(ua));
 
   expect(text).toMatch(/Allow:\s*\//);
-  expect(text).toContain(`Sitemap: ${BASE_URL}/sitemap.xml`);
-  expect(text).toContain(`Sitemap: ${BASE_URL}/sitemap-llm.xml`);
+  const sitemapDirectives = [...text.matchAll(/^Sitemap:\s*(\S+)$/gim)].map(
+    (match) => match[1],
+  );
+  expect(sitemapDirectives).toEqual([
+    `${BASE_URL}/sitemap.xml`,
+    `${BASE_URL}/sitemap-llm.xml`,
+  ]);
+  expect(text).not.toMatch(/\.sitecorecloud\.io/i);
 }, 15000);
 
 test('GET /.well-known/ai.txt returns 200 and valid JSON', async () => {
@@ -254,8 +260,9 @@ test('GET /sitemap-llm.xml returns 200 and valid XML', async () => {
   }
 
   const locs = urls.map((u) => u.loc);
-
-  const derivedOrigin = locs.length > 0 ? new URL(locs[0]).origin : BASE_URL;
+  const expectedOrigin = new URL(BASE_URL).origin;
+  locs.forEach((loc) => expect(new URL(loc).origin).toBe(expectedOrigin));
+  expect(xml).not.toMatch(/\.sitecorecloud\.io/i);
 
   const join = (origin, path) =>
     `${origin.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
@@ -274,8 +281,8 @@ test('GET /sitemap-llm.xml returns 200 and valid XML', async () => {
   ];
 
   const expectedUrls = requiredPaths.map((p) => {
-    if (p === '/') return `${derivedOrigin}/`;
-    return join(derivedOrigin, p);
+    if (p === '/') return `${BASE_URL}/`;
+    return join(BASE_URL, p);
   });
 
   expect(locs).toEqual(expect.arrayContaining(expectedUrls));
@@ -330,7 +337,16 @@ test('GET /sitemap.xml returns 200 and valid XML', async () => {
   }
 
   const locs = urls.map((u) => u.loc);
-  const derivedOrigin = locs.length > 0 ? new URL(locs[0]).origin : BASE_URL;
+  const expectedOrigin = new URL(BASE_URL).origin;
+  locs.forEach((loc) => expect(new URL(loc).origin).toBe(expectedOrigin));
+
+  const alternateHrefs = [
+    ...xml.matchAll(/<xhtml:link\b[^>]*\bhref\s*=\s*["']([^"']+)["']/gi),
+  ].map((match) => match[1].replace(/&amp;/gi, '&'));
+  alternateHrefs.forEach((href) =>
+    expect(new URL(href).origin).toBe(expectedOrigin),
+  );
+  expect(xml).not.toMatch(/\.sitecorecloud\.io/i);
   const join = (origin, path) =>
     `${origin.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
 
@@ -344,7 +360,7 @@ test('GET /sitemap.xml returns 200 and valid XML', async () => {
     '/About',
   ];
   const expectedUrls = requiredPaths.map((p) =>
-    p === '/' ? `${derivedOrigin}/` : join(derivedOrigin, p),
+    p === '/' ? `${BASE_URL}/` : join(BASE_URL, p),
   );
   expect(locs).toEqual(expect.arrayContaining(expectedUrls));
 }, 15000);
