@@ -30,6 +30,7 @@ export interface RouteFields {
   metadataTitle?: Field;
   metadataAuthor?: Field;
   metadataKeywords?: Field;
+  navigationTitle?: Field;
   pageTitle?: Field;
   metadataDescription?: Field;
   pageSummary?: Field;

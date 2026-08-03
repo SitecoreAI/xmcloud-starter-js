@@ -28,7 +28,7 @@ export type SearchConfiguration = {
   fieldsMapping: SearchFieldsMapping;
 };
 
-export type SearchResultPrimitive = string | number | boolean;
+export type SearchResultPrimitive = string | number | boolean | null;
 
 export type SearchResultDocument = {
   [key: string]:

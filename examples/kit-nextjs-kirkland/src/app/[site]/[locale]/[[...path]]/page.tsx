@@ -189,6 +189,14 @@ export const generateMetadata = async ({ params }: PageProps) => {
     routeFields?.ogTitle?.value?.toString() ||
     'Kirkland & Ellis';
 
+  // Expose the author-friendly navigation label to the SitecoreAI site-source
+  // crawler. The source maps this meta value to its navigation_title field.
+  const navigationTitle =
+    routeFields?.navigationTitle?.value?.toString() ||
+    routeFields?.pageTitle?.value?.toString() ||
+    routeFields?.Title?.value?.toString() ||
+    metadataTitle;
+
   const metadataDescription =
     routeFields?.metadataDescription?.value?.toString() ||
     routeFields?.pageSummary?.value?.toString() ||
@@ -228,6 +236,9 @@ export const generateMetadata = async ({ params }: PageProps) => {
     title: metadataTitle,
     description: metadataDescription,
     authors: [{ name: metadataAuthor }],
+    other: {
+      'navigation-title': navigationTitle,
+    },
     ...(keywords.length > 0 && { keywords }),
     ...(canonicalUrl && {
       alternates: {

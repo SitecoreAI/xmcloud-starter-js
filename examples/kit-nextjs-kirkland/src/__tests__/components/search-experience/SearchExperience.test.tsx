@@ -114,6 +114,55 @@ describe('SearchExperience', () => {
     );
   });
 
+  it('derives a useful title from the result URL when the index omits its title', () => {
+    mockUseSearch.mockReturnValue({
+      ...successfulSearchState,
+      results: [
+        {
+          sc_item_id: 'mark-gardner',
+          sc_url: '/Lawyers/Mark-Gardner',
+          description: 'Antitrust and competition partner based in London.',
+          title: null,
+        },
+      ],
+    });
+
+    render(<SearchExperience {...makeSearchProps()} />);
+
+    expect(
+      screen.getByRole('heading', { name: 'Mark Gardner' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link')).toHaveAttribute(
+      'href',
+      '/Lawyers/Mark-Gardner',
+    );
+  });
+
+  it('prefers an indexed navigation title over the SEO title', () => {
+    mockUseSearch.mockReturnValue({
+      ...successfulSearchState,
+      results: [
+        {
+          sc_item_id: 'mark-gardner',
+          sc_url: '/Lawyers/Mark-Gardner',
+          navigation_title: 'Mark Gardner',
+          title: 'Mark Gardner | Antitrust & Competition | Kirkland',
+        },
+      ],
+    });
+
+    render(<SearchExperience {...makeSearchProps()} />);
+
+    expect(
+      screen.getByRole('heading', { name: 'Mark Gardner' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('heading', {
+        name: 'Mark Gardner | Antitrust & Competition | Kirkland',
+      }),
+    ).not.toBeInTheDocument();
+  });
+
   it('writes an encoded q parameter after the input debounce and submits immediately', () => {
     jest.useFakeTimers();
     render(<SearchExperience {...makeSearchProps()} />);

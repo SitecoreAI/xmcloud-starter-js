@@ -290,6 +290,32 @@ const toUrl = (value: SearchResultValue | undefined): string => {
   return '';
 };
 
+const getTitleFromUrl = (value: string): string => {
+  if (!value) return '';
+
+  try {
+    const pathname = new URL(value, 'https://kirkland.example').pathname;
+    const segment = pathname.split('/').filter(Boolean).at(-1);
+
+    if (!segment) return '';
+
+    return decodeURIComponent(segment)
+      .replace(/\.html?$/i, '')
+      .replace(/[-_]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .split(' ')
+      .map((word) =>
+        word === word.toLowerCase()
+          ? `${word.charAt(0).toUpperCase()}${word.slice(1)}`
+          : word,
+      )
+      .join(' ');
+  } catch {
+    return '';
+  }
+};
+
 const toImage = (
   value: SearchResultValue | undefined,
 ): { src: string; alt: string } | undefined => {
@@ -504,9 +530,20 @@ const ResultCard = ({
   columns,
   onClick,
 }: ResultCardProps) => {
-  const title = stripMarkup(
+  const href = toUrl(
+    getFirstValue(document, mapping.link, [
+      'url',
+      'Url',
+      'link',
+      'Link',
+      'sc_url',
+    ]),
+  );
+  const indexedTitle = stripMarkup(
     toText(
       getFirstValue(document, mapping.title, [
+        'navigation_title',
+        'navigationTitle',
         'title',
         'Title',
         'pageTitle',
@@ -515,6 +552,7 @@ const ResultCard = ({
       ]),
     ),
   );
+  const title = indexedTitle || getTitleFromUrl(href);
   const description = stripMarkup(
     toText(
       getFirstValue(document, mapping.description, [
@@ -524,15 +562,6 @@ const ResultCard = ({
         'Summary',
       ]),
     ),
-  );
-  const href = toUrl(
-    getFirstValue(document, mapping.link, [
-      'url',
-      'Url',
-      'link',
-      'Link',
-      'sc_url',
-    ]),
   );
   const type = stripMarkup(
     toText(

@@ -5,7 +5,11 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 const nextConfig: NextConfig = {
   // Allow specifying a distinct distDir when concurrently running app in a container
   distDir: process.env.NEXTJS_DIST_DIR || '.next',
-  
+
+  // SitecoreAI Search extracts page metadata from the document head. Keep
+  // Next.js from streaming metadata after the head on cold crawler requests.
+  htmlLimitedBots: /.*/,
+
   // Enable React Strict Mode
   reactStrictMode: true,
 
@@ -50,7 +54,7 @@ const nextConfig: NextConfig = {
     // Disable image optimization in development to avoid upstream timeouts
     unoptimized: process.env.NODE_ENV === 'development',
   },
-  
+
   // Sitemap, robots, and AI JSON endpoints via rewrites; handlers live under app/api/
   rewrites: async () => {
     return [
@@ -119,7 +123,7 @@ const nextConfig: NextConfig = {
         module: false,
         path: false,
       };
-    }    
+    }
     return config;
   },
 };
@@ -127,6 +131,8 @@ const nextConfig: NextConfig = {
 const withNextIntl = createNextIntlPlugin();
 
 // Wrap with bundle analyzer — run `ANALYZE=true npm run build` to inspect bundle
-const analyzeBundles = withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
+const analyzeBundles = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 export default analyzeBundles(withNextIntl(nextConfig));
