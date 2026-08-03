@@ -13,12 +13,13 @@ import { makeSearchProps, searchResult } from './search-experience.mock.props';
 
 const mockReplace = jest.fn();
 const mockUseSearch = jest.fn();
+const mockUseSearchParams = jest.fn();
 let mockQuery = 'national security';
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '/site-search',
   useRouter: () => ({ replace: mockReplace }),
-  useSearchParams: () => new URLSearchParams({ q: mockQuery }),
+  useSearchParams: () => mockUseSearchParams(),
 }));
 
 jest.mock('@sitecore-content-sdk/nextjs/search', () => ({
@@ -46,7 +47,24 @@ describe('SearchExperience', () => {
     jest.clearAllMocks();
     jest.useRealTimers();
     mockQuery = 'national security';
+    mockUseSearchParams.mockImplementation(
+      () => new URLSearchParams({ q: mockQuery }),
+    );
     mockUseSearch.mockReturnValue(successfulSearchState);
+  });
+
+  it('renders a stable loading shell when URL state suspends during prerendering', () => {
+    mockUseSearchParams.mockImplementation(() => {
+      throw new Promise(() => undefined);
+    });
+
+    render(<SearchExperience {...makeSearchProps()} />);
+
+    expect(screen.getByLabelText('Loading search results')).toHaveAttribute(
+      'aria-busy',
+      'true',
+    );
+    expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
   });
 
   it('uses the q URL parameter and renders mapped legal content as an accessible result', () => {

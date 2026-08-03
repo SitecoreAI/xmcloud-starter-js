@@ -3,6 +3,7 @@
 import {
   FormEvent,
   ReactNode,
+  Suspense,
   useCallback,
   useEffect,
   useMemo,
@@ -795,7 +796,7 @@ const Pagination = ({
   );
 };
 
-export const Default = (props: SearchExperienceProps) => {
+const SearchExperienceContent = (props: SearchExperienceProps) => {
   const { fields, page, params, rendering } = props;
   const copy = getCopy(page?.locale);
   const searchParams = useSearchParams();
@@ -1039,3 +1040,32 @@ export const Default = (props: SearchExperienceProps) => {
     </section>
   );
 };
+
+const SearchExperienceFallback = (props: SearchExperienceProps) => {
+  const copy = getCopy(props.page?.locale);
+
+  return (
+    <section
+      className={cn(
+        'component search-experience bg-[#0d141c] py-12 text-[#f5f1e8] md:py-16',
+        props.params?.GridParameters,
+        props.params?.styles,
+      )}
+      aria-label={copy.loading}
+      aria-busy="true"
+    >
+      <div className="legal-content-shell animate-pulse">
+        <div className="h-3 w-28 bg-white/20" aria-hidden="true" />
+        <div className="mt-5 h-14 max-w-md bg-white/15" aria-hidden="true" />
+        <div className="mt-5 h-5 max-w-2xl bg-white/10" aria-hidden="true" />
+        <div className="mt-10 h-16 w-full bg-white/10" aria-hidden="true" />
+      </div>
+    </section>
+  );
+};
+
+export const Default = (props: SearchExperienceProps) => (
+  <Suspense fallback={<SearchExperienceFallback {...props} />}>
+    <SearchExperienceContent {...props} />
+  </Suspense>
+);
