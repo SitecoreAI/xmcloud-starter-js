@@ -73,6 +73,7 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
   );
   const currentSlide = slides[currentIndex];
   const canNavigate = slides.length > 1;
+  const hasCurrentLink = linkIsValid(currentSlide?.link?.jsonValue);
 
   return (
     <section
@@ -140,7 +141,7 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
                   return (
                     <CarouselItem
                       key={slide.id || index}
-                      className="@md:basis-[78%] @lg:basis-[68%] @xl:basis-[62%] basis-[88%] px-2"
+                      className="basis-full px-[clamp(1.25rem,5vw,4rem)]"
                       role="group"
                       aria-roledescription="slide"
                       aria-label={`Slide ${index + 1} of ${slides.length}${
@@ -152,12 +153,13 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
                     >
                       <div
                         className={cn(
-                          'relative aspect-[16/9] min-h-[300px] overflow-hidden bg-[#111827] transition-[opacity,transform] duration-500',
+                          'relative mx-auto aspect-[16/9] min-h-[300px] w-full max-w-[70rem] overflow-hidden bg-[#111827] transition-[opacity,transform] duration-500',
                           isActive
                             ? 'scale-100 opacity-100'
                             : 'scale-[0.965] opacity-45',
                         )}
                         data-image-state={hasImage ? 'configured' : 'empty'}
+                        data-component-part="carousel-image-frame"
                       >
                         {hasImage ? (
                           <ImageWrapper
@@ -182,11 +184,11 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
                           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/5"
                           aria-hidden="true"
                         />
-                        <div className="absolute inset-x-0 bottom-0 z-10 p-[clamp(1.5rem,4cqw,3.5rem)]">
+                        <div className="absolute inset-x-0 bottom-0 z-10 flex justify-center p-[clamp(1.5rem,4cqw,3.5rem)] text-center">
                           <Text
                             tag="p"
                             field={slide.backgroundText?.jsonValue}
-                            className="font-heading max-w-full break-words text-[clamp(2.35rem,7cqw,6.75rem)] font-light leading-[0.86] tracking-[-0.035em] text-white"
+                            className="font-heading mx-auto max-w-[90%] break-words text-center text-[clamp(2.35rem,7cqw,6.75rem)] font-light leading-[0.86] tracking-[-0.035em] text-white"
                           />
                         </div>
                       </div>
@@ -203,7 +205,12 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
               isPageEditing={isPageEditing}
               reducedMotion={isReducedMotion}
             >
-              <div className="mt-7 flex flex-wrap items-center justify-between gap-5">
+              <div
+                className={cn(
+                  'mt-7 flex flex-wrap items-center justify-center gap-5',
+                  hasCurrentLink && 'justify-between',
+                )}
+              >
                 <div
                   className="flex items-center gap-3"
                   role="group"
@@ -238,7 +245,7 @@ export const ImageCarouselDefault = (props: ImageCarouselProps) => {
                   </Button>
                 </div>
 
-                {linkIsValid(currentSlide?.link?.jsonValue) && (
+                {hasCurrentLink && (
                   <ButtonBase
                     variant="secondary"
                     buttonLink={currentSlide.link.jsonValue}

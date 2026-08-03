@@ -207,17 +207,29 @@ describe('ImageCarouselDefault', () => {
     );
   });
 
-  it('centers the visible images with symmetric gutters at narrow widths', () => {
+  it('centers the image, overlay text, and controls at narrow widths', () => {
     render(<ImageCarouselDefault {...createProps(false)} />);
 
     expect(screen.getByTestId('carousel-content')).toHaveClass('ml-0');
     screen.getAllByTestId('carousel-item').forEach((item) => {
-      expect(item).toHaveClass('basis-[88%]', 'px-2');
+      expect(item).toHaveClass('basis-full', 'px-[clamp(1.25rem,5vw,4rem)]');
       expect(item).not.toHaveClass('pl-4');
     });
+    document
+      .querySelectorAll('[data-component-part="carousel-image-frame"]')
+      .forEach((frame) => {
+        expect(frame).toHaveClass('mx-auto', 'w-full', 'max-w-[70rem]');
+      });
     screen.getAllByTestId('carousel-image').forEach((image) => {
       expect(image).toHaveClass('object-cover', 'object-center');
     });
+    expect(screen.getByText('Transactional')).toHaveClass(
+      'mx-auto',
+      'text-center',
+    );
+    expect(
+      screen.getByRole('group', { name: 'Carousel controls' }).parentElement,
+    ).toHaveClass('justify-center');
   });
 
   it('resynchronizes and cleans up after Manage items changes', () => {
