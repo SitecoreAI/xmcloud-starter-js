@@ -11,8 +11,9 @@ import {
   useState,
 } from 'react';
 import { event } from '@sitecore-content-sdk/events';
-import { useSearch } from '@sitecore-content-sdk/nextjs/search';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { getLocaleOption } from '@/i18n/locales';
+import { useLocaleSearch } from '@/lib/search/use-locale-search';
 import { cn } from '@/lib/utils';
 import type {
   SearchConfiguration,
@@ -818,6 +819,7 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
   const isEditing = Boolean(page?.mode?.isEditing);
   const isPreview = Boolean(page?.mode?.isPreview);
   const isAuthoring = isEditing || isPreview;
+  const activeLocale = getLocaleOption(page?.locale).code;
   const [inputValue, setInputValue] = useState(urlQuery);
   const [query, setSearchQuery] = useState(urlQuery);
   const [pageNumber, setPageNumber] = useState(1);
@@ -828,15 +830,16 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
     setInputValue(urlQuery);
     setSearchQuery(urlQuery);
     setPageNumber(1);
-  }, [urlQuery]);
+  }, [activeLocale, urlQuery]);
 
   useEffect(() => {
     setSearchEnabled(Boolean(searchIndex) && !isAuthoring);
   }, [isAuthoring, searchIndex]);
 
   const { results, total, totalPages, isLoading, isSuccess, isError } =
-    useSearch<SearchResultDocument>({
+    useLocaleSearch<SearchResultDocument>({
       searchIndexId: searchIndex,
+      locale: activeLocale,
       query,
       page: pageNumber,
       pageSize,

@@ -1,4 +1,5 @@
 export const DEFAULT_LOCALE = 'en';
+export const SITE_LOCALE_HEADER = 'x-kirkland-locale';
 
 export const LOCALE_OPTIONS = [
   {
@@ -58,6 +59,15 @@ export const getLocaleOption = (locale?: string) => {
       ({ code }) => code.toLowerCase().split('-')[0] === languageCode,
     ) ?? LOCALE_OPTIONS[0]
   );
+};
+
+export const getPathLocale = (pathname: string): SupportedLocale => {
+  const localeSegment = pathname
+    .split('/')
+    .filter(Boolean)
+    .find(isSupportedLocale);
+
+  return localeSegment ?? DEFAULT_LOCALE;
 };
 
 /**

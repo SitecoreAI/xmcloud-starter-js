@@ -1,4 +1,5 @@
 import {
+  getPathLocale,
   getLocaleOption,
   getLocalizedPathname,
   isSupportedLocale,
@@ -30,5 +31,15 @@ describe('locale helpers', () => {
   it('resolves a language-only value to the configured regional locale', () => {
     expect(getLocaleOption('ja').code).toBe('ja-JP');
     expect(getLocaleOption('unknown').code).toBe('en');
+  });
+
+  it.each([
+    ['/', 'en'],
+    ['/News-and-Insights', 'en'],
+    ['/fr-FR/News-and-Insights', 'fr-FR'],
+    ['/kit-nextjs-kirkland/ja-JP/Lawyers', 'ja-JP'],
+    ['/es-MX', 'es-MX'],
+  ])('gets the locale from routed pathname %s', (pathname, expected) => {
+    expect(getPathLocale(pathname)).toBe(expected);
   });
 });

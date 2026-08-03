@@ -1,4 +1,4 @@
-import { type NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import {
   defineProxy,
   PreviewProxy,
@@ -11,6 +11,7 @@ import sites from '.sitecore/sites.json';
 import scConfig from 'sitecore.config';
 import client from './lib/sitecore-client';
 import { routing } from './i18n/routing';
+import { getPathLocale, SITE_LOCALE_HEADER } from './i18n/locales';
 
 const preview = new PreviewProxy({
   client,
@@ -76,7 +77,17 @@ const personalize = new PersonalizeProxy({
 });
 
 export default function proxy(req: NextRequest) {
-  return defineProxy(preview, locale, multisite, redirects, personalize).exec(req);
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set(SITE_LOCALE_HEADER, getPathLocale(req.nextUrl.pathname));
+
+  const response = NextResponse.next({
+    request: { headers: requestHeaders },
+  });
+
+  return defineProxy(preview, locale, multisite, redirects, personalize).exec(
+    req,
+    response,
+  );
 }
 
 export const config = {

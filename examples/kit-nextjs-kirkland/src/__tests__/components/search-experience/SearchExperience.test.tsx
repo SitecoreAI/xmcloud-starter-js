@@ -22,8 +22,8 @@ jest.mock('next/navigation', () => ({
   useSearchParams: () => mockUseSearchParams(),
 }));
 
-jest.mock('@sitecore-content-sdk/nextjs/search', () => ({
-  useSearch: (options: unknown) => mockUseSearch(options),
+jest.mock('@/lib/search/use-locale-search', () => ({
+  useLocaleSearch: (options: unknown) => mockUseSearch(options),
 }));
 
 jest.mock('@sitecore-content-sdk/events', () => ({
@@ -74,6 +74,7 @@ describe('SearchExperience', () => {
     expect(mockUseSearch).toHaveBeenLastCalledWith(
       expect.objectContaining({
         searchIndexId: 'kirkland-site-search',
+        locale: 'en',
         query: 'national security',
         page: 1,
         pageSize: 6,
@@ -245,6 +246,10 @@ describe('SearchExperience', () => {
   it('localizes interface copy for the configured page language', () => {
     mockQuery = '';
     render(<SearchExperience {...makeSearchProps({ locale: 'fr-FR' })} />);
+
+    expect(mockUseSearch).toHaveBeenLastCalledWith(
+      expect.objectContaining({ locale: 'fr-FR' }),
+    );
 
     expect(
       screen.getByRole('heading', { name: 'Rechercher' }),
