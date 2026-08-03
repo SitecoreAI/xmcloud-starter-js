@@ -5,7 +5,7 @@ import type React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { CompatibleLink } from '@/components/content-sdk/CompatibleLink';
-import { Menu } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { m, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import {
@@ -29,6 +29,10 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
   const hasLogoImage = Boolean(logo?.jsonValue?.value?.src);
   const currentLocale = getLocaleOption(props.page.locale);
   const localizedHomeHref = getLocalizedPathname('/', currentLocale.code);
+  const localizedSearchHref = getLocalizedPathname(
+    '/site-search',
+    currentLocale.code,
+  );
   const [isOpen, setIsOpen] = useState(false);
   const [sheetAnimationComplete, setSheetAnimationComplete] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -74,8 +78,8 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
         )}
       >
         <div className="legal-content-shell flex h-16 items-center">
-          <div className="mr-6">
-            <div className="flex w-[144px] items-stretch space-x-2 [&_.image-container]:w-full">
+          <div className="@[480px]:mr-6 mr-2">
+            <div className="@[480px]:w-[144px] flex w-[112px] items-stretch space-x-2 [&_.image-container]:w-full">
               {!isPageEditing ? (
                 <Link
                   href={localizedHomeHref}
@@ -163,6 +167,20 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
           </nav>
           {/* Desktop region selector and CTA */}
           <div className="@[900px]:ml-3 @[900px]:flex @[900px]:flex-none @[900px]:items-center @[900px]:justify-end hidden gap-1">
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="size-11 flex-none bg-transparent hover:bg-white/10"
+            >
+              <Link
+                href={localizedSearchHref}
+                aria-label="Search Kirkland & Ellis"
+                prefetch={false}
+              >
+                <Search aria-hidden="true" className="size-5" />
+              </Link>
+            </Button>
             <LocaleSelector locale={currentLocale.code} />
             {headerContact?.jsonValue?.value && (
               <Button asChild className="font-body px-3 text-sm font-medium">
@@ -176,6 +194,20 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
           </div>
           {/* Mobile Navigation */}
           <div className="@[900px]:hidden flex flex-1 items-center justify-end gap-1">
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="size-11 flex-none bg-transparent hover:bg-white/10"
+            >
+              <Link
+                href={localizedSearchHref}
+                aria-label="Search Kirkland & Ellis"
+                prefetch={false}
+              >
+                <Search aria-hidden="true" className="size-5" />
+              </Link>
+            </Button>
             <LocaleSelector locale={currentLocale.code} />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <AnimatePresence>

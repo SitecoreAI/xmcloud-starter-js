@@ -25,6 +25,14 @@ The root `xmcloud.build.json` registers this app as the enabled rendering host `
 
 The deployed Sitecore site is named **kit-nextjs-kirkland** in the **legal** site collection. Its Site Grouping `RenderingHost` field must remain `kit-nextjs-kirkland`, and the Vercel environment variable `NEXT_PUBLIC_DEFAULT_SITE_NAME` must use that same exact value.
 
+## SitecoreAI Search
+
+The header links to the localized `/site-search` page, which uses the native SitecoreAI `SearchExperience` component and Content SDK search hook. The fake Google results page remains separate at `/search/index.html`.
+
+The rendering host supplies the component implementation. The demo tenant is configured with the Page Builder registration, localized search page, and reusable datasource; `authoring/items/kirkland-search.module.json` defines their narrow serialization boundary for a later CLI pull. A SitecoreAI Search source is tenant configuration and must be created in **Search Sources** before the public results can query an index. For this mixed-template law-firm site, use a **site source** that crawls the deployed sitemap, then select it on the component's **Search Configuration Manager** tab and map the available fields to `Title`, `Description`, `Link`, `Images`, `Type`, and `Tags`. Published content must be indexed before it can appear in results.
+
+The source GUID and field mappings are stored in the datasource's `search` plugin field; they are deliberately not hard-coded in the rendering host or exposed through environment variables.
+
 ## Suggested Sitecore AI page composition
 
 Keep the first demo deliberately small:

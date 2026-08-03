@@ -1,0 +1,20 @@
+{
+  "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Kirkland.Search",
+  "description": "Kirkland SitecoreAI Search page and reusable Search Experience datasource. The component registration is serialized by kirkland-page-branches.module.json.",
+  "items": {
+    "path": "kirkland-search",
+    "includes": [
+      {
+        "name": "kirkland.search.page",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Home/site-search",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "kirkland.search.datasource",
+        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Search Experiences",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      }
+    ]
+  }
+}

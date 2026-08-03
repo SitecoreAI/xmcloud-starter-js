@@ -163,6 +163,7 @@ jest.mock('framer-motion', () => {
 
 jest.mock('lucide-react', () => ({
   Menu: () => <span data-testid="menu-icon">Menu</span>,
+  Search: () => <span data-testid="search-icon">Search</span>,
 }));
 
 jest.mock('@/lib/utils', () => ({
@@ -256,5 +257,23 @@ describe('GlobalHeaderCentered Component', () => {
         name: 'Region and language: United States, English',
       }),
     ).toHaveLength(2);
+  });
+
+  it('links both responsive header layouts to the localized search page', () => {
+    render(
+      <GlobalHeaderCentered
+        {...mockGlobalHeaderProps}
+        page={{ ...mockGlobalHeaderProps.page, locale: 'ja-JP' }}
+      />,
+    );
+
+    const searchLinks = screen.getAllByRole('link', {
+      name: 'Search Kirkland & Ellis',
+    });
+
+    expect(searchLinks).toHaveLength(2);
+    searchLinks.forEach((searchLink) => {
+      expect(searchLink).toHaveAttribute('href', '/ja-JP/site-search');
+    });
   });
 });

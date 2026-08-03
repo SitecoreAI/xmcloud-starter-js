@@ -4,7 +4,7 @@ import type React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { CompatibleLink } from '@/components/content-sdk/CompatibleLink';
-import { Menu } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { m, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import {
@@ -28,6 +28,10 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
   const hasLogoImage = Boolean(logo?.jsonValue?.value?.src);
   const currentLocale = getLocaleOption(props.page.locale);
   const localizedHomeHref = getLocalizedPathname('/', currentLocale.code);
+  const localizedSearchHref = getLocalizedPathname(
+    '/site-search',
+    currentLocale.code,
+  );
   const [isOpen, setIsOpen] = useState(false);
   const [sheetAnimationComplete, setSheetAnimationComplete] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -115,7 +119,7 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
               </div>
             </NavigationMenu>
           </nav>
-          <div className="absolute left-1/2 top-1/2 z-20 flex w-[160px] -translate-x-1/2 -translate-y-1/2 items-center justify-center [&_.image-container]:mx-auto [&_.image-container]:w-full">
+          <div className="@[480px]:w-[160px] @[720px]:left-1/2 @[720px]:-translate-x-1/2 absolute left-5 top-1/2 z-20 flex w-[112px] -translate-y-1/2 items-center justify-center [&_.image-container]:mx-auto [&_.image-container]:w-full">
             {!isPageEditing ? (
               <Link
                 href={localizedHomeHref}
@@ -167,10 +171,38 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
                 />
               </Button>
             )}
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="size-11 flex-none bg-transparent hover:bg-white/10"
+            >
+              <Link
+                href={localizedSearchHref}
+                aria-label="Search Kirkland & Ellis"
+                prefetch={false}
+              >
+                <Search aria-hidden="true" className="size-5" />
+              </Link>
+            </Button>
             <LocaleSelector locale={currentLocale.code} />
           </div>
           {/* Mobile Navigation */}
           <div className="@[1200px]:hidden z-10 flex flex-1 items-center justify-end gap-1">
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="size-11 flex-none bg-transparent hover:bg-white/10"
+            >
+              <Link
+                href={localizedSearchHref}
+                aria-label="Search Kirkland & Ellis"
+                prefetch={false}
+              >
+                <Search aria-hidden="true" className="size-5" />
+              </Link>
+            </Button>
             <LocaleSelector locale={currentLocale.code} />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <AnimatePresence>
