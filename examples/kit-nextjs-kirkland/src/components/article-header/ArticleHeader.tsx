@@ -13,7 +13,6 @@ import { FloatingDock } from '@/components/floating-dock/floating-dock.dev';
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { getFieldValue } from '@/lib/component-props';
-import { cn } from '@/lib/utils';
 import type {
   ArticleHeaderDatasource,
   ArticleHeaderProps,
@@ -38,10 +37,6 @@ const getReferenceTitle = (item?: ArticleReferenceItem | null): string => {
   const pageTitleField = getFieldValue(item?.fields?.pageHeaderTitle);
   const titleField = getFieldValue(item?.fields?.titleRequired);
   const title = titleField?.value?.toString();
-
-  if (title?.trim().toLowerCase() === 'source material') {
-    return item?.displayName || item?.name || title;
-  }
 
   return (
     pageTitleField?.value?.toString() ||
@@ -83,7 +78,6 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
         topics: routeFields.taxTopic,
         relatedPractice: routeFields.relatedPractice,
         relatedOffice: routeFields.relatedOffice,
-        sourceItem: routeFields.sourceItem,
         relatedInsights: routeFields.relatedInsights,
       }
     : queriedFields;
@@ -100,14 +94,8 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
   const officeItem = getFieldValue(externalFields?.relatedOffice);
   const contentTypeItem = getFieldValue(externalFields?.contentType);
   const topicItems = getFieldValue(externalFields?.topics) || [];
-  const sourceItem = getFieldValue(externalFields?.sourceItem);
-  const sourceDescriptionField = getFieldValue(
-    sourceItem?.fields?.descriptionOptional,
-  );
-  const sourceLinkField = getFieldValue(sourceItem?.fields?.linkOptional);
   const relatedInsights = getFieldValue(externalFields?.relatedInsights) || [];
   const isPageEditing = page.mode.isEditing;
-  const showSourceMaterial = Boolean(sourceItem) || isPageEditing;
   const showRelatedInsights = relatedInsights.length > 0 || isPageEditing;
   const hasImage = Boolean(imageField?.value?.src);
   const { toast } = useToast();
@@ -492,73 +480,28 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
               </div>
             </div>
 
-            {(showSourceMaterial || showRelatedInsights) && (
-              <div
-                className={cn(
-                  'mt-8 grid gap-7 rounded-default bg-white/[0.055] p-6',
-                  showSourceMaterial &&
-                    showRelatedInsights &&
-                    '@lg/article-header:grid-cols-2',
-                )}
-              >
-                {showSourceMaterial && (
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.12em] text-white/55">
-                      Source material
-                    </p>
-                    {sourceItem ? (
-                      <>
-                        <p className="mt-2 font-medium">
-                          {getReferenceTitle(sourceItem)}
-                        </p>
-                        {sourceDescriptionField?.value && (
-                          <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70">
-                            {sourceDescriptionField.value}
-                          </p>
-                        )}
-                        {sourceLinkField?.value?.href && (
-                          <a
-                            className="text-accent mt-3 inline-flex text-sm font-medium underline-offset-4 hover:underline"
-                            href={sourceLinkField.value.href}
-                            target={sourceLinkField.value.target || undefined}
-                            rel="noreferrer"
-                          >
-                            {sourceLinkField.value.text || 'View source'}
-                          </a>
-                        )}
-                      </>
-                    ) : (
-                      <p className="mt-2 text-sm text-white/60">
-                        Select source material in the Content panel.
-                      </p>
-                    )}
-                  </div>
-                )}
-
-                {showRelatedInsights && (
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.12em] text-white/55">
-                      Related insights
-                    </p>
-                    {relatedInsights.length > 0 ? (
-                      <ul className="mt-2 space-y-2">
-                        {relatedInsights.map((item) => (
-                          <li key={item.id}>
-                            <a
-                              className="text-accent text-sm font-medium underline-offset-4 hover:underline"
-                              href={getReferenceHref(item)}
-                            >
-                              {getReferenceTitle(item)}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="mt-2 text-sm text-white/60">
-                        Select related insights in the Content panel.
-                      </p>
-                    )}
-                  </div>
+            {showRelatedInsights && (
+              <div className="mt-8 rounded-default bg-white/[0.055] p-6">
+                <p className="text-xs uppercase tracking-[0.12em] text-white/55">
+                  Related insights
+                </p>
+                {relatedInsights.length > 0 ? (
+                  <ul className="mt-2 space-y-2">
+                    {relatedInsights.map((item) => (
+                      <li key={item.id}>
+                        <a
+                          className="text-accent text-sm font-medium underline-offset-4 hover:underline"
+                          href={getReferenceHref(item)}
+                        >
+                          {getReferenceTitle(item)}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 text-sm text-white/60">
+                    Select related insights in the Content panel.
+                  </p>
                 )}
               </div>
             )}

@@ -76,24 +76,6 @@
         "allowedPushOperations": "CreateUpdateAndDelete"
       },
       {
-        "name": "kirkland.demo.source.blackrock-meta",
-        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Calls to Action Banners/Meta and BlackRock transaction announcement",
-        "scope": "singleItem",
-        "allowedPushOperations": "CreateUpdateAndDelete"
-      },
-      {
-        "name": "kirkland.demo.source.pasubio-refinancing",
-        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Calls to Action Banners/Pasubio refinancing announcement",
-        "scope": "singleItem",
-        "allowedPushOperations": "CreateUpdateAndDelete"
-      },
-      {
-        "name": "kirkland.demo.source.uk-nsia-update",
-        "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Calls to Action Banners/UK National Security and Investment Act update",
-        "scope": "singleItem",
-        "allowedPushOperations": "CreateUpdateAndDelete"
-      },
-      {
         "name": "kirkland.demo.shared-cta.explore-more-insights",
         "path": "/sitecore/content/legal/kit-nextjs-kirkland/Data/Calls to Action Banners/Explore More Insights",
         "scope": "singleItem",

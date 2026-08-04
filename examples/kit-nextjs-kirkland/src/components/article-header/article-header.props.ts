@@ -44,8 +44,6 @@ export type ArticleAuthorItem = Omit<ReferenceField, 'url' | 'fields'> & {
 export type ArticleReferenceItemFields = {
   pageHeaderTitle?: Field<string>;
   titleRequired?: Field<string>;
-  descriptionOptional?: Field<string>;
-  linkOptional?: LinkField;
 };
 
 export type ArticleReferenceItem = Omit<ReferenceField, 'url' | 'fields'> & {
@@ -74,7 +72,6 @@ export type ArticleHeaderExternalFields = {
   topics?: ArticleReferenceListField;
   relatedPractice?: ArticleReferenceField;
   relatedOffice?: ArticleReferenceField;
-  sourceItem?: ArticleReferenceField;
   relatedInsights?: ArticleReferenceListField;
 };
 
@@ -89,7 +86,6 @@ export type ArticleHeaderRouteFields = {
   taxTopic?: ArticleReferenceItem[];
   relatedPractice?: ArticleReferenceItem | null;
   relatedOffice?: ArticleReferenceItem | null;
-  sourceItem?: ArticleReferenceItem | null;
   relatedInsights?: ArticleReferenceItem[];
 };
 

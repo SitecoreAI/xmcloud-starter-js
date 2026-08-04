@@ -200,25 +200,6 @@ const mockProps = {
             },
           },
         },
-        sourceItem: {
-          jsonValue: {
-            id: 'source-id',
-            name: 'Transaction announcement',
-            fields: {
-              titleRequired: { value: 'Meta transaction announcement' },
-              descriptionOptional: {
-                value: 'The approved transaction announcement.',
-              },
-              linkOptional: {
-                value: {
-                  href: 'https://example.com/announcement',
-                  text: 'Read the announcement',
-                  target: '_blank',
-                },
-              },
-            },
-          },
-        },
         relatedInsights: {
           jsonValue: [
             {
@@ -277,7 +258,7 @@ describe('ArticleHeader Component', () => {
     ).toBeInTheDocument();
   });
 
-  it('renders configured public relationships and source material', () => {
+  it('renders configured public relationships and related insights', () => {
     const { container } = render(
       <ArticleHeader
         {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
@@ -300,15 +281,7 @@ describe('ArticleHeader Component', () => {
     expect(
       container.querySelector('[data-component-part="article-metadata"]'),
     ).toHaveClass('w-full', '@lg/article-header:grid-cols-4');
-    expect(
-      screen.getByText('Meta transaction announcement'),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('The approved transaction announcement.'),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('link', { name: 'Read the announcement' }),
-    ).toHaveAttribute('href', 'https://example.com/announcement');
+    expect(screen.queryByText('Source material')).not.toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: 'Related Article' }),
     ).toHaveAttribute('href', '/News-and-Insights/Related-Article');
@@ -331,9 +304,7 @@ describe('ArticleHeader Component', () => {
       />,
     );
 
-    expect(
-      screen.getByText('Meta transaction announcement'),
-    ).toBeInTheDocument();
+    expect(screen.queryByText('Source material')).not.toBeInTheDocument();
     expect(screen.queryByText('Related insights')).not.toBeInTheDocument();
     expect(
       screen.queryByText('Select related insights in the Content panel.'),
@@ -370,38 +341,6 @@ describe('ArticleHeader Component', () => {
     expect(screen.getByText('Prior approved headline')).toBeInTheDocument();
     expect(screen.getByText('Prior approved summary.')).toBeInTheDocument();
     expect(screen.queryByText('Sample Article')).not.toBeInTheDocument();
-  });
-
-  it('uses the configured source item name instead of a generic title', () => {
-    render(
-      <ArticleHeader
-        {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
-        fields={{
-          ...mockProps.fields,
-          data: {
-            ...mockProps.fields.data,
-            externalFields: {
-              ...mockProps.fields.data.externalFields,
-              sourceItem: {
-                jsonValue: {
-                  ...mockProps.fields.data.externalFields.sourceItem.jsonValue,
-                  displayName: 'Meta and BlackRock transaction announcement',
-                  fields: {
-                    ...mockProps.fields.data.externalFields.sourceItem.jsonValue
-                      .fields,
-                    titleRequired: { value: 'Source material' },
-                  },
-                },
-              },
-            },
-          },
-        }}
-      />,
-    );
-
-    expect(
-      screen.getByText('Meta and BlackRock transaction announcement'),
-    ).toBeInTheDocument();
   });
 
   it('links back to the News and Insights landing page', () => {
@@ -760,7 +699,6 @@ describe('ArticleHeader Component', () => {
               taxTopic: [],
               relatedPractice: null,
               relatedOffice: null,
-              sourceItem: null,
               relatedInsights: [],
             },
           },
@@ -780,9 +718,6 @@ describe('ArticleHeader Component', () => {
     expect(screen.getByText('Select a content type')).toBeInTheDocument();
     expect(screen.getByText('Select a topic')).toBeInTheDocument();
     expect(screen.getByText('Select an author')).toBeInTheDocument();
-    expect(
-      screen.getByText('Select source material in the Content panel.'),
-    ).toBeInTheDocument();
     expect(
       screen.getByText('Select related insights in the Content panel.'),
     ).toBeInTheDocument();

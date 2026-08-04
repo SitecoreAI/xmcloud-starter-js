@@ -55,9 +55,6 @@ SharedFields:
         relatedOffice: field(name: "relatedOffice") {
           jsonValue
         }
-        sourceItem: field(name: "sourceItem") {
-          jsonValue
-        }
         relatedInsights: field(name: "relatedInsights") {
           jsonValue
         }
