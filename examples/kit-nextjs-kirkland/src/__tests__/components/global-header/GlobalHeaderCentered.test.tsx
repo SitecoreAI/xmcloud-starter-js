@@ -191,9 +191,14 @@ describe('GlobalHeaderCentered Component', () => {
   });
 
   it('displays logo, navigation menu, and contact button', () => {
-    render(<GlobalHeaderCentered {...mockGlobalHeaderProps} />);
+    const { container } = render(
+      <GlobalHeaderCentered {...mockGlobalHeaderProps} />,
+    );
 
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-component-part="header-logo"]'),
+    ).toHaveClass('w-[224px]', '@[480px]:w-[320px]');
     expect(
       screen.getByRole('link', { name: 'Kirkland & Ellis home' }),
     ).toHaveAttribute('href', '/');

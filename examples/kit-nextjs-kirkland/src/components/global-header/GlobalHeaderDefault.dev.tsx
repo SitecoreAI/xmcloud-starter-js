@@ -79,7 +79,10 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
       >
         <div className="legal-content-shell flex h-16 items-center">
           <div className="@[480px]:mr-6 mr-2">
-            <div className="@[480px]:w-[144px] flex w-[112px] items-stretch space-x-2 [&_.image-container]:w-full">
+            <div
+              data-component-part="header-logo"
+              className="@[480px]:w-[288px] flex w-[224px] items-stretch space-x-2 [&_.image-container]:w-full"
+            >
               {!isPageEditing ? (
                 <Link
                   href={localizedHomeHref}

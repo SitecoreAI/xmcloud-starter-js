@@ -119,7 +119,10 @@ export const GlobalHeaderCentered: React.FC<GlobalHeaderProps> = (props) => {
               </div>
             </NavigationMenu>
           </nav>
-          <div className="@[480px]:w-[160px] @[720px]:left-1/2 @[720px]:-translate-x-1/2 absolute left-5 top-1/2 z-20 flex w-[112px] -translate-y-1/2 items-center justify-center [&_.image-container]:mx-auto [&_.image-container]:w-full">
+          <div
+            data-component-part="header-logo"
+            className="@[480px]:w-[320px] @[720px]:left-1/2 @[720px]:-translate-x-1/2 absolute left-5 top-1/2 z-20 flex w-[224px] -translate-y-1/2 items-center justify-center [&_.image-container]:mx-auto [&_.image-container]:w-full"
+          >
             {!isPageEditing ? (
               <Link
                 href={localizedHomeHref}
