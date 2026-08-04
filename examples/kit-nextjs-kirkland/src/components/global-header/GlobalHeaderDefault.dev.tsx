@@ -81,7 +81,7 @@ export const GlobalHeaderDefault: React.FC<GlobalHeaderProps> = (props) => {
           <div className="@[480px]:mr-6 mr-2">
             <div
               data-component-part="header-logo"
-              className="@[480px]:w-[288px] flex w-[224px] items-stretch space-x-2 [&_.image-container]:w-full"
+              className="@[480px]:w-[216px] flex w-[168px] items-stretch space-x-2 [&_.image-container]:w-full"
             >
               {!isPageEditing ? (
                 <Link

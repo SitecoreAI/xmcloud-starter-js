@@ -198,7 +198,7 @@ describe('GlobalHeaderDefault Component', () => {
     expect(screen.getByTestId('image-wrapper')).toBeInTheDocument();
     expect(
       container.querySelector('[data-component-part="header-logo"]'),
-    ).toHaveClass('w-[224px]', '@[480px]:w-[288px]');
+    ).toHaveClass('w-[168px]', '@[480px]:w-[216px]');
     expect(
       screen.getByRole('link', { name: 'Kirkland & Ellis home' }),
     ).toHaveAttribute('href', '/');
