@@ -64,19 +64,6 @@ const getAuthorHref = (item?: ArticleAuthorItem | null): string => {
   return typeof item.url === 'string' ? item.url : item.url.href || '';
 };
 
-const getLanguageLabel = (locale?: string): string => {
-  const languageCode = locale?.toLowerCase().split('-')[0];
-
-  const labels: Record<string, string> = {
-    de: 'German',
-    en: 'English',
-    fr: 'French',
-    ja: 'Japanese',
-  };
-
-  return labels[languageCode || 'en'] || locale || 'English';
-};
-
 export const Default: React.FC<ArticleHeaderProps> = (props) => {
   const { fields, page } = props;
   const datasource: ArticleHeaderDatasource | undefined =
@@ -387,99 +374,90 @@ export const Default: React.FC<ArticleHeaderProps> = (props) => {
                     )}
                 </div>
               )}
+            </div>
 
-              {(practiceItem ||
-                officeItem ||
-                topicItems.length > 0 ||
-                contentTypeItem ||
-                isPageEditing) && (
-                <dl className="mt-8 grid grid-cols-2 gap-4 rounded-default bg-white/[0.055] p-5 @lg/article-header:grid-cols-5">
-                  {(practiceItem || isPageEditing) && (
-                    <div>
-                      <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
-                        Practice
-                      </dt>
-                      <dd className="mt-1 text-sm font-medium">
-                        {practiceItem ? (
-                          <a
-                            className="text-accent underline-offset-4 hover:underline"
-                            href={getReferenceHref(practiceItem)}
-                          >
-                            {getReferenceTitle(practiceItem)}
-                          </a>
-                        ) : (
-                          <span className="text-white/60">
-                            Select a practice
-                          </span>
-                        )}
-                      </dd>
-                    </div>
-                  )}
-                  {(officeItem || isPageEditing) && (
-                    <div>
-                      <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
-                        Office
-                      </dt>
-                      <dd className="mt-1 text-sm font-medium">
-                        {officeItem ? (
-                          <a
-                            className="text-accent underline-offset-4 hover:underline"
-                            href={getReferenceHref(officeItem)}
-                          >
-                            {getReferenceTitle(officeItem)}
-                          </a>
-                        ) : (
-                          <span className="text-white/60">
-                            Select an office
-                          </span>
-                        )}
-                      </dd>
-                    </div>
-                  )}
-                  {(contentTypeItem || isPageEditing) && (
-                    <div>
-                      <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
-                        Content type
-                      </dt>
-                      <dd className="mt-1 text-sm font-medium">
-                        {contentTypeItem ? (
-                          getReferenceTitle(contentTypeItem)
-                        ) : (
-                          <span className="text-white/60">
-                            Select a content type
-                          </span>
-                        )}
-                      </dd>
-                    </div>
-                  )}
-                  {(topicItems.length > 0 || isPageEditing) && (
-                    <div>
-                      <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
-                        Topic
-                      </dt>
-                      <dd className="mt-1 text-sm font-medium">
-                        {topicItems.length > 0 ? (
-                          topicItems
-                            .map(getReferenceTitle)
-                            .filter(Boolean)
-                            .join(', ')
-                        ) : (
-                          <span className="text-white/60">Select a topic</span>
-                        )}
-                      </dd>
-                    </div>
-                  )}
-                  <div>
+            {(practiceItem ||
+              officeItem ||
+              topicItems.length > 0 ||
+              contentTypeItem ||
+              isPageEditing) && (
+              <dl
+                className="mt-8 grid w-full grid-cols-1 gap-x-6 gap-y-5 rounded-default bg-white/[0.055] p-5 @sm/article-header:grid-cols-2 @lg/article-header:grid-cols-4 @lg/article-header:px-8 @lg/article-header:py-6"
+                data-component-part="article-metadata"
+              >
+                {(practiceItem || isPageEditing) && (
+                  <div className="min-w-0">
                     <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
-                      Language
+                      Practice
                     </dt>
                     <dd className="mt-1 text-sm font-medium">
-                      {getLanguageLabel(page.locale)}
+                      {practiceItem ? (
+                        <a
+                          className="text-accent underline-offset-4 hover:underline"
+                          href={getReferenceHref(practiceItem)}
+                        >
+                          {getReferenceTitle(practiceItem)}
+                        </a>
+                      ) : (
+                        <span className="text-white/60">Select a practice</span>
+                      )}
                     </dd>
                   </div>
-                </dl>
-              )}
-            </div>
+                )}
+                {(officeItem || isPageEditing) && (
+                  <div className="min-w-0">
+                    <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
+                      Office
+                    </dt>
+                    <dd className="mt-1 text-sm font-medium">
+                      {officeItem ? (
+                        <a
+                          className="text-accent underline-offset-4 hover:underline"
+                          href={getReferenceHref(officeItem)}
+                        >
+                          {getReferenceTitle(officeItem)}
+                        </a>
+                      ) : (
+                        <span className="text-white/60">Select an office</span>
+                      )}
+                    </dd>
+                  </div>
+                )}
+                {(contentTypeItem || isPageEditing) && (
+                  <div className="min-w-0">
+                    <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
+                      Content type
+                    </dt>
+                    <dd className="mt-1 text-sm font-medium">
+                      {contentTypeItem ? (
+                        getReferenceTitle(contentTypeItem)
+                      ) : (
+                        <span className="text-white/60">
+                          Select a content type
+                        </span>
+                      )}
+                    </dd>
+                  </div>
+                )}
+                {(topicItems.length > 0 || isPageEditing) && (
+                  <div className="min-w-0">
+                    <dt className="text-xs uppercase tracking-[0.12em] text-white/55">
+                      Topic
+                    </dt>
+                    <dd className="mt-1 text-sm font-medium">
+                      {topicItems.length > 0 ? (
+                        topicItems
+                          .map(getReferenceTitle)
+                          .filter(Boolean)
+                          .join(', ')
+                      ) : (
+                        <span className="text-white/60">Select a topic</span>
+                      )}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            )}
 
             {(hasImage || isPageEditing) && (
               <figure className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-default bg-white/5">

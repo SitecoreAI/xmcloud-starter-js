@@ -278,7 +278,7 @@ describe('ArticleHeader Component', () => {
   });
 
   it('renders configured public relationships and source material', () => {
-    render(
+    const { container } = render(
       <ArticleHeader
         {...(mockProps as React.ComponentProps<typeof ArticleHeader>)}
       />,
@@ -295,7 +295,11 @@ describe('ArticleHeader Component', () => {
     expect(screen.getByText('Deal Announcement')).toBeInTheDocument();
     expect(screen.getByText('Topic')).toBeInTheDocument();
     expect(screen.getByText('Digital Infrastructure')).toBeInTheDocument();
-    expect(screen.getByText('English')).toBeInTheDocument();
+    expect(screen.queryByText('Language')).not.toBeInTheDocument();
+    expect(screen.queryByText('English')).not.toBeInTheDocument();
+    expect(
+      container.querySelector('[data-component-part="article-metadata"]'),
+    ).toHaveClass('w-full', '@lg/article-header:grid-cols-4');
     expect(
       screen.getByText('Meta transaction announcement'),
     ).toBeInTheDocument();
