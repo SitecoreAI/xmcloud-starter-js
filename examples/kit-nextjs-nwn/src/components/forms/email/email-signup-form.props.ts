@@ -8,12 +8,17 @@ export type EmailSignupFormFields = {
   emailErrorMessage?: Field<string>;
   emailSubmitLabel?: Field<string>;
   emailSuccessMessage?: Field<string>;
+  submissionErrorMessage?: Field<string>;
   buttonVariant?: EnumValues<typeof ButtonVariants>;
+};
+
+export type EmailSignupCdpIdentity = {
+  provider?: string;
+  source?: string;
 };
 
 /** Supports full Sitecore props or embedded usage with fields only. */
 export type EmailSignupFormProps = Partial<OptionalComponentProps> & {
   fields?: EmailSignupFormFields;
+  cdpIdentity?: EmailSignupCdpIdentity;
 };
-
-

@@ -16,23 +16,39 @@ const isLegacyStarterValue = (value: string | undefined): boolean =>
 
 const fallbackFooterLinks = [
   ['Account & Billing', '/account-billing'],
-  ['Rebates & Offers', '/ways-to-save/rebates-offers'],
+  ['Ways to Save', '/ways-to-save'],
   ['Services', '/services'],
   ['Get Natural Gas', '/get-natural-gas'],
   ['Safety', '/safety'],
-  ['Company Overview', '/about-us/company-overview'],
-  ['Renewable Natural Gas', '/about-us/renewable-natural-gas'],
-  ['Less We Can', '/about-us/less-we-can'],
+  ['About Us', '/about-us'],
 ].map(([text, href]) => ({
   link: { jsonValue: { value: { text, href, linktype: 'internal' } } },
 }));
 
-const fallbackTagline = {
-  value:
-    'Safe, reliable energy and practical support for homes across the Pacific Northwest.',
-};
 const fallbackEmailTitle = { value: 'Get energy tips and service updates.' };
-const fallbackCopyright = { value: '© NW Natural. Demo experience.' };
+const fallbackCopyright = {
+  value: `© ${new Date().getFullYear()} NW Natural. All Rights Reserved.`,
+};
+
+const utilityLinks = [
+  {
+    text: 'Terms and Conditions',
+    href: 'https://www.nwnatural.com/terms-and-conditions',
+  },
+  {
+    text: 'Privacy Notice',
+    href: 'https://www.nwnatural.com/privacy-notice',
+  },
+  {
+    text: 'Bill Inserts',
+    href: 'https://www.nwnatural.com/account/bill-inserts',
+  },
+  { text: 'En Español', href: 'https://www.nwnatural.com/espanol' },
+  {
+    text: 'Your Privacy Choices',
+    href: 'https://www.nwnatural.com/do-not-share-my-data',
+  },
+] as const;
 
 export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
   const { fields, isPageEditing } = props;
@@ -46,12 +62,10 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
     footerNavLinks,
     footerCopyright,
     socialLinks,
-    tagline,
     emailSubscriptionTitle,
   } = datasource;
   const authoredLinks = footerNavLinks?.results ?? [];
   const hasLegacyContent =
-    isLegacyStarterValue(tagline?.jsonValue?.value) ||
     isLegacyStarterValue(emailSubscriptionTitle?.jsonValue?.value) ||
     isLegacyStarterValue(footerCopyright?.jsonValue?.value) ||
     authoredLinks.some(
@@ -62,9 +76,6 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
   const useFallbackContent =
     !isPageEditing && (authoredLinks.length === 0 || hasLegacyContent);
   const links = useFallbackContent ? fallbackFooterLinks : authoredLinks;
-  const displayTagline = useFallbackContent
-    ? fallbackTagline
-    : tagline?.jsonValue;
   const displayEmailTitle = useFallbackContent
     ? fallbackEmailTitle
     : emailSubscriptionTitle?.jsonValue;
@@ -82,6 +93,7 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
           ),
       );
   const shouldShowSignup = isPageEditing || Boolean(displayEmailTitle?.value);
+  const shouldIdentifyWithCdp = !isPageEditing && props.page.mode.isNormal;
 
   return (
     <footer
@@ -90,100 +102,99 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
       className="nwn-footer bg-[#66717f] text-white"
       role="contentinfo"
     >
-      <div className="border-t-8 border-cyan-500">
-        <div className="nwn-content-shell grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.2fr_0.9fr_1fr] lg:py-16">
-          <div>
-            <div className="font-heading text-3xl font-semibold tracking-tight">
-              NW Natural
-            </div>
-            <Text
-              tag="p"
-              field={displayTagline}
-              className="mt-5 max-w-md text-lg leading-8 text-white"
-            />
-            <div className="mt-8 border-l-4 border-cyan-300 bg-slate-900/20 px-5 py-4">
-              <p className="font-heading text-xl font-semibold">
-                Smell natural gas?
-              </p>
-              <p className="mt-1 text-sm leading-6 text-white">
-                Leave the area immediately, then call our 24-hour emergency
-                line.
-              </p>
-              <a
-                href="tel:8008823377"
-                className="mt-2 inline-flex min-h-11 items-center font-heading text-xl font-semibold text-white underline decoration-cyan-300 decoration-2 underline-offset-4"
-              >
-                800-882-3377
-              </a>
-            </div>
-          </div>
-
-          <nav aria-label="Footer navigation">
-            <h2 className="font-heading text-2xl font-semibold">Explore</h2>
-            <ul className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3">
-              {links.map((item, index) => (
-                <li key={'nwn-footer-link-' + index}>
-                  <EditableButton
-                    buttonLink={item.link?.jsonValue}
-                    isPageEditing={isPageEditing}
-                    variant="ghost"
-                    className="h-auto justify-start whitespace-normal p-0 text-left text-base font-medium text-white hover:bg-transparent hover:text-cyan-100"
-                    page={props.page}
-                  />
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="md:col-span-2 lg:col-span-1">
-            {shouldShowSignup && (
-              <>
-                <Text
-                  tag="h2"
-                  field={displayEmailTitle}
-                  className="font-heading text-2xl font-semibold"
+      <div className="nwn-content-shell py-6 text-center">
+        {shouldShowSignup && (
+          <div className="mx-auto max-w-4xl border-b border-white/20 pb-4">
+            <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-5">
+              <Text
+                tag="h2"
+                field={displayEmailTitle}
+                className="font-heading text-lg font-semibold leading-7 md:max-w-72 md:text-left md:text-xl"
+              />
+              <div className="w-full max-w-xl flex-1 text-left">
+                <EmailSignupForm
+                  cdpIdentity={
+                    shouldIdentifyWithCdp
+                      ? {
+                          provider:
+                            process.env
+                              .NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER ||
+                            'email',
+                          source: 'global_footer',
+                        }
+                      : undefined
+                  }
+                  fields={{
+                    buttonVariant: 'default',
+                    emailPlaceholder: {
+                      value:
+                        fields.dictionary?.FOOTER_EmailPlaceholder?.replace(
+                          /\s+QA\.?$/i,
+                          '',
+                        ),
+                    },
+                    emailSubmitLabel: {
+                      value: fields.dictionary?.FOOTER_EmailSubmitLabel,
+                    },
+                    emailErrorMessage: {
+                      value: fields.dictionary?.FOOTER_EmailErrorMessage,
+                    },
+                    emailSuccessMessage: {
+                      value: fields.dictionary?.FOOTER_EmailSuccessMessage,
+                    },
+                    submissionErrorMessage: {
+                      value:
+                        'We could not complete your signup. Please try again.',
+                    },
+                  }}
                 />
-                <div className="mt-6">
-                  <EmailSignupForm
-                    fields={{
-                      buttonVariant: 'default',
-                      emailPlaceholder: {
-                        value:
-                          fields.dictionary?.FOOTER_EmailPlaceholder?.replace(
-                            /\s+QA\.?$/i,
-                            '',
-                          ),
-                      },
-                      emailSubmitLabel: {
-                        value: fields.dictionary?.FOOTER_EmailSubmitLabel,
-                      },
-                      emailErrorMessage: {
-                        value: fields.dictionary?.FOOTER_EmailErrorMessage,
-                      },
-                      emailSuccessMessage: {
-                        value: fields.dictionary?.FOOTER_EmailSuccessMessage,
-                      },
-                    }}
-                  />
-                </div>
-              </>
-            )}
+              </div>
+            </div>
+            <p className="mt-2 text-xs leading-5 text-white/90">
+              By subscribing, you agree to receive NW Natural email updates. See
+              our{' '}
+              <a
+                href="https://www.nwnatural.com/privacy-notice"
+                className="font-semibold text-white underline underline-offset-2"
+              >
+                Privacy Notice
+              </a>
+              .
+            </p>
+          </div>
+        )}
 
-            <div className="mt-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white">
-                Follow NW Natural
-              </p>
-              <ul className="mt-3 flex flex-wrap gap-2">
+        <nav className="mt-3" aria-label="Footer navigation">
+          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+            {links.map((item, index) => (
+              <li key={'nwn-footer-link-' + index}>
+                <EditableButton
+                  buttonLink={item.link?.jsonValue}
+                  isPageEditing={isPageEditing}
+                  variant="ghost"
+                  className="h-auto min-h-11 whitespace-normal px-1 py-2 text-center text-[1.125rem] font-medium text-white hover:bg-transparent hover:text-cyan-100"
+                  page={props.page}
+                />
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="mt-3 flex flex-col items-center justify-center gap-2 md:flex-row md:gap-5">
+          {(displaySocialLinks.length > 0 || isPageEditing) && (
+            <div>
+              <h2 className="sr-only">Follow NW Natural</h2>
+              <ul className="flex flex-wrap justify-center gap-1">
                 {displaySocialLinks.map((socialLink, index) => (
                   <li key={'nwn-social-' + index}>
                     <EditableButton
                       buttonLink={socialLink.link?.jsonValue}
                       icon={socialLink.socialIcon?.jsonValue}
-                      iconClassName="h-6 w-6 object-contain brightness-0 invert"
+                      iconClassName="h-7 w-7 object-contain brightness-0 invert"
                       isPageEditing={isPageEditing}
                       variant="ghost"
                       size="icon"
-                      className="rounded-full text-white hover:bg-white/15"
+                      className="min-h-11 min-w-11 rounded-full text-white hover:bg-white/15"
                       asIconLink
                       page={props.page}
                     />
@@ -191,14 +202,26 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
                 ))}
               </ul>
             </div>
-          </div>
-        </div>
-      </div>
+          )}
 
-      <div className="border-t border-white/25 bg-slate-900/15">
-        <div className="nwn-content-shell flex flex-col gap-3 py-5 text-sm text-white sm:flex-row sm:items-center sm:justify-between">
+          <nav aria-label="Legal">
+            <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm">
+              {utilityLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center text-white underline-offset-4 hover:underline"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <div className="mt-2 text-sm text-white">
           <Text field={displayCopyright} encode={false} />
-          <p>Safe. Reliable. Ready for what comes next.</p>
         </div>
       </div>
     </footer>

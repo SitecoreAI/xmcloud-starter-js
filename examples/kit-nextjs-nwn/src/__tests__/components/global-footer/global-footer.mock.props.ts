@@ -160,7 +160,7 @@ export const mockGlobalFooterProps: GlobalFooterProps = {
         },
         footerCopyright: {
           jsonValue: {
-            value: '© 2024 Alaris. All rights reserved.',
+            value: '© 2026 NW Natural. All rights reserved.',
           },
         },
       },
