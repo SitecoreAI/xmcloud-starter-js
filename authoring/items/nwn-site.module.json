@@ -1,10 +1,15 @@
 {
   "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
   "namespace": "NWN.Site",
-  "description": "Narrow serialization boundary for the NW Natural site, site-scoped presentation, and NWN component definitions.",
+  "description": "Narrow serialization boundary for the NW Natural editorial workflow, site, site-scoped presentation, and NWN component definitions.",
   "items": {
     "path": "nwn-site",
     "includes": [
+      {
+        "name": "nwn.site.workflow",
+        "path": "/sitecore/system/Workflows/NW Natural Editorial Workflow",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
       {
         "name": "nwn.site.content",
         "path": "/sitecore/content/utilities/kit-nextjs-nwn",
