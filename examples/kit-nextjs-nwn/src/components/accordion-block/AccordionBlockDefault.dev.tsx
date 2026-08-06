@@ -32,10 +32,10 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
         }
       >
         <div
-          className="@xl:px-0 mx-auto grid max-w-screen-xl gap-6 px-0 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6"
+          className="@xl:px-0 mx-auto flex w-full max-w-screen-lg flex-col gap-8 px-0 [&:not(.px-6_&):not(.px-8_&):not(.px-10_&)]:px-6"
           data-component="AccordionBlockContentWrapper"
         >
-          <div className="@lg:mb-0 mb-8">
+          <div>
             {heading?.jsonValue && (
               <Text
                 tag="h2"
@@ -45,29 +45,23 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
               />
             )}
           </div>
-          <div className="@md:grid @md:grid-cols-[4fr,6fr] @md:gap-8 @lg:gap-12 @xl:gap-16">
-            <div className="@md:col-start-[2] @md:col-end-[2]">
-              <Accordion
-                type="multiple"
-                className="@md:gap-11 grid w-full gap-8 p-0"
-                value={isPageEditing ? acordionItemValues : undefined} //force open all accordion items
-                onValueChange={isPageEditing ? () => {} : undefined} //prevent accordion item from closing
-              >
-                {accordionItems.map(
-                  (child: AccordionItemProps, index: number) => (
-                    <AccordionBlockItem
-                      key={index}
-                      index={index}
-                      child={child}
-                    />
-                  ),
-                )}
-              </Accordion>
-            </div>
+          <div className="w-full">
+            <Accordion
+              type="multiple"
+              className="@md:gap-6 grid w-full gap-4 p-0"
+              value={isPageEditing ? acordionItemValues : undefined} //force open all accordion items
+              onValueChange={isPageEditing ? () => {} : undefined} //prevent accordion item from closing
+            >
+              {accordionItems.map(
+                (child: AccordionItemProps, index: number) => (
+                  <AccordionBlockItem key={index} index={index} child={child} />
+                ),
+              )}
+            </Accordion>
             {(isPageEditing ||
               description?.jsonValue?.value ||
               link?.jsonValue?.value?.href) && (
-              <div className="bg-primary @sm:flex-row @sm:text-start @md:flex-col @md:text-center @lg:flex-row @lg:text-start mt-6 flex flex-col flex-nowrap items-center gap-4 p-7 text-center">
+              <div className="bg-primary @sm:flex-row @sm:items-center @sm:justify-between mt-8 flex flex-col items-start gap-4 p-7 text-left">
                 <Text
                   tag="p"
                   className="text-primary-foreground font-heading text-lg font-light"

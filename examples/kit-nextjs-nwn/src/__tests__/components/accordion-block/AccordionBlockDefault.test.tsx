@@ -213,9 +213,11 @@ describe('AccordionBlockDefault Component', () => {
     expect(contentWrapper).toBeInTheDocument();
     expect(contentWrapper).toHaveClass(
       'mx-auto',
-      'grid',
-      'max-w-screen-xl',
-      'gap-6',
+      'flex',
+      'w-full',
+      'max-w-screen-lg',
+      'flex-col',
+      'gap-8',
     );
   });
 
@@ -234,28 +236,32 @@ describe('AccordionBlockDefault Component', () => {
     expect(component).toHaveClass('custom-accordion-class');
   });
 
-  it('renders accordion items with correct grid layout', () => {
+  it('renders accordion items in a compact full-width stack', () => {
     render(<AccordionBlockDefault {...mockAccordionProps} />);
 
     const accordion = screen.getByTestId('accordion');
     expect(accordion).toHaveClass(
-      '@md:gap-11',
+      '@md:gap-6',
       'grid',
       'w-full',
-      'gap-8',
+      'gap-4',
       'p-0',
     );
   });
 
-  it('shows content wrapper in responsive grid layout', () => {
+  it('does not reserve an empty responsive column', () => {
     const { container } = render(
       <AccordionBlockDefault {...mockAccordionProps} />,
     );
 
-    const gridContainer = container.querySelector(
-      '.\\@md\\:grid.\\@md\\:grid-cols-\\[4fr\\,6fr\\]',
+    const contentWrapper = container.querySelector(
+      '[data-component="AccordionBlockContentWrapper"]',
     );
-    expect(gridContainer).toBeInTheDocument();
+
+    expect(contentWrapper).toHaveClass('flex', 'flex-col');
+    expect(
+      container.querySelector('[class*="grid-cols-[4fr,6fr]"]'),
+    ).toBeNull();
   });
 
   it('shows datasource guidance only in Page Builder when the datasource is missing', () => {
