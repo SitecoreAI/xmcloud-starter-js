@@ -1,78 +1,44 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+
 import { SubmissionFormCentered } from '@/components/submission-form/SubmissionFormCentered.dev';
-import { mockSubmissionFormPropsCentered } from './submission-form.mock.props';
 
-// Mock dependencies
-jest.mock('@sitecore-content-sdk/nextjs', () => ({
-  Text: jest.fn(({ field, tag = 'span', className }) => {
-    const Tag = tag as keyof JSX.IntrinsicElements;
-    return React.createElement(Tag, { className, 'data-testid': 'text-component' }, field?.value);
-  }),
-}));
+import {
+  mockSubmissionFormPropsCentered,
+  mockSubmissionFormPropsContact,
+} from './submission-form.mock.props';
 
-jest.mock('@/utils/NoDataFallback', () => ({
-  NoDataFallback: jest.fn(({ componentName }) => (
-    <div data-testid="no-data-fallback">No Data: {componentName}</div>
-  )),
-}));
-
-jest.mock('@/components/forms/submitinfo/SubmitInfoForm.dev', () => ({
-  Default: ({ fields }: { fields: { buttonText: { value: string } } }) => (
-    <form data-testid="submit-info-form">
-      <button type="submit">{fields.buttonText.value}</button>
-    </form>
+jest.mock('@/components/submission-form/SubmissionFormDefault.dev', () => ({
+  SubmissionFormDefault: ({
+    fields,
+    params,
+  }: {
+    fields: { title: { value: string } };
+    params: { styles?: string };
+  }) => (
+    <div data-testid="contact-form" data-styles={params.styles}>
+      {fields.title.value}
+    </div>
   ),
 }));
 
-jest.mock('next-intl', () => ({
-  useTranslations: jest.fn(() => (key: string) => key),
-}));
-
-jest.mock('@/variables/dictionary', () => ({
-  dictionaryKeys: {
-    SUBMITINFOFORM_FirstNameLabel: 'SUBMITINFOFORM_FirstNameLabel',
-    SUBMITINFOFORM_FirstNamePlaceholder: 'SUBMITINFOFORM_FirstNamePlaceholder',
-    SUBMITINFOFORM_LastNameLabel: 'SUBMITINFOFORM_LastNameLabel',
-    SUBMITINFOFORM_LastNamePlaceholder: 'SUBMITINFOFORM_LastNamePlaceholder',
-    SUBMITINFOFORM_ZipcodeLabel: 'SUBMITINFOFORM_ZipcodeLabel',
-    SUBMITINFOFORM_ZipcodePlaceholder: 'SUBMITINFOFORM_ZipcodePlaceholder',
-    SUBMITINFOFORM_EmailLabel: 'SUBMITINFOFORM_EmailLabel',
-    SUBMITINFOFORM_EmailPlaceholder: 'SUBMITINFOFORM_EmailPlaceholder',
-    SUBMITINFOFORM_EmailErrorMessage: 'SUBMITINFOFORM_EmailErrorMessage',
-    SUBMITINFOFORM_PhoneLabel: 'SUBMITINFOFORM_PhoneLabel',
-    SUBMITINFOFORM_PhonePlaceholder: 'SUBMITINFOFORM_PhonePlaceholder',
-    SUBMITINFOFORM_ButtonText: 'SUBMITINFOFORM_ButtonText',
-    SUBMITINFOFORM_SuccessMessage: 'SUBMITINFOFORM_SuccessMessage',
-  },
-}));
-
-jest.mock('@/lib/utils', () => ({
-  cn: jest.fn((...args) => args.filter(Boolean).flat().join(' ')),
-}));
-
 describe('SubmissionFormCentered', () => {
-  it('renders centered layout with appointment title', () => {
+  it('uses the contact experience with a safe centered default', () => {
     render(<SubmissionFormCentered {...mockSubmissionFormPropsCentered} />);
 
-    expect(screen.getByText('Schedule Your Appointment')).toBeInTheDocument();
-    expect(screen.getByTestId('submit-info-form')).toBeInTheDocument();
+    expect(screen.getByTestId('contact-form')).toHaveAttribute(
+      'data-styles',
+      'position-center',
+    );
   });
 
-  it('renders submit info form in centered layout', () => {
-    render(<SubmissionFormCentered {...mockSubmissionFormPropsCentered} />);
+  it('preserves an explicitly selected position style', () => {
+    render(<SubmissionFormCentered {...mockSubmissionFormPropsContact} />);
 
-    const form = screen.getByTestId('submit-info-form');
-    expect(form).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /SUBMITINFOFORM_ButtonText/i })).toBeInTheDocument();
-  });
-
-  it('renders NoDataFallback when fields are not provided', () => {
-    const propsWithoutFields = { ...mockSubmissionFormPropsCentered, fields: null as never };
-    render(<SubmissionFormCentered {...propsWithoutFields} />);
-
-    expect(screen.getByTestId('no-data-fallback')).toBeInTheDocument();
-    expect(screen.getByText('No Data: SubmissionForm')).toBeInTheDocument();
+    expect(screen.getByTestId('contact-form')).toHaveAttribute(
+      'data-styles',
+      'position-right',
+    );
   });
 });

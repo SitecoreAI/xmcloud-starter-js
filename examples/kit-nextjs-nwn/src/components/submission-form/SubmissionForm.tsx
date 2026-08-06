@@ -3,14 +3,20 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { SubmissionFormProps } from './submission-form.props';
 
-// Dynamically import form variants — defers react-hook-form, zod, google-libphonenumber
+// Dynamically import form variants — defers the client-side form and event SDKs.
 const SubmissionFormDefault = dynamic(
-  () => import('./SubmissionFormDefault.dev').then((mod) => mod.SubmissionFormDefault),
-  { ssr: false }
+  () =>
+    import('./SubmissionFormDefault.dev').then(
+      (mod) => mod.SubmissionFormDefault,
+    ),
+  { ssr: false },
 );
 const SubmissionFormCentered = dynamic(
-  () => import('./SubmissionFormCentered.dev').then((mod) => mod.SubmissionFormCentered),
-  { ssr: false }
+  () =>
+    import('./SubmissionFormCentered.dev').then(
+      (mod) => mod.SubmissionFormCentered,
+    ),
+  { ssr: false },
 );
 
 // Data source checks are done in the child components

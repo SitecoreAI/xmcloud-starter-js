@@ -28,7 +28,7 @@ export const mockSubmissionFormProps: SubmissionFormProps = {
   params: {},
   fields: {
     title: {
-      value: 'Request a Vehicle Quote',
+      value: 'Contact NW Natural',
     },
   },
   page: mockPageBase,
@@ -45,7 +45,7 @@ export const mockSubmissionFormPropsCentered: SubmissionFormProps = {
   },
   fields: {
     title: {
-      value: 'Schedule Your Appointment',
+      value: 'How Can We Help?',
     },
   },
   page: mockPageBase,
@@ -62,7 +62,7 @@ export const mockSubmissionFormPropsContact: SubmissionFormProps = {
   },
   fields: {
     title: {
-      value: 'Contact Our Fleet Specialists',
+      value: 'Contact Us',
     },
   },
   page: mockPageBase,
