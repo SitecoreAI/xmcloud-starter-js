@@ -17,6 +17,7 @@ import { ButtonBase } from '@/components/button-component/ButtonComponent';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import { Button } from '@/components/ui/button';
 import { useMatchMedia } from '@/hooks/use-match-media';
+import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { HeroProps } from './hero.props';
@@ -27,8 +28,7 @@ const fallbackSlides = [
     title: 'Comfort starts at home.',
     description:
       'Reliable natural gas helps make everyday moments warm, comfortable and convenient.',
-    image:
-      '/assets/nwn-images/homepage-hero-family-comfort-pacific-northwest-wide.png',
+    image: nwnImageSources.heroFamilyComfort,
     href: '/get-natural-gas/benefits',
     linkText: 'Explore the benefits of natural gas',
   },
@@ -37,7 +37,7 @@ const fallbackSlides = [
     title: 'Call 811 before you dig.',
     description:
       'A free utility locate helps protect you, your neighbors and underground lines.',
-    image: '/assets/nwn-images/homepage-hero-call-811-before-you-dig-wide.png',
+    image: nwnImageSources.heroCall811,
     href: '/safety/call-before-you-dig',
     linkText: 'Plan a safe project',
   },
@@ -46,7 +46,7 @@ const fallbackSlides = [
     title: 'Help to manage energy costs.',
     description:
       'Explore bill discounts, payment plans and weatherization resources designed to help.',
-    image: '/assets/nwn-images/homepage-hero-bill-assistance-wide.png',
+    image: nwnImageSources.heroBillAssistance,
     href: '/account-billing/payment-assistance',
     linkText: 'Find payment assistance',
   },
@@ -55,7 +55,7 @@ const fallbackSlides = [
     title: 'Manage your account 24/7.',
     description:
       'Pay a bill, view energy use and update your service from wherever you are.',
-    image: '/assets/nwn-images/homepage-hero-manage-account-24-7-wide.png',
+    image: nwnImageSources.heroManageAccount,
     href: '/account-billing/pay-my-bill',
     linkText: 'Manage your account',
   },
@@ -199,7 +199,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
   }, [isPageEditing, isPaused, isReducedMotion, slides.length]);
 
   if (!fields) {
-    return <NoDataFallback componentName="Hero" />;
+    return isPageEditing ? <NoDataFallback componentName="Hero" /> : null;
   }
 
   const currentSlide = slides[currentIndex] || slides[0];

@@ -3,6 +3,7 @@
 import { RichText, Text } from '@sitecore-content-sdk/nextjs';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
+import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { PageHeaderProps } from './page-header.props';
@@ -12,8 +13,10 @@ export const PageHeaderNwnEditorial: React.FC<
 > = (props) => {
   const { fields, isPageEditing } = props;
 
-  if (!fields) {
-    return <NoDataFallback componentName="Page Header" />;
+  if (!fields?.data?.datasource) {
+    return isPageEditing ? (
+      <NoDataFallback componentName="Page Header" />
+    ) : null;
   }
 
   const { imageRequired, link1, link2 } = fields.data?.datasource ?? {};
@@ -92,9 +95,19 @@ export const PageHeaderNwnEditorial: React.FC<
             />
           ) : (
             <div
-              className="absolute inset-0 bg-[linear-gradient(135deg,#e4f4f7_0%,#a7dce7_100%)]"
+              className="absolute inset-0 overflow-hidden bg-[#173c47]"
               aria-hidden="true"
-            />
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(57,202,224,0.42),transparent_32%),linear-gradient(135deg,#173c47_0%,#0f6276_62%,#0a91ad_100%)]" />
+              <div className="absolute -right-16 -top-20 h-72 w-72 rotate-45 border-[2.25rem] border-white/10" />
+              <div className="absolute -bottom-28 left-[14%] h-64 w-64 rotate-45 border-[1.5rem] border-cyan-200/15" />
+              <div
+                className="absolute inset-10 bg-contain bg-center bg-no-repeat opacity-25 sm:inset-14"
+                style={{
+                  backgroundImage: `url('${nwnImageSources.headerLogoLight}')`,
+                }}
+              />
+            </div>
           )}
           <div
             className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 bg-gradient-to-r from-[#f4f5f7] to-transparent lg:block"

@@ -6,11 +6,21 @@ import { NoDataFallback } from '@/utils/NoDataFallback';
 import { PromoImageProps } from './promo-image.props';
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
 import { useMatchMedia } from '@/hooks/use-match-media';
+import { nwnImageSources } from '@/lib/nwn-static-assets';
 
 const nwnCompanyStoryImage: ImageField = {
   value: {
-    src: '/assets/nwn-images/about-community-tree-planting-landscape.png',
+    src: nwnImageSources.communityTreePlanting,
     alt: 'NW Natural volunteers planting trees with community members',
+    width: '1400',
+    height: '900',
+  },
+};
+
+const nwnHomeComfortImage: ImageField = {
+  value: {
+    src: nwnImageSources.rebatesFurnace,
+    alt: 'High-efficiency natural gas furnace installed in a home',
     width: '1400',
     height: '900',
   },
@@ -38,27 +48,40 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
   const prefersReducedMotion = useMatchMedia(
     '(prefers-reduced-motion: reduce)',
   );
+  const hasAuthoredContent = Boolean(
+    fields?.image?.value?.src ||
+      fields?.heading?.value ||
+      fields?.description?.value ||
+      fields?.link?.value?.href ||
+      fields?.link?.value?.text,
+  );
 
-  if (fields) {
+  if (fields && (isPageEditing || hasAuthoredContent)) {
     const { image, heading, description, link } = fields;
+    const usePresentationFallbacks = !isPageEditing;
     const useFallbackImage =
-      isLegacyStarterContent(image?.value?.src) ||
-      isLegacyStarterContent(image?.value?.alt);
-    const useFallbackHeading = isLegacyStarterContent(heading?.value);
-    const useFallbackDescription = isLegacyStarterContent(description?.value);
+      usePresentationFallbacks &&
+      (isLegacyStarterContent(image?.value?.src) ||
+        isLegacyStarterContent(image?.value?.alt));
+    const useFallbackHeading =
+      usePresentationFallbacks && isLegacyStarterContent(heading?.value);
+    const useFallbackDescription =
+      usePresentationFallbacks && isLegacyStarterContent(description?.value);
     const useFallbackLink =
-      isLegacyStarterContent(link?.value?.href) ||
-      isLegacyStarterContent(link?.value?.text) ||
-      (!link?.value?.href &&
-        (useFallbackImage || useFallbackHeading || useFallbackDescription));
+      usePresentationFallbacks &&
+      (isLegacyStarterContent(link?.value?.href) ||
+        isLegacyStarterContent(link?.value?.text) ||
+        (!link?.value?.href &&
+          (useFallbackImage || useFallbackHeading || useFallbackDescription)));
     const hasLegacyStarterContent =
       useFallbackImage ||
       useFallbackHeading ||
       useFallbackDescription ||
       useFallbackLink;
-    const displayImage =
-      hasLegacyStarterContent || !image?.value?.src
-        ? nwnCompanyStoryImage
+    const displayImage = hasLegacyStarterContent
+      ? nwnCompanyStoryImage
+      : usePresentationFallbacks && !image?.value?.src
+        ? nwnHomeComfortImage
         : image;
     const displayLink = useFallbackLink ? nwnCompanyStoryLink : link;
     const hasLink = isPageEditing || displayLink?.value?.href;
@@ -76,7 +99,6 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
                 image={displayImage}
                 className="h-full w-full object-cover"
                 wrapperClass="w-full h-full"
-                priority={true}
                 page={props.page}
               />
               {/* Vignette effect overlay */}
@@ -93,11 +115,12 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
 
           <div className="@xs:pl-8 @sm:pl-12 @md:pl-16 @lg:pl-[118px] @xs:pr-6 @sm:pr-12 @md:py-16 relative z-10 mx-auto flex h-full w-full max-w-screen-xl flex-col justify-center px-4 py-24">
             <div className="@xs:max-w-[90%] @sm:max-w-[80%] @md:max-w-[60%] @lg:max-w-[50%]">
-              {(heading || hasLegacyStarterContent) && (
+              {(isPageEditing || heading || hasLegacyStarterContent) && (
                 <AnimatedSection
                   direction="right"
                   isPageEditing={isPageEditing}
                   reducedMotion={prefersReducedMotion}
+                  duration={500}
                 >
                   {hasLegacyStarterContent ? (
                     <div>
@@ -118,12 +141,13 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
                 </AnimatedSection>
               )}
 
-              {(description || hasLegacyStarterContent) && (
+              {(isPageEditing || description || hasLegacyStarterContent) && (
                 <AnimatedSection
                   direction="right"
                   isPageEditing={isPageEditing}
                   reducedMotion={prefersReducedMotion}
-                  delay={600}
+                  delay={125}
+                  duration={500}
                 >
                   {hasLegacyStarterContent ? (
                     <p className="text-body text-primary-foreground @xs:text-lg @md:text-xl mt-6 max-w-[51.5ch] font-normal leading-8 tracking-tight antialiased">
@@ -146,7 +170,8 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
                   direction="right"
                   isPageEditing={isPageEditing}
                   reducedMotion={prefersReducedMotion}
-                  delay={1200}
+                  delay={250}
+                  duration={500}
                 >
                   <div className="mt-8">
                     <Button
@@ -169,5 +194,5 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
     );
   }
 
-  return <NoDataFallback componentName="Promo Image" />;
+  return isPageEditing ? <NoDataFallback componentName="Promo Image" /> : null;
 };

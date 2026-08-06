@@ -6,6 +6,7 @@ import type {
   ProductItemProps,
   ProductListingProps,
 } from '@/components/product-listing/product-listing.props';
+import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { mockProductListingProps } from './product-listing.mock.props';
 
 jest.mock('lucide-react', () => ({
@@ -84,6 +85,29 @@ const createProps = (
 });
 
 describe('ProductListingNwnResources', () => {
+  it('keeps missing-datasource guidance exclusive to Page Builder', () => {
+    const { container, rerender } = render(
+      <ProductListingNwnResources
+        {...mockProductListingProps}
+        fields={undefined as never}
+      />,
+    );
+
+    expect(container).toBeEmptyDOMElement();
+
+    rerender(
+      <ProductListingNwnResources
+        {...mockProductListingProps}
+        fields={undefined as never}
+        isPageEditing
+      />,
+    );
+
+    expect(screen.getByTestId('no-data-fallback')).toHaveTextContent(
+      'No data for ProductListing',
+    );
+  });
+
   it('renders selected generic Detail Pages and canonical NW Natural routes', () => {
     const genericPages: ProductItemProps[] = [
       {
@@ -163,10 +187,7 @@ describe('ProductListingNwnResources', () => {
     ).toHaveAttribute('href', '/safety/smell-natural-gas');
     expect(
       screen.getByRole('img', { name: 'Rebates and offers' }),
-    ).toHaveAttribute(
-      'src',
-      '/assets/nwn-images/rebates-high-efficiency-furnace-landscape.png',
-    );
+    ).toHaveAttribute('src', nwnImageSources.rebatesFurnace);
     expect(
       screen.queryByText('Rebates that reward efficiency'),
     ).not.toBeInTheDocument();

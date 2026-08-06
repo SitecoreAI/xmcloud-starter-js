@@ -17,14 +17,14 @@ SharedFields:
     query ProductListingQuery($datasource: String!, $language: String!) {
       datasource: item(path: $datasource, language: $language) {
         id
-        ... on ProductListing {
-          title {
-            jsonValue
-          }
-          viewAllLink {
-            jsonValue
-          }
-          products {
+        title: field(name: "title") {
+          jsonValue
+        }
+        viewAllLink: field(name: "viewAllLink") {
+          jsonValue
+        }
+        products: field(name: "products") {
+          ... on MultilistField {
             targetItems {
               id
               cardTitle: field(name: "heading") {
@@ -50,9 +50,6 @@ SharedFields:
               }
               pageSubtitle: field(name: "pageSubtitle") {
                 jsonValue
-              }
-              route: url {
-                path
               }
               url: field(name: "url") {
                 jsonValue

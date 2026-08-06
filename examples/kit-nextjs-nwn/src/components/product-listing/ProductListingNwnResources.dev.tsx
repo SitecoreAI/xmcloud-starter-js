@@ -10,6 +10,7 @@ import type {
 import { Link as SitecoreLink, Text } from '@sitecore-content-sdk/nextjs';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import { isLegacyStarterDataValue } from '@/lib/nwn-content-sanitizer';
+import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type {
@@ -18,12 +19,9 @@ import type {
 } from './product-listing.props';
 
 const KNOWN_NWN_RESOURCE_IMAGES: Record<string, string> = {
-  '/ways-to-save/rebates-offers':
-    '/assets/nwn-images/rebates-high-efficiency-furnace-landscape.png',
-  '/get-natural-gas/cooking':
-    '/assets/nwn-images/cooking-with-gas-home-chef-landscape.png',
-  '/safety/smell-natural-gas':
-    '/assets/nwn-images/safety-smell-gas-call-from-outside-landscape.png',
+  '/ways-to-save/rebates-offers': nwnImageSources.rebatesFurnace,
+  '/get-natural-gas/cooking': nwnImageSources.cookingWithGas,
+  '/safety/smell-natural-gas': nwnImageSources.smellGasSafety,
 };
 
 interface ResourceCard {
@@ -231,7 +229,9 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
   const datasource = fields?.data?.datasource;
 
   if (!fields || !datasource) {
-    return <NoDataFallback componentName="ProductListing" />;
+    return isPageEditing ? (
+      <NoDataFallback componentName="ProductListing" />
+    ) : null;
   }
 
   const authoredHeading = datasource.title?.jsonValue?.value;
@@ -243,6 +243,13 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
     .map(toAuthoredResource)
     .filter((resource): resource is ResourceCard => Boolean(resource));
   const visibleResources = authoredResources.slice(0, 3);
+
+  if (visibleResources.length === 0) {
+    return isPageEditing ? (
+      <NoDataFallback componentName="ProductListing items" />
+    ) : null;
+  }
+
   const viewAllLink = datasource.viewAllLink?.jsonValue;
   const viewAll = getLinkDetails(viewAllLink);
   const showViewAll = Boolean(

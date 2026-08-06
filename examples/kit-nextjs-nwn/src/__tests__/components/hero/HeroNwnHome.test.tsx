@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { HeroNwnHome } from '@/components/hero/HeroNwnHome.dev';
+import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { mockHeroProps } from './hero.mock.props';
 
 jest.mock('lucide-react', () => {
@@ -133,7 +134,7 @@ describe('HeroNwnHome', () => {
     ).toBeInTheDocument();
     expect(screen.getByAltText('Call 811 before you dig.')).toHaveAttribute(
       'src',
-      '/assets/nwn-images/homepage-hero-call-811-before-you-dig-wide.png',
+      nwnImageSources.heroCall811,
     );
     expect(
       screen.getByRole('link', { name: 'Plan a safe project' }),
@@ -176,7 +177,7 @@ describe('HeroNwnHome', () => {
     ).toBeInTheDocument();
     expect(screen.getByAltText('Comfort starts at home.')).toHaveAttribute(
       'src',
-      '/assets/nwn-images/homepage-hero-family-comfort-pacific-northwest-wide.png',
+      nwnImageSources.heroFamilyComfort,
     );
     expect(
       screen.getByRole('link', { name: 'Explore the benefits of natural gas' }),

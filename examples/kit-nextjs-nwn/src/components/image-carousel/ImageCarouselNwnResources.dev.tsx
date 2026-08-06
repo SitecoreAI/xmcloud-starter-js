@@ -19,6 +19,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
+import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 
@@ -35,7 +36,7 @@ const fallbackResources = [
     title: 'Call 811 before you dig',
     description:
       'A quick call helps underground utilities get marked before every digging project.',
-    image: '/assets/nwn-images/homepage-hero-call-811-before-you-dig-wide.png',
+    image: nwnImageSources.heroCall811,
     href: '/safety/call-before-you-dig',
     linkText: 'Plan a safe project',
   },
@@ -46,7 +47,7 @@ const fallbackResources = [
     title: 'Payment assistance',
     description:
       'Start with an overview of support paths when paying an energy bill becomes difficult.',
-    image: '/assets/nwn-images/homepage-hero-bill-assistance-wide.png',
+    image: nwnImageSources.heroBillAssistance,
     href: '/account-billing/payment-assistance',
     linkText: 'Explore assistance',
   },
@@ -57,7 +58,7 @@ const fallbackResources = [
     title: 'Manage service on your schedule',
     description:
       'Find simple paths to pay a bill, update service, or prepare for a move.',
-    image: '/assets/nwn-images/homepage-hero-manage-account-24-7-wide.png',
+    image: nwnImageSources.heroManageAccount,
     href: '/account-billing',
     linkText: 'Open account and billing',
   },
@@ -68,7 +69,7 @@ const fallbackResources = [
     title: 'Rebates and offers',
     description:
       'Explore incentives for efficient furnaces, water heaters, fireplaces and more.',
-    image: '/assets/nwn-images/rebates-high-efficiency-furnace-landscape.png',
+    image: nwnImageSources.rebatesFurnace,
     href: '/ways-to-save/rebates-offers',
     linkText: 'Find available rebates',
   },
@@ -80,7 +81,7 @@ const genericFallbackResource = {
   title: 'Customer resource',
   description:
     'Explore NW Natural customer services, support and safety information.',
-  image: '/assets/nwn-images/homepage-hero-manage-account-24-7-wide.png',
+  image: nwnImageSources.heroManageAccount,
   href: '',
   linkText: 'Learn more',
 } as const;
@@ -253,7 +254,9 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
   }, [api, resources.length]);
 
   if (!fields || !datasource) {
-    return <NoDataFallback componentName="Image Carousel" />;
+    return isPageEditing ? (
+      <NoDataFallback componentName="Image Carousel" />
+    ) : null;
   }
 
   if (resources.length === 0 && !isPageEditing) {

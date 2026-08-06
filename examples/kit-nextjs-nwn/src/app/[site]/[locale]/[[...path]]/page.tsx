@@ -14,11 +14,11 @@ import { setRequestLocale } from 'next-intl/server';
 import { generateWebPageSchema } from 'src/lib/structured-data/schema';
 import { StructuredData } from '@/components/structured-data/StructuredData';
 import { getBaseUrlFromHeaders } from '@/lib/utils';
+import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { isLegacyStarterRoute } from '@/lib/nwn-route-guard';
 import { sanitizeLegacyStarterData } from '@/lib/nwn-content-sanitizer';
 
-const HOME_HERO_IMAGE =
-  '/assets/nwn-images/homepage-hero-family-comfort-pacific-northwest-wide.png';
+const HOME_HERO_IMAGE = nwnImageSources.heroFamilyComfort;
 const DEFAULT_DESCRIPTION =
   'NW Natural provides safe, reliable and affordable energy for the communities we serve.';
 const DEFAULT_KEYWORDS = [
