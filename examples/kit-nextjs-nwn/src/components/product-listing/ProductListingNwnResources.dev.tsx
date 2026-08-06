@@ -17,33 +17,14 @@ import type {
   ProductListingProps,
 } from './product-listing.props';
 
-const resources = [
-  {
-    title: 'Rebates that reward efficiency',
-    description:
-      'Find savings on qualifying natural gas equipment for your home.',
-    href: '/ways-to-save/rebates-offers',
-    linkText: 'Explore rebates and offers',
-    image: '/assets/nwn-images/rebates-high-efficiency-furnace-landscape.png',
-  },
-  {
-    title: 'Cook with confidence and control',
-    description:
-      'Discover why home cooks value the responsiveness and versatility of natural gas.',
-    href: '/get-natural-gas/cooking',
-    linkText: 'Discover cooking with gas',
-    image: '/assets/nwn-images/cooking-with-gas-home-chef-landscape.png',
-  },
-  {
-    title: 'Safety comes first',
-    description:
-      'Learn how to recognize a gas odor, protect your family and keep projects safe.',
-    href: '/safety/smell-natural-gas',
-    linkText: 'Review natural gas safety',
-    image:
-      '/assets/nwn-images/safety-smell-gas-call-from-outside-landscape.png',
-  },
-] as const;
+const KNOWN_NWN_RESOURCE_IMAGES: Record<string, string> = {
+  '/ways-to-save/rebates-offers':
+    '/assets/nwn-images/rebates-high-efficiency-furnace-landscape.png',
+  '/get-natural-gas/cooking':
+    '/assets/nwn-images/cooking-with-gas-home-chef-landscape.png',
+  '/safety/smell-natural-gas':
+    '/assets/nwn-images/safety-smell-gas-call-from-outside-landscape.png',
+};
 
 interface ResourceCard {
   key: string;
@@ -78,24 +59,69 @@ const getLinkDetails = (
   };
 };
 
+const getComparableRoute = (path: string): string => {
+  const trimmedPath = path.trim();
+
+  try {
+    const parsedPath = new URL(trimmedPath, 'https://www.nwnatural.com');
+    return parsedPath.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+  } catch {
+    return trimmedPath.split(/[?#]/, 1)[0].replace(/\/+$/, '').toLowerCase();
+  }
+};
+
+const canonicalizeNwnRoute = (path: string | undefined): string | undefined => {
+  if (!path?.trim()) return undefined;
+
+  const comparableRoute = getComparableRoute(path);
+  const canonicalRoute = Object.keys(KNOWN_NWN_RESOURCE_IMAGES).find(
+    (knownRoute) =>
+      comparableRoute === knownRoute || comparableRoute.endsWith(knownRoute),
+  );
+
+  return canonicalRoute || path.trim();
+};
+
 const getProductLink = (
   product: ProductItemProps,
 ): { href?: string; text?: string } => {
+  const cardLink = getLinkDetails(product.cardLink?.jsonValue);
   const linkedField = getLinkDetails(product.url?.jsonValue);
-  const path = product.url?.path?.trim() || product.url?.url?.trim();
+  const path =
+    cardLink.href ||
+    product.route?.path ||
+    linkedField.href ||
+    product.url?.path ||
+    product.url?.url;
 
   return {
-    href: linkedField.href || path || undefined,
-    text: linkedField.text,
+    href: canonicalizeNwnRoute(path),
+    text: cardLink.text || linkedField.text,
   };
 };
 
-const getProductImage = (product: ProductItemProps): ImageField | undefined => {
-  const productThumbnail = product.productThumbnail?.jsonValue;
+const getProductImage = (
+  product: ProductItemProps,
+  href: string | undefined,
+  title: string,
+): ImageField | undefined => {
+  const cardImage = product.cardImage?.jsonValue;
   const pageThumbnail = product.pageThumbnail?.jsonValue;
+  const productThumbnail = product.productThumbnail?.jsonValue;
 
-  if (productThumbnail?.value?.src) return productThumbnail;
+  if (cardImage?.value?.src) return cardImage;
   if (pageThumbnail?.value?.src) return pageThumbnail;
+  if (href && KNOWN_NWN_RESOURCE_IMAGES[href]) {
+    return {
+      value: {
+        src: KNOWN_NWN_RESOURCE_IMAGES[href],
+        alt: title,
+        width: '900',
+        height: '600',
+      },
+    };
+  }
+  if (productThumbnail?.value?.src) return productThumbnail;
   return undefined;
 };
 
@@ -121,29 +147,60 @@ const toAuthoredResource = (
   product: ProductItemProps,
   index: number,
 ): ResourceCard | null => {
+  const cardTitle = getTextValue(product.cardTitle);
+  const cardDescription = getTextValue(product.cardDescription);
+  const pageShortTitle = getTextValue(product.pageShortTitle);
+  const pageTitle = getTextValue(product.pageTitle);
+  const pageSummary = getTextValue(product.pageSummary);
+  const pageSubtitle = getTextValue(product.pageSubtitle);
   const productName = getTextValue(product.productName);
   const featureTitle = getTextValue(product.productFeatureTitle);
   const featureText = getTextValue(product.productFeatureText);
-  const title = productName || featureTitle;
-  const titleField = productName
-    ? product.productName?.jsonValue
-    : product.productFeatureTitle?.jsonValue;
-  const description = featureText || (productName ? featureTitle : undefined);
-  const descriptionField = featureText
-    ? product.productFeatureText?.jsonValue
-    : productName
-      ? product.productFeatureTitle?.jsonValue
-      : undefined;
-  const image = getProductImage(product);
+  const title =
+    cardTitle || pageShortTitle || pageTitle || productName || featureTitle;
+  const titleField = cardTitle
+    ? product.cardTitle?.jsonValue
+    : pageShortTitle
+      ? product.pageShortTitle?.jsonValue
+      : pageTitle
+        ? product.pageTitle?.jsonValue
+        : productName
+          ? product.productName?.jsonValue
+          : product.productFeatureTitle?.jsonValue;
+  const description =
+    cardDescription ||
+    pageSummary ||
+    pageSubtitle ||
+    featureText ||
+    (productName ? featureTitle : undefined);
+  const descriptionField = cardDescription
+    ? product.cardDescription?.jsonValue
+    : pageSummary
+      ? product.pageSummary?.jsonValue
+      : pageSubtitle
+        ? product.pageSubtitle?.jsonValue
+        : featureText
+          ? product.productFeatureText?.jsonValue
+          : productName
+            ? product.productFeatureTitle?.jsonValue
+            : undefined;
   const link = getProductLink(product);
+  if (!title) return null;
+
+  const image = getProductImage(product, link.href, title);
   const imageSrc = image?.value?.src;
   const rawImageAlt = image?.value?.alt;
   const imageAlt = typeof rawImageAlt === 'string' ? rawImageAlt : undefined;
 
   if (
-    !title ||
     (!description && !imageSrc && !link.href) ||
     isClearlyLegacyProduct(product, [
+      cardTitle,
+      cardDescription,
+      pageShortTitle,
+      pageTitle,
+      pageSummary,
+      pageSubtitle,
       title,
       description,
       imageSrc,
@@ -167,24 +224,6 @@ const toAuthoredResource = (
   };
 };
 
-const asImageField = (resource: (typeof resources)[number]): ImageField => ({
-  value: {
-    src: resource.image,
-    alt: resource.title,
-    width: '900',
-    height: '600',
-  },
-});
-
-const fallbackResources: ResourceCard[] = resources.map((resource) => ({
-  key: resource.title,
-  title: resource.title,
-  description: resource.description,
-  href: resource.href,
-  linkText: resource.linkText,
-  image: asImageField(resource),
-}));
-
 export const ProductListingNwnResources: React.FC<ProductListingProps> = (
   props,
 ) => {
@@ -203,9 +242,7 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
   const authoredResources = (datasource.products?.targetItems ?? [])
     .map(toAuthoredResource)
     .filter((resource): resource is ResourceCard => Boolean(resource));
-  const visibleResources = (
-    authoredResources.length ? authoredResources : fallbackResources
-  ).slice(0, 3);
+  const visibleResources = authoredResources.slice(0, 3);
   const viewAllLink = datasource.viewAllLink?.jsonValue;
   const viewAll = getLinkDetails(viewAllLink);
   const showViewAll = Boolean(

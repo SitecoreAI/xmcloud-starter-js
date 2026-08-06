@@ -2,6 +2,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ProductListingNwnResources } from '@/components/product-listing/ProductListingNwnResources.dev';
+import type {
+  ProductItemProps,
+  ProductListingProps,
+} from '@/components/product-listing/product-listing.props';
 import { mockProductListingProps } from './product-listing.mock.props';
 
 jest.mock('lucide-react', () => ({
@@ -60,219 +64,257 @@ jest.mock('@/components/image/ImageWrapper.dev', () => ({
   ),
 }));
 
+const createProps = (
+  targetItems: ProductItemProps[],
+  datasourceOverrides: Partial<
+    ProductListingProps['fields']['data']['datasource']
+  > = {},
+): ProductListingProps => ({
+  ...mockProductListingProps,
+  fields: {
+    data: {
+      datasource: {
+        ...mockProductListingProps.fields.data.datasource,
+        title: { jsonValue: { value: 'Helpful NW Natural resources' } },
+        ...datasourceOverrides,
+        products: { targetItems },
+      },
+    },
+  },
+});
+
 describe('ProductListingNwnResources', () => {
-  it('replaces legacy product content with NW Natural resource cards', () => {
-    render(<ProductListingNwnResources {...mockProductListingProps} />);
-
-    expect(
-      screen.getByRole('heading', { name: 'More ways NW Natural can help.' }),
-    ).toBeInTheDocument();
-    expect(
-      screen.queryByText('Explore Our Emergency Vehicle Fleet'),
-    ).not.toBeInTheDocument();
-    expect(
-      screen.getByRole('link', { name: /Explore rebates and offers/ }),
-    ).toHaveAttribute('href', '/ways-to-save/rebates-offers');
-    expect(
-      screen.getByRole('link', { name: /Discover cooking with gas/ }),
-    ).toHaveAttribute('href', '/get-natural-gas/cooking');
-    expect(
-      screen.getByRole('link', { name: /Review natural gas safety/ }),
-    ).toHaveAttribute('href', '/safety/smell-natural-gas');
-  });
-
-  it('uses the NW Natural cards when no authored resources are selected', () => {
-    const emptyProps = {
-      ...mockProductListingProps,
-      fields: {
-        data: {
-          datasource: {
-            ...mockProductListingProps.fields.data.datasource,
-            title: { jsonValue: { value: 'Customer resources' } },
-            products: { targetItems: [] },
+  it('renders selected generic Detail Pages and canonical NW Natural routes', () => {
+    const genericPages: ProductItemProps[] = [
+      {
+        id: 'rebates',
+        pageShortTitle: { jsonValue: { value: 'Rebates and offers' } },
+        pageTitle: {
+          jsonValue: { value: 'Comfort upgrades can come with extra value.' },
+        },
+        pageSummary: {
+          jsonValue: {
+            value: 'Explore current opportunities for qualifying equipment.',
           },
         },
+        pageSubtitle: {
+          jsonValue: { value: 'This lower-priority subtitle is not shown.' },
+        },
+        route: {
+          path: '/utilities/kit-nextjs-nwn/Home/Ways-To-Save/Rebates-Offers/',
+        },
       },
-    };
+      {
+        id: 'cooking',
+        pageTitle: {
+          jsonValue: { value: 'Cook with confidence and responsive heat.' },
+        },
+        pageSubtitle: {
+          jsonValue: {
+            value: 'Direct flame puts visible control at your fingertips.',
+          },
+        },
+        route: {
+          path: 'https://preview.example/Get-Natural-Gas/Cooking?sc_lang=en',
+        },
+      },
+      {
+        id: 'smell-gas',
+        pageTitle: { jsonValue: { value: 'Smell. Go. Let us know.' } },
+        pageSummary: {
+          jsonValue: {
+            value: 'Leave immediately and call from a safe location.',
+          },
+        },
+        route: { path: '/safety/smell-natural-gas#steps' },
+      },
+    ];
 
-    render(<ProductListingNwnResources {...emptyProps} />);
+    render(<ProductListingNwnResources {...createProps(genericPages)} />);
 
     expect(
-      screen.getByRole('heading', { name: 'Customer resources' }),
+      screen.getByRole('heading', { name: 'Rebates and offers' }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { name: 'Rebates that reward efficiency' }),
+      screen.getByText(
+        'Explore current opportunities for qualifying equipment.',
+      ),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { name: 'Safety comes first' }),
+      screen.getByRole('heading', {
+        name: 'Cook with confidence and responsive heat.',
+      }),
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Smell. Go. Let us know.' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /Learn more about Rebates and offers/ }),
+    ).toHaveAttribute('href', '/ways-to-save/rebates-offers');
+    expect(
+      screen.getByRole('link', {
+        name: /Learn more about Cook with confidence and responsive heat/,
+      }),
+    ).toHaveAttribute('href', '/get-natural-gas/cooking');
+    expect(
+      screen.getByRole('link', {
+        name: /Learn more about Smell. Go. Let us know/,
+      }),
+    ).toHaveAttribute('href', '/safety/smell-natural-gas');
+    expect(
+      screen.getByRole('img', { name: 'Rebates and offers' }),
+    ).toHaveAttribute(
+      'src',
+      '/assets/nwn-images/rebates-high-efficiency-furnace-landscape.png',
+    );
+    expect(
+      screen.queryByText('Rebates that reward efficiency'),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText('Safety comes first')).not.toBeInTheDocument();
   });
 
-  it('renders valid authored resource fields and the authored view-all link', () => {
-    const authoredProps = {
-      ...mockProductListingProps,
-      fields: {
-        data: {
-          datasource: {
-            title: {
-              jsonValue: { value: 'Resources selected for your home' },
+  it('uses an authored DAM pageThumbnail instead of the known-route fallback', () => {
+    render(
+      <ProductListingNwnResources
+        {...createProps([
+          {
+            id: 'rebates-with-dam-image',
+            pageTitle: { jsonValue: { value: 'Current customer rebates' } },
+            pageSummary: {
+              jsonValue: { value: 'See available efficiency opportunities.' },
             },
-            viewAllLink: {
+            pageThumbnail: {
               jsonValue: {
                 value: {
-                  href: '/services',
-                  text: 'View all home services',
-                  linktype: 'internal',
-                  target: '',
+                  src: 'https://dam.example/rebates-card.jpg',
+                  alt: 'High-efficiency furnace installed in a home',
                 },
               },
             },
-            products: {
-              targetItems: [
-                {
-                  id: 'resource-one',
-                  productName: {
-                    jsonValue: { value: 'Prepare your equipment for winter' },
-                  },
-                  pageThumbnail: {
-                    jsonValue: {
-                      value: {
-                        src: '/assets/nwn-images/services-gas-fireplace-tune-up-landscape.png',
-                        alt: 'Technician checking a home fireplace',
-                      },
-                    },
-                  },
-                  productFeatureText: {
-                    jsonValue: {
-                      value:
-                        'Learn what to expect from an inspection or tune-up.',
-                    },
-                  },
-                  url: {
-                    jsonValue: {
-                      value: {
-                        href: '/services/inspections-tune-ups',
-                        text: 'Explore inspections and tune-ups',
-                        linktype: 'internal',
-                        target: '',
-                      },
-                    },
-                  },
-                },
-                {
-                  id: 'resource-two',
-                  productFeatureTitle: {
-                    jsonValue: { value: 'Plan an efficient upgrade' },
-                  },
-                  productFeatureText: {
-                    jsonValue: {
-                      value: 'Review rebates before choosing new equipment.',
-                    },
-                  },
-                  productThumbnail: {
-                    jsonValue: {
-                      value: {
-                        src: '/assets/nwn-images/rebates-high-efficiency-furnace-landscape.png',
-                        alt: 'Technician inspecting a home furnace',
-                      },
-                    },
-                  },
-                  url: { path: '/ways-to-save/rebates-offers' },
-                },
-              ],
-            },
+            route: { path: '/ways-to-save/rebates-offers' },
           },
-        },
-      },
-    };
+        ])}
+      />,
+    );
 
-    render(<ProductListingNwnResources {...authoredProps} />);
-
-    expect(
-      screen.getByRole('heading', {
-        name: 'Resources selected for your home',
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('heading', {
-        name: 'Prepare your equipment for winter',
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('Learn what to expect from an inspection or tune-up.'),
-    ).toBeInTheDocument();
     expect(
       screen.getByRole('img', {
-        name: 'Technician checking a home fireplace',
+        name: 'High-efficiency furnace installed in a home',
       }),
-    ).toHaveAttribute(
-      'src',
-      '/assets/nwn-images/services-gas-fireplace-tune-up-landscape.png',
-    );
+    ).toHaveAttribute('src', 'https://dam.example/rebates-card.jpg');
     expect(
-      screen.getByRole('link', {
-        name: /Explore inspections and tune-ups/,
-      }),
-    ).toHaveAttribute('href', '/services/inspections-tune-ups');
-    expect(
-      screen.getByRole('link', {
-        name: /Learn more about Plan an efficient upgrade/,
-      }),
-    ).toHaveAttribute('href', '/ways-to-save/rebates-offers');
-    expect(
-      screen.getByRole('link', { name: /View all home services/ }),
-    ).toHaveAttribute('href', '/services');
-    expect(
-      screen.queryByRole('heading', {
-        name: 'Rebates that reward efficiency',
-      }),
+      screen.queryByRole('img', { name: 'Current customer rebates' }),
     ).not.toBeInTheDocument();
   });
 
-  it('keeps valid authored resources when a legacy item is also selected', () => {
-    const mixedProps = {
-      ...mockProductListingProps,
-      fields: {
-        data: {
-          datasource: {
-            ...mockProductListingProps.fields.data.datasource,
-            title: { jsonValue: { value: 'Helpful customer resources' } },
-            products: {
-              targetItems: [
-                mockProductListingProps.fields.data.datasource.products!
-                  .targetItems[0],
-                {
-                  id: 'valid-resource',
-                  productName: {
-                    jsonValue: { value: 'Natural gas safety' },
-                  },
-                  productFeatureText: {
-                    jsonValue: {
-                      value:
-                        'Know the steps to take when something smells wrong.',
-                    },
-                  },
-                  url: { path: '/safety/smell-natural-gas' },
-                },
-              ],
+  it('prefers authored SimplePromo card fields over generic page fields', () => {
+    render(
+      <ProductListingNwnResources
+        {...createProps([
+          {
+            id: 'authored-card',
+            cardTitle: { jsonValue: { value: 'Authored card heading' } },
+            cardDescription: {
+              jsonValue: { value: 'Authored card description.' },
             },
+            cardImage: {
+              jsonValue: {
+                value: {
+                  src: 'https://dam.example/authored-card.jpg',
+                  alt: 'Authored card image',
+                },
+              },
+            },
+            cardLink: {
+              jsonValue: {
+                value: {
+                  href: '/Get-Natural-Gas/Cooking/',
+                  text: 'Explore natural gas cooking',
+                  linktype: 'internal',
+                },
+              },
+            },
+            pageTitle: { jsonValue: { value: 'Lower priority page title' } },
+            pageSummary: {
+              jsonValue: { value: 'Lower priority page summary.' },
+            },
+            route: { path: '/lower-priority-route' },
           },
-        },
-      },
-    };
-
-    render(<ProductListingNwnResources {...mixedProps} />);
+        ])}
+      />,
+    );
 
     expect(
-      screen.getByRole('heading', { name: 'Natural gas safety' }),
+      screen.getByRole('heading', { name: 'Authored card heading' }),
     ).toBeInTheDocument();
+    expect(screen.getByText('Authored card description.')).toBeInTheDocument();
+    expect(
+      screen.getByRole('img', { name: 'Authored card image' }),
+    ).toHaveAttribute('src', 'https://dam.example/authored-card.jpg');
+    expect(
+      screen.getByRole('link', { name: /Explore natural gas cooking/ }),
+    ).toHaveAttribute('href', '/get-natural-gas/cooking');
+    expect(
+      screen.queryByText('Lower priority page title'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('rejects legacy selected items and never fabricates fallback cards', () => {
+    const { container, rerender } = render(
+      <ProductListingNwnResources
+        {...createProps([
+          mockProductListingProps.fields.data.datasource.products!
+            .targetItems[0],
+        ])}
+      />,
+    );
+
     expect(
       screen.queryByText('Alaris Type I Ambulance'),
     ).not.toBeInTheDocument();
+    expect(container.querySelectorAll('article')).toHaveLength(0);
+
+    rerender(<ProductListingNwnResources {...createProps([])} />);
+
+    expect(container.querySelectorAll('article')).toHaveLength(0);
     expect(
-      screen.queryByRole('heading', {
-        name: 'Rebates that reward efficiency',
-      }),
+      screen.queryByText('Rebates that reward efficiency'),
     ).not.toBeInTheDocument();
+  });
+
+  it('retains the non-legacy vehicle-field contract for backward compatibility', () => {
+    render(
+      <ProductListingNwnResources
+        {...createProps([
+          {
+            id: 'legacy-contract-resource',
+            productName: {
+              jsonValue: { value: 'Natural gas equipment support' },
+            },
+            productFeatureText: {
+              jsonValue: { value: 'Get help with qualified home equipment.' },
+            },
+            productThumbnail: {
+              jsonValue: {
+                value: {
+                  src: '/assets/nwn-images/services-technician-arrival-landscape.png',
+                  alt: 'NW Natural technician arriving at a home',
+                },
+              },
+            },
+            url: { path: '/services' },
+          },
+        ])}
+      />,
+    );
+
+    expect(
+      screen.getByRole('heading', { name: 'Natural gas equipment support' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', {
+        name: /Learn more about Natural gas equipment support/,
+      }),
+    ).toHaveAttribute('href', '/services');
   });
 });

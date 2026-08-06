@@ -27,33 +27,57 @@ SharedFields:
           products {
             targetItems {
               id
+              cardTitle: field(name: "heading") {
+                jsonValue
+              }
+              cardDescription: field(name: "description") {
+                jsonValue
+              }
+              cardImage: field(name: "image") {
+                jsonValue
+              }
+              cardLink: field(name: "link") {
+                jsonValue
+              }
+              pageTitle: field(name: "pageTitle") {
+                jsonValue
+              }
+              pageShortTitle: field(name: "pageShortTitle") {
+                jsonValue
+              }
+              pageSummary: field(name: "pageSummary") {
+                jsonValue
+              }
+              pageSubtitle: field(name: "pageSubtitle") {
+                jsonValue
+              }
+              route: url {
+                path
+              }
               url: field(name: "url") {
                 jsonValue
               }
               pageThumbnail: field(name: "pageThumbnail") {
                 jsonValue
               }
-                pageThumbnail: field(name: "pageThumbnail") {
-                  jsonValue
-                }
-                productBasePrice: field(name: "productBasePrice") {
-                  jsonValue
-                }
-                productName: field(name: "productName") {
-                  jsonValue
-                }
-                productThumbnail: field(name: "productThumbnail") {
-                  jsonValue
-                }
-                productFeatureTitle: field(name: "productFeatureTitle") {
-                  jsonValue
-                }
-                productFeatureText: field(name: "productFeatureText") {
-                  jsonValue
-                }
-                productDrivingRange: field(name: "productDrivingRange") {
-                  jsonValue
-                }
+              productBasePrice: field(name: "productBasePrice") {
+                jsonValue
+              }
+              productName: field(name: "productName") {
+                jsonValue
+              }
+              productThumbnail: field(name: "productThumbnail") {
+                jsonValue
+              }
+              productFeatureTitle: field(name: "productFeatureTitle") {
+                jsonValue
+              }
+              productFeatureText: field(name: "productFeatureText") {
+                jsonValue
+              }
+              productDrivingRange: field(name: "productDrivingRange") {
+                jsonValue
+              }
             }
           }
         }

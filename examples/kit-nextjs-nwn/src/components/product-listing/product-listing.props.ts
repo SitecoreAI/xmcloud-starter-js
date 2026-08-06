@@ -26,6 +26,33 @@ interface ProductListingFields {
 
 export type ProductItemProps = {
   id?: string;
+  cardTitle?: {
+    jsonValue: Field<string>;
+  };
+  cardDescription?: {
+    jsonValue: Field<string>;
+  };
+  cardImage?: {
+    jsonValue: ImageField;
+  };
+  cardLink?: {
+    jsonValue: LinkField;
+  };
+  pageTitle?: {
+    jsonValue: Field<string>;
+  };
+  pageShortTitle?: {
+    jsonValue: Field<string>;
+  };
+  pageSummary?: {
+    jsonValue: Field<string>;
+  };
+  pageSubtitle?: {
+    jsonValue: Field<string>;
+  };
+  route?: {
+    path?: string;
+  };
   productName?: {
     jsonValue: Field<string>;
   };
