@@ -16,6 +16,7 @@ interface ImageCarouselFields {
 }
 
 export interface imageCarouselItem {
+  id: string;
   image: { jsonValue: ImageField };
   backgroundText: { jsonValue: Field<string> };
   link: { jsonValue: LinkField };
@@ -26,4 +27,3 @@ export interface ImageCarouselProps extends OptionalComponentProps {
   fields: ImageCarouselFields;
   isPageEditing: boolean;
 }
-

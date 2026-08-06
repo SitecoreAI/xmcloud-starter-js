@@ -1,9 +1,58 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import type { Page } from '@sitecore-content-sdk/nextjs';
+
 import { ImageCarouselNwnResources } from '@/components/image-carousel/ImageCarouselNwnResources.dev';
-import type { ImageCarouselProps } from '@/components/image-carousel/image-carousel.props';
+import type {
+  ImageCarouselProps,
+  imageCarouselItem,
+} from '@/components/image-carousel/image-carousel.props';
+
+type CarouselListener = () => void;
+let carouselListeners: Record<string, CarouselListener> = {};
+
+const mockCarouselApi = {
+  off: jest.fn((event: string, listener: CarouselListener) => {
+    if (carouselListeners[event] === listener) {
+      delete carouselListeners[event];
+    }
+  }),
+  on: jest.fn((event: string, listener: CarouselListener) => {
+    carouselListeners[event] = listener;
+  }),
+  scrollNext: jest.fn(),
+  scrollPrev: jest.fn(),
+  scrollTo: jest.fn(),
+  selectedScrollSnap: jest.fn(() => 0),
+};
+
+const mockCarousel = jest.fn(
+  ({
+    children,
+    setApi,
+    opts,
+    ...attributes
+  }: {
+    children: React.ReactNode;
+    setApi?: (api: typeof mockCarouselApi) => void;
+    opts?: { watchDrag?: boolean };
+  } & React.HTMLAttributes<HTMLDivElement>) => {
+    React.useEffect(() => {
+      setApi?.(mockCarouselApi);
+    }, [setApi]);
+
+    return (
+      <div
+        data-testid="carousel"
+        data-watch-drag={String(opts?.watchDrag)}
+        {...attributes}
+      >
+        {children}
+      </div>
+    );
+  },
+);
 
 jest.mock('lucide-react', () => {
   const Icon = (props: React.HTMLAttributes<HTMLSpanElement>) => (
@@ -16,30 +65,60 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
   Text: ({
     field,
     tag = 'span',
-    ...props
+    ...attributes
   }: {
-    field?: { value?: string };
-    tag?: string;
-  }) => React.createElement(tag, props, field?.value || ''),
+    field?: { value?: string; metadata?: unknown };
+    tag?: React.ElementType;
+  }) =>
+    React.createElement(
+      tag,
+      {
+        ...attributes,
+        'data-field-metadata': String(Boolean(field?.metadata)),
+      },
+      field?.value || '',
+    ),
 }));
 
 jest.mock('@/components/image/ImageWrapper.dev', () => ({
   Default: ({
     image,
   }: {
-    image: { value?: { src?: string; alt?: string } };
+    image: {
+      value?: { src?: string; alt?: string };
+      metadata?: unknown;
+    };
   }) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={image?.value?.src} alt={image?.value?.alt || ''} />
+    <img
+      data-testid="carousel-image-field"
+      data-field-metadata={String(Boolean(image?.metadata))}
+      src={image?.value?.src || undefined}
+      alt={image?.value?.alt || ''}
+    />
   ),
 }));
 
 jest.mock('@/components/button-component/ButtonComponent', () => ({
   ButtonBase: ({
     buttonLink,
+    isPageEditing,
   }: {
-    buttonLink: { value?: { href?: string; text?: string } };
-  }) => <a href={buttonLink?.value?.href}>{buttonLink?.value?.text}</a>,
+    buttonLink: {
+      value?: { href?: string; text?: string };
+      metadata?: unknown;
+    };
+    isPageEditing?: boolean;
+  }) => (
+    <a
+      data-testid="carousel-link-field"
+      data-field-metadata={String(Boolean(buttonLink?.metadata))}
+      data-page-editing={String(Boolean(isPageEditing))}
+      href={buttonLink?.value?.href}
+    >
+      {buttonLink?.value?.text}
+    </a>
+  ),
 }));
 
 jest.mock('@/components/ui/button', () => ({
@@ -47,15 +126,41 @@ jest.mock('@/components/ui/button', () => ({
     children,
     variant: _variant,
     size: _size,
-    ...props
+    ...attributes
   }: React.ButtonHTMLAttributes<HTMLButtonElement> & {
     variant?: string;
     size?: string;
-  }) => <button {...props}>{children}</button>,
+  }) => <button {...attributes}>{children}</button>,
 }));
 
-jest.mock('@/components/image-carousel/ImageCarouselEditMode.dev', () => ({
-  ImageCarouselEditMode: () => <div data-testid="image-carousel-edit-mode" />,
+jest.mock('@/components/ui/carousel', () => ({
+  Carousel: (props: {
+    children: React.ReactNode;
+    setApi?: (api: typeof mockCarouselApi) => void;
+    opts?: { watchDrag?: boolean };
+  }) => mockCarousel(props),
+  CarouselContent: ({
+    children,
+    ...attributes
+  }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div data-testid="carousel-content" {...attributes}>
+      {children}
+    </div>
+  ),
+  CarouselItem: ({
+    children,
+    ...attributes
+  }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div data-testid="carousel-item" {...attributes}>
+      {children}
+    </div>
+  ),
+}));
+
+jest.mock('@/utils/NoDataFallback', () => ({
+  NoDataFallback: ({ componentName }: { componentName: string }) => (
+    <div data-testid="no-data-fallback">{componentName}</div>
+  ),
 }));
 
 const page = {
@@ -71,54 +176,301 @@ const page = {
   locale: 'en',
 } as Page;
 
-const props = {
-  fields: {
-    data: {
-      datasource: {
-        title: { jsonValue: { value: 'Explore our vehicles' } },
-        imageItems: { results: [] },
+const createItem = (
+  id: string,
+  title: string,
+  href: string,
+  linkText: string,
+  image = '',
+): imageCarouselItem => ({
+  id,
+  backgroundText: { jsonValue: { value: title } },
+  image: {
+    jsonValue: {
+      value: {
+        src: image,
+        alt: title,
       },
     },
   },
-  params: {},
-  rendering: { componentName: 'ImageCarousel' },
-  page,
-  isPageEditing: false,
-} as ImageCarouselProps;
+  link: {
+    jsonValue: {
+      value: {
+        href,
+        text: linkText,
+        linktype: 'internal',
+      },
+    },
+  },
+});
+
+const blankManagedItem = {
+  id: 'slide-blank',
+  backgroundText: {
+    jsonValue: {
+      value: '',
+      metadata: { fieldName: 'backgroundText' },
+    },
+  },
+  image: {
+    jsonValue: {
+      value: {},
+      metadata: { fieldName: 'image' },
+    },
+  },
+  link: {
+    jsonValue: {
+      value: {},
+      metadata: { fieldName: 'link' },
+    },
+  },
+} as unknown as imageCarouselItem;
+
+const defaultItems = [
+  createItem(
+    'slide-811',
+    'Call 811 before you dig',
+    '/safety/call-before-you-dig',
+    'Plan a safe project',
+  ),
+  createItem(
+    'slide-assistance',
+    'Payment assistance',
+    '/account-billing/payment-assistance',
+    'Explore assistance',
+  ),
+  createItem(
+    'slide-account',
+    'Manage service on your schedule',
+    '/account-billing',
+    'Open account and billing',
+  ),
+];
+
+const createProps = (
+  items: imageCarouselItem[] = defaultItems,
+  isPageEditing = false,
+): ImageCarouselProps =>
+  ({
+    fields: {
+      data: {
+        datasource: {
+          title: {
+            jsonValue: {
+              value: 'Practical resources for every customer.',
+            },
+          },
+          imageItems: { results: items },
+        },
+      },
+    },
+    params: {},
+    rendering: { componentName: 'ImageCarousel' },
+    page,
+    isPageEditing,
+  }) as ImageCarouselProps;
 
 describe('ImageCarouselNwnResources', () => {
-  it('replaces starter content with NW Natural customer resources', () => {
-    render(<ImageCarouselNwnResources {...props} />);
-
-    expect(
-      screen.getByRole('heading', {
-        name: 'Practical resources for every customer.',
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('heading', { name: 'Call 811 before you dig' }),
-    ).toBeInTheDocument();
-    expect(screen.getByAltText('Call 811 before you dig')).toHaveAttribute(
-      'src',
-      '/assets/nwn-images/homepage-hero-call-811-before-you-dig-wide.png',
-    );
-    expect(
-      screen.getByRole('link', { name: 'Plan a safe project' }),
-    ).toHaveAttribute('href', '/safety/call-before-you-dig');
+  beforeEach(() => {
+    jest.clearAllMocks();
+    carouselListeners = {};
+    mockCarouselApi.selectedScrollSnap.mockReturnValue(0);
   });
 
-  it('navigates through the customer resource slides', () => {
-    render(<ImageCarouselNwnResources {...props} />);
+  it('renders the real authored carousel in Page Builder with drag disabled', () => {
+    render(<ImageCarouselNwnResources {...createProps(defaultItems, true)} />);
+
+    expect(screen.getByTestId('carousel')).toHaveAttribute(
+      'data-watch-drag',
+      'false',
+    );
+    expect(screen.getAllByTestId('carousel-item')).toHaveLength(3);
+    expect(
+      screen.queryByTestId('image-carousel-edit-mode'),
+    ).not.toBeInTheDocument();
+    expect(
+      screen
+        .getAllByTestId('carousel-item')
+        .map((item) => item.getAttribute('data-carousel-item-id')),
+    ).toEqual(['slide-811', 'slide-assistance', 'slide-account']);
+  });
+
+  it('keeps swipe and drag enabled outside Page Builder', () => {
+    render(<ImageCarouselNwnResources {...createProps()} />);
+
+    expect(screen.getByTestId('carousel')).toHaveAttribute(
+      'data-watch-drag',
+      'true',
+    );
+  });
+
+  it('uses the authored item count and order without fabricating slides', () => {
+    const reorderedItems = [
+      createItem(
+        'slide-rebates',
+        'Rebates and offers',
+        '/ways-to-save/rebates-offers',
+        'Find available rebates',
+      ),
+      defaultItems[0],
+    ];
+
+    render(<ImageCarouselNwnResources {...createProps(reorderedItems)} />);
+
+    const slides = screen.getAllByTestId('carousel-item');
+    expect(slides).toHaveLength(2);
+    expect(
+      slides.map((item) => item.getAttribute('data-carousel-item-id')),
+    ).toEqual(['slide-rebates', 'slide-811']);
+    expect(slides[0]).toHaveTextContent('Rebates and offers');
+    expect(slides[1]).toHaveTextContent('Call 811 before you dig');
+  });
+
+  it('uses the Embla API for arrows and item selectors', () => {
+    render(<ImageCarouselNwnResources {...createProps()} />);
 
     fireEvent.click(
       screen.getByRole('button', { name: 'Next customer resource' }),
     );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Previous customer resource' }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Show customer resource: Payment assistance',
+      }),
+    );
+
+    expect(mockCarouselApi.scrollNext).toHaveBeenCalledTimes(1);
+    expect(mockCarouselApi.scrollPrev).toHaveBeenCalledTimes(1);
+    expect(mockCarouselApi.scrollTo).toHaveBeenCalledWith(1);
+  });
+
+  it('resynchronizes and cleans up after Manage items changes', () => {
+    const { unmount } = render(
+      <ImageCarouselNwnResources {...createProps(defaultItems, true)} />,
+    );
+
+    expect(mockCarouselApi.on).toHaveBeenCalledWith(
+      'select',
+      expect.any(Function),
+    );
+    expect(mockCarouselApi.on).toHaveBeenCalledWith(
+      'reInit',
+      expect.any(Function),
+    );
+
+    unmount();
+
+    expect(mockCarouselApi.off).toHaveBeenCalledWith(
+      'select',
+      expect.any(Function),
+    );
+    expect(mockCarouselApi.off).toHaveBeenCalledWith(
+      'reInit',
+      expect.any(Function),
+    );
+  });
+
+  it('updates the active item when the carousel selection changes', () => {
+    render(<ImageCarouselNwnResources {...createProps()} />);
+
+    mockCarouselApi.selectedScrollSnap.mockReturnValue(1);
+    act(() => {
+      carouselListeners.select?.();
+    });
 
     expect(
-      screen.getByRole('heading', { name: 'Payment assistance' }),
+      screen.getByRole('button', {
+        name: 'Show customer resource: Payment assistance',
+      }),
+    ).toHaveAttribute('aria-current', 'true');
+    expect(
+      screen.getByText(/Showing customer resource 2 of 3: Payment assistance/),
+    ).toBeInTheDocument();
+  });
+
+  it('renders nothing when authors remove every managed item', () => {
+    const { container } = render(
+      <ImageCarouselNwnResources {...createProps([])} />,
+    );
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it('shows a Manage items empty state instead of fake slides in Page Builder', () => {
+    render(<ImageCarouselNwnResources {...createProps([], true)} />);
+
+    expect(screen.queryByTestId('carousel')).not.toBeInTheDocument();
+    expect(screen.getByText('No carousel items yet')).toBeInTheDocument();
+    expect(
+      screen.getByText(/Use Manage items in Page Builder/),
+    ).toBeInTheDocument();
+  });
+
+  it('preserves blank managed fields for inline editing and DAM assignment', () => {
+    const editingProps = createProps([blankManagedItem], true);
+    const titleField = editingProps.fields.data.datasource.title.jsonValue as {
+      value: string;
+      metadata?: unknown;
+    };
+    titleField.value = '';
+    titleField.metadata = { fieldName: 'title' };
+
+    const { container } = render(
+      <ImageCarouselNwnResources {...editingProps} />,
+    );
+
+    expect(
+      container.querySelector('h2[data-field-metadata="true"]'),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('link', { name: 'Explore assistance' }),
-    ).toHaveAttribute('href', '/account-billing/payment-assistance');
+      container.querySelector('h3[data-field-metadata="true"]'),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId('carousel-image-field')).toHaveAttribute(
+      'data-field-metadata',
+      'true',
+    );
+    expect(screen.getByTestId('carousel-link-field')).toHaveAttribute(
+      'data-field-metadata',
+      'true',
+    );
+    expect(screen.getByTestId('carousel-link-field')).toHaveAttribute(
+      'data-page-editing',
+      'true',
+    );
+  });
+
+  it('makes inactive slides inert and exposes only one carousel landmark', () => {
+    const { container } = render(
+      <ImageCarouselNwnResources {...createProps()} />,
+    );
+    const slides = screen.getAllByTestId('carousel-item');
+
+    expect(slides[0]).not.toHaveAttribute('inert');
+    expect(slides[1]).toHaveAttribute('inert');
+    expect(container.querySelector('section')).not.toHaveAttribute(
+      'aria-roledescription',
+    );
+    expect(screen.getByTestId('carousel')).toHaveAttribute('aria-labelledby');
+
+    mockCarouselApi.selectedScrollSnap.mockReturnValue(1);
+    act(() => {
+      carouselListeners.select?.();
+    });
+
+    expect(slides[0]).toHaveAttribute('inert');
+    expect(slides[1]).not.toHaveAttribute('inert');
+  });
+
+  it('disables arrow controls when there is only one authored item', () => {
+    render(<ImageCarouselNwnResources {...createProps([defaultItems[0]])} />);
+
+    expect(
+      screen.getByRole('button', { name: 'Previous customer resource' }),
+    ).toBeDisabled();
+    expect(
+      screen.getByRole('button', { name: 'Next customer resource' }),
+    ).toBeDisabled();
   });
 });
