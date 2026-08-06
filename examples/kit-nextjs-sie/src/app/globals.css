@@ -1,0 +1,373 @@
+@import "../assets/styles/globals.css";
+@import "../assets/styles/tailwind-bootstrap-grid.css";
+@import "../assets/styles/column-splitter.css";
+
+@import "tailwindcss";
+
+/* bootstrap grid to tailwind plugin */
+@plugin 'tailwind-bootstrap-grid' {
+    container_max_widths:
+        "sm", "576px", "md", "768px", "lg", "992px", "xl", "1200px", "2xl",
+        "1400px";
+}
+
+/* preload tailwind-bootstrap-grid utility classes */
+@source inline("col-{1..12}");
+@source inline("offset-{1..12}");
+
+@config '../assets/tailwind.config.cjs';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentcolor);
+    }
+}
+
+@utility text-box-trim-top {
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/text-box-trim */
+
+    /* Trim top (from top to capital letters) */
+    text-box: trim-start cap;
+}
+
+@utility text-box-trim-bottom {
+    /* Trim bottom (from bottom to descenders) */
+    text-box: trim-end text;
+}
+
+@utility text-box-trim-bottom-baseline {
+    /* Trim bottom baseline (from bottom to baseline) */
+    text-box: trim-end text alphabetic;
+}
+
+@utility text-box-trim-both {
+    /* Trim both (trim top + trim bottom) */
+    text-box: trim-both cap text;
+}
+
+@utility text-box-trim-both-baseline {
+    /* Trim both baseline (trim top + trim bottom baseline) */
+    text-box: trim-both cap alphabetic;
+}
+
+@utility position-left {
+    @apply text-left;
+}
+
+@utility position-center {
+    @apply text-center;
+}
+
+@utility position-right {
+    @apply text-right;
+}
+
+@utility indent-top {
+    @apply mt-8 @md:mt-16;
+}
+
+@utility indent-bottom {
+    @apply mb-8 @md:mb-16;
+}
+
+@utility indent {
+    @apply px-8 @md:px-16;
+}
+
+@utility text-shadow {
+    --text-shadow-offset-x: 0;
+    --text-shadow-offset-y: 0;
+    --text-shadow-blur: var(--blur-default);
+    --text-shadow-color: rgba(0, 0, 0, 1);
+    text-shadow: var(--text-shadow-offset-x) var(--text-shadow-offset-y)
+        var(--text-shadow-blur) var(--text-shadow-color);
+}
+
+@utility text-shadow-blur-none {
+    --text-shadow-blur: var(--blur-none);
+}
+
+@utility text-shadow-blur-sm {
+    --text-shadow-blur: var(--blur-sm);
+    --text-shadow-blur: var(--blur-default);
+}
+
+@utility text-shadow-blur-md {
+    --text-shadow-blur: var(--blur-md);
+}
+
+@utility text-shadow-blur-lg {
+    --text-shadow-blur: var(--blur-lg);
+}
+
+@utility text-shadow-blur-xl {
+    --text-shadow-blur: var(--blur-xl);
+}
+
+@utility text-shadow-blur-2xl {
+    --text-shadow-blur: var(--blur-2xl);
+}
+
+@utility text-shadow-blur-3xl {
+    --text-shadow-blur: var(--blur-3xl);
+}
+
+@utility fade-to-transparent {
+    mask-image: linear-gradient(
+        to var(--fade-direction),
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 33%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+@utility fade-to-transparent-right {
+    --fade-direction: right;
+}
+
+@utility fade-to-transparent-top {
+    --fade-direction: top;
+}
+
+@utility fade-to-transparent-left {
+    --fade-direction: left;
+}
+
+@utility fade-to-transparent-bottom {
+    --fade-direction: bottom;
+}
+
+@utility ck-content {
+    ul,
+    ol {
+        all: revert;
+    }
+}
+
+@utility vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(360deg);
+    text-orientation: mixed;
+    height: 100%;
+}
+
+@layer base {
+    * {
+        @apply border-border;
+        font-family: var(--font-body);
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6 {
+        font-family: var(--font-heading);
+        @apply font-medium leading-tight;
+        letter-spacing: -0.015em;
+    }
+
+    h1,
+    .h1 {
+        font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    }
+    h2,
+    .h2 {
+        font-size: clamp(2rem, 3.5vw, 2.75rem);
+    }
+    h3,
+    .h3 {
+        font-size: clamp(1.625rem, 2.5vw, 2rem);
+    }
+    h4,
+    .h4 {
+        font-size: clamp(1.375rem, 2vw, 1.625rem);
+    }
+    h5,
+    .h5 {
+        font-size: 1.125rem;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        line-height: 1.75;
+        font-feature-settings:
+            "rlig" 1,
+            "calt" 1;
+    }
+    main {
+        @apply text-base;
+    }
+}
+
+@utility nwn-content-shell {
+    width: min(100% - 2rem, 75rem);
+    margin-inline: auto;
+}
+
+@layer components {
+    .nwn-rich-text-section {
+        background: #ffffff;
+    }
+
+    .nwn-rich-text-content {
+        max-width: 68rem;
+    }
+
+    .nwn-rich-text-content .nwn-page-content {
+        color: hsl(206, 10%, 20%);
+    }
+
+    .nwn-rich-text-content .nwn-page-intro {
+        max-width: 52rem;
+        margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+        padding-left: clamp(1.25rem, 3vw, 2rem);
+        border-left: 0.25rem solid var(--color-accent);
+        color: hsl(207, 7%, 35%);
+        font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+        line-height: 1.6;
+    }
+
+    .nwn-rich-text-content .nwn-page-content > .nwn-content-section {
+        display: grid;
+        gap: clamp(1.5rem, 2vw, 2rem);
+        padding-block: clamp(2.25rem, 5vw, 3.5rem);
+        border-top: 1px solid var(--color-border);
+    }
+
+    .nwn-rich-text-content .nwn-page-content > .nwn-content-section:last-child {
+        padding-bottom: 0;
+    }
+
+    .nwn-rich-text-content .nwn-page-content h2 {
+        max-width: 18ch;
+        margin: 0;
+        color: hsl(206, 10%, 14%);
+        font-size: clamp(1.875rem, 3vw, 2.5rem);
+        line-height: 1.1;
+    }
+
+    .nwn-rich-text-content .nwn-page-content .nwn-content-section > p {
+        max-width: 46rem;
+        margin: 0;
+        color: hsl(207, 7%, 35%);
+        font-size: 1.125rem;
+        line-height: 1.75;
+    }
+
+    .nwn-rich-text-content .nwn-page-content ul {
+        display: grid;
+        gap: 0.75rem;
+        max-width: 46rem;
+        margin: 0.5rem 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .nwn-rich-text-content .nwn-page-content ol {
+        display: grid;
+        gap: 0.75rem;
+        max-width: 46rem;
+        margin: 0.5rem 0 0;
+        padding-left: 1.5rem;
+        list-style: decimal;
+    }
+
+    .nwn-rich-text-content .nwn-page-content ul > li {
+        position: relative;
+        font-size: 1.125rem;
+        padding-left: 1.5rem;
+        color: hsl(206, 10%, 20%);
+        line-height: 1.65;
+    }
+
+    .nwn-rich-text-content .nwn-page-content ol > li {
+        padding-left: 0.25rem;
+        font-size: 1.125rem;
+        color: hsl(206, 10%, 20%);
+        line-height: 1.65;
+    }
+
+    .nwn-rich-text-content .nwn-page-content ul > li::before {
+        position: absolute;
+        top: 0.72em;
+        left: 0;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 999px;
+        background: var(--color-accent);
+        content: "";
+        transform: translateY(-50%);
+    }
+
+    .nwn-rich-text-content .nwn-page-content a {
+        color: var(--color-primary);
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: var(--color-accent);
+        text-underline-offset: 0.2em;
+    }
+
+    .nwn-cta-banner::before {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+            radial-gradient(
+                circle at 12% 20%,
+                rgb(255 255 255 / 18%),
+                transparent 28%
+            ),
+            linear-gradient(115deg, transparent 55%, rgb(0 162 199 / 28%));
+        content: "";
+        pointer-events: none;
+    }
+
+    .nwn-footer :focus-visible,
+    [data-component="Hero"] :focus-visible,
+    [data-component="Promo Image"] :focus-visible,
+    .nwn-cta-banner.bg-primary :focus-visible {
+        outline-color: #ffffff;
+    }
+
+    @media (min-width: 52rem) {
+        .nwn-rich-text-content .nwn-page-content > .nwn-content-section {
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.45fr);
+            column-gap: clamp(3rem, 7vw, 6rem);
+        }
+
+        .nwn-rich-text-content .nwn-page-content h2 {
+            grid-row: 1 / span 2;
+        }
+
+        .nwn-rich-text-content .nwn-page-content .nwn-content-section > p,
+        .nwn-rich-text-content .nwn-page-content ul,
+        .nwn-rich-text-content .nwn-page-content ol {
+            grid-column: 2;
+        }
+    }
+}

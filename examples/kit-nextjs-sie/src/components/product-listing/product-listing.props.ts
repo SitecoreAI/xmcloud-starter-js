@@ -1,0 +1,95 @@
+import {
+  Field,
+  ImageField,
+  LinkField,
+  Page,
+} from '@sitecore-content-sdk/nextjs';
+
+import type { OptionalComponentProps } from '@/lib/component-props';
+
+interface ProductListingParams {
+  [key: string]: any; // eslint-disable-line
+}
+
+interface ProductListingFields {
+  data: {
+    datasource: {
+      title: { jsonValue: Field<string> };
+      viewAllLink: { jsonValue: LinkField };
+
+      products?: {
+        targetItems: ProductItemProps[];
+      };
+    };
+  };
+}
+
+export type ProductItemProps = {
+  id?: string;
+  cardTitle?: {
+    jsonValue: Field<string>;
+  };
+  cardDescription?: {
+    jsonValue: Field<string>;
+  };
+  cardImage?: {
+    jsonValue: ImageField;
+  };
+  cardLink?: {
+    jsonValue: LinkField;
+  };
+  pageTitle?: {
+    jsonValue: Field<string>;
+  };
+  pageShortTitle?: {
+    jsonValue: Field<string>;
+  };
+  pageSummary?: {
+    jsonValue: Field<string>;
+  };
+  pageSubtitle?: {
+    jsonValue: Field<string>;
+  };
+  route?: {
+    path?: string;
+  };
+  productName?: {
+    jsonValue: Field<string>;
+  };
+  productThumbnail?: {
+    jsonValue: ImageField;
+  };
+  pageThumbnail?: {
+    jsonValue: ImageField;
+  };
+  productBasePrice?: {
+    jsonValue: Field<string>;
+  };
+  productFeatureTitle?: {
+    jsonValue: Field<string>;
+  };
+  productFeatureText?: {
+    jsonValue: Field<string>;
+  };
+  productDrivingRange?: {
+    jsonValue: Field<string>;
+  };
+  url?: {
+    jsonValue?: LinkField;
+    url?: string;
+    path?: string;
+  };
+};
+
+export interface ProductListingProps extends OptionalComponentProps {
+  params: ProductListingParams;
+  fields: ProductListingFields;
+  isPageEditing: boolean;
+}
+export interface ProductCardProps {
+  product: ProductItemProps;
+  link: LinkField;
+  prefersReducedMotion: boolean;
+  isPageEditing: boolean;
+  page?: Page; // Optional page prop for ImageWrapper
+}

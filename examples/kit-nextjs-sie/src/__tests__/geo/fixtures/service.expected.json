@@ -1,0 +1,20 @@
+{
+    "services": [
+        {
+            "name": "Account and Billing Support",
+            "description": "Help customers pay bills, start, stop, or transfer natural gas service, and find payment assistance through clear residential account pathways.",
+            "category": "Customer Account"
+        },
+        {
+            "name": "Home Energy Services",
+            "description": "Guide customers to equipment inspections and tune-ups, rebates and offers, natural gas benefits, and cooking resources for dependable home comfort.",
+            "category": "Home Energy"
+        },
+        {
+            "name": "Natural Gas Safety Guidance",
+            "description": "Provide clear actions for suspected natural gas odors, including leaving immediately and calling 800-882-3377 from a safe location, plus guidance to contact 811 before digging.",
+            "category": "Safety"
+        }
+    ],
+    "lastModified": "2026-08-05T21:29:09Z"
+}

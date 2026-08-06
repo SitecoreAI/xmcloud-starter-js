@@ -1,0 +1,15 @@
+export const SubmitInfoFormDictionaryKeys = {
+  SUBMITINFOFORM_FirstNameLabel: 'NWN_SubmissionForm_FirstName',
+  SUBMITINFOFORM_FirstNamePlaceholder: 'NWN_SubmissionForm_FirstNamePlaceholder',
+  SUBMITINFOFORM_LastNameLabel: 'NWN_SubmissionForm_LastName',
+  SUBMITINFOFORM_LastNamePlaceholder: 'NWN_SubmissionForm_LastNamePlaceholder',
+  SUBMITINFOFORM_ZipcodeLabel: 'NWN_SubmissionForm_Zipcode',
+  SUBMITINFOFORM_ZipcodePlaceholder: 'NWN_SubmissionForm_ZipcodePlaceholder',
+  SUBMITINFOFORM_EmailLabel: 'NWN_SubmissionForm_EmailLabelText',
+  SUBMITINFOFORM_EmailPlaceholder: 'NWN_SubmissionForm_EmailPlaceholderText',
+  SUBMITINFOFORM_EmailErrorMessage: 'NWN_SubmissionForm_EmailErrorMessage',
+  SUBMITINFOFORM_PhoneLabel: 'NWN_SubmissionForm_Phone',
+  SUBMITINFOFORM_PhonePlaceholder: 'NWN_SubmissionForm_PhonePlaceholder',
+  SUBMITINFOFORM_ButtonText: 'NWN_SubmissionForm_ButtonLabel',
+  SUBMITINFOFORM_SuccessMessage: 'NWN_SubmissionForm_SuccessMessage',
+};
