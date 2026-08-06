@@ -1,11 +1,12 @@
 # NW Natural demo image manifest
 
-These original, text-free image assets were generated for the `kit-nextjs-nwn` demo. Upload them to Content Hub DAM, preserve the filenames, and use the mapping below when assigning images in SitecoreAI Page Builder.
+This folder contains original, text-free imagery generated for the `kit-nextjs-nwn` demo plus the official NW Natural light-theme logo. Upload the assets to Content Hub DAM, preserve the filenames, and use the mapping below when assigning images in SitecoreAI Page Builder.
 
-All images are PNG, contain no logos or embedded copy, and leave intentional negative space for responsive web text. Use the Sitecore focal point to preserve the named subject on narrow crops.
+The photographic images contain no logos or embedded copy and leave intentional negative space for responsive web text. Use the Sitecore focal point to preserve the named subject on narrow crops. The logo is the unchanged transparent asset used by NW Natural's live white header; retain its proportions and colors.
 
 | Filename                                                   |      Size | Page / component                                    | Sitecore field | Suggested alt text                                                       | Focal point  |
 | ---------------------------------------------------------- | --------: | --------------------------------------------------- | -------------- | ------------------------------------------------------------------------ | ------------ |
+| `global-header-nw-natural-logo-light.png`                  |    388x90 | Global Header / light theme                         | `headerLogo`   | NW Natural                                                               | Center       |
 | `homepage-hero-family-comfort-pacific-northwest-wide.png`  |  1814x867 | Home / Hero slide 1                                 | `image`        | Family enjoying a warm Pacific Northwest home on a rainy evening         | Right center |
 | `homepage-hero-call-811-before-you-dig-wide.png`           |  1814x867 | Home / Hero slide 2; Call 811                       | `image`        | Homeowner and utility locator beside marked lines in a garden            | Right center |
 | `homepage-hero-bill-assistance-wide.png`                   |  1817x866 | Home / Hero slide 3; Payment Assistance             | `image`        | Customer care advisor reviewing assistance options with a homeowner      | Right center |
@@ -19,6 +20,8 @@ All images are PNG, contain no logos or embedded copy, and leave intentional neg
 | `about-community-tree-planting-landscape.png`              | 1536x1024 | About Us; Company Overview / Promo                  | `image`        | Community volunteers planting native trees near a Pacific Northwest city | Right center |
 | `renewable-natural-gas-oregon-farm-landscape.png`          | 1536x1024 | Renewable Natural Gas / Promo                       | `image`        | Renewable gas facility operating on an Oregon farm                       | Right center |
 | `less-we-can-oregon-coast-sunrise-panoramic.png`           |  1817x866 | Less We Can / Hero                                  | `image`        | Sunrise over the Oregon coast and a large sea stack                      | Right center |
+
+Official logo source: `https://www.nwnatural.com/Project.Nwnatural/img/nwn-logo-2x.png` (displayed by NW Natural at 194x45 on light backgrounds).
 
 ## Recommended DAM renditions
 
