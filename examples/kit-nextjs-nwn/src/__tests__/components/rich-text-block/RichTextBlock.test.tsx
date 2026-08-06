@@ -22,11 +22,17 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
     field?: { value?: { href?: string; text?: string } };
     children?: React.ReactNode;
   }) => <a href={field?.value?.href}>{field?.value?.text || children}</a>,
-  Image: ({ field }: { field?: { value?: { src?: string; alt?: string } } }) => (
+  Image: ({
+    field,
+  }: {
+    field?: { value?: { src?: string; alt?: string } };
+  }) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img src={field?.value?.src} alt={field?.value?.alt} />
   ),
-  Placeholder: ({ name }: { name: string }) => <div data-testid="sitecore-placeholder">{name}</div>,
+  Placeholder: ({ name }: { name: string }) => (
+    <div data-testid="sitecore-placeholder">{name}</div>
+  ),
   useSitecore: () => ({
     sitecoreContext: {},
     updateSitecoreContext: jest.fn(),
@@ -36,7 +42,9 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
 
 // Mock NoDataFallback component
 jest.mock('@/utils/NoDataFallback', () => ({
-  NoDataFallback: () => <div data-testid="no-data-fallback">No data available</div>,
+  NoDataFallback: () => (
+    <div data-testid="no-data-fallback">No data available</div>
+  ),
 }));
 
 // Mock cn utility
@@ -88,13 +96,21 @@ describe('RichTextBlock Component', () => {
         params={mockParams}
         rendering={mockRendering}
         page={mockPageBase}
-      />
+      />,
     );
 
-    expect(screen.getByTestId('richtext')).toHaveTextContent('This is rich text content');
-    const container = screen.getByTestId('richtext').closest('.component.rich-text');
+    expect(screen.getByTestId('richtext')).toHaveTextContent(
+      'This is rich text content',
+    );
+    const container = screen
+      .getByTestId('richtext')
+      .closest('.component.rich-text');
     expect(container).toHaveAttribute('id', 'rich-text-id');
-    expect(container).toHaveClass('component rich-text');
+    expect(container).toHaveClass('component rich-text nwn-rich-text-section');
+    expect(container?.querySelector('.nwn-content-shell')).toBeInTheDocument();
+    expect(
+      container?.querySelector('.nwn-rich-text-content'),
+    ).toBeInTheDocument();
   });
 
   it('renders empty hint when text field is empty', () => {
@@ -108,15 +124,21 @@ describe('RichTextBlock Component', () => {
         params={{}}
         rendering={mockRendering}
         page={mockPageBase}
-      />
+      />,
     );
     expect(screen.getByText('Rich text')).toBeInTheDocument();
   });
 
   it('renders fallback when fields are missing', () => {
     // Testing edge case with undefined fields - using type assertion for test scenario
-    // @ts-expect-error - Testing invalid props to verify NoDataFallback behavior
-    render(<RichTextBlock fields={undefined} params={{}} rendering={mockRendering} />);
+    render(
+      <RichTextBlock
+        // @ts-expect-error - Testing invalid props to verify NoDataFallback behavior
+        fields={undefined}
+        params={{}}
+        rendering={mockRendering}
+      />,
+    );
     expect(screen.getByTestId('no-data-fallback')).toBeInTheDocument();
   });
 });

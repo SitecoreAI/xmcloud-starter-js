@@ -1,15 +1,22 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Default as MultiPromo } from '@/components/multi-promo/MultiPromo';
+import {
+  Default as MultiPromo,
+  NwnCards,
+  NwnQuickActions,
+} from '@/components/multi-promo/MultiPromo';
 import { mockMultiPromoProps } from './multi-promo.mock.props';
 
 // Mock dependencies
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
   Text: jest.fn(({ field, tag = 'span', className }) =>
-    React.createElement(tag, { className }, field?.value || '')
+    React.createElement(tag, { className }, field?.value || ''),
   ),
   RichText: jest.fn(({ field, className }) => (
-    <div className={className} dangerouslySetInnerHTML={{ __html: field?.value || '' }} />
+    <div
+      className={className}
+      dangerouslySetInnerHTML={{ __html: field?.value || '' }}
+    />
   )),
 }));
 
@@ -63,6 +70,20 @@ jest.mock('@/components/multi-promo/MultiPromoItem.dev', () => ({
   )),
 }));
 
+jest.mock('@/components/multi-promo/MultiPromoNwnQuickActions.dev', () => ({
+  MultiPromoNwnQuickActions: jest.fn(() => (
+    <section data-testid="multi-promo-nwn-quick-actions">
+      NW Natural Quick Actions
+    </section>
+  )),
+}));
+
+jest.mock('@/components/multi-promo/MultiPromoNwnCards.dev', () => ({
+  MultiPromoNwnCards: jest.fn(() => (
+    <section data-testid="multi-promo-nwn-cards">NW Natural Cards</section>
+  )),
+}));
+
 jest.mock('@/utils/NoDataFallback', () => ({
   NoDataFallback: jest.fn(({ componentName }) => (
     <div data-testid="no-data-fallback">No Data: {componentName}</div>
@@ -82,7 +103,9 @@ describe('MultiPromo', () => {
   });
 
   it('renders carousel with promo items', () => {
-    const { getByTestId, getAllByTestId } = render(<MultiPromo {...mockMultiPromoProps} />);
+    const { getByTestId, getAllByTestId } = render(
+      <MultiPromo {...mockMultiPromoProps} />,
+    );
 
     expect(getByTestId('carousel')).toBeInTheDocument();
     expect(getByTestId('carousel-content')).toBeInTheDocument();
@@ -92,10 +115,27 @@ describe('MultiPromo', () => {
   });
 
   it('renders NoDataFallback when fields are not provided', () => {
-    const propsWithoutFields = { ...mockMultiPromoProps, fields: null as never };
+    const propsWithoutFields = {
+      ...mockMultiPromoProps,
+      fields: null as never,
+    };
     const { getByTestId } = render(<MultiPromo {...propsWithoutFields} />);
 
     expect(getByTestId('no-data-fallback')).toBeInTheDocument();
-    expect(getByTestId('no-data-fallback')).toHaveTextContent('No Data: Multi Promo');
+    expect(getByTestId('no-data-fallback')).toHaveTextContent(
+      'No Data: Multi Promo',
+    );
+  });
+
+  it('renders the NW Natural quick-actions variant', () => {
+    const { getByTestId } = render(
+      <NwnQuickActions {...mockMultiPromoProps} />,
+    );
+    expect(getByTestId('multi-promo-nwn-quick-actions')).toBeInTheDocument();
+  });
+
+  it('renders the NW Natural cards variant', () => {
+    const { getByTestId } = render(<NwnCards {...mockMultiPromoProps} />);
+    expect(getByTestId('multi-promo-nwn-cards')).toBeInTheDocument();
   });
 });

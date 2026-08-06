@@ -1,5 +1,10 @@
 import scConfig from 'sitecore.config';
 import client from '@/lib/sitecore-client';
+import { buildSiteDataPath } from '@/lib/site-path';
+import {
+  containsLegacyStarterContent,
+  NWN_SUMMARY,
+} from '@/lib/nwn-ai-content';
 
 const SUMMARY_GRAPHQL_TYPE = 'AISummary';
 const SUMMARY_DATA_PATH_SUFFIX = '/Data/AI Config/Summary';
@@ -44,33 +49,39 @@ function buildSummaryQuery(fragmentType: string): string {
 }
 
 function buildSummaryPath(): string {
-  const siteName = scConfig.defaultSite || process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || '';
+  const siteName =
+    scConfig.defaultSite || process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || '';
   if (!siteName) return '';
-  return `/sitecore/content/alaris/${siteName}${SUMMARY_DATA_PATH_SUFFIX}`;
+  return buildSiteDataPath(siteName, SUMMARY_DATA_PATH_SUFFIX);
 }
 
 export async function fetchSummaryFromEdge(): Promise<SummaryItem | null> {
   const path = buildSummaryPath();
-  if (!path) return null;
+  if (!path) return { ...NWN_SUMMARY };
 
   const language = scConfig.defaultLanguage || 'en';
 
   try {
     const result = await client.getData<SummaryQueryResult>(
       buildSummaryQuery(SUMMARY_GRAPHQL_TYPE),
-      { path, language }
+      { path, language },
     );
 
-    if (!result?.item) return null;
+    if (!result?.item) return { ...NWN_SUMMARY };
 
     const title = extractFieldValue(result.item.title);
     const description = extractFieldValue(result.item.description);
 
-    if (!title && !description) return null;
+    if (
+      (!title && !description) ||
+      containsLegacyStarterContent({ title, description })
+    ) {
+      return { ...NWN_SUMMARY };
+    }
 
     return { title, description };
   } catch (error) {
     console.error('[fetchSummaryFromEdge] GraphQL request failed:', error);
-    return null;
+    return { ...NWN_SUMMARY };
   }
 }

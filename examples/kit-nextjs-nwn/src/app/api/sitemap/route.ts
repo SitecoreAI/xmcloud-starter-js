@@ -1,14 +1,14 @@
-import { createSitemapRouteHandler } from '@sitecore-content-sdk/nextjs/route-handler';
-import sites from '.sitecore/sites.json';
-import client from 'lib/sitecore-client';
+import type { NextRequest } from 'next/server';
+import { buildNwnSitemapXml, getRequestOrigin } from '@/lib/nwn-routes';
 
 export const dynamic = 'force-dynamic';
 
-/**
- * API route for serving sitemap.xml
- */
-
-export const { GET } = createSitemapRouteHandler({
-  client,
-  sites,
-});
+export async function GET(request: NextRequest): Promise<Response> {
+  return new Response(buildNwnSitemapXml(getRequestOrigin(request)), {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control':
+        'public, max-age=300, s-maxage=300, stale-while-revalidate=3600',
+    },
+  });
+}

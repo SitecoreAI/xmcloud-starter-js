@@ -11,12 +11,32 @@ import Layout, { RouteFields } from 'src/Layout';
 import Providers from 'src/Providers';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import {
-  generateWebPageSchema,
-  generateProductSchema,
-} from 'src/lib/structured-data/schema';
+import { generateWebPageSchema } from 'src/lib/structured-data/schema';
 import { StructuredData } from '@/components/structured-data/StructuredData';
-import { getFullUrl, getBaseUrl } from '@/lib/utils';
+import { getBaseUrlFromHeaders } from '@/lib/utils';
+import { isLegacyStarterRoute } from '@/lib/nwn-route-guard';
+import { sanitizeLegacyStarterData } from '@/lib/nwn-content-sanitizer';
+
+const HOME_HERO_IMAGE =
+  '/assets/nwn-images/homepage-hero-family-comfort-pacific-northwest-wide.png';
+const DEFAULT_DESCRIPTION =
+  'NW Natural provides safe, reliable and affordable energy for the communities we serve.';
+const DEFAULT_KEYWORDS = [
+  'natural gas',
+  'account support',
+  'energy safety',
+  'Pacific Northwest',
+];
+
+const isLegacyStarterValue = (value: string | undefined): boolean =>
+  /\b(?:alaris|aero|nexa|terra|automotive|vehicles?|dealerships?)\b|test[-\s]?drive|electric future|drivesense/i.test(
+    value ?? '',
+  );
+
+const useNwnValue = (
+  ...values: Array<string | undefined>
+): string | undefined =>
+  values.find((value) => value?.trim() && !isLegacyStarterValue(value));
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function findHeroImageSrc(page: any): string | undefined {
@@ -26,8 +46,12 @@ function findHeroImageSrc(page: any): string | undefined {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const search = (components: any[]): string | undefined => {
     for (const comp of components) {
-      if (comp.componentName === 'Hero' && comp.fields?.image?.value?.src) {
-        return comp.fields.image.value.src;
+      if (comp.componentName === 'Hero') {
+        const serializedFields = JSON.stringify(comp.fields);
+        const imageSrc = comp.fields?.image?.value?.src;
+        return !imageSrc || isLegacyStarterValue(serializedFields)
+          ? HOME_HERO_IMAGE
+          : imageSrc;
       }
       // Recurse into nested placeholders (containers / flex)
       if (comp.placeholders) {
@@ -62,47 +86,69 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
+
+  if (isLegacyStarterRoute(path)) {
+    notFound();
+  }
+
   const draft = await draftMode();
-  const baseUrl = getBaseUrl();
+  const requestHeaders = await nextHeaders();
+  const baseUrl = getBaseUrlFromHeaders(requestHeaders);
 
   setRequestLocale(`${site}_${locale}`);
 
   // Fetch the page data from Sitecore
   let page;
   if (draft.isEnabled) {
-    const headers = await nextHeaders();
-    const previewData = client.getPreviewData(headers);
+    const previewData = client.getPreviewData(requestHeaders);
     if (isDesignLibraryPreviewData(previewData)) {
       page = await client.getDesignLibraryData(previewData);
     } else {
       page = await client.getPreview(previewData);
     }
   } else {
-    page = await client.getPage(path ?? [], { site, locale });
+    try {
+      page = await client.getPage(path ?? [], { site, locale });
+    } catch (error) {
+      console.error(
+        `[NWN page] Failed to load /${(path ?? []).join('/')}:`,
+        error,
+      );
+      throw error;
+    }
   }
 
   if (!page) {
     notFound();
   }
 
-  const heroImageSrc = findHeroImageSrc(page);
+  const renderPage =
+    draft.isEnabled || page.mode.isEditing
+      ? page
+      : sanitizeLegacyStarterData(page);
+
+  const heroImageSrc = findHeroImageSrc(renderPage);
   if (heroImageSrc) {
     preload(heroImageSrc, { as: 'image', fetchPriority: 'high' });
   }
 
   // Generate page-specific structured data
-  const fields = page.layout.sitecore.route?.fields as RouteFields;
+  const fields = renderPage.layout.sitecore.route?.fields as RouteFields;
   const pageTitle =
-    fields?.Title?.value?.toString() ||
-    fields?.pageTitle?.value?.toString() ||
-    'Page';
+    useNwnValue(
+      fields?.Title?.value?.toString(),
+      fields?.pageTitle?.value?.toString(),
+    ) ||
+    (path?.length
+      ? 'NW Natural'
+      : 'NW Natural | Home Energy, Account Help & Safety');
   const pageDescription =
-    fields?.metadataDescription?.value?.toString() ||
-    fields?.ogDescription?.value?.toString();
+    useNwnValue(
+      fields?.metadataDescription?.value?.toString(),
+      fields?.ogDescription?.value?.toString(),
+    ) || DEFAULT_DESCRIPTION;
   const currentPath = path?.length ? `/${path.join('/')}` : '/';
-  const fullUrl = baseUrl
-    ? `${baseUrl}${currentPath}`
-    : getFullUrl(currentPath);
+  const fullUrl = `${baseUrl}${currentPath}`;
   const webPageSchema = generateWebPageSchema(
     pageTitle,
     fullUrl,
@@ -110,27 +156,12 @@ export default async function Page({ params }: PageProps) {
     locale,
   );
 
-  // Detect if this is a product page and generate Product schema
-  const isProductPage = path && path[0] === 'Products';
-  const productSchema = isProductPage
-    ? generateProductSchema(
-        pageTitle,
-        fields?.pageSummary?.value?.toString() || pageDescription,
-        fields?.thumbnailImage?.value?.src || fields?.ogImage?.value?.src,
-        fullUrl,
-        undefined, // Price not available on detail pages by default
-      )
-    : null;
-
   return (
     <NextIntlClientProvider>
-      <Providers page={page}>
+      <Providers page={renderPage}>
         {/* Page-specific structured data */}
         <StructuredData id="webpage-schema" data={webPageSchema} />
-        {productSchema && (
-          <StructuredData id="product-schema-page" data={productSchema} />
-        )}
-        <Layout page={page} baseUrl={baseUrl || undefined} />
+        <Layout page={renderPage} baseUrl={baseUrl || undefined} />
       </Providers>
     </NextIntlClientProvider>
   );
@@ -148,55 +179,92 @@ export const generateStaticParams = async () => {
           .filter((site: SiteInfo) => site.name === defaultSite)
           .map((site: SiteInfo) => site.name)
       : sites.map((site: SiteInfo) => site.name);
-    return await client.getAppRouterStaticParams(
+    const staticParams = await client.getAppRouterStaticParams(
       allowedSites,
       routing.locales.slice(),
+    );
+    return staticParams.filter(
+      (staticPath) => !isLegacyStarterRoute(staticPath.path),
     );
   }
   return [];
 };
 
 export const generateMetadata = async ({ params }: PageProps) => {
-  const baseUrl = getBaseUrl();
+  const baseUrl = getBaseUrlFromHeaders(await nextHeaders());
 
   const { site, locale, path } = await params;
+
+  if (isLegacyStarterRoute(path)) {
+    notFound();
+  }
 
   // Canonical URL: base URL + content path only (no site/locale segments)
   const pathSegment = path?.length ? `/${path.join('/')}` : '';
   const canonicalUrl = baseUrl ? `${baseUrl}${pathSegment}` : undefined;
 
   // The same call as for rendering the page. Should be cached by default react behavior
-  const page = await client.getPage(path ?? [], { site, locale });
+  let page;
+  try {
+    page = await client.getPage(path ?? [], { site, locale });
+  } catch (error) {
+    console.error(
+      `[NWN metadata] Failed to load /${(path ?? []).join('/')}:`,
+      error,
+    );
+  }
 
   // Cast route fields once to avoid repeated type assertions
   const routeFields = (page?.layout.sitecore.route?.fields ??
     {}) as RouteFields;
 
-  // Extract metadata values with fallback chain
+  const isHome = !path?.length;
+
+  // Ignore inherited Alaris starter values while live authoring catches up.
   const metadataTitle =
-    routeFields?.metadataTitle?.value?.toString() ||
-    routeFields?.pageTitle?.value?.toString() ||
-    routeFields?.Title?.value?.toString() ||
-    routeFields?.ogTitle?.value?.toString() ||
-    'Page';
+    useNwnValue(
+      routeFields?.metadataTitle?.value?.toString(),
+      routeFields?.pageTitle?.value?.toString(),
+      routeFields?.Title?.value?.toString(),
+      routeFields?.ogTitle?.value?.toString(),
+    ) ||
+    (isHome ? 'NW Natural | Home Energy, Account Help & Safety' : 'NW Natural');
 
   const metadataDescription =
-    routeFields?.metadataDescription?.value?.toString() ||
-    routeFields?.pageSummary?.value?.toString() ||
-    routeFields?.ogDescription?.value?.toString() ||
-    'Alaris - Find your nearest location';
+    useNwnValue(
+      routeFields?.metadataDescription?.value?.toString(),
+      routeFields?.pageSummary?.value?.toString(),
+      routeFields?.ogDescription?.value?.toString(),
+    ) || DEFAULT_DESCRIPTION;
 
   const ogTitle =
-    routeFields?.ogTitle?.value?.toString() ||
-    routeFields?.Title?.value?.toString() ||
-    metadataTitle;
+    useNwnValue(
+      routeFields?.ogTitle?.value?.toString(),
+      routeFields?.Title?.value?.toString(),
+    ) || metadataTitle;
 
   const ogDescription =
-    routeFields?.ogDescription?.value?.toString() || metadataDescription;
+    useNwnValue(routeFields?.ogDescription?.value?.toString()) ||
+    metadataDescription;
 
   // Ensure image URL is absolute (HTTPS preferred)
-  const imageSource =
+  const authoredImageSource =
     routeFields?.ogImage?.value?.src || routeFields?.thumbnailImage?.value?.src;
+  const authoredImageAltValue =
+    routeFields?.ogImage?.value?.alt || routeFields?.thumbnailImage?.value?.alt;
+  const authoredImageAlt =
+    typeof authoredImageAltValue === 'string'
+      ? authoredImageAltValue
+      : undefined;
+  const authoredImageIsNwn =
+    Boolean(authoredImageSource) &&
+    !isLegacyStarterValue(authoredImageSource) &&
+    !isLegacyStarterValue(authoredImageAlt);
+  const imageSource = authoredImageIsNwn
+    ? authoredImageSource
+    : isHome
+      ? HOME_HERO_IMAGE
+      : undefined;
 
   const ogImageUrl = imageSource
     ? imageSource.startsWith('http')
@@ -207,13 +275,17 @@ export const generateMetadata = async ({ params }: PageProps) => {
   const pageUrl = canonicalUrl;
 
   // Parse keywords from comma-separated string to array (for <meta name="keywords">)
-  const keywordsString = routeFields?.metadataKeywords?.value?.toString() || '';
+  const keywordsString = useNwnValue(
+    routeFields?.metadataKeywords?.value?.toString(),
+  );
   const keywords = keywordsString
     ? keywordsString.split(',').map((k: string) => k.trim())
-    : [];
+    : isHome
+      ? DEFAULT_KEYWORDS
+      : [];
 
   const metadataAuthor =
-    routeFields?.metadataAuthor?.value?.toString() || 'Sitecore';
+    useNwnValue(routeFields?.metadataAuthor?.value?.toString()) || 'NW Natural';
 
   return {
     title: metadataTitle,
@@ -230,7 +302,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
       description: ogDescription,
       url: pageUrl,
       type: 'website',
-      siteName: site || 'Alaris',
+      siteName: 'NW Natural',
       locale: locale || 'en',
       images: ogImageUrl
         ? [

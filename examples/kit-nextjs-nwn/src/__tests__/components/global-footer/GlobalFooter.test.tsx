@@ -7,6 +7,7 @@ import {
   BlackLargeVariant,
   BlueCenteredVariant,
   BlueCompactVariant,
+  Nwn as GlobalFooterNwn,
 } from '@/components/global-footer/GlobalFooter';
 import { mockGlobalFooterProps } from './global-footer.mock.props';
 import { Page } from '@sitecore-content-sdk/nextjs';
@@ -54,7 +55,11 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
   Text: ({ field, tag = 'span', className }: Record<string, unknown>) => {
     const TextTag = tag as keyof JSX.IntrinsicElements;
     const fieldValue = (field as { value?: string })?.value || '';
-    return React.createElement(TextTag, { className: className as string }, fieldValue);
+    return React.createElement(
+      TextTag,
+      { className: className as string },
+      fieldValue,
+    );
   },
   Link: ({ field }: Record<string, unknown>) => {
     const linkField = field as { value?: { text?: string; href?: string } };
@@ -84,41 +89,59 @@ jest.mock('@/variables/dictionary', () => ({
 
 // Mock child components
 jest.mock('@/components/global-footer/GlobalFooterDefault.dev', () => ({
-  GlobalFooterDefault: jest.fn(({ isPageEditing }: { isPageEditing: boolean }) => (
-    <div data-testid="global-footer-default">
-      Default Footer - {isPageEditing ? 'Editing' : 'Normal'}
-    </div>
-  )),
+  GlobalFooterDefault: jest.fn(
+    ({ isPageEditing }: { isPageEditing: boolean }) => (
+      <div data-testid="global-footer-default">
+        Default Footer - {isPageEditing ? 'Editing' : 'Normal'}
+      </div>
+    ),
+  ),
 }));
 
 jest.mock('@/components/global-footer/GlobalFooterBlackCompact.dev', () => ({
-  GlobalFooterBlackCompact: jest.fn(({ isPageEditing }: { isPageEditing: boolean }) => (
-    <div data-testid="global-footer-black-compact">
-      Black Compact Footer - {isPageEditing ? 'Editing' : 'Normal'}
-    </div>
-  )),
+  GlobalFooterBlackCompact: jest.fn(
+    ({ isPageEditing }: { isPageEditing: boolean }) => (
+      <div data-testid="global-footer-black-compact">
+        Black Compact Footer - {isPageEditing ? 'Editing' : 'Normal'}
+      </div>
+    ),
+  ),
 }));
 
 jest.mock('@/components/global-footer/GlobalFooterBlackLarge.dev', () => ({
-  GlobalFooterBlackLarge: jest.fn(({ isPageEditing }: { isPageEditing: boolean }) => (
-    <div data-testid="global-footer-black-large">
-      Black Large Footer - {isPageEditing ? 'Editing' : 'Normal'}
-    </div>
-  )),
+  GlobalFooterBlackLarge: jest.fn(
+    ({ isPageEditing }: { isPageEditing: boolean }) => (
+      <div data-testid="global-footer-black-large">
+        Black Large Footer - {isPageEditing ? 'Editing' : 'Normal'}
+      </div>
+    ),
+  ),
 }));
 
 jest.mock('@/components/global-footer/GlobalFooterBlueCentered.dev', () => ({
-  GlobalFooterBlueCentered: jest.fn(({ isPageEditing }: { isPageEditing: boolean }) => (
-    <div data-testid="global-footer-blue-centered">
-      Blue Centered Footer - {isPageEditing ? 'Editing' : 'Normal'}
-    </div>
-  )),
+  GlobalFooterBlueCentered: jest.fn(
+    ({ isPageEditing }: { isPageEditing: boolean }) => (
+      <div data-testid="global-footer-blue-centered">
+        Blue Centered Footer - {isPageEditing ? 'Editing' : 'Normal'}
+      </div>
+    ),
+  ),
 }));
 
 jest.mock('@/components/global-footer/GlobalFooterBlueCompact.dev', () => ({
-  GlobalFooterBlueCompact: jest.fn(({ isPageEditing }: { isPageEditing: boolean }) => (
-    <div data-testid="global-footer-blue-compact">
-      Blue Compact Footer - {isPageEditing ? 'Editing' : 'Normal'}
+  GlobalFooterBlueCompact: jest.fn(
+    ({ isPageEditing }: { isPageEditing: boolean }) => (
+      <div data-testid="global-footer-blue-compact">
+        Blue Compact Footer - {isPageEditing ? 'Editing' : 'Normal'}
+      </div>
+    ),
+  ),
+}));
+
+jest.mock('@/components/global-footer/GlobalFooterNwn.dev', () => ({
+  GlobalFooterNwn: jest.fn(({ isPageEditing }: { isPageEditing: boolean }) => (
+    <div data-testid="global-footer-nwn">
+      NW Natural Footer - {isPageEditing ? 'Editing' : 'Normal'}
     </div>
   )),
 }));
@@ -126,6 +149,16 @@ jest.mock('@/components/global-footer/GlobalFooterBlueCompact.dev', () => ({
 describe('GlobalFooter Component', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  describe('NW Natural Variant', () => {
+    it('renders the NW Natural footer', () => {
+      render(<GlobalFooterNwn {...mockGlobalFooterProps} />);
+      expect(screen.getByTestId('global-footer-nwn')).toBeInTheDocument();
+      expect(
+        screen.getByText(/NW Natural Footer - Normal/),
+      ).toBeInTheDocument();
+    });
   });
 
   describe('Default Variant', () => {
@@ -136,7 +169,7 @@ describe('GlobalFooter Component', () => {
 
     it('renders the default footer variant', () => {
       render(<GlobalFooter {...mockGlobalFooterProps} />);
-      expect(screen.getByTestId('global-footer-default')).toBeInTheDocument();
+      expect(screen.getByTestId('global-footer-nwn')).toBeInTheDocument();
     });
 
     it('passes isPageEditing prop correctly in normal mode', () => {
@@ -146,20 +179,19 @@ describe('GlobalFooter Component', () => {
 
     it('passes isPageEditing prop correctly in editing mode', () => {
       render(
-        <GlobalFooter
-          {...mockGlobalFooterProps}
-          page={mockPageEditing}
-        />
+        <GlobalFooter {...mockGlobalFooterProps} page={mockPageEditing} />,
       );
       expect(screen.getByText(/Editing/)).toBeInTheDocument();
     });
 
     it('adds dictionary to props', () => {
       // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const { GlobalFooterDefault } = require('@/components/global-footer/GlobalFooterDefault.dev');
+      const {
+        GlobalFooterNwn,
+      } = require('@/components/global-footer/GlobalFooterNwn.dev');
       render(<GlobalFooter {...mockGlobalFooterProps} />);
 
-      const callArgs = GlobalFooterDefault.mock.calls[0][0];
+      const callArgs = GlobalFooterNwn.mock.calls[0][0];
       expect(callArgs.fields.dictionary).toEqual({
         FOOTER_EmailSubmitLabel: 'FOOTER_EmailSubmitLabel',
         FOOTER_EmailPlaceholder: 'FOOTER_EmailPlaceholder',
@@ -171,13 +203,15 @@ describe('GlobalFooter Component', () => {
 
   describe('BlackCompactVariant', () => {
     it('renders without crashing', () => {
-      const { container } = render(<BlackCompactVariant {...mockGlobalFooterProps} />);
+      const { container } = render(
+        <BlackCompactVariant {...mockGlobalFooterProps} />,
+      );
       expect(container).toBeInTheDocument();
     });
 
     it('renders the black compact footer variant', () => {
       render(<BlackCompactVariant {...mockGlobalFooterProps} />);
-      expect(screen.getByTestId('global-footer-black-compact')).toBeInTheDocument();
+      expect(screen.getByTestId('global-footer-nwn')).toBeInTheDocument();
     });
 
     it('passes isPageEditing prop correctly', () => {
@@ -185,7 +219,7 @@ describe('GlobalFooter Component', () => {
         <BlackCompactVariant
           {...mockGlobalFooterProps}
           page={mockPageEditing}
-        />
+        />,
       );
       expect(screen.getByText(/Editing/)).toBeInTheDocument();
     });
@@ -193,13 +227,15 @@ describe('GlobalFooter Component', () => {
 
   describe('BlackLargeVariant', () => {
     it('renders without crashing', () => {
-      const { container } = render(<BlackLargeVariant {...mockGlobalFooterProps} />);
+      const { container } = render(
+        <BlackLargeVariant {...mockGlobalFooterProps} />,
+      );
       expect(container).toBeInTheDocument();
     });
 
     it('renders the black large footer variant', () => {
       render(<BlackLargeVariant {...mockGlobalFooterProps} />);
-      expect(screen.getByTestId('global-footer-black-large')).toBeInTheDocument();
+      expect(screen.getByTestId('global-footer-nwn')).toBeInTheDocument();
     });
 
     it('passes isPageEditing prop correctly', () => {
@@ -232,23 +268,25 @@ describe('GlobalFooter Component', () => {
 
   describe('BlueCenteredVariant', () => {
     it('renders without crashing', () => {
-      const { container } = render(<BlueCenteredVariant {...mockGlobalFooterProps} />);
+      const { container } = render(
+        <BlueCenteredVariant {...mockGlobalFooterProps} />,
+      );
       expect(container).toBeInTheDocument();
     });
 
     it('renders the blue centered footer variant', () => {
       render(<BlueCenteredVariant {...mockGlobalFooterProps} />);
-      expect(screen.getByTestId('global-footer-blue-centered')).toBeInTheDocument();
+      expect(screen.getByTestId('global-footer-nwn')).toBeInTheDocument();
     });
 
     it('adds dictionary translations to props', () => {
       const {
-        GlobalFooterBlueCentered,
+        GlobalFooterNwn,
         // eslint-disable-next-line @typescript-eslint/no-require-imports
-      } = require('@/components/global-footer/GlobalFooterBlueCentered.dev');
+      } = require('@/components/global-footer/GlobalFooterNwn.dev');
       render(<BlueCenteredVariant {...mockGlobalFooterProps} />);
 
-      const callArgs = GlobalFooterBlueCentered.mock.calls[0][0];
+      const callArgs = GlobalFooterNwn.mock.calls[0][0];
       expect(callArgs.fields.dictionary).toBeDefined();
       expect(typeof callArgs.fields.dictionary).toBe('object');
     });
@@ -256,13 +294,15 @@ describe('GlobalFooter Component', () => {
 
   describe('BlueCompactVariant', () => {
     it('renders without crashing', () => {
-      const { container } = render(<BlueCompactVariant {...mockGlobalFooterProps} />);
+      const { container } = render(
+        <BlueCompactVariant {...mockGlobalFooterProps} />,
+      );
       expect(container).toBeInTheDocument();
     });
 
     it('renders the blue compact footer variant', () => {
       render(<BlueCompactVariant {...mockGlobalFooterProps} />);
-      expect(screen.getByTestId('global-footer-blue-compact')).toBeInTheDocument();
+      expect(screen.getByTestId('global-footer-nwn')).toBeInTheDocument();
     });
 
     it('passes isPageEditing prop correctly', () => {
@@ -270,7 +310,7 @@ describe('GlobalFooter Component', () => {
         <BlueCompactVariant
           {...mockGlobalFooterProps}
           page={mockPageEditing}
-        />
+        />,
       );
       expect(screen.getByText(/Editing/)).toBeInTheDocument();
     });
@@ -300,10 +340,12 @@ describe('GlobalFooter Component', () => {
       useTranslations.mockReturnValue(mockT);
 
       // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const { GlobalFooterDefault } = require('@/components/global-footer/GlobalFooterDefault.dev');
+      const {
+        GlobalFooterNwn,
+      } = require('@/components/global-footer/GlobalFooterNwn.dev');
       render(<GlobalFooter {...mockGlobalFooterProps} />);
 
-      const callArgs = GlobalFooterDefault.mock.calls[0][0];
+      const callArgs = GlobalFooterNwn.mock.calls[0][0];
       expect(callArgs.fields.dictionary).toEqual({
         FOOTER_EmailSubmitLabel: 'translated_FOOTER_EmailSubmitLabel',
         FOOTER_EmailPlaceholder: 'translated_FOOTER_EmailPlaceholder',
@@ -328,7 +370,9 @@ describe('GlobalFooter Component', () => {
         },
       };
 
-      expect(() => render(<GlobalFooter {...propsWithoutFields} />)).not.toThrow();
+      expect(() =>
+        render(<GlobalFooter {...propsWithoutFields} />),
+      ).not.toThrow();
     });
 
     it('renders all variants without errors', () => {

@@ -12,11 +12,18 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
 import { Default as FooterNavigationColumn } from './FooterNavigationColumn.dev';
 
-export const GlobalFooterBlueCentered: React.FC<GlobalFooterProps> = (props) => {
+export const GlobalFooterBlueCentered: React.FC<GlobalFooterProps> = (
+  props,
+) => {
   const { fields, isPageEditing } = props;
   const { dictionary } = fields;
-  const { footerNavLinks, footerCopyright, socialLinks, tagline, emailSubscriptionTitle } =
-    fields.data.datasource ?? {};
+  const {
+    footerNavLinks,
+    footerCopyright,
+    socialLinks,
+    tagline,
+    emailSubscriptionTitle,
+  } = fields.data.datasource ?? {};
 
   const footerRef = useRef<HTMLDivElement>(null);
 
@@ -28,10 +35,13 @@ export const GlobalFooterBlueCentered: React.FC<GlobalFooterProps> = (props) => 
         role="contentinfo"
       >
         {/* Background logo - semi-transparent */}
-        <div className="pointer-events-none absolute inset-0 z-0 opacity-90" aria-hidden="true">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 opacity-90"
+          aria-hidden="true"
+        >
           <div className="flex h-full w-full items-center justify-center leading-none">
             <div className="bg-primary-gradient text-fill-transparent text-50-clamp bg-clip-text font-bold leading-none text-transparent">
-              Alaris
+              NW Natural
             </div>
           </div>
         </div>

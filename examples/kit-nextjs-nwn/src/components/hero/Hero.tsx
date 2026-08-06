@@ -7,12 +7,27 @@ import { HeroImageBottom } from './HeroImageBottom.dev';
 import { HeroImageBottomInset } from './HeroImageBottomInset.dev';
 import { HeroImageBackground } from './HeroImageBackground.dev';
 import { HeroImageRight } from './HeroImageRight.dev';
+import { HeroNwnHome } from './HeroNwnHome.dev';
 import { useTranslations } from 'next-intl';
 import { dictionaryKeys } from '@/variables/dictionary';
 // Data source checks are done in the child components
 
 // Default display of the component
 export const Default: React.FC<HeroProps> = (props) => {
+  const { isEditing } = props.page.mode;
+  const t = useTranslations();
+  const dictionary = {
+    SubmitCTALabel: t(dictionaryKeys.HERO_SubmitCTALabel) || '',
+    ZipPlaceholder: t(dictionaryKeys.HERO_ZipPlaceholder) || '',
+  };
+  if (props.fields) {
+    props.fields.dictionary = dictionary;
+  }
+
+  return <HeroNwnHome {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterDefault: React.FC<HeroProps> = (props) => {
   const { isEditing } = props.page.mode;
   const t = useTranslations();
   const dictionary = {
@@ -38,7 +53,7 @@ export const ImageBottom: React.FC<HeroProps> = (props) => {
     props.fields.dictionary = dictionary;
   }
 
-  return <HeroImageBottom {...props} isPageEditing={isEditing} />;
+  return <HeroNwnHome {...props} isPageEditing={isEditing} />;
 };
 
 export const ImageBottomInset: React.FC<HeroProps> = (props) => {
@@ -52,7 +67,7 @@ export const ImageBottomInset: React.FC<HeroProps> = (props) => {
     props.fields.dictionary = dictionary;
   }
 
-  return <HeroImageBottomInset {...props} isPageEditing={isEditing} />;
+  return <HeroNwnHome {...props} isPageEditing={isEditing} />;
 };
 
 export const ImageBackground: React.FC<HeroProps> = (props) => {
@@ -66,7 +81,7 @@ export const ImageBackground: React.FC<HeroProps> = (props) => {
     props.fields.dictionary = dictionary;
   }
 
-  return <HeroImageBackground {...props} isPageEditing={isEditing} />;
+  return <HeroNwnHome {...props} isPageEditing={isEditing} />;
 };
 
 export const ImageRight: React.FC<HeroProps> = (props) => {
@@ -79,5 +94,31 @@ export const ImageRight: React.FC<HeroProps> = (props) => {
   if (props.fields) {
     props.fields.dictionary = dictionary;
   }
+  return <HeroNwnHome {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterImageBottom: React.FC<HeroProps> = (props) => {
+  const { isEditing } = props.page.mode;
+  return <HeroImageBottom {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterImageBottomInset: React.FC<HeroProps> = (props) => {
+  const { isEditing } = props.page.mode;
+  return <HeroImageBottomInset {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterImageBackground: React.FC<HeroProps> = (props) => {
+  const { isEditing } = props.page.mode;
+  return <HeroImageBackground {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterImageRight: React.FC<HeroProps> = (props) => {
+  const { isEditing } = props.page.mode;
   return <HeroImageRight {...props} isPageEditing={isEditing} />;
+};
+
+export const NwnHome: React.FC<HeroProps> = (props) => {
+  const { isEditing } = props.page.mode;
+
+  return <HeroNwnHome {...props} isPageEditing={isEditing} />;
 };

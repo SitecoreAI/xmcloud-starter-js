@@ -14,6 +14,8 @@ import { getDatasource, getFieldValue } from '@/lib/component-props';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { MultiPromoItemProps, MultiPromoProps } from './multi-promo.props';
 import { Default as MultiPromoItem } from './MultiPromoItem.dev';
+import { MultiPromoNwnQuickActions } from './MultiPromoNwnQuickActions.dev';
+import { MultiPromoNwnCards } from './MultiPromoNwnCards.dev';
 
 export const Default: React.FC<MultiPromoProps> = (props) => {
   const { fields, params } = props;
@@ -38,21 +40,27 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
     });
 
     // Add mousewheel event listener and keyboard event listener
-    const debouncedHandleWheel = debounce({ delay: 100 }, (event: WheelEvent) => {
-      if (event.deltaX > 0) {
-        api.scrollNext();
-      } else if (event.deltaX < 0) {
-        api.scrollPrev();
-      }
-    });
+    const debouncedHandleWheel = debounce(
+      { delay: 100 },
+      (event: WheelEvent) => {
+        if (event.deltaX > 0) {
+          api.scrollNext();
+        } else if (event.deltaX < 0) {
+          api.scrollPrev();
+        }
+      },
+    );
 
-    const debouncedHandleKeyDown = debounce({ delay: 100 }, (event: KeyboardEvent) => {
-      if (event.key === 'ArrowLeft') {
-        api?.scrollPrev();
-      } else if (event.key === 'ArrowRight') {
-        api?.scrollNext();
-      }
-    });
+    const debouncedHandleKeyDown = debounce(
+      { delay: 100 },
+      (event: KeyboardEvent) => {
+        if (event.key === 'ArrowLeft') {
+          api?.scrollPrev();
+        } else if (event.key === 'ArrowRight') {
+          api?.scrollNext();
+        }
+      },
+    );
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
@@ -118,20 +126,22 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
               ref={carouselRef}
             >
               <CarouselContent className="my-12 last:mb-0 sm:my-16 sm:-ml-8">
-                {children?.results?.map((item: MultiPromoItemProps, index: number) => (
-                  <CarouselItem
-                    key={index}
-                    className={cn(
-                      'min-w-[238px] max-w-[416px] basis-3/4 pl-4 transition-opacity duration-300 sm:basis-[45%] sm:pl-8 md:basis-[31%]',
-                      {
-                        [`lg:basis-[31%]`]: numColumns === '3',
-                        [`xl:basis-[23%]`]: numColumns === '4',
-                      }
-                    )}
-                  >
-                    <MultiPromoItem key={index} {...item} page={props.page} />
-                  </CarouselItem>
-                ))}
+                {children?.results?.map(
+                  (item: MultiPromoItemProps, index: number) => (
+                    <CarouselItem
+                      key={index}
+                      className={cn(
+                        'min-w-[238px] max-w-[416px] basis-3/4 pl-4 transition-opacity duration-300 sm:basis-[45%] sm:pl-8 md:basis-[31%]',
+                        {
+                          [`lg:basis-[31%]`]: numColumns === '3',
+                          [`xl:basis-[23%]`]: numColumns === '4',
+                        },
+                      )}
+                    >
+                      <MultiPromoItem key={index} {...item} page={props.page} />
+                    </CarouselItem>
+                  ),
+                )}
               </CarouselContent>
             </Carousel>
             <div className="sr-only" aria-live="polite" aria-atomic="true">
@@ -145,3 +155,16 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
 
   return <NoDataFallback componentName="Multi Promo" />;
 };
+
+export const NwnQuickActions: React.FC<MultiPromoProps> = (props) => (
+  <MultiPromoNwnQuickActions {...props} />
+);
+
+export const NwnCards: React.FC<MultiPromoProps> = (props) => (
+  <MultiPromoNwnCards {...props} />
+);
+
+// Alias retained for the site-scoped Sitecore variant created for resource cards.
+export const NwnResources: React.FC<MultiPromoProps> = (props) => (
+  <MultiPromoNwnCards {...props} />
+);

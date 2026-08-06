@@ -16,8 +16,13 @@ import { useContainerQuery } from '@/hooks/use-container-query';
 export const GlobalFooterBlackLarge: React.FC<GlobalFooterProps> = (props) => {
   const { fields, isPageEditing } = props;
   const { dictionary } = fields;
-  const { footerNavLinks, footerCopyright, socialLinks, tagline, emailSubscriptionTitle } =
-    fields.data.datasource ?? {};
+  const {
+    footerNavLinks,
+    footerCopyright,
+    socialLinks,
+    tagline,
+    emailSubscriptionTitle,
+  } = fields.data.datasource ?? {};
   const footerRef = useRef<HTMLDivElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const socialContainerRef = useRef<HTMLDivElement>(null);
@@ -77,14 +82,17 @@ export const GlobalFooterBlackLarge: React.FC<GlobalFooterProps> = (props) => {
                 >
                   <div className="@md:justify-end flex h-full w-full items-end justify-center leading-none">
                     <div className="bg-dark-gradient text-fill-transparent text-50-clamp @md:-mb-[130px] -mb-[85px] bg-clip-text text-center font-bold leading-none text-transparent">
-                      Alaris
+                      NW Natural
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Right section with navigation links - using vertical AnimatedHoverNav */}
-              <div className="@md:items-end flex flex-col gap-2 text-right" ref={navContainerRef}>
+              <div
+                className="@md:items-end flex flex-col gap-2 text-right"
+                ref={navContainerRef}
+              >
                 <FooterNavigationColumn
                   items={footerNavLinks?.results}
                   isPageEditing={isPageEditing}

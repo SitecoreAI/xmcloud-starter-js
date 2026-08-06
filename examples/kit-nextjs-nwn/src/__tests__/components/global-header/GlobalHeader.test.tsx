@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import {
   Default as GlobalHeader,
   Centered as GlobalHeaderCentered,
+  Nwn as GlobalHeaderNwn,
 } from '@/components/global-header/GlobalHeader';
 import { mockGlobalHeaderProps } from './global-header.mock.props';
 import { Page } from '@sitecore-content-sdk/nextjs';
@@ -38,6 +39,14 @@ jest.mock('@/components/global-header/GlobalHeaderCentered.dev', () => ({
   ),
 }));
 
+jest.mock('@/components/global-header/GlobalHeaderNwn.dev', () => ({
+  GlobalHeaderNwn: ({ isPageEditing }: { isPageEditing: boolean }) => (
+    <header data-testid="global-header-nwn">
+      GlobalHeaderNwn - {isPageEditing ? 'Editing' : 'Normal'}
+    </header>
+  ),
+}));
+
 describe('GlobalHeader Component', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -45,7 +54,7 @@ describe('GlobalHeader Component', () => {
 
   it('renders the default variant without crashing', () => {
     render(<GlobalHeader {...mockGlobalHeaderProps} />);
-    expect(screen.getByTestId('global-header-default')).toBeInTheDocument();
+    expect(screen.getByTestId('global-header-nwn')).toBeInTheDocument();
     expect(screen.getByText(/Normal/)).toBeInTheDocument();
   });
 
@@ -68,17 +77,18 @@ describe('GlobalHeader Component', () => {
       locale: 'en',
     } as Page;
 
-    render(
-      <GlobalHeader
-        {...mockGlobalHeaderProps}
-        page={mockPageEditing}
-      />
-    );
+    render(<GlobalHeader {...mockGlobalHeaderProps} page={mockPageEditing} />);
     expect(screen.getByText(/Editing/)).toBeInTheDocument();
   });
 
   it('renders the centered variant correctly', () => {
     render(<GlobalHeaderCentered {...mockGlobalHeaderProps} />);
-    expect(screen.getByTestId('global-header-centered')).toBeInTheDocument();
+    expect(screen.getByTestId('global-header-nwn')).toBeInTheDocument();
+  });
+
+  it('renders the NW Natural variant correctly', () => {
+    render(<GlobalHeaderNwn {...mockGlobalHeaderProps} />);
+    expect(screen.getByTestId('global-header-nwn')).toBeInTheDocument();
+    expect(screen.getByText(/GlobalHeaderNwn - Normal/)).toBeInTheDocument();
   });
 });

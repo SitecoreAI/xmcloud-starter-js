@@ -5,6 +5,7 @@ import {
   Default as ProductListing,
   ThreeUp,
   Slider,
+  NwnResources,
 } from '@/components/product-listing/ProductListing';
 import { mockProductListingProps } from './product-listing.mock.props';
 
@@ -46,22 +47,52 @@ jest.mock('@/components/product-listing/ProductListingSlider.dev', () => ({
   ),
 }));
 
+jest.mock(
+  '@/components/product-listing/ProductListingNwnResources.dev',
+  () => ({
+    ProductListingNwnResources: ({
+      isPageEditing,
+    }: {
+      isPageEditing: boolean;
+    }) => (
+      <section data-testid="product-listing-nwn-resources">
+        ProductListingNwnResources - {isPageEditing ? 'Editing' : 'Normal'}
+      </section>
+    ),
+  }),
+);
+
 describe('ProductListing', () => {
   it('renders Default variant correctly', () => {
     render(<ProductListing {...mockProductListingProps} />);
-    expect(screen.getByTestId('product-listing-default')).toBeInTheDocument();
-    expect(screen.getByText(/ProductListingDefault - Normal/)).toBeInTheDocument();
+    expect(
+      screen.getByTestId('product-listing-nwn-resources'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/ProductListingNwnResources - Normal/),
+    ).toBeInTheDocument();
   });
 
   it('renders ThreeUp variant correctly', () => {
     render(<ThreeUp {...mockProductListingProps} />);
     expect(screen.getByTestId('product-listing-three-up')).toBeInTheDocument();
-    expect(screen.getByText(/ProductListingThreeUp - Normal/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/ProductListingThreeUp - Normal/),
+    ).toBeInTheDocument();
   });
 
   it('renders Slider variant correctly', () => {
     render(<Slider {...mockProductListingProps} />);
     expect(screen.getByTestId('product-listing-slider')).toBeInTheDocument();
-    expect(screen.getByText(/ProductListingSlider - Normal/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/ProductListingSlider - Normal/),
+    ).toBeInTheDocument();
+  });
+
+  it('renders the named NW Natural resources variant correctly', () => {
+    render(<NwnResources {...mockProductListingProps} />);
+    expect(
+      screen.getByTestId('product-listing-nwn-resources'),
+    ).toBeInTheDocument();
   });
 });

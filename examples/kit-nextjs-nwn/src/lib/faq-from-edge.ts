@@ -1,5 +1,10 @@
 import scConfig from 'sitecore.config';
 import client from '@/lib/sitecore-client';
+import { buildSiteDataPath } from '@/lib/site-path';
+import {
+  containsLegacyStarterContent,
+  NWN_FAQ_ITEMS,
+} from '@/lib/nwn-ai-content';
 
 const FAQ_GRAPHQL_TYPE = 'AIFAQItem';
 const FAQ_DATA_PATH_SUFFIX = '/Data/AI Config/FAQ';
@@ -62,38 +67,53 @@ function buildFaqQuery(fragmentType: string): string {
 }
 
 function buildFaqPath(): string {
-  const siteName = scConfig.defaultSite || process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || '';
+  const siteName =
+    scConfig.defaultSite || process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || '';
   if (!siteName) return '';
-  return `/sitecore/content/alaris/${siteName}${FAQ_DATA_PATH_SUFFIX}`;
+  return buildSiteDataPath(siteName, FAQ_DATA_PATH_SUFFIX);
 }
 
 export async function fetchFaqFromEdge(): Promise<FaqEdgeResult> {
   const path = buildFaqPath();
-  if (!path) return { items: [], lastModified: new Date().toISOString() };
+  if (!path)
+    return {
+      items: [...NWN_FAQ_ITEMS],
+      lastModified: new Date().toISOString(),
+    };
 
   const language = scConfig.defaultLanguage || 'en';
 
   try {
     const result = await client.getData<FaqQueryResult>(
       buildFaqQuery(FAQ_GRAPHQL_TYPE),
-      { path, language }
+      { path, language },
     );
 
-    const items = (result?.item?.children?.results ?? [])
+    const authoredItems = (result?.item?.children?.results ?? [])
       .map((child) => ({
         question: extractFieldValue(child?.question),
         answer: extractFieldValue(child?.answer),
       }))
       .filter((item) => item.question && item.answer);
 
+    const items =
+      authoredItems.length > 0 && !containsLegacyStarterContent(authoredItems)
+        ? authoredItems
+        : [...NWN_FAQ_ITEMS];
+
     const lastModified =
       extractFieldValue(
-        result?.item?.updated ? { jsonValue: result.item.updated.jsonValue } : undefined
+        result?.item?.updated
+          ? { jsonValue: result.item.updated.jsonValue }
+          : undefined,
       ) || new Date().toISOString();
 
     return { items, lastModified };
   } catch (error) {
     console.error('[fetchFaqFromEdge] GraphQL request failed:', error);
-    return { items: [], lastModified: new Date().toISOString() };
+    return {
+      items: [...NWN_FAQ_ITEMS],
+      lastModified: new Date().toISOString(),
+    };
   }
 }

@@ -13,11 +13,18 @@ import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
 import { Default as FooterNavigationColumn } from './FooterNavigationColumn.dev';
 import { useContainerQuery } from '@/hooks/use-container-query';
 
-export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (props) => {
+export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (
+  props,
+) => {
   const { fields, isPageEditing } = props;
   const { dictionary } = fields;
-  const { footerNavLinks, footerCopyright, socialLinks, tagline, emailSubscriptionTitle } =
-    fields.data.datasource ?? {};
+  const {
+    footerNavLinks,
+    footerCopyright,
+    socialLinks,
+    tagline,
+    emailSubscriptionTitle,
+  } = fields.data.datasource ?? {};
 
   const footerRef = useRef<HTMLDivElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
@@ -39,7 +46,7 @@ export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (props) => 
           >
             <div className="@md:justify-end   flex h-full w-full items-end justify-center leading-none">
               <div className="bg-dark-gradient text-fill-transparent text-50-clamp bg-clip-text text-center font-bold leading-none text-transparent">
-                Alaris
+                NW Natural
               </div>
             </div>
           </div>
@@ -85,7 +92,10 @@ export const GlobalFooterBlackCompact: React.FC<GlobalFooterProps> = (props) => 
               </div>
 
               {/* Right section with navigation links - using vertical AnimatedHoverNav */}
-              <div className="@md:items-end flex flex-col gap-2 text-right" ref={navContainerRef}>
+              <div
+                className="@md:items-end flex flex-col gap-2 text-right"
+                ref={navContainerRef}
+              >
                 <FooterNavigationColumn
                   items={footerNavLinks?.results}
                   isPageEditing={isPageEditing}

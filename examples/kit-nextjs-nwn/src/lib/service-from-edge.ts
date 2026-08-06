@@ -1,5 +1,10 @@
 import scConfig from 'sitecore.config';
 import client from '@/lib/sitecore-client';
+import { buildSiteDataPath } from '@/lib/site-path';
+import {
+  containsLegacyStarterContent,
+  NWN_SERVICE_ITEMS,
+} from '@/lib/nwn-ai-content';
 
 const SERVICE_GRAPHQL_TYPE = 'AIService';
 const SERVICE_DATA_PATH_SUFFIX = '/Data/AI Config/Services';
@@ -65,24 +70,29 @@ function buildServiceQuery(fragmentType: string): string {
 }
 
 function buildServicePath(): string {
-  const siteName = scConfig.defaultSite || process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || '';
+  const siteName =
+    scConfig.defaultSite || process.env.NEXT_PUBLIC_DEFAULT_SITE_NAME || '';
   if (!siteName) return '';
-  return `/sitecore/content/alaris/${siteName}${SERVICE_DATA_PATH_SUFFIX}`;
+  return buildSiteDataPath(siteName, SERVICE_DATA_PATH_SUFFIX);
 }
 
 export async function fetchServicesFromEdge(): Promise<ServiceEdgeResult> {
   const path = buildServicePath();
-  if (!path) return { services: [], lastModified: new Date().toISOString() };
+  if (!path)
+    return {
+      services: [...NWN_SERVICE_ITEMS],
+      lastModified: new Date().toISOString(),
+    };
 
   const language = scConfig.defaultLanguage || 'en';
 
   try {
     const result = await client.getData<ServiceQueryResult>(
       buildServiceQuery(SERVICE_GRAPHQL_TYPE),
-      { path, language }
+      { path, language },
     );
 
-    const services = (result?.item?.children?.results ?? [])
+    const authoredServices = (result?.item?.children?.results ?? [])
       .map((child) => ({
         name: extractFieldValue(child?.serviceName),
         description: extractFieldValue(child?.description),
@@ -90,14 +100,25 @@ export async function fetchServicesFromEdge(): Promise<ServiceEdgeResult> {
       }))
       .filter((item) => item.name && item.description);
 
+    const services =
+      authoredServices.length > 0 &&
+      !containsLegacyStarterContent(authoredServices)
+        ? authoredServices
+        : [...NWN_SERVICE_ITEMS];
+
     const lastModified =
       extractFieldValue(
-        result?.item?.updated ? { jsonValue: result.item.updated.jsonValue } : undefined
+        result?.item?.updated
+          ? { jsonValue: result.item.updated.jsonValue }
+          : undefined,
       ) || new Date().toISOString();
 
     return { services, lastModified };
   } catch (error) {
     console.error('[fetchServicesFromEdge] GraphQL request failed:', error);
-    return { services: [], lastModified: new Date().toISOString() };
+    return {
+      services: [...NWN_SERVICE_ITEMS],
+      lastModified: new Date().toISOString(),
+    };
   }
 }

@@ -55,6 +55,28 @@ describe('CtaBanner Component', () => {
     expect(screen.getByText('CTA Description')).toBeInTheDocument();
     expect(screen.getByText('Click Here')).toBeInTheDocument();
     expect(screen.getByRole('link')).toHaveAttribute('href', '/cta-link');
+    expect(screen.getByText('CTA Title').closest('section')).toHaveClass(
+      'nwn-cta-banner',
+      'bg-primary',
+    );
+    expect(
+      screen.getByText('CTA Title').closest('.nwn-content-shell'),
+    ).toBeInTheDocument();
+  });
+
+  it('uses the NW Natural primary treatment when Sitecore has no color scheme parameter', () => {
+    const propsWithoutColorScheme = {
+      ...mockProps,
+      params: {},
+    };
+
+    render(<CtaBanner {...propsWithoutColorScheme} />);
+
+    expect(screen.getByText('CTA Title').closest('section')).toHaveClass(
+      'nwn-cta-banner',
+      'bg-primary',
+      'text-primary-foreground',
+    );
   });
 
   it('renders fallback when no fields are provided', () => {

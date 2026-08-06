@@ -1,6 +1,10 @@
 // Below are built-in components that are available in the app, it's recommended to keep them as is
 
-import { BYOCServerWrapper, NextjsContentSdkComponent, FEaaSServerWrapper } from '@sitecore-content-sdk/nextjs';
+import {
+  BYOCServerWrapper,
+  NextjsContentSdkComponent,
+  FEaaSServerWrapper,
+} from '@sitecore-content-sdk/nextjs';
 import { Form } from '@sitecore-content-sdk/nextjs';
 
 // end of built-in components
@@ -13,6 +17,7 @@ import * as TopicListing from 'src/components/topic-listing/TopicListing';
 import * as TopicItemdev from 'src/components/topic-listing/TopicItem.dev';
 import * as themeproviderdev from 'src/components/theme-provider/theme-provider.dev';
 import * as TextBannerTextTopdev from 'src/components/text-banner/TextBannerTextTop.dev';
+import * as TextBannerNwnStorydev from 'src/components/text-banner/TextBannerNwnStory.dev';
 import * as TextBannerDefaultdev from 'src/components/text-banner/TextBannerDefault.dev';
 import * as TextBannerBlueTitleRightdev from 'src/components/text-banner/TextBannerBlueTitleRight.dev';
 import * as TextBanner02dev from 'src/components/text-banner/TextBanner02.dev';
@@ -52,22 +57,27 @@ import * as PromoImageDefaultdev from 'src/components/promo-image/PromoImageDefa
 import * as PromoImage from 'src/components/promo-image/PromoImage';
 import * as PromoBlock from 'src/components/promo-block/PromoBlock';
 import * as PromoAnimatedImageRightdev from 'src/components/promo-animated/PromoAnimatedImageRight.dev';
-import * as PromoAnimatedEmptyImageEditing from 'src/components/promo-animated/PromoAnimatedEmptyImageEditing';
 import * as PromoAnimatedDefaultdev from 'src/components/promo-animated/PromoAnimatedDefault.dev';
 import * as PromoAnimated from 'src/components/promo-animated/PromoAnimated';
 import * as ProductListingThreeUpdev from 'src/components/product-listing/ProductListingThreeUp.dev';
 import * as ProductListingSliderdev from 'src/components/product-listing/ProductListingSlider.dev';
+import * as ProductListingNwnResourcesdev from 'src/components/product-listing/ProductListingNwnResources.dev';
 import * as ProductListingDefaultdev from 'src/components/product-listing/ProductListingDefault.dev';
 import * as ProductListingCarddev from 'src/components/product-listing/ProductListingCard.dev';
 import * as ProductListing from 'src/components/product-listing/ProductListing';
+import * as PageHeaderNwnEditorialdev from 'src/components/page-header/PageHeaderNwnEditorial.dev';
 import * as PageHeaderFiftyFiftydev from 'src/components/page-header/PageHeaderFiftyFifty.dev';
 import * as PageHeaderDefaultdev from 'src/components/page-header/PageHeaderDefault.dev';
 import * as PageHeaderCentereddev from 'src/components/page-header/PageHeaderCentered.dev';
 import * as PageHeaderBlueTextdev from 'src/components/page-header/PageHeaderBlueText.dev';
 import * as PageHeaderBlueBackgrounddev from 'src/components/page-header/PageHeaderBlueBackground.dev';
 import * as PageHeader from 'src/components/page-header/PageHeader';
+import * as NwnUtilityAlert from 'src/components/nwn-utility-alert/NwnUtilityAlert';
+import * as NwnCardGrid from 'src/components/nwn-card-grid/NwnCardGrid';
 import * as MultiPromoTabs from 'src/components/multi-promo-tabs/MultiPromoTabs';
 import * as MultiPromoTabdev from 'src/components/multi-promo-tabs/MultiPromoTab.dev';
+import * as MultiPromoNwnQuickActionsdev from 'src/components/multi-promo/MultiPromoNwnQuickActions.dev';
+import * as MultiPromoNwnCardsdev from 'src/components/multi-promo/MultiPromoNwnCards.dev';
 import * as MultiPromoItemdev from 'src/components/multi-promo/MultiPromoItem.dev';
 import * as MultiPromo from 'src/components/multi-promo/MultiPromo';
 import * as modetoggledev from 'src/components/mode-toggle/mode-toggle.dev';
@@ -91,6 +101,7 @@ import * as ImageGallerydev from 'src/components/image-gallery/ImageGallery.dev'
 import * as ImageGallery from 'src/components/image-gallery/ImageGallery';
 import * as ImageCarouselThumbnailsdev from 'src/components/image-carousel/ImageCarouselThumbnails.dev';
 import * as ImageCarouselPreviewBelowdev from 'src/components/image-carousel/ImageCarouselPreviewBelow.dev';
+import * as ImageCarouselNwnResourcesdev from 'src/components/image-carousel/ImageCarouselNwnResources.dev';
 import * as ImageCarouselLeftRightPreviewdev from 'src/components/image-carousel/ImageCarouselLeftRightPreview.dev';
 import * as ImageCarouselFullBleeddev from 'src/components/image-carousel/ImageCarouselFullBleed.dev';
 import * as ImageCarouselFeaturedImageLeftdev from 'src/components/image-carousel/ImageCarouselFeaturedImageLeft.dev';
@@ -101,10 +112,16 @@ import * as nextImageSrcdev from 'src/components/image/nextImageSrc.dev';
 import * as ImageWrapperdev from 'src/components/image/ImageWrapper.dev';
 import * as ImageWrapperclient from 'src/components/image/ImageWrapper.client';
 import * as Icon from 'src/components/icon/Icon';
-import * as YoutubeIcondev from 'src/components/icon/svg/YoutubeIcon.dev';
-import * as TwitterIcondev from 'src/components/icon/svg/TwitterIcon.dev';
 import * as signaldev from 'src/components/icon/svg/signal.dev';
 import * as playdev from 'src/components/icon/svg/play.dev';
+import * as diversitydev from 'src/components/icon/svg/diversity.dev';
+import * as crossarrowsdev from 'src/components/icon/svg/cross-arrows.dev';
+import * as communitiesdev from 'src/components/icon/svg/communities.dev';
+import * as arrowuprightdev from 'src/components/icon/svg/arrow-up-right.dev';
+import * as arrowrightdev from 'src/components/icon/svg/arrow-right.dev';
+import * as arrowleftdev from 'src/components/icon/svg/arrow-left.dev';
+import * as YoutubeIcondev from 'src/components/icon/svg/YoutubeIcon.dev';
+import * as TwitterIcondev from 'src/components/icon/svg/TwitterIcon.dev';
 import * as LinkedInIcondev from 'src/components/icon/svg/LinkedInIcon.dev';
 import * as InternalIcondev from 'src/components/icon/svg/InternalIcon.dev';
 import * as InstagramIcondev from 'src/components/icon/svg/InstagramIcon.dev';
@@ -112,21 +129,18 @@ import * as FileIcondev from 'src/components/icon/svg/FileIcon.dev';
 import * as FacebookIcondev from 'src/components/icon/svg/FacebookIcon.dev';
 import * as ExternalIcondev from 'src/components/icon/svg/ExternalIcon.dev';
 import * as EmailIcondev from 'src/components/icon/svg/EmailIcon.dev';
-import * as diversitydev from 'src/components/icon/svg/diversity.dev';
-import * as crossarrowsdev from 'src/components/icon/svg/cross-arrows.dev';
-import * as communitiesdev from 'src/components/icon/svg/communities.dev';
-import * as arrowuprightdev from 'src/components/icon/svg/arrow-up-right.dev';
-import * as arrowrightdev from 'src/components/icon/svg/arrow-right.dev';
-import * as arrowleftdev from 'src/components/icon/svg/arrow-left.dev';
+import * as HeroNwnHomedev from 'src/components/hero/HeroNwnHome.dev';
 import * as HeroImageRightdev from 'src/components/hero/HeroImageRight.dev';
 import * as HeroImageBottomInsetdev from 'src/components/hero/HeroImageBottomInset.dev';
 import * as HeroImageBottomdev from 'src/components/hero/HeroImageBottom.dev';
 import * as HeroImageBackgrounddev from 'src/components/hero/HeroImageBackground.dev';
 import * as HeroDefaultdev from 'src/components/hero/HeroDefault.dev';
 import * as Hero from 'src/components/hero/Hero';
+import * as GlobalHeaderNwndev from 'src/components/global-header/GlobalHeaderNwn.dev';
 import * as GlobalHeaderDefaultdev from 'src/components/global-header/GlobalHeaderDefault.dev';
 import * as GlobalHeaderCentereddev from 'src/components/global-header/GlobalHeaderCentered.dev';
 import * as GlobalHeader from 'src/components/global-header/GlobalHeader';
+import * as GlobalFooterNwndev from 'src/components/global-footer/GlobalFooterNwn.dev';
 import * as GlobalFooterDefaultdev from 'src/components/global-footer/GlobalFooterDefault.dev';
 import * as GlobalFooterBlueCompactdev from 'src/components/global-footer/GlobalFooterBlueCompact.dev';
 import * as GlobalFooterBlueCentereddev from 'src/components/global-footer/GlobalFooterBlueCentered.dev';
@@ -179,11 +193,15 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['VideoPlayer', { ...VideoPlayerdev }],
   ['VideoModal', { ...VideoModaldev }],
   ['Video', { ...Video, componentType: 'client' }],
-  ['VerticalImageAccordion', { ...VerticalImageAccordion, componentType: 'client' }],
+  [
+    'VerticalImageAccordion',
+    { ...VerticalImageAccordion, componentType: 'client' },
+  ],
   ['TopicListing', { ...TopicListing }],
   ['TopicItem', { ...TopicItemdev }],
   ['theme-provider', { ...themeproviderdev }],
   ['TextBannerTextTop', { ...TextBannerTextTopdev }],
+  ['TextBannerNwnStory', { ...TextBannerNwnStorydev }],
   ['TextBannerDefault', { ...TextBannerDefaultdev }],
   ['TextBannerBlueTitleRight', { ...TextBannerBlueTitleRightdev }],
   ['TextBanner02', { ...TextBanner02dev }],
@@ -223,22 +241,27 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['PromoImage', { ...PromoImage, componentType: 'client' }],
   ['PromoBlock', { ...PromoBlock }],
   ['PromoAnimatedImageRight', { ...PromoAnimatedImageRightdev }],
-  ['PromoAnimatedEmptyImageEditing', { ...PromoAnimatedEmptyImageEditing }],
   ['PromoAnimatedDefault', { ...PromoAnimatedDefaultdev }],
   ['PromoAnimated', { ...PromoAnimated, componentType: 'client' }],
   ['ProductListingThreeUp', { ...ProductListingThreeUpdev }],
   ['ProductListingSlider', { ...ProductListingSliderdev }],
+  ['ProductListingNwnResources', { ...ProductListingNwnResourcesdev }],
   ['ProductListingDefault', { ...ProductListingDefaultdev }],
   ['ProductListingCard', { ...ProductListingCarddev }],
   ['ProductListing', { ...ProductListing, componentType: 'client' }],
+  ['PageHeaderNwnEditorial', { ...PageHeaderNwnEditorialdev }],
   ['PageHeaderFiftyFifty', { ...PageHeaderFiftyFiftydev }],
   ['PageHeaderDefault', { ...PageHeaderDefaultdev }],
   ['PageHeaderCentered', { ...PageHeaderCentereddev }],
   ['PageHeaderBlueText', { ...PageHeaderBlueTextdev }],
   ['PageHeaderBlueBackground', { ...PageHeaderBlueBackgrounddev }],
   ['PageHeader', { ...PageHeader, componentType: 'client' }],
+  ['NwnUtilityAlert', { ...NwnUtilityAlert, componentType: 'client' }],
+  ['NwnCardGrid', { ...NwnCardGrid }],
   ['MultiPromoTabs', { ...MultiPromoTabs, componentType: 'client' }],
   ['MultiPromoTab', { ...MultiPromoTabdev }],
+  ['MultiPromoNwnQuickActions', { ...MultiPromoNwnQuickActionsdev }],
+  ['MultiPromoNwnCards', { ...MultiPromoNwnCardsdev }],
   ['MultiPromoItem', { ...MultiPromoItemdev }],
   ['MultiPromo', { ...MultiPromo, componentType: 'client' }],
   ['mode-toggle', { ...modetoggledev }],
@@ -247,8 +270,14 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['LogoItem', { ...LogoItem }],
   ['Logo', { ...Logodev }],
   ['LocationSearchTitleZipCentered', { ...LocationSearchTitleZipCentereddev }],
-  ['LocationSearchMapTopAllCentered', { ...LocationSearchMapTopAllCentereddev }],
-  ['LocationSearchMapRightTitleZipCentered', { ...LocationSearchMapRightTitleZipCentereddev }],
+  [
+    'LocationSearchMapTopAllCentered',
+    { ...LocationSearchMapTopAllCentereddev },
+  ],
+  [
+    'LocationSearchMapRightTitleZipCentered',
+    { ...LocationSearchMapRightTitleZipCentereddev },
+  ],
   ['LocationSearchMapRight', { ...LocationSearchMapRightdev }],
   ['LocationSearchItem', { ...LocationSearchItemdev }],
   ['LocationSearchDefault', { ...LocationSearchDefaultdev }],
@@ -258,9 +287,13 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ImageGalleryGrid', { ...ImageGalleryGriddev }],
   ['ImageGalleryFiftyFifty', { ...ImageGalleryFiftyFiftydev }],
   ['ImageGalleryFeaturedImage', { ...ImageGalleryFeaturedImagedev }],
-  ['ImageGallery', { ...ImageGallerydev, ...ImageGallery, componentType: 'client' }],
+  [
+    'ImageGallery',
+    { ...ImageGallerydev, ...ImageGallery, componentType: 'client' },
+  ],
   ['ImageCarouselThumbnails', { ...ImageCarouselThumbnailsdev }],
   ['ImageCarouselPreviewBelow', { ...ImageCarouselPreviewBelowdev }],
+  ['ImageCarouselNwnResources', { ...ImageCarouselNwnResourcesdev }],
   ['ImageCarouselLeftRightPreview', { ...ImageCarouselLeftRightPreviewdev }],
   ['ImageCarouselFullBleed', { ...ImageCarouselFullBleeddev }],
   ['ImageCarouselFeaturedImageLeft', { ...ImageCarouselFeaturedImageLeftdev }],
@@ -270,10 +303,16 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['nextImageSrc', { ...nextImageSrcdev }],
   ['ImageWrapper', { ...ImageWrapperdev, ...ImageWrapperclient }],
   ['Icon', { ...Icon, componentType: 'client' }],
-  ['YoutubeIcon', { ...YoutubeIcondev }],
-  ['TwitterIcon', { ...TwitterIcondev }],
   ['signal', { ...signaldev }],
   ['play', { ...playdev }],
+  ['diversity', { ...diversitydev }],
+  ['cross-arrows', { ...crossarrowsdev }],
+  ['communities', { ...communitiesdev }],
+  ['arrow-up-right', { ...arrowuprightdev }],
+  ['arrow-right', { ...arrowrightdev }],
+  ['arrow-left', { ...arrowleftdev }],
+  ['YoutubeIcon', { ...YoutubeIcondev }],
+  ['TwitterIcon', { ...TwitterIcondev }],
   ['LinkedInIcon', { ...LinkedInIcondev }],
   ['InternalIcon', { ...InternalIcondev }],
   ['InstagramIcon', { ...InstagramIcondev }],
@@ -281,28 +320,32 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['FacebookIcon', { ...FacebookIcondev }],
   ['ExternalIcon', { ...ExternalIcondev }],
   ['EmailIcon', { ...EmailIcondev }],
-  ['diversity', { ...diversitydev }],
-  ['cross-arrows', { ...crossarrowsdev }],
-  ['communities', { ...communitiesdev }],
-  ['arrow-up-right', { ...arrowuprightdev }],
-  ['arrow-right', { ...arrowrightdev }],
-  ['arrow-left', { ...arrowleftdev }],
+  ['HeroNwnHome', { ...HeroNwnHomedev }],
   ['HeroImageRight', { ...HeroImageRightdev }],
   ['HeroImageBottomInset', { ...HeroImageBottomInsetdev }],
   ['HeroImageBottom', { ...HeroImageBottomdev }],
   ['HeroImageBackground', { ...HeroImageBackgrounddev }],
   ['HeroDefault', { ...HeroDefaultdev }],
   ['Hero', { ...Hero, componentType: 'client' }],
+  ['GlobalHeaderNwn', { ...GlobalHeaderNwndev }],
   ['GlobalHeaderDefault', { ...GlobalHeaderDefaultdev }],
   ['GlobalHeaderCentered', { ...GlobalHeaderCentereddev }],
   ['GlobalHeader', { ...GlobalHeader, componentType: 'client' }],
+  ['GlobalFooterNwn', { ...GlobalFooterNwndev }],
   ['GlobalFooterDefault', { ...GlobalFooterDefaultdev }],
   ['GlobalFooterBlueCompact', { ...GlobalFooterBlueCompactdev }],
   ['GlobalFooterBlueCentered', { ...GlobalFooterBlueCentereddev }],
   ['GlobalFooterBlackLarge', { ...GlobalFooterBlackLargedev }],
   ['GlobalFooterBlackCompact', { ...GlobalFooterBlackCompactdev }],
   ['GlobalFooter', { ...GlobalFooter, componentType: 'client' }],
-  ['FooterNavigationColumn', { ...FooterNavigationColumndev, ...FooterNavigationColumn, componentType: 'client' }],
+  [
+    'FooterNavigationColumn',
+    {
+      ...FooterNavigationColumndev,
+      ...FooterNavigationColumn,
+      componentType: 'client',
+    },
+  ],
   ['ZipcodeSearchForm', { ...ZipcodeSearchFormdev }],
   ['success-compact', { ...successcompactdev }],
   ['SubmitInfoForm', { ...SubmitInfoFormdev }],
@@ -331,8 +374,14 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ArticleHeader', { ...ArticleHeader, componentType: 'client' }],
   ['AnimatedSection', { ...AnimatedSectiondev }],
   ['AlertBanner', { ...AlertBannerdev }],
-  ['AccordionBlockTwoColumnTitleLeft', { ...AccordionBlockTwoColumnTitleLeftdev }],
-  ['AccordionBlockOneColumnTitleLeft', { ...AccordionBlockOneColumnTitleLeftdev }],
+  [
+    'AccordionBlockTwoColumnTitleLeft',
+    { ...AccordionBlockTwoColumnTitleLeftdev },
+  ],
+  [
+    'AccordionBlockOneColumnTitleLeft',
+    { ...AccordionBlockOneColumnTitleLeftdev },
+  ],
   ['AccordionBlockItem', { ...AccordionBlockItemdev }],
   ['AccordionBlockDefault', { ...AccordionBlockDefaultdev }],
   ['AccordionBlockCentered', { ...AccordionBlockCentereddev }],

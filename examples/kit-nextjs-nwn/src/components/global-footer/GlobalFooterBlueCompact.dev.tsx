@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useRef } from 'react';
 import { Text } from '@sitecore-content-sdk/nextjs';
 import { GlobalFooterProps } from '@/components/global-footer/global-footer.props';
@@ -12,8 +12,13 @@ import { AnimatedHoverNav } from '@/components/ui/animated-hover-nav';
 export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
   const { fields, isPageEditing } = props;
   const { dictionary } = fields;
-  const { footerNavLinks, footerCopyright, socialLinks, tagline, emailSubscriptionTitle } =
-    fields.data.datasource ?? {};
+  const {
+    footerNavLinks,
+    footerCopyright,
+    socialLinks,
+    tagline,
+    emailSubscriptionTitle,
+  } = fields.data.datasource ?? {};
 
   const footerRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +37,7 @@ export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
         >
           <div className="@md:justify-end flex h-full w-full items-end justify-center leading-none">
             <div className="bg-primary-gradient text-fill-transparent text-50-clamp @md:-mb-[80px] -mb-[40px] bg-clip-text text-center font-bold leading-none text-transparent">
-              Alaris
+              NW Natural
             </div>
           </div>
         </div>

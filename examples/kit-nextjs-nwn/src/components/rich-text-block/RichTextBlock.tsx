@@ -14,10 +14,15 @@ export const Default: React.FC<RichTextBlockProps> = (props) => {
   if (fields) {
     return (
       <article
-        className={cn('component rich-text', props.params.styles?.trimEnd())}
+        className={cn(
+          'component rich-text nwn-rich-text-section',
+          props.params.styles?.trimEnd(),
+        )}
         id={id ? id : undefined}
       >
-        <div className="component-content">{text}</div>
+        <div className="nwn-content-shell py-14 sm:py-20 lg:py-24">
+          <div className="component-content nwn-rich-text-content">{text}</div>
+        </div>
       </article>
     );
   }

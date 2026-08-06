@@ -6,6 +6,7 @@ import { PageHeaderBlueText } from './PageHeaderBlueText.dev';
 import { PageHeaderFiftyFifty } from './PageHeaderFiftyFifty.dev';
 import { PageHeaderBlueBackground } from './PageHeaderBlueBackground.dev';
 import { PageHeaderCentered } from './PageHeaderCentered.dev';
+import { PageHeaderNwnEditorial } from './PageHeaderNwnEditorial.dev';
 
 /* 
   This component is a page header with multiple variants:
@@ -17,26 +18,57 @@ import { PageHeaderCentered } from './PageHeaderCentered.dev';
 // Default display of the component
 export const Default: React.FC<PageHeaderProps> = (props) => {
   const { isEditing } = props.page.mode;
+  return <PageHeaderNwnEditorial {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterDefault: React.FC<PageHeaderProps> = (props) => {
+  const { isEditing } = props.page.mode;
   return <PageHeaderDefault {...props} isPageEditing={isEditing} />;
 };
 
 // Variants
 export const BlueText: React.FC<PageHeaderProps> = (props) => {
   const { isEditing } = props.page.mode;
-  return <PageHeaderBlueText {...props} isPageEditing={isEditing} />;
+  return <PageHeaderNwnEditorial {...props} isPageEditing={isEditing} />;
 };
 
 export const FiftyFifty: React.FC<PageHeaderProps> = (props) => {
   const { isEditing } = props.page.mode;
-  return <PageHeaderFiftyFifty {...props} isPageEditing={isEditing} />;
+  return <PageHeaderNwnEditorial {...props} isPageEditing={isEditing} />;
 };
 
 export const BlueBackground: React.FC<PageHeaderProps> = (props) => {
   const { isEditing } = props.page.mode;
-  return <PageHeaderBlueBackground {...props} isPageEditing={isEditing} />;
+  return <PageHeaderNwnEditorial {...props} isPageEditing={isEditing} />;
 };
 
 export const Centered: React.FC<PageHeaderProps> = (props) => {
   const { isEditing } = props.page.mode;
+  return <PageHeaderNwnEditorial {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterBlueText: React.FC<PageHeaderProps> = (props) => {
+  const { isEditing } = props.page.mode;
+  return <PageHeaderBlueText {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterFiftyFifty: React.FC<PageHeaderProps> = (props) => {
+  const { isEditing } = props.page.mode;
+  return <PageHeaderFiftyFifty {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterBlueBackground: React.FC<PageHeaderProps> = (props) => {
+  const { isEditing } = props.page.mode;
+  return <PageHeaderBlueBackground {...props} isPageEditing={isEditing} />;
+};
+
+export const StarterCentered: React.FC<PageHeaderProps> = (props) => {
+  const { isEditing } = props.page.mode;
   return <PageHeaderCentered {...props} isPageEditing={isEditing} />;
+};
+
+export const NwnEditorial: React.FC<PageHeaderProps> = (props) => {
+  const { isEditing } = props.page.mode;
+
+  return <PageHeaderNwnEditorial {...props} isPageEditing={isEditing} />;
 };

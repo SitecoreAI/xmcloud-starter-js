@@ -1,8 +1,10 @@
-# Skills: This Starter (Alaris – Location Finder)
+# Skills: NW Natural Demo
 
 ## Purpose
 
-This file provides a starter-specific capability view for the **kit-nextjs-nwn** (Alaris-derived) app. Use it with the repository skills map to choose the right patterns for location finder, dealer/locator, map integration, and editor-safe components.
+This file provides a starter-specific capability view for the
+**kit-nextjs-nwn** app. Use it with the repository skills map when building
+editor-safe utility customer journeys and NW Natural presentation variants.
 
 ---
 
@@ -16,10 +18,13 @@ Use the repository-level skill areas as the primary capability reference:
 
 ## This starter in short
 
-- **Focus:** Location finder, dealer/locator, and GEO-style endpoints where implemented.
+- **Focus:** Customer self-service, safety, residential and business resources,
+  and NW Natural company storytelling.
 - **Router:** Next.js App Router (`src/app/`).
 - **Route pattern:** Catch-all at `src/app/[site]/[locale]/[[...path]]/page.tsx`; pass `site` and `locale` into layout fetch. Uses next-intl; config in `src/i18n/`.
-- **Capabilities:** All repo skill areas apply. Location search, map integration, and any dealer/locator APIs or GEO endpoints follow this starter’s patterns—use this Skills file and the repo Skills together when working on location or finder features.
+- **Capabilities:** All repository skill areas apply. Site-specific presentation
+  stays inside this head app; Sitecore items remain isolated beneath the NW
+  Natural site collection and site.
 
 ---
 
@@ -27,20 +32,34 @@ Use the repository-level skill areas as the primary capability reference:
 
 Apply all **When to use**, **How to perform**, and **Hard rules** from the [Repository Skills](../../docs/Skills.md) (Component Registration, Data Strategy, Local Dev, Editing & Preview, Routing, Project Structure). In this starter only:
 
-- **Location finder / dealer-locator:** Fetch location or layout data at the catch-all page; pass as props into finder components. Do not fetch location or layout inside child finder components. Use existing finder and locator components and types; extend rather than replace.
-- **Map and GEO:** Use this starter’s map and GEO integration patterns; pass only serializable data to client components. Do not add location/GEO fetches inside non-route components unless the starter already does so.
+- **NWN variants:** Keep exports prefixed with Nwn and classes prefixed with
+  nwn-. Preserve other variants so existing component definitions continue to
+  resolve.
+- **Site isolation:** Use kit-nextjs-nwn as the Sitecore site and utilities as
+  the default collection. Build content-tree paths through src/lib/site-path.ts.
+- **Data:** Reuse existing component field contracts whenever practical.
+  Sitecore-authored links, text and images must remain editable in Pages.
+- **NWN canonical components:** NwnUtilityAlert and NwnCardGrid require isolated
+  Sitecore renderings/templates. The card-grid placeholder setting uses
+  nwn-card-grid-{\*}; rendering instances resolve
+  nwn-card-grid-{DynamicPlaceholderId}.
 - **Component maps:** Use server map (`.sitecore/component-map.ts`) and client map (`.sitecore/component-map.client.ts`); register with the same name as in the layout.
 - **Props sidecars:** Keep component props in sidecar files (`*.props.ts` / `*.props.tsx`) and exclude those files from component-map generation in `sitecore.cli.config.ts`. Regenerate maps after props-file changes and confirm sidecars are not registered as components.
-- **Project structure:** `src/app/`, `src/components/`, `src/lib/`, `src/i18n/`; follow existing patterns for new finder or map components.
-- **Local dev:** Copy `.env.remote.example` to `.env.local` in this folder; set XM Cloud and any GEO/API keys; run the dev server from this folder.
+- **Project structure:** src/app/, src/components/, src/lib/, src/i18n/; keep
+  all NW Natural code inside this head app.
+- **Local dev:** Copy .env.remote.example to .env.local in this folder, set the
+  XM Cloud values, and run the dev server here. Do not commit a local
+  environment file.
 
 ---
 
 ## Stop conditions (for this starter)
 
 - App loads with connected XM Cloud content locally.
-- Location finder and dealer/locator flows resolve and render as expected.
-- Map and GEO integration (where implemented) work per starter patterns.
+- NW Natural header, footer, hero, page header and promo variants resolve.
+- Desktop and mobile navigation remain keyboard accessible.
+- Empty fields remain editable in Pages and do not create broken media in
+  normal mode.
 - New/updated components resolve from component maps without binding errors.
 - Editing and preview remain functional for finder and map components.
 

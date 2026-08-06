@@ -1,7 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Default as PageHeader, BlueText, FiftyFifty } from '@/components/page-header/PageHeader';
+import {
+  Default as PageHeader,
+  BlueText,
+  FiftyFifty,
+  NwnEditorial,
+} from '@/components/page-header/PageHeader';
 import { mockPageHeaderProps } from './page-header.mock.props';
 
 // Mock Sitecore SDK
@@ -58,22 +63,44 @@ jest.mock('@/components/page-header/PageHeaderCentered.dev', () => ({
   ),
 }));
 
+jest.mock('@/components/page-header/PageHeaderNwnEditorial.dev', () => ({
+  PageHeaderNwnEditorial: ({ isPageEditing }: { isPageEditing: boolean }) => (
+    <section data-testid="page-header-nwn-editorial">
+      NW Natural Editorial Header - {isPageEditing ? 'Editing' : 'Normal'}
+    </section>
+  ),
+}));
+
 describe('PageHeader', () => {
   it('renders Default variant correctly', () => {
     render(<PageHeader {...mockPageHeaderProps} />);
-    expect(screen.getByTestId('page-header-default')).toBeInTheDocument();
-    expect(screen.getByText(/PageHeaderDefault - Normal/)).toBeInTheDocument();
+    expect(screen.getByTestId('page-header-nwn-editorial')).toBeInTheDocument();
+    expect(
+      screen.getByText(/NW Natural Editorial Header - Normal/),
+    ).toBeInTheDocument();
   });
 
   it('renders BlueText variant correctly', () => {
     render(<BlueText {...mockPageHeaderProps} />);
-    expect(screen.getByTestId('page-header-blue-text')).toBeInTheDocument();
-    expect(screen.getByText(/PageHeaderBlueText - Normal/)).toBeInTheDocument();
+    expect(screen.getByTestId('page-header-nwn-editorial')).toBeInTheDocument();
+    expect(
+      screen.getByText(/NW Natural Editorial Header - Normal/),
+    ).toBeInTheDocument();
   });
 
   it('renders FiftyFifty variant correctly', () => {
     render(<FiftyFifty {...mockPageHeaderProps} />);
-    expect(screen.getByTestId('page-header-fifty-fifty')).toBeInTheDocument();
-    expect(screen.getByText(/PageHeaderFiftyFifty - Normal/)).toBeInTheDocument();
+    expect(screen.getByTestId('page-header-nwn-editorial')).toBeInTheDocument();
+    expect(
+      screen.getByText(/NW Natural Editorial Header - Normal/),
+    ).toBeInTheDocument();
+  });
+
+  it('renders the NW Natural editorial variant correctly', () => {
+    render(<NwnEditorial {...mockPageHeaderProps} />);
+    expect(screen.getByTestId('page-header-nwn-editorial')).toBeInTheDocument();
+    expect(
+      screen.getByText(/NW Natural Editorial Header - Normal/),
+    ).toBeInTheDocument();
   });
 });

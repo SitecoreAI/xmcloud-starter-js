@@ -1,5 +1,11 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  act,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { FloatingDock } from '@/components/floating-dock/floating-dock.dev';
 
@@ -8,68 +14,81 @@ jest.mock('framer-motion', () => {
   const actual = jest.requireActual('react');
   const motion = {
     div: actual.forwardRef(
-        (
-          {
-            children,
-            className,
-            onClick,
-            onMouseMove,
-            onMouseLeave,
-            onMouseEnter,
-            layoutId,
-            style,
-            role,
-            'aria-label': ariaLabel,
-            ...props
-          }: Record<string, unknown>,
-          ref: React.Ref<HTMLDivElement>
-        ) => (
-          <div
-            ref={ref}
-            className={className as string}
-            onClick={onClick as React.MouseEventHandler<HTMLDivElement>}
-            onMouseMove={onMouseMove as React.MouseEventHandler<HTMLDivElement>}
-            onMouseLeave={onMouseLeave as React.MouseEventHandler<HTMLDivElement>}
-            onMouseEnter={onMouseEnter as React.MouseEventHandler<HTMLDivElement>}
-            data-testid={layoutId as string}
-            style={
-              style
-                ? Object.fromEntries(
-                    Object.entries(style as Record<string, unknown>).filter(
-                      ([, value]) => value !== Infinity && value !== -Infinity
-                    )
-                  )
-                : undefined
-            }
-            role={role as string}
-            aria-label={ariaLabel as string}
-            {...props}
-          >
-            {children as React.ReactNode}
-          </div>
-        )
-      ),
-      button: ({ children, className, onClick, ...props }: Record<string, unknown>) => (
-        <button className={className as string} onClick={onClick as () => void} {...props}>
+      (
+        {
+          children,
+          className,
+          onClick,
+          onMouseMove,
+          onMouseLeave,
+          onMouseEnter,
+          layoutId,
+          style,
+          role,
+          'aria-label': ariaLabel,
+          ...props
+        }: Record<string, unknown>,
+        ref: React.Ref<HTMLDivElement>,
+      ) => (
+        <div
+          ref={ref}
+          className={className as string}
+          onClick={onClick as React.MouseEventHandler<HTMLDivElement>}
+          onMouseMove={onMouseMove as React.MouseEventHandler<HTMLDivElement>}
+          onMouseLeave={onMouseLeave as React.MouseEventHandler<HTMLDivElement>}
+          onMouseEnter={onMouseEnter as React.MouseEventHandler<HTMLDivElement>}
+          data-testid={layoutId as string}
+          style={
+            style
+              ? (Object.fromEntries(
+                  Object.entries(style as Record<string, unknown>).filter(
+                    ([, value]) => value !== Infinity && value !== -Infinity,
+                  ),
+                ) as React.CSSProperties)
+              : undefined
+          }
+          role={role as string}
+          aria-label={ariaLabel as string}
+          {...props}
+        >
           {children as React.ReactNode}
-        </button>
+        </div>
       ),
+    ),
+    button: ({
+      children,
+      className,
+      onClick,
+      ...props
+    }: Record<string, unknown>) => (
+      <button
+        className={className as string}
+        onClick={onClick as () => void}
+        {...props}
+      >
+        {children as React.ReactNode}
+      </button>
+    ),
   };
   return {
     motion,
     m: motion,
-    AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+    AnimatePresence: ({ children }: { children: React.ReactNode }) => (
+      <>{children}</>
+    ),
     useMotionValue: jest.fn((value: number) => ({
       set: jest.fn(),
       get: jest.fn(() => value),
     })),
     useSpring: jest.fn((value: unknown) => value),
-    useTransform: jest.fn((value: unknown, transform: (val: number) => number) => {
-      if (typeof value === 'object' && value !== null && 'get' in value) {
-        return transform((value as { get: () => number }).get());
-      }
-      return value;
-    }),
+    useTransform: jest.fn(
+      (value: unknown, transform: (val: number) => number) => {
+        if (typeof value === 'object' && value !== null && 'get' in value) {
+          return transform((value as { get: () => number }).get());
+        }
+        return value;
+      },
+    ),
   };
 });
 
@@ -139,7 +158,9 @@ describe('FloatingDock Component', () => {
     });
 
     it('renders only mobile version when forceCollapse is true', () => {
-      const { container } = render(<FloatingDock items={mockItems} forceCollapse={true} />);
+      const { container } = render(
+        <FloatingDock items={mockItems} forceCollapse={true} />,
+      );
 
       // Desktop should not be visible (hidden class)
       const regions = container.querySelectorAll('[role="region"]');
@@ -148,16 +169,24 @@ describe('FloatingDock Component', () => {
 
     it('applies custom className to desktop version', () => {
       const { container } = render(
-        <FloatingDock items={mockItems} desktopClassName="custom-desktop-class" />
+        <FloatingDock
+          items={mockItems}
+          desktopClassName="custom-desktop-class"
+        />,
       );
 
-      const desktopRegion = container.querySelector('[aria-label="Share options"]');
+      const desktopRegion = container.querySelector(
+        '[aria-label="Share options"]',
+      );
       expect(desktopRegion).toHaveClass('custom-desktop-class');
     });
 
     it('applies custom className to mobile version', () => {
       const { container } = render(
-        <FloatingDock items={mockItems} mobileClassName="custom-mobile-class" />
+        <FloatingDock
+          items={mockItems}
+          mobileClassName="custom-mobile-class"
+        />,
       );
 
       const mobileRegion = container.querySelector('[aria-label="Share menu"]');
@@ -229,7 +258,9 @@ describe('FloatingDock Component', () => {
 
       await waitFor(() => {
         const menu = container.querySelector('[role="menu"]');
-        const facebookButton = menu?.querySelector('[aria-label="Facebook"]') as HTMLElement;
+        const facebookButton = menu?.querySelector(
+          '[aria-label="Facebook"]',
+        ) as HTMLElement;
         fireEvent.click(facebookButton);
       });
 
@@ -263,7 +294,9 @@ describe('FloatingDock Component', () => {
 
       await waitFor(() => {
         const menu = container.querySelector('[role="menu"]');
-        const firstItem = menu?.querySelector('[aria-label="Facebook"]') as HTMLElement;
+        const firstItem = menu?.querySelector(
+          '[aria-label="Facebook"]',
+        ) as HTMLElement;
         firstItem.focus();
       });
 
@@ -283,7 +316,9 @@ describe('FloatingDock Component', () => {
 
       await waitFor(() => {
         const menu = container.querySelector('[role="menu"]');
-        const lastItem = menu?.querySelector('[aria-label="LinkedIn"]') as HTMLElement;
+        const lastItem = menu?.querySelector(
+          '[aria-label="LinkedIn"]',
+        ) as HTMLElement;
         lastItem.focus();
       });
 
@@ -303,7 +338,9 @@ describe('FloatingDock Component', () => {
 
       await waitFor(() => {
         const menu = container.querySelector('[role="menu"]');
-        const lastItem = menu?.querySelector('[aria-label="LinkedIn"]') as HTMLElement;
+        const lastItem = menu?.querySelector(
+          '[aria-label="LinkedIn"]',
+        ) as HTMLElement;
         lastItem.focus();
       });
 
@@ -322,7 +359,9 @@ describe('FloatingDock Component', () => {
 
       await waitFor(() => {
         const menu = container.querySelector('[role="menu"]');
-        const firstItem = menu?.querySelector('[aria-label="Facebook"]') as HTMLElement;
+        const firstItem = menu?.querySelector(
+          '[aria-label="Facebook"]',
+        ) as HTMLElement;
         firstItem.focus();
       });
 
@@ -341,7 +380,9 @@ describe('FloatingDock Component', () => {
 
       await waitFor(() => {
         const menu = container.querySelector('[role="menu"]');
-        const lastItem = menu?.querySelector('[aria-label="LinkedIn"]') as HTMLElement;
+        const lastItem = menu?.querySelector(
+          '[aria-label="LinkedIn"]',
+        ) as HTMLElement;
         lastItem.focus();
       });
 
@@ -361,7 +402,9 @@ describe('FloatingDock Component', () => {
 
       await waitFor(() => {
         const menu = container.querySelector('[role="menu"]');
-        const firstItem = menu?.querySelector('[aria-label="Facebook"]') as HTMLElement;
+        const firstItem = menu?.querySelector(
+          '[aria-label="Facebook"]',
+        ) as HTMLElement;
         firstItem.focus();
       });
 
@@ -444,7 +487,9 @@ describe('FloatingDock Component', () => {
       render(<FloatingDock items={mockItems} />);
 
       // Desktop items are rendered by default (hidden on mobile)
-      const desktopRegion = screen.getByRole('region', { name: /share options/i });
+      const desktopRegion = screen.getByRole('region', {
+        name: /share options/i,
+      });
       expect(desktopRegion).toBeInTheDocument();
     });
 
@@ -454,7 +499,7 @@ describe('FloatingDock Component', () => {
       const facebookButtons = screen.getAllByLabelText('Facebook');
       // Desktop version (not mobile)
       const desktopButton = facebookButtons.find((btn) =>
-        btn.closest('[aria-label="Share options"]')
+        btn.closest('[aria-label="Share options"]'),
       );
 
       if (desktopButton) {
@@ -466,7 +511,9 @@ describe('FloatingDock Component', () => {
     it('responds to mouse movements', () => {
       const { container } = render(<FloatingDock items={mockItems} />);
 
-      const desktopContainer = container.querySelector('[aria-label="Share options"]');
+      const desktopContainer = container.querySelector(
+        '[aria-label="Share options"]',
+      );
       if (desktopContainer) {
         fireEvent.mouseMove(desktopContainer, { pageY: 100 });
         fireEvent.mouseLeave(desktopContainer);
@@ -495,7 +542,7 @@ describe('FloatingDock Component', () => {
 
       const facebookButtons = screen.getAllByLabelText('Facebook');
       const desktopButton = facebookButtons.find((btn) =>
-        btn.closest('[aria-label="Share options"]')
+        btn.closest('[aria-label="Share options"]'),
       );
 
       if (desktopButton) {
@@ -512,7 +559,7 @@ describe('FloatingDock Component', () => {
 
       const facebookButtons = screen.getAllByLabelText('Facebook');
       const desktopButton = facebookButtons.find((btn) =>
-        btn.closest('[aria-label="Share options"]')
+        btn.closest('[aria-label="Share options"]'),
       );
 
       if (desktopButton) {
@@ -530,7 +577,7 @@ describe('FloatingDock Component', () => {
 
       const facebookButtons = screen.getAllByLabelText('Facebook');
       const desktopButton = facebookButtons.find((btn) =>
-        btn.closest('[aria-label="Share options"]')
+        btn.closest('[aria-label="Share options"]'),
       );
 
       if (desktopButton) {
@@ -557,14 +604,18 @@ describe('FloatingDock Component', () => {
         },
       ];
 
-      const { container } = render(<FloatingDock items={itemsWithoutOnClick} />);
+      const { container } = render(
+        <FloatingDock items={itemsWithoutOnClick} />,
+      );
 
       const triggerButton = screen.getByLabelText('Open share menu');
       fireEvent.click(triggerButton);
 
       await waitFor(() => {
         const menu = container.querySelector('[role="menu"]');
-        const item = menu?.querySelector('[aria-label="Item 1"]') as HTMLElement;
+        const item = menu?.querySelector(
+          '[aria-label="Item 1"]',
+        ) as HTMLElement;
         expect(() => fireEvent.click(item)).not.toThrow();
       });
     });
@@ -578,7 +629,9 @@ describe('FloatingDock Component', () => {
 
       await waitFor(() => {
         const menu = container.querySelector('[role="menu"]');
-        const facebookButton = menu?.querySelector('[aria-label="Facebook"]') as HTMLElement;
+        const facebookButton = menu?.querySelector(
+          '[aria-label="Facebook"]',
+        ) as HTMLElement;
         fireEvent.click(facebookButton);
       });
 

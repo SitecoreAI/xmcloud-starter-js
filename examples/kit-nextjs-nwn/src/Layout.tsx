@@ -7,7 +7,6 @@ import {
 } from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Sora, Roboto } from 'next/font/google';
 import SitecoreStyles from 'components/content-sdk/SitecoreStyles';
 import { DesignLibraryApp } from '@sitecore-content-sdk/nextjs';
 import componentMap from '.sitecore/component-map';
@@ -19,20 +18,6 @@ import { StructuredData } from 'src/components/structured-data/StructuredData';
 import { getBaseUrl } from 'src/lib/utils';
 import type { JsonLdValue } from 'src/lib/structured-data/jsonld';
 import Providers from './Providers';
-
-const heading = Sora({
-  weight: ['300', '400', '500'],
-  variable: '--font-heading',
-  subsets: ['latin', 'latin-ext'],
-  display: 'swap',
-});
-
-const body = Roboto({
-  weight: ['400', '500'],
-  variable: '--font-body',
-  subsets: ['latin', 'latin-ext'],
-  display: 'swap',
-});
 
 interface LayoutProps {
   page: Page;
@@ -59,22 +44,34 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
-  const classNamesMain = `${mainClassPageEditing} ${body.variable} ${heading.variable} main-layout`;
+  const classNamesMain = `${mainClassPageEditing} main-layout`;
 
   // Generate site-wide structured data (use request-derived baseUrl when provided so deployed URLs are correct)
   const baseUrl = baseUrlProp ?? getBaseUrl();
-  const websiteSchema = generateWebSiteSchema('Alaris', baseUrl, 'Find your nearest Alaris dealership');
-  const organizationSchema = generateOrganizationSchema('Alaris', baseUrl, undefined, 'Alaris - Premium automotive dealership network');
+  const websiteSchema = generateWebSiteSchema(
+    'NW Natural',
+    baseUrl,
+    'Safe, reliable natural gas service for homes and businesses',
+  );
+  const organizationSchema = generateOrganizationSchema(
+    'NW Natural',
+    baseUrl,
+    undefined,
+    'NW Natural provides safe, reliable and affordable energy to the communities it serves.',
+  );
 
   return (
     <>
       <Scripts />
       <SitecoreStyles layoutData={layout} />
-      
+
       {/* Site-wide structured data */}
       <StructuredData id="website-schema" data={websiteSchema as JsonLdValue} />
-      <StructuredData id="organization-schema" data={organizationSchema as JsonLdValue} />
-      
+      <StructuredData
+        id="organization-schema"
+        data={organizationSchema as JsonLdValue}
+      />
+
       <Providers page={page}>
         {/* root placeholder for the app, which we add components to using route data */}
         <div className={`min-h-screen flex flex-col ${classNamesMain}`}>

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "NWN.Demo",
+  "description": "Narrow serialization boundary for the NW Natural demo site, site-scoped presentation, and NWN component definitions.",
+  "items": {
+    "path": "nwn-demo",
+    "includes": [
+      {
+        "name": "nwn.demo.site",
+        "path": "/sitecore/content/utilities/kit-nextjs-nwn",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "nwn.demo.templates",
+        "path": "/sitecore/templates/Project/NWN",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "nwn.demo.renderings",
+        "path": "/sitecore/layout/Renderings/Project/NWN",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "nwn.demo.placeholder-settings",
+        "path": "/sitecore/layout/Placeholder Settings/Project/NWN",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      }
+    ]
+  }
+}

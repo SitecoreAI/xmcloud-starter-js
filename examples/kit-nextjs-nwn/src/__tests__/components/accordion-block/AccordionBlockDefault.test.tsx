@@ -28,7 +28,7 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
         'data-testid': 'sitecore-text',
         className,
       },
-      field?.value
+      field?.value,
     );
   },
   RichText: ({
@@ -86,7 +86,11 @@ jest.mock('@/components/accordion-block/AccordionBlockItem.dev', () => ({
     child: { heading: { jsonValue: { value?: string } } };
     valuePrefix?: string;
   }) => (
-    <div data-testid="accordion-block-item" data-index={index} data-value-prefix={valuePrefix}>
+    <div
+      data-testid="accordion-block-item"
+      data-index={index}
+      data-value-prefix={valuePrefix}
+    >
       {child?.heading?.jsonValue?.value}
     </div>
   ),
@@ -103,7 +107,11 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
     variant?: string;
     isPageEditing?: boolean;
   }) => (
-    <button data-testid="editable-button" data-variant={variant} data-editing={isPageEditing}>
+    <button
+      data-testid="editable-button"
+      data-variant={variant}
+      data-editing={isPageEditing}
+    >
       {buttonLink?.value?.text}
     </button>
   ),
@@ -118,14 +126,53 @@ describe('AccordionBlockDefault Component', () => {
     expect(screen.getAllByTestId('accordion-block-item')).toHaveLength(4);
   });
 
+  it('replaces legacy vehicle FAQs with NW Natural customer help', () => {
+    const legacyProps = {
+      ...mockAccordionProps,
+      fields: {
+        data: {
+          datasource: {
+            ...mockAccordionProps.fields.data.datasource,
+            heading: {
+              jsonValue: { value: 'Emergency vehicle questions' },
+            },
+          },
+        },
+      },
+    };
+
+    const { container } = render(<AccordionBlockDefault {...legacyProps} />);
+
+    expect(
+      screen.getByText('Questions? We are here to help.'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('What should I do if I smell natural gas?'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('Why should I call 811 before digging?'),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId('editable-button')).toHaveTextContent(
+      'Visit account and billing',
+    );
+    expect(
+      container.querySelector('[data-variant="NwnHelp"]'),
+    ).toBeInTheDocument();
+  });
+
   it('renders description and CTA button when provided', () => {
     render(<AccordionBlockDefault {...mockAccordionProps} />);
 
     expect(
-      screen.getByText('Find answers to common questions about our products and services.')
+      screen.getByText(
+        'Find answers to common questions about our products and services.',
+      ),
     ).toBeInTheDocument();
     expect(screen.getByTestId('editable-button')).toBeInTheDocument();
-    expect(screen.getByTestId('editable-button')).toHaveAttribute('data-variant', 'secondary');
+    expect(screen.getByTestId('editable-button')).toHaveAttribute(
+      'data-variant',
+      'secondary',
+    );
     expect(screen.getByText('Contact Support')).toBeInTheDocument();
   });
 
@@ -136,7 +183,7 @@ describe('AccordionBlockDefault Component', () => {
     expect(accordion).toHaveAttribute('data-type', 'multiple');
     expect(accordion).toHaveAttribute(
       'data-value',
-      'accordion-block-item-1,accordion-block-item-2,accordion-block-item-3,accordion-block-item-4'
+      'accordion-block-item-1,accordion-block-item-2,accordion-block-item-3,accordion-block-item-4',
     );
   });
 
@@ -145,14 +192,20 @@ describe('AccordionBlockDefault Component', () => {
 
     expect(screen.getByText('Basic FAQ')).toBeInTheDocument();
     expect(screen.getAllByTestId('accordion-block-item')).toHaveLength(1);
-    expect(screen.queryByText('Find answers to common questions')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('Find answers to common questions'),
+    ).not.toBeInTheDocument();
     expect(screen.queryByTestId('editable-button')).not.toBeInTheDocument();
   });
 
   it('applies correct component structure and CSS classes', () => {
-    const { container } = render(<AccordionBlockDefault {...mockAccordionProps} />);
+    const { container } = render(
+      <AccordionBlockDefault {...mockAccordionProps} />,
+    );
 
-    const component = container.querySelector('[data-component="AccordionBlock"]');
+    const component = container.querySelector(
+      '[data-component="AccordionBlock"]',
+    );
     expect(component).toBeInTheDocument();
     expect(component).toHaveClass(
       '@container',
@@ -160,14 +213,19 @@ describe('AccordionBlockDefault Component', () => {
       '@lg:py-20',
       'border-b-2',
       'border-t-2',
-      'py-10'
+      'py-10',
     );
 
     const contentWrapper = container.querySelector(
-      '[data-component="AccordionBlockContentWrapper"]'
+      '[data-component="AccordionBlockContentWrapper"]',
     );
     expect(contentWrapper).toBeInTheDocument();
-    expect(contentWrapper).toHaveClass('mx-auto', 'grid', 'max-w-screen-xl', 'gap-6');
+    expect(contentWrapper).toHaveClass(
+      'mx-auto',
+      'grid',
+      'max-w-screen-xl',
+      'gap-6',
+    );
   });
 
   it('applies custom styles from params', () => {
@@ -176,8 +234,12 @@ describe('AccordionBlockDefault Component', () => {
       params: { styles: 'custom-accordion-class' },
     };
 
-    const { container } = render(<AccordionBlockDefault {...propsWithCustomStyles} />);
-    const component = container.querySelector('[data-component="AccordionBlock"]');
+    const { container } = render(
+      <AccordionBlockDefault {...propsWithCustomStyles} />,
+    );
+    const component = container.querySelector(
+      '[data-component="AccordionBlock"]',
+    );
     expect(component).toHaveClass('custom-accordion-class');
   });
 
@@ -185,14 +247,22 @@ describe('AccordionBlockDefault Component', () => {
     render(<AccordionBlockDefault {...mockAccordionProps} />);
 
     const accordion = screen.getByTestId('accordion');
-    expect(accordion).toHaveClass('@md:gap-11', 'grid', 'w-full', 'gap-8', 'p-0');
+    expect(accordion).toHaveClass(
+      '@md:gap-11',
+      'grid',
+      'w-full',
+      'gap-8',
+      'p-0',
+    );
   });
 
   it('shows content wrapper in responsive grid layout', () => {
-    const { container } = render(<AccordionBlockDefault {...mockAccordionProps} />);
+    const { container } = render(
+      <AccordionBlockDefault {...mockAccordionProps} />,
+    );
 
     const gridContainer = container.querySelector(
-      '.\\@md\\:grid.\\@md\\:grid-cols-\\[4fr\\,6fr\\]'
+      '.\\@md\\:grid.\\@md\\:grid-cols-\\[4fr\\,6fr\\]',
     );
     expect(gridContainer).toBeInTheDocument();
   });
@@ -222,7 +292,9 @@ describe('AccordionBlockDefault Component', () => {
       },
     };
 
-    expect(() => render(<AccordionBlockDefault {...propsWithoutDescription} />)).not.toThrow();
+    expect(() =>
+      render(<AccordionBlockDefault {...propsWithoutDescription} />),
+    ).not.toThrow();
     expect(screen.getByText('Frequently Asked Questions')).toBeInTheDocument();
   });
 });

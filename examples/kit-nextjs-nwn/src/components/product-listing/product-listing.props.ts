@@ -1,4 +1,9 @@
-import { Field, ImageField, LinkField, Page } from '@sitecore-content-sdk/nextjs';
+import {
+  Field,
+  ImageField,
+  LinkField,
+  Page,
+} from '@sitecore-content-sdk/nextjs';
 
 import type { OptionalComponentProps } from '@/lib/component-props';
 
@@ -20,25 +25,30 @@ interface ProductListingFields {
 }
 
 export type ProductItemProps = {
-  productName: {
+  id?: string;
+  productName?: {
     jsonValue: Field<string>;
   };
-  productThumbnail: {
+  productThumbnail?: {
     jsonValue: ImageField;
   };
-  productBasePrice: {
+  pageThumbnail?: {
+    jsonValue: ImageField;
+  };
+  productBasePrice?: {
     jsonValue: Field<string>;
   };
-  productFeatureTitle: {
+  productFeatureTitle?: {
     jsonValue: Field<string>;
   };
-  productFeatureText: {
+  productFeatureText?: {
     jsonValue: Field<string>;
   };
-  productDrivingRange: {
+  productDrivingRange?: {
     jsonValue: Field<string>;
   };
   url?: {
+    jsonValue?: LinkField;
     url?: string;
     path?: string;
   };
@@ -56,4 +66,3 @@ export interface ProductCardProps {
   isPageEditing: boolean;
   page?: Page; // Optional page prop for ImageWrapper
 }
-

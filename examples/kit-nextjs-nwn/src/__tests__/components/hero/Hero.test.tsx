@@ -1,7 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Default as Hero, ImageBackground } from '@/components/hero/Hero';
+import {
+  Default as Hero,
+  ImageBackground,
+  NwnHome,
+} from '@/components/hero/Hero';
 import { mockHeroProps } from './hero.mock.props';
 
 // Mock Sitecore SDK
@@ -63,6 +67,14 @@ jest.mock('@/components/hero/HeroImageRight.dev', () => ({
   HeroImageRight: () => <section data-testid="hero-image-right" />,
 }));
 
+jest.mock('@/components/hero/HeroNwnHome.dev', () => ({
+  HeroNwnHome: ({ isPageEditing }: { isPageEditing: boolean }) => (
+    <section data-testid="hero-nwn-home">
+      NW Natural Home Hero - {isPageEditing ? 'Editing' : 'Normal'}
+    </section>
+  ),
+}));
+
 describe('Hero Component', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -70,7 +82,7 @@ describe('Hero Component', () => {
 
   it('renders the default variant without crashing', () => {
     render(<Hero {...mockHeroProps} />);
-    expect(screen.getByTestId('hero-default')).toBeInTheDocument();
+    expect(screen.getByTestId('hero-nwn-home')).toBeInTheDocument();
     expect(screen.getByText(/Normal/)).toBeInTheDocument();
   });
 
@@ -82,6 +94,14 @@ describe('Hero Component', () => {
 
   it('renders the ImageBackground variant correctly', () => {
     render(<ImageBackground {...mockHeroProps} />);
-    expect(screen.getByTestId('hero-image-background')).toBeInTheDocument();
+    expect(screen.getByTestId('hero-nwn-home')).toBeInTheDocument();
+  });
+
+  it('renders the NW Natural home variant correctly', () => {
+    render(<NwnHome {...mockHeroProps} />);
+    expect(screen.getByTestId('hero-nwn-home')).toBeInTheDocument();
+    expect(
+      screen.getByText(/NW Natural Home Hero - Normal/),
+    ).toBeInTheDocument();
   });
 });

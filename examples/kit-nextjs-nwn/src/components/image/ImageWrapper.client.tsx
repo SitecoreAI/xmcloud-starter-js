@@ -4,10 +4,17 @@ import type React from 'react';
 import { useContext, useRef } from 'react';
 import { useInView } from 'framer-motion';
 import NextImage, { ImageProps } from 'next/image';
-import { ImageField, Image as ContentSdkImage, useSitecore } from '@sitecore-content-sdk/nextjs';
+import {
+  ImageField,
+  Image as ContentSdkImage,
+  useSitecore,
+} from '@sitecore-content-sdk/nextjs';
 import { ImageOptimizationContext } from '@/components/image/image-optimization.context';
 import placeholderImageLoader from '@/utils/placeholderImageLoader';
-import { hostnameMatchesImageRemotePattern, IMAGE_REMOTE_PATTERNS } from '@/config/image-config';
+import {
+  hostnameMatchesImageRemotePattern,
+  IMAGE_REMOTE_PATTERNS,
+} from '@/config/image-config';
 
 type Props = {
   image?: ImageField;
@@ -19,6 +26,28 @@ type Props = {
   [key: string]: any;
 };
 
+const MAX_INLINE_BLUR_DATA_URL_LENGTH = 4096;
+const INLINE_BLUR_DATA_URL_PATTERN =
+  /^data:image\/(?:avif|gif|jpeg|png|webp)(?:;charset=[\w-]+)?(?:;base64)?,/i;
+
+function getTinyInlineBlurDataUrl(
+  ...candidates: unknown[]
+): string | undefined {
+  for (const candidate of candidates) {
+    if (typeof candidate !== 'string') continue;
+
+    const normalizedCandidate = candidate.trim();
+    if (
+      normalizedCandidate.length <= MAX_INLINE_BLUR_DATA_URL_LENGTH &&
+      INLINE_BLUR_DATA_URL_PATTERN.test(normalizedCandidate)
+    ) {
+      return normalizedCandidate;
+    }
+  }
+
+  return undefined;
+}
+
 function isRealAuthorMediaSrc(src: string | undefined | null): boolean {
   if (src == null || typeof src !== 'string') return false;
   const s = src.trim();
@@ -28,7 +57,9 @@ function isRealAuthorMediaSrc(src: string | undefined | null): boolean {
   return true;
 }
 
-function fieldForSdkWithCustomEmpty(field: ImageField | undefined): ImageField | undefined {
+function fieldForSdkWithCustomEmpty(
+  field: ImageField | undefined,
+): ImageField | undefined {
   if (!field) return field;
   if (isRealAuthorMediaSrc(field.value?.src)) return field;
   return { ...field, value: {} as ImageField['value'] };
@@ -43,7 +74,8 @@ const shouldOptimize = (src: string): boolean => {
     const url = new URL(src);
 
     return IMAGE_REMOTE_PATTERNS.some((pattern) => {
-      const protocolMatch = !pattern.protocol || pattern.protocol === url.protocol.slice(0, -1);
+      const protocolMatch =
+        !pattern.protocol || pattern.protocol === url.protocol.slice(0, -1);
       if (!protocolMatch) return false;
 
       return hostnameMatchesImageRemotePattern(url.hostname, pattern.hostname);
@@ -84,33 +116,53 @@ export default function ClientImage({
     return null;
   }
 
-  const isUnoptimized = unoptimized || isSvg || (src.startsWith('http') && !shouldOptimize(src));
+  const isUnoptimized =
+    unoptimized || isSvg || (src.startsWith('http') && !shouldOptimize(src));
 
   if (isEditing || isPreview || isSvg || isDesignLibrary) {
-    const fieldForSdk = emptyFieldEditingComponent ? fieldForSdkWithCustomEmpty(image) : image;
+    const fieldForSdk = emptyFieldEditingComponent
+      ? fieldForSdkWithCustomEmpty(image)
+      : image;
 
     if (shouldRenderCustomEmptyEditingImage && emptyFieldEditingComponent) {
       const EmptyFieldEditingComponent = emptyFieldEditingComponent;
       return <EmptyFieldEditingComponent className={className} />;
     }
 
-    return (
-      <ContentSdkImage
-        field={fieldForSdk}
-        className={className}
-      />
-    );
+    return <ContentSdkImage field={fieldForSdk} className={className} />;
   }
 
   const shouldPrioritize = priority === true;
   const imagePriority: boolean = shouldPrioritize ? true : inView;
-  const imageFetchPriority: 'high' | 'low' | 'auto' = shouldPrioritize ? 'high' : 'auto';
+  const imageFetchPriority: 'high' | 'low' | 'auto' = shouldPrioritize
+    ? 'high'
+    : 'auto';
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { priority: _rp, loading: _rl, fetchPriority: _rf, wrapperClass: _wc, ...restProps } = rest;
+  const {
+    priority: _rp,
+    loading: _rl,
+    fetchPriority: _rf,
+    wrapperClass: _wc,
+    placeholder: _rPlaceholder,
+    blurDataURL: restBlurDataUrl,
+    ...restProps
+  } = rest;
   const imageValueProps = (image?.value as ImageProps) || {};
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { priority: _ivp, loading: _ivl, fetchPriority: _ivf, ...imageValueRest } = imageValueProps;
+  const {
+    priority: _ivp,
+    loading: _ivl,
+    fetchPriority: _ivf,
+    placeholder: _ivPlaceholder,
+    blurDataURL: imageBlurDataUrl,
+    ...imageValueRest
+  } = imageValueProps;
+  const inlineBlurDataUrl = getTinyInlineBlurDataUrl(
+    restBlurDataUrl,
+    imageBlurDataUrl,
+    src,
+  );
 
   return (
     <NextImage
@@ -119,11 +171,12 @@ export default function ClientImage({
       className={className}
       unoptimized={isUnoptimized}
       loader={isPicsum ? placeholderImageLoader : undefined}
-      placeholder="blur"
-      blurDataURL={src}
       sizes={sizes}
       {...(!image?.value?.width ? { width: 16, height: 16 } : {})}
       {...restProps}
+      {...(inlineBlurDataUrl
+        ? { placeholder: 'blur' as const, blurDataURL: inlineBlurDataUrl }
+        : {})}
       priority={imagePriority}
       fetchPriority={imageFetchPriority}
     />
