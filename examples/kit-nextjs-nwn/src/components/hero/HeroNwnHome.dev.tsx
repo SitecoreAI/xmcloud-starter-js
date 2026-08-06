@@ -219,7 +219,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
       aria-roledescription="carousel"
       aria-label="NW Natural featured information"
     >
-      <div className="relative isolate min-h-[42rem] overflow-hidden bg-[#203c47] text-white">
+      <div className="relative isolate min-h-[38rem] overflow-hidden bg-[#203c47] text-white sm:min-h-[40rem] lg:min-h-[42rem]">
         <ImageWrapper
           key={'nwn-home-slide-' + currentIndex}
           image={currentSlide.image}
@@ -240,7 +240,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
           aria-hidden="true"
         />
 
-        <div className="nwn-content-shell flex min-h-[42rem] items-center py-20">
+        <div className="nwn-content-shell flex min-h-[38rem] items-center py-14 sm:min-h-[40rem] sm:py-16 lg:min-h-[42rem] lg:py-20">
           <div
             role="group"
             aria-roledescription="slide"
@@ -251,10 +251,10 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
               <Text
                 tag="p"
                 field={fields.bannerText}
-                className="mb-5 inline-flex border-l-4 border-cyan-400 pl-4 font-heading text-lg font-semibold uppercase tracking-[0.12em] text-cyan-100"
+                className="mb-4 inline-flex border-l-4 border-cyan-400 pl-4 font-heading text-sm font-semibold uppercase tracking-[0.12em] text-cyan-100 sm:text-base"
               />
             ) : (
-              <p className="mb-5 inline-flex border-l-4 border-cyan-400 pl-4 font-heading text-lg font-semibold uppercase tracking-[0.12em] text-cyan-100">
+              <p className="mb-4 inline-flex border-l-4 border-cyan-400 pl-4 font-heading text-sm font-semibold uppercase tracking-[0.12em] text-cyan-100 sm:text-base">
                 {currentSlide.eyebrow}
               </p>
             )}
@@ -263,10 +263,10 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
               <Text
                 tag="h1"
                 field={fields.title}
-                className="max-w-[13ch] text-balance font-heading text-[clamp(3.6rem,7vw,5.25rem)] font-medium leading-[0.98] tracking-[-0.025em] text-white"
+                className="max-w-[15ch] text-balance font-heading text-[clamp(2.5rem,4.5vw,3.5rem)] font-medium leading-[1.04] tracking-[-0.02em] text-white"
               />
             ) : (
-              <h1 className="max-w-[13ch] text-balance font-heading text-[clamp(3.6rem,7vw,5.25rem)] font-medium leading-[0.98] tracking-[-0.025em] text-white">
+              <h1 className="max-w-[15ch] text-balance font-heading text-[clamp(2.5rem,4.5vw,3.5rem)] font-medium leading-[1.04] tracking-[-0.02em] text-white">
                 {currentSlide.title}
               </h1>
             )}
@@ -275,10 +275,10 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
               <Text
                 tag="p"
                 field={fields.description}
-                className="mt-6 max-w-2xl text-pretty text-xl leading-8 text-white/95 sm:text-2xl"
+                className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/95 sm:text-xl sm:leading-8"
               />
             ) : (
-              <p className="mt-6 max-w-2xl text-pretty text-xl leading-8 text-white/95 sm:text-2xl">
+              <p className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/95 sm:text-xl sm:leading-8">
                 {currentSlide.description}
               </p>
             )}
@@ -303,11 +303,11 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
         </div>
 
         <aside className="nwn-content-shell pb-24 lg:pointer-events-none lg:absolute lg:inset-x-0 lg:top-16 lg:flex lg:justify-end lg:pb-0">
-          <div className="pointer-events-auto w-full border-t-4 border-cyan-400 bg-slate-950/80 p-7 shadow-[0_12px_24px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:max-w-sm">
+          <div className="pointer-events-auto w-full border-t-4 border-cyan-400 bg-slate-950/80 p-6 sm:p-7 shadow-[0_12px_24px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:max-w-sm">
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-cyan-200">
               Online account
             </p>
-            <h2 className="mt-2 font-heading text-3xl font-semibold text-white">
+            <h2 className="mt-2 font-heading text-2xl font-semibold text-white sm:text-3xl">
               Come on in.
             </h2>
             <p className="mt-3 text-base leading-7 text-white/85">
@@ -331,6 +331,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
               type="button"
               variant="tertiary"
               size="icon"
+              className="hidden h-11 w-11 shrink-0 sm:inline-flex"
               onClick={goToPrevious}
               aria-label="Previous slide"
               aria-controls={carouselId}
@@ -347,7 +348,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
                 <button
                   type="button"
                   key={'nwn-slide-dot-' + index}
-                  className="inline-flex h-6 w-6 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   aria-label={'Show slide ' + (index + 1) + ': ' + slide.title}
                   aria-current={index === currentIndex ? 'true' : undefined}
                   onClick={() => setCurrentIndex(index)}
@@ -368,6 +369,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
               type="button"
               variant="tertiary"
               size="icon"
+              className="hidden h-11 w-11 shrink-0 sm:inline-flex"
               onClick={goToNext}
               aria-label="Next slide"
               aria-controls={carouselId}
@@ -379,7 +381,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
                 type="button"
                 variant="ghost"
                 size="icon"
-                className="text-white hover:bg-white/15 hover:text-white"
+                className="h-11 w-11 text-white hover:bg-white/15 hover:text-white"
                 onClick={() => setIsPaused((paused) => !paused)}
                 aria-label={isPaused ? 'Play slideshow' : 'Pause slideshow'}
               >
@@ -413,7 +415,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
                   <h2 className="font-heading text-2xl font-semibold text-primary">
                     {task.title}
                   </h2>
-                  <p className="mt-2 max-w-xs text-sm leading-6 text-slate-600">
+                  <p className="mt-2 max-w-xs text-base leading-7 text-slate-600">
                     {task.description}
                   </p>
                 </div>

@@ -13,6 +13,7 @@ export const Default: React.FC<NwnCardGridProps> = (props) => {
     rendering.placeholders?.[placeholderName] ||
       rendering.placeholders?.[wildcardPlaceholderName],
   );
+  const hasSectionTitle = Boolean(fields?.sectionTitle?.value);
   const hasIntroContent = Boolean(
     fields?.sectionTitle?.value || fields?.intro?.value,
   );
@@ -36,21 +37,29 @@ export const Default: React.FC<NwnCardGridProps> = (props) => {
     <section
       data-component="NwnCardGrid"
       data-placeholder-key={placeholderName}
-      aria-labelledby={fields?.sectionTitle?.value ? headingId : undefined}
-      className={cn('nwn-card-grid bg-[#f4f5f7] py-14 sm:py-20', params.styles)}
+      aria-labelledby={hasSectionTitle ? headingId : undefined}
+      className={cn('nwn-card-grid bg-[#f4f5f7] py-12 sm:py-16', params.styles)}
     >
       <div className="nwn-content-shell">
-        {(fields || isPageEditing) && (
-          <div className="mb-10 grid gap-5 lg:grid-cols-[1fr_0.85fr] lg:items-end">
+        {(hasIntroContent || isPageEditing) && (
+          <div
+            className={cn('mb-10 grid gap-5', {
+              'lg:grid-cols-[1fr_0.85fr] lg:items-end':
+                hasSectionTitle || isPageEditing,
+            })}
+          >
             <Text
               id={headingId}
               tag="h2"
               field={fields?.sectionTitle}
-              className="max-w-[16ch] text-balance font-heading text-[clamp(2.5rem,5vw,3.5rem)] font-medium leading-[1.04] text-slate-900"
+              className={cn(
+                'max-w-[16ch] text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.04] text-slate-900',
+                !hasSectionTitle && !isPageEditing && 'hidden',
+              )}
             />
             <RichText
               field={fields?.intro}
-              className="max-w-2xl text-pretty text-lg leading-8 text-slate-600"
+              className="max-w-2xl text-pretty text-base leading-7 sm:text-lg sm:leading-8 text-slate-600"
             />
             {!hasIntroContent && isPageEditing && (
               <p className="text-sm text-slate-500">

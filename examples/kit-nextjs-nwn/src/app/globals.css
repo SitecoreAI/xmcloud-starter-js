@@ -170,7 +170,7 @@
     }
 
     :focus-visible {
-        outline: 3px solid var(--color-accent);
+        outline: 3px solid var(--color-primary);
         outline-offset: 3px;
     }
 
@@ -181,8 +181,10 @@
     h3,
     .h3,
     h4,
-    .h4 h5,
-    .h5 h6,
+    .h4,
+    h5,
+    .h5,
+    h6,
     .h6 {
         font-family: var(--font-heading);
         @apply font-medium leading-tight;
@@ -191,23 +193,23 @@
 
     h1,
     .h1 {
-        font-size: clamp(3rem, 6vw, 4.5rem);
+        font-size: clamp(2.5rem, 4.5vw, 3.5rem);
     }
     h2,
     .h2 {
-        font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+        font-size: clamp(2rem, 3.5vw, 2.75rem);
     }
     h3,
     .h3 {
-        font-size: clamp(2rem, 3vw, 2.5rem);
+        font-size: clamp(1.625rem, 2.5vw, 2rem);
     }
     h4,
     .h4 {
-        font-size: clamp(1.5rem, 2vw, 2rem);
+        font-size: clamp(1.375rem, 2vw, 1.625rem);
     }
     h5,
     .h5 {
-        @apply text-xl;
+        font-size: 1.125rem;
     }
 
     body {
@@ -242,18 +244,18 @@
 
     .nwn-rich-text-content .nwn-page-intro {
         max-width: 52rem;
-        margin: 0 0 clamp(3rem, 6vw, 5rem);
+        margin: 0 0 clamp(2.5rem, 5vw, 4rem);
         padding-left: clamp(1.25rem, 3vw, 2rem);
         border-left: 0.25rem solid var(--color-accent);
         color: hsl(207, 7%, 35%);
-        font-size: clamp(1.25rem, 2vw, 1.5rem);
+        font-size: clamp(1.125rem, 1.5vw, 1.375rem);
         line-height: 1.6;
     }
 
     .nwn-rich-text-content .nwn-page-content > section {
         display: grid;
         gap: 1.25rem;
-        padding-block: clamp(2.75rem, 6vw, 4.5rem);
+        padding-block: clamp(2.25rem, 5vw, 3.5rem);
         border-top: 1px solid var(--color-border);
     }
 
@@ -265,7 +267,7 @@
         max-width: 18ch;
         margin: 0;
         color: hsl(206, 10%, 14%);
-        font-size: clamp(2rem, 3.5vw, 2.75rem);
+        font-size: clamp(1.875rem, 3vw, 2.5rem);
         line-height: 1.1;
     }
 
@@ -297,6 +299,7 @@
 
     .nwn-rich-text-content .nwn-page-content ul > li {
         position: relative;
+        font-size: 1.125rem;
         padding-left: 1.5rem;
         color: hsl(206, 10%, 20%);
         line-height: 1.65;
@@ -304,6 +307,7 @@
 
     .nwn-rich-text-content .nwn-page-content ol > li {
         padding-left: 0.25rem;
+        font-size: 1.125rem;
         color: hsl(206, 10%, 20%);
         line-height: 1.65;
     }
@@ -341,6 +345,13 @@
             linear-gradient(115deg, transparent 55%, rgb(0 162 199 / 28%));
         content: "";
         pointer-events: none;
+    }
+
+    .nwn-footer :focus-visible,
+    [data-component="Hero"] :focus-visible,
+    [data-component="Promo Image"] :focus-visible,
+    .nwn-cta-banner.bg-primary :focus-visible {
+        outline-color: #ffffff;
     }
 
     @media (min-width: 52rem) {

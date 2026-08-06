@@ -104,7 +104,7 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
         data-component="AccordionBlock"
         data-variant={hasLegacyStarterContent ? 'NwnHelp' : 'Default'}
         className={cn(
-          '@container @md:py-16 @lg:py-20 border-b-2 border-t-2 py-10 [.border-b-2+&]:border-t-0',
+          '@container @md:py-14 @lg:py-16 border-b-2 border-t-2 py-10 [.border-b-2+&]:border-t-0',
           props?.params?.styles && {
             [props.params.styles]: true,
           },
@@ -123,7 +123,7 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
               <Text
                 tag="h2"
                 id="accordion-heading"
-                className="font-heading @md:text-6xl @lg:text-7xl max-w-screen-sm text-pretty text-5xl font-light leading-[1.1] tracking-tighter antialiased"
+                className="font-heading max-w-screen-sm text-pretty text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.06] tracking-[-0.02em] antialiased"
                 field={displayHeading.jsonValue}
               />
             )}

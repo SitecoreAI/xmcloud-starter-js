@@ -81,7 +81,7 @@ export const Default: React.FC<NwnUtilityAlertProps> = (props) => {
         props.params?.styles,
       )}
     >
-      <div className="nwn-content-shell flex flex-col gap-5 sm:flex-row sm:items-start">
+      <div className="nwn-content-shell grid grid-cols-[auto_1fr] gap-x-4 gap-y-4 sm:gap-x-5 lg:flex lg:items-start">
         <span
           className={cn(
             'inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full',
@@ -118,13 +118,13 @@ export const Default: React.FC<NwnUtilityAlertProps> = (props) => {
           )}
         </div>
 
-        <div className="flex shrink-0 flex-wrap gap-3 sm:justify-end">
+        <div className="col-span-2 flex w-full flex-col gap-3 sm:flex-row lg:w-auto lg:shrink-0 lg:justify-end">
           {primaryLink && (
             <EditableButton
               buttonLink={primaryLink}
               isPageEditing={isPageEditing}
               variant={tone === 'emergency' ? 'destructive' : 'default'}
-              className="min-h-11 px-5 text-base"
+              className="min-h-11 w-full px-5 text-base sm:w-auto"
               page={props.page}
             />
           )}
@@ -133,7 +133,7 @@ export const Default: React.FC<NwnUtilityAlertProps> = (props) => {
               buttonLink={secondaryLink}
               isPageEditing={isPageEditing}
               variant="tertiary"
-              className="min-h-11 border border-current bg-white px-5 text-base"
+              className="min-h-11 w-full border border-current bg-white px-5 text-base sm:w-auto"
               page={props.page}
             />
           )}

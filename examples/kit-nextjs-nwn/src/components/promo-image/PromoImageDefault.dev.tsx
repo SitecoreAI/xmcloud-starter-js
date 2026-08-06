@@ -69,7 +69,7 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
         data-variant={hasLegacyStarterContent ? 'NwnCompanyStory' : 'Default'}
         className="@container border-b-2 border-t-2 [.border-b-2+&]:border-t-0"
       >
-        <div className="@md:min-h-[760px] relative max-h-[759px] min-h-[450px] w-full overflow-hidden ">
+        <div className="@md:min-h-[620px] relative min-h-[420px] w-full overflow-hidden ">
           {displayImage && (
             <div className="absolute inset-0 h-full w-full">
               <ImageWrapper

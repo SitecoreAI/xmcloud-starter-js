@@ -108,6 +108,24 @@ describe('HeroNwnHome', () => {
   it('advances to local fallback slides with accessible controls', () => {
     render(<HeroNwnHome {...mockHeroProps} />);
 
+    expect(screen.getByRole('button', { name: 'Previous slide' })).toHaveClass(
+      'hidden',
+      'h-11',
+      'w-11',
+      'sm:inline-flex',
+    );
+    expect(screen.getByRole('button', { name: 'Next slide' })).toHaveClass(
+      'hidden',
+      'h-11',
+      'w-11',
+      'sm:inline-flex',
+    );
+    expect(
+      screen.getByRole('button', {
+        name: 'Show slide 1: Welcome to Our Platform',
+      }),
+    ).toHaveClass('h-11', 'w-11', 'shrink-0');
+
     fireEvent.click(screen.getByRole('button', { name: 'Next slide' }));
 
     expect(

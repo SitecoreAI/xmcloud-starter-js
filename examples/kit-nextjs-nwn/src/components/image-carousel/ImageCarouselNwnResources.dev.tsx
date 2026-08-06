@@ -186,7 +186,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
       data-component="ImageCarousel"
       data-variant="NwnResources"
       className={cn(
-        'overflow-hidden bg-white py-16 sm:py-20 lg:py-24',
+        'overflow-hidden bg-white py-14 sm:py-16 lg:py-20',
         props.params?.styles,
       )}
       aria-labelledby={carouselId + '-heading'}
@@ -200,7 +200,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
             </p>
             <h2
               id={carouselId + '-heading'}
-              className="mt-3 text-balance font-heading text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[1.02] tracking-[-0.02em] text-slate-900"
+              className="mt-3 text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.02em] text-slate-900"
             >
               {heading}
             </h2>
@@ -210,6 +210,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
               type="button"
               variant="outline"
               size="icon"
+              className="h-11 w-11"
               onClick={goToPrevious}
               aria-label="Previous customer resource"
               aria-controls={carouselId}
@@ -220,6 +221,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
               type="button"
               variant="outline"
               size="icon"
+              className="h-11 w-11"
               onClick={goToNext}
               aria-label="Next customer resource"
               aria-controls={carouselId}
@@ -239,19 +241,19 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
           <ImageWrapper
             key={'nwn-resource-' + currentIndex}
             image={activeResource.image}
-            wrapperClass="min-h-[20rem] overflow-hidden sm:min-h-[27rem]"
+            wrapperClass="min-h-[18rem] overflow-hidden sm:min-h-[24rem]"
             className="h-full w-full object-cover transition-transform duration-700 motion-safe:hover:scale-[1.02]"
             sizes="(min-width: 1024px) 60vw, 100vw"
             page={props.page}
           />
-          <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
+          <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
             <p className="font-heading text-sm font-semibold uppercase tracking-[0.15em] text-primary">
               {activeResource.eyebrow}
             </p>
-            <h3 className="mt-3 text-balance font-heading text-4xl font-medium leading-tight text-slate-900 sm:text-5xl">
+            <h3 className="mt-3 text-balance font-heading text-3xl font-medium leading-[1.08] text-slate-900 sm:text-4xl">
               {activeResource.title}
             </h3>
-            <p className="mt-5 text-lg leading-8 text-slate-600">
+            <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
               {activeResource.description}
             </p>
             <div className="mt-7">
@@ -273,7 +275,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
               aria-label={'Show customer resource: ' + resource.title}
               aria-current={index === currentIndex ? 'true' : undefined}
               className={cn(
-                'border-t-4 px-4 py-4 text-left font-heading text-lg font-semibold transition-colors',
+                'border-t-4 px-4 py-4 text-left font-heading text-base font-semibold transition-colors',
                 index === currentIndex
                   ? 'border-cyan-500 bg-[#eef5f6] text-primary'
                   : 'border-slate-200 text-slate-600 hover:border-slate-400 hover:bg-slate-50',

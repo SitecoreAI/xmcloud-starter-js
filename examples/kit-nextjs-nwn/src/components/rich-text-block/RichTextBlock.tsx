@@ -20,7 +20,7 @@ export const Default: React.FC<RichTextBlockProps> = (props) => {
         )}
         id={id ? id : undefined}
       >
-        <div className="nwn-content-shell py-14 sm:py-20 lg:py-24">
+        <div className="nwn-content-shell py-12 sm:py-16 lg:py-20">
           <div className="component-content nwn-rich-text-content">{text}</div>
         </div>
       </article>

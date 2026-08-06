@@ -29,7 +29,7 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
         'data-testid': 'sitecore-text',
         className,
       },
-      field?.value
+      field?.value,
     );
   },
   RichText: ({
@@ -90,7 +90,10 @@ jest.mock('@/components/ui/accordion', () => ({
       {children}
     </div>
   ),
-  AccordionTrigger: ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
+  AccordionTrigger: ({
+    children,
+    className,
+  }: React.PropsWithChildren<{ className?: string }>) => (
     <button data-testid="accordion-trigger" className={className}>
       {children}
     </button>
@@ -111,7 +114,11 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
     variant?: string;
     isPageEditing?: boolean;
   }) => (
-    <button data-testid="editable-button" data-variant={variant} data-editing={isPageEditing}>
+    <button
+      data-testid="editable-button"
+      data-variant={variant}
+      data-editing={isPageEditing}
+    >
       {buttonLink?.value?.text}
     </button>
   ),
@@ -122,7 +129,9 @@ describe('AccordionBlock Components', () => {
     it('renders accordion with heading and items', () => {
       render(<AccordionBlock {...mockAccordionProps} />);
 
-      expect(screen.getByText('Frequently Asked Questions')).toBeInTheDocument();
+      expect(
+        screen.getByText('Frequently Asked Questions'),
+      ).toBeInTheDocument();
       expect(screen.getByTestId('accordion')).toBeInTheDocument();
       expect(screen.getAllByTestId('accordion-item')).toHaveLength(4);
     });
@@ -131,7 +140,9 @@ describe('AccordionBlock Components', () => {
       render(<AccordionBlock {...mockAccordionProps} />);
 
       expect(
-        screen.getByText('Find answers to common questions about our products and services.')
+        screen.getByText(
+          'Find answers to common questions about our products and services.',
+        ),
       ).toBeInTheDocument();
       expect(screen.getByTestId('editable-button')).toBeInTheDocument();
       expect(screen.getByText('Contact Support')).toBeInTheDocument();
@@ -140,9 +151,11 @@ describe('AccordionBlock Components', () => {
     it('applies correct CSS classes and data attributes', () => {
       const { container } = render(<AccordionBlock {...mockAccordionProps} />);
 
-      const componentDiv = container.querySelector('[data-component="AccordionBlock"]');
+      const componentDiv = container.querySelector(
+        '[data-component="AccordionBlock"]',
+      );
       expect(componentDiv).toBeInTheDocument();
-      expect(componentDiv).toHaveClass('@container', '@md:py-16', '@lg:py-20');
+      expect(componentDiv).toHaveClass('@container', '@md:py-14', '@lg:py-16');
     });
   });
 
@@ -150,7 +163,9 @@ describe('AccordionBlock Components', () => {
     it('renders centered variant with correct structure', () => {
       render(<AccordionBlockCentered {...mockAccordionProps} />);
 
-      expect(screen.getByText('Frequently Asked Questions')).toBeInTheDocument();
+      expect(
+        screen.getByText('Frequently Asked Questions'),
+      ).toBeInTheDocument();
       expect(screen.getByTestId('accordion')).toBeInTheDocument();
       expect(screen.getAllByTestId('accordion-item')).toHaveLength(4);
     });
@@ -160,7 +175,9 @@ describe('AccordionBlock Components', () => {
     it('renders fifty-fifty layout with split columns', () => {
       render(<AccordionBlockFiftyFifty {...mockAccordionProps} />);
 
-      expect(screen.getByText('Frequently Asked Questions')).toBeInTheDocument();
+      expect(
+        screen.getByText('Frequently Asked Questions'),
+      ).toBeInTheDocument();
       expect(screen.getAllByTestId('accordion')).toHaveLength(2); // Two columns
       expect(screen.getAllByTestId('accordion-item')).toHaveLength(4);
     });
@@ -170,7 +187,9 @@ describe('AccordionBlock Components', () => {
     it('renders one-column layout', () => {
       render(<AccordionBlockOneColumn {...mockAccordionProps} />);
 
-      expect(screen.getByText('Frequently Asked Questions')).toBeInTheDocument();
+      expect(
+        screen.getByText('Frequently Asked Questions'),
+      ).toBeInTheDocument();
       expect(screen.getByTestId('accordion')).toBeInTheDocument();
       expect(screen.getAllByTestId('accordion-item')).toHaveLength(4);
     });

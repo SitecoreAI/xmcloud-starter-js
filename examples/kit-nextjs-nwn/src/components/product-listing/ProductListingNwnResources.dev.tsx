@@ -218,7 +218,7 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
       data-component="ProductListing"
       data-variant="NwnResources"
       className={cn(
-        'bg-[#f4f5f7] py-16 sm:py-20 lg:py-24',
+        'bg-[#f4f5f7] py-14 sm:py-16 lg:py-20',
         props.params?.styles,
       )}
       aria-labelledby="nwn-product-listing-heading"
@@ -233,12 +233,12 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
               tag="h2"
               id="nwn-product-listing-heading"
               field={datasource.title?.jsonValue}
-              className="mt-3 text-balance font-heading text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[1.03] text-slate-900"
+              className="mt-3 text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.03] text-slate-900"
             />
           ) : (
             <h2
               id="nwn-product-listing-heading"
-              className="mt-3 text-balance font-heading text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[1.03] text-slate-900"
+              className="mt-3 text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.03] text-slate-900"
             >
               {heading}
             </h2>
@@ -270,10 +270,10 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
                   <Text
                     tag="h3"
                     field={resource.titleField}
-                    className="font-heading text-3xl font-semibold leading-tight text-slate-900"
+                    className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-slate-900"
                   />
                 ) : (
-                  <h3 className="font-heading text-3xl font-semibold leading-tight text-slate-900">
+                  <h3 className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-slate-900">
                     {resource.title}
                   </h3>
                 )}
@@ -293,7 +293,7 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
                 {resource.href && (
                   <NextLink
                     href={resource.href}
-                    className="mt-6 inline-flex items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline"
+                    className="mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline"
                   >
                     {resource.linkText}
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />

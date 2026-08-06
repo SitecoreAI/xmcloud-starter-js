@@ -32,7 +32,7 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
     <section
       data-component="MultiPromo"
       data-variant="NwnQuickActions"
-      className="nwn-quick-actions relative z-20 -mt-14 pb-10 sm:-mt-20 sm:pb-14"
+      className="nwn-quick-actions relative z-20 py-10 sm:py-14"
       aria-label="Customer quick actions"
     >
       <div className="nwn-content-shell">
@@ -42,7 +42,7 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
               <Text
                 tag="h2"
                 field={title}
-                className="font-heading text-3xl font-semibold text-slate-900"
+                className="font-heading text-[1.75rem] font-semibold text-slate-900"
               />
             )}
             {description && (
@@ -85,7 +85,7 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
                   {itemDescription && (
                     <RichText
                       field={itemDescription}
-                      className="mt-3 text-sm leading-6 text-slate-600"
+                      className="mt-3 text-base leading-7 text-slate-600"
                     />
                   )}
                   {item.link?.jsonValue && (
@@ -93,7 +93,7 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
                       buttonLink={item.link.jsonValue}
                       isPageEditing={isPageEditing}
                       variant="ghost"
-                      className="mt-4 h-auto justify-start p-0 text-sm font-semibold text-primary hover:bg-transparent"
+                      className="mt-4 min-h-11 justify-start p-0 text-base font-semibold text-primary hover:bg-transparent"
                       page={props.page}
                     />
                   )}

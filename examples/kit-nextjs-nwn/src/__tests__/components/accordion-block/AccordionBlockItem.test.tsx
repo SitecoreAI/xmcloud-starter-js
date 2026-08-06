@@ -6,7 +6,13 @@ import { mockAccordionProps } from './accordion-block.mock.props';
 
 // Mock Sitecore SDK components
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
-  Text: ({ field, className }: { field?: { value?: string }; className?: string }) => (
+  Text: ({
+    field,
+    className,
+  }: {
+    field?: { value?: string };
+    className?: string;
+  }) => (
     <span data-testid="sitecore-text" className={className}>
       {field?.value}
     </span>
@@ -47,7 +53,11 @@ jest.mock('@/components/ui/accordion', () => ({
     className,
     onClick,
   }: React.PropsWithChildren<{ className?: string; onClick?: () => void }>) => (
-    <button data-testid="accordion-trigger" className={className} onClick={onClick}>
+    <button
+      data-testid="accordion-trigger"
+      className={className}
+      onClick={onClick}
+    >
       {children}
     </button>
   ),
@@ -57,7 +67,8 @@ jest.mock('@/components/ui/accordion', () => ({
 }));
 
 describe('AccordionBlockItem Component', () => {
-  const mockChild = mockAccordionProps.fields.data.datasource!.children.results[0]; // First FAQ item
+  const mockChild =
+    mockAccordionProps.fields.data.datasource!.children.results[0]; // First FAQ item
   const defaultProps = {
     child: mockChild,
     index: 0,
@@ -76,11 +87,16 @@ describe('AccordionBlockItem Component', () => {
     render(<AccordionBlockItem {...defaultProps} />);
 
     const accordionItem = screen.getByTestId('accordion-item');
-    expect(accordionItem).toHaveAttribute('data-value', 'accordion-block-item-1');
+    expect(accordionItem).toHaveAttribute(
+      'data-value',
+      'accordion-block-item-1',
+    );
   });
 
   it('generates correct value with custom prefix', () => {
-    render(<AccordionBlockItem {...defaultProps} valuePrefix="custom-prefix" />);
+    render(
+      <AccordionBlockItem {...defaultProps} valuePrefix="custom-prefix" />,
+    );
 
     const accordionItem = screen.getByTestId('accordion-item');
     expect(accordionItem).toHaveAttribute('data-value', 'custom-prefix-1');
@@ -90,7 +106,10 @@ describe('AccordionBlockItem Component', () => {
     render(<AccordionBlockItem {...defaultProps} index={5} />);
 
     const accordionItem = screen.getByTestId('accordion-item');
-    expect(accordionItem).toHaveAttribute('data-value', 'accordion-block-item-6'); // index + 1
+    expect(accordionItem).toHaveAttribute(
+      'data-value',
+      'accordion-block-item-6',
+    ); // index + 1
   });
 
   it('renders rich text content with HTML', () => {
@@ -98,7 +117,9 @@ describe('AccordionBlockItem Component', () => {
 
     const richTextContent = screen.getByTestId('sitecore-richtext');
     expect(richTextContent).toBeInTheDocument();
-    expect(richTextContent.innerHTML).toContain('We offer a 30-day return policy');
+    expect(richTextContent.innerHTML).toContain(
+      'We offer a 30-day return policy',
+    );
   });
 
   it('applies correct CSS classes to accordion item', () => {
@@ -119,8 +140,8 @@ describe('AccordionBlockItem Component', () => {
       'justify-between',
       'py-4',
       'text-left',
-      'text-base',
-      'font-medium'
+      'text-lg',
+      'font-medium',
     );
   });
 
@@ -128,13 +149,20 @@ describe('AccordionBlockItem Component', () => {
     render(<AccordionBlockItem {...defaultProps} />);
 
     const textComponent = screen.getByTestId('sitecore-text');
-    expect(textComponent).toHaveClass('font-heading', 'text-left', 'text-base', 'font-medium');
+    expect(textComponent).toHaveClass(
+      'font-heading',
+      'text-left',
+      'text-lg',
+      'font-medium',
+    );
   });
 
   it('applies correct CSS classes to content section', () => {
     const { container } = render(<AccordionBlockItem {...defaultProps} />);
 
-    const contentDiv = container.querySelector('.font-body.py-4.pt-2.text-base.font-medium');
+    const contentDiv = container.querySelector(
+      '.font-body.py-4.pt-2.text-base.font-normal',
+    );
     expect(contentDiv).toBeInTheDocument();
   });
 
@@ -145,7 +173,7 @@ describe('AccordionBlockItem Component', () => {
     };
 
     expect(() =>
-      render(<AccordionBlockItem child={childWithoutDescription} index={0} />)
+      render(<AccordionBlockItem child={childWithoutDescription} index={0} />),
     ).not.toThrow();
   });
 
@@ -156,13 +184,14 @@ describe('AccordionBlockItem Component', () => {
     expect(screen.getByText('What is our return policy?')).toBeInTheDocument();
 
     // Second item
-    const secondChild = mockAccordionProps.fields.data.datasource!.children.results[1];
+    const secondChild =
+      mockAccordionProps.fields.data.datasource!.children.results[1];
     rerender(<AccordionBlockItem child={secondChild} index={1} />);
 
     expect(screen.getByText('How do I track my order?')).toBeInTheDocument();
     expect(screen.getByTestId('accordion-item')).toHaveAttribute(
       'data-value',
-      'accordion-block-item-2'
+      'accordion-block-item-2',
     );
   });
 

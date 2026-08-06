@@ -91,9 +91,9 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
       role="contentinfo"
     >
       <div className="border-t-8 border-cyan-500">
-        <div className="nwn-content-shell grid gap-12 py-14 lg:grid-cols-[1.2fr_0.9fr_1fr] lg:py-20">
+        <div className="nwn-content-shell grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.2fr_0.9fr_1fr] lg:py-16">
           <div>
-            <div className="font-heading text-4xl font-semibold tracking-tight">
+            <div className="font-heading text-3xl font-semibold tracking-tight">
               NW Natural
             </div>
             <Text
@@ -111,7 +111,7 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
               </p>
               <a
                 href="tel:8008823377"
-                className="mt-2 inline-flex font-heading text-xl font-semibold text-white underline decoration-cyan-300 decoration-2 underline-offset-4"
+                className="mt-2 inline-flex min-h-11 items-center font-heading text-xl font-semibold text-white underline decoration-cyan-300 decoration-2 underline-offset-4"
               >
                 800-882-3377
               </a>
@@ -135,7 +135,7 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
             </ul>
           </nav>
 
-          <div>
+          <div className="md:col-span-2 lg:col-span-1">
             {shouldShowSignup && (
               <>
                 <Text
@@ -148,7 +148,11 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
                     fields={{
                       buttonVariant: 'default',
                       emailPlaceholder: {
-                        value: fields.dictionary?.FOOTER_EmailPlaceholder,
+                        value:
+                          fields.dictionary?.FOOTER_EmailPlaceholder?.replace(
+                            /\s+QA\.?$/i,
+                            '',
+                          ),
                       },
                       emailSubmitLabel: {
                         value: fields.dictionary?.FOOTER_EmailSubmitLabel,

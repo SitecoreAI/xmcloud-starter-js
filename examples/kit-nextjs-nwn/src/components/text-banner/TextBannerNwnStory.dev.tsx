@@ -31,30 +31,30 @@ export const TextBannerNwnStory: React.FC<TextBannerProps> = (props) => {
       data-component="TextBanner"
       data-variant="NwnStory"
       className={cn(
-        'border-y border-slate-300 bg-[#e4f4f7] py-14 text-slate-900 sm:py-20',
+        'border-y border-slate-300 bg-[#e4f4f7] py-12 text-slate-900 sm:py-16',
         props.params?.styles,
       )}
     >
       <div className="nwn-content-shell grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
         <div>
           <p className="font-heading text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-            Customer essentials
+            {useFallback ? 'Customer essentials' : 'Our Northwest story'}
           </p>
           {useFallback ? (
-            <h2 className="mt-3 max-w-[13ch] text-balance font-heading text-[clamp(2.75rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.02em]">
+            <h2 className="mt-3 max-w-[15ch] text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.06] tracking-[-0.02em]">
               Your account, right at hand.
             </h2>
           ) : (
             <Text
               tag="h2"
               field={fields.heading}
-              className="mt-3 max-w-[13ch] text-balance font-heading text-[clamp(2.75rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.02em]"
+              className="mt-3 max-w-[15ch] text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.06] tracking-[-0.02em]"
             />
           )}
         </div>
 
         {useFallback ? (
-          <p className="max-w-2xl text-pretty text-xl leading-9 text-slate-700">
+          <p className="max-w-2xl text-pretty text-lg leading-8 text-slate-700 sm:text-xl sm:leading-9">
             Pay a bill, move your natural gas service, explore support, and find
             the safety information you need from one clear starting point.
           </p>
@@ -62,7 +62,7 @@ export const TextBannerNwnStory: React.FC<TextBannerProps> = (props) => {
           <Text
             tag="p"
             field={fields.description}
-            className="max-w-2xl text-pretty text-xl leading-9 text-slate-700"
+            className="max-w-2xl text-pretty text-lg leading-8 text-slate-700 sm:text-xl sm:leading-9"
           />
         )}
       </div>

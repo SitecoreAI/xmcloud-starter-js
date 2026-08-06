@@ -216,14 +216,14 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
     return (
       <li
         key={'nwn-desktop-' + navItemKey(item, index)}
-        className="group relative flex min-h-16 items-center"
+        className="group relative flex min-h-14 items-center"
       >
         <div className="flex items-center gap-1">
           <CompatibleLink
             field={linkField}
             editable={isPageEditing}
             prefetch={false}
-            className="relative inline-flex py-5 font-heading text-[1.05rem] font-semibold text-slate-800 transition-colors after:absolute after:inset-x-0 after:bottom-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-cyan-500 after:transition-transform hover:text-primary hover:after:scale-x-100 focus-visible:text-primary focus-visible:after:scale-x-100"
+            className="relative inline-flex py-4 font-heading text-[1.05rem] font-semibold text-slate-800 transition-colors after:absolute after:inset-x-0 after:bottom-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-cyan-500 after:transition-transform hover:text-primary hover:after:scale-x-100 focus-visible:text-primary focus-visible:after:scale-x-100"
             aria-haspopup={children.length > 0 ? 'true' : undefined}
           />
           {children.length > 0 && (
@@ -265,7 +265,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       </a>
 
       <div className="hidden border-b border-slate-200 lg:block">
-        <div className="nwn-content-shell flex min-h-11 items-center justify-between gap-6 text-sm">
+        <div className="nwn-content-shell flex min-h-9 items-center justify-between gap-6 text-sm">
           <nav aria-label="Utility navigation">
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
               {utilityItems.map((item, index) => (
@@ -299,7 +299,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         </div>
       </div>
 
-      <div className="nwn-content-shell flex min-h-[5.25rem] items-center justify-between gap-6">
+      <div className="nwn-content-shell flex min-h-[4.5rem] items-center justify-between gap-6">
         <div className="shrink-0">
           {isPageEditing ? (
             brand
@@ -351,7 +351,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         className="hidden border-y border-slate-200 bg-[#f4f5f7] lg:block"
         aria-label="Services navigation"
       >
-        <ul className="nwn-content-shell flex min-h-12 items-stretch">
+        <ul className="nwn-content-shell flex min-h-10 items-stretch">
           {secondaryNavigation.map((item) => (
             <li
               key={item.href}
@@ -360,7 +360,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
               <Link
                 href={item.href}
                 prefetch={false}
-                className="flex w-full items-center justify-center px-4 py-3 text-center font-heading text-[0.98rem] font-semibold text-slate-700 transition-colors hover:bg-white hover:text-primary focus-visible:bg-white focus-visible:text-primary"
+                className="flex w-full items-center justify-center px-4 py-2 text-center font-heading text-[0.98rem] font-semibold text-slate-700 transition-colors hover:bg-white hover:text-primary focus-visible:bg-white focus-visible:text-primary"
               >
                 {item.label}
               </Link>
@@ -372,7 +372,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       {isMenuOpen && (
         <div
           id="nwn-mobile-navigation"
-          className="border-t border-slate-200 bg-white px-4 pb-8 shadow-lg lg:hidden"
+          className="max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-slate-200 bg-white px-4 pb-8 shadow-lg lg:hidden"
         >
           <nav className="mx-auto max-w-xl" aria-label="Mobile navigation">
             <ul>

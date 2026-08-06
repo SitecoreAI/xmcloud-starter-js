@@ -100,7 +100,7 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
                 )}
               </div>
               {/* Main content area */}
-              <main id="content" role="main">
+              <main id="content" role="main" className="flex-1">
                 {route && (
                   <AppPlaceholder
                     page={page}

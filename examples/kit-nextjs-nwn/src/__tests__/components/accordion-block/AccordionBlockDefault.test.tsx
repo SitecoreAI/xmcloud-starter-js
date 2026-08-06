@@ -209,8 +209,8 @@ describe('AccordionBlockDefault Component', () => {
     expect(component).toBeInTheDocument();
     expect(component).toHaveClass(
       '@container',
-      '@md:py-16',
-      '@lg:py-20',
+      '@md:py-14',
+      '@lg:py-16',
       'border-b-2',
       'border-t-2',
       'py-10',

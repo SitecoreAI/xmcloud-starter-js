@@ -22,7 +22,7 @@ const ctaBannerVariants = cva(
 );
 
 const ctaTitleVariants = cva(
-  'mx-auto mb-5 max-w-[18ch] text-balance font-heading text-3xl font-medium leading-[1.08] tracking-[-0.02em] antialiased sm:text-4xl md:text-5xl',
+  'mx-auto mb-5 max-w-[18ch] text-balance font-heading text-[clamp(2rem,3.5vw,2.75rem)] font-medium leading-[1.08] tracking-[-0.02em] antialiased',
   {
     variants: {
       colorScheme: {
@@ -57,7 +57,7 @@ export const Default: React.FC<CtaBannerProps> = (props) => {
 
     return (
       <section className={ctaBannerVariants({ colorScheme })}>
-        <div className="nwn-content-shell nwn-cta-content relative z-10 py-16 sm:py-20 lg:py-24">
+        <div className="nwn-content-shell nwn-cta-content relative z-10 py-12 sm:py-16 lg:py-18">
           <div className="mx-auto w-full max-w-4xl">
             {/* Use Text component with fallback for heading */}
             <AnimatedSection direction="up" isPageEditing={isEditing}>
@@ -68,7 +68,11 @@ export const Default: React.FC<CtaBannerProps> = (props) => {
               />
               <Text
                 tag="p"
-                className="mx-auto mb-8 max-w-2xl text-lg leading-8 antialiased sm:text-xl"
+                className={
+                  isEditing || descriptionOptional?.value
+                    ? 'mx-auto mb-8 max-w-2xl text-lg leading-8 antialiased'
+                    : 'hidden'
+                }
                 field={descriptionOptional}
               />
 

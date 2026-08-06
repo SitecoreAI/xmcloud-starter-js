@@ -39,8 +39,8 @@ export const PageHeaderNwnEditorial: React.FC<
         props.params?.styles,
       )}
     >
-      <div className="nwn-content-shell grid min-h-[28rem] items-stretch lg:grid-cols-[1fr_0.92fr]">
-        <div className="flex items-center py-14 pr-0 sm:py-20 lg:pr-16">
+      <div className="nwn-content-shell grid items-stretch lg:min-h-[24rem] lg:grid-cols-[1fr_0.92fr]">
+        <div className="flex items-center py-10 pr-0 sm:py-14 lg:pr-16">
           <div className="max-w-2xl">
             <p className="mb-5 border-l-4 border-cyan-500 pl-4 font-heading text-sm font-semibold uppercase tracking-[0.16em] text-primary">
               NW Natural
@@ -48,12 +48,12 @@ export const PageHeaderNwnEditorial: React.FC<
             <Text
               tag="h1"
               field={title}
-              className="max-w-[14ch] text-balance font-heading text-[clamp(3rem,6vw,4.5rem)] font-medium leading-[1.02] tracking-[-0.025em] text-slate-900"
+              className="max-w-[15ch] text-balance font-heading text-[clamp(2.25rem,4vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-slate-900"
             />
-            {subtitle && (
+            {(isPageEditing || subtitle?.value) && (
               <RichText
                 field={subtitle}
-                className="mt-6 max-w-[42rem] text-pretty text-lg leading-8 text-slate-700 sm:text-xl"
+                className="mt-5 max-w-[42rem] text-pretty text-base leading-7 text-slate-700 sm:text-lg sm:leading-8"
               />
             )}
             {hasActions && (
@@ -81,7 +81,7 @@ export const PageHeaderNwnEditorial: React.FC<
           </div>
         </div>
 
-        <div className="relative min-h-72 border-t-4 border-cyan-500 lg:min-h-full lg:border-l lg:border-t-0 lg:border-slate-300">
+        <div className="relative min-h-56 border-t-4 border-cyan-500 sm:min-h-64 lg:min-h-full lg:border-l lg:border-t-0 lg:border-slate-300">
           {hasImage ? (
             <ImageWrapper
               image={imageRequired?.jsonValue}

@@ -28,7 +28,7 @@ export const MultiPromoNwnCards: React.FC<MultiPromoProps> = (props) => {
       data-component="MultiPromo"
       data-variant="NwnCards"
       className={cn(
-        'nwn-editorial-cards bg-[#f4f5f7] py-14 sm:py-20',
+        'nwn-editorial-cards bg-[#f4f5f7] py-12 sm:py-16',
         props.params?.styles,
       )}
     >
@@ -38,13 +38,13 @@ export const MultiPromoNwnCards: React.FC<MultiPromoProps> = (props) => {
             <Text
               tag="h2"
               field={title}
-              className="max-w-[15ch] text-balance font-heading text-[clamp(2.5rem,5vw,3.5rem)] font-medium leading-[1.04] text-slate-900"
+              className="max-w-[15ch] text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.04] text-slate-900"
             />
           )}
           {description && (
             <RichText
               field={description}
-              className="max-w-2xl text-pretty text-lg leading-8 text-slate-600"
+              className="max-w-2xl text-pretty text-base leading-7 sm:text-lg sm:leading-8 text-slate-600"
             />
           )}
         </div>
