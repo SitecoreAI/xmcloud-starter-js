@@ -14,15 +14,21 @@ const isLegacyStarterValue = (value: string | undefined): boolean =>
       ),
   );
 
+const isUnexpectedFooterValue = (value: string | undefined): boolean =>
+  isLegacyStarterValue(value) || Boolean(value && /less we can/i.test(value));
+
+const stripQaSuffix = (value: string | undefined): string =>
+  value?.replace(/\s+QA\.?$/i, '') ?? '';
+
 const fallbackFooterLinks = [
-  ['Account & Billing', '/account-billing'],
-  ['Ways to Save', '/ways-to-save'],
-  ['Services', '/services'],
-  ['Get Natural Gas', '/get-natural-gas'],
-  ['Safety', '/safety'],
-  ['About Us', '/about-us'],
+  ['Builders / HVAC', 'https://nwnpartnerlink.com/Account/Login?ReturnUrl=%2f'],
+  ['Investors', 'https://ir.nwnaturalholdings.com/home/default.aspx'],
+  ['Suppliers', 'https://www.nwnatural.com/suppliers'],
+  ['Careers', 'https://www.nwnatural.com/about-us/the-company/careers'],
+  ['Safety', 'https://www.nwnatural.com/safety/home-safety'],
+  ['Contact Us', 'https://www.nwnatural.com/contact-us'],
 ].map(([text, href]) => ({
-  link: { jsonValue: { value: { text, href, linktype: 'internal' } } },
+  link: { jsonValue: { value: { text, href, linktype: 'external' } } },
 }));
 
 const fallbackEmailTitle = { value: 'Get energy tips and service updates.' };
@@ -50,6 +56,23 @@ const utilityLinks = [
   },
 ] as const;
 
+const socialLinkOrder: Record<string, number> = {
+  x: 0,
+  facebook: 1,
+  youtube: 2,
+  linkedin: 3,
+  instagram: 4,
+};
+
+const footerLinkOrder: Record<string, number> = {
+  'builders / hvac': 0,
+  investors: 1,
+  suppliers: 2,
+  careers: 3,
+  safety: 4,
+  'contact us': 5,
+};
+
 export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
   const { fields, isPageEditing } = props;
   const datasource = fields?.data?.datasource;
@@ -65,33 +88,56 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
     emailSubscriptionTitle,
   } = datasource;
   const authoredLinks = footerNavLinks?.results ?? [];
-  const hasLegacyContent =
-    isLegacyStarterValue(emailSubscriptionTitle?.jsonValue?.value) ||
-    isLegacyStarterValue(footerCopyright?.jsonValue?.value) ||
+  const hasUnexpectedContent =
+    isUnexpectedFooterValue(emailSubscriptionTitle?.jsonValue?.value) ||
+    isUnexpectedFooterValue(footerCopyright?.jsonValue?.value) ||
     authoredLinks.some(
       (item) =>
-        isLegacyStarterValue(item.link?.jsonValue?.value?.text) ||
-        isLegacyStarterValue(item.link?.jsonValue?.value?.href),
+        isUnexpectedFooterValue(item.link?.jsonValue?.value?.text) ||
+        isUnexpectedFooterValue(item.link?.jsonValue?.value?.href),
     );
   const useFallbackContent =
-    !isPageEditing && (authoredLinks.length === 0 || hasLegacyContent);
-  const links = useFallbackContent ? fallbackFooterLinks : authoredLinks;
+    !isPageEditing && (authoredLinks.length === 0 || hasUnexpectedContent);
+  const links = [
+    ...(useFallbackContent ? fallbackFooterLinks : authoredLinks),
+  ].sort((first, second) => {
+    const firstLabel =
+      first.link?.jsonValue?.value?.text?.trim().toLowerCase() ?? '';
+    const secondLabel =
+      second.link?.jsonValue?.value?.text?.trim().toLowerCase() ?? '';
+
+    return (
+      (footerLinkOrder[firstLabel] ?? Number.MAX_SAFE_INTEGER) -
+      (footerLinkOrder[secondLabel] ?? Number.MAX_SAFE_INTEGER)
+    );
+  });
   const displayEmailTitle = useFallbackContent
     ? fallbackEmailTitle
     : emailSubscriptionTitle?.jsonValue;
   const displayCopyright = useFallbackContent
     ? fallbackCopyright
     : footerCopyright?.jsonValue;
-  const displaySocialLinks = useFallbackContent
-    ? []
-    : (socialLinks?.results ?? []).filter(
-        (item) =>
-          isPageEditing ||
-          Boolean(
-            item.link?.jsonValue?.value?.href &&
-              item.socialIcon?.jsonValue?.value?.src,
-          ),
+  const displaySocialLinks = (socialLinks?.results ?? [])
+    .filter(
+      (item) =>
+        isPageEditing ||
+        Boolean(
+          item.link?.jsonValue?.value?.href &&
+            (item.socialIcon?.jsonValue?.value?.src ||
+              item.socialIconEnum?.jsonValue?.value),
+        ),
+    )
+    .sort((first, second) => {
+      const firstLabel =
+        first.link?.jsonValue?.value?.text?.trim().toLowerCase() ?? '';
+      const secondLabel =
+        second.link?.jsonValue?.value?.text?.trim().toLowerCase() ?? '';
+
+      return (
+        (socialLinkOrder[firstLabel] ?? Number.MAX_SAFE_INTEGER) -
+        (socialLinkOrder[secondLabel] ?? Number.MAX_SAFE_INTEGER)
       );
+    });
   const shouldShowSignup = isPageEditing || Boolean(displayEmailTitle?.value);
   const shouldIdentifyWithCdp = !isPageEditing && props.page.mode.isNormal;
 
@@ -102,9 +148,9 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
       className="nwn-footer bg-[#66717f] text-white"
       role="contentinfo"
     >
-      <div className="nwn-content-shell py-6 text-center">
+      <div className="mx-auto w-full max-w-[60rem] py-9 text-center">
         {shouldShowSignup && (
-          <div className="mx-auto max-w-4xl border-b border-white/20 pb-4">
+          <div className="mx-6 border-b border-white/20 pb-5">
             <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-5">
               <Text
                 tag="h2"
@@ -127,20 +173,22 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
                   fields={{
                     buttonVariant: 'default',
                     emailPlaceholder: {
-                      value:
-                        fields.dictionary?.FOOTER_EmailPlaceholder?.replace(
-                          /\s+QA\.?$/i,
-                          '',
-                        ),
+                      value: stripQaSuffix(
+                        fields.dictionary?.FOOTER_EmailPlaceholder,
+                      ),
                     },
                     emailSubmitLabel: {
                       value: fields.dictionary?.FOOTER_EmailSubmitLabel,
                     },
                     emailErrorMessage: {
-                      value: fields.dictionary?.FOOTER_EmailErrorMessage,
+                      value: stripQaSuffix(
+                        fields.dictionary?.FOOTER_EmailErrorMessage,
+                      ),
                     },
                     emailSuccessMessage: {
-                      value: fields.dictionary?.FOOTER_EmailSuccessMessage,
+                      value: stripQaSuffix(
+                        fields.dictionary?.FOOTER_EmailSuccessMessage,
+                      ),
                     },
                     submissionErrorMessage: {
                       value:
@@ -164,8 +212,11 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
           </div>
         )}
 
-        <nav className="mt-3" aria-label="Footer navigation">
-          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+        <nav
+          className={shouldShowSignup ? 'mt-5' : undefined}
+          aria-label="Footer navigation"
+        >
+          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 px-6">
             {links.map((item, index) => (
               <li key={'nwn-footer-link-' + index}>
                 <EditableButton
@@ -180,47 +231,46 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
           </ul>
         </nav>
 
-        <div className="mt-3 flex flex-col items-center justify-center gap-2 md:flex-row md:gap-5">
-          {(displaySocialLinks.length > 0 || isPageEditing) && (
-            <div>
-              <h2 className="sr-only">Follow NW Natural</h2>
-              <ul className="flex flex-wrap justify-center gap-1">
-                {displaySocialLinks.map((socialLink, index) => (
-                  <li key={'nwn-social-' + index}>
-                    <EditableButton
-                      buttonLink={socialLink.link?.jsonValue}
-                      icon={socialLink.socialIcon?.jsonValue}
-                      iconClassName="h-7 w-7 object-contain brightness-0 invert"
-                      isPageEditing={isPageEditing}
-                      variant="ghost"
-                      size="icon"
-                      className="min-h-11 min-w-11 rounded-full text-white hover:bg-white/15"
-                      asIconLink
-                      page={props.page}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <nav aria-label="Legal">
-            <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm">
-              {utilityLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="inline-flex min-h-11 items-center text-white underline-offset-4 hover:underline"
-                  >
-                    {link.text}
-                  </a>
+        {(displaySocialLinks.length > 0 || isPageEditing) && (
+          <div className="mt-7">
+            <h2 className="sr-only">Follow NW Natural</h2>
+            <ul className="flex flex-wrap justify-center gap-1">
+              {displaySocialLinks.map((socialLink, index) => (
+                <li key={'nwn-social-' + index}>
+                  <EditableButton
+                    buttonLink={socialLink.link?.jsonValue}
+                    icon={socialLink.socialIcon?.jsonValue}
+                    iconName={socialLink.socialIconEnum?.jsonValue}
+                    iconClassName="h-7 w-7 object-contain brightness-0 invert"
+                    isPageEditing={isPageEditing}
+                    variant="ghost"
+                    size="icon"
+                    className="min-h-11 min-w-11 rounded-full text-white hover:bg-white/15"
+                    asIconLink
+                    page={props.page}
+                  />
                 </li>
               ))}
             </ul>
-          </nav>
-        </div>
+          </div>
+        )}
 
-        <div className="mt-2 text-sm text-white">
+        <nav className="mx-[1.875rem] mt-6" aria-label="Legal">
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm">
+            {utilityLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="inline-flex min-h-11 items-center text-white underline-offset-4 hover:underline"
+                >
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="text-sm text-white">
           <Text field={displayCopyright} encode={false} />
         </div>
       </div>

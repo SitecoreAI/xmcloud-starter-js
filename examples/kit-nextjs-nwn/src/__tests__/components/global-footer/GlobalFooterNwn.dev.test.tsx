@@ -84,9 +84,9 @@ const footerProps: GlobalFooterProps = {
               link: {
                 jsonValue: {
                   value: {
-                    href: '/account-billing',
-                    text: 'Account & Billing',
-                    linktype: 'internal',
+                    href: 'https://nwnpartnerlink.com/Account/Login?ReturnUrl=%2f',
+                    text: 'Builders / HVAC',
+                    linktype: 'external',
                   },
                 },
               },
@@ -95,9 +95,53 @@ const footerProps: GlobalFooterProps = {
               link: {
                 jsonValue: {
                   value: {
-                    href: '/safety',
+                    href: 'https://ir.nwnaturalholdings.com/home/default.aspx',
+                    text: 'Investors',
+                    linktype: 'external',
+                  },
+                },
+              },
+            },
+            {
+              link: {
+                jsonValue: {
+                  value: {
+                    href: 'https://www.nwnatural.com/suppliers',
+                    text: 'Suppliers',
+                    linktype: 'external',
+                  },
+                },
+              },
+            },
+            {
+              link: {
+                jsonValue: {
+                  value: {
+                    href: 'https://www.nwnatural.com/about-us/the-company/careers',
+                    text: 'Careers',
+                    linktype: 'external',
+                  },
+                },
+              },
+            },
+            {
+              link: {
+                jsonValue: {
+                  value: {
+                    href: 'https://www.nwnatural.com/safety/home-safety',
                     text: 'Safety',
-                    linktype: 'internal',
+                    linktype: 'external',
+                  },
+                },
+              },
+            },
+            {
+              link: {
+                jsonValue: {
+                  value: {
+                    href: 'https://www.nwnatural.com/contact-us',
+                    text: 'Contact Us',
+                    linktype: 'external',
                   },
                 },
               },
@@ -106,6 +150,22 @@ const footerProps: GlobalFooterProps = {
         },
         socialLinks: {
           results: [
+            {
+              link: {
+                jsonValue: {
+                  value: {
+                    href: 'https://twitter.com/nwnatural',
+                    text: 'X',
+                    linktype: 'external',
+                  },
+                },
+              },
+              socialIconEnum: {
+                jsonValue: {
+                  value: 'twitter',
+                },
+              },
+            },
             {
               link: {
                 jsonValue: {
@@ -125,6 +185,60 @@ const footerProps: GlobalFooterProps = {
                 },
               },
             },
+            {
+              link: {
+                jsonValue: {
+                  value: {
+                    href: 'https://www.youtube.com/user/nwnaturalgas',
+                    text: 'YouTube',
+                    linktype: 'external',
+                  },
+                },
+              },
+              socialIconEnum: {
+                jsonValue: {
+                  value: 'youtube',
+                },
+              },
+            },
+            {
+              link: {
+                jsonValue: {
+                  value: {
+                    href: 'https://www.linkedin.com/company/nw-natural',
+                    text: 'LinkedIn',
+                    linktype: 'external',
+                  },
+                },
+              },
+              socialIcon: {
+                jsonValue: {
+                  value: {
+                    src: '/linkedin.svg',
+                    alt: 'LinkedIn',
+                  },
+                },
+              },
+            },
+            {
+              link: {
+                jsonValue: {
+                  value: {
+                    href: 'https://www.instagram.com/nwnaturalgas/',
+                    text: 'Instagram',
+                    linktype: 'external',
+                  },
+                },
+              },
+              socialIcon: {
+                jsonValue: {
+                  value: {
+                    src: '/instagram.svg',
+                    alt: 'Instagram',
+                  },
+                },
+              },
+            },
           ],
         },
         tagline: {
@@ -137,7 +251,7 @@ const footerProps: GlobalFooterProps = {
           jsonValue: { value: 'Get energy tips and service updates.' },
         },
         footerCopyright: {
-          jsonValue: { value: '© 2026 NW Natural. All rights reserved.' },
+          jsonValue: { value: '© 2026 NW Natural. All Rights Reserved.' },
         },
       },
     },
@@ -189,29 +303,46 @@ describe('GlobalFooterNwn', () => {
     });
     expect(
       within(footerNavigation).getByRole('link', {
-        name: 'Account & Billing',
+        name: 'Builders / HVAC',
       }),
-    ).toHaveAttribute('href', '/account-billing');
+    ).toHaveAttribute(
+      'href',
+      'https://nwnpartnerlink.com/Account/Login?ReturnUrl=%2f',
+    );
     expect(
       within(footerNavigation).getByRole('link', { name: 'Safety' }),
-    ).toHaveAttribute('href', '/safety');
+    ).toHaveAttribute('href', 'https://www.nwnatural.com/safety/home-safety');
+    expect(
+      within(footerNavigation).getByRole('link', { name: 'Contact Us' }),
+    ).toHaveAttribute('href', 'https://www.nwnatural.com/contact-us');
+    expect(
+      within(footerNavigation).queryByRole('link', { name: 'Less We Can' }),
+    ).not.toBeInTheDocument();
 
-    expect(screen.getByRole('link', { name: 'Facebook' })).toHaveAttribute(
-      'href',
-      'https://www.facebook.com/NWNaturalGas',
-    );
+    [
+      ['X', 'https://twitter.com/nwnatural'],
+      ['Facebook', 'https://www.facebook.com/NWNaturalGas'],
+      ['YouTube', 'https://www.youtube.com/user/nwnaturalgas'],
+      ['LinkedIn', 'https://www.linkedin.com/company/nw-natural'],
+      ['Instagram', 'https://www.instagram.com/nwnaturalgas/'],
+    ].forEach(([name, href]) => {
+      expect(screen.getByRole('link', { name })).toHaveAttribute('href', href);
+    });
 
     const legalNavigation = screen.getByRole('navigation', { name: 'Legal' });
+    [
+      'Terms and Conditions',
+      'Privacy Notice',
+      'Bill Inserts',
+      'En Español',
+      'Your Privacy Choices',
+    ].forEach((name) => {
+      expect(
+        within(legalNavigation).getByRole('link', { name }),
+      ).toBeInTheDocument();
+    });
     expect(
-      within(legalNavigation).getByRole('link', {
-        name: 'Terms and Conditions',
-      }),
-    ).toBeInTheDocument();
-    expect(
-      within(legalNavigation).getByRole('link', { name: 'Privacy Notice' }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('© 2026 NW Natural. All rights reserved.'),
+      screen.getByText('© 2026 NW Natural. All Rights Reserved.'),
     ).toBeInTheDocument();
   });
 
@@ -247,6 +378,122 @@ describe('GlobalFooterNwn', () => {
       expect.not.objectContaining({ cdpIdentity: expect.anything() }),
       undefined,
     );
+  });
+
+  it('replaces an obsolete Less We Can footer link with the live footer set', () => {
+    render(
+      <GlobalFooterNwn
+        {...footerProps}
+        fields={{
+          ...footerProps.fields,
+          data: {
+            datasource: {
+              ...footerProps.fields.data.datasource,
+              footerNavLinks: {
+                results: [
+                  {
+                    link: {
+                      jsonValue: {
+                        value: {
+                          href: '/about-us/environment/less-we-can',
+                          text: 'Less We Can',
+                          linktype: 'internal',
+                        },
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        }}
+      />,
+    );
+
+    const footerNavigation = screen.getByRole('navigation', {
+      name: 'Footer navigation',
+    });
+    expect(
+      within(footerNavigation)
+        .getAllByRole('link')
+        .map((link) => link.textContent),
+    ).toEqual([
+      'Builders / HVAC',
+      'Investors',
+      'Suppliers',
+      'Careers',
+      'Safety',
+      'Contact Us',
+    ]);
+    expect(
+      within(footerNavigation).queryByText('Less We Can'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('uses the same social-link order as the live NW Natural footer', () => {
+    const reversedSocialLinks = [
+      ...footerProps.fields.data.datasource.socialLinks.results,
+    ].reverse();
+
+    render(
+      <GlobalFooterNwn
+        {...footerProps}
+        fields={{
+          ...footerProps.fields,
+          data: {
+            datasource: {
+              ...footerProps.fields.data.datasource,
+              socialLinks: { results: reversedSocialLinks },
+            },
+          },
+        }}
+      />,
+    );
+
+    const socialSection = screen.getByRole('heading', {
+      name: 'Follow NW Natural',
+    }).parentElement;
+
+    expect(socialSection).not.toBeNull();
+    expect(
+      within(socialSection as HTMLElement)
+        .getAllByRole('link')
+        .map((link) => link.getAttribute('aria-label')),
+    ).toEqual(['X', 'Facebook', 'YouTube', 'LinkedIn', 'Instagram']);
+  });
+
+  it('uses the same primary-link order as the live NW Natural footer', () => {
+    const reversedFooterLinks = [
+      ...footerProps.fields.data.datasource.footerNavLinks.results,
+    ].reverse();
+
+    render(
+      <GlobalFooterNwn
+        {...footerProps}
+        fields={{
+          ...footerProps.fields,
+          data: {
+            datasource: {
+              ...footerProps.fields.data.datasource,
+              footerNavLinks: { results: reversedFooterLinks },
+            },
+          },
+        }}
+      />,
+    );
+
+    expect(
+      within(screen.getByRole('navigation', { name: 'Footer navigation' }))
+        .getAllByRole('link')
+        .map((link) => link.textContent),
+    ).toEqual([
+      'Builders / HVAC',
+      'Investors',
+      'Suppliers',
+      'Careers',
+      'Safety',
+      'Contact Us',
+    ]);
   });
 
   it('omits the oversized brand, tagline, emergency panel, and closing slogan', () => {

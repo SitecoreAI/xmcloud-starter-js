@@ -35,7 +35,8 @@ export type GlobalFooterFields = {
 
 export type FooterSocialLink = {
   link: { jsonValue: LinkField };
-  socialIcon: { jsonValue: ImageField };
+  socialIcon?: { jsonValue: ImageField };
+  socialIconEnum?: { jsonValue: Field<string> };
 };
 
 export type FooterNavigationColumnProps = OptionalComponentProps & {
@@ -71,4 +72,3 @@ export type FooterNavigationLink = {
     jsonValue: LinkField;
   };
 };
-

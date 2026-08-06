@@ -173,111 +173,64 @@
             ]
         },
         "footer": {
-            "intro": "Serving homes and communities across Oregon and southwest Washington with dependable natural gas service and practical energy guidance.",
-            "groups": [
+            "newsletter": {
+                "heading": "Get energy tips and service updates.",
+                "submitLabel": "Subscribe",
+                "cdpIdentitySource": "global_footer"
+            },
+            "primaryLinks": [
                 {
-                    "heading": "Account",
-                    "links": [
-                        {
-                            "label": "Pay My Bill",
-                            "destination": "/account-billing/pay-my-bill"
-                        },
-                        {
-                            "label": "Start, Stop or Transfer",
-                            "destination": "/account-billing/start-stop-transfer"
-                        },
-                        {
-                            "label": "Payment Assistance",
-                            "destination": "/account-billing/payment-assistance"
-                        }
-                    ]
-                },
-                {
-                    "heading": "Home Energy",
-                    "links": [
-                        {
-                            "label": "Rebates & Offers",
-                            "destination": "/ways-to-save/rebates-offers"
-                        },
-                        {
-                            "label": "Services",
-                            "destination": "/services"
-                        },
-                        {
-                            "label": "Get Natural Gas",
-                            "destination": "/get-natural-gas"
-                        }
-                    ]
-                },
-                {
-                    "heading": "Safety",
-                    "links": [
-                        {
-                            "label": "Smell Natural Gas?",
-                            "destination": "/safety/smell-natural-gas"
-                        },
-                        {
-                            "label": "Call 811 Before You Dig",
-                            "destination": "/safety/call-before-you-dig"
-                        },
-                        {
-                            "label": "Customer Service: 800-422-4012",
-                            "destination": "tel:+18004224012"
-                        }
-                    ]
-                },
-                {
-                    "heading": "Company",
-                    "links": [
-                        {
-                            "label": "About Us",
-                            "destination": "/about-us"
-                        },
-                        {
-                            "label": "Company Overview",
-                            "destination": "/about-us/company-overview"
-                        },
-                        {
-                            "label": "Renewable Natural Gas",
-                            "destination": "/about-us/renewable-natural-gas"
-                        },
-                        {
-                            "label": "Less We Can",
-                            "destination": "/about-us/less-we-can"
-                        }
-                    ]
-                }
-            ],
-            "industryLinks": [
-                {
-                    "label": "Builders & HVAC",
-                    "destination": "https://www.nwnatural.com/business",
+                    "label": "Builders / HVAC",
+                    "destination": "https://nwnpartnerlink.com/Account/Login?ReturnUrl=%2f",
                     "external": true
                 },
                 {
                     "label": "Investors",
-                    "destination": "https://ir.nwnaturalholdings.com/",
+                    "destination": "https://ir.nwnaturalholdings.com/home/default.aspx",
                     "external": true
                 },
                 {
                     "label": "Suppliers",
-                    "destination": "https://www.nwnatural.com/",
-                    "external": true,
-                    "authoringNote": "Replace with the current supplier destination from the production footer."
+                    "destination": "https://www.nwnatural.com/suppliers",
+                    "external": true
                 },
                 {
                     "label": "Careers",
-                    "destination": "https://www.nwnatural.com/",
-                    "external": true,
-                    "authoringNote": "Replace with the current careers destination from the production footer."
+                    "destination": "https://www.nwnatural.com/about-us/the-company/careers",
+                    "external": true
+                },
+                {
+                    "label": "Safety",
+                    "destination": "https://www.nwnatural.com/safety/home-safety",
+                    "external": true
+                },
+                {
+                    "label": "Contact Us",
+                    "destination": "https://www.nwnatural.com/contact-us",
+                    "external": true
                 }
             ],
             "socialLinks": [
-                "X",
-                "Facebook",
-                "YouTube",
-                "LinkedIn",
-                "Instagram"
+                {
+                    "label": "X",
+                    "destination": "https://twitter.com/nwnatural"
+                },
+                {
+                    "label": "Facebook",
+                    "destination": "https://www.facebook.com/NWNaturalGas"
+                },
+                {
+                    "label": "YouTube",
+                    "destination": "https://www.youtube.com/user/nwnaturalgas"
+                },
+                {
+                    "label": "LinkedIn",
+                    "destination": "https://www.linkedin.com/company/nw-natural"
+                },
+                {
+                    "label": "Instagram",
+                    "destination": "https://www.instagram.com/nwnaturalgas/"
+                }
             ],
             "legalLinks": [
                 "Terms and Conditions",
@@ -286,7 +239,7 @@
                 "En Español",
                 "Your Privacy Choices"
             ],
-            "copyright": "© {year} NW Natural. All rights reserved."
+            "copyright": "© {year} NW Natural. All Rights Reserved."
         }
     },
     "pages": [

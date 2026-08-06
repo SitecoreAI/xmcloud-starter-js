@@ -69,6 +69,7 @@ const ButtonBase = (props: ButtonBaseProps): JSX.Element | null => {
 const EditableButton = (props: {
   buttonLink: LinkField;
   icon?: ImageField;
+  iconName?: { value?: string };
   iconClassName?: string;
   iconPosition?: EnumValues<typeof IconPosition>;
   isAriaHidden?: boolean;
@@ -84,6 +85,7 @@ const EditableButton = (props: {
   const {
     buttonLink,
     icon,
+    iconName,
     variant,
     size,
     iconPosition = 'trailing',
@@ -95,6 +97,7 @@ const EditableButton = (props: {
     page,
   } = props || {};
   const ariaHidden = typeof isAriaHidden === 'boolean' ? isAriaHidden : true;
+  const enumIconName = iconName?.value as EnumValues<typeof IconName>;
   if (!isPageEditing && !isValidEditableLink(buttonLink, icon)) return null;
 
   return (
@@ -102,21 +105,37 @@ const EditableButton = (props: {
       {isPageEditing ? (
         <span className="flex">
           {iconPosition === IconPosition.LEADING ? (
-            <ImageWrapper
-              className={iconClassName}
-              image={icon}
-              aria-hidden={ariaHidden}
-              page={page}
-            />
+            icon?.value?.src ? (
+              <ImageWrapper
+                className={iconClassName}
+                image={icon}
+                aria-hidden={ariaHidden}
+                page={page}
+              />
+            ) : enumIconName ? (
+              <Icon
+                iconName={enumIconName}
+                className={iconClassName}
+                isAriaHidden={ariaHidden}
+              />
+            ) : null
           ) : null}
           <Link field={buttonLink} editable={isPageEditing} />
           {iconPosition !== IconPosition.LEADING ? (
-            <ImageWrapper
-              className={iconClassName}
-              image={icon}
-              aria-hidden={ariaHidden}
-              page={page}
-            />
+            icon?.value?.src ? (
+              <ImageWrapper
+                className={iconClassName}
+                image={icon}
+                aria-hidden={ariaHidden}
+                page={page}
+              />
+            ) : enumIconName ? (
+              <Icon
+                iconName={enumIconName}
+                className={iconClassName}
+                isAriaHidden={ariaHidden}
+              />
+            ) : null
           ) : null}
         </span>
       ) : (
@@ -135,6 +154,12 @@ const EditableButton = (props: {
                 aria-hidden={ariaHidden}
                 page={page}
               />
+            ) : iconPosition === IconPosition.LEADING && enumIconName ? (
+              <Icon
+                iconName={enumIconName}
+                className={iconClassName}
+                isAriaHidden={ariaHidden}
+              />
             ) : null}
             {!asIconLink && buttonLink?.value?.text}
             {iconPosition !== IconPosition.LEADING && icon?.value?.src ? (
@@ -143,6 +168,12 @@ const EditableButton = (props: {
                 image={icon}
                 aria-hidden={ariaHidden}
                 page={page}
+              />
+            ) : iconPosition !== IconPosition.LEADING && enumIconName ? (
+              <Icon
+                iconName={enumIconName}
+                className={iconClassName}
+                isAriaHidden={ariaHidden}
               />
             ) : null}
           </CompatibleLink>
