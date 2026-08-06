@@ -126,7 +126,7 @@ describe('AccordionBlockDefault Component', () => {
     expect(screen.getAllByTestId('accordion-block-item')).toHaveLength(4);
   });
 
-  it('replaces legacy vehicle FAQs with NW Natural customer help', () => {
+  it('renders the authored datasource without substituting fallback FAQs', () => {
     const legacyProps = {
       ...mockAccordionProps,
       fields: {
@@ -143,20 +143,11 @@ describe('AccordionBlockDefault Component', () => {
 
     const { container } = render(<AccordionBlockDefault {...legacyProps} />);
 
+    expect(screen.getByText('Emergency vehicle questions')).toBeInTheDocument();
+    expect(screen.getByText('What is our return policy?')).toBeInTheDocument();
+    expect(screen.getByText('Contact Support')).toBeInTheDocument();
     expect(
-      screen.getByText('Questions? We are here to help.'),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('What should I do if I smell natural gas?'),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('Why should I call 811 before digging?'),
-    ).toBeInTheDocument();
-    expect(screen.getByTestId('editable-button')).toHaveTextContent(
-      'Visit account and billing',
-    );
-    expect(
-      container.querySelector('[data-variant="NwnHelp"]'),
+      container.querySelector('[data-variant="Default"]'),
     ).toBeInTheDocument();
   });
 
@@ -265,6 +256,27 @@ describe('AccordionBlockDefault Component', () => {
       '.\\@md\\:grid.\\@md\\:grid-cols-\\[4fr\\,6fr\\]',
     );
     expect(gridContainer).toBeInTheDocument();
+  });
+
+  it('shows datasource guidance only in Page Builder when the datasource is missing', () => {
+    const missingDatasourceProps = {
+      ...mockAccordionProps,
+      fields: { data: { datasource: null } },
+    } as unknown as React.ComponentProps<typeof AccordionBlockDefault>;
+
+    const { container, rerender } = render(
+      <AccordionBlockDefault {...missingDatasourceProps} />,
+    );
+
+    expect(container).toBeEmptyDOMElement();
+
+    rerender(
+      <AccordionBlockDefault {...missingDatasourceProps} isPageEditing />,
+    );
+
+    expect(screen.getByTestId('no-data-fallback')).toHaveTextContent(
+      'Accordion Block',
+    );
   });
 
   it('handles missing optional datasource properties gracefully', () => {

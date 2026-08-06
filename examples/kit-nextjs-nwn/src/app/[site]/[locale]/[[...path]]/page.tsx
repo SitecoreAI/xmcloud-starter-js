@@ -14,19 +14,8 @@ import { setRequestLocale } from 'next-intl/server';
 import { generateWebPageSchema } from 'src/lib/structured-data/schema';
 import { StructuredData } from '@/components/structured-data/StructuredData';
 import { getBaseUrlFromHeaders } from '@/lib/utils';
-import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { isLegacyStarterRoute } from '@/lib/nwn-route-guard';
 import { sanitizeLegacyStarterData } from '@/lib/nwn-content-sanitizer';
-
-const HOME_HERO_IMAGE = nwnImageSources.heroFamilyComfort;
-const DEFAULT_DESCRIPTION =
-  'NW Natural provides safe, reliable and affordable energy for the communities we serve.';
-const DEFAULT_KEYWORDS = [
-  'natural gas',
-  'account support',
-  'energy safety',
-  'Pacific Northwest',
-];
 
 const isLegacyStarterValue = (value: string | undefined): boolean =>
   /\b(?:alaris|aero|nexa|terra|automotive|vehicles?|dealerships?)\b|test[-\s]?drive|electric future|drivesense/i.test(
@@ -38,20 +27,32 @@ const useNwnValue = (
 ): string | undefined =>
   values.find((value) => value?.trim() && !isLegacyStarterValue(value));
 
+type AuthoredImage = {
+  src: string;
+  alt?: string;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function findHeroImageSrc(page: any): string | undefined {
+function findHeroImage(page: any): AuthoredImage | undefined {
   const placeholders = page?.layout?.sitecore?.route?.placeholders;
   if (!placeholders) return undefined;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const search = (components: any[]): string | undefined => {
+  const search = (components: any[]): AuthoredImage | undefined => {
     for (const comp of components) {
       if (comp.componentName === 'Hero') {
-        const serializedFields = JSON.stringify(comp.fields);
         const imageSrc = comp.fields?.image?.value?.src;
-        return !imageSrc || isLegacyStarterValue(serializedFields)
-          ? HOME_HERO_IMAGE
-          : imageSrc;
+        const imageAlt = comp.fields?.image?.value?.alt;
+        return imageSrc &&
+          !isLegacyStarterValue(imageSrc) &&
+          !isLegacyStarterValue(
+            typeof imageAlt === 'string' ? imageAlt : undefined,
+          )
+          ? {
+              src: imageSrc,
+              alt: typeof imageAlt === 'string' ? imageAlt : undefined,
+            }
+          : undefined;
       }
       // Recurse into nested placeholders (containers / flex)
       if (comp.placeholders) {
@@ -127,40 +128,34 @@ export default async function Page({ params }: PageProps) {
       ? page
       : sanitizeLegacyStarterData(page);
 
-  const heroImageSrc = findHeroImageSrc(renderPage);
-  if (heroImageSrc) {
-    preload(heroImageSrc, { as: 'image', fetchPriority: 'high' });
+  const heroImage = findHeroImage(renderPage);
+  if (heroImage) {
+    preload(heroImage.src, { as: 'image', fetchPriority: 'high' });
   }
 
   // Generate page-specific structured data
   const fields = renderPage.layout.sitecore.route?.fields as RouteFields;
-  const pageTitle =
-    useNwnValue(
-      fields?.Title?.value?.toString(),
-      fields?.pageTitle?.value?.toString(),
-    ) ||
-    (path?.length
-      ? 'NW Natural'
-      : 'NW Natural | Home Energy, Account Help & Safety');
-  const pageDescription =
-    useNwnValue(
-      fields?.metadataDescription?.value?.toString(),
-      fields?.ogDescription?.value?.toString(),
-    ) || DEFAULT_DESCRIPTION;
+  const pageTitle = useNwnValue(
+    fields?.Title?.value?.toString(),
+    fields?.pageTitle?.value?.toString(),
+  );
+  const pageDescription = useNwnValue(
+    fields?.metadataDescription?.value?.toString(),
+    fields?.ogDescription?.value?.toString(),
+  );
   const currentPath = path?.length ? `/${path.join('/')}` : '/';
   const fullUrl = `${baseUrl}${currentPath}`;
-  const webPageSchema = generateWebPageSchema(
-    pageTitle,
-    fullUrl,
-    pageDescription,
-    locale,
-  );
+  const webPageSchema = pageTitle
+    ? generateWebPageSchema(pageTitle, fullUrl, pageDescription, locale)
+    : undefined;
 
   return (
     <NextIntlClientProvider>
       <Providers page={renderPage}>
         {/* Page-specific structured data */}
-        <StructuredData id="webpage-schema" data={webPageSchema} />
+        {webPageSchema && (
+          <StructuredData id="webpage-schema" data={webPageSchema} />
+        )}
         <Layout page={renderPage} baseUrl={baseUrl || undefined} />
       </Providers>
     </NextIntlClientProvider>
@@ -218,24 +213,19 @@ export const generateMetadata = async ({ params }: PageProps) => {
   const routeFields = (page?.layout.sitecore.route?.fields ??
     {}) as RouteFields;
 
-  const isHome = !path?.length;
-
   // Ignore inherited Alaris starter values while live authoring catches up.
-  const metadataTitle =
-    useNwnValue(
-      routeFields?.metadataTitle?.value?.toString(),
-      routeFields?.pageTitle?.value?.toString(),
-      routeFields?.Title?.value?.toString(),
-      routeFields?.ogTitle?.value?.toString(),
-    ) ||
-    (isHome ? 'NW Natural | Home Energy, Account Help & Safety' : 'NW Natural');
+  const metadataTitle = useNwnValue(
+    routeFields?.metadataTitle?.value?.toString(),
+    routeFields?.pageTitle?.value?.toString(),
+    routeFields?.Title?.value?.toString(),
+    routeFields?.ogTitle?.value?.toString(),
+  );
 
-  const metadataDescription =
-    useNwnValue(
-      routeFields?.metadataDescription?.value?.toString(),
-      routeFields?.pageSummary?.value?.toString(),
-      routeFields?.ogDescription?.value?.toString(),
-    ) || DEFAULT_DESCRIPTION;
+  const metadataDescription = useNwnValue(
+    routeFields?.metadataDescription?.value?.toString(),
+    routeFields?.pageSummary?.value?.toString(),
+    routeFields?.ogDescription?.value?.toString(),
+  );
 
   const ogTitle =
     useNwnValue(
@@ -248,10 +238,15 @@ export const generateMetadata = async ({ params }: PageProps) => {
     metadataDescription;
 
   // Ensure image URL is absolute (HTTPS preferred)
+  const heroImage = findHeroImage(page);
   const authoredImageSource =
-    routeFields?.ogImage?.value?.src || routeFields?.thumbnailImage?.value?.src;
+    routeFields?.ogImage?.value?.src ||
+    routeFields?.thumbnailImage?.value?.src ||
+    heroImage?.src;
   const authoredImageAltValue =
-    routeFields?.ogImage?.value?.alt || routeFields?.thumbnailImage?.value?.alt;
+    routeFields?.ogImage?.value?.alt ||
+    routeFields?.thumbnailImage?.value?.alt ||
+    heroImage?.alt;
   const authoredImageAlt =
     typeof authoredImageAltValue === 'string'
       ? authoredImageAltValue
@@ -260,11 +255,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
     Boolean(authoredImageSource) &&
     !isLegacyStarterValue(authoredImageSource) &&
     !isLegacyStarterValue(authoredImageAlt);
-  const imageSource = authoredImageIsNwn
-    ? authoredImageSource
-    : isHome
-      ? HOME_HERO_IMAGE
-      : undefined;
+  const imageSource = authoredImageIsNwn ? authoredImageSource : undefined;
 
   const ogImageUrl = imageSource
     ? imageSource.startsWith('http')
@@ -280,17 +271,16 @@ export const generateMetadata = async ({ params }: PageProps) => {
   );
   const keywords = keywordsString
     ? keywordsString.split(',').map((k: string) => k.trim())
-    : isHome
-      ? DEFAULT_KEYWORDS
-      : [];
+    : [];
 
-  const metadataAuthor =
-    useNwnValue(routeFields?.metadataAuthor?.value?.toString()) || 'NW Natural';
+  const metadataAuthor = useNwnValue(
+    routeFields?.metadataAuthor?.value?.toString(),
+  );
 
   return {
     title: metadataTitle,
     description: metadataDescription,
-    authors: [{ name: metadataAuthor }],
+    ...(metadataAuthor && { authors: [{ name: metadataAuthor }] }),
     ...(keywords.length > 0 && { keywords }),
     ...(canonicalUrl && {
       alternates: {
@@ -310,7 +300,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
               url: ogImageUrl,
               width: 1200,
               height: 630,
-              alt: ogTitle,
+              ...(ogTitle && { alt: ogTitle }),
             },
           ]
         : undefined,

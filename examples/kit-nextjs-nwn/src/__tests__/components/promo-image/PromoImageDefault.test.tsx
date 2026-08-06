@@ -2,11 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { PromoImageDefault } from '@/components/promo-image/PromoImageDefault.dev';
-import { nwnImageSources } from '@/lib/nwn-static-assets';
-import {
-  mockPromoImageProps,
-  mockPromoImagePropsNoLink,
-} from './promo-image.mock.props';
+import { mockPromoImageProps } from './promo-image.mock.props';
 
 // Mock dependencies
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
@@ -67,81 +63,77 @@ jest.mock('@/hooks/use-match-media', () => ({
 }));
 
 describe('PromoImageDefault', () => {
-  it('replaces legacy vehicle copy with the NW Natural company story', () => {
-    render(<PromoImageDefault {...mockPromoImageProps} />);
+  const authoredFields = {
+    image: {
+      value: {
+        src: 'https://dam.example/home-comfort.jpg',
+        alt: 'NW Natural technician servicing home equipment',
+      },
+    },
+    heading: { value: 'Make home comfort work harder' },
+    description: {
+      value: '<p>Explore practical ways to care for your equipment.</p>',
+    },
+    link: {
+      value: {
+        href: '/ways-to-save/rebates-offers',
+        text: 'Explore rebates and offers',
+        linktype: 'internal' as const,
+      },
+    },
+  };
+
+  it('renders authored content, image, and CTA verbatim', () => {
+    render(
+      <PromoImageDefault {...mockPromoImageProps} fields={authoredFields} />,
+    );
 
     expect(
-      screen.getByText('Rooted in the communities we serve.'),
+      screen.getByText('Make home comfort work harder'),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/For more than 160 years, NW Natural/),
+      screen.getByText('Explore practical ways to care for your equipment.'),
     ).toBeInTheDocument();
-    expect(
-      screen.queryByText('Save Lives with Advanced Emergency Vehicles'),
-    ).not.toBeInTheDocument();
-    expect(screen.getByTestId('button')).toHaveTextContent(
-      'Get to know NW Natural',
-    );
+    expect(screen.getByTestId('button')).toHaveTextContent('Explore rebates');
     expect(screen.getByTestId('button')).toHaveAttribute(
       'data-href',
-      '/about-us/company-overview',
+      '/ways-to-save/rebates-offers',
     );
-  });
-
-  it('replaces a legacy vehicle image with the local community asset', () => {
-    render(<PromoImageDefault {...mockPromoImageProps} />);
-
     const image = screen.getByTestId('image-wrapper');
-    expect(image).toHaveAttribute('src', nwnImageSources.communityTreePlanting);
+    expect(image).toHaveAttribute(
+      'src',
+      'https://dam.example/home-comfort.jpg',
+    );
     expect(image).toHaveAttribute(
       'alt',
-      'NW Natural volunteers planting trees with community members',
+      'NW Natural technician servicing home equipment',
     );
   });
 
-  it('provides the company-story CTA when a legacy promo link is empty', () => {
-    render(<PromoImageDefault {...mockPromoImagePropsNoLink} />);
-
-    expect(
-      screen.getByText('Rooted in the communities we serve.'),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/For more than 160 years, NW Natural/),
-    ).toBeInTheDocument();
-    expect(screen.getByTestId('button')).toHaveTextContent(
-      'Get to know NW Natural',
-    );
-  });
-
-  it('uses a relevant home-comfort image for an authored promo without one', () => {
+  it('does not insert an image for visitors when the image field is empty', () => {
     render(
       <PromoImageDefault
         {...mockPromoImageProps}
-        fields={{
-          image: { value: {} },
-          heading: { value: 'Make home comfort work harder' },
-          description: {
-            value: '<p>Explore practical ways to care for your equipment.</p>',
-          },
-          link: {
-            value: {
-              href: '/ways-to-save/rebates-offers',
-              text: 'Explore rebates and offers',
-              linktype: 'internal',
-            },
-          },
-        }}
+        fields={{ ...authoredFields, image: { value: {} } }}
       />,
     );
 
-    expect(screen.getByTestId('image-wrapper')).toHaveAttribute(
-      'src',
-      nwnImageSources.rebatesFurnace,
+    expect(screen.queryByTestId('image-wrapper')).not.toBeInTheDocument();
+    expect(
+      screen.getByText('Make home comfort work harder'),
+    ).toBeInTheDocument();
+  });
+
+  it('preserves the empty image field for Page Builder', () => {
+    render(
+      <PromoImageDefault
+        {...mockPromoImageProps}
+        isPageEditing
+        fields={{ ...authoredFields, image: { value: {} } }}
+      />,
     );
-    expect(screen.getByTestId('image-wrapper')).toHaveAttribute(
-      'alt',
-      'High-efficiency natural gas furnace installed in a home',
-    );
+
+    expect(screen.getByTestId('image-wrapper')).not.toHaveAttribute('src');
   });
 
   it('does not render a completely empty assigned datasource to visitors', () => {

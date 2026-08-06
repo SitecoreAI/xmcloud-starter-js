@@ -295,6 +295,27 @@ describe('ImageCarouselNwnResources', () => {
     ).toEqual(['slide-811', 'slide-assistance', 'slide-account']);
   });
 
+  it('keeps combined managed copy compact and unduplicated in Page Builder', () => {
+    const combinedCopy =
+      'Call 811 before you dig || A free utility locate helps protect you and your neighbors.';
+    const item = createItem(
+      'slide-811-structured',
+      combinedCopy,
+      '/safety/call-before-you-dig',
+      'Plan a safe project',
+    );
+
+    render(<ImageCarouselNwnResources {...createProps([item], true)} />);
+
+    const editableCopy = screen.getByText(combinedCopy);
+    expect(editableCopy.tagName).toBe('P');
+    expect(editableCopy).toHaveClass('text-lg');
+    expect(
+      screen.queryByRole('heading', { name: combinedCopy }),
+    ).not.toBeInTheDocument();
+    expect(screen.getAllByText(/A free utility locate helps/)).toHaveLength(1);
+  });
+
   it('keeps swipe and drag enabled outside Page Builder', () => {
     render(<ImageCarouselNwnResources {...createProps()} />);
 
@@ -324,6 +345,10 @@ describe('ImageCarouselNwnResources', () => {
     ).toEqual(['slide-rebates', 'slide-811']);
     expect(slides[0]).toHaveTextContent('Rebates and offers');
     expect(slides[1]).toHaveTextContent('Call 811 before you dig');
+    expect(screen.queryAllByTestId('carousel-image-field')).toHaveLength(0);
+    expect(
+      screen.queryByText(/quick call helps underground utilities/i),
+    ).not.toBeInTheDocument();
   });
 
   it('uses the Embla API for arrows and item selectors', () => {
@@ -425,7 +450,7 @@ describe('ImageCarouselNwnResources', () => {
       container.querySelector('h2[data-field-metadata="true"]'),
     ).toBeInTheDocument();
     expect(
-      container.querySelector('h3[data-field-metadata="true"]'),
+      container.querySelector('p[data-field-metadata="true"]'),
     ).toBeInTheDocument();
     expect(screen.getByTestId('carousel-image-field')).toHaveAttribute(
       'data-field-metadata',

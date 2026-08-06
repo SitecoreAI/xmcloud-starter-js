@@ -6,7 +6,6 @@ import type {
   ProductItemProps,
   ProductListingProps,
 } from '@/components/product-listing/product-listing.props';
-import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { mockProductListingProps } from './product-listing.mock.props';
 
 jest.mock('lucide-react', () => ({
@@ -43,12 +42,18 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
   Link: ({
     field,
     children,
+    editable,
     ...props
   }: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
     field?: { value?: { href?: string; text?: string } };
     children?: React.ReactNode;
+    editable?: boolean;
   }) => (
-    <a href={field?.value?.href} {...props}>
+    <a
+      href={field?.value?.href}
+      data-editable={String(Boolean(editable))}
+      {...props}
+    >
       {children || field?.value?.text || ''}
     </a>
   ),
@@ -108,7 +113,7 @@ describe('ProductListingNwnResources', () => {
     );
   });
 
-  it('renders selected generic Detail Pages and canonical NW Natural routes', () => {
+  it('renders selected generic Detail Pages with their authored link targets', () => {
     const genericPages: ProductItemProps[] = [
       {
         id: 'rebates',
@@ -127,6 +132,15 @@ describe('ProductListingNwnResources', () => {
         route: {
           path: '/utilities/kit-nextjs-nwn/Home/Ways-To-Save/Rebates-Offers/',
         },
+        cardLink: {
+          jsonValue: {
+            value: {
+              href: '/utilities/kit-nextjs-nwn/Home/Ways-To-Save/Rebates-Offers/',
+              text: 'Explore rebates',
+              linktype: 'internal',
+            },
+          },
+        },
       },
       {
         id: 'cooking',
@@ -141,6 +155,15 @@ describe('ProductListingNwnResources', () => {
         route: {
           path: 'https://preview.example/Get-Natural-Gas/Cooking?sc_lang=en',
         },
+        cardLink: {
+          jsonValue: {
+            value: {
+              href: 'https://preview.example/Get-Natural-Gas/Cooking?sc_lang=en',
+              text: 'Explore cooking with gas',
+              linktype: 'internal',
+            },
+          },
+        },
       },
       {
         id: 'smell-gas',
@@ -151,6 +174,15 @@ describe('ProductListingNwnResources', () => {
           },
         },
         route: { path: '/safety/smell-natural-gas#steps' },
+        cardLink: {
+          jsonValue: {
+            value: {
+              href: '/safety/smell-natural-gas#steps',
+              text: 'Review gas odor safety',
+              linktype: 'internal',
+            },
+          },
+        },
       },
     ];
 
@@ -173,28 +205,32 @@ describe('ProductListingNwnResources', () => {
       screen.getByRole('heading', { name: 'Smell. Go. Let us know.' }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('link', { name: /Learn more about Rebates and offers/ }),
-    ).toHaveAttribute('href', '/ways-to-save/rebates-offers');
+      screen.getByRole('link', { name: 'Explore rebates' }),
+    ).toHaveAttribute(
+      'href',
+      '/utilities/kit-nextjs-nwn/Home/Ways-To-Save/Rebates-Offers/',
+    );
     expect(
       screen.getByRole('link', {
-        name: /Learn more about Cook with confidence and responsive heat/,
+        name: 'Explore cooking with gas',
       }),
-    ).toHaveAttribute('href', '/get-natural-gas/cooking');
+    ).toHaveAttribute(
+      'href',
+      'https://preview.example/Get-Natural-Gas/Cooking?sc_lang=en',
+    );
     expect(
       screen.getByRole('link', {
-        name: /Learn more about Smell. Go. Let us know/,
+        name: 'Review gas odor safety',
       }),
-    ).toHaveAttribute('href', '/safety/smell-natural-gas');
-    expect(
-      screen.getByRole('img', { name: 'Rebates and offers' }),
-    ).toHaveAttribute('src', nwnImageSources.rebatesFurnace);
+    ).toHaveAttribute('href', '/safety/smell-natural-gas#steps');
+    expect(screen.queryAllByRole('img')).toHaveLength(0);
     expect(
       screen.queryByText('Rebates that reward efficiency'),
     ).not.toBeInTheDocument();
     expect(screen.queryByText('Safety comes first')).not.toBeInTheDocument();
   });
 
-  it('uses an authored DAM pageThumbnail instead of the known-route fallback', () => {
+  it('uses an authored DAM pageThumbnail when one is assigned', () => {
     render(
       <ProductListingNwnResources
         {...createProps([
@@ -274,10 +310,40 @@ describe('ProductListingNwnResources', () => {
     ).toHaveAttribute('src', 'https://dam.example/authored-card.jpg');
     expect(
       screen.getByRole('link', { name: /Explore natural gas cooking/ }),
-    ).toHaveAttribute('href', '/get-natural-gas/cooking');
+    ).toHaveAttribute('href', '/Get-Natural-Gas/Cooking/');
     expect(
       screen.queryByText('Lower priority page title'),
     ).not.toBeInTheDocument();
+  });
+
+  it('keeps authored product-card links editable in Page Builder', () => {
+    const props = createProps([
+      {
+        id: 'editable-card',
+        cardTitle: { jsonValue: { value: 'Editable card heading' } },
+        cardDescription: {
+          jsonValue: { value: 'Editable card description.' },
+        },
+        cardLink: {
+          jsonValue: {
+            value: {
+              href: '/authored-destination',
+              text: 'Edit this authored link',
+              linktype: 'internal',
+            },
+          },
+        },
+      },
+    ]);
+
+    render(<ProductListingNwnResources {...props} isPageEditing />);
+
+    expect(
+      screen.getByRole('link', { name: 'Edit this authored link' }),
+    ).toHaveAttribute('href', '/authored-destination');
+    expect(
+      screen.getByRole('link', { name: 'Edit this authored link' }),
+    ).toHaveAttribute('data-editable', 'true');
   });
 
   it('rejects legacy selected items and never fabricates fallback cards', () => {
@@ -303,7 +369,7 @@ describe('ProductListingNwnResources', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('retains the non-legacy vehicle-field contract for backward compatibility', () => {
+  it('retains non-legacy item fields without synthesizing link copy', () => {
     render(
       <ProductListingNwnResources
         {...createProps([
@@ -332,10 +398,6 @@ describe('ProductListingNwnResources', () => {
     expect(
       screen.getByRole('heading', { name: 'Natural gas equipment support' }),
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole('link', {
-        name: /Learn more about Natural gas equipment support/,
-      }),
-    ).toHaveAttribute('href', '/services');
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
   });
 });

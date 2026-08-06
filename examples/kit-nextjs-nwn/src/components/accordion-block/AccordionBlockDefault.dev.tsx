@@ -6,103 +6,20 @@ import { NoDataFallback } from '@/utils/NoDataFallback';
 import { AccordionBlockItem } from './AccordionBlockItem.dev';
 import { cn } from '@/lib/utils';
 
-const nwnFaqItems: AccordionItemProps[] = [
-  {
-    heading: {
-      jsonValue: { value: 'What should I do if I smell natural gas?' },
-    },
-    description: {
-      jsonValue: {
-        value:
-          '<p>Leave the area immediately, then call NW Natural from a safe location at <strong>800-882-3377</strong>. Avoid flames, switches, phones or anything that could create a spark while you are near the odor.</p>',
-      },
-    },
-  },
-  {
-    heading: { jsonValue: { value: 'How can I pay my natural gas bill?' } },
-    description: {
-      jsonValue: {
-        value:
-          '<p>Sign in to view your bill and pay online, or explore automatic payment, phone, mail and in-person options on the Pay My Bill page.</p>',
-      },
-    },
-  },
-  {
-    heading: {
-      jsonValue: { value: 'How do I start, stop or transfer service?' },
-    },
-    description: {
-      jsonValue: {
-        value:
-          '<p>Use the online start, stop or transfer experience to tell us where and when your service should change. Have your address and requested service date ready.</p>',
-      },
-    },
-  },
-  {
-    heading: { jsonValue: { value: 'Why should I call 811 before digging?' } },
-    description: {
-      jsonValue: {
-        value:
-          '<p>Calling 811 before a digging project starts a free utility-locate request. Marked underground lines help you work safely and prevent service damage.</p>',
-      },
-    },
-  },
-];
-
-const nwnFaqHeading = {
-  jsonValue: { value: 'Questions? We are here to help.' },
-};
-const nwnFaqDescription = {
-  jsonValue: { value: 'Need help with your account or natural gas service?' },
-};
-const nwnFaqLink = {
-  jsonValue: {
-    value: {
-      href: '/account-billing',
-      text: 'Visit account and billing',
-      linktype: 'internal',
-    },
-  },
-};
-
-const isLegacyStarterContent = (value: string | undefined): boolean =>
-  Boolean(
-    value &&
-      /alaris|ambulance|fire truck|emergency vehicle|vehicle fleet|driving range|base price|vehicle model/i.test(
-        value,
-      ),
-  );
-
 export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
   const { fields, isPageEditing } = props;
 
   const { heading, description, link, children } =
     fields?.data?.datasource ?? {};
   const accordionItems = children?.results ?? [];
-  const hasLegacyStarterContent =
-    isLegacyStarterContent(heading?.jsonValue?.value) ||
-    isLegacyStarterContent(description?.jsonValue?.value) ||
-    isLegacyStarterContent(link?.jsonValue?.value?.href) ||
-    isLegacyStarterContent(link?.jsonValue?.value?.text) ||
-    accordionItems.some(
-      (item) =>
-        isLegacyStarterContent(item.heading?.jsonValue?.value) ||
-        isLegacyStarterContent(item.description?.jsonValue?.value),
-    );
-  const displayHeading = hasLegacyStarterContent ? nwnFaqHeading : heading;
-  const displayDescription = hasLegacyStarterContent
-    ? nwnFaqDescription
-    : description;
-  const displayLink = hasLegacyStarterContent ? nwnFaqLink : link;
-  const displayItems = hasLegacyStarterContent ? nwnFaqItems : accordionItems;
   const acordionItemValues = [
-    ...displayItems.map((_, index) => `accordion-block-item-${index + 1}`),
+    ...accordionItems.map((_, index) => `accordion-block-item-${index + 1}`),
   ];
-  if (fields) {
+  if (fields?.data?.datasource) {
     return (
       <section
         data-component="AccordionBlock"
-        data-variant={hasLegacyStarterContent ? 'NwnHelp' : 'Default'}
+        data-variant="Default"
         className={cn(
           '@container @md:py-14 @lg:py-16 border-b-2 border-t-2 py-10 [.border-b-2+&]:border-t-0',
           props?.params?.styles && {
@@ -111,7 +28,7 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
         )}
         data-class-change
         aria-labelledby={
-          displayHeading?.jsonValue?.value ? 'accordion-heading' : undefined
+          heading?.jsonValue?.value ? 'accordion-heading' : undefined
         }
       >
         <div
@@ -119,12 +36,12 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
           data-component="AccordionBlockContentWrapper"
         >
           <div className="@lg:mb-0 mb-8">
-            {displayHeading?.jsonValue && (
+            {heading?.jsonValue && (
               <Text
                 tag="h2"
                 id="accordion-heading"
                 className="font-heading max-w-screen-sm text-pretty text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.06] tracking-[-0.02em] antialiased"
-                field={displayHeading.jsonValue}
+                field={heading.jsonValue}
               />
             )}
           </div>
@@ -136,7 +53,7 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
                 value={isPageEditing ? acordionItemValues : undefined} //force open all accordion items
                 onValueChange={isPageEditing ? () => {} : undefined} //prevent accordion item from closing
               >
-                {displayItems.map(
+                {accordionItems.map(
                   (child: AccordionItemProps, index: number) => (
                     <AccordionBlockItem
                       key={index}
@@ -148,19 +65,19 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
               </Accordion>
             </div>
             {(isPageEditing ||
-              displayDescription?.jsonValue?.value ||
-              displayLink?.jsonValue?.value?.href) && (
+              description?.jsonValue?.value ||
+              link?.jsonValue?.value?.href) && (
               <div className="bg-primary @sm:flex-row @sm:text-start @md:flex-col @md:text-center @lg:flex-row @lg:text-start mt-6 flex flex-col flex-nowrap items-center gap-4 p-7 text-center">
                 <Text
                   tag="p"
                   className="text-primary-foreground font-heading text-lg font-light"
-                  field={displayDescription?.jsonValue}
+                  field={description?.jsonValue}
                 />
-                {displayLink?.jsonValue && (
+                {link?.jsonValue && (
                   <EditableButton
                     variant="secondary"
-                    buttonLink={displayLink.jsonValue}
-                    isPageEditing={isPageEditing && !hasLegacyStarterContent}
+                    buttonLink={link.jsonValue}
+                    isPageEditing={isPageEditing}
                   />
                 )}
               </div>
@@ -171,5 +88,7 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
     );
   }
 
-  return <NoDataFallback componentName="Accordion Block" />;
+  return isPageEditing ? (
+    <NoDataFallback componentName="Accordion Block" />
+  ) : null;
 };

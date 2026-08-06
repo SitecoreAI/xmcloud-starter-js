@@ -3,7 +3,6 @@
 import { RichText, Text } from '@sitecore-content-sdk/nextjs';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
-import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { PageHeaderProps } from './page-header.props';
@@ -26,8 +25,8 @@ export const PageHeaderNwnEditorial: React.FC<
     ? pageHeaderTitle.jsonValue
     : pageTitle?.jsonValue;
   const subtitle = pageSubtitle?.jsonValue;
-  const hasImage =
-    isPageEditing || Boolean(imageRequired?.jsonValue?.value?.src);
+  const hasImage = Boolean(imageRequired?.jsonValue?.value?.src);
+  const showImageRegion = isPageEditing || hasImage;
   const hasActions =
     isPageEditing ||
     Boolean(link1?.jsonValue?.value?.href) ||
@@ -42,12 +41,14 @@ export const PageHeaderNwnEditorial: React.FC<
         props.params?.styles,
       )}
     >
-      <div className="nwn-content-shell grid items-stretch lg:min-h-[24rem] lg:grid-cols-[1fr_0.92fr]">
+      <div
+        className={cn(
+          'nwn-content-shell grid items-stretch',
+          showImageRegion && 'lg:min-h-[24rem] lg:grid-cols-[1fr_0.92fr]',
+        )}
+      >
         <div className="flex items-center py-10 pr-0 sm:py-14 lg:pr-16">
           <div className="max-w-2xl">
-            <p className="mb-5 border-l-4 border-cyan-500 pl-4 font-heading text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-              NW Natural
-            </p>
             <Text
               tag="h1"
               field={title}
@@ -84,8 +85,8 @@ export const PageHeaderNwnEditorial: React.FC<
           </div>
         </div>
 
-        <div className="relative min-h-56 border-t-4 border-cyan-500 sm:min-h-64 lg:min-h-full lg:border-l lg:border-t-0 lg:border-slate-300">
-          {hasImage ? (
+        {showImageRegion && (
+          <div className="relative min-h-56 border-t-4 border-cyan-500 sm:min-h-64 lg:min-h-full lg:border-l lg:border-t-0 lg:border-slate-300">
             <ImageWrapper
               image={imageRequired?.jsonValue}
               wrapperClass="absolute inset-0 h-full w-full"
@@ -93,27 +94,14 @@ export const PageHeaderNwnEditorial: React.FC<
               sizes="(max-width: 1024px) 100vw, 48vw"
               page={props.page}
             />
-          ) : (
-            <div
-              className="absolute inset-0 overflow-hidden bg-[#173c47]"
-              aria-hidden="true"
-            >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(57,202,224,0.42),transparent_32%),linear-gradient(135deg,#173c47_0%,#0f6276_62%,#0a91ad_100%)]" />
-              <div className="absolute -right-16 -top-20 h-72 w-72 rotate-45 border-[2.25rem] border-white/10" />
-              <div className="absolute -bottom-28 left-[14%] h-64 w-64 rotate-45 border-[1.5rem] border-cyan-200/15" />
+            {hasImage && (
               <div
-                className="absolute inset-10 bg-contain bg-center bg-no-repeat opacity-25 sm:inset-14"
-                style={{
-                  backgroundImage: `url('${nwnImageSources.headerLogoLight}')`,
-                }}
+                className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 bg-gradient-to-r from-[#f4f5f7] to-transparent lg:block"
+                aria-hidden="true"
               />
-            </div>
-          )}
-          <div
-            className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 bg-gradient-to-r from-[#f4f5f7] to-transparent lg:block"
-            aria-hidden="true"
-          />
-        </div>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

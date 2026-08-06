@@ -10,19 +10,12 @@ import type {
 import { Link as SitecoreLink, Text } from '@sitecore-content-sdk/nextjs';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import { isLegacyStarterDataValue } from '@/lib/nwn-content-sanitizer';
-import { nwnImageSources } from '@/lib/nwn-static-assets';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type {
   ProductItemProps,
   ProductListingProps,
 } from './product-listing.props';
-
-const KNOWN_NWN_RESOURCE_IMAGES: Record<string, string> = {
-  '/ways-to-save/rebates-offers': nwnImageSources.rebatesFurnace,
-  '/get-natural-gas/cooking': nwnImageSources.cookingWithGas,
-  '/safety/smell-natural-gas': nwnImageSources.smellGasSafety,
-};
 
 interface ResourceCard {
   key: string;
@@ -32,7 +25,9 @@ interface ResourceCard {
   descriptionField?: Field<string>;
   href?: string;
   linkText?: string;
+  linkField?: LinkField;
   image?: ImageField;
+  editableImage?: ImageField;
 }
 
 const CLEARLY_LEGACY_PRODUCT_PATTERN =
@@ -57,68 +52,34 @@ const getLinkDetails = (
   };
 };
 
-const getComparableRoute = (path: string): string => {
-  const trimmedPath = path.trim();
-
-  try {
-    const parsedPath = new URL(trimmedPath, 'https://www.nwnatural.com');
-    return parsedPath.pathname.replace(/\/+$/, '').toLowerCase() || '/';
-  } catch {
-    return trimmedPath.split(/[?#]/, 1)[0].replace(/\/+$/, '').toLowerCase();
-  }
-};
-
-const canonicalizeNwnRoute = (path: string | undefined): string | undefined => {
-  if (!path?.trim()) return undefined;
-
-  const comparableRoute = getComparableRoute(path);
-  const canonicalRoute = Object.keys(KNOWN_NWN_RESOURCE_IMAGES).find(
-    (knownRoute) =>
-      comparableRoute === knownRoute || comparableRoute.endsWith(knownRoute),
-  );
-
-  return canonicalRoute || path.trim();
-};
-
 const getProductLink = (
   product: ProductItemProps,
-): { href?: string; text?: string } => {
-  const cardLink = getLinkDetails(product.cardLink?.jsonValue);
-  const linkedField = getLinkDetails(product.url?.jsonValue);
+): { href?: string; text?: string; field?: LinkField } => {
+  const cardLinkField = product.cardLink?.jsonValue;
+  const linkedField = product.url?.jsonValue;
+  const cardLink = getLinkDetails(cardLinkField);
+  const linkedLink = getLinkDetails(linkedField);
   const path =
     cardLink.href ||
     product.route?.path ||
-    linkedField.href ||
+    linkedLink.href ||
     product.url?.path ||
     product.url?.url;
 
   return {
-    href: canonicalizeNwnRoute(path),
-    text: cardLink.text || linkedField.text,
+    href: path?.trim() || undefined,
+    text: cardLink.text || linkedLink.text,
+    field: cardLinkField || linkedField,
   };
 };
 
-const getProductImage = (
-  product: ProductItemProps,
-  href: string | undefined,
-  title: string,
-): ImageField | undefined => {
+const getProductImage = (product: ProductItemProps): ImageField | undefined => {
   const cardImage = product.cardImage?.jsonValue;
   const pageThumbnail = product.pageThumbnail?.jsonValue;
   const productThumbnail = product.productThumbnail?.jsonValue;
 
   if (cardImage?.value?.src) return cardImage;
   if (pageThumbnail?.value?.src) return pageThumbnail;
-  if (href && KNOWN_NWN_RESOURCE_IMAGES[href]) {
-    return {
-      value: {
-        src: KNOWN_NWN_RESOURCE_IMAGES[href],
-        alt: title,
-        width: '900',
-        height: '600',
-      },
-    };
-  }
   if (productThumbnail?.value?.src) return productThumbnail;
   return undefined;
 };
@@ -185,7 +146,7 @@ const toAuthoredResource = (
   const link = getProductLink(product);
   if (!title) return null;
 
-  const image = getProductImage(product, link.href, title);
+  const image = getProductImage(product);
   const imageSrc = image?.value?.src;
   const rawImageAlt = image?.value?.alt;
   const imageAlt = typeof rawImageAlt === 'string' ? rawImageAlt : undefined;
@@ -217,8 +178,13 @@ const toAuthoredResource = (
     description,
     descriptionField,
     href: link.href,
-    linkText: link.text || `Learn more about ${title}`,
+    linkText: link.text,
+    linkField: link.field,
     image,
+    editableImage:
+      product.cardImage?.jsonValue ||
+      product.pageThumbnail?.jsonValue ||
+      product.productThumbnail?.jsonValue,
   };
 };
 
@@ -234,11 +200,12 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
     ) : null;
   }
 
-  const authoredHeading = datasource.title?.jsonValue?.value;
-  const heading =
-    authoredHeading && !isLegacyStarterDataValue(authoredHeading)
-      ? authoredHeading
-      : 'More ways NW Natural can help.';
+  const headingField = datasource.title?.jsonValue;
+  const showHeading =
+    isPageEditing ||
+    Boolean(
+      headingField?.value && !isLegacyStarterDataValue(headingField.value),
+    );
   const authoredResources = (datasource.products?.targetItems ?? [])
     .map(toAuthoredResource)
     .filter((resource): resource is ResourceCard => Boolean(resource));
@@ -252,10 +219,13 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
 
   const viewAllLink = datasource.viewAllLink?.jsonValue;
   const viewAll = getLinkDetails(viewAllLink);
-  const showViewAll = Boolean(
-    viewAll.href &&
-      !isLegacyStarterDataValue(`${viewAll.href} ${viewAll.text ?? ''}`),
-  );
+  const showViewAll =
+    isPageEditing ||
+    Boolean(
+      viewAll.href &&
+        viewAll.text &&
+        !isLegacyStarterDataValue(`${viewAll.href} ${viewAll.text ?? ''}`),
+    );
 
   return (
     <section
@@ -265,96 +235,100 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
         'bg-[#f4f5f7] py-14 sm:py-16 lg:py-20',
         props.params?.styles,
       )}
-      aria-labelledby="nwn-product-listing-heading"
+      aria-labelledby={showHeading ? 'nwn-product-listing-heading' : undefined}
+      aria-label={showHeading ? undefined : 'Customer resources'}
     >
       <div className="nwn-content-shell">
         <div className="max-w-3xl">
-          <p className="font-heading text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-            Explore more
-          </p>
-          {isPageEditing ? (
+          {showHeading && (
             <Text
               tag="h2"
               id="nwn-product-listing-heading"
-              field={datasource.title?.jsonValue}
-              className="mt-3 text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.03] text-slate-900"
+              field={headingField}
+              className="text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.03] text-slate-900"
             />
-          ) : (
-            <h2
-              id="nwn-product-listing-heading"
-              className="mt-3 text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.03] text-slate-900"
-            >
-              {heading}
-            </h2>
           )}
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {visibleResources.map((resource) => (
-            <article
-              key={resource.key}
-              className="group overflow-hidden rounded-sm bg-white shadow-[0_7px_24px_rgba(26,55,67,0.08)] transition-transform duration-300 motion-safe:hover:-translate-y-1"
-            >
-              {resource.image?.value?.src ? (
-                <ImageWrapper
-                  image={resource.image}
-                  wrapperClass="aspect-[3/2] overflow-hidden"
-                  className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.035]"
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  page={props.page}
-                />
-              ) : (
-                <div
-                  className="aspect-[3/2] bg-[linear-gradient(135deg,#e4f4f7_0%,#a7dce7_100%)]"
-                  aria-hidden="true"
-                />
-              )}
-              <div className="p-7">
-                {resource.titleField ? (
-                  <Text
-                    tag="h3"
-                    field={resource.titleField}
-                    className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-slate-900"
+          {visibleResources.map((resource) => {
+            const displayImage =
+              resource.image ||
+              (isPageEditing ? resource.editableImage : undefined);
+            const showImage =
+              isPageEditing || Boolean(displayImage?.value?.src);
+
+            return (
+              <article
+                key={resource.key}
+                className="group overflow-hidden rounded-sm bg-white shadow-[0_7px_24px_rgba(26,55,67,0.08)] transition-transform duration-300 motion-safe:hover:-translate-y-1"
+              >
+                {showImage && (
+                  <ImageWrapper
+                    image={displayImage}
+                    wrapperClass="aspect-[3/2] overflow-hidden"
+                    className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.035]"
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    page={props.page}
                   />
-                ) : (
-                  <h3 className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-slate-900">
-                    {resource.title}
-                  </h3>
                 )}
-                {resource.descriptionField ? (
-                  <Text
-                    tag="p"
-                    field={resource.descriptionField}
-                    className="mt-3 text-base leading-7 text-slate-600"
-                  />
-                ) : (
-                  resource.description && (
-                    <p className="mt-3 text-base leading-7 text-slate-600">
-                      {resource.description}
-                    </p>
-                  )
-                )}
-                {resource.href && (
-                  <NextLink
-                    href={resource.href}
-                    className="mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline"
-                  >
-                    {resource.linkText}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </NextLink>
-                )}
-              </div>
-            </article>
-          ))}
+                <div className="p-7">
+                  {resource.titleField ? (
+                    <Text
+                      tag="h3"
+                      field={resource.titleField}
+                      className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-slate-900"
+                    />
+                  ) : (
+                    <h3 className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-slate-900">
+                      {resource.title}
+                    </h3>
+                  )}
+                  {resource.descriptionField ? (
+                    <Text
+                      tag="p"
+                      field={resource.descriptionField}
+                      className="mt-3 text-base leading-7 text-slate-600"
+                    />
+                  ) : (
+                    resource.description && (
+                      <p className="mt-3 text-base leading-7 text-slate-600">
+                        {resource.description}
+                      </p>
+                    )
+                  )}
+                  {isPageEditing && resource.linkField ? (
+                    <SitecoreLink
+                      field={resource.linkField}
+                      editable
+                      className="mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline"
+                    />
+                  ) : (
+                    resource.href &&
+                    resource.linkText && (
+                      <NextLink
+                        href={resource.href}
+                        className="mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline"
+                      >
+                        {resource.linkText}
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </NextLink>
+                    )
+                  )}
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         {showViewAll && viewAllLink && (
           <div className="mt-10 flex justify-end">
             <SitecoreLink
               field={viewAllLink}
+              editable={isPageEditing}
               className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline"
             >
-              {viewAll.text || 'View all resources'}
+              {viewAll.text}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </SitecoreLink>
           </div>
