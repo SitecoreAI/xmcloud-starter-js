@@ -179,12 +179,14 @@ const page = {
 const createItem = (
   id: string,
   title: string,
+  copy: string,
   href: string,
   linkText: string,
   image = '',
 ): imageCarouselItem => ({
   id,
   backgroundText: { jsonValue: { value: title } },
+  copy: { jsonValue: { value: copy } },
   image: {
     jsonValue: {
       value: {
@@ -212,6 +214,12 @@ const blankManagedItem = {
       metadata: { fieldName: 'backgroundText' },
     },
   },
+  copy: {
+    jsonValue: {
+      value: '',
+      metadata: { fieldName: 'copy' },
+    },
+  },
   image: {
     jsonValue: {
       value: {},
@@ -230,18 +238,21 @@ const defaultItems = [
   createItem(
     'slide-811',
     'Call 811 before you dig',
+    'Call 811 before any digging project so buried utilities can be marked before work begins.',
     '/safety/call-before-you-dig',
     'Plan a safe project',
   ),
   createItem(
     'slide-assistance',
     'Payment assistance',
+    'Explore options and resources that may help when paying your natural gas bill is difficult.',
     '/account-billing/payment-assistance',
     'Explore assistance',
   ),
   createItem(
     'slide-account',
     'Manage service on your schedule',
+    'Start, stop, or transfer natural gas service with clear steps for your move.',
     '/account-billing',
     'Open account and billing',
   ),
@@ -295,25 +306,33 @@ describe('ImageCarouselNwnResources', () => {
     ).toEqual(['slide-811', 'slide-assistance', 'slide-account']);
   });
 
-  it('keeps combined managed copy compact and unduplicated in Page Builder', () => {
-    const combinedCopy =
-      'Call 811 before you dig || A free utility locate helps protect you and your neighbors.';
+  it('renders managed title and copy as separate editable fields in Page Builder', () => {
     const item = createItem(
       'slide-811-structured',
-      combinedCopy,
+      'Call 811 before you dig',
+      'A free utility locate helps protect you and your neighbors.',
       '/safety/call-before-you-dig',
       'Plan a safe project',
     );
+    item.backgroundText.jsonValue.metadata = {
+      fieldName: 'backgroundText',
+    };
+    item.copy!.jsonValue.metadata = { fieldName: 'copy' };
 
     render(<ImageCarouselNwnResources {...createProps([item], true)} />);
 
-    const editableCopy = screen.getByText(combinedCopy);
+    const editableTitle = screen.getByRole('heading', {
+      name: 'Call 811 before you dig',
+    });
+    const editableCopy = screen.getByText(
+      'A free utility locate helps protect you and your neighbors.',
+    );
+
+    expect(editableTitle.tagName).toBe('H3');
+    expect(editableTitle).toHaveAttribute('data-field-metadata', 'true');
     expect(editableCopy.tagName).toBe('P');
-    expect(editableCopy).toHaveClass('text-lg');
-    expect(
-      screen.queryByRole('heading', { name: combinedCopy }),
-    ).not.toBeInTheDocument();
-    expect(screen.getAllByText(/A free utility locate helps/)).toHaveLength(1);
+    expect(editableCopy).toHaveAttribute('data-field-metadata', 'true');
+    expect(screen.queryByText(/\|\|/)).not.toBeInTheDocument();
   });
 
   it('keeps swipe and drag enabled outside Page Builder', () => {
@@ -330,6 +349,7 @@ describe('ImageCarouselNwnResources', () => {
       createItem(
         'slide-rebates',
         'Rebates and offers',
+        'Find savings opportunities for qualifying natural gas upgrades.',
         '/ways-to-save/rebates-offers',
         'Find available rebates',
       ),
@@ -448,6 +468,9 @@ describe('ImageCarouselNwnResources', () => {
 
     expect(
       container.querySelector('h2[data-field-metadata="true"]'),
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector('h3[data-field-metadata="true"]'),
     ).toBeInTheDocument();
     expect(
       container.querySelector('p[data-field-metadata="true"]'),

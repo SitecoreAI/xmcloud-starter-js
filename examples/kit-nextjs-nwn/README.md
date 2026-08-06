@@ -103,8 +103,8 @@ Hero / NwnHome recreates the live homepage's four-slide feature, account panel
 and three overlapping customer task cards. The carousel uses Sitecore-authored
 fields for every slide, including Content Hub images.
 
-ImageCarousel / NwnResources is a distinct customer-resources carousel. Its
-authored background text supports the format Title||Description. The component
+ImageCarousel / NwnResources is a distinct customer-resources carousel. Each
+managed item exposes separate Title and Copy fields in Page Builder. The component
 renders only authored imagery; it does not substitute local assets.
 
 ## Add Editing host to XM Cloud

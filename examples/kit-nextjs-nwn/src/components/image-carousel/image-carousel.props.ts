@@ -19,6 +19,7 @@ export interface imageCarouselItem {
   id: string;
   image: { jsonValue: ImageField };
   backgroundText: { jsonValue: Field<string> };
+  copy?: { jsonValue: Field<string> };
   link: { jsonValue: LinkField };
 }
 

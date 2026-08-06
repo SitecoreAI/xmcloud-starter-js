@@ -31,37 +31,22 @@ type Resource = {
   id: string;
   title: string;
   titleField?: Field<string>;
-  description: string;
-  usesStructuredText: boolean;
+  copyField?: Field<string>;
   image?: ImageField;
   link?: LinkField;
 };
 
-const parseBackgroundText = (
-  value: string | undefined,
-): { title: string; description: string; usesStructuredText: boolean } => {
-  const parts = (value || '').split('||').map((part) => part.trim());
-  const [title, ...descriptionParts] = parts;
-
-  return {
-    title: title || '',
-    description: descriptionParts.join(' || '),
-    usesStructuredText: parts.length > 1,
-  };
-};
-
 const mapResource = (item: imageCarouselItem): Resource => {
-  const backgroundTextField = item?.backgroundText?.jsonValue;
-  const parsed = parseBackgroundText(backgroundTextField?.value);
+  const titleField = item?.backgroundText?.jsonValue;
+  const copyField = item?.copy?.jsonValue;
   const authoredImage = item?.image?.jsonValue;
   const authoredLink = item?.link?.jsonValue;
 
   return {
     id: item.id,
-    title: parsed.title,
-    titleField: backgroundTextField,
-    description: parsed.description,
-    usesStructuredText: parsed.usesStructuredText,
+    title: titleField?.value ?? '',
+    titleField,
+    copyField,
     image: authoredImage,
     link: authoredLink,
   };
@@ -236,38 +221,24 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
                             !showImage && 'min-h-64 max-w-4xl',
                           )}
                         >
-                          {isPageEditing && resource.titleField ? (
-                            <Text
-                              tag="p"
-                              field={resource.titleField}
-                              className="text-lg font-semibold leading-8 text-slate-900"
-                            />
-                          ) : (
-                            <>
-                              {resource.usesStructuredText ? (
-                                resource.title ? (
-                                  <h3 className="text-balance font-heading text-3xl font-medium leading-[1.08] text-slate-900 sm:text-4xl">
-                                    {resource.title}
-                                  </h3>
-                                ) : null
-                              ) : resource.titleField ? (
-                                <Text
-                                  tag="h3"
-                                  field={resource.titleField}
-                                  className="text-balance font-heading text-3xl font-medium leading-[1.08] text-slate-900 sm:text-4xl"
-                                />
-                              ) : resource.title ? (
-                                <h3 className="text-balance font-heading text-3xl font-medium leading-[1.08] text-slate-900 sm:text-4xl">
-                                  {resource.title}
-                                </h3>
-                              ) : null}
-                              {resource.description && (
-                                <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                                  {resource.description}
-                                </p>
-                              )}
-                            </>
-                          )}
+                          {resource.titleField &&
+                            (isPageEditing ||
+                              Boolean(resource.titleField.value)) && (
+                              <Text
+                                tag="h3"
+                                field={resource.titleField}
+                                className="text-balance font-heading text-3xl font-medium leading-[1.08] text-slate-900 sm:text-4xl"
+                              />
+                            )}
+                          {resource.copyField &&
+                            (isPageEditing ||
+                              Boolean(resource.copyField.value)) && (
+                              <Text
+                                tag="p"
+                                field={resource.copyField}
+                                className="mt-4 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8"
+                              />
+                            )}
                           {resource.link &&
                             (isPageEditing || linkIsValid(resource.link)) && (
                               <div className="mt-7">

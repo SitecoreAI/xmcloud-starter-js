@@ -14,7 +14,8 @@ The photographic images contain no logos or embedded copy and leave intentional 
 | `homepage-hero-bill-assistance-wide.png`                   |  1817x866 | Home / Customer Resources / Payment Assistance   | `image`               | Customer care advisor reviewing assistance options with a homeowner      | Right center |
 | `homepage-hero-manage-account-24-7-wide.png`               |  1817x866 | Home / Customer Resources / Manage Service       | `image`               | Customer managing a utility account on a laptop and phone                | Right center |
 | `start-stop-transfer-moving-home-landscape.png`            | 1536x1024 | Start, Stop or Transfer / Page Header            | `image`               | Couple carrying moving boxes into their new home                         | Right center |
-| `rebates-high-efficiency-furnace-landscape.png`            | 1536x1024 | Home / Rebates resource, product card, and Promo | `image` / `cardImage` | Technician inspecting a high-efficiency home furnace                     | Right center |
+| `homepage-carousel-rebates-and-offers-efficient-home-landscape.png` | 1536x1024 | Home / Customer Resources / Rebates & Offers     | `image`               | Homeowner reviewing a high-efficiency furnace with an energy technician   | Center       |
+| `rebates-high-efficiency-furnace-landscape.png`            | 1536x1024 | Rebates page, product card, and Promo             | `image` / `cardImage` | Technician inspecting a high-efficiency home furnace                     | Right center |
 | `services-gas-fireplace-tune-up-landscape.png`             | 1536x1024 | Services; Inspections & Tune-Ups / Promo         | `image`               | Service technician testing a residential gas fireplace                   | Right center |
 | `safety-smell-gas-call-from-outside-landscape.png`         | 1536x1024 | Home / Safety card; Safety page headers          | `cardImage` / `image` | Family safely outside calling for help after leaving their home          | Right center |
 | `benefits-natural-gas-family-winter-comfort-landscape.png` | 1536x1024 | Get Natural Gas; Benefits of Natural Gas / Promo | `image`               | Parent and children reading beside a warm fireplace in winter            | Right center |
@@ -25,7 +26,7 @@ The photographic images contain no logos or embedded copy and leave intentional 
 
 Official logo source: `https://www.nwnatural.com/Project.Nwnatural/img/nwn-logo-2x.png` (displayed by NW Natural at 194x45 on light backgrounds).
 
-## Current empty homepage image fields
+## Homepage image field targets
 
 | Content item                | Item ID                                | Field       |
 | --------------------------- | -------------------------------------- | ----------- |
@@ -33,7 +34,7 @@ Official logo source: `https://www.nwnatural.com/Project.Nwnatural/img/nwn-logo-
 | Call 811 resource           | `e83eef3d-a9f6-4c30-975e-485f8c51bc85` | `image`     |
 | Payment Assistance resource | `49d1a51d-ee58-4d7d-91da-b17cd76d6638` | `image`     |
 | Manage Service resource     | `24733a7a-11b3-4d96-8e0a-f3321c5199a1` | `image`     |
-| Rebates resource            | `44819653-8336-4c32-b328-4ab9da327d20` | `image`     |
+| Rebates & Offers resource   | `44819653-8336-4c32-b328-4ab9da327d20` | `image`     |
 | Home Page Promo             | `02181a41-c99d-4bab-9be3-164a7c9b27c5` | `image`     |
 | Rebates product card        | `5551e26e-18e3-46c9-9cd6-bf6991eaa2ca` | `cardImage` |
 | Cooking product card        | `e1b6f0a7-2e6f-4d75-8c60-3841a62b3901` | `cardImage` |

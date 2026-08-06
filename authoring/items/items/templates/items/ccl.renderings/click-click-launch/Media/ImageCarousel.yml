@@ -30,6 +30,9 @@ SharedFields:
               backgroundText {
                 jsonValue
               }
+              copy {
+                jsonValue
+              }
               link {
                 jsonValue
               }
