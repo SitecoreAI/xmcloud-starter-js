@@ -1,4 +1,4 @@
-export const NWN_DEMO_ROUTES = [
+export const NWN_SITE_ROUTES = [
   '/',
   '/account-billing',
   '/account-billing/pay-my-bill',
@@ -41,8 +41,8 @@ export const buildNwnSitemapXml = (
   const lastModified =
     options.lastModified ?? new Date().toISOString().slice(0, 10);
   const routes = options.includeAiRoutes
-    ? [...NWN_DEMO_ROUTES, ...NWN_AI_ROUTES]
-    : NWN_DEMO_ROUTES;
+    ? [...NWN_SITE_ROUTES, ...NWN_AI_ROUTES]
+    : NWN_SITE_ROUTES;
 
   const entries = routes
     .map((route) => {

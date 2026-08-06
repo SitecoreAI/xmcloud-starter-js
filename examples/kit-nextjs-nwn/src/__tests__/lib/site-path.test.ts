@@ -20,10 +20,10 @@ describe('buildSiteDataPath', () => {
   });
 
   it('uses and trims an explicitly configured collection name', () => {
-    process.env.SITECORE_SITE_COLLECTION_NAME = ' Demo Sites ';
+    process.env.SITECORE_SITE_COLLECTION_NAME = ' Utility Sites ';
 
     expect(buildSiteDataPath('kit-nextjs-nwn', '/Data/AI Config/FAQ')).toBe(
-      '/sitecore/content/Demo Sites/kit-nextjs-nwn/Data/AI Config/FAQ',
+      '/sitecore/content/Utility Sites/kit-nextjs-nwn/Data/AI Config/FAQ',
     );
   });
 });

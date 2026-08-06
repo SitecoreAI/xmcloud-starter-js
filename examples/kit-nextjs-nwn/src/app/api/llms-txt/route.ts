@@ -13,7 +13,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
 > NW Natural provides safe, reliable and affordable natural gas service to homes and businesses in Oregon and Southwest Washington.
 
-The site helps customers manage their accounts, start or stop service, learn about natural gas safety, find rebates and explore NW Natural's work in the community. This demonstration is built with Next.js and Sitecore XM Cloud.
+The site helps customers manage their accounts, start or stop service, learn about natural gas safety, find rebates and explore NW Natural's work in the community. This website uses Next.js and Sitecore XM Cloud.
 
 ## Key pages
 

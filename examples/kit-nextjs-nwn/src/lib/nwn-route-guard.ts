@@ -9,7 +9,7 @@ export const isLegacyStarterRoute = (
 
 export const isLegacyStarterUrl = (url: string): boolean => {
   try {
-    const segments = new URL(url, 'https://nwn-demo.invalid').pathname
+    const segments = new URL(url, 'https://www.nwnatural.com').pathname
       .split('/')
       .filter(Boolean);
     return segments.some((segment) =>

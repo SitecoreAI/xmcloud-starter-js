@@ -1,12 +1,12 @@
 {
     "manifestVersion": "1.0",
     "site": {
-        "name": "NWN Demo",
-        "hostNameSuggestion": "nwn-demo",
-        "rootItemName": "NWN Demo",
+        "name": "NW Natural",
+        "hostNameSuggestion": "nwnatural",
+        "rootItemName": "NW Natural",
         "language": "en",
         "sourceReference": "https://www.nwnatural.com/",
-        "contentIntent": "An original, presentation-ready subset inspired by NW Natural's public residential experience. Copy is paraphrased for a demo and must receive legal, regulatory, accessibility, and program-owner review before production use.",
+        "contentIntent": "An original, presentation-ready subset inspired by NW Natural's public residential experience. Content must receive legal, regulatory, accessibility, and program-owner review before production use.",
         "routingDecision": "This manifest contains exactly 18 pages. Ways to Save is a header navigation grouping that links directly to its only included child, Rebates & Offers, rather than a separate landing page.",
         "contentGuardrails": [
             "Do not publish rebate values, rates, eligibility rules, service guarantees, or program deadlines without current owner approval.",
@@ -253,7 +253,7 @@
             "pageTitle": "Reliable energy for the life you live.",
             "pageSubtitle": "Comfort at home. Help when you need it. Service you can count on.",
             "pageSummary": "A customer-first residential gateway for managing service, finding support, exploring home energy choices, and learning essential safety steps.",
-            "metadataTitle": "NW Natural Demo | Home Energy, Account Help & Safety",
+            "metadataTitle": "NW Natural | Home Energy, Account Help & Safety",
             "metadataDescription": "Manage your natural gas account, find service and savings resources, explore home comfort, and get clear safety guidance from NW Natural.",
             "sections": [
                 {
@@ -346,7 +346,7 @@
             "pageTitle": "Your account, on your schedule.",
             "pageSubtitle": "Simple paths for bills, service changes, and extra support.",
             "pageSummary": "A focused account hub that brings the most common residential tasks together and helps customers choose the right next step.",
-            "metadataTitle": "Account & Billing | NW Natural Demo",
+            "metadataTitle": "Account & Billing | NW Natural",
             "metadataDescription": "Pay a bill, start or stop natural gas service, transfer service for a move, or explore payment assistance.",
             "sections": [
                 {
@@ -420,7 +420,7 @@
             "pageTitle": "Pay your bill with confidence.",
             "pageSubtitle": "Choose a convenient path, then follow the secure account prompts.",
             "pageSummary": "A streamlined payment page that separates signed-in account tools, quick payment choices, and help for customers who need a person.",
-            "metadataTitle": "Pay My Bill | NW Natural Demo",
+            "metadataTitle": "Pay My Bill | NW Natural",
             "metadataDescription": "Find a clear path to pay or review your NW Natural bill and get customer service help when you need it.",
             "sections": [
                 {
@@ -494,7 +494,7 @@
             "pageTitle": "Start, stop, or move your natural gas service.",
             "pageSubtitle": "A guided service change begins with a few details about your home and timing.",
             "pageSummary": "A move-friendly task page that helps customers prepare, choose the correct service action, and know what to expect next.",
-            "metadataTitle": "Start, Stop or Transfer Service | NW Natural Demo",
+            "metadataTitle": "Start, Stop or Transfer Service | NW Natural",
             "metadataDescription": "Prepare to start natural gas service, stop service, or transfer service to a new home with a simple guided process.",
             "sections": [
                 {
@@ -569,7 +569,7 @@
             "pageTitle": "Support when energy bills feel hard to manage.",
             "pageSubtitle": "Start early, understand the available paths, and connect with help that fits your situation.",
             "pageSummary": "A compassionate, action-oriented overview of payment arrangements, community resources, and the information a customer may need to request support.",
-            "metadataTitle": "Payment Assistance | NW Natural Demo",
+            "metadataTitle": "Payment Assistance | NW Natural",
             "metadataDescription": "Explore current payment support resources and learn how to prepare before contacting NW Natural customer service.",
             "sections": [
                 {
@@ -583,7 +583,7 @@
                 },
                 {
                     "heading": "Explore current support paths",
-                    "body": "Available options can depend on timing, account status, household circumstances, and program funding. Keep the demo language general and link customers to current eligibility information.",
+                    "body": "Available options can depend on timing, account status, household circumstances, and program funding. Review current eligibility information and available programs before applying.",
                     "bullets": [
                         "Payment arrangements where available",
                         "Energy assistance resources",
@@ -645,7 +645,7 @@
             "pageTitle": "Comfort upgrades can come with extra value.",
             "pageSubtitle": "Explore current opportunities for qualifying natural gas equipment and home improvements.",
             "pageSummary": "An evergreen offer-discovery page that organizes upgrade categories without hard-coding amounts, deadlines, or eligibility claims.",
-            "metadataTitle": "Rebates & Offers | NW Natural Demo",
+            "metadataTitle": "Rebates & Offers | NW Natural",
             "metadataDescription": "Explore natural gas equipment and home comfort offer categories, then confirm current eligibility and terms before purchasing.",
             "sections": [
                 {
@@ -721,7 +721,7 @@
             "pageTitle": "Expert help for the equipment that keeps your home comfortable.",
             "pageSubtitle": "Understand inspection, maintenance, and contractor pathways before a small concern becomes a larger one.",
             "pageSummary": "A concise residential services hub centered on equipment awareness, annual inspection planning, and appropriate professional help.",
-            "metadataTitle": "Residential Natural Gas Services | NW Natural Demo",
+            "metadataTitle": "Residential Natural Gas Services | NW Natural",
             "metadataDescription": "Explore natural gas equipment inspection, tune-up, maintenance, and qualified contractor resources for your home.",
             "sections": [
                 {
@@ -795,7 +795,7 @@
             "pageTitle": "Help your natural gas equipment perform at its best.",
             "pageSubtitle": "A little planning can support safe operation, dependable comfort, and longer equipment life.",
             "pageSummary": "A detailed service page explaining what a general inspection may cover, when a tune-up is appropriate, and how customers can prepare.",
-            "metadataTitle": "Inspections & Tune-Ups | NW Natural Demo",
+            "metadataTitle": "Inspections & Tune-Ups | NW Natural",
             "metadataDescription": "Learn how natural gas equipment inspections and professional tune-ups differ, what to prepare, and when to request service.",
             "sections": [
                 {
@@ -872,7 +872,7 @@
             "pageTitle": "Bring comfort, convenience, and dependable energy home.",
             "pageSubtitle": "Explore the experience natural gas can provide, then plan your project with the right local experts.",
             "pageSummary": "An aspirational yet practical conversion hub covering household benefits, cooking, availability, equipment planning, and professional installation.",
-            "metadataTitle": "Get Natural Gas for Your Home | NW Natural Demo",
+            "metadataTitle": "Get Natural Gas for Your Home | NW Natural",
             "metadataDescription": "Explore natural gas home comfort and cooking benefits, then learn what to consider when planning a new service or equipment project.",
             "sections": [
                 {
@@ -947,7 +947,7 @@
             "pageTitle": "Live well with natural gas at home.",
             "pageSubtitle": "Comfort, control, and practical equipment choices for the routines that matter every day.",
             "pageSummary": "A lifestyle-oriented benefits page that balances emotional appeal with responsible planning and avoids unsupported cost or performance claims.",
-            "metadataTitle": "Benefits of Natural Gas | NW Natural Demo",
+            "metadataTitle": "Benefits of Natural Gas | NW Natural",
             "metadataDescription": "Explore how natural gas can support home heating, hot water, cooking, and hearth comfort, with practical project guidance.",
             "sections": [
                 {
@@ -1022,7 +1022,7 @@
             "pageTitle": "Cook with confidence and responsive heat.",
             "pageSubtitle": "From a quick simmer to a high-heat sear, direct flame puts visible control at your fingertips.",
             "pageSummary": "A sensory cooking page centered on responsive control, thoughtful ventilation, appliance care, and safe use.",
-            "metadataTitle": "Cooking with Natural Gas | NW Natural Demo",
+            "metadataTitle": "Cooking with Natural Gas | NW Natural",
             "metadataDescription": "Explore responsive natural gas cooking, kitchen planning, ventilation, cookware, and everyday appliance safety.",
             "sections": [
                 {
@@ -1097,7 +1097,7 @@
             "pageTitle": "Safety starts with knowing what to do.",
             "pageSubtitle": "Recognize a possible leak, leave quickly, and plan every digging project before the first shovel enters the ground.",
             "pageSummary": "A high-clarity safety hub that gives emergency odor steps priority, reinforces 811, and separates urgent action from routine equipment care.",
-            "metadataTitle": "Natural Gas Safety | NW Natural Demo",
+            "metadataTitle": "Natural Gas Safety | NW Natural",
             "metadataDescription": "Learn what to do if you smell natural gas, when to call 800-882-3377, and why every digging project begins with 811.",
             "sections": [
                 {
@@ -1245,7 +1245,7 @@
             "pageTitle": "Call 811 before every digging project.",
             "pageSubtitle": "One simple step helps protect people, property, and underground utility lines.",
             "pageSummary": "A clear 811 planning page covering when to call, what happens after the request, and how to work carefully around utility marks.",
-            "metadataTitle": "Call 811 Before You Dig | NW Natural Demo",
+            "metadataTitle": "Call 811 Before You Dig | NW Natural",
             "metadataDescription": "Contact 811 before planting, fencing, trenching, or any project that disturbs the ground, then wait for utility responses and markings.",
             "sections": [
                 {
@@ -1396,7 +1396,7 @@
             "pageTitle": "A long legacy with a clear view of the future.",
             "pageSubtitle": "Essential service depends on capable people, resilient systems, trusted relationships, and decisions made for the long term.",
             "pageSummary": "A durable overview of the company's role, service region, operating values, and strategic responsibility without time-sensitive customer counts or financial claims.",
-            "metadataTitle": "Company Overview | NW Natural Demo",
+            "metadataTitle": "Company Overview | NW Natural",
             "metadataDescription": "Learn about NW Natural's Pacific Northwest roots, service purpose, operating values, community role, and long-term direction.",
             "sections": [
                 {
@@ -1410,7 +1410,7 @@
                 },
                 {
                     "heading": "How we work",
-                    "body": "The strongest company story is built around consistent behaviors rather than slogans. These values should guide both the content and the demo experience.",
+                    "body": "The strongest company story is built around consistent behaviors rather than slogans. These values should guide how we work every day.",
                     "bullets": [
                         "Put safety first",
                         "Serve customers with empathy and clarity",
@@ -1472,7 +1472,7 @@
             "pageTitle": "Turning organic waste into useful renewable energy.",
             "pageSubtitle": "Renewable natural gas can capture methane from existing waste streams and prepare it for use in the gas system.",
             "pageSummary": "An accessible explanation of renewable natural gas, its sources, processing, system role, and the care required when evaluating projects.",
-            "metadataTitle": "Renewable Natural Gas | NW Natural Demo",
+            "metadataTitle": "Renewable Natural Gas | NW Natural",
             "metadataDescription": "Learn how renewable natural gas can be produced from organic waste, cleaned for pipeline use, and evaluated as part of a lower-carbon energy pathway.",
             "sections": [
                 {
@@ -1547,7 +1547,7 @@
             "pageTitle": "A practical pathway toward a lower-carbon energy future.",
             "pageSubtitle": "Use less. Renew the supply. Keep safety, reliability, and customers at the center of the transition.",
             "pageSummary": "A high-level environmental platform built around efficiency, renewable supply, resilient infrastructure, transparent learning, and shared action.",
-            "metadataTitle": "Less We Can | NW Natural Demo",
+            "metadataTitle": "Less We Can | NW Natural",
             "metadataDescription": "Explore a practical lower-carbon direction based on energy efficiency, renewable supply, resilient infrastructure, partnership, and measurable progress.",
             "sections": [
                 {

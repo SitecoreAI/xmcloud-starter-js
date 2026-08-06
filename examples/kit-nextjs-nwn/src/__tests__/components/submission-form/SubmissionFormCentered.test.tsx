@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { SubmissionFormCentered } from '@/components/submission-form/SubmissionFormCentered.dev';
-import { mockSubmissionFormPropsDemo } from './submission-form.mock.props';
+import { mockSubmissionFormPropsCentered } from './submission-form.mock.props';
 
 // Mock dependencies
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
@@ -53,15 +53,15 @@ jest.mock('@/lib/utils', () => ({
 }));
 
 describe('SubmissionFormCentered', () => {
-  it('renders centered layout with vehicle demo title', () => {
-    render(<SubmissionFormCentered {...mockSubmissionFormPropsDemo} />);
+  it('renders centered layout with appointment title', () => {
+    render(<SubmissionFormCentered {...mockSubmissionFormPropsCentered} />);
 
-    expect(screen.getByText('Schedule Your Vehicle Demo')).toBeInTheDocument();
+    expect(screen.getByText('Schedule Your Appointment')).toBeInTheDocument();
     expect(screen.getByTestId('submit-info-form')).toBeInTheDocument();
   });
 
   it('renders submit info form in centered layout', () => {
-    render(<SubmissionFormCentered {...mockSubmissionFormPropsDemo} />);
+    render(<SubmissionFormCentered {...mockSubmissionFormPropsCentered} />);
 
     const form = screen.getByTestId('submit-info-form');
     expect(form).toBeInTheDocument();
@@ -69,7 +69,7 @@ describe('SubmissionFormCentered', () => {
   });
 
   it('renders NoDataFallback when fields are not provided', () => {
-    const propsWithoutFields = { ...mockSubmissionFormPropsDemo, fields: null as never };
+    const propsWithoutFields = { ...mockSubmissionFormPropsCentered, fields: null as never };
     render(<SubmissionFormCentered {...propsWithoutFields} />);
 
     expect(screen.getByTestId('no-data-fallback')).toBeInTheDocument();

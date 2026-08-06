@@ -68,5 +68,5 @@ export const NWN_SERVICE_ITEMS = [
 export const NWN_SUMMARY = {
   title: 'NW Natural residential energy and customer support',
   description:
-    'A demo residential experience for NW Natural customers across Oregon and southwest Washington, with clear paths for account and billing help, service changes, rebates, home-energy services, natural gas safety, and the company’s lower-carbon transition.',
+    'A customer-focused residential experience for NW Natural customers across Oregon and southwest Washington, with clear paths for account and billing help, service changes, rebates, home-energy services, natural gas safety, and the company’s lower-carbon transition.',
 } as const;

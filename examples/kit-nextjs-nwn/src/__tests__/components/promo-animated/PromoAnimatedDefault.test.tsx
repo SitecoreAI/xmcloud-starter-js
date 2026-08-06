@@ -80,7 +80,7 @@ describe('PromoAnimatedDefault', () => {
     expect(screen.getByText('Next-Generation Emergency Response')).toBeInTheDocument();
     expect(screen.getByTestId('richtext-component')).toBeInTheDocument();
     expect(screen.getByTestId('button-primary')).toHaveTextContent('View Ambulances');
-    expect(screen.getByTestId('button-secondary')).toHaveTextContent('Schedule Demo');
+    expect(screen.getByTestId('button-secondary')).toHaveTextContent('Schedule Service');
   });
 
   it('renders vehicle image with animated elements', () => {

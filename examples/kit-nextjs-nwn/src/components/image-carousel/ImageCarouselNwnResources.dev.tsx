@@ -333,5 +333,5 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
   );
 };
 
-// Kept as a named alias for Sitecore items created during the demo build.
+// Kept as a named alias for existing Sitecore items.
 export const ImageCarouselNwnHome = ImageCarouselNwnResources;

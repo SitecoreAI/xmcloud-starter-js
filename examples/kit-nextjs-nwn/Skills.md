@@ -1,4 +1,4 @@
-# Skills: NW Natural Demo
+# Skills: NW Natural
 
 ## Purpose
 

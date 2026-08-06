@@ -35,7 +35,7 @@ export const mockSubmissionFormProps: SubmissionFormProps = {
   isPageEditing: false,
 };
 
-export const mockSubmissionFormPropsDemo: SubmissionFormProps = {
+export const mockSubmissionFormPropsCentered: SubmissionFormProps = {
   rendering: {
     componentName: 'SubmissionForm',
     dataSource: 'mock-datasource',
@@ -45,7 +45,7 @@ export const mockSubmissionFormPropsDemo: SubmissionFormProps = {
   },
   fields: {
     title: {
-      value: 'Schedule Your Vehicle Demo',
+      value: 'Schedule Your Appointment',
     },
   },
   page: mockPageBase,

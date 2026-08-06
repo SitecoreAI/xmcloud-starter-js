@@ -54,8 +54,8 @@ export const mockPromoAnimatedProps: PromoAnimatedProps = {
     },
     secondaryLink: {
       value: {
-        href: '/contact/demo',
-        text: 'Schedule Demo',
+        href: '/services',
+        text: 'Schedule Service',
         linktype: 'internal',
         target: '',
       },

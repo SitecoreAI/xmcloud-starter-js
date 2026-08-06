@@ -1,6 +1,6 @@
-# NW Natural demo image manifest
+# NW Natural image manifest
 
-This folder contains original, text-free imagery generated for the `kit-nextjs-nwn` demo plus the official NW Natural light-theme logo. Upload the assets to Content Hub DAM, preserve the filenames, and use the mapping below when assigning images in SitecoreAI Page Builder.
+This folder contains original, text-free imagery for the `kit-nextjs-nwn` site plus the official NW Natural light-theme logo. Upload the assets to Content Hub DAM, preserve the filenames, and use the mapping below when assigning images in SitecoreAI Page Builder.
 
 These files are an upload package only. The application does not import or substitute them at runtime; visitors see an image only after its Sitecore field is assigned to a Content Hub asset.
 

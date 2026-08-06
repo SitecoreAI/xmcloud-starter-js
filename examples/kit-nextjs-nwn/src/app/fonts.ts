@@ -2,7 +2,7 @@ import { Barlow, Barlow_Condensed } from 'next/font/google';
 
 /**
  * NW Natural uses DIN 2014. Barlow is an open-source substitute with the
- * same clear, engineered character and is safe to ship with this demo.
+ * same clear, engineered character and is safe to ship with this site.
  */
 export const nwnBodyFont = Barlow({
   weight: ['400', '500', '600', '700'],

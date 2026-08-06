@@ -1,9 +1,9 @@
-# NW Natural Demo Site (Next.js) - kit-nextjs-nwn
+# NW Natural Site (Next.js) - kit-nextjs-nwn
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Demo content and asset handoff](#demo-content-and-asset-handoff)
+- [Content and asset handoff](#content-and-asset-handoff)
 - [Developer Expectations](#developer-expectations)
 - [Preconditions](#preconditions)
 - [Build and run site locally](#build-and-run-site-locally)
@@ -12,7 +12,7 @@
 
 ## Overview
 
-This head application powers an NW Natural demonstration experience inspired by
+This head application powers an NW Natural customer experience inspired by
 the public utility website. It focuses on high-value customer journeys:
 account and billing tasks, starting or transferring service, natural gas safety,
 energy-saving resources, and the company's Pacific Northwest story.
@@ -20,17 +20,17 @@ energy-saving resources, and the company's Pacific Northwest story.
 The app maps the seeded components' `Default` exports to NW Natural
 presentations while preserving the underlying starter presentations as named
 variants. This keeps existing rendering instances and Sitecore field contracts
-usable while isolating the demo from other sites deployed to the same XM Cloud
-environment.
+usable while isolating the NW Natural site from other sites deployed to the same
+XM Cloud environment.
 
-## Demo content and asset handoff
+## Content and asset handoff
 
-- [`NWN_DEMO_CONTENT.json`](NWN_DEMO_CONTENT.json) is the source-of-truth brief
-  for the 18-page demo information architecture, page copy and calls to action.
+- [`NWN_SITE_CONTENT.json`](NWN_SITE_CONTENT.json) is the source-of-truth brief
+  for the 18-page information architecture, page copy and calls to action.
 - [`public/assets/nwn-images/README.md`](public/assets/nwn-images/README.md)
-  maps every generated demo image to its intended page, component, alt text,
+  maps every generated image to its intended page, component, alt text,
   focal point and suggested Content Hub DAM name.
-- [`../../authoring/items/nwn-demo.module.json`](../../authoring/items/nwn-demo.module.json)
+- [`../../authoring/items/nwn-site.module.json`](../../authoring/items/nwn-site.module.json)
   scopes Sitecore serialization to the NW Natural site, project templates,
   renderings and placeholder settings.
 
@@ -40,11 +40,11 @@ in the current Sitecore environment because a serialization pull could not be
 completed without a reachable Authoring CM and Sitecore CLI authentication.
 Before treating the repository as a reproducible deployment source, run an
 authenticated serialization pull, commit the resulting YAML, and publish the
-items needed by the public demo.
+items needed by the public site.
 
-The local images are presentation fallbacks and DAM upload sources. After
-uploading them to Content Hub, assign the corresponding image fields in Page
-Builder using the asset map and publish the authored items before a public demo.
+The local images are DAM upload sources for authoring. After uploading them to
+Content Hub, assign the corresponding image fields in Page
+Builder using the asset map and publish the authored items before launch.
 
 ## Developer Expectations
 
@@ -100,12 +100,12 @@ The app also exposes two NW Natural-only canonical components:
 - NwnCardGrid with the dynamic placeholder key nwn-card-grid-{DynamicPlaceholderId}
 
 Hero / NwnHome recreates the live homepage's four-slide feature, account panel
-and three overlapping customer task cards. Slide one uses the authored Hero
-fields and all four slides have clearly named local fallback images.
+and three overlapping customer task cards. The carousel uses Sitecore-authored
+fields for every slide, including Content Hub images.
 
 ImageCarousel / NwnResources is a distinct customer-resources carousel. Its
-authored background text supports the format Title||Description and it replaces
-empty or legacy starter imagery with local NW Natural demo images.
+authored background text supports the format Title||Description. The component
+renders only authored imagery; it does not substitute local assets.
 
 ## Add Editing host to XM Cloud
 
