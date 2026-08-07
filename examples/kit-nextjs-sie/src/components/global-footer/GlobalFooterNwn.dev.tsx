@@ -45,15 +45,6 @@ const fallbackCopyright = {
   value: `© ${new Date().getFullYear()} SiEnergy. All Rights Reserved.`,
 };
 
-const footerLogo = {
-  value: {
-    src: '/assets/sie-images/global-footer-sienergy-logo-reversed.png',
-    alt: 'SiEnergy',
-    width: '600',
-    height: '186',
-  },
-};
-
 const utilityLinks = [
   {
     text: 'Terms & Conditions',
@@ -96,6 +87,7 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
   }
 
   const {
+    footerLogo,
     footerNavLinks,
     footerCopyright,
     socialLinks,
@@ -167,7 +159,7 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
       <div className="mx-auto w-full max-w-[60rem] py-9 text-center">
         <div className="mx-auto mb-6 w-44 sm:w-52">
           <ImageWrapper
-            image={footerLogo}
+            image={footerLogo?.jsonValue}
             className="h-auto w-full object-contain"
             sizes="(max-width: 640px) 176px, 208px"
             page={props.page}

@@ -19,6 +19,7 @@ export type GlobalFooterFields = {
           results: FooterNavigationLink[];
         };
         socialLinks: { results: FooterSocialLink[] };
+        footerLogo?: { jsonValue?: ImageField };
         tagline?: { jsonValue: Field<string> };
         emailSubscriptionTitle?: { jsonValue: Field<string> };
         footerCopyright?: { jsonValue: Field<string> };

@@ -1,10 +1,11 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import type { Page } from '@sitecore-content-sdk/nextjs';
+import type { ImageField, Page } from '@sitecore-content-sdk/nextjs';
 import type { GlobalFooterProps } from '@/components/global-footer/global-footer.props';
 import { GlobalFooterNwn } from '@/components/global-footer/GlobalFooterNwn.dev';
 import { Default as EmailSignupForm } from '@/components/forms/email/EmailSignupForm.dev';
+import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
   Text: ({
@@ -51,23 +52,28 @@ jest.mock('@/components/forms/email/EmailSignupForm.dev', () => ({
 }));
 
 jest.mock('@/components/image/ImageWrapper.dev', () => ({
-  Default: ({
-    image,
-    className,
-  }: {
-    image?: { value?: { src?: string; alt?: string } };
-    className?: string;
-  }) => (
-    <img
-      src={image?.value?.src}
-      alt={image?.value?.alt ?? ''}
-      className={className}
-    />
+  Default: jest.fn(
+    ({
+      image,
+      className,
+    }: {
+      image?: { value?: { src?: string; alt?: string } };
+      className?: string;
+    }) => (
+      <img
+        src={image?.value?.src}
+        alt={image?.value?.alt ?? ''}
+        className={className}
+      />
+    ),
   ),
 }));
 
 const mockEmailSignupForm = EmailSignupForm as jest.MockedFunction<
   typeof EmailSignupForm
+>;
+const mockImageWrapper = ImageWrapper as jest.MockedFunction<
+  typeof ImageWrapper
 >;
 
 const normalPage = {
@@ -94,6 +100,16 @@ const footerProps: GlobalFooterProps = {
   fields: {
     data: {
       datasource: {
+        footerLogo: {
+          jsonValue: {
+            value: {
+              src: '/assets/sie-images/authored-footer-logo.png',
+              alt: 'Authored SiEnergy footer logo',
+              width: '600',
+              height: '186',
+            },
+          },
+        },
         footerNavLinks: {
           results: [
             {
@@ -305,6 +321,9 @@ describe('GlobalFooterNwn', () => {
 
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
     expect(
+      screen.getByRole('img', { name: 'Authored SiEnergy footer logo' }),
+    ).toHaveAttribute('src', '/assets/sie-images/authored-footer-logo.png');
+    expect(
       screen.getByRole('heading', {
         level: 2,
         name: 'Get SiEnergy news and service updates.',
@@ -380,6 +399,42 @@ describe('GlobalFooterNwn', () => {
 
     expect(mockEmailSignupForm).toHaveBeenLastCalledWith(
       expect.not.objectContaining({ cdpIdentity: expect.anything() }),
+      undefined,
+    );
+  });
+
+  it('passes an empty Sitecore logo image field through in editing mode', () => {
+    const emptyFooterLogo = {
+      value: {},
+      metadata: { fieldName: 'footerLogo' },
+    } as ImageField;
+
+    render(
+      <GlobalFooterNwn
+        {...footerProps}
+        fields={{
+          ...footerProps.fields,
+          data: {
+            datasource: {
+              ...footerProps.fields.data.datasource,
+              footerLogo: { jsonValue: emptyFooterLogo },
+            },
+          },
+        }}
+        page={{
+          ...normalPage,
+          mode: {
+            ...normalPage.mode,
+            isEditing: true,
+            isNormal: false,
+          },
+        }}
+        isPageEditing
+      />,
+    );
+
+    expect(mockImageWrapper).toHaveBeenLastCalledWith(
+      expect.objectContaining({ image: emptyFooterLogo }),
       undefined,
     );
   });
