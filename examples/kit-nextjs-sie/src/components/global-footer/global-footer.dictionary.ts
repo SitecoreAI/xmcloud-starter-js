@@ -1,6 +1,6 @@
 export const GlobalFooterDictionaryKeys = {
-  FOOTER_EmailSubmitLabel: 'NWN_Footer_EmailSubmitLabel',
-  FOOTER_EmailPlaceholder: 'NWN_Footer_EmailPlaceholder',
-  FOOTER_EmailErrorMessage: 'NWN_Footer_EmailErrorMessage',
-  FOOTER_EmailSuccessMessage: 'NWN_Footer_EmailSuccessMessage',
+  FOOTER_EmailSubmitLabel: 'SIE_Footer_EmailSubmitLabel',
+  FOOTER_EmailPlaceholder: 'SIE_Footer_EmailPlaceholder',
+  FOOTER_EmailErrorMessage: 'SIE_Footer_EmailErrorMessage',
+  FOOTER_EmailSuccessMessage: 'SIE_Footer_EmailSuccessMessage',
 };

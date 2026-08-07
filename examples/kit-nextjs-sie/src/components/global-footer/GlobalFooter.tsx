@@ -12,16 +12,40 @@ import { useTranslations } from 'next-intl';
 import { dictionaryKeys } from '@/variables/dictionary';
 // Data source checks are done in the child components
 
+const resolveDictionaryValue = (
+  value: string,
+  key: string,
+  fallback: string,
+) => (value && value !== key ? value : fallback);
+
+const createFooterDictionary = (t: ReturnType<typeof useTranslations>) => ({
+  FOOTER_EmailSubmitLabel: resolveDictionaryValue(
+    t(dictionaryKeys.FOOTER_EmailSubmitLabel),
+    dictionaryKeys.FOOTER_EmailSubmitLabel,
+    'Subscribe',
+  ),
+  FOOTER_EmailPlaceholder: resolveDictionaryValue(
+    t(dictionaryKeys.FOOTER_EmailPlaceholder),
+    dictionaryKeys.FOOTER_EmailPlaceholder,
+    'Enter your email address',
+  ),
+  FOOTER_EmailErrorMessage: resolveDictionaryValue(
+    t(dictionaryKeys.FOOTER_EmailErrorMessage),
+    dictionaryKeys.FOOTER_EmailErrorMessage,
+    'Please enter a valid email address',
+  ),
+  FOOTER_EmailSuccessMessage: resolveDictionaryValue(
+    t(dictionaryKeys.FOOTER_EmailSuccessMessage),
+    dictionaryKeys.FOOTER_EmailSuccessMessage,
+    'Thank you for subscribing!',
+  ),
+});
+
 // Default display of the component
 export const Default: React.FC<GlobalFooterProps> = (props) => {
   const { isEditing } = props.page.mode;
   const t = useTranslations();
-  const dictionary = {
-    FOOTER_EmailSubmitLabel: t(dictionaryKeys.FOOTER_EmailSubmitLabel),
-    FOOTER_EmailPlaceholder: t(dictionaryKeys.FOOTER_EmailPlaceholder),
-    FOOTER_EmailErrorMessage: t(dictionaryKeys.FOOTER_EmailErrorMessage),
-    FOOTER_EmailSuccessMessage: t(dictionaryKeys.FOOTER_EmailSuccessMessage),
-  };
+  const dictionary = createFooterDictionary(t);
   props.fields.dictionary = dictionary;
 
   return <GlobalFooterNwn {...props} isPageEditing={isEditing} />;
@@ -30,12 +54,7 @@ export const Default: React.FC<GlobalFooterProps> = (props) => {
 export const StarterDefault: React.FC<GlobalFooterProps> = (props) => {
   const { isEditing } = props.page.mode;
   const t = useTranslations();
-  const dictionary = {
-    FOOTER_EmailSubmitLabel: t(dictionaryKeys.FOOTER_EmailSubmitLabel),
-    FOOTER_EmailPlaceholder: t(dictionaryKeys.FOOTER_EmailPlaceholder),
-    FOOTER_EmailErrorMessage: t(dictionaryKeys.FOOTER_EmailErrorMessage),
-    FOOTER_EmailSuccessMessage: t(dictionaryKeys.FOOTER_EmailSuccessMessage),
-  };
+  const dictionary = createFooterDictionary(t);
   props.fields.dictionary = dictionary;
 
   return <GlobalFooterDefault {...props} isPageEditing={isEditing} />;
@@ -45,12 +64,7 @@ export const StarterDefault: React.FC<GlobalFooterProps> = (props) => {
 export const BlackCompactVariant: React.FC<GlobalFooterProps> = (props) => {
   const { isEditing } = props.page.mode;
   const t = useTranslations();
-  const dictionary = {
-    FOOTER_EmailSubmitLabel: t(dictionaryKeys.FOOTER_EmailSubmitLabel),
-    FOOTER_EmailPlaceholder: t(dictionaryKeys.FOOTER_EmailPlaceholder),
-    FOOTER_EmailErrorMessage: t(dictionaryKeys.FOOTER_EmailErrorMessage),
-    FOOTER_EmailSuccessMessage: t(dictionaryKeys.FOOTER_EmailSuccessMessage),
-  };
+  const dictionary = createFooterDictionary(t);
   props.fields.dictionary = dictionary;
 
   return <GlobalFooterNwn {...props} isPageEditing={isEditing} />;
@@ -59,12 +73,7 @@ export const BlackCompactVariant: React.FC<GlobalFooterProps> = (props) => {
 export const BlackLargeVariant: React.FC<GlobalFooterProps> = (props) => {
   const { isEditing } = props.page.mode;
   const t = useTranslations();
-  const dictionary = {
-    FOOTER_EmailSubmitLabel: t(dictionaryKeys.FOOTER_EmailSubmitLabel),
-    FOOTER_EmailPlaceholder: t(dictionaryKeys.FOOTER_EmailPlaceholder),
-    FOOTER_EmailErrorMessage: t(dictionaryKeys.FOOTER_EmailErrorMessage),
-    FOOTER_EmailSuccessMessage: t(dictionaryKeys.FOOTER_EmailSuccessMessage),
-  };
+  const dictionary = createFooterDictionary(t);
   props.fields.dictionary = dictionary;
 
   return <GlobalFooterNwn {...props} isPageEditing={isEditing} />;
@@ -73,12 +82,7 @@ export const BlackLargeVariant: React.FC<GlobalFooterProps> = (props) => {
 export const BlueCenteredVariant: React.FC<GlobalFooterProps> = (props) => {
   const { isEditing } = props.page.mode;
   const t = useTranslations();
-  const dictionary = {
-    FOOTER_EmailSubmitLabel: t(dictionaryKeys.FOOTER_EmailSubmitLabel),
-    FOOTER_EmailPlaceholder: t(dictionaryKeys.FOOTER_EmailPlaceholder),
-    FOOTER_EmailErrorMessage: t(dictionaryKeys.FOOTER_EmailErrorMessage),
-    FOOTER_EmailSuccessMessage: t(dictionaryKeys.FOOTER_EmailSuccessMessage),
-  };
+  const dictionary = createFooterDictionary(t);
   props.fields.dictionary = dictionary;
 
   return <GlobalFooterNwn {...props} isPageEditing={isEditing} />;
@@ -87,12 +91,7 @@ export const BlueCenteredVariant: React.FC<GlobalFooterProps> = (props) => {
 export const BlueCompactVariant: React.FC<GlobalFooterProps> = (props) => {
   const { isEditing } = props.page.mode;
   const t = useTranslations();
-  const dictionary = {
-    FOOTER_EmailSubmitLabel: t(dictionaryKeys.FOOTER_EmailSubmitLabel),
-    FOOTER_EmailPlaceholder: t(dictionaryKeys.FOOTER_EmailPlaceholder),
-    FOOTER_EmailErrorMessage: t(dictionaryKeys.FOOTER_EmailErrorMessage),
-    FOOTER_EmailSuccessMessage: t(dictionaryKeys.FOOTER_EmailSuccessMessage),
-  };
+  const dictionary = createFooterDictionary(t);
   props.fields.dictionary = dictionary;
 
   return <GlobalFooterNwn {...props} isPageEditing={isEditing} />;
@@ -129,12 +128,7 @@ export const StarterBlueCompactVariant: React.FC<GlobalFooterProps> = (
 export const Nwn: React.FC<GlobalFooterProps> = (props) => {
   const { isEditing } = props.page.mode;
   const t = useTranslations();
-  const dictionary = {
-    FOOTER_EmailSubmitLabel: t(dictionaryKeys.FOOTER_EmailSubmitLabel),
-    FOOTER_EmailPlaceholder: t(dictionaryKeys.FOOTER_EmailPlaceholder),
-    FOOTER_EmailErrorMessage: t(dictionaryKeys.FOOTER_EmailErrorMessage),
-    FOOTER_EmailSuccessMessage: t(dictionaryKeys.FOOTER_EmailSuccessMessage),
-  };
+  const dictionary = createFooterDictionary(t);
   props.fields.dictionary = dictionary;
 
   return <GlobalFooterNwn {...props} isPageEditing={isEditing} />;

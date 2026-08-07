@@ -80,10 +80,10 @@ jest.mock('next-intl', () => ({
 // Mock dictionary keys
 jest.mock('@/variables/dictionary', () => ({
   dictionaryKeys: {
-    FOOTER_EmailSubmitLabel: 'FOOTER_EmailSubmitLabel',
-    FOOTER_EmailPlaceholder: 'FOOTER_EmailPlaceholder',
-    FOOTER_EmailErrorMessage: 'FOOTER_EmailErrorMessage',
-    FOOTER_EmailSuccessMessage: 'FOOTER_EmailSuccessMessage',
+    FOOTER_EmailSubmitLabel: 'SIE_Footer_EmailSubmitLabel',
+    FOOTER_EmailPlaceholder: 'SIE_Footer_EmailPlaceholder',
+    FOOTER_EmailErrorMessage: 'SIE_Footer_EmailErrorMessage',
+    FOOTER_EmailSuccessMessage: 'SIE_Footer_EmailSuccessMessage',
   },
 }));
 
@@ -193,10 +193,10 @@ describe('GlobalFooter Component', () => {
 
       const callArgs = GlobalFooterNwn.mock.calls[0][0];
       expect(callArgs.fields.dictionary).toEqual({
-        FOOTER_EmailSubmitLabel: 'FOOTER_EmailSubmitLabel',
-        FOOTER_EmailPlaceholder: 'FOOTER_EmailPlaceholder',
-        FOOTER_EmailErrorMessage: 'FOOTER_EmailErrorMessage',
-        FOOTER_EmailSuccessMessage: 'FOOTER_EmailSuccessMessage',
+        FOOTER_EmailSubmitLabel: 'Subscribe',
+        FOOTER_EmailPlaceholder: 'Enter your email address',
+        FOOTER_EmailErrorMessage: 'Please enter a valid email address',
+        FOOTER_EmailSuccessMessage: 'Thank you for subscribing!',
       });
     });
   });
@@ -325,10 +325,10 @@ describe('GlobalFooter Component', () => {
 
       render(<GlobalFooter {...mockGlobalFooterProps} />);
 
-      expect(mockT).toHaveBeenCalledWith('FOOTER_EmailSubmitLabel');
-      expect(mockT).toHaveBeenCalledWith('FOOTER_EmailPlaceholder');
-      expect(mockT).toHaveBeenCalledWith('FOOTER_EmailErrorMessage');
-      expect(mockT).toHaveBeenCalledWith('FOOTER_EmailSuccessMessage');
+      expect(mockT).toHaveBeenCalledWith('SIE_Footer_EmailSubmitLabel');
+      expect(mockT).toHaveBeenCalledWith('SIE_Footer_EmailPlaceholder');
+      expect(mockT).toHaveBeenCalledWith('SIE_Footer_EmailErrorMessage');
+      expect(mockT).toHaveBeenCalledWith('SIE_Footer_EmailSuccessMessage');
     });
 
     it('passes translated dictionary to child component', () => {
@@ -347,10 +347,10 @@ describe('GlobalFooter Component', () => {
 
       const callArgs = GlobalFooterNwn.mock.calls[0][0];
       expect(callArgs.fields.dictionary).toEqual({
-        FOOTER_EmailSubmitLabel: 'translated_FOOTER_EmailSubmitLabel',
-        FOOTER_EmailPlaceholder: 'translated_FOOTER_EmailPlaceholder',
-        FOOTER_EmailErrorMessage: 'translated_FOOTER_EmailErrorMessage',
-        FOOTER_EmailSuccessMessage: 'translated_FOOTER_EmailSuccessMessage',
+        FOOTER_EmailSubmitLabel: 'translated_SIE_Footer_EmailSubmitLabel',
+        FOOTER_EmailPlaceholder: 'translated_SIE_Footer_EmailPlaceholder',
+        FOOTER_EmailErrorMessage: 'translated_SIE_Footer_EmailErrorMessage',
+        FOOTER_EmailSuccessMessage: 'translated_SIE_Footer_EmailSuccessMessage',
       });
     });
   });

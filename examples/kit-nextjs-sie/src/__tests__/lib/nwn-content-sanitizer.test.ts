@@ -22,7 +22,12 @@ describe('SiEnergy inherited route-data sanitizer', () => {
   });
 
   it('flags inherited NWN content but keeps SiEnergy natural-gas content', () => {
-    expect(isLegacyStarterDataValue('Natural gas vehicle safety')).toBe(true);
+    expect(isLegacyStarterDataValue('/vehicles/ambulances')).toBe(true);
+    expect(
+      isLegacyStarterDataValue(
+        'Do not operate appliances, flashlights, or vehicles near a suspected leak',
+      ),
+    ).toBe(false);
     expect(isLegacyStarterDataValue('https://www.nwnatural.com/safety')).toBe(
       true,
     );

@@ -188,7 +188,7 @@ describe('SubmissionFormDefault', () => {
       language: 'EN-US',
       page: '/contact-us',
       extensionData: {
-        source: 'contact_us',
+        source: 'sienergy_contact_form',
         intent: 'contact_request',
       },
     });

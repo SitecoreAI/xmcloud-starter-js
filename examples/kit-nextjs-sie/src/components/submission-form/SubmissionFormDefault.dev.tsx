@@ -107,7 +107,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
           language: (document.documentElement.lang || 'en').toUpperCase(),
           page: window.location.pathname || '/',
           extensionData: {
-            source: 'contact_us',
+            source: 'sienergy_contact_form',
             intent: 'contact_request',
           },
         });

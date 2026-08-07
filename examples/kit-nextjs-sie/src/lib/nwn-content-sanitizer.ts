@@ -1,5 +1,5 @@
 const LEGACY_STARTER_PATTERN =
-  /\b(?:alaris|aero|nexa|terra|automotive|vehicles?|dealerships?|nw\s+natural|pacific northwest)\b|test[-\s]?drive|electric future|drivesense|nwnatural(?:\.com)?|nw-natural|nwnpartnerlink|nwn-images|800[-\s]?422[-\s]?4012|800[-\s]?882[-\s]?3377|less we can|\/(?:account-billing|ways-to-save|get-natural-gas|about-us)(?:\/|[?#"'\s]|$)|\/services(?:\/|[?#"'\s]|$)|\/safety\/(?:smell-natural-gas|call-before-you-dig)(?:\/|[?#"'\s]|$)/i;
+  /\b(?:alaris|aero|nexa|terra|automotive|dealerships?|nw\s+natural|pacific northwest)\b|test[-\s]?drive|electric future|drivesense|nwnatural(?:\.com)?|nw-natural|nwnpartnerlink|nwn-images|800[-\s]?422[-\s]?4012|800[-\s]?882[-\s]?3377|less we can|\/vehicles?(?:\/|[?"\s]|$)|\/(?:account-billing|ways-to-save|get-natural-gas|about-us)(?:\/|[?#"'\s]|$)|\/services(?:\/|[?#"'\s]|$)|\/safety\/(?:smell-natural-gas|call-before-you-dig)(?:\/|[?#"'\s]|$)/i;
 
 export const isLegacyStarterDataValue = (value: string | undefined): boolean =>
   LEGACY_STARTER_PATTERN.test(value ?? '');
