@@ -23,6 +23,7 @@ The official identity files are already available to the head app under `public/
 
 | Filename | App path and placement | Alternative text | Aspect ratio | Official source |
 | --- | --- | --- | --- | --- |
+| `official-sienergy-logo-light.png` | This DAM handoff directory; header or any white/light background | SiEnergy | 100:31 (600×186) | [Official standard SiEnergy logo](https://www.sienergy.com/wp-content/uploads/2021/12/SiEnergy-Logo.png) |
 | `global-header-sienergy-logo-light.png` | `public/assets/sie-images/`; GlobalHeader on white or light gray | SiEnergy | 100:31 (600×186) | [Official standard SiEnergy logo](https://www.sienergy.com/wp-content/uploads/2021/12/SiEnergy-Logo.png) |
 | `global-footer-sienergy-logo-reversed.png` | `public/assets/sie-images/`; GlobalFooter on charcoal | SiEnergy | 100:31 (600×186) | [Official reversed SiEnergy logo](https://www.sienergy.com/wp-content/uploads/2021/12/SiEnergy-Logo-Reversed.png) |
 | `sienergy-official-favicon.png` | `public/assets/sie-images/`; application favicon and touch icon | Not applicable; favicon metadata does not take image alternative text | 25:32 (100×128) | [Official SiEnergy favicon](https://www.sienergy.com/wp-content/uploads/2021/12/favicon.png) |
