@@ -105,7 +105,7 @@ const fallbackHeaderContact: LinkField = {
 
 const fallbackLogo: ImageField = {
   value: {
-    src: '/assets/sie-images/global-header-sienergy-logo-light.png',
+    src: '/assets/sie-images/global-header-sienergy-logo-reversed.png',
     alt: 'SiEnergy',
     width: '600',
     height: '186',
@@ -179,7 +179,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         page={props.page}
       />
     ) : (
-      <span className="font-heading text-2xl font-semibold tracking-tight text-primary">
+      <span className="font-heading text-2xl font-semibold tracking-tight text-[#f6b786]">
         SiEnergy
       </span>
     );
@@ -199,13 +199,13 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       return (
         <li
           key={'nwn-mobile-' + navItemKey(item, index)}
-          className="border-b border-[#d7d6d7] py-4"
+          className="border-b border-white/20 py-4"
         >
           <CompatibleLink
             field={linkField}
             editable={isPageEditing}
             prefetch={false}
-            className="font-heading text-xl font-semibold text-[#414042]"
+            className="font-heading text-xl font-semibold text-white hover:text-[#f6b786]"
             onClick={() => setIsMenuOpen(false)}
           />
           {children.length > 0 && (
@@ -216,7 +216,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                     field={child.link?.jsonValue}
                     editable={isPageEditing}
                     prefetch={false}
-                    className="inline-flex py-1 text-base font-medium text-[#737076] hover:text-primary"
+                    className="inline-flex py-1 text-base font-medium text-white/75 hover:text-[#f6b786]"
                     onClick={() => setIsMenuOpen(false)}
                   />
                 </li>
@@ -237,7 +237,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
             field={linkField}
             editable={isPageEditing}
             prefetch={false}
-            className="relative inline-flex py-4 font-heading text-[1.05rem] font-semibold text-[#414042] transition-colors after:absolute after:inset-x-0 after:bottom-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-primary hover:after:scale-x-100 focus-visible:text-primary focus-visible:after:scale-x-100"
+            className="relative inline-flex py-4 font-heading text-[1.05rem] font-semibold text-white transition-colors after:absolute after:inset-x-0 after:bottom-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-[#f6b786] hover:after:scale-x-100 focus-visible:text-[#f6b786] focus-visible:after:scale-x-100"
             aria-haspopup={children.length > 0 ? 'true' : undefined}
           />
           {children.length > 0 && (
@@ -269,7 +269,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
     <header
       data-component="GlobalHeader"
       data-variant="Nwn"
-      className="nwn-header sticky top-0 z-50 w-full border-t-[0.625rem] border-primary bg-white text-[#414042] shadow-sm"
+      className="nwn-header sticky top-0 z-50 w-full border-t-[0.625rem] border-primary bg-[#414042] text-white shadow-sm"
     >
       <a
         href="#content"
@@ -278,7 +278,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         Skip to main content
       </a>
 
-      <div className="hidden border-b border-[#d7d6d7] lg:block">
+      <div className="hidden border-b border-white/20 lg:block">
         <div className="nwn-content-shell flex min-h-9 items-center justify-between gap-6 text-sm">
           <nav aria-label="Utility navigation">
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -288,7 +288,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                     field={item.link?.jsonValue}
                     editable={isPageEditing}
                     prefetch={false}
-                    className="font-medium text-[#737076] hover:text-primary"
+                    className="font-medium text-white/80 hover:text-[#f6b786]"
                   />
                 </li>
               ))}
@@ -297,17 +297,17 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
           <div className="flex items-center gap-6">
             <a
               href="tel:+18884687007"
-              className="font-semibold text-[#414042] hover:text-primary"
+              className="font-semibold text-white hover:text-[#f6b786]"
             >
               Customer service{' '}
-              <span className="text-primary">888-468-7007, Option 3</span>
+              <span className="text-[#f6b786]">888-468-7007, Option 3</span>
             </a>
             <a
               href="tel:+18884687007"
-              className="font-semibold text-[#414042] hover:text-primary"
+              className="font-semibold text-white hover:text-[#f6b786]"
             >
               Gas emergency?{' '}
-              <span className="text-primary">888-468-7007, Option 1</span>
+              <span className="text-[#f6b786]">888-468-7007, Option 1</span>
             </a>
           </div>
         </div>
@@ -339,7 +339,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
               buttonLink={displayHeaderContact}
               isPageEditing={isPageEditing && !useFallbackHeaderContact}
               variant="default"
-              className="min-h-11 border border-primary px-5 text-base"
+              className="min-h-11 border border-primary bg-primary px-5 text-base text-white hover:bg-primary-hover hover:text-white focus-visible:bg-primary-hover focus-visible:text-white"
               page={props.page}
             />
           )}
@@ -349,7 +349,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
           type="button"
           variant="ghost"
           size="icon"
-          className="ml-auto h-12 w-12 text-primary lg:hidden"
+          className="ml-auto h-12 w-12 text-[#f6b786] hover:bg-white/10 hover:text-white lg:hidden"
           aria-expanded={isMenuOpen}
           aria-controls="nwn-mobile-navigation"
           aria-label={
@@ -362,19 +362,19 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       </div>
 
       <nav
-        className="hidden border-y border-[#d7d6d7] bg-[#eff0f2] lg:block"
+        className="hidden border-y border-white/20 bg-[#414042] lg:block"
         aria-label="Services navigation"
       >
         <ul className="nwn-content-shell flex min-h-10 items-stretch">
           {secondaryNavigation.map((item) => (
             <li
               key={item.href}
-              className="flex flex-1 border-r border-[#d7d6d7] first:border-l"
+              className="flex flex-1 border-r border-white/20 first:border-l"
             >
               <Link
                 href={item.href}
                 prefetch={false}
-                className="flex w-full items-center justify-center px-4 py-2 text-center font-heading text-[0.98rem] font-semibold text-[#414042] transition-colors hover:bg-white hover:text-primary focus-visible:bg-white focus-visible:text-primary"
+                className="flex w-full items-center justify-center px-4 py-2 text-center font-heading text-[0.98rem] font-semibold text-white transition-colors hover:bg-white/10 hover:text-[#f6b786] focus-visible:bg-white/10 focus-visible:text-[#f6b786]"
               >
                 {item.label}
               </Link>
@@ -386,7 +386,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       {isMenuOpen && (
         <div
           id="nwn-mobile-navigation"
-          className="max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-[#d7d6d7] bg-white px-4 pb-8 shadow-lg lg:hidden"
+          className="max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-white/20 bg-[#414042] px-4 pb-8 text-white shadow-lg lg:hidden"
         >
           <nav className="mx-auto max-w-xl" aria-label="Mobile navigation">
             <ul>
@@ -394,8 +394,8 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                 renderPrimaryLink(item, index, true),
               )}
             </ul>
-            <div className="mt-5 border-y border-[#d7d6d7] bg-[#eff0f2] px-4 py-2">
-              <p className="py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#737076]">
+            <div className="mt-5 border-y border-white/20 bg-white/5 px-4 py-2">
+              <p className="py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/70">
                 Customer services
               </p>
               <ul>
@@ -404,7 +404,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                     <Link
                       href={item.href}
                       prefetch={false}
-                      className="block border-t border-[#d7d6d7] py-3 font-heading text-lg font-semibold text-[#414042] hover:text-primary"
+                      className="block border-t border-white/15 py-3 font-heading text-lg font-semibold text-white hover:text-[#f6b786]"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
@@ -421,7 +421,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                       field={item.link?.jsonValue}
                       editable={isPageEditing}
                       prefetch={false}
-                      className="text-sm font-semibold text-[#737076] hover:text-primary"
+                      className="text-sm font-semibold text-white/75 hover:text-[#f6b786]"
                       onClick={() => setIsMenuOpen(false)}
                     />
                   </li>
@@ -431,17 +431,17 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
             <div className="mt-6 space-y-2">
               <a
                 href="tel:+18884687007"
-                className="block border-l-4 border-[#c4c4c4] bg-[#eff0f2] px-4 py-3 font-semibold text-[#414042]"
+                className="block border-l-4 border-white/40 bg-white/5 px-4 py-3 font-semibold text-white"
               >
                 Customer service{' '}
-                <span className="text-primary">888-468-7007, Option 3</span>
+                <span className="text-[#f6b786]">888-468-7007, Option 3</span>
               </a>
               <a
                 href="tel:+18884687007"
-                className="block border-l-4 border-primary bg-[#fff4eb] px-4 py-3 font-semibold text-[#414042]"
+                className="block border-l-4 border-primary bg-primary/10 px-4 py-3 font-semibold text-white"
               >
                 Gas emergency?{' '}
-                <span className="text-primary">888-468-7007, Option 1</span>
+                <span className="text-[#f6b786]">888-468-7007, Option 1</span>
               </a>
             </div>
             {displayHeaderContact && (
@@ -450,7 +450,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                   buttonLink={displayHeaderContact}
                   isPageEditing={isPageEditing && !useFallbackHeaderContact}
                   variant="default"
-                  className="min-h-12 w-full text-base"
+                  className="min-h-12 w-full bg-primary text-base text-white hover:bg-primary-hover hover:text-white focus-visible:bg-primary-hover focus-visible:text-white"
                   page={props.page}
                 />
               </div>

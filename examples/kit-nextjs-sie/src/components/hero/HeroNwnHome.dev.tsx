@@ -25,7 +25,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
       data-component="Hero"
       data-variant="NwnHome"
       className={cn(
-        'nwn-home-hero relative overflow-hidden bg-[#414042] text-white',
+        'nwn-home-hero relative overflow-hidden bg-primary text-white',
         props.params?.styles,
       )}
     >
@@ -46,8 +46,8 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
         className={cn(
           'pointer-events-none absolute inset-0',
           hasImage
-            ? 'bg-[linear-gradient(90deg,rgba(43,38,35,0.94)_0%,rgba(65,64,66,0.72)_48%,rgba(65,64,66,0.16)_100%)]'
-            : 'bg-[linear-gradient(135deg,#414042_0%,#6b4a36_100%)]',
+            ? 'bg-[linear-gradient(rgba(227,111,30,0.96),rgba(227,111,30,0.96))] lg:bg-[linear-gradient(90deg,#e36f1e_0%,#e36f1e_58%,rgba(227,111,30,0.86)_76%,rgba(227,111,30,0.52)_100%)]'
+            : 'bg-primary',
         )}
         aria-hidden="true"
       />
@@ -58,7 +58,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
             <Text
               tag="p"
               field={fields.bannerText}
-              className="mb-4 inline-flex border-l-4 border-primary pl-4 font-heading text-sm font-semibold uppercase tracking-[0.12em] text-[#ffe0c7] sm:text-base"
+              className="mb-4 inline-flex border-l-4 border-[#2b2623]/70 pl-4 font-heading text-sm font-semibold uppercase tracking-[0.12em] text-[#2b2623] sm:text-base"
             />
           )}
           {(isPageEditing || fields.title?.value) && (
@@ -72,7 +72,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
             <Text
               tag="p"
               field={fields.description}
-              className="mt-5 max-w-2xl text-pretty text-lg leading-7 text-white/95 sm:text-xl sm:leading-8"
+              className="mt-5 max-w-2xl text-pretty text-xl font-semibold leading-8 text-white"
             />
           )}
 
@@ -83,7 +83,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
                   buttonLink={fields.bannerCTA}
                   isPageEditing={isPageEditing}
                   variant="tertiary"
-                  className="min-h-12 border border-white bg-white px-6 text-base font-semibold text-primary hover:bg-[#fff4eb]"
+                  className="min-h-12 border border-[#414042] bg-[#414042] px-6 text-base font-semibold text-white hover:bg-[#2f2e30] hover:text-white"
                   page={props.page}
                 />
               )}
@@ -92,7 +92,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
                   buttonLink={fields.searchLink}
                   isPageEditing={isPageEditing}
                   variant="ghost"
-                  className="min-h-12 border border-white/80 px-6 text-base font-semibold text-white hover:bg-white/15 hover:text-white"
+                  className="min-h-12 border border-[#2b2623] px-6 text-base font-semibold text-[#2b2623] hover:bg-[#414042] hover:text-white"
                   page={props.page}
                 />
               )}

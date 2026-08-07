@@ -29,14 +29,20 @@ jest.mock('@/components/image/ImageWrapper.dev', () => ({
 jest.mock('@/components/button-component/ButtonComponent', () => ({
   ButtonBase: ({
     buttonLink,
+    className,
   }: {
     buttonLink: { value?: { href?: string; text?: string } };
-  }) => <a href={buttonLink?.value?.href}>{buttonLink?.value?.text}</a>,
+    className?: string;
+  }) => (
+    <a href={buttonLink?.value?.href} className={className}>
+      {buttonLink?.value?.text}
+    </a>
+  ),
 }));
 
 describe('HeroNwnHome', () => {
   it('renders only the authored hero fields', () => {
-    render(<HeroNwnHome {...mockHeroProps} />);
+    const { container } = render(<HeroNwnHome {...mockHeroProps} />);
 
     expect(
       screen.getByRole('heading', { name: 'Welcome to Our Platform' }),
@@ -52,6 +58,27 @@ describe('HeroNwnHome', () => {
     expect(screen.getByRole('link', { name: 'Search' })).toHaveAttribute(
       'href',
       '/search-results',
+    );
+    expect(container.querySelector('[data-component="Hero"]')).toHaveClass(
+      'bg-primary',
+      'text-white',
+      'position-left',
+    );
+    expect(
+      screen.getByText('Special Offer: Get 20% off on all services'),
+    ).toHaveClass('text-[#2b2623]');
+    expect(
+      screen.getByText(
+        'Discover amazing features and services tailored for you.',
+      ),
+    ).toHaveClass('text-xl', 'font-semibold', 'text-white');
+    expect(screen.getByRole('link', { name: 'Learn More' })).toHaveClass(
+      'bg-[#414042]',
+      'text-white',
+    );
+    expect(screen.getByRole('link', { name: 'Search' })).toHaveClass(
+      'border-[#2b2623]',
+      'text-[#2b2623]',
     );
     expect(
       screen.queryByRole('button', { name: 'Next slide' }),
