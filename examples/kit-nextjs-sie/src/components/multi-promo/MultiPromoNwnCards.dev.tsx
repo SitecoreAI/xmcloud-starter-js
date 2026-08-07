@@ -70,8 +70,8 @@ export const MultiPromoNwnCards: React.FC<MultiPromoProps> = (props) => {
                   {hasImage && (
                     <ImageWrapper
                       image={image}
-                      wrapperClass="aspect-[7/4] w-full overflow-hidden"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      wrapperClass="mx-6 mt-6 aspect-[7/4] overflow-hidden rounded-sm"
+                      className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                       sizes={
                         isFourColumns
                           ? '(max-width: 768px) 100vw, 25vw'
