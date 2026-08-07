@@ -1,19 +1,14 @@
 'use client';
 
 import { RichText, Text } from '@sitecore-content-sdk/nextjs';
-import {
-  CreditCard,
-  House,
-  ShieldCheck,
-  Wrench,
-  ArrowRight,
-} from 'lucide-react';
+import { ReceiptText, Settings, Phone, House } from 'lucide-react';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { getDatasource, getFieldValue } from '@/lib/component-props';
+import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { MultiPromoItemProps, MultiPromoProps } from './multi-promo.props';
 
-const quickActionIcons = [CreditCard, House, ShieldCheck, Wrench];
+const quickActionIcons = [ReceiptText, Settings, Phone, House];
 
 export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
   const { fields } = props;
@@ -26,13 +21,21 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
   const title = getFieldValue(datasource.title);
   const description = getFieldValue(datasource.description);
   const items = datasource.children?.results ?? [];
+  const desktopGridClass =
+    items.length === 1
+      ? 'lg:grid-cols-1'
+      : items.length === 2
+        ? 'lg:grid-cols-2'
+        : items.length === 3
+          ? 'lg:grid-cols-[0.9fr_1fr_1.6fr]'
+          : 'lg:grid-cols-4';
   const isPageEditing = props.page.mode.isEditing;
 
   return (
     <section
       data-component="MultiPromo"
       data-variant="NwnQuickActions"
-      className="nwn-quick-actions relative z-20 py-10 sm:py-14"
+      className="nwn-quick-actions relative z-30 -mt-14 pb-12 pt-0 sm:-mt-20 sm:pb-16"
       aria-label="Customer quick actions"
     >
       <div className="nwn-content-shell">
@@ -55,7 +58,12 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
         )}
 
         {items.length > 0 ? (
-          <div className="grid overflow-hidden rounded bg-white shadow-[0_12px_24px_rgba(0,0,0,0.10)] md:grid-cols-2 lg:grid-cols-4">
+          <div
+            className={cn(
+              'grid overflow-hidden rounded-sm bg-white shadow-[0_14px_32px_rgba(65,64,66,0.18)] md:grid-cols-2',
+              desktopGridClass,
+            )}
+          >
             {items.map((item: MultiPromoItemProps, index: number) => {
               const heading = getFieldValue(item.heading);
               const itemDescription = getFieldValue(item.description);
@@ -64,39 +72,35 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
               return (
                 <article
                   key={'nwn-quick-action-' + index}
-                  className="group relative border-b border-[#d7d6d7] p-6 transition-colors hover:bg-[#fff4eb] md:border-r lg:border-b-0 lg:p-7 lg:last:border-r-0"
+                  className="group relative flex gap-4 border-b border-[#d7d6d7] p-6 transition-colors hover:bg-[#fff4eb] md:odd:border-r lg:border-b-0 lg:border-r lg:p-7 lg:last:border-r-0"
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#fff4eb] text-primary">
-                      <Icon className="h-6 w-6" aria-hidden="true" />
-                    </span>
-                    <ArrowRight
-                      className="mt-2 h-5 w-5 text-primary transition-transform group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
+                  <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center text-primary">
+                    <Icon className="h-10 w-10" aria-hidden="true" />
+                  </span>
+                  <div className="min-w-0">
+                    {heading && (
+                      <Text
+                        tag="h3"
+                        field={heading}
+                        className="font-heading text-2xl font-semibold leading-tight text-primary"
+                      />
+                    )}
+                    {itemDescription && (
+                      <RichText
+                        field={itemDescription}
+                        className="mt-1 text-base leading-7 text-[#737076]"
+                      />
+                    )}
+                    {item.link?.jsonValue && (
+                      <EditableButton
+                        buttonLink={item.link.jsonValue}
+                        isPageEditing={isPageEditing}
+                        variant="ghost"
+                        className="mt-2 min-h-10 justify-start p-0 text-base font-semibold text-primary hover:bg-transparent hover:text-primary-hover"
+                        page={props.page}
+                      />
+                    )}
                   </div>
-                  {heading && (
-                    <Text
-                      tag="h3"
-                      field={heading}
-                      className="mt-5 font-heading text-2xl font-semibold leading-tight text-primary"
-                    />
-                  )}
-                  {itemDescription && (
-                    <RichText
-                      field={itemDescription}
-                      className="mt-3 text-base leading-7 text-[#737076]"
-                    />
-                  )}
-                  {item.link?.jsonValue && (
-                    <EditableButton
-                      buttonLink={item.link.jsonValue}
-                      isPageEditing={isPageEditing}
-                      variant="ghost"
-                      className="mt-4 min-h-11 justify-start p-0 text-base font-semibold text-primary hover:bg-transparent"
-                      page={props.page}
-                    />
-                  )}
                 </article>
               );
             })}

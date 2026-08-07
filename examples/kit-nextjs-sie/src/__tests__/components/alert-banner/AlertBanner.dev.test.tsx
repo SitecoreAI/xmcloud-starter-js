@@ -20,17 +20,26 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
 }));
 
 jest.mock('@/components/ui/alert', () => ({
-  Alert: ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
+  Alert: ({
+    children,
+    className,
+  }: React.PropsWithChildren<{ className?: string }>) => (
     <div data-testid="alert" className={className} role="alert">
       {children}
     </div>
   ),
-  AlertTitle: ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
+  AlertTitle: ({
+    children,
+    className,
+  }: React.PropsWithChildren<{ className?: string }>) => (
     <h3 data-testid="alert-title" className={className}>
       {children}
     </h3>
   ),
-  AlertDescription: ({ children, className }: React.PropsWithChildren<{ className?: string }>) => (
+  AlertDescription: ({
+    children,
+    className,
+  }: React.PropsWithChildren<{ className?: string }>) => (
     <div data-testid="alert-description" className={className}>
       {children}
     </div>
@@ -91,7 +100,7 @@ describe('AlertBanner', () => {
 
     const linkButton = screen.getByTestId('button-base');
     expect(linkButton).toBeInTheDocument();
-    expect(linkButton).toHaveAttribute('data-variant', 'default');
+    expect(linkButton).toHaveAttribute('data-variant', 'secondary');
     expect(screen.getByText('Learn More')).toBeInTheDocument();
   });
 
@@ -100,7 +109,7 @@ describe('AlertBanner', () => {
 
     const closeButton = screen.getByTestId('ui-button');
     expect(closeButton).toBeInTheDocument();
-    expect(closeButton).toHaveAttribute('data-variant', 'default');
+    expect(closeButton).toHaveAttribute('data-variant', 'ghost');
     expect(closeButton).toHaveAttribute('data-size', 'icon');
     expect(screen.getByTestId('x-icon')).toBeInTheDocument();
   });
@@ -137,7 +146,13 @@ describe('AlertBanner', () => {
     render(<AlertBanner {...mockProps} />);
 
     const alert = screen.getByTestId('alert');
-    expect(alert).toHaveClass('relative', 'border-none');
+    expect(alert).toHaveClass(
+      'relative',
+      'rounded-none',
+      'border-none',
+      'bg-primary',
+      'text-white',
+    );
     expect(alert).toHaveAttribute('role', 'alert');
   });
 });

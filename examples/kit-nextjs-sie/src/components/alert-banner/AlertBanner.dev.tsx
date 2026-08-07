@@ -18,29 +18,46 @@ export const Default: React.FC<AlertBannerProps> = (props) => {
   if (fields) {
     return (
       <aside role="complementary" aria-label="Alert notification">
-        <Alert className={cn('relative border-none', { hidden: isHidden })}>
-        <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between gap-4 py-1 xl:px-8">
-          <div className="space-y-1">
-            <AlertTitle className="text-base font-semibold leading-none tracking-tight">
-              <Text className="font-heading text-lg font-semibold" field={title} />
-            </AlertTitle>
-            <AlertDescription className="text-muted-foreground text-sm">
-              <Text tag="p" className="font-body" field={description} />
-            </AlertDescription>
-          </div>
-          <div className="flex items-center gap-2">
-            {link?.value?.href && <ButtonBase buttonLink={link} variant="default" />}
-            <Button 
-              variant="default" 
-              size="icon" 
+        <Alert
+          className={cn(
+            'relative rounded-none border-none bg-primary px-4 py-5 text-white sm:py-6',
+            { hidden: isHidden },
+          )}
+        >
+          <div className="nwn-content-shell flex items-center justify-center text-center">
+            <div className="max-w-5xl space-y-2">
+              <AlertTitle className="text-white">
+                <Text
+                  className="font-heading text-xl font-bold leading-tight text-white"
+                  field={title}
+                />
+              </AlertTitle>
+              <AlertDescription className="text-white">
+                <Text
+                  tag="p"
+                  className="font-body text-lg font-semibold leading-7 text-white sm:text-xl"
+                  field={description}
+                />
+              </AlertDescription>
+              {link?.value?.href && (
+                <ButtonBase
+                  buttonLink={link}
+                  variant="secondary"
+                  className="mt-2 bg-[#414042] text-white hover:bg-[#2f2e30]"
+                />
+              )}
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-2 top-2 text-white hover:bg-white/15 hover:text-white sm:right-4 sm:top-4"
               onClick={() => setIsHidden(true)}
               aria-label="Dismiss alert"
             >
-              <X className="h-4 w-4" aria-hidden="true" />
+              <X className="h-5 w-5" aria-hidden="true" />
             </Button>
           </div>
-        </div>
-      </Alert>
+        </Alert>
       </aside>
     );
   }

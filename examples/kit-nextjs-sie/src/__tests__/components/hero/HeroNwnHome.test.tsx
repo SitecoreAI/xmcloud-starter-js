@@ -71,7 +71,7 @@ describe('HeroNwnHome', () => {
       screen.getByText(
         'Discover amazing features and services tailored for you.',
       ),
-    ).toHaveClass('text-xl', 'font-semibold', 'text-white');
+    ).toHaveClass('text-xl', 'font-semibold', 'text-[#2b2623]');
     expect(screen.getByRole('link', { name: 'Learn More' })).toHaveClass(
       'bg-[#414042]',
       'text-white',
