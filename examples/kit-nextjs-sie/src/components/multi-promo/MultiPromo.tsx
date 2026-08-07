@@ -22,6 +22,8 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
   const { numColumns } = params || {};
   const datasource = getDatasource(fields);
   const { children, title, description } = datasource || {};
+  const items = children?.results ?? [];
+  const itemCount = items.length;
   const titleField = getFieldValue(title);
   const descriptionField = getFieldValue(description);
   const [api, setApi] = useState<CarouselApi>();
@@ -84,9 +86,12 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
   if (fields) {
     return (
       <section
-        className={cn('component multi-promo my-8 md:my-16', {
-          [props?.params?.styles]: props?.params?.styles,
-        })}
+        className={cn(
+          'component multi-promo nwn-content-shell my-8 text-left md:my-16',
+          {
+            [props?.params?.styles]: props?.params?.styles,
+          },
+        )}
         aria-labelledby={titleField?.value ? 'multi-promo-heading' : undefined}
       >
         <div className="flex flex-col gap-4 group-[.is-inset]:px-4 sm:group-[.is-inset]:px-0 xl:flex-row xl:items-end xl:justify-between xl:gap-20">
@@ -115,33 +120,34 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
               setApi={setApi}
               opts={{
                 align: 'center',
-                breakpoints: {
-                  '(min-width: 640px)': { align: 'start' },
-                },
                 loop: true,
                 skipSnaps: true,
               }}
-              className="relative -ml-4 -mr-4 overflow-hidden sm:ml-0 sm:group-[.is-inset]:-mr-8 md:group-[.is-inset]:-mr-16
-              2xl:group-[.is-inset]:-mr-24"
+              className="relative mx-auto w-full overflow-hidden"
               ref={carouselRef}
             >
-              <CarouselContent className="my-12 last:mb-0 sm:my-16 sm:-ml-8">
-                {children?.results?.map(
-                  (item: MultiPromoItemProps, index: number) => (
-                    <CarouselItem
-                      key={index}
-                      className={cn(
-                        'min-w-[238px] max-w-[416px] basis-3/4 pl-4 transition-opacity duration-300 sm:basis-[45%] sm:pl-8 md:basis-[31%]',
-                        {
-                          [`lg:basis-[31%]`]: numColumns === '3',
-                          [`xl:basis-[23%]`]: numColumns === '4',
-                        },
-                      )}
-                    >
-                      <MultiPromoItem key={index} {...item} page={props.page} />
-                    </CarouselItem>
-                  ),
-                )}
+              <CarouselContent
+                className={cn('!ml-0 my-12 gap-4 last:mb-0 sm:my-16 sm:gap-8', {
+                  'justify-center': itemCount === 1,
+                  'sm:justify-center': itemCount <= 2,
+                  'md:justify-center': itemCount <= 3,
+                  'xl:justify-center': numColumns === '4' && itemCount <= 4,
+                })}
+              >
+                {items.map((item: MultiPromoItemProps, index: number) => (
+                  <CarouselItem
+                    key={index}
+                    className={cn(
+                      'flex min-w-[238px] max-w-[416px] basis-3/4 justify-center !pl-0 text-left transition-opacity duration-300 sm:basis-[45%] md:basis-[31%]',
+                      {
+                        [`lg:basis-[31%]`]: numColumns === '3',
+                        [`xl:basis-[23%]`]: numColumns === '4',
+                      },
+                    )}
+                  >
+                    <MultiPromoItem key={index} {...item} page={props.page} />
+                  </CarouselItem>
+                ))}
               </CarouselContent>
             </Carousel>
             <div className="sr-only" aria-live="polite" aria-atomic="true">

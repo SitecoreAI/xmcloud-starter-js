@@ -18,7 +18,7 @@ export const Default: React.FC<MultiPromoItemProps> = (props) => {
   const { page } = props;
 
   return (
-    <article className="multi-promo-item px-4 sm:px-5">
+    <article className="multi-promo-item mx-auto w-full max-w-[26rem] px-4 text-left sm:px-5">
       {image && (
         <figure className="mb-7">
           <ImageWrapper

@@ -65,6 +65,8 @@ describe('MultiPromoNwnCards', () => {
     const firstHeading = screen.getByRole('heading', {
       name: 'Premium Product',
     });
+    const firstCard = firstHeading.closest('article');
+    const cardRow = firstCard?.parentElement;
 
     expect(firstImageWrapper).toHaveClass(
       'mx-6',
@@ -75,5 +77,18 @@ describe('MultiPromoNwnCards', () => {
     expect(firstImageWrapper).not.toHaveClass('w-full');
     expect(firstImage).toHaveClass('object-cover', 'object-center');
     expect(firstHeading.parentElement).toHaveClass('p-6');
+    expect(cardRow).toHaveClass(
+      'mx-auto',
+      'flex',
+      'flex-wrap',
+      'justify-center',
+    );
+    expect(firstCard).toHaveClass(
+      'w-full',
+      'max-w-[24rem]',
+      'text-left',
+      'md:w-[calc(50%_-_0.75rem)]',
+      'lg:w-[calc(33.333%_-_1rem)]',
+    );
   });
 });

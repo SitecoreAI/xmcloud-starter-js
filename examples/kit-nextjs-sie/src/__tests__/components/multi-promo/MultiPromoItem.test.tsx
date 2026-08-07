@@ -49,7 +49,14 @@ describe('MultiPromoItem', () => {
       <MultiPromoItem {...item} />,
     );
 
-    expect(getByRole('article')).toHaveClass('px-4', 'sm:px-5');
+    expect(getByRole('article')).toHaveClass(
+      'mx-auto',
+      'w-full',
+      'max-w-[26rem]',
+      'px-4',
+      'text-left',
+      'sm:px-5',
+    );
     expect(getByTestId('image-wrapper')).toBeInTheDocument();
     expect(getByTestId('promo-image')).toHaveAttribute(
       'src',

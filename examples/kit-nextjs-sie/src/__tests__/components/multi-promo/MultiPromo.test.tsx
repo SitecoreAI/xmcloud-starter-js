@@ -30,7 +30,7 @@ jest.mock('radash', () => ({
 }));
 
 jest.mock('@/components/ui/carousel', () => ({
-  Carousel: jest.fn(({ children, setApi, className }) => {
+  Carousel: jest.fn(({ children, setApi, className, opts }) => {
     React.useEffect(() => {
       if (setApi) {
         const mockApi = {
@@ -47,7 +47,12 @@ jest.mock('@/components/ui/carousel', () => ({
       }
     }, [setApi]);
     return (
-      <div data-testid="carousel" className={className}>
+      <div
+        data-testid="carousel"
+        className={className}
+        data-align={opts?.align}
+        data-has-breakpoints={String(Boolean(opts?.breakpoints))}
+      >
         {children}
       </div>
     );
@@ -107,11 +112,23 @@ describe('MultiPromo', () => {
       <MultiPromo {...mockMultiPromoProps} />,
     );
 
-    expect(getByTestId('carousel')).toBeInTheDocument();
+    const carousel = getByTestId('carousel');
+    expect(carousel).toBeInTheDocument();
+    expect(carousel).toHaveAttribute('data-align', 'center');
+    expect(carousel).toHaveAttribute('data-has-breakpoints', 'false');
+    expect(carousel.closest('section')).toHaveClass(
+      'nwn-content-shell',
+      'text-left',
+    );
     expect(getByTestId('carousel-content')).toBeInTheDocument();
 
     const carouselItems = getAllByTestId('carousel-item');
     expect(carouselItems).toHaveLength(4);
+    expect(carouselItems[0]).toHaveClass(
+      'justify-center',
+      '!pl-0',
+      'text-left',
+    );
   });
 
   it('renders NoDataFallback when fields are not provided', () => {

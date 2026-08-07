@@ -33,7 +33,7 @@ export const MultiPromoNwnCards: React.FC<MultiPromoProps> = (props) => {
       )}
     >
       <div className="nwn-content-shell">
-        <div className="grid gap-5 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+        <div className="mx-auto grid w-full max-w-[72rem] gap-5 text-left lg:grid-cols-[1fr_0.8fr] lg:items-end">
           {title && (
             <Text
               tag="h2"
@@ -50,12 +50,7 @@ export const MultiPromoNwnCards: React.FC<MultiPromoProps> = (props) => {
         </div>
 
         {items.length > 0 ? (
-          <div
-            className={cn('mt-10 grid gap-6 md:grid-cols-2', {
-              'xl:grid-cols-4': isFourColumns,
-              'lg:grid-cols-3': !isFourColumns,
-            })}
-          >
+          <div className="mx-auto mt-10 flex w-full max-w-[72rem] flex-wrap justify-center gap-6">
             {items.map((item: MultiPromoItemProps, index: number) => {
               const heading = getFieldValue(item.heading);
               const image = getFieldValue(item.image);
@@ -65,7 +60,13 @@ export const MultiPromoNwnCards: React.FC<MultiPromoProps> = (props) => {
               return (
                 <article
                   key={'nwn-editorial-card-' + index}
-                  className="group flex h-full flex-col overflow-hidden border border-[#c4c4c4] bg-white shadow-[0_4px_14px_rgba(65,64,66,0.07)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(65,64,66,0.14)]"
+                  className={cn(
+                    'group flex h-full w-full max-w-[24rem] flex-col overflow-hidden border border-[#c4c4c4] bg-white text-left shadow-[0_4px_14px_rgba(65,64,66,0.07)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(65,64,66,0.14)] md:w-[calc(50%_-_0.75rem)]',
+                    {
+                      'xl:w-[calc(25%_-_1.125rem)]': isFourColumns,
+                      'lg:w-[calc(33.333%_-_1rem)]': !isFourColumns,
+                    },
+                  )}
                 >
                   {hasImage && (
                     <ImageWrapper
