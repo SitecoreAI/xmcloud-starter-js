@@ -25,14 +25,16 @@ export const ProductListingDefault: React.FC<ProductListingProps> = (props) => {
         return cn(
           'transition-opacity duration-150',
           activeCard !== null && activeCard !== productId ? 'opacity-60' : '',
-          activeCard === productId ? 'z-10' : ''
+          activeCard === productId ? 'z-10' : '',
         );
       } else {
         // Full motion version
         return cn(
           'transition-all duration-500 ease-in-out',
-          activeCard !== null && activeCard !== productId ? 'opacity-50 scale-95 blur-[2px]' : '',
-          activeCard === productId ? 'scale-105 z-10' : ''
+          activeCard !== null && activeCard !== productId
+            ? 'opacity-50 scale-95 blur-[2px]'
+            : '',
+          activeCard === productId ? 'scale-105 z-10' : '',
         );
       }
     };
@@ -49,9 +51,12 @@ export const ProductListingDefault: React.FC<ProductListingProps> = (props) => {
     const rightColumnProducts = visibleProducts.slice(leftCount);
     return (
       <section
-        className={cn('@container transform-gpu border-b-2 border-t-2 [.border-b-2+&]:border-t-0', {
-          [props?.params?.styles]: props?.params?.styles,
-        })}
+        className={cn(
+          '@container transform-gpu border-b-2 border-t-2 [.border-b-2+&]:border-t-0',
+          {
+            [props?.params?.styles]: props?.params?.styles,
+          },
+        )}
         aria-labelledby="product-listing-heading"
       >
         {isPageEditing && (
@@ -62,8 +67,12 @@ export const ProductListingDefault: React.FC<ProductListingProps> = (props) => {
             <div className="max-w-screen-xl mx-auto flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="flex-shrink-0">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15">
+                    <svg
+                      className="h-4 w-4 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
                       <path
                         fillRule="evenodd"
                         d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
@@ -73,7 +82,9 @@ export const ProductListingDefault: React.FC<ProductListingProps> = (props) => {
                   </div>
                 </div>
                 <div>
-                  <strong className="font-semibold text-gray-900">Editor Note:</strong>
+                  <strong className="font-semibold text-gray-900">
+                    Editor Note:
+                  </strong>
                   <span className="block sm:inline text-gray-700">
                     {' '}
                     Only the first 3 selected products will be displayed.
@@ -84,7 +95,11 @@ export const ProductListingDefault: React.FC<ProductListingProps> = (props) => {
                 className="flex-shrink-0 ml-4 text-gray-400 hover:text-gray-600 transition-colors duration-200"
                 onClick={() => {}}
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path
                     fillRule="evenodd"
                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -115,32 +130,34 @@ export const ProductListingDefault: React.FC<ProductListingProps> = (props) => {
 
               {leftColumnProducts.length > 0 && (
                 <div className="flex flex-col gap-[60px]">
-                  {leftColumnProducts.map((product: ProductItemProps, index: number) => (
-                    <AnimatedSection
-                      key={JSON.stringify(`${product.productName}-${index}`)}
-                      direction="up"
-                      delay={index * 150}
-                      duration={400}
-                      reducedMotion={isReducedMotion}
-                      isPageEditing={isPageEditing}
-                    >
-                      <div
-                        className={getCardClasses(`left-${index}`)}
-                        onMouseEnter={() => setActiveCard(`left-${index}`)}
-                        onMouseLeave={() => setActiveCard(null)}
-                        onFocus={() => setActiveCard(`left-${index}`)}
-                        onBlur={() => setActiveCard(null)}
+                  {leftColumnProducts.map(
+                    (product: ProductItemProps, index: number) => (
+                      <AnimatedSection
+                        key={JSON.stringify(`${product.productName}-${index}`)}
+                        direction="up"
+                        delay={index * 150}
+                        duration={400}
+                        reducedMotion={isReducedMotion}
+                        isPageEditing={isPageEditing}
                       >
-                        <ProductListingCard
-                          product={product}
-                          link={viewAllLink?.jsonValue}
-                          prefersReducedMotion={isReducedMotion}
-                          isPageEditing={isPageEditing}
-                          page={props.page}
-                        />
-                      </div>
-                    </AnimatedSection>
-                  ))}
+                        <div
+                          className={getCardClasses(`left-${index}`)}
+                          onMouseEnter={() => setActiveCard(`left-${index}`)}
+                          onMouseLeave={() => setActiveCard(null)}
+                          onFocus={() => setActiveCard(`left-${index}`)}
+                          onBlur={() => setActiveCard(null)}
+                        >
+                          <ProductListingCard
+                            product={product}
+                            link={viewAllLink?.jsonValue}
+                            prefersReducedMotion={isReducedMotion}
+                            isPageEditing={isPageEditing}
+                            page={props.page}
+                          />
+                        </div>
+                      </AnimatedSection>
+                    ),
+                  )}
                 </div>
               )}
             </div>
@@ -148,32 +165,34 @@ export const ProductListingDefault: React.FC<ProductListingProps> = (props) => {
             {rightColumnProducts.length > 0 && (
               <div className="@md:col-span-1 @md:pt-16">
                 <div className="flex flex-col gap-[60px]">
-                  {rightColumnProducts.map((product: ProductItemProps, index: number) => (
-                    <AnimatedSection
-                      key={JSON.stringify(`${product.productName}-${index}`)}
-                      direction="up"
-                      delay={index * 150}
-                      duration={400}
-                      reducedMotion={isReducedMotion}
-                      isPageEditing={isPageEditing}
-                    >
-                      <div
-                        className={getCardClasses(`right-${index}`)}
-                        onMouseEnter={() => setActiveCard(`right-${index}`)}
-                        onMouseLeave={() => setActiveCard(null)}
-                        onFocus={() => setActiveCard(`right-${index}`)}
-                        onBlur={() => setActiveCard(null)}
+                  {rightColumnProducts.map(
+                    (product: ProductItemProps, index: number) => (
+                      <AnimatedSection
+                        key={JSON.stringify(`${product.productName}-${index}`)}
+                        direction="up"
+                        delay={index * 150}
+                        duration={400}
+                        reducedMotion={isReducedMotion}
+                        isPageEditing={isPageEditing}
                       >
-                        <ProductListingCard
-                          product={product}
-                          link={viewAllLink?.jsonValue}
-                          prefersReducedMotion={isReducedMotion}
-                          isPageEditing={isPageEditing}
-                          page={props.page}
-                        />
-                      </div>
-                    </AnimatedSection>
-                  ))}
+                        <div
+                          className={getCardClasses(`right-${index}`)}
+                          onMouseEnter={() => setActiveCard(`right-${index}`)}
+                          onMouseLeave={() => setActiveCard(null)}
+                          onFocus={() => setActiveCard(`right-${index}`)}
+                          onBlur={() => setActiveCard(null)}
+                        >
+                          <ProductListingCard
+                            product={product}
+                            link={viewAllLink?.jsonValue}
+                            prefersReducedMotion={isReducedMotion}
+                            isPageEditing={isPageEditing}
+                            page={props.page}
+                          />
+                        </div>
+                      </AnimatedSection>
+                    ),
+                  )}
                 </div>
               </div>
             )}

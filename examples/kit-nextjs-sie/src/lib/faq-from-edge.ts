@@ -3,8 +3,8 @@ import client from '@/lib/sitecore-client';
 import { buildSiteDataPath } from '@/lib/site-path';
 import {
   containsLegacyStarterContent,
-  NWN_FAQ_ITEMS,
-} from '@/lib/nwn-ai-content';
+  SIE_FAQ_ITEMS,
+} from '@/lib/sie-ai-content';
 
 const FAQ_GRAPHQL_TYPE = 'AIFAQItem';
 const FAQ_DATA_PATH_SUFFIX = '/Data/AI Config/FAQ';
@@ -77,7 +77,7 @@ export async function fetchFaqFromEdge(): Promise<FaqEdgeResult> {
   const path = buildFaqPath();
   if (!path)
     return {
-      items: [...NWN_FAQ_ITEMS],
+      items: [...SIE_FAQ_ITEMS],
       lastModified: new Date().toISOString(),
     };
 
@@ -99,7 +99,7 @@ export async function fetchFaqFromEdge(): Promise<FaqEdgeResult> {
     const items =
       authoredItems.length > 0 && !containsLegacyStarterContent(authoredItems)
         ? authoredItems
-        : [...NWN_FAQ_ITEMS];
+        : [...SIE_FAQ_ITEMS];
 
     const lastModified =
       extractFieldValue(
@@ -112,7 +112,7 @@ export async function fetchFaqFromEdge(): Promise<FaqEdgeResult> {
   } catch (error) {
     console.error('[fetchFaqFromEdge] GraphQL request failed:', error);
     return {
-      items: [...NWN_FAQ_ITEMS],
+      items: [...SIE_FAQ_ITEMS],
       lastModified: new Date().toISOString(),
     };
   }

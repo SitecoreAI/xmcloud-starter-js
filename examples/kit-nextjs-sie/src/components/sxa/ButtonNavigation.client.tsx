@@ -10,7 +10,9 @@ import type { NavigationFields } from './navigation.props';
 type ButtonNavigationClientProps = {
   list: NavigationFields[];
   getLinkField: (props: { fields: NavigationFields }) => LinkField;
-  getNavigationText: (props: { fields: NavigationFields }) => JSX.Element | string;
+  getNavigationText: (props: {
+    fields: NavigationFields;
+  }) => JSX.Element | string;
 };
 
 /**
@@ -39,13 +41,13 @@ export const ButtonNavigationClient = ({
               className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
               prefetch={false}
             >
-              <h4 className="text-xl font-semibold text-brand-sky mb-2">
+              <h4 className="mb-2 text-xl font-semibold text-primary">
                 {getNavigationText({ fields: section })}
               </h4>
               <p className="text-brand-black mb-4">
                 Explore {getNavigationText({ fields: section })} components
               </p>
-              <div className="flex items-center text-brand-sky">
+              <div className="flex items-center text-primary">
                 <span className="mr-2">View components</span>
                 <ArrowRight size={20} />
               </div>

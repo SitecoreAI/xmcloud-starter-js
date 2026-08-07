@@ -1,5 +1,5 @@
 import './globals.css';
-import { nwnBodyFont, nwnHeadingFont } from './fonts';
+import { sieFontClassName } from './fonts';
 
 export default function RootLayout({
   children,
@@ -16,11 +16,17 @@ export default function RootLayout({
           href="https://maps.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          href="/assets/sie-images/sienergy-official-favicon.png"
+          type="image/png"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="/assets/sie-images/sienergy-official-favicon.png"
+        />
       </head>
-      <body className={nwnBodyFont.variable + ' ' + nwnHeadingFont.variable}>
-        {children}
-      </body>
+      <body className={sieFontClassName}>{children}</body>
     </html>
   );
 }

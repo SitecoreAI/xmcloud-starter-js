@@ -6,14 +6,13 @@ import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { ArrowRight, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { NWN_SEARCH_PAGES, type NwnSearchPage } from '@/lib/nwn-routes';
+import { SIE_SEARCH_PAGES, type SieSearchPage } from '@/lib/sie-routes';
 import type { SearchExperienceProps } from './search-experience.props';
 
 const POPULAR_PAGE_PATHS = new Set([
-  '/account-billing/pay-my-bill',
-  '/account-billing/start-stop-transfer',
-  '/ways-to-save/rebates-offers',
-  '/services',
+  '/customer-service-portal',
+  '/payment-options-locations',
+  '/service-options',
   '/safety',
   '/contact-us',
 ]);
@@ -26,7 +25,7 @@ const normalizeSearchText = (value: string): string =>
     .replace(/[^a-z0-9]+/g, ' ')
     .trim();
 
-const rankPage = (page: NwnSearchPage, normalizedQuery: string): number => {
+const rankPage = (page: SieSearchPage, normalizedQuery: string): number => {
   const title = normalizeSearchText(page.title);
   const description = normalizeSearchText(page.description);
   const keywords = normalizeSearchText(page.keywords.join(' '));
@@ -57,10 +56,10 @@ const rankPage = (page: NwnSearchPage, normalizedQuery: string): number => {
   return score;
 };
 
-export const searchNwnPages = (
+export const searchSiePages = (
   query: string,
-  pages: readonly NwnSearchPage[] = NWN_SEARCH_PAGES,
-): NwnSearchPage[] => {
+  pages: readonly SieSearchPage[] = SIE_SEARCH_PAGES,
+): SieSearchPage[] => {
   const normalizedQuery = normalizeSearchText(query);
 
   if (!normalizedQuery) return [];
@@ -79,13 +78,18 @@ export const searchNwnPages = (
 
 const getSectionLabel = (path: string): string => {
   if (path === '/') return 'Overview';
-  if (path.startsWith('/account-billing')) return 'Account & Billing';
-  if (path.startsWith('/ways-to-save')) return 'Ways to Save';
-  if (path.startsWith('/services')) return 'Services';
-  if (path.startsWith('/get-natural-gas')) return 'Get Natural Gas';
+  if (path.startsWith('/customer-service')) return 'Customer Service';
+  if (path.startsWith('/payment-options')) return 'Customer Service';
+  if (path.startsWith('/service-options')) return 'Customer Service';
+  if (path.startsWith('/understanding-my-bill')) return 'Customer Service';
   if (path.startsWith('/safety')) return 'Safety';
-  if (path.startsWith('/about-us')) return 'About Us';
-  return 'Customer Support';
+  if (path.startsWith('/regulatory')) return 'Information';
+  if (path.startsWith('/how-to-read')) return 'Information';
+  if (path.startsWith('/tips-to-lower')) return 'Information';
+  if (path.startsWith('/company') || path.startsWith('/vision-'))
+    return 'Company';
+  if (path.startsWith('/business-development')) return 'Developers';
+  return 'Customer Service';
 };
 
 const SearchExperienceFallback = ({ params }: SearchExperienceProps) => (
@@ -98,10 +102,10 @@ const SearchExperienceFallback = ({ params }: SearchExperienceProps) => (
     aria-label="Loading search"
     aria-busy="true"
   >
-    <div className="nwn-content-shell animate-pulse overflow-hidden border border-slate-200 bg-slate-50 shadow-sm">
-      <div className="h-72 bg-[#174f5b]" aria-hidden="true" />
+    <div className="nwn-content-shell animate-pulse overflow-hidden border border-[#d7d6d7] bg-[#eff0f2] shadow-sm">
+      <div className="h-72 bg-[#414042]" aria-hidden="true" />
       <div className="space-y-4 p-6 sm:p-8" aria-hidden="true">
-        <div className="h-7 w-48 bg-slate-200" />
+        <div className="h-7 w-48 bg-[#d7d6d7]" />
         <div className="h-24 bg-white" />
         <div className="h-24 bg-white" />
       </div>
@@ -122,11 +126,11 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
 
   const normalizedQuery = query.trim();
   const results = useMemo(
-    () => searchNwnPages(normalizedQuery),
+    () => searchSiePages(normalizedQuery),
     [normalizedQuery],
   );
   const popularPages = useMemo(
-    () => NWN_SEARCH_PAGES.filter((page) => POPULAR_PAGE_PATHS.has(page.path)),
+    () => SIE_SEARCH_PAGES.filter((page) => POPULAR_PAGE_PATHS.has(page.path)),
     [],
   );
   const displayedPages = normalizedQuery ? results : popularPages;
@@ -158,7 +162,7 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
 
   const resultSummary = normalizedQuery
     ? `${results.length} ${results.length === 1 ? 'result' : 'results'} for “${normalizedQuery}”`
-    : 'Browse popular NW Natural pages.';
+    : 'Browse popular SiEnergy pages.';
 
   return (
     <section
@@ -169,17 +173,17 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
         props.params?.styles,
       )}
     >
-      <div className="nwn-content-shell overflow-hidden border border-slate-200 bg-white shadow-[0_18px_48px_rgba(15,23,42,0.10)]">
-        <div className="border-t-8 border-cyan-500 bg-[#174f5b] px-6 py-10 text-white sm:px-10 sm:py-12 lg:px-14">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-cyan-200">
-            NW Natural
+      <div className="nwn-content-shell overflow-hidden border border-[#d7d6d7] bg-white shadow-[0_18px_48px_rgba(65,64,66,0.14)]">
+        <div className="border-t-8 border-primary bg-[#414042] px-6 py-10 text-white sm:px-10 sm:py-12 lg:px-14">
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#f6b786]">
+            SiEnergy
           </p>
           <h1 className="mt-3 max-w-2xl font-heading text-4xl font-medium leading-tight text-white sm:text-5xl">
             Search our site
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-cyan-50 sm:text-lg">
-            Find account help, services, savings opportunities, and natural gas
-            safety information.
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">
+            Find account help, payment and service options, safety information,
+            and resources for Texas communities.
           </p>
 
           <form
@@ -196,7 +200,7 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
             <div className="flex flex-col gap-3 sm:flex-row">
               <div className="relative min-w-0 flex-1">
                 <Search
-                  className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500"
+                  className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#737076]"
                   aria-hidden="true"
                 />
                 <input
@@ -207,15 +211,15 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
                   autoComplete="off"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Try “pay my bill” or “rebates”"
-                  className="min-h-14 w-full border-2 border-transparent bg-white py-3.5 pl-12 pr-12 text-base text-slate-900 outline-none placeholder:text-slate-500 focus-visible:border-cyan-400 focus-visible:ring-4 focus-visible:ring-cyan-300/30"
+                  placeholder="Try “pay my bill” or “start service”"
+                  className="min-h-14 w-full border-2 border-transparent bg-white py-3.5 pl-12 pr-12 text-base text-[#414042] outline-none placeholder:text-[#737076] focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/25"
                 />
                 {query && (
                   <button
                     type="button"
                     onClick={handleClear}
                     aria-label="Clear search"
-                    className="absolute right-2 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center text-slate-500 transition-colors hover:text-[#005b73] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
+                    className="absolute right-2 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center text-[#737076] transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     <X className="h-5 w-5" aria-hidden="true" />
                   </button>
@@ -223,7 +227,7 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
               </div>
               <button
                 type="submit"
-                className="min-h-14 bg-cyan-500 px-8 text-base font-bold text-slate-950 transition-colors hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70"
+                className="min-h-14 bg-primary px-8 text-base font-bold text-white transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70"
               >
                 Search
               </button>
@@ -231,33 +235,33 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
           </form>
         </div>
 
-        <div className="bg-[#f4f7f8] px-6 py-9 sm:px-10 sm:py-10 lg:px-14">
-          <div className="flex flex-col gap-2 border-b border-slate-300 pb-5 sm:flex-row sm:items-end sm:justify-between">
-            <h2 className="font-heading text-2xl font-semibold text-slate-900 sm:text-3xl">
+        <div className="bg-[#eff0f2] px-6 py-9 sm:px-10 sm:py-10 lg:px-14">
+          <div className="flex flex-col gap-2 border-b border-[#c4c4c4] pb-5 sm:flex-row sm:items-end sm:justify-between">
+            <h2 className="font-heading text-2xl font-semibold text-[#414042] sm:text-3xl">
               {normalizedQuery ? 'Search results' : 'Popular pages'}
             </h2>
             <p
               role="status"
               aria-live="polite"
-              className="text-sm font-medium text-slate-600"
+              className="text-sm font-medium text-[#737076]"
             >
               {resultSummary}
             </p>
           </div>
 
           {normalizedQuery && results.length === 0 ? (
-            <div className="my-8 border-l-4 border-cyan-500 bg-white p-6 sm:p-8">
-              <h3 className="font-heading text-2xl font-semibold text-slate-900">
+            <div className="my-8 border-l-4 border-primary bg-white p-6 sm:p-8">
+              <h3 className="font-heading text-2xl font-semibold text-[#414042]">
                 We couldn’t find a match
               </h3>
-              <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
+              <p className="mt-3 max-w-2xl text-base leading-7 text-[#737076]">
                 Check the spelling, try a shorter phrase, or search for a topic
-                such as billing, rebates, service, or safety.
+                such as billing, payments, service, or safety.
               </p>
               <Link
                 href="/contact-us"
                 prefetch={false}
-                className="mt-5 inline-flex items-center gap-2 font-semibold text-[#006f8c] underline decoration-cyan-500 decoration-2 underline-offset-4 hover:text-[#004b60] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-4"
+                className="mt-5 inline-flex items-center gap-2 font-semibold text-primary underline decoration-primary decoration-2 underline-offset-4 hover:text-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
               >
                 Contact us for help
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -267,23 +271,23 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
             <ol className="mt-6 grid gap-4 md:grid-cols-2">
               {displayedPages.map((page) => (
                 <li key={page.path}>
-                  <article className="group flex h-full flex-col border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-cyan-400 hover:shadow-md focus-within:border-cyan-500 focus-within:shadow-md">
-                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#007b98]">
+                  <article className="group flex h-full flex-col border border-[#d7d6d7] bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-md focus-within:border-primary focus-within:shadow-md">
+                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-primary">
                       {getSectionLabel(page.path)}
                     </p>
-                    <h3 className="mt-2 font-heading text-xl font-semibold leading-snug text-slate-900 sm:text-2xl">
+                    <h3 className="mt-2 font-heading text-xl font-semibold leading-snug text-[#414042] sm:text-2xl">
                       <Link
                         href={page.path}
                         prefetch={false}
-                        className="outline-none after:absolute focus-visible:underline focus-visible:decoration-cyan-500 focus-visible:decoration-2 focus-visible:underline-offset-4"
+                        className="outline-none after:absolute focus-visible:underline focus-visible:decoration-primary focus-visible:decoration-2 focus-visible:underline-offset-4"
                       >
                         {page.title}
                       </Link>
                     </h3>
-                    <p className="mt-3 flex-1 text-base leading-7 text-slate-600">
+                    <p className="mt-3 flex-1 text-base leading-7 text-[#737076]">
                       {page.description}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#006f8c] transition-colors group-hover:text-[#004b60]">
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors group-hover:text-primary-hover">
                       View page
                       <ArrowRight
                         className="h-4 w-4 transition-transform group-hover:translate-x-1"

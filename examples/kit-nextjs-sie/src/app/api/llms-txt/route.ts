@@ -9,21 +9,23 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest): Promise<NextResponse> {
   const baseUrl = new URL(request.url).origin;
 
-  const content = `# NW Natural
+  const content = `# SiEnergy
 
-> NW Natural provides safe, reliable and affordable natural gas service to homes and businesses in Oregon and Southwest Washington.
+> SiEnergy provides safe, reliable natural gas service to homes, businesses, and growing communities across Texas.
 
-The site helps customers manage their accounts, start or stop service, learn about natural gas safety, find rebates and explore NW Natural's work in the community. This website uses Next.js and Sitecore XM Cloud.
+The site helps customers manage billing and payment needs, request service changes, learn about natural gas safety, understand usage and rates, and connect with SiEnergy's developer services. This website uses Next.js and Sitecore XM Cloud.
 
 ## Key pages
 
 - [Home](${baseUrl}/): Customer resources, safety information and company highlights
-- [Account & Billing](${baseUrl}/account-billing): Payments, service changes and account support
-- [Ways to Save](${baseUrl}/ways-to-save/rebates-offers): Rebates and efficient home upgrades
-- [Services](${baseUrl}/services): Natural gas equipment inspections and tune-ups
-- [Get Natural Gas](${baseUrl}/get-natural-gas): Home comfort, cooking and natural gas benefits
+- [What We Do](${baseUrl}/what-we-do): Natural gas distribution and community infrastructure
+- [Customer Service](${baseUrl}/customer-service-portal): Billing, payment, service and account support
+- [Payment Options](${baseUrl}/payment-options-locations): Ways to pay and available assistance resources
+- [Service Options](${baseUrl}/service-options): Start, stop, transfer or install natural gas service
 - [Safety](${baseUrl}/safety): Natural gas safety and emergency information
-- [About Us](${baseUrl}/about-us): NW Natural's company and community story
+- [Company](${baseUrl}/company): SiEnergy's history, purpose and Texas community partnerships
+- [Developers](${baseUrl}/business-development): Infrastructure collaboration for developers, builders and industrial users
+- [Contact Us](${baseUrl}/contact-us): Customer, builder and emergency contact options
 
 ## Optional
 

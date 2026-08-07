@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {
   Default as SearchExperience,
-  searchNwnPages,
+  searchSiePages,
 } from '@/components/search-experience/SearchExperience';
 import type { SearchExperienceProps } from '@/components/search-experience/search-experience.props';
 
@@ -42,12 +42,11 @@ describe('SearchExperience', () => {
       screen.getByRole('heading', { name: 'Popular pages' }),
     ).toBeInTheDocument();
     expect(screen.getByRole('status')).toHaveTextContent(
-      'Browse popular NW Natural pages.',
+      'Browse popular SiEnergy pages.',
     );
-    expect(screen.getByRole('link', { name: 'Pay My Bill' })).toHaveAttribute(
-      'href',
-      '/account-billing/pay-my-bill',
-    );
+    expect(
+      screen.getByRole('link', { name: 'Payment Options & Locations' }),
+    ).toHaveAttribute('href', '/payment-options-locations');
     expect(screen.getByRole('link', { name: 'Contact Us' })).toHaveAttribute(
       'href',
       '/contact-us',
@@ -57,33 +56,33 @@ describe('SearchExperience', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('loads a q parameter, filters the NW Natural page index, and links to the result', () => {
-    mockSearchParams = new URLSearchParams({ q: 'rebates' });
+  it('loads a q parameter, filters the SiEnergy page index, and links to the result', () => {
+    mockSearchParams = new URLSearchParams({ q: 'lower gas usage' });
 
     render(<SearchExperience {...makeProps()} />);
 
-    expect(screen.getByRole('searchbox')).toHaveValue('rebates');
+    expect(screen.getByRole('searchbox')).toHaveValue('lower gas usage');
     expect(screen.getByRole('status')).toHaveTextContent(
-      '1 result for “rebates”',
+      '1 result for “lower gas usage”',
     );
     expect(
-      screen.getByRole('link', { name: 'Rebates & Offers' }),
-    ).toHaveAttribute('href', '/ways-to-save/rebates-offers');
+      screen.getByRole('link', { name: 'Tips to Lower Gas Usage' }),
+    ).toHaveAttribute('href', '/tips-to-lower-gas-usage');
     expect(
-      screen.queryByRole('link', { name: 'Pay My Bill' }),
+      screen.queryByRole('link', { name: 'Payment Options & Locations' }),
     ).not.toBeInTheDocument();
   });
 
   it('ranks title matches ahead of description and keyword matches', () => {
-    mockSearchParams = new URLSearchParams({ q: 'natural gas' });
+    mockSearchParams = new URLSearchParams({ q: 'customer service' });
 
     render(<SearchExperience {...makeProps()} />);
 
     const resultHeadings = screen.getAllByRole('heading', { level: 3 });
-    expect(resultHeadings[0]).toHaveTextContent('Get Natural Gas');
+    expect(resultHeadings[0]).toHaveTextContent('Customer Service');
     expect(resultHeadings).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ textContent: 'Benefits of Natural Gas' }),
+        expect.objectContaining({ textContent: 'Contact Us' }),
       ]),
     );
   });
@@ -100,8 +99,8 @@ describe('SearchExperience', () => {
       scroll: false,
     });
     expect(
-      screen.getByRole('link', { name: 'Payment Assistance' }),
-    ).toHaveAttribute('href', '/account-billing/payment-assistance');
+      screen.getByRole('link', { name: 'Payment Options & Locations' }),
+    ).toHaveAttribute('href', '/payment-options-locations');
 
     mockReplace.mockClear();
     fireEvent.click(screen.getByRole('button', { name: 'Clear search' }));
@@ -127,7 +126,7 @@ describe('SearchExperience', () => {
   });
 
   it('searches only the curated page index and never returns the search page itself', () => {
-    const results = searchNwnPages('site search');
+    const results = searchSiePages('site search');
 
     expect(results.every((page) => page.path !== '/search')).toBe(true);
     expect(results.every((page) => page.path.startsWith('/'))).toBe(true);

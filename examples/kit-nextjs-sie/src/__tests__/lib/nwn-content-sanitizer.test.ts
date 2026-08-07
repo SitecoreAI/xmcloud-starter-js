@@ -3,7 +3,7 @@ import {
   sanitizeLegacyStarterData,
 } from '@/lib/nwn-content-sanitizer';
 
-describe('NWN route-data sanitizer', () => {
+describe('SiEnergy inherited route-data sanitizer', () => {
   it('removes inherited starter strings throughout nested route data', () => {
     const result = sanitizeLegacyStarterData({
       title: 'NW Natural',
@@ -15,14 +15,19 @@ describe('NWN route-data sanitizer', () => {
     });
 
     expect(result).toEqual({
-      title: 'NW Natural',
+      title: '',
       metadata: { oldTitle: '', oldImage: '' },
       links: [{ label: 'Safety' }, { label: '' }],
     });
   });
 
-  it('does not flag NW Natural customer content', () => {
+  it('flags inherited NWN content but keeps SiEnergy natural-gas content', () => {
     expect(isLegacyStarterDataValue('Natural gas vehicle safety')).toBe(true);
+    expect(isLegacyStarterDataValue('https://www.nwnatural.com/safety')).toBe(
+      true,
+    );
+    expect(isLegacyStarterDataValue('/account-billing/pay-my-bill')).toBe(true);
+    expect(isLegacyStarterDataValue('/assets/nwn-images/hero.jpg')).toBe(true);
     expect(isLegacyStarterDataValue('Natural gas safety at home')).toBe(false);
   });
 });

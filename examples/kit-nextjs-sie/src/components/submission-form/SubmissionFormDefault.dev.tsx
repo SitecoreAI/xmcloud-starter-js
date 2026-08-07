@@ -125,7 +125,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
   };
 
   const inputClasses =
-    'min-h-12 border-slate-400 bg-white px-4 text-base text-slate-900 placeholder:text-slate-500 focus-visible:ring-primary';
+    'min-h-12 border-[#a3a1a4] bg-white px-4 text-base text-[#414042] placeholder:text-[#737076] focus-visible:ring-primary';
 
   return (
     <section
@@ -133,26 +133,26 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
       data-class-change
       className={cn('my-12 w-full px-4 md:my-16', props.params?.styles)}
     >
-      <div className="mx-auto grid w-full max-w-5xl overflow-hidden border border-slate-200 bg-white shadow-sm lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-        <div className="bg-[#eef6f7] p-7 sm:p-10 lg:p-12">
+      <div className="mx-auto grid w-full max-w-5xl overflow-hidden border border-[#d7d6d7] bg-white shadow-sm lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <div className="bg-[#eff0f2] p-7 sm:p-10 lg:p-12">
           {(fields.title?.value || props.isPageEditing) && (
             <Text
               tag="h2"
-              className="max-w-[16ch] text-balance font-heading text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.08] text-slate-900"
+              className="max-w-[16ch] text-balance font-heading text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.08] text-[#414042]"
               field={fields.title}
             />
           )}
-          <p className="mt-5 max-w-prose text-base leading-7 text-slate-700 sm:text-lg">
-            Have a question about your NW Natural service? Send us a message and
+          <p className="mt-5 max-w-prose text-base leading-7 text-[#737076] sm:text-lg">
+            Have a question about your SiEnergy service? Send us a message and
             our team will follow up.
           </p>
-          <p className="mt-5 border-l-4 border-cyan-500 pl-4 text-sm leading-6 text-slate-700">
+          <p className="mt-5 border-l-4 border-primary pl-4 text-sm leading-6 text-[#737076]">
             If you smell natural gas or have an emergency, call{' '}
             <a
               className="font-semibold text-primary underline underline-offset-2"
-              href="tel:8008823377"
+              href="tel:8884687007"
             >
-              800-882-3377
+              888-468-7007, Option 1
             </a>
             .
           </p>
@@ -165,10 +165,10 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
               role="status"
               aria-live="polite"
             >
-              <h2 className="font-heading text-2xl font-semibold text-slate-900">
+              <h2 className="font-heading text-2xl font-semibold text-[#414042]">
                 Thank you for contacting us.
               </h2>
-              <p className="mt-3 text-base leading-7 text-slate-700">
+              <p className="mt-3 text-base leading-7 text-[#737076]">
                 Your message has been received. A member of our team will follow
                 up soon.
               </p>
@@ -187,7 +187,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base font-semibold text-slate-800">
+                        <FormLabel className="text-base font-semibold text-[#414042]">
                           First name
                         </FormLabel>
                         <FormControl>
@@ -208,7 +208,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base font-semibold text-slate-800">
+                        <FormLabel className="text-base font-semibold text-[#414042]">
                           Last name
                         </FormLabel>
                         <FormControl>
@@ -231,7 +231,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base font-semibold text-slate-800">
+                      <FormLabel className="text-base font-semibold text-[#414042]">
                         Email address
                       </FormLabel>
                       <FormControl>
@@ -254,7 +254,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base font-semibold text-slate-800">
+                      <FormLabel className="text-base font-semibold text-[#414042]">
                         Message
                       </FormLabel>
                       <FormControl>
@@ -262,7 +262,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                           rows={7}
                           maxLength={5000}
                           disabled={isSubmitting}
-                          className="min-h-40 resize-y border-slate-400 bg-white px-4 py-3 text-base leading-6 text-slate-900 placeholder:text-slate-500 focus-visible:ring-primary"
+                          className="min-h-40 resize-y border-[#a3a1a4] bg-white px-4 py-3 text-base leading-6 text-[#414042] placeholder:text-[#737076] focus-visible:ring-primary"
                           {...field}
                         />
                       </FormControl>
@@ -289,10 +289,10 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                 >
                   {isSubmitting ? 'Sending…' : 'Send message'}
                 </Button>
-                <p className="text-sm leading-6 text-slate-600">
+                <p className="text-sm leading-6 text-[#737076]">
                   By submitting, you agree to our{' '}
                   <a
-                    href="https://www.nwnatural.com/privacy-notice"
+                    href="https://www.sienergy.com/privacy-policy/"
                     target="_blank"
                     rel="noreferrer"
                     className="font-semibold text-primary underline underline-offset-2"

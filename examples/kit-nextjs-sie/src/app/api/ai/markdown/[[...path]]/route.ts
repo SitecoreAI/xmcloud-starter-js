@@ -3,7 +3,10 @@ import client from 'lib/sitecore-client';
 import { generateMarkdownFromRoute } from 'src/lib/ai-markdown';
 import { SIE_SITE_NAME } from '@/lib/site-path';
 import { isLegacyStarterRoute } from '@/lib/nwn-route-guard';
-import { sanitizeLegacyStarterData } from '@/lib/nwn-content-sanitizer';
+import {
+  containsLegacyStarterData,
+  sanitizeLegacyStarterData,
+} from '@/lib/nwn-content-sanitizer';
 
 export const dynamic = 'force-dynamic';
 
@@ -58,6 +61,10 @@ export async function GET(
       locale: scope.locale,
     });
     if (!page || !page.layout?.sitecore?.route) {
+      return new NextResponse('Page not found', { status: 404 });
+    }
+
+    if (containsLegacyStarterData(page)) {
       return new NextResponse('Page not found', { status: 404 });
     }
 

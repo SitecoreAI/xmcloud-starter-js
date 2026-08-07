@@ -9,12 +9,18 @@ import {
 } from '@sitecore-content-sdk/nextjs';
 import Link from 'next/link';
 
-import type { PageContentComponentContentProps, PageContentProps } from './page-content.props';
+import type {
+  PageContentComponentContentProps,
+  PageContentProps,
+} from './page-content.props';
 
 const ComponentContent = (props: PageContentComponentContentProps) => {
   const id = props.id;
   return (
-    <div className={`component content ${props.styles}`} id={id ? id : undefined}>
+    <div
+      className={`component content ${props.styles}`}
+      id={id ? id : undefined}
+    >
       <div className="component-content">
         <article className="field-content">{props.children}</article>
       </div>
@@ -29,7 +35,10 @@ export const Default = (props: PageContentProps): JSX.Element => {
 
   if (!(props.fields && props.fields.Content) && !routeFields?.Content) {
     return (
-      <div className={`component content ${props.params.styles}`} id={id ? id : undefined}>
+      <div
+        className={`component content ${props.params.styles}`}
+        id={id ? id : undefined}
+      >
         <div className="component-content">
           <div className="field-content">[Content]</div>
         </div>
@@ -38,7 +47,9 @@ export const Default = (props: PageContentProps): JSX.Element => {
   }
 
   const field = (
-    props.fields && props.fields.Content ? props.fields.Content : routeFields?.Content
+    props.fields && props.fields.Content
+      ? props.fields.Content
+      : routeFields?.Content
   ) as RichTextField;
 
   return (
@@ -54,7 +65,9 @@ export const TitleAndBody = (props: PageContentProps): JSX.Element => {
 
   const fields = {
     title:
-      props.fields && props.fields.Title ? props.fields.Title : (routeFields?.Title as TextField),
+      props.fields && props.fields.Title
+        ? props.fields.Title
+        : (routeFields?.Title as TextField),
     body:
       props.fields && props.fields.Content
         ? props.fields.Content
@@ -71,7 +84,7 @@ export const TitleAndBody = (props: PageContentProps): JSX.Element => {
         </div>
         <Link
           href="#components"
-          className="bg-brand-sky text-white px-6 py-3 rounded-md hover:bg-[#71B5F0] transition-colors"
+          className="rounded-md bg-primary px-6 py-3 text-white transition-colors hover:bg-primary/90"
         >
           Explore Components
         </Link>

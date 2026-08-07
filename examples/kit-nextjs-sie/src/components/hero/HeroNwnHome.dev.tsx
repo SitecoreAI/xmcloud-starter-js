@@ -25,7 +25,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
       data-component="Hero"
       data-variant="NwnHome"
       className={cn(
-        'nwn-home-hero relative overflow-hidden bg-[#173c47] text-white',
+        'nwn-home-hero relative overflow-hidden bg-[#414042] text-white',
         props.params?.styles,
       )}
     >
@@ -46,8 +46,8 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
         className={cn(
           'pointer-events-none absolute inset-0',
           hasImage
-            ? 'bg-[linear-gradient(90deg,rgba(9,35,45,0.94)_0%,rgba(9,35,45,0.70)_48%,rgba(9,35,45,0.20)_100%)]'
-            : 'bg-[linear-gradient(135deg,#173c47_0%,#0f6276_100%)]',
+            ? 'bg-[linear-gradient(90deg,rgba(43,38,35,0.94)_0%,rgba(65,64,66,0.72)_48%,rgba(65,64,66,0.16)_100%)]'
+            : 'bg-[linear-gradient(135deg,#414042_0%,#6b4a36_100%)]',
         )}
         aria-hidden="true"
       />
@@ -58,7 +58,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
             <Text
               tag="p"
               field={fields.bannerText}
-              className="mb-4 inline-flex border-l-4 border-cyan-400 pl-4 font-heading text-sm font-semibold uppercase tracking-[0.12em] text-cyan-100 sm:text-base"
+              className="mb-4 inline-flex border-l-4 border-primary pl-4 font-heading text-sm font-semibold uppercase tracking-[0.12em] text-[#ffe0c7] sm:text-base"
             />
           )}
           {(isPageEditing || fields.title?.value) && (
@@ -83,7 +83,7 @@ export const HeroNwnHome: React.FC<HeroProps> = (props) => {
                   buttonLink={fields.bannerCTA}
                   isPageEditing={isPageEditing}
                   variant="tertiary"
-                  className="min-h-12 border border-white bg-white px-6 text-base font-semibold text-primary hover:bg-cyan-50"
+                  className="min-h-12 border border-white bg-white px-6 text-base font-semibold text-primary hover:bg-[#fff4eb]"
                   page={props.page}
                 />
               )}

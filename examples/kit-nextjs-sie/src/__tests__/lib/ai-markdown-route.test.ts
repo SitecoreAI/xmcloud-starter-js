@@ -45,7 +45,7 @@ describe('SiEnergy AI Markdown route', () => {
     expect(getPage).not.toHaveBeenCalled();
   });
 
-  it('forces the SiEnergy scope and removes inherited starter content', async () => {
+  it('forces the SiEnergy scope and rejects inherited content', async () => {
     getPage.mockResolvedValue({
       layout: {
         sitecore: {
@@ -76,13 +76,45 @@ describe('SiEnergy AI Markdown route', () => {
     );
     const markdown = await response.text();
 
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(404);
     expect(getPage).toHaveBeenCalledWith(['safety'], {
       site: 'kit-nextjs-sie',
       locale: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || 'en',
     });
+    expect(markdown).toBe('Page not found');
+  });
+
+  it('returns markdown for clean SiEnergy content', async () => {
+    getPage.mockResolvedValue({
+      layout: {
+        sitecore: {
+          route: {
+            fields: {
+              pageTitle: { value: 'Natural gas safety' },
+            },
+            placeholders: {
+              main: [
+                {
+                  componentName: 'Safety guidance',
+                  fields: {
+                    description: { value: 'Call 811 before you dig.' },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      },
+    });
+
+    const response = await GET(
+      request('?site=kit-nextjs-sie'),
+      context(['safety']),
+    );
+    const markdown = await response.text();
+
+    expect(response.status).toBe(200);
     expect(markdown).toContain('Natural gas safety');
     expect(markdown).toContain('Call 811 before you dig.');
-    expect(markdown).not.toMatch(/Alaris|test drive/i);
   });
 });

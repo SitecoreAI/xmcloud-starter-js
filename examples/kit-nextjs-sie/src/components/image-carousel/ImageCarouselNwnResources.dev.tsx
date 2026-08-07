@@ -122,7 +122,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
                 id={carouselId + '-heading'}
                 tag="h2"
                 field={headingField}
-                className="text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.02em] text-slate-900"
+                className="text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-[#414042]"
               />
             )}
           </div>
@@ -202,7 +202,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
                     >
                       <div
                         className={cn(
-                          'grid h-full overflow-hidden rounded-sm bg-[#eef5f6] shadow-[0_10px_30px_rgba(26,55,67,0.10)]',
+                          'grid h-full overflow-hidden rounded-sm bg-[#eff0f2] shadow-[0_10px_30px_rgba(65,64,66,0.12)]',
                           showImage && 'lg:grid-cols-[1.2fr_0.8fr]',
                         )}
                       >
@@ -227,7 +227,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
                               <Text
                                 tag="h3"
                                 field={resource.titleField}
-                                className="text-balance font-heading text-3xl font-medium leading-[1.08] text-slate-900 sm:text-4xl"
+                                className="text-balance font-heading text-3xl font-semibold leading-[1.08] text-[#414042] sm:text-4xl"
                               />
                             )}
                           {resource.copyField &&
@@ -236,7 +236,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
                               <Text
                                 tag="p"
                                 field={resource.copyField}
-                                className="mt-4 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8"
+                                className="mt-4 text-base leading-7 text-[#737076] sm:text-lg sm:leading-8"
                               />
                             )}
                           {resource.link &&
@@ -245,7 +245,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
                                 <ButtonBase
                                   buttonLink={resource.link}
                                   variant="default"
-                                  className="min-h-12 bg-primary px-6 text-base font-semibold text-white hover:bg-[#005f7f]"
+                                  className="min-h-12 bg-primary px-6 text-base font-semibold text-white hover:bg-primary-hover"
                                   isPageEditing={isPageEditing}
                                   page={props.page}
                                 />
@@ -274,8 +274,8 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
                   className={cn(
                     'border-t-4 px-4 py-4 text-left font-heading text-base font-semibold transition-colors',
                     index === activeIndex
-                      ? 'border-cyan-500 bg-[#eef5f6] text-primary'
-                      : 'border-slate-200 text-slate-600 hover:border-slate-400 hover:bg-slate-50',
+                      ? 'border-primary bg-[#fff4eb] text-primary'
+                      : 'border-[#d7d6d7] text-[#737076] hover:border-[#a3a1a4] hover:bg-[#eff0f2]',
                   )}
                 >
                   {resource.title}
@@ -289,8 +289,8 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
             </p>
           </>
         ) : (
-          <div className="mt-10 border border-dashed border-slate-300 bg-[#eef5f6] px-6 py-12 text-center text-slate-700">
-            <p className="font-heading text-xl font-semibold text-slate-900">
+          <div className="mt-10 border border-dashed border-[#c4c4c4] bg-[#eff0f2] px-6 py-12 text-center text-[#737076]">
+            <p className="font-heading text-xl font-semibold text-[#414042]">
               No carousel items yet
             </p>
             <p className="mt-2 text-base">

@@ -26,6 +26,14 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+    .sie-fonts {
+        --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --font-heading:
+            "Trebuchet MS", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --font-accent:
+            "Trebuchet MS", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
     *,
     ::after,
     ::before,
@@ -239,7 +247,7 @@
     }
 
     .nwn-rich-text-content .nwn-page-content {
-        color: hsl(206, 10%, 20%);
+        color: #414042;
     }
 
     .nwn-rich-text-content .nwn-page-intro {
@@ -247,7 +255,7 @@
         margin: 0 0 clamp(2.5rem, 5vw, 4rem);
         padding-left: clamp(1.25rem, 3vw, 2rem);
         border-left: 0.25rem solid var(--color-accent);
-        color: hsl(207, 7%, 35%);
+        color: #737076;
         font-size: clamp(1.125rem, 1.5vw, 1.375rem);
         line-height: 1.6;
     }
@@ -266,7 +274,7 @@
     .nwn-rich-text-content .nwn-page-content h2 {
         max-width: 18ch;
         margin: 0;
-        color: hsl(206, 10%, 14%);
+        color: #414042;
         font-size: clamp(1.875rem, 3vw, 2.5rem);
         line-height: 1.1;
     }
@@ -274,7 +282,7 @@
     .nwn-rich-text-content .nwn-page-content .nwn-content-section > p {
         max-width: 46rem;
         margin: 0;
-        color: hsl(207, 7%, 35%);
+        color: #737076;
         font-size: 1.125rem;
         line-height: 1.75;
     }
@@ -301,14 +309,14 @@
         position: relative;
         font-size: 1.125rem;
         padding-left: 1.5rem;
-        color: hsl(206, 10%, 20%);
+        color: #414042;
         line-height: 1.65;
     }
 
     .nwn-rich-text-content .nwn-page-content ol > li {
         padding-left: 0.25rem;
         font-size: 1.125rem;
-        color: hsl(206, 10%, 20%);
+        color: #414042;
         line-height: 1.65;
     }
 
@@ -342,7 +350,7 @@
                 rgb(255 255 255 / 18%),
                 transparent 28%
             ),
-            linear-gradient(115deg, transparent 55%, rgb(0 162 199 / 28%));
+            linear-gradient(115deg, transparent 55%, rgb(227 111 30 / 30%));
         content: "";
         pointer-events: none;
     }

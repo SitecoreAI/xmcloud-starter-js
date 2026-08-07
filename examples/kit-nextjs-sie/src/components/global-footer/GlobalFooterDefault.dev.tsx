@@ -85,7 +85,7 @@ export const GlobalFooterDefault: React.FC<GlobalFooterProps> = (props) => {
         >
           <div className="flex h-full w-full items-end justify-center leading-none">
             <div className="bg-primary-gradient text-fill-transparent text-50-clamp -mb-14 bg-clip-text font-bold leading-none text-transparent">
-              NW Natural
+              SiEnergy
             </div>
           </div>
         </div>

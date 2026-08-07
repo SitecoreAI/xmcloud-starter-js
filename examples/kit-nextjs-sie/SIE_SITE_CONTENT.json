@@ -1,0 +1,1315 @@
+{
+  "manifestVersion": "1.0",
+  "site": {
+    "name": "SiEnergy",
+    "siteName": "kit-nextjs-sie",
+    "rootItemName": "SiEnergy",
+    "language": "en",
+    "sourceReference": "https://www.sienergy.com/",
+    "contentIntent": "A polished, presentation-ready subset of SiEnergy's public customer and business-development experience for its Texas natural gas service audience.",
+    "contentGuardrails": [
+      "Use the official brand spelling SiEnergy, with no space and no accent mark, except when an approved legal source requires a different legal-entity treatment.",
+      "Do not introduce rates, fees, eligibility criteria, deadlines, service-area promises, or legal claims that are not explicitly approved by SiEnergy.",
+      "Keep all operational phone numbers and emergency instructions subject to final owner verification before production release.",
+      "Keep images in dedicated image fields. Do not embed image elements in rich text.",
+      "Every image must retain the supplied descriptive alternative text when it is assigned in Content Hub DAM."
+    ]
+  },
+  "brand": {
+    "descriptor": "Natural Gas Distribution & Infrastructure",
+    "colors": {
+      "orange": "#E36F1E",
+      "charcoal": "#414042",
+      "bodyGray": "#737076",
+      "lightGray": "#EFF0F2",
+      "white": "#FFFFFF",
+      "dividerGray": "#C4C4C4"
+    },
+    "typography": {
+      "display": "Officina Sans, Helvetica Neue, Arial, sans-serif",
+      "body": "Helvetica Neue, Helvetica, Arial, sans-serif",
+      "bodySize": "16px",
+      "bodyLineHeight": "1.5"
+    },
+    "officialAssets": {
+      "lightLogo": "public/assets/sie-images/global-header-sienergy-logo-light.png",
+      "reversedLogo": "public/assets/sie-images/global-footer-sienergy-logo-reversed.png",
+      "favicon": "public/assets/sie-images/sienergy-official-favicon.png"
+    }
+  },
+  "navigation": {
+    "utility": [
+      {
+        "label": "Start Service",
+        "destination": "/service-options#start-service"
+      },
+      {
+        "label": "Search",
+        "destination": "/search"
+      },
+      {
+        "label": "Contact",
+        "destination": "/contact-us"
+      },
+      {
+        "label": "Developers",
+        "destination": "/business-development"
+      },
+      {
+        "label": "Login",
+        "destination": "https://sienergy.epayub.com/Account/Login?ReturnUrl=%2F",
+        "external": true
+      },
+      {
+        "label": "Pay My Bill",
+        "destination": "https://sienergy.epayub.com/Account/Login?ReturnUrl=%2F",
+        "external": true
+      }
+    ],
+    "primary": [
+      {
+        "label": "What We Do",
+        "destination": "/what-we-do"
+      },
+      {
+        "label": "Customer Service",
+        "destination": "/customer-service-portal",
+        "children": [
+          {
+            "label": "Contact Us",
+            "destination": "/contact-us"
+          },
+          {
+            "label": "Service Options",
+            "destination": "/service-options"
+          },
+          {
+            "label": "Payment Options",
+            "destination": "/payment-options-locations"
+          },
+          {
+            "label": "Safety",
+            "destination": "/safety"
+          },
+          {
+            "label": "Understanding My Bill",
+            "destination": "/understanding-my-bill"
+          }
+        ]
+      },
+      {
+        "label": "Information",
+        "destination": "/regulatory-and-important-links",
+        "children": [
+          {
+            "label": "Regulatory & Important Links",
+            "destination": "/regulatory-and-important-links"
+          },
+          {
+            "label": "Safety",
+            "destination": "/safety"
+          },
+          {
+            "label": "How To Read a Meter",
+            "destination": "/how-to-read-my-meter"
+          },
+          {
+            "label": "Tips to Lower Gas Usage",
+            "destination": "/tips-to-lower-gas-usage"
+          }
+        ]
+      },
+      {
+        "label": "Company",
+        "destination": "/company",
+        "children": [
+          {
+            "label": "History",
+            "destination": "/company"
+          },
+          {
+            "label": "Vision / Purpose / Values",
+            "destination": "/vision-mission-goals"
+          }
+        ]
+      },
+      {
+        "label": "Report Emergency",
+        "destination": "/report-emergency",
+        "emergency": true
+      }
+    ],
+    "footer": {
+      "accountsAndServices": [
+        {
+          "label": "Paying Your Bill",
+          "destination": "/payment-options-locations"
+        },
+        {
+          "label": "Billing Questions",
+          "destination": "/understanding-my-bill"
+        },
+        {
+          "label": "Start / Stop / Transfer",
+          "destination": "/service-options"
+        },
+        {
+          "label": "Install Gas Meter",
+          "destination": "/service-options#meter-installation"
+        }
+      ],
+      "company": [
+        {
+          "label": "About Us",
+          "destination": "/company"
+        },
+        {
+          "label": "Rates & Tariffs",
+          "destination": "/regulatory-and-important-links"
+        },
+        {
+          "label": "Safety",
+          "destination": "/safety"
+        }
+      ],
+      "contact": {
+        "heading": "Contact SiEnergy",
+        "emergencyMessage": "To report a natural gas odor or emergency, leave the area immediately and then call 911 and 888-468-7007.",
+        "businessHours": "Monday – Friday, 8:00 a.m. – 5:00 p.m. CST, excluding holidays",
+        "customerService": "888-468-7007, Option 3; 281-778-6250, Option 3",
+        "emergency": "888-468-7007, Option 1; 281-778-6250, Option 1",
+        "payments": "888-468-7007, Option 2; 281-778-6250, Option 2"
+      },
+      "legal": [
+        {
+          "label": "Terms & Conditions",
+          "destination": "https://www.sienergy.com/terms-conditions/",
+          "external": true
+        },
+        {
+          "label": "Privacy",
+          "destination": "https://www.sienergy.com/privacy-policy/",
+          "external": true
+        },
+        {
+          "label": "Contact",
+          "destination": "/contact-us"
+        },
+        {
+          "label": "Sitemap",
+          "destination": "https://www.sienergy.com/",
+          "external": true
+        }
+      ]
+    }
+  },
+  "pages": [
+    {
+      "itemName": "Home",
+      "routePath": "/",
+      "template": "Landing",
+      "metadataTitle": "SiEnergy | Safe, Reliable Natural Gas Service",
+      "metadataDescription": "Access your SiEnergy account, manage natural gas service, learn essential safety steps, and explore support for Texas communities and developers.",
+      "pageTitle": "Your partner for safe, reliable gas service",
+      "intro": "SiEnergy provides responsive natural gas service to growing communities across Texas, with safety, reliability, and customer care at the center of every connection.",
+      "richTextSections": [
+        {
+          "heading": "About SiEnergy",
+          "xhtml": "<p>Since 1998, SiEnergy has provided natural gas service to communities in Texas. The company works with customers, developers, and builders to support safe, efficient service and dependable community infrastructure.</p>"
+        },
+        {
+          "heading": "Customer Education",
+          "xhtml": "<p>Your monthly gas bill is calculated in part by comparing the current meter reading with the previous reading. Learn how residential meters record usage and where to find helpful account information.</p>"
+        },
+        {
+          "heading": "811",
+          "xhtml": "<p>Call before you dig. Know what is below. Contact 811 before beginning a digging project so underground utility lines can be located.</p>"
+        },
+        {
+          "heading": "Stay Safe While Using Natural Gas",
+          "xhtml": "<p>SiEnergy monitors its pipeline system to support the safe and efficient delivery of natural gas. Know how to recognize a possible gas leak and what to do from a safe location.</p>"
+        },
+        {
+          "heading": "Developers & Industrial Users",
+          "xhtml": "<p>From master-planned communities to large industrial projects, SiEnergy works with development teams to coordinate natural gas infrastructure from planning through implementation.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Pay My Bill",
+          "destination": "https://sienergy.epayub.com/Account/Login?ReturnUrl=%2F",
+          "external": true
+        },
+        {
+          "label": "Service Changes",
+          "destination": "/service-options"
+        },
+        {
+          "label": "Call 888-468-7007",
+          "destination": "tel:8884687007"
+        },
+        {
+          "label": "Learn About SiEnergy",
+          "destination": "/company"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "Hero",
+          "variant": "ImageBackground",
+          "contentUse": "Orange-backed hero title, intro, account CTA, and family cooking image"
+        },
+        {
+          "order": 2,
+          "component": "MultiPromo",
+          "variant": "Default",
+          "contentUse": "Pay My Bill, Service Changes, and Call Today quick actions"
+        },
+        {
+          "order": 3,
+          "component": "PromoImage",
+          "variant": "ImageRight",
+          "contentUse": "About SiEnergy copy paired with the Texas community image"
+        },
+        {
+          "order": 4,
+          "component": "PromoImage",
+          "variant": "ImageLeft",
+          "contentUse": "Customer Education and meter-reading pathway"
+        },
+        {
+          "order": 5,
+          "component": "MultiPromo",
+          "variant": "Default",
+          "contentUse": "811 and natural gas safety image-backed panels"
+        },
+        {
+          "order": 6,
+          "component": "PromoImage",
+          "variant": "ImageLeft",
+          "contentUse": "Developers and industrial users close"
+        }
+      ],
+      "images": [
+        {
+          "filename": "homepage-hero-safe-reliable-family-cooking-wide.png",
+          "alt": "Two parents and their child cooking together in a bright kitchen with a natural gas range",
+          "placement": "Hero"
+        },
+        {
+          "filename": "about-sienergy-texas-community-golden-hour-wide.png",
+          "alt": "Texas residential community in warm evening light",
+          "placement": "About SiEnergy"
+        },
+        {
+          "filename": "customer-education-natural-gas-meter-landscape.png",
+          "alt": "Residential natural gas meter mounted outside a Texas home",
+          "placement": "Customer Education"
+        },
+        {
+          "filename": "safety-call-811-before-you-dig-landscape.png",
+          "alt": "Homeowner preparing to dig only after underground utility lines are marked",
+          "placement": "811"
+        },
+        {
+          "filename": "safety-clean-natural-gas-flame-landscape.png",
+          "alt": "Steady blue natural gas flame on a clean burner",
+          "placement": "Stay Safe While Using Natural Gas"
+        },
+        {
+          "filename": "developers-community-infrastructure-planning-landscape.png",
+          "alt": "Development team reviewing natural gas infrastructure plans for a Texas community",
+          "placement": "Developers & Industrial Users"
+        }
+      ]
+    },
+    {
+      "itemName": "What We Do",
+      "routePath": "/what-we-do",
+      "template": "Content",
+      "metadataTitle": "What We Do | SiEnergy",
+      "metadataDescription": "Learn how SiEnergy works with Texas communities, developers, and builders to plan and deliver natural gas distribution infrastructure.",
+      "pageTitle": "What We Do",
+      "intro": "SiEnergy partners with customers, developers, and builders to make natural gas infrastructure clear, coordinated, and responsive.",
+      "richTextSections": [
+        {
+          "heading": "Natural Gas Distribution",
+          "xhtml": "<p>SiEnergy provides natural gas distribution service to communities in Texas. Its teams coordinate engineering, project management, construction, customer service, and ongoing infrastructure support.</p>"
+        },
+        {
+          "heading": "A Partnership Approach",
+          "xhtml": "<p>Early collaboration helps development teams align project timing, routing, meter locations, and service needs.</p><ul><li>Planning with developers and builders</li><li>Engineering involvement from concept through completion</li><li>Professional project communication</li><li>Ongoing customer and infrastructure support</li></ul>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Work With Our Development Team",
+          "destination": "/business-development"
+        },
+        {
+          "label": "Contact SiEnergy",
+          "destination": "/contact-us"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Page title and partnership introduction"
+        },
+        {
+          "order": 2,
+          "component": "PromoImage",
+          "variant": "ImageRight",
+          "contentUse": "Natural gas infrastructure overview"
+        },
+        {
+          "order": 3,
+          "component": "RichTextBlock",
+          "variant": "Default",
+          "contentUse": "Partnership approach"
+        },
+        {
+          "order": 4,
+          "component": "CtaBanner",
+          "variant": "Default",
+          "contentUse": "Business development contact"
+        }
+      ],
+      "images": [
+        {
+          "filename": "company-texas-natural-gas-infrastructure-wide.png",
+          "alt": "Natural gas distribution infrastructure serving a growing Texas community",
+          "placement": "Natural Gas Distribution"
+        }
+      ]
+    },
+    {
+      "itemName": "Customer Service Portal",
+      "routePath": "/customer-service-portal",
+      "template": "Landing",
+      "metadataTitle": "Customer Service | SiEnergy",
+      "metadataDescription": "Find SiEnergy billing, payment, service-change, meter, safety, and contact resources in one customer-service hub.",
+      "pageTitle": "Customer Service",
+      "intro": "We are here to serve you. Choose the task you need, find the right contact, or review important account and safety information.",
+      "richTextSections": [
+        {
+          "heading": "Manage Your Account",
+          "xhtml": "<p>Use the secure customer portal to review account information and make payments, or explore the available payment and billing resources before you sign in.</p>"
+        },
+        {
+          "heading": "Start, Stop, or Transfer Service",
+          "xhtml": "<p>Moving into, out of, or within the SiEnergy service area? Review the service-change process and the information you may need before contacting customer service.</p>"
+        },
+        {
+          "heading": "Get Help",
+          "xhtml": "<p>Customer Service is available Monday through Friday from 8:00 a.m. to 5:00 p.m. CST, excluding holidays. Call 888-468-7007 and select Option 3.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Log In",
+          "destination": "https://sienergy.epayub.com/Account/Login?ReturnUrl=%2F",
+          "external": true
+        },
+        {
+          "label": "Payment Options",
+          "destination": "/payment-options-locations"
+        },
+        {
+          "label": "Service Options",
+          "destination": "/service-options"
+        },
+        {
+          "label": "Contact Us",
+          "destination": "/contact-us"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Customer-service introduction"
+        },
+        {
+          "order": 2,
+          "component": "TopicListing",
+          "variant": "Default",
+          "contentUse": "Billing, service changes, safety, and meter-reading pathways"
+        },
+        {
+          "order": 3,
+          "component": "PromoImage",
+          "variant": "ImageRight",
+          "contentUse": "Customer-service contact block"
+        }
+      ],
+      "images": [
+        {
+          "filename": "contact-customer-service-representative-landscape.png",
+          "alt": "SiEnergy customer service representative assisting a customer by phone",
+          "placement": "Get Help"
+        }
+      ]
+    },
+    {
+      "itemName": "Contact Us",
+      "routePath": "/contact-us",
+      "template": "Form",
+      "metadataTitle": "Contact Us | SiEnergy",
+      "metadataDescription": "Contact SiEnergy customer service, builder services, or the 24-hour emergency line, and find office and payment information.",
+      "pageTitle": "Contact Us",
+      "intro": "Whether you need account help, builder support, or emergency assistance, this page directs you to the right SiEnergy contact.",
+      "richTextSections": [
+        {
+          "heading": "Customer Service Center",
+          "xhtml": "<p><strong>Business hours:</strong> Monday through Friday, 8:00 a.m. to 5:00 p.m. CST, excluding holidays.</p><p><strong>Phone:</strong> 888-468-7007, Option 3, or 281-778-6250, Option 3.</p>"
+        },
+        {
+          "heading": "Builder Services",
+          "xhtml": "<p>Builders may call 888-468-7007, Option 4, or 281-778-6250, Option 4 for project and service coordination.</p>"
+        },
+        {
+          "heading": "24-Hour Emergencies",
+          "xhtml": "<p>If you suspect a natural gas leak, leave the area immediately. From a safe location, call 911 and SiEnergy at 888-468-7007, Option 1.</p>"
+        },
+        {
+          "heading": "Headquarters",
+          "xhtml": "<p>13215 Bee Cave Parkway, Galleria Oaks Building B, Suite B-250, Bee Cave, Texas 78738.</p>"
+        }
+      ],
+      "form": {
+        "heading": "Send Us a Message",
+        "fields": [
+          {
+            "name": "firstName",
+            "label": "First name",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "lastName",
+            "label": "Last name",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "email",
+            "label": "Email address",
+            "type": "email",
+            "required": true
+          },
+          {
+            "name": "message",
+            "label": "Message",
+            "type": "textarea",
+            "required": true
+          }
+        ],
+        "submitLabel": "Send Message",
+        "successMessage": "Thank you. Your message has been received.",
+        "cdpIdentity": {
+          "identifyOnSubmit": true,
+          "identityAttribute": "email",
+          "source": "sienergy_contact_form"
+        }
+      },
+      "callsToAction": [
+        {
+          "label": "Call Customer Service",
+          "destination": "tel:8884687007"
+        },
+        {
+          "label": "Report an Emergency",
+          "destination": "/report-emergency"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Page title and contact introduction"
+        },
+        {
+          "order": 2,
+          "component": "PromoImage",
+          "variant": "ImageRight",
+          "contentUse": "Customer-service contact options"
+        },
+        {
+          "order": 3,
+          "component": "SubmissionForm",
+          "variant": "Default",
+          "contentUse": "Four-field contact form with CDP identification"
+        },
+        {
+          "order": 4,
+          "component": "AlertBanner",
+          "variant": "Default",
+          "contentUse": "Emergency contact reminder"
+        }
+      ],
+      "images": [
+        {
+          "filename": "contact-customer-service-representative-landscape.png",
+          "alt": "SiEnergy customer service representative assisting a customer by phone",
+          "placement": "Contact options"
+        }
+      ]
+    },
+    {
+      "itemName": "Service Options",
+      "routePath": "/service-options",
+      "template": "Content",
+      "metadataTitle": "Start, Stop, or Transfer Service | SiEnergy",
+      "metadataDescription": "Review SiEnergy options for starting, stopping, or transferring natural gas service and requesting a meter installation.",
+      "pageTitle": "Service Options",
+      "intro": "Prepare for your move or new natural gas connection with a clear view of the available service options and next steps.",
+      "richTextSections": [
+        {
+          "heading": "Start Service",
+          "xhtml": "<p id=\"start-service\">Use the online start-service process to request natural gas service. Have your service address and contact information available before you begin.</p>"
+        },
+        {
+          "heading": "Stop or Transfer Service",
+          "xhtml": "<p>Call Customer Service at 888-468-7007, Option 3, when you need to stop service or confirm whether SiEnergy serves a new address. A representative can explain the applicable next steps.</p>"
+        },
+        {
+          "heading": "Meter Installation",
+          "xhtml": "<p id=\"meter-installation\">Before requesting a meter installation, confirm that the site is ready, the meter location is accessible, and appliance connections and clearances meet the applicable requirements. SiEnergy can provide current installation guidance for your project.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Start Service",
+          "destination": "https://www.sienergy.com/service-options/",
+          "external": true
+        },
+        {
+          "label": "Call Customer Service",
+          "destination": "tel:8884687007"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Service-options introduction"
+        },
+        {
+          "order": 2,
+          "component": "AccordionBlock",
+          "variant": "Default",
+          "contentUse": "Start, stop, transfer, and meter-installation guidance"
+        },
+        {
+          "order": 3,
+          "component": "PromoImage",
+          "variant": "ImageLeft",
+          "contentUse": "Field service and site-readiness close"
+        }
+      ],
+      "images": [
+        {
+          "filename": "safety-field-technician-gas-infrastructure-landscape.png",
+          "alt": "Natural gas field technician inspecting utility equipment safely",
+          "placement": "Meter Installation"
+        }
+      ]
+    },
+    {
+      "itemName": "Payment Options and Locations",
+      "routePath": "/payment-options-locations",
+      "template": "Content",
+      "metadataTitle": "Payment Options & Locations | SiEnergy",
+      "metadataDescription": "Explore SiEnergy bill-payment options, including the online portal, phone, mail, and available in-person payment resources.",
+      "pageTitle": "Payment Options & Locations",
+      "intro": "Choose the bill-payment option that works for you and follow the secure path to your SiEnergy account.",
+      "richTextSections": [
+        {
+          "heading": "Online Bill Pay",
+          "xhtml": "<p>Use the secure customer portal to view account information and make an online payment. Never include account or payment details in a general contact message.</p>"
+        },
+        {
+          "heading": "Other Ways to Pay",
+          "xhtml": "<p>SiEnergy also provides payment options by phone and mail. Call 888-468-7007, Option 2, for telephone credit-card payments or current payment instructions.</p>"
+        },
+        {
+          "heading": "Payment Support",
+          "xhtml": "<p>If you are having difficulty paying your bill, contact Customer Service to ask about currently available arrangements or assistance resources.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Log In and Pay",
+          "destination": "https://sienergy.epayub.com/Account/Login?ReturnUrl=%2F",
+          "external": true
+        },
+        {
+          "label": "Understanding My Bill",
+          "destination": "/understanding-my-bill"
+        },
+        {
+          "label": "Contact Customer Service",
+          "destination": "/contact-us"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Payment-options introduction"
+        },
+        {
+          "order": 2,
+          "component": "PromoImage",
+          "variant": "ImageRight",
+          "contentUse": "Online account and payment pathway"
+        },
+        {
+          "order": 3,
+          "component": "AccordionBlock",
+          "variant": "Default",
+          "contentUse": "Online, phone, mail, in-person, and assistance information"
+        },
+        {
+          "order": 4,
+          "component": "CtaBanner",
+          "variant": "Default",
+          "contentUse": "Secure portal sign-in"
+        }
+      ],
+      "images": [
+        {
+          "filename": "payment-options-homeowner-managing-account-landscape.png",
+          "alt": "Homeowner securely reviewing a utility account on a tablet",
+          "placement": "Online Bill Pay"
+        }
+      ]
+    },
+    {
+      "itemName": "Understanding My Bill",
+      "routePath": "/understanding-my-bill",
+      "template": "Content",
+      "metadataTitle": "Understanding Your Natural Gas Bill | SiEnergy",
+      "metadataDescription": "Learn how to review a SiEnergy natural gas bill, understand usage and charges, and find payment or tariff information.",
+      "pageTitle": "Understanding Your Bill",
+      "intro": "A clear bill starts with knowing where to find your account details, usage, charges, due date, and customer-service information.",
+      "richTextSections": [
+        {
+          "heading": "Bill Overview",
+          "xhtml": "<p>Review your statement for the service address, billing period, meter readings, gas usage, itemized charges, payments, account balance, and due date.</p>"
+        },
+        {
+          "heading": "Usage and Charges",
+          "xhtml": "<p>Natural gas usage is determined in part by comparing meter readings. Your statement provides the current billed usage and the charges applied to the account for that billing period.</p>"
+        },
+        {
+          "heading": "Questions or Payment Concerns",
+          "xhtml": "<p>Contact Customer Service at 888-468-7007, Option 3, if you have questions about your statement or need to discuss currently available payment arrangements.</p>"
+        },
+        {
+          "heading": "Rates and Tariffs",
+          "xhtml": "<p>Visit Regulatory &amp; Important Links for current tariff documents, customer information, and links to applicable regulatory resources.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "View Payment Options",
+          "destination": "/payment-options-locations"
+        },
+        {
+          "label": "Rates & Tariffs",
+          "destination": "/regulatory-and-important-links"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Bill-education introduction"
+        },
+        {
+          "order": 2,
+          "component": "RichTextBlock",
+          "variant": "Default",
+          "contentUse": "Bill overview and usage explanation"
+        },
+        {
+          "order": 3,
+          "component": "AccordionBlock",
+          "variant": "Default",
+          "contentUse": "Charges, payment concerns, and rates"
+        },
+        {
+          "order": 4,
+          "component": "CtaBanner",
+          "variant": "Default",
+          "contentUse": "Payment and regulatory pathways"
+        }
+      ],
+      "images": []
+    },
+    {
+      "itemName": "Safety",
+      "routePath": "/safety",
+      "template": "Safety",
+      "metadataTitle": "Natural Gas Safety | SiEnergy",
+      "metadataDescription": "Learn natural gas safety basics, gas-odor emergency steps, 811 guidance, and information about SiEnergy field employees and equipment.",
+      "pageTitle": "Natural Gas Safety",
+      "intro": "Know how natural gas behaves, how to recognize a possible leak, and what to do before digging or during an emergency.",
+      "richTextSections": [
+        {
+          "heading": "If You Smell Natural Gas",
+          "xhtml": "<p>Leave the home, building, or immediate area on foot. Do not operate electrical switches, phones, appliances, vehicles, or anything that could create a spark. From a safe location, call 911 and SiEnergy at 888-468-7007, Option 1.</p>"
+        },
+        {
+          "heading": "Natural Gas Basics",
+          "xhtml": "<p>Natural gas is naturally colorless and odorless. An odorant is added so a possible leak can be detected. Natural gas is primarily methane, is lighter than air, and can ignite when mixed with air and exposed to an ignition source.</p>"
+        },
+        {
+          "heading": "Call Before You Dig",
+          "xhtml": "<p>Contact 811 before a digging project so underground utility lines can be located. Wait for the required responses and respect the marked area before work begins.</p>"
+        },
+        {
+          "heading": "Field Safety",
+          "xhtml": "<p>Keep the area around your natural gas meter clear and accessible. Secure pets away from the meter when service personnel need access for reading, maintenance, testing, or replacement.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Report an Emergency",
+          "destination": "/report-emergency"
+        },
+        {
+          "label": "Call 811",
+          "destination": "tel:811"
+        },
+        {
+          "label": "Contact SiEnergy",
+          "destination": "/contact-us"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "AlertBanner",
+          "variant": "Default",
+          "contentUse": "Gas-odor emergency instructions"
+        },
+        {
+          "order": 2,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Safety introduction"
+        },
+        {
+          "order": 3,
+          "component": "MultiPromo",
+          "variant": "Default",
+          "contentUse": "Natural gas basics, 811, and field-safety pathways"
+        },
+        {
+          "order": 4,
+          "component": "AccordionBlock",
+          "variant": "Default",
+          "contentUse": "Additional safety detail"
+        }
+      ],
+      "images": [
+        {
+          "filename": "safety-clean-natural-gas-flame-landscape.png",
+          "alt": "Steady blue natural gas flame on a clean burner",
+          "placement": "Natural Gas Basics"
+        },
+        {
+          "filename": "safety-call-811-before-you-dig-landscape.png",
+          "alt": "Homeowner preparing to dig only after underground utility lines are marked",
+          "placement": "Call Before You Dig"
+        },
+        {
+          "filename": "safety-field-technician-gas-infrastructure-landscape.png",
+          "alt": "Natural gas field technician inspecting utility equipment safely",
+          "placement": "Field Safety"
+        }
+      ]
+    },
+    {
+      "itemName": "Regulatory and Important Links",
+      "routePath": "/regulatory-and-important-links",
+      "template": "Content",
+      "metadataTitle": "Regulatory Information & Important Links | SiEnergy",
+      "metadataDescription": "Find SiEnergy tariff information, customer resources, safety references, and links to relevant Texas and federal regulatory organizations.",
+      "pageTitle": "Regulatory & Important Links",
+      "intro": "Use this resource center to find current SiEnergy documents and authoritative regulatory and safety information.",
+      "richTextSections": [
+        {
+          "heading": "Rates and Tariffs",
+          "xhtml": "<p>Access the currently published tariff documents and customer information for incorporated and unincorporated service areas. Confirm that you are reviewing the document applicable to your service location.</p>"
+        },
+        {
+          "heading": "Customer and Safety Resources",
+          "xhtml": "<ul><li>Customer Bill of Rights</li><li>Texas Railroad Commission quality-of-service and safety resources</li><li>811 call-before-you-dig information</li><li>Extreme-weather directives</li></ul>"
+        },
+        {
+          "heading": "Regulatory Organizations",
+          "xhtml": "<p>Authoritative resources include the Railroad Commission of Texas and applicable federal, state, and municipal organizations. External documents should open with clear source and file-type labels.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Visit the Railroad Commission of Texas",
+          "destination": "https://www.rrc.texas.gov/",
+          "external": true
+        },
+        {
+          "label": "Contact Customer Service",
+          "destination": "/contact-us"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Regulatory-resource introduction"
+        },
+        {
+          "order": 2,
+          "component": "TopicListing",
+          "variant": "Default",
+          "contentUse": "Rates, tariffs, customer rights, safety, and agency links"
+        },
+        {
+          "order": 3,
+          "component": "RichTextBlock",
+          "variant": "Default",
+          "contentUse": "Document-use and source guidance"
+        }
+      ],
+      "images": []
+    },
+    {
+      "itemName": "How to Read My Meter",
+      "routePath": "/how-to-read-my-meter",
+      "template": "Content",
+      "metadataTitle": "How to Read Your Natural Gas Meter | SiEnergy",
+      "metadataDescription": "Learn how a residential natural gas meter records usage and how to read common meter dials from left to right.",
+      "pageTitle": "How to Read My Meter",
+      "intro": "Your meter records natural gas usage. Understanding a meter reading can help you connect household usage with the information shown on your bill.",
+      "richTextSections": [
+        {
+          "heading": "How Meter Readings Work",
+          "xhtml": "<p>Your monthly bill is calculated in part by comparing the current meter reading with the previous reading. The difference represents the natural gas recorded during the billing period.</p>"
+        },
+        {
+          "heading": "Read the Dials",
+          "xhtml": "<ol><li>Read the dials from left to right.</li><li>When a pointer is between two numbers, record the lower number.</li><li>When a pointer is between zero and nine, record nine.</li><li>Record the reading and compare it with the meter information on your statement.</li></ol>"
+        },
+        {
+          "heading": "Keep the Meter Accessible",
+          "xhtml": "<p>Keep landscaping, stored materials, and other obstructions away from the meter so it remains visible and accessible to authorized service personnel.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Understanding My Bill",
+          "destination": "/understanding-my-bill"
+        },
+        {
+          "label": "Contact Customer Service",
+          "destination": "/contact-us"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Meter-reading introduction"
+        },
+        {
+          "order": 2,
+          "component": "PromoImage",
+          "variant": "ImageLeft",
+          "contentUse": "Residential meter image and overview"
+        },
+        {
+          "order": 3,
+          "component": "RichTextBlock",
+          "variant": "Default",
+          "contentUse": "Step-by-step dial-reading instructions"
+        }
+      ],
+      "images": [
+        {
+          "filename": "customer-education-natural-gas-meter-landscape.png",
+          "alt": "Residential natural gas meter mounted outside a Texas home",
+          "placement": "How Meter Readings Work"
+        }
+      ]
+    },
+    {
+      "itemName": "Tips to Lower Gas Usage",
+      "routePath": "/tips-to-lower-gas-usage",
+      "template": "Content",
+      "metadataTitle": "Tips to Lower Natural Gas Usage | SiEnergy",
+      "metadataDescription": "Explore practical ways to manage household natural gas use through thermostat settings, maintenance, insulation, and everyday habits.",
+      "pageTitle": "Tips to Lower Gas Usage",
+      "intro": "Small changes in home operation and maintenance can help reduce unnecessary natural gas use while supporting everyday comfort.",
+      "richTextSections": [
+        {
+          "heading": "Heating and Home Comfort",
+          "xhtml": "<ul><li>Use a programmable or smart thermostat to match heating with your schedule.</li><li>Schedule regular maintenance for heating equipment.</li><li>Seal air leaks and improve insulation where appropriate.</li><li>Close fireplace dampers when the fireplace is not in use.</li></ul>"
+        },
+        {
+          "heading": "Water Heating and Appliances",
+          "xhtml": "<ul><li>Use appliance settings that match the task and run full loads when practical.</li><li>Follow manufacturer guidance for water-heater temperature and maintenance.</li><li>Compare energy-efficient equipment when replacing an appliance.</li></ul>"
+        },
+        {
+          "heading": "Build Better Habits",
+          "xhtml": "<p>Review seasonal usage in your account, make one change at a time, and compare future bills while accounting for weather and household activity.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Understanding My Bill",
+          "destination": "/understanding-my-bill"
+        },
+        {
+          "label": "Customer Service",
+          "destination": "/customer-service-portal"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Usage-tips introduction"
+        },
+        {
+          "order": 2,
+          "component": "AccordionBlock",
+          "variant": "Default",
+          "contentUse": "Heating, water heating, appliances, and household habits"
+        },
+        {
+          "order": 3,
+          "component": "CtaBanner",
+          "variant": "Default",
+          "contentUse": "Bill education close"
+        }
+      ],
+      "images": []
+    },
+    {
+      "itemName": "Company",
+      "routePath": "/company",
+      "template": "Content",
+      "metadataTitle": "Company History | SiEnergy",
+      "metadataDescription": "Learn how SiEnergy grew alongside Texas communities through investment in natural gas infrastructure and developer partnerships.",
+      "pageTitle": "Company",
+      "intro": "SiEnergy's story is closely connected to the growth of Texas communities and the long-term infrastructure that supports them.",
+      "richTextSections": [
+        {
+          "heading": "Our History",
+          "xhtml": "<p>SiEnergy began in 1998 as residential and commercial development expanded near Houston. Before serving its first new home, the company invested in pipelines, metering stations, and the infrastructure needed to support growing communities.</p>"
+        },
+        {
+          "heading": "Growing With Texas",
+          "xhtml": "<p>Today, SiEnergy continues to work with developers, builders, customers, and community stakeholders. Its growth is grounded in safety, reliability, responsive service, and long-term partnerships.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Vision / Purpose / Values",
+          "destination": "/vision-mission-goals"
+        },
+        {
+          "label": "What We Do",
+          "destination": "/what-we-do"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "Hero",
+          "variant": "ImageBackground",
+          "contentUse": "Company title and Texas community image"
+        },
+        {
+          "order": 2,
+          "component": "RichTextBlock",
+          "variant": "Default",
+          "contentUse": "Company history"
+        },
+        {
+          "order": 3,
+          "component": "PromoImage",
+          "variant": "ImageRight",
+          "contentUse": "Infrastructure and partnership story"
+        }
+      ],
+      "images": [
+        {
+          "filename": "about-sienergy-texas-community-golden-hour-wide.png",
+          "alt": "Texas residential community in warm evening light",
+          "placement": "Company hero"
+        },
+        {
+          "filename": "company-texas-natural-gas-infrastructure-wide.png",
+          "alt": "Natural gas distribution infrastructure serving a growing Texas community",
+          "placement": "Growing With Texas"
+        }
+      ]
+    },
+    {
+      "itemName": "Vision Mission Goals",
+      "routePath": "/vision-mission-goals",
+      "template": "Content",
+      "metadataTitle": "Vision, Purpose & Values | SiEnergy",
+      "metadataDescription": "Explore SiEnergy's vision, noble purpose, and values centered on safety, integrity, innovation, responsiveness, reliability, and teamwork.",
+      "pageTitle": "Vision / Purpose / Values",
+      "intro": "SiEnergy's direction is grounded in safe service, reliable infrastructure, integrity, and a responsive approach to customers and communities.",
+      "richTextSections": [
+        {
+          "heading": "Vision",
+          "xhtml": "<p>SiEnergy's vision is to be recognized as a safe and innovative natural gas provider known for integrity, reliability, and exceptional service.</p>"
+        },
+        {
+          "heading": "Noble Purpose",
+          "xhtml": "<p>Its purpose is to support community development with integrity by delivering safe, reliable, and efficient natural gas solutions.</p>"
+        },
+        {
+          "heading": "Core Values",
+          "xhtml": "<ul><li><strong>Safety:</strong> Safety is embedded in the culture and the work.</li><li><strong>Integrity:</strong> Act with integrity every step of the way.</li><li><strong>Flexibility:</strong> Embrace change with optimism.</li><li><strong>Innovation:</strong> Develop tomorrow's solutions today.</li><li><strong>Responsiveness:</strong> Be available and attentive to customer needs.</li><li><strong>Reliability:</strong> Deliver dependable service.</li><li><strong>Teamwork:</strong> Move forward together.</li></ul>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Company History",
+          "destination": "/company"
+        },
+        {
+          "label": "What We Do",
+          "destination": "/what-we-do"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Vision and purpose introduction"
+        },
+        {
+          "order": 2,
+          "component": "TextBanner",
+          "variant": "BlueTitleRight",
+          "contentUse": "Vision and noble purpose statements using SiEnergy orange and charcoal styling"
+        },
+        {
+          "order": 3,
+          "component": "TopicListing",
+          "variant": "Default",
+          "contentUse": "Seven core values"
+        }
+      ],
+      "images": []
+    },
+    {
+      "itemName": "Business Development",
+      "routePath": "/business-development",
+      "template": "Landing",
+      "metadataTitle": "Developers & Industrial Users | SiEnergy",
+      "metadataDescription": "Explore SiEnergy natural gas infrastructure planning and coordination for Texas developers, builders, master-planned communities, and industrial projects.",
+      "pageTitle": "Developers & Industrial Users",
+      "intro": "Bring SiEnergy into the conversation early to coordinate natural gas infrastructure with the scale, timing, and long-term needs of your project.",
+      "richTextSections": [
+        {
+          "heading": "Infrastructure Planning",
+          "xhtml": "<p>SiEnergy works with development teams to review project scope, phasing, potential service needs, and infrastructure coordination. Early engagement helps identify the information required for productive planning.</p>"
+        },
+        {
+          "heading": "From Concept to Service",
+          "xhtml": "<ul><li>Coordinate with developers and builders during planning.</li><li>Review engineering and infrastructure considerations.</li><li>Maintain clear project communication.</li><li>Support implementation and ongoing service needs.</li></ul>"
+        },
+        {
+          "heading": "Start a Conversation",
+          "xhtml": "<p>Contact Builder Services at 888-468-7007, Option 4, to discuss the appropriate next step for a prospective project.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Contact Builder Services",
+          "destination": "tel:8884687007"
+        },
+        {
+          "label": "What We Do",
+          "destination": "/what-we-do"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "Hero",
+          "variant": "ImageBackground",
+          "contentUse": "Developer-focused headline and infrastructure-planning image"
+        },
+        {
+          "order": 2,
+          "component": "MultiPromo",
+          "variant": "Default",
+          "contentUse": "Planning, engineering, project communication, and implementation"
+        },
+        {
+          "order": 3,
+          "component": "RichTextBlock",
+          "variant": "Default",
+          "contentUse": "Early engagement narrative"
+        },
+        {
+          "order": 4,
+          "component": "CtaBanner",
+          "variant": "Default",
+          "contentUse": "Builder Services contact"
+        }
+      ],
+      "images": [
+        {
+          "filename": "developers-community-infrastructure-planning-landscape.png",
+          "alt": "Development team reviewing natural gas infrastructure plans for a Texas community",
+          "placement": "Business Development hero"
+        }
+      ]
+    },
+    {
+      "itemName": "Report Emergency",
+      "routePath": "/report-emergency",
+      "template": "Safety",
+      "metadataTitle": "Report a Natural Gas Emergency | SiEnergy",
+      "metadataDescription": "If you suspect a natural gas leak, leave the area immediately and call 911 and SiEnergy's 24-hour emergency line from a safe location.",
+      "pageTitle": "Report an Emergency",
+      "intro": "If you smell natural gas or suspect a leak, act immediately. Your safety comes first.",
+      "richTextSections": [
+        {
+          "heading": "Leave Immediately",
+          "xhtml": "<p>Evacuate everyone from the home, building, or immediate area. Leave on foot and move to a safe location.</p>"
+        },
+        {
+          "heading": "Avoid Ignition Sources",
+          "xhtml": "<p>Do not operate electrical switches, phones, appliances, flashlights, vehicles, or heavy equipment in the affected area. Do not smoke, use a lighter, or create any source of ignition.</p>"
+        },
+        {
+          "heading": "Call From a Safe Location",
+          "xhtml": "<p>Call 911 and SiEnergy's 24-hour emergency line at 888-468-7007, Option 1. Follow instructions from emergency responders and SiEnergy personnel.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Call 911",
+          "destination": "tel:911"
+        },
+        {
+          "label": "Call SiEnergy Emergency Line",
+          "destination": "tel:8884687007"
+        },
+        {
+          "label": "Natural Gas Safety",
+          "destination": "/safety"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "AlertBanner",
+          "variant": "Default",
+          "contentUse": "Immediate evacuation and emergency-call instruction"
+        },
+        {
+          "order": 2,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Emergency page title and introduction"
+        },
+        {
+          "order": 3,
+          "component": "MultiPromo",
+          "variant": "Default",
+          "contentUse": "Leave, avoid ignition, and call steps"
+        },
+        {
+          "order": 4,
+          "component": "CtaBanner",
+          "variant": "Default",
+          "contentUse": "911 and SiEnergy emergency call actions"
+        }
+      ],
+      "images": [
+        {
+          "filename": "safety-clean-natural-gas-flame-landscape.png",
+          "alt": "Steady blue natural gas flame on a clean burner",
+          "placement": "Emergency safety context"
+        }
+      ]
+    },
+    {
+      "itemName": "Search",
+      "routePath": "/search",
+      "template": "Search",
+      "metadataTitle": "Search | SiEnergy",
+      "metadataDescription": "Search SiEnergy customer service, billing, safety, company, and developer information.",
+      "pageTitle": "Search SiEnergy",
+      "intro": "Search the SiEnergy site for account help, service options, payment information, safety guidance, company information, and developer resources.",
+      "richTextSections": [
+        {
+          "heading": "Search Tips",
+          "xhtml": "<p>Try a short phrase such as pay bill, start service, meter reading, gas safety, 811, rates, or developer services. Results should display a clear title, summary, and destination.</p>"
+        }
+      ],
+      "callsToAction": [
+        {
+          "label": "Customer Service",
+          "destination": "/customer-service-portal"
+        },
+        {
+          "label": "Safety",
+          "destination": "/safety"
+        },
+        {
+          "label": "Contact Us",
+          "destination": "/contact-us"
+        }
+      ],
+      "recommendedComponentStack": [
+        {
+          "order": 1,
+          "component": "PageHeader",
+          "variant": "Default",
+          "contentUse": "Search title and concise instructions"
+        },
+        {
+          "order": 2,
+          "component": "SearchExperience",
+          "variant": "Default",
+          "contentUse": "Functional keyword search across the SiEnergy route index"
+        },
+        {
+          "order": 3,
+          "component": "CtaBanner",
+          "variant": "Default",
+          "contentUse": "Customer-service assistance when search does not resolve the task"
+        }
+      ],
+      "images": []
+    }
+  ]
+}

@@ -29,7 +29,7 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
       <section
         data-component="Promo Image"
         data-variant="Default"
-        className="@container border-b-2 border-t-2 bg-[#173c47] [.border-b-2+&]:border-t-0"
+        className="@container border-b-2 border-t-2 bg-[#414042] [.border-b-2+&]:border-t-0"
       >
         <div className="@md:min-h-[620px] relative min-h-[420px] w-full overflow-hidden ">
           {showImage && (
@@ -56,7 +56,7 @@ export const PromoImageDefault: React.FC<PromoImageProps> = (props) => {
           )}
           {!hasImage && (
             <div
-              className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,#173c47_0%,#0f6276_100%)]"
+              className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,#414042_0%,#6b4a36_100%)]"
               aria-hidden="true"
             />
           )}

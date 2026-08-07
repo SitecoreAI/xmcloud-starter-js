@@ -42,13 +42,13 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
               <Text
                 tag="h2"
                 field={title}
-                className="font-heading text-[1.75rem] font-semibold text-slate-900"
+                className="font-heading text-[1.75rem] font-semibold text-[#414042]"
               />
             )}
             {description && (
               <RichText
                 field={description}
-                className="mt-2 max-w-3xl text-base leading-7 text-slate-600"
+                className="mt-2 max-w-3xl text-base leading-7 text-[#737076]"
               />
             )}
           </div>
@@ -64,10 +64,10 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
               return (
                 <article
                   key={'nwn-quick-action-' + index}
-                  className="group relative border-b border-slate-200 p-6 transition-colors hover:bg-cyan-50 md:border-r lg:border-b-0 lg:p-7 lg:last:border-r-0"
+                  className="group relative border-b border-[#d7d6d7] p-6 transition-colors hover:bg-[#fff4eb] md:border-r lg:border-b-0 lg:p-7 lg:last:border-r-0"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#e4f4f7] text-primary">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#fff4eb] text-primary">
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </span>
                     <ArrowRight
@@ -85,7 +85,7 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
                   {itemDescription && (
                     <RichText
                       field={itemDescription}
-                      className="mt-3 text-base leading-7 text-slate-600"
+                      className="mt-3 text-base leading-7 text-[#737076]"
                     />
                   )}
                   {item.link?.jsonValue && (
@@ -103,8 +103,8 @@ export const MultiPromoNwnQuickActions: React.FC<MultiPromoProps> = (props) => {
           </div>
         ) : (
           isPageEditing && (
-            <p className="rounded border border-dashed border-primary bg-white p-6 text-sm text-slate-600">
-              Add promo items to create NW Natural quick-action cards.
+            <p className="rounded border border-dashed border-primary bg-white p-6 text-sm text-[#737076]">
+              Add promo items to create SiEnergy quick-action cards.
             </p>
           )
         )}

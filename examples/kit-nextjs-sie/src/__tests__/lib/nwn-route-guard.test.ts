@@ -4,7 +4,7 @@ import {
   isLegacyStarterUrl,
 } from '@/lib/nwn-route-guard';
 
-describe('NWN legacy route guard', () => {
+describe('SiEnergy inherited route guard', () => {
   it('blocks inherited product and test-drive routes case-insensitively', () => {
     expect(isLegacyStarterRoute(['Products', 'Aero'])).toBe(true);
     expect(isLegacyStarterRoute(['Test-Drive'])).toBe(true);
@@ -13,11 +13,14 @@ describe('NWN legacy route guard', () => {
     );
   });
 
-  it('keeps NW Natural site routes', () => {
-    expect(isLegacyStarterRoute(['account-billing'])).toBe(false);
+  it('blocks inherited NWN routes while keeping SiEnergy routes', () => {
+    expect(isLegacyStarterRoute(['account-billing'])).toBe(true);
     expect(
       isLegacyStarterUrl('https://www.sienergy.com/safety/call-before-you-dig'),
-    ).toBe(false);
+    ).toBe(true);
+    expect(isLegacyStarterUrl('https://www.nwnatural.com/')).toBe(true);
+    expect(isLegacyStarterRoute(['service-options'])).toBe(false);
+    expect(isLegacyStarterRoute(['safety'])).toBe(false);
   });
 
   it('removes only legacy URL entries from a sitemap', () => {
@@ -31,7 +34,7 @@ describe('NWN legacy route guard', () => {
     const filtered = filterLegacyStarterSitemapEntries(xml);
 
     expect(filtered).toContain('https://www.sienergy.com/');
-    expect(filtered).toContain('https://www.sienergy.com/about-us');
+    expect(filtered).not.toContain('https://www.sienergy.com/about-us');
     expect(filtered).not.toContain('/Products/Terra');
     expect(filtered).not.toContain('/Test-Drive');
   });

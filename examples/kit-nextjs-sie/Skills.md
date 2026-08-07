@@ -27,6 +27,7 @@ app. Repository-wide guidance remains in
 
 ## Current phase
 
-Only the deployable head-app scaffold exists. SiEnergy styles and Sitecore
-content are intentionally deferred until the rendering host and site are
-available.
+The SiEnergy head app, brand styling, route/search metadata, official identity
+assets, DAM handoff, and Sitecore content blueprint are present. Remote Sitecore
+authoring must follow `SIE_SITE_CONTENT.json` and keep page-owned datasources
+isolated beneath the `kit-nextjs-sie` site tree.

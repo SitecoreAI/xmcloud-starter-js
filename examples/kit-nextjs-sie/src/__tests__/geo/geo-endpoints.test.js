@@ -12,25 +12,23 @@ import { summaryExpected, serviceExpected, faqExpected } from './fixtures';
 
 jest.setTimeout(15000);
 
-const NWN_ROUTE_PATHS = [
+const SIE_ROUTE_PATHS = [
   '/',
-  '/account-billing',
-  '/account-billing/pay-my-bill',
-  '/account-billing/start-stop-transfer',
-  '/account-billing/payment-assistance',
-  '/ways-to-save/rebates-offers',
-  '/services',
-  '/services/inspections-tune-ups',
-  '/get-natural-gas',
-  '/get-natural-gas/benefits',
-  '/get-natural-gas/cooking',
+  '/what-we-do',
+  '/customer-service-portal',
+  '/contact-us',
+  '/service-options',
+  '/payment-options-locations',
+  '/understanding-my-bill',
   '/safety',
-  '/safety/smell-natural-gas',
-  '/safety/call-before-you-dig',
-  '/about-us',
-  '/about-us/company-overview',
-  '/about-us/renewable-natural-gas',
-  '/about-us/less-we-can',
+  '/regulatory-and-important-links',
+  '/how-to-read-my-meter',
+  '/tips-to-lower-gas-usage',
+  '/company',
+  '/vision-mission-goals',
+  '/business-development',
+  '/report-emergency',
+  '/search',
 ];
 
 const AI_ENDPOINT_PATHS = [
@@ -285,7 +283,7 @@ test('GET /sitemap-llm.xml returns 200 and valid XML', async () => {
   const join = (origin, path) =>
     `${origin.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
 
-  const requiredPaths = [...NWN_ROUTE_PATHS, ...AI_ENDPOINT_PATHS];
+  const requiredPaths = [...SIE_ROUTE_PATHS, ...AI_ENDPOINT_PATHS];
 
   const expectedUrls = requiredPaths.map((p) => {
     if (p === '/') return `${derivedOrigin}/`;

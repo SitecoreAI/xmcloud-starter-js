@@ -81,7 +81,7 @@ const createProps = (
     data: {
       datasource: {
         ...mockProductListingProps.fields.data.datasource,
-        title: { jsonValue: { value: 'Helpful NW Natural resources' } },
+        title: { jsonValue: { value: 'Helpful SiEnergy resources' } },
         ...datasourceOverrides,
         products: { targetItems },
       },
@@ -130,12 +130,12 @@ describe('ProductListingNwnResources', () => {
           jsonValue: { value: 'This lower-priority subtitle is not shown.' },
         },
         route: {
-          path: '/utilities/kit-nextjs-nwn/Home/Ways-To-Save/Rebates-Offers/',
+          path: '/service-options',
         },
         cardLink: {
           jsonValue: {
             value: {
-              href: '/utilities/kit-nextjs-nwn/Home/Ways-To-Save/Rebates-Offers/',
+              href: '/service-options',
               text: 'Explore rebates',
               linktype: 'internal',
             },
@@ -153,12 +153,12 @@ describe('ProductListingNwnResources', () => {
           },
         },
         route: {
-          path: 'https://preview.example/Get-Natural-Gas/Cooking?sc_lang=en',
+          path: 'https://preview.example/tips-to-lower-gas-usage?sc_lang=en',
         },
         cardLink: {
           jsonValue: {
             value: {
-              href: 'https://preview.example/Get-Natural-Gas/Cooking?sc_lang=en',
+              href: 'https://preview.example/tips-to-lower-gas-usage?sc_lang=en',
               text: 'Explore cooking with gas',
               linktype: 'internal',
             },
@@ -173,11 +173,11 @@ describe('ProductListingNwnResources', () => {
             value: 'Leave immediately and call from a safe location.',
           },
         },
-        route: { path: '/safety/smell-natural-gas#steps' },
+        route: { path: '/report-emergency#steps' },
         cardLink: {
           jsonValue: {
             value: {
-              href: '/safety/smell-natural-gas#steps',
+              href: '/report-emergency#steps',
               text: 'Review gas odor safety',
               linktype: 'internal',
             },
@@ -206,23 +206,20 @@ describe('ProductListingNwnResources', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: 'Explore rebates' }),
-    ).toHaveAttribute(
-      'href',
-      '/utilities/kit-nextjs-nwn/Home/Ways-To-Save/Rebates-Offers/',
-    );
+    ).toHaveAttribute('href', '/service-options');
     expect(
       screen.getByRole('link', {
         name: 'Explore cooking with gas',
       }),
     ).toHaveAttribute(
       'href',
-      'https://preview.example/Get-Natural-Gas/Cooking?sc_lang=en',
+      'https://preview.example/tips-to-lower-gas-usage?sc_lang=en',
     );
     expect(
       screen.getByRole('link', {
         name: 'Review gas odor safety',
       }),
-    ).toHaveAttribute('href', '/safety/smell-natural-gas#steps');
+    ).toHaveAttribute('href', '/report-emergency#steps');
     expect(screen.queryAllByRole('img')).toHaveLength(0);
     expect(
       screen.queryByText('Rebates that reward efficiency'),
@@ -248,7 +245,7 @@ describe('ProductListingNwnResources', () => {
                 },
               },
             },
-            route: { path: '/ways-to-save/rebates-offers' },
+            route: { path: '/tips-to-lower-gas-usage' },
           },
         ])}
       />,
@@ -285,7 +282,7 @@ describe('ProductListingNwnResources', () => {
             cardLink: {
               jsonValue: {
                 value: {
-                  href: '/Get-Natural-Gas/Cooking/',
+                  href: '/tips-to-lower-gas-usage',
                   text: 'Explore natural gas cooking',
                   linktype: 'internal',
                 },
@@ -310,7 +307,7 @@ describe('ProductListingNwnResources', () => {
     ).toHaveAttribute('src', 'https://dam.example/authored-card.jpg');
     expect(
       screen.getByRole('link', { name: /Explore natural gas cooking/ }),
-    ).toHaveAttribute('href', '/Get-Natural-Gas/Cooking/');
+    ).toHaveAttribute('href', '/tips-to-lower-gas-usage');
     expect(
       screen.queryByText('Lower priority page title'),
     ).not.toBeInTheDocument();
@@ -374,7 +371,7 @@ describe('ProductListingNwnResources', () => {
       <ProductListingNwnResources
         {...createProps([
           {
-            id: 'legacy-contract-resource',
+            id: 'service-resource',
             productName: {
               jsonValue: { value: 'Natural gas equipment support' },
             },
@@ -384,12 +381,12 @@ describe('ProductListingNwnResources', () => {
             productThumbnail: {
               jsonValue: {
                 value: {
-                  src: '/assets/nwn-images/services-technician-arrival-landscape.png',
-                  alt: 'NW Natural technician arriving at a home',
+                  src: '/assets/sie-images/service-options-technician-landscape.png',
+                  alt: 'SiEnergy technician arriving at a home',
                 },
               },
             },
-            url: { path: '/services' },
+            url: { path: '/service-options' },
           },
         ])}
       />,

@@ -37,7 +37,7 @@ export const GlobalFooterBlueCompact: React.FC<GlobalFooterProps> = (props) => {
         >
           <div className="@md:justify-end flex h-full w-full items-end justify-center leading-none">
             <div className="bg-primary-gradient text-fill-transparent text-50-clamp @md:-mb-[80px] -mb-[40px] bg-clip-text text-center font-bold leading-none text-transparent">
-              NW Natural
+              SiEnergy
             </div>
           </div>
         </div>

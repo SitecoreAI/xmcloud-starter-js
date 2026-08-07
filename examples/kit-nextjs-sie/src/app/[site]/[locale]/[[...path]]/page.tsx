@@ -15,14 +15,15 @@ import { generateWebPageSchema } from 'src/lib/structured-data/schema';
 import { StructuredData } from '@/components/structured-data/StructuredData';
 import { getBaseUrlFromHeaders } from '@/lib/utils';
 import { isLegacyStarterRoute } from '@/lib/nwn-route-guard';
-import { sanitizeLegacyStarterData } from '@/lib/nwn-content-sanitizer';
+import {
+  containsLegacyStarterData,
+  isLegacyStarterDataValue,
+  sanitizeLegacyStarterData,
+} from '@/lib/nwn-content-sanitizer';
 
-const isLegacyStarterValue = (value: string | undefined): boolean =>
-  /\b(?:alaris|aero|nexa|terra|automotive|vehicles?|dealerships?)\b|test[-\s]?drive|electric future|drivesense/i.test(
-    value ?? '',
-  );
+const isLegacyStarterValue = isLegacyStarterDataValue;
 
-const useNwnValue = (
+const useBrandSafeValue = (
   ...values: Array<string | undefined>
 ): string | undefined =>
   values.find((value) => value?.trim() && !isLegacyStarterValue(value));
@@ -112,7 +113,7 @@ export default async function Page({ params }: PageProps) {
       page = await client.getPage(path ?? [], { site, locale });
     } catch (error) {
       console.error(
-        `[NWN page] Failed to load /${(path ?? []).join('/')}:`,
+        `[SiEnergy page] Failed to load /${(path ?? []).join('/')}:`,
         error,
       );
       throw error;
@@ -120,6 +121,17 @@ export default async function Page({ params }: PageProps) {
   }
 
   if (!page) {
+    notFound();
+  }
+
+  if (
+    !draft.isEnabled &&
+    !page.mode.isEditing &&
+    containsLegacyStarterData(page)
+  ) {
+    console.warn(
+      `[SiEnergy page] Rejected inherited content for /${(path ?? []).join('/')}`,
+    );
     notFound();
   }
 
@@ -135,11 +147,11 @@ export default async function Page({ params }: PageProps) {
 
   // Generate page-specific structured data
   const fields = renderPage.layout.sitecore.route?.fields as RouteFields;
-  const pageTitle = useNwnValue(
+  const pageTitle = useBrandSafeValue(
     fields?.Title?.value?.toString(),
     fields?.pageTitle?.value?.toString(),
   );
-  const pageDescription = useNwnValue(
+  const pageDescription = useBrandSafeValue(
     fields?.metadataDescription?.value?.toString(),
     fields?.ogDescription?.value?.toString(),
   );
@@ -204,7 +216,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
     page = await client.getPage(path ?? [], { site, locale });
   } catch (error) {
     console.error(
-      `[NWN metadata] Failed to load /${(path ?? []).join('/')}:`,
+      `[SiEnergy metadata] Failed to load /${(path ?? []).join('/')}:`,
       error,
     );
   }
@@ -213,49 +225,64 @@ export const generateMetadata = async ({ params }: PageProps) => {
   const routeFields = (page?.layout.sitecore.route?.fields ??
     {}) as RouteFields;
 
-  // Ignore inherited Alaris starter values while live authoring catches up.
-  const metadataTitle = useNwnValue(
-    routeFields?.metadataTitle?.value?.toString(),
-    routeFields?.pageTitle?.value?.toString(),
-    routeFields?.Title?.value?.toString(),
-    routeFields?.ogTitle?.value?.toString(),
+  // Ignore inherited starter or NWN values while live authoring catches up.
+  const hasInheritedContent = containsLegacyStarterData(page);
+  const metadataTitle = useBrandSafeValue(
+    !hasInheritedContent
+      ? routeFields?.metadataTitle?.value?.toString()
+      : undefined,
+    !hasInheritedContent
+      ? routeFields?.pageTitle?.value?.toString()
+      : undefined,
+    !hasInheritedContent ? routeFields?.Title?.value?.toString() : undefined,
+    !hasInheritedContent ? routeFields?.ogTitle?.value?.toString() : undefined,
   );
 
-  const metadataDescription = useNwnValue(
-    routeFields?.metadataDescription?.value?.toString(),
-    routeFields?.pageSummary?.value?.toString(),
-    routeFields?.ogDescription?.value?.toString(),
+  const metadataDescription = useBrandSafeValue(
+    !hasInheritedContent
+      ? routeFields?.metadataDescription?.value?.toString()
+      : undefined,
+    !hasInheritedContent
+      ? routeFields?.pageSummary?.value?.toString()
+      : undefined,
+    !hasInheritedContent
+      ? routeFields?.ogDescription?.value?.toString()
+      : undefined,
   );
 
   const ogTitle =
-    useNwnValue(
+    useBrandSafeValue(
       routeFields?.ogTitle?.value?.toString(),
       routeFields?.Title?.value?.toString(),
     ) || metadataTitle;
 
   const ogDescription =
-    useNwnValue(routeFields?.ogDescription?.value?.toString()) ||
+    useBrandSafeValue(routeFields?.ogDescription?.value?.toString()) ||
     metadataDescription;
 
   // Ensure image URL is absolute (HTTPS preferred)
-  const heroImage = findHeroImage(page);
-  const authoredImageSource =
-    routeFields?.ogImage?.value?.src ||
-    routeFields?.thumbnailImage?.value?.src ||
-    heroImage?.src;
-  const authoredImageAltValue =
-    routeFields?.ogImage?.value?.alt ||
-    routeFields?.thumbnailImage?.value?.alt ||
-    heroImage?.alt;
+  const heroImage = hasInheritedContent ? undefined : findHeroImage(page);
+  const authoredImageSource = hasInheritedContent
+    ? undefined
+    : routeFields?.ogImage?.value?.src ||
+      routeFields?.thumbnailImage?.value?.src ||
+      heroImage?.src;
+  const authoredImageAltValue = hasInheritedContent
+    ? undefined
+    : routeFields?.ogImage?.value?.alt ||
+      routeFields?.thumbnailImage?.value?.alt ||
+      heroImage?.alt;
   const authoredImageAlt =
     typeof authoredImageAltValue === 'string'
       ? authoredImageAltValue
       : undefined;
-  const authoredImageIsNwn =
+  const authoredImageIsBrandSafe =
     Boolean(authoredImageSource) &&
     !isLegacyStarterValue(authoredImageSource) &&
     !isLegacyStarterValue(authoredImageAlt);
-  const imageSource = authoredImageIsNwn ? authoredImageSource : undefined;
+  const imageSource = authoredImageIsBrandSafe
+    ? authoredImageSource
+    : undefined;
 
   const ogImageUrl = imageSource
     ? imageSource.startsWith('http')
@@ -266,15 +293,19 @@ export const generateMetadata = async ({ params }: PageProps) => {
   const pageUrl = canonicalUrl;
 
   // Parse keywords from comma-separated string to array (for <meta name="keywords">)
-  const keywordsString = useNwnValue(
-    routeFields?.metadataKeywords?.value?.toString(),
+  const keywordsString = useBrandSafeValue(
+    !hasInheritedContent
+      ? routeFields?.metadataKeywords?.value?.toString()
+      : undefined,
   );
   const keywords = keywordsString
     ? keywordsString.split(',').map((k: string) => k.trim())
     : [];
 
-  const metadataAuthor = useNwnValue(
-    routeFields?.metadataAuthor?.value?.toString(),
+  const metadataAuthor = useBrandSafeValue(
+    !hasInheritedContent
+      ? routeFields?.metadataAuthor?.value?.toString()
+      : undefined,
   );
 
   return {

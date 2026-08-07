@@ -31,7 +31,7 @@ export const TextBannerNwnStory: React.FC<TextBannerProps> = (props) => {
       data-component="TextBanner"
       data-variant="NwnStory"
       className={cn(
-        'border-y border-slate-300 bg-[#e4f4f7] py-12 text-slate-900 sm:py-16',
+        'border-y border-[#c4c4c4] bg-[#fff4eb] py-12 text-[#414042] sm:py-16',
         props.params?.styles,
       )}
     >
@@ -51,7 +51,7 @@ export const TextBannerNwnStory: React.FC<TextBannerProps> = (props) => {
             <Text
               tag="p"
               field={fields.description}
-              className="max-w-2xl text-pretty text-lg leading-8 text-slate-700 sm:text-xl sm:leading-9"
+              className="max-w-2xl text-pretty text-lg leading-8 text-[#737076] sm:text-xl sm:leading-9"
             />
           )}
           {fields.link && (isPageEditing || hasLink) && (
@@ -60,7 +60,7 @@ export const TextBannerNwnStory: React.FC<TextBannerProps> = (props) => {
                 buttonLink={fields.link}
                 isPageEditing={isPageEditing}
                 variant="default"
-                className="min-h-11 bg-primary px-5 text-base font-semibold text-white hover:bg-[#005f7f]"
+                className="min-h-11 bg-primary px-5 text-base font-semibold text-white hover:bg-primary-hover"
                 page={props.page}
               />
             </div>

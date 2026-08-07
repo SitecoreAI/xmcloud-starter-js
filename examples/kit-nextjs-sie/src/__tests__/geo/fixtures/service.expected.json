@@ -1,20 +1,35 @@
 {
     "services": [
         {
-            "name": "Account and Billing Support",
-            "description": "Help customers pay bills, start, stop, or transfer natural gas service, and find payment assistance through clear residential account pathways.",
-            "category": "Customer Account"
+            "name": "Customer service and billing support",
+            "description": "Get help with your natural gas account, billing questions, and available service options.",
+            "category": "Customer service"
         },
         {
-            "name": "Home Energy Services",
-            "description": "Guide customers to equipment inspections and tune-ups, rebates and offers, natural gas benefits, and cooking resources for dependable home comfort.",
-            "category": "Home Energy"
+            "name": "Start, stop, or transfer service",
+            "description": "Request natural gas service changes when you move or your service needs change.",
+            "category": "Customer service"
         },
         {
-            "name": "Natural Gas Safety Guidance",
-            "description": "Provide clear actions for suspected natural gas odors, including leaving immediately and calling 800-882-3377 from a safe location, plus guidance to contact 811 before digging.",
+            "name": "Payment options",
+            "description": "Review online, telephone, mail, auto-draft, local, and assistance options.",
+            "category": "Customer service"
+        },
+        {
+            "name": "Meter and usage education",
+            "description": "Learn how meters are read, how usage appears on a bill, and ways to lower gas use.",
+            "category": "Information"
+        },
+        {
+            "name": "Developer and builder services",
+            "description": "Partner with SiEnergy on natural gas infrastructure planning and implementation.",
+            "category": "Developers"
+        },
+        {
+            "name": "Natural gas safety",
+            "description": "Learn the immediate response to a suspected gas odor, how to reach the 24-hour emergency line, and why every dig begins with 811.",
             "category": "Safety"
         }
     ],
-    "lastModified": "2026-08-05T21:29:09Z"
+    "lastModified": "2026-08-06T00:00:00Z"
 }

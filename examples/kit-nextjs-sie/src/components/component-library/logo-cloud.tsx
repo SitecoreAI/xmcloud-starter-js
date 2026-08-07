@@ -7,7 +7,12 @@ import {
   Page,
 } from '@sitecore-content-sdk/nextjs';
 import { Button } from 'shadcd/components/ui/button';
-import { IGQLImageField, IGQLLinkField, IGQLRichTextField, IGQLTextField } from 'src/types/igql';
+import {
+  IGQLImageField,
+  IGQLLinkField,
+  IGQLRichTextField,
+  IGQLTextField,
+} from 'src/types/igql';
 import { getDatasource, getFieldValue } from '@/lib/component-props';
 
 import type { JSX } from 'react';
@@ -62,7 +67,10 @@ export const Default = (props: LogoCloudProps): JSX.Element => {
             </div>
             <div className="flex flex-wrap gap-4">
               {link1Field && (link1Field.value?.href || isEditing) ? (
-                <Button className="bg-indigo-600 hover:bg-indigo-700 text-white" asChild={true}>
+                <Button
+                  className="bg-primary text-white hover:bg-primary/90"
+                  asChild={true}
+                >
                   <ContentSdkLink field={link1Field} prefetch={false} />
                 </Button>
               ) : null}

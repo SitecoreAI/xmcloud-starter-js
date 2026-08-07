@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import type { LinkField } from '@sitecore-content-sdk/nextjs';
+import type { ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
 import { CompatibleLink } from '@/components/content-sdk/CompatibleLink';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
@@ -20,23 +20,25 @@ const navItemKey = (item: PrimaryNavItemProps, index: number): string =>
   String(index);
 
 const secondaryNavigation = [
-  { label: 'Account & Billing', href: '/account-billing' },
-  { label: 'Ways to Save', href: '/ways-to-save/rebates-offers' },
-  { label: 'Services', href: '/services' },
-  { label: 'Get Natural Gas', href: '/get-natural-gas' },
+  { label: 'Customer Service', href: '/customer-service-portal' },
+  { label: 'Service Options', href: '/service-options' },
+  { label: 'Payment Options', href: '/payment-options-locations' },
+  { label: 'Information', href: '/regulatory-and-important-links' },
   { label: 'Safety', href: '/safety' },
 ] as const;
 
 const isLegacyStarterLogo = (value: unknown): boolean =>
   Boolean(
     typeof value === 'string' &&
-      /alaris|vehicle|automotive|ambulance|fire-truck/i.test(value),
+      /alaris|vehicle|automotive|ambulance|fire-truck|nw\s*natural|nwnatural|nw-natural|nwn-images/i.test(
+        value,
+      ),
   );
 
 const isLegacyStarterValue = (value: string | undefined): boolean =>
   Boolean(
     value &&
-      /alaris|aero|nexa|terra|vehicle|automotive|test drive|test-drive|models|dealership/i.test(
+      /alaris|aero|nexa|terra|vehicle|automotive|test drive|test-drive|models|dealership|nw\s*natural|nwnatural|nw-natural|nwnpartnerlink|account-billing|ways-to-save|get-natural-gas/i.test(
         value,
       ),
   );
@@ -61,31 +63,32 @@ const navItem = (
 });
 
 const fallbackPrimaryItems: PrimaryNavItemProps[] = [
-  navItem('Residential', '/', [
-    navItem('Account & Billing', '/account-billing'),
-    navItem('Ways to Save', '/ways-to-save/rebates-offers'),
-    navItem('Services', '/services'),
-    navItem('Get Natural Gas', '/get-natural-gas'),
+  navItem('What We Do', '/what-we-do'),
+  navItem('Customer Service', '/customer-service-portal', [
+    navItem('Contact Us', '/contact-us'),
+    navItem('Service Options', '/service-options'),
+    navItem('Payment Options', '/payment-options-locations'),
+    navItem('Understanding My Bill', '/understanding-my-bill'),
+  ]),
+  navItem('Information', '/regulatory-and-important-links', [
+    navItem('Regulatory & Important Links', '/regulatory-and-important-links'),
     navItem('Safety', '/safety'),
+    navItem('How to Read My Meter', '/how-to-read-my-meter'),
+    navItem('Tips to Lower Gas Usage', '/tips-to-lower-gas-usage'),
   ]),
-  navItem('Business', 'https://www.nwnatural.com/business', [], true),
-  navItem('About Us', '/about-us', [
-    navItem('Company Overview', '/about-us/company-overview'),
-    navItem('Renewable Natural Gas', '/about-us/renewable-natural-gas'),
-    navItem('Less We Can', '/about-us/less-we-can'),
+  navItem('Company', '/company', [
+    navItem('History', '/company'),
+    navItem('Vision, Purpose & Values', '/vision-mission-goals'),
   ]),
+  navItem('Report Emergency', '/report-emergency'),
 ];
 
 const fallbackUtilityItems = [
+  navItem('Contact', '/contact-us'),
+  navItem('Developers', '/business-development'),
   navItem(
-    'Sign In',
-    'https://www.nwnatural.com/identity/login/NWNatural/NWNIdentityServer',
-    [],
-    true,
-  ),
-  navItem(
-    'Register',
-    'https://identity.nwnatural.com/Account/Register',
+    'Login',
+    'https://sienergy.epayub.com/Account/Login?ReturnUrl=%2F',
     [],
     true,
   ),
@@ -93,9 +96,19 @@ const fallbackUtilityItems = [
 
 const fallbackHeaderContact: LinkField = {
   value: {
-    href: '/account-billing/pay-my-bill',
-    text: 'Access your account',
-    linktype: 'internal',
+    href: 'https://sienergy.epayub.com/Account/Login?ReturnUrl=%2F',
+    text: 'Pay My Bill',
+    linktype: 'external',
+    target: '_blank',
+  },
+};
+
+const fallbackLogo: ImageField = {
+  value: {
+    src: '/assets/sie-images/global-header-sienergy-logo-light.png',
+    alt: 'SiEnergy',
+    width: '600',
+    height: '186',
   },
 };
 
@@ -138,13 +151,13 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       ? fallbackUtilityItems
       : authoredUtilityItems;
   const logoField = logo?.jsonValue;
-  const hasLogo =
-    isPageEditing ||
-    Boolean(
-      logoField?.value?.src &&
-        !isLegacyStarterLogo(logoField.value.src) &&
-        !isLegacyStarterLogo(logoField.value.alt),
-    );
+  const hasAuthoredLogo = Boolean(
+    logoField?.value?.src &&
+      !isLegacyStarterLogo(logoField.value.src) &&
+      !isLegacyStarterLogo(logoField.value.alt),
+  );
+  const displayLogo =
+    !isPageEditing && !hasAuthoredLogo ? fallbackLogo : logoField;
   const authoredHeaderContact = headerContact?.jsonValue;
   const useFallbackHeaderContact =
     !isPageEditing &&
@@ -155,20 +168,21 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
     ? fallbackHeaderContact
     : authoredHeaderContact;
 
-  const brand = hasLogo ? (
-    <ImageWrapper
-      image={logoField}
-      wrapperClass="w-[9.5rem] sm:w-[12rem]"
-      className="h-auto w-full object-contain"
-      sizes="(max-width: 640px) 152px, 192px"
-      alt="NW Natural home"
-      page={props.page}
-    />
-  ) : (
-    <span className="font-heading text-2xl font-semibold tracking-tight text-primary">
-      NW Natural
-    </span>
-  );
+  const brand =
+    isPageEditing || displayLogo?.value?.src ? (
+      <ImageWrapper
+        image={displayLogo}
+        wrapperClass="w-[9.5rem] sm:w-[12rem]"
+        className="h-auto w-full object-contain"
+        sizes="(max-width: 640px) 152px, 192px"
+        alt="SiEnergy"
+        page={props.page}
+      />
+    ) : (
+      <span className="font-heading text-2xl font-semibold tracking-tight text-primary">
+        SiEnergy
+      </span>
+    );
 
   const renderPrimaryLink = (
     item: PrimaryNavItemProps,
@@ -185,24 +199,24 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       return (
         <li
           key={'nwn-mobile-' + navItemKey(item, index)}
-          className="border-b border-slate-200 py-4"
+          className="border-b border-[#d7d6d7] py-4"
         >
           <CompatibleLink
             field={linkField}
             editable={isPageEditing}
             prefetch={false}
-            className="font-heading text-xl font-semibold text-slate-900"
+            className="font-heading text-xl font-semibold text-[#414042]"
             onClick={() => setIsMenuOpen(false)}
           />
           {children.length > 0 && (
-            <ul className="mt-3 space-y-2 border-l-2 border-cyan-500 pl-4">
+            <ul className="mt-3 space-y-2 border-l-2 border-primary pl-4">
               {children.map((child, childIndex) => (
                 <li key={'nwn-mobile-child-' + navItemKey(child, childIndex)}>
                   <CompatibleLink
                     field={child.link?.jsonValue}
                     editable={isPageEditing}
                     prefetch={false}
-                    className="inline-flex py-1 text-base font-medium text-slate-700 hover:text-primary"
+                    className="inline-flex py-1 text-base font-medium text-[#737076] hover:text-primary"
                     onClick={() => setIsMenuOpen(false)}
                   />
                 </li>
@@ -223,7 +237,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
             field={linkField}
             editable={isPageEditing}
             prefetch={false}
-            className="relative inline-flex py-4 font-heading text-[1.05rem] font-semibold text-slate-800 transition-colors after:absolute after:inset-x-0 after:bottom-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-cyan-500 after:transition-transform hover:text-primary hover:after:scale-x-100 focus-visible:text-primary focus-visible:after:scale-x-100"
+            className="relative inline-flex py-4 font-heading text-[1.05rem] font-semibold text-[#414042] transition-colors after:absolute after:inset-x-0 after:bottom-3 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-primary hover:after:scale-x-100 focus-visible:text-primary focus-visible:after:scale-x-100"
             aria-haspopup={children.length > 0 ? 'true' : undefined}
           />
           {children.length > 0 && (
@@ -234,14 +248,14 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
           )}
         </div>
         {children.length > 0 && (
-          <ul className="invisible absolute left-0 top-full z-50 min-w-64 translate-y-2 border-t-4 border-cyan-500 bg-white p-3 opacity-0 shadow-[0_12px_24px_rgba(0,0,0,0.12)] transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+          <ul className="invisible absolute left-0 top-full z-50 min-w-64 translate-y-2 border-t-4 border-primary bg-white p-3 opacity-0 shadow-[0_12px_24px_rgba(65,64,66,0.16)] transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
             {children.map((child, childIndex) => (
               <li key={'nwn-desktop-child-' + navItemKey(child, childIndex)}>
                 <CompatibleLink
                   field={child.link?.jsonValue}
                   editable={isPageEditing}
                   prefetch={false}
-                  className="block px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-cyan-50 hover:text-primary focus-visible:bg-cyan-50 focus-visible:text-primary"
+                  className="block px-4 py-3 text-sm font-medium text-[#737076] transition-colors hover:bg-[#fff4eb] hover:text-primary focus-visible:bg-[#fff4eb] focus-visible:text-primary"
                 />
               </li>
             ))}
@@ -255,7 +269,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
     <header
       data-component="GlobalHeader"
       data-variant="Nwn"
-      className="nwn-header sticky top-0 z-50 w-full border-t-[0.5rem] border-cyan-500 bg-white text-slate-900 shadow-sm"
+      className="nwn-header sticky top-0 z-50 w-full border-t-[0.625rem] border-primary bg-white text-[#414042] shadow-sm"
     >
       <a
         href="#content"
@@ -264,7 +278,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         Skip to main content
       </a>
 
-      <div className="hidden border-b border-slate-200 lg:block">
+      <div className="hidden border-b border-[#d7d6d7] lg:block">
         <div className="nwn-content-shell flex min-h-9 items-center justify-between gap-6 text-sm">
           <nav aria-label="Utility navigation">
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -274,7 +288,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                     field={item.link?.jsonValue}
                     editable={isPageEditing}
                     prefetch={false}
-                    className="font-medium text-slate-600 hover:text-primary"
+                    className="font-medium text-[#737076] hover:text-primary"
                   />
                 </li>
               ))}
@@ -282,18 +296,18 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
           </nav>
           <div className="flex items-center gap-6">
             <a
-              href="tel:+18004224012"
-              className="font-semibold text-slate-700 hover:text-primary"
+              href="tel:+18884687007"
+              className="font-semibold text-[#414042] hover:text-primary"
             >
               Customer service{' '}
-              <span className="text-primary">800-422-4012</span>
+              <span className="text-primary">888-468-7007, Option 3</span>
             </a>
             <a
-              href="tel:+18008823377"
-              className="font-semibold text-slate-700 hover:text-primary"
+              href="tel:+18884687007"
+              className="font-semibold text-[#414042] hover:text-primary"
             >
-              Natural gas odor?{' '}
-              <span className="text-primary">800-882-3377</span>
+              Gas emergency?{' '}
+              <span className="text-primary">888-468-7007, Option 1</span>
             </a>
           </div>
         </div>
@@ -304,7 +318,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
           {isPageEditing ? (
             brand
           ) : (
-            <Link href="/" aria-label="NW Natural home" prefetch={false}>
+            <Link href="/" aria-label="SiEnergy home" prefetch={false}>
               {brand}
             </Link>
           )}
@@ -348,19 +362,19 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       </div>
 
       <nav
-        className="hidden border-y border-slate-200 bg-[#f4f5f7] lg:block"
+        className="hidden border-y border-[#d7d6d7] bg-[#eff0f2] lg:block"
         aria-label="Services navigation"
       >
         <ul className="nwn-content-shell flex min-h-10 items-stretch">
           {secondaryNavigation.map((item) => (
             <li
               key={item.href}
-              className="flex flex-1 border-r border-slate-200 first:border-l"
+              className="flex flex-1 border-r border-[#d7d6d7] first:border-l"
             >
               <Link
                 href={item.href}
                 prefetch={false}
-                className="flex w-full items-center justify-center px-4 py-2 text-center font-heading text-[0.98rem] font-semibold text-slate-700 transition-colors hover:bg-white hover:text-primary focus-visible:bg-white focus-visible:text-primary"
+                className="flex w-full items-center justify-center px-4 py-2 text-center font-heading text-[0.98rem] font-semibold text-[#414042] transition-colors hover:bg-white hover:text-primary focus-visible:bg-white focus-visible:text-primary"
               >
                 {item.label}
               </Link>
@@ -372,7 +386,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       {isMenuOpen && (
         <div
           id="nwn-mobile-navigation"
-          className="max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-slate-200 bg-white px-4 pb-8 shadow-lg lg:hidden"
+          className="max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-[#d7d6d7] bg-white px-4 pb-8 shadow-lg lg:hidden"
         >
           <nav className="mx-auto max-w-xl" aria-label="Mobile navigation">
             <ul>
@@ -380,8 +394,8 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                 renderPrimaryLink(item, index, true),
               )}
             </ul>
-            <div className="mt-5 border-y border-slate-200 bg-[#f4f5f7] px-4 py-2">
-              <p className="py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+            <div className="mt-5 border-y border-[#d7d6d7] bg-[#eff0f2] px-4 py-2">
+              <p className="py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#737076]">
                 Customer services
               </p>
               <ul>
@@ -390,7 +404,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                     <Link
                       href={item.href}
                       prefetch={false}
-                      className="block border-t border-slate-200 py-3 font-heading text-lg font-semibold text-slate-800 hover:text-primary"
+                      className="block border-t border-[#d7d6d7] py-3 font-heading text-lg font-semibold text-[#414042] hover:text-primary"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
@@ -407,7 +421,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                       field={item.link?.jsonValue}
                       editable={isPageEditing}
                       prefetch={false}
-                      className="text-sm font-semibold text-slate-600 hover:text-primary"
+                      className="text-sm font-semibold text-[#737076] hover:text-primary"
                       onClick={() => setIsMenuOpen(false)}
                     />
                   </li>
@@ -416,18 +430,18 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
             )}
             <div className="mt-6 space-y-2">
               <a
-                href="tel:+18004224012"
-                className="block border-l-4 border-slate-300 bg-slate-50 px-4 py-3 font-semibold text-slate-800"
+                href="tel:+18884687007"
+                className="block border-l-4 border-[#c4c4c4] bg-[#eff0f2] px-4 py-3 font-semibold text-[#414042]"
               >
                 Customer service{' '}
-                <span className="text-primary">800-422-4012</span>
+                <span className="text-primary">888-468-7007, Option 3</span>
               </a>
               <a
-                href="tel:+18008823377"
-                className="block border-l-4 border-cyan-500 bg-cyan-50 px-4 py-3 font-semibold text-slate-800"
+                href="tel:+18884687007"
+                className="block border-l-4 border-primary bg-[#fff4eb] px-4 py-3 font-semibold text-[#414042]"
               >
-                Natural gas odor?{' '}
-                <span className="text-primary">800-882-3377</span>
+                Gas emergency?{' '}
+                <span className="text-primary">888-468-7007, Option 1</span>
               </a>
             </div>
             {displayHeaderContact && (

@@ -232,7 +232,7 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
       data-component="ProductListing"
       data-variant="NwnResources"
       className={cn(
-        'bg-[#f4f5f7] py-14 sm:py-16 lg:py-20',
+        'bg-[#eff0f2] py-14 sm:py-16 lg:py-20',
         props.params?.styles,
       )}
       aria-labelledby={showHeading ? 'nwn-product-listing-heading' : undefined}
@@ -245,7 +245,7 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
               tag="h2"
               id="nwn-product-listing-heading"
               field={headingField}
-              className="text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.03] text-slate-900"
+              className="text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-semibold leading-[1.03] text-[#414042]"
             />
           )}
         </div>
@@ -261,7 +261,7 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
             return (
               <article
                 key={resource.key}
-                className="group overflow-hidden rounded-sm bg-white shadow-[0_7px_24px_rgba(26,55,67,0.08)] transition-transform duration-300 motion-safe:hover:-translate-y-1"
+                className="group overflow-hidden rounded-sm bg-white shadow-[0_7px_24px_rgba(65,64,66,0.10)] transition-transform duration-300 motion-safe:hover:-translate-y-1"
               >
                 {showImage && (
                   <ImageWrapper
@@ -277,10 +277,10 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
                     <Text
                       tag="h3"
                       field={resource.titleField}
-                      className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-slate-900"
+                      className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-[#414042]"
                     />
                   ) : (
-                    <h3 className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-slate-900">
+                    <h3 className="font-heading text-[clamp(1.5rem,2vw,1.75rem)] font-semibold leading-tight text-[#414042]">
                       {resource.title}
                     </h3>
                   )}
@@ -288,11 +288,11 @@ export const ProductListingNwnResources: React.FC<ProductListingProps> = (
                     <Text
                       tag="p"
                       field={resource.descriptionField}
-                      className="mt-3 text-base leading-7 text-slate-600"
+                      className="mt-3 text-base leading-7 text-[#737076]"
                     />
                   ) : (
                     resource.description && (
-                      <p className="mt-3 text-base leading-7 text-slate-600">
+                      <p className="mt-3 text-base leading-7 text-[#737076]">
                         {resource.description}
                       </p>
                     )

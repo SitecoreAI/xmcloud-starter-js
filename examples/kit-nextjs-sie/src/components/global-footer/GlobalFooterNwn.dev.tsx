@@ -3,13 +3,14 @@
 import { Text } from '@sitecore-content-sdk/nextjs';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { Default as EmailSignupForm } from '@/components/forms/email/EmailSignupForm.dev';
+import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { GlobalFooterProps } from './global-footer.props';
 
 const isLegacyStarterValue = (value: string | undefined): boolean =>
   Boolean(
     value &&
-      /alaris|aero|nexa|terra|vehicle|automotive|models|dealership|test drive|test-drive/i.test(
+      /alaris|aero|nexa|terra|vehicle|automotive|models|dealership|test drive|test-drive|nw\s*natural|nwnatural|nw-natural|nwnpartnerlink|account-billing|ways-to-save|get-natural-gas/i.test(
         value,
       ),
   );
@@ -21,39 +22,52 @@ const stripQaSuffix = (value: string | undefined): string =>
   value?.replace(/\s+QA\.?$/i, '') ?? '';
 
 const fallbackFooterLinks = [
-  ['Builders / HVAC', 'https://nwnpartnerlink.com/Account/Login?ReturnUrl=%2f'],
-  ['Investors', 'https://ir.nwnaturalholdings.com/home/default.aspx'],
-  ['Suppliers', 'https://www.nwnatural.com/suppliers'],
-  ['Careers', 'https://www.nwnatural.com/about-us/the-company/careers'],
-  ['Safety', 'https://www.nwnatural.com/safety/home-safety'],
-  ['Contact Us', 'https://www.nwnatural.com/contact-us'],
+  ['Pay My Bill', 'https://sienergy.epayub.com/Account/Login?ReturnUrl=%2F'],
+  ['Service Options', '/service-options'],
+  ['Payment Options', '/payment-options-locations'],
+  ['Safety', '/safety'],
+  ['Developers', '/business-development'],
+  ['Contact Us', '/contact-us'],
 ].map(([text, href]) => ({
-  link: { jsonValue: { value: { text, href, linktype: 'external' } } },
+  link: {
+    jsonValue: {
+      value: {
+        text,
+        href,
+        linktype: href.startsWith('http') ? 'external' : 'internal',
+      },
+    },
+  },
 }));
 
-const fallbackEmailTitle = { value: 'Get energy tips and service updates.' };
+const fallbackEmailTitle = { value: 'Get SiEnergy news and service updates.' };
 const fallbackCopyright = {
-  value: `© ${new Date().getFullYear()} NW Natural. All Rights Reserved.`,
+  value: `© ${new Date().getFullYear()} SiEnergy. All Rights Reserved.`,
+};
+
+const footerLogo = {
+  value: {
+    src: '/assets/sie-images/global-footer-sienergy-logo-reversed.png',
+    alt: 'SiEnergy',
+    width: '600',
+    height: '186',
+  },
 };
 
 const utilityLinks = [
   {
-    text: 'Terms and Conditions',
-    href: 'https://www.nwnatural.com/terms-and-conditions',
+    text: 'Terms & Conditions',
+    href: 'https://www.sienergy.com/terms-conditions/',
   },
   {
-    text: 'Privacy Notice',
-    href: 'https://www.nwnatural.com/privacy-notice',
+    text: 'Privacy',
+    href: 'https://www.sienergy.com/privacy-policy/',
   },
   {
-    text: 'Bill Inserts',
-    href: 'https://www.nwnatural.com/account/bill-inserts',
+    text: 'Contact',
+    href: '/contact-us',
   },
-  { text: 'En Español', href: 'https://www.nwnatural.com/espanol' },
-  {
-    text: 'Your Privacy Choices',
-    href: 'https://www.nwnatural.com/do-not-share-my-data',
-  },
+  { text: 'Sitemap', href: '/sitemap.xml' },
 ] as const;
 
 const socialLinkOrder: Record<string, number> = {
@@ -65,11 +79,11 @@ const socialLinkOrder: Record<string, number> = {
 };
 
 const footerLinkOrder: Record<string, number> = {
-  'builders / hvac': 0,
-  investors: 1,
-  suppliers: 2,
-  careers: 3,
-  safety: 4,
+  'pay my bill': 0,
+  'service options': 1,
+  'payment options': 2,
+  safety: 3,
+  developers: 4,
   'contact us': 5,
 };
 
@@ -117,7 +131,9 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
   const displayCopyright = useFallbackContent
     ? fallbackCopyright
     : footerCopyright?.jsonValue;
-  const displaySocialLinks = (socialLinks?.results ?? [])
+  const displaySocialLinks = (
+    useFallbackContent ? [] : (socialLinks?.results ?? [])
+  )
     .filter(
       (item) =>
         isPageEditing ||
@@ -145,10 +161,18 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
     <footer
       data-component="GlobalFooter"
       data-variant="Nwn"
-      className="nwn-footer bg-[#66717f] text-white"
+      className="nwn-footer border-t-[0.625rem] border-primary bg-[#414042] text-white"
       role="contentinfo"
     >
       <div className="mx-auto w-full max-w-[60rem] py-9 text-center">
+        <div className="mx-auto mb-6 w-44 sm:w-52">
+          <ImageWrapper
+            image={footerLogo}
+            className="h-auto w-full object-contain"
+            sizes="(max-width: 640px) 176px, 208px"
+            page={props.page}
+          />
+        </div>
         {shouldShowSignup && (
           <div className="mx-6 border-b border-white/20 pb-5">
             <div className="flex flex-col items-center justify-center gap-3 md:flex-row md:gap-5">
@@ -199,13 +223,13 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
               </div>
             </div>
             <p className="mt-2 text-xs leading-5 text-white/90">
-              By subscribing, you agree to receive NW Natural email updates. See
+              By subscribing, you agree to receive SiEnergy email updates. See
               our{' '}
               <a
-                href="https://www.nwnatural.com/privacy-notice"
+                href="https://www.sienergy.com/privacy-policy/"
                 className="font-semibold text-white underline underline-offset-2"
               >
-                Privacy Notice
+                Privacy Policy
               </a>
               .
             </p>
@@ -223,7 +247,7 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
                   buttonLink={item.link?.jsonValue}
                   isPageEditing={isPageEditing}
                   variant="ghost"
-                  className="h-auto min-h-11 whitespace-normal px-1 py-2 text-center text-[1.125rem] font-medium text-white hover:bg-transparent hover:text-cyan-100"
+                  className="h-auto min-h-11 whitespace-normal px-1 py-2 text-center text-[1.125rem] font-medium text-white hover:bg-transparent hover:text-[#f6b786]"
                   page={props.page}
                 />
               </li>
@@ -233,7 +257,7 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
 
         {(displaySocialLinks.length > 0 || isPageEditing) && (
           <div className="mt-7">
-            <h2 className="sr-only">Follow NW Natural</h2>
+            <h2 className="sr-only">Follow SiEnergy</h2>
             <ul className="flex flex-wrap justify-center gap-1">
               {displaySocialLinks.map((socialLink, index) => (
                 <li key={'nwn-social-' + index}>

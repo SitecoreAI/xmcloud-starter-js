@@ -149,7 +149,7 @@ describe('SubmissionFormDefault', () => {
       screen.getByRole('link', {
         name: 'Privacy Notice (opens in a new tab)',
       }),
-    ).toHaveAttribute('href', 'https://www.nwnatural.com/privacy-notice');
+    ).toHaveAttribute('href', 'https://www.sienergy.com/privacy-policy/');
   });
 
   it('validates all required fields before identifying the visitor', async () => {

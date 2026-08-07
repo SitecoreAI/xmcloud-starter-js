@@ -37,7 +37,7 @@ export const PageHeaderNwnEditorial: React.FC<
       data-component="PageHeader"
       data-variant="NwnEditorial"
       className={cn(
-        'nwn-editorial-header overflow-hidden bg-[#f4f5f7] text-slate-900',
+        'nwn-editorial-header overflow-hidden bg-[#eff0f2] text-[#414042]',
         props.params?.styles,
       )}
     >
@@ -52,12 +52,12 @@ export const PageHeaderNwnEditorial: React.FC<
             <Text
               tag="h1"
               field={title}
-              className="max-w-[15ch] text-balance font-heading text-[clamp(2.25rem,4vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-slate-900"
+              className="max-w-[15ch] text-balance font-heading text-[clamp(2.25rem,4vw,3.75rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-[#414042]"
             />
             {(isPageEditing || subtitle?.value) && (
               <RichText
                 field={subtitle}
-                className="mt-5 max-w-[42rem] text-pretty text-base leading-7 text-slate-700 sm:text-lg sm:leading-8"
+                className="mt-5 max-w-[42rem] text-pretty text-base leading-7 text-[#737076] sm:text-lg sm:leading-8"
               />
             )}
             {hasActions && (
@@ -76,7 +76,7 @@ export const PageHeaderNwnEditorial: React.FC<
                     buttonLink={link2.jsonValue}
                     isPageEditing={isPageEditing}
                     variant="tertiary"
-                    className="min-h-12 border border-primary bg-white px-6 text-base text-primary hover:bg-cyan-50"
+                    className="min-h-12 border border-primary bg-white px-6 text-base text-primary hover:bg-[#fff4eb]"
                     page={props.page}
                   />
                 )}
@@ -86,7 +86,7 @@ export const PageHeaderNwnEditorial: React.FC<
         </div>
 
         {showImageRegion && (
-          <div className="relative min-h-56 border-t-4 border-cyan-500 sm:min-h-64 lg:min-h-full lg:border-l lg:border-t-0 lg:border-slate-300">
+          <div className="relative min-h-56 border-t-4 border-primary sm:min-h-64 lg:min-h-full lg:border-l lg:border-t-0 lg:border-[#c4c4c4]">
             <ImageWrapper
               image={imageRequired?.jsonValue}
               wrapperClass="absolute inset-0 h-full w-full"
@@ -96,7 +96,7 @@ export const PageHeaderNwnEditorial: React.FC<
             />
             {hasImage && (
               <div
-                className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 bg-gradient-to-r from-[#f4f5f7] to-transparent lg:block"
+                className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 bg-gradient-to-r from-[#eff0f2] to-transparent lg:block"
                 aria-hidden="true"
               />
             )}

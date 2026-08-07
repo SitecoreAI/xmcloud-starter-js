@@ -10,12 +10,13 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import type { PageHeaderProps } from './page-header.props';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 
-export const PageHeaderCentered: React.FC<PageHeaderProps & { isPageEditing: boolean }> = (
-  props
-) => {
+export const PageHeaderCentered: React.FC<
+  PageHeaderProps & { isPageEditing: boolean }
+> = (props) => {
   const { fields, isPageEditing } = props;
   const { imageRequired, link1, link2 } = fields?.data?.datasource || {};
-  const { pageHeaderTitle, pageTitle, pageSubtitle } = fields?.data?.externalFields || {};
+  const { pageHeaderTitle, pageTitle, pageSubtitle } =
+    fields?.data?.externalFields || {};
 
   const title = pageHeaderTitle?.jsonValue?.value
     ? pageHeaderTitle?.jsonValue
@@ -24,7 +25,8 @@ export const PageHeaderCentered: React.FC<PageHeaderProps & { isPageEditing: boo
 
   const shouldShowButtons: boolean = isPageEditing
     ? true
-    : link1?.jsonValue?.value?.href !== '' || link2?.jsonValue?.value?.href !== ''
+    : link1?.jsonValue?.value?.href !== '' ||
+        link2?.jsonValue?.value?.href !== ''
       ? true
       : false;
 
@@ -81,7 +83,7 @@ export const PageHeaderCentered: React.FC<PageHeaderProps & { isPageEditing: boo
                           buttonLink={link1?.jsonValue}
                           variant="default"
                           isPageEditing={isPageEditing}
-                          className="border-none bg-blue-600 px-6 py-2.5 text-white hover:bg-blue-700"
+                          className="border-none bg-primary px-6 py-2.5 text-white hover:bg-primary/90"
                         />
                       )}
                       {link2?.jsonValue && (
@@ -89,7 +91,7 @@ export const PageHeaderCentered: React.FC<PageHeaderProps & { isPageEditing: boo
                           buttonLink={link2?.jsonValue}
                           variant="secondary"
                           isPageEditing={isPageEditing}
-                          className="border-gray-700 bg-gray-800 px-6 py-2.5 text-white hover:bg-gray-700"
+                          className="border-[#414042] bg-[#414042] px-6 py-2.5 text-white hover:bg-[#2f2e30]"
                         />
                       )}
                     </div>

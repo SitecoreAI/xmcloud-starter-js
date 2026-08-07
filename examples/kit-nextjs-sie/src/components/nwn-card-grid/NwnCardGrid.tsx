@@ -38,7 +38,7 @@ export const Default: React.FC<NwnCardGridProps> = (props) => {
       data-component="NwnCardGrid"
       data-placeholder-key={placeholderName}
       aria-labelledby={hasSectionTitle ? headingId : undefined}
-      className={cn('nwn-card-grid bg-[#f4f5f7] py-12 sm:py-16', params.styles)}
+      className={cn('nwn-card-grid bg-[#eff0f2] py-12 sm:py-16', params.styles)}
     >
       <div className="nwn-content-shell">
         {(hasIntroContent || isPageEditing) && (
@@ -53,16 +53,16 @@ export const Default: React.FC<NwnCardGridProps> = (props) => {
               tag="h2"
               field={fields?.sectionTitle}
               className={cn(
-                'max-w-[16ch] text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-medium leading-[1.04] text-slate-900',
+                'max-w-[16ch] text-balance font-heading text-[clamp(2.125rem,3.5vw,2.75rem)] font-semibold leading-[1.04] text-[#414042]',
                 !hasSectionTitle && !isPageEditing && 'hidden',
               )}
             />
             <RichText
               field={fields?.intro}
-              className="max-w-2xl text-pretty text-base leading-7 sm:text-lg sm:leading-8 text-slate-600"
+              className="max-w-2xl text-pretty text-base leading-7 text-[#737076] sm:text-lg sm:leading-8"
             />
             {!hasIntroContent && isPageEditing && (
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-[#737076]">
                 Add an optional section title and introduction.
               </p>
             )}

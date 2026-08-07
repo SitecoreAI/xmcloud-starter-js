@@ -19,15 +19,15 @@ const getTone = (value: string | undefined): NwnUtilityAlertTone => {
 
 const toneStyles = {
   information: {
-    container: 'border-primary bg-[#e4f4f7] text-slate-900',
+    container: 'border-primary bg-[#fff4eb] text-[#414042]',
     icon: 'bg-primary text-white',
     eyebrow: 'text-primary',
     Icon: Info,
   },
   service: {
-    container: 'border-cyan-500 bg-white text-slate-900',
-    icon: 'bg-cyan-500 text-white',
-    eyebrow: 'text-[#006f91]',
+    container: 'border-primary bg-white text-[#414042]',
+    icon: 'bg-primary text-white',
+    eyebrow: 'text-primary',
     Icon: Wrench,
   },
   emergency: {
@@ -44,7 +44,7 @@ export const Default: React.FC<NwnUtilityAlertProps> = (props) => {
 
   if (!fields) {
     return isPageEditing ? (
-      <NoDataFallback componentName="NWN Utility Alert" />
+      <NoDataFallback componentName="Utility Alert" />
     ) : null;
   }
 

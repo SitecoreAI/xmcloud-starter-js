@@ -1,9 +1,5 @@
 import React, { type JSX } from 'react';
-import {
-  LinkField,
-  Text,
-  TextField,
-} from '@sitecore-content-sdk/nextjs';
+import { LinkField, Text, TextField } from '@sitecore-content-sdk/nextjs';
 import Link from 'next/link';
 import { NavigationMenuToggle } from './NavigationMenuToggle.client';
 import { NavigationList } from './NavigationList.client';
@@ -12,7 +8,9 @@ import type { NavigationFields, NavigationProps } from './navigation.props';
 
 export type { NavigationFields, NavigationProps };
 
-const getNavigationText = function (props: { fields?: NavigationFields }): JSX.Element | string {
+const getNavigationText = function (props: {
+  fields?: NavigationFields;
+}): JSX.Element | string {
   const navigationFields = props.fields;
   if (!navigationFields) {
     return '';
@@ -39,7 +37,9 @@ const getLinkField = (props: { fields?: NavigationFields }): LinkField => ({
   },
 });
 
-const getLinkTitle = (props: { fields?: NavigationFields }): string | undefined => {
+const getLinkTitle = (props: {
+  fields?: NavigationFields;
+}): string | undefined => {
   const navigationFields = props.fields;
   if (!navigationFields) {
     return undefined;
@@ -71,14 +71,20 @@ export const Default = (props: NavigationProps): JSX.Element => {
 
   if (!props.fields || !Object.values(props.fields).length) {
     return (
-      <div className={`component navigation ${styles}`} id={id ? id : undefined}>
+      <div
+        className={`component navigation ${styles}`}
+        id={id ? id : undefined}
+      >
         <div className="component-content">[Navigation]</div>
       </div>
     );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleToggleMenu = (event?: React.MouseEvent<HTMLElement>, flag?: boolean): void => {
+  const handleToggleMenu = (
+    event?: React.MouseEvent<HTMLElement>,
+    flag?: boolean,
+  ): void => {
     props.handleClick(event);
   };
 
@@ -88,7 +94,9 @@ export const Default = (props: NavigationProps): JSX.Element => {
       <NavigationList
         key={`${key}${element.Id}`}
         fields={element}
-        handleClick={(event: React.MouseEvent<HTMLElement>) => handleToggleMenu(event, false)}
+        handleClick={(event: React.MouseEvent<HTMLElement>) =>
+          handleToggleMenu(event, false)
+        }
         relativeLevel={1}
         isEditing={isEditing}
         getLinkField={getLinkField}
@@ -138,17 +146,17 @@ export const Header = (): JSX.Element => {
       <nav>
         <ul className="flex space-x-4">
           <li>
-            <Link href="/" className="hover:text-[#71B5F0]">
+            <Link href="/" className="hover:text-primary">
               Home
             </Link>
           </li>
           <li>
-            <Link href="/" className="hover:text-[#71B5F0]">
+            <Link href="/" className="hover:text-primary">
               Documentation
             </Link>
           </li>
           <li>
-            <Link href="/about" className="hover:text-[#71B5F0]">
+            <Link href="/about" className="hover:text-primary">
               About
             </Link>
           </li>

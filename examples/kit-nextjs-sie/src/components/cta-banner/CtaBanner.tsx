@@ -6,7 +6,7 @@ import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { CtaBannerProps } from './cta-banner.props';
 
 const ctaBannerVariants = cva(
-  'nwn-cta-banner relative isolate w-full overflow-hidden border-y border-cyan-700/20 text-center',
+  'nwn-cta-banner relative isolate w-full overflow-hidden border-y border-primary/20 text-center',
   {
     variants: {
       colorScheme: {
@@ -40,7 +40,7 @@ const ctaButtonVariants = cva(
     variants: {
       colorScheme: {
         default: 'bg-primary text-primary-foreground hover:bg-primary-hover',
-        primary: 'bg-white text-primary hover:bg-cyan-50',
+        primary: 'bg-white text-primary hover:bg-[#fff4eb]',
         secondary: 'bg-primary text-primary-foreground hover:bg-primary/90',
       },
     },

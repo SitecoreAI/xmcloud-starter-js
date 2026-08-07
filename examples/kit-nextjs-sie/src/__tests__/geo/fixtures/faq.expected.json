@@ -1,17 +1,21 @@
 {
     "items": [
         {
-            "question": "How can I pay my bill or manage my account?",
-            "answer": "Use the Account and Billing section to review payment options, manage common account tasks, or find help. For personal assistance, call NW Natural customer service at 800-422-4012."
+            "question": "What should I do if I smell natural gas?",
+            "answer": "Leave the area immediately by foot, avoid anything that could create a spark, and call 911 and SiEnergy at 888-468-7007, Option 1, from a safe location."
         },
         {
             "question": "How do I start, stop, or transfer natural gas service?",
-            "answer": "Use the Start, Stop or Transfer page and have the current or new service address, preferred effective date, account details, and access instructions ready. If the online path does not fit your situation, call customer service at 800-422-4012."
+            "answer": "Visit Service Options to start, stop, or transfer service and review the information needed for your request."
         },
         {
-            "question": "What should I do if I smell natural gas?",
-            "answer": "Leave the building or area immediately. Do not operate lights, switches, phones, appliances, matches, or flames near the suspected leak. From a safe location, call NW Natural at 800-882-3377 or call 911, and do not return until responders say it is safe."
+            "question": "Where can I find help paying my bill?",
+            "answer": "Visit Payment Options & Locations for available payment methods and assistance resources, or call 888-468-7007, Option 3, for customer service."
+        },
+        {
+            "question": "When should I call 811?",
+            "answer": "Contact 811 before every digging project so underground utilities can be located and marked before work begins."
         }
     ],
-    "lastModified": "2026-08-05T21:29:09Z"
+    "lastModified": "2026-08-06T00:00:00Z"
 }

@@ -3,8 +3,8 @@ import client from '@/lib/sitecore-client';
 import { buildSiteDataPath } from '@/lib/site-path';
 import {
   containsLegacyStarterContent,
-  NWN_SUMMARY,
-} from '@/lib/nwn-ai-content';
+  SIE_SUMMARY,
+} from '@/lib/sie-ai-content';
 
 const SUMMARY_GRAPHQL_TYPE = 'AISummary';
 const SUMMARY_DATA_PATH_SUFFIX = '/Data/AI Config/Summary';
@@ -57,7 +57,7 @@ function buildSummaryPath(): string {
 
 export async function fetchSummaryFromEdge(): Promise<SummaryItem | null> {
   const path = buildSummaryPath();
-  if (!path) return { ...NWN_SUMMARY };
+  if (!path) return { ...SIE_SUMMARY };
 
   const language = scConfig.defaultLanguage || 'en';
 
@@ -67,7 +67,7 @@ export async function fetchSummaryFromEdge(): Promise<SummaryItem | null> {
       { path, language },
     );
 
-    if (!result?.item) return { ...NWN_SUMMARY };
+    if (!result?.item) return { ...SIE_SUMMARY };
 
     const title = extractFieldValue(result.item.title);
     const description = extractFieldValue(result.item.description);
@@ -76,12 +76,12 @@ export async function fetchSummaryFromEdge(): Promise<SummaryItem | null> {
       (!title && !description) ||
       containsLegacyStarterContent({ title, description })
     ) {
-      return { ...NWN_SUMMARY };
+      return { ...SIE_SUMMARY };
     }
 
     return { title, description };
   } catch (error) {
     console.error('[fetchSummaryFromEdge] GraphQL request failed:', error);
-    return { ...NWN_SUMMARY };
+    return { ...SIE_SUMMARY };
   }
 }

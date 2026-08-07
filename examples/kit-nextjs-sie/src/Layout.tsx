@@ -48,6 +48,7 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
 
   // Generate site-wide structured data (use request-derived baseUrl when provided so deployed URLs are correct)
   const baseUrl = baseUrlProp ?? getBaseUrl();
+  const organizationLogo = `${baseUrl.replace(/\/$/, '')}/assets/sie-images/global-header-sienergy-logo-light.png`;
   const websiteSchema = generateWebSiteSchema(
     'SiEnergy',
     baseUrl,
@@ -56,7 +57,7 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
   const organizationSchema = generateOrganizationSchema(
     'SiEnergy',
     baseUrl,
-    undefined,
+    organizationLogo,
     'SiEnergy provides natural gas service to homes and businesses across Texas.',
   );
 

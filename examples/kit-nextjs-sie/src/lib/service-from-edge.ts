@@ -3,8 +3,8 @@ import client from '@/lib/sitecore-client';
 import { buildSiteDataPath } from '@/lib/site-path';
 import {
   containsLegacyStarterContent,
-  NWN_SERVICE_ITEMS,
-} from '@/lib/nwn-ai-content';
+  SIE_SERVICE_ITEMS,
+} from '@/lib/sie-ai-content';
 
 const SERVICE_GRAPHQL_TYPE = 'AIService';
 const SERVICE_DATA_PATH_SUFFIX = '/Data/AI Config/Services';
@@ -80,7 +80,7 @@ export async function fetchServicesFromEdge(): Promise<ServiceEdgeResult> {
   const path = buildServicePath();
   if (!path)
     return {
-      services: [...NWN_SERVICE_ITEMS],
+      services: [...SIE_SERVICE_ITEMS],
       lastModified: new Date().toISOString(),
     };
 
@@ -104,7 +104,7 @@ export async function fetchServicesFromEdge(): Promise<ServiceEdgeResult> {
       authoredServices.length > 0 &&
       !containsLegacyStarterContent(authoredServices)
         ? authoredServices
-        : [...NWN_SERVICE_ITEMS];
+        : [...SIE_SERVICE_ITEMS];
 
     const lastModified =
       extractFieldValue(
@@ -117,7 +117,7 @@ export async function fetchServicesFromEdge(): Promise<ServiceEdgeResult> {
   } catch (error) {
     console.error('[fetchServicesFromEdge] GraphQL request failed:', error);
     return {
-      services: [...NWN_SERVICE_ITEMS],
+      services: [...SIE_SERVICE_ITEMS],
       lastModified: new Date().toISOString(),
     };
   }

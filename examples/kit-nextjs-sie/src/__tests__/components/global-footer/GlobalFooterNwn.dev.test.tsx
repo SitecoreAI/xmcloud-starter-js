@@ -50,6 +50,22 @@ jest.mock('@/components/forms/email/EmailSignupForm.dev', () => ({
   )),
 }));
 
+jest.mock('@/components/image/ImageWrapper.dev', () => ({
+  Default: ({
+    image,
+    className,
+  }: {
+    image?: { value?: { src?: string; alt?: string } };
+    className?: string;
+  }) => (
+    <img
+      src={image?.value?.src}
+      alt={image?.value?.alt ?? ''}
+      className={className}
+    />
+  ),
+}));
+
 const mockEmailSignupForm = EmailSignupForm as jest.MockedFunction<
   typeof EmailSignupForm
 >;
@@ -291,7 +307,7 @@ describe('GlobalFooterNwn', () => {
     expect(
       screen.getByRole('heading', {
         level: 2,
-        name: 'Get energy tips and service updates.',
+        name: 'Get SiEnergy news and service updates.',
       }),
     ).toBeInTheDocument();
     expect(
@@ -303,46 +319,34 @@ describe('GlobalFooterNwn', () => {
     });
     expect(
       within(footerNavigation).getByRole('link', {
-        name: 'Builders / HVAC',
+        name: 'Pay My Bill',
       }),
     ).toHaveAttribute(
       'href',
-      'https://nwnpartnerlink.com/Account/Login?ReturnUrl=%2f',
+      'https://sienergy.epayub.com/Account/Login?ReturnUrl=%2F',
     );
     expect(
       within(footerNavigation).getByRole('link', { name: 'Safety' }),
-    ).toHaveAttribute('href', 'https://www.nwnatural.com/safety/home-safety');
+    ).toHaveAttribute('href', '/safety');
     expect(
       within(footerNavigation).getByRole('link', { name: 'Contact Us' }),
-    ).toHaveAttribute('href', 'https://www.nwnatural.com/contact-us');
+    ).toHaveAttribute('href', '/contact-us');
     expect(
       within(footerNavigation).queryByRole('link', { name: 'Less We Can' }),
     ).not.toBeInTheDocument();
 
-    [
-      ['X', 'https://twitter.com/nwnatural'],
-      ['Facebook', 'https://www.facebook.com/NWNaturalGas'],
-      ['YouTube', 'https://www.youtube.com/user/nwnaturalgas'],
-      ['LinkedIn', 'https://www.linkedin.com/company/nw-natural'],
-      ['Instagram', 'https://www.instagram.com/nwnaturalgas/'],
-    ].forEach(([name, href]) => {
-      expect(screen.getByRole('link', { name })).toHaveAttribute('href', href);
-    });
+    expect(
+      screen.queryByRole('heading', { name: 'Follow SiEnergy' }),
+    ).not.toBeInTheDocument();
 
     const legalNavigation = screen.getByRole('navigation', { name: 'Legal' });
-    [
-      'Terms and Conditions',
-      'Privacy Notice',
-      'Bill Inserts',
-      'En Español',
-      'Your Privacy Choices',
-    ].forEach((name) => {
+    ['Terms & Conditions', 'Privacy', 'Contact', 'Sitemap'].forEach((name) => {
       expect(
         within(legalNavigation).getByRole('link', { name }),
       ).toBeInTheDocument();
     });
     expect(
-      screen.getByText('© 2026 NW Natural. All Rights Reserved.'),
+      screen.getByText(/© \d{4} SiEnergy\. All Rights Reserved\./),
     ).toBeInTheDocument();
   });
 
@@ -418,11 +422,11 @@ describe('GlobalFooterNwn', () => {
         .getAllByRole('link')
         .map((link) => link.textContent),
     ).toEqual([
-      'Builders / HVAC',
-      'Investors',
-      'Suppliers',
-      'Careers',
+      'Pay My Bill',
+      'Service Options',
+      'Payment Options',
       'Safety',
+      'Developers',
       'Contact Us',
     ]);
     expect(
@@ -430,7 +434,7 @@ describe('GlobalFooterNwn', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('uses the same social-link order as the live NW Natural footer', () => {
+  it('omits inherited social links when the SiEnergy fallback is active', () => {
     const reversedSocialLinks = [
       ...footerProps.fields.data.datasource.socialLinks.results,
     ].reverse();
@@ -450,19 +454,12 @@ describe('GlobalFooterNwn', () => {
       />,
     );
 
-    const socialSection = screen.getByRole('heading', {
-      name: 'Follow NW Natural',
-    }).parentElement;
-
-    expect(socialSection).not.toBeNull();
     expect(
-      within(socialSection as HTMLElement)
-        .getAllByRole('link')
-        .map((link) => link.getAttribute('aria-label')),
-    ).toEqual(['X', 'Facebook', 'YouTube', 'LinkedIn', 'Instagram']);
+      screen.queryByRole('heading', { name: 'Follow SiEnergy' }),
+    ).not.toBeInTheDocument();
   });
 
-  it('uses the same primary-link order as the live NW Natural footer', () => {
+  it('uses the SiEnergy primary-link order when inherited content is found', () => {
     const reversedFooterLinks = [
       ...footerProps.fields.data.datasource.footerNavLinks.results,
     ].reverse();
@@ -487,11 +484,11 @@ describe('GlobalFooterNwn', () => {
         .getAllByRole('link')
         .map((link) => link.textContent),
     ).toEqual([
-      'Builders / HVAC',
-      'Investors',
-      'Suppliers',
-      'Careers',
+      'Pay My Bill',
+      'Service Options',
+      'Payment Options',
       'Safety',
+      'Developers',
       'Contact Us',
     ]);
   });
