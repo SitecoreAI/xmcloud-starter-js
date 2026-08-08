@@ -149,14 +149,14 @@ const EditableHeading = ({
 }) =>
   fields.title?.value || isPageEditing ? (
     <Text
-      tag="h2"
+      tag="h1"
       className="text-balance font-heading text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[1.08] text-slate-950"
       field={fields.title}
     />
   ) : (
-    <h2 className="text-balance font-heading text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[1.08] text-slate-950">
+    <h1 className="text-balance font-heading text-[clamp(2rem,5vw,3.25rem)] font-semibold leading-[1.08] text-slate-950">
       {fallback}
-    </h2>
+    </h1>
   );
 
 const SecondaryAction = ({
@@ -213,9 +213,9 @@ const SuccessState = ({
     aria-live="polite"
   >
     <CheckCircle2 className="h-14 w-14 text-cyan-600" aria-hidden="true" />
-    <h2 className="mt-5 font-heading text-3xl font-semibold text-slate-950">
+    <h1 className="mt-5 font-heading text-3xl font-semibold text-slate-950">
       {fieldText(fields.successTitle, titleFallback)}
-    </h2>
+    </h1>
     <p className="mt-4 max-w-xl text-lg leading-8 text-slate-700">
       {fieldText(fields.successMessage, messageFallback)}
     </p>
@@ -272,8 +272,8 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
             fields={fields}
             titleFallback="You’re signed in"
             messageFallback="Your NW Natural account is ready. You can now manage billing, payments, and service information."
-            linkHref="/account-billing"
-            linkLabel="Go to account and billing"
+            linkHref="/"
+            linkLabel="Continue to your homepage"
           />
         ) : (
           <div className="grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">

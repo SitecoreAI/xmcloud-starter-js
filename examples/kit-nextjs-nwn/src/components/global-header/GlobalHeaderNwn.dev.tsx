@@ -12,6 +12,7 @@ import { NoDataFallback } from '@/utils/NoDataFallback';
 import type {
   GlobalHeaderProps,
   PrimaryNavItemProps,
+  UtilityNavigationItemProps,
 } from './global-header.props';
 
 const navItemKey = (item: PrimaryNavItemProps, index: number): string =>
@@ -37,6 +38,14 @@ const isLegacyStarterValue = (value: string | undefined): boolean =>
   Boolean(
     value &&
       /alaris|aero|nexa|terra|vehicle|automotive|test drive|test-drive|models|dealership/i.test(
+        value,
+      ),
+  );
+
+const isExternalNwnAccountValue = (value: string | undefined): boolean =>
+  Boolean(
+    value &&
+      /(?:www\.)?nwnatural\.com\/identity\/login|identity\.nwnatural\.com\/account\/register/i.test(
         value,
       ),
   );
@@ -77,6 +86,8 @@ const fallbackPrimaryItems: PrimaryNavItemProps[] = [
 ];
 
 const fallbackUtilityItems = [
+  navItem('Search', '/search'),
+  navItem('Contact Us', '/contact-us'),
   navItem('Sign In', '/account-billing/login'),
   navItem('Register', '/account-billing/register'),
 ];
@@ -89,12 +100,35 @@ const fallbackHeaderContact: LinkField = {
   },
 };
 
-const hasLegacyNavItem = (item: PrimaryNavItemProps): boolean => {
+type NavItemWithOptionalChildren = UtilityNavigationItemProps & {
+  children?: { results?: PrimaryNavItemProps[] };
+};
+
+const hasLegacyNavItem = (item: NavItemWithOptionalChildren): boolean => {
   const value = item.link?.jsonValue?.value;
   return (
     isLegacyStarterValue(value?.text) ||
     isLegacyStarterValue(value?.href) ||
+    isExternalNwnAccountValue(value?.href) ||
     Boolean(item.children?.results?.some(hasLegacyNavItem))
+  );
+};
+
+const hasRequiredUtilityItems = (
+  items: UtilityNavigationItemProps[],
+): boolean => {
+  const requiredDestinations = new Map([
+    ['search', '/search'],
+    ['contact us', '/contact-us'],
+    ['sign in', '/account-billing/login'],
+    ['register', '/account-billing/register'],
+  ]);
+
+  return Array.from(requiredDestinations).every(([label, href]) =>
+    items.some((item) => {
+      const value = item.link?.jsonValue?.value;
+      return value?.text?.trim().toLowerCase() === label && value.href === href;
+    }),
   );
 };
 
@@ -124,7 +158,8 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
   const utilityItems =
     !isPageEditing &&
     (authoredUtilityItems.length === 0 ||
-      authoredUtilityItems.some(hasLegacyNavItem))
+      authoredUtilityItems.some(hasLegacyNavItem) ||
+      !hasRequiredUtilityItems(authoredUtilityItems))
       ? fallbackUtilityItems
       : authoredUtilityItems;
   const logoField = logo?.jsonValue;
@@ -140,6 +175,10 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
     !isPageEditing &&
     (isLegacyStarterValue(authoredHeaderContact?.value?.text) ||
       isLegacyStarterValue(authoredHeaderContact?.value?.href) ||
+      isExternalNwnAccountValue(authoredHeaderContact?.value?.href) ||
+      (authoredHeaderContact?.value?.text?.trim().toLowerCase() ===
+        'access your account' &&
+        authoredHeaderContact?.value?.href !== '/account-billing/login') ||
       !authoredHeaderContact?.value?.href);
   const displayHeaderContact = useFallbackHeaderContact
     ? fallbackHeaderContact

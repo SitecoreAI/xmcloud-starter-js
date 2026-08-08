@@ -1,5 +1,5 @@
 {
-    "manifestVersion": "1.0",
+    "manifestVersion": "1.1",
     "site": {
         "name": "NW Natural",
         "hostNameSuggestion": "nwnatural",
@@ -7,7 +7,7 @@
         "language": "en",
         "sourceReference": "https://www.nwnatural.com/",
         "contentIntent": "An original, presentation-ready subset inspired by NW Natural's public residential experience. Content must receive legal, regulatory, accessibility, and program-owner review before production use.",
-        "routingDecision": "This manifest contains exactly 18 pages. Ways to Save is a header navigation grouping that links directly to its only included child, Rebates & Offers, rather than a separate landing page.",
+        "routingDecision": "This manifest defines the core residential content set together with account access, search, contact, and winter-service experiences. Ways to Save remains a header grouping that links directly to Rebates & Offers.",
         "contentGuardrails": [
             "Do not publish rebate values, rates, eligibility rules, service guarantees, or program deadlines without current owner approval.",
             "Preserve the emergency and service numbers exactly as authored: odor emergency 800-882-3377, customer service 800-422-4012, and underground utility notification 811.",
@@ -40,6 +40,22 @@
                 "variant": "BlueCompactVariant"
             }
         ]
+    },
+    "visitorExperience": {
+        "anonymousJourney": [
+            "Open the homepage with the public winter service advisory directly below the header.",
+            "Browse Payment Assistance while remaining anonymous.",
+            "Use the page-view signal as an input to the configured Payment Assistance affinity."
+        ],
+        "identifiedJourney": [
+            "Identify the visitor by normalized email address at sign-in.",
+            "Return to the homepage on a new request so embedded personalization can evaluate the resolved visitor.",
+            "Show the paperless-billing experience and payment-assistance experience in separate homepage regions."
+        ],
+        "signalBoundaries": {
+            "paperlessBilling": "A known CDP profile attribute supplied by NW Natural's system of record.",
+            "paymentAssistance": "A SitecoreAI affinity based on observed content interest; it is not a statement of financial hardship."
+        }
     },
     "navigation": {
         "header": {
@@ -94,13 +110,21 @@
             "accountActions": [
                 {
                     "label": "Sign In",
-                    "destination": "https://www.nwnatural.com/identity/login/NWNatural/NWNIdentityServer",
-                    "external": true
+                    "destination": "/account-billing/login"
                 },
                 {
                     "label": "Register",
-                    "destination": "https://identity.nwnatural.com/Account/Register",
-                    "external": true
+                    "destination": "/account-billing/register"
+                }
+            ],
+            "utilityActions": [
+                {
+                    "label": "Search",
+                    "destination": "/search"
+                },
+                {
+                    "label": "Contact Us",
+                    "destination": "/contact-us"
                 }
             ],
             "sectionNavigation": [
@@ -160,6 +184,10 @@
                     "label": "Safety",
                     "destination": "/safety",
                     "children": [
+                        {
+                            "label": "Winter Service Advisory",
+                            "destination": "/safety/winter-service-advisory"
+                        },
                         {
                             "label": "Smell Natural Gas?",
                             "destination": "/safety/smell-natural-gas"
@@ -255,6 +283,54 @@
             "pageSummary": "A customer-first residential gateway for managing service, finding support, exploring home energy choices, and learning essential safety steps.",
             "metadataTitle": "NW Natural | Home Energy, Account Help & Safety",
             "metadataDescription": "Manage your natural gas account, find service and savings resources, explore home comfort, and get clear safety guidance from NW Natural.",
+            "winterAlert": {
+                "eyebrow": "Winter service information",
+                "title": "Plan ahead for severe cold",
+                "message": "Cold weather can increase energy use and make account concerns more urgent. Review regional service information, cold-weather protections, and ways to get help with your bill.",
+                "tone": "service",
+                "primaryLink": {
+                    "label": "View winter service information",
+                    "destination": "/safety/winter-service-advisory"
+                },
+                "secondaryLink": {
+                    "label": "Explore payment assistance",
+                    "destination": "/account-billing/payment-assistance"
+                }
+            },
+            "personalizedRegions": [
+                {
+                    "regionName": "Paperless Billing Offer",
+                    "signal": "Known profile field: not enrolled in paperless billing",
+                    "default": {
+                        "title": "Manage your account your way",
+                        "copy": "Sign in to review your bill, update account details, and keep service information close at hand.",
+                        "linkLabel": "Access your account",
+                        "linkDestination": "/account-billing/login"
+                    },
+                    "personalized": {
+                        "title": "Make billing a little simpler",
+                        "copy": "Paperless billing keeps statements in your online account and can reduce the mail you need to manage.",
+                        "linkLabel": "Choose paperless billing",
+                        "linkDestination": "/account-billing"
+                    }
+                },
+                {
+                    "regionName": "Payment Assistance Affinity Offer",
+                    "signal": "Top Affinity: Payment Assistance",
+                    "default": {
+                        "title": "Keep your home ready for the season",
+                        "copy": "Simple equipment checks and qualified service can help support comfort when temperatures fall.",
+                        "linkLabel": "Explore inspections and tune-ups",
+                        "linkDestination": "/services/inspections-tune-ups"
+                    },
+                    "personalized": {
+                        "title": "Options are available when you need help",
+                        "copy": "Explore payment arrangements, bill-discount programs, and other resources that may help with your natural gas bill.",
+                        "linkLabel": "View payment assistance",
+                        "linkDestination": "/account-billing/payment-assistance"
+                    }
+                }
+            ],
             "sections": [
                 {
                     "heading": "Your account, right at hand",
@@ -295,9 +371,14 @@
             ],
             "cta": {
                 "label": "Access your account",
-                "destination": "/account-billing/pay-my-bill"
+                "destination": "/account-billing/login"
             },
             "recommendedComponents": [
+                {
+                    "component": "NwnUtilityAlert",
+                    "variant": "Default",
+                    "contentUse": "Public winter service advisory placed first, directly below the global header"
+                },
                 {
                     "component": "Hero",
                     "variant": "ImageBackground",
@@ -312,6 +393,16 @@
                     "component": "MultiPromo",
                     "variant": "Default",
                     "contentUse": "Pay, move service, and assistance quick-task cards"
+                },
+                {
+                    "component": "PromoBlock",
+                    "variant": "Default",
+                    "contentUse": "Dedicated paperless-billing region with default and known-profile personalized content"
+                },
+                {
+                    "component": "PromoBlock",
+                    "variant": "Default",
+                    "contentUse": "Separate payment-assistance region with default and affinity-personalized content"
                 },
                 {
                     "component": "TopicListing",
@@ -1161,6 +1252,105 @@
                 }
             ],
             "imageFilename": "safety-smell-gas-call-from-outside-landscape.png"
+        },
+        {
+            "itemName": "Winter Service Advisory",
+            "routeSegment": "winter-service-advisory",
+            "routePath": "/safety/winter-service-advisory",
+            "parentItem": "Safety",
+            "template": "Detail",
+            "pageBranch": "Service Advisory Page",
+            "pageBranchInsertOptionParent": "Safety",
+            "navigationTitle": "Winter Service Advisory",
+            "pageTitle": "Winter weather service information",
+            "pageSubtitle": "Prepare for severe cold, understand service protections, and know where to get help.",
+            "pageSummary": "A regional winter resource with practical preparation guidance, cold-weather service information, and a direct path to account support.",
+            "metadataTitle": "Winter Service Information | NW Natural",
+            "metadataDescription": "Review regional winter service information, severe-weather protections, preparation steps, and payment assistance from NW Natural.",
+            "contentType": "Service Advisory",
+            "topics": ["Winter Safety", "Payment Assistance"],
+            "regions": ["Oregon", "Washington"],
+            "sections": [
+                {
+                    "heading": "Cold-weather service protections",
+                    "body": "During qualifying severe weather, cold-weather protections may pause disconnection for nonpayment. Timing and conditions can differ by state, so review the current regional information and contact customer service if you have questions about your account.",
+                    "bullets": [
+                        "Check current guidance for your state",
+                        "Keep account contact information current",
+                        "Ask about help before an account concern becomes urgent"
+                    ]
+                },
+                {
+                    "heading": "Information for Oregon and Washington customers",
+                    "body": "Programs, eligibility, and severe-weather rules are not identical in Oregon and Washington. Choose the information for your service address and confirm current terms before making an account decision.",
+                    "bullets": [
+                        "Oregon customers: review Oregon protections and assistance",
+                        "Washington customers: review Washington protections and assistance",
+                        "Call customer service at 800-422-4012 for account-specific guidance"
+                    ]
+                },
+                {
+                    "heading": "Prepare before temperatures drop",
+                    "body": "A few practical steps can help you stay ready when colder weather arrives. Keep equipment areas and exterior vents clear, know the natural gas odor response, and keep important contact information available.",
+                    "bullets": [
+                        "Keep furnace and water-heater areas clear",
+                        "Check that exterior vents are not blocked by snow or debris",
+                        "If you smell natural gas, leave and call 800-882-3377 or 911 from a safe location"
+                    ]
+                },
+                {
+                    "heading": "Get help with your bill",
+                    "body": "Payment arrangements, bill-discount programs, and community resources may be available. Start with the payment assistance overview, then contact customer service for help with your specific account.",
+                    "bullets": [
+                        "Review payment and assistance options",
+                        "Gather your account information before calling",
+                        "Use interest in this content only to improve relevance, never as a statement of hardship"
+                    ]
+                }
+            ],
+            "regionalVariants": [
+                {
+                    "name": "Oregon",
+                    "authoringNote": "Use the current Oregon protection dates, program links, and approved regulatory language."
+                },
+                {
+                    "name": "Washington",
+                    "authoringNote": "Use the current Washington protection dates, program links, and approved regulatory language."
+                }
+            ],
+            "cta": {
+                "label": "Explore payment assistance",
+                "destination": "/account-billing/payment-assistance"
+            },
+            "recommendedComponents": [
+                {
+                    "component": "Breadcrumbs",
+                    "variant": "Default",
+                    "contentUse": "Safety hierarchy"
+                },
+                {
+                    "component": "PageHeader",
+                    "variant": "FiftyFifty",
+                    "contentUse": "Winter introduction and regional service context"
+                },
+                {
+                    "component": "RichTextBlock",
+                    "variant": "Default",
+                    "contentUse": "Cold-weather protections and preparation guidance"
+                },
+                {
+                    "component": "AccordionBlock",
+                    "variant": "OneColumnTitleLeft",
+                    "contentUse": "Stacked Oregon and Washington information"
+                },
+                {
+                    "component": "CtaBanner",
+                    "variant": "Default",
+                    "contentUse": "Payment assistance close"
+                }
+            ],
+            "imageFilename": "benefits-natural-gas-family-winter-comfort-landscape.png",
+            "imageAlt": "Family staying warm together beside a fireplace on a snowy winter day"
         },
         {
             "itemName": "Smell Natural Gas",

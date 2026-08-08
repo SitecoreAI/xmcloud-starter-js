@@ -190,6 +190,9 @@ describe('CustomerAccount', () => {
     const password = screen.getByLabelText(/^Password/i);
 
     expect(password).toHaveAttribute('type', 'password');
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Access your account' }),
+    ).toBeInTheDocument();
     fireEvent.change(email, { target: { value: '  Taylor@Example.COM  ' } });
     fireEvent.change(password, { target: { value: 'anything-at-all' } });
     submitClosestForm('Sign in');
@@ -209,6 +212,9 @@ describe('CustomerAccount', () => {
     });
     expect(mockIdentity.mock.calls[0][0]).not.toHaveProperty('password');
     expect(await screen.findByText('You’re signed in')).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Continue to your homepage' }),
+    ).toHaveAttribute('href', '/');
   });
 
   it('requires a usable email and a nonempty login password', async () => {
@@ -233,6 +239,9 @@ describe('CustomerAccount', () => {
 
     expect(password).toHaveAttribute('type', 'password');
     expect(confirmPassword).toHaveAttribute('type', 'password');
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Register your account' }),
+    ).toBeInTheDocument();
     expect(password).not.toBeRequired();
     expect(confirmPassword).not.toBeRequired();
     expect(phone).not.toBeRequired();

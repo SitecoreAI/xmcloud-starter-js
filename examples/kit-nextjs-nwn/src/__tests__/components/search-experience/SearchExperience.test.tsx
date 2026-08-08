@@ -132,4 +132,16 @@ describe('SearchExperience', () => {
     expect(results.every((page) => page.path !== '/search')).toBe(true);
     expect(results.every((page) => page.path.startsWith('/'))).toBe(true);
   });
+
+  it('finds the prepared winter, assistance, and paperless experiences', () => {
+    expect(searchNwnPages('winter service advisory')[0]?.path).toBe(
+      '/safety/winter-service-advisory',
+    );
+    expect(searchNwnPages('financial assistance')[0]?.path).toBe(
+      '/account-billing/payment-assistance',
+    );
+    expect(searchNwnPages('paperless billing')[0]?.path).toBe(
+      '/account-billing',
+    );
+  });
 });

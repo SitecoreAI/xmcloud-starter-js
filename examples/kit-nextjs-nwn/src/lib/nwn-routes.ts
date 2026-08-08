@@ -23,7 +23,15 @@ export const NWN_SEARCH_PAGES = [
     path: '/account-billing',
     description:
       'Manage your NW Natural account, billing, payments, and service changes.',
-    keywords: ['account', 'bill', 'payment', 'customer account'],
+    keywords: [
+      'account',
+      'bill',
+      'payment',
+      'customer account',
+      'paperless billing',
+      'go paperless',
+      'billing notifications',
+    ],
   },
   {
     title: 'Pay My Bill',
@@ -100,6 +108,21 @@ export const NWN_SEARCH_PAGES = [
     description:
       'Find essential natural gas safety guidance and emergency contact information.',
     keywords: ['emergency', 'gas safety', 'odor', '811'],
+  },
+  {
+    title: 'Winter Service Advisory',
+    path: '/safety/winter-service-advisory',
+    description:
+      'Review severe-weather service protections, regional winter information, preparation guidance, and ways to get account help.',
+    keywords: [
+      'winter advisory',
+      'severe weather',
+      'cold weather',
+      'service protection',
+      'Oregon',
+      'Washington',
+      'payment assistance',
+    ],
   },
   {
     title: 'Smell Natural Gas?',
