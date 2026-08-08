@@ -1,10 +1,6 @@
 // Client-safe component map for App Router
 
-import {
-  BYOCClientWrapper,
-  NextjsContentSdkComponent,
-  FEaaSClientWrapper,
-} from '@sitecore-content-sdk/nextjs';
+import { BYOCClientWrapper, NextjsContentSdkComponent, FEaaSClientWrapper } from '@sitecore-content-sdk/nextjs';
 import { Form } from '@sitecore-content-sdk/nextjs';
 
 import * as zipcodemodaldev from 'src/components/zipcode-modal/zipcode-modal.dev';
@@ -32,6 +28,7 @@ import * as SubmissionFormCentereddev from 'src/components/submission-form/Submi
 import * as SubmissionForm from 'src/components/submission-form/SubmissionForm';
 import * as SlideCarouseldev from 'src/components/slide-carousel/SlideCarousel.dev';
 import * as SecondaryNavigation from 'src/components/secondary-navigation/SecondaryNavigation';
+import * as SearchExperience from 'src/components/search-experience/SearchExperience';
 import * as PromoImage from 'src/components/promo-image/PromoImage';
 import * as PromoAnimatedImageRightdev from 'src/components/promo-animated/PromoAnimatedImageRight.dev';
 import * as PromoAnimatedDefaultdev from 'src/components/promo-animated/PromoAnimatedDefault.dev';
@@ -82,7 +79,6 @@ import * as ImageCarouselDefaultdev from 'src/components/image-carousel/ImageCar
 import * as ImageCarousel from 'src/components/image-carousel/ImageCarousel';
 import * as ImageWrapperclient from 'src/components/image/ImageWrapper.client';
 import * as Icon from 'src/components/icon/Icon';
-import * as HeroNwnHomedev from 'src/components/hero/HeroNwnHome.dev';
 import * as HeroImageRightdev from 'src/components/hero/HeroImageRight.dev';
 import * as HeroImageBottomInsetdev from 'src/components/hero/HeroImageBottomInset.dev';
 import * as HeroImageBottomdev from 'src/components/hero/HeroImageBottom.dev';
@@ -105,6 +101,7 @@ import * as FooterNavigationColumn from 'src/components/global-footer/FooterNavi
 import * as ZipcodeSearchFormdev from 'src/components/forms/zipcode/ZipcodeSearchForm.dev';
 import * as SubmitInfoFormdev from 'src/components/forms/submitinfo/SubmitInfoForm.dev';
 import * as EmailSignupFormdev from 'src/components/forms/email/EmailSignupForm.dev';
+import * as CustomerAccount from 'src/components/customer-account/CustomerAccount';
 import * as Carousel from 'src/components/carousel/Carousel';
 import * as cardspotlightdev from 'src/components/card-spotlight/card-spotlight.dev';
 import * as ArticleHeader from 'src/components/article-header/ArticleHeader';
@@ -143,6 +140,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['SubmissionForm', { ...SubmissionForm }],
   ['SlideCarousel', { ...SlideCarouseldev }],
   ['SecondaryNavigation', { ...SecondaryNavigation }],
+  ['SearchExperience', { ...SearchExperience }],
   ['PromoImage', { ...PromoImage }],
   ['PromoAnimatedImageRight', { ...PromoAnimatedImageRightdev }],
   ['PromoAnimatedDefault', { ...PromoAnimatedDefaultdev }],
@@ -169,14 +167,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['MediaSection', { ...MediaSectiondev }],
   ['LogoTabs', { ...LogoTabs }],
   ['LocationSearchTitleZipCentered', { ...LocationSearchTitleZipCentereddev }],
-  [
-    'LocationSearchMapTopAllCentered',
-    { ...LocationSearchMapTopAllCentereddev },
-  ],
-  [
-    'LocationSearchMapRightTitleZipCentered',
-    { ...LocationSearchMapRightTitleZipCentereddev },
-  ],
+  ['LocationSearchMapTopAllCentered', { ...LocationSearchMapTopAllCentereddev }],
+  ['LocationSearchMapRightTitleZipCentered', { ...LocationSearchMapRightTitleZipCentereddev }],
   ['LocationSearchMapRight', { ...LocationSearchMapRightdev }],
   ['LocationSearchItem', { ...LocationSearchItemdev }],
   ['LocationSearchDefault', { ...LocationSearchDefaultdev }],
@@ -198,7 +190,6 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ImageCarousel', { ...ImageCarousel }],
   ['ImageWrapper', { ...ImageWrapperclient }],
   ['Icon', { ...Icon }],
-  ['HeroNwnHome', { ...HeroNwnHomedev }],
   ['HeroImageRight', { ...HeroImageRightdev }],
   ['HeroImageBottomInset', { ...HeroImageBottomInsetdev }],
   ['HeroImageBottom', { ...HeroImageBottomdev }],
@@ -216,26 +207,18 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['GlobalFooterBlackLarge', { ...GlobalFooterBlackLargedev }],
   ['GlobalFooterBlackCompact', { ...GlobalFooterBlackCompactdev }],
   ['GlobalFooter', { ...GlobalFooter }],
-  [
-    'FooterNavigationColumn',
-    { ...FooterNavigationColumndev, ...FooterNavigationColumn },
-  ],
+  ['FooterNavigationColumn', { ...FooterNavigationColumndev, ...FooterNavigationColumn }],
   ['ZipcodeSearchForm', { ...ZipcodeSearchFormdev }],
   ['SubmitInfoForm', { ...SubmitInfoFormdev }],
   ['EmailSignupForm', { ...EmailSignupFormdev }],
+  ['CustomerAccount', { ...CustomerAccount }],
   ['Carousel', { ...Carousel }],
   ['card-spotlight', { ...cardspotlightdev }],
   ['ArticleHeader', { ...ArticleHeader }],
   ['AnimatedSection', { ...AnimatedSectiondev }],
   ['AlertBanner', { ...AlertBannerdev }],
-  [
-    'AccordionBlockTwoColumnTitleLeft',
-    { ...AccordionBlockTwoColumnTitleLeftdev },
-  ],
-  [
-    'AccordionBlockOneColumnTitleLeft',
-    { ...AccordionBlockOneColumnTitleLeftdev },
-  ],
+  ['AccordionBlockTwoColumnTitleLeft', { ...AccordionBlockTwoColumnTitleLeftdev }],
+  ['AccordionBlockOneColumnTitleLeft', { ...AccordionBlockOneColumnTitleLeftdev }],
   ['AccordionBlock', { ...AccordionBlock }],
 ]);
 

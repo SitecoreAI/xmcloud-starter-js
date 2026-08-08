@@ -77,23 +77,13 @@ const fallbackPrimaryItems: PrimaryNavItemProps[] = [
 ];
 
 const fallbackUtilityItems = [
-  navItem(
-    'Sign In',
-    'https://www.nwnatural.com/identity/login/NWNatural/NWNIdentityServer',
-    [],
-    true,
-  ),
-  navItem(
-    'Register',
-    'https://identity.nwnatural.com/Account/Register',
-    [],
-    true,
-  ),
+  navItem('Sign In', '/account-billing/login'),
+  navItem('Register', '/account-billing/register'),
 ];
 
 const fallbackHeaderContact: LinkField = {
   value: {
-    href: '/account-billing/pay-my-bill',
+    href: '/account-billing/login',
     text: 'Access your account',
     linktype: 'internal',
   },

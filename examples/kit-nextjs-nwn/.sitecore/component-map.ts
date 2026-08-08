@@ -1,10 +1,6 @@
 // Below are built-in components that are available in the app, it's recommended to keep them as is
 
-import {
-  BYOCServerWrapper,
-  NextjsContentSdkComponent,
-  FEaaSServerWrapper,
-} from '@sitecore-content-sdk/nextjs';
+import { BYOCServerWrapper, NextjsContentSdkComponent, FEaaSServerWrapper } from '@sitecore-content-sdk/nextjs';
 import { Form } from '@sitecore-content-sdk/nextjs';
 
 // end of built-in components
@@ -48,6 +44,7 @@ import * as StructuredData from 'src/components/structured-data/StructuredData';
 import * as SlideCarouseldev from 'src/components/slide-carousel/SlideCarousel.dev';
 import * as SiteMetadata from 'src/components/site-metadata/SiteMetadata';
 import * as SecondaryNavigation from 'src/components/secondary-navigation/SecondaryNavigation';
+import * as SearchExperience from 'src/components/search-experience/SearchExperience';
 import * as RichTextBlock from 'src/components/rich-text-block/RichTextBlock';
 import * as PromoImageTitlePartialOverlaydev from 'src/components/promo-image/PromoImageTitlePartialOverlay.dev';
 import * as PromoImageRightdev from 'src/components/promo-image/PromoImageRight.dev';
@@ -155,6 +152,7 @@ import * as SubmitInfoFormdev from 'src/components/forms/submitinfo/SubmitInfoFo
 import * as EmailSignupFormdev from 'src/components/forms/email/EmailSignupForm.dev';
 import * as FooterNavigationCalloutdev from 'src/components/footer-navigation-callout/FooterNavigationCallout.dev';
 import * as Flexdev from 'src/components/flex/Flex.dev';
+import * as CustomerAccount from 'src/components/customer-account/CustomerAccount';
 import * as CtaBanner from 'src/components/cta-banner/CtaBanner';
 import * as ContentSdkRichText from 'src/components/content-sdk-rich-text/ContentSdkRichText';
 import * as ContainerFullWidth from 'src/components/container/container-full-width/ContainerFullWidth';
@@ -193,10 +191,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['VideoPlayer', { ...VideoPlayerdev }],
   ['VideoModal', { ...VideoModaldev }],
   ['Video', { ...Video, componentType: 'client' }],
-  [
-    'VerticalImageAccordion',
-    { ...VerticalImageAccordion, componentType: 'client' },
-  ],
+  ['VerticalImageAccordion', { ...VerticalImageAccordion, componentType: 'client' }],
   ['TopicListing', { ...TopicListing }],
   ['TopicItem', { ...TopicItemdev }],
   ['theme-provider', { ...themeproviderdev }],
@@ -232,6 +227,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['SlideCarousel', { ...SlideCarouseldev }],
   ['SiteMetadata', { ...SiteMetadata }],
   ['SecondaryNavigation', { ...SecondaryNavigation, componentType: 'client' }],
+  ['SearchExperience', { ...SearchExperience, componentType: 'client' }],
   ['RichTextBlock', { ...RichTextBlock }],
   ['PromoImageTitlePartialOverlay', { ...PromoImageTitlePartialOverlaydev }],
   ['PromoImageRight', { ...PromoImageRightdev }],
@@ -270,14 +266,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['LogoItem', { ...LogoItem }],
   ['Logo', { ...Logodev }],
   ['LocationSearchTitleZipCentered', { ...LocationSearchTitleZipCentereddev }],
-  [
-    'LocationSearchMapTopAllCentered',
-    { ...LocationSearchMapTopAllCentereddev },
-  ],
-  [
-    'LocationSearchMapRightTitleZipCentered',
-    { ...LocationSearchMapRightTitleZipCentereddev },
-  ],
+  ['LocationSearchMapTopAllCentered', { ...LocationSearchMapTopAllCentereddev }],
+  ['LocationSearchMapRightTitleZipCentered', { ...LocationSearchMapRightTitleZipCentereddev }],
   ['LocationSearchMapRight', { ...LocationSearchMapRightdev }],
   ['LocationSearchItem', { ...LocationSearchItemdev }],
   ['LocationSearchDefault', { ...LocationSearchDefaultdev }],
@@ -287,10 +277,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ImageGalleryGrid', { ...ImageGalleryGriddev }],
   ['ImageGalleryFiftyFifty', { ...ImageGalleryFiftyFiftydev }],
   ['ImageGalleryFeaturedImage', { ...ImageGalleryFeaturedImagedev }],
-  [
-    'ImageGallery',
-    { ...ImageGallerydev, ...ImageGallery, componentType: 'client' },
-  ],
+  ['ImageGallery', { ...ImageGallerydev, ...ImageGallery, componentType: 'client' }],
   ['ImageCarouselThumbnails', { ...ImageCarouselThumbnailsdev }],
   ['ImageCarouselPreviewBelow', { ...ImageCarouselPreviewBelowdev }],
   ['ImageCarouselNwnResources', { ...ImageCarouselNwnResourcesdev }],
@@ -338,20 +325,14 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['GlobalFooterBlackLarge', { ...GlobalFooterBlackLargedev }],
   ['GlobalFooterBlackCompact', { ...GlobalFooterBlackCompactdev }],
   ['GlobalFooter', { ...GlobalFooter, componentType: 'client' }],
-  [
-    'FooterNavigationColumn',
-    {
-      ...FooterNavigationColumndev,
-      ...FooterNavigationColumn,
-      componentType: 'client',
-    },
-  ],
+  ['FooterNavigationColumn', { ...FooterNavigationColumndev, ...FooterNavigationColumn, componentType: 'client' }],
   ['ZipcodeSearchForm', { ...ZipcodeSearchFormdev }],
   ['success-compact', { ...successcompactdev }],
   ['SubmitInfoForm', { ...SubmitInfoFormdev }],
   ['EmailSignupForm', { ...EmailSignupFormdev }],
   ['FooterNavigationCallout', { ...FooterNavigationCalloutdev }],
   ['Flex', { ...Flexdev }],
+  ['CustomerAccount', { ...CustomerAccount, componentType: 'client' }],
   ['CtaBanner', { ...CtaBanner }],
   ['ContentSdkRichText', { ...ContentSdkRichText }],
   ['ContainerFullWidth', { ...ContainerFullWidth }],
@@ -374,14 +355,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ArticleHeader', { ...ArticleHeader, componentType: 'client' }],
   ['AnimatedSection', { ...AnimatedSectiondev }],
   ['AlertBanner', { ...AlertBannerdev }],
-  [
-    'AccordionBlockTwoColumnTitleLeft',
-    { ...AccordionBlockTwoColumnTitleLeftdev },
-  ],
-  [
-    'AccordionBlockOneColumnTitleLeft',
-    { ...AccordionBlockOneColumnTitleLeftdev },
-  ],
+  ['AccordionBlockTwoColumnTitleLeft', { ...AccordionBlockTwoColumnTitleLeftdev }],
+  ['AccordionBlockOneColumnTitleLeft', { ...AccordionBlockOneColumnTitleLeftdev }],
   ['AccordionBlockItem', { ...AccordionBlockItemdev }],
   ['AccordionBlockDefault', { ...AccordionBlockDefaultdev }],
   ['AccordionBlockCentered', { ...AccordionBlockCentereddev }],
