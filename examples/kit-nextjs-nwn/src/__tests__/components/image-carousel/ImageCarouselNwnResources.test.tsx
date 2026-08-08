@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import type { Page } from '@sitecore-content-sdk/nextjs';
 
 import { ImageCarouselNwnResources } from '@/components/image-carousel/ImageCarouselNwnResources.dev';
+import { ImageCarouselNwnHero } from '@/components/image-carousel/ImageCarouselNwnHero.dev';
 import type {
   ImageCarouselProps,
   imageCarouselItem,
@@ -46,6 +47,8 @@ const mockCarousel = jest.fn(
       <div
         data-testid="carousel"
         data-watch-drag={String(opts?.watchDrag)}
+        role="region"
+        aria-roledescription="carousel"
         {...attributes}
       >
         {children}
@@ -520,5 +523,121 @@ describe('ImageCarouselNwnResources', () => {
     expect(
       screen.getByRole('button', { name: 'Next customer resource' }),
     ).toBeDisabled();
+  });
+});
+
+describe('ImageCarouselNwnHero', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    carouselListeners = {};
+    mockCarouselApi.selectedScrollSnap.mockReturnValue(0);
+  });
+
+  it('renders one managed carousel from authored DAM image fields', () => {
+    const heroItems = [
+      createItem(
+        'hero-reliable-energy',
+        'Reliable energy for the life you live.',
+        'Safe, reliable natural gas service for homes and businesses.',
+        '/account-billing/login',
+        'Access your account',
+        'https://thlt-demo.sitecoresandbox.cloud/api/public/content/hero-one',
+      ),
+      createItem(
+        'hero-account',
+        'Manage your account your way',
+        'Review your bill and update account details.',
+        '/account-billing/login',
+        'Access your account',
+        'https://thlt-demo.sitecoresandbox.cloud/api/public/content/hero-two',
+      ),
+      createItem(
+        'hero-seasonal',
+        'Keep your home ready for the season',
+        'Simple equipment checks help support comfort.',
+        '/services/inspections-tune-ups',
+        'Explore inspections and tune-ups',
+        'https://thlt-demo.sitecoresandbox.cloud/api/public/content/hero-three',
+      ),
+    ];
+
+    render(<ImageCarouselNwnHero {...createProps(heroItems)} />);
+
+    expect(screen.getByTestId('carousel')).toHaveAttribute(
+      'data-watch-drag',
+      'true',
+    );
+    expect(screen.getAllByTestId('carousel-item')).toHaveLength(3);
+    expect(screen.getAllByTestId('carousel-image-field')).toHaveLength(3);
+    expect(
+      screen
+        .getAllByTestId('carousel-image-field')
+        .map((image) => image.getAttribute('src')),
+    ).toEqual([
+      'https://thlt-demo.sitecoresandbox.cloud/api/public/content/hero-one',
+      'https://thlt-demo.sitecoresandbox.cloud/api/public/content/hero-two',
+      'https://thlt-demo.sitecoresandbox.cloud/api/public/content/hero-three',
+    ]);
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Reliable energy for the life you live.',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Next hero slide' }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByRole('region')).toHaveLength(1);
+    expect(screen.getByRole('region')).toHaveAccessibleName(
+      'Practical resources for every customer.',
+    );
+    expect(
+      screen
+        .getAllByTestId('carousel-image-field')
+        .every((image) => Boolean(image.getAttribute('alt'))),
+    ).toBe(true);
+  });
+
+  it('keeps the selected hero title as the page heading', () => {
+    const heroItems = [
+      createItem('hero-one', 'First hero', 'First copy', '/', 'First link'),
+      createItem('hero-two', 'Second hero', 'Second copy', '/', 'Second link'),
+    ];
+
+    render(<ImageCarouselNwnHero {...createProps(heroItems)} />);
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'First hero' }),
+    ).toBeInTheDocument();
+
+    mockCarouselApi.selectedScrollSnap.mockReturnValue(1);
+    act(() => {
+      carouselListeners.select?.();
+    });
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Second hero' }),
+    ).toBeInTheDocument();
+  });
+
+  it('does not substitute a local or placeholder image for an empty DAM field', () => {
+    render(
+      <ImageCarouselNwnHero
+        {...createProps([
+          createItem(
+            'hero-without-image',
+            'Authored content without an image',
+            'The component remains content-driven.',
+            '/account-billing',
+            'Learn more',
+          ),
+        ])}
+      />,
+    );
+
+    expect(
+      screen.queryByTestId('carousel-image-field'),
+    ).not.toBeInTheDocument();
+    expect(document.querySelector('img')).not.toBeInTheDocument();
   });
 });

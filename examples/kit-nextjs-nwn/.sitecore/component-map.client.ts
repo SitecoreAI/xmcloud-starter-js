@@ -71,6 +71,7 @@ import * as ImageGallery from 'src/components/image-gallery/ImageGallery';
 import * as ImageCarouselThumbnailsdev from 'src/components/image-carousel/ImageCarouselThumbnails.dev';
 import * as ImageCarouselPreviewBelowdev from 'src/components/image-carousel/ImageCarouselPreviewBelow.dev';
 import * as ImageCarouselNwnResourcesdev from 'src/components/image-carousel/ImageCarouselNwnResources.dev';
+import * as ImageCarouselNwnHerodev from 'src/components/image-carousel/ImageCarouselNwnHero.dev';
 import * as ImageCarouselLeftRightPreviewdev from 'src/components/image-carousel/ImageCarouselLeftRightPreview.dev';
 import * as ImageCarouselFullBleeddev from 'src/components/image-carousel/ImageCarouselFullBleed.dev';
 import * as ImageCarouselFeaturedImageLeftdev from 'src/components/image-carousel/ImageCarouselFeaturedImageLeft.dev';
@@ -182,6 +183,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ImageCarouselThumbnails', { ...ImageCarouselThumbnailsdev }],
   ['ImageCarouselPreviewBelow', { ...ImageCarouselPreviewBelowdev }],
   ['ImageCarouselNwnResources', { ...ImageCarouselNwnResourcesdev }],
+  ['ImageCarouselNwnHero', { ...ImageCarouselNwnHerodev }],
   ['ImageCarouselLeftRightPreview', { ...ImageCarouselLeftRightPreviewdev }],
   ['ImageCarouselFullBleed', { ...ImageCarouselFullBleeddev }],
   ['ImageCarouselFeaturedImageLeft', { ...ImageCarouselFeaturedImageLeftdev }],
