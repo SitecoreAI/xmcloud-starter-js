@@ -187,9 +187,9 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
   const brand = hasLogo ? (
     <ImageWrapper
       image={logoField}
-      wrapperClass="w-[9.5rem] sm:w-[12rem]"
+      wrapperClass="w-[11.4rem] sm:w-[14.4rem]"
       className="h-auto w-full object-contain"
-      sizes="(max-width: 640px) 152px, 192px"
+      sizes="(max-width: 640px) 182px, 230px"
       alt="NW Natural home"
       page={props.page}
     />

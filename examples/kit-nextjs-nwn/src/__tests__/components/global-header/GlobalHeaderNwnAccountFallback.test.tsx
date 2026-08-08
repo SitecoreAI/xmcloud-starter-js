@@ -40,7 +40,19 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
 }));
 
 jest.mock('@/components/image/ImageWrapper.dev', () => ({
-  Default: () => <span data-testid="header-logo-field" />,
+  Default: ({
+    wrapperClass,
+    sizes,
+  }: {
+    wrapperClass?: string;
+    sizes?: string;
+  }) => (
+    <span
+      data-testid="header-logo-field"
+      data-wrapper-class={wrapperClass}
+      data-sizes={sizes}
+    />
+  ),
 }));
 
 const externalSignInUrl =
@@ -156,6 +168,33 @@ const makeIncompleteInternalProps = (): GlobalHeaderProps => {
 };
 
 describe('GlobalHeaderNwn account link fallbacks', () => {
+  it('renders the authored logo at the enlarged responsive size', () => {
+    const logoProps = makeProps(false);
+    const item = logoProps.fields?.data?.item;
+
+    if (item) {
+      item.logo = {
+        jsonValue: {
+          value: {
+            src: '/nwnatural-logo.svg',
+            alt: 'NW Natural',
+          },
+        },
+      };
+    }
+
+    render(<GlobalHeaderNwn {...logoProps} />);
+
+    expect(screen.getByTestId('header-logo-field')).toHaveAttribute(
+      'data-wrapper-class',
+      'w-[11.4rem] sm:w-[14.4rem]',
+    );
+    expect(screen.getByTestId('header-logo-field')).toHaveAttribute(
+      'data-sizes',
+      '(max-width: 640px) 182px, 230px',
+    );
+  });
+
   it('replaces authored external account destinations with local account journeys in normal mode', () => {
     render(<GlobalHeaderNwn {...makeProps(false)} />);
 
