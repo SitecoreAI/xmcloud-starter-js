@@ -81,7 +81,7 @@ export const Default: React.FC<NwnUtilityAlertProps> = (props) => {
         props.params?.styles,
       )}
     >
-      <div className="nwn-content-shell grid grid-cols-[auto_1fr] gap-x-4 gap-y-4 sm:gap-x-5 lg:flex lg:items-start">
+      <div className="nwn-content-shell grid grid-cols-[auto_1fr] gap-x-4 gap-y-4 sm:gap-x-5 lg:flex lg:items-center">
         <span
           className={cn(
             'inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full',

@@ -86,6 +86,17 @@ describe('NwnUtilityAlert', () => {
     ).toHaveAttribute('href', 'tel:8008823377');
   });
 
+  it('vertically centers the icon and actions within the advisory', () => {
+    render(<NwnUtilityAlert {...props} />);
+
+    const shell = screen
+      .getByRole('alert')
+      .querySelector('.nwn-content-shell');
+
+    expect(shell).toHaveClass('lg:items-center');
+    expect(shell).not.toHaveClass('lg:items-start');
+  });
+
   it('does not render an empty alert outside editing mode', () => {
     const { container } = render(
       <NwnUtilityAlert {...props} fields={{ tone: { value: 'service' } }} />,
