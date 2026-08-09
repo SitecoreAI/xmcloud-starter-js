@@ -4,12 +4,14 @@ import { generateMarkdownFromRoute } from 'src/lib/ai-markdown';
 import { NWN_SITE_NAME } from '@/lib/site-path';
 import { isLegacyStarterRoute } from '@/lib/nwn-route-guard';
 import { sanitizeLegacyStarterData } from '@/lib/nwn-content-sanitizer';
+import { getLocaleOption, isSupportedLocale } from '@/i18n/locales';
 
 export const dynamic = 'force-dynamic';
 
 const CACHE_MAX_AGE = 300;
-const DEFAULT_LOCALE = process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || 'en';
-const SUPPORTED_LOCALES = new Set([DEFAULT_LOCALE]);
+const DEFAULT_LOCALE = getLocaleOption(
+  process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE,
+).code;
 
 function isAiMarkdownEnabled(): boolean {
   return process.env.NEXT_PUBLIC_ENABLE_AIMARKDOWN !== 'false';
@@ -21,17 +23,22 @@ function resolveSiteAndLocale(
   | { ok: true; site: typeof NWN_SITE_NAME; locale: string }
   | { ok: false; message: string } {
   const requestedSite = request.nextUrl.searchParams.get('site');
-  const locale = request.nextUrl.searchParams.get('locale') || DEFAULT_LOCALE;
+  const requestedLocale =
+    request.nextUrl.searchParams.get('locale') || DEFAULT_LOCALE;
 
   if (requestedSite && requestedSite !== NWN_SITE_NAME) {
     return { ok: false, message: 'Unsupported site' };
   }
 
-  if (!SUPPORTED_LOCALES.has(locale)) {
+  if (!isSupportedLocale(requestedLocale)) {
     return { ok: false, message: 'Unsupported locale' };
   }
 
-  return { ok: true, site: NWN_SITE_NAME, locale };
+  return {
+    ok: true,
+    site: NWN_SITE_NAME,
+    locale: getLocaleOption(requestedLocale).code,
+  };
 }
 
 export async function GET(

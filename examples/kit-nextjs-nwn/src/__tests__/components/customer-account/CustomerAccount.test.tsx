@@ -331,4 +331,65 @@ describe('CustomerAccount', () => {
     expect(await screen.findByText('You’re signed in')).toBeInTheDocument();
     expect(mockIdentity).not.toHaveBeenCalled();
   });
+
+  it('keeps the Spanish login journey localized through validation and success', async () => {
+    const spanishProps: CustomerAccountProps = {
+      ...loginProps,
+      fields: {},
+      page: { ...page, locale: 'es-MX' },
+    };
+    document.documentElement.lang = 'es-MX';
+    window.history.replaceState({}, '', '/es-MX/account-billing/login');
+    render(<Login {...spanishProps} />);
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Acceda a su cuenta' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Registrarse' })).toHaveAttribute(
+      'href',
+      '/es-MX/account-billing/register',
+    );
+
+    submitClosestForm('Iniciar sesión');
+    expect(
+      await screen.findByText('El correo electrónico es obligatorio.'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('La contraseña es obligatoria.'),
+    ).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText(/Correo electrónico/i), {
+      target: { value: 'visitante@example.com' },
+    });
+    fireEvent.change(screen.getByLabelText(/^Contraseña/i), {
+      target: { value: 'demo' },
+    });
+    submitClosestForm('Iniciar sesión');
+
+    expect(await screen.findByText('Sesión iniciada')).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Continuar a la página principal' }),
+    ).toHaveAttribute('href', '/es-MX');
+    expect(mockIdentity).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: 'visitante@example.com',
+        language: 'ES-MX',
+        page: '/es-MX/account-billing/login',
+      }),
+    );
+  });
+
+  it('shows Spanish required cues without making demo-only fields blocking', () => {
+    const spanishProps: CustomerAccountProps = {
+      ...registrationProps,
+      fields: {},
+      page: { ...page, locale: 'es-MX' },
+    };
+    render(<Register {...spanishProps} />);
+
+    expect(screen.getAllByText('Obligatorio')).toHaveLength(11);
+    expect(screen.getByLabelText(/Número de teléfono/i)).not.toBeRequired();
+    expect(screen.getByLabelText(/^Contraseña/i)).not.toBeRequired();
+    expect(screen.getByLabelText(/^Dirección/i)).not.toBeRequired();
+  });
 });

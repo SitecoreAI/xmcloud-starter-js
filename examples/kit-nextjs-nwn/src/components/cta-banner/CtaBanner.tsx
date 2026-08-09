@@ -1,6 +1,7 @@
 import { cva } from 'class-variance-authority';
-import { Text, Link } from '@sitecore-content-sdk/nextjs';
+import { Text } from '@sitecore-content-sdk/nextjs';
 import { Button } from '@/components/ui/button';
+import { CompatibleLink } from '@/components/content-sdk/CompatibleLink';
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import type { CtaBannerProps } from './cta-banner.props';
@@ -79,7 +80,11 @@ export const Default: React.FC<CtaBannerProps> = (props) => {
               {/* Render button with link */}
               {linkOptional && (
                 <Button className={ctaButtonVariants({ colorScheme })} asChild>
-                  <Link field={linkOptional} editable={isEditing} />
+                  <CompatibleLink
+                    field={linkOptional}
+                    editable={isEditing}
+                    prefetch={false}
+                  />
                 </Button>
               )}
             </AnimatedSection>

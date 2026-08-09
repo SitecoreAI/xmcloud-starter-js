@@ -9,6 +9,12 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import { Button } from '@/components/ui/button';
 import { NoDataFallback } from '@/utils/NoDataFallback';
+import {
+  getLocaleOption,
+  getLocalizedPathname,
+  type SupportedLocale,
+} from '@/i18n/locales';
+import { LocaleSelector } from './LocaleSelector';
 import type {
   GlobalHeaderProps,
   PrimaryNavItemProps,
@@ -20,12 +26,58 @@ const navItemKey = (item: PrimaryNavItemProps, index: number): string =>
   item.link?.jsonValue?.value?.href ||
   String(index);
 
-const secondaryNavigation = [
-  { label: 'Account & Billing', href: '/account-billing' },
-  { label: 'Ways to Save', href: '/ways-to-save/rebates-offers' },
-  { label: 'Services', href: '/services' },
-  { label: 'Get Natural Gas', href: '/get-natural-gas' },
-  { label: 'Safety', href: '/safety' },
+const headerCopy = {
+  en: {
+    home: 'NW Natural home',
+    skip: 'Skip to main content',
+    utilityNavigation: 'Utility navigation',
+    primaryNavigation: 'Primary navigation',
+    servicesNavigation: 'Services navigation',
+    mobileNavigation: 'Mobile navigation',
+    customerServices: 'Customer services',
+    customerService: 'Customer service',
+    gasOdor: 'Natural gas odor?',
+    openMenu: 'Open navigation menu',
+    closeMenu: 'Close navigation menu',
+  },
+  'es-MX': {
+    home: 'Inicio de NW Natural',
+    skip: 'Saltar al contenido principal',
+    utilityNavigation: 'Navegación de utilidades',
+    primaryNavigation: 'Navegación principal',
+    servicesNavigation: 'Navegación de servicios',
+    mobileNavigation: 'Navegación móvil',
+    customerServices: 'Servicios al cliente',
+    customerService: 'Servicio al cliente',
+    gasOdor: '¿Huele a gas natural?',
+    openMenu: 'Abrir menú de navegación',
+    closeMenu: 'Cerrar menú de navegación',
+  },
+} as const;
+
+const secondaryNavigationLabels = {
+  en: [
+    'Account & Billing',
+    'Ways to Save',
+    'Services',
+    'Get Natural Gas',
+    'Safety',
+  ],
+  'es-MX': [
+    'Cuenta y facturación',
+    'Formas de ahorrar',
+    'Servicios',
+    'Obtenga gas natural',
+    'Seguridad',
+  ],
+} as const;
+
+const secondaryNavigationHrefs = [
+  '/account-billing',
+  '/ways-to-save/rebates-offers',
+  '/services',
+  '/get-natural-gas',
+  '/safety',
 ] as const;
 
 const isLegacyStarterLogo = (value: unknown): boolean =>
@@ -69,36 +121,74 @@ const navItem = (
   children: { results: children },
 });
 
-const fallbackPrimaryItems: PrimaryNavItemProps[] = [
-  navItem('Residential', '/', [
-    navItem('Account & Billing', '/account-billing'),
-    navItem('Ways to Save', '/ways-to-save/rebates-offers'),
-    navItem('Services', '/services'),
-    navItem('Get Natural Gas', '/get-natural-gas'),
-    navItem('Safety', '/safety'),
-  ]),
-  navItem('Business', 'https://www.nwnatural.com/business', [], true),
-  navItem('About Us', '/about-us', [
-    navItem('Company Overview', '/about-us/company-overview'),
-    navItem('Renewable Natural Gas', '/about-us/renewable-natural-gas'),
-    navItem('Less We Can', '/about-us/less-we-can'),
-  ]),
-];
+const getFallbackPrimaryItems = (
+  locale: SupportedLocale,
+): PrimaryNavItemProps[] => {
+  const localize = (href: string) => getLocalizedPathname(href, locale);
 
-const fallbackUtilityItems = [
-  navItem('Search', '/search'),
-  navItem('Contact Us', '/contact-us'),
-  navItem('Sign In', '/account-billing/login'),
-  navItem('Register', '/account-billing/register'),
-];
+  if (locale === 'es-MX') {
+    return [
+      navItem('Residencial', localize('/'), [
+        navItem('Cuenta y facturación', localize('/account-billing')),
+        navItem('Formas de ahorrar', localize('/ways-to-save/rebates-offers')),
+        navItem('Servicios', localize('/services')),
+        navItem('Obtenga gas natural', localize('/get-natural-gas')),
+        navItem('Seguridad', localize('/safety')),
+      ]),
+      navItem('Empresas', 'https://www.nwnatural.com/business', [], true),
+      navItem('Acerca de nosotros', localize('/about-us'), [
+        navItem(
+          'Descripción de la empresa',
+          localize('/about-us/company-overview'),
+        ),
+        navItem(
+          'Gas natural renovable',
+          localize('/about-us/renewable-natural-gas'),
+        ),
+        navItem('Less We Can', localize('/about-us/less-we-can')),
+      ]),
+    ];
+  }
 
-const fallbackHeaderContact: LinkField = {
+  return [
+    navItem('Residential', '/', [
+      navItem('Account & Billing', '/account-billing'),
+      navItem('Ways to Save', '/ways-to-save/rebates-offers'),
+      navItem('Services', '/services'),
+      navItem('Get Natural Gas', '/get-natural-gas'),
+      navItem('Safety', '/safety'),
+    ]),
+    navItem('Business', 'https://www.nwnatural.com/business', [], true),
+    navItem('About Us', '/about-us', [
+      navItem('Company Overview', '/about-us/company-overview'),
+      navItem('Renewable Natural Gas', '/about-us/renewable-natural-gas'),
+      navItem('Less We Can', '/about-us/less-we-can'),
+    ]),
+  ];
+};
+
+const getFallbackUtilityItems = (locale: SupportedLocale) => {
+  const localize = (href: string) => getLocalizedPathname(href, locale);
+  const labels =
+    locale === 'es-MX'
+      ? ['Buscar', 'Contáctenos', 'Iniciar sesión', 'Registrarse']
+      : ['Search', 'Contact Us', 'Sign In', 'Register'];
+
+  return [
+    navItem(labels[0], localize('/search')),
+    navItem(labels[1], localize('/contact-us')),
+    navItem(labels[2], localize('/account-billing/login')),
+    navItem(labels[3], localize('/account-billing/register')),
+  ];
+};
+
+const getFallbackHeaderContact = (locale: SupportedLocale): LinkField => ({
   value: {
-    href: '/account-billing/login',
-    text: 'Access your account',
+    href: getLocalizedPathname('/account-billing/login', locale),
+    text: locale === 'es-MX' ? 'Acceda a su cuenta' : 'Access your account',
     linktype: 'internal',
   },
-};
+});
 
 type NavItemWithOptionalChildren = UtilityNavigationItemProps & {
   children?: { results?: PrimaryNavItemProps[] };
@@ -117,17 +207,20 @@ const hasLegacyNavItem = (item: NavItemWithOptionalChildren): boolean => {
 const hasRequiredUtilityItems = (
   items: UtilityNavigationItemProps[],
 ): boolean => {
-  const requiredDestinations = new Map([
-    ['search', '/search'],
-    ['contact us', '/contact-us'],
-    ['sign in', '/account-billing/login'],
-    ['register', '/account-billing/register'],
-  ]);
+  const requiredDestinations = [
+    '/search',
+    '/contact-us',
+    '/account-billing/login',
+    '/account-billing/register',
+  ];
 
-  return Array.from(requiredDestinations).every(([label, href]) =>
+  return requiredDestinations.every((href) =>
     items.some((item) => {
-      const value = item.link?.jsonValue?.value;
-      return value?.text?.trim().toLowerCase() === label && value.href === href;
+      const authoredHref = item.link?.jsonValue?.value?.href;
+      return (
+        Boolean(authoredHref) &&
+        getLocalizedPathname(authoredHref ?? '/', 'en') === href
+      );
     }),
   );
 };
@@ -136,6 +229,12 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
   const { fields, isPageEditing } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const header = fields?.data?.item;
+  const currentLocale = getLocaleOption(props.page.locale).code;
+  const copy = headerCopy[currentLocale];
+  const secondaryNavigation = secondaryNavigationHrefs.map((href, index) => ({
+    href: getLocalizedPathname(href, currentLocale),
+    label: secondaryNavigationLabels[currentLocale][index],
+  }));
 
   if (!fields || !header) {
     return <NoDataFallback componentName="Global Header" />;
@@ -153,14 +252,14 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
     !isPageEditing &&
     (authoredPrimaryItems.length === 0 ||
       authoredPrimaryItems.some(hasLegacyNavItem))
-      ? fallbackPrimaryItems
+      ? getFallbackPrimaryItems(currentLocale)
       : authoredPrimaryItems;
   const utilityItems =
     !isPageEditing &&
     (authoredUtilityItems.length === 0 ||
       authoredUtilityItems.some(hasLegacyNavItem) ||
       !hasRequiredUtilityItems(authoredUtilityItems))
-      ? fallbackUtilityItems
+      ? getFallbackUtilityItems(currentLocale)
       : authoredUtilityItems;
   const logoField = logo?.jsonValue;
   const hasLogo =
@@ -181,8 +280,25 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         authoredHeaderContact?.value?.href !== '/account-billing/login') ||
       !authoredHeaderContact?.value?.href);
   const displayHeaderContact = useFallbackHeaderContact
-    ? fallbackHeaderContact
+    ? getFallbackHeaderContact(currentLocale)
     : authoredHeaderContact;
+
+  const localizeLinkField = <T extends LinkField | undefined>(
+    linkField: T,
+  ): T => {
+    if (!linkField) return linkField;
+
+    const href = linkField?.value?.href;
+    if (isPageEditing || !href?.startsWith('/')) return linkField;
+
+    return {
+      ...linkField,
+      value: {
+        ...linkField.value,
+        href: getLocalizedPathname(href, currentLocale),
+      },
+    } as T;
+  };
 
   const brand = hasLogo ? (
     <ImageWrapper
@@ -190,7 +306,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       wrapperClass="w-[11.4rem] sm:w-[14.4rem]"
       className="h-auto w-full object-contain"
       sizes="(max-width: 640px) 182px, 230px"
-      alt="NW Natural home"
+      alt={copy.home}
       page={props.page}
     />
   ) : (
@@ -204,7 +320,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
     index: number,
     isMobile = false,
   ) => {
-    const linkField = item.link?.jsonValue;
+    const linkField = localizeLinkField(item.link?.jsonValue);
     const children = item.children?.results ?? [];
     const canRenderLink = isPageEditing || Boolean(linkField?.value?.href);
 
@@ -228,7 +344,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
               {children.map((child, childIndex) => (
                 <li key={'nwn-mobile-child-' + navItemKey(child, childIndex)}>
                   <CompatibleLink
-                    field={child.link?.jsonValue}
+                    field={localizeLinkField(child.link?.jsonValue)}
                     editable={isPageEditing}
                     prefetch={false}
                     className="inline-flex py-1 text-base font-medium text-slate-700 hover:text-primary"
@@ -267,7 +383,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
             {children.map((child, childIndex) => (
               <li key={'nwn-desktop-child-' + navItemKey(child, childIndex)}>
                 <CompatibleLink
-                  field={child.link?.jsonValue}
+                  field={localizeLinkField(child.link?.jsonValue)}
                   editable={isPageEditing}
                   prefetch={false}
                   className="block px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-cyan-50 hover:text-primary focus-visible:bg-cyan-50 focus-visible:text-primary"
@@ -290,17 +406,17 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         href="#content"
         className="sr-only z-[100] bg-white px-4 py-3 text-primary focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
       >
-        Skip to main content
+        {copy.skip}
       </a>
 
       <div className="hidden border-b border-slate-200 lg:block">
         <div className="nwn-content-shell flex min-h-9 items-center justify-between gap-6 text-sm">
-          <nav aria-label="Utility navigation">
+          <nav aria-label={copy.utilityNavigation}>
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
               {utilityItems.map((item, index) => (
                 <li key={'nwn-utility-' + index}>
                   <CompatibleLink
-                    field={item.link?.jsonValue}
+                    field={localizeLinkField(item.link?.jsonValue)}
                     editable={isPageEditing}
                     prefetch={false}
                     className="font-medium text-slate-600 hover:text-primary"
@@ -314,15 +430,14 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
               href="tel:+18004224012"
               className="font-semibold text-slate-700 hover:text-primary"
             >
-              Customer service{' '}
+              {copy.customerService}{' '}
               <span className="text-primary">800-422-4012</span>
             </a>
             <a
               href="tel:+18008823377"
               className="font-semibold text-slate-700 hover:text-primary"
             >
-              Natural gas odor?{' '}
-              <span className="text-primary">800-882-3377</span>
+              {copy.gasOdor} <span className="text-primary">800-882-3377</span>
             </a>
           </div>
         </div>
@@ -333,7 +448,11 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
           {isPageEditing ? (
             brand
           ) : (
-            <Link href="/" aria-label="NW Natural home" prefetch={false}>
+            <Link
+              href={getLocalizedPathname('/', currentLocale)}
+              aria-label={copy.home}
+              prefetch={false}
+            >
               {brand}
             </Link>
           )}
@@ -341,7 +460,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
 
         <nav
           className="hidden self-stretch lg:block"
-          aria-label="Primary navigation"
+          aria-label={copy.primaryNavigation}
         >
           <ul className="flex h-full items-center gap-7">
             {primaryItems.map((item, index) => renderPrimaryLink(item, index))}
@@ -349,9 +468,10 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-3 lg:flex">
+          <LocaleSelector locale={currentLocale} />
           {displayHeaderContact && (
             <EditableButton
-              buttonLink={displayHeaderContact}
+              buttonLink={localizeLinkField(displayHeaderContact)}
               isPageEditing={isPageEditing && !useFallbackHeaderContact}
               variant="default"
               className="min-h-11 border border-primary px-5 text-base"
@@ -360,25 +480,30 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
           )}
         </div>
 
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          className="ml-auto h-12 w-12 text-primary lg:hidden"
-          aria-expanded={isMenuOpen}
-          aria-controls="nwn-mobile-navigation"
-          aria-label={
-            isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
-          }
-          onClick={() => setIsMenuOpen((open) => !open)}
-        >
-          {isMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-        </Button>
+        <div className="ml-auto flex items-center gap-2 lg:hidden">
+          <LocaleSelector locale={currentLocale} />
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-12 w-12 text-primary"
+            aria-expanded={isMenuOpen}
+            aria-controls="nwn-mobile-navigation"
+            aria-label={isMenuOpen ? copy.closeMenu : copy.openMenu}
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            {isMenuOpen ? (
+              <X aria-hidden="true" />
+            ) : (
+              <Menu aria-hidden="true" />
+            )}
+          </Button>
+        </div>
       </div>
 
       <nav
         className="hidden border-y border-slate-200 bg-[#f4f5f7] lg:block"
-        aria-label="Services navigation"
+        aria-label={copy.servicesNavigation}
       >
         <ul className="nwn-content-shell flex min-h-10 items-stretch">
           {secondaryNavigation.map((item) => (
@@ -403,7 +528,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
           id="nwn-mobile-navigation"
           className="max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-slate-200 bg-white px-4 pb-8 shadow-lg lg:hidden"
         >
-          <nav className="mx-auto max-w-xl" aria-label="Mobile navigation">
+          <nav className="mx-auto max-w-xl" aria-label={copy.mobileNavigation}>
             <ul>
               {primaryItems.map((item, index) =>
                 renderPrimaryLink(item, index, true),
@@ -411,7 +536,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
             </ul>
             <div className="mt-5 border-y border-slate-200 bg-[#f4f5f7] px-4 py-2">
               <p className="py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-                Customer services
+                {copy.customerServices}
               </p>
               <ul>
                 {secondaryNavigation.map((item) => (
@@ -433,7 +558,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                 {utilityItems.map((item, index) => (
                   <li key={'nwn-mobile-utility-' + index}>
                     <CompatibleLink
-                      field={item.link?.jsonValue}
+                      field={localizeLinkField(item.link?.jsonValue)}
                       editable={isPageEditing}
                       prefetch={false}
                       className="text-sm font-semibold text-slate-600 hover:text-primary"
@@ -448,21 +573,21 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                 href="tel:+18004224012"
                 className="block border-l-4 border-slate-300 bg-slate-50 px-4 py-3 font-semibold text-slate-800"
               >
-                Customer service{' '}
+                {copy.customerService}{' '}
                 <span className="text-primary">800-422-4012</span>
               </a>
               <a
                 href="tel:+18008823377"
                 className="block border-l-4 border-cyan-500 bg-cyan-50 px-4 py-3 font-semibold text-slate-800"
               >
-                Natural gas odor?{' '}
+                {copy.gasOdor}{' '}
                 <span className="text-primary">800-882-3377</span>
               </a>
             </div>
             {displayHeaderContact && (
               <div className="mt-5">
                 <EditableButton
-                  buttonLink={displayHeaderContact}
+                  buttonLink={localizeLinkField(displayHeaderContact)}
                   isPageEditing={isPageEditing && !useFallbackHeaderContact}
                   variant="default"
                   className="min-h-12 w-full text-base"

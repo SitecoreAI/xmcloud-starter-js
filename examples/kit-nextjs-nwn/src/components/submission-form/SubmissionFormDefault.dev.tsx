@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { identity } from '@sitecore-content-sdk/events';
 import { Text } from '@sitecore-content-sdk/nextjs';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -20,45 +19,144 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
+import { getLocaleOption, type SupportedLocale } from '@/i18n/locales';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 
 import type { SubmissionFormProps } from './submission-form.props';
 
-const contactFormSchema = z.object({
-  firstName: z
-    .string()
-    .trim()
-    .min(1, 'First name is required.')
-    .max(100, 'First name must be 100 characters or fewer.'),
-  lastName: z
-    .string()
-    .trim()
-    .min(1, 'Last name is required.')
-    .max(100, 'Last name must be 100 characters or fewer.'),
-  email: z
-    .string()
-    .trim()
-    .min(1, 'Email address is required.')
-    .email('Please enter a valid email address.'),
-  message: z
-    .string()
-    .trim()
-    .min(1, 'A message is required.')
-    .max(5000, 'Message must be 5,000 characters or fewer.'),
-});
+type ContactFormCopy = {
+  intro: string;
+  emergency: string;
+  thankYou: string;
+  received: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+  sending: string;
+  send: string;
+  privacyPrefix: string;
+  privacyNotice: string;
+  privacyAria: string;
+  submissionError: string;
+  validation: {
+    firstNameRequired: string;
+    firstNameMax: string;
+    lastNameRequired: string;
+    lastNameMax: string;
+    emailRequired: string;
+    emailInvalid: string;
+    messageRequired: string;
+    messageMax: string;
+  };
+};
 
-type ContactFormValues = z.infer<typeof contactFormSchema>;
+const contactFormCopy: Record<SupportedLocale, ContactFormCopy> = {
+  en: {
+    intro:
+      'Have a question about your NW Natural service? Send us a message and our team will follow up.',
+    emergency: 'If you smell natural gas or have an emergency, call',
+    thankYou: 'Thank you for contacting us.',
+    received:
+      'Your message has been received. A member of our team will follow up soon.',
+    firstName: 'First name',
+    lastName: 'Last name',
+    email: 'Email address',
+    message: 'Message',
+    sending: 'Sending…',
+    send: 'Send message',
+    privacyPrefix: 'By submitting, you agree to our',
+    privacyNotice: 'Privacy Notice',
+    privacyAria: 'Privacy Notice (opens in a new tab)',
+    submissionError: 'We could not send your message. Please try again.',
+    validation: {
+      firstNameRequired: 'First name is required.',
+      firstNameMax: 'First name must be 100 characters or fewer.',
+      lastNameRequired: 'Last name is required.',
+      lastNameMax: 'Last name must be 100 characters or fewer.',
+      emailRequired: 'Email address is required.',
+      emailInvalid: 'Please enter a valid email address.',
+      messageRequired: 'A message is required.',
+      messageMax: 'Message must be 5,000 characters or fewer.',
+    },
+  },
+  'es-MX': {
+    intro:
+      '¿Tiene alguna pregunta sobre su servicio de NW Natural? Envíenos un mensaje y nuestro equipo se comunicará con usted.',
+    emergency: 'Si huele a gas natural o tiene una emergencia, llame al',
+    thankYou: 'Gracias por comunicarse con nosotros.',
+    received:
+      'Recibimos su mensaje. Un integrante de nuestro equipo se comunicará con usted pronto.',
+    firstName: 'Nombre',
+    lastName: 'Apellido',
+    email: 'Correo electrónico',
+    message: 'Mensaje',
+    sending: 'Enviando…',
+    send: 'Enviar mensaje',
+    privacyPrefix: 'Al enviar este formulario, acepta nuestro',
+    privacyNotice: 'Aviso de privacidad',
+    privacyAria: 'Aviso de privacidad (se abre en una pestaña nueva)',
+    submissionError: 'No pudimos enviar su mensaje. Inténtelo de nuevo.',
+    validation: {
+      firstNameRequired: 'El nombre es obligatorio.',
+      firstNameMax: 'El nombre debe tener 100 caracteres o menos.',
+      lastNameRequired: 'El apellido es obligatorio.',
+      lastNameMax: 'El apellido debe tener 100 caracteres o menos.',
+      emailRequired: 'El correo electrónico es obligatorio.',
+      emailInvalid: 'Ingrese un correo electrónico válido.',
+      messageRequired: 'El mensaje es obligatorio.',
+      messageMax: 'El mensaje debe tener 5,000 caracteres o menos.',
+    },
+  },
+};
 
-const submissionErrorMessage =
-  'We could not send your message. Please try again.';
+const createContactFormSchema = (copy: ContactFormCopy) =>
+  z.object({
+    firstName: z
+      .string()
+      .trim()
+      .min(1, copy.validation.firstNameRequired)
+      .max(100, copy.validation.firstNameMax),
+    lastName: z
+      .string()
+      .trim()
+      .min(1, copy.validation.lastNameRequired)
+      .max(100, copy.validation.lastNameMax),
+    email: z
+      .string()
+      .trim()
+      .min(1, copy.validation.emailRequired)
+      .email(copy.validation.emailInvalid),
+    message: z
+      .string()
+      .trim()
+      .min(1, copy.validation.messageRequired)
+      .max(5000, copy.validation.messageMax),
+  });
+
+type ContactFormValues = z.infer<ReturnType<typeof createContactFormSchema>>;
 
 export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submissionError, setSubmissionError] = useState<string>();
   const { fields } = props || {};
+  const locale = getLocaleOption(props.page.locale).code;
+  const copy = contactFormCopy[locale];
+  const authoredTitle = fields?.title?.value;
+  const hasInternalTitle =
+    typeof authoredTitle === 'string' &&
+    /^NWN[_-].*(?:handoff|transferencia)$/i.test(authoredTitle);
+  const displayTitle =
+    hasInternalTitle && !props.isPageEditing
+      ? {
+          ...fields.title,
+          value:
+            locale === 'es-MX' ? '¿Cómo podemos ayudarle?' : 'How can we help?',
+        }
+      : fields?.title;
 
   const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(createContactFormSchema(copy)),
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -83,13 +181,14 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
 
     if (shouldIdentifyWithCdp) {
       if (!config.api?.edge?.clientContextId) {
-        setSubmissionError(submissionErrorMessage);
+        setSubmissionError(copy.submissionError);
         return;
       }
 
       const normalizedEmail = values.email.trim().toLowerCase();
 
       try {
+        const { identity } = await import('@sitecore-content-sdk/events');
         const response = await identity({
           channel: 'WEB',
           currency: 'USD',
@@ -116,7 +215,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
           throw new Error('Sitecore CDP did not accept the identity event.');
         }
       } catch {
-        setSubmissionError(submissionErrorMessage);
+        setSubmissionError(copy.submissionError);
         return;
       }
     }
@@ -135,19 +234,18 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
     >
       <div className="mx-auto grid w-full max-w-5xl overflow-hidden border border-slate-200 bg-white shadow-sm lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
         <div className="bg-[#eef6f7] p-7 sm:p-10 lg:p-12">
-          {(fields.title?.value || props.isPageEditing) && (
+          {(displayTitle?.value || props.isPageEditing) && (
             <Text
               tag="h2"
               className="max-w-[16ch] text-balance font-heading text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.08] text-slate-900"
-              field={fields.title}
+              field={displayTitle}
             />
           )}
           <p className="mt-5 max-w-prose text-base leading-7 text-slate-700 sm:text-lg">
-            Have a question about your NW Natural service? Send us a message and
-            our team will follow up.
+            {copy.intro}
           </p>
           <p className="mt-5 border-l-4 border-cyan-500 pl-4 text-sm leading-6 text-slate-700">
-            If you smell natural gas or have an emergency, call{' '}
+            {copy.emergency}{' '}
             <a
               className="font-semibold text-primary underline underline-offset-2"
               href="tel:8008823377"
@@ -166,11 +264,10 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
               aria-live="polite"
             >
               <h2 className="font-heading text-2xl font-semibold text-slate-900">
-                Thank you for contacting us.
+                {copy.thankYou}
               </h2>
               <p className="mt-3 text-base leading-7 text-slate-700">
-                Your message has been received. A member of our team will follow
-                up soon.
+                {copy.received}
               </p>
             </div>
           ) : (
@@ -188,7 +285,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base font-semibold text-slate-800">
-                          First name
+                          {copy.firstName}
                         </FormLabel>
                         <FormControl>
                           <Input
@@ -209,7 +306,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base font-semibold text-slate-800">
-                          Last name
+                          {copy.lastName}
                         </FormLabel>
                         <FormControl>
                           <Input
@@ -232,7 +329,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-base font-semibold text-slate-800">
-                        Email address
+                        {copy.email}
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -255,7 +352,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-base font-semibold text-slate-800">
-                        Message
+                        {copy.message}
                       </FormLabel>
                       <FormControl>
                         <Textarea
@@ -287,18 +384,18 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
                   className="min-h-12 w-full px-7 text-base font-semibold sm:w-auto"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending…' : 'Send message'}
+                  {isSubmitting ? copy.sending : copy.send}
                 </Button>
                 <p className="text-sm leading-6 text-slate-600">
-                  By submitting, you agree to our{' '}
+                  {copy.privacyPrefix}{' '}
                   <a
                     href="https://www.nwnatural.com/privacy-notice"
                     target="_blank"
                     rel="noreferrer"
                     className="font-semibold text-primary underline underline-offset-2"
-                    aria-label="Privacy Notice (opens in a new tab)"
+                    aria-label={copy.privacyAria}
                   >
-                    Privacy Notice
+                    {copy.privacyNotice}
                   </a>
                   .
                 </p>

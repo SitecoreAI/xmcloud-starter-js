@@ -2,7 +2,9 @@
 
 import React, { forwardRef } from 'react';
 import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Link as ContentSdkLink } from '@sitecore-content-sdk/nextjs';
+import { getLocalizedPathname, getPathLocale } from '@/i18n/locales';
 
 const FILE_EXTENSION_MATCHER = /^\/.*\.\w+$/;
 
@@ -10,7 +12,12 @@ type CompatibleLinkProps = React.ComponentProps<typeof ContentSdkLink> & {
   internalLinkMatcher?: RegExp;
 };
 
-export const CompatibleLink = forwardRef<HTMLAnchorElement, CompatibleLinkProps>((props, ref) => {
+export const CompatibleLink = forwardRef<
+  HTMLAnchorElement,
+  CompatibleLinkProps
+>((props, ref) => {
+  const pathname = usePathname() || '/';
+  const currentLocale = getPathLocale(pathname);
   const {
     field,
     editable = true,
@@ -22,20 +29,25 @@ export const CompatibleLink = forwardRef<HTMLAnchorElement, CompatibleLinkProps>
 
   if (
     !field ||
-    (!(field as { value?: unknown }).value && !(field as { href?: unknown }).href && !field.metadata)
+    (!(field as { value?: unknown }).value &&
+      !(field as { href?: unknown }).href &&
+      !field.metadata)
   ) {
     return null;
   }
 
-  const value = ('href' in field
-    ? field
-    : (field as { value?: Record<string, unknown> }).value) as Record<string, unknown> | undefined;
+  const value = (
+    'href' in field
+      ? field
+      : (field as { value?: Record<string, unknown> }).value
+  ) as Record<string, unknown> | undefined;
   const { href, querystring, anchor } = value || {};
   const isEditing = editable && !!field.metadata;
 
   if (typeof href === 'string' && href && !isEditing) {
     const displayText = typeof value?.text === 'string' ? value.text : href;
-    const text = showLinkTextWithChildrenPresent || !children ? displayText : null;
+    const text =
+      showLinkTextWithChildrenPresent || !children ? displayText : null;
     const isMatching = internalLinkMatcher.test(href);
     const isFileUrl = FILE_EXTENSION_MATCHER.test(href);
     const normalizedQuery =
@@ -50,7 +62,10 @@ export const CompatibleLink = forwardRef<HTMLAnchorElement, CompatibleLinkProps>
           ? anchor
           : `#${anchor}`
         : '';
-    const nextHref = `${href}${normalizedQuery}${normalizedHash}`;
+    const nextHref = getLocalizedPathname(
+      `${href}${normalizedQuery}${normalizedHash}`,
+      currentLocale,
+    );
 
     if (isMatching && !isFileUrl) {
       return (

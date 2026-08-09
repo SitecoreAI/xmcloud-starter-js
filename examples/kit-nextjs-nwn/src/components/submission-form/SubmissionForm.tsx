@@ -1,23 +1,8 @@
 'use client';
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { SubmissionFormProps } from './submission-form.props';
-
-// Dynamically import form variants — defers the client-side form and event SDKs.
-const SubmissionFormDefault = dynamic(
-  () =>
-    import('./SubmissionFormDefault.dev').then(
-      (mod) => mod.SubmissionFormDefault,
-    ),
-  { ssr: false },
-);
-const SubmissionFormCentered = dynamic(
-  () =>
-    import('./SubmissionFormCentered.dev').then(
-      (mod) => mod.SubmissionFormCentered,
-    ),
-  { ssr: false },
-);
+import { SubmissionFormDefault } from './SubmissionFormDefault.dev';
+import { SubmissionFormCentered } from './SubmissionFormCentered.dev';
 
 // Data source checks are done in the child components
 // Default display of the component

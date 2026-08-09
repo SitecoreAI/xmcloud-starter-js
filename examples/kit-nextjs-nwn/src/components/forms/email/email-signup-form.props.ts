@@ -4,11 +4,13 @@ import type { EnumValues } from '@/enumerations/generic.enum';
 import type { ButtonVariants } from '@/enumerations/ButtonStyle.enum';
 
 export type EmailSignupFormFields = {
+  emailLabel?: Field<string>;
   emailPlaceholder?: Field<string>;
   emailErrorMessage?: Field<string>;
   emailSubmitLabel?: Field<string>;
   emailSuccessMessage?: Field<string>;
   submissionErrorMessage?: Field<string>;
+  emailSubmittingLabel?: Field<string>;
   buttonVariant?: EnumValues<typeof ButtonVariants>;
 };
 

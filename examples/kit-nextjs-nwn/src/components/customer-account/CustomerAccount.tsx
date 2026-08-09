@@ -21,6 +21,11 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import {
+  getLocaleOption,
+  getLocalizedPathname,
+  type SupportedLocale,
+} from '@/i18n/locales';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 
@@ -29,43 +34,148 @@ import type {
   CustomerAccountProps,
 } from './customer-account.props';
 
-const loginSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .min(1, 'Email address is required.')
-    .email('Please enter a valid email address.'),
-  password: z.string().min(1, 'Password is required.'),
-});
+const accountCopy = {
+  en: {
+    required: 'Required',
+    requestError: 'We could not complete your request. Please try again.',
+    emailRequired: 'Email address is required.',
+    emailInvalid: 'Please enter a valid email address.',
+    passwordRequired: 'Password is required.',
+    firstNameRequired: 'First name is required.',
+    firstNameTooLong: 'First name must be 100 characters or fewer.',
+    lastNameRequired: 'Last name is required.',
+    lastNameTooLong: 'Last name must be 100 characters or fewer.',
+    accountEyebrow: 'NW Natural online account',
+    loginTitle: 'Access your account',
+    loginDescription:
+      'Sign in to manage your bill, payment options, and natural gas service.',
+    billingBenefit: 'Review billing and payment information.',
+    secureBenefit: 'Manage your account in one secure place.',
+    signIn: 'Sign in',
+    signingIn: 'Signing in…',
+    email: 'Email address',
+    password: 'Password',
+    loginPrompt: 'Need an online account?',
+    register: 'Register',
+    loginSuccessTitle: 'You’re signed in',
+    loginSuccessMessage:
+      'Your NW Natural account is ready. You can now manage billing, payments, and service information.',
+    continueHome: 'Continue to your homepage',
+    registerTitle: 'Register your account',
+    registerDescription:
+      'Create an online account to manage billing, payments, and natural gas service information.',
+    yourInformation: 'Your information',
+    firstName: 'First name',
+    lastName: 'Last name',
+    phone: 'Phone number',
+    confirmPassword: 'Confirm password',
+    serviceAddress: 'Service address',
+    address: 'Address',
+    addressLine2: 'Address line 2',
+    city: 'City',
+    state: 'State',
+    zipCode: 'ZIP code',
+    registering: 'Registering…',
+    privacyPrefix: 'By registering, you agree to our',
+    privacyNotice: 'Privacy Notice',
+    registrationPrompt: 'Already registered?',
+    accessAccount: 'Access your account',
+    registrationSuccessTitle: 'Your registration is complete',
+    registrationSuccessMessage:
+      'Your NW Natural online account is ready. Sign in with your email address to continue.',
+  },
+  'es-MX': {
+    required: 'Obligatorio',
+    requestError: 'No pudimos completar su solicitud. Inténtelo de nuevo.',
+    emailRequired: 'El correo electrónico es obligatorio.',
+    emailInvalid: 'Ingrese un correo electrónico válido.',
+    passwordRequired: 'La contraseña es obligatoria.',
+    firstNameRequired: 'El nombre es obligatorio.',
+    firstNameTooLong: 'El nombre debe tener 100 caracteres o menos.',
+    lastNameRequired: 'El apellido es obligatorio.',
+    lastNameTooLong: 'El apellido debe tener 100 caracteres o menos.',
+    accountEyebrow: 'Cuenta en línea de NW Natural',
+    loginTitle: 'Acceda a su cuenta',
+    loginDescription:
+      'Inicie sesión para administrar su factura, opciones de pago y servicio de gas natural.',
+    billingBenefit: 'Consulte la información de facturación y pagos.',
+    secureBenefit: 'Administre su cuenta de manera segura desde un solo lugar.',
+    signIn: 'Iniciar sesión',
+    signingIn: 'Iniciando sesión…',
+    email: 'Correo electrónico',
+    password: 'Contraseña',
+    loginPrompt: '¿Necesita una cuenta en línea?',
+    register: 'Registrarse',
+    loginSuccessTitle: 'Sesión iniciada',
+    loginSuccessMessage:
+      'Su cuenta de NW Natural está lista. Ahora puede administrar la facturación, los pagos y la información de servicio.',
+    continueHome: 'Continuar a la página principal',
+    registerTitle: 'Registre su cuenta',
+    registerDescription:
+      'Cree una cuenta en línea para administrar la facturación, los pagos y la información de su servicio de gas natural.',
+    yourInformation: 'Su información',
+    firstName: 'Nombre',
+    lastName: 'Apellido',
+    phone: 'Número de teléfono',
+    confirmPassword: 'Confirmar contraseña',
+    serviceAddress: 'Dirección de servicio',
+    address: 'Dirección',
+    addressLine2: 'Línea 2 de dirección',
+    city: 'Ciudad',
+    state: 'Estado',
+    zipCode: 'Código postal',
+    registering: 'Registrando…',
+    privacyPrefix: 'Al registrarse, acepta nuestro',
+    privacyNotice: 'Aviso de privacidad',
+    registrationPrompt: '¿Ya se registró?',
+    accessAccount: 'Acceda a su cuenta',
+    registrationSuccessTitle: 'Su registro está completo',
+    registrationSuccessMessage:
+      'Su cuenta en línea de NW Natural está lista. Inicie sesión con su correo electrónico para continuar.',
+  },
+} as const;
 
-const registrationSchema = z.object({
-  firstName: z
-    .string()
-    .trim()
-    .min(1, 'First name is required.')
-    .max(100, 'First name must be 100 characters or fewer.'),
-  lastName: z
-    .string()
-    .trim()
-    .min(1, 'Last name is required.')
-    .max(100, 'Last name must be 100 characters or fewer.'),
-  email: z
-    .string()
-    .trim()
-    .min(1, 'Email address is required.')
-    .email('Please enter a valid email address.'),
-  password: z.string(),
-  confirmPassword: z.string(),
-  phone: z.string(),
-  address: z.string(),
-  addressLine2: z.string(),
-  city: z.string(),
-  state: z.string(),
-  zipCode: z.string(),
-});
+type AccountCopy = (typeof accountCopy)[SupportedLocale];
 
-type LoginValues = z.infer<typeof loginSchema>;
-type RegistrationValues = z.infer<typeof registrationSchema>;
+const createLoginSchema = (copy: AccountCopy) =>
+  z.object({
+    email: z
+      .string()
+      .trim()
+      .min(1, copy.emailRequired)
+      .email(copy.emailInvalid),
+    password: z.string().min(1, copy.passwordRequired),
+  });
+
+const createRegistrationSchema = (copy: AccountCopy) =>
+  z.object({
+    firstName: z
+      .string()
+      .trim()
+      .min(1, copy.firstNameRequired)
+      .max(100, copy.firstNameTooLong),
+    lastName: z
+      .string()
+      .trim()
+      .min(1, copy.lastNameRequired)
+      .max(100, copy.lastNameTooLong),
+    email: z
+      .string()
+      .trim()
+      .min(1, copy.emailRequired)
+      .email(copy.emailInvalid),
+    password: z.string(),
+    confirmPassword: z.string(),
+    phone: z.string(),
+    address: z.string(),
+    addressLine2: z.string(),
+    city: z.string(),
+    state: z.string(),
+    zipCode: z.string(),
+  });
+
+type LoginValues = z.infer<ReturnType<typeof createLoginSchema>>;
+type RegistrationValues = z.infer<ReturnType<typeof createRegistrationSchema>>;
 
 type IdentityValues = {
   email: string;
@@ -75,14 +185,12 @@ type IdentityValues = {
 
 const inputClasses =
   'min-h-12 border-slate-400 bg-white px-4 text-base text-slate-900 placeholder:text-slate-500 focus-visible:ring-primary';
-const cdpErrorMessage = 'We could not complete your request. Please try again.';
-
-const RequiredMark = () => (
+const RequiredMark = ({ label }: { label: string }) => (
   <span
     aria-hidden="true"
     className="ml-2 text-xs font-semibold uppercase tracking-wide text-primary"
   >
-    Required
+    {label}
   </span>
 );
 
@@ -165,12 +273,14 @@ const SecondaryAction = ({
   fallbackHref,
   fallbackLabel,
   isPageEditing,
+  locale,
 }: {
   fields: CustomerAccountFields;
   fallbackPrompt: string;
   fallbackHref: string;
   fallbackLabel: string;
   isPageEditing: boolean;
+  locale: SupportedLocale;
 }) => (
   <p className="mt-7 border-t border-slate-200 pt-6 text-base text-slate-700">
     <span>{fieldText(fields.secondaryPrompt, fallbackPrompt)} </span>
@@ -184,7 +294,7 @@ const SecondaryAction = ({
       />
     ) : (
       <Link
-        href={fallbackHref}
+        href={getLocalizedPathname(fallbackHref, locale)}
         prefetch={false}
         className="font-semibold text-primary underline decoration-cyan-500 decoration-2 underline-offset-4 hover:text-cyan-700"
       >
@@ -200,12 +310,14 @@ const SuccessState = ({
   messageFallback,
   linkHref,
   linkLabel,
+  locale,
 }: {
   fields: CustomerAccountFields;
   titleFallback: string;
   messageFallback: string;
   linkHref: string;
   linkLabel: string;
+  locale: SupportedLocale;
 }) => (
   <div
     className="mx-auto flex min-h-80 max-w-2xl flex-col items-center justify-center px-6 py-14 text-center sm:px-10"
@@ -220,7 +332,7 @@ const SuccessState = ({
       {fieldText(fields.successMessage, messageFallback)}
     </p>
     <Button asChild size="lg" className="mt-8 min-h-12 px-7 text-base">
-      <Link href={linkHref} prefetch={false}>
+      <Link href={getLocalizedPathname(linkHref, locale)} prefetch={false}>
         {linkLabel}
       </Link>
     </Button>
@@ -232,8 +344,10 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
   const [submissionError, setSubmissionError] = useState<string>();
   const fields = props.fields;
   const isPageEditing = props.page.mode.isEditing;
+  const locale = getLocaleOption(props.page.locale).code;
+  const copy = accountCopy[locale];
   const form = useForm<LoginValues>({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(createLoginSchema(copy)),
     defaultValues: { email: '', password: '' },
   });
 
@@ -248,7 +362,7 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
       try {
         await identifyVisitor({ email: values.email }, 'account_login');
       } catch {
-        setSubmissionError(cdpErrorMessage);
+        setSubmissionError(copy.requestError);
         return;
       }
     }
@@ -270,27 +384,25 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
         {isSubmitted ? (
           <SuccessState
             fields={fields}
-            titleFallback="You’re signed in"
-            messageFallback="Your NW Natural account is ready. You can now manage billing, payments, and service information."
+            titleFallback={copy.loginSuccessTitle}
+            messageFallback={copy.loginSuccessMessage}
             linkHref="/"
-            linkLabel="Continue to your homepage"
+            linkLabel={copy.continueHome}
+            locale={locale}
           />
         ) : (
           <div className="grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
             <div className="border-t-8 border-cyan-500 bg-[#eaf5f6] p-7 sm:p-10 lg:p-12">
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-primary">
-                NW Natural online account
+                {copy.accountEyebrow}
               </p>
               <EditableHeading
                 fields={fields}
-                fallback="Access your account"
+                fallback={copy.loginTitle}
                 isPageEditing={isPageEditing}
               />
               <p className="mt-5 max-w-prose text-lg leading-8 text-slate-700">
-                {fieldText(
-                  fields.description,
-                  'Sign in to manage your bill, payment options, and natural gas service.',
-                )}
+                {fieldText(fields.description, copy.loginDescription)}
               </p>
               <div className="mt-8 space-y-4 text-base text-slate-700">
                 <p className="flex items-start gap-3">
@@ -298,21 +410,21 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
                     className="mt-0.5 h-5 w-5 shrink-0 text-cyan-700"
                     aria-hidden="true"
                   />
-                  Review billing and payment information.
+                  {copy.billingBenefit}
                 </p>
                 <p className="flex items-start gap-3">
                   <LockKeyhole
                     className="mt-0.5 h-5 w-5 shrink-0 text-cyan-700"
                     aria-hidden="true"
                   />
-                  Manage your account in one secure place.
+                  {copy.secureBenefit}
                 </p>
               </div>
             </div>
 
             <div className="p-7 sm:p-10 lg:p-12">
               <h2 className="font-heading text-2xl font-semibold text-slate-950">
-                Sign in
+                {copy.signIn}
               </h2>
               <Form {...form}>
                 <form
@@ -327,8 +439,8 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base font-semibold text-slate-800">
-                          Email address
-                          <RequiredMark />
+                          {copy.email}
+                          <RequiredMark label={copy.required} />
                         </FormLabel>
                         <FormControl>
                           <Input
@@ -351,8 +463,8 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base font-semibold text-slate-800">
-                          Password
-                          <RequiredMark />
+                          {copy.password}
+                          <RequiredMark label={copy.required} />
                         </FormLabel>
                         <FormControl>
                           <Input
@@ -389,18 +501,19 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
                     disabled={form.formState.isSubmitting}
                   >
                     {form.formState.isSubmitting
-                      ? 'Signing in…'
-                      : fieldText(fields.submitLabel, 'Sign in')}
+                      ? copy.signingIn
+                      : fieldText(fields.submitLabel, copy.signIn)}
                   </Button>
                 </form>
               </Form>
 
               <SecondaryAction
                 fields={fields}
-                fallbackPrompt="Need an online account?"
+                fallbackPrompt={copy.loginPrompt}
                 fallbackHref="/account-billing/register"
-                fallbackLabel="Register"
+                fallbackLabel={copy.register}
                 isPageEditing={isPageEditing}
+                locale={locale}
               />
             </div>
           </div>
@@ -415,8 +528,10 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
   const [submissionError, setSubmissionError] = useState<string>();
   const fields = props.fields;
   const isPageEditing = props.page.mode.isEditing;
+  const locale = getLocaleOption(props.page.locale).code;
+  const copy = accountCopy[locale];
   const form = useForm<RegistrationValues>({
-    resolver: zodResolver(registrationSchema),
+    resolver: zodResolver(createRegistrationSchema(copy)),
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -450,7 +565,7 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
           'account_registration',
         );
       } catch {
-        setSubmissionError(cdpErrorMessage);
+        setSubmissionError(copy.requestError);
         return;
       }
     }
@@ -472,27 +587,25 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
         {isSubmitted ? (
           <SuccessState
             fields={fields}
-            titleFallback="Your registration is complete"
-            messageFallback="Your NW Natural online account is ready. Sign in with your email address to continue."
+            titleFallback={copy.registrationSuccessTitle}
+            messageFallback={copy.registrationSuccessMessage}
             linkHref="/account-billing/login"
-            linkLabel="Access your account"
+            linkLabel={copy.accessAccount}
+            locale={locale}
           />
         ) : (
           <>
             <div className="border-t-8 border-cyan-500 bg-[#eaf5f6] px-7 py-8 sm:px-10 lg:px-12 lg:py-10">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-primary">
-                NW Natural online account
+                {copy.accountEyebrow}
               </p>
               <EditableHeading
                 fields={fields}
-                fallback="Register your account"
+                fallback={copy.registerTitle}
                 isPageEditing={isPageEditing}
               />
               <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-700">
-                {fieldText(
-                  fields.description,
-                  'Create an online account to manage billing, payments, and natural gas service information.',
-                )}
+                {fieldText(fields.description, copy.registerDescription)}
               </p>
             </div>
 
@@ -506,7 +619,7 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                 >
                   <fieldset>
                     <legend className="font-heading text-2xl font-semibold text-slate-950">
-                      Your information
+                      {copy.yourInformation}
                     </legend>
                     <div className="mt-6 grid gap-6 md:grid-cols-2">
                       <FormField
@@ -515,8 +628,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              First name
-                              <RequiredMark />
+                              {copy.firstName}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -538,8 +651,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              Last name
-                              <RequiredMark />
+                              {copy.lastName}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -561,8 +674,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              Email address
-                              <RequiredMark />
+                              {copy.email}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -585,8 +698,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              Phone number
-                              <RequiredMark />
+                              {copy.phone}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -607,8 +720,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              Password
-                              <RequiredMark />
+                              {copy.password}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -632,8 +745,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              Confirm password
-                              <RequiredMark />
+                              {copy.confirmPassword}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -656,7 +769,7 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
 
                   <fieldset className="border-t border-slate-200 pt-9">
                     <legend className="font-heading text-2xl font-semibold text-slate-950">
-                      Service address
+                      {copy.serviceAddress}
                     </legend>
                     <div className="mt-6 grid gap-6 md:grid-cols-2">
                       <FormField
@@ -665,8 +778,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem className="md:col-span-2">
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              Address
-                              <RequiredMark />
+                              {copy.address}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -687,7 +800,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem className="md:col-span-2">
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              Address line 2<RequiredMark />
+                              {copy.addressLine2}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -708,8 +822,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              City
-                              <RequiredMark />
+                              {copy.city}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -730,8 +844,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              State
-                              <RequiredMark />
+                              {copy.state}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -752,8 +866,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-base font-semibold text-slate-800">
-                              ZIP code
-                              <RequiredMark />
+                              {copy.zipCode}
+                              <RequiredMark label={copy.required} />
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -790,27 +904,28 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                       disabled={form.formState.isSubmitting}
                     >
                       {form.formState.isSubmitting
-                        ? 'Registering…'
-                        : fieldText(fields.submitLabel, 'Register')}
+                        ? copy.registering
+                        : fieldText(fields.submitLabel, copy.register)}
                     </Button>
                     <p className="mt-5 max-w-3xl text-sm leading-6 text-slate-600">
-                      By registering, you agree to our{' '}
+                      {copy.privacyPrefix}{' '}
                       <a
                         href="https://www.nwnatural.com/privacy-notice"
                         target="_blank"
                         rel="noreferrer"
                         className="font-semibold text-primary underline underline-offset-2"
                       >
-                        Privacy Notice
+                        {copy.privacyNotice}
                       </a>
                       .
                     </p>
                     <SecondaryAction
                       fields={fields}
-                      fallbackPrompt="Already registered?"
+                      fallbackPrompt={copy.registrationPrompt}
                       fallbackHref="/account-billing/login"
-                      fallbackLabel="Access your account"
+                      fallbackLabel={copy.accessAccount}
                       isPageEditing={isPageEditing}
+                      locale={locale}
                     />
                   </div>
                 </form>

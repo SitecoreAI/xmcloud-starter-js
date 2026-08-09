@@ -1,8 +1,11 @@
 const LEGACY_STARTER_PATTERN =
-  /\b(?:alaris|aero|nexa|terra|automotive|vehicles?|dealerships?)\b|test[-\s]?drive|electric future|drivesense/i;
+  /\b(?:alaris|aero|nexa|terra|automotive|dealerships?)\b|test[-\s]?drive|electric future|drivesense/i;
+const LEGACY_VEHICLE_ROUTE_PATTERN =
+  /\/vehicles?(?:\/|\b)|\b(?:view all|explore|shop|browse)\s+vehicles?\b/i;
 
 export const isLegacyStarterDataValue = (value: string | undefined): boolean =>
-  LEGACY_STARTER_PATTERN.test(value ?? '');
+  LEGACY_STARTER_PATTERN.test(value ?? '') ||
+  LEGACY_VEHICLE_ROUTE_PATTERN.test(value ?? '');
 
 /**
  * Removes inherited Alaris strings from normal-mode route data before React

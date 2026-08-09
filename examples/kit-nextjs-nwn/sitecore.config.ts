@@ -9,4 +9,7 @@ export default defineConfig({
   // sites are deployed to the same XM Cloud environment.
   defaultSite: 'kit-nextjs-nwn',
   defaultLanguage: process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE || 'en',
+  redirects: {
+    locales: ['en', 'es-MX'],
+  },
 });

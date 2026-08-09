@@ -9,24 +9,26 @@ import type { SearchExperienceProps } from '@/components/search-experience/searc
 
 const mockReplace = jest.fn();
 let mockSearchParams = new URLSearchParams();
+let mockPathname = '/search';
 
 jest.mock('next/navigation', () => ({
-  usePathname: () => '/search',
+  usePathname: () => mockPathname,
   useRouter: () => ({ replace: mockReplace }),
   useSearchParams: () => mockSearchParams,
 }));
 
-const makeProps = (): SearchExperienceProps =>
+const makeProps = (locale = 'en'): SearchExperienceProps =>
   ({
     params: {},
     rendering: { componentName: 'SearchExperience' },
-    page: { mode: { isEditing: false, isPreview: false } },
+    page: { locale, mode: { isEditing: false, isPreview: false } },
   }) as unknown as SearchExperienceProps;
 
 describe('SearchExperience', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockSearchParams = new URLSearchParams();
+    mockPathname = '/search';
   });
 
   it('starts with accessible search controls and useful popular links', () => {
@@ -143,5 +145,81 @@ describe('SearchExperience', () => {
     expect(searchNwnPages('paperless billing')[0]?.path).toBe(
       '/account-billing',
     );
+  });
+
+  it('renders the complete Spanish search experience and localizes popular links', () => {
+    mockPathname = '/es-MX/search';
+
+    render(<SearchExperience {...makeProps('es-MX')} />);
+
+    expect(
+      screen.getByRole('heading', { name: 'Buscar en nuestro sitio' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('searchbox', {
+        name: '¿Qué podemos ayudarle a encontrar?',
+      }),
+    ).toHaveAttribute(
+      'placeholder',
+      'Pruebe “pagar mi factura” o “reembolsos”',
+    );
+    expect(
+      screen.getByRole('heading', { name: 'Páginas populares' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('status')).toHaveTextContent(
+      'Explore las páginas populares de NW Natural.',
+    );
+    expect(
+      screen.getByRole('link', { name: 'Pagar mi factura' }),
+    ).toHaveAttribute('href', '/es-MX/account-billing/pay-my-bill');
+    expect(screen.getByRole('link', { name: 'Contáctenos' })).toHaveAttribute(
+      'href',
+      '/es-MX/contact-us',
+    );
+    expect(screen.getAllByText('Ver página').length).toBeGreaterThan(0);
+  });
+
+  it('searches translated Spanish metadata and preserves the locale on result links', () => {
+    mockPathname = '/es-MX/search';
+    mockSearchParams = new URLSearchParams({ q: 'asistencia financiera' });
+
+    render(<SearchExperience {...makeProps('es-MX')} />);
+
+    expect(screen.getByRole('searchbox')).toHaveValue('asistencia financiera');
+    expect(screen.getByRole('status')).toHaveTextContent(
+      '1 resultado para “asistencia financiera”',
+    );
+    expect(
+      screen.getByRole('link', { name: 'Asistencia para el pago' }),
+    ).toHaveAttribute('href', '/es-MX/account-billing/payment-assistance');
+    expect(screen.getByText('Cuenta y facturación')).toBeInTheDocument();
+  });
+
+  it('keeps Spanish query updates and the no-results contact action in es-MX', () => {
+    mockPathname = '/es-MX/search';
+
+    const { rerender } = render(<SearchExperience {...makeProps('es-MX')} />);
+
+    fireEvent.change(screen.getByRole('searchbox'), {
+      target: { value: 'clima frío' },
+    });
+    fireEvent.submit(screen.getByRole('search'));
+
+    expect(mockReplace).toHaveBeenCalledWith(
+      '/es-MX/search?q=clima+fr%C3%ADo',
+      { scroll: false },
+    );
+
+    mockSearchParams = new URLSearchParams({ q: 'paneles solares' });
+    rerender(<SearchExperience {...makeProps('es-MX')} />);
+
+    expect(
+      screen.getByRole('heading', { name: 'No encontramos resultados' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', {
+        name: 'Contáctenos para obtener ayuda',
+      }),
+    ).toHaveAttribute('href', '/es-MX/contact-us');
   });
 });

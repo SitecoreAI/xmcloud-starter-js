@@ -4,6 +4,12 @@ import { Text } from '@sitecore-content-sdk/nextjs';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { Default as EmailSignupForm } from '@/components/forms/email/EmailSignupForm.dev';
 import { NoDataFallback } from '@/utils/NoDataFallback';
+import {
+  getLocaleOption,
+  getLocalizedPathname,
+  type SupportedLocale,
+} from '@/i18n/locales';
+import { usePublicPathname } from '@/hooks/use-public-pathname';
 import type { GlobalFooterProps } from './global-footer.props';
 
 const isLegacyStarterValue = (value: string | undefined): boolean =>
@@ -31,30 +37,81 @@ const fallbackFooterLinks = [
   link: { jsonValue: { value: { text, href, linktype: 'external' } } },
 }));
 
-const fallbackEmailTitle = { value: 'Get energy tips and service updates.' };
-const fallbackCopyright = {
-  value: `© ${new Date().getFullYear()} NW Natural. All Rights Reserved.`,
+const footerCopy = {
+  en: {
+    emailTitle: 'Get energy tips and service updates.',
+    copyright: `© ${new Date().getFullYear()} NW Natural. All Rights Reserved.`,
+    subscriptionPrefix:
+      'By subscribing, you agree to receive NW Natural email updates. See our',
+    privacyNotice: 'Privacy Notice',
+    socialHeading: 'Follow NW Natural',
+    footerNavigation: 'Footer navigation',
+    legalNavigation: 'Legal',
+    emailPlaceholder: 'Enter your email address',
+    emailLabel: 'Email address',
+    emailSubmit: 'Subscribe',
+    emailSubmitting: 'Subscribing…',
+    emailError: 'Enter a valid email address.',
+    emailSuccess: 'Thanks for subscribing.',
+    submissionError: 'We could not complete your signup. Please try again.',
+  },
+  'es-MX': {
+    emailTitle: 'Reciba consejos de energía y novedades del servicio.',
+    copyright: `© ${new Date().getFullYear()} NW Natural. Todos los derechos reservados.`,
+    subscriptionPrefix:
+      'Al suscribirse, acepta recibir novedades de NW Natural por correo electrónico. Consulte nuestro',
+    privacyNotice: 'Aviso de privacidad',
+    socialHeading: 'Siga a NW Natural',
+    footerNavigation: 'Navegación del pie de página',
+    legalNavigation: 'Información legal',
+    emailPlaceholder: 'Ingrese su correo electrónico',
+    emailLabel: 'Correo electrónico',
+    emailSubmit: 'Suscribirse',
+    emailSubmitting: 'Suscribiendo…',
+    emailError: 'Ingrese un correo electrónico válido.',
+    emailSuccess: 'Gracias por suscribirse.',
+    submissionError: 'No pudimos completar su suscripción. Inténtelo de nuevo.',
+  },
+} as const;
+
+const fallbackEmailTitle = { value: footerCopy.en.emailTitle };
+const fallbackCopyright = { value: footerCopy.en.copyright };
+
+const getUtilityLinks = (locale: SupportedLocale, pathname: string) => {
+  const isSpanish = locale === 'es-MX';
+
+  return [
+    {
+      text: isSpanish ? 'Términos y condiciones' : 'Terms and Conditions',
+      href: 'https://www.nwnatural.com/terms-and-conditions',
+    },
+    {
+      text: isSpanish ? 'Aviso de privacidad' : 'Privacy Notice',
+      href: 'https://www.nwnatural.com/privacy-notice',
+    },
+    {
+      text: isSpanish ? 'Insertos de facturas' : 'Bill Inserts',
+      href: 'https://www.nwnatural.com/account/bill-inserts',
+    },
+    {
+      text: isSpanish ? 'English' : 'En Español',
+      href: getLocalizedPathname(pathname, isSpanish ? 'en' : 'es-MX'),
+    },
+    {
+      text: isSpanish ? 'Sus opciones de privacidad' : 'Your Privacy Choices',
+      href: 'https://www.nwnatural.com/do-not-share-my-data',
+    },
+  ];
 };
 
-const utilityLinks = [
-  {
-    text: 'Terms and Conditions',
-    href: 'https://www.nwnatural.com/terms-and-conditions',
-  },
-  {
-    text: 'Privacy Notice',
-    href: 'https://www.nwnatural.com/privacy-notice',
-  },
-  {
-    text: 'Bill Inserts',
-    href: 'https://www.nwnatural.com/account/bill-inserts',
-  },
-  { text: 'En Español', href: 'https://www.nwnatural.com/espanol' },
-  {
-    text: 'Your Privacy Choices',
-    href: 'https://www.nwnatural.com/do-not-share-my-data',
-  },
-] as const;
+const spanishFooterLinkLabels: Record<string, string> = {
+  'builders / hvac': 'Constructores / HVAC',
+  investors: 'Inversionistas',
+  suppliers: 'Proveedores',
+  careers: 'Empleos',
+  safety: 'Seguridad',
+  'contact us': 'Contáctenos',
+};
 
 const socialLinkOrder: Record<string, number> = {
   x: 0,
@@ -76,6 +133,9 @@ const footerLinkOrder: Record<string, number> = {
 export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
   const { fields, isPageEditing } = props;
   const datasource = fields?.data?.datasource;
+  const pathname = usePublicPathname();
+  const currentLocale = getLocaleOption(props.page.locale).code;
+  const copy = footerCopy[currentLocale];
 
   if (!fields || !datasource) {
     return <NoDataFallback componentName="Global Footer" />;
@@ -111,12 +171,41 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
       (footerLinkOrder[secondLabel] ?? Number.MAX_SAFE_INTEGER)
     );
   });
-  const displayEmailTitle = useFallbackContent
+  const authoredEmailTitle = useFallbackContent
     ? fallbackEmailTitle
     : emailSubscriptionTitle?.jsonValue;
-  const displayCopyright = useFallbackContent
+  const authoredCopyright = useFallbackContent
     ? fallbackCopyright
     : footerCopyright?.jsonValue;
+  const displayEmailTitle =
+    currentLocale === 'es-MX' && !isPageEditing
+      ? { value: copy.emailTitle }
+      : authoredEmailTitle;
+  const displayCopyright =
+    currentLocale === 'es-MX' && !isPageEditing
+      ? { value: copy.copyright }
+      : authoredCopyright;
+  const displayLinks =
+    currentLocale === 'es-MX' && !isPageEditing
+      ? links.map((item) => {
+          const link = item.link?.jsonValue;
+          const label = link?.value?.text?.trim().toLowerCase() ?? '';
+          const translatedLabel = spanishFooterLinkLabels[label];
+
+          return translatedLabel && link
+            ? {
+                ...item,
+                link: {
+                  ...item.link,
+                  jsonValue: {
+                    ...link,
+                    value: { ...link.value, text: translatedLabel },
+                  },
+                },
+              }
+            : item;
+        })
+      : links;
   const displaySocialLinks = (socialLinks?.results ?? [])
     .filter(
       (item) =>
@@ -172,40 +261,49 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
                   }
                   fields={{
                     buttonVariant: 'default',
+                    emailLabel: { value: copy.emailLabel },
                     emailPlaceholder: {
                       value: stripQaSuffix(
-                        fields.dictionary?.FOOTER_EmailPlaceholder,
+                        currentLocale === 'es-MX'
+                          ? copy.emailPlaceholder
+                          : fields.dictionary?.FOOTER_EmailPlaceholder,
                       ),
                     },
                     emailSubmitLabel: {
-                      value: fields.dictionary?.FOOTER_EmailSubmitLabel,
+                      value:
+                        currentLocale === 'es-MX'
+                          ? copy.emailSubmit
+                          : fields.dictionary?.FOOTER_EmailSubmitLabel,
                     },
+                    emailSubmittingLabel: { value: copy.emailSubmitting },
                     emailErrorMessage: {
                       value: stripQaSuffix(
-                        fields.dictionary?.FOOTER_EmailErrorMessage,
+                        currentLocale === 'es-MX'
+                          ? copy.emailError
+                          : fields.dictionary?.FOOTER_EmailErrorMessage,
                       ),
                     },
                     emailSuccessMessage: {
                       value: stripQaSuffix(
-                        fields.dictionary?.FOOTER_EmailSuccessMessage,
+                        currentLocale === 'es-MX'
+                          ? copy.emailSuccess
+                          : fields.dictionary?.FOOTER_EmailSuccessMessage,
                       ),
                     },
                     submissionErrorMessage: {
-                      value:
-                        'We could not complete your signup. Please try again.',
+                      value: copy.submissionError,
                     },
                   }}
                 />
               </div>
             </div>
             <p className="mt-2 text-xs leading-5 text-white/90">
-              By subscribing, you agree to receive NW Natural email updates. See
-              our{' '}
+              {copy.subscriptionPrefix}{' '}
               <a
                 href="https://www.nwnatural.com/privacy-notice"
                 className="font-semibold text-white underline underline-offset-2"
               >
-                Privacy Notice
+                {copy.privacyNotice}
               </a>
               .
             </p>
@@ -214,10 +312,10 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
 
         <nav
           className={shouldShowSignup ? 'mt-5' : undefined}
-          aria-label="Footer navigation"
+          aria-label={copy.footerNavigation}
         >
           <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 px-6">
-            {links.map((item, index) => (
+            {displayLinks.map((item, index) => (
               <li key={'nwn-footer-link-' + index}>
                 <EditableButton
                   buttonLink={item.link?.jsonValue}
@@ -233,7 +331,7 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
 
         {(displaySocialLinks.length > 0 || isPageEditing) && (
           <div className="mt-7">
-            <h2 className="sr-only">Follow NW Natural</h2>
+            <h2 className="sr-only">{copy.socialHeading}</h2>
             <ul className="flex flex-wrap justify-center gap-1">
               {displaySocialLinks.map((socialLink, index) => (
                 <li key={'nwn-social-' + index}>
@@ -255,9 +353,9 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
           </div>
         )}
 
-        <nav className="mx-[1.875rem] mt-6" aria-label="Legal">
+        <nav className="mx-[1.875rem] mt-6" aria-label={copy.legalNavigation}>
           <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-sm">
-            {utilityLinks.map((link) => (
+            {getUtilityLinks(currentLocale, pathname).map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}

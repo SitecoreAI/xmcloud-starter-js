@@ -129,6 +129,54 @@ describe('RichTextBlock Component', () => {
     expect(screen.getByText('Rich text')).toBeInTheDocument();
   });
 
+  it('provides the authored winter-safety anchor when the rendering identifier is missing', () => {
+    const { container } = render(
+      <RichTextBlock
+        fields={mockFields}
+        params={{}}
+        rendering={{
+          ...mockRendering,
+          dataSource:
+            '/sitecore/content/utilities/kit-nextjs-nwn/Home/safety/winter-service-advisory/Data/NWN_Winter_Service_Advisory_Content',
+        }}
+        page={mockPageBase}
+      />,
+    );
+
+    expect(container.querySelector('article')).toHaveAttribute(
+      'id',
+      'winter-safety',
+    );
+  });
+
+  it('keeps authored internal links in the active Spanish journey', () => {
+    const spanishPage = {
+      ...mockPageBase,
+      locale: 'es-MX',
+    } as Page;
+
+    render(
+      <RichTextBlock
+        fields={{
+          text: {
+            value:
+              '<a href="/account-billing/payment-assistance?from=winter#help">Ayuda</a><a href="/-/media/guide.pdf">Guía</a>',
+          },
+        }}
+        params={{}}
+        rendering={mockRendering}
+        page={spanishPage}
+      />,
+    );
+
+    expect(screen.getByTestId('richtext')).toHaveTextContent(
+      'href="/es-MX/account-billing/payment-assistance?from=winter#help"',
+    );
+    expect(screen.getByTestId('richtext')).toHaveTextContent(
+      'href="/-/media/guide.pdf"',
+    );
+  });
+
   it('renders fallback when fields are missing', () => {
     // Testing edge case with undefined fields - using type assertion for test scenario
     render(

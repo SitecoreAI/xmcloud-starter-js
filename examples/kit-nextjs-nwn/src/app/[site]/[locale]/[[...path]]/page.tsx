@@ -15,17 +15,16 @@ import { generateWebPageSchema } from 'src/lib/structured-data/schema';
 import { StructuredData } from '@/components/structured-data/StructuredData';
 import { getBaseUrlFromHeaders } from '@/lib/utils';
 import { isLegacyStarterRoute } from '@/lib/nwn-route-guard';
-import { sanitizeLegacyStarterData } from '@/lib/nwn-content-sanitizer';
-
-const isLegacyStarterValue = (value: string | undefined): boolean =>
-  /\b(?:alaris|aero|nexa|terra|automotive|vehicles?|dealerships?)\b|test[-\s]?drive|electric future|drivesense/i.test(
-    value ?? '',
-  );
+import {
+  isLegacyStarterDataValue,
+  sanitizeLegacyStarterData,
+} from '@/lib/nwn-content-sanitizer';
+import { getLocaleOption, getLocalizedPathname } from '@/i18n/locales';
 
 const useNwnValue = (
   ...values: Array<string | undefined>
 ): string | undefined =>
-  values.find((value) => value?.trim() && !isLegacyStarterValue(value));
+  values.find((value) => value?.trim() && !isLegacyStarterDataValue(value));
 
 type AuthoredImage = {
   src: string;
@@ -44,8 +43,8 @@ function findHeroImage(page: any): AuthoredImage | undefined {
         const imageSrc = comp.fields?.image?.value?.src;
         const imageAlt = comp.fields?.image?.value?.alt;
         return imageSrc &&
-          !isLegacyStarterValue(imageSrc) &&
-          !isLegacyStarterValue(
+          !isLegacyStarterDataValue(imageSrc) &&
+          !isLegacyStarterDataValue(
             typeof imageAlt === 'string' ? imageAlt : undefined,
           )
           ? {
@@ -144,7 +143,11 @@ export default async function Page({ params }: PageProps) {
     fields?.ogDescription?.value?.toString(),
   );
   const currentPath = path?.length ? `/${path.join('/')}` : '/';
-  const fullUrl = `${baseUrl}${currentPath}`;
+  const localizedPath = getLocalizedPathname(
+    currentPath,
+    getLocaleOption(locale).code,
+  );
+  const fullUrl = `${baseUrl}${localizedPath}`;
   const webPageSchema = pageTitle
     ? generateWebPageSchema(pageTitle, fullUrl, pageDescription, locale)
     : undefined;
@@ -194,9 +197,13 @@ export const generateMetadata = async ({ params }: PageProps) => {
     notFound();
   }
 
-  // Canonical URL: base URL + content path only (no site/locale segments)
+  // Canonical URL: base URL + public content path (default locale is unprefixed).
   const pathSegment = path?.length ? `/${path.join('/')}` : '';
-  const canonicalUrl = baseUrl ? `${baseUrl}${pathSegment}` : undefined;
+  const localizedPath = getLocalizedPathname(
+    pathSegment || '/',
+    getLocaleOption(locale).code,
+  );
+  const canonicalUrl = baseUrl ? `${baseUrl}${localizedPath}` : undefined;
 
   // The same call as for rendering the page. Should be cached by default react behavior
   let page;
@@ -253,8 +260,8 @@ export const generateMetadata = async ({ params }: PageProps) => {
       : undefined;
   const authoredImageIsNwn =
     Boolean(authoredImageSource) &&
-    !isLegacyStarterValue(authoredImageSource) &&
-    !isLegacyStarterValue(authoredImageAlt);
+    !isLegacyStarterDataValue(authoredImageSource) &&
+    !isLegacyStarterDataValue(authoredImageAlt);
   const imageSource = authoredImageIsNwn ? authoredImageSource : undefined;
 
   const ogImageUrl = imageSource

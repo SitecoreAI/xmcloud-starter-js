@@ -152,6 +152,52 @@ describe('SubmissionFormDefault', () => {
     ).toHaveAttribute('href', 'https://www.nwnatural.com/privacy-notice');
   });
 
+  it('renders localized copy and validation for Spanish (Mexico)', async () => {
+    const spanishProps = {
+      ...contactProps,
+      page: {
+        ...contactProps.page,
+        locale: 'es-MX',
+      },
+    };
+
+    renderForm(spanishProps);
+
+    expect(screen.getByLabelText('Nombre')).toBeInTheDocument();
+    expect(screen.getByLabelText('Apellido')).toBeInTheDocument();
+    expect(screen.getByLabelText('Correo electrónico')).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Enviar mensaje' }),
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Enviar mensaje' }));
+
+    expect(
+      await screen.findByText('El nombre es obligatorio.'),
+    ).toBeInTheDocument();
+    expect(screen.getByText('El apellido es obligatorio.')).toBeInTheDocument();
+    expect(
+      screen.getByText('El correo electrónico es obligatorio.'),
+    ).toBeInTheDocument();
+    expect(screen.getByText('El mensaje es obligatorio.')).toBeInTheDocument();
+  });
+
+  it('replaces internal handoff keys with a presenter-ready heading', () => {
+    renderForm({
+      ...contactProps,
+      fields: {
+        title: { value: 'NWN_Winter_Advisory_Contact_Handoff' },
+      },
+    });
+
+    expect(
+      screen.getByRole('heading', { name: 'How can we help?' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText('NWN_Winter_Advisory_Contact_Handoff'),
+    ).not.toBeInTheDocument();
+  });
+
   it('validates all required fields before identifying the visitor', async () => {
     renderForm();
 

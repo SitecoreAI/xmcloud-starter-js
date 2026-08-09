@@ -45,6 +45,35 @@ describe('NWN AI Markdown route', () => {
     expect(getPage).not.toHaveBeenCalled();
   });
 
+  it('fetches the published Spanish (Mexico) route', async () => {
+    getPage.mockResolvedValue({
+      layout: {
+        sitecore: {
+          route: {
+            fields: {
+              pageTitle: { value: 'Aviso de servicio de invierno' },
+            },
+            placeholders: {},
+          },
+        },
+      },
+    });
+
+    const response = await GET(
+      request('?locale=es-MX'),
+      context(['safety', 'winter-service-advisory']),
+    );
+
+    expect(response.status).toBe(200);
+    expect(getPage).toHaveBeenCalledWith(
+      ['safety', 'winter-service-advisory'],
+      {
+        site: 'kit-nextjs-nwn',
+        locale: 'es-MX',
+      },
+    );
+  });
+
   it('forces the NWN scope and removes inherited starter content', async () => {
     getPage.mockResolvedValue({
       layout: {

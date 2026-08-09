@@ -108,7 +108,10 @@ export const Default: React.FC<EmailSignupFormProps> = (props) => {
 
   const emailPlaceholder =
     props.fields?.emailPlaceholder?.value || 'Enter your email address';
+  const emailLabel = props.fields?.emailLabel?.value || 'Email address';
   const buttonText = props.fields?.emailSubmitLabel?.value || 'Subscribe';
+  const submittingText =
+    props.fields?.emailSubmittingLabel?.value || 'Subscribing…';
   const successMessage =
     props.fields?.emailSuccessMessage?.value || 'Thank you for subscribing!';
   const btnVariant = props.fields?.buttonVariant || 'default';
@@ -131,7 +134,7 @@ export const Default: React.FC<EmailSignupFormProps> = (props) => {
           name="email"
           render={({ field }) => (
             <FormItem className="mt-0 min-w-0 flex-1 space-y-0">
-              <FormLabel className="sr-only">Email address</FormLabel>
+              <FormLabel className="sr-only">{emailLabel}</FormLabel>
               <FormControl>
                 <Input
                   className="min-h-11"
@@ -152,7 +155,7 @@ export const Default: React.FC<EmailSignupFormProps> = (props) => {
           disabled={isSubmitting}
           aria-busy={isSubmitting}
         >
-          <Text field={{ value: isSubmitting ? 'Subscribing…' : buttonText }} />
+          <Text field={{ value: isSubmitting ? submittingText : buttonText }} />
         </Button>
       </form>
       {submissionError && (
