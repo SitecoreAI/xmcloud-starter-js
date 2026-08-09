@@ -1,10 +1,47 @@
-import { Text } from '@sitecore-content-sdk/nextjs';
+import { Text, type LinkField } from '@sitecore-content-sdk/nextjs';
 import { Accordion } from '@/components/ui/accordion';
 import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { AccordionProps, AccordionItemProps } from './accordion-block.props';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { AccordionBlockItem } from './AccordionBlockItem.dev';
+import { PaperlessOptInButton } from '@/components/paperless-opt-in/PaperlessOptInButton';
+import { getLocalizedPathname } from '@/i18n/locales';
 import { cn } from '@/lib/utils';
+
+const isPaperlessOptInLink = (link: LinkField) => {
+  const value = link?.value;
+  const href = value?.href || value?.url;
+
+  if (
+    typeof href !== 'string' ||
+    !href ||
+    (typeof value?.linktype === 'string' &&
+      value.linktype.toLowerCase() !== 'internal')
+  ) {
+    return false;
+  }
+
+  try {
+    const parsedUrl = new URL(href, 'https://nwnatural.local');
+    const authoredQuery =
+      typeof value?.querystring === 'string'
+        ? new URLSearchParams(value.querystring.replace(/^\?/, ''))
+        : undefined;
+
+    authoredQuery?.forEach((queryValue, queryName) => {
+      parsedUrl.searchParams.set(queryName, queryValue);
+    });
+
+    const contentPath = getLocalizedPathname(parsedUrl.pathname, 'en');
+
+    return (
+      contentPath === '/account-billing' &&
+      parsedUrl.searchParams.get('paperless') === 'opt-in'
+    );
+  } catch {
+    return false;
+  }
+};
 
 export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
   const { fields, isPageEditing } = props;
@@ -67,13 +104,19 @@ export const AccordionBlockDefault: React.FC<AccordionProps> = (props) => {
                   className="text-primary-foreground font-heading text-lg font-light"
                   field={description?.jsonValue}
                 />
-                {link?.jsonValue && (
-                  <EditableButton
-                    variant="secondary"
-                    buttonLink={link.jsonValue}
-                    isPageEditing={isPageEditing}
-                  />
-                )}
+                {link?.jsonValue &&
+                  (isPageEditing || !isPaperlessOptInLink(link.jsonValue) ? (
+                    <EditableButton
+                      variant="secondary"
+                      buttonLink={link.jsonValue}
+                      isPageEditing={isPageEditing}
+                    />
+                  ) : (
+                    <PaperlessOptInButton
+                      locale={props.page.locale}
+                      label={link.jsonValue.value?.text}
+                    />
+                  ))}
               </div>
             )}
           </div>

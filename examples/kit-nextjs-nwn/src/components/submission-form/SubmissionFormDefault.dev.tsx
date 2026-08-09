@@ -199,8 +199,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
             {
               id: normalizedEmail,
               provider:
-                process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER ||
-                'email',
+                process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER || 'email',
             },
           ],
           language: (document.documentElement.lang || 'en').toUpperCase(),
@@ -212,7 +211,7 @@ export const SubmissionFormDefault: React.FC<SubmissionFormProps> = (props) => {
         });
 
         if (!response) {
-          throw new Error('Sitecore CDP did not accept the identity event.');
+          throw new Error('SitecoreAI did not accept the identity event.');
         }
       } catch {
         setSubmissionError(copy.submissionError);

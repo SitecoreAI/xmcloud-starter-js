@@ -1,0 +1,10 @@
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-01@example.com"}],"contact":{"firstName":"Avery","lastName":"Bennett","email":"nwn-demo-01@example.com"},"extensions":{"paperless":false}}
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-02@example.com"}],"contact":{"firstName":"Maya","lastName":"Chen","email":"nwn-demo-02@example.com"},"extensions":{"paperless":false}}
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-03@example.com"}],"contact":{"firstName":"Mateo","lastName":"Rivera","email":"nwn-demo-03@example.com"},"extensions":{"paperless":false}}
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-04@example.com"}],"contact":{"firstName":"Priya","lastName":"Shah","email":"nwn-demo-04@example.com"},"extensions":{"paperless":false}}
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-05@example.com"}],"contact":{"firstName":"Jordan","lastName":"Kim","email":"nwn-demo-05@example.com"},"extensions":{"paperless":false}}
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-06@example.com"}],"contact":{"firstName":"Sofia","lastName":"Morales","email":"nwn-demo-06@example.com"},"extensions":{"paperless":false}}
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-07@example.com"}],"contact":{"firstName":"Naomi","lastName":"Brooks","email":"nwn-demo-07@example.com"},"extensions":{"paperless":true}}
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-08@example.com"}],"contact":{"firstName":"Lucas","lastName":"Reed","email":"nwn-demo-08@example.com"},"extensions":{"paperless":true}}
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-09@example.com"}],"contact":{"firstName":"Amara","lastName":"Okafor","email":"nwn-demo-09@example.com"},"extensions":{"paperless":true}}
+{"recordType":"profile","identifiers":[{"provider":"email","id":"nwn-demo-10@example.com"}],"contact":{"firstName":"Theo","lastName":"Nguyen","email":"nwn-demo-10@example.com"},"extensions":{"paperless":true}}

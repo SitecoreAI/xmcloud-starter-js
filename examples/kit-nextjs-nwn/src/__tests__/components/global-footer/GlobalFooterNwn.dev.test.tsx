@@ -268,18 +268,18 @@ const footerProps: GlobalFooterProps = {
 
 describe('GlobalFooterNwn', () => {
   const previousIdentityProvider =
-    process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER;
+    process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER;
 
   beforeEach(() => {
     jest.clearAllMocks();
-    process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER = 'email';
+    process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER = 'email';
   });
 
   afterAll(() => {
     if (previousIdentityProvider === undefined) {
-      delete process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER;
+      delete process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER;
     } else {
-      process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER =
+      process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER =
         previousIdentityProvider;
     }
   });
@@ -346,7 +346,7 @@ describe('GlobalFooterNwn', () => {
     ).toBeInTheDocument();
   });
 
-  it('passes CDP identity configuration only in normal mode', () => {
+  it('passes SitecoreAI identity configuration only in normal mode', () => {
     const { rerender } = render(<GlobalFooterNwn {...footerProps} />);
 
     expect(mockEmailSignupForm).toHaveBeenLastCalledWith(

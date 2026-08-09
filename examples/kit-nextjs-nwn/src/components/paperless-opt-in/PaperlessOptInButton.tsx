@@ -1,0 +1,142 @@
+'use client';
+
+import { useState } from 'react';
+import { event } from '@sitecore-content-sdk/events';
+import { useRouter } from 'next/navigation';
+
+import { Button } from '@/components/ui/button';
+import {
+  getLocaleOption,
+  getLocalizedPathname,
+  type SupportedLocale,
+} from '@/i18n/locales';
+import {
+  SitecoreAiUdlClientError,
+  submitPaperlessOptIn,
+} from '@/lib/sitecoreai-udl-client';
+
+const paperlessCopy = {
+  en: {
+    idle: 'Choose paperless billing',
+    pending: 'Saving preference…',
+    success: 'Paperless billing is on',
+    successMessage: 'Your paperless billing preference has been saved.',
+    error: 'We couldn’t update your preference. Please try again.',
+  },
+  'es-MX': {
+    idle: 'Elegir facturación electrónica',
+    pending: 'Guardando preferencia…',
+    success: 'La facturación electrónica está activada',
+    successMessage: 'Se guardó su preferencia de facturación electrónica.',
+    error: 'No pudimos actualizar su preferencia. Inténtelo de nuevo.',
+  },
+} as const satisfies Record<
+  SupportedLocale,
+  {
+    idle: string;
+    pending: string;
+    success: string;
+    successMessage: string;
+    error: string;
+  }
+>;
+
+type SubmissionState = 'idle' | 'pending' | 'success' | 'error';
+
+export type PaperlessOptInButtonProps = {
+  locale?: string;
+  label?: string;
+};
+
+export const PaperlessOptInButton = ({
+  locale,
+  label,
+}: PaperlessOptInButtonProps) => {
+  const router = useRouter();
+  const [submissionState, setSubmissionState] =
+    useState<SubmissionState>('idle');
+  const localeOption = getLocaleOption(locale);
+  const copy = paperlessCopy[localeOption.code];
+  const idleLabel = label?.trim() || copy.idle;
+  const isPending = submissionState === 'pending';
+  const isSuccessful = submissionState === 'success';
+
+  const submitPreference = async () => {
+    if (isPending || isSuccessful) return;
+
+    setSubmissionState('pending');
+
+    try {
+      const response = await submitPaperlessOptIn();
+
+      if (response.paperless.value !== true) {
+        throw new Error('The paperless preference was not confirmed.');
+      }
+
+      const eventResponse = await event({
+        type: 'nwn:paperless_opt_in',
+        channel: 'WEB',
+        currency: 'USD',
+        language: (
+          document.documentElement.lang || localeOption.code
+        ).toUpperCase(),
+        page: window.location.pathname || '/',
+        extensionData: { paperless: true },
+      });
+
+      if (!eventResponse) {
+        throw new Error('SitecoreAI did not accept the paperless event.');
+      }
+
+      setSubmissionState('success');
+    } catch (error) {
+      if (error instanceof SitecoreAiUdlClientError && error.status === 401) {
+        setSubmissionState('idle');
+        router.push(
+          getLocalizedPathname('/account-billing/login', localeOption.code),
+        );
+        return;
+      }
+
+      setSubmissionState('error');
+    }
+  };
+
+  const buttonLabel = isPending
+    ? copy.pending
+    : isSuccessful
+      ? copy.success
+      : idleLabel;
+
+  return (
+    <div className="flex flex-col items-start gap-2">
+      <Button
+        type="button"
+        variant="secondary"
+        onClick={submitPreference}
+        disabled={isPending || isSuccessful}
+        aria-busy={isPending}
+      >
+        {buttonLabel}
+      </Button>
+      {isSuccessful && (
+        <p
+          className="text-primary-foreground text-sm"
+          role="status"
+          aria-live="polite"
+        >
+          {copy.successMessage}
+        </p>
+      )}
+      {submissionState === 'error' && (
+        <p
+          className="text-primary-foreground text-sm font-medium"
+          role="alert"
+          aria-live="assertive"
+        >
+          {copy.error}
+        </p>
+      )}
+    </div>
+  );
+};

@@ -117,6 +117,24 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
   ),
 }));
 
+jest.mock('@/components/paperless-opt-in/PaperlessOptInButton', () => ({
+  PaperlessOptInButton: ({
+    locale,
+    label,
+  }: {
+    locale?: string;
+    label?: string;
+  }) => (
+    <button
+      data-testid="paperless-opt-in-button"
+      data-locale={locale}
+      data-label={label}
+    >
+      Paperless opt-in
+    </button>
+  ),
+}));
+
 describe('AccordionBlockDefault Component', () => {
   it('renders accordion with heading and accordion items', () => {
     render(<AccordionBlockDefault {...mockAccordionProps} />);
@@ -165,6 +183,170 @@ describe('AccordionBlockDefault Component', () => {
       'secondary',
     );
     expect(screen.getByText('Contact Support')).toBeInTheDocument();
+  });
+
+  it('uses the paperless opt-in behavior for the URL-marked CTA', () => {
+    const paperlessProps = {
+      ...mockAccordionProps,
+      fields: {
+        data: {
+          datasource: {
+            ...mockAccordionProps.fields.data.datasource,
+            link: {
+              jsonValue: {
+                value: {
+                  href: '/account-billing?paperless=opt-in',
+                  text: 'Explore account help',
+                  linktype: 'internal',
+                  url: '/account-billing?paperless=opt-in',
+                  anchor: '',
+                  target: '',
+                },
+              },
+            },
+          },
+        },
+      },
+      page: { ...mockAccordionProps.page, locale: 'es-MX' },
+    };
+
+    render(<AccordionBlockDefault {...paperlessProps} />);
+
+    expect(screen.getByTestId('paperless-opt-in-button')).toHaveAttribute(
+      'data-locale',
+      'es-MX',
+    );
+    expect(screen.getByTestId('paperless-opt-in-button')).toHaveAttribute(
+      'data-label',
+      'Explore account help',
+    );
+    expect(screen.queryByTestId('editable-button')).not.toBeInTheDocument();
+  });
+
+  it('recognizes the URL marker on a locale-prefixed account path', () => {
+    const paperlessProps = {
+      ...mockAccordionProps,
+      fields: {
+        data: {
+          datasource: {
+            ...mockAccordionProps.fields.data.datasource,
+            link: {
+              jsonValue: {
+                value: {
+                  href: '/es-MX/account-billing?paperless=opt-in',
+                  text: 'Elegir facturación electrónica',
+                  linktype: 'internal',
+                  url: '/es-MX/account-billing?paperless=opt-in',
+                  anchor: '',
+                  target: '',
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
+    render(<AccordionBlockDefault {...paperlessProps} />);
+
+    expect(screen.getByTestId('paperless-opt-in-button')).toBeInTheDocument();
+  });
+
+  it('recognizes Sitecore links that store the URL query separately', () => {
+    const paperlessProps = {
+      ...mockAccordionProps,
+      fields: {
+        data: {
+          datasource: {
+            ...mockAccordionProps.fields.data.datasource,
+            link: {
+              jsonValue: {
+                value: {
+                  href: '/account-billing',
+                  text: 'Explore account help',
+                  linktype: 'internal',
+                  querystring: 'paperless=opt-in',
+                  url: '/account-billing',
+                  anchor: '',
+                  target: '',
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
+    render(<AccordionBlockDefault {...paperlessProps} />);
+
+    expect(screen.getByTestId('paperless-opt-in-button')).toBeInTheDocument();
+  });
+
+  it('continues to use the authored button when only its label mentions paperless billing', () => {
+    const labelOnlyProps = {
+      ...mockAccordionProps,
+      fields: {
+        data: {
+          datasource: {
+            ...mockAccordionProps.fields.data.datasource,
+            link: {
+              jsonValue: {
+                value: {
+                  href: '/account-billing',
+                  text: 'Choose paperless billing',
+                  linktype: 'internal',
+                  url: '/account-billing',
+                  anchor: '',
+                  target: '',
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
+    render(<AccordionBlockDefault {...labelOnlyProps} />);
+
+    expect(screen.getByTestId('editable-button')).toBeInTheDocument();
+    expect(
+      screen.queryByTestId('paperless-opt-in-button'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('keeps the URL-marked CTA editable in Page Builder', () => {
+    const editingPaperlessProps = {
+      ...mockAccordionPropsEditing,
+      fields: {
+        data: {
+          datasource: {
+            ...mockAccordionPropsEditing.fields.data.datasource,
+            link: {
+              jsonValue: {
+                value: {
+                  href: '/account-billing?paperless=opt-in',
+                  text: 'Explore account help',
+                  linktype: 'internal',
+                  url: '/account-billing?paperless=opt-in',
+                  anchor: '',
+                  target: '',
+                },
+              },
+            },
+          },
+        },
+      },
+    };
+
+    render(<AccordionBlockDefault {...editingPaperlessProps} />);
+
+    expect(screen.getByTestId('editable-button')).toHaveAttribute(
+      'data-editing',
+      'true',
+    );
+    expect(
+      screen.queryByTestId('paperless-opt-in-button'),
+    ).not.toBeInTheDocument();
   });
 
   it('handles editing mode by keeping all accordions open', () => {

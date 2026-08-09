@@ -7,12 +7,21 @@ import config from 'sitecore.config';
 
 import { Login, Register } from '@/components/customer-account/CustomerAccount';
 import type { CustomerAccountProps } from '@/components/customer-account/customer-account.props';
+import {
+  establishDemoAccountSession,
+  initializeNewUdlProfile,
+} from '@/lib/sitecoreai-udl-client';
 
 jest.unmock('react-hook-form');
 jest.unmock('@/components/ui/form');
 
 jest.mock('@sitecore-content-sdk/events', () => ({
   identity: jest.fn(),
+}));
+
+jest.mock('@/lib/sitecoreai-udl-client', () => ({
+  establishDemoAccountSession: jest.fn(),
+  initializeNewUdlProfile: jest.fn(),
 }));
 
 jest.mock('lucide-react', () => ({
@@ -71,6 +80,14 @@ jest.mock('@/utils/NoDataFallback', () => ({
 }));
 
 const mockIdentity = identity as jest.MockedFunction<typeof identity>;
+const mockEstablishDemoAccountSession =
+  establishDemoAccountSession as jest.MockedFunction<
+    typeof establishDemoAccountSession
+  >;
+const mockInitializeNewUdlProfile =
+  initializeNewUdlProfile as jest.MockedFunction<
+    typeof initializeNewUdlProfile
+  >;
 const mockConfig = config as unknown as {
   api: { edge: { clientContextId?: string } };
 };
@@ -178,6 +195,15 @@ describe('CustomerAccount', () => {
     jest.clearAllMocks();
     mockConfig.api.edge.clientContextId = 'test-context-id';
     mockIdentity.mockResolvedValue(acceptedIdentityResponse);
+    mockEstablishDemoAccountSession.mockResolvedValue({
+      session: { established: true },
+    });
+    mockInitializeNewUdlProfile.mockResolvedValue({
+      profile: {
+        created: true,
+        paperlessInitialized: true,
+      },
+    });
     document.documentElement.lang = 'en-US';
   });
 
@@ -211,6 +237,9 @@ describe('CustomerAccount', () => {
       },
     });
     expect(mockIdentity.mock.calls[0][0]).not.toHaveProperty('password');
+    expect(mockEstablishDemoAccountSession).toHaveBeenCalledWith(
+      'taylor@example.com',
+    );
     expect(await screen.findByText('You’re signed in')).toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: 'Continue to your homepage' }),
@@ -226,6 +255,7 @@ describe('CustomerAccount', () => {
     ).toBeInTheDocument();
     expect(screen.getByText('Password is required.')).toBeInTheDocument();
     expect(mockIdentity).not.toHaveBeenCalled();
+    expect(mockEstablishDemoAccountSession).not.toHaveBeenCalled();
   });
 
   it('masks registration passwords but validates only name and email fields', async () => {
@@ -279,6 +309,14 @@ describe('CustomerAccount', () => {
     expect(payload).not.toHaveProperty('confirmPassword');
     expect(payload).not.toHaveProperty('phone');
     expect(payload).not.toHaveProperty('address');
+    expect(mockInitializeNewUdlProfile).toHaveBeenCalledWith({
+      email: 'taylor@example.com',
+      firstName: 'Taylor',
+      lastName: 'Morgan',
+    });
+    expect(
+      mockInitializeNewUdlProfile.mock.invocationCallOrder[0],
+    ).toBeLessThan(mockIdentity.mock.invocationCallOrder[0]);
     expect(
       await screen.findByText('Your registration is complete'),
     ).toBeInTheDocument();
@@ -303,6 +341,32 @@ describe('CustomerAccount', () => {
       screen.queryByText(/passwords? (?:is|are) required/i),
     ).not.toBeInTheDocument();
     expect(mockIdentity).not.toHaveBeenCalled();
+    expect(mockInitializeNewUdlProfile).not.toHaveBeenCalled();
+  });
+
+  it('keeps the login form open and shows the request error when profile initialization fails', async () => {
+    mockEstablishDemoAccountSession.mockRejectedValueOnce(
+      new Error('Session creation failed.'),
+    );
+    render(<Login {...loginProps} />);
+
+    fireEvent.change(screen.getByLabelText(/Email address/i), {
+      target: { value: '  Taylor@Example.COM  ' },
+    });
+    fireEvent.change(screen.getByLabelText(/^Password/i), {
+      target: { value: 'anything' },
+    });
+    submitClosestForm('Sign in');
+
+    expect(
+      await screen.findByText(
+        'We could not complete your request. Please try again.',
+      ),
+    ).toBeInTheDocument();
+    expect(mockEstablishDemoAccountSession).toHaveBeenCalledWith(
+      'taylor@example.com',
+    );
+    expect(screen.queryByText('You’re signed in')).not.toBeInTheDocument();
   });
 
   it('does not identify visitors while previewing the account experience', async () => {
@@ -330,6 +394,8 @@ describe('CustomerAccount', () => {
 
     expect(await screen.findByText('You’re signed in')).toBeInTheDocument();
     expect(mockIdentity).not.toHaveBeenCalled();
+    expect(mockEstablishDemoAccountSession).not.toHaveBeenCalled();
+    expect(mockInitializeNewUdlProfile).not.toHaveBeenCalled();
   });
 
   it('keeps the Spanish login journey localized through validation and success', async () => {
@@ -376,6 +442,9 @@ describe('CustomerAccount', () => {
         language: 'ES-MX',
         page: '/es-MX/account-billing/login',
       }),
+    );
+    expect(mockEstablishDemoAccountSession).toHaveBeenCalledWith(
+      'visitante@example.com',
     );
   });
 

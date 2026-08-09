@@ -253,7 +253,7 @@ export const GlobalFooterNwn: React.FC<GlobalFooterProps> = (props) => {
                       ? {
                           provider:
                             process.env
-                              .NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER ||
+                              .NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER ||
                             'email',
                           source: 'global_footer',
                         }

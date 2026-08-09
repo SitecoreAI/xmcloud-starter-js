@@ -26,6 +26,10 @@ import {
   getLocalizedPathname,
   type SupportedLocale,
 } from '@/i18n/locales';
+import {
+  establishDemoAccountSession,
+  initializeNewUdlProfile,
+} from '@/lib/sitecoreai-udl-client';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 
@@ -211,6 +215,8 @@ const shouldIdentifyVisitor = (props: CustomerAccountProps) =>
   props.page.mode.isNormal &&
   !props.page.mode.isPreview;
 
+const normalizeEmail = (email: string) => email.trim().toLowerCase();
+
 const identifyVisitor = async (
   values: IdentityValues,
   source: 'account_login' | 'account_registration',
@@ -219,7 +225,7 @@ const identifyVisitor = async (
     throw new Error('SitecoreAI client context is unavailable.');
   }
 
-  const normalizedEmail = values.email.trim().toLowerCase();
+  const normalizedEmail = normalizeEmail(values.email);
   const response = await identity({
     channel: 'WEB',
     currency: 'USD',
@@ -230,7 +236,7 @@ const identifyVisitor = async (
       {
         id: normalizedEmail,
         provider:
-          process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER || 'email',
+          process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER || 'email',
       },
     ],
     language: (document.documentElement.lang || 'en').toUpperCase(),
@@ -244,6 +250,8 @@ const identifyVisitor = async (
   if (!response) {
     throw new Error('SitecoreAI did not accept the identity event.');
   }
+
+  return normalizedEmail;
 };
 
 const EditableHeading = ({
@@ -360,7 +368,11 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
 
     if (shouldIdentifyVisitor(props)) {
       try {
-        await identifyVisitor({ email: values.email }, 'account_login');
+        const identifiedEmail = await identifyVisitor(
+          { email: values.email },
+          'account_login',
+        );
+        await establishDemoAccountSession(identifiedEmail);
       } catch {
         setSubmissionError(copy.requestError);
         return;
@@ -556,11 +568,17 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
 
     if (shouldIdentifyVisitor(props)) {
       try {
+        const profile = {
+          email: normalizeEmail(values.email),
+          firstName: values.firstName.trim(),
+          lastName: values.lastName.trim(),
+        };
+        await initializeNewUdlProfile(profile);
         await identifyVisitor(
           {
-            email: values.email,
-            firstName: values.firstName,
-            lastName: values.lastName,
+            email: profile.email,
+            firstName: profile.firstName,
+            lastName: profile.lastName,
           },
           'account_registration',
         );

@@ -92,7 +92,7 @@ export const Default: React.FC<EmailSignupFormProps> = (props) => {
 
         // The SDK resolves null when the event endpoint rejects the request.
         if (!response) {
-          throw new Error('Sitecore CDP did not accept the identity event.');
+          throw new Error('SitecoreAI did not accept the identity event.');
         }
       } catch {
         setSubmissionError(

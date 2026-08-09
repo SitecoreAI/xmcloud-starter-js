@@ -153,6 +153,7 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production npm-run-all --serial sitecore-tools:generate-map sitecore-tools:build next:build",
+    "sitecoreai:demo-profiles": "ts-node --transpile-only --project scripts/tsconfig.json scripts/generate-sitecoreai-udl-demo-profiles.ts",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit --incremental false",
     "next:build": "next build",

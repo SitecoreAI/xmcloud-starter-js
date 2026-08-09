@@ -49,11 +49,13 @@
         ],
         "identifiedJourney": [
             "Identify the visitor by normalized email address at sign-in.",
+            "Initialize the demo-only SitecoreAI Unified Data Layer paperless profile extension to false only when a newly registered profile is created.",
             "Return to the homepage on a new request so embedded personalization can evaluate the resolved visitor.",
-            "Show the paperless-billing experience and payment-assistance experience in separate homepage regions."
+            "Show the paperless-billing experience and payment-assistance experience in separate homepage regions.",
+            "Use the explicit paperless-billing call to action to set the identified demo profile attribute to true."
         ],
         "signalBoundaries": {
-            "paperlessBilling": "A known CDP profile attribute supplied by NW Natural's system of record.",
+            "paperlessBilling": "A demo-only SitecoreAI Unified Data Layer profile extension initialized for a newly registered profile and changed to true only by the explicit paperless opt-in. A production implementation would synchronize the authoritative billing-system value.",
             "paymentAssistance": "A SitecoreAI affinity based on observed content interest; it is not a statement of financial hardship."
         }
     },
@@ -311,7 +313,7 @@
                         "title": "Make billing a little simpler",
                         "copy": "Paperless billing keeps statements in your online account and can reduce the mail you need to manage.",
                         "linkLabel": "Choose paperless billing",
-                        "linkDestination": "/account-billing"
+                        "linkDestination": "/account-billing?paperless=opt-in"
                     }
                 },
                 {
@@ -331,6 +333,12 @@
                     }
                 }
             ],
+            "paperlessOptIn": {
+                "location": "Everyday home energy guidance",
+                "label": "Choose paperless billing",
+                "description": "Sign in to choose paperless billing and keep your statements easy to find online.",
+                "destination": "/account-billing?paperless=opt-in"
+            },
             "sections": [
                 {
                     "heading": "Your account, right at hand",

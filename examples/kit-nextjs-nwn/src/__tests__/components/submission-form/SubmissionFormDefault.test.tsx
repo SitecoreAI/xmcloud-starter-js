@@ -63,7 +63,7 @@ const acceptedIdentityResponse = {
 };
 const originalNodeEnv = process.env.NODE_ENV;
 const originalIdentityProvider =
-  process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER;
+  process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER;
 
 const contactProps = {
   ...mockSubmissionFormProps,
@@ -118,9 +118,9 @@ describe('SubmissionFormDefault', () => {
     });
 
     if (originalIdentityProvider === undefined) {
-      delete process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER;
+      delete process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER;
     } else {
-      process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER =
+      process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER =
         originalIdentityProvider;
     }
   });
@@ -128,7 +128,7 @@ describe('SubmissionFormDefault', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockConfig.api.edge.clientContextId = 'test-context-id';
-    delete process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER;
+    delete process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER;
     document.documentElement.lang = 'en-US';
     window.history.replaceState({}, '', '/contact-us');
   });
@@ -212,7 +212,7 @@ describe('SubmissionFormDefault', () => {
     expect(mockIdentity).not.toHaveBeenCalled();
   });
 
-  it('normalizes identity fields and does not send the message to CDP', async () => {
+  it('normalizes identity fields and does not send the message to SitecoreAI', async () => {
     mockIdentity.mockResolvedValue(acceptedIdentityResponse);
     renderForm();
 
@@ -244,8 +244,8 @@ describe('SubmissionFormDefault', () => {
     ).toBeInTheDocument();
   });
 
-  it('uses the configured CDP identity provider', async () => {
-    process.env.NEXT_PUBLIC_SITECORE_CDP_IDENTITY_PROVIDER = 'customer_email';
+  it('uses the configured SitecoreAI identity provider', async () => {
+    process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER = 'customer_email';
     mockIdentity.mockResolvedValue(acceptedIdentityResponse);
     renderForm();
 
@@ -260,7 +260,7 @@ describe('SubmissionFormDefault', () => {
     ]);
   });
 
-  it('retains the form and shows an error when CDP returns null', async () => {
+  it('retains the form and shows an error when SitecoreAI returns null', async () => {
     mockIdentity.mockResolvedValue(null);
     renderForm();
 
@@ -281,7 +281,7 @@ describe('SubmissionFormDefault', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('retains the form when CDP rejects the identity request', async () => {
+  it('retains the form when SitecoreAI rejects the identity request', async () => {
     mockIdentity.mockRejectedValue(new Error('SDK not initialized'));
     renderForm();
 
@@ -295,7 +295,7 @@ describe('SubmissionFormDefault', () => {
     );
   });
 
-  it('shows an error without calling CDP when the client context is missing', async () => {
+  it('shows an error without calling SitecoreAI when the client context is missing', async () => {
     mockConfig.api.edge.clientContextId = undefined;
     renderForm();
 
