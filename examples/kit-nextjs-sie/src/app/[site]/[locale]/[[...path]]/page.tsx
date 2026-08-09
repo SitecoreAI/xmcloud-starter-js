@@ -44,7 +44,7 @@ function findHeroImage(page: any): AuthoredImage | undefined {
       if (comp.componentName === 'Hero') {
         const imageSrc = comp.fields?.image?.value?.src;
         const imageAlt = comp.fields?.image?.value?.alt;
-        return imageSrc &&
+        const heroImage = imageSrc &&
           !isLegacyStarterValue(imageSrc) &&
           !isLegacyStarterValue(
             typeof imageAlt === 'string' ? imageAlt : undefined,
@@ -54,6 +54,31 @@ function findHeroImage(page: any): AuthoredImage | undefined {
               alt: typeof imageAlt === 'string' ? imageAlt : undefined,
             }
           : undefined;
+
+        if (heroImage) return heroImage;
+      }
+
+      if (comp.componentName === 'ImageCarousel') {
+        const items =
+          comp.fields?.data?.datasource?.imageItems?.results ?? [];
+
+        for (const item of items) {
+          const imageSrc = item?.image?.jsonValue?.value?.src;
+          const imageAlt = item?.image?.jsonValue?.value?.alt;
+
+          if (
+            imageSrc &&
+            !isLegacyStarterValue(imageSrc) &&
+            !isLegacyStarterValue(
+              typeof imageAlt === 'string' ? imageAlt : undefined,
+            )
+          ) {
+            return {
+              src: imageSrc,
+              alt: typeof imageAlt === 'string' ? imageAlt : undefined,
+            };
+          }
+        }
       }
       // Recurse into nested placeholders (containers / flex)
       if (comp.placeholders) {

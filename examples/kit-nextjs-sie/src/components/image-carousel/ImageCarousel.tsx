@@ -10,6 +10,7 @@ import {
   ImageCarouselNwnHome,
   ImageCarouselNwnResources,
 } from './ImageCarouselNwnResources.dev';
+import { ImageCarouselSieHero } from './ImageCarouselSieHero.dev';
 
 // Data source checks are done in the child components
 
@@ -57,4 +58,10 @@ export const NwnResources: React.FC<ImageCarouselProps> = (props) => {
   const { isEditing } = props.page.mode;
 
   return <ImageCarouselNwnResources {...props} isPageEditing={isEditing} />;
+};
+
+export const SieHero: React.FC<ImageCarouselProps> = (props) => {
+  const { isEditing } = props.page.mode;
+
+  return <ImageCarouselSieHero {...props} isPageEditing={isEditing} />;
 };

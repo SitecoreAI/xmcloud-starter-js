@@ -69,6 +69,7 @@ import * as ImageGalleryFeaturedImagedev from 'src/components/image-gallery/Imag
 import * as ImageGallerydev from 'src/components/image-gallery/ImageGallery.dev';
 import * as ImageGallery from 'src/components/image-gallery/ImageGallery';
 import * as ImageCarouselThumbnailsdev from 'src/components/image-carousel/ImageCarouselThumbnails.dev';
+import * as ImageCarouselSieHerodev from 'src/components/image-carousel/ImageCarouselSieHero.dev';
 import * as ImageCarouselPreviewBelowdev from 'src/components/image-carousel/ImageCarouselPreviewBelow.dev';
 import * as ImageCarouselNwnResourcesdev from 'src/components/image-carousel/ImageCarouselNwnResources.dev';
 import * as ImageCarouselLeftRightPreviewdev from 'src/components/image-carousel/ImageCarouselLeftRightPreview.dev';
@@ -179,6 +180,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ImageGalleryFeaturedImage', { ...ImageGalleryFeaturedImagedev }],
   ['ImageGallery', { ...ImageGallerydev, ...ImageGallery }],
   ['ImageCarouselThumbnails', { ...ImageCarouselThumbnailsdev }],
+  ['ImageCarouselSieHero', { ...ImageCarouselSieHerodev }],
   ['ImageCarouselPreviewBelow', { ...ImageCarouselPreviewBelowdev }],
   ['ImageCarouselNwnResources', { ...ImageCarouselNwnResourcesdev }],
   ['ImageCarouselLeftRightPreview', { ...ImageCarouselLeftRightPreviewdev }],

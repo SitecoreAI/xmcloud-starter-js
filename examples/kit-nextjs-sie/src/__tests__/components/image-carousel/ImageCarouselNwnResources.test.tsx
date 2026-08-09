@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import type { Page } from '@sitecore-content-sdk/nextjs';
 
 import { ImageCarouselNwnResources } from '@/components/image-carousel/ImageCarouselNwnResources.dev';
+import { ImageCarouselSieHero } from '@/components/image-carousel/ImageCarouselSieHero.dev';
 import type {
   ImageCarouselProps,
   imageCarouselItem,
@@ -46,6 +47,8 @@ const mockCarousel = jest.fn(
       <div
         data-testid="carousel"
         data-watch-drag={String(opts?.watchDrag)}
+        role="region"
+        aria-roledescription="carousel"
         {...attributes}
       >
         {children}
@@ -520,5 +523,130 @@ describe('ImageCarouselNwnResources', () => {
     expect(
       screen.getByRole('button', { name: 'Next customer resource' }),
     ).toBeDisabled();
+  });
+});
+
+describe('ImageCarouselSieHero', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    carouselListeners = {};
+    mockCarouselApi.selectedScrollSnap.mockReturnValue(0);
+  });
+
+  const heroItems = [
+    createItem(
+      'hero-safe-service',
+      'Your partner for safe, reliable gas service',
+      'Responsive natural gas service for growing Texas communities.',
+      'https://billing.example.com',
+      'Pay My Bill',
+      'https://thlt-demo.sitecoresandbox.cloud/api/public/content/sie-hero-one',
+    ),
+    createItem(
+      'hero-about',
+      'About SiEnergy',
+      'Dependable community infrastructure since 1998.',
+      '/company',
+      'Learn About SiEnergy',
+      'https://thlt-demo.sitecoresandbox.cloud/api/public/content/sie-hero-two',
+    ),
+  ];
+
+  it('renders two managed hero slides from authored DAM image fields', () => {
+    render(<ImageCarouselSieHero {...createProps(heroItems)} />);
+
+    expect(screen.getByTestId('carousel')).toHaveAttribute(
+      'data-watch-drag',
+      'true',
+    );
+    expect(screen.getAllByTestId('carousel-item')).toHaveLength(2);
+    expect(
+      screen
+        .getAllByTestId('carousel-image-field')
+        .map((image) => image.getAttribute('src')),
+    ).toEqual([
+      'https://thlt-demo.sitecoresandbox.cloud/api/public/content/sie-hero-one',
+      'https://thlt-demo.sitecoresandbox.cloud/api/public/content/sie-hero-two',
+    ]);
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: 'Your partner for safe, reliable gas service',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Next hero slide' }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByRole('region')).toHaveLength(1);
+    expect(screen.getByRole('region')).toHaveAccessibleName(
+      'Practical resources for every customer.',
+    );
+    expect(
+      screen
+        .getAllByTestId('carousel-image-field')
+        .every((image) => Boolean(image.getAttribute('alt'))),
+    ).toBe(true);
+  });
+
+  it('keeps only the selected hero title as the page heading', () => {
+    render(<ImageCarouselSieHero {...createProps(heroItems)} />);
+
+    const slides = screen.getAllByTestId('carousel-item');
+    expect(slides[0]).not.toHaveAttribute('inert');
+    expect(slides[1]).toHaveAttribute('inert');
+
+    mockCarouselApi.selectedScrollSnap.mockReturnValue(1);
+    act(() => {
+      carouselListeners.select?.();
+    });
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'About SiEnergy' }),
+    ).toBeInTheDocument();
+    expect(slides[0]).toHaveAttribute('inert');
+    expect(slides[1]).not.toHaveAttribute('inert');
+  });
+
+  it('preserves managed empty fields for Page Builder without enabling drag', () => {
+    render(
+      <ImageCarouselSieHero {...createProps([blankManagedItem], true)} />,
+    );
+
+    expect(screen.getByTestId('carousel')).toHaveAttribute(
+      'data-watch-drag',
+      'false',
+    );
+    expect(screen.getByTestId('carousel-image-field')).toHaveAttribute(
+      'data-field-metadata',
+      'true',
+    );
+    expect(screen.getByTestId('carousel-link-field')).toHaveAttribute(
+      'data-page-editing',
+      'true',
+    );
+    expect(
+      screen.queryByRole('button', { name: 'Next hero slide' }),
+    ).not.toBeInTheDocument();
+  });
+
+  it('does not substitute a local or placeholder image for an empty DAM field', () => {
+    render(
+      <ImageCarouselSieHero
+        {...createProps([
+          createItem(
+            'hero-without-image',
+            'Authored content without an image',
+            'The component remains content-driven.',
+            '/company',
+            'Learn more',
+          ),
+        ])}
+      />,
+    );
+
+    expect(
+      screen.queryByTestId('carousel-image-field'),
+    ).not.toBeInTheDocument();
+    expect(document.querySelector('img')).not.toBeInTheDocument();
   });
 });
