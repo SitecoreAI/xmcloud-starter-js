@@ -41,6 +41,8 @@ const paperlessCopy = {
   }
 >;
 
+const PAPERLESS_OPT_IN_EVENT = 'NWN_PAPERLESS_OPT_IN';
+
 type SubmissionState = 'idle' | 'pending' | 'success' | 'error';
 
 export type PaperlessOptInButtonProps = {
@@ -73,22 +75,32 @@ export const PaperlessOptInButton = ({
         throw new Error('The paperless preference was not confirmed.');
       }
 
-      const eventResponse = await event({
-        type: 'nwn:PAPERLESS_OPT_IN',
+      setSubmissionState('success');
+
+      void event({
+        type: PAPERLESS_OPT_IN_EVENT,
         channel: 'WEB',
         currency: 'USD',
-        language: (
-          document.documentElement.lang || localeOption.code
-        ).toUpperCase(),
+        language: localeOption.shortLabel,
         page: window.location.pathname || '/',
         extensionData: { paperless: true },
-      });
-
-      if (!eventResponse) {
-        throw new Error('SitecoreAI did not accept the paperless event.');
-      }
-
-      setSubmissionState('success');
+      })
+        .then((eventResponse) => {
+          if (eventResponse?.status !== 'OK') {
+            // The profile preference is authoritative; telemetry must not undo it.
+            // eslint-disable-next-line no-console -- operational signal for a failed UDL event
+            console.warn(
+              '[NWN paperless] SitecoreAI did not accept the opt-in event.',
+            );
+          }
+        })
+        .catch(() => {
+          // The preference is already committed through Profile Import.
+          // eslint-disable-next-line no-console -- operational signal for a failed UDL event
+          console.warn(
+            '[NWN paperless] Could not send the SitecoreAI opt-in event.',
+          );
+        });
     } catch (error) {
       if (error instanceof SitecoreAiUdlClientError && error.status === 401) {
         setSubmissionState('idle');

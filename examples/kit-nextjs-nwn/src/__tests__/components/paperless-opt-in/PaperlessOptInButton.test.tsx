@@ -80,10 +80,10 @@ describe('PaperlessOptInButton', () => {
       'Your paperless billing preference has been saved.',
     );
     expect(mockEvent).toHaveBeenCalledWith({
-      type: 'nwn:PAPERLESS_OPT_IN',
+      type: 'NWN_PAPERLESS_OPT_IN',
       channel: 'WEB',
       currency: 'USD',
-      language: 'EN-US',
+      language: 'EN',
       page: '/',
       extensionData: { paperless: true },
     });
@@ -188,6 +188,58 @@ describe('PaperlessOptInButton', () => {
     expect(
       screen.queryByRole('button', { name: 'Paperless billing is on' }),
     ).not.toBeInTheDocument();
+  });
+
+  it('keeps the confirmed preference successful when event telemetry returns null', async () => {
+    const warn = jest
+      .spyOn(console, 'warn')
+      .mockImplementation(() => undefined);
+    mockSubmitPaperlessOptIn.mockResolvedValue({
+      paperless: {
+        batchId: '7dc912e2-4fb9-4340-ae1d-4239399e3f97',
+        changed: true,
+        value: true,
+      },
+    });
+    mockEvent.mockResolvedValue(null);
+
+    render(<PaperlessOptInButton locale="en" />);
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Choose paperless billing' }),
+    );
+
+    expect(
+      await screen.findByRole('button', { name: 'Paperless billing is on' }),
+    ).toBeDisabled();
+    await waitFor(() => expect(warn).toHaveBeenCalledTimes(1));
+    warn.mockRestore();
+  });
+
+  it('keeps the confirmed preference successful when event telemetry rejects', async () => {
+    const warn = jest
+      .spyOn(console, 'warn')
+      .mockImplementation(() => undefined);
+    mockSubmitPaperlessOptIn.mockResolvedValue({
+      paperless: {
+        batchId: '7dc912e2-4fb9-4340-ae1d-4239399e3f97',
+        changed: true,
+        value: true,
+      },
+    });
+    mockEvent.mockRejectedValue(new Error('Telemetry unavailable'));
+
+    render(<PaperlessOptInButton locale="es-MX" />);
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Elegir facturación electrónica' }),
+    );
+
+    expect(
+      await screen.findByRole('button', {
+        name: 'La facturación electrónica está activada',
+      }),
+    ).toBeDisabled();
+    await waitFor(() => expect(warn).toHaveBeenCalledTimes(1));
+    warn.mockRestore();
   });
 
   it.each([
