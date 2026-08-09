@@ -80,7 +80,7 @@ describe('PaperlessOptInButton', () => {
       'Your paperless billing preference has been saved.',
     );
     expect(mockEvent).toHaveBeenCalledWith({
-      type: 'nwn:paperless_opt_in',
+      type: 'nwn:PAPERLESS_OPT_IN',
       channel: 'WEB',
       currency: 'USD',
       language: 'EN-US',

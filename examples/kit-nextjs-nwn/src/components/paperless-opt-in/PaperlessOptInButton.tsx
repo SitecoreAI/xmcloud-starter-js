@@ -74,7 +74,7 @@ export const PaperlessOptInButton = ({
       }
 
       const eventResponse = await event({
-        type: 'nwn:paperless_opt_in',
+        type: 'nwn:PAPERLESS_OPT_IN',
         channel: 'WEB',
         currency: 'USD',
         language: (
