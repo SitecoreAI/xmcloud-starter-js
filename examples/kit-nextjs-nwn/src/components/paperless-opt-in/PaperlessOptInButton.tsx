@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { event, identity } from '@sitecore-content-sdk/events';
+import { identity } from '@sitecore-content-sdk/events';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -45,8 +45,6 @@ const paperlessCopy = {
   }
 >;
 
-const PAPERLESS_OPT_IN_EVENT = 'NWN_PAPERLESS_OPT_IN';
-
 type SubmissionState = 'idle' | 'pending' | 'success' | 'error';
 
 export type PaperlessOptInButtonProps = {
@@ -87,28 +85,16 @@ export const PaperlessOptInButton = ({
           },
         ],
         language: localeOption.shortLabel,
-        page: window.location.pathname || '/',
+        page: '/paperless-billing/opt-in',
         extensionData: {
           source: 'paperless_opt_in',
           intent: 'update_billing_preference',
+          paperless: true,
         },
       });
 
       if (!identityResponse || identityResponse.status !== 'OK') {
         throw new Error('SitecoreAI did not accept the identity event.');
-      }
-
-      const eventResponse = await event({
-        type: PAPERLESS_OPT_IN_EVENT,
-        channel: 'WEB',
-        currency: 'USD',
-        language: localeOption.shortLabel,
-        page: window.location.pathname || '/',
-        extensionData: { paperless: true },
-      });
-
-      if (!eventResponse || eventResponse.status !== 'OK') {
-        throw new Error('SitecoreAI did not accept the opt-in event.');
       }
 
       setSubmissionState('success');

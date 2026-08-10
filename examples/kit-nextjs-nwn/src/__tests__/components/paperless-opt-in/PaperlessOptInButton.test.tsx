@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { event, identity } from '@sitecore-content-sdk/events';
+import { identity } from '@sitecore-content-sdk/events';
 
 import { PaperlessOptInButton } from '@/components/paperless-opt-in/PaperlessOptInButton';
 import {
@@ -16,7 +16,6 @@ jest.mock('next/navigation', () => ({
 }));
 
 jest.mock('@sitecore-content-sdk/events', () => ({
-  event: jest.fn(),
   identity: jest.fn(),
 }));
 
@@ -29,32 +28,26 @@ const mockVerifyPaperlessOptInSession =
   verifyPaperlessOptInSession as jest.MockedFunction<
     typeof verifyPaperlessOptInSession
   >;
-const mockEvent = event as jest.MockedFunction<typeof event>;
 const mockIdentity = identity as jest.MockedFunction<typeof identity>;
 type SessionResponse = Awaited<ReturnType<typeof verifyPaperlessOptInSession>>;
 
-const acceptedEventResponse = {
-  ref: 'event-reference',
+const acceptedIdentityResponse = {
+  ref: 'identity-reference',
   status: 'OK',
   version: '1.2',
   client_key: 'test-client',
   customer_ref: 'test-profile',
-};
-const acceptedIdentityResponse = {
-  ...acceptedEventResponse,
-  ref: 'identity-reference',
 };
 const SIGNED_EMAIL = 'nwn-live-20260809-143025@example.com';
 
 describe('PaperlessOptInButton', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockEvent.mockResolvedValue(acceptedEventResponse);
     mockIdentity.mockResolvedValue(acceptedIdentityResponse);
     document.documentElement.lang = 'en-US';
   });
 
-  it('binds the signed identity, confirms the opt-in event, and then shows success', async () => {
+  it('sets paperless on the signed identity and then shows success', async () => {
     let resolveRequest: ((value: SessionResponse) => void) | undefined;
     mockVerifyPaperlessOptInSession.mockReturnValue(
       new Promise((resolve) => {
@@ -88,32 +81,22 @@ describe('PaperlessOptInButton', () => {
       'href',
       '/account-billing/pay-my-bill#payment-options',
     );
-    expect(mockEvent).toHaveBeenCalledWith({
-      type: 'NWN_PAPERLESS_OPT_IN',
-      channel: 'WEB',
-      currency: 'USD',
-      language: 'EN',
-      page: '/',
-      extensionData: { paperless: true },
-    });
     expect(mockIdentity).toHaveBeenCalledWith({
       channel: 'WEB',
       currency: 'USD',
       email: SIGNED_EMAIL,
       identifiers: [{ id: SIGNED_EMAIL, provider: 'email' }],
       language: 'EN',
-      page: '/',
+      page: '/paperless-billing/opt-in',
       extensionData: {
         source: 'paperless_opt_in',
         intent: 'update_billing_preference',
+        paperless: true,
       },
     });
     expect(
       mockVerifyPaperlessOptInSession.mock.invocationCallOrder[0],
     ).toBeLessThan(mockIdentity.mock.invocationCallOrder[0]);
-    expect(mockIdentity.mock.invocationCallOrder[0]).toBeLessThan(
-      mockEvent.mock.invocationCallOrder[0],
-    );
 
     fireEvent.click(
       screen.getByRole('button', { name: 'Paperless billing is on' }),
@@ -172,7 +155,7 @@ describe('PaperlessOptInButton', () => {
       'No pudimos actualizar su preferencia. Inténtelo de nuevo.',
     );
     expect(button).toBeEnabled();
-    expect(mockEvent).not.toHaveBeenCalled();
+    expect(mockIdentity).not.toHaveBeenCalled();
 
     fireEvent.click(button);
     await waitFor(() =>
@@ -210,38 +193,6 @@ describe('PaperlessOptInButton', () => {
       expect(await screen.findByRole('alert')).toHaveTextContent(
         'We couldn’t update your preference. Please try again.',
       );
-      expect(mockEvent).not.toHaveBeenCalled();
-      expect(
-        screen.queryByRole('link', { name: 'Explore AutoPay' }),
-      ).not.toBeInTheDocument();
-    },
-  );
-
-  it.each(['rejects', 'returns null', 'returns non-OK'] as const)(
-    'shows a retryable error when the opt-in event %s',
-    async (outcome) => {
-      mockVerifyPaperlessOptInSession.mockResolvedValue({
-        session: { verified: true, email: SIGNED_EMAIL },
-      });
-      if (outcome === 'rejects') {
-        mockEvent.mockRejectedValueOnce(new Error('Event unavailable'));
-      } else if (outcome === 'returns null') {
-        mockEvent.mockResolvedValueOnce(null);
-      } else {
-        mockEvent.mockResolvedValueOnce({
-          ...acceptedEventResponse,
-          status: 'ERROR',
-        });
-      }
-
-      render(<PaperlessOptInButton locale="en" />);
-      fireEvent.click(
-        screen.getByRole('button', { name: 'Choose paperless billing' }),
-      );
-
-      expect(await screen.findByRole('alert')).toHaveTextContent(
-        'We couldn’t update your preference. Please try again.',
-      );
       expect(
         screen.queryByRole('link', { name: 'Explore AutoPay' }),
       ).not.toBeInTheDocument();
@@ -263,7 +214,7 @@ describe('PaperlessOptInButton', () => {
 
       await waitFor(() => expect(mockPush).toHaveBeenCalledWith(expectedPath));
       expect(screen.queryByRole('alert')).not.toBeInTheDocument();
-      expect(mockEvent).not.toHaveBeenCalled();
+      expect(mockIdentity).not.toHaveBeenCalled();
       expect(
         screen.getByRole('button', { name: 'Paperless CTA' }),
       ).toBeEnabled();
