@@ -4,8 +4,22 @@ import type { Page } from '@sitecore-content-sdk/nextjs';
 import Layout from '@/Layout';
 
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
-  AppPlaceholder: ({ name }: { name: string }) => (
-    <div data-placeholder={name} />
+  AppPlaceholder: ({
+    name,
+    rendering,
+  }: {
+    name: string;
+    rendering: { placeholders?: Record<string, unknown> };
+  }) => (
+    <div
+      data-placeholder={name}
+      data-placeholder-registered={String(
+        Object.prototype.hasOwnProperty.call(
+          rendering.placeholders ?? {},
+          name,
+        ),
+      )}
+    />
   ),
   DesignLibraryApp: () => <div data-design-library />,
 }));
@@ -42,6 +56,9 @@ describe('NWN Layout', () => {
     const markup = renderToStaticMarkup(<Layout page={createPage('Home')} />);
 
     expect(markup).toContain('data-placeholder="nwn-home-alert"');
+    expect(markup).toContain(
+      'data-placeholder="nwn-home-alert" data-placeholder-registered="true"',
+    );
     expect(markup.indexOf('data-placeholder="nwn-home-alert"')).toBeLessThan(
       markup.indexOf('data-placeholder="headless-main"'),
     );

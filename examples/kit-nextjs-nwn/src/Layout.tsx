@@ -107,7 +107,14 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
                   page={page}
                   componentMap={componentMap}
                   name="nwn-home-alert"
-                  rendering={route}
+                  rendering={{
+                    ...route,
+                    placeholders: {
+                      ...route.placeholders,
+                      'nwn-home-alert':
+                        route.placeholders?.['nwn-home-alert'] ?? [],
+                    },
+                  }}
                 />
               )}
               {/* Main content area */}
