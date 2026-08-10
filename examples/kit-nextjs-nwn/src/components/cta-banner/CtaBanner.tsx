@@ -36,7 +36,7 @@ const ctaTitleVariants = cva(
 );
 
 const ctaButtonVariants = cva(
-  'min-h-12 px-6 text-base font-heading font-semibold',
+  'h-auto min-h-12 whitespace-normal px-6 text-center text-base font-heading font-semibold leading-6',
   {
     variants: {
       colorScheme: {

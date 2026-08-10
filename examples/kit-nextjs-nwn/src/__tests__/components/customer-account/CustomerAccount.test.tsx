@@ -318,9 +318,7 @@ describe('CustomerAccount', () => {
     expect(mockEstablishDemoRegistrationSession).toHaveBeenCalledWith(
       'nwn-live-20260809-143025@example.com',
     );
-    expect(
-      mockIdentity.mock.invocationCallOrder[0],
-    ).toBeLessThan(
+    expect(mockIdentity.mock.invocationCallOrder[0]).toBeLessThan(
       mockEstablishDemoRegistrationSession.mock.invocationCallOrder[0],
     );
     expect(
@@ -337,6 +335,22 @@ describe('CustomerAccount', () => {
     expect(
       screen.getByRole('link', { name: 'Continue to your homepage' }),
     ).toHaveAttribute('href', '/');
+  });
+
+  it('places the service address heading below its section divider', () => {
+    render(<Register {...registrationProps} />);
+
+    const serviceAddressLegend = screen.getByText('Service address');
+    const serviceAddressFieldset = serviceAddressLegend.closest('fieldset');
+    const serviceAddressSection = serviceAddressFieldset?.parentElement;
+
+    expect(serviceAddressFieldset).toHaveClass('min-w-0');
+    expect(serviceAddressFieldset).not.toHaveClass('border-t');
+    expect(serviceAddressSection).toHaveClass(
+      'border-t',
+      'border-slate-200',
+      'pt-9',
+    );
   });
 
   it.each(['rejects', 'returns null', 'returns non-OK'] as const)(

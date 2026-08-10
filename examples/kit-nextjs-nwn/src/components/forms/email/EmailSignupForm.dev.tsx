@@ -144,7 +144,7 @@ export const Default: React.FC<EmailSignupFormProps> = (props) => {
                   {...field}
                 />
               </FormControl>
-              <FormMessage className="absolute top-[100%] pt-1 text-inherit" />
+              <FormMessage className="pt-1 text-inherit" />
             </FormItem>
           )}
         />

@@ -198,6 +198,23 @@ const RequiredMark = ({ label }: { label: string }) => (
   </span>
 );
 
+const DividedFieldset = ({
+  legend,
+  children,
+}: {
+  legend: string;
+  children: React.ReactNode;
+}) => (
+  <div className="border-t border-slate-200 pt-9">
+    <fieldset className="min-w-0">
+      <legend className="font-heading text-2xl font-semibold text-slate-950">
+        {legend}
+      </legend>
+      {children}
+    </fieldset>
+  </div>
+);
+
 const fieldText = (
   field: CustomerAccountFields[keyof CustomerAccountFields],
   fallback: string,
@@ -797,10 +814,7 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                     </div>
                   </fieldset>
 
-                  <fieldset className="border-t border-slate-200 pt-9">
-                    <legend className="font-heading text-2xl font-semibold text-slate-950">
-                      {copy.serviceAddress}
-                    </legend>
+                  <DividedFieldset legend={copy.serviceAddress}>
                     <div className="mt-6 grid gap-6 md:grid-cols-2">
                       <FormField
                         control={form.control}
@@ -914,7 +928,7 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
                         )}
                       />
                     </div>
-                  </fieldset>
+                  </DividedFieldset>
 
                   {submissionError && (
                     <p

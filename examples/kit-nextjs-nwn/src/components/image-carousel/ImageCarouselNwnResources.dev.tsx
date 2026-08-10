@@ -245,7 +245,7 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
                                 <ButtonBase
                                   buttonLink={resource.link}
                                   variant="default"
-                                  className="min-h-12 bg-primary px-6 text-base font-semibold text-white hover:bg-[#005f7f]"
+                                  className="h-auto min-h-12 whitespace-normal bg-primary px-6 text-center text-base font-semibold leading-6 text-white hover:bg-[#005f7f]"
                                   isPageEditing={isPageEditing}
                                   page={props.page}
                                 />
@@ -258,30 +258,6 @@ export const ImageCarouselNwnResources: React.FC<ImageCarouselProps> = (
                 })}
               </CarouselContent>
             </Carousel>
-
-            <div
-              className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-4"
-              role="group"
-              aria-label="Choose a customer resource"
-            >
-              {resources.map((resource, index) => (
-                <button
-                  type="button"
-                  key={resource.id + '-tab'}
-                  onClick={() => api?.scrollTo(index)}
-                  aria-label={'Show customer resource: ' + resource.title}
-                  aria-current={index === activeIndex ? 'true' : undefined}
-                  className={cn(
-                    'border-t-4 px-4 py-4 text-left font-heading text-base font-semibold transition-colors',
-                    index === activeIndex
-                      ? 'border-cyan-500 bg-[#eef5f6] text-primary'
-                      : 'border-slate-200 text-slate-600 hover:border-slate-400 hover:bg-slate-50',
-                  )}
-                >
-                  {resource.title}
-                </button>
-              ))}
-            </div>
 
             <p className="sr-only" aria-live="polite" aria-atomic="true">
               Showing customer resource {activeIndex + 1} of {resources.length}:{' '}

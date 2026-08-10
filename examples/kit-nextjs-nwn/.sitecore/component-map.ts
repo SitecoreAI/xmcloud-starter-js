@@ -62,6 +62,7 @@ import * as ProductListingNwnResourcesdev from 'src/components/product-listing/P
 import * as ProductListingDefaultdev from 'src/components/product-listing/ProductListingDefault.dev';
 import * as ProductListingCarddev from 'src/components/product-listing/ProductListingCard.dev';
 import * as ProductListing from 'src/components/product-listing/ProductListing';
+import * as PaperlessOptInButton from 'src/components/paperless-opt-in/PaperlessOptInButton';
 import * as PageHeaderNwnEditorialdev from 'src/components/page-header/PageHeaderNwnEditorial.dev';
 import * as PageHeaderFiftyFiftydev from 'src/components/page-header/PageHeaderFiftyFifty.dev';
 import * as PageHeaderDefaultdev from 'src/components/page-header/PageHeaderDefault.dev';
@@ -247,6 +248,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ProductListingDefault', { ...ProductListingDefaultdev }],
   ['ProductListingCard', { ...ProductListingCarddev }],
   ['ProductListing', { ...ProductListing, componentType: 'client' }],
+  ['PaperlessOptInButton', { ...PaperlessOptInButton, componentType: 'client' }],
   ['PageHeaderNwnEditorial', { ...PageHeaderNwnEditorialdev }],
   ['PageHeaderFiftyFifty', { ...PageHeaderFiftyFiftydev }],
   ['PageHeaderDefault', { ...PageHeaderDefaultdev }],

@@ -106,18 +106,21 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
   ButtonBase: ({
     buttonLink,
     isPageEditing,
+    className,
   }: {
     buttonLink: {
       value?: { href?: string; text?: string };
       metadata?: unknown;
     };
     isPageEditing?: boolean;
+    className?: string;
   }) => (
     <a
       data-testid="carousel-link-field"
       data-field-metadata={String(Boolean(buttonLink?.metadata))}
       data-page-editing={String(Boolean(isPageEditing))}
       href={buttonLink?.value?.href}
+      className={className}
     >
       {buttonLink?.value?.text}
     </a>
@@ -374,7 +377,7 @@ describe('ImageCarouselNwnResources', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('uses the Embla API for arrows and item selectors', () => {
+  it('uses the Embla API for arrows without rendering the removed text tabs', () => {
     render(<ImageCarouselNwnResources {...createProps()} />);
 
     fireEvent.click(
@@ -383,15 +386,12 @@ describe('ImageCarouselNwnResources', () => {
     fireEvent.click(
       screen.getByRole('button', { name: 'Previous customer resource' }),
     );
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: 'Show customer resource: Payment assistance',
-      }),
-    );
-
     expect(mockCarouselApi.scrollNext).toHaveBeenCalledTimes(1);
     expect(mockCarouselApi.scrollPrev).toHaveBeenCalledTimes(1);
-    expect(mockCarouselApi.scrollTo).toHaveBeenCalledWith(1);
+    expect(mockCarouselApi.scrollTo).not.toHaveBeenCalled();
+    expect(
+      screen.queryByRole('group', { name: 'Choose a customer resource' }),
+    ).not.toBeInTheDocument();
   });
 
   it('resynchronizes and cleans up after Manage items changes', () => {
@@ -429,13 +429,18 @@ describe('ImageCarouselNwnResources', () => {
     });
 
     expect(
-      screen.getByRole('button', {
-        name: 'Show customer resource: Payment assistance',
-      }),
-    ).toHaveAttribute('aria-current', 'true');
-    expect(
       screen.getByText(/Showing customer resource 2 of 3: Payment assistance/),
     ).toBeInTheDocument();
+  });
+
+  it('allows long localized resource CTAs to wrap', () => {
+    render(<ImageCarouselNwnResources {...createProps()} />);
+
+    expect(screen.getAllByTestId('carousel-link-field')[0]).toHaveClass(
+      'h-auto',
+      'whitespace-normal',
+      'text-center',
+    );
   });
 
   it('renders nothing when authors remove every managed item', () => {

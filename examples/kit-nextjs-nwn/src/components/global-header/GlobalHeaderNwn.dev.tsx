@@ -303,9 +303,9 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
   const brand = hasLogo ? (
     <ImageWrapper
       image={logoField}
-      wrapperClass="w-[11.4rem] sm:w-[14.4rem]"
+      wrapperClass="w-[9.5rem] sm:w-[14.4rem]"
       className="h-auto w-full object-contain"
-      sizes="(max-width: 640px) 182px, 230px"
+      sizes="(max-width: 640px) 152px, 230px"
       alt={copy.home}
       page={props.page}
     />
@@ -443,7 +443,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         </div>
       </div>
 
-      <div className="nwn-content-shell flex min-h-[4.5rem] items-center justify-between gap-6">
+      <div className="nwn-content-shell flex min-h-[4.5rem] items-center justify-between gap-3 sm:gap-6">
         <div className="shrink-0">
           {isPageEditing ? (
             brand

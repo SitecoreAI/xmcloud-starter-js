@@ -55,6 +55,11 @@ describe('CtaBanner Component', () => {
     expect(screen.getByText('CTA Description')).toBeInTheDocument();
     expect(screen.getByText('Click Here')).toBeInTheDocument();
     expect(screen.getByRole('link')).toHaveAttribute('href', '/cta-link');
+    expect(screen.getByRole('link')).toHaveClass(
+      'h-auto',
+      'whitespace-normal',
+      'text-center',
+    );
     expect(screen.getByText('CTA Title').closest('section')).toHaveClass(
       'nwn-cta-banner',
       'bg-primary',

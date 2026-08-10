@@ -259,6 +259,16 @@
         border-top: 1px solid var(--color-border);
     }
 
+    .nwn-content-section[id] {
+        scroll-margin-top: 6rem;
+    }
+
+    @media (min-width: 64rem) {
+        .nwn-content-section[id] {
+            scroll-margin-top: 10.5rem;
+        }
+    }
+
     .nwn-rich-text-content .nwn-page-content > .nwn-content-section:last-child {
         padding-bottom: 0;
     }

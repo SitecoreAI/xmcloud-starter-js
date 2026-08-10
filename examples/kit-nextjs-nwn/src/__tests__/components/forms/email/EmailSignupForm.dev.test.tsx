@@ -93,9 +93,11 @@ describe('EmailSignupForm', () => {
 
     submitEmail('not-an-email');
 
-    expect(
-      await screen.findByText('Enter a valid email address.'),
-    ).toBeInTheDocument();
+    const validationMessage = await screen.findByText(
+      'Enter a valid email address.',
+    );
+    expect(validationMessage).toBeInTheDocument();
+    expect(validationMessage).not.toHaveClass('absolute');
     expect(mockIdentity).not.toHaveBeenCalled();
   });
 
