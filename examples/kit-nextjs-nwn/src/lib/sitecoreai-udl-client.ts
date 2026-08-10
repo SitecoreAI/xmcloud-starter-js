@@ -8,62 +8,35 @@ export class SitecoreAiUdlClientError extends Error {
   }
 }
 
-export type PaperlessClientResult = {
-  paperless: {
-    batchId: string;
-    changed: boolean;
-    value: boolean;
-  };
-};
-
 type SessionClientResult = {
   session: {
     established: true;
   };
 };
 
-type RegistrationClientResult = {
-  profile: {
-    created: boolean;
-    paperlessInitialized: boolean;
-    profileId?: string;
-  };
+type VerifiedSessionClientResult = {
   session: {
-    established: true;
+    verified: true;
+    email: string;
   };
 };
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   Boolean(value) && typeof value === 'object';
 
-const isPaperlessClientResult = (
-  value: unknown,
-): value is PaperlessClientResult => {
-  if (!isRecord(value) || !isRecord(value.paperless)) return false;
-
-  return (
-    typeof value.paperless.batchId === 'string' &&
-    typeof value.paperless.changed === 'boolean' &&
-    typeof value.paperless.value === 'boolean'
-  );
-};
-
 const isSessionClientResult = (value: unknown): value is SessionClientResult =>
   isRecord(value) &&
   isRecord(value.session) &&
   value.session.established === true;
 
-const isRegistrationClientResult = (
+const isVerifiedSessionClientResult = (
   value: unknown,
-): value is RegistrationClientResult =>
+): value is VerifiedSessionClientResult =>
   isRecord(value) &&
-  isRecord(value.profile) &&
   isRecord(value.session) &&
-  typeof value.profile.created === 'boolean' &&
-  typeof value.profile.paperlessInitialized === 'boolean' &&
-  (value.profile.profileId === undefined ||
-    typeof value.profile.profileId === 'string') &&
-  value.session.established === true;
+  value.session.verified === true &&
+  typeof value.session.email === 'string' &&
+  value.session.email === value.session.email.trim().toLowerCase();
 
 const postJson = async <T>(
   path: string,
@@ -122,17 +95,18 @@ export const establishDemoAccountSession = (email: string) =>
     15_000,
   );
 
-export const initializeNewUdlProfile = (profile: {
-  email: string;
-  firstName: string;
-  lastName: string;
-}) =>
+export const establishDemoRegistrationSession = (email: string) =>
   postJson(
     '/api/account/identify',
-    { action: 'registration', ...profile },
-    isRegistrationClientResult,
-    290_000,
+    { action: 'registration', email },
+    isSessionClientResult,
+    15_000,
   );
 
-export const submitPaperlessOptIn = () =>
-  postJson('/api/account/paperless', {}, isPaperlessClientResult, 170_000);
+export const verifyPaperlessOptInSession = () =>
+  postJson(
+    '/api/account/paperless',
+    {},
+    isVerifiedSessionClientResult,
+    15_000,
+  );

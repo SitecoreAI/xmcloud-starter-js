@@ -1,8 +1,8 @@
 import {
   establishDemoAccountSession,
-  initializeNewUdlProfile,
+  establishDemoRegistrationSession,
   SitecoreAiUdlClientError,
-  submitPaperlessOptIn,
+  verifyPaperlessOptInSession,
 } from '@/lib/sitecoreai-udl-client';
 
 const fetchMock = jest.fn() as jest.MockedFunction<typeof fetch>;
@@ -45,22 +45,16 @@ describe('SitecoreAI UDL browser client', () => {
     );
   });
 
-  it('submits registration profile data without passwords or a customer reference', async () => {
+  it('establishes a registration session using only the generated email', async () => {
     fetchMock.mockResolvedValueOnce(
-      response({
-        profile: { created: true, paperlessInitialized: true },
-        session: { established: true },
-      }),
+      response({ session: { established: true } }),
     );
 
     await expect(
-      initializeNewUdlProfile({
-        email: 'nwn-live-20260809-143025@example.com',
-        firstName: 'Taylor',
-        lastName: 'Morgan',
-      }),
+      establishDemoRegistrationSession(
+        'nwn-live-20260809-143025@example.com',
+      ),
     ).resolves.toEqual({
-      profile: { created: true, paperlessInitialized: true },
       session: { established: true },
     });
 
@@ -68,22 +62,40 @@ describe('SitecoreAI UDL browser client', () => {
     expect(JSON.parse(String(init?.body))).toEqual({
       action: 'registration',
       email: 'nwn-live-20260809-143025@example.com',
-      firstName: 'Taylor',
-      lastName: 'Morgan',
     });
   });
 
   it('rejects a successful response with an invalid shape', async () => {
     fetchMock.mockResolvedValueOnce(response({ paperless: { value: 'true' } }));
 
-    await expect(submitPaperlessOptIn()).rejects.toBeInstanceOf(
+    await expect(verifyPaperlessOptInSession()).rejects.toBeInstanceOf(
       SitecoreAiUdlClientError,
     );
+  });
+
+  it('returns the normalized signed-session identity for paperless opt-in', async () => {
+    fetchMock.mockResolvedValueOnce(
+      response({
+        session: {
+          verified: true,
+          email: 'nwn-live-20260809-143025@example.com',
+        },
+      }),
+    );
+
+    await expect(verifyPaperlessOptInSession()).resolves.toEqual({
+      session: {
+        verified: true,
+        email: 'nwn-live-20260809-143025@example.com',
+      },
+    });
   });
 
   it('preserves the HTTP status for a rejected request', async () => {
     fetchMock.mockResolvedValueOnce(response(undefined, 401));
 
-    await expect(submitPaperlessOptIn()).rejects.toMatchObject({ status: 401 });
+    await expect(verifyPaperlessOptInSession()).rejects.toMatchObject({
+      status: 401,
+    });
   });
 });

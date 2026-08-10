@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { event } from '@sitecore-content-sdk/events';
+import { event, identity } from '@sitecore-content-sdk/events';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -13,7 +13,7 @@ import {
 } from '@/i18n/locales';
 import {
   SitecoreAiUdlClientError,
-  submitPaperlessOptIn,
+  verifyPaperlessOptInSession,
 } from '@/lib/sitecoreai-udl-client';
 
 const paperlessCopy = {
@@ -73,38 +73,45 @@ export const PaperlessOptInButton = ({
     setSubmissionState('pending');
 
     try {
-      const response = await submitPaperlessOptIn();
+      const { session } = await verifyPaperlessOptInSession();
 
-      if (response.paperless.value !== true) {
-        throw new Error('The paperless preference was not confirmed.');
+      const identityResponse = await identity({
+        channel: 'WEB',
+        currency: 'USD',
+        email: session.email,
+        identifiers: [
+          {
+            id: session.email,
+            provider:
+              process.env.NEXT_PUBLIC_SITECOREAI_IDENTITY_PROVIDER || 'email',
+          },
+        ],
+        language: localeOption.shortLabel,
+        page: window.location.pathname || '/',
+        extensionData: {
+          source: 'paperless_opt_in',
+          intent: 'update_billing_preference',
+        },
+      });
+
+      if (!identityResponse || identityResponse.status !== 'OK') {
+        throw new Error('SitecoreAI did not accept the identity event.');
       }
 
-      setSubmissionState('success');
-
-      void event({
+      const eventResponse = await event({
         type: PAPERLESS_OPT_IN_EVENT,
         channel: 'WEB',
         currency: 'USD',
         language: localeOption.shortLabel,
         page: window.location.pathname || '/',
         extensionData: { paperless: true },
-      })
-        .then((eventResponse) => {
-          if (eventResponse?.status !== 'OK') {
-            // The profile preference is authoritative; telemetry must not undo it.
-            // eslint-disable-next-line no-console -- operational signal for a failed UDL event
-            console.warn(
-              '[NWN paperless] SitecoreAI did not accept the opt-in event.',
-            );
-          }
-        })
-        .catch(() => {
-          // The preference is already committed through Profile Import.
-          // eslint-disable-next-line no-console -- operational signal for a failed UDL event
-          console.warn(
-            '[NWN paperless] Could not send the SitecoreAI opt-in event.',
-          );
-        });
+      });
+
+      if (!eventResponse || eventResponse.status !== 'OK') {
+        throw new Error('SitecoreAI did not accept the opt-in event.');
+      }
+
+      setSubmissionState('success');
     } catch (error) {
       if (error instanceof SitecoreAiUdlClientError && error.status === 401) {
         setSubmissionState('idle');

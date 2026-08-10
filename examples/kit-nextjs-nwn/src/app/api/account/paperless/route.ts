@@ -5,13 +5,7 @@ import {
   NWN_ACCOUNT_SESSION_COOKIE,
   readAccountSessionToken,
 } from '@/lib/nwn-demo-session';
-import {
-  optInSitecoreAiProfileToPaperless,
-  SitecoreAiProfileImportError,
-} from '@/lib/sitecoreai-profile-import';
-
 export const dynamic = 'force-dynamic';
-export const maxDuration = 180;
 
 const json = (body: object, status = 200) =>
   NextResponse.json(body, {
@@ -48,21 +42,5 @@ export async function POST(request: NextRequest) {
     return response;
   }
 
-  try {
-    const paperless = await optInSitecoreAiProfileToPaperless(session.email);
-    return json({ paperless });
-  } catch (error) {
-    console.error(
-      '[NWN paperless] Could not save the SitecoreAI UDL opt-in.',
-      error,
-    );
-    const status =
-      error instanceof SitecoreAiProfileImportError && !error.status
-        ? 503
-        : 502;
-    return json(
-      { error: 'The paperless preference could not be saved.' },
-      status,
-    );
-  }
+  return json({ session: { verified: true, email: session.email } });
 }

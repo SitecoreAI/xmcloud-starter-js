@@ -9,13 +9,7 @@ import {
   NWN_ACCOUNT_SESSION_COOKIE,
   NWN_ACCOUNT_SESSION_MAX_AGE,
 } from '@/lib/nwn-demo-session';
-import {
-  initializeNewSitecoreAiProfile,
-  SitecoreAiProfileImportError,
-} from '@/lib/sitecoreai-profile-import';
-
 export const dynamic = 'force-dynamic';
-export const maxDuration = 300;
 
 const requestSchema = z.discriminatedUnion('action', [
   z.object({
@@ -25,8 +19,6 @@ const requestSchema = z.discriminatedUnion('action', [
   z.object({
     action: z.literal('registration'),
     email: z.string().trim().email().max(254),
-    firstName: z.string().trim().min(1).max(100),
-    lastName: z.string().trim().min(1).max(100),
   }),
 ]);
 
@@ -85,37 +77,8 @@ export async function POST(request: NextRequest) {
     return json({ error: 'Account unavailable' }, 403);
   }
 
-  let profile;
   try {
-    profile = await initializeNewSitecoreAiProfile({
-      email,
-      firstName: parsed.data.firstName,
-      lastName: parsed.data.lastName,
-    });
-  } catch (error) {
-    console.error(
-      '[NWN paperless] Could not initialize the SitecoreAI UDL profile.',
-      error,
-    );
-    const status =
-      error instanceof SitecoreAiProfileImportError && !error.status
-        ? 503
-        : 502;
-    return json(
-      { error: 'The customer profile could not be updated.' },
-      status,
-    );
-  }
-
-  if (!profile.created) {
-    return json({ error: 'Demo account already used' }, 409);
-  }
-
-  try {
-    return sessionResponse(email, {
-      profile,
-      session: { established: true },
-    });
+    return sessionResponse(email, { session: { established: true } });
   } catch (error) {
     console.error(
       '[NWN account] Could not establish the registered demo session.',

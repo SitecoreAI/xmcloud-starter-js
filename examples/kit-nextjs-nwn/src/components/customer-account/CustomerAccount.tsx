@@ -28,7 +28,7 @@ import {
 } from '@/i18n/locales';
 import {
   establishDemoAccountSession,
-  initializeNewUdlProfile,
+  establishDemoRegistrationSession,
 } from '@/lib/sitecoreai-udl-client';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
@@ -244,10 +244,11 @@ const identifyVisitor = async (
     extensionData: {
       source,
       intent: source === 'account_login' ? 'sign_in' : 'register_account',
+      ...(source === 'account_registration' ? { paperless: false } : {}),
     },
   });
 
-  if (!response) {
+  if (!response || response.status !== 'OK') {
     throw new Error('SitecoreAI did not accept the identity event.');
   }
 
@@ -319,6 +320,7 @@ const SuccessState = ({
   linkHref,
   linkLabel,
   locale,
+  preferFallback = false,
 }: {
   fields: CustomerAccountFields;
   titleFallback: string;
@@ -326,6 +328,7 @@ const SuccessState = ({
   linkHref: string;
   linkLabel: string;
   locale: SupportedLocale;
+  preferFallback?: boolean;
 }) => (
   <div
     className="mx-auto flex min-h-80 max-w-2xl flex-col items-center justify-center px-6 py-14 text-center sm:px-10"
@@ -334,10 +337,14 @@ const SuccessState = ({
   >
     <CheckCircle2 className="h-14 w-14 text-cyan-600" aria-hidden="true" />
     <h1 className="mt-5 font-heading text-3xl font-semibold text-slate-950">
-      {fieldText(fields.successTitle, titleFallback)}
+      {preferFallback
+        ? titleFallback
+        : fieldText(fields.successTitle, titleFallback)}
     </h1>
     <p className="mt-4 max-w-xl text-lg leading-8 text-slate-700">
-      {fieldText(fields.successMessage, messageFallback)}
+      {preferFallback
+        ? messageFallback
+        : fieldText(fields.successMessage, messageFallback)}
     </p>
     <Button asChild size="lg" className="mt-8 min-h-12 px-7 text-base">
       <Link href={getLocalizedPathname(linkHref, locale)} prefetch={false}>
@@ -577,7 +584,6 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
           firstName: values.firstName.trim(),
           lastName: values.lastName.trim(),
         };
-        await initializeNewUdlProfile(profile);
         await identifyVisitor(
           {
             email: profile.email,
@@ -586,6 +592,7 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
           },
           'account_registration',
         );
+        await establishDemoRegistrationSession(profile.email);
       } catch {
         setSubmissionError(copy.requestError);
         return;
@@ -614,6 +621,7 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
             linkHref="/"
             linkLabel={copy.continueHome}
             locale={locale}
+            preferFallback
           />
         ) : (
           <>

@@ -9,7 +9,7 @@ import { Login, Register } from '@/components/customer-account/CustomerAccount';
 import type { CustomerAccountProps } from '@/components/customer-account/customer-account.props';
 import {
   establishDemoAccountSession,
-  initializeNewUdlProfile,
+  establishDemoRegistrationSession,
 } from '@/lib/sitecoreai-udl-client';
 
 jest.unmock('react-hook-form');
@@ -21,7 +21,7 @@ jest.mock('@sitecore-content-sdk/events', () => ({
 
 jest.mock('@/lib/sitecoreai-udl-client', () => ({
   establishDemoAccountSession: jest.fn(),
-  initializeNewUdlProfile: jest.fn(),
+  establishDemoRegistrationSession: jest.fn(),
 }));
 
 jest.mock('lucide-react', () => ({
@@ -84,9 +84,9 @@ const mockEstablishDemoAccountSession =
   establishDemoAccountSession as jest.MockedFunction<
     typeof establishDemoAccountSession
   >;
-const mockInitializeNewUdlProfile =
-  initializeNewUdlProfile as jest.MockedFunction<
-    typeof initializeNewUdlProfile
+const mockEstablishDemoRegistrationSession =
+  establishDemoRegistrationSession as jest.MockedFunction<
+    typeof establishDemoRegistrationSession
   >;
 const mockConfig = config as unknown as {
   api: { edge: { clientContextId?: string } };
@@ -198,11 +198,7 @@ describe('CustomerAccount', () => {
     mockEstablishDemoAccountSession.mockResolvedValue({
       session: { established: true },
     });
-    mockInitializeNewUdlProfile.mockResolvedValue({
-      profile: {
-        created: true,
-        paperlessInitialized: true,
-      },
+    mockEstablishDemoRegistrationSession.mockResolvedValue({
       session: { established: true },
     });
     document.documentElement.lang = 'en-US';
@@ -310,6 +306,7 @@ describe('CustomerAccount', () => {
       extensionData: {
         source: 'account_registration',
         intent: 'register_account',
+        paperless: false,
       },
     });
 
@@ -318,20 +315,105 @@ describe('CustomerAccount', () => {
     expect(payload).not.toHaveProperty('confirmPassword');
     expect(payload).not.toHaveProperty('phone');
     expect(payload).not.toHaveProperty('address');
-    expect(mockInitializeNewUdlProfile).toHaveBeenCalledWith({
-      email: 'nwn-live-20260809-143025@example.com',
-      firstName: 'Taylor',
-      lastName: 'Morgan',
-    });
+    expect(mockEstablishDemoRegistrationSession).toHaveBeenCalledWith(
+      'nwn-live-20260809-143025@example.com',
+    );
     expect(
-      mockInitializeNewUdlProfile.mock.invocationCallOrder[0],
-    ).toBeLessThan(mockIdentity.mock.invocationCallOrder[0]);
+      mockIdentity.mock.invocationCallOrder[0],
+    ).toBeLessThan(
+      mockEstablishDemoRegistrationSession.mock.invocationCallOrder[0],
+    );
     expect(
       await screen.findByText('Your registration is complete'),
     ).toBeInTheDocument();
     expect(
+      screen.getByText(
+        'Your NW Natural online account is ready, and you’re signed in. Continue to your homepage.',
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText('Sign in with your email address.'),
+    ).not.toBeInTheDocument();
+    expect(
       screen.getByRole('link', { name: 'Continue to your homepage' }),
     ).toHaveAttribute('href', '/');
+  });
+
+  it.each(['rejects', 'returns null', 'returns non-OK'] as const)(
+    'keeps registration incomplete when IDENTITY %s',
+    async (outcome) => {
+      if (outcome === 'rejects') {
+        mockIdentity.mockRejectedValueOnce(new Error('Identity unavailable'));
+      } else if (outcome === 'returns null') {
+        mockIdentity.mockResolvedValueOnce(null);
+      } else {
+        mockIdentity.mockResolvedValueOnce({
+          ...acceptedIdentityResponse,
+          status: 'ERROR',
+        });
+      }
+
+      render(<Register {...registrationProps} />);
+      fireEvent.change(screen.getByLabelText(/First name/i), {
+        target: { value: 'Taylor' },
+      });
+      fireEvent.change(screen.getByLabelText(/Last name/i), {
+        target: { value: 'Morgan' },
+      });
+      fireEvent.change(screen.getByLabelText(/Email address/i), {
+        target: { value: 'nwn-live-20260809-143025@example.com' },
+      });
+      submitClosestForm('Register');
+
+      expect(
+        await screen.findByText(
+          'We could not complete your request. Please try again.',
+        ),
+      ).toBeInTheDocument();
+      expect(mockEstablishDemoRegistrationSession).not.toHaveBeenCalled();
+      expect(
+        screen.queryByText('Your registration is complete'),
+      ).not.toBeInTheDocument();
+    },
+  );
+
+  it('uses localized Spanish registration success copy instead of authored fields', async () => {
+    const spanishProps: CustomerAccountProps = {
+      ...registrationProps,
+      fields: {
+        successTitle: { value: 'Stale authored registration title' },
+        successMessage: { value: 'Stale authored registration message' },
+      },
+      page: { ...page, locale: 'es-MX' },
+    };
+    document.documentElement.lang = 'es-MX';
+    render(<Register {...spanishProps} />);
+
+    fireEvent.change(screen.getByLabelText(/^Nombre/i), {
+      target: { value: 'María' },
+    });
+    fireEvent.change(screen.getByLabelText(/^Apellido/i), {
+      target: { value: 'Santos' },
+    });
+    fireEvent.change(screen.getByLabelText(/Correo electrónico/i), {
+      target: { value: 'nwn-live-20260809-143026@example.com' },
+    });
+    submitClosestForm('Registrarse');
+
+    expect(
+      await screen.findByText('Su registro está completo'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        'Su cuenta en línea de NW Natural está lista y la sesión está iniciada. Continúe a la página principal.',
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Continuar a la página principal' }),
+    ).toHaveAttribute('href', '/es-MX');
+    expect(
+      screen.queryByText('Stale authored registration message'),
+    ).not.toBeInTheDocument();
   });
 
   it('blocks registration only when first name, last name, or email is missing', async () => {
@@ -353,10 +435,10 @@ describe('CustomerAccount', () => {
       screen.queryByText(/passwords? (?:is|are) required/i),
     ).not.toBeInTheDocument();
     expect(mockIdentity).not.toHaveBeenCalled();
-    expect(mockInitializeNewUdlProfile).not.toHaveBeenCalled();
+    expect(mockEstablishDemoRegistrationSession).not.toHaveBeenCalled();
   });
 
-  it('keeps the login form open and shows the request error when profile initialization fails', async () => {
+  it('keeps the login form open when session establishment fails', async () => {
     mockEstablishDemoAccountSession.mockRejectedValueOnce(
       new Error('Session creation failed.'),
     );
@@ -408,7 +490,7 @@ describe('CustomerAccount', () => {
     expect(await screen.findByText('You’re signed in')).toBeInTheDocument();
     expect(mockIdentity).not.toHaveBeenCalled();
     expect(mockEstablishDemoAccountSession).not.toHaveBeenCalled();
-    expect(mockInitializeNewUdlProfile).not.toHaveBeenCalled();
+    expect(mockEstablishDemoRegistrationSession).not.toHaveBeenCalled();
   });
 
   it('keeps the Spanish login journey localized through validation and success', async () => {
