@@ -25,6 +25,8 @@ const paperlessCopy = {
       'Receive your bill online, reduce paper mail, and keep statements easy to find.',
     idle: 'Choose paperless billing',
     pending: 'Saving preference…',
+    pendingMessage:
+      'We’re securely updating your billing preference. This can take up to a minute.',
     success: 'Paperless billing is on',
     successMessage: 'Your paperless billing preference has been saved.',
     autoPay: 'Explore AutoPay',
@@ -38,6 +40,8 @@ const paperlessCopy = {
       'Reciba su factura en línea, reduzca el correo impreso y encuentre sus estados de cuenta fácilmente.',
     idle: 'Elegir facturación electrónica',
     pending: 'Guardando preferencia…',
+    pendingMessage:
+      'Estamos actualizando de forma segura su preferencia de facturación. Esto puede tardar hasta un minuto.',
     success: 'La facturación electrónica está activada',
     successMessage: 'Se guardó su preferencia de facturación electrónica.',
     autoPay: 'Explorar AutoPay',
@@ -52,6 +56,7 @@ const paperlessCopy = {
     description: string;
     idle: string;
     pending: string;
+    pendingMessage: string;
     success: string;
     successMessage: string;
     autoPay: string;
@@ -166,8 +171,23 @@ export const PaperlessOptInButton = ({
         disabled={isPending || isSuccessful}
         aria-busy={isPending}
       >
+        {isPending && (
+          <span
+            aria-hidden="true"
+            className="mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent"
+          />
+        )}
         {buttonLabel}
       </Button>
+      {isPending && (
+        <p
+          className="text-primary-foreground text-sm"
+          role="status"
+          aria-live="polite"
+        >
+          {copy.pendingMessage}
+        </p>
+      )}
       {isSuccessful && (
         <>
           <p

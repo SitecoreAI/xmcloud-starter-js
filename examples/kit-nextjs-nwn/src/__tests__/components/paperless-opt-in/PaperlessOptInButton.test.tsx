@@ -83,6 +83,9 @@ describe('PaperlessOptInButton', () => {
     expect(
       screen.getByRole('button', { name: 'Saving preference…' }),
     ).toBeDisabled();
+    expect(screen.getByRole('status')).toHaveTextContent(
+      'We’re securely updating your billing preference. This can take up to a minute.',
+    );
 
     resolveRequest?.({
       session: { verified: true, email: SIGNED_EMAIL },
