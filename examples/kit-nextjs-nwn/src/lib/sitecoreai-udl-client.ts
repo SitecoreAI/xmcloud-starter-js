@@ -21,6 +21,13 @@ type VerifiedSessionClientResult = {
   };
 };
 
+type PaperlessOptInClientResult = VerifiedSessionClientResult & {
+  paperless: {
+    updated: true;
+    value: true;
+  };
+};
+
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   Boolean(value) && typeof value === 'object';
 
@@ -37,6 +44,19 @@ const isVerifiedSessionClientResult = (
   value.session.verified === true &&
   typeof value.session.email === 'string' &&
   value.session.email === value.session.email.trim().toLowerCase();
+
+const isPaperlessOptInClientResult = (
+  value: unknown,
+): value is PaperlessOptInClientResult => {
+  if (!isRecord(value) || !isVerifiedSessionClientResult(value)) return false;
+  const paperless = (value as Record<string, unknown>).paperless;
+
+  return (
+    isRecord(paperless) &&
+    paperless.updated === true &&
+    paperless.value === true
+  );
+};
 
 const postJson = async <T>(
   path: string,
@@ -110,7 +130,15 @@ export const establishDemoRegistrationSession = (profile: {
 export const verifyPaperlessOptInSession = () =>
   postJson(
     '/api/account/paperless',
-    {},
+    { action: 'verify' },
     isVerifiedSessionClientResult,
     15_000,
+  );
+
+export const optInDemoAccountToPaperless = () =>
+  postJson(
+    '/api/account/paperless',
+    { action: 'opt-in' },
+    isPaperlessOptInClientResult,
+    60_000,
   );

@@ -12,6 +12,7 @@ import {
   type SupportedLocale,
 } from '@/i18n/locales';
 import {
+  optInDemoAccountToPaperless,
   SitecoreAiUdlClientError,
   verifyPaperlessOptInSession,
 } from '@/lib/sitecoreai-udl-client';
@@ -108,7 +109,7 @@ export const PaperlessOptInButton = ({
     setSubmissionState('pending');
 
     try {
-      const { session } = await verifyPaperlessOptInSession();
+      const { session } = await optInDemoAccountToPaperless();
 
       const identityResponse = await identity({
         channel: 'WEB',

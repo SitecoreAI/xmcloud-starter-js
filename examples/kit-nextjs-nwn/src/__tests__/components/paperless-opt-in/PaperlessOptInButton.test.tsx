@@ -8,6 +8,7 @@ import {
   PaperlessOptInExperience,
 } from '@/components/paperless-opt-in/PaperlessOptInButton';
 import {
+  optInDemoAccountToPaperless,
   SitecoreAiUdlClientError,
   verifyPaperlessOptInSession,
 } from '@/lib/sitecoreai-udl-client';
@@ -24,6 +25,7 @@ jest.mock('@sitecore-content-sdk/events', () => ({
 
 jest.mock('@/lib/sitecoreai-udl-client', () => ({
   ...jest.requireActual('@/lib/sitecoreai-udl-client'),
+  optInDemoAccountToPaperless: jest.fn(),
   verifyPaperlessOptInSession: jest.fn(),
 }));
 
@@ -31,8 +33,12 @@ const mockVerifyPaperlessOptInSession =
   verifyPaperlessOptInSession as jest.MockedFunction<
     typeof verifyPaperlessOptInSession
   >;
+const mockOptInDemoAccountToPaperless =
+  optInDemoAccountToPaperless as jest.MockedFunction<
+    typeof optInDemoAccountToPaperless
+  >;
 const mockIdentity = identity as jest.MockedFunction<typeof identity>;
-type SessionResponse = Awaited<ReturnType<typeof verifyPaperlessOptInSession>>;
+type OptInResponse = Awaited<ReturnType<typeof optInDemoAccountToPaperless>>;
 
 const acceptedIdentityResponse = {
   ref: 'identity-reference',
@@ -49,21 +55,21 @@ describe('PaperlessOptInButton', () => {
     mockVerifyPaperlessOptInSession.mockResolvedValue({
       session: { verified: true, email: SIGNED_EMAIL },
     });
+    mockOptInDemoAccountToPaperless.mockResolvedValue({
+      session: { verified: true, email: SIGNED_EMAIL },
+      paperless: { updated: true, value: true },
+    });
     mockIdentity.mockResolvedValue(acceptedIdentityResponse);
     document.documentElement.lang = 'en-US';
   });
 
   it('sets paperless on the signed identity and then shows success', async () => {
-    let resolveRequest: ((value: SessionResponse) => void) | undefined;
-    mockVerifyPaperlessOptInSession
-      .mockResolvedValueOnce({
-        session: { verified: true, email: SIGNED_EMAIL },
-      })
-      .mockReturnValueOnce(
-        new Promise((resolve) => {
-          resolveRequest = resolve;
-        }),
-      );
+    let resolveRequest: ((value: OptInResponse) => void) | undefined;
+    mockOptInDemoAccountToPaperless.mockReturnValueOnce(
+      new Promise((resolve) => {
+        resolveRequest = resolve;
+      }),
+    );
 
     render(<PaperlessOptInButton locale="en" />);
     fireEvent.click(
@@ -72,13 +78,15 @@ describe('PaperlessOptInButton', () => {
       }),
     );
 
-    expect(mockVerifyPaperlessOptInSession).toHaveBeenCalledTimes(2);
+    expect(mockVerifyPaperlessOptInSession).toHaveBeenCalledTimes(1);
+    expect(mockOptInDemoAccountToPaperless).toHaveBeenCalledTimes(1);
     expect(
       screen.getByRole('button', { name: 'Saving preference…' }),
     ).toBeDisabled();
 
     resolveRequest?.({
       session: { verified: true, email: SIGNED_EMAIL },
+      paperless: { updated: true, value: true },
     });
 
     expect(
@@ -104,13 +112,14 @@ describe('PaperlessOptInButton', () => {
       },
     });
     expect(
-      mockVerifyPaperlessOptInSession.mock.invocationCallOrder[1],
+      mockOptInDemoAccountToPaperless.mock.invocationCallOrder[0],
     ).toBeLessThan(mockIdentity.mock.invocationCallOrder[0]);
 
     fireEvent.click(
       screen.getByRole('button', { name: 'Paperless billing is on' }),
     );
-    expect(mockVerifyPaperlessOptInSession).toHaveBeenCalledTimes(2);
+    expect(mockVerifyPaperlessOptInSession).toHaveBeenCalledTimes(1);
+    expect(mockOptInDemoAccountToPaperless).toHaveBeenCalledTimes(1);
   });
 
   it('renders no CTA when the visitor has no valid signed session', async () => {
@@ -197,14 +206,12 @@ describe('PaperlessOptInButton', () => {
     );
   });
 
-  it('shows a localized error and allows retry when session verification fails', async () => {
-    mockVerifyPaperlessOptInSession
-      .mockResolvedValueOnce({
-        session: { verified: true, email: SIGNED_EMAIL },
-      })
+  it('shows a localized error and allows retry when the profile update fails', async () => {
+    mockOptInDemoAccountToPaperless
       .mockRejectedValueOnce(new Error('Request failed'))
       .mockResolvedValueOnce({
         session: { verified: true, email: SIGNED_EMAIL },
+        paperless: { updated: true, value: true },
       });
 
     render(
@@ -227,7 +234,7 @@ describe('PaperlessOptInButton', () => {
 
     fireEvent.click(button);
     await waitFor(() =>
-      expect(mockVerifyPaperlessOptInSession).toHaveBeenCalledTimes(3),
+      expect(mockOptInDemoAccountToPaperless).toHaveBeenCalledTimes(2),
     );
     expect(
       await screen.findByRole('button', {
@@ -275,13 +282,12 @@ describe('PaperlessOptInButton', () => {
   ])(
     'redirects an unauthenticated %s visitor to the localized login page',
     async (locale, expectedPath) => {
-      mockVerifyPaperlessOptInSession
-        .mockResolvedValueOnce({
-          session: { verified: true, email: SIGNED_EMAIL },
-        })
-        .mockRejectedValueOnce(
-          new SitecoreAiUdlClientError('Sign in required', 401),
-        );
+      mockVerifyPaperlessOptInSession.mockResolvedValueOnce({
+        session: { verified: true, email: SIGNED_EMAIL },
+      });
+      mockOptInDemoAccountToPaperless.mockRejectedValueOnce(
+        new SitecoreAiUdlClientError('Sign in required', 401),
+      );
 
       render(<PaperlessOptInButton locale={locale} label="Paperless CTA" />);
       fireEvent.click(

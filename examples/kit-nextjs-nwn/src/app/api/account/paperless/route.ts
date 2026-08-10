@@ -5,6 +5,8 @@ import {
   NWN_ACCOUNT_SESSION_COOKIE,
   readAccountSessionToken,
 } from '@/lib/nwn-demo-session';
+import { optInSitecoreAiProfileToPaperless } from '@/lib/sitecoreai-profile-import';
+
 export const dynamic = 'force-dynamic';
 
 const json = (body: object, status = 200) =>
@@ -16,6 +18,17 @@ const json = (body: object, status = 200) =>
 export async function POST(request: NextRequest) {
   if (!isSameOriginRequest(request)) {
     return json({ error: 'Forbidden' }, 403);
+  }
+
+  let action: unknown;
+  try {
+    ({ action } = (await request.json()) as { action?: unknown });
+  } catch {
+    return json({ error: 'Invalid request' }, 400);
+  }
+
+  if (action !== 'verify' && action !== 'opt-in') {
+    return json({ error: 'Invalid request' }, 400);
   }
 
   let session;
@@ -42,5 +55,22 @@ export async function POST(request: NextRequest) {
     return response;
   }
 
-  return json({ session: { verified: true, email: session.email } });
+  if (action === 'verify') {
+    return json({ session: { verified: true, email: session.email } });
+  }
+
+  try {
+    await optInSitecoreAiProfileToPaperless(session.email);
+  } catch (error) {
+    console.error(
+      '[NWN paperless] The Unified Data profile could not be updated.',
+      error,
+    );
+    return json({ error: 'Paperless preference update failed' }, 503);
+  }
+
+  return json({
+    session: { verified: true, email: session.email },
+    paperless: { updated: true, value: true },
+  });
 }

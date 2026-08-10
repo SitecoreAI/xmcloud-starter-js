@@ -8,15 +8,23 @@ import {
   createAccountSessionToken,
   NWN_ACCOUNT_SESSION_COOKIE,
 } from '@/lib/nwn-demo-session';
-import { initializeNewSitecoreAiProfile } from '@/lib/sitecoreai-profile-import';
+import {
+  initializeNewSitecoreAiProfile,
+  optInSitecoreAiProfileToPaperless,
+} from '@/lib/sitecoreai-profile-import';
 
 jest.mock('@/lib/sitecoreai-profile-import', () => ({
   initializeNewSitecoreAiProfile: jest.fn(),
+  optInSitecoreAiProfileToPaperless: jest.fn(),
 }));
 
 const mockInitializeNewSitecoreAiProfile =
   initializeNewSitecoreAiProfile as jest.MockedFunction<
     typeof initializeNewSitecoreAiProfile
+  >;
+const mockOptInSitecoreAiProfileToPaperless =
+  optInSitecoreAiProfileToPaperless as jest.MockedFunction<
+    typeof optInSitecoreAiProfileToPaperless
   >;
 
 const browserHeaders = {
@@ -48,6 +56,11 @@ describe('NW Natural SitecoreAI account routes', () => {
       created: true,
       paperlessInitialized: true,
       profileId: 'new-profile-id',
+    });
+    mockOptInSitecoreAiProfileToPaperless.mockResolvedValue({
+      batchId: '7dc912e2-4fb9-4340-ae1d-4239399e3f97',
+      changed: true,
+      value: true,
     });
     consoleError = jest
       .spyOn(console, 'error')
@@ -85,6 +98,7 @@ describe('NW Natural SitecoreAI account routes', () => {
     expect(response.headers.get('set-cookie')).toContain('HttpOnly');
     expect(response.headers.get('set-cookie')).toContain('SameSite=strict');
     expect(mockInitializeNewSitecoreAiProfile).not.toHaveBeenCalled();
+    expect(mockOptInSitecoreAiProfileToPaperless).not.toHaveBeenCalled();
   });
 
   it('initializes a new profile before establishing its registration session', async () => {
@@ -185,7 +199,7 @@ describe('NW Natural SitecoreAI account routes', () => {
     expect(response.headers.get('set-cookie')).toBeNull();
   });
 
-  it('verifies a signed registration session before the opt-in event', async () => {
+  it('verifies a signed session without changing its paperless preference', async () => {
     const token = createAccountSessionToken(GENERATED_EMAIL.toUpperCase());
 
     const response = await optIn(
@@ -195,13 +209,61 @@ describe('NW Natural SitecoreAI account routes', () => {
           ...browserHeaders,
           Cookie: `${NWN_ACCOUNT_SESSION_COOKIE}=${token}`,
         },
-        body: '{}',
+        body: JSON.stringify({ action: 'verify' }),
       }),
     );
 
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
       session: { verified: true, email: GENERATED_EMAIL },
+    });
+    expect(mockOptInSitecoreAiProfileToPaperless).not.toHaveBeenCalled();
+  });
+
+  it('updates the signed Unified Data profile on explicit paperless opt-in', async () => {
+    const token = createAccountSessionToken(GENERATED_EMAIL.toUpperCase());
+
+    const response = await optIn(
+      new NextRequest('https://nwn.example/api/account/paperless', {
+        method: 'POST',
+        headers: {
+          ...browserHeaders,
+          Cookie: `${NWN_ACCOUNT_SESSION_COOKIE}=${token}`,
+        },
+        body: JSON.stringify({ action: 'opt-in' }),
+      }),
+    );
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      session: { verified: true, email: GENERATED_EMAIL },
+      paperless: { updated: true, value: true },
+    });
+    expect(mockOptInSitecoreAiProfileToPaperless).toHaveBeenCalledWith(
+      GENERATED_EMAIL,
+    );
+  });
+
+  it('reports a visible failure when the Unified Data profile update fails', async () => {
+    mockOptInSitecoreAiProfileToPaperless.mockRejectedValueOnce(
+      new Error('Profile Import unavailable'),
+    );
+    const token = createAccountSessionToken(GENERATED_EMAIL);
+
+    const response = await optIn(
+      new NextRequest('https://nwn.example/api/account/paperless', {
+        method: 'POST',
+        headers: {
+          ...browserHeaders,
+          Cookie: `${NWN_ACCOUNT_SESSION_COOKIE}=${token}`,
+        },
+        body: JSON.stringify({ action: 'opt-in' }),
+      }),
+    );
+
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({
+      error: 'Paperless preference update failed',
     });
   });
 
@@ -213,7 +275,7 @@ describe('NW Natural SitecoreAI account routes', () => {
           ...browserHeaders,
           Cookie: `${NWN_ACCOUNT_SESSION_COOKIE}=invalid`,
         },
-        body: '{}',
+        body: JSON.stringify({ action: 'verify' }),
       }),
     );
 

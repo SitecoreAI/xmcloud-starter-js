@@ -1,6 +1,7 @@
 import {
   establishDemoAccountSession,
   establishDemoRegistrationSession,
+  optInDemoAccountToPaperless,
   SitecoreAiUdlClientError,
   verifyPaperlessOptInSession,
 } from '@/lib/sitecoreai-udl-client';
@@ -51,13 +52,11 @@ describe('SitecoreAI UDL browser client', () => {
     );
 
     await expect(
-      establishDemoRegistrationSession(
-        {
-          email: 'nwn-live-20260809-143025@example.com',
-          firstName: 'Taylor',
-          lastName: 'Morgan',
-        },
-      ),
+      establishDemoRegistrationSession({
+        email: 'nwn-live-20260809-143025@example.com',
+        firstName: 'Taylor',
+        lastName: 'Morgan',
+      }),
     ).resolves.toEqual({
       session: { established: true },
     });
@@ -95,6 +94,53 @@ describe('SitecoreAI UDL browser client', () => {
         email: 'nwn-live-20260809-143025@example.com',
       },
     });
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/account/paperless',
+      expect.objectContaining({
+        body: JSON.stringify({ action: 'verify' }),
+      }),
+    );
+  });
+
+  it('requests and validates an explicit server-side paperless update', async () => {
+    fetchMock.mockResolvedValueOnce(
+      response({
+        session: {
+          verified: true,
+          email: 'nwn-live-20260809-143025@example.com',
+        },
+        paperless: { updated: true, value: true },
+      }),
+    );
+
+    await expect(optInDemoAccountToPaperless()).resolves.toEqual({
+      session: {
+        verified: true,
+        email: 'nwn-live-20260809-143025@example.com',
+      },
+      paperless: { updated: true, value: true },
+    });
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/account/paperless',
+      expect.objectContaining({
+        body: JSON.stringify({ action: 'opt-in' }),
+      }),
+    );
+  });
+
+  it('rejects an opt-in response that does not confirm the profile update', async () => {
+    fetchMock.mockResolvedValueOnce(
+      response({
+        session: {
+          verified: true,
+          email: 'nwn-live-20260809-143025@example.com',
+        },
+      }),
+    );
+
+    await expect(optInDemoAccountToPaperless()).rejects.toBeInstanceOf(
+      SitecoreAiUdlClientError,
+    );
   });
 
   it('preserves the HTTP status for a rejected request', async () => {
