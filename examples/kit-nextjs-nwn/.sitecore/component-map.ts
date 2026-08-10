@@ -71,6 +71,7 @@ import * as PageHeaderBlueBackgrounddev from 'src/components/page-header/PageHea
 import * as PageHeader from 'src/components/page-header/PageHeader';
 import * as NwnUtilityAlert from 'src/components/nwn-utility-alert/NwnUtilityAlert';
 import * as NwnCardGrid from 'src/components/nwn-card-grid/NwnCardGrid';
+import * as NwnAlertSlot from 'src/components/nwn-alert-slot/NwnAlertSlot';
 import * as MultiPromoTabs from 'src/components/multi-promo-tabs/MultiPromoTabs';
 import * as MultiPromoTabdev from 'src/components/multi-promo-tabs/MultiPromoTab.dev';
 import * as MultiPromoNwnQuickActionsdev from 'src/components/multi-promo/MultiPromoNwnQuickActions.dev';
@@ -255,6 +256,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['PageHeader', { ...PageHeader, componentType: 'client' }],
   ['NwnUtilityAlert', { ...NwnUtilityAlert, componentType: 'client' }],
   ['NwnCardGrid', { ...NwnCardGrid }],
+  ['NwnAlertSlot', { ...NwnAlertSlot }],
   ['MultiPromoTabs', { ...MultiPromoTabs, componentType: 'client' }],
   ['MultiPromoTab', { ...MultiPromoTabdev }],
   ['MultiPromoNwnQuickActions', { ...MultiPromoNwnQuickActionsdev }],

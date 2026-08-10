@@ -43,7 +43,6 @@ export interface RouteFields {
 const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
-  const isHomePage = route?.name?.toLowerCase() === 'home';
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
   const classNamesMain = `${mainClassPageEditing} main-layout`;
 
@@ -100,23 +99,6 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
                   />
                 )}
               </div>
-              {/* Governed homepage alert zone. Sitecore placeholder settings restrict this
-                  slot to NWN alert components; an empty slot renders no public content. */}
-              {route && isHomePage && (
-                <AppPlaceholder
-                  page={page}
-                  componentMap={componentMap}
-                  name="nwn-home-alert"
-                  rendering={{
-                    ...route,
-                    placeholders: {
-                      ...route.placeholders,
-                      'nwn-home-alert':
-                        route.placeholders?.['nwn-home-alert'] ?? [],
-                    },
-                  }}
-                />
-              )}
               {/* Main content area */}
               <main id="content" role="main" className="flex-1">
                 {route && (

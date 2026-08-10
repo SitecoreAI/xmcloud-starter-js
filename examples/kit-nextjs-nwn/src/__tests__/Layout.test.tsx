@@ -52,24 +52,12 @@ const createPage = (routeName: string): Page =>
   }) as unknown as Page;
 
 describe('NWN Layout', () => {
-  it('exposes the governed alert placeholder before main content on Home', () => {
+  it('renders standard root placeholders without synthesizing an alert slot', () => {
     const markup = renderToStaticMarkup(<Layout page={createPage('Home')} />);
 
-    expect(markup).toContain('data-placeholder="nwn-home-alert"');
-    expect(markup).toContain(
-      'data-placeholder="nwn-home-alert" data-placeholder-registered="true"',
-    );
-    expect(markup.indexOf('data-placeholder="nwn-home-alert"')).toBeLessThan(
-      markup.indexOf('data-placeholder="headless-main"'),
-    );
-  });
-
-  it('does not expose the homepage alert placeholder on other routes', () => {
-    const markup = renderToStaticMarkup(
-      <Layout page={createPage('payment-assistance')} />,
-    );
-
     expect(markup).not.toContain('data-placeholder="nwn-home-alert"');
+    expect(markup).toContain('data-placeholder="headless-header"');
     expect(markup).toContain('data-placeholder="headless-main"');
+    expect(markup).toContain('data-placeholder="headless-footer"');
   });
 });
