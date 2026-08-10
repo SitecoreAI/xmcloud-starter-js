@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { identity } from '@sitecore-content-sdk/events';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -46,6 +46,7 @@ const paperlessCopy = {
 >;
 
 type SubmissionState = 'idle' | 'pending' | 'success' | 'error';
+type SessionVisibility = 'checking' | 'verified' | 'anonymous';
 
 export type PaperlessOptInButtonProps = {
   locale?: string;
@@ -57,6 +58,8 @@ export const PaperlessOptInButton = ({
   label,
 }: PaperlessOptInButtonProps) => {
   const router = useRouter();
+  const [sessionVisibility, setSessionVisibility] =
+    useState<SessionVisibility>('checking');
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>('idle');
   const localeOption = getLocaleOption(locale);
@@ -64,6 +67,22 @@ export const PaperlessOptInButton = ({
   const idleLabel = label?.trim() || copy.idle;
   const isPending = submissionState === 'pending';
   const isSuccessful = submissionState === 'success';
+
+  useEffect(() => {
+    let isActive = true;
+
+    void verifyPaperlessOptInSession()
+      .then(() => {
+        if (isActive) setSessionVisibility('verified');
+      })
+      .catch(() => {
+        if (isActive) setSessionVisibility('anonymous');
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   const submitPreference = async () => {
     if (isPending || isSuccessful) return;
@@ -116,6 +135,8 @@ export const PaperlessOptInButton = ({
     : isSuccessful
       ? copy.success
       : idleLabel;
+
+  if (sessionVisibility !== 'verified') return null;
 
   return (
     <div className="flex flex-col items-start gap-2">
