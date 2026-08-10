@@ -95,10 +95,14 @@ export const establishDemoAccountSession = (email: string) =>
     15_000,
   );
 
-export const establishDemoRegistrationSession = (email: string) =>
+export const establishDemoRegistrationSession = (profile: {
+  email: string;
+  firstName: string;
+  lastName: string;
+}) =>
   postJson(
     '/api/account/identify',
-    { action: 'registration', email },
+    { action: 'registration', ...profile },
     isSessionClientResult,
     15_000,
   );

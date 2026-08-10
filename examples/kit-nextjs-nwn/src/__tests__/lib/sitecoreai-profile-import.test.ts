@@ -159,7 +159,7 @@ describe('SitecoreAI Profile Import', () => {
     });
   });
 
-  it('does not overwrite paperless when registration resolves to an existing profile', async () => {
+  it('preserves paperless true when registration resolves to an existing profile', async () => {
     mockCompletedBatch(BATCH_ONE, 'UPDATED');
 
     await expect(

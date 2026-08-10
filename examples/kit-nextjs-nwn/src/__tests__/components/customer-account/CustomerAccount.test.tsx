@@ -306,7 +306,6 @@ describe('CustomerAccount', () => {
       extensionData: {
         source: 'account_registration',
         intent: 'register_account',
-        paperless: false,
       },
     });
 
@@ -316,10 +315,16 @@ describe('CustomerAccount', () => {
     expect(payload).not.toHaveProperty('phone');
     expect(payload).not.toHaveProperty('address');
     expect(mockEstablishDemoRegistrationSession).toHaveBeenCalledWith(
-      'nwn-live-20260809-143025@example.com',
+      {
+        email: 'nwn-live-20260809-143025@example.com',
+        firstName: 'Taylor',
+        lastName: 'Morgan',
+      },
     );
-    expect(mockIdentity.mock.invocationCallOrder[0]).toBeLessThan(
+    expect(
       mockEstablishDemoRegistrationSession.mock.invocationCallOrder[0],
+    ).toBeLessThan(
+      mockIdentity.mock.invocationCallOrder[0],
     );
     expect(
       await screen.findByText('Your registration is complete'),
@@ -353,6 +358,35 @@ describe('CustomerAccount', () => {
     );
   });
 
+  it('does not emit an identity event when server validation rejects registration', async () => {
+    mockEstablishDemoRegistrationSession.mockRejectedValueOnce(
+      new Error('Registration unavailable'),
+    );
+
+    render(<Register {...registrationProps} />);
+    fireEvent.change(screen.getByLabelText(/First name/i), {
+      target: { value: 'Taylor' },
+    });
+    fireEvent.change(screen.getByLabelText(/Last name/i), {
+      target: { value: 'Morgan' },
+    });
+    fireEvent.change(screen.getByLabelText(/Email address/i), {
+      target: { value: 'nwn-live-20260230-143025@example.com' },
+    });
+    submitClosestForm('Register');
+
+    expect(
+      await screen.findByText(
+        'We could not complete your request. Please try again.',
+      ),
+    ).toBeInTheDocument();
+    expect(mockEstablishDemoRegistrationSession).toHaveBeenCalledTimes(1);
+    expect(mockIdentity).not.toHaveBeenCalled();
+    expect(
+      screen.queryByText('Your registration is complete'),
+    ).not.toBeInTheDocument();
+  });
+
   it.each(['rejects', 'returns null', 'returns non-OK'] as const)(
     'keeps registration incomplete when IDENTITY %s',
     async (outcome) => {
@@ -384,7 +418,10 @@ describe('CustomerAccount', () => {
           'We could not complete your request. Please try again.',
         ),
       ).toBeInTheDocument();
-      expect(mockEstablishDemoRegistrationSession).not.toHaveBeenCalled();
+      expect(mockEstablishDemoRegistrationSession).toHaveBeenCalledTimes(1);
+      expect(
+        mockEstablishDemoRegistrationSession.mock.invocationCallOrder[0],
+      ).toBeLessThan(mockIdentity.mock.invocationCallOrder[0]);
       expect(
         screen.queryByText('Your registration is complete'),
       ).not.toBeInTheDocument();

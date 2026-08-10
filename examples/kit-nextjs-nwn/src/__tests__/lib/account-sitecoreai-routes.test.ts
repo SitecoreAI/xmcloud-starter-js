@@ -8,6 +8,16 @@ import {
   createAccountSessionToken,
   NWN_ACCOUNT_SESSION_COOKIE,
 } from '@/lib/nwn-demo-session';
+import { initializeNewSitecoreAiProfile } from '@/lib/sitecoreai-profile-import';
+
+jest.mock('@/lib/sitecoreai-profile-import', () => ({
+  initializeNewSitecoreAiProfile: jest.fn(),
+}));
+
+const mockInitializeNewSitecoreAiProfile =
+  initializeNewSitecoreAiProfile as jest.MockedFunction<
+    typeof initializeNewSitecoreAiProfile
+  >;
 
 const browserHeaders = {
   Origin: 'https://nwn.example',
@@ -30,9 +40,15 @@ describe('NW Natural SitecoreAI account routes', () => {
   let consoleError: jest.SpyInstance;
 
   beforeEach(() => {
+    jest.clearAllMocks();
     process.env.NWN_DEMO_ACCOUNT_EMAILS = 'demo@example.com';
     process.env.NWN_DEMO_SESSION_SECRET =
       'a-unique-demo-session-secret-with-32-chars';
+    mockInitializeNewSitecoreAiProfile.mockResolvedValue({
+      created: true,
+      paperlessInitialized: true,
+      profileId: 'new-profile-id',
+    });
     consoleError = jest
       .spyOn(console, 'error')
       .mockImplementation(() => undefined);
@@ -68,13 +84,16 @@ describe('NW Natural SitecoreAI account routes', () => {
     );
     expect(response.headers.get('set-cookie')).toContain('HttpOnly');
     expect(response.headers.get('set-cookie')).toContain('SameSite=strict');
+    expect(mockInitializeNewSitecoreAiProfile).not.toHaveBeenCalled();
   });
 
-  it('signs in a generated registration email without importing a profile', async () => {
+  it('initializes a new profile before establishing its registration session', async () => {
     const response = await identify(
       identifyRequest({
         action: 'registration',
         email: '  NWN-LIVE-20260809-143025@example.com ',
+        firstName: ' Taylor ',
+        lastName: ' Morgan ',
       }),
     );
 
@@ -86,21 +105,75 @@ describe('NW Natural SitecoreAI account routes', () => {
       `${NWN_ACCOUNT_SESSION_COOKIE}=`,
     );
     expect(response.headers.get('set-cookie')).toContain('Max-Age=3600');
+    expect(mockInitializeNewSitecoreAiProfile).toHaveBeenCalledWith({
+      email: GENERATED_EMAIL,
+      firstName: 'Taylor',
+      lastName: 'Morgan',
+    });
+  });
+
+  it('preserves an existing paperless profile while establishing the session', async () => {
+    mockInitializeNewSitecoreAiProfile.mockResolvedValueOnce({
+      created: false,
+      paperlessInitialized: false,
+      profileId: 'existing-paperless-profile-id',
+    });
+
+    const response = await identify(
+      identifyRequest({
+        action: 'registration',
+        email: GENERATED_EMAIL,
+        firstName: 'Taylor',
+        lastName: 'Morgan',
+      }),
+    );
+
+    expect(response.status).toBe(200);
+    expect(mockInitializeNewSitecoreAiProfile).toHaveBeenCalledTimes(1);
+    expect(response.headers.get('set-cookie')).toContain(
+      `${NWN_ACCOUNT_SESSION_COOKIE}=`,
+    );
   });
 
   it('rejects ordinary and malformed emails for registration', async () => {
     const ordinaryResponse = await identify(
-      identifyRequest({ action: 'registration', email: 'demo@example.com' }),
+      identifyRequest({
+        action: 'registration',
+        email: 'demo@example.com',
+        firstName: 'Taylor',
+        lastName: 'Morgan',
+      }),
     );
     const malformedResponse = await identify(
       identifyRequest({
         action: 'registration',
         email: 'nwn-live-20260230-143025@example.com',
+        firstName: 'Taylor',
+        lastName: 'Morgan',
       }),
     );
 
     expect(ordinaryResponse.status).toBe(403);
     expect(malformedResponse.status).toBe(403);
+    expect(mockInitializeNewSitecoreAiProfile).not.toHaveBeenCalled();
+  });
+
+  it('does not establish a session when profile initialization fails', async () => {
+    mockInitializeNewSitecoreAiProfile.mockRejectedValueOnce(
+      new Error('Profile Import unavailable'),
+    );
+
+    const response = await identify(
+      identifyRequest({
+        action: 'registration',
+        email: GENERATED_EMAIL,
+        firstName: 'Taylor',
+        lastName: 'Morgan',
+      }),
+    );
+
+    expect(response.status).toBe(503);
+    expect(response.headers.get('set-cookie')).toBeNull();
   });
 
   it('keeps generated registration emails unavailable to ordinary login', async () => {

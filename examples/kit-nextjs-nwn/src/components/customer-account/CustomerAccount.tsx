@@ -261,7 +261,6 @@ const identifyVisitor = async (
     extensionData: {
       source,
       intent: source === 'account_login' ? 'sign_in' : 'register_account',
-      ...(source === 'account_registration' ? { paperless: false } : {}),
     },
   });
 
@@ -601,15 +600,14 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
           firstName: values.firstName.trim(),
           lastName: values.lastName.trim(),
         };
-        await identifyVisitor(
-          {
-            email: profile.email,
-            firstName: profile.firstName,
-            lastName: profile.lastName,
-          },
+        await establishDemoRegistrationSession(profile);
+        const identifiedEmail = await identifyVisitor(
+          profile,
           'account_registration',
         );
-        await establishDemoRegistrationSession(profile.email);
+        if (identifiedEmail !== profile.email) {
+          throw new Error('The identified account did not match the session.');
+        }
       } catch {
         setSubmissionError(copy.requestError);
         return;

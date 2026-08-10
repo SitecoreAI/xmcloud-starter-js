@@ -9,6 +9,7 @@ import {
   NWN_ACCOUNT_SESSION_COOKIE,
   NWN_ACCOUNT_SESSION_MAX_AGE,
 } from '@/lib/nwn-demo-session';
+import { initializeNewSitecoreAiProfile } from '@/lib/sitecoreai-profile-import';
 export const dynamic = 'force-dynamic';
 
 const requestSchema = z.discriminatedUnion('action', [
@@ -19,6 +20,8 @@ const requestSchema = z.discriminatedUnion('action', [
   z.object({
     action: z.literal('registration'),
     email: z.string().trim().email().max(254),
+    firstName: z.string().trim().min(1).max(100),
+    lastName: z.string().trim().min(1).max(100),
   }),
 ]);
 
@@ -78,10 +81,15 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    await initializeNewSitecoreAiProfile({
+      email,
+      firstName: parsed.data.firstName,
+      lastName: parsed.data.lastName,
+    });
     return sessionResponse(email, { session: { established: true } });
   } catch (error) {
     console.error(
-      '[NWN account] Could not establish the registered demo session.',
+      '[NWN account] Could not initialize the registered demo account.',
       error,
     );
     return json({ error: 'Session unavailable' }, 503);

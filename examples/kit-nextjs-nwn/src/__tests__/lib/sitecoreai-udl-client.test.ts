@@ -45,14 +45,18 @@ describe('SitecoreAI UDL browser client', () => {
     );
   });
 
-  it('establishes a registration session using only the generated email', async () => {
+  it('sends the validated registration profile to the same-origin route', async () => {
     fetchMock.mockResolvedValueOnce(
       response({ session: { established: true } }),
     );
 
     await expect(
       establishDemoRegistrationSession(
-        'nwn-live-20260809-143025@example.com',
+        {
+          email: 'nwn-live-20260809-143025@example.com',
+          firstName: 'Taylor',
+          lastName: 'Morgan',
+        },
       ),
     ).resolves.toEqual({
       session: { established: true },
@@ -62,6 +66,8 @@ describe('SitecoreAI UDL browser client', () => {
     expect(JSON.parse(String(init?.body))).toEqual({
       action: 'registration',
       email: 'nwn-live-20260809-143025@example.com',
+      firstName: 'Taylor',
+      lastName: 'Morgan',
     });
   });
 
