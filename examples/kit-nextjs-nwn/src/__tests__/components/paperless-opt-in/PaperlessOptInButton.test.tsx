@@ -3,7 +3,10 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { identity } from '@sitecore-content-sdk/events';
 
-import { PaperlessOptInButton } from '@/components/paperless-opt-in/PaperlessOptInButton';
+import {
+  PaperlessOptInButton,
+  PaperlessOptInExperience,
+} from '@/components/paperless-opt-in/PaperlessOptInButton';
 import {
   SitecoreAiUdlClientError,
   verifyPaperlessOptInSession,
@@ -57,9 +60,9 @@ describe('PaperlessOptInButton', () => {
         session: { verified: true, email: SIGNED_EMAIL },
       })
       .mockReturnValueOnce(
-      new Promise((resolve) => {
-        resolveRequest = resolve;
-      }),
+        new Promise((resolve) => {
+          resolveRequest = resolve;
+        }),
       );
 
     render(<PaperlessOptInButton locale="en" />);
@@ -86,10 +89,7 @@ describe('PaperlessOptInButton', () => {
     );
     expect(
       screen.getByRole('link', { name: 'Explore AutoPay' }),
-    ).toHaveAttribute(
-      'href',
-      '/account-billing/pay-my-bill#payment-options',
-    );
+    ).toHaveAttribute('href', '/account-billing/pay-my-bill#payment-options');
     expect(mockIdentity).toHaveBeenCalledWith({
       channel: 'WEB',
       currency: 'USD',
@@ -166,6 +166,34 @@ describe('PaperlessOptInButton', () => {
     ).toHaveAttribute(
       'href',
       '/es-MX/account-billing/pay-my-bill#payment-options',
+    );
+  });
+
+  it('renders a localized opt-in experience and returns home after success', async () => {
+    render(<PaperlessOptInExperience locale="es-MX" />);
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'Elija la facturación electrónica',
+      }),
+    ).toBeInTheDocument();
+
+    fireEvent.click(
+      await screen.findByRole('button', {
+        name: 'Elegir facturación electrónica',
+      }),
+    );
+
+    expect(
+      await screen.findByRole('link', {
+        name: 'Volver a la página principal',
+      }),
+    ).toHaveAttribute('href', '/es-MX');
+    expect(mockIdentity).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: SIGNED_EMAIL,
+        extensionData: expect.objectContaining({ paperless: true }),
+      }),
     );
   });
 

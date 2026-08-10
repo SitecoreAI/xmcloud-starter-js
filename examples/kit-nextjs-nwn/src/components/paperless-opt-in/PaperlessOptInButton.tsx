@@ -18,29 +18,43 @@ import {
 
 const paperlessCopy = {
   en: {
+    eyebrow: 'Account preferences',
+    heading: 'Choose paperless billing',
+    description:
+      'Receive your bill online, reduce paper mail, and keep statements easy to find.',
     idle: 'Choose paperless billing',
     pending: 'Saving preference…',
     success: 'Paperless billing is on',
     successMessage: 'Your paperless billing preference has been saved.',
     autoPay: 'Explore AutoPay',
+    returnHome: 'Return to homepage',
     error: 'We couldn’t update your preference. Please try again.',
   },
   'es-MX': {
+    eyebrow: 'Preferencias de la cuenta',
+    heading: 'Elija la facturación electrónica',
+    description:
+      'Reciba su factura en línea, reduzca el correo impreso y encuentre sus estados de cuenta fácilmente.',
     idle: 'Elegir facturación electrónica',
     pending: 'Guardando preferencia…',
     success: 'La facturación electrónica está activada',
     successMessage: 'Se guardó su preferencia de facturación electrónica.',
     autoPay: 'Explorar AutoPay',
+    returnHome: 'Volver a la página principal',
     error: 'No pudimos actualizar su preferencia. Inténtelo de nuevo.',
   },
 } as const satisfies Record<
   SupportedLocale,
   {
+    eyebrow: string;
+    heading: string;
+    description: string;
     idle: string;
     pending: string;
     success: string;
     successMessage: string;
     autoPay: string;
+    returnHome: string;
     error: string;
   }
 >;
@@ -51,11 +65,15 @@ type SessionVisibility = 'checking' | 'verified' | 'anonymous';
 export type PaperlessOptInButtonProps = {
   locale?: string;
   label?: string;
+  successHref?: string;
+  successLabel?: string;
 };
 
 export const PaperlessOptInButton = ({
   locale,
   label,
+  successHref,
+  successLabel,
 }: PaperlessOptInButtonProps) => {
   const router = useRouter();
   const [sessionVisibility, setSessionVisibility] =
@@ -160,13 +178,16 @@ export const PaperlessOptInButton = ({
           </p>
           <Button asChild variant="secondary">
             <Link
-              href={getLocalizedPathname(
-                '/account-billing/pay-my-bill#payment-options',
-                localeOption.code,
-              )}
+              href={
+                successHref ||
+                getLocalizedPathname(
+                  '/account-billing/pay-my-bill#payment-options',
+                  localeOption.code,
+                )
+              }
               prefetch={false}
             >
-              {copy.autoPay}
+              {successLabel?.trim() || copy.autoPay}
             </Link>
           </Button>
         </>
@@ -181,5 +202,38 @@ export const PaperlessOptInButton = ({
         </p>
       )}
     </div>
+  );
+};
+
+export const PaperlessOptInExperience = ({ locale }: { locale?: string }) => {
+  const localeOption = getLocaleOption(locale);
+  const copy = paperlessCopy[localeOption.code];
+
+  return (
+    <section
+      data-component="PaperlessOptInExperience"
+      className="bg-background px-6 py-8"
+      aria-labelledby="paperless-opt-in-heading"
+    >
+      <div className="bg-primary mx-auto flex w-full max-w-screen-xl flex-col items-start gap-4 p-7 text-left text-white md:p-10">
+        <p className="font-heading text-sm font-semibold uppercase tracking-[0.08em]">
+          {copy.eyebrow}
+        </p>
+        <div className="max-w-3xl space-y-3">
+          <h2
+            id="paperless-opt-in-heading"
+            className="font-heading text-3xl font-medium leading-tight md:text-4xl"
+          >
+            {copy.heading}
+          </h2>
+          <p className="text-lg leading-relaxed">{copy.description}</p>
+        </div>
+        <PaperlessOptInButton
+          locale={localeOption.code}
+          successHref={getLocalizedPathname('/', localeOption.code)}
+          successLabel={copy.returnHome}
+        />
+      </div>
+    </section>
   );
 };

@@ -44,11 +44,16 @@ jest.mock('@/Providers', () => ({
   __esModule: true,
   default: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
+jest.mock('@/components/paperless-opt-in/PaperlessOptInButton', () => ({
+  PaperlessOptInExperience: ({ locale }: { locale?: string }) => (
+    <section data-paperless-opt-in={locale} />
+  ),
+}));
 
-const createPage = (routeName: string): Page =>
+const createPage = (routeName: string, isEditing = false): Page =>
   ({
     layout: { sitecore: { route: { name: routeName, placeholders: {} } } },
-    mode: { isEditing: false, isDesignLibrary: false },
+    mode: { isEditing, isDesignLibrary: false },
   }) as unknown as Page;
 
 describe('NWN Layout', () => {
@@ -59,5 +64,30 @@ describe('NWN Layout', () => {
     expect(markup).toContain('data-placeholder="headless-header"');
     expect(markup).toContain('data-placeholder="headless-main"');
     expect(markup).toContain('data-placeholder="headless-footer"');
+  });
+
+  it('renders the paperless experience inside main only when requested', () => {
+    const ordinaryMarkup = renderToStaticMarkup(
+      <Layout page={createPage('Account & Billing')} />,
+    );
+    const optInMarkup = renderToStaticMarkup(
+      <Layout
+        page={createPage('Account & Billing')}
+        paperlessOptInLocale="es-MX"
+      />,
+    );
+    const editingMarkup = renderToStaticMarkup(
+      <Layout
+        page={createPage('Account & Billing', true)}
+        paperlessOptInLocale="en"
+      />,
+    );
+
+    expect(ordinaryMarkup).not.toContain('data-paperless-opt-in');
+    expect(editingMarkup).not.toContain('data-paperless-opt-in');
+    expect(optInMarkup).toContain('data-paperless-opt-in="es-MX"');
+    expect(optInMarkup.indexOf('data-paperless-opt-in')).toBeLessThan(
+      optInMarkup.indexOf('data-placeholder="headless-main"'),
+    );
   });
 });

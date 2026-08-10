@@ -18,11 +18,14 @@ import { StructuredData } from 'src/components/structured-data/StructuredData';
 import { getBaseUrl } from 'src/lib/utils';
 import type { JsonLdValue } from 'src/lib/structured-data/jsonld';
 import Providers from './Providers';
+import { PaperlessOptInExperience } from './components/paperless-opt-in/PaperlessOptInButton';
 
 interface LayoutProps {
   page: Page;
   /** Base URL for the site (e.g. from request host or NEXT_PUBLIC_SITE_URL). When provided, used for JSON-LD so deployed URLs are correct. */
   baseUrl?: string;
+  /** Displays the explicit paperless opt-in experience for the query-marked account page. */
+  paperlessOptInLocale?: string;
 }
 
 export interface RouteFields {
@@ -40,7 +43,11 @@ export interface RouteFields {
   Title?: Field;
 }
 
-const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
+const Layout = ({
+  page,
+  baseUrl: baseUrlProp,
+  paperlessOptInLocale,
+}: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
   const mainClassPageEditing = mode.isEditing ? 'editing-mode' : 'prod-mode';
@@ -101,6 +108,9 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
               </div>
               {/* Main content area */}
               <main id="content" role="main" className="flex-1">
+                {paperlessOptInLocale && !mode.isEditing && (
+                  <PaperlessOptInExperience locale={paperlessOptInLocale} />
+                )}
                 {route && (
                   <AppPlaceholder
                     page={page}

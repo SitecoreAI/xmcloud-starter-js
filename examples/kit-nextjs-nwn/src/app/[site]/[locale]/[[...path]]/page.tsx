@@ -20,6 +20,7 @@ import {
   sanitizeLegacyStarterData,
 } from '@/lib/nwn-content-sanitizer';
 import { getLocaleOption, getLocalizedPathname } from '@/i18n/locales';
+import { isPaperlessOptInRequest } from '@/lib/paperless-opt-in';
 
 const useNwnValue = (
   ...values: Array<string | undefined>
@@ -82,10 +83,12 @@ type PageProps = {
     path?: string[];
     [key: string]: string | string[] | undefined;
   }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params, searchParams }: PageProps) {
   const { site, locale, path } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : {};
 
   if (isLegacyStarterRoute(path)) {
     notFound();
@@ -159,7 +162,15 @@ export default async function Page({ params }: PageProps) {
         {webPageSchema && (
           <StructuredData id="webpage-schema" data={webPageSchema} />
         )}
-        <Layout page={renderPage} baseUrl={baseUrl || undefined} />
+        <Layout
+          page={renderPage}
+          baseUrl={baseUrl || undefined}
+          paperlessOptInLocale={
+            isPaperlessOptInRequest(currentPath, resolvedSearchParams.paperless)
+              ? locale
+              : undefined
+          }
+        />
       </Providers>
     </NextIntlClientProvider>
   );
