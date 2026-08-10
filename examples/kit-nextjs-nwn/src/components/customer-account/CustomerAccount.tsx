@@ -86,7 +86,7 @@ const accountCopy = {
     accessAccount: 'Access your account',
     registrationSuccessTitle: 'Your registration is complete',
     registrationSuccessMessage:
-      'Your NW Natural online account is ready. Sign in with your email address to continue.',
+      'Your NW Natural online account is ready, and you’re signed in. Continue to your homepage.',
   },
   'es-MX': {
     required: 'Obligatorio',
@@ -135,7 +135,7 @@ const accountCopy = {
     accessAccount: 'Acceda a su cuenta',
     registrationSuccessTitle: 'Su registro está completo',
     registrationSuccessMessage:
-      'Su cuenta en línea de NW Natural está lista. Inicie sesión con su correo electrónico para continuar.',
+      'Su cuenta en línea de NW Natural está lista y la sesión está iniciada. Continúe a la página principal.',
   },
 } as const;
 
@@ -368,11 +368,15 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
 
     if (shouldIdentifyVisitor(props)) {
       try {
+        const normalizedEmail = normalizeEmail(values.email);
+        await establishDemoAccountSession(normalizedEmail);
         const identifiedEmail = await identifyVisitor(
-          { email: values.email },
+          { email: normalizedEmail },
           'account_login',
         );
-        await establishDemoAccountSession(identifiedEmail);
+        if (identifiedEmail !== normalizedEmail) {
+          throw new Error('The identified account did not match the session.');
+        }
       } catch {
         setSubmissionError(copy.requestError);
         return;
@@ -607,8 +611,8 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
             fields={fields}
             titleFallback={copy.registrationSuccessTitle}
             messageFallback={copy.registrationSuccessMessage}
-            linkHref="/account-billing/login"
-            linkLabel={copy.accessAccount}
+            linkHref="/"
+            linkLabel={copy.continueHome}
             locale={locale}
           />
         ) : (

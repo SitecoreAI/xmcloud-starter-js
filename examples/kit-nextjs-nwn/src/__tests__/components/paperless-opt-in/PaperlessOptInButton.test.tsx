@@ -79,6 +79,12 @@ describe('PaperlessOptInButton', () => {
     expect(screen.getByRole('status')).toHaveTextContent(
       'Your paperless billing preference has been saved.',
     );
+    expect(
+      screen.getByRole('link', { name: 'Explore AutoPay' }),
+    ).toHaveAttribute(
+      'href',
+      '/account-billing/pay-my-bill#payment-options',
+    );
     expect(mockEvent).toHaveBeenCalledWith({
       type: 'NWN_PAPERLESS_OPT_IN',
       channel: 'WEB',
@@ -121,6 +127,12 @@ describe('PaperlessOptInButton', () => {
     ).toBeDisabled();
     expect(screen.getByRole('status')).toHaveTextContent(
       'Se guardó su preferencia de facturación electrónica.',
+    );
+    expect(
+      screen.getByRole('link', { name: 'Explorar AutoPay' }),
+    ).toHaveAttribute(
+      'href',
+      '/es-MX/account-billing/pay-my-bill#payment-options',
     );
   });
 
@@ -187,6 +199,9 @@ describe('PaperlessOptInButton', () => {
     );
     expect(
       screen.queryByRole('button', { name: 'Paperless billing is on' }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('link', { name: 'Explore AutoPay' }),
     ).not.toBeInTheDocument();
   });
 

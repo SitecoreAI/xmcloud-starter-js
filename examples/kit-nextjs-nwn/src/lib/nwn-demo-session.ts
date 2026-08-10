@@ -21,11 +21,37 @@ const getSessionSecret = () => {
 const sign = (payload: string) =>
   createHmac('sha256', getSessionSecret()).update(payload).digest('base64url');
 
+const GENERATED_DEMO_REGISTRATION_EMAIL =
+  /^nwn-live-(\d{4})(\d{2})(\d{2})-(\d{2})(\d{2})(\d{2})@example\.com$/;
+
+export const isGeneratedDemoRegistrationEmail = (email: string) => {
+  const normalizedEmail = email.trim().toLowerCase();
+  const match = normalizedEmail.match(GENERATED_DEMO_REGISTRATION_EMAIL);
+  if (!match) return false;
+
+  const [, year, month, day, hour, minute, second] = match.map(Number);
+  const timestamp = new Date(
+    Date.UTC(year, month - 1, day, hour, minute, second),
+  );
+
+  return (
+    timestamp.getUTCFullYear() === year &&
+    timestamp.getUTCMonth() === month - 1 &&
+    timestamp.getUTCDate() === day &&
+    timestamp.getUTCHours() === hour &&
+    timestamp.getUTCMinutes() === minute &&
+    timestamp.getUTCSeconds() === second
+  );
+};
+
+const isSessionEligibleDemoAccount = (email: string) =>
+  isAllowedDemoAccount(email) || isGeneratedDemoRegistrationEmail(email);
+
 export const createAccountSessionToken = (email: string, now = Date.now()) => {
   const normalizedEmail = email.trim().toLowerCase();
 
   if (
-    !isAllowedDemoAccount(normalizedEmail) ||
+    !isSessionEligibleDemoAccount(normalizedEmail) ||
     !Number.isSafeInteger(now) ||
     now < 0
   ) {
@@ -73,7 +99,7 @@ export const readAccountSessionToken = (
 
     if (
       typeof parsed.email !== 'string' ||
-      !isAllowedDemoAccount(parsed.email) ||
+      !isSessionEligibleDemoAccount(parsed.email) ||
       parsed.email !== parsed.email.trim().toLowerCase() ||
       typeof parsed.expiresAt !== 'number' ||
       !Number.isSafeInteger(parsed.expiresAt) ||

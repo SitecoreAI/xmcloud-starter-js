@@ -203,6 +203,7 @@ describe('CustomerAccount', () => {
         created: true,
         paperlessInitialized: true,
       },
+      session: { established: true },
     });
     document.documentElement.lang = 'en-US';
   });
@@ -240,6 +241,9 @@ describe('CustomerAccount', () => {
     expect(mockEstablishDemoAccountSession).toHaveBeenCalledWith(
       'taylor@example.com',
     );
+    expect(
+      mockEstablishDemoAccountSession.mock.invocationCallOrder[0],
+    ).toBeLessThan(mockIdentity.mock.invocationCallOrder[0]);
     expect(await screen.findByText('You’re signed in')).toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: 'Continue to your homepage' }),
@@ -284,7 +288,7 @@ describe('CustomerAccount', () => {
       target: { value: '  Morgan  ' },
     });
     fireEvent.change(screen.getByLabelText(/Email address/i), {
-      target: { value: '  Taylor@Example.COM  ' },
+      target: { value: '  NWN-LIVE-20260809-143025@Example.COM  ' },
     });
     submitClosestForm('Register');
 
@@ -292,10 +296,15 @@ describe('CustomerAccount', () => {
     expect(mockIdentity).toHaveBeenCalledWith({
       channel: 'WEB',
       currency: 'USD',
-      email: 'taylor@example.com',
+      email: 'nwn-live-20260809-143025@example.com',
       firstName: 'Taylor',
       lastName: 'Morgan',
-      identifiers: [{ id: 'taylor@example.com', provider: 'email' }],
+      identifiers: [
+        {
+          id: 'nwn-live-20260809-143025@example.com',
+          provider: 'email',
+        },
+      ],
       language: 'EN-US',
       page: '/account-billing/register',
       extensionData: {
@@ -310,7 +319,7 @@ describe('CustomerAccount', () => {
     expect(payload).not.toHaveProperty('phone');
     expect(payload).not.toHaveProperty('address');
     expect(mockInitializeNewUdlProfile).toHaveBeenCalledWith({
-      email: 'taylor@example.com',
+      email: 'nwn-live-20260809-143025@example.com',
       firstName: 'Taylor',
       lastName: 'Morgan',
     });
@@ -320,6 +329,9 @@ describe('CustomerAccount', () => {
     expect(
       await screen.findByText('Your registration is complete'),
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: 'Continue to your homepage' }),
+    ).toHaveAttribute('href', '/');
   });
 
   it('blocks registration only when first name, last name, or email is missing', async () => {
@@ -366,6 +378,7 @@ describe('CustomerAccount', () => {
     expect(mockEstablishDemoAccountSession).toHaveBeenCalledWith(
       'taylor@example.com',
     );
+    expect(mockIdentity).not.toHaveBeenCalled();
     expect(screen.queryByText('You’re signed in')).not.toBeInTheDocument();
   });
 

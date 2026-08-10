@@ -33,6 +33,7 @@ const browserHeaders = {
   'Sec-Fetch-Site': 'same-origin',
   'Content-Type': 'application/json',
 };
+const GENERATED_EMAIL = 'nwn-live-20260809-143025@example.com';
 
 const identifyRequest = (
   body: Record<string, unknown>,
@@ -103,11 +104,11 @@ describe('NW Natural SitecoreAI account routes', () => {
     expect(mockInitializeNewSitecoreAiProfile).not.toHaveBeenCalled();
   });
 
-  it('initializes only the registration profile and does not sign it in', async () => {
+  it('initializes a new generated registration profile and signs it in', async () => {
     const response = await identify(
       identifyRequest({
         action: 'registration',
-        email: '  DEMO@example.com ',
+        email: '  NWN-LIVE-20260809-143025@example.com ',
         firstName: '  Taylor ',
         lastName: ' Morgan  ',
       }),
@@ -120,17 +121,74 @@ describe('NW Natural SitecoreAI account routes', () => {
         paperlessInitialized: true,
         profileId: '7dc912e2-4fb9-4340-ae1d-4239399e3f97',
       },
+      session: { established: true },
     });
     expect(mockInitializeNewSitecoreAiProfile).toHaveBeenCalledWith({
-      email: 'demo@example.com',
+      email: GENERATED_EMAIL,
       firstName: 'Taylor',
       lastName: 'Morgan',
     });
+    expect(response.headers.get('set-cookie')).toContain(
+      `${NWN_ACCOUNT_SESSION_COOKIE}=`,
+    );
+    expect(response.headers.get('set-cookie')).toContain('Max-Age=3600');
+  });
+
+  it('rejects ordinary and malformed emails for registration', async () => {
+    const ordinaryResponse = await identify(
+      identifyRequest({
+        action: 'registration',
+        email: 'demo@example.com',
+        firstName: 'Taylor',
+        lastName: 'Morgan',
+      }),
+    );
+    const malformedResponse = await identify(
+      identifyRequest({
+        action: 'registration',
+        email: 'nwn-live-20260230-143025@example.com',
+        firstName: 'Taylor',
+        lastName: 'Morgan',
+      }),
+    );
+
+    expect(ordinaryResponse.status).toBe(403);
+    expect(malformedResponse.status).toBe(403);
+    expect(mockInitializeNewSitecoreAiProfile).not.toHaveBeenCalled();
+  });
+
+  it('keeps generated registration emails unavailable to ordinary login', async () => {
+    const response = await identify(
+      identifyRequest({ action: 'login', email: GENERATED_EMAIL }),
+    );
+
+    expect(response.status).toBe(403);
     expect(response.headers.get('set-cookie')).toBeNull();
   });
 
-  it('uses the signed normalized email for an explicit opt-in', async () => {
-    const token = createAccountSessionToken('DEMO@example.com');
+  it('returns 409 without a session when a generated email was already used', async () => {
+    mockInitializeNewSitecoreAiProfile.mockResolvedValueOnce({
+      created: false,
+      paperlessInitialized: false,
+      profileId: '7dc912e2-4fb9-4340-ae1d-4239399e3f97',
+    });
+
+    const response = await identify(
+      identifyRequest({
+        action: 'registration',
+        email: GENERATED_EMAIL,
+        firstName: 'Taylor',
+        lastName: 'Morgan',
+      }),
+    );
+
+    expect(response.status).toBe(409);
+    expect(await response.json()).toEqual({ error: 'Demo account already used' });
+    expect(response.headers.get('set-cookie')).toBeNull();
+  });
+
+  it('uses a signed generated registration email for an explicit opt-in', async () => {
+    const token = createAccountSessionToken(GENERATED_EMAIL.toUpperCase());
 
     const response = await optIn(
       new NextRequest('https://nwn.example/api/account/paperless', {
@@ -152,7 +210,7 @@ describe('NW Natural SitecoreAI account routes', () => {
       },
     });
     expect(mockOptInSitecoreAiProfileToPaperless).toHaveBeenCalledWith(
-      'demo@example.com',
+      GENERATED_EMAIL,
     );
   });
 

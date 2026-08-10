@@ -49,19 +49,25 @@ describe('SitecoreAI UDL browser client', () => {
     fetchMock.mockResolvedValueOnce(
       response({
         profile: { created: true, paperlessInitialized: true },
+        session: { established: true },
       }),
     );
 
-    await initializeNewUdlProfile({
-      email: 'demo@example.com',
-      firstName: 'Taylor',
-      lastName: 'Morgan',
+    await expect(
+      initializeNewUdlProfile({
+        email: 'nwn-live-20260809-143025@example.com',
+        firstName: 'Taylor',
+        lastName: 'Morgan',
+      }),
+    ).resolves.toEqual({
+      profile: { created: true, paperlessInitialized: true },
+      session: { established: true },
     });
 
     const init = fetchMock.mock.calls[0][1];
     expect(JSON.parse(String(init?.body))).toEqual({
       action: 'registration',
-      email: 'demo@example.com',
+      email: 'nwn-live-20260809-143025@example.com',
       firstName: 'Taylor',
       lastName: 'Morgan',
     });

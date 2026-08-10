@@ -28,6 +28,9 @@ type RegistrationClientResult = {
     paperlessInitialized: boolean;
     profileId?: string;
   };
+  session: {
+    established: true;
+  };
 };
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -55,10 +58,12 @@ const isRegistrationClientResult = (
 ): value is RegistrationClientResult =>
   isRecord(value) &&
   isRecord(value.profile) &&
+  isRecord(value.session) &&
   typeof value.profile.created === 'boolean' &&
   typeof value.profile.paperlessInitialized === 'boolean' &&
   (value.profile.profileId === undefined ||
-    typeof value.profile.profileId === 'string');
+    typeof value.profile.profileId === 'string') &&
+  value.session.established === true;
 
 const postJson = async <T>(
   path: string,

@@ -4,6 +4,7 @@ import { z } from 'zod';
 import {
   createAccountSessionToken,
   isAllowedDemoAccount,
+  isGeneratedDemoRegistrationEmail,
   isSameOriginRequest,
   NWN_ACCOUNT_SESSION_COOKIE,
   NWN_ACCOUNT_SESSION_MAX_AGE,
@@ -35,6 +36,21 @@ const json = (body: object, status = 200) =>
     headers: { 'Cache-Control': 'no-store' },
   });
 
+const sessionResponse = (email: string, body: object) => {
+  const response = json(body);
+  response.cookies.set({
+    name: NWN_ACCOUNT_SESSION_COOKIE,
+    value: createAccountSessionToken(email),
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    path: '/',
+    maxAge: NWN_ACCOUNT_SESSION_MAX_AGE,
+    priority: 'high',
+  });
+  return response;
+};
+
 export async function POST(request: NextRequest) {
   if (!isSameOriginRequest(request)) {
     return json({ error: 'Forbidden' }, 403);
@@ -48,24 +64,14 @@ export async function POST(request: NextRequest) {
   }
 
   const email = parsed.data.email.toLowerCase();
-  if (!isAllowedDemoAccount(email)) {
-    return json({ error: 'Account unavailable' }, 403);
-  }
 
   if (parsed.data.action === 'login') {
+    if (!isAllowedDemoAccount(email)) {
+      return json({ error: 'Account unavailable' }, 403);
+    }
+
     try {
-      const response = json({ session: { established: true } });
-      response.cookies.set({
-        name: NWN_ACCOUNT_SESSION_COOKIE,
-        value: createAccountSessionToken(email),
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        path: '/',
-        maxAge: NWN_ACCOUNT_SESSION_MAX_AGE,
-        priority: 'high',
-      });
-      return response;
+      return sessionResponse(email, { session: { established: true } });
     } catch (error) {
       console.error(
         '[NWN account] Could not establish the demo session.',
@@ -75,13 +81,17 @@ export async function POST(request: NextRequest) {
     }
   }
 
+  if (!isGeneratedDemoRegistrationEmail(email)) {
+    return json({ error: 'Account unavailable' }, 403);
+  }
+
+  let profile;
   try {
-    const profile = await initializeNewSitecoreAiProfile({
+    profile = await initializeNewSitecoreAiProfile({
       email,
       firstName: parsed.data.firstName,
       lastName: parsed.data.lastName,
     });
-    return json({ profile });
   } catch (error) {
     console.error(
       '[NWN paperless] Could not initialize the SitecoreAI UDL profile.',
@@ -95,5 +105,22 @@ export async function POST(request: NextRequest) {
       { error: 'The customer profile could not be updated.' },
       status,
     );
+  }
+
+  if (!profile.created) {
+    return json({ error: 'Demo account already used' }, 409);
+  }
+
+  try {
+    return sessionResponse(email, {
+      profile,
+      session: { established: true },
+    });
+  } catch (error) {
+    console.error(
+      '[NWN account] Could not establish the registered demo session.',
+      error,
+    );
+    return json({ error: 'Session unavailable' }, 503);
   }
 }

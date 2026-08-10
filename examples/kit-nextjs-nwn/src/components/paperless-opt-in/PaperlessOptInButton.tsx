@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { event } from '@sitecore-content-sdk/events';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
@@ -21,6 +22,7 @@ const paperlessCopy = {
     pending: 'Saving preference…',
     success: 'Paperless billing is on',
     successMessage: 'Your paperless billing preference has been saved.',
+    autoPay: 'Explore AutoPay',
     error: 'We couldn’t update your preference. Please try again.',
   },
   'es-MX': {
@@ -28,6 +30,7 @@ const paperlessCopy = {
     pending: 'Guardando preferencia…',
     success: 'La facturación electrónica está activada',
     successMessage: 'Se guardó su preferencia de facturación electrónica.',
+    autoPay: 'Explorar AutoPay',
     error: 'No pudimos actualizar su preferencia. Inténtelo de nuevo.',
   },
 } as const satisfies Record<
@@ -37,6 +40,7 @@ const paperlessCopy = {
     pending: string;
     success: string;
     successMessage: string;
+    autoPay: string;
     error: string;
   }
 >;
@@ -132,13 +136,26 @@ export const PaperlessOptInButton = ({
         {buttonLabel}
       </Button>
       {isSuccessful && (
-        <p
-          className="text-primary-foreground text-sm"
-          role="status"
-          aria-live="polite"
-        >
-          {copy.successMessage}
-        </p>
+        <>
+          <p
+            className="text-primary-foreground text-sm"
+            role="status"
+            aria-live="polite"
+          >
+            {copy.successMessage}
+          </p>
+          <Button asChild variant="secondary">
+            <Link
+              href={getLocalizedPathname(
+                '/account-billing/pay-my-bill#payment-options',
+                localeOption.code,
+              )}
+              prefetch={false}
+            >
+              {copy.autoPay}
+            </Link>
+          </Button>
+        </>
       )}
       {submissionState === 'error' && (
         <p

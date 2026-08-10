@@ -2,12 +2,14 @@
 
 import {
   createAccountSessionToken,
+  isGeneratedDemoRegistrationEmail,
   isSameOriginRequest,
   NWN_ACCOUNT_SESSION_MAX_AGE,
   readAccountSessionToken,
 } from '@/lib/nwn-demo-session';
 
 const EMAIL = 'demo@example.com';
+const GENERATED_EMAIL = 'nwn-live-20260809-143025@example.com';
 const NOW = 1_800_000_000_000;
 
 const request = (
@@ -46,6 +48,19 @@ describe('NW Natural demo account session', () => {
     ).toBeUndefined();
   });
 
+  it('round-trips a valid server-issued generated registration email', () => {
+    const token = createAccountSessionToken(
+      '  NWN-LIVE-20260809-143025@EXAMPLE.COM ',
+      NOW,
+    );
+
+    expect(isGeneratedDemoRegistrationEmail(GENERATED_EMAIL)).toBe(true);
+    expect(readAccountSessionToken(token, NOW + 1)).toEqual({
+      email: GENERATED_EMAIL,
+      expiresAt: NOW + NWN_ACCOUNT_SESSION_MAX_AGE * 1000,
+    });
+  });
+
   it('rejects a tampered signature', () => {
     const token = createAccountSessionToken(EMAIL, NOW);
     const tampered = `${token.slice(0, -1)}${token.endsWith('a') ? 'b' : 'a'}`;
@@ -63,10 +78,16 @@ describe('NW Natural demo account session', () => {
     );
   });
 
-  it('rejects emails outside the allowlist and invalid timestamps', () => {
+  it('rejects emails outside the allowlist or generated namespace and invalid timestamps', () => {
     expect(() =>
       createAccountSessionToken('outsider@example.com', NOW),
     ).toThrow('session is invalid');
+    expect(isGeneratedDemoRegistrationEmail('nwn-live@example.com')).toBe(false);
+    expect(
+      isGeneratedDemoRegistrationEmail(
+        'nwn-live-20260230-143025@example.com',
+      ),
+    ).toBe(false);
     expect(() => createAccountSessionToken(EMAIL, Number.NaN)).toThrow(
       'session is invalid',
     );
