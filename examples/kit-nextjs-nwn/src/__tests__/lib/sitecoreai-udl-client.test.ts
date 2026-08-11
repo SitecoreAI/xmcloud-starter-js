@@ -86,12 +86,25 @@ describe('SitecoreAI UDL browser client', () => {
     );
   });
 
+  it.each([
+    { verified: true, email: REGISTERED_EMAIL },
+    { verified: true, email: REGISTERED_EMAIL, paperless: 'true' },
+    { verified: true, email: '', paperless: false },
+  ])('rejects an incomplete verified session: %p', async (session) => {
+    fetchMock.mockResolvedValueOnce(response({ session }));
+
+    await expect(verifyPaperlessOptInSession()).rejects.toBeInstanceOf(
+      SitecoreAiUdlClientError,
+    );
+  });
+
   it('returns the normalized signed-session identity for paperless opt-in', async () => {
     fetchMock.mockResolvedValueOnce(
       response({
         session: {
           verified: true,
           email: REGISTERED_EMAIL,
+          paperless: false,
         },
       }),
     );
@@ -100,6 +113,7 @@ describe('SitecoreAI UDL browser client', () => {
       session: {
         verified: true,
         email: REGISTERED_EMAIL,
+        paperless: false,
       },
     });
     expect(fetchMock).toHaveBeenCalledWith(
@@ -116,6 +130,7 @@ describe('SitecoreAI UDL browser client', () => {
         session: {
           verified: true,
           email: REGISTERED_EMAIL,
+          paperless: true,
         },
         paperless: { updated: true, value: true },
       }),
@@ -125,6 +140,7 @@ describe('SitecoreAI UDL browser client', () => {
       session: {
         verified: true,
         email: REGISTERED_EMAIL,
+        paperless: true,
       },
       paperless: { updated: true, value: true },
     });
@@ -179,6 +195,7 @@ describe('SitecoreAI UDL browser client', () => {
         session: {
           verified: true,
           email: REGISTERED_EMAIL,
+          paperless: true,
         },
       }),
     );

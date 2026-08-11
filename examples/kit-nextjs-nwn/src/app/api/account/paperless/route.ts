@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import {
+  createAccountSessionToken,
   isSameOriginRequest,
   NWN_ACCOUNT_SESSION_COOKIE,
+  NWN_ACCOUNT_SESSION_MAX_AGE,
   readAccountSessionToken,
 } from '@/lib/nwn-demo-session';
 import { optInSitecoreAiProfileToPaperless } from '@/lib/sitecoreai-profile-import';
@@ -56,7 +58,13 @@ export async function POST(request: NextRequest) {
   }
 
   if (action === 'verify') {
-    return json({ session: { verified: true, email: session.email } });
+    return json({
+      session: {
+        verified: true,
+        email: session.email,
+        paperless: session.paperless,
+      },
+    });
   }
 
   try {
@@ -69,8 +77,20 @@ export async function POST(request: NextRequest) {
     return json({ error: 'Paperless preference update failed' }, 503);
   }
 
-  return json({
-    session: { verified: true, email: session.email },
+  const response = json({
+    session: { verified: true, email: session.email, paperless: true },
     paperless: { updated: true, value: true },
   });
+  response.cookies.set({
+    name: NWN_ACCOUNT_SESSION_COOKIE,
+    value: createAccountSessionToken(session.email, Date.now(), true),
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    path: '/',
+    maxAge: NWN_ACCOUNT_SESSION_MAX_AGE,
+    priority: 'high',
+  });
+
+  return response;
 }

@@ -69,7 +69,11 @@ const paperlessCopy = {
 >;
 
 type SubmissionState = 'idle' | 'pending' | 'success' | 'error';
-type SessionVisibility = 'checking' | 'verified' | 'anonymous';
+type SessionVisibility =
+  | 'checking'
+  | 'verified'
+  | 'paperless'
+  | 'anonymous';
 
 export type PaperlessOptInButtonProps = {
   locale?: string;
@@ -99,8 +103,10 @@ export const PaperlessOptInButton = ({
     let isActive = true;
 
     void verifyPaperlessOptInSession()
-      .then(() => {
-        if (isActive) setSessionVisibility('verified');
+      .then(({ session }) => {
+        if (isActive) {
+          setSessionVisibility(session.paperless ? 'paperless' : 'verified');
+        }
       })
       .catch(() => {
         if (isActive) setSessionVisibility('anonymous');

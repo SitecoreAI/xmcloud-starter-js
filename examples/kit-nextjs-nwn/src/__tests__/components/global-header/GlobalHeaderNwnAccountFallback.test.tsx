@@ -315,7 +315,11 @@ describe('GlobalHeaderNwn account link fallbacks', () => {
 
   it('replaces account actions with sign-out for an identified user', async () => {
     mockVerifyDemoAccountSession.mockResolvedValueOnce({
-      session: { verified: true, email: 'paperless@example.com' },
+      session: {
+        verified: true,
+        email: 'paperless@example.com',
+        paperless: true,
+      },
     });
 
     render(<GlobalHeaderNwn {...makeProps(false)} />);
@@ -381,7 +385,11 @@ describe('GlobalHeaderNwn account link fallbacks', () => {
 
   it('localizes sign-out and the hard-navigation destination', async () => {
     mockVerifyDemoAccountSession.mockResolvedValueOnce({
-      session: { verified: true, email: 'paperless@example.com' },
+      session: {
+        verified: true,
+        email: 'paperless@example.com',
+        paperless: true,
+      },
     });
     const spanishProps = makeProps(false);
     spanishProps.page = { ...spanishProps.page, locale: 'es-MX' };

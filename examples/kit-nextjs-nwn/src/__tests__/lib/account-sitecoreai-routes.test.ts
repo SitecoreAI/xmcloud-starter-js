@@ -8,6 +8,7 @@ import { POST as signOut } from '@/app/api/account/session/route';
 import {
   createAccountSessionToken,
   NWN_ACCOUNT_SESSION_COOKIE,
+  readAccountSessionToken,
 } from '@/lib/nwn-demo-session';
 import {
   initializeNewSitecoreAiProfile,
@@ -71,6 +72,7 @@ describe('NW Natural SitecoreAI account routes', () => {
   afterEach(() => {
     consoleError.mockRestore();
     delete process.env.NWN_DEMO_ACCOUNT_EMAILS;
+    delete process.env.NWN_DEMO_PAPERLESS_ACCOUNT_EMAILS;
     delete process.env.NWN_DEMO_SESSION_SECRET;
   });
 
@@ -100,6 +102,26 @@ describe('NW Natural SitecoreAI account routes', () => {
     expect(response.headers.get('set-cookie')).toContain('SameSite=strict');
     expect(mockInitializeNewSitecoreAiProfile).not.toHaveBeenCalled();
     expect(mockOptInSitecoreAiProfileToPaperless).not.toHaveBeenCalled();
+  });
+
+  it('establishes seeded account 07 with paperless already true', async () => {
+    process.env.NWN_DEMO_ACCOUNT_EMAILS = 'nwn-demo-07@example.com';
+
+    const response = await identify(
+      identifyRequest({
+        action: 'login',
+        email: 'nwn-demo-07@example.com',
+      }),
+    );
+    const token = response.headers
+      .get('set-cookie')
+      ?.match(new RegExp(`${NWN_ACCOUNT_SESSION_COOKIE}=([^;]+)`))?.[1];
+
+    expect(response.status).toBe(200);
+    expect(readAccountSessionToken(token)).toMatchObject({
+      email: 'nwn-demo-07@example.com',
+      paperless: true,
+    });
   });
 
   it('initializes a new profile before establishing its registration session', async () => {
@@ -228,7 +250,11 @@ describe('NW Natural SitecoreAI account routes', () => {
 
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
-      session: { verified: true, email: REGISTERED_EMAIL },
+      session: {
+        verified: true,
+        email: REGISTERED_EMAIL,
+        paperless: false,
+      },
     });
     expect(mockOptInSitecoreAiProfileToPaperless).not.toHaveBeenCalled();
   });
@@ -249,12 +275,23 @@ describe('NW Natural SitecoreAI account routes', () => {
 
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
-      session: { verified: true, email: REGISTERED_EMAIL },
+      session: {
+        verified: true,
+        email: REGISTERED_EMAIL,
+        paperless: true,
+      },
       paperless: { updated: true, value: true },
     });
     expect(mockOptInSitecoreAiProfileToPaperless).toHaveBeenCalledWith(
       REGISTERED_EMAIL,
     );
+    const refreshedToken = response.headers
+      .get('set-cookie')
+      ?.match(new RegExp(`${NWN_ACCOUNT_SESSION_COOKIE}=([^;]+)`))?.[1];
+    expect(readAccountSessionToken(refreshedToken)).toMatchObject({
+      email: REGISTERED_EMAIL,
+      paperless: true,
+    });
   });
 
   it('reports a visible failure when the Unified Data profile update fails', async () => {

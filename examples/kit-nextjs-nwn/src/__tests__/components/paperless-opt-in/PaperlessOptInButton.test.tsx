@@ -53,10 +53,10 @@ describe('PaperlessOptInButton', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockVerifyPaperlessOptInSession.mockResolvedValue({
-      session: { verified: true, email: SIGNED_EMAIL },
+      session: { verified: true, email: SIGNED_EMAIL, paperless: false },
     });
     mockOptInDemoAccountToPaperless.mockResolvedValue({
-      session: { verified: true, email: SIGNED_EMAIL },
+      session: { verified: true, email: SIGNED_EMAIL, paperless: true },
       paperless: { updated: true, value: true },
     });
     mockIdentity.mockResolvedValue(acceptedIdentityResponse);
@@ -88,7 +88,7 @@ describe('PaperlessOptInButton', () => {
     );
 
     resolveRequest?.({
-      session: { verified: true, email: SIGNED_EMAIL },
+      session: { verified: true, email: SIGNED_EMAIL, paperless: true },
       paperless: { updated: true, value: true },
     });
 
@@ -130,7 +130,7 @@ describe('PaperlessOptInButton', () => {
   it('uses a non-email demo identity only as an identifier', async () => {
     const demoIdentity = 'nwn-demo-thomas-lin';
     mockOptInDemoAccountToPaperless.mockResolvedValueOnce({
-      session: { verified: true, email: demoIdentity },
+      session: { verified: true, email: demoIdentity, paperless: true },
       paperless: { updated: true, value: true },
     });
 
@@ -180,9 +180,26 @@ describe('PaperlessOptInButton', () => {
     expect(mockIdentity).not.toHaveBeenCalled();
   });
 
+  it('renders no CTA when the signed account is already paperless', async () => {
+    mockVerifyPaperlessOptInSession.mockResolvedValueOnce({
+      session: { verified: true, email: SIGNED_EMAIL, paperless: true },
+    });
+
+    render(<PaperlessOptInButton locale="en" />);
+
+    await waitFor(() =>
+      expect(mockVerifyPaperlessOptInSession).toHaveBeenCalledTimes(1),
+    );
+    expect(
+      screen.queryByRole('button', { name: 'Choose paperless billing' }),
+    ).not.toBeInTheDocument();
+    expect(mockOptInDemoAccountToPaperless).not.toHaveBeenCalled();
+    expect(mockIdentity).not.toHaveBeenCalled();
+  });
+
   it('renders Spanish labels, feedback, and AutoPay destination', async () => {
     mockVerifyPaperlessOptInSession.mockResolvedValue({
-      session: { verified: true, email: SIGNED_EMAIL },
+      session: { verified: true, email: SIGNED_EMAIL, paperless: false },
     });
 
     render(<PaperlessOptInButton locale="es-MX" />);
@@ -240,7 +257,7 @@ describe('PaperlessOptInButton', () => {
     mockOptInDemoAccountToPaperless
       .mockRejectedValueOnce(new Error('Request failed'))
       .mockResolvedValueOnce({
-        session: { verified: true, email: SIGNED_EMAIL },
+        session: { verified: true, email: SIGNED_EMAIL, paperless: true },
         paperless: { updated: true, value: true },
       });
 
@@ -277,7 +294,7 @@ describe('PaperlessOptInButton', () => {
     'shows a retryable error when identity %s',
     async (outcome) => {
       mockVerifyPaperlessOptInSession.mockResolvedValue({
-        session: { verified: true, email: SIGNED_EMAIL },
+        session: { verified: true, email: SIGNED_EMAIL, paperless: false },
       });
       if (outcome === 'rejects') {
         mockIdentity.mockRejectedValueOnce(new Error('Identity unavailable'));
@@ -313,7 +330,7 @@ describe('PaperlessOptInButton', () => {
     'redirects an unauthenticated %s visitor to the localized login page',
     async (locale, expectedPath) => {
       mockVerifyPaperlessOptInSession.mockResolvedValueOnce({
-        session: { verified: true, email: SIGNED_EMAIL },
+        session: { verified: true, email: SIGNED_EMAIL, paperless: false },
       });
       mockOptInDemoAccountToPaperless.mockRejectedValueOnce(
         new SitecoreAiUdlClientError('Sign in required', 401),

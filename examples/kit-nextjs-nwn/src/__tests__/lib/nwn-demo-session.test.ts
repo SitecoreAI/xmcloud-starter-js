@@ -32,6 +32,7 @@ describe('NW Natural demo account session', () => {
   afterEach(() => {
     delete process.env.NWN_DEMO_SESSION_SECRET;
     delete process.env.NWN_DEMO_ACCOUNT_EMAILS;
+    delete process.env.NWN_DEMO_PAPERLESS_ACCOUNT_EMAILS;
     delete process.env.SITECORE_EDITING_SECRET;
   });
 
@@ -40,6 +41,7 @@ describe('NW Natural demo account session', () => {
 
     expect(readAccountSessionToken(token, NOW + 1)).toEqual({
       email: EMAIL,
+      paperless: false,
       expiresAt: NOW + NWN_ACCOUNT_SESSION_MAX_AGE * 1000,
     });
     expect(
@@ -57,6 +59,7 @@ describe('NW Natural demo account session', () => {
 
       expect(readAccountSessionToken(token, NOW + 1)).toEqual({
         email: identity,
+        paperless: false,
         expiresAt: NOW + NWN_ACCOUNT_SESSION_MAX_AGE * 1000,
       });
     },
@@ -100,8 +103,39 @@ describe('NW Natural demo account session', () => {
 
     expect(readAccountSessionToken(token, NOW + 1)).toEqual({
       email: REGISTERED_EMAIL,
+      paperless: false,
       expiresAt: NOW + NWN_ACCOUNT_SESSION_MAX_AGE * 1000,
     });
+  });
+
+  it('defaults seeded accounts 07-10 to paperless in the signed session', () => {
+    process.env.NWN_DEMO_ACCOUNT_EMAILS = 'nwn-demo-07@example.com';
+
+    const token = createAccountSessionToken('NWN-DEMO-07@EXAMPLE.COM', NOW);
+
+    expect(readAccountSessionToken(token, NOW + 1)).toMatchObject({
+      email: 'nwn-demo-07@example.com',
+      paperless: true,
+    });
+  });
+
+  it('allows the seeded paperless account set to be overridden', () => {
+    process.env.NWN_DEMO_ACCOUNT_EMAILS =
+      'nwn-demo-07@example.com,custom@example.com';
+    process.env.NWN_DEMO_PAPERLESS_ACCOUNT_EMAILS = 'custom@example.com';
+
+    expect(
+      readAccountSessionToken(
+        createAccountSessionToken('nwn-demo-07@example.com', NOW),
+        NOW + 1,
+      ),
+    ).toMatchObject({ paperless: false });
+    expect(
+      readAccountSessionToken(
+        createAccountSessionToken('custom@example.com', NOW),
+        NOW + 1,
+      ),
+    ).toMatchObject({ paperless: true });
   });
 
   it('accepts requests with a matching browser origin', () => {

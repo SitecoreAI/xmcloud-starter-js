@@ -6,7 +6,32 @@ export const NWN_ACCOUNT_SESSION_MAX_AGE = 60 * 60;
 
 type AccountSession = {
   email: string;
+  paperless: boolean;
   expiresAt: number;
+};
+
+const DEFAULT_PAPERLESS_DEMO_ACCOUNTS = [
+  'nwn-demo-07@example.com',
+  'nwn-demo-08@example.com',
+  'nwn-demo-09@example.com',
+  'nwn-demo-10@example.com',
+] as const;
+
+/**
+ * Keeps seeded demo-account state deterministic without a Unified Data read.
+ * Defining NWN_DEMO_PAPERLESS_ACCOUNT_EMAILS replaces the built-in 07-10 set.
+ */
+export const isPaperlessDemoAccount = (email: string) => {
+  const configuredEmails = process.env.NWN_DEMO_PAPERLESS_ACCOUNT_EMAILS;
+  const paperlessEmails = (
+    configuredEmails === undefined
+      ? DEFAULT_PAPERLESS_DEMO_ACCOUNTS
+      : configuredEmails.split(',')
+  )
+    .map((value) => value.trim().toLowerCase())
+    .filter(Boolean);
+
+  return paperlessEmails.includes(email.trim().toLowerCase());
 };
 
 const getSessionSecret = () => {
@@ -36,13 +61,18 @@ export const isDemoRegistrationIdentity = (identity: string) =>
 const isSessionEligibleDemoAccount = (email: string) =>
   isAllowedDemoAccount(email) || isDemoRegistrationIdentity(email);
 
-export const createAccountSessionToken = (email: string, now = Date.now()) => {
+export const createAccountSessionToken = (
+  email: string,
+  now = Date.now(),
+  paperless = isPaperlessDemoAccount(email),
+) => {
   const normalizedEmail = email.trim().toLowerCase();
 
   if (
     !isSessionEligibleDemoAccount(normalizedEmail) ||
     !Number.isSafeInteger(now) ||
-    now < 0
+    now < 0 ||
+    typeof paperless !== 'boolean'
   ) {
     throw new Error('The NW Natural demo account session is invalid.');
   }
@@ -54,6 +84,7 @@ export const createAccountSessionToken = (email: string, now = Date.now()) => {
 
   const session: AccountSession = {
     email: normalizedEmail,
+    paperless,
     expiresAt,
   };
   const payload = Buffer.from(JSON.stringify(session)).toString('base64url');
@@ -90,6 +121,7 @@ export const readAccountSessionToken = (
       typeof parsed.email !== 'string' ||
       !isSessionEligibleDemoAccount(parsed.email) ||
       parsed.email !== parsed.email.trim().toLowerCase() ||
+      typeof parsed.paperless !== 'boolean' ||
       typeof parsed.expiresAt !== 'number' ||
       !Number.isSafeInteger(parsed.expiresAt) ||
       parsed.expiresAt <= now
@@ -99,6 +131,7 @@ export const readAccountSessionToken = (
 
     return {
       email: parsed.email,
+      paperless: parsed.paperless,
       expiresAt: parsed.expiresAt,
     };
   } catch {

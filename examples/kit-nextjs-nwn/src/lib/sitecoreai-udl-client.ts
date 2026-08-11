@@ -24,6 +24,7 @@ type VerifiedSessionClientResult = {
   session: {
     verified: true;
     email: string;
+    paperless: boolean;
   };
 };
 
@@ -58,7 +59,10 @@ const isVerifiedSessionClientResult = (
   isRecord(value.session) &&
   value.session.verified === true &&
   typeof value.session.email === 'string' &&
-  value.session.email === value.session.email.trim().toLowerCase();
+  value.session.email.length > 0 &&
+  value.session.email.length <= 254 &&
+  value.session.email === value.session.email.trim().toLowerCase() &&
+  typeof value.session.paperless === 'boolean';
 
 const isPaperlessOptInClientResult = (
   value: unknown,
@@ -68,6 +72,7 @@ const isPaperlessOptInClientResult = (
 
   return (
     isRecord(paperless) &&
+    value.session.paperless === true &&
     paperless.updated === true &&
     paperless.value === true
   );
