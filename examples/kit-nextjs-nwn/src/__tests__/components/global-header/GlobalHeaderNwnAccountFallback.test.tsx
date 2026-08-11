@@ -1,10 +1,47 @@
 import React from 'react';
-import { render, screen, within } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import type { Page } from '@sitecore-content-sdk/nextjs';
 
 import { GlobalHeaderNwn } from '@/components/global-header/GlobalHeaderNwn.dev';
 import type { GlobalHeaderProps } from '@/components/global-header/global-header.props';
+import {
+  endDemoAccountSession,
+  navigateAfterDemoAccountSignOut,
+  notifyDemoAccountSessionChanged,
+  NWN_ACCOUNT_SESSION_CHANGED_EVENT,
+  verifyDemoAccountSession,
+} from '@/lib/sitecoreai-udl-client';
+
+jest.mock('@/lib/sitecoreai-udl-client', () => ({
+  endDemoAccountSession: jest.fn(),
+  navigateAfterDemoAccountSignOut: jest.fn(),
+  notifyDemoAccountSessionChanged: jest.fn(),
+  NWN_ACCOUNT_SESSION_CHANGED_EVENT: 'nwn-account-session-changed',
+  verifyDemoAccountSession: jest.fn(),
+}));
+
+const mockEndDemoAccountSession = endDemoAccountSession as jest.MockedFunction<
+  typeof endDemoAccountSession
+>;
+const mockVerifyDemoAccountSession =
+  verifyDemoAccountSession as jest.MockedFunction<
+    typeof verifyDemoAccountSession
+  >;
+const mockNavigateAfterDemoAccountSignOut =
+  navigateAfterDemoAccountSignOut as jest.MockedFunction<
+    typeof navigateAfterDemoAccountSignOut
+  >;
+const mockNotifyDemoAccountSessionChanged =
+  notifyDemoAccountSessionChanged as jest.MockedFunction<
+    typeof notifyDemoAccountSessionChanged
+  >;
 
 jest.mock('@/components/content-sdk/CompatibleLink', () => ({
   CompatibleLink: ({
@@ -168,6 +205,16 @@ const makeIncompleteInternalProps = (): GlobalHeaderProps => {
 };
 
 describe('GlobalHeaderNwn account link fallbacks', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockVerifyDemoAccountSession.mockRejectedValue(
+      new Error('No signed demo session'),
+    );
+    mockEndDemoAccountSession.mockResolvedValue({
+      session: { ended: true },
+    });
+  });
+
   it('renders the authored logo at the enlarged responsive size', () => {
     const logoProps = makeProps(false);
     const item = logoProps.fields?.data?.item;
@@ -187,15 +234,15 @@ describe('GlobalHeaderNwn account link fallbacks', () => {
 
     expect(screen.getByTestId('header-logo-field')).toHaveAttribute(
       'data-wrapper-class',
-      'w-[11.4rem] sm:w-[14.4rem]',
+      'w-[9.5rem] sm:w-[14.4rem]',
     );
     expect(screen.getByTestId('header-logo-field')).toHaveAttribute(
       'data-sizes',
-      '(max-width: 640px) 182px, 230px',
+      '(max-width: 640px) 152px, 230px',
     );
   });
 
-  it('replaces authored external account destinations with local account journeys in normal mode', () => {
+  it('replaces authored external account destinations with local account journeys in normal mode', async () => {
     render(<GlobalHeaderNwn {...makeProps(false)} />);
 
     const utilityNavigation = screen.getByRole('navigation', {
@@ -209,7 +256,7 @@ describe('GlobalHeaderNwn account link fallbacks', () => {
       within(utilityNavigation).getByRole('link', { name: 'Contact Us' }),
     ).toHaveAttribute('href', '/contact-us');
     expect(
-      within(utilityNavigation).getByRole('link', { name: 'Sign In' }),
+      await within(utilityNavigation).findByRole('link', { name: 'Sign In' }),
     ).toHaveAttribute('href', '/account-billing/login');
     expect(
       within(utilityNavigation).getByRole('link', { name: 'Register' }),
@@ -264,5 +311,92 @@ describe('GlobalHeaderNwn account link fallbacks', () => {
     expect(
       within(utilityNavigation).getByRole('link', { name: 'Contact Us' }),
     ).toHaveAttribute('href', '/contact-us');
+  });
+
+  it('replaces account actions with sign-out for an identified user', async () => {
+    mockVerifyDemoAccountSession.mockResolvedValueOnce({
+      session: { verified: true, email: 'paperless@example.com' },
+    });
+
+    render(<GlobalHeaderNwn {...makeProps(false)} />);
+
+    const utilityNavigation = screen.getByRole('navigation', {
+      name: 'Utility navigation',
+    });
+    const signOut = await within(utilityNavigation).findByRole('button', {
+      name: 'Sign out',
+    });
+
+    expect(screen.getAllByRole('button', { name: 'Sign out' })).toHaveLength(1);
+    expect(
+      screen.queryByRole('link', { name: 'Access your account' }),
+    ).not.toBeInTheDocument();
+
+    expect(
+      within(utilityNavigation).queryByRole('link', { name: 'Sign In' }),
+    ).not.toBeInTheDocument();
+    expect(
+      within(utilityNavigation).queryByRole('link', { name: 'Register' }),
+    ).not.toBeInTheDocument();
+
+    fireEvent.click(signOut);
+
+    await waitFor(() =>
+      expect(mockEndDemoAccountSession).toHaveBeenCalledTimes(1),
+    );
+    expect(mockNotifyDemoAccountSessionChanged).toHaveBeenCalledWith(
+      'anonymous',
+    );
+    expect(mockNavigateAfterDemoAccountSignOut).toHaveBeenCalledWith('/');
+  });
+
+  it('updates the mounted header as soon as login identifies the visitor', async () => {
+    mockVerifyDemoAccountSession.mockReturnValueOnce(new Promise(() => {}));
+
+    render(<GlobalHeaderNwn {...makeProps(false)} />);
+
+    const utilityNavigation = screen.getByRole('navigation', {
+      name: 'Utility navigation',
+    });
+    expect(
+      within(utilityNavigation).queryByRole('link', { name: 'Sign In' }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('link', { name: 'Access your account' }),
+    ).not.toBeInTheDocument();
+
+    fireEvent(
+      window,
+      new CustomEvent(NWN_ACCOUNT_SESSION_CHANGED_EVENT, {
+        detail: 'identified',
+      }),
+    );
+
+    expect(
+      await within(utilityNavigation).findByRole('button', {
+        name: 'Sign out',
+      }),
+    ).toBeInTheDocument();
+  });
+
+  it('localizes sign-out and the hard-navigation destination', async () => {
+    mockVerifyDemoAccountSession.mockResolvedValueOnce({
+      session: { verified: true, email: 'paperless@example.com' },
+    });
+    const spanishProps = makeProps(false);
+    spanishProps.page = { ...spanishProps.page, locale: 'es-MX' };
+
+    render(<GlobalHeaderNwn {...spanishProps} />);
+
+    const signOut = await screen.findByRole('button', {
+      name: 'Cerrar sesión',
+    });
+    fireEvent.click(signOut);
+
+    await waitFor(() =>
+      expect(mockNavigateAfterDemoAccountSignOut).toHaveBeenCalledWith(
+        '/es-MX',
+      ),
+    );
   });
 });

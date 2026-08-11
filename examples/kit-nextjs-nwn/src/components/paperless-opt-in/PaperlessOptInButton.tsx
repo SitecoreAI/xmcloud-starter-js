@@ -28,9 +28,10 @@ const paperlessCopy = {
     pending: 'Saving preference…',
     pendingMessage:
       'We’re securely updating your billing preference. This can take up to a minute.',
-    success: 'Paperless billing is on',
-    successMessage: 'Your paperless billing preference has been saved.',
-    autoPay: 'Explore AutoPay',
+    success: 'Paperless preference saved',
+    successMessage:
+      'Make monthly payments one less thing to remember with Auto Pay.',
+    autoPay: 'Explore Auto Pay',
     returnHome: 'Return to homepage',
     error: 'We couldn’t update your preference. Please try again.',
   },
@@ -43,9 +44,10 @@ const paperlessCopy = {
     pending: 'Guardando preferencia…',
     pendingMessage:
       'Estamos actualizando de forma segura su preferencia de facturación. Esto puede tardar hasta un minuto.',
-    success: 'La facturación electrónica está activada',
-    successMessage: 'Se guardó su preferencia de facturación electrónica.',
-    autoPay: 'Explorar AutoPay',
+    success: 'Preferencia de facturación electrónica guardada',
+    successMessage:
+      'Con Auto Pay, sus pagos mensuales pueden ser una preocupación menos.',
+    autoPay: 'Explorar Auto Pay',
     returnHome: 'Volver a la página principal',
     error: 'No pudimos actualizar su preferencia. Inténtelo de nuevo.',
   },

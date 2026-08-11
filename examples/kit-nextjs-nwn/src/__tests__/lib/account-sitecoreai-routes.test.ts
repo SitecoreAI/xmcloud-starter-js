@@ -4,6 +4,7 @@ import { NextRequest } from 'next/server';
 
 import { POST as identify } from '@/app/api/account/identify/route';
 import { POST as optIn } from '@/app/api/account/paperless/route';
+import { POST as signOut } from '@/app/api/account/session/route';
 import {
   createAccountSessionToken,
   NWN_ACCOUNT_SESSION_COOKIE,
@@ -292,6 +293,23 @@ describe('NW Natural SitecoreAI account routes', () => {
     );
 
     expect(response.status).toBe(401);
+    expect(response.headers.get('set-cookie')).toContain(
+      `${NWN_ACCOUNT_SESSION_COOKIE}=`,
+    );
+    expect(response.headers.get('set-cookie')).toContain('Max-Age=0');
+  });
+
+  it('clears the signed account session on sign-out', async () => {
+    const response = await signOut(
+      new NextRequest('https://nwn.example/api/account/session', {
+        method: 'POST',
+        headers: browserHeaders,
+        body: JSON.stringify({ action: 'sign-out' }),
+      }),
+    );
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ session: { ended: true } });
     expect(response.headers.get('set-cookie')).toContain(
       `${NWN_ACCOUNT_SESSION_COOKIE}=`,
     );

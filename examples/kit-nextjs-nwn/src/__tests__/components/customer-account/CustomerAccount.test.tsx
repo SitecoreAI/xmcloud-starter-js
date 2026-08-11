@@ -8,8 +8,10 @@ import config from 'sitecore.config';
 import { Login, Register } from '@/components/customer-account/CustomerAccount';
 import type { CustomerAccountProps } from '@/components/customer-account/customer-account.props';
 import {
+  endDemoAccountSession,
   establishDemoAccountSession,
   establishDemoRegistrationSession,
+  notifyDemoAccountSessionChanged,
 } from '@/lib/sitecoreai-udl-client';
 
 jest.unmock('react-hook-form');
@@ -20,8 +22,10 @@ jest.mock('@sitecore-content-sdk/events', () => ({
 }));
 
 jest.mock('@/lib/sitecoreai-udl-client', () => ({
+  endDemoAccountSession: jest.fn(),
   establishDemoAccountSession: jest.fn(),
   establishDemoRegistrationSession: jest.fn(),
+  notifyDemoAccountSessionChanged: jest.fn(),
 }));
 
 jest.mock('lucide-react', () => ({
@@ -87,6 +91,13 @@ const mockEstablishDemoAccountSession =
 const mockEstablishDemoRegistrationSession =
   establishDemoRegistrationSession as jest.MockedFunction<
     typeof establishDemoRegistrationSession
+  >;
+const mockEndDemoAccountSession = endDemoAccountSession as jest.MockedFunction<
+  typeof endDemoAccountSession
+>;
+const mockNotifyDemoAccountSessionChanged =
+  notifyDemoAccountSessionChanged as jest.MockedFunction<
+    typeof notifyDemoAccountSessionChanged
   >;
 const mockConfig = config as unknown as {
   api: { edge: { clientContextId?: string } };
@@ -201,6 +212,9 @@ describe('CustomerAccount', () => {
     mockEstablishDemoRegistrationSession.mockResolvedValue({
       session: { established: true },
     });
+    mockEndDemoAccountSession.mockResolvedValue({
+      session: { ended: true },
+    });
     document.documentElement.lang = 'en-US';
   });
 
@@ -241,6 +255,9 @@ describe('CustomerAccount', () => {
       mockEstablishDemoAccountSession.mock.invocationCallOrder[0],
     ).toBeLessThan(mockIdentity.mock.invocationCallOrder[0]);
     expect(await screen.findByText('You’re signed in')).toBeInTheDocument();
+    expect(mockNotifyDemoAccountSessionChanged).toHaveBeenCalledWith(
+      'identified',
+    );
     expect(
       screen.getByRole('link', { name: 'Continue to your homepage' }),
     ).toHaveAttribute('href', '/');
@@ -484,8 +501,30 @@ describe('CustomerAccount', () => {
       expect(
         screen.queryByText('Your registration is complete'),
       ).not.toBeInTheDocument();
+      expect(mockEndDemoAccountSession).toHaveBeenCalledTimes(1);
     },
   );
+
+  it('rolls back the demo session when login identity fails', async () => {
+    mockIdentity.mockRejectedValueOnce(new Error('Identity unavailable'));
+    render(<Login {...loginProps} />);
+
+    fireEvent.change(screen.getByLabelText(/Email address/i), {
+      target: { value: 'taylor@example.com' },
+    });
+    fireEvent.change(screen.getByLabelText(/^Password/i), {
+      target: { value: 'anything' },
+    });
+    submitClosestForm('Sign in');
+
+    expect(
+      await screen.findByText(
+        'We could not complete your request. Please try again.',
+      ),
+    ).toBeInTheDocument();
+    expect(mockEndDemoAccountSession).toHaveBeenCalledTimes(1);
+    expect(mockNotifyDemoAccountSessionChanged).not.toHaveBeenCalled();
+  });
 
   it('uses localized Spanish registration success copy instead of authored fields', async () => {
     const spanishProps: CustomerAccountProps = {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import type { LinkField } from '@sitecore-content-sdk/nextjs';
@@ -14,6 +14,13 @@ import {
   getLocalizedPathname,
   type SupportedLocale,
 } from '@/i18n/locales';
+import {
+  endDemoAccountSession,
+  navigateAfterDemoAccountSignOut,
+  notifyDemoAccountSessionChanged,
+  NWN_ACCOUNT_SESSION_CHANGED_EVENT,
+  verifyDemoAccountSession,
+} from '@/lib/sitecoreai-udl-client';
 import { LocaleSelector } from './LocaleSelector';
 import type {
   GlobalHeaderProps,
@@ -39,6 +46,8 @@ const headerCopy = {
     gasOdor: 'Natural gas odor?',
     openMenu: 'Open navigation menu',
     closeMenu: 'Close navigation menu',
+    signOut: 'Sign out',
+    signingOut: 'Signing out…',
   },
   'es-MX': {
     home: 'Inicio de NW Natural',
@@ -52,6 +61,8 @@ const headerCopy = {
     gasOdor: '¿Huele a gas natural?',
     openMenu: 'Abrir menú de navegación',
     closeMenu: 'Cerrar menú de navegación',
+    signOut: 'Cerrar sesión',
+    signingOut: 'Cerrando sesión…',
   },
 } as const;
 
@@ -101,6 +112,16 @@ const isExternalNwnAccountValue = (value: string | undefined): boolean =>
         value,
       ),
   );
+
+const isInternalAccountPath = (
+  item: UtilityNavigationItemProps,
+  path: '/account-billing/login' | '/account-billing/register',
+) => {
+  const href = item.link?.jsonValue?.value?.href?.split(/[?#]/)[0];
+  if (!href) return false;
+
+  return href === path || href === `/es-MX${path}`;
+};
 
 const navItem = (
   text: string,
@@ -228,6 +249,10 @@ const hasRequiredUtilityItems = (
 export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
   const { fields, isPageEditing } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [accountSessionState, setAccountSessionState] = useState<
+    'checking' | 'anonymous' | 'identified'
+  >(isPageEditing ? 'anonymous' : 'checking');
+  const [isSigningOut, setIsSigningOut] = useState(false);
   const header = fields?.data?.item;
   const currentLocale = getLocaleOption(props.page.locale).code;
   const copy = headerCopy[currentLocale];
@@ -235,6 +260,42 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
     href: getLocalizedPathname(href, currentLocale),
     label: secondaryNavigationLabels[currentLocale][index],
   }));
+
+  useEffect(() => {
+    if (isPageEditing) {
+      setAccountSessionState('anonymous');
+      return;
+    }
+
+    let isActive = true;
+    const handleSessionChanged = (event: Event) => {
+      const state = (event as CustomEvent<'anonymous' | 'identified'>).detail;
+      if (state === 'anonymous' || state === 'identified') {
+        setAccountSessionState(state);
+      }
+    };
+
+    window.addEventListener(
+      NWN_ACCOUNT_SESSION_CHANGED_EVENT,
+      handleSessionChanged,
+    );
+
+    void verifyDemoAccountSession()
+      .then(() => {
+        if (isActive) setAccountSessionState('identified');
+      })
+      .catch(() => {
+        if (isActive) setAccountSessionState('anonymous');
+      });
+
+    return () => {
+      isActive = false;
+      window.removeEventListener(
+        NWN_ACCOUNT_SESSION_CHANGED_EVENT,
+        handleSessionChanged,
+      );
+    };
+  }, [isPageEditing]);
 
   if (!fields || !header) {
     return <NoDataFallback componentName="Global Header" />;
@@ -261,6 +322,22 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
       !hasRequiredUtilityItems(authoredUtilityItems))
       ? getFallbackUtilityItems(currentLocale)
       : authoredUtilityItems;
+  const hasAccountSession = accountSessionState === 'identified';
+  const isCheckingAccountSession = accountSessionState === 'checking';
+  const visibleUtilityItems = utilityItems.filter((item) => {
+    if (hasAccountSession) {
+      return !isInternalAccountPath(item, '/account-billing/register');
+    }
+
+    if (isCheckingAccountSession) {
+      return (
+        !isInternalAccountPath(item, '/account-billing/login') &&
+        !isInternalAccountPath(item, '/account-billing/register')
+      );
+    }
+
+    return true;
+  });
   const logoField = logo?.jsonValue;
   const hasLogo =
     isPageEditing ||
@@ -282,6 +359,25 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
   const displayHeaderContact = useFallbackHeaderContact
     ? getFallbackHeaderContact(currentLocale)
     : authoredHeaderContact;
+
+  const signOut = async () => {
+    if (isSigningOut) return;
+
+    setIsSigningOut(true);
+    try {
+      await endDemoAccountSession();
+      setAccountSessionState('anonymous');
+      setIsMenuOpen(false);
+      notifyDemoAccountSessionChanged('anonymous');
+      navigateAfterDemoAccountSignOut(getLocalizedPathname('/', currentLocale));
+    } catch {
+      setAccountSessionState('identified');
+    } finally {
+      setIsSigningOut(false);
+    }
+  };
+
+  const signOutLabel = isSigningOut ? copy.signingOut : copy.signOut;
 
   const localizeLinkField = <T extends LinkField | undefined>(
     linkField: T,
@@ -413,14 +509,26 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
         <div className="nwn-content-shell flex min-h-9 items-center justify-between gap-6 text-sm">
           <nav aria-label={copy.utilityNavigation}>
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
-              {utilityItems.map((item, index) => (
+              {visibleUtilityItems.map((item, index) => (
                 <li key={'nwn-utility-' + index}>
-                  <CompatibleLink
-                    field={localizeLinkField(item.link?.jsonValue)}
-                    editable={isPageEditing}
-                    prefetch={false}
-                    className="font-medium text-slate-600 hover:text-primary"
-                  />
+                  {hasAccountSession &&
+                  isInternalAccountPath(item, '/account-billing/login') ? (
+                    <button
+                      type="button"
+                      className="font-medium text-slate-600 hover:text-primary disabled:cursor-wait disabled:opacity-70"
+                      disabled={isSigningOut}
+                      onClick={signOut}
+                    >
+                      {signOutLabel}
+                    </button>
+                  ) : (
+                    <CompatibleLink
+                      field={localizeLinkField(item.link?.jsonValue)}
+                      editable={isPageEditing}
+                      prefetch={false}
+                      className="font-medium text-slate-600 hover:text-primary"
+                    />
+                  )}
                 </li>
               ))}
             </ul>
@@ -469,7 +577,9 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
 
         <div className="hidden shrink-0 items-center gap-3 lg:flex">
           <LocaleSelector locale={currentLocale} />
-          {displayHeaderContact && (
+          {!hasAccountSession &&
+          !isCheckingAccountSession &&
+          displayHeaderContact ? (
             <EditableButton
               buttonLink={localizeLinkField(displayHeaderContact)}
               isPageEditing={isPageEditing && !useFallbackHeaderContact}
@@ -477,7 +587,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
               className="min-h-11 border border-primary px-5 text-base"
               page={props.page}
             />
-          )}
+          ) : null}
         </div>
 
         <div className="ml-auto flex items-center gap-2 lg:hidden">
@@ -553,17 +663,29 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                 ))}
               </ul>
             </div>
-            {utilityItems.length > 0 && (
+            {visibleUtilityItems.length > 0 && (
               <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
-                {utilityItems.map((item, index) => (
+                {visibleUtilityItems.map((item, index) => (
                   <li key={'nwn-mobile-utility-' + index}>
-                    <CompatibleLink
-                      field={localizeLinkField(item.link?.jsonValue)}
-                      editable={isPageEditing}
-                      prefetch={false}
-                      className="text-sm font-semibold text-slate-600 hover:text-primary"
-                      onClick={() => setIsMenuOpen(false)}
-                    />
+                    {hasAccountSession &&
+                    isInternalAccountPath(item, '/account-billing/login') ? (
+                      <button
+                        type="button"
+                        className="text-sm font-semibold text-slate-600 hover:text-primary disabled:cursor-wait disabled:opacity-70"
+                        disabled={isSigningOut}
+                        onClick={signOut}
+                      >
+                        {signOutLabel}
+                      </button>
+                    ) : (
+                      <CompatibleLink
+                        field={localizeLinkField(item.link?.jsonValue)}
+                        editable={isPageEditing}
+                        prefetch={false}
+                        className="text-sm font-semibold text-slate-600 hover:text-primary"
+                        onClick={() => setIsMenuOpen(false)}
+                      />
+                    )}
                   </li>
                 ))}
               </ul>
@@ -584,7 +706,9 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                 <span className="text-primary">800-882-3377</span>
               </a>
             </div>
-            {displayHeaderContact && (
+            {!hasAccountSession &&
+            !isCheckingAccountSession &&
+            displayHeaderContact ? (
               <div className="mt-5">
                 <EditableButton
                   buttonLink={localizeLinkField(displayHeaderContact)}
@@ -594,7 +718,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                   page={props.page}
                 />
               </div>
-            )}
+            ) : null}
           </nav>
         </div>
       )}

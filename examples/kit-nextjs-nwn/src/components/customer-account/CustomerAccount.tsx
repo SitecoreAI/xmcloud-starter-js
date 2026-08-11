@@ -27,8 +27,10 @@ import {
   type SupportedLocale,
 } from '@/i18n/locales';
 import {
+  endDemoAccountSession,
   establishDemoAccountSession,
   establishDemoRegistrationSession,
+  notifyDemoAccountSessionChanged,
 } from '@/lib/sitecoreai-udl-client';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
@@ -393,9 +395,11 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
     setSubmissionError(undefined);
 
     if (shouldIdentifyVisitor(props)) {
+      let sessionEstablished = false;
       try {
         const normalizedEmail = normalizeEmail(values.email);
         await establishDemoAccountSession(normalizedEmail);
+        sessionEstablished = true;
         const identifiedEmail = await identifyVisitor(
           { email: normalizedEmail },
           'account_login',
@@ -403,7 +407,11 @@ export const Login: React.FC<CustomerAccountProps> = (props) => {
         if (identifiedEmail !== normalizedEmail) {
           throw new Error('The identified account did not match the session.');
         }
+        notifyDemoAccountSessionChanged('identified');
       } catch {
+        if (sessionEstablished) {
+          await endDemoAccountSession().catch(() => undefined);
+        }
         setSubmissionError(copy.requestError);
         return;
       }
@@ -597,6 +605,7 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
     setSubmissionError(undefined);
 
     if (shouldIdentifyVisitor(props)) {
+      let sessionEstablished = false;
       try {
         const profile = {
           email: normalizeEmail(values.email),
@@ -604,6 +613,7 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
           lastName: values.lastName.trim(),
         };
         await establishDemoRegistrationSession(profile);
+        sessionEstablished = true;
         const identifiedEmail = await identifyVisitor(
           profile,
           'account_registration',
@@ -611,7 +621,11 @@ export const Register: React.FC<CustomerAccountProps> = (props) => {
         if (identifiedEmail !== profile.email) {
           throw new Error('The identified account did not match the session.');
         }
+        notifyDemoAccountSessionChanged('identified');
       } catch {
+        if (sessionEstablished) {
+          await endDemoAccountSession().catch(() => undefined);
+        }
         setSubmissionError(copy.requestError);
         return;
       }

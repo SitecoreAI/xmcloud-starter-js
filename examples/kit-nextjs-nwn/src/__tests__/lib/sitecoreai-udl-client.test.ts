@@ -1,4 +1,5 @@
 import {
+  endDemoAccountSession,
   establishDemoAccountSession,
   establishDemoRegistrationSession,
   optInDemoAccountToPaperless,
@@ -133,6 +134,43 @@ describe('SitecoreAI UDL browser client', () => {
         body: JSON.stringify({ action: 'opt-in' }),
       }),
     );
+  });
+
+  it('ends the signed demo session through the same-origin route', async () => {
+    const clearEventQueue = jest.fn().mockResolvedValue(undefined);
+    (
+      window as unknown as {
+        scContentSDK?: {
+          analytics_core?: { options?: { contextId?: string } };
+          events?: { clearEventQueue?: () => Promise<void> };
+        };
+      }
+    ).scContentSDK = {
+      analytics_core: { options: { contextId: 'context-123' } },
+      events: { clearEventQueue },
+    };
+    document.cookie = 'sc_cid=browser-a; Path=/';
+    document.cookie = 'sc_cid_personalize=profile-a; Path=/';
+    document.cookie = 'sc_context-123=legacy-browser; Path=/';
+    document.cookie = 'sc_context-123_personalize=legacy-profile; Path=/';
+    fetchMock.mockResolvedValueOnce(response({ session: { ended: true } }));
+
+    await expect(endDemoAccountSession()).resolves.toEqual({
+      session: { ended: true },
+    });
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/account/session',
+      expect.objectContaining({
+        method: 'POST',
+        credentials: 'same-origin',
+        body: JSON.stringify({ action: 'sign-out' }),
+      }),
+    );
+    expect(clearEventQueue).toHaveBeenCalledTimes(1);
+    expect(document.cookie).not.toContain('sc_cid=');
+    expect(document.cookie).not.toContain('sc_cid_personalize=');
+    expect(document.cookie).not.toContain('sc_context-123=');
+    expect(document.cookie).not.toContain('sc_context-123_personalize=');
   });
 
   it('rejects an opt-in response that does not confirm the profile update', async () => {

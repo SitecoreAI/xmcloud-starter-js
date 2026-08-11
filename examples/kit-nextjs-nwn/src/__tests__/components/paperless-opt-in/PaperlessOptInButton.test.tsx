@@ -93,13 +93,15 @@ describe('PaperlessOptInButton', () => {
     });
 
     expect(
-      await screen.findByRole('button', { name: 'Paperless billing is on' }),
+      await screen.findByRole('button', {
+        name: 'Paperless preference saved',
+      }),
     ).toBeDisabled();
     expect(screen.getByRole('status')).toHaveTextContent(
-      'Your paperless billing preference has been saved.',
+      'Make monthly payments one less thing to remember with Auto Pay.',
     );
     expect(
-      screen.getByRole('link', { name: 'Explore AutoPay' }),
+      screen.getByRole('link', { name: 'Explore Auto Pay' }),
     ).toHaveAttribute('href', '/account-billing/pay-my-bill#payment-options');
     expect(mockIdentity).toHaveBeenCalledWith({
       channel: 'WEB',
@@ -119,7 +121,7 @@ describe('PaperlessOptInButton', () => {
     ).toBeLessThan(mockIdentity.mock.invocationCallOrder[0]);
 
     fireEvent.click(
-      screen.getByRole('button', { name: 'Paperless billing is on' }),
+      screen.getByRole('button', { name: 'Paperless preference saved' }),
     );
     expect(mockVerifyPaperlessOptInSession).toHaveBeenCalledTimes(1);
     expect(mockOptInDemoAccountToPaperless).toHaveBeenCalledTimes(1);
@@ -139,7 +141,9 @@ describe('PaperlessOptInButton', () => {
       }),
     );
 
-    await screen.findByRole('button', { name: 'Paperless billing is on' });
+    await screen.findByRole('button', {
+      name: 'Paperless preference saved',
+    });
     expect(mockIdentity).toHaveBeenCalledWith(
       expect.objectContaining({
         identifiers: [{ id: demoIdentity, provider: 'email' }],
@@ -190,14 +194,14 @@ describe('PaperlessOptInButton', () => {
 
     expect(
       await screen.findByRole('button', {
-        name: 'La facturación electrónica está activada',
+        name: 'Preferencia de facturación electrónica guardada',
       }),
     ).toBeDisabled();
     expect(screen.getByRole('status')).toHaveTextContent(
-      'Se guardó su preferencia de facturación electrónica.',
+      'Con Auto Pay, sus pagos mensuales pueden ser una preocupación menos.',
     );
     expect(
-      screen.getByRole('link', { name: 'Explorar AutoPay' }),
+      screen.getByRole('link', { name: 'Explorar Auto Pay' }),
     ).toHaveAttribute(
       'href',
       '/es-MX/account-billing/pay-my-bill#payment-options',
@@ -264,7 +268,7 @@ describe('PaperlessOptInButton', () => {
     );
     expect(
       await screen.findByRole('button', {
-        name: 'La facturación electrónica está activada',
+        name: 'Preferencia de facturación electrónica guardada',
       }),
     ).toBeDisabled();
   });
