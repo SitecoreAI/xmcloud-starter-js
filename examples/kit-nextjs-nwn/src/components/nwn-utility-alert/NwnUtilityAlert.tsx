@@ -59,12 +59,14 @@ export const Default: React.FC<NwnUtilityAlertProps> = (props) => {
   const tone = getTone(toneField?.value);
   const styles = toneStyles[tone];
   const Icon = styles.Icon;
+  const hasPrimaryLink = Boolean(primaryLink?.value?.href);
+  const hasSecondaryLink = Boolean(secondaryLink?.value?.href);
   const hasContent = Boolean(
     eyebrow?.value ||
       title?.value ||
       message?.value ||
-      primaryLink?.value?.href ||
-      secondaryLink?.value?.href,
+      hasPrimaryLink ||
+      hasSecondaryLink,
   );
 
   if (!hasContent && !isPageEditing) return null;
@@ -119,7 +121,7 @@ export const Default: React.FC<NwnUtilityAlertProps> = (props) => {
         </div>
 
         <div className="col-span-2 flex w-full flex-col gap-3 sm:flex-row lg:w-auto lg:shrink-0 lg:justify-end">
-          {primaryLink && (
+          {primaryLink && hasPrimaryLink && (
             <EditableButton
               buttonLink={primaryLink}
               isPageEditing={isPageEditing}
@@ -128,7 +130,7 @@ export const Default: React.FC<NwnUtilityAlertProps> = (props) => {
               page={props.page}
             />
           )}
-          {secondaryLink && (
+          {secondaryLink && hasSecondaryLink && (
             <EditableButton
               buttonLink={secondaryLink}
               isPageEditing={isPageEditing}

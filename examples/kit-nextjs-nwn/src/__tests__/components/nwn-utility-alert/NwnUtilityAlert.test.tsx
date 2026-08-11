@@ -97,6 +97,23 @@ describe('NwnUtilityAlert', () => {
     expect(shell).not.toHaveClass('lg:items-start');
   });
 
+  it('does not render an empty secondary link as a button', () => {
+    render(
+      <NwnUtilityAlert
+        {...props}
+        fields={{
+          ...props.fields,
+          secondaryLink: { value: {} },
+        }}
+      />,
+    );
+
+    expect(screen.getAllByRole('link')).toHaveLength(1);
+    expect(
+      screen.getByRole('link', { name: 'Call 800-882-3377' }),
+    ).toBeInTheDocument();
+  });
+
   it('does not render an empty alert outside editing mode', () => {
     const { container } = render(
       <NwnUtilityAlert {...props} fields={{ tone: { value: 'service' } }} />,
