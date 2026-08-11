@@ -44,6 +44,7 @@ const accountCopy = {
     requestError: 'We could not complete your request. Please try again.',
     emailRequired: 'Email address is required.',
     emailInvalid: 'Please enter a valid email address.',
+    emailTooLong: 'Email address must be 254 characters or fewer.',
     passwordRequired: 'Password is required.',
     firstNameRequired: 'First name is required.',
     firstNameTooLong: 'First name must be 100 characters or fewer.',
@@ -93,6 +94,7 @@ const accountCopy = {
     requestError: 'No pudimos completar su solicitud. Inténtelo de nuevo.',
     emailRequired: 'El correo electrónico es obligatorio.',
     emailInvalid: 'Ingrese un correo electrónico válido.',
+    emailTooLong: 'El correo electrónico debe tener 254 caracteres o menos.',
     passwordRequired: 'La contraseña es obligatoria.',
     firstNameRequired: 'El nombre es obligatorio.',
     firstNameTooLong: 'El nombre debe tener 100 caracteres o menos.',
@@ -167,7 +169,7 @@ const createRegistrationSchema = (copy: AccountCopy) =>
       .string()
       .trim()
       .min(1, copy.emailRequired)
-      .email(copy.emailInvalid),
+      .max(254, copy.emailTooLong),
     password: z.string(),
     confirmPassword: z.string(),
     phone: z.string(),
@@ -243,10 +245,11 @@ const identifyVisitor = async (
   }
 
   const normalizedEmail = normalizeEmail(values.email);
+  const isValidEmail = z.string().email().safeParse(normalizedEmail).success;
   const response = await identity({
     channel: 'WEB',
     currency: 'USD',
-    email: normalizedEmail,
+    ...(isValidEmail ? { email: normalizedEmail } : {}),
     ...(values.firstName ? { firstName: values.firstName.trim() } : {}),
     ...(values.lastName ? { lastName: values.lastName.trim() } : {}),
     identifiers: [

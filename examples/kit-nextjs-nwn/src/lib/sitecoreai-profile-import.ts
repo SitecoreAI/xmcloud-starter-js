@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { z } from 'zod';
 
 export type SitecoreAiProfileRecord = {
   recordType: 'profile';
@@ -374,12 +375,13 @@ export const initializeNewSitecoreAiProfile = async (profile: {
   lastName: string;
 }): Promise<NewProfileInitializationResult> => {
   const email = normalizeEmail(profile.email);
+  const isValidEmail = z.string().email().safeParse(email).success;
   const [resolvedProfile] = await importSitecoreAiProfiles([
     {
       recordType: 'profile',
       identifiers: [emailIdentifier(email)],
       contact: {
-        email,
+        ...(isValidEmail ? { email } : {}),
         firstName: profile.firstName.trim(),
         lastName: profile.lastName.trim(),
       },

@@ -125,6 +125,29 @@ describe('PaperlessOptInButton', () => {
     expect(mockOptInDemoAccountToPaperless).toHaveBeenCalledTimes(1);
   });
 
+  it('uses a non-email demo identity only as an identifier', async () => {
+    const demoIdentity = 'nwn-demo-thomas-lin';
+    mockOptInDemoAccountToPaperless.mockResolvedValueOnce({
+      session: { verified: true, email: demoIdentity },
+      paperless: { updated: true, value: true },
+    });
+
+    render(<PaperlessOptInButton locale="en" />);
+    fireEvent.click(
+      await screen.findByRole('button', {
+        name: 'Choose paperless billing',
+      }),
+    );
+
+    await screen.findByRole('button', { name: 'Paperless billing is on' });
+    expect(mockIdentity).toHaveBeenCalledWith(
+      expect.objectContaining({
+        identifiers: [{ id: demoIdentity, provider: 'email' }],
+      }),
+    );
+    expect(mockIdentity.mock.calls[0][0]).not.toHaveProperty('email');
+  });
+
   it('renders no CTA when the visitor has no valid signed session', async () => {
     mockVerifyPaperlessOptInSession.mockRejectedValueOnce(
       new SitecoreAiUdlClientError('Sign in required', 401),

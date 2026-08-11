@@ -22,23 +22,19 @@ const getSessionSecret = () => {
 const sign = (payload: string) =>
   createHmac('sha256', getSessionSecret()).update(payload).digest('base64url');
 
-const demoRegistrationEmailSchema = z
+const demoRegistrationIdentitySchema = z
   .string()
   .trim()
-  .email()
+  .min(1)
   .max(254)
-  .transform((email) => email.toLowerCase())
-  .refine((email) => {
-    const domain = email.split('@').at(-1);
-    return ['example.com', 'example.org', 'example.net'].includes(domain || '');
-  });
+  .transform((identity) => identity.toLowerCase());
 
-/** Keeps public demo registrations inside reserved, non-deliverable domains. */
-export const isDemoRegistrationEmail = (email: string) =>
-  demoRegistrationEmailSchema.safeParse(email).success;
+/** Accepts any nonempty identity string for this registration-only demo. */
+export const isDemoRegistrationIdentity = (identity: string) =>
+  demoRegistrationIdentitySchema.safeParse(identity).success;
 
 const isSessionEligibleDemoAccount = (email: string) =>
-  isAllowedDemoAccount(email) || isDemoRegistrationEmail(email);
+  isAllowedDemoAccount(email) || isDemoRegistrationIdentity(email);
 
 export const createAccountSessionToken = (email: string, now = Date.now()) => {
   const normalizedEmail = email.trim().toLowerCase();

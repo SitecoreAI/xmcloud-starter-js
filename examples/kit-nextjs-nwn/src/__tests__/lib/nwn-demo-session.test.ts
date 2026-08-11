@@ -8,7 +8,7 @@ import {
 } from '@/lib/nwn-demo-session';
 
 const EMAIL = 'demo@example.com';
-const REGISTERED_EMAIL = 'taylor.morgan@example.com';
+const REGISTERED_EMAIL = 'thomas.lin@sitecore.com';
 const NOW = 1_800_000_000_000;
 
 const request = (
@@ -48,16 +48,15 @@ describe('NW Natural demo account session', () => {
   });
 
   it.each([
-    'taylor.morgan@example.com',
-    'taylor.morgan@example.org',
-    'taylor.morgan@example.net',
+    ['  Thomas.Lin@Sitecore.COM ', REGISTERED_EMAIL],
+    ['  NWN-DEMO-THOMAS-LIN ', 'nwn-demo-thomas-lin'],
   ])(
-    'round-trips a normalized reserved-domain registration email: %s',
-    (email) => {
-      const token = createAccountSessionToken(`  ${email.toUpperCase()} `, NOW);
+    'round-trips a normalized registration identity: %s',
+    (input, identity) => {
+      const token = createAccountSessionToken(input, NOW);
 
       expect(readAccountSessionToken(token, NOW + 1)).toEqual({
-        email,
+        email: identity,
         expiresAt: NOW + NWN_ACCOUNT_SESSION_MAX_AGE * 1000,
       });
     },
@@ -80,13 +79,13 @@ describe('NW Natural demo account session', () => {
     );
   });
 
-  it('rejects malformed and non-demo-domain emails and invalid timestamps', () => {
-    expect(() => createAccountSessionToken('not-an-email', NOW)).toThrow(
+  it('rejects empty and overlong identities and invalid timestamps', () => {
+    expect(() => createAccountSessionToken('   ', NOW)).toThrow(
       'session is invalid',
     );
-    expect(() =>
-      createAccountSessionToken('taylor.morgan@nwnatural.com', NOW),
-    ).toThrow('session is invalid');
+    expect(() => createAccountSessionToken('x'.repeat(255), NOW)).toThrow(
+      'session is invalid',
+    );
     expect(() => createAccountSessionToken(EMAIL, Number.NaN)).toThrow(
       'session is invalid',
     );

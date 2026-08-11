@@ -4,7 +4,7 @@ import { z } from 'zod';
 import {
   createAccountSessionToken,
   isAllowedDemoAccount,
-  isDemoRegistrationEmail,
+  isDemoRegistrationIdentity,
   isSameOriginRequest,
   NWN_ACCOUNT_SESSION_COOKIE,
   NWN_ACCOUNT_SESSION_MAX_AGE,
@@ -20,7 +20,7 @@ const requestSchema = z.discriminatedUnion('action', [
   }),
   z.object({
     action: z.literal('registration'),
-    email: z.string().trim().email().max(254),
+    email: z.string().trim().min(1).max(254),
     firstName: z.string().trim().min(1).max(100),
     lastName: z.string().trim().min(1).max(100),
   }),
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  if (!isDemoRegistrationEmail(email)) {
+  if (!isDemoRegistrationIdentity(email)) {
     return json({ error: 'Account unavailable' }, 403);
   }
 

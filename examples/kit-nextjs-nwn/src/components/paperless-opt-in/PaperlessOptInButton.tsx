@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { identity } from '@sitecore-content-sdk/events';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -115,11 +116,12 @@ export const PaperlessOptInButton = ({
 
     try {
       const { session } = await optInDemoAccountToPaperless();
+      const isValidEmail = z.string().email().safeParse(session.email).success;
 
       const identityResponse = await identity({
         channel: 'WEB',
         currency: 'USD',
-        email: session.email,
+        ...(isValidEmail ? { email: session.email } : {}),
         identifiers: [
           {
             id: session.email,

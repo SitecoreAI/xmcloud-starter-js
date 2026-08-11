@@ -8,7 +8,7 @@ import {
 
 const fetchMock = jest.fn() as jest.MockedFunction<typeof fetch>;
 const originalFetch = global.fetch;
-const REGISTERED_EMAIL = 'taylor.morgan@example.com';
+const REGISTERED_EMAIL = 'thomas.lin@sitecore.com';
 const response = (body: unknown, status = 200) =>
   ({
     ok: status >= 200 && status < 300,
@@ -60,8 +60,8 @@ describe('SitecoreAI UDL browser client', () => {
     await expect(
       establishDemoRegistrationSession({
         email: REGISTERED_EMAIL,
-        firstName: 'Taylor',
-        lastName: 'Morgan',
+        firstName: 'Thomas',
+        lastName: 'Lin',
       }),
     ).resolves.toEqual({
       session: { established: true },
@@ -71,8 +71,8 @@ describe('SitecoreAI UDL browser client', () => {
     expect(JSON.parse(String(init?.body))).toEqual({
       action: 'registration',
       email: REGISTERED_EMAIL,
-      firstName: 'Taylor',
-      lastName: 'Morgan',
+      firstName: 'Thomas',
+      lastName: 'Lin',
     });
     expect(timeoutSpy).toHaveBeenCalledWith(expect.any(Function), 290_000);
   });

@@ -178,6 +178,25 @@ describe('SitecoreAI Profile Import', () => {
     expect(await uploadedRecord(0)).not.toHaveProperty('extensions');
   });
 
+  it('uses a non-email demo value only as an identity identifier', async () => {
+    mockCompletedBatch(BATCH_ONE, 'UPDATED');
+
+    await initializeNewSitecoreAiProfile({
+      email: '  NWN-DEMO-THOMAS-LIN ',
+      firstName: ' Thomas ',
+      lastName: ' Lin ',
+    });
+
+    expect(await uploadedRecord(0)).toEqual({
+      recordType: 'profile',
+      identifiers: [{ provider: 'email', id: 'nwn-demo-thomas-lin' }],
+      contact: {
+        firstName: 'Thomas',
+        lastName: 'Lin',
+      },
+    });
+  });
+
   it('imports paperless true using the normalized email identifier', async () => {
     mockCompletedBatch(BATCH_ONE, 'UPDATED');
 

@@ -32,7 +32,7 @@ const browserHeaders = {
   'Sec-Fetch-Site': 'same-origin',
   'Content-Type': 'application/json',
 };
-const REGISTERED_EMAIL = 'taylor.morgan@example.com';
+const REGISTERED_EMAIL = 'thomas.lin@sitecore.com';
 
 const identifyRequest = (
   body: Record<string, unknown>,
@@ -105,9 +105,9 @@ describe('NW Natural SitecoreAI account routes', () => {
     const response = await identify(
       identifyRequest({
         action: 'registration',
-        email: '  Taylor.Morgan@Example.com ',
-        firstName: ' Taylor ',
-        lastName: ' Morgan ',
+        email: '  Thomas.Lin@Sitecore.com ',
+        firstName: ' Thomas ',
+        lastName: ' Lin ',
       }),
     );
 
@@ -121,8 +121,26 @@ describe('NW Natural SitecoreAI account routes', () => {
     expect(response.headers.get('set-cookie')).toContain('Max-Age=3600');
     expect(mockInitializeNewSitecoreAiProfile).toHaveBeenCalledWith({
       email: REGISTERED_EMAIL,
-      firstName: 'Taylor',
-      lastName: 'Morgan',
+      firstName: 'Thomas',
+      lastName: 'Lin',
+    });
+  });
+
+  it('accepts a non-email demo identity for registration', async () => {
+    const response = await identify(
+      identifyRequest({
+        action: 'registration',
+        email: '  NWN-DEMO-THOMAS-LIN ',
+        firstName: 'Thomas',
+        lastName: 'Lin',
+      }),
+    );
+
+    expect(response.status).toBe(200);
+    expect(mockInitializeNewSitecoreAiProfile).toHaveBeenCalledWith({
+      email: 'nwn-demo-thomas-lin',
+      firstName: 'Thomas',
+      lastName: 'Lin',
     });
   });
 
@@ -137,8 +155,8 @@ describe('NW Natural SitecoreAI account routes', () => {
       identifyRequest({
         action: 'registration',
         email: REGISTERED_EMAIL,
-        firstName: 'Taylor',
-        lastName: 'Morgan',
+        firstName: 'Thomas',
+        lastName: 'Lin',
       }),
     );
 
@@ -149,26 +167,20 @@ describe('NW Natural SitecoreAI account routes', () => {
     );
   });
 
-  it('rejects malformed and non-demo-domain emails for registration', async () => {
-    const malformedResponse = await identify(
+  it.each([
+    ['blank', '   '],
+    ['overlong', 'x'.repeat(255)],
+  ])('rejects a %s registration identity', async (_case, email) => {
+    const response = await identify(
       identifyRequest({
         action: 'registration',
-        email: 'not-an-email',
-        firstName: 'Taylor',
-        lastName: 'Morgan',
-      }),
-    );
-    const nonDemoDomainResponse = await identify(
-      identifyRequest({
-        action: 'registration',
-        email: 'taylor.morgan@nwnatural.com',
-        firstName: 'Taylor',
-        lastName: 'Morgan',
+        email,
+        firstName: 'Thomas',
+        lastName: 'Lin',
       }),
     );
 
-    expect(malformedResponse.status).toBe(400);
-    expect(nonDemoDomainResponse.status).toBe(403);
+    expect(response.status).toBe(400);
     expect(mockInitializeNewSitecoreAiProfile).not.toHaveBeenCalled();
   });
 
@@ -181,8 +193,8 @@ describe('NW Natural SitecoreAI account routes', () => {
       identifyRequest({
         action: 'registration',
         email: REGISTERED_EMAIL,
-        firstName: 'Taylor',
-        lastName: 'Morgan',
+        firstName: 'Thomas',
+        lastName: 'Lin',
       }),
     );
 

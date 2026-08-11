@@ -278,13 +278,13 @@ describe('CustomerAccount', () => {
     expect(address).not.toBeRequired();
 
     fireEvent.change(screen.getByLabelText(/First name/i), {
-      target: { value: '  Taylor  ' },
+      target: { value: '  Thomas  ' },
     });
     fireEvent.change(screen.getByLabelText(/Last name/i), {
-      target: { value: '  Morgan  ' },
+      target: { value: '  Lin  ' },
     });
     fireEvent.change(screen.getByLabelText(/Email address/i), {
-      target: { value: '  Taylor.Morgan@Example.COM  ' },
+      target: { value: '  Thomas.Lin@Sitecore.COM  ' },
     });
     submitClosestForm('Register');
 
@@ -292,12 +292,12 @@ describe('CustomerAccount', () => {
     expect(mockIdentity).toHaveBeenCalledWith({
       channel: 'WEB',
       currency: 'USD',
-      email: 'taylor.morgan@example.com',
-      firstName: 'Taylor',
-      lastName: 'Morgan',
+      email: 'thomas.lin@sitecore.com',
+      firstName: 'Thomas',
+      lastName: 'Lin',
       identifiers: [
         {
-          id: 'taylor.morgan@example.com',
+          id: 'thomas.lin@sitecore.com',
           provider: 'email',
         },
       ],
@@ -315,9 +315,9 @@ describe('CustomerAccount', () => {
     expect(payload).not.toHaveProperty('phone');
     expect(payload).not.toHaveProperty('address');
     expect(mockEstablishDemoRegistrationSession).toHaveBeenCalledWith({
-      email: 'taylor.morgan@example.com',
-      firstName: 'Taylor',
-      lastName: 'Morgan',
+      email: 'thomas.lin@sitecore.com',
+      firstName: 'Thomas',
+      lastName: 'Lin',
     });
     expect(
       mockEstablishDemoRegistrationSession.mock.invocationCallOrder[0],
@@ -337,6 +337,69 @@ describe('CustomerAccount', () => {
       screen.getByRole('link', { name: 'Continue to your homepage' }),
     ).toHaveAttribute('href', '/');
   });
+
+  it('accepts a non-email demo identity for registration', async () => {
+    render(<Register {...registrationProps} />);
+    fireEvent.change(screen.getByLabelText(/First name/i), {
+      target: { value: 'Thomas' },
+    });
+    fireEvent.change(screen.getByLabelText(/Last name/i), {
+      target: { value: 'Lin' },
+    });
+    fireEvent.change(screen.getByLabelText(/Email address/i), {
+      target: { value: '  NWN-DEMO-THOMAS-LIN  ' },
+    });
+    submitClosestForm('Register');
+
+    await waitFor(() => expect(mockIdentity).toHaveBeenCalledTimes(1));
+    expect(mockEstablishDemoRegistrationSession).toHaveBeenCalledWith({
+      email: 'nwn-demo-thomas-lin',
+      firstName: 'Thomas',
+      lastName: 'Lin',
+    });
+    expect(mockIdentity).toHaveBeenCalledWith(
+      expect.objectContaining({
+        identifiers: [
+          {
+            id: 'nwn-demo-thomas-lin',
+            provider: 'email',
+          },
+        ],
+      }),
+    );
+    expect(mockIdentity.mock.calls[0][0]).not.toHaveProperty('email');
+    expect(
+      await screen.findByText('Your registration is complete'),
+    ).toBeInTheDocument();
+  });
+
+  it.each([
+    ['whitespace-only', '   ', 'Email address is required.'],
+    [
+      'overlong',
+      'x'.repeat(255),
+      'Email address must be 254 characters or fewer.',
+    ],
+  ])(
+    'rejects a %s registration identity before making requests',
+    async (_case, email, expectedMessage) => {
+      render(<Register {...registrationProps} />);
+      fireEvent.change(screen.getByLabelText(/First name/i), {
+        target: { value: 'Thomas' },
+      });
+      fireEvent.change(screen.getByLabelText(/Last name/i), {
+        target: { value: 'Lin' },
+      });
+      fireEvent.change(screen.getByLabelText(/Email address/i), {
+        target: { value: email },
+      });
+      submitClosestForm('Register');
+
+      expect(await screen.findByText(expectedMessage)).toBeInTheDocument();
+      expect(mockEstablishDemoRegistrationSession).not.toHaveBeenCalled();
+      expect(mockIdentity).not.toHaveBeenCalled();
+    },
+  );
 
   it('places the service address heading below its section divider', () => {
     render(<Register {...registrationProps} />);
@@ -361,13 +424,13 @@ describe('CustomerAccount', () => {
 
     render(<Register {...registrationProps} />);
     fireEvent.change(screen.getByLabelText(/First name/i), {
-      target: { value: 'Taylor' },
+      target: { value: 'Thomas' },
     });
     fireEvent.change(screen.getByLabelText(/Last name/i), {
-      target: { value: 'Morgan' },
+      target: { value: 'Lin' },
     });
     fireEvent.change(screen.getByLabelText(/Email address/i), {
-      target: { value: 'taylor.morgan@example.com' },
+      target: { value: 'thomas.lin@sitecore.com' },
     });
     submitClosestForm('Register');
 
@@ -399,13 +462,13 @@ describe('CustomerAccount', () => {
 
       render(<Register {...registrationProps} />);
       fireEvent.change(screen.getByLabelText(/First name/i), {
-        target: { value: 'Taylor' },
+        target: { value: 'Thomas' },
       });
       fireEvent.change(screen.getByLabelText(/Last name/i), {
-        target: { value: 'Morgan' },
+        target: { value: 'Lin' },
       });
       fireEvent.change(screen.getByLabelText(/Email address/i), {
-        target: { value: 'taylor.morgan@example.com' },
+        target: { value: 'thomas.lin@sitecore.com' },
       });
       submitClosestForm('Register');
 
