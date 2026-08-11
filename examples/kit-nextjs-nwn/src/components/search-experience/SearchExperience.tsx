@@ -569,28 +569,23 @@ const SearchResultCard = ({
   const title = result.title || copy.viewPage;
 
   return (
-    <article className="group flex h-full flex-col border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-cyan-400 hover:shadow-md focus-within:border-cyan-500 focus-within:shadow-md">
-      <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#007b98]">
-        {section}
-      </p>
-      <h3 className="mt-2 font-heading text-xl font-semibold leading-snug text-slate-900 sm:text-2xl">
-        {result.href ? (
-          <a
-            href={result.href}
-            className="outline-none focus-visible:underline focus-visible:decoration-cyan-500 focus-visible:decoration-2 focus-visible:underline-offset-4"
-          >
-            {title}
-          </a>
-        ) : (
-          title
-        )}
-      </h3>
-      {result.description && (
-        <p className="mt-3 flex-1 text-base leading-7 text-slate-600">
-          {result.description}
+    <a
+      href={result.href}
+      aria-label={title}
+      className="group block h-full outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-4"
+    >
+      <article className="flex h-full flex-col border border-slate-200 bg-white p-6 transition-all group-hover:-translate-y-0.5 group-hover:border-cyan-400 group-hover:shadow-md group-focus-visible:border-cyan-500 group-focus-visible:shadow-md">
+        <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#007b98]">
+          {section}
         </p>
-      )}
-      {result.href && (
+        <h3 className="mt-2 font-heading text-xl font-semibold leading-snug text-slate-900 sm:text-2xl">
+          {title}
+        </h3>
+        {result.description && (
+          <p className="mt-3 flex-1 text-base leading-7 text-slate-600">
+            {result.description}
+          </p>
+        )}
         <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#006f8c] transition-colors group-hover:text-[#004b60]">
           {copy.viewPage}
           <ArrowRight
@@ -598,8 +593,8 @@ const SearchResultCard = ({
             aria-hidden="true"
           />
         </span>
-      )}
-    </article>
+      </article>
+    </a>
   );
 };
 
@@ -905,30 +900,31 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
             <ol className="mt-6 grid gap-4 md:grid-cols-2">
               {popularPages.map((page) => (
                 <li key={page.path}>
-                  <article className="group flex h-full flex-col border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-cyan-400 hover:shadow-md focus-within:border-cyan-500 focus-within:shadow-md">
-                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#007b98]">
-                      {getSectionLabel(page.path, locale)}
-                    </p>
-                    <h3 className="mt-2 font-heading text-xl font-semibold leading-snug text-slate-900 sm:text-2xl">
-                      <Link
-                        href={getLocalizedPathname(page.path, locale)}
-                        prefetch={false}
-                        className="outline-none focus-visible:underline focus-visible:decoration-cyan-500 focus-visible:decoration-2 focus-visible:underline-offset-4"
-                      >
+                  <Link
+                    href={getLocalizedPathname(page.path, locale)}
+                    prefetch={false}
+                    aria-label={page.title}
+                    className="group block h-full outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-4"
+                  >
+                    <article className="flex h-full flex-col border border-slate-200 bg-white p-6 transition-all group-hover:-translate-y-0.5 group-hover:border-cyan-400 group-hover:shadow-md group-focus-visible:border-cyan-500 group-focus-visible:shadow-md">
+                      <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#007b98]">
+                        {getSectionLabel(page.path, locale)}
+                      </p>
+                      <h3 className="mt-2 font-heading text-xl font-semibold leading-snug text-slate-900 sm:text-2xl">
                         {page.title}
-                      </Link>
-                    </h3>
-                    <p className="mt-3 flex-1 text-base leading-7 text-slate-600">
-                      {page.description}
-                    </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#006f8c] transition-colors group-hover:text-[#004b60]">
-                      {copy.viewPage}
-                      <ArrowRight
-                        className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                        aria-hidden="true"
-                      />
-                    </span>
-                  </article>
+                      </h3>
+                      <p className="mt-3 flex-1 text-base leading-7 text-slate-600">
+                        {page.description}
+                      </p>
+                      <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#006f8c] transition-colors group-hover:text-[#004b60]">
+                        {copy.viewPage}
+                        <ArrowRight
+                          className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </article>
+                  </Link>
                 </li>
               ))}
             </ol>

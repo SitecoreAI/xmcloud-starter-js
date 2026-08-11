@@ -123,6 +123,10 @@ describe('SearchExperience', () => {
     expect(
       screen.getByText('Review convenient ways to pay your SiEnergy bill.'),
     ).toBeInTheDocument();
+    expect(screen.getByText('View page').closest('a')).toHaveAttribute(
+      'href',
+      'https://sienergy-sitecoreai-demo.vercel.app/payment-options-locations',
+    );
   });
 
   it('submits and clears encoded q state accessibly', () => {

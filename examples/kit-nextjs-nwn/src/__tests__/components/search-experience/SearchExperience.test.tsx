@@ -134,6 +134,10 @@ describe('SearchExperience', () => {
         'Find help paying your bill and flexible payment options.',
       ),
     ).toBeInTheDocument();
+    expect(screen.getByText('View page').closest('a')).toHaveAttribute(
+      'href',
+      'https://nwn-sitecoreai-demo.vercel.app/account-billing/payment-assistance',
+    );
   });
 
   it('submits and clears queries while keeping URL state accessible', () => {

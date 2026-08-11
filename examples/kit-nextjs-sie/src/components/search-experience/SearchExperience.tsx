@@ -629,32 +629,33 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
             <ol className="mt-6 grid gap-4 md:grid-cols-2">
               {displayedPages.map((page) => (
                 <li key={page.id}>
-                  <article className="group relative flex h-full flex-col border border-[#d7d6d7] bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-md focus-within:border-primary focus-within:shadow-md">
-                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-primary">
-                      {getSectionLabel(page.path)}
-                    </p>
-                    <h3 className="mt-2 font-heading text-xl font-semibold leading-snug text-[#414042] sm:text-2xl">
-                      <Link
-                        href={page.path}
-                        prefetch={false}
-                        className="outline-none after:absolute after:inset-0 focus-visible:underline focus-visible:decoration-primary focus-visible:decoration-2 focus-visible:underline-offset-4"
-                      >
-                        {page.title}
-                      </Link>
-                    </h3>
-                    {page.description && (
-                      <p className="mt-3 flex-1 text-base leading-7 text-[#737076]">
-                        {page.description}
+                  <Link
+                    href={page.path}
+                    prefetch={false}
+                    aria-label={page.title}
+                    className="group block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4"
+                  >
+                    <article className="flex h-full flex-col border border-[#d7d6d7] bg-white p-6 transition-all group-hover:-translate-y-0.5 group-hover:border-primary group-hover:shadow-md group-focus-visible:border-primary group-focus-visible:shadow-md">
+                      <p className="text-xs font-bold uppercase tracking-[0.12em] text-primary">
+                        {getSectionLabel(page.path)}
                       </p>
-                    )}
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors group-hover:text-primary-hover">
-                      View page
-                      <ArrowRight
-                        className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                        aria-hidden="true"
-                      />
-                    </span>
-                  </article>
+                      <h3 className="mt-2 font-heading text-xl font-semibold leading-snug text-[#414042] sm:text-2xl">
+                        {page.title}
+                      </h3>
+                      {page.description && (
+                        <p className="mt-3 flex-1 text-base leading-7 text-[#737076]">
+                          {page.description}
+                        </p>
+                      )}
+                      <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors group-hover:text-primary-hover">
+                        View page
+                        <ArrowRight
+                          className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </article>
+                  </Link>
                 </li>
               ))}
             </ol>
