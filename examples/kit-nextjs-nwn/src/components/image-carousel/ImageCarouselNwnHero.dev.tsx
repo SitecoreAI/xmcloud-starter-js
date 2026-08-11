@@ -19,6 +19,10 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
+import {
+  NWN_ACCOUNT_SESSION_CHANGED_EVENT,
+  verifyDemoAccountSession,
+} from '@/lib/sitecoreai-udl-client';
 import { cn } from '@/lib/utils';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 
@@ -45,10 +49,35 @@ const mapSlide = (item: imageCarouselItem): HeroSlide => ({
   link: item.link?.jsonValue,
 });
 
+const accountAccessLabels = new Set([
+  'access your account',
+  'acceda a su cuenta',
+]);
+
+const isAccountAccessLink = (link?: LinkField) => {
+  const label = link?.value?.text?.trim().toLowerCase();
+  if (label && accountAccessLabels.has(label)) return true;
+
+  const href = link?.value?.href;
+  if (!href) return false;
+
+  const pathname = href
+    .split(/[?#]/, 1)[0]
+    .replace(/\/$/, '')
+    .toLowerCase();
+  return (
+    pathname === '/account-billing/login' ||
+    pathname === '/es-mx/account-billing/login'
+  );
+};
+
 export const ImageCarouselNwnHero: React.FC<ImageCarouselProps> = (props) => {
   const { fields, isPageEditing } = props;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [api, setApi] = useState<CarouselApi>();
+  const [accountSessionState, setAccountSessionState] = useState<
+    'checking' | 'anonymous' | 'identified'
+  >(isPageEditing ? 'anonymous' : 'checking');
   const carouselId = useId();
   const datasource = fields?.data?.datasource;
   const authoredItems = datasource?.imageItems?.results ?? [];
@@ -56,6 +85,42 @@ export const ImageCarouselNwnHero: React.FC<ImageCarouselProps> = (props) => {
     () => authoredItems.map(mapSlide),
     [authoredItems],
   );
+
+  useEffect(() => {
+    if (isPageEditing) {
+      setAccountSessionState('anonymous');
+      return;
+    }
+
+    let isActive = true;
+    const handleSessionChanged = (event: Event) => {
+      const state = (event as CustomEvent<'anonymous' | 'identified'>).detail;
+      if (state === 'anonymous' || state === 'identified') {
+        setAccountSessionState(state);
+      }
+    };
+
+    window.addEventListener(
+      NWN_ACCOUNT_SESSION_CHANGED_EVENT,
+      handleSessionChanged,
+    );
+
+    void verifyDemoAccountSession()
+      .then(() => {
+        if (isActive) setAccountSessionState('identified');
+      })
+      .catch(() => {
+        if (isActive) setAccountSessionState('anonymous');
+      });
+
+    return () => {
+      isActive = false;
+      window.removeEventListener(
+        NWN_ACCOUNT_SESSION_CHANGED_EVENT,
+        handleSessionChanged,
+      );
+    };
+  }, [isPageEditing]);
 
   useEffect(() => {
     if (!api || slides.length === 0) {
@@ -195,7 +260,10 @@ export const ImageCarouselNwnHero: React.FC<ImageCarouselProps> = (props) => {
                         )}
 
                       {slide.link &&
-                        (isPageEditing || linkIsValid(slide.link)) && (
+                        (isPageEditing || linkIsValid(slide.link)) &&
+                        (isPageEditing ||
+                          !isAccountAccessLink(slide.link) ||
+                          accountSessionState === 'anonymous') && (
                           <div className="mt-8">
                             <ButtonBase
                               buttonLink={slide.link}

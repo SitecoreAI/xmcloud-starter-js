@@ -1,5 +1,11 @@
 import React from 'react';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import type { Page } from '@sitecore-content-sdk/nextjs';
 
@@ -9,6 +15,20 @@ import type {
   ImageCarouselProps,
   imageCarouselItem,
 } from '@/components/image-carousel/image-carousel.props';
+import {
+  NWN_ACCOUNT_SESSION_CHANGED_EVENT,
+  verifyDemoAccountSession,
+} from '@/lib/sitecoreai-udl-client';
+
+jest.mock('@/lib/sitecoreai-udl-client', () => ({
+  NWN_ACCOUNT_SESSION_CHANGED_EVENT: 'nwn-account-session-changed',
+  verifyDemoAccountSession: jest.fn(),
+}));
+
+const mockVerifyDemoAccountSession =
+  verifyDemoAccountSession as jest.MockedFunction<
+    typeof verifyDemoAccountSession
+  >;
 
 type CarouselListener = () => void;
 let carouselListeners: Record<string, CarouselListener> = {};
@@ -287,6 +307,30 @@ const createProps = (
     isPageEditing,
   }) as ImageCarouselProps;
 
+const createAccountHeroItems = () => [
+  createItem(
+    'hero-reliable-energy',
+    'Reliable energy for the life you live.',
+    'Safe, reliable natural gas service for homes and businesses.',
+    '/account-billing/pay-my-bill',
+    'Access your account',
+  ),
+  createItem(
+    'hero-account',
+    'Manage your account your way',
+    'Review your bill and update account details.',
+    '/account-billing/login',
+    'Access your account',
+  ),
+  createItem(
+    'hero-seasonal',
+    'Keep your home ready for the season',
+    'Simple equipment checks help support comfort.',
+    '/services/inspections-tune-ups',
+    'Explore inspections and tune-ups',
+  ),
+];
+
 describe('ImageCarouselNwnResources', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -536,6 +580,7 @@ describe('ImageCarouselNwnHero', () => {
     jest.clearAllMocks();
     carouselListeners = {};
     mockCarouselApi.selectedScrollSnap.mockReturnValue(0);
+    mockVerifyDemoAccountSession.mockReturnValue(new Promise(() => undefined));
   });
 
   it('renders one managed carousel from authored DAM image fields', () => {
@@ -644,5 +689,79 @@ describe('ImageCarouselNwnHero', () => {
       screen.queryByTestId('carousel-image-field'),
     ).not.toBeInTheDocument();
     expect(document.querySelector('img')).not.toBeInTheDocument();
+  });
+
+  it('keeps authored account CTAs for an anonymous visitor', async () => {
+    mockVerifyDemoAccountSession.mockRejectedValueOnce(
+      new Error('No identified demo session'),
+    );
+
+    render(<ImageCarouselNwnHero {...createProps(createAccountHeroItems())} />);
+
+    await waitFor(() =>
+      expect(screen.getAllByTestId('carousel-link-field')).toHaveLength(3),
+    );
+  });
+
+  it('does not flash an account CTA while session verification is pending', () => {
+    render(<ImageCarouselNwnHero {...createProps(createAccountHeroItems())} />);
+
+    expect(screen.queryByText('Access your account')).not.toBeInTheDocument();
+    expect(
+      screen.getByText('Explore inspections and tune-ups'),
+    ).toBeInTheDocument();
+  });
+
+  it('hides account CTAs for an identified visitor without hiding other hero actions', async () => {
+    mockVerifyDemoAccountSession.mockResolvedValueOnce({
+      session: {
+        verified: true,
+        email: 'nwn-demo-03@example.com',
+        paperless: false,
+      },
+    });
+
+    render(<ImageCarouselNwnHero {...createProps(createAccountHeroItems())} />);
+
+    await waitFor(() =>
+      expect(mockVerifyDemoAccountSession).toHaveBeenCalledTimes(1),
+    );
+    expect(screen.queryByText('Access your account')).not.toBeInTheDocument();
+    expect(
+      screen.getByText('Explore inspections and tune-ups'),
+    ).toBeInTheDocument();
+  });
+
+  it('reacts immediately when the visitor becomes identified', async () => {
+    mockVerifyDemoAccountSession.mockRejectedValueOnce(
+      new Error('No identified demo session'),
+    );
+    render(
+      <ImageCarouselNwnHero
+        {...createProps([createAccountHeroItems()[0]])}
+      />,
+    );
+
+    await screen.findByText('Access your account');
+    act(() => {
+      window.dispatchEvent(
+        new CustomEvent(NWN_ACCOUNT_SESSION_CHANGED_EVENT, {
+          detail: 'identified',
+        }),
+      );
+    });
+
+    expect(screen.queryByText('Access your account')).not.toBeInTheDocument();
+  });
+
+  it('keeps account CTAs editable in Page Builder', () => {
+    render(
+      <ImageCarouselNwnHero
+        {...createProps([createAccountHeroItems()[0]], true)}
+      />,
+    );
+
+    expect(screen.getByText('Access your account')).toBeInTheDocument();
+    expect(mockVerifyDemoAccountSession).not.toHaveBeenCalled();
   });
 });
