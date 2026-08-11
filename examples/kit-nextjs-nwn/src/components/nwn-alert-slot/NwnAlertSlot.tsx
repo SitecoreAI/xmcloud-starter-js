@@ -27,11 +27,6 @@ export const Default: React.FC<NwnAlertSlotProps> = (props) => {
       data-component="NwnAlertSlot"
       data-placeholder-key={ALERT_PLACEHOLDER_NAME}
     >
-      {isEditing && isEmpty && (
-        <p className="border border-dashed border-primary/50 bg-[#e4f4f7] px-4 py-3 text-sm font-medium text-slate-700">
-          Governed home alert slot — NWN Utility Alert only
-        </p>
-      )}
       <AppPlaceholder
         page={page}
         componentMap={componentMap}

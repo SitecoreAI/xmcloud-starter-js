@@ -73,12 +73,12 @@ describe('NwnAlertSlot', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it('shows the governance cue and registers the empty child chrome while editing', () => {
+  it('registers the empty child chrome without visible helper copy while editing', () => {
     render(<NwnAlertSlot {...createProps(true)} />);
 
     expect(
-      screen.getByText('Governed home alert slot — NWN Utility Alert only'),
-    ).toBeInTheDocument();
+      screen.queryByText('Governed home alert slot — NWN Utility Alert only'),
+    ).not.toBeInTheDocument();
     expect(screen.getByTestId('app-placeholder')).toHaveAttribute(
       'data-name',
       'nwn-home-alert',
@@ -97,7 +97,7 @@ describe('NwnAlertSlot', () => {
     );
   });
 
-  it('renders a populated slot publicly without the editing cue', () => {
+  it('renders a populated slot publicly', () => {
     render(
       <NwnAlertSlot
         {...createProps(false, {
