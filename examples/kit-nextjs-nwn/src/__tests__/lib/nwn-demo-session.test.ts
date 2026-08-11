@@ -2,14 +2,13 @@
 
 import {
   createAccountSessionToken,
-  isGeneratedDemoRegistrationEmail,
   isSameOriginRequest,
   NWN_ACCOUNT_SESSION_MAX_AGE,
   readAccountSessionToken,
 } from '@/lib/nwn-demo-session';
 
 const EMAIL = 'demo@example.com';
-const GENERATED_EMAIL = 'nwn-live-20260809-143025@example.com';
+const REGISTERED_EMAIL = 'taylor.morgan@example.com';
 const NOW = 1_800_000_000_000;
 
 const request = (
@@ -48,18 +47,21 @@ describe('NW Natural demo account session', () => {
     ).toBeUndefined();
   });
 
-  it('round-trips a valid server-issued generated registration email', () => {
-    const token = createAccountSessionToken(
-      '  NWN-LIVE-20260809-143025@EXAMPLE.COM ',
-      NOW,
-    );
+  it.each([
+    'taylor.morgan@example.com',
+    'taylor.morgan@example.org',
+    'taylor.morgan@example.net',
+  ])(
+    'round-trips a normalized reserved-domain registration email: %s',
+    (email) => {
+      const token = createAccountSessionToken(`  ${email.toUpperCase()} `, NOW);
 
-    expect(isGeneratedDemoRegistrationEmail(GENERATED_EMAIL)).toBe(true);
-    expect(readAccountSessionToken(token, NOW + 1)).toEqual({
-      email: GENERATED_EMAIL,
-      expiresAt: NOW + NWN_ACCOUNT_SESSION_MAX_AGE * 1000,
-    });
-  });
+      expect(readAccountSessionToken(token, NOW + 1)).toEqual({
+        email,
+        expiresAt: NOW + NWN_ACCOUNT_SESSION_MAX_AGE * 1000,
+      });
+    },
+  );
 
   it('rejects a tampered signature', () => {
     const token = createAccountSessionToken(EMAIL, NOW);
@@ -78,16 +80,13 @@ describe('NW Natural demo account session', () => {
     );
   });
 
-  it('rejects emails outside the allowlist or generated namespace and invalid timestamps', () => {
+  it('rejects malformed and non-demo-domain emails and invalid timestamps', () => {
+    expect(() => createAccountSessionToken('not-an-email', NOW)).toThrow(
+      'session is invalid',
+    );
     expect(() =>
-      createAccountSessionToken('outsider@example.com', NOW),
+      createAccountSessionToken('taylor.morgan@nwnatural.com', NOW),
     ).toThrow('session is invalid');
-    expect(isGeneratedDemoRegistrationEmail('nwn-live@example.com')).toBe(false);
-    expect(
-      isGeneratedDemoRegistrationEmail(
-        'nwn-live-20260230-143025@example.com',
-      ),
-    ).toBe(false);
     expect(() => createAccountSessionToken(EMAIL, Number.NaN)).toThrow(
       'session is invalid',
     );
@@ -96,11 +95,14 @@ describe('NW Natural demo account session', () => {
     ).toThrow('session is invalid');
   });
 
-  it('invalidates an existing token if the email is removed from the allowlist', () => {
-    const token = createAccountSessionToken(EMAIL, NOW);
-    process.env.NWN_DEMO_ACCOUNT_EMAILS = 'second@example.com';
+  it('keeps a valid signed session when the login allowlist changes', () => {
+    const token = createAccountSessionToken(REGISTERED_EMAIL, NOW);
+    process.env.NWN_DEMO_ACCOUNT_EMAILS = 'someone.else@example.com';
 
-    expect(readAccountSessionToken(token, NOW + 1)).toBeUndefined();
+    expect(readAccountSessionToken(token, NOW + 1)).toEqual({
+      email: REGISTERED_EMAIL,
+      expiresAt: NOW + NWN_ACCOUNT_SESSION_MAX_AGE * 1000,
+    });
   });
 
   it('accepts requests with a matching browser origin', () => {

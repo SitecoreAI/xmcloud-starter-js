@@ -124,7 +124,7 @@ export const establishDemoRegistrationSession = (profile: {
     '/api/account/identify',
     { action: 'registration', ...profile },
     isSessionClientResult,
-    15_000,
+    290_000,
   );
 
 export const verifyPaperlessOptInSession = () =>

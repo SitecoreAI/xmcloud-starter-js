@@ -284,7 +284,7 @@ describe('CustomerAccount', () => {
       target: { value: '  Morgan  ' },
     });
     fireEvent.change(screen.getByLabelText(/Email address/i), {
-      target: { value: '  NWN-LIVE-20260809-143025@Example.COM  ' },
+      target: { value: '  Taylor.Morgan@Example.COM  ' },
     });
     submitClosestForm('Register');
 
@@ -292,12 +292,12 @@ describe('CustomerAccount', () => {
     expect(mockIdentity).toHaveBeenCalledWith({
       channel: 'WEB',
       currency: 'USD',
-      email: 'nwn-live-20260809-143025@example.com',
+      email: 'taylor.morgan@example.com',
       firstName: 'Taylor',
       lastName: 'Morgan',
       identifiers: [
         {
-          id: 'nwn-live-20260809-143025@example.com',
+          id: 'taylor.morgan@example.com',
           provider: 'email',
         },
       ],
@@ -314,18 +314,14 @@ describe('CustomerAccount', () => {
     expect(payload).not.toHaveProperty('confirmPassword');
     expect(payload).not.toHaveProperty('phone');
     expect(payload).not.toHaveProperty('address');
-    expect(mockEstablishDemoRegistrationSession).toHaveBeenCalledWith(
-      {
-        email: 'nwn-live-20260809-143025@example.com',
-        firstName: 'Taylor',
-        lastName: 'Morgan',
-      },
-    );
+    expect(mockEstablishDemoRegistrationSession).toHaveBeenCalledWith({
+      email: 'taylor.morgan@example.com',
+      firstName: 'Taylor',
+      lastName: 'Morgan',
+    });
     expect(
       mockEstablishDemoRegistrationSession.mock.invocationCallOrder[0],
-    ).toBeLessThan(
-      mockIdentity.mock.invocationCallOrder[0],
-    );
+    ).toBeLessThan(mockIdentity.mock.invocationCallOrder[0]);
     expect(
       await screen.findByText('Your registration is complete'),
     ).toBeInTheDocument();
@@ -371,7 +367,7 @@ describe('CustomerAccount', () => {
       target: { value: 'Morgan' },
     });
     fireEvent.change(screen.getByLabelText(/Email address/i), {
-      target: { value: 'nwn-live-20260230-143025@example.com' },
+      target: { value: 'taylor.morgan@example.com' },
     });
     submitClosestForm('Register');
 
@@ -409,7 +405,7 @@ describe('CustomerAccount', () => {
         target: { value: 'Morgan' },
       });
       fireEvent.change(screen.getByLabelText(/Email address/i), {
-        target: { value: 'nwn-live-20260809-143025@example.com' },
+        target: { value: 'taylor.morgan@example.com' },
       });
       submitClosestForm('Register');
 
@@ -447,7 +443,7 @@ describe('CustomerAccount', () => {
       target: { value: 'Santos' },
     });
     fireEvent.change(screen.getByLabelText(/Correo electrónico/i), {
-      target: { value: 'nwn-live-20260809-143026@example.com' },
+      target: { value: 'maria.santos@example.com' },
     });
     submitClosestForm('Registrarse');
 

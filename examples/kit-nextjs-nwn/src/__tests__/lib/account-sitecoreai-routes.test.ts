@@ -32,7 +32,7 @@ const browserHeaders = {
   'Sec-Fetch-Site': 'same-origin',
   'Content-Type': 'application/json',
 };
-const GENERATED_EMAIL = 'nwn-live-20260809-143025@example.com';
+const REGISTERED_EMAIL = 'taylor.morgan@example.com';
 
 const identifyRequest = (
   body: Record<string, unknown>,
@@ -105,7 +105,7 @@ describe('NW Natural SitecoreAI account routes', () => {
     const response = await identify(
       identifyRequest({
         action: 'registration',
-        email: '  NWN-LIVE-20260809-143025@example.com ',
+        email: '  Taylor.Morgan@Example.com ',
         firstName: ' Taylor ',
         lastName: ' Morgan ',
       }),
@@ -120,7 +120,7 @@ describe('NW Natural SitecoreAI account routes', () => {
     );
     expect(response.headers.get('set-cookie')).toContain('Max-Age=3600');
     expect(mockInitializeNewSitecoreAiProfile).toHaveBeenCalledWith({
-      email: GENERATED_EMAIL,
+      email: REGISTERED_EMAIL,
       firstName: 'Taylor',
       lastName: 'Morgan',
     });
@@ -136,7 +136,7 @@ describe('NW Natural SitecoreAI account routes', () => {
     const response = await identify(
       identifyRequest({
         action: 'registration',
-        email: GENERATED_EMAIL,
+        email: REGISTERED_EMAIL,
         firstName: 'Taylor',
         lastName: 'Morgan',
       }),
@@ -149,26 +149,26 @@ describe('NW Natural SitecoreAI account routes', () => {
     );
   });
 
-  it('rejects ordinary and malformed emails for registration', async () => {
-    const ordinaryResponse = await identify(
+  it('rejects malformed and non-demo-domain emails for registration', async () => {
+    const malformedResponse = await identify(
       identifyRequest({
         action: 'registration',
-        email: 'demo@example.com',
+        email: 'not-an-email',
         firstName: 'Taylor',
         lastName: 'Morgan',
       }),
     );
-    const malformedResponse = await identify(
+    const nonDemoDomainResponse = await identify(
       identifyRequest({
         action: 'registration',
-        email: 'nwn-live-20260230-143025@example.com',
+        email: 'taylor.morgan@nwnatural.com',
         firstName: 'Taylor',
         lastName: 'Morgan',
       }),
     );
 
-    expect(ordinaryResponse.status).toBe(403);
-    expect(malformedResponse.status).toBe(403);
+    expect(malformedResponse.status).toBe(400);
+    expect(nonDemoDomainResponse.status).toBe(403);
     expect(mockInitializeNewSitecoreAiProfile).not.toHaveBeenCalled();
   });
 
@@ -180,7 +180,7 @@ describe('NW Natural SitecoreAI account routes', () => {
     const response = await identify(
       identifyRequest({
         action: 'registration',
-        email: GENERATED_EMAIL,
+        email: REGISTERED_EMAIL,
         firstName: 'Taylor',
         lastName: 'Morgan',
       }),
@@ -190,9 +190,9 @@ describe('NW Natural SitecoreAI account routes', () => {
     expect(response.headers.get('set-cookie')).toBeNull();
   });
 
-  it('keeps generated registration emails unavailable to ordinary login', async () => {
+  it('keeps a newly registered email unavailable to ordinary login', async () => {
     const response = await identify(
-      identifyRequest({ action: 'login', email: GENERATED_EMAIL }),
+      identifyRequest({ action: 'login', email: REGISTERED_EMAIL }),
     );
 
     expect(response.status).toBe(403);
@@ -200,7 +200,7 @@ describe('NW Natural SitecoreAI account routes', () => {
   });
 
   it('verifies a signed session without changing its paperless preference', async () => {
-    const token = createAccountSessionToken(GENERATED_EMAIL.toUpperCase());
+    const token = createAccountSessionToken(REGISTERED_EMAIL.toUpperCase());
 
     const response = await optIn(
       new NextRequest('https://nwn.example/api/account/paperless', {
@@ -215,13 +215,13 @@ describe('NW Natural SitecoreAI account routes', () => {
 
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
-      session: { verified: true, email: GENERATED_EMAIL },
+      session: { verified: true, email: REGISTERED_EMAIL },
     });
     expect(mockOptInSitecoreAiProfileToPaperless).not.toHaveBeenCalled();
   });
 
   it('updates the signed Unified Data profile on explicit paperless opt-in', async () => {
-    const token = createAccountSessionToken(GENERATED_EMAIL.toUpperCase());
+    const token = createAccountSessionToken(REGISTERED_EMAIL.toUpperCase());
 
     const response = await optIn(
       new NextRequest('https://nwn.example/api/account/paperless', {
@@ -236,11 +236,11 @@ describe('NW Natural SitecoreAI account routes', () => {
 
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({
-      session: { verified: true, email: GENERATED_EMAIL },
+      session: { verified: true, email: REGISTERED_EMAIL },
       paperless: { updated: true, value: true },
     });
     expect(mockOptInSitecoreAiProfileToPaperless).toHaveBeenCalledWith(
-      GENERATED_EMAIL,
+      REGISTERED_EMAIL,
     );
   });
 
@@ -248,7 +248,7 @@ describe('NW Natural SitecoreAI account routes', () => {
     mockOptInSitecoreAiProfileToPaperless.mockRejectedValueOnce(
       new Error('Profile Import unavailable'),
     );
-    const token = createAccountSessionToken(GENERATED_EMAIL);
+    const token = createAccountSessionToken(REGISTERED_EMAIL);
 
     const response = await optIn(
       new NextRequest('https://nwn.example/api/account/paperless', {

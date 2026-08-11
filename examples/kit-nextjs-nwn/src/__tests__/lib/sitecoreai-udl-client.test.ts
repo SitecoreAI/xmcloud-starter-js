@@ -8,6 +8,7 @@ import {
 
 const fetchMock = jest.fn() as jest.MockedFunction<typeof fetch>;
 const originalFetch = global.fetch;
+const REGISTERED_EMAIL = 'taylor.morgan@example.com';
 const response = (body: unknown, status = 200) =>
   ({
     ok: status >= 200 && status < 300,
@@ -19,6 +20,10 @@ describe('SitecoreAI UDL browser client', () => {
   beforeEach(() => {
     fetchMock.mockReset();
     global.fetch = fetchMock;
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   afterAll(() => {
@@ -47,13 +52,14 @@ describe('SitecoreAI UDL browser client', () => {
   });
 
   it('sends the validated registration profile to the same-origin route', async () => {
+    const timeoutSpy = jest.spyOn(globalThis, 'setTimeout');
     fetchMock.mockResolvedValueOnce(
       response({ session: { established: true } }),
     );
 
     await expect(
       establishDemoRegistrationSession({
-        email: 'nwn-live-20260809-143025@example.com',
+        email: REGISTERED_EMAIL,
         firstName: 'Taylor',
         lastName: 'Morgan',
       }),
@@ -64,10 +70,11 @@ describe('SitecoreAI UDL browser client', () => {
     const init = fetchMock.mock.calls[0][1];
     expect(JSON.parse(String(init?.body))).toEqual({
       action: 'registration',
-      email: 'nwn-live-20260809-143025@example.com',
+      email: REGISTERED_EMAIL,
       firstName: 'Taylor',
       lastName: 'Morgan',
     });
+    expect(timeoutSpy).toHaveBeenCalledWith(expect.any(Function), 290_000);
   });
 
   it('rejects a successful response with an invalid shape', async () => {
@@ -83,7 +90,7 @@ describe('SitecoreAI UDL browser client', () => {
       response({
         session: {
           verified: true,
-          email: 'nwn-live-20260809-143025@example.com',
+          email: REGISTERED_EMAIL,
         },
       }),
     );
@@ -91,7 +98,7 @@ describe('SitecoreAI UDL browser client', () => {
     await expect(verifyPaperlessOptInSession()).resolves.toEqual({
       session: {
         verified: true,
-        email: 'nwn-live-20260809-143025@example.com',
+        email: REGISTERED_EMAIL,
       },
     });
     expect(fetchMock).toHaveBeenCalledWith(
@@ -107,7 +114,7 @@ describe('SitecoreAI UDL browser client', () => {
       response({
         session: {
           verified: true,
-          email: 'nwn-live-20260809-143025@example.com',
+          email: REGISTERED_EMAIL,
         },
         paperless: { updated: true, value: true },
       }),
@@ -116,7 +123,7 @@ describe('SitecoreAI UDL browser client', () => {
     await expect(optInDemoAccountToPaperless()).resolves.toEqual({
       session: {
         verified: true,
-        email: 'nwn-live-20260809-143025@example.com',
+        email: REGISTERED_EMAIL,
       },
       paperless: { updated: true, value: true },
     });
@@ -133,7 +140,7 @@ describe('SitecoreAI UDL browser client', () => {
       response({
         session: {
           verified: true,
-          email: 'nwn-live-20260809-143025@example.com',
+          email: REGISTERED_EMAIL,
         },
       }),
     );

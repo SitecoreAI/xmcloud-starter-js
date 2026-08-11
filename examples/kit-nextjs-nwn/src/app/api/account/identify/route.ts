@@ -4,13 +4,14 @@ import { z } from 'zod';
 import {
   createAccountSessionToken,
   isAllowedDemoAccount,
-  isGeneratedDemoRegistrationEmail,
+  isDemoRegistrationEmail,
   isSameOriginRequest,
   NWN_ACCOUNT_SESSION_COOKIE,
   NWN_ACCOUNT_SESSION_MAX_AGE,
 } from '@/lib/nwn-demo-session';
 import { initializeNewSitecoreAiProfile } from '@/lib/sitecoreai-profile-import';
 export const dynamic = 'force-dynamic';
+export const maxDuration = 300;
 
 const requestSchema = z.discriminatedUnion('action', [
   z.object({
@@ -76,7 +77,7 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  if (!isGeneratedDemoRegistrationEmail(email)) {
+  if (!isDemoRegistrationEmail(email)) {
     return json({ error: 'Account unavailable' }, 403);
   }
 

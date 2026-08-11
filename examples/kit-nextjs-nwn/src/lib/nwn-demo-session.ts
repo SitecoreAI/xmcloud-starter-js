@@ -1,4 +1,5 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
+import { z } from 'zod';
 
 export const NWN_ACCOUNT_SESSION_COOKIE = 'nwn_demo_account';
 export const NWN_ACCOUNT_SESSION_MAX_AGE = 60 * 60;
@@ -21,31 +22,23 @@ const getSessionSecret = () => {
 const sign = (payload: string) =>
   createHmac('sha256', getSessionSecret()).update(payload).digest('base64url');
 
-const GENERATED_DEMO_REGISTRATION_EMAIL =
-  /^nwn-live-(\d{4})(\d{2})(\d{2})-(\d{2})(\d{2})(\d{2})@example\.com$/;
+const demoRegistrationEmailSchema = z
+  .string()
+  .trim()
+  .email()
+  .max(254)
+  .transform((email) => email.toLowerCase())
+  .refine((email) => {
+    const domain = email.split('@').at(-1);
+    return ['example.com', 'example.org', 'example.net'].includes(domain || '');
+  });
 
-export const isGeneratedDemoRegistrationEmail = (email: string) => {
-  const normalizedEmail = email.trim().toLowerCase();
-  const match = normalizedEmail.match(GENERATED_DEMO_REGISTRATION_EMAIL);
-  if (!match) return false;
-
-  const [, year, month, day, hour, minute, second] = match.map(Number);
-  const timestamp = new Date(
-    Date.UTC(year, month - 1, day, hour, minute, second),
-  );
-
-  return (
-    timestamp.getUTCFullYear() === year &&
-    timestamp.getUTCMonth() === month - 1 &&
-    timestamp.getUTCDate() === day &&
-    timestamp.getUTCHours() === hour &&
-    timestamp.getUTCMinutes() === minute &&
-    timestamp.getUTCSeconds() === second
-  );
-};
+/** Keeps public demo registrations inside reserved, non-deliverable domains. */
+export const isDemoRegistrationEmail = (email: string) =>
+  demoRegistrationEmailSchema.safeParse(email).success;
 
 const isSessionEligibleDemoAccount = (email: string) =>
-  isAllowedDemoAccount(email) || isGeneratedDemoRegistrationEmail(email);
+  isAllowedDemoAccount(email) || isDemoRegistrationEmail(email);
 
 export const createAccountSessionToken = (email: string, now = Date.now()) => {
   const normalizedEmail = email.trim().toLowerCase();
