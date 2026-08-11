@@ -5,10 +5,12 @@ export type SieSearchPage = {
   keywords: readonly string[];
 };
 
+export const SIE_SEARCH_ROUTE = '/search' as const;
+
 /**
- * The public SiEnergy page set and its lightweight, client-side search index.
- * Keeping the route and search metadata together prevents sitemap and search
- * coverage from drifting apart.
+ * The public SiEnergy page set and its crawl/search metadata. Keeping route and
+ * search metadata together prevents sitemap and indexed-search coverage from
+ * drifting apart.
  */
 export const SIE_SEARCH_PAGES = [
   {
@@ -158,7 +160,7 @@ export const SIE_SEARCH_PAGES = [
   },
   {
     title: 'Search',
-    path: '/search',
+    path: SIE_SEARCH_ROUTE,
     description:
       'Search SiEnergy customer service, payment, safety, company, and developer information.',
     keywords: ['find', 'site search', 'help'],

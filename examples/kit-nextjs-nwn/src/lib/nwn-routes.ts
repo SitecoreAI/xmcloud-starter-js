@@ -189,6 +189,10 @@ export const NWN_SEARCH_PAGES = [
 
 export const NWN_SITE_ROUTES = NWN_SEARCH_PAGES.map((page) => page.path);
 
+export const NWN_SPANISH_SITE_ROUTES = NWN_SITE_ROUTES.map((route) =>
+  route === '/' ? '/es-MX' : `/es-MX${route}`,
+);
+
 const NWN_AI_ROUTES = [
   '/ai/faq.json',
   '/ai/summary.json',
@@ -210,9 +214,10 @@ export const buildNwnSitemapXml = (
   const normalizedOrigin = origin.replace(/\/$/, '');
   const lastModified =
     options.lastModified ?? new Date().toISOString().slice(0, 10);
+  const localizedSiteRoutes = [...NWN_SITE_ROUTES, ...NWN_SPANISH_SITE_ROUTES];
   const routes = options.includeAiRoutes
-    ? [...NWN_SITE_ROUTES, ...NWN_AI_ROUTES]
-    : NWN_SITE_ROUTES;
+    ? [...localizedSiteRoutes, ...NWN_AI_ROUTES]
+    : localizedSiteRoutes;
 
   const entries = routes
     .map((route) => {

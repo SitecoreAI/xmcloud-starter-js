@@ -3,6 +3,7 @@ import {
   getRequestOrigin,
   NWN_SEARCH_PAGES,
   NWN_SITE_ROUTES,
+  NWN_SPANISH_SITE_ROUTES,
 } from '@/lib/nwn-routes';
 
 describe('NWN site routes', () => {
@@ -16,6 +17,11 @@ describe('NWN site routes', () => {
     expect(NWN_SITE_ROUTES).toContain('/contact-us');
     expect(NWN_SITE_ROUTES).not.toContain('/Products/Aero');
     expect(NWN_SITE_ROUTES).not.toContain('/Test-Drive');
+    expect(NWN_SPANISH_SITE_ROUTES).toHaveLength(21);
+    expect(NWN_SPANISH_SITE_ROUTES).toContain('/es-MX');
+    expect(NWN_SPANISH_SITE_ROUTES).toContain(
+      '/es-MX/account-billing/payment-assistance',
+    );
   });
 
   it('gives every page usable search metadata', () => {
@@ -32,12 +38,16 @@ describe('NWN site routes', () => {
       lastModified: '2026-08-05',
     });
 
-    expect(xml.match(/<url>/g)).toHaveLength(24);
+    expect(xml.match(/<url>/g)).toHaveLength(45);
     expect(xml).toContain('https://www.nwnatural.com/account-billing');
     expect(xml).toContain('https://www.nwnatural.com/search');
     expect(xml).toContain('https://www.nwnatural.com/contact-us');
     expect(xml).toContain(
       'https://www.nwnatural.com/safety/winter-service-advisory',
+    );
+    expect(xml).toContain('https://www.nwnatural.com/es-MX');
+    expect(xml).toContain(
+      'https://www.nwnatural.com/es-MX/account-billing/payment-assistance',
     );
     expect(xml).toContain('https://www.nwnatural.com/ai/faq.json');
     expect(xml).not.toMatch(/Alaris|Products|Test-Drive/i);

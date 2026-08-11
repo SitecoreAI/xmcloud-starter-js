@@ -1,13 +1,11 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {
-  Default as SearchExperience,
-  searchNwnPages,
-} from '@/components/search-experience/SearchExperience';
+import { Default as SearchExperience } from '@/components/search-experience/SearchExperience';
 import type { SearchExperienceProps } from '@/components/search-experience/search-experience.props';
 
 const mockReplace = jest.fn();
+const mockUseSearch = jest.fn();
 let mockSearchParams = new URLSearchParams();
 let mockPathname = '/search';
 
@@ -17,21 +15,71 @@ jest.mock('next/navigation', () => ({
   useSearchParams: () => mockSearchParams,
 }));
 
-const makeProps = (locale = 'en'): SearchExperienceProps =>
+jest.mock('@/lib/search/use-locale-search', () => ({
+  useLocaleSearch: (options: unknown) => mockUseSearch(options),
+}));
+
+const successfulSearchState = {
+  results: [
+    {
+      sc_item_id: 'payment-assistance',
+      title: 'Payment Assistance | NW Natural',
+      description:
+        '<p>Find help paying your bill and flexible payment options.</p>',
+      sc_url:
+        'https://nwn-sitecoreai-demo.vercel.app/account-billing/payment-assistance',
+    },
+  ],
+  total: 1,
+  status: 'success',
+  isLoading: false,
+  isSuccess: true,
+  isError: false,
+  error: null,
+};
+
+const makeProps = (
+  locale = 'en',
+  {
+    configured = true,
+    isEditing = false,
+    isPreview = false,
+  }: {
+    configured?: boolean;
+    isEditing?: boolean;
+    isPreview?: boolean;
+  } = {},
+): SearchExperienceProps =>
   ({
-    params: {},
+    fields: {
+      search: {
+        value: configured
+          ? JSON.stringify({
+              searchIndex: 'nwn-site-search',
+              fieldsMapping: {
+                title: 'title',
+                description: 'description',
+                link: 'sc_url',
+              },
+            })
+          : '',
+      },
+    },
+    params: { pageSize: '20' },
     rendering: { componentName: 'SearchExperience' },
-    page: { locale, mode: { isEditing: false, isPreview: false } },
+    page: { locale, mode: { isEditing, isPreview } },
   }) as unknown as SearchExperienceProps;
 
 describe('SearchExperience', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.useRealTimers();
     mockSearchParams = new URLSearchParams();
     mockPathname = '/search';
+    mockUseSearch.mockReturnValue(successfulSearchState);
   });
 
-  it('starts with accessible search controls and useful popular links', () => {
+  it('starts with accessible controls and popular links without querying Edge', () => {
     render(<SearchExperience {...makeProps()} />);
 
     expect(screen.getByRole('search')).toBeInTheDocument();
@@ -50,47 +98,45 @@ describe('SearchExperience', () => {
       'href',
       '/account-billing/pay-my-bill',
     );
-    expect(screen.getByRole('link', { name: 'Contact Us' })).toHaveAttribute(
-      'href',
-      '/contact-us',
+    expect(mockUseSearch).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        searchIndexId: 'nwn-site-search',
+        locale: 'en',
+        query: '',
+        enabled: false,
+      }),
     );
-    expect(
-      screen.queryByRole('link', { name: /^Search$/ }),
-    ).not.toBeInTheDocument();
   });
 
-  it('loads a q parameter, filters the NW Natural page index, and links to the result', () => {
-    mockSearchParams = new URLSearchParams({ q: 'rebates' });
+  it('queries SitecoreAI Edge with the Search Configuration and renders mapped results', () => {
+    mockSearchParams = new URLSearchParams({ q: 'payment help' });
 
     render(<SearchExperience {...makeProps()} />);
 
-    expect(screen.getByRole('searchbox')).toHaveValue('rebates');
+    expect(mockUseSearch).toHaveBeenLastCalledWith({
+      searchIndexId: 'nwn-site-search',
+      locale: 'en',
+      query: 'payment help',
+      pageSize: 20,
+      enabled: true,
+    });
     expect(screen.getByRole('status')).toHaveTextContent(
-      '1 result for “rebates”',
+      '1 result for “payment help”',
     );
     expect(
-      screen.getByRole('link', { name: 'Rebates & Offers' }),
-    ).toHaveAttribute('href', '/ways-to-save/rebates-offers');
-    expect(
-      screen.queryByRole('link', { name: 'Pay My Bill' }),
-    ).not.toBeInTheDocument();
-  });
-
-  it('ranks title matches ahead of description and keyword matches', () => {
-    mockSearchParams = new URLSearchParams({ q: 'natural gas' });
-
-    render(<SearchExperience {...makeProps()} />);
-
-    const resultHeadings = screen.getAllByRole('heading', { level: 3 });
-    expect(resultHeadings[0]).toHaveTextContent('Get Natural Gas');
-    expect(resultHeadings).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ textContent: 'Benefits of Natural Gas' }),
-      ]),
+      screen.getByRole('link', { name: 'Payment Assistance | NW Natural' }),
+    ).toHaveAttribute(
+      'href',
+      'https://nwn-sitecoreai-demo.vercel.app/account-billing/payment-assistance',
     );
+    expect(
+      screen.getByText(
+        'Find help paying your bill and flexible payment options.',
+      ),
+    ).toBeInTheDocument();
   });
 
-  it('writes submitted terms to q state and clears the URL accessibly', () => {
+  it('submits and clears queries while keeping URL state accessible', () => {
     render(<SearchExperience {...makeProps()} />);
 
     fireEvent.change(screen.getByRole('searchbox'), {
@@ -101,9 +147,9 @@ describe('SearchExperience', () => {
     expect(mockReplace).toHaveBeenCalledWith('/search?q=payment+assistance', {
       scroll: false,
     });
-    expect(
-      screen.getByRole('link', { name: 'Payment Assistance' }),
-    ).toHaveAttribute('href', '/account-billing/payment-assistance');
+    expect(mockUseSearch).toHaveBeenLastCalledWith(
+      expect.objectContaining({ query: 'payment assistance', enabled: true }),
+    );
 
     mockReplace.mockClear();
     fireEvent.click(screen.getByRole('button', { name: 'Clear search' }));
@@ -112,8 +158,13 @@ describe('SearchExperience', () => {
     expect(mockReplace).toHaveBeenCalledWith('/search', { scroll: false });
   });
 
-  it('shows a helpful no-results state without inventing a matching page', () => {
+  it('shows a useful zero-results state from SitecoreAI without local fallback results', () => {
     mockSearchParams = new URLSearchParams({ q: 'solar panel installation' });
+    mockUseSearch.mockReturnValue({
+      ...successfulSearchState,
+      results: [],
+      total: 0,
+    });
 
     render(<SearchExperience {...makeProps()} />);
 
@@ -124,102 +175,88 @@ describe('SearchExperience', () => {
       screen.getByRole('heading', { name: 'We couldn’t find a match' }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('link', { name: 'Contact us for help' }),
-    ).toHaveAttribute('href', '/contact-us');
+      screen.queryByRole('link', { name: 'Pay My Bill' }),
+    ).not.toBeInTheDocument();
   });
 
-  it('searches only the curated page index and never returns the search page itself', () => {
-    const results = searchNwnPages('site search');
-
-    expect(results.every((page) => page.path !== '/search')).toBe(true);
-    expect(results.every((page) => page.path.startsWith('/'))).toBe(true);
-  });
-
-  it('finds the prepared winter, assistance, and paperless experiences', () => {
-    expect(searchNwnPages('winter service advisory')[0]?.path).toBe(
-      '/safety/winter-service-advisory',
+  it('makes missing or failed configuration visible instead of silently using local search', () => {
+    const { rerender } = render(
+      <SearchExperience {...makeProps('en', { configured: false })} />,
     );
-    expect(searchNwnPages('financial assistance')[0]?.path).toBe(
-      '/account-billing/payment-assistance',
-    );
-    expect(searchNwnPages('paperless billing')[0]?.path).toBe(
-      '/account-billing',
-    );
-  });
-
-  it('renders the complete Spanish search experience and localizes popular links', () => {
-    mockPathname = '/es-MX/search';
-
-    render(<SearchExperience {...makeProps('es-MX')} />);
 
     expect(
-      screen.getByRole('heading', { name: 'Buscar en nuestro sitio' }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('searchbox', {
-        name: '¿Qué podemos ayudarle a encontrar?',
+      screen.getByRole('heading', {
+        name: 'Search is temporarily unavailable',
       }),
-    ).toHaveAttribute(
-      'placeholder',
-      'Pruebe “pagar mi factura” o “reembolsos”',
-    );
-    expect(
-      screen.getByRole('heading', { name: 'Páginas populares' }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('status')).toHaveTextContent(
-      'Explore las páginas populares de NW Natural.',
-    );
+    expect(screen.queryByText('Popular pages')).not.toBeInTheDocument();
     expect(
-      screen.getByRole('link', { name: 'Pagar mi factura' }),
-    ).toHaveAttribute('href', '/es-MX/account-billing/pay-my-bill');
-    expect(screen.getByRole('link', { name: 'Contáctenos' })).toHaveAttribute(
-      'href',
-      '/es-MX/contact-us',
-    );
-    expect(screen.getAllByText('Ver página').length).toBeGreaterThan(0);
+      screen.queryByRole('button', { name: 'Try again' }),
+    ).not.toBeInTheDocument();
+
+    mockSearchParams = new URLSearchParams({ q: 'rebates' });
+    mockUseSearch.mockReturnValue({
+      ...successfulSearchState,
+      results: [],
+      total: 0,
+      status: 'error',
+      isSuccess: false,
+      isError: true,
+      error: new Error('Private endpoint details'),
+    });
+    rerender(<SearchExperience {...makeProps()} />);
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'Search is temporarily unavailable',
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText('Private endpoint details'),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Try again' }),
+    ).toBeInTheDocument();
   });
 
-  it('searches translated Spanish metadata and preserves the locale on result links', () => {
+  it('uses the Spanish source locale and preserves indexed Spanish URLs', () => {
     mockPathname = '/es-MX/search';
-    mockSearchParams = new URLSearchParams({ q: 'asistencia financiera' });
+    mockSearchParams = new URLSearchParams({ q: 'ayuda de pago' });
+    mockUseSearch.mockReturnValue({
+      ...successfulSearchState,
+      results: [
+        {
+          sc_item_id: 'asistencia',
+          title: 'Asistencia para el pago',
+          description: 'Encuentre ayuda para pagar su factura.',
+          sc_url:
+            'https://nwn-sitecoreai-demo.vercel.app/es-MX/account-billing/payment-assistance',
+        },
+      ],
+    });
 
     render(<SearchExperience {...makeProps('es-MX')} />);
 
-    expect(screen.getByRole('searchbox')).toHaveValue('asistencia financiera');
-    expect(screen.getByRole('status')).toHaveTextContent(
-      '1 resultado para “asistencia financiera”',
+    expect(mockUseSearch).toHaveBeenLastCalledWith(
+      expect.objectContaining({ locale: 'es-MX', query: 'ayuda de pago' }),
     );
     expect(
       screen.getByRole('link', { name: 'Asistencia para el pago' }),
-    ).toHaveAttribute('href', '/es-MX/account-billing/payment-assistance');
-    expect(screen.getByText('Cuenta y facturación')).toBeInTheDocument();
+    ).toHaveAttribute(
+      'href',
+      'https://nwn-sitecoreai-demo.vercel.app/es-MX/account-billing/payment-assistance',
+    );
   });
 
-  it('keeps Spanish query updates and the no-results contact action in es-MX', () => {
-    mockPathname = '/es-MX/search';
+  it('shows a stable authoring preview without calling the public search endpoint', () => {
+    mockSearchParams = new URLSearchParams({ q: 'rebates' });
 
-    const { rerender } = render(<SearchExperience {...makeProps('es-MX')} />);
+    render(<SearchExperience {...makeProps('en', { isEditing: true })} />);
 
-    fireEvent.change(screen.getByRole('searchbox'), {
-      target: { value: 'clima frío' },
-    });
-    fireEvent.submit(screen.getByRole('search'));
-
-    expect(mockReplace).toHaveBeenCalledWith(
-      '/es-MX/search?q=clima+fr%C3%ADo',
-      { scroll: false },
+    expect(mockUseSearch).toHaveBeenLastCalledWith(
+      expect.objectContaining({ enabled: false }),
     );
-
-    mockSearchParams = new URLSearchParams({ q: 'paneles solares' });
-    rerender(<SearchExperience {...makeProps('es-MX')} />);
-
-    expect(
-      screen.getByRole('heading', { name: 'No encontramos resultados' }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('link', {
-        name: 'Contáctenos para obtener ayuda',
-      }),
-    ).toHaveAttribute('href', '/es-MX/contact-us');
+    expect(screen.getByRole('searchbox')).toHaveAttribute('readonly');
+    expect(screen.getAllByTestId('search-result-skeleton')).toHaveLength(2);
   });
 });

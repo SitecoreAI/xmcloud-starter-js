@@ -9,6 +9,7 @@ import { EditableButton } from '@/components/button-component/ButtonComponent';
 import { Default as ImageWrapper } from '@/components/image/ImageWrapper.dev';
 import { Button } from '@/components/ui/button';
 import { NoDataFallback } from '@/utils/NoDataFallback';
+import { SIE_SEARCH_ROUTE } from '@/lib/sie-routes';
 import type {
   GlobalHeaderProps,
   PrimaryNavItemProps,
@@ -289,7 +290,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
 
           <div className="flex min-w-0 items-stretch">
             <form
-              action="/search-results"
+              action={SIE_SEARCH_ROUTE}
               method="get"
               role="search"
               className="my-auto mr-2 flex h-10 shrink-0"
@@ -405,7 +406,7 @@ export const GlobalHeaderNwn: React.FC<GlobalHeaderProps> = (props) => {
                 Start Service
               </Link>
               <form
-                action="/search-results"
+                action={SIE_SEARCH_ROUTE}
                 method="get"
                 role="search"
                 className="mt-4 flex h-12"

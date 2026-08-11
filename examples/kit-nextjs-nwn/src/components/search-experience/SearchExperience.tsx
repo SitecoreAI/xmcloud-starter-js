@@ -10,9 +10,18 @@ import {
   getLocalizedPathname,
   type SupportedLocale,
 } from '@/i18n/locales';
+import { useLocaleSearch } from '@/lib/search/use-locale-search';
 import { cn } from '@/lib/utils';
 import { NWN_SEARCH_PAGES, type NwnSearchPage } from '@/lib/nwn-routes';
-import type { SearchExperienceProps } from './search-experience.props';
+import type {
+  SearchConfiguration,
+  SearchExperienceProps,
+  SearchFieldsMapping,
+  SearchResultDocument,
+  SearchResultValue,
+} from './search-experience.props';
+
+const DEFAULT_PAGE_SIZE = 50;
 
 const POPULAR_PAGE_PATHS = new Set([
   '/account-billing/pay-my-bill',
@@ -247,6 +256,10 @@ const searchCopy = {
     noMatch: 'We couldn’t find a match',
     noMatchDescription:
       'Check the spelling, try a shorter phrase, or search for a topic such as billing, rebates, service, or safety.',
+    unavailable: 'Search is temporarily unavailable',
+    unavailableDescription:
+      'Please try again. If the problem continues, return a little later.',
+    retry: 'Try again',
     contact: 'Contact us for help',
     viewPage: 'View page',
   },
@@ -268,6 +281,10 @@ const searchCopy = {
     noMatch: 'No encontramos resultados',
     noMatchDescription:
       'Revise la ortografía, pruebe una frase más corta o busque un tema como facturación, reembolsos, servicio o seguridad.',
+    unavailable: 'La búsqueda no está disponible temporalmente',
+    unavailableDescription:
+      'Inténtelo de nuevo. Si el problema continúa, vuelva un poco más tarde.',
+    retry: 'Intentar de nuevo',
     contact: 'Contáctenos para obtener ayuda',
     viewPage: 'Ver página',
   },
@@ -304,63 +321,225 @@ const getSearchPages = (locale: SupportedLocale): readonly NwnSearchPage[] =>
       }))
     : NWN_SEARCH_PAGES;
 
-const normalizeSearchText = (value: string): string =>
-  value
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim();
+const parsePositiveInteger = (
+  value: string | number | undefined,
+  fallback: number,
+): number => {
+  const parsed = Number(value);
 
-const rankPage = (page: NwnSearchPage, normalizedQuery: string): number => {
-  const title = normalizeSearchText(page.title);
-  const description = normalizeSearchText(page.description);
-  const keywords = normalizeSearchText(page.keywords.join(' '));
-  const path = normalizeSearchText(page.path);
-  const tokens = normalizedQuery.split(' ').filter(Boolean);
-  const allContent = `${title} ${description} ${keywords} ${path}`;
-
-  if (!tokens.every((token) => allContent.includes(token))) return -1;
-
-  let score = 0;
-
-  if (title === normalizedQuery) score += 1_000;
-  else if (title.startsWith(normalizedQuery)) score += 600;
-  else if (title.includes(normalizedQuery)) score += 450;
-
-  if (keywords.includes(normalizedQuery)) score += 250;
-  if (description.includes(normalizedQuery)) score += 150;
-  if (path.includes(normalizedQuery)) score += 75;
-
-  for (const token of tokens) {
-    if (title.split(' ').includes(token)) score += 90;
-    else if (title.includes(token)) score += 60;
-    if (keywords.includes(token)) score += 30;
-    if (description.includes(token)) score += 15;
-    if (path.includes(token)) score += 5;
-  }
-
-  return score;
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
 };
 
-export const searchNwnPages = (
-  query: string,
-  pages: readonly NwnSearchPage[] = NWN_SEARCH_PAGES,
-): NwnSearchPage[] => {
-  const normalizedQuery = normalizeSearchText(query);
+const parseSearchConfiguration = (
+  value: string | null | undefined,
+): SearchConfiguration => {
+  if (!value?.trim()) return { searchIndex: '', fieldsMapping: {} };
 
-  if (!normalizedQuery) return [];
+  try {
+    const parsed = JSON.parse(value) as Partial<SearchConfiguration>;
 
-  return pages
-    .filter((page) => page.path !== '/search')
-    .map((page, index) => ({
-      page,
-      index,
-      score: rankPage(page, normalizedQuery),
-    }))
-    .filter(({ score }) => score >= 0)
-    .sort((left, right) => right.score - left.score || left.index - right.index)
-    .map(({ page }) => page);
+    return {
+      searchIndex:
+        typeof parsed.searchIndex === 'string' ? parsed.searchIndex : '',
+      fieldsMapping:
+        parsed.fieldsMapping && typeof parsed.fieldsMapping === 'object'
+          ? parsed.fieldsMapping
+          : {},
+    };
+  } catch {
+    return { searchIndex: '', fieldsMapping: {} };
+  }
+};
+
+const getNestedValue = (
+  document: SearchResultDocument,
+  path: string | undefined,
+): SearchResultValue | undefined => {
+  if (!path) return undefined;
+
+  return path
+    .split('.')
+    .reduce<SearchResultValue | undefined>((current, segment) => {
+      if (current && !Array.isArray(current) && typeof current === 'object') {
+        return current[segment];
+      }
+
+      return undefined;
+    }, document);
+};
+
+const getFirstValue = (
+  document: SearchResultDocument,
+  configuredPath: string | undefined,
+  fallbacks: string[],
+): SearchResultValue | undefined => {
+  const paths = configuredPath ? [configuredPath, ...fallbacks] : fallbacks;
+
+  for (const path of paths) {
+    const value = getNestedValue(document, path);
+    if (value !== undefined && value !== null && value !== '') return value;
+  }
+
+  return undefined;
+};
+
+const parseJsonValue = (value: string): SearchResultValue | undefined => {
+  const trimmed = value.trim();
+  if (!trimmed.startsWith('{') && !trimmed.startsWith('[')) return undefined;
+
+  try {
+    return JSON.parse(trimmed) as SearchResultValue;
+  } catch {
+    return undefined;
+  }
+};
+
+const toText = (value: SearchResultValue | undefined): string => {
+  if (value === undefined || value === null) return '';
+  if (typeof value === 'string') {
+    const parsed = parseJsonValue(value);
+    return parsed === undefined ? value : toText(parsed);
+  }
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return String(value);
+  }
+  if (Array.isArray(value)) return value.map(toText).filter(Boolean).join(', ');
+
+  for (const key of ['text', 'value', 'name', 'title', 'displayName']) {
+    const candidate = value[key];
+    if (candidate !== undefined) return toText(candidate);
+  }
+
+  return '';
+};
+
+const toUrl = (value: SearchResultValue | undefined): string => {
+  if (typeof value === 'string') {
+    const parsed = parseJsonValue(value);
+    return parsed === undefined ? value.trim() : toUrl(parsed);
+  }
+
+  if (value && !Array.isArray(value) && typeof value === 'object') {
+    for (const key of ['href', 'url', 'path', 'value']) {
+      const candidate = value[key];
+      if (candidate !== undefined) return toUrl(candidate);
+    }
+  }
+
+  return '';
+};
+
+const stripMarkup = (value: string): string =>
+  value
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#(?:39|x27);/gi, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const getTitleFromUrl = (value: string): string => {
+  if (!value) return '';
+
+  try {
+    const segment = new URL(value, 'https://nwnatural.example').pathname
+      .split('/')
+      .filter(Boolean)
+      .at(-1);
+
+    return segment
+      ? decodeURIComponent(segment)
+          .replace(/[-_]+/g, ' ')
+          .replace(/\b\w/g, (letter) => letter.toUpperCase())
+      : '';
+  } catch {
+    return '';
+  }
+};
+
+const getResultPath = (href: string): string => {
+  try {
+    return new URL(href, 'https://nwnatural.example').pathname.replace(
+      /^\/es-MX(?=\/|$)/i,
+      '',
+    );
+  } catch {
+    return href;
+  }
+};
+
+type DisplayResult = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  type: string;
+};
+
+const toDisplayResult = (
+  document: SearchResultDocument,
+  mapping: SearchFieldsMapping,
+  locale: SupportedLocale,
+  index: number,
+): DisplayResult | null => {
+  const href = toUrl(
+    getFirstValue(document, mapping.link, [
+      'url',
+      'Url',
+      'link',
+      'Link',
+      'sc_url',
+    ]),
+  );
+  const title = stripMarkup(
+    toText(
+      getFirstValue(document, mapping.title, [
+        'navigation_title',
+        'navigationTitle',
+        'title',
+        'Title',
+        'pageTitle',
+        'PageTitle',
+        'name',
+      ]),
+    ),
+  );
+
+  if (!href) return null;
+
+  const localizedTitle = getSearchPages(locale).find(
+    (page) => page.path === getResultPath(href),
+  )?.title;
+
+  return {
+    id:
+      toText(
+        getFirstValue(document, undefined, ['sc_item_id', 'id', '_id', 'url']),
+      ) || `search-result-${index}`,
+    title: title || localizedTitle || getTitleFromUrl(href),
+    description: stripMarkup(
+      toText(
+        getFirstValue(document, mapping.description, [
+          'description',
+          'Description',
+          'summary',
+          'Summary',
+        ]),
+      ),
+    ),
+    href,
+    type: stripMarkup(
+      toText(
+        getFirstValue(document, mapping.type, [
+          'type',
+          'Type',
+          'contentType',
+          'ContentType',
+        ]),
+      ),
+    ),
+  };
 };
 
 const getSectionLabel = (path: string, locale: SupportedLocale): string => {
@@ -374,6 +553,54 @@ const getSectionLabel = (path: string, locale: SupportedLocale): string => {
   if (path.startsWith('/safety')) return labels.safety;
   if (path.startsWith('/about-us')) return labels.aboutUs;
   return labels.customerSupport;
+};
+
+const SearchResultCard = ({
+  result,
+  locale,
+  copy,
+}: {
+  result: DisplayResult;
+  locale: SupportedLocale;
+  copy: (typeof searchCopy)[SupportedLocale];
+}) => {
+  const section =
+    result.type || getSectionLabel(getResultPath(result.href), locale);
+  const title = result.title || copy.viewPage;
+
+  return (
+    <article className="group flex h-full flex-col border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-cyan-400 hover:shadow-md focus-within:border-cyan-500 focus-within:shadow-md">
+      <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#007b98]">
+        {section}
+      </p>
+      <h3 className="mt-2 font-heading text-xl font-semibold leading-snug text-slate-900 sm:text-2xl">
+        {result.href ? (
+          <a
+            href={result.href}
+            className="outline-none focus-visible:underline focus-visible:decoration-cyan-500 focus-visible:decoration-2 focus-visible:underline-offset-4"
+          >
+            {title}
+          </a>
+        ) : (
+          title
+        )}
+      </h3>
+      {result.description && (
+        <p className="mt-3 flex-1 text-base leading-7 text-slate-600">
+          {result.description}
+        </p>
+      )}
+      {result.href && (
+        <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#006f8c] transition-colors group-hover:text-[#004b60]">
+          {copy.viewPage}
+          <ArrowRight
+            className="h-4 w-4 transition-transform group-hover:translate-x-1"
+            aria-hidden="true"
+          />
+        </span>
+      )}
+    </article>
+  );
 };
 
 const SearchExperienceFallback = (props: SearchExperienceProps) => {
@@ -412,19 +639,57 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
   const searchPages = useMemo(() => getSearchPages(locale), [locale]);
   const urlQuery = searchParams.get('q')?.trim() ?? '';
   const [query, setQuery] = useState(urlQuery);
+  const [submittedQuery, setSubmittedQuery] = useState(urlQuery);
+  const [requestEnabled, setRequestEnabled] = useState(true);
+  const { searchIndex, fieldsMapping } = useMemo(
+    () => parseSearchConfiguration(props.fields?.search?.value),
+    [props.fields?.search?.value],
+  );
+  const pageSize = Math.min(
+    parsePositiveInteger(props.params?.pageSize, DEFAULT_PAGE_SIZE),
+    50,
+  );
+  const isAuthoring = Boolean(
+    props.page.mode?.isEditing || props.page.mode?.isPreview,
+  );
 
-  useEffect(() => setQuery(urlQuery), [urlQuery]);
+  useEffect(() => {
+    setQuery(urlQuery);
+    setSubmittedQuery(urlQuery);
+  }, [locale, urlQuery]);
 
-  const normalizedQuery = query.trim();
-  const results = useMemo(
-    () => searchNwnPages(normalizedQuery, searchPages),
-    [normalizedQuery, searchPages],
+  useEffect(
+    () => setRequestEnabled(true),
+    [locale, searchIndex, submittedQuery],
+  );
+
+  const normalizedQuery = submittedQuery.trim();
+  const hasSearchConfiguration = Boolean(searchIndex);
+  const shouldSearch =
+    hasSearchConfiguration &&
+    Boolean(normalizedQuery) &&
+    !isAuthoring &&
+    requestEnabled;
+  const { results, total, isLoading, isSuccess, isError } =
+    useLocaleSearch<SearchResultDocument>({
+      searchIndexId: searchIndex,
+      locale,
+      query: normalizedQuery,
+      pageSize,
+      enabled: shouldSearch,
+    });
+  const displayResults = useMemo(
+    () =>
+      results.flatMap((document, index) => {
+        const result = toDisplayResult(document, fieldsMapping, locale, index);
+        return result ? [result] : [];
+      }),
+    [fieldsMapping, locale, results],
   );
   const popularPages = useMemo(
     () => searchPages.filter((page) => POPULAR_PAGE_PATHS.has(page.path)),
     [searchPages],
   );
-  const displayedPages = normalizedQuery ? results : popularPages;
 
   const updateUrl = (value: string) => {
     const nextParams = new URLSearchParams(searchParams.toString());
@@ -448,18 +713,37 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setSubmittedQuery(query.trim());
     updateUrl(query);
   };
 
   const handleClear = () => {
     setQuery('');
+    setSubmittedQuery('');
     updateUrl('');
     inputRef.current?.focus();
   };
 
-  const resultSummary = normalizedQuery
-    ? `${results.length} ${results.length === 1 ? copy.result : copy.results} ${copy.forQuery} “${normalizedQuery}”`
-    : copy.popularSummary;
+  const handleRetry = () => {
+    setRequestEnabled(false);
+    window.setTimeout(() => setRequestEnabled(true), 0);
+  };
+
+  const configurationUnavailable = !hasSearchConfiguration && !isAuthoring;
+  const resultMappingUnavailable = Boolean(
+    normalizedQuery && isSuccess && total > 0 && displayResults.length === 0,
+  );
+  const requestUnavailable =
+    Boolean(normalizedQuery) && (isError || resultMappingUnavailable);
+  const searchPending = shouldSearch && !isSuccess && !isError;
+  const resultSummary =
+    configurationUnavailable || requestUnavailable
+      ? ''
+      : isLoading || searchPending
+        ? copy.loading
+        : normalizedQuery && isSuccess
+          ? `${total} ${total === 1 ? copy.result : copy.results} ${copy.forQuery} “${normalizedQuery}”`
+          : copy.popularSummary;
 
   return (
     <section
@@ -506,11 +790,13 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
                   type="search"
                   autoComplete="off"
                   value={query}
+                  readOnly={isAuthoring}
+                  aria-disabled={isAuthoring}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder={copy.placeholder}
                   className="min-h-14 w-full border-2 border-transparent bg-white py-3.5 pl-12 pr-12 text-base text-slate-900 outline-none placeholder:text-slate-500 focus-visible:border-cyan-400 focus-visible:ring-4 focus-visible:ring-cyan-300/30"
                 />
-                {query && (
+                {query && !isAuthoring && (
                   <button
                     type="button"
                     onClick={handleClear}
@@ -523,6 +809,7 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
               </div>
               <button
                 type="submit"
+                disabled={isAuthoring}
                 className="min-h-14 bg-cyan-500 px-8 text-base font-bold text-slate-950 transition-colors hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70"
               >
                 {copy.submit}
@@ -534,7 +821,9 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
         <div className="bg-[#f4f7f8] px-6 py-9 sm:px-10 sm:py-10 lg:px-14">
           <div className="flex flex-col gap-2 border-b border-slate-300 pb-5 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="font-heading text-2xl font-semibold text-slate-900 sm:text-3xl">
-              {normalizedQuery ? copy.resultsHeading : copy.popularHeading}
+              {normalizedQuery || configurationUnavailable
+                ? copy.resultsHeading
+                : copy.popularHeading}
             </h2>
             <p
               role="status"
@@ -545,7 +834,45 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
             </p>
           </div>
 
-          {normalizedQuery && results.length === 0 ? (
+          {(configurationUnavailable || requestUnavailable) && !isAuthoring ? (
+            <div className="my-8 border-l-4 border-amber-500 bg-white p-6 sm:p-8">
+              <h3 className="font-heading text-2xl font-semibold text-slate-900">
+                {copy.unavailable}
+              </h3>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
+                {copy.unavailableDescription}
+              </p>
+              {!configurationUnavailable && isError && (
+                <button
+                  type="button"
+                  onClick={handleRetry}
+                  className="mt-5 bg-[#006f8c] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#004b60] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-4"
+                >
+                  {copy.retry}
+                </button>
+              )}
+            </div>
+          ) : isAuthoring || isLoading || searchPending ? (
+            <div
+              className="mt-6 grid gap-4 md:grid-cols-2"
+              aria-busy="true"
+              aria-label={copy.loading}
+            >
+              {[0, 1].map((index) => (
+                <div
+                  key={index}
+                  data-testid="search-result-skeleton"
+                  className="h-48 animate-pulse border border-slate-200 bg-white p-6"
+                  aria-hidden="true"
+                >
+                  <div className="h-3 w-28 bg-slate-200" />
+                  <div className="mt-5 h-7 w-3/4 bg-slate-200" />
+                  <div className="mt-6 h-4 w-full bg-slate-100" />
+                  <div className="mt-3 h-4 w-2/3 bg-slate-100" />
+                </div>
+              ))}
+            </div>
+          ) : normalizedQuery && isSuccess && total === 0 ? (
             <div className="my-8 border-l-4 border-cyan-500 bg-white p-6 sm:p-8">
               <h3 className="font-heading text-2xl font-semibold text-slate-900">
                 {copy.noMatch}
@@ -562,9 +889,21 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-          ) : (
+          ) : normalizedQuery && isSuccess ? (
             <ol className="mt-6 grid gap-4 md:grid-cols-2">
-              {displayedPages.map((page) => (
+              {displayResults.map((result) => (
+                <li key={result.id}>
+                  <SearchResultCard
+                    result={result}
+                    locale={locale}
+                    copy={copy}
+                  />
+                </li>
+              ))}
+            </ol>
+          ) : hasSearchConfiguration ? (
+            <ol className="mt-6 grid gap-4 md:grid-cols-2">
+              {popularPages.map((page) => (
                 <li key={page.path}>
                   <article className="group flex h-full flex-col border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-cyan-400 hover:shadow-md focus-within:border-cyan-500 focus-within:shadow-md">
                     <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#007b98]">
@@ -574,7 +913,7 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
                       <Link
                         href={getLocalizedPathname(page.path, locale)}
                         prefetch={false}
-                        className="outline-none after:absolute focus-visible:underline focus-visible:decoration-cyan-500 focus-visible:decoration-2 focus-visible:underline-offset-4"
+                        className="outline-none focus-visible:underline focus-visible:decoration-cyan-500 focus-visible:decoration-2 focus-visible:underline-offset-4"
                       >
                         {page.title}
                       </Link>
@@ -593,7 +932,7 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
                 </li>
               ))}
             </ol>
-          )}
+          ) : null}
         </div>
       </div>
     </section>

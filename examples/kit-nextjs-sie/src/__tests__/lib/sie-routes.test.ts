@@ -1,7 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import {
   buildSieSitemapXml,
   getRequestOrigin,
   SIE_SEARCH_PAGES,
+  SIE_SEARCH_ROUTE,
   SIE_SITE_ROUTES,
 } from '@/lib/sie-routes';
 
@@ -54,5 +57,19 @@ describe('SiEnergy site routes', () => {
     } as Request;
 
     expect(getRequestOrigin(request)).toBe('https://www.sienergy.com');
+  });
+
+  it('points both responsive header searches at the live Search page', () => {
+    const headerSource = fs.readFileSync(
+      path.resolve(
+        process.cwd(),
+        'src/components/global-header/GlobalHeaderNwn.dev.tsx',
+      ),
+      'utf8',
+    );
+
+    expect(SIE_SEARCH_ROUTE).toBe('/search');
+    expect(headerSource.match(/action=\{SIE_SEARCH_ROUTE\}/g)).toHaveLength(2);
+    expect(headerSource).not.toContain('/search-results');
   });
 });
