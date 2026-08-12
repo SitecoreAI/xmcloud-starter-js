@@ -1,6 +1,6 @@
 'use client';
 
-import type { FormEvent } from 'react';
+import type { FormEvent, KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { Suspense, useEffect, useId, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -22,6 +22,9 @@ import type {
 } from './search-experience.props';
 
 const DEFAULT_PAGE_SIZE = 50;
+const TYPEAHEAD_PAGE_SIZE = 5;
+const TYPEAHEAD_MIN_CHARACTERS = 2;
+const TYPEAHEAD_DEBOUNCE_MS = 275;
 
 const POPULAR_PAGE_PATHS = new Set([
   '/account-billing/pay-my-bill',
@@ -262,6 +265,10 @@ const searchCopy = {
     retry: 'Try again',
     contact: 'Contact us for help',
     viewPage: 'View page',
+    suggestionsHeading: 'Suggested pages',
+    suggestionsLoading: 'Finding suggested pages.',
+    suggestionAvailable: 'suggestion available.',
+    suggestionsAvailable: 'suggestions available.',
   },
   'es-MX': {
     loading: 'Cargando la búsqueda',
@@ -287,6 +294,10 @@ const searchCopy = {
     retry: 'Intentar de nuevo',
     contact: 'Contáctenos para obtener ayuda',
     viewPage: 'Ver página',
+    suggestionsHeading: 'Páginas sugeridas',
+    suggestionsLoading: 'Buscando páginas sugeridas.',
+    suggestionAvailable: 'sugerencia disponible.',
+    suggestionsAvailable: 'sugerencias disponibles.',
   },
 } as const;
 
@@ -328,6 +339,18 @@ const parsePositiveInteger = (
   const parsed = Number(value);
 
   return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+};
+
+const useDebouncedValue = <T,>(value: T, delay: number): T => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setDebouncedValue(value), delay);
+
+    return () => window.clearTimeout(timeout);
+  }, [delay, value]);
+
+  return debouncedValue;
 };
 
 const parseSearchConfiguration = (
@@ -628,6 +651,8 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const inputId = useId();
+  const suggestionsId = `${inputId}-suggestions`;
+  const suggestionsStatusId = `${inputId}-suggestions-status`;
   const inputRef = useRef<HTMLInputElement>(null);
   const locale = getLocaleOption(props.page.locale).code;
   const copy = searchCopy[locale];
@@ -636,6 +661,10 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
   const [query, setQuery] = useState(urlQuery);
   const [submittedQuery, setSubmittedQuery] = useState(urlQuery);
   const [requestEnabled, setRequestEnabled] = useState(true);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [isSuggestionsDismissed, setIsSuggestionsDismissed] = useState(false);
+  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
+  const debouncedQuery = useDebouncedValue(query.trim(), TYPEAHEAD_DEBOUNCE_MS);
   const { searchIndex, fieldsMapping } = useMemo(
     () => parseSearchConfiguration(props.fields?.search?.value),
     [props.fields?.search?.value],
@@ -681,6 +710,43 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
       }),
     [fieldsMapping, locale, results],
   );
+  const shouldSuggest =
+    hasSearchConfiguration &&
+    debouncedQuery.length >= TYPEAHEAD_MIN_CHARACTERS &&
+    debouncedQuery === query.trim() &&
+    isInputFocused &&
+    !isSuggestionsDismissed &&
+    !isAuthoring &&
+    debouncedQuery !== normalizedQuery;
+  const {
+    results: suggestionResults,
+    isLoading: suggestionsAreLoading,
+    isSuccess: suggestionsAreReady,
+  } = useLocaleSearch<SearchResultDocument>({
+    searchIndexId: searchIndex,
+    locale,
+    query: debouncedQuery,
+    pageSize: TYPEAHEAD_PAGE_SIZE,
+    enabled: shouldSuggest,
+  });
+  const displaySuggestions = useMemo(
+    () =>
+      suggestionResults
+        .flatMap((document, index) => {
+          const result = toDisplayResult(
+            document,
+            fieldsMapping,
+            locale,
+            index,
+          );
+          return result ? [result] : [];
+        })
+        .slice(0, TYPEAHEAD_PAGE_SIZE),
+    [fieldsMapping, locale, suggestionResults],
+  );
+  const showSuggestionLoading = shouldSuggest && suggestionsAreLoading;
+  const showSuggestions =
+    shouldSuggest && suggestionsAreReady && displaySuggestions.length > 0;
   const popularPages = useMemo(
     () => searchPages.filter((page) => POPULAR_PAGE_PATHS.has(page.path)),
     [searchPages],
@@ -708,6 +774,8 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSuggestionsDismissed(true);
+    setActiveSuggestionIndex(-1);
     setSubmittedQuery(query.trim());
     updateUrl(query);
   };
@@ -715,8 +783,46 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
   const handleClear = () => {
     setQuery('');
     setSubmittedQuery('');
+    setIsSuggestionsDismissed(false);
+    setActiveSuggestionIndex(-1);
     updateUrl('');
     inputRef.current?.focus();
+  };
+
+  const handleInputKeyDown = (event: ReactKeyboardEvent<HTMLInputElement>) => {
+    if (
+      event.key === 'Enter' &&
+      activeSuggestionIndex >= 0 &&
+      displaySuggestions[activeSuggestionIndex]
+    ) {
+      event.preventDefault();
+      window.location.assign(displaySuggestions[activeSuggestionIndex].href);
+      return;
+    }
+
+    if (event.key === 'Escape' && (showSuggestionLoading || showSuggestions)) {
+      event.preventDefault();
+      setIsSuggestionsDismissed(true);
+      setActiveSuggestionIndex(-1);
+      return;
+    }
+
+    if (
+      !showSuggestions ||
+      !displaySuggestions.length ||
+      !['ArrowDown', 'ArrowUp'].includes(event.key)
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    setActiveSuggestionIndex((current) => {
+      if (event.key === 'ArrowDown') {
+        return current >= displaySuggestions.length - 1 ? 0 : current + 1;
+      }
+
+      return current <= 0 ? displaySuggestions.length - 1 : current - 1;
+    });
   };
 
   const handleRetry = () => {
@@ -739,6 +845,18 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
         : normalizedQuery && isSuccess
           ? `${total} ${total === 1 ? copy.result : copy.results} ${copy.forQuery} “${normalizedQuery}”`
           : copy.popularSummary;
+  const activeSuggestion = displaySuggestions[activeSuggestionIndex];
+  const suggestionsStatus = !shouldSuggest
+    ? ''
+    : suggestionsAreLoading
+      ? copy.suggestionsLoading
+      : suggestionsAreReady && displaySuggestions.length > 0
+        ? `${displaySuggestions.length} ${
+            displaySuggestions.length === 1
+              ? copy.suggestionAvailable
+              : copy.suggestionsAvailable
+          }`
+        : '';
 
   return (
     <section
@@ -784,10 +902,30 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
                   name="q"
                   type="search"
                   autoComplete="off"
+                  role="combobox"
+                  aria-autocomplete="list"
+                  aria-expanded={showSuggestions}
+                  aria-controls={showSuggestions ? suggestionsId : undefined}
+                  aria-activedescendant={
+                    activeSuggestion
+                      ? `${suggestionsId}-${activeSuggestionIndex}`
+                      : undefined
+                  }
+                  aria-describedby={suggestionsStatusId}
                   value={query}
                   readOnly={isAuthoring}
                   aria-disabled={isAuthoring}
-                  onChange={(event) => setQuery(event.target.value)}
+                  onChange={(event) => {
+                    setQuery(event.target.value);
+                    setIsSuggestionsDismissed(false);
+                    setActiveSuggestionIndex(-1);
+                  }}
+                  onFocus={() => setIsInputFocused(true)}
+                  onBlur={() => {
+                    setIsInputFocused(false);
+                    setActiveSuggestionIndex(-1);
+                  }}
+                  onKeyDown={handleInputKeyDown}
                   placeholder={copy.placeholder}
                   className="min-h-14 w-full border-2 border-transparent bg-white py-3.5 pl-12 pr-12 text-base text-slate-900 outline-none placeholder:text-slate-500 focus-visible:border-cyan-400 focus-visible:ring-4 focus-visible:ring-cyan-300/30"
                 />
@@ -800,6 +938,58 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
                   >
                     <X className="h-5 w-5" aria-hidden="true" />
                   </button>
+                )}
+                <span
+                  id={suggestionsStatusId}
+                  aria-live="polite"
+                  className="sr-only"
+                >
+                  {suggestionsStatus}
+                </span>
+                {showSuggestionLoading && (
+                  <div
+                    aria-hidden="true"
+                    className="absolute left-0 right-0 top-full z-30 mt-1 border border-slate-300 bg-white px-4 py-3 text-sm text-slate-600 shadow-xl"
+                  >
+                    {copy.suggestionsLoading}
+                  </div>
+                )}
+                {showSuggestions && (
+                  <div
+                    id={suggestionsId}
+                    role="listbox"
+                    aria-label={copy.suggestionsHeading}
+                    className="absolute left-0 right-0 top-full z-30 mt-1 overflow-hidden border border-slate-300 bg-white text-slate-900 shadow-xl"
+                  >
+                    {displaySuggestions.map((suggestion, index) => {
+                      const section =
+                        suggestion.type ||
+                        getSectionLabel(getResultPath(suggestion.href), locale);
+                      const isActive = index === activeSuggestionIndex;
+
+                      return (
+                        <a
+                          key={`${suggestion.id}-${suggestion.href}`}
+                          id={`${suggestionsId}-${index}`}
+                          href={suggestion.href}
+                          role="option"
+                          aria-selected={isActive}
+                          onPointerDown={(event) => event.preventDefault()}
+                          className={cn(
+                            'block border-b border-slate-200 px-4 py-3 last:border-b-0 hover:bg-cyan-50 focus-visible:bg-cyan-50 focus-visible:outline-none',
+                            isActive && 'bg-cyan-50',
+                          )}
+                        >
+                          <span className="block text-xs font-bold uppercase tracking-[0.1em] text-[#007b98]">
+                            {section}
+                          </span>
+                          <span className="mt-0.5 block font-semibold text-slate-900">
+                            {suggestion.title || copy.viewPage}
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
                 )}
               </div>
               <button

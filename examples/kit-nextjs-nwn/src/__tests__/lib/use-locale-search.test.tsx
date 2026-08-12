@@ -83,6 +83,29 @@ describe('useLocaleSearch', () => {
     expect(result.current.status).toBe('idle');
   });
 
+  it('does not expose results from a previous query while the next request is pending', async () => {
+    const { result, rerender } = renderHook(
+      ({ query }) =>
+        useLocaleSearch({
+          searchIndexId: 'nwn-site-search',
+          locale: 'en',
+          query,
+        }),
+      { initialProps: { query: 'payment' } },
+    );
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(result.current.results).toHaveLength(1);
+
+    mockFetch.mockImplementationOnce(
+      () => new Promise<Response>(() => undefined),
+    );
+    rerender({ query: 'paperless' });
+
+    expect(result.current.results).toEqual([]);
+    expect(result.current.isSuccess).toBe(false);
+  });
+
   it('reports an error when Edge rejects the request', async () => {
     mockFetch.mockResolvedValueOnce({ ok: false, status: 422 } as Response);
 

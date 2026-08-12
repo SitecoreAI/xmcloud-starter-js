@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Default as SearchExperience } from '@/components/search-experience/SearchExperience';
 import type { SearchExperienceProps } from '@/components/search-experience/search-experience.props';
@@ -34,6 +34,16 @@ const successfulSearchState = {
   status: 'success',
   isLoading: false,
   isSuccess: true,
+  isError: false,
+  error: null,
+};
+
+const idleSearchState = {
+  results: [],
+  total: 0,
+  status: 'idle',
+  isLoading: false,
+  isSuccess: false,
   isError: false,
   error: null,
 };
@@ -76,7 +86,9 @@ describe('SearchExperience', () => {
     jest.useRealTimers();
     mockSearchParams = new URLSearchParams();
     mockPathname = '/search';
-    mockUseSearch.mockReturnValue(successfulSearchState);
+    mockUseSearch.mockImplementation((options: { enabled?: boolean }) =>
+      options.enabled ? successfulSearchState : idleSearchState,
+    );
   });
 
   it('starts with accessible controls and popular links without querying Edge', () => {
@@ -84,7 +96,7 @@ describe('SearchExperience', () => {
 
     expect(screen.getByRole('search')).toBeInTheDocument();
     expect(
-      screen.getByRole('searchbox', {
+      screen.getByRole('combobox', {
         name: 'What can we help you find?',
       }),
     ).toHaveValue('');
@@ -98,7 +110,7 @@ describe('SearchExperience', () => {
       'href',
       '/account-billing/pay-my-bill',
     );
-    expect(mockUseSearch).toHaveBeenLastCalledWith(
+    expect(mockUseSearch).toHaveBeenCalledWith(
       expect.objectContaining({
         searchIndexId: 'nwn-site-search',
         locale: 'en',
@@ -113,7 +125,7 @@ describe('SearchExperience', () => {
 
     render(<SearchExperience {...makeProps()} />);
 
-    expect(mockUseSearch).toHaveBeenLastCalledWith({
+    expect(mockUseSearch).toHaveBeenCalledWith({
       searchIndexId: 'nwn-site-search',
       locale: 'en',
       query: 'payment help',
@@ -143,7 +155,7 @@ describe('SearchExperience', () => {
   it('submits and clears queries while keeping URL state accessible', () => {
     render(<SearchExperience {...makeProps()} />);
 
-    fireEvent.change(screen.getByRole('searchbox'), {
+    fireEvent.change(screen.getByRole('combobox'), {
       target: { value: 'payment assistance' },
     });
     fireEvent.submit(screen.getByRole('search'));
@@ -151,14 +163,14 @@ describe('SearchExperience', () => {
     expect(mockReplace).toHaveBeenCalledWith('/search?q=payment+assistance', {
       scroll: false,
     });
-    expect(mockUseSearch).toHaveBeenLastCalledWith(
+    expect(mockUseSearch).toHaveBeenCalledWith(
       expect.objectContaining({ query: 'payment assistance', enabled: true }),
     );
 
     mockReplace.mockClear();
     fireEvent.click(screen.getByRole('button', { name: 'Clear search' }));
 
-    expect(screen.getByRole('searchbox')).toHaveValue('');
+    expect(screen.getByRole('combobox')).toHaveValue('');
     expect(mockReplace).toHaveBeenCalledWith('/search', { scroll: false });
   });
 
@@ -241,7 +253,7 @@ describe('SearchExperience', () => {
 
     render(<SearchExperience {...makeProps('es-MX')} />);
 
-    expect(mockUseSearch).toHaveBeenLastCalledWith(
+    expect(mockUseSearch).toHaveBeenCalledWith(
       expect.objectContaining({ locale: 'es-MX', query: 'ayuda de pago' }),
     );
     expect(
@@ -257,10 +269,69 @@ describe('SearchExperience', () => {
 
     render(<SearchExperience {...makeProps('en', { isEditing: true })} />);
 
-    expect(mockUseSearch).toHaveBeenLastCalledWith(
+    expect(mockUseSearch).toHaveBeenCalledWith(
       expect.objectContaining({ enabled: false }),
     );
-    expect(screen.getByRole('searchbox')).toHaveAttribute('readonly');
+    expect(screen.getByRole('combobox')).toHaveAttribute('readonly');
     expect(screen.getAllByTestId('search-result-skeleton')).toHaveLength(2);
+  });
+
+  it('shows debounced SitecoreAI result suggestions after two characters', () => {
+    jest.useFakeTimers();
+    render(<SearchExperience {...makeProps()} />);
+
+    const input = screen.getByRole('combobox', {
+      name: 'What can we help you find?',
+    });
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'p' } });
+
+    act(() => jest.advanceTimersByTime(300));
+    expect(mockUseSearch).not.toHaveBeenCalledWith(
+      expect.objectContaining({ pageSize: 5, query: 'p', enabled: true }),
+    );
+
+    fireEvent.change(input, { target: { value: 'payment' } });
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    act(() => jest.advanceTimersByTime(275));
+
+    expect(mockUseSearch).toHaveBeenCalledWith({
+      searchIndexId: 'nwn-site-search',
+      locale: 'en',
+      query: 'payment',
+      pageSize: 5,
+      enabled: true,
+    });
+    expect(
+      screen.getByRole('listbox', { name: 'Suggested pages' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('option', { name: /Payment Assistance/ }),
+    ).toHaveAttribute(
+      'href',
+      'https://nwn-sitecoreai-demo.vercel.app/account-billing/payment-assistance',
+    );
+    expect(mockReplace).not.toHaveBeenCalled();
+  });
+
+  it('supports keyboard navigation and dismisses suggestions with Escape', () => {
+    jest.useFakeTimers();
+    render(<SearchExperience {...makeProps()} />);
+
+    const input = screen.getByRole('combobox');
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'payment' } });
+    act(() => jest.advanceTimersByTime(275));
+
+    const option = screen.getByRole('option', { name: /Payment Assistance/ });
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    expect(input).toHaveAttribute('aria-activedescendant', option.id);
+    expect(option).toHaveAttribute('aria-selected', 'true');
+
+    fireEvent.keyDown(input, { key: 'Escape' });
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+    expect(input).toHaveValue('payment');
+    expect(input).toHaveFocus();
+    expect(input).toHaveAttribute('aria-expanded', 'false');
   });
 });

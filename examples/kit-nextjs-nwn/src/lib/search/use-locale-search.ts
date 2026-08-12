@@ -34,6 +34,13 @@ type LocaleSearchState<T extends SearchDocument> = {
   isError: boolean;
 };
 
+type LocaleSearchInternalState<T extends SearchDocument> = Omit<
+  LocaleSearchState<T>,
+  'isLoading' | 'isSuccess' | 'isError'
+> & {
+  requestKey: string | null;
+};
+
 /**
  * Runs a SitecoreAI Edge Search request in the page's explicit source locale.
  */
@@ -48,16 +55,13 @@ export function useLocaleSearch<T extends SearchDocument = SearchDocument>({
   const contextId = api?.edge?.clientContextId;
   const edgeUrl = api?.edge?.edgeUrl || DEFAULT_EDGE_URL;
   const abortController = useRef<AbortController | null>(null);
-  const [state, setState] = useState<{
-    results: T[];
-    total: number;
-    error: Error | null;
-    status: SearchStatus;
-  }>({
+  const requestKey = JSON.stringify([searchIndexId, locale, query, pageSize]);
+  const [state, setState] = useState<LocaleSearchInternalState<T>>({
     results: [],
     total: 0,
     error: null,
     status: 'idle',
+    requestKey: null,
   });
 
   const search = useCallback(async () => {
@@ -67,6 +71,7 @@ export function useLocaleSearch<T extends SearchDocument = SearchDocument>({
         total: 0,
         error: new Error('SitecoreAI Search configuration is incomplete.'),
         status: 'error',
+        requestKey,
       });
       return;
     }
@@ -75,7 +80,13 @@ export function useLocaleSearch<T extends SearchDocument = SearchDocument>({
     abortController.current = new AbortController();
     const signal = abortController.current.signal;
 
-    setState({ results: [], total: 0, error: null, status: 'loading' });
+    setState({
+      results: [],
+      total: 0,
+      error: null,
+      status: 'loading',
+      requestKey,
+    });
 
     try {
       let sessionId = '';
@@ -118,6 +129,7 @@ export function useLocaleSearch<T extends SearchDocument = SearchDocument>({
         total: typeof data.total === 'number' ? data.total : 0,
         error: null,
         status: 'success',
+        requestKey,
       });
     } catch (error) {
       if (signal.aborted) return;
@@ -130,9 +142,10 @@ export function useLocaleSearch<T extends SearchDocument = SearchDocument>({
             ? error
             : new Error('SitecoreAI Search request failed.'),
         status: 'error',
+        requestKey,
       });
     }
-  }, [contextId, edgeUrl, locale, pageSize, query, searchIndexId]);
+  }, [contextId, edgeUrl, locale, pageSize, query, requestKey, searchIndexId]);
 
   useEffect(() => {
     if (enabled) void search();
@@ -140,13 +153,26 @@ export function useLocaleSearch<T extends SearchDocument = SearchDocument>({
     return () => abortController.current?.abort();
   }, [enabled, search]);
 
-  return useMemo(
-    () => ({
-      ...state,
-      isLoading: state.status === 'loading',
-      isSuccess: state.status === 'success',
-      isError: state.status === 'error',
-    }),
-    [state],
-  );
+  return useMemo(() => {
+    const currentState =
+      state.requestKey === requestKey
+        ? state
+        : {
+            results: [] as T[],
+            total: 0,
+            error: null,
+            status: 'idle' as const,
+            requestKey: null,
+          };
+
+    return {
+      results: currentState.results,
+      total: currentState.total,
+      error: currentState.error,
+      status: currentState.status,
+      isLoading: currentState.status === 'loading',
+      isSuccess: currentState.status === 'success',
+      isError: currentState.status === 'error',
+    };
+  }, [requestKey, state]);
 }
