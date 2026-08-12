@@ -900,7 +900,8 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
                   ref={inputRef}
                   id={inputId}
                   name="q"
-                  type="search"
+                  type="text"
+                  inputMode="search"
                   autoComplete="off"
                   role="combobox"
                   aria-autocomplete="list"
