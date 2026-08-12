@@ -381,3 +381,12 @@
         }
     }
 }
+
+/*
+ * Sitecore Pages loads its unlayered CKEditor content stylesheet at runtime.
+ * Keep the branded pseudo-element bullet without also showing CKEditor's
+ * native list marker.
+ */
+.ck-content .nwn-page-content ul {
+    list-style-type: none;
+}
