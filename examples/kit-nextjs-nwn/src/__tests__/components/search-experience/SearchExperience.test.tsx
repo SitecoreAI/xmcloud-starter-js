@@ -307,11 +307,131 @@ describe('SearchExperience', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole('option', { name: /Payment Assistance/ }),
-    ).toHaveAttribute(
-      'href',
-      'https://nwn-sitecoreai-demo.vercel.app/account-billing/payment-assistance',
-    );
+    ).toHaveAttribute('href', '/account-billing/payment-assistance');
     expect(mockReplace).not.toHaveBeenCalled();
+  });
+
+  it('supplements zero-result typeahead with a unique page-title prefix', () => {
+    jest.useFakeTimers();
+    mockUseSearch.mockImplementation(
+      (options: { enabled?: boolean; pageSize?: number; query?: string }) => {
+        if (
+          options.enabled &&
+          options.pageSize === 5 &&
+          ['inspect', 'spect'].includes(options.query ?? '')
+        ) {
+          return {
+            ...successfulSearchState,
+            results: [],
+            total: 0,
+          };
+        }
+
+        return options.enabled ? successfulSearchState : idleSearchState;
+      },
+    );
+    render(<SearchExperience {...makeProps()} />);
+
+    const input = screen.getByRole('combobox');
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'inspect' } });
+    act(() => jest.advanceTimersByTime(275));
+
+    expect(
+      screen.getByRole('option', { name: /Inspections & Tune-Ups/ }),
+    ).toHaveAttribute('href', '/services/inspections-tune-ups');
+
+    fireEvent.submit(screen.getByRole('search'));
+    expect(mockUseSearch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        query: 'inspect',
+        pageSize: 20,
+        enabled: true,
+      }),
+    );
+    expect(mockReplace).toHaveBeenCalledWith('/search?q=inspect', {
+      scroll: false,
+    });
+
+    fireEvent.change(input, { target: { value: 'spect' } });
+    act(() => jest.advanceTimersByTime(275));
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+  });
+
+  it('preserves SitecoreAI order when Edge returns typeahead results', () => {
+    jest.useFakeTimers();
+    mockUseSearch.mockImplementation(
+      (options: { enabled?: boolean; pageSize?: number; query?: string }) => {
+        if (
+          options.enabled &&
+          options.pageSize === 5 &&
+          options.query === 'company'
+        ) {
+          return {
+            ...successfulSearchState,
+            results: [
+              {
+                sc_item_id: 'payment-assistance',
+                title: 'Payment Assistance | NW Natural',
+                sc_url:
+                  'https://nwn-sitecoreai-demo.vercel.app/account-billing/payment-assistance',
+              },
+              {
+                sc_item_id: 'account-billing',
+                title: 'Account & Billing | NW Natural',
+                sc_url:
+                  'https://nwn-sitecoreai-demo.vercel.app/account-billing',
+              },
+            ],
+            total: 2,
+          };
+        }
+
+        return options.enabled ? successfulSearchState : idleSearchState;
+      },
+    );
+    render(<SearchExperience {...makeProps()} />);
+
+    const input = screen.getByRole('combobox');
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'company' } });
+    act(() => jest.advanceTimersByTime(275));
+
+    const options = screen.getAllByRole('option');
+    expect(options[0]).toHaveTextContent('Payment Assistance');
+    expect(options[1]).toHaveTextContent('Account & Billing');
+    expect(options[2]).toHaveTextContent('Company Overview');
+  });
+
+  it('localizes prefix completions for Spanish pages', () => {
+    jest.useFakeTimers();
+    mockUseSearch.mockImplementation(
+      (options: { enabled?: boolean; pageSize?: number; query?: string }) => {
+        if (
+          options.enabled &&
+          options.pageSize === 5 &&
+          options.query === 'inspec'
+        ) {
+          return {
+            ...successfulSearchState,
+            results: [],
+            total: 0,
+          };
+        }
+
+        return options.enabled ? successfulSearchState : idleSearchState;
+      },
+    );
+    render(<SearchExperience {...makeProps('es-MX')} />);
+
+    const input = screen.getByRole('combobox');
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: 'inspec' } });
+    act(() => jest.advanceTimersByTime(275));
+
+    expect(
+      screen.getByRole('option', { name: /Inspecciones y mantenimiento/ }),
+    ).toHaveAttribute('href', '/es-MX/services/inspections-tune-ups');
   });
 
   it('supports keyboard navigation and dismisses suggestions with Escape', () => {

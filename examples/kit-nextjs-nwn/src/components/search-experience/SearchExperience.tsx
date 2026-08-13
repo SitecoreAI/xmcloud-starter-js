@@ -353,6 +353,67 @@ const useDebouncedValue = <T,>(value: T, delay: number): T => {
   return debouncedValue;
 };
 
+const normalizeSearchText = (value: string): string =>
+  value
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+
+type TypeaheadPageMatch = {
+  page: NwnSearchPage;
+  score: number;
+  isStrongTitleMatch: boolean;
+};
+
+const getTypeaheadPageMatches = (
+  query: string,
+  pages: readonly NwnSearchPage[],
+): TypeaheadPageMatch[] => {
+  const normalizedQuery = normalizeSearchText(query);
+  const queryTokens = normalizedQuery.split(' ').filter(Boolean);
+
+  if (!queryTokens.length || queryTokens.some((token) => token.length < 3)) {
+    return [];
+  }
+
+  return pages
+    .filter((page) => page.path !== '/search')
+    .flatMap((page, index) => {
+      const normalizedTitle = normalizeSearchText(page.title);
+      const titleWords = normalizedTitle.split(' ').filter(Boolean);
+      const keywordWords = page.keywords.flatMap((keyword) =>
+        normalizeSearchText(keyword).split(' ').filter(Boolean),
+      );
+      const titleMatches = queryTokens.map((token) =>
+        titleWords.some((word) => word.startsWith(token)),
+      );
+      const keywordMatches = queryTokens.map((token) =>
+        keywordWords.some((word) => word.startsWith(token)),
+      );
+
+      if (
+        !queryTokens.every(
+          (_, tokenIndex) =>
+            titleMatches[tokenIndex] || keywordMatches[tokenIndex],
+        )
+      ) {
+        return [];
+      }
+
+      const isStrongTitleMatch = titleMatches.every(Boolean);
+      const score =
+        (normalizedTitle.startsWith(normalizedQuery) ? 1_000 : 0) +
+        titleMatches.filter(Boolean).length * 100 +
+        keywordMatches.filter(Boolean).length * 20 -
+        index / 1_000;
+
+      return [{ page, score, isStrongTitleMatch }];
+    })
+    .sort((left, right) => right.score - left.score);
+};
+
 const parseSearchConfiguration = (
   value: string | null | undefined,
 ): SearchConfiguration => {
@@ -492,12 +553,67 @@ const getResultPath = (href: string): string => {
   }
 };
 
+const getCanonicalResultPath = (href: string): string => {
+  const path = getResultPath(href).replace(/\/+$/, '');
+
+  return path || '/';
+};
+
 type DisplayResult = {
   id: string;
   title: string;
   description: string;
   href: string;
   type: string;
+};
+
+const toTypeaheadDisplayResult = (
+  page: NwnSearchPage,
+  locale: SupportedLocale,
+): DisplayResult => ({
+  id: `page-prefix-${page.path}`,
+  title: page.title,
+  description: page.description,
+  href: getLocalizedPathname(page.path, locale),
+  type: '',
+});
+
+const mergeTypeaheadSuggestions = (
+  edgeResults: DisplayResult[],
+  query: string,
+  pages: readonly NwnSearchPage[],
+  locale: SupportedLocale,
+): DisplayResult[] => {
+  const pageMatches = getTypeaheadPageMatches(query, pages);
+  const strongTitleMatches = pageMatches.filter(
+    ({ isStrongTitleMatch }) => isStrongTitleMatch,
+  );
+  const merged: DisplayResult[] = [];
+  const addedPaths = new Set<string>();
+  const pagePaths = new Set(pages.map(({ path }) => path));
+
+  const addResult = (result: DisplayResult) => {
+    const path = getCanonicalResultPath(result.href);
+    if (addedPaths.has(path)) return;
+
+    addedPaths.add(path);
+    merged.push(
+      pagePaths.has(path as SearchPagePath)
+        ? { ...result, href: getLocalizedPathname(path, locale) }
+        : result,
+    );
+  };
+
+  if (edgeResults.length === 0 && strongTitleMatches.length === 1) {
+    addResult(toTypeaheadDisplayResult(strongTitleMatches[0].page, locale));
+  }
+
+  edgeResults.forEach(addResult);
+  pageMatches.forEach(({ page }) =>
+    addResult(toTypeaheadDisplayResult(page, locale)),
+  );
+
+  return merged.slice(0, TYPEAHEAD_PAGE_SIZE);
 };
 
 const toDisplayResult = (
@@ -729,21 +845,28 @@ const SearchExperienceContent = (props: SearchExperienceProps) => {
     pageSize: TYPEAHEAD_PAGE_SIZE,
     enabled: shouldSuggest,
   });
-  const displaySuggestions = useMemo(
-    () =>
-      suggestionResults
-        .flatMap((document, index) => {
-          const result = toDisplayResult(
-            document,
-            fieldsMapping,
-            locale,
-            index,
-          );
-          return result ? [result] : [];
-        })
-        .slice(0, TYPEAHEAD_PAGE_SIZE),
-    [fieldsMapping, locale, suggestionResults],
-  );
+  const displaySuggestions = useMemo(() => {
+    if (!suggestionsAreReady) return [];
+
+    const edgeResults = suggestionResults.flatMap((document, index) => {
+      const result = toDisplayResult(document, fieldsMapping, locale, index);
+      return result ? [result] : [];
+    });
+
+    return mergeTypeaheadSuggestions(
+      edgeResults,
+      debouncedQuery,
+      searchPages,
+      locale,
+    );
+  }, [
+    debouncedQuery,
+    fieldsMapping,
+    locale,
+    searchPages,
+    suggestionResults,
+    suggestionsAreReady,
+  ]);
   const showSuggestionLoading = shouldSuggest && suggestionsAreLoading;
   const showSuggestions =
     shouldSuggest && suggestionsAreReady && displaySuggestions.length > 0;
