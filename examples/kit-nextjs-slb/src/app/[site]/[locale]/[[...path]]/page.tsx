@@ -18,6 +18,7 @@ import {
   resolveSlbFallbackPage,
 } from '@/lib/slb-fallback-content';
 import { getPageWithFallbackAlias } from '@/lib/slb-page-resolution';
+import { getSlbDamAssetUrl } from '@/lib/slb-dam-assets';
 import {
   hasLegacySolterraRouteContent,
   readSlbFieldText,
@@ -209,7 +210,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
     (!hasLegacyRouteContent && routeFields?.ogImage?.value?.src) ||
     (!hasLegacyRouteContent && routeFields?.thumbnailImage?.value?.src) ||
     (fallbackPage
-      ? `/images/slb/${fallbackPage.fields.seo.openGraphImageFilename}`
+      ? getSlbDamAssetUrl(fallbackPage.fields.seo.openGraphImageFilename)
       : undefined);
 
   const ogImageUrl = imageSource

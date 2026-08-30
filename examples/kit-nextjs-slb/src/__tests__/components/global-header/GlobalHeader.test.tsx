@@ -13,6 +13,7 @@ import {
 } from './GlobalHeader.mockProps';
 import type { GlobalHeaderProps } from '@/components/global-header/global-header.props';
 import type { LinkField } from '@sitecore-content-sdk/nextjs';
+import { getSlbDamAssetUrl } from '@/lib/slb-dam-assets';
 
 // Mock the cn utility
 jest.mock('@/lib/utils', () => ({
@@ -316,7 +317,7 @@ describe('GlobalHeader Component', () => {
       expect(screen.queryByTestId('logo-component')).not.toBeInTheDocument();
       expect(screen.getByTestId('slb-logo-fallback')).toHaveAttribute(
         'src',
-        '/images/slb/slb-logo-positive-blue.svg',
+        getSlbDamAssetUrl('slb-logo-positive-blue.svg'),
       );
     });
   });
@@ -541,7 +542,7 @@ describe('GlobalHeader Component', () => {
       expect(screen.queryByTestId('logo-component')).not.toBeInTheDocument();
       expect(screen.getByTestId('slb-logo-fallback')).toHaveAttribute(
         'src',
-        '/images/slb/slb-logo-positive-blue.svg',
+        getSlbDamAssetUrl('slb-logo-positive-blue.svg'),
       );
       expect(screen.queryByText(/solterra/i)).not.toBeInTheDocument();
       expect(screen.queryByText('Get Started')).not.toBeInTheDocument();

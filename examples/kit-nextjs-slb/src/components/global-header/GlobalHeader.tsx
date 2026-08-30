@@ -24,6 +24,7 @@ import { GlobalHeaderProps } from './global-header.props';
 import { Button } from '@/components/ui/button';
 import { getFieldValue } from '@/lib/component-props';
 import { hasLegacySolterraSignature } from '@/lib/slb-content-safety';
+import { getSlbDamAssetUrl } from '@/lib/slb-dam-assets';
 
 const aboutPaths = ['/about-us', '/es-mx/quienes-somos'];
 
@@ -165,7 +166,7 @@ const GlobalHeaderView: React.FC<GlobalHeaderViewProps> = ({
                   // The approved positive master is a fallback only; authored Sitecore media wins.
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src="/images/slb/slb-logo-positive-blue.svg"
+                    src={getSlbDamAssetUrl('slb-logo-positive-blue.svg')}
                     alt="SLB"
                     className="h-auto w-full"
                     data-testid="slb-logo-fallback"

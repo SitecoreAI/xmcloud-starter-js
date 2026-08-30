@@ -12,6 +12,7 @@ import {
   hasLegacySolterraRouteContent,
   hasLegacySolterraSignature,
 } from '@/lib/slb-content-safety';
+import { slbDamAssetUrls } from '@/lib/slb-dam-assets';
 
 function routeToSegments(route: string, locale: string): string[] {
   const prefix = locale === 'es-MX' ? '/es-mx' : '';
@@ -208,8 +209,9 @@ describe('SLB route-aware fallback content', () => {
     expect(merged?.fields.seo.description).not.toMatch(/essential beauty/i);
   });
 
-  it('references local assets and contains no authoring-only copy', () => {
+  it('references approved DAM assets, retains local fallbacks, and contains no authoring-only copy', () => {
     const serialized = JSON.stringify(catalog);
+    expect(Object.keys(slbDamAssetUrls)).toHaveLength(26);
     expect(serialized).not.toMatch(/\bdemo\b/i);
     expect(serialized).not.toMatch(
       /revalidate at implementation|dynamic rail|provide governed links|newsletter cta|media cta/i,
@@ -225,6 +227,9 @@ describe('SLB route-aware fallback content', () => {
         ].filter(Boolean);
 
         for (const filename of filenames) {
+          expect(slbDamAssetUrls[filename as string]).toMatch(
+            /^https:\/\/thlt-demo\.sitecoresandbox\.cloud\/api\/public\/content\//,
+          );
           expect(
             fs.existsSync(
               path.join(

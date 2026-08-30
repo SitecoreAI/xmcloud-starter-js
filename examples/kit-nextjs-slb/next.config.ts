@@ -48,6 +48,11 @@ const nextConfig: NextConfig = {
         hostname: '*.sitecorecloud.io',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'thlt-demo.sitecoresandbox.cloud',
+        port: '',
+      },
     ],
     // Disable image optimization in development to avoid upstream timeouts
     unoptimized: process.env.NODE_ENV === 'development',

@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import componentMap from '.sitecore/component-map';
 import { getDatasource, getFieldValue } from '@/lib/component-props';
 import { hasLegacySolterraSignature } from '@/lib/slb-content-safety';
+import { getSlbDamAssetUrl } from '@/lib/slb-dam-assets';
 
 const localFooterContent = {
   en: {
@@ -115,7 +116,7 @@ export function LocalSlbFooter({ locale }: { locale?: string }) {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/slb/slb-logo-positive-blue.svg"
+              src={getSlbDamAssetUrl('slb-logo-positive-blue.svg')}
               alt="SLB"
               className="h-auto w-full"
               data-testid="slb-footer-logo-fallback"
@@ -213,7 +214,7 @@ export const Default: React.FC<GlobalFooterProps> = (props) => {
                 // Approved positive master shown on white when no Sitecore logo is authored.
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src="/images/slb/slb-logo-positive-blue.svg"
+                  src={getSlbDamAssetUrl('slb-logo-positive-blue.svg')}
                   alt="SLB"
                   className="h-auto w-full"
                   data-testid="slb-footer-logo-fallback"

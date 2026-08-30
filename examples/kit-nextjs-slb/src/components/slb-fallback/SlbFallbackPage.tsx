@@ -7,6 +7,7 @@ import type {
   SlbFallbackPageModel,
   SlbFallbackRelatedPage,
 } from '@/lib/slb-fallback-content';
+import { getSlbDamAssetUrl } from '@/lib/slb-dam-assets';
 import styles from './SlbFallbackPage.module.css';
 
 interface SlbFallbackPageProps {
@@ -194,7 +195,8 @@ function EditorialImage({
       fill
       priority={priority}
       sizes="(max-width: 768px) 100vw, 50vw"
-      src={`/images/slb/${image.filename}`}
+      src={getSlbDamAssetUrl(image.filename)}
+      unoptimized
     />
   );
 }
