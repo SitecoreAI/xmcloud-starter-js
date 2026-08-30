@@ -52,25 +52,28 @@ describe('public locale proxy normalization', () => {
       '/es-MX/soluciones',
     );
     expect(normalizePublicLocalePathname('/es-mx')).toBe('/es-MX');
-    expect(normalizePublicLocalePathname('/about/es-mx')).toBe(
-      '/about/es-mx',
-    );
+    expect(normalizePublicLocalePathname('/about/es-mx')).toBe('/about/es-mx');
     expect(normalizePublicLocalePathname('/es-mx-extra/soluciones')).toBe(
       '/es-mx-extra/soluciones',
     );
   });
 
-  it('uses es-MX internally without mutating the public request URL', async () => {
-    const request = new NextRequest('https://www.example.com/es-mx/soluciones');
+  it('uses es-MX internally without replacing Sitecore editing request headers', async () => {
+    const editingParams = JSON.stringify({ language: 'es-MX', mode: 'edit' });
+    const request = new NextRequest(
+      'https://www.example.com/es-mx/soluciones',
+      { headers: { 'x-sitecore-editing-params': editingParams } },
+    );
 
     const response = await proxy(request);
     const proxiedRequest = mockExec.mock.calls[0][0] as NextRequest;
 
     expect(request.nextUrl.pathname).toBe('/es-mx/soluciones');
     expect(proxiedRequest.nextUrl.pathname).toBe('/es-MX/soluciones');
-    expect(response.headers.get('x-sc-locale')).toBe('es-MX');
-    expect(response.headers.get('x-middleware-request-x-sc-locale')).toBe(
-      'es-MX',
+    expect(proxiedRequest.headers.get('x-sitecore-editing-params')).toBe(
+      editingParams,
     );
+    expect(response.headers.get('x-sc-locale')).toBe('es-MX');
+    expect(response.headers.get('x-middleware-override-headers')).toBeNull();
   });
 });

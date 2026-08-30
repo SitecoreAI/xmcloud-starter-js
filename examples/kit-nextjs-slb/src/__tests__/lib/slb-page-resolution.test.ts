@@ -1,4 +1,7 @@
-import { getPageWithFallbackAlias } from '@/lib/slb-page-resolution';
+import {
+  getPageWithFallbackAlias,
+  resolveSlbPageLocale,
+} from '@/lib/slb-page-resolution';
 import type { SlbFallbackPageModel } from '@/lib/slb-fallback-content';
 
 const spanishFallback = {
@@ -8,6 +11,15 @@ const spanishFallback = {
 } as SlbFallbackPageModel;
 
 describe('SLB Sitecore page resolution', () => {
+  it('uses the Sitecore preview language over the internal editing route locale', () => {
+    expect(resolveSlbPageLocale('es-MX', 'en')).toBe('es-MX');
+    expect(resolveSlbPageLocale('ES-mx', 'en')).toBe('es-MX');
+    expect(resolveSlbPageLocale('en', 'es-MX')).toBe('en');
+    expect(resolveSlbPageLocale('EN', 'es-MX')).toBe('en');
+    expect(resolveSlbPageLocale(undefined, 'en')).toBe('en');
+    expect(resolveSlbPageLocale(undefined, 'ES-mx')).toBe('es-MX');
+  });
+
   it('retries the shared item path for a translated Spanish alias', async () => {
     const getPage = jest
       .fn()

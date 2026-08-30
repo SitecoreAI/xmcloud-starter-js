@@ -24,6 +24,23 @@ function sameSegments(
 }
 
 /**
+ * Editing requests carry their authoritative language in Sitecore preview
+ * data, while their internal route may still resolve to the default locale.
+ */
+export function resolveSlbPageLocale(
+  previewLanguage: unknown,
+  routeLocale: string,
+): string {
+  if (typeof previewLanguage === 'string') {
+    const normalizedPreviewLanguage = previewLanguage.toLocaleLowerCase();
+    if (normalizedPreviewLanguage === 'es-mx') return 'es-MX';
+    if (normalizedPreviewLanguage === 'en') return 'en';
+  }
+
+  return routeLocale.toLocaleLowerCase() === 'es-mx' ? 'es-MX' : 'en';
+}
+
+/**
  * Spanish public aliases are presentation routes. Sitecore language versions
  * still live beneath the shared English item path, so retry that path before
  * treating an otherwise valid localized URL as missing.

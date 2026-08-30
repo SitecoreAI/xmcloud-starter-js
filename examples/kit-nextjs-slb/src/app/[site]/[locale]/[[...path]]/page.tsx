@@ -17,7 +17,10 @@ import {
   mergeSlbFallbackRouteFields,
   resolveSlbFallbackPage,
 } from '@/lib/slb-fallback-content';
-import { getPageWithFallbackAlias } from '@/lib/slb-page-resolution';
+import {
+  getPageWithFallbackAlias,
+  resolveSlbPageLocale,
+} from '@/lib/slb-page-resolution';
 import { getSlbDamAssetUrl } from '@/lib/slb-dam-assets';
 import {
   hasLegacySolterraRouteContent,
@@ -38,16 +41,19 @@ export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
   const draft = await draftMode();
   const baseUrl = getBaseUrl();
-  const catalogFallbackPage = resolveSlbFallbackPage(locale, path);
-
-  // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary
-  setRequestLocale(`${site}_${locale}`);
+  let effectiveLocale = locale;
+  let catalogFallbackPage = resolveSlbFallbackPage(effectiveLocale, path);
 
   // Fetch the page data from Sitecore
   let page;
   if (draft.isEnabled) {
     const headers = await nextHeaders();
     const previewData = client.getPreviewData(headers);
+    effectiveLocale = resolveSlbPageLocale(
+      (previewData as { language?: unknown }).language,
+      locale,
+    );
+    catalogFallbackPage = resolveSlbFallbackPage(effectiveLocale, path);
     if (isDesignLibraryPreviewData(previewData)) {
       page = await client.getDesignLibraryData(previewData);
     } else {
@@ -58,10 +64,13 @@ export default async function Page({ params }: PageProps) {
       getPage: client.getPage.bind(client),
       path,
       site,
-      locale,
+      locale: effectiveLocale,
       fallbackPage: catalogFallbackPage,
     });
   }
+
+  // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary.
+  setRequestLocale(`${site}_${effectiveLocale}`);
 
   // If the page is not found, return a 404
   if (!page) {
@@ -98,7 +107,7 @@ export default async function Page({ params }: PageProps) {
     name: pageTitle,
     description: pageDescription,
     url: fullUrl,
-    inLanguage: locale.replace('_', '-'),
+    inLanguage: effectiveLocale.replace('_', '-'),
     ...(baseUrl && {
       isPartOf: {
         name: 'SLB',
@@ -139,7 +148,16 @@ export const generateMetadata = async ({ params }: PageProps) => {
   const baseUrl = getBaseUrl();
 
   const { path, site, locale } = await params;
-  const catalogFallbackPage = resolveSlbFallbackPage(locale, path);
+  const draft = await draftMode();
+  let effectiveLocale = locale;
+  if (draft.isEnabled) {
+    const previewData = client.getPreviewData(await nextHeaders());
+    effectiveLocale = resolveSlbPageLocale(
+      (previewData as { language?: unknown }).language,
+      locale,
+    );
+  }
+  const catalogFallbackPage = resolveSlbFallbackPage(effectiveLocale, path);
 
   // Canonical URL: base URL + content path only (no site/locale segments)
   const pathSegment =
@@ -163,7 +181,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
     getPage: client.getPage.bind(client),
     path,
     site,
-    locale,
+    locale: effectiveLocale,
     fallbackPage: catalogFallbackPage,
   });
 
@@ -248,7 +266,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
       url: pageUrl,
       type: 'website',
       siteName: 'SLB',
-      locale: locale.toLowerCase() === 'es-mx' ? 'es_MX' : 'en_US',
+      locale: effectiveLocale.toLowerCase() === 'es-mx' ? 'es_MX' : 'en_US',
       images: ogImageUrl
         ? [
             {
