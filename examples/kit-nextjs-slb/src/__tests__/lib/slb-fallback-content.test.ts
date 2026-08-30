@@ -2,11 +2,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import catalog from '@/content/slb-fallback-content.json';
 import {
+  getSlbLanguageRoutes,
   hasPlaceholderPresentation,
   mergeSlbFallbackRouteFields,
   resolveSlbFallbackPage,
   shouldRenderSlbFallback,
 } from '@/lib/slb-fallback-content';
+import {
+  hasLegacySolterraRouteContent,
+  hasLegacySolterraSignature,
+} from '@/lib/slb-content-safety';
 
 function routeToSegments(route: string, locale: string): string[] {
   const prefix = locale === 'es-MX' ? '/es-mx' : '';
@@ -49,17 +54,39 @@ describe('SLB route-aware fallback content', () => {
     expect(sharedRoutePage?.route).toBe(
       '/es-mx/solutions/industrial-decarbonization',
     );
+    expect(sharedRoutePage?.canonicalRoute).toBe(
+      '/es-mx/soluciones/descarbonizacion-industrial',
+    );
+    expect(getSlbLanguageRoutes(sharedRoutePage!)).toEqual({
+      en: '/solutions/industrial-decarbonization',
+      'es-MX': '/es-mx/soluciones/descarbonizacion-industrial',
+      'x-default': '/solutions/industrial-decarbonization',
+    });
     expect(
       resolveSlbFallbackPage('es-MX', ['about-us', 'global-presence'])?.id,
     ).toBe('A04');
 
     const solutionsPage = resolveSlbFallbackPage('es-MX', ['solutions']);
     expect(solutionsPage?.route).toBe('/es-mx/solutions');
+    expect(solutionsPage?.canonicalRoute).toBe('/es-mx/soluciones');
     expect(solutionsPage?.fields.hero.secondaryCta?.target).toBe(
       '/es-mx/contact-us',
     );
     expect(solutionsPage?.relatedPages[0]?.route).toMatch(
       /^\/es-mx\/(?!soluciones)/,
+    );
+  });
+
+  it('keeps canonical Spanish links on the localized home page', () => {
+    const homePage = resolveSlbFallbackPage('es-MX', []);
+
+    expect(homePage?.canonicalRoute).toBe('/es-mx/');
+    expect(homePage?.fields.hero.primaryCta?.target).toBe('/es-mx/soluciones');
+    expect(homePage?.fields.hero.secondaryCta?.target).toBe(
+      '/es-mx/quienes-somos',
+    );
+    expect(homePage?.relatedPages[0]?.route).toBe(
+      '/es-mx/productos-y-servicios/subsuelo-y-construccion-de-pozos',
     );
   });
 
@@ -98,6 +125,56 @@ describe('SLB route-aware fallback content', () => {
     ).toBe(false);
   });
 
+  it('forces curated fallback content over inherited Solterra main presentation', () => {
+    const fallbackPage = resolveSlbFallbackPage('en', ['solutions']);
+    const inheritedRoute = {
+      fields: {
+        metadataTitle: { value: 'SOLTERRA | Sustainable living' },
+      },
+      placeholders: {
+        'headless-main': [
+          {
+            componentName: 'Hero',
+            fields: { heading: { value: 'Welcome to SoLtErRa & Co.' } },
+          },
+        ],
+      },
+    };
+
+    expect(hasLegacySolterraSignature(inheritedRoute)).toBe(true);
+    expect(hasLegacySolterraRouteContent(inheritedRoute)).toBe(true);
+    expect(
+      shouldRenderSlbFallback({
+        route: inheritedRoute,
+        fallbackPage,
+        isDesignLibrary: false,
+      }),
+    ).toBe(true);
+  });
+
+  it('keeps genuinely SLB-authored main presentation Sitecore-first', () => {
+    const fallbackPage = resolveSlbFallbackPage('en', ['solutions']);
+    const authoredRoute = {
+      fields: { metadataTitle: { value: 'SLB | Energy innovation' } },
+      placeholders: {
+        'headless-main': [
+          {
+            componentName: 'Hero',
+            fields: { heading: { value: 'Solve with confidence' } },
+          },
+        ],
+      },
+    };
+
+    expect(
+      shouldRenderSlbFallback({
+        route: authoredRoute,
+        fallbackPage,
+        isDesignLibrary: false,
+      }),
+    ).toBe(false);
+  });
+
   it('merges Sitecore semantic fields over the route model', () => {
     const page = resolveSlbFallbackPage('en', ['solutions']);
     const merged = mergeSlbFallbackRouteFields(page, {
@@ -113,6 +190,22 @@ describe('SLB route-aware fallback content', () => {
       'A route summary authored in Sitecore.',
     );
     expect(merged?.fields.navigationTitle).toBe('Our solutions');
+  });
+
+  it('rejects inherited Solterra semantic fields and metadata case-insensitively', () => {
+    const page = resolveSlbFallbackPage('en', ['solutions']);
+    const merged = mergeSlbFallbackRouteFields(page, {
+      pageTitle: { value: 'SoLtErRa solutions' },
+      pageHeaderTitle: { value: 'Explore SOLTERRA' },
+      metadataTitle: { value: 'Solterra | Solutions' },
+      metadataDescription: {
+        value: 'Discover the Essential Beauty portfolio.',
+      },
+    });
+
+    expect(merged).toEqual(page);
+    expect(merged?.fields.seo.title).not.toMatch(/solterra/i);
+    expect(merged?.fields.seo.description).not.toMatch(/essential beauty/i);
   });
 
   it('references local assets and contains no authoring-only copy', () => {

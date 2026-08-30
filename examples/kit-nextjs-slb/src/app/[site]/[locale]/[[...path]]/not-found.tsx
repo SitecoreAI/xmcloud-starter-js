@@ -3,7 +3,6 @@ import { ErrorPage, getCachedPageParams } from '@sitecore-content-sdk/nextjs';
 import client from '@/lib/sitecore-client';
 import scConfig from 'sitecore.config';
 import Layout from '@/Layout';
-import Providers from '@/Providers';
 import { NextIntlClientProvider } from 'next-intl';
 
 export default async function NotFound() {
@@ -18,9 +17,7 @@ export default async function NotFound() {
     if (page) {
       return (
         <NextIntlClientProvider>
-          <Providers page={page}>
-            <Layout page={page} />
-          </Providers>
+          <Layout page={page} />
         </NextIntlClientProvider>
       );
     }

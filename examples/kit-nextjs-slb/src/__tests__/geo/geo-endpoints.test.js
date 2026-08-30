@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import { BASE_URL, expectValidJson, expectValidXml, expectValidText, stripLastModified } from './helpers';
-import { faqExpected, summaryExpected, serviceExpected } from './fixtures';
+import { faqExpected, summaryExpected, serviceExpected, routesExpected } from './fixtures';
 
 jest.setTimeout(15000);
 
@@ -204,16 +204,13 @@ test('GET /sitemap-llm.xml returns 200 and valid XML', async () => {
     const join = (origin, path) => `${origin.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
 
     const requiredPaths = [
-    '/',                    
+    routesExpected.home,
     '/ai/faq.json',
     '/ai/summary.json',
     '/ai/service.json',
-    '/Article-Page',
-    '/Articles/Article-1',
-    '/Articles/Article-2',
-    '/Articles/Article-3',
-    '/Articles/QA-Article-1',
-    '/Articles/QA-Article-2',
+    routesExpected.solutions,
+    routesExpected.englishInsight,
+    routesExpected.spanishInsight,
     ];
 
     const expectedUrls = requiredPaths.map(p => {
@@ -270,14 +267,10 @@ test('GET /sitemap.xml returns 200 and valid XML', async () => {
     const join = (origin, path) => `${origin.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
 
     const requiredPaths = [
-        '/',
-        '/Article-Page',
-        '/Landing-Page',
-        '/Articles/Article-1',
-        '/Articles/Article-2',
-        '/Articles/Article-3',
-        '/Articles/QA-Article-1',
-        '/Articles/QA-Article-2',
+        routesExpected.home,
+        routesExpected.solutions,
+        routesExpected.englishInsight,
+        routesExpected.spanishInsight,
     ];
     const expectedUrls = requiredPaths.map((p) => (p === '/' ? `${derivedOrigin}/` : join(derivedOrigin, p)));
     expect(locs).toEqual(expect.arrayContaining(expectedUrls));
@@ -294,11 +287,13 @@ test('GET /ai/markdown returns 200 and valid markdown (home page)', async () => 
     expect(typeof resp.data).toBe('string');
     expect(resp.data.length).toBeGreaterThan(0);
     expect(resp.data).toContain('#');
+    expect(resp.data).toContain('Engineering progress for a balanced planet');
+    expect(resp.data).not.toMatch(/solterra|authoring|datasource|placeholder|click to edit/i);
     expect(resp.data).not.toContain('<div');
 }, 15000);
 
-test('GET /ai/markdown/Article-Page returns 200 and valid markdown', async () => {
-    const resp = await axios.get(`${BASE_URL}/ai/markdown/Article-Page`, {
+test('GET the English insight AI markdown path returns public SLB content', async () => {
+    const resp = await axios.get(`${BASE_URL}/ai/markdown${routesExpected.englishInsight}`, {
         validateStatus: () => true,
         timeout: 10000,
     });
@@ -308,5 +303,23 @@ test('GET /ai/markdown/Article-Page returns 200 and valid markdown', async () =>
     expect(typeof resp.data).toBe('string');
     expect(resp.data.length).toBeGreaterThan(0);
     expect(resp.data).toContain('#');
+    expect(resp.data).toContain(routesExpected.englishInsightTitle);
+    expect(resp.data).not.toMatch(/authoring|datasource|placeholder|click to edit/i);
+    expect(resp.data).not.toContain('<div');
+}, 15000);
+
+test('GET the es-MX insight AI markdown path returns localized public content', async () => {
+    const resp = await axios.get(`${BASE_URL}/ai/markdown${routesExpected.spanishInsight}`, {
+        validateStatus: () => true,
+        timeout: 10000,
+    });
+    expect(resp.status).toBe(200);
+    const ct = (resp.headers['content-type'] || '').toLowerCase();
+    expect(ct).toContain('text/markdown');
+    expect(typeof resp.data).toBe('string');
+    expect(resp.data.length).toBeGreaterThan(0);
+    expect(resp.data).toContain('#');
+    expect(resp.data).toContain(routesExpected.spanishInsightTitle);
+    expect(resp.data).not.toMatch(/authoring|datasource|placeholder|click to edit/i);
     expect(resp.data).not.toContain('<div');
 }, 15000);

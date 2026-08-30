@@ -3,6 +3,12 @@ import { SiteResolver } from '@sitecore-content-sdk/content/site';
 import type { SitemapXmlOptions } from '@sitecore-content-sdk/content/client';
 import type { SiteInfo } from '@sitecore-content-sdk/nextjs';
 import client from '@/lib/sitecore-client';
+import {
+  getSlbFallbackSitemapEntries,
+  getSlbRequestOrigin,
+  serializeSitemap,
+  type SlbSitemapEntry,
+} from '@/lib/slb-geo-fallback';
 import sites from '.sitecore/sites.json';
 
 export const dynamic = 'force-dynamic';
@@ -32,21 +38,23 @@ function shouldIncludeUrl(url: string): boolean {
   }
 }
 
-// Escapes special XML characters
-function escapeXml(text: string): string {
-  return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
 /**
  * Builds SitemapXmlOptions from the request (Data fetching API pattern).
  * Mirrors the options used by createSitemapRouteHandler.
  */
 function getSitemapOptions(request: NextRequest): SitemapXmlOptions {
-  const sitesNormalized: SiteInfo[] = (sites as { name: string; hostName?: string; language?: string }[]).map(
-    (s) => ({ name: s.name, hostName: s.hostName ?? '*', language: s.language ?? 'en' })
-  );
+  const sitesNormalized: SiteInfo[] = (
+    sites as { name: string; hostName?: string; language?: string }[]
+  ).map((s) => ({
+    name: s.name,
+    hostName: s.hostName ?? '*',
+    language: s.language ?? 'en',
+  }));
   const siteResolver = new SiteResolver(sitesNormalized);
-  const reqHost = request.headers.get('x-forwarded-host') || request.headers.get('host') || '';
+  const reqHost =
+    request.headers.get('x-forwarded-host') ||
+    request.headers.get('host') ||
+    '';
   const forwardedProto = request.headers.get('x-forwarded-proto');
   const reqProtocol = forwardedProto
     ? forwardedProto.split(',')[0].trim()
@@ -62,8 +70,15 @@ function getSitemapOptions(request: NextRequest): SitemapXmlOptions {
 }
 
 /** Parses <url> entries from sitemap XML. */
-function parseUrlEntriesFromXml(xml: string): { loc: string; lastmod?: string; changefreq?: string; priority?: string }[] {
-  const urls: { loc: string; lastmod?: string; changefreq?: string; priority?: string }[] = [];
+function parseUrlEntriesFromXml(
+  xml: string,
+): { loc: string; lastmod?: string; changefreq?: string; priority?: string }[] {
+  const urls: {
+    loc: string;
+    lastmod?: string;
+    changefreq?: string;
+    priority?: string;
+  }[] = [];
   for (const block of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
     const loc = block[1].match(/<loc>([^<]+)<\/loc>/)?.[1];
     if (loc) {
@@ -88,12 +103,23 @@ function parseSitemapIndexLocs(xml: string): string[] {
   return locs;
 }
 
+function getAiEntries(baseUrl: string, lastmod: string): SlbSitemapEntry[] {
+  return ['/ai/faq.json', '/ai/summary.json', '/ai/service.json'].map(
+    (path) => ({
+      loc: `${baseUrl}${path}`,
+      lastmod,
+      changefreq: 'weekly',
+      priority: '0.8',
+    }),
+  );
+}
+
 // Fetches sitemap via SitecoreClient.getSiteMap (Data fetching API), filters URLs, and returns LLM-optimized XML sitemap
 export async function GET(request: NextRequest): Promise<NextResponse> {
   const options = getSitemapOptions(request);
 
   try {
-    let urls: { loc: string; lastmod?: string; changefreq?: string; priority?: string }[] = [];
+    let urls: SlbSitemapEntry[] = [];
 
     try {
       const xml = await client.getSiteMap(options);
@@ -104,7 +130,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
           const indexLocs = parseSitemapIndexLocs(xml);
           for (const loc of indexLocs) {
             try {
-              const res = await fetch(loc, { headers: { Accept: 'application/xml' } });
+              const res = await fetch(loc, {
+                headers: { Accept: 'application/xml' },
+              });
               if (res.ok) {
                 const subXml = await res.text();
                 urls.push(...parseUrlEntriesFromXml(subXml));
@@ -116,11 +144,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         }
       }
     } catch {
-      // getSiteMap failed or returned nothing; leave urls empty (sitemap will be empty)
+      // Fall through to the governed SLB catalog.
     }
 
     const today = new Date().toISOString().split('T')[0];
-    let baseUrl = `${options.reqProtocol}://${options.reqHost}`;
+    let baseUrl = getSlbRequestOrigin(request);
     if (urls.length > 0) {
       try {
         baseUrl = new URL(urls[0].loc).origin;
@@ -129,43 +157,39 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       }
     }
 
+    if (urls.length === 0) {
+      urls = getSlbFallbackSitemapEntries(baseUrl);
+    }
+
     const pageEntries = urls
-      .filter((u) => shouldIncludeUrl(u.loc))
-      .map((u) => `  <url>
-    <loc>${escapeXml(u.loc)}</loc>
-    <lastmod>${u.lastmod || today}</lastmod>
-    <changefreq>${u.changefreq || 'weekly'}</changefreq>
-    <priority>${u.priority || '0.5'}</priority>
-  </url>`);
+      .filter((url) => shouldIncludeUrl(url.loc))
+      .map((url) => ({
+        ...url,
+        lastmod: url.lastmod || today,
+        changefreq: url.changefreq || 'weekly',
+        priority: url.priority || '0.5',
+      }));
 
-    const aiEndpoints = ['/ai/faq.json', '/ai/summary.json', '/ai/service.json'] as const;
-    const aiEntries = aiEndpoints.map(
-      (path) => `  <url>
-    <loc>${escapeXml(`${baseUrl}${path}`)}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>`
-    );
+    const aiEntries = getAiEntries(baseUrl, today);
 
-    const entries =
-      pageEntries.length > 0 ? [...pageEntries, ...aiEntries].join('\n') : '';
-
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${entries}
-</urlset>`;
+    const xml = serializeSitemap([...pageEntries, ...aiEntries]);
 
     return new NextResponse(xml, {
       headers: {
         'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, max-age=300, s-maxage=300, stale-while-revalidate=3600',
+        'Cache-Control':
+          'public, max-age=300, s-maxage=300, stale-while-revalidate=3600',
       },
     });
   } catch {
-    return new NextResponse(
-      '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>',
-      { headers: { 'Content-Type': 'application/xml; charset=utf-8' } }
-    );
+    const origin = getSlbRequestOrigin(request);
+    const today = new Date().toISOString().split('T')[0];
+    const xml = serializeSitemap([
+      ...getSlbFallbackSitemapEntries(origin),
+      ...getAiEntries(origin, today),
+    ]);
+    return new NextResponse(xml, {
+      headers: { 'Content-Type': 'application/xml; charset=utf-8' },
+    });
   }
 }

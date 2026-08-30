@@ -7,16 +7,22 @@ import { routing } from '@/i18n/routing';
 import scConfig from 'sitecore.config';
 import client from '@/lib/sitecore-client';
 import Layout, { RouteFields } from '@/Layout';
-import Providers from '@/Providers';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { StructuredData } from '@/components/structured-data/StructuredData';
 import { generateWebPageSchema } from '@/lib/structured-data/schema';
 import { getBaseUrl } from '@/lib/utils';
 import {
+  getSlbLanguageRoutes,
   mergeSlbFallbackRouteFields,
   resolveSlbFallbackPage,
 } from '@/lib/slb-fallback-content';
+import { getPageWithFallbackAlias } from '@/lib/slb-page-resolution';
+import {
+  hasLegacySolterraRouteContent,
+  readSlbFieldText,
+  sanitizeLegacySolterraPage,
+} from '@/lib/slb-content-safety';
 
 type PageProps = {
   params: Promise<{
@@ -30,7 +36,11 @@ type PageProps = {
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
   const draft = await draftMode();
-  const baseUrl = getBaseUrl();
+  const headers = await nextHeaders();
+  const baseUrl = getBaseUrl(
+    headers.get('x-forwarded-host') || headers.get('host'),
+    headers.get('x-forwarded-proto'),
+  );
   const catalogFallbackPage = resolveSlbFallbackPage(locale, path);
 
   // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary
@@ -39,7 +49,6 @@ export default async function Page({ params }: PageProps) {
   // Fetch the page data from Sitecore
   let page;
   if (draft.isEnabled) {
-    const headers = await nextHeaders();
     const previewData = client.getPreviewData(headers);
     if (isDesignLibraryPreviewData(previewData)) {
       page = await client.getDesignLibraryData(previewData);
@@ -47,7 +56,13 @@ export default async function Page({ params }: PageProps) {
       page = await client.getPreview(previewData);
     }
   } else {
-    page = await client.getPage(path ?? [], { site, locale });
+    page = await getPageWithFallbackAlias({
+      getPage: client.getPage.bind(client),
+      path,
+      site,
+      locale,
+      fallbackPage: catalogFallbackPage,
+    });
   }
 
   // If the page is not found, return a 404
@@ -55,22 +70,30 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  const routeFields = page.layout.sitecore.route?.fields as RouteFields;
+  const renderPage =
+    !draft.isEnabled && catalogFallbackPage
+      ? sanitizeLegacySolterraPage(page)
+      : page;
+  const routeFields = renderPage.layout.sitecore.route?.fields as RouteFields;
+  const hasLegacyRouteContent = Boolean(
+    catalogFallbackPage &&
+      hasLegacySolterraRouteContent(page.layout.sitecore.route),
+  );
+  const sitecoreText = (field: unknown) =>
+    hasLegacyRouteContent ? undefined : readSlbFieldText(field);
   const fallbackPage = mergeSlbFallbackRouteFields(
     catalogFallbackPage,
     routeFields,
   );
   const pageTitle =
-    routeFields?.Title?.value?.toString() ||
-    fallbackPage?.fields.pageTitle ||
-    'SLB';
+    sitecoreText(routeFields?.Title) || fallbackPage?.fields.pageTitle || 'SLB';
   const pageDescription =
-    routeFields?.ogDescription?.value?.toString() ||
+    sitecoreText(routeFields?.ogDescription) ||
     fallbackPage?.fields.seo.description;
 
   const pathSegments = path && path.length > 0 ? path.join('/') : '';
   const urlPath =
-    fallbackPage?.route || (pathSegments ? `/${pathSegments}` : '');
+    fallbackPage?.canonicalRoute || (pathSegments ? `/${pathSegments}` : '');
   const fullUrl = baseUrl ? `${baseUrl}${urlPath}` : undefined;
 
   const webPageSchema = generateWebPageSchema({
@@ -88,10 +111,8 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <NextIntlClientProvider>
-      <Providers page={page}>
-        <StructuredData id="webpage-schema" data={webPageSchema} />
-        <Layout page={page} fallbackPage={fallbackPage} />
-      </Providers>
+      <StructuredData id="webpage-schema" data={webPageSchema} />
+      <Layout page={renderPage} fallbackPage={fallbackPage} />
     </NextIntlClientProvider>
   );
 }
@@ -117,22 +138,50 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({ params }: PageProps) => {
-  const baseUrl = getBaseUrl();
+  const headers = await nextHeaders();
+  const baseUrl = getBaseUrl(
+    headers.get('x-forwarded-host') || headers.get('host'),
+    headers.get('x-forwarded-proto'),
+  );
 
   const { path, site, locale } = await params;
   const catalogFallbackPage = resolveSlbFallbackPage(locale, path);
 
   // Canonical URL: base URL + content path only (no site/locale segments)
   const pathSegment =
-    catalogFallbackPage?.route || (path?.length ? `/${path.join('/')}` : '');
+    catalogFallbackPage?.canonicalRoute ||
+    (path?.length ? `/${path.join('/')}` : '');
   const canonicalUrl = baseUrl ? `${baseUrl}${pathSegment}` : undefined;
+  const slbLanguageRoutes = catalogFallbackPage
+    ? getSlbLanguageRoutes(catalogFallbackPage)
+    : undefined;
+  const languageAlternates =
+    baseUrl && slbLanguageRoutes
+      ? {
+          en: `${baseUrl}${slbLanguageRoutes.en}`,
+          'es-MX': `${baseUrl}${slbLanguageRoutes['es-MX']}`,
+          'x-default': `${baseUrl}${slbLanguageRoutes['x-default']}`,
+        }
+      : undefined;
 
   // The same call as for rendering the page. Should be cached by default react behavior
-  const page = await client.getPage(path ?? [], { site, locale });
+  const page = await getPageWithFallbackAlias({
+    getPage: client.getPage.bind(client),
+    path,
+    site,
+    locale,
+    fallbackPage: catalogFallbackPage,
+  });
 
   // Cast route fields once to avoid repeated type assertions
   const routeFields = (page?.layout.sitecore.route?.fields ??
     {}) as RouteFields;
+  const hasLegacyRouteContent = Boolean(
+    catalogFallbackPage &&
+      hasLegacySolterraRouteContent(page?.layout.sitecore.route),
+  );
+  const sitecoreText = (field: unknown) =>
+    hasLegacyRouteContent ? undefined : readSlbFieldText(field);
   const fallbackPage = mergeSlbFallbackRouteFields(
     catalogFallbackPage,
     routeFields,
@@ -140,32 +189,32 @@ export const generateMetadata = async ({ params }: PageProps) => {
 
   // Extract metadata values with fallback chain
   const metadataTitle =
-    routeFields?.metadataTitle?.value?.toString() ||
-    routeFields?.pageTitle?.value?.toString() ||
-    routeFields?.Title?.value?.toString() ||
+    sitecoreText(routeFields?.metadataTitle) ||
+    sitecoreText(routeFields?.pageTitle) ||
+    sitecoreText(routeFields?.Title) ||
     fallbackPage?.fields.seo.title ||
     'SLB';
 
   const metadataDescription =
-    routeFields?.metadataDescription?.value?.toString() ||
-    routeFields?.pageSummary?.value?.toString() ||
+    sitecoreText(routeFields?.metadataDescription) ||
+    sitecoreText(routeFields?.pageSummary) ||
     fallbackPage?.fields.seo.description ||
     'SLB drives energy innovation for a balanced planet.';
 
   const ogTitle =
-    routeFields?.ogTitle?.value?.toString() ||
+    sitecoreText(routeFields?.ogTitle) ||
     fallbackPage?.fields.seo.openGraphTitle ||
     metadataTitle;
 
   const ogDescription =
-    routeFields?.ogDescription?.value?.toString() ||
+    sitecoreText(routeFields?.ogDescription) ||
     fallbackPage?.fields.seo.openGraphDescription ||
     metadataDescription;
 
   // Ensure image URL is absolute (HTTPS preferred)
   const imageSource =
-    routeFields?.ogImage?.value?.src ||
-    routeFields?.thumbnailImage?.value?.src ||
+    (!hasLegacyRouteContent && routeFields?.ogImage?.value?.src) ||
+    (!hasLegacyRouteContent && routeFields?.thumbnailImage?.value?.src) ||
     (fallbackPage
       ? `/images/slb/${fallbackPage.fields.seo.openGraphImageFilename}`
       : undefined);
@@ -173,19 +222,20 @@ export const generateMetadata = async ({ params }: PageProps) => {
   const ogImageUrl = imageSource
     ? imageSource.startsWith('http')
       ? imageSource
-      : `${baseUrl}${imageSource.startsWith('/') ? '' : '/'}${imageSource}`
+      : baseUrl
+        ? `${baseUrl}${imageSource.startsWith('/') ? '' : '/'}${imageSource}`
+        : undefined
     : undefined;
 
   const pageUrl = canonicalUrl;
 
   // Parse keywords from comma-separated string to array (for <meta name="keywords">)
-  const keywordsString = routeFields?.metadataKeywords?.value?.toString() || '';
+  const keywordsString = sitecoreText(routeFields?.metadataKeywords) || '';
   const keywords = keywordsString
     ? keywordsString.split(',').map((k: string) => k.trim())
     : [];
 
-  const metadataAuthor =
-    routeFields?.metadataAuthor?.value?.toString() || 'SLB';
+  const metadataAuthor = sitecoreText(routeFields?.metadataAuthor) || 'SLB';
 
   return {
     title: metadataTitle,
@@ -195,6 +245,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
     ...(canonicalUrl && {
       alternates: {
         canonical: canonicalUrl,
+        ...(languageAlternates && { languages: languageAlternates }),
       },
     }),
     openGraph: {
@@ -203,7 +254,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
       url: pageUrl,
       type: 'website',
       siteName: 'SLB',
-      locale: locale || 'en',
+      locale: locale.toLowerCase() === 'es-mx' ? 'es_MX' : 'en_US',
       images: ogImageUrl
         ? [
             {

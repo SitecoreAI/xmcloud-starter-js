@@ -19,11 +19,12 @@ export const NavigationList = ({
   getLinkField,
   getNavigationText,
 }: NavigationListProps) => {
+  const [active, setActive] = useState(false);
+
   if (!fields) {
     return null;
   }
 
-  const [active, setActive] = useState(false);
   const classNameList = `${fields.Styles.concat('rel-level' + relativeLevel).join(' ')}`;
 
   let children: JSX.Element[] = [];

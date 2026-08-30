@@ -1,5 +1,5 @@
-import { JSX } from 'react';
-import { JsonLdValue, toJsonLdString } from '@/lib/structured-data/jsonld';
+import type { JSX } from 'react';
+import { toJsonLdString } from '@/lib/structured-data/jsonld';
 import { StructuredDataProps } from './structured-data.props';
 
 export function StructuredData({ id, data }: StructuredDataProps): JSX.Element {

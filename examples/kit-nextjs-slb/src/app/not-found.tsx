@@ -4,7 +4,6 @@ import { ErrorPage } from '@sitecore-content-sdk/nextjs';
 import client from '@/lib/sitecore-client';
 import scConfig from 'sitecore.config';
 import Layout from '@/Layout';
-import Providers from '@/Providers';
 
 // Metadata for 404 Not Found page
 export const metadata: Metadata = {
@@ -27,11 +26,7 @@ export default async function NotFound() {
     });
 
     if (page) {
-      return (
-        <Providers page={page}>
-          <Layout page={page} />
-        </Providers>
-      );
+      return <Layout page={page} />;
     }
   }
 

@@ -1,5 +1,15 @@
-import { Field, ImageField, Page, PageMode, ComponentRendering } from '@sitecore-content-sdk/nextjs';
-import { LogoTabsProps, LogoItemProps, LogoTabContent } from '@/components/logo-tabs/logo-tabs.props';
+import {
+  Field,
+  ImageField,
+  Page,
+  PageMode,
+  ComponentRendering,
+} from '@sitecore-content-sdk/nextjs';
+import {
+  LogoTabsProps,
+  LogoItemProps,
+  LogoTabContent,
+} from '@/components/logo-tabs/logo-tabs.props';
 import { EnumValues } from '@/enumerations/generic.enum';
 import { ColorSchemeLimited } from '@/enumerations/ColorSchemeLimited.enum';
 
@@ -63,7 +73,7 @@ export const mockBackgroundImage: ImageField = {
 export const mockLogoItem1: LogoItemProps = {
   title: {
     jsonValue: {
-      value: 'Brand A',
+      value: 'Partner A',
     } as Field<string>,
   },
   logo: {
@@ -81,7 +91,7 @@ export const mockLogoItem1: LogoItemProps = {
 export const mockLogoItem2: LogoItemProps = {
   title: {
     jsonValue: {
-      value: 'Brand B',
+      value: 'Partner B',
     } as Field<string>,
   },
   logo: {
@@ -99,7 +109,7 @@ export const mockLogoItem2: LogoItemProps = {
 export const mockLogoItem3: LogoItemProps = {
   title: {
     jsonValue: {
-      value: 'Brand C',
+      value: 'Partner C',
     } as Field<string>,
   },
   logo: {
@@ -117,7 +127,7 @@ export const mockLogoItem3: LogoItemProps = {
 export const mockLogoItem4: LogoItemProps = {
   title: {
     jsonValue: {
-      value: 'Brand D',
+      value: 'Partner D',
     } as Field<string>,
   },
   logo: {
@@ -223,7 +233,12 @@ export const mockFields = {
         results: [mockLogoItem1, mockLogoItem2, mockLogoItem3, mockLogoItem4],
       },
       logoTabContent: {
-        results: [mockTabContent1, mockTabContent2, mockTabContent3, mockTabContent4],
+        results: [
+          mockTabContent1,
+          mockTabContent2,
+          mockTabContent3,
+          mockTabContent4,
+        ],
       },
     },
   },
@@ -403,4 +418,3 @@ export const propsWithoutFields: LogoTabsProps = {
   isPageEditing: false,
   page: mockPageData.page,
 };
-

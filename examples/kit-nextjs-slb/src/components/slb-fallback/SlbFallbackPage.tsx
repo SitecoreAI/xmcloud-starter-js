@@ -16,16 +16,126 @@ interface SlbFallbackPageProps {
 
 const labels = {
   en: {
+    digital: 'Digital',
+    energy: 'Energy',
     explore: 'Explore',
+    howWeWork: 'How we work',
     related: 'Continue exploring',
+    science: 'Science',
     switchLanguage: 'Leer en español',
+    technology: 'Technology',
+    topics: 'Topics',
   },
   'es-MX': {
+    digital: 'Tecnología digital',
+    energy: 'Energía',
     explore: 'Explorar',
-    related: 'Continúa explorando',
+    howWeWork: 'Cómo trabajamos',
+    related: 'Continúe explorando',
+    science: 'Ciencia',
     switchLanguage: 'Read in English',
+    technology: 'Tecnología',
+    topics: 'Temas',
   },
 } as const;
+
+type LocalizedLabels = (typeof labels)[keyof typeof labels];
+
+// Cards only become links when the content-to-destination relationship is
+// explicitly approved here. If either title changes, the card safely renders
+// as editorial content instead of silently pointing to an unrelated page.
+const relatedPageTitleByCard: Readonly<
+  Record<string, Readonly<Record<string, string>>>
+> = {
+  H01: {
+    'Innovate in oil and gas': 'Subsurface and well delivery',
+    'Deliver digital and AI at scale': 'Digital operations',
+    'Decarbonize industry': 'Industrial decarbonization',
+    'Scale new energy systems': 'New energy systems',
+    'Innovar en petróleo y gas': 'Subsuelo y construcción de pozos',
+    'Llevar la tecnología digital y la IA a escala': 'Operaciones digitales',
+    'Descarbonizar la industria': 'Descarbonización industrial',
+    'Escalar nuevos sistemas de energía': 'Nuevos sistemas de energía',
+  },
+  S01: {
+    'Improve performance': 'Products and services',
+    'Connect decisions': 'Digital operations',
+    'Reduce emissions': 'Industrial decarbonization',
+    'Develop new systems': 'New energy systems',
+    'Mejorar el desempeño': 'Productos y servicios',
+    'Conectar decisiones': 'Operaciones digitales',
+    'Reducir emisiones': 'Descarbonización industrial',
+    'Desarrollar nuevos sistemas': 'Nuevos sistemas de energía',
+  },
+  S04: {
+    'Carbon storage': 'Carbon capture, utilization, and sequestration',
+    'Almacenamiento de carbono':
+      'Captura, utilización y almacenamiento de carbono',
+  },
+  P01: {
+    'Understand the subsurface': 'Subsurface and well delivery',
+    'Connect data and AI': 'Data and AI',
+    'Comprender el subsuelo': 'Subsuelo y construcción de pozos',
+    'Conectar datos e IA': 'Datos e IA',
+  },
+  U01: {
+    'Climate action': 'Climate action',
+    People: 'People and communities',
+    Nature: 'Nature and responsible operations',
+    'Acción climática': 'Acción climática',
+    Personas: 'Personas y comunidades',
+    Naturaleza: 'Naturaleza y operaciones responsables',
+  },
+  N02: {
+    'AI in energy starts with trusted context':
+      'AI in energy starts with trusted context',
+    'Designing decarbonization for execution':
+      'Designing decarbonization for execution',
+    'La IA en energía comienza con un contexto confiable':
+      'La IA en energía comienza con un contexto confiable',
+    'Diseñar la descarbonización para la ejecución':
+      'Diseñar la descarbonización para la ejecución',
+    'What it takes to scale subsurface innovation':
+      'Subsurface and well delivery',
+    'Lo que se necesita para escalar la innovación del subsuelo':
+      'Subsuelo y construcción de pozos',
+  },
+  N05: {
+    'Company news': 'News and insights',
+    'Technology updates': 'Insights',
+    'Project stories': 'News and insights',
+    'Noticias de la compañía': 'Noticias y análisis',
+    'Actualizaciones de tecnología': 'Análisis',
+    'Historias de proyectos': 'Noticias y análisis',
+  },
+  A01: {
+    People: 'People and culture',
+    Technology: 'Technology and innovation',
+    Personas: 'Personas y cultura',
+    Tecnología: 'Tecnología e innovación',
+  },
+  C01: {
+    'Discuss a technical challenge': 'Solutions',
+    'Explore products and services': 'Products and services',
+    'Company and media inquiries': 'Newsroom',
+    'Analizar un desafío técnico': 'Soluciones',
+    'Explorar productos y servicios': 'Productos y servicios',
+    'Consultas corporativas y de medios': 'Sala de prensa',
+  },
+};
+
+function relatedPageForCard(
+  pageId: string,
+  cardTitle: string,
+  relatedPages: SlbFallbackRelatedPage[],
+) {
+  const approvedTitle = relatedPageTitleByCard[pageId]?.[cardTitle];
+  if (!approvedTitle) return undefined;
+
+  return relatedPages.find(
+    (relatedPage) => relatedPage.title === approvedTitle,
+  );
+}
 
 function ArrowIcon() {
   return (
@@ -92,10 +202,12 @@ function EditorialImage({
 function CardGrid({
   component,
   images,
+  pageId,
   relatedPages,
 }: {
   component: SlbFallbackComponent;
   images: SlbFallbackImage[];
+  pageId: string;
   relatedPages: SlbFallbackRelatedPage[];
 }) {
   if (!component.items?.length) return null;
@@ -116,9 +228,11 @@ function CardGrid({
             const image = images.length
               ? images[index % images.length]
               : undefined;
-            const relatedPage = relatedPages.length
-              ? relatedPages[index % relatedPages.length]
-              : undefined;
+            const relatedPage = relatedPageForCard(
+              pageId,
+              item.title,
+              relatedPages,
+            );
             const cardContent = (
               <>
                 {image && (
@@ -147,7 +261,7 @@ function CardGrid({
                     {cardContent}
                   </Link>
                 ) : (
-                  cardContent
+                  <div className={styles.cardStatic}>{cardContent}</div>
                 )}
               </article>
             );
@@ -192,10 +306,12 @@ function ContentSection({
 function ContentRail({
   component,
   images,
+  pageId,
   relatedPages,
 }: {
   component: SlbFallbackComponent;
   images: SlbFallbackImage[];
+  pageId: string;
   relatedPages: SlbFallbackRelatedPage[];
 }) {
   if (!component.items?.length && !component.body && !component.cta)
@@ -219,9 +335,11 @@ function ContentRail({
               const image = images.length
                 ? images[index % images.length]
                 : undefined;
-              const relatedPage = relatedPages.length
-                ? relatedPages[index % relatedPages.length]
-                : undefined;
+              const relatedPage = relatedPageForCard(
+                pageId,
+                item.title,
+                relatedPages,
+              );
               const content = (
                 <>
                   {image && (
@@ -257,7 +375,13 @@ function ContentRail({
   );
 }
 
-function ProcessSteps({ component }: { component: SlbFallbackComponent }) {
+function ProcessSteps({
+  component,
+  kicker,
+}: {
+  component: SlbFallbackComponent;
+  kicker: string;
+}) {
   const steps = component.body
     ?.split(/(?<=[.!?])\s+/)
     .map((step) => step.trim())
@@ -270,7 +394,7 @@ function ProcessSteps({ component }: { component: SlbFallbackComponent }) {
     >
       <div className={styles.sectionInner}>
         <div className={styles.sectionIntro}>
-          <p className={styles.kicker}>How we work</p>
+          <p className={styles.kicker}>{kicker}</p>
           <h2>{component.heading}</h2>
         </div>
         <div className={styles.steps}>
@@ -303,20 +427,25 @@ function FilterBar({ component }: { component: SlbFallbackComponent }) {
       id={component.anchorId}
     >
       <div className={styles.filterInner}>
-        {filters.map((filter, index) => (
-          <span
-            className={index === 0 ? styles.activeFilter : styles.filter}
-            key={filter}
-          >
-            {filter}
-          </span>
-        ))}
+        <ul className={styles.filterList}>
+          {filters.map((filter) => (
+            <li className={styles.filter} key={filter}>
+              {filter}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
 }
 
-function CompactFeature({ component }: { component: SlbFallbackComponent }) {
+function CompactFeature({
+  component,
+  kicker,
+}: {
+  component: SlbFallbackComponent;
+  kicker: string;
+}) {
   return (
     <section
       className={`${styles.section} ${styles.deepFeature}`}
@@ -324,7 +453,7 @@ function CompactFeature({ component }: { component: SlbFallbackComponent }) {
     >
       <div className={styles.featureInner}>
         <div>
-          <p className={styles.kickerAqua}>Technology</p>
+          <p className={styles.kickerAqua}>{kicker}</p>
           <h2>{component.heading}</h2>
         </div>
         <div>
@@ -341,12 +470,16 @@ function ComponentSection({
   image,
   index,
   images,
+  localizedLabels,
+  pageId,
   relatedPages,
 }: {
   component: SlbFallbackComponent;
   image?: SlbFallbackImage;
   index: number;
   images: SlbFallbackImage[];
+  localizedLabels: LocalizedLabels;
+  pageId: string;
   relatedPages: SlbFallbackRelatedPage[];
 }) {
   switch (component.type) {
@@ -355,6 +488,7 @@ function ComponentSection({
         <CardGrid
           component={component}
           images={images}
+          pageId={pageId}
           relatedPages={relatedPages}
         />
       );
@@ -363,16 +497,27 @@ function ComponentSection({
         <ContentRail
           component={component}
           images={images}
+          pageId={pageId}
           relatedPages={relatedPages}
         />
       );
     case 'filterBar':
       return <FilterBar component={component} />;
     case 'processSteps':
-      return <ProcessSteps component={component} />;
+      return (
+        <ProcessSteps
+          component={component}
+          kicker={localizedLabels.howWeWork}
+        />
+      );
     case 'productFeature':
     case 'resourceLinks':
-      return <CompactFeature component={component} />;
+      return (
+        <CompactFeature
+          component={component}
+          kicker={localizedLabels.technology}
+        />
+      );
     case 'contentSection':
     default:
       return (
@@ -418,11 +563,23 @@ export default function SlbFallbackPage({
               <SlbLink cta={fields.hero.secondaryCta} variant="secondary" />
             )}
           </div>
-          {fields.hero.filterLabels && (
-            <div className={styles.heroFilters}>
-              {fields.hero.filterLabels.map((filter) => (
-                <span key={filter}>{filter}</span>
-              ))}
+          {(fields.hero.searchLabel || fields.hero.filterLabels?.length) && (
+            <div className={styles.heroDiscovery}>
+              {fields.hero.searchLabel && (
+                <p className={styles.heroSearchLabel}>
+                  {fields.hero.searchLabel}
+                </p>
+              )}
+              {!!fields.hero.filterLabels?.length && (
+                <ul
+                  aria-label={localizedLabels.topics}
+                  className={styles.heroFilters}
+                >
+                  {fields.hero.filterLabels.map((filter) => (
+                    <li key={filter}>{filter}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
         </div>
@@ -435,9 +592,9 @@ export default function SlbFallbackPage({
       </section>
 
       <div className={styles.signalBar} aria-hidden="true">
-        <span>Science</span>
-        <span>Digital</span>
-        <span>Energy</span>
+        <span>{localizedLabels.science}</span>
+        <span>{localizedLabels.digital}</span>
+        <span>{localizedLabels.energy}</span>
       </div>
 
       {fields.components.map((component, index) => {
@@ -454,6 +611,8 @@ export default function SlbFallbackPage({
             images={fields.supportingImages}
             index={index}
             key={component.id}
+            localizedLabels={localizedLabels}
+            pageId={page.id}
             relatedPages={page.relatedPages}
           />
         );

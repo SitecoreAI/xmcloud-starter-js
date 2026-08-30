@@ -1,4 +1,4 @@
-import { type NextRequest } from 'next/server';
+import { NextRequest } from 'next/server';
 import {
   defineProxy,
   PreviewProxy,
@@ -75,10 +75,49 @@ const personalize = new PersonalizeProxy({
   skip: () => false,
 });
 
-export default function proxy(req: NextRequest) {
-  return defineProxy(preview, locale, multisite, redirects, personalize).exec(
-    req,
+export function normalizePublicLocalePathname(pathname: string): string {
+  return pathname.replace(/^\/es-mx(?=\/|$)/, '/es-MX');
+}
+
+export default async function proxy(req: NextRequest) {
+  const normalizedPathname = normalizePublicLocalePathname(
+    req.nextUrl.pathname,
   );
+  const proxyRequest =
+    normalizedPathname === req.nextUrl.pathname ? req : new NextRequest(req);
+
+  // LocaleProxy matches configured locale codes case-sensitively. Keep the
+  // public URL lowercase while presenting Sitecore's canonical es-MX code to
+  // the internal proxy chain.
+  proxyRequest.nextUrl.pathname = normalizedPathname;
+
+  const response = await defineProxy(
+    preview,
+    locale,
+    multisite,
+    redirects,
+    personalize,
+  ).exec(proxyRequest);
+
+  // LocaleProxy writes the resolved locale to the response. Also expose it to
+  // Server Components so the root document can emit an accurate lang value.
+  const resolvedLocale = response.headers.get('x-sc-locale');
+  if (resolvedLocale) {
+    const overriddenHeaders = new Set(
+      (response.headers.get('x-middleware-override-headers') || '')
+        .split(',')
+        .map((header) => header.trim())
+        .filter(Boolean),
+    );
+    overriddenHeaders.add('x-sc-locale');
+    response.headers.set(
+      'x-middleware-override-headers',
+      [...overriddenHeaders].join(','),
+    );
+    response.headers.set('x-middleware-request-x-sc-locale', resolvedLocale);
+  }
+
+  return response;
 }
 
 export const config = {

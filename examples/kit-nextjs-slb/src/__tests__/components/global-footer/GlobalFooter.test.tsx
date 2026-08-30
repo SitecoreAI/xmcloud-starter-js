@@ -307,8 +307,10 @@ describe('GlobalFooter Component', () => {
     it('should render with empty datasource', () => {
       render(<GlobalFooter {...propsWithoutDatasource} />);
 
-      // Component should still render but with no content
       expect(screen.getByRole('contentinfo')).toBeInTheDocument();
+      expect(
+        screen.getByTestId('slb-footer-local-fallback'),
+      ).toBeInTheDocument();
       expect(
         screen.getByTestId('slb-footer-logo-fallback'),
       ).toBeInTheDocument();
@@ -352,15 +354,16 @@ describe('GlobalFooter Component', () => {
   });
 
   describe('Edge cases and fallbacks', () => {
-    it('should render NoDataFallback when fields is null', () => {
+    it('should render the safe local SLB footer when fields are null', () => {
       render(<GlobalFooter {...propsWithoutFields} />);
 
-      const fallback = screen.getByTestId('no-data-fallback');
-      expect(fallback).toBeInTheDocument();
-      expect(fallback).toHaveTextContent('Global Footer');
+      expect(
+        screen.getByTestId('slb-footer-local-fallback'),
+      ).toBeInTheDocument();
+      expect(screen.queryByTestId('no-data-fallback')).not.toBeInTheDocument();
     });
 
-    it('should render NoDataFallback when fields is undefined', () => {
+    it('should render the safe local SLB footer when fields are undefined', () => {
       const propsWithUndefinedFields = {
         ...defaultProps,
         fields: undefined as unknown as GlobalFooterProps['fields'],
@@ -368,15 +371,64 @@ describe('GlobalFooter Component', () => {
 
       render(<GlobalFooter {...propsWithUndefinedFields} />);
 
-      const fallback = screen.getByTestId('no-data-fallback');
-      expect(fallback).toBeInTheDocument();
+      expect(
+        screen.getByTestId('slb-footer-local-fallback'),
+      ).toBeInTheDocument();
     });
 
     it('should handle missing datasource gracefully', () => {
       render(<GlobalFooter {...propsWithoutDatasource} />);
 
       expect(screen.getByRole('contentinfo')).toBeInTheDocument();
-      expect(screen.queryByTestId('callout-title')).toBeInTheDocument();
+      expect(
+        screen.getByText('Ready to move energy forward?'),
+      ).toBeInTheDocument();
+    });
+
+    it('replaces inherited Solterra content with the local SLB footer in every mode', () => {
+      const inheritedProps = {
+        ...defaultProps,
+        fields: {
+          data: {
+            datasource: {
+              ...defaultProps.fields?.data?.datasource,
+              footerPromoTitle: { jsonValue: { value: 'Explore Solterra' } },
+              footerCopyright: { jsonValue: { value: '© Solterra' } },
+            },
+          },
+        },
+      } as GlobalFooterProps;
+
+      const { rerender } = render(<GlobalFooter {...inheritedProps} />);
+
+      expect(
+        screen.getByTestId('slb-footer-local-fallback'),
+      ).toBeInTheDocument();
+      expect(screen.queryByText(/solterra/i)).not.toBeInTheDocument();
+
+      rerender(<GlobalFooter {...inheritedProps} page={propsEditing.page} />);
+
+      expect(
+        screen.getByTestId('slb-footer-local-fallback'),
+      ).toBeInTheDocument();
+      expect(screen.queryByText(/solterra/i)).not.toBeInTheDocument();
+    });
+
+    it('localizes the safe footer fallback for Spanish pages', () => {
+      const spanishProps = {
+        ...propsWithoutDatasource,
+        page: { ...propsWithoutDatasource.page, locale: 'es-MX' },
+      } as GlobalFooterProps;
+
+      render(<GlobalFooter {...spanishProps} />);
+
+      expect(
+        screen.getByText('¿Listo para impulsar la energía?'),
+      ).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: 'Contáctenos' })).toHaveAttribute(
+        'href',
+        '/es-mx/contactenos',
+      );
     });
 
     it('should handle undefined social links results', () => {

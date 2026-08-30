@@ -4,7 +4,6 @@ import {
   isContainerPlaceholderEmpty,
 } from '@/components/container/container.util';
 import { cn } from '@/lib/utils';
-import type { JSX } from 'react';
 import componentMap from '.sitecore/component-map';
 import { AppPlaceholder } from '@sitecore-content-sdk/nextjs';
 import {

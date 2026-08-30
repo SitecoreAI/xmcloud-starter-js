@@ -1,4 +1,9 @@
 import catalogJson from '@/content/slb-fallback-content.json';
+import {
+  hasLegacySolterraRouteContent,
+  hasLegacySolterraSignature,
+  readSlbFieldText,
+} from '@/lib/slb-content-safety';
 
 export type SlbLocale = 'en' | 'es-MX';
 
@@ -93,12 +98,19 @@ export interface SlbFallbackPageModel {
   id: string;
   locale: SlbLocale;
   route: string;
+  canonicalRoute: string;
   alternateRoute: string;
   alternateLocaleLabel: string;
   section: string;
   template: string;
   fields: SlbFallbackFields;
   relatedPages: SlbFallbackRelatedPage[];
+}
+
+export interface SlbLanguageRoutes {
+  en: string;
+  'es-MX': string;
+  'x-default': string;
 }
 
 const catalog = catalogJson as SlbFallbackCatalog;
@@ -187,6 +199,8 @@ export function resolveSlbFallbackPage(
   const useSharedSpanishRoutes =
     currentLocale === 'es-MX' &&
     contentPathForRoute(sharedLanguageRoute(page), currentLocale) ===
+      currentPath &&
+    contentPathForRoute(page.routes[currentLocale], currentLocale) !==
       currentPath;
 
   const translateTarget = (target: string): string => {
@@ -264,12 +278,28 @@ export function resolveSlbFallbackPage(
     id: page.id,
     locale: currentLocale,
     route: outputRouteForPage(page, currentLocale, useSharedSpanishRoutes),
+    canonicalRoute: page.routes[currentLocale],
     alternateRoute: page.routes[alternateLocale],
     alternateLocaleLabel: alternateConfig?.displayName || alternateLocale,
     section: page.section,
     template: page.template,
     fields: localizedFields,
     relatedPages,
+  };
+}
+
+export function getSlbLanguageRoutes(
+  page: SlbFallbackPageModel,
+): SlbLanguageRoutes {
+  const englishRoute =
+    page.locale === 'en' ? page.canonicalRoute : page.alternateRoute;
+  const spanishRoute =
+    page.locale === 'es-MX' ? page.canonicalRoute : page.alternateRoute;
+
+  return {
+    en: englishRoute,
+    'es-MX': spanishRoute,
+    'x-default': englishRoute,
   };
 }
 
@@ -307,19 +337,9 @@ export function shouldRenderSlbFallback({
     route &&
       fallbackPage &&
       !isDesignLibrary &&
-      !hasPlaceholderPresentation(route, 'headless-main'),
+      (hasLegacySolterraRouteContent(route) ||
+        !hasPlaceholderPresentation(route, 'headless-main')),
   );
-}
-
-function fieldText(field: unknown): string | undefined {
-  if (typeof field === 'string') return field.trim() || undefined;
-  if (!field || typeof field !== 'object') return undefined;
-
-  const record = field as Record<string, unknown>;
-  const raw = record.value ?? record.jsonValue;
-  if (typeof raw === 'string') return raw.trim() || undefined;
-  if (raw && typeof raw === 'object') return fieldText(raw);
-  return undefined;
 }
 
 function firstField(
@@ -327,7 +347,7 @@ function firstField(
   ...names: string[]
 ): string | undefined {
   for (const name of names) {
-    const value = fieldText(fields[name]);
+    const value = readSlbFieldText(fields[name]);
     if (value) return value;
   }
   return undefined;
@@ -338,6 +358,7 @@ export function mergeSlbFallbackRouteFields(
   routeFields: unknown,
 ): SlbFallbackPageModel | undefined {
   if (!page || !routeFields || typeof routeFields !== 'object') return page;
+  if (hasLegacySolterraSignature(routeFields)) return page;
 
   const fields = routeFields as Record<string, unknown>;
   const pageTitle = firstField(fields, 'pageTitle', 'Title');

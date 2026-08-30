@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const sourcePath = process.argv[2];
+const requestedOutputPath = process.argv[3];
 
 if (!sourcePath) {
     throw new Error(
@@ -11,10 +12,12 @@ if (!sourcePath) {
 }
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
-const outputPath = path.resolve(
-    scriptDirectory,
-    "../src/content/slb-fallback-content.json",
-);
+const outputPath = requestedOutputPath
+    ? path.resolve(requestedOutputPath)
+    : path.resolve(
+          scriptDirectory,
+          "../src/content/slb-fallback-content.json",
+      );
 const source = JSON.parse(await readFile(path.resolve(sourcePath), "utf8"));
 
 const authoringInstruction =
@@ -59,19 +62,104 @@ const itemOverrides = {
         {
             title: "Noticias de la compañía",
             summary:
-                "Consulta anuncios corporativos y novedades de los equipos de SLB.",
+                "Consulte anuncios corporativos y novedades de los equipos de SLB.",
         },
         {
             title: "Actualizaciones de tecnología",
             summary:
-                "Explora nuevas capacidades para las operaciones energéticas y los sistemas emergentes.",
+                "Explore nuevas capacidades para las operaciones energéticas y los sistemas emergentes.",
         },
         {
             title: "Historias de proyectos",
             summary:
-                "Descubre cómo la tecnología, la experiencia y la colaboración se unen en campo.",
+                "Descubra cómo la tecnología, la experiencia y la colaboración se unen en campo.",
         },
     ],
+};
+
+const bodyOverrides = {
+    "P01:component-03:es-MX":
+        "Descubra tecnologías recientes que convierten la ciencia, los datos y la experiencia de campo en capacidades prácticas para operaciones energéticas más eficientes y sostenibles.",
+    "N05:component-01:es-MX":
+        "Explore anuncios corporativos, lanzamientos tecnológicos e historias de proyectos que muestran cómo los equipos de SLB convierten la innovación energética en resultados.",
+    "A04:component-03:en":
+        "SLB has a long-standing presence in Mexico and works with local talent, customers, communities, and institutions across the region. Local teams combine technological innovation with responsible performance to address the energy priorities of each market.",
+    "A04:component-03:es-MX":
+        "SLB tiene una presencia de larga trayectoria en México y colabora con talento local, clientes, comunidades e instituciones de toda la región. Los equipos locales combinan la innovación tecnológica con un desempeño responsable para responder a las prioridades energéticas de cada mercado.",
+};
+
+const relatedPageRouteOverrides = {
+    H01: {
+        en: [
+            "/products-and-services/subsurface-and-well-delivery",
+            "/solutions/digital-operations",
+            "/solutions/industrial-decarbonization",
+            "/solutions/new-energy-systems",
+        ],
+        "es-MX": [
+            "/es-mx/productos-y-servicios/subsuelo-y-construccion-de-pozos",
+            "/es-mx/soluciones/operaciones-digitales",
+            "/es-mx/soluciones/descarbonizacion-industrial",
+            "/es-mx/soluciones/sistemas-de-nueva-energia",
+        ],
+    },
+    S01: {
+        en: [
+            "/products-and-services",
+            "/solutions/digital-operations",
+            "/solutions/industrial-decarbonization",
+            "/solutions/new-energy-systems",
+        ],
+        "es-MX": [
+            "/es-mx/productos-y-servicios",
+            "/es-mx/soluciones/operaciones-digitales",
+            "/es-mx/soluciones/descarbonizacion-industrial",
+            "/es-mx/soluciones/sistemas-de-nueva-energia",
+        ],
+    },
+    U02: {
+        en: [
+            "/sustainability",
+            "/solutions/industrial-decarbonization",
+            "/solutions/new-energy-systems",
+            "/news-and-insights/insights/designing-decarbonization-for-execution",
+        ],
+        "es-MX": [
+            "/es-mx/sostenibilidad",
+            "/es-mx/soluciones/descarbonizacion-industrial",
+            "/es-mx/soluciones/sistemas-de-nueva-energia",
+            "/es-mx/noticias-y-analisis/analisis/disenar-la-descarbonizacion-para-la-ejecucion",
+        ],
+    },
+    N02: {
+        en: [
+            "/news-and-insights/insights/ai-starts-with-trusted-context",
+            "/news-and-insights/insights/designing-decarbonization-for-execution",
+            "/products-and-services/subsurface-and-well-delivery",
+        ],
+        "es-MX": [
+            "/es-mx/noticias-y-analisis/analisis/la-ia-comienza-con-un-contexto-confiable",
+            "/es-mx/noticias-y-analisis/analisis/disenar-la-descarbonizacion-para-la-ejecucion",
+            "/es-mx/productos-y-servicios/subsuelo-y-construccion-de-pozos",
+        ],
+    },
+    A01: {
+        en: [
+            "/about-us/people-and-culture",
+            "/about-us/technology-and-innovation",
+            "/about-us/global-presence",
+        ],
+        "es-MX": [
+            "/es-mx/quienes-somos/personas-y-cultura",
+            "/es-mx/quienes-somos/tecnologia-e-innovacion",
+            "/es-mx/quienes-somos/presencia-global",
+        ],
+    },
+};
+
+const finalCtaTargetOverrides = {
+    "N01:en": "/newsroom#newsletter",
+    "N01:es-MX": "/es-mx/sala-de-prensa#newsletter",
 };
 
 const normalizedAnchors = new Map([
@@ -118,7 +206,9 @@ const cleanComponent = (component, pageId, locale) => ({
     heading:
         headingOverrides[`${pageId}:${component.id}:${locale}`] ||
         component.heading,
-    body: cleanBody(component.body),
+    body:
+        bodyOverrides[`${pageId}:${component.id}:${locale}`] ||
+        cleanBody(component.body),
     items: Array.isArray(
         itemOverrides[`${pageId}:${component.id}:${locale}`] || component.items,
     )
@@ -148,7 +238,9 @@ const cleanFields = (fields, pageId, locale) => {
         .map((component) => cleanComponent(component, pageId, locale))
         .sort((left, right) => left.order - right.order);
 
-    const heroAnchor = hero.primaryCta?.target.split("#", 2)[1];
+    const heroAnchor = [hero.primaryCta, hero.secondaryCta]
+        .map((cta) => cta?.target.split("#", 2)[1])
+        .find(Boolean);
     if (heroAnchor && components[0]) components[0].anchorId = heroAnchor;
     components.forEach((component) => {
         const componentAnchor = component.cta?.target.split("#", 2)[1];
@@ -168,6 +260,10 @@ const cleanFields = (fields, pageId, locale) => {
             ? {
                   heading: fields.finalCta.heading,
                   ...cleanCta(fields.finalCta),
+                  ...(finalCtaTargetOverrides[`${pageId}:${locale}`] && {
+                      target:
+                          finalCtaTargetOverrides[`${pageId}:${locale}`],
+                  }),
               }
             : undefined,
     };
@@ -280,22 +376,22 @@ const contactPage = {
             },
         },
         "es-MX": {
-            pageTitle: "Habla con un especialista de SLB",
+            pageTitle: "Hable con un especialista de SLB",
             navigationTitle: "Contáctenos",
             seo: {
                 title: "Contáctenos | SLB",
                 description:
-                    "Cuéntanos en qué estás trabajando. Te pondremos en contacto con el equipo técnico y comercial adecuado.",
-                openGraphTitle: "Habla con un especialista de SLB | SLB",
+                    "Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.",
+                openGraphTitle: "Hable con un especialista de SLB | SLB",
                 openGraphDescription:
-                    "Cuéntanos en qué estás trabajando. Te pondremos en contacto con el equipo técnico y comercial adecuado.",
+                    "Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.",
                 openGraphImageFilename: "solutions-local-expertise.jpg",
             },
             hero: {
-                eyebrow: "Contacta a SLB",
-                heading: "Habla con un especialista de SLB",
+                eyebrow: "Contacte a SLB",
+                heading: "Hable con un especialista de SLB",
                 summary:
-                    "Cuéntanos en qué estás trabajando. Te pondremos en contacto con el equipo técnico y comercial adecuado.",
+                    "Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.",
                 image: {
                     filename: "solutions-local-expertise.jpg",
                     alt: "Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo.",
@@ -311,23 +407,23 @@ const contactPage = {
                     id: "component-01",
                     type: "cardGrid",
                     order: 1,
-                    heading: "¿Cómo podemos ayudarte?",
-                    body: "Elige el motivo que mejor describa tu trabajo para que tu consulta llegue al equipo adecuado.",
+                    heading: "¿Cómo podemos ayudarle?",
+                    body: "Elija el motivo que mejor describa su trabajo para que su consulta llegue al equipo adecuado.",
                     items: [
                         {
                             title: "Analizar un desafío técnico",
                             summary:
-                                "Conecta con especialistas en subsuelo, pozos, producción, tecnología digital, descarbonización y nuevas energías.",
+                                "Conéctese con especialistas en subsuelo, pozos, producción, tecnología digital, descarbonización y nuevas energías.",
                         },
                         {
                             title: "Explorar productos y servicios",
                             summary:
-                                "Encuentra la tecnología, el servicio o la capacidad digital adecuada para tu contexto operativo.",
+                                "Encuentre la tecnología, el servicio o la capacidad digital adecuada para su contexto operativo.",
                         },
                         {
                             title: "Consultas corporativas y de medios",
                             summary:
-                                "Accede al recurso adecuado para temas corporativos, inversionistas, carreras o medios.",
+                                "Acceda al recurso adecuado para temas corporativos, inversionistas, carreras o medios.",
                         },
                     ],
                 },
@@ -335,8 +431,8 @@ const contactPage = {
                     id: "component-02",
                     type: "contentSection",
                     order: 2,
-                    heading: "Comienza con el contexto",
-                    body: "Comparte el resultado que necesitas, dónde se realizará el trabajo y la mejor forma de contactarte. El equipo de SLB dirigirá tu consulta a los especialistas mejor preparados para responder.",
+                    heading: "Comience con el contexto",
+                    body: "Comparta el resultado que necesita, dónde se realizará el trabajo y la mejor forma de comunicarnos con usted. El equipo de SLB dirigirá su consulta a los especialistas mejor preparados para responder.",
                     cta: {
                         label: "Abrir el formulario de contacto de SLB",
                         target: "https://www.slb.com/contact-us",
@@ -351,8 +447,8 @@ const contactPage = {
                 },
             ],
             finalCta: {
-                heading: "¿Listo para conversar?",
-                label: "Contactar a SLB",
+                heading: "¿Desea conversar?",
+                label: "Contacte a SLB",
                 target: "https://www.slb.com/contact-us",
                 targetType: "external",
             },
@@ -380,7 +476,8 @@ const output = {
             section: page.section,
             template: page.template,
             routes: page.routes,
-            relatedPageRoutes: page.relatedPageRoutes,
+            relatedPageRoutes:
+                relatedPageRouteOverrides[page.id] || page.relatedPageRoutes,
             fields: {
                 en: cleanFields(page.fields.en, page.id, "en"),
                 "es-MX": cleanFields(page.fields["es-MX"], page.id, "es-MX"),
@@ -390,5 +487,9 @@ const output = {
     ],
 };
 
-await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
+const serializedOutput = `${JSON.stringify(output, null, 4)}\n`.replace(
+    /\n/g,
+    "\r\n",
+);
+await writeFile(outputPath, serializedOutput, "utf8");
 console.log(`Wrote ${output.pages.length} bilingual pages to ${outputPath}`);

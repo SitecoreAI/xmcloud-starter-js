@@ -33,6 +33,18 @@ jest.mock('@/components/slb-fallback/SlbFallbackPage', () => ({
   ),
 }));
 
+jest.mock('@/components/global-header/GlobalHeader', () => ({
+  LocalSlbHeader: ({ page }: { page: { locale?: string } }) => (
+    <div data-locale={page.locale} data-testid="slb-header-local-fallback" />
+  ),
+}));
+
+jest.mock('@/components/global-footer/GlobalFooter', () => ({
+  LocalSlbFooter: ({ locale }: { locale?: string }) => (
+    <div data-locale={locale} data-testid="slb-footer-local-fallback" />
+  ),
+}));
+
 jest.mock('.sitecore/component-map', () => ({
   __esModule: true,
   default: new Map(),
@@ -41,11 +53,17 @@ jest.mock('.sitecore/component-map', () => ({
 function createPage({
   isEditing = false,
   isDesignLibrary = false,
+  header = [],
   main = [],
+  footer = [],
+  locale = 'en',
 }: {
   isEditing?: boolean;
   isDesignLibrary?: boolean;
+  header?: unknown[];
   main?: unknown[];
+  footer?: unknown[];
+  locale?: string;
 } = {}): Page {
   return {
     mode: {
@@ -62,14 +80,14 @@ function createPage({
         route: {
           componentName: 'Route',
           placeholders: {
-            'headless-header': [],
+            'headless-header': header,
             'headless-main': main,
-            'headless-footer': [],
+            'headless-footer': footer,
           },
         },
       },
     },
-    locale: 'en',
+    locale,
   } as unknown as Page;
 }
 
@@ -84,11 +102,38 @@ describe('Layout route-aware fallback', () => {
       screen.queryByTestId('placeholder-headless-main'),
     ).not.toBeInTheDocument();
     expect(
+      screen.queryByTestId('placeholder-headless-header'),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId('placeholder-headless-footer'),
+    ).not.toBeInTheDocument();
+    expect(screen.getByTestId('slb-header-local-fallback')).toBeInTheDocument();
+    expect(screen.getByTestId('slb-footer-local-fallback')).toBeInTheDocument();
+  });
+
+  it('defers nonempty header and footer presentation to Sitecore', () => {
+    render(
+      <Layout
+        page={createPage({
+          header: [{ componentName: 'GlobalHeader' }],
+          footer: [{ componentName: 'GlobalFooter' }],
+        })}
+        fallbackPage={fallbackPage}
+      />,
+    );
+
+    expect(
       screen.getByTestId('placeholder-headless-header'),
     ).toBeInTheDocument();
     expect(
       screen.getByTestId('placeholder-headless-footer'),
     ).toBeInTheDocument();
+    expect(
+      screen.queryByTestId('slb-header-local-fallback'),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId('slb-footer-local-fallback'),
+    ).not.toBeInTheDocument();
   });
 
   it('defers to Sitecore as soon as the main placeholder has a rendering', () => {
@@ -103,6 +148,38 @@ describe('Layout route-aware fallback', () => {
     expect(screen.getByTestId('placeholder-headless-main')).toBeInTheDocument();
   });
 
+  it('never renders inherited Solterra main presentation on a curated route', () => {
+    const inheritedMain = [
+      {
+        componentName: 'PageHeader',
+        fields: { title: { value: 'Welcome to SOLTERRA' } },
+      },
+    ];
+    const { rerender } = render(
+      <Layout
+        page={createPage({ main: inheritedMain })}
+        fallbackPage={fallbackPage}
+      />,
+    );
+
+    expect(screen.getByTestId('slb-fallback')).toBeInTheDocument();
+    expect(
+      screen.queryByTestId('placeholder-headless-main'),
+    ).not.toBeInTheDocument();
+
+    rerender(
+      <Layout
+        page={createPage({ isEditing: true, main: inheritedMain })}
+        fallbackPage={fallbackPage}
+      />,
+    );
+
+    expect(screen.getByTestId('slb-fallback')).toBeInTheDocument();
+    expect(
+      screen.queryByTestId('placeholder-headless-main'),
+    ).not.toBeInTheDocument();
+  });
+
   it('keeps the Sitecore placeholder and shows a noninteractive preview while editing', () => {
     render(
       <Layout
@@ -113,6 +190,34 @@ describe('Layout route-aware fallback', () => {
 
     expect(screen.getByTestId('slb-fallback')).toBeInTheDocument();
     expect(screen.getByTestId('placeholder-headless-main')).toBeInTheDocument();
+    expect(
+      screen.getByTestId('placeholder-headless-header'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByTestId('placeholder-headless-footer'),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId('slb-header-local-fallback')).toBeInTheDocument();
+    expect(screen.getByTestId('slb-footer-local-fallback')).toBeInTheDocument();
+  });
+
+  it('passes the active Spanish locale to both local chrome components', () => {
+    const spanishFallbackPage = resolveSlbFallbackPage('es-MX', ['soluciones']);
+
+    render(
+      <Layout
+        page={createPage({ locale: 'es-MX' })}
+        fallbackPage={spanishFallbackPage}
+      />,
+    );
+
+    expect(screen.getByTestId('slb-header-local-fallback')).toHaveAttribute(
+      'data-locale',
+      'es-MX',
+    );
+    expect(screen.getByTestId('slb-footer-local-fallback')).toHaveAttribute(
+      'data-locale',
+      'es-MX',
+    );
   });
 
   it('never injects fallback content in Design Library', () => {

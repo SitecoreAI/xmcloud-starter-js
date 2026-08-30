@@ -5,7 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function getYouTubeThumbnail(videoId: string, width: number, height?: number): string {
+export function getYouTubeThumbnail(
+  videoId: string,
+  width: number,
+  height?: number,
+): string {
   if (!videoId || typeof videoId !== 'string') {
     throw new Error('Invalid YouTube video ID');
   }
@@ -34,20 +38,48 @@ export function getYouTubeThumbnail(videoId: string, width: number, height?: num
   return `https://img.youtube.com/vi/${videoId}/${selectedSize}.jpg`;
 }
 
-export function getBaseUrl(host?: string | null): string {
-  if (host) {
-    const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-    return `${protocol}://${host}`;
-  }
+function configuredBaseUrl(): string {
   return (
     process.env.NEXT_PUBLIC_SITE_URL ||
     process.env.NEXT_PUBLIC_BASE_URL ||
-    "http://localhost:3000"
-  );
+    ''
+  ).replace(/\/$/, '');
+}
+
+function normalizedHost(host?: string | null): string {
+  const firstForwardedHost = host?.split(',', 1)[0]?.trim() || '';
+
+  // Host headers must not be allowed to inject a path or an arbitrary scheme
+  // into canonical and Open Graph metadata.
+  return /^[a-z0-9.\-:[\]]+(?::\d+)?$/i.test(firstForwardedHost)
+    ? firstForwardedHost
+    : '';
+}
+
+export function getBaseUrl(
+  host?: string | null,
+  forwardedProtocol?: string | null,
+): string {
+  const configured = configuredBaseUrl();
+  if (configured) return configured;
+
+  const safeHost = normalizedHost(host);
+  if (safeHost) {
+    const requestedProtocol = forwardedProtocol?.split(',', 1)[0]?.trim();
+    const protocol =
+      requestedProtocol === 'http' || requestedProtocol === 'https'
+        ? requestedProtocol
+        : process.env.NODE_ENV === 'development'
+          ? 'http'
+          : 'https';
+    return `${protocol}://${safeHost}`;
+  }
+
+  return process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
 }
 
 export function getFullUrl(path: string, host?: string | null): string {
   const baseUrl = getBaseUrl(host);
-  const cleanPath = path.startsWith("/") ? path : `/${path}`;
-  return `${baseUrl}${cleanPath}`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return baseUrl ? `${baseUrl}${cleanPath}` : cleanPath;
 }

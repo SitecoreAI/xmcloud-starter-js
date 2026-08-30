@@ -55,7 +55,9 @@ interface MockNoDataFallbackProps {
 
 // Mock the cn utility
 jest.mock('@/lib/utils', () => ({
-  cn: (...args: Array<string | boolean | Record<string, boolean> | undefined>) => {
+  cn: (
+    ...args: Array<string | boolean | Record<string, boolean> | undefined>
+  ) => {
     return args
       .flat()
       .filter(Boolean)
@@ -97,7 +99,12 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
 
 // Mock EditableButton component
 jest.mock('@/components/button-component/ButtonComponent', () => ({
-  EditableButton: ({ buttonLink, variant, className, isPageEditing }: MockEditableButtonProps) => (
+  EditableButton: ({
+    buttonLink,
+    variant,
+    className,
+    isPageEditing,
+  }: MockEditableButtonProps) => (
     <button
       data-testid="logo-tabs-button"
       data-href={buttonLink?.value?.href}
@@ -112,7 +119,14 @@ jest.mock('@/components/button-component/ButtonComponent', () => ({
 
 // Mock LogoItem component
 jest.mock('@/components/logo-tabs/LogoItem', () => ({
-  LogoItem: ({ logo, title, isActive, onClick, id, controls }: MockLogoItemProps) => (
+  LogoItem: ({
+    logo,
+    title,
+    isActive,
+    onClick,
+    id,
+    controls,
+  }: MockLogoItemProps) => (
     <button
       data-testid="logo-item"
       data-active={isActive}
@@ -123,7 +137,10 @@ jest.mock('@/components/logo-tabs/LogoItem', () => ({
       aria-selected={isActive}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={logo?.jsonValue?.value?.src} alt={logo?.jsonValue?.value?.alt} />
+      <img
+        src={logo?.jsonValue?.value?.src}
+        alt={logo?.jsonValue?.value?.alt}
+      />
       <span>{title?.jsonValue?.value}</span>
     </button>
   ),
@@ -135,6 +152,32 @@ jest.mock('@/utils/NoDataFallback', () => ({
     <div data-testid="no-data-fallback">{componentName}</div>
   ),
 }));
+
+function createSyntheticBrandProps(isPageEditing = false): LogoTabsProps {
+  const datasource = defaultProps.fields?.data?.datasource;
+  const syntheticTitles = ['Brand A', 'Brand 4', 'Brand AA', 'Brand 5'];
+
+  return {
+    ...defaultProps,
+    isPageEditing,
+    page: isPageEditing ? mockPageDataEditing.page : mockPageData.page,
+    fields: {
+      data: {
+        datasource: {
+          ...datasource,
+          logos: {
+            results: datasource?.logos?.results?.map((logo, index) => ({
+              ...logo,
+              title: {
+                jsonValue: { value: syntheticTitles[index] },
+              },
+            })),
+          },
+        },
+      },
+    },
+  } as LogoTabsProps;
+}
 
 describe('LogoTabs Component', () => {
   beforeEach(() => {
@@ -161,21 +204,27 @@ describe('LogoTabs Component', () => {
       render(<LogoTabs {...defaultProps} />);
 
       const images = screen.getAllByTestId('logo-tabs-image');
-      const backgroundImage = images.find((img) => img.getAttribute('src') === '/images/background.jpg');
+      const backgroundImage = images.find(
+        (img) => img.getAttribute('src') === '/images/background.jpg',
+      );
       expect(backgroundImage).toBeInTheDocument();
     });
 
     it('should render fallback background when no image provided', () => {
       const { container } = render(<LogoTabs {...propsWithoutBackground} />);
 
-      const fallbackBackground = container.querySelector('.bg-gradient-to-b.from-gray-800.to-gray-900');
+      const fallbackBackground = container.querySelector(
+        '.bg-gradient-to-b.from-gray-800.to-gray-900',
+      );
       expect(fallbackBackground).toBeInTheDocument();
     });
 
     it('should render gradient overlay on background image', () => {
       const { container } = render(<LogoTabs {...defaultProps} />);
 
-      const gradientOverlay = container.querySelector('.bg-gradient-to-b.from-black\\/30');
+      const gradientOverlay = container.querySelector(
+        '.bg-gradient-to-b.from-black\\/30',
+      );
       expect(gradientOverlay).toBeInTheDocument();
     });
   });
@@ -191,10 +240,10 @@ describe('LogoTabs Component', () => {
     it('should render logo items with correct data', () => {
       render(<LogoTabs {...defaultProps} />);
 
-      expect(screen.getByText('Brand A')).toBeInTheDocument();
-      expect(screen.getByText('Brand B')).toBeInTheDocument();
-      expect(screen.getByText('Brand C')).toBeInTheDocument();
-      expect(screen.getByText('Brand D')).toBeInTheDocument();
+      expect(screen.getByText('Partner A')).toBeInTheDocument();
+      expect(screen.getByText('Partner B')).toBeInTheDocument();
+      expect(screen.getByText('Partner C')).toBeInTheDocument();
+      expect(screen.getByText('Partner D')).toBeInTheDocument();
     });
 
     it('should set first logo item as active by default', () => {
@@ -227,7 +276,9 @@ describe('LogoTabs Component', () => {
     it('should render active tab content', () => {
       render(<LogoTabs {...defaultProps} />);
 
-      expect(screen.getByText('Experience Brand A Excellence')).toBeInTheDocument();
+      expect(
+        screen.getByText('Experience Brand A Excellence'),
+      ).toBeInTheDocument();
     });
 
     it('should render CTA button for active tab', () => {
@@ -242,8 +293,12 @@ describe('LogoTabs Component', () => {
       render(<LogoTabs {...defaultProps} />);
 
       // Initially, only first tab content should be visible
-      expect(screen.getByText('Experience Brand A Excellence')).toBeInTheDocument();
-      expect(screen.queryByText('Discover Brand B Innovation')).toBeInTheDocument();
+      expect(
+        screen.getByText('Experience Brand A Excellence'),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByText('Discover Brand B Innovation'),
+      ).toBeInTheDocument();
     });
 
     it('should render tab panels with tabpanel role', () => {
@@ -266,7 +321,7 @@ describe('LogoTabs Component', () => {
       render(<LogoTabs {...defaultProps} />);
 
       const logoItems = screen.getAllByTestId('logo-item');
-      
+
       // Click second logo item
       fireEvent.click(logoItems[1]);
 
@@ -278,15 +333,19 @@ describe('LogoTabs Component', () => {
       render(<LogoTabs {...defaultProps} />);
 
       const logoItems = screen.getAllByTestId('logo-item');
-      
+
       // Initially showing first tab content
-      expect(screen.getByText('Experience Brand A Excellence')).toBeInTheDocument();
-      
+      expect(
+        screen.getByText('Experience Brand A Excellence'),
+      ).toBeInTheDocument();
+
       // Click second logo item
       fireEvent.click(logoItems[1]);
 
       // Should show second tab content
-      expect(screen.getByText('Discover Brand B Innovation')).toBeInTheDocument();
+      expect(
+        screen.getByText('Discover Brand B Innovation'),
+      ).toBeInTheDocument();
     });
   });
 
@@ -295,7 +354,7 @@ describe('LogoTabs Component', () => {
       const { container } = render(<LogoTabs {...defaultProps} />);
 
       const tablist = container.querySelector('[role="tablist"]');
-      
+
       fireEvent.keyDown(tablist!, { key: 'ArrowRight' });
 
       const logoItems = screen.getAllByTestId('logo-item');
@@ -306,18 +365,21 @@ describe('LogoTabs Component', () => {
       render(<LogoTabs {...defaultProps} />);
 
       const logoItems = screen.getAllByTestId('logo-item');
-      
+
       // First go to second tab
       fireEvent.click(logoItems[1]);
-      
+
       const { container } = render(<LogoTabs {...defaultProps} />);
       const tablist = container.querySelector('[role="tablist"]');
-      
+
       fireEvent.keyDown(tablist!, { key: 'ArrowLeft' });
 
       // Should wrap to last tab
       const updatedLogoItems = screen.getAllByTestId('logo-item');
-      expect(updatedLogoItems[updatedLogoItems.length - 1]).toHaveAttribute('data-active', 'true');
+      expect(updatedLogoItems[updatedLogoItems.length - 1]).toHaveAttribute(
+        'data-active',
+        'true',
+      );
     });
 
     it('should navigate to first tab with Home key', () => {
@@ -327,7 +389,7 @@ describe('LogoTabs Component', () => {
       fireEvent.click(logoItems[2]); // Go to third tab
 
       const tablist = container.querySelector('[role="tablist"]');
-      
+
       fireEvent.keyDown(tablist!, { key: 'Home' });
 
       const updatedLogoItems = screen.getAllByTestId('logo-item');
@@ -338,18 +400,21 @@ describe('LogoTabs Component', () => {
       const { container } = render(<LogoTabs {...defaultProps} />);
 
       const tablist = container.querySelector('[role="tablist"]');
-      
+
       fireEvent.keyDown(tablist!, { key: 'End' });
 
       const logoItems = screen.getAllByTestId('logo-item');
-      expect(logoItems[logoItems.length - 1]).toHaveAttribute('data-active', 'true');
+      expect(logoItems[logoItems.length - 1]).toHaveAttribute(
+        'data-active',
+        'true',
+      );
     });
 
     it('should support ArrowDown for next tab', () => {
       const { container } = render(<LogoTabs {...defaultProps} />);
 
       const tablist = container.querySelector('[role="tablist"]');
-      
+
       fireEvent.keyDown(tablist!, { key: 'ArrowDown' });
 
       const logoItems = screen.getAllByTestId('logo-item');
@@ -360,19 +425,22 @@ describe('LogoTabs Component', () => {
       const { container } = render(<LogoTabs {...defaultProps} />);
 
       const tablist = container.querySelector('[role="tablist"]');
-      
+
       fireEvent.keyDown(tablist!, { key: 'ArrowUp' });
 
       // Should wrap to last tab
       const logoItems = screen.getAllByTestId('logo-item');
-      expect(logoItems[logoItems.length - 1]).toHaveAttribute('data-active', 'true');
+      expect(logoItems[logoItems.length - 1]).toHaveAttribute(
+        'data-active',
+        'true',
+      );
     });
 
     it('should prevent default behavior for navigation keys', () => {
       const { container } = render(<LogoTabs {...defaultProps} />);
 
       const tablist = container.querySelector('[role="tablist"]');
-      
+
       // fireEvent.keyDown automatically prevents default for these keys
       fireEvent.keyDown(tablist!, { key: 'ArrowRight' });
 
@@ -394,7 +462,9 @@ describe('LogoTabs Component', () => {
       mockUseSitecore.mockReturnValue(mockPageDataEditing);
       render(<LogoTabs {...propsEditingWithoutLogos} />);
 
-      expect(screen.getByText('Add a logo tab item to edit.')).toBeInTheDocument();
+      expect(
+        screen.getByText('Add a logo tab item to edit.'),
+      ).toBeInTheDocument();
     });
 
     it('should not show tab interface in editing mode', () => {
@@ -416,19 +486,71 @@ describe('LogoTabs Component', () => {
     });
   });
 
-  describe('Placeholder data in normal mode', () => {
-    it('should show placeholder logos when no data in normal mode', () => {
-      render(<LogoTabs {...propsWithoutLogos} />);
+  describe('Public empty-state safety', () => {
+    it('renders nothing when logo data is missing in normal mode', () => {
+      const { container } = render(<LogoTabs {...propsWithoutLogos} />);
 
-      const logoItems = screen.getAllByTestId('logo-item');
-      expect(logoItems).toHaveLength(4); // 4 placeholder items
+      expect(container).toBeEmptyDOMElement();
+      expect(screen.queryByText('Brand Name')).not.toBeInTheDocument();
     });
 
-    it('should show placeholder content when no data in normal mode', () => {
-      render(<LogoTabs {...propsWithoutLogos} />);
+    it('filters persisted authoring placeholders from normal mode', () => {
+      const datasource = defaultProps.fields?.data?.datasource;
+      const placeholderProps = {
+        ...defaultProps,
+        fields: {
+          data: {
+            datasource: {
+              ...datasource,
+              logos: {
+                results: datasource?.logos?.results?.map((logo, index) =>
+                  index === 0
+                    ? {
+                        ...logo,
+                        title: { jsonValue: { value: 'Brand Name' } },
+                        logo: {
+                          jsonValue: {
+                            value: {
+                              src: '/img/LOGO-placeholder.png',
+                              alt: 'Brand Logo',
+                            },
+                          },
+                        },
+                      }
+                    : logo,
+                ),
+              },
+            },
+          },
+        },
+      } as LogoTabsProps;
 
-      const brandNames = screen.getAllByText('Brand Name');
-      expect(brandNames.length).toBeGreaterThan(0);
+      const { container } = render(<LogoTabs {...placeholderProps} />);
+
+      expect(screen.queryByText('Brand Name')).not.toBeInTheDocument();
+      expect(
+        container.querySelector('img[src="/img/LOGO-placeholder.png"]'),
+      ).not.toBeInTheDocument();
+      expect(screen.getAllByTestId('logo-item')).toHaveLength(3);
+    });
+
+    it('filters exact starter-kit brand titles without overmatching public content', () => {
+      render(<LogoTabs {...createSyntheticBrandProps()} />);
+
+      expect(screen.queryByText('Brand A')).not.toBeInTheDocument();
+      expect(screen.queryByText('Brand 4')).not.toBeInTheDocument();
+      expect(screen.getByText('Brand AA')).toBeInTheDocument();
+      expect(screen.getByText('Brand 5')).toBeInTheDocument();
+      expect(screen.getAllByTestId('logo-item')).toHaveLength(2);
+    });
+
+    it('keeps starter-kit brand titles visible for authoring', () => {
+      render(<LogoTabs {...createSyntheticBrandProps(true)} />);
+
+      expect(screen.getByText('Brand A')).toBeInTheDocument();
+      expect(screen.getByText('Brand 4')).toBeInTheDocument();
+      expect(screen.getByText('Brand AA')).toBeInTheDocument();
+      expect(screen.getByText('Brand 5')).toBeInTheDocument();
     });
   });
 
@@ -436,22 +558,20 @@ describe('LogoTabs Component', () => {
     it('should render without title', () => {
       render(<LogoTabs {...propsWithoutTitle} />);
 
-      expect(screen.getByText('Click to edit title')).toBeInTheDocument();
+      expect(screen.queryByText('Click to edit title')).not.toBeInTheDocument();
     });
 
     it('should render without logos', () => {
-      render(<LogoTabs {...propsWithoutLogos} />);
+      const { container } = render(<LogoTabs {...propsWithoutLogos} />);
 
-      // Should show placeholder logos in normal mode
-      const logoItems = screen.getAllByTestId('logo-item');
-      expect(logoItems.length).toBeGreaterThan(0);
+      expect(container).toBeEmptyDOMElement();
     });
 
     it('should render without content', () => {
-      render(<LogoTabs {...propsWithoutContent} />);
+      const { container } = render(<LogoTabs {...propsWithoutContent} />);
 
-      const editTexts = screen.getAllByText('Click to edit brand content');
-      expect(editTexts.length).toBeGreaterThan(0);
+      expect(container).toBeEmptyDOMElement();
+      expect(screen.queryByText(/click to edit/i)).not.toBeInTheDocument();
     });
   });
 
@@ -468,7 +588,7 @@ describe('LogoTabs Component', () => {
 
       // Check for the class by looking at the element's className
       const contentDiv = Array.from(container.querySelectorAll('div')).find(
-        (div) => div.className && div.className.includes('@container')
+        (div) => div.className && div.className.includes('@container'),
       );
       expect(contentDiv).toBeTruthy();
     });
@@ -503,9 +623,9 @@ describe('LogoTabs Component', () => {
     });
 
     it('should handle missing datasource gracefully', () => {
-      render(<LogoTabs {...propsWithoutDatasource} />);
+      const { container } = render(<LogoTabs {...propsWithoutDatasource} />);
 
-      expect(screen.getByText('Click to edit title')).toBeInTheDocument();
+      expect(container).toBeEmptyDOMElement();
     });
 
     it('should handle undefined logos.results', () => {
@@ -516,18 +636,18 @@ describe('LogoTabs Component', () => {
             datasource: {
               ...defaultProps.fields?.data?.datasource,
               logos: {} as unknown as NonNullable<
-                NonNullable<NonNullable<LogoTabsProps['fields']>['data']>['datasource']
+                NonNullable<
+                  NonNullable<LogoTabsProps['fields']>['data']
+                >['datasource']
               >['logos'],
             },
           },
         },
       };
 
-      render(<LogoTabs {...propsWithUndefinedLogos} />);
+      const { container } = render(<LogoTabs {...propsWithUndefinedLogos} />);
 
-      // Should show placeholders
-      const logoItems = screen.getAllByTestId('logo-item');
-      expect(logoItems.length).toBeGreaterThan(0);
+      expect(container).toBeEmptyDOMElement();
     });
   });
 
@@ -589,4 +709,3 @@ describe('LogoTabs Component', () => {
     });
   });
 });
-

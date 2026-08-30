@@ -1,7 +1,7 @@
 import React, { JSX } from 'react';
 import componentMap from '.sitecore/component-map';
 import { AppPlaceholder } from '@sitecore-content-sdk/nextjs';
-import { ColumnSplitterProps, ColumnWidths, ColumnNumber } from './sxa-column-splitter.props';
+import { ColumnSplitterProps, ColumnNumber } from './sxa-column-splitter.props';
 
 export const Default = ({
   params,

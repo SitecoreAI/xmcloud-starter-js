@@ -139,16 +139,38 @@
     color: var(--slb-deep-blue);
 }
 
+.heroDiscovery {
+    border-top: 1px solid rgb(255 255 255 / 35%);
+    display: grid;
+    gap: 0.8rem;
+    padding-top: 1.2rem;
+}
+
+.heroSearchLabel {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+}
+
 .heroFilters {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.45rem 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.heroFilters span {
-    border: 1px solid rgb(255 255 255 / 35%);
+.heroFilters li {
+    color: #dfe5ff;
     font-size: 0.82rem;
-    padding: 0.55rem 0.8rem;
+}
+
+.heroFilters li:not(:last-child)::after {
+    color: var(--slb-aqua);
+    content: "•";
+    margin-inline: 0.65rem;
 }
 
 .signalBar {
@@ -241,7 +263,8 @@
     min-height: 19rem;
 }
 
-.cardLink {
+.cardLink,
+.cardStatic {
     color: inherit;
     display: grid;
     grid-template-rows: 11rem 1fr;
@@ -392,25 +415,25 @@
     padding: 1.25rem 1.5rem;
 }
 
-.filterInner {
+.filterList {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.65rem;
+    gap: 0.45rem 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.filter,
-.activeFilter {
-    border: 1px solid #9facda;
+.filter {
     color: var(--slb-deep-blue);
     font-size: 0.82rem;
     font-weight: 600;
-    padding: 0.55rem 0.85rem;
 }
 
-.activeFilter {
-    background: var(--slb-blue);
-    border-color: var(--slb-blue);
-    color: #ffffff;
+.filter:not(:last-child)::after {
+    color: var(--slb-blue);
+    content: "•";
+    margin-inline: 0.65rem;
 }
 
 .featureInner {

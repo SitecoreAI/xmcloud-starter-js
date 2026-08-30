@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type RefObject } from 'react';
+import { useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
 import { FocusTrap } from 'focus-trap-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';

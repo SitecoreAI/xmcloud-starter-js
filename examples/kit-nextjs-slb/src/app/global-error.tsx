@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { ErrorPage, Page } from '@sitecore-content-sdk/nextjs';
 import client from '@/lib/sitecore-client';
 import scConfig from 'sitecore.config';
-import Providers from '@/Providers';
 import Layout from '@/Layout';
 
 export default function GlobalError() {
@@ -35,17 +34,16 @@ export default function GlobalError() {
   }
 
   if (page) {
-    return (
-      <Providers page={page}>
-        <Layout page={page} />
-      </Providers>
-    );
+    return <Layout page={page} />;
   }
 
   return (
     <div style={{ padding: 10 }}>
       <h1>500 Internal Server Error</h1>
-      <p>There is a problem with the resource you are looking for, and it cannot be displayed.</p>
+      <p>
+        There is a problem with the resource you are looking for, and it cannot
+        be displayed.
+      </p>
       <Link href="/">Go to the Home page</Link>
     </div>
   );

@@ -72,12 +72,13 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
 interface MockNextLinkProps {
   children?: React.ReactNode;
   href?: string;
+  [key: string]: unknown;
 }
 
 jest.mock('next/link', () => ({
   __esModule: true,
-  default: ({ children, href }: MockNextLinkProps) => {
-    return React.createElement('a', { href }, children);
+  default: ({ children, href, ...props }: MockNextLinkProps) => {
+    return React.createElement('a', { href, ...props }, children);
   },
 }));
 
@@ -109,10 +110,9 @@ interface MockAnimatePresenceProps {
 jest.mock('framer-motion', () => {
   const MockMotionHeader = React.forwardRef<HTMLElement, MockMotionHeaderProps>(
     ({ children, ...props }, ref) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return React.createElement(
         'header',
-        { ...(props as any), ref },
+        { ...(props as React.HTMLAttributes<HTMLElement>), ref },
         children as React.ReactNode,
       );
     },
@@ -283,6 +283,25 @@ describe('GlobalHeader Component', () => {
 
       const logoLink = logo.closest('a');
       expect(logoLink).toHaveAttribute('href', '/');
+    });
+
+    it('localizes the home link and mobile navigation labels in Spanish', () => {
+      const spanishProps = {
+        ...defaultProps,
+        page: { ...defaultProps.page, locale: 'es-MX' },
+      } as GlobalHeaderProps;
+
+      render(<GlobalHeader {...spanishProps} />);
+
+      expect(
+        screen.getByRole('link', { name: 'Inicio de SLB' }),
+      ).toHaveAttribute('href', '/es-mx');
+      expect(
+        screen.getByRole('button', { name: 'Abrir menú' }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole('navigation', { name: 'Navegación' }),
+      ).toBeInTheDocument();
     });
 
     it('should render logo as Image when in editing mode', () => {
@@ -479,6 +498,74 @@ describe('GlobalHeader Component', () => {
   });
 
   describe('Edge cases and fallbacks', () => {
+    it('replaces inherited Solterra logo, navigation, and CTA with local SLB chrome', () => {
+      const inheritedProps = {
+        ...defaultProps,
+        fields: {
+          data: {
+            item: {
+              logo: {
+                jsonValue: {
+                  value: {
+                    src: '/media/SOLTERRA-logo.svg',
+                    alt: 'Solterra & Co.',
+                  },
+                },
+              },
+              children: {
+                results: [
+                  {
+                    link: {
+                      jsonValue: {
+                        value: {
+                          href: '/about',
+                          text: 'About SoLtErRa',
+                        },
+                      },
+                    },
+                  },
+                ],
+              },
+              headerContact: {
+                jsonValue: {
+                  value: { href: '/get-started', text: 'Get Started' },
+                },
+              },
+            },
+          },
+        },
+      } as unknown as GlobalHeaderProps;
+
+      const { unmount } = render(<GlobalHeader {...inheritedProps} />);
+
+      expect(screen.queryByTestId('logo-component')).not.toBeInTheDocument();
+      expect(screen.getByTestId('slb-logo-fallback')).toHaveAttribute(
+        'src',
+        '/images/slb/slb-logo-positive-blue.svg',
+      );
+      expect(screen.queryByText(/solterra/i)).not.toBeInTheDocument();
+      expect(screen.queryByText('Get Started')).not.toBeInTheDocument();
+      expect(screen.getAllByRole('link', { name: 'Solutions' })).toHaveLength(
+        2,
+      );
+      expect(
+        screen.getAllByRole('link', { name: 'Products and services' }),
+      ).toHaveLength(2);
+      expect(screen.getAllByRole('link', { name: 'Contact us' })).toHaveLength(
+        2,
+      );
+
+      unmount();
+      render(<GlobalHeader {...inheritedProps} page={propsEditing.page} />);
+
+      expect(screen.queryByTestId('header-logo-image')).not.toBeInTheDocument();
+      expect(screen.getByTestId('slb-logo-fallback')).toBeInTheDocument();
+      expect(screen.queryByText(/solterra/i)).not.toBeInTheDocument();
+      expect(screen.getAllByRole('link', { name: 'Solutions' })).toHaveLength(
+        2,
+      );
+    });
+
     it('should handle undefined fields gracefully', () => {
       const propsWithUndefinedFields = {
         ...defaultProps,
@@ -563,7 +650,7 @@ describe('GlobalHeader Component', () => {
 
       const srText = container.querySelector('.sr-only');
       expect(srText).toBeInTheDocument();
-      expect(srText).toHaveTextContent('Toggle menu');
+      expect(srText).toHaveTextContent('Open menu');
     });
 
     it('should render navigation as nav element', () => {

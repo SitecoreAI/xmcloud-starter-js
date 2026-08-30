@@ -14,10 +14,14 @@ import SitecoreStyles from '@/components/content-sdk/SitecoreStyles';
 import componentMap from '.sitecore/component-map';
 import Providers from './Providers';
 import SlbFallbackPage from '@/components/slb-fallback/SlbFallbackPage';
+import { LocalSlbHeader } from '@/components/global-header/GlobalHeader';
+import { LocalSlbFooter } from '@/components/global-footer/GlobalFooter';
 import {
+  hasPlaceholderPresentation,
   shouldRenderSlbFallback,
   type SlbFallbackPageModel,
 } from '@/lib/slb-fallback-content';
+import { hasLegacySolterraRouteContent } from '@/lib/slb-content-safety';
 
 interface LayoutProps {
   page: Page;
@@ -49,12 +53,25 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
     fallbackPage,
     isDesignLibrary: mode.isDesignLibrary,
   });
+  const hasLegacyMainContent = Boolean(
+    fallbackPage && hasLegacySolterraRouteContent(route),
+  );
+  const showLocalHeader = Boolean(
+    route &&
+      fallbackPage &&
+      !hasPlaceholderPresentation(route, 'headless-header'),
+  );
+  const showLocalFooter = Boolean(
+    route &&
+      fallbackPage &&
+      !hasPlaceholderPresentation(route, 'headless-footer'),
+  );
 
   return (
     <>
-      <Scripts />
       <SitecoreStyles layoutData={layout} />
       <Providers page={page}>
+        <Scripts />
         {/* root placeholder for the app, which we add components to using route data */}
         <div
           className={`bg-background text-foreground min-h-screen flex flex-col ${classNamesMain}`}
@@ -73,7 +90,7 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
           ) : (
             <>
               <div id="header">
-                {route && (
+                {route && (!showLocalHeader || mode.isEditing) && (
                   <AppPlaceholder
                     page={page}
                     componentMap={componentMap}
@@ -81,17 +98,21 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
                     rendering={route}
                   />
                 )}
+                {showLocalHeader && <LocalSlbHeader page={page} />}
               </div>
               <main className="flex-1">
                 <div id="content" className="antialiased">
-                  {showFallback && mode.isEditing && route && (
-                    <AppPlaceholder
-                      page={page}
-                      componentMap={componentMap}
-                      name="headless-main"
-                      rendering={route}
-                    />
-                  )}
+                  {showFallback &&
+                    mode.isEditing &&
+                    route &&
+                    !hasLegacyMainContent && (
+                      <AppPlaceholder
+                        page={page}
+                        componentMap={componentMap}
+                        name="headless-main"
+                        rendering={route}
+                      />
+                    )}
                   {showFallback && fallbackPage ? (
                     <SlbFallbackPage
                       page={fallbackPage}
@@ -108,7 +129,7 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
                 </div>
               </main>
               <div id="footer">
-                {route && (
+                {route && (!showLocalFooter || mode.isEditing) && (
                   <AppPlaceholder
                     page={page}
                     componentMap={componentMap}
@@ -116,6 +137,7 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
                     rendering={route}
                   />
                 )}
+                {showLocalFooter && <LocalSlbFooter locale={page.locale} />}
               </div>
             </>
           )}

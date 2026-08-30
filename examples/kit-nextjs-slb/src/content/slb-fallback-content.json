@@ -270,18 +270,16 @@
             },
             "relatedPageRoutes": {
                 "en": [
-                    "/solutions",
-                    "/products-and-services",
-                    "/sustainability",
-                    "/news-and-insights",
-                    "/about-us"
+                    "/products-and-services/subsurface-and-well-delivery",
+                    "/solutions/digital-operations",
+                    "/solutions/industrial-decarbonization",
+                    "/solutions/new-energy-systems"
                 ],
                 "es-MX": [
-                    "/es-mx/soluciones",
-                    "/es-mx/productos-y-servicios",
-                    "/es-mx/sostenibilidad",
-                    "/es-mx/noticias-y-analisis",
-                    "/es-mx/quienes-somos"
+                    "/es-mx/productos-y-servicios/subsuelo-y-construccion-de-pozos",
+                    "/es-mx/soluciones/operaciones-digitales",
+                    "/es-mx/soluciones/descarbonizacion-industrial",
+                    "/es-mx/soluciones/sistemas-de-nueva-energia"
                 ]
             },
             "fields": {
@@ -539,16 +537,16 @@
             },
             "relatedPageRoutes": {
                 "en": [
+                    "/products-and-services",
                     "/solutions/digital-operations",
                     "/solutions/industrial-decarbonization",
-                    "/solutions/new-energy-systems",
-                    "/products-and-services"
+                    "/solutions/new-energy-systems"
                 ],
                 "es-MX": [
+                    "/es-mx/productos-y-servicios",
                     "/es-mx/soluciones/operaciones-digitales",
                     "/es-mx/soluciones/descarbonizacion-industrial",
-                    "/es-mx/soluciones/sistemas-de-nueva-energia",
-                    "/es-mx/productos-y-servicios"
+                    "/es-mx/soluciones/sistemas-de-nueva-energia"
                 ]
             },
             "fields": {
@@ -1215,7 +1213,10 @@
                 "es-MX": "/es-mx/soluciones/sistemas-de-nueva-energia"
             },
             "relatedPageRoutes": {
-                "en": ["/products-and-services/ccus", "/sustainability"],
+                "en": [
+                    "/products-and-services/ccus",
+                    "/sustainability"
+                ],
                 "es-MX": [
                     "/es-mx/productos-y-servicios/ccus",
                     "/es-mx/sostenibilidad"
@@ -1621,7 +1622,7 @@
                             "type": "contentRail",
                             "order": 3,
                             "heading": "Novedades del portafolio",
-                            "body": "Utilice este carrusel para lanzamientos actuales y aprobados del catálogo oficial. Cada tarjeta debe incluir el nombre del producto, una declaración de capacidad verificada, la fecha de lanzamiento y la fuente.",
+                            "body": "Descubra tecnologías recientes que convierten la ciencia, los datos y la experiencia de campo en capacidades prácticas para operaciones energéticas más eficientes y sostenibles.",
                             "cta": {
                                 "label": "Conozca las tecnologías más recientes",
                                 "target": "/es-mx/quienes-somos/tecnologia-e-innovacion",
@@ -1661,8 +1662,14 @@
                 "es-MX": "/es-mx/productos-y-servicios/subsuelo-y-construccion-de-pozos"
             },
             "relatedPageRoutes": {
-                "en": ["/solutions", "/products-and-services"],
-                "es-MX": ["/es-mx/soluciones", "/es-mx/productos-y-servicios"]
+                "en": [
+                    "/solutions",
+                    "/products-and-services"
+                ],
+                "es-MX": [
+                    "/es-mx/soluciones",
+                    "/es-mx/productos-y-servicios"
+                ]
             },
             "fields": {
                 "en": {
@@ -2480,11 +2487,15 @@
             },
             "relatedPageRoutes": {
                 "en": [
+                    "/sustainability",
                     "/solutions/industrial-decarbonization",
+                    "/solutions/new-energy-systems",
                     "/news-and-insights/insights/designing-decarbonization-for-execution"
                 ],
                 "es-MX": [
+                    "/es-mx/sostenibilidad",
                     "/es-mx/soluciones/descarbonizacion-industrial",
+                    "/es-mx/soluciones/sistemas-de-nueva-energia",
                     "/es-mx/noticias-y-analisis/analisis/disenar-la-descarbonizacion-para-la-ejecucion"
                 ]
             },
@@ -2849,7 +2860,10 @@
                 "es-MX": "/es-mx/sostenibilidad/naturaleza-y-operaciones-responsables"
             },
             "relatedPageRoutes": {
-                "en": ["/sustainability", "/sustainability/climate-action"],
+                "en": [
+                    "/sustainability",
+                    "/sustainability/climate-action"
+                ],
                 "es-MX": [
                     "/es-mx/sostenibilidad",
                     "/es-mx/sostenibilidad/accion-climatica"
@@ -3102,7 +3116,7 @@
                     "finalCta": {
                         "heading": "Get the latest thinking from SLB",
                         "label": "Register for updates",
-                        "target": "/news-and-insights#newsletter",
+                        "target": "/newsroom#newsletter",
                         "targetType": "internal"
                     }
                 },
@@ -3169,7 +3183,7 @@
                     "finalCta": {
                         "heading": "Reciba las ideas más recientes de SLB",
                         "label": "Regístrese para recibir novedades",
-                        "target": "/es-mx/noticias-y-analisis#newsletter",
+                        "target": "/es-mx/sala-de-prensa#newsletter",
                         "targetType": "internal"
                     }
                 }
@@ -3187,12 +3201,12 @@
                 "en": [
                     "/news-and-insights/insights/ai-starts-with-trusted-context",
                     "/news-and-insights/insights/designing-decarbonization-for-execution",
-                    "/newsroom"
+                    "/products-and-services/subsurface-and-well-delivery"
                 ],
                 "es-MX": [
                     "/es-mx/noticias-y-analisis/analisis/la-ia-comienza-con-un-contexto-confiable",
                     "/es-mx/noticias-y-analisis/analisis/disenar-la-descarbonizacion-para-la-ejecucion",
-                    "/es-mx/sala-de-prensa"
+                    "/es-mx/productos-y-servicios/subsuelo-y-construccion-de-pozos"
                 ]
             },
             "fields": {
@@ -3679,7 +3693,10 @@
                 "es-MX": "/es-mx/sala-de-prensa"
             },
             "relatedPageRoutes": {
-                "en": ["/news-and-insights", "/news-and-insights/insights"],
+                "en": [
+                    "/news-and-insights",
+                    "/news-and-insights/insights"
+                ],
                 "es-MX": [
                     "/es-mx/noticias-y-analisis",
                     "/es-mx/noticias-y-analisis/analisis"
@@ -3801,19 +3818,19 @@
                             "type": "contentRail",
                             "order": 1,
                             "heading": "Noticias recientes de SLB",
-                            "body": "Utilice contenidos aprobados de la sala de prensa oficial de SLB. Al momento de este inventario, las tarjetas vigentes adecuadas incluyen: No reescriba el contenido sustantivo de un comunicado sin conservar su estado de aprobación y su fuente. Consulte los contenidos por idioma y utilice el inglés como alternativa solo cuando la interfaz lo indique claramente.",
+                            "body": "Explore anuncios corporativos, lanzamientos tecnológicos e historias de proyectos que muestran cómo los equipos de SLB convierten la innovación energética en resultados.",
                             "items": [
                                 {
                                     "title": "Noticias de la compañía",
-                                    "summary": "Consulta anuncios corporativos y novedades de los equipos de SLB."
+                                    "summary": "Consulte anuncios corporativos y novedades de los equipos de SLB."
                                 },
                                 {
                                     "title": "Actualizaciones de tecnología",
-                                    "summary": "Explora nuevas capacidades para las operaciones energéticas y los sistemas emergentes."
+                                    "summary": "Explore nuevas capacidades para las operaciones energéticas y los sistemas emergentes."
                                 },
                                 {
                                     "title": "Historias de proyectos",
-                                    "summary": "Descubre cómo la tecnología, la experiencia y la colaboración se unen en campo."
+                                    "summary": "Descubra cómo la tecnología, la experiencia y la colaboración se unen en campo."
                                 }
                             ],
                             "anchorId": "newsletter"
@@ -3853,13 +3870,13 @@
             },
             "relatedPageRoutes": {
                 "en": [
-                    "/about-us/technology-and-innovation",
                     "/about-us/people-and-culture",
+                    "/about-us/technology-and-innovation",
                     "/about-us/global-presence"
                 ],
                 "es-MX": [
-                    "/es-mx/quienes-somos/tecnologia-e-innovacion",
                     "/es-mx/quienes-somos/personas-y-cultura",
+                    "/es-mx/quienes-somos/tecnologia-e-innovacion",
                     "/es-mx/quienes-somos/presencia-global"
                 ]
             },
@@ -4075,7 +4092,10 @@
                 "es-MX": "/es-mx/quienes-somos/tecnologia-e-innovacion"
             },
             "relatedPageRoutes": {
-                "en": ["/products-and-services", "/news-and-insights/insights"],
+                "en": [
+                    "/products-and-services",
+                    "/news-and-insights/insights"
+                ],
                 "es-MX": [
                     "/es-mx/productos-y-servicios",
                     "/es-mx/noticias-y-analisis/analisis"
@@ -4247,7 +4267,10 @@
                 "es-MX": "/es-mx/quienes-somos/personas-y-cultura"
             },
             "relatedPageRoutes": {
-                "en": ["/sustainability/people-and-communities", "/about-us"],
+                "en": [
+                    "/sustainability/people-and-communities",
+                    "/about-us"
+                ],
                 "es-MX": [
                     "/es-mx/sostenibilidad/personas-y-comunidades",
                     "/es-mx/quienes-somos"
@@ -4289,7 +4312,8 @@
                             "type": "contentSection",
                             "order": 1,
                             "heading": "Responsibility creates room to grow",
-                            "body": "Meaningful work gives people the opportunity to build technical depth, exercise judgment, and learn from colleagues close to the problem."
+                            "body": "Meaningful work gives people the opportunity to build technical depth, exercise judgment, and learn from colleagues close to the problem.",
+                            "anchorId": "people"
                         },
                         {
                             "id": "component-02",
@@ -4365,7 +4389,8 @@
                             "type": "contentSection",
                             "order": 1,
                             "heading": "La responsabilidad crea espacio para crecer",
-                            "body": "El trabajo significativo permite desarrollar profundidad técnica, ejercer criterio y aprender de colegas cercanos al problema."
+                            "body": "El trabajo significativo permite desarrollar profundidad técnica, ejercer criterio y aprender de colegas cercanos al problema.",
+                            "anchorId": "people"
                         },
                         {
                             "id": "component-02",
@@ -4417,7 +4442,10 @@
                 "es-MX": "/es-mx/quienes-somos/presencia-global"
             },
             "relatedPageRoutes": {
-                "en": ["/about-us", "/sustainability/people-and-communities"],
+                "en": [
+                    "/about-us",
+                    "/sustainability/people-and-communities"
+                ],
                 "es-MX": [
                     "/es-mx/quienes-somos",
                     "/es-mx/sostenibilidad/personas-y-comunidades"
@@ -4467,7 +4495,7 @@
                             "type": "contentSection",
                             "order": 3,
                             "heading": "SLB in Mexico, Central America, and Venezuela",
-                            "body": "SLB has a long-standing presence in Mexico and works with local talent, customers, communities, and institutions across the region. The regional experience should lead with people, technological innovation, and responsible performance.",
+                            "body": "SLB has a long-standing presence in Mexico and works with local talent, customers, communities, and institutions across the region. Local teams combine technological innovation with responsible performance to address the energy priorities of each market.",
                             "cta": {
                                 "label": "Explore the region",
                                 "target": "/about-us/global-presence",
@@ -4538,7 +4566,7 @@
                             "type": "contentSection",
                             "order": 3,
                             "heading": "SLB en México, Centroamérica y Venezuela",
-                            "body": "SLB tiene una presencia de larga trayectoria en México y colabora con talento local, clientes, comunidades e instituciones de toda la región. La experiencia regional debe destacar a las personas, la innovación tecnológica y el desempeño responsable.",
+                            "body": "SLB tiene una presencia de larga trayectoria en México y colabora con talento local, clientes, comunidades e instituciones de toda la región. Los equipos locales combinan la innovación tecnológica con un desempeño responsable para responder a las prioridades energéticas de cada mercado.",
                             "cta": {
                                 "label": "Explore la región",
                                 "target": "/es-mx/quienes-somos/presencia-global",
@@ -4578,10 +4606,16 @@
             },
             "routeAliases": {
                 "en": [],
-                "es-MX": ["/es-mx/contact-us"]
+                "es-MX": [
+                    "/es-mx/contact-us"
+                ]
             },
             "relatedPageRoutes": {
-                "en": ["/solutions", "/products-and-services", "/newsroom"],
+                "en": [
+                    "/solutions",
+                    "/products-and-services",
+                    "/newsroom"
+                ],
                 "es-MX": [
                     "/es-mx/soluciones",
                     "/es-mx/productos-y-servicios",
@@ -4662,19 +4696,19 @@
                     }
                 },
                 "es-MX": {
-                    "pageTitle": "Habla con un especialista de SLB",
+                    "pageTitle": "Hable con un especialista de SLB",
                     "navigationTitle": "Contáctenos",
                     "seo": {
                         "title": "Contáctenos | SLB",
-                        "description": "Cuéntanos en qué estás trabajando. Te pondremos en contacto con el equipo técnico y comercial adecuado.",
-                        "openGraphTitle": "Habla con un especialista de SLB | SLB",
-                        "openGraphDescription": "Cuéntanos en qué estás trabajando. Te pondremos en contacto con el equipo técnico y comercial adecuado.",
+                        "description": "Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.",
+                        "openGraphTitle": "Hable con un especialista de SLB | SLB",
+                        "openGraphDescription": "Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.",
                         "openGraphImageFilename": "solutions-local-expertise.jpg"
                     },
                     "hero": {
-                        "eyebrow": "Contacta a SLB",
-                        "heading": "Habla con un especialista de SLB",
-                        "summary": "Cuéntanos en qué estás trabajando. Te pondremos en contacto con el equipo técnico y comercial adecuado.",
+                        "eyebrow": "Contacte a SLB",
+                        "heading": "Hable con un especialista de SLB",
+                        "summary": "Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.",
                         "image": {
                             "filename": "solutions-local-expertise.jpg",
                             "alt": "Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo."
@@ -4690,20 +4724,20 @@
                             "id": "component-01",
                             "type": "cardGrid",
                             "order": 1,
-                            "heading": "¿Cómo podemos ayudarte?",
-                            "body": "Elige el motivo que mejor describa tu trabajo para que tu consulta llegue al equipo adecuado.",
+                            "heading": "¿Cómo podemos ayudarle?",
+                            "body": "Elija el motivo que mejor describa su trabajo para que su consulta llegue al equipo adecuado.",
                             "items": [
                                 {
                                     "title": "Analizar un desafío técnico",
-                                    "summary": "Conecta con especialistas en subsuelo, pozos, producción, tecnología digital, descarbonización y nuevas energías."
+                                    "summary": "Conéctese con especialistas en subsuelo, pozos, producción, tecnología digital, descarbonización y nuevas energías."
                                 },
                                 {
                                     "title": "Explorar productos y servicios",
-                                    "summary": "Encuentra la tecnología, el servicio o la capacidad digital adecuada para tu contexto operativo."
+                                    "summary": "Encuentre la tecnología, el servicio o la capacidad digital adecuada para su contexto operativo."
                                 },
                                 {
                                     "title": "Consultas corporativas y de medios",
-                                    "summary": "Accede al recurso adecuado para temas corporativos, inversionistas, carreras o medios."
+                                    "summary": "Acceda al recurso adecuado para temas corporativos, inversionistas, carreras o medios."
                                 }
                             ]
                         },
@@ -4711,8 +4745,8 @@
                             "id": "component-02",
                             "type": "contentSection",
                             "order": 2,
-                            "heading": "Comienza con el contexto",
-                            "body": "Comparte el resultado que necesitas, dónde se realizará el trabajo y la mejor forma de contactarte. El equipo de SLB dirigirá tu consulta a los especialistas mejor preparados para responder.",
+                            "heading": "Comience con el contexto",
+                            "body": "Comparta el resultado que necesita, dónde se realizará el trabajo y la mejor forma de comunicarnos con usted. El equipo de SLB dirigirá su consulta a los especialistas mejor preparados para responder.",
                             "cta": {
                                 "label": "Abrir el formulario de contacto de SLB",
                                 "target": "https://www.slb.com/contact-us",
@@ -4727,8 +4761,8 @@
                         }
                     ],
                     "finalCta": {
-                        "heading": "¿Listo para conversar?",
-                        "label": "Contactar a SLB",
+                        "heading": "¿Desea conversar?",
+                        "label": "Contacte a SLB",
                         "target": "https://www.slb.com/contact-us",
                         "targetType": "external"
                     }

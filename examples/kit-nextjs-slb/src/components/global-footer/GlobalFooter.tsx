@@ -1,4 +1,5 @@
 import type React from 'react';
+import Link from 'next/link';
 import { Text, AppPlaceholder } from '@sitecore-content-sdk/nextjs';
 import { GlobalFooterProps } from '@/components/global-footer/global-footer.props';
 import { Default as FooterCallout } from '@/components/footer-navigation-callout/FooterNavigationCallout.dev';
@@ -8,6 +9,163 @@ import { EditableImageButton } from '@/components/button-component/ButtonCompone
 import { cn } from '@/lib/utils';
 import componentMap from '.sitecore/component-map';
 import { getDatasource, getFieldValue } from '@/lib/component-props';
+import { hasLegacySolterraSignature } from '@/lib/slb-content-safety';
+
+const localFooterContent = {
+  en: {
+    columns: [
+      {
+        title: 'Solutions',
+        links: [
+          ['Digital operations', '/solutions/digital-operations'],
+          [
+            'Industrial decarbonization',
+            '/solutions/industrial-decarbonization',
+          ],
+          ['New energy systems', '/solutions/new-energy-systems'],
+        ],
+      },
+      {
+        title: 'Products and services',
+        links: [
+          [
+            'Subsurface and well delivery',
+            '/products-and-services/subsurface-and-well-delivery',
+          ],
+          ['Data and AI', '/products-and-services/data-and-ai'],
+          ['CCUS', '/products-and-services/ccus'],
+        ],
+      },
+      {
+        title: 'Company',
+        links: [
+          ['Who we are', '/about-us'],
+          ['Sustainability', '/sustainability'],
+          ['News and insights', '/news-and-insights'],
+        ],
+      },
+    ],
+    calloutTitle: 'Ready to move energy forward?',
+    calloutDescription:
+      'Connect with our team to turn complex energy challenges into measurable progress.',
+    calloutLabel: 'Contact us',
+    calloutHref: '/contact-us',
+    copyright: 'SLB. All rights reserved.',
+  },
+  'es-MX': {
+    columns: [
+      {
+        title: 'Soluciones',
+        links: [
+          ['Operaciones digitales', '/es-mx/soluciones/operaciones-digitales'],
+          [
+            'Descarbonización industrial',
+            '/es-mx/soluciones/descarbonizacion-industrial',
+          ],
+          [
+            'Nuevos sistemas de energía',
+            '/es-mx/soluciones/sistemas-de-nueva-energia',
+          ],
+        ],
+      },
+      {
+        title: 'Productos y servicios',
+        links: [
+          [
+            'Subsuelo y construcción de pozos',
+            '/es-mx/productos-y-servicios/subsuelo-y-construccion-de-pozos',
+          ],
+          ['Datos e IA', '/es-mx/productos-y-servicios/datos-e-ia'],
+          ['CCUS', '/es-mx/productos-y-servicios/ccus'],
+        ],
+      },
+      {
+        title: 'Compañía',
+        links: [
+          ['Quiénes somos', '/es-mx/quienes-somos'],
+          ['Sostenibilidad', '/es-mx/sostenibilidad'],
+          ['Noticias y análisis', '/es-mx/noticias-y-analisis'],
+        ],
+      },
+    ],
+    calloutTitle: '¿Listo para impulsar la energía?',
+    calloutDescription:
+      'Conéctese con nuestro equipo para convertir retos energéticos complejos en progreso medible.',
+    calloutLabel: 'Contáctenos',
+    calloutHref: '/es-mx/contactenos',
+    copyright: 'SLB. Todos los derechos reservados.',
+  },
+} as const;
+
+export function LocalSlbFooter({ locale }: { locale?: string }) {
+  const language = locale?.toLocaleLowerCase() === 'es-mx' ? 'es-MX' : 'en';
+  const content = localFooterContent[language];
+
+  return (
+    <footer
+      className="@container bg-dark text-white"
+      data-testid="slb-footer-local-fallback"
+    >
+      <div className="slb-page-shell @md:grid-cols-2 @lg:grid-cols-12 @lg:gap-10 grid grid-cols-1 gap-12 py-16 @lg:py-20">
+        <div className="@lg:col-span-2">
+          <Link
+            href={language === 'es-MX' ? '/es-mx' : '/'}
+            aria-label={language === 'es-MX' ? 'Inicio de SLB' : 'SLB home'}
+            className="flex min-h-[72px] w-[152px] items-center bg-white p-4"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/slb/slb-logo-positive-blue.svg"
+              alt="SLB"
+              className="h-auto w-full"
+              data-testid="slb-footer-logo-fallback"
+            />
+          </Link>
+        </div>
+        <nav
+          aria-label={language === 'es-MX' ? 'Pie de página' : 'Footer'}
+          className="@md:grid-cols-3 @md:col-span-2 @lg:col-span-6 grid grid-cols-1 gap-8"
+        >
+          {content.columns.map((column) => (
+            <div key={column.title}>
+              <h2 className="font-heading mb-4 text-lg font-medium">
+                {column.title}
+              </h2>
+              <ul className="space-y-3 text-sm text-white/80">
+                {column.links.map(([label, href]) => (
+                  <li key={href}>
+                    <Link className="hover:text-accent" href={href}>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+        <div className="@md:col-span-2 @lg:col-span-4">
+          <h2 className="font-heading mb-4 text-2xl font-light">
+            {content.calloutTitle}
+          </h2>
+          <p className="mb-6 text-white/80">{content.calloutDescription}</p>
+          <Link
+            className="inline-flex border border-white px-5 py-3 font-medium hover:border-accent hover:text-accent"
+            href={content.calloutHref}
+          >
+            {content.calloutLabel}
+          </Link>
+        </div>
+      </div>
+      <div className="border-t border-white/20">
+        <div className="global-footer__bottom slb-page-shell py-6">
+          <p className="text-sm text-white/80">
+            © {new Date().getFullYear()} {content.copyright}
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
 
 export const Default: React.FC<GlobalFooterProps> = (props) => {
   const { fields, rendering, page } = props;
@@ -27,6 +185,20 @@ export const Default: React.FC<GlobalFooterProps> = (props) => {
   const footerPromoTitleField = getFieldValue(footerPromoTitle);
   const footerPromoDescriptionField = getFieldValue(footerPromoDescription);
   const footerPromoLinkField = getFieldValue(footerPromoLink);
+  const hasVisibleDatasourceContent = Boolean(
+    footerCopyrightField?.value ||
+      footerPromoTitleField?.value ||
+      footerPromoDescriptionField?.value ||
+      footerPromoLinkField?.value?.href,
+  );
+  const hasInheritedDatasource = hasLegacySolterraSignature(datasource);
+  const needsLocalFallback =
+    hasInheritedDatasource ||
+    (!isPageEditing && (!datasource || !hasVisibleDatasourceContent));
+
+  if (needsLocalFallback) {
+    return <LocalSlbFooter locale={page.locale} />;
+  }
 
   if (fields) {
     return (

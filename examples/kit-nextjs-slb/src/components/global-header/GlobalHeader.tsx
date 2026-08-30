@@ -23,8 +23,32 @@ import { Default as Logo } from '@/components/logo/Logo.dev';
 import { GlobalHeaderProps } from './global-header.props';
 import { Button } from '@/components/ui/button';
 import { getFieldValue } from '@/lib/component-props';
+import { hasLegacySolterraSignature } from '@/lib/slb-content-safety';
 
 const aboutPaths = ['/about-us', '/es-mx/quienes-somos'];
+
+const localHeaderNavigation = {
+  en: [
+    { href: '/solutions', label: 'Solutions' },
+    { href: '/products-and-services', label: 'Products and services' },
+    { href: '/sustainability', label: 'Sustainability' },
+    { href: '/news-and-insights', label: 'News and insights' },
+    { href: '/about-us', label: 'Who we are' },
+  ],
+  es: [
+    { href: '/es-mx/soluciones', label: 'Soluciones' },
+    {
+      href: '/es-mx/productos-y-servicios',
+      label: 'Productos y servicios',
+    },
+    { href: '/es-mx/sostenibilidad', label: 'Sostenibilidad' },
+    {
+      href: '/es-mx/noticias-y-analisis',
+      label: 'Noticias y análisis',
+    },
+    { href: '/es-mx/quienes-somos', label: 'Quiénes somos' },
+  ],
+};
 
 function isAboutLink(href?: string, text?: string): boolean {
   let normalizedHref: string | undefined;
@@ -49,24 +73,49 @@ function isAboutLink(href?: string, text?: string): boolean {
   );
 }
 
-export const Default: React.FC<GlobalHeaderProps> = (props) => {
-  const { fields, page } = props ?? {};
-  const { logo, headerContact } = fields?.data?.item ?? {};
-  const links = fields?.data?.item?.children?.results ?? [];
-  const logoField = getFieldValue(logo);
-  const headerContactField = getFieldValue(headerContact);
+type GlobalHeaderViewProps = Pick<GlobalHeaderProps, 'fields' | 'page'> & {
+  forceLocalSlbChrome?: boolean;
+};
+
+const GlobalHeaderView: React.FC<GlobalHeaderViewProps> = ({
+  fields,
+  page,
+  forceLocalSlbChrome = false,
+}) => {
+  const item = fields?.data?.item;
+  const { logo, headerContact } = item ?? {};
+  const links = item?.children?.results ?? [];
   const [isOpen, setIsOpen] = useState(false);
   const pageEditing = page.mode.isEditing;
   const isSpanish = page.locale?.toLowerCase() === 'es-mx';
+  const hasInheritedDatasource = hasLegacySolterraSignature(item);
+  const useLocalSlbChrome = forceLocalSlbChrome || hasInheritedDatasource;
+  const safeLinks = useLocalSlbChrome
+    ? []
+    : links.filter((item) => !hasLegacySolterraSignature(item));
+  const logoField = useLocalSlbChrome ? undefined : getFieldValue(logo);
+  const headerContactField = useLocalSlbChrome
+    ? undefined
+    : getFieldValue(headerContact);
+  const localNavigation = isSpanish
+    ? localHeaderNavigation.es
+    : localHeaderNavigation.en;
+  const localContact = isSpanish
+    ? { href: '/es-mx/contactenos', label: 'Contáctenos' }
+    : { href: '/contact-us', label: 'Contact us' };
+  const homeHref = isSpanish ? '/es-mx' : '/';
+  const homeLabel = isSpanish ? 'Inicio de SLB' : 'SLB home';
+  const menuLabel = isSpanish ? 'Abrir menú' : 'Open menu';
+  const navigationLabel = isSpanish ? 'Navegación' : 'Navigation';
   const aboutFallback = {
     href: isSpanish ? '/es-mx/quienes-somos' : '/about-us',
     label: isSpanish ? 'Quiénes somos' : 'Who we are',
   };
-  const hasAboutLink = links.some((item) => {
+  const hasAboutLink = safeLinks.some((item) => {
     const field = getFieldValue(item.link);
     return isAboutLink(field?.value?.href, field?.value?.text);
   });
-  const showAboutFallback = !pageEditing && !hasAboutLink;
+  const showAboutFallback = !pageEditing && !useLocalSlbChrome && !hasAboutLink;
 
   const [visible, setVisible] = useState(true);
   const previousScrollY = useRef(0);
@@ -88,6 +137,9 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
   return (
     <AnimatePresence mode="wait">
       <motion.header
+        data-testid={
+          useLocalSlbChrome ? 'slb-header-local-fallback' : undefined
+        }
         initial={{ opacity: 1 }}
         animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -80 }}
         transition={{ duration: 0.24, ease: [0.48, 0.14, 0.2, 0.69] }}
@@ -99,12 +151,12 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
       >
         <div className="slb-page-shell flex h-full items-center">
           <div className="mr-8 shrink-0 @lg:mr-12">
-            {pageEditing ? (
+            {pageEditing && !useLocalSlbChrome ? (
               <Image field={logoField} className="max-h-14 w-auto" />
             ) : (
               <Link
-                href="/"
-                aria-label="SLB home"
+                href={homeHref}
+                aria-label={homeLabel}
                 className="flex w-[96px] items-center @lg:w-[112px] [&_.image-container]:w-full"
               >
                 {logoField?.value?.src ? (
@@ -124,33 +176,43 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
           </div>
           {/* Desktop Navigation */}
           <div className="@lg:flex @lg:flex-1 hidden">
-            <NavigationMenu>
+            <NavigationMenu aria-label={navigationLabel}>
               <NavigationMenuList>
-                {links &&
-                  links.length > 0 &&
-                  links.map((item, i) => {
-                    const linkField = getFieldValue(item.link);
+                {useLocalSlbChrome
+                  ? localNavigation.map((item) => (
+                      <NavigationMenuItem key={item.href}>
+                        <Button
+                          variant="ghost"
+                          asChild
+                          className="font-body h-[50px] px-3 text-base font-medium hover:bg-transparent hover:text-primary"
+                        >
+                          <Link href={item.href}>{item.label}</Link>
+                        </Button>
+                      </NavigationMenuItem>
+                    ))
+                  : safeLinks.map((item, i) => {
+                      const linkField = getFieldValue(item.link);
 
-                    return (
-                      <Fragment key={`desktop-nav-menu-list-item-${i}`}>
-                        {linkField &&
-                          (pageEditing || linkField.value?.href) && (
-                            <NavigationMenuItem>
-                              <Button
-                                variant="ghost"
-                                asChild
-                                className="font-body h-[50px] px-3 text-base font-medium hover:bg-transparent hover:text-primary"
-                              >
-                                <CompatibleLink
-                                  field={linkField}
-                                  editable={pageEditing}
-                                />
-                              </Button>
-                            </NavigationMenuItem>
-                          )}
-                      </Fragment>
-                    );
-                  })}
+                      return (
+                        <Fragment key={`desktop-nav-menu-list-item-${i}`}>
+                          {linkField &&
+                            (pageEditing || linkField.value?.href) && (
+                              <NavigationMenuItem>
+                                <Button
+                                  variant="ghost"
+                                  asChild
+                                  className="font-body h-[50px] px-3 text-base font-medium hover:bg-transparent hover:text-primary"
+                                >
+                                  <CompatibleLink
+                                    field={linkField}
+                                    editable={pageEditing}
+                                  />
+                                </Button>
+                              </NavigationMenuItem>
+                            )}
+                        </Fragment>
+                      );
+                    })}
                 {showAboutFallback && (
                   <NavigationMenuItem>
                     <Button
@@ -168,21 +230,26 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
             </NavigationMenu>
           </div>
           {/* Desktop CTA */}
-          {headerContactField &&
-            (pageEditing || headerContactField.value?.href) && (
-              <div className="@lg:flex @lg:items-center @lg:justify-end hidden">
-                <Button
-                  variant="outline"
-                  asChild
-                  className="font-heading rounded-none text-base"
-                >
+          {(useLocalSlbChrome ||
+            (headerContactField &&
+              (pageEditing || headerContactField.value?.href))) && (
+            <div className="@lg:flex @lg:items-center @lg:justify-end hidden">
+              <Button
+                variant="outline"
+                asChild
+                className="font-heading rounded-none text-base"
+              >
+                {useLocalSlbChrome ? (
+                  <Link href={localContact.href}>{localContact.label}</Link>
+                ) : (
                   <CompatibleLink
-                    field={headerContactField}
+                    field={headerContactField!}
                     editable={pageEditing}
                   />
-                </Button>
-              </div>
-            )}
+                )}
+              </Button>
+            </div>
+          )}
           {/* Mobile Navigation */}
           <div className="@lg:hidden flex flex-1 justify-end">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -191,40 +258,55 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
                   variant="ghost"
                   size="icon"
                   className="rounded-none hover:bg-secondary [&_svg]:size-7"
+                  aria-label={menuLabel}
                 >
                   <Menu />
-                  <span className="sr-only">Toggle menu</span>
+                  <span className="sr-only">{menuLabel}</span>
                 </Button>
               </SheetTrigger>
               <SheetContent
                 side="right"
+                closeLabel={isSpanish ? 'Cerrar' : 'Close'}
                 className="border-border w-[min(100%,28rem)] bg-white p-6 pt-20 [&>button_svg]:size-7"
               >
-                <SheetTitle className="sr-only">Navigation</SheetTitle>
-                <nav className="flex flex-col gap-px border-t border-border">
-                  {links &&
-                    links.length > 0 &&
-                    links.map((item) => {
-                      const linkField = getFieldValue(item.link);
+                <SheetTitle className="sr-only">{navigationLabel}</SheetTitle>
+                <nav
+                  aria-label={navigationLabel}
+                  className="flex flex-col gap-px border-t border-border"
+                >
+                  {useLocalSlbChrome
+                    ? localNavigation.map((item) => (
+                        <Button
+                          key={`${item.href}-mobile`}
+                          variant="ghost"
+                          asChild
+                          className="h-[50px] w-full justify-start border-b border-border px-0 hover:bg-transparent hover:text-primary"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <Link href={item.href}>{item.label}</Link>
+                        </Button>
+                      ))
+                    : safeLinks.map((item) => {
+                        const linkField = getFieldValue(item.link);
 
-                      return (
-                        linkField &&
-                        (pageEditing || linkField.value?.href) && (
-                          <Button
-                            key={`${linkField.value.text}-mobile`}
-                            variant="ghost"
-                            asChild
-                            className="h-[50px] w-full justify-start border-b border-border px-0 hover:bg-transparent hover:text-primary"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <CompatibleLink
-                              field={linkField}
-                              editable={pageEditing}
-                            />
-                          </Button>
-                        )
-                      );
-                    })}
+                        return (
+                          linkField &&
+                          (pageEditing || linkField.value?.href) && (
+                            <Button
+                              key={`${linkField.value.text}-mobile`}
+                              variant="ghost"
+                              asChild
+                              className="h-[50px] w-full justify-start border-b border-border px-0 hover:bg-transparent hover:text-primary"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <CompatibleLink
+                                field={linkField}
+                                editable={pageEditing}
+                              />
+                            </Button>
+                          )
+                        );
+                      })}
                   {showAboutFallback && (
                     <Button
                       variant="ghost"
@@ -237,20 +319,27 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
                       </Link>
                     </Button>
                   )}
-                  {headerContactField &&
-                    (pageEditing || headerContactField.value?.href) && (
-                      <Button
-                        variant="outline"
-                        asChild
-                        className="mt-6 w-full rounded-none"
-                        onClick={() => setIsOpen(false)}
-                      >
+                  {(useLocalSlbChrome ||
+                    (headerContactField &&
+                      (pageEditing || headerContactField.value?.href))) && (
+                    <Button
+                      variant="outline"
+                      asChild
+                      className="mt-6 w-full rounded-none"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {useLocalSlbChrome ? (
+                        <Link href={localContact.href}>
+                          {localContact.label}
+                        </Link>
+                      ) : (
                         <CompatibleLink
-                          field={headerContactField}
+                          field={headerContactField!}
                           editable={pageEditing}
                         />
-                      </Button>
-                    )}
+                      )}
+                    </Button>
+                  )}
                 </nav>
               </SheetContent>
             </Sheet>
@@ -260,3 +349,11 @@ export const Default: React.FC<GlobalHeaderProps> = (props) => {
     </AnimatePresence>
   );
 };
+
+export const LocalSlbHeader: React.FC<Pick<GlobalHeaderProps, 'page'>> = ({
+  page,
+}) => <GlobalHeaderView page={page} forceLocalSlbChrome />;
+
+export const Default: React.FC<GlobalHeaderProps> = ({ fields, page }) => (
+  <GlobalHeaderView fields={fields} page={page} />
+);
