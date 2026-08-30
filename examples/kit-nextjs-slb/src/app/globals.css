@@ -1,0 +1,186 @@
+@import "../assets/styles/globals.css";
+@import "../assets/styles/tailwind-bootstrap-grid.css";
+@import "../assets/styles/column-splitter.css";
+@import "tailwindcss";
+
+/* bootstrap grid to tailwind plugin */
+@plugin 'tailwind-bootstrap-grid' {
+    container_max_widths:
+        "sm", "576px", "md", "768px", "lg", "992px", "xl", "1200px", "2xl",
+        "1400px";
+}
+
+/* preload tailwind-bootstrap-grid utility classes */
+@source inline("col-{1..12}");
+@source inline("offset-{1..12}");
+
+@layer base {
+    :root {
+        --font-heading: "SLBSans", Arial, sans-serif;
+        --font-body: "SLBSans", Arial, sans-serif;
+        --font-accent: "SLBSans", Arial, sans-serif;
+    }
+
+    * {
+        @apply border-border font-body;
+    }
+
+    html {
+        background: var(--color-background);
+        scroll-behavior: smooth;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading;
+    }
+
+    h1,
+    .h1 {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 300;
+        letter-spacing: -0.03em;
+        line-height: 1.111;
+    }
+    h2,
+    .h2 {
+        font-size: clamp(2rem, 3.25vw, 3rem);
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        line-height: 1.3125;
+    }
+    h3,
+    .h3 {
+        font-size: clamp(1.5rem, 2.25vw, 2rem);
+        font-weight: 300;
+        line-height: 1.333;
+    }
+    h4,
+    .h4 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.333;
+    }
+    h5,
+    .h5 {
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.4;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-family: var(--font-body);
+        font-feature-settings:
+            "rlig" 1,
+            "calt" 1;
+        font-synthesis: none;
+        line-height: 1.5;
+        text-rendering: optimizeLegibility;
+    }
+
+    a {
+        text-underline-offset: 0.2em;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-ring);
+        outline-offset: 3px;
+    }
+
+    ::selection {
+        background: var(--color-accent);
+        color: var(--color-dark);
+    }
+}
+
+.slb-page-shell {
+    margin-inline: auto;
+    max-width: 90rem;
+    padding-inline: 1.5rem;
+    width: 100%;
+}
+
+.slb-section-space {
+    padding-block: 5rem;
+}
+
+@media (min-width: 41.6875rem) {
+    .slb-page-shell {
+        padding-inline: 3.5rem;
+    }
+}
+
+@media (min-width: 74.625rem) {
+    .slb-page-shell {
+        padding-inline: 5.875rem;
+    }
+
+    .slb-section-space {
+        padding-block: 7.5rem;
+    }
+}
+
+@media (min-width: 90rem) {
+    .slb-page-shell {
+        padding-inline: 7.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@config '../assets/tailwind.config.cjs';
+
+@utility text-box-trim-start {
+    text-box-trim: trim-start;
+}
+@utility text-box-trim-end {
+    text-box-trim: trim-end;
+}
+@utility text-box-trim-both {
+    text-box-trim: trim-both;
+}
+@utility text-box-edge-asc-desc {
+    text-box-edge: text text;
+}
+@utility text-box-edge-asc-baseline {
+    text-box-edge: text alphabetic;
+}
+@utility text-box-edge-cap-baseline {
+    text-box-edge: cap alphabetic;
+}
+@utility position-left {
+    @apply text-start;
+}
+@utility position-center {
+    @apply text-center;
+}
+@utility position-right {
+    @apply text-end;
+}
+@utility indent-top {
+    @apply mt-8 @md:mt-16;
+}
+@utility indent-bottom {
+    @apply mb-8 @md:mb-16;
+}
+@utility indent {
+    @apply px-8 @md:px-16;
+}

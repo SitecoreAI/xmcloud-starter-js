@@ -1,0 +1,534 @@
+.page {
+    --slb-blue: #0014dc;
+    --slb-deep-blue: #051464;
+    --slb-aqua: #00d2dc;
+    --slb-frost: #e8edfa;
+    --slb-ink: #111111;
+    background: #ffffff;
+    color: var(--slb-ink);
+    overflow: clip;
+}
+
+.editingPreview a {
+    pointer-events: none;
+}
+
+.hero {
+    background: var(--slb-deep-blue);
+    color: #ffffff;
+    display: grid;
+    min-height: min(48rem, 80vh);
+}
+
+.heroCopy {
+    align-content: center;
+    display: grid;
+    gap: 2rem;
+    padding: 4.5rem 1.5rem;
+}
+
+.heroMeta {
+    align-items: center;
+    color: var(--slb-aqua);
+    display: flex;
+    font-size: 0.78rem;
+    font-weight: 600;
+    justify-content: space-between;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.heroMeta a {
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.heroCopy h1 {
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 300;
+    letter-spacing: -0.05em;
+    line-height: 0.98;
+    margin: 0;
+    max-width: 13ch;
+}
+
+.heroCopy > p {
+    color: #dfe5ff;
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 42rem;
+}
+
+.heroMedia,
+.splitMedia {
+    min-height: 24rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.image {
+    object-fit: cover;
+}
+
+.heroAccent {
+    background: var(--slb-aqua);
+    bottom: 0;
+    height: 0.55rem;
+    left: 0;
+    position: absolute;
+    width: 28%;
+}
+
+.heroActions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.cta {
+    align-items: center;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 600;
+    gap: 1rem;
+    justify-content: space-between;
+    min-height: 3.4rem;
+    padding: 0.85rem 1.15rem;
+    text-decoration: none;
+    transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+.cta:hover {
+    transform: translateX(0.2rem);
+}
+
+.primary {
+    background: var(--slb-aqua);
+    color: var(--slb-deep-blue);
+}
+
+.primary:hover {
+    background: #ffffff;
+}
+
+.secondary {
+    border: 1px solid rgb(255 255 255 / 55%);
+    color: #ffffff;
+}
+
+.secondary:hover {
+    background: #ffffff;
+    color: var(--slb-deep-blue);
+}
+
+.text {
+    border-bottom: 2px solid var(--slb-blue);
+    color: var(--slb-blue);
+    padding-inline: 0;
+}
+
+.text:hover {
+    border-color: var(--slb-aqua);
+    color: var(--slb-deep-blue);
+}
+
+.heroFilters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.heroFilters span {
+    border: 1px solid rgb(255 255 255 / 35%);
+    font-size: 0.82rem;
+    padding: 0.55rem 0.8rem;
+}
+
+.signalBar {
+    background: var(--slb-blue);
+    color: #ffffff;
+    display: flex;
+    font-size: 0.72rem;
+    font-weight: 600;
+    gap: 2rem;
+    justify-content: center;
+    letter-spacing: 0.15em;
+    padding: 1rem 1.5rem;
+    text-transform: uppercase;
+}
+
+.section {
+    padding: 5rem 1.5rem;
+}
+
+.sectionInner,
+.split,
+.featureInner,
+.filterInner,
+.finalCta {
+    margin-inline: auto;
+    max-width: 90rem;
+}
+
+.sectionIntro {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 58rem;
+}
+
+.sectionIntro h2,
+.splitCopy h2,
+.featureInner h2,
+.finalCta h2,
+.relatedSection h2 {
+    font-size: clamp(2.25rem, 4.8vw, 4.5rem);
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    margin: 0;
+}
+
+.sectionIntro > p:not(.kicker):not(.kickerAqua),
+.splitCopy > p:not(.kicker),
+.featureInner > div > p,
+.card p,
+.railCard p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.kicker,
+.kickerAqua {
+    color: var(--slb-blue);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.kickerAqua {
+    color: var(--slb-aqua);
+}
+
+.whiteSection,
+.lightSection,
+.relatedSection {
+    background: #ffffff;
+}
+
+.frostSection {
+    background: var(--slb-frost);
+}
+
+.cardGrid {
+    border-left: 1px solid #cbd3ef;
+    display: grid;
+    margin-top: 3.5rem;
+}
+
+.card {
+    border-bottom: 1px solid #cbd3ef;
+    border-right: 1px solid #cbd3ef;
+    display: grid;
+    min-height: 19rem;
+}
+
+.cardLink {
+    color: inherit;
+    display: grid;
+    grid-template-rows: 11rem 1fr;
+    text-decoration: none;
+}
+
+.cardLink:hover h3 {
+    color: var(--slb-blue);
+}
+
+.cardMedia {
+    overflow: hidden;
+    position: relative;
+}
+
+.cardCopy {
+    display: grid;
+    gap: 1.2rem;
+    padding: 2rem;
+}
+
+.card > .cardCopy {
+    min-height: 19rem;
+}
+
+.cardNumber {
+    color: var(--slb-blue);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.card h3,
+.railCard h3 {
+    align-self: end;
+    font-size: clamp(1.45rem, 2.1vw, 2rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.14;
+    margin: 0;
+}
+
+.card p,
+.railCard p {
+    margin: 0;
+}
+
+.split {
+    display: grid;
+    gap: 3rem;
+}
+
+.splitCopy {
+    align-content: center;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.splitCopy > p:not(.kicker) {
+    max-width: 40rem;
+}
+
+.darkSection,
+.deepFeature,
+.finalCta {
+    background: var(--slb-deep-blue);
+    color: #ffffff;
+}
+
+.darkSection .sectionIntro > p:not(.kickerAqua),
+.railCard p,
+.featureInner p {
+    color: #dfe5ff;
+}
+
+.rail {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3.5rem;
+}
+
+.railCard {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.railLink {
+    color: inherit;
+    display: grid;
+    gap: 1.2rem;
+    text-decoration: none;
+}
+
+.railLink:hover h3 {
+    color: var(--slb-aqua);
+}
+
+.railMedia {
+    min-height: 13rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.railRule {
+    background: var(--slb-aqua);
+    height: 0.3rem;
+    width: 4rem;
+}
+
+.aquaSection {
+    background: var(--slb-aqua);
+    color: var(--slb-deep-blue);
+}
+
+.aquaSection .kicker {
+    color: var(--slb-deep-blue);
+}
+
+.steps {
+    border-top: 1px solid rgb(5 20 100 / 35%);
+    margin-top: 3.5rem;
+}
+
+.step {
+    align-items: start;
+    border-bottom: 1px solid rgb(5 20 100 / 35%);
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 3rem 1fr;
+    padding: 1.4rem 0;
+}
+
+.step span {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.step p {
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    line-height: 1.45;
+    margin: 0;
+}
+
+.filterSection {
+    background: #f4f6fb;
+    border-bottom: 1px solid #cbd3ef;
+    padding: 1.25rem 1.5rem;
+}
+
+.filterInner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.filter,
+.activeFilter {
+    border: 1px solid #9facda;
+    color: var(--slb-deep-blue);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.55rem 0.85rem;
+}
+
+.activeFilter {
+    background: var(--slb-blue);
+    border-color: var(--slb-blue);
+    color: #ffffff;
+}
+
+.featureInner {
+    display: grid;
+    gap: 3rem;
+}
+
+.featureInner > div {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.relatedSection h2 {
+    margin-top: 1rem;
+}
+
+.relatedGrid {
+    border-top: 1px solid #cbd3ef;
+    margin-top: 3rem;
+}
+
+.relatedLink {
+    align-items: center;
+    border-bottom: 1px solid #cbd3ef;
+    color: var(--slb-deep-blue);
+    display: flex;
+    font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    text-decoration: none;
+}
+
+.relatedLink:hover {
+    color: var(--slb-blue);
+}
+
+.finalCta {
+    align-items: end;
+    display: grid;
+    gap: 2.5rem;
+    padding: 4.5rem 1.5rem;
+}
+
+.finalCta > div {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 48rem) {
+    .hero {
+        grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+    }
+
+    .heroCopy {
+        padding: 6rem 3.5rem;
+    }
+
+    .section,
+    .filterSection {
+        padding-inline: 3.5rem;
+    }
+
+    .cardGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .split {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .split.reverse .splitCopy {
+        order: 2;
+    }
+
+    .splitMedia {
+        min-height: 34rem;
+    }
+
+    .rail {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .featureInner,
+    .finalCta {
+        grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .finalCta {
+        padding-inline: 3.5rem;
+    }
+}
+
+@media (min-width: 74.625rem) {
+    .heroCopy,
+    .section,
+    .filterSection {
+        padding-inline: 5.875rem;
+    }
+
+    .section {
+        padding-block: 7.5rem;
+    }
+
+    .cardGrid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .finalCta {
+        padding: 6rem 5.875rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta {
+        transition: none;
+    }
+
+    .cta:hover {
+        transform: none;
+    }
+}
