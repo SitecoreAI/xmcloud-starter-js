@@ -1,6 +1,5 @@
 import './globals.css';
 
-import { headers as nextHeaders } from 'next/headers';
 import { StructuredData } from '@/components/structured-data/StructuredData';
 import {
   generateOrganizationSchema,
@@ -9,18 +8,14 @@ import {
 import type { JsonLdValue } from '@/lib/structured-data/jsonld';
 import { getBaseUrl } from '@/lib/utils';
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const headers = await nextHeaders();
-  const baseUrl = getBaseUrl(
-    headers.get('x-forwarded-host') || headers.get('host'),
-    headers.get('x-forwarded-proto'),
-  );
+  const baseUrl = getBaseUrl();
   const locale =
-    headers.get('x-sc-locale')?.toLocaleLowerCase() === 'es-mx'
+    process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE?.toLocaleLowerCase() === 'es-mx'
       ? 'es-MX'
       : 'en';
 

@@ -36,11 +36,7 @@ type PageProps = {
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
   const draft = await draftMode();
-  const headers = await nextHeaders();
-  const baseUrl = getBaseUrl(
-    headers.get('x-forwarded-host') || headers.get('host'),
-    headers.get('x-forwarded-proto'),
-  );
+  const baseUrl = getBaseUrl();
   const catalogFallbackPage = resolveSlbFallbackPage(locale, path);
 
   // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary
@@ -49,6 +45,7 @@ export default async function Page({ params }: PageProps) {
   // Fetch the page data from Sitecore
   let page;
   if (draft.isEnabled) {
+    const headers = await nextHeaders();
     const previewData = client.getPreviewData(headers);
     if (isDesignLibraryPreviewData(previewData)) {
       page = await client.getDesignLibraryData(previewData);
@@ -138,11 +135,7 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({ params }: PageProps) => {
-  const headers = await nextHeaders();
-  const baseUrl = getBaseUrl(
-    headers.get('x-forwarded-host') || headers.get('host'),
-    headers.get('x-forwarded-proto'),
-  );
+  const baseUrl = getBaseUrl();
 
   const { path, site, locale } = await params;
   const catalogFallbackPage = resolveSlbFallbackPage(locale, path);
