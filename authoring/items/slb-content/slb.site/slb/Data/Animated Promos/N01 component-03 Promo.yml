@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" dam-id="114405" dam-content-type="Image" width="1672" height="941" alt="An aerial methane survey is underway above an industrial processing facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 34b65491-c175-9c27-8946-02d783fd0561
+            Value: 6433af3c-7c3c-e367-f8c5-57f314949b21
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: "Read how measurement, engineering, and operating discipline can turn decarbonization priorities into a practical sequence of work. Featured: Designing decarbonization for execution"
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: From ambition to execution
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" dam-id="114405" dam-content-type="Image" width="1672" height="941" alt="Se realiza un levantamiento aéreo de metano sobre una instalación de procesamiento industrial." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5781bf45-b33f-0c27-a732-0f693a1bba21
+            Value: f587fd1c-3b4c-f81c-39f3-9712a2d310b4
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: "Conozca cómo la medición, la ingeniería y la disciplina operativa pueden convertir las prioridades de descarbonización en una secuencia práctica de trabajo. Destacado: Diseñar la descarbonización para la ejecución"
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: De la ambición a la ejecución

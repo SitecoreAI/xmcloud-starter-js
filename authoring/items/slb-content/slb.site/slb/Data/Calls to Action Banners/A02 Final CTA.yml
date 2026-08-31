@@ -32,7 +32,7 @@ Languages:
             Value: See what technology can make possible
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4757fd80-6763-42fb-db98-edd3e9d5c1e4
+            Value: b4267271-1461-abb4-caf9-1b97554b2cf6
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{9D42BCDA-09FD-4A75-883E-0E15BE202902}" anchor="" target="" title="" linktype="internal" text="Explore products and services" url="" />
@@ -44,7 +44,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,7 +66,7 @@ Languages:
             Value: Conozca lo que la tecnología puede hacer posible
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3c9c692b-ad16-3478-e652-e28a0b5e97b1
+            Value: e04e498c-4a77-e700-a424-c1d929631d67
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{9D42BCDA-09FD-4A75-883E-0E15BE202902}" anchor="" target="" title="" linktype="internal" text="Explore productos y servicios" url="" />
@@ -78,4 +78,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

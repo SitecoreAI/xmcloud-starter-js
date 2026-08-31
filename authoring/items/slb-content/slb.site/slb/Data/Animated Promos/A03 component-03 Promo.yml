@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Engineers review an integrated energy model during a technical workshop." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c5f2ee44-062d-a2a1-b0bc-f3249156db8c
+            Value: 773ead45-6f4a-5a14-2d3c-0c6d797e5fe5
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Mentoring, field experience, technical communities, and cross-disciplinary collaboration help practical knowledge move across roles and regions.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Knowledge moves through connection
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Ingenieros revisan un modelo energético integrado durante un taller técnico." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b0cc1d94-dfa3-f63b-204e-10aa906093b2
+            Value: edf1e151-e534-d25d-8248-af4d85fe4b73
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: La mentoría, la experiencia de campo, las comunidades técnicas y la colaboración interdisciplinaria permiten que el conocimiento práctico viaje entre funciones y regiones.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: El conocimiento avanza mediante la conexión

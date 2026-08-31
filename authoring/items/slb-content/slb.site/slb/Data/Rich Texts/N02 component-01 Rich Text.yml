@@ -32,13 +32,13 @@ Languages:
             Value: <div class="ck-content slb-filter-content"><h2>Filter labels</h2><ul><li>All</li><li>Oil and gas</li><li>Digital and AI</li><li>Decarbonizing</li><li>New energy</li></ul></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 73220de6-19cd-ee09-814f-8d0ec6e6366c
+            Value: 0e271ee0-2673-b1c7-3e07-cc981312ae2a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -60,10 +60,10 @@ Languages:
             Value: <div class="ck-content slb-filter-content"><h2>Filtros</h2><ul><li>Todos</li><li>Petróleo y gas</li><li>Tecnología digital e IA</li><li>Descarbonización</li><li>Nueva energía</li></ul></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: cd921160-b857-3067-cba0-22a7c1387ced
+            Value: 98cb25f6-f876-c1ad-76b9-4fb3c4699835
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

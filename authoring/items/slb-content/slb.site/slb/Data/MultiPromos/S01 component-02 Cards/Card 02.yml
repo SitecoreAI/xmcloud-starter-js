@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" dam-id="114149" dam-content-type="Image" width="2440" height="1180" alt="SLB technician operates a test system in a bright manufacturing facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8df2dd65-eb6e-acfa-09f5-b799b70d3e60
+            Value: ab94368c-5a1e-0b2f-2622-eff639541f91
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -50,7 +50,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" dam-id="114149" dam-content-type="Image" width="2440" height="1180" alt="Un técnico de SLB opera un sistema de pruebas en una luminosa planta de manufactura." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 907cf5f0-d51f-3e9e-b5f2-900eb9bd3999
+            Value: 6dbfdda3-5107-9181-6dc0-4a57a47aa555
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -87,4 +87,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

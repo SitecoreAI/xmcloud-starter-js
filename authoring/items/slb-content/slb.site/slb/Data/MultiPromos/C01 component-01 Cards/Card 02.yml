@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-products-specialist" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-products-specialist" dam-id="114504" dam-content-type="Image" width="1672" height="941" alt="A product specialist explains an energy-system visualization during a remote consultation." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5d949bd4-a961-f2d1-96aa-08da2c9786d4
+            Value: dd097496-459b-a013-9df6-75b817656adb
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{9D42BCDA-09FD-4A75-883E-0E15BE202902}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
@@ -50,7 +50,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-products-specialist" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-products-specialist" dam-id="114504" dam-content-type="Image" width="1672" height="941" alt="Un especialista de producto explica una visualización del sistema energético durante una consulta remota." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 188d0fd6-690b-6849-22a5-cb13eaaf3a99
+            Value: 319920d5-0167-249e-90cc-2db6306749b1
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{9D42BCDA-09FD-4A75-883E-0E15BE202902}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
@@ -87,4 +87,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

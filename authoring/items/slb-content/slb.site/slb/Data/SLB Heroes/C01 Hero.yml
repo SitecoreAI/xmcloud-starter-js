@@ -35,7 +35,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: aa5cbbfb-d7ec-bfc0-ab67-e450ac67b2f5
+            Value: e690c2e8-8610-573e-daf5-f1694245d104
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: <link linktype="external" url="https://www.slb.com/contact-us" target="" text="Continue to the contact form" title="" class="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Tell us what you're working on. We'll connect you with the right technical and commercial team.
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b3930370-411e-551e-5c90-87e39cf4af29
+            Value: 6fbbf2b0-77a6-7250-ceac-c577a6ff3548
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +81,7 @@ Languages:
             Value: <link linktype="external" url="https://www.slb.com/contact-us" target="" text="Continuar al formulario de contacto" title="" class="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.

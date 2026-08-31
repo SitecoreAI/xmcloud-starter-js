@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" dam-id="114254" dam-content-type="Image" width="640" height="427" alt="Two SLB engineers pose between test fixtures in a technology center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 888029ad-52e6-c847-5722-7bff7ddc1cb2
+            Value: dd2077f9-e24d-f6ff-6c05-d0f86bfb319a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Move through simulation, laboratory work, controlled testing, and field learning with explicit evidence at each stage. Keep limitations visible alongside capability.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Validate before scaling
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" dam-id="114254" dam-content-type="Image" width="640" height="427" alt="Dos ingenieros de SLB posan entre equipos de prueba en un centro tecnológico." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: bd888b6f-1a17-f99f-bd13-ab869cf94a29
+            Value: ab9c0a89-23a5-2e31-cd1e-ae8c8e1691d0
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Avance por simulación, laboratorio, pruebas controladas y aprendizaje en campo con evidencia explícita en cada etapa. Mantenga visibles las limitaciones junto con la capacidad.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Valide antes de escalar

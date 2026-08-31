@@ -41,7 +41,7 @@ Languages:
             Value:
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: abf180a4-f35a-910c-1def-38efd0a324de
+            Value: ede2ff60-0144-9f7d-62d9-55c388b221b1
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{8D9ABEAC-7781-44E0-BA94-75D76E1B6FAE}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
@@ -50,7 +50,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,7 +78,7 @@ Languages:
             Value:
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3f469d5e-beb3-a134-d4a5-3edbb705e708
+            Value: 2c44e6ea-a73e-60d3-4234-f2effc35e7ca
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{8D9ABEAC-7781-44E0-BA94-75D76E1B6FAE}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
@@ -87,4 +87,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-biodiversity-field-survey" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-biodiversity-field-survey" dam-id="114397" dam-content-type="Image" width="1672" height="941" alt="Field ecologists record biodiversity observations in native wetland habitat near an operating site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1d104f30-fa0e-615c-88e2-2d1ed325b096
+            Value: ddbd7a1e-dc93-1820-af23-f5312a6568e0
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -50,7 +50,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-biodiversity-field-survey" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-biodiversity-field-survey" dam-id="114397" dam-content-type="Image" width="1672" height="941" alt="Ecólogos de campo registran observaciones de biodiversidad en un humedal nativo cerca de un sitio operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 50ba417d-3f8e-062a-e9b1-d08cf54333be
+            Value: f3f99cae-ce05-ce3b-88e5-01c12d2bfa9c
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -87,4 +87,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

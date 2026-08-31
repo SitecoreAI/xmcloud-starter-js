@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" dam-id="114541" dam-content-type="Image" width="1672" height="941" alt="An engineering team reviews data lineage and governance across connected industrial systems." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 936dabd6-43fd-5247-7ad4-65dc24f55a59
+            Value: 9224679a-6c45-2556-06da-94ebff5fc15e
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Operational data becomes more valuable when it carries the right context. SLB connects information, domain models, and workflows so teams can see what matters and act with confidence.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: From data to decisions that move operations
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" dam-id="114541" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fc8da581-183e-0bf9-38c1-f6599c629b8c
+            Value: 537ca6b6-1da1-e002-22c0-de7ad9a6d7a1
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Los datos operativos adquieren mayor valor cuando incluyen el contexto adecuado. SLB conecta información, modelos especializados y flujos de trabajo para que los equipos identifiquen lo importante y actúen con confianza.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: De los datos a decisiones que impulsan las operaciones

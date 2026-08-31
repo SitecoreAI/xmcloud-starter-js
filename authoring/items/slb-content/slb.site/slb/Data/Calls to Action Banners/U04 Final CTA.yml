@@ -32,7 +32,7 @@ Languages:
             Value: Connect environmental context to the operating plan
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f398322a-909b-aa34-c079-cdea60a309a8
+            Value: b3b25b96-a69f-673f-b2e7-18719a526cc5
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="approach" target="" title="" linktype="internal" text="Explore our approach" url="" />
@@ -44,7 +44,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,7 +66,7 @@ Languages:
             Value: Conecte el contexto ambiental con el plan operativo
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e82ab39b-1837-cc1e-bac8-482f62756da3
+            Value: 3d3b20eb-49c5-68ba-b7da-39cc406084fe
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="approach" target="" title="" linktype="internal" text="Explore nuestro enfoque" url="" />
@@ -78,4 +78,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

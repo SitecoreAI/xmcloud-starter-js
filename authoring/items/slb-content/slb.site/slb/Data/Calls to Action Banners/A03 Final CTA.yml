@@ -32,7 +32,7 @@ Languages:
             Value: Find the challenge that moves you
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 97d3ceeb-9fe4-2758-3d2f-23a266ac1b6c
+            Value: 99edcea9-cd68-4c5c-62ce-8ba5aeca6fee
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Search careers" title="" class="" />
@@ -44,7 +44,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,7 +66,7 @@ Languages:
             Value: Encuentre el desafío que lo impulsa
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 087c340d-29b1-97e1-c82e-5c2ae67ebc46
+            Value: 9c64ccf0-2f8f-c5aa-31f9-e42ea227f7d6
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Busque oportunidades profesionales" title="" class="" />
@@ -78,4 +78,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

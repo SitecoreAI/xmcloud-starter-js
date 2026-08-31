@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" dam-id="114524" dam-content-type="Image" width="1672" height="941" alt="Technicians commission an offshore wind substation above a calm sea." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fe2b8c53-f0e9-c0e6-5874-d6506519bc94
+            Value: f250824e-713a-64df-cd3e-4abf58ec93f1
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Frame the resource, design the system, test critical assumptions, and integrate delivery. Each stage should reduce uncertainty and create evidence for the next decision.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: From opportunity to operating system
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" dam-id="114524" dam-content-type="Image" width="1672" height="941" alt="Técnicos ponen en servicio una subestación eólica marina sobre un mar en calma." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fcdcb070-d7bf-197d-a2b3-da3b3002a274
+            Value: 2883c125-4715-da30-7fd6-d6efa7272371
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Defina el recurso, diseñe el sistema, compruebe los supuestos críticos e integre la ejecución. Cada etapa debe reducir la incertidumbre y generar evidencia para la siguiente decisión.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: De la oportunidad al sistema operativo

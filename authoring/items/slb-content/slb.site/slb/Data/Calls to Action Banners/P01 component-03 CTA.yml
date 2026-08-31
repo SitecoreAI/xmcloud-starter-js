@@ -32,7 +32,7 @@ Languages:
             Value: New to the portfolio
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e1992a98-abfe-327e-ff80-46c50158a42b
+            Value: ac0174e9-ec5f-0921-6697-5d36c3b61587
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="" target="" title="" linktype="internal" text="View the latest technologies" url="" />
@@ -44,7 +44,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,7 +66,7 @@ Languages:
             Value: Novedades del portafolio
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6c518b5e-a0f9-45ea-900e-8df2c2077d93
+            Value: d8c97c9c-8d8c-be61-64f1-8ec36fe6eeb9
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="" target="" title="" linktype="internal" text="Conozca las tecnologías más recientes" url="" />
@@ -78,4 +78,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

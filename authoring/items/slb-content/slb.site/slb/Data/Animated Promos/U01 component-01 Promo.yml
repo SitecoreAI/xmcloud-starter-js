@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" dam-id="114404" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary team reviews local watershed and land conditions above an operating site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b04eee68-4af1-fa0d-1017-5f25a52c48b0
+            Value: 605bc208-5723-d7fa-3c93-74ae953dc41e
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Sustainability cannot sit beside the business. It must influence how priorities are set, technologies are developed, risks are managed, and progress is measured.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Build sustainability into the operating model
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" dam-id="114404" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario revisa las condiciones locales de la cuenca y del terreno sobre un sitio operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: af675a17-8aba-9e45-d522-c70e9ab41bb1
+            Value: f68a4210-9945-7ca2-9945-74aeae1d821a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: La sostenibilidad no puede estar separada del negocio. Debe influir en la definición de prioridades, el desarrollo de tecnologías, la gestión de riesgos y la medición del progreso.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Integre la sostenibilidad al modelo operativo

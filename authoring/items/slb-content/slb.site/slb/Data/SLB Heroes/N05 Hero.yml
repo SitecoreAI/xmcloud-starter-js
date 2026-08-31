@@ -35,7 +35,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 44d7f1cb-e5bc-93be-0469-db10d7bf4303
+            Value: cc6421fa-24ea-5c4a-9c2d-e48554f9a794
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: <link class="" querystring="" id="{A03CAA08-04FC-4DED-B4D0-3C5872F9B670}" anchor="newsletter" target="" title="" linktype="internal" text="Register for updates" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Follow company news, technology updates, project announcements, and stories from SLB teams around the world.
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1173189d-4a84-a8d7-a9fa-0297e12fdd34
+            Value: 751fdd61-b0cc-ff50-9ab3-5ce353bf3952
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +81,7 @@ Languages:
             Value: <link class="" querystring="" id="{A03CAA08-04FC-4DED-B4D0-3C5872F9B670}" anchor="newsletter" target="" title="" linktype="internal" text="Regístrese para recibir novedades" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Conozca noticias corporativas, novedades tecnológicas, anuncios de proyectos e historias de equipos de SLB alrededor del mundo.

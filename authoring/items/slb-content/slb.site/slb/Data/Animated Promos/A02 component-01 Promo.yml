@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" dam-id="114131" dam-content-type="Image" width="2000" height="967" alt="SLB engineer holds a laboratory flask between columns of material samples." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 06d26248-8169-cd92-9ce8-b6b29bcecf27
+            Value: 33ce36fe-6984-b3f2-4ce4-83f0314e0d64
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: "The strongest technology starts with a clear understanding of the system: its materials, forces, uncertainties, operating limits, and human decisions."
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Begin with the physics
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" dam-id="114131" dam-content-type="Image" width="2000" height="967" alt="Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b18ce207-b551-3d1e-0854-b4560ecee043
+            Value: 4064077b-9054-f29c-ebc0-817f92ddce08
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: "La tecnología más sólida parte de una comprensión clara del sistema: sus materiales, fuerzas, incertidumbres, límites operativos y decisiones humanas."
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Comience por la física

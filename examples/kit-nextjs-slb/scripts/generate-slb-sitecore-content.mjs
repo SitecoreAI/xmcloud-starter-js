@@ -26,7 +26,11 @@ const fallbackCatalog = JSON.parse(
     ),
 );
 
-const fixedTimestamp = "20260831T150000Z";
+const createdTimestamp = "20260831T150000Z";
+// Sitecore only overwrites an existing language/version when the serialized
+// __Updated value is later than the value already stored in the database.
+// Advance this release timestamp whenever generated authored content changes.
+const contentReleaseTimestamp = "20260831T191500Z";
 const owner = "sitecore\\thomas.lin@sitecore.com";
 const locales = ["en", "es-MX"];
 
@@ -310,7 +314,7 @@ function standardVersionFields(extraFields) {
     }));
 
     return [
-        field(ids.created, "__Created", fixedTimestamp),
+        field(ids.created, "__Created", createdTimestamp),
         field(
             ids.workflowState,
             "__Workflow state",
@@ -319,7 +323,7 @@ function standardVersionFields(extraFields) {
         field(ids.owner, "__Owner", owner),
         field(ids.createdBy, "__Created by", owner),
         field(ids.updatedBy, "__Updated by", owner),
-        field(ids.updated, "__Updated", fixedTimestamp),
+        field(ids.updated, "__Updated", contentReleaseTimestamp),
         // Generated datasource items must own every field we pass here. An
         // omitted field is NULL in Sitecore and inherits the starter kit's
         // Standard Values; an explicit blank intentionally suppresses those
@@ -1000,7 +1004,7 @@ function updatePageItem(page, entries) {
         const values = [
             ...contentValues,
             [ids.updatedBy, "__Updated by", owner],
-            [ids.updated, "__Updated", fixedTimestamp],
+            [ids.updated, "__Updated", contentReleaseTimestamp],
         ];
         values.forEach(([ID, Hint, Value]) =>
             upsertField(fields, ID, Hint, Value),

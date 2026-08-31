@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" dam-id="114194" dam-content-type="Image" width="1416" height="1140" alt="Road crossing a snow-covered Icelandic landscape." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b0c39efb-043c-55b0-c55a-9d7754b4415e
+            Value: b87d9a3b-9f36-4208-52c5-bddf5c93f6aa
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Energy challenges may share common physics, but their context is never identical. Teams adapt technology and delivery to local conditions while drawing on knowledge from across the SLB network.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Global reach becomes useful through local understanding
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" dam-id="114194" dam-content-type="Image" width="1416" height="1140" alt="Una carretera atraviesa un paisaje nevado de Islandia." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 24b9f714-8275-2469-4470-84ed9db430b2
+            Value: a1d89233-7550-d3f4-6486-ddce8e4979cb
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Los desafíos energéticos pueden compartir principios físicos, pero su contexto nunca es idéntico. Los equipos adaptan la tecnología y la ejecución a las condiciones locales, aprovechando el conocimiento de toda la red de SLB.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: El alcance global genera valor mediante el conocimiento local

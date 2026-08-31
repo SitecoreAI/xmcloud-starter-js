@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" dam-id="114405" dam-content-type="Image" width="1672" height="941" alt="An aerial methane survey is underway above an industrial processing facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b312c92e-a295-e208-179c-bd238e3e5c4e
+            Value: 511cafbe-3342-898a-355c-a2fba2e91cae
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: An emissions inventory is a starting point. Progress depends on understanding where emissions occur, which actions are technically viable, and how results will be verified over time.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Move from inventory to intervention
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" dam-id="114405" dam-content-type="Image" width="1672" height="941" alt="Se realiza un levantamiento aéreo de metano sobre una instalación de procesamiento industrial." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d713f623-96e5-3886-764c-efe8b2020210
+            Value: 2e5e6043-8fba-951e-6b07-20e002bb1a6a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Un inventario de emisiones es el punto de partida. El progreso depende de comprender dónde ocurren las emisiones, qué acciones son técnicamente viables y cómo se verificarán los resultados a lo largo del tiempo.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Pase del inventario a la intervención

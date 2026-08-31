@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 17fae0b6-cec5-3cfd-20e8-f6f728cfc1df
+            Value: 11515826-0fa4-7118-74de-5700d9f34060
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{DDE0A656-28DB-42AE-91CC-F37C85089CB9}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
@@ -50,7 +50,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 2ee14d72-6570-9087-c55f-6e492cd2cd1a
+            Value: 52517731-c907-a4a4-773d-32b2f19495c8
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{DDE0A656-28DB-42AE-91CC-F37C85089CB9}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
@@ -87,4 +87,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

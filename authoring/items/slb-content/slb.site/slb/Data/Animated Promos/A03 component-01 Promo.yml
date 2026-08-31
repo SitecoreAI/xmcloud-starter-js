@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" dam-id="114428" dam-content-type="Image" width="1672" height="941" alt="An instructor guides an employee through hands-on field safety training." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e2c2c6f9-cb30-fdbb-d401-7c63f8fe74f9
+            Value: 395644e9-c685-8fb4-69fc-b2075601efa6
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Meaningful work gives people the opportunity to build technical depth, exercise judgment, and learn from colleagues close to the problem.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Responsibility creates room to grow
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" dam-id="114428" dam-content-type="Image" width="1672" height="941" alt="Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 73405b89-da42-1719-6225-fe88cf3966fc
+            Value: e4f5fe92-f8a6-eef9-a200-7d9fe2c10f94
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: El trabajo significativo permite desarrollar profundidad técnica, ejercer criterio y aprender de colegas cercanos al problema.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: La responsabilidad crea espacio para crecer

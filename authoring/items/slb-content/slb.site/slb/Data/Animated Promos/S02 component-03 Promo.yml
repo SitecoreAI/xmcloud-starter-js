@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary engineering team meets during an operational shift handover." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f119c4a0-4875-fd98-41e4-8987060e83d8
+            Value: a5ddcc90-40fa-4a00-2d03-a5d4090386c6
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: AI can accelerate discovery, analysis, and routine work. Domain experts remain essential for testing assumptions, interpreting uncertainty, and choosing the action that fits the operating context.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Put people at the center of AI
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 91637f0d-963a-ac19-6089-2112987b429b
+            Value: 4384164a-5ca4-1e03-0b4a-202eb65738a3
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: La IA puede acelerar el descubrimiento, el análisis y el trabajo rutinario. Los especialistas siguen siendo esenciales para comprobar supuestos, interpretar la incertidumbre y elegir la acción adecuada para el contexto operativo.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Mantenga a las personas en el centro de la IA

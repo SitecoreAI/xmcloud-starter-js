@@ -32,7 +32,7 @@ Languages:
             Value: See how sustainability shapes our work
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0948de0d-2255-367d-a0d3-eee2a54736ec
+            Value: 75b50277-2711-a067-9c86-3d2097d01b59
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{1BD44A6C-C817-4214-9347-ED52CEB6804A}" anchor="approach" target="" title="" linktype="internal" text="Explore our approach" url="" />
@@ -44,7 +44,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,7 +66,7 @@ Languages:
             Value: Conozca cómo la sostenibilidad define nuestro trabajo
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f55ab9ad-3665-e8a4-f339-0394561b2d32
+            Value: 58f145d0-9063-e693-81c7-35ae6b117ac0
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{1BD44A6C-C817-4214-9347-ED52CEB6804A}" anchor="approach" target="" title="" linktype="internal" text="Explore nuestro enfoque" url="" />
@@ -78,4 +78,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

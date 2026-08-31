@@ -35,7 +35,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5ce125e9-3d8d-7953-72de-0f22471b2925
+            Value: b358728c-c6e1-dc3a-ca9d-80d4b04f18cf
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="capabilities" target="" title="" linktype="internal" text="Explore well capabilities" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b1eec30c-dbad-7876-7fa2-437ab4445c74
+            Value: b8bb679e-0014-1b4a-7d68-f1609ee71502
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +81,7 @@ Languages:
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="capabilities" target="" title="" linktype="internal" text="Explore las capacidades para pozos" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Mantenga conectados el conocimiento geológico, el diseño del pozo, los datos de ejecución y los objetivos de producción desde el primer modelo hasta la decisión final del ciclo de vida.

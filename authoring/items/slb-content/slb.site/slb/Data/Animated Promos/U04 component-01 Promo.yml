@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" dam-id="114404" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary team reviews local watershed and land conditions above an operating site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0e1a6524-2069-31f0-50fa-9b48d059b651
+            Value: 6de876d7-88d4-3c3c-c5c7-b5e26c047f37
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Environmental context is local. Understand the ecosystems, water conditions, communities, and regulatory setting around each activity before selecting controls or claiming progress.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Start with place
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" dam-id="114404" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario revisa las condiciones locales de la cuenca y del terreno sobre un sitio operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5c15d989-263a-8761-c74b-074a31b06c1f
+            Value: 80950acd-1e89-a9fc-9f28-618d295ab132
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: El contexto ambiental es local. Comprenda los ecosistemas, las condiciones del agua, las comunidades y el entorno regulatorio de cada actividad antes de elegir controles o comunicar avances.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Comience por el lugar

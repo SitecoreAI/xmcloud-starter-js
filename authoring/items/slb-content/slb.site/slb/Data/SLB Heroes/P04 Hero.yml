@@ -35,7 +35,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3d435245-8e36-b748-ad9e-78793f7f9497
+            Value: dab2fc04-d264-a0c7-3436-21ab789c9a0b
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: <link class="" querystring="" id="{93C4A0B9-34CA-43ED-B330-B1887B93EB44}" anchor="capabilities" target="" title="" linktype="internal" text="Explore CCUS capabilities" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Bring subsurface characterization, development engineering, infrastructure, and monitoring into one evidence-led approach from site screening through long-term stewardship.
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 7ef85d55-ecce-84b2-ed14-f48404550ce8
+            Value: 461a8368-76dd-33a0-092c-71e5117155a2
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +81,7 @@ Languages:
             Value: <link class="" querystring="" id="{93C4A0B9-34CA-43ED-B330-B1887B93EB44}" anchor="capabilities" target="" title="" linktype="internal" text="Explore las capacidades de CCUS" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Integre caracterización del subsuelo, ingeniería de desarrollo, infraestructura y monitoreo en un enfoque basado en evidencia, desde la evaluación del sitio hasta la gestión de largo plazo.

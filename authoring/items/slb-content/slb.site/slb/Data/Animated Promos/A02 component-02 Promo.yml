@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" dam-id="114417" dam-content-type="Image" width="1672" height="941" alt="A scientist examines a rock core during carbon storage site characterization." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 7df21a99-53f8-4f07-5f83-9f99df56e95c
+            Value: 503fb7c9-114e-c614-21b9-634162038175
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Design choices should reflect actual pressures, temperatures, data conditions, workflows, maintenance needs, and safety constraints.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Engineer for the environment that matters
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" dam-id="114417" dam-content-type="Image" width="1672" height="941" alt="Una científica examina un núcleo de roca durante la caracterización de un sitio de almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f5de6e9b-008e-3b53-b5e9-c0f530568f35
+            Value: 178599fe-4281-2691-efed-fbba575fecf8
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Las decisiones de diseño deben reflejar presiones, temperaturas, condiciones de datos, flujos de trabajo, necesidades de mantenimiento y restricciones de seguridad reales.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Diseñe para el entorno que importa

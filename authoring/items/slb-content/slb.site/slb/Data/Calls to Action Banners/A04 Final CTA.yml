@@ -32,7 +32,7 @@ Languages:
             Value: Connect with SLB where you operate
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 23ba8fb3-8aed-fe7c-94b6-6afb39bd85bc
+            Value: d2e8c4db-542a-2bef-08d9-bbe92eb96982
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{7AD8D413-32D7-4AEF-99A6-D6C061FC2AD0}" anchor="locations" target="" title="" linktype="internal" text="Find a location" url="" />
@@ -44,7 +44,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,7 +66,7 @@ Languages:
             Value: Conéctese con SLB donde opera
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ecddeba0-506c-52f7-8077-dc564cdf2af3
+            Value: 9de061f2-f3c5-2686-b4c0-3581abc3ae6f
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{7AD8D413-32D7-4AEF-99A6-D6C061FC2AD0}" anchor="locations" target="" title="" linktype="internal" text="Encuentre una ubicación" url="" />
@@ -78,4 +78,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

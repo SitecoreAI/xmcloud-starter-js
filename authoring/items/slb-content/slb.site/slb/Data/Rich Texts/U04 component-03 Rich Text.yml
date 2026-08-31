@@ -32,13 +32,13 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">How we work</p><h2>A repeatable operating cycle</h2><ol><li>Assess the context.</li><li>Avoid or reduce impacts where feasible.</li><li>Monitor what matters.</li><li>Adapt the plan when evidence changes.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 39bb10f3-2e1b-02f4-0080-20bb9a986e36
+            Value: 0558f02e-42f3-05ed-8737-6aab9c489f64
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -60,10 +60,10 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">Cómo trabajamos</p><h2>Un ciclo operativo repetible</h2><ol><li>Evalúe el contexto.</li><li>Evite o reduzca impactos cuando sea viable.</li><li>Monitoree lo importante.</li><li>Adapte el plan cuando cambie la evidencia.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f4ac0b5a-b80f-61bf-9e82-105038e7d90c
+            Value: 433d002f-36b7-ecb9-688c-7f79d660ee9f
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z

@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" dam-id="114459" dam-content-type="Image" width="1672" height="941" alt="An analyst reviews emissions performance in an industrial operations center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5a3e04f7-1db5-0ea8-8d7d-96af85f99094
+            Value: 70f3cf0c-9555-954f-bd9e-7c71d9d4260a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: "Treat emissions performance as part of the operating system: owned by teams, connected to maintenance and planning, and reviewed with the same discipline as other performance priorities."
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Decarbonization designed for execution
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" dam-id="114459" dam-content-type="Image" width="1672" height="941" alt="Un analista revisa el desempeño de emisiones en un centro de operaciones industriales." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c935afd5-1ec9-148d-5aaf-3d4875c01160
+            Value: 4326535e-9d79-a3af-b0a8-b94ca6c5358a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: "Integre el desempeño de emisiones al sistema operativo: con responsables claros, conexión con mantenimiento y planeación, y la misma disciplina de revisión que otras prioridades de desempeño."
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Descarbonización diseñada para la ejecución

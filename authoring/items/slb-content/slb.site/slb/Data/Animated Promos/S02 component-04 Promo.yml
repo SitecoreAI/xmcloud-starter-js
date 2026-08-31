@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" dam-id="114260" dam-content-type="Image" width="1920" height="1916" alt="Colleagues collaborate in an Innovation Factori workspace." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: daafc4c3-2735-a8ae-6cf1-277c9b372599
+            Value: 9ef368f8-b73a-6556-364b-4ec6f5dc1fc2
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Start with one valuable workflow. Establish its data, decision rights, and success criteria. Then extend what works with governance and reuse built in.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Designed for operating reality
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" dam-id="114260" dam-content-type="Image" width="1920" height="1916" alt="Un grupo de colegas colabora en un espacio de Innovation Factori." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5db029f7-7b20-fa6e-ff35-33807baaa390
+            Value: abdd1ff7-c476-16e9-1a66-fe23e213c56a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Comience con un flujo de trabajo de alto valor. Defina sus datos, derechos de decisión y criterios de éxito. Después, amplíe lo que funciona con gobernanza y reutilización desde el diseño.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Diseñado para la realidad operativa

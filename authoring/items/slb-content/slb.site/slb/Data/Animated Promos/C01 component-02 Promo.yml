@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" dam-id="114492" dam-content-type="Image" width="1672" height="941" alt="A local engineering team reviews field conditions in a high-desert energy region." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 542d13a6-b2e1-edef-2ee3-38a62513f97a
+            Value: 1e6c4410-97c4-ed48-9def-33e79381061a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Share the outcome you need, where the work is happening, and the best way to reach you. The SLB team will route your inquiry to the specialists best equipped to respond.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Start with the context
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" dam-id="114492" dam-content-type="Image" width="1672" height="941" alt="Un equipo local de ingeniería revisa las condiciones de campo en una región energética de clima desértico y gran altitud." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5d1dba78-3a0f-0d9e-f9fb-dfb0187691ce
+            Value: 1485c145-ddca-56cb-8657-564f5ea38f90
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Comparta el resultado que necesita, dónde se realizará el trabajo y la mejor forma de comunicarnos con usted. El equipo de SLB dirigirá su consulta a los especialistas mejor preparados para responder.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Comience con el contexto

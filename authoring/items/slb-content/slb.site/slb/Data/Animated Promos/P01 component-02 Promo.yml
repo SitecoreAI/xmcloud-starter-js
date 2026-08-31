@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" dam-id="114243" dam-content-type="Image" width="1416" height="1140" alt="SLB employees work around a forklift inside the Shreveport manufacturing facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: df3a88c5-215f-4fdc-3484-51c681c0675b
+            Value: 263d6f2d-083f-e5f1-4e0a-ac3bc9cd75e5
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: The hardest operating challenges cross product boundaries. SLB combines tools, workflows, and specialists around the decision at hand while keeping the technical detail visible.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Technology and expertise, connected
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" dam-id="114243" dam-content-type="Image" width="1416" height="1140" alt="Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5174a564-4f06-1676-3542-52611208558b
+            Value: 4708178f-48e9-c735-175e-cedf60a09870
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Los desafíos operativos más complejos atraviesan los límites entre productos. SLB integra herramientas, flujos de trabajo y especialistas en torno a cada decisión, sin ocultar el detalle técnico.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Tecnología y experiencia, conectadas

@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" dam-id="114477" dam-content-type="Image" width="1672" height="941" alt="Operations and sustainability specialists establish an emissions baseline." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ac96971b-1e9d-4022-b014-f75e67d758e6
+            Value: 014a21fc-dc38-94af-9d5f-b49884a12bfb
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Before setting an intervention, define the source, boundary, period, method, and quality of the underlying data. The same rigor should follow the result.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Make the baseline defensible
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" dam-id="114477" dam-content-type="Image" width="1672" height="941" alt="Especialistas de operaciones y sostenibilidad establecen una línea base de emisiones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 44bd063a-3a29-1eb7-4daa-43cd6d421b41
+            Value: 4b3104b8-0ba2-3362-b2e8-1cb9299fca9f
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Antes de definir una intervención, establezca la fuente, el límite, el periodo, el método y la calidad de los datos. Aplique el mismo rigor al resultado.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Establezca una línea base defendible

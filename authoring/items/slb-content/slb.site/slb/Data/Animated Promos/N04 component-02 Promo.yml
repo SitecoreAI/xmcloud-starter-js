@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-intervention-planning" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-intervention-planning" dam-id="114478" dam-content-type="Image" width="1672" height="941" alt="Engineers plan the sequence of emissions interventions beside operating equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 73d40add-5d74-3dbc-8be4-3346a67568b9
+            Value: 1d0308e7-9113-6e46-6e7c-07ba6c304f11
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Sources differ in scale, persistence, accessibility, and operating consequence. Evaluate interventions with the technical team that owns the equipment. A practical sequence reflects emissions potential, feasibility, maintenance windows, safety, and the value of acting now.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Prioritize where engineering and value meet
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-intervention-planning" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-intervention-planning" dam-id="114478" dam-content-type="Image" width="1672" height="941" alt="Ingenieros planifican la secuencia de intervenciones de emisiones junto a equipos en operación." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1ccc72f1-cab0-77c0-f956-407b66d06104
+            Value: 8f0d93ac-f47f-8c0c-8d0a-8de787b152ef
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Las fuentes difieren en magnitud, persistencia, accesibilidad y consecuencia operativa. Evalúe las intervenciones con el equipo técnico responsable del equipo. Una secuencia práctica considera el potencial de emisiones, la viabilidad, las ventanas de mantenimiento, la seguridad y el valor de actuar ahora.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Priorice donde convergen la ingeniería y el valor

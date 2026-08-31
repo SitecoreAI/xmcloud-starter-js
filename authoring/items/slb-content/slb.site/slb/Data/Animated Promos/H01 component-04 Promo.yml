@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c64954ae-c23c-c64f-3d5f-4373926016ea
+            Value: b2945fa2-e4f5-9b06-1e7d-e1fdc2cae481
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +44,7 @@ Languages:
             Value: Read perspectives from scientists, engineers, and industry leaders working across today's operations and tomorrow's energy systems.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Ideas shaping energy's next chapter
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c72ec865-8475-ad57-76ed-da15bcef092d
+            Value: e23360c2-07b8-6eda-76c1-9dd50fbddf07
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +84,7 @@ Languages:
             Value: Consulte perspectivas de científicos, ingenieros y líderes de la industria que trabajan tanto en las operaciones actuales como en los sistemas energéticos del futuro.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Ideas que definen el próximo capítulo de la energía

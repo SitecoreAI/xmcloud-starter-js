@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-solutions-field-deployment" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-solutions-field-deployment" dam-id="114569" dam-content-type="Image" width="1672" height="941" alt="Field engineers commission a modular energy equipment skid at an operating site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5e52f7b7-a139-3830-6a41-d76b6b350451
+            Value: 185b9266-495c-f373-0c59-c5cadcbc3e7e
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -50,7 +50,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-solutions-field-deployment" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-solutions-field-deployment" dam-id="114569" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingenieros de campo pone en servicio un módulo de equipos energéticos en un sitio operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 725d0df2-9429-2829-25c4-40225cd99986
+            Value: 77d7a374-abfa-0f69-4a07-496f994c8dda
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -87,4 +87,4 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T150000Z
+            Value: 20260831T191500Z
