@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: dc1e24a0-1907-c11e-ffac-afe269a5a020
+    Value: 0e972817-2996-1446-ebb4-a38adf92bf22
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Advance your carbon storage project
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 7ba10f67-d1f9-257b-f585-0ee9a2677e6c
+            Value: 21ab3418-b888-e945-cea4-0e4fd0d7f259
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Talk to an expert" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Impulse su proyecto de almacenamiento de carbono
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3797eaeb-11a6-78f5-a329-3da5c3e5295a
+            Value: 091f1417-75dd-c977-29b5-a80df979397f
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Hable con un especialista" url="" />

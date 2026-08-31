@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 9c3de5e5-f342-6648-6a3a-61822e18e847
+    Value: bc3a6c8e-0688-bfbf-24cf-faa85fbb9b3c
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" dam-id="114405" dam-content-type="Image" width="1672" height="941" alt="An aerial methane survey is underway above an industrial processing facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 694ee3fc-bae5-bd65-ffa5-eb11dcd2612d
+            Value: b312c92e-a295-e208-179c-bd238e3e5c4e
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey" dam-id="114405" dam-content-type="Image" width="1672" height="941" alt="Se realiza un levantamiento aéreo de metano sobre una instalación de procesamiento industrial." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: aced359f-3d83-0517-a1e8-ef7743470883
+            Value: d713f623-96e5-3886-764c-efe8b2020210
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

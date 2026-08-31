@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{236DC8DE-07AD-4305-90A9-5FA75C4FA4FF}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: c7aac42a-20a9-4ab7-aa71-f49548e5946f
+    Value: 344b2630-b774-be14-dc5f-d34dcdc32d15
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1025535b-9578-4c12-9cdd-e415899da5e9
+            Value: 73426f40-ff5b-84c4-0a36-51d5a6f6f5fa
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Solutions
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 084a9647-59b8-4763-83ac-a73865e19f99
+            Value: 07a5a524-4858-e4bc-3def-366cede67879
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -85,7 +85,7 @@ Languages:
             Value: Solutions
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9b3b0acd-fefb-4f6a-b08a-4a731bab2889
+            Value: 293bdafc-6cfb-3f2e-2def-32b32afb67d8
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Solutions
@@ -118,7 +118,7 @@ Languages:
             Value: Solutions
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: cafb5956-a22e-45d7-b222-a38bf06b61b7
+            Value: 17424c63-c0ab-8f36-95f0-86bda84a2212
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Solutions
@@ -154,7 +154,7 @@ Languages:
             Value: Solutions
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 17a3b1e4-085b-4e52-9fbb-7786afa6820a
+            Value: 747f1784-5433-7ca4-1232-3183dd70ea61
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Solutions
@@ -193,7 +193,7 @@ Languages:
             Value: Solve the energy challenge in front of you
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 50427a17-6b9f-436d-a838-aaa4b0fb4aa2
+            Value: f2653c17-c724-1f7f-4cb7-070724dca56f
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Connect domain expertise, digital intelligence, and engineered execution around the outcome your operation needs next.
@@ -299,7 +299,7 @@ Languages:
             Value: Solve the energy challenge in front of you | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 008a5eed-c286-1435-4a2e-e56d50ef1836
+            Value: b040acc5-647a-8d90-270d-22cd4a918eb2
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Connect domain expertise, digital intelligence, and engineered execution around the outcome your operation needs next.
@@ -430,7 +430,7 @@ Languages:
             Value: Resuelva el desafío energético que tiene enfrente | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ef263cbc-ed55-a936-8e1a-5087e9dc6cad
+            Value: fb9e640b-ffa5-2dcc-7f8f-5cca72705dd2
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

@@ -12,7 +12,7 @@ SharedFields:
     Value: 100
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 8b48999b-0f0e-a7b7-3102-c1cd7f4ca1dd
+    Value: 3c12f5fa-209d-1482-305f-e80b24c3d272
 Languages:
   - Language: en
     Versions:
@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-engineers-prioritize-tablet" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-engineers-prioritize-tablet" dam-id="114409" dam-content-type="Image" width="1672" height="941" alt="Two engineers compare emissions-reduction options beside process equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: defa1b0f-32c3-2e2a-b788-66ad301ea7aa
+            Value: 138f223f-4647-abb4-a46a-2a267b6c8004
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{AEB8F2EB-5186-49A9-997C-5B3DF3F3A551}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-engineers-prioritize-tablet" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-engineers-prioritize-tablet" dam-id="114409" dam-content-type="Image" width="1672" height="941" alt="Dos ingenieros comparan opciones para reducir emisiones junto a equipos de proceso." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8458a46a-d9b1-939c-5040-b83b370d47f5
+            Value: 0b29bad1-5a1f-d126-6343-d72aaffe45f6
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{AEB8F2EB-5186-49A9-997C-5B3DF3F3A551}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />

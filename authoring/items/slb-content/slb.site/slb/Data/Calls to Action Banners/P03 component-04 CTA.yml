@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 729dc40e-03ec-51f7-08fb-65b543a5b055
+    Value: 4cec5aa7-536e-37fd-2799-df2439841d3b
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Tela agentic-AI assistant
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5ff464b2-9a27-e13a-18c5-740c6186a21e
+            Value: 2c42e5fa-01fb-0223-b2df-a455304af61f
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="tela" target="" title="" linktype="internal" text="Discover Tela" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Asistente de IA agéntica Tela
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c2634138-b6a8-a048-51c9-3a0cd7cd279f
+            Value: 1f3c6b99-d2e0-4f7e-d997-4b8fd8139463
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="tela" target="" title="" linktype="internal" text="Conozca Tela" url="" />

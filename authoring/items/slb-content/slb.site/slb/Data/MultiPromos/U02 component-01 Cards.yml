@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: e89ea85d-8a92-8773-851d-7ccc91262984
+    Value: 706aa981-2b5f-a012-24ac-e6e0d6f49335
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9177e671-dace-e471-412b-7ab478ae4235
+            Value: 51b12985-8b99-b743-c787-3f012a76307a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -66,7 +66,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: dbeb2258-4400-0b04-196a-a88330aa156b
+            Value: 81359aa3-8ef5-9a03-bf31-20a6a1efeea1
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

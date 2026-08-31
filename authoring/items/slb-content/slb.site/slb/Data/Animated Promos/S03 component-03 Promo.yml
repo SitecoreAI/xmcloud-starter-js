@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: e00ab5d1-34f0-3472-fff0-b666bb6fe896
+    Value: f826a190-c02d-9729-0fa2-e8e9ea298728
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Engineers compare measurement and abatement technologies at an industrial emissions source." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 80d42e82-6eb4-9a26-9a7d-144cd60e1230
+            Value: 707ffdc3-7451-6339-c9ce-406702d0e491
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingenieros compara tecnologías de medición y reducción en una fuente de emisiones industriales." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b8786b5e-ad70-750c-eee2-b7eaa8707f53
+            Value: 7f2e4abf-f3df-0723-f672-aca9a4714e5a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

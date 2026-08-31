@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{E1CC9E17-1728-4A26-B3A4-3E6AC88EB4E0}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 9e336373-172d-42f7-80bc-6daa9060a31c
+    Value: a3ac1750-99bb-9ab6-47d8-00ae441601ea
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c6b33792-f2ea-4870-a679-4b8b1b2c15c0
+            Value: 16ad175d-a01d-bcc1-7ec9-86c976112967
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Products and services
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4017855e-51c5-42ad-ac89-fd4fef027a70
+            Value: 17471d71-0fbf-b195-122f-340973a23d4a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -85,7 +85,7 @@ Languages:
             Value: Products and services
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a8ced70f-087a-42b7-a05f-dee3387b68c3
+            Value: ed90a775-1d61-8f5d-3109-1593e53a335f
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Products and services
@@ -118,7 +118,7 @@ Languages:
             Value: Products and services
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4018aad1-2743-4727-aae3-23003c456490
+            Value: 53ac568d-1965-b116-1cb3-1ece2b81d362
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Products and services
@@ -157,7 +157,7 @@ Languages:
             Value: Products and services
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 053f1dcf-49e9-47d6-a34d-f2590ac1d854
+            Value: 9d473e31-391c-0abe-6fa1-9c5e599dbde5
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Products and services
@@ -257,7 +257,7 @@ Languages:
             Value: Technology built for energy's toughest work | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 02b17b9f-0555-6a47-dbb7-8f00ef6f81d7
+            Value: 8ba9c526-6be5-9956-887b-ae9c64d247d7
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Discover products, services, and digital capabilities shaped by deep domain knowledge and designed for the realities of energy operations.
@@ -382,7 +382,7 @@ Languages:
             Value: Tecnología creada para los trabajos más exigentes de la energía | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 521eba18-8a86-38d8-0926-2293fd18ed85
+            Value: 5ef14df7-349a-2fe4-5e47-93ba3babba2c
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: e3897248-0903-f790-9ddc-298e89813e67
+    Value: 47dc28a4-6435-d54a-7ce2-4ea7ebc8457d
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Connect your next well decision
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 55ce06e0-e146-a49f-e346-78571298affa
+            Value: 8d8481fa-96bf-7843-a9b8-7b944c3c621e
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Speak with a specialist" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Conecte su próxima decisión de pozo
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1a17f390-a558-14be-5b8d-bf7b0d835072
+            Value: 39d9ecc9-d510-eaa7-0203-4d49132144fa
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Hable con un especialista" url="" />

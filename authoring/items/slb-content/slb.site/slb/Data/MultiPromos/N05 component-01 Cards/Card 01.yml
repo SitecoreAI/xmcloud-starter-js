@@ -12,7 +12,7 @@ SharedFields:
     Value: 0
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 544dead9-7d17-1a50-80a4-0d345df50b0d
+    Value: 738cdfe4-3591-28ce-d13a-fa840b875100
 Languages:
   - Language: en
     Versions:
@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5541c856-dc06-fe27-8ad1-4cb791a45484
+            Value: 17fae0b6-cec5-3cfd-20e8-f6f728cfc1df
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{DDE0A656-28DB-42AE-91CC-F37C85089CB9}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 207f67d7-ff30-0974-b958-96954dab7cd5
+            Value: 2ee14d72-6570-9087-c55f-6e492cd2cd1a
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{DDE0A656-28DB-42AE-91CC-F37C85089CB9}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />

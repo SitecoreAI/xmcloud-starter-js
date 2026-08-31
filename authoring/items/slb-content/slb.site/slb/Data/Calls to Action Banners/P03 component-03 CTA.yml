@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 64aa75fc-c915-c949-ca79-7c453517c476
+    Value: bef4a4f7-0adb-2b43-365f-3cacb0544a94
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Lumi data and AI platform
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 088870de-186a-c47e-66b0-1475cc8f3057
+            Value: 56c76ee9-4ea4-2b2b-e4fd-3d0089d9830c
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="lumi" target="" title="" linktype="internal" text="Explore Lumi" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Plataforma de datos e IA Lumi
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 2ed8949b-92d2-0988-b582-cf339b2731c3
+            Value: 9d79e955-8f3e-f6b1-fa03-6b4bf882d403
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="lumi" target="" title="" linktype="internal" text="Explore Lumi" url="" />

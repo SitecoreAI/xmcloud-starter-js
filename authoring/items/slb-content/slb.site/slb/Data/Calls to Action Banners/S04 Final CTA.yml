@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: d99b7cb0-9b43-94f2-212d-949aa800ec1f
+    Value: d7316ef0-84da-bc39-da29-4eeedea09dbc
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Shape the next energy system
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e31d0a03-43c3-6ae2-ca90-77b64221934a
+            Value: f33735dd-92b7-c78a-45ad-c8a66ce565d0
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Talk to a domain expert" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Dé forma al próximo sistema energético
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c2ef85b0-87cb-6be6-157b-de2b8ce31e3f
+            Value: a3aa7c5a-a4d0-c98a-e508-ed9a37f35338
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Hable con un especialista" url="" />

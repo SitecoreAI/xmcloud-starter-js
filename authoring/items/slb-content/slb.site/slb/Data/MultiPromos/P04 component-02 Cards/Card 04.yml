@@ -12,7 +12,7 @@ SharedFields:
     Value: 300
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 5c708161-0d1e-20c8-0804-67fe667ba24d
+    Value: c4afe218-27ab-99af-b158-7b8cccb3da39
 Languages:
   - Language: en
     Versions:
@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" dam-id="114422" dam-content-type="Image" width="1672" height="941" alt="Monitoring instruments track subsurface conditions above a coastal carbon storage site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 7c2dc7af-bb35-0aac-b520-d3935000306c
+            Value: 5437fe3c-e553-7e9e-f452-a4a522467a37
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" dam-id="114422" dam-content-type="Image" width="1672" height="941" alt="Instrumentos de monitoreo registran las condiciones del subsuelo sobre un sitio costero de almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 499e85e3-1518-a198-81d1-84893537a5dc
+            Value: 3d65ed9e-5464-1ada-e28d-65753d544309
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:

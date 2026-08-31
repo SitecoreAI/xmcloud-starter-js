@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 0707070c-5bbe-fe92-3607-9ee434778145
+    Value: cf649663-e2d4-ef04-44b4-da25b1f6e748
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Find the challenge that moves you
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e9884f0c-3b9f-9997-0f08-ad0edc3b67e8
+            Value: 97d3ceeb-9fe4-2758-3d2f-23a266ac1b6c
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Search careers" title="" class="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Encuentre el desafío que lo impulsa
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d1253205-b213-2479-9c67-9313f0318b07
+            Value: 087c340d-29b1-97e1-c82e-5c2ae67ebc46
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Busque oportunidades profesionales" title="" class="" />

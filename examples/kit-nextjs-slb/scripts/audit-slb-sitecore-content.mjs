@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
@@ -29,6 +30,8 @@ const expected = {
 
 const locales = ["en", "es-MX"];
 const finalRenderingsFieldId = "04bf00db-f5fb-41f7-8ab7-22408372a981";
+const revisionFieldId = "8cdc337e-a112-42fb-bbb4-4143751e123f";
+const sharedRevisionFieldId = "dbbbeca1-21c7-4906-9dd2-493c1efa59a2";
 const heroRenderingId = "927fe09d-c039-b897-165c-995487b11b87";
 const campaignRenderingUid = "0abd1a13-bd83-4060-8e54-f9b577ed4db1";
 const campaignDefaultDatasourceId = "aadba9e9-3b8c-4f24-8b3a-0dd30a602ff1";
@@ -235,6 +238,71 @@ function fieldById(fields, id) {
     return (fields ?? []).find(
         (entry) => String(entry.ID).toLowerCase() === normalizedId,
     );
+}
+
+function expectedContentRevision(itemId, scope, fields) {
+    const canonicalFields = (fields ?? [])
+        .filter(
+            (entry) =>
+                ![revisionFieldId, sharedRevisionFieldId].includes(
+                    String(entry.ID).toLowerCase(),
+                ),
+        )
+        .map((entry) => [
+            String(entry.ID).toLowerCase(),
+            String(entry.Value ?? "")
+                .replaceAll("\r\n", "\n")
+                .replaceAll("\r", "\n")
+                .replaceAll("\u2028", "\n")
+                .replaceAll("\u2029", "\n"),
+        ])
+        .sort((left, right) =>
+            `${left[0]}:${left[1]}`.localeCompare(`${right[0]}:${right[1]}`),
+        );
+    const hash = crypto
+        .createHash("sha256")
+        .update(
+            JSON.stringify({
+                itemId: String(itemId).replace(/[{}]/g, "").toLowerCase(),
+                scope,
+                fields: canonicalFields,
+            }),
+        )
+        .digest("hex");
+    return `${hash.slice(0, 8)}-${hash.slice(8, 12)}-${hash.slice(12, 16)}-${hash.slice(16, 20)}-${hash.slice(20, 32)}`;
+}
+
+function assertContentSensitiveRevisions(document, context) {
+    if (document.SharedFields?.length) {
+        const revision = fieldById(
+            document.SharedFields,
+            sharedRevisionFieldId,
+        )?.Value;
+        const expectedRevision = expectedContentRevision(
+            document.ID,
+            "shared",
+            document.SharedFields,
+        );
+        if (String(revision).toLowerCase() !== expectedRevision) {
+            fail(`${context} has a stale or identity-only shared revision.`);
+        }
+    }
+
+    for (const languageItem of document.Languages ?? []) {
+        for (const version of languageItem.Versions ?? []) {
+            const revision = fieldById(version.Fields, revisionFieldId)?.Value;
+            const expectedRevision = expectedContentRevision(
+                document.ID,
+                `${languageItem.Language}:version:${version.Version}`,
+                [...(languageItem.Fields ?? []), ...(version.Fields ?? [])],
+            );
+            if (String(revision).toLowerCase() !== expectedRevision) {
+                fail(
+                    `${context} ${languageItem.Language} v${version.Version} has a stale or identity-only version revision.`,
+                );
+            }
+        }
+    }
 }
 
 function xmlAttribute(tag, attribute) {
@@ -506,6 +574,10 @@ const generatedDatasources = items.filter((item) =>
     generatedDatasourcePathPattern.test(String(item.document.Path ?? "")),
 );
 
+for (const item of [...mappedPageItems, ...generatedDatasources]) {
+    assertContentSensitiveRevisions(item.document, String(item.document.Path));
+}
+
 if (generatedDatasources.length !== expected.generatedDatasources) {
     fail(
         `Found ${generatedDatasources.length} generated datasource items; expected ${expected.generatedDatasources}.`,
@@ -746,6 +818,9 @@ if (failures.length > 0) {
     );
     console.log(
         "- All generated datasource fields explicitly serialized; no starter placeholders",
+    );
+    console.log(
+        "- Serialized item revisions are content-sensitive and current",
     );
     console.log("- Supporting images unique per page; U04 focus imagery valid");
     console.log("- No legacy Solterra signatures in authored content");

@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{87298048-154C-4BF7-BA4F-012139D5BF59}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 1149b9ba-fbad-439a-90df-e38b0c69988f
+    Value: 9ad5cac8-b867-9aa8-ee73-56ba7a7bfed9
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b8052b22-524c-4ece-800c-fbf8cc877d46
+            Value: 965cddd3-1563-4c32-222f-ccb7b6501746
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: News from across SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c8711589-a0b1-48af-b17e-7171d83c95a1
+            Value: 37d7c502-f6d0-e4e4-c671-5da682914618
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -88,7 +88,7 @@ Languages:
             Value: News from across SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6ee1747e-fa05-4d50-b3cb-a4bb8d333acb
+            Value: ca5fa576-a3a9-d247-39e1-724c4b095447
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Newsroom
@@ -127,7 +127,7 @@ Languages:
             Value: News from across SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 16f27d61-0b7e-4cb2-b9db-2faa0c22f564
+            Value: 12b9bb01-aa86-2241-0d1a-c4475599face
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Newsroom
@@ -216,7 +216,7 @@ Languages:
             Value: News from across SLB | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 451f2e00-5e78-3e79-1f2a-b1338f6e4e19
+            Value: c86153c8-143e-2cf7-730b-05f76686b4eb
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Follow company news, technology updates, project announcements, and stories from SLB teams around the world.
@@ -324,7 +324,7 @@ Languages:
             Value: Noticias de SLB en todo el mundo | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 708e7aa5-79e2-f2e0-b341-1a2d99032778
+            Value: 5c58e532-3f87-c511-c043-e94077b407f4
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

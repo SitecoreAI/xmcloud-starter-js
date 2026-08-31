@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: c6caffea-df73-6f84-c097-f3d38fc486ed
+    Value: 13460d09-8a60-49df-0a96-566b5334da21
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Find the right capability for your operation
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a2657539-b6d6-bbfc-f202-5f82f0ae3fdb
+            Value: 681c697b-8989-d9c6-9438-b40d9410a297
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Talk to an expert" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Encuentre la capacidad adecuada para su operación
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: eb1adf5c-1895-fa6c-80e6-f46d7520e946
+            Value: 03996d10-404d-c0b9-fdcc-0b6efbde87fa
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Hable con un especialista" url="" />

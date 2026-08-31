@@ -14,7 +14,7 @@ SharedFields:
       <image mediaid="{1EF86ED3-6063-40EC-A99A-18CB5909AC15}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 5acf3d5d-b48a-4909-944d-ab65e9bbc4ee
+    Value: 16ffce5f-e6d0-5952-c5d5-719e1c50f607
   - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
     Hint: __Originator
     Value: "{F558BEC9-C602-4D7A-B9A1-D0411C946EA4}"
@@ -200,7 +200,7 @@ Languages:
             Value: Solterra & Co.
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0693832f-1a4c-4ac1-afaa-891bcef2dc02
+            Value: 71ffcb73-c260-0efd-b4a1-966c3d0a9d62
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Discover wellness, lifestyle, and editorial content that inspires your everyday journey with Solterra & Co.
@@ -395,7 +395,7 @@ Languages:
             Value: Solterra & Co.
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3fad983e-af93-42e4-8261-8b1a4f95116a
+            Value: 88ccba53-1b97-8813-a2b2-b39e4131babb
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Discover wellness, lifestyle, and editorial content that inspires your everyday journey with Solterra & Co.
@@ -522,7 +522,7 @@ Languages:
             Value: SLB | Energy technology for a balanced planet
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c53dadf8-e551-642c-f8aa-905fd1e20a58
+            Value: 6622b111-2554-6399-8707-5d3964a4d89c
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Discover how SLB combines science, digital technology, and energy expertise to improve performance, decarbonize industry, and scale new energy systems.
@@ -654,7 +654,7 @@ Languages:
             Value: SLB | Tecnología energética para un planeta equilibrado
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4287dbab-9353-e539-e796-4ebe081b5e85
+            Value: 66f46960-493e-8751-6df5-984eeca22b85
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

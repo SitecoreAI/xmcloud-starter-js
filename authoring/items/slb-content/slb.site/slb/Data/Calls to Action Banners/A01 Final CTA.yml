@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 423c8cb0-6eeb-8011-69fe-a57b64c6de09
+    Value: f4afe022-b4d3-7c63-aaeb-062584ebbb1e
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Bring your perspective to the energy challenge
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1cb4c23d-86de-a246-f883-27e715e00a9a
+            Value: 2702e712-8c6a-ee19-a046-03c560f17175
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Explore careers" title="" class="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Aporte su perspectiva al desafío energético
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8897d0bf-d278-8eae-afb9-0439c4429b5f
+            Value: c0385108-0abc-5227-4271-dfdc208c5b81
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Explore oportunidades profesionales" title="" class="" />

@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 630f0f1e-b6c6-71fc-180e-4cd5919fc679
+    Value: 1fc0c9c4-b1fa-779c-bb98-e93dfb6e1825
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" dam-id="114483" dam-content-type="Image" width="1672" height="941" alt="An analyst reviews field evidence used to verify emissions improvements." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9bfdd8c6-1adb-7b1b-4c16-dc8d1ec2cff9
+            Value: 3509dd47-2f6b-3eb6-b51b-bd075404dff7
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" dam-id="114483" dam-content-type="Image" width="1672" height="941" alt="Una analista revisa la evidencia de campo utilizada para verificar mejoras de emisiones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 467d1150-54c1-40b9-481e-c43399e9aeb4
+            Value: eb2d0b8f-3a33-f7c1-730d-1b2374c20283
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

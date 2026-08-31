@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{1CB19661-3EB7-4372-BBEA-E3BEDAB3DF77}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 3f1fc291-c207-4f10-8296-0dc11015e6c2
+    Value: 5c730b9e-dc7f-1c3d-4c39-739528c981dd
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4934f54c-d6e4-4062-9982-0ac99ffe677b
+            Value: 01845692-4523-6bfb-60c2-6e6fc5d397a4
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Progress starts with people
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 80f3c505-c6e7-4aea-852a-e178f8ddf8dc
+            Value: ee3411a5-3a14-2704-d43d-5f3a6498e46f
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: People and communities
@@ -94,7 +94,7 @@ Languages:
             Value: Progress starts with people
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e81c891c-9058-4368-9de8-d8f6d1cbd223
+            Value: fd712104-2fe4-c468-5a46-0329884eb18c
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Create the conditions for people to work safely, contribute fully, keep learning, and build lasting value in the communities connected to our operations.
@@ -201,7 +201,7 @@ Languages:
             Value: Progress starts with people | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1c048028-649b-406d-fd5d-a44f6fcfd9ad
+            Value: 2164cefa-0929-6b45-ab37-a3584bb9b4b6
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Create the conditions for people to work safely, contribute fully, keep learning, and build lasting value in the communities connected to our operations.
@@ -333,7 +333,7 @@ Languages:
             Value: El progreso comienza con las personas | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 28ac29f4-0752-52be-af44-fb37a5f97dc2
+            Value: 94948d25-86a0-7a4d-e3ae-2ea4de57a4bf
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

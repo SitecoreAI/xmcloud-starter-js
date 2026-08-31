@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: a0595656-12d6-28f4-c3b2-00da9ffe5b48
+    Value: 26d6ac53-bf67-4de2-b910-061dccb7d048
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Ready to connect?
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e39bafd5-8196-73eb-63eb-72ad43d4d3c2
+            Value: 672dd107-9be6-c93f-ccf4-14212242090c
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://www.slb.com/contact-us" target="" text="Contact SLB" title="" class="" />
@@ -66,7 +66,7 @@ Languages:
             Value: ¿Desea conversar?
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0bef0e9e-07c8-6a89-80d2-394d82bb01fb
+            Value: 225438d0-e767-d3ba-3c7e-96327600047f
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://www.slb.com/contact-us" target="" text="Contacte a SLB" title="" class="" />

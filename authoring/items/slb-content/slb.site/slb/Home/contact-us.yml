@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{A30890C2-31B9-4D2B-8BE1-75F272498E12}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: bd5418a2-fee1-4930-ba3a-99faa3352952
+    Value: ea562b69-e863-3227-4393-96920a4f9ca1
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: dd3f21e9-0c9a-4608-80a1-f0b91ce29821
+            Value: 3aa893bb-21be-362d-8d75-32d83a62ff5f
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Talk with an SLB specialist
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 47a1fa87-5cd0-47f3-ae14-107dc9156098
+            Value: 10c9b3a5-dca1-b328-9dca-cfcdaaa8a9a2
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -88,7 +88,7 @@ Languages:
             Value: Talk with an SLB specialist
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 08ad770e-aebb-44e6-8edf-58131d70244b
+            Value: 54a66a60-8f07-7fc4-2a34-3c8766259762
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Contact us
@@ -127,7 +127,7 @@ Languages:
             Value: Talk with an SLB specialist
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b1f76d37-9169-4768-84ad-696edf8529f7
+            Value: bf0b4dea-9d95-61b1-44a6-50de404729d6
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Contact us
@@ -223,7 +223,7 @@ Languages:
             Value: Contact us | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3859454f-54e4-930a-3005-53bcc7282e81
+            Value: 3e8e83fc-7d77-c2d4-5d18-7d379ef98a4f
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Tell us what you're working on. We'll connect you with the right technical and commercial team.
@@ -278,7 +278,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fa961dea-4044-442e-b803-985a56b2130b
+            Value: 59d14a9c-08ef-885f-eeb9-960c9faf8136
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -313,7 +313,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4ca3d210-673f-49e6-b183-810e8a6c2549
+            Value: 912dd177-5fb3-078c-c056-437b1686bae2
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Contáctenos
@@ -414,7 +414,7 @@ Languages:
             Value: Contáctenos | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1bc7a13a-50a3-975c-a782-39c8ead0f727
+            Value: 98d07450-f0fa-f108-8e8f-5f54ba7d2beb
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.

@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 625f74c7-4438-f24b-527e-95c15d92c4e0
+    Value: 5d6535e3-9281-2276-fd5a-fdc0165538e3
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-regional-technology-center" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-regional-technology-center" dam-id="114489" dam-content-type="Image" width="1672" height="941" alt="Engineers collaborate inside a regional technology center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4b900eca-dd52-6949-2b96-ace1962fb113
+            Value: a2965c0a-9ab0-ebe2-7aa1-0b4fb91ee8c8
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-regional-technology-center" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-regional-technology-center" dam-id="114489" dam-content-type="Image" width="1672" height="941" alt="Ingenieros colaboran dentro de un centro tecnológico regional." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: faa1d524-c018-f921-bf66-018411d2c6de
+            Value: c37a5178-a1e0-7422-4fdb-3b66e4c6b201
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{2E126E03-5EE0-4EED-B6CB-E597A33F504B}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 66dc7f2d-e238-486e-8130-1eed726a66dc
+    Value: ad279e9c-d7aa-5a8e-2875-bc59dd9ed3fe
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6b460cfd-61bb-4dc7-94f0-4517959a216c
+            Value: f304f686-6435-81d1-832d-cb30efabf0ab
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: About us
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 33015bfe-0981-4719-bf54-08b4365b493c
+            Value: fde3aceb-d371-a592-2d87-f987a2d537ee
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -85,7 +85,7 @@ Languages:
             Value: About us
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0fcd9697-086a-4f06-af4b-c7ac2c071dbc
+            Value: 03b0d813-14aa-17eb-d623-f02f19668493
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: About us
@@ -118,7 +118,7 @@ Languages:
             Value: About us
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 43961a08-30a8-46d4-870a-035c57493db9
+            Value: 539f1a73-577c-7677-d461-7376af69b57e
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: About us
@@ -160,7 +160,7 @@ Languages:
             Value: About us
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 72187843-46b4-4e9c-8eb8-1bbe9f48dba6
+            Value: 465180b4-4d3c-59ab-7fb9-62d91bfd9972
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Who we are
@@ -270,7 +270,7 @@ Languages:
             Value: We are SLB | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a87d163f-5b29-c9a7-9403-c8dfd9fff62a
+            Value: 266eac33-9012-3ff8-f877-a45bf720d5b5
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: A global technology company driving energy innovation for a balanced planet.
@@ -405,7 +405,7 @@ Languages:
             Value: Somos SLB | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 515acf0c-7d07-a6b7-6236-cd14a00797cb
+            Value: 6d2a886c-23a3-6105-d477-206858ae5e36
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

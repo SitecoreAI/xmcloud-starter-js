@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 92aceff2-056e-ed60-8239-b22a6c4df0d7
+    Value: 73e1f1f0-4ab1-57f9-29ef-b4a93940e084
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" dam-id="114604" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary energy team reviews governed data lineage, subsurface context, and equipment telemetry in an operations center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f5949e0b-8919-edf1-f74b-046dc2b2e3fd
+            Value: 5fe89d2a-43e9-7c08-cbbc-a776bb9a5bb6
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" dam-id="114604" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario del sector energético revisa el linaje de datos gobernados, el contexto del subsuelo y la telemetría de equipos en un centro de operaciones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ff82b1a3-2304-dae7-f765-aa84e9c27650
+            Value: 27c2c172-e230-9261-8d56-cbba4738207e
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

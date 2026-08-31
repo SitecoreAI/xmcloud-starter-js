@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 68dc948c-c2fd-2cc8-41c7-bf76e747bdd8
+    Value: 896e382f-b64c-b9d3-8d6c-d603949a128a
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Make the next climate decision practical
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6ad0a6ee-708a-c1c8-e829-c11699263c53
+            Value: 0c2c7667-6e40-1d34-5353-a7b9ea148c20
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="" target="" title="" linktype="internal" text="Explore decarbonization solutions" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Haga práctica la siguiente decisión climática
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 7adfa1d0-8e92-2723-dcac-c5ba91595f37
+            Value: 5c9bf438-4ef0-3688-5fef-e870b564fd86
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="" target="" title="" linktype="internal" text="Explore soluciones de descarbonización" url="" />

@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{7779325C-3E81-43F9-90BD-9B6D48AF5DBC}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 599d15d8-3dde-4344-8967-fe29622df8bf
+    Value: 79b13aec-5a31-d09d-e73d-51e50154bb1f
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e50cb8c7-8c42-4c94-af6b-e245cc41a07e
+            Value: 98cefc95-3e37-35b3-ed54-78f90208eb4d
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: From scientific insight to field-ready technology
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4811483a-b065-4ec2-b24b-137a5abe1900
+            Value: ea157897-5e46-ea4e-8db4-57c965ea6153
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Technology and innovation
@@ -94,7 +94,7 @@ Languages:
             Value: From scientific insight to field-ready technology
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3081796d-c63c-48cb-bd53-dd3e82f9b615
+            Value: ce3e5689-afe2-19ce-e824-b07fc0f3e87a
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Technology and innovation
@@ -204,7 +204,7 @@ Languages:
             Value: From scientific insight to field-ready technology | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0d4c6609-fb5a-dd08-a495-2ae8f9bd89e7
+            Value: 0566f38b-f49b-7b7e-c239-bce42ab7a986
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Turn difficult energy questions into practical tools through deep research, precise engineering, real-world validation, and learning at scale.
@@ -333,7 +333,7 @@ Languages:
             Value: Del conocimiento científico a la tecnología lista para el campo | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 276af996-49cb-07c3-0486-31a5a65f25cd
+            Value: 45d2d476-7939-12ab-9572-069aeb6377b7
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{C56DC438-2206-4BEA-BAF6-B490CC5923EA}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 3e4da4a7-d375-42dd-b52b-a6d84f3bb04c
+    Value: bf5ce5ec-7d48-9b56-3a01-7d8fa2cdf17d
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ae401bdc-61bf-47cf-8098-b29505961148
+            Value: 46e15c2d-dae9-0a41-6c99-40d00d648394
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Turn operational complexity into clear decisions
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: eb355d83-530d-40de-b685-04d83ce06e5c
+            Value: 046a1140-9fbc-0bcf-ac8c-4700c5801d44
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Digital operations
@@ -162,7 +162,7 @@ Languages:
             Value: Turn operational complexity into clear decisions | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ec8d123f-ad54-3dc5-2864-94367d72b1e2
+            Value: 5778639e-ee1e-3cc4-0560-69d50e05b2e1
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Bring trusted data, domain workflows, and AI into one operating rhythm so teams can move from signal to action with the context intact.
@@ -294,7 +294,7 @@ Languages:
             Value: Convierta la complejidad operativa en decisiones claras | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fb872d8d-0666-99e7-f65a-6fe0e85a94f2
+            Value: 3ebcaa1b-5d7e-28c9-2164-ecc76f8586b7
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

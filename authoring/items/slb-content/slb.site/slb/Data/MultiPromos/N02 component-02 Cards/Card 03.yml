@@ -12,7 +12,7 @@ SharedFields:
     Value: 200
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 48a7d2b4-c9f9-8d71-4689-f7af94e39ccf
+    Value: 84915bbc-fa0b-69bd-44df-1d2bb52696ec
 Languages:
   - Language: en
     Versions:
@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" dam-id="114603" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f802920e-9fd5-bf31-7d6d-472ffc49a095
+            Value: e581ad2f-673f-efc4-8e95-d96e0c6b727a
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" dam-id="114603" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c1ce4e38-f684-53bb-f013-82e8bd59c8b8
+            Value: 932acb25-61ae-db94-0959-701d330bfc32
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />

@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 207d917e-4332-3b77-6f05-af6e349ff1a0
+    Value: 82188fee-e23c-d32b-8a6a-c5681b87757b
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Bring your next energy challenge
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9f7e4e3c-4a8c-6fa7-4143-4b578bc4d625
+            Value: 94fd768b-ec40-212c-5d53-72f5701a86fb
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Talk to a domain expert" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Preséntenos su próximo desafío energético
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4b63de3f-b4e8-c89c-bb53-a65ae49b7221
+            Value: 2f7058db-7295-6122-b113-39ee846e4fd4
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Hable con un especialista" url="" />

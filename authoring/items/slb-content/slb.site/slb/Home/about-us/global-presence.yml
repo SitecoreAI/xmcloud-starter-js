@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{0845AF17-5AA9-4100-862B-3E21CD7F930E}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 318779db-8734-449c-ad95-6deb1a74d0c3
+    Value: dc178621-dcaf-e098-032f-cf5f0f8053ba
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d7eafd4b-0507-418a-a200-c5104be693d2
+            Value: 05dfd116-2edd-f9a6-d6f5-a8a579d5a3c9
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Global capability, shaped by local insight
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 513a7d4d-8c87-4ff3-910b-a9eb4294e8dd
+            Value: ab82113d-029f-5bdc-782d-bc6bc2385a3b
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Global presence
@@ -94,7 +94,7 @@ Languages:
             Value: Global capability, shaped by local insight
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0cf2dde3-4bfa-47de-8daa-c903a749fb46
+            Value: a9b55ef7-a63b-a8c8-a41e-456493d3a3d9
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Global presence
@@ -197,7 +197,7 @@ Languages:
             Value: Global capability, shaped by local insight | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 96c619a9-cb82-3e66-d6b1-9832255804bd
+            Value: b5719dba-3593-916e-0097-42eef98f0abc
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Connect SLB technology and expertise with people who understand the geology, infrastructure, operations, and communities of each region.
@@ -319,7 +319,7 @@ Languages:
             Value: Capacidad global, definida por el conocimiento local | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 2b9de935-1c4e-e0c6-9752-68a73fab8731
+            Value: 67c881d3-3d78-3b9d-e51a-5a0109b5cc8f
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

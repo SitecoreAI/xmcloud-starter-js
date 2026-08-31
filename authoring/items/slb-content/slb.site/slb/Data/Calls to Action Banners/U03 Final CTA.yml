@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: f6690853-f091-179c-45b8-5578e1401fc5
+    Value: c21dc764-c40b-2e98-69b8-8221aa1a9692
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Build what's next with SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: dcc30b37-d516-26a7-f944-8667fb703ac2
+            Value: 223b14a2-7497-7b5a-4597-b89fcb97da5f
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Explore careers" title="" class="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Construya el futuro con SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ebbcf27c-b0c4-f9fb-dc2c-1905825d5718
+            Value: 90ef26f5-5ea9-ab79-bf4b-2874740151e5
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Explore oportunidades profesionales" title="" class="" />

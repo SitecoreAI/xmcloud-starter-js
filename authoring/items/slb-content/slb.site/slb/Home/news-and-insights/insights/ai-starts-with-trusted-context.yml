@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{42B603AE-40BE-4CA7-B900-7B25D94FD8A8}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: adf124a3-f3d8-4097-89ef-baf12c58e976
+    Value: c2044fcc-1488-77d6-6e52-d57cfaa38bba
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f8470138-16db-429d-96e1-56836a8dd323
+            Value: 19d90eb6-7087-93db-86f2-269930b5f6e0
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: AI in energy starts with trusted context
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9a8ae303-e193-4e8f-bd4a-500140705b6f
+            Value: 0b147273-9d5f-c7ee-8a8d-f1f51319cada
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -88,7 +88,7 @@ Languages:
             Value: AI in energy starts with trusted context
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ec2aafa8-e10a-46ad-9ead-ab3620902c6e
+            Value: 7f654611-ce5a-6a2b-1c5a-51290031053b
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: AI in energy starts with trusted context
@@ -127,7 +127,7 @@ Languages:
             Value: AI in energy starts with trusted context
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 285459ae-b11f-4b1a-bfe5-4102fd45a010
+            Value: 4a55d9be-b9f2-a885-81fc-990de806e857
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: AI in energy starts with trusted context
@@ -240,7 +240,7 @@ Languages:
             Value: AI in energy starts with trusted context | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 23548408-f856-9f47-ea25-82388f2efd7e
+            Value: 658d1a6f-e301-b02d-e7b8-a8177de04136
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: "General AI can accelerate tasks. Energy operations demand something more: information with technical meaning, workflows that reflect operating reality, and experts who can interpret uncertainty before action follows."
@@ -295,7 +295,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 42df2db7-187b-4430-939f-1cbdc526384e
+            Value: 81876416-5052-de67-5e0d-b704854e5b04
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -339,7 +339,7 @@ Languages:
             Value: La IA en energía comienza con un contexto confiable | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 2337631c-0512-494b-8335-1a4e3d2dbdd4
+            Value: 3b3f5f60-9029-1ecf-d870-61f95adde743
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: "La IA general puede acelerar tareas. Las operaciones energéticas exigen algo más: información con significado técnico, flujos de trabajo que reflejen la realidad operativa y especialistas capaces de interpretar la incertidumbre antes de actuar."
@@ -457,7 +457,7 @@ Languages:
             Value: La IA en energía comienza con un contexto confiable | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 82afa86f-fcfe-9054-198a-6b8749cb4da5
+            Value: e819d819-87f5-cca0-ea7d-bd32197f3ba9
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: "La IA general puede acelerar tareas. Las operaciones energéticas exigen algo más: información con significado técnico, flujos de trabajo que reflejen la realidad operativa y especialistas capaces de interpretar la incertidumbre antes de actuar."

@@ -12,7 +12,7 @@ SharedFields:
     Value: 300
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 577d8653-d753-cab4-30d2-dbc7fab99f89
+    Value: 8cdbdaeb-95c7-2cbb-7e01-112141cf3586
 Languages:
   - Language: en
     Versions:
@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-verification-dashboard" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-verification-dashboard" dam-id="114411" dam-content-type="Image" width="1672" height="941" alt="An engineer compares verified emissions data with current facility performance." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e65d4fba-2ffe-6015-e21b-923ce57a5704
+            Value: f4ca88b8-9519-53ab-6b19-733e880c19aa
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-verification-dashboard" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-verification-dashboard" dam-id="114411" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero compara datos verificados de emisiones con el desempeño actual de la instalación." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a807ca9e-78ab-6852-e3b5-62b307eb3744
+            Value: 41209b09-1326-ba6f-0935-97f77b5701a7
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:

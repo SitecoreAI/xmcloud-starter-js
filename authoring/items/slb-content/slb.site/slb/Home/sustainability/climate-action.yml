@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{02F27933-026E-4166-BA62-A10F30A0E8FB}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: d7d3c395-edf7-479c-940a-27835a2da1d8
+    Value: 7b357506-0960-8bb7-9b60-f9088f36e263
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: eefdd91f-3c99-44e0-9e0d-3ac75b2b6622
+            Value: 02d1bdd1-74ac-da8c-2180-dbc7f4379481
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Turn climate ambition into accountable action
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 14879d23-a738-4c2f-a10f-b4adbc18cefe
+            Value: 0c5543d5-a037-f7da-36cd-8c3e05534a85
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Climate action
@@ -155,7 +155,7 @@ Languages:
             Value: Turn climate ambition into accountable action | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 891aaac1-55a6-a287-0a67-0ea705b3687e
+            Value: decba60c-5510-36fd-700d-d655f2f9f576
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Connect strategy, technology, operations, and evidence so each commitment has a practical path and each action can be understood in context.
@@ -280,7 +280,7 @@ Languages:
             Value: Convierta la ambición climática en acciones responsables | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 50f52268-476f-5cfe-e661-b74a8a7d0978
+            Value: bda18cca-6122-2e47-f822-9fbea7acffe1
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

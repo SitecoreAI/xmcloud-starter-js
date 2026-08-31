@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 4219935d-1dc4-0565-a461-bd56f14ad945
+    Value: 580a205a-0bcc-1ee6-410f-f34281f88a08
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary engineering team meets during an operational shift handover." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 913d0e40-6d07-b031-e74d-78bf0a13a260
+            Value: f119c4a0-4875-fd98-41e4-8987060e83d8
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b86b5739-68ac-b06c-391c-237b83667e38
+            Value: 91637f0d-963a-ac19-6089-2112987b429b
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

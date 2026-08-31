@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 214769cf-344f-d872-e171-f839f72b0b42
+    Value: 4b925a71-3193-b6b0-735a-c31822154da4
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Connect your next operational decision
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 87fe3010-b0b6-1f81-7caa-f499bff37595
+            Value: 039707c0-a5e7-c87e-0d0a-7e4c92b28b90
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Talk to a digital expert" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Conecte su próxima decisión operativa
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9440dc5f-93f6-71fc-e8a8-9a68767b7bd6
+            Value: 026ae828-6876-4a3d-dbdc-4f3be93085ac
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Hable con un especialista digital" url="" />

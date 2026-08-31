@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{5874E793-F3B4-45C1-8017-89A7EB157EF3}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: e2321204-ccfe-4ee7-bffe-552c485cdad3
+    Value: 2c220a05-1b0f-2059-e02b-16c9290ed853
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 992b375e-6e87-4639-bfff-8b716f30683c
+            Value: 3255dcf1-890d-0a55-4c13-96a70e8ba0ed
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: A global team built around curiosity and purpose
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c7b1ee4f-f12a-43bf-8245-65fb6a5c7ad7
+            Value: 8f427a4a-758e-768e-9ee0-97efacf93f08
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: People and culture
@@ -94,7 +94,7 @@ Languages:
             Value: A global team built around curiosity and purpose
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 86da44a8-8925-40bb-8c3b-675489de5bb7
+            Value: aae9b1b1-e308-b96f-305f-7eb7d5e54428
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: People and culture
@@ -201,7 +201,7 @@ Languages:
             Value: A global team built around curiosity and purpose | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b8fd96ee-14cc-2772-ae5d-7ee1208e578d
+            Value: 148f9eba-84d0-b32d-cbca-1bac7ca2e7e0
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Different disciplines, experiences, and perspectives come together at SLB to solve problems that no one person or technology can solve alone.
@@ -330,7 +330,7 @@ Languages:
             Value: Un equipo global unido por la curiosidad y el propósito | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 24f3dac9-2107-b066-f214-6e5a0516d2b3
+            Value: 9e1915e3-26bc-594c-2820-1d101d509eb3
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

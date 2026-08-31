@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 8a58e728-1389-5b54-d6c2-41d56182f282
+    Value: 0d20a644-3507-b779-4219-9b32df84eaf1
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: Choose the workflow that should move first
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 34c25e25-6d38-92e0-96b7-443fa0ea013f
+            Value: b262f450-820e-0122-4db3-fa2f446ed48b
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Talk to a digital expert" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Elija el flujo de trabajo que debe avanzar primero
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 911dee4b-ee32-7416-3d35-710194aa7ed6
+            Value: 0235189b-930b-b959-539f-12e171a20210
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Hable con un especialista digital" url="" />

@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{A7F3311D-C633-46BA-895D-7ABA93610AB5}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 7f53019e-6cf7-4184-941d-4828c4678ca2
+    Value: ddf36d4c-f178-fc59-849d-463142060353
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e4522c7a-146a-4468-962a-aac507d66dd5
+            Value: 47a2d4a6-de2d-a3f7-cee7-5e85b2b819c9
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Designing decarbonization for execution
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ead132b0-e42c-48ba-90c8-98d3eb5518f1
+            Value: 4c270f02-3adc-f927-f193-b5d2d354b9dd
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -88,7 +88,7 @@ Languages:
             Value: Designing decarbonization for execution
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 79b55652-ff6f-4c94-8ad1-6024b62206a2
+            Value: ba54a8e2-c052-c122-aaf8-6220b5218164
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Designing decarbonization for execution
@@ -127,7 +127,7 @@ Languages:
             Value: Designing decarbonization for execution
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8f11e40a-5b12-4c81-bf3c-bd9c2aeefe07
+            Value: bdae89d3-c050-0ced-52f2-31987e2596ec
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Designing decarbonization for execution
@@ -237,7 +237,7 @@ Languages:
             Value: Designing decarbonization for execution | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f0b80fa0-831e-b6b5-3806-ff91c45407e2
+            Value: b3a71419-6191-43be-94f0-d7ee4495ee39
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: A credible decarbonization plan connects a defensible emissions baseline with engineering choices, operating ownership, and evidence that survives beyond the first report.
@@ -289,7 +289,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ba08d423-dd17-4f7d-bd0b-64fae63ad61c
+            Value: cabd1f32-162b-6037-3fd5-bdfd6a6e909f
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -398,7 +398,7 @@ Languages:
             Value: Diseñar la descarbonización para la ejecución | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0ed18d52-52e1-fc6f-72a3-6e800975c904
+            Value: 2fb89d26-c35f-ab6f-4e57-6343490b3a7a
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Un plan de descarbonización confiable conecta una línea base defendible de emisiones con decisiones de ingeniería, responsabilidad operativa y evidencia que conserva su valor más allá del primer reporte.

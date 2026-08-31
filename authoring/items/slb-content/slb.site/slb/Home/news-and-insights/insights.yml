@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{17FD191A-7E08-4E7F-9AC6-7B23AA92464C}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 91c7289b-4e18-4f07-a65a-558410b32a88
+    Value: 6e9f7957-734b-7f86-bced-dc082a0cc4b4
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 68c3ca8c-8710-44d9-9329-5b39ca52bda4
+            Value: 95a776f8-96c3-73f3-44c9-05c2f1744282
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Step into energy's next questions
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fbd2c86f-6279-432f-9791-e32892d4a463
+            Value: 5fd1692a-0782-1ba6-3b02-90973cfcdd38
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Insights
@@ -94,7 +94,7 @@ Languages:
             Value: Step into energy's next questions
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: be0c4604-52ac-45be-9e59-20cdce8eeea5
+            Value: 74ea4133-f811-8161-0462-430e1168fc71
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Insights
@@ -180,7 +180,7 @@ Languages:
             Value: Step into energy's next questions | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e6dfb7d3-d9d4-2081-4cef-e5b31c00bb8c
+            Value: 52138fe8-26c8-6749-b942-8f63bac12507
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.
@@ -291,7 +291,7 @@ Languages:
             Value: Explore las próximas preguntas de la energía | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 13c13825-7a00-d0b0-f13d-f905570361a9
+            Value: a3ae08dc-d2fd-7d83-da4c-fe1503d2f144
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 54ad1729-16cd-9ff2-651f-9574717989e4
+    Value: 35f5a0cb-3db8-7e55-1eab-69a1389a783a
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: New to the portfolio
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ff784f10-2122-24ca-81d5-f108fec3502d
+            Value: e1992a98-abfe-327e-ff80-46c50158a42b
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="" target="" title="" linktype="internal" text="View the latest technologies" url="" />
@@ -66,7 +66,7 @@ Languages:
             Value: Novedades del portafolio
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ca4f0b4f-055e-d464-96f1-b363b9d2271d
+            Value: 6c518b5e-a0f9-45ea-900e-8df2c2077d93
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="" target="" title="" linktype="internal" text="Conozca las tecnologías más recientes" url="" />

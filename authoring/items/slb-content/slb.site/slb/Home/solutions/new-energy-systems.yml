@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{38CEB449-119C-4D6F-9807-CBC6D4D10B6E}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 0ec7c4d6-fa6e-41ad-84ec-31632bc5daf7
+    Value: 990a629b-90ab-1109-2977-ed619c87be6a
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3dad53a3-122d-45de-b904-43874d65718a
+            Value: 9e7564df-f512-075a-48c7-8accb417024a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Build the systems that move energy forward
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: de834ba0-7106-45dc-9148-5cf72c390381
+            Value: 23ca31bf-1ce8-8014-5f1f-b36a1ec7986b
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: New energy systems
@@ -94,7 +94,7 @@ Languages:
             Value: Build the systems that move energy forward
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 58e5cce0-cce4-49b5-bd8e-9b03aa44fe1a
+            Value: 598edaf5-2d59-a6b8-952a-e26ae0f4662c
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Apply subsurface science, technology development, and industrial delivery to turn emerging energy opportunities into systems that can be designed, built, and operated.
@@ -201,7 +201,7 @@ Languages:
             Value: Build the systems that move energy forward | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c1a53ae4-93e9-33b5-57ee-a7fe162b018a
+            Value: 4e8b1ce3-50d5-7a79-688f-928c21272f18
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Apply subsurface science, technology development, and industrial delivery to turn emerging energy opportunities into systems that can be designed, built, and operated.
@@ -333,7 +333,7 @@ Languages:
             Value: Construya los sistemas que impulsan el futuro de la energía | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 864381f3-0b26-c139-28f7-36a8d6b28f7b
+            Value: cb532374-fe63-2860-0b61-6135e9a41227
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

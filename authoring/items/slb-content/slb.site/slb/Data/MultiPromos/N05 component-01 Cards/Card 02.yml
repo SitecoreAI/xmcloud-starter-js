@@ -12,7 +12,7 @@ SharedFields:
     Value: 100
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: fefc5950-52d4-bb13-788c-06503082e61e
+    Value: 6be08a26-3298-c372-c807-50a3957c7a37
 Languages:
   - Language: en
     Versions:
@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" dam-id="114578" dam-content-type="Image" width="1672" height="941" alt="Engineers perform commissioning checks on newly released industrial energy technology." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8046d205-27f2-da18-6fdc-210273945a2b
+            Value: 029c569e-8563-4fbc-7499-d8bda66f9280
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" dam-id="114578" dam-content-type="Image" width="1672" height="941" alt="Un grupo de ingenieros realiza pruebas de puesta en servicio de una nueva tecnología energética industrial." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e13017cf-1c6a-47a8-e927-57a5578fdbfe
+            Value: c2869692-f98c-cb29-90b5-d16266fc43df
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />

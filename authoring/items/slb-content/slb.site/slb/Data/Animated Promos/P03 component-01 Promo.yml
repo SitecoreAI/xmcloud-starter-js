@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 15590300-2196-0923-2555-5fb8e65bd4eb
+    Value: 049486a8-37e3-1904-2eaf-62af150beadf
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" dam-id="114505" dam-content-type="Image" width="1672" height="941" alt="A data engineer and domain expert compare a digital asset model with real equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d65abdf1-0358-4d40-f744-fb7fd8da54fe
+            Value: b41d737a-0507-7b3b-d44b-530eb2bd53c8
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" dam-id="114505" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1caba49d-0306-7b3f-d1c1-508f4badcd41
+            Value: 9e7c7295-d5a5-b710-d4b0-cdc11b98b501
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

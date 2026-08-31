@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{76116456-9BCD-4DD1-B389-EB04BE9673A0}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 9fe9af6e-1c1e-4224-826f-7fa83d1fd04e
+    Value: 80418308-a8a6-8e66-1cc8-a0f412a2df6c
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 99f9539f-b5d1-4075-9881-d3251a42f05b
+            Value: f435fff9-8e77-b62d-e4c8-b0a8e740ec99
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Sustainability
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 60aaf2d2-91c9-4b50-822c-78c023c45791
+            Value: 4b2bd3b2-17dd-9ae5-b7ca-32d9544dfd84
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -85,7 +85,7 @@ Languages:
             Value: Sustainability
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e3f50c94-6c2d-4317-a0e4-98241af6b1ff
+            Value: 44eb44a0-1914-5e3c-3f2c-751b6953592c
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Sustainability
@@ -118,7 +118,7 @@ Languages:
             Value: Sustainability
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c3e8ab36-e828-4ea9-9fd7-cb073f309c32
+            Value: fba12105-fb24-f4fa-a194-2b90cac52fc1
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Sustainability
@@ -154,7 +154,7 @@ Languages:
             Value: Sustainability
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 99a7d44d-6bb5-4418-95e1-a740a179967b
+            Value: c19a072e-882e-2496-b680-9ec9214ac485
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Sustainability
@@ -254,7 +254,7 @@ Languages:
             Value: Sustainability, embedded in how we work | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9f5dc5a2-c6b1-0821-5500-d3a1f5dcb676
+            Value: 552c7733-d3d8-4dc0-e6b7-7ac131d63717
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Bring climate, people, and nature into the decisions that shape technology, operations, partnerships, and long-term performance.
@@ -379,7 +379,7 @@ Languages:
             Value: Sostenibilidad integrada en nuestra forma de trabajar | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 08f05c79-d050-c970-2042-feeba6a5d352
+            Value: 5a9ddc3f-6295-d32b-1c2e-81c1fc0cc87f
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

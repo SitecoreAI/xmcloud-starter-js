@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 1527d1a0-30b9-039e-3867-4f2b6078b5c3
+    Value: 19aae3f1-3224-e535-e948-8d32bc3a702c
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-storage-operations-control-room" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-storage-operations-control-room" dam-id="114424" dam-content-type="Image" width="1672" height="941" alt="Specialists coordinate carbon storage operations from an integrated control room." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 57b07c95-3d23-a295-0e06-32f3fedf64ae
+            Value: 070d7e82-02c7-e793-ec12-d410b74c9104
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-storage-operations-control-room" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-storage-operations-control-room" dam-id="114424" dam-content-type="Image" width="1672" height="941" alt="Especialistas coordinan operaciones de almacenamiento de carbono desde una sala de control integrada." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: cf9d41d6-6885-8ad5-8529-5c91e28f297c
+            Value: ecfb7f2b-e4d4-e909-ac60-2ce0554241a1
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

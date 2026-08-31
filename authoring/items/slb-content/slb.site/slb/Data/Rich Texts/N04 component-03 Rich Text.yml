@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 4aba217c-15e1-af17-1d54-7fa9e15258f9
+    Value: d27f9c01-49ec-20a9-84ae-a2ff7d9e80b1
 Languages:
   - Language: en
     Versions:
@@ -32,7 +32,7 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">How we work</p><h2>Integrate action with the asset lifecycle</h2><ol><li>The strongest opportunities often appear when emissions work is connected with inspection, maintenance, production planning, and capital decisions.</li><li>Integration helps teams avoid isolated projects and build emissions performance into normal operations.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6316316c-9477-2733-fe02-1bad5fc11e02
+            Value: 1e0844f5-7799-0f69-ba07-c7898e9bf867
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -60,7 +60,7 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">Cómo trabajamos</p><h2>Integre la acción al ciclo de vida del activo</h2><ol><li>Las oportunidades más sólidas suelen aparecer cuando el trabajo de emisiones se conecta con inspección, mantenimiento, planeación de producción y decisiones de capital.</li><li>La integración evita proyectos aislados e incorpora el desempeño de emisiones a las operaciones normales.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 7eda456c-8ab8-6132-8eed-4f1cade942c0
+            Value: fd463ab4-354b-6d63-ad08-df7bf1ce4820
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

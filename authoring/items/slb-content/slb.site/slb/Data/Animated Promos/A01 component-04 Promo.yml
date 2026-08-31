@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 882388e7-7da1-3cbb-e632-242af26ebfaf
+    Value: 92319d2c-bb24-954b-8837-498aab906a92
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" dam-id="114260" dam-content-type="Image" width="1920" height="1916" alt="Colleagues collaborate in an Innovation Factori workspace." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 2098c003-dd7b-496a-f3b3-f09b277e5730
+            Value: 818ffad1-8442-7532-7139-6defa98eb332
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" dam-id="114260" dam-content-type="Image" width="1920" height="1916" alt="Un grupo de colegas colabora en un espacio de Innovation Factori." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 7b98d48d-fe34-e23a-60f8-caf8638e9f40
+            Value: 346e9b2a-944a-02ac-9caa-b8d3827c30f9
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{63B62D22-3E1A-462A-AD02-7884FBDF4219}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 0b73e33d-0d87-40f3-b663-ddd0e9df04a5
+    Value: d2272e78-a5c4-9b43-1b58-258692c603ae
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1a34b629-c007-49cf-8f87-7b7173e2c5ef
+            Value: 98d84e3f-7613-88d8-3b4f-24a5b802ea3b
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Design operations with nature in view
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9cf92b8c-9b46-45aa-bca7-e49242cf082e
+            Value: 2e95b657-3c88-da82-2fce-4454e554baa7
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Nature and responsible operations
@@ -152,7 +152,7 @@ Languages:
             Value: Design operations with nature in view | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b85c5762-95e5-ff58-2cdf-97d92e34805a
+            Value: 203a415b-58ae-5f99-054d-0988260a2c9b
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Bring biodiversity, water, and circularity into planning and operating decisions with site-specific understanding and transparent evidence.
@@ -274,7 +274,7 @@ Languages:
             Value: Diseñe operaciones que consideren la naturaleza | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d29f2bf6-4577-f3e0-158c-aa875b682ef1
+            Value: 1e9bd0b5-3a7a-6fcc-b0ac-bb9fbb65851f
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

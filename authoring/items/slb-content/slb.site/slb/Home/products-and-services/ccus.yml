@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{8CE1D214-A4D7-4D24-85F0-F73FF7DA5690}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 892390a7-5247-46d5-8a24-5dd37f86e210
+    Value: e50fa1fa-8bff-6502-c993-e659fb690259
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 570daf3b-861c-4c65-873e-67b7b6ac8985
+            Value: bfd7d680-5f39-d6b4-62b1-c5b97b183786
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Connect every decision across the carbon storage lifecycle
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 12795b1e-4bda-40ce-9688-bca74d677371
+            Value: 72b02b02-730d-1b15-be74-2b65f822ba60
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Carbon capture, utilization, and sequestration
@@ -155,7 +155,7 @@ Languages:
             Value: Connect every decision across the carbon storage lifecycle | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 37c52ced-42c1-0afd-65ca-787a61c77df5
+            Value: 774d1f6c-5924-d516-a2fe-58f657a671b8
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Bring subsurface characterization, development engineering, infrastructure, and monitoring into one evidence-led approach from site screening through long-term stewardship.
@@ -280,7 +280,7 @@ Languages:
             Value: Conecte cada decisión durante el ciclo de almacenamiento de carbono | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 536ce2b1-17d6-485f-400c-ad7170dafd71
+            Value: 2ae7961c-a734-8cab-9851-4abacbc3cf17
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

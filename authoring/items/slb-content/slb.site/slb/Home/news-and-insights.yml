@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{BE3790A4-4A10-4EFE-B1B7-C33DD01EA099}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 259919b2-73c2-4205-9c90-908367697657
+    Value: 7a3c2b22-cf50-78d8-7b68-43f9dea472c5
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ef818110-f0fb-4df3-ae59-1858d4301aa1
+            Value: 242e54b0-9a83-242f-1988-4a783c258788
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: News and insights
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9742f2ff-002f-42ab-8f9f-2571cccfb2aa
+            Value: 25182f07-0683-b23a-818e-56a3e6bc5c4b
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -85,7 +85,7 @@ Languages:
             Value: News and insights
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e6a1dab1-9304-4061-a2d4-7da9e615259d
+            Value: 657869c2-dbac-1579-47d8-a82752894686
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: News and insights
@@ -118,7 +118,7 @@ Languages:
             Value: News and insights
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 49cb827f-dbc4-41f4-a52a-c61702966ff2
+            Value: 18672592-aed9-3b6e-3aa0-3aa8d31fead6
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: News and insights
@@ -154,7 +154,7 @@ Languages:
             Value: News and insights
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b5bcff39-2974-436f-8e0c-f3c4f3694269
+            Value: 6ad14dc4-69ca-8cae-9aa7-92fd49a2ff8c
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: News and insights
@@ -247,7 +247,7 @@ Languages:
             Value: Ideas and updates moving energy forward | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4131d67e-1c83-f22d-57f5-867e439af10b
+            Value: 8bd1e49b-65ed-dfd9-7347-507ccb92ba53
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Explore current company news, technology updates, and perspectives from people working across energy's most important questions.
@@ -365,7 +365,7 @@ Languages:
             Value: Ideas y novedades que impulsan el futuro de la energía | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c08fc2e0-6307-05de-3e8b-0922b77c4910
+            Value: d1d932f3-1df0-3dda-0576-e340786aa79d
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{41500B00-5CD3-4A6E-99DB-96D275BB1EFA}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 1d866a66-ee61-45e9-b40d-20503a31057b
+    Value: 98daf41b-f39a-7132-d1ff-b524abaa0751
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f0f15b09-9d0b-43e5-a6b4-b5155517189a
+            Value: 70927c3f-25b9-098c-8238-3e086b8403da
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: See the subsurface clearly. Build every well with intent.
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5a0dbe45-d36c-4980-bef1-db6a66987315
+            Value: f6a6e954-f165-cd8b-0071-e3b0b05a081a
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Subsurface and well delivery
@@ -158,7 +158,7 @@ Languages:
             Value: See the subsurface clearly. Build every well with intent. | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f229fbc3-978f-c758-68ff-f4139886c36c
+            Value: 315036c7-369d-291a-ffd5-718b22967f02
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.
@@ -286,7 +286,7 @@ Languages:
             Value: Comprenda el subsuelo. Construya cada pozo con intención. | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 170aa230-0a4f-7320-3d99-443d91543298
+            Value: 017ed2a3-cc0e-c611-93ff-4207e613b64b
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

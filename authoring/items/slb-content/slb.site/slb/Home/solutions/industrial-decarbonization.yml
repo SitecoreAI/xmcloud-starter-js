@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{D74AE0D8-303D-4689-A79B-9BDC9C995691}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 4d3e4f0d-f2c2-4a93-a19b-fc40043aa1f7
+    Value: 4c9d5146-fe85-ca7f-e7ce-5947f9544a16
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4bfac0e9-449e-4ac2-b1af-1af4a3d020cd
+            Value: 33f31d09-32bd-82f2-5e67-0453cca88342
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Make emissions performance actionable
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a07ab872-5767-4fda-811d-f9181dc7cd9a
+            Value: ade2f527-6d2e-3f90-be09-02fa9ae41a50
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Industrial decarbonization
@@ -94,7 +94,7 @@ Languages:
             Value: Make emissions performance actionable
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1de338ef-7cf5-42bb-8ff4-3348aea4ea86
+            Value: b6bdfee0-bd38-897e-7293-0a5b539eee98
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Industrial decarbonization
@@ -133,7 +133,7 @@ Languages:
             Value: Make emissions performance actionable
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 37474417-db76-4966-8a93-9e1bbd419602
+            Value: 421f687d-db51-4dac-b670-3453af30ec27
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Build a practical pathway from measurement to intervention by connecting credible data, engineering choices, and the realities of operating assets.
@@ -277,7 +277,7 @@ Languages:
             Value: Make emissions performance actionable | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 15d141c0-5538-f409-3224-d31c7499c366
+            Value: 99791fc7-ad8c-2180-ddcb-bfacf3361de9
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Build a practical pathway from measurement to intervention by connecting credible data, engineering choices, and the realities of operating assets.
@@ -418,7 +418,7 @@ Languages:
             Value: Convierta el desempeño de emisiones en acciones concretas | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: bd13f8ac-d8fb-a4a1-baf9-9e019196a022
+            Value: 1735eabb-7b92-3e10-ee4b-f2f79b035188
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

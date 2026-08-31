@@ -9,7 +9,7 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: f4a32b98-8c29-54d3-98ca-2de70f98eb89
+    Value: 8bd4d167-969e-6ebb-7fe1-0c2523a0bc6e
 Languages:
   - Language: en
     Versions:
@@ -35,7 +35,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-media-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-media-briefing" dam-id="114503" dam-content-type="Image" width="1672" height="941" alt="A spokesperson answers questions during a company media briefing." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: aa9da818-e3f0-492d-32e6-10b5d09eb79c
+            Value: 0564292f-f29a-fab6-6006-f2c16f05d242
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -75,7 +75,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-media-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-media-briefing" dam-id="114503" dam-content-type="Image" width="1672" height="941" alt="Un portavoz responde preguntas durante una sesión informativa para medios." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b59931af-8a4a-24bd-47d5-a04073bfe071
+            Value: 2fe4b1f9-bffe-8c97-a0a3-3120f80154d9
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

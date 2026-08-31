@@ -13,7 +13,7 @@ SharedFields:
       <image mediaid="{4E7720DF-6233-436D-AC2D-BE13DC91D63D}" />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: e5157cdc-b157-4960-83d7-0f1064b63c73
+    Value: 55b2a61c-3d8c-dfe2-072a-d75d589f5a10
 Languages:
   - Language: en
     Fields:
@@ -34,7 +34,7 @@ Languages:
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 39500ced-0c7d-4e03-9dba-efbf0b7b46e0
+            Value: 240bf758-16d9-51e7-db34-efea470e0fb2
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: |
@@ -58,7 +58,7 @@ Languages:
             Value: Put trusted data and energy intelligence to work
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8ae3b50c-2573-4562-8957-0450208a14c2
+            Value: dfe52a1d-88ae-ee5b-d80d-ab2ea1119084
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Data and AI
@@ -94,7 +94,7 @@ Languages:
             Value: Put trusted data and energy intelligence to work
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fe776a49-0e16-4c35-b1b5-d237a4f605a6
+            Value: 5725fb16-3f03-70c6-bc60-480a8f76b4b8
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Data and AI
@@ -204,7 +204,7 @@ Languages:
             Value: Put trusted data and energy intelligence to work | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9ba9ab7e-48f6-6939-40c6-fd20673e7536
+            Value: 6af718bb-f2bd-d73d-6f06-59738d283dbd
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Create a governed data foundation, connect domain workflows, and introduce AI where it can make complex energy work clearer and more responsive.
@@ -339,7 +339,7 @@ Languages:
             Value: Ponga a trabajar datos confiables e inteligencia energética | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b4bc0023-9aa8-d649-bc7c-96f08e8c90b8
+            Value: 945fe275-de5f-f25e-0034-795e48de3109
           - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
             Hint: __Version Name
             Value: AI translated

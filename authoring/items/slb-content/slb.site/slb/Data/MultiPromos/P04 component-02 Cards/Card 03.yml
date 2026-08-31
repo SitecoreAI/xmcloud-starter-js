@@ -12,7 +12,7 @@ SharedFields:
     Value: 200
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: f8eb6d0e-7483-c2f8-d384-79e0ea9bc06f
+    Value: b4acc1e4-d31b-9257-5bd9-f6a0a25dd043
 Languages:
   - Language: en
     Versions:
@@ -41,7 +41,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" dam-id="114421" dam-content-type="Image" width="1672" height="941" alt="An operator inspects the manifold of a carbon dioxide injection well." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: aeef0350-0b2b-7d7f-3c31-0c229f3b2517
+            Value: b182383a-dcdb-4a53-856a-cacdf44c719f
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -78,7 +78,7 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" dam-id="114421" dam-content-type="Image" width="1672" height="941" alt="Un operador inspecciona el múltiple de un pozo de inyección de dióxido de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3b516cdb-ae90-1c09-2e91-89ef8ff459d7
+            Value: 68cf4fdf-8850-01f7-7c1f-4fa844d78237
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:

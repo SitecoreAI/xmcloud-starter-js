@@ -10,6 +10,7 @@ const {
     loadSlbDamAssetDescriptors,
     serializeSitecoreDamImage,
 } = require("./lib/slb-sitecore-image.cjs");
+const { createContentRevision } = require("./lib/slb-sitecore-revision.cjs");
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const appRoot = path.resolve(scriptDirectory, "..");
@@ -293,7 +294,21 @@ function field(ID, Hint, Value) {
     return { ID, Hint, Value };
 }
 
-function standardVersionFields(itemKey, locale, extraFields) {
+function contentSensitiveRevision(itemId, scope, contentFields) {
+    return createContentRevision({
+        itemId,
+        scope,
+        fields: contentFields,
+        revisionFieldIds: [ids.revision, ids.sharedRevision],
+    });
+}
+
+function standardVersionFields(extraFields) {
+    const normalizedExtraFields = extraFields.map((entry) => ({
+        ...entry,
+        Value: entry.Value ?? "",
+    }));
+
     return [
         field(ids.created, "__Created", fixedTimestamp),
         field(
@@ -303,32 +318,17 @@ function standardVersionFields(itemKey, locale, extraFields) {
         ),
         field(ids.owner, "__Owner", owner),
         field(ids.createdBy, "__Created by", owner),
-        field(
-            ids.revision,
-            "__Revision",
-            deterministicGuid(`${itemKey}:${locale}:revision`),
-        ),
         field(ids.updatedBy, "__Updated by", owner),
         field(ids.updated, "__Updated", fixedTimestamp),
         // Generated datasource items must own every field we pass here. An
         // omitted field is NULL in Sitecore and inherits the starter kit's
         // Standard Values; an explicit blank intentionally suppresses those
         // sample titles, descriptions, and links.
-        ...extraFields.map((entry) => ({
-            ...entry,
-            Value: entry.Value ?? "",
-        })),
+        ...normalizedExtraFields,
     ].sort((left, right) => left.ID.localeCompare(right.ID));
 }
 
-function datasourceItem({
-    key,
-    id,
-    parent,
-    template,
-    itemPath,
-    localizedFields,
-}) {
+function datasourceItem({ id, parent, template, itemPath, localizedFields }) {
     return {
         ID: id,
         Parent: parent,
@@ -336,29 +336,51 @@ function datasourceItem({
         Path: itemPath,
         SharedFields: [
             field(ids.workflow, "__Workflow", `{${ids.datasourceWorkflow}}`),
-            field(
-                ids.sharedRevision,
-                "__Shared revision",
-                deterministicGuid(`${key}:shared`),
-            ),
-        ].sort((left, right) => left.ID.localeCompare(right.ID)),
+        ],
         Languages: locales.map((locale) => ({
             Language: locale,
             Versions: [
                 {
                     Version: 1,
-                    Fields: standardVersionFields(
-                        key,
-                        locale,
-                        localizedFields[locale],
-                    ),
+                    Fields: standardVersionFields(localizedFields[locale]),
                 },
             ],
         })),
     };
 }
 
+function finalizeDocumentRevisions(document) {
+    const sharedFields = document.SharedFields ?? [];
+    if (sharedFields.length) {
+        upsertField(
+            sharedFields,
+            ids.sharedRevision,
+            "__Shared revision",
+            contentSensitiveRevision(document.ID, "shared", sharedFields),
+        );
+        sharedFields.sort((left, right) => left.ID.localeCompare(right.ID));
+    }
+
+    for (const language of document.Languages ?? []) {
+        for (const version of language.Versions ?? []) {
+            const fields = version.Fields ?? (version.Fields = []);
+            upsertField(
+                fields,
+                ids.revision,
+                "__Revision",
+                contentSensitiveRevision(
+                    document.ID,
+                    `${language.Language}:version:${version.Version}`,
+                    [...(language.Fields ?? []), ...fields],
+                ),
+            );
+            fields.sort((left, right) => left.ID.localeCompare(right.ID));
+        }
+    }
+}
+
 function serializeItem(document) {
+    finalizeDocumentRevisions(document);
     return `---\n${yaml.dump(document, {
         lineWidth: -1,
         noRefs: true,
@@ -947,7 +969,7 @@ function updatePageItem(page, entries) {
         );
         languageFields.sort((left, right) => left.ID.localeCompare(right.ID));
         const pageLayout = layoutXml(entries, page.id, locale);
-        const values = [
+        const contentValues = [
             [ids.finalRenderings, "__Final Renderings", pageLayout],
             [ids.pageSummary, "pageSummary", localized.hero.summary],
             [ids.pageShortTitle, "pageShortTitle", localized.navigationTitle],
@@ -974,11 +996,9 @@ function updatePageItem(page, entries) {
             ],
             [ids.ogImage, "ogImage", imageXml(localized.hero.image)],
             [ids.workflowState, "__Workflow state", `{${ids.pageApproved}}`],
-            [
-                ids.revision,
-                "__Revision",
-                deterministicGuid(`${page.id}:${locale}:page-revision`),
-            ],
+        ];
+        const values = [
+            ...contentValues,
             [ids.updatedBy, "__Updated by", owner],
             [ids.updated, "__Updated", fixedTimestamp],
         ];
