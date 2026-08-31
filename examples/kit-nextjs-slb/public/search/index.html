@@ -322,7 +322,7 @@
             }
 
             .ai-answer.expanded {
-                height: 430px;
+                height: 505px;
             }
 
             .ai-answer p {
@@ -837,7 +837,7 @@
                 }
 
                 .ai-answer.expanded {
-                    height: 515px;
+                    height: 635px;
                 }
 
                 .show-more,
@@ -866,9 +866,9 @@
     </head>
     <body>
         <!--
-      Static, self-contained search presentation. No Google services or tracking are loaded.
-      Google interface assets are embedded from the existing simulator; SLB links and imagery
-      point to this site so campaign behavior can be demonstrated safely.
+      Static search presentation with no Google tracking scripts. Interface and publisher
+      favicons are embedded; result links go to the represented publishers, while the
+      featured SLB result carries campaign parameters into this site.
     -->
         <header class="search-header">
             <img
@@ -993,7 +993,11 @@
                         ></path>
                     </svg>
                 </button>
-                <div class="account-avatar" aria-label="Google Account">
+                <div
+                    class="account-avatar"
+                    role="img"
+                    aria-label="Google Account"
+                >
                     <img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAAAAAB3tzPbAAACOUlEQVR4Ae3aCQrrIBRG4e5/Tz+CBAlIkIAECUjoSt48z/GZeAvnrMCvc6/38XzxAAAAYC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAMCAAAAAAAAAAAAAAAAPsagz4V4rq/FmCLTj/k4vYqgCN5/TKfjlcAJKff5pJ5QPH6Y77YBiz6a4thQJ30D03VKmB3+qfcbhOwO+l+waP/+VsEBgDV6USumgNMOtVkDbDoZIstQNHpiimA1+m8JUBSQ8kO4HBqyB1mAElNJTMAr6a8FcCmxjYjgKjGohGAU2POBmBXc7sJwKrmVhOAqOaiCUBQc8EEQO0JwPMB4ADASwhAe3yR8VPiP3/M8XOaPzQd/lLyp56xSuvnUGK0yHC313idCw6umNov+bhm5aK7fdWAZQ/WbdoXnlg5Y+mvfe2SxVdWj20FAAAAAAAAAAAAwFQAAJSS0hwmfVMIc0qlmAfsOQWvP+RDyrtNQM1L0D8WllxNAWqOXifzMVcbgG3xaswv22jAFp3a6zFteYw8fQ9DM6Amr275VG8GlFmdm8uNgDzpgqZ8EyB7XZTPNwDKpAubysWAOuvi5nolYHW6PLdeBjiCbikc1wCK0025cgUg68Zyf0DUrcXegKibi30Bq25v7QnYNKCtH+BwGpA7ugFmDWnuBSgaVOkECBpU6AOoGlbtAlg1rLULIGhYoQvAaViuC0AD6wE4Xh1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA194CuqC6onikxXwAAAAASUVORK5CYII="
                         alt=""
@@ -1061,75 +1065,86 @@
 
                     <div class="ai-answer" id="ai-answer">
                         <p>
-                            Energy companies can turn emissions data into action
-                            by connecting
+                            Energy companies can turn raw emissions data into
+                            targeted decarbonization and business value by
+                            combining
                             <strong
-                                >trusted measurement, operational context, and
-                                execution workflows</strong
-                            >. The goal is not another dashboard—it is a
-                            repeatable path from a detected source to a verified
-                            reduction.
+                                >automated tracking, granular source mapping,
+                                and operational follow-through</strong
+                            >.
                             <a
                                 class="citation"
                                 href="/solutions/industrial-decarbonization?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=ai_overview_intro"
                             >
-                                <img src="/favicon.ico" alt="" />SLB
+                                <img src="/search/assets/slb.svg" alt="" />SLB
                             </a>
                         </p>
-                        <h2>From emissions signal to verified outcome</h2>
+                        <h2>Turn measurement into operational action</h2>
                         <ul>
                             <li>
-                                <strong>Measure:</strong> Combine methane,
-                                flaring, power, production, and equipment data
-                                so teams can see a reliable emissions baseline
-                                in operating context.
+                                <strong>Automate and centralize:</strong>
+                                Collect and validate meter, production, and
+                                emissions data in one decision-ready foundation.
                                 <a
                                     class="citation"
-                                    href="/products-and-services/data-and-ai?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=ai_overview_measure"
+                                    href="https://thgenergy.com/resources/how-to-turn-meter-data-into-better-business-decisions"
                                 >
-                                    <img src="/favicon.ico" alt="" />SLB
+                                    <img
+                                        src="/search/assets/thg.svg"
+                                        alt=""
+                                    />THG Energy
                                 </a>
                             </li>
                             <li>
-                                <strong>Prioritize:</strong> Rank abatement
-                                opportunities by emissions impact, economics,
-                                asset constraints, and the speed at which teams
-                                can intervene.
+                                <strong>Map and prioritize:</strong> Break the
+                                footprint down by scope, source, facility, and
+                                supplier, then focus on a short list of
+                                achievable reductions.
                                 <a
                                     class="citation"
-                                    href="/solutions/industrial-decarbonization?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=ai_overview_prioritize"
+                                    href="https://www.northstarcarbon.com/blog/turning-ghg-data-into-actionable-reduction-strategies"
                                 >
-                                    <img src="/favicon.ico" alt="" />SLB
+                                    <img
+                                        src="/search/assets/northstar.svg"
+                                        alt=""
+                                    />North Star
                                 </a>
                             </li>
                             <li>
-                                <strong>Act:</strong> Move recommendations into
-                                field-ready workflows with clear owners,
-                                engineering requirements, and progress
-                                visibility.
+                                <strong>Move beyond accounting:</strong> Use
+                                forward-looking analysis to compare the
+                                real-world emissions effects of possible
+                                operating and investment choices.
                                 <a
                                     class="citation"
-                                    href="/solutions/digital-operations?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=ai_overview_act"
+                                    href="https://rmi.org/resources/carbon-accounting-that-helps-companies-shift-to-clean-energy-faster/"
                                 >
-                                    <img src="/favicon.ico" alt="" />SLB
+                                    <img
+                                        src="/search/assets/rmi.svg"
+                                        alt=""
+                                    />RMI
                                 </a>
                             </li>
                             <li>
-                                <strong>Verify:</strong> Monitor performance
-                                after intervention, document the result, and
-                                feed what worked back into the next decision.
+                                <strong>Act and improve:</strong> Find
+                                collection bottlenecks and efficiency wins,
+                                assign clear owners, and use the verified
+                                savings to fund the next projects.
                                 <a
                                     class="citation"
-                                    href="/sustainability/climate-action?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=ai_overview_verify"
+                                    href="https://www.gravityclimate.com/blog/from-numbers-to-action-how-to-turn-emissions-data-into-business-growth"
                                 >
-                                    <img src="/favicon.ico" alt="" />SLB
+                                    <img
+                                        src="/search/assets/gravity.svg"
+                                        alt=""
+                                    />Gravity
                                 </a>
                             </li>
                         </ul>
                         <p>
-                            This closed loop helps operators reduce emissions
-                            intensity while protecting uptime, capital
-                            discipline, and confidence in reported outcomes.
+                            The result is a closed loop from a measured source
+                            to a prioritized intervention and a documented
+                            outcome.
                         </p>
                         <div class="answer-fade" aria-hidden="true"></div>
                     </div>
@@ -1153,9 +1168,9 @@
                     <div class="source-card">
                         <div class="source-card-head">
                             <div class="site-stack" aria-hidden="true">
-                                <img src="/favicon.ico" alt="" />
-                                <img src="/favicon.ico" alt="" />
-                                <img src="/favicon.ico" alt="" />
+                                <img src="/search/assets/slb.svg" alt="" />
+                                <img src="/search/assets/gravity.svg" alt="" />
+                                <img src="/search/assets/rmi.svg" alt="" />
                             </div>
                             <span class="site-count">Sources</span>
                             <button
@@ -1174,21 +1189,27 @@
                         <article class="rail-entry">
                             <a
                                 class="rail-entry-link"
-                                href="/solutions/industrial-decarbonization?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=source_card_decarbonization"
-                                aria-label="Make emissions performance actionable"
+                                href="https://www.gravityclimate.com/blog/from-numbers-to-action-how-to-turn-emissions-data-into-business-growth"
+                                aria-label="From Numbers to Action: How to Turn Emissions Data into Business Growth"
                             ></a>
-                            <h3>Make emissions performance actionable</h3>
+                            <h3>
+                                From Numbers to Action: How to Turn Emissions
+                                Data into Business Growth
+                            </h3>
                             <p>
-                                Connect measurement, planning, and engineered
-                                execution around the reduction opportunity.
+                                Use measured emissions to find inefficiencies
+                                and fund cost-effective projects.
                             </p>
                             <div class="rail-source">
-                                <img src="/favicon.ico" alt="" />SLB
+                                <img
+                                    src="/search/assets/gravity.svg"
+                                    alt=""
+                                />Gravity
                             </div>
                             <img
                                 class="rail-thumb"
-                                src="/images/slb/home-decarbonizing-industry.jpg"
-                                alt="Industrial decarbonization operations"
+                                src="https://cdn.prod.website-files.com/669f2131483425f3ea3d90a4/66f5bf5ed4c23e8b0dcd7402_66f5befa8cd9f39cd4444d14_BeyondMeasurement_Banner%20(3186x1918).avif"
+                                alt=""
                             />
                             <button
                                 class="icon-button rail-more"
@@ -1206,21 +1227,24 @@
                         <article class="rail-entry">
                             <a
                                 class="rail-entry-link"
-                                href="/solutions/digital-operations?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=source_card_digital"
-                                aria-label="Connect data, people, and decisions"
+                                href="https://rmi.org/resources/carbon-accounting-that-helps-companies-shift-to-clean-energy-faster/"
+                                aria-label="Carbon Accounting That Helps Companies Shift to Clean Energy Faster"
                             ></a>
-                            <h3>Connect data, people, and decisions</h3>
+                            <h3>
+                                Carbon Accounting That Helps Companies Shift to
+                                Clean Energy Faster
+                            </h3>
                             <p>
-                                Scale digital operations with domain
-                                intelligence and workflows designed for action.
+                                Compare the future emissions impact of
+                                alternative clean-energy decisions.
                             </p>
                             <div class="rail-source">
-                                <img src="/favicon.ico" alt="" />SLB
+                                <img src="/search/assets/rmi.svg" alt="" />RMI
                             </div>
                             <img
                                 class="rail-thumb"
-                                src="/images/slb/home-digital-at-scale.jpg"
-                                alt="Digital operations visualization"
+                                src="https://rmi.org/app/uploads/2026/02/solar-panels-in-sunlight-iStock-871613394-e1755877173584.jpg"
+                                alt=""
                             />
                             <button
                                 class="icon-button rail-more"
@@ -1242,7 +1266,11 @@
             <section class="organic-results" aria-label="Search results">
                 <article class="result">
                     <div class="result-source">
-                        <img class="result-favicon" src="/favicon.ico" alt="" />
+                        <img
+                            class="result-favicon"
+                            src="/search/assets/slb.svg"
+                            alt=""
+                        />
                         <a
                             class="result-site"
                             href="/solutions/industrial-decarbonization?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=featured_result"
@@ -1280,15 +1308,18 @@
 
                 <article class="result">
                     <div class="result-source">
-                        <img class="result-favicon" src="/favicon.ico" alt="" />
+                        <img
+                            class="result-favicon"
+                            src="/search/assets/ey.svg"
+                            alt=""
+                        />
                         <a
                             class="result-site"
-                            href="/solutions/digital-operations?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=digital_operations_result"
+                            href="https://www.ey.com/en_gl/alliances/how-the-energy-sector-can-extract-value-from-emissions-data"
                         >
-                            <div class="site-name">SLB</div>
+                            <div class="site-name">EY</div>
                             <div class="site-path">
-                                https://www.slb.com › solutions ›
-                                digital-operations
+                                https://www.ey.com › en_gl › alliances
                             </div>
                         </a>
                         <button
@@ -1305,27 +1336,32 @@
                     </div>
                     <a
                         class="result-title"
-                        href="/solutions/digital-operations?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=digital_operations_result"
-                        >Connect operational data to decisions at scale</a
+                        href="https://www.ey.com/en_gl/alliances/how-the-energy-sector-can-extract-value-from-emissions-data"
+                        >How the energy sector can extract value from emissions
+                        data</a
                     >
                     <p class="result-snippet">
-                        Transform trusted data into field-ready decisions with
-                        digital workflows, domain intelligence, and a clear line
-                        of sight from insight to impact.
+                        Integrated carbon tracking can combine digital capture,
+                        automated workflows, and a verifiable record—giving
+                        energy companies better data for reduction and value
+                        creation.
                     </p>
                 </article>
 
                 <article class="result">
                     <div class="result-source">
-                        <img class="result-favicon" src="/favicon.ico" alt="" />
+                        <img
+                            class="result-favicon"
+                            src="/search/assets/gravity.svg"
+                            alt=""
+                        />
                         <a
                             class="result-site"
-                            href="/sustainability/climate-action?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=climate_action_result"
+                            href="https://www.gravityclimate.com/blog/from-numbers-to-action-how-to-turn-emissions-data-into-business-growth"
                         >
-                            <div class="site-name">SLB</div>
+                            <div class="site-name">Gravity Climate</div>
                             <div class="site-path">
-                                https://www.slb.com › sustainability ›
-                                climate-action
+                                https://www.gravityclimate.com › blog
                             </div>
                         </a>
                         <button
@@ -1342,27 +1378,31 @@
                     </div>
                     <a
                         class="result-title"
-                        href="/sustainability/climate-action?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=climate_action_result"
-                        >Climate action built for operating reality</a
+                        href="https://www.gravityclimate.com/blog/from-numbers-to-action-how-to-turn-emissions-data-into-business-growth"
+                        >From Numbers to Action: How to Turn Emissions Data into
+                        Business Growth</a
                     >
                     <p class="result-snippet">
-                        Advance measurable emissions performance through
-                        technology, collaboration, and execution grounded in how
-                        energy systems actually operate.
+                        Jun 25, 2024 — Use emissions reporting as a blueprint to
+                        improve data quality, identify efficiency wins, and
+                        reduce both operating costs and emissions.
                     </p>
                 </article>
 
                 <article class="result">
                     <div class="result-source">
-                        <img class="result-favicon" src="/favicon.ico" alt="" />
+                        <img
+                            class="result-favicon"
+                            src="/search/assets/rmi.svg"
+                            alt=""
+                        />
                         <a
                             class="result-site"
-                            href="/news-and-insights/insights/designing-decarbonization-for-execution?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=insight_result"
+                            href="https://rmi.org/resources/carbon-accounting-that-helps-companies-shift-to-clean-energy-faster/"
                         >
-                            <div class="site-name">SLB</div>
+                            <div class="site-name">RMI</div>
                             <div class="site-path">
-                                https://www.slb.com › news-and-insights ›
-                                insights
+                                https://rmi.org › resources
                             </div>
                         </a>
                         <button
@@ -1379,13 +1419,56 @@
                     </div>
                     <a
                         class="result-title"
-                        href="/news-and-insights/insights/designing-decarbonization-for-execution?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaign=emissions_performance&amp;utm_content=insight_result"
-                        >Designing decarbonization for execution</a
+                        href="https://rmi.org/resources/carbon-accounting-that-helps-companies-shift-to-clean-energy-faster/"
+                        >Carbon Accounting That Helps Companies Shift to Clean
+                        Energy Faster</a
                     >
                     <p class="result-snippet">
-                        A practical perspective on moving from ambition and
-                        analysis to prioritized projects, disciplined delivery,
-                        and durable operational outcomes.
+                        Apr 22, 2025 — Complement emissions inventories with
+                        forward-looking analysis that compares the real-world
+                        impact of future clean-energy actions.
+                    </p>
+                </article>
+
+                <article class="result">
+                    <div class="result-source">
+                        <img
+                            class="result-favicon"
+                            src="/search/assets/bsi.svg"
+                            alt=""
+                        />
+                        <a
+                            class="result-site"
+                            href="https://www.bsigroup.com/en-US/insights-and-media/insights/blogs/from-data-to-action-how-to-calculate-your-ghg-emissions/"
+                        >
+                            <div class="site-name">BSI</div>
+                            <div class="site-path">
+                                https://www.bsigroup.com › en-US ›
+                                insights-and-media
+                            </div>
+                        </a>
+                        <button
+                            class="icon-button result-menu"
+                            type="button"
+                            aria-label="About this result"
+                        >
+                            <img
+                                class="mono-icon"
+                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgLTk2MCA5NjAgOTYwIiB3aWR0aD0iMjQiPjxwYXRoIGQ9Ik00ODAtMTYwcS0zMyAwLTU2LjUtMjMuNVQ0MDAtMjQwcTAtMzMgMjMuNS01Ni41VDQ4MC0zMjBxMzMgMCA1Ni41IDIzLjVUNTYwLTI0MHEwIDMzLTIzLjUgNTYuNVQ0ODAtMTYwWm0wLTI0MHEtMzMgMC01Ni41LTIzLjVUNDAwLTQ4MHEwLTMzIDIzLjUtNTYuNVQ0ODAtNTYwcTMzIDAgNTYuNSAyMy41VDU2MC00ODBxMCAzMy0yMy41IDU2LjVUNDgwLTQwMFptMC0yNDBxLTMzIDAtNTYuNS0yMy41VDQwMC03MjBxMC0zMyAyMy41LTU2LjVUNDgwLTgwMHEzMyAwIDU2LjUgMjMuNVQ1NjAtNzIwcTAgMzMtMjMuNSA1Ni41VDQ4MC02NDBaIi8+PC9zdmc+"
+                                alt=""
+                            />
+                        </button>
+                    </div>
+                    <a
+                        class="result-title"
+                        href="https://www.bsigroup.com/en-US/insights-and-media/insights/blogs/from-data-to-action-how-to-calculate-your-ghg-emissions/"
+                        >From data to action: How to calculate your GHG
+                        emissions</a
+                    >
+                    <p class="result-snippet">
+                        Pair business activity data with verified emission
+                        factors to calculate CO₂e and build a more useful,
+                        actionable greenhouse-gas inventory.
                     </p>
                 </article>
             </section>
