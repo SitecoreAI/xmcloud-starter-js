@@ -217,7 +217,7 @@ describe('Layout route-aware fallback', () => {
     ]);
   });
 
-  it('filters mixed legacy presentation and renders only CTA Banner before the fallback', () => {
+  it('filters mixed legacy presentation in normal mode and exposes it for authoring', () => {
     const mixedMain = [
       {
         componentName: 'PageHeader',
@@ -255,9 +255,9 @@ describe('Layout route-aware fallback', () => {
 
     expect(screen.getByTestId('placeholder-headless-main')).toHaveAttribute(
       'data-components',
-      'CtaBanner',
+      'PageHeader,CtaBanner,PromoBlock',
     );
-    expect(screen.getByTestId('slb-fallback')).toBeInTheDocument();
+    expect(screen.queryByTestId('slb-fallback')).not.toBeInTheDocument();
   });
 
   it('keeps normal non-fallback routes entirely Sitecore-owned', () => {
@@ -269,7 +269,7 @@ describe('Layout route-aware fallback', () => {
     expect(screen.queryByTestId('slb-fallback')).not.toBeInTheDocument();
   });
 
-  it('never renders inherited Solterra main presentation on a curated route', () => {
+  it('keeps inherited Solterra presentation hidden publicly but exposes it in editing', () => {
     const inheritedMain = [
       {
         componentName: 'PageHeader',
@@ -295,10 +295,11 @@ describe('Layout route-aware fallback', () => {
       />,
     );
 
-    expect(screen.getByTestId('slb-fallback')).toBeInTheDocument();
-    expect(
-      screen.queryByTestId('placeholder-headless-main'),
-    ).not.toBeInTheDocument();
+    expect(screen.getByTestId('placeholder-headless-main')).toHaveAttribute(
+      'data-components',
+      'PageHeader',
+    );
+    expect(screen.queryByTestId('slb-fallback')).not.toBeInTheDocument();
   });
 
   it('keeps the Sitecore placeholder and shows a noninteractive preview while editing', () => {

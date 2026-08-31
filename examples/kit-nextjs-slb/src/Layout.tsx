@@ -91,16 +91,23 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
     fallbackPage && hasLegacySolterraRouteContent(route),
   );
   const hasCompatibleMainContent = Boolean(compatibleMainRoute);
+  const exposeLegacyAuthoringPresentation = Boolean(
+    fallbackPage && mode.isEditing && hasLegacyMainContent && route,
+  );
   const showFallbackPage = Boolean(
-    fallbackPage && (showFallback || hasCompatibleMainContent),
+    fallbackPage &&
+      !exposeLegacyAuthoringPresentation &&
+      (showFallback || hasCompatibleMainContent),
   );
   const showUnfilteredMainPlaceholder = Boolean(
     route &&
       (!showFallbackPage ||
         (showFallback && mode.isEditing && !hasLegacyMainContent)),
   );
-  const mainPlaceholderRoute =
-    compatibleMainRoute || (showUnfilteredMainPlaceholder ? route : undefined);
+  const mainPlaceholderRoute = exposeLegacyAuthoringPresentation
+    ? route
+    : compatibleMainRoute ||
+      (showUnfilteredMainPlaceholder ? route : undefined);
   const showLocalHeader = Boolean(
     route &&
       fallbackPage &&
