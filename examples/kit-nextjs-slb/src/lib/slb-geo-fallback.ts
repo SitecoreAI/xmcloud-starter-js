@@ -104,7 +104,7 @@ export function getSlbFallbackSitemapEntries(
 
       seen.add(loc);
       const isHome =
-        page.routes[locale] === '/' || page.routes[locale] === '/es-mx/';
+        page.routes[locale] === '/' || page.routes[locale] === '/es-mx';
       return [
         {
           loc,

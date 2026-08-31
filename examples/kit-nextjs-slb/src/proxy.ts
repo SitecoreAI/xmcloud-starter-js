@@ -1,4 +1,4 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import {
   defineProxy,
   PreviewProxy,
@@ -91,13 +91,31 @@ export default async function proxy(req: NextRequest) {
   // the internal proxy chain.
   proxyRequest.nextUrl.pathname = normalizedPathname;
 
+  // Make the resolved public locale available to the root layout. The
+  // Sitecore locale proxy exposes x-sc-locale on the response, but the root
+  // layout needs the value on the rewritten request in order to render the
+  // correct HTML lang attribute for crawlers and assistive technology.
+  const requestHeaders = new Headers(proxyRequest.headers);
+  requestHeaders.set(
+    'x-slb-document-locale',
+    normalizedPathname.startsWith('/es-MX') ? 'es-MX' : 'en',
+  );
+  const initialResponse = NextResponse.next({
+    request: { headers: requestHeaders },
+  });
+
   const response = await defineProxy(
     preview,
     locale,
     multisite,
     redirects,
     personalize,
-  ).exec(proxyRequest);
+  ).exec(proxyRequest, initialResponse);
+
+  response.headers.set(
+    'Content-Language',
+    normalizedPathname.startsWith('/es-MX') ? 'es-MX' : 'en',
+  );
 
   return response;
 }

@@ -266,7 +266,7 @@
             "template": "Home",
             "routes": {
                 "en": "/",
-                "es-MX": "/es-mx/"
+                "es-MX": "/es-mx"
             },
             "relatedPageRoutes": {
                 "en": [

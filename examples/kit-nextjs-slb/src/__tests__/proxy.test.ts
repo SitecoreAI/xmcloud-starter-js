@@ -67,6 +67,7 @@ describe('public locale proxy normalization', () => {
 
     const response = await proxy(request);
     const proxiedRequest = mockExec.mock.calls[0][0] as NextRequest;
+    const initialResponse = mockExec.mock.calls[0][1] as NextResponse;
 
     expect(request.nextUrl.pathname).toBe('/es-mx/soluciones');
     expect(proxiedRequest.nextUrl.pathname).toBe('/es-MX/soluciones');
@@ -74,6 +75,23 @@ describe('public locale proxy normalization', () => {
       editingParams,
     );
     expect(response.headers.get('x-sc-locale')).toBe('es-MX');
-    expect(response.headers.get('x-middleware-override-headers')).toBeNull();
+    expect(response.headers.get('content-language')).toBe('es-MX');
+    expect(
+      initialResponse.headers.get('x-middleware-request-x-slb-document-locale'),
+    ).toBe('es-MX');
+    expect(
+      initialResponse.headers.get('x-middleware-override-headers'),
+    ).toContain('x-slb-document-locale');
+  });
+
+  it('makes English the document locale when no Spanish prefix is present', async () => {
+    const request = new NextRequest('https://www.example.com/solutions');
+
+    const response = await proxy(request);
+    const initialResponse = mockExec.mock.calls[0][1] as NextResponse;
+    expect(
+      initialResponse.headers.get('x-middleware-request-x-slb-document-locale'),
+    ).toBe('en');
+    expect(response.headers.get('content-language')).toBe('en');
   });
 });

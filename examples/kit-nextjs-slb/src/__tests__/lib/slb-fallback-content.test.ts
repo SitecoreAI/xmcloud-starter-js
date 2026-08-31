@@ -81,7 +81,7 @@ describe('SLB route-aware fallback content', () => {
   it('keeps canonical Spanish links on the localized home page', () => {
     const homePage = resolveSlbFallbackPage('es-MX', []);
 
-    expect(homePage?.canonicalRoute).toBe('/es-mx/');
+    expect(homePage?.canonicalRoute).toBe('/es-mx');
     expect(homePage?.fields.hero.primaryCta?.target).toBe('/es-mx/soluciones');
     expect(homePage?.fields.hero.secondaryCta?.target).toBe(
       '/es-mx/quienes-somos',

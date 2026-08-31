@@ -1,6 +1,7 @@
 import './globals.css';
 
 import { StructuredData } from '@/components/structured-data/StructuredData';
+import { headers } from 'next/headers';
 import {
   generateOrganizationSchema,
   generateWebSiteSchema,
@@ -8,16 +9,16 @@ import {
 import type { JsonLdValue } from '@/lib/structured-data/jsonld';
 import { getBaseUrl } from '@/lib/utils';
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const baseUrl = getBaseUrl();
+  const requestHeaders = await headers();
+  const requestedLocale = requestHeaders.get('x-slb-document-locale');
   const locale =
-    process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE?.toLocaleLowerCase() === 'es-mx'
-      ? 'es-MX'
-      : 'en';
+    requestedLocale?.toLocaleLowerCase() === 'es-mx' ? 'es-MX' : 'en';
 
   // Site-wide schemas: Organization + WebSite (injected once per page)
   const organizationSchema = generateOrganizationSchema({

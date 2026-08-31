@@ -17,7 +17,7 @@ describe('SLB GEO fallbacks', () => {
       expect.arrayContaining([
         'https://www.slb.com/',
         'https://www.slb.com/solutions',
-        'https://www.slb.com/es-mx/',
+        'https://www.slb.com/es-mx',
         'https://www.slb.com/es-mx/soluciones',
       ]),
     );

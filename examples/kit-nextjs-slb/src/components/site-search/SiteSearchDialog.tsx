@@ -198,6 +198,7 @@ function normalizeRemoteResult(
       'Uri',
       'document_uri',
       'documentUri',
+      'sc_url',
       'source_url',
       'sourceUrl',
       'page_url',

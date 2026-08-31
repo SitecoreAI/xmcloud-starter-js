@@ -166,11 +166,13 @@ describe('SiteSearchDialog', () => {
       isError: false,
       results: [
         {
-          id: 'remote-1',
-          title: 'Measure and reduce methane emissions',
+          content: 'Methane measurement and abatement technologies.',
           description: 'Operational emissions intelligence from SLB.',
-          section: 'solutions',
-          url: 'https://www.slb.com/solutions/emissions?source=search#overview',
+          sc_item_id: 'remote-1',
+          sc_locale: 'en',
+          sc_url:
+            'https://www.slb.com/solutions/emissions?source=search#overview',
+          title: 'Measure and reduce methane emissions',
         },
       ],
       total: 1,
@@ -183,6 +185,12 @@ describe('SiteSearchDialog', () => {
         name: /Measure and reduce methane emissions/i,
       }),
     ).toHaveAttribute('href', '/solutions/emissions?source=search#overview');
+    expect(
+      screen.queryByText('Fallback carbon capture'),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/Live search is temporarily unavailable/i),
+    ).not.toBeInTheDocument();
   });
 
   it('keeps a successful zero-result remote response authoritative', async () => {
