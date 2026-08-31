@@ -114,6 +114,6 @@ export const config = {
    */
   matcher: [
     '/',
-    '/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|sitecore/api/|-/|favicon.ico|sc_logo.svg|ai/).*)',
+    '/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|sitecore/api/|-/|favicon.ico|sc_logo.svg|ai/|search(?:/|$)).*)',
   ],
 };

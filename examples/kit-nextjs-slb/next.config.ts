@@ -62,6 +62,11 @@ const nextConfig: NextConfig = {
   rewrites: async () => {
     return [
       {
+        source: '/search',
+        destination: '/search/index.html',
+        locale: false,
+      },
+      {
         // sitemap.xml serves the main sitemap
         source: '/sitemap.xml',
         destination: '/api/sitemap',
