@@ -163,6 +163,9 @@
     "scripts": {
         "build": "cross-env NODE_ENV=production npm-run-all --serial sitecore-tools:build next:build",
         "content:fallback": "node scripts/generate-slb-fallback-content.mjs",
+        "content:fallback:curate-images": "node scripts/curate-slb-fallback-images.mjs",
+        "content:fallback:curate-images:check": "node scripts/curate-slb-fallback-images.mjs --check",
+        "audit:images": "node scripts/audit-production-images.cjs",
         "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,scss,md}\"",
         "lint": "eslint \"src/**/*.{ts,tsx}\"",
         "type-check": "tsc --noEmit --incremental false",

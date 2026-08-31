@@ -227,9 +227,7 @@ function CardGrid({
         </div>
         <div className={styles.cardGrid}>
           {component.items.map((item, index) => {
-            const image = images.length
-              ? images[index % images.length]
-              : undefined;
+            const image = images[index];
             const relatedPage = relatedPageForCard(
               pageId,
               item.title,
@@ -334,9 +332,7 @@ function ContentRail({
         {component.items && (
           <div className={styles.rail}>
             {component.items.map((item, index) => {
-              const image = images.length
-                ? images[index % images.length]
-                : undefined;
+              const image = images[index];
               const relatedPage = relatedPageForCard(
                 pageId,
                 item.title,
@@ -467,6 +463,41 @@ function CompactFeature({
   );
 }
 
+function supportingImageSlotCount(component: SlbFallbackComponent): number {
+  switch (component.type) {
+    case 'cardGrid':
+    case 'contentRail':
+      return component.items?.length ?? 0;
+    case 'contentSection':
+      return 1;
+    default:
+      return 0;
+  }
+}
+
+function allocateSupportingImages(
+  components: SlbFallbackComponent[],
+  supportingImages: SlbFallbackImage[],
+): SlbFallbackImage[][] {
+  const seenFilenames = new Set<string>();
+  const uniqueImages = supportingImages.filter((image) => {
+    if (seenFilenames.has(image.filename)) return false;
+    seenFilenames.add(image.filename);
+    return true;
+  });
+  let nextImageIndex = 0;
+
+  return components.map((component) => {
+    const slotCount = supportingImageSlotCount(component);
+    const allocatedImages = uniqueImages.slice(
+      nextImageIndex,
+      nextImageIndex + slotCount,
+    );
+    nextImageIndex += slotCount;
+    return allocatedImages;
+  });
+}
+
 function ComponentSection({
   component,
   image,
@@ -538,7 +569,10 @@ export default function SlbFallbackPage({
 }: SlbFallbackPageProps) {
   const { fields } = page;
   const localizedLabels = labels[page.locale];
-  let imageIndex = 0;
+  const supportingImageAllocations = allocateSupportingImages(
+    fields.components,
+    fields.supportingImages,
+  );
 
   return (
     <article
@@ -600,17 +634,12 @@ export default function SlbFallbackPage({
       </div>
 
       {fields.components.map((component, index) => {
-        const image =
-          component.type === 'contentSection'
-            ? fields.supportingImages[
-                imageIndex++ % Math.max(fields.supportingImages.length, 1)
-              ]
-            : undefined;
+        const componentImages = supportingImageAllocations[index];
         return (
           <ComponentSection
             component={component}
-            image={image}
-            images={fields.supportingImages}
+            image={componentImages[0]}
+            images={componentImages}
             index={index}
             key={component.id}
             localizedLabels={localizedLabels}

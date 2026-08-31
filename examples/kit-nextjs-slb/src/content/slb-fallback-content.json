@@ -393,8 +393,16 @@
                             "alt": "Geothermal power plant in a green mountain landscape."
                         },
                         {
-                            "filename": "home-collaborative-workplace.jpg",
-                            "alt": "Colleagues meet in a spacious modern SLB workplace."
+                            "filename": "digital-data-governance-review.jpg",
+                            "alt": "An engineering team reviews data lineage and governance across connected industrial systems."
+                        },
+                        {
+                            "filename": "decarbonization-execution-toolbox-talk.jpg",
+                            "alt": "An operations team conducts a field briefing before decarbonization work begins."
+                        },
+                        {
+                            "filename": "newsroom-global-energy-network-hero.jpg",
+                            "alt": "A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour."
                         }
                     ],
                     "finalCta": {
@@ -514,8 +522,16 @@
                             "alt": "Planta de energía geotérmica en un paisaje montañoso y verde."
                         },
                         {
-                            "filename": "home-collaborative-workplace.jpg",
-                            "alt": "Un grupo de colegas se reúne en un espacio de trabajo moderno y amplio de SLB."
+                            "filename": "digital-data-governance-review.jpg",
+                            "alt": "Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados."
+                        },
+                        {
+                            "filename": "decarbonization-execution-toolbox-talk.jpg",
+                            "alt": "Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización."
+                        },
+                        {
+                            "filename": "newsroom-global-energy-network-hero.jpg",
+                            "alt": "Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer."
                         }
                     ],
                     "finalCta": {
@@ -646,12 +662,40 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "solutions-manufacturing-expertise.jpg",
-                            "alt": "Engineer examines equipment in an SLB manufacturing facility."
+                            "filename": "home-energy-infrastructure.jpg",
+                            "alt": "View looking up between four white industrial storage vessels as two SLB operators climb the structures."
                         },
                         {
-                            "filename": "solutions-local-expertise.jpg",
-                            "alt": "SLB engineer in blue coveralls stands on a bridge with a city behind her."
+                            "filename": "decarbonization-engineers-prioritize-tablet.jpg",
+                            "alt": "Two engineers compare emissions-reduction options beside process equipment."
+                        },
+                        {
+                            "filename": "decarbonization-compressor-maintenance.jpg",
+                            "alt": "Technicians perform a planned emissions-reduction intervention on a compressor."
+                        },
+                        {
+                            "filename": "new-energy-grid-storage.jpg",
+                            "alt": "Engineers inspect modular grid-scale energy storage beside a renewable substation."
+                        },
+                        {
+                            "filename": "contact-technical-consultation.jpg",
+                            "alt": "An engineer discusses a technical equipment model with a customer."
+                        },
+                        {
+                            "filename": "products-test-facility.jpg",
+                            "alt": "SLB technician operates a test system in a bright manufacturing facility."
+                        },
+                        {
+                            "filename": "people-field-safety-training.jpg",
+                            "alt": "An instructor guides an employee through hands-on field safety training."
+                        },
+                        {
+                            "filename": "decarbonization-verification-dashboard.jpg",
+                            "alt": "An engineer compares verified emissions data with current facility performance."
+                        },
+                        {
+                            "filename": "about-global-presence.jpg",
+                            "alt": "SLB engineer walks between large industrial pipes at an operations site."
                         }
                     ],
                     "finalCta": {
@@ -757,12 +801,40 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "solutions-manufacturing-expertise.jpg",
-                            "alt": "Un ingeniero examina un equipo en una planta de manufactura de SLB."
+                            "filename": "home-energy-infrastructure.jpg",
+                            "alt": "Vista ascendente entre cuatro depósitos industriales blancos mientras dos operadores de SLB ascienden por las estructuras."
                         },
                         {
-                            "filename": "solutions-local-expertise.jpg",
-                            "alt": "Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo."
+                            "filename": "decarbonization-engineers-prioritize-tablet.jpg",
+                            "alt": "Dos ingenieros comparan opciones para reducir emisiones junto a equipos de proceso."
+                        },
+                        {
+                            "filename": "decarbonization-compressor-maintenance.jpg",
+                            "alt": "Técnicos realizan una intervención planificada para reducir emisiones en un compresor."
+                        },
+                        {
+                            "filename": "new-energy-grid-storage.jpg",
+                            "alt": "Ingenieros inspeccionan almacenamiento modular de energía a escala de red junto a una subestación renovable."
+                        },
+                        {
+                            "filename": "contact-technical-consultation.jpg",
+                            "alt": "Un ingeniero analiza un modelo técnico de equipo con una clienta."
+                        },
+                        {
+                            "filename": "products-test-facility.jpg",
+                            "alt": "Un técnico de SLB opera un sistema de pruebas en una luminosa planta de manufactura."
+                        },
+                        {
+                            "filename": "people-field-safety-training.jpg",
+                            "alt": "Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo."
+                        },
+                        {
+                            "filename": "decarbonization-verification-dashboard.jpg",
+                            "alt": "Un ingeniero compara datos verificados de emisiones con el desempeño actual de la instalación."
+                        },
+                        {
+                            "filename": "about-global-presence.jpg",
+                            "alt": "Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones."
                         }
                     ],
                     "finalCta": {
@@ -876,12 +948,32 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "digital-data-context.jpg",
+                            "alt": "A data engineer and domain expert compare a digital asset model with real equipment."
+                        },
+                        {
                             "filename": "products-lumi-platform.jpg",
                             "alt": "Lumi data and AI platform interface."
                         },
                         {
-                            "filename": "products-tela-ai.jpg",
-                            "alt": "Tela AI search interface on a dark-blue digital screen."
+                            "filename": "products-intelligent-power-management.jpg",
+                            "alt": "Branded rendering of a land rig with a footprint reduction icon."
+                        },
+                        {
+                            "filename": "news-artificial-lift-technologies.jpg",
+                            "alt": "Two SLB field specialists review work beside pumpjacks."
+                        },
+                        {
+                            "filename": "digital-workflow-automation.jpg",
+                            "alt": "An operations specialist reviews an automated workflow connected to field execution."
+                        },
+                        {
+                            "filename": "people-inclusive-engineering-team.jpg",
+                            "alt": "A multidisciplinary engineering team meets during an operational shift handover."
+                        },
+                        {
+                            "filename": "about-innovation-factori.jpg",
+                            "alt": "Colleagues collaborate in an Innovation Factori workspace."
                         }
                     ],
                     "finalCta": {
@@ -974,12 +1066,32 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "digital-data-context.jpg",
+                            "alt": "Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real."
+                        },
+                        {
                             "filename": "products-lumi-platform.jpg",
                             "alt": "Interfaz de la plataforma de datos e IA Lumi."
                         },
                         {
-                            "filename": "products-tela-ai.jpg",
-                            "alt": "Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro."
+                            "filename": "products-intelligent-power-management.jpg",
+                            "alt": "Representación de un equipo de perforación terrestre con un icono de reducción de superficie."
+                        },
+                        {
+                            "filename": "news-artificial-lift-technologies.jpg",
+                            "alt": "Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo."
+                        },
+                        {
+                            "filename": "digital-workflow-automation.jpg",
+                            "alt": "Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo."
+                        },
+                        {
+                            "filename": "people-inclusive-engineering-team.jpg",
+                            "alt": "Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo."
+                        },
+                        {
+                            "filename": "about-innovation-factori.jpg",
+                            "alt": "Un grupo de colegas colabora en un espacio de Innovation Factori."
                         }
                     ],
                     "finalCta": {
@@ -1095,8 +1207,32 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "sustainability-field-employee.jpg",
-                            "alt": "SLB field employee in safety glasses and a white hard hat at sunset."
+                            "filename": "decarbonization-inventory-aerial-survey.jpg",
+                            "alt": "An aerial methane survey is underway above an industrial processing facility."
+                        },
+                        {
+                            "filename": "decarbonization-methane-sensor-wellhead.jpg",
+                            "alt": "A technician calibrates a methane sensor beside production equipment."
+                        },
+                        {
+                            "filename": "decarbonization-engineers-prioritize-tablet.jpg",
+                            "alt": "Two engineers compare emissions-reduction options beside process equipment."
+                        },
+                        {
+                            "filename": "decarbonization-compressor-maintenance.jpg",
+                            "alt": "Technicians perform a planned emissions-reduction intervention on a compressor."
+                        },
+                        {
+                            "filename": "decarbonization-verification-dashboard.jpg",
+                            "alt": "An engineer compares verified emissions data with current facility performance."
+                        },
+                        {
+                            "filename": "decarbonization-execution-toolbox-talk.jpg",
+                            "alt": "An operations team conducts a field briefing before decarbonization work begins."
+                        },
+                        {
+                            "filename": "insight-decarbonization-control-room-hero.jpg",
+                            "alt": "An analyst reviews emissions performance in an industrial operations center."
                         }
                     ],
                     "finalCta": {
@@ -1191,8 +1327,32 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "sustainability-field-employee.jpg",
-                            "alt": "Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer."
+                            "filename": "decarbonization-inventory-aerial-survey.jpg",
+                            "alt": "Se realiza un levantamiento aéreo de metano sobre una instalación de procesamiento industrial."
+                        },
+                        {
+                            "filename": "decarbonization-methane-sensor-wellhead.jpg",
+                            "alt": "Un técnico calibra un sensor de metano junto a equipos de producción."
+                        },
+                        {
+                            "filename": "decarbonization-engineers-prioritize-tablet.jpg",
+                            "alt": "Dos ingenieros comparan opciones para reducir emisiones junto a equipos de proceso."
+                        },
+                        {
+                            "filename": "decarbonization-compressor-maintenance.jpg",
+                            "alt": "Técnicos realizan una intervención planificada para reducir emisiones en un compresor."
+                        },
+                        {
+                            "filename": "decarbonization-verification-dashboard.jpg",
+                            "alt": "Un ingeniero compara datos verificados de emisiones con el desempeño actual de la instalación."
+                        },
+                        {
+                            "filename": "decarbonization-execution-toolbox-talk.jpg",
+                            "alt": "Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización."
+                        },
+                        {
+                            "filename": "insight-decarbonization-control-room-hero.jpg",
+                            "alt": "Un analista revisa el desempeño de emisiones en un centro de operaciones industriales."
                         }
                     ],
                     "finalCta": {
@@ -1213,10 +1373,7 @@
                 "es-MX": "/es-mx/soluciones/sistemas-de-nueva-energia"
             },
             "relatedPageRoutes": {
-                "en": [
-                    "/products-and-services/ccus",
-                    "/sustainability"
-                ],
+                "en": ["/products-and-services/ccus", "/sustainability"],
                 "es-MX": [
                     "/es-mx/productos-y-servicios/ccus",
                     "/es-mx/sostenibilidad"
@@ -1307,12 +1464,32 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "solutions-manufacturing-expertise.jpg",
+                            "alt": "Engineer examines equipment in an SLB manufacturing facility."
+                        },
+                        {
                             "filename": "news-havstjerne-carbon-storage.jpg",
                             "alt": "SLB employee in orange coveralls stands on an offshore platform facing the sea."
                         },
                         {
-                            "filename": "sustainability-iceland-road.jpg",
-                            "alt": "Road crossing a snow-covered Icelandic landscape."
+                            "filename": "new-energy-geothermal-well.jpg",
+                            "alt": "Engineers inspect a geothermal wellhead in a volcanic landscape."
+                        },
+                        {
+                            "filename": "new-energy-lithium-extraction.jpg",
+                            "alt": "An engineer inspects modular direct-lithium-extraction equipment in a high-desert basin."
+                        },
+                        {
+                            "filename": "new-energy-hydrogen-electrolyzer.jpg",
+                            "alt": "An engineer walks through a modern hydrogen electrolyzer hall."
+                        },
+                        {
+                            "filename": "new-energy-offshore-wind.jpg",
+                            "alt": "Technicians commission an offshore wind substation above a calm sea."
+                        },
+                        {
+                            "filename": "new-energy-grid-storage.jpg",
+                            "alt": "Engineers inspect modular grid-scale energy storage beside a renewable substation."
                         }
                     ],
                     "finalCta": {
@@ -1406,12 +1583,32 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "solutions-manufacturing-expertise.jpg",
+                            "alt": "Un ingeniero examina un equipo en una planta de manufactura de SLB."
+                        },
+                        {
                             "filename": "news-havstjerne-carbon-storage.jpg",
                             "alt": "Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar."
                         },
                         {
-                            "filename": "sustainability-iceland-road.jpg",
-                            "alt": "Una carretera atraviesa un paisaje nevado de Islandia."
+                            "filename": "new-energy-geothermal-well.jpg",
+                            "alt": "Ingenieros inspeccionan un cabezal geotérmico en un paisaje volcánico."
+                        },
+                        {
+                            "filename": "new-energy-lithium-extraction.jpg",
+                            "alt": "Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca de alta montaña y desierto."
+                        },
+                        {
+                            "filename": "new-energy-hydrogen-electrolyzer.jpg",
+                            "alt": "Un ingeniero recorre una moderna nave de electrolizadores de hidrógeno."
+                        },
+                        {
+                            "filename": "new-energy-offshore-wind.jpg",
+                            "alt": "Técnicos ponen en servicio una subestación eólica marina sobre un mar en calma."
+                        },
+                        {
+                            "filename": "new-energy-grid-storage.jpg",
+                            "alt": "Ingenieros inspeccionan almacenamiento modular de energía a escala de red junto a una subestación renovable."
                         }
                     ],
                     "finalCta": {
@@ -1528,8 +1725,8 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "products-lumi-platform.jpg",
-                            "alt": "Lumi data and AI platform interface."
+                            "filename": "ccus-basin-screening-workstation.jpg",
+                            "alt": "Geoscientists evaluate subsurface formations for carbon storage suitability."
                         },
                         {
                             "filename": "products-intelligent-power-management.jpg",
@@ -1538,6 +1735,22 @@
                         {
                             "filename": "products-reda-agile-esp.jpg",
                             "alt": "Three-dimensional rendering of the Reda Agile ESP system."
+                        },
+                        {
+                            "filename": "products-lumi-platform.jpg",
+                            "alt": "Lumi data and AI platform interface."
+                        },
+                        {
+                            "filename": "decarbonization-methane-sensor-wellhead.jpg",
+                            "alt": "A technician calibrates a methane sensor beside production equipment."
+                        },
+                        {
+                            "filename": "new-energy-geothermal-well.jpg",
+                            "alt": "Engineers inspect a geothermal wellhead in a volcanic landscape."
+                        },
+                        {
+                            "filename": "news-shreveport-infrastructure.jpg",
+                            "alt": "SLB employees work around a forklift inside the Shreveport manufacturing facility."
                         }
                     ],
                     "finalCta": {
@@ -1632,8 +1845,8 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "products-lumi-platform.jpg",
-                            "alt": "Interfaz de la plataforma de datos e IA Lumi."
+                            "filename": "ccus-basin-screening-workstation.jpg",
+                            "alt": "Geocientíficos evalúan formaciones del subsuelo para determinar su idoneidad para el almacenamiento de carbono."
                         },
                         {
                             "filename": "products-intelligent-power-management.jpg",
@@ -1642,6 +1855,22 @@
                         {
                             "filename": "products-reda-agile-esp.jpg",
                             "alt": "Representación tridimensional del sistema ESP Reda Agile."
+                        },
+                        {
+                            "filename": "products-lumi-platform.jpg",
+                            "alt": "Interfaz de la plataforma de datos e IA Lumi."
+                        },
+                        {
+                            "filename": "decarbonization-methane-sensor-wellhead.jpg",
+                            "alt": "Un técnico calibra un sensor de metano junto a equipos de producción."
+                        },
+                        {
+                            "filename": "new-energy-geothermal-well.jpg",
+                            "alt": "Ingenieros inspeccionan un cabezal geotérmico en un paisaje volcánico."
+                        },
+                        {
+                            "filename": "news-shreveport-infrastructure.jpg",
+                            "alt": "Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport."
                         }
                     ],
                     "finalCta": {
@@ -1662,14 +1891,8 @@
                 "es-MX": "/es-mx/productos-y-servicios/subsuelo-y-construccion-de-pozos"
             },
             "relatedPageRoutes": {
-                "en": [
-                    "/solutions",
-                    "/products-and-services"
-                ],
-                "es-MX": [
-                    "/es-mx/soluciones",
-                    "/es-mx/productos-y-servicios"
-                ]
+                "en": ["/solutions", "/products-and-services"],
+                "es-MX": ["/es-mx/soluciones", "/es-mx/productos-y-servicios"]
             },
             "fields": {
                 "en": {
@@ -1748,12 +1971,32 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "ccus-core-characterization-lab.jpg",
+                            "alt": "A scientist examines a rock core during carbon storage site characterization."
+                        },
+                        {
+                            "filename": "ccus-basin-screening-workstation.jpg",
+                            "alt": "Geoscientists evaluate subsurface formations for carbon storage suitability."
+                        },
+                        {
+                            "filename": "products-intelligent-power-management.jpg",
+                            "alt": "Branded rendering of a land rig with a footprint reduction icon."
+                        },
+                        {
                             "filename": "solutions-manufacturing-expertise.jpg",
                             "alt": "Engineer examines equipment in an SLB manufacturing facility."
                         },
                         {
-                            "filename": "home-precision-engineering.jpg",
-                            "alt": "SLB technician inspects a circular piece of precision industrial equipment."
+                            "filename": "news-artificial-lift-technologies.jpg",
+                            "alt": "Two SLB field specialists review work beside pumpjacks."
+                        },
+                        {
+                            "filename": "well-decommissioning-restored-site.jpg",
+                            "alt": "A field engineer verifies a safely capped well amid restored grassland."
+                        },
+                        {
+                            "filename": "digital-data-governance-review.jpg",
+                            "alt": "An engineering team reviews data lineage and governance across connected industrial systems."
                         }
                     ],
                     "finalCta": {
@@ -1839,12 +2082,32 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "ccus-core-characterization-lab.jpg",
+                            "alt": "Una científica examina un núcleo de roca durante la caracterización de un sitio de almacenamiento de carbono."
+                        },
+                        {
+                            "filename": "ccus-basin-screening-workstation.jpg",
+                            "alt": "Geocientíficos evalúan formaciones del subsuelo para determinar su idoneidad para el almacenamiento de carbono."
+                        },
+                        {
+                            "filename": "products-intelligent-power-management.jpg",
+                            "alt": "Representación de un equipo de perforación terrestre con un icono de reducción de superficie."
+                        },
+                        {
                             "filename": "solutions-manufacturing-expertise.jpg",
                             "alt": "Un ingeniero examina un equipo en una planta de manufactura de SLB."
                         },
                         {
-                            "filename": "home-precision-engineering.jpg",
-                            "alt": "Un técnico de SLB inspecciona un equipo industrial circular de alta precisión."
+                            "filename": "news-artificial-lift-technologies.jpg",
+                            "alt": "Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo."
+                        },
+                        {
+                            "filename": "well-decommissioning-restored-site.jpg",
+                            "alt": "Un ingeniero de campo verifica un pozo clausurado de forma segura en un pastizal restaurado."
+                        },
+                        {
+                            "filename": "digital-data-governance-review.jpg",
+                            "alt": "Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados."
                         }
                     ],
                     "finalCta": {
@@ -1966,12 +2229,24 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "digital-data-context.jpg",
+                            "alt": "A data engineer and domain expert compare a digital asset model with real equipment."
+                        },
+                        {
+                            "filename": "home-digital-at-scale.jpg",
+                            "alt": "Presenter explains a digital subsurface visualization to an audience."
+                        },
+                        {
+                            "filename": "digital-workflow-automation.jpg",
+                            "alt": "An operations specialist reviews an automated workflow connected to field execution."
+                        },
+                        {
                             "filename": "products-tela-ai.jpg",
                             "alt": "Tela AI search interface on a dark-blue digital screen."
                         },
                         {
-                            "filename": "about-innovation-factori.jpg",
-                            "alt": "Colleagues collaborate in an Innovation Factori workspace."
+                            "filename": "digital-data-governance-review.jpg",
+                            "alt": "An engineering team reviews data lineage and governance across connected industrial systems."
                         }
                     ],
                     "finalCta": {
@@ -2072,12 +2347,24 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "digital-data-context.jpg",
+                            "alt": "Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real."
+                        },
+                        {
+                            "filename": "home-digital-at-scale.jpg",
+                            "alt": "Una presentadora explica una visualización digital del subsuelo a un grupo de asistentes."
+                        },
+                        {
+                            "filename": "digital-workflow-automation.jpg",
+                            "alt": "Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo."
+                        },
+                        {
                             "filename": "products-tela-ai.jpg",
                             "alt": "Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro."
                         },
                         {
-                            "filename": "about-innovation-factori.jpg",
-                            "alt": "Un grupo de colegas colabora en un espacio de Innovation Factori."
+                            "filename": "digital-data-governance-review.jpg",
+                            "alt": "Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados."
                         }
                     ],
                     "finalCta": {
@@ -2180,8 +2467,28 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "sustainability-iceland-road.jpg",
-                            "alt": "Road crossing a snow-covered Icelandic landscape."
+                            "filename": "ccus-storage-operations-control-room.jpg",
+                            "alt": "Specialists coordinate carbon storage operations from an integrated control room."
+                        },
+                        {
+                            "filename": "ccus-basin-screening-workstation.jpg",
+                            "alt": "Geoscientists evaluate subsurface formations for carbon storage suitability."
+                        },
+                        {
+                            "filename": "ccus-core-characterization-lab.jpg",
+                            "alt": "A scientist examines a rock core during carbon storage site characterization."
+                        },
+                        {
+                            "filename": "ccus-injection-well-manifold.jpg",
+                            "alt": "An operator inspects the manifold of a carbon dioxide injection well."
+                        },
+                        {
+                            "filename": "ccus-monitoring-seismic-array.jpg",
+                            "alt": "Monitoring instruments track subsurface conditions above a coastal carbon storage site."
+                        },
+                        {
+                            "filename": "insight-decarbonization-evidence-review.jpg",
+                            "alt": "An analyst reviews field evidence used to verify emissions improvements."
                         }
                     ],
                     "finalCta": {
@@ -2263,8 +2570,28 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "sustainability-iceland-road.jpg",
-                            "alt": "Una carretera atraviesa un paisaje nevado de Islandia."
+                            "filename": "ccus-storage-operations-control-room.jpg",
+                            "alt": "Especialistas coordinan operaciones de almacenamiento de carbono desde una sala de control integrada."
+                        },
+                        {
+                            "filename": "ccus-basin-screening-workstation.jpg",
+                            "alt": "Geocientíficos evalúan formaciones del subsuelo para determinar su idoneidad para el almacenamiento de carbono."
+                        },
+                        {
+                            "filename": "ccus-core-characterization-lab.jpg",
+                            "alt": "Una científica examina un núcleo de roca durante la caracterización de un sitio de almacenamiento de carbono."
+                        },
+                        {
+                            "filename": "ccus-injection-well-manifold.jpg",
+                            "alt": "Un operador inspecciona el múltiple de un pozo de inyección de dióxido de carbono."
+                        },
+                        {
+                            "filename": "ccus-monitoring-seismic-array.jpg",
+                            "alt": "Instrumentos de monitoreo registran las condiciones del subsuelo sobre un sitio costero de almacenamiento de carbono."
+                        },
+                        {
+                            "filename": "insight-decarbonization-evidence-review.jpg",
+                            "alt": "Una analista revisa la evidencia de campo utilizada para verificar mejoras de emisiones."
                         }
                     ],
                     "finalCta": {
@@ -2371,12 +2698,24 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "nature-place-context.jpg",
+                            "alt": "A multidisciplinary team reviews local watershed and land conditions above an operating site."
+                        },
+                        {
+                            "filename": "sustainability-field-employee.jpg",
+                            "alt": "SLB field employee in safety glasses and a white hard hat at sunset."
+                        },
+                        {
                             "filename": "sustainability-our-people.jpg",
                             "alt": "Two SLB employees in blue coveralls walk across a field site at sunrise."
                         },
                         {
                             "filename": "sustainability-nature.jpg",
                             "alt": "Turquoise lake and open plain beneath snowcapped mountains."
+                        },
+                        {
+                            "filename": "insight-decarbonization-evidence-review.jpg",
+                            "alt": "An analyst reviews field evidence used to verify emissions improvements."
                         }
                     ],
                     "finalCta": {
@@ -2460,12 +2799,24 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "nature-place-context.jpg",
+                            "alt": "Un equipo multidisciplinario revisa las condiciones locales de la cuenca y del terreno sobre un sitio operativo."
+                        },
+                        {
+                            "filename": "sustainability-field-employee.jpg",
+                            "alt": "Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer."
+                        },
+                        {
                             "filename": "sustainability-our-people.jpg",
                             "alt": "Dos empleados de SLB con overoles azules caminan por un sitio de operaciones al amanecer."
                         },
                         {
                             "filename": "sustainability-nature.jpg",
                             "alt": "Lago turquesa y llanura abierta bajo montañas nevadas."
+                        },
+                        {
+                            "filename": "insight-decarbonization-evidence-review.jpg",
+                            "alt": "Una analista revisa la evidencia de campo utilizada para verificar mejoras de emisiones."
                         }
                     ],
                     "finalCta": {
@@ -2572,12 +2923,24 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "sustainability-climate-action.jpg",
-                            "alt": "Two people walk along a boardwalk through a restored natural landscape."
+                            "filename": "decarbonization-execution-toolbox-talk.jpg",
+                            "alt": "An operations team conducts a field briefing before decarbonization work begins."
                         },
                         {
-                            "filename": "sustainability-iceland-road.jpg",
-                            "alt": "Road crossing a snow-covered Icelandic landscape."
+                            "filename": "decarbonization-methane-sensor-wellhead.jpg",
+                            "alt": "A technician calibrates a methane sensor beside production equipment."
+                        },
+                        {
+                            "filename": "new-energy-grid-storage.jpg",
+                            "alt": "Engineers inspect modular grid-scale energy storage beside a renewable substation."
+                        },
+                        {
+                            "filename": "decarbonization-verification-dashboard.jpg",
+                            "alt": "An engineer compares verified emissions data with current facility performance."
+                        },
+                        {
+                            "filename": "insight-decarbonization-baseline-workshop.jpg",
+                            "alt": "Operations and sustainability specialists establish an emissions baseline."
                         }
                     ],
                     "finalCta": {
@@ -2659,12 +3022,24 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "sustainability-climate-action.jpg",
-                            "alt": "Dos personas caminan por una pasarela en un paisaje natural restaurado."
+                            "filename": "decarbonization-execution-toolbox-talk.jpg",
+                            "alt": "Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización."
                         },
                         {
-                            "filename": "sustainability-iceland-road.jpg",
-                            "alt": "Una carretera atraviesa un paisaje nevado de Islandia."
+                            "filename": "decarbonization-methane-sensor-wellhead.jpg",
+                            "alt": "Un técnico calibra un sensor de metano junto a equipos de producción."
+                        },
+                        {
+                            "filename": "new-energy-grid-storage.jpg",
+                            "alt": "Ingenieros inspeccionan almacenamiento modular de energía a escala de red junto a una subestación renovable."
+                        },
+                        {
+                            "filename": "decarbonization-verification-dashboard.jpg",
+                            "alt": "Un ingeniero compara datos verificados de emisiones con el desempeño actual de la instalación."
+                        },
+                        {
+                            "filename": "insight-decarbonization-baseline-workshop.jpg",
+                            "alt": "Especialistas de operaciones y sostenibilidad establecen una línea base de emisiones."
                         }
                     ],
                     "finalCta": {
@@ -2761,8 +3136,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "home-collaborative-workplace.jpg",
-                            "alt": "Colleagues meet in a spacious modern SLB workplace."
+                            "filename": "people-field-safety-training.jpg",
+                            "alt": "An instructor guides an employee through hands-on field safety training."
+                        },
+                        {
+                            "filename": "people-inclusive-engineering-team.jpg",
+                            "alt": "A multidisciplinary engineering team meets during an operational shift handover."
+                        },
+                        {
+                            "filename": "people-community-stem-workshop.jpg",
+                            "alt": "A volunteer helps students complete an energy science experiment."
+                        },
+                        {
+                            "filename": "sustainability-climate-action.jpg",
+                            "alt": "Two people walk along a boardwalk through a restored natural landscape."
                         }
                     ],
                     "finalCta": {
@@ -2838,8 +3225,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "home-collaborative-workplace.jpg",
-                            "alt": "Un grupo de colegas se reúne en un espacio de trabajo moderno y amplio de SLB."
+                            "filename": "people-field-safety-training.jpg",
+                            "alt": "Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo."
+                        },
+                        {
+                            "filename": "people-inclusive-engineering-team.jpg",
+                            "alt": "Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo."
+                        },
+                        {
+                            "filename": "people-community-stem-workshop.jpg",
+                            "alt": "Un voluntario ayuda a estudiantes a completar un experimento de ciencias de la energía."
+                        },
+                        {
+                            "filename": "sustainability-climate-action.jpg",
+                            "alt": "Dos personas caminan por una pasarela en un paisaje natural restaurado."
                         }
                     ],
                     "finalCta": {
@@ -2860,10 +3259,7 @@
                 "es-MX": "/es-mx/sostenibilidad/naturaleza-y-operaciones-responsables"
             },
             "relatedPageRoutes": {
-                "en": [
-                    "/sustainability",
-                    "/sustainability/climate-action"
-                ],
+                "en": ["/sustainability", "/sustainability/climate-action"],
                 "es-MX": [
                     "/es-mx/sostenibilidad",
                     "/es-mx/sostenibilidad/accion-climatica"
@@ -2938,8 +3334,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "sustainability-iceland-road.jpg",
-                            "alt": "Road crossing a snow-covered Icelandic landscape."
+                            "filename": "nature-place-context.jpg",
+                            "alt": "A multidisciplinary team reviews local watershed and land conditions above an operating site."
+                        },
+                        {
+                            "filename": "nature-biodiversity-field-survey.jpg",
+                            "alt": "Field ecologists record biodiversity observations in native wetland habitat near an operating site."
+                        },
+                        {
+                            "filename": "nature-water-sampling-operation.jpg",
+                            "alt": "Environmental specialists collect a clear-water sample at an industrial water reuse facility."
+                        },
+                        {
+                            "filename": "nature-equipment-circularity-workshop.jpg",
+                            "alt": "A technician inspects an industrial component in a circular equipment refurbishment center."
                         }
                     ],
                     "finalCta": {
@@ -3017,8 +3425,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "sustainability-iceland-road.jpg",
-                            "alt": "Una carretera atraviesa un paisaje nevado de Islandia."
+                            "filename": "nature-place-context.jpg",
+                            "alt": "Un equipo multidisciplinario revisa las condiciones locales de la cuenca y del terreno sobre un sitio operativo."
+                        },
+                        {
+                            "filename": "nature-biodiversity-field-survey.jpg",
+                            "alt": "Ecólogos de campo registran observaciones de biodiversidad en un humedal nativo cerca de un sitio operativo."
+                        },
+                        {
+                            "filename": "nature-water-sampling-operation.jpg",
+                            "alt": "Especialistas ambientales toman una muestra de agua limpia en una instalación industrial de reutilización de agua."
+                        },
+                        {
+                            "filename": "nature-equipment-circularity-workshop.jpg",
+                            "alt": "Un técnico inspecciona un componente industrial en un centro de reacondicionamiento circular de equipos."
                         }
                     ],
                     "finalCta": {
@@ -3105,12 +3525,12 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "news-havstjerne-carbon-storage.jpg",
-                            "alt": "SLB employee in orange coveralls stands on an offshore platform facing the sea."
+                            "filename": "insights-energy-research-roundtable-hero.jpg",
+                            "alt": "Engineers review an integrated energy model during a technical workshop."
                         },
                         {
-                            "filename": "news-artificial-lift-technologies.jpg",
-                            "alt": "Two SLB field specialists review work beside pumpjacks."
+                            "filename": "decarbonization-inventory-aerial-survey.jpg",
+                            "alt": "An aerial methane survey is underway above an industrial processing facility."
                         }
                     ],
                     "finalCta": {
@@ -3172,12 +3592,12 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "news-havstjerne-carbon-storage.jpg",
-                            "alt": "Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar."
+                            "filename": "insights-energy-research-roundtable-hero.jpg",
+                            "alt": "Ingenieros revisan un modelo energético integrado durante un taller técnico."
                         },
                         {
-                            "filename": "news-artificial-lift-technologies.jpg",
-                            "alt": "Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo."
+                            "filename": "decarbonization-inventory-aerial-survey.jpg",
+                            "alt": "Se realiza un levantamiento aéreo de metano sobre una instalación de procesamiento industrial."
                         }
                     ],
                     "finalCta": {
@@ -3270,8 +3690,12 @@
                             "alt": "Tela AI search interface on a dark-blue digital screen."
                         },
                         {
-                            "filename": "sustainability-field-employee.jpg",
-                            "alt": "SLB field employee in safety glasses and a white hard hat at sunset."
+                            "filename": "insight-decarbonization-control-room-hero.jpg",
+                            "alt": "An analyst reviews emissions performance in an industrial operations center."
+                        },
+                        {
+                            "filename": "solutions-laboratory-innovation.jpg",
+                            "alt": "SLB engineer holds a laboratory flask between columns of material samples."
                         }
                     ]
                 },
@@ -3335,8 +3759,12 @@
                             "alt": "Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro."
                         },
                         {
-                            "filename": "sustainability-field-employee.jpg",
-                            "alt": "Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer."
+                            "filename": "insight-decarbonization-control-room-hero.jpg",
+                            "alt": "Un analista revisa el desempeño de emisiones en un centro de operaciones industriales."
+                        },
+                        {
+                            "filename": "solutions-laboratory-innovation.jpg",
+                            "alt": "Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales."
                         }
                     ]
                 }
@@ -3429,12 +3857,24 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "digital-data-context.jpg",
+                            "alt": "A data engineer and domain expert compare a digital asset model with real equipment."
+                        },
+                        {
                             "filename": "products-lumi-platform.jpg",
                             "alt": "Lumi data and AI platform interface."
                         },
                         {
-                            "filename": "about-innovation-factori.jpg",
-                            "alt": "Colleagues collaborate in an Innovation Factori workspace."
+                            "filename": "contact-technical-consultation.jpg",
+                            "alt": "An engineer discusses a technical equipment model with a customer."
+                        },
+                        {
+                            "filename": "digital-workflow-automation.jpg",
+                            "alt": "An operations specialist reviews an automated workflow connected to field execution."
+                        },
+                        {
+                            "filename": "global-presence-regional-technology-center.jpg",
+                            "alt": "Engineers collaborate inside a regional technology center."
                         }
                     ]
                 },
@@ -3506,12 +3946,24 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "digital-data-context.jpg",
+                            "alt": "Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real."
+                        },
+                        {
                             "filename": "products-lumi-platform.jpg",
                             "alt": "Interfaz de la plataforma de datos e IA Lumi."
                         },
                         {
-                            "filename": "about-innovation-factori.jpg",
-                            "alt": "Un grupo de colegas colabora en un espacio de Innovation Factori."
+                            "filename": "contact-technical-consultation.jpg",
+                            "alt": "Un ingeniero analiza un modelo técnico de equipo con una clienta."
+                        },
+                        {
+                            "filename": "digital-workflow-automation.jpg",
+                            "alt": "Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo."
+                        },
+                        {
+                            "filename": "global-presence-regional-technology-center.jpg",
+                            "alt": "Ingenieros colaboran dentro de un centro tecnológico regional."
                         }
                     ]
                 }
@@ -3604,8 +4056,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "home-decarbonizing-industry.jpg",
-                            "alt": "SLB operator crosses the glass-lined atrium of a technology facility."
+                            "filename": "insight-decarbonization-baseline-workshop.jpg",
+                            "alt": "Operations and sustainability specialists establish an emissions baseline."
+                        },
+                        {
+                            "filename": "insight-decarbonization-intervention-planning.jpg",
+                            "alt": "Engineers plan the sequence of emissions interventions beside operating equipment."
+                        },
+                        {
+                            "filename": "insight-decarbonization-evidence-review.jpg",
+                            "alt": "An analyst reviews field evidence used to verify emissions improvements."
+                        },
+                        {
+                            "filename": "insight-decarbonization-control-room-hero.jpg",
+                            "alt": "An analyst reviews emissions performance in an industrial operations center."
                         }
                     ]
                 },
@@ -3677,8 +4141,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "home-decarbonizing-industry.jpg",
-                            "alt": "Un operador de SLB cruza el atrio acristalado de un centro tecnológico."
+                            "filename": "insight-decarbonization-baseline-workshop.jpg",
+                            "alt": "Especialistas de operaciones y sostenibilidad establecen una línea base de emisiones."
+                        },
+                        {
+                            "filename": "insight-decarbonization-intervention-planning.jpg",
+                            "alt": "Ingenieros planifican la secuencia de intervenciones de emisiones junto a equipos en operación."
+                        },
+                        {
+                            "filename": "insight-decarbonization-evidence-review.jpg",
+                            "alt": "Una analista revisa la evidencia de campo utilizada para verificar mejoras de emisiones."
+                        },
+                        {
+                            "filename": "insight-decarbonization-control-room-hero.jpg",
+                            "alt": "Un analista revisa el desempeño de emisiones en un centro de operaciones industriales."
                         }
                     ]
                 }
@@ -3693,10 +4169,7 @@
                 "es-MX": "/es-mx/sala-de-prensa"
             },
             "relatedPageRoutes": {
-                "en": [
-                    "/news-and-insights",
-                    "/news-and-insights/insights"
-                ],
+                "en": ["/news-and-insights", "/news-and-insights/insights"],
                 "es-MX": [
                     "/es-mx/noticias-y-analisis",
                     "/es-mx/noticias-y-analisis/analisis"
@@ -3771,12 +4244,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "news-havstjerne-carbon-storage.jpg",
-                            "alt": "SLB employee in orange coveralls stands on an offshore platform facing the sea."
+                            "filename": "newsroom-global-energy-network-hero.jpg",
+                            "alt": "A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour."
                         },
                         {
-                            "filename": "news-artificial-lift-technologies.jpg",
-                            "alt": "Two SLB field specialists review work beside pumpjacks."
+                            "filename": "about-innovation-factori.jpg",
+                            "alt": "Colleagues collaborate in an Innovation Factori workspace."
+                        },
+                        {
+                            "filename": "new-energy-offshore-wind.jpg",
+                            "alt": "Technicians commission an offshore wind substation above a calm sea."
+                        },
+                        {
+                            "filename": "contact-media-briefing.jpg",
+                            "alt": "A spokesperson answers questions during a company media briefing."
                         }
                     ]
                 },
@@ -3849,12 +4330,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "news-havstjerne-carbon-storage.jpg",
-                            "alt": "Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar."
+                            "filename": "newsroom-global-energy-network-hero.jpg",
+                            "alt": "Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer."
                         },
                         {
-                            "filename": "news-artificial-lift-technologies.jpg",
-                            "alt": "Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo."
+                            "filename": "about-innovation-factori.jpg",
+                            "alt": "Un grupo de colegas colabora en un espacio de Innovation Factori."
+                        },
+                        {
+                            "filename": "new-energy-offshore-wind.jpg",
+                            "alt": "Técnicos ponen en servicio una subestación eólica marina sobre un mar en calma."
+                        },
+                        {
+                            "filename": "contact-media-briefing.jpg",
+                            "alt": "Un portavoz responde preguntas durante una sesión informativa para medios."
                         }
                     ]
                 }
@@ -3966,12 +4455,28 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "about-innovation-factori.jpg",
-                            "alt": "Colleagues collaborate in an Innovation Factori workspace."
+                            "filename": "solutions-laboratory-innovation.jpg",
+                            "alt": "SLB engineer holds a laboratory flask between columns of material samples."
                         },
                         {
-                            "filename": "about-global-presence.jpg",
-                            "alt": "SLB engineer walks between large industrial pipes at an operations site."
+                            "filename": "home-collaborative-workplace.jpg",
+                            "alt": "Colleagues meet in a spacious modern SLB workplace."
+                        },
+                        {
+                            "filename": "home-precision-engineering.jpg",
+                            "alt": "SLB technician inspects a circular piece of precision industrial equipment."
+                        },
+                        {
+                            "filename": "solutions-manufacturing-expertise.jpg",
+                            "alt": "Engineer examines equipment in an SLB manufacturing facility."
+                        },
+                        {
+                            "filename": "global-presence-local-field-briefing.jpg",
+                            "alt": "A local engineering team reviews field conditions in a high-desert energy region."
+                        },
+                        {
+                            "filename": "about-innovation-factori.jpg",
+                            "alt": "Colleagues collaborate in an Innovation Factori workspace."
                         }
                     ],
                     "finalCta": {
@@ -4066,12 +4571,28 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "about-innovation-factori.jpg",
-                            "alt": "Un grupo de colegas colabora en un espacio de Innovation Factori."
+                            "filename": "solutions-laboratory-innovation.jpg",
+                            "alt": "Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales."
                         },
                         {
-                            "filename": "about-global-presence.jpg",
-                            "alt": "Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones."
+                            "filename": "home-collaborative-workplace.jpg",
+                            "alt": "Un grupo de colegas se reúne en un espacio de trabajo moderno y amplio de SLB."
+                        },
+                        {
+                            "filename": "home-precision-engineering.jpg",
+                            "alt": "Un técnico de SLB inspecciona un equipo industrial circular de alta precisión."
+                        },
+                        {
+                            "filename": "solutions-manufacturing-expertise.jpg",
+                            "alt": "Un ingeniero examina un equipo en una planta de manufactura de SLB."
+                        },
+                        {
+                            "filename": "global-presence-local-field-briefing.jpg",
+                            "alt": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de alta montaña y desierto."
+                        },
+                        {
+                            "filename": "about-innovation-factori.jpg",
+                            "alt": "Un grupo de colegas colabora en un espacio de Innovation Factori."
                         }
                     ],
                     "finalCta": {
@@ -4092,10 +4613,7 @@
                 "es-MX": "/es-mx/quienes-somos/tecnologia-e-innovacion"
             },
             "relatedPageRoutes": {
-                "en": [
-                    "/products-and-services",
-                    "/news-and-insights/insights"
-                ],
+                "en": ["/products-and-services", "/news-and-insights/insights"],
                 "es-MX": [
                     "/es-mx/productos-y-servicios",
                     "/es-mx/noticias-y-analisis/analisis"
@@ -4168,8 +4686,16 @@
                             "alt": "SLB engineer holds a laboratory flask between columns of material samples."
                         },
                         {
-                            "filename": "products-test-facility.jpg",
-                            "alt": "SLB technician operates a test system in a bright manufacturing facility."
+                            "filename": "ccus-core-characterization-lab.jpg",
+                            "alt": "A scientist examines a rock core during carbon storage site characterization."
+                        },
+                        {
+                            "filename": "about-technology-center-team.jpg",
+                            "alt": "Two SLB engineers pose between test fixtures in a technology center."
+                        },
+                        {
+                            "filename": "insights-energy-research-roundtable-hero.jpg",
+                            "alt": "Engineers review an integrated energy model during a technical workshop."
                         }
                     ],
                     "finalCta": {
@@ -4245,8 +4771,16 @@
                             "alt": "Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales."
                         },
                         {
-                            "filename": "products-test-facility.jpg",
-                            "alt": "Un técnico de SLB opera un sistema de pruebas en una luminosa planta de manufactura."
+                            "filename": "ccus-core-characterization-lab.jpg",
+                            "alt": "Una científica examina un núcleo de roca durante la caracterización de un sitio de almacenamiento de carbono."
+                        },
+                        {
+                            "filename": "about-technology-center-team.jpg",
+                            "alt": "Dos ingenieros de SLB posan entre equipos de prueba en un centro tecnológico."
+                        },
+                        {
+                            "filename": "insights-energy-research-roundtable-hero.jpg",
+                            "alt": "Ingenieros revisan un modelo energético integrado durante un taller técnico."
                         }
                     ],
                     "finalCta": {
@@ -4267,10 +4801,7 @@
                 "es-MX": "/es-mx/quienes-somos/personas-y-cultura"
             },
             "relatedPageRoutes": {
-                "en": [
-                    "/sustainability/people-and-communities",
-                    "/about-us"
-                ],
+                "en": ["/sustainability/people-and-communities", "/about-us"],
                 "es-MX": [
                     "/es-mx/sostenibilidad/personas-y-comunidades",
                     "/es-mx/quienes-somos"
@@ -4339,12 +4870,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "about-technology-center-team.jpg",
-                            "alt": "Two SLB engineers pose between test fixtures in a technology center."
+                            "filename": "people-field-safety-training.jpg",
+                            "alt": "An instructor guides an employee through hands-on field safety training."
                         },
                         {
-                            "filename": "sustainability-our-people.jpg",
-                            "alt": "Two SLB employees in blue coveralls walk across a field site at sunrise."
+                            "filename": "people-inclusive-engineering-team.jpg",
+                            "alt": "A multidisciplinary engineering team meets during an operational shift handover."
+                        },
+                        {
+                            "filename": "insights-energy-research-roundtable-hero.jpg",
+                            "alt": "Engineers review an integrated energy model during a technical workshop."
+                        },
+                        {
+                            "filename": "global-presence-local-field-briefing.jpg",
+                            "alt": "A local engineering team reviews field conditions in a high-desert energy region."
                         }
                     ],
                     "finalCta": {
@@ -4416,12 +4955,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "about-technology-center-team.jpg",
-                            "alt": "Dos ingenieros de SLB posan entre equipos de prueba en un centro tecnológico."
+                            "filename": "people-field-safety-training.jpg",
+                            "alt": "Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo."
                         },
                         {
-                            "filename": "sustainability-our-people.jpg",
-                            "alt": "Dos empleados de SLB con overoles azules caminan por un sitio de operaciones al amanecer."
+                            "filename": "people-inclusive-engineering-team.jpg",
+                            "alt": "Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo."
+                        },
+                        {
+                            "filename": "insights-energy-research-roundtable-hero.jpg",
+                            "alt": "Ingenieros revisan un modelo energético integrado durante un taller técnico."
+                        },
+                        {
+                            "filename": "global-presence-local-field-briefing.jpg",
+                            "alt": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de alta montaña y desierto."
                         }
                     ],
                     "finalCta": {
@@ -4442,10 +4989,7 @@
                 "es-MX": "/es-mx/quienes-somos/presencia-global"
             },
             "relatedPageRoutes": {
-                "en": [
-                    "/about-us",
-                    "/sustainability/people-and-communities"
-                ],
+                "en": ["/about-us", "/sustainability/people-and-communities"],
                 "es-MX": [
                     "/es-mx/quienes-somos",
                     "/es-mx/sostenibilidad/personas-y-comunidades"
@@ -4511,6 +5055,14 @@
                         }
                     ],
                     "supportingImages": [
+                        {
+                            "filename": "sustainability-iceland-road.jpg",
+                            "alt": "Road crossing a snow-covered Icelandic landscape."
+                        },
+                        {
+                            "filename": "global-presence-regional-technology-center.jpg",
+                            "alt": "Engineers collaborate inside a regional technology center."
+                        },
                         {
                             "filename": "solutions-local-expertise.jpg",
                             "alt": "SLB engineer in blue coveralls stands on a bridge with a city behind her."
@@ -4583,6 +5135,14 @@
                     ],
                     "supportingImages": [
                         {
+                            "filename": "sustainability-iceland-road.jpg",
+                            "alt": "Una carretera atraviesa un paisaje nevado de Islandia."
+                        },
+                        {
+                            "filename": "global-presence-regional-technology-center.jpg",
+                            "alt": "Ingenieros colaboran dentro de un centro tecnológico regional."
+                        },
+                        {
                             "filename": "solutions-local-expertise.jpg",
                             "alt": "Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo."
                         }
@@ -4606,16 +5166,10 @@
             },
             "routeAliases": {
                 "en": [],
-                "es-MX": [
-                    "/es-mx/contact-us"
-                ]
+                "es-MX": ["/es-mx/contact-us"]
             },
             "relatedPageRoutes": {
-                "en": [
-                    "/solutions",
-                    "/products-and-services",
-                    "/newsroom"
-                ],
+                "en": ["/solutions", "/products-and-services", "/newsroom"],
                 "es-MX": [
                     "/es-mx/soluciones",
                     "/es-mx/productos-y-servicios",
@@ -4684,8 +5238,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "home-collaborative-workplace.jpg",
-                            "alt": "Colleagues meet in a spacious modern SLB workplace."
+                            "filename": "contact-technical-consultation.jpg",
+                            "alt": "An engineer discusses a technical equipment model with a customer."
+                        },
+                        {
+                            "filename": "contact-products-specialist.jpg",
+                            "alt": "A product specialist explains an energy-system visualization during a remote consultation."
+                        },
+                        {
+                            "filename": "contact-media-briefing.jpg",
+                            "alt": "A spokesperson answers questions during a company media briefing."
+                        },
+                        {
+                            "filename": "global-presence-local-field-briefing.jpg",
+                            "alt": "A local engineering team reviews field conditions in a high-desert energy region."
                         }
                     ],
                     "finalCta": {
@@ -4756,8 +5322,20 @@
                     ],
                     "supportingImages": [
                         {
-                            "filename": "home-collaborative-workplace.jpg",
-                            "alt": "Un grupo de colegas se reúne en un espacio de trabajo moderno y amplio de SLB."
+                            "filename": "contact-technical-consultation.jpg",
+                            "alt": "Un ingeniero analiza un modelo técnico de equipo con una clienta."
+                        },
+                        {
+                            "filename": "contact-products-specialist.jpg",
+                            "alt": "Un especialista de producto explica una visualización del sistema energético durante una consulta remota."
+                        },
+                        {
+                            "filename": "contact-media-briefing.jpg",
+                            "alt": "Un portavoz responde preguntas durante una sesión informativa para medios."
+                        },
+                        {
+                            "filename": "global-presence-local-field-briefing.jpg",
+                            "alt": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de alta montaña y desierto."
                         }
                     ],
                     "finalCta": {

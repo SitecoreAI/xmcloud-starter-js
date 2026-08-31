@@ -1,448 +1,1094 @@
 {
-  "schema_version": "1.0",
-  "generated_at": "2026-08-30",
-  "asset_count": 26,
-  "assets": [
-    {
-      "filename": "home-energy-infrastructure.jpg",
-      "title": "SLB - Home - Energy infrastructure",
-      "alt_en": "View looking up between four white industrial storage vessels as two SLB operators climb the structures.",
-      "alt_es_mx": "Vista ascendente entre cuatro depósitos industriales blancos mientras dos operadores de SLB ascienden por las estructuras.",
-      "lifecycle": "evergreen",
-      "placement": "Home - split hero",
-      "source_page_url": "https://www.slb.com/",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/decarbonizing-industry/sfop-decarbonizing-industry-hero2.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1416,
-        "height": 1140
-      },
-      "sha256": "505377a1d6a51d59d291af08587ffa407f5397adeb28a7e22fdaf834315bd065",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "home-precision-engineering.jpg",
-      "title": "SLB - Home - Precision engineering",
-      "alt_en": "SLB technician inspects a circular piece of precision industrial equipment.",
-      "alt_es_mx": "Un técnico de SLB inspecciona un equipo industrial circular de alta precisión.",
-      "lifecycle": "evergreen",
-      "placement": "Home - innovation pillar",
-      "source_page_url": "https://www.slb.com/",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/innovating-in-oil-and-gas/innovating-oil-gas-card.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1130,
-        "height": 730
-      },
-      "sha256": "79b29ae0b597ca6e5b593977e135597f5538deacc9d09a894d5f5742bb7f981e",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "home-digital-at-scale.jpg",
-      "title": "SLB - Home - Digital at scale",
-      "alt_en": "Presenter explains a digital subsurface visualization to an audience.",
-      "alt_es_mx": "Una presentadora explica una visualización digital del subsuelo a un grupo de asistentes.",
-      "lifecycle": "evergreen",
-      "placement": "Home - digital pillar",
-      "source_page_url": "https://www.slb.com/",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/delivering-digital-at-scale/delivering-digital-card.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1130,
-        "height": 730
-      },
-      "sha256": "d7ce10639d151c4c65f2c65add94c7193fcbac22de99cba38c05079a506d85f1",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "home-decarbonizing-industry.jpg",
-      "title": "SLB - Home - Decarbonizing industry",
-      "alt_en": "SLB operator crosses the glass-lined atrium of a technology facility.",
-      "alt_es_mx": "Un operador de SLB cruza el atrio acristalado de un centro tecnológico.",
-      "lifecycle": "evergreen",
-      "placement": "Home - decarbonization pillar",
-      "source_page_url": "https://www.slb.com/",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/decarbonizing-industry/decarbonizing-industry-card1.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1130,
-        "height": 730
-      },
-      "sha256": "2c55dc3ced53f908b696f2bc05ef2ba5b444b2c7a3fb3ace9437b72dbe448082",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "home-scaling-new-energy.jpg",
-      "title": "SLB - Home - Scaling new energy",
-      "alt_en": "Geothermal power plant in a green mountain landscape.",
-      "alt_es_mx": "Planta de energía geotérmica en un paisaje montañoso y verde.",
-      "lifecycle": "evergreen",
-      "placement": "Home - new energy pillar",
-      "source_page_url": "https://www.slb.com/",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/scaling-new-energy-systems/scaling-new-energy-card1.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1130,
-        "height": 730
-      },
-      "sha256": "6f21246c8b59c66e5b56fe87cd33743767272f6799effad261dc1f84eed5412a",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "home-collaborative-workplace.jpg",
-      "title": "SLB - Home - Collaborative workplace",
-      "alt_en": "Colleagues meet in a spacious modern SLB workplace.",
-      "alt_es_mx": "Un grupo de colegas se reúne en un espacio de trabajo moderno y amplio de SLB.",
-      "lifecycle": "evergreen",
-      "placement": "Home - people and company feature",
-      "source_page_url": "https://www.slb.com/",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/slb-solutions/home-careers-combo-bleed.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1100,
-        "height": 900
-      },
-      "sha256": "31fa5cdf924ee9ab74612f74e4a4b7c5144c6420075822a537dd9fbcb99e1e33",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "solutions-laboratory-innovation.jpg",
-      "title": "SLB - Solutions - Laboratory innovation",
-      "alt_en": "SLB engineer holds a laboratory flask between columns of material samples.",
-      "alt_es_mx": "Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales.",
-      "lifecycle": "evergreen",
-      "placement": "Solutions - landing hero",
-      "source_page_url": "https://www.slb.com/solutions",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/slb-solutions/slb-solutions-full-hero.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 2000,
-        "height": 967
-      },
-      "sha256": "829b600382993c97a3d666a8337ba9bbc6555d8bc8419dc9f682120aa3295b13",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "solutions-manufacturing-expertise.jpg",
-      "title": "SLB - Solutions - Manufacturing expertise",
-      "alt_en": "Engineer examines equipment in an SLB manufacturing facility.",
-      "alt_es_mx": "Un ingeniero examina un equipo en una planta de manufactura de SLB.",
-      "lifecycle": "evergreen",
-      "placement": "Solutions - integrated solutions feature",
-      "source_page_url": "https://www.slb.com/solutions",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/slb-solutions/slb-solutions-challenge-combo.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1140,
-        "height": 729
-      },
-      "sha256": "fcaef46d8067c7da6856c7b19bd8e5e05ec6df9208d4c46638667896e47d0ebf",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "solutions-local-expertise.jpg",
-      "title": "SLB - Solutions - Local expertise",
-      "alt_en": "SLB engineer in blue coveralls stands on a bridge with a city behind her.",
-      "alt_es_mx": "Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo.",
-      "lifecycle": "evergreen",
-      "placement": "Solutions - global expertise feature",
-      "source_page_url": "https://www.slb.com/solutions",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/slb-solutions/solutions-local-country-dynamic-5050.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1920,
-        "height": 1259
-      },
-      "sha256": "6c563e24245cf38622956b4c7d31dcf4522cdc549a4bc90c2dc018facf66156c",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "products-test-facility.jpg",
-      "title": "SLB - Products and services - Test facility",
-      "alt_en": "SLB technician operates a test system in a bright manufacturing facility.",
-      "alt_es_mx": "Un técnico de SLB opera un sistema de pruebas en una luminosa planta de manufactura.",
-      "lifecycle": "evergreen",
-      "placement": "Products and services - landing hero",
-      "source_page_url": "https://www.slb.com/products-and-services",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/products-and-services/products-services-landing-hero.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 2440,
-        "height": 1180
-      },
-      "sha256": "c753f5413dced8b53e99195da36e356c56b6a15a2f7ccc014c64a0ca5393174e",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "products-tela-ai.jpg",
-      "title": "SLB - Products - Tela AI",
-      "alt_en": "Tela AI search interface on a dark-blue digital screen.",
-      "alt_es_mx": "Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro.",
-      "lifecycle": "evergreen",
-      "placement": "Products and services - digital and AI card",
-      "source_page_url": "https://www.slb.com/products-and-services",
-      "source_asset_url": "https://www.slb.com/-/media/images/di/tela/tela-brand-card.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1130,
-        "height": 730
-      },
-      "sha256": "d2e551311de381925a7e4757f0617ce3fb3b98dfa9a2c7523962fa07b78bb1d1",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "products-intelligent-power-management.jpg",
-      "title": "SLB - Products - Intelligent power management",
-      "alt_en": "Branded rendering of a land rig with a footprint reduction icon.",
-      "alt_es_mx": "Representación de un equipo de perforación terrestre con un icono de reducción de superficie.",
-      "lifecycle": "evergreen",
-      "placement": "Products and services - drilling efficiency card",
-      "source_page_url": "https://www.slb.com/products-and-services",
-      "source_asset_url": "https://www.slb.com/-/media/images/dr/intelligent-power-management/intelligent-power-management-card.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1130,
-        "height": 730
-      },
-      "sha256": "708ffa4f37212ce9ae503e080d2a2efa36e7f03897ef616f7de06272620583bc",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "products-lumi-platform.jpg",
-      "title": "SLB - Products - Lumi platform",
-      "alt_en": "Lumi data and AI platform interface.",
-      "alt_es_mx": "Interfaz de la plataforma de datos e IA Lumi.",
-      "lifecycle": "evergreen",
-      "placement": "Products and services - data platform card",
-      "source_page_url": "https://www.slb.com/products-and-services",
-      "source_asset_url": "https://www.slb.com/-/media/images/di/daip/data-and-ai-platform_card.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1130,
-        "height": 730
-      },
-      "sha256": "5e611e7c3b04899d36969b3925adecbfb0ed5946fc56ce52ca3c6b9e62cd4f33",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "products-reda-agile-esp.jpg",
-      "title": "SLB - Products - Reda Agile ESP",
-      "alt_en": "Three-dimensional rendering of the Reda Agile ESP system.",
-      "alt_es_mx": "Representación tridimensional del sistema ESP Reda Agile.",
-      "lifecycle": "evergreen",
-      "placement": "Products and services - production technology card",
-      "source_page_url": "https://www.slb.com/products-and-services",
-      "source_asset_url": "https://www.slb.com/-/media/images/al/electric-submersible-pumps/agile-esp-system-card.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1130,
-        "height": 730
-      },
-      "sha256": "3a6855e633438454d65e78b57a992661f4547fd2df3e8754291175b8c76f525c",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "sustainability-climate-action.jpg",
-      "title": "SLB - Sustainability - Climate action",
-      "alt_en": "Two people walk along a boardwalk through a restored natural landscape.",
-      "alt_es_mx": "Dos personas caminan por una pasarela en un paisaje natural restaurado.",
-      "lifecycle": "evergreen",
-      "placement": "Sustainability - climate action hero",
-      "source_page_url": "https://www.slb.com/sustainability/climate-action",
-      "source_asset_url": "https://www.slb.com/-/media/images/sustainability/climate-action-imagery/climate-action-hero3.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1416,
-        "height": 1140
-      },
-      "sha256": "1085f134a863b97fc6e198621ad3cabd49397faf099c4e9a7dad9c9e6a0eb55f",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "sustainability-iceland-road.jpg",
-      "title": "SLB - Sustainability - Iceland road",
-      "alt_en": "Road crossing a snow-covered Icelandic landscape.",
-      "alt_es_mx": "Una carretera atraviesa un paisaje nevado de Islandia.",
-      "lifecycle": "evergreen",
-      "placement": "Sustainability - climate action feature",
-      "source_page_url": "https://www.slb.com/sustainability/climate-action",
-      "source_asset_url": "https://www.slb.com/-/media/images/sustainability/climate-action-imagery/climate-action-combo-2.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1416,
-        "height": 1140
-      },
-      "sha256": "38155b8be27ea56f22f1011333998d7d44887d315e6bfd7d4c3959a315bc3ea7",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "sustainability-our-people.jpg",
-      "title": "SLB - Sustainability - Our people",
-      "alt_en": "Two SLB employees in blue coveralls walk across a field site at sunrise.",
-      "alt_es_mx": "Dos empleados de SLB con overoles azules caminan por un sitio de operaciones al amanecer.",
-      "lifecycle": "evergreen",
-      "placement": "Sustainability - people page hero",
-      "source_page_url": "https://www.slb.com/sustainability/people",
-      "source_asset_url": "https://www.slb.com/-/media/images/sustainability/people-imagery/people-hero-new.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1416,
-        "height": 1362
-      },
-      "sha256": "56181dee1f980528fb2b1a2acd098926dea5f075f0ac2927acc24c8a3ab66759",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "sustainability-nature.jpg",
-      "title": "SLB - Sustainability - Nature",
-      "alt_en": "Turquoise lake and open plain beneath snowcapped mountains.",
-      "alt_es_mx": "Lago turquesa y llanura abierta bajo montañas nevadas.",
-      "lifecycle": "evergreen",
-      "placement": "Sustainability - nature page hero",
-      "source_page_url": "https://www.slb.com/sustainability/nature",
-      "source_asset_url": "https://www.slb.com/-/media/images/sustainability/nature-imagery/nature-hero-new.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1416,
-        "height": 1140
-      },
-      "sha256": "2fa8c6883b8e8a9d2d64ba14b2a2e2145e40134f4ba426df4025724faaf4b97e",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "sustainability-field-employee.jpg",
-      "title": "SLB - Sustainability - Field employee",
-      "alt_en": "SLB field employee in safety glasses and a white hard hat at sunset.",
-      "alt_es_mx": "Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer.",
-      "lifecycle": "current-editorial-2026",
-      "placement": "Sustainability - report and story feature",
-      "source_page_url": "https://www.slb.com/newsroom/updates/2026/update-2026-0312-sustainability-report",
-      "source_asset_url": "https://www.slb.com/-/media/images/newsroom/updates/sustainability-report-hero.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 2832,
-        "height": 2280
-      },
-      "sha256": "202510d03e1f5f1e793a26ca9154b6ac785c58ce4e0f79a1e310312a8ea46c0d",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "news-havstjerne-carbon-storage.jpg",
-      "title": "SLB - News - Havstjerne carbon storage",
-      "alt_en": "SLB employee in orange coveralls stands on an offshore platform facing the sea.",
-      "alt_es_mx": "Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar.",
-      "lifecycle": "current-editorial-2026",
-      "placement": "News and insights - lead story",
-      "source_page_url": "https://www.slb.com/newsroom/press-release/2026/2026-0825-slb-havstjerne-carbon-storage",
-      "source_asset_url": "https://www.slb.com/-/media/images/newsroom/press-release/2026-0825-slb-havstjerne-hero.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1416,
-        "height": 1140
-      },
-      "sha256": "ad289178418cde7a9f4546abb6d1921319d5847bac046913d83c52b213322b9c",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "news-shreveport-infrastructure.jpg",
-      "title": "SLB - News - Shreveport infrastructure",
-      "alt_en": "SLB employees work around a forklift inside the Shreveport manufacturing facility.",
-      "alt_es_mx": "Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport.",
-      "lifecycle": "current-editorial-2026",
-      "placement": "News and insights - infrastructure feature",
-      "source_page_url": "https://www.slb.com/newsroom/features/2026/2026-0827-slb-shreveport-data-center",
-      "source_asset_url": "https://www.slb.com/-/media/images/newsroom/features/2026-0827-shreveport-data-center.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1416,
-        "height": 1140
-      },
-      "sha256": "b84ecc485dac10a9a8dd3ffa014419acfb997235e26acf699a3fedb80fa1155c",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "news-artificial-lift-technologies.jpg",
-      "title": "SLB - News - Artificial lift technologies",
-      "alt_en": "Two SLB field specialists review work beside pumpjacks.",
-      "alt_es_mx": "Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo.",
-      "lifecycle": "current-editorial-2026",
-      "placement": "News and insights - technology update",
-      "source_page_url": "https://www.slb.com/newsroom/updates/2026/2026-0825-slb-artificial-lift-launches",
-      "source_asset_url": "https://www.slb.com/-/media/images/newsroom/updates/2026-0825-deka-synthetix-hero.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1416,
-        "height": 1140
-      },
-      "sha256": "2aea7af3b62ea76a8eb5809bb38d7aec6c690771aec030a2857dda30e2ea9127",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "about-technology-center-team.jpg",
-      "title": "SLB - About - Technology center team",
-      "alt_en": "Two SLB engineers pose between test fixtures in a technology center.",
-      "alt_es_mx": "Dos ingenieros de SLB posan entre equipos de prueba en un centro tecnológico.",
-      "lifecycle": "evergreen",
-      "placement": "About us - who we are hero",
-      "source_page_url": "https://www.slb.com/about/who-we-are",
-      "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/about/who-we-are/who-we-are-hero.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 640,
-        "height": 427
-      },
-      "sha256": "da42775eb810a677d459a0d146cf2bbe9c19c600ba04eab5bc1c727adc60248f",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "about-innovation-factori.jpg",
-      "title": "SLB - About - Innovation Factori",
-      "alt_en": "Colleagues collaborate in an Innovation Factori workspace.",
-      "alt_es_mx": "Un grupo de colegas colabora en un espacio de Innovation Factori.",
-      "lifecycle": "evergreen",
-      "placement": "About us - technology and culture feature",
-      "source_page_url": "https://www.slb.com/about/who-we-are/our-technology",
-      "source_asset_url": "https://www.slb.com/-/media/images/about-us/who-we-are/our-tech-development/tech-development-innovation-factori-dynamic-combo.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1920,
-        "height": 1916
-      },
-      "sha256": "02a57bfa010ced028fcae22f5487a2ffb18e1434feaa2961fa2d5352f5da5360",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "about-global-presence.jpg",
-      "title": "SLB - About - Global presence",
-      "alt_en": "SLB engineer walks between large industrial pipes at an operations site.",
-      "alt_es_mx": "Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones.",
-      "lifecycle": "evergreen",
-      "placement": "About us - global presence feature",
-      "source_page_url": "https://www.slb.com/about/who-we-are",
-      "source_asset_url": "https://www.slb.com/-/media/images/about-us/global-footprint-hero.jpg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "width": 1416,
-        "height": 1140
-      },
-      "sha256": "ba823e5e2544c69badda22a48190134f806e4922f4337e20fbc0cffb4be8509e",
-      "mime_type": "image/jpeg"
-    },
-    {
-      "filename": "slb-logo-positive-blue.svg",
-      "title": "SLB - Positive blue logo",
-      "alt_en": "SLB",
-      "alt_es_mx": "SLB",
-      "lifecycle": "evergreen",
-      "placement": "Global - header, footer, and metadata",
-      "source_page_url": "https://www.slb.com/",
-      "source_asset_url": "https://www.slb.com/-/media/images/logo/SLB_Logo_Positive_RGB_TM.svg",
-      "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
-      "dimensions": {
-        "view_box": "0 0 1000 600"
-      },
-      "sha256": "50bebaed88f73ded790050b85a9b9390ede63da11b5a3989eee2e7430700b19a",
-      "mime_type": "image/svg+xml"
-    }
-  ]
+    "schema_version": "1.0",
+    "generated_at": "2026-08-30",
+    "asset_count": 64,
+    "assets": [
+        {
+            "filename": "home-energy-infrastructure.jpg",
+            "title": "SLB - Home - Energy infrastructure",
+            "alt_en": "View looking up between four white industrial storage vessels as two SLB operators climb the structures.",
+            "alt_es_mx": "Vista ascendente entre cuatro depósitos industriales blancos mientras dos operadores de SLB ascienden por las estructuras.",
+            "lifecycle": "evergreen",
+            "placement": "Home - split hero",
+            "source_page_url": "https://www.slb.com/",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/decarbonizing-industry/sfop-decarbonizing-industry-hero2.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1416,
+                "height": 1140
+            },
+            "sha256": "505377a1d6a51d59d291af08587ffa407f5397adeb28a7e22fdaf834315bd065",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "home-precision-engineering.jpg",
+            "title": "SLB - Home - Precision engineering",
+            "alt_en": "SLB technician inspects a circular piece of precision industrial equipment.",
+            "alt_es_mx": "Un técnico de SLB inspecciona un equipo industrial circular de alta precisión.",
+            "lifecycle": "evergreen",
+            "placement": "Home - innovation pillar",
+            "source_page_url": "https://www.slb.com/",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/innovating-in-oil-and-gas/innovating-oil-gas-card.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1130,
+                "height": 730
+            },
+            "sha256": "79b29ae0b597ca6e5b593977e135597f5538deacc9d09a894d5f5742bb7f981e",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "home-digital-at-scale.jpg",
+            "title": "SLB - Home - Digital at scale",
+            "alt_en": "Presenter explains a digital subsurface visualization to an audience.",
+            "alt_es_mx": "Una presentadora explica una visualización digital del subsuelo a un grupo de asistentes.",
+            "lifecycle": "evergreen",
+            "placement": "Home - digital pillar",
+            "source_page_url": "https://www.slb.com/",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/delivering-digital-at-scale/delivering-digital-card.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1130,
+                "height": 730
+            },
+            "sha256": "d7ce10639d151c4c65f2c65add94c7193fcbac22de99cba38c05079a506d85f1",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "home-decarbonizing-industry.jpg",
+            "title": "SLB - Home - Decarbonizing industry",
+            "alt_en": "SLB operator crosses the glass-lined atrium of a technology facility.",
+            "alt_es_mx": "Un operador de SLB cruza el atrio acristalado de un centro tecnológico.",
+            "lifecycle": "evergreen",
+            "placement": "Home - decarbonization pillar",
+            "source_page_url": "https://www.slb.com/",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/decarbonizing-industry/decarbonizing-industry-card1.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1130,
+                "height": 730
+            },
+            "sha256": "2c55dc3ced53f908b696f2bc05ef2ba5b444b2c7a3fb3ace9437b72dbe448082",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "home-scaling-new-energy.jpg",
+            "title": "SLB - Home - Scaling new energy",
+            "alt_en": "Geothermal power plant in a green mountain landscape.",
+            "alt_es_mx": "Planta de energía geotérmica en un paisaje montañoso y verde.",
+            "lifecycle": "evergreen",
+            "placement": "Home - new energy pillar",
+            "source_page_url": "https://www.slb.com/",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/driving-energy-innovation/scaling-new-energy-systems/scaling-new-energy-card1.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1130,
+                "height": 730
+            },
+            "sha256": "6f21246c8b59c66e5b56fe87cd33743767272f6799effad261dc1f84eed5412a",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "home-collaborative-workplace.jpg",
+            "title": "SLB - Home - Collaborative workplace",
+            "alt_en": "Colleagues meet in a spacious modern SLB workplace.",
+            "alt_es_mx": "Un grupo de colegas se reúne en un espacio de trabajo moderno y amplio de SLB.",
+            "lifecycle": "evergreen",
+            "placement": "Home - people and company feature",
+            "source_page_url": "https://www.slb.com/",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/slb-solutions/home-careers-combo-bleed.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1100,
+                "height": 900
+            },
+            "sha256": "31fa5cdf924ee9ab74612f74e4a4b7c5144c6420075822a537dd9fbcb99e1e33",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "solutions-laboratory-innovation.jpg",
+            "title": "SLB - Solutions - Laboratory innovation",
+            "alt_en": "SLB engineer holds a laboratory flask between columns of material samples.",
+            "alt_es_mx": "Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales.",
+            "lifecycle": "evergreen",
+            "placement": "Solutions - landing hero",
+            "source_page_url": "https://www.slb.com/solutions",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/slb-solutions/slb-solutions-full-hero.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 2000,
+                "height": 967
+            },
+            "sha256": "829b600382993c97a3d666a8337ba9bbc6555d8bc8419dc9f682120aa3295b13",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "solutions-manufacturing-expertise.jpg",
+            "title": "SLB - Solutions - Manufacturing expertise",
+            "alt_en": "Engineer examines equipment in an SLB manufacturing facility.",
+            "alt_es_mx": "Un ingeniero examina un equipo en una planta de manufactura de SLB.",
+            "lifecycle": "evergreen",
+            "placement": "Solutions - integrated solutions feature",
+            "source_page_url": "https://www.slb.com/solutions",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/slb-solutions/slb-solutions-challenge-combo.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1140,
+                "height": 729
+            },
+            "sha256": "fcaef46d8067c7da6856c7b19bd8e5e05ec6df9208d4c46638667896e47d0ebf",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "solutions-local-expertise.jpg",
+            "title": "SLB - Solutions - Local expertise",
+            "alt_en": "SLB engineer in blue coveralls stands on a bridge with a city behind her.",
+            "alt_es_mx": "Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo.",
+            "lifecycle": "evergreen",
+            "placement": "Solutions - global expertise feature",
+            "source_page_url": "https://www.slb.com/solutions",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/slb-solutions/solutions-local-country-dynamic-5050.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1920,
+                "height": 1259
+            },
+            "sha256": "6c563e24245cf38622956b4c7d31dcf4522cdc549a4bc90c2dc018facf66156c",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "products-test-facility.jpg",
+            "title": "SLB - Products and services - Test facility",
+            "alt_en": "SLB technician operates a test system in a bright manufacturing facility.",
+            "alt_es_mx": "Un técnico de SLB opera un sistema de pruebas en una luminosa planta de manufactura.",
+            "lifecycle": "evergreen",
+            "placement": "Products and services - landing hero",
+            "source_page_url": "https://www.slb.com/products-and-services",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/products-and-services/products-services-landing-hero.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 2440,
+                "height": 1180
+            },
+            "sha256": "c753f5413dced8b53e99195da36e356c56b6a15a2f7ccc014c64a0ca5393174e",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "products-tela-ai.jpg",
+            "title": "SLB - Products - Tela AI",
+            "alt_en": "Tela AI search interface on a dark-blue digital screen.",
+            "alt_es_mx": "Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro.",
+            "lifecycle": "evergreen",
+            "placement": "Products and services - digital and AI card",
+            "source_page_url": "https://www.slb.com/products-and-services",
+            "source_asset_url": "https://www.slb.com/-/media/images/di/tela/tela-brand-card.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1130,
+                "height": 730
+            },
+            "sha256": "d2e551311de381925a7e4757f0617ce3fb3b98dfa9a2c7523962fa07b78bb1d1",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "products-intelligent-power-management.jpg",
+            "title": "SLB - Products - Intelligent power management",
+            "alt_en": "Branded rendering of a land rig with a footprint reduction icon.",
+            "alt_es_mx": "Representación de un equipo de perforación terrestre con un icono de reducción de superficie.",
+            "lifecycle": "evergreen",
+            "placement": "Products and services - drilling efficiency card",
+            "source_page_url": "https://www.slb.com/products-and-services",
+            "source_asset_url": "https://www.slb.com/-/media/images/dr/intelligent-power-management/intelligent-power-management-card.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1130,
+                "height": 730
+            },
+            "sha256": "708ffa4f37212ce9ae503e080d2a2efa36e7f03897ef616f7de06272620583bc",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "products-lumi-platform.jpg",
+            "title": "SLB - Products - Lumi platform",
+            "alt_en": "Lumi data and AI platform interface.",
+            "alt_es_mx": "Interfaz de la plataforma de datos e IA Lumi.",
+            "lifecycle": "evergreen",
+            "placement": "Products and services - data platform card",
+            "source_page_url": "https://www.slb.com/products-and-services",
+            "source_asset_url": "https://www.slb.com/-/media/images/di/daip/data-and-ai-platform_card.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1130,
+                "height": 730
+            },
+            "sha256": "5e611e7c3b04899d36969b3925adecbfb0ed5946fc56ce52ca3c6b9e62cd4f33",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "products-reda-agile-esp.jpg",
+            "title": "SLB - Products - Reda Agile ESP",
+            "alt_en": "Three-dimensional rendering of the Reda Agile ESP system.",
+            "alt_es_mx": "Representación tridimensional del sistema ESP Reda Agile.",
+            "lifecycle": "evergreen",
+            "placement": "Products and services - production technology card",
+            "source_page_url": "https://www.slb.com/products-and-services",
+            "source_asset_url": "https://www.slb.com/-/media/images/al/electric-submersible-pumps/agile-esp-system-card.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1130,
+                "height": 730
+            },
+            "sha256": "3a6855e633438454d65e78b57a992661f4547fd2df3e8754291175b8c76f525c",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "sustainability-climate-action.jpg",
+            "title": "SLB - Sustainability - Climate action",
+            "alt_en": "Two people walk along a boardwalk through a restored natural landscape.",
+            "alt_es_mx": "Dos personas caminan por una pasarela en un paisaje natural restaurado.",
+            "lifecycle": "evergreen",
+            "placement": "Sustainability - climate action hero",
+            "source_page_url": "https://www.slb.com/sustainability/climate-action",
+            "source_asset_url": "https://www.slb.com/-/media/images/sustainability/climate-action-imagery/climate-action-hero3.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1416,
+                "height": 1140
+            },
+            "sha256": "1085f134a863b97fc6e198621ad3cabd49397faf099c4e9a7dad9c9e6a0eb55f",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "sustainability-iceland-road.jpg",
+            "title": "SLB - Sustainability - Iceland road",
+            "alt_en": "Road crossing a snow-covered Icelandic landscape.",
+            "alt_es_mx": "Una carretera atraviesa un paisaje nevado de Islandia.",
+            "lifecycle": "evergreen",
+            "placement": "Sustainability - climate action feature",
+            "source_page_url": "https://www.slb.com/sustainability/climate-action",
+            "source_asset_url": "https://www.slb.com/-/media/images/sustainability/climate-action-imagery/climate-action-combo-2.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1416,
+                "height": 1140
+            },
+            "sha256": "38155b8be27ea56f22f1011333998d7d44887d315e6bfd7d4c3959a315bc3ea7",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "sustainability-our-people.jpg",
+            "title": "SLB - Sustainability - Our people",
+            "alt_en": "Two SLB employees in blue coveralls walk across a field site at sunrise.",
+            "alt_es_mx": "Dos empleados de SLB con overoles azules caminan por un sitio de operaciones al amanecer.",
+            "lifecycle": "evergreen",
+            "placement": "Sustainability - people page hero",
+            "source_page_url": "https://www.slb.com/sustainability/people",
+            "source_asset_url": "https://www.slb.com/-/media/images/sustainability/people-imagery/people-hero-new.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1416,
+                "height": 1362
+            },
+            "sha256": "56181dee1f980528fb2b1a2acd098926dea5f075f0ac2927acc24c8a3ab66759",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "sustainability-nature.jpg",
+            "title": "SLB - Sustainability - Nature",
+            "alt_en": "Turquoise lake and open plain beneath snowcapped mountains.",
+            "alt_es_mx": "Lago turquesa y llanura abierta bajo montañas nevadas.",
+            "lifecycle": "evergreen",
+            "placement": "Sustainability - nature page hero",
+            "source_page_url": "https://www.slb.com/sustainability/nature",
+            "source_asset_url": "https://www.slb.com/-/media/images/sustainability/nature-imagery/nature-hero-new.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1416,
+                "height": 1140
+            },
+            "sha256": "2fa8c6883b8e8a9d2d64ba14b2a2e2145e40134f4ba426df4025724faaf4b97e",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "sustainability-field-employee.jpg",
+            "title": "SLB - Sustainability - Field employee",
+            "alt_en": "SLB field employee in safety glasses and a white hard hat at sunset.",
+            "alt_es_mx": "Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer.",
+            "lifecycle": "current-editorial-2026",
+            "placement": "Sustainability - report and story feature",
+            "source_page_url": "https://www.slb.com/newsroom/updates/2026/update-2026-0312-sustainability-report",
+            "source_asset_url": "https://www.slb.com/-/media/images/newsroom/updates/sustainability-report-hero.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 2832,
+                "height": 2280
+            },
+            "sha256": "202510d03e1f5f1e793a26ca9154b6ac785c58ce4e0f79a1e310312a8ea46c0d",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "news-havstjerne-carbon-storage.jpg",
+            "title": "SLB - News - Havstjerne carbon storage",
+            "alt_en": "SLB employee in orange coveralls stands on an offshore platform facing the sea.",
+            "alt_es_mx": "Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar.",
+            "lifecycle": "current-editorial-2026",
+            "placement": "News and insights - lead story",
+            "source_page_url": "https://www.slb.com/newsroom/press-release/2026/2026-0825-slb-havstjerne-carbon-storage",
+            "source_asset_url": "https://www.slb.com/-/media/images/newsroom/press-release/2026-0825-slb-havstjerne-hero.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1416,
+                "height": 1140
+            },
+            "sha256": "ad289178418cde7a9f4546abb6d1921319d5847bac046913d83c52b213322b9c",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "news-shreveport-infrastructure.jpg",
+            "title": "SLB - News - Shreveport infrastructure",
+            "alt_en": "SLB employees work around a forklift inside the Shreveport manufacturing facility.",
+            "alt_es_mx": "Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport.",
+            "lifecycle": "current-editorial-2026",
+            "placement": "News and insights - infrastructure feature",
+            "source_page_url": "https://www.slb.com/newsroom/features/2026/2026-0827-slb-shreveport-data-center",
+            "source_asset_url": "https://www.slb.com/-/media/images/newsroom/features/2026-0827-shreveport-data-center.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1416,
+                "height": 1140
+            },
+            "sha256": "b84ecc485dac10a9a8dd3ffa014419acfb997235e26acf699a3fedb80fa1155c",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "news-artificial-lift-technologies.jpg",
+            "title": "SLB - News - Artificial lift technologies",
+            "alt_en": "Two SLB field specialists review work beside pumpjacks.",
+            "alt_es_mx": "Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo.",
+            "lifecycle": "current-editorial-2026",
+            "placement": "News and insights - technology update",
+            "source_page_url": "https://www.slb.com/newsroom/updates/2026/2026-0825-slb-artificial-lift-launches",
+            "source_asset_url": "https://www.slb.com/-/media/images/newsroom/updates/2026-0825-deka-synthetix-hero.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1416,
+                "height": 1140
+            },
+            "sha256": "2aea7af3b62ea76a8eb5809bb38d7aec6c690771aec030a2857dda30e2ea9127",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "about-technology-center-team.jpg",
+            "title": "SLB - About - Technology center team",
+            "alt_en": "Two SLB engineers pose between test fixtures in a technology center.",
+            "alt_es_mx": "Dos ingenieros de SLB posan entre equipos de prueba en un centro tecnológico.",
+            "lifecycle": "evergreen",
+            "placement": "About us - who we are hero",
+            "source_page_url": "https://www.slb.com/about/who-we-are",
+            "source_asset_url": "https://www.slb.com/-/media/images/home-page-2022/about/who-we-are/who-we-are-hero.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 640,
+                "height": 427
+            },
+            "sha256": "da42775eb810a677d459a0d146cf2bbe9c19c600ba04eab5bc1c727adc60248f",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "about-innovation-factori.jpg",
+            "title": "SLB - About - Innovation Factori",
+            "alt_en": "Colleagues collaborate in an Innovation Factori workspace.",
+            "alt_es_mx": "Un grupo de colegas colabora en un espacio de Innovation Factori.",
+            "lifecycle": "evergreen",
+            "placement": "About us - technology and culture feature",
+            "source_page_url": "https://www.slb.com/about/who-we-are/our-technology",
+            "source_asset_url": "https://www.slb.com/-/media/images/about-us/who-we-are/our-tech-development/tech-development-innovation-factori-dynamic-combo.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1920,
+                "height": 1916
+            },
+            "sha256": "02a57bfa010ced028fcae22f5487a2ffb18e1434feaa2961fa2d5352f5da5360",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "about-global-presence.jpg",
+            "title": "SLB - About - Global presence",
+            "alt_en": "SLB engineer walks between large industrial pipes at an operations site.",
+            "alt_es_mx": "Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones.",
+            "lifecycle": "evergreen",
+            "placement": "About us - global presence feature",
+            "source_page_url": "https://www.slb.com/about/who-we-are",
+            "source_asset_url": "https://www.slb.com/-/media/images/about-us/global-footprint-hero.jpg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "width": 1416,
+                "height": 1140
+            },
+            "sha256": "ba823e5e2544c69badda22a48190134f806e4922f4337e20fbc0cffb4be8509e",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "slb-logo-positive-blue.svg",
+            "title": "SLB - Positive blue logo",
+            "alt_en": "SLB",
+            "alt_es_mx": "SLB",
+            "lifecycle": "evergreen",
+            "placement": "Global - header, footer, and metadata",
+            "source_page_url": "https://www.slb.com/",
+            "source_asset_url": "https://www.slb.com/-/media/images/logo/SLB_Logo_Positive_RGB_TM.svg",
+            "rights_note": "Official SLB public web asset, imported for the approved SLB Sitecore implementation on 2026-08-30. Original asset and source-page URLs retained in metadata.",
+            "dimensions": {
+                "view_box": "0 0 1000 600"
+            },
+            "sha256": "50bebaed88f73ded790050b85a9b9390ede63da11b5a3989eee2e7430700b19a",
+            "mime_type": "image/svg+xml"
+        },
+        {
+            "filename": "nature-biodiversity-field-survey.jpg",
+            "title": "SLB - Nature and responsible operations - Biodiversity",
+            "alt_en": "Field ecologists record biodiversity observations in native wetland habitat near an operating site.",
+            "alt_es_mx": "Ecólogos de campo registran observaciones de biodiversidad en un humedal nativo cerca de un sitio operativo.",
+            "lifecycle": "evergreen",
+            "placement": "Nature and responsible operations - Biodiversity",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/sustainability/nature-and-responsible-operations",
+            "source_asset_url": "generated://openai/exec-6450e4a9-d4eb-4454-9e4a-508830c3bce6.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "152b5280d8f7b9716579e4248d4d3a9087d4573df74385cdbeb2799f63013fa0",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "nature-water-sampling-operation.jpg",
+            "title": "SLB - Nature and responsible operations - Water",
+            "alt_en": "Environmental specialists collect a clear-water sample at an industrial water reuse facility.",
+            "alt_es_mx": "Especialistas ambientales toman una muestra de agua limpia en una instalación industrial de reutilización de agua.",
+            "lifecycle": "evergreen",
+            "placement": "Nature and responsible operations - Water",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/sustainability/nature-and-responsible-operations",
+            "source_asset_url": "generated://openai/exec-3946579b-599e-4db1-afa7-316c8f0c69ac.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "59615bd32ca96c2e5435dcd08279ae304fb2f67bcc4f7e3d1ae593ca3a9a130d",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "nature-equipment-circularity-workshop.jpg",
+            "title": "SLB - Nature and responsible operations - Circularity",
+            "alt_en": "A technician inspects an industrial component in a circular equipment refurbishment center.",
+            "alt_es_mx": "Un técnico inspecciona un componente industrial en un centro de reacondicionamiento circular de equipos.",
+            "lifecycle": "evergreen",
+            "placement": "Nature and responsible operations - Circularity",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/sustainability/nature-and-responsible-operations",
+            "source_asset_url": "generated://openai/exec-b84ac69b-2d2d-4a05-9b57-d4411b412156.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "abe0a7d2d5425c8f3a5346d6a7bcf56926e59242056956c3300ed56b4a25a858",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "nature-place-context.jpg",
+            "title": "SLB - Nature and responsible operations - Start with place",
+            "alt_en": "A multidisciplinary team reviews local watershed and land conditions above an operating site.",
+            "alt_es_mx": "Un equipo multidisciplinario revisa las condiciones locales de la cuenca y del terreno sobre un sitio operativo.",
+            "lifecycle": "evergreen",
+            "placement": "Nature and responsible operations - Start with place",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/sustainability/nature-and-responsible-operations",
+            "source_asset_url": "generated://openai/exec-0552011e-2ee5-4c8f-8bbf-58796beab5c3.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "87605d8b7abd04ad3f1b39f6902ce132c13b76ecadb6b6e4066015faa0b9eb47",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "decarbonization-inventory-aerial-survey.jpg",
+            "title": "SLB - Industrial decarbonization - Inventory",
+            "alt_en": "An aerial methane survey is underway above an industrial processing facility.",
+            "alt_es_mx": "Se realiza un levantamiento aéreo de metano sobre una instalación de procesamiento industrial.",
+            "lifecycle": "evergreen",
+            "placement": "Industrial decarbonization - Inventory",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/industrial-decarbonization",
+            "source_asset_url": "generated://openai/exec-5118f992-64da-410c-86e1-5d332caacb27.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "3db0439bba33f5aec4102949d7a93786d8a1c5facca4cabaff7ce4f11a94915e",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "decarbonization-methane-sensor-wellhead.jpg",
+            "title": "SLB - Industrial decarbonization - Measure",
+            "alt_en": "A technician calibrates a methane sensor beside production equipment.",
+            "alt_es_mx": "Un técnico calibra un sensor de metano junto a equipos de producción.",
+            "lifecycle": "evergreen",
+            "placement": "Industrial decarbonization - Measure",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/industrial-decarbonization",
+            "source_asset_url": "generated://openai/exec-762a40c7-5655-49ec-88f9-adf0bc93a3bf.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "9ab4d73aee53bb7060872d0f0a21288b7d0df07d86ebb0a91b52fb67b0de2a44",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "decarbonization-engineers-prioritize-tablet.jpg",
+            "title": "SLB - Industrial decarbonization - Prioritize",
+            "alt_en": "Two engineers compare emissions-reduction options beside process equipment.",
+            "alt_es_mx": "Dos ingenieros comparan opciones para reducir emisiones junto a equipos de proceso.",
+            "lifecycle": "evergreen",
+            "placement": "Industrial decarbonization - Prioritize",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/industrial-decarbonization",
+            "source_asset_url": "generated://openai/exec-edbb3aa0-6723-4581-b4d6-1797c4189f42.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "ee08f67106fc066c6c3ae2e96595abf38c5b7188f5c80b13ee1c799a61343468",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "decarbonization-compressor-maintenance.jpg",
+            "title": "SLB - Industrial decarbonization - Act",
+            "alt_en": "Technicians perform a planned emissions-reduction intervention on a compressor.",
+            "alt_es_mx": "Técnicos realizan una intervención planificada para reducir emisiones en un compresor.",
+            "lifecycle": "evergreen",
+            "placement": "Industrial decarbonization - Act",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/industrial-decarbonization",
+            "source_asset_url": "generated://openai/exec-ba105c1a-dea1-4329-99d1-f07656b9095a.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "4c9169f5da71a803dd8bbc5d661a46a075c1ab1a385d2ca038329446aaa358cb",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "decarbonization-verification-dashboard.jpg",
+            "title": "SLB - Industrial decarbonization - Verify",
+            "alt_en": "An engineer compares verified emissions data with current facility performance.",
+            "alt_es_mx": "Un ingeniero compara datos verificados de emisiones con el desempeño actual de la instalación.",
+            "lifecycle": "evergreen",
+            "placement": "Industrial decarbonization - Verify",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/industrial-decarbonization",
+            "source_asset_url": "generated://openai/exec-dcdccb63-283f-43dc-b7f3-12a02a889504.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "b77ebee563d9cab8b8e27833523695ff36b0b23985c6974e22c0a56651b101b8",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "decarbonization-execution-toolbox-talk.jpg",
+            "title": "SLB - Industrial decarbonization - Execution",
+            "alt_en": "An operations team conducts a field briefing before decarbonization work begins.",
+            "alt_es_mx": "Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización.",
+            "lifecycle": "evergreen",
+            "placement": "Industrial decarbonization - Execution",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/industrial-decarbonization",
+            "source_asset_url": "generated://openai/exec-441a4c83-2960-4cd0-9eb2-9160dafdc6b7.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "9f761f38e65cd63684ce67f6cf6932c78f8d0e770421ac615f78a1bfccf5d79e",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "ccus-basin-screening-workstation.jpg",
+            "title": "SLB - CCUS - Screen and select",
+            "alt_en": "Geoscientists evaluate subsurface formations for carbon storage suitability.",
+            "alt_es_mx": "Geocientíficos evalúan formaciones del subsuelo para determinar su idoneidad para el almacenamiento de carbono.",
+            "lifecycle": "evergreen",
+            "placement": "CCUS - Screen and select",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/products-and-services/ccus",
+            "source_asset_url": "generated://openai/exec-abda86fc-3bce-45c7-ade9-ec1cc9af8e52.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "0807b4e170cb3d57b9d87d91e0a89301c40dfd87f0bc6bc5d6f44fe82be25e23",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "ccus-core-characterization-lab.jpg",
+            "title": "SLB - CCUS - Characterize",
+            "alt_en": "A scientist examines a rock core during carbon storage site characterization.",
+            "alt_es_mx": "Una científica examina un núcleo de roca durante la caracterización de un sitio de almacenamiento de carbono.",
+            "lifecycle": "evergreen",
+            "placement": "CCUS - Characterize",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/products-and-services/ccus",
+            "source_asset_url": "generated://openai/exec-b7707bcf-7ae2-45d7-bc38-b81a3ec8a161.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "f9255e0f91168da7fe5d7c64bb68280b7d5c67a89439df496e8cf3a7b1785fe2",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "ccus-injection-well-manifold.jpg",
+            "title": "SLB - CCUS - Design and develop",
+            "alt_en": "An operator inspects the manifold of a carbon dioxide injection well.",
+            "alt_es_mx": "Un operador inspecciona el múltiple de un pozo de inyección de dióxido de carbono.",
+            "lifecycle": "evergreen",
+            "placement": "CCUS - Design and develop",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/products-and-services/ccus",
+            "source_asset_url": "generated://openai/exec-4920d7ed-b481-4bbe-adf7-e45491225f95.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "c8570d270b70ffcc1d94b887aa13e03d5da6aba99742a6431fbf5ee93afc0089",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "ccus-monitoring-seismic-array.jpg",
+            "title": "SLB - CCUS - Monitor and manage",
+            "alt_en": "Monitoring instruments track subsurface conditions above a coastal carbon storage site.",
+            "alt_es_mx": "Instrumentos de monitoreo registran las condiciones del subsuelo sobre un sitio costero de almacenamiento de carbono.",
+            "lifecycle": "evergreen",
+            "placement": "CCUS - Monitor and manage",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/products-and-services/ccus",
+            "source_asset_url": "generated://openai/exec-1f29577b-4f03-4fe7-81b0-de9d5f81057a.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "c5b10ed6e759beb22119b498dbdc93dd5eb6576ca3f47336d8007dad73117f02",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "ccus-storage-operations-control-room.jpg",
+            "title": "SLB - CCUS - Connected lifecycle",
+            "alt_en": "Specialists coordinate carbon storage operations from an integrated control room.",
+            "alt_es_mx": "Especialistas coordinan operaciones de almacenamiento de carbono desde una sala de control integrada.",
+            "lifecycle": "evergreen",
+            "placement": "CCUS - Connected lifecycle",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/products-and-services/ccus",
+            "source_asset_url": "generated://openai/exec-bc120527-d457-4741-b482-436c00c4e976.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "d47ddb61b337845039d98868cf587f750d677712cb4d5118ae077cc7ba2bce6e",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "people-field-safety-training.jpg",
+            "title": "SLB - Our people and communities - Safe workplace",
+            "alt_en": "An instructor guides an employee through hands-on field safety training.",
+            "alt_es_mx": "Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo.",
+            "lifecycle": "evergreen",
+            "placement": "Our people and communities - Safe workplace",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/sustainability/people-and-communities",
+            "source_asset_url": "generated://openai/exec-5bb1a585-0b82-4845-8ce9-4d3232ed942b.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "e7d9974ca3b0483188fcb262a05bfe8982b2f2d4a2f4673d11f5348fc5da1e6d",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "people-community-stem-workshop.jpg",
+            "title": "SLB - Our people and communities - Communities",
+            "alt_en": "A volunteer helps students complete an energy science experiment.",
+            "alt_es_mx": "Un voluntario ayuda a estudiantes a completar un experimento de ciencias de la energía.",
+            "lifecycle": "evergreen",
+            "placement": "Our people and communities - Communities",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/sustainability/people-and-communities",
+            "source_asset_url": "generated://openai/exec-1f5bd966-492b-40c6-a596-c7909aaf2561.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "a8e56ac1ec15d0fe90d85a0249f47d3985ba6c69c2b41ec1f47f47e18974f200",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "people-inclusive-engineering-team.jpg",
+            "title": "SLB - Our people and communities - Careers and culture",
+            "alt_en": "A multidisciplinary engineering team meets during an operational shift handover.",
+            "alt_es_mx": "Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo.",
+            "lifecycle": "evergreen",
+            "placement": "Our people and communities - Careers and culture",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/sustainability/people-and-communities",
+            "source_asset_url": "generated://openai/exec-7d6f6719-f0d3-4ecb-b54b-cab208eff36a.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "42cb3afd569e2fab7cb14ed3808a62d7f1a703a27e95e42669f02ce6e13c3295",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "newsroom-global-energy-network-hero.jpg",
+            "title": "SLB - Newsroom - Hero",
+            "alt_en": "A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour.",
+            "alt_es_mx": "Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer.",
+            "lifecycle": "evergreen",
+            "placement": "Newsroom - Hero",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/newsroom",
+            "source_asset_url": "generated://openai/exec-6e3dd7a4-dd67-4a14-b8f7-b1297afe70df.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "61a5c809c60f6bdbf4e2699f6e0a81d47239ed218993f5230deb3bb23b8d3e33",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "insights-energy-research-roundtable-hero.jpg",
+            "title": "SLB - Insights - Hero",
+            "alt_en": "Engineers review an integrated energy model during a technical workshop.",
+            "alt_es_mx": "Ingenieros revisan un modelo energético integrado durante un taller técnico.",
+            "lifecycle": "evergreen",
+            "placement": "Insights - Hero",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/news-and-insights/insights",
+            "source_asset_url": "generated://openai/exec-9980435e-43cd-40c8-871a-1e0f86f2aa9a.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "0bc677084b034cd91548c5efd50d2a0cf6a5ca813e382115f2c23afc9568333c",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "insight-decarbonization-control-room-hero.jpg",
+            "title": "SLB - Decarbonization insight - Hero",
+            "alt_en": "An analyst reviews emissions performance in an industrial operations center.",
+            "alt_es_mx": "Un analista revisa el desempeño de emisiones en un centro de operaciones industriales.",
+            "lifecycle": "evergreen",
+            "placement": "Decarbonization insight - Hero",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/news-and-insights/insights/designing-decarbonization-for-execution",
+            "source_asset_url": "generated://openai/exec-b683d78d-c50a-4f2c-8765-5fbe114125ec.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "376635c6e548bf8c56da65885a1375ef518459a80f07de8de8688a86a9f55116",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "insight-decarbonization-baseline-workshop.jpg",
+            "title": "SLB - Decarbonization insight - Define the baseline",
+            "alt_en": "Operations and sustainability specialists establish an emissions baseline.",
+            "alt_es_mx": "Especialistas de operaciones y sostenibilidad establecen una línea base de emisiones.",
+            "lifecycle": "evergreen",
+            "placement": "Decarbonization insight - Define the baseline",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/news-and-insights/insights/designing-decarbonization-for-execution",
+            "source_asset_url": "generated://openai/exec-cd3f5ded-2ed7-4486-8990-f2f1a5fb5c05.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "f0d9e3999e1b1fbfd76c26b0ed9dcbcde7a41927bd7179092784b6a3d67e9f64",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "insight-decarbonization-intervention-planning.jpg",
+            "title": "SLB - Decarbonization insight - Sequence action",
+            "alt_en": "Engineers plan the sequence of emissions interventions beside operating equipment.",
+            "alt_es_mx": "Ingenieros planifican la secuencia de intervenciones de emisiones junto a equipos en operación.",
+            "lifecycle": "evergreen",
+            "placement": "Decarbonization insight - Sequence action",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/news-and-insights/insights/designing-decarbonization-for-execution",
+            "source_asset_url": "generated://openai/exec-03c6c2f9-1bcc-47b1-ad37-87fa3f7ca90d.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "902b56c14b74cab6c0315f8a8cf17c542c20d64b4299437f53135ea084fd807e",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "insight-decarbonization-evidence-review.jpg",
+            "title": "SLB - Decarbonization insight - Sustain improvement",
+            "alt_en": "An analyst reviews field evidence used to verify emissions improvements.",
+            "alt_es_mx": "Una analista revisa la evidencia de campo utilizada para verificar mejoras de emisiones.",
+            "lifecycle": "evergreen",
+            "placement": "Decarbonization insight - Sustain improvement",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/news-and-insights/insights/designing-decarbonization-for-execution",
+            "source_asset_url": "generated://openai/exec-3c2bec03-de3f-4856-be6c-d260f984d2e6.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "abad28383d1bf2cfd7cfc1d674d5f3cb30d3a60d95049ed00e8b83e1892d82d8",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "global-presence-local-field-briefing.jpg",
+            "title": "SLB - Global presence - Local insight",
+            "alt_en": "A local engineering team reviews field conditions in a high-desert energy region.",
+            "alt_es_mx": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de alta montaña y desierto.",
+            "lifecycle": "evergreen",
+            "placement": "Global presence - Local insight",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/about-us/global-presence",
+            "source_asset_url": "generated://openai/exec-ea1e77ee-b6f2-4500-b6ce-238bbea4ada9.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "43fbd939fc18399706ccef67950721164f5fe25bcfc395005b57c5f6f65495be",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "global-presence-regional-technology-center.jpg",
+            "title": "SLB - Global presence - Global capability",
+            "alt_en": "Engineers collaborate inside a regional technology center.",
+            "alt_es_mx": "Ingenieros colaboran dentro de un centro tecnológico regional.",
+            "lifecycle": "evergreen",
+            "placement": "Global presence - Global capability",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/about-us/global-presence",
+            "source_asset_url": "generated://openai/exec-2159b7b6-5ba1-48a6-aef7-22cf4db82170.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "cdf9bf1f9257d7eaf38d4e9e0c7a4e4f5ee552b996e70ef535d19e8cdcf27e65",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "contact-technical-consultation.jpg",
+            "title": "SLB - Contact - Technical challenge",
+            "alt_en": "An engineer discusses a technical equipment model with a customer.",
+            "alt_es_mx": "Un ingeniero analiza un modelo técnico de equipo con una clienta.",
+            "lifecycle": "evergreen",
+            "placement": "Contact - Technical challenge",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/contact-us",
+            "source_asset_url": "generated://openai/exec-0cd05d38-08ed-4ae6-b5ca-3ce477056a7d.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "732b66f1021200d76ceceadcbdac44a5538cea080eb8ab5c76f2bc405f172043",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "contact-products-specialist.jpg",
+            "title": "SLB - Contact - Products and services",
+            "alt_en": "A product specialist explains an energy-system visualization during a remote consultation.",
+            "alt_es_mx": "Un especialista de producto explica una visualización del sistema energético durante una consulta remota.",
+            "lifecycle": "evergreen",
+            "placement": "Contact - Products and services",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/contact-us",
+            "source_asset_url": "generated://openai/exec-83f25ef1-6a15-4f10-8b0c-99619e6c4426.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "6d50140069b08fb7107228e0fa7f731bf982823da39198c3f12ce4198a808818",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "contact-media-briefing.jpg",
+            "title": "SLB - Contact - Company and media",
+            "alt_en": "A spokesperson answers questions during a company media briefing.",
+            "alt_es_mx": "Un portavoz responde preguntas durante una sesión informativa para medios.",
+            "lifecycle": "evergreen",
+            "placement": "Contact - Company and media",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/contact-us",
+            "source_asset_url": "generated://openai/exec-1aed0c7f-1219-4075-8782-7f3f1e55981b.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "fb02668001628609df0450b1d2e323c7ce3825bc2aa88d8babc84aff806a3736",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "digital-data-context.jpg",
+            "title": "SLB - Digital operations - Trusted data context",
+            "alt_en": "A data engineer and domain expert compare a digital asset model with real equipment.",
+            "alt_es_mx": "Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real.",
+            "lifecycle": "evergreen",
+            "placement": "Digital operations - Trusted data context",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/digital-operations",
+            "source_asset_url": "generated://openai/exec-6d9a3ff3-a300-4bb0-9fee-0a74e93b21f7.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "ddc2996078dd67ac268e082cc52681416588d284fd1482320f4cc2ef4b6beab3",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "digital-workflow-automation.jpg",
+            "title": "SLB - Digital operations - Workflow automation",
+            "alt_en": "An operations specialist reviews an automated workflow connected to field execution.",
+            "alt_es_mx": "Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo.",
+            "lifecycle": "evergreen",
+            "placement": "Digital operations - Workflow automation",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/digital-operations",
+            "source_asset_url": "generated://openai/exec-348c756d-6bcc-491b-827a-eda50abe3a06.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "26c12e2e48ed9f7b3faf4028b257e3a546d110378143e86040d51eb03adba473",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "new-energy-hydrogen-electrolyzer.jpg",
+            "title": "SLB - New energy systems - Hydrogen",
+            "alt_en": "An engineer walks through a modern hydrogen electrolyzer hall.",
+            "alt_es_mx": "Un ingeniero recorre una moderna nave de electrolizadores de hidrógeno.",
+            "lifecycle": "evergreen",
+            "placement": "New energy systems - Hydrogen",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/new-energy-systems",
+            "source_asset_url": "generated://openai/exec-5a6a025c-e805-4bb2-ac53-64a015d610de.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "ac7e02f666a02c91b59970e581d5f863da9b55ca9dc69ad22c360f6dceb5c2f4",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "new-energy-lithium-extraction.jpg",
+            "title": "SLB - New energy systems - Lithium",
+            "alt_en": "An engineer inspects modular direct-lithium-extraction equipment in a high-desert basin.",
+            "alt_es_mx": "Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca de alta montaña y desierto.",
+            "lifecycle": "evergreen",
+            "placement": "New energy systems - Lithium",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/new-energy-systems",
+            "source_asset_url": "generated://openai/exec-c45806ee-34f8-4f23-878a-b8881306bf3a.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "9fac14c55f2610622fc9c715d70d000346e87ac146152fb558ccfd702bab2cc2",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "new-energy-geothermal-well.jpg",
+            "title": "SLB - New energy systems - Geothermal",
+            "alt_en": "Engineers inspect a geothermal wellhead in a volcanic landscape.",
+            "alt_es_mx": "Ingenieros inspeccionan un cabezal geotérmico en un paisaje volcánico.",
+            "lifecycle": "evergreen",
+            "placement": "New energy systems - Geothermal",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/new-energy-systems",
+            "source_asset_url": "generated://openai/exec-aec493af-9b0a-4c19-8111-d050f1a304ea.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "2366cd964f796215afcf391b2cf25f0d0b3fc5ce668ef0d9d861fca259c4cea8",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "new-energy-offshore-wind.jpg",
+            "title": "SLB - New energy systems - Offshore wind",
+            "alt_en": "Technicians commission an offshore wind substation above a calm sea.",
+            "alt_es_mx": "Técnicos ponen en servicio una subestación eólica marina sobre un mar en calma.",
+            "lifecycle": "evergreen",
+            "placement": "New energy systems - Offshore wind",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/new-energy-systems",
+            "source_asset_url": "generated://openai/exec-9e3f3e2d-5716-4fb0-88e1-d2fa7dc06bb1.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "42f671972d4a279b87458e708049b6da8f870d1eb8dc503b3b3406a9f2f02efd",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "new-energy-grid-storage.jpg",
+            "title": "SLB - New energy systems - Grid storage",
+            "alt_en": "Engineers inspect modular grid-scale energy storage beside a renewable substation.",
+            "alt_es_mx": "Ingenieros inspeccionan almacenamiento modular de energía a escala de red junto a una subestación renovable.",
+            "lifecycle": "evergreen",
+            "placement": "New energy systems - Grid storage",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/solutions/new-energy-systems",
+            "source_asset_url": "generated://openai/exec-c9811001-0666-4f8c-a49b-87f045a42cac.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "8516f60a08e83373bab04a74209d5eefdc774b92672e095e9be9a5c7adb283f6",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "well-decommissioning-restored-site.jpg",
+            "title": "SLB - Subsurface and well delivery - Plug and abandon",
+            "alt_en": "A field engineer verifies a safely capped well amid restored grassland.",
+            "alt_es_mx": "Un ingeniero de campo verifica un pozo clausurado de forma segura en un pastizal restaurado.",
+            "lifecycle": "evergreen",
+            "placement": "Subsurface and well delivery - Plug and abandon",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/products-and-services/subsurface-and-well-delivery",
+            "source_asset_url": "generated://openai/exec-4a992df6-93ef-4993-98d8-aab244b1d5ac.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "631bfc816e2d8039a852df3b709c9a367d3686d62ab7759cc548009c467ca707",
+            "mime_type": "image/jpeg"
+        },
+        {
+            "filename": "digital-data-governance-review.jpg",
+            "title": "SLB - Data and AI - Governance",
+            "alt_en": "An engineering team reviews data lineage and governance across connected industrial systems.",
+            "alt_es_mx": "Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados.",
+            "lifecycle": "evergreen",
+            "placement": "Data and AI - Governance",
+            "source_page_url": "https://slb-sitecoreai-demo.vercel.app/products-and-services/data-and-ai",
+            "source_asset_url": "generated://openai/exec-724af761-c079-4079-8e50-6460a12a65eb.png",
+            "rights_note": "Generated for the approved SLB implementation using OpenAI built-in image generation on 2026-08-30.",
+            "dimensions": {
+                "width": 1672,
+                "height": 941
+            },
+            "sha256": "fb35702ff908a4098ec6baf11d372a4575719e300c549471c24c6a997e0683b5",
+            "mime_type": "image/jpeg"
+        }
+    ]
 }

@@ -1,0 +1,319 @@
+{
+    "schema_version": "1.0",
+    "generated_at": "2026-08-30",
+    "asset_count": 38,
+    "generation": {
+        "tool": "OpenAI built-in image generation",
+        "mode": "new image generation",
+        "source_format": "PNG",
+        "delivery_format": "JPEG",
+        "jpeg_quality": 88,
+        "shared_art_direction": "Premium photorealistic editorial documentary photography for a global energy technology company. Wide 16:9 compositions; cool cobalt, blue, and steel neutrals; selective warm safety accents; credible experts, equipment, and operating environments; natural or restrained cinematic light; no logos, watermarks, readable text, staged handshakes, disaster imagery, or distorted anatomy."
+    },
+    "assets": [
+        {
+            "filename": "nature-biodiversity-field-survey.jpg",
+            "source_png": "exec-6450e4a9-d4eb-4454-9e4a-508830c3bce6.png",
+            "placement": "Nature and responsible operations - Biodiversity",
+            "alt_en": "Field ecologists record biodiversity observations in native wetland habitat near an operating site.",
+            "alt_es_mx": "Ecólogos de campo registran observaciones de biodiversidad en un humedal nativo cerca de un sitio operativo.",
+            "prompt_brief": "Two field ecologists conducting a habitat transect in a biodiverse wetland and native grassland, with discreet energy infrastructure in the distance."
+        },
+        {
+            "filename": "nature-water-sampling-operation.jpg",
+            "source_png": "exec-3946579b-599e-4db1-afa7-316c8f0c69ac.png",
+            "placement": "Nature and responsible operations - Water",
+            "alt_en": "Environmental specialists collect a clear-water sample at an industrial water reuse facility.",
+            "alt_es_mx": "Especialistas ambientales toman una muestra de agua limpia en una instalación industrial de reutilización de agua.",
+            "prompt_brief": "Environmental specialists collecting and checking a clear-water sample at a modern treatment and reuse operation."
+        },
+        {
+            "filename": "nature-equipment-circularity-workshop.jpg",
+            "source_png": "exec-b84ac69b-2d2d-4a05-9b57-d4411b412156.png",
+            "placement": "Nature and responsible operations - Circularity",
+            "alt_en": "A technician inspects an industrial component in a circular equipment refurbishment center.",
+            "alt_es_mx": "Un técnico inspecciona un componente industrial en un centro de reacondicionamiento circular de equipos.",
+            "prompt_brief": "Technician inspecting a reusable circular industrial component in a clean refurbishment center, with a subtle loop motif in the workspace."
+        },
+        {
+            "filename": "nature-place-context.jpg",
+            "source_png": "exec-0552011e-2ee5-4c8f-8bbf-58796beab5c3.png",
+            "placement": "Nature and responsible operations - Start with place",
+            "alt_en": "A multidisciplinary team reviews local watershed and land conditions above an operating site.",
+            "alt_es_mx": "Un equipo multidisciplinario revisa las condiciones locales de la cuenca y del terreno sobre un sitio operativo.",
+            "prompt_brief": "Team using a map and tablet at an overlook to understand a semi-arid watershed, terrain, and distant facility in context."
+        },
+        {
+            "filename": "decarbonization-inventory-aerial-survey.jpg",
+            "source_png": "exec-5118f992-64da-410c-86e1-5d332caacb27.png",
+            "placement": "Industrial decarbonization - Inventory",
+            "alt_en": "An aerial methane survey is underway above an industrial processing facility.",
+            "alt_es_mx": "Se realiza un levantamiento aéreo de metano sobre una instalación de procesamiento industrial.",
+            "prompt_brief": "High-oblique aerial survey with a sensor drone in the foreground and a large processing facility grid below."
+        },
+        {
+            "filename": "decarbonization-methane-sensor-wellhead.jpg",
+            "source_png": "exec-762a40c7-5655-49ec-88f9-adf0bc93a3bf.png",
+            "placement": "Industrial decarbonization - Measure",
+            "alt_en": "A technician calibrates a methane sensor beside production equipment.",
+            "alt_es_mx": "Un técnico calibra un sensor de metano junto a equipos de producción.",
+            "prompt_brief": "Close environmental detail of a field technician using a handheld methane instrument at a wellhead."
+        },
+        {
+            "filename": "decarbonization-engineers-prioritize-tablet.jpg",
+            "source_png": "exec-edbb3aa0-6723-4581-b4d6-1797c4189f42.png",
+            "placement": "Industrial decarbonization - Prioritize",
+            "alt_en": "Two engineers compare emissions-reduction options beside process equipment.",
+            "alt_es_mx": "Dos ingenieros comparan opciones para reducir emisiones junto a equipos de proceso.",
+            "prompt_brief": "Two engineers with a tablet inspecting compressor equipment and prioritizing intervention choices."
+        },
+        {
+            "filename": "decarbonization-compressor-maintenance.jpg",
+            "source_png": "exec-ba105c1a-dea1-4329-99d1-f07656b9095a.png",
+            "placement": "Industrial decarbonization - Act",
+            "alt_en": "Technicians perform a planned emissions-reduction intervention on a compressor.",
+            "alt_es_mx": "Técnicos realizan una intervención planificada para reducir emisiones en un compresor.",
+            "prompt_brief": "Two technicians carrying out precise planned maintenance on an industrial compressor."
+        },
+        {
+            "filename": "decarbonization-verification-dashboard.jpg",
+            "source_png": "exec-dcdccb63-283f-43dc-b7f3-12a02a889504.png",
+            "placement": "Industrial decarbonization - Verify",
+            "alt_en": "An engineer compares verified emissions data with current facility performance.",
+            "alt_es_mx": "Un ingeniero compara datos verificados de emisiones con el desempeño actual de la instalación.",
+            "prompt_brief": "Emissions engineer in a glass-walled operations room verifying abstract performance trends against the live facility."
+        },
+        {
+            "filename": "decarbonization-execution-toolbox-talk.jpg",
+            "source_png": "exec-441a4c83-2960-4cd0-9eb2-9160dafdc6b7.png",
+            "placement": "Industrial decarbonization - Execution",
+            "alt_en": "An operations team conducts a field briefing before decarbonization work begins.",
+            "alt_es_mx": "Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización.",
+            "prompt_brief": "Diverse multidisciplinary crew in a natural pre-job toolbox talk at an industrial facility."
+        },
+        {
+            "filename": "ccus-basin-screening-workstation.jpg",
+            "source_png": "exec-abda86fc-3bce-45c7-ade9-ec1cc9af8e52.png",
+            "placement": "CCUS - Screen and select",
+            "alt_en": "Geoscientists evaluate subsurface formations for carbon storage suitability.",
+            "alt_es_mx": "Geocientíficos evalúan formaciones del subsuelo para determinar su idoneidad para el almacenamiento de carbono.",
+            "prompt_brief": "Two geoscientists interpreting a large three-dimensional storage-basin model with core trays in the foreground."
+        },
+        {
+            "filename": "ccus-core-characterization-lab.jpg",
+            "source_png": "exec-b7707bcf-7ae2-45d7-bc38-b81a3ec8a161.png",
+            "placement": "CCUS - Characterize",
+            "alt_en": "A scientist examines a rock core during carbon storage site characterization.",
+            "alt_es_mx": "Una científica examina un núcleo de roca durante la caracterización de un sitio de almacenamiento de carbono.",
+            "prompt_brief": "Materials scientist inspecting a cylindrical rock core beside precision optical equipment in a bright laboratory."
+        },
+        {
+            "filename": "ccus-injection-well-manifold.jpg",
+            "source_png": "exec-4920d7ed-b481-4bbe-adf7-e45491225f95.png",
+            "placement": "CCUS - Design and develop",
+            "alt_en": "An operator inspects the manifold of a carbon dioxide injection well.",
+            "alt_es_mx": "Un operador inspecciona el múltiple de un pozo de inyección de dióxido de carbono.",
+            "prompt_brief": "Operator at a clean, symmetrical carbon-dioxide injection manifold in clear natural daylight."
+        },
+        {
+            "filename": "ccus-monitoring-seismic-array.jpg",
+            "source_png": "exec-1f29577b-4f03-4fe7-81b0-de9d5f81057a.png",
+            "placement": "CCUS - Monitor and manage",
+            "alt_en": "Monitoring instruments track subsurface conditions above a coastal carbon storage site.",
+            "alt_es_mx": "Instrumentos de monitoreo registran las condiciones del subsuelo sobre un sitio costero de almacenamiento de carbono.",
+            "prompt_brief": "Environmental specialist checking a line of monitoring instruments across windswept coastal grassland."
+        },
+        {
+            "filename": "ccus-storage-operations-control-room.jpg",
+            "source_png": "exec-bc120527-d457-4741-b482-436c00c4e976.png",
+            "placement": "CCUS - Connected lifecycle",
+            "alt_en": "Specialists coordinate carbon storage operations from an integrated control room.",
+            "alt_es_mx": "Especialistas coordinan operaciones de almacenamiento de carbono desde una sala de control integrada.",
+            "prompt_brief": "Three specialists coordinating carbon storage wells and subsurface monitoring from a modern control room."
+        },
+        {
+            "filename": "people-field-safety-training.jpg",
+            "source_png": "exec-5bb1a585-0b82-4845-8ce9-4d3232ed942b.png",
+            "placement": "Our people and communities - Safe workplace",
+            "alt_en": "An instructor guides an employee through hands-on field safety training.",
+            "alt_es_mx": "Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo.",
+            "prompt_brief": "Instructor demonstrating a safety-line connection to a trainee while other employees observe at an industrial training facility."
+        },
+        {
+            "filename": "people-community-stem-workshop.jpg",
+            "source_png": "exec-1f5bd966-492b-40c6-a596-c7909aaf2561.png",
+            "placement": "Our people and communities - Communities",
+            "alt_en": "A volunteer helps students complete an energy science experiment.",
+            "alt_es_mx": "Un voluntario ayuda a estudiantes a completar un experimento de ciencias de la energía.",
+            "prompt_brief": "Energy-company volunteer guiding a diverse student group around a hands-on transparent turbine and water-flow experiment."
+        },
+        {
+            "filename": "people-inclusive-engineering-team.jpg",
+            "source_png": "exec-7d6f6719-f0d3-4ecb-b54b-cab208eff36a.png",
+            "placement": "Our people and communities - Careers and culture",
+            "alt_en": "A multidisciplinary engineering team meets during an operational shift handover.",
+            "alt_es_mx": "Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo.",
+            "prompt_brief": "Five engineers in a candid technical exchange around a process model and tablet during shift handover."
+        },
+        {
+            "filename": "newsroom-global-energy-network-hero.jpg",
+            "source_png": "exec-6e3dd7a4-dd67-4a14-b8f7-b1297afe70df.png",
+            "placement": "Newsroom - Hero",
+            "alt_en": "A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour.",
+            "alt_es_mx": "Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer.",
+            "prompt_brief": "Ultra-wide blue-hour aerial of a contemporary coastal energy and logistics network with generous headline space."
+        },
+        {
+            "filename": "insights-energy-research-roundtable-hero.jpg",
+            "source_png": "exec-9980435e-43cd-40c8-871a-1e0f86f2aa9a.png",
+            "placement": "Insights - Hero",
+            "alt_en": "Engineers review an integrated energy model during a technical workshop.",
+            "alt_es_mx": "Ingenieros revisan un modelo energético integrado durante un taller técnico.",
+            "prompt_brief": "Diverse researchers evaluating a luminous physical model that connects power, industrial, subsurface, and low-carbon systems."
+        },
+        {
+            "filename": "insight-decarbonization-control-room-hero.jpg",
+            "source_png": "exec-b683d78d-c50a-4f2c-8765-5fbe114125ec.png",
+            "placement": "Decarbonization insight - Hero",
+            "alt_en": "An analyst reviews emissions performance in an industrial operations center.",
+            "alt_es_mx": "Un analista revisa el desempeño de emisiones en un centro de operaciones industriales.",
+            "prompt_brief": "Evidence-led dark-blue editorial hero with an analyst, abstract emissions trends, and an illuminated facility beyond glass."
+        },
+        {
+            "filename": "insight-decarbonization-baseline-workshop.jpg",
+            "source_png": "exec-cd3f5ded-2ed7-4486-8990-f2f1a5fb5c05.png",
+            "placement": "Decarbonization insight - Define the baseline",
+            "alt_en": "Operations and sustainability specialists establish an emissions baseline.",
+            "alt_es_mx": "Especialistas de operaciones y sostenibilidad establecen una línea base de emisiones.",
+            "prompt_brief": "Four specialists comparing a facility schematic, sensor samples, and a process model in a practical baseline workshop."
+        },
+        {
+            "filename": "insight-decarbonization-intervention-planning.jpg",
+            "source_png": "exec-03c6c2f9-1bcc-47b1-ad37-87fa3f7ca90d.png",
+            "placement": "Decarbonization insight - Sequence action",
+            "alt_en": "Engineers plan the sequence of emissions interventions beside operating equipment.",
+            "alt_es_mx": "Ingenieros planifican la secuencia de intervenciones de emisiones junto a equipos en operación.",
+            "prompt_brief": "Two engineers use strong compressor-train leading lines to plan sequential field interventions."
+        },
+        {
+            "filename": "insight-decarbonization-evidence-review.jpg",
+            "source_png": "exec-3c2bec03-de3f-4856-be6c-d260f984d2e6.png",
+            "placement": "Decarbonization insight - Sustain improvement",
+            "alt_en": "An analyst reviews field evidence used to verify emissions improvements.",
+            "alt_es_mx": "Una analista revisa la evidencia de campo utilizada para verificar mejoras de emisiones.",
+            "prompt_brief": "Analyst reviewing sensor hardware and non-legible trend evidence while a technician checks equipment outside."
+        },
+        {
+            "filename": "global-presence-local-field-briefing.jpg",
+            "source_png": "exec-ea1e77ee-b6f2-4500-b6ce-238bbea4ada9.png",
+            "placement": "Global presence - Local insight",
+            "alt_en": "A local engineering team reviews field conditions in a high-desert energy region.",
+            "alt_es_mx": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de alta montaña y desierto.",
+            "prompt_brief": "Locally based team reviewing a tailgate map against expansive mesa terrain and a distant energy site."
+        },
+        {
+            "filename": "global-presence-regional-technology-center.jpg",
+            "source_png": "exec-2159b7b6-5ba1-48a6-aef7-22cf4db82170.png",
+            "placement": "Global presence - Global capability",
+            "alt_en": "Engineers collaborate inside a regional technology center.",
+            "alt_es_mx": "Ingenieros colaboran dentro de un centro tecnológico regional.",
+            "prompt_brief": "Wide architectural view through glass of engineers working around a precision test rig in a regional laboratory."
+        },
+        {
+            "filename": "contact-technical-consultation.jpg",
+            "source_png": "exec-0cd05d38-08ed-4ae6-b5ca-3ce477056a7d.png",
+            "placement": "Contact - Technical challenge",
+            "alt_en": "An engineer discusses a technical equipment model with a customer.",
+            "alt_es_mx": "Un ingeniero analiza un modelo técnico de equipo con una clienta.",
+            "prompt_brief": "Focused engineer-customer consultation around a detailed scale model of industrial process equipment."
+        },
+        {
+            "filename": "contact-products-specialist.jpg",
+            "source_png": "exec-83f25ef1-6a15-4f10-8b0c-99619e6c4426.png",
+            "placement": "Contact - Products and services",
+            "alt_en": "A product specialist explains an energy-system visualization during a remote consultation.",
+            "alt_es_mx": "Un especialista de producto explica una visualización del sistema energético durante una consulta remota.",
+            "prompt_brief": "Product specialist presenting a wall-scale abstract energy visualization to an off-screen remote customer."
+        },
+        {
+            "filename": "contact-media-briefing.jpg",
+            "source_png": "exec-1aed0c7f-1219-4075-8782-7f3f1e55981b.png",
+            "placement": "Contact - Company and media",
+            "alt_en": "A spokesperson answers questions during a company media briefing.",
+            "alt_es_mx": "Un portavoz responde preguntas durante una sesión informativa para medios.",
+            "prompt_brief": "Composed spokesperson answering a microphone and camera crew in a bright technology-center atrium."
+        },
+        {
+            "filename": "digital-data-context.jpg",
+            "source_png": "exec-6d9a3ff3-a300-4bb0-9fee-0a74e93b21f7.png",
+            "placement": "Digital operations - Trusted data context",
+            "alt_en": "A data engineer and domain expert compare a digital asset model with real equipment.",
+            "alt_es_mx": "Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real.",
+            "prompt_brief": "Two experts inspecting an abstract blue digital twin of an industrial component beside the real instrument."
+        },
+        {
+            "filename": "digital-workflow-automation.jpg",
+            "source_png": "exec-348c756d-6bcc-491b-827a-eda50abe3a06.png",
+            "placement": "Digital operations - Workflow automation",
+            "alt_en": "An operations specialist reviews an automated workflow connected to field execution.",
+            "alt_es_mx": "Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo.",
+            "prompt_brief": "Operations specialist viewing abstract connected workflow diagrams while a technician carries out the resulting field task."
+        },
+        {
+            "filename": "new-energy-hydrogen-electrolyzer.jpg",
+            "source_png": "exec-5a6a025c-e805-4bb2-ac53-64a015d610de.png",
+            "placement": "New energy systems - Hydrogen",
+            "alt_en": "An engineer walks through a modern hydrogen electrolyzer hall.",
+            "alt_es_mx": "Un ingeniero recorre una moderna nave de electrolizadores de hidrógeno.",
+            "prompt_brief": "Engineer walking alongside blue electrolyzer skids and stainless piping, with wind turbines beyond tall windows."
+        },
+        {
+            "filename": "new-energy-lithium-extraction.jpg",
+            "source_png": "exec-c45806ee-34f8-4f23-878a-b8881306bf3a.png",
+            "placement": "New energy systems - Lithium",
+            "alt_en": "An engineer inspects modular direct-lithium-extraction equipment in a high-desert basin.",
+            "alt_es_mx": "Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca de alta montaña y desierto.",
+            "prompt_brief": "Clean blue direct-lithium-extraction skids beside shallow brine ponds and distant high-desert mountains."
+        },
+        {
+            "filename": "new-energy-geothermal-well.jpg",
+            "source_png": "exec-aec493af-9b0a-4c19-8111-d050f1a304ea.png",
+            "placement": "New energy systems - Geothermal",
+            "alt_en": "Engineers inspect a geothermal wellhead in a volcanic landscape.",
+            "alt_es_mx": "Ingenieros inspeccionan un cabezal geotérmico en un paisaje volcánico.",
+            "prompt_brief": "Two geothermal engineers at a compact well pad among basalt, moss, snow-dusted ridges, and modest clean steam."
+        },
+        {
+            "filename": "new-energy-offshore-wind.jpg",
+            "source_png": "exec-9e3f3e2d-5716-4fb0-88e1-d2fa7dc06bb1.png",
+            "placement": "New energy systems - Offshore wind",
+            "alt_en": "Technicians commission an offshore wind substation above a calm sea.",
+            "alt_es_mx": "Técnicos ponen en servicio una subestación eólica marina sobre un mar en calma.",
+            "prompt_brief": "Technicians checking a service-platform cable interface with a large offshore wind array across the horizon."
+        },
+        {
+            "filename": "new-energy-grid-storage.jpg",
+            "source_png": "exec-c9811001-0666-4f8c-a49b-87f045a42cac.png",
+            "placement": "New energy systems - Grid storage",
+            "alt_en": "Engineers inspect modular grid-scale energy storage beside a renewable substation.",
+            "alt_es_mx": "Ingenieros inspeccionan almacenamiento modular de energía a escala de red junto a una subestación renovable.",
+            "prompt_brief": "Engineers walking between precise rows of modular battery enclosures, power electronics, and distant wind generation."
+        },
+        {
+            "filename": "well-decommissioning-restored-site.jpg",
+            "source_png": "exec-4a992df6-93ef-4993-98d8-aab244b1d5ac.png",
+            "placement": "Subsurface and well delivery - Plug and abandon",
+            "alt_en": "A field engineer verifies a safely capped well amid restored grassland.",
+            "alt_es_mx": "Un ingeniero de campo verifica un pozo clausurado de forma segura en un pastizal restaurado.",
+            "prompt_brief": "A field engineer inspecting a securely capped, inactive onshore well surrounded by restored native grassland, with no active drilling equipment."
+        },
+        {
+            "filename": "digital-data-governance-review.jpg",
+            "source_png": "exec-724af761-c079-4079-8e50-6460a12a65eb.png",
+            "placement": "Data and AI - Governance",
+            "alt_en": "An engineering team reviews data lineage and governance across connected industrial systems.",
+            "alt_es_mx": "Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados.",
+            "prompt_brief": "A diverse energy data and engineering team reviewing data lineage, quality, access, and stewardship on unlabeled abstract digital interfaces."
+        }
+    ]
+}
