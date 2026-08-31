@@ -25,6 +25,7 @@ import { Button } from '@/components/ui/button';
 import { getFieldValue } from '@/lib/component-props';
 import { hasLegacySolterraSignature } from '@/lib/slb-content-safety';
 import { getSlbDamAssetUrl } from '@/lib/slb-dam-assets';
+import { SiteSearchDialog } from '@/components/site-search/SiteSearchDialog';
 
 const aboutPaths = ['/about-us', '/es-mx/quienes-somos'];
 
@@ -230,11 +231,20 @@ const GlobalHeaderView: React.FC<GlobalHeaderViewProps> = ({
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          {/* Desktop CTA */}
-          {(useLocalSlbChrome ||
-            (headerContactField &&
-              (pageEditing || headerContactField.value?.href))) && (
-            <div className="@lg:flex @lg:items-center @lg:justify-end hidden">
+          {/* Desktop search and CTA */}
+          <div className="@lg:flex @lg:items-center @lg:justify-end hidden">
+            {!pageEditing && (
+              <SiteSearchDialog
+                locale={page.locale || 'en'}
+                pageName={page.layout.sitecore.route?.name}
+                siteName={page.siteName}
+                trackingEnabled={!page.mode.isPreview}
+                className="mr-2"
+              />
+            )}
+            {(useLocalSlbChrome ||
+              (headerContactField &&
+                (pageEditing || headerContactField.value?.href))) && (
               <Button
                 variant="outline"
                 asChild
@@ -249,10 +259,18 @@ const GlobalHeaderView: React.FC<GlobalHeaderViewProps> = ({
                   />
                 )}
               </Button>
-            </div>
-          )}
+            )}
+          </div>
           {/* Mobile Navigation */}
-          <div className="@lg:hidden flex flex-1 justify-end">
+          <div className="@lg:hidden flex flex-1 items-center justify-end">
+            {!pageEditing && (
+              <SiteSearchDialog
+                locale={page.locale || 'en'}
+                pageName={page.layout.sitecore.route?.name}
+                siteName={page.siteName}
+                trackingEnabled={!page.mode.isPreview}
+              />
+            )}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button

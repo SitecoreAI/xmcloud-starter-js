@@ -9,12 +9,14 @@ The app also contains a route-aware SLB presentation layer. When a known Sitecor
 ## Local development
 
 1. Copy `.env.remote.example` to `.env.local`.
-2. Populate the Sitecore environment values, including `SITECORE_EDGE_CONTEXT_ID`, `NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID`, and `SITECORE_EDITING_SECRET`.
+2. Populate the Sitecore environment values, including `SITECORE_EDGE_CONTEXT_ID`, `NEXT_PUBLIC_SITECORE_EDGE_CONTEXT_ID`, `NEXT_PUBLIC_SITECORE_SEARCH_INDEX_ID`, and `SITECORE_EDITING_SECRET`.
 3. Keep `NEXT_PUBLIC_DEFAULT_SITE_NAME=slb` and `SITECORE_SITE_COLLECTION_NAME=SLB`.
 4. Install dependencies with `npm install`.
 5. Start the app with `npm run dev`.
 
 The app is available at [http://localhost:3000](http://localhost:3000).
+
+The header search uses the native SitecoreAI Search API through the Content SDK. Its search source should crawl this site's `/sitemap.xml` with both `en` and `es-MX` enabled. Until the source is configured or while it is indexing, the UI falls back to a locale-isolated index of the governed SLB content catalog.
 
 ## Useful commands
 

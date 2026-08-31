@@ -15,6 +15,18 @@ import type { GlobalHeaderProps } from '@/components/global-header/global-header
 import type { LinkField } from '@sitecore-content-sdk/nextjs';
 import { getSlbDamAssetUrl } from '@/lib/slb-dam-assets';
 
+jest.mock('@/components/site-search/SiteSearchDialog', () => ({
+  SiteSearchDialog: ({ locale }: { locale: string }) => (
+    <button
+      type="button"
+      aria-label={
+        locale.toLowerCase() === 'es-mx' ? 'Abrir búsqueda' : 'Open search menu'
+      }
+      data-testid="site-search-trigger"
+    />
+  ),
+}));
+
 // Mock the cn utility
 jest.mock('@/lib/utils', () => ({
   cn: (...args: (string | Record<string, boolean> | undefined)[]) => {
@@ -266,6 +278,9 @@ describe('GlobalHeader Component', () => {
       expect(screen.getByRole('banner')).toBeInTheDocument();
       expect(screen.getByTestId('logo-component')).toBeInTheDocument();
       expect(screen.getByTestId('navigation-menu')).toBeInTheDocument();
+      expect(
+        screen.getAllByRole('button', { name: 'Open search menu' }),
+      ).toHaveLength(2);
     });
 
     it('should render header as a header element', () => {
@@ -303,6 +318,9 @@ describe('GlobalHeader Component', () => {
       expect(
         screen.getByRole('navigation', { name: 'Navegación' }),
       ).toBeInTheDocument();
+      expect(
+        screen.getAllByRole('button', { name: 'Abrir búsqueda' }),
+      ).toHaveLength(2);
     });
 
     it('should render logo as Image when in editing mode', () => {
@@ -441,6 +459,14 @@ describe('GlobalHeader Component', () => {
 
       const ctaButtons = screen.getAllByText('Get Started');
       expect(ctaButtons.length).toBeGreaterThanOrEqual(1);
+    });
+
+    it('keeps the visitor search UI out of Page Builder editing chrome', () => {
+      render(<GlobalHeader {...propsEditing} />);
+
+      expect(
+        screen.queryByTestId('site-search-trigger'),
+      ).not.toBeInTheDocument();
     });
   });
 
