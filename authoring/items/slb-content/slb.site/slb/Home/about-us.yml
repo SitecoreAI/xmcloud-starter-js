@@ -1,0 +1,438 @@
+---
+ID: 0a9d8ff9-e3ac-4a15-bfd9-68b981e38eb5
+Parent: 7c4e1c03-65c5-4cf5-91b9-dcbaaef23e09
+Template: 68cb6017-fca4-4d06-80ae-88dfd97c603c
+Path: /sitecore/content/slb/slb/Home/about-us
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{2E126E03-5EE0-4EED-B6CB-E597A33F504B}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 66dc7f2d-e238-486e-8130-1eed726a66dc
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 70c7598f-2cdc-4a55-820e-97ae4849f3d3
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Who we are
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194309Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 6b460cfd-61bb-4dc7-94f0-4517959a216c
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194310Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: about-us
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194311Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: About us
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 33015bfe-0981-4719-bf54-08b4365b493c
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T194311Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194312Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: about-us
+      - Version: 3
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194313Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: About us
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 0fcd9697-086a-4f06-af4b-c7ac2c071dbc
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: About us
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T194313Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194314Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: about-us
+      - Version: 4
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194422Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: About us
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: About us
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 43961a08-30a8-46d4-870a-035c57493db9
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: About us
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T194422Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194422Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: about-us
+      - Version: 5
+        Fields:
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: A global technology company driving energy innovation for a balanced planet.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201730Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Who we are
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: A global technology company driving energy innovation for a balanced planet.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: We are SLB
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: About us
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 72187843-46b4-4e9c-8eb8-1bbe9f48dba6
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Who we are
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: We are SLB
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201730Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T201731Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: about-us
+      - Version: 6
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{CDC6ACAF-FE11-3305-B1F9-22C3C0BBE603}"
+                            p:before="*"
+                            s:ds="7acbde1a-9e11-edaa-cc77-d15e9a220215"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0CB60E5A-3CB5-E8FA-FB7F-00286CEB360C}"
+                            p:after="r[@uid='{CDC6ACAF-FE11-3305-B1F9-22C3C0BBE603}']"
+                            s:ds="78da33cd-05e0-881d-e453-1fee6a8e1fb4"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=purpose"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{5FC2BEC8-F153-BD09-7CE0-7EA099C58035}"
+                            p:after="r[@uid='{0CB60E5A-3CB5-E8FA-FB7F-00286CEB360C}']"
+                            s:ds="4e430a14-a1ff-f746-b4b8-e81ddc0d25af"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{77730B8B-764A-F3C7-7DCA-94680A828482}"
+                            p:after="r[@uid='{5FC2BEC8-F153-BD09-7CE0-7EA099C58035}']"
+                            s:ds="424c46ba-20d6-b0c7-8bee-f589ebd22666"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{2B861A78-4A88-4FEF-F4D4-F1873CFEC92D}"
+                            p:after="r[@uid='{77730B8B-764A-F3C7-7DCA-94680A828482}']"
+                            s:ds="d669d089-0839-15b5-0fc7-36d0f77e9ea8"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{72AF346E-6CDC-6E95-0021-666192AA3473}"
+                            p:after="r[@uid='{2B861A78-4A88-4FEF-F4D4-F1873CFEC92D}']"
+                            s:ds="629d669e-58b6-569d-790f-a4296b739499"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{00CC24A4-5F65-61B1-BA5A-02503170D2F8}"
+                            p:after="r[@uid='{72AF346E-6CDC-6E95-0021-666192AA3473}']"
+                            s:ds="69deb736-5116-315e-c5e2-00c7e29f1ea0"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: A global technology company driving energy innovation for a balanced planet.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201912Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Who we are
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: A global technology company driving energy innovation for a balanced planet.
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: A global technology company driving energy innovation for a balanced planet.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: We are SLB
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" alt="Two SLB engineers pose between test fixtures in a technology center." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: We are SLB | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: a87d163f-5b29-c9a7-9403-c8dfd9fff62a
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: A global technology company driving energy innovation for a balanced planet.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Who we are
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: We are SLB
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201912Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: We are SLB | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, about-us
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: bcb309e1-3ccc-4857-8215-6ca3357aa8ae
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Quiénes somos
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{CDC6ACAF-FE11-3305-B1F9-22C3C0BBE603}"
+                            p:before="*"
+                            s:ds="7acbde1a-9e11-edaa-cc77-d15e9a220215"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0CB60E5A-3CB5-E8FA-FB7F-00286CEB360C}"
+                            p:after="r[@uid='{CDC6ACAF-FE11-3305-B1F9-22C3C0BBE603}']"
+                            s:ds="78da33cd-05e0-881d-e453-1fee6a8e1fb4"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=purpose"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{5FC2BEC8-F153-BD09-7CE0-7EA099C58035}"
+                            p:after="r[@uid='{0CB60E5A-3CB5-E8FA-FB7F-00286CEB360C}']"
+                            s:ds="4e430a14-a1ff-f746-b4b8-e81ddc0d25af"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{77730B8B-764A-F3C7-7DCA-94680A828482}"
+                            p:after="r[@uid='{5FC2BEC8-F153-BD09-7CE0-7EA099C58035}']"
+                            s:ds="424c46ba-20d6-b0c7-8bee-f589ebd22666"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{2B861A78-4A88-4FEF-F4D4-F1873CFEC92D}"
+                            p:after="r[@uid='{77730B8B-764A-F3C7-7DCA-94680A828482}']"
+                            s:ds="d669d089-0839-15b5-0fc7-36d0f77e9ea8"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{72AF346E-6CDC-6E95-0021-666192AA3473}"
+                            p:after="r[@uid='{2B861A78-4A88-4FEF-F4D4-F1873CFEC92D}']"
+                            s:ds="629d669e-58b6-569d-790f-a4296b739499"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{00CC24A4-5F65-61B1-BA5A-02503170D2F8}"
+                            p:after="r[@uid='{72AF346E-6CDC-6E95-0021-666192AA3473}']"
+                            s:ds="69deb736-5116-315e-c5e2-00c7e29f1ea0"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Una empresa tecnológica global que impulsa la innovación energética para un planeta equilibrado.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201912Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Quiénes somos
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Una empresa tecnológica global que impulsa la innovación energética para un planeta equilibrado.
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Una empresa global de tecnología que impulsa la innovación energética para un planeta equilibrado.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Somos SLB
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" alt="Dos ingenieros de SLB posan entre equipos de prueba en un centro tecnológico." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Somos SLB | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 515acf0c-7d07-a6b7-6236-cd14a00797cb
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Una empresa tecnológica global que impulsa la innovación energética para un planeta equilibrado.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Quiénes somos
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Somos SLB
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201912Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Somos SLB | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, about-us

@@ -1,0 +1,15 @@
+{
+  "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "slb.presentation",
+  "items": {
+    "path": "slb-presentation",
+    "includes": [
+      {
+        "name": "slb.hero",
+        "path": "/sitecore/layout/Renderings/Project/click-click-launch/Banners/SLB Hero",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      }
+    ]
+  }
+}

@@ -1,0 +1,366 @@
+---
+ID: 5c955743-7376-48cb-9442-98187a9686bd
+Parent: ac069f53-cd2b-431c-911f-198961034026
+Template: f2b7919e-694a-4ea6-97c7-1e6899c247dd
+Path: /sitecore/content/slb/slb/Home/solutions/new-energy-systems
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{38CEB449-119C-4D6F-9807-CBC6D4D10B6E}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 0ec7c4d6-fa6e-41ad-84ec-31632bc5daf7
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 28ce4870-9ce9-4272-8106-edeec3e2eaa0
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: New energy systems
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200305Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 3dad53a3-122d-45de-b904-43874d65718a
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200306Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: new-energy-systems
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200307Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Build the systems that move energy forward
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: de834ba0-7106-45dc-9148-5cf72c390381
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: New energy systems
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T200307Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200308Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: new-energy-systems
+      - Version: 3
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201716Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Build the systems that move energy forward
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Build the systems that move energy forward
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 58e5cce0-cce4-49b5-bd8e-9b03aa44fe1a
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Apply subsurface science, technology development, and industrial delivery to turn emerging energy opportunities into systems that can be designed, built, and operated.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: New energy systems
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201716Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T201717Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: new-energy-systems
+      - Version: 4
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{93218E6E-8831-9871-1968-5429B7589CFB}"
+                            p:before="*"
+                            s:ds="73520117-8110-a59a-ebe6-80e930d627df"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{58DE425B-84DE-40A5-31E1-1BBE552FD850}"
+                            p:after="r[@uid='{93218E6E-8831-9871-1968-5429B7589CFB}']"
+                            s:ds="8b77514d-b892-72d9-cd01-0bc6e04bce1e"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{C674D87A-9136-45E4-97F1-0A1FCEDEDE2A}"
+                            p:after="r[@uid='{58DE425B-84DE-40A5-31E1-1BBE552FD850}']"
+                            s:ds="009620a3-b34a-5141-9ccb-af20a73660fa"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{4EC2AFBC-3380-0B2A-ACA5-6CCDFC9EDD8B}"
+                            p:after="r[@uid='{C674D87A-9136-45E4-97F1-0A1FCEDEDE2A}']"
+                            s:ds="5dd02354-55c2-111d-e266-6b23268d2086"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{ED6FC5E6-AA5F-5158-CEB3-6B2186FB7BFA}"
+                            p:after="r[@uid='{4EC2AFBC-3380-0B2A-ACA5-6CCDFC9EDD8B}']"
+                            s:ds="9e773606-3685-5aef-7cd1-65286e75a8c5"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0DF6725D-56A2-DE64-3D14-E5BB3BF1BE80}"
+                            p:after="r[@uid='{ED6FC5E6-AA5F-5158-CEB3-6B2186FB7BFA}']"
+                            s:ds="b3e80b82-6f80-cb31-1017-49a9bc6a370e"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{3FD9A4B7-439F-C9D6-31C3-EF1734BE3984}"
+                            p:after="r[@uid='{0DF6725D-56A2-DE64-3D14-E5BB3BF1BE80}']"
+                            s:ds="4352fc79-205c-d97b-fc2c-fe375cec9b22"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Apply subsurface science, technology development, and industrial delivery to turn emerging energy opportunities into systems that can be designed, built, and operated.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201751Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: New energy systems
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Apply subsurface science, technology development, and industrial delivery to turn emerging energy opportunities into systems that can be designed, built, and operated.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Build the systems that move energy forward
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/1ae6355316334fa9a7a59c39e49aec17?v=610e91ff" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/1ae6355316334fa9a7a59c39e49aec17?v=610e91ff" alt="Geothermal power plant in a green mountain landscape." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Build the systems that move energy forward | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: c1a53ae4-93e9-33b5-57ee-a7fe162b018a
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Apply subsurface science, technology development, and industrial delivery to turn emerging energy opportunities into systems that can be designed, built, and operated.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: New energy systems
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Build the systems that move energy forward
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201751Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Build the systems that move energy forward | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, solutions
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: f90e0f25-bccc-4e26-975d-d8eb823409cb
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Nuevos sistemas de energía
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{93218E6E-8831-9871-1968-5429B7589CFB}"
+                            p:before="*"
+                            s:ds="73520117-8110-a59a-ebe6-80e930d627df"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{58DE425B-84DE-40A5-31E1-1BBE552FD850}"
+                            p:after="r[@uid='{93218E6E-8831-9871-1968-5429B7589CFB}']"
+                            s:ds="8b77514d-b892-72d9-cd01-0bc6e04bce1e"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{C674D87A-9136-45E4-97F1-0A1FCEDEDE2A}"
+                            p:after="r[@uid='{58DE425B-84DE-40A5-31E1-1BBE552FD850}']"
+                            s:ds="009620a3-b34a-5141-9ccb-af20a73660fa"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{4EC2AFBC-3380-0B2A-ACA5-6CCDFC9EDD8B}"
+                            p:after="r[@uid='{C674D87A-9136-45E4-97F1-0A1FCEDEDE2A}']"
+                            s:ds="5dd02354-55c2-111d-e266-6b23268d2086"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{ED6FC5E6-AA5F-5158-CEB3-6B2186FB7BFA}"
+                            p:after="r[@uid='{4EC2AFBC-3380-0B2A-ACA5-6CCDFC9EDD8B}']"
+                            s:ds="9e773606-3685-5aef-7cd1-65286e75a8c5"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0DF6725D-56A2-DE64-3D14-E5BB3BF1BE80}"
+                            p:after="r[@uid='{ED6FC5E6-AA5F-5158-CEB3-6B2186FB7BFA}']"
+                            s:ds="b3e80b82-6f80-cb31-1017-49a9bc6a370e"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{3FD9A4B7-439F-C9D6-31C3-EF1734BE3984}"
+                            p:after="r[@uid='{0DF6725D-56A2-DE64-3D14-E5BB3BF1BE80}']"
+                            s:ds="4352fc79-205c-d97b-fc2c-fe375cec9b22"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Aplique ciencia del subsuelo, desarrollo tecnológico y ejecución industrial para convertir oportunidades energéticas emergentes en sistemas que puedan diseñarse, construirse y operarse.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201751Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Nuevos sistemas de energía
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Aplique ciencia del subsuelo, desarrollo tecnológico y ejecución industrial para convertir oportunidades energéticas emergentes en sistemas que puedan diseñarse, construirse y operarse.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Construya los sistemas que impulsan el futuro de la energía
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/1ae6355316334fa9a7a59c39e49aec17?v=610e91ff" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/1ae6355316334fa9a7a59c39e49aec17?v=610e91ff" alt="Planta de energía geotérmica en un paisaje montañoso y verde." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Construya los sistemas que impulsan el futuro de la energía | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 864381f3-0b26-c139-28f7-36a8d6b28f7b
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Aplique ciencia del subsuelo, desarrollo tecnológico y ejecución industrial para convertir oportunidades energéticas emergentes en sistemas que puedan diseñarse, construirse y operarse.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Nuevos sistemas de energía
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Construya los sistemas que impulsan el futuro de la energía
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201751Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Construya los sistemas que impulsan el futuro de la energía | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, solutions

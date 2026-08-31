@@ -1,0 +1,81 @@
+---
+ID: 7a7c5846-bd22-b138-ad80-6e6bf9e6b5a1
+Parent: b139b412-67ba-4dd3-8451-9a5eaf7754d2
+Template: bd372d9d-6e4f-4ae9-a54c-dbc2acdebe2a
+Path: /sitecore/content/slb/slb/Data/Animated Promos/N03 component-04 Promo
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: a83e3beb-ab82-c710-c5b3-52bf98c519b7
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/digital-workflow-automation.jpg" alt="An operations specialist reviews an automated workflow connected to field execution." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: a0775c7b-342a-12bb-5813-7f6050428eb9
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: Start with a decision that matters and a workflow people understand. Define the approved data, the action boundary, the human review, and the evidence of value. Then reuse the governed components in the next workflow. Scale becomes a result of repeatability, not a promise made at the beginning.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Move from a pilot to an operating capability
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/digital-workflow-automation.jpg" alt="Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 884cd68a-e848-d03a-77f9-14d3996d2a4e
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: Comience con una decisión relevante y un flujo que las personas comprendan. Defina los datos aprobados, el límite de acción, la revisión humana y la evidencia de valor. Después, reutilice los componentes gobernados en el siguiente flujo. La escala se convierte en resultado de la repetibilidad, no en una promesa inicial.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Pase de un piloto a una capacidad operativa

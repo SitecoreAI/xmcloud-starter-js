@@ -1,4 +1,11 @@
-import { Field, LinkField, ImageField, Page, PageMode, ComponentRendering } from '@sitecore-content-sdk/nextjs';
+import {
+  Field,
+  LinkField,
+  ImageField,
+  Page,
+  PageMode,
+  ComponentRendering,
+} from '@sitecore-content-sdk/nextjs';
 import { HeroProps } from '@/components/hero/hero.props';
 import { EnumValues } from '@/enumerations/generic.enum';
 import { ColorScheme } from '@/enumerations/CtaBannerColorScheme.enum';
@@ -50,7 +57,8 @@ export const mockTitleField: Field<string> = {
 };
 
 export const mockDescriptionField: Field<string> = {
-  value: 'Discover amazing features and transform your experience with our innovative solutions.',
+  value:
+    'Discover amazing features and transform your experience with our innovative solutions.',
 };
 
 // Mock link field
@@ -197,6 +205,13 @@ export const mockFieldsWithImagesOnly = {
   heroImageOptional4: mockImageField4,
 };
 
+export const mockFieldsWithSingleImage = {
+  titleRequired: mockTitleField,
+  descriptionOptional: mockDescriptionField,
+  linkOptional: mockLinkField,
+  heroImageOptional1: mockImageField1,
+};
+
 // Mock params for different color schemes
 export const mockParamsLight = {
   colorScheme: 'light' as EnumValues<typeof ColorScheme>,
@@ -297,6 +312,13 @@ export const propsWithImagesOnly: HeroProps = {
   page: mockPageData.page,
 };
 
+export const propsWithSingleImage: HeroProps = {
+  params: mockParamsDark,
+  fields: mockFieldsWithSingleImage,
+  rendering: mockRendering,
+  page: mockPageData.page,
+};
+
 export const propsWithoutColorScheme: HeroProps = {
   params: mockParamsWithoutColorScheme,
   fields: mockFields,
@@ -317,4 +339,3 @@ export const propsEditing: HeroProps = {
   rendering: mockRendering,
   page: mockPageDataEditing.page,
 };
-

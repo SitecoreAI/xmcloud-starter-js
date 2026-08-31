@@ -1,0 +1,398 @@
+---
+ID: dde0a656-28db-42ae-91cc-f37c85089cb9
+Parent: 7c4e1c03-65c5-4cf5-91b9-dcbaaef23e09
+Template: 68cb6017-fca4-4d06-80ae-88dfd97c603c
+Path: /sitecore/content/slb/slb/Home/news-and-insights
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{BE3790A4-4A10-4EFE-B1B7-C33DD01EA099}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 259919b2-73c2-4205-9c90-908367697657
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 09271044-04f4-47fe-b41e-2bdc9d018d06
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: News and insights
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194302Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: ef818110-f0fb-4df3-ae59-1858d4301aa1
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194303Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: news-and-insights
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194304Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: News and insights
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 9742f2ff-002f-42ab-8f9f-2571cccfb2aa
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T194304Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194305Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: news-and-insights
+      - Version: 3
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194306Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: News and insights
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: e6a1dab1-9304-4061-a2d4-7da9e615259d
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: News and insights
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T194306Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194306Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: news-and-insights
+      - Version: 4
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194419Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: News and insights
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: News and insights
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 49cb827f-dbc4-41f4-a52a-c61702966ff2
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: News and insights
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T194419Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194420Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: news-and-insights
+      - Version: 5
+        Fields:
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Explore current company news, technology updates, and perspectives from people working across energy's most important questions.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201249Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Ideas and updates moving energy forward
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: News and insights
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: b5bcff39-2974-436f-8e0c-f3c4f3694269
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: News and insights
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Ideas and updates moving energy forward
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201249Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T201250Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: news-and-insights
+      - Version: 6
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{D2B26379-3233-6E94-0BCE-D311F5DFCE66}"
+                            p:before="*"
+                            s:ds="a10479e3-9b54-d6f0-49ed-0d5c524e1677"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{95983FF4-2D72-A0E6-6862-F26F30DFD4E0}"
+                            p:after="r[@uid='{D2B26379-3233-6E94-0BCE-D311F5DFCE66}']"
+                            s:ds="48de45cd-996c-cf2b-48cb-eeecc37e4d07"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{37790344-24FA-9024-AFD0-205DB397B444}"
+                            p:after="r[@uid='{95983FF4-2D72-A0E6-6862-F26F30DFD4E0}']"
+                            s:ds="95882698-14af-811b-382d-b57858cb846f"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{60E35EAE-0828-7BAB-5C7D-D386C8E22B1F}"
+                            p:after="r[@uid='{37790344-24FA-9024-AFD0-205DB397B444}']"
+                            s:ds="bff9d66c-b257-c6db-d28d-3e5115f58fa6"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{018FF60E-ED72-7678-B72C-54B6D5BFC215}"
+                            p:after="r[@uid='{60E35EAE-0828-7BAB-5C7D-D386C8E22B1F}']"
+                            s:ds="125c7152-fa2f-e0bf-b614-3196cd6acb1c"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Explore current company news, technology updates, and perspectives from people working across energy's most important questions.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201328Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: News and insights
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Explore current company news, technology updates, and perspectives from people working across energy's most important questions.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Ideas and updates moving energy forward
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" alt="SLB employees work around a forklift inside the Shreveport manufacturing facility." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Ideas and updates moving energy forward | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 4131d67e-1c83-f22d-57f5-867e439af10b
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Explore current company news, technology updates, and perspectives from people working across energy's most important questions.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: News and insights
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Ideas and updates moving energy forward
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201328Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Ideas and updates moving energy forward | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, news-and-insights
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 5f6f58b1-2787-4c92-a546-5c9495c913d4
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Noticias y análisis
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{D2B26379-3233-6E94-0BCE-D311F5DFCE66}"
+                            p:before="*"
+                            s:ds="a10479e3-9b54-d6f0-49ed-0d5c524e1677"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{95983FF4-2D72-A0E6-6862-F26F30DFD4E0}"
+                            p:after="r[@uid='{D2B26379-3233-6E94-0BCE-D311F5DFCE66}']"
+                            s:ds="48de45cd-996c-cf2b-48cb-eeecc37e4d07"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{37790344-24FA-9024-AFD0-205DB397B444}"
+                            p:after="r[@uid='{95983FF4-2D72-A0E6-6862-F26F30DFD4E0}']"
+                            s:ds="95882698-14af-811b-382d-b57858cb846f"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{60E35EAE-0828-7BAB-5C7D-D386C8E22B1F}"
+                            p:after="r[@uid='{37790344-24FA-9024-AFD0-205DB397B444}']"
+                            s:ds="bff9d66c-b257-c6db-d28d-3e5115f58fa6"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{018FF60E-ED72-7678-B72C-54B6D5BFC215}"
+                            p:after="r[@uid='{60E35EAE-0828-7BAB-5C7D-D386C8E22B1F}']"
+                            s:ds="125c7152-fa2f-e0bf-b614-3196cd6acb1c"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Consulte noticias corporativas, novedades tecnológicas y perspectivas de personas que trabajan en las preguntas más importantes del sector energético.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201328Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Noticias y análisis
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Consulte noticias corporativas, novedades tecnológicas y perspectivas de personas que trabajan en las preguntas más importantes del sector energético.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Ideas y novedades que impulsan el futuro de la energía
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" alt="Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Ideas y novedades que impulsan el futuro de la energía | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: c08fc2e0-6307-05de-3e8b-0922b77c4910
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Consulte noticias corporativas, novedades tecnológicas y perspectivas de personas que trabajan en las preguntas más importantes del sector energético.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Noticias y análisis
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Ideas y novedades que impulsan el futuro de la energía
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201328Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Ideas y novedades que impulsan el futuro de la energía | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, news-and-insights

@@ -1,0 +1,81 @@
+---
+ID: 3d61f681-43ae-b3ba-a171-7054dd096b3b
+Parent: 92a4c774-f20e-4f57-8dbb-1a57e8f1f137
+Template: bee4869d-b588-42c2-9797-76510c397e6a
+Path: /sitecore/content/slb/slb/Data/Calls to Action Banners/P01 Final CTA
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: c6caffea-df73-6f84-c097-f3d38fc486ed
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7a8c2095-39f5-4f40-b69d-16ddff188a68
+            Hint: titleRequired
+            Value: Find the right capability for your operation
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: a2657539-b6d6-bbfc-f202-5f82f0ae3fdb
+          - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Talk to an expert" url="" />
+          - ID: a35015fe-805c-45d7-9446-f88b33a157d4
+            Hint: descriptionOptional
+            Value: Connect with SLB specialists to turn the next operating challenge into an actionable plan.
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7a8c2095-39f5-4f40-b69d-16ddff188a68
+            Hint: titleRequired
+            Value: Encuentre la capacidad adecuada para su operación
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: eb1adf5c-1895-fa6c-80e6-f46d7520e946
+          - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Hable con un especialista" url="" />
+          - ID: a35015fe-805c-45d7-9446-f88b33a157d4
+            Hint: descriptionOptional
+            Value: Conecte con especialistas de SLB para convertir el próximo desafío operativo en un plan de acción.
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z

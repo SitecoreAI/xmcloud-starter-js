@@ -15,7 +15,9 @@ import {
 
 // Mock the cn utility
 jest.mock('@/lib/utils', () => ({
-  cn: (...args: Array<string | boolean | Record<string, boolean> | undefined>) => {
+  cn: (
+    ...args: Array<string | boolean | Record<string, boolean> | undefined>
+  ) => {
     return args
       .flat(2)
       .filter(Boolean)
@@ -38,7 +40,6 @@ jest.mock('@/lib/utils', () => ({
 // RichText component is already mocked in jest.setup.js
 
 describe('RichTextBlock Component', () => {
-
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -49,7 +50,7 @@ describe('RichTextBlock Component', () => {
 
       expect(screen.getByTestId('rich-text-content')).toBeInTheDocument();
       expect(screen.getByTestId('rich-text-content')).toHaveTextContent(
-        'This is a test rich text content'
+        'This is a test rich text content',
       );
     });
 
@@ -58,7 +59,10 @@ describe('RichTextBlock Component', () => {
 
       // Find the container div that wraps the RichText component
       const container = screen.getByTestId('rich-text-content').parentElement;
-      expect(container).toHaveAttribute('data-component-name', 'rich-text-block');
+      expect(container).toHaveAttribute(
+        'data-component-name',
+        'rich-text-block',
+      );
       expect(container).toHaveAttribute('id', 'test-rendering-id');
     });
 
@@ -91,7 +95,7 @@ describe('RichTextBlock Component', () => {
 
       expect(screen.getByTestId('no-data-fallback')).toBeInTheDocument();
       expect(screen.getByTestId('no-data-fallback')).toHaveTextContent(
-        'Rich Text Block requires a datasource item assigned.'
+        'Rich Text Block requires a datasource item assigned.',
       );
     });
 
@@ -107,30 +111,42 @@ describe('RichTextBlock Component', () => {
       render(<RichTextBlock {...propsWithEmptyText} />);
 
       expect(screen.getByTestId('rich-text-content')).toBeInTheDocument();
-      expect(screen.getByTestId('rich-text-content')).toHaveTextContent('No content');
+      expect(screen.getByTestId('rich-text-content')).toHaveTextContent(
+        'No content',
+      );
     });
 
     it('should handle undefined text field value', () => {
       render(<RichTextBlock {...propsWithUndefinedText} />);
 
       expect(screen.getByTestId('rich-text-content')).toBeInTheDocument();
-      expect(screen.getByTestId('rich-text-content')).toHaveTextContent('No content');
+      expect(screen.getByTestId('rich-text-content')).toHaveTextContent(
+        'No content',
+      );
     });
 
     it('should handle complex HTML content in text field', () => {
       render(<RichTextBlock {...propsWithComplexHtml} />);
 
       expect(screen.getByTestId('rich-text-content')).toBeInTheDocument();
-      expect(screen.getByTestId('rich-text-content')).toHaveTextContent('Title');
+      expect(screen.getByTestId('rich-text-content')).toHaveTextContent(
+        'Title',
+      );
       expect(screen.getByTestId('rich-text-content')).toHaveTextContent('bold');
-      expect(screen.getByTestId('rich-text-content')).toHaveTextContent('italic');
+      expect(screen.getByTestId('rich-text-content')).toHaveTextContent(
+        'italic',
+      );
     });
 
     it('should handle multiple CSS classes in styles param', () => {
       render(<RichTextBlock {...propsWithMultipleStyles} />);
 
       const container = screen.getByTestId('rich-text-content').parentElement;
-      expect(container).toHaveClass('prose', 'custom-style-1', 'custom-style-2');
+      expect(container).toHaveClass(
+        'prose',
+        'custom-style-1',
+        'custom-style-2',
+      );
     });
   });
 
@@ -144,6 +160,17 @@ describe('RichTextBlock Component', () => {
       expect(container).toHaveClass('prose');
     });
 
+    it('should use the shared SLB page shell and authored-content spacing', () => {
+      render(<RichTextBlock {...defaultProps} />);
+
+      const container = screen.getByTestId('rich-text-content').parentElement;
+      expect(container).toHaveClass(
+        'slb-page-shell',
+        'slb-section-space',
+        'max-w-none',
+      );
+    });
+
     it('should pass the correct field to RichText component', () => {
       // RichText is already mocked in jest.setup.js
       // We can verify it was called correctly by checking the rendered output
@@ -152,7 +179,7 @@ describe('RichTextBlock Component', () => {
       // Verify that the RichText content is rendered with the correct field value
       expect(screen.getByTestId('rich-text-content')).toBeInTheDocument();
       expect(screen.getByTestId('rich-text-content')).toHaveTextContent(
-        'This is a test rich text content'
+        'This is a test rich text content',
       );
     });
   });
@@ -162,7 +189,10 @@ describe('RichTextBlock Component', () => {
       render(<RichTextBlock {...defaultProps} />);
 
       const container = screen.getByTestId('rich-text-content').parentElement;
-      expect(container).toHaveAttribute('data-component-name', 'rich-text-block');
+      expect(container).toHaveAttribute(
+        'data-component-name',
+        'rich-text-block',
+      );
     });
 
     it('should maintain semantic structure with prose class', () => {

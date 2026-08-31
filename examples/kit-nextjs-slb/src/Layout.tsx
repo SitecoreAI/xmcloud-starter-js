@@ -74,6 +74,28 @@ function createCompatibleSlbMainRoute<TRoute>(
   } as Exclude<TRoute, null | undefined>;
 }
 
+function hasOnlyCompatibleSlbMainPresentation(route: unknown): boolean {
+  if (!route || typeof route !== 'object') return false;
+  const presentation = (
+    route as { placeholders?: Record<string, unknown> }
+  ).placeholders?.['headless-main'];
+
+  return Boolean(
+    Array.isArray(presentation) &&
+      presentation.length > 0 &&
+      presentation.every(
+        (rendering) =>
+          rendering !== null &&
+          typeof rendering === 'object' &&
+          slbFallbackCompatibleMainComponents.has(
+            String(
+              (rendering as { componentName?: unknown }).componentName || '',
+            ),
+          ),
+      ),
+  );
+}
+
 const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
@@ -90,14 +112,16 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
   const hasLegacyMainContent = Boolean(
     fallbackPage && hasLegacySolterraRouteContent(route),
   );
-  const hasCompatibleMainContent = Boolean(compatibleMainRoute);
   const exposeLegacyAuthoringPresentation = Boolean(
     fallbackPage && mode.isEditing && hasLegacyMainContent && route,
+  );
+  const hasOnlyCompatibleMainContent = Boolean(
+    fallbackPage && hasOnlyCompatibleSlbMainPresentation(route),
   );
   const showFallbackPage = Boolean(
     fallbackPage &&
       !exposeLegacyAuthoringPresentation &&
-      (showFallback || hasCompatibleMainContent),
+      (showFallback || hasOnlyCompatibleMainContent),
   );
   const showUnfilteredMainPlaceholder = Boolean(
     route &&
@@ -106,8 +130,12 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
   );
   const mainPlaceholderRoute = exposeLegacyAuthoringPresentation
     ? route
-    : compatibleMainRoute ||
-      (showUnfilteredMainPlaceholder ? route : undefined);
+    : showFallbackPage
+      ? compatibleMainRoute ||
+        (showUnfilteredMainPlaceholder ? route : undefined)
+      : showUnfilteredMainPlaceholder
+        ? route
+        : undefined;
   const showLocalHeader = Boolean(
     route &&
       fallbackPage &&

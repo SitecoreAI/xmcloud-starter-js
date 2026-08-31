@@ -1,0 +1,324 @@
+---
+ID: 3bfdaaa9-0293-4b56-8d38-d19822122380
+Parent: dde0a656-28db-42ae-91cc-f37c85089cb9
+Template: 68cb6017-fca4-4d06-80ae-88dfd97c603c
+Path: /sitecore/content/slb/slb/Home/news-and-insights/insights
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{17FD191A-7E08-4E7F-9AC6-7B23AA92464C}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 91c7289b-4e18-4f07-a65a-558410b32a88
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 4cd1f3cc-33af-448a-b952-24265e1521a8
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Insights
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200605Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 68c3ca8c-8710-44d9-9329-5b39ca52bda4
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200606Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: insights
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200608Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Step into energy's next questions
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: fbd2c86f-6279-432f-9791-e32892d4a463
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Insights
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T200608Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200608Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: insights
+      - Version: 3
+        Fields:
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202200Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Step into energy's next questions
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: be0c4604-52ac-45be-9e59-20cdce8eeea5
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Insights
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Insights
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202200Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T202201Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: insights
+      - Version: 4
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{E22F7A13-E354-EEDC-1CB6-BBBB487CFFD3}"
+                            p:before="*"
+                            s:ds="47baf4a5-b04a-d4f6-ad59-2dedfdd477b2"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{BB6FB5E1-8848-8507-F78F-145EF5F1ECC4}"
+                            p:after="r[@uid='{E22F7A13-E354-EEDC-1CB6-BBBB487CFFD3}']"
+                            s:ds="b08ab64b-7054-c2a8-36bc-1f2525c6828c"
+                            s:id="{50B36874-8C4E-4958-9DD6-8B95C6AFD09A}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B97934C2E-BDBA-471D-B8C0-71EB934DC5A8%7D&amp;RenderingIdentifier=all-insights"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{EE98F21A-75D1-CBB2-6FB8-1379C1006BBA}"
+                            p:after="r[@uid='{BB6FB5E1-8848-8507-F78F-145EF5F1ECC4}']"
+                            s:ds="1018ee87-61b2-5f01-fb18-f14777532d90"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{3945D52E-6D89-2336-7301-45BABC37950B}"
+                            p:after="r[@uid='{EE98F21A-75D1-CBB2-6FB8-1379C1006BBA}']"
+                            s:ds="4d5b985b-b8e4-0e57-a449-2565eeff5516"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202203Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Insights
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Step into energy's next questions
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="/images/slb/insights-research-exchange-hero.jpg" alt="Scientists and energy analysts examine core samples and a basin model during a research roundtable." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Step into energy's next questions | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: e6dfb7d3-d9d4-2081-4cef-e5b31c00bb8c
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Insights
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Step into energy's next questions
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202203Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Step into energy's next questions | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, news-and-insights
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 982c8e60-0425-4351-b925-4fab351f3c95
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Análisis
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{E22F7A13-E354-EEDC-1CB6-BBBB487CFFD3}"
+                            p:before="*"
+                            s:ds="47baf4a5-b04a-d4f6-ad59-2dedfdd477b2"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{BB6FB5E1-8848-8507-F78F-145EF5F1ECC4}"
+                            p:after="r[@uid='{E22F7A13-E354-EEDC-1CB6-BBBB487CFFD3}']"
+                            s:ds="b08ab64b-7054-c2a8-36bc-1f2525c6828c"
+                            s:id="{50B36874-8C4E-4958-9DD6-8B95C6AFD09A}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B97934C2E-BDBA-471D-B8C0-71EB934DC5A8%7D&amp;RenderingIdentifier=all-insights"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{EE98F21A-75D1-CBB2-6FB8-1379C1006BBA}"
+                            p:after="r[@uid='{BB6FB5E1-8848-8507-F78F-145EF5F1ECC4}']"
+                            s:ds="1018ee87-61b2-5f01-fb18-f14777532d90"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{3945D52E-6D89-2336-7301-45BABC37950B}"
+                            p:after="r[@uid='{EE98F21A-75D1-CBB2-6FB8-1379C1006BBA}']"
+                            s:ds="4d5b985b-b8e4-0e57-a449-2565eeff5516"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Consulte perspectivas claras y basadas en evidencia sobre desempeño operativo, tecnología digital e IA, descarbonización y nuevos sistemas de energía.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202203Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Análisis
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Consulte perspectivas claras y basadas en evidencia sobre desempeño operativo, tecnología digital e IA, descarbonización y nuevos sistemas de energía.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Explore las próximas preguntas de la energía
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="/images/slb/insights-research-exchange-hero.jpg" alt="Científicos y analistas del sector energético examinan muestras de núcleos geológicos y un modelo de cuenca durante una mesa redonda de investigación." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Explore las próximas preguntas de la energía | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 13c13825-7a00-d0b0-f13d-f905570361a9
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Consulte perspectivas claras y basadas en evidencia sobre desempeño operativo, tecnología digital e IA, descarbonización y nuevos sistemas de energía.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Análisis
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Explore las próximas preguntas de la energía
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202203Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Explore las próximas preguntas de la energía | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, news-and-insights

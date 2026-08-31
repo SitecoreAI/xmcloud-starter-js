@@ -1,0 +1,84 @@
+---
+ID: c1fb1aba-097e-cde1-b4f4-1387e2eb1106
+Parent: 4b32c3bc-6445-aaca-2fba-e9b2e3e639a3
+Template: f94c8c17-70e8-4d8b-9d35-d0465c0e0945
+Path: /sitecore/content/slb/slb/Data/MultiPromos/S01 component-02 Cards/Card 02
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e
+    Hint: __Sortorder
+    Value: 100
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 05110c3f-dcec-1f36-4dff-49fc0e5df023
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Combine the right domain expertise, technology, and workflow.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Design
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" alt="SLB technician operates a test system in a bright manufacturing facility." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 05f7cf1f-4933-bf6c-a5d6-4f060c292c10
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Integrar la experiencia, la tecnología y el flujo de trabajo adecuados.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Diseñar
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" alt="Un técnico de SLB opera un sistema de pruebas en una luminosa planta de manufactura." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 612566fb-e6e5-7862-db64-9bc6f86a673f
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z

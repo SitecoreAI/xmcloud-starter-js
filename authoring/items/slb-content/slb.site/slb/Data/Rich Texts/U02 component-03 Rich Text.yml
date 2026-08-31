@@ -1,0 +1,69 @@
+---
+ID: 3184fc35-b064-f7fb-c681-f8ee7cf614c3
+Parent: f5f05e55-aea6-492e-8bc0-0264ee06bf75
+Template: 58041043-7bea-44f0-b1b8-08e4ea7054f4
+Path: /sitecore/content/slb/slb/Data/Rich Texts/U02 component-03 Rich Text
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 964ad7d7-f8a9-7e92-ef48-4fb5184c36c7
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8b57dadd-0825-4f5d-9c32-187c0af7e1fd
+            Hint: text
+            Value: <div class="ck-content"><p class="slb-kicker">How we work</p><h2>Pair ambition with a delivery path</h2><ol><li>Separate long-term goals from present capabilities and achieved results.</li><li>Explain the sequence of technology, operational, and partnership decisions needed to move forward.</li></ol></div>
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: b7af6e03-eabd-5129-edc8-846748e8005e
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8b57dadd-0825-4f5d-9c32-187c0af7e1fd
+            Hint: text
+            Value: <div class="ck-content"><p class="slb-kicker">Cómo trabajamos</p><h2>Acompañe la ambición con una ruta de ejecución</h2><ol><li>Distinga entre objetivos de largo plazo, capacidades actuales y resultados alcanzados.</li><li>Explique la secuencia de decisiones tecnológicas, operativas y de colaboración necesarias para avanzar.</li></ol></div>
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: b0570221-8f57-49b7-d66e-b21f69ff60f2
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z

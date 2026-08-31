@@ -1,0 +1,444 @@
+---
+ID: 6c22fc8e-534e-4b2f-9f7b-638c01b2db43
+Parent: 7c4e1c03-65c5-4cf5-91b9-dcbaaef23e09
+Template: 68cb6017-fca4-4d06-80ae-88dfd97c603c
+Path: /sitecore/content/slb/slb/Home/contact-us
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{A30890C2-31B9-4D2B-8BE1-75F272498E12}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: bd5418a2-fee1-4930-ba3a-99faa3352952
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: cf436b63-2889-43e8-bca7-424beed104f2
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Contact us
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202734Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: dd3f21e9-0c9a-4608-80a1-f0b91ce29821
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T202735Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: contact-us
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202737Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Talk with an SLB specialist
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 47a1fa87-5cd0-47f3-ae14-107dc9156098
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202737Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T202738Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: contact-us
+      - Version: 3
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202739Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Talk with an SLB specialist
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Talk with an SLB specialist
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 08ad770e-aebb-44e6-8edf-58131d70244b
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Contact us
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202739Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T202740Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: contact-us
+      - Version: 4
+        Fields:
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Tell us what you’re working on. We’ll connect you with the right technical and commercial team.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202932Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Tell us what you’re working on. We’ll connect you with the right technical and commercial team.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Talk with an SLB specialist
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Talk with an SLB specialist
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: b1f76d37-9169-4768-84ad-696edf8529f7
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Contact us
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Talk with an SLB specialist
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202932Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T202932Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: contact-us
+      - Version: 5
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{E5AD786C-C405-B5C5-54C4-76BFEBCC9CF6}"
+                            p:before="*"
+                            s:ds="ab72196b-e147-c847-ea68-f04f1745f946"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{B1ECAF20-8B9E-724E-A791-82C7223457A3}"
+                            p:after="r[@uid='{E5AD786C-C405-B5C5-54C4-76BFEBCC9CF6}']"
+                            s:ds="0608d96e-cfb0-99ff-4246-4c9d806f2df5"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{42FA05AE-36FD-9551-0233-699B6AF70E11}"
+                            p:after="r[@uid='{B1ECAF20-8B9E-724E-A791-82C7223457A3}']"
+                            s:ds="5ae8ef12-33db-85a6-835d-2cec2de0259d"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{10FE85FF-1F55-3B68-D79E-956DEB147B62}"
+                            p:after="r[@uid='{42FA05AE-36FD-9551-0233-699B6AF70E11}']"
+                            s:ds="ddd30738-b728-0893-2677-8d1c9475f037"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{8670F3C8-8965-90AA-3A90-6F8B94A4356F}"
+                            p:after="r[@uid='{10FE85FF-1F55-3B68-D79E-956DEB147B62}']"
+                            s:ds="19e407e4-27f9-5df7-46c3-baaa6cfe11fc"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Tell us what you're working on. We'll connect you with the right technical and commercial team.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T203009Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Contact us
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Tell us what you're working on. We'll connect you with the right technical and commercial team.
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Tell us what you’re working on. We’ll connect you with the right technical and commercial team.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Talk with an SLB specialist
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" alt="SLB engineer in blue coveralls stands on a bridge with a city behind her." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Contact us | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 3859454f-54e4-930a-3005-53bcc7282e81
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Tell us what you're working on. We'll connect you with the right technical and commercial team.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Contact us
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Talk with an SLB specialist
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T203009Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Talk with an SLB specialist | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, contact-us
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: cf9230d7-cd65-4d6f-8e26-7356f0bee9c8
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Contáctenos
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T203951Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: fa961dea-4044-442e-b803-985a56b2130b
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T203951Z
+      - Version: 2
+        Fields:
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T204429Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Hable con un especialista de SLB
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 4ca3d210-673f-49e6-b183-810e8a6c2549
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Contáctenos
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Hable con un especialista de SLB
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T204429Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T204430Z
+      - Version: 3
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{E5AD786C-C405-B5C5-54C4-76BFEBCC9CF6}"
+                            p:before="*"
+                            s:ds="ab72196b-e147-c847-ea68-f04f1745f946"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{B1ECAF20-8B9E-724E-A791-82C7223457A3}"
+                            p:after="r[@uid='{E5AD786C-C405-B5C5-54C4-76BFEBCC9CF6}']"
+                            s:ds="0608d96e-cfb0-99ff-4246-4c9d806f2df5"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{42FA05AE-36FD-9551-0233-699B6AF70E11}"
+                            p:after="r[@uid='{B1ECAF20-8B9E-724E-A791-82C7223457A3}']"
+                            s:ds="5ae8ef12-33db-85a6-835d-2cec2de0259d"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{10FE85FF-1F55-3B68-D79E-956DEB147B62}"
+                            p:after="r[@uid='{42FA05AE-36FD-9551-0233-699B6AF70E11}']"
+                            s:ds="ddd30738-b728-0893-2677-8d1c9475f037"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{8670F3C8-8965-90AA-3A90-6F8B94A4356F}"
+                            p:after="r[@uid='{10FE85FF-1F55-3B68-D79E-956DEB147B62}']"
+                            s:ds="19e407e4-27f9-5df7-46c3-baaa6cfe11fc"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T204635Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Contáctenos
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Hable con un especialista de SLB
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" alt="Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Contáctenos | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 1bc7a13a-50a3-975c-a782-39c8ead0f727
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Cuéntenos en qué está trabajando. Le pondremos en contacto con el equipo técnico y comercial adecuado.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Contáctenos
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Hable con un especialista de SLB
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T204635Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Hable con un especialista de SLB | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, contact-us

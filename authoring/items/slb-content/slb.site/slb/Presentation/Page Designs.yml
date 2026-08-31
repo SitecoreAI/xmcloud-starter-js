@@ -1,0 +1,73 @@
+﻿---
+ID: "1c21add7-d829-4b3b-bf5e-b093a0f71728"
+Parent: "62d15396-b9d6-4582-b33b-07ab120b9805"
+Template: "2b66ddd1-1b49-4775-8783-246a6bfdb7d1"
+Path: /sitecore/content/slb/slb/Presentation/Page Designs
+BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
+SharedFields:
+- ID: "ba1f60d6-3deb-40cc-bb61-eec772279ee1"
+  Hint: TemplatesMapping
+  Value: "%7bE1D11579-BBDA-44CF-AE32-3724634503B6%7d%3d%257B84F7DE93-87E4-4CD4-B845-7EB46C2D2473%257D%26%7b11119A39-3DE7-4F45-B6C0-DEC29F20A6E3%7d%3d%257B84F7DE93-87E4-4CD4-B845-7EB46C2D2473%257D%26%7b6E2760C6-CF70-4693-9E14-89B357CAD9A1%7d%26%7bC2D8982E-8676-415E-A8A4-9E696E0D9B9C%7d%3d%257B84F7DE93-87E4-4CD4-B845-7EB46C2D2473%257D%26%7bF2B7919E-694A-4EA6-97C7-1E6899C247DD%7d%3d%257B84F7DE93-87E4-4CD4-B845-7EB46C2D2473%257D%26%7b68CB6017-FCA4-4D06-80AE-88DFD97C603C%7d%3d%257B84F7DE93-87E4-4CD4-B845-7EB46C2D2473%257D%26%7bC7FA0A4C-CC18-4ED8-A7EE-3DF3598D7C92%7d%3d%257B84F7DE93-87E4-4CD4-B845-7EB46C2D2473%257D"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "b81e1244-7e87-4016-ae14-3f223ae813c2"
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{2EA756FA-AED6-4599-83B7-36FEFE229B31}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260830T192715Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8b16c1f6-8957-45d6-98d6-d07e2ef05a27"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260830T192900Z
+- Language: "es-MX"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260830T192715Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6dcf7961-a967-40b7-b85f-e1f05f6907a8"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260830T202511Z

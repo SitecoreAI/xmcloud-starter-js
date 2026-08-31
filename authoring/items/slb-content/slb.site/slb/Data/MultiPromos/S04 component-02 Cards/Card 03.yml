@@ -1,0 +1,84 @@
+---
+ID: 0f35550d-58db-df25-20c3-4a784857ebd9
+Parent: 009620a3-b34a-5141-9ccb-af20a73660fa
+Template: f94c8c17-70e8-4d8b-9d35-d0465c0e0945
+Path: /sitecore/content/slb/slb/Data/MultiPromos/S04 component-02 Cards/Card 03
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e
+    Hint: __Sortorder
+    Value: 200
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 98513df5-86ad-0483-821b-02d8741e23e2
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Integrate resource understanding, processing, and project delivery around the needs of each deposit.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Lithium
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/new-energy-lithium-extraction.jpg" alt="An engineer inspects modular direct-lithium-extraction equipment in a high-desert basin." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 3f2f0cc5-e751-ee0f-34a6-48ab1b9d057d
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Integre conocimiento del recurso, procesamiento y ejecución del proyecto según las características de cada depósito.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Litio
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/new-energy-lithium-extraction.jpg" alt="Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca desértica de gran altitud." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: e868842f-f838-e46e-c387-462d7d68b29a
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z

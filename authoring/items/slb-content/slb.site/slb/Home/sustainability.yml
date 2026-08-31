@@ -1,0 +1,412 @@
+---
+ID: 1bd44a6c-c817-4214-9347-ed52ceb6804a
+Parent: 7c4e1c03-65c5-4cf5-91b9-dcbaaef23e09
+Template: 68cb6017-fca4-4d06-80ae-88dfd97c603c
+Path: /sitecore/content/slb/slb/Home/sustainability
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{76116456-9BCD-4DD1-B389-EB04BE9673A0}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 9fe9af6e-1c1e-4224-826f-7fa83d1fd04e
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: d65c1a12-036b-4ea5-b949-929eca43f21e
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Sustainability
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194255Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 99f9539f-b5d1-4075-9881-d3251a42f05b
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194255Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: sustainability
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194257Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Sustainability
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 60aaf2d2-91c9-4b50-822c-78c023c45791
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T194257Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194258Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: sustainability
+      - Version: 3
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194259Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Sustainability
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: e3f50c94-6c2d-4317-a0e4-98241af6b1ff
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Sustainability
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T194259Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194259Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: sustainability
+      - Version: 4
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T194415Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Sustainability
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Sustainability
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: c3e8ab36-e828-4ea9-9fd7-cb073f309c32
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Sustainability
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T194415Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T194417Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: sustainability
+      - Version: 5
+        Fields:
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Bring climate, people, and nature into the decisions that shape technology, operations, partnerships, and long-term performance.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201247Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Sustainability, embedded in how we work
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Sustainability
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 99a7d44d-6bb5-4418-95e1-a740a179967b
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Sustainability
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Sustainability, embedded in how we work
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201247Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T201249Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: sustainability
+      - Version: 6
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{FE87A3AE-B5F7-ECEA-D457-51CF4F6EE441}"
+                            p:before="*"
+                            s:ds="df5253b4-921c-a50c-153f-f93cabc5d64e"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{9421A78C-7FB0-761C-C5AF-82ADD9995DCF}"
+                            p:after="r[@uid='{FE87A3AE-B5F7-ECEA-D457-51CF4F6EE441}']"
+                            s:ds="5d14adce-56c3-365b-d64f-c5bcd80718d8"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=approach"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{255E54AB-E2C6-8248-A3B6-A6099AF95037}"
+                            p:after="r[@uid='{9421A78C-7FB0-761C-C5AF-82ADD9995DCF}']"
+                            s:ds="6e9564c5-fb3c-628c-35f9-bee7266f8788"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{BA812F13-8A03-31BB-F47D-6C07CD974B3A}"
+                            p:after="r[@uid='{255E54AB-E2C6-8248-A3B6-A6099AF95037}']"
+                            s:ds="ef109419-9a3b-5811-01dd-6352cc8d24a9"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=governance-makes-ambition-accountable"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{7FD0CABD-87DD-A4F0-0238-43F30D2E0CD4}"
+                            p:after="r[@uid='{BA812F13-8A03-31BB-F47D-6C07CD974B3A}']"
+                            s:ds="60aeaf4f-9f9b-8546-5946-a303c2c19ade"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{1AF4E877-8D8D-F314-C732-D5DC7029DFBF}"
+                            p:after="r[@uid='{7FD0CABD-87DD-A4F0-0238-43F30D2E0CD4}']"
+                            s:ds="de5b6064-6f0b-6cee-94dd-e1e285a59559"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Bring climate, people, and nature into the decisions that shape technology, operations, partnerships, and long-term performance.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201328Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Sustainability
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Bring climate, people, and nature into the decisions that shape technology, operations, partnerships, and long-term performance.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Sustainability, embedded in how we work
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" alt="Two people walk along a boardwalk through a restored natural landscape." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Sustainability, embedded in how we work | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 9f5dc5a2-c6b1-0821-5500-d3a1f5dcb676
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Bring climate, people, and nature into the decisions that shape technology, operations, partnerships, and long-term performance.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Sustainability
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Sustainability, embedded in how we work
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201328Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Sustainability, embedded in how we work | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, sustainability
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 2cae136c-e9cc-4282-96e9-e6237aaea6db
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Sostenibilidad
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{FE87A3AE-B5F7-ECEA-D457-51CF4F6EE441}"
+                            p:before="*"
+                            s:ds="df5253b4-921c-a50c-153f-f93cabc5d64e"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{9421A78C-7FB0-761C-C5AF-82ADD9995DCF}"
+                            p:after="r[@uid='{FE87A3AE-B5F7-ECEA-D457-51CF4F6EE441}']"
+                            s:ds="5d14adce-56c3-365b-d64f-c5bcd80718d8"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=approach"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{255E54AB-E2C6-8248-A3B6-A6099AF95037}"
+                            p:after="r[@uid='{9421A78C-7FB0-761C-C5AF-82ADD9995DCF}']"
+                            s:ds="6e9564c5-fb3c-628c-35f9-bee7266f8788"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{BA812F13-8A03-31BB-F47D-6C07CD974B3A}"
+                            p:after="r[@uid='{255E54AB-E2C6-8248-A3B6-A6099AF95037}']"
+                            s:ds="ef109419-9a3b-5811-01dd-6352cc8d24a9"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=gobernanza"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{7FD0CABD-87DD-A4F0-0238-43F30D2E0CD4}"
+                            p:after="r[@uid='{BA812F13-8A03-31BB-F47D-6C07CD974B3A}']"
+                            s:ds="60aeaf4f-9f9b-8546-5946-a303c2c19ade"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{1AF4E877-8D8D-F314-C732-D5DC7029DFBF}"
+                            p:after="r[@uid='{7FD0CABD-87DD-A4F0-0238-43F30D2E0CD4}']"
+                            s:ds="de5b6064-6f0b-6cee-94dd-e1e285a59559"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Incorpore clima, personas y naturaleza en las decisiones que definen la tecnología, las operaciones, las alianzas y el desempeño de largo plazo.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201328Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Sostenibilidad
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Incorpore clima, personas y naturaleza en las decisiones que definen la tecnología, las operaciones, las alianzas y el desempeño de largo plazo.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Sostenibilidad integrada en nuestra forma de trabajar
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" alt="Dos personas caminan por una pasarela en un paisaje natural restaurado." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Sostenibilidad integrada en nuestra forma de trabajar | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 08f05c79-d050-c970-2042-feeba6a5d352
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Incorpore clima, personas y naturaleza en las decisiones que definen la tecnología, las operaciones, las alianzas y el desempeño de largo plazo.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Sostenibilidad
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Sostenibilidad integrada en nuestra forma de trabajar
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201328Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Sostenibilidad integrada en nuestra forma de trabajar | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, sustainability

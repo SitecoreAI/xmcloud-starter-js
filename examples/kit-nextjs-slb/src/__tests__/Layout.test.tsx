@@ -269,6 +269,28 @@ describe('Layout route-aware fallback', () => {
     expect(screen.queryByTestId('slb-fallback')).not.toBeInTheDocument();
   });
 
+  it('renders a fully migrated SLB presentation without the fallback', () => {
+    render(
+      <Layout
+        page={createPage({
+          main: [
+            { componentName: 'Hero' },
+            { componentName: 'PromoAnimated' },
+            { componentName: 'MultiPromo' },
+            { componentName: 'CtaBanner' },
+          ],
+        })}
+        fallbackPage={fallbackPage}
+      />,
+    );
+
+    expect(screen.getByTestId('placeholder-headless-main')).toHaveAttribute(
+      'data-components',
+      'Hero,PromoAnimated,MultiPromo,CtaBanner',
+    );
+    expect(screen.queryByTestId('slb-fallback')).not.toBeInTheDocument();
+  });
+
   it('keeps inherited Solterra presentation hidden publicly but exposes it in editing', () => {
     const inheritedMain = [
       {

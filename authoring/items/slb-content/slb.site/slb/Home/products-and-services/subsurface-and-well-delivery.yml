@@ -1,0 +1,319 @@
+---
+ID: cf8f795e-5f79-467d-bd10-620d3b585c67
+Parent: 9d42bcda-09fd-4a75-883e-0e15be202902
+Template: f2b7919e-694a-4ea6-97c7-1e6899c247dd
+Path: /sitecore/content/slb/slb/Home/products-and-services/subsurface-and-well-delivery
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{41500B00-5CD3-4A6E-99DB-96D275BB1EFA}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 1d866a66-ee61-45e9-b40d-20503a31057b
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 9bc5742c-20f9-47a4-9eac-a7ac64589ddc
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Subsurface and well delivery
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200536Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: f0f15b09-9d0b-43e5-a6b4-b5155517189a
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200537Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: subsurface-and-well-delivery
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200540Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: See the subsurface clearly. Build every well with intent.
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 5a0dbe45-d36c-4980-bef1-db6a66987315
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Subsurface and well delivery
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T200540Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200541Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: subsurface-and-well-delivery
+      - Version: 3
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{2EC228C6-EA9B-EAE5-F7BA-277875E69199}"
+                            p:before="*"
+                            s:ds="f5ffc08c-75af-8dcf-b79a-fe29f78a19fa"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{1B9342C6-D7DA-0076-F7FB-B6D3CF225C2A}"
+                            p:after="r[@uid='{2EC228C6-EA9B-EAE5-F7BA-277875E69199}']"
+                            s:ds="c5e3cd0e-aa70-5fea-c809-08c945511511"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{52738FAF-98C1-9518-DFE0-5351FCA22105}"
+                            p:after="r[@uid='{1B9342C6-D7DA-0076-F7FB-B6D3CF225C2A}']"
+                            s:ds="7c84b2bd-ddb2-dedd-ea59-1399bf34f67f"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{90324B3D-EEC1-2B32-F46B-316E678379AA}"
+                            p:after="r[@uid='{52738FAF-98C1-9518-DFE0-5351FCA22105}']"
+                            s:ds="354f05a0-5f25-b2e1-edb4-096971fda99f"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{79DD998C-A6ED-BA89-DC81-1439CF439671}"
+                            p:after="r[@uid='{90324B3D-EEC1-2B32-F46B-316E678379AA}']"
+                            s:ds="9a01a5e8-c083-95fa-f35c-38a22de66e85"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{F129A6E5-0AD2-E14F-9681-CE17B657A1A9}"
+                            p:after="r[@uid='{79DD998C-A6ED-BA89-DC81-1439CF439671}']"
+                            s:ds="3c75a49c-14e2-fde8-8ddc-0f4d9248267e"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 0e6f1e47-ee05-42b5-8480-7994d21209b3
+            Hint: baseOgDescription
+            Value: Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.
+          - ID: 246173e5-bda6-4e4e-a235-1d8a31e79a66
+            Hint: baseOgTitle
+            Value: See the subsurface clearly. Build every well with intent. | SLB
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201753Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Subsurface and well delivery
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: See the subsurface clearly. Build every well with intent.
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="/images/slb/subsurface-lifecycle-planning-hero.jpg" alt="A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure." />
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: See the subsurface clearly. Build every well with intent. | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: f229fbc3-978f-c758-68ff-f4139886c36c
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Subsurface and well delivery
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: See the subsurface clearly. Build every well with intent.
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201753Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: See the subsurface clearly. Build every well with intent. | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, products-and-services
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 1bc47ed0-8eb6-4d1d-a682-adedc6861008
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Subsuelo y construcción de pozos
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{2EC228C6-EA9B-EAE5-F7BA-277875E69199}"
+                            p:before="*"
+                            s:ds="f5ffc08c-75af-8dcf-b79a-fe29f78a19fa"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{1B9342C6-D7DA-0076-F7FB-B6D3CF225C2A}"
+                            p:after="r[@uid='{2EC228C6-EA9B-EAE5-F7BA-277875E69199}']"
+                            s:ds="c5e3cd0e-aa70-5fea-c809-08c945511511"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{52738FAF-98C1-9518-DFE0-5351FCA22105}"
+                            p:after="r[@uid='{1B9342C6-D7DA-0076-F7FB-B6D3CF225C2A}']"
+                            s:ds="7c84b2bd-ddb2-dedd-ea59-1399bf34f67f"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{90324B3D-EEC1-2B32-F46B-316E678379AA}"
+                            p:after="r[@uid='{52738FAF-98C1-9518-DFE0-5351FCA22105}']"
+                            s:ds="354f05a0-5f25-b2e1-edb4-096971fda99f"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{79DD998C-A6ED-BA89-DC81-1439CF439671}"
+                            p:after="r[@uid='{90324B3D-EEC1-2B32-F46B-316E678379AA}']"
+                            s:ds="9a01a5e8-c083-95fa-f35c-38a22de66e85"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{F129A6E5-0AD2-E14F-9681-CE17B657A1A9}"
+                            p:after="r[@uid='{79DD998C-A6ED-BA89-DC81-1439CF439671}']"
+                            s:ds="3c75a49c-14e2-fde8-8ddc-0f4d9248267e"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 0e6f1e47-ee05-42b5-8480-7994d21209b3
+            Hint: baseOgDescription
+            Value: Mantén conectados el entendimiento geológico, el diseño del pozo, los datos de ejecución y los objetivos de producción desde el primer modelo hasta la decisión final del ciclo de vida.
+          - ID: 246173e5-bda6-4e4e-a235-1d8a31e79a66
+            Hint: baseOgTitle
+            Value: Visualiza el subsuelo con claridad. Construye cada pozo con intención. | SLB
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Mantenga conectados el conocimiento geológico, el diseño del pozo, los datos de ejecución y los objetivos de producción desde el primer modelo hasta la decisión final del ciclo de vida.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201753Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Subsuelo y construcción de pozos
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Mantenga conectados el conocimiento geológico, el diseño del pozo, los datos de ejecución y los objetivos de producción desde el primer modelo hasta la decisión final del ciclo de vida.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Comprenda el subsuelo. Construya cada pozo con intención.
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="/images/slb/subsurface-lifecycle-planning-hero.jpg" alt="Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre." />
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Comprenda el subsuelo. Construya cada pozo con intención. | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 170aa230-0a4f-7320-3d99-443d91543298
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Mantenga conectados el conocimiento geológico, el diseño del pozo, los datos de ejecución y los objetivos de producción desde el primer modelo hasta la decisión final del ciclo de vida.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Subsuelo y construcción de pozos
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Comprenda el subsuelo. Construya cada pozo con intención.
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201753Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Comprenda el subsuelo. Construya cada pozo con intención. | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, products-and-services

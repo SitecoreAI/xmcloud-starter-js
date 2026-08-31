@@ -1,0 +1,90 @@
+---
+ID: 6ce5f89f-492d-4be3-7aa6-6d18390381f8
+Parent: c9136548-b861-1226-94e7-bbfef1c023df
+Template: f94c8c17-70e8-4d8b-9d35-d0465c0e0945
+Path: /sitecore/content/slb/slb/Data/MultiPromos/S01 component-01 Cards/Card 03
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e
+    Hint: __Sortorder
+    Value: 200
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 095462b6-488a-bcef-bf4e-d6c4c02dcee0
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Measure sources, prioritize interventions, and maintain evidence from action to reporting.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Reduce emissions
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/decarbonization-compressor-maintenance.jpg" alt="Technicians perform a planned emissions-reduction intervention on a compressor." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 89f19b04-c2c3-3235-5ef4-46aa4e2fbcac
+          - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
+            Hint: link
+            Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Medir fuentes, priorizar intervenciones y conservar evidencia desde la acción hasta el reporte.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Reducir emisiones
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/decarbonization-compressor-maintenance.jpg" alt="Técnicos realizan una intervención planificada para reducir emisiones en un compresor." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 365950a3-6eb5-16ac-a4f3-49f249fa44bd
+          - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
+            Hint: link
+            Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z

@@ -1,4 +1,10 @@
-import { Field, LinkField, ComponentRendering, Page, PageMode } from '@sitecore-content-sdk/nextjs';
+import {
+  Field,
+  LinkField,
+  ComponentRendering,
+  Page,
+  PageMode,
+} from '@sitecore-content-sdk/nextjs';
 import { ColorSchemeLimited as ColorScheme } from '@/enumerations/ColorSchemeLimited.enum';
 import { EnumValues } from '@/enumerations/generic.enum';
 
@@ -45,7 +51,8 @@ export const mockTitleField: Field<string> = {
 };
 
 export const mockDescriptionField: Field<string> = {
-  value: 'Join thousands of satisfied customers and transform your business today.',
+  value:
+    'Join thousands of satisfied customers and transform your business today.',
 };
 
 export const mockEmptyTitleField: Field<string> = {
@@ -126,6 +133,7 @@ export const mockFieldsWithEmptyValues = {
 // Mock params
 export const mockParamsDefault = {
   colorScheme: 'default' as EnumValues<typeof ColorScheme>,
+  RenderingIdentifier: 'cta-banner-rendering-id',
 };
 
 export const mockParamsPrimary = {
@@ -220,4 +228,3 @@ export const propsWithoutFields = {
   rendering: mockRendering,
   page: mockPageBase,
 };
-

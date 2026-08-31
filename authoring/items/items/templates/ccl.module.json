@@ -21,7 +21,13 @@
             {
                 "name": "ccl.renderings",
                 "path": "/sitecore/Layout/Renderings/Project/click-click-launch",
-                "allowedPushOperations": "CreateUpdateAndDelete"
+                "allowedPushOperations": "CreateUpdateAndDelete",
+                "rules": [
+                    {
+                        "path": "/Banners/SLB Hero",
+                        "scope": "ignored"
+                    }
+                ]
             },
             {
                 "name": "ccl.placeholderSettings",

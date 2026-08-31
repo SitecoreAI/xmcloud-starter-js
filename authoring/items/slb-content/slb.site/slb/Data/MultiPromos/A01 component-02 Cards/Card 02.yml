@@ -1,0 +1,90 @@
+---
+ID: 19943cb1-e513-babb-af20-d0b537e7401d
+Parent: 4e430a14-a1ff-f746-b4b8-e81ddc0d25af
+Template: f94c8c17-70e8-4d8b-9d35-d0465c0e0945
+Path: /sitecore/content/slb/slb/Data/MultiPromos/A01 component-02 Cards/Card 02
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e
+    Hint: __Sortorder
+    Value: 100
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 3df130f0-5b14-842e-cf04-6f06f7e0fea8
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Science and engineering developed around real energy challenges.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Technology
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" alt="SLB technician inspects a circular piece of precision industrial equipment." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 71e69e57-49a1-f1da-8861-2b214fe79751
+          - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
+            Hint: link
+            Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Ciencia e ingeniería desarrolladas alrededor de desafíos energéticos reales.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Tecnología
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" alt="Un técnico de SLB inspecciona un equipo industrial circular de alta precisión." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 090ffe07-f000-6f2f-6755-17266ebfda4b
+          - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
+            Hint: link
+            Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z

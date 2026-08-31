@@ -1,0 +1,81 @@
+---
+ID: d75b5349-a00d-80a1-8f83-b6693266c15e
+Parent: b139b412-67ba-4dd3-8451-9a5eaf7754d2
+Template: bd372d9d-6e4f-4ae9-a54c-dbc2acdebe2a
+Path: /sitecore/content/slb/slb/Data/Animated Promos/A03 component-02 Promo
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: f7af6680-6238-5f09-a117-c87a9ece75a7
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/people-inclusive-engineering-team.jpg" alt="A multidisciplinary engineering team meets during an operational shift handover." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 367b9489-fea2-2aca-a592-b7fed4c7e5fe
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: When people can contribute their perspective, teams can challenge assumptions, see more of the system, and make stronger decisions together.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Inclusion improves how teams think
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/people-inclusive-engineering-team.jpg" alt="Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: ab44abdd-3345-b48e-19ec-3778b113040a
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: Cuando cada persona puede aportar su perspectiva, los equipos cuestionan supuestos, observan una parte más amplia del sistema y toman mejores decisiones en conjunto.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: La inclusión mejora la forma de pensar de los equipos

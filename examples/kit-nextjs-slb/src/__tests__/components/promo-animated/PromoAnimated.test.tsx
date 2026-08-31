@@ -1,6 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Default as PromoAnimated, ImageRight } from '@/components/promo-animated/PromoAnimated';
+import {
+  Default as PromoAnimated,
+  ImageRight,
+} from '@/components/promo-animated/PromoAnimated';
 import type { PromoAnimatedProps } from '@/components/promo-animated/promo-animated.props';
 import type { ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
 import {
@@ -51,7 +54,9 @@ interface MockNoDataFallbackProps {
 
 // Mock dependencies
 jest.mock('@/lib/utils', () => ({
-  cn: (...args: Array<string | boolean | Record<string, boolean> | undefined>) => {
+  cn: (
+    ...args: Array<string | boolean | Record<string, boolean> | undefined>
+  ) => {
     return args
       .flat(2)
       .filter(Boolean)
@@ -103,8 +108,16 @@ jest.mock('@/components/image/ImageWrapper.dev', () => ({
 }));
 
 jest.mock('@/components/animated-section/AnimatedSection.dev', () => ({
-  Default: ({ children, className, animationType }: MockAnimatedSectionProps) => (
-    <div data-testid="animated-section" data-animation-type={animationType} className={className}>
+  Default: ({
+    children,
+    className,
+    animationType,
+  }: MockAnimatedSectionProps) => (
+    <div
+      data-testid="animated-section"
+      data-animation-type={animationType}
+      className={className}
+    >
       {children}
     </div>
   ),
@@ -166,8 +179,18 @@ describe('PromoAnimated Component - Default Variant', () => {
     it('should render as section with data-component attribute', () => {
       const { container } = render(<PromoAnimated {...defaultProps} />);
 
-      const section = container.querySelector('section[data-component="PromoAnimated"]');
+      const section = container.querySelector(
+        'section[data-component="PromoAnimated"]',
+      );
       expect(section).toBeInTheDocument();
+    });
+
+    it('should apply the rendering identifier to the default root section', () => {
+      const { container } = render(<PromoAnimated {...defaultProps} />);
+
+      expect(
+        container.querySelector('section[data-component="PromoAnimated"]'),
+      ).toHaveAttribute('id', 'promo-animated-rendering-id');
     });
 
     it('should render title in h2 tag', () => {
@@ -182,7 +205,7 @@ describe('PromoAnimated Component - Default Variant', () => {
       const { container } = render(<PromoAnimated {...defaultProps} />);
 
       expect(container.textContent).toContain(
-        'Experience the finest quality with our exclusive collection'
+        'Experience the finest quality with our exclusive collection',
       );
     });
 
@@ -215,7 +238,9 @@ describe('PromoAnimated Component - Default Variant', () => {
     it('should apply grid layout classes', () => {
       const { container } = render(<PromoAnimated {...defaultProps} />);
 
-      const contentWrapper = container.querySelector('.promo-animated__content-wrapper');
+      const contentWrapper = container.querySelector(
+        '.promo-animated__content-wrapper',
+      );
       expect(contentWrapper).toHaveClass('grid', 'grid-cols-1');
     });
 
@@ -226,14 +251,29 @@ describe('PromoAnimated Component - Default Variant', () => {
       expect(animatedSections.length).toBeGreaterThan(0);
     });
 
-    it('should render rotate animation for sprite', () => {
+    it('should use a clean editorial image treatment without the legacy rotating sprite', () => {
       render(<PromoAnimated {...defaultProps} />);
 
       const animatedSections = screen.getAllByTestId('animated-section');
       const rotateSection = animatedSections.find(
-        (section) => section.getAttribute('data-animation-type') === 'rotate'
+        (section) => section.getAttribute('data-animation-type') === 'rotate',
       );
-      expect(rotateSection).toBeInTheDocument();
+      expect(rotateSection).toBeUndefined();
+      expect(screen.getByTestId('image-wrapper')).toHaveClass(
+        'overflow-hidden',
+      );
+      expect(screen.getByRole('img')).toHaveClass(
+        'rounded-none',
+        'object-cover',
+      );
+      expect(screen.getByRole('img')).not.toHaveClass('rounded-full');
+    });
+
+    it('should use the shared SLB page shell and section rhythm', () => {
+      const { container } = render(<PromoAnimated {...defaultProps} />);
+
+      const shell = container.querySelector('.slb-page-shell');
+      expect(shell).toHaveClass('slb-section-space');
     });
   });
 
@@ -244,28 +284,40 @@ describe('PromoAnimated Component - Default Variant', () => {
     });
 
     it('should apply primary color scheme', () => {
-      const { container } = render(<PromoAnimated {...propsPrimaryColorScheme} />);
+      const { container } = render(
+        <PromoAnimated {...propsPrimaryColorScheme} />,
+      );
       expect(container.querySelector('section')).toBeInTheDocument();
     });
 
     it('should apply secondary color scheme', () => {
-      const { container } = render(<PromoAnimated {...propsSecondaryColorScheme} />);
+      const { container } = render(
+        <PromoAnimated {...propsSecondaryColorScheme} />,
+      );
       expect(container.querySelector('section')).toBeInTheDocument();
     });
   });
 
   describe('Custom styles and positioning', () => {
     it('should apply custom styles from params', () => {
-      const { container } = render(<PromoAnimated {...propsWithCustomStyles} />);
+      const { container } = render(
+        <PromoAnimated {...propsWithCustomStyles} />,
+      );
 
-      const contentWrapper = container.querySelector('.promo-animated__content-wrapper');
+      const contentWrapper = container.querySelector(
+        '.promo-animated__content-wrapper',
+      );
       expect(contentWrapper).toHaveClass('position-center');
     });
 
     it('should apply position-right class', () => {
-      const { container } = render(<PromoAnimated {...propsWithPositionRight} />);
+      const { container } = render(
+        <PromoAnimated {...propsWithPositionRight} />,
+      );
 
-      const contentWrapper = container.querySelector('.promo-animated__content-wrapper');
+      const contentWrapper = container.querySelector(
+        '.promo-animated__content-wrapper',
+      );
       expect(contentWrapper).toHaveClass('position-right');
     });
   });
@@ -384,8 +436,18 @@ describe('PromoAnimated Component - ImageRight Variant', () => {
     it('should render as section with data-component attribute', () => {
       const { container } = render(<ImageRight {...defaultProps} />);
 
-      const section = container.querySelector('section[data-component="PromoAnimated"]');
+      const section = container.querySelector(
+        'section[data-component="PromoAnimated"]',
+      );
       expect(section).toBeInTheDocument();
+    });
+
+    it('should apply the rendering identifier to the image-right root section', () => {
+      const { container } = render(<ImageRight {...defaultProps} />);
+
+      expect(
+        container.querySelector('section[data-component="PromoAnimated"]'),
+      ).toHaveAttribute('id', 'promo-animated-rendering-id');
     });
 
     it('should apply order-2 class to image container', () => {
@@ -398,7 +460,9 @@ describe('PromoAnimated Component - ImageRight Variant', () => {
     it('should apply order-1 class to content container', () => {
       const { container } = render(<ImageRight {...defaultProps} />);
 
-      const contentContainer = container.querySelector('.promo-animated__content');
+      const contentContainer = container.querySelector(
+        '.promo-animated__content',
+      );
       expect(contentContainer).toHaveClass('@md:order-1');
     });
   });
@@ -415,17 +479,23 @@ describe('PromoAnimated Component - ImageRight Variant', () => {
 
   describe('Variant comparison', () => {
     it('should render same content as Default variant but with different order', () => {
-      const { container: defaultContainer } = render(<PromoAnimated {...defaultProps} />);
-      const { container: imageRightContainer } = render(<ImageRight {...defaultProps} />);
+      const { container: defaultContainer } = render(
+        <PromoAnimated {...defaultProps} />,
+      );
+      const { container: imageRightContainer } = render(
+        <ImageRight {...defaultProps} />,
+      );
 
       // Both should have the same text content
       expect(defaultContainer.textContent).toContain('Discover Excellence');
       expect(imageRightContainer.textContent).toContain('Discover Excellence');
 
       // But different layout classes
-      const defaultImageContainer = defaultContainer.querySelector('.promo-animated__image');
+      const defaultImageContainer = defaultContainer.querySelector(
+        '.promo-animated__image',
+      );
       const imageRightImageContainer = imageRightContainer.querySelector(
-        '.promo-animated__image'
+        '.promo-animated__image',
       );
 
       expect(defaultImageContainer).not.toHaveClass('@md:order-2');
@@ -455,8 +525,8 @@ describe('PromoAnimated - Reduced Motion', () => {
 
     render(<PromoAnimated {...defaultProps} />);
 
-    expect(matchMediaMock).toHaveBeenCalledWith('(prefers-reduced-motion: reduce)');
+    expect(matchMediaMock).toHaveBeenCalledWith(
+      '(prefers-reduced-motion: reduce)',
+    );
   });
 });
-
-

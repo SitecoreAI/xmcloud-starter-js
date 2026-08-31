@@ -1,0 +1,84 @@
+---
+ID: 99eafb7d-b78f-53c4-3e9a-886b6e255bad
+Parent: 1b46e9a3-7ab7-10a2-b9df-40a1d03900b7
+Template: f94c8c17-70e8-4d8b-9d35-d0465c0e0945
+Path: /sitecore/content/slb/slb/Data/MultiPromos/U04 component-02 Cards/Card 01
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e
+    Hint: __Sortorder
+    Value: 0
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 313b22ee-ccbf-bbd6-ecbe-420a2b4b8fe7
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Identify sensitive habitats and potential interactions early enough to influence the plan.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Biodiversity
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/nature-biodiversity-field-survey.jpg" alt="Field ecologists record biodiversity observations in native wetland habitat near an operating site." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: f9a4d415-de9e-8383-624f-45a3c1fb7779
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 54a924ec-8e98-4597-b9c2-d616dd66cc7c
+            Hint: description
+            Value: Identifique hábitats sensibles y posibles interacciones con suficiente anticipación para influir en el plan.
+          - ID: 5c33f772-5806-4ad8-a236-730f1b299531
+            Hint: heading
+            Value: Biodiversidad
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: <image mediaid="" src="/images/slb/nature-biodiversity-field-survey.jpg" alt="Ecólogos de campo registran observaciones de biodiversidad en un humedal nativo cerca de un sitio operativo." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 340ef724-6ce1-206d-e2b1-a44b1be7451b
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z

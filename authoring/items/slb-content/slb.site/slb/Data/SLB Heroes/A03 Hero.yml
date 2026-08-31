@@ -1,0 +1,87 @@
+---
+ID: ec13e03c-d638-48bf-354b-65d86cb98c25
+Parent: fce52196-25c1-99b5-3493-d30f9bef5f14
+Template: a19c3230-c5ee-47a1-ae3f-12a1fc3c4273
+Path: /sitecore/content/slb/slb/Data/SLB Heroes/A03 Hero
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 79b06fe7-9318-52a3-c645-05243f83bee1
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" alt="Colleagues meet in a spacious modern SLB workplace." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: A global team built around curiosity and purpose
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 9b2b078f-eb8d-09dd-5c85-72878a6209e1
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link linktype="external" url="https://careers.slb.com" target="" text="Explore careers" title="" class="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: Different disciplines, experiences, and perspectives come together at SLB to solve problems that no one person or technology can solve alone.
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" alt="Un grupo de colegas se reúne en un espacio de trabajo moderno y amplio de SLB." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: Un equipo global unido por la curiosidad y el propósito
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 03a86543-ecb0-4af2-b148-dbf2b68282d7
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link linktype="external" url="https://careers.slb.com" target="" text="Explore oportunidades profesionales" title="" class="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: En SLB, distintas disciplinas, experiencias y perspectivas se unen para resolver problemas que ninguna persona o tecnología puede resolver por sí sola.

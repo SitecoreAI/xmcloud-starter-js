@@ -1,5 +1,13 @@
-import { Field, Page, PageMode, ComponentRendering } from '@sitecore-content-sdk/nextjs';
-import { MultiPromoProps, MultiPromoItemProps } from '@/components/multi-promo/multi-promo.props';
+import {
+  Field,
+  Page,
+  PageMode,
+  ComponentRendering,
+} from '@sitecore-content-sdk/nextjs';
+import {
+  MultiPromoProps,
+  MultiPromoItemProps,
+} from '@/components/multi-promo/multi-promo.props';
 
 // Mock page objects
 const mockPageBase: Page = {
@@ -53,7 +61,8 @@ export const mockTitleField: Field<string> = {
 };
 
 export const mockDescriptionField: Field<string> = {
-  value: '<p>Explore our curated selection of premium products designed for your lifestyle.</p>',
+  value:
+    '<p>Explore our curated selection of premium products designed for your lifestyle.</p>',
 };
 
 // Mock promo items
@@ -62,6 +71,11 @@ export const mockPromoItem1: MultiPromoItemProps = {
     jsonValue: {
       value: 'Premium Headphones',
     } as Field<string>,
+  },
+  description: {
+    jsonValue: {
+      value: '<p>Immersive sound engineered for focused work.</p>',
+    },
   },
   image: {
     jsonValue: {
@@ -92,6 +106,11 @@ export const mockPromoItem2: MultiPromoItemProps = {
       value: 'Smart Watch',
     } as Field<string>,
   },
+  description: {
+    jsonValue: {
+      value: '<p>Connected insights in a compact everyday form.</p>',
+    },
+  },
   image: {
     jsonValue: {
       value: {
@@ -121,6 +140,11 @@ export const mockPromoItem3: MultiPromoItemProps = {
       value: 'Wireless Speaker',
     } as Field<string>,
   },
+  description: {
+    jsonValue: {
+      value: '<p>Clear audio designed to move wherever the work goes.</p>',
+    },
+  },
   image: {
     jsonValue: {
       value: {
@@ -149,6 +173,11 @@ export const mockPromoItem4: MultiPromoItemProps = {
     jsonValue: {
       value: 'Laptop Stand',
     } as Field<string>,
+  },
+  description: {
+    jsonValue: {
+      value: '<p>A precise foundation for a more comfortable workspace.</p>',
+    },
   },
   image: {
     jsonValue: {
@@ -202,7 +231,12 @@ export const mockFields = {
         jsonValue: mockDescriptionField,
       },
       children: {
-        results: [mockPromoItem1, mockPromoItem2, mockPromoItem3, mockPromoItem4],
+        results: [
+          mockPromoItem1,
+          mockPromoItem2,
+          mockPromoItem3,
+          mockPromoItem4,
+        ],
       },
     },
   },
@@ -394,4 +428,3 @@ export const propsEditing: MultiPromoProps = {
   promos: [],
   page: mockPageEditing,
 };
-

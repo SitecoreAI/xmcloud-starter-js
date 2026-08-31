@@ -1,0 +1,487 @@
+---
+ID: b032de41-4614-4721-80b2-af51946e0128
+Parent: 3bfdaaa9-0293-4b56-8d38-d19822122380
+Template: c2d8982e-8676-415e-a8a4-9e696e0d9b9c
+Path: /sitecore/content/slb/slb/Home/news-and-insights/insights/ai-starts-with-trusted-context
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{42B603AE-40BE-4CA7-B900-7B25D94FD8A8}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: adf124a3-f3d8-4097-89ef-baf12c58e976
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 9325a4bf-0eb8-46f3-842b-3590f5765c5a
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: AI in energy starts with trusted context
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201206Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: f8470138-16db-429d-96e1-56836a8dd323
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T201207Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: ai-starts-with-trusted-context
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201209Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: AI in energy starts with trusted context
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 9a8ae303-e193-4e8f-bd4a-500140705b6f
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201209Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T201210Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: ai-starts-with-trusted-context
+      - Version: 3
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201211Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: AI in energy starts with trusted context
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: AI in energy starts with trusted context
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: ec2aafa8-e10a-46ad-9ead-ab3620902c6e
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: AI in energy starts with trusted context
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201211Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T201212Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: ai-starts-with-trusted-context
+      - Version: 4
+        Fields:
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: "General AI can accelerate tasks. Energy operations demand something more: information with technical meaning, workflows that reflect operating reality, and experts who can interpret uncertainty before action follows."
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202522Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Digital and AI
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: AI in energy starts with trusted context
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: AI in energy starts with trusted context
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 285459ae-b11f-4b1a-bfe5-4102fd45a010
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: AI in energy starts with trusted context
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: AI in energy starts with trusted context
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202522Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T202523Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB Editorial Team
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: ai-starts-with-trusted-context
+      - Version: 5
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{99219684-55E8-960A-9033-26D5F8C2F1A8}"
+                            p:before="*"
+                            s:ds="fe357134-133d-d615-2697-66c74c5ec0a0"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{CBDE72D1-CC72-BB4B-89E4-598F0E4D8D56}"
+                            p:after="r[@uid='{99219684-55E8-960A-9033-26D5F8C2F1A8}']"
+                            s:ds="c62a81ec-74ab-a079-81f2-d592a22499b7"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{89AB7047-A58D-7179-85B2-ECC967B99E3D}"
+                            p:after="r[@uid='{CBDE72D1-CC72-BB4B-89E4-598F0E4D8D56}']"
+                            s:ds="d3eda805-4c5b-64f3-e9a0-15ecacaffa29"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0B31BA34-EBDA-D2FC-7453-780FB52337E3}"
+                            p:after="r[@uid='{89AB7047-A58D-7179-85B2-ECC967B99E3D}']"
+                            s:ds="54675b91-6f6b-4ca8-45a8-e9df244170a2"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{D5D1C997-7069-8D8B-687C-BED454A1818C}"
+                            p:after="r[@uid='{0B31BA34-EBDA-D2FC-7453-780FB52337E3}']"
+                            s:ds="7a7c5846-bd22-b138-ad80-6e6bf9e6b5a1"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{C40E4412-BB4D-F2AA-5AF9-7712AF6AAB31}"
+                            p:after="r[@uid='{D5D1C997-7069-8D8B-687C-BED454A1818C}']"
+                            s:ds="81ffdfc9-8246-1524-bc77-99b586c53446"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{325DEC76-E481-413E-B251-8A67C990E353}"
+                            p:after="r[@uid='{C40E4412-BB4D-F2AA-5AF9-7712AF6AAB31}']"
+                            s:ds="02244f28-54a0-c120-2241-81ea2d388489"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: "General AI can accelerate tasks. Energy operations demand something more: information with technical meaning, workflows that reflect operating reality, and experts who can interpret uncertainty before action follows."
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202715Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: AI in energy starts with trusted context
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: "General AI can accelerate tasks. Energy operations demand something more: information with technical meaning, workflows that reflect operating reality, and experts who can interpret uncertainty before action follows."
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Digital and AI
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: AI in energy starts with trusted context
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" alt="Tela AI search interface on a dark-blue digital screen." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: AI in energy starts with trusted context | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 23548408-f856-9f47-ea25-82388f2efd7e
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: "General AI can accelerate tasks. Energy operations demand something more: information with technical meaning, workflows that reflect operating reality, and experts who can interpret uncertainty before action follows."
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: AI in energy starts with trusted context
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: AI in energy starts with trusted context
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202715Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: AI in energy starts with trusted context | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, news-and-insights
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 60e06a2a-7d5c-46db-b5e5-af4a424a529a
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: La IA en energía comienza con un contexto confiable
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T203822Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 42df2db7-187b-4430-939f-1cbdc526384e
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T203822Z
+      - Version: 2
+        Fields:
+          - ID: 0e6f1e47-ee05-42b5-8480-7994d21209b3
+            Hint: baseOgDescription
+            Value: "La IA general puede acelerar tareas. Las operaciones energéticas exigen algo más: información con significado técnico, flujos de trabajo que reflejen la realidad operativa y especialistas capaces de interpretar la incertidumbre antes de actuar."
+          - ID: 246173e5-bda6-4e4e-a235-1d8a31e79a66
+            Hint: baseOgTitle
+            Value: La IA en energía comienza con un contexto confiable | SLB
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: "La IA general puede acelerar tareas. Las operaciones energéticas exigen algo más: información con significado técnico, flujos de trabajo que reflejen la realidad operativa y especialistas capaces de interpretar la incertidumbre antes de actuar."
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T204204Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Tecnología digital e IA
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: La IA en energía comienza con un contexto confiable
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: La IA en energía comienza con un contexto confiable | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 2337631c-0512-494b-8335-1a4e3d2dbdd4
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: "La IA general puede acelerar tareas. Las operaciones energéticas exigen algo más: información con significado técnico, flujos de trabajo que reflejen la realidad operativa y especialistas capaces de interpretar la incertidumbre antes de actuar."
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: La IA en energía comienza con un contexto confiable
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: La IA en energía comienza con un contexto confiable
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T204204Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T204205Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB Editorial Team
+      - Version: 3
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{99219684-55E8-960A-9033-26D5F8C2F1A8}"
+                            p:before="*"
+                            s:ds="fe357134-133d-d615-2697-66c74c5ec0a0"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{CBDE72D1-CC72-BB4B-89E4-598F0E4D8D56}"
+                            p:after="r[@uid='{99219684-55E8-960A-9033-26D5F8C2F1A8}']"
+                            s:ds="c62a81ec-74ab-a079-81f2-d592a22499b7"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{89AB7047-A58D-7179-85B2-ECC967B99E3D}"
+                            p:after="r[@uid='{CBDE72D1-CC72-BB4B-89E4-598F0E4D8D56}']"
+                            s:ds="d3eda805-4c5b-64f3-e9a0-15ecacaffa29"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0B31BA34-EBDA-D2FC-7453-780FB52337E3}"
+                            p:after="r[@uid='{89AB7047-A58D-7179-85B2-ECC967B99E3D}']"
+                            s:ds="54675b91-6f6b-4ca8-45a8-e9df244170a2"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{D5D1C997-7069-8D8B-687C-BED454A1818C}"
+                            p:after="r[@uid='{0B31BA34-EBDA-D2FC-7453-780FB52337E3}']"
+                            s:ds="7a7c5846-bd22-b138-ad80-6e6bf9e6b5a1"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{C40E4412-BB4D-F2AA-5AF9-7712AF6AAB31}"
+                            p:after="r[@uid='{D5D1C997-7069-8D8B-687C-BED454A1818C}']"
+                            s:ds="81ffdfc9-8246-1524-bc77-99b586c53446"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{325DEC76-E481-413E-B251-8A67C990E353}"
+                            p:after="r[@uid='{C40E4412-BB4D-F2AA-5AF9-7712AF6AAB31}']"
+                            s:ds="02244f28-54a0-c120-2241-81ea2d388489"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: "La IA general puede acelerar tareas. Las operaciones energéticas exigen algo más: información con significado técnico, flujos de trabajo que reflejen la realidad operativa y especialistas capaces de interpretar la incertidumbre antes de actuar."
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T204314Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: La IA en energía comienza con un contexto confiable
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: "La IA general puede acelerar tareas. Las operaciones energéticas exigen algo más: información con significado técnico, flujos de trabajo que reflejen la realidad operativa y especialistas capaces de interpretar la incertidumbre antes de actuar."
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: La IA en energía comienza con un contexto confiable
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" alt="Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: La IA en energía comienza con un contexto confiable | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 82afa86f-fcfe-9054-198a-6b8749cb4da5
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: "La IA general puede acelerar tareas. Las operaciones energéticas exigen algo más: información con significado técnico, flujos de trabajo que reflejen la realidad operativa y especialistas capaces de interpretar la incertidumbre antes de actuar."
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: La IA en energía comienza con un contexto confiable
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: La IA en energía comienza con un contexto confiable
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T204314Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: La IA en energía comienza con un contexto confiable | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, news-and-insights

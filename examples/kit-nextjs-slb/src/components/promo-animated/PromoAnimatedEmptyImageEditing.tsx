@@ -3,18 +3,18 @@ import { Image as ImageIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PromoAnimatedEmptyImageEditingProps } from './promo-animated-empty-image-editing.props';
 
-export const PromoAnimatedEmptyImageEditing: React.FC<PromoAnimatedEmptyImageEditingProps> = ({
-  className,
-}) => {
+export const PromoAnimatedEmptyImageEditing: React.FC<
+  PromoAnimatedEmptyImageEditingProps
+> = ({ className }) => {
   return (
     <div
       className={cn(
-        'relative h-full w-full overflow-hidden rounded-full bg-muted text-muted-foreground',
-        className
+        'relative h-full w-full overflow-hidden bg-muted text-muted-foreground',
+        className,
       )}
     >
       <ImageIcon
-        className="pointer-events-none absolute left-[30%] top-1/2 h-[20%] w-[20%] -translate-x-1/2 -translate-y-1/2"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2"
         strokeWidth={1.75}
         aria-hidden
       />

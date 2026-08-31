@@ -1,0 +1,87 @@
+---
+ID: 3deb21d3-9f65-6a9d-9910-d5fe2a495ddc
+Parent: b139b412-67ba-4dd3-8451-9a5eaf7754d2
+Template: bd372d9d-6e4f-4ae9-a54c-dbc2acdebe2a
+Path: /sitecore/content/slb/slb/Data/Animated Promos/S01 component-03 Promo
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 05688fa8-c0cd-8800-d085-68d38352678d
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" alt="SLB engineer walks between large industrial pipes at an operations site." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 3c92a353-f2ee-d7cc-e7d4-c4925728d4ea
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: SLB solutions connect global technology with local insight. The result is an approach designed around the conditions, teams, and decisions that shape each operation.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Built around operating reality
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value: <link class="" querystring="" id="{AC069F53-CD2B-431C-911F-198961034026}" anchor="built-around-operating-reality" target="" title="" linktype="internal" text="Explore our capabilities" url="" />
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" alt="Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 79781854-b72d-0aa3-40a5-d8bb14a908dd
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: Las soluciones de SLB conectan tecnología global con conocimiento local. El resultado es un enfoque diseñado alrededor de las condiciones, los equipos y las decisiones que definen cada operación.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Diseñado para la realidad operativa
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value: <link class="" querystring="" id="{AC069F53-CD2B-431C-911F-198961034026}" anchor="realidad-operativa" target="" title="" linktype="internal" text="Explore nuestras capacidades" url="" />

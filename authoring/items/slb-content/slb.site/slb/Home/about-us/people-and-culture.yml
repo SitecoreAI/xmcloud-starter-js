@@ -1,0 +1,363 @@
+---
+ID: 47d6683e-4038-4ef5-858a-bb9819e8cec4
+Parent: 0a9d8ff9-e3ac-4a15-bfd9-68b981e38eb5
+Template: f2b7919e-694a-4ea6-97c7-1e6899c247dd
+Path: /sitecore/content/slb/slb/Home/about-us/people-and-culture
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{5874E793-F3B4-45C1-8017-89A7EB157EF3}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: e2321204-ccfe-4ee7-bffe-552c485cdad3
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: c77187aa-b656-4ac5-bd50-fcfe780869f4
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: People and culture
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200611Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 992b375e-6e87-4639-bfff-8b716f30683c
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200612Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: people-and-culture
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200614Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: A global team built around curiosity and purpose
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: c7b1ee4f-f12a-43bf-8245-65fb6a5c7ad7
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: People and culture
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T200614Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200614Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: people-and-culture
+      - Version: 3
+        Fields:
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Different disciplines, experiences, and perspectives come together at SLB to solve problems that no one person or technology can solve alone.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202526Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Different disciplines, experiences, and perspectives come together at SLB to solve problems that no one person or technology can solve alone.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: A global team built around curiosity and purpose
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 86da44a8-8925-40bb-8c3b-675489de5bb7
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: People and culture
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: A global team built around curiosity and purpose
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202526Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T202527Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: people-and-culture
+      - Version: 4
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{D46200C0-F190-7F91-F685-B83BDEF0A1E1}"
+                            p:before="*"
+                            s:ds="ec13e03c-d638-48bf-354b-65d86cb98c25"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{3DB949EF-0387-1580-50B3-52EE0B83E20A}"
+                            p:after="r[@uid='{D46200C0-F190-7F91-F685-B83BDEF0A1E1}']"
+                            s:ds="88b23267-0ffa-c8a8-5c08-4fc93ff3574b"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=people"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{9DEF0B67-D035-C8C2-93F0-1FDFE1D74817}"
+                            p:after="r[@uid='{3DB949EF-0387-1580-50B3-52EE0B83E20A}']"
+                            s:ds="d75b5349-a00d-80a1-8f83-b6693266c15e"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{2385E4C8-E202-9356-A643-AF20E433EBD3}"
+                            p:after="r[@uid='{9DEF0B67-D035-C8C2-93F0-1FDFE1D74817}']"
+                            s:ds="571b21e6-2230-5085-8b09-21fccae4db61"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0AF7B710-9B2C-6C95-B3D9-AA529FD54653}"
+                            p:after="r[@uid='{2385E4C8-E202-9356-A643-AF20E433EBD3}']"
+                            s:ds="85ba7fda-738e-4e7c-2e41-b553059d55e1"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{5512A2AB-6F9D-CA7C-62DF-6C1DAB927646}"
+                            p:after="r[@uid='{0AF7B710-9B2C-6C95-B3D9-AA529FD54653}']"
+                            s:ds="700a932f-830f-8ae1-b0b2-895ac076ea37"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{872C7FB8-7FC4-2559-F37A-F21C9834588B}"
+                            p:after="r[@uid='{5512A2AB-6F9D-CA7C-62DF-6C1DAB927646}']"
+                            s:ds="1a8bf8bf-0e77-eed7-9d31-e9d45cd92ed1"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Different disciplines, experiences, and perspectives come together at SLB to solve problems that no one person or technology can solve alone.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202601Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: People and culture
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Different disciplines, experiences, and perspectives come together at SLB to solve problems that no one person or technology can solve alone.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: A global team built around curiosity and purpose
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" alt="Colleagues meet in a spacious modern SLB workplace." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: A global team built around curiosity and purpose | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: b8fd96ee-14cc-2772-ae5d-7ee1208e578d
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Different disciplines, experiences, and perspectives come together at SLB to solve problems that no one person or technology can solve alone.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: People and culture
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: A global team built around curiosity and purpose
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202601Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: A global team built around curiosity and purpose | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, about-us
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 734b3f3a-330f-4abb-8b9a-d5610a893c31
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Personas y cultura
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{D46200C0-F190-7F91-F685-B83BDEF0A1E1}"
+                            p:before="*"
+                            s:ds="ec13e03c-d638-48bf-354b-65d86cb98c25"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{3DB949EF-0387-1580-50B3-52EE0B83E20A}"
+                            p:after="r[@uid='{D46200C0-F190-7F91-F685-B83BDEF0A1E1}']"
+                            s:ds="88b23267-0ffa-c8a8-5c08-4fc93ff3574b"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=people"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{9DEF0B67-D035-C8C2-93F0-1FDFE1D74817}"
+                            p:after="r[@uid='{3DB949EF-0387-1580-50B3-52EE0B83E20A}']"
+                            s:ds="d75b5349-a00d-80a1-8f83-b6693266c15e"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{2385E4C8-E202-9356-A643-AF20E433EBD3}"
+                            p:after="r[@uid='{9DEF0B67-D035-C8C2-93F0-1FDFE1D74817}']"
+                            s:ds="571b21e6-2230-5085-8b09-21fccae4db61"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0AF7B710-9B2C-6C95-B3D9-AA529FD54653}"
+                            p:after="r[@uid='{2385E4C8-E202-9356-A643-AF20E433EBD3}']"
+                            s:ds="85ba7fda-738e-4e7c-2e41-b553059d55e1"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{5512A2AB-6F9D-CA7C-62DF-6C1DAB927646}"
+                            p:after="r[@uid='{0AF7B710-9B2C-6C95-B3D9-AA529FD54653}']"
+                            s:ds="700a932f-830f-8ae1-b0b2-895ac076ea37"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{872C7FB8-7FC4-2559-F37A-F21C9834588B}"
+                            p:after="r[@uid='{5512A2AB-6F9D-CA7C-62DF-6C1DAB927646}']"
+                            s:ds="1a8bf8bf-0e77-eed7-9d31-e9d45cd92ed1"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: En SLB, distintas disciplinas, experiencias y perspectivas se unen para resolver problemas que ninguna persona o tecnología puede resolver por sí sola.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200614Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Personas y cultura
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: En SLB, distintas disciplinas, experiencias y perspectivas se unen para resolver problemas que ninguna persona o tecnología puede resolver por sí sola.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Un equipo global unido por la curiosidad y el propósito
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" alt="Un grupo de colegas se reúne en un espacio de trabajo moderno y amplio de SLB." />
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Un equipo global unido por la curiosidad y el propósito | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 24f3dac9-2107-b066-f214-6e5a0516d2b3
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: En SLB, distintas disciplinas, experiencias y perspectivas se unen para resolver problemas que ninguna persona o tecnología puede resolver por sí sola.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Personas y cultura
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Un equipo global unido por la curiosidad y el propósito
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T200614Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Un equipo global unido por la curiosidad y el propósito | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, about-us

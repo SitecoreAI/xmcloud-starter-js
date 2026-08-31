@@ -1,0 +1,313 @@
+---
+ID: 93c4a0b9-34ca-43ed-b330-b1887b93eb44
+Parent: 9d42bcda-09fd-4a75-883e-0e15be202902
+Template: f2b7919e-694a-4ea6-97c7-1e6899c247dd
+Path: /sitecore/content/slb/slb/Home/products-and-services/ccus
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{8CE1D214-A4D7-4D24-85F0-F73FF7DA5690}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 892390a7-5247-46d5-8a24-5dd37f86e210
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 18159161-57aa-4bcc-9243-9fda98bea165
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Carbon capture, utilization, and sequestration
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200557Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 570daf3b-861c-4c65-873e-67b7b6ac8985
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200557Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: ccus
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200559Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Connect every decision across the carbon storage lifecycle
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 12795b1e-4bda-40ce-9688-bca74d677371
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Carbon capture, utilization, and sequestration
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T200559Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200600Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: ccus
+      - Version: 3
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{9DB8EC3A-95D5-EE03-D327-CA8CECAD2D0E}"
+                            p:before="*"
+                            s:ds="dbca7c88-9c86-9c89-f348-c275854efcb7"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{CB2B3900-C209-C01C-1BB3-5DFC3A0619EC}"
+                            p:after="r[@uid='{9DB8EC3A-95D5-EE03-D327-CA8CECAD2D0E}']"
+                            s:ds="955d5d92-6ce7-f240-cdec-b2c5e24f33c0"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{190F79FA-BBF3-1124-157E-5753B0AA7284}"
+                            p:after="r[@uid='{CB2B3900-C209-C01C-1BB3-5DFC3A0619EC}']"
+                            s:ds="957185aa-5146-b01a-9ffc-db42f999bdce"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{924C0104-0F75-36C5-2998-4DAB40DF35F7}"
+                            p:after="r[@uid='{190F79FA-BBF3-1124-157E-5753B0AA7284}']"
+                            s:ds="78463c41-e98b-11d0-0ccc-538fc58012f7"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{1461450E-6C15-EF4B-4CEB-0B4462927B33}"
+                            p:after="r[@uid='{924C0104-0F75-36C5-2998-4DAB40DF35F7}']"
+                            s:ds="8d09e1f4-35a0-40d1-e38c-92016cfb4fee"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{849F23ED-685D-8946-EB1C-2B5AEE328944}"
+                            p:after="r[@uid='{1461450E-6C15-EF4B-4CEB-0B4462927B33}']"
+                            s:ds="6b819640-e4e4-6af6-3a49-58a74623bc19"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Bring subsurface characterization, development engineering, infrastructure, and monitoring into one evidence-led approach from site screening through long-term stewardship.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202008Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Carbon capture, utilization, and sequestration
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Bring subsurface characterization, development engineering, infrastructure, and monitoring into one evidence-led approach from site screening through long-term stewardship.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Connect every decision across the carbon storage lifecycle
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" alt="SLB employee in orange coveralls stands on an offshore platform facing the sea." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Connect every decision across the carbon storage lifecycle | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 37c52ced-42c1-0afd-65ca-787a61c77df5
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Bring subsurface characterization, development engineering, infrastructure, and monitoring into one evidence-led approach from site screening through long-term stewardship.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Carbon capture, utilization, and sequestration
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Connect every decision across the carbon storage lifecycle
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202008Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Connect every decision across the carbon storage lifecycle | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, products-and-services
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 0219fcee-e2a9-4a19-9c43-2da9cbf8ce74
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Captura, utilización y almacenamiento de carbono
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{9DB8EC3A-95D5-EE03-D327-CA8CECAD2D0E}"
+                            p:before="*"
+                            s:ds="dbca7c88-9c86-9c89-f348-c275854efcb7"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{CB2B3900-C209-C01C-1BB3-5DFC3A0619EC}"
+                            p:after="r[@uid='{9DB8EC3A-95D5-EE03-D327-CA8CECAD2D0E}']"
+                            s:ds="955d5d92-6ce7-f240-cdec-b2c5e24f33c0"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{190F79FA-BBF3-1124-157E-5753B0AA7284}"
+                            p:after="r[@uid='{CB2B3900-C209-C01C-1BB3-5DFC3A0619EC}']"
+                            s:ds="957185aa-5146-b01a-9ffc-db42f999bdce"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{924C0104-0F75-36C5-2998-4DAB40DF35F7}"
+                            p:after="r[@uid='{190F79FA-BBF3-1124-157E-5753B0AA7284}']"
+                            s:ds="78463c41-e98b-11d0-0ccc-538fc58012f7"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{1461450E-6C15-EF4B-4CEB-0B4462927B33}"
+                            p:after="r[@uid='{924C0104-0F75-36C5-2998-4DAB40DF35F7}']"
+                            s:ds="8d09e1f4-35a0-40d1-e38c-92016cfb4fee"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{849F23ED-685D-8946-EB1C-2B5AEE328944}"
+                            p:after="r[@uid='{1461450E-6C15-EF4B-4CEB-0B4462927B33}']"
+                            s:ds="6b819640-e4e4-6af6-3a49-58a74623bc19"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Integre caracterización del subsuelo, ingeniería de desarrollo, infraestructura y monitoreo en un enfoque basado en evidencia, desde la evaluación del sitio hasta la gestión de largo plazo.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T202008Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Captura, utilización y almacenamiento de carbono
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Integre caracterización del subsuelo, ingeniería de desarrollo, infraestructura y monitoreo en un enfoque basado en evidencia, desde la evaluación del sitio hasta la gestión de largo plazo.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Conecte cada decisión durante el ciclo de almacenamiento de carbono
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" alt="Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Conecte cada decisión durante el ciclo de almacenamiento de carbono | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 536ce2b1-17d6-485f-400c-ad7170dafd71
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Integre caracterización del subsuelo, ingeniería de desarrollo, infraestructura y monitoreo en un enfoque basado en evidencia, desde la evaluación del sitio hasta la gestión de largo plazo.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Captura, utilización y almacenamiento de carbono
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Conecte cada decisión durante el ciclo de almacenamiento de carbono
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T202008Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Conecte cada decisión durante el ciclo de almacenamiento de carbono | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, products-and-services

@@ -11,6 +11,7 @@ import {
   propsWithoutLink,
   propsWithOnlyTitle,
   propsWithImagesOnly,
+  propsWithSingleImage,
   propsWithoutColorScheme,
   propsWithoutFields,
   propsEditing,
@@ -345,6 +346,17 @@ describe('Hero Component', () => {
   });
 
   describe('Media sections rendering', () => {
+    it('uses the editorial split treatment when one authored image is present', () => {
+      const { container } = render(<Hero {...propsWithSingleImage} />);
+
+      const section = container.querySelector('section');
+      expect(section).toHaveAttribute('data-media-layout', 'single');
+      expect(screen.getAllByTestId('media-section')).toHaveLength(1);
+      expect(screen.getByTestId('media-section')).toHaveClass(
+        '@lg:min-h-[42rem]',
+      );
+    });
+
     it('should render all four media sections', () => {
       render(<Hero {...defaultProps} />);
 
@@ -554,11 +566,16 @@ describe('Hero Component', () => {
       expect(section).toHaveClass('@container');
     });
 
-    it('should apply correct padding classes', () => {
+    it('should apply the gallery section rhythm for multi-media content', () => {
       const { container } = render(<Hero {...defaultProps} />);
 
       const section = container.querySelector('section');
-      expect(section).toHaveClass('py-24');
+      expect(section).toHaveAttribute('data-media-layout', 'gallery');
+      expect(
+        Array.from(container.querySelectorAll('div')).some((element) =>
+          element.className.includes('@lg:py-24'),
+        ),
+      ).toBe(true);
     });
 
     it('should apply overflow-hidden class', () => {

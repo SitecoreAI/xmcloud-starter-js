@@ -1,0 +1,54 @@
+﻿---
+ID: "8b14ed5b-b5b7-4a14-bea9-58b58fc1fd81"
+Parent: "92a4c774-f20e-4f57-8dbb-1a57e8f1f137"
+Template: "bee4869d-b588-42c2-9797-76510c397e6a"
+Path: /sitecore/content/slb/slb/Data/Calls to Action Banners/SLB Google campaign banner_var2
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "8289fa07-ac96-444f-8824-c617f56a1d5f"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260831T131040Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{12FFAC4C-565F-4C9A-B63E-7F77E96B4D1F}"
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "7a8c2095-39f5-4f40-b69d-16ddff188a68"
+      Hint: titleRequired
+      Value: Turn emissions data into your next operational action
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "34d6069d-1f97-4b3a-8c4b-83a878f2c421"
+    - ID: "9fdcf3e1-5289-4ae0-b4e4-9460ad50814f"
+      Hint: linkOptional
+      Value: |
+        <link linktype="external" url="/solutions/industrial-decarbonization#capabilities" text="Explore the action cycle" anchor=""/>
+    - ID: "a35015fe-805c-45d7-9446-f88b33a157d4"
+      Hint: descriptionOptional
+      Value: "Connect a defensible baseline with source-level insight and engineered interventions to prioritize the next step and verify results."
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260831T131801Z

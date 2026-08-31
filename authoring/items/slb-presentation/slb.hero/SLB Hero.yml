@@ -1,0 +1,69 @@
+---
+ID: "927fe09d-c039-b897-165c-995487b11b87"
+Parent: "94761350-44cb-4a88-938b-fd0fc7cbfdd1"
+Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+Path: "/sitecore/layout/Renderings/Project/click-click-launch/Banners/SLB Hero"
+SharedFields:
+  - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
+    Hint: componentName
+    Value: Hero
+  - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+    Hint: __Icon
+    Value: Office/32x32/painting_landscape.png
+  - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
+    Hint: Datasource Template
+    Value: "/sitecore/templates/Project/click-click-launch/Components/Page Headers/Hero"
+  - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
+    Hint: Open Properties after Add
+    Value: 0
+  - ID: "a2f5d9df-8cba-4a1d-99eb-51acb94cb057"
+    Hint: Page Editor Buttons
+    Value: "{BD84B7C3-6DFD-406D-B637-FD9BC0F2E1A8}"
+  - ID: "a3411ff6-c978-40aa-b059-a49b9ca2209b"
+    Hint: Can select Page as a data source
+    Value: 1
+  - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
+    Hint: Parameters Template
+    Value: "{D65D917D-0E12-4545-B3FC-4FC8DF5490CB}"
+  - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
+    Hint: Datasource Location
+    Value: "query:$site/*[@@name='Data']/*[@@templateid='{767723AE-EA5C-4D23-89C1-BD18FD051650}']|query:$sharedSites/*[@@name='Data']/*[@@templateid='{767723AE-EA5C-4D23-89C1-BD18FD051650}']"
+  - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+    Hint: __Sortorder
+    Value: 55
+  - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+    Hint: __Shared revision
+    Value: "43df871b-121e-4dc0-9b8d-a5a3493f3734"
+  - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
+    Hint: OtherProperties
+    Value: IsRenderingsWithDynamicPlaceholders=true
+Languages:
+  - Language: en
+    Fields:
+      - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+        Hint: __Display name
+        Value: SLB Hero
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+            Hint: __Revision
+            Value: "908416a0-2764-4b23-a8e2-f042b82dfb85"
+          - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+            Hint: __Updated
+            Value: 20260831T150000Z

@@ -100,6 +100,7 @@ export const Default: React.FC<CtaBannerProps> = (props) => {
 
     return (
       <section
+        id={params?.RenderingIdentifier || undefined}
         className={ctaBannerVariants({ colorScheme })}
         data-component="CtaBanner"
       >

@@ -1,0 +1,87 @@
+---
+ID: 47baf4a5-b04a-d4f6-ad59-2dedfdd477b2
+Parent: fce52196-25c1-99b5-3493-d30f9bef5f14
+Template: a19c3230-c5ee-47a1-ae3f-12a1fc3c4273
+Path: /sitecore/content/slb/slb/Data/SLB Heroes/N02 Hero
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 1d8e1ab2-98c1-ac45-8ba0-f019d340b6e3
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="/images/slb/insights-research-exchange-hero.jpg" alt="Scientists and energy analysts examine core samples and a basin model during a research roundtable." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: Step into energy's next questions
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 0c9dde9a-47d9-e9b5-db1f-fda48f0927d6
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="all-insights" target="" title="" linktype="internal" text="Browse all insights" url="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="/images/slb/insights-research-exchange-hero.jpg" alt="Científicos y analistas del sector energético examinan muestras de núcleos geológicos y un modelo de cuenca durante una mesa redonda de investigación." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: Explore las próximas preguntas de la energía
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: b08537f9-739f-2589-cc4d-0c628a5d0e84
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="all-insights" target="" title="" linktype="internal" text="Consulte todos los análisis" url="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: Consulte perspectivas claras y basadas en evidencia sobre desempeño operativo, tecnología digital e IA, descarbonización y nuevos sistemas de energía.

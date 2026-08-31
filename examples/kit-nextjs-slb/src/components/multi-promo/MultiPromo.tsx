@@ -38,21 +38,27 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
     });
 
     // Add mousewheel event listener and keyboard event listener
-    const debouncedHandleWheel = debounce({ delay: 100 }, (event: WheelEvent) => {
-      if (event.deltaX > 0) {
-        api.scrollNext();
-      } else if (event.deltaX < 0) {
-        api.scrollPrev();
-      }
-    });
+    const debouncedHandleWheel = debounce(
+      { delay: 100 },
+      (event: WheelEvent) => {
+        if (event.deltaX > 0) {
+          api.scrollNext();
+        } else if (event.deltaX < 0) {
+          api.scrollPrev();
+        }
+      },
+    );
 
-    const debouncedHandleKeyDown = debounce({ delay: 100 }, (event: KeyboardEvent) => {
-      if (event.key === 'ArrowLeft') {
-        api?.scrollPrev();
-      } else if (event.key === 'ArrowRight') {
-        api?.scrollNext();
-      }
-    });
+    const debouncedHandleKeyDown = debounce(
+      { delay: 100 },
+      (event: KeyboardEvent) => {
+        if (event.key === 'ArrowLeft') {
+          api?.scrollPrev();
+        } else if (event.key === 'ArrowRight') {
+          api?.scrollNext();
+        }
+      },
+    );
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
@@ -80,14 +86,15 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
 
     return (
       <div
+        id={params?.RenderingIdentifier || undefined}
         data-component="MultiPromoCarousel"
         data-class-change
         className={cn(
-          'mx-auto my-8 max-w-screen-xl group-[.has-bg:not(.is-inset)]:my-4 group-[.container--full-bleed]:px-4 group-[.has-bg.is-inset]:px-0 md:my-16 md:group-[.has-bg:not(.is-inset)]:my-0 xl:group-[.container--full-bleed]:px-8',
+          'slb-page-shell slb-section-space group-[.has-bg:not(.is-inset)]:py-4 group-[.has-bg.is-inset]:px-0 md:group-[.has-bg:not(.is-inset)]:py-0',
           {
             'position-left': !hasPagesPositionStyles,
             [props?.params?.styles]: props?.params?.styles,
-          }
+          },
         )}
       >
         <div className="flex flex-col gap-4 group-[.is-inset]:px-4 sm:group-[.is-inset]:px-0 xl:flex-row xl:items-end xl:justify-between xl:gap-20">
@@ -124,22 +131,29 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
               className="relative -ml-4 -mr-4 overflow-hidden sm:ml-0 sm:group-[.is-inset]:-mr-8 md:group-[.is-inset]:-mr-16 xl:-mr-0 xl:group-[.is-inset]:-mr-16
               2xl:group-[.is-inset]:-mr-24"
               ref={carouselRef}
+              aria-label={titleField?.value || 'Featured content'}
             >
-              <CarouselContent className="my-12 last:mb-0 sm:my-16 sm:-ml-8">
-                {children?.results?.map((item: MultiPromoItemProps, index: number) => (
-                  <CarouselItem
-                    key={index}
-                    className={cn(
-                      'min-w-[238px] max-w-[416px] basis-3/4 pl-4 transition-opacity duration-300 sm:basis-[45%] sm:pl-8 md:basis-[31%]',
-                      {
-                        [`lg:basis-[31%]`]: numColumns === '3',
-                        [`xl:basis-[23%]`]: numColumns === '4',
-                      }
-                    )}
-                  >
-                    <MultiPromoItem key={index} isPageEditing={isPageEditing} {...item} />
-                  </CarouselItem>
-                ))}
+              <CarouselContent className="my-12 ml-0 border-l border-t border-border last:mb-0 sm:my-16 sm:ml-0">
+                {children?.results?.map(
+                  (item: MultiPromoItemProps, index: number) => (
+                    <CarouselItem
+                      key={index}
+                      className={cn(
+                        'min-w-[238px] max-w-[416px] basis-3/4 pl-0 transition-opacity duration-300 sm:basis-[45%] sm:pl-0 md:basis-[31%]',
+                        {
+                          [`lg:basis-[31%]`]: numColumns === '3',
+                          [`xl:basis-[23%]`]: numColumns === '4',
+                        },
+                      )}
+                    >
+                      <MultiPromoItem
+                        key={index}
+                        isPageEditing={isPageEditing}
+                        {...item}
+                      />
+                    </CarouselItem>
+                  ),
+                )}
               </CarouselContent>
             </Carousel>
             <div className="sr-only" aria-live="polite" aria-atomic="true">

@@ -1,0 +1,372 @@
+---
+ID: 35f6c80d-d0b1-46ab-8a45-e1b143f8fc40
+Parent: 9d42bcda-09fd-4a75-883e-0e15be202902
+Template: f2b7919e-694a-4ea6-97c7-1e6899c247dd
+Path: /sitecore/content/slb/slb/Home/products-and-services/data-and-ai
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
+  - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
+    Hint: __Thumbnail
+    Value: |
+      <image mediaid="{4E7720DF-6233-436D-AC2D-BE13DC91D63D}" />
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: e5157cdc-b157-4960-83d7-0f1064b63c73
+Languages:
+  - Language: en
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: 4ffb50eb-8bfc-4675-bf49-b9ee3cae989f
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Data and AI
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200544Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 39500ced-0c7d-4e03-9dba-efbf0b7b46e0
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200545Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: data-and-ai
+      - Version: 2
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T200547Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Put trusted data and energy intelligence to work
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 8ae3b50c-2573-4562-8957-0450208a14c2
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Data and AI
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T200547Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T200547Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: data-and-ai
+      - Version: 3
+        Fields:
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Create a governed data foundation, connect domain workflows, and introduce AI where it can make complex energy work clearer and more responsive.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201718Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Create a governed data foundation, connect domain workflows, and introduce AI where it can make complex energy work clearer and more responsive.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Put trusted data and energy intelligence to work
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: fe776a49-0e16-4c35-b1b5-d237a4f605a6
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Data and AI
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Put trusted data and energy intelligence to work
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201718Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260830T201718Z
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: data-and-ai
+      - Version: 4
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{3E311892-6AD6-599F-A45F-89DF87DBF1A9}"
+                            p:before="*"
+                            s:ds="2003f722-2075-c551-ed0c-59c53f6f9b59"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{28815E7F-8A57-3EA1-B869-480A693B00A9}"
+                            p:after="r[@uid='{3E311892-6AD6-599F-A45F-89DF87DBF1A9}']"
+                            s:ds="90342ee9-89ec-7451-7fe0-6d434551ae84"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{199F9FFC-A251-AFF2-2714-B7A86CC2FDD4}"
+                            p:after="r[@uid='{28815E7F-8A57-3EA1-B869-480A693B00A9}']"
+                            s:ds="141be585-5c0d-9f48-cb71-2de5f143e0e1"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{CD8EBACD-E76F-4581-7848-01F3F32D8CB8}"
+                            p:after="r[@uid='{199F9FFC-A251-AFF2-2714-B7A86CC2FDD4}']"
+                            s:ds="9941eb29-51c2-c53b-8684-a02ed5fd6402"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=4&amp;colorScheme=default&amp;RenderingIdentifier=lumi"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{840BE62F-2975-B5A9-4FCF-67A19052F4D6}"
+                            p:after="r[@uid='{CD8EBACD-E76F-4581-7848-01F3F32D8CB8}']"
+                            s:ds="063dd0eb-5532-c118-436d-f01782c1a39a"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary&amp;RenderingIdentifier=tela"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{E5A8A6BA-4C26-2B1E-7447-ADC12ED094C4}"
+                            p:after="r[@uid='{840BE62F-2975-B5A9-4FCF-67A19052F4D6}']"
+                            s:ds="56dfe9e4-6037-f02c-46ce-c00038984f4d"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0B84E2D1-F0D9-E576-E6B0-3EE4BEE25E6E}"
+                            p:after="r[@uid='{E5A8A6BA-4C26-2B1E-7447-ADC12ED094C4}']"
+                            s:ds="c9b08de4-a58e-3ee7-8854-e4fd469f15e9"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Create a governed data foundation, connect domain workflows, and introduce AI where it can make complex energy work clearer and more responsive.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201753Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Data and AI
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Create a governed data foundation, connect domain workflows, and introduce AI where it can make complex energy work clearer and more responsive.
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Create a governed data foundation, connect domain workflows, and introduce AI where it can make complex energy work clearer and more responsive.
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Put trusted data and energy intelligence to work
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" alt="Lumi data and AI platform interface." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Put trusted data and energy intelligence to work | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 9ba9ab7e-48f6-6939-40c6-fd20673e7536
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Create a governed data foundation, connect domain workflows, and introduce AI where it can make complex energy work clearer and more responsive.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Data and AI
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Put trusted data and energy intelligence to work
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201753Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Put trusted data and energy intelligence to work | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, products-and-services
+  - Language: es-MX
+    Fields:
+      - ID: 30e85e5d-e00a-4864-b358-7624d511deb4
+        Hint: __Unversioned revision
+        Value: d6aedaba-7bae-4861-a38a-10c0351258da
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Datos e IA
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 04bf00db-f5fb-41f7-8ab7-22408372a981
+            Hint: __Final Renderings
+            Value: |-
+              <r xmlns:p="p" xmlns:s="s" p:p="1">
+                <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+                          <r
+                            uid="{3E311892-6AD6-599F-A45F-89DF87DBF1A9}"
+                            p:before="*"
+                            s:ds="2003f722-2075-c551-ed0c-59c53f6f9b59"
+                            s:id="{927FE09D-C039-B897-165C-995487B11B87}"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{28815E7F-8A57-3EA1-B869-480A693B00A9}"
+                            p:after="r[@uid='{3E311892-6AD6-599F-A45F-89DF87DBF1A9}']"
+                            s:ds="90342ee9-89ec-7451-7fe0-6d434551ae84"
+                            s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{199F9FFC-A251-AFF2-2714-B7A86CC2FDD4}"
+                            p:after="r[@uid='{28815E7F-8A57-3EA1-B869-480A693B00A9}']"
+                            s:ds="141be585-5c0d-9f48-cb71-2de5f143e0e1"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{CD8EBACD-E76F-4581-7848-01F3F32D8CB8}"
+                            p:after="r[@uid='{199F9FFC-A251-AFF2-2714-B7A86CC2FDD4}']"
+                            s:ds="9941eb29-51c2-c53b-8684-a02ed5fd6402"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=4&amp;colorScheme=default&amp;RenderingIdentifier=lumi"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{840BE62F-2975-B5A9-4FCF-67A19052F4D6}"
+                            p:after="r[@uid='{CD8EBACD-E76F-4581-7848-01F3F32D8CB8}']"
+                            s:ds="063dd0eb-5532-c118-436d-f01782c1a39a"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary&amp;RenderingIdentifier=tela"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{E5A8A6BA-4C26-2B1E-7447-ADC12ED094C4}"
+                            p:after="r[@uid='{840BE62F-2975-B5A9-4FCF-67A19052F4D6}']"
+                            s:ds="56dfe9e4-6037-f02c-46ce-c00038984f4d"
+                            s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:ph="headless-main" />
+                          <r
+                            uid="{0B84E2D1-F0D9-E576-E6B0-3EE4BEE25E6E}"
+                            p:after="r[@uid='{E5A8A6BA-4C26-2B1E-7447-ADC12ED094C4}']"
+                            s:ds="c9b08de4-a58e-3ee7-8854-e4fd469f15e9"
+                            s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:ph="headless-main" />
+                </d>
+              </r>
+          - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
+            Hint: pageSummary
+            Value: Cree una base de datos gobernada, conecte flujos de trabajo especializados e incorpore IA donde pueda hacer más claro y ágil el trabajo energético complejo.
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T201753Z
+          - ID: 27cd428b-f652-4534-b76f-33f64b742659
+            Hint: pageShortTitle
+            Value: Datos e IA
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
+            Hint: ogDescription
+            Value: Cree una base de datos gobernada, conecte flujos de trabajo especializados e incorpore IA donde pueda hacer más claro y ágil el trabajo energético complejo.
+          - ID: 5272817a-75b7-4554-a5ef-2cc4930034d2
+            Hint: pageSubtitle
+            Value: Cree una base de datos gobernada, conecte flujos de trabajo de dominio e introduzca IA donde pueda hacer que el trabajo energético complejo sea más claro y adaptable.
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
+            Hint: pageTitle
+            Value: Ponga a trabajar datos confiables e inteligencia energética
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
+            Hint: ogImage
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" alt="Interfaz de la plataforma de datos e IA Lumi." />
+          - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
+            Hint: noIndex
+            Value: false
+          - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
+            Hint: metadataTitle
+            Value: Ponga a trabajar datos confiables e inteligencia energética | SLB
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: b4bc0023-9aa8-d649-bc7c-96f08e8c90b8
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
+            Hint: metadataDescription
+            Value: Cree una base de datos gobernada, conecte flujos de trabajo especializados e incorpore IA donde pueda hacer más claro y ágil el trabajo energético complejo.
+          - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
+            Hint: navigationTitle
+            Value: Datos e IA
+          - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
+            Hint: pageHeaderTitle
+            Value: Ponga a trabajar datos confiables e inteligencia energética
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
+            Hint: __Valid from
+            Value: 20260830T201753Z
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260831T150000Z
+          - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
+            Hint: metadataAuthor
+            Value: SLB
+          - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
+            Hint: ogTitle
+            Value: Ponga a trabajar datos confiables e inteligencia energética | SLB
+          - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
+            Hint: metadataKeywords
+            Value: SLB, energy technology, products-and-services

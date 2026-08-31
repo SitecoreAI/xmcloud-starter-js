@@ -1,16 +1,18 @@
 // Below are built-in components that are available in the app, it's recommended to keep them as is
+import { NextjsContentSdkComponent } from '@sitecore-content-sdk/nextjs';
 
-import { BYOCServerWrapper, NextjsContentSdkComponent, FEaaSServerWrapper } from '@sitecore-content-sdk/nextjs';
+
+import { BYOCServerWrapper, FEaaSServerWrapper } from '@sitecore-content-sdk/nextjs';
 import { Form } from '@sitecore-content-sdk/nextjs';
 
-// end of built-in components
+// end of built-in import section
 import * as VideoPlayerdev from 'src/components/video/VideoPlayer.dev';
 import * as VideoModaldev from 'src/components/video/VideoModal.dev';
 import * as Video from 'src/components/video/Video';
 import * as VerticalImageAccordion from 'src/components/vertical-image-accordion/VerticalImageAccordion';
 import * as TopicListing from 'src/components/topic-listing/TopicListing';
 import * as TopicItemdev from 'src/components/topic-listing/TopicItem.dev';
-import * as themeproviderdev from 'src/components/theme-provider/theme-provider.dev';
+import * as ThemeProviderdev from 'src/components/theme-provider/theme-provider.dev';
 import * as TextBannerDefaultdev from 'src/components/text-banner/TextBannerDefault.dev';
 import * as TextBanner02dev from 'src/components/text-banner/TextBanner02.dev';
 import * as TextBanner01dev from 'src/components/text-banner/TextBanner01.dev';
@@ -33,6 +35,7 @@ import * as Container from 'src/components/sxa/Container';
 import * as ColumnSplitter from 'src/components/sxa/ColumnSplitter';
 import * as SubscriptionBanner from 'src/components/subscription-banner/SubscriptionBanner';
 import * as StructuredData from 'src/components/structured-data/StructuredData';
+import * as SiteSearchDialog from 'src/components/site-search/SiteSearchDialog';
 import * as SecondaryNavigation from 'src/components/secondary-navigation/SecondaryNavigation';
 import * as RichTextBlock from 'src/components/rich-text-block/RichTextBlock';
 import * as PromoBlock from 'src/components/promo-block/PromoBlock';
@@ -40,30 +43,30 @@ import * as PromoAnimatedImageRightdev from 'src/components/promo-animated/Promo
 import * as PromoAnimatedEmptyImageEditing from 'src/components/promo-animated/PromoAnimatedEmptyImageEditing';
 import * as PromoAnimatedDefaultdev from 'src/components/promo-animated/PromoAnimatedDefault.dev';
 import * as PromoAnimated from 'src/components/promo-animated/PromoAnimated';
-import * as portaldev from 'src/components/portal/portal.dev';
+import * as Portaldev from 'src/components/portal/portal.dev';
 import * as PageHeader from 'src/components/page-header/PageHeader';
 import * as MultiPromoTabs from 'src/components/multi-promo-tabs/MultiPromoTabs';
 import * as MultiPromoTabdev from 'src/components/multi-promo-tabs/MultiPromoTab.dev';
 import * as MultiPromoItemdev from 'src/components/multi-promo/MultiPromoItem.dev';
 import * as MultiPromo from 'src/components/multi-promo/MultiPromo';
-import * as modetoggledev from 'src/components/mode-toggle/mode-toggle.dev';
+import * as ModeToggledev from 'src/components/mode-toggle/mode-toggle.dev';
 import * as MediaSectiondev from 'src/components/media-section/MediaSection.dev';
-import * as meteors from 'src/components/magicui/meteors';
+import * as Meteors from 'src/components/magicui/meteors';
 import * as LogoTabs from 'src/components/logo-tabs/LogoTabs';
 import * as LogoItem from 'src/components/logo-tabs/LogoItem';
 import * as Logodev from 'src/components/logo/Logo.dev';
-import * as nextImageSrcdev from 'src/components/image/nextImageSrc.dev';
+import * as NextImageSrcdev from 'src/components/image/nextImageSrc.dev';
 import * as ImageWrapperdev from 'src/components/image/ImageWrapper.dev';
 import * as ImageWrapperclient from 'src/components/image/ImageWrapper.client';
 import * as Icon from 'src/components/icon/Icon';
-import * as signaldev from 'src/components/icon/svg/signal.dev';
-import * as playdev from 'src/components/icon/svg/play.dev';
-import * as diversitydev from 'src/components/icon/svg/diversity.dev';
-import * as crossarrowsdev from 'src/components/icon/svg/cross-arrows.dev';
-import * as communitiesdev from 'src/components/icon/svg/communities.dev';
-import * as arrowuprightdev from 'src/components/icon/svg/arrow-up-right.dev';
-import * as arrowrightdev from 'src/components/icon/svg/arrow-right.dev';
-import * as arrowleftdev from 'src/components/icon/svg/arrow-left.dev';
+import * as Signaldev from 'src/components/icon/svg/signal.dev';
+import * as Playdev from 'src/components/icon/svg/play.dev';
+import * as Diversitydev from 'src/components/icon/svg/diversity.dev';
+import * as CrossArrowsdev from 'src/components/icon/svg/cross-arrows.dev';
+import * as Communitiesdev from 'src/components/icon/svg/communities.dev';
+import * as ArrowUpRightdev from 'src/components/icon/svg/arrow-up-right.dev';
+import * as ArrowRightdev from 'src/components/icon/svg/arrow-right.dev';
+import * as ArrowLeftdev from 'src/components/icon/svg/arrow-left.dev';
 import * as YoutubeIcondev from 'src/components/icon/svg/YoutubeIcon.dev';
 import * as TwitterIcondev from 'src/components/icon/svg/TwitterIcon.dev';
 import * as LinkedInIcondev from 'src/components/icon/svg/LinkedInIcon.dev';
@@ -76,9 +79,10 @@ import * as EmailIcondev from 'src/components/icon/svg/EmailIcon.dev';
 import * as Hero from 'src/components/hero/Hero';
 import * as GlobalHeader from 'src/components/global-header/GlobalHeader';
 import * as GlobalFooter from 'src/components/global-footer/GlobalFooter';
+import * as FooterNewsletterSignupclient from 'src/components/global-footer/FooterNewsletterSignup.client';
 import * as FooterNavigationColumn from 'src/components/global-footer/FooterNavigationColumn';
 import * as FooterNavigationCalloutdev from 'src/components/footer-navigation-callout/FooterNavigationCallout.dev';
-import * as floatingdockdev from 'src/components/floating-dock/floating-dock.dev';
+import * as FloatingDockdev from 'src/components/floating-dock/floating-dock.dev';
 import * as Flexdev from 'src/components/flex/Flex.dev';
 import * as CtaBanner from 'src/components/cta-banner/CtaBanner';
 import * as ContainerFullWidth from 'src/components/container/container-full-width/ContainerFullWidth';
@@ -114,7 +118,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['VerticalImageAccordion', { ...VerticalImageAccordion, componentType: 'client' }],
   ['TopicListing', { ...TopicListing }],
   ['TopicItem', { ...TopicItemdev }],
-  ['theme-provider', { ...themeproviderdev }],
+  ['ThemeProvider', { ...ThemeProviderdev }],
   ['TextBannerDefault', { ...TextBannerDefaultdev }],
   ['TextBanner02', { ...TextBanner02dev }],
   ['TextBanner01', { ...TextBanner01dev }],
@@ -137,6 +141,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['ColumnSplitter', { ...ColumnSplitter }],
   ['SubscriptionBanner', { ...SubscriptionBanner, componentType: 'client' }],
   ['StructuredData', { ...StructuredData }],
+  ['SiteSearchDialog', { ...SiteSearchDialog, componentType: 'client' }],
   ['SecondaryNavigation', { ...SecondaryNavigation, componentType: 'client' }],
   ['RichTextBlock', { ...RichTextBlock }],
   ['PromoBlock', { ...PromoBlock }],
@@ -144,29 +149,29 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['PromoAnimatedEmptyImageEditing', { ...PromoAnimatedEmptyImageEditing }],
   ['PromoAnimatedDefault', { ...PromoAnimatedDefaultdev }],
   ['PromoAnimated', { ...PromoAnimated, componentType: 'client' }],
-  ['portal', { ...portaldev }],
+  ['Portal', { ...Portaldev }],
   ['PageHeader', { ...PageHeader, componentType: 'client' }],
   ['MultiPromoTabs', { ...MultiPromoTabs, componentType: 'client' }],
   ['MultiPromoTab', { ...MultiPromoTabdev }],
   ['MultiPromoItem', { ...MultiPromoItemdev }],
   ['MultiPromo', { ...MultiPromo, componentType: 'client' }],
-  ['mode-toggle', { ...modetoggledev }],
+  ['ModeToggle', { ...ModeToggledev }],
   ['MediaSection', { ...MediaSectiondev }],
-  ['meteors', { ...meteors, componentType: 'client' }],
+  ['Meteors', { ...Meteors, componentType: 'client' }],
   ['LogoTabs', { ...LogoTabs, componentType: 'client' }],
   ['LogoItem', { ...LogoItem }],
   ['Logo', { ...Logodev }],
-  ['nextImageSrc', { ...nextImageSrcdev }],
+  ['NextImageSrc', { ...NextImageSrcdev }],
   ['ImageWrapper', { ...ImageWrapperdev, ...ImageWrapperclient }],
   ['Icon', { ...Icon, componentType: 'client' }],
-  ['signal', { ...signaldev }],
-  ['play', { ...playdev }],
-  ['diversity', { ...diversitydev }],
-  ['cross-arrows', { ...crossarrowsdev }],
-  ['communities', { ...communitiesdev }],
-  ['arrow-up-right', { ...arrowuprightdev }],
-  ['arrow-right', { ...arrowrightdev }],
-  ['arrow-left', { ...arrowleftdev }],
+  ['Signal', { ...Signaldev }],
+  ['Play', { ...Playdev }],
+  ['Diversity', { ...Diversitydev }],
+  ['CrossArrows', { ...CrossArrowsdev }],
+  ['Communities', { ...Communitiesdev }],
+  ['ArrowUpRight', { ...ArrowUpRightdev }],
+  ['ArrowRight', { ...ArrowRightdev }],
+  ['ArrowLeft', { ...ArrowLeftdev }],
   ['YoutubeIcon', { ...YoutubeIcondev }],
   ['TwitterIcon', { ...TwitterIcondev }],
   ['LinkedInIcon', { ...LinkedInIcondev }],
@@ -179,9 +184,10 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Hero', { ...Hero, componentType: 'client' }],
   ['GlobalHeader', { ...GlobalHeader, componentType: 'client' }],
   ['GlobalFooter', { ...GlobalFooter }],
+  ['FooterNewsletterSignup', { ...FooterNewsletterSignupclient }],
   ['FooterNavigationColumn', { ...FooterNavigationColumn, componentType: 'client' }],
   ['FooterNavigationCallout', { ...FooterNavigationCalloutdev }],
-  ['floating-dock', { ...floatingdockdev }],
+  ['FloatingDock', { ...FloatingDockdev }],
   ['Flex', { ...Flexdev }],
   ['CtaBanner', { ...CtaBanner }],
   ['ContainerFullWidth', { ...ContainerFullWidth }],

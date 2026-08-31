@@ -126,6 +126,15 @@ describe('CtaBanner Component', () => {
       expect(container.querySelector('section')).toBeInTheDocument();
     });
 
+    it('should apply the rendering identifier to the root section', () => {
+      const { container } = render(<CtaBanner {...defaultProps} />);
+
+      expect(container.querySelector('section')).toHaveAttribute(
+        'id',
+        'cta-banner-rendering-id',
+      );
+    });
+
     it('should render title', () => {
       render(<CtaBanner {...defaultProps} />);
 
