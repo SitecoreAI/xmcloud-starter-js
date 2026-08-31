@@ -23,7 +23,7 @@ Languages:
             Value: 20260831T150000Z
           - ID: 2fe9bed7-7bcc-4a35-a209-34bcb84fcb42
             Hint: description
-            Value: ""
+            Value:
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
             Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"

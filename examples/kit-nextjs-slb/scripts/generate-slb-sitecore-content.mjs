@@ -379,7 +379,7 @@ function serializeItem(document) {
         noCompatMode: true,
         quoteStyle: "double",
         sortKeys: false,
-    })}`;
+    })}`.replace(/^(\s*Value:) ""$/gm, "$1");
 }
 
 function writeSerializedItem(relativeDirectory, itemName, document) {

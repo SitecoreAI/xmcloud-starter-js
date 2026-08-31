@@ -44,7 +44,7 @@ Languages:
             Value: 8aaad072-da1d-9d0c-e145-f358f4d85477
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
-            Value: ""
+            Value:
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +81,7 @@ Languages:
             Value: 8b6f9ea5-012a-9fdd-bd27-4e3646d3ee1c
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
-            Value: ""
+            Value:
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

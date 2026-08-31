@@ -20,7 +20,7 @@ Languages:
             Value: 20260831T150000Z
           - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
             Hint: secondaryLink
-            Value: ""
+            Value:
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
             Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
@@ -60,7 +60,7 @@ Languages:
             Value: 20260831T150000Z
           - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
             Hint: secondaryLink
-            Value: ""
+            Value:
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
             Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"

@@ -515,6 +515,12 @@ const generatedDatasourcesByPage = new Map();
 
 for (const item of generatedDatasources) {
     const itemPath = String(item.document.Path);
+    const serializedSource = fs.readFileSync(item.filePath, "utf8");
+    if (/^\s*Value:\s*(?:""|'')\s*$/m.test(serializedSource)) {
+        fail(
+            `${itemPath} serializes a quoted blank Value; Sitecore requires an empty Value scalar to clear Standard Values.`,
+        );
+    }
     const pageId = itemPath.match(generatedDatasourcePathPattern)?.[1];
     if (!pageId || !pageIds.has(pageId)) {
         fail(`${itemPath} is not assigned to a mapped fallback page.`);
