@@ -32,7 +32,7 @@ function decodeHtml(value) {
 function getHtmlAttribute(tag, name) {
     const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const attributePattern = new RegExp(
-        `(?:^|\\s)${escapedName}(?:\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s"'=<>]+)))?`,
+        `(?:^|\\s)${escapedName}(?=\\s|=|/?>)(?:\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s"'=<>]+)))?`,
         "i",
     );
     const match = attributePattern.exec(tag);

@@ -6,6 +6,7 @@ const {
   auditPageImages,
   canonicalizeImageSource,
   collectUniqueImageTargets,
+  getHtmlAttribute,
   parseMainImages,
   parseSitemapLocations,
   printReport,
@@ -36,6 +37,40 @@ describe('production image audit', () => {
       alt: 'Agua & operaciones',
       hasSrc: true,
       hasAlt: true,
+    });
+  });
+
+  test('reads src when a responsive srcSet attribute appears first', () => {
+    const html = `
+      <main>
+        <img
+          srcSet="/_next/image?url=%2Fimages%2Fwater.jpg&amp;w=640&amp;q=75 1x, /_next/image?url=%2Fimages%2Fwater.jpg&amp;w=1200&amp;q=80 2x"
+          src="/_next/image?url=%2Fimages%2Fwater.jpg&amp;w=828&amp;q=75"
+          alt="Water stewardship"
+        >
+      </main>
+    `;
+
+    const result = parseMainImages(html, pageUrl);
+
+    expect(result.images).toHaveLength(1);
+    expect(result.images[0]).toMatchObject({
+      src: '/_next/image?url=%2Fimages%2Fwater.jpg&w=828&q=75',
+      hasSrc: true,
+    });
+  });
+
+  test('matches exact attribute names rather than name prefixes', () => {
+    const tag =
+      '<img srcSet="/responsive.jpg 2x" source="/source.jpg" altText="Not alt">';
+
+    expect(getHtmlAttribute(tag, 'src')).toEqual({
+      present: false,
+      value: '',
+    });
+    expect(getHtmlAttribute(tag, 'alt')).toEqual({
+      present: false,
+      value: '',
     });
   });
 

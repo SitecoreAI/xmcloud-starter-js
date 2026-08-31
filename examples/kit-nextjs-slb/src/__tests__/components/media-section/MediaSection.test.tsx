@@ -354,9 +354,7 @@ describe('MediaSection Component', () => {
       render(<MediaSection {...propsWithOnlyImage} />);
 
       const imageWrapper = screen.getByTestId('image-wrapper');
-      expect(imageWrapper).toBeInTheDocument();
-      // ImageWrapper receives alt="" prop from MediaSection component
-      expect(imageWrapper).toHaveAttribute('alt');
+      expect(imageWrapper).toHaveAttribute('alt', 'Test image');
     });
   });
 

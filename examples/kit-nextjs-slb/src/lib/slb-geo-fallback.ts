@@ -139,6 +139,31 @@ export function hasSitemapEntries(xml: string): boolean {
   return /<(?:url|sitemap)\b/i.test(xml);
 }
 
+/**
+ * Sitecore builds sitemap URLs from the authoring host configured on the site.
+ * Rebase only sitemap URL values so a public rendering host never advertises
+ * authoring URLs while retaining Sitecore's paths, hreflang links, and dates.
+ */
+export function rebaseSitemapOrigin(xml: string, origin: string): string {
+  let publicOrigin: string;
+
+  try {
+    publicOrigin = new URL(origin).origin;
+  } catch {
+    return xml;
+  }
+
+  return xml
+    .replace(
+      /(<loc\b[^>]*>\s*)https?:\/\/[^/<\s]+/gi,
+      `$1${publicOrigin}`,
+    )
+    .replace(
+      /(\bhref\s*=\s*["'])https?:\/\/[^/"'<\s]+/gi,
+      `$1${publicOrigin}`,
+    );
+}
+
 export function resolveSlbMarkdownPage(
   locale: string,
   path: readonly string[],

@@ -90,7 +90,6 @@ export const Default = ({
         <ImageWrapper
           image={image}
           className="absolute inset-0 block h-full w-full rounded-none object-cover"
-          alt=""
         />
       ) : null}
       {!reducedMotion && video && (

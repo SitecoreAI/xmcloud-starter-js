@@ -6,6 +6,7 @@ import {
   getSlbFallbackSitemapEntries,
   getSlbRequestOrigin,
   hasSitemapEntries,
+  rebaseSitemapOrigin,
   serializeSitemap,
 } from '@/lib/slb-geo-fallback';
 
@@ -47,7 +48,17 @@ export async function GET(request: NextRequest): Promise<Response> {
 
     if (response.ok) {
       const xml = await response.clone().text();
-      if (hasSitemapEntries(xml)) return response;
+      if (hasSitemapEntries(xml)) {
+        const headers = new Headers(response.headers);
+        headers.set('Content-Type', 'application/xml; charset=utf-8');
+        return new Response(
+          rebaseSitemapOrigin(xml, getSlbRequestOrigin(request)),
+          {
+            status: response.status,
+            headers,
+          },
+        );
+      }
     }
   } catch (error) {
     if (
