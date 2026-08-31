@@ -2,8 +2,9 @@
 
 import { useEffect, JSX } from 'react';
 import { CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
-import { pageView } from '@sitecore-content-sdk/events'; 
+import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
+import { scheduleEmissionsCampaignRefresh } from './campaign-personalization-refresh';
 
 /**
  * This is the CDP page view component.
@@ -43,8 +44,11 @@ const CdpPageView = (): JSX.Element => {
       route.itemId,
       language,
       context.variantId as string,
-      scope
+      scope,
     );
+    let cancelled = false;
+    let refreshTimer: number | null = null;
+
     // there can be cases where Events are not initialized which are expected to reject
     // Handle 404 errors gracefully (e.g., browser/create.json endpoint not available)
     pageView({
@@ -53,15 +57,46 @@ const CdpPageView = (): JSX.Element => {
       page: route.name,
       pageVariantId,
       language,
-    }).catch((e) => {
-      // Silently handle expected errors (404s, network failures)
-      // The browser/create.json endpoint may not be available in all environments
-      // Suppress all console errors for this expected behavior
-      // Only log unexpected errors in development
-      if (process.env.NODE_ENV === 'development' && e?.status !== 404 && e?.status !== 0) {
-        console.debug('CDP pageView error:', e);
+    })
+      .then((response) => {
+        if (cancelled || !response) {
+          return;
+        }
+
+        try {
+          refreshTimer = scheduleEmissionsCampaignRefresh({
+            location: window.location,
+            storage: window.sessionStorage,
+            reload: () => window.location.reload(),
+            setTimeoutFn: (callback, delay) =>
+              window.setTimeout(callback, delay),
+            isCancelled: () => cancelled,
+          });
+        } catch {
+          // Personalization refresh is an enhancement; page rendering must continue.
+        }
+      })
+      .catch((e) => {
+        // Silently handle expected errors (404s, network failures)
+        // The browser/create.json endpoint may not be available in all environments
+        // Suppress all console errors for this expected behavior
+        // Only log unexpected errors in development
+        if (
+          process.env.NODE_ENV === 'development' &&
+          e?.status !== 404 &&
+          e?.status !== 0
+        ) {
+          console.debug('CDP pageView error:', e);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+
+      if (refreshTimer !== null) {
+        window.clearTimeout(refreshTimer);
       }
-    });
+    };
   }, [mode, route, context.variantId, siteName]);
 
   return <></>;

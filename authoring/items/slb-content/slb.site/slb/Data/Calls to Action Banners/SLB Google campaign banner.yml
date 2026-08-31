@@ -23,7 +23,7 @@ Languages:
       Value: 20260831T131040Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
-      Value: "{12FFAC4C-565F-4C9A-B63E-7F77E96B4D1F}"
+      Value: "{4460E76C-48AD-4E6E-9F29-1C2FF7D55722}"
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -41,7 +41,7 @@ Languages:
     - ID: "9fdcf3e1-5289-4ae0-b4e4-9460ad50814f"
       Hint: linkOptional
       Value: |
-        <link linktype="external" url="/solutions/industrial-decarbonization#capabilities" text="Explore the action cycle" anchor=""/>
+        <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="capabilities" target="" title="" linktype="internal" text="Explore the action cycle" url="" />
     - ID: "a35015fe-805c-45d7-9446-f88b33a157d4"
       Hint: descriptionOptional
       Value: Connect measurement, engineering priorities, and verification in one practical action cycle.
