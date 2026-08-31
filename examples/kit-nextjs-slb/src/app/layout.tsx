@@ -9,6 +9,11 @@ import {
 import type { JsonLdValue } from '@/lib/structured-data/jsonld';
 import { getBaseUrl } from '@/lib/utils';
 
+// The document language comes from a request header set by the Sitecore proxy.
+// Be explicit about request-time rendering so Next.js does not persist an
+// on-demand route as static HTML and then reject headers() at runtime.
+export const dynamic = 'force-dynamic';
+
 export default async function RootLayout({
   children,
 }: {
