@@ -126,7 +126,7 @@ Languages:
                             p:before="*"
                             s:ds="47baf4a5-b04a-d4f6-ad59-2dedfdd477b2"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{BB6FB5E1-8848-8507-F78F-145EF5F1ECC4}"
@@ -140,14 +140,14 @@ Languages:
                             p:after="r[@uid='{BB6FB5E1-8848-8507-F78F-145EF5F1ECC4}']"
                             s:ds="1018ee87-61b2-5f01-fb18-f14777532d90"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{3945D52E-6D89-2336-7301-45BABC37950B}"
                             p:after="r[@uid='{EE98F21A-75D1-CBB2-6FB8-1379C1006BBA}']"
                             s:ds="4d5b985b-b8e4-0e57-a449-2565eeff5516"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -171,7 +171,7 @@ Languages:
             Value: Step into energy's next questions
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="/images/slb/insights-research-exchange-hero.jpg" alt="Scientists and energy analysts examine core samples and a basin model during a research roundtable." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" dam-id="114594" dam-content-type="Image" width="1672" height="941" alt="Scientists and energy analysts examine core samples and a basin model during a research roundtable." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -229,7 +229,7 @@ Languages:
                             p:before="*"
                             s:ds="47baf4a5-b04a-d4f6-ad59-2dedfdd477b2"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{BB6FB5E1-8848-8507-F78F-145EF5F1ECC4}"
@@ -243,14 +243,14 @@ Languages:
                             p:after="r[@uid='{BB6FB5E1-8848-8507-F78F-145EF5F1ECC4}']"
                             s:ds="1018ee87-61b2-5f01-fb18-f14777532d90"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{3945D52E-6D89-2336-7301-45BABC37950B}"
                             p:after="r[@uid='{EE98F21A-75D1-CBB2-6FB8-1379C1006BBA}']"
                             s:ds="4d5b985b-b8e4-0e57-a449-2565eeff5516"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -282,7 +282,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="/images/slb/insights-research-exchange-hero.jpg" alt="Científicos y analistas del sector energético examinan muestras de núcleos geológicos y un modelo de cuenca durante una mesa redonda de investigación." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" dam-id="114594" dam-content-type="Image" width="1672" height="941" alt="Científicos y analistas del sector energético examinan muestras de núcleos geológicos y un modelo de cuenca durante una mesa redonda de investigación." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

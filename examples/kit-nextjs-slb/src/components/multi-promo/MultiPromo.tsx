@@ -83,6 +83,94 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
     const hasPagesPositionStyles: boolean = props?.params?.styles
       ? props?.params?.styles.includes('position-')
       : false;
+    const presentation = params?.slbPresentation;
+    const isCardGrid = presentation === 'card-grid';
+    const isDarkRail = presentation === 'content-rail';
+    const isRelated = presentation === 'related';
+    const isSlbEditorial = isCardGrid || isDarkRail || isRelated;
+    const sectionHeader = (
+      <div className="flex flex-col gap-4 group-[.is-inset]:px-4 sm:group-[.is-inset]:px-0 xl:flex-row xl:items-end xl:justify-between xl:gap-20">
+        {titleField && (
+          <div className="basis-full xl:basis-1/2">
+            {isSlbEditorial && (
+              <p
+                className={cn(
+                  'mb-5 font-heading text-xs font-bold uppercase tracking-[0.16em]',
+                  isDarkRail || isRelated ? 'text-accent' : 'text-primary',
+                )}
+              >
+                SLB
+              </p>
+            )}
+            <Text
+              tag="h2"
+              field={titleField}
+              className={cn(
+                'font-heading text-box-trim-both text-box-edge-asc-baseline -ml-1 max-w-[20ch] text-pretty text-4xl font-normal leading-[1.1333] tracking-tighter sm:text-5xl md:max-w-[17.5ch] lg:text-6xl',
+                (isDarkRail || isRelated) && 'text-white',
+              )}
+            />
+          </div>
+        )}
+        {descriptionField?.value && (
+          <div className="basis-full xl:basis-1/2">
+            <RichText
+              className={cn(
+                'text-body prose text-box-trim-both text-box-edge-asc-baseline mt-6 max-w-[51.5ch] text-pretty text-lg leading-[1.444] tracking-tight',
+                isDarkRail || isRelated
+                  ? 'text-[#dfe5ff] [&_p]:text-[#dfe5ff]'
+                  : 'text-foreground/75',
+              )}
+              field={descriptionField}
+            />
+          </div>
+        )}
+      </div>
+    );
+
+    if (isSlbEditorial) {
+      return (
+        <section
+          id={params?.RenderingIdentifier || undefined}
+          data-component="MultiPromoCarousel"
+          data-layout={presentation}
+          data-class-change
+          className={cn(
+            isDarkRail || isRelated
+              ? 'bg-dark text-dark-foreground'
+              : 'bg-white text-dark',
+            props?.params?.styles,
+          )}
+        >
+          <div className="slb-page-shell slb-section-space">
+            {sectionHeader}
+            {children && (
+              <div
+                className={cn('mt-12 sm:mt-16', {
+                  'grid grid-cols-1 border-l border-t border-[#cbd3ef] sm:grid-cols-2 xl:grid-cols-4':
+                    isCardGrid,
+                  'grid grid-cols-1 gap-8 md:grid-cols-3': isDarkRail,
+                  'grid grid-cols-1 border-t border-white/20 md:grid-cols-2 xl:grid-cols-4':
+                    isRelated,
+                })}
+              >
+                {children.results.map(
+                  (item: MultiPromoItemProps, index: number) => (
+                    <MultiPromoItem
+                      key={index}
+                      isPageEditing={isPageEditing}
+                      itemNumber={index + 1}
+                      presentation={presentation}
+                      {...item}
+                    />
+                  ),
+                )}
+              </div>
+            )}
+          </div>
+        </section>
+      );
+    }
 
     return (
       <div
@@ -97,25 +185,7 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
           },
         )}
       >
-        <div className="flex flex-col gap-4 group-[.is-inset]:px-4 sm:group-[.is-inset]:px-0 xl:flex-row xl:items-end xl:justify-between xl:gap-20">
-          {titleField && (
-            <div className="basis-full xl:basis-1/2">
-              <Text
-                tag="h2"
-                field={titleField}
-                className="font-heading text-box-trim-both text-box-edge-asc-baseline -ml-1 max-w-[20ch] text-pretty text-4xl font-normal leading-[1.1333] tracking-tighter sm:text-5xl md:max-w-[17.5ch] lg:text-6xl"
-              />
-            </div>
-          )}
-          {descriptionField?.value && (
-            <div className="basis-full xl:basis-1/2">
-              <RichText
-                className="text-body prose text-box-trim-both text-box-edge-asc-baseline mt-6 max-w-[51.5ch] text-pretty text-lg leading-[1.444] tracking-tight"
-                field={descriptionField}
-              />
-            </div>
-          )}
-        </div>
+        {sectionHeader}
         {children && (
           <>
             <Carousel

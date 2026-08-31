@@ -17,7 +17,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" alt="SLB technician inspects a circular piece of precision industrial equipment." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" dam-id="114114" dam-content-type="Image" width="1130" height="730" alt="SLB technician inspects a circular piece of precision industrial equipment." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
@@ -54,7 +54,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" alt="Un técnico de SLB inspecciona un equipo industrial circular de alta precisión." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" dam-id="114114" dam-content-type="Image" width="1130" height="730" alt="Un técnico de SLB inspecciona un equipo industrial circular de alta precisión." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z

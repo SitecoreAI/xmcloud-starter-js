@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" alt="SLB field employee in safety glasses and a white hard hat at sunset." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" dam-id="114221" dam-content-type="Image" width="2832" height="2280" alt="SLB field employee in safety glasses and a white hard hat at sunset." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 08f31591-3734-62b0-7146-0ed30170d88c
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" alt="Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" dam-id="114221" dam-content-type="Image" width="2832" height="2280" alt="Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: c9c33482-23f2-5372-0d2c-e33849828eb9

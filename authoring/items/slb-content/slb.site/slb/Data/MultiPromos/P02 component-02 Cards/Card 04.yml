@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" alt="Two SLB field specialists review work beside pumpjacks." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" dam-id="114248" dam-content-type="Image" width="1416" height="1140" alt="Two SLB field specialists review work beside pumpjacks." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 6481aa64-3f7d-2604-95d2-97fc186f7f79
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" alt="Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" dam-id="114248" dam-content-type="Image" width="1416" height="1140" alt="Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 0d3e185e-44da-4437-e2af-220817268238

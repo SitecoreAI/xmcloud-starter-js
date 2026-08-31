@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" alt="Branded rendering of a land rig with a footprint reduction icon." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" dam-id="114164" dam-content-type="Image" width="1130" height="730" alt="Branded rendering of a land rig with a footprint reduction icon." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 095392ef-9325-85b4-fed7-06ec76ba9df6
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" alt="Representación de un equipo de perforación terrestre con un icono de reducción de superficie." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" dam-id="114164" dam-content-type="Image" width="1130" height="730" alt="Representación de un equipo de perforación terrestre con un icono de reducción de superficie." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: c7d89b27-d0ca-4728-b06f-9129eb0b729e

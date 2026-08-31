@@ -6,6 +6,10 @@ import { fileURLToPath } from "node:url";
 
 const require = createRequire(import.meta.url);
 const yaml = require("js-yaml");
+const {
+    loadSlbDamAssetDescriptors,
+    serializeSitecoreDamImage,
+} = require("./lib/slb-sitecore-image.cjs");
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const appRoot = path.resolve(scriptDirectory, "..");
@@ -261,30 +265,12 @@ function cleanItemName(value) {
         .trim();
 }
 
-function parseDamUrls() {
-    const source = fs.readFileSync(
-        path.join(appRoot, "src/lib/slb-dam-assets.ts"),
-        "utf8",
-    );
-    const urls = new Map();
-    const pattern = /'([^']+)':\s*\n?\s*'([^']+)'/g;
-    for (const match of source.matchAll(pattern)) urls.set(match[1], match[2]);
-    return urls;
-}
-
-const damUrls = parseDamUrls();
-
-function imageUrl(filename) {
-    return damUrls.get(filename) ?? `/images/slb/${filename}`;
-}
+const damAssetDescriptors = loadSlbDamAssetDescriptors(
+    path.join(appRoot, "src/content/slb-dam-assets.json"),
+);
 
 function imageXml(image) {
-    if (!image?.filename) return undefined;
-    const src = imageUrl(image.filename);
-    const thumbnail = damUrls.has(image.filename)
-        ? ` thumbnailsrc="${xmlEscape(src)}"`
-        : "";
-    return `<image mediaid="" src="${xmlEscape(src)}"${thumbnail} alt="${xmlEscape(image.alt)}" />`;
+    return serializeSitecoreDamImage(image, damAssetDescriptors);
 }
 
 function linkXml(cta, locale) {
@@ -542,6 +528,8 @@ function promoDatasource(page, componentIndex, images) {
     return {
         id,
         kind: "promo",
+        promoVariant: componentIndex % 2 === 0 ? "image-right" : "image-left",
+        presentation: componentIndex % 2 === 0 ? "split-white" : "split-frost",
         anchorIdByLocale: localizedAnchorIds(page, componentIndex),
     };
 }
@@ -682,6 +670,11 @@ function multiPromoDatasource(page, componentIndex, images, related = false) {
     return {
         id,
         kind: "multiPromo",
+        presentation: related
+            ? "related"
+            : enComponent.type === "contentRail"
+              ? "content-rail"
+              : "card-grid",
         anchorIdByLocale: related
             ? undefined
             : localizedAnchorIds(page, componentIndex),
@@ -795,6 +788,7 @@ function ctaDatasource(page, componentIndex, final = false) {
     return {
         id,
         kind: "cta",
+        presentation: final ? "final-cta" : "dark-feature",
         anchorIdByLocale: final
             ? undefined
             : localizedAnchorIds(page, componentIndex),
@@ -831,21 +825,23 @@ function renderingParameters(entry, index, locale) {
         ? `&RenderingIdentifier=${encodeURIComponent(anchorId)}`
         : "";
     if (entry.kind === "hero") {
-        return `${dynamic}&FieldNames=%7B${variants.hero}%7D&colorScheme=primary`;
+        return `${dynamic}&FieldNames=%7B${variants.hero}%7D&colorScheme=dark`;
     }
     if (entry.kind === "promo") {
         const variant =
-            index % 2 === 0 ? variants.promoDefault : variants.promoImageRight;
-        return `${dynamic}&FieldNames=%7B${variant}%7D&colorScheme=light${anchorParameter}`;
+            entry.promoVariant === "image-right"
+                ? variants.promoImageRight
+                : variants.promoDefault;
+        return `${dynamic}&FieldNames=%7B${variant}%7D&colorScheme=light&slbPresentation=${entry.presentation}${anchorParameter}`;
     }
     if (entry.kind === "multiPromo") {
         const columns = entry.itemCount >= 4 ? 4 : 3;
-        return `${dynamic}&FieldNames=%7B${variants.multiPromo}%7D&numColumns=${columns}${anchorParameter}`;
+        return `${dynamic}&FieldNames=%7B${variants.multiPromo}%7D&numColumns=${columns}&slbPresentation=${entry.presentation}${anchorParameter}`;
     }
     if (entry.kind === "richText") {
         return `${dynamic}&FieldNames=%7B${variants.richText}%7D${anchorParameter}`;
     }
-    return `${dynamic}&colorScheme=${index % 2 === 0 ? "primary" : "default"}${anchorParameter}`;
+    return `${dynamic}&colorScheme=default&slbPresentation=${entry.presentation}${anchorParameter}`;
 }
 
 function renderingId(kind) {
@@ -1024,16 +1020,16 @@ function validateImages() {
             fields.supportingImages.forEach((image) =>
                 referenced.add(image.filename),
             );
+            if (fields.seo.openGraphImageFilename)
+                referenced.add(fields.seo.openGraphImageFilename);
         }
     }
     const missing = [...referenced].filter(
-        (filename) =>
-            !damUrls.has(filename) &&
-            !fs.existsSync(path.join(appRoot, "public/images/slb", filename)),
+        (filename) => !damAssetDescriptors.has(filename),
     );
     if (missing.length) {
         throw new Error(
-            `Missing ${missing.length} referenced images: ${missing.join(", ")}`,
+            `Missing ${missing.length} Content Hub DAM descriptors for referenced content images: ${missing.join(", ")}`,
         );
     }
     return referenced.size;

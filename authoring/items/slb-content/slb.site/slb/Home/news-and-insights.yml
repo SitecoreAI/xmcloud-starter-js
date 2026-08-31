@@ -186,35 +186,35 @@ Languages:
                             p:before="*"
                             s:ds="a10479e3-9b54-d6f0-49ed-0d5c524e1677"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{95983FF4-2D72-A0E6-6862-F26F30DFD4E0}"
                             p:after="r[@uid='{D2B26379-3233-6E94-0BCE-D311F5DFCE66}']"
                             s:ds="48de45cd-996c-cf2b-48cb-eeecc37e4d07"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{37790344-24FA-9024-AFD0-205DB397B444}"
                             p:after="r[@uid='{95983FF4-2D72-A0E6-6862-F26F30DFD4E0}']"
                             s:ds="95882698-14af-811b-382d-b57858cb846f"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{60E35EAE-0828-7BAB-5C7D-D386C8E22B1F}"
                             p:after="r[@uid='{37790344-24FA-9024-AFD0-205DB397B444}']"
                             s:ds="bff9d66c-b257-c6db-d28d-3e5115f58fa6"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{018FF60E-ED72-7678-B72C-54B6D5BFC215}"
                             p:after="r[@uid='{60E35EAE-0828-7BAB-5C7D-D386C8E22B1F}']"
                             s:ds="125c7152-fa2f-e0bf-b614-3196cd6acb1c"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -238,7 +238,7 @@ Languages:
             Value: Ideas and updates moving energy forward
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" alt="SLB employees work around a forklift inside the Shreveport manufacturing facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" dam-id="114243" dam-content-type="Image" width="1416" height="1140" alt="SLB employees work around a forklift inside the Shreveport manufacturing facility." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -296,35 +296,35 @@ Languages:
                             p:before="*"
                             s:ds="a10479e3-9b54-d6f0-49ed-0d5c524e1677"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{95983FF4-2D72-A0E6-6862-F26F30DFD4E0}"
                             p:after="r[@uid='{D2B26379-3233-6E94-0BCE-D311F5DFCE66}']"
                             s:ds="48de45cd-996c-cf2b-48cb-eeecc37e4d07"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{37790344-24FA-9024-AFD0-205DB397B444}"
                             p:after="r[@uid='{95983FF4-2D72-A0E6-6862-F26F30DFD4E0}']"
                             s:ds="95882698-14af-811b-382d-b57858cb846f"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{60E35EAE-0828-7BAB-5C7D-D386C8E22B1F}"
                             p:after="r[@uid='{37790344-24FA-9024-AFD0-205DB397B444}']"
                             s:ds="bff9d66c-b257-c6db-d28d-3e5115f58fa6"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{018FF60E-ED72-7678-B72C-54B6D5BFC215}"
                             p:after="r[@uid='{60E35EAE-0828-7BAB-5C7D-D386C8E22B1F}']"
                             s:ds="125c7152-fa2f-e0bf-b614-3196cd6acb1c"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -356,7 +356,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" alt="Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" dam-id="114243" dam-content-type="Image" width="1416" height="1140" alt="Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

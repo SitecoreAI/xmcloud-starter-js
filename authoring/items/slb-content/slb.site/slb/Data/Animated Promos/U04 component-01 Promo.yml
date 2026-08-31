@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/nature-place-context.jpg" alt="A multidisciplinary team reviews local watershed and land conditions above an operating site." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" dam-id="114404" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary team reviews local watershed and land conditions above an operating site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 1cf863f1-b99b-1986-0ae4-acdbc844fb6f
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/nature-place-context.jpg" alt="Un equipo multidisciplinario revisa las condiciones locales de la cuenca y del terreno sobre un sitio operativo." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context" dam-id="114404" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario revisa las condiciones locales de la cuenca y del terreno sobre un sitio operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 7ed6117a-4a3f-8826-f93d-ac475528bb23

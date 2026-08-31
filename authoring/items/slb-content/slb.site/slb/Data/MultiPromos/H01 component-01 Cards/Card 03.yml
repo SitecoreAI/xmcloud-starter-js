@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" alt="SLB operator crosses the glass-lined atrium of a technology facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="SLB operator crosses the glass-lined atrium of a technology facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: a7459856-edc3-51e4-8c28-db7b22e27abd
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" alt="Un operador de SLB cruza el atrio acristalado de un centro tecnológico." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="Un operador de SLB cruza el atrio acristalado de un centro tecnológico." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: f9e434be-9dff-e6fc-8255-b2dc8300ce14

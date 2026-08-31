@@ -17,7 +17,7 @@ const fallbackPath = path.join(
     appRoot,
     "src/content/slb-fallback-content.json",
 );
-const damMapPath = path.join(appRoot, "src/lib/slb-dam-assets.ts");
+const damMapPath = path.join(appRoot, "src/content/slb-dam-assets.json");
 
 const expected = {
     pages: 23,
@@ -335,12 +335,13 @@ function assertExplicitAuthoredFields(document, itemPath, templateId) {
 }
 
 function damUrlToFilename() {
-    const source = fs.readFileSync(damMapPath, "utf8");
-    const result = new Map();
-    for (const match of source.matchAll(/'([^']+)':\s*'([^']+)'/g)) {
-        result.set(match[2], match[1]);
-    }
-    return result;
+    const descriptors = JSON.parse(fs.readFileSync(damMapPath, "utf8"));
+    return new Map(
+        Object.entries(descriptors).map(([filename, descriptor]) => [
+            descriptor.publicUrl,
+            filename,
+        ]),
+    );
 }
 
 const filenameByDamUrl = damUrlToFilename();

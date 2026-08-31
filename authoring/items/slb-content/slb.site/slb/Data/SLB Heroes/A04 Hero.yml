@@ -17,7 +17,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" alt="SLB engineer walks between large industrial pipes at an operations site." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" dam-id="114269" dam-content-type="Image" width="1416" height="1140" alt="SLB engineer walks between large industrial pipes at an operations site." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
@@ -54,7 +54,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" alt="Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" dam-id="114269" dam-content-type="Image" width="1416" height="1140" alt="Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z

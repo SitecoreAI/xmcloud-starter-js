@@ -17,7 +17,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" alt="SLB employees work around a forklift inside the Shreveport manufacturing facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" dam-id="114243" dam-content-type="Image" width="1416" height="1140" alt="SLB employees work around a forklift inside the Shreveport manufacturing facility." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
@@ -54,7 +54,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" alt="Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" dam-id="114243" dam-content-type="Image" width="1416" height="1140" alt="Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z

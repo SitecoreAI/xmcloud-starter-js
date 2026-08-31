@@ -7,6 +7,7 @@ import { EnumValues } from '@/enumerations/generic.enum';
 export type CtaBannerParams = {
   params?: {
     colorScheme?: EnumValues<typeof ColorScheme>;
+    slbPresentation?: 'dark-feature' | 'final-cta';
     [key: string]: any;
   };
 };

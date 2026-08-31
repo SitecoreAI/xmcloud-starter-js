@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" alt="SLB employees work around a forklift inside the Shreveport manufacturing facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" dam-id="114243" dam-content-type="Image" width="1416" height="1140" alt="SLB employees work around a forklift inside the Shreveport manufacturing facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 2748579b-ce8c-017e-c5dc-3ddb7a9a2dd0
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" alt="Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced" dam-id="114243" dam-content-type="Image" width="1416" height="1140" alt="Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 53746777-e9d7-68ed-b17f-411b5a4bb007

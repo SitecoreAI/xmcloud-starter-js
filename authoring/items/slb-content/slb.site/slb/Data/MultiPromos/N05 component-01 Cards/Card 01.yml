@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/newsroom-global-energy-network-hero.jpg" alt="A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 5541c856-dc06-fe27-8ad1-4cb791a45484
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/newsroom-global-energy-network-hero.jpg" alt="Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 207f67d7-ff30-0974-b958-96954dab7cd5

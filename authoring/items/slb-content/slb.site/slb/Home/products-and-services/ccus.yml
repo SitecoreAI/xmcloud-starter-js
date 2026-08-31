@@ -87,42 +87,42 @@ Languages:
                             p:before="*"
                             s:ds="dbca7c88-9c86-9c89-f348-c275854efcb7"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{CB2B3900-C209-C01C-1BB3-5DFC3A0619EC}"
                             p:after="r[@uid='{9DB8EC3A-95D5-EE03-D327-CA8CECAD2D0E}']"
                             s:ds="955d5d92-6ce7-f240-cdec-b2c5e24f33c0"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=capabilities"
                             s:ph="headless-main" />
                           <r
                             uid="{190F79FA-BBF3-1124-157E-5753B0AA7284}"
                             p:after="r[@uid='{CB2B3900-C209-C01C-1BB3-5DFC3A0619EC}']"
                             s:ds="957185aa-5146-b01a-9ffc-db42f999bdce"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{924C0104-0F75-36C5-2998-4DAB40DF35F7}"
                             p:after="r[@uid='{190F79FA-BBF3-1124-157E-5753B0AA7284}']"
                             s:ds="78463c41-e98b-11d0-0ccc-538fc58012f7"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{1461450E-6C15-EF4B-4CEB-0B4462927B33}"
                             p:after="r[@uid='{924C0104-0F75-36C5-2998-4DAB40DF35F7}']"
                             s:ds="8d09e1f4-35a0-40d1-e38c-92016cfb4fee"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{849F23ED-685D-8946-EB1C-2B5AEE328944}"
                             p:after="r[@uid='{1461450E-6C15-EF4B-4CEB-0B4462927B33}']"
                             s:ds="6b819640-e4e4-6af6-3a49-58a74623bc19"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -146,7 +146,7 @@ Languages:
             Value: Connect every decision across the carbon storage lifecycle
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" alt="SLB employee in orange coveralls stands on an offshore platform facing the sea." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" dam-id="114231" dam-content-type="Image" width="1416" height="1140" alt="SLB employee in orange coveralls stands on an offshore platform facing the sea." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -204,42 +204,42 @@ Languages:
                             p:before="*"
                             s:ds="dbca7c88-9c86-9c89-f348-c275854efcb7"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{CB2B3900-C209-C01C-1BB3-5DFC3A0619EC}"
                             p:after="r[@uid='{9DB8EC3A-95D5-EE03-D327-CA8CECAD2D0E}']"
                             s:ds="955d5d92-6ce7-f240-cdec-b2c5e24f33c0"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=capabilities"
                             s:ph="headless-main" />
                           <r
                             uid="{190F79FA-BBF3-1124-157E-5753B0AA7284}"
                             p:after="r[@uid='{CB2B3900-C209-C01C-1BB3-5DFC3A0619EC}']"
                             s:ds="957185aa-5146-b01a-9ffc-db42f999bdce"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{924C0104-0F75-36C5-2998-4DAB40DF35F7}"
                             p:after="r[@uid='{190F79FA-BBF3-1124-157E-5753B0AA7284}']"
                             s:ds="78463c41-e98b-11d0-0ccc-538fc58012f7"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{1461450E-6C15-EF4B-4CEB-0B4462927B33}"
                             p:after="r[@uid='{924C0104-0F75-36C5-2998-4DAB40DF35F7}']"
                             s:ds="8d09e1f4-35a0-40d1-e38c-92016cfb4fee"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{849F23ED-685D-8946-EB1C-2B5AEE328944}"
                             p:after="r[@uid='{1461450E-6C15-EF4B-4CEB-0B4462927B33}']"
                             s:ds="6b819640-e4e4-6af6-3a49-58a74623bc19"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -271,7 +271,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" alt="Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" dam-id="114231" dam-content-type="Image" width="1416" height="1140" alt="Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

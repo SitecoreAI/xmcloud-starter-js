@@ -1,0 +1,506 @@
+{
+    "about-global-presence.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd",
+        "damId": 114269,
+        "contentType": "Image",
+        "width": 1416,
+        "height": 1140
+    },
+    "about-innovation-factori.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf",
+        "damId": 114260,
+        "contentType": "Image",
+        "width": 1920,
+        "height": 1916
+    },
+    "about-technology-center-team.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01",
+        "damId": 114254,
+        "contentType": "Image",
+        "width": 640,
+        "height": 427
+    },
+    "home-collaborative-workplace.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087",
+        "damId": 114127,
+        "contentType": "Image",
+        "width": 1100,
+        "height": 900
+    },
+    "home-decarbonizing-industry.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3",
+        "damId": 114120,
+        "contentType": "Image",
+        "width": 1130,
+        "height": 730
+    },
+    "home-digital-at-scale.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/62c654cc341b43b882000c2f6da5dbd6?v=908be320",
+        "damId": 114117,
+        "contentType": "Image",
+        "width": 1130,
+        "height": 730
+    },
+    "home-energy-infrastructure.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa",
+        "damId": 114111,
+        "contentType": "Image",
+        "width": 1416,
+        "height": 1140
+    },
+    "home-precision-engineering.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76",
+        "damId": 114114,
+        "contentType": "Image",
+        "width": 1130,
+        "height": 730
+    },
+    "home-scaling-new-energy.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/1ae6355316334fa9a7a59c39e49aec17?v=610e91ff",
+        "damId": 114124,
+        "contentType": "Image",
+        "width": 1130,
+        "height": 730
+    },
+    "news-artificial-lift-technologies.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612",
+        "damId": 114248,
+        "contentType": "Image",
+        "width": 1416,
+        "height": 1140
+    },
+    "news-havstjerne-carbon-storage.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50",
+        "damId": 114231,
+        "contentType": "Image",
+        "width": 1416,
+        "height": 1140
+    },
+    "news-shreveport-infrastructure.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e57e8c20cc1d4a2dab807a1cb7f68855?v=6d6baced",
+        "damId": 114243,
+        "contentType": "Image",
+        "width": 1416,
+        "height": 1140
+    },
+    "products-intelligent-power-management.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e",
+        "damId": 114164,
+        "contentType": "Image",
+        "width": 1130,
+        "height": 730
+    },
+    "products-lumi-platform.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9",
+        "damId": 114172,
+        "contentType": "Image",
+        "width": 1130,
+        "height": 730
+    },
+    "products-reda-agile-esp.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3",
+        "damId": 114178,
+        "contentType": "Image",
+        "width": 1130,
+        "height": 730
+    },
+    "products-tela-ai.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead",
+        "damId": 114158,
+        "contentType": "Image",
+        "width": 1130,
+        "height": 730
+    },
+    "products-test-facility.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab",
+        "damId": 114149,
+        "contentType": "Image",
+        "width": 2440,
+        "height": 1180
+    },
+    "solutions-laboratory-innovation.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053",
+        "damId": 114131,
+        "contentType": "Image",
+        "width": 2000,
+        "height": 967
+    },
+    "solutions-local-expertise.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe",
+        "damId": 114143,
+        "contentType": "Image",
+        "width": 1920,
+        "height": 1259
+    },
+    "solutions-manufacturing-expertise.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80",
+        "damId": 114138,
+        "contentType": "Image",
+        "width": 1140,
+        "height": 729
+    },
+    "sustainability-climate-action.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b",
+        "damId": 114184,
+        "contentType": "Image",
+        "width": 1416,
+        "height": 1140
+    },
+    "sustainability-field-employee.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3",
+        "damId": 114221,
+        "contentType": "Image",
+        "width": 2832,
+        "height": 2280
+    },
+    "sustainability-iceland-road.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5",
+        "damId": 114194,
+        "contentType": "Image",
+        "width": 1416,
+        "height": 1140
+    },
+    "sustainability-nature.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34",
+        "damId": 114209,
+        "contentType": "Image",
+        "width": 1416,
+        "height": 1140
+    },
+    "sustainability-our-people.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73",
+        "damId": 114202,
+        "contentType": "Image",
+        "width": 1416,
+        "height": 1362
+    },
+    "people-inclusive-engineering-team.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team",
+        "damId": 114436,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "new-energy-geothermal-well.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-geothermal-well",
+        "damId": 114523,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "ccus-basin-screening-workstation.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-basin-screening-workstation",
+        "damId": 114416,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "well-decommissioning-restored-site.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-well-decommissioning-restored-site",
+        "damId": 114537,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "people-community-stem-workshop.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop",
+        "damId": 114430,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "digital-workflow-automation.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation",
+        "damId": 114514,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "global-presence-regional-technology-center.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-regional-technology-center",
+        "damId": 114489,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "insight-trusted-ai-context.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context",
+        "damId": 114604,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "nature-place-context.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-place-context",
+        "damId": 114404,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "insights-energy-research-roundtable-hero.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero",
+        "damId": 114454,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "ccus-injection-well-manifold.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold",
+        "damId": 114421,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "ccus-storage-operations-control-room.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-storage-operations-control-room",
+        "damId": 114424,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "decarbonization-methane-sensor-wellhead.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-methane-sensor-wellhead",
+        "damId": 114403,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "new-energy-offshore-wind.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind",
+        "damId": 114524,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "decarbonization-verification-dashboard.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-verification-dashboard",
+        "damId": 114411,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "contact-technical-consultation.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation",
+        "damId": 114493,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "insight-decarbonization-evidence-review.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review",
+        "damId": 114483,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "insight-decarbonization-intervention-planning.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-intervention-planning",
+        "damId": 114478,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "nature-biodiversity-field-survey.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-biodiversity-field-survey",
+        "damId": 114397,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "decarbonization-engineers-prioritize-tablet.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-engineers-prioritize-tablet",
+        "damId": 114409,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "contact-media-briefing.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-media-briefing",
+        "damId": 114503,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "new-energy-hydrogen-electrolyzer.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-hydrogen-electrolyzer",
+        "damId": 114515,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "decarbonization-compressor-maintenance.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-compressor-maintenance",
+        "damId": 114410,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "nature-water-sampling-operation.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation",
+        "damId": 114399,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "ccus-reservoir-uncertainty-review.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-reservoir-uncertainty-review",
+        "damId": 114550,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "newsroom-media-briefing-hero.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-media-briefing-hero",
+        "damId": 114593,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "contact-products-specialist.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-products-specialist",
+        "damId": 114504,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "decarbonization-execution-toolbox-talk.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk",
+        "damId": 114415,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "climate-action-methane-detection-hero.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-climate-action-methane-detection-hero",
+        "damId": 114597,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "newsroom-global-energy-network-hero.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero",
+        "damId": 114451,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "insights-research-exchange-hero.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero",
+        "damId": 114594,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "global-presence-local-field-briefing.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing",
+        "damId": 114492,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "decarbonization-technology-selection.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection",
+        "damId": 114565,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "ccus-core-characterization-lab.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab",
+        "damId": 114417,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "subsurface-lifecycle-planning-hero.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero",
+        "damId": 114603,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "decarbonization-inventory-aerial-survey.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-inventory-aerial-survey",
+        "damId": 114405,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "newsroom-technology-release.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release",
+        "damId": 114578,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "new-energy-grid-storage.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage",
+        "damId": 114527,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "solutions-field-deployment.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-solutions-field-deployment",
+        "damId": 114569,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "digital-data-context.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context",
+        "damId": 114505,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "people-field-safety-training.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training",
+        "damId": 114428,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "insight-decarbonization-baseline-workshop.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop",
+        "damId": 114477,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "insight-decarbonization-control-room-hero.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero",
+        "damId": 114459,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "ccus-monitoring-seismic-array.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array",
+        "damId": 114422,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "digital-data-governance-review.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review",
+        "damId": 114541,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "new-energy-lithium-extraction.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-lithium-extraction",
+        "damId": 114517,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    },
+    "nature-equipment-circularity-workshop.jpg": {
+        "publicUrl": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop",
+        "damId": 114398,
+        "contentType": "Image",
+        "width": 1672,
+        "height": 941
+    }
+}

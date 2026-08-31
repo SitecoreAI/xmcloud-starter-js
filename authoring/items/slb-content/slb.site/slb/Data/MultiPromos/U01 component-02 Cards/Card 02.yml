@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" alt="Two SLB employees in blue coveralls walk across a field site at sunrise." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" dam-id="114202" dam-content-type="Image" width="1416" height="1362" alt="Two SLB employees in blue coveralls walk across a field site at sunrise." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: fe3bc3f6-463e-c79c-8df7-9ce4cd19dbfc
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" alt="Dos empleados de SLB con overoles azules caminan por un sitio de operaciones al amanecer." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" dam-id="114202" dam-content-type="Image" width="1416" height="1362" alt="Dos empleados de SLB con overoles azules caminan por un sitio de operaciones al amanecer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: ffb81c41-ff87-b6e5-51de-c5f68b335709

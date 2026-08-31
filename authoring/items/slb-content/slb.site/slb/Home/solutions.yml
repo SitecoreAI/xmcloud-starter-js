@@ -225,42 +225,42 @@ Languages:
                             p:before="*"
                             s:ds="7005b306-2091-9f88-d0f6-9b665671e72d"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{2A3957B7-AFC6-9B6B-39CF-2E49321DC980}"
                             p:after="r[@uid='{2EE0D340-FC32-B834-0D39-F6AD188E1387}']"
                             s:ds="c9136548-b861-1226-94e7-bbfef1c023df"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;RenderingIdentifier=find-a-solution"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid&amp;RenderingIdentifier=find-a-solution"
                             s:ph="headless-main" />
                           <r
                             uid="{9C9E65CD-8961-4850-B12B-4BE6634AEE77}"
                             p:after="r[@uid='{2A3957B7-AFC6-9B6B-39CF-2E49321DC980}']"
                             s:ds="4b32c3bc-6445-aaca-2fba-e9b2e3e639a3"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{75D3AD92-8167-B09A-CA09-6934A6B404EC}"
                             p:after="r[@uid='{9C9E65CD-8961-4850-B12B-4BE6634AEE77}']"
                             s:ds="3deb21d3-9f65-6a9d-9910-d5fe2a495ddc"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=built-around-operating-reality"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=built-around-operating-reality"
                             s:ph="headless-main" />
                           <r
                             uid="{A0171A5C-F0D4-8F1A-7724-5D94FD67890A}"
                             p:after="r[@uid='{75D3AD92-8167-B09A-CA09-6934A6B404EC}']"
                             s:ds="088d5ee3-9766-d478-4701-377e57c62154"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{EA9B7776-D052-6C1C-32EB-91DD3AB9B93A}"
                             p:after="r[@uid='{A0171A5C-F0D4-8F1A-7724-5D94FD67890A}']"
                             s:ds="8838d908-6cc4-b4d6-653f-4d30d8ad4277"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -290,7 +290,7 @@ Languages:
             Value: Solve the energy challenge in front of you
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" alt="SLB engineer holds a laboratory flask between columns of material samples." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" dam-id="114131" dam-content-type="Image" width="2000" height="967" alt="SLB engineer holds a laboratory flask between columns of material samples." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -348,42 +348,42 @@ Languages:
                             p:before="*"
                             s:ds="7005b306-2091-9f88-d0f6-9b665671e72d"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{2A3957B7-AFC6-9B6B-39CF-2E49321DC980}"
                             p:after="r[@uid='{2EE0D340-FC32-B834-0D39-F6AD188E1387}']"
                             s:ds="c9136548-b861-1226-94e7-bbfef1c023df"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;RenderingIdentifier=find-a-solution"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid&amp;RenderingIdentifier=find-a-solution"
                             s:ph="headless-main" />
                           <r
                             uid="{9C9E65CD-8961-4850-B12B-4BE6634AEE77}"
                             p:after="r[@uid='{2A3957B7-AFC6-9B6B-39CF-2E49321DC980}']"
                             s:ds="4b32c3bc-6445-aaca-2fba-e9b2e3e639a3"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{75D3AD92-8167-B09A-CA09-6934A6B404EC}"
                             p:after="r[@uid='{9C9E65CD-8961-4850-B12B-4BE6634AEE77}']"
                             s:ds="3deb21d3-9f65-6a9d-9910-d5fe2a495ddc"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=realidad-operativa"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=realidad-operativa"
                             s:ph="headless-main" />
                           <r
                             uid="{A0171A5C-F0D4-8F1A-7724-5D94FD67890A}"
                             p:after="r[@uid='{75D3AD92-8167-B09A-CA09-6934A6B404EC}']"
                             s:ds="088d5ee3-9766-d478-4701-377e57c62154"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{EA9B7776-D052-6C1C-32EB-91DD3AB9B93A}"
                             p:after="r[@uid='{A0171A5C-F0D4-8F1A-7724-5D94FD67890A}']"
                             s:ds="8838d908-6cc4-b4d6-653f-4d30d8ad4277"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -421,7 +421,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" alt="Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" dam-id="114131" dam-content-type="Image" width="2000" height="967" alt="Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

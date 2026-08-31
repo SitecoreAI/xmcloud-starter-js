@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-execution-toolbox-talk.jpg" alt="An operations team conducts a field briefing before decarbonization work begins." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" dam-id="114415" dam-content-type="Image" width="1672" height="941" alt="An operations team conducts a field briefing before decarbonization work begins." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 3c8b53a2-fe8a-91a9-8df9-4fa274d2455f
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-execution-toolbox-talk.jpg" alt="Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" dam-id="114415" dam-content-type="Image" width="1672" height="941" alt="Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: f9a061a3-4fcf-8b63-0b96-04d3ce502c9c

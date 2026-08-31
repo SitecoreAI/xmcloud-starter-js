@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-offshore-wind.jpg" alt="Technicians commission an offshore wind substation above a calm sea." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" dam-id="114524" dam-content-type="Image" width="1672" height="941" alt="Technicians commission an offshore wind substation above a calm sea." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: f17c20c3-ac1c-a301-38f5-7e232f1a16eb
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-offshore-wind.jpg" alt="Técnicos ponen en servicio una subestación eólica marina sobre un mar en calma." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" dam-id="114524" dam-content-type="Image" width="1672" height="941" alt="Técnicos ponen en servicio una subestación eólica marina sobre un mar en calma." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: dd13c8ff-bee5-108b-cc1b-019b8f90d25a

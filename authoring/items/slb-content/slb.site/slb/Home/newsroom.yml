@@ -159,28 +159,28 @@ Languages:
                             p:before="*"
                             s:ds="6da85579-9ef0-bc4d-20d4-d7eb21328c37"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{72BB6FDF-398F-D078-4EDC-E97C20CEF4BD}"
                             p:after="r[@uid='{571C681B-29DF-1E1A-BE7B-853761C871F9}']"
                             s:ds="983d2782-fc53-e573-d542-2e7283460609"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;RenderingIdentifier=newsletter"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=content-rail&amp;RenderingIdentifier=newsletter"
                             s:ph="headless-main" />
                           <r
                             uid="{3471F418-A2F5-2FEC-4A47-01AEA2E01ADB}"
                             p:after="r[@uid='{72BB6FDF-398F-D078-4EDC-E97C20CEF4BD}']"
                             s:ds="1926ea00-99a1-2c64-89f8-12ac531c60ea"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{DB2758AC-CF07-70AE-F1EA-27F26F3AD088}"
                             p:after="r[@uid='{3471F418-A2F5-2FEC-4A47-01AEA2E01ADB}']"
                             s:ds="f1250570-1467-c8a5-e42d-ed16928f38bf"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -207,7 +207,7 @@ Languages:
             Value: News from across SLB
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="/images/slb/newsroom-media-briefing-hero.jpg" alt="Energy executives answer questions from journalists during a global industry press briefing." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-media-briefing-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-media-briefing-hero" dam-id="114593" dam-content-type="Image" width="1672" height="941" alt="Energy executives answer questions from journalists during a global industry press briefing." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -265,28 +265,28 @@ Languages:
                             p:before="*"
                             s:ds="6da85579-9ef0-bc4d-20d4-d7eb21328c37"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{72BB6FDF-398F-D078-4EDC-E97C20CEF4BD}"
                             p:after="r[@uid='{571C681B-29DF-1E1A-BE7B-853761C871F9}']"
                             s:ds="983d2782-fc53-e573-d542-2e7283460609"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;RenderingIdentifier=newsletter"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=content-rail&amp;RenderingIdentifier=newsletter"
                             s:ph="headless-main" />
                           <r
                             uid="{3471F418-A2F5-2FEC-4A47-01AEA2E01ADB}"
                             p:after="r[@uid='{72BB6FDF-398F-D078-4EDC-E97C20CEF4BD}']"
                             s:ds="1926ea00-99a1-2c64-89f8-12ac531c60ea"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{DB2758AC-CF07-70AE-F1EA-27F26F3AD088}"
                             p:after="r[@uid='{3471F418-A2F5-2FEC-4A47-01AEA2E01ADB}']"
                             s:ds="f1250570-1467-c8a5-e42d-ed16928f38bf"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -318,7 +318,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="/images/slb/newsroom-media-briefing-hero.jpg" alt="Ejecutivos del sector energético responden preguntas de periodistas durante una conferencia de prensa global." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-media-briefing-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-media-briefing-hero" dam-id="114593" dam-content-type="Image" width="1672" height="941" alt="Ejecutivos del sector energético responden preguntas de periodistas durante una conferencia de prensa global." />
           - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
             Hint: metadataTitle
             Value: Noticias de SLB en todo el mundo | SLB

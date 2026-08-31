@@ -87,21 +87,21 @@ Languages:
                             p:before="*"
                             s:ds="1e168ccc-000c-6303-5cfb-6ad60b7ac50d"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{1D311673-0796-96C7-5C81-80DE755A0372}"
                             p:after="r[@uid='{9B738225-5F57-137D-E606-5DBFB59634E1}']"
                             s:ds="b7e5a3f4-fc8e-a26e-633b-dbcb2e1cb08d"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;RenderingIdentifier=approach"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid&amp;RenderingIdentifier=approach"
                             s:ph="headless-main" />
                           <r
                             uid="{A1637CD5-4384-CB23-7CAB-E5053F692994}"
                             p:after="r[@uid='{1D311673-0796-96C7-5C81-80DE755A0372}']"
                             s:ds="26fda5a9-55c5-e1c5-51c9-daa648cd0088"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{8066E27A-09A1-6B6D-28D3-CD49B1CDD813}"
@@ -115,14 +115,14 @@ Languages:
                             p:after="r[@uid='{8066E27A-09A1-6B6D-28D3-CD49B1CDD813}']"
                             s:ds="93e359ee-9cbb-008c-631a-69d693ccdcbc"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{D4430DDF-2A21-73EF-CF58-557393895B32}"
                             p:after="r[@uid='{24F09FD4-0402-EA7B-5BDD-709E68F5B92D}']"
                             s:ds="0fda4345-3cab-d114-b926-f1e6e818b9a9"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -146,7 +146,7 @@ Languages:
             Value: Turn climate ambition into accountable action
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="/images/slb/climate-action-methane-detection-hero.jpg" alt="Engineers use optical gas imaging and fixed sensors to monitor methane at an energy facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-climate-action-methane-detection-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-climate-action-methane-detection-hero" dam-id="114597" dam-content-type="Image" width="1672" height="941" alt="Engineers use optical gas imaging and fixed sensors to monitor methane at an energy facility." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -204,21 +204,21 @@ Languages:
                             p:before="*"
                             s:ds="1e168ccc-000c-6303-5cfb-6ad60b7ac50d"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{1D311673-0796-96C7-5C81-80DE755A0372}"
                             p:after="r[@uid='{9B738225-5F57-137D-E606-5DBFB59634E1}']"
                             s:ds="b7e5a3f4-fc8e-a26e-633b-dbcb2e1cb08d"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;RenderingIdentifier=approach"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid&amp;RenderingIdentifier=approach"
                             s:ph="headless-main" />
                           <r
                             uid="{A1637CD5-4384-CB23-7CAB-E5053F692994}"
                             p:after="r[@uid='{1D311673-0796-96C7-5C81-80DE755A0372}']"
                             s:ds="26fda5a9-55c5-e1c5-51c9-daa648cd0088"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{8066E27A-09A1-6B6D-28D3-CD49B1CDD813}"
@@ -232,14 +232,14 @@ Languages:
                             p:after="r[@uid='{8066E27A-09A1-6B6D-28D3-CD49B1CDD813}']"
                             s:ds="93e359ee-9cbb-008c-631a-69d693ccdcbc"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{D4430DDF-2A21-73EF-CF58-557393895B32}"
                             p:after="r[@uid='{24F09FD4-0402-EA7B-5BDD-709E68F5B92D}']"
                             s:ds="0fda4345-3cab-d114-b926-f1e6e818b9a9"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -271,7 +271,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="/images/slb/climate-action-methane-detection-hero.jpg" alt="Ingenieros utilizan imágenes ópticas de gas y sensores fijos para monitorear metano en una instalación energética." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-climate-action-methane-detection-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-climate-action-methane-detection-hero" dam-id="114597" dam-content-type="Image" width="1672" height="941" alt="Ingenieros utilizan imágenes ópticas de gas y sensores fijos para monitorear metano en una instalación energética." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

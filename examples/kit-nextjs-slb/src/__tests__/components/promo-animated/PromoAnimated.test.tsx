@@ -228,6 +228,29 @@ describe('PromoAnimated Component - Default Variant', () => {
   });
 
   describe('Component structure', () => {
+    it('renders the explicit SLB frost split without the generic border', () => {
+      const { container } = render(
+        <PromoAnimated
+          {...defaultProps}
+          params={{
+            ...defaultProps.params,
+            slbPresentation: 'split-frost',
+          }}
+        />,
+      );
+
+      const section = container.querySelector(
+        'section[data-component="PromoAnimated"]',
+      );
+      const contentWrapper = container.querySelector(
+        '.promo-animated__content-wrapper',
+      );
+      expect(section).toHaveAttribute('data-layout', 'split-frost');
+      expect(section).toHaveClass('bg-[#e8edfa]');
+      expect(contentWrapper).not.toHaveClass('border');
+      expect(screen.getByText('SLB')).toBeInTheDocument();
+    });
+
     it('should apply container class', () => {
       const { container } = render(<PromoAnimated {...defaultProps} />);
 

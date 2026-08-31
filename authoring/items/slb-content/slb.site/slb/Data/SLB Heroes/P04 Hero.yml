@@ -17,7 +17,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" alt="SLB employee in orange coveralls stands on an offshore platform facing the sea." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" dam-id="114231" dam-content-type="Image" width="1416" height="1140" alt="SLB employee in orange coveralls stands on an offshore platform facing the sea." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
@@ -54,7 +54,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" alt="Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d5f0c97ab6414002a1e142a8545dc6eb?v=c4965d50" dam-id="114231" dam-content-type="Image" width="1416" height="1140" alt="Un empleado de SLB con overol naranja se encuentra en una plataforma costa afuera frente al mar." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z

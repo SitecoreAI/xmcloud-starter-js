@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" alt="Lumi data and AI platform interface." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" dam-id="114172" dam-content-type="Image" width="1130" height="730" alt="Lumi data and AI platform interface." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 1b748d01-4273-03dd-4bd6-c3472086a485
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" alt="Interfaz de la plataforma de datos e IA Lumi." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" dam-id="114172" dam-content-type="Image" width="1130" height="730" alt="Interfaz de la plataforma de datos e IA Lumi." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: a750f241-e742-4bc7-0b02-e25582ce60bc

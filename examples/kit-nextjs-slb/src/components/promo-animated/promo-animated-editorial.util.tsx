@@ -34,7 +34,11 @@ export const PromoAnimatedEditorial: React.FC<PromoAnimatedEditorialProps> = ({
   }
 
   const { image, title, description, primaryLink, secondaryLink } = fields;
-  const isDarkSurface = params.colorScheme === 'primary';
+  const presentation = params.slbPresentation;
+  const isSlbSplit =
+    presentation === 'split-white' || presentation === 'split-frost';
+  const isFrostSplit = presentation === 'split-frost';
+  const isDarkSurface = !isSlbSplit && params.colorScheme === 'primary';
   const hasPrimaryLink = Boolean(primaryLink?.value?.href);
   const hasSecondaryLink = Boolean(secondaryLink?.value?.href);
   const hasLinks = hasPrimaryLink || hasSecondaryLink;
@@ -43,20 +47,29 @@ export const PromoAnimatedEditorial: React.FC<PromoAnimatedEditorialProps> = ({
     <section
       id={params?.RenderingIdentifier || undefined}
       data-component="PromoAnimated"
+      data-layout={presentation || undefined}
       className={cn(
         '@container overflow-hidden',
-        isDarkSurface
-          ? 'bg-dark text-dark-foreground'
-          : 'bg-secondary text-secondary-foreground',
+        isSlbSplit
+          ? isFrostSplit
+            ? 'bg-[#e8edfa] text-dark'
+            : 'bg-white text-dark'
+          : isDarkSurface
+            ? 'bg-dark text-dark-foreground'
+            : 'bg-secondary text-secondary-foreground',
       )}
     >
       <div className="slb-page-shell slb-section-space">
         <div
           data-class-change
           className={cn(
-            'promo-animated__content-wrapper group relative grid grid-cols-1 overflow-hidden border',
+            'promo-animated__content-wrapper group relative grid grid-cols-1',
             '@md:grid-cols-2 @md:items-stretch',
-            isDarkSurface ? 'border-white/20' : 'border-border',
+            isSlbSplit
+              ? 'gap-10 @md:gap-14 @lg:gap-20'
+              : 'overflow-hidden border',
+            !isSlbSplit &&
+              (isDarkSurface ? 'border-white/20' : 'border-border'),
             { [params?.styles]: params?.styles },
           )}
         >
@@ -86,11 +99,19 @@ export const PromoAnimatedEditorial: React.FC<PromoAnimatedEditorialProps> = ({
 
           <div
             className={cn(
-              'promo-animated__content flex min-w-0 flex-col justify-center px-7 py-12 @md:px-10 @lg:px-14 @lg:py-16 @xl:px-20',
+              'promo-animated__content flex min-w-0 flex-col justify-center',
+              isSlbSplit
+                ? 'py-4 @md:py-10'
+                : 'px-7 py-12 @md:px-10 @lg:px-14 @lg:py-16 @xl:px-20',
               imageRight && '@md:order-1',
               'group-[.position-center]:items-center group-[.position-right]:items-end',
             )}
           >
+            {isSlbSplit && (
+              <p className="mb-5 font-heading text-xs font-bold uppercase tracking-[0.16em] text-primary">
+                SLB
+              </p>
+            )}
             {(title || isPageEditing) && (
               <AnimatedSection
                 reducedMotion={prefersReducedMotion}
@@ -98,7 +119,10 @@ export const PromoAnimatedEditorial: React.FC<PromoAnimatedEditorialProps> = ({
               >
                 <Text
                   tag="h2"
-                  className="font-heading max-w-[14ch] text-pretty text-[2.5rem] font-light leading-[1.04] tracking-[-0.035em] @sm:text-5xl @lg:text-[4rem]"
+                  className={cn(
+                    'font-heading max-w-[14ch] text-pretty text-[2.5rem] font-light leading-[1.04] tracking-[-0.035em] @sm:text-5xl @lg:text-[4rem]',
+                    isSlbSplit && 'text-dark',
+                  )}
                   field={title}
                 />
               </AnimatedSection>
@@ -130,6 +154,11 @@ export const PromoAnimatedEditorial: React.FC<PromoAnimatedEditorialProps> = ({
                 {hasPrimaryLink && primaryLink && (
                   <Button
                     buttonLink={primaryLink}
+                    className={
+                      isSlbSplit
+                        ? 'h-auto rounded-none border-0 border-b-2 border-primary bg-transparent px-0 py-2 text-primary shadow-none hover:bg-transparent hover:text-dark'
+                        : undefined
+                    }
                     isPageEditing={isPageEditing}
                     contextTitle={title?.value}
                   />
@@ -138,6 +167,11 @@ export const PromoAnimatedEditorial: React.FC<PromoAnimatedEditorialProps> = ({
                   <Button
                     variant="secondary"
                     buttonLink={secondaryLink}
+                    className={
+                      isSlbSplit
+                        ? 'h-auto rounded-none border-0 border-b-2 border-dark/40 bg-transparent px-0 py-2 text-dark shadow-none hover:border-primary hover:bg-transparent hover:text-primary'
+                        : undefined
+                    }
                     isPageEditing={isPageEditing}
                     contextTitle={title?.value}
                   />

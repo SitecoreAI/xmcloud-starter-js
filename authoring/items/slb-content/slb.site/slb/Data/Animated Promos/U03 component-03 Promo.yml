@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/people-community-stem-workshop.jpg" alt="A volunteer helps students complete an energy science experiment." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" dam-id="114430" dam-content-type="Image" width="1672" height="941" alt="A volunteer helps students complete an energy science experiment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 2232aa27-b070-66a4-091a-fd9f0057fe28
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/people-community-stem-workshop.jpg" alt="Un voluntario ayuda a estudiantes a completar un experimento de ciencias de la energía." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" dam-id="114430" dam-content-type="Image" width="1672" height="941" alt="Un voluntario ayuda a estudiantes a completar un experimento de ciencias de la energía." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: f1105ba8-770e-3182-8949-f55b814c10a9

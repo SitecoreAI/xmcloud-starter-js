@@ -17,7 +17,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" alt="SLB operator crosses the glass-lined atrium of a technology facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="SLB operator crosses the glass-lined atrium of a technology facility." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
@@ -54,7 +54,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" alt="Un operador de SLB cruza el atrio acristalado de un centro tecnológico." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="Un operador de SLB cruza el atrio acristalado de un centro tecnológico." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z

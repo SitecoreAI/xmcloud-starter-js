@@ -80,9 +80,10 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
   );
   const hasAnyMedia = populatedMedia.length > 0;
   const hasAnyVideo = media.some(({ video }) => Boolean(video?.value?.href));
-  // Keep all four authoring slots visible in Page Builder. The concise editorial
-  // treatment is used on the public page when the datasource contains one asset.
-  const useSingleMediaLayout = populatedMedia.length === 1 && !isPageEditing;
+  // A single authored asset is an intentional editorial split, including in
+  // Page Builder. Rendering empty gallery slots there makes the authored page
+  // look materially different from its published presentation.
+  const useSingleMediaLayout = populatedMedia.length === 1;
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');

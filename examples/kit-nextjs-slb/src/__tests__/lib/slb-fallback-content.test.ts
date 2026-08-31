@@ -12,7 +12,7 @@ import {
   hasLegacySolterraRouteContent,
   hasLegacySolterraSignature,
 } from '@/lib/slb-content-safety';
-import { slbDamAssetUrls } from '@/lib/slb-dam-assets';
+import { slbDamAssets, slbDamAssetUrls } from '@/lib/slb-dam-assets';
 
 function routeToSegments(route: string, locale: string): string[] {
   const prefix = locale === 'es-MX' ? '/es-mx' : '';
@@ -209,14 +209,19 @@ describe('SLB route-aware fallback content', () => {
     expect(merged?.fields.seo.description).not.toMatch(/essential beauty/i);
   });
 
-  it('references approved DAM assets, retains local fallbacks, and contains no authoring-only copy', () => {
+  it('references complete DAM descriptors, retains runtime local fallbacks, and contains no authoring-only copy', () => {
     const serialized = JSON.stringify(catalog);
     const assetManifest = JSON.parse(
       fs.readFileSync(
         path.join(process.cwd(), 'public', 'images', 'slb', 'manifest.json'),
         'utf8',
       ),
-    ) as { assets: Array<{ filename: string }> };
+    ) as {
+      assets: Array<{
+        filename: string;
+        dimensions: { width?: number; height?: number };
+      }>;
+    };
     expect(Object.keys(slbDamAssetUrls).sort()).toEqual(
       assetManifest.assets.map((asset) => asset.filename).sort(),
     );
@@ -235,9 +240,24 @@ describe('SLB route-aware fallback content', () => {
         ].filter(Boolean);
 
         for (const filename of filenames) {
-          expect(slbDamAssetUrls[filename as string]).toMatch(
-            /^https:\/\/thlt-demo\.sitecoresandbox\.cloud\/api\/public\/content\//,
+          const assetFilename = filename as string;
+          const descriptor = slbDamAssets[assetFilename];
+          const manifestAsset = assetManifest.assets.find(
+            (asset) => asset.filename === assetFilename,
           );
+          expect(descriptor).toEqual(
+            expect.objectContaining({
+              publicUrl: expect.stringMatching(
+                /^https:\/\/thlt-demo\.sitecoresandbox\.cloud\/api\/public\/content\//,
+              ),
+              damId: expect.any(Number),
+              contentType: 'Image',
+              width: manifestAsset?.dimensions.width,
+              height: manifestAsset?.dimensions.height,
+            }),
+          );
+          expect(Number.isSafeInteger(descriptor?.damId)).toBe(true);
+          expect(slbDamAssetUrls[assetFilename]).toBe(descriptor?.publicUrl);
           expect(
             fs.existsSync(
               path.join(
@@ -245,7 +265,7 @@ describe('SLB route-aware fallback content', () => {
                 'public',
                 'images',
                 'slb',
-                filename as string,
+                assetFilename,
               ),
             ),
           ).toBe(true);

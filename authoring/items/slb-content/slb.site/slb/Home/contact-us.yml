@@ -159,35 +159,35 @@ Languages:
                             p:before="*"
                             s:ds="ab72196b-e147-c847-ea68-f04f1745f946"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{B1ECAF20-8B9E-724E-A791-82C7223457A3}"
                             p:after="r[@uid='{E5AD786C-C405-B5C5-54C4-76BFEBCC9CF6}']"
                             s:ds="0608d96e-cfb0-99ff-4246-4c9d806f2df5"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{42FA05AE-36FD-9551-0233-699B6AF70E11}"
                             p:after="r[@uid='{B1ECAF20-8B9E-724E-A791-82C7223457A3}']"
                             s:ds="5ae8ef12-33db-85a6-835d-2cec2de0259d"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{10FE85FF-1F55-3B68-D79E-956DEB147B62}"
                             p:after="r[@uid='{42FA05AE-36FD-9551-0233-699B6AF70E11}']"
                             s:ds="ddd30738-b728-0893-2677-8d1c9475f037"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{8670F3C8-8965-90AA-3A90-6F8B94A4356F}"
                             p:after="r[@uid='{10FE85FF-1F55-3B68-D79E-956DEB147B62}']"
                             s:ds="19e407e4-27f9-5df7-46c3-baaa6cfe11fc"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -214,7 +214,7 @@ Languages:
             Value: Talk with an SLB specialist
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" alt="SLB engineer in blue coveralls stands on a bridge with a city behind her." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" dam-id="114143" dam-content-type="Image" width="1920" height="1259" alt="SLB engineer in blue coveralls stands on a bridge with a city behind her." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -342,35 +342,35 @@ Languages:
                             p:before="*"
                             s:ds="ab72196b-e147-c847-ea68-f04f1745f946"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{B1ECAF20-8B9E-724E-A791-82C7223457A3}"
                             p:after="r[@uid='{E5AD786C-C405-B5C5-54C4-76BFEBCC9CF6}']"
                             s:ds="0608d96e-cfb0-99ff-4246-4c9d806f2df5"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{42FA05AE-36FD-9551-0233-699B6AF70E11}"
                             p:after="r[@uid='{B1ECAF20-8B9E-724E-A791-82C7223457A3}']"
                             s:ds="5ae8ef12-33db-85a6-835d-2cec2de0259d"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{10FE85FF-1F55-3B68-D79E-956DEB147B62}"
                             p:after="r[@uid='{42FA05AE-36FD-9551-0233-699B6AF70E11}']"
                             s:ds="ddd30738-b728-0893-2677-8d1c9475f037"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{8670F3C8-8965-90AA-3A90-6F8B94A4356F}"
                             p:after="r[@uid='{10FE85FF-1F55-3B68-D79E-956DEB147B62}']"
                             s:ds="19e407e4-27f9-5df7-46c3-baaa6cfe11fc"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -405,7 +405,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" alt="Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" dam-id="114143" dam-content-type="Image" width="1920" height="1259" alt="Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

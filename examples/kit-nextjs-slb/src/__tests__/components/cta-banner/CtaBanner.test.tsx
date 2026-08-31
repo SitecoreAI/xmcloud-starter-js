@@ -190,6 +190,26 @@ describe('CtaBanner Component', () => {
   });
 
   describe('Color schemes', () => {
+    it('renders the final SLB CTA on the explicit deep-blue surface', () => {
+      const { container } = render(
+        <CtaBanner
+          {...defaultProps}
+          params={{
+            ...defaultProps.params,
+            slbPresentation: 'final-cta',
+          }}
+        />,
+      );
+
+      const section = container.querySelector('section');
+      expect(section).toHaveAttribute('data-layout', 'final-cta');
+      expect(section).toHaveClass('bg-dark', 'text-white');
+      expect(screen.getByTestId('button')).toHaveClass(
+        'border-white/60',
+        'bg-transparent',
+      );
+    });
+
     it('should render with default color scheme', () => {
       const { container } = render(<CtaBanner {...defaultProps} />);
 

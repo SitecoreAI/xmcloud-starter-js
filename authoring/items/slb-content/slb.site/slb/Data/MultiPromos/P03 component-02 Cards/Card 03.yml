@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" alt="Tela AI search interface on a dark-blue digital screen." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" dam-id="114158" dam-content-type="Image" width="1130" height="730" alt="Tela AI search interface on a dark-blue digital screen." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: c98efc36-dfed-0463-0332-96049105088d
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" alt="Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" dam-id="114158" dam-content-type="Image" width="1130" height="730" alt="Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 5976f67f-29b4-b225-0d66-81614c459652

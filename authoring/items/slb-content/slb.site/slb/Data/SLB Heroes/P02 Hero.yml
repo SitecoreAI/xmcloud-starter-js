@@ -17,7 +17,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="/images/slb/subsurface-lifecycle-planning-hero.jpg" alt="A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" dam-id="114603" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
@@ -54,7 +54,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="/images/slb/subsurface-lifecycle-planning-hero.jpg" alt="Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" dam-id="114603" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z

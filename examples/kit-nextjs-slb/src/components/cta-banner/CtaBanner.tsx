@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Default as AnimatedSection } from '@/components/animated-section/AnimatedSection.dev';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { Text, Link } from '@sitecore-content-sdk/nextjs';
+import { cn } from '@/lib/utils';
 import { getDescriptiveLinkText } from '@/utils/link-text';
 import { CtaBannerProps } from './cta-banner.props';
 
@@ -97,12 +98,19 @@ export const Default: React.FC<CtaBannerProps> = (props) => {
   if (fields) {
     const { titleRequired, descriptionOptional, linkOptional } = fields || {};
     const colorScheme = params.colorScheme ?? undefined;
+    const presentation = params.slbPresentation;
+    const isDeepBlue =
+      presentation === 'dark-feature' || presentation === 'final-cta';
 
     return (
       <section
         id={params?.RenderingIdentifier || undefined}
-        className={ctaBannerVariants({ colorScheme })}
+        className={cn(
+          ctaBannerVariants({ colorScheme }),
+          isDeepBlue && 'border-dark bg-dark text-white',
+        )}
         data-component="CtaBanner"
+        data-layout={presentation || undefined}
       >
         <div
           aria-hidden="true"
@@ -121,14 +129,20 @@ export const Default: React.FC<CtaBannerProps> = (props) => {
             <div className="max-w-3xl">
               <div
                 aria-hidden="true"
-                className={ctaEyebrowVariants({ colorScheme })}
+                className={cn(
+                  ctaEyebrowVariants({ colorScheme }),
+                  isDeepBlue && 'text-accent',
+                )}
               >
                 <span>SLB</span>
                 <span className="h-px w-10 bg-current opacity-60" />
               </div>
               <Text
                 tag="h2"
-                className={ctaTitleVariants({ colorScheme })}
+                className={cn(
+                  ctaTitleVariants({ colorScheme }),
+                  isDeepBlue && 'text-white',
+                )}
                 field={titleRequired}
               />
             </div>
@@ -136,12 +150,22 @@ export const Default: React.FC<CtaBannerProps> = (props) => {
             <div className="flex max-w-2xl flex-col items-start gap-6 lg:pb-1">
               <Text
                 tag="p"
-                className={ctaDescriptionVariants({ colorScheme })}
+                className={cn(
+                  ctaDescriptionVariants({ colorScheme }),
+                  isDeepBlue && 'text-[#dfe5ff]',
+                )}
                 field={descriptionOptional}
               />
 
               {linkOptional && (
-                <Button className={ctaButtonVariants({ colorScheme })} asChild>
+                <Button
+                  className={cn(
+                    ctaButtonVariants({ colorScheme }),
+                    isDeepBlue &&
+                      'border-white/60 bg-transparent text-white hover:border-white hover:bg-white hover:text-dark focus-visible:ring-white focus-visible:ring-offset-dark',
+                  )}
+                  asChild
+                >
                   <Link
                     field={
                       !isPageEditing && linkOptional?.value?.text

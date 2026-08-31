@@ -159,21 +159,21 @@ Languages:
                             p:before="*"
                             s:ds="41371184-ef60-6a47-a037-9151502bcf5e"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{9AF6E19D-8705-B1CF-4F1F-1B3E58303CA7}"
                             p:after="r[@uid='{24439D34-56BF-4DCB-941C-709F9F12BF6C}']"
                             s:ds="3e765a26-f06b-0772-9bc2-9d021e69aa45"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{F9A71FFA-6193-6F96-BAD6-3E6BD99AB503}"
                             p:after="r[@uid='{9AF6E19D-8705-B1CF-4F1F-1B3E58303CA7}']"
                             s:ds="1994a711-936c-36ec-a223-d8c9902cf391"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{4E3F0298-A7D4-0E55-4292-AEA1E3892A11}"
@@ -187,21 +187,21 @@ Languages:
                             p:after="r[@uid='{4E3F0298-A7D4-0E55-4292-AEA1E3892A11}']"
                             s:ds="7fd5e848-c767-fb7c-9c71-94bf40ad962f"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{D4573FA7-B9BC-661F-4D4B-EB21F6489D2F}"
                             p:after="r[@uid='{419CB1D8-90A9-BFBA-1B13-41A20B6A91AC}']"
                             s:ds="37d7ce79-4bb1-bce2-d256-d25fea2b45d4"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{388EB1CC-0A7E-650C-56EB-6FF284E46039}"
                             p:after="r[@uid='{D4573FA7-B9BC-661F-4D4B-EB21F6489D2F}']"
                             s:ds="99752861-8527-d484-28c2-900c0c4fd846"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -228,7 +228,7 @@ Languages:
             Value: Designing decarbonization for execution
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" alt="SLB field employee in safety glasses and a white hard hat at sunset." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" dam-id="114221" dam-content-type="Image" width="2832" height="2280" alt="SLB field employee in safety glasses and a white hard hat at sunset." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -309,21 +309,21 @@ Languages:
                             p:before="*"
                             s:ds="41371184-ef60-6a47-a037-9151502bcf5e"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{9AF6E19D-8705-B1CF-4F1F-1B3E58303CA7}"
                             p:after="r[@uid='{24439D34-56BF-4DCB-941C-709F9F12BF6C}']"
                             s:ds="3e765a26-f06b-0772-9bc2-9d021e69aa45"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{F9A71FFA-6193-6F96-BAD6-3E6BD99AB503}"
                             p:after="r[@uid='{9AF6E19D-8705-B1CF-4F1F-1B3E58303CA7}']"
                             s:ds="1994a711-936c-36ec-a223-d8c9902cf391"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{4E3F0298-A7D4-0E55-4292-AEA1E3892A11}"
@@ -337,21 +337,21 @@ Languages:
                             p:after="r[@uid='{4E3F0298-A7D4-0E55-4292-AEA1E3892A11}']"
                             s:ds="7fd5e848-c767-fb7c-9c71-94bf40ad962f"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{D4573FA7-B9BC-661F-4D4B-EB21F6489D2F}"
                             p:after="r[@uid='{419CB1D8-90A9-BFBA-1B13-41A20B6A91AC}']"
                             s:ds="37d7ce79-4bb1-bce2-d256-d25fea2b45d4"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{388EB1CC-0A7E-650C-56EB-6FF284E46039}"
                             p:after="r[@uid='{D4573FA7-B9BC-661F-4D4B-EB21F6489D2F}']"
                             s:ds="99752861-8527-d484-28c2-900c0c4fd846"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -389,7 +389,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" alt="Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" dam-id="114221" dam-content-type="Image" width="2832" height="2280" alt="Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

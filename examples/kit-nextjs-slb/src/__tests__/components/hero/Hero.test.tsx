@@ -501,6 +501,18 @@ describe('Hero Component', () => {
   });
 
   describe('Editing mode behavior', () => {
+    it('keeps a single authored image in the editorial split while editing', () => {
+      const { container } = render(
+        <Hero {...propsWithSingleImage} page={mockPageDataEditing.page} />,
+      );
+
+      expect(container.querySelector('section')).toHaveAttribute(
+        'data-media-layout',
+        'single',
+      );
+      expect(screen.getAllByTestId('media-section')).toHaveLength(1);
+    });
+
     it('should render fields in editing mode even without values', () => {
       mockUseSitecore.mockReturnValue(mockPageDataEditing);
       render(<Hero {...propsEditing} />);

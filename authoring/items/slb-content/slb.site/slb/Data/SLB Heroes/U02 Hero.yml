@@ -17,7 +17,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="/images/slb/climate-action-methane-detection-hero.jpg" alt="Engineers use optical gas imaging and fixed sensors to monitor methane at an energy facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-climate-action-methane-detection-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-climate-action-methane-detection-hero" dam-id="114597" dam-content-type="Image" width="1672" height="941" alt="Engineers use optical gas imaging and fixed sensors to monitor methane at an energy facility." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
@@ -54,7 +54,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="/images/slb/climate-action-methane-detection-hero.jpg" alt="Ingenieros utilizan imágenes ópticas de gas y sensores fijos para monitorear metano en una instalación energética." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-climate-action-methane-detection-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-climate-action-methane-detection-hero" dam-id="114597" dam-content-type="Image" width="1672" height="941" alt="Ingenieros utilizan imágenes ópticas de gas y sensores fijos para monitorear metano en una instalación energética." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z

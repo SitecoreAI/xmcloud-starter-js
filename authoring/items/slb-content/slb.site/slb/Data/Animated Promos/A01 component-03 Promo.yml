@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/global-presence-local-field-briefing.jpg" alt="A local engineering team reviews field conditions in a high-desert energy region." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" dam-id="114492" dam-content-type="Image" width="1672" height="941" alt="A local engineering team reviews field conditions in a high-desert energy region." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: f067389d-9417-262a-6733-cf43c2c6ca1e
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/global-presence-local-field-briefing.jpg" alt="Un equipo local de ingeniería revisa las condiciones de campo en una región energética de clima desértico y gran altitud." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" dam-id="114492" dam-content-type="Image" width="1672" height="941" alt="Un equipo local de ingeniería revisa las condiciones de campo en una región energética de clima desértico y gran altitud." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: eb5699fa-3271-a28e-0cd8-0c15b5e268ac

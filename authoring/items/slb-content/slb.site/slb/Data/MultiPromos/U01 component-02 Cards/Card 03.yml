@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" alt="Turquoise lake and open plain beneath snowcapped mountains." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" dam-id="114209" dam-content-type="Image" width="1416" height="1140" alt="Turquoise lake and open plain beneath snowcapped mountains." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 8aaed322-943d-3c88-cfc8-3d04d094d270
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" alt="Lago turquesa y llanura abierta bajo montañas nevadas." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" dam-id="114209" dam-content-type="Image" width="1416" height="1140" alt="Lago turquesa y llanura abierta bajo montañas nevadas." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: b84e19b5-4841-4a0e-e3f0-fd21c07de2ce

@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/insights-energy-research-roundtable-hero.jpg" alt="Engineers review an integrated energy model during a technical workshop." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Engineers review an integrated energy model during a technical workshop." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: d0e16de1-a7b4-190f-f782-28fd0c7773d5
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/insights-energy-research-roundtable-hero.jpg" alt="Ingenieros revisan un modelo energético integrado durante un taller técnico." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Ingenieros revisan un modelo energético integrado durante un taller técnico." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 1d9e19a5-2f2f-deeb-aa72-8a69e7880890

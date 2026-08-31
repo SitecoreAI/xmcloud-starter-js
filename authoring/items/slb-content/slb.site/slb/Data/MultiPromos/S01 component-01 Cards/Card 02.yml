@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-engineers-prioritize-tablet.jpg" alt="Two engineers compare emissions-reduction options beside process equipment." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-engineers-prioritize-tablet" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-engineers-prioritize-tablet" dam-id="114409" dam-content-type="Image" width="1672" height="941" alt="Two engineers compare emissions-reduction options beside process equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: defa1b0f-32c3-2e2a-b788-66ad301ea7aa
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-engineers-prioritize-tablet.jpg" alt="Dos ingenieros comparan opciones para reducir emisiones junto a equipos de proceso." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-engineers-prioritize-tablet" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-engineers-prioritize-tablet" dam-id="114409" dam-content-type="Image" width="1672" height="941" alt="Dos ingenieros comparan opciones para reducir emisiones junto a equipos de proceso." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 8458a46a-d9b1-939c-5040-b83b370d47f5

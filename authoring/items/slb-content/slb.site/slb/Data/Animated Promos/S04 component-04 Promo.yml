@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-grid-storage.jpg" alt="Engineers inspect modular grid-scale energy storage beside a renewable substation." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" dam-id="114527" dam-content-type="Image" width="1672" height="941" alt="Engineers inspect modular grid-scale energy storage beside a renewable substation." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 9321a127-6866-1ce1-fcc4-26502fb35542
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-grid-storage.jpg" alt="Ingenieros inspeccionan almacenamiento modular de energía a escala de red junto a una subestación renovable." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" dam-id="114527" dam-content-type="Image" width="1672" height="941" alt="Ingenieros inspeccionan almacenamiento modular de energía a escala de red junto a una subestación renovable." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 4c211e09-f93a-a4c3-ea6a-dbbb5fc35685

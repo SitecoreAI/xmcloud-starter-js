@@ -126,42 +126,42 @@ Languages:
                             p:before="*"
                             s:ds="7d32b93a-aa3b-b5e4-aeff-ebf6460c29e8"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{A6EB5294-D4A3-5B90-2597-AA1B2F986BD0}"
                             p:after="r[@uid='{97D0CC0D-A18A-DB75-A667-9A23CF231BD7}']"
                             s:ds="611c22d8-886c-2631-c796-16b407b845b2"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=locations"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=locations"
                             s:ph="headless-main" />
                           <r
                             uid="{11F25D0C-89C7-1BBF-0ADC-EB9D9BDB27FE}"
                             p:after="r[@uid='{A6EB5294-D4A3-5B90-2597-AA1B2F986BD0}']"
                             s:ds="8c0a43b9-5b2a-fe54-1386-b16b9751f596"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{9FACEF0C-EF66-CB3B-5E1C-E7EE9F3A452E}"
                             p:after="r[@uid='{11F25D0C-89C7-1BBF-0ADC-EB9D9BDB27FE}']"
                             s:ds="99b7c50f-7fcf-3f95-1c7b-57cd827154a6"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{732EFC5E-4300-7C1E-9C4A-195EB7C462A7}"
                             p:after="r[@uid='{9FACEF0C-EF66-CB3B-5E1C-E7EE9F3A452E}']"
                             s:ds="0925089c-ba6b-aafb-0973-34efe6b60777"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{0E6020B9-4A6B-8268-984C-3E2716632E72}"
                             p:after="r[@uid='{732EFC5E-4300-7C1E-9C4A-195EB7C462A7}']"
                             s:ds="b9bea4b5-c5f9-4221-47f4-03c25f8fd6ed"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -188,7 +188,7 @@ Languages:
             Value: Global capability, shaped by local insight
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" alt="SLB engineer walks between large industrial pipes at an operations site." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" dam-id="114269" dam-content-type="Image" width="1416" height="1140" alt="SLB engineer walks between large industrial pipes at an operations site." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -246,42 +246,42 @@ Languages:
                             p:before="*"
                             s:ds="7d32b93a-aa3b-b5e4-aeff-ebf6460c29e8"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{A6EB5294-D4A3-5B90-2597-AA1B2F986BD0}"
                             p:after="r[@uid='{97D0CC0D-A18A-DB75-A667-9A23CF231BD7}']"
                             s:ds="611c22d8-886c-2631-c796-16b407b845b2"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=locations"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=locations"
                             s:ph="headless-main" />
                           <r
                             uid="{11F25D0C-89C7-1BBF-0ADC-EB9D9BDB27FE}"
                             p:after="r[@uid='{A6EB5294-D4A3-5B90-2597-AA1B2F986BD0}']"
                             s:ds="8c0a43b9-5b2a-fe54-1386-b16b9751f596"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{9FACEF0C-EF66-CB3B-5E1C-E7EE9F3A452E}"
                             p:after="r[@uid='{11F25D0C-89C7-1BBF-0ADC-EB9D9BDB27FE}']"
                             s:ds="99b7c50f-7fcf-3f95-1c7b-57cd827154a6"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{732EFC5E-4300-7C1E-9C4A-195EB7C462A7}"
                             p:after="r[@uid='{9FACEF0C-EF66-CB3B-5E1C-E7EE9F3A452E}']"
                             s:ds="0925089c-ba6b-aafb-0973-34efe6b60777"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{0E6020B9-4A6B-8268-984C-3E2716632E72}"
                             p:after="r[@uid='{732EFC5E-4300-7C1E-9C4A-195EB7C462A7}']"
                             s:ds="b9bea4b5-c5f9-4221-47f4-03c25f8fd6ed"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -313,7 +313,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" alt="Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" dam-id="114269" dam-content-type="Image" width="1416" height="1140" alt="Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones." />
           - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
             Hint: metadataTitle
             Value: Capacidad global, definida por el conocimiento local | SLB

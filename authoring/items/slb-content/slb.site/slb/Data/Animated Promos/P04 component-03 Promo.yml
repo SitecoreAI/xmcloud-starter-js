@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-reservoir-uncertainty-review.jpg" alt="Geoscientists compare reservoir-model uncertainty for a carbon storage project." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-reservoir-uncertainty-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-reservoir-uncertainty-review" dam-id="114550" dam-content-type="Image" width="1672" height="941" alt="Geoscientists compare reservoir-model uncertainty for a carbon storage project." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 4c16d5e7-fa77-a534-6407-7a00897d3084
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-reservoir-uncertainty-review.jpg" alt="Geocientíficos comparan la incertidumbre de modelos de yacimiento para un proyecto de almacenamiento de carbono." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-reservoir-uncertainty-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-reservoir-uncertainty-review" dam-id="114550" dam-content-type="Image" width="1672" height="941" alt="Geocientíficos comparan la incertidumbre de modelos de yacimiento para un proyecto de almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: d24b288a-d638-6da0-2ce7-75da03fc83f8

@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-monitoring-seismic-array.jpg" alt="Monitoring instruments track subsurface conditions above a coastal carbon storage site." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" dam-id="114422" dam-content-type="Image" width="1672" height="941" alt="Monitoring instruments track subsurface conditions above a coastal carbon storage site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 7c2dc7af-bb35-0aac-b520-d3935000306c
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-monitoring-seismic-array.jpg" alt="Instrumentos de monitoreo registran las condiciones del subsuelo sobre un sitio costero de almacenamiento de carbono." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" dam-id="114422" dam-content-type="Image" width="1672" height="941" alt="Instrumentos de monitoreo registran las condiciones del subsuelo sobre un sitio costero de almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 499e85e3-1518-a198-81d1-84893537a5dc

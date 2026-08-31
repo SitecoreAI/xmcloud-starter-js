@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" alt="Road crossing a snow-covered Icelandic landscape." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" dam-id="114194" dam-content-type="Image" width="1416" height="1140" alt="Road crossing a snow-covered Icelandic landscape." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: da09447a-ed5f-c81b-c7fa-2721e4d7a618
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" alt="Una carretera atraviesa un paisaje nevado de Islandia." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/deb4539c4b574baead4937f89ced24a5?v=5ca1f1b5" dam-id="114194" dam-content-type="Image" width="1416" height="1140" alt="Una carretera atraviesa un paisaje nevado de Islandia." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: e5495223-9d8d-b0ec-1f8a-cea235c71665

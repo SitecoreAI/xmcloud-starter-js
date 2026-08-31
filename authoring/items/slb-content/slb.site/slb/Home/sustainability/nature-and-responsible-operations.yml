@@ -87,21 +87,21 @@ Languages:
                             p:before="*"
                             s:ds="4e7c0a14-6705-6f83-3b0b-46a07b59d5cc"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{9AF6F410-2521-48CC-E7C7-9008EAAECA70}"
                             p:after="r[@uid='{C2E8F354-229A-988E-2EA3-91493468341A}']"
                             s:ds="6e870461-12f2-f658-a8d1-4bb282216e05"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=approach"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=approach"
                             s:ph="headless-main" />
                           <r
                             uid="{BFAF03AF-6C84-A5DE-C6A1-8B5A97B753DE}"
                             p:after="r[@uid='{9AF6F410-2521-48CC-E7C7-9008EAAECA70}']"
                             s:ds="1b46e9a3-7ab7-10a2-b9df-40a1d03900b7"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{169CFAEE-8F42-C7BF-828B-A8F53E8B4065}"
@@ -115,14 +115,14 @@ Languages:
                             p:after="r[@uid='{169CFAEE-8F42-C7BF-828B-A8F53E8B4065}']"
                             s:ds="803fb309-4afb-294f-d8a5-f7130cb07a76"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{026A5C02-7913-EADE-B2C4-0E4274839848}"
                             p:after="r[@uid='{4C148112-C806-C3F7-196C-5287B6643D3E}']"
                             s:ds="c1ec2126-bc7d-bc17-b1ba-e953c7b98baa"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -146,7 +146,7 @@ Languages:
             Value: Design operations with nature in view
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" alt="Turquoise lake and open plain beneath snowcapped mountains." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" dam-id="114209" dam-content-type="Image" width="1416" height="1140" alt="Turquoise lake and open plain beneath snowcapped mountains." />
           - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
             Hint: metadataTitle
             Value: Design operations with nature in view | SLB
@@ -201,21 +201,21 @@ Languages:
                             p:before="*"
                             s:ds="4e7c0a14-6705-6f83-3b0b-46a07b59d5cc"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{9AF6F410-2521-48CC-E7C7-9008EAAECA70}"
                             p:after="r[@uid='{C2E8F354-229A-988E-2EA3-91493468341A}']"
                             s:ds="6e870461-12f2-f658-a8d1-4bb282216e05"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=approach"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=approach"
                             s:ph="headless-main" />
                           <r
                             uid="{BFAF03AF-6C84-A5DE-C6A1-8B5A97B753DE}"
                             p:after="r[@uid='{9AF6F410-2521-48CC-E7C7-9008EAAECA70}']"
                             s:ds="1b46e9a3-7ab7-10a2-b9df-40a1d03900b7"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{169CFAEE-8F42-C7BF-828B-A8F53E8B4065}"
@@ -229,14 +229,14 @@ Languages:
                             p:after="r[@uid='{169CFAEE-8F42-C7BF-828B-A8F53E8B4065}']"
                             s:ds="803fb309-4afb-294f-d8a5-f7130cb07a76"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{026A5C02-7913-EADE-B2C4-0E4274839848}"
                             p:after="r[@uid='{4C148112-C806-C3F7-196C-5287B6643D3E}']"
                             s:ds="c1ec2126-bc7d-bc17-b1ba-e953c7b98baa"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -268,7 +268,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" alt="Lago turquesa y llanura abierta bajo montañas nevadas." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" dam-id="114209" dam-content-type="Image" width="1416" height="1140" alt="Lago turquesa y llanura abierta bajo montañas nevadas." />
           - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
             Hint: metadataTitle
             Value: Diseñe operaciones que consideren la naturaleza | SLB

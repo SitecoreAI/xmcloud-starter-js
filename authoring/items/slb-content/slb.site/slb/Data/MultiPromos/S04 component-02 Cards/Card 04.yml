@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-hydrogen-electrolyzer.jpg" alt="An engineer walks through a modern hydrogen electrolyzer hall." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-hydrogen-electrolyzer" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-hydrogen-electrolyzer" dam-id="114515" dam-content-type="Image" width="1672" height="941" alt="An engineer walks through a modern hydrogen electrolyzer hall." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: d424215b-1258-efdb-e8ee-3e8361fb2d5e
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-hydrogen-electrolyzer.jpg" alt="Un ingeniero recorre una moderna nave de electrolizadores de hidrógeno." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-hydrogen-electrolyzer" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-hydrogen-electrolyzer" dam-id="114515" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero recorre una moderna nave de electrolizadores de hidrógeno." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 3d5921d6-2795-fb39-b82b-1a45409e4a82

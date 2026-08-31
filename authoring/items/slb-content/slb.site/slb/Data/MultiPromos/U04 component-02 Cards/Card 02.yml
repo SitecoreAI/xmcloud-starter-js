@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/nature-water-sampling-operation.jpg" alt="Environmental specialists collect a clear-water sample at an industrial water reuse facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" dam-id="114399" dam-content-type="Image" width="1672" height="941" alt="Environmental specialists collect a clear-water sample at an industrial water reuse facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 48ac979d-e8fe-9c8c-1dd2-e8a8dc24045a
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/nature-water-sampling-operation.jpg" alt="Especialistas ambientales toman una muestra de agua limpia en una instalación industrial de reutilización de agua." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" dam-id="114399" dam-content-type="Image" width="1672" height="941" alt="Especialistas ambientales toman una muestra de agua limpia en una instalación industrial de reutilización de agua." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 3c465116-a56b-b275-5b9e-53a87f06c18d

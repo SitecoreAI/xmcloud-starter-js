@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/nature-equipment-circularity-workshop.jpg" alt="A technician inspects an industrial component in a circular equipment refurbishment center." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" dam-id="114398" dam-content-type="Image" width="1672" height="941" alt="A technician inspects an industrial component in a circular equipment refurbishment center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 49457ae0-2a2e-706d-d71d-663dda822629
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/nature-equipment-circularity-workshop.jpg" alt="Un técnico inspecciona un componente industrial en un centro de reacondicionamiento circular de equipos." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" dam-id="114398" dam-content-type="Image" width="1672" height="941" alt="Un técnico inspecciona un componente industrial en un centro de reacondicionamiento circular de equipos." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 50338674-c087-c5f3-13bd-c7b4fae457a0

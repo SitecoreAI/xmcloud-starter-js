@@ -17,7 +17,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" alt="Two SLB employees in blue coveralls walk across a field site at sunrise." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" dam-id="114202" dam-content-type="Image" width="1416" height="1362" alt="Two SLB employees in blue coveralls walk across a field site at sunrise." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
@@ -54,7 +54,7 @@ Languages:
         Fields:
           - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
             Hint: heroImageOptional1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" alt="Dos empleados de SLB con overoles azules caminan por un sitio de operaciones al amanecer." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" dam-id="114202" dam-content-type="Image" width="1416" height="1362" alt="Dos empleados de SLB con overoles azules caminan por un sitio de operaciones al amanecer." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z

@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" alt="Two SLB engineers pose between test fixtures in a technology center." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" dam-id="114254" dam-content-type="Image" width="640" height="427" alt="Two SLB engineers pose between test fixtures in a technology center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 691c1f6a-ef4f-d9f8-2ed3-5810f1f3d81b
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" alt="Dos ingenieros de SLB posan entre equipos de prueba en un centro tecnológico." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cc927e59517c4abea5cf912e0bccc5a6?v=96e5ca01" dam-id="114254" dam-content-type="Image" width="640" height="427" alt="Dos ingenieros de SLB posan entre equipos de prueba en un centro tecnológico." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 7ffe3ee5-243c-4ee0-9a51-57ec84fd4a1e

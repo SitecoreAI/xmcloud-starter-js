@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/people-inclusive-engineering-team.jpg" alt="A multidisciplinary engineering team meets during an operational shift handover." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary engineering team meets during an operational shift handover." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 367b9489-fea2-2aca-a592-b7fed4c7e5fe
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/people-inclusive-engineering-team.jpg" alt="Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: ab44abdd-3345-b48e-19ec-3778b113040a

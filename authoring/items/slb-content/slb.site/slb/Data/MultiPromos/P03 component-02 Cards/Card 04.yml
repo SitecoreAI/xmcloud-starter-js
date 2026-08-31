@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/digital-data-governance-review.jpg" alt="An engineering team reviews data lineage and governance across connected industrial systems." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" dam-id="114541" dam-content-type="Image" width="1672" height="941" alt="An engineering team reviews data lineage and governance across connected industrial systems." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: ce280a33-0339-09bf-482f-1c7c1a306f63
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/digital-data-governance-review.jpg" alt="Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" dam-id="114541" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 6f1c62d0-b67c-8a53-ba93-1a86eb9325e0

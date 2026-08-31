@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/digital-workflow-automation.jpg" alt="An operations specialist reviews an automated workflow connected to field execution." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" dam-id="114514" dam-content-type="Image" width="1672" height="941" alt="An operations specialist reviews an automated workflow connected to field execution." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 58511328-07fa-0132-323d-037062a4890d
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/digital-workflow-automation.jpg" alt="Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" dam-id="114514" dam-content-type="Image" width="1672" height="941" alt="Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: cae61e0e-56d6-2c50-b839-a5006c279d3f

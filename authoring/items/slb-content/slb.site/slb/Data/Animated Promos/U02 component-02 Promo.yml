@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/insight-decarbonization-baseline-workshop.jpg" alt="Operations and sustainability specialists establish an emissions baseline." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" dam-id="114477" dam-content-type="Image" width="1672" height="941" alt="Operations and sustainability specialists establish an emissions baseline." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 43209b38-8514-b943-e7e0-291c29bea3ad
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/insight-decarbonization-baseline-workshop.jpg" alt="Especialistas de operaciones y sostenibilidad establecen una línea base de emisiones." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" dam-id="114477" dam-content-type="Image" width="1672" height="941" alt="Especialistas de operaciones y sostenibilidad establecen una línea base de emisiones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 90eefef2-7df4-9c8f-dc28-65d0bbc1cc63

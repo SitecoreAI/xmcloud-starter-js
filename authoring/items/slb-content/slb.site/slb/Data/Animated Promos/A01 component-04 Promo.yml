@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" alt="Colleagues collaborate in an Innovation Factori workspace." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" dam-id="114260" dam-content-type="Image" width="1920" height="1916" alt="Colleagues collaborate in an Innovation Factori workspace." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 2098c003-dd7b-496a-f3b3-f09b277e5730
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" alt="Un grupo de colegas colabora en un espacio de Innovation Factori." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" dam-id="114260" dam-content-type="Image" width="1920" height="1916" alt="Un grupo de colegas colabora en un espacio de Innovation Factori." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 7b98d48d-fe34-e23a-60f8-caf8638e9f40

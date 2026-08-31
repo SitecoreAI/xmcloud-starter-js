@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-technology-selection.jpg" alt="Engineers compare measurement and abatement technologies at an industrial emissions source." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Engineers compare measurement and abatement technologies at an industrial emissions source." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 80d42e82-6eb4-9a26-9a7d-144cd60e1230
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-technology-selection.jpg" alt="Un equipo de ingenieros compara tecnologías de medición y reducción en una fuente de emisiones industriales." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingenieros compara tecnologías de medición y reducción en una fuente de emisiones industriales." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: b8786b5e-ad70-750c-eee2-b7eaa8707f53

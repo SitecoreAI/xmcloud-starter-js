@@ -3,6 +3,7 @@ import { Field, ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
 
 export interface MultiPromoParams {
   numColumns?: string;
+  slbPresentation?: 'card-grid' | 'content-rail' | 'related';
   [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
@@ -30,6 +31,8 @@ export interface MultiPromoProps extends ComponentProps {
 
 export type MultiPromoItemProps = {
   isPageEditing?: boolean;
+  itemNumber?: number;
+  presentation?: MultiPromoParams['slbPresentation'];
   heading: {
     jsonValue: Field<string>;
   };

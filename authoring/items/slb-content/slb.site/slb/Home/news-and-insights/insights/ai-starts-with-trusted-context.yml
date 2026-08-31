@@ -162,49 +162,49 @@ Languages:
                             p:before="*"
                             s:ds="fe357134-133d-d615-2697-66c74c5ec0a0"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{CBDE72D1-CC72-BB4B-89E4-598F0E4D8D56}"
                             p:after="r[@uid='{99219684-55E8-960A-9033-26D5F8C2F1A8}']"
                             s:ds="c62a81ec-74ab-a079-81f2-d592a22499b7"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{89AB7047-A58D-7179-85B2-ECC967B99E3D}"
                             p:after="r[@uid='{CBDE72D1-CC72-BB4B-89E4-598F0E4D8D56}']"
                             s:ds="d3eda805-4c5b-64f3-e9a0-15ecacaffa29"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{0B31BA34-EBDA-D2FC-7453-780FB52337E3}"
                             p:after="r[@uid='{89AB7047-A58D-7179-85B2-ECC967B99E3D}']"
                             s:ds="54675b91-6f6b-4ca8-45a8-e9df244170a2"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{D5D1C997-7069-8D8B-687C-BED454A1818C}"
                             p:after="r[@uid='{0B31BA34-EBDA-D2FC-7453-780FB52337E3}']"
                             s:ds="7a7c5846-bd22-b138-ad80-6e6bf9e6b5a1"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{C40E4412-BB4D-F2AA-5AF9-7712AF6AAB31}"
                             p:after="r[@uid='{D5D1C997-7069-8D8B-687C-BED454A1818C}']"
                             s:ds="81ffdfc9-8246-1524-bc77-99b586c53446"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{325DEC76-E481-413E-B251-8A67C990E353}"
                             p:after="r[@uid='{C40E4412-BB4D-F2AA-5AF9-7712AF6AAB31}']"
                             s:ds="02244f28-54a0-c120-2241-81ea2d388489"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -231,7 +231,7 @@ Languages:
             Value: AI in energy starts with trusted context
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" alt="Tela AI search interface on a dark-blue digital screen." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" dam-id="114158" dam-content-type="Image" width="1130" height="730" alt="Tela AI search interface on a dark-blue digital screen." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -374,49 +374,49 @@ Languages:
                             p:before="*"
                             s:ds="fe357134-133d-d615-2697-66c74c5ec0a0"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{CBDE72D1-CC72-BB4B-89E4-598F0E4D8D56}"
                             p:after="r[@uid='{99219684-55E8-960A-9033-26D5F8C2F1A8}']"
                             s:ds="c62a81ec-74ab-a079-81f2-d592a22499b7"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{89AB7047-A58D-7179-85B2-ECC967B99E3D}"
                             p:after="r[@uid='{CBDE72D1-CC72-BB4B-89E4-598F0E4D8D56}']"
                             s:ds="d3eda805-4c5b-64f3-e9a0-15ecacaffa29"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{0B31BA34-EBDA-D2FC-7453-780FB52337E3}"
                             p:after="r[@uid='{89AB7047-A58D-7179-85B2-ECC967B99E3D}']"
                             s:ds="54675b91-6f6b-4ca8-45a8-e9df244170a2"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{D5D1C997-7069-8D8B-687C-BED454A1818C}"
                             p:after="r[@uid='{0B31BA34-EBDA-D2FC-7453-780FB52337E3}']"
                             s:ds="7a7c5846-bd22-b138-ad80-6e6bf9e6b5a1"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{C40E4412-BB4D-F2AA-5AF9-7712AF6AAB31}"
                             p:after="r[@uid='{D5D1C997-7069-8D8B-687C-BED454A1818C}']"
                             s:ds="81ffdfc9-8246-1524-bc77-99b586c53446"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{325DEC76-E481-413E-B251-8A67C990E353}"
                             p:after="r[@uid='{C40E4412-BB4D-F2AA-5AF9-7712AF6AAB31}']"
                             s:ds="02244f28-54a0-c120-2241-81ea2d388489"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=7&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -448,7 +448,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" alt="Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/e61335aa778b4f6ba7f6a9a5991d9e71?v=0384cead" dam-id="114158" dam-content-type="Image" width="1130" height="730" alt="Interfaz de búsqueda con IA de Tela sobre una pantalla digital azul oscuro." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

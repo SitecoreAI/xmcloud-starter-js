@@ -186,42 +186,42 @@ Languages:
                             p:before="*"
                             s:ds="df5253b4-921c-a50c-153f-f93cabc5d64e"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{9421A78C-7FB0-761C-C5AF-82ADD9995DCF}"
                             p:after="r[@uid='{FE87A3AE-B5F7-ECEA-D457-51CF4F6EE441}']"
                             s:ds="5d14adce-56c3-365b-d64f-c5bcd80718d8"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=approach"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=approach"
                             s:ph="headless-main" />
                           <r
                             uid="{255E54AB-E2C6-8248-A3B6-A6099AF95037}"
                             p:after="r[@uid='{9421A78C-7FB0-761C-C5AF-82ADD9995DCF}']"
                             s:ds="6e9564c5-fb3c-628c-35f9-bee7266f8788"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{BA812F13-8A03-31BB-F47D-6C07CD974B3A}"
                             p:after="r[@uid='{255E54AB-E2C6-8248-A3B6-A6099AF95037}']"
                             s:ds="ef109419-9a3b-5811-01dd-6352cc8d24a9"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=governance-makes-ambition-accountable"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=governance-makes-ambition-accountable"
                             s:ph="headless-main" />
                           <r
                             uid="{7FD0CABD-87DD-A4F0-0238-43F30D2E0CD4}"
                             p:after="r[@uid='{BA812F13-8A03-31BB-F47D-6C07CD974B3A}']"
                             s:ds="60aeaf4f-9f9b-8546-5946-a303c2c19ade"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{1AF4E877-8D8D-F314-C732-D5DC7029DFBF}"
                             p:after="r[@uid='{7FD0CABD-87DD-A4F0-0238-43F30D2E0CD4}']"
                             s:ds="de5b6064-6f0b-6cee-94dd-e1e285a59559"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -245,7 +245,7 @@ Languages:
             Value: Sustainability, embedded in how we work
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" alt="Two people walk along a boardwalk through a restored natural landscape." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" dam-id="114184" dam-content-type="Image" width="1416" height="1140" alt="Two people walk along a boardwalk through a restored natural landscape." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -303,42 +303,42 @@ Languages:
                             p:before="*"
                             s:ds="df5253b4-921c-a50c-153f-f93cabc5d64e"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{9421A78C-7FB0-761C-C5AF-82ADD9995DCF}"
                             p:after="r[@uid='{FE87A3AE-B5F7-ECEA-D457-51CF4F6EE441}']"
                             s:ds="5d14adce-56c3-365b-d64f-c5bcd80718d8"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=approach"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=approach"
                             s:ph="headless-main" />
                           <r
                             uid="{255E54AB-E2C6-8248-A3B6-A6099AF95037}"
                             p:after="r[@uid='{9421A78C-7FB0-761C-C5AF-82ADD9995DCF}']"
                             s:ds="6e9564c5-fb3c-628c-35f9-bee7266f8788"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{BA812F13-8A03-31BB-F47D-6C07CD974B3A}"
                             p:after="r[@uid='{255E54AB-E2C6-8248-A3B6-A6099AF95037}']"
                             s:ds="ef109419-9a3b-5811-01dd-6352cc8d24a9"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=gobernanza"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=gobernanza"
                             s:ph="headless-main" />
                           <r
                             uid="{7FD0CABD-87DD-A4F0-0238-43F30D2E0CD4}"
                             p:after="r[@uid='{BA812F13-8A03-31BB-F47D-6C07CD974B3A}']"
                             s:ds="60aeaf4f-9f9b-8546-5946-a303c2c19ade"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{1AF4E877-8D8D-F314-C732-D5DC7029DFBF}"
                             p:after="r[@uid='{7FD0CABD-87DD-A4F0-0238-43F30D2E0CD4}']"
                             s:ds="de5b6064-6f0b-6cee-94dd-e1e285a59559"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -370,7 +370,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" alt="Dos personas caminan por una pasarela en un paisaje natural restaurado." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/5b1acb1d70354188a82197b0eff1160f?v=5c4a425b" dam-id="114184" dam-content-type="Image" width="1416" height="1140" alt="Dos personas caminan por una pasarela en un paisaje natural restaurado." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

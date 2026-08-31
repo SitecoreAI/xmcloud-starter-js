@@ -126,49 +126,49 @@ Languages:
                             p:before="*"
                             s:ds="330b2b02-06cc-9d75-09fd-6ab76a06edb1"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{60CA01AA-AEB8-F126-0E35-5E4695ED98CC}"
                             p:after="r[@uid='{A5D7DA6C-5A9B-0D24-9B1D-0724714792BF}']"
                             s:ds="b88d55a3-fb5e-5d42-651f-9d276125e6e7"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=technology"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=technology"
                             s:ph="headless-main" />
                           <r
                             uid="{68815C34-BAB8-332C-D74F-B2377B4CFC77}"
                             p:after="r[@uid='{60CA01AA-AEB8-F126-0E35-5E4695ED98CC}']"
                             s:ds="4a312183-3252-ee0c-efe3-ca7cacf7b6a7"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{82894632-2F07-B47A-9E20-E6A964EA8D86}"
                             p:after="r[@uid='{68815C34-BAB8-332C-D74F-B2377B4CFC77}']"
                             s:ds="e1d8762e-6549-e143-16ac-32eb6aaecc07"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{7FA3575F-DA02-F956-7641-897B868FDAB7}"
                             p:after="r[@uid='{82894632-2F07-B47A-9E20-E6A964EA8D86}']"
                             s:ds="ea9d4786-5465-3e48-2dcf-38d273357989"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{0642C7DB-0CC1-A93E-ADFD-BE7FEE758634}"
                             p:after="r[@uid='{7FA3575F-DA02-F956-7641-897B868FDAB7}']"
                             s:ds="aaffabd4-fb4f-8777-4603-823723c95d35"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{3FE06114-8AFC-499E-74AB-C1371E9F6B5E}"
                             p:after="r[@uid='{0642C7DB-0CC1-A93E-ADFD-BE7FEE758634}']"
                             s:ds="37cb5524-d8a5-75ac-0f17-2bb6caae8290"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -195,7 +195,7 @@ Languages:
             Value: From scientific insight to field-ready technology
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" alt="SLB technician inspects a circular piece of precision industrial equipment." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" dam-id="114114" dam-content-type="Image" width="1130" height="730" alt="SLB technician inspects a circular piece of precision industrial equipment." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -253,49 +253,49 @@ Languages:
                             p:before="*"
                             s:ds="330b2b02-06cc-9d75-09fd-6ab76a06edb1"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{60CA01AA-AEB8-F126-0E35-5E4695ED98CC}"
                             p:after="r[@uid='{A5D7DA6C-5A9B-0D24-9B1D-0724714792BF}']"
                             s:ds="b88d55a3-fb5e-5d42-651f-9d276125e6e7"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=technology"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=technology"
                             s:ph="headless-main" />
                           <r
                             uid="{68815C34-BAB8-332C-D74F-B2377B4CFC77}"
                             p:after="r[@uid='{60CA01AA-AEB8-F126-0E35-5E4695ED98CC}']"
                             s:ds="4a312183-3252-ee0c-efe3-ca7cacf7b6a7"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{82894632-2F07-B47A-9E20-E6A964EA8D86}"
                             p:after="r[@uid='{68815C34-BAB8-332C-D74F-B2377B4CFC77}']"
                             s:ds="e1d8762e-6549-e143-16ac-32eb6aaecc07"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{7FA3575F-DA02-F956-7641-897B868FDAB7}"
                             p:after="r[@uid='{82894632-2F07-B47A-9E20-E6A964EA8D86}']"
                             s:ds="ea9d4786-5465-3e48-2dcf-38d273357989"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost"
                             s:ph="headless-main" />
                           <r
                             uid="{0642C7DB-0CC1-A93E-ADFD-BE7FEE758634}"
                             p:after="r[@uid='{7FA3575F-DA02-F956-7641-897B868FDAB7}']"
                             s:ds="aaffabd4-fb4f-8777-4603-823723c95d35"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{3FE06114-8AFC-499E-74AB-C1371E9F6B5E}"
                             p:after="r[@uid='{0642C7DB-0CC1-A93E-ADFD-BE7FEE758634}']"
                             s:ds="37cb5524-d8a5-75ac-0f17-2bb6caae8290"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -327,7 +327,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" alt="Un técnico de SLB inspecciona un equipo industrial circular de alta precisión." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" dam-id="114114" dam-content-type="Image" width="1130" height="730" alt="Un técnico de SLB inspecciona un equipo industrial circular de alta precisión." />
           - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
             Hint: metadataTitle
             Value: Del conocimiento científico a la tecnología lista para el campo | SLB

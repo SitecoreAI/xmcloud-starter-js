@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-compressor-maintenance.jpg" alt="Technicians perform a planned emissions-reduction intervention on a compressor." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-compressor-maintenance" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-compressor-maintenance" dam-id="114410" dam-content-type="Image" width="1672" height="941" alt="Technicians perform a planned emissions-reduction intervention on a compressor." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: b020ed22-10db-1c89-8667-1da9625f6148
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-compressor-maintenance.jpg" alt="Técnicos realizan una intervención planificada para reducir emisiones en un compresor." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-compressor-maintenance" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-compressor-maintenance" dam-id="114410" dam-content-type="Image" width="1672" height="941" alt="Técnicos realizan una intervención planificada para reducir emisiones en un compresor." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 2e2ffe1f-1cfd-d3dc-4ed3-389208e6eef8

@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/newsroom-technology-release.jpg" alt="Engineers perform commissioning checks on newly released industrial energy technology." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" dam-id="114578" dam-content-type="Image" width="1672" height="941" alt="Engineers perform commissioning checks on newly released industrial energy technology." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 8046d205-27f2-da18-6fdc-210273945a2b
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/newsroom-technology-release.jpg" alt="Un grupo de ingenieros realiza pruebas de puesta en servicio de una nueva tecnología energética industrial." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" dam-id="114578" dam-content-type="Image" width="1672" height="941" alt="Un grupo de ingenieros realiza pruebas de puesta en servicio de una nueva tecnología energética industrial." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: e13017cf-1c6a-47a8-e927-57a5578fdbfe

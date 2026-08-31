@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/insight-decarbonization-control-room-hero.jpg" alt="An analyst reviews emissions performance in an industrial operations center." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" dam-id="114459" dam-content-type="Image" width="1672" height="941" alt="An analyst reviews emissions performance in an industrial operations center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 3b3c2ab1-ebaa-ab6c-8a20-dcc47c6c2dba
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/insight-decarbonization-control-room-hero.jpg" alt="Un analista revisa el desempeño de emisiones en un centro de operaciones industriales." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" dam-id="114459" dam-content-type="Image" width="1672" height="941" alt="Un analista revisa el desempeño de emisiones en un centro de operaciones industriales." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 9d2b1360-acb2-e5f6-55df-bdfd4704af5d

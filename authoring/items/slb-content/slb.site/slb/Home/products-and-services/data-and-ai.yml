@@ -126,49 +126,49 @@ Languages:
                             p:before="*"
                             s:ds="2003f722-2075-c551-ed0c-59c53f6f9b59"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{28815E7F-8A57-3EA1-B869-480A693B00A9}"
                             p:after="r[@uid='{3E311892-6AD6-599F-A45F-89DF87DBF1A9}']"
                             s:ds="90342ee9-89ec-7451-7fe0-6d434551ae84"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=capabilities"
                             s:ph="headless-main" />
                           <r
                             uid="{199F9FFC-A251-AFF2-2714-B7A86CC2FDD4}"
                             p:after="r[@uid='{28815E7F-8A57-3EA1-B869-480A693B00A9}']"
                             s:ds="141be585-5c0d-9f48-cb71-2de5f143e0e1"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{CD8EBACD-E76F-4581-7848-01F3F32D8CB8}"
                             p:after="r[@uid='{199F9FFC-A251-AFF2-2714-B7A86CC2FDD4}']"
                             s:ds="9941eb29-51c2-c53b-8684-a02ed5fd6402"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=4&amp;colorScheme=default&amp;RenderingIdentifier=lumi"
+                            s:par="DynamicPlaceholderId=4&amp;colorScheme=default&amp;slbPresentation=dark-feature&amp;RenderingIdentifier=lumi"
                             s:ph="headless-main" />
                           <r
                             uid="{840BE62F-2975-B5A9-4FCF-67A19052F4D6}"
                             p:after="r[@uid='{CD8EBACD-E76F-4581-7848-01F3F32D8CB8}']"
                             s:ds="063dd0eb-5532-c118-436d-f01782c1a39a"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary&amp;RenderingIdentifier=tela"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=default&amp;slbPresentation=dark-feature&amp;RenderingIdentifier=tela"
                             s:ph="headless-main" />
                           <r
                             uid="{E5A8A6BA-4C26-2B1E-7447-ADC12ED094C4}"
                             p:after="r[@uid='{840BE62F-2975-B5A9-4FCF-67A19052F4D6}']"
                             s:ds="56dfe9e4-6037-f02c-46ce-c00038984f4d"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{0B84E2D1-F0D9-E576-E6B0-3EE4BEE25E6E}"
                             p:after="r[@uid='{E5A8A6BA-4C26-2B1E-7447-ADC12ED094C4}']"
                             s:ds="c9b08de4-a58e-3ee7-8854-e4fd469f15e9"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -195,7 +195,7 @@ Languages:
             Value: Put trusted data and energy intelligence to work
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" alt="Lumi data and AI platform interface." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" dam-id="114172" dam-content-type="Image" width="1130" height="730" alt="Lumi data and AI platform interface." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -253,49 +253,49 @@ Languages:
                             p:before="*"
                             s:ds="2003f722-2075-c551-ed0c-59c53f6f9b59"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{28815E7F-8A57-3EA1-B869-480A693B00A9}"
                             p:after="r[@uid='{3E311892-6AD6-599F-A45F-89DF87DBF1A9}']"
                             s:ds="90342ee9-89ec-7451-7fe0-6d434551ae84"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=capabilities"
                             s:ph="headless-main" />
                           <r
                             uid="{199F9FFC-A251-AFF2-2714-B7A86CC2FDD4}"
                             p:after="r[@uid='{28815E7F-8A57-3EA1-B869-480A693B00A9}']"
                             s:ds="141be585-5c0d-9f48-cb71-2de5f143e0e1"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{CD8EBACD-E76F-4581-7848-01F3F32D8CB8}"
                             p:after="r[@uid='{199F9FFC-A251-AFF2-2714-B7A86CC2FDD4}']"
                             s:ds="9941eb29-51c2-c53b-8684-a02ed5fd6402"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=4&amp;colorScheme=default&amp;RenderingIdentifier=lumi"
+                            s:par="DynamicPlaceholderId=4&amp;colorScheme=default&amp;slbPresentation=dark-feature&amp;RenderingIdentifier=lumi"
                             s:ph="headless-main" />
                           <r
                             uid="{840BE62F-2975-B5A9-4FCF-67A19052F4D6}"
                             p:after="r[@uid='{CD8EBACD-E76F-4581-7848-01F3F32D8CB8}']"
                             s:ds="063dd0eb-5532-c118-436d-f01782c1a39a"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=5&amp;colorScheme=primary&amp;RenderingIdentifier=tela"
+                            s:par="DynamicPlaceholderId=5&amp;colorScheme=default&amp;slbPresentation=dark-feature&amp;RenderingIdentifier=tela"
                             s:ph="headless-main" />
                           <r
                             uid="{E5A8A6BA-4C26-2B1E-7447-ADC12ED094C4}"
                             p:after="r[@uid='{840BE62F-2975-B5A9-4FCF-67A19052F4D6}']"
                             s:ds="56dfe9e4-6037-f02c-46ce-c00038984f4d"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{0B84E2D1-F0D9-E576-E6B0-3EE4BEE25E6E}"
                             p:after="r[@uid='{E5A8A6BA-4C26-2B1E-7447-ADC12ED094C4}']"
                             s:ds="c9b08de4-a58e-3ee7-8854-e4fd469f15e9"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -330,7 +330,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" alt="Interfaz de la plataforma de datos e IA Lumi." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" dam-id="114172" dam-content-type="Image" width="1130" height="730" alt="Interfaz de la plataforma de datos e IA Lumi." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

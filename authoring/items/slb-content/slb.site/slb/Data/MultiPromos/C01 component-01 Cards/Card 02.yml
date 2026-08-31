@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/contact-products-specialist.jpg" alt="A product specialist explains an energy-system visualization during a remote consultation." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-products-specialist" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-products-specialist" dam-id="114504" dam-content-type="Image" width="1672" height="941" alt="A product specialist explains an energy-system visualization during a remote consultation." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 6b15edf0-d7c0-0db4-d025-1dc7cacb31e4
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/contact-products-specialist.jpg" alt="Un especialista de producto explica una visualización del sistema energético durante una consulta remota." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-products-specialist" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-products-specialist" dam-id="114504" dam-content-type="Image" width="1672" height="941" alt="Un especialista de producto explica una visualización del sistema energético durante una consulta remota." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 5f90c493-35cb-ca95-a847-a3d811f2401e

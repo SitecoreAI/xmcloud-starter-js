@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-geothermal-well.jpg" alt="Engineers inspect a geothermal wellhead in a volcanic landscape." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-geothermal-well" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-geothermal-well" dam-id="114523" dam-content-type="Image" width="1672" height="941" alt="Engineers inspect a geothermal wellhead in a volcanic landscape." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 3471c718-8fe1-5d8c-c1df-8538a9a8a9b0
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-geothermal-well.jpg" alt="Ingenieros inspeccionan un cabezal geotérmico en un paisaje volcánico." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-geothermal-well" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-geothermal-well" dam-id="114523" dam-content-type="Image" width="1672" height="941" alt="Ingenieros inspeccionan un cabezal geotérmico en un paisaje volcánico." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 0e4ad2f6-a450-10d2-6733-68eab09222a0

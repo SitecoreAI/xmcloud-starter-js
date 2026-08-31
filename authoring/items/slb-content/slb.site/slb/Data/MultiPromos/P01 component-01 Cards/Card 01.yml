@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-basin-screening-workstation.jpg" alt="Geoscientists evaluate subsurface formations for carbon storage suitability." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-basin-screening-workstation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-basin-screening-workstation" dam-id="114416" dam-content-type="Image" width="1672" height="941" alt="Geoscientists evaluate subsurface formations for carbon storage suitability." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: cfab7f9f-fedd-9d49-0430-8fa72d1b18b8
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-basin-screening-workstation.jpg" alt="Geocientíficos evalúan formaciones del subsuelo para determinar su idoneidad para el almacenamiento de carbono." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-basin-screening-workstation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-basin-screening-workstation" dam-id="114416" dam-content-type="Image" width="1672" height="941" alt="Geocientíficos evalúan formaciones del subsuelo para determinar su idoneidad para el almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 37c53da9-431a-31ef-0954-9b88a6ea52ed

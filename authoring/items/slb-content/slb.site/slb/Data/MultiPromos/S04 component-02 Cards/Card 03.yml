@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-lithium-extraction.jpg" alt="An engineer inspects modular direct-lithium-extraction equipment in a high-desert basin." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-lithium-extraction" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-lithium-extraction" dam-id="114517" dam-content-type="Image" width="1672" height="941" alt="An engineer inspects modular direct-lithium-extraction equipment in a high-desert basin." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 3f2f0cc5-e751-ee0f-34a6-48ab1b9d057d
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/new-energy-lithium-extraction.jpg" alt="Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca desértica de gran altitud." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-lithium-extraction" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-lithium-extraction" dam-id="114517" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca desértica de gran altitud." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: e868842f-f838-e46e-c387-462d7d68b29a

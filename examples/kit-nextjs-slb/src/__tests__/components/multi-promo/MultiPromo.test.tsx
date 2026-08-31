@@ -391,6 +391,46 @@ describe('MultiPromo Component', () => {
   });
 
   describe('Custom styles handling', () => {
+    it('renders the SLB card-grid presentation as a static numbered grid', () => {
+      const { container } = render(
+        <MultiPromo
+          {...defaultProps}
+          params={{
+            ...defaultProps.params,
+            slbPresentation: 'card-grid',
+          }}
+        />,
+      );
+
+      const component = container.querySelector(
+        '[data-component="MultiPromoCarousel"]',
+      );
+      expect(component).toHaveAttribute('data-layout', 'card-grid');
+      expect(component).toHaveClass('bg-white');
+      expect(screen.queryByTestId('carousel')).not.toBeInTheDocument();
+      expect(screen.getAllByTestId('multi-promo-item')).toHaveLength(4);
+      expect(container.querySelector('.xl\\:grid-cols-4')).toBeInTheDocument();
+    });
+
+    it('renders content rails on the deep-blue static surface', () => {
+      const { container } = render(
+        <MultiPromo
+          {...defaultProps}
+          params={{
+            ...defaultProps.params,
+            slbPresentation: 'content-rail',
+          }}
+        />,
+      );
+
+      const component = container.querySelector(
+        '[data-component="MultiPromoCarousel"]',
+      );
+      expect(component).toHaveAttribute('data-layout', 'content-rail');
+      expect(component).toHaveClass('bg-dark', 'text-dark-foreground');
+      expect(screen.queryByTestId('carousel')).not.toBeInTheDocument();
+    });
+
     it('should apply custom styles from params', () => {
       const { container } = render(<MultiPromo {...defaultProps} />);
 

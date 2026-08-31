@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/well-decommissioning-restored-site.jpg" alt="A field engineer verifies a safely capped well amid restored grassland." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-well-decommissioning-restored-site" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-well-decommissioning-restored-site" dam-id="114537" dam-content-type="Image" width="1672" height="941" alt="A field engineer verifies a safely capped well amid restored grassland." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 3f577438-198f-9e32-8544-f6b3c5f815cf
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/well-decommissioning-restored-site.jpg" alt="Un ingeniero de campo verifica un pozo clausurado de forma segura en un pastizal restaurado." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-well-decommissioning-restored-site" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-well-decommissioning-restored-site" dam-id="114537" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero de campo verifica un pozo clausurado de forma segura en un pastizal restaurado." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 8f781786-0529-52f3-ac6b-7702a5039a1d

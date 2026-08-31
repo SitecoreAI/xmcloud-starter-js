@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-core-characterization-lab.jpg" alt="A scientist examines a rock core during carbon storage site characterization." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" dam-id="114417" dam-content-type="Image" width="1672" height="941" alt="A scientist examines a rock core during carbon storage site characterization." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: f45a1725-e2b9-3b9b-f6aa-1bc5c2c0ea0e
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-core-characterization-lab.jpg" alt="Una científica examina un núcleo de roca durante la caracterización de un sitio de almacenamiento de carbono." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" dam-id="114417" dam-content-type="Image" width="1672" height="941" alt="Una científica examina un núcleo de roca durante la caracterización de un sitio de almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 26df0ef1-5637-bc5f-5299-b8cbbc3ce746

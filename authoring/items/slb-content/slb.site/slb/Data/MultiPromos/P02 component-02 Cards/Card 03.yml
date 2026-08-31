@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" alt="Engineer examines equipment in an SLB manufacturing facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" dam-id="114138" dam-content-type="Image" width="1140" height="729" alt="Engineer examines equipment in an SLB manufacturing facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 13362218-949c-7878-3051-e6fdbf7c649b
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" alt="Un ingeniero examina un equipo en una planta de manufactura de SLB." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" dam-id="114138" dam-content-type="Image" width="1140" height="729" alt="Un ingeniero examina un equipo en una planta de manufactura de SLB." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: f067777e-88e4-a06b-37a2-477f252f1eca

@@ -87,42 +87,42 @@ Languages:
                             p:before="*"
                             s:ds="f5ffc08c-75af-8dcf-b79a-fe29f78a19fa"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{1B9342C6-D7DA-0076-F7FB-B6D3CF225C2A}"
                             p:after="r[@uid='{2EC228C6-EA9B-EAE5-F7BA-277875E69199}']"
                             s:ds="c5e3cd0e-aa70-5fea-c809-08c945511511"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=capabilities"
                             s:ph="headless-main" />
                           <r
                             uid="{52738FAF-98C1-9518-DFE0-5351FCA22105}"
                             p:after="r[@uid='{1B9342C6-D7DA-0076-F7FB-B6D3CF225C2A}']"
                             s:ds="7c84b2bd-ddb2-dedd-ea59-1399bf34f67f"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{90324B3D-EEC1-2B32-F46B-316E678379AA}"
                             p:after="r[@uid='{52738FAF-98C1-9518-DFE0-5351FCA22105}']"
                             s:ds="354f05a0-5f25-b2e1-edb4-096971fda99f"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{79DD998C-A6ED-BA89-DC81-1439CF439671}"
                             p:after="r[@uid='{90324B3D-EEC1-2B32-F46B-316E678379AA}']"
                             s:ds="9a01a5e8-c083-95fa-f35c-38a22de66e85"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{F129A6E5-0AD2-E14F-9681-CE17B657A1A9}"
                             p:after="r[@uid='{79DD998C-A6ED-BA89-DC81-1439CF439671}']"
                             s:ds="3c75a49c-14e2-fde8-8ddc-0f4d9248267e"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -152,7 +152,7 @@ Languages:
             Value: See the subsurface clearly. Build every well with intent.
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="/images/slb/subsurface-lifecycle-planning-hero.jpg" alt="A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" dam-id="114603" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure." />
           - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
             Hint: metadataTitle
             Value: See the subsurface clearly. Build every well with intent. | SLB
@@ -207,42 +207,42 @@ Languages:
                             p:before="*"
                             s:ds="f5ffc08c-75af-8dcf-b79a-fe29f78a19fa"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{1B9342C6-D7DA-0076-F7FB-B6D3CF225C2A}"
                             p:after="r[@uid='{2EC228C6-EA9B-EAE5-F7BA-277875E69199}']"
                             s:ds="c5e3cd0e-aa70-5fea-c809-08c945511511"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=capabilities"
                             s:ph="headless-main" />
                           <r
                             uid="{52738FAF-98C1-9518-DFE0-5351FCA22105}"
                             p:after="r[@uid='{1B9342C6-D7DA-0076-F7FB-B6D3CF225C2A}']"
                             s:ds="7c84b2bd-ddb2-dedd-ea59-1399bf34f67f"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{90324B3D-EEC1-2B32-F46B-316E678379AA}"
                             p:after="r[@uid='{52738FAF-98C1-9518-DFE0-5351FCA22105}']"
                             s:ds="354f05a0-5f25-b2e1-edb4-096971fda99f"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{79DD998C-A6ED-BA89-DC81-1439CF439671}"
                             p:after="r[@uid='{90324B3D-EEC1-2B32-F46B-316E678379AA}']"
                             s:ds="9a01a5e8-c083-95fa-f35c-38a22de66e85"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{F129A6E5-0AD2-E14F-9681-CE17B657A1A9}"
                             p:after="r[@uid='{79DD998C-A6ED-BA89-DC81-1439CF439671}']"
                             s:ds="3c75a49c-14e2-fde8-8ddc-0f4d9248267e"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default"
+                            s:par="DynamicPlaceholderId=6&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -280,7 +280,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="/images/slb/subsurface-lifecycle-planning-hero.jpg" alt="Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" dam-id="114603" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre." />
           - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
             Hint: metadataTitle
             Value: Comprenda el subsuelo. Construya cada pozo con intención. | SLB

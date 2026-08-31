@@ -168,49 +168,49 @@ Languages:
                             p:before="*"
                             s:ds="554dc407-c8df-1c70-ebde-e8e06a54169f"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{70C595B0-8BC0-310C-1FC8-BA74066F0BA2}"
                             p:after="r[@uid='{BCAA06F5-90A5-DCD9-20B9-C4540456765F}']"
                             s:ds="94869e60-1287-a948-6b16-0a9c80742bcb"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=capabilities"
                             s:ph="headless-main" />
                           <r
                             uid="{3113A55C-C3D6-DB8F-B9D4-348DF719B97C}"
                             p:after="r[@uid='{70C595B0-8BC0-310C-1FC8-BA74066F0BA2}']"
                             s:ds="9a4d72b6-8fef-9fb6-f1fe-d80ad6189cee"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{95A173C6-0F45-5E72-1667-746778FF9749}"
                             p:after="r[@uid='{3113A55C-C3D6-DB8F-B9D4-348DF719B97C}']"
                             s:ds="8e05c098-1c70-5f16-561a-40b9a1f83e69"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{AE3F6545-DCF3-EFA7-5937-A6DEBD2B4BA4}"
                             p:after="r[@uid='{95A173C6-0F45-5E72-1667-746778FF9749}']"
                             s:ds="8f60b27b-d6d9-93b0-b40e-1d56b748b66a"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;RenderingIdentifier=decarbonization-designed-for-execution"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost&amp;RenderingIdentifier=decarbonization-designed-for-execution"
                             s:ph="headless-main" />
                           <r
                             uid="{079D0382-779E-44E9-C700-40827D378664}"
                             p:after="r[@uid='{AE3F6545-DCF3-EFA7-5937-A6DEBD2B4BA4}']"
                             s:ds="7c7869f5-54f3-cc13-c5eb-f45250b7c021"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{B0274154-CF0E-1128-6FE4-995529CF7459}"
                             p:after="r[@uid='{079D0382-779E-44E9-C700-40827D378664}']"
                             s:ds="19cbd06a-9550-bd02-08b7-b38b97bc2433"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                           <r
                             uid="{0ABD1A13-BD83-4060-8E54-F9B577ED4DB1}"
@@ -268,7 +268,7 @@ Languages:
             Value: Make emissions performance actionable
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" alt="SLB operator crosses the glass-lined atrium of a technology facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="SLB operator crosses the glass-lined atrium of a technology facility." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false
@@ -326,49 +326,49 @@ Languages:
                             p:before="*"
                             s:ds="554dc407-c8df-1c70-ebde-e8e06a54169f"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
-                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
                             s:ph="headless-main" />
                           <r
                             uid="{70C595B0-8BC0-310C-1FC8-BA74066F0BA2}"
                             p:after="r[@uid='{BCAA06F5-90A5-DCD9-20B9-C4540456765F}']"
                             s:ds="94869e60-1287-a948-6b16-0a9c80742bcb"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;RenderingIdentifier=capabilities"
+                            s:par="DynamicPlaceholderId=2&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white&amp;RenderingIdentifier=capabilities"
                             s:ph="headless-main" />
                           <r
                             uid="{3113A55C-C3D6-DB8F-B9D4-348DF719B97C}"
                             p:after="r[@uid='{70C595B0-8BC0-310C-1FC8-BA74066F0BA2}']"
                             s:ds="9a4d72b6-8fef-9fb6-f1fe-d80ad6189cee"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4"
+                            s:par="DynamicPlaceholderId=3&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=4&amp;slbPresentation=card-grid"
                             s:ph="headless-main" />
                           <r
                             uid="{95A173C6-0F45-5E72-1667-746778FF9749}"
                             p:after="r[@uid='{3113A55C-C3D6-DB8F-B9D4-348DF719B97C}']"
                             s:ds="8e05c098-1c70-5f16-561a-40b9a1f83e69"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light"
+                            s:par="DynamicPlaceholderId=4&amp;FieldNames=%7BB3288C2C-2BEB-4306-8924-814316385F2D%7D&amp;colorScheme=light&amp;slbPresentation=split-white"
                             s:ph="headless-main" />
                           <r
                             uid="{AE3F6545-DCF3-EFA7-5937-A6DEBD2B4BA4}"
                             p:after="r[@uid='{95A173C6-0F45-5E72-1667-746778FF9749}']"
                             s:ds="8f60b27b-d6d9-93b0-b40e-1d56b748b66a"
                             s:id="{241A1B8E-E69A-4E07-B5E4-53975371AD3C}"
-                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;RenderingIdentifier=ejecucion"
+                            s:par="DynamicPlaceholderId=5&amp;FieldNames=%7BFC79554C-E39F-47E3-9D7A-CF372BC7ADEB%7D&amp;colorScheme=light&amp;slbPresentation=split-frost&amp;RenderingIdentifier=ejecucion"
                             s:ph="headless-main" />
                           <r
                             uid="{079D0382-779E-44E9-C700-40827D378664}"
                             p:after="r[@uid='{AE3F6545-DCF3-EFA7-5937-A6DEBD2B4BA4}']"
                             s:ds="7c7869f5-54f3-cc13-c5eb-f45250b7c021"
                             s:id="{D806DDF7-39A7-4A6D-8E0A-D138BC53845D}"
-                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3"
+                            s:par="DynamicPlaceholderId=6&amp;FieldNames=%7B0FDAD00A-510F-442F-B2FE-0E8C7B8BC245%7D&amp;numColumns=3&amp;slbPresentation=related"
                             s:ph="headless-main" />
                           <r
                             uid="{B0274154-CF0E-1128-6FE4-995529CF7459}"
                             p:after="r[@uid='{079D0382-779E-44E9-C700-40827D378664}']"
                             s:ds="19cbd06a-9550-bd02-08b7-b38b97bc2433"
                             s:id="{3332F59B-F5F3-44DF-B66E-2811C31AEB3C}"
-                            s:par="DynamicPlaceholderId=7&amp;colorScheme=primary"
+                            s:par="DynamicPlaceholderId=7&amp;colorScheme=default&amp;slbPresentation=final-cta"
                             s:ph="headless-main" />
                 </d>
               </r>
@@ -409,7 +409,7 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" alt="Un operador de SLB cruza el atrio acristalado de un centro tecnológico." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="Un operador de SLB cruza el atrio acristalado de un centro tecnológico." />
           - ID: 67aec10e-8df5-4214-b4e2-f5aea1af19b2
             Hint: noIndex
             Value: false

@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-methane-sensor-wellhead.jpg" alt="A technician calibrates a methane sensor beside production equipment." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-methane-sensor-wellhead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-methane-sensor-wellhead" dam-id="114403" dam-content-type="Image" width="1672" height="941" alt="A technician calibrates a methane sensor beside production equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 39e87a59-461d-0616-2853-1e641430b408
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/decarbonization-methane-sensor-wellhead.jpg" alt="Un técnico calibra un sensor de metano junto a equipos de producción." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-methane-sensor-wellhead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-methane-sensor-wellhead" dam-id="114403" dam-content-type="Image" width="1672" height="941" alt="Un técnico calibra un sensor de metano junto a equipos de producción." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 87f7d421-dd6a-ae0c-fb8f-f03cb4015e47

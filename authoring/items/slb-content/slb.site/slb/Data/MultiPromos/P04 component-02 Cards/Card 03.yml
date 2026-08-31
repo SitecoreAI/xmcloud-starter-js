@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-injection-well-manifold.jpg" alt="An operator inspects the manifold of a carbon dioxide injection well." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" dam-id="114421" dam-content-type="Image" width="1672" height="941" alt="An operator inspects the manifold of a carbon dioxide injection well." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: aeef0350-0b2b-7d7f-3c31-0c229f3b2517
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="/images/slb/ccus-injection-well-manifold.jpg" alt="Un operador inspecciona el múltiple de un pozo de inyección de dióxido de carbono." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" dam-id="114421" dam-content-type="Image" width="1672" height="941" alt="Un operador inspecciona el múltiple de un pozo de inyección de dióxido de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 3b516cdb-ae90-1c09-2e91-89ef8ff459d7

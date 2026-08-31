@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/contact-technical-consultation.jpg" alt="An engineer discusses a technical equipment model with a customer." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" dam-id="114493" dam-content-type="Image" width="1672" height="941" alt="An engineer discusses a technical equipment model with a customer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: beeb4784-be91-a8b7-0462-f6ed2a83de3b
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/contact-technical-consultation.jpg" alt="Un ingeniero analiza un modelo técnico de equipo con una clienta." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" dam-id="114493" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero analiza un modelo técnico de equipo con una clienta." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 5b0da577-9922-c420-3f85-8a647d54480e

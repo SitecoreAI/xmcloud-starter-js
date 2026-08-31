@@ -32,7 +32,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/people-field-safety-training.jpg" alt="An instructor guides an employee through hands-on field safety training." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" dam-id="114428" dam-content-type="Image" width="1672" height="941" alt="An instructor guides an employee through hands-on field safety training." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: f9393bea-682e-e155-5b65-ccd361ebf3f7
@@ -72,7 +72,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="/images/slb/people-field-safety-training.jpg" alt="Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" dam-id="114428" dam-content-type="Image" width="1672" height="941" alt="Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 6b97407a-75fe-2c76-ab25-878a67ebaa7d

@@ -38,7 +38,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" alt="Three-dimensional rendering of the Reda Agile ESP system." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" dam-id="114178" dam-content-type="Image" width="1130" height="730" alt="Three-dimensional rendering of the Reda Agile ESP system." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 1ecb1364-7b82-25f6-4ac0-7216e2323a4f
@@ -75,7 +75,7 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" alt="Representación tridimensional del sistema ESP Reda Agile." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" dam-id="114178" dam-content-type="Image" width="1130" height="730" alt="Representación tridimensional del sistema ESP Reda Agile." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 5144476e-9acf-1fc1-4efc-49a95a1306c2
