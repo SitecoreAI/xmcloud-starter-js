@@ -42,7 +42,7 @@ export const Default: React.FC<MultiPromoItemProps> = (props) => {
             className="prose mt-5 max-w-none text-base leading-7 text-foreground/75"
           />
         )}
-        {(isPageEditing || link?.value?.href) && (
+        {link?.value?.href && (
           <Button
             variant="link"
             asChild

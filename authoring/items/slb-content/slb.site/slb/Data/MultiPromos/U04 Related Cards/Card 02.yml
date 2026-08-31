@@ -36,6 +36,9 @@ Languages:
           - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
             Hint: __Created by
             Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: ""
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 2469bb81-2e88-9da6-5bb0-08f9254b1f37
@@ -70,6 +73,9 @@ Languages:
           - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
             Hint: __Created by
             Value: sitecore\thomas.lin@sitecore.com
+          - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
+            Hint: image
+            Value: ""
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
             Value: 1818e016-332c-c0e3-9d93-300918626391

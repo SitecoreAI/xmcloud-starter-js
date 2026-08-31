@@ -35,8 +35,9 @@ export const PromoAnimatedEditorial: React.FC<PromoAnimatedEditorialProps> = ({
 
   const { image, title, description, primaryLink, secondaryLink } = fields;
   const isDarkSurface = params.colorScheme === 'primary';
-  const hasLinks =
-    isPageEditing || primaryLink?.value?.href || secondaryLink?.value?.href;
+  const hasPrimaryLink = Boolean(primaryLink?.value?.href);
+  const hasSecondaryLink = Boolean(secondaryLink?.value?.href);
+  const hasLinks = hasPrimaryLink || hasSecondaryLink;
 
   return (
     <section
@@ -126,14 +127,14 @@ export const PromoAnimatedEditorial: React.FC<PromoAnimatedEditorialProps> = ({
                 reducedMotion={prefersReducedMotion}
                 isPageEditing={isPageEditing}
               >
-                {primaryLink && (
+                {hasPrimaryLink && primaryLink && (
                   <Button
                     buttonLink={primaryLink}
                     isPageEditing={isPageEditing}
                     contextTitle={title?.value}
                   />
                 )}
-                {secondaryLink && (
+                {hasSecondaryLink && secondaryLink && (
                   <Button
                     variant="secondary"
                     buttonLink={secondaryLink}

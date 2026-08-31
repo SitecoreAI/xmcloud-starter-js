@@ -51,6 +51,56 @@ const datasourceTemplates = new Map([
     ["bee4869d-b588-42c2-9797-76510c397e6a", "CtaBanner"],
 ]);
 
+const authoredFieldsByTemplate = new Map([
+    [
+        "a19c3230-c5ee-47a1-ae3f-12a1fc3c4273",
+        [
+            ["3f384b8c-9364-4f44-91ea-7f7fa3a76de9", "titleRequired"],
+            ["e2223200-5161-4e5a-9a35-9a5ac126c05c", "descriptionOptional"],
+            ["c17f89f8-7429-4af1-a47d-b7b1e037fe45", "linkOptional"],
+            ["1c4089ef-d9fa-4515-ad8b-eac558420564", "heroImageOptional1"],
+        ],
+    ],
+    [
+        "bd372d9d-6e4f-4ae9-a54c-dbc2acdebe2a",
+        [
+            ["84a2a397-786e-43bd-85a0-bfbcc51fc3f3", "image"],
+            ["da7db0f2-08eb-47c5-af07-ed12a1e998db", "title"],
+            ["c00d4bd2-a452-4067-a861-e8c6d47201a7", "description"],
+            ["e9e9c847-e0f0-497d-8e41-5211a087029a", "primaryLink"],
+            ["3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea", "secondaryLink"],
+        ],
+    ],
+    [
+        "775d6354-cf01-4f34-9713-d34645079c88",
+        [
+            ["24fa0354-d116-4f42-9eaa-bdab15a8ade7", "title"],
+            ["2fe9bed7-7bcc-4a35-a209-34bcb84fcb42", "description"],
+        ],
+    ],
+    [
+        "f94c8c17-70e8-4d8b-9d35-d0465c0e0945",
+        [
+            ["5c33f772-5806-4ad8-a236-730f1b299531", "heading"],
+            ["54a924ec-8e98-4597-b9c2-d616dd66cc7c", "description"],
+            ["7eca61ae-f0c1-49e6-b131-686ab895a1dc", "image"],
+            ["8ec6e4b8-3a38-4115-a892-38051924f3f1", "link"],
+        ],
+    ],
+    [
+        "58041043-7bea-44f0-b1b8-08e4ea7054f4",
+        [["8b57dadd-0825-4f5d-9c32-187c0af7e1fd", "text"]],
+    ],
+    [
+        "bee4869d-b588-42c2-9797-76510c397e6a",
+        [
+            ["7a8c2095-39f5-4f40-b69d-16ddff188a68", "titleRequired"],
+            ["a35015fe-805c-45d7-9446-f88b33a157d4", "descriptionOptional"],
+            ["9fdcf3e1-5289-4ae0-b4e4-9460ad50814f", "linkOptional"],
+        ],
+    ],
+]);
+
 const heroDatasourceTemplateId = "a19c3230-c5ee-47a1-ae3f-12a1fc3c4273";
 const supportingImageFieldIds = new Set([
     "84a2a397-786e-43bd-85a0-bfbcc51fc3f3",
@@ -67,6 +117,56 @@ const legacySignatures = [
     {
         label: "confidence-revolution starter copy",
         pattern: /\bconfidence revolution\b/i,
+    },
+];
+const starterPlaceholderSignatures = [
+    { label: "Hero title", pattern: /^\s*Title\s*$/i },
+    { label: "Hero description", pattern: /^\s*Description Text\s*$/i },
+    { label: "Animated Promo title", pattern: /Animated Promo Title/i },
+    {
+        label: "Animated Promo description",
+        pattern:
+            /This is a description field and can be longer for more information\./i,
+    },
+    { label: "Primary Link CTA", pattern: /Primary Link CTA/i },
+    { label: "Secondary Link CTA", pattern: /Secondary Link CTA/i },
+    { label: "Multi-Promo title", pattern: /Multi-Promo Title Field/i },
+    {
+        label: "Multi-Promo description",
+        pattern: /Multi-Promo Description Field/i,
+    },
+    { label: "Simple Promo heading", pattern: /This is the Promo Heading/i },
+    {
+        label: "Simple Promo description",
+        pattern:
+            /This is a description field, the text can be longer and provide some information about the promo\./i,
+    },
+    {
+        label: "Simple Promo link",
+        pattern: /This is a Call to Action link/i,
+    },
+    {
+        label: "Simple Promo image",
+        pattern: /04DAD0FD-DB66-4070-881F-17264CA257E1/i,
+    },
+    {
+        label: "CTA Banner title",
+        pattern: /This is the Banner Title field/i,
+    },
+    { label: "CTA Banner link", pattern: /\bClick Here\b/i },
+    {
+        label: "CTA Banner description",
+        pattern:
+            /This is the CTA Banner description field, the text can be longer here/i,
+    },
+    {
+        label: "starter Sitecore URL",
+        pattern: /https?:\/\/(?:www\.)?sitecore\.(?:ai|com)(?:[\/"\s]|$)/i,
+    },
+    { label: "empty starter image", pattern: /^\s*<image\s*\/>\s*$/i },
+    {
+        label: "generic description placeholder",
+        pattern: /^\s*description\s*$/i,
     },
 ];
 
@@ -186,6 +286,50 @@ function assertNoLegacyValues(values, context) {
             if (signature.pattern.test(value)) {
                 fail(`${context} contains legacy ${signature.label}.`);
             }
+        }
+    }
+}
+
+function assertNoStarterPlaceholders(values, context) {
+    for (const value of values) {
+        for (const signature of starterPlaceholderSignatures) {
+            if (signature.pattern.test(value)) {
+                fail(`${context} contains starter ${signature.label}.`);
+            }
+        }
+    }
+}
+
+function assertExplicitAuthoredFields(document, itemPath, templateId) {
+    const requiredFields = authoredFieldsByTemplate.get(templateId) ?? [];
+    for (const languageItem of document.Languages ?? []) {
+        for (const version of languageItem.Versions ?? []) {
+            const fields = version.Fields ?? [];
+            for (const [fieldId, fieldHint] of requiredFields) {
+                const matches = fields.filter(
+                    (entry) =>
+                        String(entry.ID).toLowerCase() ===
+                        fieldId.toLowerCase(),
+                );
+                if (matches.length === 0) {
+                    fail(
+                        `${itemPath} ${languageItem.Language} v${version.Version} does not explicitly serialize ${fieldHint} (${fieldId}); a starter Standard Value could leak through.`,
+                    );
+                } else if (matches.length > 1) {
+                    fail(
+                        `${itemPath} ${languageItem.Language} v${version.Version} serializes ${fieldHint} (${fieldId}) ${matches.length} times.`,
+                    );
+                } else if (!Object.hasOwn(matches[0], "Value")) {
+                    fail(
+                        `${itemPath} ${languageItem.Language} v${version.Version} serializes ${fieldHint} (${fieldId}) without an explicit Value.`,
+                    );
+                }
+            }
+
+            assertNoStarterPlaceholders(
+                fieldValues(fields),
+                `${itemPath} ${languageItem.Language} v${version.Version}`,
+            );
         }
     }
 }
@@ -386,6 +530,8 @@ for (const item of generatedDatasources) {
         fail(
             `${itemPath} uses unapproved datasource template ${item.document.Template}.`,
         );
+    } else {
+        assertExplicitAuthoredFields(item.document, itemPath, templateId);
     }
 
     for (const locale of locales) {
@@ -590,6 +736,9 @@ if (failures.length > 0) {
     );
     console.log(
         "- SLB Hero IDs, datasource references, and campaign rules valid",
+    );
+    console.log(
+        "- All generated datasource fields explicitly serialized; no starter placeholders",
     );
     console.log("- Supporting images unique per page; U04 focus imagery valid");
     console.log("- No legacy Solterra signatures in authored content");

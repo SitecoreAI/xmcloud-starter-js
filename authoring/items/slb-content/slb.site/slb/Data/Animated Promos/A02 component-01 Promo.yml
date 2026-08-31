@@ -18,6 +18,9 @@ Languages:
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
+          - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
+            Hint: secondaryLink
+            Value: ""
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
             Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
@@ -45,6 +48,9 @@ Languages:
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Begin with the physics
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value: ""
   - Language: es-MX
     Versions:
       - Version: 1
@@ -52,6 +58,9 @@ Languages:
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260831T150000Z
+          - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
+            Hint: secondaryLink
+            Value: ""
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
             Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
@@ -79,3 +88,6 @@ Languages:
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Comience por la física
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value: ""

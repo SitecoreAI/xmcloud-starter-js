@@ -356,7 +356,7 @@ describe('PromoAnimated Component - Default Variant', () => {
   });
 
   describe('Editing mode', () => {
-    it('should render links in editing mode even without href', () => {
+    it('should keep empty link placeholders out of the editing canvas', () => {
       const propsEditingNoLinks = {
         ...propsEditing,
         fields: {
@@ -369,6 +369,7 @@ describe('PromoAnimated Component - Default Variant', () => {
       render(<PromoAnimated {...propsEditingNoLinks} />);
 
       expect(screen.getByText('Discover Excellence')).toBeInTheDocument();
+      expect(screen.queryByTestId('button-component')).not.toBeInTheDocument();
     });
   });
 

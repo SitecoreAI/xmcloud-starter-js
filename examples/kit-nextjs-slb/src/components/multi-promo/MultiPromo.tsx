@@ -107,7 +107,7 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
               />
             </div>
           )}
-          {descriptionField && (
+          {descriptionField?.value && (
             <div className="basis-full xl:basis-1/2">
               <RichText
                 className="text-body prose text-box-trim-both text-box-edge-asc-baseline mt-6 max-w-[51.5ch] text-pretty text-lg leading-[1.444] tracking-tight"

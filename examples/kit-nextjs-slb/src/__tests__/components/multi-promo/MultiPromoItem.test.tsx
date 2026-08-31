@@ -129,4 +129,16 @@ describe('MultiPromoItem', () => {
 
     expect(screen.getByTestId('item-description')).toBeInTheDocument();
   });
+
+  it('keeps an empty optional link out of the editing canvas', () => {
+    render(
+      <MultiPromoItem
+        {...props}
+        isPageEditing
+        link={{ jsonValue: { value: {} } }}
+      />,
+    );
+
+    expect(screen.queryByTestId('item-link')).not.toBeInTheDocument();
+  });
 });

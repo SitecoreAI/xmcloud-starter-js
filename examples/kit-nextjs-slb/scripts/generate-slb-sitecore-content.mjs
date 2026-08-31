@@ -199,6 +199,7 @@ const datasourceFieldIds = {
         title: "da7db0f2-08eb-47c5-af07-ed12a1e998db",
         description: "c00d4bd2-a452-4067-a861-e8c6d47201a7",
         primaryLink: "e9e9c847-e0f0-497d-8e41-5211a087029a",
+        secondaryLink: "3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea",
     },
     multiPromo: {
         title: "24fa0354-d116-4f42-9eaa-bdab15a8ade7",
@@ -323,9 +324,14 @@ function standardVersionFields(itemKey, locale, extraFields) {
         ),
         field(ids.updatedBy, "__Updated by", owner),
         field(ids.updated, "__Updated", fixedTimestamp),
-        ...extraFields.filter(
-            (entry) => entry.Value !== undefined && entry.Value !== null,
-        ),
+        // Generated datasource items must own every field we pass here. An
+        // omitted field is NULL in Sitecore and inherits the starter kit's
+        // Standard Values; an explicit blank intentionally suppresses those
+        // sample titles, descriptions, and links.
+        ...extraFields.map((entry) => ({
+            ...entry,
+            Value: entry.Value ?? "",
+        })),
     ].sort((left, right) => left.ID.localeCompare(right.ID));
 }
 
@@ -519,6 +525,9 @@ function promoDatasource(page, componentIndex, images) {
                 "primaryLink",
                 linkXml(localized.cta, locale),
             ),
+            // Override the starter template's Sitecore.com standard value so
+            // authored SLB promos show only the intentional page CTA.
+            field(datasourceFieldIds.promo.secondaryLink, "secondaryLink", ""),
         ];
     }
     const document = datasourceItem({
