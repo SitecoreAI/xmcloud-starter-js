@@ -130,6 +130,32 @@ describe('MultiPromoItem', () => {
     expect(screen.getByTestId('item-description')).toBeInTheDocument();
   });
 
+  it('hides intentional empty related-card image placeholders while editing', () => {
+    render(
+      <MultiPromoItem
+        {...props}
+        isPageEditing
+        presentation="related"
+        image={{ jsonValue: { value: {} } }}
+      />,
+    );
+
+    expect(screen.queryByTestId('item-image-wrapper')).not.toBeInTheDocument();
+  });
+
+  it('keeps empty image placeholders available for other cards while editing', () => {
+    render(
+      <MultiPromoItem
+        {...props}
+        isPageEditing
+        presentation="card-grid"
+        image={{ jsonValue: { value: {} } }}
+      />,
+    );
+
+    expect(screen.getByTestId('item-image-wrapper')).toBeInTheDocument();
+  });
+
   it('keeps an empty optional link out of the editing canvas', () => {
     render(
       <MultiPromoItem

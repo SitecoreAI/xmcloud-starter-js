@@ -43,7 +43,7 @@ export const Default: React.FC<MultiPromoItemProps> = (props) => {
         'border-b border-white/20 bg-transparent text-white': isRelated,
       })}
     >
-      {(isPageEditing || image?.value?.src) && (
+      {((isPageEditing && !isRelated) || image?.value?.src) && (
         <ImageWrapper
           image={image}
           className="absolute inset-0 h-full w-full rounded-none object-cover transition-transform duration-500 group-hover:scale-[1.025]"
