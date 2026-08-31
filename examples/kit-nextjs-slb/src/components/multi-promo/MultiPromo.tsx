@@ -150,7 +150,7 @@ export const Default: React.FC<MultiPromoProps> = (props) => {
                   'grid grid-cols-1 border-l border-t border-[#cbd3ef] sm:grid-cols-2 xl:grid-cols-4':
                     isCardGrid,
                   'grid grid-cols-1 gap-8 md:grid-cols-3': isDarkRail,
-                  'grid grid-cols-1 border-t border-white/20 md:grid-cols-2 xl:grid-cols-4':
+                  'grid grid-cols-1 border-t border-white/20 md:grid-cols-2 md:gap-x-8 xl:grid-cols-4 xl:gap-x-12':
                     isRelated,
                 })}
               >

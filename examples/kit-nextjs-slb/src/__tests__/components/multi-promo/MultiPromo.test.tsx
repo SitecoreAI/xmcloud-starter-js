@@ -431,6 +431,27 @@ describe('MultiPromo Component', () => {
       expect(screen.queryByTestId('carousel')).not.toBeInTheDocument();
     });
 
+    it('gives related perspective cards responsive horizontal breathing room', () => {
+      const { container } = render(
+        <MultiPromo
+          {...defaultProps}
+          params={{
+            ...defaultProps.params,
+            slbPresentation: 'related',
+          }}
+        />,
+      );
+
+      const relatedGrid = container.querySelector(
+        '[data-layout="related"] .md\\:grid-cols-2',
+      );
+      expect(relatedGrid).toHaveClass(
+        'md:gap-x-8',
+        'xl:grid-cols-4',
+        'xl:gap-x-12',
+      );
+    });
+
     it('should apply custom styles from params', () => {
       const { container } = render(<MultiPromo {...defaultProps} />);
 
