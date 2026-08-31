@@ -38,10 +38,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" dam-id="114138" dam-content-type="Image" width="1140" height="729" alt="Engineer examines equipment in an SLB manufacturing facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" dam-id="114178" dam-content-type="Image" width="1130" height="730" alt="Three-dimensional rendering of the Reda Agile ESP system." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9679fcee-7790-e1b3-29d0-1f0a74dadc6f
+            Value: f676f4e1-74c7-8a3e-db60-83591525a796
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
@@ -75,10 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 7eca61ae-f0c1-49e6-b131-686ab895a1dc
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" dam-id="114138" dam-content-type="Image" width="1140" height="729" alt="Un ingeniero examina un equipo en una planta de manufactura de SLB." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" dam-id="114178" dam-content-type="Image" width="1130" height="730" alt="Representación tridimensional del sistema ESP Reda Agile." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 98c4ca3b-58d8-1cbc-9b3e-f4e616784cf3
+            Value: cfee568c-3e24-7fa6-b821-3d93bf60d419
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:

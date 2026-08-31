@@ -32,10 +32,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Engineers review an integrated energy model during a technical workshop." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" dam-id="114430" dam-content-type="Image" width="1672" height="941" alt="A volunteer helps students complete an energy science experiment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 773ead45-6f4a-5a14-2d3c-0c6d797e5fe5
+            Value: 8554f1c0-cc62-8175-bb88-11f6945ec568
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -72,10 +72,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Ingenieros revisan un modelo energético integrado durante un taller técnico." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" dam-id="114430" dam-content-type="Image" width="1672" height="941" alt="Un voluntario ayuda a estudiantes a completar un experimento de ciencias de la energía." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: edf1e151-e534-d25d-8248-af4d85fe4b73
+            Value: 751a76a9-4a45-9b99-8830-a17b78eea411
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

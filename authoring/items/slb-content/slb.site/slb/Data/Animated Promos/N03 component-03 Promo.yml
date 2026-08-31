@@ -32,10 +32,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" dam-id="114493" dam-content-type="Image" width="1672" height="941" alt="An engineer discusses a technical equipment model with a customer." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Engineers compare measurement and abatement technologies at an industrial emissions source." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: baa51401-a8ca-f095-5955-16232fae206e
+            Value: dc07cbe0-1671-b082-9519-225f75d42816
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -72,10 +72,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" dam-id="114493" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero analiza un modelo técnico de equipo con una clienta." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingenieros compara tecnologías de medición y reducción en una fuente de emisiones industriales." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 762250d0-c497-e1f3-55d3-aa37fd382570
+            Value: e6832665-d5da-a794-8f67-98a2e0e39dbb
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

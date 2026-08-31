@@ -32,10 +32,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Engineers review an integrated energy model during a technical workshop." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" dam-id="114594" dam-content-type="Image" width="1672" height="941" alt="Scientists and energy analysts examine core samples and a basin model during a research roundtable." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9b0b4c3c-ca82-cca2-eef5-ac8f00364379
+            Value: 8d6019fc-fcf7-68d1-3d67-57a0506da29b
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -72,10 +72,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Ingenieros revisan un modelo energético integrado durante un taller técnico." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" dam-id="114594" dam-content-type="Image" width="1672" height="941" alt="Científicos y analistas del sector energético examinan muestras de núcleos geológicos y un modelo de cuenca durante una mesa redonda de investigación." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6f28ad41-103f-3cba-cf09-a0243efa623b
+            Value: 20d43dd3-917d-0f2f-c713-06b9bd80d17d
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com

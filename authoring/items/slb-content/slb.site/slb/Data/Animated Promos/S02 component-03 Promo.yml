@@ -32,10 +32,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary engineering team meets during an operational shift handover." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" dam-id="114604" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary energy team reviews governed data lineage, subsurface context, and equipment telemetry in an operations center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a5ddcc90-40fa-4a00-2d03-a5d4090386c6
+            Value: 92829836-3c4b-5eac-99f4-0e567ed27daa
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -72,10 +72,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
             Hint: image
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" dam-id="114604" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario del sector energético revisa el linaje de datos gobernados, el contexto del subsuelo y la telemetría de equipos en un centro de operaciones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4384164a-5ca4-1e03-0b4a-202eb65738a3
+            Value: aee974a3-8c28-4ac6-beff-3367986f996a
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
