@@ -2,7 +2,7 @@ import type React from 'react';
 import Link from 'next/link';
 import { Text, AppPlaceholder } from '@sitecore-content-sdk/nextjs';
 import { GlobalFooterProps } from '@/components/global-footer/global-footer.props';
-import { Default as FooterCallout } from '@/components/footer-navigation-callout/FooterNavigationCallout.dev';
+import { FooterNewsletterSignup } from '@/components/global-footer/FooterNewsletterSignup.client';
 import { Default as Logo } from '@/components/logo/Logo.dev';
 import { NoDataFallback } from '@/utils/NoDataFallback';
 import { EditableImageButton } from '@/components/button-component/ButtonComponent';
@@ -46,11 +46,9 @@ const localFooterContent = {
         ],
       },
     ],
-    calloutTitle: 'Ready to move energy forward?',
-    calloutDescription:
-      'Connect with our team to turn complex energy challenges into measurable progress.',
-    calloutLabel: 'Contact us',
-    calloutHref: '/contact-us',
+    newsletterTitle: 'Energy insights, delivered',
+    newsletterDescription:
+      'Get the latest SLB technology, energy innovation, and industry insights delivered to your inbox.',
     copyright: 'SLB. All rights reserved.',
   },
   'es-MX': {
@@ -89,16 +87,20 @@ const localFooterContent = {
         ],
       },
     ],
-    calloutTitle: '¿Listo para impulsar la energía?',
-    calloutDescription:
-      'Conéctese con nuestro equipo para convertir retos energéticos complejos en progreso medible.',
-    calloutLabel: 'Contáctenos',
-    calloutHref: '/es-mx/contactenos',
+    newsletterTitle: 'Perspectivas de energía, en su correo',
+    newsletterDescription:
+      'Reciba las últimas novedades de SLB sobre tecnología, innovación energética y tendencias de la industria.',
     copyright: 'SLB. Todos los derechos reservados.',
   },
 } as const;
 
-export function LocalSlbFooter({ locale }: { locale?: string }) {
+export function LocalSlbFooter({
+  locale,
+  trackingEnabled = true,
+}: {
+  locale?: string;
+  trackingEnabled?: boolean;
+}) {
   const language = locale?.toLocaleLowerCase() === 'es-mx' ? 'es-MX' : 'en';
   const content = localFooterContent[language];
 
@@ -145,16 +147,12 @@ export function LocalSlbFooter({ locale }: { locale?: string }) {
           ))}
         </nav>
         <div className="@md:col-span-2 @lg:col-span-4">
-          <h2 className="font-heading mb-4 text-2xl font-light">
-            {content.calloutTitle}
-          </h2>
-          <p className="mb-6 text-white/80">{content.calloutDescription}</p>
-          <Link
-            className="inline-flex border border-white px-5 py-3 font-medium hover:border-accent hover:text-accent"
-            href={content.calloutHref}
-          >
-            {content.calloutLabel}
-          </Link>
+          <FooterNewsletterSignup
+            title={{ value: content.newsletterTitle }}
+            description={{ value: content.newsletterDescription }}
+            locale={language}
+            trackingEnabled={trackingEnabled}
+          />
         </div>
       </div>
       <div className="border-t border-white/20">
@@ -174,23 +172,23 @@ export const Default: React.FC<GlobalFooterProps> = (props) => {
   const datasource = getDatasource(fields);
 
   const {
+    emailSubscriptionTitle,
     footerCopyright,
     footerLogo,
     footerPromoDescription,
-    footerPromoLink,
     footerPromoTitle,
     footerSocialLinks,
   } = datasource ?? {};
+  const emailSubscriptionTitleField = getFieldValue(emailSubscriptionTitle);
   const footerCopyrightField = getFieldValue(footerCopyright);
   const footerLogoField = getFieldValue(footerLogo);
   const footerPromoTitleField = getFieldValue(footerPromoTitle);
   const footerPromoDescriptionField = getFieldValue(footerPromoDescription);
-  const footerPromoLinkField = getFieldValue(footerPromoLink);
   const hasVisibleDatasourceContent = Boolean(
     footerCopyrightField?.value ||
+      emailSubscriptionTitleField?.value ||
       footerPromoTitleField?.value ||
-      footerPromoDescriptionField?.value ||
-      footerPromoLinkField?.value?.href,
+      footerPromoDescriptionField?.value,
   );
   const hasInheritedDatasource = hasLegacySolterraSignature(datasource);
   const needsLocalFallback =
@@ -198,7 +196,12 @@ export const Default: React.FC<GlobalFooterProps> = (props) => {
     (!isPageEditing && (!datasource || !hasVisibleDatasourceContent));
 
   if (needsLocalFallback) {
-    return <LocalSlbFooter locale={page.locale} />;
+    return (
+      <LocalSlbFooter
+        locale={page.locale}
+        trackingEnabled={page.mode.isNormal}
+      />
+    );
   }
 
   if (fields) {
@@ -231,14 +234,19 @@ export const Default: React.FC<GlobalFooterProps> = (props) => {
               componentMap={componentMap}
             />
           </div>
-          {/* Callout section */}
+          {/* Newsletter section */}
           <div className="@md:col-span-2 @lg:col-span-4">
-            <FooterCallout
-              fields={{
-                title: footerPromoTitleField,
-                description: footerPromoDescriptionField,
-                linkOptional: footerPromoLinkField,
-              }}
+            <FooterNewsletterSignup
+              title={
+                isPageEditing && emailSubscriptionTitleField
+                  ? emailSubscriptionTitleField
+                  : emailSubscriptionTitleField?.value
+                    ? emailSubscriptionTitleField
+                    : footerPromoTitleField
+              }
+              description={footerPromoDescriptionField}
+              locale={page.locale}
+              trackingEnabled={page.mode.isNormal}
             />
           </div>
         </div>

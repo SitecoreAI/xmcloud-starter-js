@@ -11,7 +11,7 @@ const generatedSourcePath = path.join(
     "generated-assets-manifest.json",
 );
 const expectedOriginalAssetCount = 26;
-const expectedGeneratedAssetCount = 38;
+const expectedGeneratedAssetCount = 47;
 const expectedWidth = 1672;
 const expectedHeight = 941;
 const siteBaseUrl = "https://slb-sitecoreai-demo.vercel.app";
@@ -28,6 +28,12 @@ const sourceRouteRules = [
     ["Our people and communities", "/sustainability/people-and-communities"],
     ["Newsroom", "/newsroom"],
     ["Insights", "/news-and-insights/insights"],
+    [
+        "AI starts with trusted context",
+        "/news-and-insights/insights/ai-starts-with-trusted-context",
+    ],
+    ["Climate action", "/sustainability/climate-action"],
+    ["Solutions", "/solutions"],
     [
         "Decarbonization insight",
         "/news-and-insights/insights/designing-decarbonization-for-execution",
@@ -169,7 +175,7 @@ const mergedFilenames = mergedAssets.map(({ filename }) => filename);
 assert(
     mergedAssets.length ===
         expectedOriginalAssetCount + expectedGeneratedAssetCount,
-    `Expected 64 merged assets, found ${mergedAssets.length}`,
+    `Expected 73 merged assets, found ${mergedAssets.length}`,
 );
 assert(
     new Set(mergedFilenames).size === mergedFilenames.length,
@@ -184,7 +190,7 @@ const mergedManifest = {
 
 await writeFile(
     destinationPath,
-    `${JSON.stringify(mergedManifest, null, 2)}\n`,
+    `${JSON.stringify(mergedManifest, null, 4)}\n`.replace(/\n/g, "\r\n"),
     "utf8",
 );
 

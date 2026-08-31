@@ -686,8 +686,8 @@
                             "alt": "SLB technician operates a test system in a bright manufacturing facility."
                         },
                         {
-                            "filename": "people-field-safety-training.jpg",
-                            "alt": "An instructor guides an employee through hands-on field safety training."
+                            "filename": "solutions-field-deployment.jpg",
+                            "alt": "Field engineers commission a modular energy equipment skid at an operating site."
                         },
                         {
                             "filename": "decarbonization-verification-dashboard.jpg",
@@ -825,8 +825,8 @@
                             "alt": "Un técnico de SLB opera un sistema de pruebas en una luminosa planta de manufactura."
                         },
                         {
-                            "filename": "people-field-safety-training.jpg",
-                            "alt": "Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo."
+                            "filename": "solutions-field-deployment.jpg",
+                            "alt": "Un equipo de ingenieros de campo pone en servicio un módulo de equipos energéticos en un sitio operativo."
                         },
                         {
                             "filename": "decarbonization-verification-dashboard.jpg",
@@ -1227,8 +1227,8 @@
                             "alt": "An engineer compares verified emissions data with current facility performance."
                         },
                         {
-                            "filename": "decarbonization-execution-toolbox-talk.jpg",
-                            "alt": "An operations team conducts a field briefing before decarbonization work begins."
+                            "filename": "decarbonization-technology-selection.jpg",
+                            "alt": "Engineers compare measurement and abatement technologies at an industrial emissions source."
                         },
                         {
                             "filename": "insight-decarbonization-control-room-hero.jpg",
@@ -1347,8 +1347,8 @@
                             "alt": "Un ingeniero compara datos verificados de emisiones con el desempeño actual de la instalación."
                         },
                         {
-                            "filename": "decarbonization-execution-toolbox-talk.jpg",
-                            "alt": "Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización."
+                            "filename": "decarbonization-technology-selection.jpg",
+                            "alt": "Un equipo de ingenieros compara tecnologías de medición y reducción en una fuente de emisiones industriales."
                         },
                         {
                             "filename": "insight-decarbonization-control-room-hero.jpg",
@@ -1596,7 +1596,7 @@
                         },
                         {
                             "filename": "new-energy-lithium-extraction.jpg",
-                            "alt": "Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca de alta montaña y desierto."
+                            "alt": "Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca desértica de gran altitud."
                         },
                         {
                             "filename": "new-energy-hydrogen-electrolyzer.jpg",
@@ -1903,15 +1903,15 @@
                         "description": "Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.",
                         "openGraphTitle": "See the subsurface clearly. Build every well with intent. | SLB",
                         "openGraphDescription": "Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.",
-                        "openGraphImageFilename": "products-reda-agile-esp.jpg"
+                        "openGraphImageFilename": "subsurface-lifecycle-planning-hero.jpg"
                     },
                     "hero": {
                         "eyebrow": "Subsurface and well delivery",
                         "heading": "See the subsurface clearly. Build every well with intent.",
                         "summary": "Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.",
                         "image": {
-                            "filename": "products-reda-agile-esp.jpg",
-                            "alt": "Three-dimensional rendering of the Reda Agile ESP system."
+                            "filename": "subsurface-lifecycle-planning-hero.jpg",
+                            "alt": "A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure."
                         },
                         "primaryCta": {
                             "label": "Explore well capabilities",
@@ -2014,15 +2014,15 @@
                         "description": "Mantenga conectados el conocimiento geológico, el diseño del pozo, los datos de ejecución y los objetivos de producción desde el primer modelo hasta la decisión final del ciclo de vida.",
                         "openGraphTitle": "Comprenda el subsuelo. Construya cada pozo con intención. | SLB",
                         "openGraphDescription": "Mantenga conectados el conocimiento geológico, el diseño del pozo, los datos de ejecución y los objetivos de producción desde el primer modelo hasta la decisión final del ciclo de vida.",
-                        "openGraphImageFilename": "products-reda-agile-esp.jpg"
+                        "openGraphImageFilename": "subsurface-lifecycle-planning-hero.jpg"
                     },
                     "hero": {
                         "eyebrow": "Subsuelo y construcción de pozos",
                         "heading": "Comprenda el subsuelo. Construya cada pozo con intención.",
                         "summary": "Mantenga conectados el conocimiento geológico, el diseño del pozo, los datos de ejecución y los objetivos de producción desde el primer modelo hasta la decisión final del ciclo de vida.",
                         "image": {
-                            "filename": "products-reda-agile-esp.jpg",
-                            "alt": "Representación tridimensional del sistema ESP Reda Agile."
+                            "filename": "subsurface-lifecycle-planning-hero.jpg",
+                            "alt": "Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre."
                         },
                         "primaryCta": {
                             "label": "Explore las capacidades para pozos",
@@ -2487,8 +2487,8 @@
                             "alt": "Monitoring instruments track subsurface conditions above a coastal carbon storage site."
                         },
                         {
-                            "filename": "insight-decarbonization-evidence-review.jpg",
-                            "alt": "An analyst reviews field evidence used to verify emissions improvements."
+                            "filename": "ccus-reservoir-uncertainty-review.jpg",
+                            "alt": "Geoscientists compare reservoir-model uncertainty for a carbon storage project."
                         }
                     ],
                     "finalCta": {
@@ -2590,8 +2590,8 @@
                             "alt": "Instrumentos de monitoreo registran las condiciones del subsuelo sobre un sitio costero de almacenamiento de carbono."
                         },
                         {
-                            "filename": "insight-decarbonization-evidence-review.jpg",
-                            "alt": "Una analista revisa la evidencia de campo utilizada para verificar mejoras de emisiones."
+                            "filename": "ccus-reservoir-uncertainty-review.jpg",
+                            "alt": "Geocientíficos comparan la incertidumbre de modelos de yacimiento para un proyecto de almacenamiento de carbono."
                         }
                     ],
                     "finalCta": {
@@ -2859,15 +2859,15 @@
                         "description": "Connect strategy, technology, operations, and evidence so each commitment has a practical path and each action can be understood in context.",
                         "openGraphTitle": "Turn climate ambition into accountable action | SLB",
                         "openGraphDescription": "Connect strategy, technology, operations, and evidence so each commitment has a practical path and each action can be understood in context.",
-                        "openGraphImageFilename": "sustainability-field-employee.jpg"
+                        "openGraphImageFilename": "climate-action-methane-detection-hero.jpg"
                     },
                     "hero": {
                         "eyebrow": "Climate action",
                         "heading": "Turn climate ambition into accountable action",
                         "summary": "Connect strategy, technology, operations, and evidence so each commitment has a practical path and each action can be understood in context.",
                         "image": {
-                            "filename": "sustainability-field-employee.jpg",
-                            "alt": "SLB field employee in safety glasses and a white hard hat at sunset."
+                            "filename": "climate-action-methane-detection-hero.jpg",
+                            "alt": "Engineers use optical gas imaging and fixed sensors to monitor methane at an energy facility."
                         },
                         "primaryCta": {
                             "label": "Explore climate action",
@@ -2958,15 +2958,15 @@
                         "description": "Conecte estrategia, tecnología, operaciones y evidencia para que cada compromiso tenga una ruta práctica y cada acción pueda comprenderse en su contexto.",
                         "openGraphTitle": "Convierta la ambición climática en acciones responsables | SLB",
                         "openGraphDescription": "Conecte estrategia, tecnología, operaciones y evidencia para que cada compromiso tenga una ruta práctica y cada acción pueda comprenderse en su contexto.",
-                        "openGraphImageFilename": "sustainability-field-employee.jpg"
+                        "openGraphImageFilename": "climate-action-methane-detection-hero.jpg"
                     },
                     "hero": {
                         "eyebrow": "Acción climática",
                         "heading": "Convierta la ambición climática en acciones responsables",
                         "summary": "Conecte estrategia, tecnología, operaciones y evidencia para que cada compromiso tenga una ruta práctica y cada acción pueda comprenderse en su contexto.",
                         "image": {
-                            "filename": "sustainability-field-employee.jpg",
-                            "alt": "Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer."
+                            "filename": "climate-action-methane-detection-hero.jpg",
+                            "alt": "Ingenieros utilizan imágenes ópticas de gas y sensores fijos para monitorear metano en una instalación energética."
                         },
                         "primaryCta": {
                             "label": "Explore la acción climática",
@@ -3638,15 +3638,15 @@
                         "description": "Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.",
                         "openGraphTitle": "Step into energy's next questions | SLB",
                         "openGraphDescription": "Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.",
-                        "openGraphImageFilename": "home-collaborative-workplace.jpg"
+                        "openGraphImageFilename": "insights-research-exchange-hero.jpg"
                     },
                     "hero": {
                         "eyebrow": "Insights",
                         "heading": "Step into energy's next questions",
                         "summary": "Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.",
                         "image": {
-                            "filename": "home-collaborative-workplace.jpg",
-                            "alt": "Colleagues meet in a spacious modern SLB workplace."
+                            "filename": "insights-research-exchange-hero.jpg",
+                            "alt": "Scientists and energy analysts examine core samples and a basin model during a research roundtable."
                         },
                         "primaryCta": {
                             "label": "Browse all insights",
@@ -3694,8 +3694,8 @@
                             "alt": "An analyst reviews emissions performance in an industrial operations center."
                         },
                         {
-                            "filename": "solutions-laboratory-innovation.jpg",
-                            "alt": "SLB engineer holds a laboratory flask between columns of material samples."
+                            "filename": "subsurface-lifecycle-planning-hero.jpg",
+                            "alt": "A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure."
                         }
                     ]
                 },
@@ -3707,15 +3707,15 @@
                         "description": "Consulte perspectivas claras y basadas en evidencia sobre desempeño operativo, tecnología digital e IA, descarbonización y nuevos sistemas de energía.",
                         "openGraphTitle": "Explore las próximas preguntas de la energía | SLB",
                         "openGraphDescription": "Consulte perspectivas claras y basadas en evidencia sobre desempeño operativo, tecnología digital e IA, descarbonización y nuevos sistemas de energía.",
-                        "openGraphImageFilename": "home-collaborative-workplace.jpg"
+                        "openGraphImageFilename": "insights-research-exchange-hero.jpg"
                     },
                     "hero": {
                         "eyebrow": "Análisis",
                         "heading": "Explore las próximas preguntas de la energía",
                         "summary": "Consulte perspectivas claras y basadas en evidencia sobre desempeño operativo, tecnología digital e IA, descarbonización y nuevos sistemas de energía.",
                         "image": {
-                            "filename": "home-collaborative-workplace.jpg",
-                            "alt": "Un grupo de colegas se reúne en un espacio de trabajo moderno y amplio de SLB."
+                            "filename": "insights-research-exchange-hero.jpg",
+                            "alt": "Científicos y analistas del sector energético examinan muestras de núcleos geológicos y un modelo de cuenca durante una mesa redonda de investigación."
                         },
                         "primaryCta": {
                             "label": "Consulte todos los análisis",
@@ -3763,8 +3763,8 @@
                             "alt": "Un analista revisa el desempeño de emisiones en un centro de operaciones industriales."
                         },
                         {
-                            "filename": "solutions-laboratory-innovation.jpg",
-                            "alt": "Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales."
+                            "filename": "subsurface-lifecycle-planning-hero.jpg",
+                            "alt": "Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre."
                         }
                     ]
                 }
@@ -3861,8 +3861,8 @@
                             "alt": "A data engineer and domain expert compare a digital asset model with real equipment."
                         },
                         {
-                            "filename": "products-lumi-platform.jpg",
-                            "alt": "Lumi data and AI platform interface."
+                            "filename": "insight-trusted-ai-context.jpg",
+                            "alt": "A multidisciplinary energy team reviews governed data lineage, subsurface context, and equipment telemetry in an operations center."
                         },
                         {
                             "filename": "contact-technical-consultation.jpg",
@@ -3950,8 +3950,8 @@
                             "alt": "Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real."
                         },
                         {
-                            "filename": "products-lumi-platform.jpg",
-                            "alt": "Interfaz de la plataforma de datos e IA Lumi."
+                            "filename": "insight-trusted-ai-context.jpg",
+                            "alt": "Un equipo multidisciplinario del sector energético revisa el linaje de datos gobernados, el contexto del subsuelo y la telemetría de equipos en un centro de operaciones."
                         },
                         {
                             "filename": "contact-technical-consultation.jpg",
@@ -4184,15 +4184,15 @@
                         "description": "Follow company news, technology updates, project announcements, and stories from SLB teams around the world.",
                         "openGraphTitle": "News from across SLB | SLB",
                         "openGraphDescription": "Follow company news, technology updates, project announcements, and stories from SLB teams around the world.",
-                        "openGraphImageFilename": "news-shreveport-infrastructure.jpg"
+                        "openGraphImageFilename": "newsroom-media-briefing-hero.jpg"
                     },
                     "hero": {
                         "eyebrow": "Newsroom",
                         "heading": "News from across SLB",
                         "summary": "Follow company news, technology updates, project announcements, and stories from SLB teams around the world.",
                         "image": {
-                            "filename": "news-shreveport-infrastructure.jpg",
-                            "alt": "SLB employees work around a forklift inside the Shreveport manufacturing facility."
+                            "filename": "newsroom-media-briefing-hero.jpg",
+                            "alt": "Energy executives answer questions from journalists during a global industry press briefing."
                         },
                         "primaryCta": {
                             "label": "Register for updates",
@@ -4248,8 +4248,8 @@
                             "alt": "A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour."
                         },
                         {
-                            "filename": "about-innovation-factori.jpg",
-                            "alt": "Colleagues collaborate in an Innovation Factori workspace."
+                            "filename": "newsroom-technology-release.jpg",
+                            "alt": "Engineers perform commissioning checks on newly released industrial energy technology."
                         },
                         {
                             "filename": "new-energy-offshore-wind.jpg",
@@ -4269,15 +4269,15 @@
                         "description": "Conozca noticias corporativas, novedades tecnológicas, anuncios de proyectos e historias de equipos de SLB alrededor del mundo.",
                         "openGraphTitle": "Noticias de SLB en todo el mundo | SLB",
                         "openGraphDescription": "Conozca noticias corporativas, novedades tecnológicas, anuncios de proyectos e historias de equipos de SLB alrededor del mundo.",
-                        "openGraphImageFilename": "news-shreveport-infrastructure.jpg"
+                        "openGraphImageFilename": "newsroom-media-briefing-hero.jpg"
                     },
                     "hero": {
                         "eyebrow": "Sala de prensa",
                         "heading": "Noticias de SLB en todo el mundo",
                         "summary": "Conozca noticias corporativas, novedades tecnológicas, anuncios de proyectos e historias de equipos de SLB alrededor del mundo.",
                         "image": {
-                            "filename": "news-shreveport-infrastructure.jpg",
-                            "alt": "Empleados de SLB trabajan alrededor de un montacargas en la planta de manufactura de Shreveport."
+                            "filename": "newsroom-media-briefing-hero.jpg",
+                            "alt": "Ejecutivos del sector energético responden preguntas de periodistas durante una conferencia de prensa global."
                         },
                         "primaryCta": {
                             "label": "Regístrese para recibir novedades",
@@ -4334,8 +4334,8 @@
                             "alt": "Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer."
                         },
                         {
-                            "filename": "about-innovation-factori.jpg",
-                            "alt": "Un grupo de colegas colabora en un espacio de Innovation Factori."
+                            "filename": "newsroom-technology-release.jpg",
+                            "alt": "Un grupo de ingenieros realiza pruebas de puesta en servicio de una nueva tecnología energética industrial."
                         },
                         {
                             "filename": "new-energy-offshore-wind.jpg",
@@ -4588,7 +4588,7 @@
                         },
                         {
                             "filename": "global-presence-local-field-briefing.jpg",
-                            "alt": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de alta montaña y desierto."
+                            "alt": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de clima desértico y gran altitud."
                         },
                         {
                             "filename": "about-innovation-factori.jpg",
@@ -4968,7 +4968,7 @@
                         },
                         {
                             "filename": "global-presence-local-field-briefing.jpg",
-                            "alt": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de alta montaña y desierto."
+                            "alt": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de clima desértico y gran altitud."
                         }
                     ],
                     "finalCta": {
@@ -5335,7 +5335,7 @@
                         },
                         {
                             "filename": "global-presence-local-field-briefing.jpg",
-                            "alt": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de alta montaña y desierto."
+                            "alt": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de clima desértico y gran altitud."
                         }
                     ],
                     "finalCta": {

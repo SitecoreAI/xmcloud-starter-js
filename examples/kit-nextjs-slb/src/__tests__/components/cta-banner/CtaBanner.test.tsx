@@ -42,6 +42,7 @@ interface MockButtonProps {
 
 interface MockAnimatedSectionProps {
   children?: React.ReactNode;
+  className?: string;
   direction?: string;
   isPageEditing?: boolean;
 }
@@ -59,7 +60,7 @@ jest.mock('@sitecore-content-sdk/nextjs', () => ({
     return React.createElement(
       Tag,
       { 'data-testid': `text-${tag || 'span'}`, className },
-      field?.value || ''
+      field?.value || '',
     );
   },
   Link: ({ field, editable }: MockLinkProps) => (
@@ -83,11 +84,17 @@ jest.mock('@/components/ui/button', () => ({
 }));
 
 jest.mock('@/components/animated-section/AnimatedSection.dev', () => ({
-  Default: ({ children, direction, isPageEditing }: MockAnimatedSectionProps) => (
+  Default: ({
+    children,
+    className,
+    direction,
+    isPageEditing,
+  }: MockAnimatedSectionProps) => (
     <div
       data-testid="animated-section"
       data-direction={direction}
       data-editing={isPageEditing}
+      className={className}
     >
       {children}
     </div>
@@ -137,7 +144,9 @@ describe('CtaBanner Component', () => {
       render(<CtaBanner {...defaultProps} />);
 
       expect(
-        screen.getByText('Join thousands of satisfied customers and transform your business today.')
+        screen.getByText(
+          'Join thousands of satisfied customers and transform your business today.',
+        ),
       ).toBeInTheDocument();
     });
 
@@ -176,18 +185,22 @@ describe('CtaBanner Component', () => {
       const { container } = render(<CtaBanner {...defaultProps} />);
 
       const section = container.querySelector('section');
-      expect(section).toHaveClass('w-full', 'mx-auto', 'px-6');
+      expect(section).toHaveClass('w-full', 'overflow-hidden', 'bg-white');
     });
 
     it('should render with primary color scheme', () => {
-      const { container } = render(<CtaBanner {...propsWithPrimaryColorScheme} />);
+      const { container } = render(
+        <CtaBanner {...propsWithPrimaryColorScheme} />,
+      );
 
       const section = container.querySelector('section');
       expect(section).toHaveClass('bg-primary', 'text-primary-foreground');
     });
 
     it('should render with secondary color scheme', () => {
-      const { container } = render(<CtaBanner {...propsWithSecondaryColorScheme} />);
+      const { container } = render(
+        <CtaBanner {...propsWithSecondaryColorScheme} />,
+      );
 
       const section = container.querySelector('section');
       expect(section).toHaveClass('bg-secondary', 'text-secondary-foreground');
@@ -197,7 +210,7 @@ describe('CtaBanner Component', () => {
       const { container } = render(<CtaBanner {...propsWithoutColorScheme} />);
 
       const section = container.querySelector('section');
-      expect(section).toBeInTheDocument();
+      expect(section).toHaveClass('bg-white', 'text-dark');
     });
 
     it('should apply color scheme to title', () => {
@@ -211,7 +224,7 @@ describe('CtaBanner Component', () => {
       render(<CtaBanner {...propsWithPrimaryColorScheme} />);
 
       const button = screen.getByTestId('button');
-      expect(button).toHaveClass('bg-accent', 'text-accent-foreground');
+      expect(button).toHaveClass('border-white', 'bg-white', 'text-primary');
     });
   });
 
@@ -326,36 +339,60 @@ describe('CtaBanner Component', () => {
       const { container } = render(<CtaBanner {...defaultProps} />);
 
       const section = container.querySelector('section');
-      expect(section).toHaveClass('w-full', 'mx-auto', 'px-6', 'py-16');
+      expect(section).toHaveClass('relative', 'isolate', 'w-full', 'border-y');
+      expect(section).toHaveAttribute('data-component', 'CtaBanner');
     });
 
-    it('should render content wrapper with max-width', () => {
+    it('should render content in the shared SLB page shell', () => {
       const { container } = render(<CtaBanner {...defaultProps} />);
 
-      const wrapper = container.querySelector('.max-w-4xl');
+      const wrapper = container.querySelector('.slb-page-shell');
       expect(wrapper).toBeInTheDocument();
-      expect(wrapper).toHaveClass('mx-auto', 'w-full');
+      expect(wrapper).toHaveClass('relative', 'py-10', 'sm:py-12');
     });
 
     it('should render title with correct typography classes', () => {
       render(<CtaBanner {...defaultProps} />);
 
       const title = screen.getByTestId('text-h2');
-      expect(title).toHaveClass('mb-6', 'text-4xl', 'font-normal');
+      expect(title).toHaveClass(
+        'font-heading',
+        'text-[clamp(2rem,4vw,3.5rem)]',
+        'font-light',
+      );
     });
 
     it('should render description with correct typography classes', () => {
       render(<CtaBanner {...defaultProps} />);
 
       const description = screen.getByTestId('text-p');
-      expect(description).toHaveClass('mb-16', 'text-lg', 'antialiased');
+      expect(description).toHaveClass(
+        'max-w-[42rem]',
+        'text-base',
+        'leading-7',
+      );
     });
 
     it('should render button with correct typography classes', () => {
       render(<CtaBanner {...defaultProps} />);
 
       const button = screen.getByTestId('button');
-      expect(button).toHaveClass('text-sm', 'font-heading', 'font-medium');
+      expect(button).toHaveClass(
+        'min-h-11',
+        'border-2',
+        'font-heading',
+        'text-sm',
+      );
+    });
+
+    it('uses a compact responsive editorial grid', () => {
+      render(<CtaBanner {...defaultProps} />);
+
+      expect(screen.getByTestId('animated-section')).toHaveClass(
+        'grid',
+        'gap-8',
+        'lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)]',
+      );
     });
   });
 
@@ -399,4 +436,3 @@ describe('CtaBanner Component', () => {
     });
   });
 });
-

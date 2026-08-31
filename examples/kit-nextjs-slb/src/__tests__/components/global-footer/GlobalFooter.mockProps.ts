@@ -1,5 +1,14 @@
-import { Field, ImageField, LinkField, Page, PageMode } from '@sitecore-content-sdk/nextjs';
-import { GlobalFooterProps, FooterSocialLink } from '@/components/global-footer/global-footer.props';
+import {
+  Field,
+  ImageField,
+  LinkField,
+  Page,
+  PageMode,
+} from '@sitecore-content-sdk/nextjs';
+import {
+  GlobalFooterProps,
+  FooterSocialLink,
+} from '@/components/global-footer/global-footer.props';
 
 // Mock page object with all required Page properties
 const mockPageBase: Page = {
@@ -60,6 +69,10 @@ export const mockFooterLogo: ImageField = {
 // Mock text fields
 export const mockFooterPromoTitle: Field<string> = {
   value: 'Stay Connected',
+};
+
+export const mockEmailSubscriptionTitle: Field<string> = {
+  value: 'Energy insights, delivered',
 };
 
 export const mockFooterPromoDescription: Field<string> = {
@@ -161,6 +174,9 @@ export const mockFields = {
       footerLogo: {
         jsonValue: mockFooterLogo,
       },
+      emailSubscriptionTitle: {
+        jsonValue: mockEmailSubscriptionTitle,
+      },
       footerPromoTitle: {
         jsonValue: mockFooterPromoTitle,
       },
@@ -186,6 +202,9 @@ export const mockFieldsWithoutPromoLink = {
       footerLogo: {
         jsonValue: mockFooterLogo,
       },
+      emailSubscriptionTitle: {
+        jsonValue: mockEmailSubscriptionTitle,
+      },
       footerPromoTitle: {
         jsonValue: mockFooterPromoTitle,
       },
@@ -210,6 +229,9 @@ export const mockFieldsWithoutSocialLinks = {
     datasource: {
       footerLogo: {
         jsonValue: mockFooterLogo,
+      },
+      emailSubscriptionTitle: {
+        jsonValue: mockEmailSubscriptionTitle,
       },
       footerPromoTitle: {
         jsonValue: mockFooterPromoTitle,
@@ -241,7 +263,7 @@ export const defaultProps: GlobalFooterProps = {
     RenderingIdentifier: 'footer-rendering-id',
   },
   fields: mockFields as GlobalFooterProps['fields'],
-  rendering: { 
+  rendering: {
     componentName: 'GlobalFooter',
     uid: 'footer-uid',
     placeholders: {},
@@ -254,7 +276,9 @@ export const propsWithoutPromoLink: GlobalFooterProps = {
     RenderingIdentifier: 'footer-rendering-id',
   },
   fields: mockFieldsWithoutPromoLink as GlobalFooterProps['fields'],
-  rendering: { componentName: 'GlobalFooter' } as GlobalFooterProps['rendering'],
+  rendering: {
+    componentName: 'GlobalFooter',
+  } as GlobalFooterProps['rendering'],
   page: mockPageBase,
 };
 
@@ -263,7 +287,9 @@ export const propsWithoutSocialLinks: GlobalFooterProps = {
     RenderingIdentifier: 'footer-rendering-id',
   },
   fields: mockFieldsWithoutSocialLinks as GlobalFooterProps['fields'],
-  rendering: { componentName: 'GlobalFooter' } as GlobalFooterProps['rendering'],
+  rendering: {
+    componentName: 'GlobalFooter',
+  } as GlobalFooterProps['rendering'],
   page: mockPageBase,
 };
 
@@ -272,7 +298,9 @@ export const propsWithoutDatasource: GlobalFooterProps = {
     RenderingIdentifier: 'footer-rendering-id',
   },
   fields: mockFieldsWithoutDatasource as GlobalFooterProps['fields'],
-  rendering: { componentName: 'GlobalFooter' } as GlobalFooterProps['rendering'],
+  rendering: {
+    componentName: 'GlobalFooter',
+  } as GlobalFooterProps['rendering'],
   page: mockPageBase,
 };
 
@@ -281,7 +309,9 @@ export const propsWithoutFields: GlobalFooterProps = {
     RenderingIdentifier: 'footer-rendering-id',
   },
   fields: undefined as unknown as GlobalFooterProps['fields'],
-  rendering: { componentName: 'GlobalFooter' } as GlobalFooterProps['rendering'],
+  rendering: {
+    componentName: 'GlobalFooter',
+  } as GlobalFooterProps['rendering'],
   page: mockPageBase,
 };
 
@@ -289,4 +319,3 @@ export const propsEditing: GlobalFooterProps = {
   ...defaultProps,
   page: mockPageEditing,
 };
-

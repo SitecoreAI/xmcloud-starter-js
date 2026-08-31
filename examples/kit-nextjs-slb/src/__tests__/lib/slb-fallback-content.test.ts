@@ -211,7 +211,15 @@ describe('SLB route-aware fallback content', () => {
 
   it('references approved DAM assets, retains local fallbacks, and contains no authoring-only copy', () => {
     const serialized = JSON.stringify(catalog);
-    expect(Object.keys(slbDamAssetUrls)).toHaveLength(26);
+    const assetManifest = JSON.parse(
+      fs.readFileSync(
+        path.join(process.cwd(), 'public', 'images', 'slb', 'manifest.json'),
+        'utf8',
+      ),
+    ) as { assets: Array<{ filename: string }> };
+    expect(Object.keys(slbDamAssetUrls).sort()).toEqual(
+      assetManifest.assets.map((asset) => asset.filename).sort(),
+    );
     expect(serialized).not.toMatch(/\bdemo\b/i);
     expect(serialized).not.toMatch(
       /revalidate at implementation|dynamic rail|provide governed links|newsletter cta|media cta/i,

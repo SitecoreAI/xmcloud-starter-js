@@ -7,38 +7,88 @@ import { Text, Link } from '@sitecore-content-sdk/nextjs';
 import { getDescriptiveLinkText } from '@/utils/link-text';
 import { CtaBannerProps } from './cta-banner.props';
 
-const ctaBannerVariants = cva('w-full mx-auto px-6 py-16 md:py-24 text-center', {
-  variants: {
-    colorScheme: {
-      default: '',
-      primary: 'bg-primary text-primary-foreground',
-      secondary: 'bg-secondary text-secondary-foreground',
-    },
-  },
-});
-
-const ctaTitleVariants = cva(
-  'mb-6 text-pretty text-4xl font-normal leading-[1.1333] tracking-tighter antialiased md:text-7xl',
+const ctaBannerVariants = cva(
+  'relative isolate w-full overflow-hidden border-y border-border',
   {
     variants: {
       colorScheme: {
-        default: '',
-        primary: 'text-primary-foreground',
+        default: 'bg-white text-dark',
+        primary: 'border-primary bg-primary text-primary-foreground',
+        secondary: 'border-secondary bg-secondary text-secondary-foreground',
+      },
+    },
+    defaultVariants: {
+      colorScheme: 'default',
+    },
+  },
+);
+
+const ctaEyebrowVariants = cva(
+  'mb-4 flex items-center gap-3 font-heading text-xs font-medium uppercase tracking-[0.22em]',
+  {
+    variants: {
+      colorScheme: {
+        default: 'text-primary',
+        primary: 'text-primary-foreground/80',
         secondary: 'text-primary',
       },
     },
-  }
-);
-
-const ctaButtonVariants = cva('text-sm font-heading font-medium', {
-  variants: {
-    colorScheme: {
-      default: '',
-      primary: 'bg-accent text-accent-foreground hover:bg-accent/90',
-      secondary: 'bg-primary text-primary-foreground hover:bg-primary/90',
+    defaultVariants: {
+      colorScheme: 'default',
     },
   },
-});
+);
+
+const ctaTitleVariants = cva(
+  'font-heading text-pretty text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.05] tracking-[-0.03em] antialiased',
+  {
+    variants: {
+      colorScheme: {
+        default: 'text-dark',
+        primary: 'text-primary-foreground',
+        secondary: 'text-secondary-foreground',
+      },
+    },
+    defaultVariants: {
+      colorScheme: 'default',
+    },
+  },
+);
+
+const ctaDescriptionVariants = cva(
+  'font-body max-w-[42rem] text-base leading-7 antialiased sm:text-lg',
+  {
+    variants: {
+      colorScheme: {
+        default: 'text-foreground/75',
+        primary: 'text-primary-foreground/85',
+        secondary: 'text-secondary-foreground/80',
+      },
+    },
+    defaultVariants: {
+      colorScheme: 'default',
+    },
+  },
+);
+
+const ctaButtonVariants = cva(
+  'min-h-11 w-fit rounded-none border-2 px-5 py-3 font-heading text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2',
+  {
+    variants: {
+      colorScheme: {
+        default:
+          'border-primary bg-primary text-primary-foreground hover:bg-primary-hover focus-visible:ring-primary',
+        primary:
+          'border-white bg-white text-primary hover:border-secondary hover:bg-secondary focus-visible:ring-white focus-visible:ring-offset-primary',
+        secondary:
+          'border-primary bg-primary text-primary-foreground hover:bg-primary-hover focus-visible:ring-primary focus-visible:ring-offset-secondary',
+      },
+    },
+    defaultVariants: {
+      colorScheme: 'default',
+    },
+  },
+);
 
 export const Default: React.FC<CtaBannerProps> = (props) => {
   const isPageEditing = props.page.mode.isEditing;
@@ -49,39 +99,69 @@ export const Default: React.FC<CtaBannerProps> = (props) => {
     const colorScheme = params.colorScheme ?? undefined;
 
     return (
-      <section className={ctaBannerVariants({ colorScheme })}>
-        <div className="mx-auto w-full max-w-4xl">
-          {/* Use Text component with fallback for heading */}
-          <AnimatedSection direction="up" isPageEditing={isPageEditing}>
-            <Text tag="h2" className={ctaTitleVariants({ colorScheme })} field={titleRequired} />
-            <Text
-              tag="p"
-              className="mx-auto mb-16 max-w-xl text-lg antialiased"
-              field={descriptionOptional}
-            />
+      <section
+        className={ctaBannerVariants({ colorScheme })}
+        data-component="CtaBanner"
+      >
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-1 bg-accent"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -right-16 top-0 h-full w-40 bg-current opacity-[0.035] sm:w-64"
+        />
+        <div className="slb-page-shell relative py-10 sm:py-12 lg:py-14">
+          <AnimatedSection
+            direction="up"
+            isPageEditing={isPageEditing}
+            className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)] lg:items-end lg:gap-16"
+          >
+            <div className="max-w-3xl">
+              <div
+                aria-hidden="true"
+                className={ctaEyebrowVariants({ colorScheme })}
+              >
+                <span>SLB</span>
+                <span className="h-px w-10 bg-current opacity-60" />
+              </div>
+              <Text
+                tag="h2"
+                className={ctaTitleVariants({ colorScheme })}
+                field={titleRequired}
+              />
+            </div>
 
-            {/* Render button with link */}
-            {linkOptional && (
-              <Button className={ctaButtonVariants({ colorScheme })} asChild>
-                <Link
-                  field={
-                    // Enhance link with descriptive text for SEO
-                    !isPageEditing && linkOptional?.value?.text
-                      ? {
-                          ...linkOptional,
-                          value: {
-                            ...linkOptional.value,
-                            text: getDescriptiveLinkText(linkOptional, titleRequired?.value),
-                          },
-                        }
-                      : linkOptional
-                  }
-                  editable={isPageEditing}
-                />
-              </Button>
-            )}
+            <div className="flex max-w-2xl flex-col items-start gap-6 lg:pb-1">
+              <Text
+                tag="p"
+                className={ctaDescriptionVariants({ colorScheme })}
+                field={descriptionOptional}
+              />
+
+              {linkOptional && (
+                <Button className={ctaButtonVariants({ colorScheme })} asChild>
+                  <Link
+                    field={
+                      !isPageEditing && linkOptional?.value?.text
+                        ? {
+                            ...linkOptional,
+                            value: {
+                              ...linkOptional.value,
+                              text: getDescriptiveLinkText(
+                                linkOptional,
+                                titleRequired?.value,
+                              ),
+                            },
+                          }
+                        : linkOptional
+                    }
+                    editable={isPageEditing}
+                  />
+                </Button>
+              )}
+            </div>
           </AnimatedSection>
-          {/* Use Text component with fallback for subheading */}
         </div>
       </section>
     );

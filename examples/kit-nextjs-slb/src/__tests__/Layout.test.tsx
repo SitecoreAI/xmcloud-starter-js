@@ -5,9 +5,35 @@ import Layout from '@/Layout';
 import { resolveSlbFallbackPage } from '@/lib/slb-fallback-content';
 
 jest.mock('@sitecore-content-sdk/nextjs', () => ({
-  AppPlaceholder: ({ name }: { name: string }) => (
-    <div data-testid={`placeholder-${name}`} />
-  ),
+  AppPlaceholder: ({
+    name,
+    rendering,
+  }: {
+    name: string;
+    rendering?: { placeholders?: Record<string, unknown> };
+  }) => {
+    const presentation = rendering?.placeholders?.[name];
+    const componentNames = Array.isArray(presentation)
+      ? presentation
+          .map((component) =>
+            component && typeof component === 'object'
+              ? String(
+                  (component as { componentName?: unknown }).componentName ||
+                    '',
+                )
+              : '',
+          )
+          .filter(Boolean)
+          .join(',')
+      : '';
+
+    return (
+      <div
+        data-components={componentNames}
+        data-testid={`placeholder-${name}`}
+      />
+    );
+  },
   DesignLibraryApp: () => <div data-testid="design-library" />,
 }));
 
@@ -40,8 +66,18 @@ jest.mock('@/components/global-header/GlobalHeader', () => ({
 }));
 
 jest.mock('@/components/global-footer/GlobalFooter', () => ({
-  LocalSlbFooter: ({ locale }: { locale?: string }) => (
-    <div data-locale={locale} data-testid="slb-footer-local-fallback" />
+  LocalSlbFooter: ({
+    locale,
+    trackingEnabled,
+  }: {
+    locale?: string;
+    trackingEnabled?: boolean;
+  }) => (
+    <div
+      data-locale={locale}
+      data-tracking-enabled={String(trackingEnabled)}
+      data-testid="slb-footer-local-fallback"
+    />
   ),
 }));
 
@@ -109,6 +145,10 @@ describe('Layout route-aware fallback', () => {
     ).not.toBeInTheDocument();
     expect(screen.getByTestId('slb-header-local-fallback')).toBeInTheDocument();
     expect(screen.getByTestId('slb-footer-local-fallback')).toBeInTheDocument();
+    expect(screen.getByTestId('slb-footer-local-fallback')).toHaveAttribute(
+      'data-tracking-enabled',
+      'true',
+    );
   });
 
   it('defers nonempty header and footer presentation to Sitecore', () => {
@@ -136,7 +176,7 @@ describe('Layout route-aware fallback', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('defers to Sitecore as soon as the main placeholder has a rendering', () => {
+  it('defers incompatible main presentation to Sitecore', () => {
     render(
       <Layout
         page={createPage({ main: [{ componentName: 'PageHeader' }] })}
@@ -146,6 +186,87 @@ describe('Layout route-aware fallback', () => {
 
     expect(screen.queryByTestId('slb-fallback')).not.toBeInTheDocument();
     expect(screen.getByTestId('placeholder-headless-main')).toBeInTheDocument();
+  });
+
+  it('renders compatible CTA Banner presentation before the curated fallback', () => {
+    const { container } = render(
+      <Layout
+        page={createPage({
+          main: [
+            { componentName: 'CtaBanner' },
+            { componentName: 'CtaBanner' },
+          ],
+        })}
+        fallbackPage={fallbackPage}
+      />,
+    );
+
+    expect(screen.getByTestId('placeholder-headless-main')).toBeInTheDocument();
+    expect(screen.getByTestId('slb-fallback')).toBeInTheDocument();
+    expect(screen.getByTestId('placeholder-headless-main')).toHaveAttribute(
+      'data-components',
+      'CtaBanner,CtaBanner',
+    );
+
+    const contentChildren = Array.from(
+      container.querySelector('#content')?.children || [],
+    ).map((element) => element.getAttribute('data-testid'));
+    expect(contentChildren).toEqual([
+      'placeholder-headless-main',
+      'slb-fallback',
+    ]);
+  });
+
+  it('filters mixed legacy presentation and renders only CTA Banner before the fallback', () => {
+    const mixedMain = [
+      {
+        componentName: 'PageHeader',
+        fields: { title: { value: 'Welcome to SOLTERRA' } },
+      },
+      {
+        componentName: 'CtaBanner',
+        fields: { titleRequired: { value: 'Smarter energy operations' } },
+      },
+      {
+        componentName: 'PromoBlock',
+        fields: { title: { value: 'The Ordinary Kit' } },
+      },
+    ];
+
+    const { rerender } = render(
+      <Layout
+        page={createPage({ main: mixedMain })}
+        fallbackPage={fallbackPage}
+      />,
+    );
+
+    expect(screen.getByTestId('placeholder-headless-main')).toHaveAttribute(
+      'data-components',
+      'CtaBanner',
+    );
+    expect(screen.getByTestId('slb-fallback')).toBeInTheDocument();
+
+    rerender(
+      <Layout
+        page={createPage({ isEditing: true, main: mixedMain })}
+        fallbackPage={fallbackPage}
+      />,
+    );
+
+    expect(screen.getByTestId('placeholder-headless-main')).toHaveAttribute(
+      'data-components',
+      'CtaBanner',
+    );
+    expect(screen.getByTestId('slb-fallback')).toBeInTheDocument();
+  });
+
+  it('keeps normal non-fallback routes entirely Sitecore-owned', () => {
+    render(
+      <Layout page={createPage({ main: [{ componentName: 'CtaBanner' }] })} />,
+    );
+
+    expect(screen.getByTestId('placeholder-headless-main')).toBeInTheDocument();
+    expect(screen.queryByTestId('slb-fallback')).not.toBeInTheDocument();
   });
 
   it('never renders inherited Solterra main presentation on a curated route', () => {
@@ -198,6 +319,10 @@ describe('Layout route-aware fallback', () => {
     ).toBeInTheDocument();
     expect(screen.getByTestId('slb-header-local-fallback')).toBeInTheDocument();
     expect(screen.getByTestId('slb-footer-local-fallback')).toBeInTheDocument();
+    expect(screen.getByTestId('slb-footer-local-fallback')).toHaveAttribute(
+      'data-tracking-enabled',
+      'false',
+    );
   });
 
   it('passes the active Spanish locale to both local chrome components', () => {

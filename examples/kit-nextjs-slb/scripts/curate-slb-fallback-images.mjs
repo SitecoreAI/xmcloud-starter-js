@@ -33,6 +33,7 @@ const EXISTING_ASSET_FILENAMES = [
 ];
 
 const NEW_ASSET_FILENAMES = [
+    "ccus-reservoir-uncertainty-review.jpg",
     "ccus-basin-screening-workstation.jpg",
     "ccus-core-characterization-lab.jpg",
     "ccus-injection-well-manifold.jpg",
@@ -46,6 +47,7 @@ const NEW_ASSET_FILENAMES = [
     "decarbonization-execution-toolbox-talk.jpg",
     "decarbonization-inventory-aerial-survey.jpg",
     "decarbonization-methane-sensor-wellhead.jpg",
+    "decarbonization-technology-selection.jpg",
     "decarbonization-verification-dashboard.jpg",
     "digital-data-context.jpg",
     "digital-data-governance-review.jpg",
@@ -56,7 +58,9 @@ const NEW_ASSET_FILENAMES = [
     "insight-decarbonization-control-room-hero.jpg",
     "insight-decarbonization-evidence-review.jpg",
     "insight-decarbonization-intervention-planning.jpg",
+    "insight-trusted-ai-context.jpg",
     "insights-energy-research-roundtable-hero.jpg",
+    "insights-research-exchange-hero.jpg",
     "nature-biodiversity-field-survey.jpg",
     "nature-equipment-circularity-workshop.jpg",
     "nature-place-context.jpg",
@@ -67,10 +71,15 @@ const NEW_ASSET_FILENAMES = [
     "new-energy-lithium-extraction.jpg",
     "new-energy-offshore-wind.jpg",
     "newsroom-global-energy-network-hero.jpg",
+    "newsroom-media-briefing-hero.jpg",
+    "newsroom-technology-release.jpg",
     "people-community-stem-workshop.jpg",
     "people-field-safety-training.jpg",
     "people-inclusive-engineering-team.jpg",
+    "solutions-field-deployment.jpg",
+    "subsurface-lifecycle-planning-hero.jpg",
     "well-decommissioning-restored-site.jpg",
+    "climate-action-methane-detection-hero.jpg",
 ];
 
 const STATIC_ASSET_ALT_TEXT = {
@@ -228,6 +237,11 @@ const STATIC_ASSET_ALT_TEXT = {
         en: "Engineers plan emissions interventions around an operating model and site map.",
         "es-MX":
             "Un grupo de ingenieros planifica intervenciones de emisiones con un modelo operativo y un mapa del sitio.",
+    },
+    "insight-trusted-ai-context.jpg": {
+        en: "A multidisciplinary energy team reviews governed data lineage, subsurface context, and equipment telemetry in an operations center.",
+        "es-MX":
+            "Un equipo multidisciplinario del sector energético revisa el linaje de datos gobernados, el contexto del subsuelo y la telemetría de equipos en un centro de operaciones.",
     },
     "insights-energy-research-roundtable-hero.jpg": {
         en: "Energy specialists exchange research insights around a collaborative table.",
@@ -415,7 +429,7 @@ const PAGE_IMAGE_ASSIGNMENTS = {
         "new-energy-grid-storage.jpg",
         "contact-technical-consultation.jpg",
         "products-test-facility.jpg",
-        "people-field-safety-training.jpg",
+        "solutions-field-deployment.jpg",
         "decarbonization-verification-dashboard.jpg",
         "about-global-presence.jpg",
     ],
@@ -434,7 +448,7 @@ const PAGE_IMAGE_ASSIGNMENTS = {
         "decarbonization-engineers-prioritize-tablet.jpg",
         "decarbonization-compressor-maintenance.jpg",
         "decarbonization-verification-dashboard.jpg",
-        "decarbonization-execution-toolbox-talk.jpg",
+        "decarbonization-technology-selection.jpg",
         "insight-decarbonization-control-room-hero.jpg",
     ],
     S04: [
@@ -477,7 +491,7 @@ const PAGE_IMAGE_ASSIGNMENTS = {
         "ccus-core-characterization-lab.jpg",
         "ccus-injection-well-manifold.jpg",
         "ccus-monitoring-seismic-array.jpg",
-        "insight-decarbonization-evidence-review.jpg",
+        "ccus-reservoir-uncertainty-review.jpg",
     ],
     U01: [
         "nature-place-context.jpg",
@@ -512,11 +526,11 @@ const PAGE_IMAGE_ASSIGNMENTS = {
     N02: [
         "products-tela-ai.jpg",
         "insight-decarbonization-control-room-hero.jpg",
-        "solutions-laboratory-innovation.jpg",
+        "subsurface-lifecycle-planning-hero.jpg",
     ],
     N03: [
         "digital-data-context.jpg",
-        "products-lumi-platform.jpg",
+        "insight-trusted-ai-context.jpg",
         "contact-technical-consultation.jpg",
         "digital-workflow-automation.jpg",
         "global-presence-regional-technology-center.jpg",
@@ -529,7 +543,7 @@ const PAGE_IMAGE_ASSIGNMENTS = {
     ],
     N05: [
         "newsroom-global-energy-network-hero.jpg",
-        "about-innovation-factori.jpg",
+        "newsroom-technology-release.jpg",
         "new-energy-offshore-wind.jpg",
         "contact-media-briefing.jpg",
     ],
@@ -604,14 +618,14 @@ function sameStringArray(left, right) {
     );
 }
 
-function validateStaticCuration() {
+function validateStaticCuration(catalog) {
     assert(
         EXISTING_ASSET_FILENAMES.length === 25,
         `Expected 25 existing image assets, found ${EXISTING_ASSET_FILENAMES.length}.`,
     );
     assert(
-        NEW_ASSET_FILENAMES.length === 38,
-        `Expected 38 new image assets, found ${NEW_ASSET_FILENAMES.length}.`,
+        NEW_ASSET_FILENAMES.length === 47,
+        `Expected 47 new image assets, found ${NEW_ASSET_FILENAMES.length}.`,
     );
 
     const requiredAssets = [
@@ -627,7 +641,7 @@ function validateStaticCuration() {
             sorted(requiredAssets),
             sorted(Object.keys(ASSET_ALT_TEXT)),
         ),
-        "The bilingual alt-text catalog must contain exactly the 63 required photographic assets.",
+        "The bilingual alt-text catalog must contain exactly the 72 required photographic assets.",
     );
 
     for (const [filename, localizedAlt] of Object.entries(ASSET_ALT_TEXT)) {
@@ -640,7 +654,12 @@ function validateStaticCuration() {
         }
     }
 
-    const curatedAssets = new Set(Object.values(PAGE_IMAGE_ASSIGNMENTS).flat());
+    const curatedAssets = new Set([
+        ...Object.values(PAGE_IMAGE_ASSIGNMENTS).flat(),
+        ...catalog.pages
+            .map((page) => page.fields.en.hero?.image?.filename)
+            .filter(Boolean),
+    ]);
     const unusedRequiredAssets = requiredAssets.filter(
         (filename) => !curatedAssets.has(filename),
     );
@@ -670,6 +689,9 @@ function validateCatalogShape(catalog) {
         missingPageIds.length === 0 && unexpectedPageIds.length === 0,
         `Expected exactly the 23 curated pages. Missing: ${missingPageIds.join(", ") || "none"}; unexpected: ${unexpectedPageIds.join(", ") || "none"}.`,
     );
+
+    const heroUsage = new Map();
+    const pageUsage = new Map();
 
     for (const page of catalog.pages) {
         const localeKeys = Object.keys(page.fields || {});
@@ -721,12 +743,52 @@ function validateCatalogShape(catalog) {
 
         for (const locale of SUPPORTED_LOCALES) {
             const heroFilename = page.fields[locale].hero?.image?.filename;
+            const heroAlt = page.fields[locale].hero?.image?.alt;
+            assert(
+                !heroFilename ||
+                    (typeof heroAlt === "string" && heroAlt.trim().length > 0),
+                `${page.id}/${locale} has a hero image without alt text.`,
+            );
             assert(
                 !heroFilename || !assignment.includes(heroFilename),
                 `${page.id}/${locale} reuses hero asset ${heroFilename} in supportingImages.`,
             );
         }
+
+        const englishHeroFilename = page.fields.en.hero?.image?.filename;
+        if (englishHeroFilename) {
+            const pageIds = heroUsage.get(englishHeroFilename) || [];
+            pageIds.push(page.id);
+            heroUsage.set(englishHeroFilename, pageIds);
+        }
+
+        for (const filename of new Set([englishHeroFilename, ...assignment])) {
+            if (!filename) continue;
+            const pageIds = pageUsage.get(filename) || [];
+            pageIds.push(page.id);
+            pageUsage.set(filename, pageIds);
+        }
     }
+
+    const repeatedHeroes = [...heroUsage.entries()].filter(
+        ([, pageIds]) => pageIds.length > 1,
+    );
+    assert(
+        repeatedHeroes.length === 0,
+        `Hero images must be unique across English routes: ${repeatedHeroes
+            .map(([filename, pageIds]) => `${filename} (${pageIds.join(", ")})`)
+            .join("; ")}.`,
+    );
+
+    const overusedAssets = [...pageUsage.entries()].filter(
+        ([, pageIds]) => pageIds.length > 3,
+    );
+    assert(
+        overusedAssets.length === 0,
+        `No photo may appear on more than three English pages: ${overusedAssets
+            .map(([filename, pageIds]) => `${filename} (${pageIds.join(", ")})`)
+            .join("; ")}.`,
+    );
 }
 
 function applyCuration(catalog) {
@@ -800,7 +862,7 @@ const catalogPath = positionalArguments[0]
 const catalogSource = await readFile(catalogPath, "utf8");
 const catalog = JSON.parse(catalogSource);
 
-validateStaticCuration();
+validateStaticCuration(catalog);
 validateCatalogShape(catalog);
 
 if (checkOnly) {

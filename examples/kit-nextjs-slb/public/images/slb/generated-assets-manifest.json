@@ -1,7 +1,7 @@
 {
     "schema_version": "1.0",
     "generated_at": "2026-08-30",
-    "asset_count": 38,
+    "asset_count": 47,
     "generation": {
         "tool": "OpenAI built-in image generation",
         "mode": "new image generation",
@@ -208,7 +208,7 @@
             "source_png": "exec-ea1e77ee-b6f2-4500-b6ce-238bbea4ada9.png",
             "placement": "Global presence - Local insight",
             "alt_en": "A local engineering team reviews field conditions in a high-desert energy region.",
-            "alt_es_mx": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de alta montaña y desierto.",
+            "alt_es_mx": "Un equipo local de ingeniería revisa las condiciones de campo en una región energética de clima desértico y gran altitud.",
             "prompt_brief": "Locally based team reviewing a tailgate map against expansive mesa terrain and a distant energy site."
         },
         {
@@ -272,7 +272,7 @@
             "source_png": "exec-c45806ee-34f8-4f23-878a-b8881306bf3a.png",
             "placement": "New energy systems - Lithium",
             "alt_en": "An engineer inspects modular direct-lithium-extraction equipment in a high-desert basin.",
-            "alt_es_mx": "Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca de alta montaña y desierto.",
+            "alt_es_mx": "Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca desértica de gran altitud.",
             "prompt_brief": "Clean blue direct-lithium-extraction skids beside shallow brine ponds and distant high-desert mountains."
         },
         {
@@ -314,6 +314,78 @@
             "alt_en": "An engineering team reviews data lineage and governance across connected industrial systems.",
             "alt_es_mx": "Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados.",
             "prompt_brief": "A diverse energy data and engineering team reviewing data lineage, quality, access, and stewardship on unlabeled abstract digital interfaces."
+        },
+        {
+            "filename": "ccus-reservoir-uncertainty-review.jpg",
+            "source_png": "exec-b7e9f4f5-914b-4fbc-b8d4-e2a5d91c14fa.png",
+            "placement": "CCUS - Reservoir uncertainty",
+            "alt_en": "Geoscientists compare reservoir-model uncertainty for a carbon storage project.",
+            "alt_es_mx": "Geocientíficos comparan la incertidumbre de modelos de yacimiento para un proyecto de almacenamiento de carbono.",
+            "prompt_brief": "Three geoscientists compare unlabeled reservoir realizations, carbon dioxide plume envelopes, well paths, and physical rock cores."
+        },
+        {
+            "filename": "decarbonization-technology-selection.jpg",
+            "source_png": "exec-f41f9cec-4ca3-4b68-b480-46cc5fa6d8a4.png",
+            "placement": "Industrial decarbonization - Technology selection",
+            "alt_en": "Engineers compare measurement and abatement technologies at an industrial emissions source.",
+            "alt_es_mx": "Un equipo de ingenieros compara tecnologías de medición y reducción en una fuente de emisiones industriales.",
+            "prompt_brief": "Engineers at a compressor and valve source compare an optical gas camera, portable sensor, equipment model, tablet, and abatement component."
+        },
+        {
+            "filename": "solutions-field-deployment.jpg",
+            "source_png": "exec-052f656d-f908-45b3-97d3-882b72ef1519.png",
+            "placement": "Solutions - Field deployment",
+            "alt_en": "Field engineers commission a modular energy equipment skid at an operating site.",
+            "alt_es_mx": "Un equipo de ingenieros de campo pone en servicio un módulo de equipos energéticos en un sitio operativo.",
+            "prompt_brief": "Field engineers actively torque a connection, test instruments, and verify valves while commissioning a modular pump and control skid."
+        },
+        {
+            "filename": "newsroom-technology-release.jpg",
+            "source_png": "exec-14d356ae-c3fd-4c05-a63e-d294ba207c32.png",
+            "placement": "Newsroom - Technology updates",
+            "alt_en": "Engineers perform commissioning checks on newly released industrial energy technology.",
+            "alt_es_mx": "Un grupo de ingenieros realiza pruebas de puesta en servicio de una nueva tecnología energética industrial.",
+            "prompt_brief": "Engineers conduct first commissioning checks on a pristine modular electromechanical system while technical colleagues observe."
+        },
+        {
+            "filename": "newsroom-media-briefing-hero.jpg",
+            "source_png": "exec-912cedd1-65e9-4e2e-ad73-af08722f4f4a.png",
+            "placement": "Newsroom - Media briefing hero",
+            "alt_en": "Energy executives answer questions from journalists during a global industry press briefing.",
+            "alt_es_mx": "Ejecutivos del sector energético responden preguntas de periodistas durante una conferencia de prensa global.",
+            "prompt_brief": "A layered global energy-industry press briefing with credible speakers, journalists, cameras, and operating-system imagery."
+        },
+        {
+            "filename": "insights-research-exchange-hero.jpg",
+            "source_png": "exec-a5ad5bce-6343-4222-8035-b90d5dcda418.png",
+            "placement": "Insights - Research exchange hero",
+            "alt_en": "Scientists and energy analysts examine core samples and a basin model during a research roundtable.",
+            "alt_es_mx": "Científicos y analistas del sector energético examinan muestras de núcleos geológicos y un modelo de cuenca durante una mesa redonda de investigación.",
+            "prompt_brief": "A tactile scientist-and-analyst research exchange around core samples, maps, and a physical basin model."
+        },
+        {
+            "filename": "climate-action-methane-detection-hero.jpg",
+            "source_png": "exec-911666ed-754a-4b4d-bcfa-14256130a598.png",
+            "placement": "Climate action - Methane detection hero",
+            "alt_en": "Engineers use optical gas imaging and fixed sensors to monitor methane at an energy facility.",
+            "alt_es_mx": "Ingenieros utilizan imágenes ópticas de gas y sensores fijos para monitorear metano en una instalación energética.",
+            "prompt_brief": "A technically credible methane inspection using tripod-mounted optical gas imaging, a thermal view, and a fixed sensor."
+        },
+        {
+            "filename": "subsurface-lifecycle-planning-hero.jpg",
+            "source_png": "exec-439e78e2-4112-421d-9906-d2d4b8b4ec59.png",
+            "placement": "Subsurface and well delivery - Lifecycle planning hero",
+            "alt_en": "A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure.",
+            "alt_es_mx": "Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre.",
+            "prompt_brief": "A multidisciplinary team reviews cores and credible geological and well visualizations spanning characterization, development, and closure."
+        },
+        {
+            "filename": "insight-trusted-ai-context.jpg",
+            "source_png": "exec-f998645e-e1a9-4b3c-84e7-775e69161e90.png",
+            "placement": "AI starts with trusted context - Governed industrial data",
+            "alt_en": "A multidisciplinary energy team reviews governed data lineage, subsurface context, and equipment telemetry in an operations center.",
+            "alt_es_mx": "Un equipo multidisciplinario del sector energético revisa el linaje de datos gobernados, el contexto del subsuelo y la telemetría de equipos en un centro de operaciones.",
+            "prompt_brief": "A multidisciplinary energy team reviews subsurface models, equipment telemetry, data lineage, and physical core samples in a credible industrial operations center."
         }
     ]
 }

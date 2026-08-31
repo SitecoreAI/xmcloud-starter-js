@@ -75,13 +75,12 @@ interface MockLogoProps {
   logo?: { value?: { src?: string; alt?: string } };
 }
 
-// Mock FooterCallout props interface
-interface MockFooterCalloutProps {
-  fields: {
-    title?: { value?: string };
-    description?: { value?: string };
-    linkOptional?: { value?: { href?: string; text?: string } };
-  };
+// Mock footer newsletter props interface
+interface MockFooterNewsletterProps {
+  title?: { value?: string };
+  description?: { value?: string };
+  locale?: string;
+  trackingEnabled?: boolean;
 }
 
 // Mock EditableImageButton props interface
@@ -109,23 +108,24 @@ jest.mock('@/components/logo/Logo.dev', () => ({
   ),
 }));
 
-// Mock FooterCallout component
-jest.mock(
-  '@/components/footer-navigation-callout/FooterNavigationCallout.dev',
-  () => ({
-    Default: ({ fields }: MockFooterCalloutProps) => (
-      <div data-testid="footer-callout">
-        <div data-testid="callout-title">{fields.title?.value}</div>
-        <div data-testid="callout-description">{fields.description?.value}</div>
-        {fields.linkOptional?.value && (
-          <a href={fields.linkOptional.value.href} data-testid="callout-link">
-            {fields.linkOptional.value.text}
-          </a>
-        )}
-      </div>
-    ),
-  }),
-);
+// Mock the client newsletter component; its event behavior has focused tests.
+jest.mock('@/components/global-footer/FooterNewsletterSignup.client', () => ({
+  FooterNewsletterSignup: ({
+    title,
+    description,
+    locale,
+    trackingEnabled,
+  }: MockFooterNewsletterProps) => (
+    <div
+      data-testid="footer-newsletter"
+      data-locale={locale}
+      data-tracking-enabled={String(trackingEnabled)}
+    >
+      <div data-testid="newsletter-title">{title?.value}</div>
+      <div data-testid="newsletter-description">{description?.value}</div>
+    </div>
+  ),
+}));
 
 // Mock EditableImageButton component
 jest.mock('@/components/button-component/ButtonComponent', () => ({
@@ -172,7 +172,7 @@ describe('GlobalFooter Component', () => {
 
       expect(screen.getByRole('contentinfo')).toBeInTheDocument();
       expect(screen.getByTestId('footer-logo')).toBeInTheDocument();
-      expect(screen.getByTestId('footer-callout')).toBeInTheDocument();
+      expect(screen.getByTestId('footer-newsletter')).toBeInTheDocument();
       expect(
         screen.getByText('© 2024 Company Name. All rights reserved.'),
       ).toBeInTheDocument();
@@ -206,18 +206,27 @@ describe('GlobalFooter Component', () => {
       expect(placeholder).toBeInTheDocument();
     });
 
-    it('should render callout section with correct data', () => {
+    it('should render the authored newsletter with correct data', () => {
       render(<GlobalFooter {...defaultProps} />);
 
-      expect(screen.getByTestId('callout-title')).toHaveTextContent(
-        'Stay Connected',
+      expect(screen.getByTestId('newsletter-title')).toHaveTextContent(
+        'Energy insights, delivered',
       );
-      expect(screen.getByTestId('callout-description')).toHaveTextContent(
+      expect(screen.getByTestId('newsletter-description')).toHaveTextContent(
         'Subscribe to our newsletter for updates',
       );
-      expect(screen.getByTestId('callout-link')).toHaveAttribute(
-        'href',
-        '/newsletter',
+      expect(screen.getByTestId('footer-newsletter')).toHaveAttribute(
+        'data-tracking-enabled',
+        'true',
+      );
+    });
+
+    it('should disable newsletter tracking outside normal mode', () => {
+      render(<GlobalFooter {...propsEditing} />);
+
+      expect(screen.getByTestId('footer-newsletter')).toHaveAttribute(
+        'data-tracking-enabled',
+        'false',
       );
     });
 
@@ -296,12 +305,11 @@ describe('GlobalFooter Component', () => {
   });
 
   describe('Optional fields handling', () => {
-    it('should render without promo link', () => {
+    it('should render the newsletter without relying on the legacy promo link', () => {
       render(<GlobalFooter {...propsWithoutPromoLink} />);
 
       expect(screen.getByTestId('footer-logo')).toBeInTheDocument();
-      expect(screen.getByTestId('footer-callout')).toBeInTheDocument();
-      expect(screen.queryByTestId('callout-link')).not.toBeInTheDocument();
+      expect(screen.getByTestId('footer-newsletter')).toBeInTheDocument();
     });
 
     it('should render with empty datasource', () => {
@@ -381,7 +389,7 @@ describe('GlobalFooter Component', () => {
 
       expect(screen.getByRole('contentinfo')).toBeInTheDocument();
       expect(
-        screen.getByText('Ready to move energy forward?'),
+        screen.getByText('Energy insights, delivered'),
       ).toBeInTheDocument();
     });
 
@@ -423,11 +431,11 @@ describe('GlobalFooter Component', () => {
       render(<GlobalFooter {...spanishProps} />);
 
       expect(
-        screen.getByText('¿Listo para impulsar la energía?'),
+        screen.getByText('Perspectivas de energía, en su correo'),
       ).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: 'Contáctenos' })).toHaveAttribute(
-        'href',
-        '/es-mx/contactenos',
+      expect(screen.getByTestId('footer-newsletter')).toHaveAttribute(
+        'data-locale',
+        'es-MX',
       );
     });
 

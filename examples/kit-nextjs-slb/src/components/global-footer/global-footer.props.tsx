@@ -13,6 +13,7 @@ export type GlobalFooterFields = {
   fields?: {
     data?: {
       datasource?: {
+        emailSubscriptionTitle?: { jsonValue: Field<string> };
         footerLogo?: { jsonValue: ImageField };
         footerPromoTitle?: { jsonValue: Field<string> };
         footerPromoDescription?: { jsonValue: Field<string> };

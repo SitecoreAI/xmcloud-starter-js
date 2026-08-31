@@ -43,6 +43,37 @@ export interface RouteFields {
   thumbnailImage?: ImageField;
 }
 
+const slbFallbackCompatibleMainComponents = new Set(['CtaBanner']);
+
+function createCompatibleSlbMainRoute<TRoute>(
+  route: TRoute,
+): Exclude<TRoute, null | undefined> | undefined {
+  if (!route || typeof route !== 'object') return undefined;
+
+  const placeholders = (route as { placeholders?: Record<string, unknown> })
+    .placeholders;
+  const mainPresentation = placeholders?.['headless-main'];
+  if (!Array.isArray(mainPresentation)) return undefined;
+
+  const compatibleMainPresentation = mainPresentation.filter(
+    (rendering) =>
+      rendering !== null &&
+      typeof rendering === 'object' &&
+      slbFallbackCompatibleMainComponents.has(
+        String((rendering as { componentName?: unknown }).componentName || ''),
+      ),
+  );
+  if (!compatibleMainPresentation.length) return undefined;
+
+  return {
+    ...(route as Record<string, unknown>),
+    placeholders: {
+      ...placeholders,
+      'headless-main': compatibleMainPresentation,
+    },
+  } as Exclude<TRoute, null | undefined>;
+}
+
 const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
@@ -53,9 +84,23 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
     fallbackPage,
     isDesignLibrary: mode.isDesignLibrary,
   });
+  const compatibleMainRoute = fallbackPage
+    ? createCompatibleSlbMainRoute(route)
+    : undefined;
   const hasLegacyMainContent = Boolean(
     fallbackPage && hasLegacySolterraRouteContent(route),
   );
+  const hasCompatibleMainContent = Boolean(compatibleMainRoute);
+  const showFallbackPage = Boolean(
+    fallbackPage && (showFallback || hasCompatibleMainContent),
+  );
+  const showUnfilteredMainPlaceholder = Boolean(
+    route &&
+      (!showFallbackPage ||
+        (showFallback && mode.isEditing && !hasLegacyMainContent)),
+  );
+  const mainPlaceholderRoute =
+    compatibleMainRoute || (showUnfilteredMainPlaceholder ? route : undefined);
   const showLocalHeader = Boolean(
     route &&
       fallbackPage &&
@@ -102,28 +147,18 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
               </div>
               <main className="flex-1">
                 <div id="content" className="antialiased">
-                  {showFallback &&
-                    mode.isEditing &&
-                    route &&
-                    !hasLegacyMainContent && (
-                      <AppPlaceholder
-                        page={page}
-                        componentMap={componentMap}
-                        name="headless-main"
-                        rendering={route}
-                      />
-                    )}
-                  {showFallback && fallbackPage ? (
-                    <SlbFallbackPage
-                      page={fallbackPage}
-                      editing={mode.isEditing}
-                    />
-                  ) : route ? (
+                  {mainPlaceholderRoute && (
                     <AppPlaceholder
                       page={page}
                       componentMap={componentMap}
                       name="headless-main"
-                      rendering={route}
+                      rendering={mainPlaceholderRoute}
+                    />
+                  )}
+                  {showFallbackPage && fallbackPage ? (
+                    <SlbFallbackPage
+                      page={fallbackPage}
+                      editing={mode.isEditing}
                     />
                   ) : null}
                 </div>
@@ -137,7 +172,12 @@ const Layout = ({ page, fallbackPage }: LayoutProps): JSX.Element => {
                     rendering={route}
                   />
                 )}
-                {showLocalFooter && <LocalSlbFooter locale={page.locale} />}
+                {showLocalFooter && (
+                  <LocalSlbFooter
+                    locale={page.locale}
+                    trackingEnabled={page.mode.isNormal}
+                  />
+                )}
               </div>
             </>
           )}
