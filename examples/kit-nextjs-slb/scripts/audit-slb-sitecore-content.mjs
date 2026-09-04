@@ -114,6 +114,16 @@ const allowedPersonalizationDatasourceIds = new Set([
     campaignDefaultDatasourceId,
     campaignVariantDatasourceId,
 ]);
+const campaignDatasourcePathById = new Map([
+    [
+        campaignDefaultDatasourceId,
+        "/sitecore/content/slb/slb/Data/Calls to Action Banners/Industrial decarbonization — Google campaign default CTA",
+    ],
+    [
+        campaignVariantDatasourceId,
+        "/sitecore/content/slb/slb/Data/Calls to Action Banners/Industrial decarbonization — Google campaign personalized CTA",
+    ],
+]);
 const legacySignatures = [
     { label: "Solterra", pattern: /\bsolterra\b/i },
     { label: "wellness starter copy", pattern: /\bwellness\b/i },
@@ -532,6 +542,17 @@ for (const filePath of serializedFiles(serializationRoot)) {
     const id = normalizedGuid(document.ID);
     if (id) itemById.set(id, item);
     if (document.Path) itemByPath.set(String(document.Path), item);
+}
+
+for (const [itemId, expectedPath] of campaignDatasourcePathById) {
+    const campaignDatasource = itemById.get(itemId)?.document;
+    if (!campaignDatasource) {
+        fail(`Campaign datasource ${itemId} is missing from serialization.`);
+    } else if (campaignDatasource.Path !== expectedPath) {
+        fail(
+            `Campaign datasource ${itemId} uses ${campaignDatasource.Path}; expected ${expectedPath}.`,
+        );
+    }
 }
 
 const mappedPageItems = [];
