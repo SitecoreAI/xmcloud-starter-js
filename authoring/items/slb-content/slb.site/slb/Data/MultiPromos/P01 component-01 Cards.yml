@@ -35,13 +35,16 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1f7f9455-4c7e-6ccf-39f4-43cba9972f28
+            Value: c9498ce1-0e87-3274-d9d6-6a4e731254d0
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Products and services — Explore by operating need
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,10 +69,13 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c3f27ba6-0fde-7cda-b468-7344bf06e103
+            Value: 8e34e5bf-e97c-3953-3e07-c699fb1952ad
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Productos y servicios — Explore por necesidad operativa
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

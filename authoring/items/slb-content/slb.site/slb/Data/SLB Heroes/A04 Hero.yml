@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6a0fff1c-9831-f3c2-a5f1-a16865f1ea10
+            Value: a766e8d7-d045-8a00-336c-59521a783b7d
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Global presence — Global capability, shaped by local insight
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{7AD8D413-32D7-4AEF-99A6-D6C061FC2AD0}" anchor="locations" target="" title="" linktype="internal" text="Explore locations" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Connect SLB technology and expertise with people who understand the geology, infrastructure, operations, and communities of each region.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a46f73c1-a916-40a1-2fcd-2fddb0a6454d
+            Value: ac383155-30d7-9bec-734d-a0a44d27d8c2
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Presencia global — Capacidad global, definida por el conocimiento local
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{7AD8D413-32D7-4AEF-99A6-D6C061FC2AD0}" anchor="locations" target="" title="" linktype="internal" text="Explore las ubicaciones" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Conecte la tecnología y la experiencia de SLB con personas que comprenden la geología, la infraestructura, las operaciones y las comunidades de cada región.

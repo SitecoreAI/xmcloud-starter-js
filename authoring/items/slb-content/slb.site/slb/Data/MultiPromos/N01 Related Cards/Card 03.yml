@@ -41,16 +41,19 @@ Languages:
             Value:
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 945d24dd-6d5d-8278-8907-d341c8f3062c
+            Value: ea2c5f10-6c14-ff0e-a36b-78c83c9ef71c
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{480C3143-C836-44C7-AEDB-4717ADA70460}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Designing decarbonization for execution
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value:
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b0598ab1-dba2-4c11-b63e-f92933761d64
+            Value: 20d1cea5-f342-5842-6ca8-7aaa9a28324f
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{480C3143-C836-44C7-AEDB-4717ADA70460}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Diseñar la descarbonización para la ejecución
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

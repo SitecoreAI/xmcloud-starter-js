@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" dam-id="114527" dam-content-type="Image" width="1672" height="941" alt="Engineers inspect modular grid-scale energy storage beside a renewable substation." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d99bd070-06b5-f9d9-fa5a-0f92ee9292ff
+            Value: 7a4ae0e3-8003-6192-7ec7-0d68ce00d073
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: New energy systems — Scale begins with repeatability
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: The path to scale is built through modular thinking, disciplined learning, and designs that can adapt to local conditions without losing technical integrity.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Scale begins with repeatability
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" dam-id="114527" dam-content-type="Image" width="1672" height="941" alt="Ingenieros inspeccionan almacenamiento modular de energía a escala de red junto a una subestación renovable." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 056a1d5f-cc91-c7dc-4208-726d2ead6abe
+            Value: f5222c4a-277d-d270-f08b-1fd82c71299b
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Nuevos sistemas de energía — La escala comienza con la repetibilidad
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: La ruta para escalar se construye con pensamiento modular, aprendizaje disciplinado y diseños que se adapten a las condiciones locales sin perder integridad técnica.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: La escala comienza con la repetibilidad

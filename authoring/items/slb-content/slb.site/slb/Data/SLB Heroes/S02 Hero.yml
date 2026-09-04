@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fcf0e972-4847-0cda-cca6-517f8e9d0150
+            Value: 14b27fbb-4746-125b-1182-56697c70d067
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Digital operations — Turn operational complexity into clear decisions
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="" target="" title="" linktype="internal" text="Explore digital capabilities" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Bring trusted data, domain workflows, and AI into one operating rhythm so teams can move from signal to action with the context intact.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6ad3084c-bbfc-7f7d-2c76-d65e493a6b2b
+            Value: 4401f973-e117-aa8c-6e97-1adb86ac79a4
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Operaciones digitales — Convierta la complejidad operativa en decisiones claras
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="" target="" title="" linktype="internal" text="Explore las capacidades digitales" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Integre datos confiables, flujos de trabajo especializados e IA en un mismo ritmo operativo para pasar de la señal a la acción sin perder el contexto.

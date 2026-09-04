@@ -35,13 +35,16 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3806a4a6-03a7-dbed-dadf-f4ffab3be293
+            Value: 4dd47b3c-15d6-c452-2f3e-a8d1f05bc3e9
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: People and communities — Related perspectives
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,10 +69,13 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: bbb42da1-3513-8c6d-7f0b-f428bb8b954b
+            Value: 2de0e21b-d99f-bb7a-fec7-b0506288a541
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Personas y comunidades — Perspectivas relacionadas
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

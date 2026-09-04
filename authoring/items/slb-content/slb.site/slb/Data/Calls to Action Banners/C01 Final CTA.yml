@@ -32,19 +32,22 @@ Languages:
             Value: Ready to connect?
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: af8cc6ec-b020-cf71-bcd1-dad1f5c40dde
+            Value: 29b7c748-3529-eabf-fb8c-d440e7e7f7ff
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://www.slb.com/contact-us" target="" text="Contact SLB" title="" class="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Connect with SLB specialists to turn the next operating challenge into an actionable plan.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Contact us — Ready to connect?
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: ¿Desea conversar?
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 247baf47-44f8-a624-be5f-cc0687df2ec5
+            Value: 2e890988-d432-f771-8503-23c373a6823f
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://www.slb.com/contact-us" target="" text="Contacte a SLB" title="" class="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Conecte con especialistas de SLB para convertir el próximo desafío operativo en un plan de acción.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Contáctenos — ¿Desea conversar?
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

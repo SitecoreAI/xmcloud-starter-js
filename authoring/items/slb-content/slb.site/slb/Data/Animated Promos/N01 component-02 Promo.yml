@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Engineers review an integrated energy model during a technical workshop." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f281a63b-886d-5248-eb4b-a7692aaf1fcb
+            Value: 2d6a20da-a98b-383c-028b-ae3e91dd140c
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: News and insights — Step into energy's next questions
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: "Expert perspectives connect technical detail with the decisions facing operators, technology leaders, and project teams. Featured: AI in energy starts with trusted context"
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Step into energy's next questions
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-energy-research-roundtable-hero" dam-id="114454" dam-content-type="Image" width="1672" height="941" alt="Ingenieros revisan un modelo energético integrado durante un taller técnico." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 656295ed-dbf5-c988-a77d-1a5ba63bddf5
+            Value: 10bbe5d0-9c39-666b-99a6-7f51720d35a9
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Noticias y análisis — Explore las próximas preguntas de la energía
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: "Las perspectivas de especialistas conectan el detalle técnico con las decisiones que enfrentan operadores, líderes tecnológicos y equipos de proyecto. Destacado: La IA en energía comienza con un contexto confiable"
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Explore las próximas preguntas de la energía

@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-compressor-maintenance" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-compressor-maintenance" dam-id="114410" dam-content-type="Image" width="1672" height="941" alt="Technicians perform a planned emissions-reduction intervention on a compressor." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 64d68e44-e490-c4d8-87df-66382554cdd4
+            Value: 4f018468-1ddd-3287-172a-8a189a51dce9
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Act
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-compressor-maintenance" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-compressor-maintenance" dam-id="114410" dam-content-type="Image" width="1672" height="941" alt="Técnicos realizan una intervención planificada para reducir emisiones en un compresor." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 992cf343-21a6-5499-af6f-0097a94e936a
+            Value: 2109ecc8-e5b1-cb03-6a1c-23744dee588e
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Actuar
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

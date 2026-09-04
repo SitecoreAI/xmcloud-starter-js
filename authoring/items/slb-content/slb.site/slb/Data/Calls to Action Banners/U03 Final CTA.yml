@@ -32,19 +32,22 @@ Languages:
             Value: Build what's next with SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 11c0a0fc-1d8f-6651-d418-12b7ff2a346a
+            Value: 6247a0b6-5e8f-e551-28b8-d2c40b1cf2ee
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Explore careers" title="" class="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Connect with SLB specialists to turn the next operating challenge into an actionable plan.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: People and communities — Build what's next with SLB
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: Construya el futuro con SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 40a2d5d5-8c06-d1b6-6523-8264975d5a10
+            Value: 2f8cf36f-be67-77c3-027f-da5a4f38fc0e
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Explore oportunidades profesionales" title="" class="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Conecte con especialistas de SLB para convertir el próximo desafío operativo en un plan de acción.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Personas y comunidades — Construya el futuro con SLB
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

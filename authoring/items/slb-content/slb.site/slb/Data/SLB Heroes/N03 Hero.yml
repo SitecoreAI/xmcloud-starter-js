@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: de234c11-975e-c716-b989-d0cf3f25cd06
+            Value: 46acca90-09b0-26d1-2727-6b9a9f1b3b93
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: AI in energy starts with trusted context — AI in energy starts with trusted context
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="" target="" title="" linktype="internal" text="Explore data and AI" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: "General AI can accelerate tasks. Energy operations demand something more: information with technical meaning, workflows that reflect operating reality, and experts who can interpret uncertainty before action follows."
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3c3c7791-c511-7258-6248-6547029c13cc
+            Value: e878582a-70ba-aa34-d7b5-6478b4a90749
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: La IA en energía comienza con un contexto confiable — La IA en energía comienza con un contexto confiable
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="" target="" title="" linktype="internal" text="Explore datos e IA" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: "La IA general puede acelerar tareas. Las operaciones energéticas exigen algo más: información con significado técnico, flujos de trabajo que reflejen la realidad operativa y especialistas capaces de interpretar la incertidumbre antes de actuar."

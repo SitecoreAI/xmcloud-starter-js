@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" dam-id="114114" dam-content-type="Image" width="1130" height="730" alt="SLB technician inspects a circular piece of precision industrial equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 2c00a0a8-a79f-fc2a-e064-cfa4128ff0d3
+            Value: e991f4ce-861e-ed2c-d9d9-2da5290e4192
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Innovate in oil and gas
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" dam-id="114114" dam-content-type="Image" width="1130" height="730" alt="Un técnico de SLB inspecciona un equipo industrial circular de alta precisión." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0308b6f6-5e88-fec9-c710-7081abbb75cf
+            Value: cffd4b32-09e6-e2ee-5f1a-2b2bdd5ceb34
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Innovar en petróleo y gas
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" dam-id="114202" dam-content-type="Image" width="1416" height="1362" alt="Two SLB employees in blue coveralls walk across a field site at sunrise." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 92b53d46-2266-01f1-32c6-7c2c4742a10a
+            Value: 71fc475d-e7a2-11b7-84bc-727a4992c139
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{AB58855D-EFF9-42E1-A9B7-74C6F30788F0}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: People
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c82bfc918bbe4d54b43aa9f2822c17a2?v=c3205c73" dam-id="114202" dam-content-type="Image" width="1416" height="1362" alt="Dos empleados de SLB con overoles azules caminan por un sitio de operaciones al amanecer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 94b7ddd5-a4d2-1ecb-d8dd-11f0a7ec7846
+            Value: 385b1f53-3ef4-36fc-3345-ff588571cf99
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{AB58855D-EFF9-42E1-A9B7-74C6F30788F0}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Personas
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

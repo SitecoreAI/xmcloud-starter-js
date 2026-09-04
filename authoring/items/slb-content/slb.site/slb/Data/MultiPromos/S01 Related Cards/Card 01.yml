@@ -41,16 +41,19 @@ Languages:
             Value:
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 96c29c35-20e6-f300-c9f9-cf818cb338de
+            Value: 2e341ad2-f9ae-cb0c-bcd7-96c639a75c72
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{9D42BCDA-09FD-4A75-883E-0E15BE202902}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Products and services
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value:
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ffb69fcf-5d16-3455-0a2c-63d4090153ca
+            Value: ae365c5b-ebd2-f692-441f-dc8474c2eefd
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{9D42BCDA-09FD-4A75-883E-0E15BE202902}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Productos y servicios
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

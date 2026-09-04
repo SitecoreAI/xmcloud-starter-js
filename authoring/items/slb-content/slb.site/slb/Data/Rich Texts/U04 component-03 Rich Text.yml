@@ -32,13 +32,16 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">How we work</p><h2>A repeatable operating cycle</h2><ol><li>Assess the context.</li><li>Avoid or reduce impacts where feasible.</li><li>Monitor what matters.</li><li>Adapt the plan when evidence changes.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0558f02e-42f3-05ed-8737-6aab9c489f64
+            Value: d5f53957-45fc-d36e-53bb-39c1abae2084
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Nature and responsible operations — A repeatable operating cycle
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -60,10 +63,13 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">Cómo trabajamos</p><h2>Un ciclo operativo repetible</h2><ol><li>Evalúe el contexto.</li><li>Evite o reduzca impactos cuando sea viable.</li><li>Monitoree lo importante.</li><li>Adapte el plan cuando cambie la evidencia.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 433d002f-36b7-ecb9-688c-7f79d660ee9f
+            Value: a6d625f0-aa40-fca6-a1ec-97c1cf9b2d63
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Naturaleza y operaciones responsables — Un ciclo operativo repetible
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

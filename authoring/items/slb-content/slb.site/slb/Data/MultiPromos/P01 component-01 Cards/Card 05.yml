@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-methane-sensor-wellhead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-methane-sensor-wellhead" dam-id="114403" dam-content-type="Image" width="1672" height="941" alt="A technician calibrates a methane sensor beside production equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9d329ea3-f4fb-4c20-1569-ffe074bf19ae
+            Value: ef951885-a4c3-d5b6-d914-d5458e9aeeca
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Manage emissions
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-methane-sensor-wellhead" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-methane-sensor-wellhead" dam-id="114403" dam-content-type="Image" width="1672" height="941" alt="Un técnico calibra un sensor de metano junto a equipos de producción." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: dbc93361-8b0b-d5e8-4a59-75c7bb606bfb
+            Value: 008263ba-0199-f771-9234-2d3c296d493d
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Gestionar emisiones
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

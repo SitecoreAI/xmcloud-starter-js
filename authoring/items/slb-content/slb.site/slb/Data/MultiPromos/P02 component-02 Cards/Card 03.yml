@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" dam-id="114178" dam-content-type="Image" width="1130" height="730" alt="Three-dimensional rendering of the Reda Agile ESP system." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f676f4e1-74c7-8a3e-db60-83591525a796
+            Value: a4f4003e-0370-81b9-1555-034a86bb3607
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Complete
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/a3723703457348628590566723cb8d31?v=2f9349c3" dam-id="114178" dam-content-type="Image" width="1130" height="730" alt="Representación tridimensional del sistema ESP Reda Agile." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: cfee568c-3e24-7fa6-b821-3d93bf60d419
+            Value: 67330744-e328-2ff8-a61b-e25d24dc705a
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Completar
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

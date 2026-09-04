@@ -32,19 +32,22 @@ Languages:
             Value: Bring your next energy challenge
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 79b9bd83-6388-7894-f1e3-9f4425be4e09
+            Value: 4373817c-5c8b-a02a-5b37-63d97423efe9
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Talk to a domain expert" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Connect with SLB specialists to turn the next operating challenge into an actionable plan.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Home — Bring your next energy challenge
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: Preséntenos su próximo desafío energético
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 10db3f6e-1c12-581e-d7a4-78413b12bb52
+            Value: 03f442d9-e23f-39a4-12c3-27045da6a323
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Hable con un especialista" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Conecte con especialistas de SLB para convertir el próximo desafío operativo en un plan de acción.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Inicio — Preséntenos su próximo desafío energético
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Engineers compare measurement and abatement technologies at an industrial emissions source." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 95240079-b386-0292-02c6-d0dfec777afc
+            Value: 0a1c0bc0-ff17-46cf-c37e-905fc7363033
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Industrial decarbonization — Apply the right technology to the right source
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Methane, flaring, combustion, and process emissions require different tools and different operational responses. Combine measurement with domain knowledge before selecting an intervention.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Apply the right technology to the right source
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingenieros compara tecnologías de medición y reducción en una fuente de emisiones industriales." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 965109ae-82bc-dddb-c0a5-238f80be0fa0
+            Value: dde867f3-409e-4f64-2062-09ad890a52ca
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Descarbonización industrial — Aplique la tecnología adecuada a cada fuente
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: El metano, la quema, la combustión y las emisiones de proceso requieren herramientas y respuestas operativas distintas. Combine medición y conocimiento especializado antes de seleccionar una intervención.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Aplique la tecnología adecuada a cada fuente

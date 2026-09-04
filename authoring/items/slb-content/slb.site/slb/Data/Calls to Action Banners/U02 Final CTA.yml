@@ -32,19 +32,22 @@ Languages:
             Value: Make the next climate decision practical
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 84adcf47-35fc-1a1e-28a1-d6ed0c718376
+            Value: faa837f5-5d8b-5387-7679-77128996c710
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="" target="" title="" linktype="internal" text="Explore decarbonization solutions" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Connect with SLB specialists to turn the next operating challenge into an actionable plan.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Climate action — Make the next climate decision practical
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: Haga práctica la siguiente decisión climática
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9539dd68-ff01-b9bc-de29-fce7fd4016fa
+            Value: 297cb924-6fc3-f906-b090-6bec58ba9dc6
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="" target="" title="" linktype="internal" text="Explore soluciones de descarbonización" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Conecte con especialistas de SLB para convertir el próximo desafío operativo en un plan de acción.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Acción climática — Haga práctica la siguiente decisión climática
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

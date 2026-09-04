@@ -32,19 +32,22 @@ Languages:
             Value: Find the challenge that moves you
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 99edcea9-cd68-4c5c-62ce-8ba5aeca6fee
+            Value: 63d169e3-a978-3fac-2a93-c0d971495ae5
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Search careers" title="" class="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Connect with SLB specialists to turn the next operating challenge into an actionable plan.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: People and culture — Find the challenge that moves you
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: Encuentre el desafío que lo impulsa
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9c64ccf0-2f8f-c5aa-31f9-e42ea227f7d6
+            Value: 0e5af6bf-0249-ac3a-9031-bd2a9286d1a6
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link linktype="external" url="https://careers.slb.com" target="" text="Busque oportunidades profesionales" title="" class="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Conecte con especialistas de SLB para convertir el próximo desafío operativo en un plan de acción.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Personas y cultura — Encuentre el desafío que lo impulsa
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

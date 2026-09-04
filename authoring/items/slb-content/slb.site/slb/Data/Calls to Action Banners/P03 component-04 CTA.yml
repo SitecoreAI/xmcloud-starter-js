@@ -32,19 +32,22 @@ Languages:
             Value: Tela agentic-AI assistant
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d9dc7d89-8d45-47eb-006d-beab268f7988
+            Value: aa6b22d4-7c45-8c13-0ca7-42cce554be0c
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="tela" target="" title="" linktype="internal" text="Discover Tela" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Tela is designed for domain-aware assistance across complex energy work, helping users discover information, automate tasks, and execute governed workflows.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Data and AI — Tela agentic-AI assistant
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: Asistente de IA agéntica Tela
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 2e529736-8442-4a30-a976-a87f05624031
+            Value: 83d69488-a1c2-181e-fdaf-7fd5b8b9788c
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="tela" target="" title="" linktype="internal" text="Conozca Tela" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Tela está diseñado para brindar asistencia con conocimiento del dominio en trabajos energéticos complejos, ayudando a descubrir información, automatizar tareas y ejecutar flujos gobernados.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Datos e IA — Asistente de IA agéntica Tela
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

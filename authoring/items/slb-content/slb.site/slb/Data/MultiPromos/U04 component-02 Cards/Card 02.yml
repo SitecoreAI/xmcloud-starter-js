@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" dam-id="114399" dam-content-type="Image" width="1672" height="941" alt="Environmental specialists collect a clear-water sample at an industrial water reuse facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fb49c7aa-f45b-b45d-32fc-654529d3330a
+            Value: 621e16b1-35de-4b95-7794-f366a5b5e66a
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Water
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" dam-id="114399" dam-content-type="Image" width="1672" height="941" alt="Especialistas ambientales toman una muestra de agua limpia en una instalación industrial de reutilización de agua." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: be58c67a-0eb9-37ea-0c32-cc67ffe6d982
+            Value: f76f93ea-190b-677d-2819-f69f4c733616
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Agua
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

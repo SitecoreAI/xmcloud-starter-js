@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-lithium-extraction" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-lithium-extraction" dam-id="114517" dam-content-type="Image" width="1672" height="941" alt="An engineer inspects modular direct-lithium-extraction equipment in a high-desert basin." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: bc6bc711-a1be-575f-9fd6-8fc93f124cbb
+            Value: 2efe086c-b6d4-5eca-44f1-1e03bcf83770
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Lithium
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-lithium-extraction" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-lithium-extraction" dam-id="114517" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero inspecciona equipos modulares de extracción directa de litio en una cuenca desértica de gran altitud." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 08c5af51-2984-83ec-720e-8e12685a5d69
+            Value: 1bd44335-7dad-3cd7-3786-347afb77fc21
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Litio
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

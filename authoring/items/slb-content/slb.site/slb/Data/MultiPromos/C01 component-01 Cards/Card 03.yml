@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-media-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-media-briefing" dam-id="114503" dam-content-type="Image" width="1672" height="941" alt="A spokesperson answers questions during a company media briefing." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0d443b05-59bd-9534-c067-12402aa24690
+            Value: b7b65e36-a0aa-2d25-c8fc-70ee221b8786
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{A03CAA08-04FC-4DED-B4D0-3C5872F9B670}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Company and media inquiries
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-media-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-media-briefing" dam-id="114503" dam-content-type="Image" width="1672" height="941" alt="Un portavoz responde preguntas durante una sesión informativa para medios." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c7045c7f-c621-33fe-f6d3-6ce9fb781bd3
+            Value: fa46e4bd-5f7f-ffe5-f3b8-21f922b3756e
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{A03CAA08-04FC-4DED-B4D0-3C5872F9B670}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Consultas corporativas y de medios
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

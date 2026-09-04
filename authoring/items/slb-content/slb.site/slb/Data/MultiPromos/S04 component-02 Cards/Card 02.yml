@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-geothermal-well" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-geothermal-well" dam-id="114523" dam-content-type="Image" width="1672" height="941" alt="Engineers inspect a geothermal wellhead in a volcanic landscape." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 07ab38f3-07bf-54f8-eb6a-0600eb944e12
+            Value: 064baebb-93a8-33b8-18a3-a645e9a5ee13
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Geothermal
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-geothermal-well" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-geothermal-well" dam-id="114523" dam-content-type="Image" width="1672" height="941" alt="Ingenieros inspeccionan un cabezal geotérmico en un paisaje volcánico." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0b191eb4-a990-d700-9a91-df9e6ca259c4
+            Value: b09dc574-afec-1908-43cc-4c84b4fed9b2
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Geotermia
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

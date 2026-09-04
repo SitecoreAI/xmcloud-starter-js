@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" dam-id="114527" dam-content-type="Image" width="1672" height="941" alt="Engineers inspect modular grid-scale energy storage beside a renewable substation." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: cf61d6ec-d9e0-8193-ec98-baabd2ed31f5
+            Value: 01df30d0-5ca5-155b-a22f-8f0078e384a4
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{5C955743-7376-48CB-9442-98187A9686BD}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Develop new systems
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-grid-storage" dam-id="114527" dam-content-type="Image" width="1672" height="941" alt="Ingenieros inspeccionan almacenamiento modular de energía a escala de red junto a una subestación renovable." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 82bbe4be-1bb9-2919-c0be-96121368ef7d
+            Value: a28b86c8-77a4-8d94-132e-a21d764d3795
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{5C955743-7376-48CB-9442-98187A9686BD}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Desarrollar nuevos sistemas
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

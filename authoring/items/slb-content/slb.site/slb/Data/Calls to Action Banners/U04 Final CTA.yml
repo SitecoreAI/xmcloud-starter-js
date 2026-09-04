@@ -32,19 +32,22 @@ Languages:
             Value: Connect environmental context to the operating plan
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b3b25b96-a69f-673f-b2e7-18719a526cc5
+            Value: 1bd23f4e-94b5-ed9a-d189-8f2fd0e55728
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="approach" target="" title="" linktype="internal" text="Explore our approach" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Connect with SLB specialists to turn the next operating challenge into an actionable plan.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Nature and responsible operations — Connect environmental context to the operating plan
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: Conecte el contexto ambiental con el plan operativo
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3d3b20eb-49c5-68ba-b7da-39cc406084fe
+            Value: 4d6e0ec4-6f60-3696-44d1-7bd5f15bad6e
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="approach" target="" title="" linktype="internal" text="Explore nuestro enfoque" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Conecte con especialistas de SLB para convertir el próximo desafío operativo en un plan de acción.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Naturaleza y operaciones responsables — Conecte el contexto ambiental con el plan operativo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

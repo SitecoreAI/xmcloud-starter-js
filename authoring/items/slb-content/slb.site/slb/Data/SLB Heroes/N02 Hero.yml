@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0cf0aaee-f8c4-9a35-204b-9063e3a1df7f
+            Value: b0462532-6ff9-5bfe-87f3-187b995e0c8e
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Insights — Step into energy's next questions
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="all-insights" target="" title="" linktype="internal" text="Browse all insights" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Explore clear, evidence-led perspectives on operational performance, digital and AI, decarbonization, and new energy systems.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f228a1c2-094a-23cd-fc67-1c36efd00f6d
+            Value: d28d72a3-386e-0f2a-e580-cbe40719a842
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Análisis — Explore las próximas preguntas de la energía
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="all-insights" target="" title="" linktype="internal" text="Consulte todos los análisis" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Consulte perspectivas claras y basadas en evidencia sobre desempeño operativo, tecnología digital e IA, descarbonización y nuevos sistemas de energía.

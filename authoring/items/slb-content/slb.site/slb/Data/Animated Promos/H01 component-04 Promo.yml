@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="A coastal energy hub combines processing units, storage tanks, port cranes, and vessels at blue hour." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b2945fa2-e4f5-9b06-1e7d-e1fdc2cae481
+            Value: 63edb9ae-4932-4de2-7262-0ad2ee1f9859
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Home — Ideas shaping energy's next chapter
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Read perspectives from scientists, engineers, and industry leaders working across today's operations and tomorrow's energy systems.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Ideas shaping energy's next chapter
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-global-energy-network-hero" dam-id="114451" dam-content-type="Image" width="1672" height="941" alt="Un centro energético costero reúne unidades de proceso, tanques, grúas portuarias y embarcaciones al anochecer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e23360c2-07b8-6eda-76c1-9dd50fbddf07
+            Value: 2e7aaf78-7eff-95d7-6e27-777599c447e5
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Inicio — Ideas que definen el próximo capítulo de la energía
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Consulte perspectivas de científicos, ingenieros y líderes de la industria que trabajan tanto en las operaciones actuales como en los sistemas energéticos del futuro.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Ideas que definen el próximo capítulo de la energía

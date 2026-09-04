@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" dam-id="114415" dam-content-type="Image" width="1672" height="941" alt="An operations team conducts a field briefing before decarbonization work begins." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c5096d1b-dee7-38b8-3162-0eac14f01078
+            Value: b3d30c3a-bc7a-152a-8967-ab7e5415e382
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Our operations
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" dam-id="114415" dam-content-type="Image" width="1672" height="941" alt="Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ca0f8e9c-9176-9522-b8b3-ddaa6e486704
+            Value: db741676-6bfc-ffdd-5b5a-c468e0fdfca3
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Nuestras operaciones
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

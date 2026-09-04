@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" dam-id="114417" dam-content-type="Image" width="1672" height="941" alt="A scientist examines a rock core during carbon storage site characterization." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 89357b3b-c8f3-5626-2345-13a42784e431
+            Value: 6c4d16f9-b00f-1bc7-ff1a-dc1f15075505
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Subsurface and well delivery — Characterize uncertainty before it becomes operational risk
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Combine measurements, models, and interpretation to understand the resource, represent uncertainty, and focus decisions on what matters most.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Characterize uncertainty before it becomes operational risk
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-core-characterization-lab" dam-id="114417" dam-content-type="Image" width="1672" height="941" alt="Una científica examina un núcleo de roca durante la caracterización de un sitio de almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 838bc5de-b46e-1ac3-0616-4bf9b4e02591
+            Value: 6bdc6ea2-1520-ce57-8417-cb5b36781876
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Subsuelo y construcción de pozos — Caracterice la incertidumbre antes de que se convierta en riesgo operativo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Integre mediciones, modelos e interpretación para comprender el recurso, representar la incertidumbre y enfocar las decisiones en lo más relevante.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Caracterice la incertidumbre antes de que se convierta en riesgo operativo

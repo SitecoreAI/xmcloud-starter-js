@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a201a61b-8027-65d6-d7d8-c80754f61d43
+            Value: afb6b271-cbed-c478-de88-fd65e21775b1
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Technology and innovation — From scientific insight to field-ready technology
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="technology" target="" title="" linktype="internal" text="Explore our technology" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Turn difficult energy questions into practical tools through deep research, precise engineering, real-world validation, and learning at scale.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d87aee86-5fc2-51f6-d10a-8a821e347bd7
+            Value: ca27395e-5261-ea94-4534-78729987b943
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Tecnología e innovación — Del conocimiento científico a la tecnología lista para el campo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="technology" target="" title="" linktype="internal" text="Explore nuestra tecnología" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Convierta preguntas energéticas complejas en herramientas prácticas mediante investigación profunda, ingeniería precisa, validación en condiciones reales y aprendizaje a escala.

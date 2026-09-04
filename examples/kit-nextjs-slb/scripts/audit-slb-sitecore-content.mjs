@@ -30,6 +30,7 @@ const expected = {
 
 const locales = ["en", "es-MX"];
 const finalRenderingsFieldId = "04bf00db-f5fb-41f7-8ab7-22408372a981";
+const displayNameFieldId = "b5e02ad9-d56f-4c41-a065-a133db87bdeb";
 const revisionFieldId = "8cdc337e-a112-42fb-bbb4-4143751e123f";
 const sharedRevisionFieldId = "dbbbeca1-21c7-4906-9dd2-493c1efa59a2";
 const heroRenderingId = "927fe09d-c039-b897-165c-995487b11b87";
@@ -620,6 +621,18 @@ for (const item of generatedDatasources) {
             fail(`${itemPath} is missing a generated ${locale} version.`);
             continue;
         }
+
+        const displayNameFields = (version.Fields ?? []).filter(
+            (field) => String(field.ID).toLowerCase() === displayNameFieldId,
+        );
+        if (displayNameFields.length !== 1) {
+            fail(
+                `${itemPath} ${locale} serializes ${displayNameFields.length} localized __Display name fields; expected exactly 1.`,
+            );
+        } else if (!String(displayNameFields[0].Value ?? "").trim()) {
+            fail(`${itemPath} ${locale} has a blank localized __Display name.`);
+        }
+
         assertNoLegacyValues(
             [
                 ...fieldValues(languageItem.Fields),
@@ -818,6 +831,9 @@ if (failures.length > 0) {
     );
     console.log(
         "- All generated datasource fields explicitly serialized; no starter placeholders",
+    );
+    console.log(
+        "- All generated datasource items have localized display names",
     );
     console.log(
         "- Serialized item revisions are content-sensitive and current",

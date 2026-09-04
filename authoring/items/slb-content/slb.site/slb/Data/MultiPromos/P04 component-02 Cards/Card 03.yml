@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" dam-id="114421" dam-content-type="Image" width="1672" height="941" alt="An operator inspects the manifold of a carbon dioxide injection well." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8e3ecfde-21aa-9ee1-516d-9f1dd6d90bfa
+            Value: 182a2b00-e367-24fc-2edf-e009029b1892
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Design and develop
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-injection-well-manifold" dam-id="114421" dam-content-type="Image" width="1672" height="941" alt="Un operador inspecciona el múltiple de un pozo de inyección de dióxido de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: dec3970f-77cf-50ca-6b85-fe167251cce8
+            Value: 992d923f-e4d0-9caf-ec1e-13c8650e08fa
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Diseñar y desarrollar
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

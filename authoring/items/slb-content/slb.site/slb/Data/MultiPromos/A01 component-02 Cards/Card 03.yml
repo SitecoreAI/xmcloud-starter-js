@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-solutions-field-deployment" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-solutions-field-deployment" dam-id="114569" dam-content-type="Image" width="1672" height="941" alt="Field engineers commission a modular energy equipment skid at an operating site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 16442619-a578-9983-69e2-55edc8998662
+            Value: 68c49e2d-e14d-6d19-03a5-7f6994952b71
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Performance
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-solutions-field-deployment" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-solutions-field-deployment" dam-id="114569" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingenieros de campo pone en servicio un módulo de equipos energéticos en un sitio operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a4f5eb70-f7ed-8350-fbff-388a386e9dd2
+            Value: 7798e969-6bb2-dad8-c75a-2c77273ebbdc
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Desempeño
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

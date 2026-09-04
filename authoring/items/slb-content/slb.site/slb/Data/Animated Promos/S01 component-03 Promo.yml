@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" dam-id="114269" dam-content-type="Image" width="1416" height="1140" alt="SLB engineer walks between large industrial pipes at an operations site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9cc1775b-3e7c-a091-329b-0b0965fd7942
+            Value: 22b06ab1-b015-6b80-d5b8-b76b0f1b3968
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Solutions — Built around operating reality
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: SLB solutions connect global technology with local insight. The result is an approach designed around the conditions, teams, and decisions that shape each operation.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Built around operating reality
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/cf4eb169e1b1446e856beff28b32e8ba?v=e05649fd" dam-id="114269" dam-content-type="Image" width="1416" height="1140" alt="Un ingeniero de SLB camina entre grandes tuberías industriales en un sitio de operaciones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 88570f90-2aef-f3d5-541b-dc0d3bca8938
+            Value: 583cccc2-1718-f043-0889-7406e4bda86c
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Soluciones — Diseñado para la realidad operativa
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Las soluciones de SLB conectan tecnología global con conocimiento local. El resultado es un enfoque diseñado alrededor de las condiciones, los equipos y las decisiones que definen cada operación.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Diseñado para la realidad operativa

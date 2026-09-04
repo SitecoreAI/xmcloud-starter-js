@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Engineers compare measurement and abatement technologies at an industrial emissions source." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: dc07cbe0-1671-b082-9519-225f75d42816
+            Value: 0b8e3156-509e-57a3-37db-e5ef2b34ea1b
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: AI in energy starts with trusted context — Keep human judgment in the workflow
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: AI can surface patterns, summarize information, and execute repeatable tasks. Domain experts test the assumptions, recognize when conditions fall outside the model, and weigh technical, operational, and safety consequences. The most effective workflow makes those review points explicit.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Keep human judgment in the workflow
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-technology-selection" dam-id="114565" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingenieros compara tecnologías de medición y reducción en una fuente de emisiones industriales." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e6832665-d5da-a794-8f67-98a2e0e39dbb
+            Value: 7363517b-f3b7-070b-f846-b54ae40b6036
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: La IA en energía comienza con un contexto confiable — Mantenga el criterio humano dentro del flujo de trabajo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: La IA puede identificar patrones, resumir información y ejecutar tareas repetibles. Los especialistas comprueban los supuestos, reconocen cuándo las condiciones están fuera del modelo y evalúan consecuencias técnicas, operativas y de seguridad. El flujo más eficaz hace explícitos esos puntos de revisión.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Mantenga el criterio humano dentro del flujo de trabajo

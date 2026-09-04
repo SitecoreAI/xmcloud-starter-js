@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" dam-id="114505" dam-content-type="Image" width="1672" height="941" alt="A data engineer and domain expert compare a digital asset model with real equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b73065b2-f9d6-0469-0117-26e2a32bc719
+            Value: 82a37192-07af-83cf-78af-ac57245a1abe
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Digital operations — Build on a trusted data foundation
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Connect information across technical and business systems while preserving lineage, quality, permissions, and the domain context that gives each data point meaning.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Build on a trusted data foundation
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" dam-id="114505" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d08692e2-2194-ac0e-ab23-a368b0b1607d
+            Value: b5f85ac2-7a89-543b-217e-629a2b7093cf
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Operaciones digitales — Construya sobre una base de datos confiable
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Conecte la información de los sistemas técnicos y empresariales, conservando el linaje, la calidad, los permisos y el contexto especializado que da significado a cada dato.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Construya sobre una base de datos confiable

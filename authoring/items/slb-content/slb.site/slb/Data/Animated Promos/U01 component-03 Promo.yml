@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" dam-id="114483" dam-content-type="Image" width="1672" height="941" alt="An analyst reviews field evidence used to verify emissions improvements." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 7bd16372-28e5-318b-f564-c302304a798f
+            Value: 9e2cc972-9b33-bffe-ed51-963347f05a0d
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Sustainability — Governance makes ambition accountable
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Clear oversight, ownership, controls, and reporting help turn sustainability priorities into decisions that can be reviewed and improved.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Governance makes ambition accountable
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" dam-id="114483" dam-content-type="Image" width="1672" height="941" alt="Una analista revisa la evidencia de campo utilizada para verificar mejoras de emisiones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 662e0663-2084-0560-10f8-5a878a27493e
+            Value: cfe9d669-3018-09f1-34c0-7bf565bb1974
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Sostenibilidad — La gobernanza convierte la ambición en responsabilidad
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Una supervisión clara, responsables definidos, controles y reportes ayudan a convertir las prioridades de sostenibilidad en decisiones que pueden revisarse y mejorarse.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: La gobernanza convierte la ambición en responsabilidad

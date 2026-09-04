@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b358728c-c6e1-dc3a-ca9d-80d4b04f18cf
+            Value: 8aad5abc-2921-9a13-041e-4361331ebd30
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Subsurface and well delivery — See the subsurface clearly. Build every well with intent.
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="capabilities" target="" title="" linktype="internal" text="Explore well capabilities" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Keep geological understanding, well design, execution data, and production objectives connected from the first model to the final lifecycle decision.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b8bb679e-0014-1b4a-7d68-f1609ee71502
+            Value: b1a16bf2-0b10-a01b-5be7-492867e95fc9
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Subsuelo y construcción de pozos — Comprenda el subsuelo. Construya cada pozo con intención.
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="capabilities" target="" title="" linktype="internal" text="Explore las capacidades para pozos" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Mantenga conectados el conocimiento geológico, el diseño del pozo, los datos de ejecución y los objetivos de producción desde el primer modelo hasta la decisión final del ciclo de vida.

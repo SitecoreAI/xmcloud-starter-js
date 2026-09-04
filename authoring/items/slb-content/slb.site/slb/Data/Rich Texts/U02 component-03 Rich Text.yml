@@ -32,13 +32,16 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">How we work</p><h2>Pair ambition with a delivery path</h2><ol><li>Separate long-term goals from present capabilities and achieved results.</li><li>Explain the sequence of technology, operational, and partnership decisions needed to move forward.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 733b5142-bb87-ec55-1a5f-cdbcc9272a5c
+            Value: 4dc37aae-63e8-d438-a4ea-d98204bc131c
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Climate action — Pair ambition with a delivery path
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -60,10 +63,13 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">Cómo trabajamos</p><h2>Acompañe la ambición con una ruta de ejecución</h2><ol><li>Distinga entre objetivos de largo plazo, capacidades actuales y resultados alcanzados.</li><li>Explique la secuencia de decisiones tecnológicas, operativas y de colaboración necesarias para avanzar.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c70ffdf5-500c-4df6-2f51-fc0d87d6ff8e
+            Value: ad40d6ed-7e1a-c4f9-994a-3b3db6ef02f7
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Acción climática — Acompañe la ambición con una ruta de ejecución
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" dam-id="114248" dam-content-type="Image" width="1416" height="1140" alt="Two SLB field specialists review work beside pumpjacks." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: afa9268c-dfe3-e35e-7f12-47bf2e56edc6
+            Value: ac06092b-ebef-0048-43c2-5328f4111edc
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Production
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" dam-id="114248" dam-content-type="Image" width="1416" height="1140" alt="Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4fab972e-9ea3-c787-e040-ea49f34caa56
+            Value: 17217ada-55fc-73dc-5374-9147a4c3b595
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Producción
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

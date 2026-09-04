@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="SLB operator crosses the glass-lined atrium of a technology facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 997d905d-164d-73fa-2944-37d7ba32da5a
+            Value: f024eefe-0e3a-65ed-badc-356fb4678576
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Decarbonize industry
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="Un operador de SLB cruza el atrio acristalado de un centro tecnológico." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0f7d8f21-de44-3020-fdaa-ee726f8d3135
+            Value: 768dfc06-05ba-fe76-2567-54bbaddf06fe
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Descarbonizar la industria
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

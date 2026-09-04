@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" dam-id="114398" dam-content-type="Image" width="1672" height="941" alt="A technician inspects an industrial component in a circular equipment refurbishment center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c71298ad-943f-3c5b-397e-e8276821d933
+            Value: f2b73319-fc83-8350-a90b-092e3bc5e029
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Circularity
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" dam-id="114398" dam-content-type="Image" width="1672" height="941" alt="Un técnico inspecciona un componente industrial en un centro de reacondicionamiento circular de equipos." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 20a04251-1b30-a024-b460-984ae00bca39
+            Value: 183af267-cc01-7ac4-743b-cb882e468fa9
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Circularidad
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

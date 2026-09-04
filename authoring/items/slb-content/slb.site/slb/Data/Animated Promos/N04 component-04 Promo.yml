@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" dam-id="114483" dam-content-type="Image" width="1672" height="941" alt="An analyst reviews field evidence used to verify emissions improvements." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 549750fc-1aa6-1797-53bd-cc4385a979a6
+            Value: b4d128e1-6656-2101-3b9c-93f0dfa042c3
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Designing decarbonization for execution — Verify, learn, and improve
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Evidence should show what changed, when it changed, which boundary was used, and how the result was determined. Keep that record close to the workflow so teams can learn from the intervention and make the next decision better.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Verify, learn, and improve
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-evidence-review" dam-id="114483" dam-content-type="Image" width="1672" height="941" alt="Una analista revisa la evidencia de campo utilizada para verificar mejoras de emisiones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 723f116e-2c42-8700-cbbf-9e51bdecf310
+            Value: 47bbf041-ad06-7280-aa9a-8d20bc9446ee
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Diseñar la descarbonización para la ejecución — Verifique, aprenda y mejore
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: La evidencia debe mostrar qué cambió, cuándo cambió, qué límite se utilizó y cómo se determinó el resultado. Mantenga ese registro cerca del flujo de trabajo para que los equipos aprendan de la intervención y mejoren la siguiente decisión.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Verifique, aprenda y mejore

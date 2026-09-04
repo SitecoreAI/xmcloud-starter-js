@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-regional-technology-center" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-regional-technology-center" dam-id="114489" dam-content-type="Image" width="1672" height="941" alt="Engineers collaborate inside a regional technology center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: aa136c03-3f6c-e5ad-04b2-1ff06eb0e185
+            Value: 8158202d-0f57-72d8-4c17-f617914773b4
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: AI in energy starts with trusted context — Closing
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: The opportunity is not AI separated from energy work. It is energy expertise, trusted data, and AI working together around a decision that needs to be made.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Closing
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-regional-technology-center" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-regional-technology-center" dam-id="114489" dam-content-type="Image" width="1672" height="941" alt="Ingenieros colaboran dentro de un centro tecnológico regional." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 9d6e1ba1-50a2-b6a7-02ff-b832ee5225bf
+            Value: 50677b18-ac2c-7d82-6036-abbcd4d7ce23
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: La IA en energía comienza con un contexto confiable — Cierre
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: La oportunidad no está en separar la IA del trabajo energético, sino en integrar experiencia, datos confiables e IA alrededor de una decisión que debe tomarse.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Cierre

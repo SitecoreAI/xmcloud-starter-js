@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" dam-id="114505" dam-content-type="Image" width="1672" height="941" alt="A data engineer and domain expert compare a digital asset model with real equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 83688919-2482-dc5b-7b9b-e90c0e4fa58e
+            Value: cb31bd53-1523-5130-de18-eeceb9d9a1ed
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Data and AI — Start with trust
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: AI is only as useful as the data, context, and decision process around it. Establish quality, lineage, access, and domain meaning before scaling automation.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Start with trust
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" dam-id="114505" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 936248d9-7b82-e72e-db6c-1093c8545ba9
+            Value: 31c57fcf-3631-a81d-7f8f-a43359946c5a
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Datos e IA — Comience por la confianza
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: La IA es tan útil como los datos, el contexto y el proceso de decisión que la rodean. Defina calidad, linaje, acceso y significado especializado antes de escalar la automatización.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Comience por la confianza

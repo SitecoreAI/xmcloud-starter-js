@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" dam-id="114604" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary energy team reviews governed data lineage, subsurface context, and equipment telemetry in an operations center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 815753d5-0ca5-0295-450c-9731293f70f1
+            Value: 6e4a462a-e3b0-802c-8244-a0ba58da05b8
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: AI in energy starts with trusted context — Build a foundation people can trust
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Useful data foundations make quality, lineage, ownership, permissions, and domain meaning visible. They connect structured records with documents, interpretations, and live signals without pretending that every source has the same certainty. This gives both people and AI a more reliable basis for discovery and analysis.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Build a foundation people can trust
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" dam-id="114604" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario del sector energético revisa el linaje de datos gobernados, el contexto del subsuelo y la telemetría de equipos en un centro de operaciones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1416513f-c1ec-f88a-6c40-1ce2ff31731e
+            Value: a5d19458-ef5c-3124-6492-bff21f20502d
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: La IA en energía comienza con un contexto confiable — Construya una base en la que las personas puedan confiar
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Las bases de datos útiles hacen visibles la calidad, el linaje, los responsables, los permisos y el significado especializado. Conectan registros estructurados con documentos, interpretaciones y señales en tiempo real sin asumir que todas las fuentes tienen el mismo nivel de certeza. Así, las personas y la IA cuentan con una base más confiable para descubrir y analizar.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Construya una base en la que las personas puedan confiar

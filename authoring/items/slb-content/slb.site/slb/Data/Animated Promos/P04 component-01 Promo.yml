@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-storage-operations-control-room" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-storage-operations-control-room" dam-id="114424" dam-content-type="Image" width="1672" height="941" alt="Specialists coordinate carbon storage operations from an integrated control room." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 7d573b8d-2847-98a9-8aaa-55aaa92f4c4f
+            Value: 11f48b22-5d00-55dc-2ca0-e5e1ccd91384
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Carbon capture, utilization, and sequestration — Treat storage as a complete system
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Storage performance depends on decisions made across the source, transport, injection, subsurface, and monitoring system. Keep those decisions connected from the beginning.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Treat storage as a complete system
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-storage-operations-control-room" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-storage-operations-control-room" dam-id="114424" dam-content-type="Image" width="1672" height="941" alt="Especialistas coordinan operaciones de almacenamiento de carbono desde una sala de control integrada." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a1b72bc1-ec0b-bda4-8050-f31810343331
+            Value: d8ea3185-402c-e1b6-e27e-1760c8cb05c0
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Captura, utilización y almacenamiento de carbono — Considere el almacenamiento como un sistema completo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: El desempeño depende de decisiones tomadas en la fuente, el transporte, la inyección, el subsuelo y el sistema de monitoreo. Mantenga conectadas esas decisiones desde el inicio.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Considere el almacenamiento como un sistema completo

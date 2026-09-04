@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b3a561c5-f7c3-be5f-bc48-ff1dea9db6d9
+            Value: 6b8fae8e-e13f-bb58-1405-bc2306c46672
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: New energy systems — Build the systems that move energy forward
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{5C955743-7376-48CB-9442-98187A9686BD}" anchor="capabilities" target="" title="" linktype="internal" text="Explore new energy capabilities" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Apply subsurface science, technology development, and industrial delivery to turn emerging energy opportunities into systems that can be designed, built, and operated.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 59c07f85-d1ff-19ad-fe32-532821ada04b
+            Value: 7334ba65-296f-dac8-a672-b3490f9f6d1c
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Nuevos sistemas de energía — Construya los sistemas que impulsan el futuro de la energía
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{5C955743-7376-48CB-9442-98187A9686BD}" anchor="capabilities" target="" title="" linktype="internal" text="Explore capacidades de nueva energía" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Aplique ciencia del subsuelo, desarrollo tecnológico y ejecución industrial para convertir oportunidades energéticas emergentes en sistemas que puedan diseñarse, construirse y operarse.

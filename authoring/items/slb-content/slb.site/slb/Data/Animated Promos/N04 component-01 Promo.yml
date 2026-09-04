@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" dam-id="114477" dam-content-type="Image" width="1672" height="941" alt="Operations and sustainability specialists establish an emissions baseline." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6a430017-9261-71c4-8044-7cce24bf9f33
+            Value: 8238c06e-a8b7-0bb8-4fea-cef808396a47
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Designing decarbonization for execution — Begin with the decision, not the dashboard
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Measurement is essential, but more data does not automatically produce a better intervention. Define who will use the information, which operating decision it should change, and how quickly the team must respond. That framing determines the resolution, frequency, and confidence the data needs.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Begin with the decision, not the dashboard
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-baseline-workshop" dam-id="114477" dam-content-type="Image" width="1672" height="941" alt="Especialistas de operaciones y sostenibilidad establecen una línea base de emisiones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: dd2f90e6-b3ca-198e-e8a1-14193cd77bbb
+            Value: 81afa34b-bca5-498f-2d7b-3b0fa9f4134b
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Diseñar la descarbonización para la ejecución — Comience por la decisión, no por el tablero
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: La medición es esencial, pero una mayor cantidad de datos no produce automáticamente una mejor intervención. Defina quién utilizará la información, qué decisión operativa debe cambiar y con qué rapidez debe responder el equipo. Ese marco determina la resolución, la frecuencia y el nivel de confianza necesarios.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Comience por la decisión, no por el tablero

@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" dam-id="114541" dam-content-type="Image" width="1672" height="941" alt="An engineering team reviews data lineage and governance across connected industrial systems." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 48d1805d-3b7c-108a-3e2f-411058445992
+            Value: 2c643706-a4fb-cdde-f1b2-34cab443f51e
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Subsurface and well delivery — One decision record across disciplines
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: When teams share the same assumptions, changes, and evidence, they can identify tradeoffs earlier and preserve the reasoning behind each decision.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: One decision record across disciplines
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-governance-review" dam-id="114541" dam-content-type="Image" width="1672" height="941" alt="Un equipo de ingeniería revisa el linaje y la gobernanza de datos en sistemas industriales conectados." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fa63a2dd-9c01-5a20-e9c2-ee64eec9cd60
+            Value: d7a4d657-fb31-216a-2a0a-1376c4d1e485
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Subsuelo y construcción de pozos — Un registro de decisiones compartido entre disciplinas
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Cuando los equipos comparten los mismos supuestos, cambios y evidencias, pueden identificar antes las compensaciones y conservar el razonamiento detrás de cada decisión.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Un registro de decisiones compartido entre disciplinas

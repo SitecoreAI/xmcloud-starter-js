@@ -32,19 +32,22 @@ Languages:
             Value: See how sustainability shapes our work
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 75b50277-2711-a067-9c86-3d2097d01b59
+            Value: e7ee24ac-4020-88e8-353d-cd55783efe0b
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{1BD44A6C-C817-4214-9347-ED52CEB6804A}" anchor="approach" target="" title="" linktype="internal" text="Explore our approach" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Connect with SLB specialists to turn the next operating challenge into an actionable plan.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Sustainability — See how sustainability shapes our work
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: Conozca cómo la sostenibilidad define nuestro trabajo
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 58f145d0-9063-e693-81c7-35ae6b117ac0
+            Value: ecbf407f-05d2-1906-caa1-74844ae6f451
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{1BD44A6C-C817-4214-9347-ED52CEB6804A}" anchor="approach" target="" title="" linktype="internal" text="Explore nuestro enfoque" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Conecte con especialistas de SLB para convertir el próximo desafío operativo en un plan de acción.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Sostenibilidad — Conozca cómo la sostenibilidad define nuestro trabajo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" dam-id="114172" dam-content-type="Image" width="1130" height="730" alt="Lumi data and AI platform interface." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 47019d6d-b744-cd69-8b62-576a94bbdd5a
+            Value: d8fded47-75e5-c682-e379-852ec006d1bd
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Connect data and AI
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/b532b99df85942c094b5a722f21ef474?v=c5e54fb9" dam-id="114172" dam-content-type="Image" width="1130" height="730" alt="Interfaz de la plataforma de datos e IA Lumi." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6ad026b1-4e18-9cd8-2206-349771114886
+            Value: 986ab1eb-ad4f-34d4-a43f-09df28eb292d
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Conectar datos e IA
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

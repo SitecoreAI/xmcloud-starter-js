@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: dab2fc04-d264-a0c7-3436-21ab789c9a0b
+            Value: 16d81038-82ae-5084-b5e6-fe4c34b0eca0
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Carbon capture, utilization, and sequestration — Connect every decision across the carbon storage lifecycle
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{93C4A0B9-34CA-43ED-B330-B1887B93EB44}" anchor="capabilities" target="" title="" linktype="internal" text="Explore CCUS capabilities" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Bring subsurface characterization, development engineering, infrastructure, and monitoring into one evidence-led approach from site screening through long-term stewardship.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 461a8368-76dd-33a0-092c-71e5117155a2
+            Value: 24474a18-a032-2085-d3d3-5004573eb83f
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Captura, utilización y almacenamiento de carbono — Conecte cada decisión durante el ciclo de almacenamiento de carbono
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{93C4A0B9-34CA-43ED-B330-B1887B93EB44}" anchor="capabilities" target="" title="" linktype="internal" text="Explore las capacidades de CCUS" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Integre caracterización del subsuelo, ingeniería de desarrollo, infraestructura y monitoreo en un enfoque basado en evidencia, desde la evaluación del sitio hasta la gestión de largo plazo.

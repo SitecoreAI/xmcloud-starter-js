@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" dam-id="114505" dam-content-type="Image" width="1672" height="941" alt="A data engineer and domain expert compare a digital asset model with real equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 353cc887-d665-a1b5-03e7-c9a37f9f2c9a
+            Value: c21919bf-c2f5-255b-113e-9a597e68cc07
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: AI in energy starts with trusted context — Context comes before automation
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: An operating decision rarely lives in a single data point. It depends on where the information came from, how it was measured, which version of the model is current, and what changed in the field. When that context is missing, speed can amplify ambiguity. The first step is not choosing a model. It is defining the decision and assembling the evidence that makes the decision understandable.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Context comes before automation
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-data-context" dam-id="114505" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero de datos y una experta de dominio comparan un modelo digital de activos con equipo real." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8d905b13-19c5-cb5d-3a14-4371a18e2aa8
+            Value: 9597d239-92d7-35ba-e23b-400ff71ac974
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: La IA en energía comienza con un contexto confiable — El contexto viene antes que la automatización
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Una decisión operativa rara vez depende de un solo dato. Importa de dónde proviene la información, cómo se midió, qué versión del modelo está vigente y qué cambió en el campo. Cuando falta ese contexto, la velocidad puede amplificar la ambigüedad. El primer paso no es elegir un modelo, sino definir la decisión y reunir la evidencia que permite comprenderla.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: El contexto viene antes que la automatización

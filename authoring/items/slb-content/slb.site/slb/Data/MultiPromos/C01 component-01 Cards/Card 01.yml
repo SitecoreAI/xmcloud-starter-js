@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" dam-id="114493" dam-content-type="Image" width="1672" height="941" alt="An engineer discusses a technical equipment model with a customer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6fc9cb8d-440c-2369-b984-622289166af6
+            Value: 1f48383b-cd5c-8eb2-3fab-89fe0c8b454c
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{AC069F53-CD2B-431C-911F-198961034026}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Discuss a technical challenge
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" dam-id="114493" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero analiza un modelo técnico de equipo con una clienta." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 01bd8209-5c6c-767c-074e-70ea0e0d1b84
+            Value: cd02109c-d8a4-7ede-0aa5-fa02fa0abd1d
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{AC069F53-CD2B-431C-911F-198961034026}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Analizar un desafío técnico
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

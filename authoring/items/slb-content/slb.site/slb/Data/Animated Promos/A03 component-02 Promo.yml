@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary engineering team meets during an operational shift handover." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4cec64a0-3dfa-066a-11f9-b7b341c87698
+            Value: 5a0e5b79-3759-a5b4-7f3b-013682935572
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: People and culture — Inclusion improves how teams think
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: When people can contribute their perspective, teams can challenge assumptions, see more of the system, and make stronger decisions together.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Inclusion improves how teams think
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-inclusive-engineering-team" dam-id="114436" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario de ingeniería se reúne durante un relevo operativo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 581283aa-0a1b-2345-ceb6-b3404bb8b054
+            Value: 5c3e298d-8c34-4f9f-f7c1-6bfd506b2cf1
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Personas y cultura — La inclusión mejora la forma de pensar de los equipos
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Cuando cada persona puede aportar su perspectiva, los equipos cuestionan supuestos, observan una parte más amplia del sistema y toman mejores decisiones en conjunto.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: La inclusión mejora la forma de pensar de los equipos

@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" dam-id="114260" dam-content-type="Image" width="1920" height="1916" alt="Colleagues collaborate in an Innovation Factori workspace." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 42e82691-1155-e044-bbd4-7b7b14c4d5f9
+            Value: 0be0651e-e987-7bb8-033f-bcbae98e000d
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Who we are — A culture of constant invention
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Curiosity moves from the laboratory to the field when scientists, engineers, operators, customers, and partners work on the same problem.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: A culture of constant invention
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/0a1047b1dee34b23a679a68c20bfe340?v=479695bf" dam-id="114260" dam-content-type="Image" width="1920" height="1916" alt="Un grupo de colegas colabora en un espacio de Innovation Factori." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b2a1c423-29ef-dffd-8b77-f8401cdac327
+            Value: ac33235f-d2e9-c0ba-23a0-1e94f1e22bc1
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Quiénes somos — Una cultura de invención constante
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: La curiosidad pasa del laboratorio al campo cuando científicos, ingenieros, operadores, clientes y aliados trabajan sobre el mismo problema.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Una cultura de invención constante

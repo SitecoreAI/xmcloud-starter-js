@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" dam-id="114493" dam-content-type="Image" width="1672" height="941" alt="An engineer discusses a technical equipment model with a customer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b1ac7813-ec90-10be-473c-da4931c8877d
+            Value: c858f9ad-bea3-cf8a-1388-e466ad047e0a
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Understand
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-contact-technical-consultation" dam-id="114493" dam-content-type="Image" width="1672" height="941" alt="Un ingeniero analiza un modelo técnico de equipo con una clienta." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6c08677b-93e2-970d-8afb-5a29bd9699f0
+            Value: 2fc5689d-fb14-7a06-7b8b-592d33bdbafd
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Comprender
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

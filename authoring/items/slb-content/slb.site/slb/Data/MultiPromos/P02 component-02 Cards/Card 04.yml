@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" dam-id="114248" dam-content-type="Image" width="1416" height="1140" alt="Two SLB field specialists review work beside pumpjacks." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5e406640-a4e8-c911-aea2-ea986d7bb4d8
+            Value: 85d31715-347d-6d05-ac7c-065a6547f75b
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Produce and intervene
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/32f9780b98fd4220b8341ba054cd9876?v=15e17612" dam-id="114248" dam-content-type="Image" width="1416" height="1140" alt="Dos especialistas de campo de SLB revisan el trabajo junto a unidades de bombeo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d11798ed-d5b0-4d4a-59e3-07d6487f323e
+            Value: fb880db3-aee5-c930-c3e2-4096b12a10c8
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Producir e intervenir
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

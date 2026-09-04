@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" dam-id="114492" dam-content-type="Image" width="1672" height="941" alt="A local engineering team reviews field conditions in a high-desert energy region." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1240ae0c-bce0-4ff2-1118-eebb9dff2a8f
+            Value: 8cc5e799-a8a8-f233-0b83-730f75dcefb6
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Who we are — Global capability. Local understanding.
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: SLB combines a global technology and delivery network with people who understand the operating, technical, and community context of each region.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Global capability. Local understanding.
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" dam-id="114492" dam-content-type="Image" width="1672" height="941" alt="Un equipo local de ingeniería revisa las condiciones de campo en una región energética de clima desértico y gran altitud." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 165ba332-fb78-e508-0eaf-4344b3a394ab
+            Value: 8f7e9adf-94cc-4fc0-1ce3-2556a5ae7c19
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Quiénes somos — Capacidad global. Conocimiento local.
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: SLB integra una red global de tecnología y ejecución con personas que comprenden el contexto operativo, técnico y comunitario de cada región.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Capacidad global. Conocimiento local.

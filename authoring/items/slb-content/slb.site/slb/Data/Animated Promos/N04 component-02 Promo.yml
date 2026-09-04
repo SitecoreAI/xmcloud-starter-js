@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-intervention-planning" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-intervention-planning" dam-id="114478" dam-content-type="Image" width="1672" height="941" alt="Engineers plan the sequence of emissions interventions beside operating equipment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1d0308e7-9113-6e46-6e7c-07ba6c304f11
+            Value: f2036b66-8bfa-e00b-12e4-05e537d73f51
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Designing decarbonization for execution — Prioritize where engineering and value meet
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Sources differ in scale, persistence, accessibility, and operating consequence. Evaluate interventions with the technical team that owns the equipment. A practical sequence reflects emissions potential, feasibility, maintenance windows, safety, and the value of acting now.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Prioritize where engineering and value meet
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-intervention-planning" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-intervention-planning" dam-id="114478" dam-content-type="Image" width="1672" height="941" alt="Ingenieros planifican la secuencia de intervenciones de emisiones junto a equipos en operación." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8f0d93ac-f47f-8c0c-8d0a-8de787b152ef
+            Value: 7fc296a4-8ede-698a-8563-d78a6d59a076
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Diseñar la descarbonización para la ejecución — Priorice donde convergen la ingeniería y el valor
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Las fuentes difieren en magnitud, persistencia, accesibilidad y consecuencia operativa. Evalúe las intervenciones con el equipo técnico responsable del equipo. Una secuencia práctica considera el potencial de emisiones, la viabilidad, las ventanas de mantenimiento, la seguridad y el valor de actuar ahora.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Priorice donde convergen la ingeniería y el valor

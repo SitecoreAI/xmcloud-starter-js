@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ff07651d-dc9f-8310-b06f-4efa47d39895
+            Value: 05493e59-383c-eb9f-74bc-6d94c46ae2cd
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: News and insights — Ideas and updates moving energy forward
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="" target="" title="" linktype="internal" text="Read the latest insights" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Explore current company news, technology updates, and perspectives from people working across energy's most important questions.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fa793020-1300-412f-6168-b131061137c1
+            Value: 36360308-223a-7a79-4d85-74b1d8971e25
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Noticias y análisis — Ideas y novedades que impulsan el futuro de la energía
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="" target="" title="" linktype="internal" text="Consulte los análisis más recientes" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Consulte noticias corporativas, novedades tecnológicas y perspectivas de personas que trabajan en las preguntas más importantes del sector energético.

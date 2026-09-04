@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" dam-id="114138" dam-content-type="Image" width="1140" height="729" alt="Engineer examines equipment in an SLB manufacturing facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 291b1633-e879-c9c8-6ba5-7b3d13fc65b0
+            Value: 81ab84fb-f2f0-9760-cede-3526cc08384a
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: New energy systems — Bring proven disciplines to new value chains
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: New energy systems require more than a promising technology. They need resource understanding, integrated design, supply-chain readiness, operating knowledge, and a path to repeatable delivery.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Bring proven disciplines to new value chains
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/023a9a92f1cf4fe4bcda3d14c5afc5ed?v=09537d80" dam-id="114138" dam-content-type="Image" width="1140" height="729" alt="Un ingeniero examina un equipo en una planta de manufactura de SLB." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c901e108-3f45-82c1-33fd-7cd5f2da3c87
+            Value: b466d168-75e3-d1b7-e853-7a259c47c8a2
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Nuevos sistemas de energía — Lleve disciplinas comprobadas a nuevas cadenas de valor
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Los nuevos sistemas de energía requieren más que una tecnología prometedora. Necesitan conocimiento del recurso, diseño integrado, preparación de la cadena de suministro, experiencia operativa y una ruta hacia una ejecución repetible.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Lleve disciplinas comprobadas a nuevas cadenas de valor

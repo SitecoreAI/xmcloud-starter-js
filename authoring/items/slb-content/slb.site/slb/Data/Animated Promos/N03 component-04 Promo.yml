@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" dam-id="114514" dam-content-type="Image" width="1672" height="941" alt="An operations specialist reviews an automated workflow connected to field execution." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 26078acf-2b6f-4653-e029-8096a3c53116
+            Value: 71ee0d85-834d-9d41-71f4-7fbb7e40a7b3
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: AI in energy starts with trusted context — Move from a pilot to an operating capability
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Start with a decision that matters and a workflow people understand. Define the approved data, the action boundary, the human review, and the evidence of value. Then reuse the governed components in the next workflow. Scale becomes a result of repeatability, not a promise made at the beginning.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Move from a pilot to an operating capability
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" dam-id="114514" dam-content-type="Image" width="1672" height="941" alt="Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4d0ca71f-6443-c4c6-fe72-d596a82763c2
+            Value: 9ddae177-647d-f287-afa5-d50de2641fb4
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: La IA en energía comienza con un contexto confiable — Pase de un piloto a una capacidad operativa
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Comience con una decisión relevante y un flujo que las personas comprendan. Defina los datos aprobados, el límite de acción, la revisión humana y la evidencia de valor. Después, reutilice los componentes gobernados en el siguiente flujo. La escala se convierte en resultado de la repetibilidad, no en una promesa inicial.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Pase de un piloto a una capacidad operativa

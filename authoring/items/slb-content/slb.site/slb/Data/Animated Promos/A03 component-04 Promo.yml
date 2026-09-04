@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" dam-id="114492" dam-content-type="Image" width="1672" height="941" alt="A local engineering team reviews field conditions in a high-desert energy region." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b04a24d1-fb6f-35f7-a307-7132fa670d05
+            Value: fd5d2abe-4d6f-a80b-78ab-4cd4162f759e
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: People and culture — Safety and integrity are shared work
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Standards matter most when people can speak up, learn from events, and hold one another accountable for how the work is done.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Safety and integrity are shared work
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-global-presence-local-field-briefing" dam-id="114492" dam-content-type="Image" width="1672" height="941" alt="Un equipo local de ingeniería revisa las condiciones de campo en una región energética de clima desértico y gran altitud." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1b19a3b1-f237-6e70-8f29-ce38b73f8ca0
+            Value: 788eb3e6-eb74-be3e-d2f8-5ee1e3e41872
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Personas y cultura — La seguridad y la integridad son trabajo compartido
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Los estándares adquieren valor cuando las personas pueden expresarse, aprender de los acontecimientos y asumir responsabilidad conjunta por la forma en que se realiza el trabajo.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: La seguridad y la integridad son trabajo compartido

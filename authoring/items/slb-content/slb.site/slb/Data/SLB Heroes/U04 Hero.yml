@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0fad2fd3-1029-9d80-9935-cb7129cd0e29
+            Value: 0d44a035-d597-ae3b-b333-d3d69f5885cc
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Nature and responsible operations — Design operations with nature in view
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="approach" target="" title="" linktype="internal" text="Explore our approach to nature" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Bring biodiversity, water, and circularity into planning and operating decisions with site-specific understanding and transparent evidence.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ec127984-781e-7e00-d598-d3b0d136f519
+            Value: f6133280-e30e-9b12-77f8-c8694dac0f60
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Naturaleza y operaciones responsables — Diseñe operaciones que consideren la naturaleza
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="approach" target="" title="" linktype="internal" text="Explore nuestro enfoque sobre naturaleza" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Integre biodiversidad, agua y circularidad en las decisiones de planeación y operación con conocimiento específico del sitio y evidencia transparente.

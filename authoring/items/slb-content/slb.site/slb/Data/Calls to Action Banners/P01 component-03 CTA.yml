@@ -32,19 +32,22 @@ Languages:
             Value: New to the portfolio
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ac0174e9-ec5f-0921-6697-5d36c3b61587
+            Value: eb752ffd-4acc-01a8-7565-e4a2097a56cf
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="" target="" title="" linktype="internal" text="View the latest technologies" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Products and services — New to the portfolio
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: Novedades del portafolio
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d8c97c9c-8d8c-be61-64f1-8ec36fe6eeb9
+            Value: 90310cf9-232e-4ee8-ef93-2b33b0bae976
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="" target="" title="" linktype="internal" text="Conozca las tecnologías más recientes" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Descubra tecnologías recientes que convierten la ciencia, los datos y la experiencia de campo en capacidades prácticas para operaciones energéticas más eficientes y sostenibles.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Productos y servicios — Novedades del portafolio
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

@@ -29,8 +29,11 @@ const fallbackCatalog = JSON.parse(
 const createdTimestamp = "20260831T150000Z";
 // Sitecore only overwrites an existing language/version when the serialized
 // __Updated value is later than the value already stored in the database.
-// Advance this release timestamp whenever generated authored content changes.
-const contentReleaseTimestamp = "20260831T191500Z";
+// Advance the relevant timestamp when that generated content scope changes.
+// Keeping page and datasource releases separate prevents a datasource-only
+// update from overwriting newer presentation details authored in Pages.
+const pageContentReleaseTimestamp = "20260831T191500Z";
+const datasourceContentReleaseTimestamp = "20260904T184356Z";
 const owner = "sitecore\\thomas.lin@sitecore.com";
 const locales = ["en", "es-MX"];
 
@@ -270,6 +273,15 @@ function cleanItemName(value) {
         .trim();
 }
 
+function datasourceDisplayName(page, locale, label) {
+    const pageLabel =
+        page.fields[locale]?.navigationTitle ??
+        page.fields.en.navigationTitle ??
+        page.sourceTitle ??
+        page.id;
+    return `${pageLabel} — ${label}`;
+}
+
 const damAssetDescriptors = loadSlbDamAssetDescriptors(
     path.join(appRoot, "src/content/slb-dam-assets.json"),
 );
@@ -307,7 +319,10 @@ function contentSensitiveRevision(itemId, scope, contentFields) {
     });
 }
 
-function standardVersionFields(extraFields) {
+function standardVersionFields(
+    extraFields,
+    releaseTimestamp = datasourceContentReleaseTimestamp,
+) {
     const normalizedExtraFields = extraFields.map((entry) => ({
         ...entry,
         Value: entry.Value ?? "",
@@ -323,7 +338,7 @@ function standardVersionFields(extraFields) {
         field(ids.owner, "__Owner", owner),
         field(ids.createdBy, "__Created by", owner),
         field(ids.updatedBy, "__Updated by", owner),
-        field(ids.updated, "__Updated", contentReleaseTimestamp),
+        field(ids.updated, "__Updated", releaseTimestamp),
         // Generated datasource items must own every field we pass here. An
         // omitted field is NULL in Sitecore and inherits the starter kit's
         // Standard Values; an explicit blank intentionally suppresses those
@@ -332,7 +347,14 @@ function standardVersionFields(extraFields) {
     ].sort((left, right) => left.ID.localeCompare(right.ID));
 }
 
-function datasourceItem({ id, parent, template, itemPath, localizedFields }) {
+function datasourceItem({
+    id,
+    parent,
+    template,
+    itemPath,
+    localizedFields,
+    releaseTimestamp = datasourceContentReleaseTimestamp,
+}) {
     return {
         ID: id,
         Parent: parent,
@@ -346,7 +368,10 @@ function datasourceItem({ id, parent, template, itemPath, localizedFields }) {
             Versions: [
                 {
                     Version: 1,
-                    Fields: standardVersionFields(localizedFields[locale]),
+                    Fields: standardVersionFields(
+                        localizedFields[locale],
+                        releaseTimestamp,
+                    ),
                 },
             ],
         })),
@@ -484,6 +509,11 @@ function heroDatasource(page) {
     for (const locale of locales) {
         const hero = page.fields[locale].hero;
         localizedFields[locale] = [
+            field(
+                ids.displayName,
+                "__Display name",
+                datasourceDisplayName(page, locale, hero.heading),
+            ),
             field(datasourceFieldIds.hero.title, "titleRequired", hero.heading),
             field(
                 datasourceFieldIds.hero.description,
@@ -525,6 +555,11 @@ function promoDatasource(page, componentIndex, images) {
         const localized = page.fields[locale].components[componentIndex];
         const image = images[locale]?.[0];
         localizedFields[locale] = [
+            field(
+                ids.displayName,
+                "__Display name",
+                datasourceDisplayName(page, locale, localized.heading),
+            ),
             field(datasourceFieldIds.promo.image, "image", imageXml(image)),
             field(datasourceFieldIds.promo.title, "title", localized.heading),
             field(
@@ -595,6 +630,11 @@ function multiPromoDatasource(page, componentIndex, images, related = false) {
             : page.fields[locale].components[componentIndex];
         localizedFields[locale] = [
             field(
+                ids.displayName,
+                "__Display name",
+                datasourceDisplayName(page, locale, localized.heading),
+            ),
+            field(
                 datasourceFieldIds.multiPromo.title,
                 "title",
                 localized.heading,
@@ -650,6 +690,7 @@ function multiPromoDatasource(page, componentIndex, images, related = false) {
                   }
                 : undefined;
             childLocalizedFields[locale] = [
+                field(ids.displayName, "__Display name", localizedItem.title),
                 field(
                     datasourceFieldIds.multiPromoItem.heading,
                     "heading",
@@ -744,6 +785,11 @@ function richTextDatasource(page, componentIndex) {
         const localized = page.fields[locale].components[componentIndex];
         localizedFields[locale] = [
             field(
+                ids.displayName,
+                "__Display name",
+                datasourceDisplayName(page, locale, localized.heading),
+            ),
+            field(
                 datasourceFieldIds.richText.text,
                 "text",
                 richTextMarkup(localized, locale),
@@ -789,6 +835,11 @@ function ctaDatasource(page, componentIndex, final = false) {
             ? { label: localized.label, target: localized.target }
             : localized.cta;
         localizedFields[locale] = [
+            field(
+                ids.displayName,
+                "__Display name",
+                datasourceDisplayName(page, locale, localized.heading),
+            ),
             field(datasourceFieldIds.cta.title, "titleRequired", title),
             field(
                 datasourceFieldIds.cta.description,
@@ -1004,7 +1055,7 @@ function updatePageItem(page, entries) {
         const values = [
             ...contentValues,
             [ids.updatedBy, "__Updated by", owner],
-            [ids.updated, "__Updated", contentReleaseTimestamp],
+            [ids.updated, "__Updated", pageContentReleaseTimestamp],
         ];
         values.forEach(([ID, Hint, Value]) =>
             upsertField(fields, ID, Hint, Value),
@@ -1027,6 +1078,7 @@ function ensureHeroFolder() {
         parent: "428f962d-09ec-47ad-a7d1-4ef1799c4e3b",
         template: "767723ae-ea5c-4d23-89c1-bd18fd051650",
         itemPath: folder.path,
+        releaseTimestamp: pageContentReleaseTimestamp,
         localizedFields: Object.fromEntries(
             locales.map((locale) => [locale, []]),
         ),

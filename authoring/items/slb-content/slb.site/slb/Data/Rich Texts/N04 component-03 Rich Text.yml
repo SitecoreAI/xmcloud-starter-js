@@ -32,13 +32,16 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">How we work</p><h2>Integrate action with the asset lifecycle</h2><ol><li>The strongest opportunities often appear when emissions work is connected with inspection, maintenance, production planning, and capital decisions.</li><li>Integration helps teams avoid isolated projects and build emissions performance into normal operations.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: fb4c4ba0-c9ce-0816-29a1-b67243f2a491
+            Value: 7366fff4-4faf-c19d-c217-d5a823da0cf9
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Designing decarbonization for execution — Integrate action with the asset lifecycle
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -60,10 +63,13 @@ Languages:
             Value: <div class="ck-content"><p class="slb-kicker">Cómo trabajamos</p><h2>Integre la acción al ciclo de vida del activo</h2><ol><li>Las oportunidades más sólidas suelen aparecer cuando el trabajo de emisiones se conecta con inspección, mantenimiento, planeación de producción y decisiones de capital.</li><li>La integración evita proyectos aislados e incorpora el desempeño de emisiones a las operaciones normales.</li></ol></div>
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 655f4ee1-9fec-0e8b-1213-aa3a4e69ef3f
+            Value: 154e165d-391c-d6ee-7621-5600fd491715
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Diseñar la descarbonización para la ejecución — Integre la acción al ciclo de vida del activo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

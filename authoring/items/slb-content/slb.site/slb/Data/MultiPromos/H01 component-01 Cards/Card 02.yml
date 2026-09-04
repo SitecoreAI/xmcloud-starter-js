@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/62c654cc341b43b882000c2f6da5dbd6?v=908be320" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/62c654cc341b43b882000c2f6da5dbd6?v=908be320" dam-id="114117" dam-content-type="Image" width="1130" height="730" alt="Presenter explains a digital subsurface visualization to an audience." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8ecf18ba-0790-0906-7748-8ca7ed95ac17
+            Value: 3c04f8b3-bc45-e1c3-120e-f014453e1718
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{AEB8F2EB-5186-49A9-997C-5B3DF3F3A551}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Deliver digital and AI at scale
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/62c654cc341b43b882000c2f6da5dbd6?v=908be320" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/62c654cc341b43b882000c2f6da5dbd6?v=908be320" dam-id="114117" dam-content-type="Image" width="1130" height="730" alt="Una presentadora explica una visualización digital del subsuelo a un grupo de asistentes." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b6c08274-d0ac-6ba7-c1bb-6c447137352a
+            Value: 5f2312df-6b90-88df-1e65-3e5cb60c729a
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{AEB8F2EB-5186-49A9-997C-5B3DF3F3A551}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Llevar la tecnología digital y la IA a escala
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-basin-screening-workstation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-basin-screening-workstation" dam-id="114416" dam-content-type="Image" width="1672" height="941" alt="Geoscientists evaluate subsurface formations for carbon storage suitability." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 00596614-3b43-5ad5-3cfe-f1f0fb21f572
+            Value: 8d66914d-93f7-530d-f241-af61b485fda6
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Understand the subsurface
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-basin-screening-workstation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-basin-screening-workstation" dam-id="114416" dam-content-type="Image" width="1672" height="941" alt="Geocientíficos evalúan formaciones del subsuelo para determinar su idoneidad para el almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1d4185a9-5316-75fa-9ca5-b6a7b8949d43
+            Value: 208a82a2-9cf1-b06c-34af-313c8ebe9677
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Comprender el subsuelo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

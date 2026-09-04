@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" dam-id="114524" dam-content-type="Image" width="1672" height="941" alt="Technicians commission an offshore wind substation above a calm sea." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0edd8cb9-48d4-d0d7-a383-331b9f46a69b
+            Value: 387c2225-ad2e-ff43-0bcb-7e0dc5d8adca
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{DDE0A656-28DB-42AE-91CC-F37C85089CB9}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Project stories
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-new-energy-offshore-wind" dam-id="114524" dam-content-type="Image" width="1672" height="941" alt="Técnicos ponen en servicio una subestación eólica marina sobre un mar en calma." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 43c600cc-a187-7cc9-ada4-307858e27195
+            Value: 2075141e-123a-9709-832b-7593ef228ce6
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{DDE0A656-28DB-42AE-91CC-F37C85089CB9}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Historias de proyectos
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

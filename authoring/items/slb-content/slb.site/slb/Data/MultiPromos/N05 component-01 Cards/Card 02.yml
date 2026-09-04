@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" dam-id="114578" dam-content-type="Image" width="1672" height="941" alt="Engineers perform commissioning checks on newly released industrial energy technology." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: f45fb88f-561e-df6c-f473-8b3f012885ff
+            Value: 724864b4-5c9a-94f9-21f2-e561e271515d
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Technology updates
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-newsroom-technology-release" dam-id="114578" dam-content-type="Image" width="1672" height="941" alt="Un grupo de ingenieros realiza pruebas de puesta en servicio de una nueva tecnología energética industrial." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1f34fd04-424e-9a1c-2599-9aa0bce33644
+            Value: 7f89cb87-28b5-a1b4-1999-8e27d28d3b11
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{3BFDAAA9-0293-4B56-8D38-D19822122380}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Actualizaciones de tecnología
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

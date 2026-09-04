@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" dam-id="114422" dam-content-type="Image" width="1672" height="941" alt="Monitoring instruments track subsurface conditions above a coastal carbon storage site." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 230b2471-d132-e3e0-d3a3-28177eb03027
+            Value: 808b6c38-f8f3-77d9-e217-31393794534a
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Monitor and manage
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-monitoring-seismic-array" dam-id="114422" dam-content-type="Image" width="1672" height="941" alt="Instrumentos de monitoreo registran las condiciones del subsuelo sobre un sitio costero de almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 48e8be74-39c9-24e9-8fca-554b2208111d
+            Value: 28be6d22-e7ec-0dfb-dcfb-076b8fc244e1
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Monitorear y gestionar
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

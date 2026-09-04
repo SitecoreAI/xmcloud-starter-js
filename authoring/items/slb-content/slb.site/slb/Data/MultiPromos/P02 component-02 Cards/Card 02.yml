@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" dam-id="114164" dam-content-type="Image" width="1130" height="730" alt="Branded rendering of a land rig with a footprint reduction icon." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5b55762e-e38f-b675-6175-57e06e8e2564
+            Value: 5fb7ba0d-2bcb-b03d-6efa-27491064ee9f
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Construct
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d66ec98fff2a41b788e75bccb6dd1e03?v=cd82516e" dam-id="114164" dam-content-type="Image" width="1130" height="730" alt="Representación de un equipo de perforación terrestre con un icono de reducción de superficie." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: bb865032-07a5-51b7-d56e-a308a9a18b04
+            Value: 7510fe93-8330-13bd-12e7-0f50d5bda96d
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Construir
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

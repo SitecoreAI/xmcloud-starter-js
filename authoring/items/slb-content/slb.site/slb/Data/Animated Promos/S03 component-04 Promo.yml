@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" dam-id="114459" dam-content-type="Image" width="1672" height="941" alt="An analyst reviews emissions performance in an industrial operations center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 70f3cf0c-9555-954f-bd9e-7c71d9d4260a
+            Value: c019d2eb-1de6-0565-f175-b9005b491f57
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Industrial decarbonization — Decarbonization designed for execution
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: "Treat emissions performance as part of the operating system: owned by teams, connected to maintenance and planning, and reviewed with the same discipline as other performance priorities."
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Decarbonization designed for execution
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" dam-id="114459" dam-content-type="Image" width="1672" height="941" alt="Un analista revisa el desempeño de emisiones en un centro de operaciones industriales." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 4326535e-9d79-a3af-b0a8-b94ca6c5358a
+            Value: 436775f7-0f53-add7-6506-193265ab77ba
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Descarbonización industrial — Descarbonización diseñada para la ejecución
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: "Integre el desempeño de emisiones al sistema operativo: con responsables claros, conexión con mantenimiento y planeación, y la misma disciplina de revisión que otras prioridades de desempeño."
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Descarbonización diseñada para la ejecución

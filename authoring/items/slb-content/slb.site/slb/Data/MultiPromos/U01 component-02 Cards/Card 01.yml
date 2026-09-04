@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" dam-id="114221" dam-content-type="Image" width="2832" height="2280" alt="SLB field employee in safety glasses and a white hard hat at sunset." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 1fdec235-33fe-aa43-d588-76a95dc6f218
+            Value: abe8d3d1-0e0b-b30e-d722-9de4f1a889d3
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{8D9ABEAC-7781-44E0-BA94-75D76E1B6FAE}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Climate action
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/bfc29d5f125e436990d32e15478376c4?v=0d143fe3" dam-id="114221" dam-content-type="Image" width="2832" height="2280" alt="Un empleado de campo de SLB con lentes de seguridad y casco blanco al atardecer." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 170f1614-f85e-24f4-e123-b4de314c973b
+            Value: ee2ea6ef-3211-76ee-33eb-76e87dced72f
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{8D9ABEAC-7781-44E0-BA94-75D76E1B6FAE}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Acción climática
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

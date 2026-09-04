@@ -32,19 +32,22 @@ Languages:
             Value: Lumi data and AI platform
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: d846bcee-3405-b62b-e3bd-2ac4507b70dd
+            Value: c7d4334f-434d-a148-28f0-9797c99be2fc
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="lumi" target="" title="" linktype="internal" text="Explore Lumi" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Lumi is designed to help energy teams create trusted data foundations, connect workflows, and deploy AI across subsurface, drilling, production, and enterprise operations.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Data and AI — Lumi data and AI platform
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -66,16 +69,19 @@ Languages:
             Value: Plataforma de datos e IA Lumi
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 3b8c31ed-5401-2d69-8968-27328c893ff8
+            Value: 073d54ca-f808-5d57-b5d5-9a2ff219868a
           - ID: 9fdcf3e1-5289-4ae0-b4e4-9460ad50814f
             Hint: linkOptional
             Value: <link class="" querystring="" id="{35F6C80D-D0B1-46AB-8A45-E1B143F8FC40}" anchor="lumi" target="" title="" linktype="internal" text="Explore Lumi" url="" />
           - ID: a35015fe-805c-45d7-9446-f88b33a157d4
             Hint: descriptionOptional
             Value: Lumi está diseñada para ayudar a los equipos de energía a crear bases de datos confiables, conectar flujos de trabajo e implementar IA en operaciones de subsuelo, perforación, producción y empresa.
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Datos e IA — Plataforma de datos e IA Lumi
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" dam-id="114430" dam-content-type="Image" width="1672" height="941" alt="A volunteer helps students complete an energy science experiment." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e78d9f40-82d0-1638-5e4a-70ad9a52574f
+            Value: 9d510e77-4f8c-7412-1e88-2d30265ee3c1
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: People and communities — Grow capability close to the work
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Learning is strongest when technical depth, operating experience, and shared knowledge reinforce one another. Develop talent through meaningful responsibility, mentoring, and collaboration.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Grow capability close to the work
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-community-stem-workshop" dam-id="114430" dam-content-type="Image" width="1672" height="941" alt="Un voluntario ayuda a estudiantes a completar un experimento de ciencias de la energía." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 53d1e58a-f38c-ce89-0433-17e844d5ba51
+            Value: 38b9cbe7-2583-6276-c03a-100f780469fc
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Personas y comunidades — Desarrolle capacidades cerca del trabajo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: El aprendizaje es más sólido cuando la profundidad técnica, la experiencia operativa y el conocimiento compartido se refuerzan entre sí. Desarrolle talento mediante responsabilidades significativas, mentoría y colaboración.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Desarrolle capacidades cerca del trabajo

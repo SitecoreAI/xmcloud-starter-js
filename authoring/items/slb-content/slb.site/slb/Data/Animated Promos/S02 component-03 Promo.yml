@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" dam-id="114604" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary energy team reviews governed data lineage, subsurface context, and equipment telemetry in an operations center." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 92829836-3c4b-5eac-99f4-0e567ed27daa
+            Value: cb56a7e7-f3db-cd84-12ed-3fb4a092c24f
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Digital operations — Put people at the center of AI
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: AI can accelerate discovery, analysis, and routine work. Domain experts remain essential for testing assumptions, interpreting uncertainty, and choosing the action that fits the operating context.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Put people at the center of AI
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-trusted-ai-context" dam-id="114604" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario del sector energético revisa el linaje de datos gobernados, el contexto del subsuelo y la telemetría de equipos en un centro de operaciones." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: aee974a3-8c28-4ac6-beff-3367986f996a
+            Value: 4a962428-a407-bf0a-96da-1683dfd441fe
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Operaciones digitales — Mantenga a las personas en el centro de la IA
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: La IA puede acelerar el descubrimiento, el análisis y el trabajo rutinario. Los especialistas siguen siendo esenciales para comprobar supuestos, interpretar la incertidumbre y elegir la acción adecuada para el contexto operativo.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Mantenga a las personas en el centro de la IA

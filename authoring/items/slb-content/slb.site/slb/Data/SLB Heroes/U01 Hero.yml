@@ -35,7 +35,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e87a3ebd-17e7-f698-a3bc-ff300522a960
+            Value: df04ca81-4e89-ce89-671a-50c984810890
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Sustainability — Sustainability, embedded in how we work
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: <link class="" querystring="" id="{1BD44A6C-C817-4214-9347-ED52CEB6804A}" anchor="approach" target="" title="" linktype="internal" text="Explore our approach" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Bring climate, people, and nature into the decisions that shape technology, operations, partnerships, and long-term performance.
@@ -72,7 +75,10 @@ Languages:
             Value: sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: cd4c3799-51cc-fe52-c9a0-70e0954cc8f8
+            Value: 0e030cf9-f950-d283-bf66-173a7e94d70c
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Sostenibilidad — Sostenibilidad integrada en nuestra forma de trabajar
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -81,7 +87,7 @@ Languages:
             Value: <link class="" querystring="" id="{1BD44A6C-C817-4214-9347-ED52CEB6804A}" anchor="approach" target="" title="" linktype="internal" text="Explore nuestro enfoque" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
             Hint: descriptionOptional
             Value: Incorpore clima, personas y naturaleza en las decisiones que definen la tecnología, las operaciones, las alianzas y el desempeño de largo plazo.

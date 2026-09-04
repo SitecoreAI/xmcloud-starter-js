@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" dam-id="114514" dam-content-type="Image" width="1672" height="941" alt="An operations specialist reviews an automated workflow connected to field execution." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 568111d8-be27-553e-81e0-2a51063e6f94
+            Value: 1459e7f2-1560-c7b5-24a7-ee74fefbb947
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Domain workflows
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" dam-id="114514" dam-content-type="Image" width="1672" height="941" alt="Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 167ab2bb-8250-f580-eaf2-3aad384f3e12
+            Value: 5de40f74-9528-d141-edd6-87ba17ec83b3
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Flujos especializados
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" dam-id="114143" dam-content-type="Image" width="1920" height="1259" alt="SLB engineer in blue coveralls stands on a bridge with a city behind her." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 67468309-2878-2c14-7720-be8c446d6e8f
+            Value: a2c4f7e2-dd1e-d9c3-0478-765f69cc29e9
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Global presence — Technology that travels. Solutions that fit.
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Shared engineering platforms and technical communities allow learning to move across borders. Local teams apply that knowledge in the context of each asset and market.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Technology that travels. Solutions that fit.
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/d53f6d8164f642a88bfb94298b1b88aa?v=17f5a1fe" dam-id="114143" dam-content-type="Image" width="1920" height="1259" alt="Una ingeniera de SLB con overol azul se encuentra en un puente con una ciudad al fondo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: b8223e08-b4b5-9a9b-3c23-76cd803cc9ca
+            Value: 548b7754-558d-41d2-17cf-c38ec88dc317
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Presencia global — Tecnología que viaja. Soluciones que se adaptan.
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Las plataformas de ingeniería compartidas y las comunidades técnicas permiten que el aprendizaje cruce fronteras. Los equipos locales aplican ese conocimiento al contexto de cada activo y mercado.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Tecnología que viaja. Soluciones que se adaptan.

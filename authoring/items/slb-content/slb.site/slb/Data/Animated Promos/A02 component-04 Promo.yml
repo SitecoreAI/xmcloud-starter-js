@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" dam-id="114594" dam-content-type="Image" width="1672" height="941" alt="Scientists and energy analysts examine core samples and a basin model during a research roundtable." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 8d6019fc-fcf7-68d1-3d67-57a0506da29b
+            Value: f516b532-e118-4164-6ae7-d246cebef575
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Technology and innovation — Learn across regions and disciplines
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Global scale creates value when lessons can travel while designs remain adaptable to local geology, infrastructure, regulation, and operating practice.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Learn across regions and disciplines
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insights-research-exchange-hero" dam-id="114594" dam-content-type="Image" width="1672" height="941" alt="Científicos y analistas del sector energético examinan muestras de núcleos geológicos y un modelo de cuenca durante una mesa redonda de investigación." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 20d43dd3-917d-0f2f-c713-06b9bd80d17d
+            Value: c0600904-05d5-ccb1-3453-ef09ba771fbc
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Tecnología e innovación — Aprenda entre regiones y disciplinas
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: La escala global genera valor cuando las lecciones pueden trasladarse y los diseños se adaptan a la geología, la infraestructura, la regulación y la práctica operativa local.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Aprenda entre regiones y disciplinas

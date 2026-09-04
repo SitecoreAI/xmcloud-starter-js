@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" dam-id="114428" dam-content-type="Image" width="1672" height="941" alt="An instructor guides an employee through hands-on field safety training." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 395644e9-c685-8fb4-69fc-b2075601efa6
+            Value: 967b5587-0582-d0e4-de21-481d3f0ed1f1
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: People and culture — Responsibility creates room to grow
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Meaningful work gives people the opportunity to build technical depth, exercise judgment, and learn from colleagues close to the problem.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Responsibility creates room to grow
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-people-field-safety-training" dam-id="114428" dam-content-type="Image" width="1672" height="941" alt="Un instructor guía a una empleada durante una capacitación práctica de seguridad en campo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e4f5fe92-f8a6-eef9-a200-7d9fe2c10f94
+            Value: b21cec82-529b-9afb-85ea-58c22265cf2e
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Personas y cultura — La responsabilidad crea espacio para crecer
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: El trabajo significativo permite desarrollar profundidad técnica, ejercer criterio y aprender de colegas cercanos al problema.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: La responsabilidad crea espacio para crecer

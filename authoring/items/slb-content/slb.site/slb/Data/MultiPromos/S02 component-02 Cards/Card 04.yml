@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" dam-id="114514" dam-content-type="Image" width="1672" height="941" alt="An operations specialist reviews an automated workflow connected to field execution." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 2c7afacd-b422-0fef-ad57-0a03a69dee69
+            Value: d5bf2d05-f19e-3d05-84fc-3daf77aa6047
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Enterprise
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-digital-workflow-automation" dam-id="114514" dam-content-type="Image" width="1672" height="941" alt="Una especialista de operaciones revisa un flujo automatizado conectado con la ejecución en campo." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 917a401c-c117-20ef-5a3a-f02d993daa42
+            Value: a03e9100-410d-9527-b1d3-57461eb5e1fd
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Empresa
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

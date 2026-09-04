@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" dam-id="114415" dam-content-type="Image" width="1672" height="941" alt="An operations team conducts a field briefing before decarbonization work begins." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 45f06a2b-7252-7aa7-7f6c-e687e46e8562
+            Value: 273438de-c210-88d1-a31a-2241e872fa92
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Home — Make decarbonization executable
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Progress begins with a clear baseline and a practical sequence of interventions. Bring measurement, engineering, and operational insight together to identify the next best action.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Make decarbonization executable
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-decarbonization-execution-toolbox-talk" dam-id="114415" dam-content-type="Image" width="1672" height="941" alt="Un equipo de operaciones realiza una sesión de campo antes de iniciar trabajos de descarbonización." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: e95491fd-2e03-567f-c245-8b89f6e56682
+            Value: 4dba88cb-5911-420e-9ddd-3c2640a1e0e3
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Inicio — Hacer ejecutable la descarbonización
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: El progreso comienza con una línea base clara y una secuencia práctica de intervenciones. Integre medición, ingeniería y conocimiento operativo para identificar la mejor acción siguiente.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Hacer ejecutable la descarbonización

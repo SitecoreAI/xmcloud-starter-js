@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" dam-id="114149" dam-content-type="Image" width="2440" height="1180" alt="SLB technician operates a test system in a bright manufacturing facility." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: ab94368c-5a1e-0b2f-2622-eff639541f91
+            Value: 7656b447-739e-ab84-fed2-c9199dfdbf3d
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Design
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/7aa8313a9fa94515a7263f44365b92f5?v=ff2959ab" dam-id="114149" dam-content-type="Image" width="2440" height="1180" alt="Un técnico de SLB opera un sistema de pruebas en una luminosa planta de manufactura." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 6dbfdda3-5107-9181-6dc0-4a57a47aa555
+            Value: 613fd99d-7d71-874f-48dc-6358e370ff23
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value:
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Diseñar
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

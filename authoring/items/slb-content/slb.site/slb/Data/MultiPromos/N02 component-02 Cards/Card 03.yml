@@ -41,16 +41,19 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" dam-id="114603" dam-content-type="Image" width="1672" height="941" alt="A multidisciplinary team reviews subsurface models and well lifecycle plans from characterization through closure." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 0fd526f7-d492-e15a-c7be-edecc4c62e6b
+            Value: 5e85b186-c170-3807-6d92-b92ff38b0fcf
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="" target="" title="" linktype="internal" text="Explore" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: What it takes to scale subsurface innovation
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
   - Language: es-MX
     Versions:
       - Version: 1
@@ -78,13 +81,16 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-subsurface-lifecycle-planning-hero" dam-id="114603" dam-content-type="Image" width="1672" height="941" alt="Un equipo multidisciplinario revisa modelos del subsuelo y planes del ciclo de vida de pozos, desde la caracterización hasta el cierre." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: c85a473b-c4a6-d801-8e33-b73cab23af48
+            Value: acd4ad75-2a35-1f99-6b94-8a568fbc2013
           - ID: 8ec6e4b8-3a38-4115-a892-38051924f3f1
             Hint: link
             Value: <link class="" querystring="" id="{CF8F795E-5F79-467D-BD10-620D3B585C67}" anchor="" target="" title="" linktype="internal" text="Explorar" url="" />
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Lo que se necesita para escalar la innovación del subsuelo
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z

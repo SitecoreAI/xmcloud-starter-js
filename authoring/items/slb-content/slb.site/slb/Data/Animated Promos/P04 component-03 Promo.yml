@@ -35,7 +35,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-reservoir-uncertainty-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-reservoir-uncertainty-review" dam-id="114550" dam-content-type="Image" width="1672" height="941" alt="Geoscientists compare reservoir-model uncertainty for a carbon storage project." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 191f815e-0fc1-f2c3-7194-5fd3adc9616f
+            Value: dfe86082-5c11-1abd-032f-eec7e53c0b29
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Carbon capture, utilization, and sequestration — Make uncertainty visible
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -44,7 +47,7 @@ Languages:
             Value: Preserve assumptions, scenarios, and evidence as the project evolves. A shared technical record helps teams make decisions without losing the reasoning behind them.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Make uncertainty visible
@@ -75,7 +78,10 @@ Languages:
             Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-reservoir-uncertainty-review" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-ccus-reservoir-uncertainty-review" dam-id="114550" dam-content-type="Image" width="1672" height="941" alt="Geocientíficos comparan la incertidumbre de modelos de yacimiento para un proyecto de almacenamiento de carbono." />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 35fa112d-7187-2c83-eaf3-6d1847ebfdff
+            Value: d230603a-a2db-fe3e-7e3f-0a99ea5b4c0a
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Captura, utilización y almacenamiento de carbono — Haga visible la incertidumbre
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
@@ -84,7 +90,7 @@ Languages:
             Value: Conserve supuestos, escenarios y evidencia a medida que evoluciona el proyecto. Un registro técnico compartido ayuda a decidir sin perder el razonamiento que sustenta cada elección.
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T191500Z
+            Value: 20260904T184356Z
           - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
             Hint: title
             Value: Haga visible la incertidumbre
