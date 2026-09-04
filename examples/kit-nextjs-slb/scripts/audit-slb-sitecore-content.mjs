@@ -174,8 +174,8 @@ const starterPlaceholderSignatures = [
     },
 ];
 
-const generatedDatasourcePathPattern =
-    /^\/sitecore\/content\/slb\/slb\/Data\/(?:SLB Heroes|Animated Promos|MultiPromos|Rich Texts|Calls to Action Banners)\/([A-Z]\d{2})(?:\s|\/)/;
+const generatedDatasourceLegacyNamePattern =
+    /(?:^|\/)(?:[A-Z]\d{2}(?:\s|$)|Card\s+\d{2}(?:\/|$))|\bcomponent-\d+\b/i;
 
 const failures = [];
 
@@ -190,6 +190,14 @@ function normalizedGuid(value) {
             /^\{?([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\}?$/i,
         );
     return match?.[1].toLowerCase();
+}
+
+function deterministicDatasourceGuid(key) {
+    const hash = crypto
+        .createHash("md5")
+        .update(`slb-sitecore:${key}`)
+        .digest("hex");
+    return `${hash.slice(0, 8)}-${hash.slice(8, 12)}-${hash.slice(12, 16)}-${hash.slice(16, 20)}-${hash.slice(20)}`;
 }
 
 function serializedFiles(directory) {
@@ -442,6 +450,73 @@ if (pageIds.size !== pages.length) {
     fail("Fallback catalog contains duplicate page IDs.");
 }
 
+function componentDatasourceKind(component) {
+    if (
+        (component.type === "cardGrid" || component.type === "contentRail") &&
+        component.items?.length
+    ) {
+        return "multi-promo";
+    }
+    if (component.type === "contentSection") return "promo";
+    if (
+        component.type === "productFeature" ||
+        component.type === "resourceLinks" ||
+        component.type === "contentRail"
+    ) {
+        return "cta";
+    }
+    return "rich-text";
+}
+
+const generatedDatasourcePageIdById = new Map();
+
+function addExpectedDatasource(pageId, key) {
+    const id = deterministicDatasourceGuid(key);
+    if (generatedDatasourcePageIdById.has(id)) {
+        fail(`Generated datasource inventory contains duplicate ID ${id}.`);
+    }
+    generatedDatasourcePageIdById.set(id, pageId);
+    return id;
+}
+
+for (const page of pages) {
+    addExpectedDatasource(page.id, `${page.id}:hero`);
+    for (const component of page.fields.en.components ?? []) {
+        const kind = componentDatasourceKind(component);
+        const key = `${page.id}:${component.id}:${kind}`;
+        addExpectedDatasource(page.id, key);
+        if (kind === "multi-promo") {
+            for (
+                let itemIndex = 0;
+                itemIndex < (component.items?.length ?? 0);
+                itemIndex += 1
+            ) {
+                addExpectedDatasource(page.id, `${key}:item:${itemIndex + 1}`);
+            }
+        }
+    }
+    if (page.relatedPageRoutes.en.length) {
+        const key = `${page.id}:related:multi-promo`;
+        addExpectedDatasource(page.id, key);
+        for (
+            let itemIndex = 0;
+            itemIndex < page.relatedPageRoutes.en.length;
+            itemIndex += 1
+        ) {
+            addExpectedDatasource(page.id, `${key}:item:${itemIndex + 1}`);
+        }
+    }
+    if (page.fields.en.finalCta) {
+        addExpectedDatasource(page.id, `${page.id}:final:cta`);
+    }
+}
+
+if (generatedDatasourcePageIdById.size !== expected.generatedDatasources) {
+    fail(
+        `Expected datasource inventory contains ${generatedDatasourcePageIdById.size} IDs; expected ${expected.generatedDatasources}.`,
+    );
+}
+
 const items = [];
 const itemByFile = new Map();
 const itemById = new Map();
@@ -572,7 +647,7 @@ if (
 }
 
 const generatedDatasources = items.filter((item) =>
-    generatedDatasourcePathPattern.test(String(item.document.Path ?? "")),
+    generatedDatasourcePageIdById.has(normalizedGuid(item.document.ID)),
 );
 
 for (const item of [...mappedPageItems, ...generatedDatasources]) {
@@ -595,10 +670,23 @@ for (const item of generatedDatasources) {
             `${itemPath} serializes a quoted blank Value; Sitecore requires an empty Value scalar to clear Standard Values.`,
         );
     }
-    const pageId = itemPath.match(generatedDatasourcePathPattern)?.[1];
+    const itemId = normalizedGuid(item.document.ID);
+    const pageId = generatedDatasourcePageIdById.get(itemId);
     if (!pageId || !pageIds.has(pageId)) {
         fail(`${itemPath} is not assigned to a mapped fallback page.`);
         continue;
+    }
+    const relativeItemPath = itemPath.startsWith("/sitecore/content/slb/")
+        ? itemPath.slice("/sitecore/content/slb/".length)
+        : itemPath;
+    if (relativeItemPath.length > 100) {
+        fail(
+            `${itemPath} exceeds the configured 100-character relative item path limit.`,
+        );
+    }
+    const generatedItemName = itemPath.split("/").at(-1) ?? "";
+    if (generatedDatasourceLegacyNamePattern.test(generatedItemName)) {
+        fail(`${itemPath} still uses a code-like generated item name.`);
     }
     if (!generatedDatasourcesByPage.has(pageId)) {
         generatedDatasourcesByPage.set(pageId, []);
@@ -748,8 +836,10 @@ const natureFocusImages = [
 
 for (const locale of locales) {
     const actualImages = natureFocusImages.map((_, index) => {
-        const cardPath = `/sitecore/content/slb/slb/Data/MultiPromos/U04 component-02 Cards/Card ${String(index + 1).padStart(2, "0")}`;
-        const card = itemByPath.get(cardPath)?.document;
+        const cardId = deterministicDatasourceGuid(
+            `U04:component-02:multi-promo:item:${index + 1}`,
+        );
+        const card = itemById.get(cardId)?.document;
         const version = card ? latestVersion(card, locale) : undefined;
         const imageField = (version?.Fields ?? []).find((field) =>
             supportingImageFieldIds.has(String(field.ID).toLowerCase()),
@@ -833,7 +923,7 @@ if (failures.length > 0) {
         "- All generated datasource fields explicitly serialized; no starter placeholders",
     );
     console.log(
-        "- All generated datasource items have localized display names",
+        "- All generated datasource items have descriptive shared names and localized display names",
     );
     console.log(
         "- Serialized item revisions are content-sensitive and current",

@@ -1,0 +1,99 @@
+---
+ID: 8f60b27b-d6d9-93b0-b40e-1d56b748b66a
+Parent: b139b412-67ba-4dd3-8451-9a5eaf7754d2
+Template: bd372d9d-6e4f-4ae9-a54c-dbc2acdebe2a
+Path: /sitecore/content/slb/slb/Data/Animated Promos/Industrial decarbonization — Decarbonization designed for execution
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 2c8df1b3-5233-7fa9-d70f-c15858f283f1
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
+            Hint: secondaryLink
+            Value:
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" dam-id="114459" dam-content-type="Image" width="1672" height="941" alt="An analyst reviews emissions performance in an industrial operations center." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: c019d2eb-1de6-0565-f175-b9005b491f57
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Industrial decarbonization — Decarbonization designed for execution
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: "Treat emissions performance as part of the operating system: owned by teams, connected to maintenance and planning, and reviewed with the same discipline as other performance priorities."
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Decarbonization designed for execution
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="decarbonization-designed-for-execution" target="" title="" linktype="internal" text="Read our perspective on execution" url="" />
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
+            Hint: secondaryLink
+            Value:
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-insight-decarbonization-control-room-hero" dam-id="114459" dam-content-type="Image" width="1672" height="941" alt="Un analista revisa el desempeño de emisiones en un centro de operaciones industriales." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 436775f7-0f53-add7-6506-193265ab77ba
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Descarbonización industrial — Descarbonización diseñada para la ejecución
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: "Integre el desempeño de emisiones al sistema operativo: con responsables claros, conexión con mantenimiento y planeación, y la misma disciplina de revisión que otras prioridades de desempeño."
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Descarbonización diseñada para la ejecución
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="ejecucion" target="" title="" linktype="internal" text="Lea nuestra perspectiva sobre la ejecución" url="" />

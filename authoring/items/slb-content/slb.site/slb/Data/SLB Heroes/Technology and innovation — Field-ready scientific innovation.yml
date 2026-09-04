@@ -1,0 +1,93 @@
+---
+ID: 330b2b02-06cc-9d75-09fd-6ab76a06edb1
+Parent: fce52196-25c1-99b5-3493-d30f9bef5f14
+Template: a19c3230-c5ee-47a1-ae3f-12a1fc3c4273
+Path: /sitecore/content/slb/slb/Data/SLB Heroes/Technology and innovation — Field-ready scientific innovation
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 25eebdb6-7d9c-ce9b-60ce-fe524e892198
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" dam-id="114114" dam-content-type="Image" width="1130" height="730" alt="SLB technician inspects a circular piece of precision industrial equipment." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: From scientific insight to field-ready technology
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: afb6b271-cbed-c478-de88-fd65e21775b1
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Technology and innovation — From scientific insight to field-ready technology
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="technology" target="" title="" linktype="internal" text="Explore our technology" url="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: Turn difficult energy questions into practical tools through deep research, precise engineering, real-world validation, and learning at scale.
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" dam-id="114114" dam-content-type="Image" width="1130" height="730" alt="Un técnico de SLB inspecciona un equipo industrial circular de alta precisión." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: Del conocimiento científico a la tecnología lista para el campo
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: ca27395e-5261-ea94-4534-78729987b943
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Tecnología e innovación — Del conocimiento científico a la tecnología lista para el campo
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{D0B1AAEC-DFE6-4501-B8F9-A6C4CE79AA74}" anchor="technology" target="" title="" linktype="internal" text="Explore nuestra tecnología" url="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: Convierta preguntas energéticas complejas en herramientas prácticas mediante investigación profunda, ingeniería precisa, validación en condiciones reales y aprendizaje a escala.

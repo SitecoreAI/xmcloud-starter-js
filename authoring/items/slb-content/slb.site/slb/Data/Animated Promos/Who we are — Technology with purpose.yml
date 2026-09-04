@@ -1,0 +1,99 @@
+---
+ID: 78da33cd-05e0-881d-e453-1fee6a8e1fb4
+Parent: b139b412-67ba-4dd3-8451-9a5eaf7754d2
+Template: bd372d9d-6e4f-4ae9-a54c-dbc2acdebe2a
+Path: /sitecore/content/slb/slb/Data/Animated Promos/Who we are — Technology with purpose
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 3b268f2e-3c83-4c1b-da39-3b1716324a97
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
+            Hint: secondaryLink
+            Value:
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" dam-id="114131" dam-content-type="Image" width="2000" height="967" alt="SLB engineer holds a laboratory flask between columns of material samples." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 3ee9c5da-25b1-dda3-1f43-fa6ffb8db285
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Who we are — Technology with purpose
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: SLB develops and applies technology to help unlock access to energy while addressing the need for lower emissions and more sustainable performance. That purpose connects the work across oil and gas, digital, industrial decarbonization, and new energy systems.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Technology with purpose
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value:
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
+            Hint: secondaryLink
+            Value:
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/08a492d75a934bfda09d4442a41110f6?v=8e648053" dam-id="114131" dam-content-type="Image" width="2000" height="967" alt="Una ingeniera de SLB sostiene un matraz de laboratorio entre columnas de muestras de materiales." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 7e65408c-61a4-bad2-b540-2a5af55fc78f
+          - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+            Hint: __Display name
+            Value: Quiénes somos — Tecnología con propósito
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: SLB desarrolla y aplica tecnología para ayudar a ampliar el acceso a la energía, al mismo tiempo que responde a la necesidad de reducir emisiones y mejorar el desempeño sostenible. Ese propósito conecta el trabajo en petróleo y gas, tecnología digital, descarbonización industrial y nuevos sistemas de energía.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Tecnología con propósito
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value:

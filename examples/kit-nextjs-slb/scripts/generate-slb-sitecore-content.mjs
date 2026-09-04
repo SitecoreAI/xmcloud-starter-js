@@ -95,6 +95,81 @@ const datasourceFolders = {
     },
 };
 
+// Sitecore Pages currently surfaces the shared item name in datasource
+// pickers, rather than the localized __Display name. Keep those shared names
+// concise and meaningful so editors can identify content without decoding the
+// original page/component implementation keys.
+const datasourceItemPageLabels = {
+    H01: "Home",
+    S01: "Solutions",
+    S02: "Digital operations",
+    S03: "Industrial decarbonization",
+    S04: "New energy",
+    P01: "Products and services",
+    P02: "Subsurface and wells",
+    P03: "Data and AI",
+    P04: "CCUS",
+    U01: "Sustainability",
+    U02: "Climate action",
+    U03: "People and communities",
+    U04: "Nature and operations",
+    N01: "News and insights",
+    N02: "Insights",
+    N03: "Trusted AI context",
+    N04: "Decarbonization article",
+    N05: "Newsroom",
+    A01: "Who we are",
+    A02: "Technology and innovation",
+    A03: "People and culture",
+    A04: "Global presence",
+    C01: "Contact us",
+};
+
+const conciseDatasourceTopics = {
+    "Turn operational complexity into clear decisions":
+        "Clear operational decisions",
+    "See the subsurface clearly. Build every well with intent":
+        "Clear subsurface and intentional wells",
+    "From scientific insight to field-ready technology":
+        "Field-ready scientific innovation",
+    "A global team built around curiosity and purpose": "Curiosity and purpose",
+    "A practical path from challenge to outcome": "Challenge-to-outcome path",
+    "Connect the workflows that run the asset": "Connected asset workflows",
+    "A connected action cycle": "Action cycle",
+    "Apply the right technology to the right source":
+        "Match technology to emissions sources",
+    "Characterize uncertainty before it becomes operational risk":
+        "Characterize uncertainty before risk",
+    "Build teams where difference becomes strength":
+        "Difference strengthens teams",
+    "Connect environmental context to the operating plan":
+        "Environmental context and planning",
+    "Prioritize where engineering and value meet":
+        "Engineering and value priorities",
+    "Engineer for the environment that matters":
+        "Engineer for the operating environment",
+    "Global reach becomes useful through local understanding":
+        "Global reach, local understanding",
+    "Begin with the decision, not the dashboard": "Decision before dashboard",
+    "Find the right capability for your operation":
+        "Find the right operating capability",
+    "Explore by operating need": "Operating needs",
+    "Connect the well lifecycle": "Well lifecycle",
+    "Three connected areas of focus": "Three focus areas",
+    "Related perspectives": "Related content",
+    "AI in energy starts with trusted context":
+        "AI needs trusted energy context",
+    "Designing decarbonization for execution": "Decarbonization for execution",
+    "Carbon capture, utilization, and sequestration": "CCUS lifecycle",
+    "What it takes to scale subsurface innovation":
+        "Scaling subsurface innovation",
+    "Nature and responsible operations": "Nature and operations",
+};
+
+const generatedSerializationFileById = new Map();
+const generatedSerializationIdByFile = new Map();
+const serializationModuleParentPath = "/sitecore/content/slb";
+
 const templates = {
     hero: "a19c3230-c5ee-47a1-ae3f-12a1fc3c4273",
     promo: "bd372d9d-6e4f-4ae9-a54c-dbc2acdebe2a",
@@ -268,9 +343,42 @@ function normalizeText(value) {
 
 function cleanItemName(value) {
     return value
-        .replace(/[\\/:*?"<>|]/g, "-")
+        .replace(/[\\/:*?"<>|[\]]/g, "-")
         .replace(/\s+/g, " ")
+        .replace(/[.\s]+$/g, "")
         .trim();
+}
+
+function conciseDatasourceTopic(value) {
+    const normalized = normalizeText(value)
+        .replace(/\s+/g, " ")
+        .replace(/[.!?]+$/g, "")
+        .trim();
+    return conciseDatasourceTopics[normalized] ?? normalized;
+}
+
+function limitItemName(value, maxLength) {
+    const cleaned = cleanItemName(value);
+    if (cleaned.length <= maxLength) return cleaned;
+    throw new Error(
+        `Datasource item name exceeds its ${maxLength}-character budget; add a concise topic mapping instead of truncating it: ${cleaned}`,
+    );
+}
+
+function datasourceItemName(page, label, maxLength = 67) {
+    const pageLabel =
+        datasourceItemPageLabels[page.id] ??
+        page.fields.en.navigationTitle ??
+        page.sourceTitle ??
+        page.id;
+    return limitItemName(
+        `${pageLabel} — ${conciseDatasourceTopic(label)}`,
+        maxLength,
+    );
+}
+
+function multiPromoChildItemName(label) {
+    return limitItemName(conciseDatasourceTopic(label), 32);
 }
 
 function datasourceDisplayName(page, locale, label) {
@@ -355,6 +463,16 @@ function datasourceItem({
     localizedFields,
     releaseTimestamp = datasourceContentReleaseTimestamp,
 }) {
+    const relativeItemPath = itemPath.startsWith(
+        `${serializationModuleParentPath}/`,
+    )
+        ? itemPath.slice(serializationModuleParentPath.length + 1)
+        : itemPath;
+    if (relativeItemPath.length > 100) {
+        throw new Error(
+            `Generated Sitecore path exceeds the configured 100-character relative path limit (${relativeItemPath.length}): ${itemPath}`,
+        );
+    }
     return {
         ID: id,
         Parent: parent,
@@ -423,6 +541,23 @@ function writeSerializedItem(relativeDirectory, itemName, document) {
     const directory = path.join(serializationRoot, relativeDirectory);
     fs.mkdirSync(directory, { recursive: true });
     const filePath = path.join(directory, `${cleanItemName(itemName)}.yml`);
+    const normalizedId = String(document.ID).toLowerCase();
+    const resolvedFilePath = path.resolve(filePath);
+    const normalizedFileKey = resolvedFilePath.toLowerCase();
+    const previousFilePath = generatedSerializationFileById.get(normalizedId);
+    if (previousFilePath && previousFilePath !== resolvedFilePath) {
+        throw new Error(
+            `Generated item ${document.ID} was assigned to two serialization files: ${previousFilePath} and ${filePath}`,
+        );
+    }
+    const previousId = generatedSerializationIdByFile.get(normalizedFileKey);
+    if (previousId && previousId !== normalizedId) {
+        throw new Error(
+            `Generated serialization file ${filePath} was assigned to two item IDs: ${previousId} and ${document.ID}`,
+        );
+    }
+    generatedSerializationFileById.set(normalizedId, resolvedFilePath);
+    generatedSerializationIdByFile.set(normalizedFileKey, normalizedId);
     const next = serializeItem(document);
     const previous = fs.existsSync(filePath)
         ? fs.readFileSync(filePath, "utf8")
@@ -503,7 +638,7 @@ function localizedAnchorIds(page, componentIndex) {
 function heroDatasource(page) {
     const key = `${page.id}:hero`;
     const id = deterministicGuid(key);
-    const name = `${page.id} Hero`;
+    const name = datasourceItemName(page, page.fields.en.hero.heading);
     const folder = datasourceFolders.hero;
     const localizedFields = {};
     for (const locale of locales) {
@@ -548,7 +683,7 @@ function promoDatasource(page, componentIndex, images) {
     const component = page.fields.en.components[componentIndex];
     const key = `${page.id}:${component.id}:promo`;
     const id = deterministicGuid(key);
-    const name = `${page.id} ${component.id} Promo`;
+    const name = datasourceItemName(page, component.heading);
     const folder = datasourceFolders.promo;
     const localizedFields = {};
     for (const locale of locales) {
@@ -612,7 +747,7 @@ function multiPromoDatasource(page, componentIndex, images, related = false) {
         : page.fields.en.components[componentIndex];
     const key = `${page.id}:${enComponent.id}:multi-promo`;
     const id = deterministicGuid(key);
-    const name = `${page.id} ${related ? "Related" : enComponent.id} Cards`;
+    const name = datasourceItemName(page, enComponent.heading, 46);
     const folder = datasourceFolders.multiPromo;
     const localizedFields = {};
     for (const locale of locales) {
@@ -661,10 +796,28 @@ function multiPromoDatasource(page, componentIndex, images, related = false) {
     const itemCount = related
         ? page.relatedPageRoutes.en.length
         : (enComponent.items?.length ?? 0);
+    const childNames = new Set();
     for (let itemIndex = 0; itemIndex < itemCount; itemIndex += 1) {
         const childKey = `${key}:item:${itemIndex + 1}`;
         const childId = deterministicGuid(childKey);
-        const childName = `Card ${String(itemIndex + 1).padStart(2, "0")}`;
+        const englishItem = related
+            ? (() => {
+                  const route = page.relatedPageRoutes.en[itemIndex];
+                  const target = routeTargetPage(route);
+                  return {
+                      title:
+                          target?.fields.en.navigationTitle ??
+                          `Related item ${itemIndex + 1}`,
+                  };
+              })()
+            : enComponent.items[itemIndex];
+        const childName = multiPromoChildItemName(englishItem.title);
+        if (childNames.has(childName)) {
+            throw new Error(
+                `Duplicate MultiPromo child name for ${page.id}: ${childName}`,
+            );
+        }
+        childNames.add(childName);
         const childLocalizedFields = {};
         for (const locale of locales) {
             const localizedItem = related
@@ -778,7 +931,7 @@ function richTextDatasource(page, componentIndex) {
     const component = page.fields.en.components[componentIndex];
     const key = `${page.id}:${component.id}:rich-text`;
     const id = deterministicGuid(key);
-    const name = `${page.id} ${component.id} Rich Text`;
+    const name = datasourceItemName(page, component.heading);
     const folder = datasourceFolders.richText;
     const localizedFields = {};
     for (const locale of locales) {
@@ -818,7 +971,7 @@ function ctaDatasource(page, componentIndex, final = false) {
         : page.fields.en.components[componentIndex];
     const key = `${page.id}:${final ? "final" : enComponent.id}:cta`;
     const id = deterministicGuid(key);
-    const name = `${page.id} ${final ? "Final" : enComponent.id} CTA`;
+    const name = datasourceItemName(page, enComponent.heading);
     const folder = datasourceFolders.cta;
     const localizedFields = {};
     for (const locale of locales) {
@@ -1086,6 +1239,54 @@ function ensureHeroFolder() {
     writeSerializedItem("Data", "SLB Heroes", document);
 }
 
+function serializedYamlFiles(directory) {
+    if (!fs.existsSync(directory)) return [];
+    return fs
+        .readdirSync(directory, { withFileTypes: true })
+        .sort((left, right) => left.name.localeCompare(right.name))
+        .flatMap((entry) => {
+            const entryPath = path.join(directory, entry.name);
+            if (entry.isDirectory()) return serializedYamlFiles(entryPath);
+            return entry.isFile() && entry.name.endsWith(".yml")
+                ? [entryPath]
+                : [];
+        });
+}
+
+function removeEmptyChildDirectories(directory) {
+    if (!fs.existsSync(directory)) return;
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+        if (!entry.isDirectory()) continue;
+        const childDirectory = path.join(directory, entry.name);
+        removeEmptyChildDirectories(childDirectory);
+        if (fs.readdirSync(childDirectory).length === 0) {
+            fs.rmdirSync(childDirectory);
+        }
+    }
+}
+
+function removeStaleGeneratedSerializationFiles() {
+    let removed = 0;
+    for (const folder of Object.values(datasourceFolders)) {
+        const directory = path.join(serializationRoot, folder.directory);
+        for (const filePath of serializedYamlFiles(directory)) {
+            const document = yaml.load(fs.readFileSync(filePath, "utf8"));
+            const expectedFilePath = generatedSerializationFileById.get(
+                String(document?.ID ?? "").toLowerCase(),
+            );
+            if (
+                expectedFilePath &&
+                expectedFilePath !== path.resolve(filePath)
+            ) {
+                fs.unlinkSync(filePath);
+                removed += 1;
+            }
+        }
+        removeEmptyChildDirectories(directory);
+    }
+    return removed;
+}
+
 function validateImages() {
     const referenced = new Set();
     for (const page of fallbackCatalog.pages) {
@@ -1154,8 +1355,9 @@ function generate() {
         updatePageItem(page, entries);
         renderingCount += entries.length + (page.id === "S03" ? 1 : 0);
     }
+    const removedStaleFiles = removeStaleGeneratedSerializationFiles();
     console.log(
-        `Generated ${datasourceCount} editable datasource items and ${renderingCount} rendering instances across ${fallbackCatalog.pages.length} pages (${locales.join(", ")}); validated ${imageCount} unique image assets.`,
+        `Generated ${datasourceCount} editable datasource items and ${renderingCount} rendering instances across ${fallbackCatalog.pages.length} pages (${locales.join(", ")}); removed ${removedStaleFiles} stale serialization files; validated ${imageCount} unique image assets.`,
     );
 }
 
