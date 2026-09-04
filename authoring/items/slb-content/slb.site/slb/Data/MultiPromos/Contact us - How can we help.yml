@@ -1,0 +1,83 @@
+---
+ID: 0608d96e-cfb0-99ff-4246-4c9d806f2df5
+Parent: 24c6f461-b1a0-4463-8438-39fb73debef5
+Template: 775d6354-cf01-4f34-9713-d34645079c88
+Path: /sitecore/content/slb/slb/Data/MultiPromos/Contact us - How can we help
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: ab2eee49-3ff8-e028-08d5-a8ad75bf02e6
+Languages:
+  - Language: en
+    Fields:
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Contact us — How can we help?
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 24fa0354-d116-4f42-9eaa-bdab15a8ade7
+            Hint: title
+            Value: How can we help?
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 2fe9bed7-7bcc-4a35-a209-34bcb84fcb42
+            Hint: description
+            Value: Choose the reason that best matches your work so your inquiry reaches the right team.
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 9058f743-e763-db91-0801-4407b864cd3c
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+  - Language: es-MX
+    Fields:
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Contáctenos — ¿Cómo podemos ayudarle?
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 24fa0354-d116-4f42-9eaa-bdab15a8ade7
+            Hint: title
+            Value: ¿Cómo podemos ayudarle?
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 2fe9bed7-7bcc-4a35-a209-34bcb84fcb42
+            Hint: description
+            Value: Elija el motivo que mejor describa su trabajo para que su consulta llegue al equipo adecuado.
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 5a2ba810-3477-e971-889c-e511b17fcad3
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z

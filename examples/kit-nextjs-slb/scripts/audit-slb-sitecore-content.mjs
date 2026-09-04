@@ -37,6 +37,10 @@ const heroRenderingId = "927fe09d-c039-b897-165c-995487b11b87";
 const campaignRenderingUid = "0abd1a13-bd83-4060-8e54-f9b577ed4db1";
 const campaignDefaultDatasourceId = "aadba9e9-3b8c-4f24-8b3a-0dd30a602ff1";
 const campaignVariantDatasourceId = "8b14ed5b-b5b7-4a14-bea9-58b58fc1fd81";
+const ccusTestHeroRenderingUid = "9db8ec3a-95d5-ee03-d327-ca8cecad2d0e";
+const ccusBaseHeroDatasourceId = "dbca7c88-9c86-9c89-f348-c275854efcb7";
+const ccusTestHeroDatasourceId = "5049d31d-7c2f-4ab8-b30a-136a3f039be0";
+const sitecoreItemNamePattern = /^[A-Za-z0-9_*$][A-Za-z0-9_ $-]*$/;
 
 const renderingIds = new Map([
     [heroRenderingId, "SLB Hero"],
@@ -114,14 +118,18 @@ const allowedPersonalizationDatasourceIds = new Set([
     campaignDefaultDatasourceId,
     campaignVariantDatasourceId,
 ]);
-const campaignDatasourcePathById = new Map([
+const manuallyManagedDatasourcePathById = new Map([
     [
         campaignDefaultDatasourceId,
-        "/sitecore/content/slb/slb/Data/Calls to Action Banners/Industrial decarbonization — Google campaign default CTA",
+        "/sitecore/content/slb/slb/Data/Calls to Action Banners/Industrial decarbonization - Google campaign default CTA",
     ],
     [
         campaignVariantDatasourceId,
-        "/sitecore/content/slb/slb/Data/Calls to Action Banners/Industrial decarbonization — Google campaign personalized CTA",
+        "/sitecore/content/slb/slb/Data/Calls to Action Banners/Industrial decarbonization - Google campaign personalized CTA",
+    ],
+    [
+        ccusTestHeroDatasourceId,
+        "/sitecore/content/slb/slb/Data/SLB Heroes/CCUS - Readiness assessment CTA test variant",
     ],
 ]);
 const legacySignatures = [
@@ -544,14 +552,47 @@ for (const filePath of serializedFiles(serializationRoot)) {
     if (document.Path) itemByPath.set(String(document.Path), item);
 }
 
-for (const [itemId, expectedPath] of campaignDatasourcePathById) {
-    const campaignDatasource = itemById.get(itemId)?.document;
-    if (!campaignDatasource) {
-        fail(`Campaign datasource ${itemId} is missing from serialization.`);
-    } else if (campaignDatasource.Path !== expectedPath) {
+for (const [itemId, expectedPath] of manuallyManagedDatasourcePathById) {
+    const datasource = itemById.get(itemId)?.document;
+    if (!datasource) {
+        fail(`Managed datasource ${itemId} is missing from serialization.`);
+    } else if (datasource.Path !== expectedPath) {
         fail(
-            `Campaign datasource ${itemId} uses ${campaignDatasource.Path}; expected ${expectedPath}.`,
+            `Managed datasource ${itemId} uses ${datasource.Path}; expected ${expectedPath}.`,
         );
+    } else {
+        const itemName = expectedPath.split("/").at(-1) ?? "";
+        if (!sitecoreItemNamePattern.test(itemName)) {
+            fail(
+                `Managed datasource ${itemId} does not satisfy the Sitecore item-name validation pattern.`,
+            );
+        }
+    }
+}
+
+const ccusTestHero = itemById.get(ccusTestHeroDatasourceId)?.document;
+if (ccusTestHero) {
+    for (const locale of locales) {
+        const languageItem = language(ccusTestHero, locale);
+        const version = latestVersion(ccusTestHero, locale);
+        const displayNameFields = (languageItem?.Fields ?? []).filter(
+            (field) => String(field.ID).toLowerCase() === displayNameFieldId,
+        );
+        if (!version || displayNameFields.length !== 1) {
+            fail(
+                `CCUS test hero must serialize one ${locale} version and localized __Display name.`,
+            );
+        }
+        if (
+            (version?.Fields ?? []).some(
+                (field) =>
+                    String(field.ID).toLowerCase() === displayNameFieldId,
+            )
+        ) {
+            fail(
+                `CCUS test hero ${locale} serializes unversioned __Display name in version fields.`,
+            );
+        }
     }
 }
 
@@ -697,8 +738,8 @@ for (const item of generatedDatasources) {
         fail(`${itemPath} is not assigned to a mapped fallback page.`);
         continue;
     }
-    const relativeItemPath = itemPath.startsWith("/sitecore/content/slb/")
-        ? itemPath.slice("/sitecore/content/slb/".length)
+    const relativeItemPath = itemPath.startsWith("/sitecore/content/slb/slb/")
+        ? itemPath.slice("/sitecore/content/slb/slb/".length)
         : itemPath;
     if (relativeItemPath.length > 100) {
         fail(
@@ -706,6 +747,11 @@ for (const item of generatedDatasources) {
         );
     }
     const generatedItemName = itemPath.split("/").at(-1) ?? "";
+    if (!sitecoreItemNamePattern.test(generatedItemName)) {
+        fail(
+            `${itemPath} does not satisfy the Sitecore item-name validation pattern.`,
+        );
+    }
     if (generatedDatasourceLegacyNamePattern.test(generatedItemName)) {
         fail(`${itemPath} still uses a code-like generated item name.`);
     }
@@ -731,7 +777,7 @@ for (const item of generatedDatasources) {
             continue;
         }
 
-        const displayNameFields = (version.Fields ?? []).filter(
+        const displayNameFields = (languageItem.Fields ?? []).filter(
             (field) => String(field.ID).toLowerCase() === displayNameFieldId,
         );
         if (displayNameFields.length !== 1) {
@@ -740,6 +786,16 @@ for (const item of generatedDatasources) {
             );
         } else if (!String(displayNameFields[0].Value ?? "").trim()) {
             fail(`${itemPath} ${locale} has a blank localized __Display name.`);
+        }
+        if (
+            (version.Fields ?? []).some(
+                (field) =>
+                    String(field.ID).toLowerCase() === displayNameFieldId,
+            )
+        ) {
+            fail(
+                `${itemPath} ${locale} serializes unversioned __Display name in version fields.`,
+            );
         }
 
         assertNoLegacyValues(
@@ -920,6 +976,33 @@ if (
     );
 }
 
+const ccusLayout = pageLayouts.get("P04:en");
+const ccusHeroRendering = ccusLayout?.renderings.find(
+    (rendering) => rendering.uid === ccusTestHeroRenderingUid,
+);
+if (!ccusHeroRendering) {
+    fail("P04 en is missing the CCUS component test hero rendering UID.");
+} else if (
+    normalizedGuid(ccusHeroRendering.datasource) !== ccusBaseHeroDatasourceId
+) {
+    fail("P04 en component test hero has the wrong default datasource.");
+}
+
+const ccusTestXml = ccusLayout?.layout ?? "";
+if (!/<ruleset\b[^>]*\bs:pet="true"/i.test(ccusTestXml)) {
+    fail("P04 en component test has no active test ruleset.");
+}
+if (!/\bs:VariantName="[^\"]+"/i.test(ccusTestXml)) {
+    fail("P04 en component test has no named test variant.");
+}
+if (
+    !namespacedDatasourceReferences(ccusTestXml)
+        .map(normalizedGuid)
+        .includes(ccusTestHeroDatasourceId)
+) {
+    fail("P04 en component test does not reference the test datasource.");
+}
+
 if (failures.length > 0) {
     console.error(
         `SLB Sitecore authoring-content audit failed (${failures.length} issue${failures.length === 1 ? "" : "s"}):`,
@@ -938,7 +1021,7 @@ if (failures.length > 0) {
         `- ${uniqueRenderingUids.size} logical rendering instances (${renderingsByLocale.get("en").length} en, ${renderingsByLocale.get("es-MX").length} es-MX placements)`,
     );
     console.log(
-        "- SLB Hero IDs, datasource references, and campaign rules valid",
+        "- SLB Hero IDs, datasource references, campaign rules, and component test valid",
     );
     console.log(
         "- All generated datasource fields explicitly serialized; no starter placeholders",

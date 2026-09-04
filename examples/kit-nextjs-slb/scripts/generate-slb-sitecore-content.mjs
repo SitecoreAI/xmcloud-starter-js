@@ -164,11 +164,29 @@ const conciseDatasourceTopics = {
     "What it takes to scale subsurface innovation":
         "Scaling subsurface innovation",
     "Nature and responsible operations": "Nature and operations",
+    "Ideas shaping energy's next chapter":
+        "Ideas shaping the next chapter of energy",
+    "Step into energy's next questions": "Explore the next questions in energy",
+    "Build what's next with SLB": "Build what comes next with SLB",
+    "Technology built for energy's toughest work":
+        "Technology for the toughest work in energy",
+    "Global capability. Local understanding":
+        "Global capability and local understanding",
+    "Technology that travels. Solutions that fit":
+        "Technology that travels and solutions that fit",
+    "One challenge. Four connected paths":
+        "One challenge and four connected paths",
+    "Verify, learn, and improve": "Verify then learn and improve",
+    "Global reach, local understanding":
+        "Global reach with local understanding",
+    "SLB in Mexico, Central America, and Venezuela":
+        "SLB across Mexico Central America and Venezuela",
+    "Technology and expertise, connected": "Connected technology and expertise",
 };
 
 const generatedSerializationFileById = new Map();
 const generatedSerializationIdByFile = new Map();
-const serializationModuleParentPath = "/sitecore/content/slb";
+const serializationModuleParentPath = "/sitecore/content/slb/slb";
 
 const templates = {
     hero: "a19c3230-c5ee-47a1-ae3f-12a1fc3c4273",
@@ -342,11 +360,22 @@ function normalizeText(value) {
 }
 
 function cleanItemName(value) {
-    return value
-        .replace(/[\\/:*?"<>|[\]]/g, "-")
+    const cleaned = normalizeText(value)
+        .normalize("NFKC")
+        .replaceAll("&", " and ")
+        .replace(/[\u2010-\u2015]/g, "-")
+        .replace(/[\u2018\u2019']/g, "")
+        .replace(/[^A-Za-z0-9_* $-]+/g, " ")
         .replace(/\s+/g, " ")
-        .replace(/[.\s]+$/g, "")
+        .replace(/^[^A-Za-z0-9_*$]+/, "")
+        .replace(/[^A-Za-z0-9_$]+$/g, "")
         .trim();
+    if (!/^[A-Za-z0-9_*$][A-Za-z0-9_ $-]*$/.test(cleaned)) {
+        throw new Error(
+            `Generated item name does not satisfy Sitecore ItemNameValidation: ${cleaned}`,
+        );
+    }
+    return cleaned;
 }
 
 function conciseDatasourceTopic(value) {
@@ -372,7 +401,7 @@ function datasourceItemName(page, label, maxLength = 67) {
         page.sourceTitle ??
         page.id;
     return limitItemName(
-        `${pageLabel} — ${conciseDatasourceTopic(label)}`,
+        `${pageLabel} - ${conciseDatasourceTopic(label)}`,
         maxLength,
     );
 }
@@ -481,18 +510,37 @@ function datasourceItem({
         SharedFields: [
             field(ids.workflow, "__Workflow", `{${ids.datasourceWorkflow}}`),
         ],
-        Languages: locales.map((locale) => ({
-            Language: locale,
-            Versions: [
-                {
-                    Version: 1,
-                    Fields: standardVersionFields(
-                        localizedFields[locale],
-                        releaseTimestamp,
-                    ),
-                },
-            ],
-        })),
+        Languages: locales.map((locale) => {
+            const displayNameFields = localizedFields[locale].filter(
+                (entry) => entry.ID === ids.displayName,
+            );
+            if (
+                Object.values(templates).includes(template) &&
+                displayNameFields.length !== 1
+            ) {
+                throw new Error(
+                    `${itemPath} ${locale} must define exactly one localized __Display name.`,
+                );
+            }
+            const versionedFields = localizedFields[locale].filter(
+                (entry) => entry.ID !== ids.displayName,
+            );
+            return {
+                Language: locale,
+                ...(displayNameFields.length
+                    ? { Fields: displayNameFields }
+                    : {}),
+                Versions: [
+                    {
+                        Version: 1,
+                        Fields: standardVersionFields(
+                            versionedFields,
+                            releaseTimestamp,
+                        ),
+                    },
+                ],
+            };
+        }),
     };
 }
 
@@ -1078,6 +1126,27 @@ function renderingId(kind) {
     return renderings[kind];
 }
 
+function ccusTestRulesXml() {
+    return `
+              <rls>
+                <ruleset s:pet="true">
+                  <rule uid="{F5BDBFB2-306B-4BA1-B420-5070A49A153D}" s:name="9db8ec3a95d5ee03d327ca8cecad2d0e_454b1ed978704ea79756fe8833e97bac">
+                    <conditions>
+                      <condition uid="2497E8044D9F429C94AFFB8DB8A0B8AB" s:id="{8E7426A4-12ED-4C44-8625-E7191860E726}" s:VariantName="9db8ec3a95d5ee03d327ca8cecad2d0e_454b1ed978704ea79756fe8833e97bac" />
+                    </conditions>
+                    <actions>
+                      <action uid="{570C56C3-6841-4378-988A-CF3BFCCA98B2}" s:id="{0F3C6BEC-E56B-4875-93D7-2846A75881D2}" s:DataSource="5049d31d-7c2f-4ab8-b30a-136a3f039be0" />
+                    </actions>
+                  </rule>
+                  <rule uid="{00000000-0000-0000-0000-000000000000}" s:name="Default">
+                    <conditions>
+                      <condition uid="19A3507D02B8418CAC436E09480CEC32" s:id="{4888ABBB-F17D-4485-B14B-842413F88732}" />
+                    </conditions>
+                  </rule>
+                </ruleset>
+              </rls>`;
+}
+
 function renderingXml(entry, index, previousUid, locale) {
     const uid = deterministicGuid(
         `${entry.pageId}:${entry.key}:rendering`,
@@ -1086,9 +1155,13 @@ function renderingXml(entry, index, previousUid, locale) {
         ? `p:after="r[@uid='{${previousUid}}']"`
         : 'p:before="*"';
     const parameters = xmlEscape(renderingParameters(entry, index, locale));
+    const testRules =
+        entry.pageId === "P04" && entry.kind === "hero" && locale === "en"
+            ? ccusTestRulesXml()
+            : "";
     return {
         uid,
-        xml: `            <r\n              uid="{${uid}}"\n              ${position}\n              s:ds="${entry.id}"\n              s:id="{${renderingId(entry.kind)}}"\n              s:par="${parameters}"\n              s:ph="headless-main" />`,
+        xml: `            <r\n              uid="{${uid}}"\n              ${position}\n              s:ds="${entry.id}"\n              s:id="{${renderingId(entry.kind)}}"\n              s:par="${parameters}"\n              s:ph="headless-main"${testRules ? ">" : " />"}${testRules}${testRules ? "\n            </r>" : ""}`,
     };
 }
 

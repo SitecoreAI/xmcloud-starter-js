@@ -1,0 +1,95 @@
+---
+ID: 554dc407-c8df-1c70-ebde-e8e06a54169f
+Parent: fce52196-25c1-99b5-3493-d30f9bef5f14
+Template: a19c3230-c5ee-47a1-ae3f-12a1fc3c4273
+Path: /sitecore/content/slb/slb/Data/SLB Heroes/Industrial decarbonization - Make emissions performance actionable
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 657ce6dd-bd28-6a1c-39bb-015519642fdc
+Languages:
+  - Language: en
+    Fields:
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Industrial decarbonization — Make emissions performance actionable
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="SLB operator crosses the glass-lined atrium of a technology facility." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: Make emissions performance actionable
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 1c9d4f6c-0658-9be6-dbc1-8e375a9c8546
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="capabilities" target="" title="" linktype="internal" text="Explore emissions solutions" url="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: Build a practical pathway from measurement to intervention by connecting credible data, engineering choices, and the realities of operating assets.
+  - Language: es-MX
+    Fields:
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Descarbonización industrial — Convierta el desempeño de emisiones en acciones concretas
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/44bbbb788f354b81ae644a9d658ddc88?v=93f6bac3" dam-id="114120" dam-content-type="Image" width="1130" height="730" alt="Un operador de SLB cruza el atrio acristalado de un centro tecnológico." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: Convierta el desempeño de emisiones en acciones concretas
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 80c236d7-974f-dfb2-ec9c-bd4383313962
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="capabilities" target="" title="" linktype="internal" text="Explore soluciones para emisiones" url="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: Desarrolle una ruta práctica desde la medición hasta la intervención al conectar datos confiables, decisiones de ingeniería y la realidad de los activos en operación.

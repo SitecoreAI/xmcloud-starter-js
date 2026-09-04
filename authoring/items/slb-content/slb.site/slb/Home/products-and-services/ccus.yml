@@ -88,7 +88,25 @@ Languages:
                             s:ds="dbca7c88-9c86-9c89-f348-c275854efcb7"
                             s:id="{927FE09D-C039-B897-165C-995487B11B87}"
                             s:par="DynamicPlaceholderId=1&amp;FieldNames=%7B15CBD817-374B-4B98-A545-91DA6BE1E810%7D&amp;colorScheme=dark"
-                            s:ph="headless-main" />
+                            s:ph="headless-main">
+                            <rls>
+                              <ruleset s:pet="true">
+                                <rule uid="{F5BDBFB2-306B-4BA1-B420-5070A49A153D}" s:name="9db8ec3a95d5ee03d327ca8cecad2d0e_454b1ed978704ea79756fe8833e97bac">
+                                  <conditions>
+                                    <condition uid="2497E8044D9F429C94AFFB8DB8A0B8AB" s:id="{8E7426A4-12ED-4C44-8625-E7191860E726}" s:VariantName="9db8ec3a95d5ee03d327ca8cecad2d0e_454b1ed978704ea79756fe8833e97bac" />
+                                  </conditions>
+                                  <actions>
+                                    <action uid="{570C56C3-6841-4378-988A-CF3BFCCA98B2}" s:id="{0F3C6BEC-E56B-4875-93D7-2846A75881D2}" s:DataSource="5049d31d-7c2f-4ab8-b30a-136a3f039be0" />
+                                  </actions>
+                                </rule>
+                                <rule uid="{00000000-0000-0000-0000-000000000000}" s:name="Default">
+                                  <conditions>
+                                    <condition uid="19A3507D02B8418CAC436E09480CEC32" s:id="{4888ABBB-F17D-4485-B14B-842413F88732}" />
+                                  </conditions>
+                                </rule>
+                              </ruleset>
+                            </rls>
+                          </r>
                           <r
                             uid="{CB2B3900-C209-C01C-1BB3-5DFC3A0619EC}"
                             p:after="r[@uid='{9DB8EC3A-95D5-EE03-D327-CA8CECAD2D0E}']"
@@ -155,7 +173,7 @@ Languages:
             Value: Connect every decision across the carbon storage lifecycle | SLB
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 5b8d3c28-ae42-de9e-d619-02e37835b97f
+            Value: 02429904-23b5-127f-c8ea-0c82167344fa
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
             Value: Bring subsurface characterization, development engineering, infrastructure, and monitoring into one evidence-led approach from site screening through long-term stewardship.

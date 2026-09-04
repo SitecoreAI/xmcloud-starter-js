@@ -1,0 +1,83 @@
+---
+ID: 02244f28-54a0-c120-2241-81ea2d388489
+Parent: 24c6f461-b1a0-4463-8438-39fb73debef5
+Template: 775d6354-cf01-4f34-9713-d34645079c88
+Path: /sitecore/content/slb/slb/Data/MultiPromos/Trusted AI context - Related content
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 45ffc2b4-8e7c-5a7f-b81a-8ad56f17b8b1
+Languages:
+  - Language: en
+    Fields:
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: AI in energy starts with trusted context — Related perspectives
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 24fa0354-d116-4f42-9eaa-bdab15a8ade7
+            Hint: title
+            Value: Related perspectives
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 2fe9bed7-7bcc-4a35-a209-34bcb84fcb42
+            Hint: description
+            Value: Continue exploring connected capabilities, ideas, and operating outcomes.
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 83e27262-1666-4e49-6f7f-4f707bf9c616
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+  - Language: es-MX
+    Fields:
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: La IA en energía comienza con un contexto confiable — Perspectivas relacionadas
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 24fa0354-d116-4f42-9eaa-bdab15a8ade7
+            Hint: title
+            Value: Perspectivas relacionadas
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 2fe9bed7-7bcc-4a35-a209-34bcb84fcb42
+            Hint: description
+            Value: Continúe explorando capacidades, ideas y resultados operativos relacionados.
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: ebb22245-0824-f5a0-a3f5-edc527cf4087
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z

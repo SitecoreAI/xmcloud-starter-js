@@ -1,0 +1,95 @@
+---
+ID: 4e7c0a14-6705-6f83-3b0b-46a07b59d5cc
+Parent: fce52196-25c1-99b5-3493-d30f9bef5f14
+Template: a19c3230-c5ee-47a1-ae3f-12a1fc3c4273
+Path: /sitecore/content/slb/slb/Data/SLB Heroes/Nature and operations - Design operations with nature in view
+SharedFields:
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 766434a2-4340-1cee-b325-285e85b0ef18
+Languages:
+  - Language: en
+    Fields:
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Nature and responsible operations — Design operations with nature in view
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" dam-id="114209" dam-content-type="Image" width="1416" height="1140" alt="Turquoise lake and open plain beneath snowcapped mountains." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: Design operations with nature in view
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 0d44a035-d597-ae3b-b333-d3d69f5885cc
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="approach" target="" title="" linktype="internal" text="Explore our approach to nature" url="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: Bring biodiversity, water, and circularity into planning and operating decisions with site-specific understanding and transparent evidence.
+  - Language: es-MX
+    Fields:
+      - ID: b5e02ad9-d56f-4c41-a065-a133db87bdeb
+        Hint: __Display name
+        Value: Naturaleza y operaciones responsables — Diseñe operaciones que consideren la naturaleza
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 1c4089ef-d9fa-4515-ad8b-eac558420564
+            Hint: heroImageOptional1
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/830f2bc695e94a23bc15d1be81e8eb01?v=456e9b34" dam-id="114209" dam-content-type="Image" width="1416" height="1140" alt="Lago turquesa y llanura abierta bajo montañas nevadas." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260831T150000Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 3f384b8c-9364-4f44-91ea-7f7fa3a76de9
+            Hint: titleRequired
+            Value: Diseñe operaciones que consideren la naturaleza
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: f6133280-e30e-9b12-77f8-c8694dac0f60
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c17f89f8-7429-4af1-a47d-b7b1e037fe45
+            Hint: linkOptional
+            Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="approach" target="" title="" linktype="internal" text="Explore nuestro enfoque sobre naturaleza" url="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T184356Z
+          - ID: e2223200-5161-4e5a-9a35-9a5ac126c05c
+            Hint: descriptionOptional
+            Value: Integre biodiversidad, agua y circularidad en las decisiones de planeación y operación con conocimiento específico del sitio y evidencia transparente.

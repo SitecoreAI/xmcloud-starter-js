@@ -135,6 +135,7 @@
         "fast-xml-parser": "^5.5.9",
         "jest": "^30.2.0",
         "jest-environment-jsdom": "^30.2.0",
+        "js-yaml": "^5.1.0",
         "npm-run-all2": "^8.0.4",
         "prettier": "3.6.2",
         "tailwindcss": "^4",
@@ -158,7 +159,7 @@
         "minimatch@<3.1.3": "3.1.5",
         "form-data": ">=4.0.6",
         "esbuild": ">=0.28.1",
-        "js-yaml": ">=4.2.0"
+        "js-yaml": "$js-yaml"
     },
     "scripts": {
         "build": "cross-env NODE_ENV=production npm-run-all --serial sitecore-tools:build next:build",
@@ -166,6 +167,7 @@
         "content:fallback:curate-images": "node scripts/curate-slb-fallback-images.mjs",
         "content:fallback:curate-images:check": "node scripts/curate-slb-fallback-images.mjs --check",
         "content:sitecore:audit": "node scripts/audit-slb-sitecore-content.mjs",
+        "content:sitecore:rename-datasources": "node scripts/rename-slb-datasources.mjs",
         "audit:images": "node scripts/audit-production-images.cjs",
         "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,scss,md}\"",
         "lint": "eslint \"src/**/*.{ts,tsx}\"",
