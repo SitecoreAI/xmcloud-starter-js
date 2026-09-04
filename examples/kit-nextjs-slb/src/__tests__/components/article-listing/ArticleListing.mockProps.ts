@@ -60,7 +60,7 @@ export const mockPageDataEditing = {
   page: mockPageEditing,
 };
 
-// Solterra demo: Article 1
+// Article 1
 export const mockArticle1 = {
   url: '/articles/article-1',
   id: 'article-1',
@@ -107,7 +107,7 @@ export const mockArticle1 = {
   },
 };
 
-// Solterra demo: QA Article 1
+// QA Article 1
 export const mockQaArticle1 = {
   url: '/articles/qa-article-1',
   id: 'qa-article-1',
@@ -118,8 +118,8 @@ export const mockQaArticle1 = {
       editable: 'Partners in Sustainability',
     } as Field<string>,
     pageSummary: {
-      value: 'How Solterra & Co. works with partners to advance sustainable wellness.',
-      editable: 'How Solterra & Co. works with partners',
+      value: 'How SLB works across the energy ecosystem to advance measurable sustainability outcomes.',
+      editable: 'How SLB works across the energy ecosystem',
     } as Field<string>,
     pageThumbnail: {
       value: {
@@ -206,7 +206,7 @@ export const mockLinkField: LinkField = {
   },
 };
 
-// Mock fields — matches Solterra Landing Page Article Listing (Article 1 + QA Article 1)
+// Mock fields for the landing-page article listing (Article 1 + QA Article 1)
 export const mockFields = {
   titleOptional: {
     value: 'Latest Articles',

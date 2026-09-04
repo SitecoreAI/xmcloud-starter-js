@@ -1,19 +1,19 @@
 {
   "services": [
     {
-      "name": "Article and Topic Listings",
-      "description": "Browse and discover editorial content, articles, and topic-based collections curated for lifestyle and wellness.",
-      "category": "Content"
+      "name": "Energy technology and well delivery",
+      "description": "Explore SLB capabilities for understanding the subsurface, constructing wells, improving production, and operating assets across the energy lifecycle.",
+      "category": "Products and services"
     },
     {
-      "name": "Hero and Promo Sections",
-      "description": "Rich content modules including hero banners, animated promos, and promotional sections for featured content.",
-      "category": "Content"
+      "name": "Digital operations and AI",
+      "description": "Connect trusted data, domain workflows, automation, and AI to help teams make clearer operating decisions and improve performance at scale.",
+      "category": "Solutions"
     },
     {
-      "name": "Multi-Locale Content Delivery",
-      "description": "Deliver localized content in multiple languages (English and Canadian English) with automatic locale detection.",
-      "category": "Localization"
+      "name": "Decarbonization and new energy",
+      "description": "Turn emissions data into action and apply subsurface and industrial expertise to carbon storage, geothermal, hydrogen, lithium, and other evolving energy systems.",
+      "category": "Solutions"
     }
   ],
   "lastModified": "2026-03-05T07:41:29Z"

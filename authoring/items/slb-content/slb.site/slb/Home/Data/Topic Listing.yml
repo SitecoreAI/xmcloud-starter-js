@@ -1,48 +1,47 @@
-﻿---
-ID: "b7ffc99a-1315-4e3d-ba50-881de1f899a3"
-Parent: "5313907a-cb9d-469b-b761-db8641732c61"
-Template: "39852404-c57e-40f5-b331-ccd8cdd8ad19"
+---
+ID: b7ffc99a-1315-4e3d-ba50-881de1f899a3
+Parent: 5313907a-cb9d-469b-b761-db8641732c61
+Template: 39852404-c57e-40f5-b331-ccd8cdd8ad19
 Path: /sitecore/content/slb/slb/Home/Data/Topic Listing
-BranchID: "67d5aed7-9d44-4899-925d-d06ef478b9fb"
+BranchID: 67d5aed7-9d44-4899-925d-d06ef478b9fb
 SharedFields:
-- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
-  Hint: __Workflow
-  Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
-- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
-  Hint: __Shared revision
-  Value: "45c4bbeb-d963-4b93-9c57-03c65c17a817"
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{5417F583-2901-4770-AE7C-CB26EF030CB7}"
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: e4bf70bc-b49f-1778-3799-c197261f86aa
+  - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
+    Hint: __Originator
+    Value: "{5417F583-2901-4770-AE7C-CB26EF030CB7}"
 Languages:
-- Language: en
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20260830T192804Z
-    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
-      Hint: __Workflow state
-      Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "6b22b32f-4c8b-4c6e-b004-7b762ebad3fa"
-      Hint: titleRequired
-      Value: Our areas of impact.  Making people a priority.
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "d04f3220-a2b1-41a9-8780-f7ee43b00ceb"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20260830T192854Z
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T192804Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 6b22b32f-4c8b-4c6e-b004-7b762ebad3fa
+            Hint: titleRequired
+            Value: Explore connected energy capabilities
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 4d973a14-24ac-f57f-d5a6-4f8f3ab378b5
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T203000Z

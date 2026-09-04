@@ -1,36 +1,30 @@
 ---
-ID: 194a7c9d-1977-4f11-9c2d-5d2ab083e05e
-Parent: 80c739a6-54b7-4aed-aca7-20c9de555a28
-Template: 92762d36-183a-4ecb-ac35-c53f5a51619d
-Path: /sitecore/content/slb/slb/Presentation/Partial Designs/Global/Footer/Data/Column Three
-BranchID: ed920ceb-2272-432a-829e-4610b6b94945
+ID: c7ef62f4-ac67-43f9-8464-5aeac0617666
+Parent: 57b80ae5-9ada-4658-aa98-98e6c43e9c2a
+Template: f6a7b8c9-d0e1-4f5a-3b4c-5d6e7f8a9b0c
+Path: /sitecore/content/slb/slb/Data/AI Config/Services/Energy technology and well delivery
+BranchID: 1a1b2c3d-4e5f-4a6b-7c8d-9e0f1a2b3c4d
 SharedFields:
-  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
-    Hint: __Workflow
-    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e
     Hint: __Sortorder
-    Value: 350
+    Value: 100
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: f4430047-5c85-24ce-3d52-a804792ddcb1
+    Value: d8b4bf27-a038-624d-838d-43db9115e096
   - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
     Hint: __Originator
-    Value: "{AABB152C-640B-47D0-9DB4-861420BFD959}"
+    Value: "{2D0E1F2A-3B4C-4D5E-6F7A-8B9C0D1E2F3A}"
 Languages:
   - Language: en
     Versions:
       - Version: 1
         Fields:
-          - ID: 189dbc14-53cd-4638-bdb1-899befcc94a8
-            Hint: header
-            Value: Company
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
-            Value: 20260830T192818Z
+            Value: 20260830T192849Z
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
-            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
           - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
             Hint: __Owner
             Value: |
@@ -41,10 +35,19 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 22f1dc97-2225-9e36-9037-279fe69878f4
+            Value: 719a1a31-6c2a-2e37-70ac-f50920da5d64
+          - ID: b8c9d0e1-f2a3-4b5c-5d6e-7f8a9b0c1d2e
+            Hint: name
+            Value: Energy technology and well delivery
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
+          - ID: c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f
+            Hint: description
+            Value: Explore SLB capabilities for understanding the subsurface, constructing wells, improving production, and operating assets across the energy lifecycle.
+          - ID: d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a
+            Hint: category
+            Value: Products and services
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
             Value: 20260904T203000Z

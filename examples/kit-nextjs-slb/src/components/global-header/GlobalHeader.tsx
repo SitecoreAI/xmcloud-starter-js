@@ -90,8 +90,10 @@ const GlobalHeaderView: React.FC<GlobalHeaderViewProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const pageEditing = page.mode.isEditing;
   const isSpanish = page.locale?.toLowerCase() === 'es-mx';
+  const isSlbSite = page.siteName?.trim().toLowerCase() === 'slb';
   const hasInheritedDatasource = hasLegacySolterraSignature(item);
-  const useLocalSlbChrome = forceLocalSlbChrome || hasInheritedDatasource;
+  const useLocalSlbChrome =
+    forceLocalSlbChrome || isSlbSite || hasInheritedDatasource;
   const safeLinks = useLocalSlbChrome
     ? []
     : links.filter((item) => !hasLegacySolterraSignature(item));

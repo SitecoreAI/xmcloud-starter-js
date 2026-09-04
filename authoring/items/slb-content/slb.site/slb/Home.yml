@@ -10,11 +10,10 @@ SharedFields:
     Value: "{B4F49B23-4BBA-4C79-BA22-F89F5F0D4E4F}"
   - ID: c7c26117-dbb1-42b2-ab5e-f7223845cca3
     Hint: __Thumbnail
-    Value: |
-      <image mediaid="{1EF86ED3-6063-40EC-A99A-18CB5909AC15}" />
+    Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" dam-id="114111" dam-content-type="Image" width="1416" height="1140" alt="View looking up between four white industrial storage vessels as two SLB operators climb the structures." />
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 16ffce5f-e6d0-5952-c5d5-719e1c50f607
+    Value: 35e377bd-e991-40cc-a0ce-3d3aacbb9575
   - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
     Hint: __Originator
     Value: "{F558BEC9-C602-4D7A-B9A1-D0411C946EA4}"
@@ -167,62 +166,60 @@ Languages:
               </r>
           - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
             Hint: pageSummary
-            Value: Discover wellness, lifestyle, and editorial content that inspires your everyday journey with Solterra & Co.
+            Value: SLB brings together science, digital technology, and global energy expertise to help teams improve performance today while building lower-carbon systems for tomorrow.
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260830T192714Z
           - ID: 27cd428b-f652-4534-b76f-33f64b742659
             Hint: pageShortTitle
-            Value: Solterra & Co.
+            Value: Home
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
             Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
           - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
             Hint: ogDescription
-            Value: Discover wellness, lifestyle, and editorial content that inspires your everyday journey with Solterra & Co.
+            Value: Discover how SLB combines science, digital technology, and energy expertise to improve performance, decarbonize industry, and scale new energy systems.
           - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
             Hint: __Owner
             Value: |
               sitecore\thomas.lin@sitecore.com
           - ID: 5c01b675-9b56-4d6b-aee4-0ecb1a0021f6
             Hint: pageTitle
-            Value: Solterra & Co.
+            Value: Engineering progress for a balanced planet
           - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
             Hint: __Created by
             Value: |
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: |
-              <image mediaid="{B229B500-1CAB-40E4-9989-496FDEE77286}" />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" dam-id="114111" dam-content-type="Image" width="1416" height="1140" alt="View looking up between four white industrial storage vessels as two SLB operators climb the structures." />
           - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
             Hint: metadataTitle
-            Value: Solterra & Co.
+            Value: SLB | Energy technology for a balanced planet
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 71ffcb73-c260-0efd-b4a1-966c3d0a9d62
+            Value: 2494e1b1-34fc-9975-468c-180c07634aaf
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
-            Value: Discover wellness, lifestyle, and editorial content that inspires your everyday journey with Solterra & Co.
+            Value: Discover how SLB combines science, digital technology, and energy expertise to improve performance, decarbonize industry, and scale new energy systems.
           - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
             Hint: pageHeaderTitle
-            Value: Solterra & Co.
+            Value: Engineering progress for a balanced planet
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
-            Value: |
-              sitecore\thomas.lin@sitecore.com
+            Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T135535Z
+            Value: 20260904T203000Z
           - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
             Hint: metadataAuthor
-            Value: Sitecore
+            Value: SLB
           - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
             Hint: ogTitle
-            Value: Solterra & Co.
+            Value: SLB | Energy technology for a balanced planet
           - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
             Hint: metadataKeywords
-            Value: Solterra & Co., wellness, editorial, lifestyle
+            Value: SLB, energy technology, digital, decarbonization, new energy
       - Version: 2
         Fields:
           - ID: 001dd393-96c5-490b-924a-b0f25cd9efd8
@@ -362,19 +359,19 @@ Languages:
               </r>
           - ID: 2485de13-6c39-468c-9c26-fe08c27088f4
             Hint: pageSummary
-            Value: Discover wellness, lifestyle, and editorial content that inspires your everyday journey with Solterra & Co.
+            Value: SLB brings together science, digital technology, and global energy expertise to help teams improve performance today while building lower-carbon systems for tomorrow.
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260830T201233Z
           - ID: 27cd428b-f652-4534-b76f-33f64b742659
             Hint: pageShortTitle
-            Value: Solterra & Co.
+            Value: Home
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
             Value: "{57CC7DCE-E6B1-4564-9581-0E5850B8BDF2}"
           - ID: 4dd4e18f-b1a3-4225-967f-b4ec9f68928c
             Hint: ogDescription
-            Value: Discover wellness, lifestyle, and editorial content that inspires your everyday journey with Solterra & Co.
+            Value: Discover how SLB combines science, digital technology, and energy expertise to improve performance, decarbonize industry, and scale new energy systems.
           - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
             Hint: __Owner
             Value: |
@@ -388,42 +385,40 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 65408499-25bc-49d0-a2ff-b2fdd798aafc
             Hint: ogImage
-            Value: |
-              <image mediaid="{B229B500-1CAB-40E4-9989-496FDEE77286}" />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" dam-id="114111" dam-content-type="Image" width="1416" height="1140" alt="View looking up between four white industrial storage vessels as two SLB operators climb the structures." />
           - ID: 8535365d-ae76-4875-ab5b-a618d5819af0
             Hint: metadataTitle
-            Value: Solterra & Co.
+            Value: SLB | Energy technology for a balanced planet
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 88ccba53-1b97-8813-a2b2-b39e4131babb
+            Value: 629ea99e-6e98-23a7-02be-a906ff7f2ca2
           - ID: 9b600e71-cf7a-4874-9032-f394a9bd2e48
             Hint: metadataDescription
-            Value: Discover wellness, lifestyle, and editorial content that inspires your everyday journey with Solterra & Co.
+            Value: Discover how SLB combines science, digital technology, and energy expertise to improve performance, decarbonize industry, and scale new energy systems.
           - ID: b29c617f-d9b1-42bd-badb-9504dbf19a75
             Hint: navigationTitle
             Value: Home
           - ID: b7979eed-6bcb-4117-80bc-4bcc6aab12a9
             Hint: pageHeaderTitle
-            Value: Solterra & Co.
+            Value: Engineering progress for a balanced planet
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
-            Value: |
-              sitecore\thomas.lin@sitecore.com
+            Value: sitecore\thomas.lin@sitecore.com
           - ID: c8f93afe-bfd4-4e8f-9c61-152559854661
             Hint: __Valid from
             Value: 20260830T201233Z
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
-            Value: 20260831T135535Z
+            Value: 20260904T203000Z
           - ID: e7f8a9b0-c1d2-4e3f-8a9b-0c1d2e3f4a5b
             Hint: metadataAuthor
-            Value: Sitecore
+            Value: SLB
           - ID: ed981ca0-271d-4543-b735-ecc955bd58a1
             Hint: ogTitle
-            Value: Solterra & Co.
+            Value: SLB | Energy technology for a balanced planet
           - ID: f6fcc0b6-31b2-49cd-8a66-4ba282a8ad24
             Hint: metadataKeywords
-            Value: Solterra & Co., wellness, editorial, lifestyle
+            Value: SLB, energy technology, digital, decarbonization, new energy
       - Version: 3
         Fields:
           - ID: 001dd393-96c5-490b-924a-b0f25cd9efd8

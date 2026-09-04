@@ -150,7 +150,7 @@ describe('ArticleListing Component', () => {
         screen.getByText(/Learn the fundamentals of React Hooks/)
       ).toBeInTheDocument();
       expect(
-        screen.getByText(/How Solterra & Co. works with partners/)
+        screen.getByText(/How SLB works across the energy ecosystem/)
       ).toBeInTheDocument();
     });
 
@@ -393,7 +393,7 @@ describe('ArticleListing Component', () => {
     it('should correctly transform featured content to articles', () => {
       render(<ArticleListing {...(defaultProps as unknown as Parameters<typeof ArticleListing>[0])} />);
 
-      // Solterra demo: Article 1 + QA Article 1
+      // Article 1 + QA Article 1
       expect(screen.getByText('Introduction to React Hooks')).toBeInTheDocument();
       expect(screen.getByText('Partners in Sustainability')).toBeInTheDocument();
     });

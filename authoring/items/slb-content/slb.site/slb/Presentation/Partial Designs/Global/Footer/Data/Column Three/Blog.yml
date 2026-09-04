@@ -1,52 +1,50 @@
-﻿---
-ID: "a4e67407-bb8a-434a-852d-9685e0322c5e"
-Parent: "194a7c9d-1977-4f11-9c2d-5d2ab083e05e"
-Template: "cfd30fc4-07fa-471e-9f85-3a1bf425c718"
+---
+ID: a4e67407-bb8a-434a-852d-9685e0322c5e
+Parent: 194a7c9d-1977-4f11-9c2d-5d2ab083e05e
+Template: cfd30fc4-07fa-471e-9f85-3a1bf425c718
 Path: /sitecore/content/slb/slb/Presentation/Partial Designs/Global/Footer/Data/Column Three/Blog
-BranchID: "ed920ceb-2272-432a-829e-4610b6b94945"
+BranchID: ed920ceb-2272-432a-829e-4610b6b94945
 SharedFields:
-- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
-  Hint: __Workflow
-  Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 200
-- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
-  Hint: __Shared revision
-  Value: "9d3a6fef-1de5-4f55-8bb2-d11d121315eb"
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{C741EE38-0AB0-4965-9FAE-B591E6FE72D1}"
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e
+    Hint: __Sortorder
+    Value: 200
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: be0758e8-ca1e-f790-cf19-70a95f3c1fe7
+  - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
+    Hint: __Originator
+    Value: "{C741EE38-0AB0-4965-9FAE-B591E6FE72D1}"
 Languages:
-- Language: en
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20260830T192818Z
-    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
-      Hint: __Workflow state
-      Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "9804dc95-0a60-4770-800c-13afe34ab9a3"
-    - ID: "969b132e-3dc2-4526-8f8d-61e3ea742df6"
-      Hint: link
-      Value: |
-        <link class="" querystring="" id="{F3C11CB3-DEBD-4388-9302-D07B8BC4F13B}" anchor="" target="" title="" linktype="internal" text="Blog" url="" />
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20260830T192901Z
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T192818Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 164c41f6-2770-6a04-3457-14591d095615
+          - ID: 969b132e-3dc2-4526-8f8d-61e3ea742df6
+            Hint: link
+            Value: <link class="" querystring="" id="{0A9D8FF9-E3AC-4A15-BFD9-68B981E38EB5}" anchor="" target="" title="" linktype="internal" text="Who we are" url="" />
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T203000Z

@@ -107,6 +107,16 @@ const authoredFieldsByTemplate = new Map([
             ["9fdcf3e1-5289-4ae0-b4e4-9460ad50814f", "linkOptional"],
         ],
     ],
+    [
+        "ccea3863-e5cc-4c75-8296-5b5ca47010fa",
+        [
+            ["2c13f52a-6d13-4688-92f7-ecafe6c718e9", "title"],
+            ["22427604-b117-4985-a6a4-cc8aba4e044d", "image 1"],
+            ["60629870-4b2c-4574-a086-ad5cf20fce16", "link1"],
+            ["c1dedbd1-c877-4834-8b0b-0ef9ce90af87", "image2"],
+            ["c4d68c1f-0cd0-41e2-b986-0fec9a910176", "link2"],
+        ],
+    ],
 ]);
 
 const heroDatasourceTemplateId = "a19c3230-c5ee-47a1-ae3f-12a1fc3c4273";
@@ -133,12 +143,42 @@ const manuallyManagedDatasourcePathById = new Map([
     ],
 ]);
 const legacySignatures = [
-    { label: "Solterra", pattern: /\bsolterra\b/i },
+    { label: "Solterra", pattern: /\bsolterr?a\b/i },
     { label: "wellness starter copy", pattern: /\bwellness\b/i },
     { label: "lifestyle starter copy", pattern: /\blifestyle\b/i },
     {
         label: "confidence-revolution starter copy",
         pattern: /\bconfidence revolution\b/i,
+    },
+    { label: "inspired-brands starter copy", pattern: /\binspired brands\b/i },
+    {
+        label: "beauty starter copy",
+        pattern: /\bessential beauty\b|latest beauty solutions/i,
+    },
+    { label: "Green Horizon starter copy", pattern: /\bGreen Horizon\b/i },
+    { label: "starter reach claim", pattern: /\b3\.4 billion people\b/i },
+    {
+        label: "starter solar-panel copy",
+        pattern: /Solar panels convert sunlight into electricity/i,
+    },
+    { label: "Alaris Standard Value", pattern: /Join the Alaris revolution/i },
+    { label: "Alaris tagline", pattern: /^\s*Drive Beyond\s*$/i },
+    {
+        label: "starter answer placeholder",
+        pattern: /ANSWER 1, Hello from Minyie/i,
+    },
+    { label: "starter hero placeholder", pattern: /HERO PLACEHOLDER/i },
+    { label: "starter text placeholder", pattern: /Text Text text!/i },
+    { label: "starter container placeholder", pattern: /<p>container 2<\/p>/i },
+    {
+        label: "starter fictitious testimonial",
+        pattern: /LUMEA RENEWABLES|EVERGEN POWER|\bCurrent made going green\b/i,
+    },
+    { label: "starter Symposium link", pattern: /Sitecore Symposium 2024/i },
+    {
+        label: "starter Sitecore link",
+        pattern:
+            /<link\b[^>]*\burl="(?:https?:\/\/)?(?:www\.)?sitecore\.com\b/i,
     },
 ];
 const starterPlaceholderSignatures = [
@@ -550,6 +590,48 @@ for (const filePath of serializedFiles(serializationRoot)) {
     const id = normalizedGuid(document.ID);
     if (id) itemById.set(id, item);
     if (document.Path) itemByPath.set(String(document.Path), item);
+}
+
+for (const { document } of items) {
+    const itemPath = String(document.Path ?? "<unknown item>");
+    const values = [itemPath, ...fieldValues(document.SharedFields)];
+    for (const languageItem of document.Languages ?? []) {
+        values.push(...fieldValues(languageItem.Fields));
+        for (const version of languageItem.Versions ?? []) {
+            values.push(...fieldValues(version.Fields));
+        }
+    }
+    assertNoLegacyValues(values, `${itemPath} serialized fields`);
+
+    const requiresDamImages =
+        itemPath === "/sitecore/content/slb/slb/Home" ||
+        itemPath.startsWith("/sitecore/content/slb/slb/Home/Data") ||
+        itemPath.startsWith(
+            "/sitecore/content/slb/slb/Presentation/Partial Designs/Global/Header/Data",
+        ) ||
+        itemPath.startsWith(
+            "/sitecore/content/slb/slb/Presentation/Partial Designs/Global/Footer/Data",
+        );
+    if (requiresDamImages) {
+        for (const value of values) {
+            if (
+                /<image\b[^>]*\bmediaid="\{?[0-9a-f-]+\}?"/i.test(value) &&
+                !/<image\b[^>]*\bsrc="https:\/\/thlt-demo\.sitecoresandbox\.cloud\/api\/public\/content\//i.test(
+                    value,
+                )
+            ) {
+                fail(`${itemPath} contains an inherited local media image.`);
+            }
+        }
+    }
+
+    const templateId = normalizedGuid(document.Template);
+    if (
+        itemPath.startsWith("/sitecore/content/slb/slb/Home/Data") &&
+        authoredFieldsByTemplate.has(templateId)
+    ) {
+        assertExplicitAuthoredFields(document, itemPath, templateId);
+    }
 }
 
 for (const [itemId, expectedPath] of manuallyManagedDatasourcePathById) {
@@ -1033,5 +1115,7 @@ if (failures.length > 0) {
         "- Serialized item revisions are content-sensitive and current",
     );
     console.log("- Supporting images unique per page; U04 focus imagery valid");
-    console.log("- No legacy Solterra signatures in authored content");
+    console.log(
+        "- No legacy starter signatures in any serialized SLB item or version",
+    );
 }

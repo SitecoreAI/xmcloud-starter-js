@@ -1,53 +1,53 @@
-﻿---
-ID: "1468d70d-bebf-46f7-b404-65712a324ef3"
-Parent: "6ec6aec3-72c3-4348-a7f6-a20a0dd3d855"
-Template: "efd96479-7bf2-4be1-a08a-b01e59f92cdc"
+---
+ID: 1468d70d-bebf-46f7-b404-65712a324ef3
+Parent: 6ec6aec3-72c3-4348-a7f6-a20a0dd3d855
+Template: efd96479-7bf2-4be1-a08a-b01e59f92cdc
 Path: /sitecore/content/slb/slb/Presentation/Partial Designs/Global/Header/Data/Global Header
-BranchID: "ed920ceb-2272-432a-829e-4610b6b94945"
+BranchID: ed920ceb-2272-432a-829e-4610b6b94945
 SharedFields:
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{615185A5-8A93-4119-9E26-A8494A6A2135}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: e8fc8f9a-1d98-a144-6ec2-4dfb5a0d3334
+  - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
+    Hint: __Originator
+    Value: "{615185A5-8A93-4119-9E26-A8494A6A2135}"
 Languages:
-- Language: en
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20260830T192819Z
-    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
-      Hint: __Workflow state
-      Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
-    - ID: "4da75bcf-390e-46fa-ad87-926ec4db0876"
-      Hint: headerLogo
-      Value: |
-        <image mediaid="{E732C884-8655-4A03-B8B0-F7EBA817E231}" alt="Logo" />
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\Admin
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "1572ef1a-dfc3-4536-841f-2409beb8f746"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20260830T192900Z
-    - ID: "e3289100-a242-4fc7-814f-0ffef0ffe8bd"
-      Hint: headerContact
-      Value: |
-        <link class="" querystring="" id="{F3C11CB3-DEBD-4388-9302-D07B8BC4F13B}" anchor="" target="" title="" linktype="internal" text="Get In Touch" url="" />
-    - ID: "f073d52d-022c-4560-90c2-71fc674cf8bf"
-      Hint: primaryNavigationLinks
-      Value: |
-        {5E2EE404-D626-4173-9E3C-F3792442EDB0}
-        {2D319278-C4C4-4808-ABE9-CC48633D28E3}
-        {9365B042-0D8A-47B8-96E3-AAF0801AF2EB}
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T192819Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 4da75bcf-390e-46fa-ad87-926ec4db0876
+            Hint: headerLogo
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/6c243fbaffa74bf2b8b8d038894409cd?v=2d0f1d15" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/6c243fbaffa74bf2b8b8d038894409cd?v=2d0f1d15" dam-content-type="Image" alt="SLB" />
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\Admin
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: a1cc7805-3628-3753-b4d1-90ebd0289b47
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T203000Z
+          - ID: e3289100-a242-4fc7-814f-0ffef0ffe8bd
+            Hint: headerContact
+            Value: <link class="" querystring="" id="{6C22FC8E-534E-4B2F-9F7B-638C01B2DB43}" anchor="" target="" title="" linktype="internal" text="Contact us" url="" />
+          - ID: f073d52d-022c-4560-90c2-71fc674cf8bf
+            Hint: primaryNavigationLinks
+            Value: |
+              {5E2EE404-D626-4173-9E3C-F3792442EDB0}
+              {2D319278-C4C4-4808-ABE9-CC48633D28E3}
+              {9365B042-0D8A-47B8-96E3-AAF0801AF2EB}

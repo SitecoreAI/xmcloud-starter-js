@@ -1,22 +1,19 @@
 ---
-ID: 2dd70bb2-8570-4aeb-930e-2dd00900fde0
-Parent: b7ffc99a-1315-4e3d-ba50-881de1f899a3
-Template: 15e94068-d790-48f2-aa56-44836ff7042a
-Path: /sitecore/content/slb/slb/Home/Data/Topic Listing/Topic Link 3
-BranchID: 67d5aed7-9d44-4899-925d-d06ef478b9fb
+ID: b3b1bdae-9e07-4781-8c9f-dd1f8c1e4e38
+Parent: 9675def5-1ea2-476e-9524-48c79be1fbbb
+Template: e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b
+Path: /sitecore/content/slb/slb/Data/AI Config/FAQ/Contact SLB
+BranchID: 1a1b2c3d-4e5f-4a6b-7c8d-9e0f1a2b3c4d
 SharedFields:
-  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
-    Hint: __Workflow
-    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e
     Hint: __Sortorder
-    Value: 75
+    Value: 400
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 498c08aa-03f4-8a65-3731-a54b99b84701
+    Value: 9d6b67fd-ea92-ff2b-e22d-2e0044b78359
   - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
     Hint: __Originator
-    Value: "{63B9F730-AF6C-4A22-8983-C88332D07909}"
+    Value: "{2C9D0E1F-2A3B-4C4D-5E6F-7A8B9C0D1E2F}"
 Languages:
   - Language: en
     Versions:
@@ -24,27 +21,30 @@ Languages:
         Fields:
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
-            Value: 20260830T192805Z
+            Value: 20260830T192850Z
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
-            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
           - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
             Hint: __Owner
             Value: |
-              sitecore\Admin
+              sitecore\thomas.lin@sitecore.com
           - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
             Hint: __Created by
             Value: |
               sitecore\thomas.lin@sitecore.com
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: a68be3a7-1d39-cadf-019b-124154a0a9ab
+            Value: b627f6e5-5296-748c-0078-6d9cc5b14b59
+          - ID: a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d
+            Hint: question
+            Value: How can I contact SLB?
+          - ID: b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e
+            Hint: answer
+            Value: Use the Contact us page to route questions about technologies, operations, careers, investors, or media. Include the topic and region so the request can reach the right SLB team.
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
             Value: 20260904T203000Z
-          - ID: d9d7a7a2-017d-4a0e-92ab-3608b2c88afe
-            Hint: linkOptional
-            Value: <link class="" querystring="" id="{8820D35F-F544-4E9A-88A9-A0F49B23A25E}" anchor="" target="" title="" linktype="internal" text="Industrial decarbonization" url="" />

@@ -1,43 +1,44 @@
-﻿---
-ID: "366710fe-465d-4301-ab19-dc012faad6da"
-Parent: "5313907a-cb9d-469b-b761-db8641732c61"
-Template: "dfed4457-d760-457a-bec1-c0dccdc44381"
+---
+ID: 366710fe-465d-4301-ab19-dc012faad6da
+Parent: 5313907a-cb9d-469b-b761-db8641732c61
+Template: dfed4457-d760-457a-bec1-c0dccdc44381
 Path: /sitecore/content/slb/slb/Home/Data/Test Promo 1
-BranchID: "67d5aed7-9d44-4899-925d-d06ef478b9fb"
+BranchID: 67d5aed7-9d44-4899-925d-d06ef478b9fb
 SharedFields:
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{3173A754-BEA4-4C11-BBF3-AB1A98CDC761}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 5ce93eaf-8403-cd27-5a95-f4d57c409d65
+  - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
+    Hint: __Originator
+    Value: "{3173A754-BEA4-4C11-BBF3-AB1A98CDC761}"
 Languages:
-- Language: en
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20260830T192803Z
-    - ID: "28079f3a-896b-4273-be5f-59d0ebb7cd7d"
-      Hint: PromoText
-      Value: |
-        <div class="ck-content"><p>container 2</p></div>
-    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
-      Hint: __Workflow state
-      Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\Admin
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "87b60cd7-0ecc-453f-afbb-3e9ecbfd52ca"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20260830T192853Z
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T192803Z
+          - ID: 28079f3a-896b-4273-be5f-59d0ebb7cd7d
+            Hint: PromoText
+            Value: <div class="ck-content"><p>Science, technology, and domain expertise move together from insight to execution.</p></div>
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{F7FE5BDD-A991-4A58-9735-CD08F9B097AB}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\Admin
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 98673034-1562-4b5c-68b2-6faf1c1b3aec
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T203000Z

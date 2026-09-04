@@ -1,48 +1,59 @@
-﻿---
-ID: "5cb88e2b-7527-4f7b-b108-93b451d87470"
-Parent: "f4fde065-f3a9-466c-a06e-23d7a6602357"
-Template: "ccea3863-e5cc-4c75-8296-5b5ca47010fa"
+---
+ID: 5cb88e2b-7527-4f7b-b108-93b451d87470
+Parent: f4fde065-f3a9-466c-a06e-23d7a6602357
+Template: ccea3863-e5cc-4c75-8296-5b5ca47010fa
 Path: /sitecore/content/slb/slb/Home/Data/MultiPromoTabs/Livelihoods
-BranchID: "67d5aed7-9d44-4899-925d-d06ef478b9fb"
+BranchID: 67d5aed7-9d44-4899-925d-d06ef478b9fb
 SharedFields:
-- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
-  Hint: __Workflow
-  Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
-- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
-  Hint: __Shared revision
-  Value: "222990ba-77c9-41a3-b4ef-e0d21a8bd359"
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{DF60C054-E49C-4687-AFAC-A0F56DC8D5B9}"
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: ac9e51ef-b1de-3522-29c8-1c642080d32e
+  - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
+    Hint: __Originator
+    Value: "{DF60C054-E49C-4687-AFAC-A0F56DC8D5B9}"
 Languages:
-- Language: en
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20260830T192803Z
-    - ID: "2c13f52a-6d13-4688-92f7-ecafe6c718e9"
-      Hint: title
-      Value: Livelihoods
-    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
-      Hint: __Workflow state
-      Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "370327f5-2846-42a6-a7a0-d6d105fc52f0"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20260830T192853Z
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 22427604-b117-4985-a6a4-cc8aba4e044d
+            Hint: image 1
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" dam-id="114127" dam-content-type="Image" width="1100" height="900" alt="Colleagues meet in a spacious modern SLB workplace." />
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T192803Z
+          - ID: 2c13f52a-6d13-4688-92f7-ecafe6c718e9
+            Hint: title
+            Value: People and communities
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 60629870-4b2c-4574-a086-ad5cf20fce16
+            Hint: link1
+            Value: <link class="" querystring="" id="{AB58855D-EFF9-42E1-A9B7-74C6F30788F0}" anchor="" target="" title="" linktype="internal" text="Build capability close to the work" url="" />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 14e414a7-16f0-6fd2-ad08-4ac0b1e78639
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c1dedbd1-c877-4834-8b0b-0ef9ce90af87
+            Hint: image2
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" dam-id="114111" dam-content-type="Image" width="1416" height="1140" alt="View looking up between four white industrial storage vessels as two SLB operators climb the structures." />
+          - ID: c4d68c1f-0cd0-41e2-b986-0fec9a910176
+            Hint: link2
+            Value: <link class="" querystring="" id="{0A9D8FF9-E3AC-4A15-BFD9-68B981E38EB5}" anchor="" target="" title="" linktype="internal" text="Meet the people behind SLB" url="" />
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T203000Z

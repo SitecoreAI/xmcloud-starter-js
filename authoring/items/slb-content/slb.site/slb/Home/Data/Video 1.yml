@@ -1,53 +1,50 @@
-﻿---
-ID: "ca74d7aa-9c25-4aca-b3ff-07e4364026c9"
-Parent: "5313907a-cb9d-469b-b761-db8641732c61"
-Template: "13033574-ef4a-44a2-875f-cf4e7ca3592f"
+---
+ID: ca74d7aa-9c25-4aca-b3ff-07e4364026c9
+Parent: 5313907a-cb9d-469b-b761-db8641732c61
+Template: 13033574-ef4a-44a2-875f-cf4e7ca3592f
 Path: /sitecore/content/slb/slb/Home/Data/Video 1
-BranchID: "67d5aed7-9d44-4899-925d-d06ef478b9fb"
+BranchID: 67d5aed7-9d44-4899-925d-d06ef478b9fb
 SharedFields:
-- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
-  Hint: __Workflow
-  Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
-- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
-  Hint: __Shared revision
-  Value: "977e05f5-abea-4f87-b63b-388f05bf61e7"
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{8B87B8DB-DD81-45D3-842D-EF19953B27EB}"
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: b6ed0761-d173-09e5-a9c3-46c3baec6c84
+  - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
+    Hint: __Originator
+    Value: "{8B87B8DB-DD81-45D3-842D-EF19953B27EB}"
 Languages:
-- Language: en
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20260830T192805Z
-    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
-      Hint: __Workflow state
-      Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "7c168d4a-6e92-46cb-a89e-da9040d9df1d"
-      Hint: image
-      Value: |
-        <image mediaid="f8a68a36-ad81-4420-86d0-c2fdfe5ae094" />
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "acaa9448-8598-4d81-be1b-6c1cf03f3996"
-    - ID: "adfd7171-7c7d-4f1e-b881-637830556379"
-      Hint: video
-      Value: |
-        <link linktype="external" url="https://www.youtube.com/watch?v=EOFDFRrKTdw" target="" text="Sitecore Symposium 2024" title="" class=""/>
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20260830T192854Z
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T192805Z
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 7c168d4a-6e92-46cb-a89e-da9040d9df1d
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/2a769a236a594bc1845bc00e2c779366?v=8dcdc8aa" dam-id="114111" dam-content-type="Image" width="1416" height="1140" alt="View looking up between four white industrial storage vessels as two SLB operators climb the structures." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 31a467dd-c1e0-6056-ea60-c36a99ea5048
+          - ID: adfd7171-7c7d-4f1e-b881-637830556379
+            Hint: video
+            Value:
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T203000Z

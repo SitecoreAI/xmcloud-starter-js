@@ -190,8 +190,10 @@ export const Default: React.FC<GlobalFooterProps> = (props) => {
       footerPromoTitleField?.value ||
       footerPromoDescriptionField?.value,
   );
+  const isSlbSite = page.siteName?.trim().toLowerCase() === 'slb';
   const hasInheritedDatasource = hasLegacySolterraSignature(datasource);
   const needsLocalFallback =
+    isSlbSite ||
     hasInheritedDatasource ||
     (!isPageEditing && (!datasource || !hasVisibleDatasourceContent));
 

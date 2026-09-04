@@ -1,108 +1,104 @@
-﻿---
-ID: "7046414e-2735-46ad-8287-daf64b543233"
-Parent: "5313907a-cb9d-469b-b761-db8641732c61"
-Template: "bd372d9d-6e4f-4ae9-a54c-dbc2acdebe2a"
+---
+ID: 7046414e-2735-46ad-8287-daf64b543233
+Parent: 5313907a-cb9d-469b-b761-db8641732c61
+Template: bd372d9d-6e4f-4ae9-a54c-dbc2acdebe2a
 Path: /sitecore/content/slb/slb/Home/Data/AnimatedPromo
-BranchID: "67d5aed7-9d44-4899-925d-d06ef478b9fb"
+BranchID: 67d5aed7-9d44-4899-925d-d06ef478b9fb
 SharedFields:
-- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
-  Hint: __Workflow
-  Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
-- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
-  Hint: __Shared revision
-  Value: "a395033f-47a4-40bd-9111-bcbdbd4f1357"
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{52E1D4E1-91E3-447C-941C-6B04BBF01DD9}"
+  - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
+    Hint: __Workflow
+    Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
+  - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
+    Hint: __Shared revision
+    Value: 69885842-cf39-c8f1-e305-de5c9d29f015
+  - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
+    Hint: __Originator
+    Value: "{52E1D4E1-91E3-447C-941C-6B04BBF01DD9}"
 Languages:
-- Language: en
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20260830T192801Z
-    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
-      Hint: __Workflow state
-      Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "84a2a397-786e-43bd-85a0-bfbcc51fc3f3"
-      Hint: image
-      Value: |
-        <image mediaid="e0d46c29-cd99-4def-932f-430eb4335f54" alt="Female Author" />
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "aec659e4-5f37-4c0c-8849-f41188d862c6"
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "c00d4bd2-a452-4067-a861-e8c6d47201a7"
-      Hint: description
-      Value: "Stay in the loop with our Green Horizon newsletter, where we deliver bite-sized insights into the latest green energy solutions."
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20260830T192853Z
-    - ID: "da7db0f2-08eb-47c5-af07-ed12a1e998db"
-      Hint: title
-      Value: Start your career at Solterra & Co.
-    - ID: "e9e9c847-e0f0-497d-8e41-5211a087029a"
-      Hint: primaryLink
-      Value: |
-        <link linktype="external" url="www.sitecore.com" target="_blank" text="Explore Careers"/>
-- Language: "es-MX"
-  Versions:
-  - Version: 1
-    Fields:
-    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
-      Hint: __Created
-      Value: 20260830T192801Z
-    - ID: "3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea"
-      Hint: secondaryLink
-      Value: |
-        <link anchor="" target="" linktype="external" text="CTA de enlace secundario" url="https://www.sitecore.com" />
-    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
-      Hint: __Workflow state
-      Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
-    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
-      Hint: __Owner
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
-      Hint: __Created by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "84a2a397-786e-43bd-85a0-bfbcc51fc3f3"
-      Hint: image
-      Value: |
-        <image mediaid="e0d46c29-cd99-4def-932f-430eb4335f54" alt="Autora" />
-    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
-      Hint: __Revision
-      Value: "4fb658d8-d45d-4f6f-b3e7-3ff52e38eef3"
-    - ID: "9857f526-390f-48df-b6d1-1a97cc328e8f"
-      Hint: __Version Name
-      Value: AI translated
-    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
-      Hint: __Updated by
-      Value: |
-        sitecore\thomas.lin@sitecore.com
-    - ID: "c00d4bd2-a452-4067-a861-e8c6d47201a7"
-      Hint: description
-      Value: Mantente al tanto con nuestro boletín Green Horizon, donde compartimos información breve sobre las soluciones más recientes de energía verde.
-    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
-      Hint: __Updated
-      Value: 20260830T202523Z
-    - ID: "da7db0f2-08eb-47c5-af07-ed12a1e998db"
-      Hint: title
-      Value: Comienza tu carrera en Solterra & Co.
-    - ID: "e9e9c847-e0f0-497d-8e41-5211a087029a"
-      Hint: primaryLink
-      Value: |
-        <link target="_blank" linktype="external" text="Explora carreras" url="www.sitecore.com" />
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T192801Z
+          - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
+            Hint: secondaryLink
+            Value:
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" dam-id="114127" dam-content-type="Image" width="1100" height="900" alt="Colleagues meet in a spacious modern SLB workplace." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: 7e0124a2-8ed6-4576-d5f2-96382baa1447
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: Join a global team applying science, technology, and domain expertise to the world's most complex energy challenges.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T203000Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Build the future of energy with us
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value: <link linktype="external" url="https://careers.slb.com" target="_blank" text="Explore careers" title="" class="" />
+  - Language: es-MX
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: 25bed78c-4957-4165-998a-ca1b52f67497
+            Hint: __Created
+            Value: 20260830T192801Z
+          - ID: 3a2a1142-68ca-4f5b-afb0-c17d2c0ef8ea
+            Hint: secondaryLink
+            Value:
+          - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
+            Hint: __Workflow state
+            Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
+          - ID: 52807595-0f8f-4b20-8d2a-cb71d28c6103
+            Hint: __Owner
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 5dd74568-4d4b-44c1-b513-0af5f4cda34f
+            Hint: __Created by
+            Value: |
+              sitecore\thomas.lin@sitecore.com
+          - ID: 84a2a397-786e-43bd-85a0-bfbcc51fc3f3
+            Hint: image
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/78c08584a221494b87ed7b84df318dfa?v=cdcff087" dam-id="114127" dam-content-type="Image" width="1100" height="900" alt="Colleagues meet in a spacious modern SLB workplace." />
+          - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
+            Hint: __Revision
+            Value: fa11209c-aa39-4054-2440-2cd5cb97f997
+          - ID: 9857f526-390f-48df-b6d1-1a97cc328e8f
+            Hint: __Version Name
+            Value: AI translated
+          - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
+            Hint: __Updated by
+            Value: sitecore\thomas.lin@sitecore.com
+          - ID: c00d4bd2-a452-4067-a861-e8c6d47201a7
+            Hint: description
+            Value: Únase a un equipo global que aplica ciencia, tecnología y experiencia especializada a los desafíos energéticos más complejos del mundo.
+          - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
+            Hint: __Updated
+            Value: 20260904T203000Z
+          - ID: da7db0f2-08eb-47c5-af07-ed12a1e998db
+            Hint: title
+            Value: Construya con nosotros el futuro de la energía
+          - ID: e9e9c847-e0f0-497d-8e41-5211a087029a
+            Hint: primaryLink
+            Value: <link linktype="external" url="https://careers.slb.com" target="_blank" text="Explore oportunidades profesionales" title="" class="" />

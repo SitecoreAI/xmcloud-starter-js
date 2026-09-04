@@ -525,6 +525,39 @@ describe('GlobalHeader Component', () => {
   });
 
   describe('Edge cases and fallbacks', () => {
+    it('keeps the complete local SLB header when its clean authored datasource is present', () => {
+      const slbProps = {
+        ...defaultProps,
+        page: { ...defaultProps.page, siteName: 'SLB' },
+      } as GlobalHeaderProps;
+
+      const { rerender } = render(<GlobalHeader {...slbProps} />);
+
+      expect(
+        screen.getByTestId('slb-header-local-fallback'),
+      ).toBeInTheDocument();
+      expect(screen.getByTestId('slb-logo-fallback')).toBeInTheDocument();
+      expect(screen.getAllByRole('link', { name: 'Solutions' })).toHaveLength(
+        2,
+      );
+      expect(screen.getAllByRole('link', { name: 'Contact us' })).toHaveLength(
+        2,
+      );
+      expect(screen.queryByText('Get Started')).not.toBeInTheDocument();
+
+      rerender(
+        <GlobalHeader
+          {...slbProps}
+          page={{ ...propsEditing.page, siteName: 'slb' }}
+        />,
+      );
+
+      expect(
+        screen.getByTestId('slb-header-local-fallback'),
+      ).toBeInTheDocument();
+      expect(screen.queryByTestId('header-logo-image')).not.toBeInTheDocument();
+    });
+
     it('replaces inherited Solterra logo, navigation, and CTA with local SLB chrome', () => {
       const inheritedProps = {
         ...defaultProps,

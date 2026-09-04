@@ -362,6 +362,37 @@ describe('GlobalFooter Component', () => {
   });
 
   describe('Edge cases and fallbacks', () => {
+    it('keeps the complete local SLB footer when its clean authored datasource is present', () => {
+      const slbProps = {
+        ...defaultProps,
+        page: { ...defaultProps.page, siteName: 'SLB' },
+      } as GlobalFooterProps;
+
+      const { rerender } = render(<GlobalFooter {...slbProps} />);
+
+      expect(
+        screen.getByTestId('slb-footer-local-fallback'),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByTestId('slb-footer-logo-fallback'),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText('Energy insights, delivered'),
+      ).toBeInTheDocument();
+      expect(screen.queryByText('Stay Connected')).not.toBeInTheDocument();
+
+      rerender(
+        <GlobalFooter
+          {...slbProps}
+          page={{ ...propsEditing.page, siteName: 'slb' }}
+        />,
+      );
+
+      expect(
+        screen.getByTestId('slb-footer-local-fallback'),
+      ).toBeInTheDocument();
+    });
+
     it('should render the safe local SLB footer when fields are null', () => {
       render(<GlobalFooter {...propsWithoutFields} />);
 

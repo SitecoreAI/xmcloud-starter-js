@@ -1,8 +1,8 @@
 ---
-ID: 766bfabe-423e-40e6-a1f5-0650671cbfb2
+ID: 2d3824a4-46f7-4e86-83a7-b19ed1121942
 Parent: f4fde065-f3a9-466c-a06e-23d7a6602357
 Template: ccea3863-e5cc-4c75-8296-5b5ca47010fa
-Path: /sitecore/content/slb/slb/Home/Data/MultiPromoTabs/Nature
+Path: /sitecore/content/slb/slb/Home/Data/MultiPromoTabs/Circularity
 BranchID: 67d5aed7-9d44-4899-925d-d06ef478b9fb
 SharedFields:
   - ID: a4f985d9-98b3-4b52-aaaf-4344f6e747c6
@@ -10,13 +10,13 @@ SharedFields:
     Value: "{A053ED9F-4099-4682-9411-2B4C98E481E4}"
   - ID: ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e
     Hint: __Sortorder
-    Value: 50
+    Value: 75
   - ID: dbbbeca1-21c7-4906-9dd2-493c1efa59a2
     Hint: __Shared revision
-    Value: 3dab697a-3d73-55b0-b241-278772f7700a
+    Value: 1481e7fd-6fed-051d-e5d1-9b9254d7164e
   - ID: f6d8a61c-2f84-4401-bd24-52d2068172bc
     Hint: __Originator
-    Value: "{B5AE5324-DA4F-498F-A02E-F38A0A59A4FC}"
+    Value: "{F1914EE9-3A68-42F8-B824-2A9F3DD40A74}"
 Languages:
   - Language: en
     Versions:
@@ -24,13 +24,13 @@ Languages:
         Fields:
           - ID: 22427604-b117-4985-a6a4-cc8aba4e044d
             Hint: image 1
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-biodiversity-field-survey" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-biodiversity-field-survey" dam-id="114397" dam-content-type="Image" width="1672" height="941" alt="Field ecologists record biodiversity observations in native wetland habitat near an operating site." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-equipment-circularity-workshop" dam-id="114398" dam-content-type="Image" width="1672" height="941" alt="A technician inspects an industrial component in a circular equipment refurbishment center." />
           - ID: 25bed78c-4957-4165-998a-ca1b52f67497
             Hint: __Created
             Value: 20260830T192803Z
           - ID: 2c13f52a-6d13-4688-92f7-ecafe6c718e9
             Hint: title
-            Value: Nature
+            Value: Circularity
           - ID: 3e431de1-525e-47a3-b6b0-1ccbec3a8c98
             Hint: __Workflow state
             Value: "{4460E76C-87E9-4859-9DE6-DE122774937F}"
@@ -44,19 +44,19 @@ Languages:
               sitecore\thomas.lin@sitecore.com
           - ID: 60629870-4b2c-4574-a086-ad5cf20fce16
             Hint: link1
-            Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="" target="" title="" linktype="internal" text="Protect biodiversity" url="" />
+            Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="" target="" title="" linktype="internal" text="Design out waste" url="" />
           - ID: 8cdc337e-a112-42fb-bbb4-4143751e123f
             Hint: __Revision
-            Value: 66ccd179-aa24-78fa-71ef-f7ada887dd9e
+            Value: 2932096d-9768-367d-9677-402cfb39f80f
           - ID: badd9cf9-53e0-4d0c-bcc0-2d784c282f6a
             Hint: __Updated by
             Value: sitecore\thomas.lin@sitecore.com
           - ID: c1dedbd1-c877-4834-8b0b-0ef9ce90af87
             Hint: image2
-            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/slb-nature-water-sampling-operation" dam-id="114399" dam-content-type="Image" width="1672" height="941" alt="Environmental specialists collect a clear-water sample at an industrial water reuse facility." />
+            Value: <image mediaid="" src="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" thumbnailsrc="https://thlt-demo.sitecoresandbox.cloud/api/public/content/c1a62aad5a4e41ca94c2500ddcdc4937?v=1423fd76" dam-id="114114" dam-content-type="Image" width="1130" height="730" alt="SLB technician inspects a circular piece of precision industrial equipment." />
           - ID: c4d68c1f-0cd0-41e2-b986-0fec9a910176
             Hint: link2
-            Value: <link class="" querystring="" id="{B3B10FF5-0D79-44AB-89B3-8246A9C23CEC}" anchor="" target="" title="" linktype="internal" text="Strengthen water stewardship" url="" />
+            Value: <link class="" querystring="" id="{9D42BCDA-09FD-4A75-883E-0E15BE202902}" anchor="" target="" title="" linktype="internal" text="Extend equipment life" url="" />
           - ID: d9cf14b1-fa16-4ba6-9288-e8a174d4d522
             Hint: __Updated
             Value: 20260904T203000Z
