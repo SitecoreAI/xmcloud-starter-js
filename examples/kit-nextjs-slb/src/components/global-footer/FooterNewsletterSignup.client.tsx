@@ -22,9 +22,10 @@ const copy = {
     placeholder: 'you@company.com',
     submit: 'Subscribe',
     submitting: 'Subscribing…',
-    success: 'Thank you. You’re subscribed to SLB updates.',
+    success:
+      'Thank you. Your email and newsletter preference have been recorded.',
     invalid: 'Enter a valid email address.',
-    error: 'We couldn’t complete your subscription. Please try again.',
+    error: 'We couldn’t record your newsletter preference. Please try again.',
     unavailable: 'Newsletter signup is available on the published site.',
   },
   'es-MX': {
@@ -33,9 +34,10 @@ const copy = {
     placeholder: 'nombre@empresa.com',
     submit: 'Suscribirse',
     submitting: 'Suscribiendo…',
-    success: 'Gracias. Ya está suscrito a las novedades de SLB.',
+    success: 'Gracias. Guardamos su correo y preferencia para el boletín.',
     invalid: 'Ingrese un correo electrónico válido.',
-    error: 'No pudimos completar su suscripción. Inténtelo de nuevo.',
+    error:
+      'No pudimos guardar su preferencia para el boletín. Inténtelo de nuevo.',
     unavailable: 'La suscripción está disponible en el sitio publicado.',
   },
 } as const;
@@ -82,7 +84,7 @@ export function FooterNewsletterSignup({
     setSubmissionState('submitting');
 
     try {
-      await identity({
+      const response = await identity({
         identifiers: [{ id: normalizedEmail, provider: 'email' }],
         email: normalizedEmail,
         channel: 'WEB',
@@ -93,6 +95,11 @@ export function FooterNewsletterSignup({
           signupSource: 'global_footer',
         },
       });
+
+      if (!response) {
+        throw new Error('Sitecore identity event was not accepted');
+      }
+
       setEmail('');
       setSubmissionState('success');
     } catch {

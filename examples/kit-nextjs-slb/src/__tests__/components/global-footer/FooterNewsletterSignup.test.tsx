@@ -43,7 +43,7 @@ function submitEmail(value: string) {
 describe('FooterNewsletterSignup', () => {
   beforeEach(() => {
     mockIdentity.mockReset();
-    mockIdentity.mockResolvedValue(null);
+    mockIdentity.mockResolvedValue({ accepted: true });
     window.history.replaceState({}, '', '/solutions/digital-operations');
   });
 
@@ -80,7 +80,9 @@ describe('FooterNewsletterSignup', () => {
       }),
     );
     expect(
-      await screen.findByText('Thank you. You’re subscribed to SLB updates.'),
+      await screen.findByText(
+        'Thank you. Your email and newsletter preference have been recorded.',
+      ),
     ).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Email address' })).toHaveValue(
       '',
@@ -106,7 +108,7 @@ describe('FooterNewsletterSignup', () => {
     );
     expect(
       await screen.findByText(
-        'Gracias. Ya está suscrito a las novedades de SLB.',
+        'Gracias. Guardamos su correo y preferencia para el boletín.',
       ),
     ).toBeInTheDocument();
   });
@@ -126,10 +128,10 @@ describe('FooterNewsletterSignup', () => {
   });
 
   it('prevents duplicate submissions while the identity event is pending', async () => {
-    let resolveIdentity: ((value: null) => void) | undefined;
+    let resolveIdentity: ((value: { accepted: boolean }) => void) | undefined;
     mockIdentity.mockImplementation(
       () =>
-        new Promise<null>((resolve) => {
+        new Promise<{ accepted: boolean }>((resolve) => {
           resolveIdentity = resolve;
         }),
     );
@@ -142,10 +144,12 @@ describe('FooterNewsletterSignup', () => {
     expect(mockIdentity).toHaveBeenCalledTimes(1);
 
     await act(async () => {
-      resolveIdentity?.(null);
+      resolveIdentity?.({ accepted: true });
     });
     expect(
-      await screen.findByText('Thank you. You’re subscribed to SLB updates.'),
+      await screen.findByText(
+        'Thank you. Your email and newsletter preference have been recorded.',
+      ),
     ).toBeInTheDocument();
   });
 
@@ -157,7 +161,24 @@ describe('FooterNewsletterSignup', () => {
 
     expect(
       await screen.findByText(
-        'We couldn’t complete your subscription. Please try again.',
+        'We couldn’t record your newsletter preference. Please try again.',
+      ),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: 'Email address' })).toHaveValue(
+      'person@example.com',
+    );
+    expect(screen.getByRole('button', { name: 'Subscribe' })).toBeEnabled();
+  });
+
+  it('keeps the email available for retry when Sitecore returns no response', async () => {
+    mockIdentity.mockResolvedValue(null);
+    render(<FooterNewsletterSignup {...defaultProps} />);
+
+    submitEmail('person@example.com');
+
+    expect(
+      await screen.findByText(
+        'We couldn’t record your newsletter preference. Please try again.',
       ),
     ).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Email address' })).toHaveValue(

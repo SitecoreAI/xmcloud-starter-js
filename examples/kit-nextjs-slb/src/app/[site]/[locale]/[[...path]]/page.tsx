@@ -18,6 +18,8 @@ import {
   resolveSlbFallbackPage,
 } from '@/lib/slb-fallback-content';
 import {
+  getSlbPublicPathname,
+  getSlbPublicPathSegments,
   getPageWithFallbackAlias,
   resolveSlbPageLocale,
 } from '@/lib/slb-page-resolution';
@@ -41,8 +43,9 @@ export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
   const draft = await draftMode();
   const baseUrl = getBaseUrl();
+  const publicPath = getSlbPublicPathSegments(path);
   let effectiveLocale = locale;
-  let catalogFallbackPage = resolveSlbFallbackPage(effectiveLocale, path);
+  let catalogFallbackPage = resolveSlbFallbackPage(effectiveLocale, publicPath);
 
   // Fetch the page data from Sitecore
   let page;
@@ -53,7 +56,7 @@ export default async function Page({ params }: PageProps) {
       (previewData as { language?: unknown }).language,
       locale,
     );
-    catalogFallbackPage = resolveSlbFallbackPage(effectiveLocale, path);
+    catalogFallbackPage = resolveSlbFallbackPage(effectiveLocale, publicPath);
     if (isDesignLibraryPreviewData(previewData)) {
       page = await client.getDesignLibraryData(previewData);
     } else {
@@ -98,9 +101,7 @@ export default async function Page({ params }: PageProps) {
     sitecoreText(routeFields?.ogDescription) ||
     fallbackPage?.fields.seo.description;
 
-  const pathSegments = path && path.length > 0 ? path.join('/') : '';
-  const urlPath =
-    fallbackPage?.canonicalRoute || (pathSegments ? `/${pathSegments}` : '');
+  const urlPath = fallbackPage?.canonicalRoute || getSlbPublicPathname(path);
   const fullUrl = baseUrl ? `${baseUrl}${urlPath}` : undefined;
 
   const webPageSchema = generateWebPageSchema({
@@ -148,6 +149,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
   const baseUrl = getBaseUrl();
 
   const { path, site, locale } = await params;
+  const publicPath = getSlbPublicPathSegments(path);
   const draft = await draftMode();
   let effectiveLocale = locale;
   if (draft.isEnabled) {
@@ -157,12 +159,14 @@ export const generateMetadata = async ({ params }: PageProps) => {
       locale,
     );
   }
-  const catalogFallbackPage = resolveSlbFallbackPage(effectiveLocale, path);
+  const catalogFallbackPage = resolveSlbFallbackPage(
+    effectiveLocale,
+    publicPath,
+  );
 
   // Canonical URL: base URL + content path only (no site/locale segments)
   const pathSegment =
-    catalogFallbackPage?.canonicalRoute ||
-    (path?.length ? `/${path.join('/')}` : '');
+    catalogFallbackPage?.canonicalRoute || getSlbPublicPathname(path);
   const canonicalUrl = baseUrl ? `${baseUrl}${pathSegment}` : undefined;
   const slbLanguageRoutes = catalogFallbackPage
     ? getSlbLanguageRoutes(catalogFallbackPage)

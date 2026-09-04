@@ -1,5 +1,7 @@
 import type { SlbFallbackPageModel } from '@/lib/slb-fallback-content';
 
+const PERSONALIZATION_SEGMENT_PREFIX = '_variantId_';
+
 type PageFetcher<T> = (
   path: string[],
   options: { site: string; locale: string },
@@ -7,6 +9,32 @@ type PageFetcher<T> = (
 
 function routeSegments(route: string): string[] {
   return route.split(/[?#]/, 1)[0].split('/').filter(Boolean);
+}
+
+/**
+ * Sitecore component personalization uses internal rewrite segments in the
+ * route passed to the app. Keep those segments available to the Sitecore
+ * client, but remove them anywhere we expose or resolve the public URL.
+ */
+export function getSlbPublicPathname(
+  path: readonly string[] | undefined,
+): string {
+  const segments = getSlbPublicPathSegments(path);
+  return segments.length ? `/${segments.join('/')}` : '/';
+}
+
+export function getSlbPublicPathSegments(
+  path: readonly string[] | undefined,
+): string[] {
+  return (path ?? []).filter(
+    (segment) => !segment.startsWith(PERSONALIZATION_SEGMENT_PREFIX),
+  );
+}
+
+function personalizationSegments(path: readonly string[]): string[] {
+  return path.filter((segment) =>
+    segment.startsWith(PERSONALIZATION_SEGMENT_PREFIX),
+  );
 }
 
 function sameSegments(
@@ -66,7 +94,11 @@ export async function getPageWithFallbackAlias<T>({
   }
 
   const sharedItemPath = routeSegments(fallbackPage.alternateRoute);
-  if (sameSegments(requestedPath, sharedItemPath)) return page;
+  const publicRequestedPath = getSlbPublicPathSegments(requestedPath);
+  if (sameSegments(publicRequestedPath, sharedItemPath)) return page;
 
-  return getPage(sharedItemPath, { site, locale });
+  return getPage(
+    [...sharedItemPath, ...personalizationSegments(requestedPath)],
+    { site, locale },
+  );
 }
