@@ -84,6 +84,13 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
   // Page Builder. Rendering empty gallery slots there makes the authored page
   // look materially different from its published presentation.
   const useSingleMediaLayout = populatedMedia.length === 1;
+  const isHomePage = page.layout.sitecore.route?.name?.toLowerCase() === 'home';
+  // Long editorial headings need a wider line measure so the introduction
+  // and next action remain visible together on a laptop-sized screen.
+  const useLongTitleLayout =
+    useSingleMediaLayout &&
+    !isHomePage &&
+    (titleField?.value?.trim().length || 0) > 48;
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -98,7 +105,9 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
         className={cn(
           'flex flex-col items-stretch gap-8',
           useSingleMediaLayout
-            ? '@lg:justify-center @lg:py-20 @xl:py-28'
+            ? useLongTitleLayout
+              ? '@lg:justify-center @lg:py-12 @xl:py-14'
+              : '@lg:justify-center @lg:py-20 @xl:py-28'
             : '@lg:flex-row @lg:items-start @lg:gap-16',
         )}
         reducedMotion={prefersReducedMotion}
@@ -111,7 +120,9 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
             className={cn(
               'font-heading text-pretty font-light tracking-[-0.04em]',
               useSingleMediaLayout
-                ? '@md:text-[64px] @md:leading-[64px] @xl:text-[88px] @xl:leading-[86px] max-w-[12ch] text-[44px] leading-[46px]'
+                ? useLongTitleLayout
+                  ? '@md:text-[52px] @md:leading-[56px] @xl:text-[60px] @xl:leading-[62px] max-w-[18ch] text-[40px] leading-[44px]'
+                  : '@md:text-[64px] @md:leading-[64px] @xl:text-[88px] @xl:leading-[86px] max-w-[12ch] text-[44px] leading-[46px]'
                 : '@lg:basis-7/12 @lg:text-[72px] @lg:leading-[80px] text-[40px] leading-[48px]',
             )}
           />
@@ -163,13 +174,28 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
         data-media-layout={useSingleMediaLayout ? 'single' : 'gallery'}
       >
         {useSingleMediaLayout ? (
-          <div className="slb-page-shell grid min-h-[42rem] gap-10 py-10 @lg:grid-cols-12 @lg:gap-0 @lg:py-0">
+          <div
+            className={cn(
+              'slb-page-shell grid gap-10 py-10 @lg:grid-cols-12 @lg:gap-0 @lg:py-0',
+              useLongTitleLayout ? 'min-h-[36rem]' : 'min-h-[42rem]',
+            )}
+          >
             <div className="@lg:col-span-6 @lg:pr-16 @xl:pr-24">{heroCopy}</div>
-            <div className="relative min-h-[22rem] @lg:col-span-6 @lg:min-h-[42rem]">
+            <div
+              className={cn(
+                'relative min-h-[22rem] @lg:col-span-6',
+                useLongTitleLayout ? '@lg:min-h-[36rem]' : '@lg:min-h-[42rem]',
+              )}
+            >
               <MediaSection
                 video={populatedMedia[0]?.video?.value?.href}
                 image={populatedMedia[0]?.image}
-                className="relative h-full min-h-[22rem] @lg:min-h-[42rem]"
+                className={cn(
+                  'relative h-full min-h-[22rem]',
+                  useLongTitleLayout
+                    ? '@lg:min-h-[36rem]'
+                    : '@lg:min-h-[42rem]',
+                )}
                 pause={!isPlaying}
                 reducedMotion={prefersReducedMotion}
               />
