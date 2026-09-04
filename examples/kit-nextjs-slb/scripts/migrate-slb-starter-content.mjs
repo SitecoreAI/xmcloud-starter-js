@@ -125,10 +125,16 @@ const items = [
         file: "Home.yml",
         id: "7c4e1c03-65c5-4cf5-91b9-dcbaaef23e09",
         sharedFields: {
-            __Thumbnail: explicitField(
-                "c7c26117-dbb1-42b2-ab5e-f7223845cca3",
-                damImages.hero,
-            ),
+            __Thumbnail: {
+                ...explicitField(
+                    "c7c26117-dbb1-42b2-ab5e-f7223845cca3",
+                    damImages.hero,
+                ),
+                // Authoring GraphQL accepts this system-field update but leaves
+                // the media-library thumbnail unchanged. Keep serialization
+                // clean without treating the non-published field as live data.
+                applyLive: false,
+            },
         },
         versions: [{ language: "en", versions: [1, 2], fields: homeMetadata }],
     },
@@ -1241,14 +1247,18 @@ function applyItemEdits(item) {
         for (const [hint, specification] of Object.entries(item.sharedFields)) {
             const id = fieldIdFor(document, hint, specification.id);
             upsertField(shared, id, hint, specification.value);
-            updateFields.push({ id, value: specification.value });
+            if (specification.applyLive !== false) {
+                updateFields.push({ id, value: specification.value });
+            }
         }
-        liveUpdates.push({
-            itemId: normalizedGuid(item.id),
-            language: "en",
-            fields: updateFields,
-            expectedPath: document.Path,
-        });
+        if (updateFields.length) {
+            liveUpdates.push({
+                itemId: normalizedGuid(item.id),
+                language: "en",
+                fields: updateFields,
+                expectedPath: document.Path,
+            });
+        }
     }
 
     for (const scope of item.versions ?? []) {
@@ -1407,7 +1417,43 @@ async function updateLiveItems(liveUpdates) {
 }
 
 async function renameLiveItems(renameItems) {
+    const pending = [];
+    let alreadyRenamed = 0;
     for (const batch of chunks(renameItems, 10)) {
+        const selections = batch
+            .map(
+                (item, index) =>
+                    `r${index}: item(where: { database: "master", itemId: ${graphQlString(normalizedGuid(item.id))}, language: "en" }) { itemId name path }`,
+            )
+            .join("\n");
+        const data = await graphQl(
+            `query PreflightSlbRenames { ${selections} }`,
+        );
+        batch.forEach((item, index) => {
+            const current = data[`r${index}`];
+            if (normalizedGuid(current?.itemId) !== normalizedGuid(item.id)) {
+                throw new Error(
+                    `Sitecore item ${item.id} is missing before rename.`,
+                );
+            }
+            if (current.name === item.targetName) {
+                alreadyRenamed += 1;
+                return;
+            }
+            const sourceName = path.basename(
+                item.file,
+                path.extname(item.file),
+            );
+            if (current.name !== sourceName) {
+                throw new Error(
+                    `Refusing to rename ${item.id}: expected ${sourceName} or ${item.targetName}, found ${current.name}.`,
+                );
+            }
+            pending.push(item);
+        });
+    }
+
+    for (const batch of chunks(pending, 10)) {
         const mutations = batch
             .map(
                 (item, index) =>
@@ -1429,9 +1475,14 @@ async function renameLiveItems(renameItems) {
             }
         });
     }
-    if (renameItems.length) {
+    if (pending.length) {
         console.log(
-            `Renamed ${renameItems.length} live items without changing GUIDs.`,
+            `Renamed ${pending.length} live items without changing GUIDs.`,
+        );
+    }
+    if (alreadyRenamed) {
+        console.log(
+            `Confirmed ${alreadyRenamed} live items were already renamed.`,
         );
     }
 }
