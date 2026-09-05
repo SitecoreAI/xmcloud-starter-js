@@ -2,6 +2,7 @@
 
 import type { FormEvent } from 'react';
 import { useId, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import type { Field } from '@sitecore-content-sdk/nextjs';
 import { Text } from '@sitecore-content-sdk/nextjs';
 import { identity } from '@sitecore-content-sdk/events';
@@ -50,6 +51,7 @@ export function FooterNewsletterSignup({
   locale,
   trackingEnabled = true,
 }: FooterNewsletterSignupProps) {
+  const router = useRouter();
   const language = locale?.toLowerCase() === 'es-mx' ? 'es-MX' : 'en';
   const labels = copy[language];
   const inputId = useId();
@@ -102,6 +104,14 @@ export function FooterNewsletterSignup({
 
       setEmail('');
       setSubmissionState('success');
+
+      // Re-evaluate server-side personalization with the identified visitor,
+      // and discard prefetched content from their anonymous journey.
+      try {
+        router.refresh();
+      } catch {
+        // The identity event succeeded even if the optional refresh failed.
+      }
     } catch {
       setSubmissionState('error');
     }

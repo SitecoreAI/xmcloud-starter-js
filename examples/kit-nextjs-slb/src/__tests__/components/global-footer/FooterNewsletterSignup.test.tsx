@@ -9,6 +9,11 @@ import {
 import { FooterNewsletterSignup } from '@/components/global-footer/FooterNewsletterSignup.client';
 
 const mockIdentity = jest.fn();
+const mockRefresh = jest.fn();
+
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({ refresh: mockRefresh }),
+}));
 
 jest.mock('@sitecore-content-sdk/events', () => ({
   identity: (...args: unknown[]) => mockIdentity(...args),
@@ -43,6 +48,7 @@ function submitEmail(value: string) {
 describe('FooterNewsletterSignup', () => {
   beforeEach(() => {
     mockIdentity.mockReset();
+    mockRefresh.mockReset();
     mockIdentity.mockResolvedValue({ accepted: true });
     window.history.replaceState({}, '', '/solutions/digital-operations');
   });
@@ -87,6 +93,7 @@ describe('FooterNewsletterSignup', () => {
     expect(screen.getByRole('textbox', { name: 'Email address' })).toHaveValue(
       '',
     );
+    expect(mockRefresh).toHaveBeenCalledTimes(1);
   });
 
   it('uses bilingual Spanish copy and the ES event language', async () => {
@@ -125,6 +132,7 @@ describe('FooterNewsletterSignup', () => {
       screen.getByRole('textbox', { name: 'Email address' }),
     ).toHaveAttribute('aria-invalid', 'true');
     expect(mockIdentity).not.toHaveBeenCalled();
+    expect(mockRefresh).not.toHaveBeenCalled();
   });
 
   it('prevents duplicate submissions while the identity event is pending', async () => {
@@ -142,6 +150,7 @@ describe('FooterNewsletterSignup', () => {
     expect(screen.getByRole('button', { name: 'Subscribing…' })).toBeDisabled();
     fireEvent.submit(screen.getByRole('form', { name: 'Newsletter signup' }));
     expect(mockIdentity).toHaveBeenCalledTimes(1);
+    expect(mockRefresh).not.toHaveBeenCalled();
 
     await act(async () => {
       resolveIdentity?.({ accepted: true });
@@ -151,6 +160,7 @@ describe('FooterNewsletterSignup', () => {
         'Thank you. Your email and newsletter preference have been recorded.',
       ),
     ).toBeInTheDocument();
+    expect(mockRefresh).toHaveBeenCalledTimes(1);
   });
 
   it('keeps the email available for retry when Sitecore rejects the event', async () => {
@@ -168,6 +178,7 @@ describe('FooterNewsletterSignup', () => {
       'person@example.com',
     );
     expect(screen.getByRole('button', { name: 'Subscribe' })).toBeEnabled();
+    expect(mockRefresh).not.toHaveBeenCalled();
   });
 
   it('keeps the email available for retry when Sitecore returns no response', async () => {
@@ -185,6 +196,26 @@ describe('FooterNewsletterSignup', () => {
       'person@example.com',
     );
     expect(screen.getByRole('button', { name: 'Subscribe' })).toBeEnabled();
+    expect(mockRefresh).not.toHaveBeenCalled();
+  });
+
+  it('preserves an accepted signup if the personalization refresh fails', async () => {
+    mockRefresh.mockImplementation(() => {
+      throw new Error('Router refresh unavailable');
+    });
+    render(<FooterNewsletterSignup {...defaultProps} />);
+
+    submitEmail('person@example.com');
+
+    expect(
+      await screen.findByText(
+        'Thank you. Your email and newsletter preference have been recorded.',
+      ),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Subscribe' })).toBeDisabled();
+    expect(mockIdentity).toHaveBeenCalledTimes(1);
+    expect(mockRefresh).toHaveBeenCalledTimes(1);
   });
 
   it('does not submit when tracking is disabled outside normal mode', () => {
@@ -200,5 +231,6 @@ describe('FooterNewsletterSignup', () => {
       screen.getByText('Newsletter signup is available on the published site.'),
     ).toBeInTheDocument();
     expect(mockIdentity).not.toHaveBeenCalled();
+    expect(mockRefresh).not.toHaveBeenCalled();
   });
 });
