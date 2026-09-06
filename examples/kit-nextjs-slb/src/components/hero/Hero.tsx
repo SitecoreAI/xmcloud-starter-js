@@ -103,7 +103,7 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
       <AnimatedSection
         direction="up"
         className={cn(
-          'flex flex-col items-stretch gap-8',
+          'flex min-w-0 flex-col items-stretch gap-8',
           useSingleMediaLayout
             ? useLongTitleLayout
               ? '@lg:justify-center @lg:py-12 @xl:py-14'
@@ -129,7 +129,7 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
         )}
         <div
           className={cn(
-            'flex flex-col gap-8',
+            'flex min-w-0 flex-col gap-8',
             useSingleMediaLayout
               ? '@lg:max-w-[35rem]'
               : '@lg:basis-5/12 @lg:gap-10 @lg:pt-3',
@@ -139,7 +139,7 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
             <Text
               tag="p"
               className={cn(
-                'font-body max-w-[46rem] text-base font-normal leading-6 @md:text-lg @md:leading-7',
+                'font-body max-w-[46rem] text-base font-normal leading-6 [overflow-wrap:anywhere] @md:text-lg @md:leading-7',
                 {
                   'text-white/90': isDarkSurface,
                   'text-foreground/75': !isDarkSurface,
@@ -149,14 +149,17 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
             />
           )}
           {linkField && (
-            <div>
+            <div className="min-w-0">
               <EditableButton
                 buttonLink={linkField}
-                className={
+                className={cn(
+                  // Page Builder nests the editable link inside a button-styled
+                  // span. Let both wrap, but apply the touch height only once.
+                  'h-auto min-h-[50px] max-w-full whitespace-normal text-center [overflow-wrap:anywhere] [&_a]:min-h-0',
                   isDarkSurface
                     ? 'border-2 border-white bg-white text-primary hover:border-secondary hover:bg-secondary'
-                    : ''
-                }
+                    : '',
+                )}
                 isPageEditing={isPageEditing}
                 contextTitle={titleField?.value}
               />
@@ -176,11 +179,13 @@ export const Default: React.FC<HeroProps> = ({ fields, params, page }) => {
         {useSingleMediaLayout ? (
           <div
             className={cn(
-              'slb-page-shell grid gap-10 py-10 @lg:grid-cols-12 @lg:gap-0 @lg:py-0',
+              'slb-page-shell grid grid-cols-1 gap-10 py-10 @lg:grid-cols-12 @lg:gap-0 @lg:py-0',
               useLongTitleLayout ? 'min-h-[36rem]' : 'min-h-[42rem]',
             )}
           >
-            <div className="@lg:col-span-6 @lg:pr-16 @xl:pr-24">{heroCopy}</div>
+            <div className="min-w-0 @lg:col-span-6 @lg:pr-16 @xl:pr-24">
+              {heroCopy}
+            </div>
             <div
               className={cn(
                 'relative min-h-[22rem] @lg:col-span-6',

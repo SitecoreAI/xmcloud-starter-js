@@ -500,6 +500,74 @@ describe('Hero Component', () => {
     });
   });
 
+  describe('Narrow single-media layout', () => {
+    const variantBProps: HeroProps = {
+      ...propsWithSingleImage,
+      fields: {
+        ...propsWithSingleImage.fields,
+        titleRequired: {
+          value: 'Connect every decision across the carbon storage lifecycle',
+        },
+        linkOptional: {
+          value: {
+            text: 'Request a CCUS readiness assessment',
+            href: '/contact-us',
+          },
+        },
+      },
+    };
+
+    it('allows the single-column copy to shrink without changing the desktop split', () => {
+      const { container } = render(<Hero {...variantBProps} />);
+
+      const shell = container.querySelector(
+        '[data-media-layout="single"] > .slb-page-shell',
+      );
+      const copy = screen.getByTestId('animated-section');
+      const button = screen.getByTestId('hero-button');
+      const description = screen.getByText(/Discover amazing features/);
+
+      expect(shell).toHaveClass('grid', 'grid-cols-1', '@lg:grid-cols-12');
+      expect(copy.parentElement).toHaveClass('min-w-0', '@lg:col-span-6');
+      expect(copy).toHaveClass('min-w-0');
+      expect(description.parentElement).toHaveClass('min-w-0');
+      expect(description).toHaveClass('[overflow-wrap:anywhere]');
+      expect(button.parentElement).toHaveClass('min-w-0');
+      expect(screen.getAllByTestId('media-section')).toHaveLength(1);
+    });
+
+    it.each([
+      { mode: 'normal', page: mockPageData.page },
+      { mode: 'editing', page: mockPageDataEditing.page },
+    ])(
+      'forwards wrapping styles and preserves the authored Variant B CTA in $mode mode',
+      ({ page }) => {
+        render(<Hero {...variantBProps} page={page} />);
+
+        const button = screen.getByTestId('hero-button');
+
+        expect(button).toHaveClass(
+          'h-auto',
+          'min-h-[50px]',
+          'max-w-full',
+          'whitespace-normal',
+          'text-center',
+          '[overflow-wrap:anywhere]',
+          '[&_a]:min-h-0',
+          'border-white',
+          'bg-white',
+          'text-primary',
+        );
+        expect(button.textContent).toBe('Request a CCUS readiness assessment');
+        expect(button).toHaveAttribute('data-href', '/contact-us');
+        expect(button).toHaveAttribute(
+          'data-editing',
+          String(page.mode.isEditing),
+        );
+      },
+    );
+  });
+
   describe('Editing mode behavior', () => {
     it('keeps a single authored image in the editorial split while editing', () => {
       const { container } = render(
