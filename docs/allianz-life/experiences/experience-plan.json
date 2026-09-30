@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "status": "offline-native-experience-plan",
+  "readyToApply": false,
+  "nativeProof": false,
+  "target": {
+    "expectedOrganizationName": "Sales Engineer 2",
+    "expectedProjectName": "thlt-mnp-demo",
+    "expectedProjectId": "7f3XlRhEqdT8l8FrbjQync",
+    "expectedEnvironmentId": "56W3hhEUAQ5GLwsHAehRhe",
+    "siteName": "allianz-life",
+    "language": "en",
+    "expectedSiteRoot": "/sitecore/content/Allianz/allianz-life",
+    "nativeSiteId": null,
+    "nativeSiteAnalyticsId": null,
+    "verifiedEdgeScope": null,
+    "nativeReadbackEvidence": null
+  },
+  "featureGates": {
+    "targetIdentity": "unverified-in-this-task",
+    "personalization": "unverified",
+    "utmConditionOperators": "unverified",
+    "affinityEntitlement": "unverified-phased-rollout",
+    "topAffinityTieAndUnknownSemantics": "unverified",
+    "nativeAB": "unverified",
+    "analyticsAndConsent": "unverified",
+    "deployedRuntimeNativeDelivery": "unverified"
+  },
+  "offlinePolicy": {
+    "inputContract": "These are symbolic facts after native semantic verification, not request parsing, SDK results, real affinity scoring, routing or native assignment. topAffinityCandidates is an offline semantic assertion of unique highest score only; native tie/score access remains a gate.",
+    "campaignName": "utm_campaign",
+    "campaignValue": "retirement_income",
+    "campaignPersistence": "unverified-native-UTM-context; removing-query-is-not-reset-proof",
+    "consentCookie": "allianz_demo_consent",
+    "analyticsFlag": "NEXT_PUBLIC_ALLIANZ_ANALYTICS_ENABLED",
+    "defaultKey": "homepage-original",
+    "allowedContext": {
+      "all": [
+        {
+          "eq": [
+            "contentMode",
+            "connected"
+          ]
+        },
+        {
+          "eq": [
+            "analyticsEnabled",
+            true
+          ]
+        },
+        {
+          "eq": [
+            "consent",
+            "granted"
+          ]
+        },
+        {
+          "eq": [
+            "normalMode",
+            true
+          ]
+        }
+      ]
+    },
+    "campaignMatch": {
+      "eq": [
+        "nativeCampaignValue",
+        "retirement_income"
+      ]
+    },
+    "rules": [
+      {
+        "key": "homepage-retirement-income",
+        "nativeAudienceId": null,
+        "nativeRuleId": null,
+        "nativePageVariantId": null,
+        "audienceName": "Allianz Demo Retirement Income Campaign",
+        "when": {
+          "eq": [
+            "nativeCampaignValue",
+            "retirement_income"
+          ]
+        }
+      },
+      {
+        "key": "homepage-annuities-affinity",
+        "nativeAudienceId": null,
+        "nativeRuleId": null,
+        "nativePageVariantId": null,
+        "audienceName": "Allianz Demo Annuities Interest",
+        "when": {
+          "all": [
+            {
+              "not": {
+                "eq": [
+                  "nativeCampaignValue",
+                  "retirement_income"
+                ]
+              }
+            },
+            {
+              "eq": [
+                "affinityAvailable",
+                true
+              ]
+            },
+            {
+              "eq": [
+                "topAffinityCandidates",
+                [
+                  "annuities"
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "homepage-life-insurance-affinity",
+        "nativeAudienceId": null,
+        "nativeRuleId": null,
+        "nativePageVariantId": null,
+        "audienceName": "Allianz Demo Life Insurance Interest",
+        "when": {
+          "all": [
+            {
+              "not": {
+                "eq": [
+                  "nativeCampaignValue",
+                  "retirement_income"
+                ]
+              }
+            },
+            {
+              "eq": [
+                "affinityAvailable",
+                true
+              ]
+            },
+            {
+              "eq": [
+                "topAffinityCandidates",
+                [
+                  "life_insurance"
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "precedenceMethod": "Mutually exclusive conditions, not variant list order. Campaign suppresses both affinities. No/unknown/ambiguous top affinity falls back to original only when native semantics support this intended contract.",
+    "urlLexicalExamples": [
+      {
+        "query": "",
+        "expectedDeclaredCurrentUrlCampaign": null
+      },
+      {
+        "query": "utm_campaign=retirement_income",
+        "expectedDeclaredCurrentUrlCampaign": "retirement_income"
+      },
+      {
+        "query": "utm_source=retirement_income",
+        "expectedDeclaredCurrentUrlCampaign": null
+      },
+      {
+        "query": "utm_campaign=RETIREMENT_INCOME",
+        "expectedDeclaredCurrentUrlCampaign": "RETIREMENT_INCOME"
+      },
+      {
+        "query": "utm_campaign=other",
+        "expectedDeclaredCurrentUrlCampaign": "other"
+      }
+    ]
+  },
+  "homepage": {
+    "route": "/",
+    "nativePageId": null,
+    "nativeRenderingUid": null,
+    "sourceFixtureRenderingUid": "43B0660A-2416-5CDE-AB0F-9AB9DF470E9B",
+    "componentName": "AllianzHero",
+    "defaultDatasourceKey": "homepage-original",
+    "changeBoundary": [
+      "heading",
+      "primaryLink"
+    ],
+    "originalPageLocalDatasourcePath": "/sitecore/content/Allianz/allianz-life/Home/Data/AllianzHero 01",
+    "sharedVariantParentPath": "/sitecore/content/Allianz/allianz-life/Data/Allianz Life/Demo Variants/Homepage",
+    "nativeABAllowed": false
+  },
+  "affinity": {
+    "name": "product_interest",
+    "nativeConfigurationId": null,
+    "nativeScoringWeights": null,
+    "nativeTieResolution": null,
+    "nativePersistenceEvidence": null,
+    "noFixedPageviewPromise": true,
+    "taggedPages": [
+      {
+        "route": "/what-we-offer/annuities",
+        "value": "annuities",
+        "nativePageId": null,
+        "alsoABPage": true
+      },
+      {
+        "route": "/what-we-offer/annuities/fixed-index-annuities",
+        "value": "annuities",
+        "nativePageId": null
+      },
+      {
+        "route": "/what-we-offer/annuities/registered-index-linked-annuities",
+        "value": "annuities",
+        "nativePageId": null
+      },
+      {
+        "route": "/what-we-offer/life-insurance",
+        "value": "life_insurance",
+        "nativePageId": null
+      },
+      {
+        "route": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator",
+        "value": "life_insurance",
+        "nativePageId": null
+      }
+    ],
+    "doNotTag": [
+      "/",
+      "legal/policy routes",
+      "search/forms/calculators",
+      "unrelated pages"
+    ],
+    "pageAffinityTagFieldIsNativeConfig": false,
+    "taggingBoundary": "Use Performance > Settings > Affinities after verified availability. The repository page affinityTag provenance field is not proof or a substitute for native affinity configuration."
+  },
+  "experiment": {
+    "key": "annuities-cta-native-ab",
+    "nativeExperimentId": null,
+    "nativeControlVariantId": null,
+    "nativeAlternativeVariantId": null,
+    "nativeAudienceId": null,
+    "nativeGoalId": null,
+    "nativePageId": null,
+    "nativeRenderingUid": null,
+    "name": "Allianz Demo Annuities CTA",
+    "route": "/what-we-offer/annuities",
+    "pagePersonalized": false,
+    "componentName": "AllianzCardGrid",
+    "sourceKey": "/what-we-offer/annuities:section:5",
+    "sourceFixtureRenderingUid": "E80D1B1B-07DD-57A9-8C3D-FFF81D51B299",
+    "originalPageLocalDatasourcePath": "/sitecore/content/Allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 07",
+    "controlDatasourceKey": "annuities-cta-control",
+    "alternativeDatasourceKey": "annuities-cta-alternative",
+    "trafficSplitPercent": {
+      "A": 50,
+      "B": 50
+    },
+    "proposedAudience": "Consenting anonymous demo visitors in the verified allianz-life native scope, using supported native audience settings. No customer identifiers.",
+    "goal": {
+      "kind": "Increase page views",
+      "targetRoute": "/what-we-offer/annuities/fixed-index-annuities",
+      "nativeTargetPageId": null,
+      "requiresPublishedTarget": true,
+      "notClickConversion": true
+    },
+    "assignmentOwner": "Sitecore native runtime only",
+    "liveStatus": null,
+    "authoringStatus": null,
+    "supportsFixtureAssignment": false,
+    "hypothesis": "The neutral Explore label may change navigation to the existing fixed-index-annuity overview. No effect direction or statistical outcome is asserted.",
+    "stoppingCondition": "After native assignment and goal/report evidence has been captured for the approved demo, stop through the native supported control-restoration flow and verify original A readback. Do not declare a winner from demo traffic.",
+    "nativeAutomaticAction": "Return to control if supported and explicitly selected in native settings; record actual behavior before launch."
+  },
+  "recovery": {
+    "method": "Disable/stop only these demo rules/test using native UI, restore reviewed Allianz field/datasource bindings after revision check, re-publish only affected Allianz pages/items when authorized. Preserve original controls and MNP project/environment.",
+    "nativeSnapshotEvidence": null,
+    "noProjectDeletion": true,
+    "noProfileDeletion": true
+  },
+  "requiredEvidenceFile": "evidence-gates.json",
+  "configurationGuide": "README.md",
+  "journeysFile": "journeys.json",
+  "testsFile": "test-offline-policy.py"
+}

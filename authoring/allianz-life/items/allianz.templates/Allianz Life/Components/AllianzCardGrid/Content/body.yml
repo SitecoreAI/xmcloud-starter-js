@@ -1,0 +1,20 @@
+---
+ID: "67bb6c08-112d-5eb2-8535-13a8b11879bb"
+Parent: "c1d833fa-8dfa-5e34-994e-f04acd9c39dc"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzCardGrid/Content/body"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Rich Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "300"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "body"
+  Versions:
+  - Version: 1

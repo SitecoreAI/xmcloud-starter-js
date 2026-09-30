@@ -1,0 +1,12 @@
+---
+ID: "eff5b538-3abe-5b3c-9e97-fd5ef78f5213"
+Parent: "d333bdfc-b0d8-530b-af95-b7e7bfc5282e"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: "/sitecore/templates/Project/Allianz Life/Pages/AllianzPage"
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Value: "{2D50C9B4-9F1E-42AE-AA00-0C85FD2B689E}"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{6C4A08EE-EA7A-5D4E-9F06-49EE4805C5DC}"

@@ -1,0 +1,20 @@
+---
+ID: "8ca5da90-5bcc-5317-81f2-92838d796dca"
+Parent: "aca62d3c-e08b-50d8-a427-5f424d80ebeb"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Data/AllianzCard/Content/links"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Treelist"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "800"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "links"
+  Versions:
+  - Version: 1

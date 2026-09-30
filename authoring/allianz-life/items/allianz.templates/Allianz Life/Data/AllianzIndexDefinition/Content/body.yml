@@ -1,0 +1,20 @@
+---
+ID: "ec50937e-267a-575a-bce5-9c13943fa7f4"
+Parent: "d7f1166f-d7ad-5da2-8021-b803a6047364"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Data/AllianzIndexDefinition/Content/body"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Rich Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "100"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "body"
+  Versions:
+  - Version: 1

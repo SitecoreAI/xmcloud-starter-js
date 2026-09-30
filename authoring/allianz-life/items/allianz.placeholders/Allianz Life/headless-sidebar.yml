@@ -1,0 +1,12 @@
+---
+ID: "38cb705e-df4b-54de-8171-e716d1735109"
+Parent: "6f99399d-e003-5a7d-a379-dc154ffea09c"
+Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
+Path: "/sitecore/layout/Placeholder Settings/Project/Allianz Life/headless-sidebar"
+SharedFields:
+- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
+  Hint: Placeholder Key
+  Value: "headless-sidebar"
+- ID: "e391b526-d0c5-439d-803e-17512eae6222"
+  Hint: Allowed Controls
+  Value: "{DABB2247-CAB9-5C16-9019-F968317E82D8}"

@@ -1,0 +1,9 @@
+---
+ID: "c2dd13b6-c039-5b64-a30f-1c6659540c46"
+Parent: "cfd3bf14-9711-5a5f-951d-5b0b0219d188"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/layout/list"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "1100"

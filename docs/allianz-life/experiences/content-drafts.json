@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 1,
+  "status": "offline-content-drafts-not-native-configuration",
+  "createdDateUtc": "2026-09-30",
+  "nativeEvidence": null,
+  "contentContract": "authoring/allianz-life/content-contract.json",
+  "sourceInventory": "discovery/public-site/canonical_inventory.json (task workspace)",
+  "baselineDatasources": [
+    {
+      "key": "homepage-original",
+      "templatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzHero",
+      "nativeItemId": null,
+      "fields": {
+        "heading": "<span class=\"t-primary-brand\"><strong>Allianz</strong></span> annuities and life insurance: for all that&#x27;s ahead",
+        "body": "For more than 125 years, Allianz Life Insurance Company of North America (Allianz) has been helping Americans like you prepare for their financial future.",
+        "desktopImage": {
+          "src": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+          "alt": "mountains"
+        },
+        "mobileImage": {
+          "src": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+          "alt": "mountains"
+        },
+        "primaryLink": {
+          "href": "",
+          "text": "",
+          "linktype": "anchor",
+          "target": ""
+        },
+        "secondaryLink": {
+          "href": "",
+          "text": "",
+          "linktype": "anchor",
+          "target": ""
+        }
+      },
+      "intendedPath": "/sitecore/content/Allianz/allianz-life/Home/Data/AllianzHero 01",
+      "source": {
+        "fixtureFile": "examples/allianz-life/content/native-content.json",
+        "route": "/",
+        "sourceKey": "/:section:0",
+        "sourceUrl": "https://www.allianzlife.com/",
+        "sourceHtml": "html/3177a91958996385.html",
+        "sourceFixtureRenderingUid": "43B0660A-2416-5CDE-AB0F-9AB9DF470E9B",
+        "sourceFixtureDatasourceId": "DB565A9C-1993-51A2-9414-DCA4AE182E12",
+        "fieldValuesSha256": "1416006eca1fbb11750703d3497b7cdf50a98a5b6497d5b45997430a23c9f2ca"
+      }
+    },
+    {
+      "key": "annuities-cta-control",
+      "templatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCardGrid",
+      "nativeItemId": null,
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": ""
+      },
+      "children": [
+        {
+          "key": "annuities-cta-control/Entry 01",
+          "templatePath": "/sitecore/templates/Project/Allianz Life/Data/AllianzCard",
+          "nativeItemId": null,
+          "fields": {
+            "heading": "Fixed index annuities: interest potential with protection",
+            "subheading": "",
+            "body": "<ul>\n    <li>Provide potential for indexed interest</li>\n    <li><strong>Protect your principal and credited interest</strong> from market downturns</li>\n</ul>",
+            "image": {
+              "src": "/allianz-assets/cf5a384e3622367e.jpg",
+              "alt": ""
+            },
+            "icon": {
+              "src": "",
+              "alt": ""
+            },
+            "iconTheme": "transparent",
+            "link": {
+              "href": "/what-we-offer/annuities/fixed-index-annuities",
+              "text": "Learn about Allianz® fixed index annuities",
+              "linktype": "internal",
+              "target": ""
+            },
+            "theme": "primary-white",
+            "headingLevel": "h4",
+            "alphanumeral": ""
+          },
+          "linkItems": [
+            {
+              "key": "annuities-cta-control/Entry 01/links/Link 01",
+              "templatePath": "/sitecore/templates/Project/Allianz Life/Data/AllianzNavigationLink",
+              "nativeItemId": null,
+              "fields": {
+                "title": "Learn about Allianz® fixed index annuities",
+                "link": {
+                  "href": "/what-we-offer/annuities/fixed-index-annuities",
+                  "text": "Learn about Allianz® fixed index annuities",
+                  "linktype": "internal",
+                  "target": ""
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "annuities-cta-control/Entry 02",
+          "templatePath": "/sitecore/templates/Project/Allianz Life/Data/AllianzCard",
+          "nativeItemId": null,
+          "fields": {
+            "heading": "Registered index-linked annuities: accumulation potential with some protection",
+            "subheading": "",
+            "body": "<ul>\n    <li><span>Competitive performance potential</span></li>\n    <li><span></span><strong>Offer the opportunity for a level of protection </strong>from market downturns</li>\n</ul>",
+            "image": {
+              "src": "/allianz-assets/12df8cd697fc68d4.jpg",
+              "alt": " "
+            },
+            "icon": {
+              "src": "",
+              "alt": ""
+            },
+            "iconTheme": "transparent",
+            "link": {
+              "href": "/what-we-offer/annuities/registered-index-linked-annuities",
+              "text": "Learn about Allianz® registered index-linked annuities",
+              "linktype": "internal",
+              "target": ""
+            },
+            "theme": "primary-white",
+            "headingLevel": "h4",
+            "alphanumeral": ""
+          },
+          "linkItems": [
+            {
+              "key": "annuities-cta-control/Entry 02/links/Link 01",
+              "templatePath": "/sitecore/templates/Project/Allianz Life/Data/AllianzNavigationLink",
+              "nativeItemId": null,
+              "fields": {
+                "title": "Learn about Allianz® registered index-linked annuities",
+                "link": {
+                  "href": "/what-we-offer/annuities/registered-index-linked-annuities",
+                  "text": "Learn about Allianz® registered index-linked annuities",
+                  "linktype": "internal",
+                  "target": ""
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "intendedPath": "/sitecore/content/Allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 07",
+      "source": {
+        "fixtureFile": "examples/allianz-life/content/native-content.json",
+        "route": "/what-we-offer/annuities",
+        "sourceKey": "/what-we-offer/annuities:section:5",
+        "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities",
+        "sourceHtml": "html/99f6a498352a3445.html",
+        "sourceFixtureRenderingUid": "E80D1B1B-07DD-57A9-8C3D-FFF81D51B299",
+        "sourceFixtureDatasourceId": "CD55665E-736F-546F-88CD-A0BC975FD1CE",
+        "fieldValuesSha256": "74aa556752e3b2d8ecb031c4b3e7656cb9f6dd4f77f3924eda09a51370e3e389"
+      }
+    }
+  ],
+  "variantDatasources": [
+    {
+      "key": "homepage-retirement-income",
+      "templatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzHero",
+      "nativeItemId": null,
+      "fields": {
+        "heading": "Retirement income",
+        "body": "For more than 125 years, Allianz Life Insurance Company of North America (Allianz) has been helping Americans like you prepare for their financial future.",
+        "desktopImage": {
+          "src": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+          "alt": "mountains"
+        },
+        "mobileImage": {
+          "src": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+          "alt": "mountains"
+        },
+        "primaryLink": {
+          "href": "/what-we-offer/annuities",
+          "text": "Learn about annuities",
+          "linktype": "internal",
+          "target": ""
+        },
+        "secondaryLink": {
+          "href": "",
+          "text": "",
+          "linktype": "anchor",
+          "target": ""
+        }
+      },
+      "intendedPath": "/sitecore/content/Allianz/allianz-life/Data/Allianz Life/Demo Variants/Homepage/Retirement Income Hero",
+      "cloneFromKey": "homepage-original",
+      "changedFieldNames": [
+        "heading",
+        "primaryLink"
+      ],
+      "contentRationale": "Reuse a source product heading and original homepage navigation label; preserve original issuer introduction, mountain images, secondaryLink, rendering parameters and every other homepage component.",
+      "fieldSources": {
+        "heading": {
+          "route": "/what-we-offer/annuities",
+          "sourceKey": "/what-we-offer/annuities:section:3",
+          "fieldPath": "children.results[1].heading.jsonValue.value",
+          "fixtureFile": "examples/allianz-life/content/native-content.json",
+          "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities"
+        },
+        "primaryLink": {
+          "fixtureFile": "examples/allianz-life/content/native-content.json",
+          "route": "/",
+          "sourceUrl": "https://www.allianzlife.com/",
+          "sourceKey": "/:section:3",
+          "fieldPath": "children.results[0].link.jsonValue.value"
+        },
+        "unchangedFields": {
+          "sourceKey": "homepage-original",
+          "fieldNames": [
+            "body",
+            "desktopImage",
+            "mobileImage",
+            "secondaryLink"
+          ]
+        }
+      }
+    },
+    {
+      "key": "homepage-annuities-affinity",
+      "templatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzHero",
+      "nativeItemId": null,
+      "fields": {
+        "heading": "Help prepare for the future with an annuity",
+        "body": "For more than 125 years, Allianz Life Insurance Company of North America (Allianz) has been helping Americans like you prepare for their financial future.",
+        "desktopImage": {
+          "src": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+          "alt": "mountains"
+        },
+        "mobileImage": {
+          "src": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+          "alt": "mountains"
+        },
+        "primaryLink": {
+          "href": "/what-we-offer/annuities",
+          "text": "Learn about annuities",
+          "linktype": "internal",
+          "target": ""
+        },
+        "secondaryLink": {
+          "href": "",
+          "text": "",
+          "linktype": "anchor",
+          "target": ""
+        }
+      },
+      "intendedPath": "/sitecore/content/Allianz/allianz-life/Data/Allianz Life/Demo Variants/Homepage/Annuities Interest Hero",
+      "cloneFromKey": "homepage-original",
+      "changedFieldNames": [
+        "heading",
+        "primaryLink"
+      ],
+      "contentRationale": "Reuse a source product heading and original homepage navigation label; preserve original issuer introduction, mountain images, secondaryLink, rendering parameters and every other homepage component.",
+      "fieldSources": {
+        "heading": {
+          "route": "/what-we-offer/annuities",
+          "sourceKey": "/what-we-offer/annuities:section:0",
+          "fieldPath": "heading.jsonValue.value",
+          "fixtureFile": "examples/allianz-life/content/native-content.json",
+          "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities"
+        },
+        "primaryLink": {
+          "fixtureFile": "examples/allianz-life/content/native-content.json",
+          "route": "/",
+          "sourceUrl": "https://www.allianzlife.com/",
+          "sourceKey": "/:section:3",
+          "fieldPath": "children.results[0].link.jsonValue.value"
+        },
+        "unchangedFields": {
+          "sourceKey": "homepage-original",
+          "fieldNames": [
+            "body",
+            "desktopImage",
+            "mobileImage",
+            "secondaryLink"
+          ]
+        }
+      }
+    },
+    {
+      "key": "homepage-life-insurance-affinity",
+      "templatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzHero",
+      "nativeItemId": null,
+      "fields": {
+        "heading": "What is indexed universal life insurance?",
+        "body": "For more than 125 years, Allianz Life Insurance Company of North America (Allianz) has been helping Americans like you prepare for their financial future.",
+        "desktopImage": {
+          "src": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+          "alt": "mountains"
+        },
+        "mobileImage": {
+          "src": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+          "alt": "mountains"
+        },
+        "primaryLink": {
+          "href": "/what-we-offer/life-insurance",
+          "text": "Learn about life insurance",
+          "linktype": "internal",
+          "target": ""
+        },
+        "secondaryLink": {
+          "href": "",
+          "text": "",
+          "linktype": "anchor",
+          "target": ""
+        }
+      },
+      "intendedPath": "/sitecore/content/Allianz/allianz-life/Data/Allianz Life/Demo Variants/Homepage/Life Insurance Interest Hero",
+      "cloneFromKey": "homepage-original",
+      "changedFieldNames": [
+        "heading",
+        "primaryLink"
+      ],
+      "contentRationale": "Reuse a source product heading and original homepage navigation label; preserve original issuer introduction, mountain images, secondaryLink, rendering parameters and every other homepage component.",
+      "fieldSources": {
+        "heading": {
+          "route": "/what-we-offer/life-insurance",
+          "sourceKey": "/what-we-offer/life-insurance:section:0",
+          "fieldPath": "heading.jsonValue.value",
+          "fixtureFile": "examples/allianz-life/content/native-content.json",
+          "sourceUrl": "https://www.allianzlife.com/what-we-offer/life-insurance"
+        },
+        "primaryLink": {
+          "fixtureFile": "examples/allianz-life/content/native-content.json",
+          "route": "/",
+          "sourceUrl": "https://www.allianzlife.com/",
+          "sourceKey": "/:section:3",
+          "fieldPath": "children.results[1].link.jsonValue.value"
+        },
+        "unchangedFields": {
+          "sourceKey": "homepage-original",
+          "fieldNames": [
+            "body",
+            "desktopImage",
+            "mobileImage",
+            "secondaryLink"
+          ]
+        }
+      }
+    },
+    {
+      "key": "annuities-cta-alternative",
+      "templatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCardGrid",
+      "nativeItemId": null,
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": ""
+      },
+      "children": [
+        {
+          "key": "annuities-cta-alternative/Entry 01",
+          "templatePath": "/sitecore/templates/Project/Allianz Life/Data/AllianzCard",
+          "nativeItemId": null,
+          "fields": {
+            "heading": "Fixed index annuities: interest potential with protection",
+            "subheading": "",
+            "body": "<ul>\n    <li>Provide potential for indexed interest</li>\n    <li><strong>Protect your principal and credited interest</strong> from market downturns</li>\n</ul>",
+            "image": {
+              "src": "/allianz-assets/cf5a384e3622367e.jpg",
+              "alt": ""
+            },
+            "icon": {
+              "src": "",
+              "alt": ""
+            },
+            "iconTheme": "transparent",
+            "link": {
+              "href": "/what-we-offer/annuities/fixed-index-annuities",
+              "text": "Explore fixed index annuities",
+              "linktype": "internal",
+              "target": ""
+            },
+            "theme": "primary-white",
+            "headingLevel": "h4",
+            "alphanumeral": ""
+          },
+          "linkItems": [
+            {
+              "key": "annuities-cta-alternative/Entry 01/links/Link 01",
+              "templatePath": "/sitecore/templates/Project/Allianz Life/Data/AllianzNavigationLink",
+              "nativeItemId": null,
+              "fields": {
+                "title": "Explore fixed index annuities",
+                "link": {
+                  "href": "/what-we-offer/annuities/fixed-index-annuities",
+                  "text": "Explore fixed index annuities",
+                  "linktype": "internal",
+                  "target": ""
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "annuities-cta-alternative/Entry 02",
+          "templatePath": "/sitecore/templates/Project/Allianz Life/Data/AllianzCard",
+          "nativeItemId": null,
+          "fields": {
+            "heading": "Registered index-linked annuities: accumulation potential with some protection",
+            "subheading": "",
+            "body": "<ul>\n    <li><span>Competitive performance potential</span></li>\n    <li><span></span><strong>Offer the opportunity for a level of protection </strong>from market downturns</li>\n</ul>",
+            "image": {
+              "src": "/allianz-assets/12df8cd697fc68d4.jpg",
+              "alt": " "
+            },
+            "icon": {
+              "src": "",
+              "alt": ""
+            },
+            "iconTheme": "transparent",
+            "link": {
+              "href": "/what-we-offer/annuities/registered-index-linked-annuities",
+              "text": "Learn about Allianz® registered index-linked annuities",
+              "linktype": "internal",
+              "target": ""
+            },
+            "theme": "primary-white",
+            "headingLevel": "h4",
+            "alphanumeral": ""
+          },
+          "linkItems": [
+            {
+              "key": "annuities-cta-alternative/Entry 02/links/Link 01",
+              "templatePath": "/sitecore/templates/Project/Allianz Life/Data/AllianzNavigationLink",
+              "nativeItemId": null,
+              "fields": {
+                "title": "Learn about Allianz® registered index-linked annuities",
+                "link": {
+                  "href": "/what-we-offer/annuities/registered-index-linked-annuities",
+                  "text": "Learn about Allianz® registered index-linked annuities",
+                  "linktype": "internal",
+                  "target": ""
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "intendedPath": "/sitecore/content/Allianz/allianz-life/Data/Allianz Life/Demo Variants/Annuities CTA/Explore Fixed Index Annuities",
+      "cloneFromKey": "annuities-cta-control",
+      "changedFieldPaths": [
+        "children[0].fields.link.text",
+        "children[0].linkItems[0].fields.title",
+        "children[0].linkItems[0].fields.link.text"
+      ],
+      "contentRationale": "One neutral authored navigation-label draft: Explore + source product category fixed index annuities. Existing source heading Explore our annuities supports the verb. This is new CTA microcopy, not an original source quote or a new financial claim.",
+      "fieldSources": {
+        "verb": {
+          "fixtureFile": "examples/allianz-life/content/native-content.json",
+          "route": "/what-we-offer/annuities",
+          "sourceKey": "/what-we-offer/annuities:section:4",
+          "fieldPath": "heading.jsonValue.value",
+          "value": "Explore our annuities"
+        },
+        "productCategory": {
+          "fixtureFile": "examples/allianz-life/content/native-content.json",
+          "route": "/what-we-offer/annuities",
+          "sourceKey": "/what-we-offer/annuities:section:5",
+          "fieldPath": "children.results[0].link.jsonValue.value.text",
+          "value": "Learn about Allianz® fixed index annuities"
+        }
+      },
+      "childCloneRequirement": "Deep clone both AllianzCard entries and all referenced AllianzNavigationLink items, remap the links Treelist to the cloned links. Do not reuse the control child/link identities."
+    }
+  ],
+  "homepageRenderingParams": {
+    "theme": "transparent",
+    "layout": "home",
+    "columns": "1",
+    "alignment": "center",
+    "spacing": "none",
+    "headingLevel": "h1",
+    "paddingTop": "none",
+    "paddingBottom": "none",
+    "marginBottom": "none",
+    "showLogin": "1"
+  },
+  "annuitiesTestRenderingParams": {
+    "theme": "blue-soft",
+    "layout": "stacked",
+    "columns": "2",
+    "alignment": "left",
+    "spacing": "none",
+    "headingLevel": "h4",
+    "paddingTop": "none",
+    "paddingBottom": "xl",
+    "marginBottom": "none"
+  },
+  "protectedContent": {
+    "homeDisclosureSourceKey": "/:section:7",
+    "annuityDisclosureSourceKeys": [
+      "/what-we-offer/annuities:section:7",
+      "/what-we-offer/annuities:section:8"
+    ],
+    "homepageNonHeroComponentCount": 7,
+    "annuitiesUntestedComponentCount": 10,
+    "rule": "Every component, shell datasource, disclosure, source-image reference and page metadata outside the selected component stays unchanged."
+  },
+  "mediaReferences": [
+    {
+      "field": "desktopImage",
+      "demoSrc": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+      "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Hero/Allianz-Life/hero-azl-mountains.jpg",
+      "nativeMediaItemId": null,
+      "instruction": "Resolve through verified native source URL/hash ledger; fixture URL is reference evidence and must not become a production-host media request."
+    },
+    {
+      "field": "mobileImage",
+      "demoSrc": "/allianz-assets/1bc3618e2f7df6a2.jpg",
+      "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Hero/Allianz-Life/hero-azl-mountains.jpg",
+      "nativeMediaItemId": null,
+      "instruction": "Resolve through verified native source URL/hash ledger; fixture URL is reference evidence and must not become a production-host media request."
+    }
+  ],
+  "identityBoundary": "sourceFixture* values are local provenance, not actual native rule, variant, item or experiment identity. Bind all nativeItemId/nativeMediaItemId fields only from configured native readback."
+}

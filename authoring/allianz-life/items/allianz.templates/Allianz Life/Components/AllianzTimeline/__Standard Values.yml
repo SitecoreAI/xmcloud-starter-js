@@ -1,0 +1,9 @@
+---
+ID: "937e0d36-04be-5b88-8e27-73dc2a97b20e"
+Parent: "42be12a0-d69e-51fb-8808-c943f2f1894a"
+Template: "42be12a0-d69e-51fb-8808-c943f2f1894a"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzTimeline/__Standard Values"
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{1359D197-3A15-5D11-A12F-C654842E6B16}"

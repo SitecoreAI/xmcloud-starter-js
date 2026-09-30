@@ -1,0 +1,40 @@
+{
+  "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.AllianzLife.Structure",
+  "description": "Allianz isolated structural definitions. Native site/presentation, editorial data, and media use separate non-destructive bootstrap/import.",
+  "items": {
+    "path": "items",
+    "includes": [
+      {
+        "name": "allianz.templates",
+        "path": "/sitecore/templates/Project/Allianz Life",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "allianz.renderings",
+        "path": "/sitecore/layout/Renderings/Project/Allianz Life",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "allianz.placeholders",
+        "path": "/sitecore/layout/Placeholder Settings/Project/Allianz Life",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "allianz.options",
+        "path": "/sitecore/system/Settings/Project/Allianz Life",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "allianz.branches",
+        "path": "/sitecore/templates/Branches/Project/Allianz Life",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate"
+      }
+    ]
+  }
+}

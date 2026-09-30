@@ -49,3 +49,14 @@ packages/
 
 # VS Code settings
 .vscode/
+
+# Local implementation and type-check caches
+__pycache__/
+*.py[cod]
+*.tsbuildinfo
+
+# Private import packages and read-only environment snapshots
+.sitecore/allianz-media/
+.sitecore/reference-schema/
+.sitecore/allianz-editorial/
+.sitecore/github-auth/

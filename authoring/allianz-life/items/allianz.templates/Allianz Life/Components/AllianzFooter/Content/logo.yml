@@ -1,0 +1,20 @@
+---
+ID: "bdb05a5c-6106-5e77-97cb-34c4e0efadd3"
+Parent: "b85fc9a6-97e1-5265-88c3-38dfa7c257ab"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzFooter/Content/logo"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Image"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "100"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "logo"
+  Versions:
+  - Version: 1

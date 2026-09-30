@@ -1,0 +1,20 @@
+---
+ID: "f2e3baf2-8120-532f-8eaf-07a88c46ecea"
+Parent: "b4e5da72-05ce-5566-93a9-ffa3bfb5ba8e"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Data/AllianzNavigationLink/Content/icon"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Image"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "300"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "icon"
+  Versions:
+  - Version: 1

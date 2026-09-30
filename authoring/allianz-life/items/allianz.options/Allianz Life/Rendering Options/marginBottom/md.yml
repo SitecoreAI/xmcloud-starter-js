@@ -1,0 +1,9 @@
+---
+ID: "547da69b-e278-5e7d-95b5-51c389bf3ec2"
+Parent: "2d4ba239-5d11-5341-a06b-5b7344bccc0e"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/marginBottom/md"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "300"

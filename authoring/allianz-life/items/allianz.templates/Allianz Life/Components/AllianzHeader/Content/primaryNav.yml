@@ -1,0 +1,23 @@
+---
+ID: "342f4d59-6070-5349-b63b-ff9e6ec43835"
+Parent: "738e8557-7405-5c2d-9170-d65d8e857541"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzHeader/Content/primaryNav"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Treelist"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "300"
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "/sitecore/content/Allianz/allianz-life/Data/Allianz Life/Navigation"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "primaryNav"
+  Versions:
+  - Version: 1

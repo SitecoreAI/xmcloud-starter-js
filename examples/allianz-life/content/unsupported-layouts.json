@@ -1,0 +1,1575 @@
+[
+  {
+    "path": "/about/newsroom",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "releases": 1,
+      "press": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width t-bg-transparent",
+      "id": "",
+      "textPreview": "Recent Allianz Life news releases 3 in 4 Americans Think Market Highs are Unsustainable, Allianz Life Study Finds Date: 09/22/2026 When the long-term outlook feels overwhelming, ma"
+    }
+  },
+  {
+    "path": "/about/newsroom/2024-press-releases",
+    "section": 1,
+    "reason": "Native CardGrid list layout needs frontend implementation",
+    "source": {
+      "tag": "div",
+      "classes": "l-container l-container--full-width",
+      "id": "",
+      "textPreview": "More Americans Plan to Focus on Finances in 2025 Dec 18, 2024 Allianz Life New Year’s Resolutions Study finds 35% anticipate their finances will improve in the coming year Allianz "
+    }
+  },
+  {
+    "path": "/about/newsroom/2024-press-releases",
+    "reason": "Rendering parameter requires explicit support",
+    "componentName": "AllianzCardGrid",
+    "parameter": "layout",
+    "value": "list"
+  },
+  {
+    "path": "/about/newsroom/2025-press-releases",
+    "section": 1,
+    "reason": "Native CardGrid list layout needs frontend implementation",
+    "source": {
+      "tag": "div",
+      "classes": "l-container l-container--full-width",
+      "id": "",
+      "textPreview": "Nearly Half of Americans More Stressed Heading into 2026, Allianz Life Study Finds Dec 16, 2025 Many Americans anticipate making New Year’s resolutions to improve finances. Allianz"
+    }
+  },
+  {
+    "path": "/about/newsroom/2025-press-releases",
+    "reason": "Rendering parameter requires explicit support",
+    "componentName": "AllianzCardGrid",
+    "parameter": "layout",
+    "value": "list"
+  },
+  {
+    "path": "/about/newsroom/2026-press-releases",
+    "section": 1,
+    "reason": "Native CardGrid list layout needs frontend implementation",
+    "source": {
+      "tag": "div",
+      "classes": "l-container l-container--full-width",
+      "id": "",
+      "textPreview": "3 in 4 Americans Think Market Highs are Unsustainable, Allianz Life Study Finds Sep 22, 2026 When the long-term outlook feels overwhelming, many Americans splurge to feel better Am"
+    }
+  },
+  {
+    "path": "/about/newsroom/2026-press-releases",
+    "reason": "Rendering parameter requires explicit support",
+    "componentName": "AllianzCardGrid",
+    "parameter": "layout",
+    "value": "list"
+  },
+  {
+    "path": "/about/subject-matter-experts/charles-champagne",
+    "section": 0,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "strategy": 1,
+      "allianz": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width u-row-spacing t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Charles Champagne Head of ETF Strategy Allianz Investment Management LLC Focused on: Exchange-traded funds ETF capital markets ETF product development Investment strategy and portf"
+    }
+  },
+  {
+    "path": "/about/subject-matter-experts/kelly-lavigne",
+    "section": 0,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "markets": 1,
+      "allianz": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width u-row-spacing t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "L. Kelly LaVigne Vice President, Head of Annuity Advanced Markets Allianz Life Insurance Company of North America Focused on: Retirement income strategies Social Security Medicare "
+    }
+  },
+  {
+    "path": "/about/ventures/team",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "collin": 1,
+      "connect": 1,
+      "with": 1,
+      "on": 1,
+      "linkedin": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Collin Bhojwani Head of Allianz Life Ventures Collin leads the Ventures program, shaping investment strategy and forging partnerships that advance the long‑term priorities of Allia"
+    }
+  },
+  {
+    "path": "/about/ventures/team",
+    "section": 3,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "ron": 1,
+      "with": 1,
+      "connect": 1,
+      "on": 1,
+      "linkedin": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Ron Gonen Managing Director Ron sources and evaluates new investment opportunities while supporting portfolio companies with strategic guidance and venture experience. Focus areas:"
+    }
+  },
+  {
+    "path": "/about/ventures/team",
+    "section": 4,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "taylor": 1,
+      "connect": 1,
+      "with": 1,
+      "on": 1,
+      "linkedin": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Taylor Sieverling Senior Analyst Taylor supports sourcing, analysis, and portfolio management, helping assess emerging technologies and new market opportunities. Focus areas: Deal "
+    }
+  },
+  {
+    "path": "/about/ventures/team",
+    "section": 5,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "clay": 1,
+      "connect": 1,
+      "with": 1,
+      "on": 1,
+      "linkedin": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width u-row-spacing t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Clay Bottensek Ventures Analyst Clay supports Ventures investment activities, helping source and evaluate innovative startups and emerging technologies. Focus areas: Insurtech, fin"
+    }
+  },
+  {
+    "path": "/contact-us",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Contact / claim form"
+  },
+  {
+    "path": "/for-financial-professionals/allianz-center-for-the-future-of-retirement",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "about": 1,
+      "retirement": 4,
+      "their": 1,
+      "a": 1,
+      "for": 2,
+      "how": 1,
+      "5": 1,
+      "reasons": 1,
+      "financial": 1,
+      "professionals": 1,
+      "to": 2,
+      "call": 1,
+      "clients": 2,
+      "plans": 1,
+      "right": 1,
+      "now": 1,
+      "help": 1,
+      "prepare": 1,
+      "longer": 1,
+      "lasting": 1,
+      "download": 2,
+      "our": 2,
+      "weatherproofing": 2,
+      "fact": 1,
+      "sheet": 1,
+      "pdf": 2,
+      "client": 1,
+      "brochure": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "What Americans know, and don’t know, about retirement While many Americans worry about outliving their savings, few have a clear plan for how their income will last through their r"
+    }
+  },
+  {
+    "path": "/for-financial-professionals/allianz-center-for-the-future-of-retirement",
+    "section": 4,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "more": 1,
+      "articles": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width t-bg-blue-soft",
+      "id": "",
+      "textPreview": "5 ways IUL can help clients leave a legacy Indexed universal life can help clients balance legacy goals and retirement income with tax efficiency, flexibility, and downside protect"
+    }
+  },
+  {
+    "path": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/asian-americans-may-need-to-protect-rainy-day-funds-from-extreme-weather",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "clients": 1,
+      "weatherproofing": 1,
+      "retirement": 1,
+      "our": 1,
+      "download": 1,
+      "pdf": 2,
+      "client": 1,
+      "brochure": 1,
+      "share": 1,
+      "this": 1,
+      "10": 1,
+      "step": 1,
+      "checklist": 1,
+      "with": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-green-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Talk to your clients about weatherproofing their retirement We have created materials that you can use from our 2026 Annual Retirement Study. Download our Weatherproofing Retiremen"
+    }
+  },
+  {
+    "path": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/black-americans-may-underestimate-the-risk-of-extreme-weather-on-their-financial-future",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "clients": 1,
+      "weatherproofing": 1,
+      "retirement": 1,
+      "our": 1,
+      "download": 1,
+      "pdf": 2,
+      "client": 1,
+      "brochure": 1,
+      "share": 1,
+      "this": 1,
+      "10": 1,
+      "step": 1,
+      "checklist": 1,
+      "with": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-green-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Talk to your clients about weatherproofing their retirement We have created materials that you can use from our 2026 Annual Retirement Study. Download our Weatherproofing Retiremen"
+    }
+  },
+  {
+    "path": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/hispanic-americans-may-move-to-reduce-the-risk-of-extreme-weather",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "clients": 1,
+      "weatherproofing": 1,
+      "retirement": 1,
+      "our": 1,
+      "download": 1,
+      "pdf": 2,
+      "client": 1,
+      "brochure": 1,
+      "share": 1,
+      "this": 1,
+      "10": 1,
+      "step": 1,
+      "checklist": 1,
+      "with": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-green-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Talk to your clients about weatherproofing their retirement We have created materials that you can use from our 2026 Annual Retirement Study. Download our Weatherproofing Retiremen"
+    }
+  },
+  {
+    "path": "/for-financial-professionals/grow-your-business-in-multicultural-markets",
+    "section": 6,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "clients": 1,
+      "with": 1,
+      "share": 1,
+      "this": 1,
+      "10": 1,
+      "step": 1,
+      "checklist": 1,
+      "pdf": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width t-bg-transparent",
+      "id": "",
+      "textPreview": "Talk to your clients about weatherproofing their retirement Natural disasters are becoming more frequent, more intense, and more costly. Just like inflation or rising health care e"
+    }
+  },
+  {
+    "path": "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather",
+    "section": 5,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "client": 1,
+      "brochure": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-green-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Talk to your clients about weatherproofing their retirement We have created materials that you can use from our 2026 Annual Retirement Study. Download our Weatherproofing Retiremen"
+    }
+  },
+  {
+    "path": "/get-answers/calculate-your-rmd",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/get-answers/retirement-income-calculator",
+    "section": 0,
+    "reason": "Form requires native field model and mocked validation; source form action never imported",
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width u-row-spacing t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Retirement Income Calculator Determine the amount you would need to save over time in order to withdraw a specific monthly amount throughout retirement. How much you need to save -"
+    }
+  },
+  {
+    "path": "/get-answers/retirement-income-calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/get-answers/tax-deferral-calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/legal-and-obligations",
+    "section": 12,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "vendor": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Codes of conduct Download our Code of conduct Download our Vendor Code of conduct"
+    }
+  },
+  {
+    "path": "/new-york",
+    "reason": "Source is shell-only: no center-column/editorial content. Do not invent homepage content."
+  },
+  {
+    "path": "/new-york/annuities/investment-strategies/cash-equivalent",
+    "reason": "Unsupported legacy editorial island",
+    "source": {
+      "tag": "table",
+      "classes": "table table-striped",
+      "id": "asset-class",
+      "textPreview": "Money Manager Investment Option AZL Government Money Market Fund DCA Money Market Account AZL Government Money Market Fund - Interim Fund AZL Government Money Market Fund - Interim"
+    }
+  },
+  {
+    "path": "/new-york/annuities/investment-strategies/cash-equivalent",
+    "reason": "Legacy extraction omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "azl": 6,
+      "money": 8,
+      "market": 7,
+      "fund": 9,
+      "investment": 1,
+      "manager": 1,
+      "option": 1,
+      "government": 6,
+      "dca": 1,
+      "account": 1,
+      "interim": 3
+    }
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities",
+    "reason": "Legacy extraction omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "facebook": 1,
+      "twitter": 1,
+      "linkedin": 1
+    }
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "ContactUsContainerPortletForm",
+      "textPreview": ""
+    },
+    "placement": "accordion-panel",
+    "fieldCount": 7
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "ProductInterestPortletForm",
+      "textPreview": ""
+    },
+    "placement": "accordion-panel",
+    "fieldCount": 7
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "ProductInterestPortletForm",
+      "textPreview": ""
+    },
+    "placement": "accordion-panel",
+    "fieldCount": 7
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/rates-inyp",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/renewal-rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/video",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product video"
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities/rate-pdfs",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/new-york/annuities/registered-index-linked-annuities/renewal-rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/new-york/contact-us",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "ContactUsContainerPortletForm",
+      "textPreview": ""
+    },
+    "placement": "body",
+    "fieldCount": 10
+  },
+  {
+    "path": "/new-york/contact-us",
+    "reason": "Legacy extraction omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "800": 1,
+      "729": 1,
+      "9743": 1
+    }
+  },
+  {
+    "path": "/new-york/contact-us",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Contact / claim form"
+  },
+  {
+    "path": "/new-york/report-a-death",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "StartClaimAboutPortletForm",
+      "textPreview": ""
+    },
+    "placement": "body",
+    "fieldCount": 44
+  },
+  {
+    "path": "/new-york/report-a-death",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Contact / claim form"
+  },
+  {
+    "path": "/new-york/report-a-death/claim-fail",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Contact / claim form"
+  },
+  {
+    "path": "/new-york/search",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "SiteSearchResultsPortletForm",
+      "textPreview": ""
+    },
+    "placement": "body",
+    "fieldCount": 3
+  },
+  {
+    "path": "/new-york/search",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Site search"
+  },
+  {
+    "path": "/new-york/search/advanced-search",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Site search"
+  },
+  {
+    "path": "/new-york/welcome-morgan-stanley",
+    "reason": "Standalone editorial image requires contextual native layout review",
+    "source": {
+      "tag": "img",
+      "classes": "",
+      "id": "",
+      "textPreview": ""
+    }
+  },
+  {
+    "path": "/new-york/welcome-morgan-stanley",
+    "reason": "Legacy extraction omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "in": 2,
+      "annuity": 1,
+      "new": 1,
+      "of": 1,
+      "to": 3,
+      "help": 2,
+      "your": 3,
+      "clients": 2,
+      "portfolio": 1,
+      "and": 1,
+      "seek": 1,
+      "improve": 1,
+      "outcomes": 1,
+      "support": 1,
+      "as": 1,
+      "for": 1,
+      "risk": 1,
+      "solutions": 1,
+      "business": 1,
+      "book": 1,
+      "alerts": 1,
+      "you": 1,
+      "identify": 1,
+      "opportunities": 1,
+      "dedicated": 1,
+      "on": 1,
+      "demand": 1,
+      "case": 1,
+      "consultation": 1,
+      "integrating": 1,
+      "management": 1,
+      "such": 1,
+      "annuities": 1,
+      "financial": 2,
+      "planning": 1,
+      "software": 1,
+      "demonstrate": 1,
+      "how": 1,
+      "incorporating": 1,
+      "an": 1,
+      "their": 1,
+      "could": 1
+    }
+  },
+  {
+    "path": "/report-a-death",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "StartClaimAboutPortletForm",
+      "textPreview": ""
+    },
+    "placement": "body",
+    "fieldCount": 44
+  },
+  {
+    "path": "/report-a-death",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Contact / claim form"
+  },
+  {
+    "path": "/what-we-offer/allocation-insights-tool",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/222",
+    "section": 7,
+    "reason": "Unmapped native structural archetype",
+    "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+    "textPreview": "Current MVA reference rate:5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/222-plus",
+    "section": 9,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/222-plus/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/222/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/360",
+    "section": 7,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/360/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage",
+    "section": 8,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+    "section": 8,
+    "reason": "Unmapped native structural archetype",
+    "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+    "textPreview": "Current MVA reference rate:5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "the": 1,
+      "download": 1,
+      "brochure": 1,
+      "pdf": 1,
+      "insert": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Rates See our current rates Explore the allocation options Try the allocation tool Get more details Download the product brochure (PDF) Download the brochure insert (PDF)"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-7",
+    "section": 1,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "the": 1,
+      "download": 1,
+      "brochure": 1,
+      "pdf": 1,
+      "insert": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Are you concerned about saving enough for retirement, while protecting a portion of your portfolio? Allianz Accumulation Advantage 7® Annuity may be a good choice. It can help dive"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-7",
+    "section": 7,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-7/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-classic",
+    "section": 9,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-classic/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-plus",
+    "section": 1,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "the": 1,
+      "download": 1,
+      "brochure": 1,
+      "pdf": 1,
+      "insert": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Would you like to emphasize accumulating for retirement, while protecting a portion of your portfolio from market losses? Allianz Accumulation Advantage+® Annuity may be a good cho"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-plus",
+    "section": 9,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-plus/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/benefit-control",
+    "section": 7,
+    "reason": "Unmapped native structural archetype",
+    "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+    "textPreview": "Current MVA reference rate:5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus",
+    "section": 9,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/benefit-control/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/core-income-7",
+    "section": 8,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/core-income-7/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/essential-income-7",
+    "section": 8,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/essential-income-7/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus",
+    "section": 10,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "our": 1,
+      "explore": 1,
+      "ecosystem": 1,
+      "pdf": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Our partners Allianz Life Insurance Company of North America is not affiliated with the partner companies below. Explore our ecosystem (PDF)"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education",
+    "section": 4,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "resources": 1,
+      "view": 1,
+      "all": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width t-bg-transparent",
+      "id": "",
+      "textPreview": "Download our resources on retirement trends and insights Measuring retirement income outcomes (PDF) This white paper explores three hypothetical case studies that demonstrate the i"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started",
+    "section": 13,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "explore": 1,
+      "our": 1,
+      "glossary": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-green-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Ready to get started? Contact your employer’s retirement plan administrator about any support offered by your plan to determine how it might fit into your defined contribution plan"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/retirement-foundation-adv",
+    "section": 6,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "as": 1,
+      "of": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Current MVA reference rate: 5.80 % as of 9/30/2026 Uses the yield of the Bloomberg US Intermediate Corporate Bond Index Historical MVA reference rates Withdrawal charge schedule St"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/retirement-foundation-adv/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/increasing-income-potential",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "increases": 1,
+      "2": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Our history of giving income increases 2 94% of our clients who chose our increasing income option have received an increase . 3 45% of our clients who are receiving income have re"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/investment-strategies/cash-equivalent",
+    "reason": "Unsupported legacy editorial island",
+    "source": {
+      "tag": "table",
+      "classes": "table table-striped",
+      "id": "asset-class",
+      "textPreview": "Money Manager Investment Option AZL Government Money Market Fund DCA Money Market Account AZL Government Money Market Fund - Interim Fund AZL Government Money Market Fund - Interim"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/investment-strategies/cash-equivalent",
+    "reason": "Legacy extraction omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "azl": 6,
+      "money": 8,
+      "market": 7,
+      "fund": 9,
+      "investment": 1,
+      "manager": 1,
+      "option": 1,
+      "government": 6,
+      "dca": 1,
+      "account": 1,
+      "interim": 3
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "your": 1,
+      "our": 2,
+      "try": 1,
+      "define": 1,
+      "downside": 1,
+      "risk": 1,
+      "tool": 1,
+      "see": 1,
+      "current": 1,
+      "rates": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Already own Index Advantage Income ADV®? Access your RILA contract Learn more about RILAs Visit our About RILAs page Run the numbers Try our Index Strategy calculator Try our Defin"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+    "section": 5,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "income": 1,
+      "download": 1,
+      "benefit": 1,
+      "the": 1,
+      "rider": 1,
+      "brochure": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Lifetime Income Percentage increases For every year you wait to begin income payments. 2 Download Index Advantage Income ADV® lifetime income percentage chart (PDF) Income payment "
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+    "section": 6,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "investor": 2,
+      "profile": 1,
+      "and": 1,
+      "options": 2,
+      "advantage": 1,
+      "income": 1,
+      "adv": 1,
+      "variable": 1,
+      "annuity": 1,
+      "allows": 1,
+      "you": 2,
+      "to": 3,
+      "customize": 1,
+      "your": 1,
+      "allocations": 1,
+      "one": 2,
+      "more": 2,
+      "each": 2,
+      "offering": 1,
+      "a": 1,
+      "unique": 1,
+      "risk": 1,
+      "return": 1,
+      "objective": 1,
+      "help": 1,
+      "meet": 1,
+      "various": 1,
+      "profiles": 1,
+      "explore": 1,
+      "the": 1,
+      "chart": 1,
+      "below": 1,
+      "learn": 1,
+      "about": 1,
+      "what": 1,
+      "option": 1,
+      "offers": 1,
+      "which": 1,
+      "s": 1,
+      "might": 1,
+      "be": 1,
+      "an": 1,
+      "appropriate": 1,
+      "fit": 1,
+      "for": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Investor profile and index options Index Advantage Income ADV® Variable Annuity allows you to customize your allocations with one or more index options, each offering a unique risk"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+    "section": 7,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "of": 1,
+      "as": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Indexes available with the Index Advantage Income ADV® Variable Annuity RILA index strategies Because indexes may perform differently under similar market conditions, Index Advanta"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/income-calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "ProductInterestPortletForm",
+      "textPreview": ""
+    },
+    "placement": "accordion-panel",
+    "fieldCount": 15
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/rila-rates-center-iadv",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/strategy-calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/video",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product video"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "your": 1,
+      "our": 2,
+      "try": 1,
+      "define": 1,
+      "downside": 1,
+      "risk": 1,
+      "tool": 1,
+      "see": 1,
+      "current": 1,
+      "rates": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Already own Index Advantage+®? Access your RILA contract Learn more about RILAs Visit our About RILAs page Run the numbers Try our Index Strategy calculator Try our Define Your Dow"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "your": 1,
+      "our": 2,
+      "try": 1,
+      "define": 1,
+      "downside": 1,
+      "risk": 1,
+      "tool": 1,
+      "see": 1,
+      "current": 1,
+      "rates": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Already own Index Advantage+ Income®? Access your RILA contract Learn more about RILAs Visit our About RILAs page Run the numbers Try our Index Strategy calculator Try our Define Y"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income",
+    "section": 5,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "income": 1,
+      "download": 1,
+      "benefit": 1,
+      "the": 1,
+      "rider": 1,
+      "brochure": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Lifetime Income Percentages increases For every year you wait to begin income payments. 2 Download Index Advantage+ Income® lifetime income percentage chart (PDF) Income payment op"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/income-calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "ProductInterestPortletForm",
+      "textPreview": ""
+    },
+    "placement": "accordion-panel",
+    "fieldCount": 15
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/rila-rates-center-iaip",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/strategy-calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/video",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product video"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "your": 1,
+      "our": 2,
+      "try": 1,
+      "define": 1,
+      "downside": 1,
+      "risk": 1,
+      "tool": 1,
+      "see": 1,
+      "current": 1,
+      "rates": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Already own Index Advantage+ NF®? Access your RILA contract Learn more about RILAs Visit our About RILAs page Run the numbers Try our Index Strategy calculator Try our Define Your "
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "ProductInterestPortletForm",
+      "textPreview": ""
+    },
+    "placement": "accordion-panel",
+    "fieldCount": 15
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/video",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product video"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "your": 1,
+      "our": 2,
+      "try": 1,
+      "define": 1,
+      "downside": 1,
+      "risk": 1,
+      "tool": 1,
+      "see": 1,
+      "current": 1,
+      "rates": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Already own Index Advantage+ Select Income™? Access your RILA contract Learn more about RILAs Visit our About RILAs page Run the numbers Try our Index Strategy calculator Try our D"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income",
+    "section": 6,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "income": 1,
+      "download": 1,
+      "pdf": 1,
+      "benefit": 1,
+      "the": 1,
+      "rider": 1,
+      "ii": 1,
+      "brochure": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Lifetime Income Percentages increases For every year you wait to begin income payments. 2 Download Index Advantage+ Select Income® lifetime income percentage chart (PDF) Income pay"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income",
+    "section": 7,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "investor": 2,
+      "profile": 1,
+      "and": 1,
+      "options": 2,
+      "advantage": 1,
+      "select": 1,
+      "income": 1,
+      "allows": 1,
+      "you": 2,
+      "to": 3,
+      "customize": 1,
+      "your": 1,
+      "allocations": 1,
+      "one": 2,
+      "more": 2,
+      "each": 2,
+      "offering": 1,
+      "a": 1,
+      "unique": 1,
+      "risk": 1,
+      "return": 1,
+      "objective": 1,
+      "help": 1,
+      "meet": 1,
+      "various": 1,
+      "profiles": 1,
+      "explore": 1,
+      "the": 1,
+      "chart": 1,
+      "below": 1,
+      "learn": 1,
+      "about": 1,
+      "what": 1,
+      "option": 1,
+      "offers": 1,
+      "which": 1,
+      "s": 1,
+      "might": 1,
+      "be": 1,
+      "an": 1,
+      "appropriate": 1,
+      "fit": 1,
+      "for": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Investor profile and index options Index Advantage+ Select Income™ allows you to customize your allocations with one or more index options, each offering a unique risk/return objec"
+    }
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/income-calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "ProductInterestPortletForm",
+      "textPreview": ""
+    },
+    "placement": "accordion-panel",
+    "fieldCount": 15
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/rila-rates-center-iasi",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/strategy-calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/video",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product video"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+    "reason": "Native form fields extracted; conditional fields and placement require frontend state verification",
+    "source": {
+      "tag": "form",
+      "classes": "cui-portletform clearfix ",
+      "id": "ProductInterestPortletForm",
+      "textPreview": ""
+    },
+    "placement": "accordion-panel",
+    "fieldCount": 15
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/rila-rates-center-ixap",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/video",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product video"
+  },
+  {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/renewal-rates",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/life-insurance/calculator",
+    "reason": "Interactive archetype needs independently verified frontend states and native/mock behavior",
+    "archetype": "Interactive tool / calculator"
+  },
+  {
+    "path": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "product": 1,
+      "download": 1,
+      "brochure": 1,
+      "pdf": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container  t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "[Narrator] In your life, in your finances, it would be wonderful if you could know all that's ahead. Unfortunately, what we do know is there are many unknowns that can impact your "
+    }
+  },
+  {
+    "path": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator/rates",
+    "reason": "Legacy interactive archetype needs independently verified mocked behavior",
+    "archetype": "Product rates"
+  },
+  {
+    "path": "/what-we-offer/life-insurance/retirement-planning",
+    "section": 5,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "policy": 1,
+      "explore": 1,
+      "allianz": 1,
+      "life": 2,
+      "accumulator": 1,
+      "indexed": 1,
+      "universal": 1,
+      "insurance": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container--full-width  t-bg-green-soft  axlTileCollection",
+      "id": "",
+      "textPreview": "Talk to your financial professional about how IUL could benefit you Here are some things to discuss: How can the policy support your retirement income strategy? How can the policy "
+    }
+  },
+  {
+    "path": "/why-allianz/community",
+    "section": 3,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "download": 1,
+      "an": 1,
+      "overview": 1,
+      "of": 1,
+      "the": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container u-row-spacing t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Read more in our latest community impact report (PDF) Download an overview of the community impact report (PDF)"
+    }
+  },
+  {
+    "path": "/why-allianz/sustainability",
+    "section": 2,
+    "reason": "Mapped component omitted source editorial words; do not import until reconciled",
+    "missingWordCounts": {
+      "we": 1,
+      "a": 1,
+      "see": 1,
+      "how": 1,
+      "are": 1,
+      "securing": 1,
+      "more": 1,
+      "sustainable": 1,
+      "future": 1,
+      "pdf": 1
+    },
+    "source": {
+      "tag": "div",
+      "classes": "l-container u-row-spacing t-bg-transparent  axlTileCollection",
+      "id": "",
+      "textPreview": "Delivering real results We aim to contribute to positive environmental and social outcomes through our investment choices and business decisions. 7 years Seven years in a row recog"
+    }
+  }
+]

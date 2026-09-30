@@ -1,0 +1,20 @@
+---
+ID: "6ba7922c-99c2-5e23-be8c-063fa6842e98"
+Parent: "cc1dab75-752b-5772-b85b-2c3bda50cc16"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzRateTable/Content/tableBody"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Rich Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "300"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "tableBody"
+  Versions:
+  - Version: 1

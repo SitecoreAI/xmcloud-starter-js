@@ -1,0 +1,9 @@
+---
+ID: "a9227bf3-661b-5f17-a26b-a557fc5b713e"
+Parent: "aaf42476-bf5e-51ac-9948-a569b12ce0f6"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/color/teal-bright"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "300"

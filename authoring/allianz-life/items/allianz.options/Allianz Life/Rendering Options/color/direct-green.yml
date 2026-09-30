@@ -1,0 +1,9 @@
+---
+ID: "299a13c7-f794-5e0f-b588-36642a51d175"
+Parent: "aaf42476-bf5e-51ac-9948-a569b12ce0f6"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/color/direct-green"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "500"

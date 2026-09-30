@@ -1,0 +1,20 @@
+---
+ID: "9ebad2b8-b76c-5198-bfc5-2be85696cdca"
+Parent: "c15cebab-cd87-554e-be35-34c7d1ab3e79"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyHero/Content/mobileImage"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Image"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "400"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "mobileImage"
+  Versions:
+  - Version: 1

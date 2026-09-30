@@ -1,0 +1,20 @@
+---
+ID: "81767fe1-885f-5b6c-9986-20897a1bf787"
+Parent: "a23e79d2-d8c5-5c56-b71c-c933d109c69c"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyCardGrid/Content/subheading"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Rich Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "200"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "subheading"
+  Versions:
+  - Version: 1

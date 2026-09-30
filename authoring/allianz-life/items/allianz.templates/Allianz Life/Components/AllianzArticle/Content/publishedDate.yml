@@ -1,0 +1,20 @@
+---
+ID: "e02a23c7-2a3f-5ea6-b4a6-7412748d3393"
+Parent: "2c637527-d3c3-5750-8571-01b0e6c96a22"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzArticle/Content/publishedDate"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Date"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "600"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "publishedDate"
+  Versions:
+  - Version: 1

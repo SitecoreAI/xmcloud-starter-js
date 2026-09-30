@@ -1,0 +1,20 @@
+---
+ID: "07e45c8a-149a-5309-9fab-20a8643541b2"
+Parent: "11e38ef5-7fff-59ab-a621-e7f57a0a9bc3"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzForm/Content/schemaKey"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "300"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "schemaKey"
+  Versions:
+  - Version: 1

@@ -1,0 +1,592 @@
+{
+  "namespace": "Project.AllianzLife.Structure",
+  "siteName": "allianz-life",
+  "collectionName": "Allianz",
+  "components": {
+    "AllianzHeader": {
+      "fields": {
+        "logo": "Image",
+        "tagline": "Single-Line Text",
+        "primaryNav": "Treelist",
+        "utilityNav": "Treelist"
+      },
+      "navigation": true
+    },
+    "AllianzHero": {
+      "fields": {
+        "heading": "Rich Text",
+        "body": "Rich Text",
+        "desktopImage": "Image",
+        "mobileImage": "Image",
+        "primaryLink": "General Link",
+        "secondaryLink": "General Link"
+      }
+    },
+    "AllianzRichText": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "subheading": "Rich Text",
+        "body": "Rich Text",
+        "primaryLink": "General Link"
+      }
+    },
+    "AllianzCardGrid": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "subheading": "Rich Text",
+        "body": "Rich Text",
+        "primaryLink": "General Link"
+      },
+      "children": "AllianzCard"
+    },
+    "AllianzAccordion": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "primaryLink": "General Link"
+      },
+      "children": "AllianzAccordionEntry"
+    },
+    "AllianzCTA": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text",
+        "link": "General Link"
+      }
+    },
+    "AllianzDocumentList": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text"
+      },
+      "children": "AllianzDocument"
+    },
+    "AllianzFooter": {
+      "fields": {
+        "logo": "Image",
+        "body": "Rich Text",
+        "copyright": "Single-Line Text",
+        "primaryNav": "Treelist",
+        "utilityNav": "Treelist",
+        "socialNav": "Treelist"
+      },
+      "navigation": true
+    },
+    "AllianzBreadcrumbs": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "primaryNav": "Treelist"
+      },
+      "navigation": true
+    },
+    "AllianzForm": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text",
+        "schemaKey": "Single-Line Text",
+        "secondaryHeading": "Single-Line Text",
+        "secondaryBody": "Rich Text",
+        "reviewHeading": "Single-Line Text",
+        "successMessage": "Rich Text",
+        "failureMessage": "Rich Text",
+        "submitLabel": "Single-Line Text"
+      },
+      "children": "AllianzFormField"
+    },
+    "AllianzSearch": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text",
+        "placeholder": "Single-Line Text",
+        "resultLabel": "Single-Line Text",
+        "noResultsMessage": "Single-Line Text"
+      }
+    },
+    "AllianzArticle": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text",
+        "summary": "Rich Text",
+        "image": "Image",
+        "author": "Single-Line Text",
+        "publishedDate": "Date"
+      }
+    },
+    "AllianzVideo": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text",
+        "poster": "Image",
+        "localVideo": "File",
+        "mediaLink": "General Link",
+        "transcript": "Rich Text",
+        "caption": "Rich Text"
+      }
+    },
+    "AllianzTimeline": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text"
+      },
+      "children": "AllianzTimelineEntry"
+    },
+    "AllianzRateSnapshot": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "rate": "Single-Line Text",
+        "asOf": "Single-Line Text",
+        "body": "Rich Text",
+        "link": "General Link"
+      }
+    },
+    "AllianzIndexDefinitions": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text"
+      },
+      "children": "AllianzIndexDefinition"
+    },
+    "AllianzCalculator": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text",
+        "schemaKey": "Single-Line Text",
+        "sampleResult": "Rich Text",
+        "disclaimer": "Rich Text",
+        "submitLabel": "Single-Line Text",
+        "resultLabel": "Single-Line Text",
+        "initialResult": "Single-Line Text"
+      },
+      "children": "AllianzFormField"
+    },
+    "AllianzRateTable": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "body": "Rich Text",
+        "tableBody": "Rich Text",
+        "caption": "Single-Line Text",
+        "emptyState": "Rich Text"
+      }
+    },
+    "AllianzLegacySidebar": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "primaryNav": "Treelist"
+      },
+      "navigation": true
+    },
+    "AllianzLegacyPageHeader": {
+      "fields": {
+        "heading": "Rich Text",
+        "body": "Rich Text"
+      }
+    },
+    "AllianzLegacyHero": {
+      "fields": {
+        "heading": "Rich Text",
+        "body": "Rich Text",
+        "desktopImage": "Image",
+        "mobileImage": "Image",
+        "primaryLink": "General Link",
+        "secondaryLink": "General Link"
+      }
+    },
+    "AllianzLegacyRichText": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "subheading": "Rich Text",
+        "body": "Rich Text"
+      }
+    },
+    "AllianzLegacyHeader": {
+      "fields": {
+        "logo": "Image",
+        "tagline": "Single-Line Text",
+        "heading": "Single-Line Text",
+        "byline": "Single-Line Text",
+        "link": "General Link",
+        "primaryNav": "Treelist",
+        "utilityNav": "Treelist"
+      },
+      "navigation": true
+    },
+    "AllianzLegacyFooter": {
+      "fields": {
+        "logo": "Image",
+        "body": "Rich Text",
+        "copyright": "Single-Line Text",
+        "primaryNav": "Treelist",
+        "utilityNav": "Treelist",
+        "socialNav": "Treelist"
+      },
+      "navigation": true
+    },
+    "AllianzLegacyAccordion": {
+      "fields": {
+        "heading": "Single-Line Text"
+      },
+      "children": "AllianzAccordionEntry"
+    },
+    "AllianzLegacyCardGrid": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "subheading": "Rich Text",
+        "body": "Rich Text"
+      },
+      "children": "AllianzCard"
+    },
+    "AllianzLegacyLinkList": {
+      "fields": {
+        "heading": "Single-Line Text"
+      },
+      "children": "AllianzLinkListEntry"
+    },
+    "AllianzLegacyBreadcrumbs": {
+      "fields": {
+        "heading": "Single-Line Text",
+        "primaryNav": "Treelist"
+      },
+      "navigation": true
+    }
+  },
+  "childTemplates": {
+    "AllianzCard": {
+      "heading": "Single-Line Text",
+      "subheading": "Rich Text",
+      "body": "Rich Text",
+      "image": "Image",
+      "icon": "Image",
+      "iconTheme": "Droplist",
+      "link": "General Link",
+      "links": "Treelist",
+      "theme": "Droplist",
+      "headingLevel": "Droplist",
+      "alphanumeral": "Single-Line Text"
+    },
+    "AllianzAccordionEntry": {
+      "heading": "Single-Line Text",
+      "body": "Rich Text",
+      "link": "General Link"
+    },
+    "AllianzNavigationLink": {
+      "title": "Single-Line Text",
+      "link": "General Link",
+      "icon": "Image"
+    },
+    "AllianzDocument": {
+      "title": "Single-Line Text",
+      "description": "Rich Text",
+      "file": "File",
+      "sourceUrl": "Single-Line Text",
+      "publishedDate": "Date"
+    },
+    "AllianzFormField": {
+      "name": "Single-Line Text",
+      "label": "Single-Line Text",
+      "inputType": "Single-Line Text",
+      "required": "Checkbox",
+      "validationMessage": "Single-Line Text",
+      "options": "Multi-Line Text",
+      "maxLength": "Single-Line Text",
+      "pattern": "Single-Line Text",
+      "placeholder": "Single-Line Text",
+      "sourceName": "Single-Line Text",
+      "minValue": "Single-Line Text",
+      "maxValue": "Single-Line Text",
+      "initialValue": "Single-Line Text",
+      "footnote": "Single-Line Text"
+    },
+    "AllianzLinkListEntry": {
+      "heading": "Single-Line Text",
+      "body": "Rich Text",
+      "link": "General Link"
+    },
+    "AllianzTimelineEntry": {
+      "date": "Single-Line Text",
+      "heading": "Single-Line Text",
+      "body": "Rich Text",
+      "image": "Image",
+      "link": "General Link"
+    },
+    "AllianzIndexDefinition": {
+      "body": "Rich Text",
+      "color": "Droplist"
+    }
+  },
+  "parameters": {
+    "theme": [
+      "transparent",
+      "blue-soft",
+      "grey-muted",
+      "white",
+      "green-soft",
+      "grey-soft",
+      "purple-soft",
+      "yellow-soft",
+      "primary-white",
+      "red-soft"
+    ],
+    "layout": [
+      "stacked",
+      "image-left",
+      "image-right",
+      "cards",
+      "bordered",
+      "home",
+      "stage",
+      "plain",
+      "rich-text",
+      "disclosures",
+      "list"
+    ],
+    "columns": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "alignment": [
+      "left",
+      "center"
+    ],
+    "spacing": [
+      "none",
+      "sm",
+      "md",
+      "lg",
+      "xl"
+    ],
+    "headingLevel": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ],
+    "showLogin": [
+      "0",
+      "1"
+    ],
+    "heroTheme": [
+      "fixed",
+      "variable",
+      "life"
+    ],
+    "paddingTop": [
+      "none",
+      "sm",
+      "md",
+      "lg",
+      "xl"
+    ],
+    "paddingBottom": [
+      "none",
+      "sm",
+      "md",
+      "lg",
+      "xl"
+    ],
+    "marginBottom": [
+      "none",
+      "sm",
+      "md",
+      "lg",
+      "xl"
+    ],
+    "position": [
+      "left",
+      "right"
+    ],
+    "productLine": [
+      "none",
+      "annuities"
+    ],
+    "region": [
+      "pre-content",
+      "content",
+      "post-content",
+      "disclosure"
+    ],
+    "style": [
+      "nav-links",
+      "next-steps",
+      "tools"
+    ],
+    "tableTheme": [
+      "striped",
+      "plain"
+    ],
+    "breakpoint": [
+      "sm",
+      "md"
+    ],
+    "noMarginBottom": [
+      "0",
+      "1"
+    ],
+    "market": [
+      "main",
+      "new-york"
+    ],
+    "nextSteps": [
+      "0",
+      "1"
+    ],
+    "splitRatio": [
+      "33:67",
+      "50:50",
+      "67:33"
+    ]
+  },
+  "dataOptions": {
+    "iconTheme": [
+      "transparent",
+      "primary-brand"
+    ],
+    "shellFamily": [
+      "modern",
+      "legacy"
+    ],
+    "legacySharedKey": [
+      "allianz-life",
+      "new-york"
+    ],
+    "color": [
+      "blue-bright",
+      "red-bright",
+      "teal-bright",
+      "purple-bright",
+      "direct-green"
+    ]
+  },
+  "inheritedParameters": [
+    "RenderingIdentifier"
+  ],
+  "parameterFields": {
+    "theme": "Droplist",
+    "layout": "Droplist",
+    "columns": "Droplist",
+    "alignment": "Droplist",
+    "spacing": "Droplist",
+    "headingLevel": "Droplist",
+    "showLogin": "Droplist",
+    "heroTheme": "Droplist",
+    "paddingTop": "Droplist",
+    "paddingBottom": "Droplist",
+    "marginBottom": "Droplist",
+    "position": "Droplist",
+    "productLine": "Droplist",
+    "region": "Droplist",
+    "style": "Droplist",
+    "tableTheme": "Droplist",
+    "breakpoint": "Droplist",
+    "noMarginBottom": "Droplist",
+    "market": "Droplist",
+    "nextSteps": "Droplist",
+    "splitRatio": "Droplist"
+  },
+  "pageTypes": [
+    "Home",
+    "Section Landing",
+    "Product Detail",
+    "Editorial",
+    "News",
+    "Resource Listing",
+    "Form Demo",
+    "Legal"
+  ],
+  "templateIds": {
+    "/sitecore/templates/Project/Allianz Life/Rendering Parameters/AllianzParameters": "e01e61f7-aca5-5a55-a517-2c84eff33fc5",
+    "/sitecore/templates/Project/Allianz Life/Pages/AllianzPage": "eff5b538-3abe-5b3c-9e97-fd5ef78f5213",
+    "/sitecore/templates/Project/Allianz Life/Pages/Home": "48cb4289-1c57-54fd-8fc9-ca3074792531",
+    "/sitecore/templates/Project/Allianz Life/Pages/Section Landing": "9e0723f3-536f-5a69-b7cb-6ac9d5c92e56",
+    "/sitecore/templates/Project/Allianz Life/Pages/Product Detail": "94c29bad-226a-5abf-8ac4-c9d7c228f6dd",
+    "/sitecore/templates/Project/Allianz Life/Pages/Editorial": "08bf58d8-e9f7-5459-978d-34cf30e79081",
+    "/sitecore/templates/Project/Allianz Life/Pages/News": "273e2551-3e06-52a6-bea5-6f7d6e506913",
+    "/sitecore/templates/Project/Allianz Life/Pages/Resource Listing": "6944dd34-e2f5-5a2d-b6d3-5dc04463cf53",
+    "/sitecore/templates/Project/Allianz Life/Pages/Form Demo": "25e12635-3e87-5ddd-b083-5b62e0edf83b",
+    "/sitecore/templates/Project/Allianz Life/Pages/Legal": "1391a7d4-f7da-5f0c-877c-5d858f9ffdae",
+    "/sitecore/templates/Project/Allianz Life/Data/AllianzDataFolder": "d331499e-0840-5ff5-833d-f73086c18ffc",
+    "/sitecore/templates/Project/Allianz Life/Data/AllianzCard": "48f9181f-a7f4-5481-99ba-d88967608d60",
+    "/sitecore/templates/Project/Allianz Life/Data/AllianzAccordionEntry": "52725b20-40f0-5b15-9d53-dc0bc45c262b",
+    "/sitecore/templates/Project/Allianz Life/Data/AllianzNavigationLink": "dc6d849c-06bf-5470-ac14-173e2ac72a0a",
+    "/sitecore/templates/Project/Allianz Life/Data/AllianzDocument": "1b6aab9f-9861-561e-8114-ccddd5bd99d6",
+    "/sitecore/templates/Project/Allianz Life/Data/AllianzFormField": "035517ff-6fa9-5dfe-aa26-140604a1c66e",
+    "/sitecore/templates/Project/Allianz Life/Data/AllianzLinkListEntry": "c396d16a-a002-501d-a182-a51c44f3bcf3",
+    "/sitecore/templates/Project/Allianz Life/Data/AllianzTimelineEntry": "1359d197-3a15-5d11-a12f-c654842e6b16",
+    "/sitecore/templates/Project/Allianz Life/Data/AllianzIndexDefinition": "852d8f73-7da3-519c-a727-5f5b300aae83",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzHeader": "713da576-f78d-523d-acbf-32022165133b",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzHero": "f1905aae-f312-5ff3-b4a6-3676ff9b9e14",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzRichText": "932869d2-552a-5963-984f-6fc3c1e8a4a8",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzCardGrid": "aff4b6a4-d6d9-5d78-9647-6c29a0473f76",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzAccordion": "2168d683-8f86-50e8-8f9d-47b945054eb2",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzCTA": "64d5b86b-ac61-512b-86c8-2e57587783e1",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzDocumentList": "11b938d0-7fc8-533d-a309-d06b65f00d7f",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzFooter": "d44a6ec4-6cbb-5409-86d9-a3a3f3bd8f0b",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzBreadcrumbs": "34942dde-22e3-5011-99d3-fdcb29d5fe83",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzForm": "a1550fad-b92f-51b5-9723-10848f676242",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzSearch": "d0495e26-94c5-5b92-b97d-50ef4fff1c49",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzArticle": "494e325c-7f8e-5fa4-b8f1-85ce33de094a",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzVideo": "93b27fcf-24af-5d14-b61c-0a430381a2e7",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzTimeline": "42be12a0-d69e-51fb-8808-c943f2f1894a",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzRateSnapshot": "2d97ae6b-40da-5817-bfd2-a57b12b55e2c",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzIndexDefinitions": "6e49ae2f-f7cb-5096-b872-c6e67bd5760d",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzCalculator": "b09fa4bc-2940-5ec2-99a3-d336f6863926",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzRateTable": "beb05046-72c6-504f-abc7-9674f0712cec",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacySidebar": "22dbc0a2-6ff5-5a9a-a70b-b9e79a6ea1b6",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyPageHeader": "c4ad80c1-9447-5e59-9428-e17f9ea41d4b",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyHero": "56b9d946-dde4-5bfe-848d-8828b96800d8",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyRichText": "8c5f1968-5f12-51d6-a854-fd534d5667d7",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyHeader": "2f076966-6e69-5990-a18c-4dfe13981925",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyFooter": "5bf2449d-e191-5917-94a8-52c2257363a5",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyAccordion": "5e138256-1c80-5449-80f4-dcd1730cee8a",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyCardGrid": "939f5d9c-c966-5397-90b8-377cbe4cbcbf",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyLinkList": "1f893023-75be-5a21-a786-863cdde3e7b1",
+    "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyBreadcrumbs": "5edf386f-36f0-578a-acb0-6e7045250b09"
+  },
+  "platformDependencies": {
+    "Template": "ab86861a-6030-46c5-b394-e8f99e8b87db",
+    "TemplateFolder": "77157d54-90c8-4014-9b9e-540d24e71d03",
+    "TemplateSection": "e269fbb5-3750-427a-9149-7aa950b49301",
+    "TemplateField": "455a3e98-a627-4b40-8035-e683a0331ac7",
+    "StandardTemplate": "1930bbeb-7805-471a-a3be-4858ac7cf696",
+    "Folder": "a87a00b1-e6db-45ab-8b54-636fec3b5523",
+    "RenderingFolder": "840d4a46-5503-49ec-bf9d-bd090946c63d",
+    "JsonRendering": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+    "PlaceholderFolder": "3d281bf8-5336-4686-9dd6-ab4ab5b3fd5d",
+    "Placeholder": "5c547d4e-7111-4995-95b0-6b561751bf2e",
+    "SettingsFolder": "b4d86f9b-e917-4d68-978e-741361332174",
+    "BranchFolder": "85adbf5b-e836-4932-a333-fe0f9fa1ed1e",
+    "Branch": "35e75c72-4985-4e09-88c3-0eac6cd1e64f",
+    "SxaPageBase": "47151711-26ca-434e-8132-d3e0b7d26683",
+    "SxaPageBase2": "6650fb34-7ea1-4245-a919-5cc0f002a6d7",
+    "SxaPageBase3": "4414a1f9-826a-4647-8df4-ed6a95e64c43",
+    "NativeAllianzScaffoldPage": "2d50c9b4-9f1e-42ae-aa00-0c85fd2b689e",
+    "SxaRenderingParameters": "4247aad4-ebde-4994-998f-e067a51b1fe4",
+    "ProjectTemplatesParent": "825b30b4-b40b-422e-9920-23a1b6bda89c",
+    "ProjectRenderingsParent": "1995806f-0a84-42b5-93b0-88f0e2ff872c",
+    "ProjectPlaceholdersParent": "f5f0fbe3-61ad-4967-a5d8-8d760331d6a1",
+    "ProjectSettingsParent": "0af56f64-b5d7-473f-9497-1dc19265e494",
+    "ProjectBranchesParent": "a1f6469d-16e1-4a5f-9e49-1aad869a5d11"
+  },
+  "fieldDependencies": {
+    "Base": "12c33f3f-86c5-43a5-aeb4-5598cec45116",
+    "StandardValues": "f7d48a55-2158-4f02-9356-756654404f73",
+    "Masters": "1172f251-dad4-4efb-a329-0c63500e4f1e",
+    "Type": "ab162cc0-dc80-4abf-8871-998ee5d7ba32",
+    "Source": "1eb8ae32-e190-44a6-968d-ed904c794ebf",
+    "Shared": "be351a73-fcb0-4213-93fa-c302d8ab4f51",
+    "SortOrder": "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e",
+    "Title": "19a69332-a23e-4e70-8d16-b2640cb24cc8",
+    "ComponentName": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
+    "ComponentQuery": "17bb046a-a32a-41b3-8315-81217947611b",
+    "DatasourceTemplate": "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f",
+    "DatasourceLocation": "b5b27af1-25ef-405c-87ce-369b3a004016",
+    "ParametersTemplate": "a77e8568-1ab3-44f1-a664-b7c37ec7810d",
+    "OtherProperties": "e829c217-5e94-4306-9c48-2634b094fdc2",
+    "PlaceholderKey": "7256bdab-1fd2-49dd-b205-cb4873d2917c",
+    "AllowedControls": "e391b526-d0c5-439d-803e-17512eae6222",
+    "Renderings": "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  },
+  "status": "generated-locally; tenant dependency/schema verification required"
+}

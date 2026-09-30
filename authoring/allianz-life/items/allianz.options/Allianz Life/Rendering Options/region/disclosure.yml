@@ -1,0 +1,9 @@
+---
+ID: "ea37152d-21e7-544a-8d4d-8d9d7673e355"
+Parent: "b38547bf-4f4a-51e9-9601-b8f007d53cbe"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/region/disclosure"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "400"

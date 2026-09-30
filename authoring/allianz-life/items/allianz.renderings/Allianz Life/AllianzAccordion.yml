@@ -1,0 +1,37 @@
+---
+ID: "7e693f81-a98e-5e6f-ad07-e01377139dd5"
+Parent: "c4c92e66-b8c2-55e8-b500-5c9f122daa3f"
+Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+Path: "/sitecore/layout/Renderings/Project/Allianz Life/AllianzAccordion"
+SharedFields:
+- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
+  Hint: componentName
+  Value: "AllianzAccordion"
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query AllianzAccordionQuery($datasource: String!, $language: String!) {
+      datasource: item(path: $datasource, language: $language) {
+        id
+        heading: field(name: "heading") { jsonValue }
+        primaryLink: field(name: "primaryLink") { jsonValue }
+        children(first: 16) { total pageInfo { hasNext endCursor } results {
+          id
+          heading: field(name: "heading") { jsonValue }
+          body: field(name: "body") { jsonValue }
+          link: field(name: "link") { jsonValue }
+        } }
+      }
+    }
+- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
+  Hint: Datasource Template
+  Value: "/sitecore/templates/Project/Allianz Life/Components/AllianzAccordion"
+- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
+  Hint: Datasource Location
+  Value: "query:$site/*[@@name='Data']/*[@@name='Allianz Life']"
+- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
+  Hint: Parameters Template
+  Value: "{E01E61F7-ACA5-5A55-A517-2C84EFF33FC5}"
+- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
+  Hint: OtherProperties
+  Value: "IsAutoDatasourceRendering=true"

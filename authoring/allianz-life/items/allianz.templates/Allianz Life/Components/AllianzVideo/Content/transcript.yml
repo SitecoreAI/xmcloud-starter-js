@@ -1,0 +1,20 @@
+---
+ID: "4c548a6b-1033-5dc5-b678-29670c6d1cf9"
+Parent: "4cab47b1-ae64-5499-80e3-a38b4a84db97"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzVideo/Content/transcript"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Rich Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "600"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "transcript"
+  Versions:
+  - Version: 1

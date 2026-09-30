@@ -1,0 +1,4287 @@
+[
+  {
+    "sourceHref": "/about/olympic-and-paralympic-partnership",
+    "demoHref": "/about/olympic-and-paralympic-partnership",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities",
+    "demoHref": "/what-we-offer/annuities",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance",
+    "demoHref": "/what-we-offer/life-insurance",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzim.com/buffered-outcome-etfs/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/why-allianz",
+    "demoHref": "/why-allianz",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about",
+    "demoHref": "/about",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://careers.allianz.com/us/en/allianz-us-life",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/customer-service-frequently-asked-questions",
+    "demoHref": "/customer-service-frequently-asked-questions",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "http://www.finra.org",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "tel:800-542-5427",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://www.allianzimetfs.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.mnufc.com/stadium/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianz.com/en.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.agcs.allianz.com/global-offices/united-states.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianzworldwidepartners.com/usa/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianz-trade.com/en_US.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.pimco.com/us/en",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/about/executives",
+    "demoHref": "/about/executives",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom",
+    "demoHref": "/about/newsroom",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/why-allianz/culture",
+    "demoHref": "/why-allianz/culture",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/",
+    "demoHref": "/",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#events",
+    "demoHref": "#events",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#community",
+    "demoHref": "#community",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#global",
+    "demoHref": "#global",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianz.com/en/about-us/brand/partnerships/stadiums.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/why-allianz/community",
+    "demoHref": "/why-allianz/community",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/#solutions",
+    "demoHref": "/#solutions",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/",
+    "demoHref": "/",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/allianz-field",
+    "demoHref": "/about/allianz-field",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/apply-for-a-grant#application",
+    "demoHref": "/about/apply-for-a-grant#application",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "mailto:communityengagement@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/about/apply-for-a-grant",
+    "demoHref": "/about/apply-for-a-grant",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/executives/jasmine-jirele",
+    "demoHref": "/about/executives/jasmine-jirele",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/executives/adam-brown",
+    "demoHref": "/about/executives/adam-brown",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/executives/gretchen-cepek",
+    "demoHref": "/about/executives/gretchen-cepek",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/executives/luca-gallo",
+    "demoHref": "/about/executives/luca-gallo",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/executives/bill-gaumond",
+    "demoHref": "/about/executives/bill-gaumond",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/executives/Jenny-Guldseth",
+    "demoHref": "/about/executives/jenny-guldseth",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/executives/Jean-Roch-Sibille",
+    "demoHref": "/about/executives/jean-roch-sibille",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/executives/eric-thomes",
+    "demoHref": "/about/executives/eric-thomes",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "http://www.ambest.com/home/default.aspx",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.moodys.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.standardandpoors.com/en_US/web/guest/home",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/about/financial-ratings",
+    "demoHref": "/about/financial-ratings",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/3-in-4-Americans-Think-Market-Highs-are-Unsustainable",
+    "demoHref": "/about/newsroom/2026-press-releases/3-in-4-americans-think-market-highs-are-unsustainable",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Americans-Without-Children-Are-Less-Confident-About-Retirement",
+    "demoHref": "/about/newsroom/2026-press-releases/americans-without-children-are-less-confident-about-retirement",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Invests-$750000-to-Help-Address-Growing-Housing-and-Food-Insecurity-in-the-Twin-Cities",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-invests-$750000-to-help-address-growing-housing-and-food-insecurity-in-the-twin-cities",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Earns-Great-Place-to-Work-Certificatio-for-16th-consecutive-year",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-earns-great-place-to-work-certificatio-for-16th-consecutive-year",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Study-Finds-Americans-struggle-to-shift-from-retirement-saving-to-spending",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-study-finds-americans-struggle-to-shift-from-retirement-saving-to-spending",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Invests-in-Financial-Opportunity-Centers-to-Strengthen-Financial-Resilience",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-invests-in-financial-opportunity-centers-to-strengthen-financial-resilience",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.linkedin.com/company/allianz-life",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "tel:763-765-7160",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:brett.weinberg@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "tel:763-765-5106",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:claire.woit@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts",
+    "demoHref": "/about/subject-matter-experts",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.agcs.allianz.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianztravelinsurance.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianz-trade.com/en_global.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.ssa.gov/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/More-Americans-Plan-to-Focus-on-Finances-in-2025",
+    "demoHref": "/about/newsroom/2024-press-releases/more-americans-plan-to-focus-on-finances-in-2025",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-partners-with-Empower",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-partners-with-empower",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Debt-is-Limiting-American-Retirement-Savings",
+    "demoHref": "/about/newsroom/2024-press-releases/debt-is-limiting-american-retirement-savings",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Americans-Lack-Plans-for-Retirement-Income",
+    "demoHref": "/about/newsroom/2024-press-releases/americans-lack-plans-for-retirement-income",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Market-Volatility-Fuels-Risk-Averse-Stance-Among-Investors",
+    "demoHref": "/about/newsroom/2024-press-releases/market-volatility-fuels-risk-averse-stance-among-investors",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Named-as-a-2024-Best-Workplace-in-Financial-Services-and-Insurance",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-named-as-a-2024-best-workplace-in-financial-services-and-insurance",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Named-Seramount-Top-Company-for-Executive-Women",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-named-seramount-top-company-for-executive-women",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Americans-Lack-Knowledge-About-Social-Security-Benefits-in-Retirement",
+    "demoHref": "/about/newsroom/2024-press-releases/americans-lack-knowledge-about-social-security-benefits-in-retirement",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Named-to-the-Seramount-2024-Inclusion-Index",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-named-to-the-seramount-2024-inclusion-index",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Press-Americans-Worry-Extreme-Weather-Will-Rain-on-Their-Retirement",
+    "demoHref": "/about/newsroom/2024-press-releases/press-americans-worry-extreme-weather-will-rain-on-their-retirement",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Named-as-a-100-Best-Company-for-Working-Parents",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-named-as-a-100-best-company-for-working-parents",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Launches-New-Indexed-Universal-Life-Insurance-Product",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-launches-new-indexed-universal-life-insurance-product",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-receives-Great-Place-to-Work-Certification",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-receives-great-place-to-work-certification",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Americans-Less-Fearful-About-a-Recession-and-Investing",
+    "demoHref": "/about/newsroom/2024-press-releases/americans-less-fearful-about-a-recession-and-investing",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-celebrates-15th-year-as-a-Top-MN-Workplace",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-celebrates-15th-year-as-a-top-mn-workplace",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Gen-X-Approaching-Retirement-Crunch-Time-with-Savings-Regrets",
+    "demoHref": "/about/newsroom/2024-press-releases/gen-x-approaching-retirement-crunch-time-with-savings-regrets",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Taps-Ben-Thomason-to-Drive-Growth-in-Defined-Contribution-Market",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-taps-ben-thomason-to-drive-growth-in-defined-contribution-market",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Nearly-half-of-Americans-expect-slow-transition-into-retirement",
+    "demoHref": "/about/newsroom/2024-press-releases/nearly-half-of-americans-expect-slow-transition-into-retirement",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/New-Tool-Turns-Life-Insurance-Illustrations-into-Full-Policy-Proposals-Instantly",
+    "demoHref": "/about/newsroom/2024-press-releases/new-tool-turns-life-insurance-illustrations-into-full-policy-proposals-instantly",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Gives-Grants-to-Four-Local-Nonprofits",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-gives-grants-to-four-local-nonprofits",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Nearly-2-in-3-Americans-Worry-More-about-Running-Out-of-Money-than-Death",
+    "demoHref": "/about/newsroom/2024-press-releases/nearly-2-in-3-americans-worry-more-about-running-out-of-money-than-death",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Named-One-of-the-2024-Fortune-100-Best-Companies",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-named-one-of-the-2024-fortune-100-best-companies",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/AllianzIM-Launches-New-Buffer15-Uncapped-ETF-Series",
+    "demoHref": "/about/newsroom/2024-press-releases/allianzim-launches-new-buffer15-uncapped-etf-series",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Americans-Reducing-Retirement-Savings-and-Taking-on-Debt-Due-to-Inflation",
+    "demoHref": "/about/newsroom/2024-press-releases/americans-reducing-retirement-savings-and-taking-on-debt-due-to-inflation",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Launches-New-Accumulation-Annuity",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-launches-new-accumulation-annuity",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Named-as-One-of-the-2024-Worlds-Most-Ethical-Companies",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-named-as-one-of-the-2024-worlds-most-ethical-companies",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/AllianzIM-Launches-Four-New-6-Month-Buffer10-ETFs",
+    "demoHref": "/about/newsroom/2024-press-releases/allianzim-launches-four-new-6-month-buffer10-etfs",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Life-Recognized-For-Training-and-Development-Programs",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-life-recognized-for-training-and-development-programs",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Allianz-Expands-Sales-Team-to-Support-Increasing-Interest-in-Protecting-Retirement-Assets",
+    "demoHref": "/about/newsroom/2024-press-releases/allianz-expands-sales-team-to-support-increasing-interest-in-protecting-retirement-assets",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Women-Taking-On-More-Financial-Responsibility",
+    "demoHref": "/about/newsroom/2024-press-releases/women-taking-on-more-financial-responsibility",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/AllianzIM-Expands-Its-Risk-Mitigation-Toolkit-With-New-6-Month-Floor5-ETF-Series",
+    "demoHref": "/about/newsroom/2024-press-releases/allianzim-expands-its-risk-mitigation-toolkit-with-new-6-month-floor5-etf-series",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/Fewer-Americans-are-Optimistic-About-the-Economy-in-2024",
+    "demoHref": "/about/newsroom/2024-press-releases/fewer-americans-are-optimistic-about-the-economy-in-2024",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases/_Local",
+    "demoHref": "/about/newsroom/2024-press-releases/_local",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2024-Press-Releases",
+    "demoHref": "/about/newsroom/2024-press-releases",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://aedamn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.lisc.org/twin-cities/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.wallinpartners.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.youthlinkmn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-workplaces/finance-insurance/2024",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/solutions/certification?utm_campaign=bw2024-industry&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240910&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "file://awusrp05.azlifem.azl.pvt/CmComm/Corporate%20Communications/Projects/Awards_P/Fortune%20100%20and%20GPTW/2024/Best%20Workplace%20in%20Financial%20Services%20&amp;%20Insurance/www.allianzlife.com/culture",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/solutions/employee-surveys?utm_campaign=bw2024-industry&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240910&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-workplaces/finance-insurance/2024?utm_campaign=bw2024-industry&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240911&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-workplaces/finance-insurance?utm_campaign=bw2024-industry&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240911&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.linkedin.com/company/great-place-to-work-us/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://x.com/GPTW_US",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.instagram.com/gptw_us/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/?utm_campaign=bw2024-industry&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240910&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/newsletter?utm_campaign=bw2024-industry&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240910&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://c212.net/c/link/?t=0&l=en&o=4019376-1&h=2189658075&u=https%3A%2F%2Ffortune.com%2Fconferences%2Fthe-fortune-ceo-initiative-2023&a=CEO+Initiative",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://fortune.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.youtube.com/watch/nuJGS6N3ez4",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://ethisphere.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://fortune.com/ranking/best-companies/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-companies-to-work-for/2024?utm_campaign=bw2024-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240404&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/solutions/employee-surveys?utm_campaign=bw2024-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240404&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-workplaces/get-on-a-list?utm_campaign=bw2024-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240404&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://twitter.com/gptw_us",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/?utm_campaign=bw2024-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240404&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/newsletter?utm_campaign=bw2024-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20240404&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://c212.net/c/link/?t=0&l=en&o=3590691-1&h=4165872710&u=https%3A%2F%2Fc212.net%2Fc%2Flink%2F%3Ft%3D0%26l%3Den%26o%3D3508182-1%26h%3D2734072467%26u%3Dhttp%253A%252F%252Fwww.fortune.com%252F%26a%3Dwww.fortune.com&a=www.fortune.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/certified-company/102037035",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/resources/blog/why-job-seekers-prefer-certified-workplaces",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "http://www.greatplacetowork.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.linkedin.com/company/28924/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.facebook.com/GreatPlacetoWork",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.instagram.com/gptw_us",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "http://www.allianzimetfs.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "http://www.allianzim.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "tel:800-950-1962",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Nearly-Half-of-Americans-More-Stressed-Heading-into-2026",
+    "demoHref": "/about/newsroom/2025-press-releases/nearly-half-of-americans-more-stressed-heading-into-2026",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/AllianzIM-to-Transfer-Exchange-Listings",
+    "demoHref": "/about/newsroom/2025-press-releases/allianzim-to-transfer-exchange-listings",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Allianz-and-Keystone-Fight-Hunger",
+    "demoHref": "/about/newsroom/2025-press-releases/allianz-and-keystone-fight-hunger",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Americans-lack-knowledge-about-Social-Security",
+    "demoHref": "/about/newsroom/2025-press-releases/americans-lack-knowledge-about-social-security",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Gen-X-Nearing-Retirement-With-Worries",
+    "demoHref": "/about/newsroom/2025-press-releases/gen-x-nearing-retirement-with-worries",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Sandwich-Generation-Neglecting-Retirement-Savings",
+    "demoHref": "/about/newsroom/2025-press-releases/sandwich-generation-neglecting-retirement-savings",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/GPTW-Certification",
+    "demoHref": "/about/newsroom/2025-press-releases/gptw-certification",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Gray-Divorce-Trend-Threatens-Retirement-Security",
+    "demoHref": "/about/newsroom/2025-press-releases/gray-divorce-trend-threatens-retirement-security",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/AllianzIM-Launches-Quarterly-Reset-Buffered-ETFs-to-Enhance-Risk-Management-Flexibility",
+    "demoHref": "/about/newsroom/2025-press-releases/allianzim-launches-quarterly-reset-buffered-etfs-to-enhance-risk-management-flexibility",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Allianz-Life-Study-Finds-Record-High-Investment-Anxiety",
+    "demoHref": "/about/newsroom/2025-press-releases/allianz-life-study-finds-record-high-investment-anxiety",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Star-Tribune-Top-Workplace",
+    "demoHref": "/about/newsroom/2025-press-releases/star-tribune-top-workplace",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/American-Financial-Confidence-On-Decline-Since-2020",
+    "demoHref": "/about/newsroom/2025-press-releases/american-financial-confidence-on-decline-since-2020",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/New-Versions-of-Top-Selling-Fixed-Index-Annuities",
+    "demoHref": "/about/newsroom/2025-press-releases/new-versions-of-top-selling-fixed-index-annuities",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Allianz-Life-Names-New-Chief-Operating-Officer-and-Chief-Actuary",
+    "demoHref": "/about/newsroom/2025-press-releases/allianz-life-names-new-chief-operating-officer-and-chief-actuary",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Americans-Are-More-Worried-About-Running-Out-of-Money-Than-Death",
+    "demoHref": "/about/newsroom/2025-press-releases/americans-are-more-worried-about-running-out-of-money-than-death",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Retirement-Plan-Participants-Seek-Lifetime-Income-and-Guidance",
+    "demoHref": "/about/newsroom/2025-press-releases/retirement-plan-participants-seek-lifetime-income-and-guidance",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Fortune-100-Best-Companies",
+    "demoHref": "/about/newsroom/2025-press-releases/fortune-100-best-companies",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Inflation-and-Tariffs-Increasingly-Worrying-Americans",
+    "demoHref": "/about/newsroom/2025-press-releases/inflation-and-tariffs-increasingly-worrying-americans",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/WMEC",
+    "demoHref": "/about/newsroom/2025-press-releases/wmec",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/AllianzIM-Expands-Buffer-Allocation-ETF-Suite",
+    "demoHref": "/about/newsroom/2025-press-releases/allianzim-expands-buffer-allocation-etf-suite",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/APEX-Training-Award",
+    "demoHref": "/about/newsroom/2025-press-releases/apex-training-award",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Allianz-Life-Retirement-Solutions-Now-Available-Through-Morgan-Stanley",
+    "demoHref": "/about/newsroom/2025-press-releases/allianz-life-retirement-solutions-now-available-through-morgan-stanley",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Majority-of-Americans-Anticipate-Improved-Economy-in-2025",
+    "demoHref": "/about/newsroom/2025-press-releases/majority-of-americans-anticipate-improved-economy-in-2025",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/AllianzIM-Introduces-Suite-of-Buffer-Allocation-ETFs",
+    "demoHref": "/about/newsroom/2025-press-releases/allianzim-introduces-suite-of-buffer-allocation-etfs",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/Allianz-Life-Recognized-as-a-Top-Workplace-for-LGBTQ-Employees",
+    "demoHref": "/about/newsroom/2025-press-releases/allianz-life-recognized-as-a-top-workplace-for-lgbtq-employees",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases/_Local",
+    "demoHref": "/about/newsroom/2025-press-releases/_local",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2025-Press-Releases",
+    "demoHref": "/about/newsroom/2025-press-releases",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://keystoneservices.org/events/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "http://www.hrc.org/cei",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "http://www.allianzimetfs.com./",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianzim.com/product-table/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "file:///T:/Corporate%20Communications/Projects/Awards_P/APEX%20awards%20-%20Training%20Magazine/2025/www.allianzlife.com/culture",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-workplaces/100-best/2025",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-companies-to-work-for/2025?utm_campaign=bw2025-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20250402&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/solutions/employee-surveys?utm_campaign=bw2025-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20250402&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-workplaces/get-on-a-list?utm_campaign=bw2025-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20250402&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/?utm_campaign=bw2025-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20250402&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/newsletter?utm_campaign=bw2025-100best&utm_medium=referral&utm_source=press-release&utm_content=text-link&utm_term=20250402&utm_audience=all",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/resources/blog/job-seekers-are-4-5x-more-likely-to-find-a-great-boss-at-a-certified-great-workplace",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "file:///T:/Corporate%20Communications/Projects/Awards_P/Fortune%20100%20and%20GPTW/2025/www.allianzlife.com/culture",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://azldigital.qualtrics.com/jfe/form/SV_eMbxqrVxV1hntoq",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/AllianzIM-Grows-International-Buffered-ETF-Lineup-with-Launch-of-JULI",
+    "demoHref": "/about/newsroom/2026-press-releases/allianzim-grows-international-buffered-etf-lineup-with-launch-of-juli",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Only-1-in-4-Americans-Think-Now-Is-A-Good-Time-To-Invest",
+    "demoHref": "/about/newsroom/2026-press-releases/only-1-in-4-americans-think-now-is-a-good-time-to-invest",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Named-Star-Tribune-Top-Workplace-for-17th-Consecutive-Year",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-named-star-tribune-top-workplace-for-17th-consecutive-year",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Many-Americans-Retire-Earlier-Than-Planned",
+    "demoHref": "/about/newsroom/2026-press-releases/many-americans-retire-earlier-than-planned",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Fear-Of-Running-Out-of-Money-Over-Death-At-Record-High",
+    "demoHref": "/about/newsroom/2026-press-releases/fear-of-running-out-of-money-over-death-at-record-high",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Adds-New-Accumulation-Focused-Fixed-Index-Annuities",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-adds-new-accumulation-focused-fixed-index-annuities",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Earns-Spot-on-the-2026-Fortune-100-Best-Companies-to-Work-For-List",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-earns-spot-on-the-2026-fortune-100-best-companies-to-work-for-list",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/AllianzIM-Expands-Buffered-ETF-Suite",
+    "demoHref": "/about/newsroom/2026-press-releases/allianzim-expands-buffered-etf-suite",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Supports-Dress-For-Success-Twin-Cities-With-Three-Year-Grant",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-supports-dress-for-success-twin-cities-with-three-year-grant",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Retirement-Tax-Worries-on-the-Rise-Among-Americans",
+    "demoHref": "/about/newsroom/2026-press-releases/retirement-tax-worries-on-the-rise-among-americans",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Jessie-Diggins-returns-to-Minnesota-for-celebration-event-following-retirement-from-ski-racing",
+    "demoHref": "/about/newsroom/2026-press-releases/jessie-diggins-returns-to-minnesota-for-celebration-event-following-retirement-from-ski-racing",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Named-as-One-of-the-2026-Worlds-Most-Ethical-Companies",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-named-as-one-of-the-2026-worlds-most-ethical-companies",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/New-Allianz-Life-Annuity-Offers-Added-Flexibility-in-Income-Benefits",
+    "demoHref": "/about/newsroom/2026-press-releases/new-allianz-life-annuity-offers-added-flexibility-in-income-benefits",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Women-Now-Are-the-Chief-Financial-Officer",
+    "demoHref": "/about/newsroom/2026-press-releases/women-now-are-the-chief-financial-officer",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Recognized-For-Training-and-Development-Programs",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-recognized-for-training-and-development-programs",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Allianz-Life-Launches-Fixed-Index-Annuity-Content-on-Interactive-Tool",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-launches-fixed-index-annuity-content-on-interactive-tool",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/AllianzIM-Buffered-ETF-Suite-Expands-with-Launch-of-International-Fund",
+    "demoHref": "/about/newsroom/2026-press-releases/allianzim-buffered-etf-suite-expands-with-launch-of-international-fund",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/Americans-Cutting-Back-on-Retirement-Savings",
+    "demoHref": "/about/newsroom/2026-press-releases/americans-cutting-back-on-retirement-savings",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases/_Local",
+    "demoHref": "/about/newsroom/2026-press-releases/_local",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/newsroom/2026-Press-Releases",
+    "demoHref": "/about/newsroom/2026-press-releases",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "file:///T:/Corporate%20Communications/Projects/Awards_P/Fortune%20100%20and%20GPTW/2026/GPTW%20Certification%20Announcement/www.allianzlife.com/culture",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-workplaces/100-best/2026",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/solutions/employee-surveys?utm_campaign=cp.bw.100.best.2026&utm_medium=referral&utm_source=press.release&utm_content=text.link&utm_term=kw.recognition&utm_audience=general",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-companies-to-work-for/2026?utm_campaign=cp.bw.100.best.2026&utm_medium=referral&utm_source=press.release&utm_content=text.link&utm_term=kw.recognition&utm_audience=general",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.greatplacetowork.com/best-workplaces/get-on-a-list?utm_campaign=cp.bw.100.best.2026&utm_medium=referral&utm_source=press.release&utm_content=text.link&utm_term=kw.recognition&utm_audience=general",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.linkedin.com/newsletters/culture-edge-7256765026672259072/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://edge.prnewswire.com/c/link/?t=0&l=en&o=4555707-1&h=3669130952&u=https%3A%2F%2Ffortune.com%2Franking%2Ffortune500%2F&a=Fortune+500%2C",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://edge.prnewswire.com/c/link/?t=0&l=en&o=4555707-1&h=1173750114&u=https%3A%2F%2Ffortune.com%2Franking%2Fglobal500%2F&a=Fortune+Global+500",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://edge.prnewswire.com/c/link/?t=0&l=en&o=4555707-1&h=3442974321&u=https%3A%2F%2Ffortune.com%2Franking%2Fmost-powerful-women%2F&a=Most+Powerful+Women",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://edge.prnewswire.com/c/link/?t=0&l=en&o=4555707-1&h=2514855487&u=https%3A%2F%2Ffortune.com%2Franking%2Fworlds-most-admired-companies%2F&a=World%27s+Most+Admired+Companies",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://edge.prnewswire.com/c/link/?t=0&l=en&o=4555707-1&h=25991460&u=https%3A%2F%2Ffortune.com%2Fconferences%2Ffortune-global-forum-2025&a=Fortune+Global+Forum",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://edge.prnewswire.com/c/link/?t=0&l=en&o=4555707-1&h=2933435069&u=https%3A%2F%2Ffortune.com%2Fconferences%2Ffortune-brainstorm-tech-2025&a=Brainstorm+Tech",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://edge.prnewswire.com/c/link/?t=0&l=en&o=4555707-1&h=333063527&u=https%3A%2F%2Ffortune.com%2Fconferences%2Ffortune-most-powerful-women-2025&a=Fortune+Most+Powerful+Women",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://edge.prnewswire.com/c/link/?t=0&l=en&o=4555707-1&h=1657753964&u=https%3A%2F%2Ffortune.com%2F&a=fortune.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://mhponline.org/publications/the-gap-a-shortage-of-affordable-homes/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.mprnews.org/story/2026/03/18/minnesotans-made-9-million-visits-to-food-shelves-in-2025",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://commonbond.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://cornerstonemn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://emmanorton.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.frogtownfarm.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.goodinthehood.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.hallieqbrown.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.housinglink.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://interfaithaction.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://merrickcs.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.modelcities.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://neighborhoodhousemn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.neighborsmn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://sabathani.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.tdpmn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.thefoodgroupmn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://thelinkmn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.tubman.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://veap.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://ensightcloud.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://seatgeek.com/jessie-diggins-tickets/olympic-sports/2026-04-19-1-30-pm/18114018?preview_token=OqNJ5v7yqb",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianz.com/en/about-us/brand/partnerships/olympic-paralympic-movements.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianz.com/en/about-us/brand/partnerships/olympic-paralympic-movements/team-allianz.html#buddy-program",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianz.com/en/about-us/brand/partnerships/olympic-paralympic-movements/movenow.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.paralympic.org/a-winning-mindset",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://careers.allianz.com/lp/Global-Athlete-Community/afcba5a0159c32c8/?locale=en_GB",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/jeng-chiu",
+    "demoHref": "/about/subject-matter-experts/jeng-chiu",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Kelly-LaVigne",
+    "demoHref": "/about/subject-matter-experts/kelly-lavigne",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Steven-Sweeney",
+    "demoHref": "/about/subject-matter-experts/steven-sweeney",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Waldean-Wall",
+    "demoHref": "/about/subject-matter-experts/waldean-wall",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Austin-Bichler",
+    "demoHref": "/about/subject-matter-experts/austin-bichler",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/adam-brown",
+    "demoHref": "/about/subject-matter-experts/adam-brown",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/eric-thomes",
+    "demoHref": "/about/subject-matter-experts/eric-thomes",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Jason-Wellmann",
+    "demoHref": "/about/subject-matter-experts/jason-wellmann",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Carlota-Balet-Gusils",
+    "demoHref": "/about/subject-matter-experts/carlota-balet-gusils",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/paul-cahill",
+    "demoHref": "/about/subject-matter-experts/paul-cahill",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Angela-Hollan",
+    "demoHref": "/about/subject-matter-experts/angela-hollan",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/benjamin-thomason",
+    "demoHref": "/about/subject-matter-experts/benjamin-thomason",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Heidi-Vanderkloot",
+    "demoHref": "/about/subject-matter-experts/heidi-vanderkloot",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/corey-walther",
+    "demoHref": "/about/subject-matter-experts/corey-walther",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/angelica-bonacci",
+    "demoHref": "/about/subject-matter-experts/angelica-bonacci",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Calvin-Buchanan",
+    "demoHref": "/about/subject-matter-experts/calvin-buchanan",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Melanie-Christensen",
+    "demoHref": "/about/subject-matter-experts/melanie-christensen",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/jessica-drake",
+    "demoHref": "/about/subject-matter-experts/jessica-drake",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Matt-Gray",
+    "demoHref": "/about/subject-matter-experts/matt-gray",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/dwayne-maddox",
+    "demoHref": "/about/subject-matter-experts/dwayne-maddox",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Machenzie-Wickre",
+    "demoHref": "/about/subject-matter-experts/machenzie-wickre",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Tracy-Bruckschen",
+    "demoHref": "/about/subject-matter-experts/tracy-bruckschen",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/jenny-guldseth",
+    "demoHref": "/about/subject-matter-experts/jenny-guldseth",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/lorinda-niemeyer",
+    "demoHref": "/about/subject-matter-experts/lorinda-niemeyer",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/kenna-poppler",
+    "demoHref": "/about/subject-matter-experts/kenna-poppler",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Chris-Chambs",
+    "demoHref": "/about/subject-matter-experts/chris-chambs",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Charles-Champagne",
+    "demoHref": "/about/subject-matter-experts/charles-champagne",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/Brian-Muench",
+    "demoHref": "/about/subject-matter-experts/brian-muench",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/subject-matter-experts/charlie-ripley",
+    "demoHref": "/about/subject-matter-experts/charlie-ripley",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/adam-brown.pdf",
+    "demoHref": "/allianz-assets/c3d6cc05f70a263c-adam-brown.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/angela-hollan.pdf",
+    "demoHref": "/allianz-assets/1f18c84acda0eb3e-angela-hollan.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/angelica-bonacci.pdf",
+    "demoHref": "/allianz-assets/df6b140b7bd468ca-angelica-bonacci.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/austin-bichler.pdf",
+    "demoHref": "/allianz-assets/51577516a5d700b4-austin-bichler.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/benjamin-thomason.pdf",
+    "demoHref": "/allianz-assets/677704ed25d8edeb-benjamin-thomason.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/brian-muench.pdf",
+    "demoHref": "/allianz-assets/73c1e8a41e34e67d-brian-muench.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/calvin-buchanan.pdf",
+    "demoHref": "/allianz-assets/330d4af85545c914-calvin-buchanan.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/carlota-balet-gusils.pdf",
+    "demoHref": "/allianz-assets/81f88067db183002-carlota-balet-gusils.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/charles-champagne.pdf",
+    "demoHref": "/allianz-assets/7d5c19d92ee6396f-charles-champagne.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/charlie-ripley.pdf",
+    "demoHref": "/allianz-assets/9a507f430405351c-charlie-ripley.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/chris-chambs.pdf",
+    "demoHref": "/allianz-assets/1d7812dc9b9bd33f-chris-chambs.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/corey-walther.pdf",
+    "demoHref": "/allianz-assets/f8061849a8a539aa-corey-walther.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/dwayne-maddox.pdf",
+    "demoHref": "/allianz-assets/d7c410032ebf7d07-dwayne-maddox.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/eric-thomes.pdf",
+    "demoHref": "/allianz-assets/3c89ed7387f90795-eric-thomes.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/heidi-vanderkloot.pdf",
+    "demoHref": "/allianz-assets/cbaf9a87772b361a-heidi-vanderkloot.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/jason-wellmann.pdf",
+    "demoHref": "/allianz-assets/2fdbb564470fb888-jason-wellmann.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/jeng-chiu.pdf",
+    "demoHref": "/allianz-assets/5a958684dc00599f-jeng-chiu.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/jenny-guldseth.pdf",
+    "demoHref": "/allianz-assets/6fab8c3ea1c0b8e0-jenny-guldseth.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/jessica-drake.pdf",
+    "demoHref": "/allianz-assets/909106e8db6d8004-jessica-drake.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/Kelly-LaVigne.pdf",
+    "demoHref": "/allianz-assets/7b67fdfc08c8fdfd-Kelly-LaVigne.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/kenna-poppler.pdf",
+    "demoHref": "/allianz-assets/324179589c92cf35-kenna-poppler.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/lorinda-niemeyer.pdf",
+    "demoHref": "/allianz-assets/118b42ec24abd832-lorinda-niemeyer.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "https://www.fa-mag.com/news/consider-the-descent-how-the-value-of-income-planning-can-help-your-client-navigate-spending-in-retirement-54330.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/machenzie-wickre.pdf",
+    "demoHref": "/allianz-assets/0aab02d15174bc5f-machenzie-wickre.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/matt-gray.pdf",
+    "demoHref": "/allianz-assets/a1b7a9fdf255457f-matt-gray.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/melanie-christensen.pdf",
+    "demoHref": "/allianz-assets/d150def01321cd7b-melanie-christensen.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/paul-cahill.pdf",
+    "demoHref": "/allianz-assets/c90a43bfdd3dfdcc-paul-cahill.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/steven-sweeney.pdf",
+    "demoHref": "/allianz-assets/6f44f136ecf20fc5-steven-sweeney.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/tracy-bruckschen.pdf",
+    "demoHref": "/allianz-assets/0159bdfd7629d608-tracy-bruckschen.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/waldean-wall.pdf",
+    "demoHref": "/allianz-assets/67f6d1cc4831304b-waldean-wall.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/about/ventures/portfolio",
+    "demoHref": "/about/ventures/portfolio",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.getblaise.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "http://www.jump.ai/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://myolab.ai/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://allianzx.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.savvywealth.com/blog-posts/savvy-no-1-fastest-growing-financial-services-firm-in-america",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.linkedin.com/company/allianzlifeventures/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/about/ventures/team",
+    "demoHref": "/about/ventures/team",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/ventures/newsroom",
+    "demoHref": "/about/ventures/newsroom",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/ventures",
+    "demoHref": "/about/ventures",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/clay-bottensek.pdf",
+    "demoHref": "/allianz-assets/f6a64abf125cedf0-clay-bottensek.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/collin-bhojwani.pdf",
+    "demoHref": "/allianz-assets/edc110edaa3dd2fa-collin-bhojwani.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "https://techcrunch.com/2026/07/30/dili-raises-15-million-to-bring-ai-compliance-to-the-infrastructure-boom/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.forbes.com/lists/fintech50/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.citybiz.co/article/790249/covr-appoints-sam-barnett-as-ceo-bob-klein-as-chief-distribution-officer/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.prnewswire.com/news-releases/vestwell-selected-by-intuit-as-exclusive-partner-to-deliver-quickbooks-401k-to-millions-of-small-and-mid-market-businesses-302763973.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.wealthmanagement.com/smas/wisdomtree-halo-launched-defined-outcome-sma-strategy",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://micruity.com/20m-to-power-retirement-paychecks/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.functionhealth.com/article/function-announcement",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.vestwell.com/news/vestwell-raises-385-million-to-power-the-future-of-saving",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://fintech.global/2026/04/13/merqube-closes-series-c-with-7ridge-and-deutsche-borse/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.diliai.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.ellevest.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.empathy.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://flxnetworks.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://haloinvesting.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.homethrive.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.ladderlife.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://merqube.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://micruity.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.onevest.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.reframefinancial.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.savvywealth.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.transparency-analytics.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.truelinkfinancial.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.justvanilla.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.vestwell.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://wand.ai/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://orion.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.morganstanley.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://optifino.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.ezra.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.acquireup.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://risk.lexisnexis.com/products/humanapi",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.lifeyield.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.ethos.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/ron-gonen.pdf",
+    "demoHref": "/allianz-assets/8f77f4901f9a09d2-ron-gonen.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/bio/taylor-sieverling.pdf",
+    "demoHref": "/allianz-assets/1c260e564f06ba52-taylor-sieverling.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/about/ventures/collin-bhojwani",
+    "demoHref": "/about/ventures/collin-bhojwani",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/ventures/ron-gonen",
+    "demoHref": "/about/ventures/ron-gonen",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/ventures/taylor-sieverling",
+    "demoHref": "/about/ventures/taylor-sieverling",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/about/ventures/clay-bottensek",
+    "demoHref": "/about/ventures/clay-bottensek",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "tel:866-360-0603",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/Accessibility-Policy",
+    "demoHref": "/accessibility-policy",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#report",
+    "demoHref": "#report",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#complete",
+    "demoHref": "#complete",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#review",
+    "demoHref": "#review",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/report-a-death",
+    "demoHref": "/report-a-death",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "tel:800-624-0197",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/claims-information",
+    "demoHref": "/claims-information",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "mailto:privacy@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "tel:8009426906",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/Confidentiality-for-Victims-of-Domestic-Abuse",
+    "demoHref": "/confidentiality-for-victims-of-domestic-abuse",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "tel:800-950-7372",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "tel:800-950-3347",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/Contact-Us",
+    "demoHref": "/contact-us",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/Registration/individual",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/Login",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/Login/forgot-password-individual",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/Login/forgot-username-individual",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/secured/Web-Site-Settings/Delivery-Preferences",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/05/09/17/31/S2004.pdf",
+    "demoHref": "#demo-unavailable",
+    "classification": "unresolved document"
+  },
+  {
+    "sourceHref": "mailto:fixedannuity@send.allianzlife.com?subject=Fixed Annuity Document",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:variableannuity@send.allianzlife.com?subject=Variable Annuity Document",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:lifeinsurance@send.allianzlife.com?subject=Life Insurance Document",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/secured/Products/Variable-Price-And-Performance",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/secured/Accounts/Personal-Accounts/View-online-documents",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "http://www.naic.org/state_web_map.htm",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "http://www.finra.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://insurance.maryland.gov/Insurer/Documents/bulletins/21-08-United-States-Postal-Service-delays.pdf",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.protectedincome.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/why-allianz/sustainability",
+    "demoHref": "/why-allianz/sustainability",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals",
+    "demoHref": "/for-financial-professionals",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "tel:952-254-0836",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:brian.landwer@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://allianzlife.secure.force.com/cts/?Id=6phjZNvzCgEIptm0XHRsySCbpcdIrX9W17LIMFC4hnA-Z",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "tel:410-683-8849",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:babak.abedi@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://allianzlife.my.salesforce-sites.com/cts/?Id=OrXj9NzPhSO5amCtCYiFatTimdyyfFMpLY3V1tKYY9I-",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "tel:763-765-6598",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:calvin.walls@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "tel:612-219-7643",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:rich.ruiz@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "tel:612-398-2006",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:Brett.Fobbe@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "tel:612-357-3518",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:Chris.Paulson@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/advisory-solutions/ria-concierge-desk",
+    "demoHref": "/for-financial-professionals/advisory-solutions/ria-concierge-desk",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.dplfp.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://simplicityoid.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://haloinvesting.com/annuities/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.ria-insurancesolutions.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "tel:800-328-5722",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:ria@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/advisory-solutions",
+    "demoHref": "/for-financial-professionals/advisory-solutions",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/advisory-solutions/teams",
+    "demoHref": "/for-financial-professionals/advisory-solutions/teams",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/annual-retirement-study",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/annual-retirement-study",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather",
+    "demoHref": "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/5-ways-iul-can-help-clients-leave-a-legacy",
+    "demoHref": "/for-financial-professionals/resources/5-ways-iul-can-help-clients-leave-a-legacy",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-ways-an-annuity-can-strengthen-retirement-strategy",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-ways-an-annuity-can-strengthen-retirement-strategy",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-get-on-track-with-retirement-savings",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-get-on-track-with-retirement-savings",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-build-a-retirement-strategy",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-build-a-retirement-strategy",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.lifehealth.com/building-portfolios-against-shifting-markets/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.kiplinger.com/retirement/retirement-planning/gray-divorce-and-retirement-what-to-know",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.lifehealth.com/can-we-restore-financial-confidence-for-retirement/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.kiplinger.com/retirement/things-that-financially-confident-people-do-from-a-pro-who-knows",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/07/22/09/10/EXT-1127.pdf",
+    "demoHref": "/allianz-assets/3b73d1d6b490afc3-EXT-1127.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/12/23/17/02/EXT-1121.pdf",
+    "demoHref": "/allianz-assets/a535c783cfae1570-EXT-1121.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/09/24/15/12/EXT-1124.pdf",
+    "demoHref": "/allianz-assets/8c70fa86dd54ae6a-EXT-1124.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/07/22/09/03/EXT-1125.pdf",
+    "demoHref": "/allianz-assets/4391dd064585f91b-EXT-1125.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/01/08/16/14/EXT-1107.pdf",
+    "demoHref": "/allianz-assets/61d2bb9410ffb449-EXT-1107.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/07/22/08/56/EXT-1123.pdf",
+    "demoHref": "/allianz-assets/94015bc5252d1ace-EXT-1123.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q3-2026",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q3-2026",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q2-2026",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q2-2026",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2026",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2026",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://lifehappens.org/research/they-dont-understand-life-insurance-and-overestimate-its-cost/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://crr.bc.edu/do-older-adults-understand-healthcare-risks-and-do-advisors-help/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.limraconsumer.com/retirement-income-institute/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/what-we-offer",
+    "demoHref": "/what-we-offer",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-reasons-for-financial-professionals-to-call-their-clients-right-now",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-reasons-for-financial-professionals-to-call-their-clients-right-now",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-Ways-IUL-Strengthens-Retirement-Income",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-ways-iul-strengthens-retirement-income",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/6-tax-strategies-your-clients-can-use-in-retirement",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/6-tax-strategies-your-clients-can-use-in-retirement",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement#marketcommentary",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement#marketcommentary",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2024",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2024",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2025",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2025",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2q-2024",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2q-2024",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2q-2025",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2q-2025",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-3q-2024",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-3q-2024",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-3q-2025",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-3q-2025",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-4q-2024",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-4q-2024",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q4-2025",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q4-2025",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2024/08/20/10/27/EXT-1084.pdf",
+    "demoHref": "/allianz-assets/fa95db7a73140458-EXT-1084.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/asian-americans-may-need-to-protect-rainy-day-funds-from-extreme-weather",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/asian-americans-may-need-to-protect-rainy-day-funds-from-extreme-weather",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/black-americans-may-underestimate-the-risk-of-extreme-weather-on-their-financial-future",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/black-americans-may-underestimate-the-risk-of-extreme-weather-on-their-financial-future",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.ssa.gov/forms/ssa-2.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/divorced-clients-can-get-spousal-social-security-benefits",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/divorced-clients-can-get-spousal-social-security-benefits",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/hispanic-americans-may-move-to-reduce-the-risk-of-extreme-weather",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/hispanic-americans-may-move-to-reduce-the-risk-of-extreme-weather",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-balance-debt-and-retirement-savings",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-balance-debt-and-retirement-savings",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/why-americans-may-not-retire-when-they-think",
+    "demoHref": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/why-americans-may-not-retire-when-they-think",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2026/03/25/13/16/MCM-002.pdf",
+    "demoHref": "/allianz-assets/a408472de1850201-MCM-002.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/secured/forms-and-materials/translated-materials-for-multicultural-needs",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/grow-your-business-in-multicultural-markets",
+    "demoHref": "/for-financial-professionals/grow-your-business-in-multicultural-markets",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://lp.allianzlife.com/EMContactUS.html?utm_source=website&utm_medium=webpage&utm_campaign=contactus_submit&utm_content=jannik_sinner",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/help-clients-prepare-for-retirement",
+    "demoHref": "/for-financial-professionals/resources/help-clients-prepare-for-retirement",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/what-keeps-women-up-at-night",
+    "demoHref": "/for-financial-professionals/resources/what-keeps-women-up-at-night",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/3-retirement-income-concerns-for-underprepared-clients",
+    "demoHref": "/for-financial-professionals/resources/3-retirement-income-concerns-for-underprepared-clients",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/5-annuity-strategies-for-retirement-planning",
+    "demoHref": "/for-financial-professionals/resources/5-annuity-strategies-for-retirement-planning",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/4-ways-to-help-clients-fight-inflation",
+    "demoHref": "/for-financial-professionals/resources/4-ways-to-help-clients-fight-inflation",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/Creating-tailored-strategies-for-business-owners-in-niche-markets",
+    "demoHref": "/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/How-to-help-clients-make-a-plan-for-selling-or-gifting-their-small-business",
+    "demoHref": "/for-financial-professionals/resources/how-to-help-clients-make-a-plan-for-selling-or-gifting-their-small-business",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources",
+    "demoHref": "/for-financial-professionals/resources",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/for-financial-professionals/resources/5-annuity-strategies-for-retirement-planning-remove",
+    "demoHref": "/for-financial-professionals/resources/5-annuity-strategies-for-retirement-planning-remove",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "mailto:AdvancedStrategies@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/secured/forms-and-materials/power-search-results/?context=CatSrchRsltCont&searchText=EXT-1058",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/Calculator",
+    "demoHref": "/what-we-offer/life-insurance/calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/get-answers/retirement-income-calculator",
+    "demoHref": "/get-answers/retirement-income-calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/get-answers/tax-deferral-calculator",
+    "demoHref": "/get-answers/tax-deferral-calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/get-answers/calculate-your-rmd",
+    "demoHref": "/get-answers/calculate-your-rmd",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/get-answers/value-of-income-planning",
+    "demoHref": "/get-answers/value-of-income-planning",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/get-answers",
+    "demoHref": "/get-answers",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2023/06/02/17/42/EXT-0080.pdf",
+    "demoHref": "/allianz-assets/276092315dabb182-EXT-0080.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+    "demoHref": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/05/26/15/37/ENT-3109-N.pdf",
+    "demoHref": "/allianz-assets/3969d3d660563320-ENT-3109-N.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "#TermsOfUse",
+    "demoHref": "#TermsOfUse",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#BusinessContinuity",
+    "demoHref": "#BusinessContinuity",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#AntitrustCode",
+    "demoHref": "#AntitrustCode",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#CodesOfConduct",
+    "demoHref": "#CodesOfConduct",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/Antitrust-Code.pdf",
+    "demoHref": "/allianz-assets/a17ea6de0f8418c6-Antitrust-Code.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/Code-of-Conduct.pdf",
+    "demoHref": "/allianz-assets/761e9f9b3a632099-Code-of-Conduct.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/Legal-and-Obligations",
+    "demoHref": "/legal-and-obligations",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "tel:8009500042",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://www.dfs.ny.gov/consumers/coronavirus",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.governor.ny.gov/news/no-20213-continuing-temporary-suspension-and-modification-laws-relating-disaster-emergency",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.dfs.ny.gov/system/files/documents/2020/03/re_consolidated_amend_pt_405_27a_27c_new_216_text.pdf",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/New-York/About",
+    "demoHref": "/new-york/about",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/About/Why-Allianz-Life-of-NY",
+    "demoHref": "/new-york/about/why-allianz-life-of-ny",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/About/Careers",
+    "demoHref": "/new-york/about/careers",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#content-body",
+    "demoHref": "#content-body",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "javascript:void(0)",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:?subject=About Us&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fabout%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://careers.allianz.com/US/go/Allianz-US-Life/5140601/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "mailto:?subject=Careers&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fabout%2fcareers%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:?subject=Why Allianz Life of NY?&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fabout%2fwhy-allianz-life-of-ny%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/New-York/annuities",
+    "demoHref": "/new-york/annuities",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/annuities/registered-index-linked-annuities",
+    "demoHref": "/new-york/annuities/registered-index-linked-annuities",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/annuities/investment-strategies",
+    "demoHref": "/new-york/annuities/investment-strategies",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/annuities/Prospectuses",
+    "demoHref": "/new-york/annuities/prospectuses",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "http://brokercheck.finra.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "mailto:?subject=Annuities&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fannuities%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/New-York/annuities/investment-strategies/variable-options",
+    "demoHref": "/new-york/annuities/investment-strategies/variable-options",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/annuities/investment-strategies/shareholder-reports",
+    "demoHref": "/new-york/annuities/investment-strategies/shareholder-reports",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "mailto:?subject=Allianz investment strategies&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fannuities%2finvestment-strategies%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://www.sec.gov/edgar/browse/?CIK=1091439",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://pex.broadridge.com/funds.asp?cid=allianz",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://connect.rightprospectus.com/Allianz?site=Allianz",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.sec.gov/Archives/edgar/data/1091439/000143893426002621/0001438934-26-002621-index.htm",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.sec.gov/Archives/edgar/data/1301708/000143893426001001/xslN-PX_X01/primary_doc.xml",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.sec.gov/Archives/edgar/data/1860935/000186093526000003/xslN-PX_X01/primary_doc.xml",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.sec.gov/Archives/edgar/data/72499/000007249926000102/xslN-PX_X01/primary_doc.xml",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.sec.gov/Archives/edgar/data/1702249/000170224926000003/xslN-PX_X01/primary_doc.xml",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.sec.gov/Archives/edgar/data/1140038/000114003826000002/xslN-PX_X01/primary_doc.xml",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://connect.rightprospectus.com/Allianz?site=AZLFunds",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "mailto:?subject=Allianz Life of NY variable options&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fannuities%2finvestment-strategies%2fvariable-options%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018812180",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018812180",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018812180",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://connect.rightprospectus.com/Allianz?site=AZ600",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018812222",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018812222",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018812222",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=isp&cid=allianzmft&fid=018812230",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018812230",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018812230",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018812230",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018812172",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018812172",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018812172",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://connect.rightprospectus.com/Allianz?site=AZ603",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018812727",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018812727",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018812727",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+    "demoHref": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "mailto:?subject=Registered Index-Linked Annuities&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fannuities%2fregistered-index-linked-annuities%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/rates-inyp",
+    "demoHref": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/rates-inyp",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/video",
+    "demoHref": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/video",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator",
+    "demoHref": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus",
+    "demoHref": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/Contact-Us",
+    "demoHref": "/new-york/contact-us",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2024/07/25/13/36/INYP-002.pdf",
+    "demoHref": "/allianz-assets/15f6a3c44ee32ed2-INYP-002.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator",
+    "demoHref": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/secured/Accounts/Variable",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "mailto:?subject=Accessibility Policy&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fcustomer-service%2faccessibility-policy%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:?subject=Legal and Obligations&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fcustomer-service%2flegal-and-obligations%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "#OnlinePrivacyPolicy",
+    "demoHref": "#OnlinePrivacyPolicy",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#PrivacyNotices",
+    "demoHref": "#PrivacyNotices",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/Legal-notes",
+    "demoHref": "/new-york/legal-notes",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "mailto:?subject=Legal notes&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2flegal-notes%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/New-York/Login",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "mailto:?subject=Report a death&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2freport-a-death%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/New-York/retirement-and-planning-tools",
+    "demoHref": "/new-york/retirement-and-planning-tools",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "mailto:?subject=Retirement and planning tools&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fretirement-and-planning-tools%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:?subject=Search&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fsearch%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "mailto:?subject=Advanced Search&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fsearch%2fadvanced-search%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/secured/accounts/personal-accounts/view-online-documents",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/New-York/Registration/individual",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/New-York/Terms-of-use",
+    "demoHref": "/new-york/terms-of-use",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "mailto:?subject=Terms of use&body=https%3a%2f%2fwww.allianzlife.com%2fnew-york%2fterms-of-use%3fcmpid=social-widget-share-email",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/05/09/17/32/M40018.pdf",
+    "demoHref": "/allianz-assets/3963d318fa30e1ef-M40018.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/CCPA-Privacy-Notice-for-California-Residents.pdf",
+    "demoHref": "/allianz-assets/2adbdb6f3900d5e3-CCPA-Privacy-Notice-for-California-Residents.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/07/26/08/24/H40016.pdf",
+    "demoHref": "/allianz-assets/3831aec8371ecffd-H40016.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/about/Insurance-Producer-Privacy-Notice.pdf",
+    "demoHref": "/allianz-assets/7df503c0bf2784e8-Insurance-Producer-Privacy-Notice.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/Privacy",
+    "demoHref": "/privacy",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/allocation-insights-tool",
+    "demoHref": "/what-we-offer/allocation-insights-tool",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-7",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-plus",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-plus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-Classic",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-classic",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/222",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/222",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/222-plus",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/222-plus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/360",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/360",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Benefit-Control",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/benefit-control",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Benefit-Control-Plus",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Core-Income-7",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/core-income-7",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Essential-Income-7",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/essential-income-7",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Retirement-Foundation-ADV",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/retirement-foundation-adv",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/frequently-asked-questions-for-fias",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/Contact-Us",
+    "demoHref": "/contact-us",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/222/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/222/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#allocation-options",
+    "demoHref": "#allocation-options",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2019/05/06/11/52/CB95352-1.pdf",
+    "demoHref": "/allianz-assets/00b82e409e83ceb0-CB95352-1.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "#mva-rate",
+    "demoHref": "#mva-rate",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2019/05/15/12/35/CSI-504.pdf",
+    "demoHref": "/allianz-assets/4ed9c350a18de5e7-CSI-504.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=c7aa7e19-23fc-482a-82ca-1ee0c3533e5a",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/222-plus/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/222-plus/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/04/15/10/55/222PL-001.pdf",
+    "demoHref": "/allianz-assets/0fff5f0b9c391f28-222PL-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=15fa793f-234f-4b1b-ba53-859c036a499f",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/360/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/360/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2019/04/30/16/03/CB54370-3.pdf",
+    "demoHref": "/allianz-assets/0929efa49cdc3ae4-CB54370-3.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=979c4caa-9fd0-42d4-9cf3-8b2449751602",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2019/05/06/15/03/AAA-001.pdf",
+    "demoHref": "/allianz-assets/176f317912268262-AAA-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=15370215-0b7b-45b0-ad93-9c1f6850ae64",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5/rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2026/03/30/15/16/AAA5-001.pdf",
+    "demoHref": "/allianz-assets/8fcc790ad1ba8a5b-AAA5-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "#mva",
+    "demoHref": "#mva",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=890d0f00-873a-4e51-8e97-b597c2304c3d",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-7/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2023/11/10/18/35/AAA7-001.pdf",
+    "demoHref": "/allianz-assets/9731063b285648b9-AAA7-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "#mva-scs",
+    "demoHref": "#mva-scs",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=4569f828-25d8-4d9a-8538-edc5959a0a12",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-Classic/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-classic/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2026/03/27/12/04/AAAC-001.pdf",
+    "demoHref": "/allianz-assets/885909eb1261a8b2-AAAC-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=ded49e49-2cce-4edb-a90d-cbd7c8fa30f2",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-plus/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-plus/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2024/03/11/10/27/AAAPL-001.pdf",
+    "demoHref": "/allianz-assets/5e18fcfed2494ec3-AAAPL-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=c8bc9066-0dd3-4cfd-97d2-ba8bb7887c3d",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Benefit-Control/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/benefit-control/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2020/02/24/20/53/ABC-001.pdf",
+    "demoHref": "/allianz-assets/d84070501fdece14-ABC-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=66f6d79b-15f2-4560-a705-0d61a12493ba",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Benefit-Control-Plus/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/04/16/07/58/ABCPL-001.pdf",
+    "demoHref": "/allianz-assets/f6d2facf949c6f0d-ABCPL-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=f2b9cd46-5354-4f0f-84f1-78cfbc01154f",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Core-Income-7/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/core-income-7/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2018/12/10/17/12/CB95374.pdf",
+    "demoHref": "/allianz-assets/696f75e5203702a4-CB95374.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=6aca913e-d6d8-4fb7-b4fc-203f845a02d8",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Essential-Income-7/Rates",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/essential-income-7/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2017/03/16/12/58/CB61892.pdf",
+    "demoHref": "/allianz-assets/fc7c076b1e32c6ad-CB61892.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=c920fc3b-07d8-4689-a695-b30a61e691a4",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/login",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "tel:8006240197",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/how-the-product-works",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/how-the-product-works",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus#ourpartners",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus#ourpartners",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus#trustedleader",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus#trustedleader",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://lp.allianzlife.com/EMContactUS.html?utm_source=website&utm_medium=webpage&utm_campaign=contactus_submit&utm_content=overview",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/Calculator",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/05/18/08/18/ENT-888.pdf",
+    "demoHref": "/allianz-assets/93a05b88586b7fea-ENT-888.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/05/18/08/20/ENT-947.pdf",
+    "demoHref": "/allianz-assets/4338dadcac180ae7-ENT-947.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/05/18/08/07/ENT-1131.pdf",
+    "demoHref": "/allianz-assets/b568b10fa66bf6d2-ENT-1131.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/03/16/14/18/LIA-002-R04.pdf",
+    "demoHref": "/allianz-assets/900f727e10572cc6-LIA-002-R04.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/07/14/18/52/LIA-001.pdf",
+    "demoHref": "/allianz-assets/c88a9182568b3be9-LIA-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/05/20/02/10/LIA-027.pdf",
+    "demoHref": "/allianz-assets/41c36577bbb9ad47-LIA-027.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/03/24/13/15/LIA-003.pdf",
+    "demoHref": "/allianz-assets/a3ea0112bf012ac5-LIA-003.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/08/29/17/21/LIA-048.pdf",
+    "demoHref": "/allianz-assets/49756a463eb0de3d-LIA-048.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/08/24/13/06/LIA-047.pdf",
+    "demoHref": "/allianz-assets/f6cf24fb0000bbaf-LIA-047.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/11/22/19/30/LIA-051-A.pdf",
+    "demoHref": "/allianz-assets/2d887f9799ac5610-LIA-051-A.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/08/17/12/48/LIA-035.pdf",
+    "demoHref": "/allianz-assets/78a64ba27f8fae5b-LIA-035.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/12/16/14/36/LIA-046.pdf",
+    "demoHref": "/allianz-assets/ff658c42ca284026-LIA-046.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2022/12/16/14/37/LIA-034.pdf",
+    "demoHref": "/allianz-assets/5f339a3815df392d-LIA-034.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "https://lp.allianzlife.com/EMContactUS.html?utm_source=website&utm_medium=webpage&utm_campaign=contactus_submit&utm_content=how_it_works",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://lp.allianzlife.com/EMWhitePaperForm.html?utm_source=website&utm_medium=webpage&utm_campaign=gated_content_download",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/participant-interest-and-regulatory-shifts",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/participant-interest-and-regulatory-shifts",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/the-force-of-change-retirement-income-inertia",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/the-force-of-change-retirement-income-inertia",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/embracing-personalization-and-predictable-income",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/embracing-personalization-and-predictable-income",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/market-volatility-and-retirement-risk-management",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/market-volatility-and-retirement-risk-management",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/11/21/14/54/LIA-381.pdf",
+    "demoHref": "/allianz-assets/4b4622bbce8cf3d3-LIA-381.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2025/04/16/14/08/LIA-310.pdf",
+    "demoHref": "/allianz-assets/d5695fe7998ddb2b-LIA-310.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2024/05/29/13/56/LIA-203.pdf",
+    "demoHref": "/allianz-assets/16a0872dad5a6dec-LIA-203.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2024/05/21/14/36/LIA-205.pdf",
+    "demoHref": "/allianz-assets/5a13c7249d14191b-LIA-205.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "https://cri.georgetown.edu/unlocking-value-for-plan-sponsors-the-strategic-business-impact-of-in-plan-annuities/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.psca.org/news/psca-news/2025/11/defining-value-creation-in-the-decumulation-phase/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.napa-net.org/news/2025/11/unpacking-participant-behavior-in-the-digital-world",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.plansponsor.com/multimedia/plansponsor-roadmap-retirement-income-incorporating-annuities-in-dc-plans/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://lp.allianzlife.com/EMContactUS.html?utm_source=website&utm_medium=webpage&utm_campaign=contactus_submit&utm_content=insights_and_education",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://lp.allianzlife.com/EMContactUS.html?utm_source=website&utm_medium=webpage&utm_campaign=contactus_submit&utm_content=blog",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/addressing-racial-disparities-in-defined-contribution-plans",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/addressing-racial-disparities-in-defined-contribution-plans",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/digital-strategy-can-help-enhance-participant-outcomes",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/digital-strategy-can-help-enhance-participant-outcomes",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/unique-approach-to-hedging",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/unique-approach-to-hedging",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/fiduciary-concerns-for-guaranteed-lifetime-income",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/fiduciary-concerns-for-guaranteed-lifetime-income",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/retirement-income",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/retirement-income",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/tech-enabled-solutions",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/tech-enabled-solutions",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-technology-beyond-secure-2",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-technology-beyond-secure-2",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/blogs",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/blogs",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://lp.allianzlife.com/EMWhitePaperForm.html?utm_source=website&utm_medium=azlblog&utm_campaign=gated_content_download&utm_content=lia482",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://lp.allianzlife.com/EMContactUS.html?utm_source=website&utm_medium=webpage&utm_campaign=contactus_submit&utm_content=article",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2024/09/19/11/27/LIA-257.pdf",
+    "demoHref": "/allianz-assets/ce7362078930ac39-LIA-257.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/Documents/LIA-166.pdf",
+    "demoHref": "/allianz-assets/5b9ea91c951b6e4b-LIA-166.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2024/01/25/19/00/LIA-161.pdf",
+    "demoHref": "/allianz-assets/c8f47800bbe93220-LIA-161.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2023/10/16/15/25/LIA-110.pdf",
+    "demoHref": "/allianz-assets/16c71d96f5d17e34-LIA-110.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2023/06/27/13/36/LIA-080.pdf",
+    "demoHref": "/allianz-assets/ebaedff53a090436-LIA-080.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2023/04/19/14/40/LIA-063.pdf",
+    "demoHref": "/allianz-assets/235b9afee948b40d-LIA-063.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/07/12/20/43/LIA-009.pdf",
+    "demoHref": "/allianz-assets/9d38aff66fe4bece-LIA-009.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/07/12/20/45/LIA-010.pdf",
+    "demoHref": "/allianz-assets/e2f12b008716ba5a-LIA-010.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/10/27/15/05/LIA-008.pdf",
+    "demoHref": "/allianz-assets/0803241f3cfbbeac-LIA-008.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/10/27/15/05/LIA-018.pdf",
+    "demoHref": "/allianz-assets/fcd48b6ae1b41440-LIA-018.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/11/09/16/21/LIA-031.pdf",
+    "demoHref": "/allianz-assets/6708fb40642d38a4-LIA-031.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2023/09/08/16/54/LIA-126.pdf",
+    "demoHref": "/allianz-assets/1207aef1ca89b946-LIA-126.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "mailto:retirement-income@allianzlife.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/resources",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/resources",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://azldigital.qualtrics.com/jfe/form/SV_4YhsjxfCTJGi1o2",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#protection",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#protection",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#potential",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#potential",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#portability",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#portability",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#flexibility",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#flexibility",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#accessibility",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started#accessibility",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/frequently-asked-questions",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/frequently-asked-questions",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/Rates",
+    "demoHref": "/rates",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2017/01/23/11/44/RFA-001.pdf",
+    "demoHref": "/allianz-assets/9d55d0972e411dd9-RFA-001.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=c23373fe-51cf-40bb-aa7f-5057603c6f51",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/secured/accounts/personal-accounts",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "https://www.blackrock.com/investing/annuity/annuity-index-claria",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.pimcoindex.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.bloomberg.com/professional/product/indices/multi-asset-indices",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.morganstanley.com/indices/#/st10",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.spglobal.com/spdji/en/indices/multi-asset/sp-500-futures-daily-risk-control-5-index/?currency=USD&returntype=E-#overview",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.standardandpoors.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.stoxx.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.ftse.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.nasdaq.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.russell.com/indexes",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.dj.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.spglobal.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/registration/individual",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "tel:8009505872",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/fixed-index-annuities/Understanding-your-fixed-index-annuity-allocation-options",
+    "demoHref": "/what-we-offer/annuities/fixed-index-annuities/understanding-your-fixed-index-annuity-allocation-options",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/05/18/08/18/CSI-433.pdf",
+    "demoHref": "/allianz-assets/014885163ecdadcc-CSI-433.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/investment-strategies",
+    "demoHref": "/what-we-offer/annuities/investment-strategies",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/investment-strategies/Shareholder-Reports",
+    "demoHref": "/what-we-offer/annuities/investment-strategies/shareholder-reports",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018817882",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018817874",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018817874",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815233",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815233",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815233",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://connect.rightprospectus.com/Allianz?site=AZ602",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815639",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815639",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815639",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018817759",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018817742",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018817742",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815266",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815266",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815266",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815340",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815340",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815340",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815423",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815423",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815423",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=isp&cid=allianzmft&fid=018815498",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815498",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815498",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815498",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815373",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815373",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815373",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=isp&cid=allianzmft&fid=018815522",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815522",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815522",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815522",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=isp&cid=allianzmft&fid=018815514",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815514",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815514",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815514",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=isp&cid=allianzmft&fid=018815530",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815530",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815530",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815530",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018817833",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018817841",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018817841",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815225",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815225",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815225",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018817155",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018817155",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018817155",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=isp&cid=allianzmft&fid=018936146",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018936146",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018936146",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018936146",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/strategy-calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/strategy-calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/09/27/18/32/IAI-011-ADV.pdf",
+    "demoHref": "/allianz-assets/8e6c06f63bd06762-IAI-011-ADV.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/SPA/MVARate/DisplayHistoricalRates?productGuid=5ff40038-9e8d-469f-b98f-1807146f174c",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/income-calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/income-calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/rila-rates-center-iadv",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/rila-rates-center-iadv",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/video",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/video",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/strategy-calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/strategy-calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2023/04/01/18/04/IAIP-011.pdf",
+    "demoHref": "/allianz-assets/27c5d19c7cb7ec5f-IAIP-011.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/income-calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/income-calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/rila-rates-center-iaip",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/rila-rates-center-iaip",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/strategy-calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/strategy-calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/video",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/video",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/video",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/video",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/strategy-calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/strategy-calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2026/02/19/16/39/IASI-011.pdf",
+    "demoHref": "/allianz-assets/e11afa850ba6b87f-IASI-011.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/income-calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/income-calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/rila-rates-center-iasi",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/rila-rates-center-iasi",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/video",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/video",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/rila-rates-center-ixap",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/rila-rates-center-ixap",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/video",
+    "demoHref": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/video",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/secured/Accounts/Variable",
+    "demoHref": "#demo-unavailable",
+    "classification": "authenticated/account destination"
+  },
+  {
+    "sourceHref": "https://www.blackrock.com/us/individual/products/224352/blackrock-ibld-claria-er-index",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.pimcoindex.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.nasdaq.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.spglobal.com/spdji/en/indices/equity/sp-500/#overview",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.spglobal.com/spdji/en/indices/other-strategies/sp-500-futures-index/?currency=USD&returntype=E-#overview",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/Index-options",
+    "demoHref": "/what-we-offer/index-options",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/College-Funding",
+    "demoHref": "/what-we-offer/life-insurance/college-funding",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/Retirement-planning",
+    "demoHref": "/what-we-offer/life-insurance/retirement-planning",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/strategies-for-business-owners",
+    "demoHref": "/what-we-offer/life-insurance/strategies-for-business-owners",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/Flexible-estate-planning-strategies",
+    "demoHref": "/what-we-offer/life-insurance/flexible-estate-planning-strategies",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/frequently-asked-questions",
+    "demoHref": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator/frequently-asked-questions",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator",
+    "demoHref": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/05/18/08/28/M-5285.pdf",
+    "demoHref": "/allianz-assets/b2e373261f2cc5d0-M-5285.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/05/18/08/30/M-5288.pdf",
+    "demoHref": "/allianz-assets/fca879135932ccb9-M-5288.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2019/12/04/20/11/CSI-513.pdf",
+    "demoHref": "/allianz-assets/1ac544f77b8085f8-CSI-513.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2020/12/11/18/34/AMK-488.pdf",
+    "demoHref": "/allianz-assets/948b12265444de00-AMK-488.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2020/12/11/18/34/AMK-496.pdf",
+    "demoHref": "/allianz-assets/fff103b72e89017a-AMK-496.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2020/12/11/18/34/AMK-501.pdf",
+    "demoHref": "/allianz-assets/c7a0a6d5d5b1b617-AMK-501.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2020/12/04/15/31/M-7391.pdf",
+    "demoHref": "/allianz-assets/44a80c49282f3293-M-7391.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/tools-and-resources",
+    "demoHref": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator/tools-and-resources",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#GeneralLifeInsuranceQuestions",
+    "demoHref": "#GeneralLifeInsuranceQuestions",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#about-indexed-universal-life",
+    "demoHref": "#about-indexed-universal-life",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "#applying-for-life-insurance",
+    "demoHref": "#applying-for-life-insurance",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+    "demoHref": "/what-we-offer/allocation-insights-tool",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/The-underwriting-process",
+    "demoHref": "/what-we-offer/life-insurance/the-underwriting-process",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2019/08/09/17/54/CSI-510.pdf",
+    "demoHref": "/allianz-assets/2fe8ee147cd27505-CSI-510.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/12/15/11/54/CSI-450.pdf",
+    "demoHref": "/allianz-assets/04e662b3801478f7-CSI-450.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/05/18/08/28/M-3959.pdf",
+    "demoHref": "/allianz-assets/39afbf159583e7d5-M-3959.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/strategies-for-business-owners/Retaining-attracting-and-motivating-key-employees",
+    "demoHref": "/what-we-offer/life-insurance/strategies-for-business-owners/retaining-attracting-and-motivating-key-employees",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/strategies-for-business-owners/5-tips-for-business-buy-sell-agreements",
+    "demoHref": "/what-we-offer/life-insurance/strategies-for-business-owners/5-tips-for-business-buy-sell-agreements",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/strategies-for-business-owners/Business-succession-planning-and-risk-management",
+    "demoHref": "/what-we-offer/life-insurance/strategies-for-business-owners/business-succession-planning-and-risk-management",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2016/09/15/16/02/M-5133.pdf",
+    "demoHref": "/allianz-assets/d5269a9afb9b63b9-M-5133.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/02/18/14/14/AMK-517.pdf",
+    "demoHref": "/allianz-assets/dd72190f4cfe7d94-AMK-517.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/what-we-offer/Life-Insurance/strategies-for-business-owners/Family-Business-Succession-Planning",
+    "demoHref": "/what-we-offer/life-insurance/strategies-for-business-owners/family-business-succession-planning",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "tel:8009501962",
+    "demoHref": "#demo-unavailable",
+    "classification": "contact or unsupported scheme"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2020/12/11/19/17/AMK-506.pdf",
+    "demoHref": "/allianz-assets/e96eee29d62f1d76-AMK-506.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/01/25/18/19/AMK-515.pdf",
+    "demoHref": "/allianz-assets/833a9670e7f00cc8-AMK-515.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/-/media/Files/Global/documents/2021/02/12/15/18/AMK-507.pdf",
+    "demoHref": "/allianz-assets/1495520f3ed74b07-AMK-507.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "/why-allianz/inclusion",
+    "demoHref": "/why-allianz/inclusion",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/community-impact-report.pdf",
+    "demoHref": "/allianz-assets/a8d1e73460d69739-community-impact-report.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "https://www.aedamn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://keystoneservices.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.ndc-mn.org/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/-/media/Files/Allianz/PDFs/EXT-1120.pdf",
+    "demoHref": "/allianz-assets/c64753b2c57c9c7a-EXT-1120.pdf",
+    "classification": "bundled document"
+  },
+  {
+    "sourceHref": "https://www.allianz.com/en/sustainability/sustainability-hub/sustainability-at-allianz/climate-change.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/about/newsroom/2026-Press-Releases/Allianz-Life-Named-as-One-of-the-2026-Worlds-Most-Ethical-Companies",
+    "demoHref": "/about/newsroom/2026-press-releases/allianz-life-named-as-one-of-the-2026-worlds-most-ethical-companies",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianz.com/en/sustainability.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/investment-strategies/Allianz-investment-options",
+    "demoHref": "/what-we-offer/annuities/investment-strategies/allianz-investment-options",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/what-we-offer/annuities/prospectuses",
+    "demoHref": "/what-we-offer/annuities/prospectuses",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/Customer-Service-Frequently-Asked-Questions#consumer",
+    "demoHref": "/customer-service-frequently-asked-questions#consumer",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianz.com/en_GB.html",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.allianzlife.com/new-york",
+    "demoHref": "/new-york",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzim.com",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.facebook.com/AllianzLife",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://twitter.com/allianzlife",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.instagram.com/allianzlife/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "https://www.youtube.com/user/allianzus",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  },
+  {
+    "sourceHref": "/new-york",
+    "demoHref": "/new-york",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/Customer-service/Accessibility-Policy",
+    "demoHref": "/new-york/customer-service/accessibility-policy",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/Tax-Statement-Frequently-Asked-Questions",
+    "demoHref": "/new-york/tax-statement-frequently-asked-questions",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/Customer-service/Legal-and-Obligations",
+    "demoHref": "/new-york/customer-service/legal-and-obligations",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "/New-York/Customer-service/Privacy",
+    "demoHref": "/new-york/customer-service/privacy",
+    "classification": "public same-host"
+  },
+  {
+    "sourceHref": "https://www.allianzim.com/",
+    "demoHref": "#demo-unavailable",
+    "classification": "external destination"
+  }
+]

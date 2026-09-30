@@ -1,0 +1,12 @@
+---
+ID: "94c29bad-226a-5abf-8ac4-c9d7c228f6dd"
+Parent: "d333bdfc-b0d8-530b-af95-b7e7bfc5282e"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: "/sitecore/templates/Project/Allianz Life/Pages/Product Detail"
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Value: "{EFF5B538-3ABE-5B3C-9E97-FD5EF78F5213}"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{3895F259-E15C-517B-B6A7-16A7F0A56B39}"

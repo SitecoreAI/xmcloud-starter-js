@@ -1,0 +1,9 @@
+---
+ID: "a7f7ee7b-9ebf-5049-ab5d-a2bd3e655cbe"
+Parent: "c05c9a4e-9829-5bee-83fc-040c47b2a2d0"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/splitRatio/67:33"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "300"

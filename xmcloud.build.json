@@ -4,7 +4,7 @@
       "path": "./examples/kit-nextjs-skate-park",
       "nodeVersion": "24.14.1",
       "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
-      "enabled": true,
+      "enabled": false,
       "type": "sxa",
       "buildCommand": "build",
       "runCommand": "next:start"
@@ -22,7 +22,7 @@
       "path": "./examples/kit-nextjs-article-starter",
       "nodeVersion": "24.14.1",
       "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
-      "enabled": true,
+      "enabled": false,
       "type": "sxa",
       "buildCommand": "build",
       "runCommand": "next:start"
@@ -31,7 +31,7 @@
       "path": "./examples/kit-nextjs-location-finder",
       "nodeVersion": "24.14.1",
       "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
-      "enabled": true,
+      "enabled": false,
       "type": "sxa",
       "buildCommand": "build",
       "runCommand": "next:start"
@@ -40,7 +40,7 @@
       "path": "./examples/kit-nextjs-product-listing",
       "nodeVersion": "24.14.1",
       "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
-      "enabled": true,
+      "enabled": false,
       "type": "sxa",
       "buildCommand": "build",
       "runCommand": "next:start"
@@ -49,7 +49,7 @@
       "path": "./examples/basic-nextjs",
       "nodeVersion": "24.14.1",
       "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
-      "enabled": true,
+      "enabled": false,
       "type": "sxa",
       "buildCommand": "build",
       "runCommand": "next:start"
@@ -59,6 +59,15 @@
       "nodeVersion": "24.14.1",
       "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
       "enabled": false,
+      "type": "sxa",
+      "buildCommand": "build",
+      "runCommand": "next:start"
+    },
+    "allianz-life": {
+      "path": "./examples/allianz-life",
+      "nodeVersion": "24.14.1",
+      "packageManager": "npm",
+      "enabled": true,
       "type": "sxa",
       "buildCommand": "build",
       "runCommand": "next:start"
@@ -72,14 +81,13 @@
           "/sitecore/shell/Applications/Content%20Editor.aspx?sc_bw=1",
           "/sitecore/client/Applications/Launchpad"
         ]
-      },
-      "populateSchema": {
-        "indexNames": []
-      },
-      "reindex": {
-        "indexNames": []
       }
     }
   },
-  "authoringPath": "./authoring"
+  "authoringPath": "./authoring",
+  "deployItems": {
+    "modules": [
+      "Project.AllianzLife.Structure"
+    ]
+  }
 }

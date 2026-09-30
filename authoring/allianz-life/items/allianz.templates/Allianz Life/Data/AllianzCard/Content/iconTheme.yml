@@ -1,0 +1,23 @@
+---
+ID: "528dd763-615b-566d-b2d8-084d5ecb23bc"
+Parent: "aca62d3c-e08b-50d8-a427-5f424d80ebeb"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Data/AllianzCard/Content/iconTheme"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Droplist"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "600"
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/iconTheme"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "iconTheme"
+  Versions:
+  - Version: 1

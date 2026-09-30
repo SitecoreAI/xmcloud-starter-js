@@ -1,0 +1,20 @@
+---
+ID: "33e0c3ee-a618-591b-b3ac-5776dda01d2d"
+Parent: "6a29042b-f2a5-5352-96f8-a28b582a4642"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzRateSnapshot/Content/asOf"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "300"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "asOf"
+  Versions:
+  - Version: 1

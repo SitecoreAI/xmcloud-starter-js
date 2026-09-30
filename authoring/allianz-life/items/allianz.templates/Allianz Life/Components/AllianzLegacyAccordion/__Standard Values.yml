@@ -1,0 +1,9 @@
+---
+ID: "76126eef-80a9-52a1-9832-69124367b694"
+Parent: "5e138256-1c80-5449-80f4-dcd1730cee8a"
+Template: "5e138256-1c80-5449-80f4-dcd1730cee8a"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyAccordion/__Standard Values"
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{52725B20-40F0-5B15-9D53-DC0BC45C262B}"

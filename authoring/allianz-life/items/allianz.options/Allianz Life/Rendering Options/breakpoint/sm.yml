@@ -1,0 +1,9 @@
+---
+ID: "3e820416-1ea4-5e09-81dc-83f00c724eef"
+Parent: "96007fb1-6fac-56a0-bf6d-80d3c31cfd6d"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/breakpoint/sm"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "100"

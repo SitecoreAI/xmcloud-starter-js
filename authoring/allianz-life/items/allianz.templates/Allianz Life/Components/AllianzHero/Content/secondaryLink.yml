@@ -1,0 +1,20 @@
+---
+ID: "9da14ddd-2760-502b-abf1-d371f9b1371d"
+Parent: "23fbc557-7ada-5a4e-8e3d-a4ab7dfc3f3d"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzHero/Content/secondaryLink"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "General Link"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "600"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "secondaryLink"
+  Versions:
+  - Version: 1

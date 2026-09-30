@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 1,
+  "status": "unexecuted-native-run-sheet",
+  "nativeProof": false,
+  "journeys": [
+    {
+      "key": "original-default",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Fresh dedicated anonymous context, no campaign; analytics flag off or no consent",
+      "steps": [
+        "Open homepage without query/history",
+        "Capture native published layout/default datasource and fixed viewport screenshot",
+        "Record safe browser/server request destinations"
+      ],
+      "expected": [
+        "Original hero and all original components/disclosures",
+        "No optional analytics/identifier/personalization calls"
+      ],
+      "requiredEvidenceGateIds": [
+        "target-scope",
+        "default-original",
+        "consent-network"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "preview-each-home-variant",
+      "layer": "native-authoring",
+      "status": "not-run",
+      "setup": "Verified Pages site/language; original before-export retained",
+      "steps": [
+        "Select default and each of three native page variants in Personalize preview",
+        "Read back each assigned hero datasource, media and variant IDs",
+        "Reopen default and compare original revision/fields"
+      ],
+      "expected": [
+        "Separate hero variants only",
+        "Default unchanged",
+        "Preview emits no optional analytics"
+      ],
+      "requiredEvidenceGateIds": [
+        "native-configuration",
+        "default-original",
+        "content-media",
+        "preview-no-tracking"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "campaign-retirement-income",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Fresh anonymous consenting context; native UTM operators verified",
+      "steps": [
+        "Open /?utm_campaign=retirement_income",
+        "Record actual published native variant/layout IDs",
+        "Refresh and navigate Back/Forward",
+        "Remove query and navigate home; observe native campaign persistence separately"
+      ],
+      "expected": [
+        "Retirement Income Hero on confirmed campaign context",
+        "No assumed removal/reset equivalence"
+      ],
+      "requiredEvidenceGateIds": [
+        "campaign-semantics",
+        "native-runtime-selection"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "other-or-missing-campaign",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Fresh consenting context for each URL, no affinity",
+      "steps": [
+        "Open /",
+        "Open /?utm_campaign=other in a separate context",
+        "Open /?utm_source=retirement_income in a separate context",
+        "Observe uppercase and duplicate utm_campaign values in separate contexts without assuming parser behavior"
+      ],
+      "expected": [
+        "Only exact supported native retirement_income campaign matches",
+        "Missing/other campaign returns original when no affinity",
+        "Duplicate/case semantics recorded; mismatch blocks the declared policy"
+      ],
+      "requiredEvidenceGateIds": [
+        "campaign-semantics",
+        "native-runtime-selection"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "annuity-affinity",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Fresh consenting context without campaign, verified native affinity available",
+      "steps": [
+        "Visit configured annuities pages at an ordinary pace",
+        "Read native product_interest score/top value after processing",
+        "Return home without query",
+        "Capture actual selection and re-evaluation"
+      ],
+      "expected": [
+        "Annuities Interest Hero only after verified unambiguous annuities top affinity",
+        "No fixed click-count or latency promise"
+      ],
+      "requiredEvidenceGateIds": [
+        "affinity-entitlement",
+        "affinity-setup",
+        "affinity-semantics",
+        "native-runtime-selection"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "life-affinity",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Separate fresh consenting context without campaign",
+      "steps": [
+        "Visit configured life-insurance pages",
+        "Observe native product_interest score/top value after processing",
+        "Return home without query"
+      ],
+      "expected": [
+        "Life Insurance Interest Hero only after verified unambiguous life_insurance top affinity"
+      ],
+      "requiredEvidenceGateIds": [
+        "affinity-entitlement",
+        "affinity-setup",
+        "affinity-semantics",
+        "native-runtime-selection"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "campaign-over-annuity-affinity",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Retained consenting context with verified annuities top affinity",
+      "steps": [
+        "Open /?utm_campaign=retirement_income",
+        "Read native conditions, published selected variant and datasource",
+        "Reload and use history navigation"
+      ],
+      "expected": [
+        "Campaign selection wins regardless of affinity; audiences mutually exclusive"
+      ],
+      "requiredEvidenceGateIds": [
+        "campaign-semantics",
+        "precedence",
+        "native-runtime-selection"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "campaign-over-life-affinity",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Retained consenting context with verified life_insurance top affinity",
+      "steps": [
+        "Open /?utm_campaign=retirement_income",
+        "Read native conditions, published selected variant and datasource"
+      ],
+      "expected": [
+        "Campaign selection wins; life-insurance affinity audience is excluded"
+      ],
+      "requiredEvidenceGateIds": [
+        "campaign-semantics",
+        "precedence",
+        "native-runtime-selection"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "mixed-tied-and-unknown-interest",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Separate consenting contexts without campaign; native score observability verified",
+      "steps": [
+        "Browse both relevant product families",
+        "Observe actual scores/top value including a tie/no-score if supported",
+        "Return home",
+        "If unknown values exist safely in current demo scope, observe fallback without inventing a new tag"
+      ],
+      "expected": [
+        "Unique verified top gets its variant",
+        "Desired original-on-tie/no-score contract only passes if actual native semantics enforce it",
+        "Inaccessible or conflicting tie semantics remains a blocker"
+      ],
+      "requiredEvidenceGateIds": [
+        "affinity-semantics",
+        "precedence"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "reject-before-activity",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Fresh anonymous context with optional cookies rejected",
+      "steps": [
+        "Open campaign URL",
+        "Visit configured affinity pages",
+        "Open unpersonalized A/B page",
+        "Check browser cookies/storage and safe server/upstream request counts"
+      ],
+      "expected": [
+        "Original homepage/annuity control",
+        "No optional initialization, pageview, affinity, personalization or experiment calls"
+      ],
+      "requiredEvidenceGateIds": [
+        "consent-network",
+        "ab-runtime-assignment"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "withdraw-after-activity",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Consenting context with prior campaign/affinity/native test activity",
+      "steps": [
+        "Choose Reject optional cookies",
+        "Reload and revisit home/annuity route",
+        "Capture post-withdrawal traces and published datasource selection"
+      ],
+      "expected": [
+        "Original content and no new optional events/native assignment",
+        "No claim prior native profile data was deleted"
+      ],
+      "requiredEvidenceGateIds": [
+        "consent-network",
+        "reset"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "anonymous-origin-reset",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Dedicated anonymous demo-origin context; no real customer identity",
+      "steps": [
+        "Record observed demo-origin cookie/storage keys without credential values",
+        "Use fresh anonymous context or clear only observed demo-origin identifier/personalization plus consent state",
+        "Open homepage without query/history",
+        "Choose/reject consent explicitly",
+        "Compare new baseline, campaign and affinity state"
+      ],
+      "expected": [
+        "Original baseline before new browsing/campaign",
+        "Native identity reset verified; removing query alone insufficient",
+        "No Sitecore login-origin clearing or tenant profile deletion"
+      ],
+      "requiredEvidenceGateIds": [
+        "reset",
+        "default-original"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "timeout-and-caching",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Verified deployed build; supported failure/caching inspection authorized",
+      "steps": [
+        "Observe actual default behavior on supported native personalization failure/timeout",
+        "Check personalized/experimental responses across separate contexts and repeated navigation",
+        "Inspect response/cache delivery evidence without recording secrets"
+      ],
+      "expected": [
+        "No cross-visitor variant leak",
+        "Original fallback where supported and consent restrictions intact",
+        "Static/caching incompatibility blocks native demo acceptance"
+      ],
+      "requiredEvidenceGateIds": [
+        "delivery-cache",
+        "consent-network"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "ab-authoring",
+      "layer": "native-authoring",
+      "status": "not-run",
+      "setup": "Unpersonalized annuities page; original datasource and child/link snapshots",
+      "steps": [
+        "Create native A/B test on existing :section:5 AllianzCardGrid",
+        "Inspect A control and separate deep-cloned B item/children/links",
+        "Select each variant in supported authoring preview",
+        "Read back configured 50/50 audience/goal settings"
+      ],
+      "expected": [
+        "Only one first-CTA semantic label change across three mirrored source fields",
+        "Original A and second card unchanged; all B IDs independent",
+        "No optional authoring tracking"
+      ],
+      "requiredEvidenceGateIds": [
+        "ab-unpersonalized",
+        "ab-content-isolation",
+        "ab-config",
+        "preview-no-tracking"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "ab-live-A-and-B",
+      "layer": "native-runtime",
+      "status": "not-run",
+      "setup": "Native test started and page published; dedicated consenting anonymous contexts",
+      "steps": [
+        "Read Draft/Pending/Live statuses and timestamps",
+        "Observe native random assignment; do not force via undocumented params/cookies",
+        "Retain observed A and B contexts and record native IDs",
+        "Refresh and repeat navigation; inspect actual consistency"
+      ],
+      "expected": [
+        "Native A and B assignment under actual deployed output",
+        "Readback IDs and content align",
+        "Offline policy or native preview alone is insufficient"
+      ],
+      "requiredEvidenceGateIds": [
+        "ab-start-publish",
+        "ab-runtime-assignment",
+        "delivery-cache"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "ab-destination-goal-report",
+      "layer": "native-analytics",
+      "status": "not-run",
+      "setup": "Observed consenting A/B contexts; goal target already published",
+      "steps": [
+        "Follow first CTA to fixed-index-annuity overview",
+        "Capture supported native destination pageview with experiment attribution",
+        "Read experiment report when available; allow documented delay",
+        "Separate pending reporting from successful assignment"
+      ],
+      "expected": [
+        "Native goal/report readback when available",
+        "Pageview is not proof of unique CTA click",
+        "Demo data does not establish winner or uplift"
+      ],
+      "requiredEvidenceGateIds": [
+        "ab-goal-report"
+      ],
+      "resultEvidence": null
+    },
+    {
+      "key": "stop-and-restore-control",
+      "layer": "native-authoring-and-runtime",
+      "status": "not-run",
+      "setup": "Demo evidence collected; supported native stopping flow authorized",
+      "steps": [
+        "Stop only this native test and review affected rule toggles as authorized",
+        "Re-read original A/home datasource bindings after fresh revision check",
+        "Publish only affected Allianz items/pages if required and authorized",
+        "Verify original baseline and preserved MNP project/environment"
+      ],
+      "expected": [
+        "Original control retained and rendered",
+        "No project/environment/profile deletion",
+        "Before/after recovery evidence"
+      ],
+      "requiredEvidenceGateIds": [
+        "recovery"
+      ],
+      "resultEvidence": null
+    }
+  ]
+}

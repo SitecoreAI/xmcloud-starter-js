@@ -1,0 +1,9 @@
+---
+ID: "6d15ad00-ce43-56e6-8b40-bd83bcc09f60"
+Parent: "c0fe6ad2-17a5-5e26-96c0-c046c0c0b6e2"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/legacySharedKey/new-york"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "200"

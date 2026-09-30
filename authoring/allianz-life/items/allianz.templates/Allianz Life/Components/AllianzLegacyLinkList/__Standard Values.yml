@@ -1,0 +1,9 @@
+---
+ID: "dd8b53fd-6b5f-5d83-8eb3-d26b4bc25303"
+Parent: "1f893023-75be-5a21-a786-863cdde3e7b1"
+Template: "1f893023-75be-5a21-a786-863cdde3e7b1"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyLinkList/__Standard Values"
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{C396D16A-A002-501D-A182-A51C44F3BCF3}"

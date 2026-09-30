@@ -1,0 +1,9 @@
+---
+ID: "428c140b-a7c8-5159-b960-0574b31784d0"
+Parent: "8b130b31-5a03-5abc-b595-751e8ac944fc"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/alignment/left"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "100"

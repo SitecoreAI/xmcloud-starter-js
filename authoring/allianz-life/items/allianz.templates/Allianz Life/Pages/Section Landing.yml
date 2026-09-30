@@ -1,0 +1,12 @@
+---
+ID: "9e0723f3-536f-5a69-b7cb-6ac9d5c92e56"
+Parent: "d333bdfc-b0d8-530b-af95-b7e7bfc5282e"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: "/sitecore/templates/Project/Allianz Life/Pages/Section Landing"
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Value: "{EFF5B538-3ABE-5B3C-9E97-FD5EF78F5213}"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{7524E02B-63A8-5ACE-9605-8247D67EFB84}"

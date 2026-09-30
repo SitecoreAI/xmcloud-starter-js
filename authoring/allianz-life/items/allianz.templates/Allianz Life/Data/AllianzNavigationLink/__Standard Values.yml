@@ -1,0 +1,9 @@
+---
+ID: "7170f7a9-a8de-54d0-a035-d245a6754cb2"
+Parent: "dc6d849c-06bf-5470-ac14-173e2ac72a0a"
+Template: "dc6d849c-06bf-5470-ac14-173e2ac72a0a"
+Path: "/sitecore/templates/Project/Allianz Life/Data/AllianzNavigationLink/__Standard Values"
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{DC6D849C-06BF-5470-AC14-173E2AC72A0A}"

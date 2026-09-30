@@ -1,0 +1,20 @@
+---
+ID: "6bcf14d3-583e-566d-83f5-8bb03ea2f555"
+Parent: "edb1d5c1-daa1-5980-811b-6c78aa2e9ece"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Pages/AllianzPage/Content/productInterest"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "700"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "productInterest"
+  Versions:
+  - Version: 1

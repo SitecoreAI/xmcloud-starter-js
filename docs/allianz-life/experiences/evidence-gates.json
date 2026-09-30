@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "status": "native-evidence-required",
+  "offlinePolicyChecksAreNativeProof": false,
+  "nativeVerifiedAt": null,
+  "gates": [
+    {
+      "id": "target-scope",
+      "category": "Identity/scope",
+      "requiredEvidence": "Exact org/project/environment/site/site-definition/analytics identity, editing host, isolated personalization scope, deployed commit and preview origin readback; preserve MNP.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "default-original",
+      "category": "Original baseline",
+      "requiredEvidence": "Native original page-local datasource IDs/revisions/fields and screenshots at accepted viewports; homepage/annuity controls and every untouched component/disclosure match source.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "native-configuration",
+      "category": "Homepage configuration",
+      "requiredEvidence": "Actual page, audience, rule and variant IDs plus datasource binding readback for exactly one campaign and two affinity variants; originals separate.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "content-media",
+      "category": "Fields and originals",
+      "requiredEvidence": "Existing template GUID/path and typed field readback; source-to-native media URL/hash/ID matches; no hotlinked production URLs or historical machine paths.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "campaign-semantics",
+      "category": "Campaign operators",
+      "requiredEvidence": "Native campaign exact-match operators, absent/other/case/duplicate semantics, negation/grouping and campaign persistence verified; no inferred URL parser equivalence.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "affinity-entitlement",
+      "category": "Native rollout",
+      "requiredEvidence": "Performance Affinities and Top Affinity visible/authorized in actual tenant/site; phased rollout confirmed or explicit blocker.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "affinity-setup",
+      "category": "Native page tags",
+      "requiredEvidence": "Read back five exact page product_interest/name/value pairs in native configuration; no neutral/mixed tags, no local affinityTag substitute.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "affinity-semantics",
+      "category": "Native scoring",
+      "requiredEvidence": "Actual score/top-value processing, no-score, mixed-interest and tie behavior recorded; desired original-on-tie enforced natively or unresolved blocker retained.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "precedence",
+      "category": "Mutual exclusion",
+      "requiredEvidence": "Actual campaign-plus-annuities and campaign-plus-life journeys, exact audience expression Preview/readback and selected native variant prove exclusion independent of variant ordering.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "consent-network",
+      "category": "Consent and integrations",
+      "requiredEvidence": "No-choice/reject/withdrawal/grant in browser plus safe server/upstream trace; optional SDK identifiers/events/personalization/test calls suppressed when off; only verified demo endpoints/media when on.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "preview-no-tracking",
+      "category": "Editor boundary",
+      "requiredEvidence": "Native editing/preview journeys emit no optional analytics; authored field edits and datasource selection preserve default.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "reset",
+      "category": "Anonymous reset",
+      "requiredEvidence": "Fresh demo-origin identity/storage with consent reset and original baseline; exact observed cookies/domain/path recorded safely; no login-origin clearing or tenant-profile deletion.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "native-runtime-selection",
+      "category": "Published homepage",
+      "requiredEvidence": "Published native variant/datasource/layout IDs and screenshots for default, campaign and both affinities on actual selected deployment, with refresh/history evidence.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "delivery-cache",
+      "category": "Rendering/caching",
+      "requiredEvidence": "Real Content SDK/App Router/native personalization and test responses honor visitor/scope/consent; no cross-context leak; static/SSR/ISR compatibility demonstrated.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "ab-unpersonalized",
+      "category": "Page separation",
+      "requiredEvidence": "Native annuities page/parent/layout readback has no personalization and is permitted for A/B; affinity tagging distinguished from personalization.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "ab-content-isolation",
+      "category": "A/B datasource isolation",
+      "requiredEvidence": "Original A unchanged; B card/link descendants have independent native IDs/Treelist remaps; exact allowed three field changes only, same destination/images/second card/disclosures.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "ab-config",
+      "category": "Native test settings",
+      "requiredEvidence": "Actual test/component/control/B/audience/goal IDs and settings, 50/50 split and already-published goal page ID; native automatic action/completion settings recorded.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "ab-start-publish",
+      "category": "Native lifecycle",
+      "requiredEvidence": "Observed native Draft/Pending/Live readback and publish timestamps, not local flags.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "ab-runtime-assignment",
+      "category": "Live test delivery",
+      "requiredEvidence": "Consenting anonymous live contexts assigned natively to A and B, variant/test IDs and content match; rejection sees control with optional calls off; no simulator/force parameter.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "ab-goal-report",
+      "category": "Native measurement",
+      "requiredEvidence": "Attributed target pageview/event and native report readback after available processing; pending report explicit; no conversion/uplift/winner claim from demo sample.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    },
+    {
+      "id": "recovery",
+      "category": "Scoped restore",
+      "requiredEvidence": "Supported test stop/rule disable and reviewed field/layout restores after revision check; original content readback and preserved project/environment/MNP evidence.",
+      "status": "not-verified",
+      "evidenceLinks": [],
+      "nativeReadback": null,
+      "blocker": null
+    }
+  ]
+}

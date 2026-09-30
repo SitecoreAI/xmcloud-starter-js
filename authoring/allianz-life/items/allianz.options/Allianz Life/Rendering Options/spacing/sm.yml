@@ -1,0 +1,9 @@
+---
+ID: "7ab64794-b4f4-594e-9868-c689bcb77b86"
+Parent: "6bf80a6b-8213-5ceb-a406-64e6d432bf89"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/spacing/sm"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "200"

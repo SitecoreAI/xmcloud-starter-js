@@ -1,0 +1,9 @@
+---
+ID: "9e43c812-9f6b-5ab5-a90d-b868a1dd37a3"
+Parent: "b09fa4bc-2940-5ec2-99a3-d336f6863926"
+Template: "b09fa4bc-2940-5ec2-99a3-d336f6863926"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzCalculator/__Standard Values"
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{035517FF-6FA9-5DFE-AA26-140604A1C66E}"

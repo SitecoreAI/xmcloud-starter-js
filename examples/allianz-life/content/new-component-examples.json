@@ -1,0 +1,832 @@
+{
+  "AllianzTimeline": {
+    "path": "/about",
+    "component": {
+      "componentName": "AllianzTimeline",
+      "uid": "B0065161-1050-5B8E-9EE9-F8B1A71509FB",
+      "dataSource": "6632D617-7015-5A9C-B045-05AFF81A4C76",
+      "sourceKey": "/about:section:4:editorial-island:0",
+      "params": {
+        "theme": "blue-soft",
+        "layout": "plain",
+        "columns": "1",
+        "alignment": "center",
+        "spacing": "none",
+        "headingLevel": "h2",
+        "paddingTop": "lg",
+        "paddingBottom": "none",
+        "marginBottom": "lg"
+      },
+      "fields": {
+        "data": {
+          "datasource": {
+            "id": "6632D617-7015-5A9C-B045-05AFF81A4C76",
+            "heading": {
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            "children": {
+              "results": [
+                {
+                  "id": "B27111D2-2181-5509-8DC0-694D92FEDD23",
+                  "date": {
+                    "jsonValue": {
+                      "value": "1896"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Henry M. Little forms North American Casualty in Minneapolis. Through a series of mergers and acquisitions, the company would become Allianz Life.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "BCEAA983-0A6E-502E-A518-77552B9F57C8",
+                  "date": {
+                    "jsonValue": {
+                      "value": "1912"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "North American Casualty merges with North American Life Association to form North American Life and Casualty.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "9BC7CF6A-645D-52C7-949D-722BC4B1C004",
+                  "date": {
+                    "jsonValue": {
+                      "value": "1971"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "MONY Life insurance Co. acquires North American Life and Casualty.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "172BC65F-D376-5D25-BE05-FD7B2623FD2F",
+                  "date": {
+                    "jsonValue": {
+                      "value": "1979"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "North American Life and Casualty joins the German conglomerate Allianz SE through an acquisition.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "6F597BD0-089F-5A44-9CBA-4A13844750D8",
+                  "date": {
+                    "jsonValue": {
+                      "value": "1993"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "The company changes its name to Allianz Life Insurance Company of North America.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "619B99DC-7598-57A2-B128-EE1A394CAEBC",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2000"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Allianz Life becomes the #1 carrier of fixed index annuities in the United States.<sup>1</sup><br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "82860E5A-DC90-5A23-9673-6B9C17D83ACA",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2001"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Allianz Life moves into its new headquarters at 5701 Golden Hills Drive, Golden Valley, Minn.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "9E7BC12E-B703-5355-B1DD-4B3B09888397",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2011"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Fortune Magazine names Allianz Life one of the 100 Best Companies to Work For for the first time.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "8953D170-FE56-53CF-8FB3-E1D00CB89975",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2013"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Assets under management exceed $100 billion.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "1629DA64-BAB3-5407-874D-45C3FD093DA1",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2017"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Allianz Life becomes the title sponsor of Major League Soccer’s Minnesota United FC stadium, Allianz Field®, in the Midway neighborhood of St. Paul.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "922A74AC-F769-583D-9F13-DC2EFB5F9FAA",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2020"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Allianz Investment Management LLC, a registered investment adviser and wholly owned subsidiary of Allianz Life, launches an exchange-traded fund (ETF) product line.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "862E554A-3F69-5C27-A649-826FB2A993F2",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2020"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Allianz Life launches Allianz Advisory Solutions, expanding its service for advisors.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "91410A78-93D6-587F-97ED-68F5A4439CC8",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2021"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Allianz begins an eight-year worldwide partnership with the Olympic and Paralympic Movements.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "471205EC-3EEB-5DDB-A860-9DFD4419479F",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2021"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Jasmine Jirele is named president and CEO, succeeding Walter White.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "B9F9EDD9-9D0C-5582-B8F8-4B421BA93933",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2022"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Allianz Life enters the defined contribution market with its Allianz Lifetime Income+® Annuity for employer-sponsored plans.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "5693B6E5-2770-5672-945D-0A680ECA97CF",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2023"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "AllianzIM’s suite of ETFs exceeds $1 billion in assets.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "A4D8BAEE-A03F-5293-8BBA-6E3F51C689CD",
+                  "date": {
+                    "jsonValue": {
+                      "value": "2025"
+                    }
+                  },
+                  "heading": {
+                    "jsonValue": {
+                      "value": ""
+                    }
+                  },
+                  "body": {
+                    "jsonValue": {
+                      "value": "Allianz extends its Worldwide Olympic and Paralympic Partnership through 2032.<br>\n            "
+                    }
+                  },
+                  "image": {
+                    "jsonValue": {
+                      "value": {
+                        "src": "",
+                        "alt": ""
+                      }
+                    }
+                  },
+                  "link": {
+                    "jsonValue": {
+                      "value": {
+                        "href": "",
+                        "text": "",
+                        "linktype": "anchor",
+                        "target": ""
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "provenance": {
+        "sourceUrl": "https://www.allianzlife.com/about",
+        "sourceHtml": "html/0879f096fdbaf4d0.html"
+      }
+    }
+  },
+  "AllianzRateSnapshot": {
+    "path": "/what-we-offer/annuities/fixed-index-annuities/222",
+    "component": {
+      "componentName": "AllianzRateSnapshot",
+      "uid": "DCD1B41A-B63C-5EF4-AE02-8F9601E305E5",
+      "dataSource": "60904074-90CA-59FF-A9C6-6A74BFF43AE0",
+      "sourceKey": "/what-we-offer/annuities/fixed-index-annuities/222:section:7:editorial-island:0",
+      "params": {
+        "theme": "grey-soft",
+        "layout": "plain",
+        "columns": "1",
+        "alignment": "center",
+        "spacing": "none",
+        "headingLevel": "h2",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "RenderingIdentifier": "mva-rate"
+      },
+      "fields": {
+        "data": {
+          "datasource": {
+            "id": "60904074-90CA-59FF-A9C6-6A74BFF43AE0",
+            "heading": {
+              "jsonValue": {
+                "value": "Current MVA reference rate"
+              }
+            },
+            "rate": {
+              "jsonValue": {
+                "value": "5.80%"
+              }
+            },
+            "asOf": {
+              "jsonValue": {
+                "value": "9/30/2026"
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": "<p>Uses the yield of the <span>Bloomberg US Intermediate Corporate Bond Index</span></p>"
+              }
+            },
+            "link": {
+              "jsonValue": {
+                "value": {
+                  "href": "#demo-unavailable",
+                  "text": "Historical MVA reference rates",
+                  "linktype": "anchor",
+                  "target": "",
+                  "title": "This service is unavailable"
+                }
+              }
+            }
+          }
+        }
+      },
+      "provenance": {
+        "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222",
+        "sourceHtml": "html/44d59794cc239a7a.html"
+      }
+    }
+  },
+  "AllianzIndexDefinitions": {
+    "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+    "component": {
+      "componentName": "AllianzIndexDefinitions",
+      "uid": "B4270AA5-064E-565F-9275-CA106B1E87C4",
+      "dataSource": "E3614A01-7EC2-5726-A0F8-DE847D7199F2",
+      "sourceKey": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv:section:7:editorial-island:1",
+      "params": {
+        "theme": "transparent",
+        "layout": "plain",
+        "columns": "1",
+        "alignment": "center",
+        "spacing": "none",
+        "headingLevel": "h2",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none"
+      },
+      "fields": {
+        "data": {
+          "datasource": {
+            "id": "E3614A01-7EC2-5726-A0F8-DE847D7199F2",
+            "heading": {
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            "children": {
+              "results": [
+                {
+                  "id": "4A1DE6DE-B999-5588-91AA-53EA55B7F909",
+                  "body": {
+                    "jsonValue": {
+                      "value": "<strong>S&amp;P 500® Index</strong>:  A large-cap American stock market index based on market capitalizations of 500 companies. Often considered one of the best overall representations of the U.S. stock market."
+                    }
+                  },
+                  "color": {
+                    "jsonValue": {
+                      "value": "blue-bright"
+                    }
+                  }
+                },
+                {
+                  "id": "2BA3D889-CA72-5AF4-8128-148DBE8B8CF6",
+                  "body": {
+                    "jsonValue": {
+                      "value": "<strong>Russell 2000® Index</strong>:  A small-cap stock market index of the smallest 2,000 companies in the Russell 3000 Index. A common benchmark for companies that identify as small-cap based on market capitalization."
+                    }
+                  },
+                  "color": {
+                    "jsonValue": {
+                      "value": "red-bright"
+                    }
+                  }
+                },
+                {
+                  "id": "37E6FB87-B621-5D42-95C3-4E039385F917",
+                  "body": {
+                    "jsonValue": {
+                      "value": "<strong>Nasdaq-100® Index</strong>: A large-cap market index that includes 100 of the largest domestic and international nonfinancial securities listed on the Nasdaq Stock Market."
+                    }
+                  },
+                  "color": {
+                    "jsonValue": {
+                      "value": "teal-bright"
+                    }
+                  }
+                },
+                {
+                  "id": "1C481CFA-A21C-5839-BFAF-B3DCCB086054",
+                  "body": {
+                    "jsonValue": {
+                      "value": "<strong>iShares® MSCI Emerging Markets ETF</strong>: An exchange-traded fund that seeks to track the investment results of the MSCI Emerging Markets Index, which is designed to measure equity market performance in the global emerging markets. The underlying index may include large- and mid-capitalization companies."
+                    }
+                  },
+                  "color": {
+                    "jsonValue": {
+                      "value": "purple-bright"
+                    }
+                  }
+                },
+                {
+                  "id": "92F5D212-AACD-5E72-96FA-19CE2C547488",
+                  "body": {
+                    "jsonValue": {
+                      "value": "<strong>EURO STOXX 50®</strong>: An international stock market index that provides a blue-chip representation of supersector leaders in the Eurozone. The index covers 50 stocks from 11 Eurozone countries."
+                    }
+                  },
+                  "color": {
+                    "jsonValue": {
+                      "value": "direct-green"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "provenance": {
+        "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+        "sourceHtml": "html/569110081b5b9a7c.html"
+      }
+    }
+  }
+}

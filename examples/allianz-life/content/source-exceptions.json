@@ -1,0 +1,321 @@
+{
+  "blockedPublicCandidates": [
+    "https://www.allianzlife.com/allianzfortomorrow",
+    "https://www.allianzlife.com/careers",
+    "https://www.allianzlife.com/culture",
+    "https://www.allianzlife.com/for-financial-professionals/advisory-solutions",
+    "https://www.allianzlife.com/for-financial-professionals/advisory-solutions/ria-concierge-desk",
+    "https://www.allianzlife.com/for-financial-professionals/life-sales-tools",
+    "https://www.allianzlife.com/for-financial-professionals/life-sales-tools/advanced-markets",
+    "https://www.allianzlife.com/for-financial-professionals/life-sales-tools/allianz-global-citizen-program",
+    "https://www.allianzlife.com/for-financial-professionals/life-sales-tools/business-succession-planning-materials",
+    "https://www.allianzlife.com/for-financial-professionals/life-sales-tools/premium-finance",
+    "https://www.allianzlife.com/for-financial-professionals/life-sales-tools/product-information",
+    "https://www.allianzlife.com/for-financial-professionals/life-sales-tools/sales-resources",
+    "https://www.allianzlife.com/for-financial-professionals/life-sales-tools/submission-to-servicing",
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus",
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/taking-income",
+    "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/define-your-downside",
+    "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/rila-rates-center-infp",
+    "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/rila-rates-center",
+    "https://www.allianzlife.com/what-we-offer/life-insurance/the-underwriting-process"
+  ],
+  "serverErrors": [
+    "https://www.allianzlife.com/about/subject-matter-experts/aimee-johnson"
+  ],
+  "excludedUrls": [
+    {
+      "sitemap_url": "https://www.allianzlife.com/manageuserprofile",
+      "url": "https://www.allianzlife.com/manageuserprofile",
+      "lastmod": "2023-09-27",
+      "malformed": false,
+      "exclusion_reason": "authentication/account workflow"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/login",
+      "url": "https://www.allianzlife.com/login",
+      "lastmod": "2026-09-15",
+      "malformed": false,
+      "exclusion_reason": "authentication/account workflow"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/rates",
+      "url": "https://www.allianzlife.com/rates",
+      "lastmod": "2026-07-28",
+      "malformed": false,
+      "exclusion_reason": "robots.txt disallowed"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/hero-test-two",
+      "url": "https://www.allianzlife.com/hero-test-two",
+      "lastmod": "2024-05-24",
+      "malformed": false,
+      "exclusion_reason": "test or opaque blob page"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/login/forgot-password-individual",
+      "url": "https://www.allianzlife.com/login/forgot-password-individual",
+      "lastmod": "2019-12-11",
+      "malformed": false,
+      "exclusion_reason": "authentication/account workflow"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/login/forgot-username-individual",
+      "url": "https://www.allianzlife.com/login/forgot-username-individual",
+      "lastmod": "2019-12-11",
+      "malformed": false,
+      "exclusion_reason": "authentication/account workflow"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/registration/sso",
+      "url": "https://www.allianzlife.com/registration/sso",
+      "lastmod": "2022-01-19",
+      "malformed": false,
+      "exclusion_reason": "authentication/account workflow"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/em/2021-fmo-fso-summit",
+      "url": "https://www.allianzlife.com/em/2021-fmo-fso-summit",
+      "lastmod": "2021-05-03",
+      "malformed": false,
+      "exclusion_reason": "robots.txt disallowed"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/em/2021-fmo-fso-summit-save-the-date",
+      "url": "https://www.allianzlife.com/em/2021-fmo-fso-summit-save-the-date",
+      "lastmod": "2021-06-08",
+      "malformed": false,
+      "exclusion_reason": "robots.txt disallowed"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/em/egen",
+      "url": "https://www.allianzlife.com/em/egen",
+      "lastmod": "2021-08-25",
+      "malformed": false,
+      "exclusion_reason": "robots.txt disallowed"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/em/efix",
+      "url": "https://www.allianzlife.com/em/efix",
+      "lastmod": "2021-08-25",
+      "malformed": false,
+      "exclusion_reason": "robots.txt disallowed"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/em/elif",
+      "url": "https://www.allianzlife.com/em/elif",
+      "lastmod": "2021-08-25",
+      "malformed": false,
+      "exclusion_reason": "robots.txt disallowed"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/em/evar",
+      "url": "https://www.allianzlife.com/em/evar",
+      "lastmod": "2021-08-25",
+      "malformed": false,
+      "exclusion_reason": "robots.txt disallowed"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/patterns/pages/authorizations",
+      "url": "https://www.allianzlife.com/patterns/pages/authorizations",
+      "lastmod": "2022-02-08",
+      "malformed": false,
+      "exclusion_reason": "robots.txt disallowed"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/patterns/email-patterns/heroimage_js",
+      "url": "https://www.allianzlife.com/patterns/email-patterns/heroimage_js",
+      "lastmod": "2024-11-13",
+      "malformed": false,
+      "exclusion_reason": "robots.txt disallowed"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/new-york/blob-page",
+      "url": "https://www.allianzlife.com/new-york/blob-page",
+      "lastmod": "2014-03-18",
+      "malformed": false,
+      "exclusion_reason": "test or opaque blob page"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/new-york/login",
+      "url": "https://www.allianzlife.com/new-york/login",
+      "lastmod": "2026-09-15",
+      "malformed": false,
+      "exclusion_reason": "authentication/account workflow"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/new-york/login/forgot-password-individual",
+      "url": "https://www.allianzlife.com/new-york/login/forgot-password-individual",
+      "lastmod": "2019-10-18",
+      "malformed": false,
+      "exclusion_reason": "authentication/account workflow"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/new-york/login/forgot-username-individual",
+      "url": "https://www.allianzlife.com/new-york/login/forgot-username-individual",
+      "lastmod": "2019-10-18",
+      "malformed": false,
+      "exclusion_reason": "authentication/account workflow"
+    },
+    {
+      "sitemap_url": "https://www.allianzlife.com/new-york/registration/individual",
+      "url": "https://www.allianzlife.com/new-york/registration/individual",
+      "lastmod": "2026-06-11",
+      "malformed": false,
+      "exclusion_reason": "authentication/account workflow"
+    },
+    {
+      "url": "https://www.allianzlife.com/Login",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/"
+    },
+    {
+      "url": "https://www.allianzlife.com/Login/forgot-username-individual",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/"
+    },
+    {
+      "url": "https://www.allianzlife.com/Login/forgot-password-individual",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/"
+    },
+    {
+      "url": "https://www.allianzlife.com/Registration/individual",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/"
+    },
+    {
+      "url": "https://www.allianzlife.com/New-York/Login",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/new-york"
+    },
+    {
+      "url": "https://www.allianzlife.com/New-York/Login/forgot-username-individual",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/new-york"
+    },
+    {
+      "url": "https://www.allianzlife.com/New-York/Login/forgot-password-individual",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/new-york"
+    },
+    {
+      "url": "https://www.allianzlife.com/New-York/Registration/individual",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/new-york"
+    },
+    {
+      "url": "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates",
+      "exclusion_reason": "asset or application endpoint, not page",
+      "source_page": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222"
+    },
+    {
+      "url": "https://www.allianzlife.com/login",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/frequently-asked-questions-for-fias"
+    },
+    {
+      "url": "https://www.allianzlife.com/registration/individual",
+      "exclusion_reason": "authentication/account workflow",
+      "source_page": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/understanding-your-fixed-index-annuity-allocation-options"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "https://www.allianzlife.com/what-we-offer/life-insurance/foreign-national-program",
+      "destination": "https://www.allianzlife.com/what-we-offer/Life-Insurance"
+    },
+    {
+      "source": "https://www.allianzlife.com/get-answers/supplemental-retirement-income-with-fiul",
+      "destination": "https://www.allianzlife.com/get-answers"
+    },
+    {
+      "source": "https://www.allianzlife.com/for-financial-professionals/resources/4-ways-to-help-clients-fight-inflation",
+      "destination": "https://www.allianzlife.com/for-financial-professionals/resources"
+    }
+  ],
+  "sourceCountReconciliation": {
+    "sitemap_rows": 380,
+    "sitemap_malformed_repaired": 6,
+    "sitemap_excluded": 20,
+    "sitemap_exclusion_reasons": {
+      "authentication/account workflow": 9,
+      "robots.txt disallowed": 9,
+      "test or opaque blob page": 2
+    },
+    "sitemap_eligible_routes": 360,
+    "sitemap_http_200": 359,
+    "sitemap_server_error": [
+      "https://www.allianzlife.com/about/subject-matter-experts/aimee-johnson"
+    ],
+    "sitemap_redirects": [
+      {
+        "source": "https://www.allianzlife.com/what-we-offer/life-insurance/foreign-national-program",
+        "destination": "https://www.allianzlife.com/what-we-offer/Life-Insurance"
+      },
+      {
+        "source": "https://www.allianzlife.com/get-answers/supplemental-retirement-income-with-fiul",
+        "destination": "https://www.allianzlife.com/get-answers"
+      },
+      {
+        "source": "https://www.allianzlife.com/for-financial-professionals/resources/4-ways-to-help-clients-fight-inflation",
+        "destination": "https://www.allianzlife.com/for-financial-professionals/resources"
+      }
+    ],
+    "successful_canonical_routes": 357,
+    "successful_sitemap_canonical_routes": 356,
+    "archetypes": {
+      "Home": 1,
+      "Marketing / topic landing": 56,
+      "Directory / collection landing": 9,
+      "Person biography": 41,
+      "Press release year listing": 3,
+      "Press release": 81,
+      "Legal / policy": 11,
+      "Contact / claim form": 5,
+      "FAQ / glossary": 7,
+      "Editorial insight / article": 45,
+      "Interactive tool / calculator": 15,
+      "Document / disclosure library": 30,
+      "Product detail / guide": 22,
+      "Product rates": 23,
+      "Product video": 6,
+      "Site search": 2
+    },
+    "shell_families": {
+      "Modern Allianz Life": 279,
+      "Legacy / New York": 78
+    },
+    "html_languages": {
+      "en-US": 357
+    },
+    "additional_blocked_public_candidate_routes": 19,
+    "403_classifications_raw_urls": {
+      "Authenticated portal: excluded, no implementation": 5,
+      "Case alias of successful canonical URL": 131,
+      "Robots-disallowed alias: excluded": 1,
+      "Malformed/internal navigation link: excluded": 7,
+      "Needs review: public candidate blocked": 20,
+      "Error route: model only as demo error state": 1
+    },
+    "document_references": 194,
+    "asset_url_references": 2581,
+    "unique_asset_paths": 565,
+    "asset_sample_checks": {
+      "403": 31
+    },
+    "document_GET_availability": {
+      "available": 193,
+      "unavailable": 1
+    },
+    "verified_document_bytes": 168097103,
+    "selected_raster_GET_availability": {
+      "available": 426
+    },
+    "verified_raster_bytes": 84604482,
+    "source_font_GET_availability": {
+      "available": 5
+    },
+    "verified_font_bytes": 124664
+  }
+}

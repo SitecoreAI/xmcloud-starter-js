@@ -1,0 +1,12 @@
+---
+ID: "b09fa4bc-2940-5ec2-99a3-d336f6863926"
+Parent: "ae4cfc5a-5120-53b2-a1a0-5b83f206e4da"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: "/sitecore/templates/Project/Allianz Life/Components/AllianzCalculator"
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: __Standard values
+  Value: "{9E43C812-9F6B-5AB5-A90D-B868A1DD37A3}"

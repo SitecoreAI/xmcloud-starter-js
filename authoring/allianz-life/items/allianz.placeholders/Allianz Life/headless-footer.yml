@@ -1,0 +1,14 @@
+---
+ID: "b3dc53be-9f5d-55a1-a336-1e90df03f615"
+Parent: "6f99399d-e003-5a7d-a379-dc154ffea09c"
+Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
+Path: "/sitecore/layout/Placeholder Settings/Project/Allianz Life/headless-footer"
+SharedFields:
+- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
+  Hint: Placeholder Key
+  Value: "headless-footer"
+- ID: "e391b526-d0c5-439d-803e-17512eae6222"
+  Hint: Allowed Controls
+  Value: |
+    {3CD4EFCB-B7E0-528B-A525-668D74525435}
+    {10B26485-8A6E-5FEE-BADF-1FB30590BE5E}

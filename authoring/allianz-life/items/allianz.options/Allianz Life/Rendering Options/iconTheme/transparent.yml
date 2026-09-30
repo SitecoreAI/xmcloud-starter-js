@@ -1,0 +1,9 @@
+---
+ID: "8003c046-7ccd-54a9-a0f3-8a246ac04075"
+Parent: "c6dc7320-3a85-5f3c-b944-231dd95f2c45"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/iconTheme/transparent"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "100"

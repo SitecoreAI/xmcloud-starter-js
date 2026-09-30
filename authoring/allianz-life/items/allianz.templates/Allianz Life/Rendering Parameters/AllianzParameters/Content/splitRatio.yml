@@ -1,0 +1,23 @@
+---
+ID: "9ebd0c3b-f73a-52be-94b0-c6df381af213"
+Parent: "23c4d750-a3e8-5e90-a84b-921d22b429c8"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Allianz Life/Rendering Parameters/AllianzParameters/Content/splitRatio"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Droplist"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: "2100"
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: "/sitecore/system/Settings/Project/Allianz Life/Rendering Options/splitRatio"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: Title
+    Value: "splitRatio"
+  Versions:
+  - Version: 1

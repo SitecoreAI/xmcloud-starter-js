@@ -1,0 +1,3080 @@
+{
+  "death-claim": {
+    "sourceUrl": "https://www.allianzlife.com/report-a-death",
+    "fields": [
+      {
+        "name": "StartClaimAbout.firstname",
+        "label": "First Name*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 70,
+        "pattern": "^[A-Za-z\\-. '\\s]+$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.lastname",
+        "label": "Last Name*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 50,
+        "pattern": "^[A-Za-z\\-. '\\s]+$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.DateOfDeathMonth",
+        "label": "Date of death*",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "Select a month",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "",
+            "label": "Month"
+          },
+          {
+            "value": "1",
+            "label": "January"
+          },
+          {
+            "value": "2",
+            "label": "February"
+          },
+          {
+            "value": "3",
+            "label": "March"
+          },
+          {
+            "value": "4",
+            "label": "April"
+          },
+          {
+            "value": "5",
+            "label": "May"
+          },
+          {
+            "value": "6",
+            "label": "June"
+          },
+          {
+            "value": "7",
+            "label": "July"
+          },
+          {
+            "value": "8",
+            "label": "August"
+          },
+          {
+            "value": "9",
+            "label": "September"
+          },
+          {
+            "value": "10",
+            "label": "October"
+          },
+          {
+            "value": "11",
+            "label": "November"
+          },
+          {
+            "value": "12",
+            "label": "December"
+          }
+        ]
+      },
+      {
+        "name": "StartClaimAbout.DateOfDeathDay",
+        "label": "Date of death",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "Select a day",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "",
+            "label": "Day"
+          },
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "11",
+            "label": "11"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "13",
+            "label": "13"
+          },
+          {
+            "value": "14",
+            "label": "14"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "16",
+            "label": "16"
+          },
+          {
+            "value": "17",
+            "label": "17"
+          },
+          {
+            "value": "18",
+            "label": "18"
+          },
+          {
+            "value": "19",
+            "label": "19"
+          },
+          {
+            "value": "20",
+            "label": "20"
+          },
+          {
+            "value": "21",
+            "label": "21"
+          },
+          {
+            "value": "22",
+            "label": "22"
+          },
+          {
+            "value": "23",
+            "label": "23"
+          },
+          {
+            "value": "24",
+            "label": "24"
+          },
+          {
+            "value": "25",
+            "label": "25"
+          },
+          {
+            "value": "26",
+            "label": "26"
+          },
+          {
+            "value": "27",
+            "label": "27"
+          },
+          {
+            "value": "28",
+            "label": "28"
+          },
+          {
+            "value": "29",
+            "label": "29"
+          },
+          {
+            "value": "30",
+            "label": "30"
+          },
+          {
+            "value": "31",
+            "label": "31"
+          }
+        ]
+      },
+      {
+        "name": "StartClaimAbout.DateOfDeathYear",
+        "label": "Date of death",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "Select a Year",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "",
+            "label": "Year"
+          },
+          {
+            "value": "2026",
+            "label": "2026"
+          },
+          {
+            "value": "2025",
+            "label": "2025"
+          },
+          {
+            "value": "2024",
+            "label": "2024"
+          },
+          {
+            "value": "2023",
+            "label": "2023"
+          },
+          {
+            "value": "2022",
+            "label": "2022"
+          },
+          {
+            "value": "2021",
+            "label": "2021"
+          },
+          {
+            "value": "2020",
+            "label": "2020"
+          },
+          {
+            "value": "2019",
+            "label": "2019"
+          },
+          {
+            "value": "2018",
+            "label": "2018"
+          },
+          {
+            "value": "2017",
+            "label": "2017"
+          },
+          {
+            "value": "2016",
+            "label": "2016"
+          },
+          {
+            "value": "2015",
+            "label": "2015"
+          },
+          {
+            "value": "2014",
+            "label": "2014"
+          },
+          {
+            "value": "2013",
+            "label": "2013"
+          },
+          {
+            "value": "2012",
+            "label": "2012"
+          },
+          {
+            "value": "2011",
+            "label": "2011"
+          },
+          {
+            "value": "2010",
+            "label": "2010"
+          },
+          {
+            "value": "2009",
+            "label": "2009"
+          },
+          {
+            "value": "2008",
+            "label": "2008"
+          },
+          {
+            "value": "2007",
+            "label": "2007"
+          },
+          {
+            "value": "2006",
+            "label": "2006"
+          },
+          {
+            "value": "2005",
+            "label": "2005"
+          },
+          {
+            "value": "2004",
+            "label": "2004"
+          },
+          {
+            "value": "2003",
+            "label": "2003"
+          },
+          {
+            "value": "2002",
+            "label": "2002"
+          },
+          {
+            "value": "2001",
+            "label": "2001"
+          },
+          {
+            "value": "2000",
+            "label": "2000"
+          },
+          {
+            "value": "1999",
+            "label": "1999"
+          },
+          {
+            "value": "1998",
+            "label": "1998"
+          },
+          {
+            "value": "1997",
+            "label": "1997"
+          },
+          {
+            "value": "1996",
+            "label": "1996"
+          },
+          {
+            "value": "1995",
+            "label": "1995"
+          },
+          {
+            "value": "1994",
+            "label": "1994"
+          },
+          {
+            "value": "1993",
+            "label": "1993"
+          },
+          {
+            "value": "1992",
+            "label": "1992"
+          },
+          {
+            "value": "1991",
+            "label": "1991"
+          },
+          {
+            "value": "1990",
+            "label": "1990"
+          },
+          {
+            "value": "1989",
+            "label": "1989"
+          },
+          {
+            "value": "1988",
+            "label": "1988"
+          },
+          {
+            "value": "1987",
+            "label": "1987"
+          },
+          {
+            "value": "1986",
+            "label": "1986"
+          },
+          {
+            "value": "1985",
+            "label": "1985"
+          },
+          {
+            "value": "1984",
+            "label": "1984"
+          },
+          {
+            "value": "1983",
+            "label": "1983"
+          },
+          {
+            "value": "1982",
+            "label": "1982"
+          },
+          {
+            "value": "1981",
+            "label": "1981"
+          },
+          {
+            "value": "1980",
+            "label": "1980"
+          },
+          {
+            "value": "1979",
+            "label": "1979"
+          },
+          {
+            "value": "1978",
+            "label": "1978"
+          },
+          {
+            "value": "1977",
+            "label": "1977"
+          },
+          {
+            "value": "1976",
+            "label": "1976"
+          },
+          {
+            "value": "1975",
+            "label": "1975"
+          },
+          {
+            "value": "1974",
+            "label": "1974"
+          },
+          {
+            "value": "1973",
+            "label": "1973"
+          },
+          {
+            "value": "1972",
+            "label": "1972"
+          },
+          {
+            "value": "1971",
+            "label": "1971"
+          },
+          {
+            "value": "1970",
+            "label": "1970"
+          },
+          {
+            "value": "1969",
+            "label": "1969"
+          },
+          {
+            "value": "1968",
+            "label": "1968"
+          },
+          {
+            "value": "1967",
+            "label": "1967"
+          },
+          {
+            "value": "1966",
+            "label": "1966"
+          },
+          {
+            "value": "1965",
+            "label": "1965"
+          },
+          {
+            "value": "1964",
+            "label": "1964"
+          },
+          {
+            "value": "1963",
+            "label": "1963"
+          },
+          {
+            "value": "1962",
+            "label": "1962"
+          },
+          {
+            "value": "1961",
+            "label": "1961"
+          },
+          {
+            "value": "1960",
+            "label": "1960"
+          },
+          {
+            "value": "1959",
+            "label": "1959"
+          },
+          {
+            "value": "1958",
+            "label": "1958"
+          },
+          {
+            "value": "1957",
+            "label": "1957"
+          },
+          {
+            "value": "1956",
+            "label": "1956"
+          },
+          {
+            "value": "1955",
+            "label": "1955"
+          },
+          {
+            "value": "1954",
+            "label": "1954"
+          },
+          {
+            "value": "1953",
+            "label": "1953"
+          },
+          {
+            "value": "1952",
+            "label": "1952"
+          },
+          {
+            "value": "1951",
+            "label": "1951"
+          },
+          {
+            "value": "1950",
+            "label": "1950"
+          },
+          {
+            "value": "1949",
+            "label": "1949"
+          },
+          {
+            "value": "1948",
+            "label": "1948"
+          },
+          {
+            "value": "1947",
+            "label": "1947"
+          },
+          {
+            "value": "1946",
+            "label": "1946"
+          },
+          {
+            "value": "1945",
+            "label": "1945"
+          },
+          {
+            "value": "1944",
+            "label": "1944"
+          },
+          {
+            "value": "1943",
+            "label": "1943"
+          },
+          {
+            "value": "1942",
+            "label": "1942"
+          },
+          {
+            "value": "1941",
+            "label": "1941"
+          },
+          {
+            "value": "1940",
+            "label": "1940"
+          },
+          {
+            "value": "1939",
+            "label": "1939"
+          },
+          {
+            "value": "1938",
+            "label": "1938"
+          },
+          {
+            "value": "1937",
+            "label": "1937"
+          },
+          {
+            "value": "1936",
+            "label": "1936"
+          },
+          {
+            "value": "1935",
+            "label": "1935"
+          },
+          {
+            "value": "1934",
+            "label": "1934"
+          },
+          {
+            "value": "1933",
+            "label": "1933"
+          },
+          {
+            "value": "1932",
+            "label": "1932"
+          },
+          {
+            "value": "1931",
+            "label": "1931"
+          },
+          {
+            "value": "1930",
+            "label": "1930"
+          },
+          {
+            "value": "1929",
+            "label": "1929"
+          },
+          {
+            "value": "1928",
+            "label": "1928"
+          },
+          {
+            "value": "1927",
+            "label": "1927"
+          },
+          {
+            "value": "1926",
+            "label": "1926"
+          },
+          {
+            "value": "1925",
+            "label": "1925"
+          },
+          {
+            "value": "1924",
+            "label": "1924"
+          },
+          {
+            "value": "1923",
+            "label": "1923"
+          },
+          {
+            "value": "1922",
+            "label": "1922"
+          },
+          {
+            "value": "1921",
+            "label": "1921"
+          },
+          {
+            "value": "1920",
+            "label": "1920"
+          },
+          {
+            "value": "1919",
+            "label": "1919"
+          },
+          {
+            "value": "1918",
+            "label": "1918"
+          },
+          {
+            "value": "1917",
+            "label": "1917"
+          },
+          {
+            "value": "1916",
+            "label": "1916"
+          },
+          {
+            "value": "1915",
+            "label": "1915"
+          },
+          {
+            "value": "1914",
+            "label": "1914"
+          },
+          {
+            "value": "1913",
+            "label": "1913"
+          },
+          {
+            "value": "1912",
+            "label": "1912"
+          },
+          {
+            "value": "1911",
+            "label": "1911"
+          },
+          {
+            "value": "1910",
+            "label": "1910"
+          },
+          {
+            "value": "1909",
+            "label": "1909"
+          },
+          {
+            "value": "1908",
+            "label": "1908"
+          },
+          {
+            "value": "1907",
+            "label": "1907"
+          },
+          {
+            "value": "1906",
+            "label": "1906"
+          },
+          {
+            "value": "1905",
+            "label": "1905"
+          },
+          {
+            "value": "1904",
+            "label": "1904"
+          },
+          {
+            "value": "1903",
+            "label": "1903"
+          },
+          {
+            "value": "1902",
+            "label": "1902"
+          },
+          {
+            "value": "1901",
+            "label": "1901"
+          },
+          {
+            "value": "1900",
+            "label": "1900"
+          }
+        ]
+      },
+      {
+        "name": "StartClaimAbout.DateOfBirthMonth",
+        "label": "Date of birth*",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "Select a month",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "",
+            "label": "Month"
+          },
+          {
+            "value": "1",
+            "label": "January"
+          },
+          {
+            "value": "2",
+            "label": "February"
+          },
+          {
+            "value": "3",
+            "label": "March"
+          },
+          {
+            "value": "4",
+            "label": "April"
+          },
+          {
+            "value": "5",
+            "label": "May"
+          },
+          {
+            "value": "6",
+            "label": "June"
+          },
+          {
+            "value": "7",
+            "label": "July"
+          },
+          {
+            "value": "8",
+            "label": "August"
+          },
+          {
+            "value": "9",
+            "label": "September"
+          },
+          {
+            "value": "10",
+            "label": "October"
+          },
+          {
+            "value": "11",
+            "label": "November"
+          },
+          {
+            "value": "12",
+            "label": "December"
+          }
+        ]
+      },
+      {
+        "name": "StartClaimAbout.DateOfBirthDay",
+        "label": "Date of birth",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "Select a day",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "",
+            "label": "Day"
+          },
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "11",
+            "label": "11"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "13",
+            "label": "13"
+          },
+          {
+            "value": "14",
+            "label": "14"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "16",
+            "label": "16"
+          },
+          {
+            "value": "17",
+            "label": "17"
+          },
+          {
+            "value": "18",
+            "label": "18"
+          },
+          {
+            "value": "19",
+            "label": "19"
+          },
+          {
+            "value": "20",
+            "label": "20"
+          },
+          {
+            "value": "21",
+            "label": "21"
+          },
+          {
+            "value": "22",
+            "label": "22"
+          },
+          {
+            "value": "23",
+            "label": "23"
+          },
+          {
+            "value": "24",
+            "label": "24"
+          },
+          {
+            "value": "25",
+            "label": "25"
+          },
+          {
+            "value": "26",
+            "label": "26"
+          },
+          {
+            "value": "27",
+            "label": "27"
+          },
+          {
+            "value": "28",
+            "label": "28"
+          },
+          {
+            "value": "29",
+            "label": "29"
+          },
+          {
+            "value": "30",
+            "label": "30"
+          },
+          {
+            "value": "31",
+            "label": "31"
+          }
+        ]
+      },
+      {
+        "name": "StartClaimAbout.DateOfBirthYear",
+        "label": "Date of birth",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "Select a Year",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "",
+            "label": "Year"
+          },
+          {
+            "value": "2026",
+            "label": "2026"
+          },
+          {
+            "value": "2025",
+            "label": "2025"
+          },
+          {
+            "value": "2024",
+            "label": "2024"
+          },
+          {
+            "value": "2023",
+            "label": "2023"
+          },
+          {
+            "value": "2022",
+            "label": "2022"
+          },
+          {
+            "value": "2021",
+            "label": "2021"
+          },
+          {
+            "value": "2020",
+            "label": "2020"
+          },
+          {
+            "value": "2019",
+            "label": "2019"
+          },
+          {
+            "value": "2018",
+            "label": "2018"
+          },
+          {
+            "value": "2017",
+            "label": "2017"
+          },
+          {
+            "value": "2016",
+            "label": "2016"
+          },
+          {
+            "value": "2015",
+            "label": "2015"
+          },
+          {
+            "value": "2014",
+            "label": "2014"
+          },
+          {
+            "value": "2013",
+            "label": "2013"
+          },
+          {
+            "value": "2012",
+            "label": "2012"
+          },
+          {
+            "value": "2011",
+            "label": "2011"
+          },
+          {
+            "value": "2010",
+            "label": "2010"
+          },
+          {
+            "value": "2009",
+            "label": "2009"
+          },
+          {
+            "value": "2008",
+            "label": "2008"
+          },
+          {
+            "value": "2007",
+            "label": "2007"
+          },
+          {
+            "value": "2006",
+            "label": "2006"
+          },
+          {
+            "value": "2005",
+            "label": "2005"
+          },
+          {
+            "value": "2004",
+            "label": "2004"
+          },
+          {
+            "value": "2003",
+            "label": "2003"
+          },
+          {
+            "value": "2002",
+            "label": "2002"
+          },
+          {
+            "value": "2001",
+            "label": "2001"
+          },
+          {
+            "value": "2000",
+            "label": "2000"
+          },
+          {
+            "value": "1999",
+            "label": "1999"
+          },
+          {
+            "value": "1998",
+            "label": "1998"
+          },
+          {
+            "value": "1997",
+            "label": "1997"
+          },
+          {
+            "value": "1996",
+            "label": "1996"
+          },
+          {
+            "value": "1995",
+            "label": "1995"
+          },
+          {
+            "value": "1994",
+            "label": "1994"
+          },
+          {
+            "value": "1993",
+            "label": "1993"
+          },
+          {
+            "value": "1992",
+            "label": "1992"
+          },
+          {
+            "value": "1991",
+            "label": "1991"
+          },
+          {
+            "value": "1990",
+            "label": "1990"
+          },
+          {
+            "value": "1989",
+            "label": "1989"
+          },
+          {
+            "value": "1988",
+            "label": "1988"
+          },
+          {
+            "value": "1987",
+            "label": "1987"
+          },
+          {
+            "value": "1986",
+            "label": "1986"
+          },
+          {
+            "value": "1985",
+            "label": "1985"
+          },
+          {
+            "value": "1984",
+            "label": "1984"
+          },
+          {
+            "value": "1983",
+            "label": "1983"
+          },
+          {
+            "value": "1982",
+            "label": "1982"
+          },
+          {
+            "value": "1981",
+            "label": "1981"
+          },
+          {
+            "value": "1980",
+            "label": "1980"
+          },
+          {
+            "value": "1979",
+            "label": "1979"
+          },
+          {
+            "value": "1978",
+            "label": "1978"
+          },
+          {
+            "value": "1977",
+            "label": "1977"
+          },
+          {
+            "value": "1976",
+            "label": "1976"
+          },
+          {
+            "value": "1975",
+            "label": "1975"
+          },
+          {
+            "value": "1974",
+            "label": "1974"
+          },
+          {
+            "value": "1973",
+            "label": "1973"
+          },
+          {
+            "value": "1972",
+            "label": "1972"
+          },
+          {
+            "value": "1971",
+            "label": "1971"
+          },
+          {
+            "value": "1970",
+            "label": "1970"
+          },
+          {
+            "value": "1969",
+            "label": "1969"
+          },
+          {
+            "value": "1968",
+            "label": "1968"
+          },
+          {
+            "value": "1967",
+            "label": "1967"
+          },
+          {
+            "value": "1966",
+            "label": "1966"
+          },
+          {
+            "value": "1965",
+            "label": "1965"
+          },
+          {
+            "value": "1964",
+            "label": "1964"
+          },
+          {
+            "value": "1963",
+            "label": "1963"
+          },
+          {
+            "value": "1962",
+            "label": "1962"
+          },
+          {
+            "value": "1961",
+            "label": "1961"
+          },
+          {
+            "value": "1960",
+            "label": "1960"
+          },
+          {
+            "value": "1959",
+            "label": "1959"
+          },
+          {
+            "value": "1958",
+            "label": "1958"
+          },
+          {
+            "value": "1957",
+            "label": "1957"
+          },
+          {
+            "value": "1956",
+            "label": "1956"
+          },
+          {
+            "value": "1955",
+            "label": "1955"
+          },
+          {
+            "value": "1954",
+            "label": "1954"
+          },
+          {
+            "value": "1953",
+            "label": "1953"
+          },
+          {
+            "value": "1952",
+            "label": "1952"
+          },
+          {
+            "value": "1951",
+            "label": "1951"
+          },
+          {
+            "value": "1950",
+            "label": "1950"
+          },
+          {
+            "value": "1949",
+            "label": "1949"
+          },
+          {
+            "value": "1948",
+            "label": "1948"
+          },
+          {
+            "value": "1947",
+            "label": "1947"
+          },
+          {
+            "value": "1946",
+            "label": "1946"
+          },
+          {
+            "value": "1945",
+            "label": "1945"
+          },
+          {
+            "value": "1944",
+            "label": "1944"
+          },
+          {
+            "value": "1943",
+            "label": "1943"
+          },
+          {
+            "value": "1942",
+            "label": "1942"
+          },
+          {
+            "value": "1941",
+            "label": "1941"
+          },
+          {
+            "value": "1940",
+            "label": "1940"
+          },
+          {
+            "value": "1939",
+            "label": "1939"
+          },
+          {
+            "value": "1938",
+            "label": "1938"
+          },
+          {
+            "value": "1937",
+            "label": "1937"
+          },
+          {
+            "value": "1936",
+            "label": "1936"
+          },
+          {
+            "value": "1935",
+            "label": "1935"
+          },
+          {
+            "value": "1934",
+            "label": "1934"
+          },
+          {
+            "value": "1933",
+            "label": "1933"
+          },
+          {
+            "value": "1932",
+            "label": "1932"
+          },
+          {
+            "value": "1931",
+            "label": "1931"
+          },
+          {
+            "value": "1930",
+            "label": "1930"
+          },
+          {
+            "value": "1929",
+            "label": "1929"
+          },
+          {
+            "value": "1928",
+            "label": "1928"
+          },
+          {
+            "value": "1927",
+            "label": "1927"
+          },
+          {
+            "value": "1926",
+            "label": "1926"
+          },
+          {
+            "value": "1925",
+            "label": "1925"
+          },
+          {
+            "value": "1924",
+            "label": "1924"
+          },
+          {
+            "value": "1923",
+            "label": "1923"
+          },
+          {
+            "value": "1922",
+            "label": "1922"
+          },
+          {
+            "value": "1921",
+            "label": "1921"
+          },
+          {
+            "value": "1920",
+            "label": "1920"
+          },
+          {
+            "value": "1919",
+            "label": "1919"
+          },
+          {
+            "value": "1918",
+            "label": "1918"
+          },
+          {
+            "value": "1917",
+            "label": "1917"
+          },
+          {
+            "value": "1916",
+            "label": "1916"
+          },
+          {
+            "value": "1915",
+            "label": "1915"
+          },
+          {
+            "value": "1914",
+            "label": "1914"
+          },
+          {
+            "value": "1913",
+            "label": "1913"
+          },
+          {
+            "value": "1912",
+            "label": "1912"
+          },
+          {
+            "value": "1911",
+            "label": "1911"
+          },
+          {
+            "value": "1910",
+            "label": "1910"
+          },
+          {
+            "value": "1909",
+            "label": "1909"
+          },
+          {
+            "value": "1908",
+            "label": "1908"
+          },
+          {
+            "value": "1907",
+            "label": "1907"
+          },
+          {
+            "value": "1906",
+            "label": "1906"
+          },
+          {
+            "value": "1905",
+            "label": "1905"
+          },
+          {
+            "value": "1904",
+            "label": "1904"
+          },
+          {
+            "value": "1903",
+            "label": "1903"
+          },
+          {
+            "value": "1902",
+            "label": "1902"
+          },
+          {
+            "value": "1901",
+            "label": "1901"
+          },
+          {
+            "value": "1900",
+            "label": "1900"
+          }
+        ]
+      },
+      {
+        "name": "StartClaimAbout.Last4SSN",
+        "label": "Last 4 digits of SSN*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 4,
+        "pattern": "\\d{4}",
+        "placeholder": "eg: 1234",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[0].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[1].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[2].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[3].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[4].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[5].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[6].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[7].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[8].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[9].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[10].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[11].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[12].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[13].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[14].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[15].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[16].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[17].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[18].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAbout.policycontractnumber[19].PolicyNumber",
+        "label": "Policy/Contract Number",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "^[a-zA-Z0-9]*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Whitespaces and/or special characters are not allowed",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.selectedrelationship",
+        "label": "Your relationship to the deceased*",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "",
+            "label": "Select ..."
+          },
+          {
+            "value": "Allianz Rep/Agent",
+            "label": "Allianz Rep/Agent"
+          },
+          {
+            "value": "Child",
+            "label": "Child"
+          },
+          {
+            "value": "Custodial Company Plan Administrator",
+            "label": "Custodial Company Plan Administrator"
+          },
+          {
+            "value": "Executor of the Estate",
+            "label": "Executor of the Estate"
+          },
+          {
+            "value": "Family Member",
+            "label": "Family Member"
+          },
+          {
+            "value": "Financial Advisor",
+            "label": "Financial Advisor"
+          },
+          {
+            "value": "Friend",
+            "label": "Friend"
+          },
+          {
+            "value": "Grandchild",
+            "label": "Grandchild"
+          },
+          {
+            "value": "Other",
+            "label": "Other"
+          },
+          {
+            "value": "Pension Administrator",
+            "label": "Pension Administrator"
+          },
+          {
+            "value": "Policy Owner",
+            "label": "Policy Owner"
+          },
+          {
+            "value": "Rep of a Charitable Organization",
+            "label": "Rep of a Charitable Organization"
+          },
+          {
+            "value": "Sibling",
+            "label": "Sibling"
+          },
+          {
+            "value": "Significant Other",
+            "label": "Significant Other"
+          },
+          {
+            "value": "Spouse",
+            "label": "Spouse"
+          },
+          {
+            "value": "Trustee",
+            "label": "Trustee"
+          }
+        ]
+      },
+      {
+        "name": "StartClaimAboutYou.otherRelationship",
+        "label": "Please Specify (If Other is selected)",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 70,
+        "pattern": "^[A-Za-z\\-. ']+$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.yourfirstname",
+        "label": "First name*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 50,
+        "pattern": "^[A-Za-z\\-. '\\s]+$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.yourlastname",
+        "label": "Last name*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 50,
+        "pattern": "^[A-Za-z\\-. '\\s]+$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.emailaddress",
+        "label": "Email address*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 70,
+        "pattern": "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.phone",
+        "label": "Phone number*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.phoneext",
+        "label": "ext.",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.address",
+        "label": "Address 1*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 70,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.address2",
+        "label": "Address 2",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 70,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.address3",
+        "label": "Address 3",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 70,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.city",
+        "label": "City*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 70,
+        "pattern": "^[A-Za-z\\-. ']+$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.state",
+        "label": "State/Province",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.selectedcountry",
+        "label": "Country*",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "",
+            "label": "Select ..."
+          },
+          {
+            "value": "United States",
+            "label": "United States"
+          },
+          {
+            "value": "Canada",
+            "label": "Canada"
+          },
+          {
+            "value": "Afghanistan",
+            "label": "Afghanistan"
+          },
+          {
+            "value": "Albania",
+            "label": "Albania"
+          },
+          {
+            "value": "Algeria",
+            "label": "Algeria"
+          },
+          {
+            "value": "American Samoa",
+            "label": "American Samoa"
+          },
+          {
+            "value": "Andorra",
+            "label": "Andorra"
+          },
+          {
+            "value": "Angola",
+            "label": "Angola"
+          },
+          {
+            "value": "Anguilla",
+            "label": "Anguilla"
+          },
+          {
+            "value": "Antigua and Barbuda",
+            "label": "Antigua and Barbuda"
+          },
+          {
+            "value": "Argentina",
+            "label": "Argentina"
+          },
+          {
+            "value": "Armenia",
+            "label": "Armenia"
+          },
+          {
+            "value": "Aruba",
+            "label": "Aruba"
+          },
+          {
+            "value": "Australia",
+            "label": "Australia"
+          },
+          {
+            "value": "Austria",
+            "label": "Austria"
+          },
+          {
+            "value": "Azerbaijan",
+            "label": "Azerbaijan"
+          },
+          {
+            "value": "Bahamas, The",
+            "label": "Bahamas, The"
+          },
+          {
+            "value": "Bahrain",
+            "label": "Bahrain"
+          },
+          {
+            "value": "Bangladesh",
+            "label": "Bangladesh"
+          },
+          {
+            "value": "Barbados",
+            "label": "Barbados"
+          },
+          {
+            "value": "Belarus",
+            "label": "Belarus"
+          },
+          {
+            "value": "Belgium",
+            "label": "Belgium"
+          },
+          {
+            "value": "Belize",
+            "label": "Belize"
+          },
+          {
+            "value": "Benin",
+            "label": "Benin"
+          },
+          {
+            "value": "Bermuda",
+            "label": "Bermuda"
+          },
+          {
+            "value": "Bhutan",
+            "label": "Bhutan"
+          },
+          {
+            "value": "Bolivia",
+            "label": "Bolivia"
+          },
+          {
+            "value": "Bosnia and Herzegovina",
+            "label": "Bosnia and Herzegovina"
+          },
+          {
+            "value": "Botswana",
+            "label": "Botswana"
+          },
+          {
+            "value": "Bouvet Island",
+            "label": "Bouvet Island"
+          },
+          {
+            "value": "Brazil",
+            "label": "Brazil"
+          },
+          {
+            "value": "Brunei",
+            "label": "Brunei"
+          },
+          {
+            "value": "Bulgaria",
+            "label": "Bulgaria"
+          },
+          {
+            "value": "Burkina Faso",
+            "label": "Burkina Faso"
+          },
+          {
+            "value": "Burundi",
+            "label": "Burundi"
+          },
+          {
+            "value": "Cambodia",
+            "label": "Cambodia"
+          },
+          {
+            "value": "Cameroon",
+            "label": "Cameroon"
+          },
+          {
+            "value": "Cape Verde",
+            "label": "Cape Verde"
+          },
+          {
+            "value": "Cayman Islands",
+            "label": "Cayman Islands"
+          },
+          {
+            "value": "Central African Republic",
+            "label": "Central African Republic"
+          },
+          {
+            "value": "Chad",
+            "label": "Chad"
+          },
+          {
+            "value": "Chile",
+            "label": "Chile"
+          },
+          {
+            "value": "China",
+            "label": "China"
+          },
+          {
+            "value": "Christmas Island",
+            "label": "Christmas Island"
+          },
+          {
+            "value": "Cocos (Keeling) Islands",
+            "label": "Cocos (Keeling) Islands"
+          },
+          {
+            "value": "Colombia",
+            "label": "Colombia"
+          },
+          {
+            "value": "Comoros",
+            "label": "Comoros"
+          },
+          {
+            "value": "Congo, Democratic Republic of the (Zaire)",
+            "label": "Congo, Democratic Republic of the (Zaire)"
+          },
+          {
+            "value": "Congo, Republic of",
+            "label": "Congo, Republic of"
+          },
+          {
+            "value": "Cook Islands",
+            "label": "Cook Islands"
+          },
+          {
+            "value": "Costa Rica",
+            "label": "Costa Rica"
+          },
+          {
+            "value": "Croatia",
+            "label": "Croatia"
+          },
+          {
+            "value": "Cuba",
+            "label": "Cuba"
+          },
+          {
+            "value": "Cyprus",
+            "label": "Cyprus"
+          },
+          {
+            "value": "Czech Republic",
+            "label": "Czech Republic"
+          },
+          {
+            "value": "Denmark",
+            "label": "Denmark"
+          },
+          {
+            "value": "Djibouti",
+            "label": "Djibouti"
+          },
+          {
+            "value": "Dominica",
+            "label": "Dominica"
+          },
+          {
+            "value": "Dominican Republic",
+            "label": "Dominican Republic"
+          },
+          {
+            "value": "Ecuador",
+            "label": "Ecuador"
+          },
+          {
+            "value": "Egypt",
+            "label": "Egypt"
+          },
+          {
+            "value": "El Salvador",
+            "label": "El Salvador"
+          },
+          {
+            "value": "Equatorial Guinea",
+            "label": "Equatorial Guinea"
+          },
+          {
+            "value": "Eritrea",
+            "label": "Eritrea"
+          },
+          {
+            "value": "Estonia",
+            "label": "Estonia"
+          },
+          {
+            "value": "Ethiopia",
+            "label": "Ethiopia"
+          },
+          {
+            "value": "Falkland Islands",
+            "label": "Falkland Islands"
+          },
+          {
+            "value": "Faroe Islands",
+            "label": "Faroe Islands"
+          },
+          {
+            "value": "Fiji",
+            "label": "Fiji"
+          },
+          {
+            "value": "Finland",
+            "label": "Finland"
+          },
+          {
+            "value": "France",
+            "label": "France"
+          },
+          {
+            "value": "French Guiana",
+            "label": "French Guiana"
+          },
+          {
+            "value": "Gabon",
+            "label": "Gabon"
+          },
+          {
+            "value": "Gambia",
+            "label": "Gambia"
+          },
+          {
+            "value": "Georgia",
+            "label": "Georgia"
+          },
+          {
+            "value": "Germany",
+            "label": "Germany"
+          },
+          {
+            "value": "Ghana",
+            "label": "Ghana"
+          },
+          {
+            "value": "Gibraltar",
+            "label": "Gibraltar"
+          },
+          {
+            "value": "Greece",
+            "label": "Greece"
+          },
+          {
+            "value": "Greenland",
+            "label": "Greenland"
+          },
+          {
+            "value": "Grenada",
+            "label": "Grenada"
+          },
+          {
+            "value": "Guadeloupe (French)",
+            "label": "Guadeloupe (French)"
+          },
+          {
+            "value": "Guam (USA)",
+            "label": "Guam (USA)"
+          },
+          {
+            "value": "Guatemala",
+            "label": "Guatemala"
+          },
+          {
+            "value": "Guinea",
+            "label": "Guinea"
+          },
+          {
+            "value": "Guinea Bissau",
+            "label": "Guinea Bissau"
+          },
+          {
+            "value": "Guyana",
+            "label": "Guyana"
+          },
+          {
+            "value": "Haiti",
+            "label": "Haiti"
+          },
+          {
+            "value": "Holy See",
+            "label": "Holy See"
+          },
+          {
+            "value": "Honduras",
+            "label": "Honduras"
+          },
+          {
+            "value": "Hong Kong",
+            "label": "Hong Kong"
+          },
+          {
+            "value": "Hungary",
+            "label": "Hungary"
+          },
+          {
+            "value": "Iceland",
+            "label": "Iceland"
+          },
+          {
+            "value": "India",
+            "label": "India"
+          },
+          {
+            "value": "Indonesia",
+            "label": "Indonesia"
+          },
+          {
+            "value": "Iran",
+            "label": "Iran"
+          },
+          {
+            "value": "Iraq",
+            "label": "Iraq"
+          },
+          {
+            "value": "Ireland",
+            "label": "Ireland"
+          },
+          {
+            "value": "Israel",
+            "label": "Israel"
+          },
+          {
+            "value": "Italy",
+            "label": "Italy"
+          },
+          {
+            "value": "Ivory Coast (Cote D`Ivoire)",
+            "label": "Ivory Coast (Cote D`Ivoire)"
+          },
+          {
+            "value": "Jamaica",
+            "label": "Jamaica"
+          },
+          {
+            "value": "Japan",
+            "label": "Japan"
+          },
+          {
+            "value": "Jordan",
+            "label": "Jordan"
+          },
+          {
+            "value": "Kazakhstan",
+            "label": "Kazakhstan"
+          },
+          {
+            "value": "Kenya",
+            "label": "Kenya"
+          },
+          {
+            "value": "Kiribati",
+            "label": "Kiribati"
+          },
+          {
+            "value": "Kuwait",
+            "label": "Kuwait"
+          },
+          {
+            "value": "Kyrgyzstan",
+            "label": "Kyrgyzstan"
+          },
+          {
+            "value": "Laos",
+            "label": "Laos"
+          },
+          {
+            "value": "Latvia",
+            "label": "Latvia"
+          },
+          {
+            "value": "Lebanon",
+            "label": "Lebanon"
+          },
+          {
+            "value": "Lesotho",
+            "label": "Lesotho"
+          },
+          {
+            "value": "Liberia",
+            "label": "Liberia"
+          },
+          {
+            "value": "Libya",
+            "label": "Libya"
+          },
+          {
+            "value": "Liechtenstein",
+            "label": "Liechtenstein"
+          },
+          {
+            "value": "Lithuania",
+            "label": "Lithuania"
+          },
+          {
+            "value": "Luxembourg",
+            "label": "Luxembourg"
+          },
+          {
+            "value": "Macau",
+            "label": "Macau"
+          },
+          {
+            "value": "Macedonia",
+            "label": "Macedonia"
+          },
+          {
+            "value": "Madagascar",
+            "label": "Madagascar"
+          },
+          {
+            "value": "Malawi",
+            "label": "Malawi"
+          },
+          {
+            "value": "Malaysia",
+            "label": "Malaysia"
+          },
+          {
+            "value": "Maldives",
+            "label": "Maldives"
+          },
+          {
+            "value": "Mali",
+            "label": "Mali"
+          },
+          {
+            "value": "Malta",
+            "label": "Malta"
+          },
+          {
+            "value": "Marshall Islands",
+            "label": "Marshall Islands"
+          },
+          {
+            "value": "Martinique (French)",
+            "label": "Martinique (French)"
+          },
+          {
+            "value": "Mauritania",
+            "label": "Mauritania"
+          },
+          {
+            "value": "Mauritius",
+            "label": "Mauritius"
+          },
+          {
+            "value": "Mayotte",
+            "label": "Mayotte"
+          },
+          {
+            "value": "Mexico",
+            "label": "Mexico"
+          },
+          {
+            "value": "Micronesia",
+            "label": "Micronesia"
+          },
+          {
+            "value": "Moldova",
+            "label": "Moldova"
+          },
+          {
+            "value": "Monaco",
+            "label": "Monaco"
+          },
+          {
+            "value": "Mongolia",
+            "label": "Mongolia"
+          },
+          {
+            "value": "Montenegro",
+            "label": "Montenegro"
+          },
+          {
+            "value": "Montserrat",
+            "label": "Montserrat"
+          },
+          {
+            "value": "Morocco",
+            "label": "Morocco"
+          },
+          {
+            "value": "Mozambique",
+            "label": "Mozambique"
+          },
+          {
+            "value": "Myanmar",
+            "label": "Myanmar"
+          },
+          {
+            "value": "Namibia",
+            "label": "Namibia"
+          },
+          {
+            "value": "Nauru",
+            "label": "Nauru"
+          },
+          {
+            "value": "Nepal",
+            "label": "Nepal"
+          },
+          {
+            "value": "Netherlands",
+            "label": "Netherlands"
+          },
+          {
+            "value": "Netherlands Antilles",
+            "label": "Netherlands Antilles"
+          },
+          {
+            "value": "New Caledonia (French)",
+            "label": "New Caledonia (French)"
+          },
+          {
+            "value": "New Zealand",
+            "label": "New Zealand"
+          },
+          {
+            "value": "Nicaragua",
+            "label": "Nicaragua"
+          },
+          {
+            "value": "Niger",
+            "label": "Niger"
+          },
+          {
+            "value": "Nigeria",
+            "label": "Nigeria"
+          },
+          {
+            "value": "Niue",
+            "label": "Niue"
+          },
+          {
+            "value": "Norfolk Island",
+            "label": "Norfolk Island"
+          },
+          {
+            "value": "North Korea",
+            "label": "North Korea"
+          },
+          {
+            "value": "Northern Mariana Islands",
+            "label": "Northern Mariana Islands"
+          },
+          {
+            "value": "Norway",
+            "label": "Norway"
+          },
+          {
+            "value": "Oman",
+            "label": "Oman"
+          },
+          {
+            "value": "Pakistan",
+            "label": "Pakistan"
+          },
+          {
+            "value": "Palau",
+            "label": "Palau"
+          },
+          {
+            "value": "Panama",
+            "label": "Panama"
+          },
+          {
+            "value": "Papua New Guinea",
+            "label": "Papua New Guinea"
+          },
+          {
+            "value": "Paraguay",
+            "label": "Paraguay"
+          },
+          {
+            "value": "Peru",
+            "label": "Peru"
+          },
+          {
+            "value": "Philippines",
+            "label": "Philippines"
+          },
+          {
+            "value": "Pitcairn Island",
+            "label": "Pitcairn Island"
+          },
+          {
+            "value": "Poland",
+            "label": "Poland"
+          },
+          {
+            "value": "Polynesia (French)",
+            "label": "Polynesia (French)"
+          },
+          {
+            "value": "Portugal",
+            "label": "Portugal"
+          },
+          {
+            "value": "Puerto Rico",
+            "label": "Puerto Rico"
+          },
+          {
+            "value": "Qatar",
+            "label": "Qatar"
+          },
+          {
+            "value": "Reunion",
+            "label": "Reunion"
+          },
+          {
+            "value": "Romania",
+            "label": "Romania"
+          },
+          {
+            "value": "Russia",
+            "label": "Russia"
+          },
+          {
+            "value": "Rwanda",
+            "label": "Rwanda"
+          },
+          {
+            "value": "Saint Helena",
+            "label": "Saint Helena"
+          },
+          {
+            "value": "Saint Kitts and Nevis",
+            "label": "Saint Kitts and Nevis"
+          },
+          {
+            "value": "Saint Lucia",
+            "label": "Saint Lucia"
+          },
+          {
+            "value": "Saint Pierre and Miquelon",
+            "label": "Saint Pierre and Miquelon"
+          },
+          {
+            "value": "Saint Vincent and Grenadines",
+            "label": "Saint Vincent and Grenadines"
+          },
+          {
+            "value": "Samoa",
+            "label": "Samoa"
+          },
+          {
+            "value": "San Marino",
+            "label": "San Marino"
+          },
+          {
+            "value": "Sao Tome and Principe",
+            "label": "Sao Tome and Principe"
+          },
+          {
+            "value": "Saudi Arabia",
+            "label": "Saudi Arabia"
+          },
+          {
+            "value": "Senegal",
+            "label": "Senegal"
+          },
+          {
+            "value": "Serbia, Republic of",
+            "label": "Serbia, Republic of"
+          },
+          {
+            "value": "Seychelles",
+            "label": "Seychelles"
+          },
+          {
+            "value": "Sierra Leone",
+            "label": "Sierra Leone"
+          },
+          {
+            "value": "Singapore",
+            "label": "Singapore"
+          },
+          {
+            "value": "Slovakia",
+            "label": "Slovakia"
+          },
+          {
+            "value": "Slovenia",
+            "label": "Slovenia"
+          },
+          {
+            "value": "Solomon Islands",
+            "label": "Solomon Islands"
+          },
+          {
+            "value": "Somalia",
+            "label": "Somalia"
+          },
+          {
+            "value": "South Africa",
+            "label": "South Africa"
+          },
+          {
+            "value": "South Georgia and South Sandwich Islands",
+            "label": "South Georgia and South Sandwich Islands"
+          },
+          {
+            "value": "South Korea",
+            "label": "South Korea"
+          },
+          {
+            "value": "South Sudan",
+            "label": "South Sudan"
+          },
+          {
+            "value": "Spain",
+            "label": "Spain"
+          },
+          {
+            "value": "Sri Lanka",
+            "label": "Sri Lanka"
+          },
+          {
+            "value": "Sudan",
+            "label": "Sudan"
+          },
+          {
+            "value": "Suriname",
+            "label": "Suriname"
+          },
+          {
+            "value": "Svalbard and Jan Mayen Islands",
+            "label": "Svalbard and Jan Mayen Islands"
+          },
+          {
+            "value": "Swaziland",
+            "label": "Swaziland"
+          },
+          {
+            "value": "Sweden",
+            "label": "Sweden"
+          },
+          {
+            "value": "Switzerland",
+            "label": "Switzerland"
+          },
+          {
+            "value": "Syria",
+            "label": "Syria"
+          },
+          {
+            "value": "Taiwan",
+            "label": "Taiwan"
+          },
+          {
+            "value": "Tajikistan",
+            "label": "Tajikistan"
+          },
+          {
+            "value": "Tanzania",
+            "label": "Tanzania"
+          },
+          {
+            "value": "Thailand",
+            "label": "Thailand"
+          },
+          {
+            "value": "Timor-Leste (East Timor)",
+            "label": "Timor-Leste (East Timor)"
+          },
+          {
+            "value": "Togo",
+            "label": "Togo"
+          },
+          {
+            "value": "Tokelau",
+            "label": "Tokelau"
+          },
+          {
+            "value": "Tonga",
+            "label": "Tonga"
+          },
+          {
+            "value": "Trinidad and Tobago",
+            "label": "Trinidad and Tobago"
+          },
+          {
+            "value": "Tunisia",
+            "label": "Tunisia"
+          },
+          {
+            "value": "Turkey",
+            "label": "Turkey"
+          },
+          {
+            "value": "Turkmenistan",
+            "label": "Turkmenistan"
+          },
+          {
+            "value": "Turks and Caicos Islands",
+            "label": "Turks and Caicos Islands"
+          },
+          {
+            "value": "Tuvalu",
+            "label": "Tuvalu"
+          },
+          {
+            "value": "Uganda",
+            "label": "Uganda"
+          },
+          {
+            "value": "Ukraine",
+            "label": "Ukraine"
+          },
+          {
+            "value": "United Arab Emirates",
+            "label": "United Arab Emirates"
+          },
+          {
+            "value": "United Kingdom",
+            "label": "United Kingdom"
+          },
+          {
+            "value": "Uruguay",
+            "label": "Uruguay"
+          },
+          {
+            "value": "Uzbekistan",
+            "label": "Uzbekistan"
+          },
+          {
+            "value": "Vanuatu",
+            "label": "Vanuatu"
+          },
+          {
+            "value": "Venezuela",
+            "label": "Venezuela"
+          },
+          {
+            "value": "Vietnam",
+            "label": "Vietnam"
+          },
+          {
+            "value": "Virgin Islands",
+            "label": "Virgin Islands"
+          },
+          {
+            "value": "Wallis and Futuna Islands",
+            "label": "Wallis and Futuna Islands"
+          },
+          {
+            "value": "Yemen",
+            "label": "Yemen"
+          },
+          {
+            "value": "Zambia",
+            "label": "Zambia"
+          },
+          {
+            "value": "Zimbabwe",
+            "label": "Zimbabwe"
+          }
+        ]
+      },
+      {
+        "name": "StartClaimAboutYou.zip",
+        "label": "Zip/Postal Code",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "StartClaimAboutYou.Comments",
+        "label": "Comments",
+        "inputType": "textarea",
+        "required": false,
+        "maxLength": 150,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      }
+    ]
+  },
+  "new-york-contact": {
+    "sourceUrl": "https://www.allianzlife.com/new-york/contact-us",
+    "fields": [
+      {
+        "name": "ContactUsReason.SelectedReason",
+        "label": "Reason for contacting us*",
+        "inputType": "radio",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "Please specify a reason",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "QuestionContractPolicy",
+            "label": "I have a question about a policy or contract ( login recommended)"
+          },
+          {
+            "value": "SellProducts",
+            "label": "I would like to become appointed to sell Allianz products"
+          },
+          {
+            "value": "PurchaseProducts",
+            "label": "I would like to purchase Allianz products"
+          },
+          {
+            "value": "Other",
+            "label": "Other"
+          }
+        ],
+        "value": "QuestionContractPolicy"
+      },
+      {
+        "name": "SelectFirm.SelectedFirm",
+        "label": "Select your firm*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "Required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "_ProductSelector.SelectedProducts",
+        "label": "Which product(s) do you want to learn more about?*",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "Required",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "7e8c8773-e6b9-45f7-88ae-85414d9af05e|Variable",
+            "label": "Index Advantage+ New York Annuity"
+          }
+        ]
+      },
+      {
+        "name": "ProductCategory.SelectedCategories",
+        "label": "Select the product category about which you are inquiring*",
+        "inputType": "select",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "At least one product category needs to be selected",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "value": "Fixed",
+            "label": "Fixed annuities or Fixed index annuities"
+          },
+          {
+            "value": "Variable",
+            "label": "Variable annuities or Index Variable annuities"
+          },
+          {
+            "value": "Life",
+            "label": "Life Insurance"
+          }
+        ]
+      },
+      {
+        "name": "ContactInfo.Name",
+        "label": "Name*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 50,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "ContactInfo.Email",
+        "label": "Email address*",
+        "inputType": "email",
+        "required": true,
+        "maxLength": 255,
+        "pattern": "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "ContactInfo.Phone",
+        "label": "Phone number*",
+        "inputType": "tel",
+        "required": true,
+        "maxLength": 20,
+        "pattern": "^\\(?\\s*?\\d{3}\\s*?\\)?\\s*?-?\\d{3}\\s*?-?\\d{4}\\s*?$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "xxxxxxxxxx, xxx-xxx-xxxx, (xxx) xxx-xxxx",
+        "options": []
+      },
+      {
+        "name": "ContactInfo.ZipCode",
+        "label": "Postal/Zip code*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 70,
+        "pattern": "^\\d{5}(?:[-\\s]\\d{4})?$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "xxxxx, xxxxx-xxxx",
+        "options": []
+      },
+      {
+        "name": "ContactInfo.Comment",
+        "label": "Comment*",
+        "inputType": "textarea",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      }
+    ]
+  }
+}
