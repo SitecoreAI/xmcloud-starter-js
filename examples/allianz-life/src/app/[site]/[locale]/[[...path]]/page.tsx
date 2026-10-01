@@ -1,6 +1,4 @@
-import { isDesignLibraryPreviewData } from "@sitecore-content-sdk/nextjs/editing";
 import { notFound } from "next/navigation";
-import { draftMode, headers as nextHeaders } from "next/headers";
 import { SiteInfo } from "@sitecore-content-sdk/nextjs";
 import sites from ".sitecore/sites.json";
 import { routing } from "src/i18n/routing";
@@ -12,7 +10,7 @@ import Providers from "src/Providers";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { getBaseUrl } from "lib/utils";
-import { getFixturePage, isConnected } from 'lib/allianz-page';
+import { loadAllianzPage } from 'lib/allianz-page-loader';
 import { allianzMetadata } from 'lib/allianz-metadata';
 
 type PageProps = {
@@ -26,26 +24,11 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
-  const draft = await draftMode();
 
   // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary
   setRequestLocale(`${site}_${locale}`);
 
-  // Fetch the page data from Sitecore
-  let page;
-  if (draft.isEnabled) {
-    const headers = await nextHeaders();
-    const previewData = client.getPreviewData(headers);
-    if (isDesignLibraryPreviewData(previewData)) {
-      page = await client.getDesignLibraryData(previewData);
-    } else {
-      page = await client.getPreview(previewData);
-    }
-  } else if (!isConnected()) {
-    page = getFixturePage(path ?? [], site, locale);
-  } else {
-    page = await client.getPage(path ?? [], { site, locale });
-  }
+  const { page, needsComponentData } = await loadAllianzPage(site, locale, ...(path ?? []));
 
   // If the page is not found, return a 404
   if (!page) {
@@ -53,7 +36,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   // Fetch the component data from Sitecore (Likely will be deprecated)
-  const componentProps = isConnected() || draft.isEnabled
+  const componentProps = needsComponentData
     ? await client.getComponentData(page.layout, {}, components)
     : {};
 
@@ -96,8 +79,7 @@ export const generateMetadata = async ({ params }: PageProps) => {
   const pathSegment = path?.length ? `/${path.join("/")}` : "";
   const canonicalUrl = baseUrl ? `${baseUrl}${pathSegment}` : undefined;
 
-  // The same call as for rendering the page. Should be cached by default react behavior
-  const page = isConnected() ? await client.getPage(path ?? [], { site, locale }) : getFixturePage(path ?? [],site,locale);
+  const { page } = await loadAllianzPage(site, locale, ...(path ?? []));
   const fields = page?.layout.sitecore.route?.fields as RouteFields;
   const metadata = allianzMetadata(fields);
 
