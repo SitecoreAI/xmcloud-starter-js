@@ -6,6 +6,7 @@ These fixtures describe fictional items only. Local file tests use temporary
 import copy
 from datetime import datetime, timedelta, timezone
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
 import stat
@@ -348,6 +349,519 @@ class EditorialTests(unittest.TestCase):
         link.symlink_to(self.root, target_is_directory=True)
         with self.assertRaisesRegex(ValueError, "symbolic"):
             editorial.private_output(link / "batch", repo=self.root)
+
+
+class NativeValueCodecTests(unittest.TestCase):
+    """Physical wire regressions only; these fixtures do not prove native apply."""
+    def setUp(self):
+        self.schema = schema_fixture()
+
+    def item(self, value):
+        storage = editorial.empty_storage()
+        storage["enVersions"]["1"][fid("author-field")] = value
+        return {"ID": fid("codec-item"), "Parent": fid("home"), "Template": fid("home-template"), "Path": native.SITE_ROOT + "/Home/Offline Codec", "storage": storage}
+
+    def test_complex_values_use_physical_literal_blocks_with_explicit_wire_lf(self):
+        values = [
+            'A "quoted" heading', '<p class="copy">Public text &amp; detail</p>',
+            '<image mediaid="{00000000-0000-0000-0000-000000000000}" />',
+            '<link linktype="anchor" anchor="section" />', '{"heading":"Public"}',
+            "first\nsecond", "first\nsecond\n", r"literal\n is text", r"folder\file",
+            "left\tright", '\nValue: "This is literal content"\n',
+        ]
+        for logical in values:
+            with self.subTest(logical=logical):
+                contract = editorial.value_codec.value_contract(logical)
+                expected = logical if logical.endswith("\n") else logical + "\n"
+                self.assertEqual(expected, contract["expectedSerializedWireValue"])
+                self.assertEqual("observed-literal-block", contract["style"])
+                self.assertEqual(None if logical == expected else "exactly-one-appended-LF", contract["allowedNativeClipDifference"])
+                self.assertFalse(contract["nativeWriteVerified"])
+                raw = editorial.serialize_item(self.item(logical), self.schema)
+                self.assertIn("      Value: |\n", raw)
+                self.assertNotIn("Value: " + json.dumps(logical, ensure_ascii=False), raw)
+                parsed = native.normalize_item(native.parse_scs(raw))
+                self.assertEqual(expected, parsed["fields"][fid("author-field")])
+                self.assertEqual(hashlib.sha256(logical.encode()).hexdigest(), contract["sourceLogicalSha256"])
+                self.assertEqual(hashlib.sha256(expected.encode()).hexdigest(), contract["expectedWireSha256"])
+
+    def test_safe_quotes_preserve_nonempty_unicode_spaces_and_string_types(self):
+        for logical in ("false", "1", "20260930", "# headline", " café 😀 中文 ", " leading space "):
+            with self.subTest(logical=logical):
+                contract = editorial.value_codec.value_contract(logical)
+                self.assertEqual(logical, contract["expectedSerializedWireValue"])
+                self.assertEqual("simple-double-quoted-no-escapes", contract["style"])
+                raw = editorial.serialize_item(self.item(logical), self.schema)
+                self.assertIn("Value: " + json.dumps(logical, ensure_ascii=False), raw)
+                self.assertEqual(logical, native.normalize_item(native.parse_scs(raw))["fields"][fid("author-field")])
+
+    def test_empty_values_are_omitted_in_all_create_storage_scopes_but_versions_remain(self):
+        item = self.item("")
+        item["storage"]["shared"][fid("shared-field")] = ""
+        item["storage"]["enUnversioned"][fid("unversioned-field")] = ""
+        item["storage"]["enVersions"]["2"] = {fid("title-field"): ""}
+        item["storage"]["otherLanguages"] = {"fr": {"unversioned": {fid("unversioned-field"): ""}, "versions": {"3": {fid("author-field"): ""}}}}
+        original = copy.deepcopy(item)
+        raw = editorial.serialize_item(item, self.schema)
+        self.assertNotIn('Value: ""', raw)
+        self.assertNotIn("Fields:", raw)
+        self.assertIn("  - Version: 1\n", raw)
+        parsed = native.normalize_item(native.parse_scs(raw))
+        self.assertEqual(editorial.wire_storage(item["storage"], omit_empty=True), editorial.preserved_storage(parsed))
+        self.assertEqual(original, item)
+        with self.assertRaisesRegex(ValueError, "must be omitted"):
+            editorial.value_codec.value_lines("", 6)
+        with self.assertRaisesRegex(ValueError, "Unsafe empty quoted"):
+            editorial.value_codec.validate_tokens('  Value: ""\n')
+        editorial.value_codec.validate_tokens("  Value:\n")
+
+    def test_unproved_control_lines_whitespace_and_trailing_lfs_fail_closed(self):
+        for logical in ("line\r\n", "line\x00", "line\b", "line\f", "line\x1b", "line\u0085", "line\u2028", "line\u2029", "line\n\n", "line\n  \nlast", "line\n\t\nlast", "\ud800"):
+            with self.subTest(logical=repr(logical)):
+                with self.assertRaises(ValueError):
+                    editorial.serialize_item(self.item(logical), self.schema)
+
+    def test_native_tokens_reject_json_escapes_unproved_chomping_and_folding(self):
+        for token in ('"escaped\\n"', '"escaped\\"quote"', '"escaped\\\\path"', "|-", "|+", ">", ">-", ">+"):
+            with self.subTest(token=token):
+                with self.assertRaises(ValueError):
+                    editorial.value_codec.validate_tokens("  Value: " + token + "\n")
+        editorial.value_codec.validate_tokens('  Value: |\n    Value: "literal\\n"\n- ID: "next"\n  Value: "safe"\n')
+
+    def test_escaped_headers_fail_closed(self):
+        item = self.item("Safe")
+        item["Path"] += ' "Quoted"'
+        with self.assertRaisesRegex(ValueError, "identity/header"):
+            editorial.serialize_item(item, self.schema)
+
+    def test_all_storage_locations_and_blob_metadata_have_explicit_wire_values(self):
+        item = self.item('<p class="copy">English</p>')
+        item["storage"]["shared"][fid("shared-field")] = 'Shared "quote"'
+        item["storage"]["enUnversioned"][fid("unversioned-field")] = "First\nSecond"
+        item["storage"]["enVersions"]["2"] = {fid("author-field"): {"value": r"literal\bytes", "blobId": fid("blob")}}
+        item["storage"]["otherLanguages"] = {"fr": {"unversioned": {fid("unversioned-field"): '<p lang="fr">Bonjour</p>'}, "versions": {"3": {fid("author-field"): "Français\nSuite\n"}}}}
+        original = copy.deepcopy(item)
+        parsed = native.normalize_item(native.parse_scs(editorial.serialize_item(item, self.schema)))
+        self.assertEqual(editorial.wire_storage(item["storage"]), editorial.preserved_storage(parsed))
+        self.assertEqual(fid("blob"), parsed["storage"]["enVersions"]["2"][fid("author-field")]["blobId"])
+        self.assertEqual(original, item)
+
+
+class NativeWireGateTests(unittest.TestCase):
+    setUp = EditorialTests.setUp
+    tearDown = EditorialTests.tearDown
+    plan = EditorialTests.plan
+    post_for = EditorialTests.post_for
+    receipt_for = EditorialTests.receipt_for
+    write_batch = EditorialTests.write_batch
+    verify_batch = EditorialTests.verify_batch
+
+    def complex_plan(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["items"][-1]["fields"] = {fid("author-field"): '<p class="copy">Public "quoted" text</p>\nSecond line'}
+        return manifest, self.plan(manifest=manifest)
+
+    def test_plan_discloses_source_and_wire_differences_without_claiming_native_proof(self):
+        manifest, plan = self.complex_plan()
+        operation = next(row for row in plan["operations"] if row["fields"])
+        logical = manifest["items"][-1]["fields"][fid("author-field")]
+        self.assertEqual(logical, operation["fields"][fid("author-field")])
+        contract = operation["nativeValueContracts"][fid("author-field")]
+        self.assertEqual(logical, contract["sourceLogicalValue"])
+        self.assertEqual(logical + "\n", contract["expectedSerializedWireValue"])
+        self.assertEqual(logical + "\n", operation["native"]["storage"]["enVersions"]["1"][fid("author-field")])
+        self.assertEqual(1, len(plan["nativeValueWireDifferences"]))
+        self.assertFalse(contract["nativeWriteVerified"])
+        self.assertFalse(plan["nativeExecutionEnabled"])
+        self.assertEqual(0, plan["remoteWrites"])
+        output, written = self.write_batch(plan)
+        verified, _ = self.verify_batch(output)
+        self.assertEqual(written, verified)
+
+    def test_exact_wire_readback_owns_wire_and_logical_values_and_repeat_is_idempotent(self):
+        manifest, plan = self.complex_plan()
+        post = self.post_for(plan)
+        ledger = editorial.finalize_ledger(plan, post, self.receipt_for(plan))
+        operation = next(row for row in plan["operations"] if row["fields"])
+        owned = ledger["items"][operation["id"]]
+        logical = operation["fields"][fid("author-field")]
+        self.assertEqual(logical, owned["sourceLogicalFields"][fid("author-field")])
+        self.assertEqual(logical + "\n", owned["fields"][fid("author-field")])
+        repeated = self.plan(manifest=manifest, snapshot=post, ledger=ledger)
+        self.assertEqual([], repeated["operations"])
+        self.assertEqual([], repeated["conflicts"])
+        self.assertEqual(1, len(repeated["nativeValueWireDifferences"]))
+        self.assertEqual(logical, repeated["sourceValueContracts"][0]["fields"][fid("author-field")]["sourceLogicalValue"])
+
+    def test_missing_extra_or_literal_escaped_newlines_in_readback_are_rejected(self):
+        _, plan = self.complex_plan()
+        post = self.post_for(plan)
+        operation = next(row for row in plan["operations"] if row["fields"])
+        logical = operation["fields"][fid("author-field")]
+        escaped = logical.replace('"', '\\"').replace("\n", "\\n") + "\n"
+        for wrong in (logical, logical + "\n\n", escaped):
+            with self.subTest(value=repr(wrong)):
+                changed = change_item(post, operation["id"], fields={fid("author-field"): wrong, editorial.REVISION: fid("result-revision")})
+                with self.assertRaisesRegex(ValueError, "did not round-trip"):
+                    editorial.finalize_ledger(plan, changed, self.receipt_for(plan))
+
+    def test_python_roundtrip_cannot_validate_old_json_escaped_payload_even_with_updated_hashes(self):
+        _, plan = self.complex_plan()
+        output, written = self.write_batch(plan)
+        operation = next(row for row in written["operations"] if row["fields"])
+        filename = next(name for name in written["fileSha256"] if operation["path"].rsplit("/", 1)[-1] in name)
+        # The old synthetic writer JSON-escapes Value, yet our Python reader
+        # produces the expected wire storage. Native CLI does not do that.
+        raw = fixtures.scs(native.parse_scs((output / filename).read_text()))
+        self.assertEqual(operation["native"]["storage"], editorial.preserved_storage(native.normalize_item(native.parse_scs(raw))))
+        (output / filename).write_text(raw)
+        written["fileSha256"][filename] = hashlib.sha256(raw.encode()).hexdigest()
+        written["planSha256"] = editorial.checksum({k: v for k, v in written.items() if k != "planSha256"})
+        (output / "plan.json").write_text(json.dumps(written))
+        with self.assertRaisesRegex(ValueError, "JSON-escaped native Value"):
+            self.verify_batch(output)
+
+    def test_inconsistent_logical_wire_contract_is_rejected_even_with_review_hash_recomputed(self):
+        _, plan = self.complex_plan()
+        output, written = self.write_batch(plan)
+        operation = next(row for row in written["operations"] if row["fields"])
+        operation["nativeValueContracts"][fid("author-field")]["allowedNativeClipDifference"] = None
+        written["planSha256"] = editorial.checksum({k: v for k, v in written.items() if k != "planSha256"})
+        (output / "plan.json").write_text(json.dumps(written))
+        with self.assertRaisesRegex(ValueError, "wire contract changed"):
+            self.verify_batch(output)
+
+    def test_legacy_plan_requires_regeneration_before_files_are_written(self):
+        plan = self.plan()
+        del plan["nativeValueEncoding"]
+        with self.assertRaisesRegex(ValueError, "regenerated"):
+            self.write_batch(plan)
+        self.assertFalse((self.root / "batch").exists())
+
+    def test_unowned_complex_value_without_final_lf_cannot_be_silently_changed(self):
+        snapshot = change_item(self.snapshot, fid("home"), fields={fid("title-field"): "Old import", fid("author-field"): '<p class="authored">Keep exact text</p>', editorial.REVISION: fid("before-revision")})
+        manifest = copy.deepcopy(self.manifest)
+        manifest["items"][0]["fields"] = {fid("title-field"): "New import"}
+        ledger = {"target": manifest["target"], "items": {fid("home"): {"fields": {fid("title-field"): "Old import"}}}}
+        with self.assertRaisesRegex(ValueError, "JSON-escaped native Value"):
+            self.plan(manifest, snapshot, ledger)
+
+    def test_update_preserves_exact_complex_unowned_values_in_other_versions_and_languages(self):
+        self.schema = editorial.Schema([*self.schema.items.values(), field_item(fid("audit-field"), "__Updated by", "Single-Line Text")])
+        snapshot = change_item(self.snapshot, fid("home"), fields={fid("title-field"): "Old import", fid("author-field"): '<p class="authored">Keep exact text</p>\n', editorial.REVISION: fid("before-revision")}, other=[{"Language": "fr", "Fields": [{"ID": fid("unversioned-field"), "Value": 'Bonjour "ami"\n'}], "Versions": [{"Version": 3, "Fields": [{"ID": fid("author-field"), "Value": r"French\literal" + "\n"}]}]}])
+        manifest = copy.deepcopy(self.manifest)
+        manifest["items"][0]["fields"] = {fid("title-field"): 'New "import"'}
+        # Retain a synthetic observed literal-block source document, rather
+        # than using the historical JSON-escaping fixture writer as format proof.
+        index = next(i for i, row in enumerate(snapshot["items"]) if row["id"] == fid("home"))
+        home = snapshot["items"][index]
+        stored = editorial.preserved_storage(home)
+        stored["enVersions"]["1"][fid("audit-field")] = r"sitecore\fictional-author" + "\n"
+        stored["enVersions"]["2"] = {fid("title-field"): "Old import", fid("author-field"): r"Retained\literal" + "\n", editorial.REVISION: fid("version-two-revision")}
+        home_raw = editorial.serialize_item({"ID": home["id"], "Parent": home["parentId"], "Template": home["templateId"], "Path": home["path"], "storage": stored}, self.schema)
+        snapshot["items"][index] = native.normalize_item(native.parse_scs(home_raw), home_raw, 1)
+        ledger = {"target": manifest["target"], "items": {fid("home"): {"fields": {fid("title-field"): "Old import"}}}}
+        plan = self.plan(manifest, snapshot, ledger)
+        operation = next(row for row in plan["operations"] if row["id"] == fid("home"))
+        raw = editorial.serialize_item(operation["native"], self.schema)
+        self.assertEqual(operation["native"]["storage"], editorial.preserved_storage(native.normalize_item(native.parse_scs(raw))))
+        original_spans = editorial.original_field_spans(home_raw)
+        actual_spans = editorial.original_field_spans(raw)
+        for location, fields in original_spans.items():
+            for field_id, span in fields.items():
+                if location == "enVersions:1" and field_id == fid("title-field"):
+                    continue
+                self.assertEqual(span, actual_spans[location][field_id])
+        tampered = copy.deepcopy(operation)
+        tampered["native"]["storage"]["otherLanguages"]["fr"]["unversioned"][fid("unversioned-field")] = 'Changed "authored"\n'
+        with self.assertRaisesRegex(ValueError, "unowned original value"):
+            editorial.verified_operation_wire_fields(tampered)
+        tampered = copy.deepcopy(operation)
+        tampered["native"]["managedFieldLocations"]["otherLanguages:fr:unversioned"] = [fid("unversioned-field")]
+        with self.assertRaisesRegex(ValueError, "original raw spans must be retained"):
+            editorial.verified_operation_wire_fields(tampered)
+        # Build a synthetic replacement readback, preserving the existing item
+        # instead of appending a duplicate native identity.
+        post = copy.deepcopy(snapshot)
+        result_row = copy.deepcopy(operation["native"])
+        result_row["storage"]["enVersions"]["1"][editorial.REVISION] = fid("after-revision")
+        result_row.pop("preservedNativeSource")
+        result_row.pop("managedFieldLocations")
+        result_raw = editorial.serialize_item(result_row, self.schema)
+        post["items"][index] = native.normalize_item(native.parse_scs(result_raw), result_raw, 1)
+        for created in plan["operations"]:
+            if created["action"] == "create":
+                row = copy.deepcopy(created["native"])
+                row["storage"]["enVersions"]["1"][editorial.REVISION] = fid(created["id"] + ":revision")
+                created_raw = editorial.serialize_item(row, self.schema)
+                post["items"].append(native.normalize_item(native.parse_scs(created_raw), created_raw))
+        post["capturedAt"] = editorial.now()
+        editorial.finalize_ledger(plan, post, self.receipt_for(plan), ledger)
+        altered = change_item(post, fid("home"), other=[{"Language": "fr", "Fields": [{"ID": fid("unversioned-field"), "Value": 'Bonjour "ami"\n\n'}], "Versions": [{"Version": 3, "Fields": [{"ID": fid("author-field"), "Value": r"French\literal" + "\n"}]}]}])
+        altered["items"][index] = native.normalize_item(native.parse_scs(altered["items"][index]["rawScs"]), altered["items"][index]["rawScs"], 1)
+        with self.assertRaisesRegex(ValueError, "unowned language/version"):
+            editorial.finalize_ledger(plan, altered, self.receipt_for(plan), ledger)
+
+    def test_existing_json_escaped_complex_native_fields_fail_closed_before_update_plan(self):
+        snapshot = change_item(self.snapshot, fid("home"), fields={fid("title-field"): "Old import", fid("author-field"): r"native\audit" + "\n", editorial.REVISION: fid("before-revision")})
+        manifest = copy.deepcopy(self.manifest)
+        manifest["items"][0]["fields"] = {fid("title-field"): "New import"}
+        ledger = {"target": manifest["target"], "items": {fid("home"): {"fields": {fid("title-field"): "Old import"}}}}
+        with self.assertRaisesRegex(ValueError, "JSON-escaped native Value"):
+            self.plan(manifest, snapshot, ledger)
+
+
+class EmptyDefaultsAndCanonicalTests(unittest.TestCase):
+    """Fictional raw envelopes test gates; no fixture is genuine native evidence."""
+    tearDown = EditorialTests.tearDown
+    post_for = EditorialTests.post_for
+    receipt_for = EditorialTests.receipt_for
+    write_batch = EditorialTests.write_batch
+    verify_batch = EditorialTests.verify_batch
+
+    def setUp(self):
+        EditorialTests.setUp(self)
+        self.owner_id = fid("home-template")
+        rows = copy.deepcopy(list(self.schema.items.values()))
+        owner = next(row for row in rows if row["ID"] == self.owner_id)
+        owner["SharedFields"].append({"ID": editorial.STANDARD_VALUES, "Value": fid("direct-standard-values")})
+        section = {"ID": fid("direct-section"), "Parent": self.owner_id, "Template": editorial.SECTION, "Path": owner["Path"] + "/Direct Content"}
+        rows.append(section)
+        direct = []
+        for name, kind, shared, unversioned in (("direct-rich", "Rich Text", False, False), ("empty-versioned", "Single-Line Text", False, False), ("empty-shared", "Single-Line Text", True, False), ("empty-unversioned", "Single-Line Text", False, True)):
+            field = field_item(fid(name), name, kind, shared=shared, unversioned=unversioned)
+            field.update(Parent=section["ID"], Path=section["Path"] + "/" + name)
+            rows.append(field)
+            direct.append(field)
+        self.schema = editorial.Schema(rows)
+        # Native flag absence is distinct from attempting a quoted empty Value.
+        schema_documents = [owner, section, *direct]
+        for field in direct:
+            field["SharedFields"] = [row for row in field["SharedFields"] if row["Value"] != ""]
+        standard = fixtures.document(fid("direct-standard-values"), owner["Path"] + "/__Standard Values", self.owner_id, self.owner_id)
+        self.default_document = standard
+        self.default_proof = self.envelope([standard])
+        self.schema_proof = self.envelope(schema_documents)
+
+    def envelope(self, documents):
+        raw_rows = []
+        for document in documents:
+            raw = fixtures.scs(document)
+            raw_rows.append({"rawScs": raw, "rawScsSha256": hashlib.sha256(raw.encode()).hexdigest()})
+        return {"target": copy.deepcopy(self.snapshot["target"]), "capturedAt": editorial.now(), "captureMode": "sitecore-cli-readback", "captureSucceeded": True, "items": raw_rows}
+
+    def empty_plan(self, *, proof=True, defaults=None, schema=None):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["items"][-1]["fields"] = {fid(name): "" for name in ("empty-versioned", "empty-shared", "empty-unversioned")}
+        plan = editorial.build_plan(manifest, self.snapshot, self.schema, ["/"], empty_default_proof=(defaults or self.default_proof) if proof else None, empty_default_schema_proof=(schema or self.schema_proof) if proof else None)
+        return manifest, plan
+
+    def rich_plan(self, value='<p class="copy">Exact public text</p>'):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["items"][-1]["fields"] = {fid("direct-rich"): value, fid("title-field"): "Original title"}
+        return manifest, editorial.build_plan(manifest, self.snapshot, self.schema, ["/"])
+
+    def plain_post(self, plan):
+        post = self.post_for(plan)
+        operation = next(row for row in plan["operations"] if fid("direct-rich") in row["fields"])
+        index = next(i for i, row in enumerate(post["items"]) if row["id"] == operation["id"])
+        raw = post["items"][index]["rawScs"]
+        span = editorial.original_field_spans(raw)["enVersions:1"][fid("direct-rich")]
+        prefix = span.split("      Value:", 1)[0]
+        plain_span = prefix + "      Value: " + operation["fields"][fid("direct-rich")] + "\n"
+        raw = raw.replace(span, plain_span, 1)
+        post["items"][index] = native.normalize_item(native.parse_scs(raw), raw, 1)
+        return post, operation, index
+
+    def test_create_empty_contract_discloses_omission_and_requires_real_default_proof(self):
+        _, plan = self.empty_plan(proof=False)
+        self.assertFalse(plan["createApplyReady"])
+        self.assertFalse(plan["emptyDefaultProofVerified"])
+        self.assertEqual(3, len(plan["requiredEmptyDefaultFields"]))
+        operation = next(row for row in plan["operations"] if row["fields"])
+        self.assertEqual({fid("empty-versioned"): "", fid("empty-shared"): "", fid("empty-unversioned"): ""}, operation["fields"])
+        self.assertEqual(editorial.empty_storage(), operation["native"]["storage"])
+        for contract in operation["nativeValueContracts"].values():
+            self.assertEqual("omitted-desired-empty", contract["payloadOverride"])
+            self.assertEqual(["absent"], contract["acceptedNativeStoredStates"])
+            self.assertTrue(contract["requiresEmptyDefaultProof"])
+            self.assertFalse(contract["nativeWriteVerified"])
+        output, _ = self.write_batch(plan)
+        self.verify_batch(output)
+        self.assertTrue(all('Value: ""' not in path.read_text() for path in (output / "items").rglob("*.yml")))
+        with self.assertRaisesRegex(ValueError, "omission is not verified empty"):
+            editorial.finalize_ledger(plan, self.post_for(plan), self.receipt_for(plan))
+
+    def test_omitted_fields_remain_absent_and_ownership_never_claims_stored_empty(self):
+        manifest, plan = self.empty_plan()
+        self.assertTrue(plan["createApplyReady"])
+        self.assertEqual(3, len(plan["emptyDefaultObservations"]))
+        post = self.post_for(plan)
+        ledger = editorial.finalize_ledger(plan, post, self.receipt_for(plan))
+        operation = next(row for row in plan["operations"] if row["fields"])
+        owned = ledger["items"][operation["id"]]
+        self.assertEqual({}, owned["fields"])
+        self.assertEqual(operation["fields"], owned["sourceLogicalFields"])
+        self.assertEqual(3, len(owned["omittedDesiredEmptyFields"]))
+        self.assertTrue(all(c["nativeStoredState"] == "absent" for c in owned["omittedDesiredEmptyFields"].values()))
+        repeated = editorial.build_plan(manifest, post, self.schema, ["/"], ledger, empty_default_proof=self.default_proof, empty_default_schema_proof=self.schema_proof)
+        self.assertEqual([], repeated["operations"])
+        self.assertEqual([], repeated["conflicts"])
+        self.assertEqual(3, len(repeated["omittedDesiredEmptyReuses"]))
+
+    def test_native_stored_empty_quotes_data_or_wrong_scope_are_not_accepted_for_omitted_create(self):
+        _, plan = self.empty_plan()
+        post = self.post_for(plan)
+        operation = next(row for row in plan["operations"] if row["fields"])
+        for value in ("", '""', "Nonempty"):
+            changed = change_item(post, operation["id"], fields={fid("empty-versioned"): value, editorial.REVISION: fid("empty-result-revision")})
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, "must remain absent"):
+                editorial.finalize_ledger(plan, changed, self.receipt_for(plan))
+        altered = copy.deepcopy(operation)
+        altered["native"]["storage"]["shared"][fid("empty-versioned")] = ""
+        with self.assertRaisesRegex(ValueError, "omit the entire field"):
+            editorial.verified_operation_wire_fields(altered)
+
+    def test_standard_values_stored_bare_empty_is_default_proof_but_not_new_item_storage_proof(self):
+        document = copy.deepcopy(self.default_document)
+        document["Languages"][0]["Versions"][0]["Fields"].append({"ID": fid("empty-versioned"), "Value": ""})
+        proof = self.envelope([document])
+        row = proof["items"][0]
+        row["rawScs"] = row["rawScs"].replace('Value: ""', "Value:")
+        row["rawScsSha256"] = hashlib.sha256(row["rawScs"].encode()).hexdigest()
+        _, plan = self.empty_plan(defaults=proof)
+        observation = next(row for row in plan["emptyDefaultObservations"] if row["fieldId"] == fid("empty-versioned"))
+        self.assertEqual("stored-empty", observation["storedDefaultState"])
+        self.assertEqual("", observation["effectiveDefaultValue"])
+        self.assertEqual(["absent"], next(row for row in plan["operations"] if row["fields"])["nativeValueContracts"][fid("empty-versioned")]["acceptedNativeStoredStates"])
+        with self.assertRaisesRegex(ValueError, "Unsafe empty quoted"):
+            self.empty_plan(defaults=self.envelope([document]))
+
+    def test_default_proof_rejects_wrong_target_stale_source_missing_or_nonempty_defaults(self):
+        for mutation in ("target", "stale", "missing", "nonempty", "hash", "transport", "synthetic"):
+            proof = copy.deepcopy(self.default_proof)
+            if mutation == "target": proof["target"]["environmentId"] = "another-environment"
+            elif mutation == "stale": proof["capturedAt"] = "2020-01-01T00:00:00Z"
+            elif mutation == "missing": proof["items"] = []
+            elif mutation == "hash": proof["items"][0]["rawScsSha256"] = "0" * 64
+            elif mutation == "transport": proof["captureMode"] = "local-generated"
+            elif mutation == "synthetic": proof["syntheticLocalTestOnly"] = True
+            else:
+                document = copy.deepcopy(self.default_document)
+                document["Languages"][0]["Versions"][0]["Fields"].append({"ID": fid("empty-versioned"), "Value": "Not empty"})
+                proof = self.envelope([document])
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                self.empty_plan(defaults=proof)
+
+    def test_default_schema_requires_actual_owning_reference_type_storage_and_membership(self):
+        for mutation in ("reference", "type", "storage", "membership"):
+            proof = copy.deepcopy(self.schema_proof)
+            identity = self.owner_id if mutation == "reference" else fid("empty-versioned")
+            row = next(row for row in proof["items"] if native.parse_scs(row["rawScs"])["ID"] == identity)
+            document = native.parse_scs(row["rawScs"])
+            if mutation == "membership": document["Parent"] = fid("another-section")
+            elif mutation == "reference": next(f for f in document["SharedFields"] if f["ID"] == editorial.STANDARD_VALUES)["Value"] = fid("another-default")
+            elif mutation == "type": next(f for f in document["SharedFields"] if f["ID"] == editorial.TYPE)["Value"] = "Rich Text"
+            else: document["SharedFields"].append({"ID": editorial.SHARED, "Value": "1"})
+            row["rawScs"] = fixtures.scs(document)
+            row["rawScsSha256"] = hashlib.sha256(row["rawScs"].encode()).hexdigest()
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                self.empty_plan(schema=proof)
+
+    def test_inherited_empty_fields_cannot_use_generic_default_assumptions(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["items"][-1]["fields"] = {fid("title-field"): ""}
+        with self.assertRaisesRegex(ValueError, "inherited-default assumptions"):
+            editorial.build_plan(manifest, self.snapshot, self.schema, ["/"])
+
+    def test_omission_cannot_claim_readiness_by_removing_requirements_or_faking_verified_flag(self):
+        _, plan = self.empty_plan(proof=False)
+        altered = copy.deepcopy(plan)
+        altered["requiredEmptyDefaultFields"] = []
+        with self.assertRaisesRegex(ValueError, "exact omitted desired fields"):
+            editorial.verify_plan_empty_defaults(altered)
+        altered = copy.deepcopy(plan)
+        altered["emptyDefaultProofVerified"] = True
+        altered["createApplyReady"] = True
+        with self.assertRaisesRegex(ValueError, "omission is not verified empty"):
+            editorial.verify_plan_empty_defaults(altered)
+
+    def test_omission_is_rejected_in_other_native_languages_too(self):
+        _, plan = self.empty_plan()
+        post = self.post_for(plan)
+        operation = next(row for row in plan["operations"] if row["fields"])
+        changed = change_item(post, operation["id"], other=[{"Language": "fr", "Fields": [], "Versions": [{"Version": 1, "Fields": [{"ID": fid("empty-versioned"), "Value": ""}]}]}])
+        with self.assertRaisesRegex(ValueError, "must remain absent"):
+            editorial.finalize_ledger(plan, changed, self.receipt_for(plan))
+
+    def test_existing_field_clear_stays_blocked_even_if_a_default_proof_exists(self):
+        snapshot = change_item(self.snapshot, fid("home"), fields={fid("empty-versioned"): "Before clear", editorial.REVISION: fid("before-clear")})
+        manifest = copy.deepcopy(self.manifest)
+        manifest["items"][0]["fields"] = {fid("empty-versioned"): ""}
+        ledger = {"target": manifest["target"], "items": {fid("home"): {"fields": {fid("empty-versioned"): "Before clear"}}}}
+        with self.assertRaisesRegex(ValueError, "Existing-field clears require"):
+            editorial.build_plan(manifest, snapshot, self.schema, ["/"], ledger, empty_default_proof=self.default_proof, empty_default_schema_proof=self.schema_proof)
+
+    def test_owned_plain_richtext_readback_binds_actual_value_line_and_item_hash(self):
+        manifest, plan = self.rich_plan()
+        post, operation, _ = self.plain_post(plan)
+        ledger = editorial.finalize_ledger(plan, post, self.receipt_for(plan))
+        owned = ledger["items"][operation["id"]]
+        logical = operation["fields"][fid("direct-rich")]
+        self.assertEqual(logical, owned["fields"][fid("direct-rich")])
+        witness = owned["nativeCanonicalValueProofs"][fid("direct-rich")]
+        self.assertEqual("observed-owned-richtext-unquoted-single-line-preserves-exact-logical", owned["nativeSerializationDifferences"][fid("direct-rich")])
+        self.assertEqual("exact-wire-or-exact-owned-richtext-unquoted-single-line-with-raw-witness", operation["nativeValueContracts"][fid("direct-rich")]["nativeReadbackPolicy"])
+        self.assertEqual(hashlib.sha256(logical.encode()).hexdigest(), witness["actualNativeWireSha256"])
+        self.assertEqual(hashlib.sha256((witness["canonicalValueLine"] + "\n").encode()).hexdigest(), witness["canonicalValueLineSha256"])
+        self.assertNotEqual(witness["actualNativeWireSha256"], witness["introducedWireSha256"])
+        repeated = editorial.build_plan(manifest, post, self.schema, ["/"], ledger)
+        self.assertEqual([], repeated["operations"])
+        self.assertEqual([], repeated["conflicts"])
+        self.assertEqual(witness["rawScsSha256"], repeated["sourceValueContracts"][0]["fields"][fid("direct-rich")]["nativeCanonicalValueProof"]["rawScsSha256"])
+
+    def test_plain_richtext_is_preserved_as_unowned_raw_span_during_other_owned_field_update(self):
+        manifest, plan = self.rich_plan()
+        post, operation, index = self.plain_post(plan)
+        ledger = editorial.finalize_ledger(plan, post, self.receipt_for(plan))
+        manifest["items"][-1]["fields"][fid("title-field")] = "Updated title"
+        update = editorial.build_plan(manifest, post, self.schema, ["/"], ledger)
+        operation = next(row for row in update["operations"] if row["id"] == operation["id"])
+        original = editorial.original_field_spans(post["items"][index]["rawScs"])["enVersions:1"][fid("direct-rich")]
+        raw = editorial.serialize_item(operation["native"], self.schema)
+        self.assertEqual(original, editorial.original_field_spans(raw)["enVersions:1"][fid("direct-rich")])
+        self.assertEqual(manifest["items"][-1]["fields"][fid("direct-rich")], native.normalize_item(native.parse_scs(raw))["fields"][fid("direct-rich")])
+        editorial.verified_operation_wire_fields(operation)
+
+    def test_canonical_exception_rejects_other_types_multiline_quoted_or_duplicate_witnesses(self):
+        _, plan = self.rich_plan()
+        post, operation, index = self.plain_post(plan)
+        for mutation in ("type", "owner", "quoted", "duplicate", "wrong-scope", "multiline"):
+            altered_plan, altered_post = copy.deepcopy(plan), copy.deepcopy(post)
+            altered_op = next(row for row in altered_plan["operations"] if row["id"] == operation["id"])
+            if mutation == "type": altered_op["nativeValueContracts"][fid("direct-rich")]["fieldType"] = "Single-Line Text"
+            elif mutation == "owner": altered_op["nativeValueContracts"][fid("direct-rich")]["ownerTemplateId"] = fid("common-template")
+            elif mutation == "quoted":
+                raw = altered_post["items"][index]["rawScs"]
+                logical = altered_op["fields"][fid("direct-rich")]
+                raw = raw.replace("Value: " + logical, "Value: " + json.dumps(logical))
+                altered_post["items"][index] = native.normalize_item(native.parse_scs(raw), raw, 1)
+            else:
+                document = native.parse_scs(altered_post["items"][index]["rawScs"])
+                field = next(row for row in document["Languages"][0]["Versions"][0]["Fields"] if row["ID"] == fid("direct-rich"))
+                if mutation == "duplicate": document["Languages"][0]["Versions"].append({"Version": 2, "Fields": [copy.deepcopy(field)]})
+                elif mutation == "wrong-scope":
+                    document["SharedFields"] = [copy.deepcopy(field)]
+                    document["Languages"][0]["Versions"][0]["Fields"].remove(field)
+                else: field["Value"] += "\nextra"
+                raw = fixtures.scs(document)
+                # Keep this fictional duplicate/wrong-scope witness plain so
+                # uniqueness/storage, rather than JSON escaping, is the gate.
+                logical = operation["fields"][fid("direct-rich")]
+                raw = raw.replace("Value: " + json.dumps(logical), "Value: " + logical)
+                altered_post["items"][index] = native.normalize_item(native.parse_scs(raw), raw, 1)
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                editorial.finalize_ledger(altered_plan, altered_post, self.receipt_for(altered_plan))
 
 
 class NativePresentationCandidateTests(unittest.TestCase):

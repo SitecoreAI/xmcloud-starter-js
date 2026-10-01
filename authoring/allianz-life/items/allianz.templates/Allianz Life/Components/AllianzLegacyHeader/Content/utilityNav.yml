@@ -12,7 +12,7 @@ SharedFields:
   Value: "700"
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
-  Value: "/sitecore/content/Allianz/allianz-life/Data/Allianz Life/Navigation"
+  Value: "/sitecore/content/allianz/allianz-life/Data/Allianz Life/Navigation"
 Languages:
 - Language: en
   Fields:

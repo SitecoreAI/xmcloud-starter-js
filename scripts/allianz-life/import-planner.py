@@ -64,7 +64,7 @@ def validate_target(target: dict, snapshot_target: dict) -> None:
             raise ValueError("Unexpected opaque SitecoreAI target identity")
     uuid.UUID(target["siteId"])
     site_root = target["siteRoot"]
-    if not isinstance(site_root, str) or site_root.casefold() != "/sitecore/content/Allianz/allianz-life".casefold():
+    if not isinstance(site_root, str) or site_root.casefold() != "/sitecore/content/allianz/allianz-life".casefold():
         raise ValueError("Site root must identify the verified Allianz/allianz-life site")
     if target["mediaRoot"] != "/sitecore/media library/Project/Allianz Life":
         raise ValueError("Unexpected media import root")

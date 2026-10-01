@@ -86,8 +86,6 @@
   },
   "authoringPath": "./authoring",
   "deployItems": {
-    "modules": [
-      "Project.AllianzLife.Structure"
-    ]
+    "modules": []
   }
 }

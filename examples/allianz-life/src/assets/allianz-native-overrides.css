@@ -1,0 +1,114 @@
+/* Native controls adapt the recovered public CSS, whose raw stylesheet is
+ * intentionally served without changing its media-query grammar. These scoped
+ * selectors remain stronger even when that stylesheet is loaded later. */
+.allianz-modern .c-accordion .c-accordion__item-content[hidden] {
+  display: none;
+}
+.allianz-modern .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) {
+  display: block;
+  max-height: none;
+  overflow: visible;
+}
+
+/* aria-hidden/inert must also remove a collapsed dropdown's layout box. The
+ * recovered 340px panel otherwise overflows the 768px viewport while closed. */
+.allianz-modern .O-azl-header .m-navigation-primary ul[aria-hidden="true"] {
+  display: none;
+}
+.allianz-modern .O-azl-header .m-navigation-primary > ul[data-level="1"] > li > a {
+  padding-right: 28px;
+}
+.allianz-modern .O-azl-header .m-navigation-primary > ul[data-level="1"] > li:last-child > .nav-list-nested {
+  right: 0;
+  left: auto;
+}
+.allianz-modern .O-azl-header .m-navigation-primary .nav-list-nested {
+  max-width: calc(100vw - 32px);
+}
+.allianz-modern .O-azl-header .allianz-nav-toggle {
+  top: 38px;
+  min-width: 28px;
+  min-height: 28px;
+}
+.allianz-modern .O-azl-header .m-navigation-primary ul ul .allianz-nav-toggle {
+  top: 27px;
+  right: 10px;
+}
+.allianz-modern .O-azl-header .allianz-nav-toggle .c-icon {
+  display: block;
+  position: static;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  line-height: 1;
+}
+/* The original editable Image field supplies the alpha shape. Visitor masks
+ * reproduce inline source SVG fill exactly without modifying media bytes. */
+.allianz-modern .allianz-field-icon {
+  display: inline-block;
+  background-color: #005074;
+  vertical-align: middle;
+  mask-mode: alpha;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+.allianz-modern .O-azl-header .m-navigationUtility .a-link__icon > .allianz-field-icon,
+.allianz-modern .O-azl-header .m-navigationUtility .a-link__icon img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+.allianz-modern .O-azl-header .m-navigationUtility .a-link:active .allianz-field-icon,
+.allianz-modern .O-azl-header .m-navigationUtility .a-link:visited .allianz-field-icon {
+  background-color: #8a679c;
+}
+.allianz-modern .O-azl-header .m-navigationUtility .a-link:hover .allianz-field-icon {
+  background-color: #06c;
+}
+.allianz-modern .O-azl-header .m-navigationUtility .a-link:focus-visible .allianz-field-icon {
+  background-color: #fff !important;
+}
+.allianz-modern .m-footer__social-link .a-icon > .allianz-field-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.allianz-modern .m-footer__social-link:visited .allianz-field-icon {
+  background-color: #006192;
+}
+.allianz-modern .m-footer__social-link:hover .allianz-field-icon {
+  background-color: #06c;
+}
+.allianz-modern .m-footer__social-link:active .allianz-field-icon,
+.allianz-modern .m-footer__social-link:focus .allianz-field-icon {
+  background-color: #6d3484;
+}
+
+@media (max-width: 703px) {
+  /* The original class was on a page-level wrapper. It is now on the header;
+   * clipping that wrapper cuts off the absolute, scrollable menu below it. */
+  .allianz-modern .O-azl-header.m-navigation-primary-open {
+    overflow: visible;
+    z-index: 3;
+  }
+  .allianz-modern .O-azl-header .m-navigation-primary[aria-hidden="true"] {
+    display: none;
+  }
+  .allianz-modern .O-azl-header.m-navigation-primary-open .m-navigation-primary {
+    height: auto;
+    max-height: calc(100dvh - 127px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .allianz-modern .O-azl-header .allianz-nav-toggle {
+    top: 28px;
+    right: 16px;
+  }
+  .allianz-modern .O-azl-header.m-navigation-primary-open .m-navigation-primary > ul > li > a {
+    padding-right: 52px;
+  }
+}

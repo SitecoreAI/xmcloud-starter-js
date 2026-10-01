@@ -6,6 +6,28 @@ export interface MobileMenuState { open: boolean; path: string[] }
 export type MobileMenuAction = { type: 'toggle' } | { type: 'close' } | { type: 'back' } | { type: 'enter'; id: string };
 export const initialMobileMenuState: MobileMenuState = { open: false, path: [] };
 
+export interface DesktopMenuState { path: string[]; hoverOpened: string[] }
+export type DesktopMenuAction = { type: 'close' } | { type: 'hover' | 'toggle' | 'leave'; path: string[] };
+export const initialDesktopMenuState: DesktopMenuState = { path: [], hoverOpened: [] };
+
+/** Hover previews a branch; its first explicit activation keeps it open. */
+export function desktopMenuReducer(state: DesktopMenuState, action: DesktopMenuAction): DesktopMenuState {
+  if (action.type === 'close') return initialDesktopMenuState;
+  const id = action.path.at(-1);
+  if (!id) return state;
+  const isOpen = action.path.every((value, index) => state.path[index] === value);
+  if (action.type === 'hover') {
+    if (isOpen) return state;
+    return { path: action.path, hoverOpened: [...state.hoverOpened.filter((value) => action.path.includes(value)), id] };
+  }
+  if (action.type === 'toggle' && isOpen && state.hoverOpened.includes(id)) {
+    return { ...state, hoverOpened: state.hoverOpened.filter((value) => value !== id) };
+  }
+  if (action.type === 'leave' && !isOpen) return state;
+  const path = isOpen ? action.path.slice(0, -1) : action.path;
+  return { path, hoverOpened: state.hoverOpened.filter((value) => path.includes(value)) };
+}
+
 /** A mobile menu drills into one list at a time, as in the original source. */
 export function mobileMenuReducer(state: MobileMenuState, action: MobileMenuAction): MobileMenuState {
   if (action.type === 'close' || (action.type === 'toggle' && state.open)) return initialMobileMenuState;

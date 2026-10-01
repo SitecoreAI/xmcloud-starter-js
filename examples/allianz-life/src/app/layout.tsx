@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-css-tags -- Preserve source CSS grammar; processing changes source media breakpoints. */
 import './globals.css';
+import '../assets/allianz-native-overrides.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

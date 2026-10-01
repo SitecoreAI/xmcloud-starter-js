@@ -1,6 +1,7 @@
 'use client';
-import { RichText, Text } from '@sitecore-content-sdk/nextjs';
+import { RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useId, useMemo, useRef, useState, type FormEvent } from 'react';
+import { shouldRenderTextField } from 'lib/allianz-field-state';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import type { AllianzFormProps } from './allianz-form.props';
 import { formDefinitions, MAX_POLICIES, POLICY_PREFIX, validateForm, visibleDefinitions, type FormDefinition, type FormErrors, type FormValues, type SchemaKey } from './form-rules.props';
@@ -9,6 +10,8 @@ const ABOUT_YOU = '<p>Allianz may need to contact you as the claims process proc
 const FIRMS = ['Example Financial Group', 'Sample Advisory Partners', 'Other'];
 
 export const Default = ({ fields, params }: AllianzFormProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   const instance = useId().replace(/:/g, '');
   const form = useRef<HTMLFormElement>(null);
@@ -59,11 +62,11 @@ export const Default = ({ fields, params }: AllianzFormProps) => {
   };
   const fieldRow = (field: FormDefinition) => {
     const id = controlId(field.name);
-    if (field.inputType === 'radio') return <fieldset className="form-group allianz-local-radio" key={field.name}><legend className="col-sm-3 control-label"><Text field={field.labelField?.jsonValue} /></legend><div className="col-sm-9">{field.options.map((option) => <div className="radio" key={option.value}><label><input type="radio" name={field.name} value={option.value} checked={values[field.name] === option.value} data-invalid={!!errors[field.name]} aria-describedby={errors[field.name] ? `${id}-error` : undefined} onChange={() => {change(field.name, option.value);if (option.value === 'QuestionContractPolicy') setAccountInfoOpen(true);}} />{option.label}</label></div>)}{errors[field.name] && <span id={`${id}-error`} className="field-validation-error" role="alert">{errors[field.name]}</span>}</div></fieldset>;
+    if (field.inputType === 'radio') return <fieldset className="form-group allianz-local-radio" key={field.name}><legend className="col-sm-3 control-label"><Text editable={isEditing} field={field.labelField?.jsonValue} /></legend><div className="col-sm-9">{field.options.map((option) => <div className="radio" key={option.value}><label><input type="radio" name={field.name} value={option.value} checked={values[field.name] === option.value} data-invalid={!!errors[field.name]} aria-describedby={errors[field.name] ? `${id}-error` : undefined} onChange={() => {change(field.name, option.value);if (option.value === 'QuestionContractPolicy') setAccountInfoOpen(true);}} />{option.label}</label></div>)}{errors[field.name] && <span id={`${id}-error`} className="field-validation-error" role="alert">{errors[field.name]}</span>}</div></fieldset>;
     const prefix = field.name.match(/^(StartClaimAbout\.DateOf(?:Death|Birth))(?:Month|Day|Year)$/)?.[1];
     if (prefix && !field.name.endsWith('Month')) return null;
-    if (prefix) return <fieldset className="form-group allianz-local-date" key={prefix}><legend className="col-sm-3 control-label"><Text field={field.labelField?.jsonValue} /></legend><div className="col-sm-9"><div className="row">{['Month', 'Day', 'Year'].map((part) => {const control = visible.find((item) => item.name === prefix + part);return control ? <div key={part} className={part === 'Month' ? 'col-xs-5' : part === 'Day' ? 'col-xs-3' : 'col-xs-4'}>{fieldControl(control, `${field.label.replace('*', '')}: ${part}`)}</div> : null;})}</div></div></fieldset>;
-    return <div key={field.name} className="form-group"><label className="col-sm-3 control-label" htmlFor={id}>{field.name.startsWith(POLICY_PREFIX) ? 'Policy/Contract Number' : <Text field={field.labelField?.jsonValue} />}</label><div className="col-sm-9">{fieldControl(field)}</div></div>;
+    if (prefix) return <fieldset className="form-group allianz-local-date" key={prefix}><legend className="col-sm-3 control-label"><Text editable={isEditing} field={field.labelField?.jsonValue} /></legend><div className="col-sm-9"><div className="row">{['Month', 'Day', 'Year'].map((part) => {const control = visible.find((item) => item.name === prefix + part);return control ? <div key={part} className={part === 'Month' ? 'col-xs-5' : part === 'Day' ? 'col-xs-3' : 'col-xs-4'}>{fieldControl(control, `${field.label.replace('*', '')}: ${part}`)}</div> : null;})}</div></div></fieldset>;
+    return <div key={field.name} className="form-group"><label className="col-sm-3 control-label" htmlFor={id}>{field.name.startsWith(POLICY_PREFIX) ? 'Policy/Contract Number' : <Text editable={isEditing} field={field.labelField?.jsonValue} />}</label><div className="col-sm-9">{fieldControl(field)}</div></div>;
   };
   const policyEnd = visible.filter((field) => field.name.startsWith(POLICY_PREFIX)).at(-1)?.name;
   const reporterStart = visible.find((field) => field.name.startsWith('StartClaimAboutYou.'))?.name;
@@ -74,24 +77,32 @@ export const Default = ({ fields, params }: AllianzFormProps) => {
     return field.name.endsWith('Last4SSN') ? '••••' : field.options.find((option) => option.value === values[field.name])?.label || values[field.name];
   };
   return <section className="allianz-local-form" id={params.RenderingIdentifier}>
-    {data.heading?.jsonValue?.value && <Text tag="h2" field={data.heading.jsonValue} />}
-    {data.body?.jsonValue?.value && <RichText field={data.body.jsonValue} />}
-    {stage === 'entry' ? <form ref={form} noValidate autoComplete="off" onSubmit={submit} className="cui-portletform clearfix">
+    {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}
+    {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} />}
+    {isEditing ? <div className="allianz-local-form-authoring">
+      {(data.children?.results ?? []).map((field) => shouldRenderTextField(field.label?.jsonValue, true) && <Text key={field.id} editable tag="p" field={field.label?.jsonValue} />)}
+      {shouldRenderTextField(data.submitLabel?.jsonValue, true) && <Text editable tag="p" field={data.submitLabel?.jsonValue} />}
+      {shouldRenderTextField(data.secondaryHeading?.jsonValue, true) && <Text editable tag="h3" field={data.secondaryHeading?.jsonValue} />}
+      {shouldRenderTextField(data.secondaryBody?.jsonValue, true) && <RichText editable field={data.secondaryBody?.jsonValue} />}
+      {shouldRenderTextField(data.reviewHeading?.jsonValue, true) && <Text editable tag="h2" field={data.reviewHeading?.jsonValue} />}
+      {shouldRenderTextField(data.successMessage?.jsonValue, true) && <RichText editable field={data.successMessage?.jsonValue} />}
+      {shouldRenderTextField(data.failureMessage?.jsonValue, true) && <RichText editable field={data.failureMessage?.jsonValue} />}
+    </div> : stage === 'entry' ? <form ref={form} noValidate autoComplete="off" onSubmit={submit} className="cui-portletform clearfix">
       <p className="allianz-local-privacy">Use sample information. Information entered here stays in this browser and is not sent.</p>
       {Object.keys(errors).length > 0 && <div className="validation-summary-errors" role="alert">Please check the highlighted fields.</div>}
       {visible.map((field) => <div key={field.name}>
-        {key === 'death-claim' && field.name === reporterStart && <div className="allianz-local-secondary"><Text tag="h3" field={data.secondaryHeading?.jsonValue || { value: 'About You' }} /><RichText field={data.secondaryBody?.jsonValue || { value: ABOUT_YOU }} /></div>}
+        {key === 'death-claim' && field.name === reporterStart && <div className="allianz-local-secondary"><Text editable={isEditing} tag="h3" field={data.secondaryHeading?.jsonValue || { value: 'About You' }} /><RichText editable={isEditing} field={data.secondaryBody?.jsonValue || { value: ABOUT_YOU }} /></div>}
         {fieldRow(field)}
         {field.name === policyEnd && <div className="form-group"><div className="col-sm-offset-3 col-sm-9"><button type="button" className="allianz-legacy-print" disabled={policies >= MAX_POLICIES} onClick={() => {setPolicies((count) => Math.min(MAX_POLICIES, count + 1));requestAnimationFrame(() => document.getElementById(controlId(`${POLICY_PREFIX}[${policies}].PolicyNumber`))?.focus());}}>+ Add one more policy</button>{policies >= MAX_POLICIES && <span className="help-block">You can add up to 20 policies.</span>}</div></div>}
       </div>)}
-      <div className="form-group"><div className="col-sm-offset-3 col-sm-9"><button type="submit" className="btn btn-form btn-primary">{data.submitLabel?.jsonValue ? <Text field={data.submitLabel.jsonValue} /> : submitLabel}</button></div></div>
+      <div className="form-group"><div className="col-sm-offset-3 col-sm-9"><button type="submit" className="btn btn-form btn-primary">{data.submitLabel?.jsonValue ? <Text editable={isEditing} field={data.submitLabel?.jsonValue} /> : submitLabel}</button></div></div>
     </form> : stage === 'review' ? <div className="allianz-local-review">
-      <h2 ref={outcomeHeading} tabIndex={-1}>{data.reviewHeading?.jsonValue ? <Text field={data.reviewHeading.jsonValue} /> : 'Review your information'}</h2><p>Please check the details below before continuing.</p>
+      <h2 ref={outcomeHeading} tabIndex={-1}>{data.reviewHeading?.jsonValue ? <Text editable={isEditing} field={data.reviewHeading?.jsonValue} /> : 'Review your information'}</h2><p>Please check the details below before continuing.</p>
       <dl>{visible.filter((field) => values[field.name] && !/StartClaimAbout\.DateOf(?:Death|Birth)(?:Day|Year)$/.test(field.name)).map((field) => <div key={field.name}><dt>{field.label.replace(/\*$/, '')}</dt><dd>{reviewValue(field)}</dd></div>)}</dl>
       <div className="allianz-local-actions"><button className="btn btn-default" type="button" onClick={() => changeStage('entry')}>Edit information</button><button className="btn btn-primary" type="button" onClick={finish}>Continue</button><button className="allianz-legacy-print" type="button" onClick={reset}>Start again</button></div>
     </div> : <div className="allianz-local-confirmation" role="status"><h2 ref={outcomeHeading} tabIndex={-1}>{stage === 'failure' ? 'Unable to continue' : 'Review complete'}</h2>
-      <RichText field={stage === 'failure' ? data.failureMessage?.jsonValue || { value: '<p>We were unable to complete this request. Please try again.</p>' } : data.successMessage?.jsonValue || { value: '<p>Your information has been reviewed.</p>' }} /><p>No information was sent.</p><button className="btn btn-primary" type="button" onClick={reset}>Start again</button>
+      <RichText editable={isEditing} field={stage === 'failure' ? data.failureMessage?.jsonValue || { value: '<p>We were unable to complete this request. Please try again.</p>' } : data.successMessage?.jsonValue || { value: '<p>Your information has been reviewed.</p>' }} /><p>No information was sent.</p><button className="btn btn-primary" type="button" onClick={reset}>Start again</button>
     </div>}
-    {accountInfoOpen && <div className="allianz-local-account-overlay" role="presentation" onKeyDown={(event) => {if (event.key === 'Escape') closeAccountInfo();if (event.key === 'Tab') {event.preventDefault();event.currentTarget.querySelector<HTMLButtonElement>('button')?.focus();}}}><div role="dialog" aria-modal="true" aria-labelledby={`${instance}-account-title`} className="modal-content"><h2 id={`${instance}-account-title`}>Policy or contract questions</h2><p>For personal account information, please contact your Allianz service team.</p><button type="button" className="btn btn-primary" autoFocus onClick={closeAccountInfo}>Continue</button></div></div>}
+    {!isEditing && accountInfoOpen && <div className="allianz-local-account-overlay" role="presentation" onKeyDown={(event) => {if (event.key === 'Escape') closeAccountInfo();if (event.key === 'Tab') {event.preventDefault();event.currentTarget.querySelector<HTMLButtonElement>('button')?.focus();}}}><div role="dialog" aria-modal="true" aria-labelledby={`${instance}-account-title`} className="modal-content"><h2 id={`${instance}-account-title`}>Policy or contract questions</h2><p>For personal account information, please contact your Allianz service team.</p><button type="button" className="btn btn-primary" autoFocus onClick={closeAccountInfo}>Continue</button></div></div>}
   </section>;
 };

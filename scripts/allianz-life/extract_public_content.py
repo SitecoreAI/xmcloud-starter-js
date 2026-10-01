@@ -381,6 +381,28 @@ def residual_editorial(section, components, source):
     return dict(missing)
 
 
+def form_control_label(control, labels):
+    """Keep display labels distinct from validator hints and radio option labels."""
+    input_type = control.attrs.get("type", "text") if control.tag == "input" else control.tag
+    ancestor = control.parent
+    while ancestor and ancestor.tag != "form":
+        # Legacy radio groups use an unbound label; ordinary fieldsets use a
+        # legend. Neither is the label wrapping an individual radio option.
+        if ancestor.tag == "fieldset" or ancestor.has("form-group"):
+            group_label = next((n for n in ancestor.children()
+                                if n.tag == "legend" or (n.tag == "label" and not n.attrs.get("for"))), None)
+            if group_label and (input_type == "radio" or not control.attrs.get("id")):
+                return group_label.text()
+        ancestor = ancestor.parent
+    # The rendered source label can contain required markers omitted from
+    # data-val-sitecore-labeltext, which is a validation hint rather than UI copy.
+    label = labels.get(control.attrs.get("id", ""), "") or control.attrs.get("data-val-sitecore-labeltext", "")
+    if label:
+        return label
+    parent_label = control.parent if control.parent and control.parent.tag == "label" else None
+    return parent_label.text() if parent_label else control.attrs.get("placeholder", (control.attrs.get("name") or control.attrs.get("id", "")).split(".")[-1])
+
+
 def legacy_page(row, dom):
     """Finite legacy components; wrappers are never stored as a CMS body field."""
     source = row["final_url"]
@@ -429,12 +451,9 @@ def legacy_page(row, dom):
             if not name or name in seen:
                 continue
             seen.add(name)
-            label = control.attrs.get("data-val-sitecore-labeltext","") or labels.get(control.attrs.get("id", ""), "")
-            if not label:
-                parent_label = control.parent if control.parent and control.parent.tag == "label" else None
-                label = parent_label.text() if parent_label else control.attrs.get("placeholder", name.split(".")[-1])
+            label = form_control_label(control, labels)
             options = [{"label": o.text(), "value": o.attrs.get("value", o.text())} for o in control.all("option")] if control.tag == "select" else []
-            required = "required" in control.attrs or bool(control.attrs.get("data-val-required"))
+            required = "required" in control.attrs or "data-val-required" in control.attrs
             fields.append({"id": stable(path + ":form:" + name), "name": field_value(name), "sourceName":field_value(name),"label": field_value(label), "inputType": field_value(input_type), "required": field_value(required), "validationMessage": field_value(control.attrs.get("data-val-required", "Please complete this field.") if required else ""), "options": field_value(json.dumps(options,ensure_ascii=False)),"maxLength":field_value(control.attrs.get("maxlength",control.attrs.get("data-val-length-max",""))),"pattern":field_value(control.attrs.get("pattern",control.attrs.get("data-val-regex-pattern",""))),"placeholder":field_value(control.attrs.get("placeholder",control.attrs.get("data-val-sitecore-placeholder","")))})
         button = next((n for n in form.descendants() if n.tag in {"button", "input"} and n.attrs.get("type") == "submit"), None)
         submit_label = button.attrs.get("value", button.text()) if button else "Submit"
@@ -570,7 +589,14 @@ def supplement_modern_components(main,components,source,path):
                 node=intros[0] if intros else articles[0] if articles else section.find(css="o-richTextEditor__wrapper") or section
             if intros and value["componentName"] in {"AllianzCardGrid","AllianzRichText"} and node is intros[0]:
                 value["fields"]["data"]["datasource"]["primaryLink"]=tile_fields(intros[0],source,prefix+":intro")["link"]
-            if value["componentName"]=="AllianzCardGrid" and articles:
+            if value["componentName"]=="AllianzCardGrid" and value["params"].get("layout")=="cards":
+                # A card collection owns its column count. Its separate intro
+                # lives in a full-width grid column and must not overwrite it.
+                collection=section.find(css="o-cards")
+                declared=next((match.group(1) for cl in (collection.attrs.get("class","").split() if collection else []) if (match:=re.fullmatch(r"o-cards__col([1-4])",cl))),None)
+                if declared:
+                    value["params"]["columns"]=declared
+            if value["componentName"]=="AllianzCardGrid" and value["params"].get("layout")!="cards" and articles:
                 tile=next((n for n in articles if not n.has("m-axlIntroductionBlock")),articles[0])
                 ratio=next((r for cl,r in [("tile--3366","33:67"),("tile--6633","67:33"),("tile--5050","50:50")] if tile.has(cl)),None)
                 if ratio:

@@ -23,7 +23,7 @@ design remains the default; demonstration variants use separate datasource items
 
 The preserved target is Sales Engineer 2 / `thlt-mnp-demo`, project
 `7f3XlRhEqdT8l8FrbjQync`, environment `56W3hhEUAQ5GLwsHAehRhe`. The new site tree
-is `/sitecore/content/Allianz/allianz-life`, alongside the preserved MNP tree.
+is `/sitecore/content/allianz/allianz-life`, alongside the preserved MNP tree.
 The intended native architecture is:
 
 ```text
@@ -42,8 +42,9 @@ Allianz/allianz-life
 
 Traditional branches under `/sitecore/templates/Branches/Project/Allianz Life`
 seed card/accordion datasources. They are separate from the current Page Branches
-library under the site Presentation tree. Create page branches using the native
-UI and verify clone datasource independence before presenting that feature.
+library under the site Presentation tree. Create page branches through a
+supported native authoring/API operation and verify clone datasource independence
+before presenting that feature.
 
 `prepare-import.py` converts granular SDK fields to native field GUIDs, image/file
 and General Link XML, typed child items, and ordered page-local rendering XML.
@@ -69,11 +70,13 @@ Before content apply, create the Allianz site through the native headless site
 wizard and read back the actual Site, Home, Data, Presentation, Settings and site
 definition identities. Configure page-relative datasource behavior with the
 actual Settings/Editing item and its native enum options; do not guess values.
-Create header/footer partial designs in the native UI to obtain its generated
-`sxa-<partialDesignName>` placeholder settings. Assign native page designs and
-preserve those placeholders. Verify shared navigation stays reusable and ordinary
-content data is page-local. No MNP/project/environment deletion or purge is part
-of this workflow.
+The actual bounded native serialization probe created the Header/Footer partial
+items without stored signatures, layouts or generated placeholder items. Compose
+them using the version-specific native model and exact readback rather than
+assuming a particular creation event. Preserve any native-generated placeholders
+observed after composition. Assign the native page design and verify shared
+navigation stays reusable and ordinary content data is page-local. No
+MNP/project/environment deletion or purge is part of this workflow.
 
 Keep before/after native exports, target-bound import ledgers, source/media hashes,
 and the cloud deployment commit outside the public repository as recovery

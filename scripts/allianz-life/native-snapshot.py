@@ -19,7 +19,7 @@ import uuid
 
 PROJECT_ID = "7f3XlRhEqdT8l8FrbjQync"
 ENVIRONMENT_ID = "56W3hhEUAQ5GLwsHAehRhe"
-SITE_ROOT = "/sitecore/content/Allianz/allianz-life"
+SITE_ROOT = "/sitecore/content/allianz/allianz-life"
 MEDIA_ROOT = "/sitecore/media library/Project/Allianz Life"
 SITE_TEMPLATE = "9ed66404-64c9-4122-90e1-869cb3cea566"
 REVISION_ID = "8cdc337e-a112-42fb-bbb4-4143751e123f"
@@ -29,7 +29,7 @@ SCAFFOLD_PATHS = {
     "data": SITE_ROOT + "/Data", "presentation": SITE_ROOT + "/Presentation",
     "settings": SITE_ROOT + "/Settings",
 }
-PARENT_PATHS = {"/sitecore/content/Allianz", "/sitecore/media library/Project"}
+PARENT_PATHS = {"/sitecore/content/allianz", "/sitecore/media library/Project"}
 SECRET_HINT = re.compile(r"password|secret|(?:access|refresh|bearer)[ _-]*token|api[ _-]*key", re.I)
 
 

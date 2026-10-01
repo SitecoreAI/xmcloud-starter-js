@@ -23,7 +23,7 @@ import xml.etree.ElementTree as ET
 
 SCRIPT_ROOT = Path(__file__).resolve().parent
 REPO = SCRIPT_ROOT.parents[1]
-SITE_ROOT = "/sitecore/content/Allianz/allianz-life"
+SITE_ROOT = "/sitecore/content/allianz/allianz-life"
 MEDIA_ROOT = "/sitecore/media library/Project/Allianz Life"
 PROJECT_ID = "7f3XlRhEqdT8l8FrbjQync"
 ENVIRONMENT_ID = "56W3hhEUAQ5GLwsHAehRhe"
@@ -35,6 +35,7 @@ BASE = "12c33f3f-86c5-43a5-aeb4-5598cec45116"
 TYPE = "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
 SHARED = "be351a73-fcb0-4213-93fa-c302d8ab4f51"
 UNVERSIONED = "39847666-389d-409b-95bd-f2016f11eed5"
+STANDARD_VALUES = "f7d48a55-2158-4f02-9356-756654404f73"
 REVISION = "8cdc337e-a112-42fb-bbb4-4143751e123f"
 FINAL_LAYOUT = "04bf00db-f5fb-41f7-8ab7-22408372a981"
 SHARED_LAYOUT = "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
@@ -58,6 +59,7 @@ def load_module(name: str, filename: str):
 
 planner = load_module("editorial_planner", "import-planner.py")
 snapshot_parser = load_module("editorial_snapshot", "native-snapshot.py")
+value_codec = load_module("editorial_native_value_codec", "native-value-codec.py")
 
 
 def guid(value: str) -> str:
@@ -411,14 +413,308 @@ def set_native_field(storage: dict, definition: dict, identifier: str, value: st
         storage[bucket][identifier] = value
 
 
-def field_lines(values: dict, schema: Schema, indent="") -> list[str]:
+def storage_value_rows(storage: dict):
+    """Retain attachment metadata and every native language/version location."""
+    for bucket in ("shared", "enUnversioned"):
+        for identifier, value in storage[bucket].items():
+            yield bucket, None, identifier, value
+    for version, fields in storage["enVersions"].items():
+        for identifier, value in fields.items():
+            yield "enVersions", version, identifier, value
+    for language, values in storage.get("otherLanguages", {}).items():
+        for identifier, value in values.get("unversioned", {}).items():
+            yield "otherLanguages:" + language, "unversioned", identifier, value
+        for version, fields in values.get("versions", {}).items():
+            for identifier, value in fields.items():
+                yield "otherLanguages:" + language, version, identifier, value
+
+
+def wire_storage(storage: dict, *, omit_empty=False, preserved_locations=None) -> dict:
+    result = copy.deepcopy(storage)
+    def encode(bucket, location):
+        for identifier, value in list(bucket.items()):
+            if identifier in (preserved_locations or {}).get(location, {}):
+                continue
+            if omit_empty and field_value(value) == "":
+                del bucket[identifier]
+                continue
+            wire = value_codec.value_contract(field_value(value))["expectedSerializedWireValue"]
+            bucket[identifier] = {**value, "value": wire} if isinstance(value, dict) else wire
+    encode(result["shared"], "shared")
+    encode(result["enUnversioned"], "enUnversioned")
+    for version, bucket in result["enVersions"].items():
+        encode(bucket, "enVersions:" + version)
+    for name, language in result.get("otherLanguages", {}).items():
+        encode(language.get("unversioned", {}), "otherLanguages:" + name + ":unversioned")
+        for version, bucket in language.get("versions", {}).items():
+            encode(bucket, "otherLanguages:" + name + ":versions:" + version)
+    return result
+
+
+def require_exact_storage_encoding(storage: dict) -> None:
+    # A new source field may explicitly declare its wire LF. An unowned native
+    # field must be preserved exactly, never silently normalized for the codec.
+    for bucket, version, identifier, value in storage_value_rows(storage):
+        logical = field_value(value)
+        if value_codec.value_contract(logical)["expectedSerializedWireValue"] != logical:
+            raise ValueError(f"Preserved native value cannot be encoded exactly: {bucket}/{version}/{identifier}; unowned terminal LF change is not authorized")
+
+
+def operation_value_contracts(fields: dict, schema: Schema, template_id: str, version: int, action="create") -> dict:
+    result = {}
+    for identifier, logical in fields.items():
+        definition = schema.field(template_id, identifier)
+        storage = definition["storage"]
+        if logical == "" and action != "create":
+            raise ValueError("Existing-field clears require separately supplied genuine native empty-probe evidence; no empty encoding is enabled")
+        result[identifier] = {
+            **value_codec.value_contract(logical), "storage": storage,
+            "language": None if storage == "shared" else "en",
+            "version": version if storage == "versioned" else None,
+            "fieldType": definition["type"], "ownerTemplateId": definition["templateId"],
+        }
+        if logical == "":
+            result[identifier].update(value_codec.empty_create_contract())
+        result[identifier]["nativeReadbackPolicy"] = native_readback_policy(result[identifier], template_id)
+    return result
+
+
+def native_readback_policy(contract: dict, template_id: str) -> str:
+    if contract.get("payloadOverride") == "omitted-desired-empty":
+        return "absent-with-genuine-native-default-proof"
+    if contract.get("fieldType") == "Rich Text" and contract.get("ownerTemplateId") == template_id and "\n" not in contract["sourceLogicalValue"] and contract["allowedNativeClipDifference"] == "exactly-one-appended-LF":
+        return "exact-wire-or-exact-owned-richtext-unquoted-single-line-with-raw-witness"
+    return "exact-serialized-wire"
+
+
+def original_field_spans(raw: str) -> dict:
+    """Capture whole original field spans with the same bounded SCS reader.
+
+    Existing unowned Values are never rebuilt from Python-decoded strings.
+    Unknown JSON-escape/chomping formats still fail closed before serialization.
+    """
+    if "\r" in raw:
+        raise ValueError("Original native raw spans use an unproved line ending")
+    value_codec.validate_tokens(raw)
+
+    class SpanReader(snapshot_parser._SCSReader):
+        def __init__(self, text):
+            super().__init__(text)
+            self.groups, self.active_starts = [], None
+
+        def entry(self, indent, sequence=False):
+            self.peek()
+            start = self.index
+            key, value = super().entry(indent, sequence)
+            if self.active_starts is not None and sequence and key == "ID":
+                self.active_starts.append((start, guid(value)))
+            return key, value
+
+        def fields(self, indent):
+            starts = []
+            self.active_starts = starts
+            result = super().fields(indent)
+            self.active_starts = None
+            ends = [start for start, _ in starts[1:]] + [self.index]
+            self.groups.append({identifier: "\n".join(self.lines[start:end]) + "\n" for (start, identifier), end in zip(starts, ends)})
+            return result
+
+    reader = SpanReader(raw)
+    document = reader.read()
+    locations = []
+    for key, node in document.items():
+        if key == "SharedFields":
+            locations.append("shared")
+        elif key == "Languages":
+            for language in node:
+                name = language["Language"]
+                if "Fields" in language:
+                    locations.append("enUnversioned" if name == "en" else "otherLanguages:" + name + ":unversioned")
+                for version in language["Versions"]:
+                    if "Fields" in version:
+                        locations.append(("enVersions:" if name == "en" else "otherLanguages:" + name + ":versions:") + str(version["Version"]))
+    if len(locations) != len(reader.groups):
+        raise ValueError("Original native field spans could not be proved")
+    return dict(zip(locations, reader.groups))
+
+
+def native_plain_richtext_witness(item: dict, operation: dict, identifier: str, contract: dict) -> dict:
+    """Only the observed owned Rich Text single-line plain serialization case."""
+    logical, wire = contract["sourceLogicalValue"], contract["expectedSerializedWireValue"]
+    if not (contract["fieldType"] == "Rich Text" and contract["ownerTemplateId"] == operation["templateId"] and logical and "\n" not in logical and "\r" not in logical and wire == logical + "\n" and contract["allowedNativeClipDifference"] == "exactly-one-appended-LF" and item["fields"].get(identifier) == logical):
+        raise ValueError("Native field value did not round-trip beyond the exact owned Rich Text plain-value case")
+    raw = item["rawScs"]
+    if hashlib.sha256(raw.encode()).hexdigest() != item["rawScsSha256"]:
+        raise ValueError("Canonical native Rich Text item hash differs")
+    groups = original_field_spans(raw)
+    matches = [(location, rows[identifier]) for location, rows in groups.items() if identifier in rows]
+    expected_location = "enVersions:" + str(contract["version"]) if contract["storage"] == "versioned" else contract["storage"]
+    if len(matches) != 1 or matches[0][0] != expected_location:
+        raise ValueError("Canonical native Rich Text field span must be unique in its exact storage")
+    value_lines = [line for line in matches[0][1].splitlines() if re.fullmatch(r" +Value: .*", line)]
+    if len(value_lines) != 1 or logical.startswith(('"', "'", "|", ">", "!", "&", "*", "[", "{")) or not re.fullmatch(r" +Value: " + re.escape(logical), value_lines[0]):
+        raise ValueError("Actual Rich Text must have an exact unquoted single-line plain Value witness")
+    line = value_lines[0]
+    return {"mode": "actual-owned-richtext-unquoted-single-line-exact-logical", "itemId": item["id"], "fieldId": identifier, "fieldType": "Rich Text", "ownerTemplateId": contract["ownerTemplateId"], "sourceLogicalSha256": contract["sourceLogicalSha256"], "introducedWireSha256": contract["expectedWireSha256"], "actualNativeWireSha256": hashlib.sha256(logical.encode()).hexdigest(), "rawScsSha256": item["rawScsSha256"], "canonicalValueLine": line, "canonicalValueLineSha256": hashlib.sha256((line + "\n").encode()).hexdigest()}
+
+
+def required_empty_defaults(operations: list[dict], schema: Schema) -> list[dict]:
+    required = {}
+    for operation in operations:
+        for identifier, contract in operation["nativeValueContracts"].items():
+            if contract["sourceLogicalValue"] != "":
+                continue
+            definition = schema.field(operation["templateId"], identifier)
+            if definition["templateId"] != operation["templateId"]:
+                raise ValueError("Desired-empty omission needs directly owned native Standard Values/default proof; inherited-default assumptions are unsupported")
+            field = schema.items[identifier]
+            section, owner = schema.items[field["Parent"]], schema.items[definition["templateId"]]
+            identity = lambda row: {k: row[k] for k in ("ID", "Parent", "Template", "Path")}
+            required[(operation["templateId"], identifier)] = {"templateId": operation["templateId"], "fieldId": identifier, "fieldType": definition["type"], "storage": definition["storage"], "ownerTemplate": identity(owner), "field": identity(field), "section": identity(section)}
+    return list(required.values())
+
+
+def verify_empty_default_proof(proof: dict, schema_proof: dict, requirements: list[dict], target: dict, max_age_seconds=120) -> list[dict]:
+    """Validate retained actual native raw evidence; never manufacture defaults."""
+    def documents(envelope, label):
+        if not isinstance(envelope, dict) or envelope.get("target") != target or envelope.get("captureMode") != "sitecore-cli-readback" or envelope.get("captureSucceeded") is not True or envelope.get("syntheticLocalTestOnly"):
+            raise ValueError("Actual target-bound native " + label + " readback is required")
+        age = (datetime.now(timezone.utc) - timestamp(envelope["capturedAt"])).total_seconds()
+        if age < -5 or age > max_age_seconds:
+            raise ValueError("Native " + label + " proof is stale or future-dated")
+        result = {}
+        for row in envelope["items"]:
+            raw = row["rawScs"]
+            if hashlib.sha256(raw.encode()).hexdigest() != row["rawScsSha256"]:
+                raise ValueError("Native " + label + " raw hash differs")
+            value_codec.validate_tokens(raw)
+            document = snapshot_parser.parse_scs(raw)
+            if document["ID"] in result:
+                raise ValueError("Duplicate native " + label + " identity")
+            result[document["ID"]] = (document, row["rawScsSha256"])
+        return result
+    defaults, actual_schema = documents(proof, "empty-default"), documents(schema_proof, "used-schema")
+    observations, expected_ids = [], set()
+    for required in requirements:
+        for kind in ("ownerTemplate", "field", "section"):
+            expected = required[kind]
+            actual = actual_schema.get(expected["ID"], (None, None))[0]
+            if actual is None or any(actual[k] != expected[k] for k in expected):
+                raise ValueError("Actual native empty-default owning Type/storage/membership schema differs")
+        definition = native_fields(actual_schema[required["fieldId"]][0])
+        shared, unversioned = definition.get(SHARED, "") == "1", definition.get(UNVERSIONED, "") == "1"
+        storage = "ambiguous" if shared and unversioned else "shared" if shared else "enUnversioned" if unversioned else "versioned"
+        if definition.get(TYPE) != required["fieldType"] or storage != required["storage"]:
+            raise ValueError("Actual native desired-empty field Type/storage differs")
+        owner = actual_schema[required["templateId"]][0]
+        ids = [guid(match.group(1)) for match in GUID.finditer(native_fields(owner).get(STANDARD_VALUES, ""))]
+        if len(ids) != 1 or ids[0] not in defaults:
+            raise ValueError("Actual owning template Standard Values reference is missing or ambiguous")
+        identifier = ids[0]
+        expected_ids.add(identifier)
+        document, raw_hash = defaults[identifier]
+        if document["Parent"] != owner["ID"] or document["Template"] != owner["ID"] or document["Path"] != owner["Path"] + "/__Standard Values":
+            raise ValueError("Actual native Standard Values identity/parent/template/path differs")
+        normalized = snapshot_parser.normalize_item(document)
+        rows = [(bucket, version, value) for bucket, version, field_id, value in storage_value_rows(preserved_storage(normalized)) if field_id == required["fieldId"]]
+        expected_bucket = "enVersions" if required["storage"] == "versioned" else required["storage"]
+        if any(field_value(value) != "" or bucket != expected_bucket for bucket, version, value in rows):
+            raise ValueError("Desired-empty native Standard Values default is nonempty or wrongly stored")
+        observations.append({"templateId": owner["ID"], "standardValuesId": identifier, "fieldId": required["fieldId"], "fieldType": required["fieldType"], "storage": "unversioned" if storage == "enUnversioned" else storage, "storedDefaultState": "stored-empty" if rows else "absent", "effectiveDefaultValue": "", "standardValuesRawScsSha256": raw_hash, "resolution": "actual-direct-owned-field-standard-values-empty-or-absent"})
+    if set(defaults) != expected_ids:
+        raise ValueError("Actual empty-default proof does not cover the exact required Standard Values identities")
+    return observations
+
+
+def verify_plan_empty_defaults(plan: dict, *, proof=None, schema_proof=None, required=False) -> list[dict]:
+    expected = {(o["templateId"], field_id) for o in plan["operations"] for field_id, c in o["nativeValueContracts"].items() if c.get("payloadOverride") == "omitted-desired-empty"}
+    expected.update((row["templateId"], row["fieldId"]) for row in plan.get("omittedDesiredEmptyReuses", []))
+    requirements = plan.get("requiredEmptyDefaultFields", [])
+    if len(requirements) != len(expected) or {(r["templateId"], r["fieldId"]) for r in requirements} != expected:
+        raise ValueError("Native empty-default requirements differ from the exact omitted desired fields")
+    if not requirements:
+        return []
+    actual_proof = proof if proof is not None else plan.get("emptyDefaultProof")
+    actual_schema = schema_proof if schema_proof is not None else plan.get("emptyDefaultSchemaProof")
+    if actual_proof is None or actual_schema is None:
+        if required or plan.get("createApplyReady") or plan.get("emptyDefaultProofVerified"):
+            raise ValueError("Genuine native Standard Values and used-schema default proof is required; omission is not verified empty")
+        return []
+    observations = verify_empty_default_proof(actual_proof, actual_schema, requirements, plan["target"])
+    if proof is None and schema_proof is None and (not plan.get("emptyDefaultProofVerified") or observations != plan.get("emptyDefaultObservations")):
+        raise ValueError("Reviewed native empty-default observations differ from their retained raw proof")
+    return observations
+
+
+def verified_operation_wire_fields(operation: dict) -> dict:
+    contracts = operation.get("nativeValueContracts")
+    if not isinstance(contracts, dict) or set(contracts) != set(operation["fields"]):
+        raise ValueError("Reviewed operation lacks its exact logical/native wire contracts")
+    result = {}
+    storage = operation["native"]["storage"]
+    original = operation["native"].get("preservedNativeSource")
+    if operation["action"] == "update":
+        if not isinstance(original, dict) or hashlib.sha256(original.get("rawScs", "").encode()).hexdigest() != original.get("sha256"):
+            raise ValueError("Update requires the complete original native raw field spans")
+        normalized = snapshot_parser.normalize_item(snapshot_parser.parse_scs(original["rawScs"]), original["rawScs"], operation["selectedVersion"])
+        if checksum(normalized) != operation["precondition"]["itemSha256"]:
+            raise ValueError("Preserved original native raw spans differ from the reviewed update precondition")
+        original_field_spans(original["rawScs"])
+        expected_storage = preserved_storage(normalized)
+    elif original is not None:
+        raise ValueError("Creates cannot silently adopt an original native document")
+    else:
+        expected_storage = empty_storage()
+        require_exact_storage_encoding(storage)
+    expected_managed = {}
+    for identifier, logical in operation["fields"].items():
+        contract = contracts[identifier]
+        bucket = contract.get("storage")
+        location = {
+            "storage": bucket, "language": None if bucket == "shared" else "en",
+            "version": operation["selectedVersion"] if bucket == "versioned" else None,
+            "fieldType": contract.get("fieldType"), "ownerTemplateId": contract.get("ownerTemplateId"),
+            "nativeReadbackPolicy": native_readback_policy(contract, operation["templateId"]),
+        }
+        empty_override = value_codec.empty_create_contract() if logical == "" and operation["action"] == "create" else {}
+        if logical == "" and operation["action"] != "create":
+            raise ValueError("Existing-field clears require genuine native empty-probe evidence; empty writer remains disabled")
+        if bucket not in ("shared", "enUnversioned", "versioned") or not isinstance(location["fieldType"], str) or not location["fieldType"] or guid(location["ownerTemplateId"]) != location["ownerTemplateId"] or contract != {**value_codec.value_contract(logical), **location, **empty_override}:
+            raise ValueError("Reviewed logical/native wire contract changed or is unsupported")
+        values = storage["enVersions"].get(str(operation["selectedVersion"]), {}) if bucket == "versioned" else storage[bucket]
+        if logical == "":
+            if any(field_id == identifier for _, _, field_id, _ in storage_value_rows(storage)):
+                raise ValueError("Desired-empty create override must omit the entire field across every native storage scope")
+            continue
+        wire = contract["expectedSerializedWireValue"]
+        if values.get(identifier) != wire:
+            raise ValueError("Reviewed native storage differs from the exact field wire contract")
+        expected_values = expected_storage["enVersions"].setdefault(str(operation["selectedVersion"]), {}) if bucket == "versioned" else expected_storage[bucket]
+        expected_values[identifier] = wire
+        location = "enVersions:" + str(operation["selectedVersion"]) if bucket == "versioned" else bucket
+        expected_managed.setdefault(location, []).append(identifier)
+        result[identifier] = wire
+    if storage != expected_storage:
+        raise ValueError("Reviewed native storage changes an unowned original value or adds an unreviewed field")
+    if operation["action"] == "update" and operation["native"].get("managedFieldLocations") != expected_managed:
+        raise ValueError("Managed field locations differ from the exact reviewed changes; original raw spans must be retained")
+    return result
+
+
+def field_lines(values: dict, schema: Schema, indent="", original_spans=None) -> list[str]:
     result = []
     for identifier, value in sorted(values.items()):
         identifier = guid(identifier)
         definition = schema.fields.get(identifier)
         if not definition:
             raise ValueError("Snapshot includes a field absent from the captured schema")
-        result.extend([indent + "- ID: " + json.dumps(identifier), indent + "  Hint: " + json.dumps(definition["hint"])])
+        if identifier in (original_spans or {}):
+            span = original_spans[identifier]
+            if not span.startswith(indent + "- ID: "):
+                raise ValueError("Preserved original native field span changed storage indentation")
+            result.extend(span.splitlines())
+            continue
+        result.extend([indent + "- ID: " + value_codec.quote_scalar(identifier), indent + "  Hint: " + value_codec.quote_scalar(definition["hint"])])
         if isinstance(value, dict):
             if set(value) != {"value", "blobId"}:
                 raise ValueError("Unknown snapshot attachment metadata")
@@ -426,25 +722,38 @@ def field_lines(values: dict, schema: Schema, indent="") -> list[str]:
             value = value["value"]
         if not isinstance(value, str):
             raise ValueError("Native preserved field value is not a string")
-        # JSON strings are valid YAML and preserve newlines/trailing whitespace.
-        result.append(indent + "  Value: " + json.dumps(value, ensure_ascii=False))
+        result.extend(value_codec.value_lines(value, len(indent) + 2))
     return result
 
 
 def serialize_item(item: dict, schema: Schema) -> str:
-    storage = item["storage"]
-    lines = ["---"] + [key + ": " + json.dumps(item[key]) for key in ("ID", "Parent", "Template", "Path")]
+    """Emit observed native wire form; complex logical inputs have one final LF.
+
+    Prepared plans already contain expected wire storage and explicit logical
+    contracts. With no preservedNativeSource, this is a NEW-create blueprint:
+    desired-empty rows are omitted and need a separate actual default proof.
+    Direct blueprint callers must not call local parsing native proof.
+    """
+    source = item.get("preservedNativeSource")
+    original_spans = original_field_spans(source["rawScs"]) if source else {}
+    managed = item.get("managedFieldLocations", {})
+    def spans(location):
+        return {k: v for k, v in original_spans.get(location, {}).items() if k not in managed.get(location, [])}
+    retained_spans = {location: spans(location) for location in original_spans}
+    storage = wire_storage(item["storage"], omit_empty=source is None, preserved_locations=retained_spans)
+    lines = ["---"] + [key + ": " + value_codec.quote_scalar(item[key]) for key in ("ID", "Parent", "Template", "Path")]
     if storage["shared"]:
         lines.append("SharedFields:")
-        lines.extend(field_lines(storage["shared"], schema))
+        lines.extend(field_lines(storage["shared"], schema, original_spans=spans("shared")))
     languages = {"en": {"unversioned": storage["enUnversioned"], "versions": storage["enVersions"]}}
     languages.update(storage.get("otherLanguages", {}))
     lines.append("Languages:")
     for language, values in sorted(languages.items()):
-        lines.append("- Language: " + json.dumps(language))
+        lines.append("- Language: " + value_codec.quote_scalar(language))
         if values.get("unversioned"):
             lines.append("  Fields:")
-            lines.extend(field_lines(values["unversioned"], schema, "  "))
+            location = "enUnversioned" if language == "en" else "otherLanguages:" + language + ":unversioned"
+            lines.extend(field_lines(values["unversioned"], schema, "  ", spans(location)))
         lines.append("  Versions:")
         for version, fields in sorted(values.get("versions", {}).items(), key=lambda row: int(row[0])):
             if int(version) < 1:
@@ -452,11 +761,17 @@ def serialize_item(item: dict, schema: Schema) -> str:
             lines.append("  - Version: " + str(int(version)))
             if fields:
                 lines.append("    Fields:")
-                lines.extend(field_lines(fields, schema, "    "))
-    return "\n".join(lines) + "\n"
+                location = ("enVersions:" if language == "en" else "otherLanguages:" + language + ":versions:") + str(version)
+                lines.extend(field_lines(fields, schema, "    ", spans(location)))
+    raw = "\n".join(lines) + "\n"
+    value_codec.validate_tokens(raw)
+    normalized = snapshot_parser.normalize_item(snapshot_parser.parse_scs(raw))
+    if preserved_storage(normalized) != storage:
+        raise ValueError("Logical/native wire codec mismatch; this offline check is not native readback")
+    return raw
 
 
-def build_plan(manifest: dict, snapshot: dict, schema: Schema, routes: list[str], ledger=None, include_keys=()) -> dict:
+def build_plan(manifest: dict, snapshot: dict, schema: Schema, routes: list[str], ledger=None, include_keys=(), *, empty_default_proof=None, empty_default_schema_proof=None) -> dict:
     by_id, by_path = validate_snapshot(manifest, snapshot)
     selected = dependency_closure(manifest, snapshot, schema, routes, include_keys)
     previous = ledger or {}
@@ -465,12 +780,19 @@ def build_plan(manifest: dict, snapshot: dict, schema: Schema, routes: list[str]
     prior_items = previous.get("items", {})
     all_paths = {row["path"].casefold(): guid(row["id"]) for row in selected}
     all_paths.update({key: guid(row["id"]) for key, row in by_path.items()})
-    operations, conflicts, unchanged = [], [], []
+    operations, conflicts, unchanged, wire_differences, source_contracts, empty_reuses = [], [], [], [], [], []
     selected_keys = {row["key"] for row in selected}
     exceptions = [e for e in manifest.get("exceptions", []) if e.get("key") == "target" or any(e.get("key", "") == key or e.get("key", "").startswith(key + ":") for key in selected_keys)]
     for record in selected:
         identifier, path, template_id = guid(record["id"]), record["path"], guid(record["templateId"])
         fields = {guid(k): v for k, v in record.get("fields", {}).items()}
+        desired_contracts = {k: value_codec.value_contract(v) for k, v in fields.items()}
+        desired_wire_fields = {k: v["expectedSerializedWireValue"] for k, v in desired_contracts.items()}
+        if desired_contracts:
+            source_contracts.append({"key": record["key"], "id": identifier, "fields": desired_contracts})
+        for field_id, contract in desired_contracts.items():
+            if contract["allowedNativeClipDifference"]:
+                wire_differences.append({"key": record["key"], "id": identifier, "fieldId": field_id, "difference": contract["allowedNativeClipDifference"], "sourceLogicalSha256": contract["sourceLogicalSha256"], "expectedWireSha256": contract["expectedWireSha256"]})
         for field_id, storage in record.get("fieldStorage", {}).items():
             if guid(field_id) not in fields or schema.field(template_id, field_id)["storage"] != storage:
                 raise ValueError("Candidate field storage claim differs from observed native schema")
@@ -495,11 +817,30 @@ def build_plan(manifest: dict, snapshot: dict, schema: Schema, routes: list[str]
                 conflicts.append({"key": record["key"], "path": path, "reason": reason, "nativeTemplateId": guid(existing["templateId"]), "desiredTemplateId": template_id})
                 continue
             current = {guid(k): v for k, v in existing.get("fields", {}).items()}
-            saved = prior_items.get(identifier, {}).get("fields", {})
+            prior_item = prior_items.get(identifier, {})
+            saved = prior_item.get("fields", {})
             changes, edited = {}, []
             for field_id, desired in fields.items():
-                if field_id in current and current[field_id] == desired:
+                if desired == "" and field_id not in current and prior_item.get("omittedDesiredEmptyFields", {}).get(field_id, {}).get("nativeStoredState") == "absent":
+                    if any(found == field_id for _, _, found, _ in storage_value_rows(preserved_storage(existing))):
+                        raise ValueError("Previously omitted desired-empty field is now stored in another native scope")
+                    candidate = operation_value_contracts({field_id: desired}, schema, template_id, existing["selectedVersion"])[field_id]
+                    desired_contracts[field_id].update(value_codec.empty_create_contract())
+                    empty_reuses.append({"id": identifier, "templateId": template_id, "fieldId": field_id, "nativeValueContracts": {field_id: candidate}})
                     continue
+                if field_id in current and current[field_id] == desired_wire_fields[field_id]:
+                    if desired == "":
+                        original_field_spans(existing["rawScs"])
+                    continue
+                if desired and current.get(field_id) == desired and saved.get(field_id) == desired and prior_item.get("sourceLogicalFields", {}).get(field_id) == desired:
+                    candidate = operation_value_contracts({field_id: desired}, schema, template_id, existing["selectedVersion"])[field_id]
+                    try:
+                        witness = native_plain_richtext_witness(existing, {"templateId": template_id}, field_id, candidate)
+                    except ValueError:
+                        pass
+                    else:
+                        desired_contracts[field_id]["nativeCanonicalValueProof"] = witness
+                        continue
                 if field_id not in saved or field_id not in current or current[field_id] != saved[field_id]:
                     edited.append(field_id)
                 else:
@@ -516,14 +857,46 @@ def build_plan(manifest: dict, snapshot: dict, schema: Schema, routes: list[str]
             guid(existing["revision"])
             action, version, storage = "update", int(existing["selectedVersion"]), preserved_storage(existing)
             precondition = {"revision": existing["revision"], "itemSha256": checksum(existing)}
-        for field_id, value in changes.items():
-            set_native_field(storage, schema.field(template_id, field_id), field_id, value, version)
+        contracts = operation_value_contracts(changes, schema, template_id, version, action)
+        for field_id, contract in contracts.items():
+            if contract.get("payloadOverride") == "omitted-desired-empty":
+                desired_contracts[field_id].update(value_codec.empty_create_contract())
+                continue
+            set_native_field(storage, schema.field(template_id, field_id), field_id, contract["expectedSerializedWireValue"], version)
+        if action == "create":
+            require_exact_storage_encoding(storage)
         native = {"ID": identifier, "Parent": parent_id, "Template": template_id, "Path": path, "storage": storage}
-        operations.append({"action": action, "key": record["key"], "id": identifier, "path": path, "templateId": template_id, "parentId": parent_id, "language": "en", "selectedVersion": version, "fields": changes, "precondition": precondition, "native": native})
+        if action == "update":
+            native["preservedNativeSource"] = {"rawScs": existing["rawScs"], "sha256": existing["rawScsSha256"]}
+            native["managedFieldLocations"] = {}
+            for field_id, contract in contracts.items():
+                location = "enVersions:" + str(version) if contract["storage"] == "versioned" else contract["storage"]
+                native["managedFieldLocations"].setdefault(location, []).append(field_id)
+            # Unknown original formats fail closed now, rather than being
+            # silently normalized by a later optional native adapter.
+            original_field_spans(existing["rawScs"])
+        operations.append({"action": action, "key": record["key"], "id": identifier, "path": path, "templateId": template_id, "parentId": parent_id, "language": "en", "selectedVersion": version, "fields": changes, "nativeValueContracts": contracts, "precondition": precondition, "native": native})
     # All existing dependencies, including parents, linked media and unchanged
     # scaffold items, must stay identical through review and live preflight.
     dependencies = {identifier: {k: copy.deepcopy(row[k]) for k in ("id", "path", "templateId", "parentId", "selectedVersion", "revision", "storage", "languages")} for identifier, row in by_id.items()}
     report = {"schemaVersion": 1, "mode": "local-private-editorial-plan", "target": manifest["target"], "bindings": manifest.get("bindings", {}), "manifestSha256": checksum(manifest), "snapshotSha256": checksum(snapshot), "schemaSha256": checksum(schema.items), "capturedAt": snapshot["capturedAt"], "routes": routes, "includeKeys": list(include_keys), "selectedItemCount": len(selected), "operations": operations, "conflicts": conflicts, "sourceExceptions": exceptions, "unchangedIds": unchanged, "dependencyPreconditions": dependencies, "scaffoldPreconditions": copy.deepcopy(snapshot["scaffold"]), "reportedOrphanIds": [], "priorItemsOutsideSelectedScope": sorted(set(prior_items) - {guid(i["id"]) for i in selected}), "createApplyReady": not conflicts and not exceptions and bool(operations) and all(o["action"] == "create" for o in operations), "nativeExecutionEnabled": NATIVE_EXECUTION_ENABLED, "atomicRevisionPreconditions": False, "remoteWrites": 0, "limitations": ["SCS offers no atomic revision compare-and-swap; update execution is disabled", "Native execution is disabled until the live CLI alias/target integration is separately verified", "Existing items/fields are never silently adopted; native Home template migration is separate", "CreateOnly execution still requires a fresh complete snapshot and verified native readback", "No delete, Settings, users, roles, permission changes or publication"]}
+    report["nativeValueEncoding"] = value_codec.ENCODING
+    report["nativeValueWireDifferences"] = wire_differences
+    report["sourceValueContracts"] = source_contracts
+    report["omittedDesiredEmptyReuses"] = empty_reuses
+    requirements = required_empty_defaults([*operations, *empty_reuses], schema)
+    report["requiredEmptyDefaultFields"] = requirements
+    report["emptyDefaultProofVerified"] = not requirements
+    report["emptyDefaultObservations"] = []
+    if requirements and (empty_default_proof is not None or empty_default_schema_proof is not None):
+        report["emptyDefaultObservations"] = verify_empty_default_proof(empty_default_proof, empty_default_schema_proof, requirements, report["target"])
+        report["emptyDefaultProofVerified"] = True
+        report["emptyDefaultProof"] = copy.deepcopy(empty_default_proof)
+        report["emptyDefaultSchemaProof"] = copy.deepcopy(empty_default_schema_proof)
+    if requirements and not report["emptyDefaultProofVerified"]:
+        report["createApplyReady"] = False
+    report["limitations"].append("Observed literal-block wire values append exactly one LF when source lacks it; per-field contracts disclose this difference; no general newline equivalence")
+    report["limitations"].append("Desired-empty NEW create fields are omitted and must remain absent; genuine native Standard Values plus used-schema proof is required before readiness or effective-default verification; existing clears are blocked")
     report["planSha256"] = checksum(report)
     return report
 
@@ -566,6 +939,11 @@ def reviewed_module(report: dict) -> dict:
 
 
 def write_plan(report: dict, schema: Schema, output: Path) -> dict:
+    if report.get("nativeValueEncoding") != value_codec.ENCODING:
+        raise ValueError("Plan must be regenerated with the observed native Value codec")
+    for operation in report["operations"]:
+        verified_operation_wire_fields(operation)
+    verify_plan_empty_defaults(report)
     output = private_output(output)
     if output.exists():
         raise ValueError("Batch directory already exists; inspect its receipt before creating a new batch")
@@ -590,6 +968,7 @@ def write_plan(report: dict, schema: Schema, output: Path) -> dict:
 
 
 def check_fresh(plan: dict, snapshot: dict, max_age_seconds=120) -> None:
+    verify_plan_empty_defaults(plan, required=True)
     by_id, by_path = snapshot_parser.verify_snapshot(snapshot)
     if snapshot.get("target") != plan["target"] or snapshot.get("bindings", {}) != plan["bindings"]:
         raise ValueError("Fresh capture target/bindings changed")
@@ -622,6 +1001,9 @@ def verified_batch(output: Path) -> tuple[dict, dict]:
     unsigned = {k: v for k, v in plan.items() if k != "planSha256"}
     if checksum(unsigned) != plan["planSha256"]:
         raise ValueError("Reviewed plan changed after preparation")
+    if plan.get("nativeValueEncoding") != value_codec.ENCODING:
+        raise ValueError("Plan must be regenerated with the observed native Value codec")
+    verify_plan_empty_defaults(plan)
     module = json.loads((output / (NAMESPACE + ".module.json")).read_text())
     if checksum(module) != plan["moduleSha256"] or module != reviewed_module(plan):
         raise ValueError("Private module changed after preparation")
@@ -631,12 +1013,15 @@ def verified_batch(output: Path) -> tuple[dict, dict]:
             raise ValueError("Serialized native values changed after preparation")
     expected_files = set()
     for index, operation in enumerate(plan["operations"], 1):
+        verified_operation_wire_fields(operation)
         filename = str(Path("items") / ("allianz.editorial." + str(index).zfill(5)) / (operation["path"].rsplit("/", 1)[-1] + ".yml"))
         expected_files.add(filename)
         path = output / filename
         if path.is_symlink():
             raise ValueError("Serialized item cannot be a symbolic link")
-        native = snapshot_parser.read_scs(path)
+        raw = path.read_text(encoding="utf-8")
+        value_codec.validate_tokens(raw)
+        native = snapshot_parser.parse_scs(raw)
         normalized = snapshot_parser.normalize_item(native)
         expected_native = operation["native"]
         if any(native[key] != expected_native[key] for key in ("ID", "Parent", "Template", "Path")) or preserved_storage(normalized) != expected_native["storage"]:
@@ -721,7 +1106,9 @@ def apply_creates(output: Path, fresh: dict, approval: dict) -> dict:
     return receipt
 
 
-def finalize_ledger(plan: dict, post: dict, receipt: dict, prior=None) -> dict:
+def finalize_ledger(plan: dict, post: dict, receipt: dict, prior=None, *, empty_default_proof=None, empty_default_schema_proof=None) -> dict:
+    if plan.get("nativeValueEncoding") != value_codec.ENCODING:
+        raise ValueError("Plan must be regenerated with the observed native Value codec")
     by_id, _ = snapshot_parser.verify_snapshot(post)
     if receipt.get("status") != "native-readback-pulled-awaiting-verification" or receipt.get("planSha256") != plan["planSha256"] or receipt.get("target") != plan["target"]:
         raise ValueError("A successful scoped CLI write/readback receipt is required")
@@ -734,7 +1121,10 @@ def finalize_ledger(plan: dict, post: dict, receipt: dict, prior=None) -> dict:
     previous = copy.deepcopy(prior or {"target": plan["target"], "items": {}})
     if previous.get("target") != plan["target"]:
         raise ValueError("Prior ledger belongs to another target")
+    default_observations = verify_plan_empty_defaults(plan, proof=empty_default_proof, schema_proof=empty_default_schema_proof, required=True)
+    defaults = {(row["templateId"], row["fieldId"]): row for row in default_observations}
     for operation in plan["operations"]:
+        wire_fields = verified_operation_wire_fields(operation)
         item = by_id.get(operation["id"])
         if not item or item["path"] != operation["path"] or guid(item["templateId"]) != operation["templateId"] or guid(item["parentId"]) != operation["parentId"]:
             raise ValueError("Native readback identity/template/parent differs from the reviewed item")
@@ -744,24 +1134,29 @@ def finalize_ledger(plan: dict, post: dict, receipt: dict, prior=None) -> dict:
         if item["selectedVersion"] != operation["selectedVersion"]:
             raise ValueError("Native readback selected version differs from the reviewed operation")
         storage = preserved_storage(item)
-        for field_id, expected in operation["fields"].items():
-            if item["fields"].get(field_id) != expected:
-                raise ValueError("Native field value did not round-trip; no successful ledger written")
-            expected_storage = operation["native"]["storage"]
+        expected_storage = copy.deepcopy(operation["native"]["storage"])
+        observed_fields, canonical_proofs, omissions = {}, {}, {}
+        for field_id, contract in operation["nativeValueContracts"].items():
+            if contract.get("payloadOverride") == "omitted-desired-empty":
+                if any(found == field_id for _, _, found, _ in storage_value_rows(storage)):
+                    raise ValueError("Desired-empty new create must remain absent; stored empty, literal quotes, or data are not accepted")
+                omissions[field_id] = {"nativeStoredState": "absent", "payloadOverride": "omitted-desired-empty", "acceptedNativeStoredStates": ["absent"], "effectiveDefaultValue": "", "defaultProof": defaults[(operation["templateId"], field_id)]}
+        for field_id, expected in wire_fields.items():
+            contract = operation["nativeValueContracts"][field_id]
+            actual = item["fields"].get(field_id)
+            if actual != expected:
+                canonical_proofs[field_id] = native_plain_richtext_witness(item, operation, field_id, contract)
+            observed_fields[field_id] = actual
             # Verify the exact native storage location, not only flattened value.
-            occurrences = []
-            for bucket in ("shared", "enUnversioned"):
-                if field_id in expected_storage[bucket]:
-                    occurrences.append(storage[bucket].get(field_id))
-            for version, values in expected_storage["enVersions"].items():
-                if field_id in values:
-                    occurrences.append(storage["enVersions"].get(version, {}).get(field_id))
-            if not occurrences or any(field_value(v) != expected for v in occurrences):
+            bucket = contract["storage"]
+            actual_values = storage["enVersions"].get(str(contract["version"]), {}) if bucket == "versioned" else storage[bucket]
+            if field_value(actual_values.get(field_id)) != actual:
                 raise ValueError("Native field storage/version did not round-trip")
+            expected_values = expected_storage["enVersions"].get(str(contract["version"]), {}) if bucket == "versioned" else expected_storage[bucket]
+            expected_values[field_id] = actual
         # Every non-owned value in the reviewed native document must survive.
         # Only the written English version's revision may be regenerated. SCS
         # update execution remains disabled; this is also a future adapter gate.
-        expected_storage = operation["native"]["storage"]
         for bucket in ("shared", "enUnversioned"):
             for field_id, value in expected_storage[bucket].items():
                 if storage[bucket].get(field_id) != value:
@@ -775,8 +1170,18 @@ def finalize_ledger(plan: dict, post: dict, receipt: dict, prior=None) -> dict:
         if storage.get("otherLanguages", {}) != expected_storage.get("otherLanguages", {}):
             raise ValueError("Native readback changed an unowned language/version")
         owned = previous["items"].get(operation["id"], {}).get("fields", {})
-        owned.update(operation["fields"])
-        previous["items"][operation["id"]] = {"key": operation["key"], "path": operation["path"], "templateId": operation["templateId"], "parentId": operation["parentId"], "fields": owned, "revision": item["revision"], "selectedVersion": item["selectedVersion"], "nativeReadbackSha256": checksum(item)}
+        owned.update(observed_fields)
+        logical_fields = previous["items"].get(operation["id"], {}).get("sourceLogicalFields", {}).copy()
+        logical_fields.update(operation["fields"])
+        prior_item = previous["items"].get(operation["id"], {})
+        prior_omissions = copy.deepcopy(prior_item.get("omittedDesiredEmptyFields", {}))
+        prior_omissions.update(omissions)
+        prior_canonical = copy.deepcopy(prior_item.get("nativeCanonicalValueProofs", {}))
+        for field_id in observed_fields:
+            prior_canonical.pop(field_id, None)
+        prior_canonical.update(canonical_proofs)
+        serialization_differences = {field_id: "observed-owned-richtext-unquoted-single-line-preserves-exact-logical" for field_id in prior_canonical}
+        previous["items"][operation["id"]] = {"key": operation["key"], "path": operation["path"], "templateId": operation["templateId"], "parentId": operation["parentId"], "fields": owned, "sourceLogicalFields": logical_fields, "omittedDesiredEmptyFields": prior_omissions, "nativeCanonicalValueProofs": prior_canonical, "nativeSerializationDifferences": serialization_differences, "nativeValueEncoding": value_codec.ENCODING, "revision": item["revision"], "selectedVersion": item["selectedVersion"], "nativeReadbackSha256": checksum(item)}
     previous.update({"status": "native-readback-verified", "lastPlanSha256": plan["planSha256"], "lastReadbackSha256": checksum(post), "verifiedAt": now()})
     return previous
 
@@ -790,6 +1195,8 @@ def main() -> None:
     prepare.add_argument("--schema", required=True, type=Path)
     prepare.add_argument("--structure", type=Path, default=REPO / "authoring/allianz-life/structure-manifest.json")
     prepare.add_argument("--ledger", type=Path)
+    prepare.add_argument("--empty-default-proof", type=Path, help="Actual target-bound native Standard Values raw readback for omitted desired-empty creates")
+    prepare.add_argument("--empty-default-schema-proof", type=Path, help="Actual target-bound owning-template/field/section Type/storage/membership raw readback")
     prepare.add_argument("--route", required=True, action="append")
     prepare.add_argument("--include-key", action="append", default=[])
     prepare.add_argument("--output", required=True, type=Path)
@@ -805,15 +1212,19 @@ def main() -> None:
     finish.add_argument("batch", type=Path)
     finish.add_argument("--post-snapshot", required=True, type=Path)
     finish.add_argument("--prior-ledger", type=Path)
+    finish.add_argument("--empty-default-proof", type=Path, help="Fresh actual native Standard Values proof; omission is never stored-empty proof")
+    finish.add_argument("--empty-default-schema-proof", type=Path)
     finish.add_argument("--ledger-output", required=True, type=Path)
     args = parser.parse_args()
     read = lambda p: json.loads(p.read_text())
     if args.command == "prepare":
         snapshot = read(args.snapshot)
         schema = Schema.from_files(args.schema, args.structure, snapshot)
-        plan = build_plan(read(args.manifest), snapshot, schema, args.route, read(args.ledger) if args.ledger else None, args.include_key)
+        plan = build_plan(read(args.manifest), snapshot, schema, args.route, read(args.ledger) if args.ledger else None, args.include_key, empty_default_proof=read(args.empty_default_proof) if args.empty_default_proof else None, empty_default_schema_proof=read(args.empty_default_schema_proof) if args.empty_default_schema_proof else None)
         result = write_plan(plan, schema, args.output)
-        print(json.dumps({k: result[k] for k in ("mode", "selectedItemCount", "createApplyReady", "remoteWrites")}))
+        summary = {k: result[k] for k in ("mode", "selectedItemCount", "createApplyReady", "remoteWrites", "nativeValueEncoding")}
+        summary.update(nativeValueWireDifferenceCount=len(result["nativeValueWireDifferences"]), requiredEmptyDefaultFieldCount=len(result["requiredEmptyDefaultFields"]), emptyDefaultProofVerified=result["emptyDefaultProofVerified"], nativeWriteVerified=False)
+        print(json.dumps(summary))
     elif args.command == "bind-native":
         result = bind_native_scaffold(read(args.manifest), read(args.snapshot))
         destination = args.output.resolve()
@@ -828,7 +1239,7 @@ def main() -> None:
         batch = private_output(args.batch)
         plan, _ = verified_batch(batch)
         receipt = read(batch / "apply-receipt.json")
-        result = finalize_ledger(plan, read(args.post_snapshot), receipt, read(args.prior_ledger) if args.prior_ledger else None)
+        result = finalize_ledger(plan, read(args.post_snapshot), receipt, read(args.prior_ledger) if args.prior_ledger else None, empty_default_proof=read(args.empty_default_proof) if args.empty_default_proof else None, empty_default_schema_proof=read(args.empty_default_schema_proof) if args.empty_default_schema_proof else None)
         destination = args.ledger_output.resolve()
         if not destination.is_relative_to((REPO / ".sitecore/allianz-editorial").resolve()):
             raise ValueError("Ownership ledger must remain in ignored private editorial storage")

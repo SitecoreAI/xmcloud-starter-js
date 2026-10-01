@@ -79,24 +79,44 @@ export function headingTag(level?: string): 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '
 export function safeLink(field?: LinkField): LinkField {
   if (!field) return { value: { href: '' } };
   const href = field.value?.href ?? '';
+  // A cleared native field must stay cleared, including its authoring metadata.
+  if (!href) return field;
+  const unavailable = () => ({
+    ...field,
+    value: { ...field.value, href: '#service-unavailable', querystring: '', anchor: '', target: '', title: 'This service is unavailable' },
+  });
   let url: URL;
-  try { url = new URL(href.replace(/%23/gi, '#') || '#', 'https://www.allianzlife.com'); }
-  catch { return { ...field, value: { ...field.value, href: '#service-unavailable', target: '', title: 'This service is unavailable' } }; }
-  const isPublic = url.hostname === 'www.allianzlife.com' &&
+  try { url = new URL(href, 'https://www.allianzlife.com'); }
+  catch { return unavailable(); }
+  const isPublic = url.origin === 'https://www.allianzlife.com' && !url.username && !url.password &&
     !/^\/(?:new-york\/)?(login|registration|spa|account|portal|secured|logout|manageuserprofile|api|sitecore)(\/|$)/i.test(url.pathname);
   const path = (() => { try { return decodeURIComponent(url.pathname).toLowerCase().replace(/\/$/, '') || '/'; } catch { return ''; } })();
   const fixtureRouteAvailable = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE === 'connected' ||
-    path in publicRouteIndex || /^\/allianz-(?:legacy-)?assets\//.test(path);
-  const canNavigate = isPublic && fixtureRouteAvailable;
+    Object.hasOwn(publicRouteIndex, path) || /^\/allianz-(?:legacy-)?assets\//.test(path) || path === '/search';
+  const canNavigate = isPublic && !!path && !/%(?:2f|5c)/i.test(url.pathname) && fixtureRouteAvailable &&
+    !/^\/(?:new-york\/)?(login|registration|spa|account|portal|secured|logout|manageuserprofile|api|sitecore)(\/|$)/i.test(path);
   const isLocalAnchor = href.startsWith('#');
-  const isUnavailable = /#(?:demo|service)-unavailable/.test(href);
+  const isQueryOnly = href.startsWith('?');
+  const nativeQuery = field.value.querystring?.replace(/^\?/, '') || '';
+  const hrefQuery = url.search.slice(1);
+  // Preserve encoded values, repeated keys and ordering. Do not decode %23 in
+  // query values: it is data, not a fragment delimiter.
+  const querystring = hrefQuery && nativeQuery && hrefQuery !== nativeQuery
+    ? `${hrefQuery}&${nativeQuery}` : nativeQuery || hrefQuery;
+  const anchor = field.value.anchor?.replace(/^#/, '') || url.hash.slice(1);
+  const isUnavailable = [anchor, url.hash.slice(1)].some((value) => /^(?:demo|service)-unavailable$/.test(value));
+  if (isUnavailable || (!canNavigate && !isLocalAnchor)) return unavailable();
   return {
     ...field,
     value: {
       ...field.value,
-      href: isUnavailable ? '#service-unavailable' : isLocalAnchor ? href : canNavigate ? `${url.pathname}${url.search}${url.hash}` : '#service-unavailable',
+      // Installed SDK Next Link accepts href as pathname and reads query/hash
+      // from these separate attributes. Anchor/query-only links use its React
+      // anchor fallback, where the full same-page URL belongs in href.
+      href: isLocalAnchor ? `${nativeQuery ? `?${nativeQuery}` : ''}${href}` : isQueryOnly ? `?${querystring}${anchor ? `#${anchor}` : ''}` : url.pathname,
+      querystring: isLocalAnchor || isQueryOnly ? '' : querystring,
+      anchor: isLocalAnchor || isQueryOnly ? '' : anchor,
       target: '',
-      ...(isUnavailable || (!canNavigate && !isLocalAnchor) ? { title: 'This service is unavailable' } : {}),
     },
   };
 }

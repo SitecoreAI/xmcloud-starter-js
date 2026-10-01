@@ -134,6 +134,7 @@ test('an empty authored title retains its SDK field and an accessible file label
 });
 
 const searchRules = load(new URL('../allianz-search/search-rules.props.ts', import.meta.url));
+const capturedSearchPaths = Object.keys(JSON.parse(fs.readFileSync(new URL('../../../content/public-route-index.json', import.meta.url), 'utf8'))).slice(0, 25);
 function searchHarness(kind, initial = { pathname: '/search', query: 'Annuities' }) {
   let hooks = [], cursor = 0, previousKey;
   let pathname = initial.pathname, query = initial.query, root;
@@ -148,7 +149,7 @@ function searchHarness(kind, initial = { pathname: '/search', query: 'Annuities'
     'next/navigation': { useRouter: () => ({ push: (value) => pushes.push(value) }), usePathname: () => pathname, useSearchParams: () => new URLSearchParams(query ? { q: query } : {}) },
     'components/content-sdk/NoDataFallback': 'no-data', 'lib/allianz-fields': fields,
     './search-rules.props': searchRules,
-    './search-index.json': Array.from({ length: 25 }, (_, index) => ({ path: `/get-answers/example-${index}`, title: `Annuities ${index}`, description: 'Public example' })),
+    './search-index.json': capturedSearchPaths.map((path, index) => ({ path, title: `Annuities ${index}`, description: 'Public example' })),
   };
   const source = kind === 'legacy' ? '../allianz-legacy-header/AllianzLegacyHeader.tsx' : '../allianz-search/AllianzSearch.tsx';
   const { Default } = load(new URL(source, import.meta.url), mocks);

@@ -10,7 +10,7 @@
     "expectedEnvironmentId": "56W3hhEUAQ5GLwsHAehRhe",
     "siteName": "allianz-life",
     "language": "en",
-    "expectedSiteRoot": "/sitecore/content/Allianz/allianz-life",
+    "expectedSiteRoot": "/sitecore/content/allianz/allianz-life",
     "nativeSiteId": null,
     "nativeSiteAnalyticsId": null,
     "verifiedEdgeScope": null,
@@ -184,8 +184,8 @@
       "heading",
       "primaryLink"
     ],
-    "originalPageLocalDatasourcePath": "/sitecore/content/Allianz/allianz-life/Home/Data/AllianzHero 01",
-    "sharedVariantParentPath": "/sitecore/content/Allianz/allianz-life/Data/Allianz Life/Demo Variants/Homepage",
+    "originalPageLocalDatasourcePath": "/sitecore/content/allianz/allianz-life/Home/Data/AllianzHero 01",
+    "sharedVariantParentPath": "/sitecore/content/allianz/allianz-life/Data/Allianz Life/Demo Variants/Homepage",
     "nativeABAllowed": false
   },
   "affinity": {
@@ -247,7 +247,7 @@
     "componentName": "AllianzCardGrid",
     "sourceKey": "/what-we-offer/annuities:section:5",
     "sourceFixtureRenderingUid": "E80D1B1B-07DD-57A9-8C3D-FFF81D51B299",
-    "originalPageLocalDatasourcePath": "/sitecore/content/Allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 07",
+    "originalPageLocalDatasourcePath": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 07",
     "controlDatasourceKey": "annuities-cta-control",
     "alternativeDatasourceKey": "annuities-cta-alternative",
     "trafficSplitPercent": {

@@ -45,8 +45,8 @@ function loadSource(filename) {
 }
 
 const helpers = loadSource(path.join(sourceRoot, 'lib/allianz-field-state.ts'));
-const componentNames = ['Hero', 'RichText', 'CardGrid', 'Article', 'CTA'];
-const folderNames = ['hero', 'rich-text', 'card-grid', 'article', 'cta'];
+const componentNames = ['Hero', 'RichText', 'CardGrid', 'Article', 'CTA', 'Accordion'];
+const folderNames = ['hero', 'rich-text', 'card-grid', 'article', 'cta', 'accordion'];
 const components = Object.fromEntries(componentNames.map((name, index) => [name,
   loadSource(path.join(sourceRoot, `components/allianz-${folderNames[index]}/Allianz${name}.tsx`)).Default,
 ]));
@@ -104,6 +104,7 @@ const cases = [
   ['RichText', 'disclosures', introduction, ['intro-body']],
   ['Article', 'article', { heading: text('article-heading'), summary: rich('article-summary'), body: rich('article-body') }, ['article-heading', 'article-summary', 'article-body']],
   ['CTA', 'cta', { heading: text('cta-heading'), body: rich('cta-body'), link: link('cta-link') }, ['cta-heading', 'cta-body', 'cta-link']],
+  ['Accordion', 'accordion', { heading: text('accordion-heading'), primaryLink: link('accordion-link'), children: { results: [{ id: 'entry', heading: text('entry-heading'), body: rich('entry-body') }] } }, ['accordion-heading', 'accordion-link', 'entry-heading', 'entry-body']],
   ...['stacked', 'image-left', 'image-right', 'bordered'].map((layout) => ['CardGrid', layout,
     { ...introduction, children: { results: [card] } },
     ['intro-heading', 'intro-subheading', 'intro-body', 'intro-primary', 'card-heading', 'card-subheading', 'card-body', 'card-image', 'card-icon', 'card-alphanumeral', 'card-link'],
@@ -116,6 +117,10 @@ for (const [name, layout, datasource, expectedIds] of cases) {
   test(`${name} ${layout}: cleared native fields retain SDK authoring metadata`, () => {
     const html = render(components[name], datasource, layout, true);
     expectNativeFields(html, expectedIds);
+    if (name === 'Accordion') {
+      assert.match(html, /aria-expanded="true"/);
+      assert.doesNotMatch(html, /class="c-accordion__item-content" hidden/);
+    }
     if (expectedIds.some((id) => /image|desktop|mobile|icon/.test(id))) assert.match(html, /scEmptyImage/);
   });
   test(`${name} ${layout}: normal mode omits empty native controls`, () => {
@@ -123,6 +128,7 @@ for (const [name, layout, datasource, expectedIds] of cases) {
     assert.deepEqual(metadataIds(html), []);
     assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage|href="\/"/);
     assert.doesNotMatch(html, /class="a-link"/);
+    if (name === 'Accordion') assert.match(html, /aria-expanded="false"/);
   });
 }
 

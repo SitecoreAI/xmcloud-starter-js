@@ -13,9 +13,10 @@ import hashlib
 import importlib.util
 import json
 import mimetypes
+import os
 from pathlib import Path
 import re
-from urllib.parse import urlsplit, urlencode
+from urllib.parse import urlsplit, urlencode, unquote, parse_qsl
 import uuid
 import xml.etree.ElementTree as ET
 
@@ -25,7 +26,7 @@ PUBLIC = REPO / "examples/allianz-life/public"
 spec = importlib.util.spec_from_file_location("import_planner", SCRIPT_ROOT / "import-planner.py")
 planner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(planner)
-SITE_ROOT = "/sitecore/content/Allianz/allianz-life"
+SITE_ROOT = "/sitecore/content/allianz/allianz-life"
 MEDIA_ROOT = "/sitecore/media library/Project/Allianz Life"
 TEMPLATES_ROOT = "/sitecore/templates/Project/Allianz Life"
 RENDERINGS_ROOT = "/sitecore/layout/Renderings/Project/Allianz Life"
@@ -397,7 +398,7 @@ class Builder:
                     partial_ids.append(identifier)
                 # Never fabricate the generated placeholder item or infer that
                 # direct SCS creation triggers the supported UI side effect.
-                self.exception(key, "native-generated-partial-placeholder-readback-required", partialPath=library_root + "/Global/" + name, signature=signature, note="Create through supported native partial-design authoring, read and preserve the generated placeholder settings, then explicitly reconcile the captured Signature and rendering placeholder path")
+                self.exception(key, "native-generated-partial-placeholder-readback-required", partialPath=library_root + "/Global/" + name, signature=signature, note="Use a supported native creation path (CLI/API/event or UI where verified), independently read Signature and any generated placeholder settings, preserve native side effects, then reconcile the authored rendering blueprint. A raw create alone is not proof of creation-event behavior")
             if len(partial_ids) != 2:
                 continue
             key = "presentation:page-design:" + family
@@ -532,6 +533,479 @@ def load_rows(path: Path | None, key: str | None = None) -> list[dict]:
     return value.get(key, value.get("assets", value.get("documents", value.get("items", []))))
 
 
+def composition_modules():
+    """Load the existing offline codec/schema, never a native write adapter."""
+    result = []
+    for name, filename in (("compose_native", "native-snapshot.py"), ("compose_editorial", "serialize-editorial.py")):
+        module_spec = importlib.util.spec_from_file_location(name, SCRIPT_ROOT / filename)
+        module = importlib.util.module_from_spec(module_spec)
+        module_spec.loader.exec_module(module)
+        result.append(module)
+    return tuple(result)
+
+
+def verify_bootstrap_capture(root: Path) -> dict:
+    """Verify every supplied per-file hash and native document before use.
+
+    The manifest protects accidental corruption; its digest still needs the
+    independently checked archive provenance. It is not a signature or a claim
+    that old readback is fresh enough for an apply.
+    """
+    native, _ = composition_modules()
+    root = root.resolve()
+    manifest = json.loads((root / "capture-manifest.json").read_text())
+    target = manifest.get("target", {})
+    if target.get("projectId") != native.PROJECT_ID or target.get("environmentId") != native.ENVIRONMENT_ID or target.get("siteRoot") != "/sitecore/content/allianz/allianz-life":
+        raise ValueError("Bootstrap capture belongs to another native target")
+    if manifest.get("remoteWrites") != 0 or manifest.get("credentialsExported") is not False:
+        raise ValueError("Bootstrap capture is not the bounded credential-free readback")
+    verified = {}
+    for row in manifest["files"]:
+        relative = Path(row["path"])
+        path = root / relative
+        if relative.is_absolute() or ".." in relative.parts or relative.as_posix() in verified or any(p.is_symlink() for p in (path, *path.parents)) or not path.resolve().is_relative_to(root):
+            raise ValueError("Unsafe or duplicate capture manifest file")
+        if not path.is_file() or path.stat().st_size != row["bytes"] or digest_file(path) != row["sha256"]:
+            raise ValueError("Bootstrap per-file hash/size mismatch: " + str(relative))
+        verified[relative.as_posix()] = row["sha256"]
+    if not {"bootstrap-snapshot.json", "bootstrap-summary.json"}.issubset(verified):
+        raise ValueError("Bootstrap snapshot and summary must be manifested")
+    snapshot = json.loads((root / "bootstrap-snapshot.json").read_text())
+    if snapshot.get("target") != target or snapshot.get("remoteWrites") != 0:
+        raise ValueError("Bootstrap snapshot target/provenance mismatch")
+    ids, paths = set(), set()
+    for row in snapshot["items"]:
+        if row["id"] in ids or row["path"].casefold() in paths:
+            raise ValueError("Duplicate bootstrap native identity or path")
+        ids.add(row["id"]); paths.add(row["path"].casefold())
+        if verified.get(row["sourceFile"]) != row["sourceSha256"]:
+            raise ValueError("Bootstrap item lacks its original manifested bytes")
+        raw = native.read_scs(root / row["sourceFile"])
+        if raw != row["rawSCS"] or any(raw[key] != row[name] for key, name in (("ID", "id"), ("Path", "path"), ("Parent", "parentId"), ("Template", "templateId"))):
+            raise ValueError("Bootstrap item differs from its independently read native document")
+        field_rows = []
+        def append_fields(fields, storage, language=None, version=None):
+            field_rows.extend({"id": f["ID"], "hint": f.get("Hint"), "storage": storage, "language": language, "version": version, "value": f["Value"], **({"blobId": f["BlobID"]} if "BlobID" in f else {})} for f in fields)
+        append_fields(raw.get("SharedFields", []), "shared")
+        for language in raw.get("Languages", []):
+            append_fields(language.get("Fields", []), "unversioned", language["Language"])
+            for version in language.get("Versions", []):
+                append_fields(version.get("Fields", []), "versioned", language["Language"], version["Version"])
+        if field_rows != row["fieldStorage"]:
+            raise ValueError("Bootstrap normalized field scopes differ from original native storage")
+    if len(ids) != manifest["uniqueSCSItems"]:
+        raise ValueError("Bootstrap item count differs from manifest")
+    scopes = []
+    for path in sorted(verified):
+        if path.endswith(".module.json"):
+            module = json.loads((root / path).read_text())
+            scopes.extend({"path": i["path"], "scope": i["scope"]} for i in module.get("items", {}).get("includes", []))
+    return {"snapshot": snapshot, "root": str(root), "manifestSha256": digest_file(root / "capture-manifest.json"), "snapshotSha256": verified["bootstrap-snapshot.json"], "verifiedFileCount": len(verified), "requestedReadScopes": scopes}
+
+
+def audit_native_composition(capture: dict) -> dict:
+    """Audit observed relationships, without treating layout deltas as merged."""
+    native, _ = composition_modules()
+    rows = capture["snapshot"]["items"]
+    by_path = {r["path"]: r for r in rows}
+    mnp = "/sitecore/content/industry-verticals/mnp"
+    def field(row, identifier, storage="shared"):
+        raw = row["rawSCS"]
+        if storage == "shared":
+            return next((f["Value"] for f in raw.get("SharedFields", []) if f["ID"] == identifier), "")
+        raise ValueError("Audit field lookup requires explicit shared storage")
+    def identity(row):
+        return {k: row.get(k) for k in ("id", "path", "parentId", "templateId", "revision", "sharedRevision", "sourceSha256")}
+    mapping_item = by_path[mnp + "/Presentation/Page Designs"]
+    mapping_raw = field(mapping_item, "ba1f60d6-3deb-40cc-bb61-eec772279ee1")
+    # The observed outer UrlEncode wraps a UrlString whose GUID values are
+    # separately encoded. parse_qsl performs the inner decoding exactly once.
+    pairs = parse_qsl(unquote(mapping_raw), strict_parsing=True)
+    mapping = {native.guid(k, "Mapped template"): native.guid(v, "Mapped design") for k, v in pairs}
+    if len(mapping) != len(pairs):
+        raise ValueError("Duplicate native page-template mapping")
+    home = by_path[mnp + "/Home"]
+    design = by_path[mnp + "/Presentation/Page Designs/Default"]
+    explicit = field(home, "24171bf1-c0e1-480e-be76-4c0a1876f916")
+    if explicit or mapping.get(home["templateId"]) != design["id"]:
+        raise ValueError("Observed MNP Home does not select the expected mapped Default design")
+    partial_ids = [native.guid(v, "Partial design") for v in field(design, "0966b999-0d0e-4278-acc9-9da69d461fe6").split("|") if v]
+    expected_partials = [by_path[mnp + "/Presentation/Partial Designs/" + name] for name in ("Header", "Footer")]
+    if partial_ids != [r["id"] for r in expected_partials]:
+        raise ValueError("Observed Default partial order differs from Header then Footer")
+    partials = []
+    for row in expected_partials:
+        if row["templateId"] != "fd2059fd-6043-4dfe-8c04-e2437ce87634":
+            raise ValueError("MNP partial does not use the observed headless model")
+        layouts = []
+        for f in row["fieldStorage"]:
+            if f["id"] not in ("f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e", FINAL_RENDERINGS) or not f["value"]:
+                continue
+            xml = ET.fromstring(f["value"])
+            renderings = [{key.split("}")[-1]: value for key, value in r.attrib.items()} for d in xml.findall("d") for r in d.findall("r")]
+            layouts.append({"fieldId": f["id"], "storage": f["storage"], "language": f["language"], "version": f["version"], "rawDeltaSha256": hashlib.sha256(f["value"].encode()).hexdigest(), "renderings": renderings, "effectiveMergedLayout": False})
+        partials.append({**identity(row), "signature": field(row, "55faae90-3bba-4f7f-96fe-13c3f40055ff"), "layouts": layouts})
+    placeholders = []
+    for row in rows:
+        if row["templateId"] == "5c547d4e-7111-4995-95b0-6b561751bf2e":
+            placeholders.append({**identity(row), "key": field(row, "7256bdab-1fd2-49dd-b205-cb4873d2917c"), "allowedControls": re.findall(r"[\da-fA-F]{8}(?:-[\da-fA-F]{4}){3}-[\da-fA-F]{12}", field(row, "e391b526-d0c5-439d-803e-17512eae6222"))})
+    enum_roots = {
+        "nonReusableDatasourceBehaviour": "/sitecore/system/Settings/Foundation/Experience Accelerator/Editing/DatasourceBehaviour",
+        "globalDatasourceSelectionBehaviour": "/sitecore/system/Settings/Foundation/Experience Accelerator/Local Datasources/Enums/Data Source Selection Behavior",
+    }
+    enums = {name: [{**identity(r), "value": field(r, "f917c951-1f75-4d62-b14a-bc6888d7eeca")} for r in rows if r["parentId"] == by_path[path]["id"]] for name, path in enum_roots.items()}
+    site = capture["snapshot"]["target"]["siteRoot"]
+    generated_root = by_path[site + "/Presentation/Placeholder Settings/Partial Design"]
+    if not any(s["scope"] == "ItemAndDescendants" and planner.inside(generated_root["path"], s["path"]) for s in capture.get("requestedReadScopes", [])):
+        raise ValueError("Allianz generated-placeholder folder lacks full-subtree read scope")
+    return {
+        "mode": "actual-same-tenant-native-readback-audit",
+        "target": capture["snapshot"]["target"],
+        "provenance": {
+            k: capture[k] for k in ("manifestSha256", "snapshotSha256", "verifiedFileCount")
+        },
+        "mnp": {
+            "home": identity(home),
+            "selection": "captured template mapping; no explicit stored Home Page Design",
+            "mappingRaw": mapping_raw,
+            "mappingDecoded": mapping,
+            "defaultPageDesign": {
+                **identity(design),
+                "partialIds": partial_ids
+            },
+            "partials": partials,
+            "capturedNestedPlaceholders": placeholders,
+            "generatedPartialPlaceholderSubtreeCaptured": False
+        },
+        "allianz": {
+            "home": identity(by_path[site + "/Home"]),
+            "generatedPartialPlaceholderRoot": identity(generated_root),
+            "capturedGeneratedPlaceholderChildren": [identity(r) for r in rows if r["path"].startswith(generated_root["path"] + "/")],
+            "siteEditingItemPresent": site + "/Settings/Editing" in by_path
+        },
+        "datasourceEnums": enums,
+        "factsAndLimits": ["Header/Footer shared Signature values identify partials; authored raw renderings target headless-header/headless-footer and nested dynamic placeholders", "The eight captured MNP nested placeholders describe component children, not a proved ItemAdded-generated partial placeholder", "MNP Presentation/Placeholder Settings was outside this bounded capture; its generated placeholder presence is unknown", "Allianz Presentation was fully captured and its existing Partial Design placeholder folder has no children", "Literal enum Values, not GUIDs or display names, belong in the captured Droplist fields", "An existing blueprint proves item relationships, not which creation transport or ItemAdded event originally created them", "Supported CLI/API/event creation remains eligible for a bounded native experiment; no browser-only requirement is inferred", "No merged Layout Service output, Pages editing, branch cloning or publish behavior has been verified"],
+        "nativeCreationSideEffectsProven": False,
+        "remoteWrites": 0
+    }
+
+
+def build_native_home_composition(manifest: dict, scaffold: dict, schema, capture: dict) -> dict:
+    """Prepare exact desired writes and gates from actual readback only.
+
+    This intentionally is not serialize-editorial.build_plan: that adapter
+    rejects Home template/field adoption and unresolved linked-page references.
+    Neither evidence is silently manufactured to make its preflight pass.
+    """
+    native, editorial = composition_modules()
+    _, old_paths = native.verify_snapshot(scaffold)
+    if manifest["target"] != scaffold["target"] or manifest.get("bindings") != scaffold.get("bindings"):
+        raise ValueError("Home candidates do not match actual native bindings")
+    target = scaffold["target"]; site = target["siteRoot"]
+    if any(capture["snapshot"]["target"].get(k) != target.get(k) for k in ("projectId", "environmentId", "siteRoot")):
+        raise ValueError("Composition readback and scaffold target differ")
+    actual = {r["path"].casefold(): r for r in capture["snapshot"]["items"]}
+    home_now = actual[(site + "/Home").casefold()]
+    home_before = old_paths[(site + "/Home").casefold()]
+    if home_now["sourceSha256"] != home_before["rawScsSha256"]:
+        raise ValueError("Native Home changed between scaffold and bootstrap captures")
+    current = dict(old_paths); current.update(actual)
+    by_key = {r["key"]: r for r in manifest["items"]}
+    if len(by_key) != len(manifest["items"]):
+        raise ValueError("Duplicate candidate key")
+    selected = {r["key"] for r in manifest["items"] if r["key"] == "page:/" or planner.inside(r["path"], site + "/Home/Data") or r["key"].startswith(("shared:modern:header", "shared:modern:footer"))}
+    selected.update(("presentation:shell:modern:header", "presentation:shell:modern:footer", "presentation:page-design:modern"))
+    # Preserve deterministic identity keys. Direct children of the existing
+    # Partial Designs root avoid an unnecessary Global folder, as in real MNP.
+    records = {k: copy.deepcopy(by_key[k]) for k in selected}
+    for label in ("header", "footer"):
+        row = records["presentation:shell:modern:" + label]
+        row["path"] = site + "/Presentation/Partial Designs/Allianz modern " + label.title()
+    all_candidates = {r["path"].casefold(): r for r in manifest["items"]}
+    for row in list(records.values()):
+        parent = row["path"].rsplit("/", 1)[0]
+        while parent.casefold() not in current:
+            ancestor = all_candidates.get(parent.casefold())
+            if not ancestor:
+                raise ValueError("Missing actual or candidate composition parent: " + parent)
+            records[ancestor["key"]] = copy.deepcopy(ancestor)
+            parent = parent.rsplit("/", 1)[0]
+    paths = {r["path"].casefold(): r["id"] for r in records.values()}
+    paths.update({p: r["id"] for p, r in current.items()})
+    known_ids = {r["id"]: r for r in records.values()}
+    known_ids.update({r["id"]: r for r in current.values()})
+    media = {r["id"]: r for r in manifest["mediaUploads"]}
+    linked, required_media, operations, reuses = {}, {}, [], []
+    for row in sorted(records.values(), key=lambda r: (r["path"].count("/"), r["path"].casefold())):
+        expected_id = scaffold["bindings"].get(row["key"], planner.item_id(row["key"]))
+        if row["id"] != expected_id:
+            raise ValueError("Composition identity lacks deterministic key or actual native binding")
+        for field_id in row.get("fields", {}):
+            schema.field(row["templateId"], field_id)
+        refs, local_paths = editorial.references(row, schema, site)
+        for identifier in refs:
+            if identifier in media:
+                required_media[identifier] = media[identifier]
+            elif identifier not in known_ids:
+                linked_row = next((r for r in manifest["items"] if r["id"] == identifier and r["key"].startswith("page:")), None)
+                if not linked_row:
+                    raise ValueError("Unresolved non-page composition reference: " + identifier)
+                linked[identifier] = {k: linked_row[k] for k in ("key", "id", "path", "templateId")}
+        if any(p.casefold() not in paths for p in local_paths):
+            raise ValueError("Unresolved page-local datasource in Home layout")
+        existing = current.get(row["path"].casefold())
+        if row["key"] == "page:/":
+            continue
+        if existing:
+            if any(existing[k] != row[k] for k in ("id", "path", "templateId")) or existing["parentId"] != paths[row["path"].rsplit("/", 1)[0].casefold()]:
+                raise ValueError("Composition collides with existing native item")
+            reuses.append({"key": row["key"], "id": row["id"], "path": row["path"], "requiresExactFieldReadback": True})
+            continue
+        storage = editorial.empty_storage()
+        for identifier, value in row.get("fields", {}).items():
+            editorial.set_native_field(storage, schema.field(row["templateId"], identifier), identifier, value, 1)
+        parent_id = paths[row["path"].rsplit("/", 1)[0].casefold()]
+        operations.append({
+                "action": "create-desired-blueprint",
+                "key": row["key"],
+                "id": row["id"],
+                "path": row["path"],
+                "parentId": parent_id,
+                "templateId": row["templateId"],
+                "fields": row.get("fields", {
+                    }),
+                "referenceIds": sorted(refs),
+                "localDatasourcePaths": sorted(local_paths),
+                "precondition": {
+                    "idAbsent": True,
+                    "pathAbsent": True,
+                    "freshCompleteScopeRequired": site
+                },
+                "native": {
+                    "ID": row["id"],
+                    "Parent": parent_id,
+                    "Template": row["templateId"],
+                    "Path": row["path"],
+                    "storage": storage
+                }
+            })
+    home = records["page:/"]
+    if not native.inherits_template(home["templateId"], home_before["templateId"], schema.items):
+        raise ValueError("Desired Home does not inherit the actual generated real Page template")
+    retained = schema.inherited_fields(home["templateId"])
+    if not set(home_before["fields"]).issubset(retained):
+        raise ValueError("Desired Home template drops captured stored fields")
+    if set(home["fields"]) & set(home_before["fields"]):
+        raise ValueError("Home adoption would overwrite an existing stored field")
+    parent_ids = {o["parentId"] for o in operations}
+    parents = [{k: r.get(k) for k in ("id", "path", "parentId", "templateId", "revision", "sharedRevision", "rawScsSha256", "sourceSha256")} for r in current.values() if r["id"] in parent_ids]
+    home_layout = ET.fromstring(home["fields"][FINAL_RENDERINGS])
+    component_ids = {native.guid(r.get("{s}id"), "Home rendering") for r in home_layout.findall("./d/r")}
+    component_ids.update(native.guid(r.get("{s}id"), "Shell rendering") for label in ("header", "footer") for r in ET.fromstring(records["presentation:shell:modern:" + label]["fields"][editorial.SHARED_LAYOUT]).findall("./d/r"))
+    components = sorted(schema.items[i]["Path"].rsplit("/", 1)[-1] for i in component_ids)
+    renderings_field = "715ae6c0-71c8-4744-ab4f-65362d20ad65"
+    toolbox = current[(site + "/Presentation/Available Renderings").casefold()]
+    variants = current[(site + "/Presentation/Headless Variants").casefold()]
+    category_model = current[(site + "/Presentation/Available Renderings/Page Content").casefold()]
+    group_model = current[(site + "/Presentation/Headless Variants/RichText").casefold()]
+    default_model = current[(site + "/Presentation/Headless Variants/RichText/Default").casefold()]
+    category_path = toolbox["path"] + "/Allianz Life"
+    authoring = [{"id": planner.item_id("bootstrap:" + category_path), "path": category_path, "parentId": toolbox["id"], "templateId": category_model["templateId"], "fields": {renderings_field: "|".join(brace(i) for i in sorted(component_ids))}}]
+    for name in components:
+        path = variants["path"] + "/" + name
+        identifier = planner.item_id("bootstrap:" + path)
+        authoring.append({"id": identifier, "path": path, "parentId": variants["id"], "templateId": group_model["templateId"], "fields": {}})
+        path += "/Default"
+        authoring.append({"id": planner.item_id("bootstrap:" + path), "path": path, "parentId": identifier, "templateId": default_model["templateId"], "fields": {}})
+    for row in authoring:
+        for identifier in row["fields"]:
+            if schema.field(row["templateId"], identifier)["storage"] != "shared":
+                raise ValueError("Toolbox field lacks actual shared storage evidence")
+        observed = current.get(row["path"].casefold())
+        row["observedStateAtBootstrapCapture"] = "present" if observed else "absent"
+        row["nativeWriteExecuted"] = False
+        row["freshReadbackRequired"] = True
+    authoring_parents = [{k: r.get(k) for k in ("id", "path", "parentId", "templateId", "revision", "sharedRevision", "rawScsSha256", "sourceSha256")} for r in (toolbox, variants)]
+    enum_bindings = {}
+    for identifier in ("332a4c4e-222d-4a94-abcc-79f92f3b7b4b", "c80e6f3c-5bcd-426b-b1eb-6d10672e985d"):
+        definition = schema.fields[identifier]
+        if definition["type"] != "Droplist" or definition["storage"] != "shared":
+            raise ValueError("Datasource enum field lacks observed shared Droplist schema")
+        source = next((f["Value"] for f in schema.items[identifier]["SharedFields"] if f.get("Hint") == "Source"), None)
+        if not source:
+            raise ValueError("Datasource enum field lacks its observed option source")
+        enum_bindings[identifier] = {"type": definition["type"], "storage": definition["storage"], "source": source, "hint": definition["hint"]}
+    richtext_delta = [r for r in authoring if "/AllianzRichText" in r["path"]]
+    audit = audit_native_composition(capture)
+    result = {
+        "mode": "private-next-home-composition-review",
+        "executable": False,
+        "applyReady": False,
+        "remoteWrites": 0,
+        "target": target,
+        "provenance": {"scaffoldSha256": planner.checksum(scaffold), "candidateManifestSha256": planner.checksum(manifest), **audit["provenance"]},
+        "minimalShell": {
+            "existingPartialDesignsLibraryId": old_paths[(site + "/Presentation/Partial Designs").casefold()]["id"],
+            "existingPageDesignsLibraryId": old_paths[(site + "/Presentation/Page Designs").casefold()]["id"],
+            "partialPlacement": "direct children; unnecessary Global folder omitted",
+            "desiredDesignIds": {
+                k: records[k]["id"] for k in sorted(records) if k.startswith("presentation:")
+            },
+            "homeAssignment": "explicit shared Page Design; existing TemplatesMapping stays unchanged",
+            "generatedPlaceholderWrites": [],
+            "settingsWrites": []
+        },
+        "createBlueprints": operations,
+        "existingReuses": reuses,
+        "existingParentPreconditions": parents,
+        "requiredMediaReadbacks": [{"id": r["id"], "path": r["path"], "templateId": r["templateId"], "sha256": r["binary"]["sha256"], "bytes": r["binary"]["bytes"]} for r in sorted(required_media.values(), key=lambda r: r["path"])],
+        "linkedPagesOutsideWriteScope": sorted(linked.values(), key=lambda r: r["path"]),
+        "authoringPrerequisites": {
+            "components": components,
+            "renderingIds": sorted(component_ids),
+            "desiredFullBootstrapItems": authoring,
+            "priorFourComponentBootstrapIsInsufficient": "AllianzRichText" in components,
+            "nextDeltaAfterPriorBootstrapReadback": {
+                "createItems": richtext_delta,
+                "toolboxMerge": {
+                    "id": authoring[0]["id"],
+                    "path": category_path,
+                    "fieldId": renderings_field,
+                    "appendRenderingId": schema.items[next(i for i in component_ids if schema.items[i]["Path"].endswith("/AllianzRichText"))]["ID"],
+                    "requiresFreshNativeRevisionAndRawHash": True,
+                    "preserveExistingRenderingIds": True,
+                    "observedPostPriorStage": False
+                }
+            },
+            "enumAudit": audit["datasourceEnums"],
+            "siteEditingItemPresent": audit["allianz"]["siteEditingItemPresent"],
+            "settingsAndDatasourceConfigurationWrites": []
+        },
+        "homeBaseline": {
+            "id": home["id"],
+            "path": home["path"],
+            "parentId": home_before["parentId"],
+            "currentTemplateId": home_before["templateId"],
+            "desiredTemplateId": home["templateId"],
+            "selectedLanguage": "en",
+            "selectedVersion": home_before["selectedVersion"],
+            "revisionPrecondition": home_now["revision"],
+            "rawScsSha256Precondition": home_now["sourceSha256"],
+            "retainedStoredFieldCount": len(home_before["fields"]),
+            "beforeRawScs": home_before["rawScs"],
+            "beforeStorage": copy.deepcopy(home_before["storage"]),
+            "newManagedFields": [{
+                    "id": i,
+                    "hint": schema.field(home["templateId"], i)["hint"],
+                    "storage": schema.field(home["templateId"], i)["storage"],
+                    "before": {
+                        "stored": False
+                    },
+                    "desiredValue": v
+                } for i, v in home["fields"].items()],
+            "steps": ["Fresh full native Home export and raw hash/revision check under an exclusive authoring interval", "Change only Home template using a supported native API/event path; retain UUID, parent, English version and all captured content fields; allow platform audit/revision updates", "Read back Home and verify all stored fields remain represented in the new real Page lineage", "Explicitly adopt only these previously absent managed fields and set their reviewed desired values after dependencies are real; no unowned stored field adoption", "Read back every changed scope/value and create the successful-import baseline only from observed native values"],
+            "rollback": ["Before any rollback, freshly compare the post-write native hash/revision and abort on author changes", "Restore original template and original content field scopes/values; remove only newly introduced managed field overrides, preserving actual absent versus empty state", "Retain native audit revisions instead of forcing the old revision string; preserve all other languages/versions and unrelated author content", "Keep created dependent items recoverable; do not delete/recreate Home, sites, projects or environments"],
+            "atomicRevisionCompareAndSwapAvailable": False,
+            "baselineEstablished": False,
+            "templateChangeExecuted": False,
+            "fieldAdoptionExecuted": False
+        },
+        "creationExperiment": {
+            "rawItemAddedSideEffectsProven": False,
+            "probePaths": [records["presentation:shell:modern:" + label]["path"] for label in ("header", "footer")],
+            "probeTemplateId": "fd2059fd-6043-4dfe-8c04-e2437ce87634",
+            "probeAuthoredFields": {
+            },
+            "allowedCreationRoutesAfterApproval": ["supported native CLI", "supported native API/event path", "native UI"],
+            "method": "Freshly prove exact paths/IDs absent, create the two empty native partial instances through one supported route, then independently capture actual Signature, raw layouts and the full Allianz Presentation/Placeholder Settings subtree before applying authored fields",
+            "preservation": "Any actual generated placeholder ID/key/fields remain native evidence. Do not create a guessed sxa item, overwrite a generated key, or treat the desired Signature as event readback",
+            "authoredBlueprintReconciliation": "Compare observed side effects with the desired allianz-modern-header/footer Signature and headless-header/footer layout; review any dependent generated-key reconciliation before a revision-fenced field update"
+        },
+        "gates": ["Parent-owned media/toolbox stage has a fresh successful actual readback, including exact existing pilot GUID and decoded-byte hash", "Fresh complete Allianz Home/Data/Presentation readback proves every proposed create absent and every existing parent unchanged", "Exact required project templates/renderings/placeholders and structural delta are deployed/read back; source WIP commit is not evidence of native application", "Bounded creation experiment establishes actual native side effects or a reviewed supported equivalent without invented placeholder items", "Native Home template change and previously absent field adoption are explicitly reviewed; SCS update execution remains disabled without revision-safe integration", f"{len(linked)} linked route references require explicit separately approved route work or an approved link policy; no implicit child-page creation", "Settings/Editing absence does not establish effective inherited behavior; page-local create/selection/clone behavior remains an acceptance check", "Read effective native layout and verify one editable Home flow before claiming composition success or publishing"],
+        "summary": {
+            "desiredCreateBlueprints": len(operations),
+            "nativeShellCreates": sum(o["key"].startswith("presentation:") for o in operations),
+            "homeDatasourceAndSharedDataCreates": sum(not o["key"].startswith("presentation:") for o in operations),
+            "requiredMedia": len(required_media),
+            "linkedPagesOutsideScope": len(linked),
+            "homeManagedFieldAdoptions": len(home["fields"]),
+            "remoteWrites": 0
+        }
+    }
+    result["authoringPrerequisites"]["existingParentPreconditions"] = authoring_parents
+    result["authoringPrerequisites"]["enumFieldBindings"] = enum_bindings
+    result["authoringPrerequisites"]["effectiveDatasourceBehaviorKnown"] = False
+    result["creationExperiment"]["probeItems"] = [{k: r[k] for k in ("id", "path", "parentId", "templateId")} for r in operations if r["key"].startswith("presentation:shell:modern:")]
+    return result
+
+
+def blueprint_wire_contract(item: dict, editorial, schema) -> dict:
+    """Disclose every blueprint's source/wire representation without native claims."""
+    contracts = []
+    for bucket, version, identifier, value in editorial.storage_value_rows(item["storage"]):
+        definition = schema.field(item["Template"], identifier)
+        contracts.append({
+            "fieldId": identifier, "fieldType": definition["type"],
+            "storageBucket": bucket, "version": version,
+            **editorial.value_codec.value_contract(editorial.field_value(value)),
+        })
+    return {
+        "nativeValueEncoding": editorial.value_codec.ENCODING,
+        "sourceLogicalStorageSha256": planner.checksum(item["storage"]),
+        "expectedSerializedWireStorageSha256": planner.checksum(editorial.wire_storage(item["storage"])),
+        "fieldContracts": contracts,
+        "actualNativeReadbackVerified": False,
+        "typedJsonValueVerified": False,
+    }
+
+
+def write_native_home_composition(output: Path, plan: dict, audit: dict, schema) -> None:
+    """Private review artifacts only, with no executable push module."""
+    _, editorial = composition_modules()
+    if any(p.is_symlink() for p in (output, *output.parents)) or output.resolve().is_relative_to(REPO.resolve()):
+        raise ValueError("Composition review artifacts must be private and outside the repository")
+    output.mkdir(parents=True, exist_ok=True, mode=0o700)
+    written_paths = []
+    def write(path, value):
+        if any(p.is_symlink() for p in (path, *path.parents)):
+            raise ValueError("Private composition output cannot follow symbolic links")
+        path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+        fd = os.open(path, os.O_CREAT | os.O_TRUNC | os.O_WRONLY, 0o600)
+        with os.fdopen(fd, "w") as stream:
+            stream.write(value)
+        written_paths.append(path)
+    plan = copy.deepcopy(plan)
+    plan["blueprintWireContracts"] = {
+        operation["id"]: blueprint_wire_contract(operation["native"], editorial, schema)
+        for operation in plan["createBlueprints"]
+    }
+    plan["nativeValueEncoding"] = editorial.value_codec.ENCODING
+    write(output / "composition-plan.json", json.dumps(plan, indent=2, ensure_ascii=False) + "\n")
+    write(output / "native-composition-audit.json", json.dumps(audit, indent=2, ensure_ascii=False) + "\n")
+    for index, operation in enumerate(plan["createBlueprints"]):
+        write(output / "desired-scs-blueprints" / (str(index).zfill(3) + ".yml"), editorial.serialize_item(operation["native"], schema))
+    for index, row in enumerate(plan["authoringPrerequisites"]["desiredFullBootstrapItems"]):
+        storage = editorial.empty_storage()
+        for identifier, value in row["fields"].items():
+            editorial.set_native_field(storage, schema.field(row["templateId"], identifier), identifier, value, 1)
+        item = {"ID": row["id"], "Parent": row["parentId"], "Template": row["templateId"], "Path": row["path"], "storage": storage}
+        write(output / "authoring-prerequisite-blueprints" / (str(index).zfill(3) + "-value-contract.json"), json.dumps(blueprint_wire_contract(item, editorial, schema), indent=2, ensure_ascii=False) + "\n")
+        write(output / "authoring-prerequisite-blueprints" / (str(index).zfill(3) + ".yml"), editorial.serialize_item(item, schema))
+    write(output / "Home-before.yml", plan["homeBaseline"]["beforeRawScs"])
+    write(output / "README.md", "# Private next Home composition review\n\nThese are desired native blueprints, not an executable push module. No remote writes were made.\n\nReview composition-plan.json for exact IDs, parents, fields, references, revision/hash preconditions, native creation probe and reversible Home baseline. native-composition-audit.json separates actual MNP relationships from unproved creation-event behavior. Home-before.yml preserves the exact original native item.\n\nThe minimal shell has two partials directly under the existing Partial Designs library and one Default design. No Global folder, TemplatesMapping update, Settings write or invented generated placeholder is proposed. The Home final layout also needs AllianzRichText toolbox/default-variant support beyond the prior four-component bootstrap.\n\nAll 52 linked route IDs remain outside this write scope. Media, source security, structural application, native creation/readback, Home migration/adoption and editing/publish acceptance gates remain open. Native SCS updates have no atomic revision compare-and-swap in the current adapter.\n")
+    review = ["# Native MNP audit and minimal Home composition", "", "## Actual evidence", "", f"Verified {audit['provenance']['verifiedFileCount']} manifested capture files against their original sizes and SHA256 values. The parent-verified archive provenance remains the trust anchor; the manifest is not a digital signature.", "", "MNP Home has no stored explicit Page Design assignment. Its observed TemplatesMapping selects Default, whose shared PartialDesigns references Header then Footer. Signature is shared header/footer, while the authored shared rendering deltas target headless-header/headless-footer and nested dynamic placeholders. Final-layout deltas are preserved as deltas, not reported as effective merged output.", "", "Eight real nested MNP placeholder settings describe component children. MNP Presentation/Placeholder Settings was not captured, so generated partial-placeholder presence there is unknown. Allianz Presentation was fully captured; its existing Partial Design placeholder folder is empty. Neither fact proves ItemAdded event behavior or a required browser transport.", "", "## Exact minimal shell", ""]
+    for operation in plan["createBlueprints"]:
+        if operation["key"].startswith("presentation:"):
+            review.append(f"- {operation['path']}\n  ID {operation['id']}; parent {operation['parentId']}; template {operation['templateId']}")
+    review.extend(["", "Reuse the two actual native design libraries. Place the two modern partials directly under Partial Designs, as the real MNP shape does; omit an unnecessary Global folder. Assign Default through the shared native Page Design field on Home. Do not change template mappings, Settings or guessed generated placeholders.", "", "## Desired payload and reference boundary", "", f"The review contains {plan['summary']['desiredCreateBlueprints']} desired create blueprints: {plan['summary']['homeDatasourceAndSharedDataCreates']} Home/shared data items plus {plan['summary']['nativeShellCreates']} shell design items. All exact parent IDs, field IDs/scopes, references and local datasource paths are enumerated in composition-plan.json. These counts are blueprints, not confirmed native operation counts: creation events may generate additional native items, and separate revision-fenced authored-field updates follow the raw creation probe.", "", f"The {len(plan['requiredMediaReadbacks'])} media references require fresh identity/template/decoded-byte hash checks. The {len(plan['linkedPagesOutsideWriteScope'])} linked page IDs are outside the write scope. Do not create child-page skeletons implicitly, rewrite links or publish unresolved references; resolve them through separately approved route work or link policy.", "", "## Toolbox and enum behavior", "", "Home uses AllianzHeader, AllianzFooter, AllianzHero, AllianzCardGrid and AllianzRichText. The previous four-component bootstrap lacks RichText. After that stage is actually read back, create the two exact RichText group/Default items and merge only its rendering ID into the existing Allianz Life category, preserving all existing rendering IDs. The complete 11-item desired bootstrap and the conditional three-operation delta are enumerated; neither is represented as applied.", ""])
+    for name, rows in audit["datasourceEnums"].items():
+        review.append(f"- {name}: " + ", ".join(r["value"] for r in rows))
+    review.extend(["", "The observed enum fields are shared Droplists: store literal option Values, not option GUIDs or display labels. AutoNameStoreUnderPage is the captured current-page auto-name option; AskUser/Copy/DoNotCopy govern global datasource selection. These are distinct controls. Allianz Settings/Editing is absent, so effective inherited behavior is unknown. Existing schema defaults AllowPageRelativeLocation=1 and DoNotCopy do not prove effective site behavior or branch-clone remapping. No Settings/Editing or datasource-configuration write is proposed.", "", "## Native probe and reversible Home baseline", "", "1. Freshly prove the exact two partial IDs/paths absent and the native parent unchanged. Create empty headless Partial Design instances through one supported CLI/API/event or UI path. Capture actual Signature, raw layouts and the full generated-placeholder subtree before applying any authored blueprint fields. Preserve all actual generated IDs, keys and fields; review dependent key/signature reconciliation if required.", "2. Verify referenced project structure and data/media before composing Default and Home. Observe native merged layout, rather than assuming the stored XML demonstrates runtime output.", f"3. Snapshot Home {plan['homeBaseline']['id']} completely and recheck revision {plan['homeBaseline']['revisionPrecondition']} and raw SHA256 {plan['homeBaseline']['rawScsSha256Precondition']}. Change only the template from {plan['homeBaseline']['currentTemplateId']} to {plan['homeBaseline']['desiredTemplateId']} through a supported native path. Its real Page inheritance retains all {plan['homeBaseline']['retainedStoredFieldCount']} stored fields; preserve UUID, parent, English version, all other languages/versions and author content while allowing native audit/revision updates.", f"4. Read back the template change, then explicitly adopt only the {len(plan['homeBaseline']['newManagedFields'])} previously absent managed fields at their observed native storage scopes. Capture a new successful-import baseline from actual values; the current offline review does not establish it.", "5. For rollback, freshly compare the post-write revision/hash and stop on author changes. Restore original template and original content scopes/values, remove only introduced field overrides while preserving absence versus empty, and allow current native audit revisions. Retain dependent items recoverably; never delete/recreate Home, the site, project or environment.", "", "The existing SCS adapter has no atomic revision compare-and-swap and executes no updates. Home changes require a separately verified revision-safe native integration or exclusive authoring interval. Editing, local create/selection, image/link JSON, branch clone, publication and Edge rendering remain acceptance gates.", "", "## Validation performed", "", "Offline captured-file verification, native model/field membership and storage checks, desired SCS round-trip parsing, exact parent/reference enumeration and the adjacent native composition safety suite. No remote calls, authentication setup, native write, publishing or browser editing was performed.", ""])
+    write(output / "NATIVE-COMPOSITION-REVIEW.md", "\n".join(review))
+    artifact_files = sorted(written_paths)
+    write(output / "PACKAGE-MANIFEST.json", json.dumps({"mode": plan["mode"], "target": plan["target"], "executable": False, "remoteWrites": 0, "files": [{"path": str(p.relative_to(output)), "bytes": p.stat().st_size, "sha256": digest_file(p)} for p in artifact_files]}, indent=2) + "\n")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("fixtures", type=Path)
@@ -539,12 +1013,36 @@ def main() -> None:
     parser.add_argument("--schema", required=True, type=Path)
     parser.add_argument("--presentation-bindings", type=Path, help="Verified native presentation registry; missing registry remains an import blocker")
     parser.add_argument("--native-snapshot", type=Path, help="Private independently read-back scaffold snapshot; never guessed Site or Channels IDs")
+    parser.add_argument("--compose-native-home", action="store_true", help="Treat the positional JSON as bound candidates and write a private next-Home review directory; never applies native writes")
+    parser.add_argument("--native-bootstrap-capture", type=Path, help="Manifested same-tenant native bootstrap capture directory for --compose-native-home")
     parser.add_argument("--media-sources", type=Path)
     parser.add_argument("--assets", type=Path, help="Verified full original raster download manifest")
     parser.add_argument("--vectors", type=Path)
     parser.add_argument("--documents", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
+    if args.compose_native_home:
+        if not args.native_snapshot or not args.native_bootstrap_capture or not args.presentation_bindings:
+            parser.error("--compose-native-home requires --native-snapshot, --native-bootstrap-capture and --presentation-bindings")
+        _, editorial = composition_modules()
+        scaffold = json.loads(args.native_snapshot.read_text())
+        requested_target = json.loads(args.target.read_text())
+        if any(requested_target.get(k) != scaffold["target"].get(k) for k in ("projectId", "environmentId")):
+            raise ValueError("Requested target differs from native scaffold")
+        schema = editorial.Schema.from_files(args.schema, REPO / "authoring/allianz-life/structure-manifest.json", scaffold)
+        registry = json.loads(args.presentation_bindings.read_text())
+        if any(registry.get("provenance", {}).get("target", {}).get(k) != scaffold["target"].get(k) for k in ("projectId", "environmentId")):
+            raise ValueError("Presentation registry belongs to another native target")
+        for role in ("partialDesign", "pageDesign", "partialDesignsLibrary", "pageDesignsLibrary"):
+            definition = registry["nativeTemplates"][role]
+            observed = schema.items.get(str(definition["id"]).lower())
+            if not observed or observed["Path"] != definition["path"]:
+                raise ValueError("Presentation registry lacks observed native model: " + role)
+        capture = verify_bootstrap_capture(args.native_bootstrap_capture)
+        plan = build_native_home_composition(json.loads(args.fixtures.read_text()), scaffold, schema, capture)
+        write_native_home_composition(args.output, plan, audit_native_composition(capture), schema)
+        print(json.dumps(plan["summary"]))
+        return
     documents = load_rows(args.documents)
     for row in documents:
         row["sourceUrl"] = row.get("sourceUrl", row.get("url"))

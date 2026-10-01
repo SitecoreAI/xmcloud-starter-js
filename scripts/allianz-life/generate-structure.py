@@ -301,7 +301,7 @@ def generate() -> tuple[list[dict], dict]:
     for name, definition in COMPONENTS.items():
         path = TEMPLATES_ROOT + "/Components/" + name
         insert = [TEMPLATES_ROOT + "/Data/" + definition["children"]] if definition.get("children") else None
-        sources = {nav: "/sitecore/content/Allianz/allianz-life/Data/Allianz Life/Navigation" for nav in definition["fields"] if definition["fields"][nav] == "Treelist"}
+        sources = {nav: "/sitecore/content/allianz/allianz-life/Data/Allianz Life/Navigation" for nav in definition["fields"] if definition["fields"][nav] == "Treelist"}
         values.extend(template_items(path, definition["fields"], insert=insert, source_fields=sources))
         render_path = ROOTS["allianz.renderings"][0] + "/" + name
         shared = [

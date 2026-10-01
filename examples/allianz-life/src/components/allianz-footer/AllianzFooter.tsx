@@ -1,6 +1,7 @@
-import { Image, Link, RichText, Text } from '@sitecore-content-sdk/nextjs';
+import { Link, RichText, Text } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { safeLink } from 'lib/allianz-fields';
+import { AllianzFieldIcon, iconFieldLabel } from 'lib/allianz-field-icon';
 import type { AllianzFooterProps } from './allianz-footer.props';
 
 export const Default = ({ fields }: AllianzFooterProps) => {
@@ -14,7 +15,7 @@ export const Default = ({ fields }: AllianzFooterProps) => {
       </div>)}
     </div></div></div>
       <div className="l-grid l-grid--max-width c-footer__tagline"><div className="l-grid__row justify-content-center"><div className="l-grid__column-large-8 l-grid__column-medium-12"><RichText tag="h3" field={data.body?.jsonValue} className="c-heading c-footer__tagline-headline u-text-weight-light c-heading--subsection-medium" /></div></div></div>
-      <div className="m-footer__social u-hidden-small-down" aria-label="Social networks">{(data.socialNav?.targetItems ?? []).map((item) => <Link field={safeLink(item.link?.jsonValue)} key={item.id} className="m-footer__social-link"><span className="a-icon"><Image field={item.icon?.jsonValue} /></span></Link>)}</div>
+      <div className="m-footer__social u-hidden-small-down" aria-label="Social networks">{(data.socialNav?.targetItems ?? []).map((item) => <Link field={safeLink(item.link?.jsonValue)} key={item.id} className="m-footer__social-link" aria-label={item.title?.jsonValue?.value || iconFieldLabel(item.icon?.jsonValue, item.link?.jsonValue?.value?.text)}><span className="a-icon"><AllianzFieldIcon field={item.icon?.jsonValue} decorative /></span></Link>)}</div>
     </div>
     <div className="c-footer__container--curtain-panel"><hr className="c-divider c-divider--compact c-footer__divider" /><div className="c-footer__service">
       <nav className="c-footer__legal" aria-label="Service links">{(data.utilityNav?.targetItems ?? []).map((item) => <Link key={item.id} field={safeLink(item.link?.jsonValue)} className="c-footer__legal-link"><Text field={item.title?.jsonValue} /></Link>)}</nav>
