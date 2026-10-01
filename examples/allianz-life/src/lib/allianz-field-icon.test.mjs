@@ -98,6 +98,30 @@ test('native visitor masks preserve field identity while editing still uses orig
   assert.doesNotMatch(editor, /allianz-field-icon|mask-image/);
 });
 
+test('only the seven anonymously verified Content Hub SVG Original versions become icon masks', () => {
+  const originals = [
+    'fdf32cf308024d32a5d4f7897640a846?v=1c161fe0',
+    '0750606db65a4f0fb289d3c16fd69025?v=8aff33d0',
+    'feea3b26ab3e4c80b2630c011cac2cb4?v=8f3b5986',
+    '4b48030ff1ac4191af86fd0f8694b9bd?v=198c687c',
+    '90158d4eb83547e09df64e35cf12130f?v=1b4e0470',
+    'acfc44f53446417393639f6a0b6bbed1?v=65467624',
+    'a63990dc2da8479786f7a566a1e47f6d?v=27653051',
+  ].map((path) => `https://thlt-demo.sitecoresandbox.cloud/api/public/content/${path}`);
+  for (const source of originals) {
+    assert.equal(iconImageSource(source), source);
+    const field = editableField('dam-icon', { src: source, alt: 'Verified icon' });
+    assert.ok(decode(render(AllianzFieldIcon, { field })).includes(`mask-image:url("${source}")`));
+    assert.equal(field.value.src, source);
+  }
+  for (const source of [
+    originals[0].replace('v=1c161fe0', 'v=unknown'),
+    originals[0] + '&crop=1', originals[0] + '#fragment',
+    'https://thlt-demo.sitecoresandbox.cloud/api/gateway/124854/thumbnail',
+    'https://thlt-demo.sitecoresandbox.cloud/api/public/content/690ad1caa1dc4c0abc3b456f6674eeda?v=9585e8bc',
+  ]) assert.equal(iconImageSource(source), '');
+});
+
 test('icon URL validation follows the local single-file policy and rejects CSS injection and unverified connected media', () => {
   for (const item of [...utility, ...social]) {
     const src = item.icon.jsonValue.value.src;

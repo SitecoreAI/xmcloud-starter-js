@@ -18,10 +18,21 @@ const nativeIconNames = new Set([
   'public-afbc80b2b0647397.svg',
 ]);
 const nativeIconQueryKeys = new Set(['iar', 'ttc', 'tt', 'hash']);
+// Public Original versions verified anonymously against the seven exact SVGs.
+const contentHubIconSources = new Set([
+  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/fdf32cf308024d32a5d4f7897640a846?v=1c161fe0',
+  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/0750606db65a4f0fb289d3c16fd69025?v=8aff33d0',
+  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/feea3b26ab3e4c80b2630c011cac2cb4?v=8f3b5986',
+  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/4b48030ff1ac4191af86fd0f8694b9bd?v=198c687c',
+  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/90158d4eb83547e09df64e35cf12130f?v=1b4e0470',
+  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/acfc44f53446417393639f6a0b6bbed1?v=65467624',
+  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/a63990dc2da8479786f7a566a1e47f6d?v=27653051',
+]);
 
 export function iconImageSource(source?: string): string {
   const local = localIconSource(source);
   if (local) return local;
+  if (typeof source === 'string' && contentHubIconSources.has(source)) return source;
   if (typeof source !== 'string' || /[\u0000-\u0020\\]/.test(source)) return '';
   try {
     const url = new URL(source);
