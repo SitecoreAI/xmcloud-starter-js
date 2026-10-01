@@ -89,6 +89,25 @@
 }
 
 @media (max-width: 703px) {
+  /* Native buttons keep the recovered headline dimensions and source glyph;
+   * only an expanded list overrides the source mobile display:none rule. */
+  .allianz-modern .c-footer button.c-footer__navigation-headline {
+    width: 100%;
+    position: relative;
+    border: 0;
+    border-bottom: 1px solid #d9d9d9;
+    border-radius: 0;
+    background: #f5f5f5;
+    color: #5b5b5b;
+    text-align: left;
+    white-space: normal;
+  }
+  .allianz-modern .c-footer .c-footer__navigation-list:not([hidden]) {
+    display: block;
+  }
+  .allianz-modern .c-footer button.c-footer__navigation-headline[aria-expanded="true"]:before {
+    transform: rotate(180deg);
+  }
   /* The original class was on a page-level wrapper. It is now on the header;
    * clipping that wrapper cuts off the absolute, scrollable menu below it. */
   .allianz-modern .O-azl-header.m-navigation-primary-open {
@@ -110,5 +129,12 @@
   }
   .allianz-modern .O-azl-header.m-navigation-primary-open .m-navigation-primary > ul > li > a {
     padding-right: 52px;
+  }
+}
+
+/* Mobile source category hiding must not conceal native authoring fields. */
+@media (max-width: 767px) {
+  .allianz-legacy .allianz-legacy-footer[data-allianz-editing="true"] .navbar-nav.footer-nav .dropdown-menu > li {
+    display: block;
   }
 }
