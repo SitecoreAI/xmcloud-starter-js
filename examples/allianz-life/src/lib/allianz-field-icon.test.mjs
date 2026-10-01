@@ -41,7 +41,7 @@ function loadSource(filename) {
   }).outputText, filename);
   return compiled.exports;
 }
-const { AllianzFieldIcon, iconFieldLabel, localIconSource } = loadSource(path.join(sourceRoot, 'lib/allianz-field-icon.tsx'));
+const { AllianzFieldIcon, iconFieldLabel, localIconSource, iconImageSource } = loadSource(path.join(sourceRoot, 'lib/allianz-field-icon.tsx'));
 const Header = loadSource(path.join(sourceRoot, 'components/allianz-header/AllianzHeader.tsx')).Default;
 const Footer = loadSource(path.join(sourceRoot, 'components/allianz-footer/AllianzFooter.tsx')).Default;
 const native = JSON.parse(fs.readFileSync(new URL('../../content/native-content.json', import.meta.url), 'utf8'));
@@ -60,6 +60,43 @@ function render(component, props, isEditing = false) {
 }
 const editableField = (id, value) => ({ value, metadata: { fieldId: id, fieldType: 'Image', itemId: 'native-datasource' } });
 const decode = (html) => html.replaceAll('&quot;', '"').replaceAll('&amp;', '&');
+const nativeOrigin = 'https://xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io';
+const nativeRoot = '/-/media/Project/Allianz-Life/Images/';
+const nativeNames = ['public-0f406fb22be00338.svg', 'public-fb25410fd3ccc058.svg',
+  'public-811053ddb60b15b0.svg', 'public-83bd0829d98bb7e1.svg',
+  'public-36e8936157e0ae76.svg', 'public-d065087fbfdd8cf9.svg',
+  'public-afbc80b2b0647397.svg'];
+
+test('all seven observed native icon paths retain runtime query values without broadening media access', () => {
+  for (const name of nativeNames) {
+    const source = `${nativeOrigin}${nativeRoot}${name}?iar=fixture&ttc=fixture&tt=fixture&hash=synthetic-test`;
+    assert.equal(iconImageSource(source), source);
+  }
+  for (const source of [
+    `http://${nativeOrigin.slice(8)}${nativeRoot}${nativeNames[0]}`,
+    `https://other.sitecorecloud.io${nativeRoot}${nativeNames[0]}`,
+    `${nativeOrigin}${nativeRoot}other.svg`,
+    `${nativeOrigin}/-/media/other/${nativeNames[0]}`,
+    `${nativeOrigin}${nativeRoot}${nativeNames[0]}#fragment`,
+    `${nativeOrigin}${nativeRoot}${nativeNames[0]}?redirect=https://other.example`,
+    `${nativeOrigin}${nativeRoot}${nativeNames[0]}\n`,
+    `${nativeOrigin}${nativeRoot}${nativeNames[0]}?hash=raw\\escape`,
+    `https://user:password@${nativeOrigin.slice(8)}${nativeRoot}${nativeNames[0]}`,
+  ]) assert.equal(iconImageSource(source), '');
+});
+
+test('native visitor masks preserve field identity while editing still uses original SDK Image metadata', () => {
+  const source = `${nativeOrigin}${nativeRoot}${nativeNames[0]}?hash=synthetic%22value`;
+  const field = editableField('native-media-icon', { src: source, alt: 'Contact' });
+  const html = decode(render(AllianzFieldIcon, { field, decorative: true }));
+  assert.ok(html.includes(`mask-image:url("${source}")`));
+  assert.match(html, /aria-hidden="true"/);
+  const editor = decode(render(AllianzFieldIcon, { field }, true));
+  assert.match(editor, /<img/);
+  assert.match(editor, /"fieldId":"native-media-icon"/);
+  assert.equal(field.value.src, source);
+  assert.doesNotMatch(editor, /allianz-field-icon|mask-image/);
+});
 
 test('icon URL validation follows the local single-file policy and rejects CSS injection and unverified connected media', () => {
   for (const item of [...utility, ...social]) {
