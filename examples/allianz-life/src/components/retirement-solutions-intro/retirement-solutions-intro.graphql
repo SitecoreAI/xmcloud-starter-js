@@ -1,0 +1,8 @@
+query RetirementSolutionsIntroData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    heading: field(name: "heading") { jsonValue }
+    body: field(name: "body") { jsonValue }
+    icon: field(name: "icon") { jsonValue }
+  }
+}

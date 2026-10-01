@@ -1,0 +1,13 @@
+/* The source uses inline SVG fill #3c3c3c. Native Image fields use the same
+ * 26/40px dimensions and black fill without modifying their media or metadata. */
+.allianz-product-offerings .tileIcon img {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+
+@media (min-width: 704px) {
+  .allianz-product-offerings .tileIcon img {
+    width: 40px;
+  }
+}

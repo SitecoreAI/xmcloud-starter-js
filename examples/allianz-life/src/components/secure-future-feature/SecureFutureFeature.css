@@ -1,0 +1,14 @@
+/* Source inline badge SVG: 26px below 704px and 40px from medium upward.
+ * Keep the native Image field URL, using the source dark fill on its alpha shape.
+ * Leave the SDK's empty-field authoring image visible in its original colors. */
+.allianz-secure-future-feature .tileIcon img:not(.scEmptyImage) {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+
+@media (min-width: 704px) {
+  .allianz-secure-future-feature .tileIcon img:not(.scEmptyImage) {
+    width: 40px;
+  }
+}

@@ -1,0 +1,14 @@
+/* Home source html/3177a91958996385.html:782-813 uses an inline SVG filled
+ * #3c3c3c. Native Image fields render external SVGs, which cannot inherit fill.
+ * Keep the captured 26px/40px sizes and black color scoped to this section. */
+.allianz-retirement-solutions-intro .tileIcon img {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+
+@media (min-width: 704px) {
+  .allianz-retirement-solutions-intro .tileIcon img {
+    width: 40px;
+  }
+}

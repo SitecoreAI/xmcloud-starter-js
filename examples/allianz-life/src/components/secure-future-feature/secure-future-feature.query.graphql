@@ -1,0 +1,10 @@
+query SecureFutureFeature($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    heading: field(name: "heading") { jsonValue }
+    body: field(name: "body") { jsonValue }
+    image: field(name: "image") { jsonValue }
+    icon: field(name: "icon") { jsonValue }
+    link: field(name: "link") { jsonValue }
+  }
+}
