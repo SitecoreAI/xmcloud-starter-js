@@ -4,6 +4,7 @@ import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, rowSpacing, sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
+import { allianzCardFields } from 'lib/allianz-card-fields';
 import type { AllianzCardGridProps } from './allianz-card-grid.props';
 
 export const Default = ({ fields, params }: AllianzCardGridProps) => {
@@ -11,7 +12,7 @@ export const Default = ({ fields, params }: AllianzCardGridProps) => {
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
-  const cards = data.children?.results ?? [];
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
   const column = ({ '1':12, '2':6, '3':4, '4':3 } as Record<string, number>)[params.columns] ?? 12;
   const isCards = params.layout === 'cards';
   const splitClass = params.splitRatio === '33:67' ? 'tile--3366' : params.splitRatio === '67:33' ? 'tile--6633' : 'tile--5050';
