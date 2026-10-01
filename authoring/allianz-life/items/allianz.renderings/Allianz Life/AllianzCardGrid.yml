@@ -19,23 +19,7 @@ SharedFields:
         primaryLink: field(name: "primaryLink") { jsonValue }
         children(first: 40) { total pageInfo { hasNext endCursor } results {
           id
-          heading: field(name: "heading") { jsonValue }
-          subheading: field(name: "subheading") { jsonValue }
-          body: field(name: "body") { jsonValue }
-          image: field(name: "image") { jsonValue }
-          icon: field(name: "icon") { jsonValue }
-          iconTheme: field(name: "iconTheme") { jsonValue }
-          link: field(name: "link") { jsonValue }
-          theme: field(name: "theme") { jsonValue }
-          headingLevel: field(name: "headingLevel") { jsonValue }
-          alphanumeral: field(name: "alphanumeral") { jsonValue }
-          links: field(name: "links") { ... on MultilistField { targetItems {
-            id
-            title: field(name: "title") { jsonValue }
-            link: field(name: "link") { jsonValue }
-            icon: field(name: "icon") { jsonValue }
-            children(first: 1) { total pageInfo { hasNext endCursor } }
-          } } }
+          fieldCollection: fields { name jsonValue }
         } }
       }
     }
@@ -48,6 +32,17 @@ SharedFields:
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
   Value: "{E01E61F7-ACA5-5A55-A517-2C84EFF33FC5}"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: "Imaging/32x32/grid.png"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: "IsAutoDatasourceRendering=true"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Card Grid"
+  Versions:
+  - Version: 1

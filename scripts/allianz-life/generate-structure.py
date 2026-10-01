@@ -64,6 +64,8 @@ FIELD = {
     "PlaceholderKey": "7256bdab-1fd2-49dd-b205-cb4873d2917c",
     "AllowedControls": "e391b526-d0c5-439d-803e-17512eae6222",
     "Renderings": "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e",
+    "DisplayName": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+    "Icon": "06d5295c-ed2f-4a54-9bf2-26228d113318",
 }
 
 ROOTS = {
@@ -106,6 +108,69 @@ COMPONENTS = {
     "AllianzLegacyCardGrid": {"fields": {"heading": "Single-Line Text", "subheading": "Rich Text", "body": "Rich Text"}, "children": "AllianzCard"},
     "AllianzLegacyLinkList": {"fields": {"heading": "Single-Line Text"}, "children": "AllianzLinkListEntry"},
     "AllianzLegacyBreadcrumbs": {"fields": {"heading": "Single-Line Text", "primaryNav": "Treelist"}, "navigation": True},
+}
+
+# Every path below is present as __Icon in the captured native schema under
+# discovery/model/schema-reference-root/items. Keep its original spelling/case;
+# do not derive a new icon path or use a filename as a native media thumbnail.
+# The comments identify the native item that supplies each verified icon.
+NATIVE_ICONS = {
+    "layout": "Office/32x32/layout.png",  # Grid/Grid Definition
+    "image": "Office/32x32/photo_landscape.png",  # Presentation/_Background Image
+    "richText": "Applications/32x32/text_rich_colored.png",  # Json Variants/JSON Rich Text
+    "grid": "Imaging/32x32/grid.png",  # Page Structure/Rendering Parameters/ColumnSplitter/Grid
+    "accordion": "Office/32x32/barrel.png",  # Composites/Datasource/Accordion/Accordion
+    "link": "Office/32x32/link.png",  # Navigation/Datasource/Link
+    "documents": "Office/32x32/floppy_disks.png",  # Media/Datasource/File List
+    "navigation": "Office/32x32/signpost.png",  # Navigation/Navigation Filter Folder
+    "form": "Applications/16x16/form_blue.png",  # System/Templates/Template
+    "search": "Office/32x32/magnifying_glass.png",  # SiteMetadata/_Seo Metadata
+    "article": "Office/32x32/document_text.png",  # JSS Experience Accelerator/Multisite/Base Page
+    "video": "Office/32x32/movie.png",  # Media/Datasource/Video
+    "timeline": "Office/32x32/calendar_clock.png",  # Json Variants/JSON Date
+    "rates": "Business/16x16/line-chart.png",  # System/Templates/Sections/Statistics/Statistics
+    "definitions": "Business/16x16/index_view.png",  # System/Templates/Sections/Indexing/Indexing
+    "tools": "Office/32x32/tools.png",  # Rendering Variants/Edit Frame
+    "table": "Business/32x32/table_edit.png",  # Page Structure/ISplitter
+}
+
+# Labels follow native-authoring-plan-next/PLAN.json. These logical group labels
+# describe site-scoped Available Renderings categories for presentation bootstrap;
+# they never move rendering items, whose path-derived identities must stay stable.
+# All registered renderers stay represented, including those with no current use.
+# Thumbnails require verified native media IDs and are intentionally omitted.
+RENDERING_AUTHORING = {
+    name: {"displayName": label, "group": group, "icon": NATIVE_ICONS[icon]}
+    for name, label, group, icon in [
+        ("AllianzHeader", "Header", "Navigation", "layout"),
+        ("AllianzHero", "Hero", "Page content", "image"),
+        ("AllianzRichText", "Rich Text", "Page content", "richText"),
+        ("AllianzCardGrid", "Card Grid", "Page content", "grid"),
+        ("AllianzAccordion", "Accordion", "Page content", "accordion"),
+        ("AllianzCTA", "Call to Action", "Page content", "link"),
+        ("AllianzDocumentList", "Document List", "Page content", "documents"),
+        ("AllianzFooter", "Footer", "Navigation", "layout"),
+        ("AllianzBreadcrumbs", "Breadcrumbs", "Navigation", "navigation"),
+        ("AllianzForm", "Form", "Forms and tools", "form"),
+        ("AllianzSearch", "Search", "Forms and tools", "search"),
+        ("AllianzArticle", "Article", "Page content", "article"),
+        ("AllianzVideo", "Video", "Media", "video"),
+        ("AllianzTimeline", "Timeline", "Page content", "timeline"),
+        ("AllianzRateSnapshot", "Rate Snapshot", "Product content", "rates"),
+        ("AllianzIndexDefinitions", "Index Definitions", "Product content", "definitions"),
+        ("AllianzCalculator", "Calculator", "Forms and tools", "tools"),
+        ("AllianzRateTable", "Rate Table", "Product content", "table"),
+        ("AllianzLegacySidebar", "Legacy Sidebar", "Legacy content", "navigation"),
+        ("AllianzLegacyPageHeader", "Legacy Page Header", "Legacy content", "article"),
+        ("AllianzLegacyHero", "Legacy Hero", "Legacy content", "image"),
+        ("AllianzLegacyRichText", "Legacy Rich Text", "Legacy content", "richText"),
+        ("AllianzLegacyHeader", "Legacy Header", "Legacy content", "layout"),
+        ("AllianzLegacyFooter", "Legacy Footer", "Legacy content", "layout"),
+        ("AllianzLegacyAccordion", "Legacy Accordion", "Legacy content", "accordion"),
+        ("AllianzLegacyCardGrid", "Legacy Card Grid", "Legacy content", "grid"),
+        ("AllianzLegacyLinkList", "Legacy Link List", "Legacy content", "link"),
+        ("AllianzLegacyBreadcrumbs", "Legacy Breadcrumbs", "Legacy content", "navigation"),
+    ]
 }
 CHILDREN = {
     "AllianzCard": {"heading": "Single-Line Text", "subheading": "Rich Text", "body": "Rich Text", "image": "Image", "icon": "Image", "iconTheme": "Droplist", "link": "General Link", "links": "Treelist", "theme": "Droplist", "headingLevel": "Droplist", "alphanumeral": "Single-Line Text"},
@@ -258,14 +323,21 @@ def component_query(name: str, definition: dict) -> str:
     if definition.get("children"):
         lines.append(f"    children(first: {CHILD_LIMITS[name]}) {{ total pageInfo {{ hasNext endCursor }} results {{")
         lines.append("      id")
-        lines.extend(selected_fields(CHILDREN[definition["children"]], "      "))
-        for nav_field, kind in CHILDREN[definition["children"]].items():
-            if kind == "Treelist":
-                lines.append('      ' + nav_field + ': field(name: "' + nav_field + '") { ... on MultilistField { targetItems {')
-                # A card's optional links are flat; do not multiply a large card
-                # collection by a full three-level menu query.
-                lines.extend(nav_selection("        "))
-                lines.append("      } } }")
+        if name == "AllianzCardGrid":
+            # Native Preview accepted this complete first:40 projection, while
+            # even a second named field at that capacity was rejected. jsonValue
+            # keeps the SDK field objects and ordered reference item fields; the
+            # frontend projects their names without inventing fixture content.
+            lines.append("      fieldCollection: fields { name jsonValue }")
+        else:
+            lines.extend(selected_fields(CHILDREN[definition["children"]], "      "))
+            for nav_field, kind in CHILDREN[definition["children"]].items():
+                if kind == "Treelist":
+                    lines.append('      ' + nav_field + ': field(name: "' + nav_field + '") { ... on MultilistField { targetItems {')
+                    # A card's optional links are flat; do not multiply a large
+                    # card collection by a full three-level menu query.
+                    lines.extend(nav_selection("        "))
+                    lines.append("      } } }")
         lines.append("    } }")
     lines.extend(["  }", "}"])
     return "\n".join(lines)
@@ -310,12 +382,17 @@ def generate() -> tuple[list[dict], dict]:
             field(FIELD["DatasourceTemplate"], "Datasource Template", path),
             field(FIELD["DatasourceLocation"], "Datasource Location", "query:$site/*[@@name='Data']/*[@@name='Allianz Life']"),
             field(FIELD["ParametersTemplate"], "Parameters Template", brace(identifier(parameter_path))),
+            field(FIELD["Icon"], "__Icon", RENDERING_AUTHORING[name]["icon"]),
         ]
         if name not in ("AllianzHeader", "AllianzFooter", "AllianzLegacyHeader", "AllianzLegacyFooter", "AllianzLegacySidebar"):
             # Target native SXA Editing settings must explicitly choose page-local
             # auto datasources during verified bootstrap; do not guess field IDs.
             shared.append(field(FIELD["OtherProperties"], "OtherProperties", "IsAutoDatasourceRendering=true"))
-        values.append(item(render_path, "JsonRendering", shared=shared))
+        # Native Pages requires an English version for rendering definitions.
+        # __Display name is language-unversioned, not shared or versioned. The
+        # serializer emits en/Version 1 for this language without moving any of
+        # the existing rendering configuration out of shared storage.
+        values.append(item(render_path, "JsonRendering", shared=shared, unversioned=[field(FIELD["DisplayName"], "__Display name", RENDERING_AUTHORING[name]["displayName"])]))
     placeholders = {"headless-header": ["AllianzHeader", "AllianzLegacyHeader"], "headless-main": [name for name in COMPONENTS if name not in ("AllianzHeader", "AllianzFooter", "AllianzLegacyHeader", "AllianzLegacyFooter", "AllianzLegacySidebar")], "headless-footer": ["AllianzFooter", "AllianzLegacyFooter"], "headless-sidebar": ["AllianzLegacySidebar"]}
     for key, names in placeholders.items():
         values.append(item(ROOTS["allianz.placeholders"][0] + "/" + key, "Placeholder", shared=[field(FIELD["PlaceholderKey"], "Placeholder Key", key), field(FIELD["AllowedControls"], "Allowed Controls", "\n".join(brace(identifier(ROOTS["allianz.renderings"][0] + "/" + name)) for name in names))]))
@@ -352,7 +429,7 @@ def main() -> None:
         path.write_text(serialize(value))
     OUTPUT.mkdir(parents=True, exist_ok=True)
     (OUTPUT / "Project.AllianzLife.Structure.module.json").write_text(json.dumps(module, indent=2) + "\n")
-    contract = {"namespace": module["namespace"], "siteName": "allianz-life", "collectionName": "Allianz", "components": COMPONENTS, "childTemplates": CHILDREN, "parameters": PARAMETERS, "dataOptions": DATA_OPTIONS, "inheritedParameters": ["RenderingIdentifier"], "parameterFields": PARAMETER_FIELDS, "pageTypes": PAGE_TYPES, "templateIds": {value["Path"]: value["ID"] for value in values if value["Template"] == PLATFORM["Template"]}, "platformDependencies": PLATFORM, "fieldDependencies": FIELD, "status": "generated-locally; tenant dependency/schema verification required"}
+    contract = {"namespace": module["namespace"], "siteName": "allianz-life", "collectionName": "Allianz", "components": COMPONENTS, "renderingAuthoring": RENDERING_AUTHORING, "childTemplates": CHILDREN, "parameters": PARAMETERS, "dataOptions": DATA_OPTIONS, "inheritedParameters": ["RenderingIdentifier"], "parameterFields": PARAMETER_FIELDS, "pageTypes": PAGE_TYPES, "templateIds": {value["Path"]: value["ID"] for value in values if value["Template"] == PLATFORM["Template"]}, "platformDependencies": PLATFORM, "fieldDependencies": FIELD, "status": "generated-locally; tenant dependency/schema verification required"}
     (OUTPUT / "content-contract.json").write_text(json.dumps(contract, indent=2) + "\n")
     (OUTPUT / "structure-manifest.json").write_text(json.dumps({"namespace": module["namespace"], "items": values}, indent=2) + "\n")
     print(json.dumps({"namespace": module["namespace"], "itemCount": len(values), "roots": len(ROOTS), "remoteWrites": 0}))

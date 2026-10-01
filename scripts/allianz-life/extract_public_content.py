@@ -22,6 +22,7 @@ REPO = Path(__file__).resolve().parents[2]
 ROOT = REPO.parent.parent / "public-site"
 OUTPUT = REPO / "examples/allianz-life/content"
 SVG_DIR = OUTPUT / "media-vectors"
+BUNDLED_SELECTION = OUTPUT / "media-manifest.json"
 HOST = "https://www.allianzlife.com"
 VOID = set("area base br col embed hr img input link meta param source track wbr".split())
 FIRST = {"/", "/what-we-offer/annuities", "/customer-service-frequently-asked-questions"}
@@ -31,6 +32,7 @@ VECTORS: dict[str, dict] = {}
 LINK_AUDIT: dict[str, dict] = {}
 ASSET_AUDIT: dict[str, dict] = {}
 DOCUMENT_PATHS = set()
+SOURCE_EXCEPTION_CACHE = {}
 THEMES = ["transparent", "blue-soft", "grey-muted", "green-soft", "grey-soft", "purple-soft", "yellow-soft", "primary-white", "red-soft"]
 
 
@@ -111,6 +113,32 @@ def field_value(value):
     return {"jsonValue": {"value": value}}
 
 
+def captured_source_exception(path):
+    """Use only the saved observed403 candidate inventory, without requests."""
+    inventory = ROOT / "blocked_public_candidates.json"
+    cache_key = str(inventory.resolve())
+    if cache_key not in SOURCE_EXCEPTION_CACHE:
+        records = {}
+        if inventory.is_file():
+            for source_url in json.loads(inventory.read_text()):
+                parsed = urlparse(source_url)
+                if parsed.hostname == "www.allianzlife.com":
+                    records[parsed.path.lower().rstrip("/") or "/"] = {
+                        "sourceUrl": source_url, "classification": "observed403 public candidate",
+                        "evidence": "blocked_public_candidates.json", "availability": "unavailable",
+                    }
+        SOURCE_EXCEPTION_CACHE[cache_key] = records
+    return SOURCE_EXCEPTION_CACHE[cache_key].get(path)
+
+
+def source_exception_for_href(raw, source):
+    full = urlparse(urljoin(source, raw.replace("~/", "/")))
+    if full.hostname != "www.allianzlife.com":
+        return None
+    path = re.split(r"%23", full.path, maxsplit=1, flags=re.I)[0].lower().rstrip("/") or "/"
+    return captured_source_exception(path)
+
+
 def canonical_href(raw, source=HOST + "/"):
     if not raw:
         return "", "empty"
@@ -128,6 +156,8 @@ def canonical_href(raw, source=HOST + "/"):
     path = route_path.lower().rstrip("/") or "/"
     if re.match(r"^/(?:new-york/)?(?:secured|login|logout|registration|manageuserprofile|spa|api|sitecore)(?:/|$)", path):
         return "#demo-unavailable", "authenticated/account destination"
+    if captured_source_exception(path):
+        return "#demo-unavailable", "captured blocked public candidate"
     if path in DOCUMENT_PATHS or re.search(r"\.(?:pdf|docx?|xlsx?|pptx?|csv|zip)$", path):
         asset = ASSET_BY_PATH.get(path)
         full = urljoin(source,raw)
@@ -150,6 +180,10 @@ def link_value(node, source, text=None):
     if reason not in {"public same-host", "bundled document", "empty"}:
         value["title"] = "This service is unavailable"
     result = {"jsonValue": {"value": value}}
+    if reason == "captured blocked public candidate":
+        evidence = source_exception_for_href(raw, source)
+        result["sourceException"] = evidence
+        LINK_AUDIT[raw]["sourceException"] = evidence
     full = urljoin(source,raw)
     if full in ASSET_AUDIT:
         result["asset"] = ASSET_AUDIT[full]
@@ -191,7 +225,7 @@ def vector_image(node, source):
     value = raw_svg(node)
     digest = hashlib.sha256(value.encode()).hexdigest()[:16]
     name = f"{digest}.svg"
-    SVG_DIR.mkdir(exist_ok=True)
+    SVG_DIR.mkdir(parents=True, exist_ok=True)
     (SVG_DIR / name).write_text(value)
     title = node.find("title")
     local_warnings=[n.attrs.get("href",n.attrs.get("xlink:href","")) for n in node.descendants() if n.tag=="use" and n.attrs.get("href",n.attrs.get("xlink:href",""))[1:] not in defined]
@@ -225,6 +259,25 @@ def load_assets():
             present = next((p for p in alternatives if p.is_file()), None)
             if present:
                 ASSET_BY_PATH[parsed.path.lower()] = {**asset, "url":source_url,"id": asset.get("id", present.stem), "path": str(present), "manifest": str(manifest)}
+    # Multiple authorized captures can contain different variants of the same
+    # URL. Keep the already selected, bundled bytes during editorial refresh;
+    # manifest traversal order must not silently retarget existing images.
+    if BUNDLED_SELECTION.is_file():
+        payload = json.loads(BUNDLED_SELECTION.read_text())
+        public_root = (REPO / "examples/allianz-life/public").resolve()
+        for asset in payload.get("assets", []):
+            src = asset.get("demoSrc", "")
+            source_url = asset.get("sourceUrl", "")
+            parsed = urlparse(source_url)
+            if asset.get("status") != "available" or parsed.hostname != "www.allianzlife.com" or not re.fullmatch(r"/allianz-(?:legacy-)?assets/[A-Za-z0-9._-]+", src):
+                continue
+            local = (public_root / src.lstrip("/")).resolve()
+            if not local.is_relative_to(public_root) or not local.is_file():
+                continue
+            checksum = hashlib.sha256(local.read_bytes()).hexdigest()
+            if asset.get("sha256") and asset["sha256"] != checksum:
+                raise ValueError("Selected bundled asset no longer matches its recorded hash: " + src)
+            ASSET_BY_PATH[parsed.path.lower()] = {**asset, "url": source_url, "id": local.stem, "path": str(local), "manifest": str(BUNDLED_SELECTION), "sha256": checksum}
 
 
 def image_value(node, source):
@@ -247,15 +300,64 @@ def image_value(node, source):
     return {"jsonValue": {"value": {"src": src, "alt": node.attrs.get("alt", "")}}, "asset": ref}
 
 
-def rich(node, source, outer=False):
+def inline_table_image(node, source):
+    """Allow an editorial table logo only when its approved bundled bytes match.
+
+    The body retains a localized IMG plus the ordinary image/asset evidence.
+    Native delivery must map this inline source just as it maps Image fields.
+    """
+    value = image_value(node, source)
+    image = value["jsonValue"]["value"]
+    asset = value["asset"]
+    src = image.get("src", "")
+    bundle = REPO / "examples/allianz-life/public" / src.lstrip("/")
+    approved = Path(asset.get("localPath", ""))
+    verified = (asset["status"] == "available" and re.fullmatch(r"/allianz-(?:legacy-)?assets/[A-Za-z0-9._-]+", src)
+                and bundle.is_file() and approved.is_file())
+    checksum = hashlib.sha256(bundle.read_bytes()).hexdigest() if verified else ""
+    recorded = ASSET_BY_PATH.get(asset["sourcePath"], {}).get("sha256", "")
+    if not (verified and checksum == hashlib.sha256(approved.read_bytes()).hexdigest()
+            and (not recorded or checksum == recorded)):
+        image["src"] = ""
+        asset.update({"status": "missing", "demoSrc": "", "reason": "Table-cell image requires matching approved bundled bytes"})
+    else:
+        asset["sha256"] = checksum
+    value["deliveryMapping"] = "Inline rich-text image requires the same final Content Hub delivery mapping as Image fields"
+    return value
+
+
+def rich(node, source, outer=False, inline_images=None):
     if node is None:
         return ""
     if isinstance(node, str):
         return html.escape(node)
     if node.tag in DROP:
         return ""
-    body = "".join(rich(n, source, True) for n in node.content)
+    if node.tag == "img" and inline_images is not None:
+        # Only the explicitly recognized legacy table enables this path. Do
+        # not admit standalone images, original URLs, styles or event handlers.
+        ancestor = node.parent
+        while ancestor and ancestor.tag not in {"td", "th", "table"}:
+            ancestor = ancestor.parent
+        if ancestor is None or ancestor.tag not in {"td", "th"}:
+            return ""
+        table = ancestor.parent
+        while table and table.tag != "table":
+            table = table.parent
+        if table is None:
+            return ""
+        value = inline_table_image(node, source)
+        inline_images.append(value)
+        image = value["jsonValue"]["value"]
+        if not image["src"]:
+            return ""
+        return '<img src="' + html.escape(image["src"], quote=True) + '" alt="' + html.escape(image["alt"], quote=True) + '">'
+    body = "".join(rich(n, source, True, inline_images) for n in node.content)
     if not outer or node.tag not in ALLOWED_RICH:
+        # Removing a block wrapper must not join words across its boundary.
+        # Captured biography H5s contain adjacent DIVs with no source whitespace.
+        if outer and node.tag in {"div", "section", "article"} and body:
+            return " " + body + " "
         return body
     attrs = {}
     if node.tag == "a":
@@ -265,6 +367,8 @@ def rich(node, source, outer=False):
             attrs["data-demo-disabled"] = "true"
             attrs["title"] = "This service is unavailable"
             LINK_AUDIT[node.attrs.get("href", "")] = {"sourceHref": node.attrs.get("href", ""), "demoHref": href, "classification": reason}
+            if reason == "captured blocked public candidate":
+                LINK_AUDIT[node.attrs.get("href", "")]["sourceException"] = source_exception_for_href(node.attrs.get("href", ""), source)
     for attr in ["colspan", "rowspan", "scope"]:
         if attr in node.attrs:
             attrs[attr] = node.attrs[attr]
@@ -340,8 +444,33 @@ def tile_fields(tile, source, key):
     heading_tag = next((n.tag for n in heading.descendants() if n.tag in {"h2", "h3", "h4"}), "h4") if heading else "h4"
     anchor = tile if tile.tag == "a" else (tile.find(css="tileLink").find("a") if tile.find(css="tileLink") else None)
     link_holder=tile.find(css="tileLink") or tile.find(css="m-card__footer")
-    anchors=link_holder.all("a") if link_holder else []
-    return {"id": stable(key), "heading": field_value(heading.text() if heading else ""), "subheading": field_value(rich(subheading, source).strip()), "body": field_value(rich(body, source).strip()), "image": image_value(image, source), "icon": image_value(icon, source), "iconTheme":field_value("primary-brand" if icon_holder and icon_holder.has("t-bg-primary-brand") else "transparent"), "link": link_value(anchor, source), "links":{"targetItems":[{"id":stable(key+f":link:{i}"),"title":field_value(a.text()),"link":link_value(a,source),"children":{"results":[]}} for i,a in enumerate(anchors)]},"theme": field_value(theme), "headingLevel": field_value(heading_tag), "alphanumeral": field_value(alpha.text() if alpha else "")}
+    original_anchors=link_holder.all("a") if link_holder else []
+    # Preserve IDs already assigned to the first container, even if a newly
+    # recognized container precedes it. Visit anchors once so nested containers
+    # cannot duplicate them; the returned collection follows source DOM order.
+    link_indices={id(a):i for i,a in enumerate(original_anchors)}
+    next_index=len(original_anchors)
+    anchors=[]
+    for a in tile.all("a"):
+        current=a
+        while current is not None and current is not tile:
+            if current.has("tileLink") or current.has("m-card__footer"):
+                break
+            current=current.parent
+        if current is None or current is tile:
+            continue
+        if id(a) not in link_indices:
+            link_indices[id(a)]=next_index
+            next_index+=1
+        anchors.append(a)
+    return {"id": stable(key), "heading": field_value(heading.text() if heading else ""), "subheading": field_value(rich(subheading, source).strip()), "body": field_value(rich(body, source).strip()), "image": image_value(image, source), "icon": image_value(icon, source), "iconTheme":field_value("primary-brand" if icon_holder and icon_holder.has("t-bg-primary-brand") else "transparent"), "link": link_value(anchor, source), "links":{"targetItems":[{"id":stable(key+f":link:{link_indices[id(a)]}"),"title":field_value(a.text()),"link":link_value(a,source),"children":{"results":[]}} for a in anchors]},"theme": field_value(theme), "headingLevel": field_value(heading_tag), "alphanumeral": field_value(alpha.text() if alpha else "")}
+
+
+def source_mva_wells(section):
+    return [node for node in section.descendants() if node.has("well") and (
+        node.has("seven-yr-slot") or node.has("five-yr-slot")
+        or any(span.attrs.get("testid") == "currentMVARate" for span in node.all("span"))
+    )]
 
 
 def substantive(node):
@@ -372,8 +501,27 @@ def residual_editorial(section, components, source):
                     collect(v)
         elif isinstance(value,list):
             for v in value: collect(v)
+    rate_witnesses=set()
     for component_value in components:
         collect(component_value.get("fields", {}))
+        # RateSnapshot renders this fixed phrase outside datasource fields. Only
+        # credit it when the captured rate/date/heading match the native fields
+        # and the source actually places "as of" with that date.
+        if component_value.get("componentName") == "AllianzRateSnapshot":
+            fields = component_value.get("fields", {}).get("data", {}).get("datasource", {})
+            def value(name):
+                return fields.get(name, {}).get("jsonValue", {}).get("value", "")
+            for well in source_mva_wells(section):
+                rate = next((n for n in well.descendants() if n.attrs.get("testid") == "currentMVARate"), None)
+                date = next((n for n in well.descendants() if n.attrs.get("testid") == "currentMVARateEffectiveDate"), None)
+                heading = well.find("small")
+                if (id(well) not in rate_witnesses and rate and date and heading and date.parent and date.text()
+                        and value("asOf") == date.text() and value("rate") == rate.text() + "%"
+                        and value("heading") == heading.text().rstrip(":")
+                        and re.search(r"\bas\s+of\s+" + re.escape(date.text()) + r"\b", date.parent.text(), re.I)):
+                    represented.append("as of")
+                    rate_witnesses.add(id(well))
+                    break
     source_words = re.findall(r"\w+", substantive(section).casefold())
     result_words = re.findall(r"\w+", " ".join(represented).casefold())
     missing = collections.Counter(source_words) - collections.Counter(result_words)
@@ -401,6 +549,27 @@ def form_control_label(control, labels):
         return label
     parent_label = control.parent if control.parent and control.parent.tag == "label" else None
     return parent_label.text() if parent_label else control.attrs.get("placeholder", (control.attrs.get("name") or control.attrs.get("id", "")).split(".")[-1])
+
+
+def source_cash_equivalent_table(node, source):
+    """Recognize the captured cash-equivalent table, including its logo cell.
+
+    The earlier commented-out table is absent from the parsed DOM. Bound the
+    exception to the actual two public routes and source island, rather than
+    allowing arbitrary image-containing legacy blocks into rich text.
+    """
+    paths = {"/new-york/annuities/investment-strategies/cash-equivalent",
+             "/what-we-offer/annuities/investment-strategies/cash-equivalent"}
+    if (urlparse(source).path.lower().rstrip("/") not in paths or node.tag != "table"
+            or node.attrs.get("id") != "asset-class" or not node.has("table-striped")
+            or node.parent is None or node.parent.attrs.get("id") != "AssetClassPortlet"):
+        return False
+    headings = [n.text() for n in node.all("th")]
+    images = node.all("img")
+    return (headings == ["Money Manager", "Investment Option"] and len(images) == 1
+            and urlparse(urljoin(source, images[0].attrs.get("src", ""))).path.lower()
+                == "/-/media/images/allianz/fund-managers/blackrock.gif"
+            and all(n.tag in ALLOWED_RICH | {"img"} for n in [node, *node.descendants()]))
 
 
 def legacy_page(row, dom):
@@ -480,6 +649,28 @@ def legacy_page(row, dom):
                 continue
             if node.tag in {"script", "style", "noscript"} or node.has("hidden"):
                 continue
+            if source_cash_equivalent_table(node, source):
+                flush()
+                siblings = node.parent.children()
+                source_index = siblings.index(node)
+                preceding = siblings[source_index - 1] if source_index else None
+                previous = components[-1] if components else None
+                previous_fields = previous["fields"]["data"]["datasource"] if previous else {}
+                # The table belongs directly after the source fund paragraph.
+                # Extend that existing field so later ordinal identities stay
+                # stable and the table cannot move ahead of its introduction.
+                if (preceding and preceding.has("fund-content") and previous
+                        and previous["componentName"] == "AllianzLegacyRichText"
+                        and previous["params"].get("region") == region
+                        and previous_fields.get("body", {}).get("jsonValue", {}).get("value")
+                            == rich(preceding, source).strip()):
+                    inline_images = []
+                    fragment = rich(node, source, True, inline_images).strip()
+                    previous_fields["body"]["jsonValue"]["value"] += "\n" + fragment
+                    previous_fields["body"]["inlineImages"] = inline_images
+                    previous["params"]["tableTheme"] = "striped"
+                    previous["provenance"]["appendedSourceBlocks"] = [source_facts(node)]
+                    continue
             if node.tag == "form":
                 flush(); extract_form(node,placement); continue
             if node.has("panel-group"):
@@ -588,7 +779,9 @@ def supplement_modern_components(main,components,source,path):
             elif value["componentName"] in {"AllianzCardGrid","AllianzRichText"}:
                 node=intros[0] if intros else articles[0] if articles else section.find(css="o-richTextEditor__wrapper") or section
             if intros and value["componentName"] in {"AllianzCardGrid","AllianzRichText"} and node is intros[0]:
-                value["fields"]["data"]["datasource"]["primaryLink"]=tile_fields(intros[0],source,prefix+":intro")["link"]
+                fields=value["fields"]["data"]["datasource"]
+                if not fields.get("primaryLink",{}).get("jsonValue",{}).get("value",{}).get("href"):
+                    fields["primaryLink"]=tile_fields(intros[0],source,prefix+":intro")["link"]
             if value["componentName"]=="AllianzCardGrid" and value["params"].get("layout")=="cards":
                 # A card collection owns its column count. Its separate intro
                 # lives in a full-width grid column and must not overwrite it.
@@ -609,6 +802,29 @@ def supplement_modern_components(main,components,source,path):
                         value["params"]["columns"]=str(12//width);break
                     col=col.parent
             push(value,node)
+        # Some source accordion charts have an icon-bearing m-axlTile intro,
+        # rather than m-axlIntroductionBlock. Its fields belong to a distinct
+        # native card before the existing accordion components, never inside a
+        # panel. Use a separate ordinal namespace to preserve all old keys.
+        if group and all(c["componentName"] == "AllianzAccordion" for c in group) and not intros:
+            fragment_ordinal = 0
+            for tile in articles:
+                ancestor = tile.parent
+                while ancestor and ancestor is not section and not ancestor.has("c-accordion__item-content"):
+                    ancestor = ancestor.parent
+                if ancestor is not section or tile.find(css="c-accordion"):
+                    continue
+                fragment_key = prefix + f":fragment:{fragment_ordinal}"
+                fields = tile_fields(tile, source, fragment_key + ":tile:0")
+                render_params = component_row_params(section, tile, "plain", 1, fields["headingLevel"]["jsonValue"]["value"])
+                render_params["alignment"] = "left" if tile.find(css="tileContent") and tile.find(css="tileContent").has("u-text-left") else "center"
+                if fields["icon"]["jsonValue"]["value"]["src"] or fields["image"]["jsonValue"]["value"]["src"]:
+                    value = component("AllianzCardGrid", {"heading": field_value(""), "body": field_value(""), "children": {"results": [fields]}}, render_params, fragment_key)
+                else:
+                    value = component("AllianzRichText", {"heading": fields["heading"], "subheading": fields["subheading"], "body": fields["body"], "primaryLink": fields["link"]}, render_params, fragment_key)
+                value["nativeSupplementKey"] = f"section:{section_index}:fragment:{fragment_ordinal}"
+                fragment_ordinal += 1
+                push(value, tile)
         for intro in intros[1:]:
             fields=tile_fields(intro,source,prefix+f":additional-intro:{extra_ordinal}")
             render_params=params(section,"plain",1,fields["headingLevel"]["jsonValue"]["value"])
@@ -617,7 +833,7 @@ def supplement_modern_components(main,components,source,path):
                 extra("AllianzCardGrid",{"heading":field_value(""),"body":field_value(""),"children":{"results":[fields]}},render_params,intro)
             elif fields["heading"]["jsonValue"]["value"] or fields["body"]["jsonValue"]["value"] or fields["link"]["jsonValue"]["value"]["href"]:
                 extra("AllianzRichText",{"heading":fields["heading"],"subheading":fields["subheading"],"body":fields["body"],"primaryLink":fields["link"]},render_params,intro)
-        for well in [n for n in section.descendants() if n.has("well") and (n.has("seven-yr-slot") or n.has("five-yr-slot") or n.find("span") and any(x.attrs.get("testid")=="currentMVARate" for x in n.all("span")))]:
+        for well in source_mva_wells(section):
             rate=next((n for n in well.descendants() if n.attrs.get("testid")=="currentMVARate"),None)
             date=next((n for n in well.descendants() if n.attrs.get("testid")=="currentMVARateEffectiveDate"),None)
             small=well.find("small")
@@ -656,6 +872,36 @@ def supplement_modern_components(main,components,source,path):
             fragment=rich(wrapper,source).strip()
             if fragment and substantive(DOM(fragment).root):
                 extra("AllianzRichText",{"heading":field_value(""),"body":field_value(fragment)}, {**params(section,"rich-text"),"alignment":"left"},wrapper)
+        # Source collection footers sit outside their cards/intro articles. A
+        # headed CardGrid can display primaryLink; headingless/list grids and
+        # accordions need a plain RichText island, whose renderer displays it.
+        section_links=[]
+        for anchor in section.all("a"):
+            current=anchor
+            in_link_container=False
+            while current is not None and current is not section:
+                if current.tag=="article" or current.has("m-card") or current.has("c-accordion__item-content"):
+                    break
+                in_link_container=in_link_container or current.has("tileLink") or current.has("m-card__footer")
+                current=current.parent
+            if current is section and in_link_container and anchor.text():
+                section_links.append(anchor)
+        for link_index,anchor in enumerate(section_links):
+            owner = None
+            for candidate in group:
+                fields = candidate["fields"]["data"]["datasource"]
+                if (candidate["componentName"] == "AllianzCardGrid" and candidate["params"].get("layout") != "list"
+                        and fields.get("heading", {}).get("jsonValue", {}).get("value")
+                        and not fields.get("primaryLink", {}).get("jsonValue", {}).get("value", {}).get("href")):
+                    owner = candidate
+                    break
+            if owner:
+                owner["fields"]["data"]["datasource"]["primaryLink"]=link_value(anchor,source)
+            else:
+                fields={"heading":field_value(""),"body":field_value(""),"primaryLink":link_value(anchor,source)}
+                value=component("AllianzRichText",fields,component_row_params(section,anchor,"plain"),prefix+f":section-link:{link_index}")
+                value["nativeSupplementKey"]=f"section:{section_index}:footer:{link_index}"
+                push(value,anchor)
         result.extend(value for _,_,value in sorted(ordered,key=lambda x:(x[0],x[1])))
     return result
 
@@ -702,7 +948,6 @@ def parse_page(row):
                 bodies = teaser.all(css="c-search-result-text-teaser__copytext")
                 items.append({"id": stable(key + f":teaser:{ti}"), "heading": field_value(h.text() if h else ""), "body": field_value("".join(rich(n,source,True) for n in bodies)), "image": image_value(None,source), "link": link_value(a,source)})
             components.append(component("AllianzCardGrid", {"heading": field_value(""), "body": field_value(""), "children": {"results": items}}, {**params(section, "list", 1, "h5"), "alignment": "left"}, key))
-            gaps.append({"path": path, "section": index, "reason": "Native CardGrid list layout needs frontend implementation", "source": source_facts(section)})
             continue
         if accordions:
             if intro:
@@ -776,7 +1021,7 @@ def parse_page(row):
     by_section = collections.defaultdict(list)
     for value in components:
         # UUIDs are deliberately opaque; retain explicit source section provenance.
-        value["provenance"] = {"sourceUrl": source, "sourceHtml": row["html_file"]}
+        value["provenance"] = {**(value.get("provenance",{}) if value.get("nativeSupplementKey") else {}), "sourceUrl": source, "sourceHtml": row["html_file"]}
     for index, section in enumerate(main.children()):
         expected = substantive(section)
         prefix=path+f":section:{index}"
@@ -784,6 +1029,11 @@ def parse_page(row):
         if not expected:
             continue
         missing = residual_editorial(section, section_components, source)
+        # These MVA-only sections were provisionally unmapped before the
+        # supplement pass emitted RateSnapshot. Retire that structural flag only
+        # when its recognized source well has complete rendered editorial copy.
+        if not missing and source_mva_wells(section) and section_components and all(c["componentName"]=="AllianzRateSnapshot" for c in section_components):
+            gaps=[g for g in gaps if not (g.get("section")==index and g["reason"]=="Unmapped native structural archetype")]
         if missing and not any(g.get("section") == index for g in gaps):
             gaps.append({"path": path, "section": index, "reason": "Mapped component omitted source editorial words; do not import until reconciled", "missingWordCounts": missing, "source": source_facts(section)})
         source_form = section.find("form")
@@ -1083,9 +1333,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-dir", type=Path, default=ROOT)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT)
+    parser.add_argument("--asset-selection-manifest", type=Path, default=BUNDLED_SELECTION)
     parser.add_argument("--routes", nargs="+")
     parser.add_argument("--strict", action="store_true")
     args = parser.parse_args()
     ROOT, OUTPUT = args.source_dir.resolve(), args.output_dir.resolve()
+    BUNDLED_SELECTION = args.asset_selection_manifest.resolve()
     SVG_DIR = OUTPUT / "media-vectors"
     raise SystemExit(build(set(args.routes) if args.routes else None, args.strict))

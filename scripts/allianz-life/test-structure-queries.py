@@ -34,7 +34,17 @@ class QueryContractTests(unittest.TestCase):
         card = structure.component_query('AllianzCardGrid', structure.COMPONENTS['AllianzCardGrid'])
         self.assertIn('children(first: 40)', card)
         self.assertNotIn('children(first: 6)', card)
-        self.assertIn('children(first: 1)', card)
+        self.assertIn('fieldCollection: fields { name jsonValue }', card)
+        self.assertNotIn('children(first: 1)', card)
+        self.assertNotIn('... on MultilistField', card)
+
+    def test_card_collection_keeps_all_source_fields_in_the_existing_schema(self):
+        fields = structure.CHILDREN[structure.COMPONENTS['AllianzCardGrid']['children']]
+        self.assertEqual(set(fields), {'heading', 'subheading', 'body', 'image', 'icon',
+            'iconTheme', 'link', 'theme', 'headingLevel', 'alphanumeral', 'links'})
+        query = structure.component_query('AllianzCardGrid', structure.COMPONENTS['AllianzCardGrid'])
+        for name in structure.COMPONENTS['AllianzCardGrid']['fields']:
+            self.assertIn(name + ': field(name: "' + name + '") { jsonValue }', query)
 
     def test_list_layout_is_registered(self):
         self.assertIn('list', structure.PARAMETERS['layout'])

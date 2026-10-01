@@ -908,12 +908,16 @@ class NativePresentationCandidateTests(unittest.TestCase):
         for label in ("header", "footer"):
             partial = records["presentation:shell:modern:" + label]
             ids.append(partial["id"])
+            self.assertEqual(native.SITE_ROOT + "/Presentation/Partial Designs/Allianz modern " + label.title(), partial["path"])
+            self.assertEqual(label, partial["fields"][signature_field])
             self.assertEqual("shared", partial["fieldStorage"][layout_field])
             self.assertEqual("shared", partial["fieldStorage"][signature_field])
             layout = ET.fromstring(partial["fields"][layout_field])
             device = layout.find("d")
             rendering = device.find("r")
-            self.assertEqual(self.prepare.brace(self.registry["inheritedLayout"]["layoutId"]), device.get("l"))
+            self.assertEqual("1", layout.get("{p}p"))
+            self.assertIsNone(device.get("l"), "shared deltas inherit the verified native standard-value layout")
+            self.assertEqual("*", rendering.get("{p}before"))
             self.assertEqual(self.prepare.brace(self.registry["projectRenderings"][label]["id"]), rendering.get("{s}id"))
             self.assertEqual(self.prepare.brace(records["shared:modern:" + label]["id"]), rendering.get("{s}ds"))
             self.assertEqual("headless-" + label, rendering.get("{s}ph"))

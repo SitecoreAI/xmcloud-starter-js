@@ -1,18 +1,18 @@
 {
   "routes": 357,
-  "components": 2242,
+  "components": 2250,
   "sourceExceptionCandidates": 20,
-  "layoutIssues": 129,
-  "routesWithLayoutIssues": 103,
-  "readyForImport": 253,
+  "layoutIssues": 70,
+  "routesWithLayoutIssues": 62,
+  "readyForImport": 294,
   "missingAssets": 7,
   "documents": 194,
   "missingDocuments": 1,
   "vectors": 66,
   "componentKinds": {
     "AllianzHero": 144,
-    "AllianzCardGrid": 713,
-    "AllianzRichText": 555,
+    "AllianzCardGrid": 715,
+    "AllianzRichText": 561,
     "AllianzBreadcrumbs": 273,
     "AllianzTimeline": 1,
     "AllianzAccordion": 143,
@@ -28,5 +28,5 @@
     "AllianzRateSnapshot": 14,
     "AllianzIndexDefinitions": 5
   },
-  "output": "/Users/thomaslin/Documents/Codex/2026-09-30/task/publication/workspace/discovery/repo/xmcloud-starter-js/examples/allianz-life/content/native-content.json"
+  "output": "/workspace/scratch/19d699b9a9db/handoff/editorial-regeneration-final/native-content.json"
 }

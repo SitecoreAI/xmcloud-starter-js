@@ -294,15 +294,33 @@ class Builder:
         root = ET.Element("r", {"{p}p": "1"})
         device = ET.SubElement(root, "d", {"id": brace(DEFAULT_DEVICE)})
         previous = None
-        for index, component in enumerate(components, 1):
+        # Supplements add newly recovered source content without renumbering
+        # existing datasource/rendering identities on later sections.
+        legacy_index = 0
+        supplement_keys = set()
+        for component in components:
             name = component["componentName"]
+            supplement = component.get("nativeSupplementKey")
+            if supplement is None:
+                legacy_index += 1
             definition = self.contract["components"].get(name)
             if not definition:
                 self.exception("page:" + route, "unsupported-component-template", componentName=name)
                 continue
             datasource = component.get("fields", {}).get("data", {}).get("datasource", {})
-            key = "route:" + route + ":component:" + str(index) + ":" + name
-            data_path = page_path + "/Data/" + name + " " + str(index).zfill(2)
+            if supplement is not None:
+                match = re.fullmatch(r"section:(\d+):(footer|fragment):(\d+)", str(supplement))
+                allowed = {"footer": {"AllianzRichText"}, "fragment": {"AllianzRichText", "AllianzCardGrid"}}
+                if not match or name not in allowed[match[2]] or supplement in supplement_keys:
+                    self.exception("page:" + route, "invalid-native-supplement-identity", sourceKey=supplement, componentName=name)
+                    continue
+                supplement_keys.add(supplement)
+                key = "route:" + route + ":supplement:" + supplement + ":" + name
+                purpose = "Link" if match[2] == "footer" else "Fragment"
+                data_path = page_path + "/Data/" + name + " Section " + match[1].zfill(2) + " " + purpose + " " + match[3].zfill(2)
+            else:
+                key = "route:" + route + ":component:" + str(legacy_index) + ":" + name
+                data_path = page_path + "/Data/" + name + " " + str(legacy_index).zfill(2)
             self.add(key, data_path, TEMPLATES_ROOT + "/Components/" + name, source, self.fields(name, datasource, data_path, source, key))
             uid = self.identity(key + ":rendering")
             params = component.get("params", {})
@@ -312,7 +330,7 @@ class Builder:
                         self.exception(key, "invalid-anchor-identifier", value=value)
                 elif name_param not in self.contract["parameters"] or value not in self.contract["parameters"][name_param]:
                     self.exception(key, "unsupported-rendering-parameter", field=name_param, value=value)
-            attributes = {"uid": brace(uid), "{s}id": brace(self.by_path[RENDERINGS_ROOT + "/" + name]["ID"]), "{s}ds": "local:/Data/" + name + " " + str(index).zfill(2), "{s}ph": "headless-sidebar" if name == "AllianzLegacySidebar" else "headless-main", "{s}par": urlencode(params), "{p}after": "r[@uid='" + brace(previous) + "']" if previous else "*"}
+            attributes = {"uid": brace(uid), "{s}id": brace(self.by_path[RENDERINGS_ROOT + "/" + name]["ID"]), "{s}ds": "local:" + data_path[len(page_path):], "{s}ph": "headless-sidebar" if name == "AllianzLegacySidebar" else "headless-main", "{s}par": urlencode(params), "{p}after": "r[@uid='" + brace(previous) + "']" if previous else "*"}
             if previous is None:
                 attributes.pop("{p}after")
                 attributes["{p}before"] = "*"
@@ -353,10 +371,13 @@ class Builder:
         actual = self.by_path.get(renderer["path"], {})
         if str(actual.get("ID", "")).lower() != str(renderer["id"]).lower():
             raise ValueError("Native shell rendering differs from applied project structure")
+        ET.register_namespace("p", "p")
         ET.register_namespace("s", "s")
-        root = ET.Element("r")
-        device = ET.SubElement(root, "d", {"id": brace(DEFAULT_DEVICE), "l": brace(layout["layoutId"])})
-        ET.SubElement(device, "r", {"uid": brace(self.identity(key + ":rendering")), "{s}id": brace(str(renderer["id"]).lower()), "{s}ds": brace(datasource_id), "{s}ph": placeholder, "{s}par": "DynamicPlaceholderId=1"})
+        # s-prefixed values are layout deltas. Native patch mode is required;
+        # otherwise Device Editor sees no controls and SXA fails composition.
+        root = ET.Element("r", {"{p}p": "1"})
+        device = ET.SubElement(root, "d", {"id": brace(DEFAULT_DEVICE)})
+        ET.SubElement(device, "r", {"uid": brace(self.identity(key + ":rendering")), "{p}before": "*", "{s}id": brace(str(renderer["id"]).lower()), "{s}ds": brace(datasource_id), "{s}ph": placeholder, "{s}par": "DynamicPlaceholderId=1"})
         return ET.tostring(root, encoding="unicode")
 
     def prepare_native_presentation(self, source: str) -> None:
@@ -373,7 +394,6 @@ class Builder:
         library_root = self.site_root + "/Presentation/Partial Designs"
         page_root = self.site_root + "/Presentation/Page Designs"
         self.presentation_record("presentation:partial-designs-library", library_root, "partialDesignsLibrary", source)
-        self.presentation_record("presentation:global-partial-folder", library_root + "/Global", "partialDesignFolder", source)
         self.presentation_record("presentation:page-designs-library", page_root, "pageDesignsLibrary", source)
         native_fields = registry["nativeFields"]
         signature_field = str(native_fields["signature"]["id"]).lower()
@@ -391,14 +411,18 @@ class Builder:
                 name = safe_name("Allianz " + family + " " + label.title())
                 renderer_name = ("legacyHeader" if label == "header" else "legacyFooter") if family.startswith("legacy") else label
                 renderer = registry["projectRenderings"][renderer_name]
-                signature = "allianz-" + family + "-" + label
+                # The accepted modern native items use header/footer. Reuse
+                # their direct paths and signatures; a Global duplicate would
+                # collide with their preserved identities.
+                signature = label if family == "modern" else "allianz-" + family + "-" + label
                 composition = self.native_shell_layout(key, renderer, shell[label], "headless-" + label)
-                identifier = self.presentation_record(key, library_root + "/Global/" + name, "partialDesign", source, {signature_field: signature, shared_layout_field: composition}, {signature_field: "shared", shared_layout_field: "shared"})
+                partial_path = library_root + "/" + name
+                identifier = self.presentation_record(key, partial_path, "partialDesign", source, {signature_field: signature, shared_layout_field: composition}, {signature_field: "shared", shared_layout_field: "shared"})
                 if identifier:
                     partial_ids.append(identifier)
                 # Never fabricate the generated placeholder item or infer that
                 # direct SCS creation triggers the supported UI side effect.
-                self.exception(key, "native-generated-partial-placeholder-readback-required", partialPath=library_root + "/Global/" + name, signature=signature, note="Use a supported native creation path (CLI/API/event or UI where verified), independently read Signature and any generated placeholder settings, preserve native side effects, then reconcile the authored rendering blueprint. A raw create alone is not proof of creation-event behavior")
+                self.exception(key, "native-generated-partial-placeholder-readback-required", partialPath=partial_path, signature=signature, note="Use a supported native creation path (CLI/API/event or UI where verified), independently read Signature and any generated placeholder settings, preserve native side effects, then reconcile the authored rendering blueprint. A raw create alone is not proof of creation-event behavior")
             if len(partial_ids) != 2:
                 continue
             key = "presentation:page-design:" + family
