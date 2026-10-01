@@ -1,0 +1,14 @@
+/* Captured About icons: 26px below the source's 704px medium breakpoint,
+ * 40px from medium upward. This overrides the generic .tileIcon img rule. */
+.allianz-icon-cards .tileIcon img {
+  width: 26px;
+  height: auto;
+  /* External SVG images do not inherit the source inline SVG's fill. */
+  filter: brightness(0) invert(23.5294%);
+}
+
+@media (min-width: 704px) {
+  .allianz-icon-cards .tileIcon img {
+    width: 40px;
+  }
+}
