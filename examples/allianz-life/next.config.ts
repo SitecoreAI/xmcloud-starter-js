@@ -3,7 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 import { EDITING_ALLOWED_ORIGINS } from '@sitecore-content-sdk/content/editing';
 import { getAllowedOriginsFromEnv } from '@sitecore-content-sdk/core/tools';
 
-const getVisitorCsp = () => "default-src 'self'; script-src 'self' 'unsafe-inline'" + (process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : '') + "; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.sitecorecloud.io https://*.sitecore.io; font-src 'self' data:; connect-src 'self' https://*.sitecorecloud.io https://*.sitecore.io; frame-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'";
+const getVisitorCsp = () => "default-src 'self'; script-src 'self' 'unsafe-inline'" + (process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : '') + "; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.sitecorecloud.io https://*.sitecore.io https://thlt-demo.sitecoresandbox.cloud/api/public/content/; font-src 'self' data:; connect-src 'self' https://*.sitecorecloud.io https://*.sitecore.io; frame-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'";
 
 // These three origins were observed in the native Home editing response's clientScripts.
 const editingScriptOrigins = [
@@ -41,6 +41,12 @@ const nextConfig: NextConfig = {
   // see https://nextjs.org/docs/app/api-reference/components/image#remotepatterns
   images: {
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'thlt-demo.sitecoresandbox.cloud',
+        port: '',
+        pathname: '/api/public/content/**',
+      },
       {
         protocol: 'https',
         hostname: 'edge*.**',

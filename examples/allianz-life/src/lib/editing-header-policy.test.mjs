@@ -13,6 +13,7 @@ const { getAllowedOriginsFromEnv } = require('@sitecore-content-sdk/core/tools')
 const { NodeNextRequest, NodeNextResponse } = require('next/dist/server/base-http/node');
 const { sendResponse } = require('next/dist/server/send-response');
 const { buildCustomRoute } = require('next/dist/server/lib/router-utils/filesystem');
+const { hasRemoteMatch } = require('next/dist/shared/lib/match-remote-pattern');
 const configFile = fileURLToPath(new URL('../../next.config.ts', import.meta.url));
 const editingScriptOrigins = [
   'https://xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io',
@@ -21,7 +22,9 @@ const editingScriptOrigins = [
 ];
 
 // Independently retain the visitor policy that preceded the editing-only fix.
-const visitorCsp = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.sitecorecloud.io https://*.sitecore.io; font-src 'self' data:; connect-src 'self' https://*.sitecorecloud.io https://*.sitecore.io; frame-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'";
+const priorVisitorCsp = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.sitecorecloud.io https://*.sitecore.io; font-src 'self' data:; connect-src 'self' https://*.sitecorecloud.io https://*.sitecore.io; frame-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'";
+const contentHubPublicImages = 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/';
+const visitorCsp = priorVisitorCsp.replace('https://*.sitecore.io; font-src', `https://*.sitecore.io ${contentHubPublicImages}; font-src`);
 
 function loadConfig(t, { nodeEnv = 'production', allowedOrigins = '' } = {}) {
   for (const [key, value] of Object.entries({ NODE_ENV: nodeEnv, JSS_ALLOWED_ORIGINS: allowedOrigins })) {
@@ -57,14 +60,31 @@ function directives(policy) {
     }));
 }
 
-test('production visitor CSP is byte-for-byte unchanged', async (t) => {
+test('production visitor CSP adds only the verified public-image path', async (t) => {
   const rules = await loadConfig(t).headers();
   assert.equal(rules[0].source, '/:path*');
   assert.equal(cspFromRule(rules[0]), visitorCsp);
+  const current = directives(cspFromRule(rules[0]));
+  for (const [name, sources] of directives(priorVisitorCsp)) {
+    assert.deepEqual(current.get(name), name === 'img-src' ? [...sources, contentHubPublicImages] : sources);
+  }
+  assert.equal(current.size, directives(priorVisitorCsp).size);
   assert.deepEqual(rules[0].headers.filter(({ key }) => key !== 'Content-Security-Policy'), [
     { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' },
     { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   ]);
+});
+
+test('Next image matching permits public Content Hub originals and excludes gateway thumbnails', (t) => {
+  const patterns = loadConfig(t).images.remotePatterns;
+  assert.equal(hasRemoteMatch([], patterns, new URL(`${contentHubPublicImages}verified-original?v=synthetic`)), true);
+  for (const url of [
+    'https://thlt-demo.sitecoresandbox.cloud/api/gateway/113648/thumbnail',
+    'https://thlt-demo.sitecoresandbox.cloud/api/public/other/verified-original',
+    'https://other.sitecoresandbox.cloud/api/public/content/verified-original',
+    'http://thlt-demo.sitecoresandbox.cloud/api/public/content/verified-original',
+    'https://thlt-demo.sitecoresandbox.cloud:444/api/public/content/verified-original',
+  ]) assert.equal(hasRemoteMatch([], patterns, new URL(url)), false);
 });
 
 test('development retains only the existing development unsafe-eval exception', async (t) => {
