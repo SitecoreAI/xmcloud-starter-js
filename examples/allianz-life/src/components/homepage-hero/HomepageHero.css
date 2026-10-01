@@ -1,0 +1,17 @@
+/* Native CKEditor block wrappers retain their HTML without adding paragraph
+ * margins to the recovered homepage headline and body positions. Typography
+ * comes from the source h1/h4 utility classes at the source breakpoints. */
+.allianz-homepage-hero .c-hero__headline[role="heading"] p {
+  margin: 0;
+  font: inherit;
+}
+
+.allianz-homepage-hero .c-hero__subHeadline > p:first-child,
+.allianz-homepage-hero .c-hero__subHeadline > .ck-content > p:first-child {
+  margin-top: 0;
+}
+
+.allianz-homepage-hero .c-hero__subHeadline > p:last-child,
+.allianz-homepage-hero .c-hero__subHeadline > .ck-content > p:last-child {
+  margin-bottom: 0;
+}
