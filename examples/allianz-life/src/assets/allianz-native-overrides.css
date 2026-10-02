@@ -53,6 +53,7 @@
   gap: 0;
   line-height: 24px;
   letter-spacing: .0625rem;
+  vertical-align: top;
 }
 .allianz-modern .O-azl-header .allianz-text-button > .c-icon--search {
   display: block;
@@ -60,6 +61,14 @@
   width: 32px;
   height: 24px;
   line-height: 24px;
+}
+/* Source Search starts the wrapped tablet row. The adapter's auto left margin
+ * otherwise moves it to the right edge; put the row's free space after it. */
+@media (min-width: 704px) and (max-width: 991px) {
+  .allianz-modern .O-azl-header .allianz-header-search {
+    margin-left: 0;
+    margin-right: auto;
+  }
 }
 .allianz-modern .O-azl-header .allianz-nav-toggle {
   top: 38px;
@@ -131,6 +140,11 @@
 }
 
 @media (max-width: 703px) {
+  /* Recovered Search has zero margin below 992px. The adapter's 16px right
+   * margin adds a gap before the source hamburger that the original lacks. */
+  .allianz-modern .O-azl-header .allianz-header-search {
+    margin-right: 0;
+  }
   /* Native buttons keep the recovered headline dimensions and source glyph;
    * only an expanded list overrides the source mobile display:none rule. */
   .allianz-modern .c-footer button.c-footer__navigation-headline {

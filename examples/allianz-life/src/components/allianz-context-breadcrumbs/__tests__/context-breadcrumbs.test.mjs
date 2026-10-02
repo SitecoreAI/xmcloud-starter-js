@@ -152,6 +152,8 @@ test('the documented context-only query and source component leave the datasourc
   visit(ast, { VariableDefinition(node) { variables.push(node.variable.name.value); } });
   assert.deepEqual(variables, ['contextItem', 'language']);
   assert.match(query, /ancestors\s*\{/);
+  assert.match(query, /navigationTitle: field\(name: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"\)/);
+  assert.doesNotMatch(query, /field\(name: "NavigationTitle"\)/);
   assert.doesNotMatch(query, /\$datasource|hasLayout/);
   const component = fs.readFileSync(path.join(directory, 'AllianzContextBreadcrumbs.tsx'), 'utf8');
   assert.doesNotMatch(component, /withDatasourceCheck|data\.datasource|safeLink/);

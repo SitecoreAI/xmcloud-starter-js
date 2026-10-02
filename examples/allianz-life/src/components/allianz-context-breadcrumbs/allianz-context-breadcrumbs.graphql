@@ -1,10 +1,10 @@
-# Native Preview must prove this selects the inherited SXA field rather than
-# the distinct project navigationTitle. Preserve the alias when binding the
-# actual schema projection. No datasource variable or content item is needed.
+# ID-specific native pilot: the string argument is schema-valid, while native
+# GUID lookup must be proved by the resolved field's metadata/value. The name
+# NavigationTitle is ambiguous with the project navigationTitle field.
 fragment AllianzContextBreadcrumbFields on Item {
   id
   path
-  navigationTitle: field(name: "NavigationTitle") { jsonValue }
+  navigationTitle: field(name: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8") { jsonValue }
   url { path }
 }
 

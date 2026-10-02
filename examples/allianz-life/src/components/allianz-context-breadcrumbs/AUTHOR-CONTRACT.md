@@ -10,8 +10,12 @@ from native `url.path`. Empty titles remain editable in Pages; incomplete or
 unsafe normal-mode trails show an explicit unavailable state rather than
 manufactured labels or paths.
 
-Before native registration, verify that the integrated query selects the exact
-inherited SXA NavigationTitle field on both scaffold and project page types.
+The ID-specific pilot selects the confirmed inherited SXA NavigationTitle
+4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8 through the string field selector.
+Native GUID lookup remains a bounded runtime proof on scaffold and project
+pages; the similarly named project field must never be substituted. If this
+lookup is unsupported, use the observed native projected property or exact
+field collection/metadata contract rather than an unproved Field.id API.
 Source-specific labels differ from article headlines on 44 of 81 releases.
 Bind those source labels to the existing field; never infer labels from slugs.
 
