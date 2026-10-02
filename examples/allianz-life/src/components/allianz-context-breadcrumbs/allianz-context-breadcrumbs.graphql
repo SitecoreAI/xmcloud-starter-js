@@ -1,0 +1,18 @@
+# Native Preview must prove this selects the inherited SXA field rather than
+# the distinct project navigationTitle. Preserve the alias when binding the
+# actual schema projection. No datasource variable or content item is needed.
+fragment AllianzContextBreadcrumbFields on Item {
+  id
+  path
+  navigationTitle: field(name: "NavigationTitle") { jsonValue }
+  url { path }
+}
+
+query AllianzContextBreadcrumbsQuery($contextItem: String!, $language: String!) {
+  contextItem: item(path: $contextItem, language: $language) {
+    ...AllianzContextBreadcrumbFields
+    ancestors {
+      ...AllianzContextBreadcrumbFields
+    }
+  }
+}
