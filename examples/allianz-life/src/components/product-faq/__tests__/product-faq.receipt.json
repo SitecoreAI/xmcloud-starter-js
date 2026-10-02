@@ -1,0 +1,295 @@
+{
+  "source": "ANNUITIES-NATIVE-DRAFT-RECEIPT.json",
+  "status": "native draft values; SDK field metadata not present in receipt",
+  "datasource": {
+    "id": "6e889a7e-d7be-4abd-a4fc-d8ac0a5b2126",
+    "children": {
+      "total": 7,
+      "pageInfo": {
+        "hasNext": false,
+        "endCursor": "84ca3eff-befe-4f43-a40b-6adbca595804"
+      },
+      "results": [
+        {
+          "id": "2820dcda-c64d-4f8f-addc-5ef4857da617",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "How much should you pay for an annuity?"
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>If an annuity is a good fit for you, the purchase amount will depend on your financial needs and goals. Annuities are a long-term contract, so it’s important to be sure you won’t need the money for other financial commitments or unexpected expenses. Your financial professional can help you determine whether an annuity makes sense as part of your overall retirement strategy, and in what amount.</p>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "39b63124-53a9-4bd9-a4fe-21bfee82d4cc",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "How are annuities taxed?"
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>Some common retirement-account tax rules apply to annuities – but not all of them. Let’s begin with tax deferral: Because the money you place in an annuity grows income-tax-deferred, you don’t have to pay income taxes on any interest or gains until you take money out of your contract. Any distributions from your annuity will be taxed as ordinary income. But – as with IRAs, 401(k)s, and pension plans – if you take money out of your annuity before age 59½ you’ll have to pay an extra 10% federal additional tax on top of any ordinary income tax. Please consult your tax advisor for guidance about your unique situation.</p>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "f836d3ce-00cd-4851-ae41-3c08ff484907",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "Are there required minimum distributions (RMDs) on annuities?"
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>Nonqualified annuities (those held outside a retirement account) are not subject to RMDs beginning at RMD age. That’s because nonqualified annuities are purchased with money on which you have already paid income taxes. However, if you purchase an annuity within an Individual Retirement Account (IRA), you’ll have to take RMDs beginning at RMD age. You should also be aware that some annuity contracts require you to start distributions at a certain age (generally between 85 and 100) – so it’s important to ensure that the contract meets your long-term goals. A tax advisor can help you understand the tax implications of buying an annuity.</p>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "c25aa1be-e398-4558-b650-fc007ae25fe1",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "Do annuities tie up your money?"
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>There are different kinds of annuities. Some give you immediate access, while others have a waiting period. Contracts that require waiting a specific period of time before you take money out are called deferred annuities. Typical deferral periods can range from three to 10 years. After the deferral period, you can annuitize the contract (this means you start receiving money through scheduled lifetime payments, or “annuitization”). Some annuities also let you take free withdrawals during the deferral period, up to specified amounts. But it’s important to understand your contract – because if you take out more money than it allows before the deferral period ends, you will likely incur a surrender or withdrawal charge and for some products a market value adjustment (MVA).</p>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "4f395e87-c192-494e-be00-063b9f6b1e9a",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "What is a market value adjustment?"
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>A market value adjustment (MVA) is a calculation we use to adjust your annuity’s withdrawal amount. An MVA may adjust the withdrawal amount up or down, depending on the interest rate conditions when you take distribution(s) compared to those conditions when you contributed your premiums or purchase payments. But while the MVA can affect your withdrawal amounts, it can never cause your contract’s cash surrender value to be less than the guaranteed minimum value or greater than the accumulation value.</p>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "3ee01cd1-9428-44f9-93ed-d9abaf40e8ee",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "What are some typical criticisms of annuities?"
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>There are a lot of questions about annuities, their purpose, and their cost. The fact is, annuities aren’t right for everyone. It’s also true that some annuities charge fees in exchange for the benefits they offer. But for people who want the opportunity to accumulate for retirement, a level of protection from market volatility, and guaranteed lifetime income, annuities can be a valuable addition to their overall financial portfolio.</p>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "84ca3eff-befe-4f43-a40b-6adbca595804",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "Why do insurance companies sell annuities?"
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>Annuities help protect some of your retirement assets in the same way you protect your car, your home, and your health. In each of these cases, you’re transferring away some of the risk of financial loss to an insurance company. A fixed index annuity (FIA) offers the potential to build some of your money with principal protection from market downturns. A registered index-linked annuity (RILA) offers the opportunity for a level of protection through a variety of crediting methods (also called index strategies). Both FIAs and RILAs provide income payments during retirement – and tax deferral and a death benefit during the accumulation phase.</p>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "nativeBindings": {
+    "root": {
+      "itemId": "6e889a7e-d7be-4abd-a4fc-d8ac0a5b2126",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzAccordion 09",
+      "name": "AllianzAccordion 09",
+      "templateId": "2168d683-8f86-50e8-8f9d-47b945054eb2",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:53:48.071018+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": ""
+        }
+      ]
+    },
+    "children": [
+      {
+        "itemId": "2820dcda-c64d-4f8f-addc-5ef4857da617",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzAccordion 09/Entry 01",
+        "name": "Entry 01",
+        "templateId": "52725b20-40f0-5b15-9d53-dc0bc45c262b",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:53:59.779139+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "How much should you pay for an annuity?"
+          },
+          {
+            "name": "body",
+            "value": "<p>If an annuity is a good fit for you, the purchase amount will depend on your financial needs and goals. Annuities are a long-term contract, so it’s important to be sure you won’t need the money for other financial commitments or unexpected expenses. Your financial professional can help you determine whether an annuity makes sense as part of your overall retirement strategy, and in what amount.</p>"
+          }
+        ]
+      },
+      {
+        "itemId": "39b63124-53a9-4bd9-a4fe-21bfee82d4cc",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzAccordion 09/Entry 02",
+        "name": "Entry 02",
+        "templateId": "52725b20-40f0-5b15-9d53-dc0bc45c262b",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:54:00.735303+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "How are annuities taxed?"
+          },
+          {
+            "name": "body",
+            "value": "<p>Some common retirement-account tax rules apply to annuities – but not all of them. Let’s begin with tax deferral: Because the money you place in an annuity grows income-tax-deferred, you don’t have to pay income taxes on any interest or gains until you take money out of your contract. Any distributions from your annuity will be taxed as ordinary income. But – as with IRAs, 401(k)s, and pension plans – if you take money out of your annuity before age 59½ you’ll have to pay an extra 10% federal additional tax on top of any ordinary income tax. Please consult your tax advisor for guidance about your unique situation.</p>"
+          }
+        ]
+      },
+      {
+        "itemId": "f836d3ce-00cd-4851-ae41-3c08ff484907",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzAccordion 09/Entry 03",
+        "name": "Entry 03",
+        "templateId": "52725b20-40f0-5b15-9d53-dc0bc45c262b",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:54:01.815616+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "Are there required minimum distributions (RMDs) on annuities?"
+          },
+          {
+            "name": "body",
+            "value": "<p>Nonqualified annuities (those held outside a retirement account) are not subject to RMDs beginning at RMD age. That’s because nonqualified annuities are purchased with money on which you have already paid income taxes. However, if you purchase an annuity within an Individual Retirement Account (IRA), you’ll have to take RMDs beginning at RMD age. You should also be aware that some annuity contracts require you to start distributions at a certain age (generally between 85 and 100) – so it’s important to ensure that the contract meets your long-term goals. A tax advisor can help you understand the tax implications of buying an annuity.</p>"
+          }
+        ]
+      },
+      {
+        "itemId": "c25aa1be-e398-4558-b650-fc007ae25fe1",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzAccordion 09/Entry 04",
+        "name": "Entry 04",
+        "templateId": "52725b20-40f0-5b15-9d53-dc0bc45c262b",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:54:02.896394+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "Do annuities tie up your money?"
+          },
+          {
+            "name": "body",
+            "value": "<p>There are different kinds of annuities. Some give you immediate access, while others have a waiting period. Contracts that require waiting a specific period of time before you take money out are called deferred annuities. Typical deferral periods can range from three to 10 years. After the deferral period, you can annuitize the contract (this means you start receiving money through scheduled lifetime payments, or “annuitization”). Some annuities also let you take free withdrawals during the deferral period, up to specified amounts. But it’s important to understand your contract – because if you take out more money than it allows before the deferral period ends, you will likely incur a surrender or withdrawal charge and for some products a market value adjustment (MVA).</p>"
+          }
+        ]
+      },
+      {
+        "itemId": "4f395e87-c192-494e-be00-063b9f6b1e9a",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzAccordion 09/Entry 05",
+        "name": "Entry 05",
+        "templateId": "52725b20-40f0-5b15-9d53-dc0bc45c262b",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:54:03.873593+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "What is a market value adjustment?"
+          },
+          {
+            "name": "body",
+            "value": "<p>A market value adjustment (MVA) is a calculation we use to adjust your annuity’s withdrawal amount. An MVA may adjust the withdrawal amount up or down, depending on the interest rate conditions when you take distribution(s) compared to those conditions when you contributed your premiums or purchase payments. But while the MVA can affect your withdrawal amounts, it can never cause your contract’s cash surrender value to be less than the guaranteed minimum value or greater than the accumulation value.</p>"
+          }
+        ]
+      },
+      {
+        "itemId": "3ee01cd1-9428-44f9-93ed-d9abaf40e8ee",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzAccordion 09/Entry 06",
+        "name": "Entry 06",
+        "templateId": "52725b20-40f0-5b15-9d53-dc0bc45c262b",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:54:04.992962+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "What are some typical criticisms of annuities?"
+          },
+          {
+            "name": "body",
+            "value": "<p>There are a lot of questions about annuities, their purpose, and their cost. The fact is, annuities aren’t right for everyone. It’s also true that some annuities charge fees in exchange for the benefits they offer. But for people who want the opportunity to accumulate for retirement, a level of protection from market volatility, and guaranteed lifetime income, annuities can be a valuable addition to their overall financial portfolio.</p>"
+          }
+        ]
+      },
+      {
+        "itemId": "84ca3eff-befe-4f43-a40b-6adbca595804",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzAccordion 09/Entry 07",
+        "name": "Entry 07",
+        "templateId": "52725b20-40f0-5b15-9d53-dc0bc45c262b",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:54:05.995841+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "Why do insurance companies sell annuities?"
+          },
+          {
+            "name": "body",
+            "value": "<p>Annuities help protect some of your retirement assets in the same way you protect your car, your home, and your health. In each of these cases, you’re transferring away some of the risk of financial loss to an insurance company. A fixed index annuity (FIA) offers the potential to build some of your money with principal protection from market downturns. A registered index-linked annuity (RILA) offers the opportunity for a level of protection through a variety of crediting methods (also called index strategies). Both FIAs and RILAs provide income payments during retirement – and tax deferral and a death benefit during the accumulation phase.</p>"
+          }
+        ]
+      }
+    ]
+  }
+}

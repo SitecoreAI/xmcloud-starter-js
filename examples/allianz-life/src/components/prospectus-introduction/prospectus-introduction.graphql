@@ -1,0 +1,7 @@
+query ProspectusIntroduction($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    introductoryCopy: field(name: "introductoryCopy") { jsonValue }
+    contractNotice: field(name: "contractNotice") { jsonValue }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "default": {
+    "id": "7c2db29f-59ae-4ecf-ad89-555bd39476c1",
+    "children": {
+      "total": 2,
+      "pageInfo": {
+        "hasNext": false,
+        "endCursor": null
+      },
+      "results": [
+        {
+          "id": "c02cbb50-4fe8-4c30-b173-0dd930601dab",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "Fixed index annuities: interest potential with protection"
+              }
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<ul>\n    <li>Provide potential for indexed interest</li>\n    <li><strong>Protect your principal and credited interest</strong> from market downturns</li>\n</ul>"
+              }
+            },
+            {
+              "name": "icon",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": {
+                  "text": "Learn about Allianz® fixed index annuities",
+                  "title": "",
+                  "target": "",
+                  "anchor": "",
+                  "querystring": "",
+                  "linktype": "internal",
+                  "id": "{B78C7AA0-3F99-5275-B32E-4EFF60C2ADE3}",
+                  "href": "/what-we-offer/annuities/fixed-index-annuities"
+                }
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "primary-white"
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": ""
+              }
+            }
+          ]
+        },
+        {
+          "id": "30aaa9df-8b0c-4465-8c31-e2df3dd581db",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "Registered index-linked annuities: accumulation potential with some protection"
+              }
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<ul>\n    <li><span>Competitive performance potential</span></li>\n    <li><span></span><strong>Offer the opportunity for a level of protection </strong>from market downturns</li>\n</ul>"
+              }
+            },
+            {
+              "name": "icon",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": {
+                  "text": "Learn about Allianz® registered index-linked annuities",
+                  "title": "",
+                  "target": "",
+                  "anchor": "",
+                  "querystring": "",
+                  "linktype": "internal",
+                  "id": "{224ABF70-929E-59EC-8B54-257D12A8752C}",
+                  "href": "/what-we-offer/annuities/registered-index-linked-annuities"
+                }
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "primary-white"
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

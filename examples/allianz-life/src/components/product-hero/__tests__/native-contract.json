@@ -1,0 +1,98 @@
+{
+  "component": "ProductHero",
+  "sourceCapture": "99f6a498352a3445.html",
+  "sourceSha256": "f0fcb64881cee93da75b6e73b7b3ea9add9851e617a091c48a82db0dac338945",
+  "nativeReceiptSha256": "986cca8ba6f22ce1c59e814db2f5c712d429d779f9c0db52850382750fbc1db1",
+  "scope": "Source implementation only; no native adoption, assets, publishing or browser acceptance",
+  "authorFields": [
+    {
+      "name": "heading",
+      "label": "Headline",
+      "type": "Single-Line Text"
+    },
+    {
+      "name": "image",
+      "label": "Hero image",
+      "type": "Image"
+    }
+  ],
+  "parameters": [
+    "RenderingIdentifier"
+  ],
+  "entries": [
+    {
+      "sourceKey": "route:/what-we-offer/annuities:component:2:AllianzHero",
+      "native": {
+        "itemId": "789e3c9c-689a-4115-9077-3e3dcce20804",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzHero 02",
+        "name": "AllianzHero 02",
+        "templateId": "f1905aae-f312-5ff3-b4a6-3676ff9b9e14",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:53:54.142225+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "Help prepare for the future with an annuity"
+          },
+          {
+            "name": "body",
+            "value": ""
+          },
+          {
+            "name": "primaryLink",
+            "value": ""
+          },
+          {
+            "name": "secondaryLink",
+            "value": ""
+          }
+        ]
+      },
+      "datasource": {
+        "id": "789e3c9c-689a-4115-9077-3e3dcce20804",
+        "heading": {
+          "jsonValue": {
+            "value": "Help prepare for the future with an annuity"
+          }
+        }
+      }
+    }
+  ],
+  "pendingSourceImages": [
+    {
+      "sourceKey": "route:/what-we-offer/annuities:component:2:AllianzHero",
+      "name": "desktopImage",
+      "value": "<image mediaid=\"{77D81413-54C2-59F0-B869-B613B35B6099}\" alt=\"\" />",
+      "fieldId": "eaa77571-b355-5e67-8f56-fe892a46749e",
+      "fieldType": "Image",
+      "reason": "Await verified Content Hub mapping and actual native DAM image-field contract",
+      "sourceMediaCandidateIds": [
+        "77d81413-54c2-59f0-b869-b613b35b6099"
+      ]
+    },
+    {
+      "sourceKey": "route:/what-we-offer/annuities:component:2:AllianzHero",
+      "name": "mobileImage",
+      "value": "<image mediaid=\"{77D81413-54C2-59F0-B869-B613B35B6099}\" alt=\"\" />",
+      "fieldId": "141fd5dd-7005-592d-b110-e93545f60a89",
+      "fieldType": "Image",
+      "reason": "Await verified Content Hub mapping and actual native DAM image-field contract",
+      "sourceMediaCandidateIds": [
+        "77d81413-54c2-59f0-b869-b613b35b6099"
+      ]
+    }
+  ],
+  "fieldTransition": {
+    "image": "Existing desktopImage and mobileImage refer to the same single captured hero image; migrate the verified mapped value to one image field on the same native item ID. Pending values must not become runtime media."
+  },
+  "sourceRanges": [
+    {
+      "startLine": 638,
+      "endLine": 654
+    }
+  ],
+  "sourceFragmentSha256": "f5207be9338709817f1f34868bf800507bc09bddadfccc52bb06fbd4caf75fff",
+  "sourceFragmentBase64": "PGRpdiBjbGFzcz0ibC1jb250YWluZXItZnVsbC13aWR0aCB0LWJnLWJsdWUtc29mdCAgIj4NCgkJPGRpdiBjbGFzcz0ibS1heGxIZXJvIj4NCgkJCTxwaWN0dXJlIGNsYXNzPSJjLWltYWdlIGMtc3RhZ2VfX2ltYWdlLS1jb3ZlciBjLXN0YWdlX19pbWFnZS0tc2hvcnQiPg0KPGltZyBzcmNzZXQ9Ii8tL21lZGlhL0ZlYXR1cmUvSGVyby9BbGxpYW56LUxpZmUvaGVyby1hemwtY2FtcGluZy0xLmpwZz93PTIzNjgmaGFzaD02QzY5NkYxQ0E4NjI4MDlBMUVDNERGNEJEMTI2RkUyMSAyMzY4dywvLS9tZWRpYS9GZWF0dXJlL0hlcm8vQWxsaWFuei1MaWZlL2hlcm8tYXpsLWNhbXBpbmctMS5qcGc/dz0yMDEzJmhhc2g9OEYxMEFFODYzMjkxMTc5RUQzNzREMTU4QUZGODMwN0UgMjAxM3csLy0vbWVkaWEvRmVhdHVyZS9IZXJvL0FsbGlhbnotTGlmZS9oZXJvLWF6bC1jYW1waW5nLTEuanBnP3c9MTQwOSZoYXNoPTAyNkYzQTlFM0UwOUJGRThCQ0I5MzFEMDI4REYwOEFFIDE0MDl3LC8tL21lZGlhL0ZlYXR1cmUvSGVyby9BbGxpYW56LUxpZmUvaGVyby1hemwtY2FtcGluZy0xLmpwZz93PTc3NSZoYXNoPUMyOEQ3QjBEMUU2NTE0QjgxOEY2N0M1M0VCQjhGNzNCIDc3NXcsLy0vbWVkaWEvRmVhdHVyZS9IZXJvL0FsbGlhbnotTGlmZS9oZXJvLWF6bC1jYW1waW5nLTEuanBnP3c9MzEwJmhhc2g9RTM4QjgyOEU4MDFENjY1QTQ3NkRCMjlBMjUxOTc4M0QgMzEwdyIgc2l6ZXM9IihtaW4td2lkdGg6IDEyMDBweCkgOTkycHgsIChtaW4td2lkdGg6IDk5MnB4KSA3MDRweCwgKG1pbi13aWR0aDogNzY4cHgpIDMyMHB4LCAxMDB2dyIgc3JjPSIvLS9tZWRpYS9GZWF0dXJlL0hlcm8vQWxsaWFuei1MaWZlL2hlcm8tYXpsLWNhbXBpbmctMS5qcGciIGFsdD0iIiBjbGFzcz0iYy1pbWFnZV9faW1nIGMtaGVyb19faW1hZ2UiIC8+CQkJPC9waWN0dXJlPg0KCQkJPGRpdiBjbGFzcz0ibC1ncmlkIGwtZ3JpZC0tbWF4LXdpZHRoIGwtZ3JpZC0tbm8tZ3V0dGVycyI+DQoJCQkJPGRpdiBjbGFzcz0ibC1ncmlkX19jb2x1bW4tbWVkaXVtLTEyIGMtaGVyb19fd3JhcHBlciI+DQoJCQkJCTxoMSBjbGFzcz0iYy1oZWFkaW5nIGMtaGVyb19faGVhZGxpbmUgdS10ZXh0LWNlbnRlciI+DQoJCQkJCQlIZWxwIHByZXBhcmUgZm9yIHRoZSBmdXR1cmUgd2l0aCBhbiBhbm51aXR5DQoJCQkJCTwvaDE+DQoNCgkJCQkJCQkJCTwvZGl2Pg0KCQkJPC9kaXY+DQoJCTwvZGl2Pg0KCTwvZGl2Pg0KDQoKICAgICAgICAJ"
+}

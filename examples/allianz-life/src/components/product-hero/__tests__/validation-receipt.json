@@ -1,0 +1,103 @@
+{
+  "status": "validated-source-only",
+  "validatedAtUtc": "2026-10-02T04:32:49.758206+00:00",
+  "scope": "Eight new disjoint component folders only; no native writes, publishing, shared component-map/build generation or browser acceptance",
+  "sdk": {
+    "package": "@sitecore-content-sdk/nextjs",
+    "installedVersion": "2.2.0",
+    "fieldRenderers": "Real installed Text/RichText/Image/Link and SitecoreProvider, not mocked"
+  },
+  "tests": {
+    "pass": 80,
+    "fail": 0,
+    "suites": [
+      {
+        "command": "node --test src/components/product-hero/__tests__/product-static.test.mjs",
+        "pass": 36
+      },
+      {
+        "command": "node --test src/components/product-faq/__tests__/product-faq.test.mjs",
+        "pass": 24
+      },
+      {
+        "command": "node --test src/components/product-benefits/__tests__/product-benefits.test.mjs",
+        "pass": 11
+      },
+      {
+        "command": "node --test src/components/product-type-choices/__tests__/product-type-choices.test.mjs",
+        "pass": 9
+      }
+    ]
+  },
+  "eslint": {
+    "status": "passed",
+    "scope": "All owned root-level TS/TSX source files"
+  },
+  "typescript": {
+    "status": "passed",
+    "method": "createProgram using existing tsconfig; noEmit; incremental disabled; actual imported dependencies included",
+    "rootFiles": [
+      "src/components/product-hero/ProductHero.tsx",
+      "src/components/product-hero/product-hero.props.ts",
+      "src/components/product-introduction/ProductIntroduction.tsx",
+      "src/components/product-introduction/product-introduction.props.ts",
+      "src/components/product-footnotes/ProductFootnotes.tsx",
+      "src/components/product-footnotes/product-footnotes.props.ts",
+      "src/components/product-risk-disclosures/ProductRiskDisclosures.tsx",
+      "src/components/product-risk-disclosures/product-risk-disclosures.props.ts",
+      "src/components/product-faq/ProductFaq.tsx",
+      "src/components/product-faq/product-faq-fields.props.ts",
+      "src/components/product-faq/product-faq.props.ts",
+      "src/components/product-faq-intro/ProductFaqIntro.tsx",
+      "src/components/product-faq-intro/product-faq-intro.props.ts",
+      "src/components/product-benefits/ProductBenefits.tsx",
+      "src/components/product-benefits/product-benefits-fields.props.ts",
+      "src/components/product-benefits/product-benefits.props.ts",
+      "src/components/product-type-choices/ProductTypeChoices.tsx",
+      "src/components/product-type-choices/product-type-choices-fields.props.ts",
+      "src/components/product-type-choices/product-type-choices.props.ts"
+    ]
+  },
+  "pending": "Nine source image fields and eight binaries remain pending Content Hub; no assets delivered by this source change",
+  "componentDiscovery": {
+    "helperFiles": "Three pure field projections use excluded *-fields.props.ts filenames",
+    "sharedConfigurationChanged": false,
+    "generatedMapsWrittenByWorker": false,
+    "verifiedActualCliExclusionLists": 2,
+    "verifiedMethod": "TypeScript AST reads of existing exclude arrays plus installed picomatch; no generated output writes"
+  },
+  "postIntegrationHelperRenameValidation": {
+    "validatedAtUtc": "2026-10-02T04:59:16.456546+00:00",
+    "SDKTests": {
+      "passed": 44,
+      "failed": 0,
+      "scope": [
+        "ProductBenefits",
+        "ProductTypeChoices",
+        "ProductFaq",
+        "ProductFaqIntro"
+      ]
+    },
+    "eslint": "passed for affected source",
+    "typescript": "passed for 9 affected source roots and actual imports",
+    "unchangedStaticSDKTests": 36,
+    "oldHelperReferencesRemaining": false
+  },
+  "nativeCollectionQueryCorrection": {
+    "validatedAtUtc": "2026-10-02T05:06:24.285270+00:00",
+    "selection": "fieldCollection: fields { name jsonValue }",
+    "ASTAssertions": "native field name fields, response alias fieldCollection, no field arguments; existing connection metadata retained",
+    "SDKTests": {
+      "passed": 44,
+      "failed": 0
+    },
+    "querySha256": {
+      "src/components/product-benefits/product-benefits.graphql": "3b4a509f7d124cf91b3be09940605f5f01d95ace23a5960e6698bd04d84c1136",
+      "src/components/product-type-choices/product-type-choices.graphql": "31c2c750e85ca3f10f1632d18083d651db8a8eab1fce15f3c2eb95d44f4e79cb",
+      "src/components/product-faq/product-faq.graphql": "89de987532942f716426ac119179697484a9b277765df380630d4ea61e7df1a1"
+    },
+    "runtimeSourceChanged": false,
+    "childCapacityChanged": false,
+    "nativeActionsPerformed": false
+  }
+}

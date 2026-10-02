@@ -1,0 +1,275 @@
+{
+  "provenance": {
+    "receiptFilename": "ANNUITIES-NATIVE-DRAFT-RECEIPT.json",
+    "completedAtUtc": "2026-10-01T09:00:09.094730+00:00",
+    "receiptSha256": "986cca8ba6f22ce1c59e814db2f5c712d429d779f9c0db52850382750fbc1db1",
+    "sourceFilename": "99f6a498352a3445.html",
+    "sourceSha256": "f0fcb64881cee93da75b6e73b7b3ea9add9851e617a091c48a82db0dac338945"
+  },
+  "bindings": {
+    "route:/what-we-offer/annuities:component:4:AllianzCardGrid": {
+      "itemId": "a4d02aa9-3981-42b0-990b-0b403b3baa05",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 04",
+      "name": "AllianzCardGrid 04",
+      "templateId": "aff4b6a4-d6d9-5d78-9647-6c29a0473f76",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:53:50.160437+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": ""
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": ""
+        }
+      ]
+    },
+    "route:/what-we-offer/annuities:component:5:AllianzCardGrid": {
+      "itemId": "0c113246-9fc9-4721-a7db-988be486fe8f",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 05",
+      "name": "AllianzCardGrid 05",
+      "templateId": "aff4b6a4-d6d9-5d78-9647-6c29a0473f76",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:53:51.165081+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": ""
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": ""
+        }
+      ]
+    },
+    "route:/what-we-offer/annuities:component:4:AllianzCardGrid:entry:1": {
+      "itemId": "46eaa476-4ba1-455d-840b-733866fbe9ce",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 04/Entry 01",
+      "name": "Entry 01",
+      "templateId": "48f9181f-a7f4-5481-99ba-d88967608d60",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:54:08.316057+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": "Accumulation potential"
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": "Some annuities have the potential to earn interest or credits based on the growth of an external index (we call this “indexed interest”). You can choose from one or more external indexes and crediting methods, depending on your financial goals. Other types of annuities offer growth potential through variable investment options."
+        },
+        {
+          "name": "image",
+          "value": ""
+        },
+        {
+          "name": "iconTheme",
+          "value": "transparent"
+        },
+        {
+          "name": "link",
+          "value": ""
+        },
+        {
+          "name": "links",
+          "value": ""
+        },
+        {
+          "name": "theme",
+          "value": "transparent"
+        },
+        {
+          "name": "headingLevel",
+          "value": "h4"
+        },
+        {
+          "name": "alphanumeral",
+          "value": ""
+        }
+      ]
+    },
+    "route:/what-we-offer/annuities:component:4:AllianzCardGrid:entry:2": {
+      "itemId": "89f49523-5283-4fd0-ab2b-17d067bb10d9",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 04/Entry 02",
+      "name": "Entry 02",
+      "templateId": "48f9181f-a7f4-5481-99ba-d88967608d60",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:54:09.439909+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": "Tax-deferred growth"
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": "You don’t have to pay income taxes on the earnings in your contract until you take money out of your annuity. Tax deferral may help the money in your annuity compound over time, for even greater accumulation potential."
+        },
+        {
+          "name": "image",
+          "value": ""
+        },
+        {
+          "name": "iconTheme",
+          "value": "transparent"
+        },
+        {
+          "name": "link",
+          "value": ""
+        },
+        {
+          "name": "links",
+          "value": ""
+        },
+        {
+          "name": "theme",
+          "value": "transparent"
+        },
+        {
+          "name": "headingLevel",
+          "value": "h4"
+        },
+        {
+          "name": "alphanumeral",
+          "value": ""
+        }
+      ]
+    },
+    "route:/what-we-offer/annuities:component:5:AllianzCardGrid:entry:1": {
+      "itemId": "1ad7a319-2807-49ee-b45e-f540af45e3a6",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 05/Entry 01",
+      "name": "Entry 01",
+      "templateId": "48f9181f-a7f4-5481-99ba-d88967608d60",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:54:10.586593+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": "Level of protection"
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": "Annuities can help protect the money you place in your contract (the “principal”). Some annuities protect all of your principal from market downturns, while others offer greater potential in exchange for some market risk, including the risk of losing principal."
+        },
+        {
+          "name": "image",
+          "value": ""
+        },
+        {
+          "name": "iconTheme",
+          "value": "transparent"
+        },
+        {
+          "name": "link",
+          "value": ""
+        },
+        {
+          "name": "links",
+          "value": ""
+        },
+        {
+          "name": "theme",
+          "value": "transparent"
+        },
+        {
+          "name": "headingLevel",
+          "value": "h4"
+        },
+        {
+          "name": "alphanumeral",
+          "value": ""
+        }
+      ]
+    },
+    "route:/what-we-offer/annuities:component:5:AllianzCardGrid:entry:2": {
+      "itemId": "03fc772e-c6d0-47da-b21b-454c977ff818",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 05/Entry 02",
+      "name": "Entry 02",
+      "templateId": "48f9181f-a7f4-5481-99ba-d88967608d60",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:54:11.898589+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": "Retirement income"
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": "After a period of time specified by your contract, annuities provide guaranteed retirement income in the form of annuity payments for as long as you live.<sup>1</sup> Some annuities let you choose from a variety of income options – and some even offer the opportunity for income increases in retirement. These options may either be built in to the contract or optional and available for an additional cost.<sup>2</sup>"
+        },
+        {
+          "name": "image",
+          "value": ""
+        },
+        {
+          "name": "iconTheme",
+          "value": "transparent"
+        },
+        {
+          "name": "link",
+          "value": ""
+        },
+        {
+          "name": "links",
+          "value": ""
+        },
+        {
+          "name": "theme",
+          "value": "transparent"
+        },
+        {
+          "name": "headingLevel",
+          "value": "h4"
+        },
+        {
+          "name": "alphanumeral",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "remaining": [
+    "Nine unbound Image fields and eight binaries await Content Hub mapping and delivery.",
+    "Page adoption and presentation have not been performed.",
+    "Publishing has not been performed.",
+    "Native connected rendering and authoring QA remain outstanding."
+  ],
+  "mediaStatus": "Pending/unbound. Fixture contains only fields present in the native receipt; no icon/image source URL is synthesized.",
+  "schemaStatus": "Native receipt uses AllianzCardGrid/AllianzCard. New purpose templates and fields are proposed authoring contracts only; no native writes or adoption performed."
+}

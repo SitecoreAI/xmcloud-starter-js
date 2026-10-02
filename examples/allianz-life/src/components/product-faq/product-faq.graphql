@@ -1,0 +1,13 @@
+query ProductFaqData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    children(first: 40) {
+      total
+      pageInfo { hasNext endCursor }
+      results {
+        id
+        fieldCollection: fields { name jsonValue }
+      }
+    }
+  }
+}

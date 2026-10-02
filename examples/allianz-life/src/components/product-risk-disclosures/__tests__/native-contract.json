@@ -1,0 +1,58 @@
+{
+  "component": "ProductRiskDisclosures",
+  "sourceCapture": "99f6a498352a3445.html",
+  "sourceSha256": "f0fcb64881cee93da75b6e73b7b3ea9add9851e617a091c48a82db0dac338945",
+  "nativeReceiptSha256": "986cca8ba6f22ce1c59e814db2f5c712d429d779f9c0db52850382750fbc1db1",
+  "scope": "Source implementation only; no native adoption, assets, publishing or browser acceptance",
+  "authorFields": [
+    {
+      "name": "body",
+      "label": "Risk disclosure text",
+      "type": "Rich Text"
+    }
+  ],
+  "parameters": [
+    "RenderingIdentifier"
+  ],
+  "entries": [
+    {
+      "sourceKey": "route:/what-we-offer/annuities:component:11:AllianzRichText",
+      "native": {
+        "itemId": "2c5a9453-93d5-463b-8e77-65513d357a6e",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzRichText 11",
+        "name": "AllianzRichText 11",
+        "templateId": "932869d2-552a-5963-984f-6fc3c1e8a4a8",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:53:58.653180+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": ""
+          },
+          {
+            "name": "body",
+            "value": "<p>RILAs are subject to investment risk, including possible loss of principal. Investment returns and principal value will fluctuate with market conditions so that contract value, upon distribution, may be worth more or less than the original cost.</p>\n<p>Withdrawals will reduce the contract value and the value of any potential protection benefits. Withdrawals taken within the contract withdrawal charge schedule will be subject to a withdrawal charge. All withdrawals are subject to ordinary income tax and, if taken prior to age 59½, may be subject to a 10% federal additional tax.</p>\n<p>Purchasing an annuity within a retirement plan that provides tax deferral under sections of the Internal Revenue Code results in no additional tax benefit. An annuity should be used to fund a qualified plan based upon the annuity’s features other than tax deferral. All annuity features, risks, limitations, and costs should be considered prior to purchasing an annuity within a tax-qualified retirement plan.</p><p>Guarantees are backed solely by the financial strength and claims-paying ability of the issuing insurance company and do not apply to the performance of the variable subaccount(s), which will fluctuate with market conditions.</p>\n<p class=\"box\">• Not FDIC insured • May lose value • No bank or credit union guarantee • Not a deposit • Not insured by any federal government agency or NCUA/NCUSIF</p><p>Products are issued by Allianz Life Insurance Company of North America. Registered index-linked annuities (RILAs) are distributed by its affiliate,  Allianz Life Financial Services, LLC, <a href=\"#demo-unavailable\" data-demo-disabled=\"true\" title=\"This service is unavailable\">member FINRA</a>, 5701 Golden Hills Drive, Minneapolis, MN 55416-1297. <a href=\"#demo-unavailable\" data-demo-disabled=\"true\" title=\"This service is unavailable\">800.542.5427</a> <a href=\"/\">www.allianzlife.com</a></p><p>This content does not apply in the state of New York.</p>\n<p>Product and feature availability may vary by state and broker/dealer.</p>"
+          }
+        ]
+      },
+      "datasource": {
+        "id": "2c5a9453-93d5-463b-8e77-65513d357a6e",
+        "body": {
+          "jsonValue": {
+            "value": "<p>RILAs are subject to investment risk, including possible loss of principal. Investment returns and principal value will fluctuate with market conditions so that contract value, upon distribution, may be worth more or less than the original cost.</p>\n<p>Withdrawals will reduce the contract value and the value of any potential protection benefits. Withdrawals taken within the contract withdrawal charge schedule will be subject to a withdrawal charge. All withdrawals are subject to ordinary income tax and, if taken prior to age 59½, may be subject to a 10% federal additional tax.</p>\n<p>Purchasing an annuity within a retirement plan that provides tax deferral under sections of the Internal Revenue Code results in no additional tax benefit. An annuity should be used to fund a qualified plan based upon the annuity’s features other than tax deferral. All annuity features, risks, limitations, and costs should be considered prior to purchasing an annuity within a tax-qualified retirement plan.</p><p>Guarantees are backed solely by the financial strength and claims-paying ability of the issuing insurance company and do not apply to the performance of the variable subaccount(s), which will fluctuate with market conditions.</p>\n<p class=\"box\">• Not FDIC insured • May lose value • No bank or credit union guarantee • Not a deposit • Not insured by any federal government agency or NCUA/NCUSIF</p><p>Products are issued by Allianz Life Insurance Company of North America. Registered index-linked annuities (RILAs) are distributed by its affiliate,  Allianz Life Financial Services, LLC, <a href=\"#demo-unavailable\" data-demo-disabled=\"true\" title=\"This service is unavailable\">member FINRA</a>, 5701 Golden Hills Drive, Minneapolis, MN 55416-1297. <a href=\"#demo-unavailable\" data-demo-disabled=\"true\" title=\"This service is unavailable\">800.542.5427</a> <a href=\"/\">www.allianzlife.com</a></p><p>This content does not apply in the state of New York.</p>\n<p>Product and feature availability may vary by state and broker/dealer.</p>"
+          }
+        }
+      }
+    }
+  ],
+  "sourceRanges": [
+    {
+      "startLine": 1075,
+      "endLine": 1091
+    }
+  ],
+  "sourceFragmentSha256": "b4b59fab3b5b971ee0718e6f8f89d08adef279465db6f5682fb14545f83174d4",
+  "sourceFragmentBase64": "PGRpdiBjbGFzcz0ibC1jb250YWluZXItLWZ1bGwtd2lkdGggYS1heGxEaXNjbG9zdXJlcyI+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImwtZ3JpZCBsLWdyaWQtLW1heC13aWR0aCI+CiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJsLWdyaWRfX3JvdyI+CiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0ibC1ncmlkX19jb2x1bW4iPgogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJyb3ciPg0KICAgIDxkaXYgY2xhc3M9ImNvbC1tZC0xMiBjb250ZW50LWJvZHkgZGlzY2xvc3VyZSI+DQo8cD5SSUxBcyBhcmUgc3ViamVjdCB0byBpbnZlc3RtZW50IHJpc2ssIGluY2x1ZGluZyBwb3NzaWJsZSBsb3NzIG9mIHByaW5jaXBhbC4gSW52ZXN0bWVudCByZXR1cm5zIGFuZCBwcmluY2lwYWwgdmFsdWUgd2lsbCBmbHVjdHVhdGUgd2l0aCBtYXJrZXQgY29uZGl0aW9ucyBzbyB0aGF0IGNvbnRyYWN0IHZhbHVlLCB1cG9uIGRpc3RyaWJ1dGlvbiwgbWF5IGJlIHdvcnRoIG1vcmUgb3IgbGVzcyB0aGFuIHRoZSBvcmlnaW5hbCBjb3N0LjwvcD48IS0tIFdpdGhkcmF3YWxzIGZvciB2YXJpYWJsZSAtLT4KPHA+V2l0aGRyYXdhbHMgd2lsbCByZWR1Y2UgdGhlIGNvbnRyYWN0IHZhbHVlIGFuZCB0aGUgdmFsdWUgb2YgYW55IHBvdGVudGlhbCZuYnNwO3Byb3RlY3Rpb24gYmVuZWZpdHMuIFdpdGhkcmF3YWxzIHRha2VuIHdpdGhpbiB0aGUgY29udHJhY3Qgd2l0aGRyYXdhbCBjaGFyZ2Ugc2NoZWR1bGUgd2lsbCBiZSBzdWJqZWN0IHRvIGEgd2l0aGRyYXdhbCBjaGFyZ2UuIEFsbCB3aXRoZHJhd2FscyBhcmUgc3ViamVjdCB0byBvcmRpbmFyeSBpbmNvbWUgdGF4IGFuZCwgaWYgdGFrZW4gcHJpb3IgdG8gYWdlIDU5JmZyYWMxMjssIG1heSBiZSBzdWJqZWN0IHRvIGEgMTAlIGZlZGVyYWwgYWRkaXRpb25hbCB0YXguPC9wPjwhLS0gUHVyY2hhc2luZyBhbiBhbm51aXR5IC0tPgo8cD5QdXJjaGFzaW5nIGFuIGFubnVpdHkgd2l0aGluIGEgcmV0aXJlbWVudCBwbGFuIHRoYXQgcHJvdmlkZXMgdGF4IGRlZmVycmFsIHVuZGVyIHNlY3Rpb25zIG9mIHRoZSBJbnRlcm5hbCBSZXZlbnVlIENvZGUgcmVzdWx0cyBpbiBubyBhZGRpdGlvbmFsIHRheCBiZW5lZml0LiBBbiBhbm51aXR5IHNob3VsZCBiZSB1c2VkIHRvIGZ1bmQgYSBxdWFsaWZpZWQgcGxhbiBiYXNlZCB1cG9uIHRoZSBhbm51aXR5JnJzcXVvO3MgZmVhdHVyZXMgb3RoZXIgdGhhbiB0YXggZGVmZXJyYWwuIEFsbCBhbm51aXR5IGZlYXR1cmVzLCByaXNrcywgbGltaXRhdGlvbnMsIGFuZCBjb3N0cyBzaG91bGQgYmUgY29uc2lkZXJlZCBwcmlvciB0byBwdXJjaGFzaW5nIGFuIGFubnVpdHkgd2l0aGluIGEgdGF4LXF1YWxpZmllZCByZXRpcmVtZW50IHBsYW4uPC9wPjxwPkd1YXJhbnRlZXMgYXJlIGJhY2tlZCBzb2xlbHkgYnkgdGhlIGZpbmFuY2lhbCBzdHJlbmd0aCBhbmQgY2xhaW1zLXBheWluZyBhYmlsaXR5IG9mIHRoZSBpc3N1aW5nIGluc3VyYW5jZSBjb21wYW55IGFuZCBkbyBub3QgYXBwbHkgdG8gdGhlIHBlcmZvcm1hbmNlIG9mIHRoZSB2YXJpYWJsZSBzdWJhY2NvdW50KHMpLCB3aGljaCB3aWxsIGZsdWN0dWF0ZSB3aXRoIG1hcmtldCBjb25kaXRpb25zLjwvcD48IS0tIE5vdCBGRElDIC0tPgo8cCBjbGFzcz0iYm94Ij4mYnVsbDsgTm90IEZESUMgaW5zdXJlZCAmYnVsbDsgTWF5IGxvc2UgdmFsdWUgJmJ1bGw7IE5vIGJhbmsgb3IgY3JlZGl0IHVuaW9uIGd1YXJhbnRlZSAmYnVsbDsgTm90IGEgZGVwb3NpdCAmYnVsbDsgTm90IGluc3VyZWQgYnkgYW55IGZlZGVyYWwgZ292ZXJubWVudCBhZ2VuY3kgb3IgTkNVQS9OQ1VTSUY8L3A+PHA+UHJvZHVjdHMgYXJlIGlzc3VlZCBieSBBbGxpYW56IExpZmUgSW5zdXJhbmNlIENvbXBhbnkgb2YgTm9ydGggQW1lcmljYS4gUmVnaXN0ZXJlZCBpbmRleC1saW5rZWQgYW5udWl0aWVzIChSSUxBcykgYXJlIGRpc3RyaWJ1dGVkJm5ic3A7YnkgaXRzIGFmZmlsaWF0ZSwgIEFsbGlhbnogTGlmZSBGaW5hbmNpYWwgU2VydmljZXMsIExMQywmbmJzcDs8YSByZWw9Im5vb3BlbmVyIG5vcmVmZXJyZXIiIGhyZWY9Imh0dHA6Ly93d3cuZmlucmEub3JnIiBjbGFzcz0iZGlzY2xvc3VyZS1maW5yYSIgdGFyZ2V0PSJfYmxhbmsiPm1lbWJlciBGSU5SQTwvYT4sIDU3MDEgR29sZGVuIEhpbGxzIERyaXZlLCBNaW5uZWFwb2xpcywgTU4gNTU0MTYtMTI5Ny4mbmJzcDs8YSBocmVmPSJ0ZWw6ODAwLTU0Mi01NDI3Ij44MDAuNTQyLjU0Mjc8L2E+Jm5ic3A7PGEgaHJlZj0iaHR0cHM6Ly93d3cuYWxsaWFuemxpZmUuY29tLyI+d3d3LmFsbGlhbnpsaWZlLmNvbTwvYT48L3A+PHA+VGhpcyBjb250ZW50IGRvZXMgbm90IGFwcGx5IGluIHRoZSBzdGF0ZSBvZiBOZXcgWW9yay48L3A+PCEtLSBQcm9kdWN0IGF2YWlsYWJpbGl0eSBzdGF0ZSBhbmQgQkQgLS0+CjxwPlByb2R1Y3QgYW5kIGZlYXR1cmUgYXZhaWxhYmlsaXR5IG1heSB2YXJ5IGJ5IHN0YXRlIGFuZCBicm9rZXIvZGVhbGVyLjwvcD4gICAgPC9kaXY+DQo8L2Rpdj4KICAgICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgIA=="
+}

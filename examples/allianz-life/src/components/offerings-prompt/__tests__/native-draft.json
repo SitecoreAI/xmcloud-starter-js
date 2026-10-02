@@ -1,0 +1,223 @@
+{
+  "datasources": [
+    {
+      "id": "31377e86-0863-4f70-bd9b-f458ddf39449",
+      "primaryLink": {
+        "jsonValue": {
+          "value": {
+            "href": "/what-we-offer",
+            "text": "What we offer",
+            "target": "",
+            "querystring": "",
+            "anchor": "",
+            "linktype": "internal"
+          },
+          "metadata": {
+            "itemId": "31377e86-0863-4f70-bd9b-f458ddf39449",
+            "fieldId": "receipt-primaryLink",
+            "fieldType": "General Link"
+          }
+        }
+      },
+      "subheading": {
+        "jsonValue": {
+          "value": "",
+          "metadata": {
+            "itemId": "31377e86-0863-4f70-bd9b-f458ddf39449",
+            "fieldId": "receipt-subheading",
+            "fieldType": "Rich Text"
+          }
+        }
+      },
+      "body": {
+        "jsonValue": {
+          "value": "",
+          "metadata": {
+            "itemId": "31377e86-0863-4f70-bd9b-f458ddf39449",
+            "fieldId": "receipt-body",
+            "fieldType": "Rich Text"
+          }
+        }
+      },
+      "heading": {
+        "jsonValue": {
+          "value": "",
+          "metadata": {
+            "itemId": "31377e86-0863-4f70-bd9b-f458ddf39449",
+            "fieldId": "receipt-heading",
+            "fieldType": "Single-Line Text"
+          }
+        }
+      },
+      "children": {
+        "total": 1,
+        "pageInfo": {
+          "hasNext": false,
+          "endCursor": null
+        },
+        "results": [
+          {
+            "id": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+            "subheading": {
+              "jsonValue": {
+                "value": "<h5>See how our life insurance and annuities can help you achieve your financial goals.</h5>",
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-subheading",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "alphanumeral": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-alphanumeral",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "headingLevel": {
+              "jsonValue": {
+                "value": "h2",
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-headingLevel",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "image": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-image",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "iconTheme": {
+              "jsonValue": {
+                "value": "primary-brand",
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-iconTheme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-body",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "heading": {
+              "jsonValue": {
+                "value": "What can we do for you?",
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-heading",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "theme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-theme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "icon": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-icon",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "link": {
+              "jsonValue": {
+                "value": {
+                  "href": "/what-we-offer",
+                  "text": "What we offer",
+                  "target": "",
+                  "querystring": "",
+                  "anchor": "",
+                  "linktype": "internal"
+                },
+                "metadata": {
+                  "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+                  "fieldId": "receipt-link",
+                  "fieldType": "General Link"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "canonicalMigrationPreview": {
+    "id": "31377e86-0863-4f70-bd9b-f458ddf39449",
+    "heading": {
+      "jsonValue": {
+        "value": "What can we do for you?",
+        "metadata": {
+          "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+          "fieldId": "receipt-heading",
+          "fieldType": "Single-Line Text"
+        }
+      }
+    },
+    "body": {
+      "jsonValue": {
+        "value": "<h5>See how our life insurance and annuities can help you achieve your financial goals.</h5>",
+        "metadata": {
+          "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+          "fieldId": "receipt-subheading",
+          "fieldType": "Rich Text"
+        }
+      }
+    },
+    "icon": {
+      "jsonValue": {
+        "value": {},
+        "metadata": {
+          "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+          "fieldId": "receipt-icon",
+          "fieldType": "Image"
+        }
+      }
+    },
+    "link": {
+      "jsonValue": {
+        "value": {
+          "href": "/what-we-offer",
+          "text": "What we offer",
+          "target": "",
+          "querystring": "",
+          "anchor": "",
+          "linktype": "internal"
+        },
+        "metadata": {
+          "itemId": "22c00cc1-65a9-4bda-b3ba-6e48100dfa73",
+          "fieldId": "receipt-link",
+          "fieldType": "General Link"
+        }
+      }
+    }
+  }
+}

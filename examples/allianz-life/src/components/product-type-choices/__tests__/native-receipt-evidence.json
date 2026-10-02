@@ -1,0 +1,191 @@
+{
+  "provenance": {
+    "receiptFilename": "ANNUITIES-NATIVE-DRAFT-RECEIPT.json",
+    "completedAtUtc": "2026-10-01T09:00:09.094730+00:00",
+    "receiptSha256": "986cca8ba6f22ce1c59e814db2f5c712d429d779f9c0db52850382750fbc1db1",
+    "sourceFilename": "99f6a498352a3445.html",
+    "sourceSha256": "f0fcb64881cee93da75b6e73b7b3ea9add9851e617a091c48a82db0dac338945"
+  },
+  "bindings": {
+    "route:/what-we-offer/annuities:component:7:AllianzCardGrid": {
+      "itemId": "7c2db29f-59ae-4ecf-ad89-555bd39476c1",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 07",
+      "name": "AllianzCardGrid 07",
+      "templateId": "aff4b6a4-d6d9-5d78-9647-6c29a0473f76",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:53:52.115175+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": ""
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": ""
+        }
+      ]
+    },
+    "route:/what-we-offer/annuities:component:7:AllianzCardGrid:entry:1": {
+      "itemId": "c02cbb50-4fe8-4c30-b173-0dd930601dab",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 07/Entry 01",
+      "name": "Entry 01",
+      "templateId": "48f9181f-a7f4-5481-99ba-d88967608d60",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:54:13.045562+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": "Fixed index annuities: interest potential with protection"
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": "<ul>\n    <li>Provide potential for indexed interest</li>\n    <li><strong>Protect your principal and credited interest</strong> from market downturns</li>\n</ul>"
+        },
+        {
+          "name": "icon",
+          "value": ""
+        },
+        {
+          "name": "iconTheme",
+          "value": "transparent"
+        },
+        {
+          "name": "link",
+          "value": "<link text=\"Learn about Allianz® fixed index annuities\" title=\"\" target=\"\" anchor=\"\" querystring=\"\" linktype=\"internal\" id=\"{B78C7AA0-3F99-5275-B32E-4EFF60C2ADE3}\" />"
+        },
+        {
+          "name": "theme",
+          "value": "primary-white"
+        },
+        {
+          "name": "headingLevel",
+          "value": "h4"
+        },
+        {
+          "name": "alphanumeral",
+          "value": ""
+        }
+      ],
+      "referenceFields": [
+        {
+          "name": "links",
+          "value": "{B096BBEE-078D-4B5F-A82F-A114A5F97494}"
+        }
+      ]
+    },
+    "route:/what-we-offer/annuities:component:7:AllianzCardGrid:entry:2": {
+      "itemId": "30aaa9df-8b0c-4465-8c31-e2df3dd581db",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 07/Entry 02",
+      "name": "Entry 02",
+      "templateId": "48f9181f-a7f4-5481-99ba-d88967608d60",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:54:14.083455+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": "Registered index-linked annuities: accumulation potential with some protection"
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": "<ul>\n    <li><span>Competitive performance potential</span></li>\n    <li><span></span><strong>Offer the opportunity for a level of protection </strong>from market downturns</li>\n</ul>"
+        },
+        {
+          "name": "icon",
+          "value": ""
+        },
+        {
+          "name": "iconTheme",
+          "value": "transparent"
+        },
+        {
+          "name": "link",
+          "value": "<link text=\"Learn about Allianz® registered index-linked annuities\" title=\"\" target=\"\" anchor=\"\" querystring=\"\" linktype=\"internal\" id=\"{224ABF70-929E-59EC-8B54-257D12A8752C}\" />"
+        },
+        {
+          "name": "theme",
+          "value": "primary-white"
+        },
+        {
+          "name": "headingLevel",
+          "value": "h4"
+        },
+        {
+          "name": "alphanumeral",
+          "value": ""
+        }
+      ],
+      "referenceFields": [
+        {
+          "name": "links",
+          "value": "{5ECA3FED-D164-41D0-B2E2-E9D5E1215B63}"
+        }
+      ]
+    },
+    "route:/what-we-offer/annuities:component:7:AllianzCardGrid:entry:1:links:navigation:1": {
+      "itemId": "b096bbee-078d-4b5f-a82f-a114a5f97494",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 07/Entry 01/links/Link 01",
+      "name": "Link 01",
+      "templateId": "dc6d849c-06bf-5470-ac14-173e2ac72a0a",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:54:26.676898+00:00",
+      "reviewedFields": [
+        {
+          "name": "title",
+          "value": "Learn about Allianz® fixed index annuities"
+        },
+        {
+          "name": "link",
+          "value": "<link text=\"Learn about Allianz® fixed index annuities\" title=\"\" target=\"\" anchor=\"\" querystring=\"\" linktype=\"internal\" id=\"{B78C7AA0-3F99-5275-B32E-4EFF60C2ADE3}\" />"
+        }
+      ]
+    },
+    "route:/what-we-offer/annuities:component:7:AllianzCardGrid:entry:2:links:navigation:1": {
+      "itemId": "5eca3fed-d164-41d0-b2e2-e9d5e1215b63",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 07/Entry 02/links/Link 01",
+      "name": "Link 01",
+      "templateId": "dc6d849c-06bf-5470-ac14-173e2ac72a0a",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:54:27.960359+00:00",
+      "reviewedFields": [
+        {
+          "name": "title",
+          "value": "Learn about Allianz® registered index-linked annuities"
+        },
+        {
+          "name": "link",
+          "value": "<link text=\"Learn about Allianz® registered index-linked annuities\" title=\"\" target=\"\" anchor=\"\" querystring=\"\" linktype=\"internal\" id=\"{224ABF70-929E-59EC-8B54-257D12A8752C}\" />"
+        }
+      ]
+    }
+  },
+  "remaining": [
+    "Nine unbound Image fields and eight binaries await Content Hub mapping and delivery.",
+    "Page adoption and presentation have not been performed.",
+    "Publishing has not been performed.",
+    "Native connected rendering and authoring QA remain outstanding."
+  ],
+  "mediaStatus": "Pending/unbound. Fixture contains only fields present in the native receipt; no icon/image source URL is synthesized.",
+  "schemaStatus": "Native receipt uses AllianzCardGrid/AllianzCard. New purpose templates and fields are proposed authoring contracts only; no native writes or adoption performed."
+}

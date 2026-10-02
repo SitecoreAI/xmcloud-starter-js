@@ -1,0 +1,165 @@
+{
+  "datasources": [
+    {
+      "id": "b9042c56-9432-4eb6-b01b-cfce14cf12e9",
+      "primaryLink": {
+        "jsonValue": {
+          "value": {
+            "href": "",
+            "text": ""
+          },
+          "metadata": {
+            "itemId": "b9042c56-9432-4eb6-b01b-cfce14cf12e9",
+            "fieldId": "receipt-primaryLink",
+            "fieldType": "General Link"
+          }
+        }
+      },
+      "subheading": {
+        "jsonValue": {
+          "value": "",
+          "metadata": {
+            "itemId": "b9042c56-9432-4eb6-b01b-cfce14cf12e9",
+            "fieldId": "receipt-subheading",
+            "fieldType": "Rich Text"
+          }
+        }
+      },
+      "body": {
+        "jsonValue": {
+          "value": "<h4>&quot;As a leading provider of innovative financial products to help manage risk, we are dedicated to helping secure the future of our customers.&quot;</h4>",
+          "metadata": {
+            "itemId": "b9042c56-9432-4eb6-b01b-cfce14cf12e9",
+            "fieldId": "receipt-body",
+            "fieldType": "Rich Text"
+          }
+        }
+      },
+      "heading": {
+        "jsonValue": {
+          "value": "A few words from our CEO",
+          "metadata": {
+            "itemId": "b9042c56-9432-4eb6-b01b-cfce14cf12e9",
+            "fieldId": "receipt-heading",
+            "fieldType": "Single-Line Text"
+          }
+        }
+      },
+      "children": {
+        "total": 1,
+        "pageInfo": {
+          "hasNext": false,
+          "endCursor": null
+        },
+        "results": [
+          {
+            "id": "91fd1c69-6127-404c-b461-8c0088c44456",
+            "subheading": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-subheading",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "alphanumeral": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-alphanumeral",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "headingLevel": {
+              "jsonValue": {
+                "value": "h4",
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-headingLevel",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "image": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-image",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "iconTheme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-iconTheme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": "<h6>Jasmine Jirele<br>\nPresident and CEO</h6>",
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-body",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "heading": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-heading",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "theme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-theme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "icon": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-icon",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "link": {
+              "jsonValue": {
+                "value": {
+                  "href": "",
+                  "text": ""
+                },
+                "metadata": {
+                  "itemId": "91fd1c69-6127-404c-b461-8c0088c44456",
+                  "fieldId": "receipt-link",
+                  "fieldType": "General Link"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

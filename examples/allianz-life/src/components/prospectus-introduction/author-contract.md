@@ -1,0 +1,7 @@
+# Prospectus introduction
+
+The archived document-library pages contain two directory introductions and two New York eligibility notices. Authors edit **Prospectus introductory guidance** (`introductoryCopy`, Rich Text) for the two introductions, including normally saved complete paragraph markup. They edit **Contract eligibility notice** (`contractNotice`, Single-Line Text) for the closed-product and archived-contract notices. Document tables, page headings, and disclosures are separate contracts.
+
+`Default` retains the source pre-content row and column around the complete Rich Text paragraph content. `ContractNotice` retains the closed New York product's single paragraph and fixed bold presentation around its plain text field. `ArchivedContractNotice` retains the archived-contract source's plain eligibility paragraph. These text variants encode entered markup rather than wrapping saved Rich Text paragraphs. The archived notice and its document table must be placed inside the source pre-content host, with the table's separate nested content host. The only parameter is `RenderingIdentifier`.
+
+The complete field object reaches the SDK, including editing metadata. A cleared field mounts editable chrome in editing mode and produces no visitor content. Actual native identity and adoption are pending. The 30-route source manifest and real SDK tests live beside `prospectus-document-table`.

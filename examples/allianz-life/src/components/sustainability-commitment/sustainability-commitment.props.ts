@@ -1,0 +1,58 @@
+import type { Field, ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
+import type { ComponentProps } from 'lib/component-props';
+
+type TextValue = { jsonValue?: Field<string> };
+type ImageValue = { jsonValue?: ImageField };
+type LinkValue = { jsonValue?: LinkField };
+type NativeField = { name?: string; jsonValue?: unknown };
+type Connection<T> = { total?: number; pageInfo?: { hasNext?: boolean; endCursor?: string | null }; results: T[] };
+
+export interface SustainabilityCommitmentEntry {
+  id: string;
+  heading?: TextValue;
+  body?: TextValue;
+  image?: ImageValue;
+  link?: LinkValue;
+  fieldCollection?: NativeField[] | null;
+}
+export interface SustainabilityCommitmentDatasource {
+  id?: string;
+  heading?: TextValue;
+  overview?: TextValue;
+  link?: LinkValue;
+  supportingStatement?: TextValue;
+  /** Narrow compatibility fields from the existing native root. */
+  body?: TextValue;
+  primaryLink?: LinkValue;
+  fieldCollection?: NativeField[] | null;
+  children?: Connection<SustainabilityCommitmentEntry>;
+}
+export type SustainabilityCommitmentProps = ComponentProps & { fields?: { data?: { datasource?: SustainabilityCommitmentDatasource } } };
+/** Canonical native fields win even when deliberately cleared. Preserve SDK metadata. */
+function project<T extends object>(item: T, names: readonly string[], aliases: Readonly<Record<string, string>> = {}): T {
+  const result = { ...item } as Record<string, unknown>;
+  const fields = (item as { fieldCollection?: NativeField[] | null }).fieldCollection;
+  const allowed = new Map(names.map((name) => [name.toLowerCase(), name]));
+  for (const field of fields ?? []) {
+    if (!field || typeof field.name !== 'string' || !Object.hasOwn(field, 'jsonValue')) continue;
+    const name = allowed.get(field.name.toLowerCase());
+    if (name && !Object.hasOwn(result, name)) result[name] = { jsonValue: field.jsonValue };
+  }
+  for (const [oldName, name] of Object.entries(aliases)) {
+    if (!Object.hasOwn(result, name) && Object.hasOwn(item, oldName)) result[name] = (item as Record<string, unknown>)[oldName];
+  }
+  for (const field of fields ?? []) {
+    if (!field || typeof field.name !== 'string' || !Object.hasOwn(field, 'jsonValue')) continue;
+    const oldName = field.name.toLowerCase();
+    const name = Object.hasOwn(aliases, oldName) ? aliases[oldName] : undefined;
+    if (name && !Object.hasOwn(result, name)) result[name] = { jsonValue: field.jsonValue };
+  }
+  return result as T;
+}
+
+export function sustainabilityFields(item: SustainabilityCommitmentDatasource): SustainabilityCommitmentDatasource {
+  return project(item, ['heading', 'overview', 'link', 'supportingStatement'], { body: 'overview', primaryLink: 'link', primarylink: 'link' });
+}
+export function commitmentFields(item: SustainabilityCommitmentEntry): SustainabilityCommitmentEntry {
+  return project(item, ['heading', 'body', 'image', 'link']);
+}

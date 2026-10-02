@@ -1,0 +1,12 @@
+/* Image fields retain the recovered IntroductionBlock SVG's size and white fill. */
+.allianz-product-faq-intro .tileIcon img {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 704px) {
+  .allianz-product-faq-intro .tileIcon img {
+    width: 40px;
+  }
+}

@@ -1,0 +1,1389 @@
+[
+  {
+    "selector": ".u-margin-bottom-xl",
+    "declarations": [
+      {
+        "prop": "-webkit-margin-after",
+        "value": "64px",
+        "important": false
+      },
+      {
+        "prop": "margin-block-end",
+        "value": "64px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".t-bg-blue-soft",
+    "declarations": [
+      {
+        "prop": "background-color",
+        "value": "#d4edf3",
+        "important": true
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".t-bg-grey-muted",
+    "declarations": [
+      {
+        "prop": "background-color",
+        "value": "#bbbdbf",
+        "important": true
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".u-row-spacing",
+    "declarations": [
+      {
+        "prop": "margin-bottom",
+        "value": "64px",
+        "important": true
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".u-margin-bottom-lg",
+    "declarations": [
+      {
+        "prop": "margin-bottom",
+        "value": "32px",
+        "important": true
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".u-margin-bottom-xl",
+    "declarations": [
+      {
+        "prop": "margin-bottom",
+        "value": "64px",
+        "important": true
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".u-padding-top-lg",
+    "declarations": [
+      {
+        "prop": "padding-top",
+        "value": "32px",
+        "important": true
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".l-grid__column-medium-4",
+    "declarations": [
+      {
+        "prop": "flex",
+        "value": "0 0 33.3333333333%",
+        "important": false
+      },
+      {
+        "prop": "max-width",
+        "value": "33.3333333333%",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": ".h1,h1",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "2.5rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "3rem",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".h1,h1",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "2.875rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "3.5rem",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px) and (max-width:991px)"
+      }
+    ]
+  },
+  {
+    "selector": ".h1,h1",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "3.375rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "3.75rem",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:992px)"
+      }
+    ]
+  },
+  {
+    "selector": ".h2,h2",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "2.1875rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "2.5rem",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".h2,h2",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "2.375rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "3rem",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px) and (max-width:991px)"
+      }
+    ]
+  },
+  {
+    "selector": ".h2,h2",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "2.5rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "3rem",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:992px)"
+      }
+    ]
+  },
+  {
+    "selector": ".h3,h3",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "1.625rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "2rem",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".h3,h3",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "1.875rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "2.25rem",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:992px)"
+      }
+    ]
+  },
+  {
+    "selector": ".h4,h4",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "1.5rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "2rem",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".h4,h4",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "1.625rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "2rem",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:992px)"
+      }
+    ]
+  },
+  {
+    "selector": ".h5,h5",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "1.25rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "1.75rem",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".h5,h5",
+    "declarations": [
+      {
+        "prop": "font-size",
+        "value": "1.5rem",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "2rem",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:992px)"
+      }
+    ]
+  },
+  {
+    "selector": ".o-richTextEditor__wrapper li>ul",
+    "declarations": [
+      {
+        "prop": "margin-left",
+        "value": "2.3rem",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".o-richTextEditor__wrapper img",
+    "declarations": [
+      {
+        "prop": "max-width",
+        "value": "100%",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".c-image",
+    "declarations": [
+      {
+        "prop": "display",
+        "value": "block",
+        "important": false
+      },
+      {
+        "prop": "position",
+        "value": "relative",
+        "important": false
+      },
+      {
+        "prop": "line-height",
+        "value": "0",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".c-image__img",
+    "declarations": [
+      {
+        "prop": "display",
+        "value": "block",
+        "important": false
+      },
+      {
+        "prop": "font-family",
+        "value": "\"object-fit: cover;\"",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "auto",
+        "important": false
+      },
+      {
+        "prop": "object-fit",
+        "value": "cover",
+        "important": false
+      },
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      },
+      {
+        "prop": "display",
+        "value": "flex",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock.-is--stacked",
+    "declarations": [
+      {
+        "prop": "flex-direction",
+        "value": "column",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock.-is--stacked .tileContent",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock.-is--stacked.-is--flipped",
+    "declarations": [
+      {
+        "prop": "flex-direction",
+        "value": "column-reverse",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileBody ul li",
+    "declarations": [
+      {
+        "prop": "list-style-position",
+        "value": "inside",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock.-is--negative .tileContent",
+    "declarations": [
+      {
+        "prop": "color",
+        "value": "#fff",
+        "important": false
+      },
+      {
+        "prop": "fill",
+        "value": "#fff",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileContent",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "auto",
+        "important": false
+      },
+      {
+        "prop": "font-size",
+        "value": "1rem",
+        "important": false
+      },
+      {
+        "prop": "color",
+        "value": "#3c3c3c",
+        "important": false
+      },
+      {
+        "prop": "fill",
+        "value": "#3c3c3c",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileContent .tileSubGrid__image",
+    "declarations": [
+      {
+        "prop": "display",
+        "value": "inline-flex",
+        "important": false
+      },
+      {
+        "prop": "margin-bottom",
+        "value": "24px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileIcon",
+    "declarations": [
+      {
+        "prop": "border-radius",
+        "value": "50%",
+        "important": false
+      },
+      {
+        "prop": "width",
+        "value": "40px",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "40px",
+        "important": false
+      },
+      {
+        "prop": "display",
+        "value": "inline-flex",
+        "important": false
+      },
+      {
+        "prop": "justify-content",
+        "value": "center",
+        "important": false
+      },
+      {
+        "prop": "color",
+        "value": "#fff",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileIcon",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "64px",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "64px",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileIcon svg",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "26px",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "auto",
+        "important": false
+      },
+      {
+        "prop": "fill",
+        "value": "#fff",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileIcon svg",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "40px",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileHeading h1,.m-axlIntroductionBlock .tileHeading h2,.m-axlIntroductionBlock .tileHeading h3,.m-axlIntroductionBlock .tileHeading h4,.m-axlIntroductionBlock .tileHeading h6,.m-axlIntroductionBlock .tileSubHeading h1,.m-axlIntroductionBlock .tileSubHeading h2,.m-axlIntroductionBlock .tileSubHeading h3,.m-axlIntroductionBlock .tileSubHeading h4,.m-axlIntroductionBlock .tileSubHeading h6",
+    "declarations": [
+      {
+        "prop": "margin",
+        "value": "0 0 24px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileHeading.u-text-weight-bold h2,.m-axlIntroductionBlock .tileHeading.u-text-weight-bold h3,.m-axlIntroductionBlock .tileHeading.u-text-weight-bold h4,.m-axlIntroductionBlock .tileHeading.u-text-weight-bold h6,.m-axlIntroductionBlock .tileSubHeading.u-text-weight-bold h2,.m-axlIntroductionBlock .tileSubHeading.u-text-weight-bold h3,.m-axlIntroductionBlock .tileSubHeading.u-text-weight-bold h4,.m-axlIntroductionBlock .tileSubHeading.u-text-weight-bold h6",
+    "declarations": [
+      {
+        "prop": "font-weight",
+        "value": "700",
+        "important": true
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileHeading,.m-axlIntroductionBlock .tileIcon,.m-axlIntroductionBlock .tileSubHeading",
+    "declarations": [
+      {
+        "prop": "margin-bottom",
+        "value": "32px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock .tileContent:not(:has(>.tileIcon)) header",
+    "declarations": [
+      {
+        "prop": "margin-top",
+        "value": "20px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock footer",
+    "declarations": [
+      {
+        "prop": "margin-top",
+        "value": "24px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlIntroductionBlock footer .tileLink+.tileLink",
+    "declarations": [
+      {
+        "prop": "margin",
+        "value": "16px 0 0",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".axlTileCollection header.tileCollection .tileHeadingIcon,.m-axlTile .tileIcon",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "40px",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "40px",
+        "important": false
+      },
+      {
+        "prop": "vertical-align",
+        "value": "middle",
+        "important": false
+      },
+      {
+        "prop": "text-align",
+        "value": "center",
+        "important": false
+      },
+      {
+        "prop": "border-radius",
+        "value": "50%",
+        "important": false
+      },
+      {
+        "prop": "justify-content",
+        "value": "center",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".axlTileCollection header.tileCollection .tileHeadingIcon,.m-axlTile .tileIcon",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "64px",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "64px",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": ".axlTileCollection header.tileCollection .tileHeadingIcon svg,.m-axlTile .tileIcon svg",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "26px",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "auto",
+        "important": false
+      },
+      {
+        "prop": "fill",
+        "value": "#3c3c3c",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".axlTileCollection header.tileCollection .tileHeadingIcon svg,.m-axlTile .tileIcon svg",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "40px",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": ".m-axlTile",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile,.m-axlTile .tileIcon",
+    "declarations": [
+      {
+        "prop": "display",
+        "value": "flex",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileIcon:empty",
+    "declarations": [
+      {
+        "prop": "display",
+        "value": "none",
+        "important": true
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile header",
+    "declarations": [
+      {
+        "prop": "margin-bottom",
+        "value": "32px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile header .tileHeading",
+    "declarations": [
+      {
+        "prop": "margin-bottom",
+        "value": "24px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile header .tileHeading h1,.m-axlTile header .tileHeading h2,.m-axlTile header .tileHeading h3,.m-axlTile header .tileHeading h4,.m-axlTile header .tileHeading h5,.m-axlTile header .tileHeading h6",
+    "declarations": [
+      {
+        "prop": "margin",
+        "value": "0",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile header .tileHeadingTitle",
+    "declarations": [
+      {
+        "prop": "margin-bottom",
+        "value": "32px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-no--image .tileImage",
+    "declarations": [
+      {
+        "prop": "display",
+        "value": "none",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile footer",
+    "declarations": [
+      {
+        "prop": "margin-top",
+        "value": "24px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile footer .tileLink+.tileLink",
+    "declarations": [
+      {
+        "prop": "margin",
+        "value": "16px 0 0",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--split",
+    "declarations": [
+      {
+        "prop": "flex-direction",
+        "value": "column",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--split",
+    "declarations": [
+      {
+        "prop": "flex-direction",
+        "value": "row",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": ".m-axlTile.-is--split.-is--flipped",
+    "declarations": [
+      {
+        "prop": "flex-direction",
+        "value": "row-reverse",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": ".m-axlTile.-is--stacked",
+    "declarations": [
+      {
+        "prop": "flex-direction",
+        "value": "column",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--stacked .tileIcon",
+    "declarations": [
+      {
+        "prop": "justify-content",
+        "value": "center",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--stacked .tileContent,.m-axlTile.-is--stacked .tileImage",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--stacked.-is--flipped",
+    "declarations": [
+      {
+        "prop": "flex-direction",
+        "value": "column-reverse",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--framed",
+    "declarations": [
+      {
+        "prop": "padding",
+        "value": "64px 128px",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": ".m-axlTile.-is--framed .tileContent",
+    "declarations": [
+      {
+        "prop": "padding",
+        "value": "32px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--negative .tileContent",
+    "declarations": [
+      {
+        "prop": "color",
+        "value": "#fff",
+        "important": false
+      },
+      {
+        "prop": "fill",
+        "value": "#fff",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--negative .tileIcon svg",
+    "declarations": [
+      {
+        "prop": "fill",
+        "value": "#fff",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--negative .tileLink .a-link",
+    "declarations": [
+      {
+        "prop": "color",
+        "value": "#fff",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is--negative .tileLink .a-link__icon svg",
+    "declarations": [
+      {
+        "prop": "fill",
+        "value": "#fff",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileContent",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "auto",
+        "important": false
+      },
+      {
+        "prop": "min-height",
+        "value": "150px",
+        "important": false
+      },
+      {
+        "prop": "padding",
+        "value": "32px",
+        "important": false
+      },
+      {
+        "prop": "font-size",
+        "value": "1rem",
+        "important": false
+      },
+      {
+        "prop": "color",
+        "value": "#3c3c3c",
+        "important": false
+      },
+      {
+        "prop": "fill",
+        "value": "#3c3c3c",
+        "important": false
+      },
+      {
+        "prop": "flex-grow",
+        "value": "2",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileContent",
+    "declarations": [
+      {
+        "prop": "padding-bottom",
+        "value": "32px",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:320px) and (max-width:703px)"
+      }
+    ]
+  },
+  {
+    "selector": ".m-axlTile .tileContent .tileSubGrid__image",
+    "declarations": [
+      {
+        "prop": "display",
+        "value": "inline-flex",
+        "important": false
+      },
+      {
+        "prop": "margin-bottom",
+        "value": "24px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileContent li>ul",
+    "declarations": [
+      {
+        "prop": "margin-left",
+        "value": "2.3rem",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileContent .tileBody",
+    "declarations": [
+      {
+        "prop": "letter-spacing",
+        "value": ".0125rem",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileContent .tileBody ul li",
+    "declarations": [
+      {
+        "prop": "list-style-position",
+        "value": "outside",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile.-is-negative .tileIcon svg",
+    "declarations": [
+      {
+        "prop": "fill",
+        "value": "#fff",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileImage",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "auto",
+        "important": false
+      },
+      {
+        "prop": "min-height",
+        "value": "150px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileImage picture",
+    "declarations": [
+      {
+        "prop": "display",
+        "value": "flex",
+        "important": false
+      },
+      {
+        "prop": "position",
+        "value": "relative",
+        "important": false
+      },
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "100%",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileImage picture .c-image__img",
+    "declarations": [
+      {
+        "prop": "height",
+        "value": "auto",
+        "important": false
+      },
+      {
+        "prop": "max-height",
+        "value": "300px",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:320px) and (max-width:703px)"
+      }
+    ]
+  },
+  {
+    "selector": ".m-axlTile .tileImage picture .c-teaser__image-img",
+    "declarations": [
+      {
+        "prop": "position",
+        "value": "static",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "100%",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileImage picture.is-rounded img",
+    "declarations": [
+      {
+        "prop": "border-radius",
+        "value": "50%",
+        "important": false
+      },
+      {
+        "prop": "position",
+        "value": "absolute",
+        "important": false
+      },
+      {
+        "prop": "top",
+        "value": "50%",
+        "important": false
+      },
+      {
+        "prop": "transform",
+        "value": "translateY(-50%)",
+        "important": false
+      },
+      {
+        "prop": "width",
+        "value": "250px",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "250px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".m-axlTile .tileHeading.u-text-weight-bold h2,.m-axlTile .tileHeading.u-text-weight-bold h3,.m-axlTile .tileHeading.u-text-weight-bold h4,.m-axlTile .tileHeading.u-text-weight-bold h6,.m-axlTile .tileSubHeading.u-text-weight-bold h2,.m-axlTile .tileSubHeading.u-text-weight-bold h3,.m-axlTile .tileSubHeading.u-text-weight-bold h4,.m-axlTile .tileSubHeading.u-text-weight-bold h6",
+    "declarations": [
+      {
+        "prop": "font-weight",
+        "value": "700",
+        "important": true
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": ".tile--3366 .tileImage,.tile--6633 .tileContent",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "66.666%",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": ".tile--6633 .tileImage",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "33.333%",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "(min-width:704px)"
+      }
+    ]
+  },
+  {
+    "selector": "#page-breaking-barriers .m-axlTile .tileIcon,#page-modern-income-strategy .m-axlTile .tileIcon",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "80px",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "80px",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": "#page-breaking-barriers .m-axlTile .tileIcon svg,#page-modern-income-strategy .m-axlTile .tileIcon svg",
+    "declarations": [
+      {
+        "prop": "width",
+        "value": "100%",
+        "important": false
+      },
+      {
+        "prop": "height",
+        "value": "100%",
+        "important": false
+      }
+    ],
+    "context": []
+  },
+  {
+    "selector": "#dx-rila-new-business-rates #tool-controls,#dx-rila-new-business-rates .O-azl-header,#dx-rila-new-business-rates .azl-breadcrumb,#dx-rila-new-business-rates .c-footer,#dx-rila-new-business-rates .c-hero__theme--variable,#dx-rila-new-business-rates .m-axlHero,#dx-rila-new-business-rates .m-axlIntroductionBlock,#page-new-business-rates #tool-controls,#page-new-business-rates .O-azl-header,#page-new-business-rates .azl-breadcrumb,#page-new-business-rates .c-footer,#page-new-business-rates .c-hero__theme--variable,#page-new-business-rates .m-axlHero,#page-new-business-rates .m-axlIntroductionBlock,body[id^=page-rates-] #tool-controls,body[id^=page-rates-] .O-azl-header,body[id^=page-rates-] .azl-breadcrumb,body[id^=page-rates-] .c-footer,body[id^=page-rates-] .c-hero__theme--variable,body[id^=page-rates-] .m-axlHero,body[id^=page-rates-] .m-axlIntroductionBlock,body[id^=page-rila-] #tool-controls,body[id^=page-rila-] .O-azl-header,body[id^=page-rila-] .azl-breadcrumb,body[id^=page-rila-] .c-footer,body[id^=page-rila-] .c-hero__theme--variable,body[id^=page-rila-] .m-axlHero,body[id^=page-rila-] .m-axlIntroductionBlock",
+    "declarations": [
+      {
+        "prop": "display",
+        "value": "none",
+        "important": false
+      }
+    ],
+    "context": [
+      {
+        "name": "media",
+        "params": "print"
+      }
+    ]
+  }
+]

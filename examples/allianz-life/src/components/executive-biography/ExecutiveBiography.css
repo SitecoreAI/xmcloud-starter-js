@@ -1,0 +1,8 @@
+/* Existing .h2/.h4 aliases supply the exact responsive source typography. */
+.executive-biography .executive-biography-role {
+  margin: 0 0 24px;
+}
+
+.executive-biography .executive-biography-role > p {
+  margin: 0;
+}

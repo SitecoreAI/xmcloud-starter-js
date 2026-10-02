@@ -1,0 +1,14 @@
+{
+  "component": "ProspectusProductDirectory",
+  "nativeAdoption": "Pending verification; no native identities generated",
+  "authorFields": [
+    { "name": "currentProducts", "label": "Current product prospectus links", "type": "Multilist", "ordered": true },
+    { "name": "pastProducts", "label": "Past product prospectus links", "type": "Multilist", "ordered": true }
+  ],
+  "productRecordFields": [
+    { "name": "productLink", "label": "Product prospectus page", "type": "General Link" }
+  ],
+  "fixedLabels": ["Current Products", "Past Products"],
+  "parameters": ["RenderingIdentifier"],
+  "variants": ["Default"]
+}

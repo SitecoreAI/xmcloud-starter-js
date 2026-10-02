@@ -1,0 +1,12 @@
+/* Exact Why source: .m-axlTile .tileIcon svg is charcoal at 26/40px. */
+.allianz-modern .allianz-company-strengths .tileIcon > .allianz-field-icon {
+  width: 26px;
+  height: 26px;
+  background-color: #3c3c3c;
+  align-self: center;
+}
+.allianz-company-strengths .tileIcon > img { width: 26px; height: auto; }
+@media (min-width: 704px) {
+  .allianz-modern .allianz-company-strengths .tileIcon > .allianz-field-icon { width: 40px; height: 40px; }
+  .allianz-company-strengths .tileIcon > img { width: 40px; }
+}

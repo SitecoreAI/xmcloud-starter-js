@@ -1,0 +1,836 @@
+{
+  "datasource": {
+    "id": "313573d7-08dc-418e-b1f6-527ba6973180",
+    "primaryLink": {
+      "jsonValue": {
+        "value": {
+          "href": "/why-allianz/sustainability",
+          "text": "Learn more about how we bring sustainability to life",
+          "target": "",
+          "querystring": "",
+          "anchor": "",
+          "linktype": "internal"
+        },
+        "metadata": {
+          "itemId": "313573d7-08dc-418e-b1f6-527ba6973180",
+          "fieldId": "receipt-primaryLink",
+          "fieldType": "General Link"
+        }
+      }
+    },
+    "subheading": {
+      "jsonValue": {
+        "value": "",
+        "metadata": {
+          "itemId": "313573d7-08dc-418e-b1f6-527ba6973180",
+          "fieldId": "receipt-subheading",
+          "fieldType": "Rich Text"
+        }
+      }
+    },
+    "body": {
+      "jsonValue": {
+        "value": "<p>For more than 125 years, Allianz Life has made promises people depend on for the rest of their lives. This is why sustainability – which focuses on planning and managing for the long term – is so fundamental to our business. For us, sustainability means not only understanding the impact of environmental, social, and governance issues on our business, but also the impact of our business on the world around us.</p>",
+        "metadata": {
+          "itemId": "313573d7-08dc-418e-b1f6-527ba6973180",
+          "fieldId": "receipt-body",
+          "fieldType": "Rich Text"
+        }
+      }
+    },
+    "heading": {
+      "jsonValue": {
+        "value": "Our mission – we secure your future – doesn’t stop at retirement planning.",
+        "metadata": {
+          "itemId": "313573d7-08dc-418e-b1f6-527ba6973180",
+          "fieldId": "receipt-heading",
+          "fieldType": "Single-Line Text"
+        }
+      }
+    },
+    "children": {
+      "total": 3,
+      "pageInfo": {
+        "hasNext": false,
+        "endCursor": null
+      },
+      "results": [
+        {
+          "id": "8766422f-e97a-49dc-a47f-aee00a44f412",
+          "subheading": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-subheading",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "alphanumeral": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-alphanumeral",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "headingLevel": {
+            "jsonValue": {
+              "value": "h3",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-headingLevel",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "image": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-image",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "iconTheme": {
+            "jsonValue": {
+              "value": "transparent",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-iconTheme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<p>Learn more about our commitment to making Allianz a great place to work for all employees through our inclusive culture, dedication to empowering and recognizing great work, and focus on work/life balance.</p>",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-body",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "heading": {
+            "jsonValue": {
+              "value": "Helping employees do the best work of their lives",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-heading",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "theme": {
+            "jsonValue": {
+              "value": "primary-white",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-theme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "icon": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-icon",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "link": {
+            "jsonValue": {
+              "value": {
+                "href": "/why-allianz/culture",
+                "text": "See what it’s like to work here",
+                "target": "",
+                "querystring": "",
+                "anchor": "",
+                "linktype": "internal"
+              },
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-link",
+                "fieldType": "General Link"
+              }
+            }
+          }
+        },
+        {
+          "id": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+          "subheading": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-subheading",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "alphanumeral": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-alphanumeral",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "headingLevel": {
+            "jsonValue": {
+              "value": "h3",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-headingLevel",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "image": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-image",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "iconTheme": {
+            "jsonValue": {
+              "value": "transparent",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-iconTheme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<p>We at Allianz believe in an inclusive workforce and are proud to be an equal opportunity employer. We encourage our employees to bring their whole selves to work, no matter where they are from, what they look like, who they love, or what they believe in. We therefore welcome applications regardless of ethnicity or cultural background, age, gender, nationality, religion, disability, or sexual orientation.</p>",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-body",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "heading": {
+            "jsonValue": {
+              "value": "Valuing inclusion",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-heading",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "theme": {
+            "jsonValue": {
+              "value": "primary-white",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-theme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "icon": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-icon",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "link": {
+            "jsonValue": {
+              "value": {
+                "href": "/why-allianz/inclusion",
+                "text": "Learn about our commitment",
+                "target": "",
+                "querystring": "",
+                "anchor": "",
+                "linktype": "internal"
+              },
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-link",
+                "fieldType": "General Link"
+              }
+            }
+          }
+        },
+        {
+          "id": "bb53e8ef-5165-421b-8865-528419662954",
+          "subheading": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-subheading",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "alphanumeral": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-alphanumeral",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "headingLevel": {
+            "jsonValue": {
+              "value": "h3",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-headingLevel",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "image": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-image",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "iconTheme": {
+            "jsonValue": {
+              "value": "transparent",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-iconTheme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<p>See how Allianz is building stronger, more financially secure communities by reducing barriers to economic inclusion in the Twin Cities and beyond, an approach we call Allianz for Tomorrow.</p>",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-body",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "heading": {
+            "jsonValue": {
+              "value": "Securing the future of our community",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-heading",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "theme": {
+            "jsonValue": {
+              "value": "primary-white",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-theme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "icon": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-icon",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "link": {
+            "jsonValue": {
+              "value": {
+                "href": "/why-allianz/community",
+                "text": "See how Allianz is giving back",
+                "target": "",
+                "querystring": "",
+                "anchor": "",
+                "linktype": "internal"
+              },
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-link",
+                "fieldType": "General Link"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "supportingStatementSource": {
+    "id": "61835e8b-d39a-4b89-b894-fd657a930487",
+    "primaryLink": {
+      "jsonValue": {
+        "value": {
+          "href": "",
+          "text": ""
+        },
+        "metadata": {
+          "itemId": "61835e8b-d39a-4b89-b894-fd657a930487",
+          "fieldId": "receipt-primaryLink",
+          "fieldType": "General Link"
+        }
+      }
+    },
+    "subheading": {
+      "jsonValue": {
+        "value": "",
+        "metadata": {
+          "itemId": "61835e8b-d39a-4b89-b894-fd657a930487",
+          "fieldId": "receipt-subheading",
+          "fieldType": "Rich Text"
+        }
+      }
+    },
+    "body": {
+      "jsonValue": {
+        "value": "<p>At Allianz, sustainability means securing a brighter, more financially secure future for all through our inclusive workplace culture, our commitment to inclusion, and our work in the community – to name just a few.</p>",
+        "metadata": {
+          "itemId": "61835e8b-d39a-4b89-b894-fd657a930487",
+          "fieldId": "receipt-body",
+          "fieldType": "Rich Text"
+        }
+      }
+    },
+    "heading": {
+      "jsonValue": {
+        "value": "",
+        "metadata": {
+          "itemId": "61835e8b-d39a-4b89-b894-fd657a930487",
+          "fieldId": "receipt-heading",
+          "fieldType": "Single-Line Text"
+        }
+      }
+    }
+  },
+  "canonicalMigrationPreview": {
+    "id": "313573d7-08dc-418e-b1f6-527ba6973180",
+    "primaryLink": {
+      "jsonValue": {
+        "value": {
+          "href": "/why-allianz/sustainability",
+          "text": "Learn more about how we bring sustainability to life",
+          "target": "",
+          "querystring": "",
+          "anchor": "",
+          "linktype": "internal"
+        },
+        "metadata": {
+          "itemId": "313573d7-08dc-418e-b1f6-527ba6973180",
+          "fieldId": "receipt-primaryLink",
+          "fieldType": "General Link"
+        }
+      }
+    },
+    "subheading": {
+      "jsonValue": {
+        "value": "",
+        "metadata": {
+          "itemId": "313573d7-08dc-418e-b1f6-527ba6973180",
+          "fieldId": "receipt-subheading",
+          "fieldType": "Rich Text"
+        }
+      }
+    },
+    "body": {
+      "jsonValue": {
+        "value": "<p>For more than 125 years, Allianz Life has made promises people depend on for the rest of their lives. This is why sustainability – which focuses on planning and managing for the long term – is so fundamental to our business. For us, sustainability means not only understanding the impact of environmental, social, and governance issues on our business, but also the impact of our business on the world around us.</p>",
+        "metadata": {
+          "itemId": "313573d7-08dc-418e-b1f6-527ba6973180",
+          "fieldId": "receipt-body",
+          "fieldType": "Rich Text"
+        }
+      }
+    },
+    "heading": {
+      "jsonValue": {
+        "value": "Our mission – we secure your future – doesn’t stop at retirement planning.",
+        "metadata": {
+          "itemId": "313573d7-08dc-418e-b1f6-527ba6973180",
+          "fieldId": "receipt-heading",
+          "fieldType": "Single-Line Text"
+        }
+      }
+    },
+    "children": {
+      "total": 3,
+      "pageInfo": {
+        "hasNext": false,
+        "endCursor": null
+      },
+      "results": [
+        {
+          "id": "8766422f-e97a-49dc-a47f-aee00a44f412",
+          "subheading": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-subheading",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "alphanumeral": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-alphanumeral",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "headingLevel": {
+            "jsonValue": {
+              "value": "h3",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-headingLevel",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "image": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-image",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "iconTheme": {
+            "jsonValue": {
+              "value": "transparent",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-iconTheme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<p>Learn more about our commitment to making Allianz a great place to work for all employees through our inclusive culture, dedication to empowering and recognizing great work, and focus on work/life balance.</p>",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-body",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "heading": {
+            "jsonValue": {
+              "value": "Helping employees do the best work of their lives",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-heading",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "theme": {
+            "jsonValue": {
+              "value": "primary-white",
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-theme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "icon": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-icon",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "link": {
+            "jsonValue": {
+              "value": {
+                "href": "/why-allianz/culture",
+                "text": "See what it’s like to work here",
+                "target": "",
+                "querystring": "",
+                "anchor": "",
+                "linktype": "internal"
+              },
+              "metadata": {
+                "itemId": "8766422f-e97a-49dc-a47f-aee00a44f412",
+                "fieldId": "receipt-link",
+                "fieldType": "General Link"
+              }
+            }
+          }
+        },
+        {
+          "id": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+          "subheading": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-subheading",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "alphanumeral": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-alphanumeral",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "headingLevel": {
+            "jsonValue": {
+              "value": "h3",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-headingLevel",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "image": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-image",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "iconTheme": {
+            "jsonValue": {
+              "value": "transparent",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-iconTheme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<p>We at Allianz believe in an inclusive workforce and are proud to be an equal opportunity employer. We encourage our employees to bring their whole selves to work, no matter where they are from, what they look like, who they love, or what they believe in. We therefore welcome applications regardless of ethnicity or cultural background, age, gender, nationality, religion, disability, or sexual orientation.</p>",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-body",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "heading": {
+            "jsonValue": {
+              "value": "Valuing inclusion",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-heading",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "theme": {
+            "jsonValue": {
+              "value": "primary-white",
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-theme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "icon": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-icon",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "link": {
+            "jsonValue": {
+              "value": {
+                "href": "/why-allianz/inclusion",
+                "text": "Learn about our commitment",
+                "target": "",
+                "querystring": "",
+                "anchor": "",
+                "linktype": "internal"
+              },
+              "metadata": {
+                "itemId": "69f0d596-afbe-4484-82ae-dce3fac90ad6",
+                "fieldId": "receipt-link",
+                "fieldType": "General Link"
+              }
+            }
+          }
+        },
+        {
+          "id": "bb53e8ef-5165-421b-8865-528419662954",
+          "subheading": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-subheading",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "alphanumeral": {
+            "jsonValue": {
+              "value": "",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-alphanumeral",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "headingLevel": {
+            "jsonValue": {
+              "value": "h3",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-headingLevel",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "image": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-image",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "iconTheme": {
+            "jsonValue": {
+              "value": "transparent",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-iconTheme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<p>See how Allianz is building stronger, more financially secure communities by reducing barriers to economic inclusion in the Twin Cities and beyond, an approach we call Allianz for Tomorrow.</p>",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-body",
+                "fieldType": "Rich Text"
+              }
+            }
+          },
+          "heading": {
+            "jsonValue": {
+              "value": "Securing the future of our community",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-heading",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "theme": {
+            "jsonValue": {
+              "value": "primary-white",
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-theme",
+                "fieldType": "Single-Line Text"
+              }
+            }
+          },
+          "icon": {
+            "jsonValue": {
+              "value": {},
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-icon",
+                "fieldType": "Image"
+              }
+            }
+          },
+          "link": {
+            "jsonValue": {
+              "value": {
+                "href": "/why-allianz/community",
+                "text": "See how Allianz is giving back",
+                "target": "",
+                "querystring": "",
+                "anchor": "",
+                "linktype": "internal"
+              },
+              "metadata": {
+                "itemId": "bb53e8ef-5165-421b-8865-528419662954",
+                "fieldId": "receipt-link",
+                "fieldType": "General Link"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "supportingStatement": {
+      "jsonValue": {
+        "value": "<p>At Allianz, sustainability means securing a brighter, more financially secure future for all through our inclusive workplace culture, our commitment to inclusion, and our work in the community – to name just a few.</p>",
+        "metadata": {
+          "itemId": "61835e8b-d39a-4b89-b894-fd657a930487",
+          "fieldId": "receipt-body",
+          "fieldType": "Rich Text"
+        }
+      }
+    }
+  }
+}

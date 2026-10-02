@@ -1,0 +1,11 @@
+{
+  "component": "ShareholderReportAccess",
+  "nativeAdoption": "Pending verification; no native identities generated",
+  "authorFields": [
+    { "name": "heading", "label": "Shareholder reports heading", "type": "Single-Line Text", "variants": ["Default"] },
+    { "name": "reportsLink", "label": "View shareholder reports", "type": "General Link", "variants": ["Default", "NewYork"] }
+  ],
+  "parameters": ["RenderingIdentifier"],
+  "variants": ["Default", "NewYork"],
+  "serviceAcceptance": "Existing unavailable mock behavior retained"
+}

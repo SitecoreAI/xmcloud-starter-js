@@ -1,0 +1,12 @@
+/* Native Image fields match the source inline SVG icon dimensions and #3c3c3c fill. */
+.allianz-product-benefits .tileIcon img {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+
+@media (min-width: 704px) {
+  .allianz-product-benefits .tileIcon img {
+    width: 40px;
+  }
+}

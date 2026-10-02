@@ -1,0 +1,116 @@
+{
+  "component": "ProductIntroduction",
+  "sourceCapture": "99f6a498352a3445.html",
+  "sourceSha256": "f0fcb64881cee93da75b6e73b7b3ea9add9851e617a091c48a82db0dac338945",
+  "nativeReceiptSha256": "986cca8ba6f22ce1c59e814db2f5c712d429d779f9c0db52850382750fbc1db1",
+  "scope": "Source implementation only; no native adoption, assets, publishing or browser acceptance",
+  "authorFields": [
+    {
+      "name": "heading",
+      "label": "Section heading",
+      "type": "Single-Line Text"
+    },
+    {
+      "name": "body",
+      "label": "Introduction text",
+      "type": "Rich Text"
+    }
+  ],
+  "parameters": [
+    "RenderingIdentifier"
+  ],
+  "entries": [
+    {
+      "sourceKey": "route:/what-we-offer/annuities:component:3:AllianzRichText",
+      "native": {
+        "itemId": "7e20a874-bbef-4272-bcb1-8ff2be81c4c4",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzRichText 03",
+        "name": "AllianzRichText 03",
+        "templateId": "932869d2-552a-5963-984f-6fc3c1e8a4a8",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:53:55.333018+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "What is an annuity?"
+          },
+          {
+            "name": "subheading",
+            "value": ""
+          },
+          {
+            "name": "body",
+            "value": "<p>An annuity is a financial product that can help address some common financial concerns, from helping you save for retirement and providing a level of protection for your retirement savings to helping address inflation and longevity. Allianz® annuities offer the following features and benefits:</p>"
+          }
+        ]
+      },
+      "datasource": {
+        "id": "7e20a874-bbef-4272-bcb1-8ff2be81c4c4",
+        "heading": {
+          "jsonValue": {
+            "value": "What is an annuity?"
+          }
+        },
+        "body": {
+          "jsonValue": {
+            "value": "<p>An annuity is a financial product that can help address some common financial concerns, from helping you save for retirement and providing a level of protection for your retirement savings to helping address inflation and longevity. Allianz® annuities offer the following features and benefits:</p>"
+          }
+        }
+      }
+    },
+    {
+      "sourceKey": "route:/what-we-offer/annuities:component:6:AllianzRichText",
+      "native": {
+        "itemId": "65fad7e9-896f-4146-b005-920963fd6f67",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzRichText 06",
+        "name": "AllianzRichText 06",
+        "templateId": "932869d2-552a-5963-984f-6fc3c1e8a4a8",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:53:56.637070+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": "Explore our annuities"
+          },
+          {
+            "name": "subheading",
+            "value": ""
+          },
+          {
+            "name": "body",
+            "value": "<p>Allianz offers two types of annuities to help address your unique financial needs and retirement goals: fixed index annuities and registered index-linked annuities (RILAs).</p>"
+          }
+        ]
+      },
+      "datasource": {
+        "id": "65fad7e9-896f-4146-b005-920963fd6f67",
+        "heading": {
+          "jsonValue": {
+            "value": "Explore our annuities"
+          }
+        },
+        "body": {
+          "jsonValue": {
+            "value": "<p>Allianz offers two types of annuities to help address your unique financial needs and retirement goals: fixed index annuities and registered index-linked annuities (RILAs).</p>"
+          }
+        }
+      }
+    }
+  ],
+  "sourceRanges": [
+    {
+      "startLine": 654,
+      "endLine": 686
+    },
+    {
+      "startLine": 806,
+      "endLine": 838
+    }
+  ],
+  "sourceFragmentSha256": "246db00408fd54abaef4e666c7dc5629cb9b57559fe8aeefb9ed2bfce7ec03ab",
+  "sourceFragmentBase64": "PGRpdiBjbGFzcz0ibC1jb250YWluZXItLWZ1bGwtd2lkdGggIHQtYmctdHJhbnNwYXJlbnQgIGF4bFRpbGVDb2xsZWN0aW9uIj4NCgkJPGRpdiBjbGFzcz0ibC1ncmlkIGwtZ3JpZC0tbWF4LXdpZHRoICI+DQoNCgkJCQ0KDQoJCQk8ZGl2IGNsYXNzPSJsLWdyaWRfX3JvdyAgICAiPg0KCQkJCTxkaXYgY2xhc3M9ImwtZ3JpZF9fY29sdW1uLW1lZGl1bS0xMiI+DQoJCQkJCQk8YXJ0aWNsZSBjbGFzcz0ibS1heGxUaWxlIG1hdGNoLWhlaWdodCAgICAtaXMtLXN0YWNrZWQgIHQtYmctdHJhbnNwYXJlbnQgIj4KCQk8ZGl2IGNsYXNzPSJ0aWxlQ29udGVudCB1LXRleHQtY2VudGVyIj4KCgkJCTxkaXYgY2xhc3M9InRpbGVTdWJHcmlkX19jb250ZW50Ij4KCQkJCTxoZWFkZXI+CgkJCQkJPGRpdiBjbGFzcz0idGlsZUhlYWRpbmcgIj48SDI+V2hhdCBpcyBhbiBhbm51aXR5PzwvSDI+PC9kaXY+CgkJCQkJPGRpdiBjbGFzcz0idGlsZVN1YkhlYWRpbmcgIj48L2Rpdj4KCQkJCTwvaGVhZGVyPgoKCQkJCTxkaXYgY2xhc3M9InRpbGVCb2R5IHUtZm9udC1zaXplLXhsIj4KCQkJCQk8cD5BbiBhbm51aXR5IGlzIGEgZmluYW5jaWFsIHByb2R1Y3QgdGhhdCBjYW4gaGVscCBhZGRyZXNzIHNvbWUgY29tbW9uIGZpbmFuY2lhbCBjb25jZXJucywgZnJvbSBoZWxwaW5nIHlvdSBzYXZlIGZvciByZXRpcmVtZW50IGFuZCBwcm92aWRpbmcgYSBsZXZlbCBvZiBwcm90ZWN0aW9uIGZvciB5b3VyIHJldGlyZW1lbnQgc2F2aW5ncyB0byBoZWxwaW5nIGFkZHJlc3MgaW5mbGF0aW9uIGFuZCBsb25nZXZpdHkuIEFsbGlhbnomcmVnOyBhbm51aXRpZXMgb2ZmZXIgdGhlIGZvbGxvd2luZyBmZWF0dXJlcyBhbmQgYmVuZWZpdHM6PC9wPgoJCQkJPC9kaXY+CgoJCQk8L2Rpdj4KCQk8L2Rpdj4KCgk8L2FydGljbGU+Cg0KCQkJCTwvZGl2Pg0KCQkJPC9kaXY+DQoNCgkJCQ0KDQoJCTwvZGl2Pg0KCTwvZGl2Pg0KCQo8ZGl2IGNsYXNzPSJsLWNvbnRhaW5lci0tZnVsbC13aWR0aCAgdC1iZy1ibHVlLXNvZnQgIGF4bFRpbGVDb2xsZWN0aW9uIj4NCgkJPGRpdiBjbGFzcz0ibC1ncmlkIGwtZ3JpZC0tbWF4LXdpZHRoICI+DQoNCgkJCQ0KDQoJCQk8ZGl2IGNsYXNzPSJsLWdyaWRfX3JvdyAgICAiPg0KCQkJCTxkaXYgY2xhc3M9ImwtZ3JpZF9fY29sdW1uLW1lZGl1bS0xMiI+DQoJCQkJCQk8YXJ0aWNsZSBjbGFzcz0ibS1heGxUaWxlIG1hdGNoLWhlaWdodCAgICAtaXMtLXN0YWNrZWQgIHQtYmctdHJhbnNwYXJlbnQgIj4KCQk8ZGl2IGNsYXNzPSJ0aWxlQ29udGVudCB1LXRleHQtY2VudGVyIj4KCgkJCTxkaXYgY2xhc3M9InRpbGVTdWJHcmlkX19jb250ZW50Ij4KCQkJCTxoZWFkZXI+CgkJCQkJPGRpdiBjbGFzcz0idGlsZUhlYWRpbmcgIj48SDI+RXhwbG9yZSBvdXIgYW5udWl0aWVzPC9IMj48L2Rpdj4KCQkJCQk8ZGl2IGNsYXNzPSJ0aWxlU3ViSGVhZGluZyAiPjwvZGl2PgoJCQkJPC9oZWFkZXI+CgoJCQkJPGRpdiBjbGFzcz0idGlsZUJvZHkgdS1mb250LXNpemUteGwiPgoJCQkJCTxwPkFsbGlhbnogb2ZmZXJzIHR3byB0eXBlcyBvZiBhbm51aXRpZXMgdG8gaGVscCBhZGRyZXNzIHlvdXIgdW5pcXVlIGZpbmFuY2lhbCBuZWVkcyBhbmQgcmV0aXJlbWVudCBnb2FsczogZml4ZWQgaW5kZXggYW5udWl0aWVzIGFuZCByZWdpc3RlcmVkIGluZGV4LWxpbmtlZCBhbm51aXRpZXMgKFJJTEFzKS48L3A+CgkJCQk8L2Rpdj4KCgkJCTwvZGl2PgoJCTwvZGl2PgoKCTwvYXJ0aWNsZT4KDQoJCQkJPC9kaXY+DQoJCQk8L2Rpdj4NCg0KCQkJDQoNCgkJPC9kaXY+DQoJPC9kaXY+DQoJ"
+}

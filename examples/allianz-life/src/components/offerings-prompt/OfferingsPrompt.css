@@ -1,0 +1,12 @@
+/* Exact source circular Information icon: white 26/40px within 40/64px brand circle. */
+.allianz-modern .allianz-offerings-prompt .tileIcon > .allianz-field-icon {
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
+  align-self: center;
+}
+.allianz-offerings-prompt .tileIcon > img { width: 26px; height: auto; align-self: center; }
+@media (min-width: 704px) {
+  .allianz-modern .allianz-offerings-prompt .tileIcon > .allianz-field-icon { width: 40px; height: 40px; }
+  .allianz-offerings-prompt .tileIcon > img { width: 40px; }
+}

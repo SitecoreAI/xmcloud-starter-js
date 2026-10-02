@@ -1,0 +1,58 @@
+{
+  "component": "ProductFootnotes",
+  "sourceCapture": "99f6a498352a3445.html",
+  "sourceSha256": "f0fcb64881cee93da75b6e73b7b3ea9add9851e617a091c48a82db0dac338945",
+  "nativeReceiptSha256": "986cca8ba6f22ce1c59e814db2f5c712d429d779f9c0db52850382750fbc1db1",
+  "scope": "Source implementation only; no native adoption, assets, publishing or browser acceptance",
+  "authorFields": [
+    {
+      "name": "body",
+      "label": "Footnote text",
+      "type": "Rich Text"
+    }
+  ],
+  "parameters": [
+    "RenderingIdentifier"
+  ],
+  "entries": [
+    {
+      "sourceKey": "route:/what-we-offer/annuities:component:10:AllianzRichText",
+      "native": {
+        "itemId": "149ade89-a5ae-410b-b034-ad116b329d33",
+        "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzRichText 10",
+        "name": "AllianzRichText 10",
+        "templateId": "932869d2-552a-5963-984f-6fc3c1e8a4a8",
+        "version": 1,
+        "workflow": null,
+        "disposition": "created",
+        "verifiedAtUtc": "2026-10-01T08:53:57.610228+00:00",
+        "reviewedFields": [
+          {
+            "name": "heading",
+            "value": ""
+          },
+          {
+            "name": "body",
+            "value": "<p><sup>1</sup> Income for life is subject to following the terms of your contract.</p>\n<p><sup>2</sup> With the purchase of any additional-cost riders, the contract’s value will be reduced by the cost of the rider. This may result in a loss of principal and interest or credits in any year in which the contract does not earn interest or credits in an amount more than the rider fee. </p>\n<hr>"
+          }
+        ]
+      },
+      "datasource": {
+        "id": "149ade89-a5ae-410b-b034-ad116b329d33",
+        "body": {
+          "jsonValue": {
+            "value": "<p><sup>1</sup> Income for life is subject to following the terms of your contract.</p>\n<p><sup>2</sup> With the purchase of any additional-cost riders, the contract’s value will be reduced by the cost of the rider. This may result in a loss of principal and interest or credits in any year in which the contract does not earn interest or credits in an amount more than the rider fee. </p>\n<hr>"
+          }
+        }
+      }
+    }
+  ],
+  "sourceRanges": [
+    {
+      "startLine": 1054,
+      "endLine": 1075
+    }
+  ],
+  "sourceFragmentSha256": "bde8a138bebb4ad3a3e4088f6f827d54b26b9e580b130b36cccbae46d976634f",
+  "sourceFragmentBase64": "PGRpdiBjbGFzcz0ibC1jb250YWluZXItLWZ1bGwtd2lkdGggIHQtYmctZ3JleS1tdXRlZCAgYXhsVGlsZUNvbGxlY3Rpb24iPg0KCQk8ZGl2IGNsYXNzPSJsLWdyaWQgbC1ncmlkLS1tYXgtd2lkdGggIj4NCg0KCQkJDQoNCgkJCTxkaXYgY2xhc3M9ImwtZ3JpZF9fcm93ICAgICI+DQoJCQkJPGRpdiBjbGFzcz0ibC1ncmlkX19jb2x1bW4tbWVkaXVtLTEyIj4NCgkJCQkJCTxkaXYgY2xhc3M9Im8tcmljaFRleHRFZGl0b3JfX3dyYXBwZXIiPg0KCQk8cD48c3VwPjE8L3N1cD4mbmJzcDtJbmNvbWUgZm9yIGxpZmUgaXMgc3ViamVjdCB0byBmb2xsb3dpbmcgdGhlIHRlcm1zIG9mIHlvdXIgY29udHJhY3QuPC9wPgo8cD48c3VwPjI8L3N1cD4gV2l0aCB0aGUgcHVyY2hhc2Ugb2YgYW55IGFkZGl0aW9uYWwtY29zdCByaWRlcnMsIHRoZSBjb250cmFjdCZyc3F1bztzIHZhbHVlIHdpbGwgYmUgcmVkdWNlZCBieSB0aGUgY29zdCBvZiB0aGUgcmlkZXIuIFRoaXMgbWF5IHJlc3VsdCBpbiBhIGxvc3Mgb2YgcHJpbmNpcGFsIGFuZCBpbnRlcmVzdCBvciBjcmVkaXRzIGluIGFueSB5ZWFyIGluIHdoaWNoIHRoZSBjb250cmFjdCBkb2VzIG5vdCBlYXJuIGludGVyZXN0IG9yIGNyZWRpdHMgaW4gYW4gYW1vdW50IG1vcmUmbmJzcDt0aGFuIHRoZSByaWRlciBmZWUuJm5ic3A7PC9wPgo8aHIgLz4NCgk8L2Rpdj4NCg0KCQkJCTwvZGl2Pg0KCQkJPC9kaXY+DQoNCgkJCQ0KDQoJCTwvZGl2Pg0KCTwvZGl2Pg0KCiAgICAgICAg"
+}

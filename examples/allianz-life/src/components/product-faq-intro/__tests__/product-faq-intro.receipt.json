@@ -1,0 +1,112 @@
+{
+  "source": "ANNUITIES-NATIVE-DRAFT-RECEIPT.json",
+  "status": "native draft identity and heading; canonical icon remains pendingContentHub",
+  "datasource": {
+    "id": "c6260944-ffe4-4af6-9077-d1e5a59b36e1",
+    "heading": {
+      "jsonValue": {
+        "value": "Frequently asked questions"
+      }
+    },
+    "icon": {
+      "jsonValue": {
+        "value": {}
+      }
+    }
+  },
+  "pendingContentHub": {
+    "field": "icon",
+    "sourceTitle": "Question",
+    "nativeSourceField": "icon",
+    "binaryDelivered": false,
+    "sourceReviewedPlanEntry": {
+      "sourceKey": "route:/what-we-offer/annuities:component:8:AllianzCardGrid:entry:1",
+      "name": "icon",
+      "value": "<image mediaid=\"{42314E16-D0B6-56FF-878A-0A1CEEF1101B}\" alt=\"Question\" />",
+      "fieldId": "233f9efc-e990-5e8c-8f9c-7db449482d49",
+      "fieldType": "Image",
+      "reason": "Await verified Content Hub mapping and actual native DAM image-field contract",
+      "sourceMediaCandidateIds": [
+        "42314e16-d0b6-56ff-878a-0a1ceef1101b"
+      ]
+    }
+  },
+  "nativeBindings": {
+    "unusedGenericRoot": {
+      "itemId": "c8b126fd-337f-48ec-80a3-4aa490493f12",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 08",
+      "name": "AllianzCardGrid 08",
+      "templateId": "aff4b6a4-d6d9-5d78-9647-6c29a0473f76",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:53:53.041159+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": ""
+        },
+        {
+          "name": "primaryLink",
+          "value": ""
+        }
+      ]
+    },
+    "intendedDatasource": {
+      "itemId": "c6260944-ffe4-4af6-9077-d1e5a59b36e1",
+      "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/Data/AllianzCardGrid 08/Entry 01",
+      "name": "Entry 01",
+      "templateId": "48f9181f-a7f4-5481-99ba-d88967608d60",
+      "version": 1,
+      "workflow": null,
+      "disposition": "created",
+      "verifiedAtUtc": "2026-10-01T08:54:15.062380+00:00",
+      "reviewedFields": [
+        {
+          "name": "heading",
+          "value": "Frequently asked questions"
+        },
+        {
+          "name": "subheading",
+          "value": ""
+        },
+        {
+          "name": "body",
+          "value": ""
+        },
+        {
+          "name": "image",
+          "value": ""
+        },
+        {
+          "name": "iconTheme",
+          "value": "primary-brand"
+        },
+        {
+          "name": "link",
+          "value": ""
+        },
+        {
+          "name": "links",
+          "value": ""
+        },
+        {
+          "name": "theme",
+          "value": "transparent"
+        },
+        {
+          "name": "headingLevel",
+          "value": "h3"
+        },
+        {
+          "name": "alphanumeral",
+          "value": ""
+        }
+      ]
+    }
+  }
+}

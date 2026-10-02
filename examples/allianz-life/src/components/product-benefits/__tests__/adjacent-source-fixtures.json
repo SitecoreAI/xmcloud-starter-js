@@ -1,0 +1,138 @@
+[
+  {
+    "provenance": {
+      "source": "fdef33a3e4f9680d.html",
+      "nativeStatus": "No native receipt supplied for this adjacent route; IDs are test-reference identifiers only."
+    },
+    "datasource": {
+      "children": {
+        "total": 3,
+        "pageInfo": {
+          "hasNext": false,
+          "endCursor": null
+        },
+        "results": [
+          {
+            "id": "source-only-fia-benefit-1",
+            "fieldCollection": [
+              {
+                "name": "heading",
+                "jsonValue": {
+                  "value": "Growth potential"
+                }
+              },
+              {
+                "name": "body",
+                "jsonValue": {
+                  "value": "<p>FIAs offer the potential to earn interest based on changes in an <a href=\"/what-we-offer/Index-options\">external index</a>&nbsp;&ndash; or a fixed interest rate, if you prefer. And the interest earned grows tax-deferred.</p>"
+                }
+              }
+            ]
+          },
+          {
+            "id": "source-only-fia-benefit-2",
+            "fieldCollection": [
+              {
+                "name": "heading",
+                "jsonValue": {
+                  "value": "Protection"
+                }
+              },
+              {
+                "name": "body",
+                "jsonValue": {
+                  "value": "<p>Because you&rsquo;re not actually buying any stocks or shares of an index, the money in your FIA is not at risk due to market losses.</p>"
+                }
+              }
+            ]
+          },
+          {
+            "id": "source-only-fia-benefit-3",
+            "fieldCollection": [
+              {
+                "name": "heading",
+                "jsonValue": {
+                  "value": "Flexibility"
+                }
+              },
+              {
+                "name": "body",
+                "jsonValue": {
+                  "value": "<p>Allianz&reg; FIAs have a variety of crediting methods. They also offer flexible options for receiving income. And some of our FIAs even offer riders (either built-in or at an additional cost) to help you address specific needs. </p>"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "provenance": {
+      "source": "dd39ae6c9a975414.html",
+      "nativeStatus": "No native receipt supplied for this adjacent route; IDs are test-reference identifiers only."
+    },
+    "datasource": {
+      "children": {
+        "total": 3,
+        "pageInfo": {
+          "hasNext": false,
+          "endCursor": null
+        },
+        "results": [
+          {
+            "id": "source-only-rila-benefit-1",
+            "fieldCollection": [
+              {
+                "name": "heading",
+                "jsonValue": {
+                  "value": "A level of protection"
+                }
+              },
+              {
+                "name": "body",
+                "jsonValue": {
+                  "value": "<p>You&rsquo;re looking for some protection from market volatility and loss.</p>"
+                }
+              }
+            ]
+          },
+          {
+            "id": "source-only-rila-benefit-2",
+            "fieldCollection": [
+              {
+                "name": "heading",
+                "jsonValue": {
+                  "value": "Growth potential"
+                }
+              },
+              {
+                "name": "body",
+                "jsonValue": {
+                  "value": "<p>You want an opportunity to grow your retirement savings, while still being mindful of risk.</p>"
+                }
+              }
+            ]
+          },
+          {
+            "id": "source-only-rila-benefit-3",
+            "fieldCollection": [
+              {
+                "name": "heading",
+                "jsonValue": {
+                  "value": "Flexibility"
+                }
+              },
+              {
+                "name": "body",
+                "jsonValue": {
+                  "value": "<p>You want a customizable solution that&rsquo;s appropriate for you.</p>"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+]

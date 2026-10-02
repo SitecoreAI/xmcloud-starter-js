@@ -1,0 +1,754 @@
+{
+  "datasources": [
+    {
+      "id": "d0495cc5-7b04-415f-9f25-5b3a5b8e9368",
+      "primaryLink": {
+        "jsonValue": {
+          "value": {
+            "href": "",
+            "text": ""
+          },
+          "metadata": {
+            "itemId": "d0495cc5-7b04-415f-9f25-5b3a5b8e9368",
+            "fieldId": "receipt-primaryLink",
+            "fieldType": "General Link"
+          }
+        }
+      },
+      "subheading": {
+        "jsonValue": {
+          "value": "",
+          "metadata": {
+            "itemId": "d0495cc5-7b04-415f-9f25-5b3a5b8e9368",
+            "fieldId": "receipt-subheading",
+            "fieldType": "Rich Text"
+          }
+        }
+      },
+      "body": {
+        "jsonValue": {
+          "value": "",
+          "metadata": {
+            "itemId": "d0495cc5-7b04-415f-9f25-5b3a5b8e9368",
+            "fieldId": "receipt-body",
+            "fieldType": "Rich Text"
+          }
+        }
+      },
+      "heading": {
+        "jsonValue": {
+          "value": "Allianz is driven by the vision that our customers should be able to live their lives with confidence. That commitment is at the heart of everything we do, from our values-driven, inclusive culture, to our innovative financial products, to our responsible investment philosophy.",
+          "metadata": {
+            "itemId": "d0495cc5-7b04-415f-9f25-5b3a5b8e9368",
+            "fieldId": "receipt-heading",
+            "fieldType": "Single-Line Text"
+          }
+        }
+      },
+      "children": {
+        "total": 3,
+        "pageInfo": {
+          "hasNext": false,
+          "endCursor": null
+        },
+        "results": [
+          {
+            "id": "441f978c-8168-43a7-b469-e3528a860590",
+            "subheading": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-subheading",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "alphanumeral": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-alphanumeral",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "headingLevel": {
+              "jsonValue": {
+                "value": "h4",
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-headingLevel",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "image": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-image",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "iconTheme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-iconTheme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": "As a leading provider of annuities and life insurance, we have the experience to help you prepare for retirement and life’s uncertainties. We’re also known for innovative financial products that help address today’s risks to retirement security, such as longevity, inflation, and market volatility.",
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-body",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "heading": {
+              "jsonValue": {
+                "value": "Work with an industry leader",
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-heading",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "theme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-theme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "icon": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-icon",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "link": {
+              "jsonValue": {
+                "value": {
+                  "href": "",
+                  "text": ""
+                },
+                "metadata": {
+                  "itemId": "441f978c-8168-43a7-b469-e3528a860590",
+                  "fieldId": "receipt-link",
+                  "fieldType": "General Link"
+                }
+              }
+            }
+          },
+          {
+            "id": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+            "subheading": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-subheading",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "alphanumeral": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-alphanumeral",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "headingLevel": {
+              "jsonValue": {
+                "value": "h4",
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-headingLevel",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "image": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-image",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "iconTheme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-iconTheme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": "Our more than $154 billion portfolio is 98% investment-grade securities – and we manage our investments to achieve results over time, not overnight.<sup>1</sup> This helps better position us to weather all market conditions and deliver dependable, long-term results.",
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-body",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "heading": {
+              "jsonValue": {
+                "value": "Depend on us for the long term",
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-heading",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "theme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-theme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "icon": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-icon",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "link": {
+              "jsonValue": {
+                "value": {
+                  "href": "",
+                  "text": ""
+                },
+                "metadata": {
+                  "itemId": "93b3cd82-abbe-42d0-afcf-8ef6ae0c3128",
+                  "fieldId": "receipt-link",
+                  "fieldType": "General Link"
+                }
+              }
+            }
+          },
+          {
+            "id": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+            "subheading": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-subheading",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "alphanumeral": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-alphanumeral",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "headingLevel": {
+              "jsonValue": {
+                "value": "h4",
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-headingLevel",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "image": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-image",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "iconTheme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-iconTheme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": "Hedging and investment management services are provided by Allianz Investment Management U.S. LLC, a wholly owned subsidiary of Allianz Life.<sup>2</sup> This experienced team of investment professionals provides active diversification, strong risk modeling, and extensive capabilities that allow us to monitor and control risk in real time.",
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-body",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "heading": {
+              "jsonValue": {
+                "value": "Rely on our risk-management experience",
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-heading",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "theme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-theme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "icon": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-icon",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "link": {
+              "jsonValue": {
+                "value": {
+                  "href": "",
+                  "text": ""
+                },
+                "metadata": {
+                  "itemId": "b8178bb5-1eb6-48ae-8de7-03f0f09d1d4b",
+                  "fieldId": "receipt-link",
+                  "fieldType": "General Link"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "b33094f2-4d96-4e24-861c-aac7c4ae0e11",
+      "primaryLink": {
+        "jsonValue": {
+          "value": {
+            "href": "",
+            "text": ""
+          },
+          "metadata": {
+            "itemId": "b33094f2-4d96-4e24-861c-aac7c4ae0e11",
+            "fieldId": "receipt-primaryLink",
+            "fieldType": "General Link"
+          }
+        }
+      },
+      "subheading": {
+        "jsonValue": {
+          "value": "",
+          "metadata": {
+            "itemId": "b33094f2-4d96-4e24-861c-aac7c4ae0e11",
+            "fieldId": "receipt-subheading",
+            "fieldType": "Rich Text"
+          }
+        }
+      },
+      "body": {
+        "jsonValue": {
+          "value": "",
+          "metadata": {
+            "itemId": "b33094f2-4d96-4e24-861c-aac7c4ae0e11",
+            "fieldId": "receipt-body",
+            "fieldType": "Rich Text"
+          }
+        }
+      },
+      "heading": {
+        "jsonValue": {
+          "value": "",
+          "metadata": {
+            "itemId": "b33094f2-4d96-4e24-861c-aac7c4ae0e11",
+            "fieldId": "receipt-heading",
+            "fieldType": "Single-Line Text"
+          }
+        }
+      },
+      "children": {
+        "total": 3,
+        "pageInfo": {
+          "hasNext": false,
+          "endCursor": null
+        },
+        "results": [
+          {
+            "id": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+            "subheading": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-subheading",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "alphanumeral": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-alphanumeral",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "headingLevel": {
+              "jsonValue": {
+                "value": "h4",
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-headingLevel",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "image": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-image",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "iconTheme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-iconTheme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": "Since our founding in 1896, we’ve established a long track record of keeping our promises. That’s why more than 1.2 million Americans rely on us today to help them achieve their financial and retirement goals.",
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-body",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "heading": {
+              "jsonValue": {
+                "value": "Benefit from our long history",
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-heading",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "theme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-theme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "icon": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-icon",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "link": {
+              "jsonValue": {
+                "value": {
+                  "href": "",
+                  "text": ""
+                },
+                "metadata": {
+                  "itemId": "e30e38ec-91ba-4146-bdfe-42e5251da118",
+                  "fieldId": "receipt-link",
+                  "fieldType": "General Link"
+                }
+              }
+            }
+          },
+          {
+            "id": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+            "subheading": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-subheading",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "alphanumeral": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-alphanumeral",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "headingLevel": {
+              "jsonValue": {
+                "value": "h4",
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-headingLevel",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "image": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-image",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "iconTheme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-iconTheme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": "Consistently high ratings from independent financial rating agencies – Standard &amp; Poor’s (AA, Very Strong), Moody’s Investors Service (Aa3), and A.M. Best (A+, Superior) – reflect our high liquidity, stability, integrity, and strength.",
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-body",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "heading": {
+              "jsonValue": {
+                "value": "Feel confident in our strength",
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-heading",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "theme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-theme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "icon": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-icon",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "link": {
+              "jsonValue": {
+                "value": {
+                  "href": "/about/financial-ratings",
+                  "text": "Learn more",
+                  "target": "",
+                  "querystring": "",
+                  "anchor": "",
+                  "linktype": "internal"
+                },
+                "metadata": {
+                  "itemId": "2a26d52e-21b8-4f76-8976-ba17b33c1894",
+                  "fieldId": "receipt-link",
+                  "fieldType": "General Link"
+                }
+              }
+            }
+          },
+          {
+            "id": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+            "subheading": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-subheading",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "alphanumeral": {
+              "jsonValue": {
+                "value": "",
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-alphanumeral",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "headingLevel": {
+              "jsonValue": {
+                "value": "h4",
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-headingLevel",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "image": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-image",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "iconTheme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-iconTheme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "body": {
+              "jsonValue": {
+                "value": "We’re proud to be a part of Allianz SE, a global financial services group founded in Germany in 1890. With more than 97 million customers, today Allianz SE is one of the largest companies, insurers, and asset managers in the world.",
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-body",
+                  "fieldType": "Rich Text"
+                }
+              }
+            },
+            "heading": {
+              "jsonValue": {
+                "value": "Join the Allianz® global family",
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-heading",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "theme": {
+              "jsonValue": {
+                "value": "transparent",
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-theme",
+                  "fieldType": "Single-Line Text"
+                }
+              }
+            },
+            "icon": {
+              "jsonValue": {
+                "value": {},
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-icon",
+                  "fieldType": "Image"
+                }
+              }
+            },
+            "link": {
+              "jsonValue": {
+                "value": {
+                  "href": "",
+                  "text": ""
+                },
+                "metadata": {
+                  "itemId": "b784a6cd-ecae-44b8-8b02-26f7cc4989b7",
+                  "fieldId": "receipt-link",
+                  "fieldType": "General Link"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

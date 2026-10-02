@@ -1,0 +1,11 @@
+{
+  "component": "ProspectusIntroduction",
+  "nativeAdoption": "Pending verification; no native identities generated",
+  "authorFields": [
+    { "name": "introductoryCopy", "label": "Prospectus introductory guidance", "type": "Rich Text", "variants": ["Default"] },
+    { "name": "contractNotice", "label": "Contract eligibility notice", "type": "Single-Line Text", "variants": ["ContractNotice", "ArchivedContractNotice"] }
+  ],
+  "parameters": ["RenderingIdentifier"],
+  "variants": ["Default", "ContractNotice", "ArchivedContractNotice"],
+  "scope": "Introductory guidance or contract eligibility copy only"
+}

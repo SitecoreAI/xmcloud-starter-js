@@ -1,0 +1,10 @@
+query ExecutiveBiographyData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    name: field(name: "name") { jsonValue }
+    role: field(name: "role") { jsonValue }
+    portrait: field(name: "portrait") { jsonValue }
+    biography: field(name: "biography") { jsonValue }
+    portraitLink: field(name: "portraitLink") { jsonValue }
+  }
+}

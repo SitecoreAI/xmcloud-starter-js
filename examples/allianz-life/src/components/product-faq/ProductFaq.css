@@ -1,0 +1,8 @@
+/* Source CSS sizes and spaces the panels. React owns their visibility. */
+.allianz-product-faq .c-accordion__item-content[hidden] {
+  display: none;
+}
+
+.allianz-product-faq .c-accordion__item-content:not([hidden]) {
+  max-height: none;
+}

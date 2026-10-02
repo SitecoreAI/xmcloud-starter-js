@@ -1,0 +1,13 @@
+query ProductTypeChoicesData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    children {
+      total
+      pageInfo { hasNext endCursor }
+      results {
+        id
+        fieldCollection: fields { name jsonValue }
+      }
+    }
+  }
+}

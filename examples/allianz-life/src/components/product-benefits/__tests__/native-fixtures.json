@@ -1,0 +1,286 @@
+{
+  "twoUp": {
+    "id": "a4d02aa9-3981-42b0-990b-0b403b3baa05",
+    "children": {
+      "total": 2,
+      "pageInfo": {
+        "hasNext": false,
+        "endCursor": null
+      },
+      "results": [
+        {
+          "id": "46eaa476-4ba1-455d-840b-733866fbe9ce",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "Accumulation potential"
+              }
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "Some annuities have the potential to earn interest or credits based on the growth of an external index (we call this “indexed interest”). You can choose from one or more external indexes and crediting methods, depending on your financial goals. Other types of annuities offer growth potential through variable investment options."
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "links",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": ""
+              }
+            }
+          ]
+        },
+        {
+          "id": "89f49523-5283-4fd0-ab2b-17d067bb10d9",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "Tax-deferred growth"
+              }
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "You don’t have to pay income taxes on the earnings in your contract until you take money out of your annuity. Tax deferral may help the money in your annuity compound over time, for even greater accumulation potential."
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "links",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "twoUpFinal": {
+    "id": "0c113246-9fc9-4721-a7db-988be486fe8f",
+    "children": {
+      "total": 2,
+      "pageInfo": {
+        "hasNext": false,
+        "endCursor": null
+      },
+      "results": [
+        {
+          "id": "1ad7a319-2807-49ee-b45e-f540af45e3a6",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "Level of protection"
+              }
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "Annuities can help protect the money you place in your contract (the “principal”). Some annuities protect all of your principal from market downturns, while others offer greater potential in exchange for some market risk, including the risk of losing principal."
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "links",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": ""
+              }
+            }
+          ]
+        },
+        {
+          "id": "03fc772e-c6d0-47da-b21b-454c977ff818",
+          "fieldCollection": [
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "Retirement income"
+              }
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "After a period of time specified by your contract, annuities provide guaranteed retirement income in the form of annuity payments for as long as you live.<sup>1</sup> Some annuities let you choose from a variety of income options – and some even offer the opportunity for income increases in retirement. These options may either be built in to the contract or optional and available for an additional cost.<sup>2</sup>"
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "links",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

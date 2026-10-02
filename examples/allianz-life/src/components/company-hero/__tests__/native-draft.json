@@ -1,0 +1,73 @@
+{
+  "datasources": [
+    {
+      "id": "000ca06c-975b-40db-ade1-a85a855920b0",
+      "primaryLink": {
+        "jsonValue": {
+          "value": {
+            "href": "",
+            "text": ""
+          },
+          "metadata": {
+            "itemId": "000ca06c-975b-40db-ade1-a85a855920b0",
+            "fieldId": "receipt-primaryLink",
+            "fieldType": "General Link"
+          }
+        }
+      },
+      "desktopImage": {
+        "jsonValue": {
+          "value": {},
+          "metadata": {
+            "itemId": "000ca06c-975b-40db-ade1-a85a855920b0",
+            "fieldId": "receipt-desktopImage",
+            "fieldType": "Image"
+          }
+        }
+      },
+      "secondaryLink": {
+        "jsonValue": {
+          "value": {
+            "href": "",
+            "text": ""
+          },
+          "metadata": {
+            "itemId": "000ca06c-975b-40db-ade1-a85a855920b0",
+            "fieldId": "receipt-secondaryLink",
+            "fieldType": "General Link"
+          }
+        }
+      },
+      "body": {
+        "jsonValue": {
+          "value": "Our mission is simple: We secure your future.",
+          "metadata": {
+            "itemId": "000ca06c-975b-40db-ade1-a85a855920b0",
+            "fieldId": "receipt-body",
+            "fieldType": "Rich Text"
+          }
+        }
+      },
+      "heading": {
+        "jsonValue": {
+          "value": "Why Allianz",
+          "metadata": {
+            "itemId": "000ca06c-975b-40db-ade1-a85a855920b0",
+            "fieldId": "receipt-heading",
+            "fieldType": "Single-Line Text"
+          }
+        }
+      },
+      "mobileImage": {
+        "jsonValue": {
+          "value": {},
+          "metadata": {
+            "itemId": "000ca06c-975b-40db-ade1-a85a855920b0",
+            "fieldId": "receipt-mobileImage",
+            "fieldType": "Image"
+          }
+        }
+      }
+    }
+  ]
+}

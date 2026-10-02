@@ -1,0 +1,8 @@
+/* Existing .h5 supplies the exact responsive source typography. */
+.expert-biography .expert-biography-role {
+  margin: 24px 0;
+}
+
+.expert-biography .expert-biography-role > p {
+  margin: 0;
+}
