@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
+import { parse } from 'graphql';
 import { component, contract, fixture, witness, render, wire, field, editingIds, links, loadSource, sourceRoot } from './runtime.mjs';
 
 const { Default } = component('newsroom-public-relations', 'NewsroomPublicRelations');
@@ -109,13 +110,43 @@ test('visitor Rich Text reconciliation preserves field/markup metadata and never
   assert.equal(safeNewsroomRichText(encodedProtocol, false).value, '<a href="#service-unavailable">Label</a>');
 });
 
-test('PR compact root/reference query is proposed, separate, and has no descendant/template identity logic', () => {
+test('PR query returns both ordered contact references and native selection metadata consumed by its adapter', () => {
   const query = fs.readFileSync(path.join(sourceRoot, 'components/newsroom-public-relations/newsroom-public-relations.graphql'), 'utf8');
-  assert.match(query, /fieldCollection: fields \{ name jsonValue \}/);
-  assert.match(query, /contactReferences: field\(name: "contacts"\)/);
-  assert.match(query, /MultilistField[\s\S]+targetItems/);
+  const fields = parse(query).definitions[0].selectionSet.selections[0].selectionSet.selections;
+  const contacts = fields.find((selection) => selection.alias?.value === 'contacts');
+  const references = fields.find((selection) => selection.alias?.value === 'contactReferences');
+  assert.equal(contacts.arguments[0].value.value, 'contacts');
+  assert.deepEqual(contacts.selectionSet.selections.map(({ name }) => name.value), ['jsonValue']);
+  assert.equal(references.arguments[0].value.value, 'contacts');
+  assert.equal(references.selectionSet.selections[0].typeCondition.name.value, 'MultilistField');
+  const target = references.selectionSet.selections[0].selectionSet.selections[0];
+  assert.equal(target.name.value, 'targetItems');
+  assert.deepEqual(target.selectionSet.selections.map((selection) => selection.alias?.value ?? selection.name.value),
+    ['id', 'name', 'role', 'telephone', 'email']);
   assert.doesNotMatch(query, /children|parent|url|[\da-f]{8}-[\da-f]{4}-/i);
   const author = JSON.parse(fs.readFileSync(path.join(sourceRoot, 'components/newsroom-public-relations/AUTHOR-CONTRACT.json'), 'utf8'));
   assert.match(author.status, /pending/);
   assert.deepEqual(author.contract.fields.map(({ name }) => name), ['heading', 'intro', 'contacts']);
+});
+
+test('actual native telephone serialization keeps visitor contact actions mocked and editing fields exact', () => {
+  const contactReferences = { targetItems: data.contactReferences.targetItems.map((item) => ({ ...item,
+    telephone: { jsonValue: { ...item.telephone.jsonValue, value: {
+      ...item.telephone.jsonValue.value, href: `http://${item.telephone.jsonValue.value.href}`,
+      url: item.telephone.jsonValue.value.href, linktype: 'external',
+    } } },
+  })) };
+  const native = { ...data, contactReferences };
+  const before = JSON.stringify(native);
+  assert.deepEqual(links(render(Default, native)), Array(5).fill('#service-unavailable'));
+  assert.deepEqual(links(render(Default, native, true)), ['https://www.linkedin.com/company/allianz-life',
+    'http://tel:763-765-7160', 'mailto:brett.weinberg@allianzlife.com',
+    'http://tel:763-765-5106', 'mailto:claire.woit@allianzlife.com']);
+  assert.deepEqual(editingIds(render(Default, native, true)), editingIds(render(Default, data, true)));
+  assert.equal(JSON.stringify(native), before);
+  const cleared = { ...native, contactReferences: { targetItems: contactReferences.targetItems.map((item) => ({ ...item,
+    telephone: { jsonValue: { ...item.telephone.jsonValue, value: { ...item.telephone.jsonValue.value, href: '', text: '' } } },
+  })) } };
+  assert.deepEqual(links(render(Default, cleared)), Array(3).fill('#service-unavailable'));
+  assert.equal(render(Default, wire(native)), render(Default, native));
 });

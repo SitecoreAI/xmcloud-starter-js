@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
+import { parse } from 'graphql';
 import { component, field, render, editingIds, links } from '../../press-release-archive/__tests__/runtime.mjs';
 import { collected, evidence, release, normalize } from '../../press-release-archive/__tests__/release-fixtures.mjs';
 const { Default } = component('newsroom-featured-update', 'NewsroomFeaturedUpdate');
@@ -45,4 +46,19 @@ test('featured label/body/image and referenced title retain real empty-field edi
   const external = { ...empty, body: field('feature-body', 'Rich Text', '<p><a href="https://www.linkedin.com/company/allianz-life" target="_blank">LinkedIn</a></p>') };
   assert.deepEqual(links(render(Default, external)), ['#service-unavailable']);
   assert.deepEqual(links(render(Default, external, true)), ['https://www.linkedin.com/company/allianz-life']);
+});
+
+test('featured query uses the lookup projection and keeps native selection metadata beside the referenced release', () => {
+  const query = fs.readFileSync(new URL('../newsroom-featured-update.graphql', import.meta.url), 'utf8');
+  const fields = parse(query).definitions[0].selectionSet.selections[0].selectionSet.selections;
+  assert.deepEqual(fields.map((selection) => selection.alias?.value ?? selection.name.value), ['id', 'label', 'body', 'image', 'release']);
+  const selection = fields.find((item) => item.alias?.value === 'release');
+  assert.equal(selection.arguments[0].value.value, 'release');
+  assert.equal(selection.selectionSet.selections[0].name.value, 'jsonValue');
+  const lookup = selection.selectionSet.selections[1];
+  assert.equal(lookup.typeCondition.name.value, 'LookupField');
+  assert.equal(lookup.selectionSet.selections[0].name.value, 'targetItem');
+  assert.deepEqual(lookup.selectionSet.selections[0].selectionSet.selections.map((item) => item.alias?.value ?? item.name.value),
+    ['id', 'title', 'summary', 'releaseDate', 'parent']);
+  assert.doesNotMatch(query, /DroplinkField|children|targetItems/);
 });
