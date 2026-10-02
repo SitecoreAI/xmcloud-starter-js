@@ -6,7 +6,7 @@ const require = createRequire(import.meta.url);
 const ts = require('typescript');
 const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
-const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
+const { SitecoreProvider, ComponentPropsContext } = require('@sitecore-content-sdk/nextjs');
 export const sourceRoot = fileURLToPath(new URL('../../..', import.meta.url));
 const modules = new Map();
 export function loadSource(filename) {
@@ -36,12 +36,13 @@ export const component = (folder, name) => loadSource(path.join(sourceRoot, `com
 export const contract = (folder) => loadSource(path.join(sourceRoot, `components/${folder}/${folder}.props.ts`));
 export const fixture = (folder) => JSON.parse(fs.readFileSync(path.join(sourceRoot, `components/${folder}/__tests__/native-draft.json`), 'utf8'));
 export const witness = (folder) => fs.readFileSync(path.join(sourceRoot, `components/${folder}/__tests__/${folder}.source.html`), 'utf8');
-export function render(Component, datasource, isEditing = false, params = {}) {
+export function render(Component, datasource, isEditing = false, params = {}, automaticProps) {
   return renderToStaticMarkup(React.createElement(SitecoreProvider, {
     page: { mode: { isEditing, isNormal: !isEditing, isPreview: false }, siteName: 'allianz-life',
       layout: { sitecore: { context: {}, route: { name: 'Why Allianz', fields: {}, placeholders: {} } } } },
     api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
-  }, React.createElement(Component, { params, fields: { data: { datasource } } })));
+  }, React.createElement(ComponentPropsContext, { value: automaticProps ? { 'test-rendering': automaticProps } : {} },
+    React.createElement(Component, { params, rendering: { uid: 'test-rendering', componentName: 'TestComponent', params }, fields: { data: { datasource } } }))));
 }
 export const wire = (entry) => ({ id: entry.id, ...(entry.children ? { children: { ...entry.children, results: entry.children.results.map(wire) } } : {}),
   fieldCollection: Object.entries(entry).filter(([name]) => !['id', 'children'].includes(name))

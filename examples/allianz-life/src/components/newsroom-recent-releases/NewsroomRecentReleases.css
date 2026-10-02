@@ -9,3 +9,11 @@
   z-index: 1;
 }
 .allianz-newsroom-recent-releases .m-card__body a { position: relative; z-index: 2; }
+
+/* Article introduction headings are copy inside the source recent-release card.
+   Keep the stored HTML and inherit the card body's source 16/24 typography. */
+.allianz-newsroom-recent-releases .allianz-newsroom-recent-releases__summary :where(p, div, h1, h2, h3, h4, h5, h6) {
+  font: inherit;
+  letter-spacing: inherit;
+  margin: 0;
+}

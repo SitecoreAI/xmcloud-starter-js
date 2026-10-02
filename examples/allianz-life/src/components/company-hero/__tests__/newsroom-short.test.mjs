@@ -35,6 +35,29 @@ test('NewsroomShort matches the canonical short-cover hero and keeps the existin
   assert.match(css, /max-height: 300px/);
 });
 
+test('NewsroomShort keeps blank and authored image alt values with the installed SDK', () => {
+  for (const imageValue of [
+    { src: data.image.jsonValue.value.src, alt: '' },
+    { src: data.image.jsonValue.value.src, alt: 'Allianz Life newsroom banner' },
+    { src: data.image.jsonValue.value.src },
+  ]) {
+    const authored = { ...data, image: field('short-image', 'Image', imageValue) };
+    const imageField = authored.image.jsonValue;
+    const before = structuredClone(imageField);
+    for (const datasource of [authored, wire(authored)]) {
+      assert.equal(companyHeroFields(datasource).image.jsonValue, imageField);
+      for (const isEditing of [false, true]) {
+        const html = render(NewsroomShort, datasource, isEditing);
+        const image = /<img\b[^>]*>/.exec(html)?.[0];
+        assert.ok(image, 'the authored image renders');
+        assert.ok(image.includes(`alt="${imageValue.alt ?? ''}"`), 'the image has its authored or empty alt attribute');
+        if (isEditing) assert.deepEqual(editingIds(html), ['short-heading', 'short-image', 'short-subtitle']);
+      }
+    }
+    assert.deepEqual(imageField, before, 'the native field and editing metadata are unchanged');
+  }
+});
+
 test('NewsroomShort retains clears and native edit metadata, and does not nest Rich Text paragraphs', () => {
   const cleared = { ...data, heading: field('short-heading', 'Single-Line Text', ''), subtitle: field('short-subtitle', 'Rich Text', ''),
     image: field('short-image', 'Image', {}), body: data.subtitle, desktopImage: data.image };

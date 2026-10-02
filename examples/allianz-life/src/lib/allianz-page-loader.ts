@@ -1,5 +1,7 @@
 import 'server-only';
 
+import type { EditingPreviewData } from '@sitecore-content-sdk/content/editing';
+
 import { isDesignLibraryPreviewData, PREVIEW_COOKIES } from '@sitecore-content-sdk/nextjs/editing';
 import { cookies, draftMode, headers } from 'next/headers';
 import { cache } from 'react';
@@ -19,13 +21,14 @@ export const loadAllianzPage = cache(async (site: string, locale: string, ...pat
     const authorization = requestHeaders.get('Authorization') ||
       (await cookies()).get(PREVIEW_COOKIES.PREVIEW_TOKEN)?.value;
     const fetchOptions = authorization ? { headers: { Authorization: authorization } } : undefined;
+    const navigationFetchOptions = {
+      headers: { ...fetchOptions?.headers, sc_previewMode: 'true', sc_site: site },
+    };
 
     // Navigation has no editing payload; PreviewProxy scopes this route read to authoring.
     if (!requestHeaders.get(EDITING_PARAMS_HEADER)) {
-      const page = await client.getPage(path, { site, locale }, {
-        headers: { ...fetchOptions?.headers, sc_previewMode: 'true', sc_site: site },
-      });
-      return { page, needsComponentData: true };
+      const page = await client.getPage(path, { site, locale }, navigationFetchOptions);
+      return { page, needsComponentData: true, componentFetchOptions: navigationFetchOptions };
     }
 
     const previewData = client.getPreviewData(requestHeaders);
@@ -33,7 +36,22 @@ export const loadAllianzPage = cache(async (site: string, locale: string, ...pat
       ? await client.getDesignLibraryData(previewData, fetchOptions)
       : await client.getPreview(previewData, fetchOptions);
 
-    return { page, needsComponentData: true };
+    // Mirror the installed SDK EditingService's native routing headers for
+    // component-level GraphQL reads. Keep authorization server-side only.
+    const editingData = typeof previewData === 'object' && previewData !== null &&
+      'mode' in previewData && (previewData.mode === 'edit' || previewData.mode === 'preview')
+      ? previewData as EditingPreviewData : undefined;
+    const componentFetchOptions = !editingData
+      ? navigationFetchOptions
+      : { headers: {
+        ...fetchOptions?.headers,
+        sc_layoutKind: editingData.layoutKind ?? 'final',
+        sc_editMode: editingData.mode === 'edit' ? 'true' : 'false',
+        sc_previewMode: editingData.mode === 'preview' ? 'true' : 'false',
+        sc_site: site,
+        ...(editingData.previewTime ? { sc_previewTime: editingData.previewTime } : {}),
+      } };
+    return { page, needsComponentData: true, componentFetchOptions };
   }
 
   const connected = isConnected();
@@ -41,5 +59,5 @@ export const loadAllianzPage = cache(async (site: string, locale: string, ...pat
     ? await client.getPage(path, { site, locale })
     : getFixturePage(path, site, locale);
 
-  return { page, needsComponentData: connected };
+  return { page, needsComponentData: connected, componentFetchOptions: undefined };
 });

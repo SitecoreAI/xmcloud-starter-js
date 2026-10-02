@@ -41,12 +41,12 @@ function normalMapSettings() {
   return settings;
 }
 
-test('normal installed SDK map generation emits six new newsroom renderings and excludes internal record/helpers', () => {
+test('normal installed SDK map generation emits seven newsroom renderings and excludes internal record/helpers', () => {
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'allianz-newsroom-normal-map-'));
   const oldWorkingDirectory = process.cwd();
   const generatedDirectory = path.relative(appRoot, temporary);
   const expected = ['NewsroomCallout', 'NewsroomCompanyProfile', 'NewsroomFeaturedUpdate',
-    'NewsroomPublicRelations', 'NewsroomRecentReleases', 'PressReleaseArchive'].sort();
+    'NewsroomPublicRelations', 'NewsroomRecentReleases', 'NewsroomYearNavigation', 'PressReleaseArchive'].sort();
   const oldNames = ['MediaContact.dev', 'newsroom-public-relations.links', 'newsroom-company-profile.links', 'newsroom-grey.links'];
   const internalFiles = [
     'components/media-contact/media-contact-record.props.tsx',
@@ -72,7 +72,7 @@ test('normal installed SDK map generation emits six new newsroom renderings and 
       // NewsroomReturn existed before this migration and retains its registration.
       const newsroomEntries = entries.filter((name) => name !== 'NewsroomReturn' &&
         /^Newsroom|^PressReleaseArchive$|^MediaContact|^media-contact-record|^newsroom-|^newsroomGrey/i.test(name));
-      assert.deepEqual(newsroomEntries.sort(), expected, `${filename} must register exactly the six new rendering purposes`);
+      assert.deepEqual(newsroomEntries.sort(), expected, `${filename} must register exactly the seven rendering purposes`);
       assert.ok(entries.includes('CompanyHero') && entries.includes('LegalDisclosures') && entries.includes('NewsroomReturn'),
         'Reused and existing newsroom component registrations must remain present');
       for (const name of oldNames) assert.ok(!generated.includes(name), `${filename} must exclude old helper candidate ${name}`);

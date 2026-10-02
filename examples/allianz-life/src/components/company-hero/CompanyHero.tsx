@@ -45,7 +45,7 @@ export const NewsroomShort = ({ fields, params }: CompanyHeroProps) => {
     <div className="m-axlHero">
       {shouldRenderImageField(source.image?.jsonValue, isEditing) &&
         <picture className="c-image c-stage__image--cover c-stage__image--short">
-          <Image field={source.image?.jsonValue} editable={isEditing} className="c-image__img c-hero__image" />
+          <Image field={source.image?.jsonValue} editable={isEditing} alt={source.image?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />
         </picture>}
       <div className="l-grid l-grid--max-width l-grid--no-gutters">
         <div className="l-grid__column-medium-12 c-hero__wrapper">

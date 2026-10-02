@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
-import { component, contract, render, field, editingIds, links, sourceRoot } from './runtime.mjs';
+import { component, contract, render as renderSdk, field, editingIds, links, sourceRoot } from './runtime.mjs';
 import { archive, collected, evidence, normalize } from './release-fixtures.mjs';
 
 const { Default } = component('press-release-archive', 'PressReleaseArchive');
 const { newsroomCalendarDate, newsroomDateLabel, newsroomReleaseFields, newsroomReleaseItems, newsroomReleaseLink } = contract('press-release-archive');
+const render = (Component, datasource, editable = false, params = {}, result) => renderSdk(Component, datasource, editable, params, { automaticReleases: result ?? { items: datasource?.releases?.targetItems ?? [], complete: true, status: 'ready' } });
 
 for (const year of evidence.years) {
   test(`${year.year} archive renders every canonical row in exact native reference order`, () => {
@@ -53,7 +54,7 @@ test('intentional clears retain real SDK editing chrome and owning URLs never us
   const cleared = { ...original, title: field('release-title', 'Single-Line Text', ''), summary: field('release-summary', 'Rich Text', ''), releaseDate: field('release-date', 'Date', ''),
     fieldCollection: [{ name: 'title', jsonValue: original.title.jsonValue }, { name: 'summary', jsonValue: original.summary.jsonValue }, { name: 'releaseDate', jsonValue: original.releaseDate.jsonValue }] };
   const clearData = { heading: field('archive-heading', 'Single-Line Text', ''), releases: { targetItems: [cleared] } };
-  assert.deepEqual(editingIds(render(Default, clearData, true)), ['archive-heading', 'release-date', 'release-summary', 'release-title']);
+  assert.deepEqual(editingIds(render(Default, clearData, true)), ['archive-heading']);
   assert.doesNotMatch(render(Default, clearData), /More Americans|Dec 18|Allianz Life New/);
   assert.equal(newsroomReleaseFields(cleared).title.jsonValue, cleared.title.jsonValue);
   const renamed = { ...original, title: field('renamed', 'Single-Line Text', 'A completely different headline') };
@@ -70,8 +71,8 @@ test('known incomplete projections are rejected instead of silently truncating r
     { targetItems: [data.releases.targetItems[0], null] },
   ]) {
     assert.deepEqual(newsroomReleaseItems(releases), { items: [], complete: false });
-    assert.equal(links(render(Default, { ...data, releases })).length, 0);
-    assert.match(render(Default, { ...data, releases }, true), /not loaded completely/);
+    assert.equal(links(render(Default, data, false, {}, { items: [], complete: false, status: 'unavailable' })).length, 0);
+    assert.match(render(Default, data, true, {}, { items: [], complete: false, status: 'unavailable' }), /temporarily unavailable/);
   }
   assert.deepEqual(newsroomReleaseItems({ targetItems: [] }), { items: [], complete: true });
   assert.deepEqual(newsroomReleaseItems({ jsonValue: { value: '' }, targetItems: data.releases.targetItems }), { items: [], complete: true });
@@ -80,12 +81,40 @@ test('known incomplete projections are rejected instead of silently truncating r
   assert.deepEqual(newsroomReleaseItems({ jsonValue: data.releases.targetItems.map(({ id }) => ({ id })), targetItems: [...data.releases.targetItems].reverse() }), { items: [], complete: false });
 });
 
-test('proposed query is bounded to references and teaser fields, with native acceptance explicit', () => {
+test('native archive query keeps only its authored heading and no manual release selection', () => {
   const query = fs.readFileSync(`${sourceRoot}/components/press-release-archive/press-release-archive.graphql`, 'utf8');
-  assert.match(query, /fieldCollection: fields \{ name jsonValue \}/);
-  assert.match(query, /MultilistField/);
-  assert.match(query, /releaseDate: field\(name: "releaseDate"\)/);
+  assert.match(query, /heading: field\(name: "heading"\) \{ jsonValue \}/);
+  assert.doesNotMatch(query, /releases:|MultilistField|targetItems|summary:|releaseDate:/);
   assert.doesNotMatch(query, /children|descendants|body:|first:|sourceUrl|[0-9a-f]{8}-[0-9a-f]{4}/);
   const props = fs.readFileSync(`${sourceRoot}/components/press-release-archive/press-release-archive.props.ts`, 'utf8');
   assert.doesNotMatch(props, /\.sort\(|\.slice\(|native-content|public-route|[0-9a-f]{8}-[0-9a-f]{4}/);
+});
+
+test('native article-summary headings retain HTML and editing targets while using archive copy typography', () => {
+  const data = archive(evidence.years[0]);
+  const original = data.releases.targetItems[0];
+  const summaryHtml = `<h4>${original.summary.jsonValue.value}</h4>`;
+  const summary = field('native-article-summary', 'Rich Text', summaryHtml);
+  const native = { ...data, releases: { targetItems: [{ ...original, summary }] } };
+  const before = JSON.stringify(native);
+  const normal = render(Default, native);
+  assert.ok(normal.includes(summaryHtml));
+  assert.match(normal, /class="c-copy c-search-result-text-teaser__copytext allianz-press-release-archive__summary"/);
+  assert.match(normal, /<h5 class="c-heading c-search-result-text-teaser__headline/);
+  assert.deepEqual(editingIds(render(Default, native, true)), ['archive-heading']);
+  assert.equal(JSON.stringify(native), before);
+  const css = fs.readFileSync(`${sourceRoot}/components/press-release-archive/PressReleaseArchive.css`, 'utf8');
+  assert.match(css, /\.allianz-press-release-archive \.allianz-press-release-archive__summary :where\(p, div, h1, h2, h3, h4, h5, h6\)\s*\{\s*font: inherit;\s*letter-spacing: inherit;\s*margin: 0;/);
+  assert.doesNotMatch(css, /!important|font-size:|line-height:|@media|code|scpm|outline|\.c-heading/);
+});
+
+test('automatic archive ignores historical manual selections and fails visibly when its server data is absent', () => {
+  const data = archive(evidence.years[0]);
+  const selected = data.releases.targetItems.slice(0, 1);
+  const html = render(Default, { ...data, releases: { targetItems: [...data.releases.targetItems].reverse() } }, false, {}, { items: selected, complete: true, status: 'ready' });
+  assert.deepEqual(links(html), [selected[0].parent.parent.url.path]);
+  const missing = renderSdk(Default, data);
+  assert.match(missing, /news release archive is temporarily unavailable/);
+  assert.equal(links(missing).length, 0);
+  assert.match(missing, /2024 press release archive/);
 });

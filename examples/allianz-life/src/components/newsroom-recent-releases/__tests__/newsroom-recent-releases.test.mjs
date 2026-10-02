@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
-import { component, contract, field, render, links, editingIds } from '../../press-release-archive/__tests__/runtime.mjs';
+import { component, contract, field, render as renderSdk, links, editingIds } from '../../press-release-archive/__tests__/runtime.mjs';
 import { collected, evidence, release, normalize } from '../../press-release-archive/__tests__/release-fixtures.mjs';
 const { Default } = component('newsroom-recent-releases', 'NewsroomRecentReleases');
 const { newsroomRecentReleasesFields } = contract('newsroom-recent-releases');
+const render = (Component, datasource, editable = false, params = {}, result) => renderSdk(Component, datasource, editable, params, { automaticReleases: result ?? { items: datasource?.releases?.targetItems ?? [], complete: true, status: 'ready' } });
 const data = {
   heading: field('recent-heading', 'Single-Line Text', evidence.seeds.recent.heading),
   releases: { targetItems: evidence.recent.map(release) },
@@ -44,11 +45,12 @@ test('root and article clears remain editable, external more link stays inert', 
   assert.deepEqual(links(render(Default, external, true)), ['https://www.linkedin.com/company/allianz-life']);
 });
 
-test('author-selected ordered references have no six-card runtime cap or date sorting', () => {
-  const rows = evidence.years[0].rows;
-  const selected = [rows[11], rows[10], ...rows.filter((_, index) => ![10, 11].includes(index))].map(release);
-  assert.deepEqual(links(render(Default, { ...data, releases: { targetItems: selected }, moreLink: undefined })), selected.map((item) => item.parent.parent.url.path));
-  assert.equal(selected.length, 32);
+test('historical manual selection cannot reorder automatic recent data or act as a fallback', () => {
+  const selected = [...data.releases.targetItems].reverse();
+  const html = render(Default, { ...data, releases: { targetItems: selected } }, false, {}, { items: data.releases.targetItems, complete: true, status: 'ready' });
+  assert.deepEqual(links(html), [...data.releases.targetItems.map((item) => item.parent.parent.url.path), data.moreLink.jsonValue.value.href]);
+  assert.match(renderSdk(Default, data), /Recent news releases are temporarily unavailable/);
+  assert.deepEqual(links(renderSdk(Default, data)), [data.moreLink.jsonValue.value.href]);
 });
 
 test('whole-card title links never wrap native summary anchors, which remain independently actionable', () => {
@@ -65,15 +67,25 @@ test('whole-card title links never wrap native summary anchors, which remain ind
     }
     assert.equal(depth, 0);
     assert.deepEqual(links(html), [selected.parent.parent.url.path, '/about/subject-matter-experts',
-      editable ? 'https://www.linkedin.com/company/allianz-life' : '#service-unavailable', '/about/newsroom/2026-press-releases']);
+      '#service-unavailable', '/about/newsroom/2026-press-releases']);
     assert.match(html, /class="source-inline"[^>]*>our <strong>experts<\/strong>/);
     assert.match(html, /<article class="m-card">/);
     assert.match(html, /<div class="m-card__header"><h4><a\b/);
     assert.equal(html.includes('m-card__title-link--stretched'), !editable);
-    if (editable) assert.ok(editingIds(html).includes('summary-links'));
+    if (editable) assert.deepEqual(editingIds(html), ['more-link', 'recent-heading']);
   }
   const css = fs.readFileSync(new URL('../NewsroomRecentReleases.css', import.meta.url), 'utf8');
   assert.match(css, /m-card__title-link--stretched::after[\s\S]*?inset: 0;[\s\S]*?z-index: 1/);
   assert.match(css, /m-card__body a[^}]*z-index: 2/);
   assert.equal(selected.summary.jsonValue.value.includes('target="_blank"'), true);
+});
+
+test('native H4 summaries use source card-copy typography without exposing article fields as widget authoring', () => {
+  const selected = { ...data.releases.targetItems[0], summary: field('native-card-summary', 'Rich Text', '<h4>Source summary <strong>formatting</strong></h4>') };
+  const html = render(Default, data, true, {}, { items: [selected], complete: true, status: 'ready' });
+  assert.match(html, /class="allianz-newsroom-recent-releases__summary"><h4>Source summary <strong>formatting<\/strong><\/h4>/);
+  assert.deepEqual(editingIds(html), ['more-link', 'recent-heading']);
+  const css = fs.readFileSync(new URL('../NewsroomRecentReleases.css', import.meta.url), 'utf8');
+  assert.match(css, /\.allianz-newsroom-recent-releases \.allianz-newsroom-recent-releases__summary :where\(p, div, h1, h2, h3, h4, h5, h6\)\s*\{\s*font: inherit;/);
+  assert.equal(selected.summary.jsonValue.value, '<h4>Source summary <strong>formatting</strong></h4>');
 });

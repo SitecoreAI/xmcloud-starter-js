@@ -12,6 +12,7 @@ import { setRequestLocale } from "next-intl/server";
 import { getBaseUrl } from "lib/utils";
 import { loadAllianzPage } from 'lib/allianz-page-loader';
 import { allianzMetadata } from 'lib/allianz-metadata';
+import { enrichNewsroomComponentMap } from 'lib/newsroom-automatic-server';
 
 type PageProps = {
   params: Promise<{
@@ -28,7 +29,7 @@ export default async function Page({ params }: PageProps) {
   // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary
   setRequestLocale(`${site}_${locale}`);
 
-  const { page, needsComponentData } = await loadAllianzPage(site, locale, ...(path ?? []));
+  const { page, needsComponentData, componentFetchOptions } = await loadAllianzPage(site, locale, ...(path ?? []));
 
   // If the page is not found, return a 404
   if (!page) {
@@ -37,7 +38,10 @@ export default async function Page({ params }: PageProps) {
 
   // Fetch the component data from Sitecore (Likely will be deprecated)
   const componentProps = needsComponentData
-    ? await client.getComponentData(page.layout, {}, components)
+    ? await client.getComponentData(page.layout, {}, enrichNewsroomComponentMap(components, {
+      getData: client.getData.bind(client),
+      fetchOptions: componentFetchOptions,
+    }))
     : {};
 
   return (

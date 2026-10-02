@@ -1,3 +1,13 @@
 /* Source CSS already supplies the 704/992 grid widths and headline/copy styles.
    No recovered source rule defines teaser spacing, so no new margins are guessed. */
 .allianz-press-release-archive .c-search-result-text-teaser { min-width: 0; }
+
+/* The reused article summary may contain its article-introduction H4 markup.
+   The source archive presents the same copy as c-copy at every breakpoint.
+   Preserve the authored HTML and SDK field chrome, but inherit this summary's
+   source copy typography instead of global article heading typography. */
+.allianz-press-release-archive .allianz-press-release-archive__summary :where(p, div, h1, h2, h3, h4, h5, h6) {
+  font: inherit;
+  letter-spacing: inherit;
+  margin: 0;
+}

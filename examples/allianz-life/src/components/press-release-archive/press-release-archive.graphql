@@ -1,20 +1,8 @@
-# Proposed target contract; validate references, parent ownership, URL schema and
-# full 32-item Preview cost before native acceptance. No article body is selected.
+# The heading remains authored. Child releases come from the server-only SDK
+# hook's complete paginated native queries, never an authored selection list.
 query PressReleaseArchiveData($datasource: String!, $language: String!) {
   datasource: item(path: $datasource, language: $language) {
     id
-    fieldCollection: fields { name jsonValue }
-    releases: field(name: "releases") {
-      jsonValue
-      ... on MultilistField {
-        targetItems {
-          id
-          title: field(name: "title") { jsonValue }
-          summary: field(name: "summary") { jsonValue }
-          releaseDate: field(name: "releaseDate") { jsonValue }
-          parent { parent { id url { path } } }
-        }
-      }
-    }
+    heading: field(name: "heading") { jsonValue }
   }
 }

@@ -1,0 +1,161 @@
+{
+  "chain": [
+    {
+      "className": "",
+      "computed": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderBottom": "0px none rgba(0, 0, 0, 0)",
+        "display": "inline-block",
+        "flexDirection": "row",
+        "fontSize": "16px",
+        "lineHeight": "0px",
+        "overflow": "visible",
+        "padding": "20px 0px 20px 30px",
+        "position": "static"
+      },
+      "id": "",
+      "rect": {
+        "height": 40,
+        "width": 384,
+        "x": 0,
+        "y": 256.546875
+      },
+      "tag": "A"
+    },
+    {
+      "className": "",
+      "computed": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderBottom": "0px none rgb(65, 65, 65)",
+        "display": "list-item",
+        "flexDirection": "row",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "padding": "0px",
+        "position": "static"
+      },
+      "id": "",
+      "rect": {
+        "height": 36,
+        "width": 384,
+        "x": 0,
+        "y": 256.546875
+      },
+      "tag": "LI"
+    },
+    {
+      "className": "nav-sec-list",
+      "computed": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderBottom": "0px none rgb(65, 65, 65)",
+        "display": "block",
+        "flexDirection": "row",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "hidden",
+        "padding": "0px",
+        "position": "static"
+      },
+      "id": "",
+      "rect": {
+        "height": 0,
+        "width": 384,
+        "x": 0,
+        "y": 220.546875
+      },
+      "tag": "UL"
+    },
+    {
+      "className": "m-navigation-secondary",
+      "computed": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderBottom": "0px none rgb(65, 65, 65)",
+        "display": "block",
+        "flexDirection": "row",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "padding": "0px",
+        "position": "static"
+      },
+      "id": "",
+      "rect": {
+        "height": 64,
+        "width": 384,
+        "x": 0,
+        "y": 156.546875
+      },
+      "tag": "NAV"
+    },
+    {
+      "className": " page-2024-press-releases ",
+      "computed": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderBottom": "0px none rgb(65, 65, 65)",
+        "display": "block",
+        "flexDirection": "row",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "overflow": "visible",
+        "padding": "0px",
+        "position": "static"
+      },
+      "id": "page-2024-press-releases",
+      "rect": {
+        "height": 800,
+        "width": 384,
+        "x": 0,
+        "y": 0
+      },
+      "tag": "BODY"
+    },
+    {
+      "className": " whatinput-types-initial js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths",
+      "computed": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderBottom": "0px none rgb(0, 0, 0)",
+        "display": "block",
+        "flexDirection": "row",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "overflow": "visible",
+        "padding": "0px",
+        "position": "static"
+      },
+      "id": "",
+      "rect": {
+        "height": 800,
+        "width": 384,
+        "x": 0,
+        "y": 0
+      },
+      "tag": "HTML"
+    }
+  ],
+  "links": [
+    {
+      "ariaCurrent": null,
+      "className": "",
+      "href": "/about/newsroom/2026-Press-Releases",
+      "text": "2026 Press Releases"
+    },
+    {
+      "ariaCurrent": null,
+      "className": "",
+      "href": "/about/newsroom/2025-Press-Releases",
+      "text": "2025 Press Releases"
+    },
+    {
+      "ariaCurrent": null,
+      "className": "-is-active",
+      "href": "/about/newsroom/2024-Press-Releases",
+      "text": "2024 Press Releases"
+    }
+  ],
+  "markup": "<nav class=\"m-navigation-secondary\">\n\t\t\t<a class=\"nav-sec-list-title\" href=\"/about/newsroom\">\n\t\t\t\t2024 Press Releases <i class=\"c-icon c-icon--chevron-down\"></i>\n\t\t\t</a>\n\t\t\t<ul class=\"nav-sec-list\">\n\n\t\t\t\t\t<li><a class=\"\" href=\"/about/newsroom/2026-Press-Releases\" target=\"\" aria-label=\"2026 Press Releases\">2026 Press Releases</a></li>\n\t\t\t\t\t<li><a class=\"\" href=\"/about/newsroom/2025-Press-Releases\" target=\"\" aria-label=\"2025 Press Releases\">2025 Press Releases</a></li>\n\t\t\t\t\t<li><a class=\"-is-active\" href=\"/about/newsroom/2024-Press-Releases\" target=\"\" aria-label=\"2024 Press Releases\">2024 Press Releases</a></li>\n\n\t\t\t</ul>\n\t</nav>",
+  "viewport": {
+    "clientWidth": 384,
+    "innerWidth": 390
+  }
+}

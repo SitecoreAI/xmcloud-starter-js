@@ -1,26 +1,21 @@
 # Press release archive author contract
 
-Technical componentName: `PressReleaseArchive`. Friendly rendering display: Press release archive. Fixed variant: Default. All content fields use versioned storage (`Shared=false`, `Unversioned=false`). Only RenderingIdentifier is used; theme, heading level, columns, spacing, alignment and split controls are ignored.
+Technical componentName: `PressReleaseArchive`. Fixed variant: Default. RenderingIdentifier is the only consumed parameter. Authors edit the widget heading on its existing datasource.
 
-- heading (Heading): Single-Line Text
-- releases (News releases): ordered Multilist of existing PressRelease datasource items
+- heading (Heading): versioned Single-Line Text
 
-H1 introduction; medium-12/large-8 source teaser list with H5 linked titles, MMM dd, yyyy calendar dates and native article summaries. No images or controls. Existing year Page identities remain unchanged.
+## Automatic content
 
-## Reference and field integrity
+List direct child News pages of the current year. Sort valid typed release dates newest first, then normalized owning-page GUID and datasource GUID. Missing or invalid dates appear last. Enumerate only verified News template `273e2551-3e06-52a6-bea5-6f7d6e506913` pages. Year pages use native Page template `2d50c9b4-9f1e-42ae-aa00-0c85fd2b689e` and the source archive URL pattern, directly beneath Newsroom `0971f3ec-8aae-5950-9ad5-11e62f6b5770`. Exclude folders, other templates, unrelated years and deeper nested pages.
 
-Title, summary and releaseDate come from existing native PressRelease items through ordered references. The selected article's returned `parent.parent.id` and `url.path` supply its owning Page link. No headline-derived URL, copied Card fields, fixture identity lookup, descendant traversal, date search or automatic selection. The compact datasource fieldCollection preserves exact SDK Field objects, metadata and intentional clears; article projection selects only title/summary/date so its body is not fetched. A target-supported selective fieldCollection can replace those aliases only after schema proof. No invented query arguments are used. Arrays are rendered completely in authored order, including equal-date ties; known incomplete/total-mismatched projections are rejected rather than rendered partially.
+Read headline, summary and releaseDate from each page’s existing Press Release datasource `8c7ba106-bf89-4b94-8667-06f4febe9d1a`; use its verified owning page URL. Native Field objects and intentional clears are retained. Teaser fields render read-only in Pages: authors maintain each release once on its owning page. A new eligible page joins automatically, and a removed or moved page leaves. No copied cards, authored release Multilist, manual-list fallback, headline-derived URL or fixture IDs are used. Missing article content is reported to authors while populated stories remain visible. Duplicate owned article sources or incomplete reads produce an explicit unavailable state.
 
-Native URL/reference schema, full 32-item Preview cost and definition acceptance are pending. Validate actual MultilistField.targetItems, featured reference GraphQL type/targetItem, parent.parent ownership, URL shape, date jsonValue and collection completeness at the target endpoint before binding. Queries here are proposed contracts. Do not claim native acceptance from local GraphQL syntax or SSR tests. If measured native cost rejects the integrated projection, the parent can add the reviewed server-side eight-item batching resolver in a separately owned shared module; complete every reference and preserve reference order. No speculative client fetches or hard-coded fallback batches exist here.
+The server hook uses the existing configured SDK client and per-request authoring fetch options. It follows every cursor with total/pageInfo checks, aggregates the complete scoped catalog before ordering and applying the recent limit, and supplies `automaticReleases` through ComponentPropsContext keyed by rendering UID. Authorization remains server-side. Native integrated queries select only the widget’s own fields.
 
-## Native definition reads
+## Fixed source presentation
 
-The full bounded definition packet is in `../press-release-archive/AUTHOR-CONTRACT.json`: exact small fields, friendly labels, versioned storage, existing CompanyHero/LegalDisclosures reuse and variants, one new PressRelease Date field, recorded actual parent IDs to fresh-read, actual parameter/data/variant/media/Page reads, and landing insertion order. It contains no invented new identity. The parent owns native definition/content creation and readback. Existing template sections/base/parameter paths must be read before creating children; only service-returned identities may be bound.
+Stored summary HTML stays intact; its block typography inherits source 16px/24px/400. Archive dates use MMM dd, yyyy and Recent dates use MM/DD/YYYY. The source responsive classes and breakpoints remain intact. No appearance knobs are exposed. The stored heading remains editable in Pages, while automatically derived child copy has no inline editing chrome.
 
-Source media matches, SDK image fields and intentionally empty alts are preserved. Native Rich Text is canonical XHTML through the established codec, without invalid demo attributes. Existing public native internal references navigate through allianzLinkField; original external services remain inert under existing mock rules. No new original-service integration is introduced.
+## Native activation
 
-## Source proof and validation
-
-Canonical source snippets and the complete 81-release source manifest are copied into these component test folders. Tests use the installed real Sitecore Content SDK and SitecoreProvider, cover all 32/25/24 rows, exact native reference order/URLs, six recent cards and curated feature, date formats/timezones, deliberate clearing and editing metadata, fixed source markup and no runtime fixture IDs. Native browser authoring, source visual comparison and 703/704/991/992 acceptance remain separate proof. These source changes do not create native items, publish, deploy, generate .sitecore files or build the app.
-
-Run `node --test src/components/press-release-archive/__tests__/*.test.mjs src/components/newsroom-recent-releases/__tests__/*.test.mjs src/components/newsroom-featured-update/__tests__/*.test.mjs` from the starter, then ESLint and TypeScript checks.
+Deploy the component server hook and frontend together; update only the two recorded rendering ComponentQuery values, then verify actual native counts, order, child inclusion, headings, links and browser behavior. Snapshot obsolete `releases` field values before removing those two template field definitions through the normal recoverable authoring flow. Do not remove Press Release pages, article datasources or reference targets. Current native values and user edits require fresh preservation checks. Local tests do not establish native query or browser acceptance.

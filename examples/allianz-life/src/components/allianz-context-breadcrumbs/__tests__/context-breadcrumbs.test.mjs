@@ -94,14 +94,14 @@ test('missing years, duplicate ancestors and invalid chain order fail explicitly
   }
 });
 
-test('blank required labels stay editable, while normal mode never invents a label from the route or item ID', () => {
+test('blank required labels never acquire breadcrumb editing chrome or invented captions', () => {
   const data = context();
   data.navigationTitle.jsonValue.value = '';
   assert.equal(contextBreadcrumbTrail(data).issue, 'missing-title');
   assert.equal(contextBreadcrumbTrail(data, true).issue, undefined);
   const html = render(Wrapper, data, true);
-  assert.match(html, /code\b[^>]*class="scpm"/);
-  assert.ok(html.includes('4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8'));
+  assert.doesNotMatch(html, /code\b[^>]*class="scpm"|contenteditable|data-field-id/);
+  assert.ok(!html.includes('4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8'));
   assert.doesNotMatch(html, /needs complete native page titles/);
   const missing = context(); delete missing.navigationTitle;
   assert.equal(contextBreadcrumbTrail(missing, true).issue, 'missing-title');
@@ -158,4 +158,19 @@ test('the documented context-only query and source component leave the datasourc
   const component = fs.readFileSync(path.join(directory, 'AllianzContextBreadcrumbs.tsx'), 'utf8');
   assert.doesNotMatch(component, /withDatasourceCheck|data\.datasource|safeLink/);
   assert.match(fs.readFileSync(path.join(sourceRoot, 'components/allianz-breadcrumbs/AllianzBreadcrumbs.tsx'), 'utf8'), /data\?\.datasource\?\.primaryNav/);
+});
+
+test('all ancestor and current captions are read-only in Pages while native fields stay intact', () => {
+  const data = context(), before = JSON.stringify(data);
+  const html = render(Wrapper, data, true);
+  assert.doesNotMatch(html, /code\b[^>]*class="scpm"|contenteditable|data-field-id/);
+  const result = inspectHtml([html])[0];
+  assert.deepEqual(result.labels, rows[0].labels);
+  assert.equal(result.links, rows[0].labels.length - 1);
+  assert.equal(result.currentTag, 'span');
+  assert.equal(result.currentLinks, 0);
+  assert.equal(JSON.stringify(data), before);
+  const { Text } = require('@sitecore-content-sdk/nextjs');
+  const OwningPageField = () => React.createElement(Text, { field: data.navigationTitle.jsonValue, editable: true });
+  assert.match(render(OwningPageField, data, true), /code\b[^>]*class="scpm"/);
 });

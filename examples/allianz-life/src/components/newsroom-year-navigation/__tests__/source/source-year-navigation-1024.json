@@ -1,0 +1,165 @@
+{
+  "links": [
+    {
+      "ariaLabel": "2026 Press Releases",
+      "className": "",
+      "computed": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderBottom": "0px none rgba(0, 0, 0, 0)",
+        "display": "inline-block",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "height": "45px",
+        "lineHeight": "0px",
+        "overflow": "visible",
+        "padding": "20px 20px 25px",
+        "position": "static"
+      },
+      "href": "/about/newsroom/2026-Press-Releases",
+      "rect": {
+        "height": 45,
+        "width": 182.421875,
+        "x": 235.3671875,
+        "y": 193
+      },
+      "tag": "A",
+      "target": "",
+      "text": "2026 Press Releases"
+    },
+    {
+      "ariaLabel": "2025 Press Releases",
+      "className": "",
+      "computed": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderBottom": "0px none rgba(0, 0, 0, 0)",
+        "display": "inline-block",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "height": "45px",
+        "lineHeight": "0px",
+        "overflow": "visible",
+        "padding": "20px 20px 25px",
+        "position": "static"
+      },
+      "href": "/about/newsroom/2025-Press-Releases",
+      "rect": {
+        "height": 45,
+        "width": 182.421875,
+        "x": 417.7890625,
+        "y": 193
+      },
+      "tag": "A",
+      "target": "",
+      "text": "2025 Press Releases"
+    },
+    {
+      "ariaLabel": "2024 Press Releases",
+      "className": "-is-active",
+      "computed": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderBottom": "4px solid rgb(0, 80, 116)",
+        "display": "inline-block",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "height": "49px",
+        "lineHeight": "0px",
+        "overflow": "visible",
+        "padding": "20px 20px 25px",
+        "position": "static"
+      },
+      "href": "/about/newsroom/2024-Press-Releases",
+      "rect": {
+        "height": 49,
+        "width": 182.421875,
+        "x": 600.2109375,
+        "y": 193
+      },
+      "tag": "A",
+      "target": "",
+      "text": "2024 Press Releases"
+    }
+  ],
+  "list": {
+    "ariaLabel": null,
+    "className": "nav-sec-list",
+    "computed": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "borderBottom": "0px none rgb(65, 65, 65)",
+      "display": "flex",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "41px",
+      "lineHeight": "24px",
+      "overflow": "visible",
+      "padding": "0px",
+      "position": "static"
+    },
+    "href": null,
+    "rect": {
+      "height": 41,
+      "width": 1018,
+      "x": 0,
+      "y": 193
+    },
+    "tag": "UL",
+    "target": null,
+    "text": "2026 Press Releases\n2025 Press Releases\n2024 Press Releases"
+  },
+  "markup": "<nav class=\"m-navigation-secondary\">\n\t\t\t<a class=\"nav-sec-list-title\" href=\"/about/newsroom\">\n\t\t\t\t2024 Press Releases <i class=\"c-icon c-icon--chevron-down\"></i>\n\t\t\t</a>\n\t\t\t<ul class=\"nav-sec-list\">\n\n\t\t\t\t\t<li><a class=\"\" href=\"/about/newsroom/2026-Press-Releases\" target=\"\" aria-label=\"2026 Press Releases\">2026 Press Releases</a></li>\n\t\t\t\t\t<li><a class=\"\" href=\"/about/newsroom/2025-Press-Releases\" target=\"\" aria-label=\"2025 Press Releases\">2025 Press Releases</a></li>\n\t\t\t\t\t<li><a class=\"-is-active\" href=\"/about/newsroom/2024-Press-Releases\" target=\"\" aria-label=\"2024 Press Releases\">2024 Press Releases</a></li>\n\n\t\t\t</ul>\n\t</nav>",
+  "navigation": {
+    "ariaLabel": null,
+    "className": "m-navigation-secondary",
+    "computed": {
+      "backgroundColor": "rgb(236, 236, 236)",
+      "borderBottom": "0px none rgb(65, 65, 65)",
+      "display": "block",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "57px",
+      "lineHeight": "24px",
+      "overflow": "visible",
+      "padding": "8px 0px",
+      "position": "static"
+    },
+    "href": null,
+    "rect": {
+      "height": 57,
+      "width": 1018,
+      "x": 0,
+      "y": 185
+    },
+    "tag": "NAV",
+    "target": null,
+    "text": "2026 Press Releases\n2025 Press Releases\n2024 Press Releases"
+  },
+  "title": {
+    "ariaLabel": null,
+    "className": "nav-sec-list-title",
+    "computed": {
+      "backgroundColor": "rgb(236, 236, 236)",
+      "borderBottom": "0px none rgb(0, 80, 116)",
+      "display": "none",
+      "fontSize": "20px",
+      "fontWeight": "400",
+      "height": "auto",
+      "lineHeight": "24px",
+      "overflow": "visible",
+      "padding": "20px",
+      "position": "relative"
+    },
+    "href": "/about/newsroom",
+    "rect": {
+      "height": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "tag": "A",
+    "target": null,
+    "text": "2024 Press Releases"
+  },
+  "viewport": {
+    "clientWidth": 1018,
+    "innerWidth": 1024
+  }
+}

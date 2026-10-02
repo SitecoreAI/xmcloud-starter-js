@@ -1,5 +1,5 @@
 {
-  "status": "Proposed bounded definition packet. Recorded IDs require fresh read. No native schema/cost acceptance claimed.",
+  "status": "Recorded native definitions with automatic Archive/Recent source contract. Component-level query and browser acceptance must use the staged deployment sequence.",
   "contracts": [
     {
       "technicalComponentName": "CompanyHero",
@@ -119,19 +119,6 @@
           }
         },
         {
-          "name": "releases",
-          "displayName": "News releases",
-          "type": "Multilist",
-          "storage": {
-            "shared": false,
-            "unversioned": false
-          },
-          "ordered": true,
-          "referenceTarget": "Existing PressRelease datasource items",
-          "sourceSetting": "Use actual read-backed source root/query and template identity; exact Source value remains pending native schema/parent reads",
-          "purpose": "Ordered Multilist to existing PressRelease datasources"
-        },
-        {
           "name": "moreLink",
           "displayName": "More releases link",
           "type": "General Link",
@@ -147,10 +134,11 @@
       "variants": [
         "Default"
       ],
-      "fixedPresentation": "Centered h2, source o-cards__col3, whole-card native page link, h4 title, Date: MM/DD/YYYY, summary copy; no image",
+      "fixedPresentation": "Editable H2 and More releases link; six newest valid-dated News pages across direct Newsroom year pages, source H4 titles and 16px/24px summaries.",
       "newIdentity": null,
       "componentName": "NewsroomRecentReleases",
-      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read.",
+      "automaticContent": "Complete scoped News page enumeration through request-local SDK server props; no manual release selection. Title, summary, date and owning page URL remain on each Press Release page."
     },
     {
       "technicalComponentName": "PressReleaseArchive",
@@ -165,19 +153,6 @@
             "shared": false,
             "unversioned": false
           }
-        },
-        {
-          "name": "releases",
-          "displayName": "News releases",
-          "type": "Multilist",
-          "storage": {
-            "shared": false,
-            "unversioned": false
-          },
-          "ordered": true,
-          "referenceTarget": "Existing PressRelease datasource items",
-          "sourceSetting": "Use actual read-backed source root/query and template identity; exact Source value remains pending native schema/parent reads",
-          "purpose": "Ordered Multilist to existing PressRelease datasources"
         }
       ],
       "renderingParameters": [
@@ -186,10 +161,11 @@
       "variants": [
         "Default"
       ],
-      "fixedPresentation": "Source h1 introduction followed by medium-12/large-8 list; h5 linked titles, MMM dd, yyyy date and copy paragraphs; no images",
+      "fixedPresentation": "Editable H1, newest-dated direct News child pages first, stable page-ID ties, source H5 titles and 16px/24px summaries. Missing dates sort last.",
       "newIdentity": null,
       "componentName": "PressReleaseArchive",
-      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read.",
+      "automaticContent": "Complete scoped News page enumeration through request-local SDK server props; no manual release selection. Title, summary, date and owning page URL remain on each Press Release page."
     },
     {
       "technicalComponentName": "NewsroomPublicRelations",

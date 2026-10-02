@@ -58,6 +58,7 @@ function harness(t, { draft = false, connected = true, authorization, cookie, mo
       if (preview && error) throw error;
       return preview ? authoringLayout : deliveryLayout;
     } },
+    async getData() { throw new Error('No automatic rendering exists in this layout fixture'); },
     async getComponentData(pageLayout) {
       calls.push({ backend: 'component-props', pageLayout });
       return { component: { value: 'test props' } };
@@ -243,4 +244,20 @@ test('authoring failures propagate to rendering and metadata without hiding them
   await assert.rejects(h.default(props()), (actual) => actual === error);
   await assert.rejects(h.generateMetadata(props()), (actual) => actual === error);
   assert.ok(h.calls.every((call) => call.backend === 'authoring'));
+});
+
+
+test('automatic component reads inherit authoring routing only in server-local options', async (t) => {
+  for (const mode of ['edit', 'preview']) {
+    const h = harness(t, { draft: true, mode, authorization: 'synthetic-component-authorization' });
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', 'about', 'newsroom');
+    assert.deepEqual(loaded.componentFetchOptions, { headers: {
+      Authorization: 'synthetic-component-authorization', sc_layoutKind: 'Final',
+      sc_editMode: String(mode === 'edit'), sc_previewMode: String(mode === 'preview'), sc_site: 'allianz-life',
+    } });
+    const element = await h.default(props(['about', 'newsroom']));
+    assert.doesNotMatch(JSON.stringify(element), /synthetic-component-authorization|componentFetchOptions|sc_editMode/);
+  }
+  const normal = harness(t);
+  assert.equal((await normal.loadAllianzPage('allianz-life', 'en', 'about', 'newsroom')).componentFetchOptions, undefined);
 });

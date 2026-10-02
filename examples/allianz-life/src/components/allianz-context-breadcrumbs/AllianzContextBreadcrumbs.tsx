@@ -18,7 +18,7 @@ export const Default = ({ fields, params }: AllianzContextBreadcrumbsProps) => {
     <span className="u-aria-only">You are here:</span>
     <ol className="c-breadcrumb__list">{trail.items.map((item, index) => {
       const current = index === trail.items.length - 1;
-      const label = <Text field={item.navigationTitle?.jsonValue} editable={editable} />;
+      const label = <Text field={item.navigationTitle?.jsonValue} editable={false} />;
       return <li key={item.id} className="c-breadcrumb__item">
         {index > 0 && <i className="c-icon" aria-hidden="true">/</i>}
         {current

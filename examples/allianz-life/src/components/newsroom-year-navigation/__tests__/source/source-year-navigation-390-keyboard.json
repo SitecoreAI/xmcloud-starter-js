@@ -1,0 +1,59 @@
+{
+  "viewport": 390,
+  "sourceUrl": "https://www.allianzlife.com/about/newsroom/2024-Press-Releases",
+  "clickExpandsWithoutNavigating": true,
+  "afterClick": {
+    "heading": "2024 press release archive",
+    "listClass": "nav-sec-list",
+    "listHeight": 108,
+    "markup": "<nav class=\"m-navigation-secondary m-navigation-secondary-open\">\n\t\t\t<a class=\"nav-sec-list-title\" href=\"/about/newsroom\">\n\t\t\t\t2024 Press Releases <i class=\"c-icon c-icon--chevron-down\"></i>\n\t\t\t</a>\n\t\t\t<ul class=\"nav-sec-list\">\n\n\t\t\t\t\t<li><a class=\"\" href=\"/about/newsroom/2026-Press-Releases\" target=\"\" aria-label=\"2026 Press Releases\">2026 Press Releases</a></li>\n\t\t\t\t\t<li><a class=\"\" href=\"/about/newsroom/2025-Press-Releases\" target=\"\" aria-label=\"2025 Press Releases\">2025 Press Releases</a></li>\n\t\t\t\t\t<li><a class=\"-is-active\" href=\"/about/newsroom/2024-Press-Releases\" target=\"\" aria-label=\"2024 Press Releases\">2024 Press Releases</a></li>\n\n\t\t\t</ul>\n\t</nav>",
+    "navClass": "m-navigation-secondary m-navigation-secondary-open",
+    "path": "/about/newsroom/2024-Press-Releases",
+    "titleAriaControls": null,
+    "titleAriaExpanded": null,
+    "titleClass": "nav-sec-list-title",
+    "titleRole": null
+  },
+  "afterEnter": {
+    "focusedElement": {
+      "className": "nav-sec-list-title",
+      "tag": "A"
+    },
+    "heading": "2024 press release archive",
+    "listHeight": 108,
+    "navClass": "m-navigation-secondary",
+    "path": "/about/newsroom/2024-Press-Releases",
+    "titleAriaControls": null,
+    "titleAriaExpanded": null
+  },
+  "beforeEscape": {
+    "focusedElement": {
+      "className": "nav-sec-list-title",
+      "tag": "A"
+    },
+    "heading": "2024 press release archive",
+    "listHeight": 108,
+    "navClass": "m-navigation-secondary m-navigation-secondary-open",
+    "path": "/about/newsroom/2024-Press-Releases",
+    "titleAriaControls": null,
+    "titleAriaExpanded": null
+  },
+  "afterEscape": {
+    "focusedElement": {
+      "className": "nav-sec-list-title",
+      "tag": "A"
+    },
+    "heading": "2024 press release archive",
+    "listHeight": 108,
+    "navClass": "m-navigation-secondary m-navigation-secondary-open",
+    "path": "/about/newsroom/2024-Press-Releases",
+    "titleAriaControls": null,
+    "titleAriaExpanded": null
+  },
+  "enterToggles": true,
+  "escapeCloses": false,
+  "sourceDoesNotExposeExpandedOrControlsAria": true,
+  "cmsWrites": 0,
+  "enterTogglesClass": true,
+  "enterHeightObservation": "The immediate Enter snapshot retains animated list height108 while the open class has been removed; initial collapsed capture proves height0. Class toggle is authoritative for keyboard activation."
+}

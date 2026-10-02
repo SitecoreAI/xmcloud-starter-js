@@ -1,0 +1,5 @@
+# Automatic year discovery is supplied by the registered server-only SDK hook.
+# This integrated query carries context identity only; there is no datasource.
+query NewsroomYearNavigationContext($contextItem: String!, $language: String!) {
+  contextItem: item(path: $contextItem, language: $language) { id }
+}

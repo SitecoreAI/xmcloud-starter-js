@@ -1,0 +1,61 @@
+{
+  "scope": "Public live-source 2024 archive year navigation only",
+  "sourceUrl": "https://www.allianzlife.com/about/newsroom/2024-Press-Releases",
+  "widths": [
+    1024,
+    390
+  ],
+  "privatePreviewAuthCapturesIncluded": false,
+  "files": [
+    {
+      "name": "source-year-navigation-1024.html",
+      "bytes": 635,
+      "sha256": "1fed3e7b5852966c3923821812a43cfe966fac2d8742a832d9f36651ed0b10d5"
+    },
+    {
+      "name": "source-year-navigation-1024.json",
+      "bytes": 4793,
+      "sha256": "98f4c55607e9135684529d0d4cfa64ae55dc35042415b59654500c027de1211d"
+    },
+    {
+      "name": "source-year-navigation-1024.jpg",
+      "bytes": 61572,
+      "sha256": "7dd19f99472e1d7894edf50644856cf99a4ed1b6f29f1d97dd3bff0a6ed051b4"
+    },
+    {
+      "name": "source-year-navigation-390.html",
+      "bytes": 635,
+      "sha256": "1fed3e7b5852966c3923821812a43cfe966fac2d8742a832d9f36651ed0b10d5"
+    },
+    {
+      "name": "source-year-navigation-390.json",
+      "bytes": 4953,
+      "sha256": "6309fc8a208443f7de704083ec70c0fda737d1fd1f4563cfdde9d43406968e8d"
+    },
+    {
+      "name": "source-year-navigation-390.jpg",
+      "bytes": 33579,
+      "sha256": "9fedda320f03a6ac039a2f33abc4a6414be6908fa4b44c323005c60da64950f9"
+    },
+    {
+      "name": "source-year-navigation-390-expanded.html",
+      "bytes": 663,
+      "sha256": "2afe3ffcf8698e5f096a3bb2c571d5d3190fc3c57996a5f0a80209c4a581a358"
+    },
+    {
+      "name": "source-year-navigation-390-expanded.json",
+      "bytes": 1088,
+      "sha256": "5ca70a069b1957448c81978693cb5bfc29623b24517ea328f2c2cc0e754419c9"
+    },
+    {
+      "name": "source-year-navigation-390-expanded.jpg",
+      "bytes": 35099,
+      "sha256": "4903db503ad64e35a49e8b9d519e4c555e2f02f60005ecc0f5bba685c48f045c"
+    },
+    {
+      "name": "source-year-navigation-390-keyboard.json",
+      "bytes": 2709,
+      "sha256": "c5e4290cd4e70a505918233929c6af93ed4dd1363cddc8ff991475d2ddde16c8"
+    }
+  ]
+}

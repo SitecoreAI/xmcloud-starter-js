@@ -26,7 +26,6 @@ export interface NewsroomReleaseList {
 export interface PressReleaseArchiveDatasource {
   id?: string;
   heading?: NewsroomTextValue;
-  releases?: NewsroomReleaseList | null;
   fieldCollection?: NewsroomNativeField[] | null;
 }
 
