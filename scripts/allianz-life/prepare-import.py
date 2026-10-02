@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import copy
 import hashlib
+from html.parser import HTMLParser
 import importlib.util
 import json
 import mimetypes
@@ -42,6 +43,59 @@ ARCHETYPE_TEMPLATE = {
     "Marketing / topic landing": "Section Landing", "FAQ / glossary": "Section Landing",
 }
 FORBIDDEN_HTML = re.compile(r"<\s*(script|style|form|iframe|object|embed|html|head|body)\b|\bon\w+\s*=|javascript\s*:", re.I)
+HTML_ATTRIBUTE = re.compile(r"\s+([^\s/>=]+)(?:\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+)))?")
+
+
+def native_source_rich_text(value: str) -> str:
+    """Remove only our synthetic unavailable-link attribute before CMS import.
+
+    The modal uses the preserved href marker. This deliberately does not parse
+    and reserialize HTML, nor apply to native authored fields or the serializer.
+    """
+    offsets = [0]
+    offsets.extend(match.end() for match in re.finditer("\n", value))
+    removals = []
+
+    class SourceAnchorParser(HTMLParser):
+        def handle_starttag(self, tag, attrs):
+            if tag != "a":
+                return
+            hrefs = [v for k, v in attrs if k == "href"]
+            flags = [v for k, v in attrs if k == "data-demo-disabled"]
+            if len(hrefs) != 1 or hrefs[0] != "#demo-unavailable" or flags != ["true"]:
+                return
+            text = self.get_starttag_text()
+            position = 2  # <a; HTMLParser has already confirmed the tag name.
+            lexical = []
+            pending = []
+            while match := HTML_ATTRIBUTE.match(text, position):
+                name = match.group(1).lower()
+                lexical.append((name, next((v for v in match.groups()[1:] if v is not None), None)))
+                if name == "data-demo-disabled":
+                    line, column = self.getpos()
+                    start = offsets[line - 1] + column
+                    attribute_start = match.start(1)
+                    # Remove its horizontal separator, preserving any captured
+                    # line ending and other surrounding source whitespace.
+                    if text[attribute_start - 1] in " \t":
+                        attribute_start -= 1
+                    pending.append((start + attribute_start, start + match.end()))
+                position = match.end()
+            # HTMLParser decodes character references in attributes. Only our
+            # plain source literals, not entity-encoded lookalikes, are owned.
+            if ([v for k, v in lexical if k == "href"] == ["#demo-unavailable"]
+                    and [v for k, v in lexical if k == "data-demo-disabled"] == ["true"]):
+                removals.extend(pending)
+
+        def handle_startendtag(self, tag, attrs):
+            self.handle_starttag(tag, attrs)
+
+    parser = SourceAnchorParser(convert_charrefs=False)
+    parser.feed(value)
+    parser.close()
+    for start, end in reversed(removals):
+        value = value[:start] + value[end:]
+    return value
 
 
 def brace(value: str) -> str:
@@ -231,7 +285,7 @@ class Builder:
             if not isinstance(value, str) or FORBIDDEN_HTML.search(value):
                 self.exception(key, "unsafe-or-composite-rich-text", field=field_name)
                 return ""
-            return value
+            return native_source_rich_text(value)
         if kind == "Droplist":
             allowed = self.contract["parameters"].get(field_name, self.contract.get("dataOptions", {}).get(field_name, []))
             if value not in allowed and value not in (None, ""):
