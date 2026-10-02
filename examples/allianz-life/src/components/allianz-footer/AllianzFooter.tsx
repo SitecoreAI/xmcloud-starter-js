@@ -21,6 +21,7 @@ export const Default = ({ fields }: AllianzFooterProps) => {
   const [open, setOpen] = useState<string[]>([]);
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzFooter" />;
+  const social = (className: string) => <div className={className} aria-label="Social networks">{(data.socialNav?.targetItems ?? []).map((item) => <Link editable={isEditing} renderChildrenWhenEmpty={isEditing} field={allianzLinkField(item.link?.jsonValue, isEditing)} key={item.id} className="m-footer__social-link" aria-label={item.title?.jsonValue?.value || iconFieldLabel(item.icon?.jsonValue, item.link?.jsonValue?.value?.text)}><span className="a-icon"><AllianzFieldIcon field={item.icon?.jsonValue} decorative /></span></Link>)}</div>;
   return <footer className="c-footer">
     <div className="c-footer__container"><div className="c-footer__navigation"><div className="l-grid l-grid--max-width u-background-inherit"><div className="l-grid__row">
       {(data.primaryNav?.targetItems ?? []).map((group) => {
@@ -41,11 +42,12 @@ export const Default = ({ fields }: AllianzFooterProps) => {
       })}
     </div></div></div>
       <div className="l-grid l-grid--max-width c-footer__tagline"><div className="l-grid__row justify-content-center"><div className="l-grid__column-large-8 l-grid__column-medium-12"><RichText editable={isEditing} tag="h3" field={data.body?.jsonValue} className="c-heading c-footer__tagline-headline u-text-weight-light c-heading--subsection-medium" /></div></div></div>
-      <div className="m-footer__social u-hidden-small-down" aria-label="Social networks">{(data.socialNav?.targetItems ?? []).map((item) => <Link editable={isEditing} renderChildrenWhenEmpty={isEditing} field={allianzLinkField(item.link?.jsonValue, isEditing)} key={item.id} className="m-footer__social-link" aria-label={item.title?.jsonValue?.value || iconFieldLabel(item.icon?.jsonValue, item.link?.jsonValue?.value?.text)}><span className="a-icon"><AllianzFieldIcon field={item.icon?.jsonValue} decorative /></span></Link>)}</div>
+      {!isMobile && social('m-footer__social u-hidden-small-down')}
     </div>
     <div className="c-footer__container--curtain-panel"><hr className="c-divider c-divider--compact c-footer__divider" /><div className="c-footer__service">
       <nav className="c-footer__legal" aria-label="Service links">{(data.utilityNav?.targetItems ?? []).map((item) => <Link editable={isEditing} renderChildrenWhenEmpty={isEditing} key={item.id} field={allianzLinkField(item.link?.jsonValue, isEditing)} className="c-footer__legal-link"><Text editable={isEditing} field={item.title?.jsonValue} /></Link>)}</nav>
       <div className="c-footer__copyright"><Text editable={isEditing} field={data.copyright?.jsonValue} tag="small" className="c-copyright" /></div>
+      {isMobile && social('m-footer__social u-hidden-medium-up')}
     </div></div>
   </footer>;
 };

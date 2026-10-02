@@ -44,13 +44,13 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
     {mode.isEditing && <SitecoreStyles layoutData={layout} />}
     <div id={sourceBodyId} className={`${mode.isEditing ? 'editing-mode' : 'prod-mode'} ${legacy ? `allianz-legacy ${ny ? 'new-york' : ''}` : 'allianz-modern'} ${classes}`}>
       {mode.isDesignLibrary ? route && <DesignLibraryApp page={page} rendering={route} componentMap={componentMap} loadServerImportMap={() => import('.sitecore/import-map.server')} /> : <>
+        <ConsentControls />
         {header}
         {legacy ? <main id="main" className="container-fluid azl-contents"><div className="row">
           {sidebar && <aside className="col-md-2 col-sm-3 left-column">{placeholder('headless-sidebar')}</aside>}
           <div id="content-body" className={sidebar ? 'col-md-8 col-sm-9 center-column' : 'col-md-10 col-md-offset-1 center-column'}>{placeholder('headless-main')}</div>
         </div></main> : <main id="main"><div id="content">{placeholder('headless-main')}</div></main>}
         {footer}
-        <ConsentControls />
         <ServiceUnavailable />
       </>}
     </div>
