@@ -1,0 +1,509 @@
+{
+  "status": "Proposed bounded definition packet. Recorded IDs require fresh read. No native schema/cost acceptance claimed.",
+  "contracts": [
+    {
+      "technicalComponentName": "CompanyHero",
+      "displayName": "CompanyHero",
+      "kind": "rendering",
+      "fields": [
+        {
+          "name": "heading",
+          "displayName": "Heading",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "subtitle",
+          "displayName": "Subtitle",
+          "type": "Rich Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "image",
+          "displayName": "Image",
+          "type": "Image",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        }
+      ],
+      "renderingParameters": [
+        "RenderingIdentifier"
+      ],
+      "variants": [
+        "NewsroomShort"
+      ],
+      "fixedPresentation": "Source newsroom m-axlHero centered h1/subtitle and c-stage__image--short; one image feeds all sizes; existing Overlay remains distinct",
+      "newIdentity": null,
+      "reuseExistingTemplateId": "42adf8be-9a09-4980-a503-ed7159b7c235",
+      "reuseExistingRenderingId": "9282bc1e-734c-477a-96d1-8642e47c1e0c",
+      "componentName": "CompanyHero",
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+    },
+    {
+      "technicalComponentName": "NewsroomFeaturedUpdate",
+      "displayName": "Newsroom featured update",
+      "kind": "rendering",
+      "fields": [
+        {
+          "name": "label",
+          "displayName": "Label",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "release",
+          "displayName": "Featured release",
+          "type": "Droplink",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          },
+          "referenceTarget": "Existing PressRelease datasource item",
+          "sourceSetting": "Use actual read-backed source root/query and template identity; exact Source value remains pending native schema/parent reads",
+          "purpose": "Droplink to existing PressRelease datasource"
+        },
+        {
+          "name": "body",
+          "displayName": "Supporting text",
+          "type": "Rich Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          },
+          "purpose": "Rich Text (distinct feature copy)"
+        },
+        {
+          "name": "image",
+          "displayName": "Image",
+          "type": "Image",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        }
+      ],
+      "renderingParameters": [
+        "RenderingIdentifier"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "fixedPresentation": "Canonical source 6633 split, -is--flipped, -is--split, blue tile; h2 label then h3 referenced title. Preserve recovered CSS orientation; planning image-right inference is not a browser witness.",
+      "newIdentity": null,
+      "componentName": "NewsroomFeaturedUpdate",
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+    },
+    {
+      "technicalComponentName": "NewsroomRecentReleases",
+      "displayName": "Recent news releases",
+      "kind": "rendering",
+      "fields": [
+        {
+          "name": "heading",
+          "displayName": "Heading",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "releases",
+          "displayName": "News releases",
+          "type": "Multilist",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          },
+          "ordered": true,
+          "referenceTarget": "Existing PressRelease datasource items",
+          "sourceSetting": "Use actual read-backed source root/query and template identity; exact Source value remains pending native schema/parent reads",
+          "purpose": "Ordered Multilist to existing PressRelease datasources"
+        },
+        {
+          "name": "moreLink",
+          "displayName": "More releases link",
+          "type": "General Link",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        }
+      ],
+      "renderingParameters": [
+        "RenderingIdentifier"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "fixedPresentation": "Centered h2, source o-cards__col3, whole-card native page link, h4 title, Date: MM/DD/YYYY, summary copy; no image",
+      "newIdentity": null,
+      "componentName": "NewsroomRecentReleases",
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+    },
+    {
+      "technicalComponentName": "PressReleaseArchive",
+      "displayName": "Press release archive",
+      "kind": "rendering",
+      "fields": [
+        {
+          "name": "heading",
+          "displayName": "Heading",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "releases",
+          "displayName": "News releases",
+          "type": "Multilist",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          },
+          "ordered": true,
+          "referenceTarget": "Existing PressRelease datasource items",
+          "sourceSetting": "Use actual read-backed source root/query and template identity; exact Source value remains pending native schema/parent reads",
+          "purpose": "Ordered Multilist to existing PressRelease datasources"
+        }
+      ],
+      "renderingParameters": [
+        "RenderingIdentifier"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "fixedPresentation": "Source h1 introduction followed by medium-12/large-8 list; h5 linked titles, MMM dd, yyyy date and copy paragraphs; no images",
+      "newIdentity": null,
+      "componentName": "PressReleaseArchive",
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+    },
+    {
+      "technicalComponentName": "NewsroomPublicRelations",
+      "displayName": "Public relations team",
+      "kind": "rendering",
+      "fields": [
+        {
+          "name": "heading",
+          "displayName": "Heading",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "intro",
+          "displayName": "Introduction",
+          "type": "Rich Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "contacts",
+          "displayName": "Media contacts",
+          "type": "Multilist",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          },
+          "ordered": true,
+          "referenceTarget": "MediaContact records",
+          "sourceSetting": "Use actual read-backed source root/query and template identity; exact Source value remains pending native schema/parent reads",
+          "purpose": "Ordered Multilist to MediaContact records"
+        }
+      ],
+      "renderingParameters": [
+        "RenderingIdentifier"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "fixedPresentation": "Fixed blue section, People source icon, centered introduction and two white medium-6 contacts",
+      "newIdentity": null,
+      "componentName": "NewsroomPublicRelations",
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+    },
+    {
+      "technicalComponentName": "MediaContact",
+      "displayName": "Media contact",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "role",
+          "displayName": "Role",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "telephone",
+          "displayName": "Telephone",
+          "type": "General Link",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "email",
+          "displayName": "Email",
+          "type": "General Link",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        }
+      ],
+      "renderingParameters": [],
+      "variants": [],
+      "fixedPresentation": "Name styled separately; role, linked telephone and email on source lines; no authored layout selectors",
+      "newIdentity": null,
+      "componentName": "MediaContact"
+    },
+    {
+      "technicalComponentName": "NewsroomCallout",
+      "displayName": "Newsroom callout",
+      "kind": "rendering",
+      "fields": [
+        {
+          "name": "heading",
+          "displayName": "Heading",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "body",
+          "displayName": "Supporting text",
+          "type": "Rich Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "link",
+          "displayName": "Link",
+          "type": "General Link",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        }
+      ],
+      "renderingParameters": [
+        "RenderingIdentifier"
+      ],
+      "variants": [
+        "Experts",
+        "LearnMore"
+      ],
+      "fixedPresentation": "Source centered introduction with a-link arrow; Experts fixes transparent background/Badge icon, LearnMore fixes green background/Information icon; no button substitution",
+      "newIdentity": null,
+      "componentName": "NewsroomCallout",
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+    },
+    {
+      "technicalComponentName": "NewsroomCompanyProfile",
+      "displayName": "About Allianz Life",
+      "kind": "rendering",
+      "fields": [
+        {
+          "name": "heading",
+          "displayName": "Heading",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "facts",
+          "displayName": "Company facts",
+          "type": "Rich Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "companyImage",
+          "displayName": "Company image",
+          "type": "Image",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "parentHeading",
+          "displayName": "Parent company heading",
+          "type": "Single-Line Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "parentBody",
+          "displayName": "Parent company text",
+          "type": "Rich Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        },
+        {
+          "name": "parentImage",
+          "displayName": "Parent company image",
+          "type": "Image",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        }
+      ],
+      "renderingParameters": [
+        "RenderingIdentifier"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "fixedPresentation": "Canonical blue section, two white 5050 splits in source order; first -is--flipped,second normal. Preserve recovered CSS orientation and source facts and superscripts; inferred right/left planning labels require matched-width browser verification.",
+      "newIdentity": null,
+      "componentName": "NewsroomCompanyProfile",
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+    },
+    {
+      "technicalComponentName": "LegalDisclosures",
+      "displayName": "LegalDisclosures",
+      "kind": "rendering",
+      "fields": [
+        {
+          "name": "body",
+          "displayName": "Supporting text",
+          "type": "Rich Text",
+          "storage": {
+            "shared": false,
+            "unversioned": false
+          }
+        }
+      ],
+      "renderingParameters": [
+        "RenderingIdentifier"
+      ],
+      "variants": [
+        "NewsroomGrey"
+      ],
+      "fixedPresentation": "Source grey axlTileCollection / tileBody wrapper; no change to existing Press detail Default",
+      "newIdentity": null,
+      "reuseExistingTemplateId": "5ca9b873-e009-4111-a242-f0b85214a026",
+      "reuseExistingRenderingId": "f7e18515-349e-44a1-ad83-320cad3af403",
+      "componentName": "LegalDisclosures",
+      "renderingParameterTemplate": "Reuse actual read-backed existing SXA/headless parameter/base template required by native rendering registration; no new author design selectors. Exact ID remains pending read."
+    }
+  ],
+  "pressReleaseExtension": {
+    "reuseTemplateId": "8c7ba106-bf89-4b94-8667-06f4febe9d1a",
+    "field": {
+      "name": "releaseDate",
+      "displayName": "Release date",
+      "type": "Date",
+      "storage": {
+        "shared": false,
+        "unversioned": false
+      },
+      "dateOnly": true,
+      "nativeValue": "YYYYMMDDT000000Z"
+    },
+    "newIdentity": null
+  },
+  "recordedParentsToFreshRead": {
+    "componentTemplates": {
+      "id": "ae4cfc5a-5120-53b2-a1a0-5b83f206e4da",
+      "path": "/sitecore/templates/Project/Allianz Life/Components"
+    },
+    "renderings": {
+      "id": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "path": "/sitecore/layout/Renderings/Project/Allianz Life"
+    },
+    "variants": {
+      "id": "ac1fd13f-0038-47e2-a837-6d9d5647ad85",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants"
+    }
+  },
+  "requiredAdditionalReads": [
+    "Existing CompanyHero and LegalDisclosures data sections, fields, base templates, rendering parameter templates, datasource templates/locations and actual variant group parents. Preserve existing renderings and Default/Overlay variants.",
+    "Actual PressRelease data section, title/summary/body fields, base templates and absence/presence of releaseDate; all 81 article -> local Data -> owning Page identities.",
+    "Actual component/rendering/variant/standard field section and field-type definition IDs; actual standard rendering parameter/base template IDs before creating definitions.",
+    "Native existing Data folders and matching local purpose datasources on landing and three year Pages, then read exact field/storage/reference-source settings.",
+    "Fresh-read all 4 Pages current presentations, PageDesign and restricted placeholder/branch/rule parents. Global Main30 is unchanged.",
+    "Media Library exact source hero/recognition/company/parent assets; verify actual returned media IDs and intentionally empty/blank alts.",
+    "Target Preview GraphQL Item fields arguments, Field jsonValue editing metadata, MultilistField.targetItems completeness/order, DroplinkField.targetItem, parent.parent.url.path, and a selective fieldCollection projection if supported. Do not invent unsupported field arguments.",
+    "Measure full largest 32 projection and assert ordered IDs/date/URLs/completeness; validate6 recent and 1 curated feature. Only introduce server batch fallback on measured rejection."
+  ],
+  "referenceContract": {
+    "references": "Native ordered Multilist of existing PressRelease datasource IDs; curated Droplink for feature. Media contacts ordered Multilist of MediaContact records.",
+    "projection": [
+      "id",
+      "title.jsonValue",
+      "summary.jsonValue",
+      "releaseDate.jsonValue",
+      "parent.parent.id",
+      "parent.parent.url.path"
+    ],
+    "noCopies": [
+      "No articleTitle/summary copies in cards or listing records",
+      "No headline-derived URLs",
+      "No genericCardGrid author schema",
+      "No original-service integration restoration"
+    ],
+    "queryStatus": "Proposed field/reference/URL schema pending target read. Compact fieldCollection preferred if it can select only needed title/summary/date; otherwise explicit selected field aliases keep article body out."
+  },
+  "bindingOrder": [
+    "CompanyHero.NewsroomShort",
+    "NewsroomFeaturedUpdate.Default",
+    "NewsroomRecentReleases.Default",
+    "NewsroomPublicRelations.Default",
+    "NewsroomCallout.Experts",
+    "NewsroomCompanyProfile.Default",
+    "NewsroomCallout.LearnMore",
+    "LegalDisclosures.NewsroomGrey"
+  ],
+  "yearLists": {
+    "2024": 32,
+    "2025": 25,
+    "2026": 24
+  },
+  "sourcePlan": "Reviewed handoff newsroom-native-plan; source witnesses and reference manifests will be self-contained in component tests",
+  "sourceBrowserVerification": "Parent resolved visual orientation discrepancy: canonical DOM/classes and recovered CSS win over planning right/left inference. Match source browser at 703/704/991/992 before accepting image placement."
+}

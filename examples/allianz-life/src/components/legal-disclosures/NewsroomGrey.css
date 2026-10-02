@@ -1,0 +1,5 @@
+/* The body and empty trailing disclosure wrapper share the source grey. */
+.allianz-modern .allianz-newsroom-grey,
+.allianz-modern .allianz-newsroom-grey-trailing {
+  background-color: #bbbdbf;
+}

@@ -1,0 +1,3 @@
+/* Source CSS already supplies the 704/992 grid widths and headline/copy styles.
+   No recovered source rule defines teaser spacing, so no new margins are guessed. */
+.allianz-press-release-archive .c-search-result-text-teaser { min-width: 0; }

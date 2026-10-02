@@ -1,0 +1,3 @@
+/* Source tiles use the shared stack/white/medium-6 primitives. Long email labels
+ * may wrap without changing the two-column author contract. */
+.allianz-media-contact .tileBody a { overflow-wrap: anywhere; }

@@ -1,0 +1,57 @@
+{
+  "status": "Proposed fixed author contract. Exact target native definitions and GraphQL schema reads remain pending. No native identities assigned.",
+  "contract": {
+    "technicalComponentName": "MediaContact",
+    "displayName": "Media contact",
+    "kind": "record",
+    "fields": [
+      {
+        "name": "name",
+        "displayName": "Name",
+        "type": "Single-Line Text",
+        "storage": {
+          "shared": false,
+          "unversioned": false
+        }
+      },
+      {
+        "name": "role",
+        "displayName": "Role",
+        "type": "Single-Line Text",
+        "storage": {
+          "shared": false,
+          "unversioned": false
+        }
+      },
+      {
+        "name": "telephone",
+        "displayName": "Telephone",
+        "type": "General Link",
+        "storage": {
+          "shared": false,
+          "unversioned": false
+        }
+      },
+      {
+        "name": "email",
+        "displayName": "Email",
+        "type": "General Link",
+        "storage": {
+          "shared": false,
+          "unversioned": false
+        }
+      }
+    ],
+    "renderingParameters": [],
+    "variants": [],
+    "fixedPresentation": "Name styled separately; role, linked telephone and email on source lines; no authored layout selectors",
+    "newIdentity": null
+  },
+  "nativeReadGate": [
+    "Fresh-read matching template, fields, storage and reference source before adoption/create; bind only returned actual native IDs.",
+    "Validate target Item.fields / Field.jsonValue editing metadata; compact fieldCollection currently assumes purpose-local template fields only.",
+    "Native template/rendering/variant acceptance has not been claimed."
+  ],
+  "mockIntegration": "Canonical native hrefs and labels remain stored intact. Visitor General Link / Rich Text renderers reconcile external, tel and mailto with existing safeLink and #service-unavailable modal. Editing fields remain exact.",
+  "tests": "Self-contained copied source snippets and installed SDK/provider SSR; no canonical archive path dependency."
+}

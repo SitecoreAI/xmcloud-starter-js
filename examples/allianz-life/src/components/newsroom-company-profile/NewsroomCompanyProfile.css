@@ -1,0 +1,8 @@
+/* Retain the canonical tile primitives, source direction rules and 704px split.
+ * Fix only the source 50/50 widths; orientation is not an authoring choice. */
+@media (min-width: 704px) {
+  .allianz-modern .allianz-newsroom-company-profile .tile--5050 > .tileContent,
+  .allianz-modern .allianz-newsroom-company-profile .tile--5050 > .tileImage {
+    width: 50%;
+  }
+}

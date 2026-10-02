@@ -1,0 +1,75 @@
+{
+  "status": "Proposed fixed author contract. Exact target native definitions and GraphQL schema reads remain pending. No native identities assigned.",
+  "contract": {
+    "technicalComponentName": "NewsroomCallout",
+    "displayName": "Newsroom callout",
+    "kind": "rendering",
+    "fields": [
+      {
+        "name": "heading",
+        "displayName": "Heading",
+        "type": "Single-Line Text",
+        "storage": {
+          "shared": false,
+          "unversioned": false
+        }
+      },
+      {
+        "name": "body",
+        "displayName": "Supporting text",
+        "type": "Rich Text",
+        "storage": {
+          "shared": false,
+          "unversioned": false
+        }
+      },
+      {
+        "name": "link",
+        "displayName": "Link",
+        "type": "General Link",
+        "storage": {
+          "shared": false,
+          "unversioned": false
+        }
+      }
+    ],
+    "renderingParameters": [
+      "RenderingIdentifier"
+    ],
+    "variants": [
+      "Experts",
+      "LearnMore"
+    ],
+    "fixedPresentation": "Source centered introduction with a-link arrow; Experts fixes transparent background/Badge icon, LearnMore fixes green background/Information icon; no button substitution",
+    "newIdentity": null
+  },
+  "nativeReadGate": [
+    "Fresh-read matching template, fields, storage and reference source before adoption/create; bind only returned actual native IDs.",
+    "Validate target Item.fields / Field.jsonValue editing metadata; compact fieldCollection currently assumes purpose-local template fields only.",
+    "Native template/rendering/variant acceptance has not been claimed."
+  ],
+  "mockIntegration": "Canonical native hrefs and labels remain stored intact. Visitor General Link / Rich Text renderers reconcile external, tel and mailto with existing safeLink and #service-unavailable modal. Editing fields remain exact.",
+  "tests": "Self-contained copied source snippets and installed SDK/provider SSR; no canonical archive path dependency.",
+  "sourceWitnesses": [
+    {
+      "file": "__tests__/experts.source.html",
+      "canonicalArchiveSha256": "67d0381afc7271f7c1a4f6123bf7090a350018c1122a7a9de156a9d3db22615b",
+      "canonicalMember": "discovery/public-site/html/c61ffe61ef4cb216.html",
+      "sourceCharRange": [
+        54298,
+        63287
+      ],
+      "sha256": "cff70a2bd3f71e326701e18f62ec01a5d6873220052beef4e68e1cd676c8d84b"
+    },
+    {
+      "file": "__tests__/learn-more.source.html",
+      "canonicalArchiveSha256": "67d0381afc7271f7c1a4f6123bf7090a350018c1122a7a9de156a9d3db22615b",
+      "canonicalMember": "discovery/public-site/html/c61ffe61ef4cb216.html",
+      "sourceCharRange": [
+        68296,
+        71126
+      ],
+      "sha256": "c33c5db9f1669c565bae7b916d8d14864e06bb487b501915ed3c2a89c638d2d6"
+    }
+  ]
+}

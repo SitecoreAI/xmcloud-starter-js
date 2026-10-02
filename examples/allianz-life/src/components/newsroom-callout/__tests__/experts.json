@@ -1,0 +1,37 @@
+{
+  "id": "test-experts",
+  "heading": {
+    "jsonValue": {
+      "value": "Subject matter experts",
+      "metadata": {
+        "itemId": "test-datasource",
+        "fieldId": "experts-heading",
+        "fieldType": "Single-Line Text"
+      }
+    }
+  },
+  "body": {
+    "jsonValue": {
+      "value": "<p>Our subject matter experts can add insight and depth to your stories with experience in retirement-planning concerns, Social Security, market trends, investor outlooks, and more. If you are interested in speaking with one of our subject matter experts for a media interview, contact our public relations team.</p>",
+      "metadata": {
+        "itemId": "test-datasource",
+        "fieldId": "experts-body",
+        "fieldType": "Rich Text"
+      }
+    }
+  },
+  "link": {
+    "jsonValue": {
+      "value": {
+        "href": "/about/subject-matter-experts",
+        "text": "Meet our subject matter experts",
+        "target": ""
+      },
+      "metadata": {
+        "itemId": "test-datasource",
+        "fieldId": "experts-link",
+        "fieldType": "General Link"
+      }
+    }
+  }
+}

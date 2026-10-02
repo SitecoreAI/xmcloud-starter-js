@@ -1,0 +1,3 @@
+/* Source Badge/Information SVG sizing and color come from the original
+ * introduction primitives; the fixed arrow retains a-link behavior. */
+.allianz-newsroom-callout .tileIcon > svg { align-self: center; }

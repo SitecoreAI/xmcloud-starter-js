@@ -1,0 +1,7 @@
+# Proposed root read; exact native schema/metadata acceptance remains pending.
+query NewsroomCalloutData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    fieldCollection: fields { name jsonValue }
+  }
+}

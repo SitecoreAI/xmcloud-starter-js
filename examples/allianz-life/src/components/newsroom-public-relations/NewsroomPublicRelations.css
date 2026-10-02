@@ -1,0 +1,3 @@
+/* Shared source CSS sets 26px/40px SVGs within 40px/64px icon wrappers at
+ * the 704px breakpoint. Keep the fixed source People icon black and centered. */
+.allianz-newsroom-public-relations .tileIcon > svg { align-self: center; }

@@ -1,0 +1,20 @@
+# Proposed target contract; validate references, parent ownership, URL schema and
+# full 32-item Preview cost before native acceptance. No article body is selected.
+query PressReleaseArchiveData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    fieldCollection: fields { name jsonValue }
+    releases: field(name: "releases") {
+      jsonValue
+      ... on MultilistField {
+        targetItems {
+          id
+          title: field(name: "title") { jsonValue }
+          summary: field(name: "summary") { jsonValue }
+          releaseDate: field(name: "releaseDate") { jsonValue }
+          parent { parent { id url { path } } }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "test-contact-0",
+    "name": {
+      "jsonValue": {
+        "value": "Brett Weinberg",
+        "metadata": {
+          "itemId": "test-datasource",
+          "fieldId": "contact-0-name",
+          "fieldType": "Single-Line Text"
+        }
+      }
+    },
+    "role": {
+      "jsonValue": {
+        "value": "Assistant Vice President, Communications",
+        "metadata": {
+          "itemId": "test-datasource",
+          "fieldId": "contact-0-role",
+          "fieldType": "Single-Line Text"
+        }
+      }
+    },
+    "telephone": {
+      "jsonValue": {
+        "value": {
+          "href": "tel:763-765-7160",
+          "text": "763.765.7160",
+          "target": ""
+        },
+        "metadata": {
+          "itemId": "test-datasource",
+          "fieldId": "contact-0-telephone",
+          "fieldType": "General Link"
+        }
+      }
+    },
+    "email": {
+      "jsonValue": {
+        "value": {
+          "href": "mailto:brett.weinberg@allianzlife.com",
+          "text": "brett.weinberg@allianzlife.com",
+          "target": ""
+        },
+        "metadata": {
+          "itemId": "test-datasource",
+          "fieldId": "contact-0-email",
+          "fieldType": "General Link"
+        }
+      }
+    }
+  },
+  {
+    "id": "test-contact-1",
+    "name": {
+      "jsonValue": {
+        "value": "Claire Woit",
+        "metadata": {
+          "itemId": "test-datasource",
+          "fieldId": "contact-1-name",
+          "fieldType": "Single-Line Text"
+        }
+      }
+    },
+    "role": {
+      "jsonValue": {
+        "value": "Senior Communications Manager",
+        "metadata": {
+          "itemId": "test-datasource",
+          "fieldId": "contact-1-role",
+          "fieldType": "Single-Line Text"
+        }
+      }
+    },
+    "telephone": {
+      "jsonValue": {
+        "value": {
+          "href": "tel:763-765-5106",
+          "text": "763.765.5106",
+          "target": ""
+        },
+        "metadata": {
+          "itemId": "test-datasource",
+          "fieldId": "contact-1-telephone",
+          "fieldType": "General Link"
+        }
+      }
+    },
+    "email": {
+      "jsonValue": {
+        "value": {
+          "href": "mailto:claire.woit@allianzlife.com",
+          "text": "claire.woit@allianzlife.com",
+          "target": ""
+        },
+        "metadata": {
+          "itemId": "test-datasource",
+          "fieldId": "contact-1-email",
+          "fieldType": "General Link"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,7 @@
+# Proposed standalone record read; validate exact target schema before native use.
+query MediaContactData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    fieldCollection: fields { name jsonValue }
+  }
+}

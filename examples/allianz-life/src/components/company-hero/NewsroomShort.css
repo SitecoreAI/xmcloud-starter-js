@@ -1,0 +1,6 @@
+/* Source short-cover hero has its own picture; no overlay treatment. */
+@media (min-width: 992px) {
+  .allianz-modern .allianz-newsroom-short-hero .c-stage__image--short .c-hero__image {
+    max-height: 300px;
+  }
+}

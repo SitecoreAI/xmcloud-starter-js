@@ -1,0 +1,37 @@
+{
+  "id": "test-learn-more",
+  "heading": {
+    "jsonValue": {
+      "value": "Want to learn more?",
+      "metadata": {
+        "itemId": "test-datasource",
+        "fieldId": "learn-more-heading",
+        "fieldType": "Single-Line Text"
+      }
+    }
+  },
+  "body": {
+    "jsonValue": {
+      "value": "<p>Allianz Life has more than a century-long history of keeping its promises.</p>",
+      "metadata": {
+        "itemId": "test-datasource",
+        "fieldId": "learn-more-body",
+        "fieldType": "Rich Text"
+      }
+    }
+  },
+  "link": {
+    "jsonValue": {
+      "value": {
+        "href": "/about",
+        "text": "Visit About Allianz Life",
+        "target": ""
+      },
+      "metadata": {
+        "itemId": "test-datasource",
+        "fieldId": "learn-more-link",
+        "fieldType": "General Link"
+      }
+    }
+  }
+}

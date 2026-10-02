@@ -1,0 +1,1063 @@
+{
+  "sourceArchiveSha256": "67d0381afc7271f7c1a4f6123bf7090a350018c1122a7a9de156a9d3db22615b",
+  "years": [
+    {
+      "year": 2024,
+      "heading": "2024 press release archive",
+      "count": 32,
+      "source": {
+        "archiveMember": "discovery/public-site/html/ee20691b9a630d85.html",
+        "sha256": "5b4d443864a13081155f89453df2e26c2efe0490727622da7354deac7538bf82",
+        "bytes": 94679
+      },
+      "orderedArticleIds": [
+        "ced042d6-48cd-477f-8f00-681cdc63c8a0",
+        "97662cfc-5e28-400b-86d3-fa8cbd39f092",
+        "d8aae9f4-46e2-4a94-b8e7-07da99bbe3d1",
+        "4df97f87-03b5-4a92-aa00-7f5c43565ad8",
+        "8488d1b9-81c3-4197-93d4-247807bf4aa4",
+        "4ead3b41-e18c-4884-bee7-c8a0df0fd1fd",
+        "f3c0f13a-7c28-46ff-a3f4-71b72c83c2e8",
+        "454f36d4-71cf-4734-a633-5f8652126086",
+        "46ccb61d-4803-46b9-81f5-9eafdb5a1321",
+        "86d28ee7-5213-404d-a4e3-f272ad6955f1",
+        "ccfdf94f-cb48-4d50-a1cb-eafaa5955137",
+        "8f776c57-0545-4282-987f-579bc0a1301e",
+        "1276f632-6bb8-4f41-aabe-5a7679b18720",
+        "9055c276-b6d7-4088-8e7e-98b5fce312d2",
+        "01a8d5d3-1985-4cb2-b73e-d2300b8bc882",
+        "b8e80069-993a-47f5-b066-29e66decd556",
+        "f21b8cb9-90c8-49f3-81d1-7e30adf1241c",
+        "36a429cb-e4f1-4023-bad5-4be3786b7ea3",
+        "de3f4706-d6fa-4a9b-aa60-fb2ac17ff1e3",
+        "629d5c7e-bd2a-478c-88c3-52911f8ea781",
+        "3cc03d28-6a52-429d-90f4-7d2b4d4bc9c8",
+        "58a34a96-9f0a-48cb-a657-e62e8e311df8",
+        "a15d5fd9-e778-4dd3-b581-c633ad0e2024",
+        "7e4878fe-169f-4870-a434-17b9597c1c9e",
+        "093e11cf-4db6-4b44-be7d-12d0a2712318",
+        "21a80706-65d6-4571-b46d-cd3ab1d51cd8",
+        "b28df348-7bb3-4d8c-b097-486a89aef869",
+        "83bcb9f3-173c-4d62-865e-6b9effa55cb3",
+        "e2ec09dc-604e-4b06-a1ee-2ee1b7c9ad34",
+        "7882876a-89ca-4408-886f-4a31ff5d9c8a",
+        "481f68ce-7a3d-45ee-aae4-deeee08856a6",
+        "d65b3686-f005-41b1-b0c3-70e3d1d94c56"
+      ],
+      "rows": [
+        {
+          "sourceOrder": 1,
+          "articleId": "ced042d6-48cd-477f-8f00-681cdc63c8a0",
+          "pageId": "2e011883-9eae-4cb2-a412-42eeba0ca6a0",
+          "route": "/about/newsroom/2024-press-releases/more-americans-plan-to-focus-on-finances-in-2025",
+          "title": "More Americans Plan to Focus on Finances in 2025",
+          "dateIso": "2024-12-18",
+          "dateText": "Dec 18, 2024",
+          "snippet": "Allianz Life New Year\u2019s Resolutions Study finds 35% anticipate their finances will improve in the coming year"
+        },
+        {
+          "sourceOrder": 2,
+          "articleId": "97662cfc-5e28-400b-86d3-fa8cbd39f092",
+          "pageId": "c25f1946-790b-4d88-85aa-3f17d889bd16",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-partners-with-empower",
+          "title": "Allianz Life Partners with Empower to Offer First Fixed Index Annuity on its Platform",
+          "dateIso": "2024-12-05",
+          "dateText": "Dec 05, 2024",
+          "snippet": "The addition of Allianz Lifetime Income+\u00ae Annuity to Empower\u2019s suite of retirement income solutions will help increase access to guaranteed lifetime income."
+        },
+        {
+          "sourceOrder": 3,
+          "articleId": "d8aae9f4-46e2-4a94-b8e7-07da99bbe3d1",
+          "pageId": "8c12018c-5a75-44b2-a692-492607230793",
+          "route": "/about/newsroom/2024-press-releases/debt-is-limiting-american-retirement-savings",
+          "title": "Debt is Limiting American Retirement Savings",
+          "dateIso": "2024-12-02",
+          "dateText": "Dec 02, 2024",
+          "snippet": "Allianz Life study finds Americans worry debt will impact their future quality of life."
+        },
+        {
+          "sourceOrder": 4,
+          "articleId": "4df97f87-03b5-4a92-aa00-7f5c43565ad8",
+          "pageId": "ddbde3ef-a88a-4c0c-9344-9f2c87bfdbca",
+          "route": "/about/newsroom/2024-press-releases/americans-lack-plans-for-retirement-income",
+          "title": "Americans Lack Plans for Retirement Income",
+          "dateIso": "2024-10-29",
+          "dateText": "Oct 29, 2024",
+          "snippet": "Allianz Life study finds many worry about how they will turn retirement savings into retirement income."
+        },
+        {
+          "sourceOrder": 5,
+          "articleId": "8488d1b9-81c3-4197-93d4-247807bf4aa4",
+          "pageId": "9941abbd-0e2c-480e-9070-c2a6ff10aadd",
+          "route": "/about/newsroom/2024-press-releases/market-volatility-fuels-risk-averse-stance-among-investors",
+          "title": "Market Volatility Fuels Risk Averse Stance Among Investors",
+          "dateIso": "2024-09-24",
+          "dateText": "Sep 24, 2024",
+          "snippet": "Allianz Life study finds recent market volatility has Americans seeking protection."
+        },
+        {
+          "sourceOrder": 6,
+          "articleId": "4ead3b41-e18c-4884-bee7-c8a0df0fd1fd",
+          "pageId": "8cca601c-7ba0-4ef5-9ef4-6b2f2cf439ca",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-named-as-a-2024-best-workplace-in-financial-services-and-insurance",
+          "title": "Allianz Life Named as a 2024 Best Workplace in Financial Services & Insurance",
+          "dateIso": "2024-09-11",
+          "dateText": "Sep 11, 2024",
+          "snippet": "Company is recognized for workplace experience for ninth consecutive year."
+        },
+        {
+          "sourceOrder": 7,
+          "articleId": "f3c0f13a-7c28-46ff-a3f4-71b72c83c2e8",
+          "pageId": "e77dd0db-e8de-4e02-beb4-3660c7411348",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-named-seramount-top-company-for-executive-women",
+          "title": "Allianz Life Named Seramount Top Company for Executive Women",
+          "dateIso": "2024-09-10",
+          "dateText": "Sep 10, 2024",
+          "snippet": "Award recognizes company commitment to gender equality."
+        },
+        {
+          "sourceOrder": 8,
+          "articleId": "454f36d4-71cf-4734-a633-5f8652126086",
+          "pageId": "9e2ce591-f6e9-4eeb-8b23-f10016609dc4",
+          "route": "/about/newsroom/2024-press-releases/americans-lack-knowledge-about-social-security-benefits-in-retirement",
+          "title": "Americans Lack Knowledge About Social Security Benefits in Retirement",
+          "dateIso": "2024-08-27",
+          "dateText": "Aug 27, 2024",
+          "snippet": "Yet, most Americans have worries about the future of the program."
+        },
+        {
+          "sourceOrder": 9,
+          "articleId": "46ccb61d-4803-46b9-81f5-9eafdb5a1321",
+          "pageId": "cc56e833-529b-4998-9e1b-07d32a7a40f6",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-named-to-the-seramount-2024-inclusion-index",
+          "title": "Allianz Life Named to the Seramount 2024 Inclusion Index",
+          "dateIso": "2024-08-20",
+          "dateText": "Aug 20, 2024",
+          "snippet": "Recognition celebrates organizations that are excelling in building inclusive workplace cultures."
+        },
+        {
+          "sourceOrder": 10,
+          "articleId": "86d28ee7-5213-404d-a4e3-f272ad6955f1",
+          "pageId": "6dde6eb2-81c4-4fbb-bfdc-ea908ce3d8bc",
+          "route": "/about/newsroom/2024-press-releases/press-americans-worry-extreme-weather-will-rain-on-their-retirement",
+          "title": "Americans Worry Extreme Weather Will Rain on Their Retirement",
+          "dateIso": "2024-07-30",
+          "dateText": "Jul 30, 2024",
+          "snippet": "Allianz Life study finds few have a plan in place to address the rising costs of extreme weather."
+        },
+        {
+          "sourceOrder": 11,
+          "articleId": "ccfdf94f-cb48-4d50-a1cb-eafaa5955137",
+          "pageId": "802657af-2f85-43c7-89c6-b5f771311048",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-named-as-a-100-best-company-for-working-parents",
+          "title": "Allianz Life Named as a 100 Best Company for Working Parents",
+          "dateIso": "2024-07-16",
+          "dateText": "Jul 16, 2024",
+          "snippet": "Seramount recognizes company for the 10th time for helping parents find balance in their work and home lives."
+        },
+        {
+          "sourceOrder": 12,
+          "articleId": "8f776c57-0545-4282-987f-579bc0a1301e",
+          "pageId": "c31be36f-c454-4a96-a4f8-036eb6005229",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-launches-new-indexed-universal-life-insurance-product",
+          "title": "Allianz Life Launches New Indexed Universal Life Insurance Product",
+          "dateIso": "2024-07-16",
+          "dateText": "Jul 16, 2024",
+          "snippet": "Allianz Life Accumulator\u2122 offers new index choices and innovative \u201clock\u201d features"
+        },
+        {
+          "sourceOrder": 13,
+          "articleId": "1276f632-6bb8-4f41-aabe-5a7679b18720",
+          "pageId": "a818937b-a3e5-43c3-b187-2a5753c4e3f9",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-receives-great-place-to-work-certification",
+          "title": "Allianz Life receives Great Place to Work Certification",
+          "dateIso": "2024-07-11",
+          "dateText": "Jul 11, 2024",
+          "snippet": "Award voted by employees based on workplace culture and employee experience."
+        },
+        {
+          "sourceOrder": 14,
+          "articleId": "9055c276-b6d7-4088-8e7e-98b5fce312d2",
+          "pageId": "fd0145a4-4637-4687-9dbc-68b7b0a228d9",
+          "route": "/about/newsroom/2024-press-releases/americans-less-fearful-about-a-recession-and-investing",
+          "title": "Americans Less Fearful About a Recession and Investing",
+          "dateIso": "2024-06-25",
+          "dateText": "Jun 25, 2024",
+          "snippet": "Yet Allianz Life study finds many want more interaction with their financial professional"
+        },
+        {
+          "sourceOrder": 15,
+          "articleId": "01a8d5d3-1985-4cb2-b73e-d2300b8bc882",
+          "pageId": "83735bf4-e6bd-462a-9cbc-951e88d7aabe",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-celebrates-15th-year-as-a-top-mn-workplace",
+          "title": "Allianz Life Celebrates 15th year as a Top Minnesota Workplace",
+          "dateIso": "2024-06-24",
+          "dateText": "Jun 24, 2024",
+          "snippet": "Voted by employees, company earns a spot on the Star Tribune list for its commitment to workplace culture"
+        },
+        {
+          "sourceOrder": 16,
+          "articleId": "b8e80069-993a-47f5-b066-29e66decd556",
+          "pageId": "4c7f9756-cfe4-49a3-90b3-02719a89803c",
+          "route": "/about/newsroom/2024-press-releases/gen-x-approaching-retirement-crunch-time-with-savings-regrets",
+          "title": "Gen X Approaching Retirement Crunch Time with Savings Regrets",
+          "dateIso": "2024-06-13",
+          "dateText": "Jun 13, 2024",
+          "snippet": "Allianz Life study finds Gen Xers are less financially confident than boomers and millennials."
+        },
+        {
+          "sourceOrder": 17,
+          "articleId": "f21b8cb9-90c8-49f3-81d1-7e30adf1241c",
+          "pageId": "1bf07d8b-5d42-48bc-b1b3-9e7c96bc95bd",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-taps-ben-thomason-to-drive-growth-in-defined-contribution-market",
+          "title": "Allianz Life Taps Ben Thomason to Drive Growth in Defined Contribution Market",
+          "dateIso": "2024-06-04",
+          "dateText": "Jun 04, 2024",
+          "snippet": "The company is seizing opportunity in employer-sponsored retirement plans with its in-plan guaranteed lifetime income solution"
+        },
+        {
+          "sourceOrder": 18,
+          "articleId": "36a429cb-e4f1-4023-bad5-4be3786b7ea3",
+          "pageId": "4a6ee2ca-dcf0-426d-85d6-4163a43ad451",
+          "route": "/about/newsroom/2024-press-releases/nearly-half-of-americans-expect-slow-transition-into-retirement",
+          "title": "Nearly half of Americans expect slow transition into retirement",
+          "dateIso": "2024-05-07",
+          "dateText": "May 07, 2024",
+          "snippet": "Allianz Life study finds younger Americans more focused on leaving a financial legacy"
+        },
+        {
+          "sourceOrder": 19,
+          "articleId": "de3f4706-d6fa-4a9b-aa60-fb2ac17ff1e3",
+          "pageId": "7099e36b-6900-4963-8bba-93c7a925a3f8",
+          "route": "/about/newsroom/2024-press-releases/new-tool-turns-life-insurance-illustrations-into-full-policy-proposals-instantly",
+          "title": "New Tool Turns Life Insurance Illustrations into Full Policy Proposals Instantly",
+          "dateIso": "2024-04-16",
+          "dateText": "Apr 16, 2024",
+          "snippet": "Illustrations with Impact helps financial professionals show clients how a policy could help them"
+        },
+        {
+          "sourceOrder": 20,
+          "articleId": "629d5c7e-bd2a-478c-88c3-52911f8ea781",
+          "pageId": "a0c68590-5855-45f9-a2e3-06052da67dcc",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-gives-grants-to-four-local-nonprofits",
+          "title": "Allianz Life Gives $1.8 Million in Grants to Four Local Nonprofits",
+          "dateIso": "2024-04-11",
+          "dateText": "Apr 11, 2024",
+          "snippet": "Investments support organizations that help create long-term financial security."
+        },
+        {
+          "sourceOrder": 21,
+          "articleId": "3cc03d28-6a52-429d-90f4-7d2b4d4bc9c8",
+          "pageId": "5756b8b7-2a6b-400c-8c12-01bd8aabc8b8",
+          "route": "/about/newsroom/2024-press-releases/nearly-2-in-3-americans-worry-more-about-running-out-of-money-than-death",
+          "title": "Nearly 2 in 3 Americans Worry More about Running Out of Money than Death",
+          "dateIso": "2024-04-09",
+          "dateText": "Apr 09, 2024",
+          "snippet": "Allianz Life study finds concerns about high inflation, Social Security and high taxes fuel this fear."
+        },
+        {
+          "sourceOrder": 22,
+          "articleId": "58a34a96-9f0a-48cb-a657-e62e8e311df8",
+          "pageId": "e708895f-64b4-42e8-a8b5-257e8ca74cb5",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-named-one-of-the-2024-fortune-100-best-companies",
+          "title": "Allianz Life Named One of the 2024 Fortune 100 Best Companies to Work For\u00ae",
+          "dateIso": "2024-04-04",
+          "dateText": "Apr 04, 2024",
+          "snippet": "Work/life balance, commitment to continuous learning are cornerstones of Allianz Life culture"
+        },
+        {
+          "sourceOrder": 23,
+          "articleId": "a15d5fd9-e778-4dd3-b581-c633ad0e2024",
+          "pageId": "16a545ae-1d47-49f8-bc38-421c1df9fc73",
+          "route": "/about/newsroom/2024-press-releases/allianzim-launches-new-buffer15-uncapped-etf-series",
+          "title": "AllianzIM Launches New Buffer15 Uncapped ETF Series, Unlocking New Growth Opportunities",
+          "dateIso": "2024-04-01",
+          "dateText": "Apr 01, 2024",
+          "snippet": "New ETF Series Allows Investors to Participate in the Market\u2019s Growth Potential Without a Cap on Potential Returns after Exceeding the Spread"
+        },
+        {
+          "sourceOrder": 24,
+          "articleId": "7e4878fe-169f-4870-a434-17b9597c1c9e",
+          "pageId": "52b59230-d876-4b67-b62b-2b715a5bea15",
+          "route": "/about/newsroom/2024-press-releases/americans-reducing-retirement-savings-and-taking-on-debt-due-to-inflation",
+          "title": "Americans Reducing Retirement Savings and Taking on Debt Due to Inflation",
+          "dateIso": "2024-03-26",
+          "dateText": "Mar 26, 2024",
+          "snippet": "Allianz Life study finds ongoing inflation is hampering Americans ability to prepare for their financial future, but many are optimistic inflation will subside."
+        },
+        {
+          "sourceOrder": 25,
+          "articleId": "093e11cf-4db6-4b44-be7d-12d0a2712318",
+          "pageId": "0065ec26-d451-4d35-a61b-454c8fda57db",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-launches-new-accumulation-annuity",
+          "title": "Allianz Life Launches New Accumulation Annuity",
+          "dateIso": "2024-03-19",
+          "dateText": "Mar 19, 2024",
+          "snippet": "Allianz Accumulation Advantage+\u1d40\u1d39 combines accumulation potential with innovation and flexibility"
+        },
+        {
+          "sourceOrder": 26,
+          "articleId": "21a80706-65d6-4571-b46d-cd3ab1d51cd8",
+          "pageId": "dc92a19a-5cc0-4a87-92e6-9bdb831e5826",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-named-as-one-of-the-2024-worlds-most-ethical-companies",
+          "title": "Allianz Life Named as One of the 2024 World\u2019s Most Ethical Companies\u00ae",
+          "dateIso": "2024-03-04",
+          "dateText": "Mar 04, 2024",
+          "snippet": "Company recognized by Ethisphere for the fifth year in a row for commitment to business integrity"
+        },
+        {
+          "sourceOrder": 27,
+          "articleId": "b28df348-7bb3-4d8c-b097-486a89aef869",
+          "pageId": "1899ee33-e0e7-4540-a74b-76aeee06a385",
+          "route": "/about/newsroom/2024-press-releases/allianzim-launches-four-new-6-month-buffer10-etfs",
+          "title": "AllianzIM Launches Four New 6 Month Buffer10 ETFs, Now Offering More Monthly Outcome Periods",
+          "dateIso": "2024-03-01",
+          "dateText": "Mar 01, 2024",
+          "snippet": "Evolution of Suite Provides More Optionality for Investors Seeking Flexible, Short-Term Risk Mitigation Tools"
+        },
+        {
+          "sourceOrder": 28,
+          "articleId": "83bcb9f3-173c-4d62-865e-6b9effa55cb3",
+          "pageId": "af558d87-8569-4038-9a87-fc72f957090e",
+          "route": "/about/newsroom/2024-press-releases/allianz-life-recognized-for-training-and-development-programs",
+          "title": "Allianz Life Recognized For Training and Development Programs",
+          "dateIso": "2024-02-27",
+          "dateText": "Feb 27, 2024",
+          "snippet": "Company ranks No. 7 among the 2024 APEX Award winners"
+        },
+        {
+          "sourceOrder": 29,
+          "articleId": "e2ec09dc-604e-4b06-a1ee-2ee1b7c9ad34",
+          "pageId": "5e624312-32db-415f-b0a8-92828b86b2b0",
+          "route": "/about/newsroom/2024-press-releases/allianz-expands-sales-team-to-support-increasing-interest-in-protecting-retirement-assets",
+          "title": "Allianz Expands Sales Team to Support Increasing Interest in Protecting Retirement Assets",
+          "dateIso": "2024-02-13",
+          "dateText": "Feb 13, 2024",
+          "snippet": "The annuity market hit a new record in 2023 with Americans increasingly worried about their retirement"
+        },
+        {
+          "sourceOrder": 30,
+          "articleId": "7882876a-89ca-4408-886f-4a31ff5d9c8a",
+          "pageId": "214e25d0-092a-49b2-aeed-09d2f8d35f5b",
+          "route": "/about/newsroom/2024-press-releases/women-taking-on-more-financial-responsibility",
+          "title": "Women Taking On More Financial Responsibility",
+          "dateIso": "2024-02-06",
+          "dateText": "Feb 06, 2024",
+          "snippet": "Allianz Life study finds nearly half of all women consider themselves their household\u2019s CFO"
+        },
+        {
+          "sourceOrder": 31,
+          "articleId": "481f68ce-7a3d-45ee-aae4-deeee08856a6",
+          "pageId": "ba565aec-fc07-44c2-8935-3afa26660279",
+          "route": "/about/newsroom/2024-press-releases/allianzim-expands-its-risk-mitigation-toolkit-with-new-6-month-floor5-etf-series",
+          "title": "AllianzIM Expands Its Risk Mitigation Toolkit With New 6-Month Floor5 ETF Series",
+          "dateIso": "2024-02-01",
+          "dateText": "Feb 01, 2024",
+          "snippet": "AllianzIM Expands ETF Portfolio with 6 Month Floor5 ETF Series, Building on Derivatives and Options Trading Expertise"
+        },
+        {
+          "sourceOrder": 32,
+          "articleId": "d65b3686-f005-41b1-b0c3-70e3d1d94c56",
+          "pageId": "44f4e6f0-da40-42b9-ba6c-df65f8104127",
+          "route": "/about/newsroom/2024-press-releases/fewer-americans-are-optimistic-about-the-economy-in-2024",
+          "title": "Fewer Americans are Optimistic About the Economy in 2024",
+          "dateIso": "2024-01-02",
+          "dateText": "Jan 02, 2024",
+          "snippet": "Americans are keeping money out of the market with worries about inflation and interest rates"
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "heading": "2025 press release archive",
+      "count": 25,
+      "source": {
+        "archiveMember": "discovery/public-site/html/7f5c77f420a502b7.html",
+        "sha256": "48c5b5cccc9bce179461b66b526e18b1970a7e249eea002be7039d701c6c9dc6",
+        "bytes": 87985
+      },
+      "orderedArticleIds": [
+        "4275eaa6-7913-44b7-a51f-90a120593789",
+        "cecb4aeb-9703-40af-a9fc-ecd0eaa22a75",
+        "aa069ae4-671e-4b78-a7ed-b3a23225c6f8",
+        "6530f61b-9da3-4dcc-b1de-43e0dba7d054",
+        "fef6c750-3ab0-4bdc-8416-9dcfa2c46cee",
+        "ba7a448b-7d8b-439a-9dcb-6ca4548cf2a6",
+        "11518e63-cb96-4c6a-bbf1-c8704ba4c1db",
+        "62ce271f-8e0d-4a84-81f6-10fd0982ce29",
+        "e765c030-c5b7-4856-9a9d-a66186d9541a",
+        "c4d379f3-a9d1-4f5a-a10d-2ad3d34f32af",
+        "417f6119-8040-42a1-b30d-fb91c246c580",
+        "05326c37-5789-46b9-a800-f38c2f4064e4",
+        "d335bae5-0a79-4446-a65c-5bacc6841ff6",
+        "3b0f573a-5e1b-40e2-bd31-404a8a162ed1",
+        "be627adc-0bf2-4819-9d98-b0d543a352d7",
+        "cd67093d-c062-4a99-a262-71e96e5ec855",
+        "cdcaf2dd-b8c9-4533-8e20-2a410f3cf251",
+        "cb7e1acf-6545-4912-9082-cbe2a4fa6042",
+        "b9a82dcc-bd36-4723-9683-9538f558c698",
+        "09dad57f-3747-43df-9f70-5ef71864f26e",
+        "03306563-3350-4384-ba80-6bd4b2974e6d",
+        "79d3c71c-876c-4e8b-b815-640e1d153a1c",
+        "0b6f7cfc-e48c-4715-bb5b-26df76200e92",
+        "b95a09f5-675f-42d3-9c92-be4c6517ee9e",
+        "85cff969-6aa2-49cc-a53a-a8a156ef3649"
+      ],
+      "rows": [
+        {
+          "sourceOrder": 1,
+          "articleId": "4275eaa6-7913-44b7-a51f-90a120593789",
+          "pageId": "973ec014-6b35-4df7-af23-9b5b55472acd",
+          "route": "/about/newsroom/2025-press-releases/nearly-half-of-americans-more-stressed-heading-into-2026",
+          "title": "Nearly Half of Americans More Stressed Heading into 2026, Allianz Life Study Finds",
+          "dateIso": "2025-12-16",
+          "dateText": "Dec 16, 2025",
+          "snippet": "Many Americans anticipate making New Year\u2019s resolutions to improve finances."
+        },
+        {
+          "sourceOrder": 2,
+          "articleId": "cecb4aeb-9703-40af-a9fc-ecd0eaa22a75",
+          "pageId": "e93844c2-bb30-4cf3-a76f-1aa2257381a9",
+          "route": "/about/newsroom/2025-press-releases/allianzim-to-transfer-exchange-listings",
+          "title": "AllianzIM to Transfer Exchange Listings and Fund Name Changes",
+          "dateIso": "2025-12-05",
+          "dateText": "Dec 05, 2025",
+          "snippet": "AllianzIM today announces the listing exchange for multiple Buffered ETFs will transfer from the NYSE Arca to Cboe BZX Exchange effective on or about Dec. 22, 2025."
+        },
+        {
+          "sourceOrder": 3,
+          "articleId": "aa069ae4-671e-4b78-a7ed-b3a23225c6f8",
+          "pageId": "899fe3c8-2b9b-402b-9c4c-d2c10e7b5923",
+          "route": "/about/newsroom/2025-press-releases/allianz-and-keystone-fight-hunger",
+          "title": "Allianz Life commits $450,000 to help Keystone Community Services fight hunger in the Twin Cities",
+          "dateIso": "2025-11-20",
+          "dateText": "Nov 20, 2025",
+          "snippet": "Renewed investment helps Keystone respond to increased food insecurity this holiday season."
+        },
+        {
+          "sourceOrder": 4,
+          "articleId": "6530f61b-9da3-4dcc-b1de-43e0dba7d054",
+          "pageId": "64800469-944c-40b0-88a9-d992b2e1fc2d",
+          "route": "/about/newsroom/2025-press-releases/americans-lack-knowledge-about-social-security",
+          "title": "Most Americans Don\u2019t Know How Social Security Fits into their Retirement Plan, Allianz Life Study Finds",
+          "dateIso": "2025-10-21",
+          "dateText": "Oct 21, 2025",
+          "snippet": "Americans lack knowledge about Social Security and its role for retirement income."
+        },
+        {
+          "sourceOrder": 5,
+          "articleId": "fef6c750-3ab0-4bdc-8416-9dcfa2c46cee",
+          "pageId": "59c31946-c89b-4258-9e65-c475aa2995c9",
+          "route": "/about/newsroom/2025-press-releases/gen-x-nearing-retirement-with-worries",
+          "title": "Gen X Nearing Retirement With Worries About Limited Savings, Allianz Life Study Finds",
+          "dateIso": "2025-09-25",
+          "dateText": "Sep 25, 2025",
+          "snippet": "Concerns about market volatility and inflation putting long-term financial security at risk for Gen X"
+        },
+        {
+          "sourceOrder": 6,
+          "articleId": "ba7a448b-7d8b-439a-9dcb-6ca4548cf2a6",
+          "pageId": "cda23081-f1d4-4684-91f5-1085ce89fbbb",
+          "route": "/about/newsroom/2025-press-releases/sandwich-generation-neglecting-retirement-savings",
+          "title": "\u2018Sandwich Generation\u2019 Neglecting Retirement Savings, Allianz Life Study Finds",
+          "dateIso": "2025-09-02",
+          "dateText": "Sep 02, 2025",
+          "snippet": "Millennials and Gen Xers struggling with financial effect of caring for both children and parents"
+        },
+        {
+          "sourceOrder": 7,
+          "articleId": "11518e63-cb96-4c6a-bbf1-c8704ba4c1db",
+          "pageId": "551ffdd7-6c96-48fc-b126-b3c81cf6ccb3",
+          "route": "/about/newsroom/2025-press-releases/gptw-certification",
+          "title": "Allianz Life Receives Great Place to Work Certification\u2122",
+          "dateIso": "2025-07-29",
+          "dateText": "Jul 29, 2025",
+          "snippet": "Company recognized for 15 consecutive years, as voted by employees"
+        },
+        {
+          "sourceOrder": 8,
+          "articleId": "62ce271f-8e0d-4a84-81f6-10fd0982ce29",
+          "pageId": "e49e2be9-eac8-4e1f-bb97-d71316b26194",
+          "route": "/about/newsroom/2025-press-releases/gray-divorce-trend-threatens-retirement-security",
+          "title": "\u2018Gray Divorce\u2019 Trend Threatens Retirement Security, Allianz Life Study Finds",
+          "dateIso": "2025-07-22",
+          "dateText": "Jul 22, 2025",
+          "snippet": "Increasing rates of \u2018gray divorce\u2019 present a new risk to retirement."
+        },
+        {
+          "sourceOrder": 9,
+          "articleId": "e765c030-c5b7-4856-9a9d-a66186d9541a",
+          "pageId": "20eb87ac-99d3-4e41-afd1-3d2f0db52c03",
+          "route": "/about/newsroom/2025-press-releases/allianzim-launches-quarterly-reset-buffered-etfs-to-enhance-risk-management-flexibility",
+          "title": "AllianzIM Launches Quarterly Reset Buffered ETFs to Enhance Risk Management Flexibility",
+          "dateIso": "2025-07-01",
+          "dateText": "Jul 01, 2025",
+          "snippet": "New ETFs seek to offer additional opportunities to refresh upside potential and optimize downside protection"
+        },
+        {
+          "sourceOrder": 10,
+          "articleId": "c4d379f3-a9d1-4f5a-a10d-2ad3d34f32af",
+          "pageId": "a5d94aec-156e-40f0-880f-42f4a954aba7",
+          "route": "/about/newsroom/2025-press-releases/allianz-life-study-finds-record-high-investment-anxiety",
+          "title": "Allianz Life Study Finds Record High Investment Anxiety",
+          "dateIso": "2025-06-24",
+          "dateText": "Jun 24, 2025",
+          "snippet": "Recent market volatility is fueling worries about long-term financial outlook for retirement."
+        },
+        {
+          "sourceOrder": 11,
+          "articleId": "417f6119-8040-42a1-b30d-fb91c246c580",
+          "pageId": "bb993c63-308d-49bd-a3b5-c4f67891a8fc",
+          "route": "/about/newsroom/2025-press-releases/star-tribune-top-workplace",
+          "title": "Allianz Life Celebrates Top Workplace Status for 16 Consecutive Years",
+          "dateIso": "2025-06-17",
+          "dateText": "Jun 17, 2025",
+          "snippet": "Star Tribune recognizes company for its commitment to workplace culture and supporting employees"
+        },
+        {
+          "sourceOrder": 12,
+          "articleId": "05326c37-5789-46b9-a800-f38c2f4064e4",
+          "pageId": "092b68a7-6662-4a79-bc6b-af1dfcba0446",
+          "route": "/about/newsroom/2025-press-releases/american-financial-confidence-on-decline-since-2020",
+          "title": "Allianz Life Study Finds Americans\u2019 Financial Confidence On Decline Since 2020",
+          "dateIso": "2025-05-20",
+          "dateText": "May 20, 2025",
+          "snippet": "Fewer Americans think they will be able to financially support all their goals in life."
+        },
+        {
+          "sourceOrder": 13,
+          "articleId": "d335bae5-0a79-4446-a65c-5bacc6841ff6",
+          "pageId": "8d45444c-1f73-4029-8af2-e91366bab3a0",
+          "route": "/about/newsroom/2025-press-releases/new-versions-of-top-selling-fixed-index-annuities",
+          "title": "Allianz Life Introduces New Versions of Top-Selling Fixed Index Annuities",
+          "dateIso": "2025-05-06",
+          "dateText": "May 06, 2025",
+          "snippet": "The enhanced new products feature more options for diversification and personalization"
+        },
+        {
+          "sourceOrder": 14,
+          "articleId": "3b0f573a-5e1b-40e2-bd31-404a8a162ed1",
+          "pageId": "2b9bafdc-a205-4d16-b339-8646a295e16d",
+          "route": "/about/newsroom/2025-press-releases/allianz-life-names-new-chief-operating-officer-and-chief-actuary",
+          "title": "Allianz Life Names New Chief Operating Officer and Chief Actuary",
+          "dateIso": "2025-04-24",
+          "dateText": "Apr 24, 2025",
+          "snippet": "Adam Brown and Luca Gallo promoted from within to the company\u2019s executive leadership group"
+        },
+        {
+          "sourceOrder": 15,
+          "articleId": "be627adc-0bf2-4819-9d98-b0d543a352d7",
+          "pageId": "92c4f7dc-4759-4a67-b73d-04efe14c7b82",
+          "route": "/about/newsroom/2025-press-releases/americans-are-more-worried-about-running-out-of-money-than-death",
+          "title": "Americans Are More Worried About Running Out of Money Than Death",
+          "dateIso": "2025-04-22",
+          "dateText": "Apr 22, 2025",
+          "snippet": "Allianz Life study finds inflation, taxes, and Social Security worry contribute to fear"
+        },
+        {
+          "sourceOrder": 16,
+          "articleId": "cd67093d-c062-4a99-a262-71e96e5ec855",
+          "pageId": "e40457f1-d617-4cf1-bc27-3c16527dbfea",
+          "route": "/about/newsroom/2025-press-releases/retirement-plan-participants-seek-lifetime-income-and-guidance",
+          "title": "Retirement Plan Participants Seek Lifetime Income and Guidance",
+          "dateIso": "2025-04-21",
+          "dateText": "Apr 21, 2025",
+          "snippet": "New study from Allianz Center for the Future of Retirement uncovers attitudes, preferences, and growing demand for annuities in employer-sponsored plans"
+        },
+        {
+          "sourceOrder": 17,
+          "articleId": "cdcaf2dd-b8c9-4533-8e20-2a410f3cf251",
+          "pageId": "72d9fb1b-67d2-452a-8a2a-ce98afbda6ed",
+          "route": "/about/newsroom/2025-press-releases/fortune-100-best-companies",
+          "title": "Allianz Life Recognized on the 2025 Fortune 100 Best Companies to Work For\u00ae List",
+          "dateIso": "2025-04-02",
+          "dateText": "Apr 02, 2025",
+          "snippet": "Company recognized for culture built on outstanding benefits, work/life balance, and employee growth"
+        },
+        {
+          "sourceOrder": 18,
+          "articleId": "cb7e1acf-6545-4912-9082-cbe2a4fa6042",
+          "pageId": "41904a1c-91c5-4768-a0aa-0ae3e4ca3e49",
+          "route": "/about/newsroom/2025-press-releases/inflation-and-tariffs-increasingly-worrying-americans",
+          "title": "Allianz Life Study Finds Inflation and Tariffs Increasingly Worrying Americans",
+          "dateIso": "2025-03-25",
+          "dateText": "Mar 25, 2025",
+          "snippet": "Concern about an upcoming market crash increased in the first part of 2025"
+        },
+        {
+          "sourceOrder": 19,
+          "articleId": "b9a82dcc-bd36-4723-9683-9538f558c698",
+          "pageId": "2721f2b3-2d2e-4c05-88be-da8da28e2824",
+          "route": "/about/newsroom/2025-press-releases/wmec",
+          "title": "Allianz Life Named as One of the 2025 World\u2019s Most Ethical Companies\u00ae",
+          "dateIso": "2025-03-11",
+          "dateText": "Mar 11, 2025",
+          "snippet": "Company recognized by Ethisphere for the sixth year in a row for commitment to business integrity"
+        },
+        {
+          "sourceOrder": 20,
+          "articleId": "09dad57f-3747-43df-9f70-5ef71864f26e",
+          "pageId": "e3dffcfe-0fe2-414b-a73d-333fe40a1bb1",
+          "route": "/about/newsroom/2025-press-releases/allianzim-expands-buffer-allocation-etf-suite",
+          "title": "AllianzIM Expands Buffer Allocation ETF Suite with Launch of Buffer15 Uncapped ETF",
+          "dateIso": "2025-03-06",
+          "dateText": "Mar 06, 2025",
+          "snippet": "New ETF Offers Uncapped Market Upside in a Convenient, Single-Ticker Solution"
+        },
+        {
+          "sourceOrder": 21,
+          "articleId": "03306563-3350-4384-ba80-6bd4b2974e6d",
+          "pageId": "4decad55-d2c6-4696-86ae-573d99d9089d",
+          "route": "/about/newsroom/2025-press-releases/apex-training-award",
+          "title": "Allianz Life Recognized for Training and Development Programs",
+          "dateIso": "2025-02-18",
+          "dateText": "Feb 18, 2025",
+          "snippet": "Company recognized for the 11th time, ranking No. 5 among the 2025 APEX Award winners"
+        },
+        {
+          "sourceOrder": 22,
+          "articleId": "79d3c71c-876c-4e8b-b815-640e1d153a1c",
+          "pageId": "425668e3-84d3-4439-93e5-5371999519b0",
+          "route": "/about/newsroom/2025-press-releases/allianz-life-retirement-solutions-now-available-through-morgan-stanley",
+          "title": "Allianz Life Retirement Solutions Now Available Through Morgan Stanley",
+          "dateIso": "2025-01-21",
+          "dateText": "Jan 21, 2025",
+          "snippet": "More than 16,000 additional financial professionals now have access to Allianz Life annuities"
+        },
+        {
+          "sourceOrder": 23,
+          "articleId": "0b6f7cfc-e48c-4715-bb5b-26df76200e92",
+          "pageId": "ca80b65d-982a-4567-8335-728b461b944b",
+          "route": "/about/newsroom/2025-press-releases/majority-of-americans-anticipate-improved-economy-in-2025",
+          "title": "Majority of Americans Anticipate Improved Economy in 2025",
+          "dateIso": "2025-01-14",
+          "dateText": "Jan 14, 2025",
+          "snippet": "Allianz Life study finds ongoing inflation continues to pose a financial challenge"
+        },
+        {
+          "sourceOrder": 24,
+          "articleId": "b95a09f5-675f-42d3-9c92-be4c6517ee9e",
+          "pageId": "436e5250-3741-4814-b676-a00f6b30ad20",
+          "route": "/about/newsroom/2025-press-releases/allianzim-introduces-suite-of-buffer-allocation-etfs",
+          "title": "AllianzIM Introduces Suite of Buffer Allocation ETFs to Help Simplify a Risk Management Strategy for Investors",
+          "dateIso": "2025-01-08",
+          "dateText": "Jan 08, 2025",
+          "snippet": "New ETFs offer streamlined, single-ticker solutions for capital appreciation with downside risk mitigation"
+        },
+        {
+          "sourceOrder": 25,
+          "articleId": "85cff969-6aa2-49cc-a53a-a8a156ef3649",
+          "pageId": "93382d80-c246-4c8c-af06-cfbd9e67e8e8",
+          "route": "/about/newsroom/2025-press-releases/allianz-life-recognized-as-a-top-workplace-for-lgbtq-employees",
+          "title": "Allianz Life Recognized as a Top Workplace for LGBTQ+ Employees",
+          "dateIso": "2025-01-07",
+          "dateText": "Jan 07, 2025",
+          "snippet": "Company receives perfect score from Human Rights Campaign\u2019s Corporate Equality Index."
+        }
+      ]
+    },
+    {
+      "year": 2026,
+      "heading": "2026 press release archive",
+      "count": 24,
+      "source": {
+        "archiveMember": "discovery/public-site/html/221c279bc291a847.html",
+        "sha256": "5e2e14e0ef5220db80fc15622380e23025857334359b487b2ed431cf6ed10315",
+        "bytes": 88237
+      },
+      "orderedArticleIds": [
+        "1f59cff4-41e1-41ae-ac9f-b93a68fc1145",
+        "5cac6e29-7a5c-4e5f-b34f-675493287cf2",
+        "d6c38555-dc40-463a-aa33-c265d262013a",
+        "e2b1a9d0-0c51-4f6b-969b-200a92cecdc8",
+        "6933a2b7-4da5-4d92-a1db-d23231fe330b",
+        "8baef5af-5524-487a-9b43-22e0a1edb892",
+        "c40d0854-bc85-453e-b502-185acbdf3572",
+        "39901010-43e2-49b0-bcaa-7fc1d683a137",
+        "5bca627a-4d9b-412c-a1a6-9c71f24ab8ee",
+        "3d038caf-0044-4a5c-9144-6b0a69027e7d",
+        "1450bd3a-cd00-4fc9-848f-db552100a002",
+        "510181c8-cbf6-4e6c-a5ca-e19742515a6f",
+        "3c5dd648-7b87-4cb3-81e8-c0730e9ee1e8",
+        "81fc5066-853d-4fff-a32d-3d08c1caa6ba",
+        "92599d11-f59e-4382-a7e1-7a3fd8eb6175",
+        "e386d14c-2361-4e38-b653-5cd1e92e2ea2",
+        "fb63858c-cbe7-4105-942b-49da61180dd0",
+        "5d9c7d28-0219-4229-b221-0e0ccbcae625",
+        "262d8be0-a98d-4550-8c1b-097d963d1634",
+        "07ca19be-f73c-4941-9c43-18e3262a59b8",
+        "b8bd7153-018e-4eaa-a866-16eefad90a16",
+        "44c1cca4-1e28-45ee-a09d-0f4de39f0c8c",
+        "d33f73db-9b04-418c-ab43-f60fafe38fc8",
+        "23002ca0-3d38-4de6-9d73-2017dd51e3f1"
+      ],
+      "rows": [
+        {
+          "sourceOrder": 1,
+          "articleId": "1f59cff4-41e1-41ae-ac9f-b93a68fc1145",
+          "pageId": "451b9eae-4978-4d6b-9b4d-41ce406f9b9f",
+          "route": "/about/newsroom/2026-press-releases/3-in-4-americans-think-market-highs-are-unsustainable",
+          "title": "3 in 4 Americans Think Market Highs are Unsustainable, Allianz Life Study Finds",
+          "dateIso": "2026-09-22",
+          "dateText": "Sep 22, 2026",
+          "snippet": "When the long-term outlook feels overwhelming, many Americans splurge to feel better"
+        },
+        {
+          "sourceOrder": 2,
+          "articleId": "5cac6e29-7a5c-4e5f-b34f-675493287cf2",
+          "pageId": "b5b1e8c0-d1a5-4938-9915-47c3d9467ffd",
+          "route": "/about/newsroom/2026-press-releases/americans-without-children-are-less-confident-about-retirement",
+          "title": "Americans Without Children Are Less Confident About Retirement, Allianz Life Study Finds",
+          "dateIso": "2026-08-18",
+          "dateText": "Aug 18, 2026",
+          "snippet": "Parents may be more likely to have a plan but childcare and education costs limit retirement savings"
+        },
+        {
+          "sourceOrder": 3,
+          "articleId": "d6c38555-dc40-463a-aa33-c265d262013a",
+          "pageId": "c5162d82-ce6f-4360-bfae-c32a035f34d1",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-invests-$750000-to-help-address-growing-housing-and-food-insecurity-in-the-twin-cities",
+          "title": "Allianz Life Invests $750,000 to Help Address Growing Housing and Food Insecurity in the Twin Cities",
+          "dateIso": "2026-08-10",
+          "dateText": "Aug 10, 2026",
+          "snippet": "Funding supports 18 nonprofits as food demand reaches record levels and affordable housing shortages persist."
+        },
+        {
+          "sourceOrder": 4,
+          "articleId": "e2b1a9d0-0c51-4f6b-969b-200a92cecdc8",
+          "pageId": "61317929-847d-44ae-aea4-96da9da1f258",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-earns-great-place-to-work-certificatio-for-16th-consecutive-year",
+          "title": "Allianz Life Earns Great Place to Work Certification\u2122 for 16th consecutive year",
+          "dateIso": "2026-07-29",
+          "dateText": "Jul 29, 2026",
+          "snippet": "Company once again recognized for workplace culture based on employee voices"
+        },
+        {
+          "sourceOrder": 5,
+          "articleId": "6933a2b7-4da5-4d92-a1db-d23231fe330b",
+          "pageId": "b78d318a-4a51-4f05-aea3-842f270ba516",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-study-finds-americans-struggle-to-shift-from-retirement-saving-to-spending",
+          "title": "Allianz Life Study Finds Americans Struggle to Shift From Retirement Saving to Spending",
+          "dateIso": "2026-07-21",
+          "dateText": "Jul 21, 2026",
+          "snippet": "Retirement risks can make it difficult for Americans to feel confident spending their savings"
+        },
+        {
+          "sourceOrder": 6,
+          "articleId": "8baef5af-5524-487a-9b43-22e0a1edb892",
+          "pageId": "d498bf21-a229-4fe8-8d94-81f0335bb946",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-invests-in-financial-opportunity-centers-to-strengthen-financial-resilience",
+          "title": "Allianz Life Invests in Financial Opportunity Centers to Strengthen Financial Resilience in the Twin Cities",
+          "dateIso": "2026-07-16",
+          "dateText": "Jul 16, 2026",
+          "snippet": "Investment will expand access to integrated employment services, financial coaching, and income supports."
+        },
+        {
+          "sourceOrder": 7,
+          "articleId": "c40d0854-bc85-453e-b502-185acbdf3572",
+          "pageId": "65888231-915a-4e15-b9e2-50464da540c4",
+          "route": "/about/newsroom/2026-press-releases/allianzim-grows-international-buffered-etf-lineup-with-launch-of-juli",
+          "title": "AllianzIM Grows International Buffered ETF Lineup with Launch of JULI",
+          "dateIso": "2026-07-01",
+          "dateText": "Jul 01, 2026",
+          "snippet": "AllianzIM International Equity Buffer15 Uncapped Jul ETF expands defined downside protection and unlimited upside potential beyond a spread to investors seeking international equity exposure"
+        },
+        {
+          "sourceOrder": 8,
+          "articleId": "39901010-43e2-49b0-bcaa-7fc1d683a137",
+          "pageId": "9d49a88f-a305-4975-b3c7-bc7929222a3d",
+          "route": "/about/newsroom/2026-press-releases/only-1-in-4-americans-think-now-is-a-good-time-to-invest",
+          "title": "Only 1 in 4 Americans Think Now Is A Good Time To Invest, Allianz Life Study Finds",
+          "dateIso": "2026-06-23",
+          "dateText": "Jun 23, 2026",
+          "snippet": "Half say they made changes to their investments to make them less risky because of recent market volatility."
+        },
+        {
+          "sourceOrder": 9,
+          "articleId": "5bca627a-4d9b-412c-a1a6-9c71f24ab8ee",
+          "pageId": "cb99a089-8f83-4be8-abf9-3f3eb9246221",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-named-star-tribune-top-workplace-for-17th-consecutive-year",
+          "title": "Allianz Life Named Star Tribune Top Workplace for 17th Consecutive Year",
+          "dateIso": "2026-06-15",
+          "dateText": "Jun 15, 2026",
+          "snippet": "Company recognized for continued commitment to workplace culture and supporting employees"
+        },
+        {
+          "sourceOrder": 10,
+          "articleId": "3d038caf-0044-4a5c-9144-6b0a69027e7d",
+          "pageId": "08e1388d-cab7-4242-938d-213094b4c9ef",
+          "route": "/about/newsroom/2026-press-releases/many-americans-retire-earlier-than-planned",
+          "title": "Many Americans Retire Earlier Than Planned\u2014Often Not by Choice\u2014Allianz Life Study Finds",
+          "dateIso": "2026-05-19",
+          "dateText": "May 19, 2026",
+          "snippet": "Early retirement heightens risks, showing the need for flexible financial strategies"
+        },
+        {
+          "sourceOrder": 11,
+          "articleId": "1450bd3a-cd00-4fc9-848f-db552100a002",
+          "pageId": "b432f58a-cf4b-4e8d-aceb-18135cdb2a98",
+          "route": "/about/newsroom/2026-press-releases/fear-of-running-out-of-money-over-death-at-record-high",
+          "title": "Allianz Life Study Finds Fear of Running Out of Money Over Death at Record High",
+          "dateIso": "2026-04-23",
+          "dateText": "Apr 23, 2026",
+          "snippet": "Rising costs, economic uncertainty, and a lack of written retirement plans are fueling concerns."
+        },
+        {
+          "sourceOrder": 12,
+          "articleId": "510181c8-cbf6-4e6c-a5ca-e19742515a6f",
+          "pageId": "d9d7edbe-49e6-4d1a-ba3b-ee542729990f",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-adds-new-accumulation-focused-fixed-index-annuities",
+          "title": "Allianz Life Adds New Accumulation-Focused Fixed Index Annuities",
+          "dateIso": "2026-04-21",
+          "dateText": "Apr 21, 2026",
+          "snippet": "The longtime industry leader is launching two new FIAs that include signature features such as Index Lock."
+        },
+        {
+          "sourceOrder": 13,
+          "articleId": "3c5dd648-7b87-4cb3-81e8-c0730e9ee1e8",
+          "pageId": "77211ca6-76e4-4cd9-9d06-1e501531fdbf",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-earns-spot-on-the-2026-fortune-100-best-companies-to-work-for-list",
+          "title": "Allianz Life Earns Spot on the 2026 Fortune 100 Best Companies to Work For\u00ae List",
+          "dateIso": "2026-04-01",
+          "dateText": "Apr 01, 2026",
+          "snippet": "Recognition reinforces Allianz Life\u2019s reputation as a great place to work and build a career."
+        },
+        {
+          "sourceOrder": 14,
+          "articleId": "81fc5066-853d-4fff-a32d-3d08c1caa6ba",
+          "pageId": "0951a99f-0fc2-493d-a981-58b87d80a79e",
+          "route": "/about/newsroom/2026-press-releases/allianzim-expands-buffered-etf-suite",
+          "title": "AllianzIM Expands Buffered ETF Suite with Latest International Fund and Seven New Quarterly-Reset Strategies",
+          "dateIso": "2026-04-01",
+          "dateText": "Apr 01, 2026",
+          "snippet": "The rollout features a new international Uncapped Buffered ETF and quarterly reset, single-ticker buffers providing exposure to U.S. and global indexes."
+        },
+        {
+          "sourceOrder": 15,
+          "articleId": "92599d11-f59e-4382-a7e1-7a3fd8eb6175",
+          "pageId": "bd10b677-d443-4784-b0cd-e566b425061c",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-supports-dress-for-success-twin-cities-with-three-year-grant",
+          "title": "Allianz Life Supports Dress For Success Twin Cities with Three-Year Grant",
+          "dateIso": "2026-03-31",
+          "dateText": "Mar 31, 2026",
+          "snippet": "Funding expands rural outreach and reduces barriers for women seeking employment."
+        },
+        {
+          "sourceOrder": 16,
+          "articleId": "e386d14c-2361-4e38-b653-5cd1e92e2ea2",
+          "pageId": "8d95a91f-ee7b-4410-a36c-c865f8fadfc0",
+          "route": "/about/newsroom/2026-press-releases/retirement-tax-worries-on-the-rise-among-americans",
+          "title": "Retirement Tax Worries on the Rise Among Americans, Allianz Life Study Finds",
+          "dateIso": "2026-03-24",
+          "dateText": "Mar 24, 2026",
+          "snippet": "Generation Xers in particular are worried about taxes and market volatility on their retirement income."
+        },
+        {
+          "sourceOrder": 17,
+          "articleId": "fb63858c-cbe7-4105-942b-49da61180dd0",
+          "pageId": "fd2850f7-8acb-4bbc-8011-38ca8902fbbb",
+          "route": "/about/newsroom/2026-press-releases/jessie-diggins-returns-to-minnesota-for-celebration-event-following-retirement-from-ski-racing",
+          "title": "Jessie Diggins returns to Minnesota for celebration event following retirement from ski racing",
+          "dateIso": "2026-03-20",
+          "dateText": "Mar 20, 2026",
+          "snippet": "Minnesotans are invited to \u201cHere Comes Diggins!\u201d, a public celebration at Allianz Field, presented by Allianz and Mortenson"
+        },
+        {
+          "sourceOrder": 18,
+          "articleId": "5d9c7d28-0219-4229-b221-0e0ccbcae625",
+          "pageId": "f9af77aa-4562-4a35-bed3-731e5054df83",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-named-as-one-of-the-2026-worlds-most-ethical-companies",
+          "title": "Allianz Life Named as One of the 2026 World\u2019s Most Ethical Companies\u00ae",
+          "dateIso": "2026-03-18",
+          "dateText": "Mar 18, 2026",
+          "snippet": "Company recognized by Ethisphere for the seventh year in a row for its commitment to business integrity"
+        },
+        {
+          "sourceOrder": 19,
+          "articleId": "262d8be0-a98d-4550-8c1b-097d963d1634",
+          "pageId": "eced4a52-f110-4e93-8b2c-3a235ebf6476",
+          "route": "/about/newsroom/2026-press-releases/new-allianz-life-annuity-offers-added-flexibility-in-income-benefits",
+          "title": "New Allianz Life Annuity Offers Added Flexibility in Income Benefits",
+          "dateIso": "2026-03-10",
+          "dateText": "Mar 10, 2026",
+          "snippet": "Index Advantage+ Select Income\u2122 builds on the history of RILA innovation at Allianz."
+        },
+        {
+          "sourceOrder": 20,
+          "articleId": "07ca19be-f73c-4941-9c43-18e3262a59b8",
+          "pageId": "2b711025-27eb-43a2-b1a5-4a8bde59f7e2",
+          "route": "/about/newsroom/2026-press-releases/women-now-are-the-chief-financial-officer",
+          "title": "Majority of Women Now Are the Chief Financial Officer of Their Household, Allianz Life Study Finds",
+          "dateIso": "2026-03-02",
+          "dateText": "Mar 02, 2026",
+          "snippet": "Yet, fewer women say they feel confident about their current retirement financial plans."
+        },
+        {
+          "sourceOrder": 21,
+          "articleId": "b8bd7153-018e-4eaa-a866-16eefad90a16",
+          "pageId": "9af7ab20-cc42-4a42-baa3-51bedbfede95",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-recognized-for-training-and-development-programs",
+          "title": "Allianz Life Recognized For Training and Development Programs",
+          "dateIso": "2026-02-24",
+          "dateText": "Feb 24, 2026",
+          "snippet": "Company ranking No. 2 among the 2026 Training MVP Award winners"
+        },
+        {
+          "sourceOrder": 22,
+          "articleId": "44c1cca4-1e28-45ee-a09d-0f4de39f0c8c",
+          "pageId": "e39c3ce6-0b2f-4a31-aa3c-d9e98497f57b",
+          "route": "/about/newsroom/2026-press-releases/allianz-life-launches-fixed-index-annuity-content-on-interactive-tool",
+          "title": "Allianz Life Launches Fixed Index Annuity Content on Interactive Tool",
+          "dateIso": "2026-02-05",
+          "dateText": "Feb 05, 2026",
+          "snippet": "Allianz Life is the first carrier to bring fixed index annuities to the Ensight\u2122 Platform"
+        },
+        {
+          "sourceOrder": 23,
+          "articleId": "d33f73db-9b04-418c-ab43-f60fafe38fc8",
+          "pageId": "5d57e5b5-6542-48b0-bcff-125a3eb9f989",
+          "route": "/about/newsroom/2026-press-releases/allianzim-buffered-etf-suite-expands-with-launch-of-international-fund",
+          "title": "AllianzIM Buffered ETF Suite Expands with Launch of International Fund",
+          "dateIso": "2026-02-02",
+          "dateText": "Feb 02, 2026",
+          "snippet": "Allianz International Equity Buffer15 Uncapped Jan ETF (JANI) to offer international equity and asset exposure with downside buffer and uncapped upside"
+        },
+        {
+          "sourceOrder": 24,
+          "articleId": "23002ca0-3d38-4de6-9d73-2017dd51e3f1",
+          "pageId": "b0c7df75-32db-44c0-bdfa-70b4b6e7f628",
+          "route": "/about/newsroom/2026-press-releases/americans-cutting-back-on-retirement-savings",
+          "title": "Americans Cutting Back on Retirement Savings, Allianz Life Study Finds",
+          "dateIso": "2026-01-13",
+          "dateText": "Jan 13, 2026",
+          "snippet": "Fewer say they are optimistic about their financial situation improving in 2026 than last year."
+        }
+      ]
+    }
+  ],
+  "recent": [
+    {
+      "sourceOrder": 1,
+      "route": "/about/newsroom/2026-press-releases/3-in-4-americans-think-market-highs-are-unsustainable",
+      "title": "3 in 4 Americans Think Market Highs are Unsustainable, Allianz Life Study Finds",
+      "dateIso": "2026-09-22",
+      "snippet": "When the long-term outlook feels overwhelming, many Americans splurge to feel better",
+      "nativeIds": {
+        "pageId": "451b9eae-4978-4d6b-9b4d-41ce406f9b9f",
+        "dataId": "0e777a49-f937-41d4-8238-9541e8788f42",
+        "articleId": "1f59cff4-41e1-41ae-ac9f-b93a68fc1145"
+      },
+      "nativeReceipt": "/workspace/scratch/19d699b9a9db/recovery/press-81/evidence/PRESS-BATCH-50-RECEIPT.json"
+    },
+    {
+      "sourceOrder": 2,
+      "route": "/about/newsroom/2026-press-releases/americans-without-children-are-less-confident-about-retirement",
+      "title": "Americans Without Children Are Less Confident About Retirement, Allianz Life Study Finds",
+      "dateIso": "2026-08-18",
+      "snippet": "Parents may be more likely to have a plan but childcare and education costs limit retirement savings",
+      "nativeIds": {
+        "pageId": "b5b1e8c0-d1a5-4938-9915-47c3d9467ffd",
+        "dataId": "19d15047-4e30-4c6f-9faa-54a91250039f",
+        "articleId": "5cac6e29-7a5c-4e5f-b34f-675493287cf2"
+      },
+      "nativeReceipt": "/workspace/scratch/19d699b9a9db/recovery/press-81/evidence/PRESS-BATCH-70-RECEIPT.json"
+    },
+    {
+      "sourceOrder": 3,
+      "route": "/about/newsroom/2026-press-releases/allianz-life-invests-$750000-to-help-address-growing-housing-and-food-insecurity-in-the-twin-cities",
+      "title": "Allianz Life Invests $750,000 to Help Address Growing Housing and Food Insecurity in the Twin Cities",
+      "dateIso": "2026-08-10",
+      "snippet": "Funding supports 18 nonprofits as food demand reaches record levels and affordable housing shortages persist.",
+      "nativeIds": {
+        "pageId": "c5162d82-ce6f-4360-bfae-c32a035f34d1",
+        "dataId": "c7098d1c-fd74-40d8-a235-3e7404d4d2b5",
+        "articleId": "d6c38555-dc40-463a-aa33-c265d262013a"
+      },
+      "nativeReceipt": "/workspace/scratch/19d699b9a9db/recovery/press-81/evidence/PRESS-BATCH-60-RECEIPT.json"
+    },
+    {
+      "sourceOrder": 4,
+      "route": "/about/newsroom/2026-press-releases/allianz-life-earns-great-place-to-work-certificatio-for-16th-consecutive-year",
+      "title": "Allianz Life Earns Great Place to Work Certification\u2122 for 16th consecutive year",
+      "dateIso": "2026-07-29",
+      "snippet": "Company once again recognized for workplace culture based on employee voices",
+      "nativeIds": {
+        "pageId": "61317929-847d-44ae-aea4-96da9da1f258",
+        "dataId": "1ca07f03-3de1-457d-b636-59e58c3d41c2",
+        "articleId": "e2b1a9d0-0c51-4f6b-969b-200a92cecdc8"
+      },
+      "nativeReceipt": "/workspace/scratch/19d699b9a9db/recovery/press-81/evidence/PRESS-BATCH-50-RECEIPT.json"
+    },
+    {
+      "sourceOrder": 5,
+      "route": "/about/newsroom/2026-press-releases/allianz-life-study-finds-americans-struggle-to-shift-from-retirement-saving-to-spending",
+      "title": "Allianz Life Study Finds Americans Struggle to Shift From Retirement Saving to Spending",
+      "dateIso": "2026-07-21",
+      "snippet": "Retirement risks can make it difficult for Americans to feel confident spending their savings",
+      "nativeIds": {
+        "pageId": "b78d318a-4a51-4f05-aea3-842f270ba516",
+        "dataId": "9c4500ae-f809-4f2c-978f-57089b137e01",
+        "articleId": "6933a2b7-4da5-4d92-a1db-d23231fe330b"
+      },
+      "nativeReceipt": "/workspace/scratch/19d699b9a9db/recovery/press-81/evidence/PRESS-FIRST-TWO-CONTENT-RECEIPT.json"
+    },
+    {
+      "sourceOrder": 6,
+      "route": "/about/newsroom/2026-press-releases/allianz-life-invests-in-financial-opportunity-centers-to-strengthen-financial-resilience",
+      "title": "Allianz Life Invests in Financial Opportunity Centers to Strengthen Financial Resilience in the Twin Cities",
+      "dateIso": "2026-07-16",
+      "snippet": "Investment will expand access to integrated employment services, financial coaching, and income supports.",
+      "nativeIds": {
+        "pageId": "d498bf21-a229-4fe8-8d94-81f0335bb946",
+        "dataId": "55e9a3bd-8898-4cf2-b834-4c62c327d7b6",
+        "articleId": "8baef5af-5524-487a-9b43-22e0a1edb892"
+      },
+      "nativeReceipt": "/workspace/scratch/19d699b9a9db/recovery/press-81/evidence/PRESS-BATCH-60-RECEIPT.json"
+    }
+  ],
+  "curatedFeature": {
+    "route": "/about/newsroom/2026-press-releases/allianz-life-named-as-one-of-the-2026-worlds-most-ethical-companies",
+    "nativeIds": {
+      "pageId": "f9af77aa-4562-4a35-bed3-731e5054df83",
+      "dataId": "ab65c677-8daf-4449-8652-43c0f4e071dc",
+      "articleId": "5d9c7d28-0219-4229-b221-0e0ccbcae625"
+    },
+    "title": "Allianz Life Named as One of the 2026 World\u2019s Most Ethical Companies\u00ae",
+    "dateIso": "2026-03-18",
+    "articleReceipt": "/workspace/scratch/19d699b9a9db/recovery/press-81/evidence/PRESS-BATCH-60-RECEIPT.json"
+  },
+  "seeds": {
+    "recent": {
+      "heading": "Recent Allianz Life news releases",
+      "orderedReleaseArticleIds": [
+        "1f59cff4-41e1-41ae-ac9f-b93a68fc1145",
+        "5cac6e29-7a5c-4e5f-b34f-675493287cf2",
+        "d6c38555-dc40-463a-aa33-c265d262013a",
+        "e2b1a9d0-0c51-4f6b-969b-200a92cecdc8",
+        "6933a2b7-4da5-4d92-a1db-d23231fe330b",
+        "8baef5af-5524-487a-9b43-22e0a1edb892"
+      ],
+      "moreLink": {
+        "href": "/about/newsroom/2026-Press-Releases",
+        "text": "RightRight\r\n\t\t\t\t\t\t\t\t\t\t\t\r\n\r\n\t\t\t\t\t\t\t\t\t\tMore press releases",
+        "target": "",
+        "rel": ""
+      },
+      "moreLinkNativePageId": "2d7acf2a-9474-4d73-bcd5-cd0d93b48865",
+      "sourceCount": 6,
+      "dateFormat": "Date: MM/DD/YYYY"
+    },
+    "featured": {
+      "label": "Latest update:",
+      "releaseArticleId": "5d9c7d28-0219-4229-b221-0e0ccbcae625",
+      "owningPageId": "f9af77aa-4562-4a35-bed3-731e5054df83",
+      "referencedTitle": "Allianz Life Named as One of the 2026 World\u2019s Most Ethical Companies\u00ae",
+      "sourceDateNotDisplayed": "2026-03-18",
+      "bodySourceHtml": "<p>We have been recognized by Ethisphere for the seventh year in a row for our commitment to business integrity.</p>\n<p><a href=\"/about/newsroom/2026-Press-Releases/Allianz-Life-Named-as-One-of-the-2026-Worlds-Most-Ethical-Companies\">Read more about this recognition</a>, including our commitment to doing what\u2019s right through robust ethics, compliance, and governance practices.</p>",
+      "image": {
+        "sourcePath": "/-/media/Feature/Tile/Allianz-Life/tile-azl-ethisphere-2026-newsroom.jpg",
+        "alt": "Ethisphere World's Most Ethical Companies 2020 - 2026"
+      }
+    }
+  }
+}

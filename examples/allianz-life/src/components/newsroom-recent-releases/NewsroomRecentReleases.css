@@ -1,0 +1,11 @@
+/* A stretched title link preserves the source whole-card destination while
+   native summary links remain independent anchors. Editing chrome stays clear. */
+.allianz-newsroom-recent-releases .m-card { position: relative; }
+.allianz-newsroom-recent-releases .m-card__title-link { color: inherit; text-decoration: none; }
+.allianz-newsroom-recent-releases .m-card__title-link--stretched::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.allianz-newsroom-recent-releases .m-card__body a { position: relative; z-index: 2; }

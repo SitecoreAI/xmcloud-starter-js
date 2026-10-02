@@ -1,0 +1,19 @@
+# Proposed target schema. DroplinkField/targetItem and owning URL require native read.
+query NewsroomFeaturedUpdateData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    fieldCollection: fields { name jsonValue }
+    release: field(name: "release") {
+      jsonValue
+      ... on DroplinkField {
+        targetItem {
+          id
+          title: field(name: "title") { jsonValue }
+          summary: field(name: "summary") { jsonValue }
+          releaseDate: field(name: "releaseDate") { jsonValue }
+          parent { parent { id url { path } } }
+        }
+      }
+    }
+  }
+}

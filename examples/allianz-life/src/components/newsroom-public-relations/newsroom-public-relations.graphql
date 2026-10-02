@@ -1,0 +1,15 @@
+# Proposed schema: native field/reference order and metadata reads are pending.
+query NewsroomPublicRelationsData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    fieldCollection: fields { name jsonValue }
+    contactReferences: field(name: "contacts") {
+      ... on MultilistField {
+        targetItems {
+          id
+          fieldCollection: fields { name jsonValue }
+        }
+      }
+    }
+  }
+}
