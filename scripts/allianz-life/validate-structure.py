@@ -19,6 +19,9 @@ spec = importlib.util.spec_from_file_location("structure_generator", Path(__file
 generator = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(generator)
 REPO = generator.REPO
+PROJECT_ID = "7f3XlRhEqdT8l8FrbjQync"
+ENVIRONMENT_ID = "56W3hhEUAQ5GLwsHAehRhe"
+ORGANIZATION_ID = "org_JypIqqJsbEly6gh2"
 
 
 def validate(with_cli: bool = False, target_schema: dict | None = None) -> dict:
@@ -79,8 +82,9 @@ def validate(with_cli: bool = False, target_schema: dict | None = None) -> dict:
     if "authoring/allianz-life/**/*.module.json" not in native_config["modules"]:
         raise ValueError("Allianz structure is not callable from sitecore.json")
     build = json.loads((REPO / "xmcloud.build.json").read_text())
-    if build.get("deployItems", {}).get("modules") != ["Project.AllianzLife.Structure"]:
-        raise ValueError("Build must explicitly allow only Allianz structural IAR")
+    deploy_items = build.get("deployItems")
+    if not isinstance(deploy_items, dict) or deploy_items.get("modules") != []:
+        raise ValueError("Managed host build must explicitly disable item deployment with deployItems.modules = []")
     cli_result = {"status": "not-run"}
     if with_cli:
         result = subprocess.run(["dotnet", "sitecore", "ser", "validate", "--include", "Project.AllianzLife.Structure"], cwd=REPO, capture_output=True, text=True)
@@ -88,9 +92,13 @@ def validate(with_cli: bool = False, target_schema: dict | None = None) -> dict:
             raise ValueError("Pinned Sitecore CLI serialization validation failed: " + (result.stderr or result.stdout))
         cli_result = {"status": "passed", "command": "dotnet sitecore ser validate --include Project.AllianzLife.Structure", "version": "6.0.23", "readOnly": True, "output": result.stdout.strip()}
     resolved = set()
-    if target_schema:
+    if target_schema is not None:
         target = target_schema.get("target", {})
-        if target.get("projectName") != "thlt-mnp-demo" or target.get("organizationName") != "Sales Engineer 2" or not target.get("projectId") or not target.get("environmentId"):
+        # Display names can change in place; schema evidence must stay bound to
+        # the preserved project's stable identities instead.
+        if not isinstance(target, dict) or target.get("projectId") != PROJECT_ID or target.get("environmentId") != ENVIRONMENT_ID:
+            raise ValueError("Target schema was not read from the verified preserved project/environment")
+        if "organizationId" in target and target["organizationId"] != ORGANIZATION_ID:
             raise ValueError("Target schema was not read from the verified preserved project/environment")
         resolved = {item["id"].lower() for item in target_schema.get("items", [])}
     unresolved = sorted(external_refs - resolved)

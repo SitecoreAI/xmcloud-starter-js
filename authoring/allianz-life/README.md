@@ -1,100 +1,40 @@
 # Allianz Life native authoring model
 
-`Project.AllianzLife.Structure` contains only isolated Allianz templates,
-renderings, placeholder settings, finite rendering options and two traditional
-datasource branches. `xmcloud.build.json` selects this exact module for IAR.
-Editorial content, media bytes, sites, users and tenant configuration are not
-included. Every SCS include is `CreateAndUpdate`; no delete operation exists.
-This permission does not establish equivalent preservation semantics for IAR.
+The managed editing host uses the existing project and environment. Its build explicitly sets `deployItems.modules` to an empty array. An editing-host deployment must not replay structural items, overwrite authored content or import media. The isolated SCS module remains available for separately scoped, current-state structural validation and reviewed native changes. Never push the historical module wholesale to the live environment.
 
-Generate and validate locally:
+The preserved project is `7f3XlRhEqdT8l8FrbjQync`, renamed in place to `thlt-allianz-demo`; the CM environment is `56W3hhEUAQ5GLwsHAehRhe`. Display names can change; target checks use these stable identities. The existing Allianz site is `/sitecore/content/allianz/allianz-life`. Do not create another site or replace project/environment/editing-host slots. The user owns cleanup of the other old sites.
 
-```sh
-python3 scripts/allianz-life/generate-structure.py
-python3 scripts/allianz-life/validate-structure.py --with-cli --target-schema <verified-local-template-schema.json>
-python3 scripts/allianz-life/test-import-planner.py
-```
+## Current authoring contract
 
-The pinned native CLI validates serialization format. Runtime GraphQL delivery,
-Pages editing/publishing and Page Branch cloning require separate native checks.
-`content-contract.json` is the exact lowerCamel datasource/parameter contract,
-and `structure-manifest.json` records deterministic identities. The original
-design remains the default; demonstration variants use separate datasource items.
+Home uses eight fixed-purpose components: Homepage Hero, Olympic Partnership, Retirement Solutions Intro, Product Offerings, Retirement Goals Intro, Secure Future Feature, Helpful Resources and Product Disclosures. About uses Company Mission. These have small, relevant content fields and fixed presentation. Rich Text is a semantic field where needed, not an author-facing freeform layout component. Technical SDK component names and accepted native IDs remain stable.
 
-The preserved target is Sales Engineer 2 / `thlt-mnp-demo`, project
-`7f3XlRhEqdT8l8FrbjQync`, environment `56W3hhEUAQ5GLwsHAehRhe`. The new site tree
-is `/sitecore/content/allianz/allianz-life`, alongside the preserved MNP tree.
-The intended native architecture is:
+All accepted Home rendering UIDs and datasource IDs were retained through migration. Preserve current user-authored HTML, deliberate blanks, complete Content Hub image XML, link XML and child identities. New author insertions should create purpose-typed data under that page's Data folder. Header/Footer are shared data composed through native partial designs; they are not ordinary Main insertions.
 
-```text
-Allianz/allianz-life
-  Home/<public source route>/Data/<component datasources and typed children>
-  Data/Allianz Life
-    Navigation/<modern and legacy header datasources, native links>
-    Footer/<modern and legacy footer datasources, native links>
-    Documents/<reusable native document references>
-    Demo Variants/<campaign and product-interest variants>
-  Presentation
-    Partial Designs/<Modern, Legacy Allianz, Legacy New York header/footer>
-    Page Designs/<matching native shell designs>
-    Page Branches/<published prototype page plus native insertion rules>
-```
+The historical `content-contract.json`, generated YAML and structure manifest describe the earlier generic extraction/bootstrap model. They are compatibility/source evidence, not the full current native model or a live rollback target. Locally regenerating them never authorizes applying them. Existing generic definitions and recovery child content stay until actual dependency analysis; generic Rich Text is excluded from the author toolbox.
 
-Traditional branches under `/sitecore/templates/Branches/Project/Allianz Life`
-seed card/accordion datasources. They are separate from the current Page Branches
-library under the site Presentation tree. Create page branches through a
-supported native authoring/API operation and verify clone datasource independence
-before presenting that feature.
+## Validate safely
 
-`prepare-import.py` converts granular SDK fields to native field GUIDs, image/file
-and General Link XML, typed child items, and ordered page-local rendering XML.
-It preserves explicit exceptions and never submits to Allianz services. It
-does not treat the count of candidate routes as completed implementation.
-`import-planner.py` reconciles a source manifest with a native snapshot and a
-successful prior import ledger. It refuses path/template collisions, preserves
-unowned fields, detects author edits, carries revision preconditions, and reports
-removed-source orphans without deleting them. Native-created identities such as
-Home must be independently bound in the manifest and the verified snapshot.
+`validate-structure.py` validates the isolated historical source/YAML boundaries and optionally invokes the scoped SCS validator. It does not establish tenant query compatibility, native field editability, content completeness or deployment readiness. Its target schema must come from the preserved project/environment. Keep an explicit empty build module list even when running a read-only SCS validation.
 
-`serialize-media.py` creates a **private, create-only** SCS media module outside
-the repository. It uses verified native unversioned media templates and the
-starter's native `BlobID` plus base64 `Value` serialization format. Genuine source
-bytes are checked against their reviewed SHA256 before encoding, with identical
-bytes sharing deterministic media identity. Push one small pilot, pull it back
-with the native CLI, decode its Blob and compare SHA256 before bulk import.
-Existing blobs are skipped; changed source bytes create a new recoverable item.
-Never commit this generated module or binary/base64 content, and never add it to
-`deployItems.modules`.
+Use small current-state native changes with exact item/template/field identities, fresh reads before writes, and independent readback. Save recovery exports and receipts outside the public checkout. Never restore authored content from historical fixtures or delete/recreate a target to match generated identities.
 
-Before content apply, create the Allianz site through the native headless site
-wizard and read back the actual Site, Home, Data, Presentation, Settings and site
-definition identities. Configure page-relative datasource behavior with the
-actual Settings/Editing item and its native enum options; do not guess values.
-The actual bounded native serialization probe created the Header/Footer partial
-items without stored signatures, layouts or generated placeholder items. Compose
-them using the version-specific native model and exact readback rather than
-assuming a particular creation event. Preserve any native-generated placeholders
-observed after composition. Assign the native page design and verify shared
-navigation stays reusable and ordinary content data is page-local. No
-MNP/project/environment deletion or purge is part of this workflow.
+## Images and integrations
 
-Keep before/after native exports, target-bound import ledgers, source/media hashes,
-and the cloud deployment commit outside the public repository as recovery
-evidence. Restore individual changed Allianz fields from the reviewed export
-after a fresh revision check. Never restore by deleting/recreating the project.
+Images use the existing Content Hub integration at `thlt-demo.sitecoresandbox.cloud`, with the Allianz brand and approved uncropped/unresized Original delivery links. Keep original SHA/dimensions and native DAM selection XML. Existing Media Library references remain until each replacement is verified through the real selector and browser. Documents/fonts are a separate requirement. Do not use serialized media uploads as the ongoing large-scale image workflow.
 
-Required native acceptance checks are: edit and publish a Hero RichText heading,
-replace an image through Media Library, edit card/accordion children, reorder a
-rendering, add a component with a page-local datasource, clone a published Page
-Branch and prove datasource independence, and confirm Edge layout contains the
-same canonical fields. Preserve consent rejection as the untracked baseline.
-Native UTM/affinity personalization and A/B testing are configured separately;
-an A/B test page must be unpersonalized. Demo traffic proves assignment/events,
-not a statistical winning result.
+`prepare-import.py` creates source candidates and exceptions; `import-planner.py` preserves unowned fields, current author edits and actual native-created identities. Native authored HTML and serializer values must be preserved. Source Rich Text cleanup removes only the extractor's synthetic unavailable-link attribute, retaining its href/title/copy and working mock modal.
+
+## Native workflow acceptance
+
+The current Home render, relevant fields, all eight Default selectors,11 images and modern source breakpoint checks have actual browser proof. Company Mission has actual native edit/render proof. That does not complete all357 routes or establish new toolbox insertion, Page Branch cloning or public delivery. Report each stage separately.
+
+The three Home palette categories contain2/4/2 fixed purposes. Main additions preserve unrelated current controls until a separately reviewed restriction is appropriate. Verify the actual Pages gallery, drag insertion, local datasource creation, sensible field labels/icons/thumbnails, child insert options and save/full reload. Page Branches use existing page templates, native designs and independent copies of local data. Verify their actual insertion rules and publication rather than fabricating rule/template-map encodings.
+
+Published-site and Page Builder browser checks remain mandatory: content edit/save/reload/publish, responsive layout at real source boundaries, navigation/search/forms, complete collections and loaded original images. Mock integrations never authenticate or submit to real Allianz services. Analytics stays disabled and demo delivery stays noindex. Native UTM/affinity personalization and the independent unpersonalized-page A/B test require their own tenant configuration and browser proof.
 
 Official references:
 
-- [SCS configuration and permitted operations](https://doc.sitecore.com/sai/en/developers/sitecoreai/sitecore-content-serialization/configuration/sitecore-content-serialization-configuration-reference.html)
-- [Build deployItems module selection](https://doc.sitecore.com/sai/en/developers/sitecoreai/deploying-sitecoreai/the-sitecoreai-build-configuration.html)
-- [Native partial designs](https://doc.sitecore.com/sai/en/users/sitecoreai/build-pages/building-page-templates-and-branches/work-with-partial-designs.html)
-- [Current Page Branch library](https://doc.sitecore.com/sai/en/users/sitecoreai/build-pages/building-page-templates-and-branches/create-and-configure-a-page-branch.html)
+- [SitecoreAI content serialization](https://doc.sitecore.com/sai/en/developers/sitecoreai/sitecore-content-serialization/sitecore-content-serialization.html)
+- [Build module selection](https://doc.sitecore.com/sai/en/developers/sitecoreai/deploying-sitecoreai/the-sitecoreai-build-configuration.html)
+- [Data sources](https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-sources.html)
+- [Page Branch creation and insertion](https://doc.sitecore.com/sai/en/users/sitecoreai/build-pages/building-page-templates-and-branches/create-and-configure-a-page-branch.html)
