@@ -88,6 +88,12 @@
   background-color: #6d3484;
 }
 
+/* SDK editing markers follow the final anchor, so :last-child cannot identify
+ * the final logical service link. Preserve its source padding and margin. */
+.allianz-modern .c-footer .c-footer__legal-link--last {
+  border-right: 0;
+}
+
 @media (max-width: 703px) {
   /* Native buttons keep the recovered headline dimensions and source glyph;
    * only an expanded list overrides the source mobile display:none rule. */

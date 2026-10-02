@@ -119,6 +119,30 @@ function rule(root, selector, media) {
 }
 const value = (node, property) => node.nodes.find((entry) => entry.prop === property)?.value;
 
+test('the last logical legal link remains identifiable beside real SDK editing markers', () => {
+  const paths = ['/privacy', '/legal-and-obligations', '/accessibility-policy'];
+  const utilityNav = { targetItems: ['Privacy', 'Legal & Obligations', 'Accessibility Policy'].map((title, index) => ({
+    id: `legal-${index}`, title: text(`legal-${index}-title`, title),
+    link: field(`legal-${index}-link`, 'General Link', { href: paths[index], text: title }),
+  })) };
+  const native = { ...data, utilityNav };
+  const before = JSON.stringify(native);
+  for (const isEditing of [false, true]) {
+    const html = render(loader()(false), native, isEditing);
+    assert.equal((html.match(/c-footer__legal-link--last/g) ?? []).length, 1);
+    assert.match(html, /<a[^>]*class="c-footer__legal-link c-footer__legal-link--last"[^>]*href="\/accessibility-policy"|<a[^>]*href="\/accessibility-policy"[^>]*class="c-footer__legal-link c-footer__legal-link--last"/);
+    if (isEditing) {
+      assert.ok(metadataIds(html).includes('legal-2-link'));
+      assert.ok(metadataIds(html).includes('legal-2-title'));
+      assert.match(html, /Accessibility Policy[\s\S]*?<\/a><code[^>]*kind="close"/);
+    }
+  }
+  assert.equal(JSON.stringify(native), before);
+  const finalLink = rule(overrides, '.allianz-modern .c-footer .c-footer__legal-link--last');
+  assert.equal(value(finalLink, 'border-right'), '0');
+  assert.ok(!finalLink.nodes.some((node) => /^(margin|padding)/.test(node.prop)));
+});
+
 test('modern footer opens and closes individual groups through native button activation', () => {
   const h = harness(); h.render();
   for (const id of ['products', 'about']) {
