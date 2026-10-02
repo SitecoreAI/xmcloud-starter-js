@@ -1,0 +1,6 @@
+query NewsroomReturnData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    link: field(name: "link") { jsonValue }
+  }
+}

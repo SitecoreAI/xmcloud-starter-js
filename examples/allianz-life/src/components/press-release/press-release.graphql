@@ -1,0 +1,8 @@
+query PressReleaseData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    title: field(name: "title") { jsonValue }
+    summary: field(name: "summary") { jsonValue }
+    body: field(name: "body") { jsonValue }
+  }
+}

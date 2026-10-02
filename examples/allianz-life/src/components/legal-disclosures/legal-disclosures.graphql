@@ -1,0 +1,6 @@
+query LegalDisclosuresData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    body: field(name: "body") { jsonValue }
+  }
+}

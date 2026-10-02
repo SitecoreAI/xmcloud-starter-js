@@ -1,0 +1,8 @@
+/* Exact excerpts from recovered public/allianz-assets/source-style.css.
+ * Complete source SHA256: 8e750d00a5fadb19847dbe45bd21576acfc3586a8e2fb60979720d02d13f471c
+ * The captured introduction spells m-azlIntroductionBlock, so these global
+ * H4 rules determine its source summary typography. */
+h1,h2,h3,h4,h5,h6{margin:24px 0}
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-weight:300}
+.h4,h4{font-size:1.5rem;line-height:2rem}
+@media (min-width:992px){.h4,h4{font-size:1.625rem;line-height:2rem}}

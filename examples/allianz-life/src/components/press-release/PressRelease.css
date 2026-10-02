@@ -1,0 +1,26 @@
+/* Captured newsroom summaries are H4s. Use the recovered source H4 typography
+ * for ordinary editor paragraphs/divs too, keeping stored Rich Text intact.
+ * source-style.css: weight 300, 24px vertical margins, 992px size breakpoint.
+ * Keep the captured m-azlIntroductionBlock spelling and avoid nested headings. */
+.press-release .tileSubHeading {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 2rem;
+}
+
+.press-release .tileSubHeading :where(p, div, h1, h2, h3, h4, h5, h6) {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 0;
+}
+
+.press-release .tileSubHeading > :where(p, div, h1, h2, h3, h4, h5, h6) {
+  margin: 24px 0;
+}
+
+@media (min-width: 992px) {
+  .press-release .tileSubHeading {
+    font-size: 1.625rem;
+  }
+}
