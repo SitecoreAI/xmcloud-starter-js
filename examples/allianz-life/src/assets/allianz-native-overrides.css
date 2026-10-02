@@ -25,6 +25,42 @@
 .allianz-modern .O-azl-header .m-navigation-primary .nav-list-nested {
   max-width: calc(100vw - 32px);
 }
+/* The recovered header used anchors for these controls. Its generic button
+ * rules add a 24px bottom margin and make every button full-width on mobile.
+ * Restore only the native adapters; keep the source visibility breakpoint and
+ * the existing link focus treatment and submenu hit targets. */
+.allianz-modern .O-azl-header .m-navigation-mobile-btn,
+.allianz-modern .O-azl-header .allianz-text-button,
+.allianz-modern .O-azl-header .allianz-nav-toggle {
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  border-radius: 0;
+  letter-spacing: normal;
+}
+.allianz-modern .O-azl-header button.m-navigation-mobile-btn {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  margin-top: 3px;
+  color: #005074;
+}
+/* Source Search is an inline-flex link with a 32px functional icon. */
+.allianz-modern .O-azl-header .allianz-text-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  line-height: 24px;
+  letter-spacing: .0625rem;
+}
+.allianz-modern .O-azl-header .allianz-text-button > .c-icon--search {
+  display: block;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 24px;
+  line-height: 24px;
+}
 .allianz-modern .O-azl-header .allianz-nav-toggle {
   top: 38px;
   min-width: 28px;

@@ -1,0 +1,79 @@
+[
+  {
+    "assetId": 124955,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/4bec4b5dd1284ebba2b3554bf868e75b?v=1258fcec",
+    "sha256": "8d5a89a2e3dcc056518e4e385807b804f1bb5df886c4cbd2d9cb3144c40bc00c",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 125283,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/bc513e8a994a4db3b6b2f9c0d93ccd07?v=7af5ab2e",
+    "sha256": "f16d1b195aaac30e7dbcbb6fb8cc61992ea7d7e6f37a1b66334cf77a207531e9",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 124860,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/6a293a56db604a2192d2f7be717d279a?v=dc0a3d40",
+    "sha256": "21a6e2276ca6bdbec72d19ef17ba7d9811adf333e6310fe7579bb76fd78d1f98",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 125266,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/9b55c312d5eb45a0af651a8107c9e1cb?v=96f2a526",
+    "sha256": "df9eacc489c0bd34c5515c0f1dae8cc0ca7fc692ff3ab579444629a4685af809",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 125282,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e8808a349706472bbf01bdf4f18f37c9?v=9fbc6202",
+    "sha256": "ef3ad8546edb439a896204e6c549dd5a3d2199f1e1e8ebd38f9b9476f70bfbf5",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 124880,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/cd73137220504da2ad8e44b950a65216?v=afe5fc66",
+    "sha256": "4e90bfa982a5c8098d4f42c452997cd9b13aff1db72f3d20ba2a64bff83e0ce1",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 124879,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/afafc730c3db4fe29a8daf6d7420e98d?v=df677782",
+    "sha256": "47c30b1ee1169795a1804179722c45daca0dd9affbc1b970ee7e046eacf5eb23",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 124848,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/f5341a81c4d348f0b520a4488d098efb?v=a4de1530",
+    "sha256": "0553a9a67d14fa221d4b22de944426d6144f1f3363c9abb11b133e402efd4343",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 124865,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/3ddc05ef2d4c4fe791a35e3e34ad3a41?v=a7883d90",
+    "sha256": "315429dcca05b7d8b0ab0590bdc36244d9333386bbb1969b797b21555d374132",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 124824,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/allianz-life-124824-original?v=168f8057",
+    "sha256": "01be54a5db39aebed4412c4352bcf49931e2292bbc938f60c352042cb0a54303",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  },
+  {
+    "assetId": 124967,
+    "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/4b64afa0fa0a4f7f87a12e01f2de3ca0?v=cba3d72e",
+    "sha256": "914ac7aa5c383137e8d4ed3ec66c5dec9b2a3f4fab1f3c73698a746b5fac8dcd",
+    "viewBox": "0 0 24 24",
+    "mime": "image/svg+xml"
+  }
+]

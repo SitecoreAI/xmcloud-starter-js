@@ -46,7 +46,7 @@ export const Default = ({ fields, params }: ExpertBiographyProps) => {
             </div>
             {shouldRenderImageField(portrait, editable) && <div className="tileImage">
               <picture className="c-image c-teaser__image">
-                <Image field={portrait} editable={editable} sizes="100vw" className="c-image__img c-teaser__image-img" />
+                <Image field={portrait} editable={editable} alt={portrait?.value?.alt ?? ''} sizes="100vw" className="c-image__img c-teaser__image-img" />
               </picture>
             </div>}
           </article>

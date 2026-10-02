@@ -67,6 +67,36 @@ const nativeNames = ['public-0f406fb22be00338.svg', 'public-fb25410fd3ccc058.svg
   'public-36e8936157e0ae76.svg', 'public-d065087fbfdd8cf9.svg',
   'public-afbc80b2b0647397.svg'];
 
+test('verified product/company SVG Originals render visitor masks and retain native editing identity', () => {
+  const originals = JSON.parse(fs.readFileSync(new URL('./verified-product-company-icons.json', import.meta.url), 'utf8'));
+  assert.equal(originals.length, 11);
+  assert.equal(new Set(originals.map((entry) => entry.src)).size, 11);
+  for (const original of originals) {
+    assert.match(original.sha256, /^[a-f0-9]{64}$/);
+    assert.equal(original.mime, 'image/svg+xml');
+    assert.equal(original.viewBox, '0 0 24 24');
+    assert.equal(iconImageSource(original.src), original.src);
+    const field = editableField(`dam-product-icon-${original.assetId}`, {
+      src: original.src, alt: 'Source icon', 'dam-id': `test-${original.assetId}`, width: '24', height: '24',
+    });
+    const before = JSON.stringify(field);
+    assert.ok(decode(render(AllianzFieldIcon, { field })).includes(`mask-image:url("${original.src}")`));
+    const editing = decode(render(AllianzFieldIcon, { field }, true));
+    assert.match(editing, /<img/);
+    assert.ok(editing.includes(`"fieldId":"dam-product-icon-${original.assetId}"`));
+    assert.equal(JSON.stringify(field), before);
+    assert.equal(iconImageSource(original.src + '&crop=1'), '');
+    assert.equal(iconImageSource(original.src.replace(/v=[a-f0-9]+$/, 'v=unverified')), '');
+  }
+});
+
+test('the fixed leadership Badge retains the source bottom padding without exposing an author field', () => {
+  const css = fs.readFileSync(new URL('../components/leadership-quote/LeadershipQuote.css', import.meta.url), 'utf8');
+  assert.match(css, /\.allianz-leadership-quote \.m-axlIntroductionBlock \.tileIcon svg\s*\{[^}]*fill:\s*#3c3c3c;[^}]*padding-bottom:\s*24px;/);
+  const query = fs.readFileSync(new URL('../components/leadership-quote/leadership-quote.graphql', import.meta.url), 'utf8');
+  assert.doesNotMatch(query, /field\(name:\s*"(?:badge|icon)"\)/);
+});
+
 test('all seven observed native icon paths retain runtime query values without broadening media access', () => {
   for (const name of nativeNames) {
     const source = `${nativeOrigin}${nativeRoot}${name}?iar=fixture&ttc=fixture&tt=fixture&hash=synthetic-test`;
@@ -98,7 +128,7 @@ test('native visitor masks preserve field identity while editing still uses orig
   assert.doesNotMatch(editor, /allianz-field-icon|mask-image/);
 });
 
-test('only the seven anonymously verified Content Hub SVG Original versions become icon masks', () => {
+test('the seven previously verified Header/Footer SVG Original versions remain valid icon masks', () => {
   const originals = [
     'fdf32cf308024d32a5d4f7897640a846?v=1c161fe0',
     '0750606db65a4f0fb289d3c16fd69025?v=8aff33d0',

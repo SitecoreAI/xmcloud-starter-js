@@ -17,8 +17,8 @@ const ExecutiveBiography = ({ fields, params, layout }: ExecutiveBiographyProps 
   const portrait = data.portrait?.jsonValue;
   const biography = data.biography?.jsonValue;
   const portraitLink = biographyLinkField(data.portraitLink?.jsonValue, editable, 'portrait');
-  const image = shouldRenderImageField(portrait, editable) && <Image field={portrait} editable={editable}
-    style={layout.portraitWidth ? { width: '768px', maxWidth: '100%' } : { maxWidth: '100%' }} />;
+  const image = shouldRenderImageField(portrait, editable) && <Image field={portrait} editable={editable} alt={portrait?.value?.alt ?? ''}
+    style={layout.portraitWidth ? { width: '768px', maxWidth: '100%', height: 'auto' } : { maxWidth: '100%', height: 'auto' }} />;
 
   return <>
     <div className={`component executive-biography l-container--full-width ${layout.headingSpacing ? 'u-row-spacing ' : ''}t-bg-transparent axlTileCollection`} id={params?.RenderingIdentifier}>

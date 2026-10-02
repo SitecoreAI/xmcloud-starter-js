@@ -91,7 +91,7 @@ test('every intentional source portrait absence stays absent and all public sour
       assert.match(record.sourcePortrait.src, /^\/-\/media\//);
       assert.match(html, /<img\b/);
       if (record.rendering === 'ExpertBiography') assert.match(html, /sizes="100vw" class="c-image__img c-teaser__image-img"/);
-      else assert.match(html, /style="(?:width:768px;)?max-width:100%"/);
+      else assert.match(html, /style="(?:width:768px;)?max-width:100%;height:auto"/);
     }
     assert.equal(Object.hasOwn(record.exactSourceFieldValues, 'id'), false);
   }

@@ -18,8 +18,19 @@ const nativeIconNames = new Set([
   'public-afbc80b2b0647397.svg',
 ]);
 const nativeIconQueryKeys = new Set(['iar', 'ttc', 'tt', 'hash']);
-// Public Original versions verified anonymously against the seven exact SVGs.
+// Public Original versions verified anonymously against the exact source SVGs.
 const contentHubIconSources = new Set([
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/4bec4b5dd1284ebba2b3554bf868e75b?v=1258fcec",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/bc513e8a994a4db3b6b2f9c0d93ccd07?v=7af5ab2e",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/6a293a56db604a2192d2f7be717d279a?v=dc0a3d40",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/9b55c312d5eb45a0af651a8107c9e1cb?v=96f2a526",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e8808a349706472bbf01bdf4f18f37c9?v=9fbc6202",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/cd73137220504da2ad8e44b950a65216?v=afe5fc66",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/afafc730c3db4fe29a8daf6d7420e98d?v=df677782",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/f5341a81c4d348f0b520a4488d098efb?v=a4de1530",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/3ddc05ef2d4c4fe791a35e3e34ad3a41?v=a7883d90",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/allianz-life-124824-original?v=168f8057",
+  "https://thlt-demo.sitecoresandbox.cloud/api/public/content/4b64afa0fa0a4f7f87a12e01f2de3ca0?v=cba3d72e",
   'https://thlt-demo.sitecoresandbox.cloud/api/public/content/fdf32cf308024d32a5d4f7897640a846?v=1c161fe0',
   'https://thlt-demo.sitecoresandbox.cloud/api/public/content/0750606db65a4f0fb289d3c16fd69025?v=8aff33d0',
   'https://thlt-demo.sitecoresandbox.cloud/api/public/content/feea3b26ab3e4c80b2630c011cac2cb4?v=8f3b5986',
