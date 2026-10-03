@@ -35,6 +35,16 @@ const ExecutiveDirectory = load(path.join(sourceRoot, 'components/executive-dire
 const ExpertDirectory = load(path.join(sourceRoot, 'components/expert-directory/ExpertDirectory.tsx')).Default;
 const contract = JSON.parse(fs.readFileSync(path.join(sourceRoot, 'components/executive-directory/__tests__/directory-source-contract.json'), 'utf8'));
 const id = (n) => `00000000-0000-4000-8000-${n.toString(16).padStart(12, '0')}`;
+const diagnosticKeys = ['responseFormat', 'envelope', 'dataShape', 'graphqlErrorCount', 'countTruncated', 'errorSummaries'];
+function assertResponseDiagnostic(value) {
+  assert.ok(['json', 'text', 'other', 'unknown'].includes(value.responseFormat));
+  assert.ok(['object-errors', 'string-json-errors', 'text-body', 'missing-data', 'other'].includes(value.envelope));
+  assert.ok(['absent', 'null', 'object', 'array', 'scalar'].includes(value.dataShape));
+  assert.ok(Number.isInteger(value.graphqlErrorCount) && value.graphqlErrorCount >= 0 && value.graphqlErrorCount <= 32);
+  assert.equal(typeof value.countTruncated, 'boolean');
+  assert.ok(Array.isArray(value.errorSummaries) && value.errorSummaries.length <= 8);
+  for (const summary of value.errorSummaries) assert.deepEqual(Object.keys(summary).sort(), ['code', 'signature', 'fieldCategory'].sort());
+}
 const field = (value, name = 'heading', itemId = id(2), fieldType = 'Single-Line Text') => ({ jsonValue: { value, metadata: { fieldType, fieldId: `test-${name}`, itemId } } });
 const scope = (kind = 'executives', language = 'en') => ({ kind, language, rootId: id(1), datasourceId: id(2) });
 function dataset(kind = 'experts') {
@@ -236,7 +246,8 @@ test('failed operations expose only a fixed stage marker without request, respon
     assert.equal(output.error, 'unavailable');
     assert.equal(output.failureStage, record.expected);
     assert.equal(output.failureKind, 'unknown');
-    assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'failureKind', 'groups', 'items', 'status', 'unassigned'].sort());
+    assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'failureKind', 'groups', 'items', 'status', 'unassigned', ...diagnosticKeys].sort());
+    assertResponseDiagnostic(output);
     assert.deepEqual(output.items, []);
     assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization|\"(?:request|response|stack|query|headers)\"\s*:/);
     if (record.expected.startsWith('categories')) {
@@ -267,7 +278,43 @@ test('scope transport failures expose fixed GraphQL classification and numeric s
   assert.equal(output.complete, false);
   assert.deepEqual(output.items, []);
   assert.equal(calls.length, 1);
+  assertResponseDiagnostic(output);
   assert.doesNotMatch(JSON.stringify(result), /synthetic-private|private-field|Authorization|x-sitecore-contextid|\"(?:request|response|query|headers|stack)\"/);
+});
+
+test('scope failure metadata distinguishes text-encoded validation from a missing data envelope', async () => {
+  const { ClientError } = require('graphql-request');
+  const records = dataset('executives');
+  const query = data.buildPeopleScopeQuery(records.current);
+  const offset = query.indexOf('template');
+  const prefix = query.slice(0, offset).split('\n');
+  const location = { line: prefix.length, column: prefix.at(-1).length + 1 };
+  const secret = 'never-return-private-response-or-request';
+  const cases = [
+    { response: { status: 200, headers: new Headers({ 'content-type': 'text/plain' }), error: JSON.stringify({ errors: [
+      { message: `Field "template" argument "required" of type "String!" is required, but it was not provided. ${secret}`,
+        extensions: { code: 'PROVIDED_REQUIRED_ARGUMENTS', privateToken: secret }, locations: [location] },
+    ] }) }, envelope: 'string-json-errors', format: 'text', count: 1, shape: 'absent' },
+    { response: { status: 200, headers: new Headers({ 'content-type': 'application/json' }), data: null },
+      envelope: 'missing-data', format: 'json', count: 0, shape: 'null' },
+  ];
+  for (const record of cases) {
+    const error = new ClientError(record.response, { query: secret, variables: { context: secret } });
+    const { client, calls } = harness(records, (response, name) => { if (name === 'AutomaticPeopleScope') throw error; return response; });
+    const props = await client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+    const value = props.directory.automaticPeople;
+    assertResponseDiagnostic(value);
+    assert.equal(value.failureStage, 'scope-request');
+    assert.equal(value.envelope, record.envelope);
+    assert.equal(value.responseFormat, record.format);
+    assert.equal(value.dataShape, record.shape);
+    assert.equal(value.graphqlErrorCount, record.count);
+    assert.equal(value.httpStatus, 200);
+    assert.deepEqual(value.items, []);
+    assert.equal(calls.length, 1);
+    if (record.count) assert.deepEqual(value.errorSummaries, [{ code: 'PROVIDED_REQUIRED_ARGUMENTS', signature: 'required-argument', fieldCategory: 'template-identity' }]);
+    assert.doesNotMatch(JSON.stringify(props), /never-return-private|privateToken|\"(?:request|response|query|headers|variables)\"\s*:/);
+  }
 });
 
 test('ten-item biography requests retain every executive and expert field through complete pagination', async () => {

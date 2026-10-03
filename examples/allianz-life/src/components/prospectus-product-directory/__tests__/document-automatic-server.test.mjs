@@ -42,12 +42,20 @@ const field = (value) => ({ jsonValue: { value, editable: `<span>${value}</span>
 const routeId = id(1);
 const rootId = id(2);
 const unavailable = { items: [], complete: false, status: 'unavailable', error: 'unavailable' };
+const diagnosticKeys = ['responseFormat', 'envelope', 'dataShape', 'graphqlErrorCount', 'countTruncated', 'errorSummaries'];
 function assertUnavailable(value, message) {
-  const { failureStage, failureKind, httpStatus, ...content } = value;
+  const { failureStage, failureKind, httpStatus, responseFormat, envelope, dataShape, graphqlErrorCount, countTruncated, errorSummaries, ...content } = value;
   assert.deepEqual(content, unavailable, message);
   assert.match(failureStage, /^(children-request|children-validation|selection-validation)$/);
   assert.ok(['graphql-validation', 'complexity-limit', 'authentication', 'authorization', 'rate-limit', 'upstream', 'network', 'unknown'].includes(failureKind));
   if (httpStatus !== undefined) assert.ok(Number.isInteger(httpStatus) && httpStatus >= 100 && httpStatus <= 599);
+  assert.ok(['json', 'text', 'other', 'unknown'].includes(responseFormat));
+  assert.ok(['object-errors', 'string-json-errors', 'text-body', 'missing-data', 'other'].includes(envelope));
+  assert.ok(['absent', 'null', 'object', 'array', 'scalar'].includes(dataShape));
+  assert.ok(Number.isInteger(graphqlErrorCount) && graphqlErrorCount >= 0 && graphqlErrorCount <= 32);
+  assert.equal(typeof countTruncated, 'boolean');
+  assert.ok(Array.isArray(errorSummaries) && errorSummaries.length <= 8);
+  for (const summary of errorSummaries) assert.deepEqual(Object.keys(summary).sort(), ['code', 'signature', 'fieldCategory'].sort());
 }
 const invalidScope = { ...unavailable, error: 'invalid-scope' };
 const ready = (items = []) => ({ items, complete: true, status: 'ready' });
@@ -148,7 +156,7 @@ test('document transport failures carry only fixed stage, classification and num
     assert.equal(collection.failureStage, 'children-request');
     assert.equal(collection.failureKind, 'graphql-validation');
     assert.equal(collection.httpStatus, 400);
-    assert.deepEqual(Object.keys(collection).sort(), ['items', 'complete', 'status', 'error', 'failureStage', 'failureKind', 'httpStatus'].sort());
+    assert.deepEqual(Object.keys(collection).sort(), ['items', 'complete', 'status', 'error', 'failureStage', 'failureKind', 'httpStatus', ...diagnosticKeys].sort());
     assert.doesNotMatch(JSON.stringify(props), /synthetic-private|Authorization|\"(?:request|response|query|headers|url|stack)\"/);
   }
   const records = dataset();
@@ -159,6 +167,31 @@ test('document transport failures carry only fixed stage, classification and num
   const validation = (await fetchCollection('documents', dataset(), { responseChange(response) { delete response.root.children.total; return response; } })).collection;
   assert.equal(validation.failureStage, 'children-validation');
   assert.equal(validation.failureKind, 'unknown');
+});
+
+test('child request failures expose their AST field category while preserving fail-closed collections', async () => {
+  const { ClientError } = require('graphql-request');
+  const secret = 'never-return-private-child-response';
+  for (const kind of ['documents', 'products']) {
+    const current = { language: 'en', routeId, rootId: kind === 'documents' ? rootId : routeId };
+    const query = data.buildDocumentQuery(kind, current);
+    const offset = query.indexOf('children('), prefix = query.slice(0, offset).split('\n');
+    const location = { line: prefix.length, column: prefix.at(-1).length + 1 };
+    const failure = new ClientError({ status: 200, headers: new Headers({ 'content-type': 'application/json' }), errors: [{
+      message: `Unknown argument "${secret}" on field "children".`, extensions: { code: 'UNKNOWN_ARGUMENT', private: secret },
+      locations: [location], path: ['root', 'children'],
+    }] }, { query: secret, variables: { token: secret } });
+    const { collection, props, calls } = await fetchCollection(kind, dataset(), { failure });
+    assertUnavailable(collection);
+    assert.equal(collection.failureStage, 'children-request');
+    assert.equal(collection.responseFormat, 'json');
+    assert.equal(collection.envelope, 'object-errors');
+    assert.equal(collection.dataShape, 'absent');
+    assert.equal(collection.graphqlErrorCount, 1);
+    assert.deepEqual(collection.errorSummaries, [{ code: 'UNKNOWN_ARGUMENT', signature: 'unknown-argument', fieldCategory: 'children-connection' }]);
+    assert.equal(calls.length, 1);
+    assert.doesNotMatch(JSON.stringify(props), /never-return-private|\"(?:request|response|query|headers|variables)\"\s*:/);
+  }
 });
 
 test('real SDK transports every page through UID context, forwarding preview options without leaking them', async () => {

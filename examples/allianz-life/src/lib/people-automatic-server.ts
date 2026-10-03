@@ -13,12 +13,12 @@ type PeopleFailureStage = 'scope-request' | 'scope-validation' | 'biographies-re
 class PeopleStageFailure extends Error {
   constructor(readonly stage: PeopleFailureStage, readonly diagnostic: QueryFailureDiagnostic) { super('Automatic people directory read failed'); }
 }
-async function atPeopleStage<T>(stage: PeopleFailureStage, operation: () => T | Promise<T>): Promise<T> {
+async function atPeopleStage<T>(stage: PeopleFailureStage, operation: () => T | Promise<T>, query?: string): Promise<T> {
   try { return await operation(); }
   catch (error) {
     if (error instanceof PeopleStageFailure) throw error;
     // Do not retain the original error: SDK request errors may contain private headers.
-    throw new PeopleStageFailure(stage, classifyQueryFailure(error));
+    throw new PeopleStageFailure(stage, classifyQueryFailure(error, query));
   }
 }
 
@@ -35,10 +35,11 @@ export function enrichPeopleComponentMap(components: ComponentMap<NextjsContentS
     if (!result) {
       result = (async () => {
         try {
-          const actual = await atPeopleStage('scope-request', () => options.getData<Parameters<typeof validPeopleScope>[1]>(buildPeopleScopeQuery(scope), undefined, options.fetchOptions));
+          const query = buildPeopleScopeQuery(scope);
+          const actual = await atPeopleStage('scope-request', () => options.getData<Parameters<typeof validPeopleScope>[1]>(query, undefined, options.fetchOptions), query);
           if (!actual || !await atPeopleStage('scope-validation', () => validPeopleScope(scope, actual))) return unavailablePeople('invalid-scope');
           const reader = (stage: PeopleFailureStage): PeopleGetData => <T = unknown>(query: string, variables?: Record<string, unknown>, fetchOptions?: FetchOptions) =>
-            atPeopleStage(stage, () => options.getData<T>(query, variables, fetchOptions));
+            atPeopleStage(stage, () => options.getData<T>(query, variables, fetchOptions), query);
           const [biographies, categories] = await Promise.all([
             atPeopleStage('biographies-validation', () => collectPeopleSearch<PeopleBiography>(reader('biographies-request'), 'biographies', scope, options.fetchOptions)),
             kind === 'experts' ? atPeopleStage('categories-validation', () => collectPeopleSearch<PeopleCategory>(reader('categories-request'), 'categories', scope, options.fetchOptions)) : Promise.resolve(undefined),

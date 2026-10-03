@@ -13,12 +13,12 @@ type DocumentFailureStage = 'children-request' | 'children-validation' | 'select
 class DocumentStageFailure extends Error {
   constructor(readonly stage: DocumentFailureStage, readonly diagnostic: QueryFailureDiagnostic) { super('Automatic document listing read failed'); }
 }
-async function atDocumentStage<T>(stage: DocumentFailureStage, operation: () => T | Promise<T>): Promise<T> {
+async function atDocumentStage<T>(stage: DocumentFailureStage, operation: () => T | Promise<T>, query?: string): Promise<T> {
   try { return await operation(); }
   catch (error) {
     if (error instanceof DocumentStageFailure) throw error;
     // Keep only fixed classifications; request errors can contain private transport data.
-    throw new DocumentStageFailure(stage, classifyQueryFailure(error));
+    throw new DocumentStageFailure(stage, classifyQueryFailure(error, query));
   }
 }
 function documentFailure(error: unknown) {
@@ -37,7 +37,7 @@ export function enrichDocumentComponentMap(components: ComponentMap<NextjsConten
   const enriched = new Map(components);
   const reads = new Map<string, Promise<AutomaticDocuments | AutomaticProducts>>();
   const reader: DocumentGetData = <T = unknown>(query: string, variables?: Record<string, unknown>, fetchOptions?: FetchOptions) =>
-    atDocumentStage('children-request', () => options.getData<T>(query, variables, fetchOptions));
+    atDocumentStage('children-request', () => options.getData<T>(query, variables, fetchOptions), query);
   const documents: GetComponentServerProps = async (rendering, layout) => {
     const current = scope(layout);
     const fields = rendering.fields as { data?: { datasource?: { id?: string } } } | undefined;
