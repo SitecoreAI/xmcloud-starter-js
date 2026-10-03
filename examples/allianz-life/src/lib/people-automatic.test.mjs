@@ -6,7 +6,8 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url), ts = require('typescript'), React = require('react');
-const { parse } = require('graphql');
+const { parse, visit, getLocation } = require('graphql');
+const { ClientError } = require('graphql-request');
 const { renderToStaticMarkup } = require('react-dom/server');
 const { SitecoreProvider, ComponentPropsService, ComponentPropsContext } = require('@sitecore-content-sdk/nextjs');
 const { SitecoreClient } = require('@sitecore-content-sdk/nextjs/client');
@@ -68,9 +69,21 @@ function indexedTemplateMatches(row, baseTemplateId) {
   return [row.template?.id, ...(row.template?.baseTemplateIds ?? [])].some((id) =>
     data.normalizePeopleId(id) === data.normalizePeopleId(baseTemplateId));
 }
+function nativeBiographyProjection(row) {
+  const { template: _template, ...fields } = row;
+  const owner = row.parent?.parent;
+  const { template: _ownerTemplate, ...page } = owner ?? {};
+  return { ...fields, ownerPages: owner && indexedTemplateMatches(owner, data.BIOGRAPHY_PAGE_TEMPLATE_ID) ? [{ id: owner.id }] : [],
+    parent: row.parent ? { ...row.parent, parent: owner ? page : undefined } : undefined };
+}
+function nativeProjection(kind, row) {
+  if (kind === 'biographies') return nativeBiographyProjection(row);
+  const { template: _template, ...fields } = row;
+  return fields;
+}
 function fixtureSearchResult(current, kind, rows) {
   const baseTemplateId = kind === 'biographies' ? data.PEOPLE_DIRECTORY_CONTRACTS[current.kind].templateId : data.EXPERT_DIRECTORY_CATEGORY_TEMPLATE_ID;
-  return { items: rows.filter((row) => indexedTemplateMatches(row, baseTemplateId)), complete: true, queryKind: kind, baseTemplateId, scope: current };
+  return { items: rows.filter((row) => indexedTemplateMatches(row, baseTemplateId)).map((row) => nativeProjection(kind, row)), complete: true, queryKind: kind, baseTemplateId, scope: current };
 }
 function selectFixtureDirectory(current, biographies, categories) {
   return data.selectPeopleDirectory(current, fixtureSearchResult(current, 'biographies', biographies),
@@ -82,16 +95,24 @@ function queryArgs(query) {
     : node.kind === 'ListValue' ? node.values.map(value) : node.kind === 'IntValue' ? Number(node.value) : node.value;
   return { name: operation.name.value, args: Object.fromEntries(selection.arguments.map((argument) => [argument.name.value, value(argument.value)])) };
 }
-function harness(records, change) {
+function harness(records, change, { rejectTemplateProjection = false } = {}) {
   const calls = [];
   const client = Object.assign(Object.create(SitecoreClient.prototype), { componentPropsService: new ComponentPropsService(), graphQLClient: {
     async request(query, variables, fetchOptions) {
       const { name, args } = queryArgs(query); calls.push({ name, args, variables, fetchOptions });
+      if (rejectTemplateProjection) {
+        const nodes = []; visit(parse(query), { Field(node) { if (node.name.value === 'template') nodes.push(node); } });
+        if (nodes.length) throw new ClientError({ status: 200, headers: new Headers({ 'content-type': 'application/json' }),
+          data: { root: records.root, datasource: records.datasource }, errors: nodes.map((node) => ({
+            message: 'Template identity resolver failed', locations: [getLocation(node.loc.source, node.loc.start)],
+          })) }, { query, variables });
+      }
       if (name === 'AutomaticPeopleScope') return change ? change({ root: records.root, datasource: records.datasource }, name, args) : { root: records.root, datasource: records.datasource };
-      const source = name === 'AutomaticPeopleBiographies' ? records.biographies : records.categories;
+      const kind = name === 'AutomaticPeopleBiographies' ? 'biographies' : 'categories';
+      const source = kind === 'biographies' ? records.biographies : records.categories;
       const predicate = args.where.AND.find((filter) => filter.name === '_templates');
       assert.equal(predicate.operator, 'CONTAINS');
-      const rows = source.filter((row) => indexedTemplateMatches(row, predicate.value));
+      const rows = source.filter((row) => indexedTemplateMatches(row, predicate.value)).map((row) => nativeProjection(kind, row));
       const offset = Number(args.after ?? 0), hasNext = offset + args.first < rows.length;
       const response = { search: { total: rows.length, results: rows.slice(offset, offset + args.first), pageInfo: { hasNext, endCursor: hasNext ? String(offset + args.first) : null } } };
       return change ? change(response, name, args) : response;
@@ -286,13 +307,13 @@ test('scope failure metadata distinguishes text-encoded validation from a missin
   const { ClientError } = require('graphql-request');
   const records = dataset('executives');
   const query = data.buildPeopleScopeQuery(records.current);
-  const offset = query.indexOf('template');
+  const offset = query.indexOf('parent');
   const prefix = query.slice(0, offset).split('\n');
   const location = { line: prefix.length, column: prefix.at(-1).length + 1 };
   const secret = 'never-return-private-response-or-request';
   const cases = [
     { response: { status: 200, headers: new Headers({ 'content-type': 'text/plain' }), error: JSON.stringify({ errors: [
-      { message: `Field "template" argument "required" of type "String!" is required, but it was not provided. ${secret}`,
+      { message: `Field "parent" argument "required" of type "String!" is required, but it was not provided. ${secret}`,
         extensions: { code: 'PROVIDED_REQUIRED_ARGUMENTS', privateToken: secret }, locations: [location] },
     ] }) }, envelope: 'string-json-errors', format: 'text', count: 1, shape: 'absent' },
     { response: { status: 200, headers: new Headers({ 'content-type': 'application/json' }), data: null },
@@ -312,7 +333,7 @@ test('scope failure metadata distinguishes text-encoded validation from a missin
     assert.equal(value.httpStatus, 200);
     assert.deepEqual(value.items, []);
     assert.equal(calls.length, 1);
-    if (record.count) assert.deepEqual(value.errorSummaries, [{ code: 'PROVIDED_REQUIRED_ARGUMENTS', signature: 'required-argument', fieldCategory: 'template-identity' }]);
+    if (record.count) assert.deepEqual(value.errorSummaries, [{ code: 'PROVIDED_REQUIRED_ARGUMENTS', signature: 'required-argument', fieldCategory: 'parent-traversal' }]);
     assert.doesNotMatch(JSON.stringify(props), /never-return-private|privateToken|\"(?:request|response|query|headers|variables)\"\s*:/);
   }
 });
@@ -477,14 +498,14 @@ test('invalid site, locale, root URL, scope and datasource owner cannot read oth
     assert.equal(result.directory.automaticPeople.error, 'invalid-scope'); assert.equal(calls.length, 0);
   }
   for (const mutate of [(records) => { records.root.url.path = '/about/ventures'; }, (records) => { records.datasource.parent.parent.id = id(999); },
-    (records) => { records.root.path = '/sitecore/content/other/Home/about/subject-matter-experts'; }, (records) => { records.datasource.template.id = id(999); records.datasource.template.name = 'ExpertDirectory'; }]) {
+    (records) => { records.root.path = '/sitecore/content/other/Home/about/subject-matter-experts'; }, (records) => { records.datasource.id = id(999); }]) {
     const records = dataset(); mutate(records); const { client, calls } = harness(records);
     const result = await client.getComponentData(layout(), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
     assert.equal(result.directory.automaticPeople.error, 'invalid-scope'); assert.equal(calls.length, 1);
   }
 });
 
-test('actual native directory/category template IDs survive renamed labels and reject name-only impostors', async () => {
+test('native inherited filters survive renamed labels without returning virtual template metadata', async () => {
   for (const kind of ['executives', 'experts']) {
     const records = dataset(kind);
     records.datasource.template.name = 'Author-renamed directory label';
@@ -507,8 +528,8 @@ test('actual native directory/category template IDs survive renamed labels and r
       assert.equal(selected.unassigned.length, 4);
       assert.equal(selected.items.length, 29);
     }
-    records.datasource.template = { name: data.PEOPLE_DIRECTORY_CONTRACTS[kind].directoryTemplate };
-    assert.equal(data.validPeopleScope(records.current, records), false);
+    delete records.datasource.template;
+    assert.equal(data.validPeopleScope(records.current, records), true, 'the native rendering supplies its configured datasource contract');
   }
 });
 
@@ -531,9 +552,59 @@ test('native metadata reads use the four confirmed GUID selectors without changi
     selectFixtureDirectory(records.current, records.biographies, records.categories);
     assert.equal(JSON.stringify(records.biographies), before);
   }
-  assert.match(data.buildPeopleScopeQuery(scope()), /template \{ id \}/);
+  assert.doesNotMatch(data.buildPeopleScopeQuery(scope()), /template\s*\{/);
   const { args } = queryArgs(data.buildPeopleSearchQuery('categories', scope('experts')));
   assert.ok(args.where.AND.some((filter) => filter.name === '_templates' && filter.value === data.normalizePeopleId(data.EXPERT_DIRECTORY_CATEGORY_TEMPLATE_ID)));
+});
+
+test('resolver-level template identity errors with partial data disappear without losing inherited profiles', async () => {
+  const { GraphQLRequestClient } = require('@sitecore-content-sdk/core');
+  for (const kind of ['executives', 'experts']) {
+    const records = dataset(kind), { client, calls } = harness(records, undefined, { rejectTemplateProjection: true });
+    const backend = client.graphQLClient;
+    client.graphQLClient = new GraphQLRequestClient('https://synthetic.example/graphql', { retries: 0, debugger: () => {},
+      fetch: async (_url, options) => {
+        const { query, variables } = JSON.parse(options.body);
+        let body;
+        try { body = { data: await backend.request(query, variables) }; }
+        catch (error) {
+          if (!(error instanceof ClientError)) throw error;
+          body = { errors: error.response.errors, data: error.response.data };
+        }
+        return new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json' } });
+      },
+    });
+    const oldQuery = `query AutomaticPeopleScope { datasource: item(path: "${id(2)}", language: "en") { template { id } } }`;
+    await assert.rejects(client.getData(oldQuery), (error) => error instanceof ClientError && error.response.status === 200 &&
+      error.response.errors.length === 1 && typeof error.response.data === 'object');
+    calls.length = 0;
+    const props = await client.getComponentData(layout(kind), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+    const value = props.directory.automaticPeople;
+    assert.equal(value.complete, true);
+    assert.equal(value.items.length, kind === 'executives' ? 8 : 29);
+    assert.deepEqual(value.items, selectFixtureDirectory(records.current, records.biographies, records.categories).items);
+    assert.equal(Object.hasOwn(value, 'failureStage'), false);
+    assert.equal(calls.length, kind === 'executives' ? 2 : 5, 'no extra membership request is introduced');
+    if (kind === 'experts') assert.equal(value.groups.length, 6);
+  }
+});
+
+test('native ancestor membership accepts derived biography pages and excludes unrelated owners', async () => {
+  for (const kind of ['executives', 'experts']) {
+    const records = dataset(kind);
+    records.biographies[0].parent.parent.template = { id: id(901), baseTemplateIds: [data.BIOGRAPHY_PAGE_TEMPLATE_ID] };
+    records.biographies[1].parent.parent.template = { id: id(902), baseTemplateIds: [id(901), data.BIOGRAPHY_PAGE_TEMPLATE_ID] };
+    const { client } = harness(records, undefined, { rejectTemplateProjection: true });
+    const props = await client.getComponentData(layout(kind), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+    assert.equal(props.directory.automaticPeople.items.length, kind === 'executives' ? 8 : 29);
+    records.biographies[0].parent.parent.template = { id: id(903), baseTemplateIds: [] };
+    assert.equal(selectFixtureDirectory(records.current, records.biographies, records.categories).items.length, kind === 'executives' ? 7 : 28);
+    const search = parse(data.buildPeopleSearchQuery('biographies', records.current)).definitions[0].selectionSet.selections[0];
+    const results = search.selectionSet.selections.find((node) => node.name.value === 'results');
+    const owners = results.selectionSet.selections.find((node) => node.alias?.value === 'ownerPages');
+    assert.equal(owners.name.value, 'ancestors');
+    assert.equal(owners.arguments.find((arg) => arg.name.value === 'includeTemplateIDs').value.value, data.normalizePeopleId(data.BIOGRAPHY_PAGE_TEMPLATE_ID));
+  }
 });
 
 test('unrelated templates, nested descendants, unsafe URLs and duplicate primary biographies are rejected', () => {

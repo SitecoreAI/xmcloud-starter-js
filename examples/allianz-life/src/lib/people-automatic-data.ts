@@ -28,7 +28,8 @@ export type PeopleSearchResult<T> = { items: T[]; complete: true; queryKind: Peo
 export type PeopleCategory = { id: string; heading?: PeopleText; introduction?: PeopleText; sortOrder?: PeopleOrder; template?: { id: string; name?: string }; parent?: { id: string } };
 export type PeopleBiography = {
   id: string;
-  template: { id: string };
+  /** Native base-template-filtered ancestors prove the owning page's inherited eligibility. */
+  ownerPages: Array<{ id: string }>;
   name?: PeopleText;
   role?: PeopleText;
   portrait?: { jsonValue?: ImageField };
@@ -75,17 +76,17 @@ export function buildPeopleScopeQuery(scope: PeopleScope): string {
   return `query AutomaticPeopleScope {
     root: item(path: ${literal(root)}, language: ${literal(language)}) { id path url { path } }
     datasource: item(path: ${literal(datasource)}, language: ${literal(language)}) {
-      id template { id } parent { name parent { id } }
+      id parent { name parent { id } }
     }
   }`;
 }
-export function validPeopleScope(scope: PeopleScope, response: { root?: PeoplePage; datasource?: { id: string; template?: { id: string; name?: string }; parent?: { name: string; parent?: { id: string } } } }): boolean {
+export function validPeopleScope(scope: PeopleScope, response: { root?: PeoplePage; datasource?: { id: string; parent?: { name: string; parent?: { id: string } } } }): boolean {
   const contract = PEOPLE_DIRECTORY_CONTRACTS[scope.kind];
   return normalizePeopleId(response.root?.id) === normalizePeopleId(scope.rootId) &&
     response.root?.url?.path?.replace(/\/$/, '').toLowerCase() === contract.url &&
     response.root?.path?.toLowerCase() === `/sitecore/content/allianz/allianz-life/home${contract.url}` &&
     normalizePeopleId(response.datasource?.id) === normalizePeopleId(scope.datasourceId) &&
-    normalizePeopleId(response.datasource?.template?.id) === normalizePeopleId(contract.directoryTemplateId) &&
+    // The trusted native rendering defines its datasource template; verify its actual owner here.
     response.datasource?.parent?.name?.toLowerCase() === 'data' &&
     normalizePeopleId(response.datasource?.parent?.parent?.id) === normalizePeopleId(scope.rootId);
 }
@@ -95,15 +96,15 @@ export function buildPeopleSearchQuery(kind: PeopleQueryKind, scope: PeopleScope
   const { root, datasource, language } = checkedScope(scope);
   if (after !== undefined && !after) throw new Error('Invalid people-directory cursor');
   const projection = kind === 'biographies'
-    ? `id template { id }
+    ? `id ownerPages: ancestors(includeTemplateIDs: "${checkedId(BIOGRAPHY_PAGE_TEMPLATE_ID)}") { id }
       name: field(name: "name") { jsonValue }
       role: field(name: "role") { jsonValue }
       portrait: field(name: "portrait") { jsonValue }
       directoryOrder: field(name: "${scope.kind === 'executives' ? PEOPLE_DIRECTORY_FIELD_IDS.executiveOrder : PEOPLE_DIRECTORY_FIELD_IDS.expertOrder}") { jsonValue }
       ${scope.kind === 'experts' ? `directorySummary: field(name: "${PEOPLE_DIRECTORY_FIELD_IDS.expertSummary}") { jsonValue }
       directoryCategory: field(name: "${PEOPLE_DIRECTORY_FIELD_IDS.expertCategory}") { ... on LookupField { targetItem { id } } }` : ''}
-      parent { name parent { id path url { path } template { id } parent { id } } }`
-    : `id template { id } heading: field(name: "heading") { jsonValue } introduction: field(name: "${PEOPLE_CATEGORY_INTRODUCTION_FIELD_ID}") { jsonValue } sortOrder: field(name: "__Sortorder") { jsonValue } parent { id }`;
+      parent { name parent { id path url { path } parent { id } } }`
+    : `id heading: field(name: "heading") { jsonValue } introduction: field(name: "${PEOPLE_CATEGORY_INTRODUCTION_FIELD_ID}") { jsonValue } sortOrder: field(name: "__Sortorder") { jsonValue } parent { id }`;
   return `query AutomaticPeople${kind === 'biographies' ? 'Biographies' : 'Categories'} {
     search(where: { AND: [
       { name: "_templates", value: ${literal(searchTemplateId(kind, scope))}, operator: CONTAINS }
@@ -176,9 +177,8 @@ export function selectPeopleDirectory(scope: PeopleScope, biographies: PeopleSea
   const contract = PEOPLE_DIRECTORY_CONTRACTS[scope.kind], pages = new Set<string>();
   const eligible = searchedItems(scope, 'biographies', biographies).filter((row) => {
     const owner = row.parent?.parent;
-    return normalizePeopleId(row.template?.id) &&
-      row.parent?.name?.toLowerCase() === 'data' && owner && normalizePeopleId(owner.parent?.id) === normalizePeopleId(scope.rootId) &&
-      normalizePeopleId(owner.template?.id) === normalizePeopleId(BIOGRAPHY_PAGE_TEMPLATE_ID) &&
+    return row.parent?.name?.toLowerCase() === 'data' && owner && normalizePeopleId(owner.parent?.id) === normalizePeopleId(scope.rootId) &&
+      Array.isArray(row.ownerPages) && row.ownerPages.some((page) => normalizePeopleId(page?.id) === normalizePeopleId(owner.id)) &&
       directPath(owner.url?.path, contract.url) && directPath(owner.path, `/sitecore/content/allianz/allianz-life/Home${contract.url}`);
   });
   for (const row of eligible) {
@@ -191,7 +191,7 @@ export function selectPeopleDirectory(scope: PeopleScope, biographies: PeopleSea
     href: row.parent!.parent!.url.path, name: row.name, role: row.role, portrait: row.portrait,
     ...(scope.kind === 'experts' ? { directorySummary: row.directorySummary } : {}) });
   const items = eligible.map(person);
-  const groups = (categories ? searchedItems(scope, 'categories', categories) : []).filter((category) => normalizePeopleId(category.template?.id) && normalizePeopleId(category.parent?.id) === normalizePeopleId(scope.datasourceId))
+  const groups = (categories ? searchedItems(scope, 'categories', categories) : []).filter((category) => normalizePeopleId(category.parent?.id) === normalizePeopleId(scope.datasourceId))
     .sort((a, b) => (order(a.sortOrder) ?? Number.MAX_SAFE_INTEGER) - (order(b.sortOrder) ?? Number.MAX_SAFE_INTEGER) || checkedId(a.id).localeCompare(checkedId(b.id)))
     .map((category) => ({ id: category.id, heading: category.heading, introduction: category.introduction, items: eligible.filter((row) => normalizePeopleId(row.directoryCategory?.targetItem?.id) === normalizePeopleId(category.id)).map(person) }));
   const groupIds = new Set(groups.map((group) => checkedId(group.id)));

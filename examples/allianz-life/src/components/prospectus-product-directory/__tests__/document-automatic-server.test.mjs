@@ -8,10 +8,12 @@ import { fileURLToPath } from 'node:url';
 const require = createRequire(import.meta.url);
 const ts = require('typescript');
 const React = require('react');
-const { parse } = require('graphql');
+const { parse, visit } = require('graphql');
+const { ClientError } = require('graphql-request');
 const { renderToStaticMarkup } = require('react-dom/server');
 const { ComponentPropsService, ComponentPropsContext, useComponentProps } = require('@sitecore-content-sdk/nextjs');
 const { SitecoreClient } = require('@sitecore-content-sdk/nextjs/client');
+const { GraphQLRequestClient } = require('@sitecore-content-sdk/core');
 const directory = fileURLToPath(new URL('..', import.meta.url));
 const modules = new Map();
 
@@ -36,6 +38,7 @@ function load(filename) {
 
 const data = load(path.join(directory, 'document-automatic-data.props.ts'));
 const { enrichDocumentComponentMap } = load(path.join(directory, 'document-automatic-server.props.ts'));
+const { classifyQueryFailure } = load(path.join(directory, '../../lib/allianz-query-failure.ts'));
 const id = (number) => `00000000-0000-4000-8000-${number.toString(16).padStart(12, '0')}`;
 const normalized = data.normalizeDocumentId;
 const field = (value) => ({ jsonValue: { value, editable: `<span>${value}</span>` } });
@@ -58,7 +61,8 @@ function assertUnavailable(value, message) {
   for (const summary of errorSummaries) assert.deepEqual(Object.keys(summary).sort(), ['code', 'signature', 'fieldCategory'].sort());
 }
 const invalidScope = { ...unavailable, error: 'invalid-scope' };
-const ready = (items = []) => ({ items, complete: true, status: 'ready' });
+const projectedChild = ({ template, language, latestVersion, sortOrder, ...item }) => item;
+const ready = (items = []) => ({ items: items.map(projectedChild), complete: true, status: 'ready' });
 const componentName = (kind) => kind === 'documents' ? 'ProspectusDocumentTable' : 'ProspectusProductDirectory';
 const collectionName = (kind) => kind === 'documents' ? 'automaticDocuments' : 'automaticProducts';
 
@@ -94,7 +98,18 @@ function queryInputs(query) {
   const args = (selection) => Object.fromEntries(selection.arguments.map((argument) => [argument.name.value, value(argument.value)]));
   return { name: operation.name.value, root: args(root), ...args(children) };
 }
-function clientHarness(records = dataset(), { responseChange, failure } = {}) {
+function nativeTemplateMatches(records, row, baseTemplate) {
+  const pending = [row.template?.id], seen = new Set();
+  while (pending.length) {
+    const template = normalized(pending.pop());
+    if (!template || seen.has(template)) continue;
+    if (template === normalized(baseTemplate)) return true;
+    seen.add(template);
+    pending.push(...(records.templateBases?.[template] ?? []));
+  }
+  return false;
+}
+function clientHarness(records = dataset(), { responseChange, failure, rejectTemplateProjection = true } = {}) {
   const calls = [];
   const client = Object.assign(Object.create(SitecoreClient.prototype), {
     componentPropsService: new ComponentPropsService(),
@@ -103,13 +118,25 @@ function clientHarness(records = dataset(), { responseChange, failure } = {}) {
       const kind = args.name.endsWith('Documents') ? 'documents' : 'products';
       calls.push({ query, args, kind, variables, fetchOptions });
       if (failure) throw failure;
-      // Native children supplies the complete direct-child sequence, including other templates.
+      // Native children filters inherited base-template membership before counting/pagination.
       const rows = records[kind].filter((row) => normalized(row.parent?.id) === normalized(args.root.path)
-        && row.language === args.root.language && row.latestVersion);
+        && row.language === args.root.language && row.latestVersion
+        && (args.includeTemplateIDs === undefined || nativeTemplateMatches(records, row, args.includeTemplateIDs)));
       const offset = Number(args.after ?? 0), hasNext = offset + args.first < rows.length;
       const root = records.roots.find((item) => normalized(item.id) === normalized(args.root.path));
-      const response = { root: root && { ...root, children: { total: rows.length, results: rows.slice(offset, offset + args.first),
+      const page = rows.slice(offset, offset + args.first);
+      const response = { root: root && { ...root, children: { total: rows.length, results: page.map(projectedChild),
         pageInfo: { hasNext, endCursor: hasNext ? String(offset + args.first) : null } } } };
+      let templateField;
+      visit(parse(query), { Field(node) { if (node.name.value === 'template') templateField = node; } });
+      if (rejectTemplateProjection && templateField) {
+        response.root.children.results.forEach((item) => { item.template = null; });
+        throw new ClientError({ status: 200, headers: new Headers({ 'content-type': 'application/json' }), data: response,
+          errors: page.map((_, index) => ({ message: 'Template identity resolution failed.',
+            locations: [{ line: templateField.loc.startToken.line, column: templateField.loc.startToken.column }],
+            path: ['root', 'children', 'results', index, 'template'],
+          })) }, { query });
+      }
       return responseChange ? responseChange(structuredClone(response), args, kind) : response;
     } },
   });
@@ -194,6 +221,61 @@ test('child request failures expose their AST field category while preserving fa
   }
 });
 
+test('installed SDK rejects template projection with HTTP 200 errors and partial data, while filtered queries complete', async () => {
+  for (const kind of ['documents', 'products']) {
+    const records = dataset(), { client, calls } = clientHarness(records);
+    const backend = client.graphQLClient;
+    client.graphQLClient = new GraphQLRequestClient('https://synthetic-edge.invalid/graphql', {
+      retries: 0, debugger: () => {},
+      fetch: async (_url, options) => {
+        const { query, variables } = JSON.parse(options.body);
+        let envelope;
+        try { envelope = { data: await backend.request(query, variables) }; }
+        catch (error) {
+          if (!(error instanceof ClientError)) throw error;
+          envelope = { data: error.response.data, errors: error.response.errors };
+        }
+        return new Response(JSON.stringify(envelope), { status: 200, headers: { 'content-type': 'application/json' } });
+      },
+    });
+    const scope = { language: 'en', routeId, rootId: kind === 'documents' ? rootId : routeId };
+    const legacyProjection = (query) => query.replace(/includeTemplateIDs: "[^"]+", /, '')
+      .replace('id name parent { id }', 'id name template { id } parent { id }');
+    const legacyQuery = legacyProjection(data.buildDocumentQuery(kind, scope));
+    await assert.rejects(client.getData(legacyQuery), (error) => {
+      assert.ok(error instanceof ClientError);
+      assert.equal(error.response.status, 200);
+      assert.equal(error.response.errors.length, 10);
+      assert.equal(error.response.data.root.children.results.length, 10);
+      assert.ok(error.response.data.root.children.results.every((item) => item.template === null));
+      const diagnostic = classifyQueryFailure(error, legacyQuery);
+      assert.equal(diagnostic.errorSummaries.length, 8);
+      assert.ok(diagnostic.errorSummaries.every((summary) => summary.fieldCategory === 'template-identity'));
+      return true;
+    });
+    const page = layout({ renderings: [rendering(kind)] });
+    const failed = await client.getComponentData(page, {}, enrichDocumentComponentMap(componentMap(),
+      { getData: (query, variables, fetchOptions) => client.getData(legacyProjection(query), variables, fetchOptions) }));
+    const collection = failed[kind][collectionName(kind)];
+    assertUnavailable(collection);
+    assert.equal(collection.failureStage, 'children-request');
+    assert.equal(collection.httpStatus, 200);
+    assert.equal(collection.responseFormat, 'json');
+    assert.equal(collection.envelope, 'object-errors');
+    assert.equal(collection.dataShape, 'object');
+    assert.equal(collection.graphqlErrorCount, 10);
+    assert.equal(collection.errorSummaries.length, 8);
+    const corrected = await client.getComponentData(page, {}, enrichDocumentComponentMap(componentMap(),
+      { getData: client.getData.bind(client) }));
+    assert.deepEqual(corrected[kind][collectionName(kind)], ready(records[kind]));
+    const correctedCalls = calls.slice(2);
+    assert.deepEqual(correctedCalls.map((call) => call.args.after), [undefined, '10', '20']);
+    assert.ok(correctedCalls.every((call) => call.args.includeTemplateIDs === normalized(kind === 'documents'
+      ? data.DOCUMENT_ROW_TEMPLATE_ID : data.PROSPECTUS_PAGE_TEMPLATE_ID)));
+    assert.ok(corrected[kind][collectionName(kind)].items.every((item) => !('template' in item)));
+  }
+});
+
 test('real SDK transports every page through UID context, forwarding preview options without leaking them', async () => {
   const records = dataset(), { client, calls } = clientHarness(records);
   const preview = { cache: 'no-store', headers: { Authorization: 'synthetic-authoring-token', sc_previewMode: 'true', sc_site: 'allianz-life' } };
@@ -217,7 +299,7 @@ test('real SDK transports every page through UID context, forwarding preview opt
   assert.doesNotMatch(JSON.stringify(props) + readHookProps(props, 'documents'), /synthetic-authoring-token|Authorization|sc_previewMode|fetchOptions/);
 });
 
-test('queries project native item children in context language without search, template or sorting arguments', async () => {
+test('queries filter native item children by base template and context language without template projection or sorting', async () => {
   for (const kind of ['documents', 'products']) {
     const records = dataset(1), make = kind === 'documents' ? document : product;
     const owner = kind === 'documents' ? records.roots[1] : records.roots[0];
@@ -232,20 +314,22 @@ test('queries project native item children in context language without search, t
     assert.equal(selections[0].name.value, 'item');
     const projection = (selection) => selection.selectionSet
       ? Object.fromEntries(selection.selectionSet.selections.map((child) => [child.alias?.value ?? child.name.value, projection(child)])) : true;
-    const expectedResults = { id: true, name: true, parent: { id: true }, template: { id: true },
+    const expectedResults = { id: true, name: true, parent: { id: true },
       ...(kind === 'documents'
         ? { documentLink: { jsonValue: true }, contractNote: { jsonValue: true }, revisionDate: { jsonValue: true }, fileSize: { jsonValue: true } }
         : { path: true, url: { path: true }, prospectusDirectoryTitle: { jsonValue: true }, prospectusDirectoryGroup: { jsonValue: true } }) };
     assert.deepEqual(projection(selections[0]), { id: true, path: true, url: { path: true }, parent: { parent: { id: true } },
       children: { total: true, pageInfo: { hasNext: true, endCursor: true }, results: expectedResults } });
     const children = selections[0].selectionSet.selections.find((selection) => selection.name.value === 'children');
-    assert.deepEqual(children.arguments.map((argument) => argument.name.value), ['first']);
+    assert.deepEqual(children.arguments.map((argument) => argument.name.value), ['includeTemplateIDs', 'first']);
+    assert.equal(calls[0].args.includeTemplateIDs, normalized(kind === 'documents'
+      ? data.DOCUMENT_ROW_TEMPLATE_ID : data.PROSPECTUS_PAGE_TEMPLATE_ID));
     const resultFields = children.selectionSet.selections.find((selection) => selection.name.value === 'results').selectionSet.selections;
     for (const selection of resultFields.filter((selection) => selection.alias)) {
       assert.equal(selection.name.value, 'field');
       assert.deepEqual(selection.arguments.map((argument) => [argument.name.value, argument.value.value]), [['name', selection.alias.value]]);
     }
-    assert.doesNotMatch(calls[0].query, /search|selectedProducts|selectedDocuments|_path|sortOrder|__Sortorder|orderBy|_templates|_parent|_latestversion/);
+    assert.doesNotMatch(calls[0].query, /search|selectedProducts|selectedDocuments|_path|sortOrder|__Sortorder|orderBy|_templates|_parent|_latestversion|\btemplate\s*\{/);
   }
 });
 
@@ -276,30 +360,56 @@ test('native child sequence survives tied, blank and nonsense sort metadata, nam
   }
 });
 
-test('template filtering preserves native order after counting every interleaved child across all pages', async () => {
+test('native base-template filtering includes multiple and nested derived templates in order across every filtered page', async () => {
   for (const kind of ['documents', 'products']) {
-    const records = dataset(23);
+    const records = dataset(23), make = kind === 'documents' ? document : product;
+    const owner = kind === 'documents' ? records.roots[1] : records.roots[0];
+    const base = kind === 'documents' ? data.DOCUMENT_ROW_TEMPLATE_ID : data.PROSPECTUS_PAGE_TEMPLATE_ID;
+    const otherBase = kind === 'documents' ? data.PROSPECTUS_PAGE_TEMPLATE_ID : data.DOCUMENT_ROW_TEMPLATE_ID;
+    const templates = [base, id(900), id(901), id(902), id(903)];
+    records.templateBases = {
+      [normalized(id(900))]: [base], [normalized(id(901))]: [base],
+      [normalized(id(902))]: [id(900)], [normalized(id(903))]: [id(999), id(902)],
+      [normalized(id(904))]: [otherBase],
+    };
     records[kind].reverse().forEach((item, i) => {
-      if (i % 3 !== 1) item.template = { id: id(999) };
-      if (kind === 'products' && i % 3 !== 1) {
-        // Non-page children may have no public page URL or directory metadata.
-        delete item.path;
-        delete item.url;
-        delete item.prospectusDirectoryTitle;
-        item.prospectusDirectoryGroup = field('not-a-directory-page');
-      }
+      item.template = { id: templates[i % templates.length] };
     });
-    const expected = records[kind].filter((_, i) => i % 3 === 1);
-    const { collection, calls } = await fetchCollection(kind, records);
+    const expected = [...records[kind]];
+    records[kind] = expected.flatMap((item, i) => {
+      const unrelated = make(1000 + i, owner, { template: { id: i % 2 ? id(999) : id(904) } });
+      if (kind === 'products') {
+        // Unrelated native children need no valid public URL or directory metadata.
+        delete unrelated.path;
+        delete unrelated.url;
+        delete unrelated.prospectusDirectoryTitle;
+        unrelated.prospectusDirectoryGroup = field('not-a-directory-page');
+      }
+      return [item, unrelated];
+    });
+    records[kind].push(make(2000, owner, { template: { id: id(903) }, parent: { id: id(998) } }),
+      make(2001, owner, { template: { id: id(902) }, parent: { id: expected[0].id } }),
+      make(2002, owner, { template: { id: id(901) }, language: 'fr' }),
+      make(2003, owner, { template: { id: id(900) }, latestVersion: false }));
+    const totals = [], pageSizes = [];
+    const { collection, calls } = await fetchCollection(kind, records, { responseChange(response) {
+      totals.push(response.root.children.total);
+      pageSizes.push(response.root.children.results.length);
+      return response;
+    } });
     assert.deepEqual(collection, ready(expected));
     assert.deepEqual(calls.map((call) => call.args.after), [undefined, '10', '20']);
+    assert.ok(calls.every((call) => call.args.includeTemplateIDs === normalized(base)));
+    assert.deepEqual(totals, [expected.length, expected.length, expected.length]);
+    assert.deepEqual(pageSizes, [10, 10, 3]);
+    assert.deepEqual(collection.items.map((item) => item.id), expected.map((item) => item.id));
     assert.equal(collection.items.at(-1).id, expected.at(-1).id);
   }
 });
 
-test('an entire nonmatching child page cannot end collection early or satisfy the final total', async () => {
+test('nonmatching children are excluded from native totals and every filtered cursor page remains required', async () => {
   for (const kind of ['documents', 'products']) {
-    const records = dataset(23);
+    const records = dataset(43);
     records[kind].forEach((item, i) => { if (i < 20) item.template = { id: id(999) }; });
     const result = await fetchCollection(kind, records);
     assert.deepEqual(result.collection, ready(records[kind].slice(20)));
@@ -312,7 +422,7 @@ test('an entire nonmatching child page cannot end collection early or satisfy th
     records[kind].forEach((item) => { item.template = { id: id(999) }; });
     const noMatches = await fetchCollection(kind, records);
     assert.deepEqual(noMatches.collection, ready());
-    assert.equal(noMatches.calls.length, 3);
+    assert.equal(noMatches.calls.length, 1);
   }
 });
 
@@ -454,7 +564,12 @@ test('ownership validation rejects foreign roots, indirect children and unsafe p
     ['documents', 'foreign route owner', (response) => { response.root.parent.parent.id = id(999); }],
     ['documents', 'missing route owner', (response) => { delete response.root.parent; }],
     ['documents', 'foreign direct child', (response) => { response.root.children.results[0].parent.id = id(999); }],
+    ['documents', 'missing direct child parent', (response) => { delete response.root.children.results[0].parent; }],
     ['products', 'foreign direct child', (response) => { response.root.children.results[0].parent.id = id(999); }],
+    ['products', 'missing direct child parent', (response) => { delete response.root.children.results[0].parent; }],
+    ['products', 'missing content path', (response) => { delete response.root.children.results[0].path; }],
+    ['products', 'missing public URL', (response) => { delete response.root.children.results[0].url; }],
+    ['products', 'missing route URL', (response) => { delete response.root.url; }],
     ['products', 'nested content path', (response) => { response.root.children.results[0].path += '/grandchild'; }],
     ['products', 'sibling content path', (response) => { response.root.children.results[0].path = `${response.root.path}-other/product`; }],
     ['products', 'nested public URL', (response) => { response.root.children.results[0].url.path += '/grandchild'; }],
@@ -463,7 +578,10 @@ test('ownership validation rejects foreign roots, indirect children and unsafe p
     ['products', 'unsafe route root', (response) => { response.root.url.path = '/account'; response.root.children.results[0].url.path = '/account/product'; }],
   ];
   for (const [kind, label, change] of scenarios) await t.test(`${kind}: ${label}`, async () => {
-    const { collection } = await fetchCollection(kind, dataset(1), { responseChange: (response) => { change(response); return response; } });
+    const records = dataset(1), base = kind === 'documents' ? data.DOCUMENT_ROW_TEMPLATE_ID : data.PROSPECTUS_PAGE_TEMPLATE_ID;
+    records.templateBases = { [normalized(id(900))]: [base], [normalized(id(901))]: [id(900)] };
+    records[kind][0].template = { id: id(901) };
+    const { collection } = await fetchCollection(kind, records, { responseChange: (response) => { change(response); return response; } });
     assertUnavailable(collection);
   });
 });
@@ -492,9 +610,6 @@ test('pagination and malformed response failures discard all partial data for bo
     ['duplicate canonical ID', (response, args) => { if (args.after) response.root.children.results[0].id = `{${id(200).toUpperCase()}}`; }, 'products'],
     ['invalid child ID', (response) => { response.root.children.results[0].id = 'invalid-id'; }],
     ['empty native name', (response) => { response.root.children.results[0].name = ''; }],
-    ['missing child template', (response) => { delete response.root.children.results[0].template; }],
-    ['missing template ID', (response) => { response.root.children.results[0].template = {}; }],
-    ['invalid child template', (response) => { response.root.children.results[0].template = { id: 'invalid-template' }; }],
   ];
   for (const kind of ['documents', 'products']) {
     for (const [label, change, onlyKind] of scenarios) {

@@ -17,12 +17,11 @@ export type ProspectusDirectoryPage = {
   parent: { id: string };
   prospectusDirectoryTitle?: DocumentText;
   prospectusDirectoryGroup?: DocumentText;
-  template?: { id?: string };
 };
 export type AutomaticProducts = DocumentAutomaticStatus & { items: ProspectusDirectoryPage[] };
 export type DocumentQueryScope = { language: string; rootId: string; routeId: string };
 export type DocumentQueryKind = 'documents' | 'products';
-type NativeChild = { id: string; name: string; parent: { id: string }; template?: { id?: string } };
+type NativeChild = { id: string; name: string; parent: { id: string } };
 type NativeRoot = { id: string; path: string; url?: { path?: string }; parent?: { parent?: { id?: string } } };
 type ChildConnection<T> = { total: number; pageInfo: { hasNext: boolean; endCursor?: string | null }; results: T[] };
 
@@ -45,12 +44,13 @@ function directPath(child: string, parent: string): boolean {
   return Boolean(tail) && !tail.includes('/');
 }
 
-/** Native child enumeration owns sibling order, including tied/empty __Sortorder values. */
+/** Native base-template filtering includes inherited templates and owns sibling order. */
 export function buildDocumentQuery(kind: DocumentQueryKind, scope: DocumentQueryScope, after?: string): string {
   if (!/^[a-z]{2,3}(?:-[a-z\d]{2,8})*$/i.test(scope.language)) throw new Error('Invalid document listing language');
   if (after !== undefined && (typeof after !== 'string' || !after)) throw new Error('Invalid document listing cursor');
   const rootId = checkedId(scope.rootId);
   checkedId(scope.routeId);
+  const templateId = checkedId(kind === 'documents' ? DOCUMENT_ROW_TEMPLATE_ID : PROSPECTUS_PAGE_TEMPLATE_ID);
   const literal = JSON.stringify;
   const fields = kind === 'documents'
     ? 'documentLink: field(name: "documentLink") { jsonValue } contractNote: field(name: "contractNote") { jsonValue } revisionDate: field(name: "revisionDate") { jsonValue } fileSize: field(name: "fileSize") { jsonValue }'
@@ -58,9 +58,9 @@ export function buildDocumentQuery(kind: DocumentQueryKind, scope: DocumentQuery
   return `query AutomaticProspectus${kind === 'documents' ? 'Documents' : 'Products'} {
     root: item(path: ${literal(rootId)}, language: ${literal(scope.language)}) {
       id path url { path } parent { parent { id } }
-      children(first: 10${after === undefined ? '' : `, after: ${literal(after)}`}) {
+      children(includeTemplateIDs: ${literal(templateId)}, first: 10${after === undefined ? '' : `, after: ${literal(after)}`}) {
         total pageInfo { hasNext endCursor } results {
-          id name template { id } parent { id }
+          id name parent { id }
           ${fields}
         }
       }
@@ -94,9 +94,7 @@ export async function collectDocumentChildren<T extends NativeChild>(getData: Do
     for (const item of connection.results) {
       const id = normalizeDocumentId(item?.id);
       if (!id || seen.has(id) || normalizeDocumentId(item.parent?.id) !== checkedId(scope.rootId) || typeof item.name !== 'string' || !item.name) throw new Error('Invalid document listing child');
-      const templateId = normalizeDocumentId(item.template?.id);
-      if (!templateId) throw new Error('Missing document child template');
-      if (kind === 'products' && templateId === checkedId(PROSPECTUS_PAGE_TEMPLATE_ID)) {
+      if (kind === 'products') {
         const page = item as unknown as ProspectusDirectoryPage;
         if (typeof page.path !== 'string' || !directPath(page.path, rootPath) || !validDocumentPageUrl(page.url?.path) || !directPath(page.url.path, rootUrl!)) throw new Error('Invalid prospectus page ownership');
       }
@@ -106,9 +104,7 @@ export async function collectDocumentChildren<T extends NativeChild>(getData: Do
     if (items.length > total) throw new Error('Document listing count exceeds total');
     if (!connection.pageInfo.hasNext) {
       if (items.length !== total) throw new Error('Document listing count differs from total');
-      const templateId = checkedId(kind === 'documents' ? DOCUMENT_ROW_TEMPLATE_ID : PROSPECTUS_PAGE_TEMPLATE_ID);
-      // Filter only after complete traversal; never replace native sibling order.
-      return items.filter((item) => normalizeDocumentId(item.template?.id) === templateId);
+      return items;
     }
     const cursor = connection.pageInfo.endCursor;
     if (!connection.results.length || items.length >= total || typeof cursor !== 'string' || !cursor || cursors.has(cursor)) throw new Error('Invalid document listing pagination');

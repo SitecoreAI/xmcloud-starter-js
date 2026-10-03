@@ -60,10 +60,11 @@
   "dataMechanism": {
     "source": "Direct children of current page",
     "pageTemplateId": "6944dd34-e2f5-5a2d-b6d3-5dc04463cf53",
-    "pagination": "Every cursor page required",
+    "pagination": "Every filtered cursor page required; total counts eligible children",
     "manualFallback": false,
-    "order": "Native item.children order, unchanged across pagination and stable template/group filtering",
-    "query": "item.children"
+    "order": "Native item.children order, unchanged across pagination and stable group filtering",
+    "query": "item.children(includeTemplateIDs: pageTemplateId)",
+    "templateMembership": "Native base-template filtering includes inherited templates without projecting template identity"
   },
   "parameters": [
     "RenderingIdentifier"
