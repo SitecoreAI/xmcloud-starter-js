@@ -42,6 +42,13 @@ const field = (value) => ({ jsonValue: { value, editable: `<span>${value}</span>
 const routeId = id(1);
 const rootId = id(2);
 const unavailable = { items: [], complete: false, status: 'unavailable', error: 'unavailable' };
+function assertUnavailable(value, message) {
+  const { failureStage, failureKind, httpStatus, ...content } = value;
+  assert.deepEqual(content, unavailable, message);
+  assert.match(failureStage, /^(children-request|children-validation|selection-validation)$/);
+  assert.ok(['graphql-validation', 'complexity-limit', 'authentication', 'authorization', 'rate-limit', 'upstream', 'network', 'unknown'].includes(failureKind));
+  if (httpStatus !== undefined) assert.ok(Number.isInteger(httpStatus) && httpStatus >= 100 && httpStatus <= 599);
+}
 const invalidScope = { ...unavailable, error: 'invalid-scope' };
 const ready = (items = []) => ({ items, complete: true, status: 'ready' });
 const componentName = (kind) => kind === 'documents' ? 'ProspectusDocumentTable' : 'ProspectusProductDirectory';
@@ -128,6 +135,31 @@ async function fetchCollection(kind, records = dataset(), harnessOptions = {}) {
     enrichDocumentComponentMap(componentMap(), { getData: client.getData.bind(client) }));
   return { collection: props[kind][collectionName(kind)], props, calls };
 }
+
+test('document transport failures carry only fixed stage, classification and numeric status', async () => {
+  const privateText = 'synthetic-private-document-credentials';
+  const failure = Object.assign(new Error(privateText), {
+    request: { url: privateText, query: privateText, headers: { Authorization: privateText } },
+    response: { status: 400, errors: [{ message: `Unknown argument "${privateText}" on field "children".` }] },
+  });
+  for (const kind of ['documents', 'products']) {
+    const { collection, props } = await fetchCollection(kind, dataset(), { failure });
+    assertUnavailable(collection);
+    assert.equal(collection.failureStage, 'children-request');
+    assert.equal(collection.failureKind, 'graphql-validation');
+    assert.equal(collection.httpStatus, 400);
+    assert.deepEqual(Object.keys(collection).sort(), ['items', 'complete', 'status', 'error', 'failureStage', 'failureKind', 'httpStatus'].sort());
+    assert.doesNotMatch(JSON.stringify(props), /synthetic-private|Authorization|\"(?:request|response|query|headers|url|stack)\"/);
+  }
+  const records = dataset();
+  records.products[0].prospectusDirectoryGroup = field('invalid');
+  const selected = (await fetchCollection('products', records)).collection;
+  assert.equal(selected.failureStage, 'selection-validation');
+  assert.equal(selected.failureKind, 'unknown');
+  const validation = (await fetchCollection('documents', dataset(), { responseChange(response) { delete response.root.children.total; return response; } })).collection;
+  assert.equal(validation.failureStage, 'children-validation');
+  assert.equal(validation.failureKind, 'unknown');
+});
 
 test('real SDK transports every page through UID context, forwarding preview options without leaking them', async () => {
   const records = dataset(), { client, calls } = clientHarness(records);
@@ -243,7 +275,7 @@ test('an entire nonmatching child page cannot end collection early or satisfy th
       if (args.after === '20') response.root.children.results.pop();
       return response;
     } });
-    assert.deepEqual(missingFinal.collection, unavailable);
+    assertUnavailable(missingFinal.collection);
     records[kind].forEach((item) => { item.template = { id: id(999) }; });
     const noMatches = await fetchCollection(kind, records);
     assert.deepEqual(noMatches.collection, ready());
@@ -269,13 +301,13 @@ test('invalid directory groups and missing titles make the entire collection una
     await t.test(`reject group ${JSON.stringify(group)}`, async () => {
       const records = dataset(23);
       records.products[22].prospectusDirectoryGroup = field(group);
-      assert.deepEqual((await fetchCollection('products', records)).collection, unavailable);
+      assertUnavailable((await fetchCollection('products', records)).collection);
     });
   }
   for (const title of [undefined, field(null), field(42)]) {
     const records = dataset(2);
     records.products[1].prospectusDirectoryTitle = title;
-    assert.deepEqual((await fetchCollection('products', records)).collection, unavailable);
+    assertUnavailable((await fetchCollection('products', records)).collection);
   }
 });
 
@@ -338,7 +370,7 @@ test('layout site, language and route isolate results even when a map is reused'
   }
   assert.equal(calls.length, readCount, 'invalid layout context must never issue a query or reuse cached data');
   const wrongRoute = await client.getComponentData(layout({ route: otherPage.id, renderings: [rendering('documents')] }), {}, map);
-  assert.deepEqual(wrongRoute.documents.automaticDocuments, unavailable, 'a document root from another route cannot reuse cached data');
+  assertUnavailable(wrongRoute.documents.automaticDocuments, 'a document root from another route cannot reuse cached data');
 });
 
 test('datasource item ID takes precedence and rendering dataSource is a validated fallback', async () => {
@@ -399,7 +431,7 @@ test('ownership validation rejects foreign roots, indirect children and unsafe p
   ];
   for (const [kind, label, change] of scenarios) await t.test(`${kind}: ${label}`, async () => {
     const { collection } = await fetchCollection(kind, dataset(1), { responseChange: (response) => { change(response); return response; } });
-    assert.deepEqual(collection, unavailable);
+    assertUnavailable(collection);
   });
 });
 
@@ -438,7 +470,7 @@ test('pagination and malformed response failures discard all partial data for bo
         const { collection, calls } = await fetchCollection(kind, dataset(), {
           responseChange: (response, args) => { change(response, args); return response; },
         });
-        assert.deepEqual(collection, unavailable);
+        assertUnavailable(collection);
         assert.ok(calls.length <= 3, 'broken pagination must terminate without retry loops');
       });
     }
@@ -453,7 +485,7 @@ test('SDK transport errors, including later pages, produce sanitized failures wi
       { responseChange: (response, args) => { if (args.after) throw new Error(secret); return response; } },
     ]) {
       const { collection, props } = await fetchCollection(kind, dataset(), harnessOptions);
-      assert.deepEqual(collection, unavailable);
+      assertUnavailable(collection);
       assert.doesNotMatch(JSON.stringify(props) + readHookProps(props, kind), /synthetic-secret|endpoint-internal|stack/);
     }
     assert.equal((await fetchCollection(kind)).collection.complete, true);

@@ -1,6 +1,7 @@
 import 'server-only';
 import type { ComponentMap, GetComponentServerProps, NextjsContentSdkComponent } from '@sitecore-content-sdk/nextjs';
 import type { FetchOptions } from '@sitecore-content-sdk/content/client';
+import { classifyQueryFailure, type QueryFailureDiagnostic } from './allianz-query-failure';
 import { buildPeopleScopeQuery, collectPeopleSearch, normalizePeopleId, selectPeopleDirectory, unavailablePeople, validPeopleScope,
   type AutomaticPeople, type PeopleBiography, type PeopleCategory, type PeopleDirectoryKind, type PeopleGetData, type PeopleScope } from './people-automatic-data';
 
@@ -10,14 +11,14 @@ export type PeopleAutomaticServerOptions = { getData: PeopleGetData; fetchOption
 type PeopleFailureStage = 'scope-request' | 'scope-validation' | 'biographies-request' | 'biographies-validation' |
   'categories-request' | 'categories-validation' | 'selection-validation' | 'unknown';
 class PeopleStageFailure extends Error {
-  constructor(readonly stage: PeopleFailureStage) { super('Automatic people directory read failed'); }
+  constructor(readonly stage: PeopleFailureStage, readonly diagnostic: QueryFailureDiagnostic) { super('Automatic people directory read failed'); }
 }
 async function atPeopleStage<T>(stage: PeopleFailureStage, operation: () => T | Promise<T>): Promise<T> {
   try { return await operation(); }
   catch (error) {
     if (error instanceof PeopleStageFailure) throw error;
     // Do not retain the original error: SDK request errors may contain private headers.
-    throw new PeopleStageFailure(stage);
+    throw new PeopleStageFailure(stage, classifyQueryFailure(error));
   }
 }
 
@@ -44,7 +45,8 @@ export function enrichPeopleComponentMap(components: ComponentMap<NextjsContentS
           ]);
           return await atPeopleStage('selection-validation', () => selectPeopleDirectory(scope, biographies, categories));
         } catch (error) {
-          return { ...unavailablePeople(), failureStage: error instanceof PeopleStageFailure ? error.stage : 'unknown' };
+          return { ...unavailablePeople(), failureStage: error instanceof PeopleStageFailure ? error.stage : 'unknown',
+            ...(error instanceof PeopleStageFailure ? error.diagnostic : classifyQueryFailure(error)) };
         }
       })();
       reads.set(key, result);

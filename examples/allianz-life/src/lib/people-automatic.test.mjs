@@ -235,7 +235,8 @@ test('failed operations expose only a fixed stage marker without request, respon
     assert.equal(output.complete, false);
     assert.equal(output.error, 'unavailable');
     assert.equal(output.failureStage, record.expected);
-    assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'groups', 'items', 'status', 'unassigned'].sort());
+    assert.equal(output.failureKind, 'unknown');
+    assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'failureKind', 'groups', 'items', 'status', 'unassigned'].sort());
     assert.deepEqual(output.items, []);
     assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization|\"(?:request|response|stack|query|headers)\"\s*:/);
     if (record.expected.startsWith('categories')) {
@@ -250,6 +251,23 @@ test('failed operations expose only a fixed stage marker without request, respon
   const rejected = await invalid.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: invalid.client.getData.bind(invalid.client) }));
   assert.equal(rejected.directory.automaticPeople.error, 'invalid-scope');
   assert.equal(Object.hasOwn(rejected.directory.automaticPeople, 'failureStage'), false);
+});
+
+test('scope transport failures expose fixed GraphQL classification and numeric status through the real SDK', async () => {
+  const secret = 'synthetic-private-context-and-query';
+  const privateError = Object.assign(new Error(secret), { request: { query: secret, headers: { 'x-sitecore-contextid': secret } },
+    response: { status: 400, errors: [{ message: `Cannot query field "private-field-${secret}" on type "Item".` }], headers: { Authorization: secret } } });
+  const records = dataset('executives');
+  const { client, calls } = harness(records, (response, name) => { if (name === 'AutomaticPeopleScope') throw privateError; return response; });
+  const result = await client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+  const output = result.directory.automaticPeople;
+  assert.equal(output.failureStage, 'scope-request');
+  assert.equal(output.failureKind, 'graphql-validation');
+  assert.equal(output.httpStatus, 400);
+  assert.equal(output.complete, false);
+  assert.deepEqual(output.items, []);
+  assert.equal(calls.length, 1);
+  assert.doesNotMatch(JSON.stringify(result), /synthetic-private|private-field|Authorization|x-sitecore-contextid|\"(?:request|response|query|headers|stack)\"/);
 });
 
 test('ten-item biography requests retain every executive and expert field through complete pagination', async () => {
