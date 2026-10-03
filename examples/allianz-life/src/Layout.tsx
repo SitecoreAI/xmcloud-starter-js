@@ -7,6 +7,7 @@ import ServiceUnavailable from 'components/content-sdk/ServiceUnavailable';
 import componentMap from '.sitecore/component-map';
 import sourceBodyClasses from 'src/content/source-body-classes.json';
 import { collectionsComplete } from 'lib/collection-completeness';
+import { isConnected } from 'lib/allianz-content-mode';
 
 interface LayoutProps { page: Page }
 export interface RouteFields {
@@ -26,7 +27,7 @@ export interface RouteFields {
 const Layout = ({ page }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
-  if (!collectionsComplete(layout, process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE === 'connected')) {
+  if (!collectionsComplete(layout, isConnected())) {
     return <div className="allianz-missing-data" role="alert">Some page content is temporarily unavailable. Please try again later.</div>;
   }
   const fields = route?.fields as RouteFields | undefined;

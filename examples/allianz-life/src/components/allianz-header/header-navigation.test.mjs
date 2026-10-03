@@ -23,7 +23,8 @@ function load(file, mocks = {}) {
   return compiled.exports;
 }
 const rules = load(new URL('./allianz-header.props.ts', import.meta.url));
-const fields = load(new URL('../../lib/allianz-fields.ts', import.meta.url));
+const contentMode = load(new URL('../../lib/allianz-content-mode.ts', import.meta.url));
+const fields = load(new URL('../../lib/allianz-fields.ts', import.meta.url), { './allianz-content-mode': contentMode });
 const navItem = (id, title, href, children = []) => ({
   id, title: { jsonValue: { value: title } }, link: { jsonValue: { value: { href, text: title } } }, children: { results: children },
 });

@@ -189,7 +189,7 @@ test('independent and combined field clearing retain editable chrome without res
 });
 
 test('unsafe General Links use existing safe-link policy while authored editing fields stay untouched', () => {
-  for (const href of ['javascript:alert(1)', 'https://malicious.example/collect', '/login', '/portal', '/unknown-path']) {
+  for (const href of ['javascript:alert(1)', 'https://malicious.example/collect', '/login', '/portal', '/api/private']) {
     const link = nativeField('link', { href, text: 'Unsafe authored link' });
     const datasource = complete([{ id: 'unsafe-choice', link: { jsonValue: link } }]);
     const before = JSON.stringify(datasource);

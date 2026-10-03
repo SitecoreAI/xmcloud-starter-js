@@ -162,7 +162,9 @@ test('fixture proxy preserves NY query and reaches the explicit utility without 
     'sitecore.config': {}, './i18n/routing': { routing: { locales: ['en'] } }, './lib/sitecore-client': {},
   })(path.join(root, 'proxy.ts')).default;
   const previousMode = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
+  const previousNodeEnv = process.env.NODE_ENV;
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'fixture';
+  process.env.NODE_ENV = 'test';
   try {
     const request = new NextRequest('https://local.invalid/new-york/search?q=Annuities%20%26%20income');
     const rewrite = new URL(proxy(request).headers.get('x-middleware-rewrite'));
@@ -188,6 +190,8 @@ test('fixture proxy preserves NY query and reaches the explicit utility without 
   } finally {
     if (previousMode === undefined) delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
     else process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = previousMode;
+    if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
+    else process.env.NODE_ENV = previousNodeEnv;
   }
 });
 

@@ -28,7 +28,8 @@ function flatten(element) {
   return [element, ...flatten(element.props.children)];
 }
 const field = (value, metadata = {}) => ({ jsonValue: { value, ...metadata } });
-const fields = load(new URL('../../lib/allianz-fields.ts', import.meta.url));
+const contentMode = load(new URL('../../lib/allianz-content-mode.ts', import.meta.url));
+const fields = load(new URL('../../lib/allianz-fields.ts', import.meta.url), { './allianz-content-mode': contentMode });
 const documentRules = load(new URL('./allianz-document-list.props.ts', import.meta.url));
 const documentMocks = {
   'components/content-sdk/NoDataFallback': 'no-data',

@@ -2,6 +2,7 @@ import { getRequestConfig, GetRequestConfigParams } from 'next-intl/server';
 import { hasLocale } from 'next-intl';
 import { routing } from './routing';
 import client from 'src/lib/sitecore-client';
+import { isConnected } from 'lib/allianz-content-mode';
 
 export default getRequestConfig(async ({ requestLocale }: GetRequestConfigParams) => {
   // Provide a static locale, fetch a user setting,
@@ -15,7 +16,7 @@ export default getRequestConfig(async ({ requestLocale }: GetRequestConfigParams
   const locale = hasLocale(routing.locales, parsedLocale) ? parsedLocale : routing.defaultLocale;
 
   const messages: Record<string, object> = {};
-  messages[parsedSite || 'allianz-life'] = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE === 'connected'
+  messages[parsedSite || 'allianz-life'] = isConnected()
     ? await client.getDictionary({ locale, site: parsedSite })
     : {};
 

@@ -4,6 +4,7 @@ import sites from '.sitecore/sites.json';
 import scConfig from 'sitecore.config';
 import { routing } from './i18n/routing';
 import client from './lib/sitecore-client';
+import { usesFixtureContent } from './lib/allianz-content-mode';
 
 function connectedPipeline() {
   const preview = new PreviewProxy({ client, ...scConfig.api.edge });
@@ -18,7 +19,7 @@ function connectedPipeline() {
 }
 
 export default function proxy(req: NextRequest) {
-  if (process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE !== 'connected') {
+  if (usesFixtureContent()) {
     if (req.nextUrl.pathname.startsWith('/allianz-life/en')) return NextResponse.next();
     const target = req.nextUrl.clone();
     target.pathname = `/allianz-life/en${req.nextUrl.pathname === '/' ? '' : req.nextUrl.pathname}`;

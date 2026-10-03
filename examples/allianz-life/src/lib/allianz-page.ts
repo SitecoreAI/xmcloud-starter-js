@@ -5,7 +5,7 @@ import { publicRouteAliases } from './public-routes';
 
 export const fixtureContent = fixtureJson as unknown as FixtureContent;
 const aliases = publicRouteAliases(fixtureContent.routes);
-export const isConnected = () => process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE === 'connected';
+export { isConnected } from './allianz-content-mode';
 
 /** The fixture adapter produces the same Layout Service payload as connected Edge. */
 export function getFixturePage(path: string[], site = 'allianz-life', locale = 'en'): Page | null {

@@ -1,6 +1,7 @@
 import type { Field, ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from './component-props';
 import publicRouteIndex from '../../content/public-route-index.json';
+import { isConnected } from './allianz-content-mode';
 
 /** Native integrated GraphQL field shape, shared by Edge and local fixtures. */
 export type JsonField<T> = { jsonValue?: T };
@@ -91,7 +92,7 @@ export function safeLink(field?: LinkField): LinkField {
   const isPublic = url.origin === 'https://www.allianzlife.com' && !url.username && !url.password &&
     !/^\/(?:new-york\/)?(login|registration|spa|account|portal|secured|logout|manageuserprofile|api|sitecore)(\/|$)/i.test(url.pathname);
   const path = (() => { try { return decodeURIComponent(url.pathname).toLowerCase().replace(/\/$/, '') || '/'; } catch { return ''; } })();
-  const fixtureRouteAvailable = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE === 'connected' ||
+  const fixtureRouteAvailable = isConnected() ||
     Object.hasOwn(publicRouteIndex, path) || /^\/allianz-(?:legacy-)?assets\//.test(path) || path === '/search';
   const canNavigate = isPublic && !!path && !/%(?:2f|5c)/i.test(url.pathname) && fixtureRouteAvailable &&
     !/^\/(?:new-york\/)?(login|registration|spa|account|portal|secured|logout|manageuserprofile|api|sitecore)(\/|$)/i.test(path);

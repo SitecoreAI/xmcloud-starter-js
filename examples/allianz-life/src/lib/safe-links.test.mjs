@@ -11,16 +11,25 @@ const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
 const { Link, SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
 const filename = fileURLToPath(new URL('./allianz-fields.ts', import.meta.url));
-const compiled = new Module(filename);
-compiled.filename = filename;
-compiled.paths = Module._nodeModulePaths(path.dirname(filename));
-compiled._compile(ts.transpileModule(fs.readFileSync(filename, 'utf8'), {
-  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true },
-}).outputText, filename);
-const { safeLink } = compiled.exports;
+function loadSource(filename) {
+  const compiled = new Module(filename);
+  compiled.filename = filename;
+  compiled.paths = Module._nodeModulePaths(path.dirname(filename));
+  const nativeRequire = compiled.require.bind(compiled);
+  compiled.require = (specifier) => {
+    const local = specifier.startsWith('.') && path.resolve(path.dirname(filename), `${specifier}.ts`);
+    return local && fs.existsSync(local) ? loadSource(local) : nativeRequire(specifier);
+  };
+  compiled._compile(ts.transpileModule(fs.readFileSync(filename, 'utf8'), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true },
+  }).outputText, filename);
+  return compiled.exports;
+}
+const { safeLink } = loadSource(filename);
 const field = (href, attributes = {}) => ({ value: { href, text: 'Open', ...attributes } });
 const href = (value) => safeLink(field(value)).value.href;
 process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'fixture';
+process.env.NODE_ENV = 'test';
 
 // Both Sitecore Link and its underlying Next Link are the installed renderers.
 function render(input, isEditing = false, editable = true) {
@@ -43,6 +52,19 @@ test('captured public routes and assets stay local; unavailable routes are servi
   }
   for (const value of ['/rates', '/for-financial-professionals/advisory-solutions', '/what-we-offer/life-insurance/the-underwriting-process', '/about/newsroom/_local/missing']) {
     assert.equal(href(value), '#service-unavailable');
+  }
+});
+
+test('normal production accepts new native public routes without a custom content-mode setting', () => {
+  const previousNode = process.env.NODE_ENV, previousMode = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
+  process.env.NODE_ENV = 'production';
+  delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
+  try {
+    assert.equal(renderedHref(field('/new-native-public-page?view=detail#section')), '/new-native-public-page?view=detail#section');
+    for (const value of ['/api/private', '/login', 'https://external.example.invalid/']) assert.equal(href(value), '#service-unavailable');
+  } finally {
+    if (previousNode === undefined) delete process.env.NODE_ENV; else process.env.NODE_ENV = previousNode;
+    if (previousMode === undefined) delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE; else process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = previousMode;
   }
 });
 

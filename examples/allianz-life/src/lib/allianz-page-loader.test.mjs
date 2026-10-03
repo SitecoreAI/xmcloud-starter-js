@@ -24,12 +24,17 @@ function layout(title, description) {
 }
 
 /** Exercise real SDK routing, editing-header parsing and FetchOptions forwarding. */
-function harness(t, { draft = false, connected = true, authorization, cookie, mode = 'edit', editingHeader = true, missing = false, error } = {}) {
+function harness(t, { draft = false, connected = true, nodeEnv = 'test', contentMode = connected ? 'connected' : 'fixture', authorization, cookie, mode = 'edit', editingHeader = true, missing = false, error } = {}) {
   const previousMode = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
-  process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = connected ? 'connected' : 'fixture';
+  const previousNodeEnv = process.env.NODE_ENV;
+  if (contentMode === null) delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
+  else process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = contentMode;
+  process.env.NODE_ENV = nodeEnv;
   t.after(() => {
     if (previousMode === undefined) delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
     else process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = previousMode;
+    if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
+    else process.env.NODE_ENV = previousNodeEnv;
   });
 
   const calls = [];
@@ -55,7 +60,7 @@ function harness(t, { draft = false, connected = true, authorization, cookie, mo
     layoutService: { async fetchLayoutData(contentPath, options, fetchOptions) {
       const preview = fetchOptions?.headers?.sc_previewMode === 'true';
       calls.push({ backend: preview ? 'authoring-navigation' : 'delivery', contentPath, options, fetchOptions });
-      if (preview && error) throw error;
+      if (error) throw error;
       return preview ? authoringLayout : deliveryLayout;
     } },
     async getData() { throw new Error('No automatic rendering exists in this layout fixture'); },
@@ -229,6 +234,24 @@ test('normal fixture rendering and metadata keep the real local adapter and make
   assert.deepEqual(element.props.children.props.componentProps, {});
   assert.deepEqual(h.calls, []);
   assert.deepEqual(h.requestReads, { headers: 0, cookies: 0 });
+});
+
+for (const contentMode of [null, 'fixture', 'unknown']) {
+  test(`production mode ${contentMode ?? 'unset'} uses CMS rendering, metadata and component hooks`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production', contentMode });
+    assert.equal(renderedPage(await h.default(props())).layout.sitecore.route.fields.pageTitle.value, 'Published delivery title');
+    assert.equal((await h.generateMetadata(props())).title, 'Published delivery title');
+    assert.ok(h.calls.some((call) => call.backend === 'component-props'));
+    assert.ok(h.calls.filter((call) => call.backend !== 'component-props').every((call) => call.backend === 'delivery'));
+    assert.deepEqual(h.requestReads, { headers: 0, cookies: 0 });
+  });
+}
+
+test('explicit production fixture flag cannot hide CMS failures with sample content', async (t) => {
+  const error = new Error('CMS configuration or request failed');
+  const h = harness(t, { nodeEnv: 'production', contentMode: 'fixture', error });
+  await assert.rejects(h.loadAllianzPage('allianz-life', 'en'), (actual) => actual === error);
+  assert.ok(h.calls.every((call) => call.backend === 'delivery'));
 });
 
 test('authoring missing content preserves rendering 404 and metadata defaults without delivery fallback', async (t) => {
