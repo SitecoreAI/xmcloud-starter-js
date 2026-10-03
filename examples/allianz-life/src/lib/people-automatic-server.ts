@@ -6,6 +6,21 @@ import { buildPeopleScopeQuery, collectPeopleSearch, normalizePeopleId, selectPe
 
 export type PeopleAutomaticServerOptions = { getData: PeopleGetData; fetchOptions?: FetchOptions };
 
+/** Public failure metadata is deliberately limited to these fixed, nonsecret stages. */
+type PeopleFailureStage = 'scope-request' | 'scope-validation' | 'biographies-request' | 'biographies-validation' |
+  'categories-request' | 'categories-validation' | 'selection-validation' | 'unknown';
+class PeopleStageFailure extends Error {
+  constructor(readonly stage: PeopleFailureStage) { super('Automatic people directory read failed'); }
+}
+async function atPeopleStage<T>(stage: PeopleFailureStage, operation: () => T | Promise<T>): Promise<T> {
+  try { return await operation(); }
+  catch (error) {
+    if (error instanceof PeopleStageFailure) throw error;
+    // Do not retain the original error: SDK request errors may contain private headers.
+    throw new PeopleStageFailure(stage);
+  }
+}
+
 /** Instantiate per request so draft authorization and language never cross request boundaries. */
 export function enrichPeopleComponentMap(components: ComponentMap<NextjsContentSdkComponent>, options: PeopleAutomaticServerOptions): ComponentMap<NextjsContentSdkComponent> {
   const enriched = new Map(components), reads = new Map<string, Promise<AutomaticPeople>>();
@@ -19,14 +34,18 @@ export function enrichPeopleComponentMap(components: ComponentMap<NextjsContentS
     if (!result) {
       result = (async () => {
         try {
-          const actual = await options.getData<Parameters<typeof validPeopleScope>[1]>(buildPeopleScopeQuery(scope), undefined, options.fetchOptions);
-          if (!actual || !validPeopleScope(scope, actual)) return unavailablePeople('invalid-scope');
+          const actual = await atPeopleStage('scope-request', () => options.getData<Parameters<typeof validPeopleScope>[1]>(buildPeopleScopeQuery(scope), undefined, options.fetchOptions));
+          if (!actual || !await atPeopleStage('scope-validation', () => validPeopleScope(scope, actual))) return unavailablePeople('invalid-scope');
+          const reader = (stage: PeopleFailureStage): PeopleGetData => <T = unknown>(query: string, variables?: Record<string, unknown>, fetchOptions?: FetchOptions) =>
+            atPeopleStage(stage, () => options.getData<T>(query, variables, fetchOptions));
           const [biographies, categories] = await Promise.all([
-            collectPeopleSearch<PeopleBiography>(options.getData, 'biographies', scope, options.fetchOptions),
-            kind === 'experts' ? collectPeopleSearch<PeopleCategory>(options.getData, 'categories', scope, options.fetchOptions) : Promise.resolve([]),
+            atPeopleStage('biographies-validation', () => collectPeopleSearch<PeopleBiography>(reader('biographies-request'), 'biographies', scope, options.fetchOptions)),
+            kind === 'experts' ? atPeopleStage('categories-validation', () => collectPeopleSearch<PeopleCategory>(reader('categories-request'), 'categories', scope, options.fetchOptions)) : Promise.resolve([]),
           ]);
-          return selectPeopleDirectory(scope, biographies, categories);
-        } catch { return unavailablePeople(); }
+          return await atPeopleStage('selection-validation', () => selectPeopleDirectory(scope, biographies, categories));
+        } catch (error) {
+          return { ...unavailablePeople(), failureStage: error instanceof PeopleStageFailure ? error.stage : 'unknown' };
+        }
       })();
       reads.set(key, result);
     }

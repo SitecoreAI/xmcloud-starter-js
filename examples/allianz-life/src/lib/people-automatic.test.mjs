@@ -113,6 +113,44 @@ test('real SDK getComponentData paginates 29 biographies and scopes draft creden
   assert.doesNotMatch(JSON.stringify(result), /synthetic-preview-token|Authorization|fetchOptions/);
 });
 
+test('failed operations expose only a fixed stage marker without request, response or exception contents', async () => {
+  const privateError = () => Object.assign(Error('synthetic-private-message'), {
+    request: { headers: { Authorization: 'synthetic-private-authorization' } },
+    response: { errors: [{ message: 'synthetic-private-response' }] },
+  });
+  const cases = [
+    { kind: 'executives', expected: 'scope-request', mutate(response, name) { if (name === 'AutomaticPeopleScope') throw privateError(); return response; } },
+    { kind: 'executives', expected: 'scope-validation', mutate(response, name) { if (name === 'AutomaticPeopleScope') response.root.url.path = {}; return response; } },
+    { kind: 'executives', expected: 'biographies-request', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') throw privateError(); return response; } },
+    { kind: 'executives', expected: 'biographies-validation', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') delete response.search.total; return response; } },
+    { kind: 'experts', expected: 'categories-request', mutate(response, name) { if (name === 'AutomaticPeopleCategories') throw privateError(); return response; } },
+    { kind: 'experts', expected: 'categories-validation', mutate(response, name) { if (name === 'AutomaticPeopleCategories') delete response.search.pageInfo; return response; } },
+    { kind: 'executives', expected: 'selection-validation', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') { response.search.results.push({ ...response.search.results[0], id: id(999) }); response.search.total++; } return response; } },
+  ];
+  for (const record of cases) {
+    const { client, calls } = harness(dataset(record.kind), record.mutate);
+    const result = await client.getComponentData(layout(record.kind), {}, enrichPeopleComponentMap(componentMap(true), { getData: client.getData.bind(client), fetchOptions: { headers: { Authorization: 'synthetic-private-authorization' } } }));
+    const output = result.directory.automaticPeople;
+    assert.equal(output.complete, false);
+    assert.equal(output.error, 'unavailable');
+    assert.equal(output.failureStage, record.expected);
+    assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'groups', 'items', 'status', 'unassigned'].sort());
+    assert.deepEqual(output.items, []);
+    assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization|\"(?:request|response|stack|query|headers)\"\s*:/);
+    if (record.expected.startsWith('categories')) {
+      assert.equal(calls.filter((call) => call.name === 'AutomaticPeopleBiographies').length, 2);
+    }
+  }
+  const success = harness(dataset('executives'));
+  const complete = await success.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: success.client.getData.bind(success.client) }));
+  assert.equal(complete.directory.automaticPeople.items.length, 8);
+  assert.equal(Object.hasOwn(complete.directory.automaticPeople, 'failureStage'), false);
+  const invalid = harness(dataset('executives'), (response, name) => { if (name === 'AutomaticPeopleScope') response.datasource.parent.parent.id = id(999); return response; });
+  const rejected = await invalid.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: invalid.client.getData.bind(invalid.client) }));
+  assert.equal(rejected.directory.automaticPeople.error, 'invalid-scope');
+  assert.equal(Object.hasOwn(rejected.directory.automaticPeople, 'failureStage'), false);
+});
+
 test('normal executive render derives canonical page links and untouched primary fields, with no substitute portrait', () => {
   const records = dataset('executives'), result = data.selectPeopleDirectory(records.current, records.biographies.reverse());
   assert.deepEqual(result.items.map((person) => person.href), contract.executives.map((row) => row.route));
