@@ -43,13 +43,28 @@ function dataset(kind = 'experts') {
   const datasource = { id: current.datasourceId, template: { id: definition.directoryTemplateId, name: definition.directoryTemplate }, parent: { name: 'Data', parent: { id: root.id } } };
   const categories = kind === 'experts' ? contract.categories.map((category, i) => ({ id: id(100 + i), heading: field(category.heading.jsonValue.value, `category-${i}`, id(100 + i)), introduction: field(category.introduction.jsonValue.value, `introduction-${i}`, id(100 + i), 'Rich Text'),
     sortOrder: { jsonValue: { value: category.sortOrder } }, template: { id: data.EXPERT_DIRECTORY_CATEGORY_TEMPLATE_ID, name: 'ExpertDirectoryCategory' }, parent: { id: datasource.id }, key: category.key })) : [];
-  const biographies = contract[kind].map((row) => ({ id: row.datasourceId, template: { id: definition.templateId }, ...structuredClone(row.sourceFields),
+  const biographies = contract[kind].map((row) => ({ id: row.datasourceId, template: row.datasourceId === 'cfda4244-202d-4c67-bc42-2451a05d3f20'
+    ? { id: 'a687b00f-291f-45b7-930a-ed4d2a8f164b', baseTemplateIds: [definition.templateId] }
+    : { id: definition.templateId, baseTemplateIds: [] }, ...structuredClone(row.sourceFields),
     directoryOrder: field(row.directoryOrder), directorySummary: row.directorySummary,
     directoryCategory: { targetItem: categories.find((category) => category.key === row.categoryKey) },
     parent: { name: 'Data', parent: { id: row.pageId, path: `/sitecore/content/allianz/allianz-life/Home${row.route}`, url: { path: row.route },
       template: { id: data.BIOGRAPHY_PAGE_TEMPLATE_ID }, parent: { id: root.id } } },
   }));
   return { current, root, datasource, categories, biographies };
+}
+// The fake native index models _templates membership, including transitive base IDs.
+function indexedTemplateMatches(row, baseTemplateId) {
+  return [row.template?.id, ...(row.template?.baseTemplateIds ?? [])].some((id) =>
+    data.normalizePeopleId(id) === data.normalizePeopleId(baseTemplateId));
+}
+function fixtureSearchResult(current, kind, rows) {
+  const baseTemplateId = kind === 'biographies' ? data.PEOPLE_DIRECTORY_CONTRACTS[current.kind].templateId : data.EXPERT_DIRECTORY_CATEGORY_TEMPLATE_ID;
+  return { items: rows.filter((row) => indexedTemplateMatches(row, baseTemplateId)), complete: true, queryKind: kind, baseTemplateId, scope: current };
+}
+function selectFixtureDirectory(current, biographies, categories) {
+  return data.selectPeopleDirectory(current, fixtureSearchResult(current, 'biographies', biographies),
+    categories ? fixtureSearchResult(current, 'categories', categories) : undefined);
 }
 function queryArgs(query) {
   const operation = parse(query).definitions[0], selection = operation.selectionSet.selections[0];
@@ -63,7 +78,10 @@ function harness(records, change) {
     async request(query, variables, fetchOptions) {
       const { name, args } = queryArgs(query); calls.push({ name, args, variables, fetchOptions });
       if (name === 'AutomaticPeopleScope') return change ? change({ root: records.root, datasource: records.datasource }, name, args) : { root: records.root, datasource: records.datasource };
-      const rows = name === 'AutomaticPeopleBiographies' ? records.biographies : records.categories;
+      const source = name === 'AutomaticPeopleBiographies' ? records.biographies : records.categories;
+      const predicate = args.where.AND.find((filter) => filter.name === '_templates');
+      assert.equal(predicate.operator, 'CONTAINS');
+      const rows = source.filter((row) => indexedTemplateMatches(row, predicate.value));
       const offset = Number(args.after ?? 0), hasNext = offset + args.first < rows.length;
       const response = { search: { total: rows.length, results: rows.slice(offset, offset + args.first), pageInfo: { hasNext, endCursor: hasNext ? String(offset + args.first) : null } } };
       return change ? change(response, name, args) : response;
@@ -90,11 +108,92 @@ function render(Component, componentProps, datasource, editing = false) {
 test('recovered source/native crosswalk retains 8 executives in source order, 29 experts and all 6 editable topics', () => {
   assert.equal(contract.executives.length, 8); assert.equal(contract.experts.length, 29); assert.equal(contract.categories.length, 6);
   assert.deepEqual(contract.executives.map((row) => row.route.split('/').pop()), ['jasmine-jirele', 'adam-brown', 'gretchen-cepek', 'luca-gallo', 'bill-gaumond', 'jenny-guldseth', 'jean-roch-sibille', 'eric-thomes']);
-  const records = dataset(), actual = data.selectPeopleDirectory(records.current, records.biographies.reverse(), records.categories.reverse());
+  const records = dataset(), actual = selectFixtureDirectory(records.current, records.biographies.reverse(), records.categories.reverse());
   assert.deepEqual(actual.groups.map((group) => group.heading.jsonValue.value), contract.categories.map((category) => category.heading.jsonValue.value));
   assert.deepEqual(actual.groups.flatMap((group) => group.items.map((row) => row.href)), contract.experts.map((row) => row.route));
   assert.equal(actual.unassigned.length, 0);
   assert.deepEqual(actual.items.filter((person) => !person.portrait.jsonValue.value.src).map((person) => person.href).sort(), contract.experts.filter((row) => row.portraitIntentionallyAbsent).map((row) => row.route).sort());
+});
+
+test('captured inherited executive identity renders among all eight without a subtype-specific production rule', async () => {
+  const records = dataset('executives');
+  const linked = records.biographies.find((row) => row.id === 'cfda4244-202d-4c67-bc42-2451a05d3f20');
+  assert.equal(linked.template.id, 'a687b00f-291f-45b7-930a-ed4d2a8f164b');
+  assert.deepEqual(linked.template.baseTemplateIds, ['0fc2896e-316f-45fb-83ef-5fe7773cc31b']);
+  assert.equal(records.biographies.filter((row) => row.template.id === data.PEOPLE_DIRECTORY_CONTRACTS.executives.templateId).length, 7);
+  const { client } = harness(records);
+  const output = await client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+  const result = output.directory.automaticPeople;
+  assert.deepEqual(result.items.map((person) => person.href), contract.executives.map((row) => row.route));
+  assert.equal(result.items.length, 8);
+  assert.equal(result.items[3].name, linked.name);
+  assert.equal(result.items[3].role, linked.role);
+  assert.equal(result.items[3].portrait, linked.portrait);
+  assert.equal(result.missingOrder, 0);
+});
+
+test('multiple and nested native template descendants remain automatic for executives and experts', async () => {
+  for (const kind of ['executives', 'experts']) {
+    const records = dataset(kind), base = data.PEOPLE_DIRECTORY_CONTRACTS[kind].templateId;
+    const nativeTemplateChain = [base, id(501), id(502), id(503)];
+    for (let i = 0; i < 3; i++) {
+      records.biographies[i].template = { id: nativeTemplateChain[i + 1], baseTemplateIds: nativeTemplateChain.slice(0, i + 1) };
+    }
+    const { client, calls } = harness(records);
+    const output = await client.getComponentData(layout(kind), {}, enrichPeopleComponentMap(componentMap(true), { getData: client.getData.bind(client) }));
+    assert.equal(output.directory.automaticPeople.items.length, kind === 'executives' ? 8 : 29);
+    const actual = output.directory.automaticPeople;
+    const ordered = kind === 'experts' ? actual.groups.flatMap((group) => group.items) : actual.items;
+    assert.deepEqual(ordered.map((item) => item.href), contract[kind].map((item) => item.route));
+    const inheritedReads = calls.filter((call) => call.name === 'AutomaticPeopleBiographies');
+    assert.ok(inheritedReads.every((call) => call.args.where.AND.some((filter) => filter.name === '_templates' &&
+      filter.value === data.normalizePeopleId(base) && filter.operator === 'CONTAINS')));
+    assert.equal(inheritedReads.length, kind === 'executives' ? 1 : 3);
+  }
+});
+
+test('native inherited filtering excludes unrelated templates and independent owner guards exclude misplaced descendants', async () => {
+  for (const kind of ['executives', 'experts']) {
+    const records = dataset(kind), base = data.PEOPLE_DIRECTORY_CONTRACTS[kind].templateId;
+    const unrelated = structuredClone(records.biographies[0]); unrelated.id = id(601);
+    unrelated.template = { id: id(602), name: kind === 'executives' ? 'ExecutiveBiography' : 'ExpertBiography', baseTemplateIds: [id(603)] };
+    const misplaced = structuredClone(records.biographies[0]); misplaced.id = id(604);
+    misplaced.template = { id: id(605), baseTemplateIds: [base, id(606)] };
+    misplaced.parent.parent.parent.id = id(607);
+    records.biographies.push(unrelated, misplaced);
+    const { client } = harness(records);
+    const output = await client.getComponentData(layout(kind), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+    assert.equal(output.directory.automaticPeople.items.length, kind === 'executives' ? 8 : 29);
+    assert.ok(output.directory.automaticPeople.items.every((row) => row.id !== unrelated.id && row.id !== misplaced.id));
+  }
+});
+
+test('expert categories follow the same inherited native search while retaining their owning datasource boundary', async () => {
+  const records = dataset('experts'), base = data.EXPERT_DIRECTORY_CATEGORY_TEMPLATE_ID;
+  records.categories[0].template = { id: id(801), baseTemplateIds: [base] };
+  records.categories[1].template = { id: id(802), baseTemplateIds: [base, id(801)] };
+  const unrelated = structuredClone(records.categories[0]); unrelated.id = id(803);
+  unrelated.template = { id: id(804), name: 'ExpertDirectoryCategory', baseTemplateIds: [] };
+  const misplaced = structuredClone(records.categories[1]); misplaced.id = id(805); misplaced.parent.id = id(806);
+  records.categories.push(unrelated, misplaced);
+  const { client } = harness(records);
+  const output = await client.getComponentData(layout('experts'), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+  const actual = output.directory.automaticPeople;
+  assert.equal(actual.groups.length, 6);
+  assert.deepEqual(actual.groups.map((group) => group.heading.jsonValue.value), contract.categories.map((category) => category.heading.jsonValue.value));
+  assert.deepEqual(actual.groups.flatMap((group) => group.items.map((person) => person.href)), contract.experts.map((person) => person.route));
+});
+
+test('directory selection requires complete inherited-search provenance for the same base, route and locale', () => {
+  const records = dataset('executives'), valid = fixtureSearchResult(records.current, 'biographies', records.biographies);
+  assert.throws(() => data.selectPeopleDirectory(records.current, records.biographies), /provenance/);
+  for (const mutate of [(result) => { result.complete = false; }, (result) => { result.queryKind = 'categories'; },
+    (result) => { result.baseTemplateId = id(701); }, (result) => { result.scope.rootId = id(702); },
+    (result) => { result.scope.datasourceId = id(703); }, (result) => { result.scope.language = 'de'; },
+    (result) => { result.scope.kind = 'experts'; }]) {
+    const invalid = structuredClone(valid); mutate(invalid);
+    assert.throws(() => data.selectPeopleDirectory(records.current, invalid), /provenance/);
+  }
 });
 
 test('real SDK getComponentData paginates 29 biographies and scopes draft credentials/language without serializing them', async () => {
@@ -164,7 +263,7 @@ test('ten-item biography requests retain every executive and expert field throug
     const actual = result.directory.automaticPeople;
     assert.equal(actual.complete, true);
     assert.equal(Object.hasOwn(actual, 'failureStage'), false);
-    assert.deepEqual(actual.items, data.selectPeopleDirectory(records.current, records.biographies, records.categories).items);
+    assert.deepEqual(actual.items, selectFixtureDirectory(records.current, records.biographies, records.categories).items);
     assert.equal(actual.items.length, kind === 'executives' ? 8 : 29);
     assert.equal(calls.filter((call) => call.name === 'AutomaticPeopleBiographies').length, kind === 'executives' ? 1 : 3);
   }
@@ -189,7 +288,7 @@ test('an oversized biography page and a later request failure expose no partial 
 });
 
 test('normal executive render derives canonical page links and untouched primary fields, with no substitute portrait', () => {
-  const records = dataset('executives'), result = data.selectPeopleDirectory(records.current, records.biographies.reverse());
+  const records = dataset('executives'), result = selectFixtureDirectory(records.current, records.biographies.reverse());
   assert.deepEqual(result.items.map((person) => person.href), contract.executives.map((row) => row.route));
   const html = render(ExecutiveDirectory, result, { id: id(2) });
   for (const row of contract.executives) {
@@ -203,7 +302,7 @@ test('normal executive render derives canonical page links and untouched primary
 });
 
 test('expert grouping preserves the exact editorial summaries, all portrait omissions and editable category/title metadata', () => {
-  const records = dataset(), result = data.selectPeopleDirectory(records.current, records.biographies, records.categories);
+  const records = dataset(), result = selectFixtureDirectory(records.current, records.biographies, records.categories);
   const original = JSON.stringify(result), datasource = { id: id(2) };
   const html = render(ExpertDirectory, result, datasource, true).replaceAll('&quot;', '"');
   for (let i = 0; i < 6; i++) assert.ok(html.includes(`"fieldId":"test-category-${i}"`));
@@ -218,7 +317,7 @@ test('all six source category introductions are preserved exactly before their p
   const recovered = JSON.parse(fs.readFileSync(path.join(sourceRoot, '../content/native-content.json'), 'utf8'));
   const sections = recovered.routes['/about/subject-matter-experts'].components.filter((component) => component.componentName === 'AllianzCardGrid');
   assert.equal(sections.length, 6);
-  const records = dataset(), result = data.selectPeopleDirectory(records.current, records.biographies, records.categories);
+  const records = dataset(), result = selectFixtureDirectory(records.current, records.biographies, records.categories);
   const html = render(ExpertDirectory, result, { id: id(2) });
   for (let index = 0; index < 6; index++) {
     const expected = sections[index].fields.data.datasource.body.jsonValue.value;
@@ -235,7 +334,7 @@ test('all six source category introductions are preserved exactly before their p
 });
 
 test('real SDK preserves category introduction metadata and cleared-field authoring without root-heading prompts', () => {
-  const records = dataset(), result = data.selectPeopleDirectory(records.current, records.biographies, records.categories);
+  const records = dataset(), result = selectFixtureDirectory(records.current, records.biographies, records.categories);
   const obsoleteFields = { id: id(2), heading: field('Unused root heading', 'retired-root-heading'), unassignedHeading: field('Unused unassigned heading', 'retired-unassigned') };
   for (const group of result.groups) {
     const original = group.introduction.jsonValue;
@@ -252,7 +351,7 @@ test('real SDK preserves category introduction metadata and cleared-field author
     group.introduction = { jsonValue: original };
   }
   const executive = dataset('executives');
-  const html = render(ExecutiveDirectory, data.selectPeopleDirectory(executive.current, executive.biographies), obsoleteFields, true);
+  const html = render(ExecutiveDirectory, selectFixtureDirectory(executive.current, executive.biographies), obsoleteFields, true);
   assert.doesNotMatch(html, /retired-root-heading|retired-unassigned|Unused root heading|Unused unassigned heading|<h2/);
 });
 
@@ -338,7 +437,7 @@ test('actual native directory/category template IDs survive renamed labels and r
       assert.equal(result.directory.automaticPeople.groups[0].heading, records.categories[0].heading);
       assert.equal(result.directory.automaticPeople.items.find((person) => person.id === records.biographies[0].id).directorySummary, records.biographies[0].directorySummary);
       records.categories[0].template = { id: id(999), name: 'ExpertDirectoryCategory' };
-      const selected = data.selectPeopleDirectory(records.current, records.biographies, records.categories);
+      const selected = selectFixtureDirectory(records.current, records.biographies, records.categories);
       assert.equal(selected.groups.length, 5);
       assert.equal(selected.unassigned.length, 4);
       assert.equal(selected.items.length, 29);
@@ -364,7 +463,7 @@ test('native metadata reads use the four confirmed GUID selectors without changi
       assert.deepEqual(fields.find((node) => node.alias?.value === name).selectionSet.selections.map((node) => node.name.value), ['jsonValue']);
     }
     const records = dataset(kind), before = JSON.stringify(records.biographies);
-    data.selectPeopleDirectory(records.current, records.biographies, records.categories);
+    selectFixtureDirectory(records.current, records.biographies, records.categories);
     assert.equal(JSON.stringify(records.biographies), before);
   }
   assert.match(data.buildPeopleScopeQuery(scope()), /template \{ id \}/);
@@ -378,15 +477,15 @@ test('unrelated templates, nested descendants, unsafe URLs and duplicate primary
     (row) => { row.parent.parent.url.path = '//evil.example/'; }, (row) => { row.parent.parent.url.path = '/about/subject-matter-experts/deeper/child'; },
     (row) => { row.parent.parent.url.path = '/about/subject-matter-experts/..'; }]) {
     const records = dataset(); mutate(records.biographies[0]);
-    assert.equal(data.selectPeopleDirectory(records.current, records.biographies, records.categories).items.length, 28);
+    assert.equal(selectFixtureDirectory(records.current, records.biographies, records.categories).items.length, 28);
   }
   const records = dataset(); const duplicate = structuredClone(records.biographies[0]); duplicate.id = id(999); records.biographies.push(duplicate);
-  assert.throws(() => data.selectPeopleDirectory(records.current, records.biographies, records.categories), /Multiple biography/);
+  assert.throws(() => selectFixtureDirectory(records.current, records.biographies, records.categories), /Multiple biography/);
 });
 
 test('missing category is editor-reported and excluded from visitor groups; missing order sorts last deterministically', () => {
   const records = dataset(), row = records.biographies[0]; row.directoryCategory = { targetItem: { id: id(999) } }; row.directoryOrder = field('invalid');
-  const result = data.selectPeopleDirectory(records.current, records.biographies, records.categories);
+  const result = selectFixtureDirectory(records.current, records.biographies, records.categories);
   assert.equal(result.items.at(-1).id, row.id); assert.equal(result.missingOrder, 1); assert.equal(result.unassigned.length, 1);
   const html = render(ExpertDirectory, result, { heading: field('Experts'), unassignedHeading: field('More experts') });
   assert.doesNotMatch(html, /More experts/); assert.ok(!html.includes(`href="${row.parent.parent.url.path}"`));
@@ -394,14 +493,14 @@ test('missing category is editor-reported and excluded from visitor groups; miss
   assert.match(editing, /need a directory category before they can appear/);
   assert.ok(!editing.includes(`href="${row.parent.parent.url.path}"`));
   row.directoryOrder = field(1);
-  assert.equal(data.selectPeopleDirectory(records.current, records.biographies, records.categories).items[0].id, row.id);
+  assert.equal(selectFixtureDirectory(records.current, records.biographies, records.categories).items[0].id, row.id);
 });
 
 test('structural root never renders heading prompts or manual children and an empty complete directory is valid', () => {
   const datasource = { heading: field('Editable directory'), children: { results: [{ heading: field('Forbidden duplicate') }] } };
   const html = render(ExecutiveDirectory, data.unavailablePeople(), datasource, true).replaceAll('&quot;', '"');
   assert.match(html, /temporarily unavailable/); assert.doesNotMatch(html, /test-heading|Editable directory|Forbidden duplicate/);
-  const records = dataset('executives'), result = data.selectPeopleDirectory(records.current, []);
+  const records = dataset('executives'), result = selectFixtureDirectory(records.current, []);
   assert.equal(result.complete, true); assert.deepEqual(result.items, []);
   assert.doesNotMatch(render(ExecutiveDirectory, result, { heading: field('') }), /temporarily unavailable|Editable directory|<h2/);
 });

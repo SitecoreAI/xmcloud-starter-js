@@ -22,6 +22,9 @@ export type PeopleText = { jsonValue?: Field<string> };
 export type PeopleOrder = { jsonValue?: Field<string | number> };
 export type PeoplePage = { id: string; path: string; url: { path: string }; template?: { id: string }; parent?: { id: string } };
 export type PeopleScope = { kind: PeopleDirectoryKind; rootId: string; datasourceId: string; language: string };
+export type PeopleQueryKind = 'biographies' | 'categories';
+/** Provenance of a complete native search, whose _templates predicate includes inherited templates. */
+export type PeopleSearchResult<T> = { items: T[]; complete: true; queryKind: PeopleQueryKind; baseTemplateId: string; scope: PeopleScope };
 export type PeopleCategory = { id: string; heading?: PeopleText; introduction?: PeopleText; sortOrder?: PeopleOrder; template?: { id: string; name?: string }; parent?: { id: string } };
 export type PeopleBiography = {
   id: string;
@@ -61,6 +64,10 @@ function checkedScope(scope: PeopleScope) {
 const literal = (value: string) => JSON.stringify(value);
 // Rich biography projections use a bounded ten-item request size; all cursor pages are still collected.
 const PEOPLE_PAGE_LIMITS = { biographies: 10, categories: 20 } as const;
+function searchTemplateId(kind: PeopleQueryKind, scope: PeopleScope): string {
+  if (kind !== 'biographies' && kind !== 'categories') throw new Error('Invalid people-directory query kind');
+  return checkedId(kind === 'biographies' ? PEOPLE_DIRECTORY_CONTRACTS[scope.kind].templateId : EXPERT_DIRECTORY_CATEGORY_TEMPLATE_ID);
+}
 
 /** Resolve the actual route and owning datasource; never trust recovered fixture IDs. */
 export function buildPeopleScopeQuery(scope: PeopleScope): string {
@@ -84,7 +91,7 @@ export function validPeopleScope(scope: PeopleScope, response: { root?: PeoplePa
 }
 
 /** Fully literal search inputs follow the same supported Edge contract as Newsroom. */
-export function buildPeopleSearchQuery(kind: 'biographies' | 'categories', scope: PeopleScope, after?: string): string {
+export function buildPeopleSearchQuery(kind: PeopleQueryKind, scope: PeopleScope, after?: string): string {
   const { root, datasource, language } = checkedScope(scope);
   if (after !== undefined && !after) throw new Error('Invalid people-directory cursor');
   const projection = kind === 'biographies'
@@ -99,7 +106,7 @@ export function buildPeopleSearchQuery(kind: 'biographies' | 'categories', scope
     : `id template { id } heading: field(name: "heading") { jsonValue } introduction: field(name: "${PEOPLE_CATEGORY_INTRODUCTION_FIELD_ID}") { jsonValue } sortOrder: field(name: "__Sortorder") { jsonValue } parent { id }`;
   return `query AutomaticPeople${kind === 'biographies' ? 'Biographies' : 'Categories'} {
     search(where: { AND: [
-      { name: "_templates", value: ${literal(checkedId(kind === 'biographies' ? PEOPLE_DIRECTORY_CONTRACTS[scope.kind].templateId : EXPERT_DIRECTORY_CATEGORY_TEMPLATE_ID))}, operator: CONTAINS }
+      { name: "_templates", value: ${literal(searchTemplateId(kind, scope))}, operator: CONTAINS }
       { name: ${literal(kind === 'biographies' ? '_path' : '_parent')}, value: ${literal(kind === 'biographies' ? root : datasource)}, operator: ${kind === 'biographies' ? 'CONTAINS' : 'EQ'} }
       { name: "_language", value: ${literal(language)}, operator: EQ }
       { name: "_latestversion", value: "true", operator: EQ }
@@ -111,7 +118,9 @@ export function buildPeopleSearchQuery(kind: 'biographies' | 'categories', scope
 
 type Connection<T> = { total: number; pageInfo: { hasNext: boolean; endCursor?: string | null }; results: T[] };
 /** Every page must reconcile before a collection is exposed; failures never leak partial rows. */
-export async function collectPeopleSearch<T extends { id: string }>(getData: PeopleGetData, kind: 'biographies' | 'categories', scope: PeopleScope, fetchOptions?: FetchOptions): Promise<T[]> {
+export async function collectPeopleSearch<T extends { id: string }>(getData: PeopleGetData, kind: PeopleQueryKind, scope: PeopleScope, fetchOptions?: FetchOptions): Promise<PeopleSearchResult<T>> {
+  const { root, datasource, language } = checkedScope(scope);
+  const baseTemplateId = searchTemplateId(kind, scope);
   const rows: T[] = [], ids = new Set<string>(), cursors = new Set<string>();
   let after: string | undefined, total: number | undefined;
   for (;;) {
@@ -128,7 +137,8 @@ export async function collectPeopleSearch<T extends { id: string }>(getData: Peo
     if (rows.length > total) throw new Error('People-directory count exceeds total');
     if (!data.pageInfo.hasNext) {
       if (rows.length !== total) throw new Error('People-directory final count differs from total');
-      return rows;
+      return { items: rows, complete: true, queryKind: kind, baseTemplateId,
+        scope: { kind: scope.kind, rootId: root, datasourceId: datasource, language } };
     }
     const cursor = data.pageInfo.endCursor;
     if (!data.results.length || rows.length >= total || typeof cursor !== 'string' || !cursor || cursors.has(cursor)) throw new Error('Invalid people-directory pagination cursor');
@@ -149,13 +159,24 @@ function directPath(child: unknown, parent: string): child is string {
   const tail = path.toLowerCase().startsWith(prefix.toLowerCase()) ? path.slice(prefix.length) : '';
   return Boolean(tail) && !tail.includes('/') && tail !== '.' && tail !== '..';
 }
-/** Native owning pages determine links; metadata controls order/grouping, never duplicate cards. */
-export function selectPeopleDirectory(scope: PeopleScope, biographies: PeopleBiography[], categories: PeopleCategory[] = []): AutomaticPeople {
+/** Require the matching inherited-template search before applying independent owning-page guards. */
+function searchedItems<T>(scope: PeopleScope, kind: PeopleQueryKind, result: PeopleSearchResult<T>): T[] {
+  const expected = checkedScope(scope), actual = result?.scope && checkedScope(result.scope);
+  if (result?.complete !== true || result.queryKind !== kind || !actual || result.scope.kind !== scope.kind ||
+    actual.root !== expected.root || actual.datasource !== expected.datasource || actual.language !== expected.language ||
+    normalizePeopleId(result.baseTemplateId) !== searchTemplateId(kind, scope) || !Array.isArray(result.items)) {
+    throw new Error('People-directory search provenance does not match the requested scope');
+  }
+  return result.items;
+}
+
+/** Native search determines inherited membership; owning pages determine links and metadata orders/groups. */
+export function selectPeopleDirectory(scope: PeopleScope, biographies: PeopleSearchResult<PeopleBiography>, categories?: PeopleSearchResult<PeopleCategory>): AutomaticPeople {
   checkedScope(scope);
   const contract = PEOPLE_DIRECTORY_CONTRACTS[scope.kind], pages = new Set<string>();
-  const eligible = biographies.filter((row) => {
+  const eligible = searchedItems(scope, 'biographies', biographies).filter((row) => {
     const owner = row.parent?.parent;
-    return normalizePeopleId(row.template?.id) === normalizePeopleId(contract.templateId) &&
+    return normalizePeopleId(row.template?.id) &&
       row.parent?.name?.toLowerCase() === 'data' && owner && normalizePeopleId(owner.parent?.id) === normalizePeopleId(scope.rootId) &&
       normalizePeopleId(owner.template?.id) === normalizePeopleId(BIOGRAPHY_PAGE_TEMPLATE_ID) &&
       directPath(owner.url?.path, contract.url) && directPath(owner.path, `/sitecore/content/allianz/allianz-life/Home${contract.url}`);
@@ -170,7 +191,7 @@ export function selectPeopleDirectory(scope: PeopleScope, biographies: PeopleBio
     href: row.parent!.parent!.url.path, name: row.name, role: row.role, portrait: row.portrait,
     ...(scope.kind === 'experts' ? { directorySummary: row.directorySummary } : {}) });
   const items = eligible.map(person);
-  const groups = categories.filter((category) => normalizePeopleId(category.template?.id) === normalizePeopleId(EXPERT_DIRECTORY_CATEGORY_TEMPLATE_ID) && normalizePeopleId(category.parent?.id) === normalizePeopleId(scope.datasourceId))
+  const groups = (categories ? searchedItems(scope, 'categories', categories) : []).filter((category) => normalizePeopleId(category.template?.id) && normalizePeopleId(category.parent?.id) === normalizePeopleId(scope.datasourceId))
     .sort((a, b) => (order(a.sortOrder) ?? Number.MAX_SAFE_INTEGER) - (order(b.sortOrder) ?? Number.MAX_SAFE_INTEGER) || checkedId(a.id).localeCompare(checkedId(b.id)))
     .map((category) => ({ id: category.id, heading: category.heading, introduction: category.introduction, items: eligible.filter((row) => normalizePeopleId(row.directoryCategory?.targetItem?.id) === normalizePeopleId(category.id)).map(person) }));
   const groupIds = new Set(groups.map((group) => checkedId(group.id)));

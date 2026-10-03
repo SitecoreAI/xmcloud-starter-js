@@ -40,7 +40,7 @@ export function enrichPeopleComponentMap(components: ComponentMap<NextjsContentS
             atPeopleStage(stage, () => options.getData<T>(query, variables, fetchOptions));
           const [biographies, categories] = await Promise.all([
             atPeopleStage('biographies-validation', () => collectPeopleSearch<PeopleBiography>(reader('biographies-request'), 'biographies', scope, options.fetchOptions)),
-            kind === 'experts' ? atPeopleStage('categories-validation', () => collectPeopleSearch<PeopleCategory>(reader('categories-request'), 'categories', scope, options.fetchOptions)) : Promise.resolve([]),
+            kind === 'experts' ? atPeopleStage('categories-validation', () => collectPeopleSearch<PeopleCategory>(reader('categories-request'), 'categories', scope, options.fetchOptions)) : Promise.resolve(undefined),
           ]);
           return await atPeopleStage('selection-validation', () => selectPeopleDirectory(scope, biographies, categories));
         } catch (error) {
