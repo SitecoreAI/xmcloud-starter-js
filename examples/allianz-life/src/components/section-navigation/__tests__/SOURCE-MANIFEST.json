@@ -1,0 +1,26 @@
+{
+  "sources": [
+    {
+      "file": "ventures-live.html",
+      "bytes": 119181,
+      "sha256": "f6771c2f64c1e089986dbc8770c32438b1f11161acc162d09322ed4c0392566b",
+      "fragment": "ventures.source.html",
+      "fragmentBytes": 603,
+      "fragmentSha256": "91700317d0031370feba98401347f099cd9f98215c2d6608c6e3df2232ff4891",
+      "canonicalFragmentBytes": 591,
+      "canonicalFragmentSha256": "465c32f1b8eb5d65a19c2cf9a2ed78d917a9f50e2d889f33059aeb599ce56c73",
+      "canonicalFragmentNormalization": "CRLF to LF only"
+    },
+    {
+      "file": "portfolio-live.html",
+      "bytes": 135763,
+      "sha256": "48f056bc557e6f8e47639136227ada4f3ac19980a742e7d4ee7e3eeec00bdd1b",
+      "fragment": "portfolio.source.html",
+      "fragmentBytes": 612,
+      "fragmentSha256": "69e77089fe30b1ca19808aa2b99b864268444045bfd1490aa78c92c00fb72196",
+      "canonicalFragmentBytes": 600,
+      "canonicalFragmentSha256": "813cfa20c5c3439f1c41fdfad54f907ed624ccbd6d4b1362ccdcb46aa5abec97",
+      "canonicalFragmentNormalization": "CRLF to LF only"
+    }
+  ]
+}

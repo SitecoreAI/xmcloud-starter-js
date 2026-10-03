@@ -1,0 +1,22 @@
+{
+  "sourceUrl": "https://www.allianzlife.com/about/ventures",
+  "sourceSha256": "f6771c2f64c1e089986dbc8770c32438b1f11161acc162d09322ed4c0392566b",
+  "capturedAt": "2026-10-03T16:19:43Z",
+  "figures": [
+    {
+      "value": "2017",
+      "caption": "Program launch year",
+      "html": "<article class=\"m-axlTile match-height   tile--alphaNumeric -is--stacked  t-bg-transparent \">\n\t\t<div class=\"tileContent u-text-center\">\n\t\t\t\t<div class=\"tileSubGrid__image\">\n\t\t\t\t\t<div class=\"tileIcon -is--wide t-bg-primary-brand t-icon-primary-white\">\n\t\t\t\t\t\t\t<em class=\"alphaType\">\n\t\t\t\t\t\t\t\t2017\n\t\t\t\t\t\t\t</em>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t<div class=\"tileSubGrid__content\">\n\t\t\t\t<header>\n\t\t\t\t\t<div class=\"tileHeading \"></div>\n\t\t\t\t\t<div class=\"tileSubHeading \"></div>\n\t\t\t\t</header>\n\n\t\t\t\t<div class=\"tileBody u-font-size-lg\">\n\t\t\t\t\t<p>Program launch year</p>\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</div>\n\n\t</article>\n\n\t\t\t\t"
+    },
+    {
+      "value": "29",
+      "caption": "Direct investments to date",
+      "html": "<article class=\"m-axlTile match-height   tile--alphaNumeric -is--stacked  t-bg-transparent \">\n\t\t<div class=\"tileContent u-text-center\">\n\t\t\t\t<div class=\"tileSubGrid__image\">\n\t\t\t\t\t<div class=\"tileIcon -is--wide t-bg-primary-brand t-icon-primary-white\">\n\t\t\t\t\t\t\t<em class=\"alphaType\">\n\t\t\t\t\t\t\t\t29\n\t\t\t\t\t\t\t</em>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t<div class=\"tileSubGrid__content\">\n\t\t\t\t<header>\n\t\t\t\t\t<div class=\"tileHeading \"></div>\n\t\t\t\t\t<div class=\"tileSubHeading \"></div>\n\t\t\t\t</header>\n\n\t\t\t\t<div class=\"tileBody u-font-size-lg\">\n\t\t\t\t\t<p>Direct investments to date</p>\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</div>\n\n\t</article>\n\n\t\t\t\t"
+    },
+    {
+      "value": "$175M",
+      "caption": "Evergreen fund supporting long-term investments",
+      "html": "<article class=\"m-axlTile match-height   tile--alphaNumeric -is--stacked  t-bg-transparent \">\n\t\t<div class=\"tileContent u-text-center\">\n\t\t\t\t<div class=\"tileSubGrid__image\">\n\t\t\t\t\t<div class=\"tileIcon -is--wide t-bg-primary-brand t-icon-primary-white\">\n\t\t\t\t\t\t\t<em class=\"alphaType\">\n\t\t\t\t\t\t\t\t$175M\n\t\t\t\t\t\t\t</em>\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t<div class=\"tileSubGrid__content\">\n\t\t\t\t<header>\n\t\t\t\t\t<div class=\"tileHeading \"></div>\n\t\t\t\t\t<div class=\"tileSubHeading \"></div>\n\t\t\t\t</header>\n\n\t\t\t\t<div class=\"tileBody u-font-size-lg\">\n\t\t\t\t\t<p>Evergreen fund supporting long-term investments</p>\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</div>\n\n\t</article>\n\n\t\t\t\t"
+    }
+  ]
+}

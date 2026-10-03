@@ -1,0 +1,5 @@
+/* Source l-grid__row wraps automatically; medium-3 is four columns from 704px,
+   with full-width cards below 704px. Content has no authored row boundaries. */
+.investment-portfolio__items > .l-grid__column-medium-3 { display: flex; }
+.investment-portfolio__items .m-axlTile { width: 100%; }
+.investment-portfolio .tileImage picture .c-image__img { max-width: 100%; height: auto; }

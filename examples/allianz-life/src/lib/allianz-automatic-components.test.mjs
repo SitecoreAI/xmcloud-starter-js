@@ -30,7 +30,8 @@ function load(filename) {
 }
 const { enrichAllianzComponentMap } = load(path.join(directory, 'allianz-automatic-components.ts'));
 const names = ['PressReleaseArchive', 'NewsroomRecentReleases', 'NewsroomYearNavigation',
-  'ProspectusDocumentTable', 'ProspectusProductDirectory', 'ExecutiveDirectory', 'ExpertDirectory'];
+  'ProspectusDocumentTable', 'ProspectusProductDirectory', 'ExecutiveDirectory', 'ExpertDirectory',
+  'InvestmentPortfolio', 'SectionNavigation'];
 const id = '00000000-0000-4000-8000-000000000001';
 
 test('composition keeps every native hook, dynamic module and unrelated SDK hook without mutating the input map', async () => {
@@ -60,9 +61,10 @@ test('composition keeps every native hook, dynamic module and unrelated SDK hook
   for (const [index] of names.entries()) {
     const collection = Object.values(props[`rendering-${index}`])[0];
     assert.equal(collection.complete, false);
-    assert.equal(collection.error, 'invalid-scope');
+    assert.equal(collection.error, names[index] === 'InvestmentPortfolio' ? 'unconfigured'
+      : names[index] === 'SectionNavigation' ? 'unbound' : 'invalid-scope');
   }
-  assert.deepEqual(props['rendering-7'], { marker: 'preserved' });
+  assert.deepEqual(props[`rendering-${names.length}`], { marker: 'preserved' });
   assert.doesNotMatch(JSON.stringify(props), /synthetic-private-request|Authorization|fetchOptions/);
 });
 

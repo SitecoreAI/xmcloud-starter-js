@@ -1,0 +1,7 @@
+query InvestmentPortfolioData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    activeHeading: field(name: "activeHeading") { jsonValue }
+    exitedHeading: field(name: "exitedHeading") { jsonValue }
+  }
+}

@@ -25,6 +25,14 @@
 .allianz-modern .O-azl-header .m-navigation-primary .nav-list-nested {
   max-width: calc(100vw - 32px);
 }
+/* The source SVG centers its 122x30 viewBox inside a 7.4rem x 48px viewport.
+ * An authored image needs the same viewport and contain behavior. */
+.allianz-modern .O-azl-header .m-navigationUtility .logo-icon img {
+  width: 7.4rem;
+  height: 48px;
+  object-fit: contain;
+  vertical-align: top;
+}
 /* The recovered header used anchors for these controls. Its generic button
  * rules add a 24px bottom margin and make every button full-width on mobile.
  * Restore only the native adapters; keep the source visibility breakpoint and

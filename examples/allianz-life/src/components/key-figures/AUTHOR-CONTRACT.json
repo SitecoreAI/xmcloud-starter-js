@@ -1,0 +1,16 @@
+{
+  "componentName": "KeyFigures",
+  "displayName": "Key Figures",
+  "datasourceTemplateName": "KeyFigures",
+  "rootFields": {},
+  "childTemplateName": "KeyFigure",
+  "childFields": {
+    "figure": { "type": "Single-Line Text", "title": "Statistic", "help": "The displayed value, including any currency symbol or unit." },
+    "caption": { "type": "Rich Text", "title": "Explanation", "help": "Brief text explaining the statistic; the component controls its layout." }
+  },
+  "presentation": "Source three-column blue statistic capsules; source grid stacks at its existing breakpoint.",
+  "parameters": ["RenderingIdentifier", "FieldNames"],
+  "nativeState": "Definitions, actual IDs, source-backed content and layout binding still require the authenticated native authoring workflow.",
+  "contentPreservation": "If migrating existing native figure records, retain their IDs and exact alphanumeral/body Field values after fresh read. Do not rewrite or delete current content from fixture identities.",
+  "queryCompleteness": "Keep connection total/pageInfo. A collection beyond the integrated-query capacity must report incomplete data, never silently truncate."
+}

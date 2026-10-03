@@ -1,0 +1,564 @@
+{
+  "evidence": "Source-only proposed initial content. No native identities, writes or delivery proof. Never use fixture UUIDs or this file as a production runtime fallback.",
+  "sourceUrl": "https://www.allianzlife.com/about/ventures/portfolio",
+  "retrievedAtUtc": "2026-10-03T16:03:04.905511+00:00",
+  "sourceSha256": "48f056bc557e6f8e47639136227ada4f3ac19980a742e7d4ee7e3eeec00bdd1b",
+  "activeHeading": "Active Investments",
+  "exitedHeading": "Exited investments",
+  "items": [
+    {
+      "nativeId": null,
+      "sourcePosition": 1,
+      "name": "Blaise",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Blaise is an AI-powered platform that speeds up insurance operations in Fortune 500 insurers.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blaise-logo-2.jpg",
+        "alt": "Blaise",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blaise-logo-2.jpg?w=256&hash=E588C91D40D189D508E3BC30D18BB85C 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blaise-logo-2.jpg?w=218&hash=BFA83AE2D5097082B260BECD5D4AAF33 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blaise-logo-2.jpg?w=153&hash=D99FF0868A87654E98E524D01D8A2D1F 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blaise-logo-2.jpg?w=84&hash=3F39AADCD04882867116F2B5D5477333 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blaise-logo-2.jpg?w=34&hash=7BD31C802CB19C2B3C83EC29746EC90E 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.getblaise.com/",
+        "text": "Go to Blaise",
+        "target": "_blank",
+        "ariaLabel": "Go to Blaise"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 2,
+      "name": "Dili",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Dili is an AI platform for construction and large infrastructure projects that gives owners and project builders real-time visibility into construction project risk and compliance.</p>\n<div>&nbsp;</div>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-dili-logo.jpg",
+        "alt": "Dili",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-dili-logo.jpg?w=256&hash=6FF2F213910FE91BAEC33D1B820A2437 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-dili-logo.jpg?w=218&hash=294C6EDE3E570C66A4788B61A42B3029 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-dili-logo.jpg?w=153&hash=E5B118F2A240FE1FC65A45A5D1FB72E7 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-dili-logo.jpg?w=84&hash=CA776CC47FB4D5AC7B68F55E3B58A938 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-dili-logo.jpg?w=34&hash=3E12E605B2B20A2CD272C5AD5E9DE1D5 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.diliai.com/",
+        "text": "Go to Dili",
+        "target": "_blank",
+        "ariaLabel": "Go to Dili"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 3,
+      "name": "Ellevest",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Ellevest provides an engaging investing experience to help women meet their financial goals in life.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Ellevestl-logo.jpg",
+        "alt": "Ellevestl",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Ellevestl-logo.jpg?w=256&hash=EFC64516DCFE73A9B0E94D8F1A630D2F 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Ellevestl-logo.jpg?w=218&hash=C07F794214876CC3697303EA315125CF 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Ellevestl-logo.jpg?w=153&hash=ABFA8866EAEB6EF81EB3B10F66FC5A0A 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Ellevestl-logo.jpg?w=84&hash=A472DE5DEAB3EC4666A10A2268DA25BF 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Ellevestl-logo.jpg?w=34&hash=C982DA89CBAED200A3339C9FE83650C5 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.ellevest.com/",
+        "text": "Go to Ellevest",
+        "target": "_blank",
+        "ariaLabel": "Go to Ellevest"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 4,
+      "name": "Empathy",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Empathy is a technology-powered, comprehensive bereavement care and end-of-life settlement platform distributed primarily through life insurance carriers.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-empathy-logo.jpg",
+        "alt": "Empathy",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-empathy-logo.jpg?w=256&hash=AF18CFE91F222B93A83CE45E30AEF42A 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-empathy-logo.jpg?w=218&hash=D707FE799E2E1DF8B53EB6542CCBE27E 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-empathy-logo.jpg?w=153&hash=0DE5E5592485D6B3127B92771A963F76 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-empathy-logo.jpg?w=84&hash=4C53C4FF86E9B24A3C880C49B1C5FDA5 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-empathy-logo.jpg?w=34&hash=BEAA342DBFC9CCE2EE22B6B0A2F604FA 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.empathy.com/",
+        "text": "Go to Empathy",
+        "target": "_blank",
+        "ariaLabel": "Go to Empathy"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 5,
+      "name": "FLX Networks",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>FLX Networks is a financial technology company revolutionizing the distribution experience between asset managers, wealth management firms, and financial advisors.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-flx-networks-logo.jpg",
+        "alt": "FLX Networks",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-flx-networks-logo.jpg?w=256&hash=500490A54A0DB4DCE6A2C2699B80C9CF 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-flx-networks-logo.jpg?w=218&hash=5F4959F116E8A38757FEE59ED9940743 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-flx-networks-logo.jpg?w=153&hash=BE8802215BF860C46B5C21BD2CD19C3B 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-flx-networks-logo.jpg?w=84&hash=ADEA1FDDA87A355637B87C11C445A6E3 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-flx-networks-logo.jpg?w=34&hash=FCC9EB2DAC8914E33912E0AA8DF2ADA8 34w"
+      },
+      "websiteLink": {
+        "href": "https://flxnetworks.com/",
+        "text": "Go to FLX Networks",
+        "target": "_blank",
+        "ariaLabel": "Go to FLX Networks"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 6,
+      "name": "Halo",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Halo Investing is a financial technology platform that provides structured note, annuity, and buffered ETF investments to the average investor.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-halo-logo.jpg",
+        "alt": "Halo",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-halo-logo.jpg?w=256&hash=4706C93C61BB6A1C145524D4ABD66EE7 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-halo-logo.jpg?w=218&hash=F9FE6DEBAAFC18CAAE813373715DFB35 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-halo-logo.jpg?w=153&hash=913D7162200686924A550725A95EC4EB 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-halo-logo.jpg?w=84&hash=B9CA085514EEC86993E8DA08BBDD40EF 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-halo-logo.jpg?w=34&hash=7D2D62B9403CA62F560836EEFFA787E5 34w"
+      },
+      "websiteLink": {
+        "href": "https://haloinvesting.com/",
+        "text": "Go to Halo",
+        "target": "_blank",
+        "ariaLabel": "Go to Halo"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 7,
+      "name": "Homethrive",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Homethrive is a technology-enabled health care service company that reduces work, worry, and stress for unpaid family caregivers, their loved ones, and their employers.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-homethrive-logo.jpg",
+        "alt": "Homethrive",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-homethrive-logo.jpg?w=256&hash=B31502D4E6147ED26F27ED36B860AEF3 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-homethrive-logo.jpg?w=218&hash=55658FFC1C5C499873FCAC8466C18101 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-homethrive-logo.jpg?w=153&hash=32EF68D9631DB0A09D4E368030527EB5 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-homethrive-logo.jpg?w=84&hash=AE0F44489D4BAC9ABF9E164862FD9138 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-homethrive-logo.jpg?w=34&hash=D107595E3DF9ADAD8F7E34C10BF05D07 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.homethrive.com/",
+        "text": "Go to Homethrive",
+        "target": "_blank",
+        "ariaLabel": "Go to Homethrive"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 8,
+      "name": "Jump",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Jump is an AI assistant for financial professionals, automating meeting workflows and CRM updates, embedding compliance, and delivering growth insights at scale for advisory and financial services firms.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-jump-logo.jpg",
+        "alt": "Jump",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-jump-logo.jpg?w=256&hash=F26C6957C43E5D05C5C12EC70E8CB406 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-jump-logo.jpg?w=218&hash=9A1273C06DFB669CD5339FC09B0A8DA9 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-jump-logo.jpg?w=153&hash=6CDEA98ED5258976A47239561B91BFFC 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-jump-logo.jpg?w=84&hash=068D913D8EC3777EE02267BEC6D6B6E9 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-jump-logo.jpg?w=34&hash=80CC3B0E9F6C40A1101E735B6D4AEE87 34w"
+      },
+      "websiteLink": {
+        "href": "http://www.jump.ai/",
+        "text": "Go to Jump",
+        "target": "_blank",
+        "ariaLabel": "Go to Jump"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 9,
+      "name": "Ladder",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Ladder provides an online platform that enables consumers to purchase term policies in minutes from highly rated insurers.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ladder-logo-3.jpg",
+        "alt": "Ladder",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ladder-logo-3.jpg?w=256&hash=5D97EB5C046BF13A9D4FA3F43FCB7903 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ladder-logo-3.jpg?w=218&hash=389291583351CD1D54798EFF60D71336 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ladder-logo-3.jpg?w=153&hash=4A7D0DE5CEA65414CBEBB239854012A2 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ladder-logo-3.jpg?w=84&hash=B9AB694DA48BA43DE8C26E82766473E9 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ladder-logo-3.jpg?w=34&hash=880F2CE0AA0071DB3177B66534A06BAE 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.ladderlife.com/",
+        "text": "Go to Ladder",
+        "target": "_blank",
+        "ariaLabel": "Go to Ladder"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 10,
+      "name": "MerQube",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>MerQube is a cloud-native indexing platform designed for designing, calculating, and disseminating financial indexes at scale.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-mer-qube.jpg",
+        "alt": "MerQube",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-mer-qube.jpg?w=256&hash=EA8203267A3F293A59F50ADBDB932C3B 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-mer-qube.jpg?w=218&hash=D3406D15E1D07ABD54002EDF7733CD80 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-mer-qube.jpg?w=153&hash=3D72D9B434BA9BD88A93654BA7FAAA75 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-mer-qube.jpg?w=84&hash=447AD146DBC756459559320CD5161BF6 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-mer-qube.jpg?w=34&hash=CCCC596AE622BF6E7B378245EA8008ED 34w"
+      },
+      "websiteLink": {
+        "href": "https://merqube.com/",
+        "text": "Go to MerQube",
+        "target": "_blank",
+        "ariaLabel": "Go to MerQube"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 11,
+      "name": "Micruity",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Micruity powers lifetime income products in retirement plans by enabling all stakeholders to share data through a single secure connection.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-micruity-logo.jpg",
+        "alt": "Micruity",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-micruity-logo.jpg?w=256&hash=8706113ED0DE7DB177685436608D9EA1 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-micruity-logo.jpg?w=218&hash=483DAF9BE12877F38F4605C848B666AB 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-micruity-logo.jpg?w=153&hash=1DD1C5A5183A048AEE308C9C15E7DE9A 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-micruity-logo.jpg?w=84&hash=7890C4CA019C6B181B8E22091C1DE592 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-micruity-logo.jpg?w=34&hash=E00F304BD6C804644DD05168CB44743C 34w"
+      },
+      "websiteLink": {
+        "href": "https://micruity.com/",
+        "text": "Go to Micruity",
+        "target": "_blank",
+        "ariaLabel": "Go to Micruity"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 12,
+      "name": "MyoLab",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>MyoLab develops human-embodied intelligence for a human-centered world through digital human twins that predict physiologically grounded behavior, enabling next-generation human-aware systems in health, sports, and robotics.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-myolab-logo-2.jpg",
+        "alt": "Myolab",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-myolab-logo-2.jpg?w=256&hash=2D75D6BB0EBA9D05F7CA2863DC88B03F 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-myolab-logo-2.jpg?w=218&hash=5DCA4C3D8DF83B238AFA0B87F393AFFA 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-myolab-logo-2.jpg?w=153&hash=CBDFA215FCFC51E8142472125344B83A 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-myolab-logo-2.jpg?w=84&hash=4C0F62F7E25D9BB71C61FC7D65121455 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-myolab-logo-2.jpg?w=34&hash=5970D10B05B94A1002DD9074CFB1962C 34w"
+      },
+      "websiteLink": {
+        "href": "https://myolab.ai/",
+        "text": "Go to MyoLab",
+        "target": "_blank",
+        "ariaLabel": "Go to MyoLab"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 13,
+      "name": "OneVest",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>OneVest is a wealth management technology platform that is configurable and modular, enabling financial institutions to modernize their wealth services.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-onevest-logo.jpg",
+        "alt": "Onevest",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-onevest-logo.jpg?w=256&hash=638056DC405E408EA693264DB97122CB 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-onevest-logo.jpg?w=218&hash=9AC394701DEED2533E843070DEE295BD 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-onevest-logo.jpg?w=153&hash=0366F7590D08D842F8939E45EAA35D88 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-onevest-logo.jpg?w=84&hash=B8E1E5BD862962D6696EA0A5328AAE25 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-onevest-logo.jpg?w=34&hash=1932B8AD9DFB793323B0A614591F2A0F 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.onevest.com/",
+        "text": "Go to OneVest",
+        "target": "_blank",
+        "ariaLabel": "Go to OneVest"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 14,
+      "name": "Reframe Financial",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Reframe Financial is an insurtech company focused on helping today&rsquo;s families prepare for the financial issues of aging.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-reframe-financial-logo.jpg",
+        "alt": "Reframe Financial logo",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-reframe-financial-logo.jpg?w=256&hash=9477B028C2269D2BA5F0564902E87DDA 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-reframe-financial-logo.jpg?w=218&hash=0AE147E7E82BC82E89DA61BDFD44CE68 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-reframe-financial-logo.jpg?w=153&hash=7A63F7200677A09D439870DF56AF5186 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-reframe-financial-logo.jpg?w=84&hash=90BCABE93F9F5E38042DC11C169E9837 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-reframe-financial-logo.jpg?w=34&hash=B3231558EA7FFD29887820E1E415A7CC 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.reframefinancial.com/",
+        "text": "Go to Reframe Financial",
+        "target": "_blank",
+        "ariaLabel": "Go to Reframe Financial"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 15,
+      "name": "Savvy Wealth",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Savvy Wealth is a digital-first, multi-custodial technology platform for financial advisors centered around modernizing human-generated financial advice.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-savvy-logo.jpg",
+        "alt": "Savvy",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-savvy-logo.jpg?w=256&hash=196DDEB72225D66B6B86137C7C586F1B 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-savvy-logo.jpg?w=218&hash=C98264B75CBAB8C2381384CD3B7EACF3 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-savvy-logo.jpg?w=153&hash=6CE91E4197DE61817772B7F356BEC9D9 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-savvy-logo.jpg?w=84&hash=6B2B986C574F5905555482CF37EB6499 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-savvy-logo.jpg?w=34&hash=4A757230E618AD9DB490FA0AD9C6DA9D 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.savvywealth.com/",
+        "text": "Go to Savvy Wealth",
+        "target": "_blank",
+        "ariaLabel": "Go to Savvy Wealth"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 16,
+      "name": "Transparency Analytics",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Transparency Analytics is dedicated to measuring risk and delivering transparent, technology-driven solutions for clients in the evolving world of private credit.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-transparency-analytics-logo-3.jpg",
+        "alt": "Transparency Analytics",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-transparency-analytics-logo-3.jpg?w=256&hash=2C7FBD2FF4948185E22A3382FA5BA639 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-transparency-analytics-logo-3.jpg?w=218&hash=2842D913AEDAE410CCDA511209F35CDA 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-transparency-analytics-logo-3.jpg?w=153&hash=2BB47CDE6E35BA84DB6C1E0590DC0E0E 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-transparency-analytics-logo-3.jpg?w=84&hash=8D97E21AF3B5BCE22EDA65A8C8933A80 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-transparency-analytics-logo-3.jpg?w=34&hash=EC04FE077A40F49CCEF3A3055DD361F5 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.transparency-analytics.com/",
+        "text": "Go to Transparency Analytics",
+        "target": "_blank",
+        "ariaLabel": "Go to Transparency Analytics"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 17,
+      "name": "True Link",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>True Link provides financial services, including special needs trusts, managed accounts, and Visa Prepaid Cards for older adults, people with disabilities, and people recovering from addiction.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-truelink-logo.jpg",
+        "alt": "True Link",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-truelink-logo.jpg?w=256&hash=62C5C25FA6B3DB0CEB8D08B9DD7AC055 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-truelink-logo.jpg?w=218&hash=F2C2C2AB9BE3A0B7710808B0BAB1477A 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-truelink-logo.jpg?w=153&hash=F724DF7A9A322E9189CE3161CA457663 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-truelink-logo.jpg?w=84&hash=A18AE83F41ACB0410DC2B25B68D6E3D7 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-truelink-logo.jpg?w=34&hash=5FC2FE7B4DF68D93B3921564DCCB04EA 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.truelinkfinancial.com/",
+        "text": "Go to True Link",
+        "target": "_blank",
+        "ariaLabel": "Go to True Link"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 18,
+      "name": "Vanilla",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Vanilla's complete estate planning solution helps financial professionals and their clients visualize existing estate plans and create new plans.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ventures-vanilla-logo.jpg",
+        "alt": "Vanilla",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ventures-vanilla-logo.jpg?w=256&hash=BA9E7E3617C3AD4571AB2A39FE3DC1E7 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ventures-vanilla-logo.jpg?w=218&hash=DE52B4ECE7D52F77A932626EDF2B26AF 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ventures-vanilla-logo.jpg?w=153&hash=0D5283BE27EE2EBD48C3CCD3B10C53A9 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ventures-vanilla-logo.jpg?w=84&hash=66D96562DCB3B57EC97128693A5061F0 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ventures-vanilla-logo.jpg?w=34&hash=C97CD590DB5D2E572446BC654974DA60 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.justvanilla.com/",
+        "text": "Go to Vanilla",
+        "target": "",
+        "ariaLabel": "Go to Vanilla"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 19,
+      "name": "Vestwell",
+      "investmentStatus": "Active",
+      "detailsHtml": "<p>Vestwell&rsquo;s cloud-based, digital recordkeeper provides the underlying infrastructure to power workplace savings and investing programs, such as 401(k) and 403(b) retirement plans.</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Vestwell-logo.jpg",
+        "alt": "Vestwell",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Vestwell-logo.jpg?w=256&hash=4850DF2427DD00DB71BC3D942A2D2534 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Vestwell-logo.jpg?w=218&hash=B57CA96ACFBBC2646288917865F1E165 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Vestwell-logo.jpg?w=153&hash=8BBB3BF88B08751570FC9715A6F63F75 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Vestwell-logo.jpg?w=84&hash=5ABE2928676D310319073D5C975606EC 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Vestwell-logo.jpg?w=34&hash=067DBF93E8B16998A7549428F7840D0A 34w"
+      },
+      "websiteLink": {
+        "href": "https://www.vestwell.com/",
+        "text": "Go to Vestwell",
+        "target": "_blank",
+        "ariaLabel": "Go to Vestwell"
+      },
+      "inlineLinks": []
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 20,
+      "name": "Accern",
+      "investmentStatus": "Exited",
+      "detailsHtml": "<p>Accern accelerates workflows for enterprises with a no-code AI development platform.</p>\n<p>Acquired by&nbsp;<a rel=\"noopener noreferrer\" href=\"https://wand.ai/\" target=\"_blank\">Wand AI</a></p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-accern-logo.jpg",
+        "alt": "Accern",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-accern-logo.jpg?w=256&hash=0031B175AB9CBA39B2E169DDF59473D1 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-accern-logo.jpg?w=218&hash=BDFD0F38F817F5BC0F96D075D114A3B9 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-accern-logo.jpg?w=153&hash=C3AC28D05D808807F8380CD2B60C1C9C 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-accern-logo.jpg?w=84&hash=07127E98C309BD6F8A83470C34F5859D 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-accern-logo.jpg?w=34&hash=D6B8A10EBED8B51554D79085BD5BD56C 34w"
+      },
+      "websiteLink": null,
+      "inlineLinks": [
+        {
+          "text": "Wand AI",
+          "href": "https://wand.ai/",
+          "target": "_blank",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 21,
+      "name": "Advizr",
+      "investmentStatus": "Exited",
+      "detailsHtml": "<p>Advizr is dedicated to creating financial planning software that enables profitable financial planning for all of its customers.</p>\n<p>Acquired by <a rel=\"noopener noreferrer\" href=\"https://orion.com/\" target=\"_blank\">Orion</a></p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-advizr-logo.jpg",
+        "alt": "Advizr",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-advizr-logo.jpg?w=256&hash=84A73EB6CE16253062629E5868B973D6 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-advizr-logo.jpg?w=218&hash=E36B0A91E9F215C3CE32229828861C04 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-advizr-logo.jpg?w=153&hash=78267D8370CE57DFF1AA351B4C8AB061 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-advizr-logo.jpg?w=84&hash=D3F1E78C71417DC9CBF14CA760FB3CAB 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-advizr-logo.jpg?w=34&hash=9FE511E8E5957054EC8D773F549749CB 34w"
+      },
+      "websiteLink": null,
+      "inlineLinks": [
+        {
+          "text": "Orion",
+          "href": "https://orion.com/",
+          "target": "_blank",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 22,
+      "name": "Blooom",
+      "investmentStatus": "Exited",
+      "detailsHtml": "<p>Blooom is an online investment advisor that manages employer-sponsored retirement accounts [401(k), 403(b) and TSP] for individual clients.</p>\n<p>Acquired by <a rel=\"noopener noreferrer\" href=\"https://www.morganstanley.com/\" target=\"_blank\">Morgan Stanley</a></p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blooom-logo.jpg",
+        "alt": "Blooom",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blooom-logo.jpg?w=256&hash=D7EC0A3656D9E0218DD4F67E0609BB17 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blooom-logo.jpg?w=218&hash=4330586D72AE5D614CA2E48CAD0545E3 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blooom-logo.jpg?w=153&hash=4ED7FDDBBB3ED1E918C55CC35CD384C5 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blooom-logo.jpg?w=84&hash=E4355AE72BCA0C3BD30D9BFCB776AE07 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-blooom-logo.jpg?w=34&hash=7A69C03DB811B76F2682237CA5498D7E 34w"
+      },
+      "websiteLink": null,
+      "inlineLinks": [
+        {
+          "text": "Morgan Stanley",
+          "href": "https://www.morganstanley.com/",
+          "target": "_blank",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 23,
+      "name": "Covr",
+      "investmentStatus": "Exited",
+      "detailsHtml": "<p>Covr is a multi-carrier, digital life insurance platform that is white-labeled and distributed through financial institutions.</p>\n<p>Acquired by <a rel=\"noopener noreferrer\" href=\"https://optifino.com/\" target=\"_blank\">Optifino</a></p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Covr-logo.jpg",
+        "alt": "Covr",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Covr-logo.jpg?w=256&hash=30FBA3DAE3534E056869FE3D9A1D6704 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Covr-logo.jpg?w=218&hash=C012A981EB47DF9C552F24430967ABAF 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Covr-logo.jpg?w=153&hash=21C807611D96D5B9445F16E4D20F7D52 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Covr-logo.jpg?w=84&hash=D5D4932AB6518FE744403EB81BDC54EB 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Covr-logo.jpg?w=34&hash=44B446C49BBDA5734CEC8924E7BD63C6 34w"
+      },
+      "websiteLink": null,
+      "inlineLinks": [
+        {
+          "text": "Optifino",
+          "href": "https://optifino.com/",
+          "target": "_blank",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 24,
+      "name": "Ezra",
+      "investmentStatus": "Exited",
+      "detailsHtml": "<p><a rel=\"noopener noreferrer\" href=\"https://www.ezra.com/\" target=\"_blank\">Ezra</a> is a health care company that uses medical imaging and artificial intelligence to provide innovative full-body cancer screening.</p>\n<p>Acquired by&nbsp;Function Health</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ezra-logo.jpg",
+        "alt": "Ezra",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ezra-logo.jpg?w=256&hash=7617EB5B702323C54015D5FB97C0AEDF 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ezra-logo.jpg?w=218&hash=DC8ADEA5D98E71E9BBA92A79276B24D5 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ezra-logo.jpg?w=153&hash=9012D7FE6D438961E08E397CCD013658 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ezra-logo.jpg?w=84&hash=576015CFC757605A26810972388699B1 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-ezra-logo.jpg?w=34&hash=C459FBE9ED922DF8C61FEE90FD259C86 34w"
+      },
+      "websiteLink": null,
+      "inlineLinks": [
+        {
+          "text": "Ezra",
+          "href": "https://www.ezra.com/",
+          "target": "_blank",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 25,
+      "name": "Gainfully",
+      "investmentStatus": "Exited",
+      "detailsHtml": "<p>Gainfully is a financial services platform that helps financial professionals generate new business and better connect with their clients.</p>\n<p>Acquired by <a rel=\"noopener noreferrer\" href=\"https://www.acquireup.com/\" target=\"_blank\">White Glove</a></p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-gainfully-logo.jpg",
+        "alt": "Gainfully",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-gainfully-logo.jpg?w=256&hash=CEBBF267D506E153ED6489000DF3CE53 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-gainfully-logo.jpg?w=218&hash=5D6169B4DCBEB3E47ABAB716DDB45295 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-gainfully-logo.jpg?w=153&hash=3382BAEC2C8436E01D139BFEE95CCEB0 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-gainfully-logo.jpg?w=84&hash=A589C324C57B812872BCD5DF623FD5EC 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-gainfully-logo.jpg?w=34&hash=9F18DE710C6C5D3DB5731C242F9747C7 34w"
+      },
+      "websiteLink": null,
+      "inlineLinks": [
+        {
+          "text": "White Glove",
+          "href": "https://www.acquireup.com/",
+          "target": "_blank",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 26,
+      "name": "Human API",
+      "investmentStatus": "Exited",
+      "detailsHtml": "<p>Human API is a real-time health data network that gives consumers a simple way to view and share their health data from everywhere.</p>\n<p>Acquired by <a rel=\"noopener noreferrer\" href=\"https://risk.lexisnexis.com/products/humanapi\" target=\"_blank\">LexisNexis</a></p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-HumanAPI-logo.jpg",
+        "alt": "HumanAPI",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-HumanAPI-logo.jpg?w=256&hash=042DFAAAD5F766339248845A816B0A60 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-HumanAPI-logo.jpg?w=218&hash=4ADE878123652F96CA8951601B249E95 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-HumanAPI-logo.jpg?w=153&hash=62BD6F8531C4C6DC49DBAA7B2D7C0AAF 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-HumanAPI-logo.jpg?w=84&hash=67019D5A0BE299051C8A26DD612E770B 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-HumanAPI-logo.jpg?w=34&hash=712861A537FA37CA897C27F2CD3C1380 34w"
+      },
+      "websiteLink": null,
+      "inlineLinks": [
+        {
+          "text": "LexisNexis",
+          "href": "https://risk.lexisnexis.com/products/humanapi",
+          "target": "_blank",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 27,
+      "name": "LifeYield",
+      "investmentStatus": "Exited",
+      "detailsHtml": "<p><a rel=\"noopener noreferrer\" href=\"https://www.lifeyield.com/\" target=\"_blank\">LifeYield</a> is a software company that helps forward-thinking financial firms, advisors, and investors make and keep more money.</p>\n<p>Acquired by SEI</p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Lifeyield-logo.jpg",
+        "alt": "Lifeyield",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Lifeyield-logo.jpg?w=256&hash=4B3AD823123C45DD5B0CF2EA4353FB38 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Lifeyield-logo.jpg?w=218&hash=03F1BC238C4CE2765E843E7491573A4E 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Lifeyield-logo.jpg?w=153&hash=1A358265DBBB8E3F7AE9BCB2FF369E94 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Lifeyield-logo.jpg?w=84&hash=D8F85784D5F5816F0FC8633E31C26893 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-Lifeyield-logo.jpg?w=34&hash=03397143D03B1F108EA9C346AF7C1B29 34w"
+      },
+      "websiteLink": null,
+      "inlineLinks": [
+        {
+          "text": "LifeYield",
+          "href": "https://www.lifeyield.com/",
+          "target": "_blank",
+          "title": ""
+        }
+      ]
+    },
+    {
+      "nativeId": null,
+      "sourcePosition": 28,
+      "name": "Tomorrow",
+      "investmentStatus": "Exited",
+      "detailsHtml": "<p>Tomorrow develops applications that help protect a family&rsquo;s financial future.</p>\n<p>Acquired by <a rel=\"noopener noreferrer\" href=\"https://www.ethos.com/\" target=\"_blank\">Ethos</a></p>",
+      "logo": {
+        "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-tomorrow-logo.jpg",
+        "alt": "Tomorrow",
+        "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-tomorrow-logo.jpg?w=256&hash=0F793A55C04A6CCD8DC530753470698E 256w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-tomorrow-logo.jpg?w=218&hash=1C6355842F5BBA399D195C8A177E53A2 218w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-tomorrow-logo.jpg?w=153&hash=553341F8C50D3D68CA67998371510605 153w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-tomorrow-logo.jpg?w=84&hash=038E43404985ADB3C23641299CFA5EFF 84w,/-/media/Feature/Tile/Allianz-Life/ventures/logos/tile-azl-tomorrow-logo.jpg?w=34&hash=E872542DB8D8C635423C0B5D2F04F433 34w"
+      },
+      "websiteLink": null,
+      "inlineLinks": [
+        {
+          "text": "Ethos",
+          "href": "https://www.ethos.com/",
+          "target": "_blank",
+          "title": ""
+        }
+      ]
+    }
+  ],
+  "sourceByteCount": 135763,
+  "canonicalFixtureSha256": "040e6befcafdba2826f5849e265df7ee46bd26ada3d3cbbca2950832a4a108df",
+  "canonicalFixtureByteCount": 134555,
+  "canonicalFixtureLineEndings": "LF"
+}
