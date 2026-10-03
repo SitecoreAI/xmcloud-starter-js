@@ -1,5 +1,6 @@
 import type { Field, LinkField } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from 'lib/component-props';
+import { normalizeDocumentId, type AutomaticDocuments } from '../prospectus-product-directory/document-automatic-data.props';
 import { allianzLinkField } from 'lib/allianz-field-state';
 import { localDocumentHref } from 'components/allianz-document-list/allianz-document-list.props';
 
@@ -14,13 +15,24 @@ export interface ProspectusDocumentRow {
 
 export interface ProspectusDocumentTableDatasource {
   id?: string;
-  documents?: { targetItems?: ProspectusDocumentRow[] };
+
 }
 
 export type ProspectusDocumentTableProps = Omit<ComponentProps, 'params'> & {
   params?: { RenderingIdentifier?: string };
   fields?: { data?: { datasource?: ProspectusDocumentTableDatasource } };
 };
+
+export type ProspectusDocumentComponentData = { automaticDocuments?: AutomaticDocuments };
+
+/** An incomplete or missing server response never falls back to selected references. */
+export function automaticDocumentRows(data?: AutomaticDocuments): ProspectusDocumentRow[] | undefined {
+  const items = data?.items;
+  if (data?.complete !== true || data.status !== 'ready' || data.error || !Array.isArray(items) ||
+    items.some((item) => !normalizeDocumentId(item?.id)) ||
+    new Set(items.map((item) => normalizeDocumentId(item.id))).size !== items.length) return undefined;
+  return items;
+}
 
 /** Reuse the established public-document inventory and navigation boundary. */
 export function prospectusLinkField(field: LinkField | undefined, isEditing: boolean): LinkField {

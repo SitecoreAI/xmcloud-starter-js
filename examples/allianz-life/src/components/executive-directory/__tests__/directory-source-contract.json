@@ -1,0 +1,1322 @@
+{
+  "provenance": {
+    "scope": "Recovered source contract plus verified 2026-10-02 native biography IDs; directory native writes not performed",
+    "biographyLibraryFileId": "libfile_59df7e87794c8191a69b5762af1645a4",
+    "version": 0,
+    "receiptSha256": "8d5fe58af5e2c8a70886281493a54e3972fe826c05b8a952894dfd11b2d046c1",
+    "recoveredSourceSha256": "d115209eefa1bebac2a562ebcfc75baa3e92eeb6baa577c69406187399d48c41"
+  },
+  "executives": [
+    {
+      "route": "/about/executives/jasmine-jirele",
+      "pageId": "6005a352-88d7-402a-b9e8-4c7ddb8ce309",
+      "datasourceId": "fc88916b-2cbf-4ab7-983e-b881fc68ec04",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/executives/jasmine-jirele/Data/Executive Biography",
+      "directoryOrder": "100",
+      "categoryKey": null,
+      "directorySummary": null,
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Jasmine Jirele"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "President and Chief Executive Officer<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Images/Allianz/Content/content-azl-jasmine-jirele-bio.jpg?h=960&w=768&hash=32A3FB7A6AAF680593FEA167AF0D1D0C",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/executives/adam-brown",
+      "pageId": "a5609405-2667-4ef0-a356-b4bd2a8b354a",
+      "datasourceId": "d88c020c-41d4-4e25-b957-8a1d1953283b",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/executives/adam-brown/Data/Executive Biography",
+      "directoryOrder": "200",
+      "categoryKey": null,
+      "directorySummary": null,
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Adam Brown"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Chief Actuary<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-adam-brown-sme-bio-2.jpg?h=960&w=768&hash=339DA033B787E518171961AF2EEB5DA0",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/executives/gretchen-cepek",
+      "pageId": "5a8d1dc1-26fa-4a40-91b8-e4e1fac813eb",
+      "datasourceId": "51e40e64-5246-4055-b28c-9e9cee4ab1c4",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/executives/gretchen-cepek/Data/Executive Biography",
+      "directoryOrder": "300",
+      "categoryKey": null,
+      "directorySummary": null,
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Gretchen Cepek"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Chief Legal Officer<br />Allianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Images/Allianz/Content/content-azl-gretchen-cepek-executives-bio.jpg?h=960&w=768&hash=E1C0B34030C95517F50F93DA3A3E25B7",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/executives/luca-gallo",
+      "pageId": "cc4b6205-1238-453e-ada8-c43625b21373",
+      "datasourceId": "cfda4244-202d-4c67-bc42-2451a05d3f20",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/executives/luca-gallo/Data/Executive Biography",
+      "directoryOrder": "400",
+      "categoryKey": null,
+      "directorySummary": null,
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Luca Gallo"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Chief Operating Officer<br />Allianz Life Insurance Company of North America<br />"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-luca-gallo-executives-bio.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/executives/bill-gaumond",
+      "pageId": "5765161d-794d-4388-827e-4213e17dc223",
+      "datasourceId": "6d3fe44b-3c5e-4452-9eca-717097760f67",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/executives/bill-gaumond/Data/Executive Biography",
+      "directoryOrder": "500",
+      "categoryKey": null,
+      "directorySummary": null,
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Bill Gaumond"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Chief Financial Officer<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Images/Allianz/Content/content-azl-bill-gaumond-bio.jpg?h=960&w=768&hash=9F08358F6C4CC35ABA22A59B8723E8D1",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/executives/jenny-guldseth",
+      "pageId": "90ea53b6-14a2-4851-a05e-082f0a955728",
+      "datasourceId": "f2c31835-4532-4f3f-9d56-3eabe9f650e1",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/executives/jenny-guldseth/Data/Executive Biography",
+      "directoryOrder": "600",
+      "categoryKey": null,
+      "directorySummary": null,
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Jenny Guldseth"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Chief People and Culture Officer<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Images/Allianz/Content/content-azl-jenny-guldseth-bio.jpg?h=960&w=768&hash=DEF0E1F10D18A336D394E979E6525DA4",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/executives/jean-roch-sibille",
+      "pageId": "c348a3f5-4360-40bc-a395-f15c362ef647",
+      "datasourceId": "fe0296cd-175b-4371-ac42-ae577020343d",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/executives/jean-roch-sibille/Data/Executive Biography",
+      "directoryOrder": "700",
+      "categoryKey": null,
+      "directorySummary": null,
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Jean-Roch Sibille"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Chief Investment Officer<br />\nAllianz Life Insurance Company of North America<br />\n<br />\nChief Executive Officer<br />\nAllianz Investment Management U.S. LLC"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Images/Allianz/Content/content-azl-jean-sibille-roch-bio.jpg?h=960&w=768&hash=FDBC7CD3FEB9DAB14A2476799D1AEC1B",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/executives/eric-thomes",
+      "pageId": "2366971a-619b-4369-9cf3-23a710094b80",
+      "datasourceId": "509a7d04-fdd6-4332-b2dc-2fa22fe60a43",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/executives/eric-thomes/Data/Executive Biography",
+      "directoryOrder": "800",
+      "categoryKey": null,
+      "directorySummary": null,
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Eric Thomes"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Chief Distribution Officer\n<br />\nAllianz Life Insurance Company of North America\n<br />\n<br />\nChief Executive Officer\n<br />\nAllianz Life Financial Services, LLC"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Images/Allianz/Content/content-azl-eric-thomes-bio.jpg?h=960&w=768&hash=1A4F19DAA015D3A2B560CDD52B8586F2",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    }
+  ],
+  "categories": [
+    {
+      "key": "topic-1",
+      "heading": {
+        "jsonValue": {
+          "value": "Financial Planning – Strategies and Insights"
+        }
+      },
+      "sortOrder": "100",
+      "sourceSection": "/about/subject-matter-experts:section:1",
+      "introduction": {
+        "jsonValue": {
+          "value": "<p>Allianz Life subject matter experts are available to provide commentary on a variety of common financial planning issues and tools, as well as proprietary research studies that provide insights on how consumers can manage risks (longevity, behavioral, market, aging, inflation) to their retirement security.</p>"
+        }
+      }
+    },
+    {
+      "key": "topic-2",
+      "heading": {
+        "jsonValue": {
+          "value": "Product Trends – Annuities and Life Insurance"
+        }
+      },
+      "sortOrder": "200",
+      "sourceSection": "/about/subject-matter-experts:section:2",
+      "introduction": {
+        "jsonValue": {
+          "value": "<p>As the industry’s leading provider of fixed index annuities (FIAs), our professionals are available to offer insight on all aspects of annuity and life insurance products, including product innovation, product development, product distribution, and sales trends.</p>"
+        }
+      }
+    },
+    {
+      "key": "topic-3",
+      "heading": {
+        "jsonValue": {
+          "value": "Financial Services – Industry and Regulatory Trends & Topics"
+        }
+      },
+      "sortOrder": "300",
+      "sourceSection": "/about/subject-matter-experts:section:3",
+      "introduction": {
+        "jsonValue": {
+          "value": "<p>With extensive experience in financial services and government relations, our professionals can discuss a wide variety of industry and regulatory topics that affect how financial professionals help their clients manage various retirement risks.</p>"
+        }
+      }
+    },
+    {
+      "key": "topic-4",
+      "heading": {
+        "jsonValue": {
+          "value": "Retirement Trends – Innovations and New Markets"
+        }
+      },
+      "sortOrder": "400",
+      "sourceSection": "/about/subject-matter-experts:section:4",
+      "introduction": {
+        "jsonValue": {
+          "value": "<p>The rapidly changing global economy dictates a need for constant innovation within the insurance industry in order to address evolving consumer preferences. Allianz Life professionals can provide perspective on both exploring and implementing new insurance solutions.</p>"
+        }
+      }
+    },
+    {
+      "key": "topic-5",
+      "heading": {
+        "jsonValue": {
+          "value": "Workplace Culture & Inclusion – Trends in Financial Services"
+        }
+      },
+      "sortOrder": "500",
+      "sourceSection": "/about/subject-matter-experts:section:5",
+      "introduction": {
+        "jsonValue": {
+          "value": "<p>As a leading employer in the financial services industry, Allianz Life has developed an inclusive and engaging culture that has earned multiple best-workplace awards. Our professionals can comment on the changing face of financial services and the steps we’ve taken to build a culture that values employee engagement and diverse perspectives.</p>"
+        }
+      }
+    },
+    {
+      "key": "topic-6",
+      "heading": {
+        "jsonValue": {
+          "value": "Market Commentary – Allianz Investment Management U.S. LLC"
+        }
+      },
+      "sortOrder": "600",
+      "sourceSection": "/about/subject-matter-experts:section:6",
+      "introduction": {
+        "jsonValue": {
+          "value": "<p>Allianz Investment Management U.S. LLC (AIM US) manages investment strategies for the global insurance businesses of Allianz SE, our parent company. AIM US subject matter experts are available to comment on a variety of market and economic indicators, including Federal Reserve actions, interest rates, credit markets, and economic releases.</p>"
+        }
+      }
+    }
+  ],
+  "experts": [
+    {
+      "route": "/about/subject-matter-experts/jeng-chiu",
+      "pageId": "f57904f4-b847-43ff-b9c1-23ad265b26ea",
+      "datasourceId": "beef630d-2d13-4057-8946-eb32adda7837",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/jeng-chiu/Data/Expert Biography",
+      "directoryOrder": "100",
+      "categoryKey": "topic-1",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "Retirement strategies; financial planning tools; holistic financial planning"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Jeng Chiu"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Vice President, Annuity Advanced Markets<br />Allianz Life Insurance Company of North America<div></div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {}
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": true
+    },
+    {
+      "route": "/about/subject-matter-experts/kelly-lavigne",
+      "pageId": "59c730d5-cccf-455a-8ba6-c4fb2bb994ee",
+      "datasourceId": "db612039-2f69-4dc4-aae5-85666e9d4b05",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/kelly-lavigne/Data/Expert Biography",
+      "directoryOrder": "200",
+      "categoryKey": "topic-1",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Managing risk in retirement – longevity risk, behavioral risk, market risk, aging risk, inflation risk; financial implications of healthcare planning; annuities within trusts; budgeting and planning; wealth management; retirement income planning</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "L. Kelly LaVigne"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "<div>Vice President, Head of Annuity Advanced Markets</div><div>Allianz Life Insurance Company of North America</div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-Kelly-LaVigne-sme-bio.jpg",
+              "alt": "Kelly LaVigne sme bio"
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/steven-sweeney",
+      "pageId": "51c3a3d8-c976-42da-95a8-fa57d51dd82f",
+      "datasourceId": "25ce04db-2ed6-4431-bc09-af7465626cc7",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/steven-sweeney/Data/Expert Biography",
+      "directoryOrder": "300",
+      "categoryKey": "topic-1",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "Portfolio construction and capital markets, retirement income and portfolio distribution strategies, tax management strategies, estate planning strategies, risk management and insurance, charitable planning strategies"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Steven T. Sweeney"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Vice President, Annuity Advanced Markets<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-steven-sweeney-sme-bio-1.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/waldean-wall",
+      "pageId": "d4564a74-d67c-4d22-b27d-e7fe3d9db88d",
+      "datasourceId": "54970988-a75a-4484-8f80-2433c4ad1346",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/waldean-wall/Data/Expert Biography",
+      "directoryOrder": "400",
+      "categoryKey": "topic-1",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Tax planning and strategy; Social Security planning; estate and legacy planning; individual retirement accounts, including traditional IRAs, Roth IRAs</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Waldean Wall"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "<div>Vice President, Annuity Advanced Markets<br />\nAllianz Life Insurance Company of North America</div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-Waldean-Wall-sme-bio-2.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/austin-bichler",
+      "pageId": "97da055b-415a-4f91-84ff-d91b02614b9a",
+      "datasourceId": "c28ac593-2429-4a9a-bce0-2d9091ee400f",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/austin-bichler/Data/Expert Biography",
+      "directoryOrder": "100",
+      "categoryKey": "topic-2",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Indexed universal life insurance (IUL) product design and pricing; value of indexing and allocation choice in an IUL; premium financing; Actuarial Guideline 49 and IUL illustration practices</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Austin Bichler"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "AVP Actuary<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-austin-bichler-sme-bio.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/adam-brown",
+      "pageId": "25281094-f2f2-4091-8a80-01899783a88c",
+      "datasourceId": "44ea0cd5-01f0-432f-bc2d-17e46734d551",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/adam-brown/Data/Expert Biography",
+      "directoryOrder": "200",
+      "categoryKey": "topic-2",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Trends in annuity and life insurance product development; actuarial pricing and reserving</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Adam Brown"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Chief Actuary<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-adam-brown-sme-bio-2.jpg",
+              "alt": "tile-azl-adam-brown-sme-bio"
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/eric-thomes",
+      "pageId": "337dc417-f9e4-432e-ac5b-89b0b52c0945",
+      "datasourceId": "5eafb890-d65a-4ed1-99e9-c815cb0eea13",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/eric-thomes/Data/Expert Biography",
+      "directoryOrder": "300",
+      "categoryKey": "topic-2",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Retirement income strategies; managing risk in retirement planning; insurance (annuities and life insurance); distribution trends; thought leadership studies</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Eric J. Thomes"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Chief Distribution Officer<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-Eric-Thomes-sme-bio.jpg",
+              "alt": "Headshot of Eric Thomes, Chief Distribution Officer, Allianz Life Insurance Company of North America."
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/jason-wellmann",
+      "pageId": "d671b746-fbff-46c7-90f4-4b0f3e378b86",
+      "datasourceId": "7007bb38-7a44-4d0f-8e00-75bd9b041c06",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/jason-wellmann/Data/Expert Biography",
+      "directoryOrder": "400",
+      "categoryKey": "topic-2",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Distribution models; growth strategy; relationship management within distribution; indexed universal life insurance (IUL); life insurance used in retirement planning strategies; life insurance estate planning strategies; premium finance</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Jason Wellmann"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Senior Vice President, Life Distribution<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-jason-wellmann-sme-bio-2024.jpg",
+              "alt": "Headshot of Jason Wellmann, Allianz Life SVP of Life Insurance Sales"
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/carlota-balet-gusils",
+      "pageId": "ca77c0ba-0749-4883-a870-1ae564ada97f",
+      "datasourceId": "b57e478b-e9b5-4aef-89a9-54860b1a9b11",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/carlota-balet-gusils/Data/Expert Biography",
+      "directoryOrder": "100",
+      "categoryKey": "topic-3",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Financial crimes, including anti-money laundering, fraud, corruptions, and sanctions; compliance investigations and surveillance</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Carlota Balet Gusils"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Financial Crimes Unit Senior Director<br />\nMoney Laundering Reporting Officer\n<div>Allianz Life Insurance Company of North America</div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-carlota-balet-gusils-sme-bio-1.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/paul-cahill",
+      "pageId": "51170fbb-5cfd-4243-8a73-28a7fd246e97",
+      "datasourceId": "2e716ebd-4880-4d88-a325-d98e4b658408",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/paul-cahill/Data/Expert Biography",
+      "directoryOrder": "200",
+      "categoryKey": "topic-3",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "Exchange traded funds (ETFs); Economy and market trends; Volatility and risk management solutions"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Paul Cahill"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "ETF National Sales Director<br />\nAllianz Life Financial Services, LLC"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {}
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": true
+    },
+    {
+      "route": "/about/subject-matter-experts/angela-hollan",
+      "pageId": "811ece2b-3244-4758-b1c7-e22a75f216c0",
+      "datasourceId": "51e7f168-07d2-46f4-8072-3560727cb1c7",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/angela-hollan/Data/Expert Biography",
+      "directoryOrder": "300",
+      "categoryKey": "topic-3",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Regulatory and legislative proposals; trade association activity and advocacy; politics; Minnesota business community issues; geopolitical analysis</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Angela Hollan"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Vice President, Head of U.S. Government Affairs<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-angela-hollan-sme-bio-2.jpg",
+              "alt": "Headshot of Angela Hollan, Vice President, Head of Government Relations, Allianz Life Insurance Company of North America."
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/benjamin-thomason",
+      "pageId": "9c52a12b-b391-4f76-b50f-4ba332e32399",
+      "datasourceId": "45ca7616-39b4-4555-b7ff-3a89b029f50c",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/benjamin-thomason/Data/Expert Biography",
+      "directoryOrder": "400",
+      "categoryKey": "topic-3",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Defined contribution retirement plans; retirement income; fiduciary governing dynamics for plan advisors, plan sponsors, and plan participants</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Benjamin Thomason"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Head of Defined Contribution Distribution<div><span style=\"font-size: 1.5rem;\">Allianz Life Insurance Company of North America</span></div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {}
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": true
+    },
+    {
+      "route": "/about/subject-matter-experts/heidi-vanderkloot",
+      "pageId": "62648749-8189-4ce7-a941-f7a15af12c79",
+      "datasourceId": "2eddde3e-f414-4fca-a4a4-fa296a54d23d",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/heidi-vanderkloot/Data/Expert Biography",
+      "directoryOrder": "500",
+      "categoryKey": "topic-3",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Sales and engagement strategies; strategic development; relationship and account management; financial planning and fintech solutions; risk management solutions; financial professional education</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Heidi Vanderkloot"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Senior Vice President, Head of FMO Distribution<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-heidi-vanderkloot-sme-1.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/corey-walther",
+      "pageId": "91d85b60-50fa-4a88-a40e-d4f4da0b6da2",
+      "datasourceId": "ad11be4d-8314-45e5-a4c8-38ae90d62515",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/corey-walther/Data/Expert Biography",
+      "directoryOrder": "600",
+      "categoryKey": "topic-3",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Managing risk in retirement planning; retirement income strategies; Allianz Life thought leadership studies; distribution strategies and trends; insurance (annuities and life insurance); exchange-traded funds (ETFs); sales and relationship management; diversity, equity, and inclusion; financial literacy</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Corey Walther"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "President, Allianz Life Financial Services, LLC"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-corey-walther-sme-bio.jpg",
+              "alt": "Headshot of Corey Walther, President, Allianz Life Financial Services, LLC."
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/angelica-bonacci",
+      "pageId": "11729cde-66e9-419d-8c93-ce5b25f53692",
+      "datasourceId": "1d95f31e-4b4b-442b-985b-1c9914cbdb36",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/angelica-bonacci/Data/Expert Biography",
+      "directoryOrder": "100",
+      "categoryKey": "topic-4",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Market research; consumer trends, needs, and behaviors; qualitative and quantitative research</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Angelica Bonacci"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Senior Director, Customer Insights and Experience<div><span style=\"font-size: 1.5rem;\">Allianz Life Insurance Company of North America</span></div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-angelica-bonacci-sme-bio.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/calvin-buchanan",
+      "pageId": "1897724e-9952-4085-8dbd-903e4265b208",
+      "datasourceId": "bf1751fe-f111-4f9d-9916-18bd18a2db24",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/calvin-buchanan/Data/Expert Biography",
+      "directoryOrder": "200",
+      "categoryKey": "topic-4",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Creative strategy, brand messaging, visual storytelling, graphic design</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Calvin Buchanan"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Creative Marketing Director<br />Allianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-calvin-buchanan-sme-bio-1.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/melanie-christensen",
+      "pageId": "db3c8060-21fb-4e63-aa5a-823745461009",
+      "datasourceId": "f6d2ddfb-3d98-401f-84c7-6ec2efc70d25",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/melanie-christensen/Data/Expert Biography",
+      "directoryOrder": "300",
+      "categoryKey": "topic-4",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Trends in annuity, life insurance, and investment product development</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Melanie Christensen"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Vice President, Product Innovation<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-melanie-christensen-sme-bio-2024.png",
+              "alt": "melanie christensen"
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/jessica-drake",
+      "pageId": "1ec4efae-40e7-486b-8da1-d70d8d6335c0",
+      "datasourceId": "ba50d32b-c40b-4670-97c7-6cfcf746bfbf",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/jessica-drake/Data/Expert Biography",
+      "directoryOrder": "400",
+      "categoryKey": "topic-4",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Employer Markets ecosystem; in-plan guaranteed lifetime income solutions; operational efficiency and process improvements</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Jessica Drake"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Head of Operations, Employer Markets<div><span style=\"font-size: 1.5rem;\">Allianz Life Insurance Company of North America</span></div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-jessica-drake-sme-bio.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/matt-gray",
+      "pageId": "1ce63a8e-14ec-48c9-b1c1-ceb4caf5cec8",
+      "datasourceId": "2d5b4283-6ccf-42ff-b978-d8ca9c6b6323",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/matt-gray/Data/Expert Biography",
+      "directoryOrder": "500",
+      "categoryKey": "topic-4",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Retirement income strategies; managing risk in retirement planning; product innovation; Allianz thought leadership studies</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Matthew Gray"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Vice President, Employer Markets"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-matt-gray-sme-bio.jpg",
+              "alt": "Headshot of Matt Gray, AVP Worksite & Middle Markets, Allianz Life Insurance Company of North America."
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/dwayne-maddox",
+      "pageId": "0484c820-4ffb-40ce-8669-405e1bf73225",
+      "datasourceId": "ac7ea948-5656-4561-bbd7-d0de151008cd",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/dwayne-maddox/Data/Expert Biography",
+      "directoryOrder": "600",
+      "categoryKey": "topic-4",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Multicultural markets; marketing; thought leadership</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Dwayne Maddox"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Multicultural Marketing Director<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-dwayne-maddox-sme-bio.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/machenzie-wickre",
+      "pageId": "fd791bd4-7705-4904-9c3e-bc750d9b3474",
+      "datasourceId": "809455b8-ef1e-4933-8f1b-df23a4980cef",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/machenzie-wickre/Data/Expert Biography",
+      "directoryOrder": "700",
+      "categoryKey": "topic-4",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Sales ideas; financial planning software; education and adoption of insurance-based solutions within financial technology; retirement income strategies; managing risk in retirement planning; Social Security optimization</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Machenzie Wickre"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "<div>Advanced Strategies and Planning Platforms Director</div>\n<div>Allianz Life Insurance Company of North America</div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-machenzie-wickre-sme-bio-2.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/tracy-bruckschen",
+      "pageId": "89a92f5a-3a28-4c3b-ab1a-197249ebb4d3",
+      "datasourceId": "a1d371bc-a340-4f59-b0bb-544e5f2c5723",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/tracy-bruckschen/Data/Expert Biography",
+      "directoryOrder": "100",
+      "categoryKey": "topic-5",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Team leadership and capability building; strategic recruiting planning; employer brand and candidate experience; pipeline programs; recruiting technology, data, and analytics; operating model and process excellence; financial and vendor management</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Tracy Bruckschen"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Senior Director, Talent Acquisition<br />"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-tracy-bruckschen-sme-bio.jpg",
+              "alt": "tracy bruckschen"
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/jenny-guldseth",
+      "pageId": "46dffcb6-cdba-4791-b022-45b07da7e46a",
+      "datasourceId": "65fa216f-cb3a-4c92-a979-437660a98c39",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/jenny-guldseth/Data/Expert Biography",
+      "directoryOrder": "200",
+      "categoryKey": "topic-5",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Building an award-winning corporate culture; insurance industry hiring and recruiting; employee engagement and wellness, including social well-being, financial fitness, and physical health</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Jenny Guldseth"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "<div>Chief People and Culture Officer<br />\nAllianz Life Insurance Company of North America</div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-jenny-guldseth-sme-bio.jpg",
+              "alt": "tile-azl-jenny-guldseth-sme-bio"
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/lorinda-niemeyer",
+      "pageId": "13d456f4-ef6d-4638-8bfd-1a94d2d8b446",
+      "datasourceId": "71bdeb7e-049f-4ef9-80ac-493acabdf060",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/lorinda-niemeyer/Data/Expert Biography",
+      "directoryOrder": "300",
+      "categoryKey": "topic-5",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Sustainability strategy; sustainability reporting; climate change and risk management</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Lorinda Niemeyer"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Head of Sustainability<div><span style=\"font-size: 1.5rem;\">Allianz Life Insurance Company of North America</span></div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-lorinda-niemeyer-sme-bio.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/kenna-poppler",
+      "pageId": "234c38ad-bc6d-4e88-a996-1f6afeb9a883",
+      "datasourceId": "97c30aeb-953e-42c4-8053-956547209c0a",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/kenna-poppler/Data/Expert Biography",
+      "directoryOrder": "400",
+      "categoryKey": "topic-5",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Corporate social responsibility; cross-sector partnerships; nonprofit grantmaking; employee giving and volunteerism</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Kenna Poppler"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Community Engagement Director<br />\nAllianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-kenna-poppler-sme-bio.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/chris-chambs",
+      "pageId": "9fe0e19c-44ae-4f6f-a954-bf7b4781be47",
+      "datasourceId": "c58d001d-20f4-4c1f-b225-447aaf990b7a",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/chris-chambs/Data/Expert Biography",
+      "directoryOrder": "100",
+      "categoryKey": "topic-6",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Finance, corporate ventures, M&amp;A, ETFs, and other growth opportunities</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Chris Chambs"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "SVP, Investment Growth<br />\nAllianz Life Insurance Company of North America<br />\n<br />\nChief Executive Officer<br />\nAllianz Investment Management LLC"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-chris-chambs-sme-bio-2025-1.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/charles-champagne",
+      "pageId": "e47ae4d0-c68e-42fe-8a6e-efae5eacc4f6",
+      "datasourceId": "ad70ca91-9b53-4931-8896-8d30a2a4c567",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/charles-champagne/Data/Expert Biography",
+      "directoryOrder": "200",
+      "categoryKey": "topic-6",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Exchange-Traded Funds; ETF capital markets; ETF product development; investment strategy and portfolio analysis; thought leadership and ETF market insights</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Charles Champagne"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "Head of ETF Strategy<div>Allianz Investment Management LLC<br /></div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-charles-champagne-sme-bio-2025-1.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/brian-muench",
+      "pageId": "e67ed349-6260-40ce-8c9f-7490fa993374",
+      "datasourceId": "1244a838-945e-43ad-ad4a-0089a6d70fef",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/brian-muench/Data/Expert Biography",
+      "directoryOrder": "300",
+      "categoryKey": "topic-6",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Economy and capital markets; mutual funds; ETFs; product development; insurtech</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Brian Muench"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "President, Allianz Investment Management LLC<br />\nManaging Director, Allianz Investment Management U.S. LLC<br />\nVice President, Allianz Life Insurance Company of North America"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-brian-muench-sme-bio-2025-1.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    },
+    {
+      "route": "/about/subject-matter-experts/charlie-ripley",
+      "pageId": "78336e8e-8c5a-480b-977a-cf36b138bb65",
+      "datasourceId": "8ae8511b-565e-4844-894e-484fcca031da",
+      "datasourcePath": "/sitecore/content/allianz/allianz-life/Home/about/subject-matter-experts/charlie-ripley/Data/Expert Biography",
+      "directoryOrder": "400",
+      "categoryKey": "topic-6",
+      "directorySummary": {
+        "jsonValue": {
+          "value": "<p>Market insights; macroeconomic outlooks; investment strategy; portfolio management</p>"
+        }
+      },
+      "sourceFields": {
+        "name": {
+          "jsonValue": {
+            "value": "Charlie Ripley"
+          }
+        },
+        "role": {
+          "jsonValue": {
+            "value": "<div>Vice President of Portfolio Management<br />\nAllianz Investment Management LLC</div>"
+          }
+        },
+        "portrait": {
+          "jsonValue": {
+            "value": {
+              "src": "/-/media/Feature/Tile/Allianz-Life/tile-azl-charles-ripley-sme-bio-2025-1.jpg",
+              "alt": ""
+            }
+          }
+        }
+      },
+      "portraitIntentionallyAbsent": false
+    }
+  ]
+}

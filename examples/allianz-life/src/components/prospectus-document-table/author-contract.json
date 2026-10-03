@@ -1,23 +1,63 @@
 {
   "component": "ProspectusDocumentTable",
-  "nativeAdoption": "Pending verification; no native identities generated",
-  "authorFields": [
-    { "name": "documents", "label": "Prospectus documents", "type": "Multilist", "ordered": true }
-  ],
+  "nativeAdoption": "Existing 134 native row records verified; coordinated child-order/query activation pending",
+  "authorFields": [],
   "documentRecordFields": [
-    { "name": "documentLink", "label": "Prospectus document link", "type": "General Link" },
-    { "name": "contractNote", "label": "Contract or supplement note", "type": "Single-Line Text" },
-    { "name": "revisionDate", "label": "Revision date as displayed", "type": "Single-Line Text" },
-    { "name": "fileSize", "label": "Document size as displayed", "type": "Single-Line Text" }
+    {
+      "name": "documentLink",
+      "label": "Prospectus document link",
+      "type": "General Link"
+    },
+    {
+      "name": "contractNote",
+      "label": "Contract or supplement note",
+      "type": "Single-Line Text"
+    },
+    {
+      "name": "revisionDate",
+      "label": "Revision date as displayed",
+      "type": "Single-Line Text"
+    },
+    {
+      "name": "fileSize",
+      "label": "Document size as displayed",
+      "type": "Single-Line Text"
+    }
   ],
-  "parameters": ["RenderingIdentifier"],
-  "variants": ["Default", "Product", "Embedded"],
+  "parameters": [
+    "RenderingIdentifier"
+  ],
+  "variants": [
+    "Default",
+    "Product",
+    "Embedded"
+  ],
   "fixedLabels": {
-    "Default": ["Description / Name", "Revision Date", "Size"],
-    "Embedded": ["Description / Name", "Revision Date", "Size"],
-    "Product": ["Description", "Revision Date", "Size"]
+    "Default": [
+      "Description / Name",
+      "Revision Date",
+      "Size"
+    ],
+    "Embedded": [
+      "Description / Name",
+      "Revision Date",
+      "Size"
+    ],
+    "Product": [
+      "Description",
+      "Revision Date",
+      "Size"
+    ]
   },
   "sourceWitness": "__tests__/manifest.json",
   "documentNavigation": "Inventory-approved local destinations preserve source/native target and encoded href query/fragment, using existing native query/anchor merge ordering; rejected destinations remain unavailable",
-  "assetAcceptance": "Pending Mac binary validation and verified native/DAM document mapping"
+  "assetAcceptance": "Pending Mac binary validation and verified native/DAM document mapping",
+  "dataMechanism": {
+    "source": "Direct datasource children",
+    "templateId": "b5661a5f-3336-457c-8f13-9bf4e5e989af",
+    "order": "Native item.children order, unchanged across pagination and stable template/group filtering",
+    "pagination": "Every cursor page required",
+    "manualFallback": false,
+    "query": "item.children"
+  }
 }

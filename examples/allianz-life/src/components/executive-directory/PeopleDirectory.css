@@ -1,0 +1,8 @@
+.people-directory .m-card { position: relative; }
+.people-directory .people-directory__link { color: inherit; text-decoration: none; }
+.people-directory .people-directory__link--stretched::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.people-directory .m-card__body a,
+.people-directory .people-directory__role a { position: relative; z-index: 2; }
+.people-directory .people-directory__role { font: inherit; }
+.people-directory .people-directory__role > :where(p, div) { margin: 0; }
+.people-directory .m-card__image img { max-width: 100%; height: auto; }

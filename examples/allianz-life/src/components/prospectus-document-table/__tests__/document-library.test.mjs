@@ -12,7 +12,7 @@ const require = createRequire(import.meta.url);
 const ts = require('typescript');
 const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
-const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
+const { SitecoreProvider, ComponentPropsContext, Text } = require('@sitecore-content-sdk/nextjs');
 const modules = new Map();
 function loadSource(filename) {
   if (modules.has(filename)) return modules.get(filename).exports;
@@ -36,12 +36,30 @@ function loadSource(filename) {
   }).outputText, filename);
   return compiled.exports;
 }
-function render(Component, datasource, isEditing = false, params = {}) {
+const testId = (number) => `00000000-0000-4000-8000-${String(number).padStart(12, '0')}`;
+/** Only the historical-source oracle adapts old captured fields into the new server contract. */
+function sourceAutomaticData(datasource) {
+  const documents = (datasource?.documents?.targetItems ?? []).map((row, index) => ({ ...row, id: testId(index + 1) }));
+  const products = ['current', 'past'].flatMap((group, groupIndex) => (datasource?.[`${group}Products`]?.targetItems ?? []).map((row, index) => {
+    const link = row.productLink?.jsonValue;
+    return { id: testId(100 + groupIndex * 100 + index), name: `product-${index}`, url: { path: link?.value?.href || '/test-child' },
+      prospectusDirectoryTitle: { jsonValue: { value: link?.value?.text ?? '' } },
+      prospectusDirectoryGroup: { jsonValue: { value: group } } };
+  }));
+  return { automaticDocuments: { items: documents, complete: true, status: 'ready' },
+    automaticProducts: { items: products, complete: true, status: 'ready' } };
+}
+function render(Component, datasource, isEditing = false, params = {}, automatic) {
+  const uid = 'test-document-listing';
+  const projected = datasource && ('currentProducts' in datasource || 'pastProducts' in datasource)
+    ? { ...datasource, currentHeading: { jsonValue: { value: 'Current Products' } }, pastHeading: { jsonValue: { value: 'Past Products' } } } : datasource;
   return renderToStaticMarkup(React.createElement(SitecoreProvider, {
     page: { mode: { isEditing, isNormal: !isEditing, isPreview: false }, siteName: 'allianz-life',
       layout: { sitecore: { context: {}, route: { name: 'Prospectuses', fields: {}, placeholders: {} } } } },
     api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
-  }, React.createElement(Component, { params, fields: datasource === undefined ? undefined : { data: { datasource } } })));
+  }, React.createElement(ComponentPropsContext, { value: { [uid]: automatic ?? sourceAutomaticData(datasource) } },
+    React.createElement(Component, { rendering: { uid, componentName: 'TestDocumentListing' }, params,
+      fields: projected === undefined ? undefined : { data: { datasource: projected } } }))));
 }
 function editableField(name, value, type = 'Single-Line Text') {
   // Explicitly synthetic test metadata, never an import/native identity claim.
@@ -240,8 +258,6 @@ test('approved captured documents preserve encoded href suffixes and native quer
 
 test('directory, introduction and shareholder fields emit real editing chrome after clearing', () => {
   const cases = [
-    [{ directory: 'prospectus-product-directory', component: 'ProspectusProductDirectory', variant: 'Default' },
-      { currentProducts: { targetItems: [{ productLink: editableField('productLink', { href: '' }, 'General Link') }] }, pastProducts: { targetItems: [] } }, ['productLink']],
     [{ directory: 'prospectus-introduction', component: 'ProspectusIntroduction', variant: 'Default' },
       { introductoryCopy: editableField('introductoryCopy', '', 'Rich Text') }, ['introductoryCopy']],
     [{ directory: 'prospectus-introduction', component: 'ProspectusIntroduction', variant: 'ContractNotice' },
@@ -315,8 +331,8 @@ test('unknown style parameters do not change the fixed source layout', () => {
 test('GraphQL contracts request exact purpose fields and complete jsonValue objects', () => {
   const { parse } = require('graphql');
   const fieldsByDirectory = {
-    'prospectus-document-table': ['documents', 'documentLink', 'contractNote', 'revisionDate', 'fileSize'],
-    'prospectus-product-directory': ['currentProducts', 'pastProducts', 'productLink'],
+    'prospectus-document-table': [],
+    'prospectus-product-directory': [],
     'prospectus-introduction': ['introductoryCopy', 'contractNotice'],
     'shareholder-report-access': ['heading', 'reportsLink'],
   };
@@ -335,4 +351,76 @@ test('captured source stylesheet supplies the fixed striped table and report gat
     '.allianz-legacy .table-striped>tbody>tr:nth-child(odd)>td{background-color:#f7f7f7}',
     '.allianz-legacy .table>tbody>tr:first-child>td,.allianz-legacy .table>thead>tr>th{border-top:1px solid #bbb}']) assert.ok(legacy.includes(rule), rule);
   for (const selector of ['.m-axlIntroductionBlock', '.a-link__icon', '.u-padding-top-lg', '.l-grid--max-width']) assert.ok(modern.includes(selector), selector);
+});
+
+
+test('directory headings retain editing chrome while derived captions are read-only, including clears', () => {
+  const Directory = component({ directory: 'prospectus-product-directory', component: 'ProspectusProductDirectory', variant: 'Default' });
+  for (const empty of [false, true]) {
+    const datasource = { currentHeading: editableField('currentHeading', empty ? '' : 'Available products'),
+      pastHeading: editableField('pastHeading', empty ? '' : 'Earlier products') };
+    const page = { id: testId(901), url: { path: '/what-we-offer/annuities/prospectuses/child' },
+      prospectusDirectoryTitle: editableField('prospectusDirectoryTitle', empty ? '' : 'Editable child caption'),
+      prospectusDirectoryGroup: { jsonValue: { value: 'current' } } };
+    const automatic = { automaticProducts: { items: [page], complete: true, status: 'ready' } };
+    const snapshot = JSON.stringify({ datasource, automatic });
+    assert.deepEqual(metadata(render(Directory, datasource, true, {}, automatic)).map((m) => m.fieldId),
+      ['currentHeading', 'pastHeading'].map((n) => `test-${n}`));
+    const normal = render(Directory, datasource, false, {}, automatic);
+    assert.deepEqual(metadata(normal), []);
+    assert.doesNotMatch(normal, /Current Products|Past Products|\[No text/);
+    if (empty) assert.doesNotMatch(normal, /<a /);
+    else assert.match(normal, /Editable child caption/);
+    assert.equal(JSON.stringify({ datasource, automatic }), snapshot);
+  }
+});
+
+test('automatic listings never use stale Multilists when server props are missing or incomplete', () => {
+  const Directory = component({ directory: 'prospectus-product-directory', component: 'ProspectusProductDirectory', variant: 'Default' });
+  for (const automatic of [{}, { automaticDocuments: { items: [], complete: false, status: 'unavailable' }, automaticProducts: { items: [], complete: false, status: 'unavailable' } }]) {
+    const table = render(documentTable, { documents: { targetItems: [{ documentLink: editableField('documentLink', { href: '/test', text: 'STALE ROW' }) }] } }, false, {}, automatic);
+    assert.match(table, /temporarily unavailable/);
+    assert.doesNotMatch(table, /STALE ROW/);
+    const directory = render(Directory, { currentProducts: { targetItems: [{ productLink: { jsonValue: { value: { href: '/test', text: 'STALE PRODUCT' } } } }] } }, false, {}, automatic);
+    assert.match(directory, /temporarily unavailable/);
+    assert.doesNotMatch(directory, /STALE PRODUCT/);
+  }
+});
+
+
+test('page-owned directory caption metadata remains intact and supports explicit owning-field editing', () => {
+  const Directory = component({ directory: 'prospectus-product-directory', component: 'ProspectusProductDirectory', variant: 'Default' });
+  const OwningField = ({ fields }) => React.createElement(Text, {
+    field: fields.data.datasource.caption.jsonValue, editable: true,
+  });
+  for (const value of ['Native page caption', '']) {
+    const caption = editableField('prospectusDirectoryTitle', value);
+    caption.jsonValue.metadata.itemId = testId(901);
+    const before = JSON.stringify(caption);
+    const page = { id: testId(901), url: { path: '/what-we-offer/annuities/prospectuses/child' },
+      prospectusDirectoryTitle: caption, prospectusDirectoryGroup: { jsonValue: { value: 'current' } } };
+    const automatic = { automaticProducts: { items: [page], complete: true, status: 'ready' } };
+    const datasource = { currentHeading: editableField('currentHeading', 'Current Products'),
+      pastHeading: editableField('pastHeading', 'Past Products') };
+    const directoryHtml = render(Directory, datasource, true, {}, automatic);
+    assert.deepEqual(metadata(directoryHtml).map((entry) => entry.fieldId), ['test-currentHeading', 'test-pastHeading']);
+    assert.doesNotMatch(directoryHtml, /test-prospectusDirectoryTitle/);
+    assert.deepEqual(metadata(render(OwningField, { caption }, true)), [caption.jsonValue.metadata]);
+    assert.equal(page.prospectusDirectoryTitle, caption);
+    assert.equal(JSON.stringify(caption), before);
+  }
+});
+
+test('directory group Droplist contract requires real named option items and a returned root binding', () => {
+  const contract = JSON.parse(fs.readFileSync(path.join(sourceRoot, 'components/prospectus-product-directory/author-contract.json')));
+  const field = contract.pageFields.find((entry) => entry.name === 'prospectusDirectoryGroup');
+  assert.equal(field.type, 'Droplist');
+  assert.equal(field.source, null, 'native Source must remain unassigned until an actual options-root ID/path is returned');
+  assert.equal(field.sourceBinding.kind, 'native-options-root');
+  assert.equal(field.sourceBinding.itemId, null);
+  assert.equal(field.sourceBinding.path, null);
+  assert.deepEqual(field.sourceBinding.children.map((entry) => entry.name), ['current', 'past']);
+  assert.ok(field.sourceBinding.children.every((entry) => entry.itemId === null));
+  assert.deepEqual(field.storedValues, ['current', 'past', '']);
+  assert.equal(field.sourceBinding.freshReadRequired, true);
 });

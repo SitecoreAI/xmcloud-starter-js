@@ -1,14 +1,76 @@
 {
   "component": "ProspectusProductDirectory",
-  "nativeAdoption": "Pending verification; no native identities generated",
+  "nativeAdoption": "Existing 17 native direct child page targets verified; four new field identities and coordinated activation pending",
   "authorFields": [
-    { "name": "currentProducts", "label": "Current product prospectus links", "type": "Multilist", "ordered": true },
-    { "name": "pastProducts", "label": "Past product prospectus links", "type": "Multilist", "ordered": true }
+    {
+      "name": "currentHeading",
+      "label": "Current products heading",
+      "type": "Single-Line Text"
+    },
+    {
+      "name": "pastHeading",
+      "label": "Past products heading",
+      "type": "Single-Line Text"
+    }
   ],
-  "productRecordFields": [
-    { "name": "productLink", "label": "Product prospectus page", "type": "General Link" }
+  "pageFields": [
+    {
+      "name": "prospectusDirectoryTitle",
+      "label": "Prospectus directory caption",
+      "type": "Single-Line Text"
+    },
+    {
+      "name": "prospectusDirectoryGroup",
+      "label": "Prospectus directory group",
+      "type": "Droplist",
+      "source": null,
+      "blank": "Exclude this child page",
+      "sourceBinding": {
+        "kind": "native-options-root",
+        "itemId": null,
+        "path": null,
+        "bindingRule": "Set Source only to the service-returned ID or path of the verified options root",
+        "children": [
+          {
+            "name": "current",
+            "itemId": null
+          },
+          {
+            "name": "past",
+            "itemId": null
+          }
+        ],
+        "parentId": null,
+        "templateId": null,
+        "freshReadRequired": true,
+        "documentation": "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-templates/data-template-fields/configure-a-field/controlling-the-list-of-items-in-a-selection-field.html"
+      },
+      "storedValues": [
+        "current",
+        "past",
+        ""
+      ]
+    }
   ],
-  "fixedLabels": ["Current Products", "Past Products"],
-  "parameters": ["RenderingIdentifier"],
-  "variants": ["Default"]
+  "orderField": {
+    "name": "__Sortorder",
+    "id": "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e",
+    "shared": true
+  },
+  "dataMechanism": {
+    "source": "Direct children of current page",
+    "pageTemplateId": "6944dd34-e2f5-5a2d-b6d3-5dc04463cf53",
+    "pagination": "Every cursor page required",
+    "manualFallback": false,
+    "order": "Native item.children order, unchanged across pagination and stable template/group filtering",
+    "query": "item.children"
+  },
+  "parameters": [
+    "RenderingIdentifier"
+  ],
+  "variants": [
+    "Default"
+  ],
+  "captionEditing": "Derived directory captions are read-only in Pages; edit prospectusDirectoryTitle on the owning child page in the normal field editor",
+  "headingEditing": "currentHeading and pastHeading remain editable on the widget datasource"
 }

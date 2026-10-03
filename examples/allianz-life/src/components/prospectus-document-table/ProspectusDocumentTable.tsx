@@ -1,15 +1,20 @@
 'use client';
 
-import { Link, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Link, Text, useComponentProps, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
-import { prospectusLinkField, type ProspectusDocumentTableProps } from './prospectus-document-table.props';
+import { automaticDocumentRows, prospectusLinkField, type ProspectusDocumentComponentData, type ProspectusDocumentTableProps } from './prospectus-document-table.props';
 
-const DocumentTable = ({ fields, params, product = false, embedded = false }: ProspectusDocumentTableProps & { product?: boolean; embedded?: boolean }) => {
+const DocumentTable = ({ fields, params, rendering, product = false, embedded = false }: ProspectusDocumentTableProps & { product?: boolean; embedded?: boolean }) => {
   const { page } = useSitecore();
+  const automatic = useComponentProps<ProspectusDocumentComponentData>(rendering?.uid);
+  const rows = automaticDocumentRows(automatic?.automaticDocuments);
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="Prospectus document table" />;
+  if (!rows) return <div role="status" className="allianz-missing-data">{isEditing
+    ? 'Automatic prospectus documents could not load completely. Check the datasource children and native sort order.'
+    : 'Prospectus documents are temporarily unavailable.'}</div>;
   const table = (
         <table className="table table-striped" id={product ? 'prospectusTable' : embedded ? params?.RenderingIdentifier : undefined}>
           <thead><tr>
@@ -17,7 +22,7 @@ const DocumentTable = ({ fields, params, product = false, embedded = false }: Pr
             <th>Revision Date</th>
             <th>Size</th>
           </tr></thead>
-          <tbody>{(data.documents?.targetItems ?? []).map((document, index) => (
+          <tbody>{rows.map((document, index) => (
             <tr key={document.id ?? index}>
               <td>
                 {shouldRenderLinkField(document.documentLink?.jsonValue, isEditing) && (

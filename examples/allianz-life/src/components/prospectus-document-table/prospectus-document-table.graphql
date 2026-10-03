@@ -1,16 +1,4 @@
+# Document rows are loaded from the datasource children by the server hook.
 query ProspectusDocumentTable($datasource: String!, $language: String!) {
-  datasource: item(path: $datasource, language: $language) {
-    id
-    documents: field(name: "documents") {
-      ... on MultilistField {
-        targetItems {
-          id
-          documentLink: field(name: "documentLink") { jsonValue }
-          contractNote: field(name: "contractNote") { jsonValue }
-          revisionDate: field(name: "revisionDate") { jsonValue }
-          fileSize: field(name: "fileSize") { jsonValue }
-        }
-      }
-    }
-  }
+  datasource: item(path: $datasource, language: $language) { id }
 }

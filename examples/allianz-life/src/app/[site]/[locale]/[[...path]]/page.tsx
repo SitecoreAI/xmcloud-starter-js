@@ -12,7 +12,7 @@ import { setRequestLocale } from "next-intl/server";
 import { getBaseUrl } from "lib/utils";
 import { loadAllianzPage } from 'lib/allianz-page-loader';
 import { allianzMetadata } from 'lib/allianz-metadata';
-import { enrichNewsroomComponentMap } from 'lib/newsroom-automatic-server';
+import { enrichAllianzComponentMap } from 'lib/allianz-automatic-components';
 
 type PageProps = {
   params: Promise<{
@@ -38,7 +38,7 @@ export default async function Page({ params }: PageProps) {
 
   // Fetch the component data from Sitecore (Likely will be deprecated)
   const componentProps = needsComponentData
-    ? await client.getComponentData(page.layout, {}, enrichNewsroomComponentMap(components, {
+    ? await client.getComponentData(page.layout, {}, enrichAllianzComponentMap(components, {
       getData: client.getData.bind(client),
       fetchOptions: componentFetchOptions,
     }))

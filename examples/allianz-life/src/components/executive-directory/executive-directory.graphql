@@ -1,0 +1,5 @@
+query ExecutiveDirectoryData($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+  }
+}

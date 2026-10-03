@@ -1,11 +1,7 @@
+# Groups and captions come from direct child pages through the server hook.
 query ProspectusProductDirectory($datasource: String!, $language: String!) {
   datasource: item(path: $datasource, language: $language) {
     id
-    currentProducts: field(name: "currentProducts") {
-      ... on MultilistField { targetItems { id productLink: field(name: "productLink") { jsonValue } } }
-    }
-    pastProducts: field(name: "pastProducts") {
-      ... on MultilistField { targetItems { id productLink: field(name: "productLink") { jsonValue } } }
-    }
+    fieldCollection: fields { name jsonValue }
   }
 }
