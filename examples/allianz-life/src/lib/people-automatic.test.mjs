@@ -106,7 +106,9 @@ test('real SDK getComponentData paginates 29 biographies and scopes draft creden
   assert.equal(result.directory.automaticPeople.items.length, 29);
   assert.equal(result.directory.automaticPeople, result.repeat.automaticPeople);
   assert.equal(original.get('ExpertDirectory').getComponentServerProps, undefined);
-  assert.equal(calls.filter((call) => call.name === 'AutomaticPeopleBiographies').length, 2);
+  const biographyCalls = calls.filter((call) => call.name === 'AutomaticPeopleBiographies');
+  assert.deepEqual(biographyCalls.map((call) => call.args.first), [10, 10, 10]);
+  assert.deepEqual(biographyCalls.map((call) => call.args.after), [undefined, '10', '20']);
   assert.ok(calls.every((call) => call.fetchOptions === fetchOptions && call.variables === undefined));
   for (const call of calls.filter((entry) => entry.args.where)) assert.ok(call.args.where.AND.some((filter) => filter.name === '_language' && filter.value === 'en-GB'));
   assert.equal(page.sitecore.route.placeholders['headless-main'][0].fields.data.datasource, authored);
@@ -138,7 +140,7 @@ test('failed operations expose only a fixed stage marker without request, respon
     assert.deepEqual(output.items, []);
     assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization|\"(?:request|response|stack|query|headers)\"\s*:/);
     if (record.expected.startsWith('categories')) {
-      assert.equal(calls.filter((call) => call.name === 'AutomaticPeopleBiographies').length, 2);
+      assert.ok(calls.some((call) => call.name === 'AutomaticPeopleBiographies'));
     }
   }
   const success = harness(dataset('executives'));
@@ -149,6 +151,41 @@ test('failed operations expose only a fixed stage marker without request, respon
   const rejected = await invalid.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: invalid.client.getData.bind(invalid.client) }));
   assert.equal(rejected.directory.automaticPeople.error, 'invalid-scope');
   assert.equal(Object.hasOwn(rejected.directory.automaticPeople, 'failureStage'), false);
+});
+
+test('ten-item biography requests retain every executive and expert field through complete pagination', async () => {
+  for (const kind of ['executives', 'experts']) {
+    const records = dataset(kind), { client, calls } = harness(records, (response, name, args) => {
+      if (name === 'AutomaticPeopleBiographies') assert.equal(args.first, 10);
+      if (name === 'AutomaticPeopleCategories') assert.equal(args.first, 20);
+      return response;
+    });
+    const result = await client.getComponentData(layout(kind), {}, enrichPeopleComponentMap(componentMap(true), { getData: client.getData.bind(client) }));
+    const actual = result.directory.automaticPeople;
+    assert.equal(actual.complete, true);
+    assert.equal(Object.hasOwn(actual, 'failureStage'), false);
+    assert.deepEqual(actual.items, data.selectPeopleDirectory(records.current, records.biographies, records.categories).items);
+    assert.equal(actual.items.length, kind === 'executives' ? 8 : 29);
+    assert.equal(calls.filter((call) => call.name === 'AutomaticPeopleBiographies').length, kind === 'executives' ? 1 : 3);
+  }
+});
+
+test('an oversized biography page and a later request failure expose no partial profiles', async () => {
+  const oversized = harness(dataset(), (response, name) => {
+    if (name === 'AutomaticPeopleBiographies') response.search.results.push(dataset().biographies[10]);
+    return response;
+  });
+  const invalid = await oversized.client.getComponentData(layout(), {}, enrichPeopleComponentMap(componentMap(), { getData: oversized.client.getData.bind(oversized.client) }));
+  assert.equal(invalid.directory.automaticPeople.failureStage, 'biographies-validation');
+  assert.deepEqual(invalid.directory.automaticPeople.items, []);
+  const later = harness(dataset(), (response, name, args) => {
+    if (name === 'AutomaticPeopleBiographies' && args.after === '20') throw Error('synthetic-third-page-failure');
+    return response;
+  });
+  const failed = await later.client.getComponentData(layout(), {}, enrichPeopleComponentMap(componentMap(), { getData: later.client.getData.bind(later.client) }));
+  assert.equal(failed.directory.automaticPeople.failureStage, 'biographies-request');
+  assert.deepEqual(failed.directory.automaticPeople.items, []);
+  assert.doesNotMatch(JSON.stringify(failed), /synthetic-third-page-failure/);
 });
 
 test('normal executive render derives canonical page links and untouched primary fields, with no substitute portrait', () => {

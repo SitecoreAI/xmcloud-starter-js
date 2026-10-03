@@ -59,6 +59,8 @@ function checkedScope(scope: PeopleScope) {
   return { root: checkedId(scope.rootId), datasource: checkedId(scope.datasourceId), language: scope.language };
 }
 const literal = (value: string) => JSON.stringify(value);
+// Rich biography projections use a bounded ten-item request size; all cursor pages are still collected.
+const PEOPLE_PAGE_LIMITS = { biographies: 10, categories: 20 } as const;
 
 /** Resolve the actual route and owning datasource; never trust recovered fixture IDs. */
 export function buildPeopleScopeQuery(scope: PeopleScope): string {
@@ -101,7 +103,7 @@ export function buildPeopleSearchQuery(kind: 'biographies' | 'categories', scope
       { name: ${literal(kind === 'biographies' ? '_path' : '_parent')}, value: ${literal(kind === 'biographies' ? root : datasource)}, operator: ${kind === 'biographies' ? 'CONTAINS' : 'EQ'} }
       { name: "_language", value: ${literal(language)}, operator: EQ }
       { name: "_latestversion", value: "true", operator: EQ }
-    ] }, first: 20${after === undefined ? '' : `, after: ${literal(after)}`}) {
+    ] }, first: ${PEOPLE_PAGE_LIMITS[kind]}${after === undefined ? '' : `, after: ${literal(after)}`}) {
       total pageInfo { hasNext endCursor } results { ${projection} }
     }
   }`;
@@ -115,7 +117,7 @@ export async function collectPeopleSearch<T extends { id: string }>(getData: Peo
   for (;;) {
     const response = await getData<{ search?: Connection<T> }>(buildPeopleSearchQuery(kind, scope, after), undefined, fetchOptions);
     const data = response?.search;
-    if (!data || !Number.isSafeInteger(data.total) || data.total < 0 || typeof data.pageInfo?.hasNext !== 'boolean' || !Array.isArray(data.results) || data.results.length > 20) throw new Error('Incomplete people-directory search');
+    if (!data || !Number.isSafeInteger(data.total) || data.total < 0 || typeof data.pageInfo?.hasNext !== 'boolean' || !Array.isArray(data.results) || data.results.length > PEOPLE_PAGE_LIMITS[kind]) throw new Error('Incomplete people-directory search');
     if (total !== undefined && total !== data.total) throw new Error('People-directory count changed during pagination');
     total = data.total;
     for (const row of data.results) {
