@@ -14,6 +14,7 @@ export interface HelpfulResourceEntry {
 export interface HelpfulResourcesDatasource {
   id?: string;
   title?: { jsonValue?: Field<string> };
+  icon?: { jsonValue?: ImageField };
   children?: {
     total?: number;
     pageInfo?: { hasNext?: boolean; endCursor?: string | null };

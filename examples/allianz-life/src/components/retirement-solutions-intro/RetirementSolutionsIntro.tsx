@@ -6,8 +6,7 @@ import { shouldRenderImageField, shouldRenderTextField } from 'lib/allianz-field
 import type { RetirementSolutionsIntroProps } from './retirement-solutions-intro.props';
 import './RetirementSolutionsIntro.css';
 
-/** Home's retirement solutions introduction has three fields and a fixed design. */
-export const Default = ({ fields, params }: RetirementSolutionsIntroProps) => {
+function RetirementSolutionsIntro({ fields, params, appearance = 'home' }: RetirementSolutionsIntroProps & { appearance?: 'home' | 'white' | 'portfolio' }) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const datasource = fields?.data?.datasource;
@@ -16,37 +15,46 @@ export const Default = ({ fields, params }: RetirementSolutionsIntroProps) => {
   const heading = datasource.heading?.jsonValue;
   const body = datasource.body?.jsonValue;
   const icon = datasource.icon?.jsonValue;
+  const isHome = appearance === 'home';
+  const iconContent = shouldRenderImageField(icon, isEditing) && (
+    <div className="tileIcon t-bg-transparent t-icon-primary-black">
+      <Image field={icon} editable={isEditing} />
+    </div>
+  );
+  const headingContent = shouldRenderTextField(heading, isEditing) && (
+    <div className="tileHeading">
+      <Text field={heading} tag="h2" editable={isEditing} />
+    </div>
+  );
+  const bodyContent = shouldRenderTextField(body, isEditing) && (
+    <RichText field={body} editable={isEditing} className={isHome ? 'tileBody u-font-size-xl' : 'tileBody'} />
+  );
 
   return (
     <div
-      className="l-container--full-width t-bg-blue-soft axlTileCollection allianz-retirement-solutions-intro"
+      className={`l-container--full-width t-bg-${appearance === 'white' ? 'transparent' : 'blue-soft'} axlTileCollection allianz-retirement-solutions-intro`}
       id={params?.RenderingIdentifier}
     >
       <div className="l-grid l-grid--max-width">
-        {params?.RenderingIdentifier !== 'solutions' && <span id="solutions" />}
-        <div className="l-grid__row">
+        {isHome && params?.RenderingIdentifier !== 'solutions' && <span id="solutions" />}
+        <div className={isHome ? 'l-grid__row' : 'l-grid__row u-margin-bottom-lg u-padding-top-lg'}>
           <div className="l-grid__column-medium-12">
-            <article className="m-axlTile match-height -is--stacked t-bg-transparent">
+            <article className={isHome ? 'm-axlTile match-height -is--stacked t-bg-transparent' : 'm-axlIntroductionBlock -is--stacked -no--image'}>
               <div className="tileContent u-text-center">
-                {shouldRenderImageField(icon, isEditing) && (
-                  <div className="tileSubGrid__image">
-                    <div className="tileIcon t-bg-transparent t-icon-primary-black">
-                      <Image field={icon} editable={isEditing} />
-                    </div>
+                {isHome ? <>
+                  {iconContent && <div className="tileSubGrid__image">{iconContent}</div>}
+                  <div className="tileSubGrid__content">
+                    {headingContent && <header>{headingContent}</header>}
+                    {bodyContent}
                   </div>
-                )}
-                <div className="tileSubGrid__content">
-                  {shouldRenderTextField(heading, isEditing) && (
-                    <header>
-                      <div className="tileHeading">
-                        <Text field={heading} tag="h2" editable={isEditing} />
-                      </div>
-                    </header>
-                  )}
-                  {shouldRenderTextField(body, isEditing) && (
-                    <RichText field={body} editable={isEditing} className="tileBody u-font-size-xl" />
-                  )}
-                </div>
+                </> : <>
+                  {iconContent}
+                  <header>
+                    {headingContent || <div className="tileHeading" />}
+                    <div className="tileSubHeading" />
+                  </header>
+                  {bodyContent}
+                </>}
               </div>
             </article>
           </div>
@@ -54,4 +62,13 @@ export const Default = ({ fields, params }: RetirementSolutionsIntroProps) => {
       </div>
     </div>
   );
-};
+}
+
+/** Home's blue introduction retains its existing solutions anchor. */
+export const Default = (props: RetirementSolutionsIntroProps) => <RetirementSolutionsIntro {...props} />;
+
+/** FIA explained introduction uses the source's white IntroductionBlock scaffold. */
+export const White = (props: RetirementSolutionsIntroProps) => <RetirementSolutionsIntro {...props} appearance="white" />;
+
+/** FIA portfolio introduction uses the same native fields on the source's blue section. */
+export const Portfolio = (props: RetirementSolutionsIntroProps) => <RetirementSolutionsIntro {...props} appearance="portfolio" />;

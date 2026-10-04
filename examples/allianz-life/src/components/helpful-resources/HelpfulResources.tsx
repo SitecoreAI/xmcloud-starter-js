@@ -5,26 +5,31 @@ import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { helpfulResourceFields } from 'lib/helpful-resource-fields';
 import type { HelpfulResourcesProps } from './helpful-resources.props';
+import './HelpfulResources.css';
 
-/** The homepage resource collection has a fixed blue section and card design. */
-export const Default = ({ fields, params }: HelpfulResourcesProps) => {
+function HelpfulResources({ fields, params, isGreen = false }: HelpfulResourcesProps & { isGreen?: boolean }) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const datasource = fields?.data?.datasource;
   if (!datasource) return <NoDataFallback componentName="Helpful Resources" />;
   const resources = (datasource.children?.results ?? []).map(helpfulResourceFields);
+  const hasTitle = shouldRenderTextField(datasource.title?.jsonValue, isEditing);
+  const hasGreenIcon = isGreen && shouldRenderImageField(datasource.icon?.jsonValue, isEditing);
 
-  return <div className="l-container--full-width t-bg-blue-soft allianz-helpful-resources"
+  return <div className={`l-container--full-width t-bg-${isGreen ? 'green-soft' : 'blue-soft'} allianz-helpful-resources`}
     id={params?.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width">
-      {shouldRenderTextField(datasource.title?.jsonValue, isEditing) &&
+      {(hasTitle || hasGreenIcon) &&
         <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg">
           <div className="l-grid__column-medium-12">
             <article className="m-axlIntroductionBlock -is--stacked -no--image">
               <div className="tileContent u-text-center">
+                {hasGreenIcon && <div className="tileIcon t-bg-primary-brand t-icon-primary-white">
+                  <Image field={datasource.icon?.jsonValue} editable={isEditing} />
+                </div>}
                 <header><div className="tileHeading">
-                  <Text field={datasource.title?.jsonValue} tag="h2" editable={isEditing} />
-                </div></header>
+                  {hasTitle && <Text field={datasource.title?.jsonValue} tag="h2" editable={isEditing} />}
+                </div>{isGreen && <div className="tileSubHeading" />}</header>
               </div>
             </article>
           </div>
@@ -57,4 +62,10 @@ export const Default = ({ fields, params }: HelpfulResourcesProps) => {
       </div>
     </div>
   </div>;
-};
+}
+
+/** The homepage resource collection retains its blue section and card design. */
+export const Default = (props: HelpfulResourcesProps) => <HelpfulResources {...props} />;
+
+/** Green resource collection used by the source's Explore further section. */
+export const Green = (props: HelpfulResourcesProps) => <HelpfulResources {...props} isGreen />;

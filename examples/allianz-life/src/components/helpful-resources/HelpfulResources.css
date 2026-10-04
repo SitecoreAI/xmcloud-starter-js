@@ -1,0 +1,13 @@
+/* The source's white inline Information SVG is 26px, then 40px from 704px.
+ * Native Image fields preserve the authored asset and editing metadata. */
+.allianz-helpful-resources.t-bg-green-soft .tileIcon img {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 704px) {
+  .allianz-helpful-resources.t-bg-green-soft .tileIcon img {
+    width: 40px;
+  }
+}
