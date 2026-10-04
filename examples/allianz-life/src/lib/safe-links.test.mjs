@@ -25,7 +25,7 @@ function loadSource(filename) {
   }).outputText, filename);
   return compiled.exports;
 }
-const { safeLink } = loadSource(filename);
+const { safeLink, safeLinkRenderProps } = loadSource(filename);
 const field = (href, attributes = {}) => ({ value: { href, text: 'Open', ...attributes } });
 const href = (value) => safeLink(field(value)).value.href;
 process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'fixture';
@@ -39,7 +39,7 @@ function render(input, isEditing = false, editable = true) {
       mode: { isEditing, isNormal: !isEditing, isPreview: false },
       layout: { sitecore: { context: {}, route: { name: 'Link contract test', fields: {}, placeholders: {} } } },
     }, api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
-  }, React.createElement(Link, { field: safeLink(input), editable })));
+  }, React.createElement(Link, { ...safeLinkRenderProps(input), editable })));
 }
 function renderedHref(input, editable = true) {
   const html = render(input, false, editable);
@@ -87,10 +87,58 @@ test('embedded query/hash values preserve encoding, repeated keys, and native at
   assert.equal(output.value.href, '/about');
   assert.equal(output.value.querystring, 'tag=one&tag=two&q=a%23b&term=c%26d');
   assert.equal(output.value.anchor, 'overview');
-  assert.equal(output.value.target, '');
+  assert.equal(output.value.target, '_blank');
+  assert.equal(output.value.linktype, 'internal');
   assert.equal(output.value.class, 'native-link');
   assert.equal(output.value.title, 'About');
   assert.equal(renderedHref(input), '/about?tag=one&tag=two&q=a%23b&term=c%26d#overview');
+  assert.match(render(input), /target="_blank"/);
+});
+
+test('native targets survive real SDK route and file rendering without inventing a target', () => {
+  for (const destination of ['/about', 'https://www.allianzlife.com/about']) {
+    const input = field(destination, { target: '_blank', linktype: 'internal' });
+    assert.equal(safeLink(input).value.target, '_blank');
+    const html = render(input);
+    assert.match(html, /href="\/about"/);
+    assert.match(html, /target="_blank"/);
+    assert.match(html, /rel="noopener noreferrer"/);
+  }
+  const file = field('/allianz-assets/source.pdf', { target: '_blank', linktype: 'media' });
+  assert.equal(safeLink(file).value.linktype, 'media');
+  assert.match(render(file), /target="_blank" rel="noopener noreferrer"/);
+  for (const target of [undefined, '', '_self']) {
+    const input = field('/about', target === undefined ? {} : { target });
+    const output = safeLink(input);
+    assert.equal(output.value.target, target);
+    assert.equal(Object.hasOwn(output.value, 'target'), target !== undefined);
+    const html = render(input);
+    if (target === undefined) assert.doesNotMatch(html, /\starget=/);
+    else assert.match(html, new RegExp(`target="${target}"`));
+    assert.doesNotMatch(html, /\srel=/);
+  }
+});
+
+test('supported SDK rel props preserve authored tokens and protect both renderer paths', () => {
+  for (const destination of ['/about', '/allianz-assets/source.pdf', '#section']) {
+    const input = field(destination, { target: '_blank', rel: 'author nofollow' });
+    const props = safeLinkRenderProps(input);
+    assert.equal(props.rel, 'author nofollow noopener noreferrer');
+    assert.equal(props.field.value.rel, 'author nofollow');
+    assert.equal(input.value.rel, 'author nofollow');
+    assert.match(render(input), /target="_blank"/);
+    assert.match(render(input), /rel="author nofollow noopener noreferrer"/);
+  }
+  const protectedInput = field('/about', { target: '_BLANK', rel: 'author NoOpener noreferrer' });
+  assert.equal(safeLinkRenderProps(protectedInput).rel, 'author NoOpener noreferrer');
+  assert.match(render(protectedInput), /target="_BLANK"/);
+  assert.match(render(protectedInput), /rel="author NoOpener noreferrer"/);
+  const sameTab = field('/about', { target: '_self', rel: 'author' });
+  assert.equal(safeLinkRenderProps(sameTab).rel, 'author');
+  assert.match(render(sameTab), /target="_self" rel="author"/);
+  const blocked = field('/login', { target: '_blank', rel: 'author' });
+  assert.equal(safeLinkRenderProps(blocked).rel, 'author');
+  assert.match(render(blocked), /target="" rel="author"/);
 });
 
 test('native split query/hash fields and combined captured fields use the same contract', () => {
@@ -110,15 +158,20 @@ test('file links and same-page fragment/query links use real SDK fallback safely
   assert.equal(renderedHref(field('?')), '?');
 });
 
-test('blocked services discard stale query/hash fields and never leak their destination', () => {
-  for (const value of ['https://external.example.invalid/', '//external.example.invalid/about', 'http://www.allianzlife.com/about', 'https://www.allianzlife.com:444/about', 'https://user:password@www.allianzlife.com/about', 'javascript:alert(1)', '/login', '/%6cogin', '/api/private', '/sitecore', '/about#demo-unavailable', '#service-unavailable']) {
+test('blocked services discard stale query/hash/target fields and never leak their destination', () => {
+  for (const value of ['https://external.example.invalid/', '//external.example.invalid/about', 'http://www.allianzlife.com/about', 'https://www.allianzlife.com:444/about', 'https://user:password@www.allianzlife.com/about', 'javascript:alert(1)', 'mailto:service@example.invalid', 'tel:12345', 'data:text/html,blocked', '/login', '/%6cogin', '/%2flogin', '/%5clogin', '/api/private', '/sitecore', '/rates', '/about#demo-unavailable', '#service-unavailable']) {
     const input = field(value, { querystring: 'private=1', anchor: 'old', target: '_blank' });
     assert.equal(renderedHref(input), '#service-unavailable', value);
     const output = safeLink(input);
     assert.equal(output.value.querystring, '');
     assert.equal(output.value.anchor, '');
+    assert.equal(output.value.target, '');
     assert.equal(output.value.title, 'This service is unavailable');
+    assert.doesNotMatch(render(input), /target="_blank"|rel="noopener noreferrer"/);
   }
+  const unavailableAnchor = field('/about', { anchor: 'service-unavailable', target: '_blank' });
+  assert.equal(renderedHref(unavailableAnchor), '#service-unavailable');
+  assert.equal(safeLink(unavailableAnchor).value.target, '');
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
   try {
     assert.equal(renderedHref(field('/future-public-page?x=1#intro')), '/future-public-page?x=1#intro');
@@ -130,17 +183,37 @@ test('cleared native fields and real metadata survive normal and editing SDK ren
   const metadata = { fieldId: 'native-general-link', fieldType: 'General Link', itemId: 'native-item' };
   const cleared = { value: {}, metadata };
   assert.strictEqual(safeLink(cleared), cleared);
-  assert.strictEqual(safeLink({ value: { href: '' }, metadata }).metadata, metadata);
+  const clearedTarget = { value: { href: '', target: '_blank', linktype: 'internal' }, metadata };
+  assert.strictEqual(safeLink(clearedTarget), clearedTarget);
+  assert.strictEqual(safeLinkRenderProps(clearedTarget).field, clearedTarget);
+  assert.equal(safeLinkRenderProps(clearedTarget).rel, undefined);
   const emptyEditing = render(cleared, true);
   assert.match(emptyEditing, /native-general-link/);
   assert.match(emptyEditing, /\[No text in field\]/);
   assert.doesNotMatch(emptyEditing, /href="\/"|service-unavailable/);
   assert.equal(render(cleared, false, false), '');
-  const populated = { ...field('/about?view=public#overview', { linktype: 'internal' }), metadata };
+  const populated = { ...field('/about?view=public#overview', { target: '_blank', linktype: 'internal' }), metadata };
   assert.strictEqual(safeLink(populated).metadata, metadata);
   assert.equal(renderedHref(populated), '/about?view=public#overview');
   assert.equal(renderedHref(populated, false), '/about?view=public#overview');
   const editing = render(populated, true);
   assert.match(editing, /native-general-link/);
   assert.match(editing, /href="\/about\?view=public#overview"/);
+  assert.match(editing, /target="_blank" rel="noopener noreferrer"/);
+  assert.match(render(populated), /target="_blank" rel="noopener noreferrer"/);
+  assert.match(render(populated, false, false), /target="_blank" rel="noopener noreferrer"/);
+  assert.deepEqual(populated.value, { href: '/about?view=public#overview', text: 'Open', target: '_blank', linktype: 'internal' });
+});
+
+test('href-only and url-alias fields retain their existing untouched shape', () => {
+  const hrefOnly = { href: '/about', text: 'Open', target: '_blank' };
+  const urlAlias = { value: { url: '/about', text: 'Open', target: '_blank' } };
+  assert.strictEqual(safeLink(hrefOnly), hrefOnly);
+  assert.strictEqual(safeLink(urlAlias), urlAlias);
+  assert.equal(renderedHref(hrefOnly), '/about');
+  assert.match(render(hrefOnly), /target="_blank"/);
+  const hrefOnlyFile = { ...hrefOnly, href: '/allianz-assets/source.pdf' };
+  assert.strictEqual(safeLinkRenderProps(hrefOnlyFile).field, hrefOnlyFile);
+  assert.match(render(hrefOnlyFile), /target="_blank" rel="noopener noreferrer"/);
+  assert.equal(render(urlAlias), '');
 });

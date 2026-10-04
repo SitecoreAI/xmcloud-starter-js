@@ -6,26 +6,45 @@ export interface MobileMenuState { open: boolean; path: string[] }
 export type MobileMenuAction = { type: 'toggle' } | { type: 'close' } | { type: 'back' } | { type: 'enter'; id: string };
 export const initialMobileMenuState: MobileMenuState = { open: false, path: [] };
 
-export interface DesktopMenuState { path: string[]; hoverOpened: string[] }
+export interface DesktopMenuState { root: string | null; selectedChildren: Record<string, string>; hoverOpened: boolean }
 export type DesktopMenuAction = { type: 'close' } | { type: 'hover' | 'toggle' | 'leave'; path: string[] };
-export const initialDesktopMenuState: DesktopMenuState = { path: [], hoverOpened: [] };
+export const initialDesktopMenuState: DesktopMenuState = { root: null, selectedChildren: {}, hoverOpened: false };
+
+/** A collapsed ancestor hides its branch without erasing deeper selections. */
+export function desktopMenuPath(state: DesktopMenuState): string[] {
+  const path: string[] = [];
+  let id = state.root;
+  while (id && !path.includes(id)) {
+    path.push(id);
+    id = state.selectedChildren[id] ?? null;
+  }
+  return path;
+}
 
 /** Only top-level branches preview on hover; nested branches require activation. */
 export function desktopMenuReducer(state: DesktopMenuState, action: DesktopMenuAction): DesktopMenuState {
-  if (action.type === 'close') return initialDesktopMenuState;
+  if (action.type === 'close') return { ...state, root: null, hoverOpened: false };
   const id = action.path.at(-1);
   if (!id) return state;
-  const isOpen = action.path.every((value, index) => state.path[index] === value);
+  const activePath = desktopMenuPath(state);
+  const isOpen = action.path.every((value, index) => activePath[index] === value);
   if (action.type === 'hover') {
     if (action.path.length !== 1 || isOpen) return state;
-    return { path: action.path, hoverOpened: [...state.hoverOpened.filter((value) => action.path.includes(value)), id] };
+    return { ...state, root: id, hoverOpened: true };
   }
-  if (action.type === 'toggle' && isOpen && state.hoverOpened.includes(id)) {
-    return { ...state, hoverOpened: state.hoverOpened.filter((value) => value !== id) };
+  if (action.type === 'toggle' && isOpen && action.path.length === 1 && state.hoverOpened) {
+    return { ...state, hoverOpened: false };
   }
   if (action.type === 'leave' && !isOpen) return state;
-  const path = isOpen ? action.path.slice(0, -1) : action.path;
-  return { path, hoverOpened: state.hoverOpened.filter((value) => path.includes(value)) };
+  if (action.path.length === 1) return { ...state, root: isOpen ? null : id, hoverOpened: false };
+  // Hidden controls cannot activate a branch. Each parent has at most one open
+  // child; removing that selection retains the child's remembered descendants.
+  if (!action.path.slice(0, -1).every((value, index) => activePath[index] === value)) return state;
+  const selectedChildren = { ...state.selectedChildren };
+  const parent = action.path.at(-2)!;
+  if (isOpen) delete selectedChildren[parent];
+  else selectedChildren[parent] = id;
+  return { ...state, selectedChildren };
 }
 
 /** A mobile menu drills into one list at a time, as in the original source. */

@@ -111,7 +111,8 @@ test('named GraphQL fields carry authored semantic content and safe SDK link att
   assert.match(html, /<p>Authored <strong>partnership<\/strong>.<\/p><p>Second paragraph.<\/p>/);
   assert.match(html, /href="\/about\/olympic-and-paralympic-partnership\?campaign=olympic&amp;source=home#partnership"/);
   assert.match(html, /<span class="a-link__text">Explore the partnership<\/span>/);
-  assert.doesNotMatch(html, /Worldwide Insurance Partner|b4c93bec95f870e9|target="_blank"/);
+  assert.match(html, /target="_blank"/);
+  assert.doesNotMatch(html, /Worldwide Insurance Partner|b4c93bec95f870e9/);
   assert.equal(JSON.stringify(authored), before);
   assert.deepEqual(metadata(html), []);
   const editing = render(authored, { isEditing: true });

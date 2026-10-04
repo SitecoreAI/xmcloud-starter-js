@@ -30,7 +30,10 @@ const navItem = (id, title, href, children = []) => ({
 });
 const items = [navItem('offer', 'What We Offer', '/what-we-offer', [
   navItem('overview', 'Overview', '/what-we-offer'),
-  navItem('annuities', 'Annuities', '/what-we-offer/annuities', [navItem('fixed', 'Fixed annuities', '/what-we-offer/annuities/fixed-index-annuities')]),
+  navItem('annuities', 'Annuities', '/what-we-offer/annuities', [
+    navItem('annuity-overview', 'About annuities', '/what-we-offer/annuities'),
+    navItem('fixed', 'Fixed annuities', '/what-we-offer/annuities/fixed-index-annuities'),
+  ]),
 ]), navItem('answers', 'Get Answers', '/get-answers')];
 
 test('mobile menu enter, back, cancel and reopen reset the correct list', () => {
@@ -40,7 +43,7 @@ test('mobile menu enter, back, cancel and reopen reset the correct list', () => 
   state = reduce(state, { type: 'enter', id: 'offer' });
   assert.equal(rules.navigationAtPath(items, state.path).parent.id, 'offer');
   state = reduce(state, { type: 'enter', id: 'annuities' });
-  assert.equal(rules.navigationAtPath(items, state.path).items[0].id, 'fixed');
+  assert.equal(rules.navigationAtPath(items, state.path).items[1].id, 'fixed');
   state = reduce(state, { type: 'back' });
   assert.deepEqual(state.path, ['offer']);
   state = reduce(state, { type: 'back' });
@@ -54,40 +57,55 @@ test('mobile menu enter, back, cancel and reopen reset the correct list', () => 
 test('desktop hover preview, explicit activation and repeated activation have coherent state', () => {
   const reduce = rules.desktopMenuReducer;
   let state = reduce(rules.initialDesktopMenuState, { type: 'hover', path: ['offer'] });
-  assert.deepEqual(state, { path: ['offer'], hoverOpened: ['offer'] });
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer']);
+  assert.equal(state.hoverOpened, true);
   state = reduce(state, { type: 'toggle', path: ['offer'] });
-  assert.deepEqual(state, { path: ['offer'], hoverOpened: [] }, 'first explicit activation pins a hover-open branch');
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer'], 'first activation keeps a hover-open branch usable');
+  assert.equal(state.hoverOpened, false);
   state = reduce(state, { type: 'toggle', path: ['offer'] });
-  assert.deepEqual(state, rules.initialDesktopMenuState, 'repeated activation closes the pinned branch');
+  assert.deepEqual(rules.desktopMenuPath(state), [], 'repeated activation closes the branch');
   state = reduce(state, { type: 'toggle', path: ['offer'] });
   state = reduce(state, { type: 'toggle', path: ['offer', 'annuities'] });
-  assert.deepEqual(state.path, ['offer', 'annuities']);
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer', 'annuities']);
   state = reduce(state, { type: 'toggle', path: ['offer'] });
-  assert.deepEqual(state, rules.initialDesktopMenuState, 'closing the parent resets descendants');
+  assert.deepEqual(rules.desktopMenuPath(state), [], 'closing the root hides descendants');
   state = reduce(state, { type: 'hover', path: ['offer'] });
-  state = reduce(state, { type: 'hover', path: ['answers'] });
-  assert.deepEqual(state, { path: ['answers'], hoverOpened: ['answers'] }, 'a new top-level branch replaces the prior one');
-  assert.deepEqual(reduce(state, { type: 'leave', path: ['offer'] }), state, 'late leave from the prior branch cannot close the new one');
-  assert.deepEqual(reduce(state, { type: 'close' }), rules.initialDesktopMenuState);
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer', 'annuities'], 're-hover restores selected descendants');
+  state = reduce(state, { type: 'hover', path: ['another-root'] });
+  assert.deepEqual(rules.desktopMenuPath(state), ['another-root'], 'new root replaces the visible root');
+  assert.equal(reduce(state, { type: 'leave', path: ['offer'] }), state, 'late prior-root leave cannot close the new root');
+  state = reduce(state, { type: 'close' });
+  assert.deepEqual(rules.desktopMenuPath(state), []);
+  state = reduce(state, { type: 'hover', path: ['offer'] });
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer', 'annuities']);
 });
 
-test('desktop reducer ignores hover below the first level without disturbing clicked branches', () => {
+test('desktop reducer ignores deeper hover and retains descendants across collapse and sibling selection', () => {
   const reduce = rules.desktopMenuReducer;
   let state = reduce(rules.initialDesktopMenuState, { type: 'hover', path: ['offer'] });
   for (const path of [['offer', 'annuities'], ['offer', 'annuities', 'fixed']]) {
     assert.equal(reduce(rules.initialDesktopMenuState, { type: 'hover', path }), rules.initialDesktopMenuState);
     assert.equal(reduce(state, { type: 'hover', path }), state);
     state = reduce(state, { type: 'toggle', path });
-    assert.deepEqual(state.path, path, 'each deeper branch opens on its first explicit activation');
-    assert.deepEqual(state.hoverOpened, ['offer'], 'nested branches are never recorded as hover previews');
-    assert.equal(reduce(state, { type: 'hover', path: ['offer', 'life'] }), state, 'hovering a sibling leaves the active branch alone');
+    assert.deepEqual(rules.desktopMenuPath(state), path, 'deeper branches require explicit activation');
+    assert.equal(state.hoverOpened, true, 'deeper activation leaves the root hover state alone');
+    assert.equal(reduce(state, { type: 'hover', path: ['offer', 'life'] }), state);
   }
-  state = reduce(state, { type: 'toggle', path: ['offer', 'annuities', 'fixed'] });
-  assert.deepEqual(state.path, ['offer', 'annuities'], 'a second activation closes the deepest branch immediately');
   state = reduce(state, { type: 'toggle', path: ['offer', 'annuities'] });
-  assert.deepEqual(state.path, ['offer'], 'a second activation closes the nested branch immediately');
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer']);
+  assert.equal(reduce(state, { type: 'toggle', path: ['offer', 'annuities', 'fixed'] }), state, 'hidden controls cannot activate a branch');
+  state = reduce(state, { type: 'toggle', path: ['offer', 'annuities'] });
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer', 'annuities', 'fixed'], 'parent reopening restores its deeper selection');
+  state = reduce(state, { type: 'toggle', path: ['offer', 'life'] });
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer', 'life'], 'expandable siblings are exclusive');
+  state = reduce(state, { type: 'toggle', path: ['offer', 'annuities'] });
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer', 'annuities', 'fixed'], 'switching back restores the remembered sibling branch');
+  state = reduce(state, { type: 'toggle', path: ['offer', 'annuities', 'fixed'] });
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer', 'annuities'], 'second activation collapses the selected child');
   state = reduce(state, { type: 'leave', path: ['offer'] });
-  assert.deepEqual(state, rules.initialDesktopMenuState);
+  assert.deepEqual(rules.desktopMenuPath(state), []);
+  state = reduce(state, { type: 'hover', path: ['offer'] });
+  assert.deepEqual(rules.desktopMenuPath(state), ['offer', 'annuities'], 're-hover preserves the explicit deeper collapse');
 });
 
 function flatten(element) {
@@ -130,6 +148,7 @@ function harness(mobile, navigationItems = items) {
   const props = { fields: { data: { datasource: { primaryNav: { targetItems: navigationItems } } } } };
   return {
     render(override = props) { cursor = 0; root = Default(override); return root; },
+    setViewport(value) { mobile = value; },
     nodes() { return flatten(root); },
     one(predicate) { const match = flatten(root).find(predicate); assert.ok(match, 'expected control exists'); return match; },
   };
@@ -287,7 +306,7 @@ test('desktop hover opens only the top level and every deeper disclosure require
   h.render();
   assert.equal(panel('life').props.inert, undefined, 'click changes the active nested branch');
   assert.equal(panel('annuities').props.inert, true);
-  assert.equal(panel('fixed').props.inert, true, 'switching nested branches resets descendants');
+  assert.equal(panel('fixed').props.inert, true, 'remembered descendants stay inert when their ancestor is hidden');
   toggle('life').props.onClick();
   h.render();
   assert.equal(panel('life').props.inert, true, 'second nested click closes immediately');
@@ -317,7 +336,118 @@ test('desktop disclosures retain native keyboard and touch activation and real l
   }
 });
 
-test('top-level pointer exit respects focus and resets descendants before reopening', () => {
+test('deeper row text and chevron share one native Enter/Space disclosure while the first child stays a destination', () => {
+  const overview = navItem('group-overview', 'About group', '/group');
+  const group = navItem('group', 'Generic group', '/group', [overview, navItem('leaf', 'Leaf', '/leaf')]);
+  group.title.jsonValue.editable = '<span>Generic group</span>';
+  overview.link.jsonValue.editable = '<a href="/group">About group</a>';
+  const h = harness(false, [navItem('root', 'Root', '/root', [group])]);
+  const disclosure = () => h.one((x) => x.props['aria-controls'] === 'allianz-nav-group');
+  h.render();
+  h.one((x) => x.props['aria-controls'] === 'allianz-nav-root').props.onClick();
+  h.render();
+  for (const detail of [1, 0, 0]) {
+    const button = disclosure();
+    assert.equal(button.type, 'button', 'row text uses native Enter and Space activation');
+    assert.equal(button.props.type, 'button');
+    assert.equal(button.props.onKeyDown, undefined, 'native keyboard semantics remain available');
+    const children = flatten(button.props.children);
+    assert.equal(children.find((x) => x.type === 'span').props.field, group.title.jsonValue, 'editable title field identity is retained');
+    assert.equal(children.find((x) => x.type === 'i').props['aria-hidden'], 'true', 'chevron is inside the same disclosure');
+    const before = button.props['aria-expanded'];
+    button.props.onClick({ detail });
+    h.render();
+    assert.equal(disclosure().props['aria-expanded'], !before);
+    const destination = h.one((x) => x.type === 'a' && x.props.field?.value.href === '/group');
+    assert.equal(destination.props.onClick, undefined, 'the actual first child follows its destination');
+    assert.equal(destination.props.field.editable, overview.link.jsonValue.editable, 'link authoring markup is retained');
+    assert.equal(h.nodes().filter((x) => x.type === 'a' && x.props.field?.value.href === '/group').length, 1, 'the disclosure row does not duplicate the child link');
+  }
+});
+
+test('desktop parent collapse, sibling switching and top transitions retain branches without exposing hidden descendants', () => {
+  const h = harness(false, [navItem('root', 'Root', '/root', [
+    navItem('left', 'Left', '/left', [
+      navItem('middle', 'Middle', '/middle', [navItem('deep', 'Deep', '/deep', [navItem('leaf', 'Leaf', '/leaf')])]),
+    ]),
+    navItem('right', 'Right', '/right', [navItem('right-leaf', 'Right leaf', '/right-leaf')]),
+  ]), navItem('other', 'Other', '/other', [navItem('other-leaf', 'Other leaf', '/other-leaf')])]);
+  const panel = (id) => h.one((x) => x.type === 'ul' && x.props.id === `allianz-nav-${id}`);
+  const toggle = (id) => h.one((x) => x.props['aria-controls'] === `allianz-nav-${id}`);
+  const hover = (id) => { h.one((x) => x.type === 'li' && x.key === id).props.onMouseEnter(); h.render(); };
+  const activate = (id) => { toggle(id).props.onClick(); h.render(); };
+  const assertHidden = (ids) => {
+    for (const id of ids) {
+      assert.equal(panel(id).props.inert, true, `${id} descendants cannot receive focus`);
+      assert.equal(panel(id).props['aria-hidden'], true, `${id} descendants are absent from accessibility navigation`);
+      assert.equal(toggle(id).props['aria-expanded'], false);
+    }
+  };
+  h.render();
+  hover('root');
+  for (const id of ['left', 'middle', 'deep']) activate(id);
+  activate('left');
+  assertHidden(['left', 'middle', 'deep']);
+  activate('left');
+  for (const id of ['left', 'middle', 'deep']) assert.equal(panel(id).props.inert, undefined, 'parent reopen restores each selected descendant');
+  activate('right');
+  assertHidden(['left', 'middle', 'deep']);
+  assert.equal(panel('right').props.inert, undefined);
+  activate('left');
+  assertHidden(['right']);
+  assert.equal(panel('deep').props.inert, undefined, 'returning to a sibling restores its deeper branch');
+  hover('other');
+  assertHidden(['root', 'left', 'middle', 'deep']);
+  assert.equal(panel('other').props.inert, undefined);
+  hover('root');
+  assertHidden(['other']);
+  assert.equal(panel('deep').props.inert, undefined, 'returning to a root restores its prior branch');
+});
+
+test('focused top switching moves to the new visible opener before collapse without a blur-close race', () => {
+  const navigationItems = [...items, navItem('another-root', 'Another root', '/another-root', [navItem('another-leaf', 'Another leaf', '/another-leaf')])];
+  const previousDocument = globalThis.document;
+  try {
+    for (const focusInsidePanel of [true, false]) {
+      const h = harness(false, navigationItems);
+      h.render();
+      h.one((x) => x.type === 'li' && x.key === 'offer').props.onMouseEnter();
+      h.render();
+      h.one((x) => x.props['aria-controls'] === 'allianz-nav-annuities').props.onClick();
+      h.render();
+      const priorFocus = {};
+      let focusMoves = 0;
+      const newOpener = {
+        focus() {
+          focusMoves++;
+          assert.equal(h.one((x) => x.props['aria-controls'] === 'allianz-nav-annuities').props['aria-expanded'], true, 'focus moves before its old containing panel collapses');
+          globalThis.document.activeElement = newOpener;
+          nav.props.onBlur({ currentTarget: navElement, relatedTarget: newOpener });
+        },
+      };
+      const oldPanel = { contains: (element) => focusInsidePanel && element === priorFocus };
+      const navElement = { querySelector: () => oldPanel, contains: (element) => element === newOpener || (focusInsidePanel && element === priorFocus) };
+      const nav = h.one((x) => x.type === 'nav' && x.props.id === 'allianz-main-navigation');
+      nav.props.ref.current = navElement;
+      globalThis.document = { activeElement: priorFocus };
+      h.one((x) => x.type === 'li' && x.key === 'another-root').props.onMouseEnter({ currentTarget: { querySelector: () => newOpener } });
+      h.render();
+      assert.equal(focusMoves, focusInsidePanel ? 1 : 0, 'focus outside the replaced panel is preserved');
+      assert.equal(globalThis.document.activeElement, focusInsidePanel ? newOpener : priorFocus);
+      assert.equal(h.one((x) => x.props['aria-controls'] === 'allianz-nav-another-root').props['aria-expanded'], true, 'the new root remains open after blur');
+      assert.equal(h.one((x) => x.type === 'ul' && x.props.id === 'allianz-nav-offer').props.inert, true);
+      assert.equal(h.one((x) => x.type === 'ul' && x.props.id === 'allianz-nav-another-root').props.inert, undefined);
+      h.one((x) => x.type === 'li' && x.key === 'offer').props.onMouseLeave({ currentTarget: { contains: () => false } });
+      h.render();
+      assert.equal(h.one((x) => x.props['aria-controls'] === 'allianz-nav-another-root').props['aria-expanded'], true, 'a late pointer exit from the old root cannot dismiss the new one');
+    }
+  } finally {
+    if (previousDocument === undefined) delete globalThis.document;
+    else globalThis.document = previousDocument;
+  }
+});
+
+test('top-level pointer exit respects focus and retains descendants before reopening', () => {
   const h = harness(false);
   h.render();
   h.one((x) => x.type === 'li' && x.key === 'offer').props.onMouseEnter();
@@ -339,7 +469,7 @@ test('top-level pointer exit respects focus and resets descendants before reopen
     h.one((x) => x.type === 'li' && x.key === 'offer').props.onMouseEnter();
     h.render();
     assert.equal(h.one((x) => x.props['aria-label'] === 'What We Offer submenu').props['aria-expanded'], true);
-    assert.equal(h.one((x) => x.props['aria-label'] === 'Annuities submenu').props['aria-expanded'], false, 'reopening starts with nested groups collapsed');
+    assert.equal(h.one((x) => x.props['aria-label'] === 'Annuities submenu').props['aria-expanded'], true, 'reopening restores the clicked branch');
   } finally {
     if (previousDocument === undefined) delete globalThis.document;
     else globalThis.document = previousDocument;
@@ -364,6 +494,88 @@ test('desktop Escape from a leaf restores its nearest disclosure button and outs
   h.one((x) => x.type === 'nav' && x.props.id === 'allianz-main-navigation').props.onBlur({ currentTarget: { contains: () => false }, relatedTarget: null });
   h.render();
   assert.equal(h.one((x) => x.type === 'ul' && x.props.id === 'allianz-nav-offer').props.inert, true);
+});
+
+test('outside blur, search and mobile navigation hide desktop menus while preserving the remembered branch', () => {
+  const h = harness(false);
+  const panel = (id) => h.one((x) => x.type === 'ul' && x.props.id === `allianz-nav-${id}`);
+  const hoverRoot = () => { h.one((x) => x.type === 'li' && x.key === 'offer').props.onMouseEnter(); h.render(); };
+  h.render();
+  hoverRoot();
+  h.one((x) => x.props['aria-controls'] === 'allianz-nav-annuities').props.onClick();
+  h.render();
+  let nav = h.one((x) => x.type === 'nav' && x.props.id === 'allianz-main-navigation');
+  nav.props.onBlur({ currentTarget: { contains: () => true }, relatedTarget: {} });
+  h.render();
+  assert.equal(panel('annuities').props.inert, undefined, 'focus within navigation keeps its branch visible');
+  nav.props.onBlur({ currentTarget: { contains: () => false }, relatedTarget: {} });
+  h.render();
+  assert.equal(panel('offer').props.inert, true);
+  assert.equal(panel('annuities').props.inert, true);
+  hoverRoot();
+  assert.equal(panel('annuities').props.inert, undefined, 're-hover after outside blur restores its branch');
+  let focused = '';
+  const search = h.one((x) => x.props['aria-controls'] === 'allianz-header-search');
+  search.props.ref.current = { focus() { focused = 'search'; } };
+  search.props.onClick();
+  h.render();
+  assert.equal(panel('offer').props.inert, true);
+  assert.equal(panel('annuities').props.inert, true);
+  assert.ok(h.one((x) => x.type === 'input').props.autoFocus);
+  h.one((x) => x.type === 'header').props.onKeyDown({ key: 'Escape' });
+  h.render();
+  assert.equal(focused, 'search');
+  hoverRoot();
+  assert.equal(panel('annuities').props.inert, undefined, 'search dismissal leaves prior branch selection available');
+  h.setViewport(true);
+  h.render();
+  const menu = h.one((x) => x.props['aria-label'] === 'Open menu');
+  menu.props.ref.current = { focus() { focused = 'menu'; } };
+  menu.props.onClick();
+  h.render();
+  h.one((x) => x.props['aria-label'] === 'Open What We Offer submenu').props.onClick();
+  h.render();
+  assert.equal(h.nodes().filter((x) => x.type === 'ul' && x.props['data-level']).length, 1, 'mobile still renders only its current list');
+  h.one((x) => x.type === 'header').props.onKeyDown({ key: 'Escape' });
+  h.render();
+  assert.equal(focused, 'menu');
+  nav = h.one((x) => x.type === 'nav' && x.props.id === 'allianz-main-navigation');
+  assert.equal(nav.props.inert, true);
+  h.setViewport(false);
+  h.render();
+  assert.equal(panel('offer').props.inert, true, 'mobile dismissal keeps desktop panels hidden');
+  hoverRoot();
+  assert.equal(panel('annuities').props.inert, undefined, 'desktop remembered selection remains independent of mobile drilling');
+});
+
+test('header destinations pass validated native targets and rel alongside authoring fields', () => {
+  const root = navItem('root', 'Root', '/root', [navItem('overview', 'Overview', '/root'), navItem('blank', 'Blank', '/blank')]);
+  const ordinary = navItem('ordinary', 'Ordinary', '/ordinary');
+  const utility = navItem('utility', 'Utility', '/utility');
+  for (const item of [root, root.children.results[1], utility]) {
+    item.link.jsonValue.value.target = '_blank';
+    item.link.jsonValue.editable = `<a href="${item.link.jsonValue.value.href}" target="_blank">${item.title.jsonValue.value}</a>`;
+  }
+  const props = { fields: { data: { datasource: { primaryNav: { targetItems: [root, ordinary] }, utilityNav: { targetItems: [utility] } } } } };
+  for (const mobile of [false, true]) {
+    const h = harness(mobile);
+    h.render(props);
+    for (const item of [root, utility]) {
+      const link = h.one((x) => x.type === 'a' && x.props.field?.value.href === item.link.jsonValue.value.href);
+      assert.equal(link.props.field.value.target, '_blank');
+      assert.match(link.props.rel, /noopener/);
+      assert.match(link.props.rel, /noreferrer/);
+      assert.equal(link.props.field.editable, item.link.jsonValue.editable);
+    }
+    assert.equal(h.one((x) => x.type === 'a' && x.props.field?.value.href === '/ordinary').props.rel, undefined);
+    if (!mobile) {
+      const leaf = h.one((x) => x.type === 'a' && x.props.field?.value.href === '/blank');
+      assert.equal(leaf.props.field.value.target, '_blank');
+      assert.match(leaf.props.rel, /noopener/);
+      assert.match(leaf.props.rel, /noreferrer/);
+      assert.equal(leaf.props.onClick, undefined, 'leaf target follows native navigation');
+    }
+  }
 });
 
 for (const depth of [3, 4, 6]) {

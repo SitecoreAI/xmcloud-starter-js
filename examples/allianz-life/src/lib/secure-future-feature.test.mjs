@@ -131,7 +131,8 @@ test('native fields preserve their metadata and raw authoring link while visitor
   assert.match(normal, /data-mediaid="\{native-badge\}"/);
   assert.match(normal, /href="\/why-allianz\?campaign=feature&amp;source=home#ratings"/);
   assert.match(normal, /title="Authored title"/);
-  assert.doesNotMatch(normal, /target="_blank"|Everything we do|0553a9a67d14fa22|8b7ef1466f2b5b1f/);
+  assert.match(normal, /target="_blank"/);
+  assert.doesNotMatch(normal, /Everything we do|0553a9a67d14fa22|8b7ef1466f2b5b1f/);
   assert.deepEqual(metadata(normal), []);
   const editing = render(authored, { isEditing: true });
   assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),

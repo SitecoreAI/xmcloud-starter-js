@@ -1,4 +1,4 @@
-import type { Field, ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
+import type { Field, ImageField, LinkField, LinkProps } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from './component-props';
 import publicRouteIndex from '../../content/public-route-index.json';
 import { isConnected } from './allianz-content-mode';
@@ -117,7 +117,22 @@ export function safeLink(field?: LinkField): LinkField {
       href: isLocalAnchor ? `${nativeQuery ? `?${nativeQuery}` : ''}${href}` : isQueryOnly ? `?${querystring}${anchor ? `#${anchor}` : ''}` : url.pathname,
       querystring: isLocalAnchor || isQueryOnly ? '' : querystring,
       anchor: isLocalAnchor || isQueryOnly ? '' : anchor,
-      target: '',
     },
+  };
+}
+
+/** Both SDK renderers accept rel as a Link prop, rather than a field value. */
+export function safeLinkRenderProps(field?: LinkField): Pick<LinkProps, 'field' | 'rel'> {
+  const normalized = safeLink(field);
+  const authoredRel = normalized.value?.rel;
+  const rel = typeof authoredRel === 'string' ? authoredRel : undefined;
+  if (!normalized.value?.href || normalized.value.target?.toLowerCase() !== '_blank') {
+    return { field: normalized, ...(rel === undefined ? {} : { rel }) };
+  }
+  const tokens = (rel ?? '').split(/\s+/).filter(Boolean);
+  const existing = new Set(tokens.map((token) => token.toLowerCase()));
+  return {
+    field: normalized,
+    rel: [...tokens, ...['noopener', 'noreferrer'].filter((token) => !existing.has(token))].join(' '),
   };
 }
