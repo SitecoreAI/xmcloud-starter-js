@@ -135,6 +135,32 @@ function harness(mobile, navigationItems = items) {
   };
 }
 
+function navigationTargets(navigationItems) {
+  const targets = new Map();
+  let focused;
+  const visit = (navigationItems, parent = null) => {
+    for (const item of navigationItems) {
+      const children = item.children?.results ?? [];
+      const row = {
+        parent,
+        parentElement: { closest: () => parent },
+        closest: () => row,
+        querySelector: () => opener,
+      };
+      const opener = children.length ? {
+        closest: () => row,
+        getAttribute: () => `allianz-nav-${item.id}`,
+        focus() { focused = { id: item.id, target: opener, row }; },
+      } : null;
+      targets.set(item.id, { row, opener });
+      row.id = item.id;
+      visit(children, row);
+    }
+  };
+  visit(navigationItems);
+  return { targets, focused: () => focused };
+}
+
 const previousFrame = globalThis.requestAnimationFrame;
 globalThis.requestAnimationFrame = (callback) => { callback(); return 0; };
 test.after(() => { globalThis.requestAnimationFrame = previousFrame; });
@@ -338,6 +364,70 @@ test('desktop Escape from a leaf restores its nearest disclosure button and outs
   h.one((x) => x.type === 'nav' && x.props.id === 'allianz-main-navigation').props.onBlur({ currentTarget: { contains: () => false }, relatedTarget: null });
   h.render();
   assert.equal(h.one((x) => x.type === 'ul' && x.props.id === 'allianz-nav-offer').props.inert, true);
+});
+
+for (const depth of [3, 4, 6]) {
+  test(`repeated desktop Escape closes one open ancestor at a time through ${depth} disclosure levels`, () => {
+    const ids = Array.from({ length: depth }, (_, index) => `group-${index}`);
+    const navigationItems = ids.reduceRight((children, id) => [navItem(id, id, `/${id}`, children)], [navItem('leaf', 'Leaf', '/leaf')]);
+    const h = harness(false, navigationItems);
+    const dom = navigationTargets(navigationItems);
+    const panel = (id) => h.one((x) => x.type === 'ul' && x.props.id === `allianz-nav-${id}`);
+    const toggle = (id) => h.one((x) => x.type === 'button' && x.props['aria-controls'] === `allianz-nav-${id}`);
+    h.render();
+    h.one((x) => x.type === 'li' && x.key === ids[0]).props.onMouseEnter();
+    h.render();
+    for (const id of ids.slice(1)) {
+      toggle(id).props.onClick();
+      h.render();
+    }
+    let target = dom.targets.get('leaf').row;
+    for (let index = depth - 1; index >= 0; index--) {
+      h.one((x) => x.type === 'header').props.onKeyDown({ key: 'Escape', target });
+      h.render();
+      const focused = dom.focused();
+      assert.equal(focused.id, ids[index], 'Escape skips the collapsed opener and focuses the nearest open ancestor');
+      for (let level = 0; level < depth; level++) {
+        assert.equal(toggle(ids[level]).props['aria-expanded'], level < index, 'only the nearest open branch and its descendants close');
+        assert.equal(panel(ids[level]).props.inert, level < index ? undefined : true);
+      }
+      for (let ancestor = focused.row.parent; ancestor; ancestor = ancestor.parent) {
+        assert.equal(panel(ancestor.id).props.inert, undefined, 'the focused opener remains outside every collapsed panel');
+      }
+      target = focused.target;
+    }
+    h.one((x) => x.type === 'header').props.onKeyDown({ key: 'Escape', target });
+    h.render();
+    assert.equal(dom.focused().id, ids[0], 'Escape after the final close keeps focus on the top-level opener');
+    assert.equal(toggle(ids[0]).props['aria-expanded'], false);
+  });
+}
+
+test('desktop Escape from collapsed sibling openers and their leaf targets closes the nearest open ancestor', () => {
+  const navigationItems = [navItem('root', 'Root', '/root', [
+    navItem('parent', 'Parent', '/parent', [
+      navItem('active', 'Active', '/active', [navItem('active-leaf', 'Active leaf', '/active-leaf')]),
+      navItem('collapsed', 'Collapsed', '/collapsed', [navItem('collapsed-leaf', 'Collapsed leaf', '/collapsed-leaf')]),
+      navItem('visible-leaf', 'Visible leaf', '/visible-leaf'),
+    ]),
+  ])];
+  for (const targetId of ['collapsed', 'collapsed-leaf', 'visible-leaf']) {
+    const h = harness(false, navigationItems);
+    const dom = navigationTargets(navigationItems);
+    const toggle = (id) => h.one((x) => x.type === 'button' && x.props['aria-controls'] === `allianz-nav-${id}`);
+    h.render();
+    for (const id of ['root', 'parent', 'active']) {
+      toggle(id).props.onClick();
+      h.render();
+    }
+    const target = dom.targets.get(targetId);
+    h.one((x) => x.type === 'header').props.onKeyDown({ key: 'Escape', target: target.opener ?? target.row });
+    h.render();
+    assert.equal(dom.focused().id, 'parent', `Escape from ${targetId} restores its open parent rather than a collapsed sibling`);
+    assert.equal(toggle('root').props['aria-expanded'], true);
+    for (const id of ['parent', 'active', 'collapsed']) assert.equal(toggle(id).props['aria-expanded'], false);
+    assert.equal(h.one((x) => x.type === 'ul' && x.props.id === 'allianz-nav-root').props.inert, undefined, 'focused parent opener stays visible');
+  }
 });
 
 test('navigation glyphs and CTA arrow match saved source assets', () => {

@@ -64,9 +64,13 @@ export const Default = ({ fields }: AllianzHeaderProps) => {
         if (opener) {
           const id = opener.getAttribute('aria-controls')?.slice('allianz-nav-'.length);
           const index = desktopMenu.path.indexOf(id || '');
-          dispatchDesktopMenu(index < 0 ? { type: 'close' } : { type: 'leave', path: desktopMenu.path.slice(0, index + 1) });
-          opener.focus();
-          return;
+          // Repeated Escape starts on the opener just collapsed; keep walking
+          // until an open ancestor can close while leaving its opener visible.
+          if (index >= 0) {
+            dispatchDesktopMenu({ type: 'leave', path: desktopMenu.path.slice(0, index + 1) });
+            opener.focus();
+            return;
+          }
         }
         item = item.parentElement?.closest('li') ?? null;
       }
