@@ -5,7 +5,6 @@ export type InvestmentText = { jsonValue?: Field<string> };
 export type InvestmentStatus = 'Active' | 'Exited';
 export type InvestmentEntry = {
   id: string;
-  template?: { id: string };
   parent?: { id: string };
   name?: InvestmentText;
   investmentStatus?: InvestmentText;
@@ -37,7 +36,7 @@ export type InvestmentPortfolioSearch = {
 };
 export type InvestmentPortfolioScopeResponse = {
   root?: { id: string; path: string };
-  datasource?: { id: string; template?: { id: string }; parent?: { name: string; parent?: { id: string } } };
+  datasource?: { id: string; parent?: { name: string; parent?: { id: string } } };
 };
 export const INVESTMENT_PORTFOLIO_PAGE_SIZE = 10;
 
@@ -69,7 +68,7 @@ export function buildInvestmentPortfolioScopeQuery(scope: InvestmentPortfolioSco
   return `query InvestmentPortfolioScope {
     root: item(path: ${literal(rootId)}, language: ${literal(language)}) { id path }
     datasource: item(path: ${literal(datasourceId)}, language: ${literal(language)}) {
-      id template { id } parent { name parent { id } }
+      id parent { name parent { id } }
     }
   }`;
 }
@@ -81,7 +80,7 @@ export function validInvestmentPortfolioScope(scope: InvestmentPortfolioScope, b
   return typeof path === 'string' && (path.toLowerCase() === home || path.toLowerCase().startsWith(`${home}/`)) &&
     normalizeInvestmentId(response.root?.id) === checkedId(scope.rootId) &&
     normalizeInvestmentId(response.datasource?.id) === checkedId(scope.datasourceId) &&
-    normalizeInvestmentId(response.datasource?.template?.id) === normalizeInvestmentId(bindings.datasourceTemplateId) &&
+    // The configured native rendering defines its datasource template; verify its actual owner here.
     response.datasource?.parent?.name?.toLowerCase() === 'data' &&
     normalizeInvestmentId(response.datasource?.parent?.parent?.id) === checkedId(scope.rootId);
 }
@@ -98,7 +97,7 @@ export function buildInvestmentPortfolioSearchQuery(scope: InvestmentPortfolioSc
     ] }, first: ${INVESTMENT_PORTFOLIO_PAGE_SIZE}${after === undefined ? '' : `, after: ${literal(after)}`}) {
       total pageInfo { hasNext endCursor }
       results {
-        id template { id } parent { id }
+        id parent { id }
         name: field(name: "name") { jsonValue }
         investmentStatus: field(name: "investmentStatus") { jsonValue }
         details: field(name: "details") { jsonValue }
@@ -122,7 +121,7 @@ export async function collectInvestmentPortfolio(getData: InvestmentPortfolioGet
     total = connection.total;
     for (const item of connection.results) {
       const id = normalizeInvestmentId(item?.id);
-      if (!id || ids.has(id) || !normalizeInvestmentId(item?.template?.id) || normalizeInvestmentId(item?.parent?.id) !== checked.datasourceId) throw new Error('Invalid investment portfolio child');
+      if (!id || ids.has(id) || normalizeInvestmentId(item?.parent?.id) !== checked.datasourceId) throw new Error('Invalid investment portfolio child');
       ids.add(id); items.push(item);
     }
     if (items.length > total) throw new Error('Investment portfolio exceeds total');
@@ -145,7 +144,7 @@ export function selectInvestmentPortfolio(scope: InvestmentPortfolioScope, bindi
   const active: InvestmentEntry[] = [], exited: InvestmentEntry[] = [], ids = new Set<string>();
   for (const item of collection.items) {
     const id = normalizeInvestmentId(item?.id), name = item?.name?.jsonValue?.value, status = item?.investmentStatus?.jsonValue?.value;
-    if (!id || ids.has(id) || !normalizeInvestmentId(item?.template?.id) || normalizeInvestmentId(item?.parent?.id) !== checked.datasourceId ||
+    if (!id || ids.has(id) || normalizeInvestmentId(item?.parent?.id) !== checked.datasourceId ||
       typeof name !== 'string' || !name.trim() || (status !== 'Active' && status !== 'Exited')) throw new Error('Invalid investment portfolio content');
     ids.add(id); (status === 'Active' ? active : exited).push(item);
   }

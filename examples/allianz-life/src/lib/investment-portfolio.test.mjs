@@ -7,7 +7,9 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url), ts = require('typescript'), React = require('react');
-const { parse } = require('graphql'), postcss = require('postcss');
+const { parse, visit, getLocation } = require('graphql'), postcss = require('postcss');
+const { ClientError } = require('graphql-request');
+const { GraphQLRequestClient } = require('@sitecore-content-sdk/core');
 const { renderToStaticMarkup } = require('react-dom/server');
 const { SitecoreProvider, ComponentPropsService, ComponentPropsContext } = require('@sitecore-content-sdk/nextjs');
 const { SitecoreClient } = require('@sitecore-content-sdk/nextjs/client');
@@ -55,16 +57,25 @@ function queryArgs(query) {
   const value = (node) => node.kind === 'ObjectValue' ? Object.fromEntries(node.fields.map((field) => [field.name.value, value(field.value)])) : node.kind === 'ListValue' ? node.values.map(value) : node.kind === 'IntValue' ? Number(node.value) : node.value;
   return { name: operation.name.value, args: Object.fromEntries(selection.arguments.map((argument) => [argument.name.value, value(argument.value)])) };
 }
+function nativeInvestmentProjection(row) {
+  const { template: _template, ...projection } = row;
+  return projection;
+}
 function harness(records, change) {
   const calls = [];
   const client = Object.assign(Object.create(SitecoreClient.prototype), { componentPropsService: new ComponentPropsService(), graphQLClient: { async request(query, variables, fetchOptions) {
-    const { name, args } = queryArgs(query); calls.push({ query, name, args, variables, fetchOptions });
-    if (name === 'InvestmentPortfolioScope') return change ? change({ root: records.root, datasource: records.datasource }, name, args) : { root: records.root, datasource: records.datasource };
+    const { name, args } = queryArgs(query), call = { query, name, args, variables, fetchOptions }; calls.push(call);
+    if (name === 'InvestmentPortfolioScope') {
+      const response = { root: records.root, datasource: { id: records.datasource.id, parent: records.datasource.parent } };
+      call.response = change ? change(response, name, args) : response;
+      return call.response;
+    }
     const template = args.where.AND.find((entry) => entry.name === '_templates'), parent = args.where.AND.find((entry) => entry.name === '_parent');
     const rows = records.items.filter((item) => [item.template?.id, ...(item.template?.baseTemplateIds ?? [])].some((value) => data.normalizeInvestmentId(value) === template.value) && data.normalizeInvestmentId(item.parent?.id) === parent.value);
     const offset = Number(args.after ?? 0), hasNext = offset + args.first < rows.length;
-    const result = { search: { total: rows.length, results: rows.slice(offset, offset + args.first), pageInfo: { hasNext, endCursor: hasNext ? String(offset + args.first) : null } } };
-    return change ? change(result, name, args) : result;
+    const result = { search: { total: rows.length, results: rows.slice(offset, offset + args.first).map(nativeInvestmentProjection), pageInfo: { hasNext, endCursor: hasNext ? String(offset + args.first) : null } } };
+    call.response = change ? change(result, name, args) : result;
+    return call.response;
   } } });
   return { client, calls };
 }
@@ -78,7 +89,7 @@ async function read(records, mutate, options = {}, page = layout()) {
   const output = await client.getComponentData(page, {}, enrichInvestmentPortfolioComponentMap(componentMap(true), { getData: client.getData.bind(client), bindings, ...options }));
   return { result: output.portfolio.investmentPortfolio, output, calls };
 }
-const collection = (records) => ({ complete: true, scope, baseTemplateId: bindings.investmentTemplateId, items: records.items });
+const collection = (records) => ({ complete: true, scope, baseTemplateId: bindings.investmentTemplateId, items: records.items.map(nativeInvestmentProjection) });
 const select = (records) => data.selectInvestmentPortfolio(scope, bindings, collection(records));
 function render(result, datasource, editing = false, params = {}) {
   return renderToStaticMarkup(React.createElement(SitecoreProvider, {
@@ -116,7 +127,9 @@ test('real SDK hook consumes all three pages with original field identities and 
   assert.equal(result.complete, true); assert.equal(result.active.length, 19); assert.equal(result.exited.length, 9);
   assert.deepEqual(calls.filter((call) => call.name === 'InvestmentPortfolioItems').map((call) => call.args.after), [undefined, '10', '20']);
   assert.deepEqual(result.active.map((item) => item.name.jsonValue.value), source.items.slice(0, 19).map((item) => item.name));
-  assert.equal(result.active[0], records.items[0]); assert.equal(result.active[0].logo, records.items[0].logo); assert.equal(result.active[0].investmentStatus, records.items[0].investmentStatus);
+  assert.equal(result.active[0], calls.find((call) => call.name === 'InvestmentPortfolioItems').response.search.results[0]);
+  assert.equal(result.active[0].logo, records.items[0].logo); assert.equal(result.active[0].investmentStatus, records.items[0].investmentStatus);
+  assert.ok([...result.active, ...result.exited].every((item) => !Object.hasOwn(item, 'template')));
   assert.equal(JSON.stringify(records), original);
 });
 
@@ -140,11 +153,11 @@ test('unknown native bindings stay unconfigured without queries or invented IDs'
   }
 });
 
-test('collection is reusable on another actual page but rejects foreign sites, owners and name-only template impostors', async () => {
+test('collection is reusable on another actual page but rejects foreign sites and datasource owners', async () => {
   const reusable = dataset(); reusable.root.path = `${bindings.siteRootPath}/Home/another/portfolio-page`;
   assert.equal((await read(reusable)).result.active.length, 19);
   for (const mutate of [(x) => { x.root.path = '/sitecore/content/unrelated/Home'; }, (x) => { x.root.path = `${bindings.siteRootPath}/Homeward`; },
-    (x) => { x.datasource.parent.parent.id = id(999); }, (x) => { x.datasource.template = { name: 'InvestmentPortfolio', id: id(999) }; },
+    (x) => { x.datasource.parent.parent.id = id(999); }, (x) => { x.datasource.id = id(999); },
     (x) => { x.datasource.parent.name = 'Other'; }, (x) => { x.root.id = id(999); }]) {
     const records = dataset(); mutate(records); const { result, calls } = await read(records); assert.equal(result.error, 'invalid-scope'); assert.equal(calls.length, 1);
   }
@@ -153,16 +166,77 @@ test('collection is reusable on another actual page but rejects foreign sites, o
   }
 });
 
+test('configured native rendering supplies its datasource-template contract without a template identity read', async () => {
+  const records = dataset(); records.datasource.template = { id: id(510), baseTemplateIds: [bindings.datasourceTemplateId] };
+  assert.equal((await read(records)).result.complete, true);
+  delete records.datasource.template;
+  const { result, calls } = await read(records);
+  assert.equal(result.complete, true); assert.equal(result.active.length, 19); assert.equal(result.exited.length, 9);
+  assert.doesNotMatch(calls[0].query, /template\s*\{/);
+  assert.equal(data.validInvestmentPortfolioScope(scope, bindings, calls[0].response), true);
+});
+
 test('inherited Investment templates participate through native query provenance, with direct-parent boundary', async () => {
   const records = dataset(); records.items[0].template = { id: id(501), baseTemplateIds: [bindings.investmentTemplateId] };
   records.items[1].template = { id: id(502), baseTemplateIds: [bindings.investmentTemplateId, id(501)] };
   const unrelated = structuredClone(records.items[0]); unrelated.id = id(503); unrelated.template = { id: id(504), name: 'Investment', baseTemplateIds: [] }; records.items.push(unrelated);
   const nested = structuredClone(records.items[0]); nested.id = id(505); nested.parent.id = records.items[0].id; records.items.push(nested);
   const { result, calls } = await read(records); assert.equal(result.active.length + result.exited.length, 28);
-  assert.equal(result.active[0], records.items[0]);
+  assert.deepEqual(result.active[0], nativeInvestmentProjection(records.items[0]));
+  assert.ok([...result.active, ...result.exited].every((item) => !Object.hasOwn(item, 'template')));
   assert.ok(calls.filter((call) => call.args.where).every((call) => call.args.where.AND.some((entry) => entry.name === '_templates' && entry.operator === 'CONTAINS')));
   const invalid = await read(dataset(), (response, name) => { if (name === 'InvestmentPortfolioItems') response.search.results[0] = { ...response.search.results[0], parent: { id: id(999) } }; return response; });
   assert.equal(invalid.result.complete, false); assert.deepEqual(invalid.result.active, []);
+});
+
+test('installed SDK rejects template-resolver errors with partial data while inherited filtered portfolios complete', async () => {
+  const records = dataset();
+  records.items[0].template = { id: id(520), baseTemplateIds: [bindings.investmentTemplateId] };
+  records.items[1].template = { id: id(521), baseTemplateIds: [id(520), bindings.investmentTemplateId] };
+  const { client, calls } = harness(records), backend = client.graphQLClient;
+  client.graphQLClient = new GraphQLRequestClient('https://synthetic-edge.invalid/graphql', {
+    retries: 0, debugger: () => {},
+    fetch: async (_url, options) => {
+      const { query, variables } = JSON.parse(options.body), response = await backend.request(query, variables);
+      const templateNodes = []; visit(parse(query), { Field(node) { if (node.name.value === 'template') templateNodes.push(node); } });
+      const envelope = { data: response };
+      if (templateNodes.length) {
+        const locations = [getLocation(templateNodes[0].loc.source, templateNodes[0].loc.start)];
+        if (queryArgs(query).name === 'InvestmentPortfolioScope') {
+          envelope.data.datasource = { ...response.datasource, template: null };
+          envelope.errors = [{ message: 'Template identity resolver failed', path: ['datasource', 'template'], locations }];
+        } else {
+          envelope.data.search.results = response.search.results.map((row) => ({ ...row, template: null }));
+          envelope.errors = response.search.results.map((_row, index) => ({ message: 'Template identity resolver failed', path: ['search', 'results', index, 'template'], locations }));
+        }
+      }
+      return new Response(JSON.stringify(envelope), { status: 200, headers: { 'content-type': 'application/json' } });
+    },
+  });
+  const legacyScope = (query) => query.replace('id parent { name parent { id } }', 'id template { id } parent { name parent { id } }');
+  const legacyItems = (query) => query.replace('id parent { id }', 'id template { id } parent { id }');
+  for (const [legacyQuery, count] of [[legacyScope(data.buildInvestmentPortfolioScopeQuery(scope)), 1], [legacyItems(data.buildInvestmentPortfolioSearchQuery(scope, bindings)), 10]]) {
+    await assert.rejects(client.getData(legacyQuery), (error) => {
+      assert.ok(error instanceof ClientError); assert.equal(error.response.status, 200); assert.equal(error.response.errors.length, count);
+      if (count === 1) { assert.equal(error.response.data.datasource.id, records.datasource.id); assert.equal(error.response.data.datasource.template, null); }
+      else { assert.equal(error.response.data.search.results.length, 10); assert.ok(error.response.data.search.results.every((row) => row.template === null)); }
+      return true;
+    });
+  }
+  for (const [legacyProjection, failureStage] of [[legacyScope, 'scope-request'], [legacyItems, 'items-request']]) {
+    const failed = await client.getComponentData(layout(), {}, enrichInvestmentPortfolioComponentMap(componentMap(), {
+      bindings, getData: (query, variables, fetchOptions) => client.getData(legacyProjection(query), variables, fetchOptions),
+    }));
+    assert.equal(failed.portfolio.investmentPortfolio.failureStage, failureStage);
+    assert.deepEqual(failed.portfolio.investmentPortfolio.active, []); assert.deepEqual(failed.portfolio.investmentPortfolio.exited, []);
+    assert.doesNotMatch(JSON.stringify(failed), /resolver failed|Blaise|\"(?:request|response|query|headers|variables)\"\s*:/);
+  }
+  calls.length = 0;
+  const props = await client.getComponentData(layout(), {}, enrichInvestmentPortfolioComponentMap(componentMap(), { bindings, getData: client.getData.bind(client) }));
+  assert.deepEqual(props.portfolio.investmentPortfolio, select(records));
+  assert.equal(props.portfolio.investmentPortfolio.active.length, 19); assert.equal(props.portfolio.investmentPortfolio.exited.length, 9);
+  assert.equal(calls.length, 4); assert.ok(calls.every((call) => !/template\s*\{/.test(call.query)));
+  assert.deepEqual(calls.slice(1).map((call) => call.args.after), [undefined, '10', '20']);
 });
 
 test('selection requires complete matching scope/template/language provenance rather than manual child arrays', () => {
@@ -192,7 +266,7 @@ test('name and business-status changes reorder automatically; adding/removing na
 
 test('no application publication or hasLayout rules override what the native endpoint returns', async () => {
   const records = dataset(); records.items[0].published = false; records.items[0].workflowState = 'Draft'; records.items[0].hasLayout = false;
-  const { result, calls } = await read(records); assert.equal(result.active[0], records.items[0]);
+  const { result, calls } = await read(records); assert.deepEqual(result.active[0], nativeInvestmentProjection(records.items[0]));
   for (const call of calls.filter((call) => call.args.where)) {
     assert.deepEqual(call.args.where.AND.map((entry) => entry.name), ['_templates', '_parent', '_language', '_latestversion']);
     assert.doesNotMatch(call.query, /hasLayout|workflow|publish|orderBy/);
@@ -267,6 +341,7 @@ test('unavailable and empty collections preserve authored headings and never use
 test('queries parse, escape cursors, use compact editable field projections and never assume finite row counts', () => {
   parse(data.buildInvestmentPortfolioScopeQuery(scope));
   const query = data.buildInvestmentPortfolioSearchQuery(scope, bindings, 'cursor"\\escaped'); parse(query);
+  assert.doesNotMatch(data.buildInvestmentPortfolioScopeQuery(scope), /template\s*\{/); assert.doesNotMatch(query, /template\s*\{/);
   assert.equal(queryArgs(query).args.after, 'cursor"\\escaped'); assert.equal(queryArgs(query).args.first, 10);
   for (const name of ['name', 'investmentStatus', 'details', 'logo', 'websiteLink']) assert.ok(query.includes(`${name}: field(name: "${name}") { jsonValue }`));
   parse(fs.readFileSync(path.join(root, 'components/investment-portfolio/investment-portfolio.graphql'), 'utf8'));
