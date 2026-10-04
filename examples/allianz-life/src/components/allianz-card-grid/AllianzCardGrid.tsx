@@ -7,7 +7,7 @@ import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, should
 import { allianzCardFields } from 'lib/allianz-card-fields';
 import type { AllianzCardGridProps } from './allianz-card-grid.props';
 
-export const Default = ({ fields, params }: AllianzCardGridProps) => {
+function AllianzCardGrid({ fields, params, isRilaPromotion = false }: AllianzCardGridProps & { isRilaPromotion?: boolean }) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
@@ -33,7 +33,7 @@ export const Default = ({ fields, params }: AllianzCardGridProps) => {
               {shouldRenderTextField(card.alphanumeral?.jsonValue, isEditing) && <div className="tileSubGrid__image"><Text editable={isEditing} field={card.alphanumeral?.jsonValue} className="tileAlphanumeral" /></div>}
               {shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'bordered' && <div className="tileSubGrid__image"><div className="tileImage"><Image editable={isEditing} field={card.image?.jsonValue} /></div></div>}
               <div className="tileSubGrid__content"><header><div className="tileHeading"><Text editable={isEditing} tag={headingTag(card.headingLevel?.jsonValue?.value || params.headingLevel)} field={card.heading?.jsonValue} /></div><RichText editable={isEditing} field={card.subheading?.jsonValue} className="tileSubHeading" /></header>
-                <RichText editable={isEditing} field={card.body?.jsonValue} className={`tileBody ${params.headingLevel === 'h2' ? 'u-font-size-xl' : 'u-font-size-md'}`} />
+                <RichText editable={isEditing} field={card.body?.jsonValue} className={`tileBody ${isRilaPromotion ? 'u-font-size-lg' : params.headingLevel === 'h2' ? 'u-font-size-xl' : 'u-font-size-md'}`} />
                 {!!(card.links?.targetItems?.some((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing)) || shouldRenderLinkField(card.link?.jsonValue, isEditing)) && <footer><div className="tileLink">{(card.links?.targetItems?.length ? card.links.targetItems : [{id: `${card.id}-link`, link:card.link}]).filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing)).map((item) => <Link editable={isEditing} key={item.id} field={allianzLinkField(item.link?.jsonValue, isEditing)} className="a-link"><span className="a-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" preserveAspectRatio="xMidYMid meet"><path fillRule="evenodd" d="M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536"/></svg></span><span className="a-link__text">{item.link?.jsonValue?.value?.text}</span></Link>)}</div></footer>}
               </div>
             </div>
@@ -43,7 +43,15 @@ export const Default = ({ fields, params }: AllianzCardGridProps) => {
       </div>
     </div>
   </div>;
-};
+}
+
+export const Default = (props: AllianzCardGridProps) => <AllianzCardGrid {...props} />;
+
+/** Source RILA promotion uses the native card fields and a fixed 67:33 split. */
+export const RilaPromotion = (props: AllianzCardGridProps) => <AllianzCardGrid {...props}
+  isRilaPromotion params={{ ...props.params, layout: 'image-right', splitRatio: '67:33',
+    columns: '1', alignment: 'left', theme: 'transparent', spacing: 'none', headingLevel: 'h3',
+    paddingTop: 'none', paddingBottom: 'none', marginBottom: 'xl' }} />;
 
 /** Ordered linked product images; introductions remain separate native renderings. */
 export const ProductCards = ({ fields, params }: AllianzCardGridProps) => {

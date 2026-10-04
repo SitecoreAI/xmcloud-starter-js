@@ -45,6 +45,34 @@ export const Default = (props: ProductIntroductionProps) => <ProductIntroduction
 /** Blue introduction used by the source's "Explore our annuities" section. */
 export const Blue = (props: ProductIntroductionProps) => <ProductIntroduction {...props} blue />;
 
+/** Plain centered rich text uses the source's overview scaffold without a heading field. */
+export const Plain = ({ fields, params }: ProductIntroductionProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const datasource = fields?.data?.datasource;
+  if (!datasource) return <NoDataFallback componentName="Product Introduction" />;
+  const body = datasource.body?.jsonValue;
+
+  return (
+    <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params?.RenderingIdentifier}>
+      <div className="l-grid l-grid--max-width">
+        <div className="l-grid__row u-margin-bottom-xl">
+          <div className="l-grid__column-medium-12">
+            <article className="m-axlIntroductionBlock -is--stacked -no--image">
+              <div className="tileContent u-text-center">
+                <header aria-hidden="true"><div className="tileHeading" /><div className="tileSubHeading" /></header>
+                {shouldRenderTextField(body, isEditing)
+                  ? <RichText field={body} editable={isEditing} className="tileBody" />
+                  : <div className="tileBody" />}
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 /** Product-group introduction: source H3 and spacing, using the same native fields. */
 export const ProductGroup = ({ fields, params }: ProductIntroductionProps) => {
   const { page } = useSitecore();
