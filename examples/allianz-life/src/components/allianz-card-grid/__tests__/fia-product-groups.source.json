@@ -1,0 +1,9 @@
+{
+  "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities",
+  "capturedAtUtc": "2026-10-04T06:52:25Z",
+  "sourceBytes": 111701,
+  "sourceSha256": "42e02b9e4f10bc91d4a0617c465cf4cf113282d04821dfd71294a97879b4dff6",
+  "fragmentBytes": 15633,
+  "fragmentSha256": "6fbb1edf6e3aa04af0865f6083d1d4d78d2920e03f5b7039c52a96eed88f4d40",
+  "scope": "Read-only public source witness; reusable component implementation tests, not native or visual acceptance"
+}

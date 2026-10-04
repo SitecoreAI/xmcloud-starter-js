@@ -2,7 +2,7 @@
 
 import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
-import { headingTag, rowSpacing, sectionTheme } from 'lib/allianz-fields';
+import { headingTag, rowSpacing, safeLinkRenderProps, sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { allianzCardFields } from 'lib/allianz-card-fields';
 import type { AllianzCardGridProps } from './allianz-card-grid.props';
@@ -43,4 +43,46 @@ export const Default = ({ fields, params }: AllianzCardGridProps) => {
       </div>
     </div>
   </div>;
+};
+
+/** Ordered linked product images; introductions remain separate native renderings. */
+export const ProductCards = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  const spacing = rowSpacing({ marginBottom: params.marginBottom });
+
+  return (
+    <div className="l-container--full-width t-bg-blue-soft" id={params.RenderingIdentifier}>
+      <div className="l-grid l-grid--max-width">
+        <div className={`l-grid__row${spacing ? ` ${spacing}` : ''}`}>
+          <div className="l-grid__column-medium-12">
+            <div className="o-cards o-cards__col3">
+              {cards.map((card) => {
+                const field = allianzLinkField(card.link?.jsonValue, isEditing);
+                const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+                return (
+                  <Link key={card.id} {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="m-card">
+                    {shouldRenderImageField(card.image?.jsonValue, isEditing) && (
+                      <div className="m-card__image">
+                        <picture className="c-image">
+                          <Image editable={isEditing} field={card.image?.jsonValue} className="c-image__img c-teaser__image-img" />
+                        </picture>
+                      </div>
+                    )}
+                    <div className="m-card__header">
+                      {shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}
+                    </div>
+                    <div className="m-card__body" />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };

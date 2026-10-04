@@ -44,3 +44,37 @@ function ProductIntroduction({ fields, params, blue = false }: ProductIntroducti
 export const Default = (props: ProductIntroductionProps) => <ProductIntroduction {...props} />;
 /** Blue introduction used by the source's "Explore our annuities" section. */
 export const Blue = (props: ProductIntroductionProps) => <ProductIntroduction {...props} blue />;
+
+/** Product-group introduction: source H3 and spacing, using the same native fields. */
+export const ProductGroup = ({ fields, params }: ProductIntroductionProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const datasource = fields?.data?.datasource;
+  if (!datasource) return <NoDataFallback componentName="Product Introduction" />;
+  const heading = datasource.heading?.jsonValue;
+  const body = datasource.body?.jsonValue;
+
+  return (
+    <div className="l-container--full-width t-bg-blue-soft" id={params?.RenderingIdentifier}>
+      <div className="l-grid l-grid--max-width">
+        <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg">
+          <div className="l-grid__column-medium-12">
+            <article className="m-axlIntroductionBlock -is--stacked -no--image">
+              <div className="tileContent u-text-center">
+                <header>
+                  <div className="tileHeading">
+                    {shouldRenderTextField(heading, isEditing) && <Text field={heading} editable={isEditing} tag="h3" />}
+                  </div>
+                  <div className="tileSubHeading" />
+                </header>
+                {shouldRenderTextField(body, isEditing)
+                  ? <RichText field={body} editable={isEditing} className="tileBody" />
+                  : <div className="tileBody" />}
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
