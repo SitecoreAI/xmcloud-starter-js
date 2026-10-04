@@ -22,6 +22,7 @@ function loader(overrides = {}) {
     modules.set(filename, compiled);
     const nativeRequire = compiled.require.bind(compiled);
     compiled.require = (specifier) => {
+      if (specifier.endsWith('.css')) return {};
       if (Object.hasOwn(overrides, specifier)) return overrides[specifier];
       if (specifier === 'next/navigation') return { usePathname: () => '/about' };
       let local;
@@ -138,12 +139,14 @@ test('editing exposes state-dependent content without calculator/form/video inte
   assert.match(render(components('legacy-accordion'), accordion, 'normal'), /aria-expanded="false"/);
 });
 
-test('normal and preview keep conditional result, rate, and safe media behavior', () => {
+test('normal and preview keep conditional result, rate, and static video behavior', () => {
   for (const mode of ['normal', 'preview']) {
     const video = render(components('video'), { heading: { jsonValue: { value: 'Sample' } }, localVideo: { jsonValue: { value: { src: 'https://external.invalid/movie.mp4' } } }, poster: { jsonValue: { value: { src: '/allianz-assets/poster.png' } } } }, mode);
-    assert.doesNotMatch(video, /<video\b|external.invalid/);
-    assert.match(video, /allianz-local-video-play/);
-    assert.match(render(components('video'), { localVideo: { jsonValue: { value: { src: '/allianz-assets/sample.mp4' } } } }, mode), /<video[^>]*controls=""[^>]*src="\/allianz-assets\/sample.mp4"/);
+    assert.doesNotMatch(video, /<video\b|<iframe\b|<button\b|external.invalid|poster.png/);
+    assert.match(video, /alt="Video player would go here"/);
+    const localVideo = render(components('video'), { localVideo: { jsonValue: { value: { src: '/allianz-assets/sample.mp4' } } } }, mode);
+    assert.match(localVideo, /alt="Video player would go here"/);
+    assert.doesNotMatch(localVideo, /<video\b|sample.mp4/);
     const rates = render(components('rate-table'), { tableBody: { jsonValue: { value: '<p>Table content</p>' } }, emptyState: { jsonValue: { value: '<p>Empty content</p>' } } }, mode);
     assert.match(rates, /Table content/);
     assert.doesNotMatch(rates, /Empty content/);

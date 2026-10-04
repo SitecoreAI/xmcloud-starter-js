@@ -1,0 +1,21 @@
+section.allianz-local-video article.video-block {
+  width: 100%;
+  max-width: 640px;
+  margin: 64px auto;
+}
+
+.allianz-local-video .bc-video-player .bc-video-player-inner {
+  aspect-ratio: 16 / 9;
+  padding: 0;
+}
+
+.allianz-local-video .allianz-video-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.allianz-local-video .allianz-local-video-source-fields {
+  max-width: 640px;
+  margin: 0 auto;
+}
