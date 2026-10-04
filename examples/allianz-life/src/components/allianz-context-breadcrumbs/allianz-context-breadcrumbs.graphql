@@ -1,10 +1,14 @@
-# ID-specific native pilot: the string argument is schema-valid, while native
-# GUID lookup must be proved by the resolved field's metadata/value. The name
-# NavigationTitle is ambiguous with the project navigationTitle field.
+# Native GUID-selected fields: canonical SXA NavigationTitle is the navigation
+# caption; native Title is its fallback. Their identities, versioned Single-Line
+# Text types, and GUID lookup were verified through native field metadata/value.
+# The separate project navigationTitle field must never be substituted.
 fragment AllianzContextBreadcrumbFields on Item {
   id
   path
   navigationTitle: field(name: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8") { jsonValue }
+  title: field(name: "6c7fab7b-a9c2-4b26-838a-830bdc49fe00") { jsonValue }
+  displayName
+  name
   url { path }
 }
 

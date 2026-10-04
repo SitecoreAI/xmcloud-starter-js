@@ -5,6 +5,9 @@ export interface ContextBreadcrumbItem {
   id?: string;
   path?: string;
   navigationTitle?: { jsonValue?: Field<string> };
+  title?: { jsonValue?: Field<string> };
+  displayName?: string | null;
+  name?: string | null;
   url?: { path?: string };
 }
 
@@ -17,8 +20,8 @@ export type AllianzContextBreadcrumbsProps = Omit<ComponentProps, 'params'> & {
   fields?: { data?: { contextItem?: ContextBreadcrumbPage | null } };
 };
 
-// Verified content boundary for this site's native ancestor query. Titles and
-// links always come from native fields, never from these path segments.
+// Verified content boundary for this site's native ancestor query. Labels and
+// links come from native item data, never from these path segments.
 const allianzHomePath = '/sitecore/content/allianz/allianz-life/Home';
 const normalizedPath = (value: string) => value.replace(/\/+$/, '').toLowerCase();
 
@@ -27,8 +30,19 @@ export interface ContextBreadcrumbTrail {
   issue?: 'missing-context' | 'outside-site' | 'incomplete-chain' | 'missing-title' | 'invalid-url';
 }
 
+/** Resolve native labels without rewriting the owning field or its metadata. */
+export function contextBreadcrumbLabel(item: ContextBreadcrumbItem): Field<string> | undefined {
+  for (const field of [item.navigationTitle?.jsonValue, item.title?.jsonValue]) {
+    if (field && typeof field.value === 'string' && field.value.trim()) return field;
+  }
+  for (const value of [item.displayName, item.name]) {
+    if (typeof value === 'string' && value.trim()) return { value };
+  }
+  return undefined;
+}
+
 /** Verify the complete structural ancestor trail without manufacturing copy. */
-export function contextBreadcrumbTrail(contextItem?: ContextBreadcrumbPage | null, isEditing = false): ContextBreadcrumbTrail {
+export function contextBreadcrumbTrail(contextItem?: ContextBreadcrumbPage | null): ContextBreadcrumbTrail {
   const failed = (issue: ContextBreadcrumbTrail['issue']): ContextBreadcrumbTrail => ({ items: [], issue });
   if (!contextItem?.id || !contextItem.path || !Array.isArray(contextItem.ancestors)) return failed('missing-context');
   const home = normalizedPath(allianzHomePath);
@@ -51,8 +65,7 @@ export function contextBreadcrumbTrail(contextItem?: ContextBreadcrumbPage | nul
     ancestors.some((item, index) => !item.id || !item.path || normalizedPath(item.path) !== expectedPaths[index]) ||
     new Set(items.map((item) => item.id)).size !== items.length) return failed('incomplete-chain');
   for (const item of items) {
-    const field = item.navigationTitle?.jsonValue;
-    if (!field || typeof field.value !== 'string' || (!isEditing && !field.value.trim())) return failed('missing-title');
+    if (!contextBreadcrumbLabel(item)) return failed('missing-title');
   }
   for (const item of ancestors) {
     const url = item.url?.path;
