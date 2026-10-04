@@ -71,12 +71,31 @@ test('desktop hover preview, explicit activation and repeated activation have co
   assert.deepEqual(reduce(state, { type: 'close' }), rules.initialDesktopMenuState);
 });
 
+test('desktop reducer ignores hover below the first level without disturbing clicked branches', () => {
+  const reduce = rules.desktopMenuReducer;
+  let state = reduce(rules.initialDesktopMenuState, { type: 'hover', path: ['offer'] });
+  for (const path of [['offer', 'annuities'], ['offer', 'annuities', 'fixed']]) {
+    assert.equal(reduce(rules.initialDesktopMenuState, { type: 'hover', path }), rules.initialDesktopMenuState);
+    assert.equal(reduce(state, { type: 'hover', path }), state);
+    state = reduce(state, { type: 'toggle', path });
+    assert.deepEqual(state.path, path, 'each deeper branch opens on its first explicit activation');
+    assert.deepEqual(state.hoverOpened, ['offer'], 'nested branches are never recorded as hover previews');
+    assert.equal(reduce(state, { type: 'hover', path: ['offer', 'life'] }), state, 'hovering a sibling leaves the active branch alone');
+  }
+  state = reduce(state, { type: 'toggle', path: ['offer', 'annuities', 'fixed'] });
+  assert.deepEqual(state.path, ['offer', 'annuities'], 'a second activation closes the deepest branch immediately');
+  state = reduce(state, { type: 'toggle', path: ['offer', 'annuities'] });
+  assert.deepEqual(state.path, ['offer'], 'a second activation closes the nested branch immediately');
+  state = reduce(state, { type: 'leave', path: ['offer'] });
+  assert.deepEqual(state, rules.initialDesktopMenuState);
+});
+
 function flatten(element) {
   if (Array.isArray(element)) return element.flatMap(flatten);
   if (!element || typeof element !== 'object' || !element.props) return [];
   return [element, ...flatten(element.props.children)];
 }
-function harness(mobile) {
+function harness(mobile, navigationItems = items) {
   const hooks = [];
   let cursor = 0;
   const fakeReact = {
@@ -108,7 +127,7 @@ function harness(mobile) {
     './allianz-header.props': rules,
   });
   let root;
-  const props = { fields: { data: { datasource: { primaryNav: { targetItems: items } } } } };
+  const props = { fields: { data: { datasource: { primaryNav: { targetItems: navigationItems } } } } };
   return {
     render(override = props) { cursor = 0; root = Default(override); return root; },
     nodes() { return flatten(root); },
@@ -200,6 +219,105 @@ test('desktop hover then pointer activation keeps the submenu usable and a secon
   h.render();
   assert.equal(h.one((x) => x.type === 'ul' && x.props.id === 'allianz-nav-offer').props.inert, true);
   assert.equal(h.one((x) => x.props['aria-label'] === 'What We Offer submenu').props['aria-expanded'], false);
+});
+
+test('desktop hover opens only the top level and every deeper disclosure requires a click', () => {
+  const h = harness(false, [navItem('offer', 'What We Offer', '/what-we-offer', [
+    navItem('annuities', 'Annuities', '/what-we-offer/annuities', [
+      navItem('fixed', 'Fixed annuities', '/what-we-offer/annuities/fixed-index-annuities', [
+        navItem('fixed-product', 'Fixed product', '/what-we-offer/annuities/fixed-index-annuities/product'),
+      ]),
+    ]),
+    navItem('life', 'Life insurance', '/what-we-offer/life-insurance', [navItem('life-product', 'Life product', '/what-we-offer/life-insurance/product')]),
+  ])]);
+  const row = (id) => h.one((x) => x.type === 'li' && x.key === id);
+  const panel = (id) => h.one((x) => x.type === 'ul' && x.props.id === `allianz-nav-${id}`);
+  const toggle = (id) => h.one((x) => x.type === 'button' && x.props['aria-controls'] === `allianz-nav-${id}`);
+  h.render();
+  row('offer').props.onMouseEnter();
+  h.render();
+  assert.equal(panel('offer').props.inert, undefined);
+  assert.equal(toggle('offer').props['aria-expanded'], true);
+  for (const id of ['annuities', 'fixed']) {
+    assert.equal(row(id).props.onMouseEnter, undefined, 'nested groups do not receive hover-open handlers');
+    assert.equal(row(id).props.onMouseLeave, undefined, 'moving between rows cannot close a clicked nested group');
+    row(id).props.onMouseEnter?.();
+    h.render();
+    assert.equal(panel(id).props.inert, true);
+    assert.equal(panel(id).props['aria-hidden'], true);
+    assert.equal(toggle(id).props['aria-expanded'], false);
+    toggle(id).props.onClick();
+    h.render();
+    assert.equal(panel(id).props.inert, undefined);
+    assert.equal(panel(id).props['aria-hidden'], undefined);
+    assert.equal(toggle(id).props['aria-expanded'], true);
+  }
+  row('life').props.onMouseEnter?.();
+  row('annuities').props.onMouseLeave?.();
+  h.render();
+  assert.equal(panel('life').props.inert, true, 'hover does not open a sibling');
+  assert.equal(panel('fixed').props.inert, undefined, 'hover does not collapse the selected descendants');
+  toggle('life').props.onClick();
+  h.render();
+  assert.equal(panel('life').props.inert, undefined, 'click changes the active nested branch');
+  assert.equal(panel('annuities').props.inert, true);
+  assert.equal(panel('fixed').props.inert, true, 'switching nested branches resets descendants');
+  toggle('life').props.onClick();
+  h.render();
+  assert.equal(panel('life').props.inert, true, 'second nested click closes immediately');
+});
+
+test('desktop disclosures retain native keyboard and touch activation and real link destinations', () => {
+  for (const activation of [{ detail: 0 }, { detail: 1, pointerType: 'touch' }]) {
+    const h = harness(false);
+    h.render();
+    for (const title of ['What We Offer', 'Annuities']) {
+      const toggle = h.one((x) => x.props['aria-label'] === `${title} submenu`);
+      assert.equal(toggle.type, 'button');
+      assert.equal(toggle.props.type, 'button');
+      assert.equal(toggle.props.onKeyDown, undefined, 'native Enter/Space activation is not replaced or prevented');
+      toggle.props.onClick(activation);
+      h.render();
+      assert.equal(h.one((x) => x.props['aria-label'] === `${title} submenu`).props['aria-expanded'], true);
+    }
+    for (const href of ['/what-we-offer', '/what-we-offer/annuities', '/what-we-offer/annuities/fixed-index-annuities']) {
+      const link = h.one((x) => x.type === 'a' && x.props.field?.value.href === href);
+      assert.equal(link.props.onClick, undefined, 'desktop destinations remain separate from submenu activation');
+    }
+    const header = h.one((x) => x.type === 'header');
+    for (const key of ['Enter', ' ']) header.props.onKeyDown({ key, preventDefault() { assert.fail('keyboard activation must not be prevented'); } });
+    h.render();
+    assert.equal(h.one((x) => x.props['aria-label'] === 'Annuities submenu').props['aria-expanded'], true);
+  }
+});
+
+test('top-level pointer exit respects focus and resets descendants before reopening', () => {
+  const h = harness(false);
+  h.render();
+  h.one((x) => x.type === 'li' && x.key === 'offer').props.onMouseEnter();
+  h.render();
+  h.one((x) => x.props['aria-label'] === 'Annuities submenu').props.onClick();
+  h.render();
+  const previousDocument = globalThis.document;
+  const focused = {};
+  globalThis.document = { activeElement: focused };
+  try {
+    const top = h.one((x) => x.type === 'li' && x.key === 'offer');
+    top.props.onMouseLeave({ currentTarget: { contains: (element) => element === focused } });
+    h.render();
+    assert.equal(h.one((x) => x.props['aria-label'] === 'Annuities submenu').props['aria-expanded'], true, 'keyboard focus keeps the branch visible');
+    top.props.onMouseLeave({ currentTarget: { contains: () => false } });
+    h.render();
+    assert.equal(h.one((x) => x.props['aria-label'] === 'What We Offer submenu').props['aria-expanded'], false);
+    assert.equal(h.one((x) => x.props['aria-label'] === 'Annuities submenu').props['aria-expanded'], false);
+    h.one((x) => x.type === 'li' && x.key === 'offer').props.onMouseEnter();
+    h.render();
+    assert.equal(h.one((x) => x.props['aria-label'] === 'What We Offer submenu').props['aria-expanded'], true);
+    assert.equal(h.one((x) => x.props['aria-label'] === 'Annuities submenu').props['aria-expanded'], false, 'reopening starts with nested groups collapsed');
+  } finally {
+    if (previousDocument === undefined) delete globalThis.document;
+    else globalThis.document = previousDocument;
+  }
 });
 
 test('desktop Escape from a leaf restores its nearest disclosure button and outside blur closes all branches', () => {

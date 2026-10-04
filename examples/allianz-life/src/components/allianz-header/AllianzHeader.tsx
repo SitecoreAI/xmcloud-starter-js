@@ -43,7 +43,8 @@ export const Default = ({ fields }: AllianzHeaderProps) => {
       const children = item.children?.results ?? [];
       const path = [...parentPath, item.id];
       const isExpanded = path.every((id, index) => desktopMenu.path[index] === id);
-      return <li key={item.id} className={isExpanded ? 'nav-list-open' : ''} onMouseEnter={() => children.length && dispatchDesktopMenu({ type: 'hover', path })} onMouseLeave={(event) => { if (children.length && !event.currentTarget.contains(document.activeElement)) dispatchDesktopMenu({ type: 'leave', path }); }}>
+      const hoverEnabled = level === 1 && children.length > 0;
+      return <li key={item.id} className={isExpanded ? 'nav-list-open' : ''} onMouseEnter={hoverEnabled ? () => dispatchDesktopMenu({ type: 'hover', path }) : undefined} onMouseLeave={hoverEnabled ? (event) => { if (!event.currentTarget.contains(document.activeElement)) dispatchDesktopMenu({ type: 'leave', path }); } : undefined}>
         {isDropdownHeading(item) ? <Text field={item.title?.jsonValue} tag="span" className="allianz-nav-group-heading" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', fontSize: 16, padding: level === 1 ? '25px 28px 25px 0' : '15px', color: isExpanded ? '#006192' : '#3c3c3c', textShadow: isExpanded ? '0 0 1px #006192' : undefined, borderBottom: level === 1 ? `3px solid ${isExpanded ? '#006192' : 'transparent'}` : undefined }} /> : <Link field={safeLink(item.link?.jsonValue)} aria-expanded={children.length ? isExpanded : undefined}>
           <Text field={item.title?.jsonValue} tag="span" />
         </Link>}

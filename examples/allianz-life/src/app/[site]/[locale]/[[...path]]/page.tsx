@@ -44,6 +44,12 @@ export default async function Page({ params }: PageProps) {
     ? await client.getComponentData(page.layout, {}, enrichAllianzComponentMap(components, {
       getData: client.getData.bind(client),
       fetchOptions: componentFetchOptions,
+      investmentPortfolioBindings: {
+        datasourceTemplateId: 'e0d28f7b-050f-4656-b866-98edfcdf1ec5',
+        investmentTemplateId: 'a81701f3-f3e3-4dce-b434-662ed99210f5',
+        siteName: 'allianz-life',
+        siteRootPath: '/sitecore/content/allianz/allianz-life',
+      },
     }))
     : {};
 

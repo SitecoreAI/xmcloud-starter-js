@@ -10,14 +10,14 @@ export interface DesktopMenuState { path: string[]; hoverOpened: string[] }
 export type DesktopMenuAction = { type: 'close' } | { type: 'hover' | 'toggle' | 'leave'; path: string[] };
 export const initialDesktopMenuState: DesktopMenuState = { path: [], hoverOpened: [] };
 
-/** Hover previews a branch; its first explicit activation keeps it open. */
+/** Only top-level branches preview on hover; nested branches require activation. */
 export function desktopMenuReducer(state: DesktopMenuState, action: DesktopMenuAction): DesktopMenuState {
   if (action.type === 'close') return initialDesktopMenuState;
   const id = action.path.at(-1);
   if (!id) return state;
   const isOpen = action.path.every((value, index) => state.path[index] === value);
   if (action.type === 'hover') {
-    if (isOpen) return state;
+    if (action.path.length !== 1 || isOpen) return state;
     return { path: action.path, hoverOpened: [...state.hoverOpened.filter((value) => action.path.includes(value)), id] };
   }
   if (action.type === 'toggle' && isOpen && state.hoverOpened.includes(id)) {
