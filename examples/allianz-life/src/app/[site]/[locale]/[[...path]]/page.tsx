@@ -14,6 +14,9 @@ import { loadAllianzPage } from 'lib/allianz-page-loader';
 import { allianzMetadata } from 'lib/allianz-metadata';
 import { enrichAllianzComponentMap } from 'lib/allianz-automatic-components';
 
+// Refresh prerendered CMS pages after 60 seconds using stale-while-revalidate.
+export const revalidate = 60;
+
 type PageProps = {
   params: Promise<{
     site: string;

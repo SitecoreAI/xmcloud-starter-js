@@ -16,6 +16,12 @@ npm run next:start -- --port 3100
 
 A connected build generates the native site list and component maps. It requires a configured Sitecore server context or the SDK's supported local API credentials and access to that endpoint. Missing CMS configuration or failed CMS reads surface errors; they never substitute copied sample pages. Use the existing Preview context for authored content or Live context for published content. Vercel's Preview deployment label does not choose the Sitecore context. Keep server credentials out of public variables, logs and source control.
 
+## Published content refresh
+
+The CMS page route uses standard Next.js time-based ISR with `export const revalidate = 60`. Once updated content is available from the configured Sitecore Delivery endpoint, the first request after 60 seconds can serve the existing page while Next.js regenerates it in the background. Subsequent requests use the refreshed page after successful regeneration. Publishing does not require a new code deployment, and idle pages refresh when requested.
+
+Pages editing and draft preview keep their direct SDK authoring reads. The ISR interval adds no environment variable, credential, webhook, or content-mode switch. See the [Next.js ISR guide](https://nextjs.org/docs/app/guides/incremental-static-regeneration) for the request and regeneration behavior.
+
 ## Explicit local development/test samples
 
 Sample content is available only when explicitly selected in development or test:
