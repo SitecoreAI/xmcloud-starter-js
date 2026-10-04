@@ -1,0 +1,3240 @@
+{
+  "schemaVersion": 1,
+  "status": "verified-field-only-source-projection; not a complete native item or deployment manifest",
+  "observedAtUtc": "2026-10-04T06:51:39.577612+00:00",
+  "sourceEvidence": {
+    "filename": "Palette-Source-Serialization-Handoff-2026-10-04.zip",
+    "sha256": "027b98f2ef674c6b1e374b8ed5b8b9a5ffef9e016b9d2d1e2c9dec0020bc597a"
+  },
+  "sourceBaseCommit": "241b6912e9f25577f6ba89123ce79aa5adb2b7fc",
+  "target": {
+    "projectId": "7f3XlRhEqdT8l8FrbjQync",
+    "environmentId": "56W3hhEUAQ5GLwsHAehRhe",
+    "sitePath": "/sitecore/content/allianz/allianz-life"
+  },
+  "nativeWrites": 0,
+  "deployable": false,
+  "scope": "Only the 9 independently verified native palette fields. The surrounding item metadata establishes identity, not ownership of other fields.",
+  "unversionedLanguage": "en",
+  "inventorySummary": {
+    "projectDefinitionsObserved": 74,
+    "completeSitePaletteEntries": 122,
+    "mainOriginalRawReferenceCount": 40,
+    "mainFinalRawReferenceCount": 67,
+    "mainResolvedComponentCount": 59
+  },
+  "items": [
+    {
+      "ID": "c3a08376-6399-48b8-903a-d0376671c8f3",
+      "Parent": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "Template": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "Path": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/People",
+      "SharedFields": [
+        {
+          "ID": "715ae6c0-71c8-4744-ab4f-65362d20ad65",
+          "Hint": "Renderings",
+          "Value": "{F624DC11-E42A-499D-9D75-73DA3964C7A0}|{7AD0ADC0-4C15-40C4-BED2-7FD34EE3A3D9}|{CEFF6BF2-3B03-47E3-8CCE-D7D18C63F9EB}|{BB8297A6-4186-404E-8C41-FAC54EE0AE91}|{8875FE31-89B2-4CCB-89DF-4C38B2C2216B}"
+        }
+      ],
+      "UnversionedFields": [],
+      "VersionedFields": []
+    },
+    {
+      "ID": "18cc9b1d-79cd-4e15-aeb2-df21c6081511",
+      "Parent": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "Template": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "Path": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Navigation",
+      "SharedFields": [
+        {
+          "ID": "715ae6c0-71c8-4744-ab4f-65362d20ad65",
+          "Hint": "Renderings",
+          "Value": "{1DEB067F-0BB1-405E-94F5-2ABB537A6160}|{4956263D-1195-4D6E-931B-800EA625FF6F}|{1983F760-2407-5EE3-987D-5957EB461129}|{3CD4EFCB-B7E0-528B-A525-668D74525435}|{0BD23A13-5792-50BD-A8EB-D4297D02C06D}|{83A83FC1-7A77-5982-AB72-C57CDDB4583D}|{10B26485-8A6E-5FEE-BADF-1FB30590BE5E}|{5726F1D0-FC15-5ED4-90E3-A9603D0E9825}|{DFA33436-F08F-517D-A787-73861E39BC62}|{97E50373-18E6-42D4-ACEC-47D5F8270380}|{05F3E330-DF46-4B28-B801-5FE1118B239A}"
+        }
+      ],
+      "UnversionedFields": [],
+      "VersionedFields": []
+    },
+    {
+      "ID": "fc6e7695-eeef-4eca-a134-39afec227bdb",
+      "Parent": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "Template": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "Path": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Page Content",
+      "SharedFields": [
+        {
+          "ID": "715ae6c0-71c8-4744-ab4f-65362d20ad65",
+          "Hint": "Renderings",
+          "Value": "{C5F905F8-FD1F-444E-A9E5-AC6B774FF0DE}|{2492BAC4-DA07-4C86-87F0-9873D40E2276}|{3836D951-BB14-43AC-9231-649B7F245DC5}|{1D75F6BA-CC96-5FD7-9DB6-7AAB3A8C6A6E}|{7956AAF8-596E-5405-85D5-721989505A95}|{7E693F81-A98E-5E6F-AD07-E01377139DD5}|{EA0674F1-31A1-540C-8622-91399E29FFE0}|{F2FD6ED6-A96F-59A5-B7DE-67D523FAD31D}|{92359BCE-01F9-57F2-88C8-60B97D5D6178}|{334FB514-8F91-5290-AE82-5D74937F150E}|{DABB2247-CAB9-5C16-9019-F968317E82D8}|{9282BC1E-734C-477A-96D1-8642E47C1E0C}|{F7D7743C-3659-4AE3-9197-EBAAE7BD96B6}|{905D80AB-23DF-4B12-9907-5F3FDB4593EC}|{7FCE0FDF-DFDD-4C28-AB59-E1E9595041EC}|{F7E18515-349E-44A1-AD83-320CAD3AF403}|{8915DDF6-5B02-4660-AE84-9F84F49EAD2F}|{47381B77-30CC-485F-B605-251D0F31962B}|{0DB31973-59F9-4DD7-8789-2776CCD1CC17}"
+        }
+      ],
+      "UnversionedFields": [],
+      "VersionedFields": []
+    },
+    {
+      "ID": "4a618102-1c13-472e-b8ba-bca9ed27ece8",
+      "Parent": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "Template": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "Path": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Products",
+      "SharedFields": [
+        {
+          "ID": "715ae6c0-71c8-4744-ab4f-65362d20ad65",
+          "Hint": "Renderings",
+          "Value": "{45E446AF-6284-5804-AD6D-25486AA75C5E}|{B6A45C26-8516-5B1A-AA07-83798FB57788}|{342E603B-1DB1-5AF4-A7E9-A62BE4EA6678}|{07AC9743-527B-465C-8B2D-4FB5DBF9447B}|{CD286342-A2ED-4902-A6CE-8A0ED8E28964}|{87125B2E-199B-4586-A67C-F9214687C790}|{AA0C4592-DED2-45B9-B685-A10271B11E5F}|{0B3919B4-03F5-490D-8C08-963C30C9D71A}|{93A83B32-7357-4401-9150-5EEA6B363AC7}|{F3803AA2-C802-4D31-8F3B-296DA4FBBF94}|{EE1D014E-25A6-4604-A563-59FBC91DDC23}|{035E59CF-788C-46F8-AE74-44994E186CF3}|{565114F3-EC0B-4A82-B4FE-6F3FECCED548}|{CF872568-F517-4BE7-9C16-21608DD6E857}|{65F28F43-F1B3-400F-B7E7-6AE43E96D7F5}|{9DAE650A-4DF8-4F5B-8063-D0B83CD1F476}|{8A91278F-6451-4815-8D45-479169C8D19A}|{1E99983E-D87F-48D2-AC85-759620CDFA1F}|{AFEC1EEE-5751-43AF-803C-5834D61F4CAA}|{5873A995-3365-47B7-BBCA-E09D3E4E69A3}"
+        }
+      ],
+      "UnversionedFields": [],
+      "VersionedFields": []
+    },
+    {
+      "ID": "91cacad8-db57-4097-ace3-38282cb32061",
+      "Parent": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "Template": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "Path": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Newsroom",
+      "SharedFields": [
+        {
+          "ID": "715ae6c0-71c8-4744-ab4f-65362d20ad65",
+          "Hint": "Renderings",
+          "Value": "{2E7D5478-7676-440F-B873-ECC3D68BD284}|{087E35E8-E159-429F-AD36-FD228A837F06}|{A8185C11-0A81-4DCA-A9D3-BEBE6CA42EA0}|{FE71DD88-CB8D-4463-A2B8-48CEE6640D6A}|{363D9CAF-7596-4A7E-9AC2-82978605992D}|{61388B92-B6DD-43B0-8DE3-89C8DF20AE2D}|{6420C215-2FBB-4FCC-B83A-FCFA034EB4F2}|{DD790804-5705-4DAE-ADA6-28B1CDF70B08}|{8FB877C2-6433-4F6A-A538-1E184ABBBC25}"
+        }
+      ],
+      "UnversionedFields": [],
+      "VersionedFields": []
+    },
+    {
+      "ID": "fb6f6341-b94d-4305-8ffe-e22eb32ba3a6",
+      "Parent": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "Template": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "Path": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Ventures",
+      "SharedFields": [
+        {
+          "ID": "715ae6c0-71c8-4744-ab4f-65362d20ad65",
+          "Hint": "Renderings",
+          "Value": "{4775D6F8-5F4A-4D6B-9324-9C5180C07D14}|{77CFC69B-64E5-4CEF-A57A-B5D30F57C370}|{33628395-A1E3-4AB1-8A88-72D978907453}|{33C26353-A1A2-43FF-90E1-6E139CC1860B}|{951D7791-3C30-468A-9E66-16477C166BCF}"
+        }
+      ],
+      "UnversionedFields": [],
+      "VersionedFields": []
+    },
+    {
+      "ID": "55a88e67-a227-46be-9e1d-2a680e1a6943",
+      "Parent": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "Template": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "Path": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Forms",
+      "SharedFields": [
+        {
+          "ID": "715ae6c0-71c8-4744-ab4f-65362d20ad65",
+          "Hint": "Renderings",
+          "Value": "{62DD1639-9F28-4040-8738-C886480B2127}|{03243A2C-97E5-54B8-B60C-2F94B98675A1}"
+        }
+      ],
+      "UnversionedFields": [],
+      "VersionedFields": []
+    },
+    {
+      "ID": "cadb4233-34e7-5b85-b36f-0b8475f4cbd0",
+      "Parent": "6f99399d-e003-5a7d-a379-dc154ffea09c",
+      "Template": "5c547d4e-7111-4995-95b0-6b561751bf2e",
+      "Path": "/sitecore/layout/Placeholder Settings/Project/Allianz Life/headless-main",
+      "SharedFields": [
+        {
+          "ID": "e391b526-d0c5-439d-803e-17512eae6222",
+          "Hint": "Allowed Controls",
+          "Value": "{1D75F6BA-CC96-5FD7-9DB6-7AAB3A8C6A6E}|{F7D7743C-3659-4AE3-9197-EBAAE7BD96B6}|{EA0674F1-31A1-540C-8622-91399E29FFE0}|{7E693F81-A98E-5E6F-AD07-E01377139DD5}|{174739E5-3388-56D9-AAE2-DFF5AE409184}|{342E603B-1DB1-5AF4-A7E9-A62BE4EA6678}|{0BD23A13-5792-50BD-A8EB-D4297D02C06D}|{03243A2C-97E5-54B8-B60C-2F94B98675A1}|{8297F8F3-5ABA-5BC1-BDAD-B0EF2E6FBD8D}|{C4FBFD1B-2FC0-5AF5-85C1-BABC12FF56DA}|{C10B523B-B066-557D-9A41-5A9F9569137A}|{F2FD6ED6-A96F-59A5-B7DE-67D523FAD31D}|{AFE940AC-70ED-526E-BFE0-A4C317A94C1D}|{B6A45C26-8516-5B1A-AA07-83798FB57788}|{45E446AF-6284-5804-AD6D-25486AA75C5E}|{1488A5D6-ECA0-5B80-B83C-C018E5D769D1}|{8F61AB55-3F41-577C-B53A-09FA61875E81}|{B642C279-575F-576F-B2C4-761765954A99}|{92359BCE-01F9-57F2-88C8-60B97D5D6178}|{334FB514-8F91-5290-AE82-5D74937F150E}|{DFA33436-F08F-517D-A787-73861E39BC62}|{5726F1D0-FC15-5ED4-90E3-A9603D0E9825}|{8915DDF6-5B02-4660-AE84-9F84F49EAD2F}|{47381B77-30CC-485F-B605-251D0F31962B}|{AFEC1EEE-5751-43AF-803C-5834D61F4CAA}|{EE1D014E-25A6-4604-A563-59FBC91DDC23}|{1E99983E-D87F-48D2-AC85-759620CDFA1F}|{5873A995-3365-47B7-BBCA-E09D3E4E69A3}|{7FCE0FDF-DFDD-4C28-AB59-E1E9595041EC}|{CD286342-A2ED-4902-A6CE-8A0ED8E28964}|{363D9CAF-7596-4A7E-9AC2-82978605992D}|{97E50373-18E6-42D4-ACEC-47D5F8270380}|{9282BC1E-734C-477A-96D1-8642E47C1E0C}|{A8185C11-0A81-4DCA-A9D3-BEBE6CA42EA0}|{8FB877C2-6433-4F6A-A538-1E184ABBBC25}|{DD790804-5705-4DAE-ADA6-28B1CDF70B08}|{087E35E8-E159-429F-AD36-FD228A837F06}|{2E7D5478-7676-440F-B873-ECC3D68BD284}|{F7E18515-349E-44A1-AD83-320CAD3AF403}|{6420C215-2FBB-4FCC-B83A-FCFA034EB4F2}|{F624DC11-E42A-499D-9D75-73DA3964C7A0}|{05F3E330-DF46-4B28-B801-5FE1118B239A}|{905D80AB-23DF-4B12-9907-5F3FDB4593EC}|{0DB31973-59F9-4DD7-8789-2776CCD1CC17}|{07AC9743-527B-465C-8B2D-4FB5DBF9447B}|{87125B2E-199B-4586-A67C-F9214687C790}|{AA0C4592-DED2-45B9-B685-A10271B11E5F}|{0B3919B4-03F5-490D-8C08-963C30C9D71A}|{93A83B32-7357-4401-9150-5EEA6B363AC7}|{F3803AA2-C802-4D31-8F3B-296DA4FBBF94}|{035E59CF-788C-46F8-AE74-44994E186CF3}|{565114F3-EC0B-4A82-B4FE-6F3FECCED548}|{CF872568-F517-4BE7-9C16-21608DD6E857}|{65F28F43-F1B3-400F-B7E7-6AE43E96D7F5}|{9DAE650A-4DF8-4F5B-8063-D0B83CD1F476}|{8A91278F-6451-4815-8D45-479169C8D19A}|{7AD0ADC0-4C15-40C4-BED2-7FD34EE3A3D9}|{CEFF6BF2-3B03-47E3-8CCE-D7D18C63F9EB}|{BB8297A6-4186-404E-8C41-FAC54EE0AE91}|{8875FE31-89B2-4CCB-89DF-4C38B2C2216B}|{FE71DD88-CB8D-4463-A2B8-48CEE6640D6A}|{61388B92-B6DD-43B0-8DE3-89C8DF20AE2D}|{4775D6F8-5F4A-4D6B-9324-9C5180C07D14}|{77CFC69B-64E5-4CEF-A57A-B5D30F57C370}|{33628395-A1E3-4AB1-8A88-72D978907453}|{33C26353-A1A2-43FF-90E1-6E139CC1860B}|{951D7791-3C30-468A-9E66-16477C166BCF}"
+        }
+      ],
+      "UnversionedFields": [],
+      "VersionedFields": []
+    },
+    {
+      "ID": "2e7d5478-7676-440f-b873-ecc3d68bd284",
+      "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/About Allianz Life",
+      "SharedFields": [],
+      "UnversionedFields": [
+        {
+          "ID": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+          "Hint": "__Display name",
+          "Value": "Company Profile"
+        }
+      ],
+      "VersionedFields": []
+    }
+  ],
+  "excludedFields": [
+    {
+      "itemId": "a184a054-a4c3-5298-8682-254d098f6cf4",
+      "fieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "reason": "Core Components display label acknowledged, raw field/UI readback pending; do not serialize or replay"
+    },
+    {
+      "itemId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "fieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "reason": "Site Components label request failed; do not serialize or replay"
+    }
+  ],
+  "sectionInventory": [
+    {
+      "itemId": "a184a054-a4c3-5298-8682-254d098f6cf4",
+      "nativeItemName": "Allianz Life",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Allianz Life",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{1983F760-2407-5EE3-987D-5957EB461129}|{3CD4EFCB-B7E0-528B-A525-668D74525435}|{1D75F6BA-CC96-5FD7-9DB6-7AAB3A8C6A6E}|{EA0674F1-31A1-540C-8622-91399E29FFE0}|{F7D7743C-3659-4AE3-9197-EBAAE7BD96B6}",
+      "storage": "shared",
+      "captureOrder": 0,
+      "includedInVerifiedDeltaProjection": false
+    },
+    {
+      "itemId": "adbf77cf-50bd-408c-bb2d-408a6ef2e070",
+      "nativeItemName": "FEaaS",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/FEaaS",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{CAA0C742-F052-49FB-825B-A03494798DB7}|{DDC43BE7-D77A-4CE3-9282-03DD036EEC6D}",
+      "storage": "shared",
+      "captureOrder": 1,
+      "includedInVerifiedDeltaProjection": false
+    },
+    {
+      "itemId": "55a88e67-a227-46be-9e1d-2a680e1a6943",
+      "nativeItemName": "Forms",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Forms",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{62DD1639-9F28-4040-8738-C886480B2127}|{03243A2C-97E5-54B8-B60C-2F94B98675A1}",
+      "storage": "shared",
+      "captureOrder": 2,
+      "includedInVerifiedDeltaProjection": true
+    },
+    {
+      "itemId": "f5816762-b684-498d-8484-1835e3651e27",
+      "nativeItemName": "Home opening",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Home opening",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{8915DDF6-5B02-4660-AE84-9F84F49EAD2F}|{47381B77-30CC-485F-B605-251D0F31962B}",
+      "storage": "shared",
+      "captureOrder": 3,
+      "includedInVerifiedDeltaProjection": false
+    },
+    {
+      "itemId": "b13e8f4a-c528-49b9-82b6-38c9b4513fca",
+      "nativeItemName": "Media",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Media",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{AB2EDBA0-3960-4F12-B765-579DC231894A}",
+      "storage": "shared",
+      "captureOrder": 4,
+      "includedInVerifiedDeltaProjection": false
+    },
+    {
+      "itemId": "18cc9b1d-79cd-4e15-aeb2-df21c6081511",
+      "nativeItemName": "Navigation",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Navigation",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{1DEB067F-0BB1-405E-94F5-2ABB537A6160}|{4956263D-1195-4D6E-931B-800EA625FF6F}|{1983F760-2407-5EE3-987D-5957EB461129}|{3CD4EFCB-B7E0-528B-A525-668D74525435}|{0BD23A13-5792-50BD-A8EB-D4297D02C06D}|{83A83FC1-7A77-5982-AB72-C57CDDB4583D}|{10B26485-8A6E-5FEE-BADF-1FB30590BE5E}|{5726F1D0-FC15-5ED4-90E3-A9603D0E9825}|{DFA33436-F08F-517D-A787-73861E39BC62}|{97E50373-18E6-42D4-ACEC-47D5F8270380}|{05F3E330-DF46-4B28-B801-5FE1118B239A}",
+      "storage": "shared",
+      "captureOrder": 5,
+      "includedInVerifiedDeltaProjection": true
+    },
+    {
+      "itemId": "91cacad8-db57-4097-ace3-38282cb32061",
+      "nativeItemName": "Newsroom",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Newsroom",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{2E7D5478-7676-440F-B873-ECC3D68BD284}|{087E35E8-E159-429F-AD36-FD228A837F06}|{A8185C11-0A81-4DCA-A9D3-BEBE6CA42EA0}|{FE71DD88-CB8D-4463-A2B8-48CEE6640D6A}|{363D9CAF-7596-4A7E-9AC2-82978605992D}|{61388B92-B6DD-43B0-8DE3-89C8DF20AE2D}|{6420C215-2FBB-4FCC-B83A-FCFA034EB4F2}|{DD790804-5705-4DAE-ADA6-28B1CDF70B08}|{8FB877C2-6433-4F6A-A538-1E184ABBBC25}",
+      "storage": "shared",
+      "captureOrder": 6,
+      "includedInVerifiedDeltaProjection": true
+    },
+    {
+      "itemId": "fc6e7695-eeef-4eca-a134-39afec227bdb",
+      "nativeItemName": "Page Content",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Page Content",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{C5F905F8-FD1F-444E-A9E5-AC6B774FF0DE}|{2492BAC4-DA07-4C86-87F0-9873D40E2276}|{3836D951-BB14-43AC-9231-649B7F245DC5}|{1D75F6BA-CC96-5FD7-9DB6-7AAB3A8C6A6E}|{7956AAF8-596E-5405-85D5-721989505A95}|{7E693F81-A98E-5E6F-AD07-E01377139DD5}|{EA0674F1-31A1-540C-8622-91399E29FFE0}|{F2FD6ED6-A96F-59A5-B7DE-67D523FAD31D}|{92359BCE-01F9-57F2-88C8-60B97D5D6178}|{334FB514-8F91-5290-AE82-5D74937F150E}|{DABB2247-CAB9-5C16-9019-F968317E82D8}|{9282BC1E-734C-477A-96D1-8642E47C1E0C}|{F7D7743C-3659-4AE3-9197-EBAAE7BD96B6}|{905D80AB-23DF-4B12-9907-5F3FDB4593EC}|{7FCE0FDF-DFDD-4C28-AB59-E1E9595041EC}|{F7E18515-349E-44A1-AD83-320CAD3AF403}|{8915DDF6-5B02-4660-AE84-9F84F49EAD2F}|{47381B77-30CC-485F-B605-251D0F31962B}|{0DB31973-59F9-4DD7-8789-2776CCD1CC17}",
+      "storage": "shared",
+      "captureOrder": 7,
+      "includedInVerifiedDeltaProjection": true
+    },
+    {
+      "itemId": "f4e0c029-2e1f-4f77-95c2-7af27ecbfaef",
+      "nativeItemName": "Page Structure",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Page Structure",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{7A1D9A21-B8D7-42F9-9B0B-92ABF8D1974F}|{15CABDFF-FFD9-48F4-826D-A4C3D7868D3A}|{5F6BF7C9-C80C-4BBD-AD78-8DA749B35206}",
+      "storage": "shared",
+      "captureOrder": 8,
+      "includedInVerifiedDeltaProjection": false
+    },
+    {
+      "itemId": "c3a08376-6399-48b8-903a-d0376671c8f3",
+      "nativeItemName": "People",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/People",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{F624DC11-E42A-499D-9D75-73DA3964C7A0}|{7AD0ADC0-4C15-40C4-BED2-7FD34EE3A3D9}|{CEFF6BF2-3B03-47E3-8CCE-D7D18C63F9EB}|{BB8297A6-4186-404E-8C41-FAC54EE0AE91}|{8875FE31-89B2-4CCB-89DF-4C38B2C2216B}",
+      "storage": "shared",
+      "captureOrder": 9,
+      "includedInVerifiedDeltaProjection": true
+    },
+    {
+      "itemId": "4a618102-1c13-472e-b8ba-bca9ed27ece8",
+      "nativeItemName": "Products",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Products",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{45E446AF-6284-5804-AD6D-25486AA75C5E}|{B6A45C26-8516-5B1A-AA07-83798FB57788}|{342E603B-1DB1-5AF4-A7E9-A62BE4EA6678}|{07AC9743-527B-465C-8B2D-4FB5DBF9447B}|{CD286342-A2ED-4902-A6CE-8A0ED8E28964}|{87125B2E-199B-4586-A67C-F9214687C790}|{AA0C4592-DED2-45B9-B685-A10271B11E5F}|{0B3919B4-03F5-490D-8C08-963C30C9D71A}|{93A83B32-7357-4401-9150-5EEA6B363AC7}|{F3803AA2-C802-4D31-8F3B-296DA4FBBF94}|{EE1D014E-25A6-4604-A563-59FBC91DDC23}|{035E59CF-788C-46F8-AE74-44994E186CF3}|{565114F3-EC0B-4A82-B4FE-6F3FECCED548}|{CF872568-F517-4BE7-9C16-21608DD6E857}|{65F28F43-F1B3-400F-B7E7-6AE43E96D7F5}|{9DAE650A-4DF8-4F5B-8063-D0B83CD1F476}|{8A91278F-6451-4815-8D45-479169C8D19A}|{1E99983E-D87F-48D2-AC85-759620CDFA1F}|{AFEC1EEE-5751-43AF-803C-5834D61F4CAA}|{5873A995-3365-47B7-BBCA-E09D3E4E69A3}",
+      "storage": "shared",
+      "captureOrder": 10,
+      "includedInVerifiedDeltaProjection": true
+    },
+    {
+      "itemId": "1a236a69-d2e2-442f-87e1-328a4aeaa964",
+      "nativeItemName": "Resources and disclosures",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Resources and disclosures",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{7FCE0FDF-DFDD-4C28-AB59-E1E9595041EC}|{CD286342-A2ED-4902-A6CE-8A0ED8E28964}",
+      "storage": "shared",
+      "captureOrder": 11,
+      "includedInVerifiedDeltaProjection": false
+    },
+    {
+      "itemId": "1d1682df-f5c7-4818-bb63-ad308d80d4e2",
+      "nativeItemName": "Retirement story",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Retirement story",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{AFEC1EEE-5751-43AF-803C-5834D61F4CAA}|{EE1D014E-25A6-4604-A563-59FBC91DDC23}|{1E99983E-D87F-48D2-AC85-759620CDFA1F}|{5873A995-3365-47B7-BBCA-E09D3E4E69A3}",
+      "storage": "shared",
+      "captureOrder": 12,
+      "includedInVerifiedDeltaProjection": false
+    },
+    {
+      "itemId": "fb6f6341-b94d-4305-8ffe-e22eb32ba3a6",
+      "nativeItemName": "Ventures",
+      "nativePath": "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Ventures",
+      "parentId": "0af6d2f6-7768-43df-bc9c-34da3ae83d3f",
+      "templateId": "76da0a8d-fc7e-42b2-af1e-205b49e43f98",
+      "rawRenderings": "{4775D6F8-5F4A-4D6B-9324-9C5180C07D14}|{77CFC69B-64E5-4CEF-A57A-B5D30F57C370}|{33628395-A1E3-4AB1-8A88-72D978907453}|{33C26353-A1A2-43FF-90E1-6E139CC1860B}|{951D7791-3C30-468A-9E66-16477C166BCF}",
+      "storage": "shared",
+      "captureOrder": 13,
+      "includedInVerifiedDeltaProjection": true
+    }
+  ],
+  "rendererInventory": [
+    {
+      "itemId": "2e7d5478-7676-440f-b873-ecc3d68bd284",
+      "nativeItemName": "About Allianz Life",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/About Allianz Life",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "NewsroomCompanyProfile",
+      "effectiveDisplayLabelBefore": "About Allianz Life",
+      "effectiveDisplayLabelCurrent": "Company Profile",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "Company Profile: native API effect verified",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "7e693f81-a98e-5e6f-ad07-e01377139dd5",
+      "nativeItemName": "AllianzAccordion",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzAccordion",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzAccordion",
+      "effectiveDisplayLabelBefore": "Accordion",
+      "effectiveDisplayLabelCurrent": "Accordion",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "c4fbfd1b-2fc0-5af5-85c1-babc12ff56da",
+      "nativeItemName": "AllianzArticle",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzArticle",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "0",
+      "inCurrentSitePalette": "False",
+      "technicalComponentName": "",
+      "effectiveDisplayLabelBefore": "",
+      "effectiveDisplayLabelCurrent": "",
+      "effectiveCategoryCurrent": "",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "no active author-facing palette entry; no label or binding invented"
+    },
+    {
+      "itemId": "0bd23a13-5792-50bd-a8eb-d4297d02c06d",
+      "nativeItemName": "AllianzBreadcrumbs",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzBreadcrumbs",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzBreadcrumbs",
+      "effectiveDisplayLabelBefore": "Breadcrumbs",
+      "effectiveDisplayLabelCurrent": "Breadcrumbs",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "45e446af-6284-5804-ad6d-25486aa75c5e",
+      "nativeItemName": "AllianzCalculator",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCalculator",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzCalculator",
+      "effectiveDisplayLabelBefore": "Calculator",
+      "effectiveDisplayLabelCurrent": "Calculator",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "ea0674f1-31a1-540c-8622-91399e29ffe0",
+      "nativeItemName": "AllianzCardGrid",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCardGrid",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzCardGrid",
+      "effectiveDisplayLabelBefore": "Card Grid",
+      "effectiveDisplayLabelCurrent": "Card Grid",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "174739e5-3388-56d9-aae2-dff5ae409184",
+      "nativeItemName": "AllianzCTA",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCTA",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "0",
+      "inCurrentSitePalette": "False",
+      "technicalComponentName": "",
+      "effectiveDisplayLabelBefore": "",
+      "effectiveDisplayLabelCurrent": "",
+      "effectiveCategoryCurrent": "",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "no active author-facing palette entry; no label or binding invented"
+    },
+    {
+      "itemId": "342e603b-1db1-5af4-a7e9-a62be4ea6678",
+      "nativeItemName": "AllianzDocumentList",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzDocumentList",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzDocumentList",
+      "effectiveDisplayLabelBefore": "Document List",
+      "effectiveDisplayLabelCurrent": "Document List",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "3cd4efcb-b7e0-528b-a525-668d74525435",
+      "nativeItemName": "AllianzFooter",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzFooter",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzFooter",
+      "effectiveDisplayLabelBefore": "Footer",
+      "effectiveDisplayLabelCurrent": "Footer",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "03243a2c-97e5-54b8-b60c-2f94b98675a1",
+      "nativeItemName": "AllianzForm",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzForm",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzForm",
+      "effectiveDisplayLabelBefore": "Form",
+      "effectiveDisplayLabelCurrent": "Form",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "1983f760-2407-5ee3-987d-5957eb461129",
+      "nativeItemName": "AllianzHeader",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHeader",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzHeader",
+      "effectiveDisplayLabelBefore": "Header",
+      "effectiveDisplayLabelCurrent": "Header",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "1d75f6ba-cc96-5fd7-9db6-7aab3a8c6a6e",
+      "nativeItemName": "AllianzHero",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHero",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzHero",
+      "effectiveDisplayLabelBefore": "Hero",
+      "effectiveDisplayLabelCurrent": "Hero",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "b6a45c26-8516-5b1a-aa07-83798fb57788",
+      "nativeItemName": "AllianzIndexDefinitions",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzIndexDefinitions",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzIndexDefinitions",
+      "effectiveDisplayLabelBefore": "Index Definitions",
+      "effectiveDisplayLabelCurrent": "Index Definitions",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "92359bce-01f9-57f2-88c8-60b97d5d6178",
+      "nativeItemName": "AllianzLegacyAccordion",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyAccordion",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzLegacyAccordion",
+      "effectiveDisplayLabelBefore": "Legacy Accordion",
+      "effectiveDisplayLabelCurrent": "Legacy Accordion",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "5726f1d0-fc15-5ed4-90e3-a9603d0e9825",
+      "nativeItemName": "AllianzLegacyBreadcrumbs",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyBreadcrumbs",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzLegacyBreadcrumbs",
+      "effectiveDisplayLabelBefore": "Legacy Breadcrumbs",
+      "effectiveDisplayLabelCurrent": "Legacy Breadcrumbs",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "334fb514-8f91-5290-ae82-5d74937f150e",
+      "nativeItemName": "AllianzLegacyCardGrid",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyCardGrid",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzLegacyCardGrid",
+      "effectiveDisplayLabelBefore": "Legacy Card Grid",
+      "effectiveDisplayLabelCurrent": "Legacy Card Grid",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "10b26485-8a6e-5fee-badf-1fb30590be5e",
+      "nativeItemName": "AllianzLegacyFooter",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyFooter",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzLegacyFooter",
+      "effectiveDisplayLabelBefore": "Legacy Footer",
+      "effectiveDisplayLabelCurrent": "Legacy Footer",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "83a83fc1-7a77-5982-ab72-c57cddb4583d",
+      "nativeItemName": "AllianzLegacyHeader",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyHeader",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzLegacyHeader",
+      "effectiveDisplayLabelBefore": "Legacy Header",
+      "effectiveDisplayLabelCurrent": "Legacy Header",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "b642c279-575f-576f-b2c4-761765954a99",
+      "nativeItemName": "AllianzLegacyHero",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyHero",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "0",
+      "inCurrentSitePalette": "False",
+      "technicalComponentName": "",
+      "effectiveDisplayLabelBefore": "",
+      "effectiveDisplayLabelCurrent": "",
+      "effectiveCategoryCurrent": "",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "no active author-facing palette entry; no label or binding invented"
+    },
+    {
+      "itemId": "dfa33436-f08f-517d-a787-73861e39bc62",
+      "nativeItemName": "AllianzLegacyLinkList",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyLinkList",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzLegacyLinkList",
+      "effectiveDisplayLabelBefore": "Legacy Link List",
+      "effectiveDisplayLabelCurrent": "Legacy Link List",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "8f61ab55-3f41-577c-b53a-09fa61875e81",
+      "nativeItemName": "AllianzLegacyPageHeader",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyPageHeader",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "0",
+      "inCurrentSitePalette": "False",
+      "technicalComponentName": "",
+      "effectiveDisplayLabelBefore": "",
+      "effectiveDisplayLabelCurrent": "",
+      "effectiveCategoryCurrent": "",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "no active author-facing palette entry; no label or binding invented"
+    },
+    {
+      "itemId": "abe2558a-1b20-5412-b72c-ed9008b0ba27",
+      "nativeItemName": "AllianzLegacyRichText",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyRichText",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "0",
+      "inCurrentSitePalette": "False",
+      "technicalComponentName": "",
+      "effectiveDisplayLabelBefore": "",
+      "effectiveDisplayLabelCurrent": "",
+      "effectiveCategoryCurrent": "",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "no active author-facing palette entry; no label or binding invented"
+    },
+    {
+      "itemId": "dabb2247-cab9-5c16-9019-f968317e82d8",
+      "nativeItemName": "AllianzLegacySidebar",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacySidebar",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzLegacySidebar",
+      "effectiveDisplayLabelBefore": "Legacy Sidebar",
+      "effectiveDisplayLabelCurrent": "Legacy Sidebar",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "afe940ac-70ed-526e-bfe0-a4c317a94c1d",
+      "nativeItemName": "AllianzRateSnapshot",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzRateSnapshot",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "0",
+      "inCurrentSitePalette": "False",
+      "technicalComponentName": "",
+      "effectiveDisplayLabelBefore": "",
+      "effectiveDisplayLabelCurrent": "",
+      "effectiveCategoryCurrent": "",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "no active author-facing palette entry; no label or binding invented"
+    },
+    {
+      "itemId": "1488a5d6-eca0-5b80-b83c-c018e5d769d1",
+      "nativeItemName": "AllianzRateTable",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzRateTable",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "0",
+      "inCurrentSitePalette": "False",
+      "technicalComponentName": "",
+      "effectiveDisplayLabelBefore": "",
+      "effectiveDisplayLabelCurrent": "",
+      "effectiveCategoryCurrent": "",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "no active author-facing palette entry; no label or binding invented"
+    },
+    {
+      "itemId": "7956aaf8-596e-5405-85d5-721989505a95",
+      "nativeItemName": "AllianzRichText",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzRichText",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzRichText",
+      "effectiveDisplayLabelBefore": "Rich Text",
+      "effectiveDisplayLabelCurrent": "Rich Text",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "8297f8f3-5aba-5bc1-bdad-b0ef2e6fbd8d",
+      "nativeItemName": "AllianzSearch",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzSearch",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "0",
+      "inCurrentSitePalette": "False",
+      "technicalComponentName": "",
+      "effectiveDisplayLabelBefore": "",
+      "effectiveDisplayLabelCurrent": "",
+      "effectiveCategoryCurrent": "",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "no active author-facing palette entry; no label or binding invented"
+    },
+    {
+      "itemId": "f2fd6ed6-a96f-59a5-b7de-67d523fad31d",
+      "nativeItemName": "AllianzTimeline",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzTimeline",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzTimeline",
+      "effectiveDisplayLabelBefore": "Timeline",
+      "effectiveDisplayLabelCurrent": "Timeline",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "c10b523b-b066-557d-9a41-5a9f9569137a",
+      "nativeItemName": "AllianzVideo",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzVideo",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "0",
+      "inCurrentSitePalette": "False",
+      "technicalComponentName": "",
+      "effectiveDisplayLabelBefore": "",
+      "effectiveDisplayLabelCurrent": "",
+      "effectiveCategoryCurrent": "",
+      "allianzInNativeItemName": "True",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "no active author-facing palette entry; no label or binding invented"
+    },
+    {
+      "itemId": "8875fe31-89b2-4ccb-89df-4c38b2c2216b",
+      "nativeItemName": "Biography Disclosures",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Biography Disclosures",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "BiographyDisclosures",
+      "effectiveDisplayLabelBefore": "Biography Disclosures",
+      "effectiveDisplayLabelCurrent": "Biography Disclosures",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "97e50373-18e6-42d4-acec-47d5f8270380",
+      "nativeItemName": "Breadcrumb trail",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Breadcrumb trail",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "AllianzContextBreadcrumbs",
+      "effectiveDisplayLabelBefore": "Breadcrumb trail",
+      "effectiveDisplayLabelCurrent": "Breadcrumb trail",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "True",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "9282bc1e-734c-477a-96d1-8642e47c1e0c",
+      "nativeItemName": "Company Hero",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Company Hero",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "CompanyHero",
+      "effectiveDisplayLabelBefore": "Company Hero",
+      "effectiveDisplayLabelCurrent": "Company Hero",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "f7d7743c-3659-4ae3-9197-ebaae7bd96b6",
+      "nativeItemName": "Company Mission",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Company Mission",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "CompanyMission",
+      "effectiveDisplayLabelBefore": "Company Mission",
+      "effectiveDisplayLabelCurrent": "Company Mission",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "905d80ab-23df-4b12-9907-5f3fdb4593ec",
+      "nativeItemName": "Company Strengths",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Company Strengths",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "CompanyStrengths",
+      "effectiveDisplayLabelBefore": "Company Strengths",
+      "effectiveDisplayLabelCurrent": "Company Strengths",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "7ad0adc0-4c15-40c4-bed2-7fd34ee3a3d9",
+      "nativeItemName": "Executive Biography",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Executive Biography",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ExecutiveBiography",
+      "effectiveDisplayLabelBefore": "Executive Biography",
+      "effectiveDisplayLabelCurrent": "Executive Biography",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "ceff6bf2-3b03-47e3-8cce-d7d18c63f9eb",
+      "nativeItemName": "Executive Directory",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Executive Directory",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ExecutiveDirectory",
+      "effectiveDisplayLabelBefore": "Executive Directory",
+      "effectiveDisplayLabelCurrent": "Executive Directory",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "bb8297a6-4186-404e-8c41-fac54ee0ae91",
+      "nativeItemName": "Expert Biography",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Expert Biography",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ExpertBiography",
+      "effectiveDisplayLabelBefore": "Expert Biography",
+      "effectiveDisplayLabelCurrent": "Expert Biography",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "f624dc11-e42a-499d-9d75-73da3964c7a0",
+      "nativeItemName": "Expert Directory",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Expert Directory",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ExpertDirectory",
+      "effectiveDisplayLabelBefore": "Expert Directory",
+      "effectiveDisplayLabelCurrent": "Expert Directory",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "7fce0fdf-dfdd-4c28-ab59-e1e9595041ec",
+      "nativeItemName": "Helpful Resources",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Helpful Resources",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "HelpfulResources",
+      "effectiveDisplayLabelBefore": "Helpful Resources",
+      "effectiveDisplayLabelCurrent": "Helpful Resources",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "8915ddf6-5b02-4660-ae84-9f84f49ead2f",
+      "nativeItemName": "Homepage Hero",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Homepage Hero",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "HomepageHero",
+      "effectiveDisplayLabelBefore": "Homepage Hero",
+      "effectiveDisplayLabelCurrent": "Homepage Hero",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "0db31973-59f9-4dd7-8789-2776ccd1cc17",
+      "nativeItemName": "Icon Cards",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Icon Cards",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "IconCards",
+      "effectiveDisplayLabelBefore": "Icon Cards",
+      "effectiveDisplayLabelCurrent": "Icon Cards",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "4775d6f8-5f4a-4d6b-9324-9c5180c07d14",
+      "nativeItemName": "Investment Portfolio",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Investment Portfolio",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "InvestmentPortfolio",
+      "effectiveDisplayLabelBefore": "Investment Portfolio",
+      "effectiveDisplayLabelCurrent": "Investment Portfolio",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "77cfc69b-64e5-4cef-a57a-b5d30f57c370",
+      "nativeItemName": "Key Figures",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Key Figures",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "KeyFigures",
+      "effectiveDisplayLabelBefore": "Key Figures",
+      "effectiveDisplayLabelCurrent": "Key Figures",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "33628395-a1e3-4ab1-8a88-72d978907453",
+      "nativeItemName": "Leadership Quote",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Leadership Quote",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "LeadershipQuote",
+      "effectiveDisplayLabelBefore": "Leadership Quote",
+      "effectiveDisplayLabelCurrent": "Leadership Quote",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "f7e18515-349e-44a1-ad83-320cad3af403",
+      "nativeItemName": "Legal Disclosures",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Legal Disclosures",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "LegalDisclosures",
+      "effectiveDisplayLabelBefore": "Legal Disclosures",
+      "effectiveDisplayLabelCurrent": "Legal Disclosures",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "087e35e8-e159-429f-ad36-fd228a837f06",
+      "nativeItemName": "Newsroom callout",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Newsroom callout",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "NewsroomCallout",
+      "effectiveDisplayLabelBefore": "Newsroom callout",
+      "effectiveDisplayLabelCurrent": "Newsroom callout",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "a8185c11-0a81-4dca-a9d3-bebe6ca42ea0",
+      "nativeItemName": "Newsroom featured update",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Newsroom featured update",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "NewsroomFeaturedUpdate",
+      "effectiveDisplayLabelBefore": "Newsroom featured update",
+      "effectiveDisplayLabelCurrent": "Newsroom featured update",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "fe71dd88-cb8d-4463-a2b8-48cee6640d6a",
+      "nativeItemName": "Newsroom Return",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Newsroom Return",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "NewsroomReturn",
+      "effectiveDisplayLabelBefore": "Newsroom Return",
+      "effectiveDisplayLabelCurrent": "Newsroom Return",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "33c26353-a1a2-43ff-90e1-6e139cc1860b",
+      "nativeItemName": "Offerings Prompt",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Offerings Prompt",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "OfferingsPrompt",
+      "effectiveDisplayLabelBefore": "Offerings Prompt",
+      "effectiveDisplayLabelCurrent": "Offerings Prompt",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "47381b77-30cc-485f-b605-251d0f31962b",
+      "nativeItemName": "Olympic Partnership",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Olympic Partnership",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "OlympicPartnership",
+      "effectiveDisplayLabelBefore": "Olympic Partnership",
+      "effectiveDisplayLabelCurrent": "Olympic Partnership",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "363d9caf-7596-4a7e-9ac2-82978605992d",
+      "nativeItemName": "Press archive navigation",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Press archive navigation",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "NewsroomYearNavigation",
+      "effectiveDisplayLabelBefore": "Press archive navigation",
+      "effectiveDisplayLabelCurrent": "Press archive navigation",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "61388b92-b6dd-43b0-8de3-89c8df20ae2d",
+      "nativeItemName": "Press Release",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Press Release",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "PressRelease",
+      "effectiveDisplayLabelBefore": "Press Release",
+      "effectiveDisplayLabelCurrent": "Press Release",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "6420c215-2fbb-4fcc-b83a-fcfa034eb4f2",
+      "nativeItemName": "Press release archive",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Press release archive",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "PressReleaseArchive",
+      "effectiveDisplayLabelBefore": "Press release archive",
+      "effectiveDisplayLabelCurrent": "Press release archive",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "07ac9743-527b-465c-8b2d-4fb5dbf9447b",
+      "nativeItemName": "Product Benefits",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Benefits",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductBenefits",
+      "effectiveDisplayLabelBefore": "Product Benefits",
+      "effectiveDisplayLabelCurrent": "Product Benefits",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "cd286342-a2ed-4902-a6ce-8a0ed8e28964",
+      "nativeItemName": "Product Disclosures",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Disclosures",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductDisclosures",
+      "effectiveDisplayLabelBefore": "Product Disclosures",
+      "effectiveDisplayLabelCurrent": "Product Disclosures",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "87125b2e-199b-4586-a67c-f9214687c790",
+      "nativeItemName": "Product FAQ",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product FAQ",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductFaq",
+      "effectiveDisplayLabelBefore": "Product FAQ",
+      "effectiveDisplayLabelCurrent": "Product FAQ",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "aa0c4592-ded2-45b9-b685-a10271b11e5f",
+      "nativeItemName": "Product FAQ Introduction",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product FAQ Introduction",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductFaqIntro",
+      "effectiveDisplayLabelBefore": "Product FAQ Introduction",
+      "effectiveDisplayLabelCurrent": "Product FAQ Introduction",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "0b3919b4-03f5-490d-8c08-963c30c9d71a",
+      "nativeItemName": "Product Footnotes",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Footnotes",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductFootnotes",
+      "effectiveDisplayLabelBefore": "Product Footnotes",
+      "effectiveDisplayLabelCurrent": "Product Footnotes",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "93a83b32-7357-4401-9150-5eea6b363ac7",
+      "nativeItemName": "Product Hero",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Hero",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductHero",
+      "effectiveDisplayLabelBefore": "Product Hero",
+      "effectiveDisplayLabelCurrent": "Product Hero",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "f3803aa2-c802-4d31-8f3b-296da4fbbf94",
+      "nativeItemName": "Product Introduction",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Introduction",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductIntroduction",
+      "effectiveDisplayLabelBefore": "Product Introduction",
+      "effectiveDisplayLabelCurrent": "Product Introduction",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "ee1d014e-25a6-4604-a563-59fbc91ddc23",
+      "nativeItemName": "Product Offerings",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Offerings",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductOfferings",
+      "effectiveDisplayLabelBefore": "Product Offerings",
+      "effectiveDisplayLabelCurrent": "Product Offerings",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "035e59cf-788c-46f8-ae74-44994e186cf3",
+      "nativeItemName": "Product Risk Disclosures",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Risk Disclosures",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductRiskDisclosures",
+      "effectiveDisplayLabelBefore": "Product Risk Disclosures",
+      "effectiveDisplayLabelCurrent": "Product Risk Disclosures",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "565114f3-ec0b-4a82-b4fe-6f3fecced548",
+      "nativeItemName": "Product Type Choices",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Type Choices",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProductTypeChoices",
+      "effectiveDisplayLabelBefore": "Product Type Choices",
+      "effectiveDisplayLabelCurrent": "Product Type Choices",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "cf872568-f517-4be7-9c16-21608dd6e857",
+      "nativeItemName": "Prospectus Document Table",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Prospectus Document Table",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProspectusDocumentTable",
+      "effectiveDisplayLabelBefore": "Prospectus Document Table",
+      "effectiveDisplayLabelCurrent": "Prospectus Document Table",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "65f28f43-f1b3-400f-b7e7-6ae43e96d7f5",
+      "nativeItemName": "Prospectus Introduction",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Prospectus Introduction",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProspectusIntroduction",
+      "effectiveDisplayLabelBefore": "Prospectus Introduction",
+      "effectiveDisplayLabelCurrent": "Prospectus Introduction",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "9dae650a-4df8-4f5b-8063-d0b83cd1f476",
+      "nativeItemName": "Prospectus Product Directory",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Prospectus Product Directory",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ProspectusProductDirectory",
+      "effectiveDisplayLabelBefore": "Prospectus Product Directory",
+      "effectiveDisplayLabelCurrent": "Prospectus Product Directory",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "dd790804-5705-4dae-ada6-28b1cdf70b08",
+      "nativeItemName": "Public relations team",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Public relations team",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "NewsroomPublicRelations",
+      "effectiveDisplayLabelBefore": "Public relations team",
+      "effectiveDisplayLabelCurrent": "Public relations team",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "8fb877c2-6433-4f6a-a538-1e184abbbc25",
+      "nativeItemName": "Recent news releases",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Recent news releases",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "NewsroomRecentReleases",
+      "effectiveDisplayLabelBefore": "Recent news releases",
+      "effectiveDisplayLabelCurrent": "Recent news releases",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "1e99983e-d87f-48d2-ac85-759620cdfa1f",
+      "nativeItemName": "Retirement Goals Intro",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Retirement Goals Intro",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "RetirementGoalsIntro",
+      "effectiveDisplayLabelBefore": "Retirement Goals Intro",
+      "effectiveDisplayLabelCurrent": "Retirement Goals Intro",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "afec1eee-5751-43af-803c-5834d61f4caa",
+      "nativeItemName": "Retirement Solutions Intro",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Retirement Solutions Intro",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "RetirementSolutionsIntro",
+      "effectiveDisplayLabelBefore": "Retirement Solutions Intro",
+      "effectiveDisplayLabelCurrent": "Retirement Solutions Intro",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "05f3e330-df46-4b28-b801-5fe1118b239a",
+      "nativeItemName": "Section Navigation",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Section Navigation",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "SectionNavigation",
+      "effectiveDisplayLabelBefore": "Section Navigation",
+      "effectiveDisplayLabelCurrent": "Section Navigation",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "5873a995-3365-47b7-bbca-e09d3e4e69a3",
+      "nativeItemName": "Secure Future Feature",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Secure Future Feature",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "SecureFutureFeature",
+      "effectiveDisplayLabelBefore": "Secure Future Feature",
+      "effectiveDisplayLabelCurrent": "Secure Future Feature",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "8a91278f-6451-4815-8d45-479169c8d19a",
+      "nativeItemName": "Shareholder Report Access",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Shareholder Report Access",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "ShareholderReportAccess",
+      "effectiveDisplayLabelBefore": "Shareholder Report Access",
+      "effectiveDisplayLabelCurrent": "Shareholder Report Access",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    },
+    {
+      "itemId": "951d7791-3c30-468a-9e66-16477c166bcf",
+      "nativeItemName": "Sustainability Commitment",
+      "nativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Sustainability Commitment",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "nativeVersionObserved": "1",
+      "inCurrentSitePalette": "True",
+      "technicalComponentName": "SustainabilityCommitment",
+      "effectiveDisplayLabelBefore": "Sustainability Commitment",
+      "effectiveDisplayLabelCurrent": "Sustainability Commitment",
+      "effectiveCategoryCurrent": "Allianz Life",
+      "allianzInNativeItemName": "False",
+      "allianzInTechnicalComponentName": "False",
+      "allianzInObservedDisplayLabel": "False",
+      "displayNameFieldId": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
+      "labelChangeThisPass": "no component label update this pass",
+      "labelObservationLimit": "raw __Display name omitted by item getter; effective API displayName observed"
+    }
+  ],
+  "sitePaletteInventory": [
+    {
+      "componentId": "d9c6ba6c-7416-44b3-aee6-07b58da14b5a",
+      "displayName": "BYOC Component",
+      "technicalComponentName": "BYOCComponent",
+      "currentCategory": "Headless Services",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "ef7b2760-6691-4306-a421-8c173752a23a",
+      "displayName": "Draft Component",
+      "technicalComponentName": "Draft Component",
+      "currentCategory": "Headless Services",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "db9d8c60-325a-4032-9923-e1044156f8e2",
+      "displayName": "FEaaS Component",
+      "technicalComponentName": "FEaaSComponent",
+      "currentCategory": "Headless Services",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "3d45fbd5-b222-4c4b-85d9-45bf0bc1c515",
+      "displayName": "form",
+      "technicalComponentName": "form",
+      "currentCategory": "Headless Services",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "57573af2-9d3c-4078-aab7-35e580e4823b",
+      "displayName": "PartialDesign Dynamic Placeholder",
+      "technicalComponentName": "PartialDesignDynamicPlaceholder",
+      "currentCategory": "Dynamic Placeholders",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "ddc43be7-d77a-4ce3-9282-03dd036eec6d",
+      "displayName": "BYOC Wrapper",
+      "technicalComponentName": "BYOCWrapper",
+      "currentCategory": "FEaaS",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "caa0c742-f052-49fb-825b-a03494798db7",
+      "displayName": "FEaaS Wrapper",
+      "technicalComponentName": "FEaaSWrapper",
+      "currentCategory": "FEaaS",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "62dd1639-9f28-4040-8738-c886480b2127",
+      "displayName": "Form",
+      "technicalComponentName": "Form",
+      "currentCategory": "Forms",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "44dcc929-7ee5-4430-81bf-d7f041420cbf",
+      "displayName": "Contact Form",
+      "technicalComponentName": "ContactForm",
+      "currentCategory": "Forms",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "c7fdf764-5c05-4544-bb1f-a0e11f37e222",
+      "displayName": "Subscribe",
+      "technicalComponentName": "Subscribe",
+      "currentCategory": "Forms",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "ab2edba0-3960-4f12-b765-579dc231894a",
+      "displayName": "Image",
+      "technicalComponentName": "Image",
+      "currentCategory": "Media",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "4956263d-1195-4d6e-931b-800ea625ff6f",
+      "displayName": "Link List",
+      "technicalComponentName": "LinkList",
+      "currentCategory": "Navigation",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "1deb067f-0bb1-405e-94f5-2abb537a6160",
+      "displayName": "Navigation",
+      "technicalComponentName": "Navigation",
+      "currentCategory": "Navigation",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "7e5035bd-533a-4e84-a67b-9aa2bf964f21",
+      "displayName": "Breadcrumb",
+      "technicalComponentName": "Breadcrumb",
+      "currentCategory": "Navigation",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "982b130a-5cf9-4664-8b8c-f6778448ec7f",
+      "displayName": "IconLinkList",
+      "technicalComponentName": "IconLinkList",
+      "currentCategory": "Navigation",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "9f65621e-1102-461c-bbee-3fadce8e0509",
+      "displayName": "Navigation",
+      "technicalComponentName": "Navigation",
+      "currentCategory": "Navigation",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "c56efae9-39e8-45eb-8b59-d4bf2b71914e",
+      "displayName": "Navigation Icons",
+      "technicalComponentName": "NavigationIcons",
+      "currentCategory": "Navigation",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "32e7fd88-4e5d-4aab-a15f-61dceba1ee6f",
+      "displayName": "Social Follow",
+      "technicalComponentName": "SocialFollow",
+      "currentCategory": "Navigation",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "c5f905f8-fd1f-444e-a9e5-ac6b774ff0de",
+      "displayName": "Page Content",
+      "technicalComponentName": "PageContent",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "2492bac4-da07-4c86-87f0-9873d40e2276",
+      "displayName": "Promo",
+      "technicalComponentName": "Promo",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "9c6d53e3-fe57-4638-af7b-6d68304c7a94",
+      "displayName": "Rich Text",
+      "technicalComponentName": "RichText",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "3836d951-bb14-43ac-9231-649b7f245dc5",
+      "displayName": "Title",
+      "technicalComponentName": "Title",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "50d05f00-5d16-4684-8b7c-173162f8a4db",
+      "displayName": "Deals",
+      "technicalComponentName": "Deals",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "e3ccf1d0-7855-4898-8bde-77f83c6a487c",
+      "displayName": "Features",
+      "technicalComponentName": "Features",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "b49cf2d7-7cb2-4918-8f38-2607d956d995",
+      "displayName": "Hero Banner",
+      "technicalComponentName": "HeroBanner",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "330f59e3-329c-4e5d-8a00-cf144b1e1a87",
+      "displayName": "Offers",
+      "technicalComponentName": "Offers",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "6b69c658-ce00-476c-8a97-fa59f2def73b",
+      "displayName": "PageHeader",
+      "technicalComponentName": "PageHeader",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "ccd11802-22a3-462f-92fc-821515e2aec8",
+      "displayName": "Promo",
+      "technicalComponentName": "Promo",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "89252c77-218a-4b21-8a74-bc8a4bf11d93",
+      "displayName": "Reviews",
+      "technicalComponentName": "Reviews",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "442e3ea4-de9a-41b5-a917-0f589f79b1a0",
+      "displayName": "Section Wrapper",
+      "technicalComponentName": "SectionWrapper",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "3275d21a-f7ac-4682-9ebf-bef6febbdda8",
+      "displayName": "Social Feed",
+      "technicalComponentName": "SocialFeed",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "e6c8038f-b3ea-46e4-9f2c-89c562ce21f5",
+      "displayName": "Item Finder",
+      "technicalComponentName": "ItemFinder",
+      "currentCategory": "Page Content",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "15cabdff-ffd9-48f4-826d-a4c3d7868d3a",
+      "displayName": "Column Splitter",
+      "technicalComponentName": "ColumnSplitter",
+      "currentCategory": "Page Structure",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "7a1d9a21-b8d7-42f9-9b0b-92abf8d1974f",
+      "displayName": "Container",
+      "technicalComponentName": "Container",
+      "currentCategory": "Page Structure",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "5f6bf7c9-c80c-4bbd-ad78-8da749b35206",
+      "displayName": "Row Splitter",
+      "technicalComponentName": "RowSplitter",
+      "currentCategory": "Page Structure",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "2e7d5478-7676-440f-b873-ecc3d68bd284",
+      "displayName": "Company Profile",
+      "technicalComponentName": "NewsroomCompanyProfile",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/About Allianz Life",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "7e693f81-a98e-5e6f-ad07-e01377139dd5",
+      "displayName": "Accordion",
+      "technicalComponentName": "AllianzAccordion",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzAccordion",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "0bd23a13-5792-50bd-a8eb-d4297d02c06d",
+      "displayName": "Breadcrumbs",
+      "technicalComponentName": "AllianzBreadcrumbs",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzBreadcrumbs",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "45e446af-6284-5804-ad6d-25486aa75c5e",
+      "displayName": "Calculator",
+      "technicalComponentName": "AllianzCalculator",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCalculator",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "ea0674f1-31a1-540c-8622-91399e29ffe0",
+      "displayName": "Card Grid",
+      "technicalComponentName": "AllianzCardGrid",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCardGrid",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "342e603b-1db1-5af4-a7e9-a62be4ea6678",
+      "displayName": "Document List",
+      "technicalComponentName": "AllianzDocumentList",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzDocumentList",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "3cd4efcb-b7e0-528b-a525-668d74525435",
+      "displayName": "Footer",
+      "technicalComponentName": "AllianzFooter",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzFooter",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "03243a2c-97e5-54b8-b60c-2f94b98675a1",
+      "displayName": "Form",
+      "technicalComponentName": "AllianzForm",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzForm",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "1983f760-2407-5ee3-987d-5957eb461129",
+      "displayName": "Header",
+      "technicalComponentName": "AllianzHeader",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHeader",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "1d75f6ba-cc96-5fd7-9db6-7aab3a8c6a6e",
+      "displayName": "Hero",
+      "technicalComponentName": "AllianzHero",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHero",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "b6a45c26-8516-5b1a-aa07-83798fb57788",
+      "displayName": "Index Definitions",
+      "technicalComponentName": "AllianzIndexDefinitions",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzIndexDefinitions",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "92359bce-01f9-57f2-88c8-60b97d5d6178",
+      "displayName": "Legacy Accordion",
+      "technicalComponentName": "AllianzLegacyAccordion",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyAccordion",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "5726f1d0-fc15-5ed4-90e3-a9603d0e9825",
+      "displayName": "Legacy Breadcrumbs",
+      "technicalComponentName": "AllianzLegacyBreadcrumbs",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyBreadcrumbs",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "334fb514-8f91-5290-ae82-5d74937f150e",
+      "displayName": "Legacy Card Grid",
+      "technicalComponentName": "AllianzLegacyCardGrid",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyCardGrid",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "10b26485-8a6e-5fee-badf-1fb30590be5e",
+      "displayName": "Legacy Footer",
+      "technicalComponentName": "AllianzLegacyFooter",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyFooter",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "83a83fc1-7a77-5982-ab72-c57cddb4583d",
+      "displayName": "Legacy Header",
+      "technicalComponentName": "AllianzLegacyHeader",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyHeader",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "dfa33436-f08f-517d-a787-73861e39bc62",
+      "displayName": "Legacy Link List",
+      "technicalComponentName": "AllianzLegacyLinkList",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyLinkList",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "dabb2247-cab9-5c16-9019-f968317e82d8",
+      "displayName": "Legacy Sidebar",
+      "technicalComponentName": "AllianzLegacySidebar",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacySidebar",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "7956aaf8-596e-5405-85d5-721989505a95",
+      "displayName": "Rich Text",
+      "technicalComponentName": "AllianzRichText",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzRichText",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "f2fd6ed6-a96f-59a5-b7de-67d523fad31d",
+      "displayName": "Timeline",
+      "technicalComponentName": "AllianzTimeline",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzTimeline",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "8875fe31-89b2-4ccb-89df-4c38b2c2216b",
+      "displayName": "Biography Disclosures",
+      "technicalComponentName": "BiographyDisclosures",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Biography Disclosures",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "97e50373-18e6-42d4-acec-47d5f8270380",
+      "displayName": "Breadcrumb trail",
+      "technicalComponentName": "AllianzContextBreadcrumbs",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Breadcrumb trail",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "9282bc1e-734c-477a-96d1-8642e47c1e0c",
+      "displayName": "Company Hero",
+      "technicalComponentName": "CompanyHero",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Company Hero",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "f7d7743c-3659-4ae3-9197-ebaae7bd96b6",
+      "displayName": "Company Mission",
+      "technicalComponentName": "CompanyMission",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Company Mission",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "905d80ab-23df-4b12-9907-5f3fdb4593ec",
+      "displayName": "Company Strengths",
+      "technicalComponentName": "CompanyStrengths",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Company Strengths",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "7ad0adc0-4c15-40c4-bed2-7fd34ee3a3d9",
+      "displayName": "Executive Biography",
+      "technicalComponentName": "ExecutiveBiography",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Executive Biography",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "ceff6bf2-3b03-47e3-8cce-d7d18c63f9eb",
+      "displayName": "Executive Directory",
+      "technicalComponentName": "ExecutiveDirectory",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Executive Directory",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "bb8297a6-4186-404e-8c41-fac54ee0ae91",
+      "displayName": "Expert Biography",
+      "technicalComponentName": "ExpertBiography",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Expert Biography",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "f624dc11-e42a-499d-9d75-73da3964c7a0",
+      "displayName": "Expert Directory",
+      "technicalComponentName": "ExpertDirectory",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Expert Directory",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "7fce0fdf-dfdd-4c28-ab59-e1e9595041ec",
+      "displayName": "Helpful Resources",
+      "technicalComponentName": "HelpfulResources",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Helpful Resources",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "8915ddf6-5b02-4660-ae84-9f84f49ead2f",
+      "displayName": "Homepage Hero",
+      "technicalComponentName": "HomepageHero",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Homepage Hero",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "0db31973-59f9-4dd7-8789-2776ccd1cc17",
+      "displayName": "Icon Cards",
+      "technicalComponentName": "IconCards",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Icon Cards",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "4775d6f8-5f4a-4d6b-9324-9c5180c07d14",
+      "displayName": "Investment Portfolio",
+      "technicalComponentName": "InvestmentPortfolio",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Investment Portfolio",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "77cfc69b-64e5-4cef-a57a-b5d30f57c370",
+      "displayName": "Key Figures",
+      "technicalComponentName": "KeyFigures",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Key Figures",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "33628395-a1e3-4ab1-8a88-72d978907453",
+      "displayName": "Leadership Quote",
+      "technicalComponentName": "LeadershipQuote",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Leadership Quote",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "f7e18515-349e-44a1-ad83-320cad3af403",
+      "displayName": "Legal Disclosures",
+      "technicalComponentName": "LegalDisclosures",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Legal Disclosures",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "087e35e8-e159-429f-ad36-fd228a837f06",
+      "displayName": "Newsroom callout",
+      "technicalComponentName": "NewsroomCallout",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Newsroom callout",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "a8185c11-0a81-4dca-a9d3-bebe6ca42ea0",
+      "displayName": "Newsroom featured update",
+      "technicalComponentName": "NewsroomFeaturedUpdate",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Newsroom featured update",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "fe71dd88-cb8d-4463-a2b8-48cee6640d6a",
+      "displayName": "Newsroom Return",
+      "technicalComponentName": "NewsroomReturn",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Newsroom Return",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "33c26353-a1a2-43ff-90e1-6e139cc1860b",
+      "displayName": "Offerings Prompt",
+      "technicalComponentName": "OfferingsPrompt",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Offerings Prompt",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "47381b77-30cc-485f-b605-251d0f31962b",
+      "displayName": "Olympic Partnership",
+      "technicalComponentName": "OlympicPartnership",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Olympic Partnership",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "363d9caf-7596-4a7e-9ac2-82978605992d",
+      "displayName": "Press archive navigation",
+      "technicalComponentName": "NewsroomYearNavigation",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Press archive navigation",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "61388b92-b6dd-43b0-8de3-89c8df20ae2d",
+      "displayName": "Press Release",
+      "technicalComponentName": "PressRelease",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Press Release",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "6420c215-2fbb-4fcc-b83a-fcfa034eb4f2",
+      "displayName": "Press release archive",
+      "technicalComponentName": "PressReleaseArchive",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Press release archive",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "07ac9743-527b-465c-8b2d-4fb5dbf9447b",
+      "displayName": "Product Benefits",
+      "technicalComponentName": "ProductBenefits",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Benefits",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "cd286342-a2ed-4902-a6ce-8a0ed8e28964",
+      "displayName": "Product Disclosures",
+      "technicalComponentName": "ProductDisclosures",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Disclosures",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "87125b2e-199b-4586-a67c-f9214687c790",
+      "displayName": "Product FAQ",
+      "technicalComponentName": "ProductFaq",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product FAQ",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "aa0c4592-ded2-45b9-b685-a10271b11e5f",
+      "displayName": "Product FAQ Introduction",
+      "technicalComponentName": "ProductFaqIntro",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product FAQ Introduction",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "0b3919b4-03f5-490d-8c08-963c30c9d71a",
+      "displayName": "Product Footnotes",
+      "technicalComponentName": "ProductFootnotes",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Footnotes",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "93a83b32-7357-4401-9150-5eea6b363ac7",
+      "displayName": "Product Hero",
+      "technicalComponentName": "ProductHero",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Hero",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "f3803aa2-c802-4d31-8f3b-296da4fbbf94",
+      "displayName": "Product Introduction",
+      "technicalComponentName": "ProductIntroduction",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Introduction",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "ee1d014e-25a6-4604-a563-59fbc91ddc23",
+      "displayName": "Product Offerings",
+      "technicalComponentName": "ProductOfferings",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Offerings",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "035e59cf-788c-46f8-ae74-44994e186cf3",
+      "displayName": "Product Risk Disclosures",
+      "technicalComponentName": "ProductRiskDisclosures",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Risk Disclosures",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "565114f3-ec0b-4a82-b4fe-6f3fecced548",
+      "displayName": "Product Type Choices",
+      "technicalComponentName": "ProductTypeChoices",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Product Type Choices",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "cf872568-f517-4be7-9c16-21608dd6e857",
+      "displayName": "Prospectus Document Table",
+      "technicalComponentName": "ProspectusDocumentTable",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Prospectus Document Table",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "65f28f43-f1b3-400f-b7e7-6ae43e96d7f5",
+      "displayName": "Prospectus Introduction",
+      "technicalComponentName": "ProspectusIntroduction",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Prospectus Introduction",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "9dae650a-4df8-4f5b-8063-d0b83cd1f476",
+      "displayName": "Prospectus Product Directory",
+      "technicalComponentName": "ProspectusProductDirectory",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Prospectus Product Directory",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "dd790804-5705-4dae-ada6-28b1cdf70b08",
+      "displayName": "Public relations team",
+      "technicalComponentName": "NewsroomPublicRelations",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Public relations team",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "8fb877c2-6433-4f6a-a538-1e184abbbc25",
+      "displayName": "Recent news releases",
+      "technicalComponentName": "NewsroomRecentReleases",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Recent news releases",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "1e99983e-d87f-48d2-ac85-759620cdfa1f",
+      "displayName": "Retirement Goals Intro",
+      "technicalComponentName": "RetirementGoalsIntro",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Retirement Goals Intro",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "afec1eee-5751-43af-803c-5834d61f4caa",
+      "displayName": "Retirement Solutions Intro",
+      "technicalComponentName": "RetirementSolutionsIntro",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Retirement Solutions Intro",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "05f3e330-df46-4b28-b801-5fe1118b239a",
+      "displayName": "Section Navigation",
+      "technicalComponentName": "SectionNavigation",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Section Navigation",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "5873a995-3365-47b7-bbca-e09d3e4e69a3",
+      "displayName": "Secure Future Feature",
+      "technicalComponentName": "SecureFutureFeature",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Secure Future Feature",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "8a91278f-6451-4815-8d45-479169c8d19a",
+      "displayName": "Shareholder Report Access",
+      "technicalComponentName": "ShareholderReportAccess",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Shareholder Report Access",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "951d7791-3c30-468a-9e66-16477c166bcf",
+      "displayName": "Sustainability Commitment",
+      "technicalComponentName": "SustainabilityCommitment",
+      "currentCategory": "Allianz Life",
+      "inProjectInventory": "True",
+      "knownProjectNativePath": "/sitecore/layout/Renderings/Project/Allianz Life/Sustainability Commitment",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "True"
+    },
+    {
+      "componentId": "3ef239ba-a9cc-4bec-b343-b9abb9a9c94a",
+      "displayName": "Article Details",
+      "technicalComponentName": "ArticleDetails",
+      "currentCategory": "Articles",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "66b804d4-b6b6-4342-987f-ac4987d6f900",
+      "displayName": "Article Listing",
+      "technicalComponentName": "ArticleListing",
+      "currentCategory": "Articles",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "96e7cf65-48a4-47be-9bb7-dce50cf7aea1",
+      "displayName": "Selected Articles",
+      "technicalComponentName": "SelectedArticles",
+      "currentCategory": "Articles",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "e776d93c-00c8-466e-aaac-a4f90b590a3a",
+      "displayName": "Destination Listing",
+      "technicalComponentName": "DestinationListing",
+      "currentCategory": "Destinations",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "b9f1bab2-6962-49fa-95e2-abae6765756e",
+      "displayName": "DestinationDetails",
+      "technicalComponentName": "DestinationDetails",
+      "currentCategory": "Destinations",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "9233d899-603e-4e35-bc0b-f1cd64cd7ed1",
+      "displayName": "Selected Destinations",
+      "technicalComponentName": "SelectedDestinations",
+      "currentCategory": "Destinations",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "c6f7e044-b3a2-4510-ae50-5f546e30ccd1",
+      "displayName": "Doctor Details",
+      "technicalComponentName": "DoctorDetails",
+      "currentCategory": "Doctors",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "810e5b86-932a-4160-8672-c126b545f034",
+      "displayName": "Doctors Listing",
+      "technicalComponentName": "DoctorsListing",
+      "currentCategory": "Doctors",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "4fa5f05f-4f21-43d3-b45f-d7149f2dd2ec",
+      "displayName": "GridConditions",
+      "technicalComponentName": "GridConditions",
+      "currentCategory": "Energy Grid",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "33a73e35-492c-4a60-a24c-1de2024a6007",
+      "displayName": "GridDemand",
+      "technicalComponentName": "GridDemand",
+      "currentCategory": "Energy Grid",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "c604c3e4-a23d-47d3-a375-58d541dbe801",
+      "displayName": "GridStatusGauge",
+      "technicalComponentName": "GridStatusGauge",
+      "currentCategory": "Energy Grid",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "60c9d163-2898-49e3-a3b4-60f8e743062a",
+      "displayName": "SearchResults",
+      "technicalComponentName": "SearchResults",
+      "currentCategory": "Search",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "02654ba0-74ae-42a4-b384-bca9b96adf4b",
+      "displayName": "Footer",
+      "technicalComponentName": "Footer",
+      "currentCategory": "Global Elements",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "32138d34-7434-4cd1-bf7f-64da1ceb8f33",
+      "displayName": "Header",
+      "technicalComponentName": "Header",
+      "currentCategory": "Global Elements",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "0d60b2a1-9bf8-420a-8eea-bc98fe425eb7",
+      "displayName": "Header Extended",
+      "technicalComponentName": "HeaderExtended",
+      "currentCategory": "Global Elements",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "c29d8aec-ad95-44e5-bcf9-b0d98c933345",
+      "displayName": "All Products Carousel",
+      "technicalComponentName": "AllProductsCarousel",
+      "currentCategory": "Products",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "7eeeb709-7aaa-4b2f-8fba-88ef74b3d2fe",
+      "displayName": "Product Details",
+      "technicalComponentName": "ProductDetails",
+      "currentCategory": "Products",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "613a3675-953d-4ad1-877a-48d24a28977d",
+      "displayName": "Product Listing",
+      "technicalComponentName": "ProductListing",
+      "currentCategory": "Products",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "e874a406-4977-443b-8afe-690812afb5ef",
+      "displayName": "Selected Products",
+      "technicalComponentName": "SelectedProducts",
+      "currentCategory": "Products",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "6c0d91d1-a92f-41bd-949b-423811202101",
+      "displayName": "Language Switcher",
+      "technicalComponentName": "LanguageSwitcher",
+      "currentCategory": "Utilities",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "95a4be1d-049a-40e1-a9e8-9d90aea233e7",
+      "displayName": "ThemeEditor",
+      "technicalComponentName": "ThemeEditor",
+      "currentCategory": "Utilities",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    },
+    {
+      "componentId": "5ceff7c3-95ee-4ef8-a08c-7a6dbe5613cd",
+      "displayName": "ThemeSwitcher",
+      "technicalComponentName": "ThemeSwitcher",
+      "currentCategory": "Utilities",
+      "inProjectInventory": "False",
+      "knownProjectNativePath": "",
+      "allianzInDisplayName": "False",
+      "allianzInCategory": "False"
+    }
+  ],
+  "resolvedMainControls": [
+    {
+      "renderingId": "2e7d5478-7676-440f-b873-ecc3d68bd284",
+      "effectiveName": "Company Profile"
+    },
+    {
+      "renderingId": "7e693f81-a98e-5e6f-ad07-e01377139dd5",
+      "effectiveName": "Accordion"
+    },
+    {
+      "renderingId": "0bd23a13-5792-50bd-a8eb-d4297d02c06d",
+      "effectiveName": "Breadcrumbs"
+    },
+    {
+      "renderingId": "45e446af-6284-5804-ad6d-25486aa75c5e",
+      "effectiveName": "Calculator"
+    },
+    {
+      "renderingId": "ea0674f1-31a1-540c-8622-91399e29ffe0",
+      "effectiveName": "Card Grid"
+    },
+    {
+      "renderingId": "342e603b-1db1-5af4-a7e9-a62be4ea6678",
+      "effectiveName": "Document List"
+    },
+    {
+      "renderingId": "03243a2c-97e5-54b8-b60c-2f94b98675a1",
+      "effectiveName": "Form"
+    },
+    {
+      "renderingId": "1d75f6ba-cc96-5fd7-9db6-7aab3a8c6a6e",
+      "effectiveName": "Hero"
+    },
+    {
+      "renderingId": "b6a45c26-8516-5b1a-aa07-83798fb57788",
+      "effectiveName": "Index Definitions"
+    },
+    {
+      "renderingId": "92359bce-01f9-57f2-88c8-60b97d5d6178",
+      "effectiveName": "Legacy Accordion"
+    },
+    {
+      "renderingId": "5726f1d0-fc15-5ed4-90e3-a9603d0e9825",
+      "effectiveName": "Legacy Breadcrumbs"
+    },
+    {
+      "renderingId": "334fb514-8f91-5290-ae82-5d74937f150e",
+      "effectiveName": "Legacy Card Grid"
+    },
+    {
+      "renderingId": "dfa33436-f08f-517d-a787-73861e39bc62",
+      "effectiveName": "Legacy Link List"
+    },
+    {
+      "renderingId": "f2fd6ed6-a96f-59a5-b7de-67d523fad31d",
+      "effectiveName": "Timeline"
+    },
+    {
+      "renderingId": "8875fe31-89b2-4ccb-89df-4c38b2c2216b",
+      "effectiveName": "Biography Disclosures"
+    },
+    {
+      "renderingId": "97e50373-18e6-42d4-acec-47d5f8270380",
+      "effectiveName": "Breadcrumb trail"
+    },
+    {
+      "renderingId": "9282bc1e-734c-477a-96d1-8642e47c1e0c",
+      "effectiveName": "Company Hero"
+    },
+    {
+      "renderingId": "f7d7743c-3659-4ae3-9197-ebaae7bd96b6",
+      "effectiveName": "Company Mission"
+    },
+    {
+      "renderingId": "905d80ab-23df-4b12-9907-5f3fdb4593ec",
+      "effectiveName": "Company Strengths"
+    },
+    {
+      "renderingId": "7ad0adc0-4c15-40c4-bed2-7fd34ee3a3d9",
+      "effectiveName": "Executive Biography"
+    },
+    {
+      "renderingId": "ceff6bf2-3b03-47e3-8cce-d7d18c63f9eb",
+      "effectiveName": "Executive Directory"
+    },
+    {
+      "renderingId": "bb8297a6-4186-404e-8c41-fac54ee0ae91",
+      "effectiveName": "Expert Biography"
+    },
+    {
+      "renderingId": "f624dc11-e42a-499d-9d75-73da3964c7a0",
+      "effectiveName": "Expert Directory"
+    },
+    {
+      "renderingId": "7fce0fdf-dfdd-4c28-ab59-e1e9595041ec",
+      "effectiveName": "Helpful Resources"
+    },
+    {
+      "renderingId": "8915ddf6-5b02-4660-ae84-9f84f49ead2f",
+      "effectiveName": "Homepage Hero"
+    },
+    {
+      "renderingId": "0db31973-59f9-4dd7-8789-2776ccd1cc17",
+      "effectiveName": "Icon Cards"
+    },
+    {
+      "renderingId": "4775d6f8-5f4a-4d6b-9324-9c5180c07d14",
+      "effectiveName": "Investment Portfolio"
+    },
+    {
+      "renderingId": "77cfc69b-64e5-4cef-a57a-b5d30f57c370",
+      "effectiveName": "Key Figures"
+    },
+    {
+      "renderingId": "33628395-a1e3-4ab1-8a88-72d978907453",
+      "effectiveName": "Leadership Quote"
+    },
+    {
+      "renderingId": "f7e18515-349e-44a1-ad83-320cad3af403",
+      "effectiveName": "Legal Disclosures"
+    },
+    {
+      "renderingId": "087e35e8-e159-429f-ad36-fd228a837f06",
+      "effectiveName": "Newsroom callout"
+    },
+    {
+      "renderingId": "a8185c11-0a81-4dca-a9d3-bebe6ca42ea0",
+      "effectiveName": "Newsroom featured update"
+    },
+    {
+      "renderingId": "fe71dd88-cb8d-4463-a2b8-48cee6640d6a",
+      "effectiveName": "Newsroom Return"
+    },
+    {
+      "renderingId": "33c26353-a1a2-43ff-90e1-6e139cc1860b",
+      "effectiveName": "Offerings Prompt"
+    },
+    {
+      "renderingId": "47381b77-30cc-485f-b605-251d0f31962b",
+      "effectiveName": "Olympic Partnership"
+    },
+    {
+      "renderingId": "363d9caf-7596-4a7e-9ac2-82978605992d",
+      "effectiveName": "Press archive navigation"
+    },
+    {
+      "renderingId": "61388b92-b6dd-43b0-8de3-89c8df20ae2d",
+      "effectiveName": "Press Release"
+    },
+    {
+      "renderingId": "6420c215-2fbb-4fcc-b83a-fcfa034eb4f2",
+      "effectiveName": "Press release archive"
+    },
+    {
+      "renderingId": "07ac9743-527b-465c-8b2d-4fb5dbf9447b",
+      "effectiveName": "Product Benefits"
+    },
+    {
+      "renderingId": "cd286342-a2ed-4902-a6ce-8a0ed8e28964",
+      "effectiveName": "Product Disclosures"
+    },
+    {
+      "renderingId": "87125b2e-199b-4586-a67c-f9214687c790",
+      "effectiveName": "Product FAQ"
+    },
+    {
+      "renderingId": "aa0c4592-ded2-45b9-b685-a10271b11e5f",
+      "effectiveName": "Product FAQ Introduction"
+    },
+    {
+      "renderingId": "0b3919b4-03f5-490d-8c08-963c30c9d71a",
+      "effectiveName": "Product Footnotes"
+    },
+    {
+      "renderingId": "93a83b32-7357-4401-9150-5eea6b363ac7",
+      "effectiveName": "Product Hero"
+    },
+    {
+      "renderingId": "f3803aa2-c802-4d31-8f3b-296da4fbbf94",
+      "effectiveName": "Product Introduction"
+    },
+    {
+      "renderingId": "ee1d014e-25a6-4604-a563-59fbc91ddc23",
+      "effectiveName": "Product Offerings"
+    },
+    {
+      "renderingId": "035e59cf-788c-46f8-ae74-44994e186cf3",
+      "effectiveName": "Product Risk Disclosures"
+    },
+    {
+      "renderingId": "565114f3-ec0b-4a82-b4fe-6f3fecced548",
+      "effectiveName": "Product Type Choices"
+    },
+    {
+      "renderingId": "cf872568-f517-4be7-9c16-21608dd6e857",
+      "effectiveName": "Prospectus Document Table"
+    },
+    {
+      "renderingId": "65f28f43-f1b3-400f-b7e7-6ae43e96d7f5",
+      "effectiveName": "Prospectus Introduction"
+    },
+    {
+      "renderingId": "9dae650a-4df8-4f5b-8063-d0b83cd1f476",
+      "effectiveName": "Prospectus Product Directory"
+    },
+    {
+      "renderingId": "dd790804-5705-4dae-ada6-28b1cdf70b08",
+      "effectiveName": "Public relations team"
+    },
+    {
+      "renderingId": "8fb877c2-6433-4f6a-a538-1e184abbbc25",
+      "effectiveName": "Recent news releases"
+    },
+    {
+      "renderingId": "1e99983e-d87f-48d2-ac85-759620cdfa1f",
+      "effectiveName": "Retirement Goals Intro"
+    },
+    {
+      "renderingId": "afec1eee-5751-43af-803c-5834d61f4caa",
+      "effectiveName": "Retirement Solutions Intro"
+    },
+    {
+      "renderingId": "05f3e330-df46-4b28-b801-5fe1118b239a",
+      "effectiveName": "Section Navigation"
+    },
+    {
+      "renderingId": "5873a995-3365-47b7-bbca-e09d3e4e69a3",
+      "effectiveName": "Secure Future Feature"
+    },
+    {
+      "renderingId": "8a91278f-6451-4815-8d45-479169c8d19a",
+      "effectiveName": "Shareholder Report Access"
+    },
+    {
+      "renderingId": "951d7791-3c30-468a-9e66-16477c166bcf",
+      "effectiveName": "Sustainability Commitment"
+    }
+  ],
+  "originalMainRawReferences": [
+    "{1D75F6BA-CC96-5FD7-9DB6-7AAB3A8C6A6E}",
+    "{F7D7743C-3659-4AE3-9197-EBAAE7BD96B6}",
+    "{EA0674F1-31A1-540C-8622-91399E29FFE0}",
+    "{7E693F81-A98E-5E6F-AD07-E01377139DD5}",
+    "{174739E5-3388-56D9-AAE2-DFF5AE409184}",
+    "{342E603B-1DB1-5AF4-A7E9-A62BE4EA6678}",
+    "{0BD23A13-5792-50BD-A8EB-D4297D02C06D}",
+    "{03243A2C-97E5-54B8-B60C-2F94B98675A1}",
+    "{8297F8F3-5ABA-5BC1-BDAD-B0EF2E6FBD8D}",
+    "{C4FBFD1B-2FC0-5AF5-85C1-BABC12FF56DA}",
+    "{C10B523B-B066-557D-9A41-5A9F9569137A}",
+    "{F2FD6ED6-A96F-59A5-B7DE-67D523FAD31D}",
+    "{AFE940AC-70ED-526E-BFE0-A4C317A94C1D}",
+    "{B6A45C26-8516-5B1A-AA07-83798FB57788}",
+    "{45E446AF-6284-5804-AD6D-25486AA75C5E}",
+    "{1488A5D6-ECA0-5B80-B83C-C018E5D769D1}",
+    "{8F61AB55-3F41-577C-B53A-09FA61875E81}",
+    "{B642C279-575F-576F-B2C4-761765954A99}",
+    "{92359BCE-01F9-57F2-88C8-60B97D5D6178}",
+    "{334FB514-8F91-5290-AE82-5D74937F150E}",
+    "{DFA33436-F08F-517D-A787-73861E39BC62}",
+    "{5726F1D0-FC15-5ED4-90E3-A9603D0E9825}",
+    "{8915DDF6-5B02-4660-AE84-9F84F49EAD2F}",
+    "{47381B77-30CC-485F-B605-251D0F31962B}",
+    "{AFEC1EEE-5751-43AF-803C-5834D61F4CAA}",
+    "{EE1D014E-25A6-4604-A563-59FBC91DDC23}",
+    "{1E99983E-D87F-48D2-AC85-759620CDFA1F}",
+    "{5873A995-3365-47B7-BBCA-E09D3E4E69A3}",
+    "{7FCE0FDF-DFDD-4C28-AB59-E1E9595041EC}",
+    "{CD286342-A2ED-4902-A6CE-8A0ED8E28964}",
+    "{363D9CAF-7596-4A7E-9AC2-82978605992D}",
+    "{97E50373-18E6-42D4-ACEC-47D5F8270380}",
+    "{9282BC1E-734C-477A-96D1-8642E47C1E0C}",
+    "{A8185C11-0A81-4DCA-A9D3-BEBE6CA42EA0}",
+    "{8FB877C2-6433-4F6A-A538-1E184ABBBC25}",
+    "{DD790804-5705-4DAE-ADA6-28B1CDF70B08}",
+    "{087E35E8-E159-429F-AD36-FD228A837F06}",
+    "{2E7D5478-7676-440F-B873-ECC3D68BD284}",
+    "{F7E18515-349E-44A1-AD83-320CAD3AF403}",
+    "{6420C215-2FBB-4FCC-B83A-FCFA034EB4F2}"
+  ],
+  "fieldValueSha256": {
+    "c3a08376-6399-48b8-903a-d0376671c8f3": "97f4848c8b8dc4e84c83934465c2582f1cf351b1a8963809374e5b9d7f6d2c1e",
+    "18cc9b1d-79cd-4e15-aeb2-df21c6081511": "174844380e06eaa2f1cba581f5ae49ef70db2fc6ce26021d790b05ae44d57541",
+    "fc6e7695-eeef-4eca-a134-39afec227bdb": "57d5b6be5e852293e68228c23581a51471979a2dce1418bec8b44e60469e227e",
+    "4a618102-1c13-472e-b8ba-bca9ed27ece8": "4da5d9e58c2b86d3fa4d9381a3bc99bc1ac51dfd9890bf6db496aa879655a199",
+    "91cacad8-db57-4097-ace3-38282cb32061": "b7119f0ed809b86cdc4a9e139a188a942e2f56f0c441067fcc13432f7f349022",
+    "fb6f6341-b94d-4305-8ffe-e22eb32ba3a6": "16ade6c38682a9f048f0c6af474972cce4ce67a68240d181d8edb85cf8be6014",
+    "55a88e67-a227-46be-9e1d-2a680e1a6943": "4a0693b03a2c8fe1458354e49e743ac6e1dedbd5cf0645c174c6a2f4656a082d",
+    "cadb4233-34e7-5b85-b36f-0b8475f4cbd0": "5d0eb844aa68e094b22cca5acddc5c304ecf2748570f0f649819fa7af5aadf0d",
+    "2e7d5478-7676-440f-b873-ecc3d68bd284": "72e8825dea3b0030335bfaa60ef0cb0d432062b69ce6d0229f8a50dab34cdf08"
+  },
+  "historicalSourceBaseline": {
+    "commit": "241b6912e9f25577f6ba89123ce79aa5adb2b7fc",
+    "files": [
+      {
+        "path": "scripts/allianz-life/generate-structure.py",
+        "gitBlobSha": "1561286fe8bb9d5d61f551ddea5d44245558b488"
+      },
+      {
+        "path": "authoring/allianz-life/items/allianz.placeholders/Allianz Life/headless-main.yml",
+        "gitBlobSha": "e773fb44f72917ca0b647f8de42b4584fdc55a1b"
+      },
+      {
+        "path": "authoring/allianz-life/structure-manifest.json",
+        "gitBlobSha": "e2661a2b14c1cfd2eb8a8bd7acc797f401b9bb4b"
+      }
+    ]
+  },
+  "inventoryProvenance": {
+    "captureSource": {
+      "filename": "Palette-Source-Serialization-Handoff-2026-10-04.zip",
+      "sha256": "027b98f2ef674c6b1e374b8ed5b8b9a5ffef9e016b9d2d1e2c9dec0020bc597a"
+    },
+    "observedAtUtc": "2026-10-04T06:51:39.577612+00:00",
+    "arrays": {
+      "sectionInventory": {
+        "recordCount": 14,
+        "orderedSha256": "e40c0e5774b375ed12ebcbe0c4cf65396d8420bcf1296240a3462be5ae9098da",
+        "sourceFile": "evidence/SOURCE-HANDOFF-FRESH-READONLY-RECEIPT.json",
+        "sourceFileSha256": "622d89f0fe20e077d15e19d91cd728c7cff2fd10715fe44404fd7fa015bd2a85"
+      },
+      "rendererInventory": {
+        "recordCount": 74,
+        "orderedSha256": "91aaf326d9097b57d69ae41933b3761162d9fd12587c18fb25851e0445a77c80",
+        "sourceFile": "PROJECT-COMPONENT-NAME-INVENTORY.csv",
+        "sourceFileSha256": "d971a2dd889eead432b42e1fae4ca0d00ec2245a3087b035915e067c4c83626a"
+      },
+      "sitePaletteInventory": {
+        "recordCount": 122,
+        "orderedSha256": "0dff86157b06d2cfb639f24a1ed107c27eaf5535e538ce814e2c851c0c86bf3b",
+        "sourceFile": "COMPLETE-SITE-PALETTE-NAME-INVENTORY.csv",
+        "sourceFileSha256": "ec4ed3dc6c61f35ba6f1d727fe89de07a99f234a12a596b263df1e085d42eb5e"
+      },
+      "resolvedMainControls": {
+        "recordCount": 59,
+        "orderedSha256": "2afb463e96d3e503bc501671577b0596f2bba24ec3da178685ed62805e252d5a",
+        "sourceFile": "RESOLVED-BODY-CONTROLS.csv",
+        "sourceFileSha256": "59265dc6d98299d2fa8e601e55db427cf08e48268c4b32da0579eabd2397d55c"
+      },
+      "items": {
+        "recordCount": 9,
+        "orderedSha256": "ecb17915e06292907c169788b9c34a2c0e9c1247d39a579a9223af204eb0b856",
+        "sourceFile": "NATIVE-PALETTE-SOURCE-SERIALIZATION-HANDOFF.json",
+        "sourceFileSha256": "42113c3fc5cd53a946c993862c3c38551681be4e433cbba73137024f1ad0f4b2"
+      },
+      "originalMainRawReferences": {
+        "recordCount": 40,
+        "orderedSha256": "4d507d3da4efd153cedff75d2a16f304539ed4a9f0dbb000aa2d2c5ac571c266",
+        "sourceFile": "NATIVE-PALETTE-SOURCE-SERIALIZATION-HANDOFF.json",
+        "sourceFileSha256": "42113c3fc5cd53a946c993862c3c38551681be4e433cbba73137024f1ad0f4b2"
+      }
+    }
+  }
+}

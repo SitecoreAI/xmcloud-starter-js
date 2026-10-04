@@ -1,0 +1,13 @@
+---
+ID: "2e7d5478-7676-440f-b873-ecc3d68bd284"
+Parent: "c4c92e66-b8c2-55e8-b500-5c9f122daa3f"
+Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+Path: "/sitecore/layout/Renderings/Project/Allianz Life/About Allianz Life"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Company Profile"
+  Versions:
+  - Version: 1

@@ -1,0 +1,9 @@
+---
+ID: "c3a08376-6399-48b8-903a-d0376671c8f3"
+Parent: "0af6d2f6-7768-43df-bc9c-34da3ae83d3f"
+Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
+Path: "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/People"
+SharedFields:
+- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
+  Hint: Renderings
+  Value: "{F624DC11-E42A-499D-9D75-73DA3964C7A0}|{7AD0ADC0-4C15-40C4-BED2-7FD34EE3A3D9}|{CEFF6BF2-3B03-47E3-8CCE-D7D18C63F9EB}|{BB8297A6-4186-404E-8C41-FAC54EE0AE91}|{8875FE31-89B2-4CCB-89DF-4C38B2C2216B}"

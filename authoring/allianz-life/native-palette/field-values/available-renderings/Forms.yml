@@ -1,0 +1,9 @@
+---
+ID: "55a88e67-a227-46be-9e1d-2a680e1a6943"
+Parent: "0af6d2f6-7768-43df-bc9c-34da3ae83d3f"
+Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
+Path: "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Forms"
+SharedFields:
+- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
+  Hint: Renderings
+  Value: "{62DD1639-9F28-4040-8738-C886480B2127}|{03243A2C-97E5-54B8-B60C-2F94B98675A1}"

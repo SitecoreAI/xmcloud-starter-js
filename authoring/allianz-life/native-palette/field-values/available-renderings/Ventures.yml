@@ -1,0 +1,9 @@
+---
+ID: "fb6f6341-b94d-4305-8ffe-e22eb32ba3a6"
+Parent: "0af6d2f6-7768-43df-bc9c-34da3ae83d3f"
+Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
+Path: "/sitecore/content/allianz/allianz-life/Presentation/Available Renderings/Ventures"
+SharedFields:
+- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
+  Hint: Renderings
+  Value: "{4775D6F8-5F4A-4D6B-9324-9C5180C07D14}|{77CFC69B-64E5-4CEF-A57A-B5D30F57C370}|{33628395-A1E3-4AB1-8A88-72D978907453}|{33C26353-A1A2-43FF-90E1-6E139CC1860B}|{951D7791-3C30-468A-9E66-16477C166BCF}"

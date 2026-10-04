@@ -7,6 +7,7 @@ verified target snapshot. UUIDv5 identities remain stable across regeneration.
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 from pathlib import Path
 import re
@@ -15,6 +16,10 @@ import uuid
 REPO = Path(__file__).resolve().parents[2]
 OUTPUT = REPO / "authoring/allianz-life"
 NAMESPACE = uuid.uuid5(uuid.NAMESPACE_URL, "https://www.allianzlife.com/sitecoreai-demo")
+
+_palette_spec = importlib.util.spec_from_file_location("allianz_native_palette", Path(__file__).with_name("native-palette.py"))
+native_palette = importlib.util.module_from_spec(_palette_spec)
+_palette_spec.loader.exec_module(native_palette)
 
 # Verified against this repository's serialized items. Live dependency resolution
 # remains mandatory: these references are platform prerequisites, not imported.
@@ -344,6 +349,10 @@ def component_query(name: str, definition: dict) -> str:
 
 
 def generate() -> tuple[list[dict], dict]:
+    # Fail closed if the durable native field projection is missing/malformed.
+    # Its independent serializer retains categories and renderer inventories;
+    # this historical generator owns only the matching existing Main field.
+    palette_model = native_palette.load_model()
     values = []
     for root, kind, parent in ROOTS.values():
         values.append(item(root, kind, PLATFORM[parent]))
@@ -395,7 +404,10 @@ def generate() -> tuple[list[dict], dict]:
         values.append(item(render_path, "JsonRendering", shared=shared, unversioned=[field(FIELD["DisplayName"], "__Display name", RENDERING_AUTHORING[name]["displayName"])]))
     placeholders = {"headless-header": ["AllianzHeader", "AllianzLegacyHeader"], "headless-main": [name for name in COMPONENTS if name not in ("AllianzHeader", "AllianzFooter", "AllianzLegacyHeader", "AllianzLegacyFooter", "AllianzLegacySidebar")], "headless-footer": ["AllianzFooter", "AllianzLegacyFooter"], "headless-sidebar": ["AllianzLegacySidebar"]}
     for key, names in placeholders.items():
-        values.append(item(ROOTS["allianz.placeholders"][0] + "/" + key, "Placeholder", shared=[field(FIELD["PlaceholderKey"], "Placeholder Key", key), field(FIELD["AllowedControls"], "Allowed Controls", "\n".join(brace(identifier(ROOTS["allianz.renderings"][0] + "/" + name)) for name in names))]))
+        placeholder = item(ROOTS["allianz.placeholders"][0] + "/" + key, "Placeholder", shared=[field(FIELD["PlaceholderKey"], "Placeholder Key", key), field(FIELD["AllowedControls"], "Allowed Controls", "\n".join(brace(identifier(ROOTS["allianz.renderings"][0] + "/" + name)) for name in names))])
+        if key == "headless-main":
+            placeholder = native_palette.override_main(placeholder, palette_model)
+        values.append(placeholder)
     # Datasource branches are useful traditional branches; these are NOT the new
     # tenant Page Branches UI library, whose schema must be read independently.
     for name, child in (("AllianzCardGrid", "AllianzCard"), ("AllianzAccordion", "AllianzAccordionEntry")):
