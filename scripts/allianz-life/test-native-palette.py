@@ -20,7 +20,8 @@ def load_module(name: str, filename: str):
 
 palette = load_module("allianz_palette_tests", "native-palette.py")
 structure = load_module("allianz_structure_palette_tests", "generate-structure.py")
-NON_MAIN_ITEMS_SHA256 = "f4c94b449922ff8257c1eef7a3670b3ee34285bda0facf758869cddce9ed7c24"
+# Includes the reviewed, natively verified LegacyCardGrid consumed-field query.
+NON_MAIN_ITEMS_SHA256 = "babdd47bc84da299633b98db4c14a3b0a3ac9817367a0459e72087473c9d7fdd"
 
 
 class NativePaletteTests(unittest.TestCase):
