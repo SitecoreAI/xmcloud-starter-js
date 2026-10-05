@@ -329,7 +329,10 @@ def nav_selection(indent: str, limits: tuple[int, ...] = ()) -> list[str]:
 
 def component_query(name: str, definition: dict) -> str:
     lines = ["query " + name + "Query($datasource: String!, $language: String!) {", "  datasource: item(path: $datasource, language: $language) {", "    id"]
-    lines.extend(selected_fields(definition["fields"], "    "))
+    # Legacy cards consume only this root field; keep the broader authoring
+    # template intact. This lean projection was verified in native Privacy.
+    root_fields = {"heading": definition["fields"]["heading"]} if name == "AllianzLegacyCardGrid" else definition["fields"]
+    lines.extend(selected_fields(root_fields, "    "))
     for nav_field in [key for key, kind in definition["fields"].items() if kind == "Treelist"]:
         lines.append('    ' + nav_field + ': field(name: "' + nav_field + '") { ... on MultilistField { targetItems {')
         lines.extend(nav_selection("      ", NAV_LIMITS.get((name, nav_field), ())))
@@ -343,6 +346,13 @@ def component_query(name: str, definition: dict) -> str:
             # keeps the SDK field objects and ordered reference item fields; the
             # frontend projects their names without inventing fixture content.
             lines.append("      fieldCollection: fields { name jsonValue }")
+        elif name == "AllianzLegacyCardGrid":
+            # Preserve the verified first:8 result and paging metadata, while
+            # requesting only fields used by AllianzLegacyCardGrid. Removing
+            # just its unused links tree did not resolve the native failure.
+            card_fields = CHILDREN[definition["children"]]
+            consumed = ("heading", "body", "image", "icon", "link", "headingLevel")
+            lines.extend(selected_fields({field: card_fields[field] for field in consumed}, "      "))
         else:
             lines.extend(selected_fields(CHILDREN[definition["children"]], "      "))
             for nav_field, kind in CHILDREN[definition["children"]].items():
