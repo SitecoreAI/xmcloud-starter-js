@@ -23,6 +23,7 @@ function loadSource(filename) {
   modules.set(filename, compiled);
   const nativeRequire = compiled.require.bind(compiled);
   compiled.require = (specifier) => {
+    if (specifier.endsWith('.css')) return {};
     let local;
     if (specifier.startsWith('.')) local = path.resolve(path.dirname(filename), specifier);
     if (/^(components|lib)\//.test(specifier)) local = path.join(sourceRoot, specifier);

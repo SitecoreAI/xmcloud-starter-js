@@ -37,3 +37,18 @@ export const Default = ({ fields, params }: ProductDisclosuresProps) => {
     </div>
   );
 };
+
+/** FAQ source note has a plain RTE wrapper, without the Home introduction scaffold. */
+export const FaqNote = ({ fields, params }: ProductDisclosuresProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="Product Disclosures" />;
+  return (
+    <div className="l-container--full-width t-bg-grey-muted axlTileCollection" id={params?.RenderingIdentifier}>
+      <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText field={data.body?.jsonValue} editable={isEditing} className="o-richTextEditor__wrapper" />}
+      </div></div></div>
+    </div>
+  );
+};

@@ -6,6 +6,7 @@ import MockLogin from 'components/content-sdk/MockLogin';
 import { sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import type { AllianzHeroProps } from './allianz-hero.props';
+import './AllianzFaqHero.css';
 
 export const Default = ({ fields, params }: AllianzHeroProps) => {
   const { page } = useSitecore();
@@ -51,6 +52,31 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
             </div>
             {params.showLogin === '1' && <div className="l-grid__column-small-12 l-grid__column-large-4 c-hero__loginForm"><MockLogin /></div>}
           </div></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const hasFaqBlockMarkup = (value?: string): boolean =>
+  /<(?:address|article|aside|blockquote|div|dl|fieldset|figure|footer|form|h[1-6]|header|hr|main|nav|ol|p|pre|section|table|ul)\b/i.test(value ?? '');
+
+/** Fixed-product FAQ title/subtitle, with no invented hero image or CTA. */
+export const FixedFaq = ({ fields, params }: AllianzHeroProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzHero" />;
+  const blockHeading = hasFaqBlockMarkup(data.heading?.jsonValue?.value);
+  return (
+    <div className="l-container-full-width t-bg-product-fixed c-hero__theme--fixed allianz-faq-hero" id={params?.RenderingIdentifier}>
+      <div className="m-axlHero">
+        <picture className="c-image c-stage__image--cover c-stage__image--short" />
+        <div className="l-grid l-grid--max-width l-grid--no-gutters">
+          <div className="l-grid__column-medium-12 c-hero__wrapper">
+            {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} field={data.heading?.jsonValue} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
+            {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} tag={hasFaqBlockMarkup(data.body?.jsonValue?.value) ? 'div' : 'p'} field={data.body?.jsonValue} className="h4 c-heading c-hero__subHeadline u-text-center" />}
+          </div>
         </div>
       </div>
     </div>

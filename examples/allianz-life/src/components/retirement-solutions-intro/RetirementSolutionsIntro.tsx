@@ -72,3 +72,27 @@ export const White = (props: RetirementSolutionsIntroProps) => <RetirementSoluti
 
 /** FIA portfolio introduction uses the same native fields on the source's blue section. */
 export const Portfolio = (props: RetirementSolutionsIntroProps) => <RetirementSolutionsIntro {...props} appearance="portfolio" />;
+
+/** Intro row inside AllianzFaqSection; the section owns width and outer spacing. */
+export const FaqRow = ({ fields, params }: RetirementSolutionsIntroProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="Retirement Solutions Intro" />;
+  return (
+    <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg allianz-retirement-solutions-intro" id={params?.RenderingIdentifier}>
+      <div className="l-grid__column-medium-12">
+        <article className="m-axlIntroductionBlock -is--stacked -no--image">
+          <div className="tileContent u-text-center">
+            {shouldRenderImageField(data.icon?.jsonValue, isEditing) && <div className="tileIcon t-bg-transparent t-icon-primary-black"><Image field={data.icon?.jsonValue} editable={isEditing} /></div>}
+            <header>
+              <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text field={data.heading?.jsonValue} tag="h2" editable={isEditing} />}</div>
+              <div className="tileSubHeading" />
+            </header>
+            {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText field={data.body?.jsonValue} editable={isEditing} className="tileBody" />}
+          </div>
+        </article>
+      </div>
+    </div>
+  );
+};

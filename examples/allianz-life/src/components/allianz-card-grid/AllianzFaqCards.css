@@ -1,0 +1,13 @@
+/* The official FAQ uses inline SVG icons. Native Content Hub images need the
+ * same 26px/40px dimensions and #3c3c3c fill, scoped to the new FAQ variants. */
+.allianz-faq-cards .tileIcon img {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+
+@media (min-width: 704px) {
+  .allianz-faq-cards .tileIcon img {
+    width: 40px;
+  }
+}

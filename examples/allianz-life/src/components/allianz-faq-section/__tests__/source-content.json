@@ -1,0 +1,228 @@
+{
+  "status": "source-backed-intent-not-live-native-items",
+  "source": {
+    "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs",
+    "capturedAtUtc": "2026-10-05T11:36:07Z",
+    "sha256": "e3c63442e85cfebf8f2a18f99410e7608a058bd6449a4f4c8ca4349e93f51833",
+    "bytes": 109687
+  },
+  "pageMetadata": {
+    "documentTitle": "Frequently Asked Questions for FIAs | Allianz Life",
+    "description": "Frequently Asked Questions for FIAs",
+    "sourceCanonicalUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs",
+    "sourceRobots": "all"
+  },
+  "route": "/what-we-offer/annuities/fixed-index-annuities/frequently-asked-questions-for-fias",
+  "language": "en",
+  "hero": {
+    "heading": "Frequently asked questions for FIAs",
+    "body": "Fixed index annuities",
+    "desktopImage": "",
+    "mobileImage": "",
+    "primaryLink": "",
+    "secondaryLink": "",
+    "eyebrow": ""
+  },
+  "contractHelp": {
+    "heading": "Questions about your contract?",
+    "body": "",
+    "subheading": "",
+    "primaryLink": "",
+    "children": [
+      {
+        "key": "help-01",
+        "heading": "Learn how to log in and see contract info",
+        "body": "<p><a href=\"https://www.allianzlife.com/login\">Log in</a>, click on Personal Accounts to view contract details, current and previous statements, and correspondence.</p>",
+        "iconPurpose": "Laptop",
+        "iconTheme": "transparent",
+        "theme": "primary-white",
+        "headingLevel": "h3",
+        "subheading": "",
+        "image": "",
+        "link": "",
+        "links": [],
+        "alphanumeral": ""
+      },
+      {
+        "key": "help-02",
+        "heading": "Having trouble logging in?",
+        "body": "<p>Please complete our '<a href=\"/Login/forgot-username-individual\">Forgot Username</a>’ or ‘<a href=\"/Login/forgot-password-individual\">Forgot Password</a>’ form and we will send the information to the email address we have on file.</p>",
+        "iconPurpose": "User Settings",
+        "iconTheme": "transparent",
+        "theme": "primary-white",
+        "headingLevel": "h3",
+        "subheading": "",
+        "image": "",
+        "link": "",
+        "links": [],
+        "alphanumeral": ""
+      },
+      {
+        "key": "help-03",
+        "heading": "Have questions about your contract?",
+        "body": "<p>Contact your financial professional or call us at <a href=\"tel:8006240197\">800.624.0197</a>.</p>",
+        "iconPurpose": "Support",
+        "iconTheme": "transparent",
+        "theme": "primary-white",
+        "headingLevel": "h3",
+        "subheading": "",
+        "image": "",
+        "link": "",
+        "links": [],
+        "alphanumeral": ""
+      }
+    ]
+  },
+  "groups": [
+    {
+      "key": "learn-more",
+      "intro": {
+        "heading": "Learn more about FIAs",
+        "body": "",
+        "iconPurpose": "Light Bulb"
+      },
+      "accordion": {
+        "heading": "",
+        "primaryLink": "",
+        "children": [
+          {
+            "key": "learn-more-01",
+            "sortorder": 100,
+            "heading": "How do fixed index annuities work?",
+            "body": "<p>Fixed index annuities (FIAs) are simply contracts with an insurance company. In exchange for one or more purchase payments, they provide specific guarantees as described in the contract. FIAs generally have two phases: During the accumulation phase they offer tax-deferred accumulation potential, and during the income phase they provide guaranteed income – in some cases for as long as you live.</p>",
+            "link": "",
+            "paragraphCount": 1
+          },
+          {
+            "key": "learn-more-02",
+            "sortorder": 200,
+            "heading": "What does “principal protection” mean?",
+            "body": "<p>It means the money in your fixed index annuity contract is not at risk due to market losses. Although FIAs may credit indexed interest based on changes in an external index, you’re not actually participating in the market – so the principal in your annuity is never at risk due to market losses. Fees and charges may still reduce your annuity’s value, however.</p>",
+            "link": "",
+            "paragraphCount": 1
+          },
+          {
+            "key": "learn-more-03",
+            "sortorder": 300,
+            "heading": "What is indexed interest?",
+            "body": "<p>Simply put, it’s interest your contract earns based on positive changes in an external index. We track the performance of one or more indexes you select, and if the return is positive, you have the opportunity to earn indexed interest. But remember that with fixed index annuities, you’re not actually participating in the market – so the principal in your annuity is never at risk due to market losses.</p>",
+            "link": "",
+            "paragraphCount": 1
+          },
+          {
+            "key": "learn-more-04",
+            "sortorder": 400,
+            "heading": "How is indexed interest calculated?",
+            "body": "<p>Indexed interest is determined through a combination of index allocation options and crediting methods. Every crediting period, you can place your cash value in one or more allocation options, which track the performance of an external index. If the external index has a positive result, we then use a crediting method – which is a formula to determine how much indexed interest your contract will earn. Because no single allocation or crediting method performs best in all situations, your financial professional can help you determine which combination may fit your financial goals.</p>",
+            "link": "",
+            "paragraphCount": 1
+          },
+          {
+            "key": "learn-more-05",
+            "sortorder": 500,
+            "heading": "What is an allocation option?",
+            "body": "<p>An allocation option is an index combined with a crediting method.</p>",
+            "link": "",
+            "paragraphCount": 1
+          },
+          {
+            "key": "learn-more-06",
+            "sortorder": 600,
+            "heading": "How do I know which annuity suits my needs?",
+            "body": "<p>Some FIAs emphasize accumulation, while others focus more on income – or even a combination of both. But some FIAs can be complex, so it’s best to work with a financial professional to confirm that an FIA makes sense as part of your overall retirement strategy.</p>",
+            "link": "",
+            "paragraphCount": 1
+          }
+        ]
+      }
+    },
+    {
+      "key": "life-stages",
+      "intro": {
+        "heading": "FIAs at each stage",
+        "body": "",
+        "iconPurpose": null
+      },
+      "accordion": {
+        "heading": "",
+        "primaryLink": "",
+        "children": [
+          {
+            "key": "life-stages-01",
+            "sortorder": 100,
+            "heading": "What is the best age to buy an annuity?",
+            "body": "<p>Many people buy annuities between ages 40 and 60, but the answer depends on your financial goals. If your main goal is saving enough for retirement, buying a fixed index annuity when you’re still a few years away from retirement may be a good choice. That’s because FIAs are designed to help the money in your contract grow tax-deferred over time. And the younger you are when you buy your annuity, the longer your money has to grow tax-deferred.</p>",
+            "link": "",
+            "paragraphCount": 1
+          },
+          {
+            "key": "life-stages-02",
+            "sortorder": 200,
+            "heading": "What happens to your fixed index annuity if you die?",
+            "body": "<p>That depends on many factors, including whether you have started taking income from your annuity. Most annuities let you name a beneficiary. If you have not yet started taking regular income payments from your annuity (we call this “annuitization”), the money that’s left in your annuity will pass on to your beneficiary when you die. But some annuities may have different terms. That’s why it’s important to read and understand the contract before you buy any financial product, including an annuity.</p>",
+            "link": "",
+            "paragraphCount": 1
+          }
+        ]
+      }
+    }
+  ],
+  "financialProfessional": {
+    "heading": "Ask your financial professional if an Allianz® FIA may be right for you",
+    "body": "",
+    "subheading": "",
+    "image": "",
+    "iconPurpose": "Handshake",
+    "iconTheme": "transparent",
+    "theme": "transparent",
+    "headingLevel": "h2",
+    "alphanumeral": "",
+    "links": [],
+    "link": {
+      "href": "/what-we-offer/annuities/fixed-index-annuities",
+      "text": "Explore Allianz® FIAs",
+      "target": "",
+      "linktype": "internal",
+      "ariaLabel": "Explore Allianz® FIAs"
+    }
+  },
+  "productNote": {
+    "body": "<br>\nAnnuities can be complex products, and it’s important to understand the balance between all of their features, costs, and benefits. A financial professional can help you decide whether an annuity is appropriate for your needs."
+  },
+  "legalDisclosures": {
+    "body": "<!-- Distributions for fixed -->\n<p>Any distributions are subject to ordinary income tax and, if taken prior to age 59½, a 10% federal additional tax.</p><p>Guarantees are backed solely by the financial strength and claims-paying ability of the issuing insurance company.</p><p>This content does not apply in the state of New York.</p><!-- Not FDIC -->\n<p class=\"box\">• Not FDIC insured • May lose value • No bank or credit union guarantee • Not a deposit • Not insured by any federal government agency or NCUA/NCUSIF</p><p>Products are issued by Allianz Life Insurance Company of North America, 5701 Golden Hills Drive, Minneapolis, MN 55416-1297. <a href=\"tel:800-950-1962\">800.950.1962</a></p><!-- Product availability state and BD -->\n<p>Product and feature availability may vary by state and broker/dealer.</p>"
+  },
+  "originalLinks": [
+    {
+      "text": "Log in",
+      "href": "https://www.allianzlife.com/login",
+      "target": ""
+    },
+    {
+      "text": "Forgot Username",
+      "href": "/Login/forgot-username-individual",
+      "target": ""
+    },
+    {
+      "text": "Forgot Password",
+      "href": "/Login/forgot-password-individual",
+      "target": ""
+    },
+    {
+      "text": "800.624.0197",
+      "href": "tel:8006240197",
+      "target": ""
+    },
+    {
+      "text": "Explore Allianz® FIAs",
+      "href": "/what-we-offer/annuities/fixed-index-annuities",
+      "target": ""
+    },
+    {
+      "text": "800.950.1962",
+      "href": "tel:800-950-1962",
+      "target": ""
+    }
+  ],
+  "linkPolicy": "Retain original hrefs as content provenance. Do not change existing safeLink/safeRichText demo-service policy. Login, recovery and telephone behavior must be verified against current policy during native/public QA."
+}

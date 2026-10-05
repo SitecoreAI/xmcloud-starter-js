@@ -55,3 +55,17 @@ export const NewsroomGrey = ({ fields, params }: LegalDisclosuresProps) => {
     </div>
   </>;
 };
+
+
+/** FAQ retains original native links; visitor output follows the existing demo policy. */
+export const Faq = (props: LegalDisclosuresProps) => {
+  const { page } = useSitecore();
+  const data = props.fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="Legal Disclosures" />;
+  const isEditing = page?.mode?.isEditing ?? false;
+  return <Default {...props} fields={{ ...props.fields, data: {
+    ...props.fields?.data, datasource: { ...data, body: {
+      jsonValue: safeNewsroomRichText(data.body?.jsonValue, isEditing),
+    } },
+  } }} />;
+};
