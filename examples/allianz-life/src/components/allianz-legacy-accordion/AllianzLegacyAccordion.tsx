@@ -4,8 +4,10 @@ import { useId, useState } from 'react';
 import { allianzLinkField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import type { AllianzProps } from 'lib/allianz-fields';
+import type { LegacyAccordionProps } from './allianz-legacy-accordion.props';
+import './AllianzLegacyPrivacyAccordion.css';
 
-export const Default = ({ fields, params, rendering }: AllianzProps) => {
+export const Default = ({ fields, params, rendering, privacySpacing = false }: LegacyAccordionProps) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const instance = useId().replace(/:/g, '');
@@ -15,7 +17,7 @@ export const Default = ({ fields, params, rendering }: AllianzProps) => {
   const region = ['pre-content', 'content', 'post-content', 'disclosure'].includes(params.region) ? params.region : 'content';
   return <div className="row" id={params.RenderingIdentifier}><div className={`col-md-12 content-body ${region}`}>
     {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}
-    <div className="panel-group accordion">
+    <div className={privacySpacing ? 'panel-group accordion allianz-legacy-privacy-accordion' : 'panel-group accordion'}>
       {(data.children?.results ?? []).map((item, index) => {
         const isOpen = isEditing || open.includes(item.id);
         const id = `${instance}-panel-${index}`;
@@ -38,3 +40,6 @@ export const Default = ({ fields, params, rendering }: AllianzProps) => {
     </div>
   </div></div>;
 };
+
+/** Preserve source spacing when Privacy prose and panels are separate native renderings. */
+export const Privacy = (props: AllianzProps) => <Default {...props} privacySpacing />;
