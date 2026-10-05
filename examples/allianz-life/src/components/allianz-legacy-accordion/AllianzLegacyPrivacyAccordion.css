@@ -1,0 +1,8 @@
+/* The source Privacy paragraphs and accordion share one wrapper, where their
+ * vertical margins collapse. Native renderings have separate floated columns.
+ * Keep the adjacent paragraph's 20px and following heading's 40px; suppress
+ * only the accordion's duplicate margins in this opt-in variant. */
+.allianz-legacy .panel-group.accordion.allianz-legacy-privacy-accordion {
+  margin-top: 0;
+  margin-bottom: 0;
+}
