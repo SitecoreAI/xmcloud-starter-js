@@ -1,5 +1,11 @@
 /* Scoped to the opt-in FAQ variant. Native CKEditor blocks keep source type
  * and spacing while preserving their authored HTML and editing metadata. */
+/* A block-form Rich Text subtitle uses a div instead of the source p.
+ * Preserve the source paragraph's 1em bottom margin on that outer element. */
+.allianz-faq-hero div.c-hero__subHeadline {
+  margin-bottom: 1em;
+}
+
 .allianz-faq-hero .c-hero__headline[role="heading"] p {
   margin: 0;
   font: inherit;
