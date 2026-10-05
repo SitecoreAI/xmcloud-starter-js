@@ -5,6 +5,31 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
+test('FAQ block subtitle restores the source paragraph margin without changing plain paragraphs', () => {
+  const css = fs.readFileSync(new URL('../components/allianz-hero/AllianzFaqHero.css', import.meta.url), 'utf8');
+  const postcss = createRequire(import.meta.url)('postcss');
+  const rules = postcss.parse(css).nodes.filter((node) => node.type === 'rule');
+  const margin = rules.find((rule) => rule.selector === '.allianz-faq-hero div.c-hero__subHeadline');
+  assert.ok(margin);
+  assert.deepEqual(margin.nodes.map(({ prop, value }) => [prop, value]), [['margin-bottom', '1em']]);
+  assert.ok(rules.every((rule) => rule.selectors.every((selector) => selector.startsWith('.allianz-faq-hero '))));
+  const defaultHero = render(Hero.Default, props(data(fixture.hero)));
+  assert.doesNotMatch(defaultHero, /allianz-faq-hero/);
+});
+
+test('FAQ direct introduction title restores only its missing source header gap', () => {
+  const css = fs.readFileSync(new URL('../components/allianz-card-grid/AllianzFaqCards.css', import.meta.url), 'utf8');
+  const postcss = createRequire(import.meta.url)('postcss');
+  const rules = [];
+  postcss.parse(css).walkRules((rule) => rules.push(rule));
+  const gap = rules.find((rule) => rule.selector === '.allianz-faq-cards .m-axlIntroductionBlock > .tileContent > .tileHeading');
+  assert.ok(gap);
+  assert.deepEqual(gap.nodes.map(({ prop, value }) => [prop, value]), [['margin-top', '20px']]);
+  assert.ok(rules.every((rule) => rule.selectors.every((selector) => selector.startsWith('.allianz-faq-cards '))));
+  const defaultCards = render(Cards.Default, props(data(fixture.contractHelp)));
+  assert.doesNotMatch(defaultCards, /allianz-faq-cards/);
+});
+
 const require = createRequire(import.meta.url);
 const ts = require('typescript');
 const React = require('react');
