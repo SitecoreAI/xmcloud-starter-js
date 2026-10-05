@@ -1,0 +1,17 @@
+/* Source p.link uses a blue 8x14 chevron rendered in a 4x8 background box.
+ * Recreate its geometry in CSS; retain the recovered 13px text inset, .5em
+ * vertical position, and authored link. No bitmap or external asset is needed. */
+.allianz-legacy p.link.allianz-legacy-privacy-card-link {
+  position: relative;
+}
+.allianz-legacy p.link.allianz-legacy-privacy-card-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .5em;
+  width: 4px;
+  height: 8px;
+  background-color: #003781;
+  clip-path: polygon(0 0, 25% 0, 87.5% 46.43%, 25% 92.86%, 0 92.86%, 62.5% 46.43%);
+  pointer-events: none;
+}
