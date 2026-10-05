@@ -1,7 +1,8 @@
-"""Apply only ID-matched, evidence-pinned native names and presentation metadata.
+"""Apply ID-matched, evidence-pinned metadata within separate source boundaries.
 
 The source projection is historical and incomplete. This does not synchronize
-CM or make its complete serialized rendering items safe to import.
+CM or make its complete serialized rendering items safe to import. Native-only
+ordinary-field projections do not add definitions to the historical generator.
 """
 from __future__ import annotations
 
@@ -11,7 +12,7 @@ import json
 from pathlib import Path
 
 MODEL_PATH = Path(__file__).resolve().parents[2] / "authoring/allianz-life/native-metadata/verified-rendering-metadata.json"
-MODEL_SHA256 = "28600f9dc5b68575707ee0aa01c2733fbaea27fe39f0d96da533ff42096d1412"
+MODEL_SHA256 = "fdaa30e76dec3d093b57284e8c715e4a6877006cfa052ef6113fdfff9684d5e4"
 ICON_ID = "06d5295c-ed2f-4a54-9bf2-26228d113318"
 DISPLAY_NAME_ID = "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
 COMPONENT_NAME_ID = "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
@@ -76,6 +77,32 @@ def update_catalog(catalog: dict, model: dict) -> dict:
                 if target[key] != record[key]["before"]:
                     raise ValueError("Authoring catalog differs from reviewed source metadata")
                 target[key] = record[key]["after"]
+    return result
+
+
+def project_native_fields(item_id: str, path: str, template_id: str, fields: dict, model: dict) -> dict:
+    """Project one verified ordinary field without synthesizing a native item.
+
+    The caller supplies exact native identity and a field-name/value mapping.
+    No parent identity, field GUID or storage section is inferred. This pure
+    projection does not write to CM or participate in historical YAML generation.
+    Unknown IDs stay untouched; mismatched known identities or values fail closed.
+    """
+    records = [record for record in model["nativeFieldProjections"] if record["itemId"] == item_id]
+    if not records:
+        return fields
+    if len(records) != 1:
+        raise ValueError("Ambiguous native ordinary-field projection identity")
+    record = records[0]
+    if path != record["currentPath"] or template_id != record["templateId"]:
+        raise ValueError("Native ordinary-field projection does not match the source identity")
+    if fields.get("componentName") != record["technicalComponentName"]:
+        raise ValueError("Native ordinary-field projection technical binding mismatch")
+    location = record["datasourceLocation"]
+    if "Datasource Location" not in fields or fields["Datasource Location"] not in (location["before"], location["after"]):
+        raise ValueError("Native ordinary-field projection would replace an unreviewed source value")
+    result = copy.deepcopy(fields)
+    result["Datasource Location"] = location["after"]
     return result
 
 

@@ -171,5 +171,118 @@ class NativeRenderingMetadataTests(unittest.TestCase):
             self.assertIn('ID: "' + record["itemId"] + '"', path.read_text())
 
 
+class NativeOrdinaryFieldProjectionTests(unittest.TestCase):
+    def setUp(self):
+        self.model = metadata.load_model()
+        self.record = self.model["nativeFieldProjections"][0]
+        # Synthetic ordinary-field values, not a complete native item fixture.
+        self.fields = {
+            "componentName": "ExpertBiography",
+            "Datasource Location": self.record["datasourceLocation"]["before"],
+            "ComponentQuery": "preserve the complete native query exactly",
+            "Datasource Template": "{57724BBD-9F79-4C8D-90A8-C9D7FA17760A}",
+            "Parameters Template": "{FCE5A9CF-4913-48FB-93B0-D628DEDEA6C8}",
+            "deliberateBlank": "",
+            "unknownValue": None,
+            "unownedNestedProperty": {"values": ["preserved", ""]},
+        }
+
+    def project(self, fields=None, **identity):
+        return metadata.project_native_fields(
+            identity.get("item_id", self.record["itemId"]),
+            identity.get("path", self.record["currentPath"]),
+            identity.get("template_id", self.record["templateId"]),
+            self.fields if fields is None else fields, self.model,
+        )
+
+    def test_native_projection_has_exact_evidence_backed_scope(self):
+        self.assertEqual(len(self.model["nativeFieldProjections"]), 1)
+        self.assertEqual(self.record["itemId"], "bb8297a6-4186-404e-8c41-fac54ee0ae91")
+        self.assertEqual(self.record["currentPath"], "/sitecore/layout/Renderings/Project/Allianz Life/Expert Biography")
+        self.assertEqual(self.record["templateId"], "04646a89-996f-4ee7-878a-ffdbf1f0ef0d")
+        self.assertEqual(self.record["technicalComponentName"], "ExpertBiography")
+        self.assertEqual(self.record["scope"], "native-only-ordinary-field-projection-not-serialized-item")
+        self.assertNotIn("parentId", self.record)
+        location = self.record["datasourceLocation"]
+        self.assertEqual(location["before"], "query:$site/*[@@name='Data']/*[@@name='Allianz Life']")
+        self.assertEqual(location["after"], location["before"] + "|query:./*[@@name='Data']")
+        for evidence in location["evidence"] + [self.record["verification"]["evidence"]]:
+            self.assertRegex(self.model["evidenceFileSha256"][evidence], r"^[0-9a-f]{64}$")
+        self.assertFalse(self.record["verification"]["datasourceFieldEditSaveTestPerformed"])
+        self.assertEqual(self.model["status"], "bounded-source-candidate-not-deployable")
+
+    def test_only_location_changes_input_and_unowned_properties_are_preserved(self):
+        original = copy.deepcopy(self.fields)
+        result = self.project()
+        self.assertEqual(self.fields, original)
+        self.assertEqual(set(result), set(original))
+        self.assertEqual([key for key in result if result[key] != original[key]], ["Datasource Location"])
+        self.assertEqual(result["Datasource Location"], self.record["datasourceLocation"]["after"])
+        self.assertEqual(self.project(result), result)
+        result["unownedNestedProperty"]["values"].append("caller mutation")
+        self.assertEqual(self.fields, original)
+
+    def test_unknown_id_is_noop_even_when_path_and_binding_match(self):
+        before = copy.deepcopy(self.fields)
+        result = self.project(item_id="00000000-0000-4000-8000-000000000001")
+        self.assertIs(result, self.fields)
+        self.assertEqual(self.fields, before)
+
+    def test_known_id_wrong_path_or_template_fails_without_mutation(self):
+        for identity in ({"path": self.record["currentPath"] + "-wrong"}, {"template_id": "unverified"}):
+            before = copy.deepcopy(self.fields)
+            with self.subTest(identity=identity), self.assertRaisesRegex(ValueError, "source identity"):
+                self.project(**identity)
+            self.assertEqual(self.fields, before)
+
+    def test_missing_or_wrong_binding_and_location_fail_without_mutation(self):
+        for key, values, message in (
+            ("componentName", (None, "Expert Biography", "unverified"), "technical binding mismatch"),
+            ("Datasource Location", (None, "", "query:unreviewed"), "unreviewed source value"),
+        ):
+            for missing, value in [(False, value) for value in values] + [(True, None)]:
+                fields = copy.deepcopy(self.fields)
+                if missing:
+                    del fields[key]
+                else:
+                    fields[key] = value
+                before = copy.deepcopy(fields)
+                with self.subTest(key=key, missing=missing, value=value), self.assertRaisesRegex(ValueError, message):
+                    self.project(fields)
+                self.assertEqual(fields, before)
+
+    def test_duplicate_projection_identity_is_rejected(self):
+        self.model["nativeFieldProjections"].append(copy.deepcopy(self.record))
+        before = copy.deepcopy(self.fields)
+        with self.assertRaisesRegex(ValueError, "Ambiguous"):
+            self.project()
+        self.assertEqual(self.fields, before)
+
+    def test_modified_native_capture_is_rejected_by_fingerprint(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "model.json"
+            for key, value in (("itemId", "unverified"), ("datasourceLocation", {"before": "", "after": "unverified"})):
+                model = copy.deepcopy(self.model)
+                model["nativeFieldProjections"][0][key] = value
+                path.write_text(json.dumps(model))
+                with self.assertRaisesRegex(ValueError, "reviewed evidence capture"):
+                    metadata.load_model(path)
+
+    def test_native_projection_does_not_synthesize_historical_definition_or_default(self):
+        values, _ = structure.generate()
+        self.assertEqual(len(values), 491)
+        self.assertNotIn(self.record["itemId"], {row["ID"] for row in values})
+        self.assertNotIn("ExpertBiography", structure.COMPONENTS)
+        self.assertNotIn("ExpertBiography", structure.RENDERING_AUTHORING)
+        renderings = [row for row in values if row["Template"] == structure.PLATFORM["JsonRendering"]]
+        self.assertEqual(len(renderings), 28)
+        for row in renderings:
+            location = next(field["Value"] for field in row["SharedFields"] if field["Hint"] == "Datasource Location")
+            self.assertEqual(location, self.record["datasourceLocation"]["before"])
+        unknown = {"ID": self.record["itemId"], "unexposedNativeValue": None}
+        self.assertIs(metadata.apply(unknown, self.model), unknown)
+        self.assertFalse((structure.OUTPUT / "items/allianz.renderings/Allianz Life/Expert Biography.yml").exists())
+
+
 if __name__ == "__main__":
     unittest.main()

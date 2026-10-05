@@ -29,6 +29,39 @@ The generator's technical component keys intentionally still include their
 original names. Historical group hints are retained as compatibility metadata;
 they do not define current Available Renderings membership or author-facing UI.
 
+## Native-only Expert Biography datasource location
+
+The separate `nativeFieldProjections` record preserves the one-field native fix
+verified on 2026-10-05 for rendering `bb8297a6-4186-404e-8c41-fac54ee0ae91`,
+`/sitecore/layout/Renderings/Project/Allianz Life/Expert Biography`, with technical
+binding `ExpertBiography`. Its ordinary `Datasource Location` value is:
+
+```text
+query:$site/*[@@name='Data']/*[@@name='Allianz Life']|query:./*[@@name='Data']
+```
+
+The existing site-wide root is retained; the added arm exposes the page-local
+Data folder. The native evidence reports successful normal existing-content
+selection, temporary assignment/save/reload, a settable bound field control, and
+preservation of all 35 other exposed ordinary rendering fields. The datasource
+field-edit/save test itself was not performed. The capture and evidence hashes
+are pinned separately from the earlier names/icons audit.
+
+`project_native_fields(item_id, path, template_id, fields, model)` is a pure,
+single-field projection over an ordinary field-name/value mapping. Exact native
+ID, path, template, technical binding, field presence and the reviewed old or
+already-correct value are required. Unknown IDs are unchanged; mismatched known
+identities or unreviewed values raise without mutating the input. Every other
+provided field is retained. No native parent GUID or field GUID/storage is
+inferred from this capture.
+
+Expert Biography is absent from the historical generator. This record does not
+add it to `records`, the authoring catalog, the structure manifest or YAML, and
+does not change any shared datasource default. The helper performs no CM writes;
+its projection is not an importable native item or a complete dependency capture.
+The historical module remains **not import-ready**. Keep `deployItems.modules =
+[]`; a source commit or editing-host deployment must not replay these items.
+
 ## What remains unavailable
 
 Company Profile's twentieth verified rename has only an earlier partial label

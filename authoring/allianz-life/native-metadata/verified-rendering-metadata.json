@@ -361,6 +361,45 @@
     "evidence/restored-mcp/icon-patch-10b26485-8a6e-5fee-badf-1fb30590be5e-result.json": "07edcbf8e791707acde3f85563e3acd9518b292e4712899f2f8dff589fabcc91",
     "evidence/native-rename-retry/batch-after-f2fd6ed6-a96f-59a5-b7de-67d523fad31d.json": "907da5f3043eef08c7e0747f9cb253bac1fd242d46dea7f591adb60a8458d49c",
     "evidence/restored-mcp/icon-patch-c10b523b-b066-557d-9a41-5a9f9569137a-after-item.json": "c6e2d0b70e9d0c2f05a69391c5ccb64bd8c71770f2a78baa9df84e90a79020e8",
-    "evidence/restored-mcp/icon-patch-c10b523b-b066-557d-9a41-5a9f9569137a-result.json": "daae046fa1e648d74ebab971d46ab968ed8a16bfef2f9e774662e87fe4f28c61"
-  }
+    "evidence/restored-mcp/icon-patch-c10b523b-b066-557d-9a41-5a9f9569137a-result.json": "daae046fa1e648d74ebab971d46ab968ed8a16bfef2f9e774662e87fe4f28c61",
+    "evidence/biography-body-pilot/datasource-location-repair/Single-Field-Independent-Review.json": "4ba4edeef45e0fba248be2900fdafa35b53fc2c87a5b2c7e8701b1d0d529dc55",
+    "evidence/biography-body-pilot/datasource-location-repair/Cleanup-Final-Rendering-Location-Proof.json": "a4024aca40e20fff62a9ec80d4c7dc09e9e937918f10984ab42a5a2d212a612b",
+    "evidence/biography-body-pilot/datasource-location-repair/native-ui/F1-Bound-Independent-Review.json": "acfa7207de6a5535250faa1abce392eff88f814653368b6dfe5f8a1519c14a73"
+  },
+  "nativeFieldProjections": [
+    {
+      "itemId": "bb8297a6-4186-404e-8c41-fac54ee0ae91",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Expert Biography",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "ExpertBiography",
+      "scope": "native-only-ordinary-field-projection-not-serialized-item",
+      "nativeVerifiedAtUtc": "2026-10-05T09:58:26.518345+00:00",
+      "sourceCapture": {
+        "fileName": "Native-Pilot-Current-Handoff.json",
+        "version": 7,
+        "sha256": "a9fe08c5f0d1316ba8a1762cb5b659913269a79204d38aec5a3be953e86fcfe3"
+      },
+      "datasourceLocation": {
+        "before": "query:$site/*[@@name='Data']/*[@@name='Allianz Life']",
+        "after": "query:$site/*[@@name='Data']/*[@@name='Allianz Life']|query:./*[@@name='Data']",
+        "evidence": [
+          "evidence/biography-body-pilot/datasource-location-repair/Single-Field-Independent-Review.json",
+          "evidence/biography-body-pilot/datasource-location-repair/Cleanup-Final-Rendering-Location-Proof.json"
+        ]
+      },
+      "verification": {
+        "otherOrdinaryFieldsPreserved": 35,
+        "normalExistingDatasourceSelectionPassed": true,
+        "temporaryAssignmentSaveReloadPassed": true,
+        "boundFieldSettableControlObserved": true,
+        "datasourceFieldEditSaveTestPerformed": false,
+        "evidence": "evidence/biography-body-pilot/datasource-location-repair/native-ui/F1-Bound-Independent-Review.json"
+      },
+      "limitations": [
+        "The native item is absent from the historical generator and is not synthesized.",
+        "Native parent identity and field GUID/storage are not exposed by this capture.",
+        "This projection preserves the observed ordinary field by name; it is not a complete serialized item or an import approval."
+      ]
+    }
+  ]
 }
