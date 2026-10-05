@@ -1,0 +1,33 @@
+/* The recovered global stylesheet incorrectly scopes .page-header to the shell
+ * itself. Restore official title rules only for the opt-in Legal variant. */
+.allianz-legacy .allianz-legacy-legal-header {
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+}
+
+.allianz-legacy .allianz-legacy-legal-header .allianz-legacy-legal-title {
+  margin: 0 0 20px;
+  color: #003781;
+  font-family: inherit;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.allianz-legacy .allianz-legacy-legal-title[role='heading'] > p {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+@media (min-width: 768px) {
+  .allianz-legacy .allianz-legacy-legal-header {
+    margin: 0;
+  }
+
+  .allianz-legacy .allianz-legacy-legal-header .allianz-legacy-legal-title {
+    margin: -8px 0 19px;
+    font-size: 40px;
+  }
+}
