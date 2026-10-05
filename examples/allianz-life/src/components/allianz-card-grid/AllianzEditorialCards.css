@@ -1,0 +1,29 @@
+/* Content Hub Image fields replace source inline SVGs without touching Default. */
+.allianz-editorial-cards .tileIcon img {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+.allianz-editorial-cards .tileIcon.t-icon-primary-white img {
+  filter: brightness(0) invert(1);
+}
+.allianz-editorial-cards .a-link__icon img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) saturate(100%) invert(21.806513%) sepia(48.578918%) saturate(1062.711955%) hue-rotate(158.502148deg) brightness(108.478075%) contrast(104.236282%);
+}
+.allianz-editorial-cards .a-link:active .a-link__icon img,
+.allianz-editorial-cards .a-link:visited .a-link__icon img {
+  filter: brightness(0) saturate(100%) invert(54.119730%) sepia(68.974547%) saturate(347.242441%) hue-rotate(235.606589deg) brightness(68.280422%) contrast(68.714331%);
+}
+.allianz-editorial-cards .a-link:hover .a-link__icon img {
+  filter: brightness(0) saturate(100%) invert(25.270037%) sepia(30.680367%) saturate(1750.060640%) hue-rotate(166.703347deg) brightness(135.232792%) contrast(162.285401%);
+}
+.allianz-editorial-cards .a-link:focus-visible .a-link__icon img {
+  filter: brightness(0) invert(1);
+}
+@media (min-width: 704px) {
+  .allianz-editorial-cards .tileIcon img {
+    width: 40px;
+  }
+}

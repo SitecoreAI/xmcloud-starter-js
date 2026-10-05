@@ -1,10 +1,14 @@
 'use client';
 
+import { Fragment } from 'react';
 import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, rowSpacing, safeLinkRenderProps, sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { allianzCardFields } from 'lib/allianz-card-fields';
+import { editorialBodyClass, editorialColumnClass, editorialHeadingTag, safeEditorialRichText } from 'lib/allianz-editorial';
+import './AllianzEditorialCards.css';
+import { EditorialFrame } from 'lib/allianz-editorial-frame';
 import type { AllianzCardGridProps } from './allianz-card-grid.props';
 import './AllianzFaqCards.css';
 import { safeNewsroomRichText as safeFaqRichText } from 'components/legal-disclosures/newsroom-grey.links.props';
@@ -109,3 +113,60 @@ export const FaqProfessional = (props: AllianzCardGridProps) => <AllianzCardGrid
   faqAppearance="professional" params={{ ...props.params, theme: 'green-soft', layout: 'stacked',
     columns: '1', alignment: 'center', spacing: 'none', headingLevel: 'h3',
     paddingTop: 'none', paddingBottom: 'none', marginBottom: 'none' }} />;
+
+/** Existing AllianzCard children carry editorial content. New parameters select
+ * only observed layout alternatives; no page-specific or arbitrary HTML classes. */
+function EditorialCards({ fields, params, appearance }: AllianzCardGridProps & { appearance: 'tiles' | 'intro' | 'callout' }) {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  const intro = appearance === 'intro';
+  const split = appearance === 'tiles';
+  const imageSplit = split && ['image-left', 'image-right'].includes(params.layout);
+  const ratio = params.splitRatio === '33:67' ? 'tile--3366' : params.splitRatio === '67:33' ? 'tile--6633' : imageSplit ? 'tile--5050' : '';
+  const flipped = params.flipped === '1' || (imageSplit && params.layout === 'image-right');
+  const bodySize = params.bodySize || (intro ? 'source-default' : 'medium');
+  return <EditorialFrame params={params}>
+      {cards.map((card) => {
+        const hasIcon = shouldRenderImageField(card.icon?.jsonValue, isEditing);
+        const hasNumber = shouldRenderTextField(card.alphanumeral?.jsonValue, isEditing);
+        const icon = (hasIcon || hasNumber) && <div className={`tileIcon ${card.iconTheme?.jsonValue?.value === 'primary-brand' ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}>
+          {hasIcon && <Image editable={isEditing} field={card.icon?.jsonValue} />}
+          {hasNumber && <Text editable={isEditing} field={card.alphanumeral?.jsonValue} tag="span" className="alphaType" />}
+        </div>;
+        // An explicitly cleared ordered collection stays cleared. The single-link
+        // field is used only when that collection is absent from the query result.
+        const links = (card.links?.targetItems ?? [{ id: `${card.id}-link`, link: card.link, icon: undefined }])
+          .filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing));
+        const content = <>
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={editorialHeadingTag(card.headingLevel?.jsonValue?.value || params.headingLevel)} field={card.heading?.jsonValue} />}</div>
+            {shouldRenderTextField(card.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={safeEditorialRichText(card.subheading?.jsonValue, isEditing)} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+          </header>
+          {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(card.body?.jsonValue, isEditing)} className={editorialBodyClass(bodySize)} />}
+          {links.length > 0 && <footer><div className="tileLink">{links.map((item) => {
+            const field = allianzLinkField(item.link?.jsonValue, isEditing);
+            const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+            const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'];
+            return <Link key={item.id} {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+              {shouldRenderImageField(item.icon?.jsonValue, isEditing) && <span className="a-link__icon" aria-hidden={isEditing ? undefined : true}><Image editable={isEditing} field={item.icon?.jsonValue} /></span>}
+              <span className="a-link__text">{field.value?.text}</span>
+            </Link>;
+          })}</div></footer>}
+        </>;
+        const article = <article className={intro ? 'm-axlIntroductionBlock -is--stacked -no--image allianz-editorial-cards' : `allianz-editorial-cards m-axlTile match-height ${ratio}${flipped ? ' -is--flipped' : ''}${split && !imageSplit ? ' tile--alphaNumeric' : ''} ${split ? '-is--split' : '-is--stacked'} ${sectionTheme(card.theme?.jsonValue?.value)}${params.tileMarginBottom === 'xl' ? ' u-margin-bottom-xl' : ''}`}>
+            <div className={`tileContent ${params.alignment === 'left' || (split && params.alignment !== 'center') ? 'u-text-left' : 'u-text-center'}`}>
+              {intro ? <>{icon}{content}</> : <>{icon && <div className="tileSubGrid__image">{icon}</div>}<div className="tileSubGrid__content">{content}</div></>}
+            </div>
+            {imageSplit && shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} className="c-image__img c-teaser__image-img" /></picture></div>}
+          </article>;
+        return params.container === 'content' ? <Fragment key={card.id}>{article}</Fragment> : <div key={card.id} className={editorialColumnClass(params)}>{article}</div>;
+      })}
+  </EditorialFrame>;
+}
+
+export const EditorialTiles = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="tiles" />;
+export const EditorialIntro = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="intro" />;
+export const EditorialCallout = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="callout" />;

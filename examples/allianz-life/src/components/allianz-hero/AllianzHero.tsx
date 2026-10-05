@@ -5,6 +5,8 @@ import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import MockLogin from 'components/content-sdk/MockLogin';
 import { sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
+import { hasEditorialBlockMarkup, safeEditorialRichText } from 'lib/allianz-editorial';
+import './AllianzEditorialHero.css';
 import type { AllianzHeroProps } from './allianz-hero.props';
 import './AllianzFaqHero.css';
 
@@ -81,4 +83,26 @@ export const FixedFaq = ({ fields, params }: AllianzHeroProps) => {
       </div>
     </div>
   );
+};
+
+/** Short editorial stage with source subtitle typography and native DAM fields. */
+export const Editorial = ({ fields, params }: AllianzHeroProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzHero" />;
+  const blockHeading = hasEditorialBlockMarkup(data.heading?.jsonValue?.value);
+  return <div className={`l-container-full-width ${sectionTheme(params.theme)} allianz-editorial-hero`} id={params.RenderingIdentifier}>
+    <div className="m-axlHero">
+      <picture className="c-image c-stage__image--cover c-stage__image--short">
+        {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
+        {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} className="c-image__img c-hero__image" />}
+      </picture>
+      <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
+        {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} field={safeEditorialRichText(data.heading?.jsonValue, isEditing)} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} tag={hasEditorialBlockMarkup(data.body?.jsonValue?.value) ? 'div' : 'p'} field={safeEditorialRichText(data.body?.jsonValue, isEditing)} className="h4 c-heading c-hero__subHeadline u-text-center" />}
+        {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px' }} /></div>}
+      </div></div>
+    </div>
+  </div>;
 };

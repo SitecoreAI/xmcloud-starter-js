@@ -3,6 +3,7 @@
 import { RichText, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
+import { safeEditorialRichText } from 'lib/allianz-editorial';
 import type { ProductDisclosuresProps } from './product-disclosures.props';
 
 /** The Home product disclosures have one semantic body field and a fixed design. */
@@ -52,3 +53,22 @@ export const FaqNote = ({ fields, params }: ProductDisclosuresProps) => {
     </div>
   );
 };
+
+/** Source legal text stays native; only opt-in visitor links use demo policy. */
+function EditorialDisclosures(props: ProductDisclosuresProps & { plain?: boolean }) {
+  const { page } = useSitecore();
+  const { plain, ...componentProps } = props;
+  const data = props.fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="Product Disclosures" />;
+  const isEditing = page?.mode?.isEditing ?? false;
+  const body = safeEditorialRichText(data.body?.jsonValue, isEditing);
+  const safeProps = body === data.body?.jsonValue ? componentProps : {
+    ...componentProps, fields: { ...props.fields, data: {
+      ...props.fields?.data, datasource: { ...data, body: { ...data.body, jsonValue: body } },
+    } },
+  };
+  return plain ? <FaqNote {...safeProps} /> : <Default {...safeProps} />;
+}
+
+export const Editorial = (props: ProductDisclosuresProps) => <EditorialDisclosures {...props} />;
+export const EditorialNote = (props: ProductDisclosuresProps) => <EditorialDisclosures {...props} plain />;
