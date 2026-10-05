@@ -40,6 +40,10 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   const header = <div id="header">{placeholder('headless-header')}</div>;
   const footer = <div id="footer">{placeholder('headless-footer')}</div>;
   const sidebar = !!route?.placeholders['headless-sidebar']?.length;
+  // The dedicated Allianz layout opts in by declaring this native placeholder.
+  // Keep an explicitly empty slot insertable in Pages; other layouts are unchanged.
+  const rightRail = !!route?.placeholders['headless-right-rail']?.length ||
+    (mode.isEditing && Object.hasOwn(route?.placeholders ?? {}, 'headless-right-rail'));
   return <>
     <Scripts />
     {mode.isEditing && <SitecoreStyles layoutData={layout} />}
@@ -49,7 +53,8 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
         {header}
         {legacy ? <main id="main" className="container-fluid azl-contents"><div className="row">
           {sidebar && <aside className="col-md-2 col-sm-3 left-column">{placeholder('headless-sidebar')}</aside>}
-          <div id="content-body" className={sidebar ? 'col-md-8 col-sm-9 center-column' : 'col-md-10 col-md-offset-1 center-column'}>{placeholder('headless-main')}</div>
+          <div id="content-body" className={sidebar ? 'col-md-8 col-sm-9 center-column' : rightRail ? 'col-md-10 col-sm-9 center-column' : 'col-md-10 col-md-offset-1 center-column'}>{placeholder('headless-main')}</div>
+          {rightRail && <aside className="col-md-2 col-sm-3 right-column">{placeholder('headless-right-rail')}</aside>}
         </div></main> : <main id="main"><div id="content">{placeholder('headless-main')}</div></main>}
         {footer}
         <ServiceUnavailable />
