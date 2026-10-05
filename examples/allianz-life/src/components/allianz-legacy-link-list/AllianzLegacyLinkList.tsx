@@ -2,7 +2,9 @@
 import { Link, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { allianzLinkField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { usePathname } from 'next/navigation';
-import type { AllianzProps } from 'lib/allianz-fields';
+import { safeLink, safeLinkRenderProps, type AllianzProps } from 'lib/allianz-fields';
+import type { AllianzServiceLinksProps } from './allianz-legacy-link-list.props';
+import './AllianzLegacyServiceLinks.css';
 
 export const Default = ({ fields, params }: AllianzProps) => {
   const { page } = useSitecore();
@@ -26,3 +28,43 @@ export const Default = ({ fields, params }: AllianzProps) => {
     <ul className={style === 'next-steps' ? 'link-list' : 'nav-links'}>{links}</ul>
   </nav></div></div>;
 };
+
+/** Native-authored service links without the production authentication widget. */
+const ServiceLinks = ({ fields, params, serviceKind }: AllianzServiceLinksProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  const account = serviceKind === 'account';
+  const entries = (data?.children?.results ?? []).filter((item) =>
+    shouldRenderLinkField(item.link?.jsonValue, isEditing));
+  if (!isEditing && !entries.length) return null;
+  return <nav
+    id={params.RenderingIdentifier}
+    aria-label={data?.heading?.jsonValue?.value || (account ? 'Account services' : 'Contact services')}
+    className={`allianz-legacy-service-links allianz-legacy-service-links--${serviceKind}${account && !isEditing ? ' hidden-xs' : ''}`}
+  >
+    {isEditing && shouldRenderTextField(data?.heading?.jsonValue, true) && <Text editable field={data?.heading?.jsonValue} />}
+    <ul className="nav navbar-nav right-nav">{entries.map((item) => {
+      const authored = allianzLinkField(item.link?.jsonValue, isEditing);
+      // Account variants never enter live services, even if an author supplies
+      // a placeholder URL. Keep the original field and its metadata in Pages.
+      const field = account && !isEditing
+        ? safeLink({ ...authored, value: { ...authored.value, href: '#service-unavailable' } })
+        : authored;
+      return <li key={item.id} className={account ? 'dropdown login' : 'contact-us'}>
+        {isEditing ? <>
+          {shouldRenderTextField(item.heading?.jsonValue, true) && <Text editable field={item.heading?.jsonValue} />}
+          <Link editable field={field} />
+        </> : <Link editable={false} {...safeLinkRenderProps(field)}>
+          {item.heading?.jsonValue
+            ? <Text editable={false} className={account ? undefined : 'btn-icon-mail'} field={item.heading.jsonValue} />
+            : <span className={account ? undefined : 'btn-icon-mail'}>{field.value.text}</span>}
+          {account && <>{' '}<span className="caret" aria-hidden="true" /></>}
+        </Link>}
+      </li>;
+    })}</ul>
+  </nav>;
+};
+
+export const AccountServices = (props: AllianzProps) => <ServiceLinks {...props} serviceKind="account" />;
+export const ContactServices = (props: AllianzProps) => <ServiceLinks {...props} serviceKind="contact" />;
