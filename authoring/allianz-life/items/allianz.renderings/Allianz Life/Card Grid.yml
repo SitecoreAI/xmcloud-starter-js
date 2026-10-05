@@ -1,30 +1,31 @@
 ---
-ID: "c10b523b-b066-557d-9a41-5a9f9569137a"
+ID: "ea0674f1-31a1-540c-8622-91399e29ffe0"
 Parent: "c4c92e66-b8c2-55e8-b500-5c9f122daa3f"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: "/sitecore/layout/Renderings/Project/Allianz Life/AllianzVideo"
+Path: "/sitecore/layout/Renderings/Project/Allianz Life/Card Grid"
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: "AllianzVideo"
+  Value: "AllianzCardGrid"
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query AllianzVideoQuery($datasource: String!, $language: String!) {
+    query AllianzCardGridQuery($datasource: String!, $language: String!) {
       datasource: item(path: $datasource, language: $language) {
         id
         heading: field(name: "heading") { jsonValue }
+        subheading: field(name: "subheading") { jsonValue }
         body: field(name: "body") { jsonValue }
-        poster: field(name: "poster") { jsonValue }
-        localVideo: field(name: "localVideo") { jsonValue }
-        mediaLink: field(name: "mediaLink") { jsonValue }
-        transcript: field(name: "transcript") { jsonValue }
-        caption: field(name: "caption") { jsonValue }
+        primaryLink: field(name: "primaryLink") { jsonValue }
+        children(first: 40) { total pageInfo { hasNext endCursor } results {
+          id
+          fieldCollection: fields { name jsonValue }
+        } }
       }
     }
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: "/sitecore/templates/Project/Allianz Life/Components/AllianzVideo"
+  Value: "/sitecore/templates/Project/Allianz Life/Components/AllianzCardGrid"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
   Value: "query:$site/*[@@name='Data']/*[@@name='Allianz Life']"
@@ -33,7 +34,7 @@ SharedFields:
   Value: "{E01E61F7-ACA5-5A55-A517-2C84EFF33FC5}"
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: "Office/32x32/movie.png"
+  Value: "Imaging/32x32/grid.png"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: "IsAutoDatasourceRendering=true"
@@ -42,6 +43,6 @@ Languages:
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: "Video"
+    Value: "Card Grid"
   Versions:
   - Version: 1

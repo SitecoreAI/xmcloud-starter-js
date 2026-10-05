@@ -1,0 +1,48 @@
+---
+ID: "5726f1d0-fc15-5ed4-90e3-a9603d0e9825"
+Parent: "c4c92e66-b8c2-55e8-b500-5c9f122daa3f"
+Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+Path: "/sitecore/layout/Renderings/Project/Allianz Life/Compact Breadcrumb Trail"
+SharedFields:
+- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
+  Hint: componentName
+  Value: "AllianzLegacyBreadcrumbs"
+- ID: "17bb046a-a32a-41b3-8315-81217947611b"
+  Hint: ComponentQuery
+  Value: |
+    query AllianzLegacyBreadcrumbsQuery($datasource: String!, $language: String!) {
+      datasource: item(path: $datasource, language: $language) {
+        id
+        heading: field(name: "heading") { jsonValue }
+        primaryNav: field(name: "primaryNav") { ... on MultilistField { targetItems {
+          id
+          title: field(name: "title") { jsonValue }
+          link: field(name: "link") { jsonValue }
+          icon: field(name: "icon") { jsonValue }
+          children(first: 1) { total pageInfo { hasNext endCursor } }
+        } } }
+      }
+    }
+- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
+  Hint: Datasource Template
+  Value: "/sitecore/templates/Project/Allianz Life/Components/AllianzLegacyBreadcrumbs"
+- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
+  Hint: Datasource Location
+  Value: "query:$site/*[@@name='Data']/*[@@name='Allianz Life']"
+- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
+  Hint: Parameters Template
+  Value: "{E01E61F7-ACA5-5A55-A517-2C84EFF33FC5}"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: "Office/32x32/signpost.png"
+- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
+  Hint: OtherProperties
+  Value: "IsAutoDatasourceRendering=true"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Compact Breadcrumb Trail"
+  Versions:
+  - Version: 1

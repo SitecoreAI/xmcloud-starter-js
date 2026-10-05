@@ -1,31 +1,27 @@
 ---
-ID: "7e693f81-a98e-5e6f-ad07-e01377139dd5"
+ID: "7956aaf8-596e-5405-85d5-721989505a95"
 Parent: "c4c92e66-b8c2-55e8-b500-5c9f122daa3f"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: "/sitecore/layout/Renderings/Project/Allianz Life/AllianzAccordion"
+Path: "/sitecore/layout/Renderings/Project/Allianz Life/Rich Text"
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: "AllianzAccordion"
+  Value: "AllianzRichText"
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
   Value: |
-    query AllianzAccordionQuery($datasource: String!, $language: String!) {
+    query AllianzRichTextQuery($datasource: String!, $language: String!) {
       datasource: item(path: $datasource, language: $language) {
         id
         heading: field(name: "heading") { jsonValue }
+        subheading: field(name: "subheading") { jsonValue }
+        body: field(name: "body") { jsonValue }
         primaryLink: field(name: "primaryLink") { jsonValue }
-        children(first: 16) { total pageInfo { hasNext endCursor } results {
-          id
-          heading: field(name: "heading") { jsonValue }
-          body: field(name: "body") { jsonValue }
-          link: field(name: "link") { jsonValue }
-        } }
       }
     }
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: "/sitecore/templates/Project/Allianz Life/Components/AllianzAccordion"
+  Value: "/sitecore/templates/Project/Allianz Life/Components/AllianzRichText"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
   Value: "query:$site/*[@@name='Data']/*[@@name='Allianz Life']"
@@ -34,7 +30,7 @@ SharedFields:
   Value: "{E01E61F7-ACA5-5A55-A517-2C84EFF33FC5}"
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: "Office/32x32/barrel.png"
+  Value: "Applications/32x32/text_rich_colored.png"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: "IsAutoDatasourceRendering=true"
@@ -43,6 +39,6 @@ Languages:
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: "Accordion"
+    Value: "Rich Text"
   Versions:
   - Version: 1

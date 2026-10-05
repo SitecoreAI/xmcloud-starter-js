@@ -17,7 +17,7 @@ DISPLAY_NAME_ID = 'b5e02ad9-d56f-4c41-a065-a133db87bdeb'
 ICON_ID = '06d5295c-ed2f-4a54-9bf2-26228d113318'
 THUMBNAIL_ID = 'c7c26117-dbb1-42b2-ab5e-f7223845cca3'
 
-# Pins all 28 rendering IDs, parents, templates, paths, datasource/parameter
+# Pins all 28 rendering IDs, parents, templates, historical identity paths, datasource/parameter
 # contracts and storage. The one reviewed query change is CardGrid's complete
 # first:40 field collection, accepted by native Preview. Field-value/editing
 # browser acceptance is a separate gate. Further contract changes need review.
@@ -44,6 +44,13 @@ VERIFIED_NATIVE_ICONS = {
     'Business/16x16/index_view.png',
     'Office/32x32/tools.png',
     'Business/32x32/table_edit.png',
+    # Exact PNG paths independently verified by the 2026-10-04 native audit.
+    'Office/16x16/navigate_open.png',
+    'Office/16x16/calculator.png',
+    'Office/16x16/documents_empty.png',
+    'Office/16x16/document_footer.png',
+    'Office/16x16/layout_north.png',
+    'Office/16x16/film.png',
 }
 
 
@@ -60,7 +67,7 @@ class RenderingAuthoringTests(unittest.TestCase):
         self.assertEqual(structure.FIELD['DisplayName'], DISPLAY_NAME_ID)
         self.assertEqual(len(self.renderings), 28)
         for row in self.renderings:
-            name = row['Path'].rsplit('/', 1)[-1]
+            name = next(field['Value'] for field in row['SharedFields'] if field['ID'] == structure.FIELD['ComponentName'])
             with self.subTest(component=name):
                 self.assertEqual(row['UnversionedFields'], [{
                     'ID': DISPLAY_NAME_ID,
@@ -86,7 +93,11 @@ class RenderingAuthoringTests(unittest.TestCase):
 
     def test_reviewed_non_authoring_rendering_contract_is_pinned(self):
         original = copy.deepcopy(self.renderings)
+        metadata = {row["itemId"]: row for row in structure.NATIVE_METADATA["records"]}
         for row in original:
+            if row["ID"] in metadata:
+                self.assertEqual(row["Path"], metadata[row["ID"]]["currentPath"])
+                row["Path"] = metadata[row["ID"]]["historicalPath"]
             row['SharedFields'] = [
                 field for field in row['SharedFields'] if field['ID'] != ICON_ID
             ]

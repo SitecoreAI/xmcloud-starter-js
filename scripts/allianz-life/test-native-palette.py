@@ -157,9 +157,21 @@ class NativePaletteTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "provenance differs from the verified source capture"):
                 self.load_candidate(candidate)
 
-    def test_historical_generator_changes_exactly_main_field_and_no_identity(self):
+    def test_historical_generator_preserves_main_and_only_reviewed_metadata_changes(self):
         rows, module = structure.generate()
-        other_rows = [row for row in rows if row["ID"] != palette.MAIN_ID]
+        other_rows = copy.deepcopy([row for row in rows if row["ID"] != palette.MAIN_ID])
+        metadata = {row["itemId"]: row for row in structure.NATIVE_METADATA["records"]}
+        for row in other_rows:
+            if row["ID"] not in metadata:
+                continue
+            record = metadata[row["ID"]]
+            self.assertEqual(row["Path"], record["currentPath"])
+            row["Path"] = record["historicalPath"]
+            for key, section, hint in (("icon", "SharedFields", "__Icon"), ("displayName", "UnversionedFields", "__Display name")):
+                if key in record:
+                    target = next(field for field in row[section] if field["Hint"] == hint)
+                    self.assertEqual(target["Value"], record[key]["after"])
+                    target["Value"] = record[key]["before"]
         digest = hashlib.sha256(json.dumps(other_rows, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
         self.assertEqual(digest, NON_MAIN_ITEMS_SHA256)
         self.assertEqual(len(rows), 491)

@@ -4731,7 +4731,7 @@
       "ID": "1983f760-2407-5ee3-987d-5957eb461129",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHeader",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Header",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -4761,7 +4761,7 @@
         {
           "ID": "06d5295c-ed2f-4a54-9bf2-26228d113318",
           "Hint": "__Icon",
-          "Value": "Office/32x32/layout.png"
+          "Value": "Office/16x16/layout_north.png"
         }
       ],
       "UnversionedFields": [
@@ -4971,7 +4971,7 @@
       "ID": "1d75f6ba-cc96-5fd7-9db6-7aab3a8c6a6e",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHero",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Hero",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -5164,7 +5164,7 @@
       "ID": "7956aaf8-596e-5405-85d5-721989505a95",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzRichText",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Rich Text",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -5363,7 +5363,7 @@
       "ID": "ea0674f1-31a1-540c-8622-91399e29ffe0",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCardGrid",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Card Grid",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -5510,7 +5510,7 @@
       "ID": "7e693f81-a98e-5e6f-ad07-e01377139dd5",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzAccordion",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Accordion",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -5540,7 +5540,7 @@
         {
           "ID": "06d5295c-ed2f-4a54-9bf2-26228d113318",
           "Hint": "__Icon",
-          "Value": "Office/32x32/barrel.png"
+          "Value": "Office/16x16/navigate_open.png"
         },
         {
           "ID": "e829c217-5e94-4306-9c48-2634b094fdc2",
@@ -5824,7 +5824,7 @@
       "ID": "342e603b-1db1-5af4-a7e9-a62be4ea6678",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzDocumentList",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Document List",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -5854,7 +5854,7 @@
         {
           "ID": "06d5295c-ed2f-4a54-9bf2-26228d113318",
           "Hint": "__Icon",
-          "Value": "Office/32x32/floppy_disks.png"
+          "Value": "Office/16x16/documents_empty.png"
         },
         {
           "ID": "e829c217-5e94-4306-9c48-2634b094fdc2",
@@ -6084,7 +6084,7 @@
       "ID": "3cd4efcb-b7e0-528b-a525-668d74525435",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzFooter",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Footer",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -6114,7 +6114,7 @@
         {
           "ID": "06d5295c-ed2f-4a54-9bf2-26228d113318",
           "Hint": "__Icon",
-          "Value": "Office/32x32/layout.png"
+          "Value": "Office/16x16/document_footer.png"
         }
       ],
       "UnversionedFields": [
@@ -6225,7 +6225,7 @@
       "ID": "0bd23a13-5792-50bd-a8eb-d4297d02c06d",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzBreadcrumbs",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Breadcrumbs",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -6554,7 +6554,7 @@
       "ID": "03243a2c-97e5-54b8-b60c-2f94b98675a1",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzForm",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Form",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -7289,7 +7289,7 @@
       "ID": "c10b523b-b066-557d-9a41-5a9f9569137a",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzVideo",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Video",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -7319,7 +7319,7 @@
         {
           "ID": "06d5295c-ed2f-4a54-9bf2-26228d113318",
           "Hint": "__Icon",
-          "Value": "Office/32x32/movie.png"
+          "Value": "Office/16x16/film.png"
         },
         {
           "ID": "e829c217-5e94-4306-9c48-2634b094fdc2",
@@ -7436,7 +7436,7 @@
       "ID": "f2fd6ed6-a96f-59a5-b7de-67d523fad31d",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzTimeline",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Timeline",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -7802,7 +7802,7 @@
       "ID": "b6a45c26-8516-5b1a-aa07-83798fb57788",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzIndexDefinitions",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Index Definitions",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -8105,7 +8105,7 @@
       "ID": "45e446af-6284-5804-ad6d-25486aa75c5e",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCalculator",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Calculator",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -8135,7 +8135,7 @@
         {
           "ID": "06d5295c-ed2f-4a54-9bf2-26228d113318",
           "Hint": "__Icon",
-          "Value": "Office/32x32/tools.png"
+          "Value": "Office/16x16/calculator.png"
         },
         {
           "ID": "e829c217-5e94-4306-9c48-2634b094fdc2",
@@ -8470,7 +8470,7 @@
       "ID": "dabb2247-cab9-5c16-9019-f968317e82d8",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacySidebar",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Sidebar Navigation",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -8507,7 +8507,7 @@
         {
           "ID": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
           "Hint": "__Display name",
-          "Value": "Legacy Sidebar"
+          "Value": "Sidebar Navigation"
         }
       ],
       "VersionedFields": []
@@ -9299,7 +9299,7 @@
       "ID": "83a83fc1-7a77-5982-ab72-c57cddb4583d",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyHeader",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Navigation Masthead",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -9329,14 +9329,14 @@
         {
           "ID": "06d5295c-ed2f-4a54-9bf2-26228d113318",
           "Hint": "__Icon",
-          "Value": "Office/32x32/layout.png"
+          "Value": "Office/16x16/layout_north.png"
         }
       ],
       "UnversionedFields": [
         {
           "ID": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
           "Hint": "__Display name",
-          "Value": "Legacy Header"
+          "Value": "Navigation Masthead"
         }
       ],
       "VersionedFields": []
@@ -9554,7 +9554,7 @@
       "ID": "10b26485-8a6e-5fee-badf-1fb30590be5e",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyFooter",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Sitemap Footer",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -9584,14 +9584,14 @@
         {
           "ID": "06d5295c-ed2f-4a54-9bf2-26228d113318",
           "Hint": "__Icon",
-          "Value": "Office/32x32/layout.png"
+          "Value": "Office/16x16/document_footer.png"
         }
       ],
       "UnversionedFields": [
         {
           "ID": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
           "Hint": "__Display name",
-          "Value": "Legacy Footer"
+          "Value": "Sitemap Footer"
         }
       ],
       "VersionedFields": []
@@ -9670,7 +9670,7 @@
       "ID": "92359bce-01f9-57f2-88c8-60b97d5d6178",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyAccordion",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Expandable Content Panels",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -9700,7 +9700,7 @@
         {
           "ID": "06d5295c-ed2f-4a54-9bf2-26228d113318",
           "Hint": "__Icon",
-          "Value": "Office/32x32/barrel.png"
+          "Value": "Office/16x16/navigate_open.png"
         },
         {
           "ID": "e829c217-5e94-4306-9c48-2634b094fdc2",
@@ -9712,7 +9712,7 @@
         {
           "ID": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
           "Hint": "__Display name",
-          "Value": "Legacy Accordion"
+          "Value": "Expandable Content Panels"
         }
       ],
       "VersionedFields": []
@@ -9843,7 +9843,7 @@
       "ID": "334fb514-8f91-5290-ae82-5d74937f150e",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyCardGrid",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Content Tile Grid",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -9885,7 +9885,7 @@
         {
           "ID": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
           "Hint": "__Display name",
-          "Value": "Legacy Card Grid"
+          "Value": "Content Tile Grid"
         }
       ],
       "VersionedFields": []
@@ -9964,7 +9964,7 @@
       "ID": "dfa33436-f08f-517d-a787-73861e39bc62",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyLinkList",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Page Links and Tools",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -10006,7 +10006,7 @@
         {
           "ID": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
           "Hint": "__Display name",
-          "Value": "Legacy Link List"
+          "Value": "Page Links and Tools"
         }
       ],
       "VersionedFields": []
@@ -10110,7 +10110,7 @@
       "ID": "5726f1d0-fc15-5ed4-90e3-a9603d0e9825",
       "Parent": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
       "Template": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
-      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyBreadcrumbs",
+      "Path": "/sitecore/layout/Renderings/Project/Allianz Life/Compact Breadcrumb Trail",
       "SharedFields": [
         {
           "ID": "037fe404-dd19-4bf7-8e30-4dadf68b27b0",
@@ -10152,7 +10152,7 @@
         {
           "ID": "b5e02ad9-d56f-4c41-a065-a133db87bdeb",
           "Hint": "__Display name",
-          "Value": "Legacy Breadcrumbs"
+          "Value": "Compact Breadcrumb Trail"
         }
       ],
       "VersionedFields": []

@@ -2,7 +2,7 @@
 ID: "dabb2247-cab9-5c16-9019-f968317e82d8"
 Parent: "c4c92e66-b8c2-55e8-b500-5c9f122daa3f"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacySidebar"
+Path: "/sitecore/layout/Renderings/Project/Allianz Life/Sidebar Navigation"
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
@@ -58,6 +58,6 @@ Languages:
   Fields:
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: "Legacy Sidebar"
+    Value: "Sidebar Navigation"
   Versions:
   - Version: 1

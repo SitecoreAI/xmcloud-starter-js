@@ -905,7 +905,7 @@
       "effectiveDisplayLabelObserved": "Header",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHeader",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Header",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "18cc9b1d-79cd-4e15-aeb2-df21c6081511"
@@ -919,7 +919,7 @@
       "effectiveDisplayLabelObserved": "Footer",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzFooter",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Footer",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "18cc9b1d-79cd-4e15-aeb2-df21c6081511"
@@ -933,7 +933,7 @@
       "effectiveDisplayLabelObserved": "Breadcrumbs",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzBreadcrumbs",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Breadcrumbs",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "18cc9b1d-79cd-4e15-aeb2-df21c6081511",
@@ -948,7 +948,7 @@
       "effectiveDisplayLabelObserved": "Legacy Header",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyHeader",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Navigation Masthead",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "18cc9b1d-79cd-4e15-aeb2-df21c6081511"
@@ -962,7 +962,7 @@
       "effectiveDisplayLabelObserved": "Legacy Footer",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyFooter",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Sitemap Footer",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "18cc9b1d-79cd-4e15-aeb2-df21c6081511"
@@ -976,7 +976,7 @@
       "effectiveDisplayLabelObserved": "Legacy Breadcrumbs",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyBreadcrumbs",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Compact Breadcrumb Trail",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "18cc9b1d-79cd-4e15-aeb2-df21c6081511",
@@ -991,7 +991,7 @@
       "effectiveDisplayLabelObserved": "Legacy Link List",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyLinkList",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Page Links and Tools",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "18cc9b1d-79cd-4e15-aeb2-df21c6081511",
@@ -1078,7 +1078,7 @@
       "effectiveDisplayLabelObserved": "Hero",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHero",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Hero",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "fc6e7695-eeef-4eca-a134-39afec227bdb",
@@ -1093,7 +1093,7 @@
       "effectiveDisplayLabelObserved": "Rich Text",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzRichText",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Rich Text",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "fc6e7695-eeef-4eca-a134-39afec227bdb"
@@ -1107,7 +1107,7 @@
       "effectiveDisplayLabelObserved": "Accordion",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzAccordion",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Accordion",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "fc6e7695-eeef-4eca-a134-39afec227bdb",
@@ -1122,7 +1122,7 @@
       "effectiveDisplayLabelObserved": "Card Grid",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCardGrid",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Card Grid",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "fc6e7695-eeef-4eca-a134-39afec227bdb",
@@ -1137,7 +1137,7 @@
       "effectiveDisplayLabelObserved": "Timeline",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzTimeline",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Timeline",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "fc6e7695-eeef-4eca-a134-39afec227bdb",
@@ -1152,7 +1152,7 @@
       "effectiveDisplayLabelObserved": "Legacy Accordion",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyAccordion",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Expandable Content Panels",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "fc6e7695-eeef-4eca-a134-39afec227bdb",
@@ -1167,7 +1167,7 @@
       "effectiveDisplayLabelObserved": "Legacy Card Grid",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyCardGrid",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Content Tile Grid",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "fc6e7695-eeef-4eca-a134-39afec227bdb",
@@ -1182,7 +1182,7 @@
       "effectiveDisplayLabelObserved": "Legacy Sidebar",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacySidebar",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Sidebar Navigation",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "fc6e7695-eeef-4eca-a134-39afec227bdb"
@@ -1316,7 +1316,7 @@
       "effectiveDisplayLabelObserved": "Calculator",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCalculator",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Calculator",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "4a618102-1c13-472e-b8ba-bca9ed27ece8",
@@ -1331,7 +1331,7 @@
       "effectiveDisplayLabelObserved": "Index Definitions",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzIndexDefinitions",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Index Definitions",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "4a618102-1c13-472e-b8ba-bca9ed27ece8",
@@ -1346,7 +1346,7 @@
       "effectiveDisplayLabelObserved": "Document List",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzDocumentList",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Document List",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "4a618102-1c13-472e-b8ba-bca9ed27ece8",
@@ -1840,7 +1840,7 @@
       "effectiveDisplayLabelObserved": "Form",
       "nativeVersionObserved": "1",
       "inCurrentSitePalette": true,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzForm",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Form",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "55a88e67-a227-46be-9e1d-2a680e1a6943",
@@ -1897,7 +1897,7 @@
       "effectiveDisplayLabelObserved": null,
       "nativeVersionObserved": "0",
       "inCurrentSitePalette": false,
-      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzVideo",
+      "historicalSerializedDefinitionPath": "/sitecore/layout/Renderings/Project/Allianz Life/Video",
       "completeCurrentNativeSerializationVerified": false,
       "consumingItemIds": [
         "cadb4233-34e7-5b85-b36f-0b8475f4cbd0"

@@ -21,6 +21,11 @@ _palette_spec = importlib.util.spec_from_file_location("allianz_native_palette",
 native_palette = importlib.util.module_from_spec(_palette_spec)
 _palette_spec.loader.exec_module(native_palette)
 
+_metadata_spec = importlib.util.spec_from_file_location("allianz_native_rendering_metadata", Path(__file__).with_name("native-rendering-metadata.py"))
+native_metadata = importlib.util.module_from_spec(_metadata_spec)
+_metadata_spec.loader.exec_module(native_metadata)
+NATIVE_METADATA = native_metadata.load_model()
+
 # Verified against this repository's serialized items. Live dependency resolution
 # remains mandatory: these references are platform prerequisites, not imported.
 PLATFORM = {
@@ -139,7 +144,9 @@ NATIVE_ICONS = {
     "table": "Business/32x32/table_edit.png",  # Page Structure/ISplitter
 }
 
-# Labels follow native-authoring-plan-next/PLAN.json. These logical group labels
+# Historical labels follow native-authoring-plan-next/PLAN.json. Verified
+# English labels and icons are overlaid below; logical group hints are historical
+# and are not live Available Renderings membership. These logical group labels
 # describe site-scoped Available Renderings categories for presentation bootstrap;
 # they never move rendering items, whose path-derived identities must stay stable.
 # All registered renderers stay represented, including those with no current use.
@@ -177,6 +184,8 @@ RENDERING_AUTHORING = {
         ("AllianzLegacyBreadcrumbs", "Legacy Breadcrumbs", "Legacy content", "navigation"),
     ]
 }
+RENDERING_AUTHORING = native_metadata.update_catalog(RENDERING_AUTHORING, NATIVE_METADATA)
+
 CHILDREN = {
     "AllianzCard": {"heading": "Single-Line Text", "subheading": "Rich Text", "body": "Rich Text", "image": "Image", "icon": "Image", "iconTheme": "Droplist", "link": "General Link", "links": "Treelist", "theme": "Droplist", "headingLevel": "Droplist", "alphanumeral": "Single-Line Text"},
     "AllianzAccordionEntry": {"heading": "Single-Line Text", "body": "Rich Text", "link": "General Link"},
@@ -401,7 +410,10 @@ def generate() -> tuple[list[dict], dict]:
         # __Display name is language-unversioned, not shared or versioned. The
         # serializer emits en/Version 1 for this language without moving any of
         # the existing rendering configuration out of shared storage.
-        values.append(item(render_path, "JsonRendering", shared=shared, unversioned=[field(FIELD["DisplayName"], "__Display name", RENDERING_AUTHORING[name]["displayName"])]))
+        rendering = item(render_path, "JsonRendering", shared=shared, unversioned=[field(FIELD["DisplayName"], "__Display name", RENDERING_AUTHORING[name]["displayName"])])
+        # Historical identity path generates the existing ID; author-facing
+        # paths and verified metadata are applied afterwards, never to bindings.
+        values.append(native_metadata.apply(rendering, NATIVE_METADATA))
     placeholders = {"headless-header": ["AllianzHeader", "AllianzLegacyHeader"], "headless-main": [name for name in COMPONENTS if name not in ("AllianzHeader", "AllianzFooter", "AllianzLegacyHeader", "AllianzLegacyFooter", "AllianzLegacySidebar")], "headless-footer": ["AllianzFooter", "AllianzLegacyFooter"], "headless-sidebar": ["AllianzLegacySidebar"]}
     for key, names in placeholders.items():
         placeholder = item(ROOTS["allianz.placeholders"][0] + "/" + key, "Placeholder", shared=[field(FIELD["PlaceholderKey"], "Placeholder Key", key), field(FIELD["AllowedControls"], "Allowed Controls", "\n".join(brace(identifier(ROOTS["allianz.renderings"][0] + "/" + name)) for name in names))])
@@ -429,6 +441,7 @@ def main() -> None:
     if len({value["ID"] for value in values}) != len(values):
         raise ValueError("Duplicate generated identities")
     item_root = OUTPUT / "items"
+    native_metadata.require_canonical_storage(item_root, NATIVE_METADATA)
     for value in values:
         matching = [(name, root) for name, (root, _, _) in ROOTS.items() if value["Path"] == root or value["Path"].startswith(root + "/")]
         if len(matching) != 1:

@@ -12,6 +12,17 @@ All accepted Home rendering UIDs and datasource IDs were retained through migrat
 
 The historical `content-contract.json`, generated YAML and structure manifest describe the earlier generic extraction/bootstrap model. They are compatibility/source evidence, not the full current native model or a live rollback target. Locally regenerating them never authorizes applying them. Existing generic definitions and recovery child content stay until actual dependency analysis; generic Rich Text is excluded from the author toolbox.
 
+## Bounded native rendering metadata reconciliation
+
+`native-metadata/verified-rendering-metadata.json` records a separately reviewed
+2026-10-04 native audit. The generator now reconciles 20 active historical
+rendering paths by their existing IDs, seven English labels and nine icons.
+Technical component names, query identifiers, datasource/parameter fields, all
+491 item IDs and all existing references remain unchanged. This is a source
+candidate only; complete current native item/dependency capture is still absent.
+Do not replay the historical module. See `native-metadata/README.md` for exact
+coverage, exclusions and safe regeneration.
+
 ## Validate safely
 
 `validate-structure.py` validates the isolated historical source/YAML boundaries and optionally invokes the scoped SCS validator. It does not establish tenant query compatibility, native field editability, content completeness or deployment readiness. Its target schema must come from the preserved project/environment. Keep an explicit empty build module list even when running a read-only SCS validation.

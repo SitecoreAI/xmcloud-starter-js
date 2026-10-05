@@ -2,7 +2,7 @@
 ID: "03243a2c-97e5-54b8-b60c-2f94b98675a1"
 Parent: "c4c92e66-b8c2-55e8-b500-5c9f122daa3f"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: "/sitecore/layout/Renderings/Project/Allianz Life/AllianzForm"
+Path: "/sitecore/layout/Renderings/Project/Allianz Life/Form"
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName

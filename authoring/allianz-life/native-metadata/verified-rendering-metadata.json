@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 1,
+  "status": "bounded-source-candidate-not-deployable",
+  "sourceCommit": "741701cfd660db819f0dffeaf595ab2048af4261",
+  "nativeAuditObservedAtUtc": "2026-10-04T21:04:53.952456+00:00",
+  "auditArchiveSha256": "9fb3f53ba5677163464f67bdd9f033374cccb50d464089616cbb9749da263d3e",
+  "auditArchiveVersion": 5,
+  "scope": {
+    "verifiedRenamesInHistoricalSource": 19,
+    "additionalObservedActiveName": "Video",
+    "englishDisplayNames": 7,
+    "renderingIcons": 9,
+    "inactiveDefinitionsChanged": 0,
+    "technicalBindingsChanged": 0
+  },
+  "records": [
+    {
+      "itemId": "7e693f81-a98e-5e6f-ad07-e01377139dd5",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzAccordion",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzAccordion",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Accordion",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/accordion-after-item.json",
+      "icon": {
+        "before": "Office/32x32/barrel.png",
+        "after": "Office/16x16/navigate_open.png",
+        "evidence": "evidence/restored-mcp/icon-patch-7e693f81-a98e-5e6f-ad07-e01377139dd5-result.json",
+        "assetEvidence": "evidence/restored-mcp/native-chrome-icon-probe.json"
+      }
+    },
+    {
+      "itemId": "0bd23a13-5792-50bd-a8eb-d4297d02c06d",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzBreadcrumbs",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzBreadcrumbs",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Breadcrumbs",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-0bd23a13-5792-50bd-a8eb-d4297d02c06d.json"
+    },
+    {
+      "itemId": "45e446af-6284-5804-ad6d-25486aa75c5e",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzCalculator",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCalculator",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Calculator",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-45e446af-6284-5804-ad6d-25486aa75c5e.json",
+      "icon": {
+        "before": "Office/32x32/tools.png",
+        "after": "Office/16x16/calculator.png",
+        "evidence": "evidence/restored-mcp/icon-patch-45e446af-6284-5804-ad6d-25486aa75c5e-result.json",
+        "assetEvidence": "evidence/restored-mcp/native-chrome-icon-probe.json"
+      }
+    },
+    {
+      "itemId": "ea0674f1-31a1-540c-8622-91399e29ffe0",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzCardGrid",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzCardGrid",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Card Grid",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-ea0674f1-31a1-540c-8622-91399e29ffe0.json"
+    },
+    {
+      "itemId": "5726f1d0-fc15-5ed4-90e3-a9603d0e9825",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzLegacyBreadcrumbs",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyBreadcrumbs",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Compact Breadcrumb Trail",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-5726f1d0-fc15-5ed4-90e3-a9603d0e9825.json",
+      "displayName": {
+        "before": "Legacy Breadcrumbs",
+        "after": "Compact Breadcrumb Trail",
+        "evidence": "evidence/author-label-patches/5726f1d0-fc15-5ed4-90e3-a9603d0e9825-result.json"
+      }
+    },
+    {
+      "itemId": "334fb514-8f91-5290-ae82-5d74937f150e",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzLegacyCardGrid",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyCardGrid",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Content Tile Grid",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-334fb514-8f91-5290-ae82-5d74937f150e.json",
+      "displayName": {
+        "before": "Legacy Card Grid",
+        "after": "Content Tile Grid",
+        "evidence": "evidence/author-label-patches/334fb514-8f91-5290-ae82-5d74937f150e-result.json"
+      }
+    },
+    {
+      "itemId": "342e603b-1db1-5af4-a7e9-a62be4ea6678",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzDocumentList",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzDocumentList",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Document List",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-342e603b-1db1-5af4-a7e9-a62be4ea6678.json",
+      "icon": {
+        "before": "Office/32x32/floppy_disks.png",
+        "after": "Office/16x16/documents_empty.png",
+        "evidence": "evidence/restored-mcp/icon-patch-342e603b-1db1-5af4-a7e9-a62be4ea6678-result.json",
+        "assetEvidence": "evidence/restored-mcp/native-chrome-icon-probe.json"
+      }
+    },
+    {
+      "itemId": "92359bce-01f9-57f2-88c8-60b97d5d6178",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzLegacyAccordion",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyAccordion",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Expandable Content Panels",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-92359bce-01f9-57f2-88c8-60b97d5d6178.json",
+      "displayName": {
+        "before": "Legacy Accordion",
+        "after": "Expandable Content Panels",
+        "evidence": "evidence/author-label-patches/92359bce-01f9-57f2-88c8-60b97d5d6178-result.json"
+      },
+      "icon": {
+        "before": "Office/32x32/barrel.png",
+        "after": "Office/16x16/navigate_open.png",
+        "evidence": "evidence/restored-mcp/icon-patch-92359bce-01f9-57f2-88c8-60b97d5d6178-result.json",
+        "assetEvidence": "evidence/restored-mcp/native-chrome-icon-probe.json"
+      }
+    },
+    {
+      "itemId": "3cd4efcb-b7e0-528b-a525-668d74525435",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzFooter",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzFooter",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Footer",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-3cd4efcb-b7e0-528b-a525-668d74525435.json",
+      "icon": {
+        "before": "Office/32x32/layout.png",
+        "after": "Office/16x16/document_footer.png",
+        "evidence": "evidence/restored-mcp/icon-patch-3cd4efcb-b7e0-528b-a525-668d74525435-result.json",
+        "assetEvidence": "evidence/restored-mcp/native-chrome-icon-probe.json"
+      }
+    },
+    {
+      "itemId": "03243a2c-97e5-54b8-b60c-2f94b98675a1",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzForm",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzForm",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Form",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-03243a2c-97e5-54b8-b60c-2f94b98675a1.json"
+    },
+    {
+      "itemId": "1983f760-2407-5ee3-987d-5957eb461129",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzHeader",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHeader",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Header",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-1983f760-2407-5ee3-987d-5957eb461129.json",
+      "icon": {
+        "before": "Office/32x32/layout.png",
+        "after": "Office/16x16/layout_north.png",
+        "evidence": "evidence/restored-mcp/icon-patch-1983f760-2407-5ee3-987d-5957eb461129-result.json",
+        "assetEvidence": "evidence/restored-mcp/native-chrome-icon-probe.json"
+      }
+    },
+    {
+      "itemId": "1d75f6ba-cc96-5fd7-9db6-7aab3a8c6a6e",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzHero",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzHero",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Hero",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-1d75f6ba-cc96-5fd7-9db6-7aab3a8c6a6e.json"
+    },
+    {
+      "itemId": "b6a45c26-8516-5b1a-aa07-83798fb57788",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzIndexDefinitions",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzIndexDefinitions",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Index Definitions",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-b6a45c26-8516-5b1a-aa07-83798fb57788.json"
+    },
+    {
+      "itemId": "83a83fc1-7a77-5982-ab72-c57cddb4583d",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzLegacyHeader",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyHeader",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Navigation Masthead",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-83a83fc1-7a77-5982-ab72-c57cddb4583d.json",
+      "displayName": {
+        "before": "Legacy Header",
+        "after": "Navigation Masthead",
+        "evidence": "evidence/author-label-patches/83a83fc1-7a77-5982-ab72-c57cddb4583d-result.json"
+      },
+      "icon": {
+        "before": "Office/32x32/layout.png",
+        "after": "Office/16x16/layout_north.png",
+        "evidence": "evidence/restored-mcp/icon-patch-83a83fc1-7a77-5982-ab72-c57cddb4583d-result.json",
+        "assetEvidence": "evidence/restored-mcp/native-chrome-icon-probe.json"
+      }
+    },
+    {
+      "itemId": "dfa33436-f08f-517d-a787-73861e39bc62",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzLegacyLinkList",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyLinkList",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Page Links and Tools",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-dfa33436-f08f-517d-a787-73861e39bc62.json",
+      "displayName": {
+        "before": "Legacy Link List",
+        "after": "Page Links and Tools",
+        "evidence": "evidence/author-label-patches/dfa33436-f08f-517d-a787-73861e39bc62-result.json"
+      }
+    },
+    {
+      "itemId": "7956aaf8-596e-5405-85d5-721989505a95",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzRichText",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzRichText",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Rich Text",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-7956aaf8-596e-5405-85d5-721989505a95.json"
+    },
+    {
+      "itemId": "dabb2247-cab9-5c16-9019-f968317e82d8",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzLegacySidebar",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacySidebar",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Sidebar Navigation",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-dabb2247-cab9-5c16-9019-f968317e82d8.json",
+      "displayName": {
+        "before": "Legacy Sidebar",
+        "after": "Sidebar Navigation",
+        "evidence": "evidence/author-label-patches/dabb2247-cab9-5c16-9019-f968317e82d8-result.json"
+      }
+    },
+    {
+      "itemId": "10b26485-8a6e-5fee-badf-1fb30590be5e",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzLegacyFooter",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzLegacyFooter",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Sitemap Footer",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-10b26485-8a6e-5fee-badf-1fb30590be5e.json",
+      "displayName": {
+        "before": "Legacy Footer",
+        "after": "Sitemap Footer",
+        "evidence": "evidence/author-label-patches/10b26485-8a6e-5fee-badf-1fb30590be5e-result.json"
+      },
+      "icon": {
+        "before": "Office/32x32/layout.png",
+        "after": "Office/16x16/document_footer.png",
+        "evidence": "evidence/restored-mcp/icon-patch-10b26485-8a6e-5fee-badf-1fb30590be5e-result.json",
+        "assetEvidence": "evidence/restored-mcp/native-chrome-icon-probe.json"
+      }
+    },
+    {
+      "itemId": "f2fd6ed6-a96f-59a5-b7de-67d523fad31d",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzTimeline",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzTimeline",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Timeline",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-same-ID-rename",
+      "nameEvidence": "evidence/native-rename-retry/batch-after-f2fd6ed6-a96f-59a5-b7de-67d523fad31d.json"
+    },
+    {
+      "itemId": "c10b523b-b066-557d-9a41-5a9f9569137a",
+      "parentId": "c4c92e66-b8c2-55e8-b500-5c9f122daa3f",
+      "templateId": "04646a89-996f-4ee7-878a-ffdbf1f0ef0d",
+      "technicalComponentName": "AllianzVideo",
+      "historicalPath": "/sitecore/layout/Renderings/Project/Allianz Life/AllianzVideo",
+      "currentPath": "/sitecore/layout/Renderings/Project/Allianz Life/Video",
+      "nativeVersionObserved": 1,
+      "nameEvidenceKind": "verified-current-item-read",
+      "nameEvidence": "evidence/restored-mcp/icon-patch-c10b523b-b066-557d-9a41-5a9f9569137a-after-item.json",
+      "icon": {
+        "before": "Office/32x32/movie.png",
+        "after": "Office/16x16/film.png",
+        "evidence": "evidence/restored-mcp/icon-patch-c10b523b-b066-557d-9a41-5a9f9569137a-result.json",
+        "assetEvidence": "evidence/restored-mcp/native-chrome-icon-probe.json"
+      }
+    }
+  ],
+  "evidenceFileSha256": {
+    "evidence/native-rename-retry/accordion-after-item.json": "a948a62a4e935801446799e267b42273109ea036838a2c8882d82ce6fd9ca40d",
+    "evidence/restored-mcp/icon-patch-7e693f81-a98e-5e6f-ad07-e01377139dd5-result.json": "7e98f4787d7ab60cff0ace37f9218862888b6030376ae1823e8c4f5e5032726b",
+    "evidence/restored-mcp/native-chrome-icon-probe.json": "23807381681102ef43c4e9ef65ffced16a6f19373bac9324bcf025b99e13e34b",
+    "evidence/native-rename-retry/batch-after-0bd23a13-5792-50bd-a8eb-d4297d02c06d.json": "0fad4b793f22bc5c6a9e1d5bf54cbb77d5071113db07438fc547d87efa1c7ca3",
+    "evidence/native-rename-retry/batch-after-45e446af-6284-5804-ad6d-25486aa75c5e.json": "6dde87abfe240433772826c508bae6da5b8eb79d0a764b7b8c3f081490ce74ac",
+    "evidence/restored-mcp/icon-patch-45e446af-6284-5804-ad6d-25486aa75c5e-result.json": "9051c21ec2b90bf81ad40104bf4b2e897ce441f3e568cdcbd6c4126d77d29d76",
+    "evidence/native-rename-retry/batch-after-ea0674f1-31a1-540c-8622-91399e29ffe0.json": "0e917bc23ee1f3ba68ad3a2893be2ffb951aec3a23fd8e7b3fbf69ffb326add9",
+    "evidence/native-rename-retry/batch-after-5726f1d0-fc15-5ed4-90e3-a9603d0e9825.json": "9866939c688f7687e3ab7d68cbf913472e78e4bd2604c5aabd98a5c84b113433",
+    "evidence/author-label-patches/5726f1d0-fc15-5ed4-90e3-a9603d0e9825-result.json": "c0cb78288948ca249eda734d12a1194404c31756ec6e2398b86bc1eb973f335b",
+    "evidence/native-rename-retry/batch-after-334fb514-8f91-5290-ae82-5d74937f150e.json": "19e4bbc4fe2497045d2bc9a69b81d7817b5589c63b763cfcfc1b2adb117ce686",
+    "evidence/author-label-patches/334fb514-8f91-5290-ae82-5d74937f150e-result.json": "f863fd9c608c29a69c5a7d0abdd8f20086e4567a7cc669f51f66ef0e65029de5",
+    "evidence/native-rename-retry/batch-after-342e603b-1db1-5af4-a7e9-a62be4ea6678.json": "388dbfbdd56eadb8499ca9842f9d72acf2504b123ff4c94aca3826d166d3578c",
+    "evidence/restored-mcp/icon-patch-342e603b-1db1-5af4-a7e9-a62be4ea6678-result.json": "1475eb28e6a9f4e27f96aa79da100026a2d9768873562023b93ad8e9def49273",
+    "evidence/native-rename-retry/batch-after-92359bce-01f9-57f2-88c8-60b97d5d6178.json": "dc38aeaed2f9484a9b8ac9d66c512fd550c8835ff8ac667420dadcc4e72b31c8",
+    "evidence/author-label-patches/92359bce-01f9-57f2-88c8-60b97d5d6178-result.json": "7c307256d6978db7d6ce6137f398c996a1bfe6156893d779706e8f46aab958ff",
+    "evidence/restored-mcp/icon-patch-92359bce-01f9-57f2-88c8-60b97d5d6178-result.json": "9bda06357e618a7f7609d82984b8889a17ce557ab7410586113bafa73bfa11a4",
+    "evidence/native-rename-retry/batch-after-3cd4efcb-b7e0-528b-a525-668d74525435.json": "0ec32cf215cc5fd6b5fbadf7c36eeeba01d645ef9aacf0cda6f4868a3ed759c9",
+    "evidence/restored-mcp/icon-patch-3cd4efcb-b7e0-528b-a525-668d74525435-result.json": "d8b9f7d3180edeaf2b2314cba7101edc8ad3a40d6eaea1db66807202163a7589",
+    "evidence/native-rename-retry/batch-after-03243a2c-97e5-54b8-b60c-2f94b98675a1.json": "e5c8c433d89d2c22fbad1983718f3a0677a2bb6fb9d1af0724f21a1b121b3e03",
+    "evidence/native-rename-retry/batch-after-1983f760-2407-5ee3-987d-5957eb461129.json": "9d12b2a8637e5045f5529f8c5d14648676022a2bda4ce6954fab42b5fad0fc91",
+    "evidence/restored-mcp/icon-patch-1983f760-2407-5ee3-987d-5957eb461129-result.json": "0276ca1c7b19e8683ddaae4d5e2d48c9a169eefd3ce4a08551afa23e624a7111",
+    "evidence/native-rename-retry/batch-after-1d75f6ba-cc96-5fd7-9db6-7aab3a8c6a6e.json": "3ba7105aed9bee3699b5e28c87ab94bfb793ca772f3f1b1b611747ecafd40682",
+    "evidence/native-rename-retry/batch-after-b6a45c26-8516-5b1a-aa07-83798fb57788.json": "8d4c4ab02282d0e4daa37fad820c8a2e22ecd605396d09beb12dd336b32a0148",
+    "evidence/native-rename-retry/batch-after-83a83fc1-7a77-5982-ab72-c57cddb4583d.json": "bf9a0663bdb4d88a7c93ef4054b8afd4ccde56a7d5779e7c33e06060d92d6bb8",
+    "evidence/author-label-patches/83a83fc1-7a77-5982-ab72-c57cddb4583d-result.json": "b4227408106faa3d89bd46baf313c3af7e04a5af6faa69055b69ede3cdee901d",
+    "evidence/restored-mcp/icon-patch-83a83fc1-7a77-5982-ab72-c57cddb4583d-result.json": "c0a32ecf65e899da868ad963c46d73a2bfd0d2953613ab2bf276e8618c521908",
+    "evidence/native-rename-retry/batch-after-dfa33436-f08f-517d-a787-73861e39bc62.json": "33127ed237a156ab678966aa06f9e2fce27b03ccfc7523aa3af6796ee40fe2fd",
+    "evidence/author-label-patches/dfa33436-f08f-517d-a787-73861e39bc62-result.json": "a3b96a64eeff875cfc007743f93f0b3bc10d980a93f786b52ca527ad307d496e",
+    "evidence/native-rename-retry/batch-after-7956aaf8-596e-5405-85d5-721989505a95.json": "d4ee134d2d3db52bdae2b41cdf317fa4699e02717b44587fd6733249c7f1ea5b",
+    "evidence/native-rename-retry/batch-after-dabb2247-cab9-5c16-9019-f968317e82d8.json": "1b0146d2711d4fcf941270f109e112907fe81e7f6c7bd1c7b6d5d1678eaf50ea",
+    "evidence/author-label-patches/dabb2247-cab9-5c16-9019-f968317e82d8-result.json": "d5de40ed0a80ee02599274fc8792c6f3f527df90a07521277449c47661a3b8c3",
+    "evidence/native-rename-retry/batch-after-10b26485-8a6e-5fee-badf-1fb30590be5e.json": "0305008a9a6ead85439a27ced4c5ac3498abfdb1b5cd1756049a835635a969df",
+    "evidence/author-label-patches/10b26485-8a6e-5fee-badf-1fb30590be5e-result.json": "b937067a8cce0ad5a889cdb726526e4c18a14bed5f96395fb3d0e5930792056e",
+    "evidence/restored-mcp/icon-patch-10b26485-8a6e-5fee-badf-1fb30590be5e-result.json": "07edcbf8e791707acde3f85563e3acd9518b292e4712899f2f8dff589fabcc91",
+    "evidence/native-rename-retry/batch-after-f2fd6ed6-a96f-59a5-b7de-67d523fad31d.json": "907da5f3043eef08c7e0747f9cb253bac1fd242d46dea7f591adb60a8458d49c",
+    "evidence/restored-mcp/icon-patch-c10b523b-b066-557d-9a41-5a9f9569137a-after-item.json": "c6e2d0b70e9d0c2f05a69391c5ccb64bd8c71770f2a78baa9df84e90a79020e8",
+    "evidence/restored-mcp/icon-patch-c10b523b-b066-557d-9a41-5a9f9569137a-result.json": "daae046fa1e648d74ebab971d46ab968ed8a16bfef2f9e774662e87fe4f28c61"
+  }
+}

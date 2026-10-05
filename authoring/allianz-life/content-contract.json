@@ -252,7 +252,7 @@
     "AllianzHeader": {
       "displayName": "Header",
       "group": "Navigation",
-      "icon": "Office/32x32/layout.png"
+      "icon": "Office/16x16/layout_north.png"
     },
     "AllianzHero": {
       "displayName": "Hero",
@@ -272,7 +272,7 @@
     "AllianzAccordion": {
       "displayName": "Accordion",
       "group": "Page content",
-      "icon": "Office/32x32/barrel.png"
+      "icon": "Office/16x16/navigate_open.png"
     },
     "AllianzCTA": {
       "displayName": "Call to Action",
@@ -282,12 +282,12 @@
     "AllianzDocumentList": {
       "displayName": "Document List",
       "group": "Page content",
-      "icon": "Office/32x32/floppy_disks.png"
+      "icon": "Office/16x16/documents_empty.png"
     },
     "AllianzFooter": {
       "displayName": "Footer",
       "group": "Navigation",
-      "icon": "Office/32x32/layout.png"
+      "icon": "Office/16x16/document_footer.png"
     },
     "AllianzBreadcrumbs": {
       "displayName": "Breadcrumbs",
@@ -312,7 +312,7 @@
     "AllianzVideo": {
       "displayName": "Video",
       "group": "Media",
-      "icon": "Office/32x32/movie.png"
+      "icon": "Office/16x16/film.png"
     },
     "AllianzTimeline": {
       "displayName": "Timeline",
@@ -332,7 +332,7 @@
     "AllianzCalculator": {
       "displayName": "Calculator",
       "group": "Forms and tools",
-      "icon": "Office/32x32/tools.png"
+      "icon": "Office/16x16/calculator.png"
     },
     "AllianzRateTable": {
       "displayName": "Rate Table",
@@ -340,7 +340,7 @@
       "icon": "Business/32x32/table_edit.png"
     },
     "AllianzLegacySidebar": {
-      "displayName": "Legacy Sidebar",
+      "displayName": "Sidebar Navigation",
       "group": "Legacy content",
       "icon": "Office/32x32/signpost.png"
     },
@@ -360,32 +360,32 @@
       "icon": "Applications/32x32/text_rich_colored.png"
     },
     "AllianzLegacyHeader": {
-      "displayName": "Legacy Header",
+      "displayName": "Navigation Masthead",
       "group": "Legacy content",
-      "icon": "Office/32x32/layout.png"
+      "icon": "Office/16x16/layout_north.png"
     },
     "AllianzLegacyFooter": {
-      "displayName": "Legacy Footer",
+      "displayName": "Sitemap Footer",
       "group": "Legacy content",
-      "icon": "Office/32x32/layout.png"
+      "icon": "Office/16x16/document_footer.png"
     },
     "AllianzLegacyAccordion": {
-      "displayName": "Legacy Accordion",
+      "displayName": "Expandable Content Panels",
       "group": "Legacy content",
-      "icon": "Office/32x32/barrel.png"
+      "icon": "Office/16x16/navigate_open.png"
     },
     "AllianzLegacyCardGrid": {
-      "displayName": "Legacy Card Grid",
+      "displayName": "Content Tile Grid",
       "group": "Legacy content",
       "icon": "Imaging/32x32/grid.png"
     },
     "AllianzLegacyLinkList": {
-      "displayName": "Legacy Link List",
+      "displayName": "Page Links and Tools",
       "group": "Legacy content",
       "icon": "Office/32x32/link.png"
     },
     "AllianzLegacyBreadcrumbs": {
-      "displayName": "Legacy Breadcrumbs",
+      "displayName": "Compact Breadcrumb Trail",
       "group": "Legacy content",
       "icon": "Office/32x32/signpost.png"
     }

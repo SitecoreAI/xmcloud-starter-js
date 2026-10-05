@@ -27,10 +27,15 @@ PUBLIC = REPO / "examples/allianz-life/public"
 spec = importlib.util.spec_from_file_location("import_planner", SCRIPT_ROOT / "import-planner.py")
 planner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(planner)
+_metadata_spec = importlib.util.spec_from_file_location("prepare_native_rendering_metadata", SCRIPT_ROOT / "native-rendering-metadata.py")
+native_metadata = importlib.util.module_from_spec(_metadata_spec)
+_metadata_spec.loader.exec_module(native_metadata)
 SITE_ROOT = "/sitecore/content/allianz/allianz-life"
 MEDIA_ROOT = "/sitecore/media library/Project/Allianz Life"
 TEMPLATES_ROOT = "/sitecore/templates/Project/Allianz Life"
 RENDERINGS_ROOT = "/sitecore/layout/Renderings/Project/Allianz Life"
+JSON_RENDERING_TEMPLATE = "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+COMPONENT_NAME_FIELD = "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
 FINAL_RENDERINGS = "04bf00db-f5fb-41f7-8ab7-22408372a981"
 DEFAULT_DEVICE = "fe5d7fdf-89c0-4d99-9aa3-b5fbd009c9f3"
 ARCHETYPE_TEMPLATE = {
@@ -121,12 +126,37 @@ def safe_name(value: str) -> str:
     return value[:70] or "Item"
 
 
+def rendering_component_name(row: dict) -> str:
+    """Read the stable SDK binding; native author-facing names are not bindings."""
+    if row["Template"] != JSON_RENDERING_TEMPLATE or not row["Path"].startswith(RENDERINGS_ROOT + "/"):
+        raise ValueError("Rendering is outside the verified project Json Rendering scope")
+    fields = [field for field in row["SharedFields"] if field["ID"] == COMPONENT_NAME_FIELD]
+    if len(fields) != 1 or not isinstance(fields[0].get("Value"), str) or not fields[0]["Value"].strip():
+        raise ValueError("Rendering requires one nonempty shared technical componentName")
+    return fields[0]["Value"]
+
+
+def rendering_indexes(items: list[dict]) -> tuple[dict, dict]:
+    by_component, by_id = {}, {}
+    for row in items:
+        if row["Template"] != JSON_RENDERING_TEMPLATE:
+            continue
+        name = rendering_component_name(row)
+        if name in by_component or row["ID"].lower() in by_id:
+            raise ValueError("Ambiguous project rendering technical binding or identity")
+        by_component[name] = row
+        by_id[row["ID"].lower()] = row
+    return by_component, by_id
+
+
 class Builder:
     def __init__(self, fixtures: dict, target: dict, schema: dict, media_sources: list[dict], vectors: list[dict], documents: list[dict], presentation_bindings: dict | None = None, native_snapshot: dict | None = None):
         self.fixtures, self.target, self.schema = fixtures, target, schema
         self.contract = json.loads((REPO / "authoring/allianz-life/content-contract.json").read_text())
         self.struct = json.loads((REPO / "authoring/allianz-life/structure-manifest.json").read_text())["items"]
         self.by_path = {item["Path"]: item for item in self.struct}
+        self.renderings_by_component, self.renderings_by_id = rendering_indexes(self.struct)
+        self.rendering_metadata = {row["itemId"]: row for row in native_metadata.load_model()["records"]}
         self.native_by_path = {item["path"]: item for item in schema.get("items", [])}
         self.records: dict[str, dict] = {}
         self.media: dict[str, dict] = {}
@@ -384,7 +414,7 @@ class Builder:
                         self.exception(key, "invalid-anchor-identifier", value=value)
                 elif name_param not in self.contract["parameters"] or value not in self.contract["parameters"][name_param]:
                     self.exception(key, "unsupported-rendering-parameter", field=name_param, value=value)
-            attributes = {"uid": brace(uid), "{s}id": brace(self.by_path[RENDERINGS_ROOT + "/" + name]["ID"]), "{s}ds": "local:" + data_path[len(page_path):], "{s}ph": "headless-sidebar" if name == "AllianzLegacySidebar" else "headless-main", "{s}par": urlencode(params), "{p}after": "r[@uid='" + brace(previous) + "']" if previous else "*"}
+            attributes = {"uid": brace(uid), "{s}id": brace(self.renderings_by_component[name]["ID"]), "{s}ds": "local:" + data_path[len(page_path):], "{s}ph": "headless-sidebar" if name == "AllianzLegacySidebar" else "headless-main", "{s}par": urlencode(params), "{p}after": "r[@uid='" + brace(previous) + "']" if previous else "*"}
             if previous is None:
                 attributes.pop("{p}after")
                 attributes["{p}before"] = "*"
@@ -422,8 +452,15 @@ class Builder:
         layout = self.presentation_bindings["inheritedLayout"]
         if str(layout["defaultDeviceId"]).lower() != DEFAULT_DEVICE or not layout.get("verified"):
             raise ValueError("Native partial layout/device evidence is incomplete")
-        actual = self.by_path.get(renderer["path"], {})
-        if str(actual.get("ID", "")).lower() != str(renderer["id"]).lower():
+        identifier = str(renderer["id"]).lower()
+        actual = self.renderings_by_id.get(identifier, {})
+        allowed_paths = {actual.get("Path")}
+        metadata = self.rendering_metadata.get(identifier)
+        if metadata and actual.get("Path") == metadata["currentPath"]:
+            if rendering_component_name(actual) != metadata["technicalComponentName"]:
+                raise ValueError("Native shell rendering technical binding differs from reviewed rename")
+            allowed_paths.add(metadata["historicalPath"])
+        if not actual or renderer["path"] not in allowed_paths:
             raise ValueError("Native shell rendering differs from applied project structure")
         ET.register_namespace("p", "p")
         ET.register_namespace("s", "s")
@@ -500,7 +537,7 @@ class Builder:
         rendering_list = self.native_by_path.get(list_path)
         toolbox_root = self.site_root + "/Presentation/Available Renderings"
         variant_root = self.site_root + "/Presentation/Headless Variants"
-        component_ids = {name: self.by_path[RENDERINGS_ROOT + "/" + name]["ID"].lower() for name in self.contract["components"]}
+        component_ids = {name: self.renderings_by_component[name]["ID"].lower() for name in self.contract["components"]}
         missing_renderings, missing_variants = [], []
         visible = set()
         if rendering_list:
@@ -880,7 +917,7 @@ def build_native_home_composition(manifest: dict, scaffold: dict, schema, captur
     home_layout = ET.fromstring(home["fields"][FINAL_RENDERINGS])
     component_ids = {native.guid(r.get("{s}id"), "Home rendering") for r in home_layout.findall("./d/r")}
     component_ids.update(native.guid(r.get("{s}id"), "Shell rendering") for label in ("header", "footer") for r in ET.fromstring(records["presentation:shell:modern:" + label]["fields"][editorial.SHARED_LAYOUT]).findall("./d/r"))
-    components = sorted(schema.items[i]["Path"].rsplit("/", 1)[-1] for i in component_ids)
+    components = sorted(rendering_component_name(schema.items[i]) for i in component_ids)
     renderings_field = "715ae6c0-71c8-4744-ab4f-65362d20ad65"
     toolbox = current[(site + "/Presentation/Available Renderings").casefold()]
     variants = current[(site + "/Presentation/Headless Variants").casefold()]

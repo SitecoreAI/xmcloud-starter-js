@@ -24,8 +24,10 @@ The historical `generate-structure.py` consumes only the validated matching
 Main field. Regeneration therefore preserves its exact 67 raw references, all
 original 40 in their original order and 27 additions. The independent active
 palette resolves 59 of those references. The eight versionless references are
-retained without inventing active bindings. All other 490 historical items,
-their UUIDs and every rendering/datasource/query/parameter field remain intact.
+retained without inventing active bindings. The later `../native-metadata` reconciliation updates only 20 matching active
+rendering paths, seven labels and nine icons. All 491 UUIDs and every technical
+rendering/datasource/query/parameter field remain intact. This original palette
+capture and its nine field-value snapshots stay byte-for-byte historical evidence.
 
 Run from the repository root:
 
@@ -58,8 +60,11 @@ dependencies. Those need a separately scoped native capture before a complete
 deployable synchronization can be proposed. Platform dependencies and the
 Available Renderings parent/template also require independent verification.
 
-Company Profile keeps its physical name/path `About Allianz Life` and technical
-component binding `NewsroomCompanyProfile`. Core Components' acknowledged label
+In this original capture, Company Profile had physical name/path `About Allianz
+Life` and technical binding `NewsroomCompanyProfile`. The later native audit
+verified its same-ID rename to `Company Profile`, preserving that binding. The
+old partial field projection remains historical evidence, not an import target;
+there is no complete current Company Profile definition in the historical module. Core Components' acknowledged label
 is excluded because its raw field/UI readback is pending. The failed Site
 Components folder label is also excluded. Naming remains incomplete; native
 Pages category grouping and insertion acceptance remain unverified. This source
