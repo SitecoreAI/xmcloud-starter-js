@@ -18,11 +18,12 @@ ICON_ID = '06d5295c-ed2f-4a54-9bf2-26228d113318'
 THUMBNAIL_ID = 'c7c26117-dbb1-42b2-ab5e-f7223845cca3'
 
 # Pins all 28 rendering IDs, parents, templates, historical identity paths, datasource/parameter
-# contracts and storage. The one reviewed query change is CardGrid's complete
-# first:40 field collection, accepted by native Preview. Field-value/editing
-# browser acceptance is a separate gate. Further contract changes need review.
+# contracts and storage. Reviewed query changes: modern CardGrid first:40
+# field collection and LegacyCardGrid first:8 consumed-field projection, both
+# accepted natively. Field-value/editing browser acceptance remains separate.
+# Further contract changes need review.
 REVIEWED_RENDERING_CONTRACT_SHA256 = (
-    'c9267d443d4a5cd88ab9e4cf4063e8d07f0c618fb3e7af7c8eba2f724f777f09'
+    '2bdffde4e2fdd36a7867438cb549b238d63e8b6b50aacc97e0e8642d3d7e2eb5'
 )
 
 # Only these exact native paths were verified in schema-reference-root/items.
