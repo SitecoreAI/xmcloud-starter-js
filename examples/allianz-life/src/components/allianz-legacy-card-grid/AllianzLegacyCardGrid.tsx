@@ -4,8 +4,10 @@ import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, type AllianzProps } from 'lib/allianz-fields';
+import type { LegacyCardGridProps } from './allianz-legacy-card-grid.props';
+import './AllianzLegacyPrivacyCards.css';
 
-export const Default = ({ fields, params }: AllianzProps) => {
+export const Default = ({ fields, params, privacyLinks = false }: LegacyCardGridProps) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
@@ -22,9 +24,12 @@ export const Default = ({ fields, params }: AllianzProps) => {
           {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="icon-container"><div className="icon-background primary-01-bg" /><Image editable={isEditing} field={card.icon?.jsonValue} className="icon icon-story" /></div>}
           <Text editable={isEditing} tag={headingTag(card.headingLevel?.jsonValue?.value || params.headingLevel || 'h3')} field={card.heading?.jsonValue} />
           <RichText editable={isEditing} field={card.body?.jsonValue} />
-          {shouldRenderLinkField(card.link?.jsonValue, isEditing) && <p className="link"><Link editable={isEditing} field={allianzLinkField(card.link?.jsonValue, isEditing)} /></p>}
+          {shouldRenderLinkField(card.link?.jsonValue, isEditing) && <p className={privacyLinks ? 'link allianz-legacy-privacy-card-link' : 'link'}><Link editable={isEditing} field={allianzLinkField(card.link?.jsonValue, isEditing)} /></p>}
         </div>
       </article></div>)}
     </div>
   </div></div>;
 };
+
+/** Restore the source decorative link marker only for the native Privacy cards. */
+export const Privacy = (props: AllianzProps) => <Default {...props} privacyLinks />;
