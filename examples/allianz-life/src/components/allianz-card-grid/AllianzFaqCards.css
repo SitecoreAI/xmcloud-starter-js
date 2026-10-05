@@ -1,5 +1,11 @@
 /* The official FAQ uses inline SVG icons. Native Content Hub images need the
  * same 26px/40px dimensions and #3c3c3c fill, scoped to the new FAQ variants. */
+/* The source intro's header adds 20px above the title. CardGrid renders its
+ * title directly, so restore that spacing only for the FAQ introduction. */
+.allianz-faq-cards .m-axlIntroductionBlock > .tileContent > .tileHeading {
+  margin-top: 20px;
+}
+
 .allianz-faq-cards .tileIcon img {
   width: 26px;
   height: auto;
