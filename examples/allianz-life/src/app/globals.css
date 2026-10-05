@@ -4,6 +4,8 @@
 @font-face { font-family: 'Allianz Neo'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/allianz/AllianzNeoW01-Regular.woff2') format('woff2'); }
 @font-face { font-family: 'Allianz Neo'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/allianz/AllianzNeoW01-SemiBold.woff2') format('woff2'); }
 @font-face { font-family: 'Allianz Neo'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/allianz/AllianzNeoW01-Bold.woff2') format('woff2'); }
+/* Preserve the legacy Regular-only family; modern Allianz Neo weights stay unchanged. */
+@font-face { font-family: 'AllianzNeoRegular'; font-style: normal; font-weight: 500; font-display: swap; src: url('/fonts/allianz/AllianzNeoW01-Regular.woff2') format('woff2'); }
 @font-face { font-family: 'Allianz-Icons'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/allianz/Allianz-Icons.woff2') format('woff2'); }
 
 .allianz-missing-data { padding: 1rem; border: 1px dashed #003781; }
