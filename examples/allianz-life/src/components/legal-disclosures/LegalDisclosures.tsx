@@ -69,3 +69,16 @@ export const Faq = (props: LegalDisclosuresProps) => {
     } },
   } }} />;
 };
+
+/** Legacy disclosure purpose: the source column host with an editable body only. */
+export const Legacy = ({ fields, params }: LegalDisclosuresProps) => {
+  const { page } = useSitecore();
+  const data = fields?.data?.datasource;
+  const isEditing = page?.mode?.isEditing ?? false;
+  if (!data) return <NoDataFallback componentName="Legal Disclosures" />;
+  const body = legalDisclosuresFields(data).body?.jsonValue;
+  return shouldRenderTextField(body, isEditing)
+    ? <RichText className="col-md-12 content-body disclosure" id={params?.RenderingIdentifier}
+        field={safeNewsroomRichText(body, isEditing)} editable={isEditing} />
+    : <div className="col-md-12 content-body disclosure" id={params?.RenderingIdentifier} />;
+};
