@@ -86,8 +86,11 @@ export function safeLink(field?: LinkField): LinkField {
     ...field,
     value: { ...field.value, href: '#service-unavailable', querystring: '', anchor: '', target: '', title: 'This service is unavailable' },
   });
+  // Source legal copy sometimes omits the scheme on the exact public home URL.
+  // Recognize only that hostname root; paths, lookalikes and other schemes retain the existing policy.
+  const sourceHref = /^www\.allianzlife\.com\/?(?:[?#]|$)/i.test(href) ? `https://${href}` : href;
   let url: URL;
-  try { url = new URL(href, 'https://www.allianzlife.com'); }
+  try { url = new URL(sourceHref, 'https://www.allianzlife.com'); }
   catch { return unavailable(); }
   const isPublic = url.origin === 'https://www.allianzlife.com' && !url.username && !url.password &&
     !/^\/(?:new-york\/)?(login|registration|spa|account|portal|secured|logout|manageuserprofile|api|sitecore)(\/|$)/i.test(url.pathname);

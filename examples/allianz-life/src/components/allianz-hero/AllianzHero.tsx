@@ -22,7 +22,7 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
       <div className="m-axlHero">
         {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <picture className="c-image c-stage__image--cover c-stage__image--short">
           {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
-          <Image editable={isEditing} field={data.desktopImage?.jsonValue} className="c-image__img c-hero__image" />
+          <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />
         </picture>}
         <div className="l-grid l-grid--max-width l-grid--no-gutters">
           <div className="l-grid__column-medium-12 c-hero__wrapper">
@@ -40,7 +40,7 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
       <div className="c-hero__gridWrapper">
         <picture className="c-image c-stage__image--cover">
           {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
-          <Image editable={isEditing} field={data.desktopImage?.jsonValue} className="c-image__img c-hero__image" />
+          <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />
         </picture>
         <div className="c-hero__gridWrapperBackground">
           <div className="l-grid l-grid--max-width"><div className="l-grid__row">
@@ -96,7 +96,7 @@ export const Editorial = ({ fields, params }: AllianzHeroProps) => {
     <div className="m-axlHero">
       <picture className="c-image c-stage__image--cover c-stage__image--short">
         {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
-        {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} className="c-image__img c-hero__image" />}
+        {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />}
       </picture>
       <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
         {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} field={safeEditorialRichText(data.heading?.jsonValue, isEditing)} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
