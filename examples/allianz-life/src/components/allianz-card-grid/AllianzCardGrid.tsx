@@ -170,3 +170,34 @@ function EditorialCards({ fields, params, appearance }: AllianzCardGridProps & {
 export const EditorialTiles = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="tiles" />;
 export const EditorialIntro = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="intro" />;
 export const EditorialCallout = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="callout" />;
+
+/** Native no-media introduction rows with authored heading semantics. Each
+ * placement owns its datasource; use container=row inside EditorialSection. */
+export const EditorialLegal = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  // Only row spacing and the native identifier are configurable. The source
+  // introduction uses a contained, transparent, full-column no-media layout.
+  const frameParams = {
+    container: params.container === 'row' ? 'row' : undefined,
+    sectionWidth: 'contained', theme: 'transparent', spacing: 'none',
+    paddingTop: params.paddingTop, paddingBottom: params.paddingBottom,
+    marginBottom: params.marginBottom, RenderingIdentifier: params.RenderingIdentifier,
+  };
+  return <EditorialFrame params={frameParams}>
+    {cards.map((card) => <div key={card.id} className="l-grid__column-medium-12">
+      <article className="m-axlIntroductionBlock -is--stacked -no--image">
+        <div className="tileContent u-text-left">
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={headingTag(card.headingLevel?.jsonValue?.value || params.headingLevel)} field={card.heading?.jsonValue} />}</div>
+            {shouldRenderTextField(card.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={safeEditorialRichText(card.subheading?.jsonValue, isEditing)} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+          </header>
+          {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(card.body?.jsonValue, isEditing)} className="tileBody" />}
+        </div>
+      </article>
+    </div>)}
+  </EditorialFrame>;
+};

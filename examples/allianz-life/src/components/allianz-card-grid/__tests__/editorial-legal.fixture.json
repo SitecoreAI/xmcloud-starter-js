@@ -1,0 +1,107 @@
+{
+  "source": {
+    "url": "https://www.allianzlife.com/confidentiality-for-victims-of-domestic-abuse",
+    "file": "source/9c3bf6646080fd47.html",
+    "sha256": "c141e749a8103aa3d80198ffa236fced8a44dcb4740a120a3303bd7e4775d6aa",
+    "bytes": 65298,
+    "sourceFreshness": "Supplied saved source archive; no fresh source fetch",
+    "mainXPath": "/html/body/main"
+  },
+  "section": {
+    "componentName": "AllianzEditorialSection",
+    "variant": "Default",
+    "params": {
+      "sectionWidth": "contained",
+      "theme": "transparent",
+      "layout": "grid"
+    }
+  },
+  "placements": [
+    {
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialLegal",
+      "params": {
+        "container": "row",
+        "spacing": "none",
+        "paddingTop": "lg",
+        "paddingBottom": "none",
+        "marginBottom": "lg",
+        "headingLevel": "h1"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "children": [
+          {
+            "heading": "Confidentiality for Victims of Domestic Abuse",
+            "subheading": "",
+            "body": "Several state laws require insurers to develop procedures to safeguard the sensitive personal information of victims of domestic abuse. Additionally, in many states, insurers are prohibited from discriminating against victims of domestic abuse. This means that insurers cannot deny, refuse to issue, renew or reissue, cancel, exclude coverage or benefits, or charge a higher premium on an insurance policy solely because an individual is a victim of domestic abuse.\n<p>Although not required in all states, Allianz Life extends the protections listed herein to all victims of domestic abuse, regardless of where they reside.</p>\n<p>If you are a victim of domestic abuse, you may request alternative methods of communication regarding your contract or claims. This may include providing us with an alternative address, telephone number, or other method of contact. We will also limit disclosure of information on your account, including your name and contact information, to the extent permitted by law.</p>\n<p>To submit a request, please email us at <a href=\"#demo-unavailable\" data-demo-disabled=\"true\" title=\"This service is unavailable\">privacy@allianzlife.com</a>, or send a written request to the following address:</p>\n<p><strong>Data Protection &amp; Use Office</strong><br>\nAllianz Life Insurance Company of North America<br>\nPO Box 59060<br>\nMinneapolis, MN 55459-0060</p>\n<p>Please note that we have 3 business days to implement your request.</p>",
+            "image": {
+              "src": "",
+              "alt": ""
+            },
+            "icon": {
+              "src": "",
+              "alt": ""
+            },
+            "iconTheme": "transparent",
+            "link": {
+              "href": "",
+              "text": "",
+              "linktype": "anchor",
+              "target": ""
+            },
+            "links": [],
+            "theme": "transparent",
+            "headingLevel": "h1",
+            "alphanumeral": ""
+          }
+        ]
+      }
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialLegal",
+      "params": {
+        "container": "row",
+        "spacing": "none",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "xl",
+        "headingLevel": "h2"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "children": [
+          {
+            "heading": "Additional Information for New York Residents",
+            "subheading": "",
+            "body": "Under New York Insurance Law § 2612, insurers are prohibited from discriminating against victims of domestic abuse. This means that insurers cannot deny, cancel, or refuse to renew an insurance policy solely because an individual is a victim of domestic abuse.\n<p>Additionally, insurers are required to implement procedures to protect the personal information of victims of domestic abuse. If an individual delivers a valid order of protection to the insurer, the insurer must not disclose the protected person’s contact information, including address or telephone number, to anyone. This includes the policyholder if the order of protection has been issued against the policyholder. A parent or guardian may also assert these rights on behalf of a child.</p>\n<p>This protection will be in place until the expiration of the order, or until the protected person revokes the request in writing.</p>\n<p>To submit an order of protection, or to request contact at an alternative address or phone number, please email us at <a href=\"#demo-unavailable\" data-demo-disabled=\"true\" title=\"This service is unavailable\">privacy@allianzlife.com</a>, or send a written request to the following address:</p>\n<p><strong>Data Protection &amp; Use Office</strong><br>\nAllianz Life Insurance Company of North America<br>\nPO Box 59060<br>\nMinneapolis, MN 55459-0060</p>\n<p>Please note that we have 3 business days to implement your request.</p>\n<p>New York State Domestic and Sexual Violence Hotline: <a href=\"#demo-unavailable\" data-demo-disabled=\"true\" title=\"This service is unavailable\">800-942-6906</a></p>",
+            "image": {
+              "src": "",
+              "alt": ""
+            },
+            "icon": {
+              "src": "",
+              "alt": ""
+            },
+            "iconTheme": "transparent",
+            "link": {
+              "href": "",
+              "text": "",
+              "linktype": "anchor",
+              "target": ""
+            },
+            "links": [],
+            "theme": "transparent",
+            "headingLevel": "h2",
+            "alphanumeral": ""
+          }
+        ]
+      }
+    }
+  ]
+}

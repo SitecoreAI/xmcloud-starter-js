@@ -36,7 +36,7 @@ assert.equal(validateForm(shown, { ...values, 'StartClaimAbout.DateOfDeathMonth'
 assert.ok(validateForm(shown, { ...values, 'StartClaimAbout.DateOfBirthYear': '2026' }, 'death-claim')['StartClaimAbout.DateOfBirthMonth'], 'birth after death rejected');
 assert.ok(validateForm(shown, { ...values, 'StartClaimAbout.policycontractnumber[0].PolicyNumber': 'A 12' }, 'death-claim')['StartClaimAbout.policycontractnumber[0].PolicyNumber']);
 const contact = formDefinitions('new-york-contact');
-const contactValues = { 'ContactUsReason.SelectedReason': 'Other', 'ContactInfo.Name': 'Sample', 'ContactInfo.Email': 'sample@example.invalid', 'ContactInfo.Phone': '202-555-0148', 'ContactInfo.ZipCode': '55416', 'ContactInfo.Comment': 'Sample information only.' };
+const contactValues = { 'ContactUsReason.SelectedReason': 'Other', 'ProductCategory.SelectedCategories': ['Fixed'], 'ContactInfo.Name': 'Sample', 'ContactInfo.Email': 'sample@example.invalid', 'ContactInfo.Phone': '202-555-0148', 'ContactInfo.ZipCode': '55416', 'ContactInfo.Comment': 'Sample information only.' };
 const contactShown = visibleDefinitions('new-york-contact', contact, contactValues, 1);
 assert.deepEqual(validateForm(contactShown, contactValues, 'new-york-contact'), {}, 'inactive source-hidden controls not required');
 assert.ok(validateForm(contactShown, { ...contactValues, 'ContactInfo.Email': '' }, 'new-york-contact')['ContactInfo.Email'], 'empty source-required email attribute remains required');

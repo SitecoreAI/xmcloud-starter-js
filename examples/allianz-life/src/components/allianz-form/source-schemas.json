@@ -2986,9 +2986,12 @@
         "options": [
           {
             "value": "7e8c8773-e6b9-45f7-88ae-85414d9af05e|Variable",
-            "label": "Index Advantage+ New York Annuity"
+            "label": "Index Advantage+ New York Annuity",
+            "group": "Variable annuities"
           }
-        ]
+        ],
+        "multiple": true,
+        "selectionDisplay": "dropdown"
       },
       {
         "name": "ProductCategory.SelectedCategories",
@@ -3013,7 +3016,9 @@
             "value": "Life",
             "label": "Life Insurance"
           }
-        ]
+        ],
+        "multiple": true,
+        "selectionDisplay": "checkboxes"
       },
       {
         "name": "ContactInfo.Name",
