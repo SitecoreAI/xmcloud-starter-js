@@ -131,9 +131,11 @@ function productDocumentLinks(props: AllianzProps, isEditing: boolean, pathname:
 export const ProductNavigation = (props: AllianzProps) => {
   const { page } = useSitecore();
   const pathname = usePathname();
+  // Page context retains the public route when Next.js rewrites site/locale paths.
+  const currentPath = page?.layout?.sitecore?.context?.itemPath || pathname;
   const isEditing = page?.mode?.isEditing ?? false;
   if (!productDocumentConnectionReady(props)) return productDocumentUnavailable(isEditing);
-  return productDocumentLinks(props, isEditing, pathname, false);
+  return productDocumentLinks(props, isEditing, currentPath, false);
 };
 
 /** Native next-steps heading and links stay inside the source-hidden shell wrapper. */

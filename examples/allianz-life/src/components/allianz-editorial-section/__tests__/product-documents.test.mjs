@@ -156,6 +156,25 @@ test('source navigation order, active Prospectus and exact New-York case survive
   }
 });
 
+test('ProductNavigation uses native page context across rewritten routes and falls back to pathname', () => {
+  for (const source of sources) {
+    const input = fixture(source), navigation = control(input, 'navigation');
+    const before = JSON.stringify(navigation);
+    for (const pathname of [`/allianz-life/en${source.route}`, '/_site_allianz-life/en/rewritten', '/api/editing/render']) {
+      input.route = pathname;
+      const html = render(input, Lists.ProductNavigation, navigation);
+      assert.equal((html.match(/class="active"/g) || []).length, 1, `${source.key}: ${pathname}`);
+      assert.match(html, /class="active"[^>]*aria-current="page"[^>]*><span>Prospectus<\/span>/);
+    }
+    for (const itemPath of [undefined, '']) {
+      input.props.page.layout.sitecore.context.itemPath = itemPath;
+      input.route = source.route;
+      assert.match(render(input, Lists.ProductNavigation, navigation), /class="active"[^>]*aria-current="page"/);
+    }
+    assert.equal(JSON.stringify(navigation), before);
+  }
+});
+
 test('all six editable slots retain chrome, table UID lookup and child General Link metadata', () => {
   for (const source of sources) {
     const input = fixture(source, true), before = identitySnapshot(input), html = render(input);
