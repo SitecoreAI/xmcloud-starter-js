@@ -1,0 +1,29 @@
+query AllianzLegacyDocumentServices($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    accountLabel: field(name: "accountLabel") { jsonValue }
+    contactLabel: field(name: "contactLabel") { jsonValue }
+    contactLink: field(name: "contactLink") { jsonValue }
+    socialLabel: field(name: "socialLabel") { jsonValue }
+    mobileSocialLabel: field(name: "mobileSocialLabel") { jsonValue }
+    socialHeading: field(name: "socialHeading") { jsonValue }
+    socialBody: field(name: "socialBody") { jsonValue }
+    usernameLabel: field(name: "usernameLabel") { jsonValue }
+    passwordLabel: field(name: "passwordLabel") { jsonValue }
+    usernamePlaceholder: field(name: "usernamePlaceholder") { jsonValue }
+    passwordPlaceholder: field(name: "passwordPlaceholder") { jsonValue }
+    rememberLabel: field(name: "rememberLabel") { jsonValue }
+    loginLabel: field(name: "loginLabel") { jsonValue }
+    forgotUsernameLabel: field(name: "forgotUsernameLabel") { jsonValue }
+    forgotPasswordLabel: field(name: "forgotPasswordLabel") { jsonValue }
+    registerLabel: field(name: "registerLabel") { jsonValue }
+    children(first: 20) {
+      total
+      pageInfo { hasNext }
+      results {
+        id
+        heading: field(name: "heading") { jsonValue }
+        link: field(name: "link") { jsonValue }
+      }
+    }
+  }
+}

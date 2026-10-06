@@ -23,6 +23,7 @@ function sourceLoader(overrides = {}) {
     modules.set(filename, compiled);
     const nativeRequire = compiled.require.bind(compiled);
     compiled.require = (specifier) => {
+      if (specifier.endsWith('.css')) return {}; // App build evaluates local CSS; the handler harness does not.
       if (Object.hasOwn(overrides, specifier)) return overrides[specifier];
       const local = specifier.startsWith('.') ? path.resolve(path.dirname(filename), specifier)
         : /^(lib|components)\//.test(specifier) ? path.join(sourceRoot, specifier) : undefined;

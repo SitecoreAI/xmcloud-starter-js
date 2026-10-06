@@ -3,6 +3,7 @@ import { RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useId, useMemo, useRef, useState, type FormEvent } from 'react';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
+import ProductContactForm from './ProductContactForm.props';
 import type { AllianzFormProps } from './allianz-form.props';
 import { formDefinitions, MAX_POLICIES, POLICY_PREFIX, REASON, validateForm, visibleDefinitions, type FormDefinition, type FormErrors, type FormValues, type FormValue, type SchemaKey } from './form-rules.props';
 
@@ -28,6 +29,7 @@ export const Default = ({ fields, params }: AllianzFormProps) => {
   const definitions = useMemo(() => formDefinitions(key, data?.children?.results), [key, data?.children?.results]);
   const visible = visibleDefinitions(key, definitions, values, policies);
   if (!data) return <NoDataFallback componentName="AllianzForm" />;
+  if (schemaValue === 'product-contact' || schemaValue === 'new-york-product-contact') return <ProductContactForm fields={fields} params={params} />;
   const controlId = (name: string) => `${instance}-${name.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const change = (name: string, value: FormValue) => {
     setValues((previous) => ({ ...previous, [name]: value }));

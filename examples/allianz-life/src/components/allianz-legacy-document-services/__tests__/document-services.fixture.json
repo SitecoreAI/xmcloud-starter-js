@@ -1,0 +1,58 @@
+{
+  "status": "TEST_ONLY_NATIVE_FIELDS_NOT_A_CMS_WRITE_PAYLOAD",
+  "fields": {
+    "accountLabel": "Login / Register",
+    "contactLabel": "Contact Us",
+    "contactLink": {
+      "href": "/contact-us",
+      "text": "Contact Us"
+    },
+    "socialLabel": "Social",
+    "mobileSocialLabel": "Social Media",
+    "socialHeading": "Connect with Allianz Life",
+    "socialBody": "Share your thoughts and get the latest news.",
+    "usernameLabel": "Username*",
+    "passwordLabel": "Password*",
+    "usernamePlaceholder": "Username",
+    "passwordPlaceholder": "Password",
+    "rememberLabel": "Remember me",
+    "loginLabel": "Login",
+    "forgotUsernameLabel": "Forgot username?",
+    "forgotPasswordLabel": "Forgot password?",
+    "registerLabel": "Register"
+  },
+  "children": [
+    {
+      "heading": "Facebook",
+      "link": {
+        "href": "https://www.facebook.com/AllianzLife",
+        "text": "Facebook"
+      },
+      "sourceClass": "social-follow-facebook"
+    },
+    {
+      "heading": "Twitter",
+      "link": {
+        "href": "https://www.twitter.com/allianzlife",
+        "text": "Twitter"
+      },
+      "sourceClass": "social-follow-twitter"
+    },
+    {
+      "heading": "LinkedIn",
+      "link": {
+        "href": "https://www.linkedin.com/company/allianz-life",
+        "text": "LinkedIn"
+      },
+      "sourceClass": "social-follow-linkedin"
+    },
+    {
+      "heading": "YouTube",
+      "link": {
+        "href": "https://www.youtube.com/allianzus",
+        "text": "YouTube"
+      },
+      "sourceClass": "social-follow-youtube"
+    }
+  ]
+}

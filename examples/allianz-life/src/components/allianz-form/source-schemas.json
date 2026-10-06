@@ -3081,5 +3081,199 @@
         "options": []
       }
     ]
+  },
+  "new-york-product-contact": {
+    "sourceUrl": "https://www.allianzlife.com/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus",
+    "fields": [
+      {
+        "name": "ProductInterest.ProductLines",
+        "label": "I want to learn more about",
+        "inputType": "checkbox",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please select an available option",
+        "options": [
+          {
+            "value": "ProductInterest.ProductLines[0].Selected",
+            "label": "Allianz Index Advantage® New York",
+            "superscript": "®"
+          },
+          {
+            "value": "ProductInterest.ProductLines[1].Selected",
+            "label": "Allianz Vision℠ New York Variable Annuity"
+          },
+          {
+            "value": "ProductInterest.ProductLines[2].Selected",
+            "label": "Other"
+          }
+        ],
+        "multiple": true,
+        "selectionDisplay": "checkboxes"
+      },
+      {
+        "name": "ProductInterest.Other",
+        "label": "Other (specify)",
+        "inputType": "textarea",
+        "required": false,
+        "maxLength": 70,
+        "pattern": "",
+        "placeholder": "Other (specify)",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "ProductInterest.Name",
+        "label": "Name*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 70,
+        "pattern": "^[A-Za-z\\-. '\\s]{2,}$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Only letters and spaces are allowed. Minimum 2 letters required",
+        "options": []
+      },
+      {
+        "name": "ProductInterest.Email",
+        "label": "Email address*",
+        "inputType": "email",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "ProductInterest.Phone",
+        "label": "Phone number*",
+        "inputType": "tel",
+        "required": true,
+        "maxLength": 50,
+        "pattern": "^\\(?\\s*?\\d{3}\\s*?\\)?\\s*?-?\\d{3}\\s*?-?\\d{4}\\s*?$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "xxxxxxxxxx, xxx-xxx-xxxx, (xxx) xxx-xxxx",
+        "options": []
+      }
+    ]
+  },
+  "product-contact": {
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus",
+    "fields": [
+      {
+        "name": "ProductInterest.ProductLines",
+        "label": "I want to learn more about",
+        "inputType": "checkbox",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please select an available option",
+        "options": [
+          {
+            "value": "ProductInterest.ProductLines[0].Selected",
+            "label": "Allianz 222® Annuity"
+          },
+          {
+            "value": "ProductInterest.ProductLines[1].Selected",
+            "label": "Allianz 360℠ Annuity"
+          },
+          {
+            "value": "ProductInterest.ProductLines[2].Selected",
+            "label": "Allianz 365i® Annuity"
+          },
+          {
+            "value": "ProductInterest.ProductLines[3].Selected",
+            "label": "Allianz Connections℠ Variable Annuity"
+          },
+          {
+            "value": "ProductInterest.ProductLines[4].Selected",
+            "label": "Core Income 7℠ Annuity"
+          },
+          {
+            "value": "ProductInterest.ProductLines[5].Selected",
+            "label": "Essential Income 7℠ Annuity"
+          },
+          {
+            "value": "ProductInterest.ProductLines[6].Selected",
+            "label": "Allianz Life Pro+ Survivor®",
+            "superscript": "®"
+          },
+          {
+            "value": "ProductInterest.ProductLines[7].Selected",
+            "label": "Allianz Index Advantage℠ Variable Annuity"
+          },
+          {
+            "value": "ProductInterest.ProductLines[8].Selected",
+            "label": "Allianz Life Pro+® Fixed Index Universal Life Insurance Policy"
+          },
+          {
+            "value": "ProductInterest.ProductLines[9].Selected",
+            "label": "Allianz Vision℠ Variable Annuity"
+          },
+          {
+            "value": "ProductInterest.ProductLines[10].Selected",
+            "label": "Other"
+          }
+        ],
+        "multiple": true,
+        "selectionDisplay": "checkboxes"
+      },
+      {
+        "name": "ProductInterest.Other",
+        "label": "Other (specify)",
+        "inputType": "textarea",
+        "required": false,
+        "maxLength": 70,
+        "pattern": "",
+        "placeholder": "Other (specify)",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "ProductInterest.Name",
+        "label": "Name*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 70,
+        "pattern": "^[A-Za-z\\-. '\\s]{2,}$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Only letters and spaces are allowed. Minimum 2 letters required",
+        "options": []
+      },
+      {
+        "name": "ProductInterest.Email",
+        "label": "Email address*",
+        "inputType": "email",
+        "required": true,
+        "maxLength": 5000,
+        "pattern": "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Invalid characters",
+        "options": []
+      },
+      {
+        "name": "ProductInterest.Phone",
+        "label": "Phone number*",
+        "inputType": "tel",
+        "required": true,
+        "maxLength": 50,
+        "pattern": "^\\(?\\s*?\\d{3}\\s*?\\)?\\s*?-?\\d{3}\\s*?-?\\d{4}\\s*?$",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "xxxxxxxxxx, xxx-xxx-xxxx, (xxx) xxx-xxxx",
+        "options": []
+      }
+    ]
   }
 }

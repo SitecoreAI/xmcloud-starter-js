@@ -1,0 +1,22 @@
+/* Source accordion link geometry on native, keyboard-accessible buttons only. */
+.allianz-legacy .allianz-product-contact .panel-title button {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 9px 80px 11px 7px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #003781;
+  font: inherit;
+  text-align: left;
+}
+.allianz-legacy .allianz-product-contact .panel-title button:hover { background: #f7f7f7; }
+.allianz-legacy .allianz-product-contact .panel-title button:focus-visible { outline: 2px solid #003781; outline-offset: -2px; }
+.allianz-legacy .allianz-product-contact .panel-title button .fa.pull-right { position: absolute; right: 3px; top: 9px; }
+.allianz-legacy .allianz-product-contact .panel-title button .fa::before { content: '\f068'; color: #428bca; }
+.allianz-legacy .allianz-product-contact .panel-title button.collapsed .fa::before { content: '\f067'; }
+.allianz-legacy .allianz-product-contact .panel-collapse[hidden] { display: none; }
+.allianz-legacy .allianz-product-contact fieldset.allianz-product-interest { border: 0; padding: 0; min-width: 0; }
+.allianz-legacy .allianz-product-contact .allianz-product-interest legend { border: 0; margin-bottom: 0; font-size: inherit; }

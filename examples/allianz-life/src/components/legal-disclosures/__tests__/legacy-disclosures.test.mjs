@@ -5,6 +5,7 @@ import Module, { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
+import { spawnSync } from 'node:child_process';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const sourceRoot = path.resolve(here, '../../..');
@@ -55,7 +56,7 @@ function metadata(html) {
 }
 const editableBody = (value) => ({ value, metadata: { fieldId: 'synthetic-body', fieldType: 'Rich Text', itemId: 'synthetic-disclosure' } });
 const bodyOf = (outer) => outer.slice(outer.indexOf('>') + 1, outer.lastIndexOf('</div>'));
-const host = (body) => `<div class="col-md-12 content-body disclosure">${body}</div>`;
+const host = (body) => `<div class="row"><div class="col-md-12 content-body disclosure">${body}</div></div>`;
 
 for (const source of sources) {
   test(`legacy source host and body: ${source.route} #${source.ordinal}`, () => {
@@ -112,10 +113,10 @@ test('Legacy uses the established visitor link policy without mutating native so
   assert.equal(JSON.stringify(body), before);
 });
 
-test('RenderingIdentifier stays on the exact legacy host without introducing an extra wrapper', () => {
-  assert.equal(render(Legacy, {}, false, { RenderingIdentifier: 'disclosure-one' }), '<div class="col-md-12 content-body disclosure" id="disclosure-one"></div>');
+test('RenderingIdentifier stays on the disclosure column within exactly one source row', () => {
+  assert.equal(render(Legacy, {}, false, { RenderingIdentifier: 'disclosure-one' }), '<div class="row"><div class="col-md-12 content-body disclosure" id="disclosure-one"></div></div>');
   const filled = render(Legacy, { body: { jsonValue: { value: '<p>Body</p>' } } }, false, { RenderingIdentifier: 'disclosure-one' });
-  assert.equal(filled, '<div class="col-md-12 content-body disclosure" id="disclosure-one"><p>Body</p></div>');
+  assert.equal(filled, '<div class="row"><div class="col-md-12 content-body disclosure" id="disclosure-one"><p>Body</p></div></div>');
 });
 
 test('existing modern Default, FAQ and NewsroomGrey purposes retain their own wrappers', () => {
@@ -130,4 +131,26 @@ test('existing modern Default, FAQ and NewsroomGrey purposes retain their own wr
   assert.match(grey, /allianz-newsroom-grey/);
   assert.match(grey, /tileBody/);
   assert.match(grey, /allianz-newsroom-grey-trailing/);
+});
+
+
+test('all 35 legacy source disclosure columns have exactly one immediate source row ancestor', () => {
+  const oracle = path.join(sourceRoot, 'components/prospectus-document-table/__tests__/source_contract.py');
+  const result = spawnSync('python3', ['-c', `
+import importlib.util,json,sys,pathlib
+p=pathlib.Path(sys.argv[1]);s=importlib.util.spec_from_file_location('source_oracle',p);o=importlib.util.module_from_spec(s);sys.modules[s.name]=o;s.loader.exec_module(o)
+records=[]
+for r in json.loads((p.parent/'manifest.json').read_text())['records']:
+    root=o.DOM((p.parent/r['captureFile']).read_text()).root
+    if root.find(id='content-body') is None: continue
+    for n in root.descendants():
+        if n.has('disclosure'):
+            assert n.parent.tag=='div' and n.parent.attrs.get('class')=='row',r['route']
+            assert n.parent.children()==[n],r['route']
+            records.append(r['route'])
+assert len(records)==35 and len(set(records))==29
+print(json.dumps({'columns':len(records),'routes':len(set(records))}))
+`, oracle], { encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.deepEqual(JSON.parse(result.stdout), { columns: 35, routes: 29 });
 });

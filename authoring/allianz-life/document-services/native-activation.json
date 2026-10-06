@@ -1,0 +1,373 @@
+{
+  "status": "OFFLINE_PROPOSAL_REQUIRES_FRESH_NATIVE_UI_READS",
+  "componentName": "AllianzLegacyDocumentServices",
+  "renderingId": null,
+  "datasourceTemplateId": null,
+  "datasourceTemplateName": "AllianzLegacyDocumentServices",
+  "variantGroupId": null,
+  "variants": {
+    "Default": null,
+    "LoginWidget": null
+  },
+  "placeholder": "headless-right-rail",
+  "placeholderId": null,
+  "fields": {
+    "accountLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "contactLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "contactLink": {
+      "type": "General Link",
+      "fieldId": null
+    },
+    "socialLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "mobileSocialLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "socialHeading": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "socialBody": {
+      "type": "Multi-Line Text",
+      "fieldId": null
+    },
+    "usernameLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "passwordLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "usernamePlaceholder": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "passwordPlaceholder": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "rememberLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "loginLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "forgotUsernameLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "forgotPasswordLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    },
+    "registerLabel": {
+      "type": "Single-Line Text",
+      "fieldId": null
+    }
+  },
+  "childTemplate": {
+    "name": "AllianzLinkListEntry",
+    "verifiedCurrentId": null,
+    "fields": {
+      "heading": "Single-Line Text",
+      "link": "General Link"
+    },
+    "order": "Native __Sortorder 100,200,300,400; exactly the four source networks"
+  },
+  "sourceValues": {
+    "status": "TEST_ONLY_NATIVE_FIELDS_NOT_A_CMS_WRITE_PAYLOAD",
+    "fields": {
+      "accountLabel": "Login / Register",
+      "contactLabel": "Contact Us",
+      "contactLink": {
+        "href": "/contact-us",
+        "text": "Contact Us"
+      },
+      "socialLabel": "Social",
+      "mobileSocialLabel": "Social Media",
+      "socialHeading": "Connect with Allianz Life",
+      "socialBody": "Share your thoughts and get the latest news.",
+      "usernameLabel": "Username*",
+      "passwordLabel": "Password*",
+      "usernamePlaceholder": "Username",
+      "passwordPlaceholder": "Password",
+      "rememberLabel": "Remember me",
+      "loginLabel": "Login",
+      "forgotUsernameLabel": "Forgot username?",
+      "forgotPasswordLabel": "Forgot password?",
+      "registerLabel": "Register"
+    },
+    "children": [
+      {
+        "heading": "Facebook",
+        "link": {
+          "href": "https://www.facebook.com/AllianzLife",
+          "text": "Facebook"
+        },
+        "sourceClass": "social-follow-facebook"
+      },
+      {
+        "heading": "Twitter",
+        "link": {
+          "href": "https://www.twitter.com/allianzlife",
+          "text": "Twitter"
+        },
+        "sourceClass": "social-follow-twitter"
+      },
+      {
+        "heading": "LinkedIn",
+        "link": {
+          "href": "https://www.linkedin.com/company/allianz-life",
+          "text": "LinkedIn"
+        },
+        "sourceClass": "social-follow-linkedin"
+      },
+      {
+        "heading": "YouTube",
+        "link": {
+          "href": "https://www.youtube.com/allianzus",
+          "text": "YouTube"
+        },
+        "sourceClass": "social-follow-youtube"
+      }
+    ]
+  },
+  "groups": [
+    {
+      "name": "empty-account",
+      "variant": "Default",
+      "routes": [
+        "route19",
+        "route20",
+        "route21",
+        "route25"
+      ],
+      "rawSourceRightRailSha256": "d9b10cc6488b9df49e3deadf1c7d612702c4b554ffeeaed630e17dd31c5d0a67",
+      "safeFixtureFile": "document-services.empty-account.source.html",
+      "safeFixtureSha256": "4c7c82aac437a42afcc586da3aa2abebfc0ba587f5b4889c7fa8d50daa6e9601",
+      "sanitization": "Removed hidden inputs and source framework/auth attributes; form becomes div; auth/recovery destinations replaced by local unavailable anchor. Visible source text and source structural classes retained. Fixtures are tests only, never rendered as runtime markup."
+    },
+    {
+      "name": "login-widget",
+      "variant": "LoginWidget",
+      "routes": [
+        "route26",
+        "route27",
+        "route28",
+        "route29",
+        "route30"
+      ],
+      "rawSourceRightRailSha256": "e04338da6f048f9da951174f1e37bbebb67dcee0645c546918dbe3042cf49609",
+      "safeFixtureFile": "document-services.login-widget.source.html",
+      "safeFixtureSha256": "92a60bba6ae2d44e98d78d1eba77098571e064dea283c15c5787fa7d46882a3a",
+      "sanitization": "Removed hidden inputs and source framework/auth attributes; form becomes div; auth/recovery destinations replaced by local unavailable anchor. Visible source text and source structural classes retained. Fixtures are tests only, never rendered as runtime markup."
+    }
+  ],
+  "routes": [
+    {
+      "key": "route19",
+      "route": "/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus",
+      "freshSourcePageSha256": "644422c4b63dd51e012da1b70745f0db3475d19afa1276dc7d09ee3702721329",
+      "freshSourceReceiptSha256": "1d3701eb7678c689b5ff58a9ec6668162725f506d65a5b4ddd6e85f3a5015207",
+      "sourceRightRailSha256": "d9b10cc6488b9df49e3deadf1c7d612702c4b554ffeeaed630e17dd31c5d0a67",
+      "variant": "Default",
+      "pageId": null,
+      "datasourceId": null,
+      "renderingUid": null,
+      "variantId": null,
+      "placeholderId": null,
+      "leftRequirement": "Empty sidebar rendering required for source 2/8/2 geometry"
+    },
+    {
+      "key": "route20",
+      "route": "/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus-income",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus-income",
+      "freshSourcePageSha256": "98a9e117d1f6f7f073afb815211ad37ebf381a09f943e2e632ca94a3959d0303",
+      "freshSourceReceiptSha256": "ee5468800834440f9f6f3f745bb1fde2f670d133eff230523c7acc50456dc82a",
+      "sourceRightRailSha256": "d9b10cc6488b9df49e3deadf1c7d612702c4b554ffeeaed630e17dd31c5d0a67",
+      "variant": "Default",
+      "pageId": null,
+      "datasourceId": null,
+      "renderingUid": null,
+      "variantId": null,
+      "placeholderId": null,
+      "leftRequirement": "Empty sidebar rendering required for source 2/8/2 geometry"
+    },
+    {
+      "key": "route21",
+      "route": "/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus-nf",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus-nf",
+      "freshSourcePageSha256": "641af0f21f32b22ba34714bb9e56d5b6ce55f0ef5e51606b053b2648b1ef7781",
+      "freshSourceReceiptSha256": "a2bf7fe5b678ae952ba4830c15ac17ccee889e648519265ff301121008c91769",
+      "sourceRightRailSha256": "d9b10cc6488b9df49e3deadf1c7d612702c4b554ffeeaed630e17dd31c5d0a67",
+      "variant": "Default",
+      "pageId": null,
+      "datasourceId": null,
+      "renderingUid": null,
+      "variantId": null,
+      "placeholderId": null,
+      "leftRequirement": "Empty sidebar rendering required for source 2/8/2 geometry"
+    },
+    {
+      "key": "route25",
+      "route": "/what-we-offer/annuities/prospectuses/index-advantage-plus-select-income",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/prospectuses/index-advantage-plus-select-income",
+      "freshSourcePageSha256": "dbaedb76ae8e6a303f0ba775e8def80d9ae6d0242ff1567e1961101446b2984b",
+      "freshSourceReceiptSha256": "4471fc4589609a0ade7190bbd8228747e8b8f81d54723bcdc4ffc1a04aae2e59",
+      "sourceRightRailSha256": "d9b10cc6488b9df49e3deadf1c7d612702c4b554ffeeaed630e17dd31c5d0a67",
+      "variant": "Default",
+      "pageId": null,
+      "datasourceId": null,
+      "renderingUid": null,
+      "variantId": null,
+      "placeholderId": null,
+      "leftRequirement": "Empty sidebar rendering required for source 2/8/2 geometry"
+    },
+    {
+      "key": "route26",
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus",
+      "freshSourcePageSha256": "560a6007dbf1125b0aade63a99d65c5b2f024c3397569d76ae8833bf9024d290",
+      "freshSourceReceiptSha256": "2e48201317de1deb912780a3977d1f755034af375ccf17412e7878fdd47d8819",
+      "sourceRightRailSha256": "e04338da6f048f9da951174f1e37bbebb67dcee0645c546918dbe3042cf49609",
+      "variant": "LoginWidget",
+      "pageId": null,
+      "datasourceId": null,
+      "renderingUid": null,
+      "variantId": null,
+      "placeholderId": null,
+      "leftRequirement": "Preserve source Prospectus self-link"
+    },
+    {
+      "key": "route27",
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus",
+      "freshSourcePageSha256": "fd4d325201b5b09035de6d3cd8b4ccc008da0b83508f52070089d36a2b23d4ae",
+      "freshSourceReceiptSha256": "372456f069b1d9d79c9d283ad37f498f706793109966561091d9592c7bbc612f",
+      "sourceRightRailSha256": "e04338da6f048f9da951174f1e37bbebb67dcee0645c546918dbe3042cf49609",
+      "variant": "LoginWidget",
+      "pageId": null,
+      "datasourceId": null,
+      "renderingUid": null,
+      "variantId": null,
+      "placeholderId": null,
+      "leftRequirement": "Preserve source Prospectus self-link"
+    },
+    {
+      "key": "route28",
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus",
+      "freshSourcePageSha256": "1867ec8c99a477e1ab601f5df39af4716e4cb4fd6cf731caef503c02841e72e2",
+      "freshSourceReceiptSha256": "872799f05045f186a63950924db1f98801743293855aa32800ca2486d7860d27",
+      "sourceRightRailSha256": "e04338da6f048f9da951174f1e37bbebb67dcee0645c546918dbe3042cf49609",
+      "variant": "LoginWidget",
+      "pageId": null,
+      "datasourceId": null,
+      "renderingUid": null,
+      "variantId": null,
+      "placeholderId": null,
+      "leftRequirement": "Preserve source Prospectus self-link"
+    },
+    {
+      "key": "route29",
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus",
+      "freshSourcePageSha256": "87785e6ca0114b851b37c4c3d80e1dd4da0a9cf38d0ce15212acb9d8de6e11e4",
+      "freshSourceReceiptSha256": "3015beac3b2a1c390100fcc132186c75891f5c04c6c43c35e59faa7af1e348ba",
+      "sourceRightRailSha256": "e04338da6f048f9da951174f1e37bbebb67dcee0645c546918dbe3042cf49609",
+      "variant": "LoginWidget",
+      "pageId": null,
+      "datasourceId": null,
+      "renderingUid": null,
+      "variantId": null,
+      "placeholderId": null,
+      "leftRequirement": "Preserve source Prospectus self-link"
+    },
+    {
+      "key": "route30",
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+      "freshSourcePageSha256": "a14eef9c02e166aa29abf10ac0af34315a9b0abe4a173d9b871af890eec774a1",
+      "freshSourceReceiptSha256": "8ccf9b6bbb8a8c7804247a830f123fd7455325bdb879e75e1ef41fba851abd83",
+      "sourceRightRailSha256": "e04338da6f048f9da951174f1e37bbebb67dcee0645c546918dbe3042cf49609",
+      "variant": "LoginWidget",
+      "pageId": null,
+      "datasourceId": null,
+      "renderingUid": null,
+      "variantId": null,
+      "placeholderId": null,
+      "leftRequirement": "Preserve source Prospectus self-link"
+    }
+  ],
+  "sharedDatasourceId": null,
+  "liveWritesPerformed": false,
+  "contentSafety": "No authentication, recovery, registration or tracking fields/URLs. Account labels are text only. Credentials disabled and never accepted. Social native fields retain exact source URLs; visitors use established safeLink policy and show only local unavailable notice for offsite links. Contact is ordinary local /contact-us.",
+  "queryFile": "AllianzLegacyDocumentServices.graphql",
+  "nativeFieldValues": {
+    "fields": {
+      "accountLabel": "Login / Register",
+      "contactLabel": "Contact Us",
+      "contactLink": "<link text=\"Contact Us\" linktype=\"external\" url=\"/contact-us\"/>",
+      "socialLabel": "Social",
+      "mobileSocialLabel": "Social Media",
+      "socialHeading": "Connect with Allianz Life",
+      "socialBody": "Share your thoughts and get the latest news.",
+      "usernameLabel": "Username*",
+      "passwordLabel": "Password*",
+      "usernamePlaceholder": "Username",
+      "passwordPlaceholder": "Password",
+      "rememberLabel": "Remember me",
+      "loginLabel": "Login",
+      "forgotUsernameLabel": "Forgot username?",
+      "forgotPasswordLabel": "Forgot password?",
+      "registerLabel": "Register"
+    },
+    "children": [
+      {
+        "nativeItemId": null,
+        "fields": {
+          "heading": "Facebook",
+          "link": "<link text=\"Facebook\" linktype=\"external\" url=\"https://www.facebook.com/AllianzLife\"/>",
+          "__Sortorder": "100"
+        }
+      },
+      {
+        "nativeItemId": null,
+        "fields": {
+          "heading": "Twitter",
+          "link": "<link text=\"Twitter\" linktype=\"external\" url=\"https://www.twitter.com/allianzlife\"/>",
+          "__Sortorder": "200"
+        }
+      },
+      {
+        "nativeItemId": null,
+        "fields": {
+          "heading": "LinkedIn",
+          "link": "<link text=\"LinkedIn\" linktype=\"external\" url=\"https://www.linkedin.com/company/allianz-life\"/>",
+          "__Sortorder": "300"
+        }
+      },
+      {
+        "nativeItemId": null,
+        "fields": {
+          "heading": "YouTube",
+          "link": "<link text=\"YouTube\" linktype=\"external\" url=\"https://www.youtube.com/allianzus\"/>",
+          "__Sortorder": "400"
+        }
+      }
+    ]
+  }
+}

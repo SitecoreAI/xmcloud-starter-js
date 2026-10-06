@@ -1,7 +1,7 @@
 import sourceJson from './source-schemas.json';
 import type { AllianzFormField } from './allianz-form.props';
 
-export interface FormOption { value: string; label: string; group?: string }
+export interface FormOption { value: string; label: string; group?: string; superscript?: string }
 export interface FormDefinition {
   name: string;
   label: string;
@@ -20,18 +20,20 @@ export interface FormDefinition {
 export type FormValue = string | string[];
 export type FormValues = Record<string, FormValue>;
 export type FormErrors = Record<string, string>;
-export type SchemaKey = 'death-claim' | 'new-york-contact' | 'generic';
+export type SchemaKey = 'death-claim' | 'new-york-contact' | 'product-contact' | 'new-york-product-contact' | 'generic';
 const source = sourceJson as Record<Exclude<SchemaKey, 'generic'>, { sourceUrl: string; fields: FormDefinition[] }>;
 export const MAX_POLICIES = 20;
 export const REASON = 'ContactUsReason.SelectedReason';
 export const RELATIONSHIP = 'StartClaimAboutYou.selectedrelationship';
 export const POLICY_PREFIX = 'StartClaimAbout.policycontractnumber';
 
-function optionsValue(value?: string): FormOption[] {
+function optionsValue(value?: string, strict = false): FormOption[] {
   if (!value) return [];
   try {
     const items = JSON.parse(value) as Array<{ value?: string; label?: string; text?: string }>;
-    return Array.isArray(items) ? items.map((item) => ({ value: String(item.value ?? ''), label: String(item.label ?? item.text ?? '') })) : [];
+    if (!Array.isArray(items)) return [];
+    if (strict && (items.some((item) => !item || typeof item !== 'object' || typeof item.value !== 'string' || !item.value.trim() || typeof (item.label ?? item.text) !== 'string' || !(item.label ?? item.text)?.trim()) || new Set(items.map((item) => item.value)).size !== items.length)) return [];
+    return items.map((item) => ({ value: String(item.value ?? ''), label: String(item.label ?? item.text ?? '') }));
   } catch { return []; }
 }
 
@@ -51,7 +53,7 @@ export function formDefinitions(key: SchemaKey, nativeFields: AllianzFormField[]
   })) : source[key].fields;
   return definitions.filter((definition) => !['password', 'hidden', 'file', 'submit', 'reset'].includes(definition.inputType) && !/(?:password|antiforgery|token|username)/i.test(definition.name)).map((definition) => {
     const native = nativeFields.find((field) => field.name?.jsonValue?.value === definition.name);
-    const nativeOptions = optionsValue(native?.options?.jsonValue?.value);
+    const nativeOptions = optionsValue(native?.options?.jsonValue?.value, key === 'product-contact' || key === 'new-york-product-contact');
     return {
       ...definition,
       label: native?.label?.jsonValue?.value || definition.label,
@@ -61,6 +63,7 @@ export function formDefinitions(key: SchemaKey, nativeFields: AllianzFormField[]
       options: nativeOptions.length ? nativeOptions.map((option) => ({
         ...option,
         ...(key === 'new-york-contact' && definition.multiple && { group: definition.options.find((sourceOption) => sourceOption.value === option.value)?.group }),
+        ...((key === 'product-contact' || key === 'new-york-product-contact') && { superscript: definition.options.find((sourceOption) => sourceOption.value === option.value)?.superscript }),
       })) : definition.options,
     };
   });
@@ -93,7 +96,7 @@ export function validateForm(definitions: FormDefinition[], values: FormValues, 
   const errors: FormErrors = {};
   for (const field of definitions) {
     const stored = values[field.name];
-    if (key === 'new-york-contact' && field.multiple) {
+    if ((key === 'new-york-contact' || key === 'product-contact' || key === 'new-york-product-contact') && field.multiple) {
       const selected = Array.isArray(stored) ? stored : [];
       if (field.required && !selected.length) { errors[field.name] = field.requiredMessage; continue; }
       if ((stored !== undefined && !Array.isArray(stored)) || selected.some((value) => typeof value !== 'string' || !field.options.some((option) => option.value === value))) {
