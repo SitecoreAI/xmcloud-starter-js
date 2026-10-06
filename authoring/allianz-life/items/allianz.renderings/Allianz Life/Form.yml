@@ -13,32 +13,15 @@ SharedFields:
     query AllianzFormQuery($datasource: String!, $language: String!) {
       datasource: item(path: $datasource, language: $language) {
         id
-        heading: field(name: "heading") { jsonValue }
-        body: field(name: "body") { jsonValue }
-        schemaKey: field(name: "schemaKey") { jsonValue }
-        secondaryHeading: field(name: "secondaryHeading") { jsonValue }
-        secondaryBody: field(name: "secondaryBody") { jsonValue }
-        reviewHeading: field(name: "reviewHeading") { jsonValue }
-        successMessage: field(name: "successMessage") { jsonValue }
-        failureMessage: field(name: "failureMessage") { jsonValue }
-        submitLabel: field(name: "submitLabel") { jsonValue }
-        children(first: 48) { total pageInfo { hasNext endCursor } results {
-          id
-          name: field(name: "name") { jsonValue }
-          label: field(name: "label") { jsonValue }
-          inputType: field(name: "inputType") { jsonValue }
-          required: field(name: "required") { jsonValue }
-          validationMessage: field(name: "validationMessage") { jsonValue }
-          options: field(name: "options") { jsonValue }
-          maxLength: field(name: "maxLength") { jsonValue }
-          pattern: field(name: "pattern") { jsonValue }
-          placeholder: field(name: "placeholder") { jsonValue }
-          sourceName: field(name: "sourceName") { jsonValue }
-          minValue: field(name: "minValue") { jsonValue }
-          maxValue: field(name: "maxValue") { jsonValue }
-          initialValue: field(name: "initialValue") { jsonValue }
-          footnote: field(name: "footnote") { jsonValue }
-        } }
+        fieldCollection: fields { name jsonValue }
+        children(first: 48) {
+          total
+          pageInfo { hasNext endCursor }
+          results {
+            id
+            fieldCollection: fields { name jsonValue }
+          }
+        }
       }
     }
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"

@@ -3,7 +3,7 @@ import { RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useId, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
-import type { AllianzFormProps } from './allianz-form.props';
+import { formDatasource, type AllianzFormProps } from './allianz-form.props';
 import { formDefinitions, validateForm, type FormDefinition, type FormErrors, type FormOption, type FormValue, type FormValues } from './form-rules.props';
 import './ProductContactForm.css';
 
@@ -20,7 +20,7 @@ function optionLabel(option: FormOption) {
 export default function ProductContactForm({ fields, params }: Pick<AllianzFormProps, 'fields' | 'params'>) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
-  const data = fields?.data?.datasource;
+  const data = useMemo(() => formDatasource(fields?.data?.datasource), [fields?.data?.datasource]);
   const key = data?.schemaKey?.jsonValue?.value === 'new-york-product-contact' ? 'new-york-product-contact' : 'product-contact';
   const definitions = useMemo(() => formDefinitions(key, data?.children?.results), [key, data?.children?.results]);
   const instance = useId().replace(/:/g, '');

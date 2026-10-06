@@ -4,7 +4,7 @@ import { useId, useMemo, useRef, useState, type FormEvent } from 'react';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import ProductContactForm from './ProductContactForm.props';
-import type { AllianzFormProps } from './allianz-form.props';
+import { formDatasource, type AllianzFormProps } from './allianz-form.props';
 import { formDefinitions, MAX_POLICIES, POLICY_PREFIX, REASON, validateForm, visibleDefinitions, type FormDefinition, type FormErrors, type FormValues, type FormValue, type SchemaKey } from './form-rules.props';
 
 const ABOUT_YOU = '<p>Allianz may need to contact you as the claims process proceeds. Please provide your contact information below.</p><p><strong>Please note:</strong> All beneficiaries listed on the policy/contract will then be contacted directly, receive a claim form packet in the mail, and speak with Allianz about the claim process and paperwork.</p>';
@@ -13,7 +13,7 @@ const FIRMS = ['Example Financial Group', 'Sample Advisory Partners', 'Other'];
 export const Default = ({ fields, params }: AllianzFormProps) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
-  const data = fields?.data?.datasource;
+  const data = useMemo(() => formDatasource(fields?.data?.datasource), [fields?.data?.datasource]);
   const instance = useId().replace(/:/g, '');
   const form = useRef<HTMLFormElement>(null);
   const outcomeHeading = useRef<HTMLHeadingElement>(null);
