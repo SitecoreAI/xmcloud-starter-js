@@ -20,4 +20,15 @@ assert.equal(collectionsComplete({ children: { total: 0, pageInfo: { hasNext: fa
 assert.equal(collectionsComplete({ nav: { targetItems: [{ children: { total: 2, pageInfo: { hasNext: true }, results: [] } }] } }), false);
 const fixtures = JSON.parse(fs.readFileSync(new URL('../../content/native-content.json', import.meta.url), 'utf8'));
 assert.equal(collectionsComplete(fixtures), true);
-console.log('9 native collection-completeness assertions passed; all 357 fixture routes retained.');
+const stale = { children: { total: 49, pageInfo: { hasNext: true }, results: [] } };
+const staticForm = { componentName: 'AllianzForm', fields: { data: { datasource: stale } } };
+const layout = (renderings) => ({ sitecore: { route: { placeholders: { 'headless-main': renderings } } } });
+for (const payload of [undefined, {}, { data: {} }, { data: { datasource: stale } }, { data: { datasource: { children: { results: [] } } } }]) {
+  assert.equal(collectionsComplete(layout([{ ...staticForm, fields: payload }]), true), true, 'unused static form payload cannot block the page');
+}
+assert.equal(collectionsComplete(layout([staticForm, { componentName: 'AllianzLegacyLinkList', fields: { data: { datasource: stale } } }]), true), false, 'surrounding native content remains guarded');
+assert.equal(collectionsComplete(layout([{ ...staticForm, placeholders: { nested: [{ componentName: 'AllianzLegacyLinkList', fields: { data: { datasource: stale } } }] } }]), true), false, 'nested renderings remain guarded');
+assert.equal(collectionsComplete({ ...staticForm, children: stale.children }, true), false, 'only unused fields are exempt');
+assert.equal(collectionsComplete({ componentName: 'AllianzFormTypo', fields: { data: { datasource: stale } } }, true), false, 'no broad component-prefix bypass');
+assert.equal(collectionsComplete(stale, true), false, 'ordinary datasource checks remain unchanged');
+console.log('19 native collection-completeness assertions passed; all 357 fixtures retained and static Form payloads isolated.');

@@ -9,5 +9,9 @@ export function collectionsComplete(value: unknown, requireMetadata = false): bo
     if (connection.pageInfo?.hasNext) return false;
     if (typeof connection.total === 'number' && (!Number.isInteger(connection.total) || connection.total < 0 || connection.total !== (connection.results?.length || 0))) return false;
   }
-  return Object.values(record).every((entry) => collectionsComplete(entry, requireMetadata));
+  // AllianzForm uses a code-owned manifest. Its legacy query fields are unused,
+  // so stale/truncated form collections cannot take down the containing page.
+  // Still traverse every other property, including nested rendering placeholders.
+  return Object.entries(record).every(([key, entry]) =>
+    (record.componentName === 'AllianzForm' && key === 'fields') || collectionsComplete(entry, requireMetadata));
 }

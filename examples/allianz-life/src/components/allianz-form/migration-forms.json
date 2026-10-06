@@ -1,0 +1,329 @@
+[
+  {
+    "id": "ny-product-details-inquiry",
+    "schemaKey": "new-york-contact",
+    "routes": [
+      "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york"
+    ],
+    "pageIds": [],
+    "renderingIds": [
+      "F95E15D5-3415-5773-8364-126CCFEA7061"
+    ],
+    "datasourceIds": [
+      "5E99185D-A68D-58A5-8191-2FFD368C089F"
+    ],
+    "sourceHidden": true,
+    "copy": {
+      "heading": "",
+      "body": "",
+      "successMessage": "Information validated. No information has been submitted.",
+      "submitLabel": "Submit"
+    },
+    "fieldNames": [
+      "ContactUsReason.SelectedReason",
+      "_ProductSelector.SelectedProducts",
+      "ContactInfo.Name",
+      "ContactInfo.Email",
+      "ContactInfo.Phone",
+      "ContactInfo.ZipCode",
+      "ContactInfo.Comment"
+    ],
+    "hiddenFields": [
+      "ContactUsReason.SelectedReason",
+      "_ProductSelector.SelectedProducts"
+    ],
+    "initialValues": {
+      "ContactUsReason.SelectedReason": "PurchaseProducts",
+      "_ProductSelector.SelectedProducts": [
+        "7e8c8773-e6b9-45f7-88ae-85414d9af05e|Variable"
+      ]
+    }
+  },
+  {
+    "id": "ny-product-details-interest",
+    "schemaKey": "new-york-product-contact",
+    "routes": [
+      "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york"
+    ],
+    "pageIds": [],
+    "renderingIds": [
+      "3D602EB6-4B49-5612-8400-0B3DFC69D6DD"
+    ],
+    "datasourceIds": [
+      "4236A8EC-EA0C-5D33-9C80-AA2D48084F0D"
+    ],
+    "sourceHidden": true,
+    "copy": {
+      "heading": "Contact us",
+      "body": "",
+      "secondaryHeading": "Already working with a financial professional?",
+      "secondaryBody": "",
+      "submitLabel": "Submit",
+      "reviewHeading": "Review sample information",
+      "successMessage": "<p>Demo review complete. No information was sent.</p>",
+      "failureMessage": "<p>Demo failure. No information was sent. Please try again with sample information.</p>"
+    }
+  },
+  {
+    "id": "ny-product-prospectus",
+    "schemaKey": "new-york-product-contact",
+    "routes": [
+      "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus"
+    ],
+    "pageIds": [
+      "9c77e829-0a3d-4e00-bbb5-9f35956163af"
+    ],
+    "renderingIds": [
+      "825647BE-0B00-5D08-815E-CF95C8BB7BFD",
+      "D622AC53-56DF-427D-99F2-A52E8F20E1F9"
+    ],
+    "datasourceIds": [
+      "40155C52-4D3B-5E99-93CC-462E97C17F8A",
+      "EC4F05F2-8ABF-4080-B142-DE8D1398567C"
+    ],
+    "sourceHidden": true,
+    "copy": {
+      "heading": "Contact us",
+      "body": "",
+      "secondaryHeading": "Already working with a financial professional?",
+      "secondaryBody": "",
+      "submitLabel": "Submit",
+      "reviewHeading": "Review sample information",
+      "successMessage": "<p>Demo review complete. No information was sent.</p>",
+      "failureMessage": "<p>Demo failure. No information was sent. Please try again with sample information.</p>"
+    }
+  },
+  {
+    "id": "ny-contact",
+    "schemaKey": "new-york-contact",
+    "routes": [
+      "/new-york/contact-us"
+    ],
+    "pageIds": [
+      "8F21BEC8-9CDC-4935-898D-24BA21D5CAC7"
+    ],
+    "renderingIds": [
+      "97A1E3F0-4574-50D7-A167-84F18EC73952",
+      "2449047E-7702-4AC5-B822-2510D93EB3DB"
+    ],
+    "datasourceIds": [
+      "5D130636-5B37-54FD-9444-673D1C11C6FA",
+      "2C375E90-D49D-4EBF-B5D2-BECF24EB2898"
+    ],
+    "sourceHidden": false,
+    "copy": {
+      "heading": "",
+      "body": "",
+      "successMessage": "Information validated. No information has been submitted.",
+      "submitLabel": "Submit"
+    }
+  },
+  {
+    "id": "ny-death-claim",
+    "schemaKey": "death-claim",
+    "routes": [
+      "/new-york/report-a-death"
+    ],
+    "pageIds": [],
+    "renderingIds": [
+      "86DCD8FC-8A84-5A6F-A488-FC588FF28319"
+    ],
+    "datasourceIds": [
+      "507E76F2-2789-5E3D-BE26-D05C8021F796"
+    ],
+    "sourceHidden": false,
+    "copy": {
+      "heading": "",
+      "body": "",
+      "successMessage": "Information validated. No information has been submitted.",
+      "submitLabel": "Continue"
+    }
+  },
+  {
+    "id": "ny-search",
+    "schemaKey": "generic",
+    "routes": [
+      "/new-york/search"
+    ],
+    "pageIds": [],
+    "renderingIds": [
+      "3F469E83-EF49-531F-9E77-200AFCC61EF9"
+    ],
+    "datasourceIds": [
+      "578B17AA-50B8-5DA7-8057-BBE291D0C625"
+    ],
+    "sourceHidden": false,
+    "copy": {
+      "heading": "",
+      "body": "",
+      "successMessage": "Information validated. No information has been submitted.",
+      "submitLabel": "Submit"
+    }
+  },
+  {
+    "id": "death-claim",
+    "schemaKey": "death-claim",
+    "routes": [
+      "/report-a-death"
+    ],
+    "pageIds": [],
+    "renderingIds": [
+      "BEE2F32B-31EF-56F2-AFE1-178346147DEF"
+    ],
+    "datasourceIds": [
+      "D270D869-9502-55F7-9D0C-FA211FF327BC"
+    ],
+    "sourceHidden": false,
+    "copy": {
+      "heading": "",
+      "body": "",
+      "successMessage": "Information validated. No information has been submitted.",
+      "submitLabel": "Continue"
+    }
+  },
+  {
+    "id": "product-income-adv-prospectus",
+    "schemaKey": "product-contact",
+    "routes": [
+      "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus"
+    ],
+    "pageIds": [
+      "6542af8c-aa4e-49f8-b060-ed7d1c25a500"
+    ],
+    "renderingIds": [
+      "901F8EC3-236F-5827-89DD-D449565AD68E",
+      "DB3A7152-E7B1-4CC5-B490-B5E3C9A613D4"
+    ],
+    "datasourceIds": [
+      "B9F93848-59CE-5A96-B335-3946CBC7B31B",
+      "72926763-1569-45AF-96FF-4997AC409784"
+    ],
+    "sourceHidden": true,
+    "copy": {
+      "heading": "Contact us",
+      "body": "",
+      "secondaryHeading": "Already working with a financial professional?",
+      "secondaryBody": "",
+      "submitLabel": "Submit",
+      "reviewHeading": "Review sample information",
+      "successMessage": "<p>Demo review complete. No information was sent.</p>",
+      "failureMessage": "<p>Demo failure. No information was sent. Please try again with sample information.</p>"
+    }
+  },
+  {
+    "id": "product-plus-income-prospectus",
+    "schemaKey": "product-contact",
+    "routes": [
+      "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus"
+    ],
+    "pageIds": [
+      "e753401e-f07b-47f2-9043-6fde3be18f25"
+    ],
+    "renderingIds": [
+      "FA433531-27C5-5DB8-A729-32648584C1E3",
+      "65B5D363-BAD3-4FC5-9F4E-9897B78B9A35"
+    ],
+    "datasourceIds": [
+      "2FC9300D-C536-5C38-AFC0-BBB6123ED5A6",
+      "5E191CD6-02A2-437E-A950-DD34B07FC9A2"
+    ],
+    "sourceHidden": true,
+    "copy": {
+      "heading": "Contact us",
+      "body": "",
+      "secondaryHeading": "Already working with a financial professional?",
+      "secondaryBody": "",
+      "submitLabel": "Submit",
+      "reviewHeading": "Review sample information",
+      "successMessage": "<p>Demo review complete. No information was sent.</p>",
+      "failureMessage": "<p>Demo failure. No information was sent. Please try again with sample information.</p>"
+    }
+  },
+  {
+    "id": "product-plus-nf-prospectus",
+    "schemaKey": "product-contact",
+    "routes": [
+      "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus"
+    ],
+    "pageIds": [
+      "cdddbf6f-106b-420b-8ddc-92f334ee0200"
+    ],
+    "renderingIds": [
+      "DEDE9608-B3D5-5F0D-8C76-E96F0FA23543",
+      "05B7AE7C-7166-424E-801B-11EA6CA14D48"
+    ],
+    "datasourceIds": [
+      "E23DE035-787F-5B36-9F0A-43A85ABC68B8",
+      "CFEA674B-4ED1-4970-99CF-ABCB06DD5E04"
+    ],
+    "sourceHidden": true,
+    "copy": {
+      "heading": "Contact us",
+      "body": "",
+      "secondaryHeading": "Already working with a financial professional?",
+      "secondaryBody": "",
+      "submitLabel": "Submit",
+      "reviewHeading": "Review sample information",
+      "successMessage": "<p>Demo review complete. No information was sent.</p>",
+      "failureMessage": "<p>Demo failure. No information was sent. Please try again with sample information.</p>"
+    }
+  },
+  {
+    "id": "product-plus-select-income-prospectus",
+    "schemaKey": "product-contact",
+    "routes": [
+      "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus"
+    ],
+    "pageIds": [
+      "7021b9fe-db4c-477e-8354-39390973a352"
+    ],
+    "renderingIds": [
+      "32583845-7F7E-58FC-B3F7-7B4704D09B51",
+      "87468F1C-31CA-499C-A30B-7626AF6A269F"
+    ],
+    "datasourceIds": [
+      "795DD2D2-2797-5A17-B89A-821F09CE414A",
+      "8934511D-527A-4417-929D-7E15F290B5C0"
+    ],
+    "sourceHidden": true,
+    "copy": {
+      "heading": "Contact us",
+      "body": "",
+      "secondaryHeading": "Already working with a financial professional?",
+      "secondaryBody": "",
+      "submitLabel": "Submit",
+      "reviewHeading": "Review sample information",
+      "successMessage": "<p>Demo review complete. No information was sent.</p>",
+      "failureMessage": "<p>Demo failure. No information was sent. Please try again with sample information.</p>"
+    }
+  },
+  {
+    "id": "product-plus-prospectus",
+    "schemaKey": "product-contact",
+    "routes": [
+      "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus"
+    ],
+    "pageIds": [
+      "4745ff22-9972-4199-b3f5-f2a0af6437b6"
+    ],
+    "renderingIds": [
+      "E8708B7D-9A71-5BE5-B39B-B8D0B0EB4576",
+      "4B933C5C-03F2-4571-8B27-3DBDCF9802EF"
+    ],
+    "datasourceIds": [
+      "182835C9-E879-5452-AA37-2F9C200E70FE",
+      "618DA071-90F2-4C12-92D2-53461F2FF07F"
+    ],
+    "sourceHidden": true,
+    "copy": {
+      "heading": "Contact us",
+      "body": "",
+      "secondaryHeading": "Already working with a financial professional?",
+      "secondaryBody": "",
+      "submitLabel": "Submit",
+      "reviewHeading": "Review sample information",
+      "successMessage": "<p>Demo review complete. No information was sent.</p>",
+      "failureMessage": "<p>Demo failure. No information was sent. Please try again with sample information.</p>"
+    }
+  }
+]

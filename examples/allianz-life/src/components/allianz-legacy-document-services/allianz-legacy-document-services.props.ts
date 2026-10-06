@@ -2,6 +2,20 @@ import type { Field, LinkField } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from 'lib/component-props';
 import type { JsonField } from 'lib/allianz-fields';
 
+/** Source-faithful, disabled account-form copy is code-owned; surrounding rail content is authored. */
+export const DOCUMENT_LOGIN_COPY = {
+  "usernameLabel": "Username*",
+  "usernamePlaceholder": "Username",
+  "passwordLabel": "Password*",
+  "passwordPlaceholder": "Password",
+  "rememberLabel": "Remember me",
+  "loginLabel": "Login",
+  "forgotUsernameLabel": "Forgot username?",
+  "forgotPasswordLabel": "Forgot password?",
+  "registerLabel": "Register"
+} as const;
+export const DOCUMENT_LOGIN_FIELDS = Object.fromEntries(Object.entries(DOCUMENT_LOGIN_COPY).map(([name, value]) => [name, { jsonValue: { value } }]));
+
 export const DOCUMENT_SERVICE_TEXT_FIELDS = [
   'accountLabel', 'contactLabel', 'socialLabel', 'mobileSocialLabel', 'socialHeading',
   'socialBody', 'usernameLabel', 'usernamePlaceholder', 'passwordLabel',

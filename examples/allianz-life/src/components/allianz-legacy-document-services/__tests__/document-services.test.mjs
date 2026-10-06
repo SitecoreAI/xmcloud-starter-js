@@ -74,7 +74,7 @@ test('source proof pins nine routes as the exact four empty and five login group
   }
 });
 
-test('source labels, ordered network links and credential placeholders are editable fixture fields', () => {
+test('source labels, ordered network links and code-owned credential placeholders match the source fixture', () => {
   const full = fs.readFileSync(path.join(here, proof.groups[1].safeFixtureFile), 'utf8');
   for (const [name, value] of Object.entries(fixture.fields)) if (typeof value === 'string') {
     if (name === 'loginLabel') assert.ok(full.includes(`value="${value}"`));
@@ -112,10 +112,10 @@ test('Default deliberately has no login inputs, while LoginWidget has only disab
   for (const html of [empty, full]) assert.doesNotMatch(html, /<form|\baction=|formAction|type="submit"|type="hidden"|\/SPA\/|auth\.allianzlife|https:\/\/www\.(facebook|twitter|linkedin|youtube)/);
 });
 
-test('real SDK editing retains every field metadata object, exposes panels and exact native link destinations', () => {
+test('real SDK editing retains surrounding field metadata while account control copy is code-owned', () => {
   const data = datasource(); const before = JSON.stringify(data);
   const html = render(components.LoginWidget, data, true); const markers = metadata(html);
-  for (const [name, fld] of Object.entries(data).filter(([name]) => name !== 'children')) {
+  for (const [name, fld] of Object.entries(data).filter(([name]) => name !== 'children' && !(name in helpers.DOCUMENT_LOGIN_COPY))) {
     assert.ok(markers.some((m) => JSON.stringify(m) === JSON.stringify(fld.jsonValue.metadata)), name);
   }
   for (const item of data.children.results) for (const name of ['heading', 'link']) {
@@ -143,7 +143,7 @@ test('clear and restore does not introduce fixture fallback or mutate author fie
   const before = JSON.stringify(data); const normal = render(components.LoginWidget, data);
   assert.doesNotMatch(normal, /Login \/ Register|Connect with|Contact Us|Social Media|href=|<input/);
   const editing = render(components.LoginWidget, data, true); const markers = metadata(editing);
-  assert.equal(markers.length, 24);
+  assert.equal(markers.length, 24 - Object.keys(helpers.DOCUMENT_LOGIN_COPY).length);
   assert.equal(JSON.stringify(data), before);
   Object.assign(data, original); assert.equal(render(components.LoginWidget, data), restored);
   assert.match(render(components.Default, null), /Add a datasource for AllianzLegacyDocumentServices/);
@@ -323,4 +323,16 @@ test('connected Layout accepts complete rail collections and rejects missing or 
   assert.equal(collectionsComplete(layout, true), true);
   delete rail.children.pageInfo;
   assert.equal(collectionsComplete(layout, true), false);
+});
+
+
+test('disabled login controls ignore CMS copy overrides while surrounding rail content stays authored', () => {
+  assert.deepEqual(helpers.DOCUMENT_LOGIN_COPY, Object.fromEntries(Object.keys(helpers.DOCUMENT_LOGIN_COPY).map((name) => [name, fixture.fields[name]])));
+  const data = datasource(), changed = structuredClone(data);
+  for (const name of Object.keys(helpers.DOCUMENT_LOGIN_COPY)) changed[name] = field(name, 'CMS override');
+  for (const editing of [false, true]) assert.equal(render(components.LoginWidget, changed, editing), render(components.LoginWidget, data, editing));
+  const html = render(components.LoginWidget, changed, true);
+  for (const name of Object.keys(helpers.DOCUMENT_LOGIN_COPY)) assert.ok(!metadata(html).some((entry) => entry.fieldId === `test-only-${name}`));
+  assert.equal(count(html, /<input\b/g), 3);
+  for (const input of html.match(/<input[^>]+>/g)) assert.match(input, /disabled=""/);
 });

@@ -21,52 +21,20 @@ export type FormValue = string | string[];
 export type FormValues = Record<string, FormValue>;
 export type FormErrors = Record<string, string>;
 export type SchemaKey = 'death-claim' | 'new-york-contact' | 'product-contact' | 'new-york-product-contact' | 'generic';
-const source = sourceJson as Record<Exclude<SchemaKey, 'generic'>, { sourceUrl: string; fields: FormDefinition[] }>;
+const source = sourceJson as Record<SchemaKey, { sourceUrl: string; fields: FormDefinition[] }>;
 export const MAX_POLICIES = 20;
 export const REASON = 'ContactUsReason.SelectedReason';
 export const RELATIONSHIP = 'StartClaimAboutYou.selectedrelationship';
 export const POLICY_PREFIX = 'StartClaimAbout.policycontractnumber';
 
-function optionsValue(value?: string, strict = false): FormOption[] {
-  if (!value) return [];
-  try {
-    const items = JSON.parse(value) as Array<{ value?: string; label?: string; text?: string }>;
-    if (!Array.isArray(items)) return [];
-    if (strict && (items.some((item) => !item || typeof item !== 'object' || typeof item.value !== 'string' || !item.value.trim() || typeof (item.label ?? item.text) !== 'string' || !(item.label ?? item.text)?.trim()) || new Set(items.map((item) => item.value)).size !== items.length)) return [];
-    return items.map((item) => ({ value: String(item.value ?? ''), label: String(item.label ?? item.text ?? '') }));
-  } catch { return []; }
-}
-
-/** Compiled public-source schemas supply missing extraction rules; native labels remain editable. */
-export function formDefinitions(key: SchemaKey, nativeFields: AllianzFormField[] = []): FormDefinition[] {
-  const definitions: FormDefinition[] = key === 'generic' ? nativeFields.map((field) => ({
-    name: field.name?.jsonValue?.value || field.id,
-    label: field.label?.jsonValue?.value || '',
-    inputType: field.inputType?.jsonValue?.value || 'text',
-    required: field.required?.jsonValue?.value === true || field.required?.jsonValue?.value === 'true' || field.required?.jsonValue?.value === '1',
-    maxLength: Number(field.maxLength?.jsonValue?.value) || 5000,
-    pattern: field.pattern?.jsonValue?.value || '',
-    placeholder: field.placeholder?.jsonValue?.value || '',
-    requiredMessage: field.validationMessage?.jsonValue?.value || 'This field is required',
-    invalidMessage: 'Please enter a valid value',
-    options: optionsValue(field.options?.jsonValue?.value),
-  })) : source[key].fields;
-  return definitions.filter((definition) => !['password', 'hidden', 'file', 'submit', 'reset'].includes(definition.inputType) && !/(?:password|antiforgery|token|username)/i.test(definition.name)).map((definition) => {
-    const native = nativeFields.find((field) => field.name?.jsonValue?.value === definition.name);
-    const nativeOptions = optionsValue(native?.options?.jsonValue?.value, key === 'product-contact' || key === 'new-york-product-contact');
-    return {
-      ...definition,
-      label: native?.label?.jsonValue?.value || definition.label,
-      labelField: native?.label || { jsonValue: { value: definition.label } },
-      placeholder: native?.placeholder?.jsonValue?.value || definition.placeholder,
-      maxLength: Math.min(5000, Math.max(1, Number(native?.maxLength?.jsonValue?.value) || definition.maxLength)),
-      options: nativeOptions.length ? nativeOptions.map((option) => ({
-        ...option,
-        ...(key === 'new-york-contact' && definition.multiple && { group: definition.options.find((sourceOption) => sourceOption.value === option.value)?.group }),
-        ...((key === 'product-contact' || key === 'new-york-product-contact') && { superscript: definition.options.find((sourceOption) => sourceOption.value === option.value)?.superscript }),
-      })) : definition.options,
-    };
-  });
+/** Code-owned source definitions. Legacy CMS input is accepted but never overrides a form. */
+export function formDefinitions(key: SchemaKey, nativeFields?: AllianzFormField[]): FormDefinition[] {
+  void nativeFields;
+  return source[key].fields.map((definition) => ({
+    ...definition,
+    options: definition.options.map((option) => ({ ...option })),
+    labelField: { jsonValue: { value: definition.label } },
+  }));
 }
 
 /** Contact field visibility matches captured live source branches; submission stays local-only. */

@@ -28,13 +28,13 @@ const SearchResults = ({ fields, params = {} }: AllianzSearchProps) => {
       router.push(nextQuery ? `${searchPath}?q=${encodeURIComponent(nextQuery)}` : searchPath);
     }}>
       <label htmlFor={`${id}-query`} className="sr-only">Search this website</label><div className="input-group">
-        <input type="search" className="form-control" id={`${id}-query`} name="q" placeholder={data?.placeholder?.jsonValue?.value || 'e.g. Annuities'} value={input} onChange={(event) => setInput(event.target.value.slice(0, 50))} maxLength={50} />
+        <input type="search" className="form-control" id={`${id}-query`} name="q" placeholder="e.g. Annuities" value={input} onChange={(event) => setInput(event.target.value.slice(0, 50))} maxLength={50} />
         <span className="input-group-btn"><button type="submit" className="btn btn-primary">Search</button></span>
       </div>
     </form>
     {query.trim() ? <div className="allianz-local-search-results" aria-live="polite">
-      <p>{matches.length} {data?.resultLabel?.jsonValue ? <Text field={data.resultLabel.jsonValue} /> : matches.length === 1 ? 'result' : 'results'} for <strong>{query}</strong></p>
-      {matches.length ? <ol>{matches.slice(0, limit).map((entry) => <li key={entry.path}><h3><NextLink href={entry.path}>{entry.title}</NextLink></h3>{entry.description && <p>{entry.description}</p>}</li>)}</ol> : <p>{data?.noResultsMessage?.jsonValue ? <Text field={data.noResultsMessage.jsonValue} /> : 'No results found. Please try a different search.'}</p>}
+      <p>{matches.length} {matches.length === 1 ? 'result' : 'results'} for <strong>{query}</strong></p>
+      {matches.length ? <ol>{matches.slice(0, limit).map((entry) => <li key={entry.path}><h3><NextLink href={entry.path}>{entry.title}</NextLink></h3>{entry.description && <p>{entry.description}</p>}</li>)}</ol> : <p>No results found. Please try a different search.</p>}
       {matches.length > limit && <button className="btn btn-default" type="button" onClick={() => setLimit((previous) => previous + 10)}>Show more results</button>}
     </div> : <p className="help-block">Enter a word or phrase to search this website.</p>}
   </section>;

@@ -51,8 +51,6 @@ const rich = (id) => field(id, 'Rich Text');
 const image = (id) => field(id, 'Image', {});
 const link = (id) => field(id, 'General Link', {});
 const cases = [
-  ['calculator', { heading: text('heading'), body: rich('body'), disclaimer: rich('disclaimer'), submitLabel: text('submit'), resultLabel: text('result-label'), initialResult: text('initial'), sampleResult: rich('sample'), children: { results: [{ id: 'input', label: text('label'), footnote: text('footnote'), initialValue: text('input-initial') }] } }],
-  ['form', { heading: text('heading'), body: rich('body'), submitLabel: text('submit'), secondaryHeading: text('secondary-heading'), secondaryBody: rich('secondary-body'), reviewHeading: text('review'), successMessage: rich('success'), failureMessage: rich('failure'), children: { results: [{ id: 'conditional-input', label: text('conditional-label'), name: { jsonValue: { value: 'SelectFirm.SelectedFirm' } } }] } }],
   ['timeline', { heading: text('heading'), body: rich('body'), children: { results: [{ id: 'event', date: text('date'), heading: text('event-heading'), body: rich('event-body'), image: image('image'), link: link('link') }] } }],
   ['video', { heading: text('heading'), body: rich('body'), poster: image('poster'), mediaLink: link('media'), caption: rich('caption'), transcript: rich('transcript') }],
   ['rate-snapshot', { heading: text('heading'), rate: text('rate'), asOf: text('asof'), body: rich('body'), link: link('link') }],
@@ -153,7 +151,7 @@ test('normal and preview keep conditional result, rate, and static video behavio
     const calculator = render(components('calculator'), { schemaKey: { jsonValue: { value: 'retirement-income' } }, sampleResult: { jsonValue: { value: '<p>Sample result</p>' } } }, mode);
     assert.match(calculator, /<form\b/);
     assert.doesNotMatch(calculator, /Sample result/);
-    const form = render(components('form'), { schemaKey: { jsonValue: { value: 'new-york-contact' } }, successMessage: { jsonValue: { value: '<p>Complete content</p>' } }, children: { results: [{ id: 'firm', name: { jsonValue: { value: 'SelectFirm.SelectedFirm' } }, label: { jsonValue: { value: 'Conditional firm label' } } }] } }, mode);
+    const form = render(components('form'), { schemaKey: { jsonValue: { value: 'new-york-contact' } }, successMessage: { jsonValue: { value: '<p>Complete content</p>' } }, children: { results: [{ id: 'firm', name: { jsonValue: { value: 'SelectFirm.SelectedFirm' } }, label: { jsonValue: { value: 'Conditional firm label' } } }] } }, mode, { formId: 'ny-contact' });
     assert.doesNotMatch(form, /Conditional firm label|Complete content/);
     assert.match(form, /<form\b/);
   }
@@ -205,34 +203,18 @@ test('visitor calculator retains validation, compute, reset, and prevented nativ
     const h = interactionHarness('calculator', data);
     h.render(); h.submit();
     assert.ok(h.render().some((node) => node.props.role === 'alert'), 'empty input fails validation');
-    h.one((node) => node.type === 'input').props.onChange({ target: { value: '100' } });
+    for (const [name, value] of Object.entries({ principal: '100', interest: '4.5', payments: '20' })) { h.one((node) => node.props.name === name).props.onChange({ target: { value } }); h.render(); }
     h.render(); h.submit();
-    assert.ok(h.render().some((node) => node.type === 'sdk-rich' && node.props.field === data.sampleResult.jsonValue), 'valid input unlocks captured sample only');
+    assert.ok(h.render().some((node) => node.props.role === 'status' && node.props.children === 'Your inputs are ready. A result is not available.'), 'valid input stays validation-only');
     h.one((node) => node.type === 'button' && node.props.children === 'Reset').props.onClick();
-    assert.equal(h.render().find((node) => node.type === 'input').props.value, '');
+    assert.equal(h.render().find((node) => node.type === 'input').props.value, '$0.00');
     assert.ok(!h.render().some((node) => node.type === 'sdk-rich' && node.props.field === data.sampleResult.jsonValue));
   } finally { globalThis.requestAnimationFrame = previous; }
 });
 
-test('visitor form retains entry validation, review, local outcome, and reset without backend actions', () => {
-  const previous = globalThis.requestAnimationFrame;
-  globalThis.requestAnimationFrame = (callback) => callback();
-  try {
-    for (const outcome of ['complete', 'failure']) {
-      const data = { successMessage: rich('success'), failureMessage: rich('failure'), children: { results: [{ id: 'name', name: { jsonValue: { value: 'sample-name' } }, label: text('label'), required: { jsonValue: { value: true } } }] } };
-      const h = interactionHarness('form', data, { mockOutcome: outcome });
-      h.render(); h.submit();
-      assert.ok(h.render().some((node) => node.props.role === 'alert'), 'required field stays required');
-      h.one((node) => node.type === 'input').props.onChange({ target: { value: 'Synthetic Example' } });
-      h.render(); h.submit(); h.render();
-      assert.ok(h.one((node) => node.props.className === 'allianz-local-review'));
-      h.one((node) => node.type === 'button' && node.props.children === 'Continue').props.onClick();
-      assert.ok(h.render().some((node) => node.type === 'sdk-rich' && node.props.field === data[outcome === 'failure' ? 'failureMessage' : 'successMessage'].jsonValue));
-      h.one((node) => node.type === 'button' && node.props.children === 'Start again').props.onClick();
-      assert.equal(h.render().find((node) => node.type === 'input').props.value, '');
-      const form = h.one((node) => node.type === 'form');
-      assert.equal(form.props.action, undefined);
-      assert.equal(form.props.method, undefined);
-    }
-  } finally { globalThis.requestAnimationFrame = previous; }
+test('unknown form configuration cannot manufacture CMS-driven controls', () => {
+  const data = { children: { results: [{ id: 'name', name: { jsonValue: { value: 'sample-name' } }, label: text('label'), required: { jsonValue: { value: true } } }] } };
+  const html = render(components('form'), data, 'normal');
+  assert.match(html, /temporarily unavailable/);
+  assert.doesNotMatch(html, /<form|sample-name|<input/);
 });

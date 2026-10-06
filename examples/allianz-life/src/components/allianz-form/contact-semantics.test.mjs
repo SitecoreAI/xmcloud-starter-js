@@ -46,6 +46,8 @@ const CATEGORY = 'ProductCategory.SelectedCategories';
 const PRODUCT = '_ProductSelector.SelectedProducts';
 const FIRM = 'SelectFirm.SelectedFirm';
 const definitions = formDefinitions('new-york-contact');
+const configs = JSON.parse(fs.readFileSync(path.join(formRoot, 'migration-forms.json'), 'utf8'));
+const config = configs.find((form) => form.id === 'ny-contact');
 const productValue = definitions.find((field) => field.name === PRODUCT).options[0].value;
 const sample = {
   'ContactInfo.Name': 'Sample', 'ContactInfo.Email': 'sample@example.invalid',
@@ -110,75 +112,31 @@ test('source required/maxLength/pattern validation remains active for every ordi
   assert.deepEqual(validateForm(visible(values), { ...values, 'ContactInfo.ZipCode': '55416-1234' }, 'new-york-contact'), {});
 });
 
-test('native labels/options/placeholders/maxLength remain editable while compiled validation/multiplicity stay locked', () => {
+test('CMS label/options/validation edits and empty fields cannot change code-owned contact definitions', () => {
   const native = datasource().children.results;
-  const email = native.find((entry) => entry.name.jsonValue.value === 'ContactInfo.Email');
-  Object.assign(email, { label: field('label', 'Edited email'), placeholder: field('placeholder', 'Edited placeholder'), maxLength: field('max', '80'),
-    inputType: field('type', 'textarea'), required: field('required', false), pattern: field('pattern', '^EDIT$'), validationMessage: field('message', 'Edited error') });
-  const product = native.find((entry) => entry.name.jsonValue.value === PRODUCT);
-  product.options = field('options', JSON.stringify([{ value: productValue, label: 'Edited product' }]));
-  const actual = formDefinitions('new-york-contact', native);
-  const edited = actual.find((entry) => entry.name === 'ContactInfo.Email');
-  assert.equal(edited.label, 'Edited email'); assert.equal(edited.placeholder, 'Edited placeholder'); assert.equal(edited.maxLength, 80);
-  assert.equal(edited.inputType, 'email'); assert.equal(edited.required, true); assert.notEqual(edited.pattern, '^EDIT$'); assert.notEqual(edited.requiredMessage, 'Edited error');
-  assert.deepEqual(actual.find((entry) => entry.name === PRODUCT).options, [{ value: productValue, label: 'Edited product', group: 'Variable annuities' }]);
-  assert.ok(actual.find((entry) => entry.name === PRODUCT).multiple);
-  product.maxLength = field('max', '10');
-  const limited = formDefinitions('new-york-contact', native);
-  assert.equal(validateForm(visibleDefinitions('new-york-contact', limited, valid('PurchaseProducts'), 1), valid('PurchaseProducts'), 'new-york-contact')[PRODUCT], 'Enter no more than 10 characters');
-  email.maxLength = field('max', '999999'); assert.equal(formDefinitions('new-york-contact', native).find((entry) => entry.name === 'ContactInfo.Email').maxLength, 5000);
+  for (const field of native) { field.label = { jsonValue: { value: 'CMS override' } }; field.options = { jsonValue: { value: '[]' } }; field.maxLength = { jsonValue: { value: '1' } }; }
+  assert.deepEqual(formDefinitions('new-york-contact', native), definitions);
+  assert.equal(definitions.length, 9);
 });
-
-test('native clear/restore and missing children preserve fixed schema contract and compiled fallbacks', () => {
-  const native = datasource().children.results;
-  const original = JSON.stringify(native);
-  const cleared = native.map((entry) => ({ ...entry, label: field('empty-label', ''), placeholder: field('empty-placeholder', ''), options: field('empty-options', '') }));
-  const actual = formDefinitions('new-york-contact', cleared);
-  for (const [index, definition] of actual.entries()) {
-    assert.equal(definition.label, definitions[index].label);
-    assert.deepEqual(definition.options, definitions[index].options);
-    assert.equal(definition.labelField.jsonValue.value, '', 'native empty editing metadata is retained');
-  }
-  assert.equal(formDefinitions('new-york-contact', []).length, 9);
-  assert.equal(JSON.stringify(native), original);
-});
-
-const RealComponent = sourceLoader()(path.join(formRoot, 'AllianzForm.tsx')).Default;
+const RealComponent = sourceLoader()(path.join(formRoot, 'GenericForm.props.tsx')).default;
 function sdkRender(data, editing, Component = RealComponent) {
   const page = { mode: { isEditing: editing, isNormal: !editing }, siteName: 'allianz-life', layout: { sitecore: { context: {}, route: { name: 'Contact test', fields: {}, placeholders: {} } } } };
   return renderToStaticMarkup(React.createElement(realSdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) },
-    React.createElement(Component, { fields: { data: { datasource: data } }, params: {} })));
+    React.createElement(Component, { config, params: {} })));
 }
-for (const editing of [false, true]) {
-  test(`real Content SDK ${editing ? 'editing' : 'normal'} render, native clear and restoration preserve metadata and safety`, () => {
-    const data = datasource(); const before = JSON.stringify(data);
-    const html = sdkRender(data, editing);
-    assert.match(html, /Contact test heading/); assert.match(html, /Contact test body/);
-    if (editing) {
-      assert.doesNotMatch(html, /<form|<input|<textarea|<select/);
-      for (let i = 0; i < 9; i++) assert.match(html, new RegExp(`contact-test-label-${i}`));
-      assert.match(html, /contact-test-successMessage/); assert.match(html, /contact-test-failureMessage/);
-    } else {
-      assert.match(html, /<form[^>]*noValidate/); assert.match(html, /Information entered here stays in this browser/);
-      assert.doesNotMatch(html, /action=|method=|<select|type="checkbox"/);
-    }
-    const clear = structuredClone(data);
-    clear.heading.jsonValue.value = ''; clear.body.jsonValue.value = '';
-    clear.children.results.forEach((entry) => { entry.label.jsonValue.value = ''; });
-    const empty = sdkRender(clear, editing);
-    assert.doesNotMatch(empty, /Contact test heading|Contact test body/);
-    if (editing) for (let i = 0; i < 9; i++) assert.match(empty, new RegExp(`contact-test-label-${i}`));
-    assert.equal(sdkRender(data, editing), html);
-    assert.equal(JSON.stringify(data), before);
-  });
-}
+for (const editing of [false, true]) test(`code-owned contact renders with real SDK in ${editing ? 'editing' : 'normal'} mode`, () => {
+  const html = sdkRender(undefined, editing);
+  assert.doesNotMatch(html, /allianz-missing-data|contact-test-|CMS override|action=|method=/);
+  if (editing) for (const field of definitions) assert.ok(html.includes(field.label));
+  else assert.match(html, /<form[^>]*noValidate/);
+});
 
 // Real React hooks and SDK render seeded conditional fixtures; event behavior is checked below.
 for (const [reason, open] of [['Other', false], ['SellProducts', false], ['PurchaseProducts', true]]) {
   test(`real Content SDK seeded ${reason} render exposes source multiple controls, labels and grouping`, () => {
     let index = 0;
     const seededReact = { ...React, useState(initial) { const current = index++; return React.useState(current === 0 ? valid(reason) : current === 5 ? open : initial); } };
-    const Component = sourceLoader({ react: seededReact })(path.join(formRoot, 'AllianzForm.tsx')).Default;
+    const Component = sourceLoader({ react: seededReact })(path.join(formRoot, 'GenericForm.props.tsx')).default;
     const html = sdkRender(datasource(), false, Component);
     if (reason === 'PurchaseProducts') {
       assert.match(html, /aria-expanded="true"/);
@@ -201,9 +159,9 @@ function harness(key = 'new-york-contact', params = {}, data = datasource()) {
     useRef: () => { const index = refCursor++; return refs[index] ||= { current: null }; },
     useState: (initial) => { const index = cursor++; if (!(index in state)) state[index] = initial; return [state[index], (next) => { state[index] = typeof next === 'function' ? next(state[index]) : next; }]; } };
   const sdk = { ...realSdk, useSitecore: () => ({ page: { mode: { isEditing: false } } }) };
-  const Component = sourceLoader({ react: hooks, '@sitecore-content-sdk/nextjs': sdk })(path.join(formRoot, 'AllianzForm.tsx')).Default;
+  const Component = sourceLoader({ react: hooks, '@sitecore-content-sdk/nextjs': sdk })(path.join(formRoot, 'GenericForm.props.tsx')).default;
   data.schemaKey = field('schemaKey', key);
-  const props = { fields: { data: { datasource: data } }, params };
+  const props = { config: key === 'new-york-contact' ? config : configs.find((form) => form.schemaKey === key) || config, params };
   function nodes(node = tree) { if (Array.isArray(node)) return node.flatMap((child) => nodes(child ?? null)); if (!React.isValidElement(node)) return []; return [node, ...nodes(node.props.children ?? null)]; }
   function text(node = tree) {
     if (Array.isArray(node)) return node.map((child) => text(child ?? null)).join('');
@@ -304,16 +262,15 @@ for (const outcome of ['success', 'error', 'failure']) {
   });
 }
 
-test('generic forms retain native single-select/scalar validation; credential fields stay excluded', () => {
-  const native = [{ id: 'select', name: field('name', 'choice'), label: field('label', 'Choice'), inputType: field('inputType', 'select'), required: field('required', true), options: field('options', '[{"value":"a","label":"A"},{"value":"b","label":"B"}]') }];
-  const generic = formDefinitions('generic', native);
-  assert.deepEqual(validateForm(generic, { choice: 'a' }, 'generic'), {});
-  assert.ok(validateForm(generic, { choice: 'bad' }, 'generic').choice);
-  assert.ok(!generic[0].multiple);
-  const h = harness('generic', {}, { children: { results: native } });
+test('generic source search selects remain scalar and CMS cannot introduce credential fields', () => {
+  const generic = formDefinitions('generic');
+  assert.deepEqual(validateForm(generic, { selectPageCount: '12' }, 'generic'), {});
+  assert.ok(validateForm(generic, { selectPageCount: 'bad' }, 'generic').selectPageCount);
+  assert.ok(!generic[1].multiple);
+  const h = harness('generic');
   const select = h.find((node) => node.type === 'select'); assert.equal(select.props.multiple, undefined);
-  h.change('choice', 'a'); h.submit(); h.click('Edit information'); assert.equal(h.state()[0].choice, 'a');
-  assert.equal(formDefinitions('generic', [{ id: 'password', inputType: field('type', 'password') }]).length, 0);
+  h.change('selectPageCount', '12'); h.submit(); h.click('Edit information'); assert.equal(h.state()[0].selectPageCount, '12');
+  assert.deepEqual(formDefinitions('generic', [{ id: 'password', inputType: field('type', 'password') }]), generic);
 });
 
 test('no requests, logging, persistence, source backend/auth endpoints or widgets in form implementation', () => {
@@ -323,4 +280,34 @@ test('no requests, logging, persistence, source backend/auth endpoints or widget
     assert.doesNotMatch(source, /\/SPA\/|<script|formAction|action=|method=/);
   }
   assert.equal(requests, 0); assert.equal(stores, 0);
+});
+
+test('death-claim handlers preserve conditional relationship, 20 policies, masked review, edit and repeated local outcomes', () => {
+  const priorDocument=globalThis.document;globalThis.document={getElementById:()=>({focus(){}})};
+  try {
+    const h=harness('death-claim');
+    assert.equal(h.nodes().filter(n=>n.props.name?.startsWith('StartClaimAbout.policycontractnumber')).length,1);
+    const sampleClaim={
+      'StartClaimAbout.firstname':'Avery','StartClaimAbout.lastname':'Sample',
+      'StartClaimAbout.DateOfDeathMonth':'1','StartClaimAbout.DateOfDeathDay':'31','StartClaimAbout.DateOfDeathYear':'2025',
+      'StartClaimAbout.DateOfBirthMonth':'2','StartClaimAbout.DateOfBirthDay':'28','StartClaimAbout.DateOfBirthYear':'1970',
+      'StartClaimAbout.Last4SSN':'1234','StartClaimAboutYou.selectedrelationship':'Other',
+      'StartClaimAboutYou.yourfirstname':'Morgan','StartClaimAboutYou.yourlastname':'Sample',
+      'StartClaimAboutYou.emailaddress':'morgan@example.invalid','StartClaimAboutYou.phone':'2025550148',
+      'StartClaimAboutYou.address':'100 Sample Street','StartClaimAboutYou.city':'Sample City','StartClaimAboutYou.selectedcountry':'United States',
+    };
+    for(const[name,value]of Object.entries(sampleClaim))h.change(name,value);
+    assert.ok(h.nodes().some(n=>n.props.name==='StartClaimAboutYou.otherRelationship'));
+    assert.equal(formDefinitions('death-claim').find(f=>f.name==='StartClaimAboutYou.otherRelationship').required,false);
+    h.change('StartClaimAboutYou.otherRelationship','Sample relative');
+    for(let i=1;i<20;i++)h.click('+ Add one more policy');
+    assert.equal(h.state()[2],20);assert.equal(h.button('+ Add one more policy').props.disabled,true);
+    assert.equal(h.nodes().filter(n=>n.props.name?.startsWith('StartClaimAbout.policycontractnumber')).length,20);
+    h.submit();assert.equal(h.state()[3],'review');assert.match(h.text(),/••••/);assert.doesNotMatch(h.text(),/1234/);
+    h.click('Edit information');assert.equal(h.state()[0]['StartClaimAbout.Last4SSN'],'1234');
+    h.change('StartClaimAboutYou.selectedrelationship','Child');
+    assert.ok(!h.nodes().some(n=>n.props.name==='StartClaimAboutYou.otherRelationship'));
+    h.submit();assert.doesNotMatch(h.text(),/Sample relative/);h.click('Continue');assert.equal(h.state()[3],'complete');assert.deepEqual(h.state()[0],{});
+    h.click('Start again');assert.equal(h.state()[2],1);assert.equal(h.state()[3],'entry');assert.deepEqual(h.state()[0],{});
+  } finally {globalThis.document=priorDocument;}
 });

@@ -3275,5 +3275,63 @@
         "options": []
       }
     ]
+  },
+  "generic": {
+    "sourceUrl": "https://www.allianzlife.com/new-york/search",
+    "fields": [
+      {
+        "name": "searchInput",
+        "label": "e.g. Annuities",
+        "inputType": "text",
+        "required": false,
+        "maxLength": 50,
+        "pattern": "",
+        "placeholder": "e.g. Annuities",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      },
+      {
+        "name": "selectPageCount",
+        "label": "selectPageCount",
+        "inputType": "select",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": [
+          {
+            "label": "12 per page",
+            "value": "12"
+          },
+          {
+            "label": "24 per page",
+            "value": "24"
+          },
+          {
+            "label": "60 per page",
+            "value": "60"
+          },
+          {
+            "label": "All on one page",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": "selectPage",
+        "label": "selectPage",
+        "inputType": "select",
+        "required": false,
+        "maxLength": 5000,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "This field is required",
+        "invalidMessage": "Please enter a valid value",
+        "options": []
+      }
+    ]
   }
 }

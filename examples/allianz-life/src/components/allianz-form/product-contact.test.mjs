@@ -43,6 +43,8 @@ function sourceLoader(overrides = {}) {
 const { formDefinitions, visibleDefinitions, validateForm } = sourceLoader()(path.join(formRoot, 'form-rules.props.ts'));
 const ProductComponent = sourceLoader()(path.join(formRoot, 'ProductContactForm.props.tsx')).default;
 const DefaultComponent = sourceLoader()(path.join(formRoot, 'AllianzForm.tsx')).Default;
+const configs = JSON.parse(fs.readFileSync(path.join(formRoot, 'migration-forms.json'), 'utf8'));
+const configFor = (key) => configs.find((form) => form.schemaKey === key);
 const PRODUCT = 'ProductInterest.ProductLines';
 const sample = { 'ProductInterest.Name': 'Sample Person', 'ProductInterest.Email': 'sample@example.invalid', 'ProductInterest.Phone': '202-555-0148' };
 const nativeField = (name, value, fieldType = 'Single-Line Text') => ({ jsonValue: { value, metadata: { itemId: 'product-test', fieldId: `product-${name}`, fieldType } } });
@@ -51,7 +53,7 @@ function datasource(key = 'product-contact') {
 }
 function sdkRender(data, editing = false, Component = DefaultComponent) {
  const page = { mode: { isEditing: editing, isNormal: !editing }, siteName: 'allianz-life', layout: { sitecore: { context: {}, route: { name: 'Product contact', fields: {}, placeholders: {} } } } };
- return renderToStaticMarkup(React.createElement(realSdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) }, React.createElement(Component, { fields: { data: { datasource: data } }, params: {} })));
+ return renderToStaticMarkup(React.createElement(realSdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) }, React.createElement(Component, { config: configFor(data.schemaKey.jsonValue.value), fields: { data: { datasource: data } }, params: { formId: configFor(data.schemaKey.jsonValue.value).id } })));
 }
 for (const [key, count] of [['product-contact', 11], ['new-york-product-contact', 3]]) {
  const definitions = formDefinitions(key);
@@ -77,7 +79,7 @@ for (const [key, count] of [['product-contact', 11], ['new-york-product-contact'
   const html = sdkRender(datasource(key));
   assert.equal((html.match(/type="checkbox"/g) || []).length, count);
   assert.equal((html.match(/aria-expanded="false"/g) || []).length, 2);
-  assert.equal((html.match(/hidden=""/g) || []).length, 2);
+  assert.equal((html.match(/hidden=""/g) || []).length, 3);
   assert.equal((html.match(/type="submit"/g) || []).length, 1);
   assert.equal((html.match(/<textarea/g) || []).length, 1);
   assert.match(html, /I want to learn more about/); assert.match(html, /Other \(specify\)/);
@@ -86,22 +88,16 @@ for (const [key, count] of [['product-contact', 11], ['new-york-product-contact'
   assert.equal((html.match(/required=""/g) || []).length, 3);
   assert.match(html, /<sup>®<\/sup>/);
  });
- test(`${key}: SDK editing exposes native metadata and no interactive controls; clear/restore retains identity`, () => {
-  const data = datasource(key), original = JSON.stringify(data); const html = sdkRender(data, true);
-  for (const name of ['heading','body','secondaryHeading','secondaryBody','submitLabel','reviewHeading','successMessage','failureMessage',...Array.from({length:5},(_,i)=>`label-${i}`)]) assert.ok(html.includes(`product-${name}`), name);
-  assert.doesNotMatch(html, /<form|<input|<textarea|<button|<select/);
-  const cleared = structuredClone(data); cleared.heading.jsonValue.value=''; cleared.secondaryHeading.jsonValue.value=''; cleared.children.results.forEach((c)=>{c.label.jsonValue.value='';});
-  const empty = sdkRender(cleared, true); for(let i=0;i<5;i++) assert.ok(empty.includes(`product-label-${i}`));
-  assert.equal(JSON.stringify(data), original); assert.equal(sdkRender(data,true),html);
+ test(`${key}: SDK editing is code-owned and exposes no stale native metadata`, () => {
+  const html = sdkRender(datasource(key), true);
+  assert.match(html, /Contact us/); assert.match(html, /Already working with a financial professional/);
+  assert.doesNotMatch(html, /product-label-|product-heading|<form|<input|<textarea|<select/);
  });
 }
-test('native edits retain labels/options/limits but do not override compiled safety or introduce fields', () => {
- const data=datasource(); data.children.results[0].options.jsonValue.value=JSON.stringify([{value:'ProductInterest.ProductLines[6].Selected',label:'Updated Survivor®'}]);
- data.children.results[1].required={jsonValue:{value:'1'}}; data.children.results[2].inputType=nativeField('inputType','password'); data.children.results[2].label.jsonValue.value='Updated name'; data.children.results[2].maxLength.jsonValue.value='9000';
- data.children.results.push({id:'bad',name:nativeField('name','secret'),inputType:nativeField('inputType','password')});
- const defs=formDefinitions('product-contact',data.children.results);
- assert.equal(defs.length,5);assert.equal(defs[0].options[0].label,'Updated Survivor®');assert.equal(defs[0].options[0].superscript,'®');assert.equal(defs[1].required,false);assert.equal(defs[2].inputType,'text');assert.equal(defs[2].label,'Updated name');assert.equal(defs[2].maxLength,5000);
- for (const raw of ['', 'invalid', '{}', '[]', '[{}]', '[null]', '[1]', '[{"value":"","label":"Blank value"}]', '[{"value":"test","label":{}}]', '[{"value":"test","label":" "}]', '[{"value":"same","label":"One"},{"value":"same","label":"Two"}]']) { data.children.results[0].options.jsonValue.value=raw; assert.equal(formDefinitions('product-contact',data.children.results)[0].options.length,11); }
+test('CMS edits cannot override code-owned product fields/options/limits', () => {
+  const data = datasource();
+  for (const field of data.children.results) { field.label.jsonValue.value = 'CMS override'; field.options.jsonValue.value = '[]'; field.maxLength.jsonValue.value = '1'; }
+  assert.deepEqual(formDefinitions('product-contact', data.children.results), formDefinitions('product-contact'));
 });
 
 for (const key of ['product-contact', 'new-york-product-contact']) test(`${key}: malformed native choices cannot erase, merge or manufacture blank options`, () => {
@@ -134,7 +130,7 @@ function harness(key='product-contact', params={}) {
  const Component=sourceLoader({react:hooks,'@sitecore-content-sdk/nextjs':sdk})(path.join(formRoot,'ProductContactForm.props.tsx')).default;
  function nodes(node=tree){if(Array.isArray(node))return node.flatMap((child)=>nodes(child??null));if(!React.isValidElement(node))return[];return[node,...nodes(node.props.children??null)];}
  function text(node=tree){if(Array.isArray(node))return node.map((child)=>text(child??null)).join('');if(node==null||typeof node==='boolean')return'';if(!React.isValidElement(node))return String(node);if(node.type===sdk.Text||node.type===sdk.RichText)return node.props.field?.value||'';return text(node.props.children??null);}
- function render(){cursor=0;refCursor=0;tree=Component({fields:{data:{datasource:data}},params});for(const n of nodes())if(n.props.ref)n.props.ref.current={focus:()=>focus.push(n.props.id||n.type),querySelector:(s)=>({focus:()=>focus.push(s)})};while(pendingFrames.length)pendingFrames.shift()();return tree;}
+ function render(){cursor=0;refCursor=0;tree=Component({config:configFor(key),params});for(const n of nodes())if(n.props.ref)n.props.ref.current={focus:()=>focus.push(n.props.id||n.type),querySelector:(s)=>({focus:()=>focus.push(s)})};while(pendingFrames.length)pendingFrames.shift()();return tree;}
  function find(fn){const n=nodes().find(fn);assert.ok(n,'expected element');return n;}
  function click(label){find((n)=>n.type==='button'&&text(n)===label).props.onClick();render();}
  function change(name,value,checked=true){find((n)=>n.props.name===name).props.onChange({target:{value,checked}});render();}

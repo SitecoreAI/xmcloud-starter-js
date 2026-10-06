@@ -7,7 +7,7 @@ import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { allianzLinkField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { safeLinkRenderProps } from 'lib/allianz-fields';
 import {
-  DOCUMENT_SERVICE_TEXT_FIELDS, documentServiceFields, documentSocialClass, toggleDocumentRailPanel,
+  DOCUMENT_LOGIN_COPY, DOCUMENT_LOGIN_FIELDS, DOCUMENT_SERVICE_TEXT_FIELDS, documentServiceFields, documentSocialClass, toggleDocumentRailPanel,
   type DocumentRailPanel, type DocumentServicesProps, type DocumentServicesViewProps,
   type DocumentServiceTextField,
 } from './allianz-legacy-document-services.props';
@@ -21,7 +21,7 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
   const [panel, setPanel] = useState<DocumentRailPanel>(null);
   const [notice, setNotice] = useState('');
   const raw = fields?.data?.datasource;
-  const data = raw && documentServiceFields(raw, [...DOCUMENT_SERVICE_TEXT_FIELDS, 'contactLink']);
+  const data = raw && { ...documentServiceFields(raw, [...DOCUMENT_SERVICE_TEXT_FIELDS, 'contactLink']), ...DOCUMENT_LOGIN_FIELDS };
   const accountId = `${instanceId}-account`;
   const socialId = `${instanceId}-social`;
   const noticeId = `${instanceId}-notice`;
@@ -46,7 +46,7 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
   if (!data) return <NoDataFallback componentName="AllianzLegacyDocumentServices" />;
   const visible = (name: DocumentServiceTextField) => shouldRenderTextField(data[name]?.jsonValue, isEditing);
   const text = (name: DocumentServiceTextField, tag?: string, className?: string) =>
-    visible(name) ? <Text editable={isEditing} field={data[name]?.jsonValue} tag={tag} className={className} /> : null;
+    visible(name) ? <Text editable={isEditing && !(name in DOCUMENT_LOGIN_COPY)} field={data[name]?.jsonValue} tag={tag} className={className} /> : null;
   const value = (name: DocumentServiceTextField) => data[name]?.jsonValue?.value || '';
   const toggle = (requested: Exclude<DocumentRailPanel, null>, control: HTMLButtonElement) => {
     if (isEditing) return;

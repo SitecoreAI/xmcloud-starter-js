@@ -88,7 +88,7 @@ function fixture(source, editing = false, id = '81', resolvedKeys = false) {
   add('disclosure', child('LegalDisclosures', 'Legacy', { body: field('body', source.disclosure, 'test-only-disclosure', 'Rich Text') }, 'test-only-disclosure'));
   const params = { FieldNames: 'LegacyProductDocument', DynamicPlaceholderId: id };
   const page = { mode: { isEditing: editing, isNormal: !editing, isPreview: false }, siteName: 'allianz-life',
-    layout: { sitecore: { context: {}, route: { name: source.key, fields: {}, placeholders: {} } } } };
+    layout: { sitecore: { context: { itemPath: source.route }, route: { name: source.key, fields: {}, placeholders: {} } } } };
   // Existing read-back table/row IDs are test assertions only; no new native identity is invented.
   const automatic = { [source.table.uid]: { automaticDocuments: { complete: true, status: 'ready',
     items: source.table.rows.map((row) => ({ id: row.nativeId,

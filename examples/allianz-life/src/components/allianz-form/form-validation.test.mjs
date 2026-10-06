@@ -43,7 +43,7 @@ assert.ok(validateForm(contactShown, { ...contactValues, 'ContactInfo.Email': ''
 assert.ok(validateForm(contactShown, { ...contactValues, 'ContactInfo.Phone': '123' }, 'new-york-contact')['ContactInfo.Phone']);
 assert.ok(validateForm(contactShown, { ...contactValues, 'ContactInfo.ZipCode': 'bad' }, 'new-york-contact')['ContactInfo.ZipCode']);
 assert.ok(visibleDefinitions('new-york-contact', contact, { ...contactValues, 'ContactUsReason.SelectedReason': 'SellProducts' }, 1).some((field) => field.name === 'SelectFirm.SelectedFirm'));
-assert.ok(!formDefinitions('generic', [{ id: 'excluded', name: { jsonValue: { value: 'password' } }, inputType: { jsonValue: { value: 'password' } } }]).length, 'credential controls cannot render');
+assert.deepEqual(formDefinitions('generic', [{ id: 'excluded', name: { jsonValue: { value: 'password' } }, inputType: { jsonValue: { value: 'password' } } }]), formDefinitions('generic'), 'CMS cannot introduce credential controls');
 const { searchPublicRoutes } = load(new URL('../allianz-search/search-rules.props.ts', import.meta.url));
 const entries = [{ path: '/what-we-offer/annuities', title: 'Annuities', description: 'Retirement income' }, { path: '/new-york/annuities', title: 'New York annuities', description: 'Retirement options' }];
 assert.equal(searchPublicRoutes(entries, 'retirement income').length, 1, 'all terms must match');

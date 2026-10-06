@@ -9,21 +9,7 @@ SharedFields:
   Value: "AllianzForm"
 - ID: "17bb046a-a32a-41b3-8315-81217947611b"
   Hint: ComponentQuery
-  Value: |
-    query AllianzFormQuery($datasource: String!, $language: String!) {
-      datasource: item(path: $datasource, language: $language) {
-        id
-        fieldCollection: fields { name jsonValue }
-        children(first: 48) {
-          total
-          pageInfo { hasNext endCursor }
-          results {
-            id
-            fieldCollection: fields { name jsonValue }
-          }
-        }
-      }
-    }
+  Value: ""
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
   Value: "/sitecore/templates/Project/Allianz Life/Components/AllianzForm"
