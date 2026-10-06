@@ -9,7 +9,8 @@ export default function ServiceUnavailable() {
   useEffect(() => {
     const click = (event: MouseEvent) => {
       const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('a[href$="#service-unavailable"],a[href$="#demo-unavailable"]');
-      if (!link) return;
+      // React and this listener can share document; stopPropagation alone does not isolate local dialogs.
+      if (!link || link.getAttribute('data-allianz-local-service-dialog') === 'true') return;
       event.preventDefault();
       previous.current = link;
       setLabel(link.textContent?.trim() || link.getAttribute('aria-label') || 'Online service');

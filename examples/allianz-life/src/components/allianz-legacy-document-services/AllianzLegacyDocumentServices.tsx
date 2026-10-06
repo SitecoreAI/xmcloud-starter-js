@@ -55,7 +55,7 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
   };
   const openNotice = (event: MouseEvent<HTMLElement>, label: string) => {
     if (isEditing) { event.preventDefault(); return; }
-    // Prevent the page-wide unavailable-link listener from opening a second dialog.
+    // Local dialog ownership is also marked on social links for the document listener.
     event.preventDefault();
     event.stopPropagation();
     event.currentTarget.focus();
@@ -142,12 +142,13 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
                 if (!shouldRenderLinkField(nativeLink, isEditing) || (!isEditing && !item.heading?.jsonValue?.value && !nativeLink?.value?.text)) return null;
                 const normalized = allianzLinkField(nativeLink, false);
                 const rendered = safeLinkRenderProps(normalized);
+                const opensLocalNotice = normalized.value.href?.endsWith('#service-unavailable');
                 return <li key={item.id} className={documentSocialClass(nativeLink?.value?.href)}>
                   {isEditing ? <>
                     {shouldRenderTextField(item.heading?.jsonValue, true) && <Text editable field={item.heading?.jsonValue} />}
                     <Link editable field={allianzLinkField(nativeLink, true)} />
-                  </> : <Link editable={false} {...rendered} onClick={(event) => {
-                    if (normalized.value.href?.endsWith('#service-unavailable')) openNotice(event, item.heading?.jsonValue?.value || nativeLink?.value?.text || 'Social');
+                  </> : <Link editable={false} {...rendered} data-allianz-local-service-dialog={opensLocalNotice ? 'true' : undefined} onClick={(event) => {
+                    if (opensLocalNotice) openNotice(event, item.heading?.jsonValue?.value || nativeLink?.value?.text || 'Social');
                   }}>
                     {shouldRenderTextField(item.heading?.jsonValue, false)
                       ? <Text editable={false} field={item.heading?.jsonValue} /> : nativeLink?.value?.text}
