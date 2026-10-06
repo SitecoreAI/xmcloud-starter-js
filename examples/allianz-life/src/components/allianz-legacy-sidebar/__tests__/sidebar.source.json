@@ -1,0 +1,604 @@
+[
+  {
+    "key": "route01",
+    "route": "/new-york/annuities/investment-strategies/shareholder-reports",
+    "sourceUrl": "https://www.allianzlife.com/new-york/annuities/investment-strategies/shareholder-reports",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route01.html",
+    "captureSha256": "c3acb6db40ecbf0f5c8ce8b12315c8a26f83183530786836ffafd1b80a4d0cf9",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/New-York/annuities\" class=\"link-dropdown\">Annuities</a>\r\n            <a href=\"/New-York/annuities\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n                        <li testid=settingsLink-registered-index-linked-annuities>\r\n                               <a  href=\"/New-York/annuities/registered-index-linked-annuities\"    >Registered Index-Linked Annuities</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-investment-strategies>\r\n                               <a  href=\"/New-York/annuities/investment-strategies\"    >Investment Strategies</a>\r\n\r\n\r\n                                    <ul>\r\n                                            <li>\r\n   <a  href=\"/New-York/annuities/investment-strategies/variable-options\"    >Allianz Life of NY Variable Options</a>\r\n                                            </li>\r\n                                            <li class=\"active\">\r\n   <a class=\"current\" href=\"/New-York/annuities/investment-strategies/shareholder-reports\"    >Shareholder Reports</a>\r\n                                            </li>\r\n                                    </ul>\r\n                        </li>\r\n                        <li testid=settingsLink-Prospectuses>\r\n                               <a  href=\"/New-York/annuities/Prospectuses\"    >Prospectuses</a>\r\n\r\n                        </li>\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "9725345f31a069fad28fe966c12548c23868dfc50eac1b37e58e3c8741f42ffa",
+    "groups": [
+      {
+        "text": "Annuities",
+        "href": "/New-York/annuities",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": [
+          {
+            "text": "Registered Index-Linked Annuities",
+            "href": "/New-York/annuities/registered-index-linked-annuities",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Investment Strategies",
+            "href": "/New-York/annuities/investment-strategies",
+            "anchorClass": "",
+            "liClass": "",
+            "children": [
+              {
+                "text": "Allianz Life of NY Variable Options",
+                "href": "/New-York/annuities/investment-strategies/variable-options",
+                "anchorClass": "",
+                "liClass": "",
+                "children": []
+              },
+              {
+                "text": "Shareholder Reports",
+                "href": "/New-York/annuities/investment-strategies/shareholder-reports",
+                "anchorClass": "current",
+                "liClass": "active",
+                "children": []
+              }
+            ]
+          },
+          {
+            "text": "Prospectuses",
+            "href": "/New-York/annuities/Prospectuses",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "route02",
+    "route": "/new-york/annuities/past-prospectus-allianz-index-advantage-new-york",
+    "sourceUrl": "https://www.allianzlife.com/new-york/annuities/past-prospectus-allianz-index-advantage-new-york",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route02.html",
+    "captureSha256": "379c120d4dba1ce3f66ab8543c77a1635e25475ef4f1785917b59ddbeaf4e960",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/New-York/annuities\" class=\"link-dropdown\">Annuities</a>\r\n            <a href=\"/New-York/annuities\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n                        <li testid=settingsLink-registered-index-linked-annuities>\r\n                               <a  href=\"/New-York/annuities/registered-index-linked-annuities\"    >Registered Index-Linked Annuities</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-investment-strategies>\r\n                               <a  href=\"/New-York/annuities/investment-strategies\"    >Investment Strategies</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-Prospectuses>\r\n                               <a  href=\"/New-York/annuities/Prospectuses\"    >Prospectuses</a>\r\n\r\n                        </li>\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "861d363159c07fc2f69b5331cbb7c6d497d5a40b6e2dacb499b01d017d1c1e2f",
+    "groups": [
+      {
+        "text": "Annuities",
+        "href": "/New-York/annuities",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": [
+          {
+            "text": "Registered Index-Linked Annuities",
+            "href": "/New-York/annuities/registered-index-linked-annuities",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Investment Strategies",
+            "href": "/New-York/annuities/investment-strategies",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Prospectuses",
+            "href": "/New-York/annuities/Prospectuses",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "route04",
+    "route": "/new-york/annuities/prospectuses/allianz-index-advantage-new-york",
+    "sourceUrl": "https://www.allianzlife.com/new-york/annuities/prospectuses/allianz-index-advantage-new-york",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route04.html",
+    "captureSha256": "3859149996841c02914b538e11633ade601269f23daa1bc810c3bbc5bab96aee",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/New-York/annuities\" class=\"link-dropdown\">Annuities</a>\r\n            <a href=\"/New-York/annuities\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n                        <li testid=settingsLink-registered-index-linked-annuities>\r\n                               <a  href=\"/New-York/annuities/registered-index-linked-annuities\"    >Registered Index-Linked Annuities</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-investment-strategies>\r\n                               <a  href=\"/New-York/annuities/investment-strategies\"    >Investment Strategies</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-Prospectuses class=\"active\">\r\n                               <a  href=\"/New-York/annuities/Prospectuses\"    >Prospectuses</a>\r\n\r\n\r\n                        </li>\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "da0fe8174010b4f2c53f683182ed24fe53c0f989ecbbccc9bb6f2b8c3a6337ba",
+    "groups": [
+      {
+        "text": "Annuities",
+        "href": "/New-York/annuities",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": [
+          {
+            "text": "Registered Index-Linked Annuities",
+            "href": "/New-York/annuities/registered-index-linked-annuities",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Investment Strategies",
+            "href": "/New-York/annuities/investment-strategies",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Prospectuses",
+            "href": "/New-York/annuities/Prospectuses",
+            "anchorClass": "",
+            "liClass": "active",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "route05",
+    "route": "/new-york/annuities/prospectuses/allianz-index-advantage-plus-new-york",
+    "sourceUrl": "https://www.allianzlife.com/new-york/annuities/prospectuses/allianz-index-advantage-plus-new-york",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route05.html",
+    "captureSha256": "83c7fb4cdef5a1d5e656f0a2af627f83b90033efd22375a1d51542403887f5b6",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/New-York/annuities\" class=\"link-dropdown\">Annuities</a>\r\n            <a href=\"/New-York/annuities\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n                        <li testid=settingsLink-registered-index-linked-annuities>\r\n                               <a  href=\"/New-York/annuities/registered-index-linked-annuities\"    >Registered Index-Linked Annuities</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-investment-strategies>\r\n                               <a  href=\"/New-York/annuities/investment-strategies\"    >Investment Strategies</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-Prospectuses class=\"active\">\r\n                               <a  href=\"/New-York/annuities/Prospectuses\"    >Prospectuses</a>\r\n\r\n\r\n                        </li>\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "da0fe8174010b4f2c53f683182ed24fe53c0f989ecbbccc9bb6f2b8c3a6337ba",
+    "groups": [
+      {
+        "text": "Annuities",
+        "href": "/New-York/annuities",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": [
+          {
+            "text": "Registered Index-Linked Annuities",
+            "href": "/New-York/annuities/registered-index-linked-annuities",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Investment Strategies",
+            "href": "/New-York/annuities/investment-strategies",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Prospectuses",
+            "href": "/New-York/annuities/Prospectuses",
+            "anchorClass": "",
+            "liClass": "active",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "route06",
+    "route": "/new-york/annuities/prospectuses/allianz-vision-new-york",
+    "sourceUrl": "https://www.allianzlife.com/new-york/annuities/prospectuses/allianz-vision-new-york",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route06.html",
+    "captureSha256": "8b3ced64a6625381282400da6a36f41b0b5514d14f220b0f58ae0bd9b06421fc",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/New-York/annuities\" class=\"link-dropdown\">Annuities</a>\r\n            <a href=\"/New-York/annuities\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n                        <li testid=settingsLink-registered-index-linked-annuities>\r\n                               <a  href=\"/New-York/annuities/registered-index-linked-annuities\"    >Registered Index-Linked Annuities</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-investment-strategies>\r\n                               <a  href=\"/New-York/annuities/investment-strategies\"    >Investment Strategies</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-Prospectuses class=\"active\">\r\n                               <a  href=\"/New-York/annuities/Prospectuses\"    >Prospectuses</a>\r\n\r\n\r\n                        </li>\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "da0fe8174010b4f2c53f683182ed24fe53c0f989ecbbccc9bb6f2b8c3a6337ba",
+    "groups": [
+      {
+        "text": "Annuities",
+        "href": "/New-York/annuities",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": [
+          {
+            "text": "Registered Index-Linked Annuities",
+            "href": "/New-York/annuities/registered-index-linked-annuities",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Investment Strategies",
+            "href": "/New-York/annuities/investment-strategies",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Prospectuses",
+            "href": "/New-York/annuities/Prospectuses",
+            "anchorClass": "",
+            "liClass": "active",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "route07",
+    "route": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus",
+    "sourceUrl": "https://www.allianzlife.com/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route07.html",
+    "captureSha256": "57981acdf41b700a580860c66af9175d1839c60e2d0cdf23dc49c408ec1c6ecb",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/New-York/annuities\" class=\"link-dropdown\">Annuities</a>\r\n            <a href=\"/New-York/annuities\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n                        <li testid=settingsLink-registered-index-linked-annuities>\r\n                               <a  href=\"/New-York/annuities/registered-index-linked-annuities\"    >Registered Index-Linked Annuities</a>\r\n\r\n\r\n                                    <ul>\r\n                                            <li>\r\n   <a  href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york\"    >Index Advantage+ New York</a>\r\n                                                        <ul>\r\n                                                                <li>\r\n                                                                       <a  href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/rates-inyp\"    >Rates</a>\r\n\r\n                                                                </li>\r\n                                                                <li>\r\n                                                                       <a  href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/video\"    >Video</a>\r\n\r\n                                                                </li>\r\n                                                                <li>\r\n                                                                       <a  href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator\"    >Calculator</a>\r\n\r\n                                                                </li>\r\n                                                                <li class=\"active\">\r\n                                                                       <a class=\"current\" href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus\"    >Prospectus</a>\r\n\r\n                                                                </li>\r\n                                                        </ul>\r\n                                            </li>\r\n                                    </ul>\r\n                        </li>\r\n                        <li testid=settingsLink-investment-strategies>\r\n                               <a  href=\"/New-York/annuities/investment-strategies\"    >Investment Strategies</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-Prospectuses>\r\n                               <a  href=\"/New-York/annuities/Prospectuses\"    >Prospectuses</a>\r\n\r\n                        </li>\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "3e988f78fc2b32693907bc9ab5e7e94b2b978d723346e41e8cec45c29164801b",
+    "groups": [
+      {
+        "text": "Annuities",
+        "href": "/New-York/annuities",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": [
+          {
+            "text": "Registered Index-Linked Annuities",
+            "href": "/New-York/annuities/registered-index-linked-annuities",
+            "anchorClass": "",
+            "liClass": "",
+            "children": [
+              {
+                "text": "Index Advantage+ New York",
+                "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+                "anchorClass": "",
+                "liClass": "",
+                "children": [
+                  {
+                    "text": "Rates",
+                    "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/rates-inyp",
+                    "anchorClass": "",
+                    "liClass": "",
+                    "children": []
+                  },
+                  {
+                    "text": "Video",
+                    "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/video",
+                    "anchorClass": "",
+                    "liClass": "",
+                    "children": []
+                  },
+                  {
+                    "text": "Calculator",
+                    "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator",
+                    "anchorClass": "",
+                    "liClass": "",
+                    "children": []
+                  },
+                  {
+                    "text": "Prospectus",
+                    "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus",
+                    "anchorClass": "current",
+                    "liClass": "active",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Investment Strategies",
+            "href": "/New-York/annuities/investment-strategies",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Prospectuses",
+            "href": "/New-York/annuities/Prospectuses",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "route19",
+    "route": "/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus",
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route19.html",
+    "captureSha256": "644422c4b63dd51e012da1b70745f0db3475d19afa1276dc7d09ee3702721329",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n</ul>",
+    "sidebarSha256": "7e32fa99b2ee554a413b758c3cf39f479bceab80c46cf95369cecc7fb4d8c992",
+    "groups": []
+  },
+  {
+    "key": "route20",
+    "route": "/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus-income",
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus-income",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route20.html",
+    "captureSha256": "98a9e117d1f6f7f073afb815211ad37ebf381a09f943e2e632ca94a3959d0303",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n</ul>",
+    "sidebarSha256": "7e32fa99b2ee554a413b758c3cf39f479bceab80c46cf95369cecc7fb4d8c992",
+    "groups": []
+  },
+  {
+    "key": "route21",
+    "route": "/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus-nf",
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/prospectuses/allianz-index-advantage-plus-nf",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route21.html",
+    "captureSha256": "641af0f21f32b22ba34714bb9e56d5b6ce55f0ef5e51606b053b2648b1ef7781",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n</ul>",
+    "sidebarSha256": "7e32fa99b2ee554a413b758c3cf39f479bceab80c46cf95369cecc7fb4d8c992",
+    "groups": []
+  },
+  {
+    "key": "route25",
+    "route": "/what-we-offer/annuities/prospectuses/index-advantage-plus-select-income",
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/prospectuses/index-advantage-plus-select-income",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route25.html",
+    "captureSha256": "dbaedb76ae8e6a303f0ba775e8def80d9ae6d0242ff1567e1961101446b2984b",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n</ul>",
+    "sidebarSha256": "7e32fa99b2ee554a413b758c3cf39f479bceab80c46cf95369cecc7fb4d8c992",
+    "groups": []
+  },
+  {
+    "key": "route26",
+    "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus",
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route26.html",
+    "captureSha256": "560a6007dbf1125b0aade63a99d65c5b2f024c3397569d76ae8833bf9024d290",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus\" class=\"link-dropdown\">Prospectus</a>\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "97ae2f114aa43cae260af288b6be716f6edee507bc8a8582d443b105f89eecd0",
+    "groups": [
+      {
+        "text": "Prospectus",
+        "href": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/prospectus",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": []
+      }
+    ]
+  },
+  {
+    "key": "route27",
+    "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus",
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route27.html",
+    "captureSha256": "fd4d325201b5b09035de6d3cd8b4ccc008da0b83508f52070089d36a2b23d4ae",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus\" class=\"link-dropdown\">Prospectus</a>\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "df34eb95cec39e2527e76ca3bbe5820983efe371a69396de60551c06b5195b6b",
+    "groups": [
+      {
+        "text": "Prospectus",
+        "href": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/prospectus",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": []
+      }
+    ]
+  },
+  {
+    "key": "route28",
+    "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus",
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route28.html",
+    "captureSha256": "1867ec8c99a477e1ab601f5df39af4716e4cb4fd6cf731caef503c02841e72e2",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus\" class=\"link-dropdown\">Prospectus</a>\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "ce8b836943cdcad211b3ce2c69bd1650c2b4896108a3c1e6e6ca0aacd124403b",
+    "groups": [
+      {
+        "text": "Prospectus",
+        "href": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": []
+      }
+    ]
+  },
+  {
+    "key": "route29",
+    "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus",
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route29.html",
+    "captureSha256": "87785e6ca0114b851b37c4c3d80e1dd4da0a9cf38d0ce15212acb9d8de6e11e4",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus\" class=\"link-dropdown\">Prospectus</a>\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "07c5faaf9fd459d5f95e132f411a59762d7a7dab2344d4ae0ab27f4dc746757a",
+    "groups": [
+      {
+        "text": "Prospectus",
+        "href": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/prospectus",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": []
+      }
+    ]
+  },
+  {
+    "key": "route30",
+    "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+    "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+    "capturePath": "static-migration-current/document30-completion-preparation/fresh-source/route30.html",
+    "captureSha256": "a14eef9c02e166aa29abf10ac0af34315a9b0abe4a173d9b871af890eec774a1",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus\" class=\"link-dropdown\">Prospectus</a>\r\n            <a href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "3d88470864224781485356c7ce9b72c3ce0918e84bff8851f393c4400c8167ba",
+    "groups": [
+      {
+        "text": "Prospectus",
+        "href": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": []
+      }
+    ]
+  },
+  {
+    "key": "current-parent-1",
+    "route": "/new-york/annuities/investment-strategies",
+    "sourceUrl": "https://www.allianzlife.com/New-York/annuities/investment-strategies?",
+    "capturePath": "audit-remaining/extracted/Allianz-Life-Research-QA/discovery/public-site/html/bbaefe9701faeb8c.html",
+    "captureSha256": "40c2063c32348a25058880016075cd9c0ab7298fc54b9f22ffe13a5aecbefbc9",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/New-York/annuities\" class=\"link-dropdown\">Annuities</a>\r\n            <a href=\"/New-York/annuities\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n                        <li testid=settingsLink-registered-index-linked-annuities>\r\n                               <a  href=\"/New-York/annuities/registered-index-linked-annuities\"    >Registered Index-Linked Annuities</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-investment-strategies class=\"active\">\r\n                               <a class=\"current\" href=\"/New-York/annuities/investment-strategies\"    >Investment Strategies</a>\r\n\r\n\r\n                                    <ul>\r\n                                            <li>\r\n   <a  href=\"/New-York/annuities/investment-strategies/variable-options\"    >Allianz Life of NY Variable Options</a>\r\n                                            </li>\r\n                                            <li>\r\n   <a  href=\"/New-York/annuities/investment-strategies/shareholder-reports\"    >Shareholder Reports</a>\r\n                                            </li>\r\n                                    </ul>\r\n                        </li>\r\n                        <li testid=settingsLink-Prospectuses>\r\n                               <a  href=\"/New-York/annuities/Prospectuses\"    >Prospectuses</a>\r\n\r\n                        </li>\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "0e7463fd27b3461bf1922e42defbdbb01dc7716d00da10c8cda5bf8bf9641559",
+    "groups": [
+      {
+        "text": "Annuities",
+        "href": "/New-York/annuities",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": [
+          {
+            "text": "Registered Index-Linked Annuities",
+            "href": "/New-York/annuities/registered-index-linked-annuities",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Investment Strategies",
+            "href": "/New-York/annuities/investment-strategies",
+            "anchorClass": "current",
+            "liClass": "active",
+            "children": [
+              {
+                "text": "Allianz Life of NY Variable Options",
+                "href": "/New-York/annuities/investment-strategies/variable-options",
+                "anchorClass": "",
+                "liClass": "",
+                "children": []
+              },
+              {
+                "text": "Shareholder Reports",
+                "href": "/New-York/annuities/investment-strategies/shareholder-reports",
+                "anchorClass": "",
+                "liClass": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "text": "Prospectuses",
+            "href": "/New-York/annuities/Prospectuses",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "current-parent-2",
+    "route": "/new-york/annuities/registered-index-linked-annuities",
+    "sourceUrl": "https://www.allianzlife.com/New-York/annuities/registered-index-linked-annuities?",
+    "capturePath": "audit-remaining/extracted/Allianz-Life-Research-QA/discovery/public-site/html/0ebf8fcc1b5f0dd5.html",
+    "captureSha256": "436417eedb60dc5c03122f2742dfc7ff6720ee212c9bdf547fb8952412ea0793",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/New-York/annuities\" class=\"link-dropdown\">Annuities</a>\r\n            <a href=\"/New-York/annuities\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n                        <li testid=settingsLink-registered-index-linked-annuities class=\"active\">\r\n                               <a class=\"current\" href=\"/New-York/annuities/registered-index-linked-annuities\"    >Registered Index-Linked Annuities</a>\r\n\r\n\r\n                                    <ul>\r\n                                            <li>\r\n   <a  href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york\"    >Index Advantage+ New York</a>\r\n                                            </li>\r\n                                    </ul>\r\n                        </li>\r\n                        <li testid=settingsLink-investment-strategies>\r\n                               <a  href=\"/New-York/annuities/investment-strategies\"    >Investment Strategies</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-Prospectuses>\r\n                               <a  href=\"/New-York/annuities/Prospectuses\"    >Prospectuses</a>\r\n\r\n                        </li>\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "66fc2744b84c9c892ca0501a10e11d4d8b707b29fc70980dea9d8074113485a6",
+    "groups": [
+      {
+        "text": "Annuities",
+        "href": "/New-York/annuities",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": [
+          {
+            "text": "Registered Index-Linked Annuities",
+            "href": "/New-York/annuities/registered-index-linked-annuities",
+            "anchorClass": "current",
+            "liClass": "active",
+            "children": [
+              {
+                "text": "Index Advantage+ New York",
+                "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+                "anchorClass": "",
+                "liClass": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "text": "Investment Strategies",
+            "href": "/New-York/annuities/investment-strategies",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Prospectuses",
+            "href": "/New-York/annuities/Prospectuses",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "current-parent-3",
+    "route": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+    "sourceUrl": "https://www.allianzlife.com/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york?",
+    "capturePath": "audit-remaining/extracted/Allianz-Life-Research-QA/discovery/public-site/html/76bc2a33f6ec25ce.html",
+    "captureSha256": "9b70a099e110e0b4b0fa0198d9606c9512466f6f93f9021ab156abae0045fa1d",
+    "sidebarHtml": "<ul class=\"nav navbar-nav left-nav\">\r\n        <li class=\"dropdown\">\r\n            <a href=\"/New-York/annuities\" class=\"link-dropdown\">Annuities</a>\r\n            <a href=\"/New-York/annuities\" class=\"dropdown-toggle visible-xs\" data-toggle=\"dropdown\"><span class=\"fa fa-plus\"></span></a>\r\n            <ul class=\"dropdown-menu\" role=\"menu\">\r\n                        <li testid=settingsLink-registered-index-linked-annuities>\r\n                               <a  href=\"/New-York/annuities/registered-index-linked-annuities\"    >Registered Index-Linked Annuities</a>\r\n\r\n\r\n                                    <ul>\r\n                                            <li class=\"active\">\r\n   <a class=\"current\" href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york\"    >Index Advantage+ New York</a>\r\n                                                        <ul>\r\n                                                                <li>\r\n                                                                       <a  href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/rates-inyp\"    >Rates</a>\r\n\r\n                                                                </li>\r\n                                                                <li>\r\n                                                                       <a  href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/video\"    >Video</a>\r\n\r\n                                                                </li>\r\n                                                                <li>\r\n                                                                       <a  href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator\"    >Calculator</a>\r\n\r\n                                                                </li>\r\n                                                                <li>\r\n                                                                       <a  href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus\"    >Prospectus</a>\r\n\r\n                                                                </li>\r\n                                                        </ul>\r\n                                            </li>\r\n                                    </ul>\r\n                        </li>\r\n                        <li testid=settingsLink-investment-strategies>\r\n                               <a  href=\"/New-York/annuities/investment-strategies\"    >Investment Strategies</a>\r\n\r\n                        </li>\r\n                        <li testid=settingsLink-Prospectuses>\r\n                               <a  href=\"/New-York/annuities/Prospectuses\"    >Prospectuses</a>\r\n\r\n                        </li>\r\n            </ul>\r\n        </li>      \r\n</ul>",
+    "sidebarSha256": "e5d1646d99329e60d170e7df64985cbdd1605422c6098b155d1272df6a65ce93",
+    "groups": [
+      {
+        "text": "Annuities",
+        "href": "/New-York/annuities",
+        "anchorClass": "link-dropdown",
+        "liClass": "dropdown",
+        "children": [
+          {
+            "text": "Registered Index-Linked Annuities",
+            "href": "/New-York/annuities/registered-index-linked-annuities",
+            "anchorClass": "",
+            "liClass": "",
+            "children": [
+              {
+                "text": "Index Advantage+ New York",
+                "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+                "anchorClass": "current",
+                "liClass": "active",
+                "children": [
+                  {
+                    "text": "Rates",
+                    "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/rates-inyp",
+                    "anchorClass": "",
+                    "liClass": "",
+                    "children": []
+                  },
+                  {
+                    "text": "Video",
+                    "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/video",
+                    "anchorClass": "",
+                    "liClass": "",
+                    "children": []
+                  },
+                  {
+                    "text": "Calculator",
+                    "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator",
+                    "anchorClass": "",
+                    "liClass": "",
+                    "children": []
+                  },
+                  {
+                    "text": "Prospectus",
+                    "href": "/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/prospectus",
+                    "anchorClass": "",
+                    "liClass": "",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Investment Strategies",
+            "href": "/New-York/annuities/investment-strategies",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          },
+          {
+            "text": "Prospectuses",
+            "href": "/New-York/annuities/Prospectuses",
+            "anchorClass": "",
+            "liClass": "",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

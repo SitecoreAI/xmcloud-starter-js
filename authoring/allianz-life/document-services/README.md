@@ -28,7 +28,7 @@ Production authentication scripts, forms, handlers, registration/recovery URLs, 
 
 ## Native reads before any activation
 
-Publication remains held. Do not register or bind this code until the designated browser owner verifies it is available in both public delivery and the existing editing host for `thlt-allianz-demo/dev`.
+Before binding or changing each target, verify that the required source exports are available in both public delivery and the existing editing host for `thlt-allianz-demo/dev`, then freshly read the target native state. Existing renderings, variants, datasources, and page bindings may already be active; reconcile verified existing items rather than recreating them.
 
 Freshly read the current state before every native change:
 
@@ -44,7 +44,11 @@ Do not write historical layout XML, archived IDs, fixture IDs or source hashes i
 
 `native-activation.json` enumerates the root native fields and types. Most are Single-Line Text; `socialBody` is Multi-Line Text; `contactLink` is General Link. This purpose-specific datasource may reuse verified native `AllianzLinkListEntry` children because only editable `heading` and `link` fields are needed. Confirm the current child schema and insert options first. Do not modify the existing LinkList template or its shared rendering query.
 
-Use `AllianzLegacyDocumentServices.graphql` as the proposed integrated query. Its aliases exactly match the component fields and every text/link is returned via `jsonValue` so SDK metadata is retained. The child query must return `total` and `pageInfo { hasNext }` as well as `results`; connected Layout fails closed for the entire page when either metadata field is absent. The child query has a finite capacity of 20; native activation requires exactly the four source social children in verified `__Sortorder` 100/200/300/400 order, with no pagination or truncation. A query-only count of four does not establish sibling order; verify native order and returned order. Current query execution and returned metadata remain a native acceptance gate.
+`AllianzLegacyDocumentServices.graphql` mirrors the complete accepted native integrated query captured on 2026-10-06 at 12:06 UTC for rendering `C2CB5F96-618A-4400-997C-EC0095D5F90B`. Its exact UTF-8 SHA256 is `c59824d8ad5b8d2d189b7027f9306105056baf8ddcd0c8108fc6bae935fefdba`; the single-line file deliberately has no trailing newline so its bytes match that native receipt.
+
+Keep the root `id` and `fieldCollection: fields { name jsonValue }`. The existing component helper maps collection entries to the component's named fields while retaining each SDK `jsonValue` and its metadata; no runtime component change is required. This complete projection is the accepted query for both `Default` and `LoginWidget`. The earlier repeated 16 named-field root projection failed native execution; do not restore it as the activation query. The evidence does not establish an exact complexity cost or failure cause.
+
+Preserve `children(first: 20)`, `total`, `pageInfo { hasNext }`, and each child's `id`, `heading: field(name: "heading") { jsonValue }`, and `link: field(name: "link") { jsonValue }`. Connected Layout fails closed for the entire page when either collection metadata field is absent. The child query has a finite capacity of 20; native activation requires exactly the four source social children in verified `__Sortorder` 100/200/300/400 order, with no pagination or truncation. A query-only count of four does not establish sibling order; verify native order and returned order. Re-read the current rendering query before any later native change; this source reconciliation does not authorize overwriting newer native edits or recreating existing items.
 
 Create/register the real variant entries with the exact exported names `Default` and `LoginWidget` under a group that explicitly associates with this new renderer. Resolve actual variant IDs into the existing site's `FieldNames` convention; do not assume export strings are native GUIDs. The generated component map should discover only `AllianzLegacyDocumentServices`, not the props helper, tests or fixture files.
 
