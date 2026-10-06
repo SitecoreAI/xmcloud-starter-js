@@ -10,6 +10,9 @@ const ts = require('typescript');
 const { SitecoreClient } = require('@sitecore-content-sdk/nextjs/client');
 const { PREVIEW_COOKIES } = require('@sitecore-content-sdk/nextjs/editing');
 const { DesignLibraryMode } = require('@sitecore-content-sdk/content/editing');
+const { getRouteMatcher } = require('next/dist/shared/lib/router/utils/route-matcher');
+const { getRouteRegex } = require('next/dist/shared/lib/router/utils/route-regex');
+const { getDynamicParam } = require('next/dist/shared/lib/router/utils/get-dynamic-param');
 const sourceRoot = fileURLToPath(new URL('..', import.meta.url));
 const routeFile = path.join(sourceRoot, 'app/[site]/[locale]/[[...path]]/page.tsx');
 
@@ -24,7 +27,7 @@ function layout(title, description) {
 }
 
 /** Exercise real SDK routing, editing-header parsing and FetchOptions forwarding. */
-function harness(t, { draft = false, connected = true, nodeEnv = 'test', contentMode = connected ? 'connected' : 'fixture', authorization, cookie, mode = 'edit', editingHeader = true, missing = false, error } = {}) {
+function harness(t, { draft = false, connected = true, nodeEnv = 'test', contentMode = connected ? 'connected' : 'fixture', authorization, cookie, mode = 'edit', editingHeader = true, missing = false, error, expectedContentPath } = {}) {
   const previousMode = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
   const previousNodeEnv = process.env.NODE_ENV;
   if (contentMode === null) delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
@@ -61,6 +64,9 @@ function harness(t, { draft = false, connected = true, nodeEnv = 'test', content
       const preview = fetchOptions?.headers?.sc_previewMode === 'true';
       calls.push({ backend: preview ? 'authoring-navigation' : 'delivery', contentPath, options, fetchOptions });
       if (error) throw error;
+      if (expectedContentPath !== undefined && contentPath !== expectedContentPath) {
+        return { sitecore: { ...deliveryLayout.sitecore, route: null } };
+      }
       return preview ? authoringLayout : deliveryLayout;
     } },
     async getData() { throw new Error('No automatic rendering exists in this layout fixture'); },
@@ -121,11 +127,95 @@ function harness(t, { draft = false, connected = true, nodeEnv = 'test', content
     }).outputText, filename);
     return compiled.exports;
   }
-  return { ...load(routeFile), ...load(path.join(sourceRoot, 'lib/allianz-page-loader.ts')), calls, requestReads, previewData };
+  return { ...load(routeFile), ...load(path.join(sourceRoot, 'lib/allianz-page-loader.ts')), ...load(path.join(sourceRoot, 'lib/allianz-page.ts')), calls, requestReads, previewData };
 }
 
 const props = (segments = ['products', 'annuities']) => ({ params: Promise.resolve({ site: 'allianz-life', locale: 'en', path: segments }) });
 const renderedPage = (element) => element.props.children.props.page;
+
+const pressPath = '/about/newsroom/2026-press-releases/allianz-life-invests-$750000-to-help-address-growing-housing-and-food-insecurity-in-the-twin-cities';
+const matchAppRoute = getRouteMatcher(getRouteRegex('/[site]/[locale]/[[...path]]'));
+
+for (const draft of [false, true]) {
+  for (const publicPath of [pressPath, pressPath.replace('$', '%24')]) {
+    test(`encoded press route resolves for page and metadata (draft=${draft}, url=${publicPath.includes('%24') ? 'encoded' : 'raw'})`, async (t) => {
+      // Use the installed Next.js matcher and page-param conversion, rather than
+      // assuming raw '$' requests produce decoded page params. Metadata receives
+      // the original interpolated params; page construction encodes them.
+      const matched = matchAppRoute(`/allianz-life/en${publicPath}`);
+      const pagePath = getDynamicParam(matched, 'path', 'oc', null, null).value;
+      assert.ok(pagePath.at(-1).includes('%24'));
+      assert.ok(matched.path.at(-1).includes('$'));
+      const h = harness(t, { draft, editingHeader: false, expectedContentPath: pressPath });
+      const element = await h.default(props(pagePath));
+      const metadata = await h.generateMetadata(props(matched.path));
+      assert.equal(metadata.title, renderedPage(element).layout.sitecore.route.fields.pageTitle.value);
+      assert.equal(metadata.alternates.canonical, `https://render-host.invalid${pressPath}`);
+      const reads = h.calls.filter((call) => call.backend !== 'component-props');
+      assert.ok(reads.length > 0);
+      for (const call of reads) {
+        assert.equal(call.contentPath, pressPath);
+        assert.equal(call.backend, draft ? 'authoring-navigation' : 'delivery');
+        assert.deepEqual(call.fetchOptions, draft ? { headers: { sc_previewMode: 'true', sc_site: 'allianz-life' } } : undefined);
+      }
+    });
+  }
+}
+
+for (const [name, publicSegment, nativeSegment] of [
+  ['literal percent dollar', 'literal-%2524', 'literal-%24'],
+  ['literal percent slash', 'literal-%252F', 'literal-%2F'],
+  ['literal percent Unicode', 'literal-%25C3%25A9', 'literal-%C3%A9'],
+  ['literal percent dot segments', '%252e%252e', '%2e%2e'],
+  ['Unicode', 'caf%C3%A9', 'café'],
+  ['raw Unicode and emoji', 'café-💶', 'café-💶'],
+  ['encoded Unicode and emoji', 'caf%C3%A9-%F0%9F%92%B6', 'café-💶'],
+  ['question hash and plus', 'what%3Ftag%23sum%2B', 'what?tag#sum+'],
+  ['encoded slash', 'section%2Fchild', 'section/child'],
+  ['literal malformed escape', 'broken-%25zz', 'broken-%zz'],
+  ['mixed dollar and malformed escape', 'cost%24-and-broken%25zz', 'cost$-and-broken%zz'],
+]) {
+  for (const mode of ['delivery', 'navigation', 'fixture']) {
+    test(`page and metadata agree on ${name} in ${mode}`, async (t) => {
+      const matched = matchAppRoute(`/allianz-life/en/about/${publicSegment}`);
+      const pagePath = getDynamicParam(matched, 'path', 'oc', null, null).value;
+      const expectedContentPath = `/about/${nativeSegment}`;
+      const h = harness(t, { draft: mode === 'navigation', editingHeader: false,
+        connected: mode !== 'fixture', expectedContentPath });
+      if (mode === 'fixture') {
+        h.fixtureContent.routes[expectedContentPath.toLowerCase()] = {
+          ...h.fixtureContent.routes['/'], title: `Native ${name}`, description: `Description ${name}`,
+        };
+      }
+      const originalPagePath = [...pagePath];
+      const originalMetadataPath = [...matched.path];
+      const element = await h.default(props(pagePath));
+      const metadata = await h.generateMetadata(props(matched.path));
+      const fields = renderedPage(element).layout.sitecore.route.fields;
+      assert.equal(metadata.title, mode === 'fixture' ? fields.Title.value : fields.pageTitle.value);
+      assert.deepEqual(pagePath, originalPagePath);
+      assert.deepEqual(matched.path, originalMetadataPath);
+      if (mode === 'fixture') {
+        assert.equal(metadata.title, `Native ${name}`);
+        assert.deepEqual(h.calls, []);
+      } else {
+        const reads = h.calls.filter((call) => call.backend !== 'component-props');
+        assert.ok(reads.length > 0);
+        for (const call of reads) assert.equal(call.contentPath, expectedContentPath);
+      }
+    });
+  }
+}
+
+for (const draft of [false, true]) {
+  test(`the shared loader preserves native percent literals and home paths (draft=${draft})`, async (t) => {
+    const h = harness(t, { draft, editingHeader: false });
+    await h.loadAllianzPage('allianz-life', 'en', 'about', 'literal-%24', 'literal-%2F', 'literal-%C3%A9', 'broken-%zz');
+    assert.equal(h.calls[0].contentPath, '/about/literal-%24/literal-%2F/literal-%C3%A9/broken-%zz');
+    await h.loadAllianzPage('allianz-life', 'en');
+    assert.equal(h.calls[1].contentPath, '/');
+  });
+}
 
 for (const connected of [true, false]) {
   test(`draft rendering and metadata use current authoring content with header priority (connected=${connected})`, async (t) => {

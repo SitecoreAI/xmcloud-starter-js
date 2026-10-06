@@ -18,9 +18,13 @@ export interface RouteFields {
   pageTitle?: Field;
   metadataDescription?: Field;
   metaDescription?: Field;
+  baseMetadataTitle?: Field;
+  baseMetadataDescription?: Field;
   pageSummary?: Field;
   ogTitle?: Field;
   ogDescription?: Field;
+  baseOgTitle?: Field;
+  baseOgDescription?: Field;
   ogImage?: ImageField;
   thumbnailImage?: ImageField;
 }

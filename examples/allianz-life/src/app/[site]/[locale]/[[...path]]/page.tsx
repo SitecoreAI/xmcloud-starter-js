@@ -28,11 +28,17 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
+  // Next.js encodes page params; metadata already receives native decoded params.
+  // Normalize only this boundary so the shared loader never decodes twice.
+  const contentPath = (path ?? []).map((segment) => {
+    try { return decodeURIComponent(segment); }
+    catch { return segment; }
+  });
 
   // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary
   setRequestLocale(`${site}_${locale}`);
 
-  const { page, needsComponentData, componentFetchOptions } = await loadAllianzPage(site, locale, ...(path ?? []));
+  const { page, needsComponentData, componentFetchOptions } = await loadAllianzPage(site, locale, ...contentPath);
 
   // If the page is not found, return a 404
   if (!page) {

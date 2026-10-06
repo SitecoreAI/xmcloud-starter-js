@@ -11,7 +11,7 @@ import client from './sitecore-client';
 // The SDK's App Router editing transport header is not exported from its public editing entry point.
 const EDITING_PARAMS_HEADER = 'x-sitecore-editing-params';
 
-/** Share authoring/delivery selection between rendering and metadata within a request. */
+/** Share authoring/delivery selection for native decoded paths within a request. */
 export const loadAllianzPage = cache(async (site: string, locale: string, ...path: string[]) => {
   const draft = await draftMode();
 
@@ -57,7 +57,9 @@ export const loadAllianzPage = cache(async (site: string, locale: string, ...pat
   const connected = isConnected();
   const page = connected
     ? await client.getPage(path, { site, locale })
-    : getFixturePage(path, site, locale);
+    // The legacy fixture adapter decodes its input; encode native segments to
+    // preserve literal percent sequences while keeping its existing API intact.
+    : getFixturePage(path.map(encodeURIComponent), site, locale);
 
   return { page, needsComponentData: connected, componentFetchOptions: undefined };
 });
