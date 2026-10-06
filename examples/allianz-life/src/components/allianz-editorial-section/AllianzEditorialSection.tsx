@@ -53,3 +53,36 @@ export const LegacyDocumentContent = (props: ComponentProps) => (
     </div>
   </div>
 );
+
+/** Product documents have six independent native controls within the source shell. */
+function productDocumentPlaceholder(props: ComponentProps, slot: 'heading' | 'navigation' | 'table' | 'next-steps' | 'form' | 'disclosure') {
+  const id = props.params?.DynamicPlaceholderId;
+  if (typeof id !== 'string' || !/^\d+$/.test(id)) {
+    throw new Error('AllianzEditorialSection requires a numeric native SXA DynamicPlaceholderId parameter.');
+  }
+  return <AppPlaceholder name={`allianz-product-document-${slot}-${id}`}
+    rendering={props.rendering} page={props.page} componentMap={componentMap} />;
+}
+
+/** Opt-in product shell. Source CSS keeps next steps and the local form hidden,
+ * including in Pages; their native fields remain accessible through Content mode. */
+export const LegacyProductDocument = (props: ComponentProps) => <>
+  {productDocumentPlaceholder(props, 'heading')}
+  <div className="row hidden"><div className="col-md-12 content-body pre-content" /></div>
+  <div className="row" id={props.params?.RenderingIdentifier}>
+    <div className="col-md-12 content-body content">
+      {productDocumentPlaceholder(props, 'navigation')}
+      {productDocumentPlaceholder(props, 'table')}
+      <div className="next-steps">
+        {productDocumentPlaceholder(props, 'next-steps')}
+        {productDocumentPlaceholder(props, 'form')}
+      </div>
+    </div>
+  </div>
+  <div className="row hidden"><div className="col-md-12 content-body post-content" /></div>
+  <div className="row"><div className="col-md-12 content-body disclosure" /></div>
+  {productDocumentPlaceholder(props, 'disclosure')}
+  <div className="row"><div className="col-xs-12 content-footer">
+    <ul className="tools" /><ul className="social-share" />
+  </div></div>
+</>;

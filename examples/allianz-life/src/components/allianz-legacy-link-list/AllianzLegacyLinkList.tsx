@@ -68,3 +68,83 @@ const ServiceLinks = ({ fields, params, serviceKind }: AllianzServiceLinksProps)
 
 export const AccountServices = (props: AllianzProps) => <ServiceLinks {...props} serviceKind="account" />;
 export const ContactServices = (props: AllianzProps) => <ServiceLinks {...props} serviceKind="contact" />;
+
+/** Bare lists for the product-document shell; source order is native child order. */
+import { collectionsComplete } from 'lib/collection-completeness';
+
+function productDocumentObject(value: unknown): value is Record<string, unknown> {
+  return Boolean(value && typeof value === 'object' && !Array.isArray(value));
+}
+
+function productDocumentTextField(value: unknown): boolean {
+  return productDocumentObject(value) && typeof value.value === 'string';
+}
+
+function productDocumentEntryReady(entry: unknown, ids: Set<string>): boolean {
+  if (!productDocumentObject(entry) || typeof entry.id !== 'string' || !entry.id.trim()) return false;
+  const id = entry.id.trim().toLowerCase();
+  if (ids.has(id)) return false;
+  const heading = productDocumentObject(entry.heading) ? entry.heading.jsonValue : undefined;
+  const link = productDocumentObject(entry.link) ? entry.link.jsonValue : undefined;
+  if (!productDocumentTextField(heading) || !productDocumentObject(link) || !productDocumentObject(link.value)) return false;
+  const value = link.value;
+  if (!['href', 'text', 'target', 'rel', 'querystring', 'anchor', 'title', 'linktype'].every((name) =>
+    value[name] === undefined || typeof value[name] === 'string')) return false;
+  ids.add(id);
+  return true;
+}
+
+function productDocumentConnectionReady(props: AllianzProps): boolean {
+  const data = props.fields?.data?.datasource;
+  if (!data || !productDocumentTextField(data.heading?.jsonValue) ||
+      !Array.isArray(data.children?.results) || !collectionsComplete(data, true)) return false;
+  const ids = new Set<string>();
+  return data.children.results.every((entry) => productDocumentEntryReady(entry, ids));
+}
+
+function productDocumentUnavailable(isEditing: boolean) {
+  return <p role="status" className="allianz-missing-data">{isEditing
+    ? 'Product document links could not load completely. Check the datasource children and native collection metadata.'
+    : 'Product document links are temporarily unavailable.'}</p>;
+}
+
+function productDocumentLinks(props: AllianzProps, isEditing: boolean, pathname: string, nextSteps: boolean) {
+  return <ul className={nextSteps ? 'link-list' : 'nav-links'} id={props.params?.RenderingIdentifier}>
+    {(props.fields?.data?.datasource?.children?.results ?? []).map((item) => {
+      const field = allianzLinkField(item.link?.jsonValue, isEditing);
+      const active = !nextSteps && field.value.href?.toLowerCase() === pathname.toLowerCase();
+      return <li key={item.id}>
+        {isEditing ? <>
+          {shouldRenderTextField(item.heading?.jsonValue, true) && <Text editable field={item.heading?.jsonValue} />}
+          {shouldRenderLinkField(item.link?.jsonValue, true) && <Link editable field={field} />}
+        </> : shouldRenderLinkField(item.link?.jsonValue, false) ? <Link editable={false}
+          {...safeLinkRenderProps(field)} className={active ? 'active' : undefined}
+          aria-current={active ? 'page' : undefined}>
+          {item.heading?.jsonValue?.value ? <Text editable={false} field={item.heading.jsonValue} /> : field.value.text}
+        </Link> : null}
+      </li>;
+    })}
+  </ul>;
+}
+
+/** Navigation is already inside the shell's content column; no extra row or nav. */
+export const ProductNavigation = (props: AllianzProps) => {
+  const { page } = useSitecore();
+  const pathname = usePathname();
+  const isEditing = page?.mode?.isEditing ?? false;
+  if (!productDocumentConnectionReady(props)) return productDocumentUnavailable(isEditing);
+  return productDocumentLinks(props, isEditing, pathname, false);
+};
+
+/** Native next-steps heading and links stay inside the source-hidden shell wrapper. */
+export const ProductNextSteps = (props: AllianzProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const heading = props.fields?.data?.datasource?.heading?.jsonValue;
+  if (!productDocumentConnectionReady(props)) return productDocumentUnavailable(isEditing);
+  return <>
+    <hr />
+    {shouldRenderTextField(heading, isEditing) && <Text editable={isEditing} tag="h2" field={heading} />}
+    {productDocumentLinks(props, isEditing, '', true)}
+  </>;
+};
