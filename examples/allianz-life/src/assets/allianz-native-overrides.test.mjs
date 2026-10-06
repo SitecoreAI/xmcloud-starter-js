@@ -50,6 +50,32 @@ test('root layout serves complete legacy source and wires scoped native override
   assert.equal(read('./allianz-legacy.css'), read('../../public/allianz-legacy-assets/legacy-style.css'), 'served raw legacy CSS must include every source adaptation');
 });
 
+test('mobile Sidebar button occupies the source right-edge target above the root link', () => {
+  const toggle = rule(overrides, '.allianz-legacy .left-nav > .dropdown > button.allianz-legacy-section-toggle');
+  const rootLink = rule(legacy, '.allianz-legacy .nav.navbar-nav.left-nav .dropdown a');
+  const adapter = rule(legacy, '.allianz-legacy .allianz-legacy-section-toggle');
+  assert.equal(toggle.parent.name, 'media');
+  assert.equal(toggle.parent.params, 'only screen and (max-width: 767px)');
+  assert.equal(value(rootLink, 'z-index'), '100');
+  assert.ok(Number(value(toggle, 'z-index')) > Number(value(rootLink, 'z-index')));
+  assert.equal(value(toggle, 'width'), '50px');
+  // The first matching source rule defines geometry; a later rule sets border color.
+  let sourceWidth;
+  legacy.walkRules((node) => {
+    if (node.selector.split(',').includes('.allianz-legacy .left-column .nav>li>a.dropdown-toggle')) {
+      sourceWidth = value(node, 'width') ?? sourceWidth;
+    }
+  });
+  assert.equal(value(toggle, 'width'), sourceWidth);
+  assert.equal(value(toggle, 'height'), '50px');
+  assert.equal(value(adapter, 'position'), 'absolute');
+  assert.equal(value(adapter, 'right'), '0');
+  assert.equal(value(adapter, 'top'), '0');
+  assert.ok(stronger(toggle.selector, adapter.selector));
+  assert.equal(value(toggle, 'display'), undefined, 'retain source mobile, desktop and print visibility');
+  assert.deepEqual(toggle.nodes.filter((node) => node.type === 'decl').map((node) => node.prop).sort(), ['height', 'width', 'z-index']);
+});
+
 test('expanded native accordion defeats recovered max-height zero regardless of stylesheet order', () => {
   const recovered = rule(source, '.c-accordion .c-accordion__item-content');
   assert.equal(value(recovered, 'max-height'), '0');

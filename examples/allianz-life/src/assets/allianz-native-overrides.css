@@ -202,3 +202,13 @@
     display: block;
   }
 }
+
+/* The root link has z-index:100 on mobile. Keep the native button above it
+ * in the source toggle's 50px right-edge area, leaving the root link usable. */
+@media only screen and (max-width: 767px) {
+  .allianz-legacy .left-nav > .dropdown > button.allianz-legacy-section-toggle {
+    z-index: 101;
+    width: 50px;
+    height: 50px;
+  }
+}
