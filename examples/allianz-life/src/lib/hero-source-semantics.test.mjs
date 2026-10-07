@@ -93,7 +93,7 @@ for (const mode of ['fixture', 'connected']) {
   }));
   test(`${mode}: lookalike origins, unsafe protocols and restricted paths retain the service policy`, () => withMode(mode, () => {
     for (const href of ['https://www.allianzlife.com.evil.example/', 'https://www.allianzlife.com@evil.example/',
-      '//evil.example/', 'https://evil.example/www.allianzlife.com', 'http://www.allianzlife.com/',
+      '//evil.example/', 'https://evil.example/www.allianzlife.com', 'http://www.finra.org/',
       'https://user:password@www.allianzlife.com/', 'javascript:alert(1)', 'data:text/html,blocked',
       'mailto:service@example.invalid', 'tel:12345', '/login', '/api/private', '/%2flogin', '/%5clogin']) {
       assert.equal(outputHref(link(href, { querystring: 'private=1', anchor: 'old', target: '_blank' })), '#service-unavailable', href);
@@ -131,3 +131,69 @@ test('LegalDisclosures Faq real SDK output keeps native bare URL in editor and m
   assert.match(editor, /test-legal-body-field/);
   assert.equal(JSON.stringify(input), before);
 }));
+
+const ProductDisclosures = loadSource(path.join(sourceRoot, 'components/product-disclosures/ProductDisclosures.tsx'));
+for (const mode of ['fixture', 'connected']) {
+  test(`${mode}: historical official HTTP URLs resolve to local demo paths with native attributes intact`, () => withMode(mode, () => {
+    for (const [href, expected] of [
+      ['http://www.allianzlife.com/', '/'], ['http://www.allianzlife.com', '/'],
+      ['http://www.allianzlife.com/new-york', '/new-york'], ['HTTP://WWW.AllianzLife.COM/about', '/about'],
+      ['http://www.allianzlife.com/new-york?tag=one&tag=two&q=a%23b#overview', '/new-york?tag=one&tag=two&q=a%23b#overview'],
+    ]) {
+      const input = link(href, { target: '_blank', rel: 'author', title: 'Original title' });
+      const before = JSON.stringify(input), output = safeLink(input);
+      assert.equal(outputHref(input), expected, href);
+      assert.strictEqual(output.metadata, input.metadata);
+      assert.equal(output.value.target, '_blank');
+      assert.equal(output.value.title, 'Original title');
+      assert.equal(safeLinkRenderProps(input).rel, 'author noopener noreferrer');
+      assert.equal(JSON.stringify(input), before);
+    }
+    assert.equal(outputHref(link('http://www.allianzlife.com/new-york?existing=1#captured', { querystring: '?native=2', anchor: '#native' })), '/new-york?existing=1&native=2#native');
+    assert.equal(outputHref(link('http://www.allianzlife.com/?q=a%23b', { querystring: 'q=a%23b', anchor: 'details' })), '/?q=a%23b#details');
+  }));
+  test(`${mode}: official HTTP exception rejects ports, credentials, lookalikes and network-path escapes`, () => withMode(mode, () => {
+    for (const href of [
+      'http://www.finra.org', 'https://www.finra.org/', 'http://external.example/',
+      'http://www.allianzlife.com.evil.example/', 'http://evil.www.allianzlife.com/', 'http://allianzlife.com/',
+      'http://www.allianzlife.com@evil.example/', 'http://user:password@www.allianzlife.com/',
+      'http://www.allianzlife.com:80/', 'http://www.allianzlife.com:443/', 'http://www.allianzlife.com:8080/',
+      'http://www.allianzlife.com./', 'http://%77ww.allianzlife.com/',
+      'http://www.allianzlife.com//evil.example', 'http://www.allianzlife.com///evil.example',
+      'http://www.allianzlife.com/new-york//registration', 'http://www.allianzlife.com/new-york//login',
+      'http://www.allianzlife.com/new-york//api/private', String.raw`http://www.allianzlife.com/new-york/\registration`,
+      String.raw`http://www.allianzlife.com/\evil.example`, String.raw`http://www.allianzlife.com\evil.example`,
+      'http://www.allianzlife.com/%2fevil.example', 'http://www.allianzlife.com/%5cevil.example',
+      'http://www.allianzlife.com/login', 'http://www.allianzlife.com/%6cogin',
+      'http://www.allianzlife.com/api/private', 'http://www.allianzlife.com/new-york/registration',
+      'http://www.allianzlife.com/#demo-unavailable', 'http://www.allianzlife.com/new-york#service-unavailable',
+    ]) {
+      const input = link(href, { querystring: 'private=1', anchor: 'old', target: '_blank' });
+      assert.equal(outputHref(input), '#service-unavailable', href);
+      const output = safeLink(input).value;
+      assert.equal(output.querystring, ''); assert.equal(output.anchor, ''); assert.equal(output.target, '');
+    }
+  }));
+  test(`${mode}: HTTP links continue through the existing fixture-route gate`, () => withMode(mode, () => {
+    const input = link('http://www.allianzlife.com/new-native-public-page?view=detail#section');
+    assert.equal(outputHref(input), mode === 'connected' ? '/new-native-public-page?view=detail#section' : '#service-unavailable');
+    assert.equal(outputHref(link('http://www.allianzlife.com/new-york', { anchor: 'service-unavailable' })), '#service-unavailable');
+  }));
+  test(`${mode}: ProductDisclosures preserves authored HTTP links in editing and disables FINRA for visitors`, () => withMode(mode, () => {
+    const value = '<p><a href="http://www.allianzlife.com/">www.allianzlife.com</a> <a href="http://www.allianzlife.com/new-york">www.allianzlife.com/new-york</a> <a rel="noopener noreferrer" href="http://www.finra.org" class="disclosure-finra" target="_blank">member FINRA</a></p>';
+    const native = { value, metadata: metadata('http-disclosures', 'Rich Text') };
+    const data = { body: { jsonValue: native } }, before = JSON.stringify(data);
+    assert.strictEqual(safeEditorialRichText(native, true), native);
+    const visitor = render(ProductDisclosures.Editorial, data);
+    assert.match(visitor, /href="\/">www.allianzlife.com<\/a>/);
+    assert.match(visitor, /href="\/new-york">www.allianzlife.com\/new-york<\/a>/);
+    assert.match(visitor, /href="#service-unavailable" class="disclosure-finra" target="">member FINRA<\/a>/);
+    const editor = render(ProductDisclosures.Editorial, data, true);
+    assert.ok(editor.includes(value));
+    assert.match(editor, /test-http-disclosures-field/);
+    for (const href of ['http://www.allianzlife.com/', 'http://www.allianzlife.com/new-york']) {
+      const input = link(href); assert.strictEqual(allianzLinkField(input, true), input);
+    }
+    assert.equal(JSON.stringify(data), before);
+  }));
+}

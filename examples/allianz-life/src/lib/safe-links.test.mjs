@@ -159,7 +159,7 @@ test('file links and same-page fragment/query links use real SDK fallback safely
 });
 
 test('blocked services discard stale query/hash/target fields and never leak their destination', () => {
-  for (const value of ['https://external.example.invalid/', '//external.example.invalid/about', 'http://www.allianzlife.com/about', 'https://www.allianzlife.com:444/about', 'https://user:password@www.allianzlife.com/about', 'javascript:alert(1)', 'mailto:service@example.invalid', 'tel:12345', 'data:text/html,blocked', '/login', '/%6cogin', '/%2flogin', '/%5clogin', '/api/private', '/sitecore', '/rates', '/about#demo-unavailable', '#service-unavailable']) {
+  for (const value of ['https://external.example.invalid/', '//external.example.invalid/about', 'http://www.finra.org', 'https://www.allianzlife.com:444/about', 'https://user:password@www.allianzlife.com/about', 'javascript:alert(1)', 'mailto:service@example.invalid', 'tel:12345', 'data:text/html,blocked', '/login', '/%6cogin', '/%2flogin', '/%5clogin', '/api/private', '/sitecore', '/rates', '/about#demo-unavailable', '#service-unavailable']) {
     const input = field(value, { querystring: 'private=1', anchor: 'old', target: '_blank' });
     assert.equal(renderedHref(input), '#service-unavailable', value);
     const output = safeLink(input);

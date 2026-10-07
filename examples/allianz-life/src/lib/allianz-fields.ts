@@ -92,7 +92,11 @@ export function safeLink(field?: LinkField): LinkField {
   let url: URL;
   try { url = new URL(sourceHref, 'https://www.allianzlife.com'); }
   catch { return unavailable(); }
-  const isPublic = url.origin === 'https://www.allianzlife.com' && !url.username && !url.password &&
+  // Historical official HTTP URLs become local demo paths, never HTTP requests.
+  // Keep this exact-host exception free of ports, credentials and duplicate-slash redirects.
+  const isOfficialHttp = /^http:\/\/www\.allianzlife\.com(?:[/?#]|$)/i.test(href) &&
+    url.origin === 'http://www.allianzlife.com' && !url.pathname.includes('//');
+  const isPublic = (url.origin === 'https://www.allianzlife.com' || isOfficialHttp) && !url.username && !url.password &&
     !/^\/(?:new-york\/)?(login|registration|spa|account|portal|secured|logout|manageuserprofile|api|sitecore)(\/|$)/i.test(url.pathname);
   const path = (() => { try { return decodeURIComponent(url.pathname).toLowerCase().replace(/\/$/, '') || '/'; } catch { return ''; } })();
   const fixtureRouteAvailable = isConnected() ||
