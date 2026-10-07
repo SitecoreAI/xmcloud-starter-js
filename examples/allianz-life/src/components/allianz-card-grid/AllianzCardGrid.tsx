@@ -201,3 +201,96 @@ export const EditorialLegal = ({ fields, params }: AllianzCardGridProps) => {
     </div>)}
   </EditorialFrame>;
 };
+
+/** Stacked source images and one native link/icon pair per footer row. */
+export const EditorialStacked = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  const column = params.columns === '2' ? 'l-grid__column-medium-6' : editorialColumnClass(params);
+  return <EditorialFrame params={{ ...params, matchHeightRow: '1' }}>
+    {cards.map((card) => {
+      const links = (card.links?.targetItems ?? [{ id: `${card.id}-link`, link: card.link, icon: undefined }])
+        .filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing));
+      const article = <article className={`allianz-editorial-cards m-axlTile match-height -is--flipped tile--stackedImage -is--stacked ${sectionTheme(card.theme?.jsonValue?.value)}${params.tileMarginBottom === 'xl' ? ' u-margin-bottom-xl' : ''}`}>
+        <div className={`tileContent ${params.alignment === 'center' ? 'u-text-center' : 'u-text-left'}`}>
+          <div className="tileSubGrid__content">
+            <header>
+              <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={editorialHeadingTag(card.headingLevel?.jsonValue?.value || params.headingLevel)} field={card.heading?.jsonValue} />}</div>
+              {shouldRenderTextField(card.subheading?.jsonValue, isEditing)
+                ? <RichText editable={isEditing} field={safeEditorialRichText(card.subheading?.jsonValue, isEditing)} className="tileSubHeading" />
+                : <div className="tileSubHeading" />}
+            </header>
+            {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(card.body?.jsonValue, isEditing)} className={editorialBodyClass(params.bodySize || 'medium')} />}
+            {links.length > 0 && <footer>{links.map((item) => {
+              const field = allianzLinkField(item.link?.jsonValue, isEditing);
+              const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+              const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'];
+              return <div className="tileLink" key={item.id}>
+                <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+                  {shouldRenderImageField(item.icon?.jsonValue, isEditing) && <span className="a-link__icon" aria-hidden={isEditing ? undefined : true}><Image editable={isEditing} field={item.icon?.jsonValue} alt={item.icon?.jsonValue?.value?.alt ?? ''} /></span>}
+                  <span className="a-link__text">{field.value?.text}</span>
+                </Link>
+              </div>;
+            })}</footer>}
+          </div>
+        </div>
+        {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} sizes="100vw" className="c-image__img c-teaser__image-img" /></picture></div>}
+      </article>;
+      return params.container === 'content' ? <Fragment key={card.id}>{article}</Fragment> : <div key={card.id} className={column}>{article}</div>;
+    })}
+  </EditorialFrame>;
+};
+
+/** Exact existing source arrow for a collection-level native General Link. */
+const EditorialResourceArrow = () => <svg viewBox="0 0 24 24" focusable="false" preserveAspectRatio="xMidYMid meet"><path fillRule="evenodd" d="M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536" /></svg>;
+
+/** Generic resource cards with optional native category fields and collection CTA. */
+export const EditorialResourceCards = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  const columns = params.columns === '4' ? '4' : '3';
+  const centered = params.alignment === 'center';
+  const footerField = allianzLinkField(data.primaryLink?.jsonValue, isEditing);
+  const footerProps = isEditing ? { field: footerField } : safeLinkRenderProps(footerField);
+  const footerLabel = footerField.value?.ariaLabel || footerField.value?.['aria-label'];
+  return <div className={`l-container--full-width ${sectionTheme(params.theme)} allianz-editorial-resource-cards`} id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">
+        <div className={`o-cards o-cards__col${columns}`}>
+          {cards.map((card) => {
+            const field = allianzLinkField(card.link?.jsonValue, isEditing);
+            const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+            const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'];
+            const hasCategory = shouldRenderTextField(card.subheading?.jsonValue, isEditing);
+            const hasIcon = shouldRenderImageField(card.icon?.jsonValue, isEditing);
+            const content = <>
+              {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="m-card__image"><picture className="c-image"><Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} sizes="100vw" className="c-image__img c-teaser__image-img" /></picture></div>}
+              <div className={`m-card__header${centered ? ' u-text-center' : ''}`}>
+                {shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}
+              </div>
+              {shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={safeEditorialRichText(card.body?.jsonValue, isEditing)} className="m-card__body" /> : <div className="m-card__body" />}
+              {(hasCategory || hasIcon) && <div className="m-card__footer">
+                {hasIcon && <Image editable={isEditing} field={card.icon?.jsonValue} alt={card.icon?.jsonValue?.value?.alt ?? ''} />}
+                {hasCategory && <Text editable={isEditing} field={card.subheading?.jsonValue} tag="span" className="cardCategory" />}
+              </div>}
+            </>;
+            return shouldRenderLinkField(card.link?.jsonValue, isEditing)
+              ? <Link key={card.id} {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="m-card" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>{content}</Link>
+              : <div key={card.id} className="m-card">{content}</div>;
+          })}
+        </div>
+      </div></div>
+      {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <div className="l-grid__row"><div className="l-grid__column-medium-12 u-text-center"><footer><div className="tileLink u-margin-top-md u-margin-bottom-md">
+        <Link {...footerProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof footerLabel === 'string' && footerLabel ? footerLabel : undefined}>
+          <span className="a-link__icon" aria-hidden="true"><EditorialResourceArrow /></span><span className="a-link__text">{footerField.value?.text}</span>
+        </Link>
+      </div></footer></div></div>}
+    </div>
+  </div>;
+};

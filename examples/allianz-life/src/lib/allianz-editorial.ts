@@ -3,7 +3,7 @@ import { safeLink } from './allianz-fields';
 
 /** Finite editorial options; never interpolate arbitrary CMS class strings. */
 export const editorialBodyClass = (size?: string) =>
-  `tileBody${size === 'medium' ? ' u-font-size-md' : size === 'extra-large' ? ' u-font-size-xl' : ''}`;
+  `tileBody${size === 'medium' ? ' u-font-size-md' : size === 'large' ? ' u-font-size-lg' : size === 'extra-large' ? ' u-font-size-xl' : ''}`;
 
 export const editorialColumnClass = (params: Record<string, string | undefined>) =>
   params.sourceWidth === 'centered-eight'

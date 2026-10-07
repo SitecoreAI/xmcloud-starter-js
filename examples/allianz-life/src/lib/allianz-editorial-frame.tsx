@@ -10,7 +10,7 @@ export function EditorialFrame({ params, children, column = false }: {
   column?: boolean;
 }) {
   if (params.container === 'content') return <>{children}</>;
-  const row = <div className={`l-grid__row ${rowSpacing(params)}`} id={params.container === 'row' ? params.RenderingIdentifier : undefined}>
+  const row = <div className={`l-grid__row${params.matchHeightRow === '1' ? ' match-height-row' : ''} ${rowSpacing(params)}`} id={params.container === 'row' ? params.RenderingIdentifier : undefined}>
     {column ? <div className={editorialColumnClass(params)}>{children}</div> : children}
   </div>;
   if (params.container === 'row') return row;

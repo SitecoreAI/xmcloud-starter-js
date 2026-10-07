@@ -1,0 +1,901 @@
+{
+  "source": {
+    "path": "retirement-live/parent-archive-evidence/ORIGINAL-PARENT-20261006.html",
+    "sha256": "25e43773f97e4a8afcb3a7e836d4b2965f9748f66ebcad90a54ae2e010757d02",
+    "bytes": 151587
+  },
+  "sourceCapturedAtUtc": "2026-10-06T22:11:25.010076+00:00",
+  "nativeBindingsVerified": false,
+  "fixtureMediaReferences": "Test-only image references; production assets must be mapped to verified native Content Hub fields",
+  "cases": [
+    {
+      "key": "parent-featured-study-weather",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialStacked",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "bodySize": "medium",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "columns": "2",
+        "layout": "stacked",
+        "tileMarginBottom": "xl",
+        "matchHeightRow": "1"
+      },
+      "blocks": [
+        {
+          "key": "s02-article-00",
+          "kind": "article",
+          "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/article",
+          "sourceLine": 694,
+          "fields": {
+            "heading": "What Americans know, and don\u2019t know, about retirement",
+            "headingHtml": "<h2>What Americans know, and don\u2019t know, about retirement</h2>",
+            "headingLevel": "h2",
+            "subheading": "",
+            "body": "<p>While many Americans worry about outliving their savings, few have a clear plan for how their income will last through their retirement. The 2026 Annual Retirement Study provides a comprehensive look at the risks Americans face in preparing for retirement. Learn more about what concerns Americans today, and what helps them feel confident about tomorrow.</p>",
+            "icon": null,
+            "image": {
+              "kind": "raster",
+              "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/article/div[2]/picture/img",
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-2026-exec-summary-ext-1165.jpg",
+              "sourceSrc": "/-/media/Feature/Tile/Allianz-Life/tile-azl-2026-exec-summary-ext-1165.jpg",
+              "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/tile-azl-2026-exec-summary-ext-1165.jpg?w=1040&hash=D81F066A1A4DB59D28AEF55E61B7FBDC 1040w,/-/media/Feature/Tile/Allianz-Life/tile-azl-2026-exec-summary-ext-1165.jpg?w=884&hash=E6FBEAD8765930CD9E7379F128ABD79F 884w,/-/media/Feature/Tile/Allianz-Life/tile-azl-2026-exec-summary-ext-1165.jpg?w=619&hash=2F8C727BFFADE598491EFE313F41E2FB 619w,/-/media/Feature/Tile/Allianz-Life/tile-azl-2026-exec-summary-ext-1165.jpg?w=340&hash=E46E46081C80EC085A95B74682C878F5 340w,/-/media/Feature/Tile/Allianz-Life/tile-azl-2026-exec-summary-ext-1165.jpg?w=136&hash=7102FA98D874D0B41D48E30230B8C17A 136w",
+              "sourceSizes": "100vw",
+              "alt": "",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "alphanumeral": "",
+            "links": [
+              {
+                "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/article/div[1]/div/footer/div[1]/a",
+                "sourceLine": 709,
+                "href": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/annual-retirement-study",
+                "text": "Key insights from the 2026 Annual Retirement Study",
+                "target": "",
+                "rel": "",
+                "ariaLabel": "Key insights from the 2026 Annual Retirement Study",
+                "sourceClasses": "a-link",
+                "kind": "internal",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/article/div[1]/div/footer/div[1]/a/span[1]/svg",
+                  "sourceSha256": "9dd3a8dffb2a6e1043c39599d7a7b3905a40d028932c94ebd1a2f9002f88ca84",
+                  "purpose": "Right",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              },
+              {
+                "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/article/div[1]/div/footer/div[2]/a",
+                "sourceLine": 717,
+                "href": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-reasons-for-financial-professionals-to-call-their-clients-right-now",
+                "text": "5 reasons for financial professionals to call their clients about retirement plans right now",
+                "target": "",
+                "rel": "",
+                "ariaLabel": "5 reasons for financial professionals to call their clients about retirement plans right now",
+                "sourceClasses": "a-link",
+                "kind": "internal",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/article/div[1]/div/footer/div[2]/a/span[1]/svg",
+                  "sourceSha256": "9dd3a8dffb2a6e1043c39599d7a7b3905a40d028932c94ebd1a2f9002f88ca84",
+                  "purpose": "Right",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              },
+              {
+                "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/article/div[1]/div/footer/div[3]/a",
+                "sourceLine": 725,
+                "href": "/for-financial-professionals/resources/help-clients-prepare-for-retirement",
+                "text": "How to help clients prepare for a longer-lasting retirement",
+                "target": "",
+                "rel": "",
+                "ariaLabel": "How to help clients prepare for a longer-lasting retirement",
+                "sourceClasses": "a-link",
+                "kind": "internal",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/article/div[1]/div/footer/div[3]/a/span[1]/svg",
+                  "sourceSha256": "9dd3a8dffb2a6e1043c39599d7a7b3905a40d028932c94ebd1a2f9002f88ca84",
+                  "purpose": "Right",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              }
+            ],
+            "theme": "grey-soft",
+            "iconTheme": "transparent"
+          },
+          "sourceLayout": {
+            "articleClasses": "m-axlTile match-height  -is--flipped tile--stackedImage -is--stacked  t-bg-grey-soft u-margin-bottom-xl",
+            "columnClasses": "l-grid__column-medium-6",
+            "rowClasses": "l-grid__row match-height-row   ",
+            "contentClasses": "tileContent u-text-left",
+            "bodyClasses": "tileBody u-font-size-md"
+          }
+        },
+        {
+          "key": "s02-article-01",
+          "kind": "article",
+          "sourceXPath": "/html/body/main/div[3]/div/div/div[2]/article",
+          "sourceLine": 744,
+          "fields": {
+            "heading": "Don\u2019t let extreme weather rain on your clients\u2019 retirement strategy",
+            "headingHtml": "<h2>Don\u2019t let extreme weather rain on your clients\u2019 retirement strategy</h2>",
+            "headingLevel": "h2",
+            "subheading": "",
+            "body": "<p>Many Americans are concerned about the rising costs tied to extreme weather, yet few have taken steps to plan for it, according to the 2026 Annual Retirement Study. From higher insurance premiums to unexpected recovery expenses, these costs can disrupt long-term financial goals.</p>\n<p>By discussing the financial impact of extreme weather, financial professionals can help clients build a more holistic retirement strategy.</p>",
+            "icon": null,
+            "image": {
+              "kind": "raster",
+              "sourceXPath": "/html/body/main/div[3]/div/div/div[2]/article/div[2]/picture/img",
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-retirement-risk-management-insights-weatherproofing.jpg",
+              "sourceSrc": "/-/media/Feature/Tile/Allianz-Life/tile-azl-retirement-risk-management-insights-weatherproofing.jpg",
+              "sourceSrcset": "/-/media/Feature/Tile/Allianz-Life/tile-azl-retirement-risk-management-insights-weatherproofing.jpg?w=1040&hash=25DE5A42AD587294D59DD8CDCBFD4B34 1040w,/-/media/Feature/Tile/Allianz-Life/tile-azl-retirement-risk-management-insights-weatherproofing.jpg?w=884&hash=D145CE0EEC64F7F783E486B1C002ABBE 884w,/-/media/Feature/Tile/Allianz-Life/tile-azl-retirement-risk-management-insights-weatherproofing.jpg?w=619&hash=344B288FCBD27875054E9A5B8393D452 619w,/-/media/Feature/Tile/Allianz-Life/tile-azl-retirement-risk-management-insights-weatherproofing.jpg?w=340&hash=E97D0EF7B80C7BEED818172665C47465 340w,/-/media/Feature/Tile/Allianz-Life/tile-azl-retirement-risk-management-insights-weatherproofing.jpg?w=136&hash=14146BE79E68FAA37E710C1776185DDE 136w",
+              "sourceSizes": "100vw",
+              "alt": "",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "alphanumeral": "",
+            "links": [
+              {
+                "sourceXPath": "/html/body/main/div[3]/div/div/div[2]/article/div[1]/div/footer/div[1]/a",
+                "sourceLine": 760,
+                "href": "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather",
+                "text": "3 reasons to talk to your clients about the weather",
+                "target": "",
+                "rel": "",
+                "ariaLabel": "3 reasons to talk to your clients about the weather",
+                "sourceClasses": "a-link",
+                "kind": "internal",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[3]/div/div/div[2]/article/div[1]/div/footer/div[1]/a/span[1]/svg",
+                  "sourceSha256": "9dd3a8dffb2a6e1043c39599d7a7b3905a40d028932c94ebd1a2f9002f88ca84",
+                  "purpose": "Right",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              },
+              {
+                "sourceXPath": "/html/body/main/div[3]/div/div/div[2]/article/div[1]/div/footer/div[2]/a",
+                "sourceLine": 768,
+                "href": "/-/media/Files/Global/documents/2024/08/20/10/27/EXT-1084.pdf",
+                "text": "Download our Weatherproofing Retirement Fact Sheet (PDF)",
+                "target": "_blank",
+                "rel": "",
+                "ariaLabel": "Download our Weatherproofing Retirement Fact Sheet (PDF)",
+                "sourceClasses": "a-link",
+                "kind": "document",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[3]/div/div/div[2]/article/div[1]/div/footer/div[2]/a/span[1]/svg",
+                  "sourceSha256": "71880b9b4ba2a6fa552ada126537ee53a746c7e7b23f8c5d18632ff5748b348b",
+                  "purpose": "Download",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              },
+              {
+                "sourceXPath": "/html/body/main/div[3]/div/div/div[2]/article/div[1]/div/footer/div[3]/a",
+                "sourceLine": 776,
+                "href": "/-/media/Files/Global/documents/2024/08/20/10/37/EXT-1085-A.pdf",
+                "text": "Download our Weatherproofing Retirement Client Brochure (PDF)",
+                "target": "_blank",
+                "rel": "",
+                "ariaLabel": "Download our Weatherproofing Retirement Client Brochure (PDF)",
+                "sourceClasses": "a-link",
+                "kind": "document",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[3]/div/div/div[2]/article/div[1]/div/footer/div[3]/a/span[1]/svg",
+                  "sourceSha256": "71880b9b4ba2a6fa552ada126537ee53a746c7e7b23f8c5d18632ff5748b348b",
+                  "purpose": "Download",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              }
+            ],
+            "theme": "grey-soft",
+            "iconTheme": "transparent"
+          },
+          "sourceLayout": {
+            "articleClasses": "m-axlTile match-height  -is--flipped tile--stackedImage -is--stacked  t-bg-grey-soft u-margin-bottom-xl",
+            "columnClasses": "l-grid__column-medium-6",
+            "rowClasses": "l-grid__row match-height-row   ",
+            "contentClasses": "tileContent u-text-left",
+            "bodyClasses": "tileBody u-font-size-md"
+          }
+        }
+      ]
+    },
+    {
+      "key": "parent-risk-resource-cards",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialResourceCards",
+      "params": {
+        "theme": "blue-soft",
+        "alignment": "left",
+        "bodySize": "medium",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "layout": "cards",
+        "columns": "4",
+        "headingLevel": "h4"
+      },
+      "blocks": [
+        {
+          "key": "s04-linked-card-00",
+          "kind": "linked-card",
+          "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[1]",
+          "sourceLine": 845,
+          "sourceLayout": {
+            "cardsClasses": "o-cards o-cards__col4",
+            "footerClasses": "m-card__footer"
+          },
+          "fields": {
+            "heading": "5 ways IUL can help clients leave a legacy",
+            "headingHtml": "<h4>5 ways IUL can help clients leave a legacy</h4>",
+            "headingLevel": "h4",
+            "body": "<p>Indexed universal life can help clients balance legacy goals and retirement income with tax efficiency, flexibility, and downside protection.</p>",
+            "subheading": "Article",
+            "categoryLabel": "Article",
+            "image": {
+              "kind": "raster",
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[1]/div[1]/picture/img",
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Card/Allianz-Life/card-azl-wlif-1052.jpg",
+              "sourceSrc": "/-/media/Feature/Card/Allianz-Life/card-azl-wlif-1052.jpg",
+              "sourceSrcset": "/-/media/Feature/Card/Allianz-Life/card-azl-wlif-1052.jpg?w=600&hash=0F416BDDAE738AF3CFDA1FAE859DDD94 600w,/-/media/Feature/Card/Allianz-Life/card-azl-wlif-1052.jpg?w=510&hash=47CA7CDC42ED17CEDD8D5F5A6BDEC34C 510w,/-/media/Feature/Card/Allianz-Life/card-azl-wlif-1052.jpg?w=357&hash=6926EDE238DDBFF4693F1A960ACBAE0A 357w,/-/media/Feature/Card/Allianz-Life/card-azl-wlif-1052.jpg?w=196&hash=5B95FF653E5F54B318D1804C81301BE5 196w,/-/media/Feature/Card/Allianz-Life/card-azl-wlif-1052.jpg?w=78&hash=BB5902F103291B6F0A85933DDD4F4D2D 78w",
+              "sourceSizes": "100vw",
+              "alt": "",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "icon": {
+              "kind": "svg",
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[1]/div[4]/svg",
+              "sourceSha256": "63883abdc1b51e9522259213c01668f1ce71d679459a704268c373943b67c113",
+              "purpose": "Icon Article",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "theme": "transparent",
+            "iconTheme": "transparent",
+            "alphanumeral": "",
+            "link": {
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[1]",
+              "sourceLine": 845,
+              "href": "/for-financial-professionals/resources/5-ways-iul-can-help-clients-leave-a-legacy",
+              "text": "5 ways IUL can help clients leave a legacy Indexed universal life can help clients balance legacy goals and retirement income with tax efficiency, flexibility, and downside protection. Article",
+              "target": "",
+              "rel": "",
+              "ariaLabel": "",
+              "sourceClasses": "m-card",
+              "kind": "internal",
+              "icon": {
+                "kind": "svg",
+                "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[1]/div[4]/svg",
+                "sourceSha256": "63883abdc1b51e9522259213c01668f1ce71d679459a704268c373943b67c113",
+                "purpose": "Icon Article",
+                "nativeImageFieldValue": null,
+                "contentHubAssetId": null
+              },
+              "nativeTargetId": null,
+              "nativeGeneralLinkValue": null
+            },
+            "links": []
+          }
+        },
+        {
+          "key": "s04-linked-card-01",
+          "kind": "linked-card",
+          "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[2]",
+          "sourceLine": 870,
+          "sourceLayout": {
+            "cardsClasses": "o-cards o-cards__col4",
+            "footerClasses": "m-card__footer"
+          },
+          "fields": {
+            "heading": "5 ways annuities can strengthen retirement savings strategies",
+            "headingHtml": "<h4>5 ways annuities can strengthen retirement savings strategies</h4>",
+            "headingLevel": "h4",
+            "body": "<p>See how annuities can help your clients balance growth potential with downside protection during their accumulation phase.</p>",
+            "subheading": "Article",
+            "categoryLabel": "Article",
+            "image": {
+              "kind": "raster",
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[2]/div[1]/picture/img",
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Card/Allianz-Life/card-azl-5-ways-an-annuity-can-strengthen-retirement-strategy.jpg",
+              "sourceSrc": "/-/media/Feature/Card/Allianz-Life/card-azl-5-ways-an-annuity-can-strengthen-retirement-strategy.jpg",
+              "sourceSrcset": "/-/media/Feature/Card/Allianz-Life/card-azl-5-ways-an-annuity-can-strengthen-retirement-strategy.jpg?w=600&hash=B696C8CF745B2E443541022C3BB5E865 600w,/-/media/Feature/Card/Allianz-Life/card-azl-5-ways-an-annuity-can-strengthen-retirement-strategy.jpg?w=510&hash=28DC0949F12D265F00BFBAAF117B43E3 510w,/-/media/Feature/Card/Allianz-Life/card-azl-5-ways-an-annuity-can-strengthen-retirement-strategy.jpg?w=357&hash=B1A2C625D870B33FF2D4B60D812C1055 357w,/-/media/Feature/Card/Allianz-Life/card-azl-5-ways-an-annuity-can-strengthen-retirement-strategy.jpg?w=196&hash=F8AF8536EE320EBC23E13D4A197DDF68 196w,/-/media/Feature/Card/Allianz-Life/card-azl-5-ways-an-annuity-can-strengthen-retirement-strategy.jpg?w=78&hash=948E91980B4FED9F46AE30304FBBB8FE 78w",
+              "sourceSizes": "100vw",
+              "alt": "",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "icon": {
+              "kind": "svg",
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[2]/div[4]/svg",
+              "sourceSha256": "63883abdc1b51e9522259213c01668f1ce71d679459a704268c373943b67c113",
+              "purpose": "Icon Article",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "theme": "transparent",
+            "iconTheme": "transparent",
+            "alphanumeral": "",
+            "link": {
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[2]",
+              "sourceLine": 870,
+              "href": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-ways-an-annuity-can-strengthen-retirement-strategy",
+              "text": "5 ways annuities can strengthen retirement savings strategies See how annuities can help your clients balance growth potential with downside protection during their accumulation phase. Article",
+              "target": "",
+              "rel": "",
+              "ariaLabel": "",
+              "sourceClasses": "m-card",
+              "kind": "internal",
+              "icon": {
+                "kind": "svg",
+                "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[2]/div[4]/svg",
+                "sourceSha256": "63883abdc1b51e9522259213c01668f1ce71d679459a704268c373943b67c113",
+                "purpose": "Icon Article",
+                "nativeImageFieldValue": null,
+                "contentHubAssetId": null
+              },
+              "nativeTargetId": null,
+              "nativeGeneralLinkValue": null
+            },
+            "links": []
+          }
+        },
+        {
+          "key": "s04-linked-card-02",
+          "kind": "linked-card",
+          "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[3]",
+          "sourceLine": 895,
+          "sourceLayout": {
+            "cardsClasses": "o-cards o-cards__col4",
+            "footerClasses": "m-card__footer"
+          },
+          "fields": {
+            "heading": "How to help clients get on track with retirement savings",
+            "headingHtml": "<h4>How to help clients get on track with retirement savings</h4>",
+            "headingLevel": "h4",
+            "body": "<p>Many Americans are struggling to prioritize saving for retirement and don\u2019t know how to get on track, according to the 2026 Annual Retirement Study.</p>",
+            "subheading": "Article",
+            "categoryLabel": "Article",
+            "image": {
+              "kind": "raster",
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[3]/div[1]/picture/img",
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Card/Allianz-Life/card-how-to-help-clients-get-on-track-with-retirement-savings.jpg",
+              "sourceSrc": "/-/media/Feature/Card/Allianz-Life/card-how-to-help-clients-get-on-track-with-retirement-savings.jpg",
+              "sourceSrcset": "/-/media/Feature/Card/Allianz-Life/card-how-to-help-clients-get-on-track-with-retirement-savings.jpg?w=600&hash=7535EAD43986E3FC5F33DA8436275DC2 600w,/-/media/Feature/Card/Allianz-Life/card-how-to-help-clients-get-on-track-with-retirement-savings.jpg?w=510&hash=D589318835CBF872FFF420AFC25BEC71 510w,/-/media/Feature/Card/Allianz-Life/card-how-to-help-clients-get-on-track-with-retirement-savings.jpg?w=357&hash=5DB1D8B8F8490DDFD101E8BB4B9734AC 357w,/-/media/Feature/Card/Allianz-Life/card-how-to-help-clients-get-on-track-with-retirement-savings.jpg?w=196&hash=5CA191B8481F7E7E3E7C110EDE04B8F8 196w,/-/media/Feature/Card/Allianz-Life/card-how-to-help-clients-get-on-track-with-retirement-savings.jpg?w=78&hash=04D582C6E4AF61FF89D185674C0F79DC 78w",
+              "sourceSizes": "100vw",
+              "alt": "",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "icon": {
+              "kind": "svg",
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[3]/div[4]/svg",
+              "sourceSha256": "63883abdc1b51e9522259213c01668f1ce71d679459a704268c373943b67c113",
+              "purpose": "Icon Article",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "theme": "transparent",
+            "iconTheme": "transparent",
+            "alphanumeral": "",
+            "link": {
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[3]",
+              "sourceLine": 895,
+              "href": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-get-on-track-with-retirement-savings",
+              "text": "How to help clients get on track with retirement savings Many Americans are struggling to prioritize saving for retirement and don\u2019t know how to get on track, according to the 2026 Annual Retirement Study. Article",
+              "target": "",
+              "rel": "",
+              "ariaLabel": "",
+              "sourceClasses": "m-card",
+              "kind": "internal",
+              "icon": {
+                "kind": "svg",
+                "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[3]/div[4]/svg",
+                "sourceSha256": "63883abdc1b51e9522259213c01668f1ce71d679459a704268c373943b67c113",
+                "purpose": "Icon Article",
+                "nativeImageFieldValue": null,
+                "contentHubAssetId": null
+              },
+              "nativeTargetId": null,
+              "nativeGeneralLinkValue": null
+            },
+            "links": []
+          }
+        },
+        {
+          "key": "s04-linked-card-03",
+          "kind": "linked-card",
+          "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[4]",
+          "sourceLine": 920,
+          "sourceLayout": {
+            "cardsClasses": "o-cards o-cards__col4",
+            "footerClasses": "m-card__footer"
+          },
+          "fields": {
+            "heading": "How to help clients build a retirement strategy",
+            "headingHtml": "<h4>How to help clients build a retirement strategy</h4>",
+            "headingLevel": "h4",
+            "body": "<p>Many Americans are heading toward retirement without a clear roadmap, according to the 2026 Annual Retirement Study.</p>",
+            "subheading": "Article",
+            "categoryLabel": "Article",
+            "image": {
+              "kind": "raster",
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[4]/div[1]/picture/img",
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Card/Allianz-Life/card-azl-how-to-help-clients-build-a-retirement-strategy.jpg",
+              "sourceSrc": "/-/media/Feature/Card/Allianz-Life/card-azl-how-to-help-clients-build-a-retirement-strategy.jpg",
+              "sourceSrcset": "/-/media/Feature/Card/Allianz-Life/card-azl-how-to-help-clients-build-a-retirement-strategy.jpg?w=600&hash=A411C150CAEF38D9DCF070ABA6DF5976 600w,/-/media/Feature/Card/Allianz-Life/card-azl-how-to-help-clients-build-a-retirement-strategy.jpg?w=510&hash=7A724D3203013A9F51EDD607A396CB06 510w,/-/media/Feature/Card/Allianz-Life/card-azl-how-to-help-clients-build-a-retirement-strategy.jpg?w=357&hash=E4F905E1F2DF955BCAB9615E534EEA03 357w,/-/media/Feature/Card/Allianz-Life/card-azl-how-to-help-clients-build-a-retirement-strategy.jpg?w=196&hash=9FE38CC2C0ECCFD34D7DF7E7671163C5 196w,/-/media/Feature/Card/Allianz-Life/card-azl-how-to-help-clients-build-a-retirement-strategy.jpg?w=78&hash=0AF1C92337252581D163A857955D9714 78w",
+              "sourceSizes": "100vw",
+              "alt": "",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "icon": {
+              "kind": "svg",
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[4]/div[4]/svg",
+              "sourceSha256": "63883abdc1b51e9522259213c01668f1ce71d679459a704268c373943b67c113",
+              "purpose": "Icon Article",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "theme": "transparent",
+            "iconTheme": "transparent",
+            "alphanumeral": "",
+            "link": {
+              "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[4]",
+              "sourceLine": 920,
+              "href": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-build-a-retirement-strategy",
+              "text": "How to help clients build a retirement strategy Many Americans are heading toward retirement without a clear roadmap, according to the 2026 Annual Retirement Study. Article",
+              "target": "",
+              "rel": "",
+              "ariaLabel": "",
+              "sourceClasses": "m-card",
+              "kind": "internal",
+              "icon": {
+                "kind": "svg",
+                "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/div/a[4]/div[4]/svg",
+                "sourceSha256": "63883abdc1b51e9522259213c01668f1ce71d679459a704268c373943b67c113",
+                "purpose": "Icon Article",
+                "nativeImageFieldValue": null,
+                "contentHubAssetId": null
+              },
+              "nativeTargetId": null,
+              "nativeGeneralLinkValue": null
+            },
+            "links": []
+          }
+        },
+        {
+          "key": "s04-footer-link-04",
+          "kind": "collection-footer-link",
+          "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/footer/div/a",
+          "sourceLine": 954,
+          "fields": {
+            "link": {
+              "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/footer/div/a",
+              "sourceLine": 954,
+              "href": "/for-financial-professionals/resources",
+              "text": "See more articles",
+              "target": "",
+              "rel": "",
+              "ariaLabel": "See more articles",
+              "sourceClasses": "a-link",
+              "kind": "internal",
+              "icon": {
+                "kind": "svg",
+                "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/footer/div/a/span[1]/svg",
+                "sourceSha256": "9dd3a8dffb2a6e1043c39599d7a7b3905a40d028932c94ebd1a2f9002f88ca84",
+                "purpose": "Right",
+                "nativeImageFieldValue": null,
+                "contentHubAssetId": null
+              },
+              "nativeTargetId": null,
+              "nativeGeneralLinkValue": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "parent-market-cards",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialResourceCards",
+      "params": {
+        "theme": "blue-soft",
+        "alignment": "center",
+        "bodySize": "medium",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "layout": "cards",
+        "columns": "3",
+        "headingLevel": "h4"
+      },
+      "blocks": [
+        {
+          "key": "s09-linked-card-00",
+          "kind": "linked-card",
+          "sourceXPath": "/html/body/main/div[10]/div/div/div/div/a[1]",
+          "sourceLine": 1279,
+          "sourceLayout": {
+            "cardsClasses": "o-cards o-cards__col3",
+            "footerClasses": null
+          },
+          "fields": {
+            "heading": "2026 Q3 Market Outlook: Preparing for lift-off or let-down",
+            "headingHtml": "<h4></h4><p style=\"text-align: center;\">2026 Q3 Market Outlook: Preparing for lift-off or let-down</p>",
+            "headingLevel": "h4",
+            "body": "",
+            "subheading": "",
+            "categoryLabel": "",
+            "image": null,
+            "icon": null,
+            "theme": "transparent",
+            "iconTheme": "transparent",
+            "alphanumeral": "",
+            "link": {
+              "sourceXPath": "/html/body/main/div[10]/div/div/div/div/a[1]",
+              "sourceLine": 1279,
+              "href": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q3-2026",
+              "text": "2026 Q3 Market Outlook: Preparing for lift-off or let-down",
+              "target": "",
+              "rel": "",
+              "ariaLabel": "",
+              "sourceClasses": "m-card",
+              "kind": "internal",
+              "icon": null,
+              "nativeTargetId": null,
+              "nativeGeneralLinkValue": null
+            },
+            "links": []
+          }
+        },
+        {
+          "key": "s09-linked-card-01",
+          "kind": "linked-card",
+          "sourceXPath": "/html/body/main/div[10]/div/div/div/div/a[2]",
+          "sourceLine": 1289,
+          "sourceLayout": {
+            "cardsClasses": "o-cards o-cards__col3",
+            "footerClasses": null
+          },
+          "fields": {
+            "heading": "2026 Q2 Outlook: Looking for a strait answer here",
+            "headingHtml": "<h4></h4><p style=\"text-align: center;\">2026 Q2 Outlook: Looking for a strait answer here</p>",
+            "headingLevel": "h4",
+            "body": "",
+            "subheading": "",
+            "categoryLabel": "",
+            "image": null,
+            "icon": null,
+            "theme": "transparent",
+            "iconTheme": "transparent",
+            "alphanumeral": "",
+            "link": {
+              "sourceXPath": "/html/body/main/div[10]/div/div/div/div/a[2]",
+              "sourceLine": 1289,
+              "href": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q2-2026",
+              "text": "2026 Q2 Outlook: Looking for a strait answer here",
+              "target": "",
+              "rel": "",
+              "ariaLabel": "",
+              "sourceClasses": "m-card",
+              "kind": "internal",
+              "icon": null,
+              "nativeTargetId": null,
+              "nativeGeneralLinkValue": null
+            },
+            "links": []
+          }
+        },
+        {
+          "key": "s09-linked-card-02",
+          "kind": "linked-card",
+          "sourceXPath": "/html/body/main/div[10]/div/div/div/div/a[3]",
+          "sourceLine": 1299,
+          "sourceLayout": {
+            "cardsClasses": "o-cards o-cards__col3",
+            "footerClasses": null
+          },
+          "fields": {
+            "heading": "2026 Q1 Market Outlook: From policy shift to momentum lift",
+            "headingHtml": "<h4></h4><p style=\"text-align: center;\">2026 Q1 Market Outlook: From policy shift to momentum lift</p>",
+            "headingLevel": "h4",
+            "body": "",
+            "subheading": "",
+            "categoryLabel": "",
+            "image": null,
+            "icon": null,
+            "theme": "transparent",
+            "iconTheme": "transparent",
+            "alphanumeral": "",
+            "link": {
+              "sourceXPath": "/html/body/main/div[10]/div/div/div/div/a[3]",
+              "sourceLine": 1299,
+              "href": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2026",
+              "text": "2026 Q1 Market Outlook: From policy shift to momentum lift",
+              "target": "",
+              "rel": "",
+              "ariaLabel": "",
+              "sourceClasses": "m-card",
+              "kind": "internal",
+              "icon": null,
+              "nativeTargetId": null,
+              "nativeGeneralLinkValue": null
+            },
+            "links": []
+          }
+        }
+      ]
+    },
+    {
+      "key": "parent-industry-tiles",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialCallout",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "bodySize": "medium",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "columns": "3",
+        "container": "row",
+        "matchHeightRow": "1"
+      },
+      "blocks": [
+        {
+          "key": "s10-article-01",
+          "kind": "article",
+          "sourceXPath": "/html/body/main/div[11]/div/div[2]/div[1]/article",
+          "sourceLine": 1345,
+          "fields": {
+            "heading": "2025 Insurance Barometer Study",
+            "headingHtml": "<h3>2025 Insurance Barometer Study</h3>",
+            "headingLevel": "h3",
+            "subheading": "",
+            "body": "<p>This annual research study, conducted jointly by LIMRA and Life Happens, finds that a lack of knowledge may be contributing to a coverage gap among young consumers.</p>",
+            "icon": null,
+            "image": null,
+            "alphanumeral": "",
+            "links": [
+              {
+                "sourceXPath": "/html/body/main/div[11]/div/div[2]/div[1]/article/div/div/footer/div/a",
+                "sourceLine": 1360,
+                "href": "https://lifehappens.org/research/they-dont-understand-life-insurance-and-overestimate-its-cost/",
+                "text": "Read more at Life Happens",
+                "target": "_blank",
+                "rel": "",
+                "ariaLabel": "Read more at Life Happens",
+                "sourceClasses": "a-link",
+                "kind": "external",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[11]/div/div[2]/div[1]/article/div/div/footer/div/a/span[1]/svg",
+                  "sourceSha256": "9dd3a8dffb2a6e1043c39599d7a7b3905a40d028932c94ebd1a2f9002f88ca84",
+                  "purpose": "Right",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              }
+            ],
+            "theme": "grey-soft",
+            "iconTheme": "transparent"
+          },
+          "sourceLayout": {
+            "articleClasses": "m-axlTile match-height    -is--stacked  t-bg-grey-soft ",
+            "columnClasses": "l-grid__column-medium-4",
+            "rowClasses": "l-grid__row match-height-row  u-padding-bottom-xl ",
+            "contentClasses": "tileContent u-text-left",
+            "bodyClasses": "tileBody u-font-size-md"
+          }
+        },
+        {
+          "key": "s10-article-02",
+          "kind": "article",
+          "sourceXPath": "/html/body/main/div[11]/div/div[2]/div[2]/article",
+          "sourceLine": 1375,
+          "fields": {
+            "heading": "Most adults underestimate long term care needs and costs",
+            "headingHtml": "<h3>Most adults underestimate long term care needs and costs</h3>",
+            "headingLevel": "h3",
+            "subheading": "",
+            "body": "<p>A recent study from the Center for Retirement Research at Boston College investigates how older households and financial advisors perceive medical and LTC risks in retirement. </p>",
+            "icon": null,
+            "image": null,
+            "alphanumeral": "",
+            "links": [
+              {
+                "sourceXPath": "/html/body/main/div[11]/div/div[2]/div[2]/article/div/div/footer/div/a",
+                "sourceLine": 1390,
+                "href": "https://crr.bc.edu/do-older-adults-understand-healthcare-risks-and-do-advisors-help/",
+                "text": "Go to the study findings in Center for Retirement Research at Boston College",
+                "target": "_blank",
+                "rel": "",
+                "ariaLabel": "Go to the study findings in Center for Retirement Research at Boston College",
+                "sourceClasses": "a-link",
+                "kind": "external",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[11]/div/div[2]/div[2]/article/div/div/footer/div/a/span[1]/svg",
+                  "sourceSha256": "9dd3a8dffb2a6e1043c39599d7a7b3905a40d028932c94ebd1a2f9002f88ca84",
+                  "purpose": "Right",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              }
+            ],
+            "theme": "grey-soft",
+            "iconTheme": "transparent"
+          },
+          "sourceLayout": {
+            "articleClasses": "m-axlTile match-height    -is--stacked  t-bg-grey-soft ",
+            "columnClasses": "l-grid__column-medium-4",
+            "rowClasses": "l-grid__row match-height-row  u-padding-bottom-xl ",
+            "contentClasses": "tileContent u-text-left",
+            "bodyClasses": "tileBody u-font-size-md"
+          }
+        },
+        {
+          "key": "s10-article-03",
+          "kind": "article",
+          "sourceXPath": "/html/body/main/div[11]/div/div[2]/div[3]/article",
+          "sourceLine": 1405,
+          "fields": {
+            "heading": "Research and insights from LIMRA",
+            "headingHtml": "<h3>Research and insights from LIMRA</h3>",
+            "headingLevel": "h3",
+            "subheading": "",
+            "body": "<p>The LIMRA Retirement Income Institute is bringing together scholars and member companies to find groundbreaking ways to tackle retirement income security in America.</p>",
+            "icon": null,
+            "image": null,
+            "alphanumeral": "",
+            "links": [
+              {
+                "sourceXPath": "/html/body/main/div[11]/div/div[2]/div[3]/article/div/div/footer/div/a",
+                "sourceLine": 1420,
+                "href": "https://www.limraconsumer.com/retirement-income-institute/",
+                "text": "Go to the Retirement Income Institute",
+                "target": "_blank",
+                "rel": "",
+                "ariaLabel": "Go to the Retirement Income Institute",
+                "sourceClasses": "a-link",
+                "kind": "external",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[11]/div/div[2]/div[3]/article/div/div/footer/div/a/span[1]/svg",
+                  "sourceSha256": "9dd3a8dffb2a6e1043c39599d7a7b3905a40d028932c94ebd1a2f9002f88ca84",
+                  "purpose": "Right",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              }
+            ],
+            "theme": "grey-soft",
+            "iconTheme": "transparent"
+          },
+          "sourceLayout": {
+            "articleClasses": "m-axlTile match-height    -is--stacked  t-bg-grey-soft ",
+            "columnClasses": "l-grid__column-medium-4",
+            "rowClasses": "l-grid__row match-height-row  u-padding-bottom-xl ",
+            "contentClasses": "tileContent u-text-left",
+            "bodyClasses": "tileBody u-font-size-md"
+          }
+        }
+      ]
+    },
+    {
+      "key": "parent-learn-allianz",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialCallout",
+      "params": {
+        "theme": "green-soft",
+        "alignment": "center",
+        "bodySize": "large",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none"
+      },
+      "blocks": [
+        {
+          "key": "s11-article-00",
+          "kind": "article",
+          "sourceXPath": "/html/body/main/div[12]/div/div/div/article",
+          "sourceLine": 1447,
+          "fields": {
+            "heading": "Learn about Allianz",
+            "headingHtml": "<h2>Learn about Allianz</h2>",
+            "headingLevel": "h2",
+            "subheading": "",
+            "body": "<p>We are a leading provider of financial and retirement solutions with more than a century-long tradition of keeping our promises. Those appointed with Allianz will have access to a suite of retirement risk management products that can help your clients achieve their retirement goals.</p>",
+            "icon": {
+              "kind": "svg",
+              "sourceXPath": "/html/body/main/div[12]/div/div/div/article/div/div[1]/div/svg",
+              "sourceSha256": "4974f44bb82357d262a0d44845f49e968e83e8f41c4377ac92477d92e8e1a3c9",
+              "purpose": "Information",
+              "nativeImageFieldValue": null,
+              "contentHubAssetId": null
+            },
+            "image": null,
+            "alphanumeral": "",
+            "links": [
+              {
+                "sourceXPath": "/html/body/main/div[12]/div/div/div/article/div/div[2]/footer/div/a",
+                "sourceLine": 1466,
+                "href": "/what-we-offer",
+                "text": "See our retirement risk management solutions",
+                "target": "",
+                "rel": "",
+                "ariaLabel": "See our retirement risk management solutions",
+                "sourceClasses": "a-link",
+                "kind": "internal",
+                "icon": {
+                  "kind": "svg",
+                  "sourceXPath": "/html/body/main/div[12]/div/div/div/article/div/div[2]/footer/div/a/span[1]/svg",
+                  "sourceSha256": "9dd3a8dffb2a6e1043c39599d7a7b3905a40d028932c94ebd1a2f9002f88ca84",
+                  "purpose": "Right",
+                  "nativeImageFieldValue": null,
+                  "contentHubAssetId": null
+                },
+                "nativeTargetId": null,
+                "nativeGeneralLinkValue": null
+              }
+            ],
+            "theme": "transparent",
+            "iconTheme": "primary-brand"
+          },
+          "sourceLayout": {
+            "articleClasses": "m-axlTile match-height    -is--stacked  t-bg-transparent ",
+            "columnClasses": "l-grid__column-medium-12",
+            "rowClasses": "l-grid__row    ",
+            "contentClasses": "tileContent u-text-center",
+            "bodyClasses": "tileBody u-font-size-lg"
+          }
+        }
+      ]
+    }
+  ],
+  "sourceRightArrowPath": "M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536"
+}
