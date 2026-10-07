@@ -72,7 +72,7 @@ for (const fixture of fixtures) {
    if(r.componentName!=='AllianzHero') assert.doesNotMatch(normal,/<h1\b/);
    if(r.componentName==='AllianzCardGrid') {
     for(const child of r.children) {
-     if(child.fields.alphanumeral) assert.ok(normal.includes(`>${child.fields.alphanumeral}</span>`));
+     if(child.fields.alphanumeral) { const tag = r.variant === 'EditorialTiles' && !['image-left','image-right'].includes(r.params.layout) ? 'em' : 'span'; assert.ok(normal.includes(`>${child.fields.alphanumeral}</${tag}>`)); }
      if(child.fields.body) assert.ok(editing.includes(child.fields.body));
     }
    } else if(r.fields.body) assert.ok(editing.includes(r.fields.body));
@@ -99,7 +99,7 @@ for (const fixture of fixtures) {
 test('same badge supports icon and number; source heading/body sizes are independent',()=>{
  const d={children:{results:[{id:'test',heading:field('heading','A heading'),headingLevel:field('headingLevel','h2'),body:field('body','<p>Medium body</p>'),icon:field('icon',{src:'/test-only/icon.svg',alt:'Inflation'}),alphanumeral:field('alphanumeral','3'),iconTheme:field('iconTheme','primary-brand')}]}};
  const html=render(Cards.EditorialTiles,props(d,false,{sourceWidth:'centered-eight'}));
- assert.match(html,/tileIcon t-bg-primary-brand t-icon-primary-white[^]*?<img[^]*?<span class="alphaType">3<\/span><\/div>/);
+ assert.match(html,/tileIcon t-bg-primary-brand t-icon-primary-white[^]*?<img[^]*?<em class="alphaType">3<\/em><\/div>/);
  assert.match(html,/<h2>A heading<\/h2>/);assert.match(html,/tileBody u-font-size-md/);assert.doesNotMatch(html,/tileAlphanumeral|u-font-size-xl/);
  assert.match(html,/l-grid__column-medium-8 offset-medium-2 l-grid__column-small-12/);
 });

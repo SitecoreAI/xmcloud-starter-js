@@ -15,7 +15,7 @@ export const Default = (props: ComponentProps) => {
     rendering={props.rendering} page={props.page} componentMap={componentMap} />;
   return <div className={`${params.sectionWidth === 'contained' ? 'l-container' : 'l-container--full-width'} ${params.sectionSpacing === '1' ? 'u-row-spacing ' : ''}${sectionTheme(params.theme)} axlTileCollection`} id={params.RenderingIdentifier}>
     <div className={`l-grid l-grid--max-width${params.sectionWidth === 'contained' ? ' l-grid--no-gutters-outer' : ''}`}>
-      {params.layout === 'column' ? <div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">{children}</div></div> : children}
+      {params.layout === 'column' ? <div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">{children}</div></div> : params.layout === 'row' ? <div className={`l-grid__row ${rowSpacing(params)}`}>{children}</div> : children}
     </div>
   </div>;
 };

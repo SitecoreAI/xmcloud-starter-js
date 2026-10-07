@@ -1,0 +1,167 @@
+{
+  "sourceLibraryFileId": "libfile_8e09ca0591f8819190ef68b06e50e82e",
+  "sourceLibraryVersion": 2,
+  "sourcePacketSha256": "af5218e7a7079f2051cad4426491f920973699a1170afd1220a8c15c9f5f37b8",
+  "items": [
+    {
+      "route": "/new-york/about",
+      "order": 4,
+      "sourceFile": "11-about-current-source.html",
+      "sourceReadAtUtc": "2026-10-07T13:36:18.395830+00:00",
+      "sourceBodyXpaths": [
+        "/html/body/div[3]/div/div[2]/div[3]/div/p[1]",
+        "/html/body/div[3]/div/div[2]/div[3]/div/p[2]",
+        "/html/body/div[3]/div/div[2]/div[3]/div/h2",
+        "/html/body/div[3]/div/div[2]/div[3]/div/p[3]",
+        "/html/body/div[3]/div/div[2]/div[3]/div/p[4]"
+      ],
+      "scalarFields": {
+        "heading": "",
+        "body": "<p>Allianz Life Insurance Company of New York (Allianz Life of NY) is committed to helping every American live out their life with financial independence. We offer a variety of innovative products that are designed to help you achieve your financial goals.</p>\n<p class=\"link\"><a href=\"/New-York/About/Why-Allianz-Life-of-NY\">Why Allianz Life of NY?</a></p>\n<h2>Careers</h2>\n<p>If you're energetic, driven, and ready to join a team of professionals who value your contribution as much as you'll value theirs, we have the opportunity for you.</p>\n<p class=\"link\"><a href=\"/New-York/About/Careers\">Careers at Allianz</a></p>"
+      },
+      "bodySha256": "7fe6e353840328fb95a943ce72c4db0ea6c131332733880ba03d40b5b09bfee1",
+      "sourceLinkAttributes": [
+        {
+          "href": "/New-York/About/Why-Allianz-Life-of-NY"
+        },
+        {
+          "href": "/New-York/About/Careers"
+        }
+      ]
+    },
+    {
+      "route": "/new-york/about/careers",
+      "order": 4,
+      "sourceFile": "12-careers-current-source.html",
+      "sourceReadAtUtc": "2026-10-07T13:36:18.397910+00:00",
+      "sourceBodyXpaths": [
+        "/html/body/div[3]/div/div[2]/div[3]/div/p[1]",
+        "/html/body/div[3]/div/div[2]/div[3]/div/p[2]",
+        "/html/body/div[3]/div/div[2]/div[3]/div/p[3]"
+      ],
+      "scalarFields": {
+        "heading": "",
+        "body": "<p>We're not your ordinary financial services company – we're extraordinary. In our employee-centric environment, we have built a team and a culture that are as innovative as our products while encouraging and rewarding growth, opportunity, and success.</p>\n<p>We offer one of the most comprehensive benefits packages in the industry. From the very first day you join our team, you will know that your contributions are valued.</p>\n<p class=\"link\"><a target=\"_blank\" href=\"https://careers.allianz.com/US/go/Allianz-US-Life/5140601/\">Search current job openings</a></p>"
+      },
+      "bodySha256": "bad632ab74da5d8829b4decfa25eba797876a7dd9967090bbc500fca2f958fbc",
+      "sourceLinkAttributes": [
+        {
+          "target": "_blank",
+          "href": "https://careers.allianz.com/US/go/Allianz-US-Life/5140601/"
+        }
+      ]
+    },
+    {
+      "route": "/new-york/about/why-allianz-life-of-ny",
+      "order": 3,
+      "sourceFile": "13-why-allianz-life-of-ny-current-source.html",
+      "sourceReadAtUtc": "2026-10-07T13:36:18.397128+00:00",
+      "sourceBodyXpaths": [
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[1]"
+      ],
+      "scalarFields": {
+        "heading": "",
+        "body": "<p>Allianz Life Insurance Company of New York (Allianz Life of NY) maintains a high-quality investment portfolio and strong liquidity position to support contract owner obligations and business needs. Diligent capital management allows the company to maintain appropriate capitalization to support our overall business at levels consistent with our top-rated insurer status.</p>"
+      },
+      "bodySha256": "ac83712baed0be339130fb0270219daf5813c1592c273e67cc8eddac82d01951",
+      "sourceLinkAttributes": []
+    },
+    {
+      "route": "/new-york/about/why-allianz-life-of-ny",
+      "order": 4,
+      "sourceFile": "13-why-allianz-life-of-ny-current-source.html",
+      "sourceReadAtUtc": "2026-10-07T13:36:18.397128+00:00",
+      "sourceBodyXpaths": [
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/h2",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[2]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/table",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[3]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[4]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[5]"
+      ],
+      "scalarFields": {
+        "heading": "",
+        "body": "<h2>Ratings</h2>\n<p>The ratings Allianz Life Insurance Company of New York receives from independent rating agencies confirm our financial strength.</p>\n<table class=\"table table-striped\">\n    <tbody>\n        <tr>\n            <th> Agency </th>\n            <th> Current Rating </th>\n        </tr>\n        <tr>\n            <td> A.M. Best </td>\n            <td class=\"highlight\"> A+ (Superior) </td>\n        </tr>\n        <tr>\n            <td> Standard &amp; Poor's </td>\n            <td class=\"highlight\"> AA (Very Strong) </td>\n        </tr>\n        <tr>\n            <td> Moody's </td>\n            <td class=\"highlight\"> N/A </td>\n        </tr>\n    </tbody>\n</table>\n<p>These independent agency ratings are based on an analysis of financial results and an evaluation of management objectives, strategies, and risk management programs. The ratings do not pertain to the variable option(s), which fluctuate with market conditions. The ratings do not indicate approval by the analysts and are subject to change.</p>\n<p>The A.M. Best rating of A+ (Superior) is the 2nd highest of 16 possible ratings, and was affirmed in March 2026.</p>\n<p>The Standard and Poor's rating of AA (Very Strong) is the 3rd highest of 21 possible ratings, and was affirmed in March 2026.</p>"
+      },
+      "bodySha256": "b3accb614d2634c267fb8ecbfcb43184a5813199f6db9e04a3f918787739e6e8",
+      "sourceLinkAttributes": []
+    },
+    {
+      "route": "/new-york/about/why-allianz-life-of-ny",
+      "order": 5,
+      "sourceFile": "13-why-allianz-life-of-ny-current-source.html",
+      "sourceReadAtUtc": "2026-10-07T13:36:18.397128+00:00",
+      "sourceBodyXpaths": [
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/h3[1]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[6]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[7]"
+      ],
+      "scalarFields": {
+        "heading": "",
+        "body": "<h3>A.M. Best</h3>\n<p>Established in 1906, A.M. Best is the oldest independent insurance analyst in the country. The company assigns a rating to an insurance company based on financial information (results) and qualitative evaluations (management objectives and strategies). The quantitative financial evaluation includes an extensive analysis of reported financial performance in the areas of profitability, leverage and liquidity. The qualitative evaluation reviews performance in such areas as quality of assets, reserve adequacy, reinsurance, business strategies, market leadership, parent company support, and management competency. A+ is the second highest rating assigned by A.M. Best.</p>\n<p>For a full description of how A.M. Best rating categories are defined refer to www.AMBest.com.</p>"
+      },
+      "bodySha256": "23e4cd2015f047ea34ae39031cdaf2425d5f6e33f3dc882020d7e4ace3a4fdc3",
+      "sourceLinkAttributes": []
+    },
+    {
+      "route": "/new-york/about/why-allianz-life-of-ny",
+      "order": 6,
+      "sourceFile": "13-why-allianz-life-of-ny-current-source.html",
+      "sourceReadAtUtc": "2026-10-07T13:36:18.397128+00:00",
+      "sourceBodyXpaths": [
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/h3[2]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[8]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[9]"
+      ],
+      "scalarFields": {
+        "heading": "",
+        "body": "<h3>Standard &amp; Poor's<sup>®</sup> </h3>\n<p>A Standard &amp; Poor's® Insurer Financial Strength Rating is a current opinion of the financial security characteristics of an insurance organization with respect to its ability to pay under its insurance policies and contracts in accordance with their terms. Insurer Financial Strength Ratings are based on information furnished by rated organizations (or obtained by Standard &amp; Poor's® from other sources it considers reliable). Insurers rated AA have Very Strong financial security characteristics.</p>\n<p>For a full description of how Standard &amp; Poor's® Insurer Financial Strength Rating categories are assigned refer to www.standardandpoors.com.</p>"
+      },
+      "bodySha256": "b88a0087abbe7bfd9b35ae5c1144521226b242b784309e01c97dd4f6ef748f8c",
+      "sourceLinkAttributes": []
+    },
+    {
+      "route": "/new-york/about/why-allianz-life-of-ny",
+      "order": 7,
+      "sourceFile": "13-why-allianz-life-of-ny-current-source.html",
+      "sourceReadAtUtc": "2026-10-07T13:36:18.397128+00:00",
+      "sourceBodyXpaths": [
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/h3[3]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[10]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[11]",
+        "/html/body/div[3]/div/div[2]/div[2]/div/div/div/p[12]"
+      ],
+      "scalarFields": {
+        "heading": "",
+        "body": "<h3>Our story</h3>\n<p>Allianz Life Insurance Company of New York was incorporated as a stock company under the laws of New York on September 21, 1982. The company was licensed on April 11, 1984 and commenced business on September 1, 1984.</p>\n<p>The company is a wholly owned subsidiary of Allianz Life Insurance Company of North America (\"Allianz\"), a Minnesota insurance company. Allianz is in turn a wholly owned subsidiary of Allianz of America, Inc (\"AZOA\"), a Delaware holding company. The company is part of Allianz SE, a global financial group with private and corporate customers in nearly 70 countries worldwide, and is the world's 76<sup>th</sup> largest company (Fortune Global 500, July 2025 – ranking based on revenue) and ninth largest asset manager (Allianz SE: P&amp;I / Thinking Ahead World 500, November 2025. Ranked by total AUM.).</p>\n<p>Allianz Life® of NY products are offered through a network of independent financial professionals and registered representatives.</p>"
+      },
+      "bodySha256": "083ef3425db765ce9c3ef7fbbeba16263fbcaff6349d61b71f6018b4ad69167e",
+      "sourceLinkAttributes": []
+    },
+    {
+      "route": "/new-york/about/why-allianz-life-of-ny",
+      "order": 8,
+      "sourceFile": "13-why-allianz-life-of-ny-current-source.html",
+      "sourceReadAtUtc": "2026-10-07T13:36:18.397128+00:00",
+      "sourceBodyXpaths": [
+        "/html/body/div[3]/div/div[2]/div[5]/div/p[1]",
+        "/html/body/div[3]/div/div[2]/div[5]/div/p[2]"
+      ],
+      "scalarFields": {
+        "heading": "",
+        "body": "<p>Products are issued by Allianz Life Insurance Company of New York, 1633 Broadway, 42<sup>nd</sup> Floor, New York, NY 10019-7585 and distributed by its affiliate, Allianz Life\nFinancial Services, LLC, <a href=\"http://www.finra.org\" class=\"disclosure-finra\" target=\"_blank\">member FINRA</a>, 5701 Golden Hills Drive, Minneapolis, MN 55416-1297. 800.542.5427 <a href=\"/New-York\">www.allianzlife.com/new-york</a></p>\n<p>Guarantees are backed solely by the financial strength and claims-paying ability of the issuing insurance company and do not apply to the performance of the variable subaccount(s), which will fluctuate with market conditions.</p>"
+      },
+      "bodySha256": "24a65cd943b835eff12fcd993ec04308745c29b2385e4d7ea098983c67d57ba3",
+      "sourceLinkAttributes": [
+        {
+          "href": "http://www.finra.org",
+          "class": "disclosure-finra",
+          "target": "_blank"
+        },
+        {
+          "href": "/New-York"
+        }
+      ]
+    }
+  ]
+}

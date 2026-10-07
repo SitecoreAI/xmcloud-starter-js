@@ -186,5 +186,5 @@ test('modern Default and EditorialIntro keep their distinct baseline markup and 
   const file = fs.readFileSync(path.join(sourceRoot, 'components/allianz-card-grid/AllianzCardGrid.tsx'), 'utf8');
   const marker = '\n/** Native no-media introduction rows with authored heading semantics.';
   assert.ok(file.includes(marker));
-  assert.equal(sha(file.slice(0, file.indexOf(marker))), '77ccea54549549768de75a11130a71c708541914ca09e69c81e89353835e74ed');
+  assert.equal(sha(file.slice(0, file.indexOf(marker))), '5d1bf98693d4a9480caada361405568ecfc5280033bd94cc934811c526d7b326');
 });

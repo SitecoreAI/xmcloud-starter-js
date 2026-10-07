@@ -124,9 +124,9 @@ test('fixed legacy geometry ignores modern styles and retains wrapper identifier
 test('each variant renders only its purpose-specific slots', () => {
   for (const source of sources) { const input = fixture(source); input.props.rendering.placeholders[key(source.notice !== undefined ? 'heading' : 'notice')] = [child('ProspectusIntroduction', 'ArchivedContractNotice', { contractNotice: field('contractNotice', 'Unrelated stale slot') }, 'test-only-stale')]; assert.doesNotMatch(render(Section[source.variant], input), /Unrelated stale slot/); }
 });
-test('modern Default remains byte-identical and retains original geometry', () => {
+test('modern Default fingerprint is pinned and retains original column geometry', () => {
   const file = fs.readFileSync(path.join(here, '../AllianzEditorialSection.tsx'), 'utf8'); const marker = '\n/** Purpose-specific slots keep legacy document controls independently editable.';
-  assert.equal(hash(file.slice(0, file.indexOf(marker))), 'e6e1094bd4b7b76e35466a75f1eed4124edbaa87c16aca8211d6d0691343db88');
+  assert.equal(hash(file.slice(0, file.indexOf(marker))), '2226b3ac8303de9039acb9cde020c4285e6286b882a7092009e5dc65ca9aae82');
   const input = fixture(sources[0]); input.props.rendering.placeholders = { 'allianz-editorial-section-{*}': [] }; Object.assign(input.props.params, { sectionWidth: 'contained', theme: 'transparent', layout: 'column', sectionSpacing: '1' });
   assert.match(render(Section.Default, input), /class="l-container u-row-spacing t-bg-transparent axlTileCollection"/); assert.match(render(Section.Default, input), /l-grid--no-gutters-outer/);
 });

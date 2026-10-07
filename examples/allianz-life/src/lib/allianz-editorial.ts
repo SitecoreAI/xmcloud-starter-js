@@ -8,9 +8,11 @@ export const editorialBodyClass = (size?: string) =>
 export const editorialColumnClass = (params: Record<string, string | undefined>) =>
   params.sourceWidth === 'centered-eight'
     ? 'l-grid__column-medium-8 offset-medium-2 l-grid__column-small-12'
+    : params.columns === '2' ? 'l-grid__column-medium-6'
     : params.columns === '3' ? 'l-grid__column-medium-4' : 'l-grid__column-medium-12';
 
-export const editorialHeadingTag = (level?: string): 'h2' | 'h3' => level === 'h3' ? 'h3' : 'h2';
+export const editorialHeadingTag = (level?: string): 'h2' | 'h3' | 'h4' =>
+  level === 'h4' ? 'h4' : level === 'h3' ? 'h3' : 'h2';
 
 export const hasEditorialBlockMarkup = (value?: string) =>
   /<(?:address|article|aside|blockquote|div|dl|fieldset|figure|footer|form|h[1-6]|header|hr|main|nav|ol|p|pre|section|table|ul)\b/i.test(value ?? '');

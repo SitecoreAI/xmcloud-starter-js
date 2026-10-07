@@ -1,0 +1,126 @@
+{
+  "sourcePacketSha256": "db02bc8eb6d310159c937dbaf4f4eea59bebcbaae2ebb8ed16f0262d49e259a3",
+  "route": "/what-we-offer/Life-Insurance/strategies-for-business-owners/5-tips-for-business-buy-sell-agreements",
+  "items": [
+    {
+      "packet": 3,
+      "title": "Home",
+      "nativeLinkXml": "<link text=\"Home\" linktype=\"external\" url=\"https://www.allianzlife.com/\" anchor=\"\" target=\"\" title=\"\" aria-label=\"Home\" />",
+      "sourceAttributes": {
+        "text": "Home",
+        "linktype": "external",
+        "url": "https://www.allianzlife.com/",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "Home"
+      },
+      "linkValue": {
+        "text": "Home",
+        "linktype": "external",
+        "url": "https://www.allianzlife.com/",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "Home",
+        "href": "https://www.allianzlife.com/"
+      }
+    },
+    {
+      "packet": 4,
+      "title": "What We Offer",
+      "nativeLinkXml": "<link text=\"What We Offer\" linktype=\"external\" url=\"/what-we-offer\" anchor=\"\" target=\"\" title=\"\" aria-label=\"What We Offer\" />",
+      "sourceAttributes": {
+        "text": "What We Offer",
+        "linktype": "external",
+        "url": "/what-we-offer",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "What We Offer"
+      },
+      "linkValue": {
+        "text": "What We Offer",
+        "linktype": "external",
+        "url": "/what-we-offer",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "What We Offer",
+        "href": "/what-we-offer"
+      }
+    },
+    {
+      "packet": 5,
+      "title": "About indexed universal life insurance",
+      "nativeLinkXml": "<link text=\"About indexed universal life insurance\" linktype=\"external\" url=\"/what-we-offer/Life-Insurance\" anchor=\"\" target=\"\" title=\"\" aria-label=\"About indexed universal life insurance\" />",
+      "sourceAttributes": {
+        "text": "About indexed universal life insurance",
+        "linktype": "external",
+        "url": "/what-we-offer/Life-Insurance",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "About indexed universal life insurance"
+      },
+      "linkValue": {
+        "text": "About indexed universal life insurance",
+        "linktype": "external",
+        "url": "/what-we-offer/Life-Insurance",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "About indexed universal life insurance",
+        "href": "/what-we-offer/Life-Insurance"
+      }
+    },
+    {
+      "packet": 6,
+      "title": "Strategies for business owners",
+      "nativeLinkXml": "<link text=\"Strategies for business owners\" linktype=\"external\" url=\"/what-we-offer/Life-Insurance/strategies-for-business-owners\" anchor=\"\" target=\"\" title=\"\" aria-label=\"Strategies for business owners\" />",
+      "sourceAttributes": {
+        "text": "Strategies for business owners",
+        "linktype": "external",
+        "url": "/what-we-offer/Life-Insurance/strategies-for-business-owners",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "Strategies for business owners"
+      },
+      "linkValue": {
+        "text": "Strategies for business owners",
+        "linktype": "external",
+        "url": "/what-we-offer/Life-Insurance/strategies-for-business-owners",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "Strategies for business owners",
+        "href": "/what-we-offer/Life-Insurance/strategies-for-business-owners"
+      }
+    },
+    {
+      "packet": 7,
+      "title": "5 Tips for Business Buy-Sell Agreements",
+      "nativeLinkXml": "<link text=\"5 Tips for Business Buy-Sell Agreements\" linktype=\"external\" url=\"/what-we-offer/Life-Insurance/strategies-for-business-owners/5-tips-for-business-buy-sell-agreements\" anchor=\"\" target=\"\" title=\"\" aria-label=\"5 Tips for Business Buy-Sell Agreements\" />",
+      "sourceAttributes": {
+        "text": "5 Tips for Business Buy-Sell Agreements",
+        "linktype": "external",
+        "url": "/what-we-offer/Life-Insurance/strategies-for-business-owners/5-tips-for-business-buy-sell-agreements",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "5 Tips for Business Buy-Sell Agreements"
+      },
+      "linkValue": {
+        "text": "5 Tips for Business Buy-Sell Agreements",
+        "linktype": "external",
+        "url": "/what-we-offer/Life-Insurance/strategies-for-business-owners/5-tips-for-business-buy-sell-agreements",
+        "anchor": "",
+        "target": "",
+        "title": "",
+        "aria-label": "5 Tips for Business Buy-Sell Agreements",
+        "href": "/what-we-offer/Life-Insurance/strategies-for-business-owners/5-tips-for-business-buy-sell-agreements"
+      }
+    }
+  ]
+}

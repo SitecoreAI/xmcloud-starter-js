@@ -1,0 +1,50 @@
+{
+  "sourcePage": {
+    "url": "https://www.allianzlife.com/for-financial-professionals/allianz-center-for-the-future-of-retirement",
+    "sha256": "25e43773f97e4a8afcb3a7e836d4b2965f9748f66ebcad90a54ae2e010757d02",
+    "capturedAtUtc": "2026-10-06T22:11:25.010076+00:00"
+  },
+  "evidenceDate": "2026-10-07",
+  "links": [
+    {
+      "key": "link-13",
+      "heading": "Building Portfolios Against Shifting Markets",
+      "body": "<p>Eric Thomes, chief distribution officer, shares how to address the risk posed by a negative sequence of returns to a retirement strategy.</p>",
+      "href": "https://www.lifehealth.com/building-portfolios-against-shifting-markets/",
+      "text": "Read the article in Advisor Magazine",
+      "target": "_blank",
+      "ariaLabel": "Read the article in Advisor Magazine",
+      "nativeLinkXml": "<link text=\"Read the article in Advisor Magazine\" linktype=\"external\" url=\"https://www.lifehealth.com/building-portfolios-against-shifting-markets/\" target=\"_blank\" aria-label=\"Read the article in Advisor Magazine\" />"
+    },
+    {
+      "key": "link-14",
+      "heading": "Gray Divorce Can Throw Your Retirement a Curveball: What to Know",
+      "body": "<p>Kelly LaVigne, VP of consumer insights, writes about the unique challenge of divorce later in life.</p>",
+      "href": "https://www.kiplinger.com/retirement/retirement-planning/gray-divorce-and-retirement-what-to-know",
+      "text": "Read the article in Kiplinger",
+      "target": "_blank",
+      "ariaLabel": "Read the article in Kiplinger",
+      "nativeLinkXml": "<link text=\"Read the article in Kiplinger\" linktype=\"external\" url=\"https://www.kiplinger.com/retirement/retirement-planning/gray-divorce-and-retirement-what-to-know\" target=\"_blank\" aria-label=\"Read the article in Kiplinger\" />"
+    },
+    {
+      "key": "link-15",
+      "heading": "Can We Restore Financial Confidence For Retirement?",
+      "body": "<p>Kelly LaVigne, VP of consumer insights, shares how financial professionals are more valuable than ever in times of economic uncertainty.</p>",
+      "href": "https://www.lifehealth.com/can-we-restore-financial-confidence-for-retirement/",
+      "text": "Read the article in Advisor Magazine",
+      "target": "_blank",
+      "ariaLabel": "Read the article in Advisor Magazine",
+      "nativeLinkXml": "<link text=\"Read the article in Advisor Magazine\" linktype=\"external\" url=\"https://www.lifehealth.com/can-we-restore-financial-confidence-for-retirement/\" target=\"_blank\" aria-label=\"Read the article in Advisor Magazine\" />"
+    },
+    {
+      "key": "link-16",
+      "heading": "Three Things Financially Confident People Do, From a Pro Who Knows",
+      "body": "<p>Kelly LaVigne, VP of consumer insights, offers tips to boost financial confidence.</p>",
+      "href": "https://www.kiplinger.com/retirement/things-that-financially-confident-people-do-from-a-pro-who-knows",
+      "text": "Read the article in Kiplinger",
+      "target": "_blank",
+      "ariaLabel": "Read the article in Kiplinger",
+      "nativeLinkXml": "<link text=\"Read the article in Kiplinger\" linktype=\"external\" url=\"https://www.kiplinger.com/retirement/things-that-financially-confident-people-do-from-a-pro-who-knows\" target=\"_blank\" aria-label=\"Read the article in Kiplinger\" />"
+    }
+  ]
+}

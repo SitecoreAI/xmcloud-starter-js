@@ -1,0 +1,2024 @@
+{
+  "status": "LOCAL_TEST_FIXTURE_NOT_NATIVE_IDENTITIES",
+  "baseCommit": "904d2263ee212aa9d17b3009961bbc3d13e994e6",
+  "blocks": [
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/embracing-personalization-and-predictable-income",
+      "sourceBlock": "s02-article-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/embracing-personalization-and-predictable-income",
+      "sourceHtmlSha256": "abc7e776d3f64288dec9fc8a0df23d524dafd62a76f4a74146b72315b9b64190",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "tileMarginBottom": "xl",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "tileMarginBottom": "xl"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s02-article-00-card",
+          "fields": {
+            "heading": "Employer Markets Engagement & Education Blog Series",
+            "body": "<p>Meghan brings a diverse range of experience to her current role with the Allianz Center for the Future of Retirement™. Leading Defined Contribution Insights, Meghan is dedicated to advancing research and thought leadership to drive meaningful change for the millions of Americans saving through their employer-sponsored retirement plans. She is driven by a desire to make a positive impact through actionable research and accessible communications, helping more Americans achieve the dignified retirement they deserve.</p>",
+            "subheading": "<h3>By: Meghan Farrell</h3>",
+            "image": {
+              "assetIntentKey": "image-86b8a6c70ea160f8",
+              "alt": "Headshot of Meghan Farrell",
+              "width": null,
+              "height": null,
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-meghan-farrell.png",
+              "nativeImageFieldValue": null
+            },
+            "icon": null,
+            "alphanumeral": "",
+            "headingLevel": "h2",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--6633",
+            "-is--flipped",
+            "-is--framed",
+            "-is--split",
+            "t-bg-transparent",
+            "u-margin-bottom-xl"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h2"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\t<p>Meghan brings a diverse range of experience to her current role with the Allianz Center for the Future of Retirement™. Leading Defined Contribution Insights, Meghan is dedicated to advancing research and thought leadership to drive meaningful change for the millions of Americans saving through their employer-sponsored retirement plans. She is driven by a desire to make a positive impact through actionable research and accessible communications, helping more Americans achieve the dignified retirement they deserve.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/market-volatility-and-retirement-risk-management",
+      "sourceBlock": "s02-article-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/market-volatility-and-retirement-risk-management",
+      "sourceHtmlSha256": "223b76d40f797b757c87e8b9333bb402adbd720bea93d3ecb6a320b198439a14",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "tileMarginBottom": "xl",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "tileMarginBottom": "xl"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s02-article-00-card",
+          "fields": {
+            "heading": "Employer Markets Retirement Risks and Rewards Blog Series",
+            "body": "<p>With a diverse range of experience developing impactful communications, Meghan leads thought leadership efforts for the Employer Markets channel at Allianz Life Insurance Company of North America. Her passion lies in helping more Americans enjoy a dignified retirement through actionable research and accessible communications</p>",
+            "subheading": "<h3>By: Meghan Farrell</h3>",
+            "image": {
+              "assetIntentKey": "image-86b8a6c70ea160f8",
+              "alt": "Headshot of Meghan Farrell",
+              "width": null,
+              "height": null,
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-meghan-farrell.png",
+              "nativeImageFieldValue": null
+            },
+            "icon": null,
+            "alphanumeral": "",
+            "headingLevel": "h2",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--6633",
+            "-is--flipped",
+            "-is--framed",
+            "-is--split",
+            "t-bg-transparent",
+            "u-margin-bottom-xl"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h2"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\t<p>With a diverse range of experience developing impactful communications, Meghan leads thought leadership efforts for the Employer Markets channel at Allianz Life Insurance Company of North America. Her passion lies in helping more Americans enjoy a dignified retirement through actionable research and accessible communications</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/participant-interest-and-regulatory-shifts",
+      "sourceBlock": "s02-article-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/participant-interest-and-regulatory-shifts",
+      "sourceHtmlSha256": "c3f29e85d5bfa2e1afece66d97a85fc41818e5c0a27848b51e3e75cc5dec9c18",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "tileMarginBottom": "xl",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "tileMarginBottom": "xl"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s02-article-00-card",
+          "fields": {
+            "heading": "About the Author",
+            "body": "<p>Meghan brings a wealth of experience to her role leading Marketing for the Employer Markets Channel at Allianz Life Insurance Company of North America (Allianz). With a background rooted in defined contribution research and thought leadership, she is committed to driving meaningful change for the millions of Americans saving through employer-sponsored retirement plans. Meghan is passionate about delivering actionable insights and clear, accessible communications to empower individuals on their path to a secure and dignified retirement.</p>",
+            "subheading": "<h3>Meghan Nykorchuck</h3>",
+            "image": {
+              "assetIntentKey": "image-86b8a6c70ea160f8",
+              "alt": "Headshot of Meghan Farrell",
+              "width": null,
+              "height": null,
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-meghan-farrell.png",
+              "nativeImageFieldValue": null
+            },
+            "icon": null,
+            "alphanumeral": "",
+            "headingLevel": "h2",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--6633",
+            "-is--flipped",
+            "-is--framed",
+            "-is--split",
+            "t-bg-transparent",
+            "u-margin-bottom-xl"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h2"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\t<p>Meghan brings a wealth of experience to her role leading Marketing for the Employer Markets Channel at Allianz Life Insurance Company of North America (Allianz). With a background rooted in defined contribution research and thought leadership, she is committed to driving meaningful change for the millions of Americans saving through employer-sponsored retirement plans. Meghan is passionate about delivering actionable insights and clear, accessible communications to empower individuals on their path to a secure and dignified retirement.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/the-force-of-change-retirement-income-inertia",
+      "sourceBlock": "s02-article-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/the-force-of-change-retirement-income-inertia",
+      "sourceHtmlSha256": "b947a389a15995c88dfc83035b298c67d8dae2464792e118edd8c91f8adc5aa7",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "tileMarginBottom": "xl",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "tileMarginBottom": "xl"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s02-article-00-card",
+          "fields": {
+            "heading": "Employer Markets Engagement & Education Blog Series",
+            "body": "<p>Meghan brings a diverse range of experience to her current role with the Allianz Center for the Future of Retirement™. Leading Defined Contribution Insights, Meghan is dedicated to advancing research and thought leadership to drive meaningful change for the millions of Americans saving through their employer-sponsored retirement plans. She is driven by a desire to make a positive impact through actionable research and accessible communications, helping more Americans achieve the dignified retirement they deserve.</p>",
+            "subheading": "<h3>By: Meghan Farrell</h3>",
+            "image": {
+              "assetIntentKey": "image-86b8a6c70ea160f8",
+              "alt": "Headshot of Meghan Farrell",
+              "width": null,
+              "height": null,
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-meghan-farrell.png",
+              "nativeImageFieldValue": null
+            },
+            "icon": null,
+            "alphanumeral": "",
+            "headingLevel": "h2",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--6633",
+            "-is--flipped",
+            "-is--framed",
+            "-is--split",
+            "t-bg-transparent",
+            "u-margin-bottom-xl"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h2"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\t<p>Meghan brings a diverse range of experience to her current role with the Allianz Center for the Future of Retirement™. Leading Defined Contribution Insights, Meghan is dedicated to advancing research and thought leadership to drive meaningful change for the millions of Americans saving through their employer-sponsored retirement plans. She is driven by a desire to make a positive impact through actionable research and accessible communications, helping more Americans achieve the dignified retirement they deserve.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceBlock": "s02-richtext-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceHtmlSha256": "fb7f0bf1f58f2745b569e9cdd4f40e62bc1fbe4b8fae471e47df6828f1a50cf6",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/div",
+      "componentName": "AllianzArticle",
+      "variant": "EditorialBody",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "source-default",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "scaffold": "rich-text",
+        "container": "column",
+        "columns": "2"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "source-default",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "scaffold": "rich-text",
+        "container": "row"
+      },
+      "fields": {
+        "heading": "",
+        "summary": "",
+        "body": "<h2>How Modern Portfolio Theory works</h2>\n<p>Modern Portfolio Theory (MPT) is a mathematical framework that financial professionals have used to build investment portfolios that maximize expected returns for a given level of risk for the past seven decades. In fact, the creator of MPT, Harry Markowitz, won the Nobel Prize in 1990 for his work on it.</p>\n<p>When a client is accumulating assets, risk is commonly defined as volatility or standard deviation, and reward is defined as expected return. For a given level of volatility, you want to get as much return as you can, or conversely you want to take as little risk as possible to achieve a given level of return. The optimized risk and reward portfolios make up the Efficient Frontier, which is the most return you can get for a given level of risk or the least risk you can get for a given level of return. <br><br></p>",
+        "image": null,
+        "author": "",
+        "publishedDate": ""
+      },
+      "children": [],
+      "sourceContract": [
+        {
+          "tag": "div",
+          "classes": [
+            "o-richTextEditor__wrapper"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-6"
+          ],
+          "headingTags": [],
+          "bodyHtml": "",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "SHARED-ROW-DISTINCT-COLUMNS",
+        "SIX-COLUMN-EDITORIAL"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceBlock": "s02-richtext-01",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceHtmlSha256": "fb7f0bf1f58f2745b569e9cdd4f40e62bc1fbe4b8fae471e47df6828f1a50cf6",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div[2]/div",
+      "componentName": "AllianzArticle",
+      "variant": "EditorialBody",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "source-default",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "scaffold": "rich-text",
+        "container": "column",
+        "columns": "2"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "source-default",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "scaffold": "rich-text",
+        "container": "row"
+      },
+      "fields": {
+        "heading": "",
+        "summary": "",
+        "body": "<img alt=\"Graphic shows efficient frontier, the optimized balance of risk and return.\" src=\"/-/media/Images/Allianz/Content/content-azl-efficient-frontiers-graphic-blog.png?h=698&amp;w=1299&amp;hash=9AC2801E2BD60B6ABD79ABBA8C910E3D\" style=\"max-width:100%;\">\n<p><strong><em>Efficient Frontier</em></strong><em>. Each dot is an investment portfolio. Those closest to the Efficient Frontier may provide the greatest returns with the least risk.</em></p>",
+        "image": null,
+        "author": "",
+        "publishedDate": ""
+      },
+      "children": [],
+      "sourceContract": [
+        {
+          "tag": "div",
+          "classes": [
+            "o-richTextEditor__wrapper"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-6"
+          ],
+          "headingTags": [],
+          "bodyHtml": "",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "SHARED-ROW-DISTINCT-COLUMNS",
+        "SIX-COLUMN-EDITORIAL"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceBlock": "s04-richtext-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceHtmlSha256": "fb7f0bf1f58f2745b569e9cdd4f40e62bc1fbe4b8fae471e47df6828f1a50cf6",
+      "sourceXPath": "/html/body/main/div[5]/div/div/div[1]/div",
+      "componentName": "AllianzArticle",
+      "variant": "EditorialBody",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "source-default",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "scaffold": "rich-text",
+        "container": "column",
+        "columns": "2"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "source-default",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "scaffold": "rich-text",
+        "container": "row"
+      },
+      "fields": {
+        "heading": "",
+        "summary": "",
+        "body": "<p>Let’s start by “redrawing” the risk-reward spectrum for income. We would put income on the y-axis as the reward, and we need to find a way to define risk that quantifies the retirement unknowns.</p>\n<p>This is where Monte Carlo analysis and the Probability of Success metric comes into play. We can make a bunch of assumptions about longevity, equity returns, and inflation, and then calculate how much income a portfolio can generate for a given level of risk or Probability of Success.</p>\n<p>So we are going to use Probability of Success as our definition of risk, and we are going to graph it on the x-axis. When we take less income, the Probability of Success is higher (there is less risk). When we take more income, the risk that we run out of money increases, so the Probability of Success decreases. </p>\n<p>The goal is to be on the <strong>“Efficient Income Frontier.”</strong> We want to get the most income for a given probability of success, or the highest probability of success (lowest risk) for a given level of income.</p>\n<br>",
+        "image": null,
+        "author": "",
+        "publishedDate": ""
+      },
+      "children": [],
+      "sourceContract": [
+        {
+          "tag": "div",
+          "classes": [
+            "o-richTextEditor__wrapper"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-6"
+          ],
+          "headingTags": [],
+          "bodyHtml": "",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "SHARED-ROW-DISTINCT-COLUMNS",
+        "SIX-COLUMN-EDITORIAL"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceBlock": "s04-richtext-01",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceHtmlSha256": "fb7f0bf1f58f2745b569e9cdd4f40e62bc1fbe4b8fae471e47df6828f1a50cf6",
+      "sourceXPath": "/html/body/main/div[5]/div/div/div[2]/div",
+      "componentName": "AllianzArticle",
+      "variant": "EditorialBody",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "source-default",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "scaffold": "rich-text",
+        "container": "column",
+        "columns": "2"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "source-default",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "scaffold": "rich-text",
+        "container": "row"
+      },
+      "fields": {
+        "heading": "",
+        "summary": "",
+        "body": "<img alt=\"Graphic shows efficient income frontier, the optimized balance of risk and income.\" src=\"/-/media/Images/Allianz/Content/content-azl-efficient-income-frontiers-graphic-blog.png?h=690&amp;w=1299&amp;hash=4D814891AFE1382EB6274C5BCF24A498\" style=\"max-width:100%;\">\n<p><em><strong>Efficient “Income” Frontier</strong>. Each dot is a retirement portfolio. Those closest to the Efficient Income Frontier may provide the highest level of income for a given amount of risk.<br>\n<br>\n</em></p>",
+        "image": null,
+        "author": "",
+        "publishedDate": ""
+      },
+      "children": [],
+      "sourceContract": [
+        {
+          "tag": "div",
+          "classes": [
+            "o-richTextEditor__wrapper"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-6"
+          ],
+          "headingTags": [],
+          "bodyHtml": "",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "SHARED-ROW-DISTINCT-COLUMNS",
+        "SIX-COLUMN-EDITORIAL"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceBlock": "s06-article-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceHtmlSha256": "fb7f0bf1f58f2745b569e9cdd4f40e62bc1fbe4b8fae471e47df6828f1a50cf6",
+      "sourceXPath": "/html/body/main/div[7]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s06-article-00-card",
+          "fields": {
+            "heading": "Employer Markets Retirement Risks and Rewards Blog Series",
+            "body": "<p>Mark Paulson is Vice President of Hedging Business Development at Allianz Investment Management, LLC. With over 15 years of risk management experience, he helps integrate the hedging team’s capabilities into Allianz Group initiatives, helps educate distribution partners on the benefits of dynamic hedging, and is passionate about quantifying the value of guaranteed lifetime income in a retirement plan.</p>",
+            "subheading": "<h4>By Mark Paulson</h4>",
+            "image": {
+              "assetIntentKey": "image-283c9e3e6fefc9ea",
+              "alt": " ",
+              "width": null,
+              "height": null,
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-mark-paulson-blog.jpg",
+              "nativeImageFieldValue": null
+            },
+            "icon": null,
+            "alphanumeral": "",
+            "headingLevel": "h3",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--6633",
+            "-is--flipped",
+            "-is--framed",
+            "-is--split",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h3"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\t<p>Mark Paulson is Vice President of Hedging Business Development at Allianz Investment Management, LLC. With over 15 years of risk management experience, he helps integrate the hedging team’s capabilities into Allianz Group initiatives, helps educate distribution partners on the benefits of dynamic hedging, and is passionate about quantifying the value of guaranteed lifetime income in a retirement plan.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/unique-approach-to-hedging",
+      "sourceBlock": "s02-article-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/unique-approach-to-hedging",
+      "sourceHtmlSha256": "c85ac29df47eed81fa87d29aa78ae6f519acfc6d361e24900dd92e6d82246bef",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s02-article-00-card",
+          "fields": {
+            "heading": "Employer Markets Retirement Risks and Rewards Blog Series",
+            "body": "<p>Mark Paulson is Vice President of Hedging Business Development at Allianz Investment Management LLC. With over 15 years of risk management experience, he helps integrate the hedging team’s capabilities into Allianz Group initiatives, helps educate distribution partners on the benefits of dynamic hedging, and is passionate about quantifying the value of guaranteed lifetime income in a retirement plan.</p>",
+            "subheading": "<h4>By Mark Paulson</h4>",
+            "image": {
+              "assetIntentKey": "image-283c9e3e6fefc9ea",
+              "alt": " ",
+              "width": null,
+              "height": null,
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-mark-paulson-blog.jpg",
+              "nativeImageFieldValue": null
+            },
+            "icon": null,
+            "alphanumeral": "",
+            "headingLevel": "h3",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--6633",
+            "-is--flipped",
+            "-is--framed",
+            "-is--split",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h3"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\t<p>Mark Paulson is Vice President of Hedging Business Development at Allianz Investment Management LLC. With over 15 years of risk management experience, he helps integrate the hedging team’s capabilities into Allianz Group initiatives, helps educate distribution partners on the benefits of dynamic hedging, and is passionate about quantifying the value of guaranteed lifetime income in a retirement plan.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/digital-strategy-can-help-enhance-participant-outcomes",
+      "sourceBlock": "s07-article-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/digital-strategy-can-help-enhance-participant-outcomes",
+      "sourceHtmlSha256": "e8ab0b2ee7abb33e68a7ea11a3b90c871a11109e25f5282075694d3f0d1963f6",
+      "sourceXPath": "/html/body/main/div[8]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s07-article-00-card",
+          "fields": {
+            "heading": "Employer Markets Technology Blog Series",
+            "body": "<p>Troy Sande is a Senior Director for New Markets at Allianz Life Insurance Company of North America. He brings more than 15 years of product delivery experience and has been with the Employer Markets team at Allianz since its inception. He is passionate about product innovation and using technology to ease partner integrations and simplify the customer experience.</p>",
+            "subheading": "<h4>By Troy Sande</h4>",
+            "image": {
+              "assetIntentKey": "image-cc9d76295135f60f",
+              "alt": "troy sande headshot",
+              "width": null,
+              "height": null,
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-troy-sande-blog.jpg",
+              "nativeImageFieldValue": null
+            },
+            "icon": null,
+            "alphanumeral": "",
+            "headingLevel": "h3",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--6633",
+            "-is--flipped",
+            "-is--framed",
+            "-is--split",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h3"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\t<p>Troy Sande is a Senior Director for New Markets at Allianz Life Insurance Company of North America. He brings more than 15 years of product delivery experience and has been with the Employer Markets team at Allianz since its inception. He is passionate about product innovation and using technology to ease partner integrations and simplify the customer experience.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/tech-enabled-solutions",
+      "sourceBlock": "s03-article-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/tech-enabled-solutions",
+      "sourceHtmlSha256": "480d76abc05b417e76f698222e60fbec1d03cb8d3bda2b6a6bf96ad537105749",
+      "sourceXPath": "/html/body/main/div[4]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s03-article-00-card",
+          "fields": {
+            "heading": "Employer Markets Technology Blog Series",
+            "body": "<p>Troy Sande is a Senior Director for New Markets at Allianz Life Insurance Company of North America. He brings more than 15 years of product delivery experience and has been with the Employer Markets team at Allianz since its inception. He is passionate about product innovation and using technology to ease partner integrations and simplify the customer experience.</p>",
+            "subheading": "<h4>By: Troy Sande</h4>",
+            "image": {
+              "assetIntentKey": "image-cc9d76295135f60f",
+              "alt": "troy sande headshot",
+              "width": null,
+              "height": null,
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-troy-sande-blog.jpg",
+              "nativeImageFieldValue": null
+            },
+            "icon": null,
+            "alphanumeral": "",
+            "headingLevel": "h3",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--6633",
+            "-is--flipped",
+            "-is--framed",
+            "-is--split",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h3"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\t<p>Troy Sande is a Senior Director for New Markets at Allianz Life Insurance Company of North America. He brings more than 15 years of product delivery experience and has been with the Employer Markets team at Allianz since its inception. He is passionate about product innovation and using technology to ease partner integrations and simplify the customer experience.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-technology-beyond-secure-2",
+      "sourceBlock": "s03-article-00",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-technology-beyond-secure-2",
+      "sourceHtmlSha256": "089d127f05b7c6ffb34ecb69e68f5ca1d9de7faf1676c092e5fd38e93b1eec18",
+      "sourceXPath": "/html/body/main/div[4]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "xl",
+        "marginBottom": "none",
+        "splitRatio": "67:33",
+        "flipped": "1",
+        "layout": "image-right"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s03-article-00-card",
+          "fields": {
+            "heading": "Employer Markets Technology Blog Series",
+            "body": "<p>Troy Sande is a Senior Director for New Markets at Allianz Life Insurance Company of North America. He brings more than 15 years of product delivery experience and has been with the Employer Markets team at Allianz since its inception. He is passionate about product innovation and using technology to ease partner integrations and simplify the customer experience.</p>",
+            "subheading": "<h4>By: Troy Sande</h4>",
+            "image": {
+              "assetIntentKey": "image-cc9d76295135f60f",
+              "alt": "troy sande headshot",
+              "width": null,
+              "height": null,
+              "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-troy-sande-blog.jpg",
+              "nativeImageFieldValue": null
+            },
+            "icon": null,
+            "alphanumeral": "",
+            "headingLevel": "h3",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--6633",
+            "-is--flipped",
+            "-is--framed",
+            "-is--split",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h3"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\t<p>Troy Sande is a Senior Director for New Markets at Allianz Life Insurance Company of North America. He brings more than 15 years of product delivery experience and has been with the Employer Markets team at Allianz since its inception. He is passionate about product innovation and using technology to ease partner integrations and simplify the customer experience.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+      "sourceBlock": "s03-article-00",
+      "sourceUrl": "https://www.allianzlife.com/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+      "sourceHtmlSha256": "b1acf527f90d568b9c1559a479aea34b7baa01ed472d44158f34fdc055608d76",
+      "sourceXPath": "/html/body/main/div[4]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "centered-eight",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "sectionWidth": "contained"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "centered-eight",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "sectionWidth": "contained"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s03-article-00-card",
+          "fields": {
+            "heading": "Succession planning",
+            "body": "While all small-business owners need to have a <a href=\"/what-we-offer/Life-Insurance/strategies-for-business-owners/Family-Business-Succession-Planning\">succession plan</a>, some strategies are better suited for certain industries.\n<p>Overall, the most common transition plan is sale or gift to family members across all industries – construction (65%), manufacturing (56%), agriculture (65%), technology (47%), retail (67%), and professional services (50%), according to a recent Allianz Life Insurance Company of North America (Allianz Life) study. Business owners in technology are the most likely to sell to employees (27%), while those in manufacturing are most likely to sell to an outside third-party buyer (23%).</p>\n<p>When that transition will take place also varies by industry. While 30% of retail business owners said they expect to transition ownership in the next five years, business owners in construction (15%), manufacturing (15%), and professional services (11%) were more likely to have longer timelines.</p>\n<p>The differences in planning for the future go beyond who will take over. For example, businesses in the construction industry need to consider how they will obtain surety bonds that are required for government and major private contracts. Surety providers want to see a well-developed and maintained business continuation plan. Having a properly designed and sufficiently funded buy-sell agreement and a potential solution – such as fixed index universal life insurance (FIUL) policies on key employees and the business owner – may work in the business’s favor.</p>",
+            "subheading": "",
+            "image": null,
+            "icon": {
+              "assetIntentKey": "svg-9f07f3a6b3ff68b4",
+              "purpose": "Connect",
+              "nativeImageFieldValue": null
+            },
+            "alphanumeral": "",
+            "headingLevel": "h4",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--alphaNumeric",
+            "-is--split",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-8",
+            "offset-medium-2",
+            "l-grid__column-small-12"
+          ],
+          "headingTags": [
+            "h4"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\tWhile all small-business owners need to have a <a href=\"/what-we-offer/Life-Insurance/strategies-for-business-owners/Family-Business-Succession-Planning\">succession plan</a>, some strategies are better suited for certain industries.\n<p>Overall, the most common transition plan is sale or gift to family members across all industries – construction (65%), manufacturing (56%), agriculture (65%), technology (47%), retail (67%), and professional services (50%), according to a recent Allianz Life Insurance Company of North America (Allianz Life) study. Business owners in technology are the most likely to sell to employees (27%), while those in manufacturing are most likely to sell to an outside third-party buyer (23%).</p>\n<p>When that transition will take place also varies by industry. While 30% of retail business owners said they expect to transition ownership in the next five years, business owners in construction (15%), manufacturing (15%), and professional services (11%) were more likely to have longer timelines.</p>\n<p>The differences in planning for the future go beyond who will take over. For example, businesses in the construction industry need to consider how they will obtain surety bonds that are required for government and major private contracts. Surety providers want to see a well-developed and maintained business continuation plan. Having a properly designed and sufficiently funded buy-sell agreement and a potential solution – such as fixed index universal life insurance (FIUL) policies on key employees and the business owner – may work in the business’s favor.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "HEADING-LEVEL"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+      "sourceBlock": "s04-article-00",
+      "sourceUrl": "https://www.allianzlife.com/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+      "sourceHtmlSha256": "b1acf527f90d568b9c1559a479aea34b7baa01ed472d44158f34fdc055608d76",
+      "sourceXPath": "/html/body/main/div[5]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "centered-eight",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "sectionWidth": "contained",
+        "flipped": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "centered-eight",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "sectionWidth": "contained",
+        "flipped": "1"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s04-article-00-card",
+          "fields": {
+            "heading": "Attracting, retaining, and motivating key employees",
+            "body": "Small- and medium-sized business owners are facing a tight labor market. According to the study, business owners in all industries said they are having difficulty attracting or recruiting key employees. Business owners in manufacturing (87%) and technology (88%) were more likely to say they were having difficulty than those in construction (62%).\n<p>Key employee compensation plans can be designed to help those business owners navigate the labor market, and attract, retain, and motivate employees.</p>\n<p>For example, 50% of technology small-business owners said they have key employee compensation plans in place that involve grants of stock, nonqualified stock options, or a similar plan. Companies in other industries provide such plans at a substantially lower rate – agriculture (31%), retail (32%), and construction (37%).</p>\n<p>Compensation plans may include bonus plans, split-dollar plans, nonqualified deferred compensation and phantom plans stock, with funding assisted by FIUL policies. Remember that selecting an effective strategy requires understanding what will attract and retain employees in different industries or roles.</p>",
+            "subheading": "",
+            "image": null,
+            "icon": {
+              "assetIntentKey": "svg-10fdd302e4a221a7",
+              "purpose": "Handshake",
+              "nativeImageFieldValue": null
+            },
+            "alphanumeral": "",
+            "headingLevel": "h4",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "-is--flipped",
+            "tile--alphaNumeric",
+            "-is--split",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-8",
+            "offset-medium-2",
+            "l-grid__column-small-12"
+          ],
+          "headingTags": [
+            "h4"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\tSmall- and medium-sized business owners are facing a tight labor market. According to the study, business owners in all industries said they are having difficulty attracting or recruiting key employees. Business owners in manufacturing (87%) and technology (88%) were more likely to say they were having difficulty than those in construction (62%).\n<p>Key employee compensation plans can be designed to help those business owners navigate the labor market, and attract, retain, and motivate employees.</p>\n<p>For example, 50% of technology small-business owners said they have key employee compensation plans in place that involve grants of stock, nonqualified stock options, or a similar plan. Companies in other industries provide such plans at a substantially lower rate – agriculture (31%), retail (32%), and construction (37%).</p>\n<p>Compensation plans may include bonus plans, split-dollar plans, nonqualified deferred compensation and phantom plans stock, with funding assisted by FIUL policies. Remember that selecting an effective strategy requires understanding what will attract and retain employees in different industries or roles.</p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "HEADING-LEVEL"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+      "sourceBlock": "s05-article-00",
+      "sourceUrl": "https://www.allianzlife.com/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+      "sourceHtmlSha256": "b1acf527f90d568b9c1559a479aea34b7baa01ed472d44158f34fdc055608d76",
+      "sourceXPath": "/html/body/main/div[6]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "centered-eight",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "sectionWidth": "contained",
+        "flipped": "1"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "centered-eight",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "sectionWidth": "contained",
+        "flipped": "1"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s05-article-00-card",
+          "fields": {
+            "heading": "Tax implications",
+            "body": "The tax burden for businesses varies among industries. For example, companies in professional services typically have fewer deductions than other industries, while fast-growing technology companies may be more concerned about capital gains than income taxes.\n<p>For this reason, business owners may have different needs for an FIUL policy. A fast-growing technology company owner may be interested in the tax-efficient aspects of FIUL policies. At the same time, a professional services firm owner may want to build accumulation value for supplemental retirement income<sup>1</sup> through policy loans or withdrawals<sup>2</sup> and provide death benefit protection<sup>3</sup> with an FIUL policy. </p>",
+            "subheading": "",
+            "image": null,
+            "icon": {
+              "assetIntentKey": "svg-a5daa8096d396b93",
+              "purpose": "Calculator",
+              "nativeImageFieldValue": null
+            },
+            "alphanumeral": "",
+            "headingLevel": "h4",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "-is--flipped",
+            "tile--alphaNumeric",
+            "-is--split",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-8",
+            "offset-medium-2",
+            "l-grid__column-small-12"
+          ],
+          "headingTags": [
+            "h4"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\tThe tax burden for businesses varies among industries. For example, companies in professional services typically have fewer deductions than other industries, while fast-growing technology companies may be more concerned about capital gains than income taxes.\n<p>For this reason, business owners may have different needs for an FIUL policy. A fast-growing technology company owner may be interested in the tax-efficient aspects of FIUL policies. At the same time, a professional services firm owner may want to build accumulation value for supplemental retirement income<sup>1</sup> through policy loans or withdrawals<sup>2</sup> and provide death benefit protection<sup>3</sup> with an FIUL policy. </p>\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "HEADING-LEVEL"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+      "sourceBlock": "s06-article-00",
+      "sourceUrl": "https://www.allianzlife.com/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+      "sourceHtmlSha256": "b1acf527f90d568b9c1559a479aea34b7baa01ed472d44158f34fdc055608d76",
+      "sourceXPath": "/html/body/main/div[7]/div/div/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "centered-eight",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "xl",
+        "sectionWidth": "contained",
+        "emptyLink": "label"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "left",
+        "sourceWidth": "centered-eight",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "xl",
+        "sectionWidth": "contained"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s06-article-00-card",
+          "fields": {
+            "heading": "Knowing your clients",
+            "body": "Financial professionals who understand the varying needs, concerns, and wants of business-owner clients will be better set up to help those clients address the unique risks they face.",
+            "subheading": "",
+            "image": null,
+            "icon": {
+              "assetIntentKey": "svg-d87fd0bdff443a30",
+              "purpose": "List",
+              "nativeImageFieldValue": null
+            },
+            "alphanumeral": "",
+            "headingLevel": "h4",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": {
+              "fieldType": "Treelist",
+              "targetItemIntentKeys": [
+                "/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets#s06-article-00#link-1"
+              ],
+              "nativeValue": null,
+              "bindingGate": "Populate ordered actual returned native IDs after all referenced items have readback; do not send this object as a raw CMS field value"
+            }
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100",
+          "referencedItems": [
+            {
+              "intentKey": "/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets#s06-article-00#link-1",
+              "kind": "referenced-item",
+              "nativeId": null,
+              "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzNavigationLink",
+              "sortorder": "100",
+              "fields": {
+                "title": "Get industry-specific strategies for business-owning clients",
+                "link": {
+                  "href": "",
+                  "text": "Get industry-specific strategies for business-owning clients",
+                  "target": "",
+                  "rel": "",
+                  "ariaLabel": "Get industry-specific strategies for business-owning clients"
+                },
+                "icon": {
+                  "assetIntentKey": "svg-9dd3a8dffb2a6e10",
+                  "purpose": "Right",
+                  "nativeImageFieldValue": null
+                }
+              },
+              "sourceXPath": "/html/body/main/div[7]/div/div/div/article/div/div[2]/footer/div/a",
+              "locationGate": "Resolve permitted existing navigation-link datasource root or verified local child location; preserve existing ownership and permissions",
+              "linkBindingGate": "Resolve internal item/document identity before native General Link serialization; preserve raw source href as provenance, no guessed IDs"
+            }
+          ]
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--alphaNumeric",
+            "-is--split",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-8",
+            "offset-medium-2",
+            "l-grid__column-small-12"
+          ],
+          "headingTags": [
+            "h4"
+          ],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\tFinancial professionals who understand the varying needs, concerns, and wants of business-owner clients will be better set up to help those clients address the unique risks they face.\n\t\t\t\t</div>\n\n\t\t\t\t\t",
+          "linkRows": [
+            [
+              {
+                "href": "",
+                "text": "RightRight\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\tGet industry-specific strategies for business-owning clients",
+                "ariaLabel": "Get industry-specific strategies for business-owning clients"
+              }
+            ]
+          ],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "EMPTY-SOURCE-LINK-LABEL",
+        "HEADING-LEVEL"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals/resources/how-to-help-clients-make-a-plan-for-selling-or-gifting-their-small-business",
+      "sourceBlock": "s02-article-00",
+      "sourceUrl": "https://www.allianzlife.com/for-financial-professionals/resources/how-to-help-clients-make-a-plan-for-selling-or-gifting-their-small-business",
+      "sourceHtmlSha256": "4451e135530d59df603d461d9cfef398b4988cb0724cb203fa2d40cced30f49f",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div[1]/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialCallout",
+      "params": {
+        "theme": "transparent",
+        "alignment": "center",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "large",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "columns": "3",
+        "statisticStyle": "wide"
+      },
+      "originalParams": {
+        "theme": "transparent",
+        "alignment": "center",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "large",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "columns": "3"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s02-article-00-card",
+          "fields": {
+            "heading": "",
+            "body": "have an understanding about the transfer of ownership, but have not put it into writing",
+            "subheading": "",
+            "image": null,
+            "icon": null,
+            "alphanumeral": "27%",
+            "headingLevel": null,
+            "iconTheme": "primary-brand",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        },
+        {
+          "kind": "AllianzCard",
+          "key": "s02-article-01-card",
+          "fields": {
+            "heading": "",
+            "body": "have had discussions, but haven’t made a final decision",
+            "subheading": "",
+            "image": null,
+            "icon": null,
+            "alphanumeral": "23%",
+            "headingLevel": null,
+            "iconTheme": "primary-brand",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "200"
+        },
+        {
+          "kind": "AllianzCard",
+          "key": "s02-article-02-card",
+          "fields": {
+            "heading": "",
+            "body": "have a written buy-sell agreement",
+            "subheading": "",
+            "image": null,
+            "icon": null,
+            "alphanumeral": "29%",
+            "headingLevel": null,
+            "iconTheme": "primary-brand",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "300"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--alphaNumeric",
+            "-is--stacked",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-4"
+          ],
+          "headingTags": [],
+          "bodyHtml": "<div class=\"tileBody u-font-size-lg\">\n\t\t\t\t\thave an understanding about the transfer of ownership, but have not put it into writing\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": [
+            "em"
+          ]
+        },
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--alphaNumeric",
+            "-is--stacked",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-4"
+          ],
+          "headingTags": [],
+          "bodyHtml": "<div class=\"tileBody u-font-size-lg\">\n\t\t\t\t\thave had discussions, but haven’t made a final decision\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": [
+            "em"
+          ]
+        },
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "tile--alphaNumeric",
+            "-is--stacked",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-4"
+          ],
+          "headingTags": [],
+          "bodyHtml": "<div class=\"tileBody u-font-size-lg\">\n\t\t\t\t\thave a written buy-sell agreement\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": [
+            "em"
+          ]
+        }
+      ],
+      "gapCodes": [
+        "STACKED-ALPHANUMERIC"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals/resources/how-to-help-clients-make-a-plan-for-selling-or-gifting-their-small-business",
+      "sourceBlock": "s06-article-00",
+      "sourceUrl": "https://www.allianzlife.com/for-financial-professionals/resources/how-to-help-clients-make-a-plan-for-selling-or-gifting-their-small-business",
+      "sourceHtmlSha256": "4451e135530d59df603d461d9cfef398b4988cb0724cb203fa2d40cced30f49f",
+      "sourceXPath": "/html/body/main/div[7]/div/div/div[1]/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialCallout",
+      "params": {
+        "theme": "blue-soft",
+        "alignment": "center",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "flipped": "1",
+        "columns": "2",
+        "framed": "1"
+      },
+      "originalParams": {
+        "theme": "blue-soft",
+        "alignment": "center",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "bodySize": "medium",
+        "paddingTop": "none",
+        "paddingBottom": "none",
+        "marginBottom": "none",
+        "flipped": "1",
+        "columns": "2"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s06-article-00-card",
+          "fields": {
+            "heading": "",
+            "body": "Making it easier for the next generation to purchase the business if need be",
+            "subheading": "",
+            "image": null,
+            "icon": {
+              "assetIntentKey": "svg-7522c8bf82014ca0",
+              "purpose": "Money",
+              "nativeImageFieldValue": null
+            },
+            "alphanumeral": "",
+            "headingLevel": null,
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100"
+        },
+        {
+          "kind": "AllianzCard",
+          "key": "s06-article-01-card",
+          "fields": {
+            "heading": "",
+            "body": "Continuing the legacy of the family business",
+            "subheading": "",
+            "image": null,
+            "icon": {
+              "assetIntentKey": "svg-0e475d50fae82ac9",
+              "purpose": "Family",
+              "nativeImageFieldValue": null
+            },
+            "alphanumeral": "",
+            "headingLevel": null,
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": null,
+            "links": []
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "200"
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "-is--flipped",
+            "-is--framed",
+            "-is--stacked",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-6"
+          ],
+          "headingTags": [],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\tMaking it easier for the next generation to purchase the business if need be\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        },
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlTile",
+            "match-height",
+            "-is--flipped",
+            "-is--framed",
+            "-is--stacked",
+            "t-bg-transparent"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-6"
+          ],
+          "headingTags": [],
+          "bodyHtml": "<div class=\"tileBody u-font-size-md\">\n\t\t\t\t\tContinuing the legacy of the family business\n\t\t\t\t</div>\n\n\t\t\t",
+          "linkRows": [],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": [
+        "FRAMED-SOURCE-TILE",
+        "SIX-COLUMN-EDITORIAL"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather",
+      "sourceBlock": "s05-article-00",
+      "sourceUrl": "https://www.allianzlife.com/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather",
+      "sourceHtmlSha256": "4775509eb10e5a0aedca842cbd86496eeec6dc7826ff7316faa225311dc315bb",
+      "sourceXPath": "/html/body/main/div[6]/div/div[1]/div/article",
+      "componentName": "AllianzCardGrid",
+      "variant": "EditorialIntro",
+      "params": {
+        "theme": "green-soft",
+        "alignment": "center",
+        "bodySize": "source-default",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "paddingTop": "lg",
+        "paddingBottom": "none",
+        "marginBottom": "lg",
+        "linkLayout": "rows"
+      },
+      "originalParams": {
+        "theme": "green-soft",
+        "alignment": "center",
+        "bodySize": "source-default",
+        "sourceWidth": "full-twelve",
+        "spacing": "none",
+        "paddingTop": "lg",
+        "paddingBottom": "none",
+        "marginBottom": "lg"
+      },
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": null
+      },
+      "children": [
+        {
+          "kind": "AllianzCard",
+          "key": "s05-article-00-card",
+          "fields": {
+            "heading": "Talk to your clients about weatherproofing their retirement",
+            "body": "",
+            "subheading": "We have created materials that you can use from our 2026 Annual Retirement Study.",
+            "image": null,
+            "icon": {
+              "assetIntentKey": "svg-4974f44bb82357d2",
+              "purpose": "Information",
+              "nativeImageFieldValue": null
+            },
+            "alphanumeral": "",
+            "headingLevel": "h2",
+            "iconTheme": "primary-brand",
+            "theme": "transparent",
+            "link": null,
+            "links": {
+              "fieldType": "Treelist",
+              "targetItemIntentKeys": [
+                "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather#s05-article-00#link-1",
+                "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather#s05-article-00#link-2"
+              ],
+              "nativeValue": null,
+              "bindingGate": "Populate ordered actual returned native IDs after all referenced items have readback; do not send this object as a raw CMS field value"
+            }
+          },
+          "nativeId": null,
+          "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzCard",
+          "sortorder": "100",
+          "referencedItems": [
+            {
+              "intentKey": "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather#s05-article-00#link-1",
+              "kind": "referenced-item",
+              "nativeId": null,
+              "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzNavigationLink",
+              "sortorder": "100",
+              "fields": {
+                "title": "Download our Weatherproofing Retirement Fact Sheet (PDF)",
+                "link": {
+                  "href": "/-/media/Files/Global/documents/2024/08/20/10/27/EXT-1084.pdf",
+                  "text": "Download our Weatherproofing Retirement Fact Sheet (PDF)",
+                  "target": "_blank",
+                  "rel": "",
+                  "ariaLabel": "Download our Weatherproofing Retirement Fact Sheet (PDF)"
+                },
+                "icon": {
+                  "assetIntentKey": "svg-71880b9b4ba2a6fa",
+                  "purpose": "Download",
+                  "nativeImageFieldValue": null
+                }
+              },
+              "sourceXPath": "/html/body/main/div[6]/div/div[1]/div/article/div/footer/div[1]/a",
+              "locationGate": "Resolve permitted existing navigation-link datasource root or verified local child location; preserve existing ownership and permissions",
+              "linkBindingGate": "Resolve internal item/document identity before native General Link serialization; preserve raw source href as provenance, no guessed IDs"
+            },
+            {
+              "intentKey": "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather#s05-article-00#link-2",
+              "kind": "referenced-item",
+              "nativeId": null,
+              "candidateTemplatePath": "/sitecore/templates/Project/Allianz Life/Components/AllianzNavigationLink",
+              "sortorder": "200",
+              "fields": {
+                "title": "Download our Weatherproofing Retirement Client Brochure (PDF)",
+                "link": {
+                  "href": "/-/media/Files/Global/documents/2024/08/20/10/37/EXT-1085-A.pdf",
+                  "text": "Download our Weatherproofing Retirement Client Brochure (PDF)",
+                  "target": "_blank",
+                  "rel": "",
+                  "ariaLabel": "Download our Weatherproofing Retirement Client Brochure (PDF)"
+                },
+                "icon": {
+                  "assetIntentKey": "svg-71880b9b4ba2a6fa",
+                  "purpose": "Download",
+                  "nativeImageFieldValue": null
+                }
+              },
+              "sourceXPath": "/html/body/main/div[6]/div/div[1]/div/article/div/footer/div[2]/a",
+              "locationGate": "Resolve permitted existing navigation-link datasource root or verified local child location; preserve existing ownership and permissions",
+              "linkBindingGate": "Resolve internal item/document identity before native General Link serialization; preserve raw source href as provenance, no guessed IDs"
+            }
+          ]
+        }
+      ],
+      "sourceContract": [
+        {
+          "tag": "article",
+          "classes": [
+            "m-axlIntroductionBlock",
+            "-is--stacked",
+            "-no--image"
+          ],
+          "columnClasses": [
+            "l-grid__column-medium-12"
+          ],
+          "headingTags": [
+            "h2"
+          ],
+          "bodyHtml": "",
+          "linkRows": [
+            [
+              {
+                "href": "/-/media/Files/Global/documents/2024/08/20/10/27/EXT-1084.pdf",
+                "text": "DownloadDownload\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\tDownload our Weatherproofing Retirement Fact Sheet (PDF)",
+                "ariaLabel": "Download our Weatherproofing Retirement Fact Sheet (PDF)"
+              }
+            ],
+            [
+              {
+                "href": "/-/media/Files/Global/documents/2024/08/20/10/37/EXT-1085-A.pdf",
+                "text": "DownloadDownload\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\tDownload our Weatherproofing Retirement Client Brochure (PDF)",
+                "ariaLabel": "Download our Weatherproofing Retirement Client Brochure (PDF)"
+              }
+            ]
+          ],
+          "alphaTags": []
+        }
+      ],
+      "gapCodes": []
+    }
+  ],
+  "structuralSections": [
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceSection": "section-02",
+      "parameterIntent": {
+        "theme": "transparent",
+        "layout": "row",
+        "spacing": "none"
+      },
+      "childDatasourceIntentKeys": [
+        "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework#s02-richtext-00",
+        "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework#s02-richtext-01"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "sourceSection": "section-04",
+      "parameterIntent": {
+        "theme": "transparent",
+        "layout": "row",
+        "spacing": "none"
+      },
+      "childDatasourceIntentKeys": [
+        "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework#s04-richtext-00",
+        "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework#s04-richtext-01"
+      ]
+    }
+  ]
+}

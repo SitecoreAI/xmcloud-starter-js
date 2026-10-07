@@ -28,6 +28,15 @@ export const EditorialBody = ({ fields, params }: AllianzArticleProps) => {
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzArticle" />;
   const tile = params.scaffold === 'plain-tile';
+  const richTextField = params.scaffold === 'rich-text'
+    ? safeEditorialRichText(data.body?.jsonValue, isEditing) : undefined;
+  // Opt-in for a CMS-serialized leading empty paragraph. In text/html, <p />
+  // is an open paragraph, not the source's empty <p></p>. Keep saved fields
+  // and SDK metadata unchanged; normalize only this render-time value.
+  const richTextBody = richTextField && params.leadingEmptyParagraph === '1'
+    && /^<p[ \t\r\n\f]*\/>/.test(richTextField.value)
+    ? { ...richTextField, value: richTextField.value.replace(/^<p[ \t\r\n\f]*\/>/, '<p></p>') }
+    : richTextField;
   const content = <>
     <header>
       <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={editorialHeadingTag(params.headingLevel)} field={data.heading?.jsonValue} />}</div>
@@ -36,7 +45,7 @@ export const EditorialBody = ({ fields, params }: AllianzArticleProps) => {
     {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing)} className={editorialBodyClass(params.bodySize)} />}
   </>;
   return <EditorialFrame params={params} column>
-    {params.scaffold === 'rich-text' ? <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing)} className="o-richTextEditor__wrapper" /> :
+    {params.scaffold === 'rich-text' ? <RichText editable={isEditing} field={richTextBody} className="o-richTextEditor__wrapper" /> :
       <article className={tile ? 'm-axlTile match-height -is--stacked t-bg-transparent' : 'm-axlIntroductionBlock -is--stacked -no--image'}>
         <div className={`tileContent ${params.alignment === 'center' ? 'u-text-center' : 'u-text-left'}`}>
           {tile ? <div className="tileSubGrid__content">{content}</div> : content}
