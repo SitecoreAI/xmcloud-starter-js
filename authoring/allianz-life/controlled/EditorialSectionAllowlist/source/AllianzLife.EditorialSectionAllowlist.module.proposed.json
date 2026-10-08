@@ -1,0 +1,17 @@
+{
+  "namespace": "AllianzLife.EditorialSectionAllowlist",
+  "description": "INACTIVE reviewed candidate. One existing site placeholder only. Requires exact-target freshness comparison, protected guard approval and explicit activation; never activate the historical five-root module.",
+  "items": {
+    "path": "items",
+    "includes": [
+      {
+        "name": "PlaceholderEditorialSection",
+        "path": "/sitecore/content/allianz/allianz-life/Presentation/Placeholder Settings/Editorial section",
+        "scope": "SingleItem",
+        "database": "master",
+        "maxRelativePathLength": 100,
+        "allowedPushOperations": "CreateAndUpdate"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+﻿---
+ID: "8211bbf2-2f96-42f1-913a-e28d06d42a05"
+Parent: "cee2fa9d-4218-47de-97b1-55e91409a08d"
+Template: "d2a6884c-04d5-4089-a64e-d27ca9d68d4c"
+Path: "/sitecore/content/allianz/allianz-life/Presentation/Placeholder Settings/Editorial section"
+SharedFields:
+- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
+  Hint: Placeholder Key
+  Value: "allianz-editorial-section-{*}"
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "79627cf9-4202-4c29-8884-4a22e6334cdb"
+- ID: "e391b526-d0c5-439d-803e-17512eae6222"
+  Hint: Allowed Controls
+  Value: |
+    {C4FBFD1B-2FC0-5AF5-85C1-BABC12FF56DA}
+    {EA0674F1-31A1-540C-8622-91399E29FFE0}
+    {7E693F81-A98E-5E6F-AD07-E01377139DD5}
+    {6852EA65-082D-428A-99BD-9E342588D161}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20261006T061004Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "1ef5de20-1cef-4f87-8477-fa63d24ae209"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20261006T200258Z

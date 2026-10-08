@@ -1,3 +1,4 @@
+import type { AnchorHTMLAttributes } from 'react';
 import { AppPlaceholder } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from 'lib/component-props';
 import componentMap from '.sitecore/component-map';
@@ -13,6 +14,19 @@ export const Default = (props: ComponentProps) => {
   }
   const children = <AppPlaceholder name={`allianz-editorial-section-${id}`}
     rendering={props.rendering} page={props.page} componentMap={componentMap} />;
+  // Structural children reuse the existing native container choices. A content
+  // section has no host element, so its identifier is a source named anchor.
+  if (params.container === 'content') {
+    // React omits the legacy name attribute from its anchor type; retain the source.
+    const anchorProps: AnchorHTMLAttributes<HTMLAnchorElement> & { name?: string } = { name: params.RenderingIdentifier };
+    return <>
+      {params.RenderingIdentifier && <a {...anchorProps} />}
+      {children}
+    </>;
+  }
+  if (params.container === 'row') return <div className={`l-grid__row ${rowSpacing(params)}`} id={params.RenderingIdentifier}>
+    {params.layout === 'column' ? <div className="l-grid__column-medium-12">{children}</div> : children}
+  </div>;
   return <div className={`${params.sectionWidth === 'contained' ? 'l-container' : 'l-container--full-width'} ${params.sectionSpacing === '1' ? 'u-row-spacing ' : ''}${sectionTheme(params.theme)} axlTileCollection`} id={params.RenderingIdentifier}>
     <div className={`l-grid l-grid--max-width${params.sectionWidth === 'contained' ? ' l-grid--no-gutters-outer' : ''}`}>
       {params.layout === 'column' ? <div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">{children}</div></div> : params.layout === 'row' ? <div className={`l-grid__row ${rowSpacing(params)}`}>{children}</div> : children}

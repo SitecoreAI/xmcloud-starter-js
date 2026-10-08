@@ -1,0 +1,10 @@
+--- native-before/Editorial section.yml
++++ candidate/Editorial section.yml
+@@ -16,6 +16,7 @@
+     {C4FBFD1B-2FC0-5AF5-85C1-BABC12FF56DA}
+     {EA0674F1-31A1-540C-8622-91399E29FFE0}
+     {7E693F81-A98E-5E6F-AD07-E01377139DD5}
++    {6852EA65-082D-428A-99BD-9E342588D161}
+ Languages:
+ - Language: en
+   Versions:

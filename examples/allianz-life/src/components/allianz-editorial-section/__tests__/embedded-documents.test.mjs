@@ -126,7 +126,7 @@ test('each variant renders only its purpose-specific slots', () => {
 });
 test('modern Default fingerprint is pinned and retains original column geometry', () => {
   const file = fs.readFileSync(path.join(here, '../AllianzEditorialSection.tsx'), 'utf8'); const marker = '\n/** Purpose-specific slots keep legacy document controls independently editable.';
-  assert.equal(hash(file.slice(0, file.indexOf(marker))), '2226b3ac8303de9039acb9cde020c4285e6286b882a7092009e5dc65ca9aae82');
+  assert.equal(hash(file.slice(0, file.indexOf(marker))), 'b92c1d93235d940972748910de8786e5935b5c0b90ab480b37af39e4114c44eb');
   const input = fixture(sources[0]); input.props.rendering.placeholders = { 'allianz-editorial-section-{*}': [] }; Object.assign(input.props.params, { sectionWidth: 'contained', theme: 'transparent', layout: 'column', sectionSpacing: '1' });
   assert.match(render(Section.Default, input), /class="l-container u-row-spacing t-bg-transparent axlTileCollection"/); assert.match(render(Section.Default, input), /l-grid--no-gutters-outer/);
 });

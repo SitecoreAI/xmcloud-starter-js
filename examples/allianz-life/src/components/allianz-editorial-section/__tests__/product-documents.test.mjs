@@ -396,7 +396,7 @@ test('Product lists reject malformed child identities and field projections with
 
 test('shared-section and legacy prefixes, Product table and canceled heading files remain pinned', () => {
   const prefixCases = [
-    ['components/allianz-editorial-section/AllianzEditorialSection.tsx', '\n/** Product documents have six independent native controls', 'cebcc8aadbb983b9dc7ed86869b2fbb8d8afdddc09a233bfc0a1df0c8116c4ae'],
+    ['components/allianz-editorial-section/AllianzEditorialSection.tsx', '\n/** Product documents have six independent native controls', 'af5b65b556d458a2b05cb66fe2c8f1e00b48a47ccc71597f3fd63bc24e5d0e11'],
     ['components/allianz-legacy-link-list/AllianzLegacyLinkList.tsx', '\n/** Bare lists for the product-document shell', '1b8698fdac4c45ca47805ac2d8889ef24d6a6b5e0f0e20f7cdaa46084451ba47'],
   ];
   for (const [name, marker, expected] of prefixCases) {

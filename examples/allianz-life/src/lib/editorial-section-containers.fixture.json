@@ -1,0 +1,381 @@
+{
+  "scope": "Five full affected source sections with original source-proven scalar/media values; test-only rendering/datasource IDs are assigned by the test runner",
+  "baseCommit": "a03cc730f963b6e8842d2282868d36bb3e02cfc5",
+  "nativeMutation": false,
+  "cases": [
+    {
+      "name": "early-section-05",
+      "route": "early",
+      "sourceSection": 5,
+      "sourceFile": "/workspace/scratch/19d699b9a9db/next-family-audit/next-candidates/static-two/source/how-to-address-financial-risks-of-early-retirement.html",
+      "sourceSha256": "65a4dd39d09bfeafd6b2e82b3b76ff6d4b08b0c90612acba9e9e67b2c5dd6cdf",
+      "sourceFragment": "source-witnesses/early-section-05.html",
+      "sectionParams": {
+        "theme": "green-soft",
+        "spacing": "none"
+      },
+      "anchor": null,
+      "intro": {
+        "params": {
+          "container": "row",
+          "theme": "green-soft",
+          "alignment": "center",
+          "bodySize": "source-default",
+          "spacing": "none",
+          "paddingTop": "lg",
+          "marginBottom": "lg"
+        },
+        "card": {
+          "heading": "Learn more about the new realities of retirement",
+          "headingLevel": "h2",
+          "subheading": "",
+          "body": "\n\t\t\t\t\t<p>Our 2023 Annual Retirement Study explores how retirement is changing for Americans.</p>\n\t\t\t\t",
+          "alphanumeral": "",
+          "iconTheme": "primary-brand",
+          "theme": "transparent",
+          "link": {},
+          "image": {},
+          "icon": {
+            "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/4b64afa0fa0a4f7f87a12e01f2de3ca0?v=cba3d72e",
+            "dam-id": "dcOf0FwZRUCwDFK99wSBPg",
+            "dam-content-type": "Image",
+            "alt": "Information",
+            "width": "24",
+            "height": "24"
+          },
+          "sourceJobKey": "early-05-card-01",
+          "sourceJobSha256": "552e96f02b959d3f2bd64118ca446b0f4ef91931788c7f153fded006320e34d3",
+          "links": [
+            {
+              "title": "Get our study findings (PDF)",
+              "icon": {
+                "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/f8e0bf4b97c54ab0875b757f993ec39d?v=aa4ee7a6",
+                "dam-id": "dhIOu0OTRPyQLyHnZhTRyg",
+                "dam-content-type": "Image",
+                "alt": "Download",
+                "width": "24",
+                "height": "24"
+              },
+              "link": {
+                "text": "Get our study findings (PDF)",
+                "linktype": "external",
+                "url": "/allianz-assets/276092315dabb182-EXT-0080.pdf",
+                "anchor": "",
+                "target": "_blank",
+                "title": "",
+                "aria-label": "Get our study findings (PDF)",
+                "href": "/allianz-assets/276092315dabb182-EXT-0080.pdf",
+                "ariaLabel": "Get our study findings (PDF)"
+              }
+            }
+          ]
+        }
+      },
+      "tail": {
+        "params": {
+          "container": "row",
+          "layout": "column",
+          "spacing": "none"
+        }
+      },
+      "contentCards": []
+    },
+    {
+      "name": "grant-section-02",
+      "route": "grant",
+      "sourceSection": 2,
+      "sourceFile": "/workspace/scratch/19d699b9a9db/next-family-audit/next-candidates/common-gaps/source/apply-for-a-grant.html",
+      "sourceSha256": "084c6aed6c07c9b1d151595117e926f14120783172effbe34ec78ddf880ddfe9",
+      "sourceFragment": "source-witnesses/grant-section-02.html",
+      "sectionParams": {
+        "theme": "transparent",
+        "spacing": "none"
+      },
+      "anchor": null,
+      "intro": {
+        "params": {
+          "container": "row",
+          "theme": "transparent",
+          "alignment": "center",
+          "bodySize": "source-default",
+          "spacing": "none",
+          "paddingTop": "lg",
+          "marginBottom": "lg"
+        },
+        "card": {
+          "heading": "Our mission \u2013 \u201cWe secure your future\u201d \u2013 doesn\u2019t stop at managing risk in retirement.",
+          "headingLevel": "h2",
+          "subheading": "",
+          "body": "\n\t\t\t\t\t<p>For Allianz, it also means helping to secure the future of our community by reducing barriers to economic inclusion. Our goal is to support financial stability for people in our community today to help them achieve a financially sustainable and secure tomorrow. We work towards this goal by providing annual charitable grants to nonprofit organizations that help people access basic needs, gainful employment, and financial education.</p>\n<p>Allianz provides one-year grants in the seven-county Twin Cities metro area. Grants range from $25,000 to $50,000, but organizations with budgets under $2 million typically receive grants of $25,000.</p>\n\t\t\t\t",
+          "alphanumeral": "",
+          "iconTheme": "transparent",
+          "theme": "transparent",
+          "link": {},
+          "image": {},
+          "icon": {
+            "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/d0146c26d47644f08ff1b99c7f1591e6?v=91bc27d0",
+            "dam-id": "Rw7oChPXQh2ATMI63dzvCQ",
+            "dam-content-type": "Image",
+            "alt": "Collaborate",
+            "width": "24",
+            "height": "24"
+          },
+          "sourceJobKey": "grant-02-card-01",
+          "sourceJobSha256": "d28f104aa189c05755c12d9b1e1a43fc05aa981206230d1bb771e10e80f19041",
+          "links": [
+            {
+              "title": "More about the application process",
+              "link": {
+                "text": "More about the application process",
+                "linktype": "external",
+                "url": "/about/apply-for-a-grant",
+                "anchor": "application",
+                "target": "",
+                "title": "",
+                "aria-label": "More about the application process",
+                "href": "/about/apply-for-a-grant",
+                "ariaLabel": "More about the application process"
+              },
+              "icon": {
+                "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/9fc409c9c8c74c8abbc2b7af11a49c20?v=bd74c2a6",
+                "dam-id": "V4JhzRLZQGaPm0tg2mWaUg",
+                "dam-content-type": "Image",
+                "alt": "Right",
+                "width": "24",
+                "height": "24"
+              }
+            }
+          ]
+        }
+      },
+      "tail": {
+        "params": {
+          "container": "row",
+          "layout": "column",
+          "spacing": "none"
+        }
+      },
+      "contentCards": []
+    },
+    {
+      "name": "grant-section-06",
+      "route": "grant",
+      "sourceSection": 6,
+      "sourceFile": "/workspace/scratch/19d699b9a9db/next-family-audit/next-candidates/common-gaps/source/apply-for-a-grant.html",
+      "sourceSha256": "084c6aed6c07c9b1d151595117e926f14120783172effbe34ec78ddf880ddfe9",
+      "sourceFragment": "source-witnesses/grant-section-06.html",
+      "sectionParams": {
+        "theme": "green-soft",
+        "spacing": "none"
+      },
+      "anchor": "application",
+      "intro": {
+        "params": {
+          "container": "row",
+          "theme": "green-soft",
+          "alignment": "center",
+          "bodySize": "source-default",
+          "spacing": "none",
+          "paddingTop": "lg",
+          "marginBottom": "lg"
+        },
+        "card": {
+          "heading": "Application process",
+          "headingLevel": "h2",
+          "subheading": "",
+          "alphanumeral": "",
+          "iconTheme": "primary-brand",
+          "theme": "transparent",
+          "link": {},
+          "image": {},
+          "body": "\n\t\t\t\t\t<p>To submit a grant request, the completed Allianz Corporate Giving Application must be submitted via email by 11:59 p.m. on the deadline. Incomplete applications will not be accepted. An organization may only receive funding in only one of the focus areas each year.</p>\n<p>Applications are available to\u00a0<a href=\"/allianz-assets/f0987c9285cd8d99-allianz-grant-application-2026.docx\">download here (docx)</a>.</p>\n<p>If you have any questions, please <a href=\"mailto:communityengagement@allianzlife.com\">send us an email</a>.</p>\n\t\t\t\t",
+          "icon": {
+            "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/4b64afa0fa0a4f7f87a12e01f2de3ca0?v=cba3d72e",
+            "dam-id": "dcOf0FwZRUCwDFK99wSBPg",
+            "dam-content-type": "Image",
+            "alt": "Information",
+            "width": "24",
+            "height": "24"
+          },
+          "sourceJobKey": "grant-06-card-01",
+          "sourceJobSha256": "b35220d5ec06f99d892b070f8c64b3bb3dbae4fa01f5b648db0be76fb8541610",
+          "links": []
+        }
+      },
+      "tail": {
+        "params": {
+          "container": "row",
+          "layout": "column",
+          "spacing": "none"
+        }
+      },
+      "contentCards": []
+    },
+    {
+      "name": "grant-section-07",
+      "route": "grant",
+      "sourceSection": 7,
+      "sourceFile": "/workspace/scratch/19d699b9a9db/next-family-audit/next-candidates/common-gaps/source/apply-for-a-grant.html",
+      "sourceSha256": "084c6aed6c07c9b1d151595117e926f14120783172effbe34ec78ddf880ddfe9",
+      "sourceFragment": "source-witnesses/grant-section-07.html",
+      "sectionParams": {
+        "theme": "grey-muted",
+        "spacing": "none"
+      },
+      "anchor": null,
+      "intro": {
+        "params": {
+          "container": "row",
+          "theme": "grey-muted",
+          "alignment": "left",
+          "bodySize": "source-default",
+          "spacing": "none",
+          "paddingTop": "lg",
+          "marginBottom": "lg"
+        },
+        "card": {
+          "heading": "",
+          "headingLevel": "h2",
+          "subheading": "",
+          "body": "\n\t\t\t\t\t<p><strong>Excluded from consideration for financial support are</strong>: Organizations that are not tax-exempt under paragraph 501(c)(3) of the IRS code; individuals; religious organizations for denominational or religious purposes; labor, fraternal, athletic, or political organizations; capital funds for buildings and equipment; endowment funds; academic institutions and medical institutions; organizations outside of the Twin Cities metropolitan area; professional business organizations or associations; granting organizations or foundations that re-gift donations to nonprofits (exceptions include federated organizations and in-focus funds within community foundations \u2013 e.g., United Way, Community Health Charities, etc.); any organization deemed to present a reputational risk to Allianz; organizations that discriminate based on gender, age, ethnicity, disability, religion, sexual orientation, or cultural background.</p>\n\t\t\t\t",
+          "alphanumeral": "",
+          "iconTheme": "transparent",
+          "theme": "transparent",
+          "link": {},
+          "icon": {},
+          "image": {},
+          "sourceJobKey": "grant-07-card-01",
+          "sourceJobSha256": "9ced710c68361a474ba78dd945bec5f96c93e9e22c23423c904634bcf16e440e",
+          "links": []
+        }
+      },
+      "tail": {
+        "params": {
+          "container": "row",
+          "layout": "column",
+          "spacing": "none"
+        }
+      },
+      "contentCards": []
+    },
+    {
+      "name": "grant-section-03",
+      "route": "grant",
+      "sourceSection": 3,
+      "sourceFile": "/workspace/scratch/19d699b9a9db/next-family-audit/next-candidates/common-gaps/source/apply-for-a-grant.html",
+      "sourceSha256": "084c6aed6c07c9b1d151595117e926f14120783172effbe34ec78ddf880ddfe9",
+      "sourceFragment": "source-witnesses/grant-section-03.html",
+      "sectionParams": {
+        "theme": "blue-soft",
+        "sectionSpacing": "1",
+        "spacing": "none"
+      },
+      "anchor": null,
+      "intro": {
+        "params": {
+          "container": "row",
+          "alignment": "center",
+          "bodySize": "source-default",
+          "spacing": "none",
+          "paddingTop": "lg",
+          "marginBottom": "lg"
+        },
+        "card": {
+          "heading": "2026 grant categories",
+          "headingLevel": "h2",
+          "subheading": "",
+          "body": "",
+          "alphanumeral": "",
+          "iconTheme": "transparent",
+          "theme": "transparent",
+          "link": {},
+          "image": {},
+          "icon": {
+            "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/5c1c69973d934b1cb5525bc3f42b0df0?v=729b203e",
+            "dam-id": "WYDxINUMRIeu-Be1ggxekw",
+            "dam-content-type": "Image",
+            "alt": "List",
+            "width": "24",
+            "height": "24"
+          },
+          "sourceJobKey": "grant-03-card-01",
+          "sourceJobSha256": "c8a740702b807191fbb705c4ef8006f88991459c69a41d80c0731d2c49e78cbb",
+          "links": []
+        }
+      },
+      "tail": null,
+      "contentRowParams": {
+        "container": "row",
+        "layout": "column",
+        "spacing": "none",
+        "marginBottom": "xl"
+      },
+      "contentCards": [
+        {
+          "params": {
+            "container": "content",
+            "layout": "image-right",
+            "splitRatio": "67:33",
+            "alignment": "left",
+            "bodySize": "medium",
+            "tileMarginBottom": "xl"
+          },
+          "card": {
+            "heading": "Financial stability",
+            "headingLevel": "h3",
+            "subheading": "",
+            "body": "\n\t\t\t\t\t<div class=\"tileBody u-font-size-xl\">\n<p>Application due March 2, 2026</p>\n</div>\n<p>We understand that to be included in economic life, people need to meet their basic needs first. Allianz supports organizations that work to meet these needs, with a focus on creating stability and financial independence.</p>\n<p>We provide grants to organizations that:</p>\n<ul>\n    <li>Provide food, clothing, shelter, and/or programming\u00a0that supports individuals and families in increasing their financial stability (for example, food banks and transitional housing programs).</li>\n</ul>\n\t\t\t\t",
+            "alphanumeral": "",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": {},
+            "icon": {},
+            "image": {
+              "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/95191ee4f135401086be1e55cdbd91d6?v=e631ba01",
+              "dam-id": "Ntwccz86QC-qJwiJK9eRMQ",
+              "dam-content-type": "Image",
+              "alt": "",
+              "width": "832",
+              "height": "740"
+            },
+            "sourceJobKey": "grant-03-card-02",
+            "sourceJobSha256": "9b5cc0354caba78da41912a6e3ce7653ebc815172e74312471360fe22be21b5a",
+            "links": []
+          }
+        },
+        {
+          "params": {
+            "container": "content",
+            "layout": "image-left",
+            "splitRatio": "67:33",
+            "alignment": "left",
+            "bodySize": "medium",
+            "tileMarginBottom": "xl"
+          },
+          "card": {
+            "heading": "Financial sustainability and financial security",
+            "headingLevel": "h3",
+            "subheading": "",
+            "body": "\n\t\t\t\t\t<div class=\"tileBody u-font-size-xl\">\n<p>Application due July 1, 2026</p>\n</div>\n<p>Financial success is sustained through access to resources and opportunities for gainful employment, as well as through knowledge and preparation that supports long-term financial security and retirement readiness. Allianz supports organizations that help members of the community be successful in the workforce, including through college preparedness, skills training, entrepreneurial support, and access to capital and investment, as well as organizations that help ensure all community members have skills for financial well-being, are protected from fraud and other financial abuses, and know how to prepare for their future. </p>\n<p>We provide grants to organizations that:</p>\n<ul>\n    <li>Help high school students and adults prepare for and access post-secondary education.</li>\n    <li>Provide job and career skills training and placement.</li>\n    <li>Provide business development services and financial empowerment support for entrepreneurs and small businesses.</li>\n    <li>Help youth, adults, and families build financial knowledge, skills, and habits so that they can define their financial goals, develop financial plans, and improve their long-term financial well-being.</li>\n    <li>Support prevention and intervention of elder financial abuse.</li>\n</ul>\n\t\t\t\t",
+            "alphanumeral": "",
+            "iconTheme": "transparent",
+            "theme": "transparent",
+            "link": {},
+            "icon": {},
+            "image": {
+              "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/edab7fee7c754c09806e165ffa081927?v=9dd4f257",
+              "dam-id": "3Cjt-by5QYeY8ph7cwASoA",
+              "dam-content-type": "Image",
+              "alt": "",
+              "width": "832",
+              "height": "740"
+            },
+            "sourceJobKey": "grant-03-card-03",
+            "sourceJobSha256": "9015a164eb6da305120bb319e0a5873334def707faa209b94cbd0998489697bb",
+            "links": []
+          }
+        }
+      ]
+    }
+  ]
+}
