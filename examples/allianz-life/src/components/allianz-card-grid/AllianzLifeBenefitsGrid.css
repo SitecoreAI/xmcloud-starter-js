@@ -1,0 +1,24 @@
+/* Exact source glyph geometry uses the recovered mobile/desktop size and ink. */
+/* Let source flex pairs shrink below their copy's automatic minimum width. */
+.allianz-life-benefits-grid .m-axlTile,
+.allianz-life-benefits-grid .tileContent,
+.allianz-life-benefits-grid .tileSubGrid__content {
+  min-width: 0;
+}
+
+.allianz-life-benefits-grid .tileHeading,
+.allianz-life-benefits-grid .tileBody {
+  overflow-wrap: anywhere;
+}
+
+.allianz-life-benefits-grid .tileIcon > .allianz-life-benefit-glyph {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+
+@media (min-width: 704px) {
+  .allianz-life-benefits-grid .tileIcon > .allianz-life-benefit-glyph {
+    width: 40px;
+  }
+}

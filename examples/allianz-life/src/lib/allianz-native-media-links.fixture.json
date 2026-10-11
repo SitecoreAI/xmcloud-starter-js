@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "evidence": {
+    "libraryFileId": "libfile_b9551cc0399081919a26c4d0da619412",
+    "libraryVersion": 0,
+    "readbackDate": "2026-10-11",
+    "description": "Existing native Documents media targets and generated URLs verified in College Funding readback; no delivery token values retained."
+  },
+  "entries": [
+    {
+      "itemId": "69C77A7D-B4FC-4122-B46F-7AB91949096B",
+      "host": "xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io",
+      "path": "/-/media/Project/Allianz-Life/Documents/M-5285.pdf",
+      "mimeType": "application/pdf",
+      "bytes": 1727503
+    },
+    {
+      "itemId": "A8886BD5-B0B6-491B-8189-36A2AC3E06F8",
+      "host": "xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io",
+      "path": "/-/media/Project/Allianz-Life/Documents/M-5288.pdf",
+      "mimeType": "application/pdf",
+      "bytes": 3037649
+    },
+    {
+      "itemId": "F31CA213-7A67-437A-B038-31BD965630EC",
+      "host": "xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io",
+      "path": "/-/media/Project/Allianz-Life/Documents/CSI-513.pdf",
+      "mimeType": "application/pdf",
+      "bytes": 1036307
+    },
+    {
+      "itemId": "A8F20CD8-21A0-4F56-9E3B-5828CAC83BC9",
+      "host": "xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io",
+      "path": "/-/media/Project/Allianz-Life/Documents/AMK-488.pdf",
+      "mimeType": "application/pdf",
+      "bytes": 635813
+    },
+    {
+      "itemId": "394C1730-6F9B-45B0-82E6-86DE9A870F19",
+      "host": "xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io",
+      "path": "/-/media/Project/Allianz-Life/Documents/AMK-496.pdf",
+      "mimeType": "application/pdf",
+      "bytes": 886171
+    },
+    {
+      "itemId": "58477585-6E1B-4F93-8108-B1E8E3361A8D",
+      "host": "xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io",
+      "path": "/-/media/Project/Allianz-Life/Documents/AMK-501.pdf",
+      "mimeType": "application/pdf",
+      "bytes": 841749
+    }
+  ],
+  "pageEvidence": [
+    {
+      "pageId": "FD3B97D9-EA09-5342-B818-5C24C05EC6AE",
+      "sourceRoute": "/what-we-offer/life-insurance/flexible-estate-planning-strategies",
+      "sourceName": "Flexible estate planning strategies",
+      "readbackDate": "2026-10-11",
+      "nativeHtmlSha256": "5b384e476853d6974f14d614758e74970d2ea44b9ab9c7040ff9013ca6b3a1fc",
+      "nativeSnapshotSha256": "728d687b3645d766690df5d9a8f4b5de8e7747e1235008a1ff1ad67f68120029",
+      "mediaCount": 3,
+      "itemIds": [
+        "A8F20CD8-21A0-4F56-9E3B-5828CAC83BC9",
+        "394C1730-6F9B-45B0-82E6-86DE9A870F19",
+        "58477585-6E1B-4F93-8108-B1E8E3361A8D"
+      ],
+      "description": "Existing native media identities, exact delivery paths, MIME types and byte counts verified in the final Estate CMS receipt; generated delivery query values excluded.",
+      "libraryFileId": "libfile_4e1fcb99f64481919949f63edaf3a671",
+      "libraryVersion": 0,
+      "librarySha256": "5f439fa246db83e32d5f1a126c8fc1d7a2e57cdeeca7b0fbd7a8fd46107115cd",
+      "libraryBytes": 39978
+    }
+  ],
+  "usage": "QA evidence examples only; production native-document admission does not import or depend on this fixture."
+}

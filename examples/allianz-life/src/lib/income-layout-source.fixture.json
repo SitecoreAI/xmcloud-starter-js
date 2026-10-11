@@ -1,0 +1,223 @@
+{
+  "sourceZipSha256": "ab2384207ccffe1870c2b84027963c0f4441f9596e77127b3e5265ee7f505962",
+  "sourceHtmlSha256": "9c746d5186ae425050c47446d787a12a6abe3439f8a5736cf5d90bde9f090853",
+  "route": "/for-financial-professionals/income-that-cannot-be-outlived",
+  "sourceFieldCount": 48,
+  "records": [
+    {
+      "key": "page",
+      "family": "page",
+      "parentKey": "existing-financial-professionals",
+      "sourceXPath": "/html",
+      "fieldsFile": "fields/00-page.json",
+      "fields": {
+        "pageTitle": "Now Serving: Income That Cannot Be Outlived | Allianz Life",
+        "navigationTitle": "Now Serving: Income That Cannot Be Outlived",
+        "metaDescription": "In tennis, every point starts with a serve. For retirement plans, success starts with execution.",
+        "sourceUrl": "https://www.allianzlife.com/for-financial-professionals/income-that-cannot-be-outlived",
+        "sourceHash": "9c746d5186ae425050c47446d787a12a6abe3439f8a5736cf5d90bde9f090853",
+        "sourceBodyId": "page-income-that-cannot-be-outlived",
+        "sourceBodyClasses": " page-income-that-cannot-be-outlived ",
+        "shellFamily": "modern"
+      }
+    },
+    {
+      "key": "hero",
+      "family": "hero",
+      "parentKey": "page-data",
+      "sourceXPath": "/html/body/main/div[1]/div/div/div/h1",
+      "fieldsFile": "fields/01-hero.json",
+      "fields": {
+        "heading": "Now serving: Guaranteed income for life"
+      }
+    },
+    {
+      "key": "section-2-grid",
+      "family": "grid",
+      "parentKey": "page-data",
+      "sourceXPath": "/html/body/main/div[2]",
+      "fieldsFile": "fields/02-section-2-grid.json",
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": ""
+      }
+    },
+    {
+      "key": "section-2-card-1",
+      "family": "card",
+      "parentKey": "section-2-grid",
+      "sourceXPath": "/html/body/main/div[2]/div/div/div/article",
+      "fieldsFile": "fields/03-section-2-card-1.json",
+      "fields": {
+        "body": "\n\t\t\t\t\t<p>World No 1. tennis player and Allianz global brand ambassador Jannik Sinner knows that championship success isn’t defined by a single shot – it’s built through meticulous preparation, composed precision, and disciplined execution. </p>\n<p>Retirement planning isn’t so different. </p>\n<p>As lifetime income becomes a valuable component of defined contribution plans, you and your clients may need solutions engineered to go the distance. That is why we designed Allianz Lifetime Income+® Annuity, an in-plan fixed index annuity (FIA) that bridges the gap between asset protection and growth potential. By providing guaranteed lifetime income alongside growth opportunities, it offers participants a modern strategy designed to go the distance. </p>\n<p>Because success, whether on the court or in retirement, shouldn’t be left to chance. </p>\n\t\t\t\t"
+      }
+    },
+    {
+      "key": "section-3-grid",
+      "family": "grid",
+      "parentKey": "page-data",
+      "sourceXPath": "/html/body/main/div[3]",
+      "fieldsFile": "fields/04-section-3-grid.json",
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": ""
+      }
+    },
+    {
+      "key": "section-3-card-1",
+      "family": "card",
+      "parentKey": "section-3-grid",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div/article[1]",
+      "fieldsFile": "fields/05-section-3-card-1.json",
+      "fields": {
+        "heading": "A changed game calls for a new strategy",
+        "headingLevel": "h2",
+        "body": "\n\t\t\t\t\t<p style=\"text-align: left;\">Rising concerns around volatility, longevity, and inflation have reshaped what participants need from their retirement strategies – and what financial professionals and plan sponsors are being asked to deliver. </p>\n<p style=\"text-align: left;\">And the urgency is growing:</p>\n<ul style=\"list-style-type: square;\">\n    <li style=\"text-align: left;\"><strong>Accelerating demand:</strong> Demographic changes are creating a growing need for guaranteed lifetime income solutions.</li>\n    <li style=\"text-align: left;\"><strong>Gaps in traditional tools:</strong> Traditional retirement models are disappearing, leaving standard defined contribution plans to do the heavy lifting for income needs</li>\n    <li style=\"text-align: left;\"><strong>Complex economic conditions:</strong> Persistent market volatility can require a more structured approach to risk management</li>\n</ul>\n<p style=\"text-align: left;\">Saving alone may no longer be enough.<strong> </strong>To help secure the long game, participants may need an adaptable solution that converts some of their accumulated savings into lifetime income they can’t outlive – all while maintaining the flexibility and portability that modern workforces demand.</p>\n\t\t\t\t"
+      }
+    },
+    {
+      "key": "section-3-card-2",
+      "family": "card",
+      "parentKey": "section-3-grid",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div/article[2]",
+      "fieldsFile": "fields/06-section-3-card-2.json",
+      "fields": {
+        "heading": "Mastering risk",
+        "headingLevel": "h3",
+        "body": "\n\t\t\t\t\t<p>In tennis, a great serve can win points, but a flawless baseline defense can win championships. </p>\n<p>Most DC plan investments are exposed to market volatility. With Allianz Lifetime Income+®, however, contributions and credited interest remain protected from downturns. </p>\n<p>That means that even when markets decline, the annuity portion of participants’ retirement assets doesn’t – providing an added layer of defense when it matters most.</p>\n\t\t\t\t"
+      }
+    },
+    {
+      "key": "section-3-card-3",
+      "family": "card",
+      "parentKey": "section-3-grid",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div/article[3]",
+      "fieldsFile": "fields/07-section-3-card-3.json",
+      "fields": {
+        "heading": "Capturing opportunity",
+        "headingLevel": "h3",
+        "body": "\n\t\t\t\t\t<p>Preparation isn’t just about managing uncertainty. It’s about being ready when opportunity appears. </p>\n<p>Allianz Lifetime Income+® offers more than protection. It combines guaranteed lifetime income with growth potential tied to the performance of external market indexes, up to a cap or other limiter.</p>\n<p>It’s a balanced approach that helps participants continue pursuing future income growth while managing compounding risk.</p>\n\t\t\t\t"
+      }
+    },
+    {
+      "key": "section-3-card-4",
+      "family": "card",
+      "parentKey": "section-3-grid",
+      "sourceXPath": "/html/body/main/div[3]/div/div/div/article[4]",
+      "fieldsFile": "fields/08-section-3-card-4.json",
+      "fields": {
+        "heading": "In it for the long game",
+        "headingLevel": "h3",
+        "body": "\n\t\t\t\t\t<p>Successful outcomes aren’t built on a single moment – they’re built over time. </p>\n<p>Allianz Lifetime Income+® offers guaranteed retirement income that cannot be outlived.</p>\n<p>And because long-term strategies deserve long-term strength, it’s backed by the financial strength and stability of Allianz Life Insurance Company of North America,<sup>1</sup> rated the #1 Annuity Company of 2026 by Forbes.<sup>2</sup></p>\n\t\t\t\t"
+      }
+    },
+    {
+      "key": "section-4-grid",
+      "family": "grid",
+      "parentKey": "page-data",
+      "sourceXPath": "/html/body/main/div[4]",
+      "fieldsFile": "fields/09-section-4-grid.json",
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": ""
+      }
+    },
+    {
+      "key": "section-4-card-1",
+      "family": "card",
+      "parentKey": "section-4-grid",
+      "sourceXPath": "/html/body/main/div[4]/div/div/div/article",
+      "fieldsFile": "fields/10-section-4-card-1.json",
+      "fields": {
+        "heading": "The ultimate team player",
+        "headingLevel": "h2",
+        "body": "\n\t\t\t\t\t<p style=\"text-align: left;\">When it’s time to execute, coordination is everything. Allianz Lifetime Income+® is built to work seamlessly within an employer-sponsored plan without adding unnecessary operational friction:</p>\n<ul style=\"list-style-type: square;\">\n    <li style=\"text-align: left;\"><strong>No additional charge for sponsors:</strong> Deliver meaningful value to participants – without adding another line item for the sponsor. </li>\n    <li style=\"text-align: left;\"><strong>Intuitive education:</strong> Digital calculators, interactive tools, and educational videos are delivered smoothly within the familiar recordkeeper experience</li>\n    <li style=\"text-align: left;\"><strong>Participant focused features:</strong> Combines guaranteed lifetime income and growth potential with the flexibility and portability participants may need</li>\n    <li style=\"text-align: left;\"><strong>Managed account integration:</strong> Integrates seamlessly with managed accounts to support personalized, professional oversight for income decisions</li>\n</ul>\n<p style=\"text-align: left;\">Because when experience and education work together, financial professionals can spend less time navigating complexity – and more time helping clients prepare for retirement. </p>\n\t\t\t\t"
+      }
+    },
+    {
+      "key": "section-5-grid",
+      "family": "grid",
+      "parentKey": "page-data",
+      "sourceXPath": "/html/body/main/div[5]",
+      "fieldsFile": "fields/11-section-5-grid.json",
+      "fields": {
+        "heading": "",
+        "subheading": "",
+        "body": "",
+        "primaryLink": ""
+      }
+    },
+    {
+      "key": "section-5-card-1",
+      "family": "card",
+      "parentKey": "section-5-grid",
+      "sourceXPath": "/html/body/main/div[5]/div/div/div/article",
+      "fieldsFile": "fields/12-section-5-card-1.json",
+      "fields": {
+        "heading": "The ball’s in your court",
+        "headingLevel": "h2",
+        "body": "\n\t\t\t\t\t<p>Outmaneuver today’s retirement planning challenges with a solution that delivers competitive value to plan sponsors, while providing participants with the resilience to go the distance.</p>\n<p>\n</p>\n",
+        "subheading": "<h3>Ready to change the game? </h3>",
+        "link": "<link text=\"Schedule a product demo today\" linktype=\"external\" url=\"https://lp.allianzlife.com/EMContactUS.html?utm_source=website&amp;utm_medium=webpage&amp;utm_campaign=contactus_submit&amp;utm_content=jannik_sinner\" target=\"_blank\"/>"
+      }
+    },
+    {
+      "key": "ratings-footnotes",
+      "family": "legal",
+      "parentKey": "page-data",
+      "sourceXPath": "/html/body/main/div[6]/div/div/div/article/div/div",
+      "fieldsFile": "fields/13-ratings-footnotes.json",
+      "fields": {
+        "body": "\n\t\t\t\t\t<p><sup>1 </sup>A.M. Best rating of A+ (affirmed March 2026), Moody’s rating of Aa3 (affirmed September 2025), Standard &amp; Poor’s rating of AA (affirmed March 2026). [RA6.1]These independent agency ratings are based on an analysis of financial results and an evaluation of management objectives, strategies, and risk management programs. The ratings do not indicate approval by the analysts and are subject to change.</p>\n<p><sup>2</sup> Best Annuity Companies of 2026. Forbes, June 11, 2026.</p>\n<hr>\n\t\t\t\t"
+      }
+    },
+    {
+      "key": "product-legal",
+      "family": "legal",
+      "parentKey": "page-data",
+      "sourceXPath": "/html/body/main/div[7]/div/div/div/div/div",
+      "fieldsFile": "fields/14-product-legal.json",
+      "fields": {
+        "body": "\n<p>While principal and credited interest are protected from market downturns, fees or other charges may reduce the contract value.</p><p>Distributions may be subject to a withdrawal charge. Distributions are subject to ordinary income tax and, if taken prior to age 59½, an additional 10% federal tax.</p><p>Guarantees are backed solely by the financial strength and claims-paying ability of the issuing insurance company.</p><p>Annuities and life insurance are issued by Allianz Life Insurance Company of North America, PO Box 59060, Minneapolis, MN 55459-0060.</p><p>This content does not apply in the state of New York.</p><p>Product and feature availability may vary by state and retirement plan.</p><!-- For financial professional use only -->\n<p><strong>For financial professional use only – not for use with the public.</strong></p>    "
+      }
+    }
+  ],
+  "sections": [
+    {
+      "sourceSection": 1,
+      "sha256": "2400bdfcbe41cedbe708657155c3ebbe2c5e862b5cd51b30eec22aae9154496c"
+    },
+    {
+      "sourceSection": 2,
+      "sha256": "9dab53630a02094788b0b8de5edf6fcbf746b11dfb82a82d809eec34f4ebd451"
+    },
+    {
+      "sourceSection": 3,
+      "sha256": "c85f895f164d1d0f0b8f50957039baebcc339c95a67ce8f3628f29a708ab8b66"
+    },
+    {
+      "sourceSection": 4,
+      "sha256": "f6d94f7ddcefdc599b8ef6a8c38b91c957f11e4d63ff9868934c3dbaf38f3c8a"
+    },
+    {
+      "sourceSection": 5,
+      "sha256": "c7f7d7dbf4bb367477ab37e45f61935f88f1e5ff0c746342df8864a10b5e3c5f"
+    },
+    {
+      "sourceSection": 6,
+      "sha256": "db8b6e311a50026e0af6544572afe5e5a1403372abdf3ca23a9a72582f1d7985"
+    },
+    {
+      "sourceSection": 7,
+      "sha256": "9474f376c6ece2227519783e4c60ac0c6787e1c7ba41d2795542beaae036d4ac"
+    }
+  ],
+  "fieldPlanSha256": "19c2e9ca24fd29ae658a71657ac46c1763353986bf1d5e20bbfe3ee90e62a0de",
+  "nativeIdentityPolicy": "No source fixture identifier is a native CMS identity. Runtime tests use explicitly test-only IDs and media URLs."
+}

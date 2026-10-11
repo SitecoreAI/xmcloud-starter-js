@@ -5,6 +5,8 @@ import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
 import { legalDisclosuresFields, type LegalDisclosuresProps } from './legal-disclosures.props';
 import { safeNewsroomRichText } from './newsroom-grey.links.props';
+import { EditorialFrame } from 'lib/allianz-editorial-frame';
+import { safeEditorialRichText } from 'lib/allianz-editorial';
 import './NewsroomGrey.css';
 
 /** Body-only disclosure purpose, independently sourced on all 81 newsroom pages. */
@@ -81,4 +83,37 @@ export const Legacy = ({ fields, params }: LegalDisclosuresProps) => {
     ? <RichText className="col-md-12 content-body disclosure" id={params?.RenderingIdentifier}
         field={safeNewsroomRichText(body, isEditing)} editable={isEditing} />
     : <div className="col-md-12 content-body disclosure" id={params?.RenderingIdentifier} />}</div>;
+};
+
+/** College strategy footnotes have a tile body and no trailing disclosure shell. */
+export const StrategyFootnotes = ({ fields, params }: LegalDisclosuresProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="Legal Disclosures" />;
+  const body = legalDisclosuresFields(data).body?.jsonValue;
+  return <EditorialFrame params={params ?? {}} column>
+    <article className="m-axlIntroductionBlock -is--stacked -no--image">
+      <div className="tileContent u-text-left">
+        <header><div className="tileHeading" /><div className="tileSubHeading" /></header>
+        {shouldRenderTextField(body, isEditing)
+          ? <RichText field={safeEditorialRichText(body, isEditing)} editable={isEditing} className="tileBody" />
+          : <div className="tileBody" />}
+      </div>
+    </article>
+  </EditorialFrame>;
+};
+
+/** Retirement strategy footnotes use the source rich text wrapper. */
+export const StrategyRichText = ({ fields, params }: LegalDisclosuresProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="Legal Disclosures" />;
+  const body = legalDisclosuresFields(data).body?.jsonValue;
+  return <EditorialFrame params={params ?? {}} column>
+    {shouldRenderTextField(body, isEditing)
+      ? <RichText field={safeEditorialRichText(body, isEditing)} editable={isEditing} className="o-richTextEditor__wrapper" />
+      : <div className="o-richTextEditor__wrapper" />}
+  </EditorialFrame>;
 };

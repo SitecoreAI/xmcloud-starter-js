@@ -169,3 +169,48 @@ test('cleared legacy body retains genuine SDK editing metadata without invented 
   assert.match(editing, /fieldId.*font-test-body/);
   assert.doesNotMatch(editing, /Ordinary editorial|AllianzNeoRegular/);
 });
+
+const PartialDesign = loadSource(path.join(root, 'components/partial-design-dynamic-placeholder/PartialDesignDynamicPlaceholder.tsx'));
+componentMap.set('PartialDesignDynamicPlaceholder', PartialDesign);
+componentMap.set('AllianzLegacyHeader', { Default: () => React.createElement('header', null, 'Legacy shell') });
+componentMap.set('AllianzHeader', { Default: () => React.createElement('header', null, 'Modern shell') });
+const wrappedHeader = (componentName) => ({
+  componentName: 'PartialDesignDynamicPlaceholder', uid: 'partial-header-test', params: { sig: 'sxa-header' },
+  placeholders: { 'sxa-header': [{ componentName, uid: 'nested-header-test', params: {} }] },
+});
+
+for (const editing of [false, true]) {
+  test(`real SDK ${editing ? 'editing' : 'visitor'} nested partial legacy header selects scoped styling with blank shell fields`, () => {
+    const page = fixture(editing, 'legacy');
+    page.layout.sitecore.route.fields.shellFamily.value = '';
+    page.layout.sitecore.route.placeholders['headless-header'] = [wrappedHeader('AllianzLegacyHeader')];
+    const before = JSON.stringify(page);
+    const html = render(page);
+    assert.match(html, /class="(?:prod|editing)-mode allianz-legacy /);
+    assert.doesNotMatch(html, /class="(?:prod|editing)-mode allianz-modern/);
+    assert.match(html, /id="content-body" class="col-md-10 col-md-offset-1 center-column"/);
+    assert.match(html, /Legacy shell/);
+    if (editing) assert.match(html, /chrometype="rendering"[^>]*id="nested-header-test"/);
+    assert.equal(JSON.stringify(page), before);
+  });
+
+  test(`real SDK ${editing ? 'editing' : 'visitor'} nested modern header and legacy metadata retain modern shell`, () => {
+    const page = fixture(editing, 'modern');
+    page.layout.sitecore.route.placeholders['headless-header'] = [wrappedHeader('AllianzHeader')];
+    page.layout.sitecore.route.fields.note = { value: { componentName: 'AllianzLegacyHeader' } };
+    const before = JSON.stringify(page);
+    const html = render(page);
+    assert.match(html, /class="(?:prod|editing)-mode allianz-modern /);
+    assert.doesNotMatch(html, /id="content-body" class="col-md-10/);
+    assert.match(html, /Modern shell/);
+    assert.equal(JSON.stringify(page), before);
+  });
+}
+
+test('legacy fallback remains limited to the header slot and accepts direct header renderings', () => {
+  const page = fixture(false, 'modern');
+  page.layout.sitecore.route.placeholders['headless-main'].push({ componentName: 'AllianzLegacyHeader', uid: 'body-header-test', params: {} });
+  assert.match(render(page), /class="prod-mode allianz-modern /);
+  page.layout.sitecore.route.placeholders['headless-header'] = [{ componentName: 'AllianzLegacyHeader', uid: 'direct-header-test', params: {} }];
+  assert.match(render(page), /class="prod-mode allianz-legacy /);
+});

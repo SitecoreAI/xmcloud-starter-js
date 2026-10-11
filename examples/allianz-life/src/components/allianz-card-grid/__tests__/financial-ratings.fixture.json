@@ -1,0 +1,739 @@
+{
+  "pageId": "843e60e3-39c1-5146-8a1e-99b46be7ee98",
+  "ratings": {
+    "id": "6A6D5C5594F94090A7F4DCEC2FF47726",
+    "heading": {
+      "jsonValue": {
+        "value": ""
+      }
+    },
+    "subheading": {
+      "jsonValue": {
+        "value": ""
+      }
+    },
+    "body": {
+      "jsonValue": {
+        "value": ""
+      }
+    },
+    "primaryLink": {
+      "jsonValue": {
+        "value": {
+          "href": ""
+        }
+      }
+    },
+    "children": {
+      "total": 3,
+      "pageInfo": {
+        "hasNext": false,
+        "endCursor": "Mw=="
+      },
+      "results": [
+        {
+          "id": "985B164EA7E44B42A41410E963BDABCC",
+          "fieldCollection": [
+            {
+              "name": "links",
+              "jsonValue": []
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": "A+"
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h5"
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": {}
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>\r\nA+ is the second-highest of 16 possible ratings and was affirmed in March 2026.\r\n</p>\r\n<div class=\"c-table__container\">\r\n<table class=\"c-table c-table--light has-border\">\r\n    <caption class=\"u-aria-only\">\r\n    A.M. Best ratings.\r\n    </caption>\r\n    <thead class=\"c-table__header\">\r\n        <tr class=\"c-table__header-row\">\r\n            <th class=\"c-table__header-cell\" colspan=\"2\">\r\n            <div class=\"c-table__header-title-block\">\r\n            <span class=\"c-table__header-title\">\r\n            Historical Ratings\r\n            </span>\r\n            </div>\r\n            </th>\r\n        </tr>\r\n    </thead>\r\n    <tbody class=\"c-table__content\">\r\n        <tr class=\"c-table__row\">\r\n            <td class=\"c-table__cell\">2015 - 2026</td>\r\n            <td class=\"c-table__cell\">A+</td>\r\n        </tr>\r\n        <tr class=\"c-table__row\">\r\n            <td class=\"c-table__cell\">2005 - 2015</td>\r\n            <td class=\"c-table__cell\">A</td>\r\n        </tr>\r\n        <tr class=\"c-table__row\">\r\n            <td class=\"c-table__cell\">2005</td>\r\n            <td class=\"c-table__cell\">A+</td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n</div>"
+              }
+            },
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "The A.M. Best rating of A+ (Superior)"
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "icon",
+              "jsonValue": {
+                "value": {}
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": {
+                  "href": ""
+                }
+              }
+            },
+            {
+              "name": "__Sortorder",
+              "jsonValue": {
+                "value": "100"
+              }
+            },
+            {
+              "name": "__Created",
+              "jsonValue": {
+                "value": "2026-10-10T00:16:33Z"
+              }
+            },
+            {
+              "name": "__Updated",
+              "jsonValue": {
+                "value": "2026-10-10T00:16:37Z"
+              }
+            },
+            {
+              "name": "__Semantics",
+              "jsonValue": []
+            }
+          ]
+        },
+        {
+          "id": "5F8F1EF6DB5A4F6B9DE7A5D155E6C6D3",
+          "fieldCollection": [
+            {
+              "name": "links",
+              "jsonValue": []
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": "Aa3"
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h5"
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": {}
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>\r\nAa3 is the fourth-highest of 21 possible ratings and was affirmed in September 2023 and was most recently affirmed in September 2025.\r\n</p>\r\n<div class=\"c-table__container\">\r\n<table class=\"c-table c-table--light has-border\">\r\n    <caption class=\"u-aria-only\">\r\n    Moody's ratings.\r\n    </caption>\r\n    <thead class=\"c-table__header\">\r\n        <tr class=\"c-table__header-row\">\r\n            <th class=\"c-table__header-cell\" colspan=\"2\">\r\n            <div class=\"c-table__header-title-block\">\r\n            <span class=\"c-table__header-title\">\r\n            Historical Ratings\r\n            </span>\r\n            </div>\r\n            </th>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr class=\"c-table__row\">\r\n            <td class=\"c-table__cell\">2023 - 2025</td>\r\n            <td class=\"c-table__cell\">Aa3</td>\r\n        </tr>\r\n    </tbody>\r\n    <tbody class=\"c-table__content\">\r\n        <tr class=\"c-table__row\">\r\n            <td class=\"c-table__cell\">2017 - 2022</td>\r\n            <td class=\"c-table__cell\">A1</td>\r\n        </tr>\r\n        <tr class=\"c-table__row\">\r\n            <td class=\"c-table__cell\">2003 - 2016</td>\r\n            <td class=\"c-table__cell\">A2</td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n</div>"
+              }
+            },
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "The Moody\u2019s rating of Aa3"
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "icon",
+              "jsonValue": {
+                "value": {}
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": {
+                  "href": ""
+                }
+              }
+            },
+            {
+              "name": "__Sortorder",
+              "jsonValue": {
+                "value": "200"
+              }
+            },
+            {
+              "name": "__Created",
+              "jsonValue": {
+                "value": "2026-10-10T00:16:48Z"
+              }
+            },
+            {
+              "name": "__Updated",
+              "jsonValue": {
+                "value": "2026-10-10T00:16:52Z"
+              }
+            },
+            {
+              "name": "__Semantics",
+              "jsonValue": []
+            }
+          ]
+        },
+        {
+          "id": "4FEAE9EEE3284B8A9B679BEDDA03BDED",
+          "fieldCollection": [
+            {
+              "name": "links",
+              "jsonValue": []
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": "AA"
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": {}
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<p>AA is the third-highest of 21 possible ratings and was affirmed in March 2026.</p>\r\n<div class=\"c-table__container\">\r\n<table class=\"c-table c-table--light has-border\">\r\n    <caption class=\"u-aria-only\">\r\n    Standard &amp; Poor's ratings.\r\n    </caption>\r\n    <thead class=\"c-table__header\">\r\n        <tr class=\"c-table__header-row\">\r\n            <th class=\"c-table__header-cell\" colspan=\"2\">\r\n            <div class=\"c-table__header-title-block\">\r\n            <span class=\"c-table__header-title\">\r\n            Historical Ratings\r\n            </span>\r\n            </div>\r\n            </th>\r\n        </tr>\r\n    </thead>\r\n    <tbody class=\"c-table__content\">\r\n        <tr class=\"c-table__row\">\r\n            <td class=\"c-table__cell\">2007 - 2026</td>\r\n            <td class=\"c-table__cell\">AA</td>\r\n        </tr>\r\n        <tr class=\"c-table__row\">\r\n            <td class=\"c-table__cell\">2005 - 2007</td>\r\n            <td class=\"c-table__cell\">AA-</td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n</div>"
+              }
+            },
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": "The Standard & Poor\u2019s rating of AA (Very strong)"
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "icon",
+              "jsonValue": {
+                "value": {}
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": {
+                  "href": ""
+                }
+              }
+            },
+            {
+              "name": "__Sortorder",
+              "jsonValue": {
+                "value": "300"
+              }
+            },
+            {
+              "name": "__Created",
+              "jsonValue": {
+                "value": "2026-10-10T00:16:59Z"
+              }
+            },
+            {
+              "name": "__Updated",
+              "jsonValue": {
+                "value": "2026-10-10T00:17:03Z"
+              }
+            },
+            {
+              "name": "__Semantics",
+              "jsonValue": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "ratingsParams": {
+    "theme": "transparent",
+    "layout": "stacked",
+    "columns": "3",
+    "alignment": "left",
+    "spacing": "none",
+    "headingLevel": "h4",
+    "paddingTop": "none",
+    "paddingBottom": "none",
+    "marginBottom": "lg",
+    "DynamicPlaceholderId": "5",
+    "FieldNames": "Default"
+  },
+  "agencies": {
+    "id": "B2D805E9446742B6903122C3593931FF",
+    "heading": {
+      "jsonValue": {
+        "value": ""
+      }
+    },
+    "subheading": {
+      "jsonValue": {
+        "value": ""
+      }
+    },
+    "body": {
+      "jsonValue": {
+        "value": ""
+      }
+    },
+    "primaryLink": {
+      "jsonValue": {
+        "value": {
+          "href": ""
+        }
+      }
+    },
+    "children": {
+      "total": 3,
+      "pageInfo": {
+        "hasNext": false,
+        "endCursor": "Mw=="
+      },
+      "results": [
+        {
+          "id": "783794D0FF0844E38EBA29F37A6AB6BC",
+          "fieldCollection": [
+            {
+              "name": "links",
+              "jsonValue": [
+                {
+                  "id": "af260d1a-f88f-438a-ac7c-cf42270b03bf",
+                  "url": "/about/financial-ratings/Data/Rating-agencies/Entry-01/links/Link-01",
+                  "name": "Link 01",
+                  "displayName": "Link 01",
+                  "fields": {
+                    "title": {
+                      "value": "Go to A.M. Best"
+                    },
+                    "link": {
+                      "value": {
+                        "href": "#demo-unavailable",
+                        "text": "Go to A.M. Best",
+                        "linktype": "anchor",
+                        "anchor": "demo-unavailable",
+                        "title": "This service is unavailable"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": {
+                  "height": "520",
+                  "dam-content-type": "Image",
+                  "alt": "tile-azl-am-bestV2",
+                  "width": "704",
+                  "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/116514-HomepagePromoCTAs-1100x740?v=36829335",
+                  "dam-id": "CpK2LlQNTtijakmAeYWL1A"
+                }
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<ul>\r\n    <li>founded in 1899 </li>\r\n    <li>largest and oldest independent insurance analyst in the U.S.</li>\r\n    <li>bases ratings on financial results and qualitative evaluations</li>\r\n</ul>"
+              }
+            },
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "icon",
+              "jsonValue": {
+                "value": {}
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": {
+                  "href": ""
+                }
+              }
+            },
+            {
+              "name": "__Sortorder",
+              "jsonValue": {
+                "value": "100"
+              }
+            },
+            {
+              "name": "__Created",
+              "jsonValue": {
+                "value": "2026-10-10T00:18:00Z"
+              }
+            },
+            {
+              "name": "__Updated",
+              "jsonValue": {
+                "value": "2026-10-10T00:20:49Z"
+              }
+            },
+            {
+              "name": "__Semantics",
+              "jsonValue": []
+            }
+          ]
+        },
+        {
+          "id": "F41EC561CF0241CCA40C784D9959D70A",
+          "fieldCollection": [
+            {
+              "name": "links",
+              "jsonValue": [
+                {
+                  "id": "b0306457-5e5f-428c-83d7-e6be330c0f4c",
+                  "url": "/about/financial-ratings/Data/Rating-agencies/Entry-02/links/Link-01",
+                  "name": "Link 01",
+                  "displayName": "Link 01",
+                  "fields": {
+                    "title": {
+                      "value": "Go to Moody\u2019s"
+                    },
+                    "link": {
+                      "value": {
+                        "href": "#demo-unavailable",
+                        "text": "Go to Moody\u2019s",
+                        "linktype": "anchor",
+                        "anchor": "demo-unavailable",
+                        "title": "This service is unavailable"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": {
+                  "height": "520",
+                  "dam-content-type": "Image",
+                  "alt": "moodys logo",
+                  "width": "704",
+                  "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/116520-HomepagePromoCTAs-1100x740?v=a26b096d",
+                  "dam-id": "sGV38MahSDyjCZiy66n_CA"
+                }
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<ul>\r\n    <li>has rated insurance companies since 1986 </li>\r\n    <li>bases ratings on business fundamentals\r\n    </li>\r\n    <li>focuses on financials, franchise value, and management\r\n    </li>\r\n</ul>"
+              }
+            },
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "icon",
+              "jsonValue": {
+                "value": {}
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": {
+                  "href": ""
+                }
+              }
+            },
+            {
+              "name": "__Sortorder",
+              "jsonValue": {
+                "value": "200"
+              }
+            },
+            {
+              "name": "__Created",
+              "jsonValue": {
+                "value": "2026-10-10T00:18:36Z"
+              }
+            },
+            {
+              "name": "__Updated",
+              "jsonValue": {
+                "value": "2026-10-10T00:20:52Z"
+              }
+            },
+            {
+              "name": "__Semantics",
+              "jsonValue": []
+            }
+          ]
+        },
+        {
+          "id": "6074653A285746BB9747BC267FE94698",
+          "fieldCollection": [
+            {
+              "name": "links",
+              "jsonValue": [
+                {
+                  "id": "fea53c8b-42bb-468b-9c7f-3404ed2a9fa8",
+                  "url": "/about/financial-ratings/Data/Rating-agencies/Entry-03/links/Link-01",
+                  "name": "Link 01",
+                  "displayName": "Link 01",
+                  "fields": {
+                    "title": {
+                      "value": "Go to Standard & Poor\u2019s"
+                    },
+                    "link": {
+                      "value": {
+                        "href": "#demo-unavailable",
+                        "text": "Go to Standard & Poor\u2019s",
+                        "linktype": "anchor",
+                        "anchor": "demo-unavailable",
+                        "title": "This service is unavailable"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "subheading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "alphanumeral",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "headingLevel",
+              "jsonValue": {
+                "value": "h4"
+              }
+            },
+            {
+              "name": "image",
+              "jsonValue": {
+                "value": {
+                  "height": "520",
+                  "dam-content-type": "Image",
+                  "alt": "sp global logo",
+                  "width": "704",
+                  "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/116522-HomepagePromoCTAs-1100x740?v=0e61d204",
+                  "dam-id": "eNTr70uDSByFMqOwZvgfTQ"
+                }
+              }
+            },
+            {
+              "name": "iconTheme",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "body",
+              "jsonValue": {
+                "value": "<ul>\r\n    <li>independent provider of credit ratings for more than 150 years</li>\r\n    <li>bases ratings on quantitative and qualitative evaluations </li>\r\n    <li>focuses on an insurer\u2019s financial security characteristics</li>\r\n</ul>"
+              }
+            },
+            {
+              "name": "heading",
+              "jsonValue": {
+                "value": ""
+              }
+            },
+            {
+              "name": "theme",
+              "jsonValue": {
+                "value": "transparent"
+              }
+            },
+            {
+              "name": "icon",
+              "jsonValue": {
+                "value": {}
+              }
+            },
+            {
+              "name": "link",
+              "jsonValue": {
+                "value": {
+                  "href": ""
+                }
+              }
+            },
+            {
+              "name": "__Sortorder",
+              "jsonValue": {
+                "value": "300"
+              }
+            },
+            {
+              "name": "__Created",
+              "jsonValue": {
+                "value": "2026-10-10T00:19:20Z"
+              }
+            },
+            {
+              "name": "__Updated",
+              "jsonValue": {
+                "value": "2026-10-10T00:20:54Z"
+              }
+            },
+            {
+              "name": "__Semantics",
+              "jsonValue": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "agenciesParams": {
+    "theme": "transparent",
+    "layout": "stacked",
+    "columns": "3",
+    "alignment": "left",
+    "spacing": "none",
+    "headingLevel": "h4",
+    "paddingTop": "none",
+    "paddingBottom": "none",
+    "marginBottom": "lg",
+    "DynamicPlaceholderId": "7",
+    "FieldNames": "Default"
+  }
+}

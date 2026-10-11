@@ -29,6 +29,15 @@ GUID to its own field metadata and value "What We Offer". The separate project
 `navigationTitle` field beginning 516cabf1 remains empty and must never be
 substituted. Neither field is selected by an ambiguous field name, and the
 component never writes a fallback into either owning field.
+The query also selects the existing Checklist NavigationFilter field by verified
+GUID 1fbc6a49-6281-48ee-87e9-a3970b145adb. After validating the complete native
+chain, the component omits ancestors explicitly selecting Breadcrumb Navigation
+e0a2a027-0932-4878-a7d6-0416d5263efb. Home and the current page always remain.
+Other filters never suppress breadcrumbs. The native selection is an array of
+item objects with GUID identities; malformed returned selections make the trail
+unavailable. Older payloads without this projection retain their prior behavior.
+Selection names, keys, page names, paths and templates do not decide exclusion;
+owning fields and their metadata remain unchanged.
 Source-specific labels differ from article headlines on 44 of 81 releases.
 Bind those source labels to the existing field; never infer labels from slugs.
 

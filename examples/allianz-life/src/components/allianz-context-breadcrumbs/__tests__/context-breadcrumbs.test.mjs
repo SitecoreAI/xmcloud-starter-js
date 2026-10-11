@@ -53,6 +53,119 @@ function freeze(value) {
   return value;
 }
 
+const breadcrumbFilterId = 'e0a2a027-0932-4878-a7d6-0416d5263efb';
+const unrelatedFilterId = '0bc5046a-00cf-4b1e-9b58-390d197a23bc';
+// Selection shape and breadcrumb identity are backed by the native metadata readback.
+function navigationFilter(id = breadcrumbFilterId, key = 'breadcrumb') {
+  return { jsonValue: [{ id, name: 'Breadcrumb Navigation', fields: { Key: { value: key } } }] };
+}
+
+test('native Breadcrumb Navigation selection omits only the marked ancestor while preserving original fields in both modes', () => {
+  const data = context(), hidden = data.ancestors[0];
+  hidden.navigationFilter = navigationFilter();
+  const nodes = [...data.ancestors].reverse().concat(data);
+  const expected = nodes.filter((node) => node !== hidden);
+  const before = JSON.stringify(data);
+  freeze(data);
+  const trail = contextBreadcrumbTrail(data);
+  assert.equal(trail.issue, undefined);
+  assert.deepEqual(trail.items, expected);
+  trail.items.forEach((node, index) => {
+    assert.equal(node, expected[index]);
+    assert.equal(contextBreadcrumbLabel(node), expected[index].navigationTitle.jsonValue);
+  });
+  assert.equal(hidden.navigationFilter.jsonValue[0].fields.Key.value, 'breadcrumb');
+  for (const isEditing of [false, true]) {
+    const html = render(Wrapper, data, isEditing);
+    const result = inspectHtml([html])[0];
+    assert.deepEqual(result.labels, expected.map((node) => node.navigationTitle.jsonValue.value));
+    assert.equal(result.links, expected.length - 1);
+    assert.equal(result.currentTag, 'span');
+    assert.doesNotMatch(html, /code\b[^>]*class="scpm"|contenteditable|data-field-id/);
+  }
+  assert.equal(JSON.stringify(data), before);
+});
+
+test('filter GUIDs accept native dashed, compact and braced casing while labels and keys never select a different filter', () => {
+  for (const id of [breadcrumbFilterId, breadcrumbFilterId.toUpperCase(),
+    breadcrumbFilterId.replaceAll('-', ''), `{${breadcrumbFilterId.toUpperCase()}}`]) {
+    const data = context();
+    data.ancestors[0].navigationFilter = navigationFilter(id, 'not-used-for-identity');
+    assert.equal(contextBreadcrumbTrail(data).issue, undefined);
+    assert.equal(contextBreadcrumbTrail(data).items.length, data.ancestors.length);
+  }
+  const data = context();
+  data.ancestors[0].navigationFilter = navigationFilter(unrelatedFilterId, 'breadcrumb');
+  assert.deepEqual(contextBreadcrumbTrail(data).items, [...data.ancestors].reverse().concat(data));
+  data.ancestors[0].navigationFilter.jsonValue.push(navigationFilter().jsonValue[0]);
+  assert.equal(contextBreadcrumbTrail(data).items.length, data.ancestors.length);
+});
+
+test('Home and the current page remain visible even when they select Breadcrumb Navigation', () => {
+  const data = context(), root = data.ancestors.at(-1);
+  root.navigationFilter = navigationFilter();
+  data.navigationFilter = navigationFilter();
+  const expected = [...data.ancestors].reverse().concat(data);
+  freeze(data);
+  assert.deepEqual(contextBreadcrumbTrail(data).items, expected);
+  for (const result of inspectHtml([render(Wrapper, data), render(Wrapper, data, true)])) {
+    assert.deepEqual(result.labels, expected.map((node) => node.navigationTitle.jsonValue.value));
+    assert.equal(result.firstHref, '/');
+    assert.equal(result.currentTag, 'span');
+  }
+  const homePage = { ...item('home', home, 'Home', '/'), navigationFilter: navigationFilter(), ancestors: [] };
+  assert.deepEqual(contextBreadcrumbTrail(homePage).items, [homePage]);
+});
+
+test('display exclusion cannot excuse a missing, misordered or unsafe native ancestor', () => {
+  for (const mutate of [
+    (data) => data.ancestors.shift(),
+    (data) => data.ancestors.reverse(),
+    (data) => { data.ancestors[0].path = `${home}/unrelated`; },
+  ]) {
+    const data = context();
+    data.ancestors[0].navigationFilter = navigationFilter();
+    mutate(data);
+    assert.equal(contextBreadcrumbTrail(data).issue, 'incomplete-chain');
+    assert.equal(inspectHtml([render(Wrapper, data)])[0].links, 0);
+  }
+  const unsafe = context();
+  unsafe.ancestors[0].navigationFilter = navigationFilter();
+  unsafe.ancestors[0].url.path = 'https://unverified.example/hidden';
+  assert.equal(contextBreadcrumbTrail(unsafe).issue, 'invalid-url');
+});
+
+test('malformed projected filter wrappers or selections fail unavailable including after a valid match and on retained nodes', () => {
+  for (const filter of [null, {}, { jsonValue: null }, { jsonValue: '' }, { jsonValue: breadcrumbFilterId },
+    { jsonValue: [null] }, { jsonValue: [breadcrumbFilterId] }, { jsonValue: [[]] },
+    { jsonValue: [{}] }, { jsonValue: [{ id: 42 }] }, { jsonValue: [{ id: ` ${breadcrumbFilterId}` }] },
+    { jsonValue: [{ id: `{${breadcrumbFilterId}` }] },
+    { jsonValue: [navigationFilter().jsonValue[0], { id: 'malformed' }] }]) {
+    for (const select of [(data) => data.ancestors[0], (data) => data.ancestors.at(-1), (data) => data]) {
+      const data = context();
+      select(data).navigationFilter = filter;
+      const before = JSON.stringify(data);
+      freeze(data);
+      assert.equal(contextBreadcrumbTrail(data).issue, 'invalid-navigation-filter');
+      const html = render(Wrapper, data);
+      assert.equal(inspectHtml([html])[0].status, 'Breadcrumb navigation is temporarily unavailable.');
+      assert.equal(JSON.stringify(data), before);
+    }
+  }
+});
+
+test('all81 existing trails retain exact order with absent projection or an empty native Checklist', () => {
+  for (const row of rows) {
+    const data = context(row), expected = [...data.ancestors].reverse().concat(data);
+    assert.deepEqual(contextBreadcrumbTrail(data).items, expected);
+    for (const node of expected) node.navigationFilter = { jsonValue: [] };
+    const before = JSON.stringify(data);
+    freeze(data);
+    assert.deepEqual(contextBreadcrumbTrail(data).items, expected);
+    assert.equal(JSON.stringify(data), before);
+  }
+});
+
 test('all81 exact source trails render native links and current plain text through the installed SDK', () => {
   assert.equal(rows.length, 81);
   assert.equal(new Set(rows.map((row) => row.pageId)).size, 81);
@@ -423,9 +536,10 @@ test('the documented context-only query and source component leave the datasourc
   const fragment = ast.definitions.find((node) => node.kind === 'FragmentDefinition');
   assert.equal(fragment.typeCondition.name.value, 'Item');
   assert.deepEqual(fragment.selectionSet.selections.map((node) => (node.alias ?? node.name).value),
-    ['id', 'path', 'navigationTitle', 'title', 'displayName', 'name', 'url']);
+    ['id', 'path', 'navigationTitle', 'title', 'navigationFilter', 'displayName', 'name', 'url']);
   for (const [alias, guid] of [['navigationTitle', '4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8'],
-    ['title', '6c7fab7b-a9c2-4b26-838a-830bdc49fe00']]) {
+    ['title', '6c7fab7b-a9c2-4b26-838a-830bdc49fe00'],
+    ['navigationFilter', '1fbc6a49-6281-48ee-87e9-a3970b145adb']]) {
     const field = fragment.selectionSet.selections.find((node) => node.alias?.value === alias);
     assert.equal(field.name.value, 'field');
     assert.deepEqual(field.arguments.map((argument) => [argument.name.value, argument.value.value]), [['name', guid]]);

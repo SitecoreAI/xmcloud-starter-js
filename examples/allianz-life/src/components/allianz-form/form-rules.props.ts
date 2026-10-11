@@ -10,6 +10,7 @@ export interface FormDefinition {
   maxLength: number;
   pattern: string;
   placeholder: string;
+  helperText?: string;
   requiredMessage: string;
   invalidMessage: string;
   options: FormOption[];
@@ -20,7 +21,7 @@ export interface FormDefinition {
 export type FormValue = string | string[];
 export type FormValues = Record<string, FormValue>;
 export type FormErrors = Record<string, string>;
-export type SchemaKey = 'death-claim' | 'new-york-contact' | 'product-contact' | 'new-york-product-contact' | 'generic';
+export type SchemaKey = 'death-claim' | 'new-york-contact' | 'product-contact' | 'new-york-product-contact' | 'generic' | 'contact-us';
 const source = sourceJson as Record<SchemaKey, { sourceUrl: string; fields: FormDefinition[] }>;
 export const MAX_POLICIES = 20;
 export const REASON = 'ContactUsReason.SelectedReason';

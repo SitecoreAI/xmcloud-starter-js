@@ -1,0 +1,57 @@
+﻿---
+ID: "fd3b97d9-ea09-5342-b818-5c24c05ec6ae"
+Parent: "f2c4d8f4-80a9-54cb-95c2-27f1eef2cb18"
+Template: "08bf58d8-e9f7-5459-978d-34cf30e79081"
+Path: "/sitecore/content/allianz/allianz-life/Home/what-we-offer/life-insurance/flexible-estate-planning-strategies"
+SharedFields:
+- ID: "9135200a-5626-4dd8-ab9d-d665b8c11748"
+  Hint: __Never publish
+  Value: 1
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "0e7f29e1-98d3-59c2-9256-5cc24666b503"
+      Hint: sourceBodyClasses
+      Value: " page-flexible-estate-planning-strategies "
+    - ID: "11ddd4af-07af-5191-8ab0-32edd1f08da0"
+      Hint: sourceHash
+      Value: 60e3840bad46ef851e0a83a3bfff1a6480b8fb16e1d88586ff6a235d821ff908
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20261008T203821Z
+    - ID: "4a0ec3ed-bc96-5f08-8f54-92765ac7862e"
+      Hint: shellFamily
+      Value: modern
+    - ID: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8"
+      Hint: NavigationTitle
+      Value: "flexible-estate-planning-strategies"
+    - ID: "516cabf1-a806-5b64-b2e8-abb78e651deb"
+      Hint: navigationTitle
+      Value: Flexible estate planning strategies
+    - ID: "6c7fab7b-a9c2-4b26-838a-830bdc49fe00"
+      Hint: Title
+      Value: "flexible-estate-planning-strategies"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "677df7bd-96e9-472f-a6d3-06092b1148d7"
+    - ID: "b63fc446-26ea-5cd3-86ad-7d46890945b2"
+      Hint: sourceBodyId
+      Value: "page-flexible-estate-planning-strategies"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\thomas.lin@sitecore.com
+    - ID: "cbd0c910-432f-5374-a5c9-f4a9f102df47"
+      Hint: pageTitle
+      Value: Flexible estate planning strategies | Allianz Life
+    - ID: "cdcac585-0afa-5616-adf1-0a058d714548"
+      Hint: metaDescription
+      Value: Flexible estate planning strategies
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20261008T203821Z
+    - ID: "ffdf93db-eecd-5ac5-bd08-096221f42cb0"
+      Hint: sourceUrl
+      Value: "https://www.allianzlife.com/what-we-offer/life-insurance/flexible-estate-planning-strategies"

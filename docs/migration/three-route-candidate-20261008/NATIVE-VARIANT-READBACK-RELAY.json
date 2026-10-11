@@ -1,0 +1,367 @@
+{
+  "kind": "parent-relayed-read-only-native-definition-evidence-with-created-variant-readback",
+  "nativeSourceFileCapturedOnThisHost": false,
+  "variantBasePath": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants",
+  "variants": [
+    {
+      "componentName": "AllianzHero",
+      "exportName": "Default",
+      "id": "49ab3a5e-03af-518e-9dd3-60a66b09e67d"
+    },
+    {
+      "componentName": "AllianzHero",
+      "exportName": "Editorial",
+      "id": "6e8e0064-1f7a-418f-ae47-179b9d9e534d"
+    },
+    {
+      "componentName": "AllianzHero",
+      "exportName": "FixedFaq",
+      "id": "6c0511a2-32e8-4586-9fa2-a84d8b17d78d"
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "Default",
+      "id": "a9538e4c-c44e-5c01-bcf2-0de4de3db2ba"
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "EditorialIntro",
+      "id": "04ef633a-2a2d-4a94-b0bb-75222be1759e"
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "EditorialTiles",
+      "id": "505bdc5d-63b6-4a44-bddd-4ed5c533400b"
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "EditorialStacked",
+      "id": "ae431d59-7800-4ffd-b304-972933d792f2"
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "EditorialCallout",
+      "id": "b46c410f-e68e-43ed-8ffd-2551241042f0"
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "EditorialResourceCards",
+      "id": "3458c365-1fa9-4a56-b971-8b36517c9bee"
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "exportName": "Default",
+      "id": "cf820757-b7f3-4b6b-8187-442893c8d7a9"
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "exportName": "FaqRow",
+      "id": "585c98aa-240c-47cc-be8f-cbacc7d8c410"
+    },
+    {
+      "componentName": "AllianzVideo",
+      "exportName": "Default",
+      "id": "0099c803-503d-474e-99ce-928217beda44"
+    },
+    {
+      "componentName": "LegalDisclosures",
+      "exportName": "Default",
+      "id": "db949495-936e-46d7-8bc5-775f1ff8e84c"
+    },
+    {
+      "componentName": "LegalDisclosures",
+      "exportName": "Faq",
+      "id": "decde779-27d5-4ad3-bcfe-73066acf112e"
+    },
+    {
+      "componentName": "LegalDisclosures",
+      "exportName": "Legacy",
+      "id": "3174ce0b-657e-421b-9b68-da0c822056be"
+    },
+    {
+      "componentName": "LegalDisclosures",
+      "exportName": "NewsroomGrey",
+      "id": "cac2f4ac-d01a-4c4a-bf91-e255e6f27e44"
+    },
+    {
+      "componentName": "AllianzEditorialSection",
+      "exportName": "Default",
+      "id": "fd50bbeb-c146-40e1-85c8-62d93f9147f0"
+    },
+    {
+      "componentName": "AllianzHero",
+      "exportName": "LifeStrategy",
+      "id": "8dd0f163-c758-4980-b3ab-8539c0729ff5",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzHero/LifeStrategy",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "StrategyBrandIntro",
+      "id": "afa0737e-61a1-4a64-adff-54b4761297e6",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzCardGrid/StrategyBrandIntro",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "StrategyStackedPair",
+      "id": "339cfb42-9892-48ff-90fb-e204e5abde5e",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzCardGrid/StrategyStackedPair",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "StrategyIntroSplit",
+      "id": "2f5c84d6-d89a-4057-9318-a74eebd14cef",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzCardGrid/StrategyIntroSplit",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "StrategyIntroResources",
+      "id": "9cf2007b-1726-4c5d-abd2-aa02b666508a",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzCardGrid/StrategyIntroResources",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "StrategyIntro",
+      "id": "c03d0e9c-7fc5-427f-8238-27ab09fa6bdd",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzCardGrid/StrategyIntro",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "StrategyIntroTiles",
+      "id": "80c16b5b-7af5-4c92-969e-d1cc21e79154",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzCardGrid/StrategyIntroTiles",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "exportName": "StrategyIntroFlippedTiles",
+      "id": "5f80ef8e-7819-44a8-9881-5d6875fe1b31",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzCardGrid/StrategyIntroFlippedTiles",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "AllianzVideo",
+      "exportName": "SourceStatic",
+      "id": "b5c1b4fe-7324-4ae6-93b6-4a5ce567aa18",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzVideo/SourceStatic",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "exportName": "Transcript",
+      "id": "191f1a8c-1f8f-4efd-a297-45b33313767c",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/AllianzAccordion/Transcript",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "LegalDisclosures",
+      "exportName": "StrategyFootnotes",
+      "id": "7241f5c7-42bb-4f7a-99d8-46e7a42954a9",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/LegalDisclosures/StrategyFootnotes",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    },
+    {
+      "componentName": "LegalDisclosures",
+      "exportName": "StrategyRichText",
+      "id": "0fa0ec56-6c4b-468d-b25a-dae787ecd5a0",
+      "path": "/sitecore/content/allianz/allianz-life/Presentation/Headless Variants/LegalDisclosures/StrategyRichText",
+      "templateId": "4d50cdae-c2d9-4de8-b080-8f992bfb1b55",
+      "evidenceSource": "parent-cloud-content-editor-created-and-native-readback-verified",
+      "newlyCreatedByParent": true,
+      "nativeReadbackVerified": true,
+      "fields": {
+        "Allowed in templates": "",
+        "Field used as link target": "",
+        "Compatible renderings": "",
+        "Display name": ""
+      }
+    }
+  ],
+  "placeholders": [
+    {
+      "id": "cadb4233-34e7-5b85-b36f-0b8475f4cbd0",
+      "key": "headless-main",
+      "kind": "Project",
+      "allowsRenderingKinds": [
+        "Hero",
+        "Card Grid",
+        "Video",
+        "Accordion",
+        "Legal Disclosures"
+      ],
+      "omitsRenderingKinds": [
+        "Editorial Section",
+        "Container"
+      ]
+    },
+    {
+      "id": "284d388a-9d4e-4742-a298-ec6871592d4b",
+      "key": "headless-main",
+      "path": "/sitecore/layout/Placeholder Settings/Foundation/JSS Experience Accelerator/Placeholder Settings/Main",
+      "allowedControlsEmpty": true
+    },
+    {
+      "id": "8211bbf2-2f96-42f1-913a-e28d06d42a05",
+      "key": "allianz-editorial-section-{*}",
+      "allowsRenderingKinds": [
+        "Article",
+        "Card Grid",
+        "Accordion",
+        "Editorial Section"
+      ],
+      "doesNotAllowRenderingKinds": [
+        "Hero",
+        "Video",
+        "Legal Disclosures",
+        "Card"
+      ]
+    },
+    {
+      "id": "97cbc3bc-b376-47aa-9238-240672e912a5",
+      "key": "container-{*}",
+      "path": "/sitecore/layout/Placeholder Settings/Feature/JSS Experience Accelerator/Page Structure/Container",
+      "allowedControlsEmpty": true,
+      "editable": true
+    }
+  ],
+  "standardContainer": {
+    "renderingId": "7a1d9a21-b8d7-42f9-9b0b-92abf8d1974f",
+    "componentName": "Container",
+    "parameterTemplateId": "45130bdb-bae3-4edc-aea8-7b68b9d94c7f"
+  },
+  "effectiveShellPlaceholderSelectionVerified": false,
+  "nativeDefinitionsChanged": true,
+  "jssLayout": {
+    "id": "96e5f4ba-a2cf-4a4c-a4e7-64da88226362",
+    "layoutServiceMainPlaceholderId": "284d388a-9d4e-4742-a298-ec6871592d4b",
+    "restrictedProjectMainLinked": false,
+    "layoutServiceRegistrationVerified": true,
+    "authoringInsertionPrecedenceVerified": false
+  },
+  "baseRelay": {
+    "path": "preparation/native-registration-relay-v2.json",
+    "sha256": "56f0f023ac9999b02c9f8ef1acbb22b0da589502fdd158d5b4435e9267acfbfe"
+  },
+  "baseVerificationWindowUtc": "2026-10-08T21:56:00Z/2026-10-08T21:57:59Z",
+  "newVariantEvidence": {
+    "source": "Parent cloud Content Editor relay; not a capture on this host",
+    "sourceThreadId": "01a0f289-bde7-777f-be0f-f1e2fff4c0ca",
+    "reportedDate": "2026-10-08",
+    "exactReadbackTimestampSupplied": false,
+    "operation": "Created and native readback verified by parent within authorized migration scope",
+    "localCmsCalls": 0,
+    "localNativeDefinitionCreations": 0,
+    "individualCreatedAndReadbackVerifiedCount": 12
+  },
+  "localNativeDefinitionsChanged": false,
+  "remainingNewVariantIdsPending": 0,
+  "originalBaseRelay": {
+    "path": "preparation/fresh-native-relay.json",
+    "sha256": "d9ae02ca56baca84f5633f6c3a0517b6f193fe316149625d94eca98302845612"
+  },
+  "nativeVariantsCreatedOnThisHost": 0
+}

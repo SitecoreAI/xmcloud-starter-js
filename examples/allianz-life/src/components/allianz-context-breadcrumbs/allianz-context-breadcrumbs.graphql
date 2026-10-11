@@ -7,6 +7,7 @@ fragment AllianzContextBreadcrumbFields on Item {
   path
   navigationTitle: field(name: "4e0720e9-9d50-4ddc-87cf-ecd65e8e94c8") { jsonValue }
   title: field(name: "6c7fab7b-a9c2-4b26-838a-830bdc49fe00") { jsonValue }
+  navigationFilter: field(name: "1fbc6a49-6281-48ee-87e9-a3970b145adb") { jsonValue }
   displayName
   name
   url { path }

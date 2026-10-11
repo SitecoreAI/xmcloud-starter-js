@@ -1,6 +1,7 @@
 import type { Field, ImageField, LinkField, LinkProps } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from './component-props';
 import publicRouteIndex from '../../content/public-route-index.json';
+import approvedSourceLinks from './approved-source-external-links.fixture.json';
 import { isConnected } from './allianz-content-mode';
 
 /** Native integrated GraphQL field shape, shared by Edge and local fixtures. */
@@ -77,6 +78,35 @@ export function rowSpacing(params: Record<string, string | undefined>) {
 export function headingTag(level?: string): 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' {
   return level === 'h1' || level === 'h3' || level === 'h4' || level === 'h5' || level === 'h6' ? level : 'h2';
 }
+// These captured source destinations are explicitly approved external links.
+// Extend the evidence-backed list for a new source URL rather than a domain policy.
+const APPROVED_SOURCE_LINKS = new Set(approvedSourceLinks.entries.map(({ url }) => url));
+
+// Native document links stay on this approved CMS delivery origin. The QA
+// examples are evidence only: ordinary authored media replacements need no ID list.
+const NATIVE_DOCUMENT_ORIGIN = 'https://xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io';
+const NATIVE_DOCUMENT_PREFIX = '/-/media/Project/Allianz-Life/Documents/';
+function isNativeDocumentLink(field: LinkField, url: URL, sourceBase: string, querystring: string) {
+  const id = field.value.id;
+  if (field.value.linktype !== 'media' || typeof id !== 'string' ||
+    !/^(?:\{[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\}|[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})$/i.test(id)) return false;
+  if (url.origin !== NATIVE_DOCUMENT_ORIGIN || url.protocol !== 'https:' ||
+    url.username || url.password || url.port || sourceBase !== `${url.origin}${url.pathname}` ||
+    !url.pathname.startsWith(NATIVE_DOCUMENT_PREFIX) || field.value.href?.includes('#') || field.value.anchor ||
+    !/^(?:ttc=[0-9]+&tt=[0-9a-fA-F]{32}|tt=[0-9a-fA-F]{32}&ttc=[0-9]+)$/.test(querystring)) return false;
+  const segments = url.pathname.slice(NATIVE_DOCUMENT_PREFIX.length).split('/');
+  if (!/^.+\.pdf$/i.test(segments.at(-1) ?? '')) return false;
+  return segments.every((segment) => {
+    try {
+      const name = decodeURIComponent(segment);
+      // Permit canonical spaces/Unicode names, while rejecting encoded traversal,
+      // separators, double encoding, control characters and alternate encodings.
+      return name !== '.' && name !== '..' && /^[\p{L}\p{M}\p{N} ._-]+$/u.test(name) &&
+        encodeURIComponent(name) === segment;
+    } catch { return false; }
+  });
+}
+
 export function safeLink(field?: LinkField): LinkField {
   if (!field) return { value: { href: '' } };
   const href = field.value?.href ?? '';
@@ -113,6 +143,16 @@ export function safeLink(field?: LinkField): LinkField {
     ? `${hrefQuery}&${nativeQuery}` : nativeQuery || hrefQuery;
   const anchor = field.value.anchor?.replace(/^#/, '') || url.hash.slice(1);
   const isUnavailable = [anchor, url.hash.slice(1)].some((value) => /^(?:demo|service)-unavailable$/.test(value));
+  const sourceBase = href.split(/[?#]/, 1)[0];
+  const sourceDestination = `${sourceBase}${querystring ? `?${querystring}` : ''}${anchor ? `#${anchor}` : ''}`;
+  if (isNativeDocumentLink(field, url, sourceBase, querystring)) {
+    return { ...field, value: { ...field.value, href: sourceBase, querystring, anchor: '' } };
+  }
+  const linkType = field.value.linktype?.toLowerCase();
+  const isSourceExternal = linkType === 'external' || (!linkType && !field.value.id);
+  if (!isUnavailable && isSourceExternal && APPROVED_SOURCE_LINKS.has(sourceDestination)) {
+    return { ...field, value: { ...field.value, href: sourceBase, querystring, anchor } };
+  }
   if (isUnavailable || (!canNavigate && !isLocalAnchor)) return unavailable();
   return {
     ...field,

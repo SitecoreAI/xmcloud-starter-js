@@ -1,0 +1,393 @@
+{
+  "schema": "allianz.two-section.layout-map.v1",
+  "routes": {
+    "/get-answers/how-to-address-financial-risks-of-early-retirement": [
+      {
+        "sourceOrder": 1,
+        "componentName": "AllianzBreadcrumbs",
+        "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:breadcrumbs",
+        "export": "Default",
+        "params": {},
+        "selectorId": null,
+        "selectorAuthority": "Existing Breadcrumb Default witness in LOCAL-CONTRACT-MAP; no new selector inferred",
+        "assessment": "Preserve ordered source breadcrumbs; native Default witness is bounded and historical."
+      },
+      {
+        "sourceOrder": 2,
+        "componentName": "AllianzHero",
+        "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:0",
+        "export": "Editorial",
+        "params": {
+          "theme": "blue-soft",
+          "layout": "stage",
+          "columns": "1",
+          "alignment": "center",
+          "spacing": "none",
+          "headingLevel": "h1",
+          "paddingTop": "none",
+          "paddingBottom": "none",
+          "marginBottom": "none",
+          "showLogin": "0"
+        },
+        "selectorId": "6e8e0064-1f7a-418f-ae47-179b9d9e534d",
+        "selectorAuthority": "Historical native serialization snapshot; not refreshed in this task",
+        "assessment": "Short blue-soft stage, one centered h1; source image and empty alt remain native."
+      },
+      {
+        "sourceOrder": 3,
+        "componentName": "AllianzCardGrid",
+        "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:1",
+        "export": "RetirementRiskSteps",
+        "params": {
+          "theme": "transparent",
+          "layout": "stacked",
+          "columns": "1",
+          "alignment": "left",
+          "spacing": "none",
+          "headingLevel": "h4",
+          "paddingTop": "none",
+          "paddingBottom": "none",
+          "marginBottom": "none",
+          "sourceWidth": "centered-eight",
+          "bodySize": "medium",
+          "matchHeightRow": "0"
+        },
+        "selectorId": null,
+        "selectorAuthority": "Prospective one new selector; deterministic ID assigned by main preparer; native collision check required",
+        "assessment": "One original datasource owns root introduction plus first step; wrapper preserves introduction row then centered-eight split alpha tile."
+      },
+      {
+        "sourceOrder": 4,
+        "componentName": "AllianzCardGrid",
+        "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:2",
+        "export": "EditorialTiles",
+        "params": {
+          "theme": "transparent",
+          "layout": "stacked",
+          "columns": "1",
+          "alignment": "left",
+          "spacing": "none",
+          "headingLevel": "h4",
+          "paddingTop": "none",
+          "paddingBottom": "none",
+          "marginBottom": "none",
+          "sourceWidth": "centered-eight",
+          "bodySize": "medium",
+          "matchHeightRow": "0"
+        },
+        "selectorId": null,
+        "selectorAuthority": "Existing Breadcrumb Default witness in LOCAL-CONTRACT-MAP; no new selector inferred",
+        "assessment": "Centered-eight split alpha tile, h4 heading and medium body; no split-ratio class or row spacing."
+      },
+      {
+        "sourceOrder": 5,
+        "componentName": "AllianzCardGrid",
+        "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:3",
+        "export": "EditorialTiles",
+        "params": {
+          "theme": "transparent",
+          "layout": "stacked",
+          "columns": "1",
+          "alignment": "left",
+          "spacing": "none",
+          "headingLevel": "h4",
+          "paddingTop": "none",
+          "paddingBottom": "none",
+          "marginBottom": "none",
+          "sourceWidth": "centered-eight",
+          "bodySize": "medium",
+          "matchHeightRow": "0"
+        },
+        "selectorId": null,
+        "selectorAuthority": "Existing Breadcrumb Default witness in LOCAL-CONTRACT-MAP; no new selector inferred",
+        "assessment": "Centered-eight split alpha tile, h4 heading and medium body; no split-ratio class or row spacing."
+      },
+      {
+        "sourceOrder": 6,
+        "componentName": "AllianzCardGrid",
+        "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:4",
+        "export": "EditorialIntro",
+        "params": {
+          "theme": "green-soft",
+          "layout": "stacked",
+          "columns": "1",
+          "alignment": "center",
+          "spacing": "none",
+          "headingLevel": "h2",
+          "paddingTop": "lg",
+          "paddingBottom": "none",
+          "marginBottom": "lg",
+          "bodySize": "source-default"
+        },
+        "selectorId": "04ef633a-2a2d-4a94-b0bb-75222be1759e",
+        "selectorAuthority": "Historical native serialization snapshot; not refreshed in this task",
+        "assessment": "Source m-axlIntroductionBlock with primary-brand Information glyph and unscaled body; source PDF target/label proved; Download glyph is decorative. Empty trailing source row has no content or visual height."
+      },
+      {
+        "sourceOrder": 7,
+        "componentName": "AllianzRichText",
+        "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:5",
+        "export": "Default",
+        "params": {
+          "theme": "grey-muted",
+          "layout": "plain",
+          "columns": "1",
+          "alignment": "left",
+          "spacing": "none",
+          "headingLevel": "h4",
+          "paddingTop": "none",
+          "paddingBottom": "none",
+          "marginBottom": "none"
+        },
+        "selectorId": "da435e21-954e-59e2-a33c-1e7a08a78fbf",
+        "selectorAuthority": "Historical decoded native receipt from October 4; exact read timestamp unavailable; not refreshed",
+        "assessment": "Grey introduction body has no source font-size modifier; h4 parameter avoids Default invented XL body class while source heading remains empty."
+      }
+    ],
+    "/what-we-offer": [
+      {
+        "sourceOrder": 1,
+        "componentName": "AllianzBreadcrumbs",
+        "sourceKey": "/what-we-offer:breadcrumbs",
+        "export": "Default",
+        "params": {},
+        "selectorId": null,
+        "selectorAuthority": "Existing Breadcrumb Default witness in LOCAL-CONTRACT-MAP; no new selector inferred",
+        "assessment": "Preserve two ordered breadcrumbs and active-page semantics."
+      },
+      {
+        "sourceOrder": 2,
+        "componentName": "AllianzHero",
+        "sourceKey": "/what-we-offer:section:0",
+        "export": "Editorial",
+        "params": {
+          "theme": "transparent",
+          "layout": "home",
+          "columns": "1",
+          "alignment": "center",
+          "spacing": "none",
+          "headingLevel": "h1",
+          "paddingTop": "none",
+          "paddingBottom": "none",
+          "marginBottom": "none",
+          "showLogin": "0"
+        },
+        "selectorId": "6e8e0064-1f7a-418f-ae47-179b9d9e534d",
+        "selectorAuthority": "Historical native serialization snapshot; not refreshed in this task",
+        "assessment": "Source short-stage overlay uses existing native layout=home in Editorial, adding exact c-hero m-hero-overlay classes; no new parameter option."
+      },
+      {
+        "sourceOrder": 3,
+        "componentName": "AllianzCardGrid",
+        "sourceKey": "/what-we-offer:section:1",
+        "export": "EditorialStacked",
+        "params": {
+          "theme": "transparent",
+          "layout": "stacked",
+          "columns": "2",
+          "alignment": "left",
+          "spacing": "none",
+          "headingLevel": "h2",
+          "paddingTop": "xl",
+          "paddingBottom": "none",
+          "marginBottom": "none",
+          "bodySize": "medium",
+          "tileMarginBottom": "xl"
+        },
+        "selectorId": "ae431d59-7800-4ffd-b304-972933d792f2",
+        "selectorAuthority": "Historical native serialization snapshot; not refreshed in this task",
+        "assessment": "Two half-width source stacked grey tiles, medium body, xl tile margin; decorative source Right SVG fallback, native Image fields untouched."
+      },
+      {
+        "sourceOrder": 4,
+        "componentName": "AllianzCardGrid",
+        "sourceKey": "/what-we-offer:section:2",
+        "export": "EditorialIntro",
+        "params": {
+          "theme": "green-soft",
+          "layout": "stacked",
+          "columns": "1",
+          "alignment": "center",
+          "spacing": "none",
+          "headingLevel": "h2",
+          "paddingTop": "lg",
+          "paddingBottom": "none",
+          "marginBottom": "lg",
+          "bodySize": "source-default"
+        },
+        "selectorId": "04ef633a-2a2d-4a94-b0bb-75222be1759e",
+        "selectorAuthority": "Historical native serialization snapshot; not refreshed in this task",
+        "assessment": "Source m-axlIntroductionBlock with primary-brand Question glyph; no source body/CTA link. Empty trailing source row has no content or visual height."
+      },
+      {
+        "sourceOrder": 5,
+        "componentName": "AllianzRichText",
+        "sourceKey": "/what-we-offer:section:3",
+        "export": "Default",
+        "params": {
+          "theme": "grey-muted",
+          "layout": "plain",
+          "columns": "1",
+          "alignment": "left",
+          "spacing": "none",
+          "headingLevel": "h4",
+          "paddingTop": "none",
+          "paddingBottom": "none",
+          "marginBottom": "none"
+        },
+        "selectorId": "da435e21-954e-59e2-a33c-1e7a08a78fbf",
+        "selectorAuthority": "Historical decoded native receipt from October 4; exact read timestamp unavailable; not refreshed",
+        "assessment": "Grey footnote introduction has no font-size modifier; empty heading and unscaled body."
+      },
+      {
+        "sourceOrder": 6,
+        "componentName": "AllianzRichText",
+        "sourceKey": "/what-we-offer:section:4",
+        "export": "Default",
+        "params": {
+          "theme": "grey-muted",
+          "layout": "disclosures",
+          "columns": "1",
+          "alignment": "left",
+          "spacing": "none",
+          "headingLevel": "h2",
+          "paddingTop": "none",
+          "paddingBottom": "none",
+          "marginBottom": "none"
+        },
+        "selectorId": "da435e21-954e-59e2-a33c-1e7a08a78fbf",
+        "selectorAuthority": "Historical decoded native receipt from October 4; exact read timestamp unavailable; not refreshed",
+        "assessment": "Existing source disclosure wrapper and ordered body; use existing Default disclosure layout."
+      }
+    ]
+  },
+  "sourceOverrides": [
+    {
+      "route": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "sourceOrder": 3,
+      "ownerSourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:1",
+      "ownerSourceId": "A8EFAF8B-694E-56C1-9FFA-77D6BF2E2BC6",
+      "field": "iconTheme",
+      "sourcePointer": "/routes/~1get-answers~1how-to-address-financial-risks-of-early-retirement/components/2/fields/data/datasource/children/results/0/iconTheme/jsonValue/value",
+      "before": "primary-brand",
+      "after": "primary-brand",
+      "proof": {
+        "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+        "httpStatus": 200,
+        "sourceHtmlPath": "/Users/thlt/Documents/Codex/2026-10-09/task/preparation/two-section-breadth-v1/layout/early-retirement.current-source.html",
+        "sourceHtmlSha256": "65bd0c1f502d2aeae70a92cd4d76cc00e83d8679e9ffa5b485851e21bcc5b0de",
+        "responseBytes": 74029,
+        "evidenceAuthority": "Read-only current public original; source content inventory remains frozen",
+        "sourceInventoryPath": "/Users/thlt/Documents/Codex/2026-10-09/task/isolated/two-section-breadth-v1/app/content/native-content.json",
+        "sourceRouteSha256": "6b749d74fa8ee24f13078a04bd844a87ee06f5012dff02420e2df0fc4a02cc32",
+        "witness": "Source numbered/Information/Question tileIcon uses t-bg-primary-brand t-icon-primary-white"
+      }
+    },
+    {
+      "route": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "sourceOrder": 4,
+      "ownerSourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:2",
+      "ownerSourceId": "B59E50AF-DC5F-5D11-88C8-1E03CE7033FD",
+      "field": "iconTheme",
+      "sourcePointer": "/routes/~1get-answers~1how-to-address-financial-risks-of-early-retirement/components/3/fields/data/datasource/children/results/0/iconTheme/jsonValue/value",
+      "before": "primary-brand",
+      "after": "primary-brand",
+      "proof": {
+        "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+        "httpStatus": 200,
+        "sourceHtmlPath": "/Users/thlt/Documents/Codex/2026-10-09/task/preparation/two-section-breadth-v1/layout/early-retirement.current-source.html",
+        "sourceHtmlSha256": "65bd0c1f502d2aeae70a92cd4d76cc00e83d8679e9ffa5b485851e21bcc5b0de",
+        "responseBytes": 74029,
+        "evidenceAuthority": "Read-only current public original; source content inventory remains frozen",
+        "sourceInventoryPath": "/Users/thlt/Documents/Codex/2026-10-09/task/isolated/two-section-breadth-v1/app/content/native-content.json",
+        "sourceRouteSha256": "6b749d74fa8ee24f13078a04bd844a87ee06f5012dff02420e2df0fc4a02cc32",
+        "witness": "Source numbered/Information/Question tileIcon uses t-bg-primary-brand t-icon-primary-white"
+      }
+    },
+    {
+      "route": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "sourceOrder": 5,
+      "ownerSourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:3",
+      "ownerSourceId": "13DB4920-8C48-5739-A3CA-C651DD481E6A",
+      "field": "iconTheme",
+      "sourcePointer": "/routes/~1get-answers~1how-to-address-financial-risks-of-early-retirement/components/4/fields/data/datasource/children/results/0/iconTheme/jsonValue/value",
+      "before": "primary-brand",
+      "after": "primary-brand",
+      "proof": {
+        "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+        "httpStatus": 200,
+        "sourceHtmlPath": "/Users/thlt/Documents/Codex/2026-10-09/task/preparation/two-section-breadth-v1/layout/early-retirement.current-source.html",
+        "sourceHtmlSha256": "65bd0c1f502d2aeae70a92cd4d76cc00e83d8679e9ffa5b485851e21bcc5b0de",
+        "responseBytes": 74029,
+        "evidenceAuthority": "Read-only current public original; source content inventory remains frozen",
+        "sourceInventoryPath": "/Users/thlt/Documents/Codex/2026-10-09/task/isolated/two-section-breadth-v1/app/content/native-content.json",
+        "sourceRouteSha256": "6b749d74fa8ee24f13078a04bd844a87ee06f5012dff02420e2df0fc4a02cc32",
+        "witness": "Source numbered/Information/Question tileIcon uses t-bg-primary-brand t-icon-primary-white"
+      }
+    },
+    {
+      "route": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "sourceOrder": 6,
+      "ownerSourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:4",
+      "ownerSourceId": "AF9F84B4-CAC6-5F6B-B278-E764219946B5",
+      "field": "iconTheme",
+      "sourcePointer": "/routes/~1get-answers~1how-to-address-financial-risks-of-early-retirement/components/5/fields/data/datasource/children/results/0/iconTheme/jsonValue/value",
+      "before": "primary-brand",
+      "after": "primary-brand",
+      "proof": {
+        "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+        "httpStatus": 200,
+        "sourceHtmlPath": "/Users/thlt/Documents/Codex/2026-10-09/task/preparation/two-section-breadth-v1/layout/early-retirement.current-source.html",
+        "sourceHtmlSha256": "65bd0c1f502d2aeae70a92cd4d76cc00e83d8679e9ffa5b485851e21bcc5b0de",
+        "responseBytes": 74029,
+        "evidenceAuthority": "Read-only current public original; source content inventory remains frozen",
+        "sourceInventoryPath": "/Users/thlt/Documents/Codex/2026-10-09/task/isolated/two-section-breadth-v1/app/content/native-content.json",
+        "sourceRouteSha256": "6b749d74fa8ee24f13078a04bd844a87ee06f5012dff02420e2df0fc4a02cc32",
+        "witness": "Source numbered/Information/Question tileIcon uses t-bg-primary-brand t-icon-primary-white"
+      }
+    },
+    {
+      "route": "/what-we-offer",
+      "sourceOrder": 4,
+      "ownerSourceKey": "/what-we-offer:section:2",
+      "ownerSourceId": "8D41759E-316B-59E1-A5F8-F1FBF209C4B6",
+      "field": "iconTheme",
+      "sourcePointer": "/routes/~1what-we-offer/components/3/fields/data/datasource/children/results/0/iconTheme/jsonValue/value",
+      "before": "primary-brand",
+      "after": "primary-brand",
+      "proof": {
+        "sourceUrl": "https://www.allianzlife.com/what-we-offer",
+        "httpStatus": 200,
+        "sourceHtmlPath": "/Users/thlt/Documents/Codex/2026-10-09/task/preparation/two-section-breadth-v1/layout/what-we-offer.current-source.html",
+        "sourceHtmlSha256": "0452aab4deea21ffc5575a1085a427fdca1dd972091ba96035bab2badf613fba",
+        "responseBytes": 73647,
+        "evidenceAuthority": "Read-only current public original; source content inventory remains frozen",
+        "sourceInventoryPath": "/Users/thlt/Documents/Codex/2026-10-09/task/isolated/two-section-breadth-v1/app/content/native-content.json",
+        "sourceRouteSha256": "5002efd5d5436791a5e5496469d610ed78416498d106f66732f139d6a1c563db",
+        "witness": "Source numbered/Information/Question tileIcon uses t-bg-primary-brand t-icon-primary-white"
+      }
+    }
+  ],
+  "pdfLinks": [
+    {
+      "route": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "sourceOrder": 6,
+      "sourceHref": "/-/media/Files/Global/documents/2023/06/02/17/42/EXT-0080.pdf",
+      "absoluteSourceUrl": "https://www.allianzlife.com/-/media/Files/Global/documents/2023/06/02/17/42/EXT-0080.pdf",
+      "target": "_blank",
+      "ariaLabel": "Get our study findings (PDF)",
+      "label": "Get our study findings (PDF)",
+      "policy": "preserving_original",
+      "proof": {
+        "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+        "httpStatus": 200,
+        "sourceHtmlPath": "/Users/thlt/Documents/Codex/2026-10-09/task/preparation/two-section-breadth-v1/layout/early-retirement.current-source.html",
+        "sourceHtmlSha256": "65bd0c1f502d2aeae70a92cd4d76cc00e83d8679e9ffa5b485851e21bcc5b0de",
+        "responseBytes": 74029,
+        "evidenceAuthority": "Read-only current public original; source content inventory remains frozen",
+        "sourceInventoryPath": "/Users/thlt/Documents/Codex/2026-10-09/task/isolated/two-section-breadth-v1/app/content/native-content.json",
+        "sourceRouteSha256": "6b749d74fa8ee24f13078a04bd844a87ee06f5012dff02420e2df0fc4a02cc32"
+      }
+    }
+  ]
+}

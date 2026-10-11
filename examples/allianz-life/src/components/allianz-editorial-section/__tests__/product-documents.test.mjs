@@ -400,7 +400,7 @@ test('shared-section and legacy prefixes, Product table and canceled heading fil
     ['components/allianz-legacy-link-list/AllianzLegacyLinkList.tsx', '\n/** Bare lists for the product-document shell', '1b8698fdac4c45ca47805ac2d8889ef24d6a6b5e0f0e20f7cdaa46084451ba47'],
   ];
   for (const [name, marker, expected] of prefixCases) {
-    const text = fs.readFileSync(path.join(sourceRoot, name), 'utf8');
+    const text = fs.readFileSync(path.join(sourceRoot, name), 'utf8').replace(/\r\n/g, '\n');
     assert.ok(text.includes(marker)); assert.equal(hash(text.slice(0, text.indexOf(marker))), expected);
   }
   const pinned = [
@@ -408,6 +408,6 @@ test('shared-section and legacy prefixes, Product table and canceled heading fil
     ['components/allianz-legacy-page-header/AllianzLegacyPageHeader.tsx', '0cef1145aa97f9de0e9e5eca5cf94d3f62bad244e5a00c28017cb55ea597599f'],
     ['components/allianz-legacy-page-header/AllianzLegacyLegalHeader.css', 'e1884c1b511071acdcc16ba402231c71d8a93a616ba8242a96536a02c7d74553'],
   ];
-  for (const [name, expected] of pinned) assert.equal(hash(fs.readFileSync(path.join(sourceRoot, name))), expected);
+  for (const [name, expected] of pinned) assert.equal(hash(fs.readFileSync(path.join(sourceRoot, name), 'utf8').replace(/\r\n/g, '\n')), expected);
   for (const name of ['AllianzLegacyPageHeader.css', 'legacy-page-heading.test.mjs']) assert.equal(fs.existsSync(path.join(sourceRoot, `components/allianz-legacy-page-header/${name}`)), false);
 });

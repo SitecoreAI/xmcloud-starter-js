@@ -1,0 +1,72 @@
+{
+  "grid": {
+    "heading": "",
+    "subheading": "",
+    "body": "",
+    "primaryLink": ""
+  },
+  "card": {
+    "heading": "Take the next step",
+    "headingLevel": "h2",
+    "body": "\n\t\t\t\t\t<p>Continue your exploration of Allianz Lifetime Income+®:</p>\n\t\t\t\t",
+    "subheading": "",
+    "theme": "transparent",
+    "iconTheme": "primary-brand",
+    "image": "",
+    "alphanumeral": "",
+    "link": ""
+  },
+  "link1": {
+    "title": "Insights and Education"
+  },
+  "link2": {
+    "title": "How it Works"
+  },
+  "link3": {
+    "title": "Contact Us",
+    "link": "<link text=\"Contact Us\" linktype=\"external\" url=\"https://lp.allianzlife.com/EMContactUS.html?utm_source=website&amp;utm_medium=webpage&amp;utm_campaign=contactus_submit&amp;utm_content=em_resources\" anchor=\"\" target=\"_blank\"/>"
+  },
+  "sourcePins": [
+    {
+      "path": "preparation/resources-packet-recovery-v2/extracted/resources/fields/21-next-step-grid.json",
+      "sha256": "70b1f8dfaa226e42af0032e4213b660d751aba61bf14c34e538f25f55084e7be"
+    },
+    {
+      "path": "preparation/resources-packet-recovery-v2/extracted/resources/fields/22-next-step-card.json",
+      "sha256": "a22c4da3c6a7221057adaf6aa651fb6f7f759b8aca1e757531c4f7d1830c1f8d"
+    },
+    {
+      "path": "preparation/resources-packet-recovery-v2/extracted/resources/fields/23-next-step-link-1.json",
+      "sha256": "489767a95ca8b8dea6af7f7fe15d0989829a1303ddfc59c4314e7b90170ed267"
+    },
+    {
+      "path": "preparation/resources-packet-recovery-v2/extracted/resources/fields/24-next-step-link-2.json",
+      "sha256": "0226248d8e1e1a9e38edff76b8441393fafe16a8edeedbcb7b22003eb6fa0d50"
+    },
+    {
+      "path": "preparation/resources-packet-recovery-v2/extracted/resources/fields/25-next-step-link-3.json",
+      "sha256": "dc077665cffae085be26ab7f63d2e4a0a8e25b6899f780f1fe29e6e239e7bdc1"
+    }
+  ],
+  "nativeIdentityPolicy": "Test-only SDK IDs and link projection; source fixture is not native binding proof.",
+  "sourceArrows": [
+    {
+      "sourceFile": "preparation/resources-packet-recovery-v2/extracted/resources/source/footer-link-1-right-icon.svg",
+      "sha256": "c1454d343c0cee11326509a74258ede3f264928ceee5690b3d8cfae8f93af399",
+      "pathData": "M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536",
+      "fillRule": "evenodd"
+    },
+    {
+      "sourceFile": "preparation/resources-packet-recovery-v2/extracted/resources/source/footer-link-2-right-icon.svg",
+      "sha256": "c1454d343c0cee11326509a74258ede3f264928ceee5690b3d8cfae8f93af399",
+      "pathData": "M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536",
+      "fillRule": "evenodd"
+    },
+    {
+      "sourceFile": "preparation/resources-packet-recovery-v2/extracted/resources/source/footer-link-3-right-icon.svg",
+      "sha256": "c1454d343c0cee11326509a74258ede3f264928ceee5690b3d8cfae8f93af399",
+      "pathData": "M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536",
+      "fillRule": "evenodd"
+    }
+  ]
+}

@@ -301,7 +301,7 @@ def selected_fields(fields: dict[str, str], indent: str) -> list[str]:
 # Preview and Delivery schema/query validation remain mandatory before publish.
 CHILD_LIMITS = {
     "AllianzCardGrid": 40, "AllianzAccordion": 16, "AllianzDocumentList": 64,
-    "AllianzForm": 48, "AllianzCalculator": 16, "AllianzTimeline": 20, "AllianzIndexDefinitions": 8,
+    "AllianzForm": 48, "AllianzCalculator": 16, "AllianzTimeline": 19, "AllianzIndexDefinitions": 8,
     "AllianzLegacyAccordion": 12, "AllianzLegacyCardGrid": 8,
     "AllianzLegacyLinkList": 8,
 }

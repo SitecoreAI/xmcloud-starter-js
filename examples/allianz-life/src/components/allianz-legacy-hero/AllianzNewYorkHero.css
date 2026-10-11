@@ -1,0 +1,29 @@
+/* Current public New York source corrections, scoped to explicit native page identity. */
+.allianz-legacy.page-new-york .allianz-ny-home-content { padding: 0; }
+.allianz-legacy .row.allianz-ny-home-hero { margin-left: 0; margin-right: 0; }
+
+.allianz-legacy .allianz-ny-home-hero .notepad,
+.allianz-legacy .allianz-ny-home-hero .notepad h1,
+.allianz-legacy .allianz-ny-home-hero .notepad p,
+.allianz-legacy .allianz-ny-annuities-hero .notepad,
+.allianz-legacy .allianz-ny-annuities-hero .notepad h1,
+.allianz-legacy .allianz-ny-annuities-hero .notepad p {
+  font-family: 'AllianzNeoRegular', sans-serif;
+}
+
+.allianz-legacy .allianz-ny-home-hero .no-product-line .notepad-content,
+.allianz-legacy .allianz-ny-annuities-hero .no-product-line .notepad-content { background: #113378; }
+
+.allianz-legacy .allianz-ny-home-hero .notepad-corner,
+.allianz-legacy .allianz-ny-annuities-hero .notepad-corner { display: none; }
+
+.allianz-legacy .allianz-ny-home-hero picture img { display: block; width: 100%; height: auto; }
+.allianz-legacy .allianz-ny-home-login .allianz-ny-home-link { display: inline-block; padding: 5px 0; color: #003781; text-align: left; }
+.allianz-legacy .allianz-ny-home-login .allianz-ny-home-link:hover { text-decoration: underline; }
+.allianz-legacy .allianz-ny-home-login .allianz-ny-home-link:focus-visible { outline: 2px solid #003781; outline-offset: 2px; }
+.allianz-legacy .allianz-ny-home-login .allianz-ny-home-register { height: 36px; }
+
+@media (min-width: 768px) {
+  .allianz-legacy .allianz-ny-home-hero .notepad.right,
+  .allianz-legacy .allianz-ny-annuities-hero .notepad.right { margin-top: 2%; margin-right: 2.5%; }
+}

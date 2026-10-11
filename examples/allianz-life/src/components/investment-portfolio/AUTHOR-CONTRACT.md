@@ -1,6 +1,6 @@
 # InvestmentPortfolio
 
-Status: source implementation and source-backed tests. Native template IDs, field IDs, content items, image bindings, component registration, current page composition and live query/browser acceptance remain unverified. This component is not a production source-data fallback.
+Status: source implementation with configured native bindings and source-backed regression tests. Native content, page composition, query results and browser acceptance must be checked against the current staging receipts; the tests below use synthetic identities and do not establish those live outcomes. This component is not a production source-data fallback.
 
 ## Purpose-typed native content
 
@@ -34,7 +34,7 @@ Original SDK field objects are passed unchanged to Text, RichText, Image and Lin
 
 Company CTAs use a generic HTTP/HTTPS validator. It retains valid and intentionally empty original fields, rejects unsafe schemes, invalid absolute URLs, control/space characters and URL credentials, and never rewrites individual company/host links. Unlabelled CTAs are hidden from visitors and flagged to editors. Ordinary external company links work; unrelated forms/auth integrations retain their own existing mock behavior. Source Rich Text captions, including inline acquisition links, remain semantic native content.
 
-Fixed markup retains the source transparent tile collection, left-aligned h2/h3 headings, logo-above-content stacked tiles and exact right-arrow geometry. The existing Allianz grid supplies one column below 704px and four from 704px. One wrapping row per business group replaces the source's manual four-record row collections. The small scoped CSS adds stretch behavior and intrinsic image height without crop/resize transformations. No author-supplied theme, column count, heading level or row boundary changes this design.
+Fixed markup retains the source transparent tile collection, left-aligned h2/h3 headings, logo-above-content stacked tiles and exact right-arrow geometry. The captured source grid uses one column below 704px and four from 704px. This component deliberately uses two columns from 704px through 991px to keep the source company text readable, with one column below 704px and four from 992px. The tablet adjustment does not claim source pixel parity. One wrapping row per business group replaces the source's manual four-record row collections. Scoped CSS keeps long headings, descriptions and CTA labels inside cards. Picture and image heights follow the original logo's intrinsic ratio, overriding the inherited teaser height; contained image sizing preserves the complete logo. Native Image dimensions, Original URLs, alt values and editing metadata remain unchanged. No author-supplied theme, column count, heading level or row boundary changes this design.
 
 ## Evidence and safe migration
 
@@ -50,10 +50,10 @@ Stage templates, native fields, options and records first. Bind actual IDs and v
 
 From the starter directory:
 
-- `node --test src/lib/investment-portfolio.test.mjs`
+- `node --test src/lib/investment-portfolio.test.mjs src/lib/investment-portfolio-binding.test.mjs`
 - `npm exec -- eslint src/lib/investment-portfolio-data.ts src/lib/investment-portfolio-server.ts src/components/investment-portfolio/*.ts src/components/investment-portfolio/*.tsx --max-warnings=0`
 - `npm run type-check`
 
-Tests use the installed Content SDK, its actual ComponentPropsService, SitecoreClient, GraphQLRequestClient and editing renderer. Coverage includes HTTP 200 template-resolver errors with partial data, all 28 source entries, >20-item pagination, inherited templates without template projections, ownership/provenance, insertion/removal/rename/status changes, request-local preview isolation, malformed/failed pages, alphabetical ties, source links, native blank fields and editable metadata, safe CTAs, exact arrow geometry and the source 704px grid rule.
+Tests use the installed Content SDK, its actual ComponentPropsService, SitecoreClient, GraphQLRequestClient and editing renderer. Coverage includes HTTP 200 template-resolver errors with partial data, all 28 source entries, >20-item pagination, inherited templates without template projections, ownership/provenance, insertion/removal/rename/status changes, request-local preview isolation, malformed/failed pages, alphabetical ties, source links, native blank fields and editable metadata, safe CTAs, exact arrow geometry and the inherited source 704px grid rule. Two additional regressions preserve native Image width/height, blank alt and editing metadata through the actual SDK renderer, and measure computed browser layout at 703, 704, 991 and 992px. The latter renders the component with all three real stylesheets and synthetic 256×240 logos, checking 1/2/2/4 columns under both modern and legacy wrappers, complete images and intrinsic logo proportions even when the legacy sheet loads last. Its separate Chrome profile uses an ephemeral local debugging port, a bounded launch deadline and cleanup of only that owned process. The browser regression is explicit opt-in: run the test command with `PORTFOLIO_TEST_BROWSER=1`. It requires a local Chrome/Chromium executable (the standard macOS Chrome path or `PORTFOLIO_TEST_CHROME`); ordinary runs skip it, as do opt-in runs with no available executable. Image sizing also retains the inherited 300px mobile cap with `object-fit: contain`. This isolated fixture is CSS regression coverage, separate from actual CMS image delivery, hydration and responsive acceptance.
 
 The source owner must regenerate the SDK maps and run the final integrated build; `.props.ts` sidecars are excluded by the existing generator rules. These source checks do not prove native schema compatibility, live insertion, publication, image delivery or pixel parity. Real Pages save/reload, status/name changes, complete Delivery results, responsive browser screenshots and keyboard checks remain acceptance gates.

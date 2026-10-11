@@ -1,0 +1,16 @@
+/* Match the recovered introduction glyph size and source ink. */
+.allianz-life-overview-heading .tileIcon > .allianz-life-overview-glyph {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+
+.allianz-life-overview-heading .tileIcon > .allianz-life-overview-glyph-white {
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 704px) {
+  .allianz-life-overview-heading .tileIcon > .allianz-life-overview-glyph {
+    width: 40px;
+  }
+}

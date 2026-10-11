@@ -50,6 +50,11 @@ export default async function Page({ params }: PageProps) {
     ? await client.getComponentData(page.layout, {}, enrichAllianzComponentMap(components, {
       getData: client.getData.bind(client),
       fetchOptions: componentFetchOptions,
+      // Native templates created and verified by the owning CMS writer.
+      venturesTeamBindings: {
+        datasourceTemplateId: '22b14dac-84ad-4d93-83ef-4aa5a958e554',
+        listingTemplateId: '957b8746-e591-4140-b021-beeb040bc053',
+      },
       investmentPortfolioBindings: {
         datasourceTemplateId: 'e0d28f7b-050f-4656-b866-98edfcdf1ec5',
         investmentTemplateId: 'a81701f3-f3e3-4dce-b434-662ed99210f5',

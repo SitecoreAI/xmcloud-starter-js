@@ -21,7 +21,7 @@ function load(filename) {
     const local = specifier.startsWith('.') ? path.resolve(path.dirname(filename), specifier) : /^(lib|components)\//.test(specifier) ? path.join(sourceRoot, specifier) : undefined;
     if (local) {
       const resolved = [local, `${local}.ts`, `${local}.tsx`].find((entry) => fs.existsSync(entry) && fs.statSync(entry).isFile());
-      if (resolved) return load(resolved);
+      if (resolved) return /\.tsx?$/.test(resolved) ? load(resolved) : require(resolved);
     }
     return require(specifier);
   };

@@ -3333,5 +3333,101 @@
         "options": []
       }
     ]
+  },
+  "contact-us": {
+    "sourceUrl": "https://www.allianzlife.com/contact-us",
+    "fields": [
+      {
+        "name": "reason",
+        "label": "My reason for contacting Allianz is:",
+        "inputType": "radio",
+        "required": false,
+        "maxLength": 0,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "",
+        "invalidMessage": "",
+        "options": [
+          {
+            "value": "policy-question",
+            "label": "I have a question about a policy or contract (login is required)"
+          },
+          {
+            "value": "appointment",
+            "label": "I would like to become appointed to sell Allianz products"
+          },
+          {
+            "value": "purchase",
+            "label": "I would like to purchase Allianz products"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      {
+        "name": "name",
+        "label": "Name*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 0,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "",
+        "invalidMessage": "",
+        "options": []
+      },
+      {
+        "name": "email",
+        "label": "Email address*",
+        "inputType": "email",
+        "required": true,
+        "maxLength": 0,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "",
+        "invalidMessage": "",
+        "options": [],
+        "helperText": "Please give a full email address including @ and .com, .net, .org etc."
+      },
+      {
+        "name": "phone",
+        "label": "Phone number*",
+        "inputType": "tel",
+        "required": true,
+        "maxLength": 0,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "",
+        "invalidMessage": "",
+        "options": [],
+        "helperText": "Enter your Phone number - xxxxxxxxxx, xxx-xxx-xxxx, (xxx) xxx-xxxx"
+      },
+      {
+        "name": "zip",
+        "label": "Postal/Zip code*",
+        "inputType": "text",
+        "required": true,
+        "maxLength": 0,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "",
+        "invalidMessage": "",
+        "options": []
+      },
+      {
+        "name": "comment",
+        "label": "Comment*",
+        "inputType": "textarea",
+        "required": true,
+        "maxLength": 0,
+        "pattern": "",
+        "placeholder": "",
+        "requiredMessage": "",
+        "invalidMessage": "",
+        "options": []
+      }
+    ]
   }
 }

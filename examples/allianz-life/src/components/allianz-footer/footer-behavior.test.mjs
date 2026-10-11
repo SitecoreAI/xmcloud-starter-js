@@ -195,17 +195,30 @@ test('modern footer uses the source 703/704 transition and retains desktop headi
   assert.equal(h.list('products').props.hidden, true, 'desktop visibility does not overwrite mobile disclosure state');
 });
 
-test('modern footer listens for the exact source breakpoint and removes its listener', () => {
-  let subscribe;
-  const component = loader({ react: { ...React, useId: () => ':resize:', useState: (initial) => [initial, () => {}], useSyncExternalStore: (listener, _snapshot, server) => { subscribe = listener; return server(); } }, '@sitecore-content-sdk/nextjs': { ...sdk, useSitecore: () => ({ page: { mode: { isEditing: false } } }) } })();
+test('modern footer rechecks the breakpoint on resize without a media change event and cleans up', () => {
+  let subscribe, snapshot;
+  const component = loader({ react: { ...React, useId: () => ':resize:', useState: (initial) => [initial, () => {}], useSyncExternalStore: (listener, getSnapshot, server) => { subscribe = listener; snapshot = getSnapshot; return server(); } }, '@sitecore-content-sdk/nextjs': { ...sdk, useSitecore: () => ({ page: { mode: { isEditing: false } } }) } })();
   component(props());
-  const events = [], callback = () => {};
+  const viewport = new EventTarget(), media = new EventTarget();
+  let width = 704;
+  Object.defineProperty(media, 'matches', { get: () => width <= 703 });
   const previous = globalThis.window;
-  globalThis.window = { matchMedia(query) { assert.equal(query, '(max-width: 703px)'); return {
-    addEventListener: (event, fn) => events.push(['add', event, fn]), removeEventListener: (event, fn) => events.push(['remove', event, fn]),
-  }; } };
-  try { const unsubscribe = subscribe(callback); unsubscribe(); } finally { globalThis.window = previous; }
-  assert.deepEqual(events, [['add', 'change', callback], ['remove', 'change', callback]]);
+  globalThis.window = {
+    matchMedia(query) { assert.equal(query, '(max-width: 703px)'); return media; },
+    addEventListener: viewport.addEventListener.bind(viewport),
+    removeEventListener: viewport.removeEventListener.bind(viewport),
+  };
+  try {
+    const updates = [], unsubscribe = subscribe(() => updates.push(snapshot()));
+    assert.equal(snapshot(), false);
+    width = 703; viewport.dispatchEvent(new Event('resize'));
+    width = 704; viewport.dispatchEvent(new Event('resize'));
+    width = 390; media.dispatchEvent(new Event('change'));
+    assert.deepEqual(updates, [true, false, true]);
+    unsubscribe();
+    width = 704; viewport.dispatchEvent(new Event('resize')); media.dispatchEvent(new Event('change'));
+    assert.deepEqual(updates, [true, false, true], 'both event subscriptions are removed');
+  } finally { globalThis.window = previous; }
 });
 
 test('modern source mobile dimensions and scoped reveal rule retain the 703px boundary', () => {

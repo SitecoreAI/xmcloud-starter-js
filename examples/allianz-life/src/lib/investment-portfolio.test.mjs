@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import { spawn } from 'node:child_process';
+import os from 'node:os';
 import Module, { createRequire } from 'node:module';
 import path from 'node:path';
 import test from 'node:test';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const require = createRequire(import.meta.url), ts = require('typescript'), React = require('react');
 const { parse, visit, getLocation } = require('graphql'), postcss = require('postcss');
@@ -22,7 +24,7 @@ function load(filename) {
     const local = specifier.startsWith('.') ? path.resolve(path.dirname(filename), specifier) : /^(lib|components)\//.test(specifier) ? path.join(root, specifier) : undefined;
     if (local) {
       const resolved = [local, `${local}.ts`, `${local}.tsx`].find((entry) => fs.existsSync(entry) && fs.statSync(entry).isFile());
-      if (resolved) return load(resolved);
+      if (resolved) return /\.tsx?$/.test(resolved) ? load(resolved) : require(resolved);
     }
     return require(specifier);
   };
@@ -326,6 +328,128 @@ test('editable root and child Field metadata survives the actual SDK editing ren
   for (const name of ['activeHeading', 'exitedHeading', 'name', 'details', 'logo', 'websiteLink']) assert.ok(html.includes(`"fieldId":"test-${name}"`), name);
   assert.ok(html.includes(`"itemId":"${records.items[0].id}"`)); assert.equal(JSON.stringify(records), before);
   const normal = render(result, records.datasource); assert.doesNotMatch(normal, /alt="Blaise"|Go to Blaise|Add or edit Investment/);
+});
+
+test('native Image dimensions, Original source, blank alt and metadata survive the real SDK renderer', () => {
+  const records = dataset(), item = records.items[0];
+  Object.assign(item.logo.jsonValue.value, { width: '256', height: '240', alt: '' });
+  const before = JSON.stringify(records), result = select(records);
+  for (const editing of [false, true]) {
+    const html = decode(render(result, records.datasource, editing));
+    const image = (html.match(/<img\b[^>]*>/g) ?? []).find((tag) => tag.includes(`src="${item.logo.jsonValue.value.src}"`));
+    assert.ok(image); assert.match(image, /\bwidth="256"/); assert.match(image, /\bheight="240"/); assert.match(image, /\balt=""/);
+    if (editing) {
+      assert.ok(html.includes('"fieldId":"test-logo"')); assert.ok(html.includes(`"itemId":"${item.id}"`));
+    }
+  }
+  assert.equal(result.active[0].logo, item.logo);
+  assert.equal(JSON.stringify(records), before);
+});
+
+test('computed fixture keeps intrinsic logos and 1/2/2/4 columns across mobile, tablet and desktop boundaries', async (context) => {
+  // This isolated SDK/CSS fixture does not substitute for live CMS/browser acceptance.
+  if (process.env.PORTFOLIO_TEST_BROWSER !== '1') {
+    context.skip('Set PORTFOLIO_TEST_BROWSER=1 to opt into the isolated Chrome regression');
+    return;
+  }
+  const chrome = [process.env.PORTFOLIO_TEST_CHROME, '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser'].find((file) => file && fs.existsSync(file));
+  if (!chrome) { context.skip('A local Chrome/Chromium executable is required for computed CSS regression'); return; }
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'portfolio-computed-regression-'));
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const pending = new Map(); let browser, ws, stderr = '', nextId = 0;
+  const diagnostic = () => stderr.replace(/(?:https?|wss?|file|blob|data):[^\s<>"'`]+/gi, '[URL removed]').replace(/(?:\/Users|\/tmp|\/var)\/[^\s():]+/g, '[local path removed]').replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(-300);
+  const send = (method, params = {}) => new Promise((resolve, reject) => {
+    const id = ++nextId, timer = setTimeout(() => { pending.delete(id); reject(new Error(`Fixture CDP ${method} timed out`)); }, 10000);
+    pending.set(id, { resolve, reject, timer }); ws.send(JSON.stringify({ id, method, params }));
+  });
+  try {
+    const records = dataset();
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="256" height="240" viewBox="0 0 256 240"><rect width="256" height="240" fill="white"/><rect x="8" y="8" width="240" height="224" fill="#003781"/></svg>';
+    const src = `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
+    for (const item of records.items) Object.assign(item.logo.jsonValue.value, { src, width: '256', height: '240' });
+    const before = JSON.stringify(records);
+    // Load inherited legacy CSS last to exercise the actual teaser-height cascade.
+    const css = ['assets/allianz-source.css', 'components/investment-portfolio/InvestmentPortfolio.css', 'assets/allianz-legacy.css'].map((file) => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
+    const measure = async () => {
+      const images = [...document.querySelectorAll('.investment-portfolio img')];
+      await Promise.all(images.map((image) => image.complete ? Promise.resolve() : new Promise((resolve) => { image.onload = resolve; image.onerror = resolve; })));
+      const rect = (node) => { const r = node.getBoundingClientRect(); return { left: r.left, right: r.right, top: r.top, width: r.width, height: r.height }; };
+      const rows = [...document.querySelectorAll('.investment-portfolio__items')].map((group) => {
+        const children = [...group.children], top = children[0].getBoundingClientRect().top;
+        return { count: children.length, columns: children.filter((child) => Math.abs(child.getBoundingClientRect().top - top) < 1).length };
+      });
+      const logos = images.map((image) => ({ image: rect(image), picture: rect(image.closest('picture')), card: rect(image.closest('article')), loaded: image.complete && image.naturalWidth > 0, naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight, width: image.getAttribute('width'), height: image.getAttribute('height'), fit: getComputedStyle(image).objectFit, maxHeight: getComputedStyle(image).maxHeight }));
+      document.getElementById('portfolio-computed').textContent = JSON.stringify({ width: innerWidth, rows, logos });
+    };
+    const html = `<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; script-src 'unsafe-inline'"><style>html,body{margin:0}${css}</style></head><body class="allianz-legacy"><main class="mfe">${render(select(records), records.datasource)}</main><pre id="portfolio-computed" hidden></pre><script>(${measure.toString()})()</script></body></html>`;
+    const filename = path.join(temp, 'portfolio.html'); fs.writeFileSync(filename, html);
+    // Use an owned CDP browser: recent macOS Chrome can finish dump-dom yet wait indefinitely to exit.
+    const profile = path.join(temp, 'chrome-profile');
+    browser = spawn(chrome, ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`, '--no-first-run', '--no-default-browser-check', '--disable-background-networking', '--disable-component-update', '--disable-domain-reliability', '--disable-sync', '--disable-features=MediaRouter,OptimizationHints,AutofillServerCommunication', '--safebrowsing-disable-auto-update', 'about:blank'], { stdio: ['ignore', 'ignore', 'pipe'] });
+    browser.stderr.on('data', (chunk) => { stderr = (stderr + chunk.toString()).slice(-4096); });
+    browser.on('error', (error) => { stderr = `Browser launch error: ${error.code ?? 'unknown'}`; });
+    const portfile = path.join(profile, 'DevToolsActivePort'), deadline = Date.now() + 25000;
+    while (!fs.existsSync(portfile) && Date.now() < deadline && browser.exitCode === null && browser.signalCode === null) await delay(100);
+    assert.ok(fs.existsSync(portfile), `Fixture Chrome launch did not become ready within25s: ${diagnostic()}`);
+    const port = Number(fs.readFileSync(portfile, 'utf8').split('\n')[0]);
+    assert.ok(Number.isInteger(port) && port > 0);
+    const target = await (await fetch(`http://127.0.0.1:${port}/json/new?about:blank`, { method: 'PUT', signal: AbortSignal.timeout(10000) })).json();
+    ws = new WebSocket(target.webSocketDebuggerUrl);
+    await new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('Fixture browser connection timed out')), 10000);
+      ws.onopen = () => { clearTimeout(timer); resolve(); }; ws.onerror = () => { clearTimeout(timer); reject(new Error('Fixture browser connection failed')); };
+    });
+    ws.onmessage = ({ data }) => {
+      const event = JSON.parse(data), entry = pending.get(event.id); if (!entry) return;
+      clearTimeout(entry.timer); pending.delete(event.id);
+      event.error ? entry.reject(new Error('Fixture browser protocol request failed')) : entry.resolve(event.result);
+    };
+    await send('Page.enable'); await send('Runtime.enable');
+    await send('Page.navigate', { url: pathToFileURL(filename).href });
+    let ready = false;
+    for (let attempt = 0; attempt < 100; attempt++) {
+      const result = await send('Runtime.evaluate', { expression: "document.readyState === 'complete' && document.querySelectorAll('.investment-portfolio img').length === 28", returnByValue: true });
+      if (result.result.value === true) { ready = true; break; } await delay(100);
+    }
+    assert.ok(ready, 'Fixture document and all28 image elements became ready');
+    const matrix = [];
+    for (const wrapper of ['legacy', 'modern']) for (const [width, columns] of [[703, 1], [704, 2], [991, 2], [992, 4]]) {
+      await send('Emulation.setDeviceMetricsOverride', { width, height: 2000, deviceScaleFactor: 1, mobile: false });
+      const measured = await send('Runtime.evaluate', {
+        expression: `document.body.className=${JSON.stringify(wrapper === 'legacy' ? 'allianz-legacy' : 'prod-mode allianz-modern')};document.querySelector('main').className=${JSON.stringify(wrapper === 'legacy' ? 'mfe' : '')};(${measure.toString()})().then(()=>document.getElementById('portfolio-computed').textContent)`, returnByValue: true, awaitPromise: true,
+      });
+      assert.ok(!measured.exceptionDetails, `${wrapper} ${width}px: browser measurement completed`);
+      const report = JSON.parse(measured.result.value);
+      assert.equal(report.width, width); assert.deepEqual(report.rows.map((row) => row.count), [19, 9]);
+      assert.deepEqual(report.rows.map((row) => row.columns), [columns, columns], `${wrapper} ${width}px: computed group columns`);
+      assert.equal(report.logos.length, 28);
+      for (const [index, logo] of report.logos.entries()) {
+        const label = `${wrapper} ${width}px logo ${index}`;
+        assert.equal(logo.loaded, true, label); assert.deepEqual([logo.naturalWidth, logo.naturalHeight], [256, 240], label);
+        assert.deepEqual([logo.width, logo.height], ['256', '240'], label); assert.equal(logo.fit, 'contain', label);
+        assert.ok(logo.image.width > 0 && logo.image.height > 0, label);
+        const cap = Number.parseFloat(logo.maxHeight);
+        const expectedHeight = Math.min(logo.image.width * 240 / 256, Number.isFinite(cap) ? cap : Infinity);
+        assert.ok(Math.abs(logo.image.height - expectedHeight) < 1, `${label}: intrinsic sizing respects inherited mobile cap`);
+        assert.ok(Math.abs(logo.picture.height - logo.image.height) < 1, `${label}: picture follows image height`);
+        assert.ok(logo.image.left >= logo.card.left - 1 && logo.image.right <= logo.card.right + 1, `${label}: image stays inside card`);
+      }
+      matrix.push({ wrapper, width, columns: report.rows.map((row) => row.columns), logos: report.logos.length, loaded: report.logos.filter((logo) => logo.loaded).length });
+    }
+    context.diagnostic(`Computed synthetic fixture: ${JSON.stringify(matrix)}`);
+    assert.equal(JSON.stringify(records), before);
+  } finally {
+    for (const entry of pending.values()) clearTimeout(entry.timer);
+    ws?.close();
+    if (browser && browser.exitCode === null && browser.signalCode === null) {
+      await new Promise((resolve) => {
+        const timer = setTimeout(() => { browser.kill('SIGKILL'); resolve(); }, 5000);
+        browser.once('exit', () => { clearTimeout(timer); resolve(); });
+        browser.kill('SIGTERM'); // Only the child launched above with this test's unique profile.
+      });
+    }
+    fs.rmSync(temp, { recursive: true, force: true });
+  }
 });
 
 test('unavailable and empty collections preserve authored headings and never use manual or source-fixture children', async () => {

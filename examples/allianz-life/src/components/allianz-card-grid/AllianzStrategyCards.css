@@ -1,0 +1,4 @@
+/* The source graduate introduction uses #003781 for its brand foreground. */
+.allianz-strategy-cards .tileIcon.t-icon-primary-brand img {
+  filter: brightness(0) saturate(100%) invert(30.97634%) sepia(95.81291%) saturate(930.48508%) hue-rotate(182.09266deg) brightness(61.77557%) contrast(131.39128%);
+}

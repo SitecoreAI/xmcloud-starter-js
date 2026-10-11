@@ -1,0 +1,563 @@
+{
+  "sourceZipSha256": "b184a69de9b8c6c83db60717128190e05668142971ef6aad716915c657136392",
+  "sourceCompositionSha256": "555b27a3f98e22ded94239343b47cc68542397131b6e4c2971f5ecb8efe46e26",
+  "note": "Structural presentation only. Tests use synthetic native fields and identities; this is not a CMS write or field audit.",
+  "cases": [
+    {
+      "key": "college-funding--section-2-grid",
+      "variant": "StrategyBrandIntro",
+      "params": {
+        "theme": "transparent"
+      },
+      "children": [
+        {
+          "key": "section-2-card-1",
+          "sourceXPath": "/html/body/main/div[2]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": "tileIcon t-bg-transparent t-icon-primary-brand",
+          "bodyClasses": "tileBody",
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "college-funding--section-4-grid",
+      "variant": "StrategyStackedPair",
+      "params": {
+        "theme": "red-soft",
+        "introSpacer": "1",
+        "paddingBottom": "xl"
+      },
+      "children": [
+        {
+          "key": "section-4-card-1",
+          "sourceXPath": "/html/body/main/div[4]/div/div[2]/div[1]/article",
+          "sourceClasses": "m-axlTile match-height   tile--stackedImage -is--stacked  t-bg-transparent ",
+          "width": 6,
+          "alignment": "left",
+          "headingTags": [
+            "h3"
+          ],
+          "iconClasses": null,
+          "bodyClasses": "tileBody u-font-size-lg",
+          "hasImage": false
+        },
+        {
+          "key": "section-4-card-2",
+          "sourceXPath": "/html/body/main/div[4]/div/div[2]/div[2]/article",
+          "sourceClasses": "m-axlTile match-height  -is--flipped tile--stackedImage -is--stacked  t-bg-primary-white ",
+          "width": 6,
+          "alignment": "center",
+          "headingTags": [],
+          "iconClasses": null,
+          "bodyClasses": "tileBody u-font-size-lg",
+          "hasImage": true
+        }
+      ]
+    },
+    {
+      "key": "college-funding--section-5-grid",
+      "variant": "StrategyIntroSplit",
+      "params": {
+        "theme": "transparent"
+      },
+      "children": [
+        {
+          "key": "section-5-card-1",
+          "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": false
+        },
+        {
+          "key": "section-5-card-2",
+          "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/article",
+          "sourceClasses": "m-axlTile match-height   tile--alphaNumeric -is--split  t-bg-transparent ",
+          "width": 8,
+          "alignment": "left",
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": "tileIcon  t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody u-font-size-md",
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "college-funding--section-6-grid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "sourceWidth": "centered-eight",
+        "alignment": "left",
+        "bodySize": "medium"
+      },
+      "children": [
+        {
+          "key": "section-6-card-1",
+          "sourceXPath": "/html/body/main/div[6]/div/div/div/article",
+          "sourceClasses": "m-axlTile match-height   tile--alphaNumeric -is--split  t-bg-transparent ",
+          "width": 8,
+          "alignment": "left",
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": "tileIcon  t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody u-font-size-md",
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "college-funding--section-7-grid",
+      "variant": "EditorialTiles",
+      "params": {
+        "theme": "transparent",
+        "sourceWidth": "centered-eight",
+        "alignment": "left",
+        "bodySize": "medium"
+      },
+      "children": [
+        {
+          "key": "section-7-card-1",
+          "sourceXPath": "/html/body/main/div[7]/div/div/div/article",
+          "sourceClasses": "m-axlTile match-height   tile--alphaNumeric -is--split  t-bg-transparent ",
+          "width": 8,
+          "alignment": "left",
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": "tileIcon  t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody u-font-size-md",
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "college-funding--section-8-grid",
+      "variant": "StrategyIntroResources",
+      "params": {
+        "theme": "red-soft"
+      },
+      "children": [
+        {
+          "key": "section-8-card-1",
+          "sourceXPath": "/html/body/main/div[8]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": false
+        },
+        {
+          "key": "section-8-card-2",
+          "sourceXPath": "/html/body/main/div[8]/div/div[2]/div/div/a[1]",
+          "sourceClasses": "m-card",
+          "width": 12,
+          "alignment": null,
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": true
+        },
+        {
+          "key": "section-8-card-3",
+          "sourceXPath": "/html/body/main/div[8]/div/div[2]/div/div/a[2]",
+          "sourceClasses": "m-card",
+          "width": 12,
+          "alignment": null,
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": true
+        },
+        {
+          "key": "section-8-card-4",
+          "sourceXPath": "/html/body/main/div[8]/div/div[2]/div/div/a[3]",
+          "sourceClasses": "m-card",
+          "width": 12,
+          "alignment": null,
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": true
+        }
+      ]
+    },
+    {
+      "key": "college-funding--section-9-grid",
+      "variant": "StrategyIntro",
+      "params": {
+        "theme": "green-soft"
+      },
+      "children": [
+        {
+          "key": "section-9-card-1",
+          "sourceXPath": "/html/body/main/div[9]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": "tileIcon t-bg-primary-brand t-icon-primary-white",
+          "bodyClasses": "tileBody",
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "flexible-estate-planning-strategies--section-2-grid",
+      "variant": "StrategyIntroTiles",
+      "params": {
+        "theme": "transparent",
+        "sectionSpacing": "1",
+        "marginBottom": "xl"
+      },
+      "children": [
+        {
+          "key": "section-2-card-1",
+          "sourceXPath": "/html/body/main/div[2]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": "tileIcon t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody",
+          "hasImage": false
+        },
+        {
+          "key": "section-2-card-2",
+          "sourceXPath": "/html/body/main/div[2]/div/div[2]/div[1]/article",
+          "sourceClasses": "m-axlTile match-height    -is--stacked  t-bg-transparent ",
+          "width": 4,
+          "alignment": "center",
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": "tileIcon  t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody u-font-size-md",
+          "hasImage": false
+        },
+        {
+          "key": "section-2-card-3",
+          "sourceXPath": "/html/body/main/div[2]/div/div[2]/div[2]/article",
+          "sourceClasses": "m-axlTile match-height    -is--stacked  t-bg-transparent ",
+          "width": 4,
+          "alignment": "center",
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": "tileIcon  t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody u-font-size-md",
+          "hasImage": false
+        },
+        {
+          "key": "section-2-card-4",
+          "sourceXPath": "/html/body/main/div[2]/div/div[2]/div[3]/article",
+          "sourceClasses": "m-axlTile match-height    -is--stacked  t-bg-transparent ",
+          "width": 4,
+          "alignment": "center",
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": "tileIcon  t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody u-font-size-md",
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "flexible-estate-planning-strategies--section-3-grid",
+      "variant": "StrategyIntro",
+      "params": {
+        "theme": "blue-soft"
+      },
+      "children": [
+        {
+          "key": "section-3-card-1",
+          "sourceXPath": "/html/body/main/div[3]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": "tileIcon t-bg-transparent t-icon-primary-black",
+          "bodyClasses": null,
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "flexible-estate-planning-strategies--section-5-grid",
+      "variant": "StrategyIntroResources",
+      "params": {
+        "theme": "transparent",
+        "marginBottom": "xl"
+      },
+      "children": [
+        {
+          "key": "section-5-card-1",
+          "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": "tileIcon t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody",
+          "hasImage": false
+        },
+        {
+          "key": "section-5-card-2",
+          "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/div/a[1]",
+          "sourceClasses": "m-card",
+          "width": 12,
+          "alignment": null,
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": true
+        },
+        {
+          "key": "section-5-card-3",
+          "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/div/a[2]",
+          "sourceClasses": "m-card",
+          "width": 12,
+          "alignment": null,
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": true
+        },
+        {
+          "key": "section-5-card-4",
+          "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/div/a[3]",
+          "sourceClasses": "m-card",
+          "width": 12,
+          "alignment": null,
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": true
+        }
+      ]
+    },
+    {
+      "key": "flexible-estate-planning-strategies--section-6-grid",
+      "variant": "StrategyIntro",
+      "params": {
+        "theme": "green-soft"
+      },
+      "children": [
+        {
+          "key": "section-6-card-1",
+          "sourceXPath": "/html/body/main/div[6]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": "tileIcon t-bg-primary-brand t-icon-primary-white",
+          "bodyClasses": "tileBody",
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "retirement-planning--section-2-grid",
+      "variant": "StrategyIntro",
+      "params": {
+        "theme": "transparent"
+      },
+      "children": [
+        {
+          "key": "section-2-card-1",
+          "sourceXPath": "/html/body/main/div[2]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": "tileIcon t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody",
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "retirement-planning--section-3-grid",
+      "variant": "StrategyIntro",
+      "params": {
+        "theme": "blue-soft"
+      },
+      "children": [
+        {
+          "key": "section-3-card-1",
+          "sourceXPath": "/html/body/main/div[3]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": "tileIcon t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody",
+          "hasImage": false
+        }
+      ]
+    },
+    {
+      "key": "retirement-planning--section-5-grid",
+      "variant": "StrategyIntroResources",
+      "params": {
+        "theme": "transparent",
+        "marginBottom": "xl"
+      },
+      "children": [
+        {
+          "key": "section-5-card-1",
+          "sourceXPath": "/html/body/main/div[5]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2"
+          ],
+          "iconClasses": "tileIcon t-bg-transparent t-icon-primary-black",
+          "bodyClasses": null,
+          "hasImage": false
+        },
+        {
+          "key": "section-5-card-2",
+          "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/div/a[1]",
+          "sourceClasses": "m-card",
+          "width": 12,
+          "alignment": null,
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": true
+        },
+        {
+          "key": "section-5-card-3",
+          "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/div/a[2]",
+          "sourceClasses": "m-card",
+          "width": 12,
+          "alignment": null,
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": true
+        },
+        {
+          "key": "section-5-card-4",
+          "sourceXPath": "/html/body/main/div[5]/div/div[2]/div/div/a[3]",
+          "sourceClasses": "m-card",
+          "width": 12,
+          "alignment": null,
+          "headingTags": [
+            "h4"
+          ],
+          "iconClasses": null,
+          "bodyClasses": null,
+          "hasImage": true
+        }
+      ]
+    },
+    {
+      "key": "retirement-planning--section-6-grid",
+      "variant": "StrategyIntroFlippedTiles",
+      "params": {
+        "theme": "green-soft"
+      },
+      "children": [
+        {
+          "key": "section-6-card-1",
+          "sourceXPath": "/html/body/main/div[6]/div/div[1]/div/article",
+          "sourceClasses": "m-axlIntroductionBlock -is--stacked -no--image  ",
+          "width": 12,
+          "alignment": "center",
+          "headingTags": [
+            "h2",
+            "h4"
+          ],
+          "iconClasses": "tileIcon t-bg-primary-brand t-icon-primary-white",
+          "bodyClasses": null,
+          "hasImage": false
+        },
+        {
+          "key": "section-6-card-2",
+          "sourceXPath": "/html/body/main/div[6]/div/div[2]/div[1]/article",
+          "sourceClasses": "m-axlTile match-height  -is--flipped  -is--stacked  t-bg-transparent ",
+          "width": 4,
+          "alignment": "center",
+          "headingTags": [],
+          "iconClasses": "tileIcon  t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody u-font-size-md",
+          "hasImage": false
+        },
+        {
+          "key": "section-6-card-3",
+          "sourceXPath": "/html/body/main/div[6]/div/div[2]/div[2]/article",
+          "sourceClasses": "m-axlTile match-height  -is--flipped  -is--stacked  t-bg-transparent ",
+          "width": 4,
+          "alignment": "center",
+          "headingTags": [],
+          "iconClasses": "tileIcon  t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody u-font-size-md",
+          "hasImage": false
+        },
+        {
+          "key": "section-6-card-4",
+          "sourceXPath": "/html/body/main/div[6]/div/div[2]/div[3]/article",
+          "sourceClasses": "m-axlTile match-height  -is--flipped  -is--stacked  t-bg-transparent ",
+          "width": 4,
+          "alignment": "center",
+          "headingTags": [],
+          "iconClasses": "tileIcon  t-bg-transparent t-icon-primary-black",
+          "bodyClasses": "tileBody u-font-size-md",
+          "hasImage": false
+        }
+      ]
+    }
+  ]
+}

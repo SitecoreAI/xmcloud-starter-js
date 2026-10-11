@@ -325,5 +325,20 @@
       "successMessage": "<p>Demo review complete. No information was sent.</p>",
       "failureMessage": "<p>Demo failure. No information was sent. Please try again with sample information.</p>"
     }
+  },
+  {
+    "id": "contact-us",
+    "schemaKey": "contact-us",
+    "routes": [
+      "/contact-us"
+    ],
+    "pageIds": [],
+    "renderingIds": [],
+    "datasourceIds": [],
+    "sourceHidden": false,
+    "copy": {
+      "body": "Please note: We cannot reply with personal account information unless you first log in",
+      "submitLabel": "Submit"
+    }
   }
 ]

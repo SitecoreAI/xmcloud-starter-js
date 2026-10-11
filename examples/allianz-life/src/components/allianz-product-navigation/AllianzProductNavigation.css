@@ -1,0 +1,52 @@
+/* The recovered source owns gray desktop tabs and the 703/704 breakpoint. */
+.allianz-product-navigation .nav-sec-list-title {
+  color: #005074;
+}
+
+.allianz-product-navigation .nav-sec-product-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.allianz-product-navigation button.nav-sec-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  margin: -10px -10px -10px auto;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+  box-shadow: none;
+  font: inherit;
+  letter-spacing: normal;
+}
+
+.allianz-product-navigation .nav-sec-toggle .c-icon {
+  margin: 0;
+}
+
+.allianz-product-navigation .nav-sec-toggle:focus-visible,
+.allianz-product-navigation .nav-sec-product-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.allianz-product-navigation.allianz-product-navigation-editing .nav-sec-list-title {
+  display: flex;
+}
+
+@media (max-width: 703px) {
+  .allianz-product-navigation:not(.m-navigation-secondary-open) .nav-sec-list {
+    visibility: hidden;
+  }
+
+  .allianz-product-navigation.m-navigation-secondary-open .nav-sec-list {
+    visibility: visible;
+  }
+}

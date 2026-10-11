@@ -32,3 +32,44 @@
   width: 2rem;
   height: 2rem;
 }
+
+/* Empty optional editing controls do not participate in split-tile geometry. */
+.allianz-editorial-card-editor {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+}
+.allianz-editorial-card-fields {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border: 1px solid #d9d9d9;
+  background: #fff;
+  color: #3c3c3c;
+  font-size: 14px;
+  line-height: 20px;
+}
+.allianz-editorial-card-fields > summary {
+  cursor: pointer;
+}
+.allianz-editorial-card-fields > summary:focus-visible {
+  outline: 2px solid #007ab3;
+  outline-offset: 4px;
+}
+.allianz-editorial-card-fields__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 12px;
+}
+.allianz-editorial-card-field > span:first-child {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.allianz-editorial-card-field img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}

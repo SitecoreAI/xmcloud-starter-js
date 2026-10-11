@@ -12,7 +12,12 @@ const mobileQuery = '(max-width: 703px)';
 const subscribeViewport = (callback: () => void) => {
   const query = window.matchMedia(mobileQuery);
   query.addEventListener('change', callback);
-  return () => query.removeEventListener('change', callback);
+  // Recheck the same breakpoint when a browser misses the media-query event.
+  window.addEventListener('resize', callback);
+  return () => {
+    query.removeEventListener('change', callback);
+    window.removeEventListener('resize', callback);
+  };
 };
 // Source navigation groups such as Support have a title and children, but no
 // destination. Keep their Text field editable without an empty Link placeholder.

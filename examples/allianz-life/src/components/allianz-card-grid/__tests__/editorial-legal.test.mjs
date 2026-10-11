@@ -183,8 +183,28 @@ test('modern Default and EditorialIntro keep their distinct baseline markup and 
   assert.equal(count(normal, /<h1>/g), 1); assert.equal(count(normal, /<h2>/g), 1); assert.match(normal, /tileBody u-font-size-md/);
   const intro = render(Cards.EditorialIntro, props(d, false, params));
   assert.doesNotMatch(intro, /<h1>/); assert.equal(count(intro, /<h2>/g), 2); assert.match(intro, /allianz-editorial-cards/);
-  const file = fs.readFileSync(path.join(sourceRoot, 'components/allianz-card-grid/AllianzCardGrid.tsx'), 'utf8');
-  const marker = '\n/** Native no-media introduction rows with authored heading semantics.';
-  assert.ok(file.includes(marker));
-  assert.equal(sha(file.slice(0, file.indexOf(marker))), '5d1bf98693d4a9480caada361405568ecfc5280033bd94cc934811c526d7b326');
+  const native = { children: { results: fixture.placements.map((p) => data(p, true).children.results[0]) } };
+  const before = JSON.stringify({ d, native });
+  for (const Component of [Cards.Default, Cards.EditorialIntro]) for (const editing of [false, true]) {
+    const html = render(Component, props(d, editing, params));
+    assert.equal(html, render(Component, props(native, editing, params)));
+    const renderedText = text(html);
+    const headingPositions = fixture.placements.map((p) => renderedText.indexOf(p.fields.children[0].heading));
+    assert.ok(headingPositions.every((position) => position >= 0));
+    assert.ok(headingPositions.every((position, index) => index === 0 || position > headingPositions[index - 1]));
+    if (editing) for (const name of ['heading', 'subheading', 'body']) {
+      assert.equal(count(html, new RegExp(`fieldId&quot;:&quot;test-only-${name}&quot;`, 'g')), 2);
+    }
+  }
+  assert.equal(JSON.stringify({ d, native }), before);
+});
+test('EditorialLegal retains its unchanged source implementation independently of added variants', () => {
+  // The old whole-prefix pin included modern components and unrelated later additions.
+  // This region's pin comes from the unchanged implementation in the original HEAD.
+  const file = fs.readFileSync(path.join(sourceRoot, 'components/allianz-card-grid/AllianzCardGrid.tsx'), 'utf8').replace(/\r\n/g, '\n');
+  const start = '/** Native no-media introduction rows with authored heading semantics.';
+  const end = '/** Stacked source images';
+  const from = file.indexOf(start), to = file.indexOf(end, from);
+  assert.ok(from >= 0 && to > from);
+  assert.equal(sha(file.slice(from, to)), 'f200ecd19a13b0ac3e3f3b8567bca6b975af9f139e813d41c4e74b9cb5a60d4d');
 });

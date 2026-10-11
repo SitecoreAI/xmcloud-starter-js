@@ -39,16 +39,19 @@ function loadSource(filename) {
   return compiled.exports;
 }
 
-const Video = loadSource(path.join(sourceRoot, 'components/allianz-video/AllianzVideo.tsx')).Default;
+const videoExports = loadSource(path.join(sourceRoot, 'components/allianz-video/AllianzVideo.tsx'));
+const Video = videoExports.Default;
+const SourceStatic = videoExports.SourceStatic;
+const { brightcoveEmbedSource } = loadSource(path.join(sourceRoot, 'components/allianz-video/allianz-video.props.ts'));
 function field(name, type, value) {
   return { jsonValue: { value, metadata: { itemId: 'native-video', fieldId: name, fieldType: type } } };
 }
-function render(data, mode = 'normal') {
+function render(data, mode = 'normal', Component = Video) {
   return renderToStaticMarkup(React.createElement(SitecoreProvider, {
     page: { mode: { isEditing: mode === 'editing', isNormal: mode === 'normal', isPreview: mode === 'preview' },
       siteName: 'allianz-life', layout: { sitecore: { context: {}, route: { name: 'Video', fields: {}, placeholders: {} } } } },
     api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
-  }, React.createElement(Video, { params: { RenderingIdentifier: 'authored-video' }, fields: { data: { datasource: data } } })));
+  }, React.createElement(Component, { params: { RenderingIdentifier: 'authored-video' }, fields: { data: { datasource: data } } })));
 }
 function metadata(html) {
   return [...html.matchAll(/<code [^>]*kind="open"[^>]*>(.*?)<\/code>/g)]
@@ -130,4 +133,60 @@ test('the repository-native SVG is inert and source dimensions survive legacy pl
   assert.match(css, /section\.allianz-local-video article\.video-block\s*\{[^}]*width:\s*100%;[^}]*max-width:\s*640px;[^}]*margin:\s*64px auto;/);
   assert.match(css, /\.allianz-local-video \.bc-video-player \.bc-video-player-inner\s*\{[^}]*aspect-ratio:\s*16 \/ 9;[^}]*padding:\s*0;/);
   assert.doesNotMatch(css, /url\(/);
+});
+
+
+test('SourceStatic ignores filled playback and poster fields while preserving native values and ordinary editable copy', () => {
+  const data = {
+    heading: field('static-heading', 'Single-Line Text', 'Authored video heading'),
+    body: field('static-body', 'Rich Text', '<p>Authored supporting copy</p>'),
+    caption: field('static-caption', 'Rich Text', '<p>Authored video caption</p>'),
+    mediaLink: field('static-media', 'General Link', {
+      href: 'https://players.brightcove.net/1537381467001/WioKPWt4t_default/index.html?videoId=6291658616001',
+      text: 'Authored playback link', linktype: 'external', target: '_blank',
+    }),
+    poster: field('static-poster', 'Image', {
+      src: 'https://test-only.example/source-poster.jpg', alt: 'Authored unused poster', width: '1280', height: '720',
+    }),
+    transcript: field('static-transcript', 'Rich Text', '<p>Transcript owned by the separate native component</p>'),
+  };
+  assert.ok(brightcoveEmbedSource(data.mediaLink.jsonValue), 'The test input must be a valid supported playback link');
+  const before = JSON.stringify(data);
+  for (const mode of ['normal', 'preview', 'editing']) {
+    const html = render(data, mode, SourceStatic);
+    assert.equal((html.match(/<img\b/g) || []).length, 1);
+    assert.match(html, /<img[^>]*class="allianz-video-placeholder"[^>]*src="\/allianz-ui\/video-placeholder.svg"[^>]*alt="Video player would go here"[^>]*width="640"[^>]*height="360"/);
+    assert.match(html, /Authored video heading/);
+    assert.match(html, /<p>Authored supporting copy<\/p>/);
+    assert.match(html, /<p>Authored video caption<\/p>/);
+    assert.doesNotMatch(html, /<iframe\b|<video\b|<audio\b|<script\b|<a\b|brightcove|source-poster|unused poster|Authored playback link|allianz-source-static-video-fields|static-media|static-poster|static-transcript|Transcript owned/);
+    const markers = metadata(html).map(({ fieldId }) => fieldId).sort();
+    assert.deepEqual(markers, mode === 'editing' ? ['static-body', 'static-caption', 'static-heading'] : []);
+    assert.equal(JSON.stringify(data), before);
+  }
+});
+
+test('SourceStatic cleared copy retains only its relevant SDK controls and missing datasource keeps the existing fallback', () => {
+  const data = {
+    heading: field('static-heading', 'Single-Line Text', ''),
+    body: field('static-body', 'Rich Text', ''),
+    caption: field('static-caption', 'Rich Text', ''),
+    poster: field('static-poster', 'Image', {}),
+    mediaLink: field('static-media', 'General Link', {}),
+  };
+  const before = JSON.stringify(data);
+  const editing = render(data, 'editing', SourceStatic);
+  assert.deepEqual(metadata(editing).map(({ fieldId }) => fieldId).sort(), ['static-body', 'static-caption', 'static-heading']);
+  assert.doesNotMatch(editing, /static-poster|static-media|scEmptyImage|allianz-source-static-video-fields/);
+  assert.deepEqual(metadata(render({}, 'editing', SourceStatic)), []);
+  for (const mode of ['normal', 'preview']) {
+    const html = render(data, mode, SourceStatic);
+    assert.deepEqual(metadata(html), []);
+    assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage|<iframe\b|<video\b|<audio\b/);
+    assert.match(html, /Video player would go here/);
+  }
+  for (const mode of ['normal', 'preview', 'editing']) {
+    assert.doesNotMatch(render(undefined, mode, SourceStatic), /video-placeholder.svg/);
+  }
+  assert.equal(JSON.stringify(data), before);
 });

@@ -1,0 +1,16 @@
+/* External source-fixed glyphs match the recovered inline SVG sizing and ink. */
+.allianz-life-faq-cards .tileIcon .allianz-life-faq-glyph {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+
+.allianz-life-faq-cards .tileIcon.t-icon-primary-white .allianz-life-faq-glyph {
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 704px) {
+  .allianz-life-faq-cards .tileIcon .allianz-life-faq-glyph {
+    width: 40px;
+  }
+}

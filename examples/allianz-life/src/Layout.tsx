@@ -1,5 +1,5 @@
 import React, { JSX } from 'react';
-import { AppPlaceholder, DesignLibraryApp, type Field, type ImageField, type Page } from '@sitecore-content-sdk/nextjs';
+import { AppPlaceholder, DesignLibraryApp, type ComponentRendering, type Field, type ImageField, type Page } from '@sitecore-content-sdk/nextjs';
 import Scripts from 'src/Scripts';
 import SitecoreStyles from 'components/content-sdk/SitecoreStyles';
 import ConsentControls from 'components/content-sdk/ConsentControls';
@@ -8,6 +8,7 @@ import componentMap from '.sitecore/component-map';
 import sourceBodyClasses from 'src/content/source-body-classes.json';
 import { collectionsComplete } from 'lib/collection-completeness';
 import { isConnected } from 'lib/allianz-content-mode';
+import { isNewYorkHomePage } from 'lib/allianz-new-york-page';
 
 interface LayoutProps { page: Page }
 export interface RouteFields {
@@ -28,6 +29,11 @@ export interface RouteFields {
   ogImage?: ImageField;
   thumbnailImage?: ImageField;
 }
+/** SXA partial designs wrap their header rendering in nested placeholders. */
+const hasLegacyHeader = (renderings: ComponentRendering[] = []): boolean =>
+  renderings.some((rendering) => rendering.componentName === 'AllianzLegacyHeader' ||
+    Object.values(rendering.placeholders ?? {}).some(hasLegacyHeader));
+
 const Layout = ({ page }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
@@ -36,7 +42,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   }
   const fields = route?.fields as RouteFields | undefined;
   const scalar = (key: string) => (fields?.[key] as Field<string> | undefined)?.value || '';
-  const legacy = scalar('shellFamily') === 'legacy' || route?.placeholders['headless-header']?.some((item) => 'componentName' in item && item.componentName === 'AllianzLegacyHeader');
+  const legacy = scalar('shellFamily') === 'legacy' || hasLegacyHeader(route?.placeholders['headless-header']);
   const ny = scalar('legacySharedKey') === 'new-york';
   const sourceBodyId = /^[A-Za-z][\w$-]*$/.test(scalar('sourceBodyId')) ? scalar('sourceBodyId') : undefined;
   const classes = scalar('sourceBodyClasses').split(/\s+/).filter((name) => sourceBodyClasses.includes(name)).join(' ');
@@ -48,6 +54,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   // Keep an explicitly empty slot insertable in Pages; other layouts are unchanged.
   const rightRail = !!route?.placeholders['headless-right-rail']?.length ||
     (mode.isEditing && Object.hasOwn(route?.placeholders ?? {}, 'headless-right-rail'));
+  const nyHome = isNewYorkHomePage(fields) && !sidebar && !rightRail;
   return <>
     <Scripts />
     {mode.isEditing && <SitecoreStyles layoutData={layout} />}
@@ -57,7 +64,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
         {header}
         {legacy ? <main id="main" className="container-fluid azl-contents"><div className="row">
           {sidebar && <aside className="col-md-2 col-sm-3 left-column">{placeholder('headless-sidebar')}</aside>}
-          <div id="content-body" className={sidebar ? 'col-md-8 col-sm-9 center-column' : rightRail ? 'col-md-10 col-sm-9 center-column' : 'col-md-10 col-md-offset-1 center-column'}>{placeholder('headless-main')}</div>
+          <div id="content-body" className={nyHome ? 'col-sm-12 center-column allianz-ny-home-content' : sidebar ? 'col-md-8 col-sm-9 center-column' : rightRail ? 'col-md-10 col-sm-9 center-column' : 'col-md-10 col-md-offset-1 center-column'}>{placeholder('headless-main')}</div>
           {rightRail && <aside className="col-md-2 col-sm-3 right-column">{placeholder('headless-right-rail')}</aside>}
         </div></main> : <main id="main"><div id="content">{placeholder('headless-main')}</div></main>}
         {footer}

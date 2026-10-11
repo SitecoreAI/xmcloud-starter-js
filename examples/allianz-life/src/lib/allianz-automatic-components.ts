@@ -7,11 +7,14 @@ import { enrichInvestmentPortfolioComponentMap } from './investment-portfolio-se
 import type { InvestmentPortfolioBindings } from './investment-portfolio-data';
 import { enrichSectionNavigationComponentMap } from './section-navigation-server';
 import type { SectionNavigationBindings } from './section-navigation-data';
+import { enrichVenturesTeamComponentMap } from './ventures-team-server';
+import type { VenturesTeamBindings } from './ventures-team-data';
 
 export type AllianzAutomaticServerOptions = NewsroomAutomaticServerOptions & {
   /** Populated only from verified native definition/readback identities. */
   investmentPortfolioBindings?: InvestmentPortfolioBindings;
   sectionNavigationBindings?: SectionNavigationBindings;
+  venturesTeamBindings?: VenturesTeamBindings;
 };
 
 /** Compose native component hooks once per request, sharing its scoped SDK reader. */
@@ -23,8 +26,11 @@ export function enrichAllianzComponentMap(
     enrichDocumentComponentMap(enrichNewsroomComponentMap(components, options), options),
     options,
   );
-  return enrichSectionNavigationComponentMap(
-    enrichInvestmentPortfolioComponentMap(established, { ...options, bindings: options.investmentPortfolioBindings }),
-    { ...options, bindings: options.sectionNavigationBindings },
+  return enrichVenturesTeamComponentMap(
+    enrichSectionNavigationComponentMap(
+      enrichInvestmentPortfolioComponentMap(established, { ...options, bindings: options.investmentPortfolioBindings }),
+      { ...options, bindings: options.sectionNavigationBindings },
+    ),
+    { ...options, bindings: options.venturesTeamBindings },
   );
 }

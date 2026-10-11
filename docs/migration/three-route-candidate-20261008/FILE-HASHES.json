@@ -1,0 +1,62 @@
+{
+  "kind": "branch-local-three-route-review-evidence",
+  "baseCommit": "1670499c567fc13823711eef0f3ba0545219914a",
+  "executableModuleIncluded": false,
+  "cmsWrites": 0,
+  "files": [
+    {
+      "branchLocalPath": "docs/migration/three-route-candidate-20261008/NATIVE-VARIANT-READBACK-RELAY.json",
+      "sourcePath": "preparation/native-registration-relay-v3.json",
+      "sha256": "598c7c396d36e2eddd13a298520a8ccd25bb4356595e19b2e686f72e9745dbc5",
+      "bytes": 13382
+    },
+    {
+      "branchLocalPath": "docs/migration/three-route-candidate-20261008/LAYOUT-FIELD-CANDIDATE-MANIFEST.json",
+      "sourcePath": "preparation/layout-field-candidate-v1/MANIFEST.json",
+      "sha256": "6989eac0e2bb4fad441ef51cb8dcf470ca2301f6a57f42aef6af2ec95bf59191",
+      "bytes": 19829
+    },
+    {
+      "branchLocalPath": "docs/migration/three-route-candidate-20261008/OFFICIAL-LAYOUT-READER-RECEIPT.json",
+      "sourcePath": "preparation/OFFICIAL-LAYOUT-READER-RECEIPT.json",
+      "sha256": "3019df239abe19fd84714e880cccf0e9b28d58c597fd33c45909d1de587e5f72",
+      "bytes": 3904
+    },
+    {
+      "branchLocalPath": "docs/migration/three-route-candidate-20261008/before-backups/1a30df2a-68b3-53c3-9a1a-a5595f80ca5a.yml",
+      "sourcePath": "preparation/layout-field-candidate-v1/before-backups/1a30df2a-68b3-53c3-9a1a-a5595f80ca5a.yml",
+      "sha256": "43d40f0786e37f92ee593dc646b183a8c350dc2f5a2709eba2af58ccb28d7708",
+      "bytes": 2161
+    },
+    {
+      "branchLocalPath": "docs/migration/three-route-candidate-20261008/candidates/1a30df2a-68b3-53c3-9a1a-a5595f80ca5a.yml",
+      "sourcePath": "preparation/layout-field-candidate-v1/candidates/1a30df2a-68b3-53c3-9a1a-a5595f80ca5a.yml",
+      "sha256": "77a3fd163d321704804c0b199b2eeae8df8379a12a7acdd76ccc86f05dea3095",
+      "bytes": 6240
+    },
+    {
+      "branchLocalPath": "docs/migration/three-route-candidate-20261008/before-backups/fd3b97d9-ea09-5342-b818-5c24c05ec6ae.yml",
+      "sourcePath": "preparation/layout-field-candidate-v1/before-backups/fd3b97d9-ea09-5342-b818-5c24c05ec6ae.yml",
+      "sha256": "8b847cc89ddc7f6cd29c580a4997354e5bb165e5fd6c3f8da4a8288d9529abed",
+      "bytes": 2200
+    },
+    {
+      "branchLocalPath": "docs/migration/three-route-candidate-20261008/candidates/fd3b97d9-ea09-5342-b818-5c24c05ec6ae.yml",
+      "sourcePath": "preparation/layout-field-candidate-v1/candidates/fd3b97d9-ea09-5342-b818-5c24c05ec6ae.yml",
+      "sha256": "3b5179e9c49326f71ba49b7c08a868347ea8e3ab19d2a8e7e47424204dddb364",
+      "bytes": 4933
+    },
+    {
+      "branchLocalPath": "docs/migration/three-route-candidate-20261008/before-backups/1a69a4b8-13ae-5bbc-afad-e6acdba09563.yml",
+      "sourcePath": "preparation/layout-field-candidate-v1/before-backups/1a69a4b8-13ae-5bbc-afad-e6acdba09563.yml",
+      "sha256": "192d769e28433a6f10e3830161d5093a10e131adc4afb7c5180fd3eae0aaa1a8",
+      "bytes": 2143
+    },
+    {
+      "branchLocalPath": "docs/migration/three-route-candidate-20261008/candidates/1a69a4b8-13ae-5bbc-afad-e6acdba09563.yml",
+      "sourcePath": "preparation/layout-field-candidate-v1/candidates/1a69a4b8-13ae-5bbc-afad-e6acdba09563.yml",
+      "sha256": "6cee6e8b1048b5a5f2e1e7899f2c89b8085e977a3ea41c0331900d10e97cf8ca",
+      "bytes": 5076
+    }
+  ]
+}

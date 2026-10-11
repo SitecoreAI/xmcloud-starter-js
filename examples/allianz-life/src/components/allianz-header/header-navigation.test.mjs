@@ -113,7 +113,7 @@ function flatten(element) {
   if (!element || typeof element !== 'object' || !element.props) return [];
   return [element, ...flatten(element.props.children)];
 }
-function harness(mobile, navigationItems = items) {
+function harness(mobile, navigationItems = items, observeStore) {
   const hooks = [];
   let cursor = 0;
   const fakeReact = {
@@ -132,7 +132,7 @@ function harness(mobile, navigationItems = items) {
       if (!(slot in hooks)) hooks[slot] = { current: initial };
       return hooks[slot];
     },
-    useSyncExternalStore() { return mobile; },
+    useSyncExternalStore(subscribe, snapshot, server) { observeStore?.({ subscribe, snapshot, server }); return mobile; },
   };
   const { Default } = load(new URL('./AllianzHeader.tsx', import.meta.url), {
     react: fakeReact,
@@ -653,4 +653,32 @@ test('navigation glyphs and CTA arrow match saved source assets', () => {
   // Its digest keeps this test portable without including raw source HTML in the repo.
   assert.equal(createHash('sha256').update(arrow).digest('hex'), '7124b4cce7e1ad3e5f42d521958e5d613be46f97f9507b9b539710031d97e870');
   assert.equal(card.includes('a-icon--long-arrow-right'), false);
+});
+
+
+test('header rechecks its source breakpoint on resize without a media change event and cleans up', () => {
+  let store;
+  const h = harness(false, items, (value) => { store = value; });
+  h.render();
+  assert.equal(store.server(), false, 'server markup remains deterministic');
+  const viewport = new EventTarget(), media = new EventTarget();
+  let width = 704;
+  Object.defineProperty(media, 'matches', { get: () => width <= 703 });
+  const previous = globalThis.window;
+  globalThis.window = {
+    matchMedia(query) { assert.equal(query, '(max-width: 703px)'); return media; },
+    addEventListener: viewport.addEventListener.bind(viewport),
+    removeEventListener: viewport.removeEventListener.bind(viewport),
+  };
+  try {
+    const updates = [], unsubscribe = store.subscribe(() => updates.push(store.snapshot()));
+    assert.equal(store.snapshot(), false);
+    width = 703; viewport.dispatchEvent(new Event('resize'));
+    width = 704; viewport.dispatchEvent(new Event('resize'));
+    width = 320; media.dispatchEvent(new Event('change'));
+    assert.deepEqual(updates, [true, false, true]);
+    unsubscribe();
+    width = 704; viewport.dispatchEvent(new Event('resize')); media.dispatchEvent(new Event('change'));
+    assert.deepEqual(updates, [true, false, true], 'both event subscriptions are removed');
+  } finally { globalThis.window = previous; }
 });

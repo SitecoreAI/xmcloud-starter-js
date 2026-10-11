@@ -15,6 +15,6 @@ export function legalDisclosuresFields(item: LegalDisclosuresDatasource): LegalD
 }
 
 export type LegalDisclosuresProps = Omit<ComponentProps, 'params'> & {
-  params?: { RenderingIdentifier?: string };
+  params?: ComponentProps['params'];
   fields?: { data?: { datasource?: LegalDisclosuresDatasource } };
 };

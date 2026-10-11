@@ -193,3 +193,43 @@ test('mask dimensions and interaction colors match recovered inline SVG declarat
   ];
   for (const [original, masked] of pairs) assert.equal(value(rule(overrides, masked), 'background-color'), lastDeclaration(source, original, 'fill'));
 });
+
+
+test('native image geometry and local SourceAlpha filter retain every source interaction color', () => {
+  const native = rule(overrides, '.allianz-modern .allianz-field-icon--native');
+  const background = native.nodes.find((entry) => entry.prop === 'background-color');
+  assert.equal(background.value, 'transparent');
+  assert.equal(background.important, true, 'no solid square may cover native image transparency');
+  const image = rule(overrides, '.allianz-modern .allianz-field-icon--native > .allianz-field-icon__image');
+  assert.equal(value(image, 'width'), '100%');
+  assert.equal(value(image, 'height'), '100%');
+  assert.equal(value(image, 'object-fit'), 'contain');
+  const filter = rule(overrides, '.allianz-modern .allianz-field-icon--native > .allianz-field-icon__filter');
+  assert.equal(value(filter, 'width'), '0');
+  assert.equal(value(filter, 'height'), '0');
+  assert.ok(stronger(filter.selector, '.a-link__icon svg'), 'source SVG dimensions cannot reveal the filter definition');
+  assert.equal(value(rule(overrides, '.allianz-modern .allianz-field-icon'), 'color'), '#005074');
+  const pairs = [
+    ['.a-link:active .a-link__icon svg', '.allianz-modern .O-azl-header .m-navigationUtility .a-link:active .allianz-field-icon'],
+    ['.a-link:visited .a-link__icon svg', '.allianz-modern .O-azl-header .m-navigationUtility .a-link:visited .allianz-field-icon'],
+    ['.a-link:hover .a-link__icon svg', '.allianz-modern .O-azl-header .m-navigationUtility .a-link:hover .allianz-field-icon'],
+    ['.a-link:focus-visible .a-link__icon svg', '.allianz-modern .O-azl-header .m-navigationUtility .a-link:focus-visible .allianz-field-icon'],
+    ['.m-footer__social-link:visited', '.allianz-modern .m-footer__social-link:visited .allianz-field-icon'],
+    ['.m-footer__social-link:hover', '.allianz-modern .m-footer__social-link:hover .allianz-field-icon'],
+    ['.m-footer__social-link:active', '.allianz-modern .m-footer__social-link:active .allianz-field-icon'],
+    ['.m-footer__social-link:focus', '.allianz-modern .m-footer__social-link:focus .allianz-field-icon'],
+  ];
+  for (const [original, native] of pairs) assert.equal(value(rule(overrides, native), 'color'), lastDeclaration(source, original, 'fill'));
+});
+
+test('native social images do not introduce a fallback font glyph or inherit em-sized geometry', () => {
+  const fontPseudo = rule(source, '.a-icon:before');
+  assert.equal(value(fontPseudo, 'content'), undefined, 'the unmodified a-icon wrapper defines no fallback character');
+  assert.equal(value(fontPseudo, 'font-family'), 'Allianz-Icons');
+  assert.equal(lastDeclaration(source, '.m-footer__social-link', 'font-size'), '24px');
+  const frame = rule(overrides, '.allianz-modern .m-footer__social-link .a-icon > .allianz-field-icon');
+  assert.equal(value(frame, 'width'), '1.25rem');
+  assert.equal(value(frame, 'height'), '1.25rem');
+  const filter = rule(overrides, '.allianz-modern .allianz-field-icon--native > .allianz-field-icon__filter');
+  assert.ok(stronger(filter.selector, '.m-footer__social-link .a-icon svg'));
+});

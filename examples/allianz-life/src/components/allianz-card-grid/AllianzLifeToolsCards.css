@@ -1,0 +1,18 @@
+/* Recovered raw SVGs retain source geometry; source icon ink is applied locally. */
+.allianz-life-tools-cards .tileIcon > .allianz-life-tools-glyph {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(23.5294%);
+}
+.allianz-life-tools-cards .tileIcon.t-icon-primary-white > .allianz-life-tools-glyph {
+  filter: brightness(0) invert(1);
+}
+@media (min-width: 704px) {
+  .allianz-life-tools-cards .tileIcon > .allianz-life-tools-glyph {
+    width: 40px;
+  }
+}
+.allianz-life-tools-cards .m-card__footer > .allianz-life-tools-glyph {
+  width: 2rem;
+  height: 2rem;
+}

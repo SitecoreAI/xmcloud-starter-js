@@ -70,7 +70,7 @@ test('all 12 historical fixtures resolve to verified static forms without mutati
   assert.doesNotMatch(render({rendering,fields:rendering.fields,params:rendering.params}),/temporarily unavailable|missing-data/);
   assert.equal(JSON.stringify(rendering),before);count++;
  }
- assert.equal(count,12);assert.equal(MIGRATION_FORMS.length,12);assert.equal(new Set(MIGRATION_FORMS.map(f=>f.id)).size,12);
+ assert.equal(count,12);assert.equal(MIGRATION_FORMS.length,13);assert.equal(new Set(MIGRATION_FORMS.map(f=>f.id)).size,13);
 });
 test('ambiguous routes, conflicting known identities, invalid explicit config and unknown CMS schemas fail safely',()=>{
  const first=MIGRATION_FORMS[0], second=MIGRATION_FORMS[1], contact=MIGRATION_FORMS.find(f=>f.id==='ny-contact');
@@ -108,7 +108,7 @@ test('serialized Form query is empty, helpers excluded from generated component/
  const yaml=fs.readFileSync(path.resolve(sourceRoot,'../../../authoring/allianz-life/items/allianz.renderings/Allianz Life/Form.yml'),'utf8');
  assert.match(yaml,/Hint: ComponentQuery\n  Value: ""/);
  const cli=fs.readFileSync(path.join(sourceRoot,'../sitecore.cli.config.ts'),'utf8');assert.match(cli,/src\/components\/\*\*\/\*\.props\.tsx/);
- for(const filename of ['AllianzForm.tsx','GenericForm.props.tsx','ProductContactForm.props.tsx','migration-form-config.props.ts']){
+ for(const filename of ['AllianzForm.tsx','GenericForm.props.tsx','ProductContactForm.props.tsx','ContactUsForm.props.tsx','migration-form-config.props.ts']){
   const source=fs.readFileSync(path.join(formRoot,filename),'utf8');
   assert.doesNotMatch(source,/fetch\s*\(|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|document\.cookie|dangerouslySetInnerHTML|\baction=|\bmethod=|formDatasource\(/);
  }

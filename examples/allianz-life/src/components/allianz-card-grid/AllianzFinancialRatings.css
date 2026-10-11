@@ -1,0 +1,62 @@
+/* Only the saved Financial Ratings history grid. Native identity markers keep
+ * these adaptations out of other Default grids without new CMS parameters.
+ * Badge geometry comes from the current public source at the 704px breakpoint. */
+.allianz-modern [data-allianz-card-grid="6a6d5c5594f94090a7f4dcec2ff47726"] .tileAlphanumeral {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #003781;
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.25rem;
+  font-style: normal;
+  line-height: normal;
+  vertical-align: middle;
+}
+.allianz-modern [data-allianz-card-grid="6a6d5c5594f94090a7f4dcec2ff47726"] [data-allianz-card="5f8f1ef6db5a4f6b9de7a5d155e6c6d3"] .tileAlphanumeral {
+  width: auto;
+  border-radius: 40px;
+  padding: 8px 20px;
+}
+@media (min-width: 704px) {
+  .allianz-modern [data-allianz-card-grid="6a6d5c5594f94090a7f4dcec2ff47726"] .tileAlphanumeral {
+    width: 64px;
+    height: 64px;
+    font-size: 2.1875rem;
+  }
+  .allianz-modern [data-allianz-card-grid="6a6d5c5594f94090a7f4dcec2ff47726"] [data-allianz-card="5f8f1ef6db5a4f6b9de7a5d155e6c6d3"] .tileAlphanumeral {
+    width: auto;
+  }
+}
+/* Native browser comparison confirmed the public c-table markup uses compact,
+ * unbordered tables. Preserve that geometry rather than the unrelated o-table. */
+.allianz-modern [data-allianz-card-grid="6a6d5c5594f94090a7f4dcec2ff47726"] .tileBody table.c-table {
+  width: auto;
+  border-collapse: collapse;
+  border: 0;
+}
+.allianz-modern [data-allianz-card-grid="6a6d5c5594f94090a7f4dcec2ff47726"] .tileBody table.c-table th,
+.allianz-modern [data-allianz-card-grid="6a6d5c5594f94090a7f4dcec2ff47726"] .tileBody table.c-table td {
+  padding: 0;
+  border: 0;
+  text-align: left;
+  overflow-wrap: normal;
+}
+.allianz-modern [data-allianz-card-grid="6a6d5c5594f94090a7f4dcec2ff47726"] .tileBody table.c-table th {
+  color: #3c3c3c;
+  font-weight: 700;
+}
+/* Source captions are accessible names, visually hidden with u-aria-only. */
+.allianz-modern [data-allianz-card-grid="6a6d5c5594f94090a7f4dcec2ff47726"] .tileBody table.c-table caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}

@@ -1,0 +1,1445 @@
+{
+  "provenance": {
+    "source": "content/native-content.json",
+    "scope": [
+      "/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "/what-we-offer"
+    ],
+    "purpose": "Test-only exact source entries; no CMS state or authoring IDs generated."
+  },
+  "routes": {
+    "/get-answers/how-to-address-financial-risks-of-early-retirement": {
+      "path": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "title": "Address the Financial Risks of an Early or Unexpected Retirement | Allianz Life",
+      "description": "",
+      "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "archetype": "Marketing / topic landing",
+      "shellFamily": "modern",
+      "components": [
+        {
+          "componentName": "AllianzBreadcrumbs",
+          "uid": "586DE274-70E7-534F-8581-8D373107720C",
+          "dataSource": "D397BFE7-143E-5799-BF4C-7F551FDEB2B1",
+          "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:breadcrumbs",
+          "params": {},
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "D397BFE7-143E-5799-BF4C-7F551FDEB2B1",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "primaryNav": {
+                  "targetItems": [
+                    {
+                      "id": "CE485AEF-3481-5F5E-BEFF-EC8D8C902434",
+                      "title": {
+                        "jsonValue": {
+                          "value": "Home"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "/",
+                            "text": "Home",
+                            "linktype": "internal",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "children": {
+                        "results": []
+                      }
+                    },
+                    {
+                      "id": "438C5D74-8A32-5545-89CB-BA08B67402BE",
+                      "title": {
+                        "jsonValue": {
+                          "value": "Get Answers"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "/get-answers",
+                            "text": "Get Answers",
+                            "linktype": "internal",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "children": {
+                        "results": []
+                      }
+                    },
+                    {
+                      "id": "AD132AA2-EE55-51C1-8308-78E43AC17C70",
+                      "title": {
+                        "jsonValue": {
+                          "value": "How To Address the Financial Risks of an Early or Unexpected Retirement"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+                            "text": "How To Address the Financial Risks of an Early or Unexpected Retirement",
+                            "linktype": "internal",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "children": {
+                        "results": []
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "componentName": "AllianzHero",
+          "uid": "63176158-4A88-5A68-B003-3E3135CCAE06",
+          "dataSource": "476EC7CA-C50A-5EA3-B5C6-C625F105C23D",
+          "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:0",
+          "params": {
+            "theme": "blue-soft",
+            "layout": "stage",
+            "columns": "1",
+            "alignment": "center",
+            "spacing": "none",
+            "headingLevel": "h1",
+            "paddingTop": "none",
+            "paddingBottom": "none",
+            "marginBottom": "none",
+            "showLogin": "0"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "476EC7CA-C50A-5EA3-B5C6-C625F105C23D",
+                "heading": {
+                  "jsonValue": {
+                    "value": "How to address the financial risks of an early or unexpected retirement"
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "desktopImage": {
+                  "jsonValue": {
+                    "value": {
+                      "src": "/allianz-assets/334f5c5598f90938.jpg",
+                      "alt": ""
+                    }
+                  },
+                  "asset": {
+                    "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Hero/Allianz-Life/hero-azl-how-to-address-financial-risks-of-early-retirement-1.jpg",
+                    "demoSrc": "/allianz-assets/334f5c5598f90938.jpg",
+                    "status": "available",
+                    "sourcePath": "/-/media/feature/hero/allianz-life/hero-azl-how-to-address-financial-risks-of-early-retirement-1.jpg",
+                    "localPath": "/workspace/scratch/19d699b9a9db/allianz-workspace/discovery/public-site/downloaded-assets/334f5c5598f90938.jpg"
+                  }
+                },
+                "mobileImage": {
+                  "jsonValue": {
+                    "value": {
+                      "src": "/allianz-assets/334f5c5598f90938.jpg",
+                      "alt": ""
+                    }
+                  },
+                  "asset": {
+                    "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Hero/Allianz-Life/hero-azl-how-to-address-financial-risks-of-early-retirement-1.jpg",
+                    "demoSrc": "/allianz-assets/334f5c5598f90938.jpg",
+                    "status": "available",
+                    "sourcePath": "/-/media/feature/hero/allianz-life/hero-azl-how-to-address-financial-risks-of-early-retirement-1.jpg",
+                    "localPath": "/workspace/scratch/19d699b9a9db/allianz-workspace/discovery/public-site/downloaded-assets/334f5c5598f90938.jpg",
+                    "observations": [
+                      {
+                        "url": "https://www.allianzlife.com/-/media/Feature/Hero/Allianz-Life/hero-azl-how-to-address-financial-risks-of-early-retirement-1.jpg?w=2368&hash=93345CE0FD109130D6E52624C4F12EBA",
+                        "method": "GET",
+                        "status": 200,
+                        "evidence": "asset_download_manifest.json"
+                      }
+                    ],
+                    "availability": "captured",
+                    "kind": "raster"
+                  }
+                },
+                "primaryLink": {
+                  "jsonValue": {
+                    "value": {
+                      "href": "",
+                      "text": "",
+                      "linktype": "anchor",
+                      "target": ""
+                    }
+                  }
+                },
+                "secondaryLink": {
+                  "jsonValue": {
+                    "value": {
+                      "href": "",
+                      "text": "",
+                      "linktype": "anchor",
+                      "target": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+            "sourceHtml": "html/66d7b94a3c744d12.html"
+          }
+        },
+        {
+          "componentName": "AllianzCardGrid",
+          "uid": "89D98ACA-735F-50CE-B6D2-3DD40F121C36",
+          "dataSource": "139B1134-3D18-52A1-ADD3-FA86E599D804",
+          "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:1",
+          "params": {
+            "theme": "transparent",
+            "layout": "stacked",
+            "columns": "1",
+            "alignment": "left",
+            "spacing": "none",
+            "headingLevel": "h4",
+            "paddingTop": "lg",
+            "paddingBottom": "none",
+            "marginBottom": "lg"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "139B1134-3D18-52A1-ADD3-FA86E599D804",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "subheading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": "<p>Some Americans retire earlier than they expected, often for reasons outside of their control such as job loss and health issues.</p>\n<p>This means spending a lot more time in retirement than anticipated. More years in retirement can be a gift, but can also create an issue with retirement income.</p>\n<p>So, what can you do when facing a retirement that might start sooner – and last longer – than expected? </p>"
+                  }
+                },
+                "children": {
+                  "results": [
+                    {
+                      "id": "A8EFAF8B-694E-56C1-9FFA-77D6BF2E2BC6",
+                      "heading": {
+                        "jsonValue": {
+                          "value": "Revisit your retirement plan"
+                        }
+                      },
+                      "subheading": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      },
+                      "body": {
+                        "jsonValue": {
+                          "value": "<p>If you have a written financial plan, that’s where you’ll start. By revisiting your retirement plan, you will see where you are in comparison to where you thought you would be when leaving the workforce. You will likely have to amend your strategy for your new circumstances.</p>\n<p>It can feel daunting to have to make changes to a retirement strategy. When building your retirement plan, it is wise to consider how an early exit from the workforce would affect your strategy. While many people incorporate contingencies for retirement risks like market volatility and inflation, it is less common to account for an early retirement.</p>\n<p>Your written plan will help guide you through this situation.</p>\n<p>But many Americans don’t have one – only 42% of Americans said they have a written financial plan, <a href=\"/error-pages/404?item=web%3a%7b1E5EBA94-0237-4CEE-A3A9-5134E9B54A1C%7d%40en\">according to the 2023 Annual Retirement Study from Allianz Life</a>. If you don’t have a plan in place, now is the time to create one. You’ll need to understand what you want your retirement to look like and how much it will take in retirement income to achieve. </p>"
+                        }
+                      },
+                      "image": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "icon": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "iconTheme": {
+                        "jsonValue": {
+                          "value": "primary-brand"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "",
+                            "text": "",
+                            "linktype": "anchor",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "links": {
+                        "targetItems": []
+                      },
+                      "theme": {
+                        "jsonValue": {
+                          "value": "transparent"
+                        }
+                      },
+                      "headingLevel": {
+                        "jsonValue": {
+                          "value": "h4"
+                        }
+                      },
+                      "alphanumeral": {
+                        "jsonValue": {
+                          "value": "1"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "primaryLink": {
+                  "jsonValue": {
+                    "value": {
+                      "href": "",
+                      "text": "",
+                      "linktype": "anchor",
+                      "target": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+            "sourceHtml": "html/66d7b94a3c744d12.html"
+          }
+        },
+        {
+          "componentName": "AllianzCardGrid",
+          "uid": "39434E40-C844-5BE9-A06B-6EF774AF7A6B",
+          "dataSource": "BE82D2E1-8E45-571E-BC96-D8B2F5E666BA",
+          "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:2",
+          "params": {
+            "theme": "transparent",
+            "layout": "stacked",
+            "columns": "1",
+            "alignment": "left",
+            "spacing": "none",
+            "headingLevel": "h4",
+            "paddingTop": "none",
+            "paddingBottom": "none",
+            "marginBottom": "none"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "BE82D2E1-8E45-571E-BC96-D8B2F5E666BA",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "subheading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "children": {
+                  "results": [
+                    {
+                      "id": "B59E50AF-DC5F-5D11-88C8-1E03CE7033FD",
+                      "heading": {
+                        "jsonValue": {
+                          "value": "Connect with a financial professional"
+                        }
+                      },
+                      "subheading": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      },
+                      "body": {
+                        "jsonValue": {
+                          "value": "<p>Finances are personal, so there are no one-size-fits-all strategies. A financial professional will be able to help you determine how to move forward for a successful retirement in your unique situation.</p>\n<p>All of the factors to consider – risk mitigation, tax efficiency, and portfolio allocation – may overwhelm you. You may also wonder about exploring other employment for income, employer-sponsored health insurance, or to delay taking Social Security.</p>\n<p>The guidance of a financial professional will help you adjust for your new reality. They can help with a holistic view of your finances and overall well-being. </p>"
+                        }
+                      },
+                      "image": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "icon": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "iconTheme": {
+                        "jsonValue": {
+                          "value": "primary-brand"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "",
+                            "text": "",
+                            "linktype": "anchor",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "links": {
+                        "targetItems": []
+                      },
+                      "theme": {
+                        "jsonValue": {
+                          "value": "transparent"
+                        }
+                      },
+                      "headingLevel": {
+                        "jsonValue": {
+                          "value": "h4"
+                        }
+                      },
+                      "alphanumeral": {
+                        "jsonValue": {
+                          "value": "2"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+            "sourceHtml": "html/66d7b94a3c744d12.html"
+          }
+        },
+        {
+          "componentName": "AllianzCardGrid",
+          "uid": "E63F689C-57FB-5270-BC0B-712DE0666431",
+          "dataSource": "0B3677EF-8AFA-5C47-8ED9-ED41C76C1FFD",
+          "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:3",
+          "params": {
+            "theme": "transparent",
+            "layout": "stacked",
+            "columns": "1",
+            "alignment": "left",
+            "spacing": "none",
+            "headingLevel": "h4",
+            "paddingTop": "none",
+            "paddingBottom": "none",
+            "marginBottom": "none"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "0B3677EF-8AFA-5C47-8ED9-ED41C76C1FFD",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "subheading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "children": {
+                  "results": [
+                    {
+                      "id": "13DB4920-8C48-5739-A3CA-C651DD481E6A",
+                      "heading": {
+                        "jsonValue": {
+                          "value": "Consider removing some risk from your portfolio"
+                        }
+                      },
+                      "subheading": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      },
+                      "body": {
+                        "jsonValue": {
+                          "value": "<p>While a certain amount of risk in a retirement portfolio is necessary to allow for your savings to grow, you may want to consider removing some of the risk as you approach retirement or if you retire earlier than expected. This doesn’t mean taking risk completely off the table, but rebalancing to make sure you’re not over-invested in financial vehicles that are susceptible to market volatility.</p>\n<p>Adjusting your strategy to mitigate risk could include adding an annuity into your portfolio or moving money into buffered ETFs and other investments that allow for upside potential while limiting potential downside.</p>"
+                        }
+                      },
+                      "image": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "icon": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "iconTheme": {
+                        "jsonValue": {
+                          "value": "primary-brand"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "",
+                            "text": "",
+                            "linktype": "anchor",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "links": {
+                        "targetItems": []
+                      },
+                      "theme": {
+                        "jsonValue": {
+                          "value": "transparent"
+                        }
+                      },
+                      "headingLevel": {
+                        "jsonValue": {
+                          "value": "h4"
+                        }
+                      },
+                      "alphanumeral": {
+                        "jsonValue": {
+                          "value": "3"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+            "sourceHtml": "html/66d7b94a3c744d12.html"
+          }
+        },
+        {
+          "componentName": "AllianzCardGrid",
+          "uid": "A15A76BD-554E-53E8-B9A6-9857AFA9E51B",
+          "dataSource": "7067D4DB-18F5-5E06-8F43-5F4A3DE62E9D",
+          "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:4",
+          "params": {
+            "theme": "green-soft",
+            "layout": "stacked",
+            "columns": "1",
+            "alignment": "center",
+            "spacing": "none",
+            "headingLevel": "h2",
+            "paddingTop": "lg",
+            "paddingBottom": "none",
+            "marginBottom": "lg"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "7067D4DB-18F5-5E06-8F43-5F4A3DE62E9D",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "subheading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "children": {
+                  "results": [
+                    {
+                      "id": "AF9F84B4-CAC6-5F6B-B278-E764219946B5",
+                      "heading": {
+                        "jsonValue": {
+                          "value": "Learn more about the new realities of retirement"
+                        }
+                      },
+                      "subheading": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      },
+                      "body": {
+                        "jsonValue": {
+                          "value": "<p>Our 2023 Annual Retirement Study explores how retirement is changing for Americans.</p>"
+                        }
+                      },
+                      "image": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "icon": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "/allianz-assets/914ac7aa5c383137.svg",
+                            "alt": "Information"
+                          }
+                        }
+                      },
+                      "iconTheme": {
+                        "jsonValue": {
+                          "value": "primary-brand"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "/allianz-assets/276092315dabb182-EXT-0080.pdf",
+                            "text": "Get our study findings (PDF)",
+                            "linktype": "internal",
+                            "target": ""
+                          }
+                        },
+                        "asset": {
+                          "sourceUrl": "https://www.allianzlife.com/-/media/Files/Global/documents/2023/06/02/17/42/EXT-0080.pdf",
+                          "sourcePath": "/-/media/files/global/documents/2023/06/02/17/42/ext-0080.pdf",
+                          "demoSrc": "/allianz-assets/276092315dabb182-EXT-0080.pdf",
+                          "status": "available",
+                          "localPath": "/workspace/scratch/19d699b9a9db/allianz-workspace/discovery/public-site/downloaded-documents/276092315dabb182-EXT-0080.pdf"
+                        }
+                      },
+                      "links": {
+                        "targetItems": [
+                          {
+                            "id": "893A346D-DF4A-557F-971F-2CEF390EB7A4",
+                            "title": {
+                              "jsonValue": {
+                                "value": "Get our study findings (PDF)"
+                              }
+                            },
+                            "link": {
+                              "jsonValue": {
+                                "value": {
+                                  "href": "/allianz-assets/276092315dabb182-EXT-0080.pdf",
+                                  "text": "Get our study findings (PDF)",
+                                  "linktype": "internal",
+                                  "target": ""
+                                }
+                              },
+                              "asset": {
+                                "sourceUrl": "https://www.allianzlife.com/-/media/Files/Global/documents/2023/06/02/17/42/EXT-0080.pdf",
+                                "sourcePath": "/-/media/files/global/documents/2023/06/02/17/42/ext-0080.pdf",
+                                "demoSrc": "/allianz-assets/276092315dabb182-EXT-0080.pdf",
+                                "status": "available",
+                                "localPath": "/workspace/scratch/19d699b9a9db/allianz-workspace/discovery/public-site/downloaded-documents/276092315dabb182-EXT-0080.pdf"
+                              }
+                            },
+                            "children": {
+                              "results": []
+                            }
+                          }
+                        ]
+                      },
+                      "theme": {
+                        "jsonValue": {
+                          "value": "transparent"
+                        }
+                      },
+                      "headingLevel": {
+                        "jsonValue": {
+                          "value": "h2"
+                        }
+                      },
+                      "alphanumeral": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      }
+                    }
+                  ]
+                },
+                "primaryLink": {
+                  "jsonValue": {
+                    "value": {
+                      "href": "/allianz-assets/276092315dabb182-EXT-0080.pdf",
+                      "text": "Get our study findings (PDF)",
+                      "linktype": "internal",
+                      "target": ""
+                    }
+                  },
+                  "asset": {
+                    "sourceUrl": "https://www.allianzlife.com/-/media/Files/Global/documents/2023/06/02/17/42/EXT-0080.pdf",
+                    "sourcePath": "/-/media/files/global/documents/2023/06/02/17/42/ext-0080.pdf",
+                    "demoSrc": "/allianz-assets/276092315dabb182-EXT-0080.pdf",
+                    "status": "available",
+                    "localPath": "/workspace/scratch/19d699b9a9db/allianz-workspace/discovery/public-site/downloaded-documents/276092315dabb182-EXT-0080.pdf"
+                  }
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+            "sourceHtml": "html/66d7b94a3c744d12.html"
+          }
+        },
+        {
+          "componentName": "AllianzRichText",
+          "uid": "260EF343-B0B6-5736-BCE8-8C60E02FC83E",
+          "dataSource": "44C960FA-531E-558E-BA3D-833080448C51",
+          "sourceKey": "/get-answers/how-to-address-financial-risks-of-early-retirement:section:5",
+          "params": {
+            "theme": "grey-muted",
+            "layout": "plain",
+            "columns": "1",
+            "alignment": "left",
+            "spacing": "none",
+            "headingLevel": "h2",
+            "paddingTop": "none",
+            "paddingBottom": "none",
+            "marginBottom": "none"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "44C960FA-531E-558E-BA3D-833080448C51",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "subheading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": "<p>Investing involves risk, including possible loss of principal. There is no guarantee the funds will achieve their investment objectives and may not be suitable for all investors.</p>"
+                  }
+                },
+                "primaryLink": {
+                  "jsonValue": {
+                    "value": {
+                      "href": "",
+                      "text": "",
+                      "linktype": "anchor",
+                      "target": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+            "sourceHtml": "html/66d7b94a3c744d12.html"
+          }
+        }
+      ],
+      "needsReview": false,
+      "sourceShellFamily": "Modern Allianz Life",
+      "sourceBodyId": "page-how-to-address-financial-risks-of-early-retirement",
+      "sourceBodyClasses": [
+        "page-how-to-address-financial-risks-of-early-retirement"
+      ],
+      "assetIssues": [],
+      "sourceHtml": "html/66d7b94a3c744d12.html",
+      "aliases": []
+    },
+    "/what-we-offer": {
+      "path": "/what-we-offer",
+      "title": "What We Offer | Allianz Life",
+      "description": "",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer",
+      "archetype": "Marketing / topic landing",
+      "shellFamily": "modern",
+      "components": [
+        {
+          "componentName": "AllianzBreadcrumbs",
+          "uid": "550479F3-7844-538A-B944-3C3FF22A2E02",
+          "dataSource": "C9DEE62F-F425-52DB-A618-4471391B5B84",
+          "sourceKey": "/what-we-offer:breadcrumbs",
+          "params": {},
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "C9DEE62F-F425-52DB-A618-4471391B5B84",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "primaryNav": {
+                  "targetItems": [
+                    {
+                      "id": "8C9EB8CB-5211-5FE2-AFA1-EA7D01F19E08",
+                      "title": {
+                        "jsonValue": {
+                          "value": "Home"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "/",
+                            "text": "Home",
+                            "linktype": "internal",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "children": {
+                        "results": []
+                      }
+                    },
+                    {
+                      "id": "191425C0-D997-532F-BE98-D6123A40E9A2",
+                      "title": {
+                        "jsonValue": {
+                          "value": "What We Offer"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "/what-we-offer",
+                            "text": "What We Offer",
+                            "linktype": "internal",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "children": {
+                        "results": []
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "componentName": "AllianzHero",
+          "uid": "0B627DAE-6235-5045-B7D0-01538BC83043",
+          "dataSource": "9FB81C40-CB66-5067-8E00-840F3FBF0308",
+          "sourceKey": "/what-we-offer:section:0",
+          "params": {
+            "theme": "transparent",
+            "layout": "home",
+            "columns": "1",
+            "alignment": "center",
+            "spacing": "none",
+            "headingLevel": "h1",
+            "paddingTop": "none",
+            "paddingBottom": "none",
+            "marginBottom": "none",
+            "showLogin": "0"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "9FB81C40-CB66-5067-8E00-840F3FBF0308",
+                "heading": {
+                  "jsonValue": {
+                    "value": "Risk management solutions to help strengthen your financial portfolio"
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "desktopImage": {
+                  "jsonValue": {
+                    "value": {
+                      "src": "/allianz-assets/8753009e74266c83.jpg",
+                      "alt": " "
+                    }
+                  },
+                  "asset": {
+                    "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Hero/Allianz-Life/hero-azl-what-we-offer.jpg",
+                    "demoSrc": "/allianz-assets/8753009e74266c83.jpg",
+                    "status": "available",
+                    "sourcePath": "/-/media/feature/hero/allianz-life/hero-azl-what-we-offer.jpg",
+                    "localPath": "/workspace/scratch/19d699b9a9db/allianz-workspace/discovery/public-site/downloaded-assets/8753009e74266c83.jpg"
+                  }
+                },
+                "mobileImage": {
+                  "jsonValue": {
+                    "value": {
+                      "src": "/allianz-assets/8753009e74266c83.jpg",
+                      "alt": " "
+                    }
+                  },
+                  "asset": {
+                    "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Hero/Allianz-Life/hero-azl-what-we-offer.jpg",
+                    "demoSrc": "/allianz-assets/8753009e74266c83.jpg",
+                    "status": "available",
+                    "sourcePath": "/-/media/feature/hero/allianz-life/hero-azl-what-we-offer.jpg",
+                    "localPath": "/workspace/scratch/19d699b9a9db/allianz-workspace/discovery/public-site/downloaded-assets/8753009e74266c83.jpg",
+                    "observations": [
+                      {
+                        "url": "https://www.allianzlife.com/-/media/Feature/Hero/Allianz-Life/hero-azl-what-we-offer.jpg?w=2368&hash=BFDBB81AAE56C44C48B94DEC4085CF93",
+                        "method": "GET",
+                        "status": 200,
+                        "evidence": "asset_download_manifest.json"
+                      }
+                    ],
+                    "availability": "captured",
+                    "kind": "raster"
+                  }
+                },
+                "primaryLink": {
+                  "jsonValue": {
+                    "value": {
+                      "href": "",
+                      "text": "",
+                      "linktype": "anchor",
+                      "target": ""
+                    }
+                  }
+                },
+                "secondaryLink": {
+                  "jsonValue": {
+                    "value": {
+                      "href": "",
+                      "text": "",
+                      "linktype": "anchor",
+                      "target": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/what-we-offer",
+            "sourceHtml": "html/d8662c93450689a8.html"
+          }
+        },
+        {
+          "componentName": "AllianzCardGrid",
+          "uid": "D2D9D149-761C-58F2-B3AB-2C4F107F3A5D",
+          "dataSource": "8AAD2355-714B-5DCE-9895-2BE8E3B1A745",
+          "sourceKey": "/what-we-offer:section:1",
+          "params": {
+            "theme": "transparent",
+            "layout": "stacked",
+            "columns": "2",
+            "alignment": "left",
+            "spacing": "none",
+            "headingLevel": "h2",
+            "paddingTop": "xl",
+            "paddingBottom": "none",
+            "marginBottom": "none"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "8AAD2355-714B-5DCE-9895-2BE8E3B1A745",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "subheading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "children": {
+                  "results": [
+                    {
+                      "id": "BCD47AD3-2BA0-5453-8788-FE61D4A8E327",
+                      "heading": {
+                        "jsonValue": {
+                          "value": "Annuities"
+                        }
+                      },
+                      "subheading": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      },
+                      "body": {
+                        "jsonValue": {
+                          "value": "<p>Allianz® annuities can help meet your retirement goals by offering different levels of protection,<sup>1</sup> opportunities for growth, and options for lifetime income.</p>"
+                        }
+                      },
+                      "image": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "/allianz-assets/a6c1b5ef2d0ea5df.jpg",
+                            "alt": "camping"
+                          }
+                        },
+                        "asset": {
+                          "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-camping.jpg",
+                          "demoSrc": "/allianz-assets/a6c1b5ef2d0ea5df.jpg",
+                          "status": "available",
+                          "sourcePath": "/-/media/feature/tile/allianz-life/tile-azl-camping.jpg",
+                          "localPath": "/workspace/scratch/19d699b9a9db/allianz-workspace/discovery/public-site/downloaded-assets/a6c1b5ef2d0ea5df.jpg",
+                          "observations": [
+                            {
+                              "url": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-camping.jpg?w=1088&hash=0D641E1EC3D345CEF7BB44B9DDDBB6E3",
+                              "method": "GET",
+                              "status": 200,
+                              "evidence": "asset_download_manifest.json"
+                            }
+                          ],
+                          "availability": "captured",
+                          "kind": "raster"
+                        }
+                      },
+                      "icon": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "iconTheme": {
+                        "jsonValue": {
+                          "value": "transparent"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "/what-we-offer/annuities",
+                            "text": "Learn more about which annuity might be right for you",
+                            "linktype": "internal",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "links": {
+                        "targetItems": [
+                          {
+                            "id": "0BE87BF9-FFB4-5DE5-AC66-BDC227170CC3",
+                            "title": {
+                              "jsonValue": {
+                                "value": "Learn more about which annuity might be right for you"
+                              }
+                            },
+                            "link": {
+                              "jsonValue": {
+                                "value": {
+                                  "href": "/what-we-offer/annuities",
+                                  "text": "Learn more about which annuity might be right for you",
+                                  "linktype": "internal",
+                                  "target": ""
+                                }
+                              }
+                            },
+                            "children": {
+                              "results": []
+                            }
+                          }
+                        ]
+                      },
+                      "theme": {
+                        "jsonValue": {
+                          "value": "grey-soft"
+                        }
+                      },
+                      "headingLevel": {
+                        "jsonValue": {
+                          "value": "h2"
+                        }
+                      },
+                      "alphanumeral": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      }
+                    },
+                    {
+                      "id": "E75989B9-7530-5223-9B07-2B749E43DCE7",
+                      "heading": {
+                        "jsonValue": {
+                          "value": "Life Insurance"
+                        }
+                      },
+                      "subheading": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      },
+                      "body": {
+                        "jsonValue": {
+                          "value": "<p>Allianz® indexed universal life insurance (IUL) can provide protection for your family, estate, or business’s financial well-being via a death benefit,<sup>2</sup> while also offering the flexibility to access available cash value<sup>3</sup> when you may need it most.</p>"
+                        }
+                      },
+                      "image": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "/allianz-assets/f00f761d3a53074e.jpg",
+                            "alt": ""
+                          }
+                        },
+                        "asset": {
+                          "sourceUrl": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-what-we-offer-life-insurance-1.jpg",
+                          "demoSrc": "/allianz-assets/f00f761d3a53074e.jpg",
+                          "status": "available",
+                          "sourcePath": "/-/media/feature/tile/allianz-life/tile-azl-what-we-offer-life-insurance-1.jpg",
+                          "localPath": "/workspace/scratch/19d699b9a9db/allianz-workspace/discovery/public-site/downloaded-assets/f00f761d3a53074e.jpg",
+                          "observations": [
+                            {
+                              "url": "https://www.allianzlife.com/-/media/Feature/Tile/Allianz-Life/tile-azl-what-we-offer-life-insurance-1.jpg?w=1088&hash=935144A62C7A0F7579BD7628A703A4E7",
+                              "method": "GET",
+                              "status": 200,
+                              "evidence": "asset_download_manifest.json"
+                            }
+                          ],
+                          "availability": "captured",
+                          "kind": "raster"
+                        }
+                      },
+                      "icon": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "iconTheme": {
+                        "jsonValue": {
+                          "value": "transparent"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "/what-we-offer/life-insurance",
+                            "text": "See the unique benefits of IUL",
+                            "linktype": "internal",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "links": {
+                        "targetItems": [
+                          {
+                            "id": "C732DF05-AAEE-541F-BAFD-728EFE7CDF34",
+                            "title": {
+                              "jsonValue": {
+                                "value": "See the unique benefits of IUL"
+                              }
+                            },
+                            "link": {
+                              "jsonValue": {
+                                "value": {
+                                  "href": "/what-we-offer/life-insurance",
+                                  "text": "See the unique benefits of IUL",
+                                  "linktype": "internal",
+                                  "target": ""
+                                }
+                              }
+                            },
+                            "children": {
+                              "results": []
+                            }
+                          }
+                        ]
+                      },
+                      "theme": {
+                        "jsonValue": {
+                          "value": "grey-soft"
+                        }
+                      },
+                      "headingLevel": {
+                        "jsonValue": {
+                          "value": "h2"
+                        }
+                      },
+                      "alphanumeral": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/what-we-offer",
+            "sourceHtml": "html/d8662c93450689a8.html"
+          }
+        },
+        {
+          "componentName": "AllianzCardGrid",
+          "uid": "6CCFF0BF-84E0-5866-BB05-2B65DF7AAD60",
+          "dataSource": "E0517E24-802D-5006-91ED-25A907296B45",
+          "sourceKey": "/what-we-offer:section:2",
+          "params": {
+            "theme": "green-soft",
+            "layout": "stacked",
+            "columns": "1",
+            "alignment": "center",
+            "spacing": "none",
+            "headingLevel": "h2",
+            "paddingTop": "lg",
+            "paddingBottom": "none",
+            "marginBottom": "lg"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "E0517E24-802D-5006-91ED-25A907296B45",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "subheading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "children": {
+                  "results": [
+                    {
+                      "id": "8D41759E-316B-59E1-A5F8-F1FBF209C4B6",
+                      "heading": {
+                        "jsonValue": {
+                          "value": "Ask your financial professional how our risk management solutions can complement your financial strategy"
+                        }
+                      },
+                      "subheading": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      },
+                      "body": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      },
+                      "image": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "",
+                            "alt": ""
+                          }
+                        }
+                      },
+                      "icon": {
+                        "jsonValue": {
+                          "value": {
+                            "src": "/allianz-assets/ef3ad8546edb439a.svg",
+                            "alt": "Question"
+                          }
+                        }
+                      },
+                      "iconTheme": {
+                        "jsonValue": {
+                          "value": "primary-brand"
+                        }
+                      },
+                      "link": {
+                        "jsonValue": {
+                          "value": {
+                            "href": "",
+                            "text": "",
+                            "linktype": "anchor",
+                            "target": ""
+                          }
+                        }
+                      },
+                      "links": {
+                        "targetItems": []
+                      },
+                      "theme": {
+                        "jsonValue": {
+                          "value": "transparent"
+                        }
+                      },
+                      "headingLevel": {
+                        "jsonValue": {
+                          "value": "h2"
+                        }
+                      },
+                      "alphanumeral": {
+                        "jsonValue": {
+                          "value": ""
+                        }
+                      }
+                    }
+                  ]
+                },
+                "primaryLink": {
+                  "jsonValue": {
+                    "value": {
+                      "href": "",
+                      "text": "",
+                      "linktype": "anchor",
+                      "target": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/what-we-offer",
+            "sourceHtml": "html/d8662c93450689a8.html"
+          }
+        },
+        {
+          "componentName": "AllianzRichText",
+          "uid": "4AD99349-C46B-5374-97ED-8C3F7F76EA13",
+          "dataSource": "9CC1B3DB-1087-5E75-B379-65FE8C2C71A0",
+          "sourceKey": "/what-we-offer:section:3",
+          "params": {
+            "theme": "grey-muted",
+            "layout": "plain",
+            "columns": "1",
+            "alignment": "left",
+            "spacing": "none",
+            "headingLevel": "h2",
+            "paddingTop": "none",
+            "paddingBottom": "none",
+            "marginBottom": "none"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "9CC1B3DB-1087-5E75-B379-65FE8C2C71A0",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "subheading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": "<p><sup>1 </sup>A level of protection may be provided by benefits that are either built into the contract or through optional riders at an additional cost.</p>\n<p><sup>2 </sup>The death benefit is generally income-tax-free when left to beneficiaries.</p>\n<p><sup>3 </sup>Policy loans and withdrawals will reduce the available cash value and death benefit and may cause the policy to lapse, or affect guarantees against lapse. Withdrawals in excess of premiums paid will be subject to ordinary income tax. Additional premium payments may be required to keep the policy in force. In the event of a lapse, outstanding policy loans in excess of unrecovered cost basis will be subject to ordinary income tax. If a policy is a modified endowment contract (MEC), policy loans and withdrawals will be taxable as ordinary income to the extent there are earnings in the policy. If any of these features are exercised prior to age 59½ on a MEC, a 10% federal additional tax may be imposed. Tax laws are subject to change, and you should consult a tax professional.</p>\n<hr>"
+                  }
+                },
+                "primaryLink": {
+                  "jsonValue": {
+                    "value": {
+                      "href": "",
+                      "text": "",
+                      "linktype": "anchor",
+                      "target": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/what-we-offer",
+            "sourceHtml": "html/d8662c93450689a8.html"
+          }
+        },
+        {
+          "componentName": "AllianzRichText",
+          "uid": "FB3D00A7-7861-58AC-A7BC-F1BFE4F093BA",
+          "dataSource": "AD1DB370-5837-5496-8909-54ADFBF839E0",
+          "sourceKey": "/what-we-offer:section:4",
+          "params": {
+            "theme": "grey-muted",
+            "layout": "disclosures",
+            "columns": "1",
+            "alignment": "left",
+            "spacing": "none",
+            "headingLevel": "h2",
+            "paddingTop": "none",
+            "paddingBottom": "none",
+            "marginBottom": "none"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "id": "AD1DB370-5837-5496-8909-54ADFBF839E0",
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": "<p>Guarantees are backed by the financial strength and claims-paying ability of the issuing insurance company. Variable annuity guarantees do not apply to the performance of the variable subaccounts, which will fluctuate with market conditions.</p>\n<p class=\"box\">• Not FDIC insured • May lose value • No bank or credit union guarantee • Not a deposit • Not insured by any federal government agency or NCUA/NCUSIF</p><p>Products are issued by Allianz Life Insurance Company of North America. Registered index-linked annuities (RILAs) are distributed by its affiliate,  Allianz Life Financial Services, LLC, <a href=\"#demo-unavailable\" data-demo-disabled=\"true\" title=\"This service is unavailable\">member FINRA</a>, 5701 Golden Hills Drive, Minneapolis, MN 55416-1297. <a href=\"#demo-unavailable\" data-demo-disabled=\"true\" title=\"This service is unavailable\">800.542.5427</a> <a href=\"/\">www.allianzlife.com</a></p><p>This content does not apply in the state of New York.</p>\n<p>Product and feature availability may vary by state and broker/dealer.</p>\n<p>Withdrawals will reduce the contract value and the value of any potential protection benefits. Withdrawals taken within the contract withdrawal charge schedule will be subject to a withdrawal charge. All withdrawals are subject to ordinary income tax and, if taken prior to age 59½, may be subject to a 10% federal additional tax.</p><p>Product and feature availability may vary by state, broker/dealer, and registered investment adviser.</p>"
+                  }
+                }
+              }
+            }
+          },
+          "provenance": {
+            "sourceUrl": "https://www.allianzlife.com/what-we-offer",
+            "sourceHtml": "html/d8662c93450689a8.html"
+          }
+        }
+      ],
+      "needsReview": false,
+      "sourceShellFamily": "Modern Allianz Life",
+      "sourceBodyId": "page-what-we-offer",
+      "sourceBodyClasses": [
+        "page-what-we-offer"
+      ],
+      "assetIssues": [],
+      "sourceHtml": "html/d8662c93450689a8.html",
+      "aliases": []
+    }
+  }
+}

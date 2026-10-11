@@ -197,11 +197,15 @@ function harness({ records = dataset(), variant = 'normal', language = 'en-GB', 
     originalMap, runtimeUid, records, get dynamicLoads() { return dynamicLoads; } };
 }
 
-test('actual page options inject exactly the verified four-key model through SDK composition', async () => {
+test('actual page options compose the verified Portfolio and Team bindings through the SDK', async () => {
   const h = harness(), rendered = await h.render();
   assert.equal(h.page.revalidate, 60);
   assert.deepEqual(h.enrichments[0].options.investmentPortfolioBindings, bindings);
-  assert.deepEqual(Object.keys(h.enrichments[0].options).sort(), ['fetchOptions', 'getData', 'investmentPortfolioBindings']);
+  assert.deepEqual(Object.keys(h.enrichments[0].options).sort(), ['fetchOptions', 'getData', 'investmentPortfolioBindings', 'venturesTeamBindings']);
+  assert.deepEqual(h.enrichments[0].options.venturesTeamBindings, {
+    datasourceTemplateId: '22b14dac-84ad-4d93-83ef-4aa5a958e554',
+    listingTemplateId: '957b8746-e591-4140-b021-beeb040bc053',
+  });
   assert.equal(h.enrichments[0].components, h.originalMap);
   assert.equal(h.originalMap.get('InvestmentPortfolio').getComponentServerProps, undefined);
   assert.notEqual(h.componentReads[0].components, h.originalMap);

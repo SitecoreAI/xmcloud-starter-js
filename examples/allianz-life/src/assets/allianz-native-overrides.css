@@ -95,11 +95,12 @@
   margin: 0;
   line-height: 1;
 }
-/* The original editable Image field supplies the alpha shape. Visitor masks
- * reproduce inline source SVG fill exactly without modifying media bytes. */
+/* The authored Image field supplies the alpha shape. Visitor masks and native
+ * image filters reproduce source SVG colors without modifying media bytes. */
 .allianz-modern .allianz-field-icon {
   display: inline-block;
   background-color: #005074;
+  color: #005074;
   vertical-align: middle;
   mask-mode: alpha;
   mask-repeat: no-repeat;
@@ -119,12 +120,15 @@
 .allianz-modern .O-azl-header .m-navigationUtility .a-link:active .allianz-field-icon,
 .allianz-modern .O-azl-header .m-navigationUtility .a-link:visited .allianz-field-icon {
   background-color: #8a679c;
+  color: #8a679c;
 }
 .allianz-modern .O-azl-header .m-navigationUtility .a-link:hover .allianz-field-icon {
   background-color: #06c;
+  color: #06c;
 }
 .allianz-modern .O-azl-header .m-navigationUtility .a-link:focus-visible .allianz-field-icon {
   background-color: #fff !important;
+  color: #fff !important;
 }
 .allianz-modern .m-footer__social-link .a-icon > .allianz-field-icon {
   width: 1.25rem;
@@ -132,13 +136,35 @@
 }
 .allianz-modern .m-footer__social-link:visited .allianz-field-icon {
   background-color: #006192;
+  color: #006192;
 }
 .allianz-modern .m-footer__social-link:hover .allianz-field-icon {
   background-color: #06c;
+  color: #06c;
 }
 .allianz-modern .m-footer__social-link:active .allianz-field-icon,
 .allianz-modern .m-footer__social-link:focus .allianz-field-icon {
   background-color: #6d3484;
+  color: #6d3484;
+}
+
+/* Ordinary native SVG images need no CORS grant. The local SourceAlpha filter
+ * follows the same inherited interaction color as the source inline vectors. */
+.allianz-modern .allianz-field-icon--native {
+  position: relative;
+  background-color: transparent !important;
+}
+.allianz-modern .allianz-field-icon--native > .allianz-field-icon__filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.allianz-modern .allianz-field-icon--native > .allianz-field-icon__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* SDK editing markers follow the final anchor, so :last-child cannot identify
@@ -148,6 +174,29 @@
 }
 
 @media (max-width: 703px) {
+  /* The absolute source curtain panel can shrink to its social row's 332px
+   * intrinsic width. Cap it at the footer without changing link targets. */
+  .allianz-modern .c-footer .c-footer__container--curtain-panel {
+    max-width: 100%;
+  }
+  /* Fit the source 300px rows inside the service padding when a scrollbar
+   * narrows a small viewport. Keep equal social targets and centered icons. */
+  .allianz-modern .c-footer .c-footer__copyright {
+    max-width: 100%;
+  }
+  .allianz-modern .c-footer .m-footer__social {
+    max-width: 100%;
+  }
+  .allianz-modern .c-footer .m-footer__social-link {
+    flex: 0 1 60px;
+    width: 60px;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   /* Recovered Search has zero margin below 992px. The adapter's 16px right
    * margin adds a gap before the source hamburger that the original lacks. */
   .allianz-modern .O-azl-header .allianz-header-search {

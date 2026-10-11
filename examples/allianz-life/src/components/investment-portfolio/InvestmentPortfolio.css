@@ -1,5 +1,25 @@
-/* Source l-grid__row wraps automatically; medium-3 is four columns from 704px,
-   with full-width cards below 704px. Content has no authored row boundaries. */
+/* Cards wrap automatically with no authored row boundaries. Preserve one column
+   below 704px and four from 992px; two tablet columns keep source text readable. */
 .investment-portfolio__items > .l-grid__column-medium-3 { display: flex; }
 .investment-portfolio__items .m-axlTile { width: 100%; }
-.investment-portfolio .tileImage picture .c-image__img { max-width: 100%; height: auto; }
+@media (min-width: 704px) and (max-width: 991px) {
+  .investment-portfolio .investment-portfolio__items > .l-grid__column-medium-3,
+  .allianz-legacy .mfe .investment-portfolio__items > .l-grid__column-medium-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+/* Override legacy teaser sizing so native Image dimensions cannot crop logos. */
+.investment-portfolio .tileImage picture,
+.allianz-legacy .mfe .investment-portfolio .m-axlTile .tileImage picture { height: auto; }
+.investment-portfolio .tileImage picture .c-image__img,
+.allianz-legacy .mfe .investment-portfolio .m-axlTile .tileImage picture .c-image__img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+/* Keep long company text within narrow four-column cards. */
+.investment-portfolio .tileHeading h3,
+.investment-portfolio .tileBody,
+.investment-portfolio .a-link__text { overflow-wrap: anywhere; }

@@ -1,0 +1,239 @@
+{
+  "schema": "allianz.approved-source-external-links.v1",
+  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute.",
+  "sourcePins": [
+    {
+      "path": "preparation/resources-exact-scope-v8/PDF-EXTERNAL-EXACT-FIELD-CANDIDATE.json",
+      "sha256": "b1b2a2e52ca7fdafcabcad1ec9e4b8c147043a63c56e57de988d6678dc1e5723"
+    },
+    {
+      "path": "src/lib/resource-next-steps-source.fixture.json",
+      "sha256": "fa2c03dda1d41481ef136a9f1100b9592442df16b7c0480a11d2896d7fce38c6"
+    },
+    {
+      "path": "src/lib/income-layout-source.fixture.json",
+      "sha256": "e4f9919f470636e5e9b10950a955b5a5358ee4ce1f38176940c9a35c67d1106c"
+    },
+    {
+      "path": "preparation/resources-layout-preparation-v4/SOURCE-NONPDF-BINDINGS.json",
+      "sha256": "774380aa5c87d488ed25221a28ba0e297642d4955a433f7518994c7f192fc996",
+      "jsonPointer": "/bindings/4/sourceLink/absoluteSourceUrl"
+    },
+    {
+      "url": "https://www.allianzlife.com/why-allianz/sustainability",
+      "httpStatus": 200,
+      "capturedAtUtc": "2026-10-09T15:25:13Z",
+      "responseBytes": 94383,
+      "sourceHtmlSha256": "0743908b7a1302be9ea34ed1bf440a79b648f7f60f5cb9657786dc33665c68f1",
+      "sourceRoute": "/why-allianz/sustainability",
+      "evidence": "Existing preparation/sustainability-breadth-v1/candidate/BINDINGS.template.json sourceMarkupReceipt; exact public source href/target witness"
+    },
+    {
+      "url": "https://www.allianzlife.com/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "httpStatus": 200,
+      "capturedAtUtc": "2026-10-09T17:00:24+00:00",
+      "responseBytes": 74029,
+      "sourceHtmlSha256": "65bd0c1f502d2aeae70a92cd4d76cc00e83d8679e9ffa5b485851e21bcc5b0de",
+      "sourceRoute": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "sourceRouteSha256": "6b749d74fa8ee24f13078a04bd844a87ee06f5012dff02420e2df0fc4a02cc32",
+      "sourceRouteHashEncoding": "UTF-8 JSON sort_keys=True separators=(comma,colon), ensure_ascii=False",
+      "evidence": "preparation/two-section-breadth-v1/layout/early-retirement.current-source.html; exact public PDF href, target=_blank, aria-label=Get our study findings (PDF)"
+    },
+    {
+      "path": "preparation/accumulator-final-qa-v1/implementation/NATIVE-PRODUCT-NAVIGATION-PLAN.json",
+      "sha256": "48f3294ff0d134282636d85496f0ec10934717b35c066dff3b00bea284f9372d"
+    },
+    {
+      "path": "preparation/accumulator-tools-final-qa-v1/source/SOURCE-CONTENT-LAYOUT.json",
+      "sha256": "c7f01de66ec0ef148ef3cace21b001948effe4549447106a9366c3dde9541133",
+      "jsonPointers": [
+        "/resourceCardGroups/0/cards/0/link/absoluteHref",
+        "/resourceCardGroups/0/cards/1/link/absoluteHref",
+        "/resourceCardGroups/1/cards/2/link/absoluteHref",
+        "/resourceCardGroups/2/cards/0/link/absoluteHref"
+      ]
+    },
+    {
+      "path": "preparation/life-insurance-ancestor-final-qa-v1/source/SOURCE-CONTENT-LAYOUT.json",
+      "sha256": "f6fc9265d3569e6c418f67b2ad54f5377fdd32949455b6e336d46e3620ae3eb2",
+      "jsonPointer": "/benefitTiles/cards/2/links/0/absoluteHref"
+    },
+    {
+      "path": "preparation/life-insurance-ancestor-final-qa-v1/native-final/life-insurance-native-checkpoint-links-20261011.json",
+      "sha256": "c15536e72b260c651f6fad15a8668398daaa5d50ec6c17623d263e14db8de290",
+      "evidence": "Materialized final v2 native receipt preserves the Opportunity to earn interest body at F8B29DD0-DFB4-4349-82E0-3F0AF49DD221. Parent-confirmed actual normal-SDK/native200 and accepted body-link decision retain this exact source absolute URL."
+    }
+  ],
+  "entries": [
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2025/11/21/14/54/LIA-381.pdf",
+      "sourceRecordKey": "insights-grid-card-01"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/19/17/49/LIA-470.pdf",
+      "sourceRecordKey": "insights-grid-card-02"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2024/05/29/13/56/LIA-203.pdf",
+      "sourceRecordKey": "insights-grid-card-03"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Allianz/Documents/LIA-166.pdf",
+      "sourceRecordKey": "insights-grid-card-04"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2024/01/25/19/00/LIA-161.pdf",
+      "sourceRecordKey": "insights-grid-card-05"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/10/27/15/05/LIA-008.pdf",
+      "sourceRecordKey": "insights-grid-card-06"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/10/27/15/05/LIA-018.pdf",
+      "sourceRecordKey": "insights-grid-card-07"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/07/14/18/52/LIA-001.pdf",
+      "sourceRecordKey": "product-grid-card-01"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2022/08/24/13/06/LIA-047.pdf",
+      "sourceRecordKey": "product-grid-card-02"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2024/12/20/09/40/LIA-296.pdf",
+      "sourceRecordKey": "product-grid-card-03"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2022/05/20/02/10/LIA-027.pdf",
+      "sourceRecordKey": "product-grid-card-04"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2024/12/20/19/33/LIA-292.pdf",
+      "sourceRecordKey": "product-grid-card-05"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2022/03/16/14/18/LIA-002-R04.pdf",
+      "sourceRecordKey": "product-grid-card-06"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2022/03/24/13/15/LIA-003.pdf",
+      "sourceRecordKey": "product-grid-card-07"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2022/08/17/12/48/LIA-035.pdf",
+      "sourceRecordKey": "product-grid-card-08"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2022/12/16/14/36/LIA-046.pdf",
+      "sourceRecordKey": "product-grid-card-09"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2022/12/16/14/37/LIA-034.pdf",
+      "sourceRecordKey": "product-grid-card-10"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/how-the-product-works",
+      "sourceRecordKey": "next-step-link-2"
+    },
+    {
+      "kind": "source-contact",
+      "url": "https://lp.allianzlife.com/EMContactUS.html?utm_source=website&utm_medium=webpage&utm_campaign=contactus_submit&utm_content=em_resources",
+      "sourceRecordKey": "next-step-link-3"
+    },
+    {
+      "kind": "source-contact",
+      "url": "https://lp.allianzlife.com/EMContactUS.html?utm_source=website&utm_medium=webpage&utm_campaign=contactus_submit&utm_content=jannik_sinner",
+      "sourceRecordKey": "section-5-card-1"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Allianz/PDFs/community-impact-report-overview.pdf",
+      "sourceRecordKey": "sustainability-results-primaryLink"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Allianz/PDFs/EXT-1120.pdf",
+      "sourceRecordKey": "sustainability-responsible-investments"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianz.com/en/sustainability/sustainability-hub/sustainability-at-allianz/climate-change.html",
+      "sourceRecordKey": "sustainability-climate"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianz.com/en/sustainability.html",
+      "sourceRecordKey": "sustainability-global"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2023/06/02/17/42/EXT-0080.pdf",
+      "sourceRecordKey": "early-retirement-study-findings-pdf"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life",
+      "sourceRecordKey": "accumulator-product-navigation-product-title"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/frequently-asked-questions",
+      "sourceRecordKey": "accumulator-product-navigation-faq"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/tools-and-resources",
+      "sourceRecordKey": "accumulator-product-navigation-tools-and-resources"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/Rates",
+      "sourceRecordKey": "accumulator-product-navigation-rates"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/Life-Insurance/Calculator",
+      "sourceRecordKey": "accumulator-tools-card-1"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+      "sourceRecordKey": "accumulator-tools-card-2"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/Life-Insurance/strategies-for-business-owners",
+      "sourceRecordKey": "accumulator-tools-card-5"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/Life-Insurance/The-underwriting-process",
+      "sourceRecordKey": "accumulator-tools-card-8"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/Index-options",
+      "sourceRecordKey": "life-insurance-overview-benefit-external-index"
+    }
+  ]
+}

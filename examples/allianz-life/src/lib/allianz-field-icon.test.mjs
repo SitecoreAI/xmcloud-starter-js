@@ -1,4 +1,4 @@
-/** Offline real-SDK render checks; mask pixels still require browser rechecking. */
+/** Offline real-SDK render checks; mask and native filter pixels need browser QA. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import Module, { createRequire } from 'node:module';
@@ -115,12 +115,16 @@ test('all seven observed native icon paths retain runtime query values without b
   ]) assert.equal(iconImageSource(source), '');
 });
 
-test('native visitor masks preserve field identity while editing still uses original SDK Image metadata', () => {
+test('native visitor images preserve signed URLs without CSS masks or CORS mode while editor metadata stays unchanged', () => {
   const source = `${nativeOrigin}${nativeRoot}${nativeNames[0]}?hash=synthetic%22value`;
   const field = editableField('native-media-icon', { src: source, alt: 'Contact' });
   const html = decode(render(AllianzFieldIcon, { field, decorative: true }));
-  assert.ok(html.includes(`mask-image:url("${source}")`));
+  assert.ok(html.includes(`src="${source}"`));
+  assert.match(html, /class="allianz-field-icon allianz-field-icon--native"/);
+  assert.match(html, /<feFlood flood-color="currentColor"/);
+  assert.match(html, /<feComposite in2="SourceAlpha" operator="in"/);
   assert.match(html, /aria-hidden="true"/);
+  assert.doesNotMatch(html, /mask-image|crossorigin|jssmedia|<script/);
   const editor = decode(render(AllianzFieldIcon, { field }, true));
   assert.match(editor, /<img/);
   assert.match(editor, /"fieldId":"native-media-icon"/);
@@ -242,4 +246,59 @@ test('cleared Header/Footer icon fields remain editable through their actual com
     assert.ok(editing.includes(`"fieldId":"${id}"`));
     assert.doesNotMatch(editing, /allianz-field-icon|mask-image/);
   }
+});
+
+
+test('all seven native paths use real SDK images with exact sources and unique stable local filter references', () => {
+  const fields = nativeNames.map((name, index) => editableField(`native-svg-${index}`, {
+    src: `${nativeOrigin}${nativeRoot}${name}?iar=0&ttc=fixture&tt=fixture&hash=synthetic-test`, alt: `Native ${index}`,
+  }));
+  const Group = () => React.createElement('div', {}, fields.flatMap((field, index) => [
+    React.createElement(AllianzFieldIcon, { field, key: `${index}-first` }),
+    React.createElement(AllianzFieldIcon, { field, decorative: true, key: `${index}-second` }),
+  ]));
+  const before = JSON.stringify(fields);
+  const html = decode(render(Group));
+  const ids = [...html.matchAll(/<filter id="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(ids.length, 14);
+  assert.equal(new Set(ids).size, 14, 'two occurrences per path must not share filter IDs');
+  const references = [...html.matchAll(/filter:url\("#([^"]+)"\)/g)].map((match) => match[1]);
+  assert.deepEqual(references, ids, 'every SDK image refers only to its own local filter');
+  assert.equal(decode(render(Group)), html, 'server render IDs remain stable for an unchanged tree');
+  for (const field of fields) {
+    assert.equal(html.split(`src="${field.value.src}"`).length - 1, 2);
+    assert.ok(html.includes(`role="img" aria-label="${field.value.alt}"`));
+    const editing = decode(render(AllianzFieldIcon, { field }, true));
+    assert.ok(editing.includes(`"fieldId":"${field.metadata.fieldId}"`));
+    assert.doesNotMatch(editing, /<filter|allianz-field-icon|mask-image/);
+  }
+  assert.equal(JSON.stringify(fields), before);
+  assert.doesNotMatch(html, /mask-image|crossorigin|jssmedia|<script/);
+});
+
+test('native Header and Footer use seven SDK images and keep responsive logos and social names', () => {
+  const headerProps = structuredClone(native.shared.header);
+  const footerProps = structuredClone(native.shared.footer);
+  const rows = [...headerProps.fields.data.datasource.utilityNav.targetItems,
+    ...footerProps.fields.data.datasource.socialNav.targetItems];
+  for (const [index, item] of rows.entries()) {
+    item.icon.jsonValue.value.src = `${nativeOrigin}${nativeRoot}${nativeNames[index]}?hash=synthetic-test`;
+  }
+  const before = JSON.stringify([headerProps, footerProps]);
+  const header = decode(render(Header, { ...headerProps, params: {} }));
+  const footer = decode(render(Footer, { ...footerProps, params: {} }));
+  assert.equal((header.match(/class="allianz-field-icon__image"/g) || []).length, 2);
+  assert.equal((footer.match(/class="allianz-field-icon__image"/g) || []).length, 5);
+  assert.equal(((header + footer).match(/class="allianz-field-icon allianz-field-icon--native" aria-hidden="true"/g) || []).length, 7);
+  for (const item of headerProps.fields.data.datasource.utilityNav.targetItems) {
+    assert.ok(header.includes(`<span class="a-link__text">${item.title.jsonValue.value}</span>`));
+  }
+  for (const item of rows) assert.ok((header + footer).includes(`src="${item.icon.jsonValue.value.src}"`));
+  for (const item of footerProps.fields.data.datasource.socialNav.targetItems) {
+    assert.ok(footer.includes(`aria-label="${item.title?.jsonValue?.value || item.icon.jsonValue.value.alt || item.link.jsonValue.value.text}"`));
+  }
+  const logo = native.shared.header.fields.data.datasource.logo.jsonValue.value.src;
+  assert.equal((header.match(new RegExp(`<img[^>]*src="${logo}"`, 'g')) || []).length, 2);
+  assert.equal(JSON.stringify([headerProps, footerProps]), before);
+  assert.doesNotMatch(header + footer, /mask-image|crossorigin|jssmedia/);
 });

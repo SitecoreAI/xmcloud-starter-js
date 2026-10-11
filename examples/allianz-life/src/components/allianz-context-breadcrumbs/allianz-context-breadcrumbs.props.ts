@@ -6,6 +6,7 @@ export interface ContextBreadcrumbItem {
   path?: string;
   navigationTitle?: { jsonValue?: Field<string> };
   title?: { jsonValue?: Field<string> };
+  navigationFilter?: { jsonValue?: unknown } | null;
   displayName?: string | null;
   name?: string | null;
   url?: { path?: string };
@@ -25,9 +26,26 @@ export type AllianzContextBreadcrumbsProps = Omit<ComponentProps, 'params'> & {
 const allianzHomePath = '/sitecore/content/allianz/allianz-life/Home';
 const normalizedPath = (value: string) => value.replace(/\/+$/, '').toLowerCase();
 
+// Verified native Breadcrumb Navigation filter identity, independent of page names.
+const breadcrumbNavigationFilterId = 'e0a2a02709324878a7d60416d5263efb';
+function excludedFromBreadcrumbs(item: ContextBreadcrumbItem): boolean | undefined {
+  // Older context payloads did not project this field.
+  if (item.navigationFilter === undefined) return false;
+  const selections = item.navigationFilter?.jsonValue;
+  if (!Array.isArray(selections)) return undefined;
+  let excluded = false;
+  for (const selection of selections) {
+    if (!selection || typeof selection !== 'object' || Array.isArray(selection) ||
+      typeof selection.id !== 'string' ||
+      !/^(?:[a-f\d]{32}|[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}|\{[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}\})$/i.test(selection.id)) return undefined;
+    if (selection.id.replace(/[{}-]/g, '').toLowerCase() === breadcrumbNavigationFilterId) excluded = true;
+  }
+  return excluded;
+}
+
 export interface ContextBreadcrumbTrail {
   items: ContextBreadcrumbItem[];
-  issue?: 'missing-context' | 'outside-site' | 'incomplete-chain' | 'missing-title' | 'invalid-url';
+  issue?: 'missing-context' | 'outside-site' | 'incomplete-chain' | 'missing-title' | 'invalid-url' | 'invalid-navigation-filter';
 }
 
 /** Resolve native labels without rewriting the owning field or its metadata. */
@@ -79,5 +97,9 @@ export function contextBreadcrumbTrail(contextItem?: ContextBreadcrumbPage | nul
     }
     if (/^\/(?:api|sitecore|login|account|portal)(?:\/|$)/i.test(pathname)) return failed('invalid-url');
   }
-  return { items };
+  // Validate the full native chain before applying its display exclusions.
+  const exclusions = items.map(excludedFromBreadcrumbs);
+  if (exclusions.some((excluded) => excluded === undefined)) return failed('invalid-navigation-filter');
+  return { items: items.filter((item, index) => item === contextItem ||
+    normalizedPath(item.path!) === home || !exclusions[index]) };
 }

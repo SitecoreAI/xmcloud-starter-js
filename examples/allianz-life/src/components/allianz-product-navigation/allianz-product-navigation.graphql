@@ -1,0 +1,20 @@
+# Existing AllianzBreadcrumbs primaryNav and AllianzNavigationLink field GUIDs.
+query AllianzProductNavigationQuery(
+  $datasource: String!
+  $contextItem: String!
+  $language: String!
+) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    primaryNav: field(name: "7e3fd7aa-2386-5813-b22a-4e3267c5eb30") {
+      ... on MultilistField {
+        targetItems {
+          id
+          title: field(name: "97c0f508-2a3f-5a3d-a7ad-12f5232988b1") { jsonValue }
+          link: field(name: "71b8f017-b44a-5706-bf18-73e0fea82b0d") { jsonValue }
+        }
+      }
+    }
+  }
+  contextItem: item(path: $contextItem, language: $language) { id }
+}

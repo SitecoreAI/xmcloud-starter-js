@@ -1,0 +1,94 @@
+{
+  "schema": "official-three-route-final-rendering-reader/v1",
+  "createdAtUtc": "2026-10-08T22:57:51.890810+00:00",
+  "offlineOnly": true,
+  "manifest": {
+    "path": "preparation/layout-field-candidate-v1/MANIFEST.json",
+    "sha256": "6989eac0e2bb4fad441ef51cb8dcf470ca2301f6a57f42aef6af2ec95bf59191"
+  },
+  "reader": {
+    "path": "restored-checkpoint/serialization-capture/editorial-section-update-execution-20261008/official-semantic-fields/NativeSemanticFields.dll",
+    "sha256": "8d36202d5866d00556014d8a8d1aa6cc4501f750834a9d1286f96f129a8b6061",
+    "nativeReader": "YamlSerializationFormatter.ReadSerializedItem",
+    "readerAssemblyVersion": "6.0.0.0",
+    "cachedCliAndSerializationPackageVersion": "6.0.23"
+  },
+  "items": [
+    {
+      "pageId": "1a30df2a-68b3-53c3-9a1a-a5595f80ca5a",
+      "route": "college-funding",
+      "candidateSha256": "77a3fd163d321704804c0b199b2eeae8df8379a12a7acdd76ccc86f05dea3095",
+      "report": {
+        "path": "preparation/official-layout-reader-v1/1a30df2a-68b3-53c3-9a1a-a5595f80ca5a.semantic.json",
+        "sha256": "3bfeea4c607b9540107a10bdd328ac0f35af41e0c84c1dba042925a0143e3820"
+      },
+      "field": {
+        "id": "04bf00db-f5fb-41f7-8ab7-22408372a981",
+        "hint": "__Final Renderings",
+        "storage": "versioned",
+        "language": "en",
+        "version": 1
+      },
+      "expectedLogicalXmlSha256": "ca6c8127119ceff7185a0f8b524f18ec439f8ba49d825739891d262950d521bd",
+      "officialDecodedNormalizedValueSha256": "ca6c8127119ceff7185a0f8b524f18ec439f8ba49d825739891d262950d521bd",
+      "matchesLogicalXml": true,
+      "rawBytesPreserved": true,
+      "officialReaderPassed": true,
+      "returnCode": 0
+    },
+    {
+      "pageId": "fd3b97d9-ea09-5342-b818-5c24c05ec6ae",
+      "route": "flexible-estate-planning-strategies",
+      "candidateSha256": "3b5179e9c49326f71ba49b7c08a868347ea8e3ab19d2a8e7e47424204dddb364",
+      "report": {
+        "path": "preparation/official-layout-reader-v1/fd3b97d9-ea09-5342-b818-5c24c05ec6ae.semantic.json",
+        "sha256": "7f1c0255cb9872216cc2c102373082295018057279d3cb93623d988c08d0986c"
+      },
+      "field": {
+        "id": "04bf00db-f5fb-41f7-8ab7-22408372a981",
+        "hint": "__Final Renderings",
+        "storage": "versioned",
+        "language": "en",
+        "version": 1
+      },
+      "expectedLogicalXmlSha256": "1ee6bd6ba2cb5c1bb3bb5ab8dd8a4bca95f29caf2f9373e15ee9be663c84c9ad",
+      "officialDecodedNormalizedValueSha256": "1ee6bd6ba2cb5c1bb3bb5ab8dd8a4bca95f29caf2f9373e15ee9be663c84c9ad",
+      "matchesLogicalXml": true,
+      "rawBytesPreserved": true,
+      "officialReaderPassed": true,
+      "returnCode": 0
+    },
+    {
+      "pageId": "1a69a4b8-13ae-5bbc-afad-e6acdba09563",
+      "route": "retirement-planning",
+      "candidateSha256": "6cee6e8b1048b5a5f2e1e7899f2c89b8085e977a3ea41c0331900d10e97cf8ca",
+      "report": {
+        "path": "preparation/official-layout-reader-v1/1a69a4b8-13ae-5bbc-afad-e6acdba09563.semantic.json",
+        "sha256": "561c1ba4985fbdeed4f6f5809b5ba5da030ef771ca595dd8cc533374c6710cce"
+      },
+      "field": {
+        "id": "04bf00db-f5fb-41f7-8ab7-22408372a981",
+        "hint": "__Final Renderings",
+        "storage": "versioned",
+        "language": "en",
+        "version": 1
+      },
+      "expectedLogicalXmlSha256": "f91987851a3c3d35cb71957076300ce30a128127b220bc650205c243a671e9ad",
+      "officialDecodedNormalizedValueSha256": "f91987851a3c3d35cb71957076300ce30a128127b220bc650205c243a671e9ad",
+      "matchesLogicalXml": true,
+      "rawBytesPreserved": true,
+      "officialReaderPassed": true,
+      "returnCode": 0
+    }
+  ],
+  "existingPages": 3,
+  "newFinalRenderingFields": 3,
+  "nativeCmsBeforeStateFresh": false,
+  "nativeReadbackOrPreviewVerified": false,
+  "cmsCalls": 0,
+  "sitecoreCliCommands": 0,
+  "credentialFilesRead": false,
+  "guardChanges": 0,
+  "publication": false,
+  "passed": true
+}

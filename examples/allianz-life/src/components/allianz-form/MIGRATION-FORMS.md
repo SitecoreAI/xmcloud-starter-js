@@ -4,7 +4,7 @@ The Allianz migration's form controls, source copy, options, validation and demo
 
 ## Inventory and selection
 
-`migration-forms.json` contains all 12 captured `AllianzForm` placements across 11 routes. It records exact fixture and verified native identity aliases, source-hidden placement, and static copy. The source inventory and activation receipts distinguish fixture provenance from native readbacks. `source-schemas.json` contains the captured claim, general NY contact, NY/main product-interest and safe generic-search controls.
+`migration-forms.json` contains the 12 historical `AllianzForm` placements across 11 routes plus the modern `/contact-us` presentation. It records exact fixture and verified native identity aliases, source-hidden placement, and static copy. The source inventory and activation receipts distinguish fixture provenance from native readbacks. `source-schemas.json` contains the captured claim, general NY contact, NY/main product-interest and safe generic-search controls.
 
 Resolution uses:
 
@@ -20,6 +20,7 @@ A page with two forms requires an instance identity or explicit `formId`. Unknow
 | ny-product-details-interest | Same overview, second form | NY product interest; 3 choices |
 | ny-product-prospectus | NY Index Advantage+ prospectus | NY product interest; 3 choices |
 | ny-contact | NY contact-us | 9 fields with reason-dependent firm/product/category branches |
+| contact-us | Main contact-us | Disabled single column: 4 reasons, 4 text controls, comment, Submit; account links open the existing local dialog |
 | ny-death-claim | NY report-a-death | 44 definitions; 1–20 policy fields |
 | ny-search | Historical NY search extraction | 3 safe scalar controls; routed site search remains separate |
 | death-claim | Main report-a-death | 44 definitions; 1–20 policy fields |
@@ -30,6 +31,8 @@ A page with two forms requires an instance identity or explicit `formId`. Unknow
 | product-plus-prospectus | Plus prospectus | Main product interest; 11 choices |
 
 Product forms have five logical fields rather than historical per-checkbox extraction counts. Other is independent and optional. Source-hidden NextSteps stay hidden; static configuration is not permission to expose them. Ancestor Page Builder shells retain their existing source visibility.
+
+The modern `contact-us` presentation has no form element, entered-value state, input names, validation/review flow, or conditional fields. All radios, text controls, the comment textarea, and Submit are disabled in normal, preview and editing modes. Its account links only open the shared local account-access dialog. Blank schema limits represent unverified source constraints and are not applied. Configure the existing `AllianzForm.Default` with `formId=contact-us`; its definitions ignore any retained legacy CMS datasource. No new native fields or variant are required. This code has not been deployed or bound in CMS.
 
 A keyed form instance discards prior sample state on placement/form changes. Claim/contact/product entry, validation, review, edit, reset, and success/failure are local demonstrations. No request, persistence, authentication or production submission is performed. Use synthetic sample information only.
 

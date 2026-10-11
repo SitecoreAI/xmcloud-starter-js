@@ -1,0 +1,24 @@
+/* Preserve the source 704px split breakpoint, 66/33 widths and text-first mobile order. */
+.ventures-team .ventures-team__profile > .tileContent,
+.ventures-team .ventures-team__profile > .tileImage {
+  min-width: 0;
+}
+
+.ventures-team .ventures-team__shared-role > :where(p, div) {
+  margin: 0;
+}
+
+.ventures-team .ventures-team__profile footer .tileLink + .tileLink {
+  margin: 16px 0 0;
+}
+
+.ventures-team .ventures-team__unavailable-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  opacity: 1;
+  cursor: default;
+}
