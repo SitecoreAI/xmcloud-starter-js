@@ -191,3 +191,56 @@ export const LifeImageTitle = ({ fields, params }: AllianzHeroProps) => {
     </div>
   </div>;
 };
+
+/** Source About image/title stage; native heading and desktop image only. */
+export const AboutImageTitle = ({ fields, params }: AllianzHeroProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzHero" />;
+  const blockHeading = hasEditorialBlockMarkup(data.heading?.jsonValue?.value);
+  return <div className="l-container-full-width" id={params.RenderingIdentifier}>
+    <div className="m-axlHero">
+      <picture className="c-image c-stage__image--cover c-stage__image--short">
+        {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />}
+      </picture>
+      <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
+        {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} field={safeEditorialRichText(data.heading?.jsonValue, isEditing)} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
+      </div></div>
+    </div>
+  </div>;
+};
+
+/** What We Offer source stage exposes only the native title and desktop image. */
+export const OfferImageTitle = (props: AllianzHeroProps) => {
+  const data = props.fields?.data?.datasource;
+  if (!data) return <Editorial {...props} />;
+  return <Editorial {...props}
+    fields={{ ...props.fields, data: { ...props.fields?.data, datasource: {
+      heading: data.heading, desktopImage: data.desktopImage,
+    } } }}
+    params={{ ...props.params, theme: 'transparent', layout: 'home', columns: '1',
+      alignment: 'center', spacing: 'none', headingLevel: 'h1', paddingTop: 'none',
+      paddingBottom: 'none', marginBottom: 'none', showLogin: '0' }}
+  />;
+};
+
+/** Fixed annuity image/title stage; only its three original native fields have surfaces. */
+export const FixedProduct = ({ fields, params }: AllianzHeroProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzHero" />;
+  return <div className="l-container-full-width c-hero__theme--fixed" id={params?.RenderingIdentifier}>
+    <div className="m-axlHero">
+      <picture className="c-image c-stage__image--cover c-stage__image--short">
+        {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
+        {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />}
+      </picture>
+      <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
+        {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag="h1" field={data.heading?.jsonValue} className="c-heading c-hero__headline u-text-center" />}
+        {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px', height: 'auto' }} /></div>}
+      </div></div>
+    </div>
+  </div>;
+};

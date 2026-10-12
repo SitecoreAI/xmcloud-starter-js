@@ -1,0 +1,15 @@
+/* Source parent tile stacks text then portrait below the medium breakpoint. */
+.allianz-about-parent-company .tile--6633 > .tileContent,
+.allianz-about-parent-company .tile--6633 > .tileImage {
+  width: 100%;
+}
+
+@media (min-width: 704px) {
+  .allianz-about-parent-company .tile--6633 > .tileContent {
+    width: 66.666%;
+  }
+
+  .allianz-about-parent-company .tile--6633 > .tileImage {
+    width: 33.333%;
+  }
+}

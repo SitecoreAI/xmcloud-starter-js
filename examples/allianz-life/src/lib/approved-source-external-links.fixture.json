@@ -1,6 +1,6 @@
 {
   "schema": "allianz.approved-source-external-links.v1",
-  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute.",
+  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified.",
   "sourcePins": [
     {
       "path": "preparation/resources-exact-scope-v8/PDF-EXTERNAL-EXACT-FIELD-CANDIDATE.json",
@@ -62,6 +62,75 @@
       "path": "preparation/life-insurance-ancestor-final-qa-v1/native-final/life-insurance-native-checkpoint-links-20261011.json",
       "sha256": "c15536e72b260c651f6fad15a8668398daaa5d50ec6c17623d263e14db8de290",
       "evidence": "Materialized final v2 native receipt preserves the Opportunity to earn interest body at F8B29DD0-DFB4-4349-82E0-3F0AF49DD221. Parent-confirmed actual normal-SDK/native200 and accepted body-link decision retain this exact source absolute URL."
+    },
+    {
+      "path": "preparation/about-us-ancestor-final-qa-v1/source/SOURCE-CONTENT-LAYOUT.json",
+      "sha256": "2b6ae774cb44d98542546bc93a37855b9fa6d6c7c200e453470e713cb48c54be",
+      "jsonPointers": [
+        "/teaserCards/cards/0/link/absoluteHref",
+        "/teaserCards/cards/1/link/absoluteHref",
+        "/teaserCards/cards/2/link/absoluteHref"
+      ]
+    },
+    {
+      "path": "preparation/about-us-ancestor-final-qa-v1/native-initial/about-us-native-checkpoint-20261011.json",
+      "sha256": "381dd4a0762f191e1353e748db3323c9c3fd0d228147e37f30fb0d4a4b5460d3",
+      "evidence": "Verified Libraryv0 linkChanges confirms only the three existing teaser link fields use these approved absolute external URLs; target pages remain outside this page scope."
+    },
+    {
+      "path": "preparation/what-we-offer-final-qa-v1/native-initial/what-we-offer-native-inventory-20261011.json",
+      "sha256": "5a666c76ba2b9bde98ce8148c01852d5142d1899a4faa287525fec9376e508c0",
+      "jsonPointer": "/source/links/0/href",
+      "sourceRoute": "/what-we-offer",
+      "evidence": "Parent-verified current source HTML and resolved absolute URL; native destination9BD155F1 unverified. Scope limited to consumed structured CTA49D4FF67; duplicate scalar remains unchanged."
+    },
+    {
+      "path": "preparation/annuities-final-qa-v1/source/SOURCE-FACTS.json",
+      "sha256": "6068f3532acd0aaaf1355143487356bb45d23d371c1c8c17774522d43952b468",
+      "jsonPointers": [
+        "/sections/5/tiles/0/links/0/resolvedUrl",
+        "/sections/5/tiles/1/links/0/resolvedUrl"
+      ],
+      "sourceRoute": "/what-we-offer/annuities",
+      "evidence": "Exact ProductTypeChoices canonical General Link source destinations. Actual final normal SDK owners C02CBB504FE84C30B1730DD930601DAB and 30AAA9DF8B0C44658C31E2DF3DD581DB already retain external hrefs, original visible text and empty targets. Native destination pages remain unverified; approval preserves only these two absolute external URLs."
+    },
+    {
+      "path": "preparation/fixed-index-annuities-final-qa-v1/source/SOURCE-FACTS.json",
+      "sha256": "8604f9955a865180440207ff745918a961275afe9d749cf73d9043a3e993aaa5",
+      "sourceRoute": "/what-we-offer/annuities/fixed-index-annuities",
+      "jsonPointers": [
+        "/sections/7/cards/0/resolvedUrl",
+        "/sections/7/cards/1/resolvedUrl",
+        "/sections/7/cards/2/resolvedUrl",
+        "/sections/7/cards/3/resolvedUrl",
+        "/sections/7/cards/4/resolvedUrl",
+        "/sections/8/cards/0/resolvedUrl",
+        "/sections/8/cards/1/resolvedUrl",
+        "/sections/8/cards/2/resolvedUrl",
+        "/sections/8/cards/3/resolvedUrl",
+        "/sections/8/cards/4/resolvedUrl",
+        "/sections/8/cards/5/resolvedUrl",
+        "/sections/8/cards/6/resolvedUrl",
+        "/sections/8/cards/7/resolvedUrl",
+        "/sections/10/links/0/resolvedUrl",
+        "/sections/10/links/2/resolvedUrl"
+      ],
+      "evidence": "Fresh source HTML preserves all thirteen FIA product-card URLs, including original mixed-case paths and Classic new-tab target. Two unchanged Explore further external fields retain their exact FAQ and Contact-Us URLs. Exact existing owner and field identities remain native; unverified product destinations become explicit source external links. Existing Login service-unavailable policy remains unchanged."
+    },
+    {
+      "path": "preparation/fixed-index-annuities-final-qa-v1/source/SOURCE-FACTS.json",
+      "sha256": "8604f9955a865180440207ff745918a961275afe9d749cf73d9043a3e993aaa5",
+      "sourceRoute": "/what-we-offer/annuities/fixed-index-annuities",
+      "jsonPointers": [
+        "/sections/10/links/1/resolvedUrl"
+      ],
+      "evidence": "Exact existing Explore further Login source link and native external field agree on https://www.allianzlife.com/Login, caption Log in to manage your account, and empty target. Restore this literal URL only through the existing finite allowlist. Preserve every other service restriction. This supersedes the earlier FIA Login placeholder treatment; no Login navigation or account action is authorized."
+    },
+    {
+      "path": "preparation/aa7-completion-v1/source-handoff-v1/public-source-main.html",
+      "sha256": "738173a3565c114d4d84a8ac5b8b6a26d7d334887c1daf9a0537f9199cb41236",
+      "sourceRoute": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7",
+      "evidence": "Exact current source HTML anchors and verified native SDK General Link values for AA7 Rates resource and three PDF card destinations. Parent explicitly approved preserving all three original PDF URLs and the exact source Rates URL as an external _blank product-navigation link where no native Rates child exists. Only these four literal URLs are added; source resource Rates same-tab target remains original."
     }
   ],
   "entries": [
@@ -234,6 +303,136 @@
       "kind": "public-page",
       "url": "https://www.allianzlife.com/what-we-offer/Index-options",
       "sourceRecordKey": "life-insurance-overview-benefit-external-index"
+    },
+    {
+      "kind": "about-teaser-page",
+      "url": "https://www.allianzlife.com/about/executives",
+      "sourceRecordKey": "about-us-teaser-01"
+    },
+    {
+      "kind": "about-teaser-page",
+      "url": "https://www.allianzlife.com/about/newsroom",
+      "sourceRecordKey": "about-us-teaser-02"
+    },
+    {
+      "kind": "about-teaser-page",
+      "url": "https://www.allianzlife.com/why-allianz/culture",
+      "sourceRecordKey": "about-us-teaser-03"
+    },
+    {
+      "kind": "what-we-offer-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities",
+      "sourceRecordKey": "what-we-offer-annuities-cta"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities",
+      "sourceRecordKey": "annuities-product-choice-fia"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities",
+      "sourceRecordKey": "annuities-product-choice-rila"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+      "sourceRecordKey": "fia-product-card-01"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7",
+      "sourceRecordKey": "fia-product-card-02"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage",
+      "sourceRecordKey": "fia-product-card-03"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-plus",
+      "sourceRecordKey": "fia-product-card-04"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-Classic",
+      "sourceRecordKey": "fia-product-card-05"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222",
+      "sourceRecordKey": "fia-product-card-06"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222-plus",
+      "sourceRecordKey": "fia-product-card-07"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/360",
+      "sourceRecordKey": "fia-product-card-08"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Benefit-Control",
+      "sourceRecordKey": "fia-product-card-09"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Benefit-Control-Plus",
+      "sourceRecordKey": "fia-product-card-10"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Core-Income-7",
+      "sourceRecordKey": "fia-product-card-11"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Essential-Income-7",
+      "sourceRecordKey": "fia-product-card-12"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Retirement-Foundation-ADV",
+      "sourceRecordKey": "fia-product-card-13"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs",
+      "sourceRecordKey": "fia-explore-faq"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/Contact-Us",
+      "sourceRecordKey": "fia-explore-contact-us"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/Login",
+      "sourceRecordKey": "fia-explore-login"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7/Rates",
+      "sourceRecordKey": "aa7-rates-source"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2023/11/10/18/35/AAA7-001.pdf",
+      "sourceRecordKey": "aa7-product-brochure"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2023/11/10/18/35/AAA7-001-B.pdf",
+      "sourceRecordKey": "aa7-product-brochure-insert"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2019/05/15/12/35/CSI-504.pdf",
+      "sourceRecordKey": "aa7-index-lock-brochure"
     }
   ]
 }

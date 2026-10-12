@@ -5,6 +5,7 @@ import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
 import { safeEditorialRichText } from 'lib/allianz-editorial';
 import type { ProductDisclosuresProps } from './product-disclosures.props';
+import { Default as SourceRiskDisclosures } from 'components/product-risk-disclosures/ProductRiskDisclosures';
 
 /** The Home product disclosures have one semantic body field and a fixed design. */
 export const Default = ({ fields, params }: ProductDisclosuresProps) => {
@@ -72,3 +73,6 @@ function EditorialDisclosures(props: ProductDisclosuresProps & { plain?: boolean
 
 export const Editorial = (props: ProductDisclosuresProps) => <EditorialDisclosures {...props} />;
 export const EditorialNote = (props: ProductDisclosuresProps) => <EditorialDisclosures {...props} plain />;
+
+/** Source legal wrapper retains this rendering's existing native body field. */
+export const SourceLegal = (props: ProductDisclosuresProps) => <SourceRiskDisclosures {...props} />;

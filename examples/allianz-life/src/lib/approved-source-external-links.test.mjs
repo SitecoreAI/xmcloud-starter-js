@@ -31,8 +31,8 @@ function href(html) {
   return /href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
 }
 
-test('all 20 approved PDF destinations remain absolute through the installed SDK in visitor and editing modes', () => {
-  assert.equal(pdfs.length, 20);
+test('all 23 approved PDF destinations remain absolute through the installed SDK in visitor and editing modes', () => {
+  assert.equal(pdfs.length, 23);
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     for (const entry of pdfs) {
@@ -323,5 +323,448 @@ test('Index Options approval preserves local navigation for explicitly authored 
     assert.equal(safeLink(input).value.id, input.value.id);
     assert.strictEqual(safeLink(input).metadata, input.metadata);
     assert.equal(JSON.stringify(input), before);
+  }
+});
+
+const aboutTeaserDestinations = [
+  'https://www.allianzlife.com/about/executives',
+  'https://www.allianzlife.com/about/newsroom',
+  'https://www.allianzlife.com/why-allianz/culture',
+];
+
+test('About Us preserves only its three recorded teaser destinations through the installed SDK', () => {
+  const entries = source.entries.filter(({ kind }) => kind === 'about-teaser-page');
+  assert.deepEqual(entries.map(({ url }) => url), aboutTeaserDestinations);
+  assert.ok(source.sourcePins.some(pin => pin.path === 'preparation/about-us-ancestor-final-qa-v1/source/SOURCE-CONTENT-LAYOUT.json'
+    && pin.sha256 === '2b6ae774cb44d98542546bc93a37855b9fa6d6c7c200e453470e713cb48c54be'));
+  assert.ok(source.sourcePins.some(pin => pin.path === 'preparation/about-us-ancestor-final-qa-v1/native-initial/about-us-native-checkpoint-20261011.json'
+    && pin.sha256 === '381dd4a0762f191e1353e748db3323c9c3fd0d228147e37f30fb0d4a4b5460d3'));
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const url of aboutTeaserDestinations) {
+      const input = field(url, { target: '', 'aria-label': '', text: 'Native About teaser' });
+      const before = JSON.stringify(input);
+      for (const isEditing of [false, true]) {
+        const html = render(input, isEditing);
+        assert.equal(href(html), url);
+        assert.match(html, /target=""/);
+        assert.doesNotMatch(html, /rel="noopener noreferrer"/);
+        if (isEditing) assert.match(html, /test-only-source-link-field/);
+      }
+      assert.strictEqual(safeLink(input).metadata, input.metadata);
+      assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
+
+test('About Us exact source approvals do not retain lookalike or augmented destinations', () => {
+  process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
+  for (const url of aboutTeaserDestinations) {
+    for (const invalid of [
+      url.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'),
+      url.replace('https://', 'https://user:password@'),
+      url.replace('www.allianzlife.com', 'www.allianzlife.com:444'),
+    ]) assert.equal(href(render(field(invalid))), '#service-unavailable');
+    for (const uncaptured of [`${url}?redirect=unknown`, `${url}#uncaptured`, `${url}/extra`, url.replace('https://', 'http://')]) {
+      assert.notEqual(href(render(field(uncaptured))), uncaptured);
+      assert.ok(!href(render(field(uncaptured))).startsWith('https://www.allianzlife.com'));
+    }
+  }
+});
+
+test('About Us approved URLs preserve native internal identity and local routing', () => {
+  process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
+  for (const url of aboutTeaserDestinations) {
+    for (const linktype of ['internal', 'media']) {
+      const input = field(url, { linktype, id: '{TEST-ONLY-ABOUT-NATIVE-ITEM}', target: '' });
+      const before = JSON.stringify(input);
+      assert.equal(href(render(input)), new URL(url).pathname);
+      assert.equal(safeLink(input).value.id, '{TEST-ONLY-ABOUT-NATIVE-ITEM}');
+      assert.equal(safeLink(input).value.linktype, linktype);
+      assert.strictEqual(safeLink(input).metadata, input.metadata);
+      assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
+
+
+const offerAnnuitiesSourceUrl = 'https://www.allianzlife.com/what-we-offer/annuities';
+
+test('What We Offer consumed Annuities CTA preserves the exact approved source URL and native Link chrome', () => {
+  assert.deepEqual(source.entries.filter(entry => entry.kind === 'what-we-offer-page'), [{
+    kind: 'what-we-offer-page', url: offerAnnuitiesSourceUrl, sourceRecordKey: 'what-we-offer-annuities-cta',
+  }]);
+  assert.ok(source.sourcePins.some(pin => pin.sha256 === '5a666c76ba2b9bde98ce8148c01852d5142d1899a4faa287525fec9376e508c0'
+    && pin.jsonPointer === '/source/links/0/href'));
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    const original = field(offerAnnuitiesSourceUrl, { text: 'Learn more about which annuity might be right for you', target: '' });
+    const before = JSON.stringify(original);
+    for (const isEditing of [false, true]) {
+      const html = render(original, isEditing);
+      assert.equal(href(html), offerAnnuitiesSourceUrl);
+      assert.match(html, /Learn more about which annuity might be right for you/);
+      if (isEditing) assert.match(html, /test-only-source-link-field/);
+    }
+    assert.strictEqual(safeLink(original).metadata, original.metadata);
+    assert.equal(JSON.stringify(original), before);
+    const acceptedLife = field('/what-we-offer/life-insurance', {
+      linktype: 'internal', id: '{F2C4D8F4-80A9-54CB-95C2-27F1EEF2CB18}', text: 'See the unique benefits of IUL',
+    });
+    assert.equal(href(render(acceptedLife)), '/what-we-offer/life-insurance');
+  }
+});
+
+test('What We Offer source approval does not preserve augmented Annuities URLs or alternate origins', () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const candidate of [offerAnnuitiesSourceUrl + '?extra=1', offerAnnuitiesSourceUrl + '#extra',
+      offerAnnuitiesSourceUrl + '/other', 'http://www.allianzlife.com/what-we-offer/annuities',
+      'https://www.allianzlife.com.example.test/what-we-offer/annuities']) {
+      assert.notEqual(href(render(field(candidate))), candidate);
+    }
+  }
+});
+
+
+// The two source product pages have no verified native destinations in this page scope.
+// Exercise the real purpose component, including its installed SDK Link renderer.
+const annuitiesProductChoices = loadSource(path.join(sourceRoot, 'components/product-type-choices/ProductTypeChoices.tsx'));
+const annuitiesProductDestinations = [
+  ['https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities', 'Learn about Allianz® fixed index annuities', 'annuities-product-choice-fia'],
+  ['https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities', 'Learn about Allianz® registered index-linked annuities', 'annuities-product-choice-rila'],
+];
+function annuitiesChoiceData(inputs) {
+  return { id: 'test-only-annuities-product-choices', children: { total: inputs.length,
+    pageInfo: { hasNext: false, endCursor: null }, results: inputs.map((link, index) => ({
+      id: `test-only-annuities-choice-${index}`, link: { jsonValue: link },
+    })) } };
+}
+function annuitiesChoiceAnchors(html) {
+  return [...html.matchAll(/<a\b[^>]*class="a-link"[^>]*>/g)].map(([anchor]) => anchor);
+}
+
+test('Annuities exact product source URLs remain absolute in the real ProductTypeChoices visitor and editing rendering', () => {
+  assert.deepEqual(source.entries.filter(entry => entry.sourceRecordKey.startsWith('annuities-product-choice-')),
+    annuitiesProductDestinations.map(([url, , sourceRecordKey]) => ({ kind: 'public-page', url, sourceRecordKey })));
+  assert.ok(source.sourcePins.some(pin => pin.path === 'preparation/annuities-final-qa-v1/source/SOURCE-FACTS.json'
+    && pin.sha256 === '6068f3532acd0aaaf1355143487356bb45d23d371c1c8c17774522d43952b468'
+    && JSON.stringify(pin.jsonPointers) === JSON.stringify(['/sections/5/tiles/0/links/0/resolvedUrl', '/sections/5/tiles/1/links/0/resolvedUrl'])));
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    const inputs = annuitiesProductDestinations.map(([url, text], index) => {
+      const original = field(url, { url, text, title: '', target: '', querystring: '', anchor: '' });
+      original.metadata = { ...original.metadata, itemId: `test-only-annuities-choice-${index}`,
+        fieldId: `test-only-annuities-choice-${index}-link` };
+      return original;
+    });
+    const data = annuitiesChoiceData(inputs), before = JSON.stringify(data);
+    for (const editing of [false, true]) {
+      const html = renderTools(annuitiesProductChoices.Default, data, editing);
+      const anchors = annuitiesChoiceAnchors(html);
+      assert.equal(anchors.length, 2);
+      inputs.forEach((original, index) => {
+        assert.equal(href(anchors[index]), original.value.href, `${mode}/${editing}/${index}`);
+        assert.ok(anchors[index].includes(`aria-label="${original.value.text}"`));
+        assert.match(anchors[index], /target=""/);
+        assert.doesNotMatch(anchors[index], /\brel=/);
+        if (editing) assert.ok(html.includes(original.metadata.fieldId));
+        assert.strictEqual(safeLink(original).metadata, original.metadata);
+        assert.strictEqual(data.children.results[index].link.jsonValue, original);
+      });
+    }
+    assert.equal(JSON.stringify(data), before);
+  }
+});
+
+test('Annuities two product approvals do not retain augmented URLs, alternate origins, credentials or schemes', () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const [url, text] of annuitiesProductDestinations) {
+      for (const candidate of [`${url}?redirect=unapproved`, `${url}#uncaptured`, `${url}/extra`,
+        url.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'),
+        url.replace('https://', 'https://user:password@'),
+        url.replace('www.allianzlife.com', 'www.allianzlife.com:444'),
+        url.replace('https://', 'http://')]) {
+        const original = field(candidate, { url: candidate, text, target: '' });
+        const data = annuitiesChoiceData([original]), before = JSON.stringify(data);
+        const anchor = annuitiesChoiceAnchors(renderTools(annuitiesProductChoices.Default, data, false))[0];
+        assert.notEqual(href(anchor), candidate);
+        if (/evil\.invalid|user:password|:444/.test(candidate)) assert.equal(href(anchor), '#service-unavailable');
+        assert.match(renderTools(annuitiesProductChoices.Default, data, true), /test-only-source-link-field/);
+        assert.equal(JSON.stringify(data), before);
+      }
+    }
+  }
+});
+
+test('Annuities product URL approvals preserve local routing and original identity for native internal and media links', () => {
+  process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
+  for (const [url, text] of annuitiesProductDestinations) {
+    for (const linktype of ['internal', 'media']) {
+      const original = field(url, { text, linktype, id: '{TEST-ONLY-NATIVE-ANNUITY-ITEM}', target: '' });
+      const data = annuitiesChoiceData([original]), before = JSON.stringify(data);
+      const anchor = annuitiesChoiceAnchors(renderTools(annuitiesProductChoices.Default, data, false))[0];
+      assert.equal(href(anchor), new URL(url).pathname);
+      assert.equal(safeLink(original).value.id, original.value.id);
+      assert.equal(safeLink(original).value.linktype, linktype);
+      assert.strictEqual(safeLink(original).metadata, original.metadata);
+      assert.match(renderTools(annuitiesProductChoices.Default, data, true), /test-only-source-link-field/);
+      assert.equal(JSON.stringify(data), before);
+    }
+  }
+});
+
+
+// FIA exact source destinations: product cards plus unchanged FAQ/Contact resource fields.
+const fiaCardSourceDestinations = [
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+    "Allianz Accumulation Advantage 5\u2122 Annuity",
+    "",
+    "fia-product-card-01"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7",
+    "Allianz Accumulation Advantage 7\u00ae Annuity",
+    "",
+    "fia-product-card-02"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage",
+    "Allianz Accumulation Advantage\u00ae Annuity",
+    "",
+    "fia-product-card-03"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-plus",
+    "Allianz Accumulation Advantage+\u00ae Annuity",
+    "",
+    "fia-product-card-04"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-Classic",
+    "Allianz Accumulation Advantage Classic\u2122 Annuity",
+    "_blank",
+    "fia-product-card-05"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222",
+    "Allianz 222\u00ae Annuity",
+    "",
+    "fia-product-card-06"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222-plus",
+    "Allianz 222+\u00ae Annuity",
+    "",
+    "fia-product-card-07"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/360",
+    "Allianz 360\u2122 Annuity",
+    "",
+    "fia-product-card-08"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Benefit-Control",
+    "Allianz Benefit Control\u00ae Annuity",
+    "",
+    "fia-product-card-09"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Benefit-Control-Plus",
+    "Allianz Benefit Control+\u00ae Annuity",
+    "",
+    "fia-product-card-10"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Core-Income-7",
+    "Allianz Core Income 7\u00ae Annuity",
+    "",
+    "fia-product-card-11"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Essential-Income-7",
+    "Allianz Essential Income 7\u00ae Annuity",
+    "",
+    "fia-product-card-12"
+  ],
+  [
+    "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Retirement-Foundation-ADV",
+    "Allianz Retirement Foundation ADV\u00ae Annuity",
+    "",
+    "fia-product-card-13"
+  ]
+];
+
+const fiaSourceApprovals = source.entries.filter((entry) => entry.sourceRecordKey.startsWith('fia-')
+  && entry.sourceRecordKey !== 'fia-explore-login');
+const fiaHelpfulResources = loadSource(path.join(sourceRoot, 'components/helpful-resources/HelpfulResources.tsx'));
+function fiaCardData(inputs) {
+  return { id: 'test-only-fia-product-cards', children: { total: inputs.length,
+    pageInfo: { hasNext: false, endCursor: null }, results: inputs.map((link, index) => ({
+      id: `test-only-fia-card-${index}`, heading: { jsonValue: { value: link.value.text } },
+      link: { jsonValue: link },
+    })) } };
+}
+function fiaAnchors(markup) {
+  return [...markup.matchAll(/<a\b[^>]*class="m-card"[^>]*>/g)].map(([anchor]) => anchor);
+}
+
+test('FIA product cards and existing FAQ/Contact fields preserve fifteen exact public source destinations through installed SDK', () => {
+  assert.equal(fiaSourceApprovals.length, 15);
+  assert.deepEqual(source.entries.filter((entry) => entry.sourceRecordKey.startsWith('fia-product-card-')),
+    fiaCardSourceDestinations.map(([url, , , sourceRecordKey]) => ({ kind: 'public-page', url, sourceRecordKey })));
+  assert.ok(source.sourcePins.some((pin) => pin.path === 'preparation/fixed-index-annuities-final-qa-v1/source/SOURCE-FACTS.json'
+    && pin.sha256 === '8604f9955a865180440207ff745918a961275afe9d749cf73d9043a3e993aaa5'
+    && pin.jsonPointers.length === 15));
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    const inputs = fiaCardSourceDestinations.map(([url, text, target]) => field(url, { text, target, url }));
+    const data = fiaCardData(inputs), before = JSON.stringify(data);
+    for (const editing of [false, true]) {
+      const markup = renderTools(toolsCards.ProductCards, data, editing);
+      const anchors = fiaAnchors(markup);
+      assert.equal(anchors.length, 13);
+      anchors.forEach((anchor, index) => {
+        assert.equal(href(anchor), inputs[index].value.href);
+        assert.ok(anchor.includes(`target="${inputs[index].value.target}"`));
+        if (!editing && inputs[index].value.target === '_blank') assert.match(anchor, /rel="noopener noreferrer"/);
+        if (!editing && inputs[index].value.target === '') assert.doesNotMatch(anchor, /\brel=/);
+      });
+      if (editing) assert.match(markup, /test-only-source-link-field/);
+    }
+    assert.equal(JSON.stringify(data), before);
+    const resources = [
+      ['https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs', 'Frequently asked questions for FIAs'],
+      ['https://www.allianzlife.com/Login', 'Log in to manage your account'],
+      ['https://www.allianzlife.com/Contact-Us', 'Contact us'],
+    ];
+    const resourceData = { id: 'test-only-fia-explore', children: { results: resources.map(([url, text], index) => ({
+      id: `test-only-fia-resource-${index}`, title: { jsonValue: { value: text } },
+      link: { jsonValue: field(url, { text, target: '', url }) },
+    })) } };
+    const resourceBefore = JSON.stringify(resourceData);
+    for (const editing of [false, true]) {
+      const markup = renderTools(fiaHelpfulResources.Green, resourceData, editing);
+      const anchors = fiaAnchors(markup);
+      assert.equal(anchors.length, 3);
+      assert.equal(href(anchors[0]), resources[0][0]);
+      assert.equal(href(anchors[1]), resources[1][0]);
+      assert.equal(href(anchors[2]), resources[2][0]);
+      if (editing) assert.match(markup, /test-only-source-link-field/);
+    }
+    assert.equal(JSON.stringify(resourceData), resourceBefore);
+  }
+});
+
+test('FIA fifteen non-service source approvals do not preserve augmented URLs or unsafe origins', () => {
+  assert.equal(fiaSourceApprovals.length, 15);
+  assert.equal(source.entries.filter(({ url }) => url === 'https://www.allianzlife.com/Login').length, 1);
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    assert.equal(href(render(field('https://www.allianzlife.com/Login'))), 'https://www.allianzlife.com/Login');
+    for (const { url } of fiaSourceApprovals) {
+      for (const variant of [`${url}?redirect=unapproved`, `${url}#uncaptured`, `${url}/extra`,
+        url.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'),
+        url.replace('https://', 'https://user:password@'),
+        url.replace('www.allianzlife.com', 'www.allianzlife.com:444'),
+        url.replace('https://', 'http://')]) {
+        const original = field(variant, { target: '' }), before = JSON.stringify(original);
+        assert.notEqual(href(render(original)), variant);
+        if (/evil\.invalid|user:password|:444/.test(variant)) assert.equal(href(render(original)), '#service-unavailable');
+        assert.equal(JSON.stringify(original), before);
+      }
+    }
+  }
+});
+
+test('FIA exact source approvals preserve local routing, native identity and author metadata for internal/media fields', () => {
+  process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
+  for (const { url } of fiaSourceApprovals) {
+    for (const linktype of ['internal', 'media']) {
+      const original = field(url, { target: '', linktype, id: '{TEST-ONLY-FIA-NATIVE-ITEM}' });
+      const before = JSON.stringify(original);
+      assert.equal(href(render(original)), new URL(url).pathname);
+      assert.equal(safeLink(original).value.id, original.value.id);
+      assert.equal(safeLink(original).value.linktype, linktype);
+      assert.strictEqual(safeLink(original).metadata, original.metadata);
+      assert.match(render(original, true), /test-only-source-link-field/);
+      assert.equal(JSON.stringify(original), before);
+    }
+  }
+});
+
+
+// The exact existing FIA Login link is source fidelity; it does not open a service route.
+const fiaLoginUrl = 'https://www.allianzlife.com/Login';
+const fiaLoginCaption = 'Log in to manage your account';
+function fiaLoginData(input) {
+  return { id: 'test-only-fia-login-resource', children: { results: [{
+    id: 'test-only-fia-login-child', title: { jsonValue: { value: fiaLoginCaption } },
+    link: { jsonValue: input },
+  }] } };
+}
+
+test('FIA exact Login source link preserves href, empty target, caption and original field in all four installed SDK states', () => {
+  assert.deepEqual(source.entries.filter(({ url }) => url === fiaLoginUrl), [
+    { kind: 'public-page', url: fiaLoginUrl, sourceRecordKey: 'fia-explore-login' },
+  ]);
+  assert.ok(source.sourcePins.some((pin) => pin.path === 'preparation/fixed-index-annuities-final-qa-v1/source/SOURCE-FACTS.json'
+    && pin.sha256 === '8604f9955a865180440207ff745918a961275afe9d749cf73d9043a3e993aaa5'
+    && JSON.stringify(pin.jsonPointers) === JSON.stringify(['/sections/10/links/1/resolvedUrl'])));
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    const original = field(fiaLoginUrl, { url: fiaLoginUrl, text: fiaLoginCaption, target: '' });
+    const data = fiaLoginData(original), before = JSON.stringify(data);
+    for (const editing of [false, true]) {
+      const markup = renderTools(fiaHelpfulResources.Green, data, editing);
+      const anchors = fiaAnchors(markup);
+      assert.equal(anchors.length, 1);
+      assert.equal(href(anchors[0]), fiaLoginUrl);
+      assert.match(anchors[0], /target=""/);
+      assert.doesNotMatch(anchors[0], /service-unavailable|title="This service is unavailable"|\brel=/);
+      assert.match(markup, /Log in to manage your account/);
+      if (editing) assert.match(markup, /test-only-source-link-field/);
+      assert.equal(JSON.stringify(data), before);
+      assert.strictEqual(data.children.results[0].link.jsonValue, original);
+      assert.strictEqual(safeLink(original).metadata, original.metadata);
+    }
+  }
+});
+
+test('FIA exact Login approval leaves URL variants, native internal/media fields and all other service routes restricted', () => {
+  const variants = [
+    '/Login', 'https://www.allianzlife.com/login', 'https://www.allianzlife.com/Login/',
+    'https://www.allianzlife.com/Login?redirect=unapproved', 'https://www.allianzlife.com/Login#uncaptured',
+    'https://www.allianzlife.com/Login/extra', 'http://www.allianzlife.com/Login',
+    'https://www.allianzlife.com:444/Login', 'https://user:password@www.allianzlife.com/Login',
+    'https://www.allianzlife.com.evil.invalid/Login', 'https://evil.invalid/Login',
+    'https://www.allianzlife.com/Registration', 'https://www.allianzlife.com/spa',
+    'https://www.allianzlife.com/account', 'https://www.allianzlife.com/portal',
+    'https://www.allianzlife.com/secured', 'https://www.allianzlife.com/logout',
+    'https://www.allianzlife.com/manageuserprofile', 'https://www.allianzlife.com/api',
+    'https://www.allianzlife.com/sitecore', 'https://www.allianzlife.com/new-york/Login',
+  ];
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    const inputs = variants.map((url) => field(url, { url, text: fiaLoginCaption, target: '' }));
+    inputs.push(field(fiaLoginUrl, { url: fiaLoginUrl, querystring: 'redirect=unapproved' }));
+    inputs.push(field(fiaLoginUrl, { url: fiaLoginUrl, anchor: 'uncaptured' }));
+    for (const linktype of ['internal', 'media']) inputs.push(field(fiaLoginUrl,
+      { url: fiaLoginUrl, linktype, id: '{TEST-ONLY-FIA-LOGIN-NATIVE-ITEM}' }));
+    for (const original of inputs) {
+      const data = fiaLoginData(original), before = JSON.stringify(data);
+      const visitor = renderTools(fiaHelpfulResources.Green, data, false);
+      assert.equal(href(fiaAnchors(visitor)[0]), '#service-unavailable');
+      assert.match(fiaAnchors(visitor)[0], /title="This service is unavailable"/);
+      const editing = renderTools(fiaHelpfulResources.Green, data, true);
+      assert.match(editing, /test-only-source-link-field/);
+      assert.equal(JSON.stringify(data), before);
+      assert.equal(safeLink(original).value.id, original.value.id);
+      assert.equal(safeLink(original).value.linktype, original.value.linktype);
+      assert.strictEqual(safeLink(original).metadata, original.metadata);
+    }
   }
 });

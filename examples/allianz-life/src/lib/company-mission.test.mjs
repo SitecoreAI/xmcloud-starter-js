@@ -56,7 +56,7 @@ test('company mission keeps captured semantic paragraphs inside its fixed source
   const html = render(statement);
   assert.match(html, /class="l-container--full-width t-bg-transparent"/);
   assert.match(html, /class="l-grid__row u-margin-bottom-xl"/);
-  assert.match(html, /class="o-richTextEditor__wrapper"/);
+  assert.match(html, /class="o-richTextEditor__wrapper u-text-center"/);
   assert.ok(html.includes(rawStatement));
   assert.equal(statement.value, rawStatement);
   assert.doesNotMatch(html, /tileHeading|tileSubHeading|tileLink|a-axlDisclosures/);
@@ -80,4 +80,42 @@ test('cleared mission keeps real native editable chrome without source-content f
   assert.doesNotMatch(editing, /Our mission|Add a datasource/);
   assert.doesNotMatch(render(statement), /Our mission|Authored mission/);
   assert.equal(statement.value, '');
+});
+
+// Original paragraph from the bounded normal SDK readback; metadata below is test-only.
+test('plain native mission paragraph has fixed source centering and one unchanged SDK field in both modes', () => {
+  const statement = Object.freeze({ value: "<p>Our mission – we secure your future – informs how we operate, every day. We aspire to win the hearts of customers by delivering products and services that give them courage for what’s ahead, and by caring for them, for our people, and for the world around us.&nbsp;At the end of the day, we want to help people manage risks in retirement.</p>", metadata: Object.freeze({
+    itemId: 'test-only-original-mission-owner', fieldId: 'test-only-original-mission-field', fieldType: 'Rich Text' }) });
+  assert.doesNotMatch(statement.value, /text-align|style=/);
+  const before = JSON.stringify(statement);
+  const observed = [];
+  const filename = path.join(sourceRoot, 'components/company-mission/CompanyMission.tsx');
+  const compiled = new Module(filename); compiled.filename = filename;
+  compiled.paths = Module._nodeModulePaths(path.dirname(filename));
+  compiled.require = specifier => {
+    if (specifier === '@sitecore-content-sdk/nextjs') {
+      const sdk = require(specifier);
+      return { ...sdk, RichText: props => { observed.push(props); return React.createElement(sdk.RichText, props); } };
+    }
+    const local = /^(components|lib)\//.test(specifier) ? path.join(sourceRoot, specifier) : undefined;
+    if (local) return loadSource([local, `${local}.ts`, `${local}.tsx`].find(candidate => fs.existsSync(candidate)));
+    return require(specifier);
+  };
+  compiled._compile(ts.transpileModule(fs.readFileSync(filename, 'utf8'), { compilerOptions: {
+    module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true } }).outputText, filename);
+  for (const isEditing of [false, true]) {
+    observed.length = 0;
+    const html = renderToStaticMarkup(React.createElement(SitecoreProvider, {
+      page: { mode: { isEditing, isNormal: !isEditing, isPreview: false }, siteName: 'allianz-life',
+        layout: { sitecore: { context: {}, route: { fields: {}, placeholders: {} } } } },
+      api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
+    }, React.createElement(compiled.exports.Default, { params: { alignment: 'left', headingLevel: 'h1' },
+      fields: { data: { datasource: { missionStatement: { jsonValue: statement } } } } })));
+    assert.equal(observed.length, 1); assert.strictEqual(observed[0].field, statement);
+    assert.equal(observed[0].editable, isEditing);
+    assert.match(html, /class="o-richTextEditor__wrapper u-text-center"/);
+    assert.ok(html.includes(statement.value)); assert.doesNotMatch(html, /<h[1-6]\b/);
+    if (isEditing) assert.equal((html.match(/kind="open"/g) || []).length, 1);
+    assert.equal(JSON.stringify(statement), before);
+  }
 });

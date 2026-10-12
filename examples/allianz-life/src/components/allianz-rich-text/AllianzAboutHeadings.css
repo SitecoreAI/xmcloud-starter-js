@@ -1,0 +1,12 @@
+/* The source Information glyph is white within its existing blue circle. */
+.allianz-about-heading .tileIcon > .allianz-about-information-glyph {
+  width: 26px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 704px) {
+  .allianz-about-heading .tileIcon > .allianz-about-information-glyph {
+    width: 40px;
+  }
+}

@@ -54,3 +54,12 @@ export const SourceStatic = ({ fields, params }: AllianzVideoProps) => {
     {shouldRenderTextField(data.caption?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.caption?.jsonValue} />}
   </EditorialFrame>;
 };
+
+/** FIA video presentation owns its source spacing without author theme parameters. */
+export const FixedSourceStatic = (props: AllianzVideoProps) => {
+  const fixedParams: AllianzVideoProps['params'] = { theme: 'transparent', sectionSpacing: '1', marginBottom: 'xl' };
+  if (props.params?.RenderingIdentifier !== undefined) {
+    fixedParams.RenderingIdentifier = props.params.RenderingIdentifier;
+  }
+  return <SourceStatic {...props} params={fixedParams} />;
+};

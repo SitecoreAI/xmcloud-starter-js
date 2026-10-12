@@ -10,14 +10,16 @@ import { safeEditorialRichText } from 'lib/allianz-editorial';
 import './NewsroomGrey.css';
 
 /** Body-only disclosure purpose, independently sourced on all 81 newsroom pages. */
-export const Default = ({ fields, params }: LegalDisclosuresProps) => {
+type LegalDisclosuresPresentationProps = LegalDisclosuresProps & { isFaq?: boolean };
+
+export const Default = ({ fields, params, isFaq = false }: LegalDisclosuresPresentationProps) => {
   const { page } = useSitecore();
   const data = fields?.data?.datasource;
   const editable = page?.mode?.isEditing ?? false;
   if (!data) return <NoDataFallback componentName="Legal Disclosures" />;
   const body = data.body?.jsonValue;
   return (
-    <div className="component legal-disclosures l-container--full-width a-axlDisclosures" id={params?.RenderingIdentifier}>
+    <div className={`component legal-disclosures l-container--full-width a-axlDisclosures${isFaq ? ' allianz-faq-disclosures' : ''}`} id={params?.RenderingIdentifier}>
       <div className="l-grid l-grid--max-width">
         <div className="l-grid__row">
           <div className="l-grid__column">
@@ -65,7 +67,7 @@ export const Faq = (props: LegalDisclosuresProps) => {
   const data = props.fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="Legal Disclosures" />;
   const isEditing = page?.mode?.isEditing ?? false;
-  return <Default {...props} fields={{ ...props.fields, data: {
+  return <Default {...props} isFaq fields={{ ...props.fields, data: {
     ...props.fields?.data, datasource: { ...data, body: {
       jsonValue: safeNewsroomRichText(data.body?.jsonValue, isEditing),
     } },

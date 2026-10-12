@@ -12,3 +12,19 @@
     width: 40px;
   }
 }
+
+/* FIA Portfolio source paragraph uses u-font-size-xl. Keep its native
+ * Rich Text value intact and apply the same utility typography to this variant.
+ * Home uses m-axlTile; White uses a transparent section. */
+.allianz-retirement-solutions-intro.t-bg-blue-soft:has(.m-axlIntroductionBlock) .tileBody p {
+  font-size: 1.25rem !important;
+  line-height: 1.625rem !important;
+  letter-spacing: 0.0125rem !important;
+}
+
+/* Source FIA product groups share one blue container for intro and cards.
+ * Contain the intro row margin when native controls split that container.
+ * Exact adjacent card scaffold excludes the separate Portfolio section. */
+#content:has(.c-hero__theme--fixed) .l-container--full-width.t-bg-blue-soft:has(> .l-grid > .l-grid__row > .l-grid__column-medium-12 > .m-axlIntroductionBlock):has(+ .l-container--full-width.t-bg-blue-soft .o-cards) {
+  display: flow-root;
+}

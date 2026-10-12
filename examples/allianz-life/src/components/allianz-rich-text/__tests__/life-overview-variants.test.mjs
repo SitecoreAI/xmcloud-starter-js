@@ -84,7 +84,7 @@ test('Footnotes: body-only original editor identity, source wrapper and absent/b
 
 test('Existing Default implementation remains byte-identical after its single CSS import', () => {
   const source = fs.readFileSync(filename, 'utf8');
-  const original = source.slice(0, source.indexOf('\r\n\r\n// These finite variants')).replace("import './AllianzLifeOverviewHeadings.css';\r\n", '');
+  const original = source.slice(0, source.indexOf('\r\n\r\n// These finite variants')).replace("import './AllianzLifeOverviewHeadings.css';\r\n", '').replace("import './AllianzAboutHeadings.css';\r\n", '');
   assert.equal(Buffer.byteLength(original), 2660);
   assert.equal(createHash('sha256').update(original).digest('hex'), '581566db8f97bb54b3c92549e164dee865ea2034d2a77c564f26f15c0a8b88e0');
   for (const editing of [false, true]) {

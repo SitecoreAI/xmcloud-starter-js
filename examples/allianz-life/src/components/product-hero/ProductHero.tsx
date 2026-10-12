@@ -5,8 +5,8 @@ import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderImageField, shouldRenderTextField } from 'lib/allianz-field-state';
 import type { ProductHeroProps } from './product-hero.props';
 
-/** The source Annuities hero has a short image and one centered headline. */
-export const Default = ({ fields, params }: ProductHeroProps) => {
+/** Both hero variants retain the same authored heading and short image. */
+const Hero = ({ fields, params, fixed }: ProductHeroProps & { fixed: boolean }) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const datasource = fields?.data?.datasource;
@@ -15,7 +15,9 @@ export const Default = ({ fields, params }: ProductHeroProps) => {
   const image = datasource.image?.jsonValue;
 
   return (
-    <div className="l-container-full-width t-bg-blue-soft" id={params?.RenderingIdentifier}>
+    <div className={fixed
+      ? 'l-container-full-width t-bg-product-fixed c-hero__theme--fixed'
+      : 'l-container-full-width t-bg-blue-soft'} id={params?.RenderingIdentifier}>
       <div className="m-axlHero">
         {shouldRenderImageField(image, isEditing) && (
           <picture className="c-image c-stage__image--cover c-stage__image--short">
@@ -34,3 +36,9 @@ export const Default = ({ fields, params }: ProductHeroProps) => {
     </div>
   );
 };
+
+/** The Annuities presentation keeps its existing blue background. */
+export const Default = (props: ProductHeroProps) => <Hero {...props} fixed={false} />;
+
+/** The fixed-index presentation is owned by this finite native variant. */
+export const Fixed = (props: ProductHeroProps) => <Hero {...props} fixed={true} />;

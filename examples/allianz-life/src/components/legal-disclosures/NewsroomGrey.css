@@ -3,3 +3,8 @@
 .allianz-modern .allianz-newsroom-grey-trailing {
   background-color: #bbbdbf;
 }
+
+/* FAQ disclosure boxes retain the original source border color. */
+.allianz-modern .allianz-faq-disclosures .disclosure .box {
+  border-color: #3c3c3c;
+}

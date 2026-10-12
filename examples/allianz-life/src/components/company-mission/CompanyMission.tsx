@@ -14,7 +14,7 @@ export const Default = ({ fields, params }: CompanyMissionProps) => {
       <div className="l-grid__row u-margin-bottom-xl">
         <div className="l-grid__column-medium-12">
           <RichText field={datasource.missionStatement?.jsonValue}
-            editable={page?.mode?.isEditing ?? false} className="o-richTextEditor__wrapper" />
+            editable={page?.mode?.isEditing ?? false} className="o-richTextEditor__wrapper u-text-center" />
         </div>
       </div>
     </div>

@@ -1,0 +1,16 @@
+/* Source table alignment without the captured editor-only left offset. */
+.allianz-about-history .allianz-about-history-table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.allianz-about-history .allianz-about-history-date,
+.allianz-about-history .allianz-about-history-gap,
+.allianz-about-history .allianz-about-history-spacer > td,
+.allianz-about-history .allianz-about-history-leading-space {
+  text-align: center;
+}
+
+.allianz-about-history .allianz-about-history-body {
+  text-align: left;
+}

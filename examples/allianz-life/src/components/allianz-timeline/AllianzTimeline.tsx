@@ -24,3 +24,53 @@ export const Default = ({ fields, params }: AllianzTimelineProps) => {
     </div></div></div>
   </section>;
 };
+
+import { Fragment } from 'react';
+import './AboutHistory.css';
+
+/** Fixed About source presentation; every authored value stays its original SDK field. */
+export const AboutHistory = ({ fields, params }: AllianzTimelineProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzTimeline" />;
+  const entries = data.children?.results ?? [];
+  return <div className="l-container--full-width t-bg-blue-soft axlTileCollection allianz-about-history" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg">
+        <div className="l-grid__column-medium-12">
+          <article className="m-axlIntroductionBlock -is--stacked -no--image">
+            <div className="tileContent u-text-center"><header>
+              <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) &&
+                <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+              <div className="tileSubHeading" />
+            </header></div>
+          </article>
+        </div>
+      </div>
+      <div className="l-grid__row">
+        <div className="l-grid__column-medium-8 offset-medium-2 l-grid__column-small-12">
+          <div className="o-richTextEditor__wrapper">
+            {shouldRenderTextField(data.body?.jsonValue, isEditing) &&
+              <RichText editable={isEditing} field={data.body?.jsonValue} />}
+            <p className="allianz-about-history-leading-space" aria-hidden="true" />
+            <table className="table" aria-hidden="true" />
+            <table className="allianz-about-history-table"><tbody>
+              {entries.map((item, index) => <Fragment key={item.id}>
+                <tr className="allianz-about-history-entry">
+                  <td className="allianz-about-history-date"><Text editable={isEditing} tag="strong" field={item.date?.jsonValue} /></td>
+                  <td className="allianz-about-history-gap" aria-hidden="true">{'\u00a0'}</td>
+                  <td className="allianz-about-history-body"><RichText editable={isEditing} field={item.body?.jsonValue} /></td>
+                </tr>
+                {index < entries.length - 1 && <tr className="allianz-about-history-spacer" aria-hidden="true">
+                  <td>{'\u00a0'}</td><td>{'\u00a0'}</td><td>{'\u00a0'}</td>
+                </tr>}
+              </Fragment>)}
+            </tbody></table>
+            <p aria-hidden="true">{'\u00a0'}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>;
+};
