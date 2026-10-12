@@ -1,0 +1,9 @@
+/* Native buttons own disclosure state; the six source answer fields stay whole. */
+.allianz-iap-strategies .c-accordion__item-content[hidden] {
+  display: none;
+}
+
+.allianz-iap-strategies .c-accordion__item-content:not([hidden]) {
+  max-height: none;
+  overflow: hidden;
+}

@@ -1,0 +1,224 @@
+/* Qualified source spacing for the three explicit Investment Options variants.
+   Values are from the cached matching legacy stylesheet, not a current-cascade proof. */
+.allianz-investment-options-block {
+  color: #333;
+  background: #fff;
+  font-family: "Allianz Neo", sans-serif;
+  line-height: 1.42857143;
+}
+
+.allianz-investment-options-frame {
+  max-width: 1530px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.allianz-investment-options-column {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.allianz-investment-options-title .allianz-investment-options-column {
+  padding-top: 15px;
+}
+
+.allianz-investment-options-heading {
+  color: #003781;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.allianz-investment-options-title h1.allianz-investment-options-heading {
+  margin: 0 0 20px;
+  font-size: 32px;
+}
+
+.allianz-investment-options-content h2.allianz-investment-options-heading {
+  margin: 20px 0 10px;
+  font-size: 26px;
+}
+
+.allianz-investment-options-content h3.allianz-investment-options-heading {
+  margin: 20px 0 10px;
+  font-size: 20px;
+}
+
+.allianz-investment-options-content h4.allianz-investment-options-heading {
+  margin: 10px 0 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.allianz-investment-options-body p,
+.allianz-investment-options-body ul,
+.allianz-investment-options-body ol,
+.allianz-investment-options-subheading p {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.allianz-investment-options-body ul {
+  margin-left: 30px;
+  padding: 0;
+  list-style: disc;
+}
+
+.allianz-investment-options-body ol {
+  padding-left: 30px;
+}
+
+.allianz-investment-options-body li,
+.allianz-investment-options-body li p {
+  margin-bottom: 10px;
+}
+
+.allianz-investment-options-content .allianz-investment-options-heading:is(h3, h4) ~ .allianz-investment-options-body > ul:first-child {
+  margin-top: 20px;
+}
+
+.allianz-investment-options-disclosures .allianz-investment-options-column {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.allianz-investment-options-disclosures .allianz-investment-options-body > p:first-child {
+  border-top: 1px dotted #4d4d4d;
+  padding-top: 20px;
+}
+
+.allianz-investment-options-body p.box {
+  border: 1px solid #333;
+  padding: 4px;
+}
+
+@media (min-width: 768px) {
+  .allianz-investment-options-column {
+    width: 75%;
+    margin-left: 25%;
+  }
+
+  .allianz-investment-options-title .allianz-investment-options-column {
+    padding-top: 30px;
+  }
+
+  .allianz-investment-options-title h1.allianz-investment-options-heading {
+    margin: -8px 0 19px;
+    font-size: 40px;
+  }
+
+  .allianz-investment-options-content h2.allianz-investment-options-heading {
+    margin: 40px 0 10px;
+    font-size: 30px;
+  }
+
+  .allianz-investment-options-content h3.allianz-investment-options-heading {
+    margin: 40px 0 10px;
+    font-size: 22px;
+  }
+
+  .allianz-investment-options-content h4.allianz-investment-options-heading {
+    margin: 40px 0 10px;
+    font-size: 17px;
+  }
+
+  .allianz-investment-options-body p,
+  .allianz-investment-options-body ul,
+  .allianz-investment-options-body ol,
+  .allianz-investment-options-subheading p {
+    font-size: 17px;
+  }
+
+  .allianz-investment-options-body ul {
+    margin-left: 40px;
+  }
+
+  .allianz-investment-options-disclosures .allianz-investment-options-column {
+    padding-bottom: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .allianz-investment-options-column {
+    width: 66.66666667%;
+    margin-left: 16.66666667%;
+  }
+}
+
+/* Investment Options source-fit successor preview only. Existing174 source pins remain unchanged. */
+.allianz-investment-options-block {
+  font-family: "AllianzNeoRegular", sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+.allianz-investment-options-block .allianz-investment-options-heading {
+  font-family: "AllianzNeoRegular", sans-serif;
+}
+.allianz-investment-options-frame {
+  max-width: 1170px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.allianz-investment-options-block .allianz-investment-options-body ul.link-list {
+  margin: 0 0 20px 30px;
+  padding: 0;
+}
+.allianz-investment-options-block .allianz-investment-options-body ul.link-list li {
+  padding-left: 13px;
+  list-style: none;
+  margin: 0 !important;
+  font: inherit;
+  background-repeat: no-repeat;
+  background-position: 0 .8em;
+  background-size: 4px 8px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAAZklEQVQY02NgMG/sAuL/QHwJiNmAmAGG////zwBicALxbaiiamwKQNgequAnEKtjUwDCM6GKDuNSIATET6CKMrEpAOFAqILPQCyNTQEIr4Yq2kKyCQTdgNcXeMOBYEjijwsQgQ8DAKxHnvCWvLG+AAAAAElFTkSuQmCC);
+}
+.allianz-investment-options-block .allianz-investment-options-body a {
+  font: inherit;
+}
+.allianz-investment-options-block .allianz-investment-options-body ul.link-list a {
+  display: inline-block;
+  padding: 5px 0 !important;
+  color: #428bca;
+  text-decoration: none;
+}
+.allianz-investment-options-block.allianz-investment-options-content .allianz-investment-options-heading:is(h3,h4) ~ .allianz-investment-options-body > ul:first-child {
+  margin-top: 0;
+}
+.allianz-investment-options-block .allianz-investment-options-body p a {
+  color: #0077c8;
+  text-decoration: underline;
+}
+.allianz-investment-options-block .allianz-investment-options-body p.link {
+  padding-left: 13px;
+  background-repeat: no-repeat;
+  background-position: 0 .8em;
+  background-size: 4px 8px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAAZklEQVQY02NgMG/sAuL/QHwJiNmAmAGG////zwBicALxbaiiamwKQNgequAnEKtjUwDCM6GKDuNSIATET6CKMrEpAOFAqILPQCyNTQEIr4Yq2kKyCQTdgNcXeMOBYEjijwsQgQ8DAKxHnvCWvLG+AAAAAElFTkSuQmCC);
+}
+.allianz-investment-options-block .allianz-investment-options-body p.link a {
+  text-decoration: none;
+}
+.allianz-investment-options-block .allianz-investment-options-body b,
+.allianz-investment-options-block .allianz-investment-options-body strong {
+  font-family: "Allianz Neo", sans-serif;
+  font-weight: 700;
+}
+.allianz-investment-options-block .allianz-investment-options-body .disclosure-finra {
+  font-size: 13px;
+}
+@media (max-width: 767px) {
+  .allianz-investment-options-frame {
+    width: calc(100% - 14px);
+  }
+}
+
+/* Source keeps a visible empty grid row with min-height:1px before disclosures. */
+.allianz-investment-options-disclosures .allianz-investment-options-column { padding-top: 41px; }

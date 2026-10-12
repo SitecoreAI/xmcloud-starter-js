@@ -1,0 +1,100 @@
+/* The FAQ link remains in its complete native Rich Text field. */
+.allianz-rila-contract-introduction .tileLink p {
+  margin: 0;
+}
+.allianz-rila-contract-introduction .tileLink a {
+  display: inline-flex;
+  align-items: center;
+  color: #0077c8;
+  text-decoration: none;
+}
+.allianz-rila-contract-introduction .tileLink a::before {
+  content: "";
+  flex: 0 0 1em;
+  width: 1em;
+  height: 1em;
+  margin-right: .5em;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%230077c8%22%20d%3D%22M23.8863661%2C13.0726536%20C24.037878%2C12.7066353%2024.037878%2C12.2926146%2023.8863661%2C11.9265963%20C23.8098601%2C11.7420871%2023.7003516%2C11.5755788%2023.5608407%2C11.4375719%20L17.561872%2C5.43877194%20C16.9768263%2C4.85374269%2016.0272521%2C4.85374269%2015.4407063%2C5.43877194%20C14.8541605%2C6.02530127%2014.8541605%2C6.97484874%2015.4407063%2C7.55987799%20L18.880475%2C10.99955%20L1.5001172%2C10.99955%20C0.670552387%2C10.99955%200%2C11.6700835%200%2C12.499625%20C0%2C13.3291665%200.670552387%2C13.9997%201.5001172%2C13.9997%20L18.880475%2C13.9997%20L15.4407063%2C17.439372%20C14.8541605%2C18.0259013%2014.8541605%2C18.9754488%2015.4407063%2C19.560478%20C15.7332292%2C19.8544927%2016.1172592%2C20%2016.5012892%2C20%20C16.8853192%2C20%2017.2693492%2C19.8544927%2017.561872%2C19.560478%20L23.5608407%2C13.5616781%20C23.7003516%2C13.4236712%2023.8098601%2C13.2571629%2023.8863661%2C13.0726536%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+}
+.allianz-rila-contract-introduction .tileLink a:hover,
+.allianz-rila-contract-introduction .tileLink a:focus-visible {
+  text-decoration: underline;
+}
+
+/* The source FAQ ends with a one-pixel empty grid row. It also contains the
+   introduction row's 32px bottom margin within the blue background. */
+.allianz-rila-contract-introduction::after {
+  content: "";
+  display: block;
+  height: 1px;
+}
+/* The source introduction and FIA tile share one green container. Preserve its
+   continuous background when those rows use separate native renderings. */
+.allianz-rila-explore-introduction {
+  display: flow-root;
+}
+/* Keep the full native Rich Text field and reproduce its source link grammar. */
+.allianz-rila-contract-introduction .tileLink a {
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: "Allianz Neo", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .0625rem;
+  line-height: 1.5rem;
+  position: relative;
+  text-decoration: none;
+  -webkit-hyphens: none;
+  hyphens: none;
+  cursor: pointer;
+  color: #005074;
+  transition: all .3s ease, box-shadow .3s ease;
+}
+.allianz-rila-contract-introduction .tileLink a::before {
+  --allianz-rila-faq-arrow: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%230077c8%22%20d%3D%22M23.8863661%2C13.0726536%20C24.037878%2C12.7066353%2024.037878%2C12.2926146%2023.8863661%2C11.9265963%20C23.8098601%2C11.7420871%2023.7003516%2C11.5755788%2023.5608407%2C11.4375719%20L17.561872%2C5.43877194%20C16.9768263%2C4.85374269%2016.0272521%2C4.85374269%2015.4407063%2C5.43877194%20C14.8541605%2C6.02530127%2014.8541605%2C6.97484874%2015.4407063%2C7.55987799%20L18.880475%2C10.99955%20L1.5001172%2C10.99955%20C0.670552387%2C10.99955%200%2C11.6700835%200%2C12.499625%20C0%2C13.3291665%200.670552387%2C13.9997%201.5001172%2C13.9997%20L18.880475%2C13.9997%20L15.4407063%2C17.439372%20C14.8541605%2C18.0259013%2014.8541605%2C18.9754488%2015.4407063%2C19.560478%20C15.7332292%2C19.8544927%2016.1172592%2C20%2016.5012892%2C20%20C16.8853192%2C20%2017.2693492%2C19.8544927%2017.561872%2C19.560478%20L23.5608407%2C13.5616781%20C23.7003516%2C13.4236712%2023.8098601%2C13.2571629%2023.8863661%2C13.0726536%22%2F%3E%3C%2Fsvg%3E");
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin: 2px 8px 0 0;
+  background: currentColor;
+  -webkit-mask: var(--allianz-rila-faq-arrow) center / contain no-repeat;
+  mask: var(--allianz-rila-faq-arrow) center / contain no-repeat;
+}
+.allianz-rila-contract-introduction .tileLink a:hover {
+  color: #06c;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+.allianz-rila-contract-introduction .tileLink a:focus {
+  color: #003781;
+  outline: none;
+}
+.allianz-rila-contract-introduction .tileLink a:active,
+.allianz-rila-contract-introduction .tileLink a:visited {
+  color: #8a679c;
+  outline: none;
+}
+.allianz-rila-contract-introduction .tileLink a:focus-visible {
+  outline: 0;
+  background-color: #8a679c;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Source child label/icon hover rules follow its visited/focus parent rules. */
+.allianz-rila-contract-introduction .tileLink a:hover {
+  color: #06c;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+.allianz-rila-contract-introduction .tileLink a:focus-visible::before {
+  background-color: #fff;
+}
+
+/* The original expanded RILA panel contains the first paragraph's existing
+   margin. Keep that boundary without adding padding or changing the field. */
+#content:has(> .allianz-rila-hero) .c-accordion__item-content[role="region"] {
+  overflow: hidden;
+}

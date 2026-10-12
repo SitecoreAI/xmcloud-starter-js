@@ -31,8 +31,8 @@ function href(html) {
   return /href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
 }
 
-test('all 23 approved PDF destinations remain absolute through the installed SDK in visitor and editing modes', () => {
-  assert.equal(pdfs.length, 23);
+test('all 25 approved PDF destinations remain absolute through the installed SDK in visitor and editing modes', () => {
+  assert.equal(pdfs.length, 25);
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     for (const entry of pdfs) {

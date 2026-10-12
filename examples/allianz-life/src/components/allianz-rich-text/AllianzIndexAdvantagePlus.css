@@ -1,0 +1,5 @@
+/* Source next-step and support rows share a green container. Contain the
+   existing introduction-row margin when native renderings split those rows. */
+.allianz-iap-next-step {
+  display: flow-root;
+}

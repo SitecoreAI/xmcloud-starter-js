@@ -1,6 +1,6 @@
 {
   "schema": "allianz.approved-source-external-links.v1",
-  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified.",
+  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled.",
   "sourcePins": [
     {
       "path": "preparation/resources-exact-scope-v8/PDF-EXTERNAL-EXACT-FIELD-CANDIDATE.json",
@@ -131,6 +131,25 @@
       "sha256": "738173a3565c114d4d84a8ac5b8b6a26d7d334887c1daf9a0537f9199cb41236",
       "sourceRoute": "/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7",
       "evidence": "Exact current source HTML anchors and verified native SDK General Link values for AA7 Rates resource and three PDF card destinations. Parent explicitly approved preserving all three original PDF URLs and the exact source Rates URL as an external _blank product-navigation link where no native Rates child exists. Only these four literal URLs are added; source resource Rates same-tab target remains original."
+    },
+    {
+      "path": "preparation/aa5-source-reconnaissance-v1/public-source-capture/dom/live-original-main.html",
+      "sha256": "c8708c395f8e501e405a0fe5a83d2a54db0651dabe70e679b7c96cab1cde82b2",
+      "sourceRoute": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+      "httpStatus": 200,
+      "capturedAtUtc": "2026-10-11T23:08:44.016Z",
+      "evidence": "Approved exact current source AA5 Rates URL and two brochure URLs. Native targets are being admitted separately; no URL prefix/domain expansion. Allocation tool and CSI-504 already allowed. Native targets may be bound where real IDs exist; these literal captured URLs remain approved source destinations."
+    },
+    {
+      "path": "preparation/rila-scoped-correction-v1/native-intake/extracted/SOURCE-PARITY-CHECKS.json",
+      "sha256": "61d13bf938df42bf7b53d2e21e50c0b028d7093caae35f51039e4f7127476ec0",
+      "sourceRoute": "/what-we-offer/annuities/registered-index-linked-annuities",
+      "evidence": "Five exact hrefs from current sourceDOM; nativeworker confirmed five targetpagesguard1/unaccepted, parentauthorizedsource-externalfallback."
+    },
+    {
+      "path": "preparation/index-advantage-plus-source-fit-v1/intake/extracted/SOURCE-DOM.json",
+      "sha256": "6ea362b06571f369f8f699b4dc1feab67c467ee88cad24c66525f2cc20374da9",
+      "evidence": "Current Index Advantage+ source main and separately captured navigation links; only exact grounded six destinations. No source domain wildcard or Login change."
     }
   ],
   "entries": [
@@ -433,6 +452,76 @@
       "kind": "public-pdf",
       "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2019/05/15/12/35/CSI-504.pdf",
       "sourceRecordKey": "aa7-index-lock-brochure"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5/rates",
+      "sourceRecordKey": "aa5-rates-source"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/30/15/16/AAA5-001.pdf",
+      "sourceRecordKey": "aa5-product-brochure"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/30/15/16/AAA5-001-B.pdf",
+      "sourceRecordKey": "aa5-product-brochure-insert"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus",
+      "sourceRecordKey": "rila-product-1-69da6e33-d800-4812-9830-87069a0ed144"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf",
+      "sourceRecordKey": "rila-product-2-4907340b-9572-481d-b24a-61792439981d"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income",
+      "sourceRecordKey": "rila-product-3-8fc76b2d-5f5e-4ae2-8211-0a5ed2e8fa11"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income",
+      "sourceRecordKey": "rila-product-4-6eac7bdc-d302-47b8-a358-0a98b1f7a168"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+      "sourceRecordKey": "rila-product-5-efafbcc2-0c2b-4e84-a3d0-ebed43f07e92"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/video",
+      "sourceRecordKey": "iap-nav-video"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+      "sourceRecordKey": "iap-nav-prospectus"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/rila-rates-center-ixap",
+      "sourceRecordKey": "iap-nav-and-tools-rates"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator",
+      "sourceRecordKey": "iap-nav-and-tools-calculator"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/define-your-downside",
+      "sourceRecordKey": "iap-tools-define-downside"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions",
+      "sourceRecordKey": "iap-support-faq"
     }
   ]
 }

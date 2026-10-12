@@ -29,5 +29,5 @@ export default function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|healthz|sitecore/api/|-/|allianz-assets/|allianz-legacy-assets/|allianz-ui/video-placeholder\\.svg$|fonts/|favicon.ico|sc_logo.svg|ai/).*)'],
+  matcher: ['/', '/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|healthz|sitecore/api/|-/|allianz-assets/|allianz-legacy-assets/|allianz-ui/video-placeholder\\.svg$|allianz-ui/(?:about-overview|life-overview|life-faq|life-tools)/[a-z0-9-]+\\.svg$|fonts/|favicon.ico|sc_logo.svg|ai/).*)'],
 };

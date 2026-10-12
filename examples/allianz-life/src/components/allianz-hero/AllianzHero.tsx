@@ -244,3 +244,46 @@ export const FixedProduct = ({ fields, params }: AllianzHeroProps) => {
     </div>
   </div>;
 };
+
+/** RILA short source stage; native DAM fields retain their authoring envelopes. */
+export const RilaHero = ({ fields, params }: AllianzHeroProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzHero" />;
+  const blockHeading = hasEditorialBlockMarkup(data.heading?.jsonValue?.value);
+  return <div className="l-container-full-width t-bg-product-variable c-hero__theme--variable allianz-rila-hero" id={params.RenderingIdentifier}>
+    <div className="m-axlHero">
+      <picture className="c-image c-stage__image--cover c-stage__image--short">
+        {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
+        {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />}
+      </picture>
+      <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
+        {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} field={safeEditorialRichText(data.heading?.jsonValue, isEditing)} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} tag={hasEditorialBlockMarkup(data.body?.jsonValue?.value) ? 'div' : 'p'} field={safeEditorialRichText(data.body?.jsonValue, isEditing)} className="h4 c-heading c-hero__subHeadline u-text-center" />}
+        {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px', height: 'auto' }} /></div>}
+      </div></div>
+    </div>
+  </div>;
+};
+
+/** Index Advantage+ source stage; its finite theme needs only the admitted variant selector. */
+export const IapHero = ({ fields, params }: AllianzHeroProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzHero" />;
+  const blockHeading = hasEditorialBlockMarkup(data.heading?.jsonValue?.value);
+  return <div className="l-container-full-width t-bg-product-variable c-hero__theme--variable allianz-index-advantage-plus-hero" id={params?.RenderingIdentifier}>
+    <div className="m-axlHero">
+      <picture className="c-image c-stage__image--cover c-stage__image--short">
+        {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
+        {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />}
+      </picture>
+      <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
+        {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} field={data.heading?.jsonValue} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
+        {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px', height: 'auto' }} /></div>}
+      </div></div>
+    </div>
+  </div>;
+};

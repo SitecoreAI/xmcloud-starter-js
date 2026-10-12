@@ -63,3 +63,13 @@ export const FixedSourceStatic = (props: AllianzVideoProps) => {
   }
   return <SourceStatic {...props} params={fixedParams} />;
 };
+
+/** RILA spacing is intrinsic because its native parameter template has no spacing fields. */
+export const RilaStaticVideo = (props: AllianzVideoProps) => {
+  const fixedParams: AllianzVideoProps['params'] = { theme: 'transparent', spacing: 'none',
+    paddingTop: 'none', paddingBottom: 'none', marginBottom: 'xl' };
+  if (props.params?.RenderingIdentifier !== undefined) {
+    fixedParams.RenderingIdentifier = props.params.RenderingIdentifier;
+  }
+  return <SourceStatic {...props} params={fixedParams} />;
+};

@@ -27,10 +27,11 @@ type AllianzCardGridPresentation = {
   faqAppearance?: 'help' | 'professional';
   sourceAnchor?: 'impact';
   sourceRelatedIntroduction?: boolean;
+  sourceFeaturesIntroduction?: boolean;
 };
 
 function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearance,
-  sourceAnchor, sourceRelatedIntroduction = false,
+  sourceAnchor, sourceRelatedIntroduction = false, sourceFeaturesIntroduction = false,
 }: AllianzCardGridProps & AllianzCardGridPresentation) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
@@ -55,9 +56,14 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
             {shouldRenderTextField(data.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={safeEditorialRichText(data.subheading?.jsonValue, isEditing)} className="tileSubHeading" /> : <div className="tileSubHeading" />}
           </header>
           {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing)} className="tileBody" />}
-        </> : <>
+        </> : sourceFeaturesIntroduction ? <header>
+          <div className="tileHeading"><h2><Text editable={isEditing} field={data.heading?.jsonValue} /><br /></h2></div>
+          {shouldRenderTextField(data.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+        </header> : <>
           <div className="tileHeading"><Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} /></div><RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" /><RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />{shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
         </>}
+        {sourceFeaturesIntroduction && shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+        {sourceFeaturesIntroduction && shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
       </div></article></div></div>}
       <div className={`l-grid__row ${isCards ? '' : 'match-height-row'} ${rowSpacing(params)}`}>
         {isCards ? <div className="l-grid__column-medium-12"><div className={`o-cards o-cards__col${params.columns || '3'}`}>
@@ -85,7 +91,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
                   const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'];
                   const linkKey = item.id ?? (field as typeof field & { metadata?: { itemId?: string } }).metadata?.itemId ?? linkIndex;
                   const linkProps = sourceAnchor && !isEditing ? safeLinkRenderProps(field) : { field };
-                  return <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={sourceAnchor ? isEditing : undefined} key={linkKey} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}><><span className="a-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" preserveAspectRatio="xMidYMid meet"><path fillRule="evenodd" d="M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536"/></svg></span><span className="a-link__text">{item.link?.jsonValue?.value?.text}</span></></Link>;
+                  return <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={sourceAnchor ? isEditing : undefined} key={linkKey} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}><><span className="a-link__icon" aria-hidden="true">{sourceFeaturesIntroduction && /\.pdf(?:[?#]|$)/i.test(field.value?.href ?? '') ? <SustainabilityDownloadIcon /> : <svg viewBox="0 0 24 24" focusable="false" preserveAspectRatio="xMidYMid meet"><path fillRule="evenodd" d="M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536"/></svg>}</span><span className="a-link__text">{item.link?.jsonValue?.value?.text}</span></></Link>;
                 })}</div></footer>}
               </div>
             </div>
@@ -1120,3 +1126,188 @@ const FixedResourceCalculatorIcon = () => <svg xmlns="http://www.w3.org/2000/svg
 const FixedResourceSearchDocumentIcon = () => <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="titleIconSearchDocument" aria-describedby="descIconSearchDocument" focusable="true" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><title id="titleIconSearchDocument">Search Document</title><desc id="descIconSearchDocument">Search Document</desc>  <path fillRule="evenodd" d="M21.4,22.3636364 L21.4,1.63636364 C21.4,1.33527273 21.13,1.09090909 20.8,1.09090909 L2.8,1.09090909 C2.47,1.09090909 2.2,1.33527273 2.2,1.63636364 L2.2,22.3636364 C2.2,22.6647273 2.47,22.9090909 2.8,22.9090909 L20.8,22.9090909 C21.13,22.9090909 21.4,22.6647273 21.4,22.3636364 Z M20.8,0 C21.7924,0 22.6,0.734181818 22.6,1.63636364 L22.6,22.3636364 C22.6,23.2658182 21.7924,24 20.8,24 L2.8,24 C1.8076,24 1,23.2658182 1,22.3636364 L1,1.63636364 C1,0.734181818 1.8076,0 2.8,0 L20.8,0 Z M18.4,3.27272727 C18.7312,3.27272727 19,3.51709091 19,3.81818182 C19,4.11927273 18.7312,4.36363636 18.4,4.36363636 L5.2,4.36363636 C4.8688,4.36363636 4.6,4.11927273 4.6,3.81818182 C4.6,3.51709091 4.8688,3.27272727 5.2,3.27272727 L18.4,3.27272727 Z M18.4,6.54545455 C18.7312,6.54545455 19,6.78981818 19,7.09090909 C19,7.392 18.7312,7.63636364 18.4,7.63636364 L5.2,7.63636364 C4.8688,7.63636364 4.6,7.392 4.6,7.09090909 C4.6,6.78981818 4.8688,6.54545455 5.2,6.54545455 L18.4,6.54545455 Z M7,14.7392727 C7,16.8556364 8.8936,18.5781818 11.2228,18.5781818 C13.5496,18.5781818 15.4432,16.8556364 15.4432,14.7392727 C15.4432,12.6229091 13.5496,10.9014545 11.2228,10.9014545 C8.8936,10.9014545 7,12.6229091 7,14.7392727 Z M15.4288,17.8090909 L17.6248,19.8043636 C17.8588,20.0170909 17.8588,20.3629091 17.6248,20.5756364 C17.5072,20.6825455 17.3536,20.736 17.2,20.736 C17.0464,20.736 16.8928,20.6825455 16.7752,20.5756364 L14.5792,18.5792727 C13.6528,19.2501818 12.496,19.6690909 11.2228,19.6690909 C8.2324,19.6690909 5.8,17.4578182 5.8,14.7392727 C5.8,12.0218182 8.2324,9.81054545 11.2228,9.81054545 C14.212,9.81054545 16.6432,12.0218182 16.6432,14.7392727 C16.6432,15.9054545 16.1764,16.9647273 15.4288,17.8090909 Z"/></svg>;
 
 const FixedResourceArrowIcon = () => <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="titleIconArrowRight" aria-describedby="descIconArrowRight" focusable="true" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><title id="titleIconArrowRight">Right</title><desc id="descIconArrowRight">Right</desc><path fillRule="evenodd" d="M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536"/></svg>;
+
+/** AA5 source resources keep their native headings at H2. */
+export const FixedProductResourcesH2 = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  const sourceIcons = [FixedResourceStocksIcon, FixedResourceCalculatorIcon, FixedResourceSearchDocumentIcon];
+  const spacing = rowSpacing(params);
+  return <div className="l-container--full-width t-bg-grey-soft axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className={`l-grid__row match-height-row${spacing ? ` ${spacing}` : ''}`}>
+        {cards.map((card, cardIndex) => {
+          const Icon = sourceIcons[cardIndex];
+          const links = (card.links?.targetItems ?? [])
+            .filter(item => shouldRenderLinkField(item.link?.jsonValue, isEditing));
+          return <div key={card.id} className="l-grid__column-medium-4">
+            <article className="m-axlTile match-height -is--stacked t-bg-primary-white">
+              <div className="tileContent u-text-center">
+                {Icon && <div className="tileSubGrid__image"><div className="tileIcon t-bg-transparent t-icon-primary-black"><Icon /></div></div>}
+                <div className="tileSubGrid__content">
+                  <header>
+                    <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={card.heading?.jsonValue} />}</div>
+                    <div className="tileSubHeading" />
+                  </header>
+                  <div className="tileBody u-font-size-md" />
+                  {links.length > 0 && <footer>{links.map(item => {
+                    const field = allianzLinkField(item.link?.jsonValue, isEditing);
+                    const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+                    const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
+                    const download = /\.pdf(?:[?#]|$)/i.test(field.value?.href ?? '');
+                    return <div className="tileLink" key={item.id}>
+                      <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+                        <span className="a-link__icon" aria-hidden="true">{download ? <SustainabilityDownloadIcon /> : <FixedResourceArrowIcon />}</span>
+                        <span className="a-link__text">{field.value?.text}</span>
+                      </Link>
+                    </div>;
+                  })}</footer>}
+                </div>
+              </div>
+            </article>
+          </div>;
+        })}
+      </div>
+    </div>
+  </div>;
+};
+
+/** Fixed product Features retain the source introduction header and its native heading. */
+export const FixedProductFeatures = (props: AllianzCardGridProps) => <AllianzCardGrid {...props} sourceFeaturesIntroduction />;
+
+
+type RilaCardRole = 'benefits' | 'accumulation' | 'income' | 'support';
+
+/** The current RILA source has four finite tile rows. These named variants
+ * retain native fields and ordered children; decorative source glyphs are
+ * presentation only, with no invented Icon fields or authoring metadata. */
+function SourceRilaCards({ fields, params, role }: AllianzCardGridProps & { role: RilaCardRole }) {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  const isProduct = role === 'accumulation' || role === 'income';
+  const theme = role === 'benefits' ? 'transparent' : role === 'support' ? 'green-soft' : 'blue-soft';
+  const column = role === 'accumulation' || role === 'support' ? '6' : '4';
+  const row = role === 'benefits' || role === 'income' ? ' match-height-row' : role === 'support' ? ' u-padding-top-xl' : '';
+  return <div className={`l-container--full-width t-bg-${theme} axlTileCollection`} id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className={`l-grid__row${row}`}>
+        {cards.map((card, index) => {
+          const glyph = role === 'benefits' ? (['Shield', 'GraphVariableUp', 'Shapes'] as const)[index]
+            : role === 'support' ? (['QuestionMark', 'Information'] as const)[index] : undefined;
+          const margin = role === 'income' || (role === 'accumulation' && index === 0) || (role === 'support' && index === 1) ? ' u-margin-bottom-xl' : '';
+          const links = card.links?.targetItems ?? [{ id: `${card.id}-link`, link: card.link }];
+          const activeLinks = links.filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing));
+          return <div key={card.id} className={`l-grid__column-medium-${column}`}>
+            <article className={`m-axlTile match-height${isProduct ? ' -is--flipped tile--stackedImage' : ''} -is--stacked ${role === 'benefits' ? 't-bg-transparent' : 't-bg-primary-white'}${margin}`}>
+              <div className={`tileContent ${isProduct ? 'u-text-left' : 'u-text-center'}`}>
+                {glyph && <div className="tileSubGrid__image"><div className={`tileIcon ${role === 'support' ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}><RilaSourceGlyph glyph={glyph} /></div></div>}
+                <div className="tileSubGrid__content">
+                  <header>
+                    <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={card.heading?.jsonValue} />}</div>
+                    {shouldRenderTextField(card.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.subheading?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+                  </header>
+                  {shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" /> : <div className="tileBody u-font-size-md" />}
+                  {activeLinks.length > 0 && <footer>{activeLinks.map((item, linkIndex) => {
+                    const field = allianzLinkField(item.link?.jsonValue, isEditing);
+                    const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+                    const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
+                    return <div className="tileLink" key={item.id ?? linkIndex}>
+                      <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+                        <span className="a-link__icon" aria-hidden="true"><EditorialResourceArrow /></span><span className="a-link__text">{field.value?.text}</span>
+                      </Link>
+                    </div>;
+                  })}</footer>}
+                </div>
+              </div>
+              {isProduct && shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} sizes="100vw" className="c-image__img c-teaser__image-img" /></picture></div>}
+            </article>
+          </div>;
+        })}
+      </div>
+    </div>
+  </div>;
+}
+
+export const RilaBenefits = (props: AllianzCardGridProps) => <SourceRilaCards {...props} role="benefits" />;
+export const RilaAccumulationProducts = (props: AllianzCardGridProps) => <SourceRilaCards {...props} role="accumulation" />;
+export const RilaIncomeProducts = (props: AllianzCardGridProps) => <SourceRilaCards {...props} role="income" />;
+export const RilaSupport = (props: AllianzCardGridProps) => <SourceRilaCards {...props} role="support" />;
+
+/** Source paths are exact; adjacent labels convey their meaning accessibly. */
+const RilaSourceGlyph = ({ glyph }: { glyph: 'Shield' | 'GraphVariableUp' | 'Shapes' | 'QuestionMark' | 'Information' }) => {
+  switch (glyph) {
+    case 'Shield': return <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M20.5,4 C15.9,4 12.4,0.2 12.4,0.2 C12.3,0.1 12.1,0 12,0 C11.9,0 11.7,0.1 11.6,0.2 C11.6,0.2 8,4 3.5,4 C3.2,4 3,4.2 3,4.5 L3,11.5 C3,18.1 11.4,23.7 11.7,24 C11.8,24 11.9,24 12,24 C12.1,24 12.2,24 12.3,23.9 C12.7,23.7 21,18 21,11.4 L21,4.4 C21,4.2 20.8,4 20.5,4 Z M20,11.5 C20,16.9 13.4,21.9 12,22.9 C10.6,21.9 4,16.9 4,11.5 L4,5 C7.9,4.8 11,2.2 12,1.2 C13,2.2 16.1,4.8 20,5 L20,11.5 Z" /></svg>;
+    case 'GraphVariableUp': return <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fillRule="evenodd" d="M0.545454545,22 C0.244363636,22 0,21.7511111 0,21.4444444 L0,2.55555556 C0,2.24888889 0.244363636,2 0.545454545,2 C0.846545455,2 1.09090909,2.24888889 1.09090909,2.55555556 L1.09090909,20.8888889 L23.4545455,20.8888889 C23.7556364,20.8888889 24,21.1377778 24,21.4444444 C24,21.7511111 23.7556364,22 23.4545455,22 L0.545454545,22 Z M18.705,8.82916667 C18.9177273,8.6125 19.2635455,8.6125 19.4762727,8.82916667 C19.689,9.04583333 19.689,9.39805556 19.4762727,9.61472222 L14.0217273,15.1702778 C13.8286364,15.3669444 13.5242727,15.3880556 13.3093636,15.2213889 L9.32318182,12.1780556 L5.29445455,16.2813889 C5.18754545,16.3902778 5.04790909,16.4447222 4.90936364,16.4447222 C4.76972727,16.4447222 4.63009091,16.3902778 4.52318182,16.2813889 C4.31045455,16.0647222 4.31045455,15.7125 4.52318182,15.4958333 L8.88681818,11.0513889 C9.07772727,10.8547222 9.38209091,10.8336111 9.59918182,11.0002778 L13.5853636,14.0436111 L18.705,8.82916667 Z" /></svg>;
+    case 'Shapes': return <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12.0002739,10.8571429 C14.4067644,10.8571429 16.3638106,8.89228571 16.3638106,6.47619048 C16.3638106,4.06009524 14.4067644,2.0952381 12.0002739,2.0952381 C9.59378332,2.0952381 7.63673708,4.06009524 7.63673708,6.47619048 C7.63673708,8.89228571 9.59378332,10.8571429 12.0002739,10.8571429 Z M17.4546948,6.47619048 C17.4546948,9.4957619 15.0078416,11.952381 12.0002739,11.952381 C8.99270613,11.952381 6.54585288,9.4957619 6.54585288,6.47619048 C6.54585288,3.45661905 8.99270613,1 12.0002739,1 C15.0078416,1 17.4546948,3.45661905 17.4546948,6.47619048 Z M15.2729264,22.9047619 L22.9091158,22.9047619 L22.9091158,15.2380952 L15.2729264,15.2380952 L15.2729264,22.9047619 Z M23.4545579,14.1428571 C23.7556419,14.1428571 24,14.3881905 24,14.6904762 L24,23.452381 C24,23.7546667 23.7556419,24 23.4545579,24 L14.7274843,24 C14.4264003,24 14.1820422,23.7546667 14.1820422,23.452381 L14.1820422,14.6904762 C14.1820422,14.3881905 14.4264003,14.1428571 14.7274843,14.1428571 L23.4545579,14.1428571 Z M1.49505906,22.9047619 L9.96032041,22.9047619 L5.72768974,15.6203333 L1.49505906,22.9047619 Z M11.3817425,23.7250952 C11.2857447,23.8948571 11.1046579,24 10.9093897,24 L0.545989812,24 C0.350721541,24 0.169634765,23.8948571 0.0725460717,23.7250952 C-0.0245426217,23.5553333 -0.0245426217,23.3461429 0.0747278401,23.176381 L5.25642777,14.2578571 C5.45060515,13.9205238 6.00477432,13.9205238 6.19895171,14.2578571 L11.3806516,23.176381 C11.4788312,23.3461429 11.4788312,23.5553333 11.3817425,23.7250952 Z" /></svg>;
+    case 'QuestionMark': return <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fillRule="evenodd" d="M10.7502702,18 C12.4602702,18 13.7502702,19.29 13.7502702,21.001 C13.7502702,22.711 12.4602702,24 10.7502702,24 C9.04027025,24 7.75027025,22.711 7.75027025,21.001 C7.75027025,19.29 9.04027025,18 10.7502702,18 Z M11.6092702,0 C16.3612702,0 19.5542702,2.779 19.5542702,6.913 C19.5542702,10.393 17.3422702,11.91 15.5642702,13.129 C14.1932702,14.069 13.1102702,14.812 13.1102702,16.162 L13.1102702,16.5 C13.1102702,16.777 12.8872702,17 12.6102702,17 L9.03827025,17 C8.76227025,17 8.53827025,16.777 8.53827025,16.5 L8.53827025,16.162 C8.53827025,12.975 10.6632702,11.447 12.3702702,10.219 C13.6992702,9.263 14.8482702,8.437 14.8482702,7.082 C14.8482702,5.54 13.4452702,4.544 11.2742702,4.544 C9.61627025,4.544 8.06227025,5.1 6.89527025,6.11 C6.76927025,6.22 6.59627025,6.255 6.43627025,6.214 C6.27427025,6.169 6.14527025,6.047 6.09427025,5.888 L5.02527025,2.648 C4.96027025,2.451 5.02327025,2.236 5.18427025,2.105 C6.84527025,0.747 9.12627025,0 11.6092702,0 Z" /></svg>;
+    case 'Information': return <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M14,8 C14.3,8 14.5,8.2 14.5,8.5 L14.5,23.5 C14.5,23.8 14.3,24 14,24 L10,24 C9.7,24 9.5,23.8 9.5,23.5 L9.5,8.5 C9.5,8.2 9.7,8 10,8 L14,8 Z M12,6 C10.3,6 9,4.7 9,3 C9,1.3 10.3,0 12,0 C13.7,0 15,1.3 15,3 C15,4.7 13.7,6 12,6 Z" /></svg>;
+  }
+};
+
+
+/** Source FIA teaser keeps its sixth native DAM image and the existing helper. */
+export const RilaFiaPromotion = (props: AllianzCardGridProps) => {
+  const fixedParams: AllianzCardGridProps['params'] = { ...props.params, sectionSpacing: '0', introSpacer: '0',
+    theme: 'green-soft', layout: 'image-right', splitRatio: '67:33', columns: '1',
+    alignment: 'left', headingLevel: 'h3', bodySize: 'large', framed: '1',
+    tileMarginBottom: 'xl', matchHeightRow: '1', flipped: '1', spacing: 'none',
+    paddingTop: 'none', paddingBottom: 'none', marginBottom: 'none' };
+  for (const key of ['container', 'sectionWidth', 'sourceWidth', 'linkLayout', 'emptyLink']) delete fixedParams[key];
+  return <EditorialCards {...props} appearance="tiles" sourceArrows params={fixedParams} />;
+};
+
+
+import { IapSourceGlyph } from './iap-source-glyphs.props';
+
+/** Two finite Index Advantage+ tile rows retain their ordered native fields.
+ * Source-only icons are decorative; Login keeps its received disabled link. */
+function SourceIapCards({ fields, params, support = false }: AllianzCardGridProps & { support?: boolean }) {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  return <div className={`l-container--full-width t-bg-${support ? 'green-soft' : 'grey-soft'} axlTileCollection ${support ? 'allianz-iap-support' : 'allianz-iap-contract-tools'}`} id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className={`l-grid__row match-height-row${support ? ' u-padding-bottom-xl' : ''}`}>
+        {cards.map((card, index) => {
+          const glyph = support ? (['Phone', 'User', 'QuestionMark'] as const)[index]
+            : (['Laptop', 'LightBulb', 'Calculator'] as const)[index];
+          const links = card.links?.targetItems ?? [{ id: `${card.id}-link`, link: card.link }];
+          const activeLinks = links.filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing));
+          return <div key={card.id} className="l-grid__column-medium-4">
+            <article className="m-axlTile match-height -is--stacked t-bg-primary-white">
+              <div className="tileContent u-text-center">
+                {glyph && <div className="tileSubGrid__image"><div className={`tileIcon ${support ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}><IapSourceGlyph glyph={glyph} /></div></div>}
+                <div className="tileSubGrid__content">
+                  <header>
+                    <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>
+                    {shouldRenderTextField(card.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.subheading?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+                  </header>
+                  {shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" /> : <div className="tileBody u-font-size-md" />}
+                  {activeLinks.length > 0 && <footer>{activeLinks.map((item, linkIndex) => {
+                    const field = allianzLinkField(item.link?.jsonValue, isEditing);
+                    const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+                    const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
+                    return <div className="tileLink" key={item.id ?? linkIndex}><Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+                      <span className="a-link__icon" aria-hidden="true"><EditorialResourceArrow /></span><span className="a-link__text">{field.value?.text}</span>
+                    </Link></div>;
+                  })}</footer>}
+                </div>
+              </div>
+            </article>
+          </div>;
+        })}
+      </div>
+    </div>
+  </div>;
+}
+
+export const IapContractTools = (props: AllianzCardGridProps) => <SourceIapCards {...props} />;
+export const IapSupport = (props: AllianzCardGridProps) => <SourceIapCards {...props} support />;
