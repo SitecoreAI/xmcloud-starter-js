@@ -183,3 +183,28 @@ export const EssentialIncome7ProductVideo = ({ fields, params }: AllianzVideoPro
     </div>
   </div>;
 };
+
+
+/** Approved static treatment retains the real native media-link owner in editing.
+ * The benefits introduction and transcript keep their separate native fields.
+ * Clearing/removing the media link removes the public player surface. */
+export const CoreIncome7ProductVideo = ({ fields, params }: AllianzVideoProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzVideo" />;
+  return <div className="l-container--full-width u-row-spacing t-bg-primary-white axlTileCollection" id={params?.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row"><div className="l-grid__column-medium-12">
+        {shouldRenderLinkField(data.mediaLink?.jsonValue, isEditing) && <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
+            alt="Video player would go here" width={640} height={360} />
+        </div>}
+        {isEditing && data.mediaLink?.jsonValue && <div className="allianz-source-static-video-fields">
+          <Link editable field={data.mediaLink.jsonValue} />
+        </div>}
+      </div></div>
+    </div>
+  </div>;
+};

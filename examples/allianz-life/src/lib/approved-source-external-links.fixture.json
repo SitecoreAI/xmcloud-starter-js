@@ -1,6 +1,6 @@
 {
   "schema": "allianz.approved-source-external-links.v1",
-  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled. The four exact AA Classic source rates, brochure and historical MVA URLs retain their captured destinations; the Login binding remains disabled. The two exact Essential Income 7 source Rates and historical MVA destinations retain their captured absolute URLs.",
+  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled. The four exact AA Classic source rates, brochure and historical MVA URLs retain their captured destinations; the Login binding remains disabled. The two exact Essential Income 7 source Rates and historical MVA destinations retain their captured absolute URLs. The exact Retirement Foundation ADV resource Rates and historical MVA source destinations retain their captured absolute URLs. The exact Core Income 7 Rates and historical MVA source destinations retain their captured absolute URLs.",
   "sourcePins": [
     {
       "path": "preparation/resources-exact-scope-v8/PDF-EXTERNAL-EXACT-FIELD-CANDIDATE.json",
@@ -161,6 +161,41 @@
       "sha256": "119c66759cd1fe2ea5ea8af64b0d85abaa8133bbf8cb697ce9e1eab1ddc6d21a",
       "sourceRoute": "/what-we-offer/annuities/fixed-index-annuities/essential-income-7",
       "evidence": "Exact supplied Essential source HTML/observed hrefs; only Rates and historical MVA allowed. Same-page allocation/MVA fragments use existing anchors; brochure uses admitted native PDF identity."
+    },
+    {
+      "path": "preparation/retirement-foundation-adv-native-qa-v1/source/private/SOURCE-FULL.html",
+      "sha256": "9b7e6360ac0f6299a827e75fe61fbbf379112543f6b7179dd89189609ef7b5bf",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/retirement-foundation-adv",
+      "capturedAtUtc": "2026-10-13T03:27:13.329973+00:00",
+      "evidence": "Exact resource Rates and Historical MVA hrefs observed on the official RFA page; Fixed Interest retains the already approved exact AA7 Rates URL."
+    },
+    {
+      "path": "preparation/core-income-7-native-local-qa-v1/intake/private/extracted/SOURCE-MAIN.html",
+      "bytes": 107471,
+      "sha256": "dbdc007bcb70d05912f656809a7173eee078ac22595a76bbf3452a209be179d4",
+      "sourceRoute": "/what-we-offer/annuities/fixed-index-annuities/core-income-7",
+      "evidence": "Exact supplied Core source HTML/observed hrefs; only Rates and historical MVA added. Native brochure/CSI504 identities and existing account-unavailable policy are preserved."
+    },
+    {
+      "path": "preparation/retirement-foundation-adv-native-qa-v1/completion-v3-shell/navigation/SOURCE-EXACT-RFA-SECONDARY-NAVIGATION.html",
+      "bytes": 572,
+      "sha256": "3860fd5720538f0de4ee8ddfd41a077e18b567312a2a9dcb1337c21d7785ad83",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Retirement-Foundation-ADV",
+      "evidence": "Exact retained secondary navigation Rates href with target_blank, corroborated by actual native RFA product-navigation General Link. Only this exact product Rates URL is added; existing resource Rates URL remains unchanged."
+    },
+    {
+      "path": "preparation/allianz222-plus-native-source-fit-20261013/source-review/SOURCE-RESOURCES-EXACT-FRAGMENT.html",
+      "bytes": 15101,
+      "sha256": "8bbbf571f7aba0b7b7ec41b09374c412b3b38b36eebe3fee555565394363d2e4",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222-plus",
+      "evidence": "Exact source Resources Rates href and empty target; current native external General Link already owns this official absolute destination. Only this exact Rates URL is added to preserve its destination through the normal field adapter while no viable native target is supplied."
+    },
+    {
+      "path": "preparation/allianz360-native-source-fit-20261013/source-review/SOURCE-MAIN.html",
+      "bytes": 74852,
+      "sha256": "bc304976340c25d330097e0f43cc72ffa055ce687b490b5fd5e4e0b3e3b1cc3a",
+      "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/360",
+      "evidence": "Exact supplied official360 Source Rates href and same-window target; resource General Link20FC438C and Fixed Interest bodyD51CB783 already own this exact absolute destination. No native mutation or additional destination is approved."
     }
   ],
   "entries": [
@@ -563,6 +598,41 @@
       "kind": "public-page",
       "url": "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=c920fc3b-07d8-4689-a695-b30a61e691a4",
       "sourceRecordKey": "essential-income-7-exact-source-2"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/Rates",
+      "sourceRecordKey": "retirement-foundation-adv-exact-source-1"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=c23373fe-51cf-40bb-aa7f-5057603c6f51",
+      "sourceRecordKey": "retirement-foundation-adv-exact-source-2"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Core-Income-7/Rates",
+      "sourceRecordKey": "core-income-7-exact-source-1"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=6aca913e-d6d8-4fb7-b4fc-203f845a02d8",
+      "sourceRecordKey": "core-income-7-exact-source-2"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Retirement-Foundation-ADV/Rates",
+      "sourceRecordKey": "retirement-foundation-adv-product-navigation-exact-source-1"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222-plus/Rates",
+      "sourceRecordKey": "222-plus-resource-rates-exact-source-1"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/360/Rates",
+      "sourceRecordKey": "360-resource-and-fixed-interest-rates-exact-source-1"
     }
   ]
 }

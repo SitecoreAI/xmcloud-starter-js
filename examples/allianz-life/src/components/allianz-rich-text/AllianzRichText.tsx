@@ -796,3 +796,222 @@ export const EssentialIncome7MvaReference = ({ fields, params }: AllianzRichText
     </div>
   </div>;
 };
+
+
+/** RFA retains its body-only source introduction and empty heading wrappers. */
+export const RetirementFoundationAdvIntroduction = (props: AllianzRichTextProps) => <AAPlusResourcesIntroduction {...props} />;
+
+/** Each source introduction owns its original native heading and complete body.
+ * The shared source outer margin belongs to the following cards/answers binding. */
+const RetirementFoundationAdvSectionIntroduction = ({ fields, params, sourceRole }:
+  AllianzRichTextProps & { sourceRole: 'features' | 'allocation' | 'crediting' }) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  const contained = sourceRole !== 'features';
+  return <div className={`${contained ? 'l-container' : 'l-container--full-width'} t-bg-transparent axlTileCollection`} id={params.RenderingIdentifier}>
+    <div className={`l-grid l-grid--max-width${contained ? ' l-grid--no-gutters-outer' : ''}`}>
+      {sourceRole === 'allocation' && <a {...{ name: 'allocation-options', children: null }} />}
+      <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+        <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+          {sourceRole !== 'crediting' && <div className="tileIcon t-bg-transparent t-icon-primary-black">
+            {sourceRole === 'features' ? <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M20.0714286,0 L3.64285714,0 C2.76666667,0 2,0.763636364 2,1.63636364 L2,22.3636364 C2,23.2363636 2.76666667,24 3.64285714,24 L20.0714286,24 C20.947619,24 21.7142857,23.2363636 21.7142857,22.3636364 L21.7142857,1.63636364 C21.7142857,0.763636364 20.947619,0 20.0714286,0 Z M20.8571429,22.5857143 C20.8571429,22.92 20.6321429,23.1428571 20.2946429,23.1428571 L3.41964286,23.1428571 C3.08214286,23.1428571 2.85714286,22.92 2.85714286,22.5857143 L2.85714286,1.41428571 C2.85714286,1.08 3.08214286,0.857142857 3.41964286,0.857142857 L20.2946429,0.857142857 C20.6321429,0.857142857 20.8571429,1.08 20.8571429,1.41428571 L20.8571429,22.5857143 Z M7.14285714,4.28571429 C6.22857143,4.28571429 5.42857143,5.08571429 5.42857143,6 C5.42857143,6.91428571 6.22857143,7.71428571 7.14285714,7.71428571 C8.05714286,7.71428571 8.85714286,6.91428571 8.85714286,6 C8.85714286,5.08571429 8.05714286,4.28571429 7.14285714,4.28571429 Z M7.14285714,6.85714286 C6.62857143,6.85714286 6.28571429,6.51428571 6.28571429,6 C6.28571429,5.48571429 6.62857143,5.14285714 7.14285714,5.14285714 C7.65714286,5.14285714 8,5.48571429 8,6 C8,6.51428571 7.65714286,6.85714286 7.14285714,6.85714286 Z M7.14285714,9.42857143 C6.22857143,9.42857143 5.42857143,10.2285714 5.42857143,11.1428571 C5.42857143,12.0571429 6.22857143,12.8571429 7.14285714,12.8571429 C8.05714286,12.8571429 8.85714286,12.0571429 8.85714286,11.1428571 C8.85714286,10.2285714 8.05714286,9.42857143 7.14285714,9.42857143 Z M7.14285714,12 C6.62857143,12 6.28571429,11.6571429 6.28571429,11.1428571 C6.28571429,10.6285714 6.62857143,10.2857143 7.14285714,10.2857143 C7.65714286,10.2857143 8,10.6285714 8,11.1428571 C8,11.6571429 7.65714286,12 7.14285714,12 Z M7.14285714,15.4285714 C6.22857143,15.4285714 5.42857143,16.2285714 5.42857143,17.1428571 C5.42857143,18.0571429 6.22857143,18.8571429 7.14285714,18.8571429 C8.05714286,18.8571429 8.85714286,18.0571429 8.85714286,17.1428571 C8.85714286,16.2285714 8.05714286,15.4285714 7.14285714,15.4285714 Z M7.14285714,18 C6.62857143,18 6.28571429,17.6571429 6.28571429,17.1428571 C6.28571429,16.6285714 6.62857143,16.2857143 7.14285714,16.2857143 C7.65714286,16.2857143 8,16.6285714 8,17.1428571 C8,17.6571429 7.65714286,18 7.14285714,18 Z M18.5918367,5.14285714 C18.922449,5.14285714 19.1428571,5.31428571 19.1428571,5.57142857 C19.1428571,5.82857143 18.922449,6 18.5918367,6 L11.9795918,6 C11.6489796,6 11.4285714,5.82857143 11.4285714,5.57142857 C11.4285714,5.31428571 11.6489796,5.14285714 11.9795918,5.14285714 L18.5918367,5.14285714 Z M18.5918367,12 C18.922449,12 19.1428571,12.1714286 19.1428571,12.4285714 C19.1428571,12.6857143 18.922449,12.8571429 18.5918367,12.8571429 L11.9795918,12.8571429 C11.6489796,12.8571429 11.4285714,12.6857143 11.4285714,12.4285714 C11.4285714,12.1714286 11.6489796,12 11.9795918,12 L18.5918367,12 Z M18.5918367,17.1428571 C18.922449,17.1428571 19.1428571,17.3142857 19.1428571,17.5714286 C19.1428571,17.8285714 18.922449,18 18.5918367,18 L11.9795918,18 C11.6489796,18 11.4285714,17.8285714 11.4285714,17.5714286 C11.4285714,17.3142857 11.6489796,17.1428571 11.9795918,17.1428571 L18.5918367,17.1428571 Z" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fillRule="evenodd" d="M0.545454545,22 C0.244363636,22 0,21.7511111 0,21.4444444 L0,2.55555556 C0,2.24888889 0.244363636,2 0.545454545,2 C0.846545455,2 1.09090909,2.24888889 1.09090909,2.55555556 L1.09090909,20.8888889 L23.4545455,20.8888889 C23.7556364,20.8888889 24,21.1377778 24,21.4444444 C24,21.7511111 23.7556364,22 23.4545455,22 L0.545454545,22 Z M18.705,8.82916667 C18.9177273,8.6125 19.2635455,8.6125 19.4762727,8.82916667 C19.689,9.04583333 19.689,9.39805556 19.4762727,9.61472222 L14.0217273,15.1702778 C13.8286364,15.3669444 13.5242727,15.3880556 13.3093636,15.2213889 L9.32318182,12.1780556 L5.29445455,16.2813889 C5.18754545,16.3902778 5.04790909,16.4447222 4.90936364,16.4447222 C4.76972727,16.4447222 4.63009091,16.3902778 4.52318182,16.2813889 C4.31045455,16.0647222 4.31045455,15.7125 4.52318182,15.4958333 L8.88681818,11.0513889 C9.07772727,10.8547222 9.38209091,10.8336111 9.59918182,11.0002778 L13.5853636,14.0436111 L18.705,8.82916667 Z" /></svg>}
+          </div>}
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={sourceRole === 'features' ? 'h3' : 'h2'} field={data.heading?.jsonValue} />}</div>
+            <div className="tileSubHeading" />
+          </header>
+          {sourceRole !== 'features' && shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+        </div></article>
+      </div></div>
+    </div>
+  </div>;
+};
+
+/** Features has a separate original datasource and source List glyph with H3. */
+export const RetirementFoundationAdvFeaturesIntroduction = (props: AllianzRichTextProps) => <RetirementFoundationAdvSectionIntroduction {...props} sourceRole="features" />;
+
+export const RetirementFoundationAdvAllocationIntroduction = (props: AllianzRichTextProps) => <RetirementFoundationAdvSectionIntroduction {...props} sourceRole="allocation" />;
+
+/** The crediting introduction has no source glyph. */
+export const RetirementFoundationAdvCreditingIntroduction = (props: AllianzRichTextProps) => <RetirementFoundationAdvSectionIntroduction {...props} sourceRole="crediting" />;
+
+/** The second source heading is stored as complete native RichText body. */
+export const RetirementFoundationAdvQuestionsHeading = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-green-soft" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+      <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+        <div className="tileIcon t-bg-primary-brand t-icon-primary-white"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M14,8 C14.3,8 14.5,8.2 14.5,8.5 L14.5,23.5 C14.5,23.8 14.3,24 14,24 L10,24 C9.7,24 9.5,23.8 9.5,23.5 L9.5,8.5 C9.5,8.2 9.7,8 10,8 L14,8 Z M12,6 C10.3,6 9,4.7 9,3 C9,1.3 10.3,0 12,0 C13.7,0 15,1.3 15,3 C15,4.7 13.7,6 12,6 Z" /></svg></div>
+        <header>
+          <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+          {shouldRenderTextField(data.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={data.body?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+        </header>
+      </div></article>
+    </div></div></div>
+  </div>;
+};
+
+/** MVA is the authored native snapshot, preserving its entire editing owner. */
+export const RetirementFoundationAdvMvaReference = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  const heading = data.heading?.jsonValue;
+  const body = data.body?.jsonValue;
+  const parts = typeof heading?.value === 'string'
+    ? /^(Current MVA reference rate:\s*)([+-]?(?:\d+(?:\.\d+)?|\.\d+))(\s*%\s*)(as of\s+)(\d{1,2}\/\d{1,2}\/\d{4})$/.exec(heading.value)
+    : null;
+  return <div className="l-container--full-width t-bg-grey-soft axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <a {...{ name: 'mva-scs', children: null }} />
+      <div className="l-grid__row"><div className="l-grid__column-medium-12">
+        <div id="seven-yr-slot" className="well seven-yr-slot">
+          {shouldRenderTextField(heading, isEditing) && <h2>
+            {isEditing || !parts ? <Text editable={isEditing} field={heading} /> : <>
+              <small className="blue">{parts[1]}</small><span {...{ testid: 'currentMVARate' }}>{parts[2]}</span>{parts[3]}<small>{parts[4]}<span {...{ testid: 'currentMVARateEffectiveDate' }}>{parts[5]}</span></small>
+            </>}
+          </h2>}
+          {shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} />}
+        </div>
+      </div></div>
+    </div>
+  </div>;
+};
+
+/** Source centered H3/table presentation is shared exactly with Essential. */
+export const RetirementFoundationAdvWithdrawalSchedule = (props: AllianzRichTextProps) => <EssentialIncome7WithdrawalSchedule {...props} />;
+
+export const RetirementFoundationAdvFootnotes = (props: AllianzRichTextProps) => <ClassicFootnotes {...props} />;
+
+/** Legal content keeps the complete native body in the original disclosure grid. */
+export const RetirementFoundationAdvDisclosures = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width a-axlDisclosures" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column"><div className="row">
+      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="col-md-12 content-body disclosure" />}
+    </div></div></div></div>
+  </div>;
+};
+
+
+/** Core Income 7 keeps existing native fields in its exact source roles. */
+export const CoreIncome7Introduction = (props: AllianzRichTextProps) => <AAPlusResourcesIntroduction {...props} />;
+
+/** Only the following video binding owns the source section's 64px outer margin. */
+export const CoreIncome7BenefitsIntroduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-primary-white axlTileCollection" id={params.RenderingIdentifier === 'video' ? undefined : params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <a {...{ name: 'video', children: null }} />
+      <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+        <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+            <div className="tileSubHeading" />
+          </header>
+          {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+        </div></article>
+      </div></div>
+    </div>
+  </div>;
+};
+
+/** The separate native feature introduction owns the source H2/List glyph. */
+export const CoreIncome7FeaturesIntroduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className={"l-container--full-width t-bg-transparent axlTileCollection"} id={params.RenderingIdentifier}>
+    <div className={"l-grid l-grid--max-width"}>
+      <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+        <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+          <div className="tileIcon t-bg-transparent t-icon-primary-black">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M20.0714286,0 L3.64285714,0 C2.76666667,0 2,0.763636364 2,1.63636364 L2,22.3636364 C2,23.2363636 2.76666667,24 3.64285714,24 L20.0714286,24 C20.947619,24 21.7142857,23.2363636 21.7142857,22.3636364 L21.7142857,1.63636364 C21.7142857,0.763636364 20.947619,0 20.0714286,0 Z M20.8571429,22.5857143 C20.8571429,22.92 20.6321429,23.1428571 20.2946429,23.1428571 L3.41964286,23.1428571 C3.08214286,23.1428571 2.85714286,22.92 2.85714286,22.5857143 L2.85714286,1.41428571 C2.85714286,1.08 3.08214286,0.857142857 3.41964286,0.857142857 L20.2946429,0.857142857 C20.6321429,0.857142857 20.8571429,1.08 20.8571429,1.41428571 L20.8571429,22.5857143 Z M7.14285714,4.28571429 C6.22857143,4.28571429 5.42857143,5.08571429 5.42857143,6 C5.42857143,6.91428571 6.22857143,7.71428571 7.14285714,7.71428571 C8.05714286,7.71428571 8.85714286,6.91428571 8.85714286,6 C8.85714286,5.08571429 8.05714286,4.28571429 7.14285714,4.28571429 Z M7.14285714,6.85714286 C6.62857143,6.85714286 6.28571429,6.51428571 6.28571429,6 C6.28571429,5.48571429 6.62857143,5.14285714 7.14285714,5.14285714 C7.65714286,5.14285714 8,5.48571429 8,6 C8,6.51428571 7.65714286,6.85714286 7.14285714,6.85714286 Z M7.14285714,9.42857143 C6.22857143,9.42857143 5.42857143,10.2285714 5.42857143,11.1428571 C5.42857143,12.0571429 6.22857143,12.8571429 7.14285714,12.8571429 C8.05714286,12.8571429 8.85714286,12.0571429 8.85714286,11.1428571 C8.85714286,10.2285714 8.05714286,9.42857143 7.14285714,9.42857143 Z M7.14285714,12 C6.62857143,12 6.28571429,11.6571429 6.28571429,11.1428571 C6.28571429,10.6285714 6.62857143,10.2857143 7.14285714,10.2857143 C7.65714286,10.2857143 8,10.6285714 8,11.1428571 C8,11.6571429 7.65714286,12 7.14285714,12 Z M7.14285714,15.4285714 C6.22857143,15.4285714 5.42857143,16.2285714 5.42857143,17.1428571 C5.42857143,18.0571429 6.22857143,18.8571429 7.14285714,18.8571429 C8.05714286,18.8571429 8.85714286,18.0571429 8.85714286,17.1428571 C8.85714286,16.2285714 8.05714286,15.4285714 7.14285714,15.4285714 Z M7.14285714,18 C6.62857143,18 6.28571429,17.6571429 6.28571429,17.1428571 C6.28571429,16.6285714 6.62857143,16.2857143 7.14285714,16.2857143 C7.65714286,16.2857143 8,16.6285714 8,17.1428571 C8,17.6571429 7.65714286,18 7.14285714,18 Z M18.5918367,5.14285714 C18.922449,5.14285714 19.1428571,5.31428571 19.1428571,5.57142857 C19.1428571,5.82857143 18.922449,6 18.5918367,6 L11.9795918,6 C11.6489796,6 11.4285714,5.82857143 11.4285714,5.57142857 C11.4285714,5.31428571 11.6489796,5.14285714 11.9795918,5.14285714 L18.5918367,5.14285714 Z M18.5918367,12 C18.922449,12 19.1428571,12.1714286 19.1428571,12.4285714 C19.1428571,12.6857143 18.922449,12.8571429 18.5918367,12.8571429 L11.9795918,12.8571429 C11.6489796,12.8571429 11.4285714,12.6857143 11.4285714,12.4285714 C11.4285714,12.1714286 11.6489796,12 11.9795918,12 L18.5918367,12 Z M18.5918367,17.1428571 C18.922449,17.1428571 19.1428571,17.3142857 19.1428571,17.5714286 C19.1428571,17.8285714 18.922449,18 18.5918367,18 L11.9795918,18 C11.6489796,18 11.4285714,17.8285714 11.4285714,17.5714286 C11.4285714,17.3142857 11.6489796,17.1428571 11.9795918,17.1428571 L18.5918367,17.1428571 Z" /></svg>
+          </div>
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+            <div className="tileSubHeading" />
+          </header>
+        </div></article>
+      </div></div>
+    </div>
+  </div>;
+};
+
+/** The source allocation anchor precedes the native heading and body. */
+export const CoreIncome7AllocationIntroduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params.RenderingIdentifier === 'allocation-options' ? undefined : params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <a {...{ name: 'allocation-options', children: null }} />
+      <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+        <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+          <div className="tileIcon t-bg-transparent t-icon-primary-black">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+              <path fillRule="evenodd" d="M0.545454545,22 C0.244363636,22 0,21.7511111 0,21.4444444 L0,2.55555556 C0,2.24888889 0.244363636,2 0.545454545,2 C0.846545455,2 1.09090909,2.24888889 1.09090909,2.55555556 L1.09090909,20.8888889 L23.4545455,20.8888889 C23.7556364,20.8888889 24,21.1377778 24,21.4444444 C24,21.7511111 23.7556364,22 23.4545455,22 L0.545454545,22 Z M18.705,8.82916667 C18.9177273,8.6125 19.2635455,8.6125 19.4762727,8.82916667 C19.689,9.04583333 19.689,9.39805556 19.4762727,9.61472222 L14.0217273,15.1702778 C13.8286364,15.3669444 13.5242727,15.3880556 13.3093636,15.2213889 L9.32318182,12.1780556 L5.29445455,16.2813889 C5.18754545,16.3902778 5.04790909,16.4447222 4.90936364,16.4447222 C4.76972727,16.4447222 4.63009091,16.3902778 4.52318182,16.2813889 C4.31045455,16.0647222 4.31045455,15.7125 4.52318182,15.4958333 L8.88681818,11.0513889 C9.07772727,10.8547222 9.38209091,10.8336111 9.59918182,11.0002778 L13.5853636,14.0436111 L18.705,8.82916667 Z" />
+            </svg>
+          </div>
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+            <div className="tileSubHeading" />
+          </header>
+          {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+        </div></article>
+      </div></div>
+    </div>
+  </div>;
+};
+
+export const CoreIncome7CreditingIntroduction = (props: AllianzRichTextProps) => <AAPlusCreditingIntroduction {...props} />;
+
+export const CoreIncome7QuestionsHeading = (props: AllianzRichTextProps) => <RetirementFoundationAdvQuestionsHeading {...props} />;
+
+/** The MVA remains the complete authored snapshot; no rate fetching is introduced. */
+export const CoreIncome7MvaReference = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  const heading = data.heading?.jsonValue;
+  const body = data.body?.jsonValue;
+  const parts = typeof heading?.value === 'string'
+    ? /^(Current MVA reference rate:\s*)([+-]?(?:\d+(?:\.\d+)?|\.\d+))(\s*%\s*)(as of\s+)(\d{1,2}\/\d{1,2}\/\d{4})$/.exec(heading.value)
+    : null;
+  return <div className="l-container--full-width t-bg-grey-soft axlTileCollection" id={params.RenderingIdentifier === 'mva-rate' ? undefined : params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <a {...{ name: 'mva-rate', children: null }} />
+      <div className="l-grid__row"><div className="l-grid__column-medium-12">
+        <div id="seven-yr-slot" className="well seven-yr-slot">
+          {shouldRenderTextField(heading, isEditing) && <h2>
+            {isEditing || !parts ? <Text editable={isEditing} field={heading} /> : <>
+              <small className="blue">{parts[1]}</small><span {...{ testid: 'currentMVARate' }}>{parts[2]}</span>{parts[3]}<small>{parts[4]}<span {...{ testid: 'currentMVARateEffectiveDate' }}>{parts[5]}</span></small>
+            </>}
+          </h2>}
+          {shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} />}
+        </div>
+      </div></div>
+    </div>
+  </div>;
+};
+
+export const CoreIncome7WithdrawalSchedule = (props: AllianzRichTextProps) => <EssentialIncome7WithdrawalSchedule {...props} />;
+
+export const CoreIncome7Footnotes = (props: AllianzRichTextProps) => <ClassicFootnotes {...props} />;
+
+export const CoreIncome7Disclosures = (props: AllianzRichTextProps) => <RetirementFoundationAdvDisclosures {...props} />;

@@ -1719,3 +1719,247 @@ export const EssentialIncome7Questions = ({ fields, params }: AllianzCardGridPro
     </div>
   </div>;
 };
+
+
+/** RFA resources share the proven source H3, glyph and ordered-link grammar. */
+export const RetirementFoundationAdvProductResources = (props: AllianzCardGridProps) => <EssentialIncome7ProductResources {...props} />;
+
+/** Only the original four children own feature copy; the heading belongs to a
+ * separate native introduction. The final tile alone owns the source action. */
+export const RetirementFoundationAdvProductFeatures = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  return <div className="l-container--full-width u-row-spacing t-bg-transparent axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row match-height-row u-margin-bottom-xl">
+        {cards.map((card, cardIndex) => {
+          const links = cardIndex === 3 ? (card.links?.targetItems ?? []).filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing)) : [];
+          return <div key={card.id} className="l-grid__column-medium-3">
+            <article className="m-axlTile match-height -is--stacked t-bg-grey-soft">
+              <div className="tileContent u-text-left"><div className="tileSubGrid__content">
+                <header><div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={card.heading?.jsonValue} />}</div><div className="tileSubHeading" /></header>
+                {shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" /> : <div className="tileBody u-font-size-md" />}
+                {links.length > 0 && <footer>{links.map((item, linkIndex) => {
+                  const field = allianzLinkField(item.link?.jsonValue, isEditing);
+                  const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+                  const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
+                  return <div className="tileLink" key={item.id ?? linkIndex}>
+                    <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+                      <span className="a-link__icon" aria-hidden="true"><FixedResourceArrowIcon /></span><span className="a-link__text">{field.value?.text}</span>
+                    </Link>
+                  </div>;
+                })}</footer>}
+              </div></div>
+            </article>
+          </div>;
+        })}
+      </div>
+    </div>
+  </div>;
+};
+
+/** Source questions use a plain row with XL padding and complete native owners. */
+export const RetirementFoundationAdvQuestions = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  return <div className="l-container--full-width t-bg-green-soft" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row u-padding-bottom-xl"><div className="l-grid__column-medium-12"><div className="o-cards o-cards__col3">
+        {cards.map((card) => {
+          const nativeLink = card.link?.jsonValue;
+          const content = <><div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="m-card__body" />}</>;
+          if (nativeLink?.value?.href) return <Link key={card.id} editable={isEditing} field={allianzLinkField(nativeLink, isEditing)} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>;
+          return <div key={card.id} className="m-card">{isEditing && nativeLink && <Link editable={isEditing} field={nativeLink} />}{content}</div>;
+        })}
+      </div></div></div>
+    </div>
+  </div>;
+};
+
+
+/** Core resources keep three native H3/link owners and both source bottom spacings. */
+export const CoreIncome7ProductResources = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  const sourceIcons = [FixedResourceStocksIcon, FixedResourceCalculatorIcon, FixedResourceSearchDocumentIcon];
+  return <div className="l-container--full-width t-bg-grey-soft axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row match-height-row u-margin-bottom-xl u-padding-bottom-xl">
+        {cards.map((card, cardIndex) => {
+          const Icon = sourceIcons[cardIndex];
+          const links = (card.links?.targetItems ?? []).filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing));
+          return <div key={card.id} className="l-grid__column-medium-4">
+            <article className="m-axlTile match-height -is--stacked t-bg-primary-white">
+              <div className="tileContent u-text-center">
+                {Icon && <div className="tileSubGrid__image"><div className="tileIcon t-bg-transparent t-icon-primary-black"><Icon /></div></div>}
+                <div className="tileSubGrid__content">
+                  <header><div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={card.heading?.jsonValue} />}</div><div className="tileSubHeading" /></header>
+                  <div className="tileBody u-font-size-md" />
+                  {links.length > 0 && <footer>{links.map((item, linkIndex) => {
+                    const field = allianzLinkField(item.link?.jsonValue, isEditing);
+                    const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+                    const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
+                    return <div className="tileLink" key={item.id ?? linkIndex}>
+                      <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+                        <span className="a-link__icon" aria-hidden="true">{/\.pdf(?:[?#]|$)/i.test(field.value?.href ?? '') ? <SustainabilityDownloadIcon /> : <FixedResourceArrowIcon />}</span><span className="a-link__text">{field.value?.text}</span>
+                      </Link>
+                    </div>;
+                  })}</footer>}
+                </div>
+              </div>
+            </article>
+          </div>;
+        })}
+      </div>
+    </div>
+  </div>;
+};
+
+/** Three native Core feature tiles retain all ordered links and source arrow glyphs. */
+export const CoreIncome7ProductFeatures = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  return <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row match-height-row u-padding-bottom-xl">
+        {cards.map((card) => {
+          const links = (card.links?.targetItems ?? []).filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing));
+          return <div key={card.id} className="l-grid__column-medium-4">
+            <article className="m-axlTile match-height -is--stacked t-bg-grey-soft">
+              <div className="tileContent u-text-left"><div className="tileSubGrid__content">
+                <header><div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={card.heading?.jsonValue} />}</div><div className="tileSubHeading" /></header>
+                {shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" /> : <div className="tileBody u-font-size-md" />}
+                {links.length > 0 && <footer>{links.map((item, linkIndex) => {
+                  const field = allianzLinkField(item.link?.jsonValue, isEditing);
+                  const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+                  const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
+                  return <div className="tileLink" key={item.id ?? linkIndex}>
+                    <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+                      <span className="a-link__icon" aria-hidden="true"><FixedResourceArrowIcon /></span><span className="a-link__text">{field.value?.text}</span>
+                    </Link>
+                  </div>;
+                })}</footer>}
+              </div></div>
+            </article>
+          </div>;
+        })}
+      </div>
+    </div>
+  </div>;
+};
+
+export const CoreIncome7Questions = (props: AllianzCardGridProps) => <EssentialIncome7Questions {...props} />;
+
+
+/** 222+ feature copy belongs to four original children; the separate native
+ * introduction owns its H2/List glyph. Only the source second/fourth tiles
+ * own actions, and inherited group/media fields stay outside this role. */
+export const Plus222ProductFeatures = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  return <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row match-height-row u-margin-bottom-xl">
+        {cards.map((card, cardIndex) => {
+          const links = cardIndex === 1 || cardIndex === 3
+            ? (card.links?.targetItems ?? []).filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing)) : [];
+          return <div key={card.id} className="l-grid__column-medium-3">
+            <article className="m-axlTile match-height -is--stacked t-bg-grey-soft">
+              <div className="tileContent u-text-left"><div className="tileSubGrid__content">
+                <header><div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={card.heading?.jsonValue} />}</div><div className="tileSubHeading" /></header>
+                {shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" /> : <div className="tileBody u-font-size-md" />}
+                {links.length > 0 && <footer>{links.map((item, linkIndex) => {
+                  const field = allianzLinkField(item.link?.jsonValue, isEditing);
+                  const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+                  const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
+                  return <div className="tileLink" key={item.id ?? linkIndex}>
+                    <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+                      <span className="a-link__icon" aria-hidden="true">{cardIndex === 3 ? <SustainabilityDownloadIcon /> : <FixedResourceArrowIcon />}</span><span className="a-link__text">{field.value?.text}</span>
+                    </Link>
+                  </div>;
+                })}</footer>}
+              </div></div>
+            </article>
+          </div>;
+        })}
+      </div>
+    </div>
+  </div>;
+};
+
+
+/** Three native 360 feature children own the H3/body fields. The separate
+ * introduction owns its H2/List glyph; only the second/third children own
+ * actions, whose Download/Right glyphs follow their source roles. */
+export const Allianz360ProductFeatures = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  return <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row match-height-row u-padding-bottom-xl">
+        {cards.map((card, cardIndex) => {
+          const links = cardIndex === 1 || cardIndex === 2
+            ? (card.links?.targetItems ?? []).filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing)) : [];
+          return <div key={card.id} className="l-grid__column-medium-4">
+            <article className="m-axlTile match-height -is--stacked t-bg-grey-soft">
+              <div className="tileContent u-text-left"><div className="tileSubGrid__content">
+                <header><div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={card.heading?.jsonValue} />}</div><div className="tileSubHeading" /></header>
+                {shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" /> : <div className="tileBody u-font-size-md" />}
+                {links.length > 0 && <footer>{links.map((item, linkIndex) => {
+                  const field = allianzLinkField(item.link?.jsonValue, isEditing);
+                  const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+                  const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
+                  return <div className="tileLink" key={item.id ?? linkIndex}>
+                    <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+                      <span className="a-link__icon" aria-hidden="true">{cardIndex === 1 ? <SustainabilityDownloadIcon /> : <FixedResourceArrowIcon />}</span><span className="a-link__text">{field.value?.text}</span>
+                    </Link>
+                  </div>;
+                })}</footer>}
+              </div></div>
+            </article>
+          </div>;
+        })}
+      </div>
+    </div>
+  </div>;
+};
+
+/** 360 questions retain native H4 whole-card links and their source XL row
+ * padding. Clearing a link preserves its independently authored copy. */
+export const Allianz360Questions = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  return <div className="l-container--full-width t-bg-green-soft" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row u-padding-bottom-xl"><div className="l-grid__column-medium-12"><div className="o-cards o-cards__col3">
+        {cards.map((card) => {
+          const nativeLink = card.link?.jsonValue;
+          const content = <><div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="m-card__body" />}</>;
+          if (nativeLink?.value?.href) return <Link key={card.id} editable={isEditing} field={allianzLinkField(nativeLink, isEditing)} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>;
+          return <div key={card.id} className="m-card">{isEditing && nativeLink && <Link editable={isEditing} field={nativeLink} />}{content}</div>;
+        })}
+      </div></div></div>
+    </div>
+  </div>;
+};
