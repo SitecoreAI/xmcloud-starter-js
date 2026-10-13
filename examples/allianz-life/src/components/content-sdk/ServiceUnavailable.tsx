@@ -11,6 +11,8 @@ export default function ServiceUnavailable() {
       const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('a[href$="#service-unavailable"],a[href$="#demo-unavailable"]');
       // React and this listener can share document; stopPropagation alone does not isolate local dialogs.
       if (!link || link.getAttribute('data-allianz-local-service-dialog') === 'true') return;
+      // Native Page Builder field selection belongs to the SDK editing surface.
+      if (link.closest('.editing-mode')) return;
       event.preventDefault();
       previous.current = link;
       setLabel(link.textContent?.trim() || link.getAttribute('aria-label') || 'Online service');
