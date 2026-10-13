@@ -208,3 +208,28 @@ export const CoreIncome7ProductVideo = ({ fields, params }: AllianzVideoProps) =
     </div>
   </div>;
 };
+
+
+/** Lifetime keeps its separate native media owner under the approved static treatment.
+ * Source heading and challenge copy require their own native field contract. */
+export const LifetimeIncomeVideo = ({ fields, params }: AllianzVideoProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzVideo" />;
+  const hasApprovedMedia = Boolean(brightcoveEmbedSource(data.mediaLink?.jsonValue));
+  return <div className="l-container--full-width t-bg-purple-soft axlTileCollection allianz-lifetime-income-video" id={params?.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row u-padding-bottom-xl"><div className="l-grid__column-medium-12">
+        {hasApprovedMedia && <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
+            alt="Video player would go here" width={640} height={360} />
+        </div>}
+        {isEditing && data.mediaLink?.jsonValue && <div className="allianz-source-static-video-fields">
+          <Link editable field={data.mediaLink.jsonValue} />
+        </div>}
+      </div></div>
+    </div>
+  </div>;
+};

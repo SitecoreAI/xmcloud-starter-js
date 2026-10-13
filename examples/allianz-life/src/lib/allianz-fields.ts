@@ -86,10 +86,16 @@ const APPROVED_SOURCE_LINKS = new Set(approvedSourceLinks.entries.map(({ url }) 
 // examples are evidence only: ordinary authored media replacements need no ID list.
 const NATIVE_DOCUMENT_ORIGIN = 'https://xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io';
 const NATIVE_DOCUMENT_PREFIX = '/-/media/Project/Allianz-Life/Documents/';
+// This published Essential brochure was verified against its native PDF bytes.
+const VERIFIED_EDGE_DOCUMENT_ID = 'E74B58F0-8F94-4A52-8765-9BEF4D3EF758';
+const VERIFIED_EDGE_DOCUMENT_URL = 'https://edge.sitecorecloud.io/sitecoresaaef4e-thltmnpdemof1fc-devdd6f-106b/media/Project/Allianz-Life/Documents/CB61892.pdf';
 function isNativeDocumentLink(field: LinkField, url: URL, sourceBase: string, querystring: string) {
   const id = field.value.id;
   if (field.value.linktype !== 'media' || typeof id !== 'string' ||
     !/^(?:\{[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\}|[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})$/i.test(id)) return false;
+  if (id.replace(/^\{|\}$/g, '').toUpperCase() === VERIFIED_EDGE_DOCUMENT_ID &&
+    field.value.href === VERIFIED_EDGE_DOCUMENT_URL && !querystring &&
+    !field.value.querystring && !field.value.anchor) return true;
   if (url.origin !== NATIVE_DOCUMENT_ORIGIN || url.protocol !== 'https:' ||
     url.username || url.password || url.port || sourceBase !== `${url.origin}${url.pathname}` ||
     !url.pathname.startsWith(NATIVE_DOCUMENT_PREFIX) || field.value.href?.includes('#') || field.value.anchor ||

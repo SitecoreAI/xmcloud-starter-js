@@ -1015,3 +1015,44 @@ export const CoreIncome7WithdrawalSchedule = (props: AllianzRichTextProps) => <E
 export const CoreIncome7Footnotes = (props: AllianzRichTextProps) => <ClassicFootnotes {...props} />;
 
 export const CoreIncome7Disclosures = (props: AllianzRichTextProps) => <RetirementFoundationAdvDisclosures {...props} />;
+
+/** Lifetime's challenge owns only its native heading and unchanged body. */
+export const LifetimeIncomeChallenge = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-purple-soft axlTileCollection" style={{ display: 'flow-root' }} id={params.RenderingIdentifier === 'video' ? undefined : params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <a {...{ name: 'video', children: null }} />
+      <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+        <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+            <div className="tileSubHeading" />
+          </header>
+          {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+        </div></article>
+      </div></div>
+    </div>
+  </div>;
+};
+
+/** Lifetime's plan-fit tile retains the body's native inline alignment and lists. */
+export const LifetimeIncomePlanFit = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-purple-soft axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
+      <article className="m-axlTile match-height -is--stacked t-bg-transparent"><div className="tileContent u-text-center"><div className="tileSubGrid__content">
+        <header>
+          <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+          <div className="tileSubHeading" />
+        </header>
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody u-font-size-md" />}
+      </div></div></article>
+    </div></div></div>
+  </div>;
+};
