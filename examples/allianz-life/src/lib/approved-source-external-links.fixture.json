@@ -1,6 +1,6 @@
 {
   "schema": "allianz.approved-source-external-links.v1",
-  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled.",
+  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled. The four exact AA Classic source rates, brochure and historical MVA URLs retain their captured destinations; the Login binding remains disabled. The two exact Essential Income 7 source Rates and historical MVA destinations retain their captured absolute URLs.",
   "sourcePins": [
     {
       "path": "preparation/resources-exact-scope-v8/PDF-EXTERNAL-EXACT-FIELD-CANDIDATE.json",
@@ -150,6 +150,17 @@
       "path": "preparation/index-advantage-plus-source-fit-v1/intake/extracted/SOURCE-DOM.json",
       "sha256": "6ea362b06571f369f8f699b4dc1feab67c467ee88cad24c66525f2cc20374da9",
       "evidence": "Current Index Advantage+ source main and separately captured navigation links; only exact grounded six destinations. No source domain wildcard or Login change."
+    },
+    {
+      "path": "preparation/aa-classic-source-fit-v1/native-contract/AA-CLASSIC-EXACT-SOURCE-NATIVE-FIELD-PAYLOAD.json",
+      "sha256": "cde59143bf6c680dbc1c5c8904f29743deb080dca6075088d2f630a48aed2a1c",
+      "evidence": "Exact Classic source link owners and two href-only RichText rebases; guarded native creation candidate, no Login activation."
+    },
+    {
+      "path": "preparation/essential-income-7-local-fallback-assessment-v1/intake/private/extracted/essential-income-7-readiness/SOURCE-MAIN.html",
+      "sha256": "119c66759cd1fe2ea5ea8af64b0d85abaa8133bbf8cb697ce9e1eab1ddc6d21a",
+      "sourceRoute": "/what-we-offer/annuities/fixed-index-annuities/essential-income-7",
+      "evidence": "Exact supplied Essential source HTML/observed hrefs; only Rates and historical MVA allowed. Same-page allocation/MVA fragments use existing anchors; brochure uses admitted native PDF identity."
     }
   ],
   "entries": [
@@ -522,6 +533,36 @@
       "kind": "public-page",
       "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions",
       "sourceRecordKey": "iap-support-faq"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-Classic/Rates",
+      "sourceRecordKey": "aa-classic-exact-source-1"
+    },
+    {
+      "kind": "public-pdf",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/27/12/04/AAAC-001.pdf",
+      "sourceRecordKey": "aa-classic-exact-source-2"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage/Rates",
+      "sourceRecordKey": "aa-classic-exact-source-3"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=ded49e49-2cce-4edb-a90d-cbd7c8fa30f2",
+      "sourceRecordKey": "aa-classic-exact-source-4"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Essential-Income-7/Rates",
+      "sourceRecordKey": "essential-income-7-exact-source-1"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=c920fc3b-07d8-4689-a695-b30a61e691a4",
+      "sourceRecordKey": "essential-income-7-exact-source-2"
     }
   ]
 }

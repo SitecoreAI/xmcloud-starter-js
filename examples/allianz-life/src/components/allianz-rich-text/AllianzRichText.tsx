@@ -524,3 +524,275 @@ export const IapDisclosures = ({ fields, params }: AllianzRichTextProps) => {
 };
 
 import './AllianzIndexAdvantagePlus.css';
+
+
+/** Classic variants use intrinsic presentation constants, never new native parameters. */
+const classicRichTextParams = (
+  params: AllianzRichTextProps['params'],
+  theme: 'transparent' | 'grey-soft' | 'green-soft',
+  spaced = false,
+  questions = false,
+) => ({ ...params, theme, spacing: 'none', paddingTop: spaced ? 'lg' : 'none',
+  paddingBottom: questions ? 'lg' : 'none', marginBottom: spaced && !questions ? 'lg' : 'none' });
+
+export const ClassicResourcesIntroduction = (props: AllianzRichTextProps) => <FixedProductResourcesIntroduction
+  {...props} params={classicRichTextParams(props.params, 'grey-soft', true)} />;
+
+export const ClassicIndexRiskNote = (props: AllianzRichTextProps) => <FixedProductResourcesIntroduction
+  {...props} params={classicRichTextParams(props.params, 'transparent')} />;
+
+export const ClassicCreditingIntroduction = (props: AllianzRichTextProps) => <FixedProductCreditingIntroduction
+  {...props} params={classicRichTextParams(props.params, 'transparent', true)} />;
+
+export const ClassicQuestionsHeading = (props: AllianzRichTextProps) => <FixedProductQuestionsHeading
+  {...props} params={classicRichTextParams(props.params, 'green-soft', true, true)} />;
+
+export const ClassicMvaReference = (props: AllianzRichTextProps) => <FixedMvaReference
+  {...props} params={{ ...classicRichTextParams(props.params, 'grey-soft'), RenderingIdentifier: 'mva-rate' }} />;
+
+export const ClassicWithdrawalSchedule = (props: AllianzRichTextProps) => <FixedWithdrawalScheduleH2
+  {...props} params={classicRichTextParams(props.params, 'grey-soft')} />;
+
+/** Classic allocation retains the source graph and native heading without a forced break. */
+export const ClassicAllocationIntroduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params.RenderingIdentifier || 'allocation-options'}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+      <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+        <div className="tileIcon t-bg-transparent t-icon-primary-black">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fillRule="evenodd" d="M0.545454545,22 C0.244363636,22 0,21.7511111 0,21.4444444 L0,2.55555556 C0,2.24888889 0.244363636,2 0.545454545,2 C0.846545455,2 1.09090909,2.24888889 1.09090909,2.55555556 L1.09090909,20.8888889 L23.4545455,20.8888889 C23.7556364,20.8888889 24,21.1377778 24,21.4444444 C24,21.7511111 23.7556364,22 23.4545455,22 L0.545454545,22 Z M18.705,8.82916667 C18.9177273,8.6125 19.2635455,8.6125 19.4762727,8.82916667 C19.689,9.04583333 19.689,9.39805556 19.4762727,9.61472222 L14.0217273,15.1702778 C13.8286364,15.3669444 13.5242727,15.3880556 13.3093636,15.2213889 L9.32318182,12.1780556 L5.29445455,16.2813889 C5.18754545,16.3902778 5.04790909,16.4447222 4.90936364,16.4447222 C4.76972727,16.4447222 4.63009091,16.3902778 4.52318182,16.2813889 C4.31045455,16.0647222 4.31045455,15.7125 4.52318182,15.4958333 L8.88681818,11.0513889 C9.07772727,10.8547222 9.38209091,10.8336111 9.59918182,11.0002778 L13.5853636,14.0436111 L18.705,8.82916667 Z" />
+          </svg>
+        </div>
+        <header>
+          <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+          <div className="tileSubHeading" />
+        </header>
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+      </div></article>
+    </div></div></div>
+  </div>;
+};
+
+/** Classic footnotes render the complete authored body in its source RTE shell. */
+export const ClassicFootnotes = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-grey-muted axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
+      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="o-richTextEditor__wrapper" />}
+    </div></div></div>
+  </div>;
+};
+
+/** AAPlus keeps the source slots and the original native field envelopes. */
+export const AAPlusResourcesIntroduction = (props: AllianzRichTextProps) => <ClassicResourcesIntroduction {...props} />;
+
+export const AAPlusCreditingIntroduction = (props: AllianzRichTextProps) => <ClassicCreditingIntroduction {...props} />;
+
+export const AAPlusMvaReference = (props: AllianzRichTextProps) => <ClassicMvaReference {...props} />;
+
+export const AAPlusWithdrawalSchedule = (props: AllianzRichTextProps) => <ClassicWithdrawalSchedule {...props} />;
+
+export const AAPlusFootnotes = (props: AllianzRichTextProps) => <ClassicFootnotes {...props} />;
+
+/** The AAPlus source has no allocation fragment anchor or forced heading break. */
+export const AAPlusAllocationIntroduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+      <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+        <div className="tileIcon t-bg-transparent t-icon-primary-black">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fillRule="evenodd" d="M0.545454545,22 C0.244363636,22 0,21.7511111 0,21.4444444 L0,2.55555556 C0,2.24888889 0.244363636,2 0.545454545,2 C0.846545455,2 1.09090909,2.24888889 1.09090909,2.55555556 L1.09090909,20.8888889 L23.4545455,20.8888889 C23.7556364,20.8888889 24,21.1377778 24,21.4444444 C24,21.7511111 23.7556364,22 23.4545455,22 L0.545454545,22 Z M18.705,8.82916667 C18.9177273,8.6125 19.2635455,8.6125 19.4762727,8.82916667 C19.689,9.04583333 19.689,9.39805556 19.4762727,9.61472222 L14.0217273,15.1702778 C13.8286364,15.3669444 13.5242727,15.3880556 13.3093636,15.2213889 L9.32318182,12.1780556 L5.29445455,16.2813889 C5.18754545,16.3902778 5.04790909,16.4447222 4.90936364,16.4447222 C4.76972727,16.4447222 4.63009091,16.3902778 4.52318182,16.2813889 C4.31045455,16.0647222 4.31045455,15.7125 4.52318182,15.4958333 L8.88681818,11.0513889 C9.07772727,10.8547222 9.38209091,10.8336111 9.59918182,11.0002778 L13.5853636,14.0436111 L18.705,8.82916667 Z" />
+          </svg>
+        </div>
+        <header>
+          <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+          <div className="tileSubHeading" />
+        </header>
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+      </div></article>
+    </div></div></div>
+  </div>;
+};
+
+/** Both source question headings keep their independently editable native owners. */
+export const AAPlusQuestionsHeading = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-green-soft" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+      <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+        <div className="tileIcon t-bg-primary-brand t-icon-primary-white">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path d="M14,8 C14.3,8 14.5,8.2 14.5,8.5 L14.5,23.5 C14.5,23.8 14.3,24 14,24 L10,24 C9.7,24 9.5,23.8 9.5,23.5 L9.5,8.5 C9.5,8.2 9.7,8 10,8 L14,8 Z M12,6 C10.3,6 9,4.7 9,3 C9,1.3 10.3,0 12,0 C13.7,0 15,1.3 15,3 C15,4.7 13.7,6 12,6 Z" />
+          </svg>
+        </div>
+        <header>
+          <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+          <div className="tileSubHeading">{shouldRenderTextField(data.subheading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={data.subheading?.jsonValue} />}</div>
+        </header>
+      </div></article>
+    </div></div></div>
+  </div>;
+};
+
+/** Benefit Control+ source-matching roles retain their original native owners. */
+export const BenefitControlPlusResourcesIntroduction = (props: AllianzRichTextProps) => <AAPlusResourcesIntroduction {...props} />;
+
+export const BenefitControlPlusAllocationIntroduction = (props: AllianzRichTextProps) => <AAPlusAllocationIntroduction {...props} />;
+
+export const BenefitControlPlusCreditingIntroduction = (props: AllianzRichTextProps) => <AAPlusCreditingIntroduction {...props} />;
+
+export const BenefitControlPlusQuestionsHeading = (props: AllianzRichTextProps) => <AAPlusQuestionsHeading {...props} />;
+
+export const BenefitControlPlusMvaReference = (props: AllianzRichTextProps) => <AAPlusMvaReference {...props} />;
+
+export const BenefitControlPlusFootnotes = (props: AllianzRichTextProps) => <AAPlusFootnotes {...props} />;
+
+/** The source introduction uses its inset grid and direct decorative Light Bulb. */
+export const BenefitControlPlusIntroduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container t-bg-transparent axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width l-grid--no-gutters-outer"><div className="l-grid__row"><div className="l-grid__column-medium-12">
+      <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+        <div className="tileIcon t-bg-transparent t-icon-primary-black">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fillRule="evenodd" d="M15.548,17 C15.634,16.472 15.873,15.618 16.538,14.894 C16.572,14.825 16.624,14.765 16.692,14.72 C18.763,13.32 20,10.995 20,8.5 C20,4.364 16.635,1 12.5,1 C8.364,1 5,4.364 5,8.5 C5,10.995 6.236,13.32 8.307,14.72 C8.379,14.768 8.434,14.832 8.472,14.905 C9.129,15.627 9.366,16.475 9.451,17 L15.548,17 Z M17.353,15.487 C16.509,16.331 16.5,17.488 16.5,17.5 C16.5,17.776 16.276,18 16,18 L9,18 C8.723,18 8.5,17.776 8.5,17.5 C8.5,17.49 8.48,16.321 7.646,15.487 C7.638,15.479 7.63,15.471 7.622,15.462 C5.351,13.868 4,11.277 4,8.5 C4,3.813 7.813,0 12.5,0 C17.187,0 21,3.813 21,8.5 C21,11.277 19.648,13.869 17.377,15.462 C17.369,15.471 17.361,15.479 17.353,15.487 Z M16,19 C16.276,19 16.5,19.224 16.5,19.5 C16.5,19.776 16.276,20 16,20 L9,20 C8.724,20 8.5,19.776 8.5,19.5 C8.5,19.224 8.724,19 9,19 L16,19 Z M16.5,21.5 C16.5,21.776 16.276,22 16,22 L9,22 C8.724,22 8.5,21.776 8.5,21.5 C8.5,21.224 8.724,21 9,21 L16,21 C16.276,21 16.5,21.224 16.5,21.5 Z M11,23 L14,23 C14.276,23 14.5,23.224 14.5,23.5 C14.5,23.776 14.276,24 14,24 L11,24 C10.724,24 10.5,23.776 10.5,23.5 C10.5,23.224 10.724,23 11,23 Z" />
+          </svg>
+        </div>
+        <header>
+          <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+          <div className="tileSubHeading" />
+        </header>
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+      </div></article>
+    </div></div></div>
+  </div>;
+};
+
+/** Source withdrawal content keeps its left alignment, H2 and complete native table. */
+export const BenefitControlPlusWithdrawalSchedule = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-grey-soft axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
+      <article className="m-axlTile match-height -is--stacked t-bg-transparent"><div className="tileContent u-text-left"><div className="tileSubGrid__content">
+        <header>
+          <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+          <div className="tileSubHeading" />
+        </header>
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody u-font-size-md" />}
+      </div></div></article>
+    </div></div></div>
+  </div>;
+};
+
+
+/** Essential Income 7 roles keep source-owned fields and intrinsic presentation. */
+export const EssentialIncome7ResourcesIntroduction = (props: AllianzRichTextProps) => <AAPlusResourcesIntroduction {...props} />;
+
+export const EssentialIncome7CreditingIntroduction = (props: AllianzRichTextProps) => <FixedProductCreditingIntroduction
+  {...props} params={{ ...props.params, theme: 'primary-white', spacing: 'none',
+    paddingTop: 'lg', paddingBottom: 'none', marginBottom: 'lg' }} />;
+
+export const EssentialIncome7QuestionsHeading = (props: AllianzRichTextProps) => <AAPlusQuestionsHeading {...props} />;
+
+export const EssentialIncome7WithdrawalSchedule = (props: AllianzRichTextProps) => <FixedWithdrawalSchedule
+  {...props} params={{ ...props.params, theme: 'grey-soft', spacing: 'none',
+    paddingTop: 'none', paddingBottom: 'none', marginBottom: 'none' }} />;
+
+export const EssentialIncome7Footnotes = (props: AllianzRichTextProps) => <ClassicFootnotes {...props} />;
+
+/** The source video anchor belongs to the glyph-free introduction row. */
+export const EssentialIncome7Introduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width u-row-spacing t-bg-transparent axlTileCollection" id={params.RenderingIdentifier === 'video' ? undefined : params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <a id="video" />
+      <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+        <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+            <div className="tileSubHeading" />
+          </header>
+          {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+        </div></article>
+      </div></div>
+    </div>
+  </div>;
+};
+
+/** Allocation uses the white source section and its single allocation anchor. */
+export const EssentialIncome7AllocationIntroduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-primary-white axlTileCollection" id={params.RenderingIdentifier === 'allocation-options' ? undefined : params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <a id="allocation-options" />
+      <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+        <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+          <div className="tileIcon t-bg-transparent t-icon-primary-black">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+              <path fillRule="evenodd" d="M0.545454545,22 C0.244363636,22 0,21.7511111 0,21.4444444 L0,2.55555556 C0,2.24888889 0.244363636,2 0.545454545,2 C0.846545455,2 1.09090909,2.24888889 1.09090909,2.55555556 L1.09090909,20.8888889 L23.4545455,20.8888889 C23.7556364,20.8888889 24,21.1377778 24,21.4444444 C24,21.7511111 23.7556364,22 23.4545455,22 L0.545454545,22 Z M18.705,8.82916667 C18.9177273,8.6125 19.2635455,8.6125 19.4762727,8.82916667 C19.689,9.04583333 19.689,9.39805556 19.4762727,9.61472222 L14.0217273,15.1702778 C13.8286364,15.3669444 13.5242727,15.3880556 13.3093636,15.2213889 L9.32318182,12.1780556 L5.29445455,16.2813889 C5.18754545,16.3902778 5.04790909,16.4447222 4.90936364,16.4447222 C4.76972727,16.4447222 4.63009091,16.3902778 4.52318182,16.2813889 C4.31045455,16.0647222 4.31045455,15.7125 4.52318182,15.4958333 L8.88681818,11.0513889 C9.07772727,10.8547222 9.38209091,10.8336111 9.59918182,11.0002778 L13.5853636,14.0436111 L18.705,8.82916667 Z" />
+            </svg>
+          </div>
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+            <div className="tileSubHeading" />
+          </header>
+          {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+        </div></article>
+      </div></div>
+    </div>
+  </div>;
+};
+
+/** MVA retains the authored snapshot and full editing owner, with no rate fetch. */
+export const EssentialIncome7MvaReference = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  const heading = data.heading?.jsonValue;
+  const body = data.body?.jsonValue;
+  const parts = typeof heading?.value === 'string'
+    ? /^(Current MVA reference rate:\s*)([+-]?(?:\d+(?:\.\d+)?|\.\d+))(\s*%\s*)(as of\s+)(\d{1,2}\/\d{1,2}\/\d{4})$/.exec(heading.value)
+    : null;
+  return <div className="l-container--full-width t-bg-grey-soft axlTileCollection" id={params.RenderingIdentifier === 'mva-rate' ? undefined : params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <a id="mva-rate" />
+      <div className="l-grid__row"><div className="l-grid__column-medium-12">
+        <div id="seven-yr-slot" className="well seven-yr-slot">
+          {shouldRenderTextField(heading, isEditing) && <h2>
+            {isEditing || !parts ? <Text editable={isEditing} field={heading} /> : <>
+              <small className="blue">{parts[1]}</small><span {...{ testid: 'currentMVARate' }}>{parts[2]}</span>{parts[3]}<small>{parts[4]}<span {...{ testid: 'currentMVARateEffectiveDate' }}>{parts[5]}</span></small>
+            </>}
+          </h2>}
+          {shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} />}
+        </div>
+      </div></div>
+    </div>
+  </div>;
+};
