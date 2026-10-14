@@ -6,7 +6,7 @@ Path: "/sitecore/templates/Project/Westfield/Pages/Campaign Page"
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: "__Base template"
-  Value: ""
+  Value: "{F5058318-8E0D-4220-A799-3C0DBF2EA1AB}"
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: "__Icon"
   Value: "Office/32x32/document_text.png"
