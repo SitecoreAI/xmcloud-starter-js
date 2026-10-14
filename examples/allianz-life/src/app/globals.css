@@ -10,7 +10,7 @@
 
 .allianz-missing-data { padding: 1rem; border: 1px dashed #003781; }
 .allianz-bordered { padding: 40px 0; border: 2px solid #003781; }
-.allianz-bordered .tileImage img { max-width: 100%; width: auto; }
+.allianz-bordered .tileImage img { max-width: 100%; width: auto; height: auto; }
 .tileIcon img { width: 40px; height: auto; }
 .tileIcon { align-items: center; }
 .m-footer__social-link .a-icon img { width: 1.25rem; height: 1.25rem; }
