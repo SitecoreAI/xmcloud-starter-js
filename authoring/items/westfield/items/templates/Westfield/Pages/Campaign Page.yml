@@ -1,0 +1,27 @@
+---
+ID: "446ee554-16ac-420a-b790-a5fc9509a7bb"
+Parent: "f017d6f2-7f67-48e9-9d68-087ba67b4964"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: "/sitecore/templates/Project/Westfield/Pages/Campaign Page"
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: "__Base template"
+  Value: "{F5058318-8E0D-4220-A799-3C0DBF2EA1AB}"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: "__Icon"
+  Value: "Office/32x32/document_text.png"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: "__Standard values"
+  Value: "{50A007E9-820E-4B9B-94FA-275F86593365}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Campaign page"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261014T220836Z"

@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "Project.Westfield.Definitions",
+  "items": {
+    "includes": [
+      {
+        "name": "templates",
+        "path": "/sitecore/templates/Project/Westfield",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate",
+        "maxRelativePathLength": 160
+      },
+      {
+        "name": "renderings",
+        "path": "/sitecore/layout/Renderings/Project/Westfield",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate",
+        "maxRelativePathLength": 160
+      },
+      {
+        "name": "placeholders",
+        "path": "/sitecore/layout/Placeholder Settings/Project/Westfield",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate",
+        "maxRelativePathLength": 160
+      },
+      {
+        "name": "branches",
+        "path": "/sitecore/templates/Branches/Project/Westfield",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate",
+        "maxRelativePathLength": 160
+      }
+    ]
+  }
+}

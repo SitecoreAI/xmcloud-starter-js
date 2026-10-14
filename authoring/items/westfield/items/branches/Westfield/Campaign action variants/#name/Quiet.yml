@@ -1,0 +1,21 @@
+---
+ID: "db5b2d0c-ea8e-4fc4-ba98-315b78561475"
+Parent: "0bfa164f-45ef-4d4a-bd6a-36978a704d0b"
+Template: "4d50cdae-c2d9-4de8-b080-8f992bfb1b55"
+Path: "/sitecore/templates/Branches/Project/Westfield/Campaign action variants/$name/Quiet"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: "__Sortorder"
+  Value: "200"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Quiet"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261014T220836Z"

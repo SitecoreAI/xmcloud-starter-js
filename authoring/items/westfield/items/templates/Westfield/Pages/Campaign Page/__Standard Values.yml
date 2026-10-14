@@ -1,0 +1,16 @@
+---
+ID: "50a007e9-820e-4b9b-94fa-275f86593365"
+Parent: "446ee554-16ac-420a-b790-a5fc9509a7bb"
+Template: "446ee554-16ac-420a-b790-a5fc9509a7bb"
+Path: "/sitecore/templates/Project/Westfield/Pages/Campaign Page/__Standard Values"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261014T220836Z"
+    - ID: "d4ebb5f5-976e-4e0e-9c4c-6009995b75ef"
+      Hint: "Title"
+      Value: "$name"
