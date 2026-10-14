@@ -18,18 +18,29 @@
         "maxRelativePathLength": 160
       },
       {
-        "name": "placeholders",
-        "path": "/sitecore/layout/Placeholder Settings/Project/Westfield",
-        "scope": "ItemAndDescendants",
-        "allowedPushOperations": "CreateAndUpdate",
-        "maxRelativePathLength": 160
-      },
-      {
         "name": "branches",
         "path": "/sitecore/templates/Branches/Project/Westfield",
         "scope": "ItemAndDescendants",
         "allowedPushOperations": "CreateAndUpdate",
         "maxRelativePathLength": 160
+      },
+      {
+        "name": "siteHeader",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "siteMain",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "siteFooter",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
       }
     ]
   }

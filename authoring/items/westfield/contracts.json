@@ -6,7 +6,7 @@
   "roots": [
     "/sitecore/templates/Project/Westfield",
     "/sitecore/layout/Renderings/Project/Westfield",
-    "/sitecore/layout/Placeholder Settings/Project/Westfield",
+    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
     "/sitecore/templates/Branches/Project/Westfield"
   ],
   "components": [
@@ -353,7 +353,7 @@
     {
       "key": "headless-header",
       "id": "79fb7fdd-e889-4bc8-841c-cf7e2bc26a77",
-      "path": "/sitecore/layout/Placeholder Settings/Project/Westfield/Header",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
       "allowedRenderingIds": [
         "DA91EB0A-DBA7-41FA-8D33-8D3CAB0AC47C"
       ],
@@ -362,7 +362,7 @@
     {
       "key": "headless-main",
       "id": "e5ab4ab2-2dbf-445b-a93c-bd41feb5e1b6",
-      "path": "/sitecore/layout/Placeholder Settings/Project/Westfield/Main",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
       "allowedRenderingIds": [
         "4E8227B8-281A-496C-9D7E-138D341F389B",
         "15F0D95B-CE29-45D7-8937-42016FCF3EFD",
@@ -373,7 +373,7 @@
     {
       "key": "headless-footer",
       "id": "fc19499e-462b-4c2b-a5fd-bef1e6a954c7",
-      "path": "/sitecore/layout/Placeholder Settings/Project/Westfield/Footer",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
       "allowedRenderingIds": [
         "3EFBECF6-F66F-4C54-A6C2-4B67753B390C"
       ],
@@ -531,7 +531,7 @@
     {
       "key": "placeholdersRoot",
       "id": "0048bf16-24ee-491e-ac28-9ca82eeb912f",
-      "path": "/sitecore/layout/Placeholder Settings/Project/Westfield",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
       "file": "items/placeholders/Westfield.yml"
     },
     {
@@ -903,19 +903,19 @@
     {
       "key": "placeholderHeader",
       "id": "79fb7fdd-e889-4bc8-841c-cf7e2bc26a77",
-      "path": "/sitecore/layout/Placeholder Settings/Project/Westfield/Header",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
       "file": "items/placeholders/Westfield/Header.yml"
     },
     {
       "key": "placeholderMain",
       "id": "e5ab4ab2-2dbf-445b-a93c-bd41feb5e1b6",
-      "path": "/sitecore/layout/Placeholder Settings/Project/Westfield/Main",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
       "file": "items/placeholders/Westfield/Main.yml"
     },
     {
       "key": "placeholderFooter",
       "id": "fc19499e-462b-4c2b-a5fd-bef1e6a954c7",
-      "path": "/sitecore/layout/Placeholder Settings/Project/Westfield/Footer",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
       "file": "items/placeholders/Westfield/Footer.yml"
     }
   ],
@@ -933,7 +933,7 @@
       "id": "ec0810e4-c6fd-487f-89bc-de0c6de0df6c",
       "evidence": "Actual native root metadata supplied by the root agent after official site-collection creation."
     },
-    "/sitecore/layout/Placeholder Settings/Project/Westfield": {
+    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings": {
       "id": "0048bf16-24ee-491e-ac28-9ca82eeb912f",
       "evidence": "Actual native root metadata supplied by the root agent after official site-collection creation."
     }
