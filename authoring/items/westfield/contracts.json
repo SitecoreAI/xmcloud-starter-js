@@ -1,13 +1,16 @@
 {
   "schemaVersion": 1,
   "module": "Project.Westfield.Definitions",
-  "status": "source definitions only; not deployed, registered, published or authoring-tested",
+  "status": "Native definitions and authored campaign slice provisioned through API and published; public native fields/media verified. Page Builder UI and profile-derived first-render decision remain unverified.",
   "ownership": "developer-owned definitions only; no authored page/site/content/media items",
   "roots": [
     "/sitecore/templates/Project/Westfield",
     "/sitecore/layout/Renderings/Project/Westfield",
-    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
-    "/sitecore/templates/Branches/Project/Westfield"
+    "/sitecore/templates/Branches/Project/Westfield",
+    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
+    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
+    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
+    "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external"
   ],
   "components": [
     {
@@ -47,8 +50,22 @@
       "exports": [
         "Default"
       ],
-      "siteVariantInstantiation": "pending target site Presentation/Headless Variants",
-      "datasourceTargetVerification": "pending actual page Data folder, creation and picker test"
+      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignHero; authoring UI selection/switch remains unverified.",
+      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
+      "nativeSiteVariants": {
+        "groupItemId": "76393c57f8834eee92bb48095b8ce80d",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignHero",
+        "variants": [
+          {
+            "name": "Default",
+            "itemId": "4b7a596f50ea4329a7347b26cb7d718f",
+            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignHero/Default"
+          }
+        ],
+        "apiIdentityStatus": "verified",
+        "uiSelectionStatus": "unverified"
+      },
+      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
     },
     {
       "componentName": "CampaignAction",
@@ -82,8 +99,27 @@
         "Default",
         "Quiet"
       ],
-      "siteVariantInstantiation": "pending target site Presentation/Headless Variants",
-      "datasourceTargetVerification": "pending actual page Data folder, creation and picker test"
+      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction; authoring UI selection/switch remains unverified.",
+      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
+      "nativeSiteVariants": {
+        "groupItemId": "07a699e9652745d8a20a25c9e5295d12",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction",
+        "variants": [
+          {
+            "name": "Default",
+            "itemId": "1e5938b652f1412e9344e2ea492243a0",
+            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction/Default"
+          },
+          {
+            "name": "Quiet",
+            "itemId": "69996dab6c9244638fc60f0d4fd4db69",
+            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction/Quiet"
+          }
+        ],
+        "apiIdentityStatus": "verified",
+        "uiSelectionStatus": "unverified"
+      },
+      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
     },
     {
       "componentName": "CampaignContent",
@@ -110,8 +146,22 @@
       "exports": [
         "Default"
       ],
-      "siteVariantInstantiation": "pending target site Presentation/Headless Variants",
-      "datasourceTargetVerification": "pending actual page Data folder, creation and picker test"
+      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignContent; authoring UI selection/switch remains unverified.",
+      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
+      "nativeSiteVariants": {
+        "groupItemId": "5f0e30d09c63443e8264a1c66bcdd97e",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignContent",
+        "variants": [
+          {
+            "name": "Default",
+            "itemId": "3ab75261d35b469988d0b812e149de9c",
+            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignContent/Default"
+          }
+        ],
+        "apiIdentityStatus": "verified",
+        "uiSelectionStatus": "unverified"
+      },
+      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
     },
     {
       "componentName": "SiteHeader",
@@ -198,8 +248,22 @@
       "exports": [
         "Default"
       ],
-      "siteVariantInstantiation": "pending target site Presentation/Headless Variants",
-      "datasourceTargetVerification": "pending named target partial Data and picker test"
+      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteHeader; authoring UI selection/switch remains unverified.",
+      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
+      "nativeSiteVariants": {
+        "groupItemId": "378051ca9b374ebc9e613237b57a7cd5",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteHeader",
+        "variants": [
+          {
+            "name": "Default",
+            "itemId": "36ed7205a5444296a57a142642be7bdb",
+            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteHeader/Default"
+          }
+        ],
+        "apiIdentityStatus": "verified",
+        "uiSelectionStatus": "unverified"
+      },
+      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
     },
     {
       "componentName": "SiteFooter",
@@ -262,16 +326,34 @@
       "exports": [
         "Default"
       ],
-      "siteVariantInstantiation": "pending target site Presentation/Headless Variants",
-      "datasourceTargetVerification": "pending named target partial Data and picker test"
+      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteFooter; authoring UI selection/switch remains unverified.",
+      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
+      "nativeSiteVariants": {
+        "groupItemId": "b32707770d21453b8067c4ee776d3c9d",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteFooter",
+        "variants": [
+          {
+            "name": "Default",
+            "itemId": "8ade0644820b4ce793a53cfd0404df75",
+            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteFooter/Default"
+          }
+        ],
+        "apiIdentityStatus": "verified",
+        "uiSelectionStatus": "unverified"
+      },
+      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
     }
   ],
   "parameters": {
     "id": "a72d343f-6cde-4611-b131-06637c92bdb2",
     "path": "/sitecore/templates/Project/Westfield/Parameters/Component Parameters",
-    "baseTemplates": [],
+    "baseTemplates": [
+      "4247aad4-ebde-4994-998f-e067a51b1fe4",
+      "5c74e985-e055-43ff-b28c-db6c6a6450a2",
+      "3db3eb10-f8d0-4cc9-be26-18ce7b139ec8"
+    ],
     "source": "authoring/items/industry-verticals/common/items/templatesProject/industry-verticals/Components/Page Content/Promo/Rendering Parameters/Promo Parameters.yml",
-    "FieldNames": "inherited native variant selector; actual variant options/default must be verified after site variant instantiation"
+    "FieldNames": "Native Default variants and CampaignAction Default/Quiet instantiated. FieldNames selector and visual variant switch in Page Builder remain unverified."
   },
   "variantBranches": [
     {
@@ -284,9 +366,9 @@
           "sortOrder": 100
         }
       ],
-      "instantiateUnder": "pending actual site Presentation/Headless Variants",
+      "instantiateUnder": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants",
       "instantiateName": "componentName for CampaignHero, CampaignContent, SiteHeader and SiteFooter",
-      "status": "definition only; site variants are not provisioned"
+      "status": "Site variant instances provisioned and published through API; Page Builder variant selector remains unverified."
     },
     {
       "branchId": "89e97e57-d2bc-432b-9082-459ef9d474a9",
@@ -303,9 +385,9 @@
           "sortOrder": 200
         }
       ],
-      "instantiateUnder": "pending actual site Presentation/Headless Variants",
+      "instantiateUnder": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants",
       "instantiateName": "CampaignAction",
-      "status": "definition only; site variants are not provisioned"
+      "status": "Site variant instances provisioned and published through API; Page Builder variant selector remains unverified."
     }
   ],
   "pageTemplate": {
@@ -314,7 +396,7 @@
     "fields": [
       {
         "name": "Title",
-        "id": "234468bb-e1f0-4bca-9c31-70bf879ad33f",
+        "id": "d4ebb5f5-976e-4e0e-9c4c-6009995b75ef",
         "type": "Single-Line Text"
       },
       {
@@ -343,11 +425,13 @@
         "type": "Image"
       }
     ],
-    "baseTemplateSource": "authoring/items/industry-verticals/common/items/templatesProject/industry-verticals/Page.yml",
-    "baseTemplates": [],
+    "baseTemplateSource": "Native collection Page template /sitecore/templates/Project/Westfield/Page; identity verified through Authoring API",
+    "baseTemplates": [
+      "f5058318-8e0d-4220-a799-3c0dbf2ea1ab"
+    ],
     "standardValuesId": "50a007e9-820e-4b9b-94fa-275f86593365",
-    "insertionAndLayout": "pending actual target site insertion path, native Page/Partial Designs and layout metadata",
-    "pageBranch": "not generated: actual layout/design and site branch insertion path are unverified"
+    "insertionAndLayout": "Native Default page design, Header/Footer partials and Digital service campaign page branch configured through API and published. Fresh Create page through authoring UI remains unverified.",
+    "pageBranch": "Native site page branch /sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign (1dbcc4c57eac43fc8a79de94ecb3a75e), with independent $name/Data child identity verified through API; fresh authoring UI insertion remains unverified."
   },
   "placeholders": [
     {
@@ -357,7 +441,7 @@
       "allowedRenderingIds": [
         "DA91EB0A-DBA7-41FA-8D33-8D3CAB0AC47C"
       ],
-      "binding": "pending explicit target site/page/partial placeholder-settings binding; keys alone do not prove scoped enforcement"
+      "binding": "Exact site settings, allowed controls and site-owned palette seeded/verified through API and published. Page Builder palette visibility and scoped UI enforcement remain unverified."
     },
     {
       "key": "headless-main",
@@ -368,7 +452,7 @@
         "15F0D95B-CE29-45D7-8937-42016FCF3EFD",
         "B1F0E493-6A4A-49D0-AE58-4E9D9CA7EC77"
       ],
-      "binding": "pending explicit target site/page/partial placeholder-settings binding; keys alone do not prove scoped enforcement"
+      "binding": "Exact site settings, allowed controls and site-owned palette seeded/verified through API and published. Page Builder palette visibility and scoped UI enforcement remain unverified."
     },
     {
       "key": "headless-footer",
@@ -377,17 +461,18 @@
       "allowedRenderingIds": [
         "3EFBECF6-F66F-4C54-A6C2-4B67753B390C"
       ],
-      "binding": "pending explicit target site/page/partial placeholder-settings binding; keys alone do not prove scoped enforcement"
+      "binding": "Exact site settings, allowed controls and site-owned palette seeded/verified through API and published. Page Builder palette visibility and scoped UI enforcement remain unverified."
     }
   ],
   "pendingNativeWork": [
-    "Create/inspect actual Westfield site and its generated native IDs/paths.",
-    "Confirm the inherited platform/SXA template IDs exist in the actual authoring baseline.",
-    "Create named Header and Footer shared partials and their Data folders, then verify the scoped datasource queries.",
-    "Instantiate Default variants for the four single-export components and Default/Quiet for CampaignAction under actual site Headless Variants.",
-    "Bind site Available Renderings and exact placeholder settings without editing global palettes or unrelated site settings.",
-    "Bind a native reusable page design/layout, configure actual Campaign page insertion, and seed a modifiable local Data/structure branch through the real native insertion path.",
-    "Prove one live/editing slice, variant switching, native field editing, datasource creation, new page creation, save/reload and publication."
+    "Prove authenticated Page Builder UI through the READY external editing fallback. Its owned native rendering-host record and Westfield-only site binding are API-verified; the original native editing deployment startup failure remains recorded separately.",
+    "In authenticated Page Builder, prove text/RichText/Link editing, native Image picker selection, save/reload and republish through UI.",
+    "Prove fresh Home -> Create page -> Digital service campaign insertion through authoring UI, including independent local Data ownership.",
+    "Prove Page Builder datasource creation/picker and Default/Quiet selector/switch through UI.",
+    "Configure and prove native profile-derived first-render personalization for the two imported synthetic profiles; prepared/published datasource items alone are not a decision.",
+    "Prove Instagram campaign attribution and profile/session outcome; both Casey and Jordan browser identity-event launches are verified, event ingestion and native decision effects remain unverified.",
+    "Redeploy the local Instagram navigation-row fix and complete production mobile entry-path QA. Root width now matches 390 and five 48px links fit in local preview; Home/Paperless checks passed, but overall mobile QA remains partial.",
+    "Restore supported shared Content Hub access, provision Westfield-only collections/assets, then prove approval, public delivery and native DAM Image selection."
   ],
   "platformProvenance": {
     "templateRoot": {
@@ -478,7 +563,7 @@
   },
   "verifiedLocationSyntax": {
     "pageLocal": "query:./*[@@name='Data'] from origin/textron-luxury-retail shared PageHeader datasource metadata",
-    "siteScoped": "$site and named child selectors from repository Promo datasource metadata; Header/Footer partial target names remain pending actual site verification"
+    "siteScoped": "$site and named child selectors verified through native rendering fields; Header/Footer partial Data exists and renders publicly. Direct datasource picker UI remains unverified."
   },
   "placeholderKeyProvenance": "industry-verticals/westfield/src/Layout.tsx uses exact headless-header/headless-main/headless-footer keys; no dynamic wildcard or nested placeholder is introduced.",
   "sources": [
@@ -527,12 +612,6 @@
       "id": "85512948-3aa3-434f-b383-2070ca9e6023",
       "path": "/sitecore/layout/Renderings/Project/Westfield/Shared shell",
       "file": "items/renderings/Westfield/Shared shell.yml"
-    },
-    {
-      "key": "placeholdersRoot",
-      "id": "0048bf16-24ee-491e-ac28-9ca82eeb912f",
-      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
-      "file": "items/placeholders/Westfield.yml"
     },
     {
       "key": "branchesRoot",
@@ -904,22 +983,28 @@
       "key": "placeholderHeader",
       "id": "79fb7fdd-e889-4bc8-841c-cf7e2bc26a77",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
-      "file": "items/placeholders/Westfield/Header.yml"
+      "file": "items/siteHeader/Header.yml"
     },
     {
       "key": "placeholderMain",
       "id": "e5ab4ab2-2dbf-445b-a93c-bd41feb5e1b6",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
-      "file": "items/placeholders/Westfield/Main.yml"
+      "file": "items/siteMain/Main.yml"
     },
     {
       "key": "placeholderFooter",
       "id": "fc19499e-462b-4c2b-a5fd-bef1e6a954c7",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
-      "file": "items/placeholders/Westfield/Footer.yml"
+      "file": "items/siteFooter/Footer.yml"
+    },
+    {
+      "key": "externalRenderingHost",
+      "id": "a2a4cd2c-0dcd-4937-aeaf-20ea8cd3a740",
+      "path": "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external",
+      "file": "items/externalRenderingHost/westfield-external.yml"
     }
   ],
-  "rootIdentityStatus": "Reconciled to the four actual native Westfield root IDs returned from official site-collection creation. Component, field, parameter, page and variant definition IDs are unchanged.",
+  "rootIdentityStatus": "Template, rendering and branch root identities verified. The generated site Placeholder Settings folder is 11b33eb2-44e2-4447-a6ea-4a49a1972b7d; only its three exact Header/Main/Footer descendants are serialized. The old global Westfield placeholder folder is excluded.",
   "nativeRootBindings": {
     "/sitecore/templates/Project/Westfield": {
       "id": "ab0434e0-a27e-4507-bb6b-171e2c134dc0",
@@ -934,8 +1019,15 @@
       "evidence": "Actual native root metadata supplied by the root agent after official site-collection creation."
     },
     "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings": {
-      "id": "0048bf16-24ee-491e-ac28-9ca82eeb912f",
-      "evidence": "Actual native root metadata supplied by the root agent after official site-collection creation."
+      "id": "11b33eb2-44e2-4447-a6ea-4a49a1972b7d",
+      "evidence": "Verified through Authoring API item identity and parent paths of Header/Main/Footer.",
+      "serializationScope": "generated native context folder; excluded from definition deployment and definition-only retirement scopes"
+    },
+    "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external": {
+      "id": "a2a4cd2c-0dcd-4937-aeaf-20ea8cd3a740",
+      "templateId": "bc71d442-3e4f-46ba-887c-746e54f9bb83",
+      "evidence": "Read-only Authoring API identity, parent, template and four-field value verification.",
+      "serializationScope": "singleItem; only this owned rendering-host leaf. Shared parent and other hosts excluded."
     }
   },
   "provenanceRepository": {
@@ -965,9 +1057,259 @@
     },
     "parametersBases": [
       "4247aad4-ebde-4994-998f-e067a51b1fe4",
-      "5c74e985-e055-43ff-b28c-db6c6a6450a2"
+      "5c74e985-e055-43ff-b28c-db6c6a6450a2",
+      "3db3eb10-f8d0-4cc9-be26-18ce7b139ec8"
     ],
     "titleFieldId": "d4ebb5f5-976e-4e0e-9c4c-6009995b75ef",
     "fieldNamesFieldId": "75bbdf72-635f-4d72-a3d3-a9baba09d161"
+  },
+  "definitionCounts": {
+    "serializedItems": 72,
+    "datasourceFields": 29,
+    "components": 5,
+    "pageLocalMetadataFields": 5,
+    "inheritedTitleField": 1
+  },
+  "nativeVerification": {
+    "date": "2026-10-14",
+    "database": "master",
+    "language": "en",
+    "serializedItems": 72,
+    "identityAndPathStatus": "verified",
+    "parameterAndPageInheritanceStatus": "verified",
+    "sitePlaceholderParentsAndAllowedControlsStatus": "verified",
+    "authoringFlowStatus": "unverified",
+    "publicationStatus": "verified",
+    "scopeNote": "Source/native/API and public rendering proof are recorded independently. Page Builder UI, fresh author UI Create page, direct image/datasource picker, variant UI and native profile-derived first-render decision remain unverified.",
+    "checkedAtUTC": "2026-10-14T23:26:19.705303+00:00",
+    "publicationProcessedItems": 255,
+    "nativeFieldSaveReloadApiStatus": "verified",
+    "liveComponentFieldContracts": 5,
+    "nativeImageGet200Count": 4,
+    "editingHostApiReadinessStatus": "verified external fallback; Page Builder UI remains unverified",
+    "publicationScopeNote": "Original 71 definitions and authored slice were published; the CM-only external rendering-host item was created and bound through native API, with four-field source definition now prepared for review. No source deployment performed by this change."
+  },
+  "completedNativeWork": [
+    "Native collection/site identity and inherited template/parameter identities verified.",
+    "Header/Footer shared partials and scoped Data instantiated through API; rendering datasource queries/template/parameter fields verified.",
+    "Five component variant groups with six variants instantiated; CampaignAction Default/Quiet remain presentation variants.",
+    "Site-owned Available Renderings and exact Header/Main/Footer placeholder definitions provisioned.",
+    "Default page design and Digital service campaign branch with independent Data child identities configured and verified through API.",
+    "Initial content seed and native field save/reload completed through API.",
+    "Scoped Experience Edge publication FINISHED successfully, processed 255 items; four core media delivered by GET 200.",
+    "Two additional native CampaignAction datasources saved/reloaded and published successfully, processed 2 items.",
+    "Five component native field contracts render in the public initial slice; desktop Home to Explore paperless journey verified."
+  ],
+  "authoredSiteBindings": {
+    "status": "api-provisioned-and-published",
+    "scope": "Authored initial site content; outside ordinary developer-definition serialization/seed releases.",
+    "checkedAtUTC": "2026-10-14T22:58:03.775400+00:00",
+    "itemIdsByPath": {
+      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignHero": "76393c57f8834eee92bb48095b8ce80d",
+      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction": "07a699e9652745d8a20a25c9e5295d12",
+      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignContent": "5f0e30d09c63443e8264a1c66bcdd97e",
+      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteHeader": "378051ca9b374ebc9e613237b57a7cd5",
+      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteFooter": "b32707770d21453b8067c4ee776d3c9d",
+      "/sitecore/content/Westfield/westfield/Presentation/Available Renderings/Campaigns": "6ffaa25b2beb46a4ae431a66ab80f712",
+      "/sitecore/content/Westfield/westfield/Presentation/Available Renderings/Shared layout": "4c293e3acb994372a22ff6dda3fe3473",
+      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Header": "31d9097b6d25478eb446444ea878b674",
+      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Header/Data": "2736c24d6aa84e5a99548cf168a548ce",
+      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Footer": "0586221fc48c4dcb858834260b27694e",
+      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Footer/Data": "d6bb53d78b6b4838b51a6637c6c73a33",
+      "/sitecore/content/Westfield/westfield/Presentation/Page Designs/Default": "fe74342321864168ad651dc0652e7d21",
+      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign": "1dbcc4c57eac43fc8a79de94ecb3a75e",
+      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name": "7a83fa3a731d475f92109da7696a726e",
+      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name/Data": "064d31d57d454dcea7cc57992de74c1d",
+      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name/Data/Hero": "08c4cc7cad044eb684d3dd72ff88b698",
+      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name/Data/Paperless campaign": "b5a8934f190f41c3bf271966e9af77f2",
+      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name/Data/MyWestfield benefits": "6fb5c1bef5c144078b8575611d700c3c",
+      "/sitecore/content/Westfield/westfield/Home/paperless": "1b438447f060478dbf27df5aa7fbfc3b",
+      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Header/Data/Header": "fff53a4bdec04f6eaf70ffbd69c4ee28",
+      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Footer/Data/Footer": "5d16c42dec5a4050bfc64077f7edd83c",
+      "/sitecore/content/Westfield/westfield/Home/Data": "d714f7ae0ff74f47804d589321d4cdb3",
+      "/sitecore/content/Westfield/westfield/Home/Data/Hero": "69a01662aafc488c8b87f1afc7bdc570",
+      "/sitecore/content/Westfield/westfield/Home/Data/Paperless campaign": "af876682d9604dd38334826a88e4d9b9",
+      "/sitecore/content/Westfield/westfield/Home/Data/MyWestfield benefits": "cbd34a315dbc4aa7ad84117439c33c2b"
+    },
+    "completedSeedChecks": [
+      "initial content seed",
+      "branch Data identity check",
+      "native field save/reload"
+    ],
+    "initialPublication": {
+      "state": "FINISHED",
+      "processed": 255,
+      "failed": false,
+      "language": "en",
+      "targetDatabase": "experienceedge"
+    },
+    "pageBranchUiInsertionStatus": "unverified",
+    "sourceReceiptStatus": "API initial seed complete; UI proof is separate"
+  },
+  "personalizationPreparation": {
+    "status": "native-datasources-published; decision-unconfigured",
+    "datasources": [
+      {
+        "name": "Paperless offer",
+        "itemId": "e0bd1347f9af4591a07988bdccc73aad",
+        "path": "/sitecore/content/Westfield/westfield/Home/paperless/Data/Paperless offer",
+        "nativeVariantItemId": "1e5938b652f1412e9344e2ea492243a0",
+        "plannedVariant": "Default",
+        "saveReloadVerified": true
+      },
+      {
+        "name": "Paperless enrolled",
+        "itemId": "31f012d33df04f3a94d67dfca632c272",
+        "path": "/sitecore/content/Westfield/westfield/Home/paperless/Data/Paperless enrolled",
+        "nativeVariantItemId": "69996dab6c9244638fc60f0d4fd4db69",
+        "plannedVariant": "Quiet",
+        "saveReloadVerified": true
+      }
+    ],
+    "publication": {
+      "state": "FINISHED",
+      "processed": 2,
+      "failed": false
+    },
+    "decisionConfigured": false,
+    "renderingChangedByPreparation": false,
+    "layoutUnchanged": true,
+    "nativeFirstRenderDecisionStatus": "unverified"
+  },
+  "handoffSnapshotUTC": "2026-10-14T23:26:19.705303+00:00",
+  "nativeEditingHostStatus": {
+    "status": "failed",
+    "environmentId": "6Is64ZrdfzLpF1nDBtUSxd",
+    "deploymentId": "y9UxLLstFSoz4RS13JnpV",
+    "buildStatus": 2,
+    "deploymentStatus": 3,
+    "postActionStatus": 0,
+    "completedAtUTC": "2026-10-14T23:01:34.5927642Z",
+    "traceId": "3e2d9f98-564a-4566-873f-0604ed322ce7",
+    "logsUrl": "https://deploy.sitecorecloud.io/environment/6Is64ZrdfzLpF1nDBtUSxd/logs/types",
+    "failureStage": "Deployment startup",
+    "siteRenderingHostBinding": "Default",
+    "westfieldRenderingHostRecordStatus": "absent-at-audit",
+    "pageBuilderUiStatus": "unverified",
+    "publicSiteImpact": "Separate Vercel public deployment remains READY.",
+    "role": "Original Sitecore Deploy editing-host attempt; historical failure retained. Effective authoring now uses the separately verified external fallback."
+  },
+  "liveDeploymentSnapshot": {
+    "status": "READY",
+    "commit": "6be8cfe4943c04e331152ab449bc959bd5edd019",
+    "deploymentId": "dpl_AMXQSMb5BHRCxiP9a7Gbg9mmK4e1",
+    "url": "https://thlt-westfield-demo.vercel.app",
+    "finalHttpRouteCount": 3,
+    "nativeImageGet200Count": 4,
+    "nativeFooterPhoneStatus": "verified",
+    "runtimeErrorRecordsReturned": 0,
+    "caseyAndJordanLauncherStatus": "verified gated fresh SDK browser identity-event redirects to Instagram",
+    "nativeFirstRenderDecisionStatus": "unconfigured/unverified",
+    "mobileQaStatus": "partial: root width correction verified, local navigation-row fix awaits redeployment/regression"
+  },
+  "externalEditingHost": {
+    "status": "ready-api-verified",
+    "itemId": "a2a4cd2c-0dcd-4937-aeaf-20ea8cd3a740",
+    "path": "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external",
+    "templateId": "bc71d442-3e4f-46ba-887c-746e54f9bb83",
+    "fields": [
+      {
+        "name": "AppName",
+        "fieldId": "3121c257-53cf-464a-b736-98b418876057",
+        "value": "westfield"
+      },
+      {
+        "name": "ServerSideRenderingEngineApplicationUrl",
+        "fieldId": "e32c1801-79b3-4fc1-a9c4-3c6e6c2968ae",
+        "value": "https://thlt-westfield-editing.vercel.app/"
+      },
+      {
+        "name": "ServerSideRenderingEngineConfigUrl",
+        "fieldId": "94470b31-e282-4d8d-bc54-85689efb294c",
+        "value": "https://thlt-westfield-editing.vercel.app/api/editing/config"
+      },
+      {
+        "name": "ServerSideRenderingEngineEndpointUrl",
+        "fieldId": "fc76919b-0d7c-4732-865d-2af795fb38a4",
+        "value": "https://thlt-westfield-editing.vercel.app/api/editing/render"
+      }
+    ],
+    "parentContext": {
+      "itemId": "895e25c4-12b2-4b2c-8233-82f3b79eef53",
+      "path": "/sitecore/system/Settings/Services/Rendering Hosts",
+      "ownership": "shared; excluded from module ownership and retirement"
+    },
+    "siteBinding": {
+      "siteGroupingId": "08a923b3-1415-4c19-b850-5b771c41d036",
+      "siteGroupingPath": "/sitecore/content/Westfield/westfield/Settings/Site Grouping/westfield",
+      "field": "RenderingHost",
+      "value": "westfield-external",
+      "verification": "Read-only Authoring API confirmed current value; authored Site Grouping configuration is not serialized."
+    },
+    "readyApiMetadata": true,
+    "sdkNativeFieldHtmlProof": "verified by root; Page Builder UI remains unverified",
+    "pageBuilderUiVerified": false,
+    "sourceDefinitionReleaseStatus": "prepared; not deployed by this source change"
+  },
+  "damPreparation": {
+    "status": "partial-ui",
+    "counts": {
+      "selectedAssets": 12,
+      "uploadedAssets": 4,
+      "metadataVerifiedAssets": 1,
+      "approvalVerifiedAssets": 1,
+      "publicDeliveryVerifiedAssets": 0,
+      "collectionsCreated": 0,
+      "cmsDamSelectionsVerified": 0
+    },
+    "assetIds": [
+      128420,
+      128421,
+      128422,
+      128426
+    ],
+    "assetProofs": [
+      {
+        "key": "westfield-demo.westfield-logo",
+        "assetId": 128420,
+        "uploaded": true,
+        "metadataVerified": true,
+        "processingVerified": true,
+        "approvalStatus": "Approved",
+        "cmsSelected": false
+      },
+      {
+        "key": "westfield-demo.homepage-hero",
+        "assetId": 128421,
+        "uploaded": true,
+        "metadataVerified": false,
+        "processingVerified": false,
+        "approvalStatus": "Created",
+        "cmsSelected": false
+      },
+      {
+        "key": "westfield-demo.homepage-mywestfield",
+        "assetId": 128422,
+        "uploaded": true,
+        "metadataVerified": false,
+        "processingVerified": false,
+        "approvalStatus": "Created",
+        "cmsSelected": false
+      },
+      {
+        "key": "westfield-demo.westfield-footer-logo",
+        "assetId": 128426,
+        "uploaded": true,
+        "metadataVerified": false,
+        "processingVerified": false,
+        "approvalStatus": "Created",
+        "cmsSelected": false
+      }
+    ],
+    "collectionsCreated": 0,
+    "publicDeliveryVerifiedAssets": 0,
+    "nativeDamImageXmlStatus": "unverified; only actual CMS picker XML is acceptable",
+    "accessState": "Browser login succeeded; UI work paused after CDP deadline and physical Mac relock; no OAuth retries.",
+    "writeScope": "New Westfield-only assets/collections; global connector/theme/Brand Kit/schema/accounts/access remain unchanged."
   }
 }

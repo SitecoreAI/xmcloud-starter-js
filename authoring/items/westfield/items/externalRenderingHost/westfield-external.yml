@@ -1,0 +1,18 @@
+---
+ID: "a2a4cd2c-0dcd-4937-aeaf-20ea8cd3a740"
+Parent: "895e25c4-12b2-4b2c-8233-82f3b79eef53"
+Template: "bc71d442-3e4f-46ba-887c-746e54f9bb83"
+Path: "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external"
+SharedFields:
+- ID: "3121c257-53cf-464a-b736-98b418876057"
+  Hint: "AppName"
+  Value: "westfield"
+- ID: "e32c1801-79b3-4fc1-a9c4-3c6e6c2968ae"
+  Hint: "ServerSideRenderingEngineApplicationUrl"
+  Value: "https://thlt-westfield-editing.vercel.app/"
+- ID: "94470b31-e282-4d8d-bc54-85689efb294c"
+  Hint: "ServerSideRenderingEngineConfigUrl"
+  Value: "https://thlt-westfield-editing.vercel.app/api/editing/config"
+- ID: "fc76919b-0d7c-4732-865d-2af795fb38a4"
+  Hint: "ServerSideRenderingEngineEndpointUrl"
+  Value: "https://thlt-westfield-editing.vercel.app/api/editing/render"
