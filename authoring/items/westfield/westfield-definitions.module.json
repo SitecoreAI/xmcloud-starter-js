@@ -41,6 +41,12 @@
         "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
         "scope": "singleItem",
         "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "externalRenderingHost",
+        "path": "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
       }
     ]
   }
