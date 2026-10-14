@@ -1,0 +1,13 @@
+---
+ID: "022fc321-b3dd-4edf-9d6a-b3d1e92c2bd3"
+Parent: "c842fc01-2ed2-4dd8-a108-04634b4ada07"
+Template: "49c111d0-6867-4798-a724-1f103166e6e9"
+Path: "/sitecore/templates/Branches/Project/Westfield/Default component variant/$name"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261014T220836Z"

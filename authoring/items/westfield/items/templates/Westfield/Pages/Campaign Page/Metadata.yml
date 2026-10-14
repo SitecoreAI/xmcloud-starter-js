@@ -1,0 +1,17 @@
+---
+ID: "28112ad6-06e5-4760-9124-2b24a99e5248"
+Parent: "446ee554-16ac-420a-b790-a5fc9509a7bb"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Metadata"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261014T220836Z"

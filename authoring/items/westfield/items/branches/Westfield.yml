@@ -1,0 +1,17 @@
+---
+ID: "ec0810e4-c6fd-487f-89bc-de0c6de0df6c"
+Parent: "a1f6469d-16e1-4a5f-9e49-1aad869a5d11"
+Template: "2f5f8343-2a18-46a4-92a1-0f7ab0452741"
+Path: "/sitecore/templates/Branches/Project/Westfield"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Westfield"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261014T220836Z"
