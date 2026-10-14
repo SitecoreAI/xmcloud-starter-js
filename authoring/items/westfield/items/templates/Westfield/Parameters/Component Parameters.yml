@@ -6,7 +6,7 @@ Path: "/sitecore/templates/Project/Westfield/Parameters/Component Parameters"
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: "__Base template"
-  Value: "{4247AAD4-EBDE-4994-998F-E067A51B1FE4}|{5C74E985-E055-43FF-B28C-DB6C6A6450A2}"
+  Value: "{4247AAD4-EBDE-4994-998F-E067A51B1FE4}|{5C74E985-E055-43FF-B28C-DB6C6A6450A2}|{3DB3EB10-F8D0-4CC9-BE26-18CE7B139EC8}"
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: "__Icon"
   Value: "Office/32x32/window_dialog.png"
