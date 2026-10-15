@@ -1,0 +1,39 @@
+---
+ID: "0154942a-cb18-59d6-a329-e5f3ade279d9"
+Parent: "8eae70f6-1b4f-5deb-b5f8-7fd5de6b24d5"
+Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+Path: "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleHeader"
+SharedFields:
+- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
+  Hint: "componentName"
+  Value: "ArticleHeader"
+- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
+  Hint: "Datasource Template"
+  Value: ""
+- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
+  Hint: "Datasource Location"
+  Value: ""
+- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
+  Hint: "Parameters Template"
+  Value: "{A72D343F-6CDE-4611-B131-06637C92BDB2}"
+- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
+  Hint: "Open Properties after Add"
+  Value: "0"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: "__Icon"
+  Value: "Office/32x32/note_text.png"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: "__Sortorder"
+  Value: "100"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Article header"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T042634Z"

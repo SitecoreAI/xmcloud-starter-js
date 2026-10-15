@@ -1,0 +1,27 @@
+---
+ID: "31f25fea-085e-5193-9637-b13fc2f7a385"
+Parent: "f017d6f2-7f67-48e9-9d68-087ba67b4964"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: "/sitecore/templates/Project/Westfield/Pages/Advice Article"
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: "__Base template"
+  Value: "{446EE554-16AC-420A-B790-A5FC9509A7BB}"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: "__Icon"
+  Value: "Office/32x32/document_text.png"
+- ID: "f7d48a55-2158-4f02-9356-756654404f73"
+  Hint: "__Standard values"
+  Value: "{88D7A4E9-8865-59F9-86CD-F51EDD7777EF}"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Advice article"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T042634Z"
