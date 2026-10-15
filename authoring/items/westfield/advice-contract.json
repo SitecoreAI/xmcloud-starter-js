@@ -126,7 +126,8 @@
         "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
       },
       "layoutServicePlaceholderId": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845",
-      "placeholderKey": "article-content"
+      "placeholderKey": "article-content-{*}",
+      "dynamicPlaceholder": true
     },
     "ArticleText": {
       "id": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
