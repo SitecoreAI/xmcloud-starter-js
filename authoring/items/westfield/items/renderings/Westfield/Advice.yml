@@ -1,0 +1,17 @@
+---
+ID: "8eae70f6-1b4f-5deb-b5f8-7fd5de6b24d5"
+Parent: "42655338-84d7-487b-b876-66d8288acb57"
+Template: "840d4a46-5503-49ec-bf9d-bd090946c63d"
+Path: "/sitecore/layout/Renderings/Project/Westfield/Advice"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Advice"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T042634Z"

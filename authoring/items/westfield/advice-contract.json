@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 1,
+  "site": "westfield",
+  "status": "Developer source definitions prepared; no new native deployment/authoring/publication proof.",
+  "namespaceUuid": "42aff456-0823-4d69-adad-a6bfbeb31763",
+  "createdAtUTC": "2026-10-15T04:21:09.360968+00:00",
+  "templates": {
+    "AdviceArticle": {
+      "id": "31f25fea-085e-5193-9637-b13fc2f7a385",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article",
+      "name": "Advice Article",
+      "baseTemplateId": "446ee554-16ac-420a-b790-a5fc9509a7bb",
+      "baseStatus": "Approved existing minimal Campaign Page, transitively actual Headless Page; Title/pageSummary identities reused.",
+      "standardValuesId": "88d7a4e9-8865-59f9-86cd-f51edd7777ef",
+      "sectionId": "7be0b86b-5138-5d16-8049-31489cbb7405",
+      "fields": [
+        {
+          "name": "Topic",
+          "id": "df4ee816-a6ef-5244-b758-ddfa7a183033",
+          "type": "Single-Line Text",
+          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/Topic"
+        },
+        {
+          "name": "ReadTime",
+          "id": "6b763802-bdbb-57fe-89e4-7dc32bb0f694",
+          "type": "Single-Line Text",
+          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/ReadTime"
+        },
+        {
+          "name": "HeroImage",
+          "id": "f7badcfe-f84c-51a2-8066-b863da18c3ec",
+          "type": "Image",
+          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/HeroImage"
+        }
+      ],
+      "inheritedFields": [
+        {
+          "name": "Title",
+          "id": "d4ebb5f5-976e-4e0e-9c4c-6009995b75ef",
+          "type": "Single-Line Text"
+        },
+        {
+          "name": "pageSummary",
+          "id": "8bff13f9-685f-4092-bcfc-873f8515dd73",
+          "type": "Single-Line Text"
+        }
+      ]
+    },
+    "AdviceHub": {
+      "id": "02fc9c02-3ffc-5551-9c81-1ff89b9b0d59",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Hub",
+      "name": "Advice Hub",
+      "baseTemplateId": "446ee554-16ac-420a-b790-a5fc9509a7bb",
+      "standardValuesId": "b9c27b01-58e6-5d48-8299-924015d4e560",
+      "ownFields": [],
+      "baseStatus": "Approved existing minimal Campaign Page, transitively actual Headless Page; Title/pageSummary identities reused."
+    },
+    "ArticleText": {
+      "id": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
+      "path": "/sitecore/templates/Project/Westfield/Components/ArticleText",
+      "sectionId": "2bd90272-b56f-5134-b2e6-392ea4bcc7f3",
+      "fields": [
+        {
+          "name": "Heading",
+          "id": "20ca19b1-bc66-5de8-9fc8-60c0ec1f2fa6",
+          "type": "Single-Line Text",
+          "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Heading"
+        },
+        {
+          "name": "Body",
+          "id": "966cfa1c-7813-5866-b3e0-d3178c9f2eeb",
+          "type": "Rich Text",
+          "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Body"
+        }
+      ]
+    }
+  },
+  "renderingFolder": {
+    "id": "8eae70f6-1b4f-5deb-b5f8-7fd5de6b24d5",
+    "path": "/sitecore/layout/Renderings/Project/Westfield/Advice"
+  },
+  "components": {
+    "ArticleHeader": {
+      "id": "0154942a-cb18-59d6-a329-e5f3ade279d9",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleHeader",
+      "componentName": "ArticleHeader",
+      "displayName": "Article header",
+      "datasourceTemplateId": null,
+      "datasourceTemplatePath": null,
+      "datasourceLocation": null,
+      "owner": "Current article route fields; fixed partial",
+      "exports": [
+        "Default"
+      ],
+      "variantGroup": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleHeader",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      },
+      "defaultVariant": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleHeader/Default",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      }
+    },
+    "ArticleBodyLayout": {
+      "id": "fc56a6e7-1fb8-543e-bab8-a81ab5185b9c",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleBodyLayout",
+      "componentName": "ArticleBodyLayout",
+      "displayName": "Article body",
+      "datasourceTemplateId": null,
+      "datasourceTemplatePath": null,
+      "datasourceLocation": null,
+      "owner": "Fixed partial structural placeholder",
+      "exports": [
+        "Default"
+      ],
+      "variantGroup": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleBodyLayout",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      },
+      "defaultVariant": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleBodyLayout/Default",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      },
+      "layoutServicePlaceholderId": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845",
+      "placeholderKey": "article-content"
+    },
+    "ArticleText": {
+      "id": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleText",
+      "componentName": "ArticleText",
+      "displayName": "Article text",
+      "datasourceTemplateId": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
+      "datasourceTemplatePath": "/sitecore/templates/Project/Westfield/Components/ArticleText",
+      "datasourceLocation": "query:./*[@@name='Data']",
+      "owner": "Page-local /Data",
+      "exports": [
+        "Default"
+      ],
+      "variantGroup": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleText",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      },
+      "defaultVariant": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleText/Default",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      }
+    },
+    "AdviceListing": {
+      "id": "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/AdviceListing",
+      "componentName": "AdviceListing",
+      "displayName": "Advice listing",
+      "datasourceTemplateId": null,
+      "datasourceTemplatePath": null,
+      "datasourceLocation": null,
+      "owner": "Current hub route fields; cards from published Edge",
+      "exports": [
+        "Default"
+      ],
+      "variantGroup": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/AdviceListing",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      },
+      "defaultVariant": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/AdviceListing/Default",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      }
+    },
+    "SearchResults": {
+      "id": "59801512-e7a4-5d0f-9d47-8b47e8423eef",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/SearchResults",
+      "componentName": "SearchResults",
+      "displayName": "Search results",
+      "datasourceTemplateId": null,
+      "datasourceTemplatePath": null,
+      "datasourceLocation": null,
+      "owner": "Current route fields; results from published Edge",
+      "exports": [
+        "Default"
+      ],
+      "variantGroup": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SearchResults",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      },
+      "defaultVariant": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SearchResults/Default",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      }
+    }
+  },
+  "placeholder": {
+    "id": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845",
+    "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Article Content",
+    "parentId": "11b33eb2-44e2-4447-a6ea-4a49a1972b7d",
+    "key": "article-content",
+    "editable": true,
+    "allowedRenderingIds": [
+      "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
+      "15f0d95b-ce29-45d7-8937-42016fcf3efd"
+    ],
+    "scope": "singleItem"
+  },
+  "mainPlaceholderAdditionIds": [
+    "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4",
+    "59801512-e7a4-5d0f-9d47-8b47e8423eef"
+  ],
+  "authored": {
+    "articlePartial": {
+      "id": null,
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Article",
+      "signature": "article",
+      "placements": [
+        {
+          "componentName": "ArticleHeader",
+          "renderingId": "0154942a-cb18-59d6-a329-e5f3ade279d9",
+          "uid": "18722aa7-9677-5ab1-b45d-194c9c7a9907",
+          "placeholder": "headless-main",
+          "datasource": null
+        },
+        {
+          "componentName": "ArticleBodyLayout",
+          "renderingId": "fc56a6e7-1fb8-543e-bab8-a81ab5185b9c",
+          "uid": "59902270-45f2-5bc1-9236-3c1dc825890c",
+          "placeholder": "headless-main",
+          "datasource": null
+        }
+      ],
+      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+    },
+    "articleDesign": {
+      "id": null,
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Page Designs/Article",
+      "partialDesignIds": [
+        "31d9097b-6d25-478e-b446-444ea878b674",
+        null,
+        "0586221f-c48c-4dcb-8588-34260b27694e"
+      ],
+      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation.",
+      "bindingStatus": "Append actual new Article partial ID after native creation."
+    },
+    "articleBranch": {
+      "id": null,
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article",
+      "page": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      },
+      "data": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data",
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      },
+      "children": [
+        {
+          "id": null,
+          "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Introduction",
+          "name": "Introduction",
+          "templateId": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
+          "renderingId": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
+          "datasource": "local:/Data/Introduction",
+          "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        },
+        {
+          "id": null,
+          "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Checklist",
+          "name": "Checklist",
+          "templateId": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
+          "renderingId": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
+          "datasource": "local:/Data/Checklist",
+          "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        },
+        {
+          "id": null,
+          "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Next step",
+          "name": "Next step",
+          "templateId": "4f0d1503-3a02-4455-9f1d-878f10ac23dd",
+          "renderingId": "15f0d95b-ce29-45d7-8937-42016fcf3efd",
+          "datasource": "local:/Data/Next step",
+          "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        }
+      ],
+      "placeholderKey": "article-content",
+      "placementPathStatus": "Expected convention from official repository and existing Westfield partial layout; actual new article layout/UI must verify.",
+      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation.",
+      "placementPath": "/headless-main/sxa-article/article-content"
+    },
+    "palette": {
+      "Articles": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Available Renderings/Articles",
+        "renderingIds": [
+          "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
+          "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4"
+        ],
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      },
+      "Search": {
+        "id": null,
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Available Renderings/Search",
+        "renderingIds": [
+          "59801512-e7a4-5d0f-9d47-8b47e8423eef"
+        ],
+        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      }
+    },
+    "adviceHub": {
+      "id": null,
+      "path": "/sitecore/content/Westfield/westfield/Home/advice",
+      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+    },
+    "searchPage": {
+      "id": null,
+      "path": "/sitecore/content/Westfield/westfield/Home/search",
+      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+    }
+  },
+  "nativeExisting": {
+    "headlessPageTemplateId": "f5058318-8e0d-4220-a799-3c0dbf2ea1ab",
+    "campaignPageTemplateId": "446ee554-16ac-420a-b790-a5fc9509a7bb",
+    "pageDataTemplateId": "1c82e550-ebcd-4e5d-8abd-d50d0809541e",
+    "pageDesignTemplateId": "1105b8f8-1e00-426b-bf1f-c840742d827b",
+    "partialDesignTemplateId": "fd2059fd-6043-4dfe-8c04-e2437ce87634",
+    "pageBranchTemplateId": "35e75c72-4985-4e09-88c3-0eac6cd1e64f",
+    "parametersTemplateId": "a72d343f-6cde-4611-b131-06637c92bdb2",
+    "defaultComponentVariantBranchId": "c842fc01-2ed2-4dd8-a108-04634b4ada07",
+    "searchPageTemplateId": "446ee554-16ac-420a-b790-a5fc9509a7bb",
+    "generatedPartialPlaceholderTemplateId": "d2a6884c-04d5-4089-a64e-d27ca9d68d4c"
+  },
+  "ownership": "Developer templates/renderings/exact placeholder leaf serialized. Page/Partial Designs, branches with populated content, palette and native page items are deliberate one-time authored configuration outside ordinary deployment.",
+  "siteHeaderFieldAdditions": [
+    {
+      "name": "AdviceLink",
+      "id": "ef8bc5ec-82ba-5838-b5d0-8feb687810ea",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AdviceLink",
+      "type": "General Link",
+      "label": "Articles & insights"
+    },
+    {
+      "name": "SearchLink",
+      "id": "bb99e50e-4f87-59c5-8129-51bc61d80147",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/SearchLink",
+      "type": "General Link",
+      "label": "Search"
+    }
+  ],
+  "sources": [
+    "https://doc.sitecore.com/sai/en/users/sitecoreai/build-pages/building-page-templates-and-branches/create-and-configure-a-page-branch.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/best-practices/recommendations--structuring-pages.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/use-dynamic-placeholders-in-components.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-sources/use-a-prefix-to-set-the-data-source-context.html"
+  ]
+}

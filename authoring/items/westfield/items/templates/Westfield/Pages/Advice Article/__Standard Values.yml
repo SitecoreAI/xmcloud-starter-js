@@ -1,0 +1,16 @@
+---
+ID: "88d7a4e9-8865-59f9-86cd-f51edd7777ef"
+Parent: "31f25fea-085e-5193-9637-b13fc2f7a385"
+Template: "31f25fea-085e-5193-9637-b13fc2f7a385"
+Path: "/sitecore/templates/Project/Westfield/Pages/Advice Article/__Standard Values"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T042634Z"
+    - ID: "d4ebb5f5-976e-4e0e-9c4c-6009995b75ef"
+      Hint: "Title"
+      Value: "$name"

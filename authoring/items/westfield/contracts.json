@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "module": "Project.Westfield.Definitions",
-  "status": "Native definitions and authored campaign slice provisioned through API and published; public native fields/media verified. Page Builder UI and profile-derived first-render decision remain unverified.",
+  "status": "Developer definition source. The prior 72-item baseline was deployed; the 21-item Advice addition is prepared and requires its own native deployment/readback. Runtime and authoring acceptance belong to the linked lifecycle manifest, not this source inventory.",
   "ownership": "developer-owned definitions only; no authored page/site/content/media items",
   "roots": [
     "/sitecore/templates/Project/Westfield",
@@ -10,7 +10,8 @@
     "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
     "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
     "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
-    "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external"
+    "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external",
+    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Article Content"
   ],
   "components": [
     {
@@ -49,23 +50,7 @@
       "datasourceLocation": "query:./*[@@name='Data']",
       "exports": [
         "Default"
-      ],
-      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignHero; authoring UI selection/switch remains unverified.",
-      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
-      "nativeSiteVariants": {
-        "groupItemId": "76393c57f8834eee92bb48095b8ce80d",
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignHero",
-        "variants": [
-          {
-            "name": "Default",
-            "itemId": "4b7a596f50ea4329a7347b26cb7d718f",
-            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignHero/Default"
-          }
-        ],
-        "apiIdentityStatus": "verified",
-        "uiSelectionStatus": "unverified"
-      },
-      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
+      ]
     },
     {
       "componentName": "CampaignAction",
@@ -98,28 +83,7 @@
       "exports": [
         "Default",
         "Quiet"
-      ],
-      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction; authoring UI selection/switch remains unverified.",
-      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
-      "nativeSiteVariants": {
-        "groupItemId": "07a699e9652745d8a20a25c9e5295d12",
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction",
-        "variants": [
-          {
-            "name": "Default",
-            "itemId": "1e5938b652f1412e9344e2ea492243a0",
-            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction/Default"
-          },
-          {
-            "name": "Quiet",
-            "itemId": "69996dab6c9244638fc60f0d4fd4db69",
-            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction/Quiet"
-          }
-        ],
-        "apiIdentityStatus": "verified",
-        "uiSelectionStatus": "unverified"
-      },
-      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
+      ]
     },
     {
       "componentName": "CampaignContent",
@@ -145,23 +109,7 @@
       "datasourceLocation": "query:./*[@@name='Data']",
       "exports": [
         "Default"
-      ],
-      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignContent; authoring UI selection/switch remains unverified.",
-      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
-      "nativeSiteVariants": {
-        "groupItemId": "5f0e30d09c63443e8264a1c66bcdd97e",
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignContent",
-        "variants": [
-          {
-            "name": "Default",
-            "itemId": "3ab75261d35b469988d0b812e149de9c",
-            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignContent/Default"
-          }
-        ],
-        "apiIdentityStatus": "verified",
-        "uiSelectionStatus": "unverified"
-      },
-      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
+      ]
     },
     {
       "componentName": "SiteHeader",
@@ -241,29 +189,25 @@
           "id": "95d118e4-1d16-4903-86e6-4d0fd7bee85d",
           "type": "General Link",
           "label": "Contact"
+        },
+        {
+          "name": "AdviceLink",
+          "id": "ef8bc5ec-82ba-5838-b5d0-8feb687810ea",
+          "type": "General Link",
+          "label": "Articles & insights"
+        },
+        {
+          "name": "SearchLink",
+          "id": "bb99e50e-4f87-59c5-8129-51bc61d80147",
+          "type": "General Link",
+          "label": "Search"
         }
       ],
       "owner": "named shared Header partial /Data",
       "datasourceLocation": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']",
       "exports": [
         "Default"
-      ],
-      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteHeader; authoring UI selection/switch remains unverified.",
-      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
-      "nativeSiteVariants": {
-        "groupItemId": "378051ca9b374ebc9e613237b57a7cd5",
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteHeader",
-        "variants": [
-          {
-            "name": "Default",
-            "itemId": "36ed7205a5444296a57a142642be7bdb",
-            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteHeader/Default"
-          }
-        ],
-        "apiIdentityStatus": "verified",
-        "uiSelectionStatus": "unverified"
-      },
-      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
+      ]
     },
     {
       "componentName": "SiteFooter",
@@ -325,23 +269,102 @@
       "datasourceLocation": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']",
       "exports": [
         "Default"
+      ]
+    },
+    {
+      "componentName": "ArticleHeader",
+      "renderingId": "0154942a-cb18-59d6-a329-e5f3ade279d9",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleHeader",
+      "datasourceTemplateId": null,
+      "datasourceTemplatePath": null,
+      "fields": [],
+      "owner": "Current article route fields; fixed partial",
+      "datasourceLocation": null,
+      "exports": [
+        "Default"
       ],
-      "siteVariantInstantiation": "Native variants instantiated and published at /sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteFooter; authoring UI selection/switch remains unverified.",
-      "datasourceTargetVerification": "Rendering Datasource Location/Template/Parameters fields verified through Authoring API; scoped page or named partial Data seeded and native fields render live. Direct datasource creation/picker UI remains unverified.",
-      "nativeSiteVariants": {
-        "groupItemId": "b32707770d21453b8067c4ee776d3c9d",
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteFooter",
-        "variants": [
-          {
-            "name": "Default",
-            "itemId": "8ade0644820b4ce793a53cfd0404df75",
-            "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteFooter/Default"
-          }
-        ],
-        "apiIdentityStatus": "verified",
-        "uiSelectionStatus": "unverified"
-      },
-      "liveFieldRenderingStatus": "verified for initial published slice; not proof of editing UI"
+      "routeFieldNames": [
+        "Title",
+        "pageSummary",
+        "Topic",
+        "ReadTime",
+        "HeroImage"
+      ]
+    },
+    {
+      "componentName": "ArticleBodyLayout",
+      "renderingId": "fc56a6e7-1fb8-543e-bab8-a81ab5185b9c",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleBodyLayout",
+      "datasourceTemplateId": null,
+      "datasourceTemplatePath": null,
+      "fields": [],
+      "owner": "Fixed partial structural placeholder",
+      "datasourceLocation": null,
+      "exports": [
+        "Default"
+      ],
+      "placeholderKey": "article-content",
+      "layoutServicePlaceholderId": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845"
+    },
+    {
+      "componentName": "ArticleText",
+      "renderingId": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleText",
+      "datasourceTemplateId": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
+      "datasourceTemplatePath": "/sitecore/templates/Project/Westfield/Components/ArticleText",
+      "fields": [
+        {
+          "name": "Heading",
+          "id": "20ca19b1-bc66-5de8-9fc8-60c0ec1f2fa6",
+          "type": "Single-Line Text"
+        },
+        {
+          "name": "Body",
+          "id": "966cfa1c-7813-5866-b3e0-d3178c9f2eeb",
+          "type": "Rich Text"
+        }
+      ],
+      "owner": "Page-local /Data",
+      "datasourceLocation": "query:./*[@@name='Data']",
+      "exports": [
+        "Default"
+      ]
+    },
+    {
+      "componentName": "AdviceListing",
+      "renderingId": "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Advice/AdviceListing",
+      "datasourceTemplateId": null,
+      "datasourceTemplatePath": null,
+      "fields": [],
+      "owner": "Current hub route fields; cards from published Edge",
+      "datasourceLocation": null,
+      "exports": [
+        "Default"
+      ],
+      "routeFieldNames": [
+        "Title",
+        "pageSummary"
+      ],
+      "publishedContentSource": "Site-scoped published Edge query through the Westfield application API."
+    },
+    {
+      "componentName": "SearchResults",
+      "renderingId": "59801512-e7a4-5d0f-9d47-8b47e8423eef",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Advice/SearchResults",
+      "datasourceTemplateId": null,
+      "datasourceTemplatePath": null,
+      "fields": [],
+      "owner": "Current route fields; results from published Edge",
+      "datasourceLocation": null,
+      "exports": [
+        "Default"
+      ],
+      "routeFieldNames": [
+        "Title",
+        "pageSummary"
+      ],
+      "publishedContentSource": "Site-scoped published Edge query through the Westfield application API."
     }
   ],
   "parameters": {
@@ -352,8 +375,7 @@
       "5c74e985-e055-43ff-b28c-db6c6a6450a2",
       "3db3eb10-f8d0-4cc9-be26-18ce7b139ec8"
     ],
-    "source": "authoring/items/industry-verticals/common/items/templatesProject/industry-verticals/Components/Page Content/Promo/Rendering Parameters/Promo Parameters.yml",
-    "FieldNames": "Native Default variants and CampaignAction Default/Quiet instantiated. FieldNames selector and visual variant switch in Page Builder remain unverified."
+    "source": "authoring/items/industry-verticals/common/items/templatesProject/industry-verticals/Components/Page Content/Promo/Rendering Parameters/Promo Parameters.yml"
   },
   "variantBranches": [
     {
@@ -367,8 +389,7 @@
         }
       ],
       "instantiateUnder": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants",
-      "instantiateName": "componentName for CampaignHero, CampaignContent, SiteHeader and SiteFooter",
-      "status": "Site variant instances provisioned and published through API; Page Builder variant selector remains unverified."
+      "instantiateName": "Component name for every Default-only component; native site instances are authored configuration, not serialized by this module."
     },
     {
       "branchId": "89e97e57-d2bc-432b-9082-459ef9d474a9",
@@ -386,8 +407,7 @@
         }
       ],
       "instantiateUnder": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants",
-      "instantiateName": "CampaignAction",
-      "status": "Site variant instances provisioned and published through API; Page Builder variant selector remains unverified."
+      "instantiateName": "CampaignAction"
     }
   ],
   "pageTemplate": {
@@ -429,51 +449,49 @@
     "baseTemplates": [
       "f5058318-8e0d-4220-a799-3c0dbf2ea1ab"
     ],
-    "standardValuesId": "50a007e9-820e-4b9b-94fa-275f86593365",
-    "insertionAndLayout": "Native Default page design, Header/Footer partials and Digital service campaign page branch configured through API and published. Fresh Create page through authoring UI remains unverified.",
-    "pageBranch": "Native site page branch /sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign (1dbcc4c57eac43fc8a79de94ecb3a75e), with independent $name/Data child identity verified through API; fresh authoring UI insertion remains unverified."
+    "standardValuesId": "50a007e9-820e-4b9b-94fa-275f86593365"
   },
+  "adviceContract": "advice-contract.json",
   "placeholders": [
     {
       "key": "headless-header",
       "id": "79fb7fdd-e889-4bc8-841c-cf7e2bc26a77",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
       "allowedRenderingIds": [
-        "DA91EB0A-DBA7-41FA-8D33-8D3CAB0AC47C"
-      ],
-      "binding": "Exact site settings, allowed controls and site-owned palette seeded/verified through API and published. Page Builder palette visibility and scoped UI enforcement remain unverified."
+        "da91eb0a-dba7-41fa-8d33-8d3cab0ac47c"
+      ]
     },
     {
       "key": "headless-main",
       "id": "e5ab4ab2-2dbf-445b-a93c-bd41feb5e1b6",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
       "allowedRenderingIds": [
-        "4E8227B8-281A-496C-9D7E-138D341F389B",
-        "15F0D95B-CE29-45D7-8937-42016FCF3EFD",
-        "B1F0E493-6A4A-49D0-AE58-4E9D9CA7EC77"
-      ],
-      "binding": "Exact site settings, allowed controls and site-owned palette seeded/verified through API and published. Page Builder palette visibility and scoped UI enforcement remain unverified."
+        "4e8227b8-281a-496c-9d7e-138d341f389b",
+        "15f0d95b-ce29-45d7-8937-42016fcf3efd",
+        "b1f0e493-6a4a-49d0-ae58-4e9d9ca7ec77",
+        "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4",
+        "59801512-e7a4-5d0f-9d47-8b47e8423eef"
+      ]
     },
     {
       "key": "headless-footer",
       "id": "fc19499e-462b-4c2b-a5fd-bef1e6a954c7",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
       "allowedRenderingIds": [
-        "3EFBECF6-F66F-4C54-A6C2-4B67753B390C"
-      ],
-      "binding": "Exact site settings, allowed controls and site-owned palette seeded/verified through API and published. Page Builder palette visibility and scoped UI enforcement remain unverified."
+        "3efbecf6-f66f-4c54-a6c2-4b67753b390c"
+      ]
+    },
+    {
+      "key": "article-content",
+      "id": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Article Content",
+      "allowedRenderingIds": [
+        "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
+        "15f0d95b-ce29-45d7-8937-42016fcf3efd"
+      ]
     }
   ],
-  "pendingNativeWork": [
-    "Prove authenticated Page Builder UI through the READY external editing fallback. Its owned native rendering-host record and Westfield-only site binding are API-verified; the original native editing deployment startup failure remains recorded separately.",
-    "In authenticated Page Builder, prove text/RichText/Link editing, native Image picker selection, save/reload and republish through UI.",
-    "Prove fresh Home -> Create page -> Digital service campaign insertion through authoring UI, including independent local Data ownership.",
-    "Prove Page Builder datasource creation/picker and Default/Quiet selector/switch through UI.",
-    "Configure and prove native profile-derived first-render personalization for the two imported synthetic profiles; prepared/published datasource items alone are not a decision.",
-    "Prove Instagram campaign attribution and profile/session outcome; both Casey and Jordan browser identity-event launches are verified, event ingestion and native decision effects remain unverified.",
-    "Redeploy the local Instagram navigation-row fix and complete production mobile entry-path QA. Root width now matches 390 and five 48px links fit in local preview; Home/Paperless checks passed, but overall mobile QA remains partial.",
-    "Restore supported shared Content Hub access, provision Westfield-only collections/assets, then prove approval, public delivery and native DAM Image selection."
-  ],
+  "authoredConfigurationBoundary": "Page/Partial Designs, populated page branches, palette groups, native variant instances and page-local Data are one-time authored configuration. Supported CreateItem assigns their actual IDs; never replay authored content during ordinary definition releases. Advice planned authored identities remain null until native readback.",
   "platformProvenance": {
     "templateRoot": {
       "source": "authoring/items/industry-verticals/common/items/templatesProject/industry-verticals.yml",
@@ -562,38 +580,42 @@
     }
   },
   "verifiedLocationSyntax": {
-    "pageLocal": "query:./*[@@name='Data'] from origin/textron-luxury-retail shared PageHeader datasource metadata",
-    "siteScoped": "$site and named child selectors verified through native rendering fields; Header/Footer partial Data exists and renders publicly. Direct datasource picker UI remains unverified."
+    "pageLocal": "query:./*[@@name='Data']",
+    "siteScoped": "Header/Footer datasource locations select only their named partial Data; actual native bindings are tracked in sites.manifest.json."
   },
-  "placeholderKeyProvenance": "industry-verticals/westfield/src/Layout.tsx uses exact headless-header/headless-main/headless-footer keys; no dynamic wildcard or nested placeholder is introduced.",
+  "placeholderKeyProvenance": "Header/Main/Footer reuse the logical layout keys through exact site-owned placeholder leaves. Article Content adds the nested article-content key only in the Westfield site.",
   "sources": [
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/create-a-variant-for-a-component.html",
-    "https://doc.sitecore.com/sai/en/developers/sitecoreai/sitecore-content-serialization/configuration/sitecore-content-serialization-configuration-reference.html"
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/sitecore-content-serialization/configuration/sitecore-content-serialization-configuration-reference.html",
+    "https://doc.sitecore.com/sai/en/users/sitecoreai/build-pages/building-page-templates-and-branches/create-and-configure-a-page-branch.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/best-practices/recommendations--structuring-pages.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/use-dynamic-placeholders-in-components.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-sources/use-a-prefix-to-set-the-data-source-context.html"
   ],
   "items": [
     {
-      "key": "templatesRoot",
-      "id": "ab0434e0-a27e-4507-bb6b-171e2c134dc0",
-      "path": "/sitecore/templates/Project/Westfield",
-      "file": "items/templates/Westfield.yml"
+      "key": "advice:content/Westfield/westfield/Presentation/Placeholder Settings/Article Content",
+      "id": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Article Content",
+      "file": "items/articleContent/Article Content.yml"
     },
     {
-      "key": "componentTemplates",
-      "id": "fecfc862-4ade-4548-98db-847bc2edf78e",
-      "path": "/sitecore/templates/Project/Westfield/Components",
-      "file": "items/templates/Westfield/Components.yml"
+      "key": "placeholderFooter",
+      "id": "fc19499e-462b-4c2b-a5fd-bef1e6a954c7",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
+      "file": "items/siteFooter/Footer.yml"
     },
     {
-      "key": "parameterTemplates",
-      "id": "4af12443-d969-4e7b-b798-43781d91a8f0",
-      "path": "/sitecore/templates/Project/Westfield/Parameters",
-      "file": "items/templates/Westfield/Parameters.yml"
+      "key": "placeholderHeader",
+      "id": "79fb7fdd-e889-4bc8-841c-cf7e2bc26a77",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
+      "file": "items/siteHeader/Header.yml"
     },
     {
-      "key": "pageTemplates",
-      "id": "f017d6f2-7f67-48e9-9d68-087ba67b4964",
-      "path": "/sitecore/templates/Project/Westfield/Pages",
-      "file": "items/templates/Westfield/Pages.yml"
+      "key": "placeholderMain",
+      "id": "e5ab4ab2-2dbf-445b-a93c-bd41feb5e1b6",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
+      "file": "items/siteMain/Main.yml"
     },
     {
       "key": "renderingsRoot",
@@ -602,100 +624,46 @@
       "file": "items/renderings/Westfield.yml"
     },
     {
+      "key": "advice:layout/Renderings/Project/Westfield/Advice",
+      "id": "8eae70f6-1b4f-5deb-b5f8-7fd5de6b24d5",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice",
+      "file": "items/renderings/Westfield/Advice.yml"
+    },
+    {
+      "key": "advice:layout/Renderings/Project/Westfield/Advice/AdviceListing",
+      "id": "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/AdviceListing",
+      "file": "items/renderings/Westfield/Advice/AdviceListing.yml"
+    },
+    {
+      "key": "advice:layout/Renderings/Project/Westfield/Advice/ArticleBodyLayout",
+      "id": "fc56a6e7-1fb8-543e-bab8-a81ab5185b9c",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleBodyLayout",
+      "file": "items/renderings/Westfield/Advice/ArticleBodyLayout.yml"
+    },
+    {
+      "key": "advice:layout/Renderings/Project/Westfield/Advice/ArticleHeader",
+      "id": "0154942a-cb18-59d6-a329-e5f3ade279d9",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleHeader",
+      "file": "items/renderings/Westfield/Advice/ArticleHeader.yml"
+    },
+    {
+      "key": "advice:layout/Renderings/Project/Westfield/Advice/ArticleText",
+      "id": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleText",
+      "file": "items/renderings/Westfield/Advice/ArticleText.yml"
+    },
+    {
+      "key": "advice:layout/Renderings/Project/Westfield/Advice/SearchResults",
+      "id": "59801512-e7a4-5d0f-9d47-8b47e8423eef",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/SearchResults",
+      "file": "items/renderings/Westfield/Advice/SearchResults.yml"
+    },
+    {
       "key": "campaignRenderings",
       "id": "bcfc87bb-5db8-4562-9122-168999e575c9",
       "path": "/sitecore/layout/Renderings/Project/Westfield/Campaigns",
       "file": "items/renderings/Westfield/Campaigns.yml"
-    },
-    {
-      "key": "shellRenderings",
-      "id": "85512948-3aa3-434f-b383-2070ca9e6023",
-      "path": "/sitecore/layout/Renderings/Project/Westfield/Shared shell",
-      "file": "items/renderings/Westfield/Shared shell.yml"
-    },
-    {
-      "key": "branchesRoot",
-      "id": "ec0810e4-c6fd-487f-89bc-de0c6de0df6c",
-      "path": "/sitecore/templates/Branches/Project/Westfield",
-      "file": "items/branches/Westfield.yml"
-    },
-    {
-      "key": "componentParameters",
-      "id": "a72d343f-6cde-4611-b131-06637c92bdb2",
-      "path": "/sitecore/templates/Project/Westfield/Parameters/Component Parameters",
-      "file": "items/templates/Westfield/Parameters/Component Parameters.yml"
-    },
-    {
-      "key": "CampaignHeroTemplate",
-      "id": "f0be0e94-c3f4-49d3-9264-25715c665ade",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero",
-      "file": "items/templates/Westfield/Components/CampaignHero.yml"
-    },
-    {
-      "key": "CampaignHeroFields",
-      "id": "916d3cec-d9c3-42ae-be7c-fb893359b84a",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content",
-      "file": "items/templates/Westfield/Components/CampaignHero/Content.yml"
-    },
-    {
-      "key": "CampaignHero.Eyebrow",
-      "id": "b48e5096-4ec0-4321-8dad-0040b3a0e76d",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Eyebrow",
-      "file": "items/templates/Westfield/Components/CampaignHero/Content/Eyebrow.yml"
-    },
-    {
-      "key": "CampaignHero.Heading",
-      "id": "eb20f241-552e-4f81-aeab-1d0db55df012",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Heading",
-      "file": "items/templates/Westfield/Components/CampaignHero/Content/Heading.yml"
-    },
-    {
-      "key": "CampaignHero.Body",
-      "id": "c880363b-5c3d-4b9a-85c3-43e879e60762",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Body",
-      "file": "items/templates/Westfield/Components/CampaignHero/Content/Body.yml"
-    },
-    {
-      "key": "CampaignHero.Image",
-      "id": "f89e6b13-fc9a-46c8-8df5-07b44e174ad4",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Image",
-      "file": "items/templates/Westfield/Components/CampaignHero/Content/Image.yml"
-    },
-    {
-      "key": "CampaignHeroRendering",
-      "id": "4e8227b8-281a-496c-9d7e-138d341f389b",
-      "path": "/sitecore/layout/Renderings/Project/Westfield/Campaigns/CampaignHero",
-      "file": "items/renderings/Westfield/Campaigns/CampaignHero.yml"
-    },
-    {
-      "key": "CampaignActionTemplate",
-      "id": "4f0d1503-3a02-4455-9f1d-878f10ac23dd",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction",
-      "file": "items/templates/Westfield/Components/CampaignAction.yml"
-    },
-    {
-      "key": "CampaignActionFields",
-      "id": "dcb92982-c340-4a01-8ede-770c9f59aaa9",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content",
-      "file": "items/templates/Westfield/Components/CampaignAction/Content.yml"
-    },
-    {
-      "key": "CampaignAction.Heading",
-      "id": "b9be144e-99fd-47e3-958d-8aaf0eb25877",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content/Heading",
-      "file": "items/templates/Westfield/Components/CampaignAction/Content/Heading.yml"
-    },
-    {
-      "key": "CampaignAction.Body",
-      "id": "28fe3cd7-186d-4b0f-92e0-fde2a3d54432",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content/Body",
-      "file": "items/templates/Westfield/Components/CampaignAction/Content/Body.yml"
-    },
-    {
-      "key": "CampaignAction.Link",
-      "id": "0737f1f4-31c5-4d5c-8089-3532068e916f",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content/Link",
-      "file": "items/templates/Westfield/Components/CampaignAction/Content/Link.yml"
     },
     {
       "key": "CampaignActionRendering",
@@ -704,184 +672,22 @@
       "file": "items/renderings/Westfield/Campaigns/CampaignAction.yml"
     },
     {
-      "key": "CampaignContentTemplate",
-      "id": "4389b9b3-2891-42bb-9a03-ab2b9bd941c5",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignContent",
-      "file": "items/templates/Westfield/Components/CampaignContent.yml"
-    },
-    {
-      "key": "CampaignContentFields",
-      "id": "00a21b68-6d10-4d08-8ddd-1eb529a0bddb",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignContent/Content",
-      "file": "items/templates/Westfield/Components/CampaignContent/Content.yml"
-    },
-    {
-      "key": "CampaignContent.Heading",
-      "id": "b5849b78-238b-4237-ac26-f226f25a68df",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignContent/Content/Heading",
-      "file": "items/templates/Westfield/Components/CampaignContent/Content/Heading.yml"
-    },
-    {
-      "key": "CampaignContent.Body",
-      "id": "9fc28eba-a20c-4f27-822c-013d98567b84",
-      "path": "/sitecore/templates/Project/Westfield/Components/CampaignContent/Content/Body",
-      "file": "items/templates/Westfield/Components/CampaignContent/Content/Body.yml"
-    },
-    {
       "key": "CampaignContentRendering",
       "id": "b1f0e493-6a4a-49d0-ae58-4e9d9ca7ec77",
       "path": "/sitecore/layout/Renderings/Project/Westfield/Campaigns/CampaignContent",
       "file": "items/renderings/Westfield/Campaigns/CampaignContent.yml"
     },
     {
-      "key": "SiteHeaderTemplate",
-      "id": "e0cd03c4-7625-421a-9edc-82c6ee64ba1d",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader",
-      "file": "items/templates/Westfield/Components/SiteHeader.yml"
+      "key": "CampaignHeroRendering",
+      "id": "4e8227b8-281a-496c-9d7e-138d341f389b",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Campaigns/CampaignHero",
+      "file": "items/renderings/Westfield/Campaigns/CampaignHero.yml"
     },
     {
-      "key": "SiteHeaderFields",
-      "id": "8c02ca37-c2f8-4ef3-a089-3529127b43bc",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content.yml"
-    },
-    {
-      "key": "SiteHeader.Logo",
-      "id": "59f1ad29-f8a7-4f0e-85e7-b4d88748220a",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/Logo",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/Logo.yml"
-    },
-    {
-      "key": "SiteHeader.HomeLink",
-      "id": "35711438-6ca8-4f1e-b5b0-f4f41564a2e0",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/HomeLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/HomeLink.yml"
-    },
-    {
-      "key": "SiteHeader.BusinessLink",
-      "id": "a719a9d2-a09f-427d-bb47-81af874c0d2a",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BusinessLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/BusinessLink.yml"
-    },
-    {
-      "key": "SiteHeader.HomeAndAutoLink",
-      "id": "1d7bd4a5-b01e-4da5-bc5a-f91ddf711c66",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/HomeAndAutoLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/HomeAndAutoLink.yml"
-    },
-    {
-      "key": "SiteHeader.AboutLink",
-      "id": "49b9d455-3b45-44a1-9f7c-b56415cc6866",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AboutLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/AboutLink.yml"
-    },
-    {
-      "key": "SiteHeader.CareersLink",
-      "id": "c186092f-45a9-4649-933d-5aa3d4389097",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/CareersLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/CareersLink.yml"
-    },
-    {
-      "key": "SiteHeader.PaperlessLink",
-      "id": "3d0ad18b-08e7-411a-bfef-d0c39eee5b48",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/PaperlessLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/PaperlessLink.yml"
-    },
-    {
-      "key": "SiteHeader.AccountLink",
-      "id": "71eda7ee-1bb1-4ddb-9065-3c2c0f3e030c",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AccountLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/AccountLink.yml"
-    },
-    {
-      "key": "SiteHeader.ClaimsLink",
-      "id": "461206f8-5534-449f-905d-f37937aac68a",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/ClaimsLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/ClaimsLink.yml"
-    },
-    {
-      "key": "SiteHeader.AgentLink",
-      "id": "2c6921ea-081e-4364-ae51-447d8d1f9069",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AgentLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/AgentLink.yml"
-    },
-    {
-      "key": "SiteHeader.BillingLink",
-      "id": "b2f47571-77cd-4502-b80e-59fbe961656a",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BillingLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/BillingLink.yml"
-    },
-    {
-      "key": "SiteHeader.ContactLink",
-      "id": "95d118e4-1d16-4903-86e6-4d0fd7bee85d",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/ContactLink",
-      "file": "items/templates/Westfield/Components/SiteHeader/Content/ContactLink.yml"
-    },
-    {
-      "key": "SiteHeaderRendering",
-      "id": "da91eb0a-dba7-41fa-8d33-8d3cab0ac47c",
-      "path": "/sitecore/layout/Renderings/Project/Westfield/Shared shell/SiteHeader",
-      "file": "items/renderings/Westfield/Shared shell/SiteHeader.yml"
-    },
-    {
-      "key": "SiteFooterTemplate",
-      "id": "761df339-768b-4a05-8438-9510f464f4c8",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter",
-      "file": "items/templates/Westfield/Components/SiteFooter.yml"
-    },
-    {
-      "key": "SiteFooterFields",
-      "id": "b1f87a1e-1ac8-4a63-a97c-06332a6a88fd",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content",
-      "file": "items/templates/Westfield/Components/SiteFooter/Content.yml"
-    },
-    {
-      "key": "SiteFooter.Logo",
-      "id": "396e76eb-2872-4371-8d02-0bfc942615d4",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/Logo",
-      "file": "items/templates/Westfield/Components/SiteFooter/Content/Logo.yml"
-    },
-    {
-      "key": "SiteFooter.Address",
-      "id": "12451ac1-a205-4a02-b90b-a4d2531e4918",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/Address",
-      "file": "items/templates/Westfield/Components/SiteFooter/Content/Address.yml"
-    },
-    {
-      "key": "SiteFooter.Phone",
-      "id": "e842e776-9b46-41e3-99f0-f764f81c73a4",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/Phone",
-      "file": "items/templates/Westfield/Components/SiteFooter/Content/Phone.yml"
-    },
-    {
-      "key": "SiteFooter.ContactLink",
-      "id": "433352cf-ac7e-4352-bf62-88ed5a2a0cf4",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ContactLink",
-      "file": "items/templates/Westfield/Components/SiteFooter/Content/ContactLink.yml"
-    },
-    {
-      "key": "SiteFooter.AccountLink",
-      "id": "07ee8d97-94f3-4093-81ab-1bae818f301b",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/AccountLink",
-      "file": "items/templates/Westfield/Components/SiteFooter/Content/AccountLink.yml"
-    },
-    {
-      "key": "SiteFooter.PrivacyLink",
-      "id": "9141e111-0c8c-4ad0-806e-fd889f4b590b",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/PrivacyLink",
-      "file": "items/templates/Westfield/Components/SiteFooter/Content/PrivacyLink.yml"
-    },
-    {
-      "key": "SiteFooter.TermsLink",
-      "id": "352cb4bc-b8e4-4e96-961f-6a7140395289",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/TermsLink",
-      "file": "items/templates/Westfield/Components/SiteFooter/Content/TermsLink.yml"
-    },
-    {
-      "key": "SiteFooter.Copyright",
-      "id": "912769e9-a3d5-4296-99a8-f22e92f95b55",
-      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/Copyright",
-      "file": "items/templates/Westfield/Components/SiteFooter/Content/Copyright.yml"
+      "key": "shellRenderings",
+      "id": "85512948-3aa3-434f-b383-2070ca9e6023",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Shared shell",
+      "file": "items/renderings/Westfield/Shared shell.yml"
     },
     {
       "key": "SiteFooterRendering",
@@ -890,70 +696,22 @@
       "file": "items/renderings/Westfield/Shared shell/SiteFooter.yml"
     },
     {
-      "key": "campaignPageTemplate",
-      "id": "446ee554-16ac-420a-b790-a5fc9509a7bb",
-      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page",
-      "file": "items/templates/Westfield/Pages/Campaign Page.yml"
+      "key": "SiteHeaderRendering",
+      "id": "da91eb0a-dba7-41fa-8d33-8d3cab0ac47c",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Shared shell/SiteHeader",
+      "file": "items/renderings/Westfield/Shared shell/SiteHeader.yml"
     },
     {
-      "key": "campaignPageMetadata",
-      "id": "28112ad6-06e5-4760-9124-2b24a99e5248",
-      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata",
-      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata.yml"
+      "key": "externalRenderingHost",
+      "id": "a2a4cd2c-0dcd-4937-aeaf-20ea8cd3a740",
+      "path": "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external",
+      "file": "items/externalRenderingHost/westfield-external.yml"
     },
     {
-      "key": "campaignPage.metadataTitle",
-      "id": "6d2de363-e556-461e-aa2e-f4d1015b6d17",
-      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/metadataTitle",
-      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/metadataTitle.yml"
-    },
-    {
-      "key": "campaignPage.metadataDescription",
-      "id": "5266be04-3bdf-402e-a7a9-c153d0cd8d7a",
-      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/metadataDescription",
-      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/metadataDescription.yml"
-    },
-    {
-      "key": "campaignPage.metadataKeywords",
-      "id": "8eae53b8-983e-419c-88e5-550fa9ef460f",
-      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/metadataKeywords",
-      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/metadataKeywords.yml"
-    },
-    {
-      "key": "campaignPage.pageSummary",
-      "id": "8bff13f9-685f-4092-bcfc-873f8515dd73",
-      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/pageSummary",
-      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/pageSummary.yml"
-    },
-    {
-      "key": "campaignPage.ogImage",
-      "id": "d712e231-0e1b-49b3-a68e-399c5abb6f58",
-      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/ogImage",
-      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/ogImage.yml"
-    },
-    {
-      "key": "campaignPageStandardValues",
-      "id": "50a007e9-820e-4b9b-94fa-275f86593365",
-      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/__Standard Values",
-      "file": "items/templates/Westfield/Pages/Campaign Page/__Standard Values.yml"
-    },
-    {
-      "key": "defaultVariantsBranch",
-      "id": "c842fc01-2ed2-4dd8-a108-04634b4ada07",
-      "path": "/sitecore/templates/Branches/Project/Westfield/Default component variant",
-      "file": "items/branches/Westfield/Default component variant.yml"
-    },
-    {
-      "key": "defaultVariantsContainer",
-      "id": "022fc321-b3dd-4edf-9d6a-b3d1e92c2bd3",
-      "path": "/sitecore/templates/Branches/Project/Westfield/Default component variant/$name",
-      "file": "items/branches/Westfield/Default component variant/#name.yml"
-    },
-    {
-      "key": "defaultVariants.Default",
-      "id": "10812584-ea75-49c1-8852-2633dd3fa67f",
-      "path": "/sitecore/templates/Branches/Project/Westfield/Default component variant/$name/Default",
-      "file": "items/branches/Westfield/Default component variant/#name/Default.yml"
+      "key": "branchesRoot",
+      "id": "ec0810e4-c6fd-487f-89bc-de0c6de0df6c",
+      "path": "/sitecore/templates/Branches/Project/Westfield",
+      "file": "items/branches/Westfield.yml"
     },
     {
       "key": "actionVariantsBranch",
@@ -980,31 +738,421 @@
       "file": "items/branches/Westfield/Campaign action variants/#name/Quiet.yml"
     },
     {
-      "key": "placeholderHeader",
-      "id": "79fb7fdd-e889-4bc8-841c-cf7e2bc26a77",
-      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
-      "file": "items/siteHeader/Header.yml"
+      "key": "defaultVariantsBranch",
+      "id": "c842fc01-2ed2-4dd8-a108-04634b4ada07",
+      "path": "/sitecore/templates/Branches/Project/Westfield/Default component variant",
+      "file": "items/branches/Westfield/Default component variant.yml"
     },
     {
-      "key": "placeholderMain",
-      "id": "e5ab4ab2-2dbf-445b-a93c-bd41feb5e1b6",
-      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
-      "file": "items/siteMain/Main.yml"
+      "key": "defaultVariantsContainer",
+      "id": "022fc321-b3dd-4edf-9d6a-b3d1e92c2bd3",
+      "path": "/sitecore/templates/Branches/Project/Westfield/Default component variant/$name",
+      "file": "items/branches/Westfield/Default component variant/#name.yml"
     },
     {
-      "key": "placeholderFooter",
-      "id": "fc19499e-462b-4c2b-a5fd-bef1e6a954c7",
-      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
-      "file": "items/siteFooter/Footer.yml"
+      "key": "defaultVariants.Default",
+      "id": "10812584-ea75-49c1-8852-2633dd3fa67f",
+      "path": "/sitecore/templates/Branches/Project/Westfield/Default component variant/$name/Default",
+      "file": "items/branches/Westfield/Default component variant/#name/Default.yml"
     },
     {
-      "key": "externalRenderingHost",
-      "id": "a2a4cd2c-0dcd-4937-aeaf-20ea8cd3a740",
-      "path": "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external",
-      "file": "items/externalRenderingHost/westfield-external.yml"
+      "key": "templatesRoot",
+      "id": "ab0434e0-a27e-4507-bb6b-171e2c134dc0",
+      "path": "/sitecore/templates/Project/Westfield",
+      "file": "items/templates/Westfield.yml"
+    },
+    {
+      "key": "componentTemplates",
+      "id": "fecfc862-4ade-4548-98db-847bc2edf78e",
+      "path": "/sitecore/templates/Project/Westfield/Components",
+      "file": "items/templates/Westfield/Components.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Components/ArticleText",
+      "id": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
+      "path": "/sitecore/templates/Project/Westfield/Components/ArticleText",
+      "file": "items/templates/Westfield/Components/ArticleText.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Components/ArticleText/Content",
+      "id": "2bd90272-b56f-5134-b2e6-392ea4bcc7f3",
+      "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content",
+      "file": "items/templates/Westfield/Components/ArticleText/Content.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Components/ArticleText/Content/Body",
+      "id": "966cfa1c-7813-5866-b3e0-d3178c9f2eeb",
+      "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Body",
+      "file": "items/templates/Westfield/Components/ArticleText/Content/Body.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Components/ArticleText/Content/Heading",
+      "id": "20ca19b1-bc66-5de8-9fc8-60c0ec1f2fa6",
+      "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Heading",
+      "file": "items/templates/Westfield/Components/ArticleText/Content/Heading.yml"
+    },
+    {
+      "key": "CampaignActionTemplate",
+      "id": "4f0d1503-3a02-4455-9f1d-878f10ac23dd",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction",
+      "file": "items/templates/Westfield/Components/CampaignAction.yml"
+    },
+    {
+      "key": "CampaignActionFields",
+      "id": "dcb92982-c340-4a01-8ede-770c9f59aaa9",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content",
+      "file": "items/templates/Westfield/Components/CampaignAction/Content.yml"
+    },
+    {
+      "key": "CampaignAction.Body",
+      "id": "28fe3cd7-186d-4b0f-92e0-fde2a3d54432",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content/Body",
+      "file": "items/templates/Westfield/Components/CampaignAction/Content/Body.yml"
+    },
+    {
+      "key": "CampaignAction.Heading",
+      "id": "b9be144e-99fd-47e3-958d-8aaf0eb25877",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content/Heading",
+      "file": "items/templates/Westfield/Components/CampaignAction/Content/Heading.yml"
+    },
+    {
+      "key": "CampaignAction.Link",
+      "id": "0737f1f4-31c5-4d5c-8089-3532068e916f",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content/Link",
+      "file": "items/templates/Westfield/Components/CampaignAction/Content/Link.yml"
+    },
+    {
+      "key": "CampaignContentTemplate",
+      "id": "4389b9b3-2891-42bb-9a03-ab2b9bd941c5",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignContent",
+      "file": "items/templates/Westfield/Components/CampaignContent.yml"
+    },
+    {
+      "key": "CampaignContentFields",
+      "id": "00a21b68-6d10-4d08-8ddd-1eb529a0bddb",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignContent/Content",
+      "file": "items/templates/Westfield/Components/CampaignContent/Content.yml"
+    },
+    {
+      "key": "CampaignContent.Body",
+      "id": "9fc28eba-a20c-4f27-822c-013d98567b84",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignContent/Content/Body",
+      "file": "items/templates/Westfield/Components/CampaignContent/Content/Body.yml"
+    },
+    {
+      "key": "CampaignContent.Heading",
+      "id": "b5849b78-238b-4237-ac26-f226f25a68df",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignContent/Content/Heading",
+      "file": "items/templates/Westfield/Components/CampaignContent/Content/Heading.yml"
+    },
+    {
+      "key": "CampaignHeroTemplate",
+      "id": "f0be0e94-c3f4-49d3-9264-25715c665ade",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero",
+      "file": "items/templates/Westfield/Components/CampaignHero.yml"
+    },
+    {
+      "key": "CampaignHeroFields",
+      "id": "916d3cec-d9c3-42ae-be7c-fb893359b84a",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content",
+      "file": "items/templates/Westfield/Components/CampaignHero/Content.yml"
+    },
+    {
+      "key": "CampaignHero.Body",
+      "id": "c880363b-5c3d-4b9a-85c3-43e879e60762",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Body",
+      "file": "items/templates/Westfield/Components/CampaignHero/Content/Body.yml"
+    },
+    {
+      "key": "CampaignHero.Eyebrow",
+      "id": "b48e5096-4ec0-4321-8dad-0040b3a0e76d",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Eyebrow",
+      "file": "items/templates/Westfield/Components/CampaignHero/Content/Eyebrow.yml"
+    },
+    {
+      "key": "CampaignHero.Heading",
+      "id": "eb20f241-552e-4f81-aeab-1d0db55df012",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Heading",
+      "file": "items/templates/Westfield/Components/CampaignHero/Content/Heading.yml"
+    },
+    {
+      "key": "CampaignHero.Image",
+      "id": "f89e6b13-fc9a-46c8-8df5-07b44e174ad4",
+      "path": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Image",
+      "file": "items/templates/Westfield/Components/CampaignHero/Content/Image.yml"
+    },
+    {
+      "key": "SiteFooterTemplate",
+      "id": "761df339-768b-4a05-8438-9510f464f4c8",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter",
+      "file": "items/templates/Westfield/Components/SiteFooter.yml"
+    },
+    {
+      "key": "SiteFooterFields",
+      "id": "b1f87a1e-1ac8-4a63-a97c-06332a6a88fd",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content.yml"
+    },
+    {
+      "key": "SiteFooter.AccountLink",
+      "id": "07ee8d97-94f3-4093-81ab-1bae818f301b",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/AccountLink",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/AccountLink.yml"
+    },
+    {
+      "key": "SiteFooter.Address",
+      "id": "12451ac1-a205-4a02-b90b-a4d2531e4918",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/Address",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/Address.yml"
+    },
+    {
+      "key": "SiteFooter.ContactLink",
+      "id": "433352cf-ac7e-4352-bf62-88ed5a2a0cf4",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ContactLink",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/ContactLink.yml"
+    },
+    {
+      "key": "SiteFooter.Copyright",
+      "id": "912769e9-a3d5-4296-99a8-f22e92f95b55",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/Copyright",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/Copyright.yml"
+    },
+    {
+      "key": "SiteFooter.Logo",
+      "id": "396e76eb-2872-4371-8d02-0bfc942615d4",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/Logo",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/Logo.yml"
+    },
+    {
+      "key": "SiteFooter.Phone",
+      "id": "e842e776-9b46-41e3-99f0-f764f81c73a4",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/Phone",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/Phone.yml"
+    },
+    {
+      "key": "SiteFooter.PrivacyLink",
+      "id": "9141e111-0c8c-4ad0-806e-fd889f4b590b",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/PrivacyLink",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/PrivacyLink.yml"
+    },
+    {
+      "key": "SiteFooter.TermsLink",
+      "id": "352cb4bc-b8e4-4e96-961f-6a7140395289",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/TermsLink",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/TermsLink.yml"
+    },
+    {
+      "key": "SiteHeaderTemplate",
+      "id": "e0cd03c4-7625-421a-9edc-82c6ee64ba1d",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader",
+      "file": "items/templates/Westfield/Components/SiteHeader.yml"
+    },
+    {
+      "key": "SiteHeaderFields",
+      "id": "8c02ca37-c2f8-4ef3-a089-3529127b43bc",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content.yml"
+    },
+    {
+      "key": "SiteHeader.AboutLink",
+      "id": "49b9d455-3b45-44a1-9f7c-b56415cc6866",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AboutLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/AboutLink.yml"
+    },
+    {
+      "key": "SiteHeader.AccountLink",
+      "id": "71eda7ee-1bb1-4ddb-9065-3c2c0f3e030c",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AccountLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/AccountLink.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Components/SiteHeader/Content/AdviceLink",
+      "id": "ef8bc5ec-82ba-5838-b5d0-8feb687810ea",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AdviceLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/AdviceLink.yml"
+    },
+    {
+      "key": "SiteHeader.AgentLink",
+      "id": "2c6921ea-081e-4364-ae51-447d8d1f9069",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AgentLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/AgentLink.yml"
+    },
+    {
+      "key": "SiteHeader.BillingLink",
+      "id": "b2f47571-77cd-4502-b80e-59fbe961656a",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BillingLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/BillingLink.yml"
+    },
+    {
+      "key": "SiteHeader.BusinessLink",
+      "id": "a719a9d2-a09f-427d-bb47-81af874c0d2a",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BusinessLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/BusinessLink.yml"
+    },
+    {
+      "key": "SiteHeader.CareersLink",
+      "id": "c186092f-45a9-4649-933d-5aa3d4389097",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/CareersLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/CareersLink.yml"
+    },
+    {
+      "key": "SiteHeader.ClaimsLink",
+      "id": "461206f8-5534-449f-905d-f37937aac68a",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/ClaimsLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/ClaimsLink.yml"
+    },
+    {
+      "key": "SiteHeader.ContactLink",
+      "id": "95d118e4-1d16-4903-86e6-4d0fd7bee85d",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/ContactLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/ContactLink.yml"
+    },
+    {
+      "key": "SiteHeader.HomeAndAutoLink",
+      "id": "1d7bd4a5-b01e-4da5-bc5a-f91ddf711c66",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/HomeAndAutoLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/HomeAndAutoLink.yml"
+    },
+    {
+      "key": "SiteHeader.HomeLink",
+      "id": "35711438-6ca8-4f1e-b5b0-f4f41564a2e0",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/HomeLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/HomeLink.yml"
+    },
+    {
+      "key": "SiteHeader.Logo",
+      "id": "59f1ad29-f8a7-4f0e-85e7-b4d88748220a",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/Logo",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/Logo.yml"
+    },
+    {
+      "key": "SiteHeader.PaperlessLink",
+      "id": "3d0ad18b-08e7-411a-bfef-d0c39eee5b48",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/PaperlessLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/PaperlessLink.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Components/SiteHeader/Content/SearchLink",
+      "id": "bb99e50e-4f87-59c5-8129-51bc61d80147",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/SearchLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/SearchLink.yml"
+    },
+    {
+      "key": "pageTemplates",
+      "id": "f017d6f2-7f67-48e9-9d68-087ba67b4964",
+      "path": "/sitecore/templates/Project/Westfield/Pages",
+      "file": "items/templates/Westfield/Pages.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Pages/Advice Article",
+      "id": "31f25fea-085e-5193-9637-b13fc2f7a385",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article",
+      "file": "items/templates/Westfield/Pages/Advice Article.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Pages/Advice Article/__Standard Values",
+      "id": "88d7a4e9-8865-59f9-86cd-f51edd7777ef",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/__Standard Values",
+      "file": "items/templates/Westfield/Pages/Advice Article/__Standard Values.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Pages/Advice Article/Article",
+      "id": "7be0b86b-5138-5d16-8049-31489cbb7405",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article",
+      "file": "items/templates/Westfield/Pages/Advice Article/Article.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Pages/Advice Article/Article/HeroImage",
+      "id": "f7badcfe-f84c-51a2-8066-b863da18c3ec",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/HeroImage",
+      "file": "items/templates/Westfield/Pages/Advice Article/Article/HeroImage.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Pages/Advice Article/Article/ReadTime",
+      "id": "6b763802-bdbb-57fe-89e4-7dc32bb0f694",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/ReadTime",
+      "file": "items/templates/Westfield/Pages/Advice Article/Article/ReadTime.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Pages/Advice Article/Article/Topic",
+      "id": "df4ee816-a6ef-5244-b758-ddfa7a183033",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/Topic",
+      "file": "items/templates/Westfield/Pages/Advice Article/Article/Topic.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Pages/Advice Hub",
+      "id": "02fc9c02-3ffc-5551-9c81-1ff89b9b0d59",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Hub",
+      "file": "items/templates/Westfield/Pages/Advice Hub.yml"
+    },
+    {
+      "key": "advice:templates/Project/Westfield/Pages/Advice Hub/__Standard Values",
+      "id": "b9c27b01-58e6-5d48-8299-924015d4e560",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Advice Hub/__Standard Values",
+      "file": "items/templates/Westfield/Pages/Advice Hub/__Standard Values.yml"
+    },
+    {
+      "key": "campaignPageTemplate",
+      "id": "446ee554-16ac-420a-b790-a5fc9509a7bb",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page",
+      "file": "items/templates/Westfield/Pages/Campaign Page.yml"
+    },
+    {
+      "key": "campaignPageStandardValues",
+      "id": "50a007e9-820e-4b9b-94fa-275f86593365",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/__Standard Values",
+      "file": "items/templates/Westfield/Pages/Campaign Page/__Standard Values.yml"
+    },
+    {
+      "key": "campaignPageMetadata",
+      "id": "28112ad6-06e5-4760-9124-2b24a99e5248",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata",
+      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata.yml"
+    },
+    {
+      "key": "campaignPage.metadataDescription",
+      "id": "5266be04-3bdf-402e-a7a9-c153d0cd8d7a",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/metadataDescription",
+      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/metadataDescription.yml"
+    },
+    {
+      "key": "campaignPage.metadataKeywords",
+      "id": "8eae53b8-983e-419c-88e5-550fa9ef460f",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/metadataKeywords",
+      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/metadataKeywords.yml"
+    },
+    {
+      "key": "campaignPage.metadataTitle",
+      "id": "6d2de363-e556-461e-aa2e-f4d1015b6d17",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/metadataTitle",
+      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/metadataTitle.yml"
+    },
+    {
+      "key": "campaignPage.ogImage",
+      "id": "d712e231-0e1b-49b3-a68e-399c5abb6f58",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/ogImage",
+      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/ogImage.yml"
+    },
+    {
+      "key": "campaignPage.pageSummary",
+      "id": "8bff13f9-685f-4092-bcfc-873f8515dd73",
+      "path": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/pageSummary",
+      "file": "items/templates/Westfield/Pages/Campaign Page/Metadata/pageSummary.yml"
+    },
+    {
+      "key": "parameterTemplates",
+      "id": "4af12443-d969-4e7b-b798-43781d91a8f0",
+      "path": "/sitecore/templates/Project/Westfield/Parameters",
+      "file": "items/templates/Westfield/Parameters.yml"
+    },
+    {
+      "key": "componentParameters",
+      "id": "a72d343f-6cde-4611-b131-06637c92bdb2",
+      "path": "/sitecore/templates/Project/Westfield/Parameters/Component Parameters",
+      "file": "items/templates/Westfield/Parameters/Component Parameters.yml"
     }
   ],
-  "rootIdentityStatus": "Template, rendering and branch root identities verified. The generated site Placeholder Settings folder is 11b33eb2-44e2-4447-a6ea-4a49a1972b7d; only its three exact Header/Main/Footer descendants are serialized. The old global Westfield placeholder folder is excluded.",
+  "rootIdentityStatus": "Template, rendering and branch root identities were verified. The generated site Placeholder Settings folder is native context only; exactly Header/Main/Footer/Article Content leaves are serialized. The global placeholder root and shared rendering-host parent are excluded.",
   "nativeRootBindings": {
     "/sitecore/templates/Project/Westfield": {
       "id": "ab0434e0-a27e-4507-bb6b-171e2c134dc0",
@@ -1038,17 +1186,9 @@
   "targetAuthoringBaseline": {
     "repository": "SitecoreAI/xmcloud-starter-js",
     "branch": "slb",
-    "verifiedCommit": "6bc919eb5213cbdcfe76f13cdd7ee4b55e838ef9",
-    "inspectedReadOnlyThrough": "gh contents/tree API",
-    "existingModules": [
-      "Project.click-click-launch",
-      "nextjs-starter",
-      "slb.content",
-      "slb.presentation"
-    ],
-    "overlapWithWestfieldRoots": false,
-    "additiveSourceChange": "Copy only this subtree into an exact baseline checkout. Existing sitecore.json already discovers it; preserve existing module files, serialized definitions and xmcloud.build.json unchanged.",
-    "existingBuildConfiguration": "No deployItems property; no scsModules post-action. Do not replace baseline resource selection with only Westfield or add authored-content replay."
+    "verifiedCommit": "08b68d568b0c26dc9040991338f2d26b3ff90944",
+    "additiveSourceChange": "Mirror only Westfield developer definitions into the isolated slb-based authoring branch. Preserve unrelated modules, build configuration and authored content.",
+    "nativeDeploymentStatus": "Advice addition pending; record current deployment and native readback separately."
   },
   "nativeInheritance": {
     "pageBase": {
@@ -1064,252 +1204,19 @@
     "fieldNamesFieldId": "75bbdf72-635f-4d72-a3d3-a9baba09d161"
   },
   "definitionCounts": {
-    "serializedItems": 72,
-    "datasourceFields": 29,
-    "components": 5,
+    "serializedItems": 93,
+    "datasourceFields": 33,
+    "components": 10,
     "pageLocalMetadataFields": 5,
-    "inheritedTitleField": 1
+    "adviceArticleFields": 3,
+    "inheritedTitleField": 1,
+    "previouslyDeployedBaselineItems": 72,
+    "adviceSourceAdditionItems": 21
   },
-  "nativeVerification": {
-    "date": "2026-10-14",
-    "database": "master",
-    "language": "en",
-    "serializedItems": 72,
-    "identityAndPathStatus": "verified",
-    "parameterAndPageInheritanceStatus": "verified",
-    "sitePlaceholderParentsAndAllowedControlsStatus": "verified",
-    "authoringFlowStatus": "unverified",
-    "publicationStatus": "verified",
-    "scopeNote": "Source/native/API and public rendering proof are recorded independently. Page Builder UI, fresh author UI Create page, direct image/datasource picker, variant UI and native profile-derived first-render decision remain unverified.",
-    "checkedAtUTC": "2026-10-14T23:26:19.705303+00:00",
-    "publicationProcessedItems": 255,
-    "nativeFieldSaveReloadApiStatus": "verified",
-    "liveComponentFieldContracts": 5,
-    "nativeImageGet200Count": 4,
-    "editingHostApiReadinessStatus": "verified external fallback; Page Builder UI remains unverified",
-    "publicationScopeNote": "Original 71 definitions and authored slice were published; the CM-only external rendering-host item was created and bound through native API, with four-field source definition now prepared for review. No source deployment performed by this change."
-  },
-  "completedNativeWork": [
-    "Native collection/site identity and inherited template/parameter identities verified.",
-    "Header/Footer shared partials and scoped Data instantiated through API; rendering datasource queries/template/parameter fields verified.",
-    "Five component variant groups with six variants instantiated; CampaignAction Default/Quiet remain presentation variants.",
-    "Site-owned Available Renderings and exact Header/Main/Footer placeholder definitions provisioned.",
-    "Default page design and Digital service campaign branch with independent Data child identities configured and verified through API.",
-    "Initial content seed and native field save/reload completed through API.",
-    "Scoped Experience Edge publication FINISHED successfully, processed 255 items; four core media delivered by GET 200.",
-    "Two additional native CampaignAction datasources saved/reloaded and published successfully, processed 2 items.",
-    "Five component native field contracts render in the public initial slice; desktop Home to Explore paperless journey verified."
-  ],
-  "authoredSiteBindings": {
-    "status": "api-provisioned-and-published",
-    "scope": "Authored initial site content; outside ordinary developer-definition serialization/seed releases.",
-    "checkedAtUTC": "2026-10-14T22:58:03.775400+00:00",
-    "itemIdsByPath": {
-      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignHero": "76393c57f8834eee92bb48095b8ce80d",
-      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignAction": "07a699e9652745d8a20a25c9e5295d12",
-      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/CampaignContent": "5f0e30d09c63443e8264a1c66bcdd97e",
-      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteHeader": "378051ca9b374ebc9e613237b57a7cd5",
-      "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SiteFooter": "b32707770d21453b8067c4ee776d3c9d",
-      "/sitecore/content/Westfield/westfield/Presentation/Available Renderings/Campaigns": "6ffaa25b2beb46a4ae431a66ab80f712",
-      "/sitecore/content/Westfield/westfield/Presentation/Available Renderings/Shared layout": "4c293e3acb994372a22ff6dda3fe3473",
-      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Header": "31d9097b6d25478eb446444ea878b674",
-      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Header/Data": "2736c24d6aa84e5a99548cf168a548ce",
-      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Footer": "0586221fc48c4dcb858834260b27694e",
-      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Footer/Data": "d6bb53d78b6b4838b51a6637c6c73a33",
-      "/sitecore/content/Westfield/westfield/Presentation/Page Designs/Default": "fe74342321864168ad651dc0652e7d21",
-      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign": "1dbcc4c57eac43fc8a79de94ecb3a75e",
-      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name": "7a83fa3a731d475f92109da7696a726e",
-      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name/Data": "064d31d57d454dcea7cc57992de74c1d",
-      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name/Data/Hero": "08c4cc7cad044eb684d3dd72ff88b698",
-      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name/Data/Paperless campaign": "b5a8934f190f41c3bf271966e9af77f2",
-      "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Digital service campaign/$name/Data/MyWestfield benefits": "6fb5c1bef5c144078b8575611d700c3c",
-      "/sitecore/content/Westfield/westfield/Home/paperless": "1b438447f060478dbf27df5aa7fbfc3b",
-      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Header/Data/Header": "fff53a4bdec04f6eaf70ffbd69c4ee28",
-      "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Footer/Data/Footer": "5d16c42dec5a4050bfc64077f7edd83c",
-      "/sitecore/content/Westfield/westfield/Home/Data": "d714f7ae0ff74f47804d589321d4cdb3",
-      "/sitecore/content/Westfield/westfield/Home/Data/Hero": "69a01662aafc488c8b87f1afc7bdc570",
-      "/sitecore/content/Westfield/westfield/Home/Data/Paperless campaign": "af876682d9604dd38334826a88e4d9b9",
-      "/sitecore/content/Westfield/westfield/Home/Data/MyWestfield benefits": "cbd34a315dbc4aa7ad84117439c33c2b"
-    },
-    "completedSeedChecks": [
-      "initial content seed",
-      "branch Data identity check",
-      "native field save/reload"
-    ],
-    "initialPublication": {
-      "state": "FINISHED",
-      "processed": 255,
-      "failed": false,
-      "language": "en",
-      "targetDatabase": "experienceedge"
-    },
-    "pageBranchUiInsertionStatus": "unverified",
-    "sourceReceiptStatus": "API initial seed complete; UI proof is separate"
-  },
-  "personalizationPreparation": {
-    "status": "native-datasources-published; decision-unconfigured",
-    "datasources": [
-      {
-        "name": "Paperless offer",
-        "itemId": "e0bd1347f9af4591a07988bdccc73aad",
-        "path": "/sitecore/content/Westfield/westfield/Home/paperless/Data/Paperless offer",
-        "nativeVariantItemId": "1e5938b652f1412e9344e2ea492243a0",
-        "plannedVariant": "Default",
-        "saveReloadVerified": true
-      },
-      {
-        "name": "Paperless enrolled",
-        "itemId": "31f012d33df04f3a94d67dfca632c272",
-        "path": "/sitecore/content/Westfield/westfield/Home/paperless/Data/Paperless enrolled",
-        "nativeVariantItemId": "69996dab6c9244638fc60f0d4fd4db69",
-        "plannedVariant": "Quiet",
-        "saveReloadVerified": true
-      }
-    ],
-    "publication": {
-      "state": "FINISHED",
-      "processed": 2,
-      "failed": false
-    },
-    "decisionConfigured": false,
-    "renderingChangedByPreparation": false,
-    "layoutUnchanged": true,
-    "nativeFirstRenderDecisionStatus": "unverified"
-  },
-  "handoffSnapshotUTC": "2026-10-14T23:26:19.705303+00:00",
-  "nativeEditingHostStatus": {
-    "status": "failed",
-    "environmentId": "6Is64ZrdfzLpF1nDBtUSxd",
-    "deploymentId": "y9UxLLstFSoz4RS13JnpV",
-    "buildStatus": 2,
-    "deploymentStatus": 3,
-    "postActionStatus": 0,
-    "completedAtUTC": "2026-10-14T23:01:34.5927642Z",
-    "traceId": "3e2d9f98-564a-4566-873f-0604ed322ce7",
-    "logsUrl": "https://deploy.sitecorecloud.io/environment/6Is64ZrdfzLpF1nDBtUSxd/logs/types",
-    "failureStage": "Deployment startup",
-    "siteRenderingHostBinding": "Default",
-    "westfieldRenderingHostRecordStatus": "absent-at-audit",
-    "pageBuilderUiStatus": "unverified",
-    "publicSiteImpact": "Separate Vercel public deployment remains READY.",
-    "role": "Original Sitecore Deploy editing-host attempt; historical failure retained. Effective authoring now uses the separately verified external fallback."
-  },
-  "liveDeploymentSnapshot": {
-    "status": "READY",
-    "commit": "6be8cfe4943c04e331152ab449bc959bd5edd019",
-    "deploymentId": "dpl_AMXQSMb5BHRCxiP9a7Gbg9mmK4e1",
-    "url": "https://thlt-westfield-demo.vercel.app",
-    "finalHttpRouteCount": 3,
-    "nativeImageGet200Count": 4,
-    "nativeFooterPhoneStatus": "verified",
-    "runtimeErrorRecordsReturned": 0,
-    "caseyAndJordanLauncherStatus": "verified gated fresh SDK browser identity-event redirects to Instagram",
-    "nativeFirstRenderDecisionStatus": "unconfigured/unverified",
-    "mobileQaStatus": "partial: root width correction verified, local navigation-row fix awaits redeployment/regression"
-  },
-  "externalEditingHost": {
-    "status": "ready-api-verified",
-    "itemId": "a2a4cd2c-0dcd-4937-aeaf-20ea8cd3a740",
-    "path": "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external",
-    "templateId": "bc71d442-3e4f-46ba-887c-746e54f9bb83",
-    "fields": [
-      {
-        "name": "AppName",
-        "fieldId": "3121c257-53cf-464a-b736-98b418876057",
-        "value": "westfield"
-      },
-      {
-        "name": "ServerSideRenderingEngineApplicationUrl",
-        "fieldId": "e32c1801-79b3-4fc1-a9c4-3c6e6c2968ae",
-        "value": "https://thlt-westfield-editing.vercel.app/"
-      },
-      {
-        "name": "ServerSideRenderingEngineConfigUrl",
-        "fieldId": "94470b31-e282-4d8d-bc54-85689efb294c",
-        "value": "https://thlt-westfield-editing.vercel.app/api/editing/config"
-      },
-      {
-        "name": "ServerSideRenderingEngineEndpointUrl",
-        "fieldId": "fc76919b-0d7c-4732-865d-2af795fb38a4",
-        "value": "https://thlt-westfield-editing.vercel.app/api/editing/render"
-      }
-    ],
-    "parentContext": {
-      "itemId": "895e25c4-12b2-4b2c-8233-82f3b79eef53",
-      "path": "/sitecore/system/Settings/Services/Rendering Hosts",
-      "ownership": "shared; excluded from module ownership and retirement"
-    },
-    "siteBinding": {
-      "siteGroupingId": "08a923b3-1415-4c19-b850-5b771c41d036",
-      "siteGroupingPath": "/sitecore/content/Westfield/westfield/Settings/Site Grouping/westfield",
-      "field": "RenderingHost",
-      "value": "westfield-external",
-      "verification": "Read-only Authoring API confirmed current value; authored Site Grouping configuration is not serialized."
-    },
-    "readyApiMetadata": true,
-    "sdkNativeFieldHtmlProof": "verified by root; Page Builder UI remains unverified",
-    "pageBuilderUiVerified": false,
-    "sourceDefinitionReleaseStatus": "prepared; not deployed by this source change"
-  },
-  "damPreparation": {
-    "status": "partial-ui",
-    "counts": {
-      "selectedAssets": 12,
-      "uploadedAssets": 4,
-      "metadataVerifiedAssets": 1,
-      "approvalVerifiedAssets": 1,
-      "publicDeliveryVerifiedAssets": 0,
-      "collectionsCreated": 0,
-      "cmsDamSelectionsVerified": 0
-    },
-    "assetIds": [
-      128420,
-      128421,
-      128422,
-      128426
-    ],
-    "assetProofs": [
-      {
-        "key": "westfield-demo.westfield-logo",
-        "assetId": 128420,
-        "uploaded": true,
-        "metadataVerified": true,
-        "processingVerified": true,
-        "approvalStatus": "Approved",
-        "cmsSelected": false
-      },
-      {
-        "key": "westfield-demo.homepage-hero",
-        "assetId": 128421,
-        "uploaded": true,
-        "metadataVerified": false,
-        "processingVerified": false,
-        "approvalStatus": "Created",
-        "cmsSelected": false
-      },
-      {
-        "key": "westfield-demo.homepage-mywestfield",
-        "assetId": 128422,
-        "uploaded": true,
-        "metadataVerified": false,
-        "processingVerified": false,
-        "approvalStatus": "Created",
-        "cmsSelected": false
-      },
-      {
-        "key": "westfield-demo.westfield-footer-logo",
-        "assetId": 128426,
-        "uploaded": true,
-        "metadataVerified": false,
-        "processingVerified": false,
-        "approvalStatus": "Created",
-        "cmsSelected": false
-      }
-    ],
-    "collectionsCreated": 0,
-    "publicDeliveryVerifiedAssets": 0,
-    "nativeDamImageXmlStatus": "unverified; only actual CMS picker XML is acceptable",
-    "accessState": "Browser login succeeded; UI work paused after CDP deadline and physical Mac relock; no OAuth retries.",
-    "writeScope": "New Westfield-only assets/collections; global connector/theme/Brand Kit/schema/accounts/access remain unchanged."
+  "runtimeEvidence": {
+    "canonicalLifecycleManifest": "../../../sites.manifest.json#westfield",
+    "canonicalDamInventory": "../../../industry-verticals/westfield/demo/dam-assets.json",
+    "adviceContract": "advice-contract.json",
+    "boundary": "Source preparation is not proof of native deployment, delivered placeholder structure, Page Builder operations, published content or live article/search behavior."
   }
 }

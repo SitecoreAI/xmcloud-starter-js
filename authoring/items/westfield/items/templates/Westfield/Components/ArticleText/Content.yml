@@ -1,0 +1,17 @@
+---
+ID: "2bd90272-b56f-5134-b2e6-392ea4bcc7f3"
+Parent: "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: "/sitecore/templates/Project/Westfield/Components/ArticleText/Content"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Content"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T042634Z"
