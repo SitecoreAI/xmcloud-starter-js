@@ -303,7 +303,7 @@
       "exports": [
         "Default"
       ],
-      "placeholderKey": "article-content",
+      "placeholderKey": "article-content-{*}",
       "layoutServicePlaceholderId": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845"
     },
     {
@@ -482,7 +482,7 @@
       ]
     },
     {
-      "key": "article-content",
+      "key": "article-content-{*}",
       "id": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Article Content",
       "allowedRenderingIds": [

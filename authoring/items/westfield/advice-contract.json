@@ -126,7 +126,8 @@
         "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
       },
       "layoutServicePlaceholderId": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845",
-      "placeholderKey": "article-content"
+      "placeholderKey": "article-content-{*}",
+      "dynamicPlaceholder": true
     },
     "ArticleText": {
       "id": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
@@ -202,7 +203,7 @@
     "id": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845",
     "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Article Content",
     "parentId": "11b33eb2-44e2-4447-a6ea-4a49a1972b7d",
-    "key": "article-content",
+    "key": "article-content-{*}",
     "editable": true,
     "allowedRenderingIds": [
       "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
@@ -290,10 +291,11 @@
           "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
         }
       ],
-      "placeholderKey": "article-content",
+      "placeholderKey": "article-content-{*}",
       "placementPathStatus": "Expected convention from official repository and existing Westfield partial layout; actual new article layout/UI must verify.",
       "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation.",
-      "placementPath": "/headless-main/sxa-article/article-content"
+      "placementPath": "/headless-main/sxa-article/article-content-2",
+      "placementStatus": "Expected from documented dynamic contract; await native insertion/readback proof."
     },
     "palette": {
       "Articles": {
