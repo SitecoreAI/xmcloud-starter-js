@@ -1,0 +1,45 @@
+---
+ID: "c896c2b2-81af-5311-8c59-41250c5db38d"
+Parent: "53deae5f-5135-5ae1-aeb1-b4e8686b053e"
+Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
+Path: "/sitecore/layout/Renderings/Project/Westfield/Home/HomeSection"
+SharedFields:
+- ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
+  Hint: "componentName"
+  Value: "HomeSection"
+- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
+  Hint: "Datasource Template"
+  Value: "/sitecore/templates/Project/Westfield/Components/HomeCard"
+- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
+  Hint: "Datasource Location"
+  Value: "query:./*[@@name='Data']"
+- ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
+  Hint: "Parameters Template"
+  Value: "{A72D343F-6CDE-4611-B131-06637C92BDB2}"
+- ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
+  Hint: "Open Properties after Add"
+  Value: "0"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: "__Icon"
+  Value: "Office/32x32/window_dialog.png"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: "__Sortorder"
+  Value: "100"
+- ID: "069a8361-b1cd-437c-8c32-a3be78941446"
+  Hint: "Placeholders"
+  Value: "{610FA1C7-C40B-5534-BCBC-3AEEBBB918BF}"
+- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
+  Hint: "OtherProperties"
+  Value: "IsRenderingsWithDynamicPlaceholders=true"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Home section"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T112621Z"

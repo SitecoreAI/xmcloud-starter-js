@@ -59,6 +59,12 @@
         "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
         "scope": "singleItem",
         "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "homeCards",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Cards",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
       }
     ]
   }
