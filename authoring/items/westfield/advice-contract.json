@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "site": "westfield",
-  "status": "Developer source definitions prepared; no new native deployment/authoring/publication proof.",
+  "status": "Source contract94 definitions including one metadata-only pre-existing context scaffold experiment. Native body binding to article-content-2 now delivers three components; actual popup restrictions and final acceptance remain pending.",
   "namespaceUuid": "42aff456-0823-4d69-adad-a6bfbeb31763",
   "createdAtUTC": "2026-10-15T04:21:09.360968+00:00",
   "templates": {
@@ -292,10 +292,10 @@
         }
       ],
       "placeholderKey": "article-content-{*}",
-      "placementPathStatus": "Expected convention from official repository and existing Westfield partial layout; actual new article layout/UI must verify.",
+      "placementPathStatus": "Native Add component path observed; root corrected branch and first article to this path and verified three delivered body components.",
       "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation.",
       "placementPath": "/headless-main/sxa-article/article-content-2",
-      "placementStatus": "Expected from documented dynamic contract; await native insertion/readback proof."
+      "placementStatus": "Body binding proven for branch and first article; disallowed popup controls remain active, so restriction acceptance is unresolved."
     },
     "palette": {
       "Articles": {
@@ -361,5 +361,21 @@
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/best-practices/recommendations--structuring-pages.html",
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/use-dynamic-placeholders-in-components.html",
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-sources/use-a-prefix-to-set-the-data-source-context.html"
-  ]
+  ],
+  "definitionItemCount": 94,
+  "preExistingNativeScaffold": {
+    "id": "11b33eb2-44e2-4447-a6ea-4a49a1972b7d",
+    "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
+    "parentId": "6cae6fe3-a3f3-433a-862f-9439a54faebb",
+    "templateId": "52288e39-7830-4694-b62d-32a54c6ef7ba",
+    "scope": "singleItem",
+    "sourceFile": "items/sitePlaceholderContext/Placeholder Settings.yml",
+    "sourceFields": [
+      "__Created"
+    ],
+    "nativeOrigin": "Pre-existing site-generated folder; actual identity, template, parent and en version1 creation timestamp preserved.",
+    "purpose": "Controlled IAR resource-child discovery hypothesis; no authored settings or descendants captured.",
+    "status": "source prepared; new deployment and child discovery proof pending",
+    "retainOnAdviceRemoval": true
+  }
 }
