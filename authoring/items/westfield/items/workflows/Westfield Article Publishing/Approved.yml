@@ -1,0 +1,27 @@
+---
+ID: "e0e37091-a101-584a-9b71-646fc5757b22"
+Parent: "0ebca053-6cc5-5ffb-bc6f-6c1a70d9e73a"
+Template: "4b7e2da9-de43-4c83-88c3-02f042031d04"
+Path: "/sitecore/system/Workflows/Westfield Article Publishing/Approved"
+SharedFields:
+- ID: "fb8abc73-7acf-45a0-898c-d3ccb889c3ee"
+  Hint: "Final"
+  Value: "1"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: "__Icon"
+  Value: "Network/16x16/earth.png"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: "__Sortorder"
+  Value: "20"
+Languages:
+- Language: en
+  Fields:
+  - ID: "8c980a06-4059-4939-9c6f-a10f751ceb64"
+    Hint: "Description"
+    Value: "Ready for publication. Publishing includes this article and its page-local content. Choose approved Westfield DAM images; new CMS media must be published separately."
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T170000Z"

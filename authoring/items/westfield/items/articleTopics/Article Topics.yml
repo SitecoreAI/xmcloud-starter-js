@@ -1,0 +1,17 @@
+---
+ID: "a580d25e-5c9d-5934-9407-7f9828f4b340"
+Parent: "96c461c5-192f-4a26-8e35-5bd590942f90"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/content/Westfield/westfield/Settings/Article Topics"
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: "__Sortorder"
+  Value: "100"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T000000Z"

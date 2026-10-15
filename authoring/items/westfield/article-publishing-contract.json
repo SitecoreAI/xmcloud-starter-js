@@ -1,0 +1,20 @@
+{
+  "path": "/sitecore/system/Workflows/Westfield Article Publishing",
+  "ids": {
+    "": "0ebca053-6cc5-5ffb-bc6f-6c1a70d9e73a",
+    "Draft": "51f6e353-80da-58cb-9e50-b21a448cb1bc",
+    "Draft/Publish": "f2c13bd1-2d9a-5553-a5fc-a5358d53a43d",
+    "Draft/Publish/Validate article": "844f3e97-ca9c-501f-9041-514c9ee09fb8",
+    "Approved": "e0e37091-a101-584a-9b71-646fc5757b22",
+    "Approved/Publish page and content": "9a8430f2-1c7b-50ad-b0eb-9a2bd9a79c45"
+  },
+  "scope": "Advice Article only; page plus local Data descendants, current language and Edge target; related-item expansion disabled. New CMS media is a separate publish. Use approved Westfield DAM images for the novice flow.",
+  "types": "Native ValidatorsAction, PublishAction; no custom code or SPE",
+  "nativeWriteStatus": "Not applied; awaiting deployment by root",
+  "sources": [
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/workflow/workflow-cookbook/add-commands-and-actions-to-states.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/workflow/workflow-reference/standard-and-custom-actions.html"
+  ],
+  "publishParameters": "deep=1&smart=1&related=0&targets=experienceedge&alllanguages=0&itemlanguage=1",
+  "targetResolution": "Native publishing target Edge maps to database experienceedge. Current PublishAction resolves explicit targets as database names."
+}

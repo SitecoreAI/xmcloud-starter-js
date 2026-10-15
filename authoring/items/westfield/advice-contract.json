@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "site": "westfield",
-  "status": "PASS: 94 definitions and resource discovery verified; six native branch articles published with 18 independent local datasources. Native authoring/picker/publish/unpublish and public Advice/Search/browser acceptance passed at runtime 375c2ff8. Final metadata release is separate in the manifest.",
+  "status": "SOURCE_READY: author field guidance, controlled topics, automatic reading time metadata and article-only publish validation are defined. Restricted-author native rehearsal and release acceptance are recorded separately; prior baseline acceptance is retained below.",
   "namespaceUuid": "42aff456-0823-4d69-adad-a6bfbeb31763",
   "createdAtUTC": "2026-10-15T04:21:09.360968+00:00",
   "templates": {
@@ -17,38 +17,107 @@
         {
           "name": "Topic",
           "id": "df4ee816-a6ef-5244-b758-ddfa7a183033",
-          "type": "Single-Line Text",
-          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/Topic"
+          "type": "Droplist",
+          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/Topic",
+          "label": "Topic",
+          "help": "Choose Auto, Home, or Planning. This controls the Advice topic filter. Required before approval; drafts can be saved without it.",
+          "source": "/sitecore/content/Westfield/westfield/Settings/Article Topics",
+          "allowedValues": [
+            "Auto",
+            "Home",
+            "Planning"
+          ],
+          "storage": "Selected item name, preserving existing Auto/Home/Planning text values.",
+          "validation": {
+            "requiredBeforeApproval": true,
+            "validatorId": "57b1c70c-ef68-555e-af28-127087894859",
+            "result": "Error",
+            "scopes": [
+              "Validate Button",
+              "Quick Action Bar",
+              "Workflow",
+              "Validator Bar"
+            ],
+            "incompleteDraftSaveAllowed": true
+          }
         },
         {
           "name": "ReadTime",
           "id": "6b763802-bdbb-57fe-89e4-7dc32bb0f694",
           "type": "Single-Line Text",
-          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/ReadTime"
+          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/ReadTime",
+          "label": "Reading time (automatic)",
+          "help": "Calculated from the article text. You do not need to enter or update this field.",
+          "valueSemantics": "Legacy stored value retained for compatibility and preservation. Advice article estimates are calculated from native article text; stored overrides are ignored.",
+          "authorInputRequired": false
         },
         {
           "name": "HeroImage",
           "id": "f7badcfe-f84c-51a2-8066-b863da18c3ec",
           "type": "Image",
-          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/HeroImage"
+          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/HeroImage",
+          "label": "Article image",
+          "help": "Choose a Westfield image and add meaningful alternative text. The image is also used in article listings. Required before approval.",
+          "validation": {
+            "requiredBeforeApproval": true,
+            "validatorId": "57b1c70c-ef68-555e-af28-127087894859",
+            "result": "Error",
+            "scopes": [
+              "Validate Button",
+              "Quick Action Bar",
+              "Workflow",
+              "Validator Bar"
+            ],
+            "incompleteDraftSaveAllowed": true
+          }
         },
         {
           "name": "PublishedDate",
           "id": "81dea0de-daee-5b89-b046-e089bd2466fc",
           "type": "Date",
-          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/PublishedDate"
+          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/PublishedDate",
+          "label": "Publication date",
+          "help": "Choose the date displayed on the article and used to sort article listings. Required before approval; drafts can be saved without it.",
+          "validation": {
+            "requiredBeforeApproval": true,
+            "validatorId": "57b1c70c-ef68-555e-af28-127087894859",
+            "result": "Error",
+            "scopes": [
+              "Validate Button",
+              "Quick Action Bar",
+              "Workflow",
+              "Validator Bar"
+            ],
+            "incompleteDraftSaveAllowed": true
+          }
         }
       ],
       "inheritedFields": [
         {
           "name": "Title",
           "id": "d4ebb5f5-976e-4e0e-9c4c-6009995b75ef",
-          "type": "Single-Line Text"
+          "type": "Single-Line Text",
+          "validation": {
+            "requiredBeforeApproval": true,
+            "enforcement": "Article-only rule-based item validation; no shared field validation change.",
+            "ruleItemId": "d0deb657-e332-5b34-960b-8e26ba9c4e97",
+            "result": "Error",
+            "incompleteDraftSaveAllowed": true
+          }
         },
         {
           "name": "pageSummary",
           "id": "8bff13f9-685f-4092-bcfc-873f8515dd73",
-          "type": "Single-Line Text"
+          "type": "Single-Line Text",
+          "label": "Summary",
+          "help": "Write one or two short sentences describing this page. Used in article listings and search results.",
+          "validation": {
+            "requiredBeforeApproval": true,
+            "enforcement": "Article-only rule-based item validation; no shared field validation change.",
+            "ruleItemId": "d0deb657-e332-5b34-960b-8e26ba9c4e97",
+            "result": "Error",
+            "incompleteDraftSaveAllowed": true
+          }
         }
       ]
     },
@@ -70,13 +139,17 @@
           "name": "Heading",
           "id": "20ca19b1-bc66-5de8-9fc8-60c0ec1f2fa6",
           "type": "Single-Line Text",
-          "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Heading"
+          "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Heading",
+          "label": "Section heading",
+          "help": "Optional heading for this text section. Use clear headings to break up longer articles."
         },
         {
           "name": "Body",
           "id": "966cfa1c-7813-5866-b3e0-d3178c9f2eeb",
           "type": "Rich Text",
-          "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Body"
+          "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Body",
+          "label": "Text",
+          "help": "Write this section using the rich text toolbar. Add another Text component for another section."
         }
       ]
     }
@@ -350,9 +423,13 @@
     "https://doc.sitecore.com/sai/en/users/sitecoreai/build-pages/building-page-templates-and-branches/create-and-configure-a-page-branch.html",
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/best-practices/recommendations--structuring-pages.html",
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/use-dynamic-placeholders-in-components.html",
-    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-sources/use-a-prefix-to-set-the-data-source-context.html"
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-sources/use-a-prefix-to-set-the-data-source-context.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-templates/data-template-fields/the-data-template-field-types/the-simple-field-types.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-templates/data-template-fields/the-template-field-template.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-templates/validation-rules-and-options/the-validation-options.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/workflow/workflow-cookbook/add-commands-and-actions-to-states.html"
   ],
-  "definitionItemCount": 118,
+  "definitionItemCount": 135,
   "preExistingNativeScaffold": {
     "id": "11b33eb2-44e2-4447-a6ea-4a49a1972b7d",
     "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
@@ -380,5 +457,237 @@
     "routing": "Existing native /advice item URLs and SDK catch-all retained.",
     "copy": "Source-backed condensed original copy; exact headlines/dates/source images. Full public article text is not copied.",
     "definitionStatus": "PublishedDate source prepared; deployment and live acceptance tracked in handoff evidence."
+  },
+  "baselineAcceptance": "PASS: 94 definitions and resource discovery verified; six native branch articles published with 18 independent local datasources. Native authoring/picker/publish/unpublish and public Advice/Search/browser acceptance passed at runtime 375c2ff8. Final metadata release is separate in the manifest.",
+  "authoringEase": {
+    "status": "Developer source validated; actual restricted author and native drag/drop/publish acceptance pending separate QA.",
+    "fieldGuidance": [
+      {
+        "fieldId": "df4ee816-a6ef-5244-b758-ddfa7a183033",
+        "label": "Topic",
+        "help": "Choose Auto, Home, or Planning. This controls the Advice topic filter. Required before approval; drafts can be saved without it.",
+        "requiredBeforeApproval": true,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/Topic"
+      },
+      {
+        "fieldId": "6b763802-bdbb-57fe-89e4-7dc32bb0f694",
+        "label": "Reading time (automatic)",
+        "help": "Calculated from the article text. You do not need to enter or update this field.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/ReadTime"
+      },
+      {
+        "fieldId": "f7badcfe-f84c-51a2-8066-b863da18c3ec",
+        "label": "Article image",
+        "help": "Choose a Westfield image and add meaningful alternative text. The image is also used in article listings. Required before approval.",
+        "requiredBeforeApproval": true,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/HeroImage"
+      },
+      {
+        "fieldId": "81dea0de-daee-5b89-b046-e089bd2466fc",
+        "label": "Publication date",
+        "help": "Choose the date displayed on the article and used to sort article listings. Required before approval; drafts can be saved without it.",
+        "requiredBeforeApproval": true,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/PublishedDate"
+      },
+      {
+        "fieldId": "8bff13f9-685f-4092-bcfc-873f8515dd73",
+        "label": "Summary",
+        "help": "Write one or two short sentences describing this page. Used in article listings and search results.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/pageSummary"
+      },
+      {
+        "fieldId": "6d2de363-e556-461e-aa2e-f4d1015b6d17",
+        "label": "Search title",
+        "help": "Optional title for browser tabs and search engines. Use a clear, descriptive title.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/metadataTitle"
+      },
+      {
+        "fieldId": "5266be04-3bdf-402e-a7a9-c153d0cd8d7a",
+        "label": "Search description",
+        "help": "Optional short description for search engines. Summarize what a visitor will find on the page.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/metadataDescription"
+      },
+      {
+        "fieldId": "8eae53b8-983e-419c-88e5-550fa9ef460f",
+        "label": "Search keywords",
+        "help": "Optional words or phrases relevant to this page.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/metadataKeywords"
+      },
+      {
+        "fieldId": "d712e231-0e1b-49b3-a68e-399c5abb6f58",
+        "label": "Social sharing image",
+        "help": "Optional image for previews when this page is shared. Choose an image that represents the page.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Pages/Campaign Page/Metadata/ogImage"
+      },
+      {
+        "fieldId": "20ca19b1-bc66-5de8-9fc8-60c0ec1f2fa6",
+        "label": "Section heading",
+        "help": "Optional heading for this text section. Use clear headings to break up longer articles.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Heading"
+      },
+      {
+        "fieldId": "966cfa1c-7813-5866-b3e0-d3178c9f2eeb",
+        "label": "Text",
+        "help": "Write this section using the rich text toolbar. Add another Text component for another section.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Body"
+      },
+      {
+        "fieldId": "b9be144e-99fd-47e3-958d-8aaf0eb25877",
+        "label": "Heading",
+        "help": "Optional short heading above the button.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content/Heading"
+      },
+      {
+        "fieldId": "28fe3cd7-186d-4b0f-92e0-fde2a3d54432",
+        "label": "Supporting text",
+        "help": "Optional supporting text for this action.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content/Body"
+      },
+      {
+        "fieldId": "0737f1f4-31c5-4d5c-8089-3532068e916f",
+        "label": "Button link",
+        "help": "Choose a page or enter a web address. Set the link text that should appear on the button.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/CampaignAction/Content/Link"
+      },
+      {
+        "fieldId": "b5849b78-238b-4237-ac26-f226f25a68df",
+        "label": "Section heading",
+        "help": "Optional heading for this content section.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/CampaignContent/Content/Heading"
+      },
+      {
+        "fieldId": "9fc28eba-a20c-4f27-822c-013d98567b84",
+        "label": "Text",
+        "help": "Write this section using the rich text toolbar. Use headings, paragraphs, and lists for readable content.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/CampaignContent/Content/Body"
+      },
+      {
+        "fieldId": "eb20f241-552e-4f81-aeab-1d0db55df012",
+        "label": "Headline",
+        "help": "Write the main headline for this section. Keep it brief and useful to the visitor.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Heading"
+      },
+      {
+        "fieldId": "c880363b-5c3d-4b9a-85c3-43e879e60762",
+        "label": "Introduction",
+        "help": "Write a short introduction below the headline.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Body"
+      },
+      {
+        "fieldId": "b48e5096-4ec0-4321-8dad-0040b3a0e76d",
+        "label": "Short label",
+        "help": "Optional short label displayed above the headline.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Eyebrow"
+      },
+      {
+        "fieldId": "f89e6b13-fc9a-46c8-8df5-07b44e174ad4",
+        "label": "Image",
+        "help": "Choose a Westfield image and add meaningful alternative text in the image dialog.",
+        "requiredBeforeApproval": false,
+        "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/CampaignHero/Content/Image"
+      }
+    ],
+    "topics": {
+      "path": "/sitecore/content/Westfield/westfield/Settings/Article Topics",
+      "id": "a580d25e-5c9d-5934-9407-7f9828f4b340",
+      "type": "Droplist",
+      "values": [
+        "Auto",
+        "Home",
+        "Planning"
+      ],
+      "storage": "Selected option item name",
+      "ownership": "Developer-owned options under this site Settings; ordinary authors choose a value rather than edit the taxonomy.",
+      "migration": "No stored field ID or existing content value changes."
+    },
+    "automaticReadingTime": {
+      "legacyFieldId": "6b763802-bdbb-57fe-89e4-7dc32bb0f694",
+      "authorLabel": "Reading time (automatic)",
+      "authorInputRequired": false,
+      "calculation": "Round readable word count up at 200 words per minute. No text produces an empty estimate.",
+      "inputs": [
+        "Page summary",
+        "ArticleText Heading and Body in ArticleBodyLayout article-content-* placeholders",
+        "CampaignAction Heading, Body and visible Link label in the same article body placeholder"
+      ],
+      "excludes": [
+        "Header/footer navigation",
+        "Other page component types and unrelated placeholder regions",
+        "HTML tags, code, styles, comments and image attributes",
+        "Legacy manual ReadTime values"
+      ],
+      "output": "readTime metadata for published Advice articles. The source-faithful article header stays unchanged.",
+      "contentPreservation": "Existing stored ReadTime values and field identity remain intact."
+    },
+    "workflow": {
+      "id": "0ebca053-6cc5-5ffb-bc6f-6c1a70d9e73a",
+      "path": "/sitecore/system/Workflows/Westfield Article Publishing",
+      "states": {
+        "Draft": {
+          "id": "51f6e353-80da-58cb-9e50-b21a448cb1bc",
+          "final": false
+        },
+        "Approved": {
+          "id": "e0e37091-a101-584a-9b71-646fc5757b22",
+          "final": true
+        }
+      },
+      "command": {
+        "name": "Publish",
+        "id": "f2c13bd1-2d9a-5553-a5fc-a5358d53a43d",
+        "from": "Draft",
+        "to": "Approved",
+        "validationActionId": "844f3e97-ca9c-501f-9041-514c9ee09fb8",
+        "maximumAllowedResult": "Warning",
+        "errorKeepsDraft": true
+      },
+      "publication": {
+        "actionId": "9a8430f2-1c7b-50ad-b0eb-9a2bd9a79c45",
+        "parameters": "deep=1&smart=1&related=0&targets=experienceedge&alllanguages=0&itemlanguage=1",
+        "scope": "Article and its page-local descendants in the current language; no recursive related-item publication.",
+        "media": "Select approved Westfield DAM images. New CMS Media Library items are outside this subtree and require publication through the referenced-items UI or separate media publication."
+      },
+      "default": "AdviceArticle standard values __Default workflow references this workflow. Existing authored workflow states are not reset by the definition release."
+    },
+    "validation": {
+      "requiredFieldsBeforeApproval": [
+        "Title",
+        "pageSummary",
+        "Topic",
+        "HeroImage",
+        "PublishedDate"
+      ],
+      "fieldValidator": {
+        "id": "57b1c70c-ef68-555e-af28-127087894859",
+        "path": "/sitecore/system/Settings/Validation Rules/Field Rules/Westfield Article Required",
+        "parameters": "Result=Error",
+        "reason": "Native RequiredFieldValidator defaults CriticalError, so the owned copy explicitly returns Error to preserve incomplete draft saves. Workflow Max Result Warning rejects Error before approval."
+      },
+      "articleItemRules": {
+        "id": "d0deb657-e332-5b34-960b-8e26ba9c4e97",
+        "path": "/sitecore/system/Settings/Rules/Validation Rules/Rules/Westfield Article Requirements",
+        "scope": "Exact Advice Article template only. Opted into builtin Rule-Based Item Validator on AdviceArticle standard values. No global field requirements.",
+        "ruleBasedValidatorId": "40576ab4-a753-4caf-a59e-433cb37e1ff6"
+      },
+      "saveBoundary": "No save-time Validation regex. Scoped required field validator uses Result=Error; item rules use Error. Incomplete drafts may be saved; workflow validation permits at most Warning before the Approved transition.",
+      "scopeBoundary": "Inherited Title and Summary are required through exact Advice Article template conditions, without requiring them on Campaign Page or other sites."
+    },
+    "ownershipBoundary": "Developer field metadata, topic options, workflow and scoped validation definitions are serialized. Page/Partial Designs, branch instances, author content, user/role access and actual publish state are reconciled separately and must not be replayed or reset by ordinary definition deployment."
   }
 }

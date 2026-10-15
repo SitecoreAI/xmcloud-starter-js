@@ -1,0 +1,20 @@
+---
+ID: "d0deb657-e332-5b34-960b-8e26ba9c4e97"
+Parent: "a59a7fae-f0b1-43bd-abef-da0e3c9408a0"
+Template: "0512bde9-5696-42c4-8c7d-b349eda9cef9"
+Path: "/sitecore/system/Settings/Rules/Validation Rules/Rules/Westfield Article Requirements"
+SharedFields:
+- ID: "de992f87-5ea4-4d75-84cf-f744a9fa2ec0"
+  Hint: "Rule"
+  Value: "<ruleset><rule uid=\"{1DE689C5-8C80-5402-88FD-8344AE01EF14}\"><conditions><and uid=\"{C8E5B380-88AB-5C1C-BFC8-223B6BAD8BA9}\"><condition id=\"{5DE6D53E-EA62-4D17-8BDD-FEBCD80AC07B}\" uid=\"{6E6BC2B1-134B-54DB-943A-63745C5FCC35}\" templateid=\"{31F25FEA-085E-5193-9637-B13FC2F7A385}\" /><condition id=\"{DA0D1AEA-0144-4A40-9AF0-3123526C9163}\" uid=\"{A92C7155-5887-5A7C-90FA-0D2A3F43AA2C}\" fieldname=\"Title\" /></and></conditions><actions><action id=\"{FEB35D83-E2FC-4CEE-8384-348F8A217837}\" uid=\"{9918C474-579F-593E-A2AF-BA4312BC3C08}\" Result=\"Error\" Text=\"Enter an article title before approval.\" /></actions></rule><rule uid=\"{D2259BC1-2AB0-5C5A-9B3B-BB7755EB8D8D}\"><conditions><and uid=\"{1BAFCEF5-6921-58FB-B7E6-F5D273DD6D6B}\"><condition id=\"{5DE6D53E-EA62-4D17-8BDD-FEBCD80AC07B}\" uid=\"{46E1C588-FDD3-5C5B-AAC0-C3EA15496328}\" templateid=\"{31F25FEA-085E-5193-9637-B13FC2F7A385}\" /><condition id=\"{DA0D1AEA-0144-4A40-9AF0-3123526C9163}\" uid=\"{E56DB5E8-BA0B-5C2A-815C-3DC584F9F639}\" fieldname=\"pageSummary\" /></and></conditions><actions><action id=\"{FEB35D83-E2FC-4CEE-8384-348F8A217837}\" uid=\"{B8641FD7-A592-57E7-BA83-CCFD5B233101}\" Result=\"Error\" Text=\"Enter a summary before approval.\" /></actions></rule></ruleset>"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "5481adf8-53bd-4ee8-88c5-2a48ab162e63"
+      Hint: "Name"
+      Value: "Article title and summary"
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T000000Z"

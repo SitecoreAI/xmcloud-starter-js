@@ -61,39 +61,9 @@
       "editable": true,
       "allowedComponents": [
         {
-          "componentName": "CampaignHero",
-          "displayName": "Hero",
-          "renderingId": "4e8227b8-281a-496c-9d7e-138d341f389b"
-        },
-        {
-          "componentName": "CampaignAction",
-          "displayName": "Action",
-          "renderingId": "15f0d95b-ce29-45d7-8937-42016fcf3efd"
-        },
-        {
-          "componentName": "CampaignContent",
-          "displayName": "Content",
-          "renderingId": "b1f0e493-6a4a-49d0-ae58-4e9d9ca7ec77"
-        },
-        {
-          "componentName": "AdviceListing",
-          "displayName": "Listing",
-          "renderingId": "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4"
-        },
-        {
-          "componentName": "SearchResults",
-          "displayName": "Results",
-          "renderingId": "59801512-e7a4-5d0f-9d47-8b47e8423eef"
-        },
-        {
-          "componentName": "HomeSection",
-          "displayName": "Section",
-          "renderingId": "c896c2b2-81af-5311-8c59-41250c5db38d"
-        },
-        {
-          "componentName": "HomeFeature",
-          "displayName": "Feature",
-          "renderingId": "85651417-228e-524d-b7e4-4e683b261b26"
+          "componentName": "PageContentRegion",
+          "displayName": "Page content area",
+          "renderingId": "f849a79c-1fd3-5df8-99ef-6e252ee0bf44"
         }
       ],
       "ownership": "Developer-owned exact singleItem definition",
@@ -163,6 +133,70 @@
       ],
       "ownership": "Developer-owned exact singleItem definition",
       "sourceScope": "Exact existing singleItem serialization include"
+    },
+    {
+      "id": "45f7197e-161b-5d4c-b1f7-939733184588",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Content",
+      "key": "westfield-home-content",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "renderingId": "4e8227b8-281a-496c-9d7e-138d341f389b"
+        },
+        {
+          "renderingId": "c896c2b2-81af-5311-8c59-41250c5db38d"
+        },
+        {
+          "renderingId": "85651417-228e-524d-b7e4-4e683b261b26"
+        }
+      ],
+      "ownership": "Developer-owned exact singleItem definition",
+      "sourceScope": "Exact singleItem serialization include"
+    },
+    {
+      "id": "e31393bf-6a5e-5dd4-8f2b-82ff3afe8734",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Campaign Content",
+      "key": "westfield-campaign-content",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "renderingId": "4e8227b8-281a-496c-9d7e-138d341f389b"
+        },
+        {
+          "renderingId": "b1f0e493-6a4a-49d0-ae58-4e9d9ca7ec77"
+        },
+        {
+          "renderingId": "15f0d95b-ce29-45d7-8937-42016fcf3efd"
+        }
+      ],
+      "ownership": "Developer-owned exact singleItem definition",
+      "sourceScope": "Exact singleItem serialization include"
+    },
+    {
+      "id": "ce275f2f-6c5f-504e-b87e-fd884e4555f8",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Advice Content",
+      "key": "westfield-advice-content",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "renderingId": "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4"
+        }
+      ],
+      "ownership": "Developer-owned exact singleItem definition",
+      "sourceScope": "Exact singleItem serialization include"
+    },
+    {
+      "id": "ac0b3621-5ec2-5d90-af8b-e0b219bdbec1",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Search Content",
+      "key": "westfield-search-content",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "renderingId": "59801512-e7a4-5d0f-9d47-8b47e8423eef"
+        }
+      ],
+      "ownership": "Developer-owned exact singleItem definition",
+      "sourceScope": "Exact singleItem serialization include"
     }
   ],
   "extensionPoints": {
@@ -179,10 +213,10 @@
     "homeCards": {
       "key": "home-cards-{*}",
       "resolvedPaths": [
-        "/headless-main/home-cards-2",
-        "/headless-main/home-cards-4",
-        "/headless-main/home-cards-6",
-        "/headless-main/home-cards-8"
+        "/headless-main/sxa-home-content/westfield-home-content/home-cards-2",
+        "/headless-main/sxa-home-content/westfield-home-content/home-cards-4",
+        "/headless-main/sxa-home-content/westfield-home-content/home-cards-6",
+        "/headless-main/sxa-home-content/westfield-home-content/home-cards-8"
       ],
       "permittedDisplayNames": [
         "Card"
@@ -192,7 +226,7 @@
     "pageContent": {
       "key": "headless-main",
       "displayName": "Page content",
-      "use": "Root composition for Default design pages such as Home, Advice hub, Search and digital service campaigns. The article body uses its own restricted nested slot."
+      "use": "Fixed page-family region supplied by a partial design. Home, Campaign, Advice and Search variants each expose a unique restricted nested placeholder. PageContentRegion itself is not offered in the Add palette."
     }
   },
   "fixedPartials": {
@@ -223,5 +257,35 @@
     "RowSplitter"
   ],
   "unusedStarterBoundary": "These starter exports are not placed, exposed by Westfield Available Renderings or permitted by any Westfield slot; no site-specific settings are added for inactive starter slots.",
-  "nativeReconciliation": "Apply exact Allowed Controls fields to the three generated partial settings after reading current state. Preserve keys/IDs/names, then verify native Add and drag/drop, including rejection of disallowed components. An empty Allowed Controls value means unrestricted, so it must not be used as deny-all."
+  "nativeReconciliation": "Create native PageContentRegion variants and family Page/Partial Designs; move each exact page placement placeholder path preserving UIDs, datasources and personalization. Verify no extra DOM wrapper and the native family palettes before publication.",
+  "familyRegions": {
+    "westfield-home-content": {
+      "allowedRenderingIds": [
+        "4e8227b8-281a-496c-9d7e-138d341f389b",
+        "c896c2b2-81af-5311-8c59-41250c5db38d",
+        "85651417-228e-524d-b7e4-4e683b261b26"
+      ],
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Content"
+    },
+    "westfield-campaign-content": {
+      "allowedRenderingIds": [
+        "4e8227b8-281a-496c-9d7e-138d341f389b",
+        "b1f0e493-6a4a-49d0-ae58-4e9d9ca7ec77",
+        "15f0d95b-ce29-45d7-8937-42016fcf3efd"
+      ],
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Campaign Content"
+    },
+    "westfield-advice-content": {
+      "allowedRenderingIds": [
+        "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4"
+      ],
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Advice Content"
+    },
+    "westfield-search-content": {
+      "allowedRenderingIds": [
+        "59801512-e7a4-5d0f-9d47-8b47e8423eef"
+      ],
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Search Content"
+    }
+  }
 }
