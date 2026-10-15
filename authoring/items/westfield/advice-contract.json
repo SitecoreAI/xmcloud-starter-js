@@ -31,6 +31,12 @@
           "id": "f7badcfe-f84c-51a2-8066-b863da18c3ec",
           "type": "Image",
           "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/HeroImage"
+        },
+        {
+          "name": "PublishedDate",
+          "id": "81dea0de-daee-5b89-b046-e089bd2466fc",
+          "type": "Date",
+          "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/PublishedDate"
         }
       ],
       "inheritedFields": [
@@ -268,7 +274,8 @@
           "pageSummary": "",
           "HeroImage": "",
           "baseMetadataTitle": "",
-          "baseMetadataDescription": ""
+          "baseMetadataDescription": "",
+          "PublishedDate": ""
         },
         "localData": {
           "Introduction": {
@@ -345,7 +352,7 @@
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/use-dynamic-placeholders-in-components.html",
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-sources/use-a-prefix-to-set-the-data-source-context.html"
   ],
-  "definitionItemCount": 94,
+  "definitionItemCount": 118,
   "preExistingNativeScaffold": {
     "id": "11b33eb2-44e2-4447-a6ea-4a49a1972b7d",
     "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
@@ -366,5 +373,12 @@
     "site": "westfield",
     "binding": "bindings.advice",
     "boundary": "Authored designs, variants, branches, palette, pages and page-local Data receive API-assigned identities. This source contract preserves paths/structure; the manifest owns actual IDs."
+  },
+  "articleFidelity": {
+    "sourceListing": "https://www.westfieldinsurance.com/about-us/articles",
+    "dateDefault": "Blank on new articles; dates are populated only on the six source-backed example articles.",
+    "routing": "Existing native /advice item URLs and SDK catch-all retained.",
+    "copy": "Source-backed condensed original copy; exact headlines/dates/source images. Full public article text is not copied.",
+    "definitionStatus": "PublishedDate source prepared; deployment and live acceptance tracked in handoff evidence."
   }
 }
