@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "site": "westfield",
   "purpose": "Native placeholder restrictions for all Westfield page families, fixed shared partials and nested composition. Component variants use the same rendering ID and inherit its placeholder permission.",
-  "boundary": "Five explicit placeholder leaves are developer-owned and narrowly serialized. Three platform-generated partial settings preserve their native identities and remain site-local authored configuration outside ordinary serialization. No broad Presentation or Placeholder Settings descendant include.",
+  "boundary": "Nine exact site placeholder leaves are developer-owned and narrowly serialized. Platform-generated partial settings retain their native identities and remain site-local authored configuration outside ordinary serialization. No broad Presentation or Placeholder Settings descendant include.",
   "settings": [
     {
       "id": "f04a54aa1c8e49eb972505f0e6dac31f",
@@ -137,7 +137,7 @@
     {
       "id": "45f7197e-161b-5d4c-b1f7-939733184588",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Content",
-      "key": "westfield-home-content",
+      "key": "westfield-home-content-{*}",
       "editable": true,
       "allowedComponents": [
         {
@@ -151,12 +151,13 @@
         }
       ],
       "ownership": "Developer-owned exact singleItem definition",
-      "sourceScope": "Exact singleItem serialization include"
+      "sourceScope": "Exact singleItem serialization include",
+      "dynamic": true
     },
     {
       "id": "e31393bf-6a5e-5dd4-8f2b-82ff3afe8734",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Campaign Content",
-      "key": "westfield-campaign-content",
+      "key": "westfield-campaign-content-{*}",
       "editable": true,
       "allowedComponents": [
         {
@@ -170,12 +171,13 @@
         }
       ],
       "ownership": "Developer-owned exact singleItem definition",
-      "sourceScope": "Exact singleItem serialization include"
+      "sourceScope": "Exact singleItem serialization include",
+      "dynamic": true
     },
     {
       "id": "ce275f2f-6c5f-504e-b87e-fd884e4555f8",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Advice Content",
-      "key": "westfield-advice-content",
+      "key": "westfield-advice-content-{*}",
       "editable": true,
       "allowedComponents": [
         {
@@ -183,12 +185,13 @@
         }
       ],
       "ownership": "Developer-owned exact singleItem definition",
-      "sourceScope": "Exact singleItem serialization include"
+      "sourceScope": "Exact singleItem serialization include",
+      "dynamic": true
     },
     {
       "id": "ac0b3621-5ec2-5d90-af8b-e0b219bdbec1",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Search Content",
-      "key": "westfield-search-content",
+      "key": "westfield-search-content-{*}",
       "editable": true,
       "allowedComponents": [
         {
@@ -196,7 +199,8 @@
         }
       ],
       "ownership": "Developer-owned exact singleItem definition",
-      "sourceScope": "Exact singleItem serialization include"
+      "sourceScope": "Exact singleItem serialization include",
+      "dynamic": true
     }
   ],
   "extensionPoints": {
@@ -213,10 +217,10 @@
     "homeCards": {
       "key": "home-cards-{*}",
       "resolvedPaths": [
-        "/headless-main/sxa-home-content/westfield-home-content/home-cards-2",
-        "/headless-main/sxa-home-content/westfield-home-content/home-cards-4",
-        "/headless-main/sxa-home-content/westfield-home-content/home-cards-6",
-        "/headless-main/sxa-home-content/westfield-home-content/home-cards-8"
+        "/headless-main/sxa-home-content/westfield-home-content-1/home-cards-2",
+        "/headless-main/sxa-home-content/westfield-home-content-1/home-cards-4",
+        "/headless-main/sxa-home-content/westfield-home-content-1/home-cards-6",
+        "/headless-main/sxa-home-content/westfield-home-content-1/home-cards-8"
       ],
       "permittedDisplayNames": [
         "Card"
@@ -226,7 +230,7 @@
     "pageContent": {
       "key": "headless-main",
       "displayName": "Page content",
-      "use": "Fixed page-family region supplied by a partial design. Home, Campaign, Advice and Search variants each expose a unique restricted nested placeholder. PageContentRegion itself is not offered in the Add palette."
+      "use": "Fixed page-family region supplied by a partial design. Home, Campaign, Advice and Search variants each expose a restricted SXA dynamic placeholder. Placeholder names use params.DynamicPlaceholderId; PageContentRegion is not offered in the Add palette."
     }
   },
   "fixedPartials": {
@@ -257,35 +261,50 @@
     "RowSplitter"
   ],
   "unusedStarterBoundary": "These starter exports are not placed, exposed by Westfield Available Renderings or permitted by any Westfield slot; no site-specific settings are added for inactive starter slots.",
-  "nativeReconciliation": "Create native PageContentRegion variants and family Page/Partial Designs; move each exact page placement placeholder path preserving UIDs, datasources and personalization. Verify no extra DOM wrapper and the native family palettes before publication.",
+  "nativeReconciliation": "Use the documented SXA wrapper contract: PageContentRegion OtherProperties IsRenderingsWithDynamicPlaceholders=true; family Placeholder Key values end -{*}; TSX requests the family key with params.DynamicPlaceholderId. The fixed family partial assigns DynamicPlaceholderId=1. Reconcile exact authored placement paths to the -1 instance, preserving rendering UIDs, datasources, parameters and personalization. Keep generated sxa-* partial placeholder keys unchanged. Verify fresh Layout Service output and native palettes before publication.",
   "familyRegions": {
-    "westfield-home-content": {
+    "westfield-home-content-{*}": {
       "allowedRenderingIds": [
         "4e8227b8-281a-496c-9d7e-138d341f389b",
         "c896c2b2-81af-5311-8c59-41250c5db38d",
         "85651417-228e-524d-b7e4-4e683b261b26"
       ],
-      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Content"
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Content",
+      "dynamic": true,
+      "instanceKey": "westfield-home-content-1",
+      "instanceParameter": "DynamicPlaceholderId"
     },
-    "westfield-campaign-content": {
+    "westfield-campaign-content-{*}": {
       "allowedRenderingIds": [
         "4e8227b8-281a-496c-9d7e-138d341f389b",
         "b1f0e493-6a4a-49d0-ae58-4e9d9ca7ec77",
         "15f0d95b-ce29-45d7-8937-42016fcf3efd"
       ],
-      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Campaign Content"
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Campaign Content",
+      "dynamic": true,
+      "instanceKey": "westfield-campaign-content-1",
+      "instanceParameter": "DynamicPlaceholderId"
     },
-    "westfield-advice-content": {
+    "westfield-advice-content-{*}": {
       "allowedRenderingIds": [
         "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4"
       ],
-      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Advice Content"
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Advice Content",
+      "dynamic": true,
+      "instanceKey": "westfield-advice-content-1",
+      "instanceParameter": "DynamicPlaceholderId"
     },
-    "westfield-search-content": {
+    "westfield-search-content-{*}": {
       "allowedRenderingIds": [
         "59801512-e7a4-5d0f-9d47-8b47e8423eef"
       ],
-      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Search Content"
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Search Content",
+      "dynamic": true,
+      "instanceKey": "westfield-search-content-1",
+      "instanceParameter": "DynamicPlaceholderId"
     }
-  }
+  },
+  "sources": [
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/use-dynamic-placeholders-in-components.html"
+  ]
 }

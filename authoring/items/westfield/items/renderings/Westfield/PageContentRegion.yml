@@ -28,6 +28,9 @@ SharedFields:
 - ID: "069a8361-b1cd-437c-8c32-a3be78941446"
   Hint: "Placeholders"
   Value: "{45F7197E-161B-5D4C-B1F7-939733184588}|{E31393BF-6A5E-5DD4-8F2B-82FF3AFE8734}|{CE275F2F-6C5F-504E-B87E-FD884E4555F8}|{AC0B3621-5EC2-5D90-AF8B-E0B219BDBEC1}"
+- ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
+  Hint: "OtherProperties"
+  Value: "IsRenderingsWithDynamicPlaceholders=true"
 Languages:
 - Language: en
   Fields:
