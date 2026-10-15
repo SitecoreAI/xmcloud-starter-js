@@ -12,7 +12,7 @@ SharedFields:
   Value: "100"
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: "Source"
-  Value: "/sitecore/content/Westfield/westfield/Settings/Article Topics"
+  Value: "{A580D25E-5C9D-5934-9407-7F9828F4B340}"
 - ID: "21828437-ea4b-40a1-8c61-4ce60ea41db6"
   Hint: "Validate Button"
   Value: "{57B1C70C-EF68-555E-AF28-127087894859}"
