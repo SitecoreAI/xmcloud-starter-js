@@ -66,6 +66,16 @@
         "scope": "singleItem",
         "allowedPushOperations": "CreateAndUpdate"
       }
+    ],
+    "excludedFields": [
+      {
+        "fieldId": "c7c26117-dbb1-42b2-ab5e-f7223845cca3",
+        "description": "__Thumbnail (Westfield author-managed preview artwork)"
+      },
+      {
+        "fieldId": "4a749557-242b-4372-8a20-b2db9d406301",
+        "description": "__AutoThumbnails (Westfield author-managed thumbnail generation preference)"
+      }
     ]
   }
 }
