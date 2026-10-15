@@ -53,6 +53,12 @@
         "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Article Content",
         "scope": "singleItem",
         "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "sitePlaceholderContext",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
       }
     ]
   }
