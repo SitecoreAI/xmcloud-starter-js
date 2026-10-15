@@ -9,10 +9,10 @@ SharedFields:
   Value: "ArticleHeader"
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: "Datasource Template"
-  Value: ""
+  Value:
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: "Datasource Location"
-  Value: ""
+  Value:
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: "Parameters Template"
   Value: "{A72D343F-6CDE-4611-B131-06637C92BDB2}"
