@@ -256,7 +256,37 @@
       "placeholderKey": "article-content-{*}",
       "placementPathStatus": "Native Add path observed and corrected branch/representative article deliver three body components at /headless-main/sxa-article/article-content-2.",
       "placementPath": "/headless-main/sxa-article/article-content-2",
-      "placementStatus": "PASS: three page-local body placements bind; native picker restricts to ArticleText/CampaignAction; allowed insertion and restoration, save/reload and publication verified."
+      "placementStatus": "PASS: three page-local body placements bind; native picker restricts to ArticleText/CampaignAction; allowed insertion and restoration, save/reload and publication verified.",
+      "editorialDefaults": {
+        "identity": {
+          "Title": "$name",
+          "NavigationTitle": "$name"
+        },
+        "page": {
+          "Topic": "",
+          "ReadTime": "",
+          "pageSummary": "",
+          "HeroImage": "",
+          "baseMetadataTitle": "",
+          "baseMetadataDescription": ""
+        },
+        "localData": {
+          "Introduction": {
+            "Heading": "",
+            "Body": ""
+          },
+          "Checklist": {
+            "Heading": "",
+            "Body": ""
+          },
+          "Next step": {
+            "Heading": "",
+            "Body": "",
+            "Link": ""
+          }
+        },
+        "behavior": "Create independent empty editable fields with the existing Article Page Design and three local body placements; keep only the author-supplied page name as the native title/navigation default. Published example articles are populated separately, never copied as new-article sample copy."
+      }
     },
     "palette": {
       "Articles": {
@@ -292,7 +322,7 @@
     "searchPageTemplateId": "446ee554-16ac-420a-b790-a5fc9509a7bb",
     "generatedPartialPlaceholderTemplateId": "d2a6884c-04d5-4089-a64e-d27ca9d68d4c"
   },
-  "ownership": "Developer templates/renderings/exact placeholder leaf serialized. Page/Partial Designs, branches with populated content, palette and native page items are deliberate one-time authored configuration outside ordinary deployment.",
+  "ownership": "Developer templates/renderings/exact placeholder leaf serialized. Page/Partial Designs, page branches with empty editorial defaults and seeded structure, palette and native page items are deliberate one-time authored configuration outside ordinary deployment. Existing author content is not replayed or reset by definition releases.",
   "siteHeaderFieldAdditions": [
     {
       "name": "AdviceLink",

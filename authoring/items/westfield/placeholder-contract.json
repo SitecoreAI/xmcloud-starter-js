@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "site": "westfield",
+  "purpose": "Native placeholder restrictions for all Westfield page families, fixed shared partials and nested composition. Component variants use the same rendering ID and inherit its placeholder permission.",
+  "boundary": "Five explicit placeholder leaves are developer-owned and narrowly serialized. Three platform-generated partial settings preserve their native identities and remain site-local authored configuration outside ordinary serialization. No broad Presentation or Placeholder Settings descendant include.",
+  "settings": [
+    {
+      "id": "f04a54aa1c8e49eb972505f0e6dac31f",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Partial Design/Header",
+      "key": "sxa-header",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "componentName": "SiteHeader",
+          "displayName": "Header",
+          "renderingId": "da91eb0a-dba7-41fa-8d33-8d3cab0ac47c"
+        }
+      ],
+      "ownership": "Site-generated placeholder identity; native site-local allowlist configuration, outside serialization",
+      "sourceScope": "Native authored configuration; do not rename/delete the generated setting"
+    },
+    {
+      "id": "abb8d6dcd1c0485c9e3d43a925cf942d",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Partial Design/Footer",
+      "key": "sxa-footer",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "componentName": "SiteFooter",
+          "displayName": "Footer",
+          "renderingId": "3efbecf6-f66f-4c54-a6c2-4b67753b390c"
+        }
+      ],
+      "ownership": "Site-generated placeholder identity; native site-local allowlist configuration, outside serialization",
+      "sourceScope": "Native authored configuration; do not rename/delete the generated setting"
+    },
+    {
+      "id": "c9857ce961784d048e4cfbf57caa4939",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Partial Design/Article",
+      "key": "sxa-article",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "componentName": "ArticleHeader",
+          "displayName": "Header",
+          "renderingId": "0154942a-cb18-59d6-a329-e5f3ade279d9"
+        },
+        {
+          "componentName": "ArticleBodyLayout",
+          "displayName": "Body",
+          "renderingId": "fc56a6e7-1fb8-543e-bab8-a81ab5185b9c"
+        }
+      ],
+      "ownership": "Site-generated placeholder identity; native site-local allowlist configuration, outside serialization",
+      "sourceScope": "Native authored configuration; do not rename/delete the generated setting"
+    },
+    {
+      "id": "e5ab4ab22dbf445ba93cbd41feb5e1b6",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Main",
+      "key": "headless-main",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "componentName": "CampaignHero",
+          "displayName": "Hero",
+          "renderingId": "4e8227b8-281a-496c-9d7e-138d341f389b"
+        },
+        {
+          "componentName": "CampaignAction",
+          "displayName": "Action",
+          "renderingId": "15f0d95b-ce29-45d7-8937-42016fcf3efd"
+        },
+        {
+          "componentName": "CampaignContent",
+          "displayName": "Content",
+          "renderingId": "b1f0e493-6a4a-49d0-ae58-4e9d9ca7ec77"
+        },
+        {
+          "componentName": "AdviceListing",
+          "displayName": "Listing",
+          "renderingId": "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4"
+        },
+        {
+          "componentName": "SearchResults",
+          "displayName": "Results",
+          "renderingId": "59801512-e7a4-5d0f-9d47-8b47e8423eef"
+        },
+        {
+          "componentName": "HomeSection",
+          "displayName": "Section",
+          "renderingId": "c896c2b2-81af-5311-8c59-41250c5db38d"
+        },
+        {
+          "componentName": "HomeFeature",
+          "displayName": "Feature",
+          "renderingId": "85651417-228e-524d-b7e4-4e683b261b26"
+        }
+      ],
+      "ownership": "Developer-owned exact singleItem definition",
+      "sourceScope": "Exact existing singleItem serialization include"
+    },
+    {
+      "id": "610fa1c7c40b5534bcbc3aeebbb918bf",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Cards",
+      "key": "home-cards-{*}",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "componentName": "HomeCard",
+          "displayName": "Card",
+          "renderingId": "afba3249-e792-5291-b530-f6c999cc6797"
+        }
+      ],
+      "ownership": "Developer-owned exact singleItem definition",
+      "sourceScope": "Exact existing singleItem serialization include"
+    },
+    {
+      "id": "79fb7fdde8894bc8841ccf7e2bc26a77",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
+      "key": "headless-header",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "componentName": "SiteHeader",
+          "displayName": "Header",
+          "renderingId": "da91eb0a-dba7-41fa-8d33-8d3cab0ac47c"
+        }
+      ],
+      "ownership": "Developer-owned exact singleItem definition",
+      "sourceScope": "Exact existing singleItem serialization include"
+    },
+    {
+      "id": "fc19499e462b4c2ba5fdbef1e6a954c7",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
+      "key": "headless-footer",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "componentName": "SiteFooter",
+          "displayName": "Footer",
+          "renderingId": "3efbecf6-f66f-4c54-a6c2-4b67753b390c"
+        }
+      ],
+      "ownership": "Developer-owned exact singleItem definition",
+      "sourceScope": "Exact existing singleItem serialization include"
+    },
+    {
+      "id": "9f0b3ffdfecd583d8b6e3638b05ea845",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Article Content",
+      "key": "article-content-{*}",
+      "editable": true,
+      "allowedComponents": [
+        {
+          "componentName": "ArticleText",
+          "displayName": "Text",
+          "renderingId": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea"
+        },
+        {
+          "componentName": "CampaignAction",
+          "displayName": "Action",
+          "renderingId": "15f0d95b-ce29-45d7-8937-42016fcf3efd"
+        }
+      ],
+      "ownership": "Developer-owned exact singleItem definition",
+      "sourceScope": "Exact existing singleItem serialization include"
+    }
+  ],
+  "extensionPoints": {
+    "articleBody": {
+      "key": "article-content-{*}",
+      "resolvedPath": "/headless-main/sxa-article/article-content-2",
+      "permittedDisplayNames": [
+        "Text",
+        "Action"
+      ],
+      "use": "Add, reorder and remove page-local body blocks; the Article design supplies fixed Header and Body structure.",
+      "sourceOfContent": "Each page owns its /Data; new Advice Articles start with blank editable fields and three initial body placements."
+    },
+    "homeCards": {
+      "key": "home-cards-{*}",
+      "resolvedPaths": [
+        "/headless-main/home-cards-2",
+        "/headless-main/home-cards-4",
+        "/headless-main/home-cards-6",
+        "/headless-main/home-cards-8"
+      ],
+      "permittedDisplayNames": [
+        "Card"
+      ],
+      "use": "Cards within Section variants Default, Services, Account, Benefits and News. All variants inherit this one rendering restriction."
+    },
+    "pageContent": {
+      "key": "headless-main",
+      "displayName": "Page content",
+      "use": "Root composition for Default design pages such as Home, Advice hub, Search and digital service campaigns. The article body uses its own restricted nested slot."
+    }
+  },
+  "fixedPartials": {
+    "header": {
+      "key": "sxa-header",
+      "components": [
+        "SiteHeader"
+      ]
+    },
+    "footer": {
+      "key": "sxa-footer",
+      "components": [
+        "SiteFooter"
+      ]
+    },
+    "article": {
+      "key": "sxa-article",
+      "components": [
+        "ArticleHeader",
+        "ArticleBodyLayout"
+      ]
+    },
+    "authoring": "Keep Editable enabled for native partial-design editing. Normal pages inherit these fixed placements; ordinary body controls cannot remove or reorder them."
+  },
+  "notInSiteComposition": [
+    "Container",
+    "ColumnSplitter",
+    "RowSplitter"
+  ],
+  "unusedStarterBoundary": "These starter exports are not placed, exposed by Westfield Available Renderings or permitted by any Westfield slot; no site-specific settings are added for inactive starter slots.",
+  "nativeReconciliation": "Apply exact Allowed Controls fields to the three generated partial settings after reading current state. Preserve keys/IDs/names, then verify native Add and drag/drop, including rejection of disallowed components. An empty Allowed Controls value means unrestricted, so it must not be used as deny-all."
+}
