@@ -21,7 +21,7 @@
           "path": "/sitecore/templates/Project/Westfield/Pages/Advice Article/Article/Topic",
           "label": "Topic",
           "help": "Choose Auto, Home, or Planning. This controls the Advice topic filter. Required before approval; drafts can be saved without it.",
-          "source": "/sitecore/content/Westfield/westfield/Settings/Article Topics",
+          "source": "{A580D25E-5C9D-5934-9407-7F9828F4B340}",
           "allowedValues": [
             "Auto",
             "Home",
@@ -39,7 +39,8 @@
               "Validator Bar"
             ],
             "incompleteDraftSaveAllowed": true
-          }
+          },
+          "sourcePath": "/sitecore/content/Westfield/westfield/Settings/Article Topics"
         },
         {
           "name": "ReadTime",
@@ -614,7 +615,9 @@
       ],
       "storage": "Selected option item name",
       "ownership": "Developer-owned options under this site Settings; ordinary authors choose a value rather than edit the taxonomy.",
-      "migration": "No stored field ID or existing content value changes."
+      "migration": "No stored field ID or existing content value changes.",
+      "source": "{A580D25E-5C9D-5934-9407-7F9828F4B340}",
+      "sourceResolution": "Use the stable folder ID. In thlt-authoring, the deployed IAR taxonomy resolves by ID and exposes Auto, Home, and Planning, while lookup by the equivalent path returns null."
     },
     "automaticReadingTime": {
       "legacyFieldId": "6b763802-bdbb-57fe-89e4-7dc32bb0f694",
