@@ -1,0 +1,27 @@
+---
+ID: "54294008-62c9-57a5-b114-bcfb81cb9e30"
+Parent: "63c4953b-af3d-54f8-bf0d-65abbc221467"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/Link"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: "Type"
+  Value: "General Link"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: "__Sortorder"
+  Value: "500"
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: "Source"
+  Value: "query:$linkableHomes"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: "Title"
+    Value: "Link"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T112621Z"

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "module": "Project.Westfield.Definitions",
-  "status": "Developer source inventory94. The prior93 native identities/paths/templates and dynamic placeholder fields were verified; the metadata-only pre-existing parent scaffold is a source experiment pending deployment. Native popup restrictions remain unresolved; runtime acceptance belongs to the lifecycle manifest.",
+  "status": "117 source definitions prepared: the previous 94-item native/Advice baseline remains verified; 23 additive Home definitions and the extended Main allowed list await native deployment and authoring/UI/live acceptance.",
   "ownership": "developer-owned definitions only; no authored page/site/content/media items",
   "roots": [
     "/sitecore/templates/Project/Westfield",
@@ -12,7 +12,8 @@
     "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Footer",
     "/sitecore/system/Settings/Services/Rendering Hosts/westfield-external",
     "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Article Content",
-    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings"
+    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings",
+    "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Cards"
   ],
   "components": [
     {
@@ -50,7 +51,8 @@
       "owner": "page /Data",
       "datasourceLocation": "query:./*[@@name='Data']",
       "exports": [
-        "Default"
+        "Default",
+        "Home"
       ]
     },
     {
@@ -109,7 +111,8 @@
       "owner": "page /Data",
       "datasourceLocation": "query:./*[@@name='Data']",
       "exports": [
-        "Default"
+        "Default",
+        "HomeLegal"
       ]
     },
     {
@@ -202,6 +205,46 @@
           "id": "bb99e50e-4f87-59c5-8129-51bc61d80147",
           "type": "General Link",
           "label": "Search"
+        },
+        {
+          "name": "BecomeAgentLink",
+          "id": "3798662a-d4b6-56da-900a-48caa4700683",
+          "type": "General Link",
+          "label": "Become an agent",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BecomeAgentLink",
+          "source": "query:$linkableHomes"
+        },
+        {
+          "name": "BusinessLinks",
+          "id": "797587f3-e781-58a9-81b7-9c2a75d28a59",
+          "type": "Multilist",
+          "label": "Business menu links",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BusinessLinks",
+          "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+        },
+        {
+          "name": "HomeAutoLinks",
+          "id": "af4a3f1b-280d-5fa7-b8ce-87d97b36eadf",
+          "type": "Multilist",
+          "label": "Home and auto menu links",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/HomeAutoLinks",
+          "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+        },
+        {
+          "name": "AboutLinks",
+          "id": "31347299-3dcf-528b-9e39-63268051de1a",
+          "type": "Multilist",
+          "label": "About menu links",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AboutLinks",
+          "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+        },
+        {
+          "name": "CareersLinks",
+          "id": "ca61f6d7-846f-524a-9560-b0599364b58f",
+          "type": "Multilist",
+          "label": "Careers menu links",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/CareersLinks",
+          "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
         }
       ],
       "owner": "named shared Header partial /Data",
@@ -264,6 +307,75 @@
           "id": "912769e9-a3d5-4296-99a8-f22e92f95b55",
           "type": "Single-Line Text",
           "label": "Copyright"
+        },
+        {
+          "name": "ProductsTitle",
+          "id": "3db53e83-fca6-55dc-bb08-a1924c69b743",
+          "type": "Single-Line Text",
+          "label": "Products and services title",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ProductsTitle"
+        },
+        {
+          "name": "CompanyTitle",
+          "id": "141be61f-24e7-58f1-9503-63cca4adfd6f",
+          "type": "Single-Line Text",
+          "label": "Company title",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/CompanyTitle"
+        },
+        {
+          "name": "ConnectTitle",
+          "id": "b8f1cfe9-a2db-5c25-80f0-0277d0acdf83",
+          "type": "Single-Line Text",
+          "label": "Connect title",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ConnectTitle"
+        },
+        {
+          "name": "ProductsLinks",
+          "id": "7d46d2ce-8374-5649-8d6a-ba9975ccdbb5",
+          "type": "Multilist",
+          "label": "Products and services links",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ProductsLinks",
+          "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+        },
+        {
+          "name": "CompanyLinks",
+          "id": "19abfe55-072b-5b53-82e0-066fc7384e21",
+          "type": "Multilist",
+          "label": "Company links",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/CompanyLinks",
+          "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+        },
+        {
+          "name": "ConnectLinks",
+          "id": "dbc72ad7-25a9-5d96-acfa-f1cee67f420c",
+          "type": "Multilist",
+          "label": "Connect links",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ConnectLinks",
+          "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+        },
+        {
+          "name": "SocialLinks",
+          "id": "5c80c438-96f3-5695-a15c-0798bb2c17b3",
+          "type": "Multilist",
+          "label": "Social links",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/SocialLinks",
+          "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+        },
+        {
+          "name": "LegalLinks",
+          "id": "bb914cb6-3c35-530f-a32a-6e7f3a4e9406",
+          "type": "Multilist",
+          "label": "Legal links",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/LegalLinks",
+          "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+        },
+        {
+          "name": "LegalBody",
+          "id": "39ace450-5df2-5ca7-a690-bd5fb76f32f6",
+          "type": "Rich Text",
+          "label": "Legal notice",
+          "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/LegalBody",
+          "source": "query:$xaRichTextProfile"
         }
       ],
       "owner": "named shared Footer partial /Data",
@@ -366,6 +478,175 @@
         "pageSummary"
       ],
       "publishedContentSource": "Site-scoped published Edge query through the Westfield application API."
+    },
+    {
+      "componentName": "HomeSection",
+      "renderingId": "c896c2b2-81af-5311-8c59-41250c5db38d",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Home/HomeSection",
+      "datasourceTemplateId": "5c69713c-f20c-583f-b245-671a7838bb2f",
+      "datasourceTemplatePath": "/sitecore/templates/Project/Westfield/Components/HomeCard",
+      "owner": "Home page /Data; HomeCard link items may be deliberately shared in named Header/Footer partial Data",
+      "datasourceLocation": "query:./*[@@name='Data']",
+      "exports": [
+        "Default",
+        "Services",
+        "Account",
+        "Benefits",
+        "News"
+      ],
+      "fields": [
+        {
+          "name": "Eyebrow",
+          "id": "b48e5096-4ec0-4321-8dad-0040b3a0e76d",
+          "type": "Single-Line Text",
+          "label": "Eyebrow"
+        },
+        {
+          "name": "Heading",
+          "id": "eb20f241-552e-4f81-aeab-1d0db55df012",
+          "type": "Single-Line Text",
+          "label": "Heading"
+        },
+        {
+          "name": "Body",
+          "id": "c880363b-5c3d-4b9a-85c3-43e879e60762",
+          "type": "Rich Text",
+          "label": "Body"
+        },
+        {
+          "name": "Image",
+          "id": "f89e6b13-fc9a-46c8-8df5-07b44e174ad4",
+          "type": "Image",
+          "label": "Image"
+        },
+        {
+          "name": "Link",
+          "id": "54294008-62c9-57a5-b114-bcfb81cb9e30",
+          "type": "General Link",
+          "label": "Link",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/Link",
+          "source": "query:$linkableHomes"
+        },
+        {
+          "name": "VideoUrl",
+          "id": "860fa312-e26b-563b-8266-0ae78a28e12f",
+          "type": "Single-Line Text",
+          "label": "Video URL",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/VideoUrl"
+        }
+      ],
+      "placeholderKey": "home-cards-{*}",
+      "layoutServicePlaceholderId": "610fa1c7-c40b-5534-bcbc-3aeebbb918bf",
+      "dynamicPlaceholder": true
+    },
+    {
+      "componentName": "HomeCard",
+      "renderingId": "afba3249-e792-5291-b530-f6c999cc6797",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Home/HomeCard",
+      "datasourceTemplateId": "5c69713c-f20c-583f-b245-671a7838bb2f",
+      "datasourceTemplatePath": "/sitecore/templates/Project/Westfield/Components/HomeCard",
+      "owner": "Home page /Data; HomeCard link items may be deliberately shared in named Header/Footer partial Data",
+      "datasourceLocation": "query:./*[@@name='Data']",
+      "exports": [
+        "Default"
+      ],
+      "fields": [
+        {
+          "name": "Eyebrow",
+          "id": "b48e5096-4ec0-4321-8dad-0040b3a0e76d",
+          "type": "Single-Line Text",
+          "label": "Eyebrow"
+        },
+        {
+          "name": "Heading",
+          "id": "eb20f241-552e-4f81-aeab-1d0db55df012",
+          "type": "Single-Line Text",
+          "label": "Heading"
+        },
+        {
+          "name": "Body",
+          "id": "c880363b-5c3d-4b9a-85c3-43e879e60762",
+          "type": "Rich Text",
+          "label": "Body"
+        },
+        {
+          "name": "Image",
+          "id": "f89e6b13-fc9a-46c8-8df5-07b44e174ad4",
+          "type": "Image",
+          "label": "Image"
+        },
+        {
+          "name": "Link",
+          "id": "54294008-62c9-57a5-b114-bcfb81cb9e30",
+          "type": "General Link",
+          "label": "Link",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/Link",
+          "source": "query:$linkableHomes"
+        },
+        {
+          "name": "VideoUrl",
+          "id": "860fa312-e26b-563b-8266-0ae78a28e12f",
+          "type": "Single-Line Text",
+          "label": "Video URL",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/VideoUrl"
+        }
+      ]
+    },
+    {
+      "componentName": "HomeFeature",
+      "renderingId": "85651417-228e-524d-b7e4-4e683b261b26",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Home/HomeFeature",
+      "datasourceTemplateId": "5c69713c-f20c-583f-b245-671a7838bb2f",
+      "datasourceTemplatePath": "/sitecore/templates/Project/Westfield/Components/HomeCard",
+      "owner": "Home page /Data; HomeCard link items may be deliberately shared in named Header/Footer partial Data",
+      "datasourceLocation": "query:./*[@@name='Data']",
+      "exports": [
+        "Default",
+        "Video",
+        "MyWestfield",
+        "About"
+      ],
+      "fields": [
+        {
+          "name": "Eyebrow",
+          "id": "b48e5096-4ec0-4321-8dad-0040b3a0e76d",
+          "type": "Single-Line Text",
+          "label": "Eyebrow"
+        },
+        {
+          "name": "Heading",
+          "id": "eb20f241-552e-4f81-aeab-1d0db55df012",
+          "type": "Single-Line Text",
+          "label": "Heading"
+        },
+        {
+          "name": "Body",
+          "id": "c880363b-5c3d-4b9a-85c3-43e879e60762",
+          "type": "Rich Text",
+          "label": "Body"
+        },
+        {
+          "name": "Image",
+          "id": "f89e6b13-fc9a-46c8-8df5-07b44e174ad4",
+          "type": "Image",
+          "label": "Image"
+        },
+        {
+          "name": "Link",
+          "id": "54294008-62c9-57a5-b114-bcfb81cb9e30",
+          "type": "General Link",
+          "label": "Link",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/Link",
+          "source": "query:$linkableHomes"
+        },
+        {
+          "name": "VideoUrl",
+          "id": "860fa312-e26b-563b-8266-0ae78a28e12f",
+          "type": "Single-Line Text",
+          "label": "Video URL",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/VideoUrl"
+        }
+      ]
     }
   ],
   "parameters": {
@@ -471,7 +752,9 @@
         "15f0d95b-ce29-45d7-8937-42016fcf3efd",
         "b1f0e493-6a4a-49d0-ae58-4e9d9ca7ec77",
         "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4",
-        "59801512-e7a4-5d0f-9d47-8b47e8423eef"
+        "59801512-e7a4-5d0f-9d47-8b47e8423eef",
+        "c896c2b2-81af-5311-8c59-41250c5db38d",
+        "85651417-228e-524d-b7e4-4e683b261b26"
       ]
     },
     {
@@ -490,9 +773,17 @@
         "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
         "15f0d95b-ce29-45d7-8937-42016fcf3efd"
       ]
+    },
+    {
+      "key": "home-cards-{*}",
+      "id": "610fa1c7-c40b-5534-bcbc-3aeebbb918bf",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Cards",
+      "allowedRenderingIds": [
+        "afba3249-e792-5291-b530-f6c999cc6797"
+      ]
     }
   ],
-  "authoredConfigurationBoundary": "Page/Partial Designs, populated page branches, palette groups, native variant instances and page-local Data are one-time authored configuration. Supported CreateItem assigns their actual IDs; never replay authored content during ordinary definition releases. Advice planned authored identities remain null until native readback.",
+  "authoredConfigurationBoundary": "Page/Partial Designs, populated page branches, palette groups, native variant instances and page-local Data are one-time authored configuration. Supported CreateItem assigns actual IDs; ordinary definition releases do not replay authored content. Actual authored ownership is in sites.manifest.json; new Home configuration remains pending.",
   "platformProvenance": {
     "templateRoot": {
       "source": "authoring/items/industry-verticals/common/items/templatesProject/industry-verticals.yml",
@@ -584,7 +875,7 @@
     "pageLocal": "query:./*[@@name='Data']",
     "siteScoped": "Header/Footer datasource locations select only their named partial Data; actual native bindings are tracked in sites.manifest.json."
   },
-  "placeholderKeyProvenance": "Header/Main/Footer reuse the logical layout keys through exact site-owned placeholder leaves. Article Content adds the nested article-content key only in the Westfield site.",
+  "placeholderKeyProvenance": "Header/Main/Footer reuse logical layout keys through exact site-owned leaves. Article Content is the verified Advice dynamic extension point. Home Cards adds the source-prepared home-cards-{*} extension point only within the Westfield site.",
   "sources": [
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/create-a-variant-for-a-component.html",
     "https://doc.sitecore.com/sai/en/developers/sitecoreai/sitecore-content-serialization/configuration/sitecore-content-serialization-configuration-reference.html",
@@ -617,6 +908,12 @@
       "id": "79fb7fdd-e889-4bc8-841c-cf7e2bc26a77",
       "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Header",
       "file": "items/siteHeader/Header.yml"
+    },
+    {
+      "key": "home:content/Westfield/westfield/Presentation/Placeholder Settings/Home Cards",
+      "id": "610fa1c7-c40b-5534-bcbc-3aeebbb918bf",
+      "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Cards",
+      "file": "items/homeCards/Home Cards.yml"
     },
     {
       "key": "placeholderMain",
@@ -689,6 +986,30 @@
       "id": "4e8227b8-281a-496c-9d7e-138d341f389b",
       "path": "/sitecore/layout/Renderings/Project/Westfield/Campaigns/CampaignHero",
       "file": "items/renderings/Westfield/Campaigns/CampaignHero.yml"
+    },
+    {
+      "key": "home:layout/Renderings/Project/Westfield/Home",
+      "id": "53deae5f-5135-5ae1-aeb1-b4e8686b053e",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Home",
+      "file": "items/renderings/Westfield/Home.yml"
+    },
+    {
+      "key": "home:layout/Renderings/Project/Westfield/Home/HomeCard",
+      "id": "afba3249-e792-5291-b530-f6c999cc6797",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Home/HomeCard",
+      "file": "items/renderings/Westfield/Home/HomeCard.yml"
+    },
+    {
+      "key": "home:layout/Renderings/Project/Westfield/Home/HomeFeature",
+      "id": "85651417-228e-524d-b7e4-4e683b261b26",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Home/HomeFeature",
+      "file": "items/renderings/Westfield/Home/HomeFeature.yml"
+    },
+    {
+      "key": "home:layout/Renderings/Project/Westfield/Home/HomeSection",
+      "id": "c896c2b2-81af-5311-8c59-41250c5db38d",
+      "path": "/sitecore/layout/Renderings/Project/Westfield/Home/HomeSection",
+      "file": "items/renderings/Westfield/Home/HomeSection.yml"
     },
     {
       "key": "shellRenderings",
@@ -889,6 +1210,30 @@
       "file": "items/templates/Westfield/Components/CampaignHero/Content/Image.yml"
     },
     {
+      "key": "home:templates/Project/Westfield/Components/HomeCard",
+      "id": "5c69713c-f20c-583f-b245-671a7838bb2f",
+      "path": "/sitecore/templates/Project/Westfield/Components/HomeCard",
+      "file": "items/templates/Westfield/Components/HomeCard.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/HomeCard/Content",
+      "id": "63c4953b-af3d-54f8-bf0d-65abbc221467",
+      "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content",
+      "file": "items/templates/Westfield/Components/HomeCard/Content.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/HomeCard/Content/Link",
+      "id": "54294008-62c9-57a5-b114-bcfb81cb9e30",
+      "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/Link",
+      "file": "items/templates/Westfield/Components/HomeCard/Content/Link.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/HomeCard/Content/VideoUrl",
+      "id": "860fa312-e26b-563b-8266-0ae78a28e12f",
+      "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/VideoUrl",
+      "file": "items/templates/Westfield/Components/HomeCard/Content/VideoUrl.yml"
+    },
+    {
       "key": "SiteFooterTemplate",
       "id": "761df339-768b-4a05-8438-9510f464f4c8",
       "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter",
@@ -913,6 +1258,30 @@
       "file": "items/templates/Westfield/Components/SiteFooter/Content/Address.yml"
     },
     {
+      "key": "home:templates/Project/Westfield/Components/SiteFooter/Content/CompanyLinks",
+      "id": "19abfe55-072b-5b53-82e0-066fc7384e21",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/CompanyLinks",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/CompanyLinks.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteFooter/Content/CompanyTitle",
+      "id": "141be61f-24e7-58f1-9503-63cca4adfd6f",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/CompanyTitle",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/CompanyTitle.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteFooter/Content/ConnectLinks",
+      "id": "dbc72ad7-25a9-5d96-acfa-f1cee67f420c",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ConnectLinks",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/ConnectLinks.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteFooter/Content/ConnectTitle",
+      "id": "b8f1cfe9-a2db-5c25-80f0-0277d0acdf83",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ConnectTitle",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/ConnectTitle.yml"
+    },
+    {
       "key": "SiteFooter.ContactLink",
       "id": "433352cf-ac7e-4352-bf62-88ed5a2a0cf4",
       "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ContactLink",
@@ -923,6 +1292,18 @@
       "id": "912769e9-a3d5-4296-99a8-f22e92f95b55",
       "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/Copyright",
       "file": "items/templates/Westfield/Components/SiteFooter/Content/Copyright.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteFooter/Content/LegalBody",
+      "id": "39ace450-5df2-5ca7-a690-bd5fb76f32f6",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/LegalBody",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/LegalBody.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteFooter/Content/LegalLinks",
+      "id": "bb914cb6-3c35-530f-a32a-6e7f3a4e9406",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/LegalLinks",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/LegalLinks.yml"
     },
     {
       "key": "SiteFooter.Logo",
@@ -941,6 +1322,24 @@
       "id": "9141e111-0c8c-4ad0-806e-fd889f4b590b",
       "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/PrivacyLink",
       "file": "items/templates/Westfield/Components/SiteFooter/Content/PrivacyLink.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteFooter/Content/ProductsLinks",
+      "id": "7d46d2ce-8374-5649-8d6a-ba9975ccdbb5",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ProductsLinks",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/ProductsLinks.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteFooter/Content/ProductsTitle",
+      "id": "3db53e83-fca6-55dc-bb08-a1924c69b743",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ProductsTitle",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/ProductsTitle.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteFooter/Content/SocialLinks",
+      "id": "5c80c438-96f3-5695-a15c-0798bb2c17b3",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/SocialLinks",
+      "file": "items/templates/Westfield/Components/SiteFooter/Content/SocialLinks.yml"
     },
     {
       "key": "SiteFooter.TermsLink",
@@ -967,6 +1366,12 @@
       "file": "items/templates/Westfield/Components/SiteHeader/Content/AboutLink.yml"
     },
     {
+      "key": "home:templates/Project/Westfield/Components/SiteHeader/Content/AboutLinks",
+      "id": "31347299-3dcf-528b-9e39-63268051de1a",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AboutLinks",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/AboutLinks.yml"
+    },
+    {
       "key": "SiteHeader.AccountLink",
       "id": "71eda7ee-1bb1-4ddb-9065-3c2c0f3e030c",
       "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AccountLink",
@@ -985,6 +1390,12 @@
       "file": "items/templates/Westfield/Components/SiteHeader/Content/AgentLink.yml"
     },
     {
+      "key": "home:templates/Project/Westfield/Components/SiteHeader/Content/BecomeAgentLink",
+      "id": "3798662a-d4b6-56da-900a-48caa4700683",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BecomeAgentLink",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/BecomeAgentLink.yml"
+    },
+    {
       "key": "SiteHeader.BillingLink",
       "id": "b2f47571-77cd-4502-b80e-59fbe961656a",
       "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BillingLink",
@@ -997,10 +1408,22 @@
       "file": "items/templates/Westfield/Components/SiteHeader/Content/BusinessLink.yml"
     },
     {
+      "key": "home:templates/Project/Westfield/Components/SiteHeader/Content/BusinessLinks",
+      "id": "797587f3-e781-58a9-81b7-9c2a75d28a59",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BusinessLinks",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/BusinessLinks.yml"
+    },
+    {
       "key": "SiteHeader.CareersLink",
       "id": "c186092f-45a9-4649-933d-5aa3d4389097",
       "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/CareersLink",
       "file": "items/templates/Westfield/Components/SiteHeader/Content/CareersLink.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteHeader/Content/CareersLinks",
+      "id": "ca61f6d7-846f-524a-9560-b0599364b58f",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/CareersLinks",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/CareersLinks.yml"
     },
     {
       "key": "SiteHeader.ClaimsLink",
@@ -1019,6 +1442,12 @@
       "id": "1d7bd4a5-b01e-4da5-bc5a-f91ddf711c66",
       "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/HomeAndAutoLink",
       "file": "items/templates/Westfield/Components/SiteHeader/Content/HomeAndAutoLink.yml"
+    },
+    {
+      "key": "home:templates/Project/Westfield/Components/SiteHeader/Content/HomeAutoLinks",
+      "id": "af4a3f1b-280d-5fa7-b8ce-87d97b36eadf",
+      "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/HomeAutoLinks",
+      "file": "items/templates/Westfield/Components/SiteHeader/Content/HomeAutoLinks.yml"
     },
     {
       "key": "SiteHeader.HomeLink",
@@ -1159,7 +1588,7 @@
       "file": "items/templates/Westfield/Parameters/Component Parameters.yml"
     }
   ],
-  "rootIdentityStatus": "Template/rendering/branch roots and site context identities verified. Header/Main/Footer/Article Content leaves remain exact includes. The existing Placeholder Settings folder is now a metadata-only singleItem scaffold experiment; no Presentation or descendant scope. Preserve the pre-existing folder on Advice-only removal.",
+  "rootIdentityStatus": "The previous 94 definition identities are verified. The Home Cards exact singleItem leaf and 22 other Home additions are source-prepared. The existing Placeholder Settings parent remains a metadata-only singleItem scaffold, with no descendants or Presentation scope.",
   "nativeRootBindings": {
     "/sitecore/templates/Project/Westfield": {
       "id": "ab0434e0-a27e-4507-bb6b-171e2c134dc0",
@@ -1175,7 +1604,7 @@
     },
     "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings": {
       "id": "11b33eb2-44e2-4447-a6ea-4a49a1972b7d",
-      "evidence": "Read-only Authoring API actual identity/template/parent/en version1 metadata; IAR child discovery remedy remains a hypothesis pending deployment.",
+      "evidence": "Read-only actual identity/template/parent/en version1 metadata and post-deployment child discovery verified; native body picker exposes only the two allowed controls.",
       "serializationScope": "singleItem metadata scaffold only; no descendants/authored settings. Pre-existing native folder, retained on Advice-only removal.",
       "templateId": "52288e39-7830-4694-b62d-32a54c6ef7ba",
       "parentId": "6cae6fe3-a3f3-433a-862f-9439a54faebb"
@@ -1197,7 +1626,7 @@
     "branch": "slb",
     "verifiedCommit": "08b68d568b0c26dc9040991338f2d26b3ff90944",
     "additiveSourceChange": "Mirror only Westfield developer definitions into the isolated slb-based authoring branch. Preserve unrelated modules, build configuration and authored content.",
-    "nativeDeploymentStatus": "Advice addition pending; record current deployment and native readback separately."
+    "nativeDeploymentStatus": "94 baseline definition identities/site placeholder discovery remain verified. The 23 additive Home source definitions and extended Main allowed list have not yet been deployed."
   },
   "nativeInheritance": {
     "pageBase": {
@@ -1213,21 +1642,24 @@
     "fieldNamesFieldId": "75bbdf72-635f-4d72-a3d3-a9baba09d161"
   },
   "definitionCounts": {
-    "serializedItems": 94,
-    "datasourceFields": 33,
-    "components": 10,
+    "serializedItems": 117,
+    "datasourceFields": 49,
+    "components": 13,
     "pageLocalMetadataFields": 5,
     "adviceArticleFields": 3,
     "inheritedTitleField": 1,
     "previouslyDeployedBaselineItems": 72,
     "adviceSourceAdditionItems": 21,
-    "preExistingNativeScaffoldItems": 1
+    "preExistingNativeScaffoldItems": 1,
+    "previouslyVerifiedNativeBaselineItems": 94,
+    "homeSourceAdditionItems": 23
   },
   "runtimeEvidence": {
     "canonicalLifecycleManifest": "../../../sites.manifest.json#westfield",
     "canonicalDamInventory": "../../../industry-verticals/westfield/demo/dam-assets.json",
     "adviceContract": "advice-contract.json",
-    "boundary": "Source preparation is not proof of native deployment, delivered placeholder structure, Page Builder operations, published content or live article/search behavior."
+    "boundary": "Source preparation is not proof of native deployment, delivered placeholder structure, Page Builder operations, published content or live article/search behavior.",
+    "homeContract": "home-contract.json"
   },
   "existingNativeScaffolds": [
     {
@@ -1241,9 +1673,10 @@
         "__Created"
       ],
       "nativeOrigin": "Pre-existing site-generated folder; actual identity, template, parent and en version1 creation timestamp preserved.",
-      "purpose": "Controlled IAR resource-child discovery hypothesis; no authored settings or descendants captured.",
-      "status": "source prepared; new deployment and child discovery proof pending",
+      "purpose": "IAR resource-child discovery scaffold; no authored settings or descendants captured.",
+      "status": "deployed; all four leaf paths and parent-child enumeration verified; native picker restriction passed",
       "retainOnAdviceRemoval": true
     }
-  ]
+  ],
+  "homeContract": "home-contract.json"
 }

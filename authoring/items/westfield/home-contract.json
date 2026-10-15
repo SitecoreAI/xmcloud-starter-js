@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "site": "westfield",
+  "status": "SOURCE_PREPARED; native deployment, authored variants/data, nested-slot restrictions and visual/live QA pending.",
+  "definitionItemCount": 117,
+  "homeSourceAdditionItems": 23,
+  "namespaceUuid": "42aff456-0823-4d69-adad-a6bfbeb31763",
+  "datasourceTemplate": {
+    "id": "5c69713c-f20c-583f-b245-671a7838bb2f",
+    "path": "/sitecore/templates/Project/Westfield/Components/HomeCard",
+    "baseTemplateId": "f0be0e94-c3f4-49d3-9264-25715c665ade",
+    "inheritedFieldNames": [
+      "Eyebrow",
+      "Heading",
+      "Body",
+      "Image"
+    ],
+    "ownFields": [
+      {
+        "name": "Link",
+        "id": "54294008-62c9-57a5-b114-bcfb81cb9e30",
+        "type": "General Link",
+        "label": "Link",
+        "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/Link",
+        "source": "query:$linkableHomes"
+      },
+      {
+        "name": "VideoUrl",
+        "id": "860fa312-e26b-563b-8266-0ae78a28e12f",
+        "type": "Single-Line Text",
+        "label": "Video URL",
+        "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/VideoUrl"
+      }
+    ]
+  },
+  "components": [
+    {
+      "componentName": "HomeSection",
+      "renderingId": "c896c2b2-81af-5311-8c59-41250c5db38d",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Home/HomeSection",
+      "datasourceTemplateId": "5c69713c-f20c-583f-b245-671a7838bb2f",
+      "datasourceTemplatePath": "/sitecore/templates/Project/Westfield/Components/HomeCard",
+      "owner": "Home page /Data; HomeCard link items may be deliberately shared in named Header/Footer partial Data",
+      "datasourceLocation": "query:./*[@@name='Data']",
+      "exports": [
+        "Default",
+        "Services",
+        "Account",
+        "Benefits",
+        "News"
+      ],
+      "fields": [
+        {
+          "name": "Eyebrow",
+          "id": "b48e5096-4ec0-4321-8dad-0040b3a0e76d",
+          "type": "Single-Line Text",
+          "label": "Eyebrow"
+        },
+        {
+          "name": "Heading",
+          "id": "eb20f241-552e-4f81-aeab-1d0db55df012",
+          "type": "Single-Line Text",
+          "label": "Heading"
+        },
+        {
+          "name": "Body",
+          "id": "c880363b-5c3d-4b9a-85c3-43e879e60762",
+          "type": "Rich Text",
+          "label": "Body"
+        },
+        {
+          "name": "Image",
+          "id": "f89e6b13-fc9a-46c8-8df5-07b44e174ad4",
+          "type": "Image",
+          "label": "Image"
+        },
+        {
+          "name": "Link",
+          "id": "54294008-62c9-57a5-b114-bcfb81cb9e30",
+          "type": "General Link",
+          "label": "Link",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/Link",
+          "source": "query:$linkableHomes"
+        },
+        {
+          "name": "VideoUrl",
+          "id": "860fa312-e26b-563b-8266-0ae78a28e12f",
+          "type": "Single-Line Text",
+          "label": "Video URL",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/VideoUrl"
+        }
+      ],
+      "placeholderKey": "home-cards-{*}",
+      "layoutServicePlaceholderId": "610fa1c7-c40b-5534-bcbc-3aeebbb918bf",
+      "dynamicPlaceholder": true
+    },
+    {
+      "componentName": "HomeCard",
+      "renderingId": "afba3249-e792-5291-b530-f6c999cc6797",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Home/HomeCard",
+      "datasourceTemplateId": "5c69713c-f20c-583f-b245-671a7838bb2f",
+      "datasourceTemplatePath": "/sitecore/templates/Project/Westfield/Components/HomeCard",
+      "owner": "Home page /Data; HomeCard link items may be deliberately shared in named Header/Footer partial Data",
+      "datasourceLocation": "query:./*[@@name='Data']",
+      "exports": [
+        "Default"
+      ],
+      "fields": [
+        {
+          "name": "Eyebrow",
+          "id": "b48e5096-4ec0-4321-8dad-0040b3a0e76d",
+          "type": "Single-Line Text",
+          "label": "Eyebrow"
+        },
+        {
+          "name": "Heading",
+          "id": "eb20f241-552e-4f81-aeab-1d0db55df012",
+          "type": "Single-Line Text",
+          "label": "Heading"
+        },
+        {
+          "name": "Body",
+          "id": "c880363b-5c3d-4b9a-85c3-43e879e60762",
+          "type": "Rich Text",
+          "label": "Body"
+        },
+        {
+          "name": "Image",
+          "id": "f89e6b13-fc9a-46c8-8df5-07b44e174ad4",
+          "type": "Image",
+          "label": "Image"
+        },
+        {
+          "name": "Link",
+          "id": "54294008-62c9-57a5-b114-bcfb81cb9e30",
+          "type": "General Link",
+          "label": "Link",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/Link",
+          "source": "query:$linkableHomes"
+        },
+        {
+          "name": "VideoUrl",
+          "id": "860fa312-e26b-563b-8266-0ae78a28e12f",
+          "type": "Single-Line Text",
+          "label": "Video URL",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/VideoUrl"
+        }
+      ]
+    },
+    {
+      "componentName": "HomeFeature",
+      "renderingId": "85651417-228e-524d-b7e4-4e683b261b26",
+      "renderingPath": "/sitecore/layout/Renderings/Project/Westfield/Home/HomeFeature",
+      "datasourceTemplateId": "5c69713c-f20c-583f-b245-671a7838bb2f",
+      "datasourceTemplatePath": "/sitecore/templates/Project/Westfield/Components/HomeCard",
+      "owner": "Home page /Data; HomeCard link items may be deliberately shared in named Header/Footer partial Data",
+      "datasourceLocation": "query:./*[@@name='Data']",
+      "exports": [
+        "Default",
+        "Video",
+        "MyWestfield",
+        "About"
+      ],
+      "fields": [
+        {
+          "name": "Eyebrow",
+          "id": "b48e5096-4ec0-4321-8dad-0040b3a0e76d",
+          "type": "Single-Line Text",
+          "label": "Eyebrow"
+        },
+        {
+          "name": "Heading",
+          "id": "eb20f241-552e-4f81-aeab-1d0db55df012",
+          "type": "Single-Line Text",
+          "label": "Heading"
+        },
+        {
+          "name": "Body",
+          "id": "c880363b-5c3d-4b9a-85c3-43e879e60762",
+          "type": "Rich Text",
+          "label": "Body"
+        },
+        {
+          "name": "Image",
+          "id": "f89e6b13-fc9a-46c8-8df5-07b44e174ad4",
+          "type": "Image",
+          "label": "Image"
+        },
+        {
+          "name": "Link",
+          "id": "54294008-62c9-57a5-b114-bcfb81cb9e30",
+          "type": "General Link",
+          "label": "Link",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/Link",
+          "source": "query:$linkableHomes"
+        },
+        {
+          "name": "VideoUrl",
+          "id": "860fa312-e26b-563b-8266-0ae78a28e12f",
+          "type": "Single-Line Text",
+          "label": "Video URL",
+          "path": "/sitecore/templates/Project/Westfield/Components/HomeCard/Content/VideoUrl"
+        }
+      ]
+    }
+  ],
+  "existingNamedVariants": [
+    {
+      "componentName": "CampaignHero",
+      "renderingId": "4e8227b8-281a-496c-9d7e-138d341f389b",
+      "variant": "Home",
+      "preserveDefault": true
+    },
+    {
+      "componentName": "CampaignContent",
+      "renderingId": "b1f0e493-6a4a-49d0-ae58-4e9d9ca7ec77",
+      "variant": "HomeLegal",
+      "preserveDefault": true
+    }
+  ],
+  "placeholder": {
+    "id": "610fa1c7-c40b-5534-bcbc-3aeebbb918bf",
+    "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Cards",
+    "parentId": "11b33eb2-44e2-4447-a6ea-4a49a1972b7d",
+    "key": "home-cards-{*}",
+    "allowedRenderingIds": [
+      "afba3249-e792-5291-b530-f6c999cc6797"
+    ],
+    "scope": "singleItem",
+    "sdkName": "home-cards-${params.DynamicPlaceholderId}",
+    "renderingId": "c896c2b2-81af-5311-8c59-41250c5db38d",
+    "parametersTemplateId": "a72d343f-6cde-4611-b131-06637c92bdb2",
+    "otherProperties": "IsRenderingsWithDynamicPlaceholders=true",
+    "placementPathStatus": "Pending representative native Add-component readback; do not guess a concrete dynamic suffix."
+  },
+  "mainPlaceholderAdditionIds": [
+    "c896c2b2-81af-5311-8c59-41250c5db38d",
+    "85651417-228e-524d-b7e4-4e683b261b26"
+  ],
+  "sharedShellFieldAdditions": {
+    "SiteHeader": [
+      {
+        "name": "BecomeAgentLink",
+        "id": "3798662a-d4b6-56da-900a-48caa4700683",
+        "type": "General Link",
+        "label": "Become an agent",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BecomeAgentLink",
+        "source": "query:$linkableHomes"
+      },
+      {
+        "name": "BusinessLinks",
+        "id": "797587f3-e781-58a9-81b7-9c2a75d28a59",
+        "type": "Multilist",
+        "label": "Business menu links",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/BusinessLinks",
+        "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+      },
+      {
+        "name": "HomeAutoLinks",
+        "id": "af4a3f1b-280d-5fa7-b8ce-87d97b36eadf",
+        "type": "Multilist",
+        "label": "Home and auto menu links",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/HomeAutoLinks",
+        "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+      },
+      {
+        "name": "AboutLinks",
+        "id": "31347299-3dcf-528b-9e39-63268051de1a",
+        "type": "Multilist",
+        "label": "About menu links",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/AboutLinks",
+        "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+      },
+      {
+        "name": "CareersLinks",
+        "id": "ca61f6d7-846f-524a-9560-b0599364b58f",
+        "type": "Multilist",
+        "label": "Careers menu links",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/CareersLinks",
+        "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+      }
+    ],
+    "SiteFooter": [
+      {
+        "name": "ProductsTitle",
+        "id": "3db53e83-fca6-55dc-bb08-a1924c69b743",
+        "type": "Single-Line Text",
+        "label": "Products and services title",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ProductsTitle"
+      },
+      {
+        "name": "CompanyTitle",
+        "id": "141be61f-24e7-58f1-9503-63cca4adfd6f",
+        "type": "Single-Line Text",
+        "label": "Company title",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/CompanyTitle"
+      },
+      {
+        "name": "ConnectTitle",
+        "id": "b8f1cfe9-a2db-5c25-80f0-0277d0acdf83",
+        "type": "Single-Line Text",
+        "label": "Connect title",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ConnectTitle"
+      },
+      {
+        "name": "ProductsLinks",
+        "id": "7d46d2ce-8374-5649-8d6a-ba9975ccdbb5",
+        "type": "Multilist",
+        "label": "Products and services links",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ProductsLinks",
+        "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+      },
+      {
+        "name": "CompanyLinks",
+        "id": "19abfe55-072b-5b53-82e0-066fc7384e21",
+        "type": "Multilist",
+        "label": "Company links",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/CompanyLinks",
+        "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+      },
+      {
+        "name": "ConnectLinks",
+        "id": "dbc72ad7-25a9-5d96-acfa-f1cee67f420c",
+        "type": "Multilist",
+        "label": "Connect links",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/ConnectLinks",
+        "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+      },
+      {
+        "name": "SocialLinks",
+        "id": "5c80c438-96f3-5695-a15c-0798bb2c17b3",
+        "type": "Multilist",
+        "label": "Social links",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/SocialLinks",
+        "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+      },
+      {
+        "name": "LegalLinks",
+        "id": "bb914cb6-3c35-530f-a32a-6e7f3a4e9406",
+        "type": "Multilist",
+        "label": "Legal links",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/LegalLinks",
+        "source": "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Footer']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+      },
+      {
+        "name": "LegalBody",
+        "id": "39ace450-5df2-5ca7-a690-bd5fb76f32f6",
+        "type": "Rich Text",
+        "label": "Legal notice",
+        "path": "/sitecore/templates/Project/Westfield/Components/SiteFooter/Content/LegalBody",
+        "source": "query:$xaRichTextProfile"
+      }
+    ]
+  },
+  "sharedLinkOwnership": {
+    "templateId": "5c69713c-f20c-583f-b245-671a7838bb2f",
+    "headerDataPath": "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Header/Data",
+    "footerDataPath": "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Footer/Data",
+    "selectionBoundary": "Multilists select direct HomeCard children in their named partial Data only; preserve authored ordering. Link carries destination/label, Image optional social icon, Eyebrow optional menu group heading. No global/shared-customer library is selected."
+  },
+  "authoredSetup": {
+    "boundary": "Named variants, Home palette and populated Home/shared-partial Data are authored once through supported APIs/UI; none is serialized by this module. Read actual API-assigned IDs into the lifecycle manifest after creation.",
+    "variantNames": {
+      "CampaignHero": [
+        "Home"
+      ],
+      "CampaignContent": [
+        "HomeLegal"
+      ],
+      "HomeSection": [
+        "Default",
+        "Services",
+        "Account",
+        "Benefits",
+        "News"
+      ],
+      "HomeCard": [
+        "Default"
+      ],
+      "HomeFeature": [
+        "Default",
+        "Video",
+        "MyWestfield",
+        "About"
+      ]
+    },
+    "palettePath": "/sitecore/content/Westfield/westfield/Presentation/Available Renderings/Home",
+    "paletteRenderingIds": [
+      "c896c2b2-81af-5311-8c59-41250c5db38d",
+      "afba3249-e792-5291-b530-f6c999cc6797",
+      "85651417-228e-524d-b7e4-4e683b261b26"
+    ],
+    "pageDesign": "Retain existing Default Page Design and shared Header/Footer partials.",
+    "pageLocalDataPath": "/sitecore/content/Westfield/westfield/Home/Data"
+  },
+  "protectedCampaign": {
+    "pageId": "27da11a8-e0dc-42d4-9e3f-b4073306679b",
+    "renderingId": "4e8227b8-281a-496c-9d7e-138d341f389b",
+    "renderingUid": "dffe19de-2a6f-533e-aa5d-5891b093c491",
+    "originalDatasourceId": "69a01662-aafc-488c-8b87-f1afc7bdc570",
+    "experienceId": "77f8d59b-99dd-4451-9ecb-61d97905f04f",
+    "campaignDatasourceId": "a275f458-496b-40cc-8448-454980cfc4be",
+    "originalParams": "FieldNames=%7B4B7A596F-50EA-4329-A734-7B26CB7D718F%7D&DynamicPlaceholderId=1",
+    "changeBoundary": "Assign the native Home variant on this same shared-layout UID. Preserve final-rendering XML byte-for-byte: it changes datasource only, so Original and campaign inherit Home presentation. Paperless CampaignHero Default stays unchanged."
+  },
+  "linkPolicy": "Use matching demo routes for semantic destinations; every unsupported destination is authored as #. Retain native SDK Link fields and metadata; do not implement a runtime external-link rewrite.",
+  "scope": "Westfield-owned developer templates/renderings/exact Home Cards leaf only. No authored page layouts/data, system devices, shared globals or other customers are serialized.",
+  "sources": [
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/data-templates/data-template-fields/configure-a-field.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/use-dynamic-placeholders-in-components.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecoreai-for-developers/content-editor-items/components/create-a-variant-for-a-component.html"
+  ]
+}

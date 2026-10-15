@@ -1,0 +1,27 @@
+---
+ID: "ca61f6d7-846f-524a-9560-b0599364b58f"
+Parent: "8c02ca37-c2f8-4ef3-a089-3529127b43bc"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/Westfield/Components/SiteHeader/Content/CareersLinks"
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: "Type"
+  Value: "Multilist"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: "__Sortorder"
+  Value: "1900"
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: "Source"
+  Value: "query:$site/*[@@name='Presentation']/*[@@name='Partial Designs']/*[@@name='Header']/*[@@name='Data']/*[@@templateid='{5C69713C-F20C-583F-B245-671A7838BB2F}']"
+Languages:
+- Language: en
+  Fields:
+  - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
+    Hint: "Title"
+    Value: "Careers menu links"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T112621Z"

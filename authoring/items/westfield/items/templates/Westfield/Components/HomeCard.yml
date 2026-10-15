@@ -1,0 +1,27 @@
+---
+ID: "5c69713c-f20c-583f-b245-671a7838bb2f"
+Parent: "fecfc862-4ade-4548-98db-847bc2edf78e"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: "/sitecore/templates/Project/Westfield/Components/HomeCard"
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: "__Base template"
+  Value: "{F0BE0E94-C3F4-49D3-9264-25715C665ADE}"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: "__Icon"
+  Value: "Office/32x32/objects.png"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: "__Sortorder"
+  Value: "700"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Home card"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T112621Z"

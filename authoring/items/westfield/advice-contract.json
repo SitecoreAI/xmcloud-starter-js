@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "site": "westfield",
-  "status": "Source contract94 definitions including one metadata-only pre-existing context scaffold experiment. Native body binding to article-content-2 now delivers three components; actual popup restrictions and final acceptance remain pending.",
+  "status": "PASS: 94 definitions and resource discovery verified; six native branch articles published with 18 independent local datasources. Native authoring/picker/publish/unpublish and public Advice/Search/browser acceptance passed at runtime 375c2ff8. Final metadata release is separate in the manifest.",
   "namespaceUuid": "42aff456-0823-4d69-adad-a6bfbeb31763",
   "createdAtUTC": "2026-10-15T04:21:09.360968+00:00",
   "templates": {
@@ -93,14 +93,10 @@
         "Default"
       ],
       "variantGroup": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleHeader",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleHeader"
       },
       "defaultVariant": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleHeader/Default",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleHeader/Default"
       }
     },
     "ArticleBodyLayout": {
@@ -116,14 +112,10 @@
         "Default"
       ],
       "variantGroup": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleBodyLayout",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleBodyLayout"
       },
       "defaultVariant": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleBodyLayout/Default",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleBodyLayout/Default"
       },
       "layoutServicePlaceholderId": "9f0b3ffd-fecd-583d-8b6e-3638b05ea845",
       "placeholderKey": "article-content-{*}",
@@ -142,14 +134,10 @@
         "Default"
       ],
       "variantGroup": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleText",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleText"
       },
       "defaultVariant": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleText/Default",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/ArticleText/Default"
       }
     },
     "AdviceListing": {
@@ -165,14 +153,10 @@
         "Default"
       ],
       "variantGroup": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/AdviceListing",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/AdviceListing"
       },
       "defaultVariant": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/AdviceListing/Default",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/AdviceListing/Default"
       }
     },
     "SearchResults": {
@@ -188,14 +172,10 @@
         "Default"
       ],
       "variantGroup": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SearchResults",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SearchResults"
       },
       "defaultVariant": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SearchResults/Default",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Headless Variants/SearchResults/Default"
       }
     }
   },
@@ -217,114 +197,87 @@
   ],
   "authored": {
     "articlePartial": {
-      "id": null,
       "path": "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Article",
       "signature": "article",
       "placements": [
         {
           "componentName": "ArticleHeader",
           "renderingId": "0154942a-cb18-59d6-a329-e5f3ade279d9",
-          "uid": "18722aa7-9677-5ab1-b45d-194c9c7a9907",
           "placeholder": "headless-main",
           "datasource": null
         },
         {
           "componentName": "ArticleBodyLayout",
           "renderingId": "fc56a6e7-1fb8-543e-bab8-a81ab5185b9c",
-          "uid": "59902270-45f2-5bc1-9236-3c1dc825890c",
           "placeholder": "headless-main",
           "datasource": null
         }
-      ],
-      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      ]
     },
     "articleDesign": {
-      "id": null,
       "path": "/sitecore/content/Westfield/westfield/Presentation/Page Designs/Article",
-      "partialDesignIds": [
-        "31d9097b-6d25-478e-b446-444ea878b674",
-        null,
-        "0586221f-c48c-4dcb-8588-34260b27694e"
-      ],
-      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation.",
-      "bindingStatus": "Append actual new Article partial ID after native creation."
+      "partialDesignPaths": [
+        "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Header",
+        "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Article",
+        "/sitecore/content/Westfield/westfield/Presentation/Partial Designs/Footer"
+      ]
     },
     "articleBranch": {
-      "id": null,
       "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article",
       "page": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name"
       },
       "data": {
-        "id": null,
-        "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data",
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data"
       },
       "children": [
         {
-          "id": null,
           "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Introduction",
           "name": "Introduction",
           "templateId": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
           "renderingId": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
-          "datasource": "local:/Data/Introduction",
-          "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+          "datasource": "local:/Data/Introduction"
         },
         {
-          "id": null,
           "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Checklist",
           "name": "Checklist",
           "templateId": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
           "renderingId": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
-          "datasource": "local:/Data/Checklist",
-          "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+          "datasource": "local:/Data/Checklist"
         },
         {
-          "id": null,
           "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Next step",
           "name": "Next step",
           "templateId": "4f0d1503-3a02-4455-9f1d-878f10ac23dd",
           "renderingId": "15f0d95b-ce29-45d7-8937-42016fcf3efd",
-          "datasource": "local:/Data/Next step",
-          "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+          "datasource": "local:/Data/Next step"
         }
       ],
       "placeholderKey": "article-content-{*}",
-      "placementPathStatus": "Native Add component path observed; root corrected branch and first article to this path and verified three delivered body components.",
-      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation.",
+      "placementPathStatus": "Native Add path observed and corrected branch/representative article deliver three body components at /headless-main/sxa-article/article-content-2.",
       "placementPath": "/headless-main/sxa-article/article-content-2",
-      "placementStatus": "Body binding proven for branch and first article; disallowed popup controls remain active, so restriction acceptance is unresolved."
+      "placementStatus": "PASS: three page-local body placements bind; native picker restricts to ArticleText/CampaignAction; allowed insertion and restoration, save/reload and publication verified."
     },
     "palette": {
       "Articles": {
-        "id": null,
         "path": "/sitecore/content/Westfield/westfield/Presentation/Available Renderings/Articles",
         "renderingIds": [
           "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
           "0dde0f9c-d855-53cd-9fe8-8ecce852d4d4"
-        ],
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        ]
       },
       "Search": {
-        "id": null,
         "path": "/sitecore/content/Westfield/westfield/Presentation/Available Renderings/Search",
         "renderingIds": [
           "59801512-e7a4-5d0f-9d47-8b47e8423eef"
-        ],
-        "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+        ]
       }
     },
     "adviceHub": {
-      "id": null,
-      "path": "/sitecore/content/Westfield/westfield/Home/advice",
-      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      "path": "/sitecore/content/Westfield/westfield/Home/advice"
     },
     "searchPage": {
-      "id": null,
-      "path": "/sitecore/content/Westfield/westfield/Home/search",
-      "idStatus": "Assigned by supported native CreateItem; reconcile actual identity after creation."
+      "path": "/sitecore/content/Westfield/westfield/Home/search"
     }
   },
   "nativeExisting": {
@@ -374,8 +327,14 @@
       "__Created"
     ],
     "nativeOrigin": "Pre-existing site-generated folder; actual identity, template, parent and en version1 creation timestamp preserved.",
-    "purpose": "Controlled IAR resource-child discovery hypothesis; no authored settings or descendants captured.",
-    "status": "source prepared; new deployment and child discovery proof pending",
+    "purpose": "IAR resource-child discovery scaffold; no authored settings or descendants captured.",
+    "status": "deployed; all four leaf paths and parent-child enumeration verified; native picker restriction passed",
     "retainOnAdviceRemoval": true
+  },
+  "nativeAuthoredIdentityInventory": {
+    "manifest": "sites.manifest.json",
+    "site": "westfield",
+    "binding": "bindings.advice",
+    "boundary": "Authored designs, variants, branches, palette, pages and page-local Data receive API-assigned identities. This source contract preserves paths/structure; the manifest owns actual IDs."
   }
 }
