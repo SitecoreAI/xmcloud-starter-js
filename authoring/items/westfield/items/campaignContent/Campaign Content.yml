@@ -1,0 +1,30 @@
+---
+ID: "e31393bf-6a5e-5dd4-8f2b-82ff3afe8734"
+Parent: "11b33eb2-44e2-4447-a6ea-4a49a1972b7d"
+Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
+Path: "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Campaign Content"
+SharedFields:
+- ID: "14d0728a-82f9-4b01-ab16-1fe1577cede2"
+  Hint: "Editable"
+  Value: "1"
+- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
+  Hint: "Placeholder Key"
+  Value: "westfield-campaign-content"
+- ID: "e391b526-d0c5-439d-803e-17512eae6222"
+  Hint: "Allowed Controls"
+  Value: "{4E8227B8-281A-496C-9D7E-138D341F389B}|{B1F0E493-6A4A-49D0-AE58-4E9D9CA7EC77}|{15F0D95B-CE29-45D7-8937-42016FCF3EFD}"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: "__Icon"
+  Value: "Office/32x32/window_dialog.png"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: "__Display name"
+    Value: "Campaign content"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T184640Z"

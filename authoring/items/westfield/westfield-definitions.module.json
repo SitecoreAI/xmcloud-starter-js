@@ -65,6 +65,54 @@
         "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Cards",
         "scope": "singleItem",
         "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "articleTopics",
+        "path": "/sitecore/content/Westfield/westfield/Settings/Article Topics",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "workflows",
+        "path": "/sitecore/system/Workflows/Westfield Article Publishing",
+        "scope": "ItemAndDescendants",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "articleRequiredValidator",
+        "path": "/sitecore/system/Settings/Validation Rules/Field Rules/Westfield Article Required",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "articleValidationRules",
+        "path": "/sitecore/system/Settings/Rules/Validation Rules/Rules/Westfield Article Requirements",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "homeContent",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Home Content",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "campaignContent",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Campaign Content",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "adviceContent",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Advice Content",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
+      },
+      {
+        "name": "searchContent",
+        "path": "/sitecore/content/Westfield/westfield/Presentation/Placeholder Settings/Search Content",
+        "scope": "singleItem",
+        "allowedPushOperations": "CreateAndUpdate"
       }
     ],
     "excludedFields": [
@@ -75,6 +123,10 @@
       {
         "fieldId": "4a749557-242b-4372-8a20-b2db9d406301",
         "description": "__AutoThumbnails (Westfield author-managed thumbnail generation preference)"
+      },
+      {
+        "fieldId": "dec8d2d5-e3cf-48b6-a653-8e69e2716641",
+        "description": "__Security (Westfield environment-managed author role permissions; preserve during definition deployments)"
       }
     ]
   }

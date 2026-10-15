@@ -1,0 +1,32 @@
+---
+ID: "844f3e97-ca9c-501f-9041-514c9ee09fb8"
+Parent: "f2c13bd1-2d9a-5553-a5fc-a5358d53a43d"
+Template: "419f8ffb-2713-4cec-86a7-7585a727fe25"
+Path: "/sitecore/system/Workflows/Westfield Article Publishing/Draft/Publish/Validate article"
+SharedFields:
+- ID: "322164dc-27ac-404e-b7dc-b74c13cdba1e"
+  Hint: "Type"
+  Value: "Sitecore.Workflows.Simple.ValidatorsAction, Sitecore.Kernel"
+- ID: "95fd25aa-742d-41d2-8d04-6406bba8c60d"
+  Hint: "Max Result"
+  Value: "Warning"
+- ID: "281ab75c-db54-4471-9675-c01fb380fb62"
+  Hint: "Error"
+  Value: "Complete the required article details before publishing. Your draft has been saved."
+- ID: "202f2a2c-6274-467f-a9c8-3ec4585a3060"
+  Hint: "Critical Error"
+  Value: "Correct the article validation errors before publishing. Your draft has been saved."
+- ID: "a50d7933-f230-4434-9538-29c802f0ce23"
+  Hint: "Fatal Error"
+  Value: "Correct the article validation errors before publishing. Your draft has been saved."
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: "__Sortorder"
+  Value: "10"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: "__Created"
+      Value: "20261015T170000Z"
