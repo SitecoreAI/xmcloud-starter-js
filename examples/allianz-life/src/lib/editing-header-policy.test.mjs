@@ -24,7 +24,9 @@ const editingScriptOrigins = [
 // Independently retain the visitor policy that preceded the editing-only fix.
 const priorVisitorCsp = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.sitecorecloud.io https://*.sitecore.io; font-src 'self' data:; connect-src 'self' https://*.sitecorecloud.io https://*.sitecore.io; frame-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'";
 const contentHubPublicImages = 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/';
-const visitorCsp = priorVisitorCsp.replace('https://*.sitecore.io; font-src', `https://*.sitecore.io ${contentHubPublicImages}; font-src`);
+const publicImageVisitorCsp = priorVisitorCsp.replace('https://*.sitecore.io; font-src', `https://*.sitecore.io ${contentHubPublicImages}; font-src`);
+const brightcoveFrameOrigin = 'https://players.brightcove.net';
+const visitorCsp = publicImageVisitorCsp.replace("frame-src 'self'", `frame-src 'self' ${brightcoveFrameOrigin}`);
 
 function loadConfig(t, { nodeEnv = 'production', allowedOrigins = '' } = {}) {
   for (const [key, value] of Object.entries({ NODE_ENV: nodeEnv, JSS_ALLOWED_ORIGINS: allowedOrigins })) {
@@ -60,19 +62,44 @@ function directives(policy) {
     }));
 }
 
-test('production visitor CSP adds only the verified public-image path', async (t) => {
+test('production visitor CSP retains the verified public-image path and approved Brightcove frame origin', async (t) => {
   const rules = await loadConfig(t).headers();
   assert.equal(rules[0].source, '/:path*');
   assert.equal(cspFromRule(rules[0]), visitorCsp);
   const current = directives(cspFromRule(rules[0]));
   for (const [name, sources] of directives(priorVisitorCsp)) {
-    assert.deepEqual(current.get(name), name === 'img-src' ? [...sources, contentHubPublicImages] : sources);
+    const expected = name === 'img-src' ? [...sources, contentHubPublicImages]
+      : name === 'frame-src' ? [...sources, brightcoveFrameOrigin] : sources;
+    assert.deepEqual(current.get(name), expected);
   }
   assert.equal(current.size, directives(priorVisitorCsp).size);
   assert.deepEqual(rules[0].headers.filter(({ key }) => key !== 'Content-Security-Policy'), [
     { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' },
     { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   ]);
+});
+
+test('approved Brightcove allowance changes only frame-src in visitor and editing policies in both environments', async (t) => {
+  for (const nodeEnv of ['production', 'development']) {
+    const rules = await loadConfig(t, { nodeEnv }).headers();
+    const priorVisitor = nodeEnv === 'development'
+      ? publicImageVisitorCsp.replace("'unsafe-inline'; style-src", "'unsafe-inline' 'unsafe-eval'; style-src")
+      : publicImageVisitorCsp;
+    const priorEditing = priorVisitor.replace("script-src 'self' 'unsafe-inline'",
+      "script-src 'self' 'unsafe-inline' " + editingScriptOrigins.join(' ')) +
+      `; frame-ancestors 'self' ${EDITING_ALLOWED_ORIGINS.join(' ')}`;
+    for (const [index, before] of [priorVisitor, priorEditing].entries()) {
+      const after = cspFromRule(rules[index]);
+      assert.equal(after.split(brightcoveFrameOrigin).length - 1, 1);
+      assert.equal(after.replace(`frame-src 'self' ${brightcoveFrameOrigin}`, "frame-src 'self'"), before);
+      const current = directives(after), previous = directives(before);
+      assert.deepEqual(current.get('frame-src'), ["'self'", brightcoveFrameOrigin]);
+      assert.equal(current.size, previous.size);
+      for (const [name, sources] of previous) {
+        if (name !== 'frame-src') assert.deepEqual(current.get(name), sources);
+      }
+    }
+  }
 });
 
 test('Next image matching permits public Content Hub originals and excludes gateway thumbnails', (t) => {

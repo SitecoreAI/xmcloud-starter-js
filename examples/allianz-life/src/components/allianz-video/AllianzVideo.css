@@ -35,6 +35,15 @@ section.allianz-local-video article.video-block {
   max-width: 640px;
 }
 
+/* Keep source player rows responsive without adding a layout wrapper. */
+.allianz-source-static-video > .allianz-video-player {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
 .allianz-source-static-video .allianz-video-placeholder {
   display: block;
   width: 100%;

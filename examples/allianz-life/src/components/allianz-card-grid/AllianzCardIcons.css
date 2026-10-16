@@ -1,0 +1,49 @@
+/* Only explicitly opted-in Default/EditorialStacked card Image glyphs.
+ * External SVGs have their own document fill; currentColor cannot recolor them. */
+.tileIcon[data-allianz-card-icon-appearance] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.tileIcon[data-allianz-card-icon-appearance] .allianz-card-icon-glyph {
+  display: block;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.tileIcon[data-allianz-card-icon-appearance="white-on-black"] {
+  background-color: #3c3c3c;
+  color: #fff;
+}
+
+.tileIcon[data-allianz-card-icon-appearance="white-on-black"] .allianz-card-icon-glyph {
+  filter: brightness(0) invert(1);
+}
+
+.tileIcon[data-allianz-card-icon-appearance="gray-on-transparent"] {
+  background-color: transparent;
+  color: #3c3c3c;
+}
+
+.tileIcon[data-allianz-card-icon-appearance="gray-on-transparent"] .allianz-card-icon-glyph {
+  filter: brightness(0) invert(23.5294117647%);
+}
+
+@media (min-width: 704px) {
+  .tileIcon[data-allianz-card-icon-appearance] {
+    width: 64px;
+    height: 64px;
+  }
+
+  .tileIcon[data-allianz-card-icon-appearance] .allianz-card-icon-glyph {
+    width: 40px;
+    height: 40px;
+  }
+}

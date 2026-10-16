@@ -116,6 +116,70 @@ test('empty-label opt-in preserves ordered clearing, scalar fallback, cleared ed
  card.link=field('link',{href:'',text:''});const empty=render(Cards.EditorialTiles,props(d,false,b.params));assert.doesNotMatch(empty,/<footer/);assert.match(render(Cards.EditorialTiles,props(d,true,b.params)),/test-only-link/);
 });
 
+test('SDK source-empty external placeholder is an inert visitor label with unchanged editing fields',()=>{
+ const b=block('creating-tailored-strategies-for-business-owners-in-niche-markets','s06-article-00');
+ const d=datasource(b),card=d.children.results[0],link=card.links.targetItems[0].link;
+ link.jsonValue.value={href:'http://',linktype:'external',url:'',text:'Source-empty CTA'};
+ const nativeFields=Object.entries(card).filter(([name])=>name!=='id'&&name!=='links').map(([name,wrapped])=>({name,jsonValue:wrapped.jsonValue}));
+ nativeFields.push({name:'links',jsonValue:card.links.targetItems.map(item=>({id:item.id,fields:{link:item.link.jsonValue,icon:item.icon.jsonValue}}))});
+ const native={children:{results:[{id:card.id,fieldCollection:nativeFields}]}};
+ for(const data of [d,native]) for(const variant of ['EditorialTiles','EditorialIntro','EditorialCallout']){
+  const before=JSON.stringify(data),html=render(Cards[variant],props(data,false,b.params));
+  assert.match(html,/<span class="a-link"><[^]*?Source-empty CTA/);assert.doesNotMatch(html,/<a\b|tabindex=|role="link"|#service-unavailable/);
+  const editor=render(Cards[variant],props(data,true,b.params));assert.match(editor,/test-only-link/);assert.ok(editor.includes('http://'));assert.ok(editor.includes('Source-empty CTA'));
+  assert.equal(JSON.stringify(data),before);
+ }
+});
+
+test('SDK placeholder with empty or whitespace label stays absent for visitors and editable in Pages',()=>{
+ const b=block('creating-tailored-strategies-for-business-owners-in-niche-markets','s06-article-00');
+ for(const text of ['', ' \t ']){
+  const d=datasource(b);d.children.results[0].links.targetItems[0].link=field('link',{href:'http://',linktype:'external',url:'',text});
+  const before=JSON.stringify(d);
+  for(const variant of ['EditorialTiles','EditorialIntro','EditorialCallout']){
+   assert.doesNotMatch(render(Cards[variant],props(d,false,b.params)),/<footer|<a\b|a-link__text/);
+   assert.match(render(Cards[variant],props(d,true,b.params)),/test-only-link/);
+  }
+  assert.equal(JSON.stringify(d),before);
+ }
+});
+
+test('empty-label placeholder handling preserves populated destinations and existing visitor link policy',()=>{
+ const b=block('creating-tailored-strategies-for-business-owners-in-niche-markets','s06-article-00');
+ const cases=[
+  {href:'http://www.allianzlife.com/about?ref=cta#details',linktype:'external',url:'http://www.allianzlife.com/about?ref=cta#details'},
+  {href:'https://www.allianzlife.com/about?ref=cta#details',linktype:'external',url:'https://www.allianzlife.com/about?ref=cta#details'},
+  {href:'https://external.example/',linktype:'external',url:'https://external.example/'},
+  {href:'javascript:alert(1)',linktype:'external',url:'javascript:alert(1)'},
+  {href:'http://'}, {href:'http://',linktype:'external'}, {href:'http://',linktype:'internal',url:''},
+  {href:'http://',linktype:'external',url:'https://www.allianzlife.com/about'},
+  {href:'https://',linktype:'external',url:''},
+ ];
+ for(const value of cases){
+  const d=datasource(b);d.children.results[0].links.targetItems[0].link=field('link',{...value,text:'Populated CTA',target:'_blank',rel:'author'});const before=JSON.stringify(d);
+  for(const editing of [false,true]){
+   const html=render(Cards.EditorialTiles,props(d,editing,b.params));
+   assert.equal(html,render(Cards.EditorialTiles,props(d,editing,{...b.params,emptyLink:undefined})));assert.match(html,/<a\b/);
+   if(!editing){
+    if(value.href.startsWith('http://www.allianzlife.com/')||value.href.startsWith('https://www.allianzlife.com/')){
+     assert.match(html,/href="\/about\?ref=cta#details"/);assert.match(html,/rel="author noopener noreferrer"/);
+    }else assert.match(html,/href="#service-unavailable"/);
+   }
+  }
+  assert.equal(JSON.stringify(d),before);
+ }
+});
+
+test('SDK placeholder label handling is opt-in, escapes text and respects explicit ordered-link clearing',()=>{
+ const b=block('creating-tailored-strategies-for-business-owners-in-niche-markets','s06-article-00'),d=datasource(b),card=d.children.results[0];
+ card.link=field('link',{href:'http://',linktype:'external',url:'',text:'<img src=x onerror=alert(1)>'});card.links={targetItems:[]};
+ assert.doesNotMatch(render(Cards.EditorialTiles,props(d,false,b.params)),/a-link__text|<footer/);
+ delete card.links;const before=JSON.stringify(d),html=render(Cards.EditorialTiles,props(d,false,b.params));
+ assert.match(html,/&lt;img src=x onerror=alert\(1\)&gt;/);assert.doesNotMatch(html,/<a\b|<img src="x"/);
+ for(const emptyLink of [undefined,'invalid'])assert.match(render(Cards.EditorialTiles,props(d,false,{...b.params,emptyLink})),/href="#service-unavailable"/);
+ assert.equal(JSON.stringify(d),before);
+});
+
 test('wide statistics retain native 27%, 23%, 29% values, em tags and stacked image-free scaffold',()=>{
  const b=block('small-business','s02-article-00'),html=renderBlock(b);
  assert.equal(count(html,/tile--alphaNumeric -is--stacked/g),3);assert.equal(count(html,/tileIcon -is--wide/g),3);

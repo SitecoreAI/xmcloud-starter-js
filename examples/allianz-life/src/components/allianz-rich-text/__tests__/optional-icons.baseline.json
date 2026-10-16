@@ -1,0 +1,10 @@
+{
+  "baseline": "native-icon-contract-held-v6",
+  "releasedCommit": "2164cc515013f76e5e48e8c14c548f78f43594b7",
+  "sourceFixture": "optional-icons.baseline.tsx.gz",
+  "uncompressedBytes": 92501,
+  "uncompressedSha256": "47fbdbfcc1996bc15d1cf393b6ec731809f6662c5effea8b8ec5d973bf2c2ae4",
+  "qualification": "Complete pre-change v6 renderer byte oracle, compiled with the same installed SDK and local dependencies. Does not establish native data binding or browser acceptance.",
+  "authoringQueryRelativePath": "../../../authoring/allianz-life/items/allianz.renderings/Allianz Life/Rich Text.yml",
+  "authoringQuerySha256": "fac09225466d57bb69f77254dcaf298d972c0c8fa24e21bbb39b618774d3e57f"
+}

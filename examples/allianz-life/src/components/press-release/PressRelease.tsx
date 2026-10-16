@@ -3,6 +3,7 @@
 import { RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
+import { restoreSourceAliasRichText } from 'lib/allianz-source-aliases';
 import type { PressReleaseProps } from './press-release.props';
 import './PressRelease.css';
 
@@ -31,14 +32,14 @@ export const Default = ({ fields, params }: PressReleaseProps) => {
                     )}
                   </div>
                   {shouldRenderTextField(summary, editable)
-                    ? <RichText className="tileSubHeading" field={summary} editable={editable} />
+                    ? <RichText className="tileSubHeading" field={restoreSourceAliasRichText(summary, editable)} editable={editable} />
                     : <div className="tileSubHeading" />}
                 </header>
               </div>
             </article>
           </div>
           {shouldRenderTextField(body, editable)
-            ? <RichText className="l-grid__column-medium-12" field={body} editable={editable} />
+            ? <RichText className="l-grid__column-medium-12" field={restoreSourceAliasRichText(body, editable)} editable={editable} />
             : <div className="l-grid__column-medium-12" />}
         </div>
       </div>

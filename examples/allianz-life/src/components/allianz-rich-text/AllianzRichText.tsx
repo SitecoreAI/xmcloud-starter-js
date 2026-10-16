@@ -1,19 +1,34 @@
 'use client';
 
-import { Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, rowSpacing, sectionTheme } from 'lib/allianz-fields';
-import { allianzLinkField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
-import type { AllianzRichTextProps } from './allianz-rich-text.props';
+import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
+import type { AllianzRichTextDefaultProps, AllianzRichTextProps } from './allianz-rich-text.props';
+import { restoreSourceDestinationRichText } from 'lib/allianz-source-destinations';
+import { bodyArrowLinkGlyphs, bodyDownloadLinkGlyphs } from 'lib/body-download-link-glyphs';
 import './AllianzLifeOverviewHeadings.css';
 import './AllianzAboutHeadings.css';
 import './AllianzInvestmentOptions.css';
+import './AllianzRichTextIcons.css';
 
-export const Default = ({ fields, params }: AllianzRichTextProps) => {
+export const Default = ({ fields, params, brandIcon = false, bodyDownloadLinks = false, bodyArrowLinks = false }: AllianzRichTextDefaultProps) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
-  const data = fields?.data?.datasource;
+  const routeId = page?.layout?.sitecore?.route?.itemId;
+  const indexOptionsScope = typeof routeId === 'string' && routeId.replace(/[{}-]/g, '').toLowerCase() === 'e8e1893aff9b4b4a81bca809693ccf88'
+    ? ' allianz-index-options-rich-text' : '';
+  const nativeData = fields?.data?.datasource;
+  const destinationBody = restoreSourceDestinationRichText(nativeData?.body?.jsonValue, page?.mode?.isEditing !== false,
+    nativeData && 'id' in nativeData ? nativeData.id : undefined);
+  const body = bodyDownloadLinks
+    ? bodyDownloadLinkGlyphs(destinationBody, page?.mode?.isEditing !== false)
+    : bodyArrowLinks ? bodyArrowLinkGlyphs(destinationBody, page?.mode?.isEditing !== false) : destinationBody;
+  const data = nativeData && body !== nativeData.body?.jsonValue
+    ? { ...nativeData, body: { ...nativeData.body, jsonValue: body } } : nativeData;
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  const bodyValue = data.body?.jsonValue?.value;
+  const hasIndexOptionsTable = !!indexOptionsScope && typeof bodyValue === 'string' && /<table\b/i.test(bodyValue);
   if (params.layout === 'rich-text' || params.layout === 'disclosures') return <div className={`l-container--full-width ${params.layout === 'disclosures' ? 'a-axlDisclosures' : sectionTheme(params.theme)}`} id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">
       {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className={params.layout === 'disclosures' ? 'content-body disclosure' : 'o-richTextEditor__wrapper'} />}
@@ -22,15 +37,27 @@ export const Default = ({ fields, params }: AllianzRichTextProps) => {
   return <div className={`l-container--full-width ${sectionTheme(params.theme)} axlTileCollection`} id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">
       <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className={`tileContent ${params.alignment === 'left' ? 'u-text-left' : 'u-text-center'}`}>
+        {shouldRenderImageField(data.icon?.jsonValue, isEditing) && <div className={`tileIcon ${brandIcon ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`} data-allianz-rich-text-icon={brandIcon ? 'brand' : 'gray'}>
+          <Image editable={isEditing} field={data.icon?.jsonValue} className="allianz-rich-text-icon-glyph" />
+        </div>}
         {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <header><div className="tileHeading"><Text editable={isEditing} tag={headingTag(params.headingLevel)} field={data.heading?.jsonValue} /></div></header>}
         {shouldRenderTextField(data.subheading?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" />}
-        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className={`tileBody ${params.headingLevel === 'h2' ? 'u-font-size-xl' : ''}`} />}
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className={`tileBody ${params.headingLevel === 'h2' ? 'u-font-size-xl' : ''}${indexOptionsScope}`} tabIndex={hasIndexOptionsTable && !isEditing ? 0 : undefined} />}
         {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
       </div></article>
     </div></div></div>
   </div>;
 };
 
+
+/** The brand icon treatment retains the complete Default field and layout contract. */
+export const BrandIcon = (props: AllianzRichTextProps) => <Default {...props} brandIcon />;
+
+/** Source-owned inline PDF glyphs, retaining the complete Default field surface. */
+export const BodyDownloadLinks = (props: AllianzRichTextProps) => <Default {...props} bodyDownloadLinks />;
+
+/** Source-owned single Body arrow link, retaining the complete Default field surface. */
+export const BodyArrowLinks = (props: AllianzRichTextProps) => <Default {...props} bodyArrowLinks />;
 
 // These finite variants keep source-absent fields out of the editor surface.
 type LifeOverviewHeadingProps = AllianzRichTextProps & {
@@ -95,9 +122,9 @@ const AboutHeading = ({ fields, params, information = false }: AllianzRichTextPr
     <div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
       <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
         {information && <div className="tileIcon t-bg-primary-brand t-icon-primary-white">
-          {/* This source UI glyph has no native Image field. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="allianz-about-information-glyph" src="/allianz-ui/about-overview/information.svg" alt="Information" />
+          {data.icon?.jsonValue && (isEditing || data.icon.jsonValue.value?.src) &&
+            <Image field={data.icon.jsonValue} editable={isEditing} className="allianz-about-information-glyph"
+              width={24} height={24} />}
         </div>}
         <header><div className="tileHeading">
           {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}

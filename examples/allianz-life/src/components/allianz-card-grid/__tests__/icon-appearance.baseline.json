@@ -1,0 +1,8 @@
+{
+  "description": "Portable unchanged base37 CardGrid source fixture for exact SDK output comparisons; no credentials or content assignments.",
+  "releaseCommit": "2164cc515013f76e5e48e8c14c548f78f43594b7",
+  "uncompressedBytes": 197326,
+  "uncompressedSha256": "0caa798149a3db42c4b626ca328c81c0c72b196c3f1185db0b02a0e6df1ec253",
+  "sourceFixture": "icon-appearance.baseline.tsx.gz",
+  "compressedBytes": 30755
+}

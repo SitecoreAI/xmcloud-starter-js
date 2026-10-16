@@ -1,0 +1,5 @@
+/* Only the saved Index Options partner grid and its image-only cards.
+ * Preserve native image fields and tile geometry while showing each full logo. */
+.allianz-modern [data-allianz-index-partner-logos] [data-allianz-index-partner-logo] > .tileImage .c-image__img.c-teaser__image-img {
+  object-fit: contain;
+}

@@ -136,7 +136,7 @@ test('the repository-native SVG is inert and source dimensions survive legacy pl
 });
 
 
-test('SourceStatic ignores filled playback and poster fields while preserving native values and ordinary editable copy', () => {
+test('SourceStatic plays a validated native link while preserving its inert editor and separate poster/transcript ownership', () => {
   const data = {
     heading: field('static-heading', 'Single-Line Text', 'Authored video heading'),
     body: field('static-body', 'Rich Text', '<p>Authored supporting copy</p>'),
@@ -154,16 +154,68 @@ test('SourceStatic ignores filled playback and poster fields while preserving na
   const before = JSON.stringify(data);
   for (const mode of ['normal', 'preview', 'editing']) {
     const html = render(data, mode, SourceStatic);
-    assert.equal((html.match(/<img\b/g) || []).length, 1);
-    assert.match(html, /<img[^>]*class="allianz-video-placeholder"[^>]*src="\/allianz-ui\/video-placeholder.svg"[^>]*alt="Video player would go here"[^>]*width="640"[^>]*height="360"/);
+    if (mode === 'editing') {
+      assert.equal((html.match(/<img\b/g) || []).length, 1);
+      assert.match(html, /<img[^>]*class="allianz-video-placeholder"[^>]*src="\/allianz-ui\/video-placeholder.svg"[^>]*alt="Video player would go here"[^>]*width="640"[^>]*height="360"/);
+      assert.doesNotMatch(html, /<iframe\b|brightcove|Authored playback link/);
+    } else {
+      assert.equal((html.match(/<iframe\b/g) || []).length, 1);
+      assert.match(html, /src="https:\/\/players\.brightcove\.net\/1537381467001\/WioKPWt4t_default\/index\.html\?videoId=6291658616001&amp;preload=none"/);
+      assert.match(html, /title="Authored playback link"/);
+      assert.doesNotMatch(html, /<img\b|video-placeholder/);
+    }
     assert.match(html, /Authored video heading/);
     assert.match(html, /<p>Authored supporting copy<\/p>/);
     assert.match(html, /<p>Authored video caption<\/p>/);
-    assert.doesNotMatch(html, /<iframe\b|<video\b|<audio\b|<script\b|<a\b|brightcove|source-poster|unused poster|Authored playback link|allianz-source-static-video-fields|static-media|static-poster|static-transcript|Transcript owned/);
+    assert.doesNotMatch(html, /<video\b|<audio\b|<script\b|<a\b|source-poster|unused poster|allianz-source-static-video-fields|static-media|static-poster|static-transcript|Transcript owned/);
     const markers = metadata(html).map(({ fieldId }) => fieldId).sort();
     assert.deepEqual(markers, mode === 'editing' ? ['static-body', 'static-caption', 'static-heading'] : []);
     assert.equal(JSON.stringify(data), before);
   }
+});
+
+test('an empty native media link and absent transcript never manufacture playback or transcript controls', () => {
+  const data = { heading: field('empty-media-heading', 'Single-Line Text', 'Authored existing video'),
+    body: field('empty-media-body', 'Rich Text', '<p>Authored existing copy.</p>'),
+    mediaLink: field('empty-media-link', 'General Link', {}) };
+  const before = JSON.stringify(data);
+  for (const mode of ['normal', 'preview', 'editing']) {
+    const html = render(data, mode);
+    assert.match(html, /video-placeholder.svg/);
+    assert.doesNotMatch(html, /<iframe\b|brightcove|<details\b|Read video transcript|fieldId[^>]*transcript/);
+    assert.deepEqual(metadata(html).map(({ fieldId }) => fieldId).sort(),
+      mode === 'editing' ? ['empty-media-body', 'empty-media-heading', 'empty-media-link'] : []);
+  }
+  assert.equal(JSON.stringify(data), before);
+});
+
+test('specialized variants do not invent a missing transcript or consume another native transcript owner', () => {
+  const names = ['SourceStatic', 'FixedSourceStatic', 'RilaStaticVideo', 'ClassicProductVideo',
+    'AAPlusProductVideo', 'BenefitControlPlusProductVideo', 'EssentialIncome7ProductVideo',
+    'CoreIncome7ProductVideo', 'LifetimeIncomeVideo'];
+  for (const name of names) for (const mode of ['normal', 'preview', 'editing']) {
+    const data = { mediaLink: field('native-media', 'General Link', {
+      href: 'https://players.brightcove.net/1537381467001/WioKPWt4t_default/index.html',
+      querystring: 'videoId=6291658616001', text: 'Existing authored video',
+    }) };
+    const missing = render(data, mode, videoExports[name]);
+    data.transcript = field('separate-owner', 'Rich Text', '<p>Separate owner must remain separate.</p>');
+    const before = JSON.stringify(data);
+    const separate = render(data, mode, videoExports[name]);
+    assert.equal(separate, missing, `${name} ${mode}: the video must not take transcript ownership`);
+    assert.doesNotMatch(separate, /<details\b|Read video transcript|Separate owner|separate-owner/);
+    assert.equal(JSON.stringify(data), before);
+  }
+});
+
+test('specialized iframe sizing stays inside the existing responsive source player shell', () => {
+  const css = fs.readFileSync(path.join(sourceRoot, 'components/allianz-video/AllianzVideo.css'), 'utf8');
+  assert.match(css, /\.allianz-source-static-video\s*\{[^}]*width:\s*100%;[^}]*max-width:\s*640px;/);
+  const iframeRule = /\.allianz-source-static-video\s*>\s*\.allianz-video-player\s*\{([^}]+)\}/.exec(css)?.[1];
+  assert.ok(iframeRule, 'Only the player within its existing source shell receives iframe sizing');
+  for (const declaration of [/display:\s*block;/, /width:\s*100%;/, /height:\s*auto;/,
+    /aspect-ratio:\s*16\s*\/\s*9;/, /border:\s*0;/]) assert.match(iframeRule, declaration);
+  assert.doesNotMatch(iframeRule, /(?:margin|padding|position|overflow)\s*:|url\(/);
 });
 
 test('SourceStatic cleared copy retains only its relevant SDK controls and missing datasource keeps the existing fallback', () => {

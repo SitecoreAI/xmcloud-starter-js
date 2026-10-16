@@ -3,6 +3,7 @@ import type { ComponentProps } from './component-props';
 import publicRouteIndex from '../../content/public-route-index.json';
 import approvedSourceLinks from './approved-source-external-links.fixture.json';
 import { isConnected } from './allianz-content-mode';
+import { originalSourceAliasHref } from './allianz-source-aliases';
 
 /** Native integrated GraphQL field shape, shared by Edge and local fixtures. */
 export type JsonField<T> = { jsonValue?: T };
@@ -153,6 +154,10 @@ export function safeLink(field?: LinkField): LinkField {
   const sourceDestination = `${sourceBase}${querystring ? `?${querystring}` : ''}${anchor ? `#${anchor}` : ''}`;
   if (isNativeDocumentLink(field, url, sourceBase, querystring)) {
     return { ...field, value: { ...field.value, href: sourceBase, querystring, anchor: '' } };
+  }
+  const originalAlias = originalSourceAliasHref(url.pathname);
+  if (!isUnavailable && isPublic && originalAlias) {
+    return { ...field, value: { ...field.value, href: originalAlias, querystring, anchor } };
   }
   const linkType = field.value.linktype?.toLowerCase();
   const isSourceExternal = linkType === 'external' || (!linkType && !field.value.id);

@@ -1,0 +1,42 @@
+/* Only the optional native Image in RichText Default and BrandIcon. */
+.tileIcon[data-allianz-rich-text-icon] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #3c3c3c;
+}
+
+.tileIcon[data-allianz-rich-text-icon] .allianz-rich-text-icon-glyph {
+  display: block;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: brightness(0) invert(23.5294117647%);
+}
+
+.tileIcon[data-allianz-rich-text-icon="brand"] {
+  background-color: #003781;
+  color: #fff;
+}
+
+.tileIcon[data-allianz-rich-text-icon="brand"] .allianz-rich-text-icon-glyph {
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 704px) {
+  .tileIcon[data-allianz-rich-text-icon] {
+    width: 64px;
+    height: 64px;
+  }
+
+  .tileIcon[data-allianz-rich-text-icon] .allianz-rich-text-icon-glyph {
+    width: 40px;
+    height: 40px;
+  }
+}

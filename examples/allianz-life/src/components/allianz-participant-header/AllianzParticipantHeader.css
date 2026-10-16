@@ -1,0 +1,5 @@
+/* Match the source SVG viewport while keeping the native Image field editable. */
+.allianz-participant-header .a-logo__svgLogo img {
+  width: 154px;
+  height: auto;
+}

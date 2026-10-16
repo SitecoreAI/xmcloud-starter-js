@@ -6,26 +6,34 @@ import { EditorialFrame } from 'lib/allianz-editorial-frame';
 import { brightcoveEmbedSource, type AllianzVideoProps } from './allianz-video.props';
 import './AllianzVideo.css';
 
+/** Shared player surface; each variant retains its own layout and field controls. */
+const VideoPlayer = ({ fields }: Pick<AllianzVideoProps, 'fields'>) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  const embedSource = isEditing ? '' : brightcoveEmbedSource(data?.mediaLink?.jsonValue);
+  const playerTitle = data?.mediaLink?.jsonValue?.value?.text?.trim()
+    || data?.heading?.jsonValue?.value?.trim() || 'Video player';
+  return embedSource ? <iframe className="allianz-video-player" src={embedSource}
+    title={playerTitle} width={640} height={360} loading="lazy" allowFullScreen
+    allow="autoplay 'none'; encrypted-media; fullscreen"
+    sandbox="allow-scripts allow-same-origin" referrerPolicy="strict-origin-when-cross-origin" />
+    // Keep the established empty-state and editor preview without a remote player.
+    // eslint-disable-next-line @next/next/no-img-element
+    : <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
+      alt="Video player would go here" width={640} height={360} />;
+};
+
 export const Default = ({ fields, params }: AllianzVideoProps) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzVideo" />;
-  const embedSource = isEditing ? '' : brightcoveEmbedSource(data.mediaLink?.jsonValue);
-  const playerTitle = data.mediaLink?.jsonValue?.value?.text?.trim()
-    || data.heading?.jsonValue?.value?.trim() || 'Video player';
   return <section className="allianz-local-video" id={params.RenderingIdentifier}>
     {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={data.heading?.jsonValue} />}
     {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} />}
     <article className="video-block"><div className="video-block-content"><div className="bc-video-player"><div className="bc-video-player-inner">
-      {embedSource ? <iframe className="allianz-video-player" src={embedSource}
-        title={playerTitle} width={640} height={360} loading="lazy" allowFullScreen
-        allow="autoplay 'none'; encrypted-media; fullscreen"
-        sandbox="allow-scripts allow-same-origin" referrerPolicy="strict-origin-when-cross-origin" />
-        // Keep the established empty-state and editor preview without a remote player.
-        // eslint-disable-next-line @next/next/no-img-element
-        : <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
-          alt="Video player would go here" width={640} height={360} />}
+      <VideoPlayer fields={fields} />
     </div></div></div></article>
     {isEditing && <div className="allianz-local-video-source-fields">
       {shouldRenderImageField(data.poster?.jsonValue, true) && <Image editable field={data.poster?.jsonValue} />}
@@ -46,10 +54,7 @@ export const SourceStatic = ({ fields, params }: AllianzVideoProps) => {
     {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={data.heading?.jsonValue} />}
     {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} />}
     <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
-      {/* The approved local UI graphic does not initialize a remote player. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
-        alt="Video player would go here" width={640} height={360} />
+      <VideoPlayer fields={fields} />
     </div>
     {shouldRenderTextField(data.caption?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.caption?.jsonValue} />}
   </EditorialFrame>;
@@ -77,7 +82,7 @@ export const RilaStaticVideo = (props: AllianzVideoProps) => {
 
 import { useId } from 'react';
 
-/** Classic keeps its source introduction and approved static video in one native owner. */
+/** Classic keeps its source introduction and video in one native owner. */
 export const ClassicProductVideo = ({ fields, params }: AllianzVideoProps) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
@@ -103,9 +108,7 @@ export const ClassicProductVideo = ({ fields, params }: AllianzVideoProps) => {
       </div></div>
       <div className="l-grid__row"><div className="l-grid__column-medium-12">
         <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
-            alt="Video player would go here" width={640} height={360} />
+          <VideoPlayer fields={fields} />
         </div>
       </div></div>
     </div>
@@ -138,9 +141,7 @@ export const AAPlusProductVideo = ({ fields, params }: AllianzVideoProps) => {
       </div></div>
       <div className="l-grid__row u-margin-bottom-xl"><div className="l-grid__column-medium-12">
         <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
-            alt="Video player would go here" width={640} height={360} />
+          <VideoPlayer fields={fields} />
         </div>
       </div></div>
     </div>
@@ -148,7 +149,7 @@ export const AAPlusProductVideo = ({ fields, params }: AllianzVideoProps) => {
 };
 
 /** Benefit Control+ has a source-only player row; its introduction and transcript
- * remain separate native owners under the approved static-player treatment. */
+ * remain separate native owners. */
 export const BenefitControlPlusProductVideo = ({ fields, params }: AllianzVideoProps) => {
   if (!fields?.data?.datasource) return <NoDataFallback componentName="AllianzVideo" />;
   const sourceAnchor: import('react').AnchorHTMLAttributes<HTMLAnchorElement> & { name: string } = { name: 'video' };
@@ -157,9 +158,7 @@ export const BenefitControlPlusProductVideo = ({ fields, params }: AllianzVideoP
       <a {...sourceAnchor} />
       <div className="l-grid__row"><div className="l-grid__column-medium-12">
         <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
-            alt="Video player would go here" width={640} height={360} />
+          <VideoPlayer fields={fields} />
         </div>
       </div></div>
     </div>
@@ -167,7 +166,7 @@ export const BenefitControlPlusProductVideo = ({ fields, params }: AllianzVideoP
 };
 
 
-/** Essential Income 7 has a source-only static player with both bottom spacing classes.
+/** Essential Income 7 has a source-only player with both bottom spacing classes.
  * The separate introduction owns the video anchor; the transcript owns its own fields. */
 export const EssentialIncome7ProductVideo = ({ fields, params }: AllianzVideoProps) => {
   if (!fields?.data?.datasource) return <NoDataFallback componentName="AllianzVideo" />;
@@ -175,9 +174,7 @@ export const EssentialIncome7ProductVideo = ({ fields, params }: AllianzVideoPro
     <div className="l-grid l-grid--max-width">
       <div className="l-grid__row u-margin-bottom-xl u-padding-bottom-xl"><div className="l-grid__column-medium-12">
         <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
-            alt="Video player would go here" width={640} height={360} />
+          <VideoPlayer fields={fields} />
         </div>
       </div></div>
     </div>
@@ -185,7 +182,7 @@ export const EssentialIncome7ProductVideo = ({ fields, params }: AllianzVideoPro
 };
 
 
-/** Approved static treatment retains the real native media-link owner in editing.
+/** Retains the real native media-link owner in editing.
  * The benefits introduction and transcript keep their separate native fields.
  * Clearing/removing the media link removes the public player surface. */
 export const CoreIncome7ProductVideo = ({ fields, params }: AllianzVideoProps) => {
@@ -197,9 +194,7 @@ export const CoreIncome7ProductVideo = ({ fields, params }: AllianzVideoProps) =
     <div className="l-grid l-grid--max-width">
       <div className="l-grid__row"><div className="l-grid__column-medium-12">
         {shouldRenderLinkField(data.mediaLink?.jsonValue, isEditing) && <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
-            alt="Video player would go here" width={640} height={360} />
+          <VideoPlayer fields={fields} />
         </div>}
         {isEditing && data.mediaLink?.jsonValue && <div className="allianz-source-static-video-fields">
           <Link editable field={data.mediaLink.jsonValue} />
@@ -210,7 +205,7 @@ export const CoreIncome7ProductVideo = ({ fields, params }: AllianzVideoProps) =
 };
 
 
-/** Lifetime keeps its separate native media owner under the approved static treatment.
+/** Lifetime keeps its separate native media owner.
  * Source heading and challenge copy require their own native field contract. */
 export const LifetimeIncomeVideo = ({ fields, params }: AllianzVideoProps) => {
   const { page } = useSitecore();
@@ -222,9 +217,7 @@ export const LifetimeIncomeVideo = ({ fields, params }: AllianzVideoProps) => {
     <div className="l-grid l-grid--max-width">
       <div className="l-grid__row u-padding-bottom-xl"><div className="l-grid__column-medium-12">
         {hasApprovedMedia && <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
-            alt="Video player would go here" width={640} height={360} />
+          <VideoPlayer fields={fields} />
         </div>}
         {isEditing && data.mediaLink?.jsonValue && <div className="allianz-source-static-video-fields">
           <Link editable field={data.mediaLink.jsonValue} />

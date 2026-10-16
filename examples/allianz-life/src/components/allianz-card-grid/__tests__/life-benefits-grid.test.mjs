@@ -141,8 +141,10 @@ function instrumented() {
     if (specifier === '@sitecore-content-sdk/nextjs') return { ...sdk, ...Object.fromEntries(['Text', 'RichText', 'Image', 'Link'].map(name => [name, props => {
       observed.push({ name, field: props.field }); return React.createElement(sdk[name], props);
     }])) };
-    if (/^(components|lib)\//.test(specifier)) {
-      const base = path.join(sourceRoot, specifier), local = [base, base + '.ts', base + '.tsx'].find(candidate => fs.existsSync(candidate) && fs.statSync(candidate).isFile());
+    const base = specifier.startsWith('.') ? path.resolve(path.dirname(filename), specifier)
+      : /^(components|lib)\//.test(specifier) ? path.join(sourceRoot, specifier) : undefined;
+    if (base) {
+      const local = [base, base + '.ts', base + '.tsx'].find(candidate => fs.existsSync(candidate) && fs.statSync(candidate).isFile());
       if (local) return loadSource(local);
     }
     return require(specifier);

@@ -56,6 +56,8 @@ import * as AllianzRichText from 'src/components/allianz-rich-text/AllianzRichTe
 import * as AllianzRateTable from 'src/components/allianz-rate-table/AllianzRateTable';
 import * as AllianzRateSnapshot from 'src/components/allianz-rate-snapshot/AllianzRateSnapshot';
 import * as AllianzProductNavigation from 'src/components/allianz-product-navigation/AllianzProductNavigation';
+import * as AllianzParticipantNavigation from 'src/components/allianz-participant-navigation/AllianzParticipantNavigation';
+import * as AllianzParticipantHeader from 'src/components/allianz-participant-header/AllianzParticipantHeader';
 import * as AllianzLegacySidebar from 'src/components/allianz-legacy-sidebar/AllianzLegacySidebar';
 import * as AllianzLegacyRichText from 'src/components/allianz-legacy-rich-text/AllianzLegacyRichText';
 import * as AllianzLegacyPageHeader from 'src/components/allianz-legacy-page-header/AllianzLegacyPageHeader';
@@ -134,6 +136,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['AllianzRateTable', { ...AllianzRateTable }],
   ['AllianzRateSnapshot', { ...AllianzRateSnapshot }],
   ['AllianzProductNavigation', { ...AllianzProductNavigation }],
+  ['AllianzParticipantNavigation', { ...AllianzParticipantNavigation }],
+  ['AllianzParticipantHeader', { ...AllianzParticipantHeader }],
   ['AllianzLegacySidebar', { ...AllianzLegacySidebar }],
   ['AllianzLegacyRichText', { ...AllianzLegacyRichText }],
   ['AllianzLegacyPageHeader', { ...AllianzLegacyPageHeader }],

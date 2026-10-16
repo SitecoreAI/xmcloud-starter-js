@@ -1,0 +1,26 @@
+/* Recovered source CSS owns the 703/704px geometry and open/active states. */
+.allianz-participant-navigation button.nav-sec-list-title {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  color: #005074;
+  font-family: inherit;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 24px;
+  justify-content: flex-start;
+  text-align: left;
+  white-space: normal;
+  box-shadow: none;
+}
+
+@media (max-width: 703px) {
+  .allianz-participant-navigation:not(.m-navigation-secondary-open) .nav-sec-list {
+    visibility: hidden;
+  }
+  .allianz-participant-navigation.m-navigation-secondary-open .nav-sec-list {
+    visibility: visible;
+  }
+}

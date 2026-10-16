@@ -18,6 +18,51 @@ const datasource = value => ({ desktopImage: nativeImage(value, 'desktop'),
 const heroImg = html => (html.match(/<img\b[^>]*class="c-image__img c-hero__image"[^>]*>/g) || [])[0];
 const layouts = [['default', 'Default', {}], ['home', 'Default', { layout: 'home' }], ['editorial', 'Editorial', {}]];
 
+test('Default product-fixed stage preserves native title, subtitle and desktop/mobile images', () => {
+  const data = {
+    heading: { jsonValue: { value: 'Why you need a strategy to address the rising cost of living', metadata: metadata('heading', 'Rich Text') } },
+    body: { jsonValue: { value: 'A fixed income may fall short over time.', metadata: metadata('body', 'Rich Text') } },
+    desktopImage: nativeImage({ ...image, alt: 'Image of a woman grocery shopping' }, 'desktop'),
+    mobileImage: nativeImage({ src: '/mobile.jpg', alt: 'Mobile authored description' }, 'mobile'),
+  };
+  const before = JSON.stringify(data);
+  for (const editing of [false, true]) {
+    const html = render(Hero.Default, data, editing, { theme: 'product-fixed', heroTheme: 'fixed' });
+    assert.match(html, /class="l-container-full-width t-bg-product-fixed c-hero__theme--fixed"/);
+    assert.ok(html.includes(data.heading.jsonValue.value));
+    assert.ok(html.includes(data.body.jsonValue.value));
+    assert.match(html, /class="c-hero__subHeadline u-text-center"/);
+    assert.match(heroImg(html), /src="\/hero.jpg"/);
+    assert.match(heroImg(html), /width="2368"/);
+    assert.match(heroImg(html), /alt="Image of a woman grocery shopping"/);
+    assert.match(html, /<source media="\(max-width: 703px\)" srcSet="\/mobile.jpg"\/>/);
+    if (editing) for (const name of ['heading', 'body', 'desktop', 'mobile']) assert.ok(html.includes(`test-${name}-field`));
+    assert.equal(JSON.stringify(data), before);
+  }
+  const cleared = {
+    heading: { jsonValue: { value: '', metadata: metadata('heading', 'Rich Text') } },
+    body: { jsonValue: { value: '', metadata: metadata('body', 'Rich Text') } },
+    desktopImage: nativeImage({}, 'desktop'), mobileImage: nativeImage({}, 'mobile'),
+  };
+  const editor = render(Hero.Default, cleared, true, { theme: 'product-fixed', heroTheme: 'fixed' });
+  for (const name of ['heading', 'body', 'desktop', 'mobile']) assert.ok(editor.includes(`test-${name}-field`));
+  assert.doesNotMatch(render(Hero.Default, cleared, false, { theme: 'product-fixed', heroTheme: 'fixed' }), /<img\b|c-hero__headline|c-hero__subHeadline/);
+});
+
+test('Default product-fixed support leaves unsupported themes, other variants and the home branch unchanged', () => {
+  const data = { ...datasource(image), body: field('Authored subtitle') };
+  for (const theme of ['fixed', 'product-fixed injected-class', 'product-fixed" onclick="blocked']) {
+    const html = render(Hero.Default, data, false, { theme });
+    assert.match(html, /class="l-container-full-width t-bg-transparent "/);
+    assert.doesNotMatch(html, /t-bg-product-fixed|c-hero__theme--fixed|injected-class|onclick/);
+    assert.ok(html.includes('Authored subtitle'));
+    assert.ok(heroImg(html));
+  }
+  assert.match(render(Hero.Editorial, data, false, { theme: 'product-fixed' }), /t-bg-transparent/);
+  assert.equal(render(Hero.Default, data, false, { layout: 'home', theme: 'product-fixed', heroTheme: 'fixed' }),
+    render(Hero.Default, data, false, { layout: 'home', theme: 'transparent', heroTheme: 'fixed' }));
+});
+
 for (const [label, variant, params] of layouts) {
   test(`${label} Hero explicitly renders blank or missing alt and preserves authored descriptions`, () => {
     for (const [value, expected] of [

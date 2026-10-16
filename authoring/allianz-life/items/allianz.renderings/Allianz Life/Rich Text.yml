@@ -17,6 +17,7 @@ SharedFields:
         subheading: field(name: "subheading") { jsonValue }
         body: field(name: "body") { jsonValue }
         primaryLink: field(name: "primaryLink") { jsonValue }
+        icon: field(name: "icon") { jsonValue }
       }
     }
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"

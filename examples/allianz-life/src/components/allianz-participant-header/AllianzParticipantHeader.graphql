@@ -1,0 +1,18 @@
+query AllianzParticipantHeaderQuery($datasource: String!, $language: String!) {
+  datasource: item(path: $datasource, language: $language) {
+    id
+    logo: field(name: "logo") { jsonValue }
+    tagline: field(name: "tagline") { jsonValue }
+    utilityNav: field(name: "utilityNav") {
+      ... on MultilistField {
+        targetItems {
+          id
+          title: field(name: "title") { jsonValue }
+          link: field(name: "link") { jsonValue }
+          icon: field(name: "icon") { jsonValue }
+          children(first: 1) { total pageInfo { hasNext endCursor } }
+        }
+      }
+    }
+  }
+}

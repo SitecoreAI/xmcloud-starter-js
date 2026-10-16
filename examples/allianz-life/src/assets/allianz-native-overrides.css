@@ -4,6 +4,17 @@
 .allianz-modern .c-accordion .c-accordion__item-content[hidden] {
   display: none;
 }
+/* This historical NY article prints full regulatory URLs as inline link text. */
+#page-90-day-grace-period-on-premium-payments-for-your-life-insurance-policy :is(.o-richTextEditor__wrapper, .tileBody, .allianz-legacy-editorial) a:not(.a-link) {
+  overflow-wrap: anywhere;
+}
+/* The native Index Options body keeps its semantic comparison table scrollable. */
+@media (max-width: 703px) {
+  .allianz-index-options-rich-text:has(table) {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
 .allianz-modern .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) {
   display: block;
   max-height: none;

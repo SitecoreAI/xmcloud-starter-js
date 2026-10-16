@@ -1,0 +1,48 @@
+/* Only the optional root Image of HeadingIcon / BrandHeadingIcon. */
+.tileIcon[data-allianz-card-grid-heading-icon] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.tileIcon[data-allianz-card-grid-heading-icon] .allianz-card-grid-heading-glyph {
+  display: block;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.tileIcon[data-allianz-card-grid-heading-icon="gray"] {
+  background-color: transparent;
+  color: #3c3c3c;
+}
+
+.tileIcon[data-allianz-card-grid-heading-icon="gray"] .allianz-card-grid-heading-glyph {
+  filter: brightness(0) invert(23.5294117647%);
+}
+
+.tileIcon[data-allianz-card-grid-heading-icon="brand"] {
+  background-color: #003781;
+  color: #fff;
+}
+
+.tileIcon[data-allianz-card-grid-heading-icon="brand"] .allianz-card-grid-heading-glyph {
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 704px) {
+  .tileIcon[data-allianz-card-grid-heading-icon] {
+    width: 64px;
+    height: 64px;
+  }
+
+  .tileIcon[data-allianz-card-grid-heading-icon] .allianz-card-grid-heading-glyph {
+    width: 40px;
+    height: 40px;
+  }
+}

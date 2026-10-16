@@ -1,15 +1,16 @@
 'use client';
 
 import { Fragment } from 'react';
-import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Image, Link, RichText, Text, useSitecore, type LinkField } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, rowSpacing, safeLinkRenderProps, sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { allianzCardFields } from 'lib/allianz-card-fields';
+import { restoreSourceDestinationLinkProps, restoreSourceDestinationRichText } from 'lib/allianz-source-destinations';
 import { editorialBodyClass, editorialColumnClass, editorialHeadingTag, safeEditorialRichText } from 'lib/allianz-editorial';
 import './AllianzEditorialCards.css';
 import { EditorialFrame } from 'lib/allianz-editorial-frame';
-import type { AllianzCardGridProps } from './allianz-card-grid.props';
+import type { AllianzCardGridDefaultProps, AllianzCardGridProps } from './allianz-card-grid.props';
 import './AllianzFaqCards.css';
 import './AllianzFinancialRatings.css';
 import { financialRatingsRichText } from 'lib/financial-ratings-rich-text';
@@ -21,6 +22,9 @@ import './AllianzLifeFaqCards.css';
 import './AllianzLifeToolsCards.css';
 import './AllianzLifeBenefitsGrid.css';
 import './AllianzAboutCards.css';
+import './AllianzIndexPartnerLogos.css';
+import './AllianzCardIcons.css';
+import './AllianzCardGridHeadingIcons.css';
 
 type AllianzCardGridPresentation = {
   isRilaPromotion?: boolean;
@@ -28,10 +32,34 @@ type AllianzCardGridPresentation = {
   sourceAnchor?: 'impact';
   sourceRelatedIntroduction?: boolean;
   sourceFeaturesIntroduction?: boolean;
+  sourceDestinations?: boolean;
+  sourceIconAppearance?: boolean;
+  sourceDownloadLinks?: boolean;
+  headingIconAppearance?: 'gray' | 'brand';
 };
 
+type CardIconAppearance = 'white-on-black' | 'gray-on-transparent';
+
+/** Finite authorable treatments for external monochrome Image fields. */
+function cardIconAppearance(value: unknown): CardIconAppearance | undefined {
+  return value === 'white-on-black' || value === 'gray-on-transparent' ? value : undefined;
+}
+
+function cardIconTheme(theme: unknown, appearance?: CardIconAppearance): string {
+  if (appearance === 'white-on-black') return 't-bg-primary-black t-icon-primary-white';
+  if (appearance === 'gray-on-transparent') return 't-bg-transparent t-icon-primary-black';
+  return theme === 'primary-brand' ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black';
+}
+
+function sourceDestinationId(ownerId: unknown): string | undefined {
+  if (typeof ownerId !== 'string') return undefined;
+  const id = ownerId.startsWith('{') && ownerId.endsWith('}') ? ownerId.slice(1, -1) : ownerId;
+  return /^(?:[0-9a-f]{32}|[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})$/i.test(id)
+    ? id.replace(/-/g, '').toLowerCase() : undefined;
+}
+
 function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearance,
-  sourceAnchor, sourceRelatedIntroduction = false, sourceFeaturesIntroduction = false,
+  sourceAnchor, sourceRelatedIntroduction = false, sourceFeaturesIntroduction = false, sourceDestinations = false, sourceIconAppearance = false, sourceDownloadLinks = false, headingIconAppearance,
 }: AllianzCardGridProps & AllianzCardGridPresentation) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
@@ -39,16 +67,41 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
   if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
   const nativeDataId = 'id' in data && typeof data.id === 'string' ? data.id.replace(/[{}-]/g, '').toLowerCase() : undefined;
   const isFinancialRatings = nativeDataId === '6a6d5c5594f94090a7f4dcec2ff47726';
+  const routeId = page?.layout?.sitecore?.route?.itemId;
+  const isIndexPartnerLogos = typeof routeId === 'string'
+    && routeId.replace(/[{}-]/g, '').toLowerCase() === 'e8e1893aff9b4b4a81bca809693ccf88'
+    && nativeDataId === '6e198e6d86944bea88a9702c6c07c5ea'
+    && params.layout === 'stacked' && params.columns === '4';
   const cards = (data.children?.results ?? []).map(allianzCardFields);
+  const iconAppearance = sourceIconAppearance ? cardIconAppearance(params.iconAppearance) : undefined;
+  const sourceDataId = sourceDestinations ? sourceDestinationId('id' in data ? data.id : undefined) : undefined;
+  const sourceDestinationEditing = page?.mode?.isEditing !== false;
+  const cardBodyField = (card: (typeof cards)[number]) =>
+    sourceDataId === '68f5eea4e83f46e2aadfb4d244aa8230' && sourceDestinationId(card.id) === 'c4f12d3c2db14cc98dbc1b6683ecf133'
+      ? restoreSourceDestinationRichText(card.body?.jsonValue, sourceDestinationEditing, card.id) : card.body?.jsonValue;
+  const scalarLinkProps = (card: (typeof cards)[number], props: Parameters<typeof restoreSourceDestinationLinkProps>[0]) => {
+    if (sourceDataId !== '0b2c3b00952345b189e732b1b9bbd34a' || ![
+      '5b186c8836a64df8b9100187d1bd7101', '143dd9d8760c4ac589591c534360e51c', '5d51bc887cc84f159ed72598ee011858',
+    ].includes(sourceDestinationId(card.id) ?? '')) return props;
+    return restoreSourceDestinationLinkProps(props, card.link?.jsonValue, sourceDestinationEditing, card.id);
+  };
   const column = ({ '1':12, '2':6, '3':4, '4':3 } as Record<string, number>)[params.columns] ?? 12;
   const isCards = params.layout === 'cards';
   const splitClass = params.splitRatio === '33:67' ? 'tile--3366' : params.splitRatio === '67:33' ? 'tile--6633' : 'tile--5050';
-  if (params.layout === 'list') return <section className={`l-container--full-width ${sectionTheme(params.theme)}`} id={params.RenderingIdentifier}><div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12"><div className="c-search-result-text-teaser">{cards.map((card) => <article className="c-search-result-text-teaser__item" key={card.id}><h5 className="c-search-result-text-teaser__headline"><Link editable={isEditing} field={allianzLinkField(card.link?.jsonValue, isEditing)} renderChildrenWhenEmpty={isEditing}><Text editable={isEditing} field={card.heading?.jsonValue} /></Link></h5><RichText editable={isEditing} field={card.body?.jsonValue} className="c-search-result-text-teaser__copytext" /></article>)}</div></div></div></div></section>;
+  if (params.layout === 'list') return <section className={`l-container--full-width ${sectionTheme(params.theme)}`} id={params.RenderingIdentifier}><div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12"><div className="c-search-result-text-teaser">{cards.map((card) => <article className="c-search-result-text-teaser__item" key={card.id}><h5 className="c-search-result-text-teaser__headline"><Link editable={isEditing} {...scalarLinkProps(card, { field: allianzLinkField(card.link?.jsonValue, isEditing) })} renderChildrenWhenEmpty={isEditing}><Text editable={isEditing} field={card.heading?.jsonValue} /></Link></h5><RichText editable={isEditing} field={cardBodyField(card)} className="c-search-result-text-teaser__copytext" /></article>)}</div></div></div></div></section>;
+  const headingIcon = headingIconAppearance ? data.icon?.jsonValue : undefined;
+  const showHeadingIcon = !!headingIconAppearance && shouldRenderImageField(headingIcon, isEditing);
+  const introductionHeading = <>
+    <div className="tileHeading"><Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} /></div><RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" />
+  </>;
   const sourceAnchorProps: import('react').AnchorHTMLAttributes<HTMLAnchorElement> & { name?: 'impact' } = { name: sourceAnchor };
-  return <div data-allianz-card-grid={isFinancialRatings ? nativeDataId : undefined} className={`l-container--full-width ${sectionTheme(params.theme)}${sourceRelatedIntroduction ? '' : ' axlTileCollection'}${faqAppearance ? ' allianz-faq-cards' : ''}`} id={params.RenderingIdentifier}>
+  return <div data-allianz-index-partner-logos={isIndexPartnerLogos ? "" : undefined} data-allianz-card-grid={isFinancialRatings ? nativeDataId : undefined} className={`l-container--full-width ${sectionTheme(params.theme)}${sourceRelatedIntroduction ? '' : ' axlTileCollection'}${faqAppearance ? ' allianz-faq-cards' : ''}`} id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width">
       {sourceAnchor && <a {...sourceAnchorProps} />}
       {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12"><article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+        {showHeadingIcon && <div className={`tileIcon ${headingIconAppearance === 'brand' ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`} data-allianz-card-grid-heading-icon={headingIconAppearance}>
+          <Image editable={isEditing} field={headingIcon} className="allianz-card-grid-heading-glyph" />
+        </div>}
         {sourceRelatedIntroduction ? <>
           <div className="tileIcon t-bg-primary-brand t-icon-primary-white"><SustainabilityInformationIcon /></div>
           <header>
@@ -60,7 +113,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
           <div className="tileHeading"><h2><Text editable={isEditing} field={data.heading?.jsonValue} /><br /></h2></div>
           {shouldRenderTextField(data.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
         </header> : <>
-          <div className="tileHeading"><Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} /></div><RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" /><RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />{shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
+          {showHeadingIcon ? <header>{introductionHeading}</header> : introductionHeading}<RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />{shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
         </>}
         {sourceFeaturesIntroduction && shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
         {sourceFeaturesIntroduction && shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
@@ -69,29 +122,35 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
         {isCards ? <div className="l-grid__column-medium-12"><div className={`o-cards o-cards__col${params.columns || '3'}`}>
           {cards.map((card) => {
             const field = allianzLinkField(card.link?.jsonValue, isEditing);
-            const linkProps = sourceRelatedIntroduction && !isEditing ? safeLinkRenderProps(field) : { field };
+            const linkProps = scalarLinkProps(card, sourceRelatedIntroduction && !isEditing ? safeLinkRenderProps(field) : { field });
             return <Link key={card.id} {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="m-card">
               {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="m-card__image"><picture className="c-image"><Image editable={isEditing} field={card.image?.jsonValue} sizes={sourceRelatedIntroduction ? '100vw' : undefined} className="c-image__img c-teaser__image-img" /></picture></div>}
-              <div className="m-card__header"><Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} /></div><RichText editable={isEditing} field={sourceRelatedIntroduction ? safeEditorialRichText(card.body?.jsonValue, isEditing) : card.body?.jsonValue} className="m-card__body" />
+              <div className="m-card__header"><Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} /></div><RichText editable={isEditing} field={sourceRelatedIntroduction ? safeEditorialRichText(card.body?.jsonValue, isEditing) : cardBodyField(card)} className="m-card__body" />
             </Link>;
           })}
         </div></div> : cards.map((card) => {
           const links = card.links?.targetItems?.length ? card.links.targetItems : [{ id: `${card.id}-link`, link: card.link }];
           const hasLinks = Boolean(card.links?.targetItems?.some((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing)) || shouldRenderLinkField(card.link?.jsonValue, isEditing));
+          const isPartnerLogo = isIndexPartnerLogos && Boolean(card.image?.jsonValue)
+            && ![card.heading, card.subheading, card.body, card.alphanumeral].some((field) => shouldRenderTextField(field?.jsonValue, false))
+            && !shouldRenderImageField(card.icon?.jsonValue, false)
+            && !shouldRenderLinkField(card.link?.jsonValue, false)
+            && !card.links?.targetItems?.some((item) => shouldRenderLinkField(item.link?.jsonValue, false));
           return <div key={card.id} className={`l-grid__column-medium-${column}`}>
-          <article data-allianz-card={isFinancialRatings ? card.id.replace(/[{}-]/g, '').toLowerCase() : undefined} className={`m-axlTile match-height ${sectionTheme(card.theme?.jsonValue?.value)} ${faqAppearance === 'help' ? '-is--flipped -is--stacked' : faqAppearance === 'professional' ? 'tile--stackedImage -is--stacked' : params.layout === 'image-left' || params.layout === 'image-right' ? `${splitClass} -is--split ${params.layout === 'image-right' ? '-is--flipped' : ''}` : shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'stacked' ? '-is--flipped tile--stackedImage -is--stacked' : '-is--stacked'} ${params.layout === 'bordered' ? 'allianz-bordered' : ''}`}>
+          <article data-allianz-index-partner-logo={isPartnerLogo ? "" : undefined} data-allianz-card={isFinancialRatings ? card.id.replace(/[{}-]/g, '').toLowerCase() : undefined} className={`m-axlTile match-height ${sectionTheme(card.theme?.jsonValue?.value)} ${faqAppearance === 'help' ? '-is--flipped -is--stacked' : faqAppearance === 'professional' ? 'tile--stackedImage -is--stacked' : params.layout === 'image-left' || params.layout === 'image-right' ? `${splitClass} -is--split ${params.layout === 'image-right' ? '-is--flipped' : ''}` : shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'stacked' ? '-is--flipped tile--stackedImage -is--stacked' : '-is--stacked'} ${params.layout === 'bordered' ? 'allianz-bordered' : ''}`}>
             <div className={`tileContent ${params.alignment === 'left' ? 'u-text-left' : 'u-text-center'}`}>
-              {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="tileSubGrid__image"><div className={`tileIcon ${card.iconTheme?.jsonValue?.value === 'primary-brand' ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}><Image editable={isEditing} field={card.icon?.jsonValue} /></div></div>}
+              {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="tileSubGrid__image"><div className={`tileIcon ${cardIconTheme(card.iconTheme?.jsonValue?.value, iconAppearance)}`} data-allianz-card-icon-appearance={iconAppearance}><Image editable={isEditing} field={card.icon?.jsonValue} {...(iconAppearance ? { className: 'allianz-card-icon-glyph' } : {})} /></div></div>}
               {shouldRenderTextField(card.alphanumeral?.jsonValue, isEditing) && <div className="tileSubGrid__image"><Text editable={isEditing} tag={isFinancialRatings ? 'span' : undefined} field={card.alphanumeral?.jsonValue} className="tileAlphanumeral" /></div>}
               {shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'bordered' && <div className="tileSubGrid__image"><div className="tileImage"><Image editable={isEditing} field={card.image?.jsonValue} /></div></div>}
               <div className="tileSubGrid__content"><header><div className="tileHeading"><Text editable={isEditing} tag={headingTag(card.headingLevel?.jsonValue?.value || params.headingLevel)} field={card.heading?.jsonValue} /></div><RichText editable={isEditing} field={card.subheading?.jsonValue} className="tileSubHeading" /></header>
-                <RichText editable={isEditing} field={faqAppearance ? safeFaqRichText(card.body?.jsonValue, isEditing) : isFinancialRatings ? financialRatingsRichText(card.body?.jsonValue, isEditing, card.id) : card.body?.jsonValue} className={`tileBody ${isRilaPromotion ? 'u-font-size-lg' : params.headingLevel === 'h2' ? 'u-font-size-xl' : 'u-font-size-md'}`} />
+                <RichText editable={isEditing} field={faqAppearance ? safeFaqRichText(card.body?.jsonValue, isEditing) : isFinancialRatings ? financialRatingsRichText(card.body?.jsonValue, isEditing, card.id) : cardBodyField(card)} className={`tileBody ${isRilaPromotion ? 'u-font-size-lg' : params.headingLevel === 'h2' ? 'u-font-size-xl' : 'u-font-size-md'}`} />
                 {hasLinks && <footer><div className="tileLink">{links.filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing)).map((item, linkIndex) => {
                   const field = allianzLinkField(item.link?.jsonValue, isEditing);
                   const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'];
                   const linkKey = item.id ?? (field as typeof field & { metadata?: { itemId?: string } }).metadata?.itemId ?? linkIndex;
-                  const linkProps = sourceAnchor && !isEditing ? safeLinkRenderProps(field) : { field };
-                  return <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={sourceAnchor ? isEditing : undefined} key={linkKey} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}><><span className="a-link__icon" aria-hidden="true">{sourceFeaturesIntroduction && /\.pdf(?:[?#]|$)/i.test(field.value?.href ?? '') ? <SustainabilityDownloadIcon /> : <svg viewBox="0 0 24 24" focusable="false" preserveAspectRatio="xMidYMid meet"><path fillRule="evenodd" d="M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536"/></svg>}</span><span className="a-link__text">{item.link?.jsonValue?.value?.text}</span></></Link>;
+                  const originalLinkProps = sourceAnchor && !isEditing ? safeLinkRenderProps(field) : { field };
+                  const linkProps = card.links?.targetItems?.length ? originalLinkProps : scalarLinkProps(card, originalLinkProps);
+                  return <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={sourceAnchor ? isEditing : undefined} key={linkKey} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}><><span className="a-link__icon" aria-hidden="true">{sourceDownloadLinks ? <SourceDownloadLinkIcon /> : sourceFeaturesIntroduction && /\.pdf(?:[?#]|$)/i.test(field.value?.href ?? '') ? <SustainabilityDownloadIcon /> : <svg viewBox="0 0 24 24" focusable="false" preserveAspectRatio="xMidYMid meet"><path fillRule="evenodd" d="M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536"/></svg>}</span><span className="a-link__text">{item.link?.jsonValue?.value?.text}</span></></Link>;
                 })}</div></footer>}
               </div>
             </div>
@@ -104,7 +163,21 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
   </div>;
 }
 
-export const Default = (props: AllianzCardGridProps) => <AllianzCardGrid {...props} />;
+export const Default = (props: AllianzCardGridDefaultProps) => <AllianzCardGrid {...props} sourceDestinations sourceIconAppearance />;
+
+/** Exact source Download geometry, decorative inside the authored link icon span. */
+const SourceDownloadLinkIcon = () => <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+  <path fillRule="evenodd" d="M11.0088496,18.601 L5.41052947,13.1737857 C4.86315684,12.6431429 4.86315684,11.7854286 5.41052947,11.2547857 C5.9579021,10.7241429 6.84265787,10.7241429 7.3900305,11.2547857 L10.60007,14.3667143 L10.60007,1.35714286 C10.60007,0.606642857 11.2258387,0 12,0 C12.7741613,0 13.39993,0.606642857 13.39993,1.35714286 L13.39993,14.3667143 L16.6099695,11.2547857 C17.1573421,10.7241429 18.0420979,10.7241429 18.5894705,11.2547857 C19.1368432,11.7854286 19.1368432,12.6431429 18.5894705,13.1737857 L12.9911504,18.601 C12.8623569,18.7272143 12.7069647,18.8262857 12.5347733,18.8955 C12.3639818,18.9647143 12.1819909,19 12,19 C11.8180091,19 11.6360182,18.9647143 11.4652267,18.8955 C11.2930353,18.8262857 11.1376431,18.7272143 11.0088496,18.601 Z M22.9090909,18 C23.5104545,18 24,18.4669565 24,19.0434783 L24,22.9565217 C24,23.5317391 23.5104545,24 22.9090909,24 L1.09090909,24 C0.489545455,24 0,23.5317391 0,22.9565217 L0,19.0434783 C0,18.4669565 0.489545455,18 1.09090909,18 C1.69227273,18 2.18181818,18.4669565 2.18181818,19.0434783 L2.18181818,21.9130435 L21.8181818,21.9130435 L21.8181818,19.0434783 C21.8181818,18.4669565 22.3077273,18 22.9090909,18 Z" />
+</svg>;
+
+/** Complete Default surface with the source Download footer presentation. */
+export const SourceDownloadLinks = (props: AllianzCardGridProps) => <Default {...props} sourceDownloadLinks />;
+
+/** One authorable root glyph above the complete existing card group. */
+export const HeadingIcon = (props: AllianzCardGridProps) => <Default {...props} headingIconAppearance="gray" />;
+
+/** The same complete group with a white root glyph on the source brand circle. */
+export const BrandHeadingIcon = (props: AllianzCardGridProps) => <Default {...props} headingIconAppearance="brand" />;
 
 /** Preserve the source anchor before the first pillar introduction. */
 export const SustainabilityPillars = (props: AllianzCardGridProps) => <AllianzCardGrid {...props}
@@ -199,6 +272,13 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
   const ratio = params.splitRatio === '33:67' ? 'tile--3366' : params.splitRatio === '67:33' ? 'tile--6633' : imageSplit ? 'tile--5050' : '';
   const flipped = params.flipped === '1' || (imageSplit && params.layout === 'image-right');
   const bodySize = params.bodySize || (intro ? 'source-default' : 'medium');
+  // The SDK projects a source-empty external URL as http://. Inspect the
+  // original field before the visitor safety adapter replaces that placeholder.
+  const isEmptyLabelLink = (field?: LinkField) => params.emptyLink === 'label' &&
+    (!field?.value?.href || (field.value.href === 'http://' &&
+      field.value.linktype === 'external' && field.value.url === ''));
+  const hasEditorialLinkContent = (field?: LinkField) => isEmptyLabelLink(field)
+    ? Boolean(field?.value?.text?.trim()) : shouldRenderLinkField(field, false);
   return <EditorialFrame params={params}>
       {cards.map((card) => {
         // Empty optional chrome belongs outside the split tile so it cannot
@@ -213,8 +293,8 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
         // An explicitly cleared ordered collection stays cleared. The single-link
         // field is used only when that collection is absent from the query result.
         const links = (card.links?.targetItems ?? [{ id: `${card.id}-link`, link: card.link, icon: undefined }])
-          .filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing) ||
-            (params.emptyLink === 'label' && !item.link?.jsonValue?.value?.href && Boolean(item.link?.jsonValue?.value?.text?.trim())));
+          .filter((item) => isEditing ? shouldRenderLinkField(item.link?.jsonValue, true)
+            : hasEditorialLinkContent(item.link?.jsonValue));
         const renderedLinks = links.map((item) => {
           const field = allianzLinkField(item.link?.jsonValue, isEditing);
           const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
@@ -228,15 +308,14 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
           </>;
           // Preserve a source label with no destination as inert visitor text.
           // Editing still mounts the original General Link field and its chrome.
-          const link = !isEditing && params.emptyLink === 'label' && !field.value?.href
+          const link = !isEditing && isEmptyLabelLink(item.link?.jsonValue)
             ? <span className="a-link">{contents}</span>
             : <Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>{contents}</Link>;
           return params.linkLayout === 'rows'
             ? <div key={item.id} className="tileLink">{link}</div>
             : <Fragment key={item.id}>{link}</Fragment>;
         });
-        const hasLinkContent = links.map((item) => shouldRenderLinkField(item.link?.jsonValue, false) ||
-          (params.emptyLink === 'label' && !item.link?.jsonValue?.value?.href && Boolean(item.link?.jsonValue?.value?.text?.trim())));
+        const hasLinkContent = links.map((item) => hasEditorialLinkContent(item.link?.jsonValue));
         const visibleLinks = renderedLinks.filter((_, index) => !compactEditing || hasLinkContent[index]);
         const additionalFields = [
           compactEditing && shouldRenderImageField(card.icon?.jsonValue, true) && !hasIcon
@@ -407,12 +486,14 @@ export const EditorialStacked = ({ fields, params, linkTextAriaLabel = false }: 
   if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
   const cards = (data.children?.results ?? []).map(allianzCardFields);
   const column = params.columns === '2' ? 'l-grid__column-medium-6' : editorialColumnClass(params);
+  const iconAppearance = cardIconAppearance(params.iconAppearance);
   return <EditorialFrame params={{ ...params, matchHeightRow: '1' }}>
     {cards.map((card) => {
       const links = (card.links?.targetItems ?? [{ id: `${card.id}-link`, link: card.link, icon: undefined }])
         .filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing));
       const article = <article className={`allianz-editorial-cards m-axlTile match-height -is--flipped tile--stackedImage -is--stacked ${sectionTheme(card.theme?.jsonValue?.value)}${params.tileMarginBottom === 'xl' ? ' u-margin-bottom-xl' : ''}`}>
         <div className={`tileContent ${params.alignment === 'center' ? 'u-text-center' : 'u-text-left'}`}>
+          {iconAppearance && shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="tileSubGrid__image"><div className={`tileIcon ${cardIconTheme(card.iconTheme?.jsonValue?.value, iconAppearance)}`} data-allianz-card-icon-appearance={iconAppearance}><Image editable={isEditing} field={card.icon?.jsonValue} className="allianz-card-icon-glyph" /></div></div>}
           <div className="tileSubGrid__content">
             <header>
               <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={editorialHeadingTag(card.headingLevel?.jsonValue?.value || params.headingLevel)} field={card.heading?.jsonValue} />}</div>

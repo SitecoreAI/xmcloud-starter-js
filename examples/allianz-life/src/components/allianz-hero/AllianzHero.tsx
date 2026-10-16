@@ -17,8 +17,9 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
   if (!data) return <NoDataFallback componentName="AllianzHero" />;
   const home = params.layout === 'home';
   const productTheme = ['fixed','variable','life'].includes(params.heroTheme) ? `c-hero__theme--${params.heroTheme}` : '';
+  const themeClass = params.theme === 'product-fixed' ? 't-bg-product-fixed' : sectionTheme(params.theme);
   if (!home) return (
-    <div className={`l-container-full-width ${sectionTheme(params.theme)} ${productTheme}`}>
+    <div className={`l-container-full-width ${themeClass} ${productTheme}`}>
       <div className="m-axlHero">
         {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <picture className="c-image c-stage__image--cover c-stage__image--short">
           {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
