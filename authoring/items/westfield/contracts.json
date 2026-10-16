@@ -437,11 +437,12 @@
           "type": "Rich Text"
         }
       ],
-      "owner": "Page-local /Data",
+      "owner": "Page-local /Data; each repeatable Section groups Heading and Body.",
       "datasourceLocation": "query:./*[@@name='Data']",
       "exports": [
         "Default"
-      ]
+      ],
+      "displayName": "Section"
     },
     {
       "componentName": "AdviceListing",
