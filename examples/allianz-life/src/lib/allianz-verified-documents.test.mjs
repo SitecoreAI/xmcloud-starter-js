@@ -1,0 +1,163 @@
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import test from 'node:test';
+import { loadSource, sourceRoot, require } from '../components/executive-biography/__tests__/sdk-test-helper.mjs';
+
+const React = require('react');
+const { renderToStaticMarkup } = require('react-dom/server');
+const { Link, SitecoreProvider, ComponentPropsContext } = require('@sitecore-content-sdk/nextjs');
+const { safeLink, safeLinkRenderProps } = loadSource(path.join(sourceRoot, 'lib/allianz-fields.ts'));
+const { allianzLinkField } = loadSource(path.join(sourceRoot, 'lib/allianz-field-state.ts'));
+const { prospectusLinkField } = loadSource(path.join(sourceRoot, 'components/prospectus-document-table/prospectus-document-table.props.ts'));
+const { Default: DocumentTable } = loadSource(path.join(sourceRoot, 'components/prospectus-document-table/ProspectusDocumentTable.tsx'));
+const destinations = [
+  { name: 'Lifetime income percentage chart', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/47d0fbb1e2b6457fa2a595b96dcdccaa?v=27849fc6' },
+  { name: 'ADV prospectus supplement', target: '',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/16cb820b40994ca3b7af38d574a44d59?v=d59e0053' },
+];
+process.env.NODE_ENV = 'test';
+
+function field(entry, attributes = {}) {
+  return { value: { href: entry.url, text: entry.name, target: entry.target,
+    linktype: 'external', title: 'Authored PDF title', class: 'authored-pdf', rel: 'author', ...attributes },
+    metadata: { itemId: 'test-only-pdf-row', fieldId: 'test-only-document-link', fieldType: 'General Link' } };
+}
+function render(child, isEditing = false) {
+  return renderToStaticMarkup(React.createElement(SitecoreProvider, {
+    page: { siteName: 'allianz-life', locale: 'en', mode: { isEditing, isNormal: !isEditing, isPreview: false },
+      layout: { sitecore: { context: {}, route: { name: 'Verified PDF test', fields: {}, placeholders: {} } } } },
+    api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
+  }, child));
+}
+function renderLink(input, editing = false) {
+  return render(React.createElement(Link, { ...safeLinkRenderProps(allianzLinkField(input, editing)) }), editing);
+}
+function renderTable(input, editing = false) {
+  const uid = 'test-only-prospectus-table';
+  return render(React.createElement(ComponentPropsContext, { value: { [uid]: {
+    automaticDocuments: { status: 'ready', complete: true, items: [
+      { id: '00000000-0000-4000-8000-000000000001', documentLink: { jsonValue: input } },
+    ] },
+  } } }, React.createElement(DocumentTable, { rendering: { uid, componentName: 'ProspectusDocumentTable' },
+    fields: { data: { datasource: {} } } })), editing);
+}
+function href(html) {
+  return /href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
+}
+
+for (const entry of destinations) test(`${entry.name}: installed SDK preserves exact destination and authored attributes`, () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    const parsed = new URL(entry.url);
+    for (const attrs of [
+      {}, { querystring: parsed.search.slice(1), anchor: '' },
+      { href: `${parsed.origin}${parsed.pathname}`, querystring: parsed.search.slice(1) },
+      { href: `${parsed.origin}${parsed.pathname}`, querystring: parsed.search },
+    ]) {
+      const input = field(entry, attrs), before = JSON.stringify(input);
+      const normalized = safeLink(input);
+      assert.equal(normalized.value.href, `${parsed.origin}${parsed.pathname}`);
+      assert.equal(normalized.value.querystring, parsed.search.slice(1));
+      assert.equal(normalized.value.anchor, '');
+      assert.deepEqual(safeLink(normalized), normalized);
+      assert.strictEqual(normalized.metadata, input.metadata);
+      for (const attribute of ['text', 'target', 'title', 'class', 'linktype', 'rel']) {
+        assert.equal(normalized.value[attribute], input.value[attribute], attribute);
+      }
+      for (const editing of [false, true]) {
+        const html = renderLink(input, editing);
+        assert.equal(href(html), entry.url);
+        assert.ok(html.includes(`target="${entry.target}"`));
+        assert.ok(html.includes(entry.name));
+        assert.match(html, /title="Authored PDF title"/);
+        assert.match(html, /class="authored-pdf"/);
+        assert.equal(html.includes('noopener noreferrer'), entry.target === '_blank');
+        if (editing) assert.match(html, /test-only-document-link/);
+      }
+      assert.strictEqual(allianzLinkField(input, true), input);
+      assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
+
+test('real prospectus table admits only the same verified destinations, keeping editing ownership and authored target', () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const entry of destinations) {
+      const input = field(entry), before = JSON.stringify(input);
+      assert.equal(href(renderTable(input)), entry.url);
+      assert.ok(renderTable(input).includes(`target="${entry.target}"`));
+      assert.equal(renderTable(input).includes('noopener noreferrer'), entry.target === '_blank');
+      assert.strictEqual(prospectusLinkField(input, true), input);
+      assert.match(renderTable(input, true), /test-only-document-link/);
+      assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
+
+test('same-host URLs, changed versions, ambiguous queries, fragments and alternate authority forms stay unavailable', () => {
+  for (const entry of destinations) {
+    const parsed = new URL(entry.url), base = `${parsed.origin}${parsed.pathname}`, version = parsed.search.slice(1);
+    const cases = [
+      { href: base }, { href: `${base}?v=wrong` }, { href: `${entry.url}&extra=1` },
+      { href: `${base}?extra=1&${version}` }, { href: `${entry.url}&${version}` },
+      { querystring: 'v=wrong' }, { querystring: 'download=1' },
+      { href: `${entry.url}#page-2` }, { href: `${entry.url}#` },
+      { href: `${entry.url}#demo-unavailable` }, { anchor: 'service-unavailable' }, { anchor: '#page-2' },
+      { href: `${base}?${version}%23page-2` },
+      { href: entry.url.replace('/content/', '/content/other-') },
+      { href: entry.url.replace('/api/', '/%61pi/') },
+      { href: entry.url.replace('https:', 'http:') },
+      { href: entry.url.replace('https://', '//') },
+      { href: entry.url.replace('https://', 'https://user@') },
+      { href: entry.url.replace('.cloud/', '.cloud:443/') },
+      { href: entry.url.replace('.cloud/', '.cloud.attacker.example/') },
+      { href: ` ${entry.url}` }, { href: `${entry.url} ` },
+      { linktype: 'internal' }, { linktype: 'media' },
+      { id: '{00000000-0000-4000-8000-000000000002}' },
+    ];
+    for (const mode of ['fixture', 'connected']) {
+      process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+      for (const attrs of cases) {
+        const input = field(entry, attrs), before = JSON.stringify(input);
+        for (const adapt of [safeLink, (value) => prospectusLinkField(value, false)]) {
+          const blocked = adapt(input);
+          assert.equal(blocked.value.href, '#service-unavailable', JSON.stringify(attrs));
+          assert.equal(blocked.value.target, '');
+          assert.equal(blocked.value.querystring, '');
+          assert.equal(blocked.value.anchor, '');
+          assert.strictEqual(blocked.metadata, input.metadata);
+        }
+        assert.strictEqual(prospectusLinkField(input, true), input);
+        assert.equal(JSON.stringify(input), before);
+      }
+    }
+  }
+});
+
+test('disabled services, social destinations and third-party prospectuses retain their existing boundary', () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const url of [
+      '#demo-unavailable', '#service-unavailable',
+      'https://www.allianzlife.com/login', 'https://www.allianzlife.com/account',
+      'https://www.facebook.com/AllianzLife', 'https://www.linkedin.com/company/allianz-life',
+      'https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018817882',
+      'https://www.rightprospectus.com/documents/contract.pdf',
+      'https://www.allianzlife.com/unverified-document.pdf',
+    ]) {
+      const input = field({ ...destinations[0], url });
+      // Connected official page navigation is deliberately broader than document approval.
+      if (!url.endsWith('/unverified-document.pdf')) assert.equal(safeLink(input).value.href, '#service-unavailable', url);
+      assert.equal(prospectusLinkField(input, false).value.href, '#service-unavailable', url);
+    }
+  }
+});
+
+test('cleared fields remain the original field in visitor and editing adapters', () => {
+  const input = field(destinations[0], { href: '', target: '_blank' });
+  assert.strictEqual(safeLink(input), input);
+  assert.strictEqual(prospectusLinkField(input, false), input);
+  assert.strictEqual(prospectusLinkField(input, true), input);
+});

@@ -2,6 +2,7 @@ import type { Field, LinkField } from '@sitecore-content-sdk/nextjs';
 import type { ComponentProps } from 'lib/component-props';
 import { normalizeDocumentId, type AutomaticDocuments } from '../prospectus-product-directory/document-automatic-data.props';
 import { allianzLinkField } from 'lib/allianz-field-state';
+import { isVerifiedContentHubDocumentLink } from 'lib/allianz-verified-documents';
 import { localDocumentHref } from 'components/allianz-document-list/allianz-document-list.props';
 
 /** One prospectus row, including its independently clearable issuance note. */
@@ -37,6 +38,7 @@ export function automaticDocumentRows(data?: AutomaticDocuments): ProspectusDocu
 /** Reuse the established public-document inventory and navigation boundary. */
 export function prospectusLinkField(field: LinkField | undefined, isEditing: boolean): LinkField {
   if (!field || isEditing || !field.value?.href) return allianzLinkField(field, isEditing);
+  if (isVerifiedContentHubDocumentLink(field)) return allianzLinkField(field, false);
   const local = localDocumentHref(field.value.href);
   if (local) {
     const source = new URL(field.value.href, 'https://www.allianzlife.com');
