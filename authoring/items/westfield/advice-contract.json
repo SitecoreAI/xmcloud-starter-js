@@ -150,9 +150,10 @@
           "type": "Rich Text",
           "path": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Body",
           "label": "Text",
-          "help": "Write this section using the rich text toolbar. Add another Text component for another section."
+          "help": "Write this section using the rich text toolbar. Add another Section component for another section."
         }
-      ]
+      ],
+      "displayName": "Section"
     }
   },
   "renderingFolder": {
@@ -205,11 +206,11 @@
       "id": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
       "path": "/sitecore/layout/Renderings/Project/Westfield/Advice/ArticleText",
       "componentName": "ArticleText",
-      "displayName": "Text",
+      "displayName": "Section",
       "datasourceTemplateId": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
       "datasourceTemplatePath": "/sitecore/templates/Project/Westfield/Components/ArticleText",
       "datasourceLocation": "query:./*[@@name='Data']",
-      "owner": "Page-local /Data",
+      "owner": "Page-local /Data; each repeatable Section groups Heading and Body.",
       "exports": [
         "Default"
       ],
@@ -312,31 +313,17 @@
       },
       "children": [
         {
-          "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Introduction",
-          "name": "Introduction",
+          "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Section",
+          "name": "Section",
           "templateId": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
           "renderingId": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
-          "datasource": "local:/Data/Introduction"
-        },
-        {
-          "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Checklist",
-          "name": "Checklist",
-          "templateId": "eb51b3bf-4c67-59f7-af50-bce1d7e28cf9",
-          "renderingId": "c8ff5ecf-3894-50f2-93d1-0654c6a693ea",
-          "datasource": "local:/Data/Checklist"
-        },
-        {
-          "path": "/sitecore/content/Westfield/westfield/Presentation/Page Branches/Advice Article/$name/Data/Next step",
-          "name": "Next step",
-          "templateId": "4f0d1503-3a02-4455-9f1d-878f10ac23dd",
-          "renderingId": "15f0d95b-ce29-45d7-8937-42016fcf3efd",
-          "datasource": "local:/Data/Next step"
+          "datasource": "local:/Data/Section"
         }
       ],
       "placeholderKey": "article-content-{*}",
-      "placementPathStatus": "Native Add path observed and corrected branch/representative article deliver three body components at /headless-main/sxa-article/article-content-2.",
+      "placementPathStatus": "Source contract: one blank Section placement at /headless-main/sxa-article/article-content-2; native creation and repeatable-section acceptance are recorded separately.",
       "placementPath": "/headless-main/sxa-article/article-content-2",
-      "placementStatus": "PASS: three page-local body placements bind; native picker restricts to ArticleText/CampaignAction; allowed insertion and restoration, save/reload and publication verified.",
+      "placementStatus": "SOURCE_READY: article-content permits repeatable Section components and optional Action components. The branch begins with one independent blank page-local Section; existing article placements and content are preserved.",
       "editorialDefaults": {
         "identity": {
           "Title": "$name",
@@ -352,21 +339,12 @@
           "PublishedDate": ""
         },
         "localData": {
-          "Introduction": {
+          "Section": {
             "Heading": "",
             "Body": ""
-          },
-          "Checklist": {
-            "Heading": "",
-            "Body": ""
-          },
-          "Next step": {
-            "Heading": "",
-            "Body": "",
-            "Link": ""
           }
         },
-        "behavior": "Create independent empty editable fields with the existing Article Page Design and three local body placements; keep only the author-supplied page name as the native title/navigation default. Published example articles are populated separately, never copied as new-article sample copy."
+        "behavior": "Create independent empty editable fields with the existing Article Page Design and one page-local Section containing Heading and Body. Authors can add as many Section components as needed in the restricted article-content placeholder; optional Action remains available. Keep only the author-supplied page name as the native title/navigation default. Existing articles are preserved, never replayed as new-article sample copy."
       }
     },
     "palette": {
@@ -536,7 +514,7 @@
       {
         "fieldId": "966cfa1c-7813-5866-b3e0-d3178c9f2eeb",
         "label": "Text",
-        "help": "Write this section using the rich text toolbar. Add another Text component for another section.",
+        "help": "Write this section using the rich text toolbar. Add another Section component for another section.",
         "requiredBeforeApproval": false,
         "templateFieldPath": "/sitecore/templates/Project/Westfield/Components/ArticleText/Content/Body"
       },
