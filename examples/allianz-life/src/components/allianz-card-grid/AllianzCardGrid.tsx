@@ -1348,7 +1348,8 @@ import { IapSourceGlyph } from './iap-source-glyphs.props';
 
 /** Two finite Index Advantage+ tile rows retain their ordered native fields.
  * Source-only icons are decorative; Login keeps its received disabled link. */
-function SourceIapCards({ fields, params, support = false }: AllianzCardGridProps & { support?: boolean }) {
+function SourceIapCards({ fields, params, support = false, headingLevel = 'h4' }:
+  AllianzCardGridProps & { support?: boolean; headingLevel?: 'h2' | 'h3' | 'h4' }) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
@@ -1368,7 +1369,7 @@ function SourceIapCards({ fields, params, support = false }: AllianzCardGridProp
                 {glyph && <div className="tileSubGrid__image"><div className={`tileIcon ${support ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}><IapSourceGlyph glyph={glyph} /></div></div>}
                 <div className="tileSubGrid__content">
                   <header>
-                    <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>
+                    <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={headingLevel} field={card.heading?.jsonValue} />}</div>
                     {shouldRenderTextField(card.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.subheading?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
                   </header>
                   {shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" /> : <div className="tileBody u-font-size-md" />}
@@ -1392,6 +1393,10 @@ function SourceIapCards({ fields, params, support = false }: AllianzCardGridProp
 
 export const IapContractTools = (props: AllianzCardGridProps) => <SourceIapCards {...props} />;
 export const IapSupport = (props: AllianzCardGridProps) => <SourceIapCards {...props} support />;
+
+/** NF keeps the same native cards and link policies with its source heading levels. */
+export const NfContractTools = (props: AllianzCardGridProps) => <SourceIapCards {...props} headingLevel="h2" />;
+export const NfSupport = (props: AllianzCardGridProps) => <SourceIapCards {...props} support headingLevel="h3" />;
 
 
 import { useId as useClassicGlyphId } from 'react';

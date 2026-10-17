@@ -1,0 +1,1060 @@
+{
+  "schema": "allianz.nf.source-layout-witness.v1",
+  "qualification": "Source is a parent-captured official HTML witness. SDK test envelopes are synthetic and do not assert saved CMS IDs or bindings.",
+  "source": {
+    "sha256": "7467a1a973d6265e966b89d79b04e265259f465270af38a922590a76b6322e80",
+    "bytes": 143753,
+    "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf"
+  },
+  "headings": {
+    "contract": {
+      "tags": [
+        "h2",
+        "h2",
+        "h2"
+      ],
+      "texts": [
+        "Already own Index Advantage+ NF®?",
+        "Learn more about RILAs",
+        "Run the numbers"
+      ],
+      "fragmentSha256": "fc20abdf4e99fb43fb68cab95d5aa32bd8ab320e7a209f520c5a25a2c8a8be1b",
+      "sourceGeometryClasses": [
+        "l-container--full-width  t-bg-grey-soft  axlTileCollection",
+        "l-grid l-grid--max-width ",
+        "l-grid__row match-height-row   ",
+        "l-grid__column-medium-4",
+        "m-axlTile match-height    -is--stacked  t-bg-primary-white ",
+        "tileContent u-text-center",
+        "tileSubGrid__image",
+        "tileIcon  t-bg-transparent t-icon-primary-black",
+        "tileSubGrid__content",
+        "tileHeading ",
+        "tileSubHeading ",
+        "tileBody u-font-size-md",
+        "tileLink",
+        "a-link",
+        "a-link__icon",
+        "a-link__text"
+      ]
+    },
+    "support": {
+      "tags": [
+        "h3",
+        "h3",
+        "h3"
+      ],
+      "texts": [
+        "Already have a financial professional?",
+        "Don't have a financial professional?",
+        "Still have additional questions?"
+      ],
+      "fragmentSha256": "fc4936586f2ae0fdd64811565666d80f90de5f75d7a6fa6284ec97403301e10b",
+      "sourceGeometryClasses": [
+        "l-grid__row match-height-row  u-padding-bottom-xl ",
+        "l-grid__column-medium-4",
+        "m-axlTile match-height    -is--stacked  t-bg-primary-white ",
+        "tileContent u-text-center",
+        "tileSubGrid__image",
+        "tileIcon  t-bg-primary-brand t-icon-primary-white",
+        "tileSubGrid__content",
+        "tileHeading ",
+        "tileSubHeading ",
+        "tileBody u-font-size-md",
+        "tileLink",
+        "a-link",
+        "a-link__icon",
+        "a-link__text"
+      ]
+    },
+    "indexDefinitions": {
+      "tags": [
+        "h2"
+      ],
+      "texts": [
+        "Indexes available with the Index Advantage+ NF® Annuity RILA index strategies"
+      ],
+      "fragmentSha256": "e0cc5d13fdba7c33382077f78d752d7ccdd9a4881a9a3174ee93acd87ab9707d",
+      "sourceGeometryClasses": [
+        "m-axlTile match-height    -is--stacked  t-bg-transparent ",
+        "tileContent u-text-center",
+        "tileSubGrid__content",
+        "tileHeading ",
+        "tileSubHeading ",
+        "tileBody u-font-size-xl"
+      ]
+    }
+  },
+  "resources": {
+    "containerClass": "l-container--full-width t-bg-grey-soft axlTileCollection",
+    "rowClass": "l-grid__row u-padding-bottom-xl u-padding-top-xl",
+    "columnClass": "l-grid__column-medium-12",
+    "owners": [
+      {
+        "variant": "NfResourcesStart",
+        "sourceOwner": "04 Resources 01",
+        "body": "\n\t\t<h3 style=\"text-align: center;\">Additional resources</h3>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/01/18/04/RILA-002.pdf\" target=\"_blank\" aria-label=\"View RILA consumer brochure (PDF)\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--download\"></span>\n<span class=\"c-link__text\">View RILA consumer brochure (PDF)</span></a></p>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/01/18/04/INFP-006.pdf\" target=\"_blank\" aria-label=\"View Index Advantage+ NF® product profile (PDF)\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--download\"></span>\n<span class=\"c-link__text\">View Index Advantage+ NF&reg; product profile (PDF)</span></a></p>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"https://www.allianzlife.com/-/media/Files/Global/documents/2024/03/27/17/26/RILA-060.pdf\" target=\"_blank\" aria-label=\"View RILA index options guide (PDF)\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--download\"></span>\n<span class=\"c-link__text\">View RILA index options guide (PDF)</span></a></p>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/01/18/04/RILA-004.pdf\" target=\"_blank\" aria-label=\"View RILA performance lock brochure (PDF)\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--download\"></span>\n<span class=\"c-link__text\">View RILA Performance Lock brochure (PDF)</span></a></p>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus\" aria-label=\"View Index Advantage+ NF® prospectus\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n<span class=\"c-link__text\">View Index Advantage+ NF&reg; prospectus</span></a></p>\n\t",
+        "bodySha256": "afe3d07a50c0c3a33baa4c1052453312ffaf7731702e688770a4e64921b889a7",
+        "ownerMarkup": "<div class=\"o-richTextEditor__wrapper\">\n\t\t<h3 style=\"text-align: center;\">Additional resources</h3>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/01/18/04/RILA-002.pdf\" target=\"_blank\" aria-label=\"View RILA consumer brochure (PDF)\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--download\"></span>\n<span class=\"c-link__text\">View RILA consumer brochure (PDF)</span></a></p>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/01/18/04/INFP-006.pdf\" target=\"_blank\" aria-label=\"View Index Advantage+ NF® product profile (PDF)\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--download\"></span>\n<span class=\"c-link__text\">View Index Advantage+ NF&reg; product profile (PDF)</span></a></p>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"https://www.allianzlife.com/-/media/Files/Global/documents/2024/03/27/17/26/RILA-060.pdf\" target=\"_blank\" aria-label=\"View RILA index options guide (PDF)\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--download\"></span>\n<span class=\"c-link__text\">View RILA index options guide (PDF)</span></a></p>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/01/18/04/RILA-004.pdf\" target=\"_blank\" aria-label=\"View RILA performance lock brochure (PDF)\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--download\"></span>\n<span class=\"c-link__text\">View RILA Performance Lock brochure (PDF)</span></a></p>\n<p style=\"text-align: center;\">\n<a class=\"c-link c-link--block\" href=\"/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/prospectus\" aria-label=\"View Index Advantage+ NF® prospectus\">\n<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n<span class=\"c-link__text\">View Index Advantage+ NF&reg; prospectus</span></a></p>\n\t</div>",
+        "ownerMarkupSha256": "168ac4ebb5f0adaa8ea46b19e1a6b98d7d91e92eb82cdf9cf8fc5880daa6d19f"
+      },
+      {
+        "variant": "NfResourcesMiddle",
+        "sourceOwner": "04 Resources 02",
+        "body": "\n\t\t\t\t\t<p>Index Advantage+ NF&reg; offers a different risk/return consideration from traditional accumulation products and is designed to complement your portfolio. It provides indexed return potential with the opportunity for varying levels of protection through multiple index options available prior to receiving annuity payments, tax-deferred growth potential, a variety of annuity payout options, and a death benefit during the accumulation phase.</p>\n<p>RILAs are subject to investment risk, including possible loss of principal. Investment returns and principal value will fluctuate with market conditions so that contract value,&nbsp;upon distribution, may be worth more or less than the original cost.</p>\n\t\t\t\t",
+        "bodySha256": "763f00a9915aa679e3761bcc9d114a707daf301c95b14521080d1520521af6dd",
+        "ownerMarkup": "<article class=\"m-axlTile match-height    -is--stacked  t-bg-transparent \">\n\t\t<div class=\"tileContent u-text-center\">\n\n\t\t\t<div class=\"tileSubGrid__content\">\n\t\t\t\t<header>\n\t\t\t\t\t<div class=\"tileHeading \"></div>\n\t\t\t\t\t<div class=\"tileSubHeading \"></div>\n\t\t\t\t</header>\n\n\t\t\t\t<div class=\"tileBody u-font-size-xl\">\n\t\t\t\t\t<p>Index Advantage+ NF&reg; offers a different risk/return consideration from traditional accumulation products and is designed to complement your portfolio. It provides indexed return potential with the opportunity for varying levels of protection through multiple index options available prior to receiving annuity payments, tax-deferred growth potential, a variety of annuity payout options, and a death benefit during the accumulation phase.</p>\n<p>RILAs are subject to investment risk, including possible loss of principal. Investment returns and principal value will fluctuate with market conditions so that contract value,&nbsp;upon distribution, may be worth more or less than the original cost.</p>\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</div>\n\n\t</article>",
+        "ownerMarkupSha256": "95434edf6b1eb180eb9050d1d768c89e1ec03a03d715cc214c2fe24145f9285d"
+      },
+      {
+        "variant": "NfResourcesEnd",
+        "sourceOwner": "04 Resources 03",
+        "body": "\n\t\t\t\t\t<p><sup>1</sup> While no product fee is assessed on index options, limits are imposed on the upside performance through the use of caps, trigger rates, and/or participation rates. These limits can impose implicit costs. The variable option is subject to fund fees and expenses. If the Maximum Anniversary Value Death Benefit is selected, it has a 0.20% rider fee. There is also a $50 contract maintenance charge if the contract value is less than $100,000.</p>\n\t\t\t\t",
+        "bodySha256": "4c23e893b5da7d49b614466538c8f7bfe17216b12ad9e556459fb04179ed99cc",
+        "ownerMarkup": "<article class=\"m-axlIntroductionBlock -is--stacked -no--image  \">\n\t\t<div class=\"tileContent u-text-left\">\n\t\t\t<header>\n\t\t\t\t<div class=\"tileHeading\"></div>\n\t\t\t\t<div class=\"tileSubHeading\"></div>\n\t\t\t</header>\n\n\t\t\t\t<div class=\"tileBody\">\n\t\t\t\t\t<p><sup>1</sup> While no product fee is assessed on index options, limits are imposed on the upside performance through the use of caps, trigger rates, and/or participation rates. These limits can impose implicit costs. The variable option is subject to fund fees and expenses. If the Maximum Anniversary Value Death Benefit is selected, it has a 0.20% rider fee. There is also a $50 contract maintenance charge if the contract value is less than $100,000.</p>\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t</article>",
+        "ownerMarkupSha256": "1962a0d7a96513bfa99857b5affae97590965cf00581449782b8623eb21c88ca"
+      }
+    ]
+  },
+  "syntheticSdkEnvelopes": {
+    "rich": {
+      "id": "fixture-only-nf-owner",
+      "heading": {
+        "jsonValue": {
+          "value": "Authored fixture heading ®",
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-heading",
+            "fieldType": "Single-Line Text",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "subheading": {
+        "jsonValue": {
+          "value": "<p>Authored <em>fixture subheading</em>.</p>",
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-subheading",
+            "fieldType": "Rich Text",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "body": {
+        "jsonValue": {
+          "value": "<p>Authored <strong>fixture body</strong> with an <a href=\"#authored-detail\">authored detail</a>.</p>",
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-body",
+            "fieldType": "Rich Text",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "primaryLink": {
+        "jsonValue": {
+          "value": {
+            "href": "/about",
+            "text": "Authored fixture link",
+            "linktype": "internal"
+          },
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-primaryLink",
+            "fieldType": "General Link",
+            "fixtureOnly": true
+          }
+        }
+      }
+    },
+    "cards": {
+      "id": "fixture-only-nf-owner",
+      "heading": {
+        "jsonValue": {
+          "value": "Authored fixture heading ®",
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-heading",
+            "fieldType": "Single-Line Text",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "subheading": {
+        "jsonValue": {
+          "value": "<p>Authored <em>fixture subheading</em>.</p>",
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-subheading",
+            "fieldType": "Rich Text",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "body": {
+        "jsonValue": {
+          "value": "<p>Authored <strong>fixture body</strong> with an <a href=\"#authored-detail\">authored detail</a>.</p>",
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-body",
+            "fieldType": "Rich Text",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "primaryLink": {
+        "jsonValue": {
+          "value": {
+            "href": "/about",
+            "text": "Authored fixture link",
+            "linktype": "internal"
+          },
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-primaryLink",
+            "fieldType": "General Link",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "children": {
+        "results": [
+          {
+            "id": "fixture-only-nf-card-0",
+            "fieldCollection": [
+              {
+                "name": "Heading",
+                "jsonValue": {
+                  "value": "Already own Index Advantage+ NF®?",
+                  "metadata": {
+                    "itemId": "fixture-only-nf-card-0",
+                    "fieldId": "fixture-heading",
+                    "fieldType": "Single-Line Text",
+                    "fixtureOnly": true
+                  }
+                }
+              },
+              {
+                "name": "Subheading",
+                "jsonValue": {
+                  "value": "<p>Authored card subheading 0</p>",
+                  "metadata": {
+                    "itemId": "fixture-only-nf-card-0",
+                    "fieldId": "fixture-subheading",
+                    "fieldType": "Rich Text",
+                    "fixtureOnly": true
+                  }
+                }
+              },
+              {
+                "name": "Body",
+                "jsonValue": {
+                  "value": "<p>Authored card body 0</p>",
+                  "metadata": {
+                    "itemId": "fixture-only-nf-card-0",
+                    "fieldId": "fixture-body",
+                    "fieldType": "Rich Text",
+                    "fixtureOnly": true
+                  }
+                }
+              },
+              {
+                "name": "Links",
+                "jsonValue": [
+                  {
+                    "id": "fixture-only-nf-card-0-link-0",
+                    "fields": {
+                      "Link": {
+                        "value": {
+                          "href": "#service-unavailable-login",
+                          "text": "Keep disabled login",
+                          "linktype": "internal",
+                          "allianzUnavailable": true
+                        },
+                        "metadata": {
+                          "itemId": "fixture-only-nf-card-0-link-0",
+                          "fieldId": "fixture-link",
+                          "fieldType": "General Link",
+                          "fixtureOnly": true
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "fixture-only-nf-card-1",
+            "fieldCollection": [
+              {
+                "name": "Heading",
+                "jsonValue": {
+                  "value": "Learn more about RILAs",
+                  "metadata": {
+                    "itemId": "fixture-only-nf-card-1",
+                    "fieldId": "fixture-heading",
+                    "fieldType": "Single-Line Text",
+                    "fixtureOnly": true
+                  }
+                }
+              },
+              {
+                "name": "Subheading",
+                "jsonValue": {
+                  "value": "<p>Authored card subheading 1</p>",
+                  "metadata": {
+                    "itemId": "fixture-only-nf-card-1",
+                    "fieldId": "fixture-subheading",
+                    "fieldType": "Rich Text",
+                    "fixtureOnly": true
+                  }
+                }
+              },
+              {
+                "name": "Body",
+                "jsonValue": {
+                  "value": "<p>Authored card body 1</p>",
+                  "metadata": {
+                    "itemId": "fixture-only-nf-card-1",
+                    "fieldId": "fixture-body",
+                    "fieldType": "Rich Text",
+                    "fixtureOnly": true
+                  }
+                }
+              },
+              {
+                "name": "Links",
+                "jsonValue": [
+                  {
+                    "id": "fixture-only-nf-card-1-link-0",
+                    "fields": {
+                      "Link": {
+                        "value": {
+                          "href": "/about",
+                          "text": "Authored About link",
+                          "linktype": "internal"
+                        },
+                        "metadata": {
+                          "itemId": "fixture-only-nf-card-1-link-0",
+                          "fieldId": "fixture-link",
+                          "fieldType": "General Link",
+                          "fixtureOnly": true
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "fixture-only-nf-card-2",
+            "fieldCollection": [
+              {
+                "name": "Heading",
+                "jsonValue": {
+                  "value": "Run the numbers",
+                  "metadata": {
+                    "itemId": "fixture-only-nf-card-2",
+                    "fieldId": "fixture-heading",
+                    "fieldType": "Single-Line Text",
+                    "fixtureOnly": true
+                  }
+                }
+              },
+              {
+                "name": "Subheading",
+                "jsonValue": {
+                  "value": "<p>Authored card subheading 2</p>",
+                  "metadata": {
+                    "itemId": "fixture-only-nf-card-2",
+                    "fieldId": "fixture-subheading",
+                    "fieldType": "Rich Text",
+                    "fixtureOnly": true
+                  }
+                }
+              },
+              {
+                "name": "Body",
+                "jsonValue": {
+                  "value": "<p>Authored card body 2</p>",
+                  "metadata": {
+                    "itemId": "fixture-only-nf-card-2",
+                    "fieldId": "fixture-body",
+                    "fieldType": "Rich Text",
+                    "fixtureOnly": true
+                  }
+                }
+              },
+              {
+                "name": "Links",
+                "jsonValue": [
+                  {
+                    "id": "fixture-only-nf-card-2-link-0",
+                    "fields": {
+                      "Link": {
+                        "value": {
+                          "href": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/calculator",
+                          "text": "Authored local calculator",
+                          "linktype": "internal"
+                        },
+                        "metadata": {
+                          "itemId": "fixture-only-nf-card-2-link-0",
+                          "fieldId": "fixture-link",
+                          "fieldType": "General Link",
+                          "fixtureOnly": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "fixture-only-nf-card-2-link-1",
+                    "fields": {
+                      "Link": {
+                        "value": {
+                          "href": "/what-we-offer/annuities/registered-index-linked-annuities/define-your-downside",
+                          "text": "Authored downside mock",
+                          "linktype": "internal"
+                        },
+                        "metadata": {
+                          "itemId": "fixture-only-nf-card-2-link-1",
+                          "fieldId": "fixture-link",
+                          "fieldType": "General Link",
+                          "fixtureOnly": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "fixture-only-nf-card-2-link-2",
+                    "fields": {
+                      "Link": {
+                        "value": {
+                          "href": "#service-unavailable-rates",
+                          "text": "Keep disabled rates",
+                          "linktype": "internal",
+                          "allianzUnavailable": true
+                        },
+                        "metadata": {
+                          "itemId": "fixture-only-nf-card-2-link-2",
+                          "fieldId": "fixture-link",
+                          "fieldType": "General Link",
+                          "fixtureOnly": true
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "introduction": {
+    "body": "\n\t\t\t\t\t<p>Index Advantage+ NF&reg;, our no-product-fee<sup>1</sup>&nbsp;<a href=\"/what-we-offer/annuities/registered-index-linked-annuities\">registered index-linked annuity (RILA)</a>, is designed to help you accumulate money for retirement. It can give you long-term growth potential &ndash; plus a level of protection through multiple index options.</p>\n\t\t\t\t",
+    "sourceMarkup": "<div class=\"l-container--full-width  t-bg-grey-soft  axlTileCollection\">\n\t\t<div class=\"l-grid l-grid--max-width \">\n\n\t\t\t\n\n\t\t\t<div class=\"l-grid__row    \">\n\t\t\t\t<div class=\"l-grid__column-medium-12\">\n\t\t\t\t\t\t<article class=\"m-axlTile match-height    -is--stacked  t-bg-transparent \">\n\t\t<div class=\"tileContent u-text-center\">\n\n\t\t\t<div class=\"tileSubGrid__content\">\n\t\t\t\t<header>\n\t\t\t\t\t<div class=\"tileHeading \"></div>\n\t\t\t\t\t<div class=\"tileSubHeading \"></div>\n\t\t\t\t</header>\n\n\t\t\t\t<div class=\"tileBody u-font-size-xl\">\n\t\t\t\t\t<p>Index Advantage+ NF&reg;, our no-product-fee<sup>1</sup>&nbsp;<a href=\"/what-we-offer/annuities/registered-index-linked-annuities\">registered index-linked annuity (RILA)</a>, is designed to help you accumulate money for retirement. It can give you long-term growth potential &ndash; plus a level of protection through multiple index options.</p>\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</div>\n\n\t</article>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t\n\n\t\t</div>\n\t</div>",
+    "bodySha256": "5092a0446c6bd7823aa2e874649802afd0d200623e9a915671049d875c6d851b",
+    "sourceMarkupSha256": "f042a0d75b0a28f89e4b80ece4637cafdb1a26fa2767d8a064f7839ef3a87e0f"
+  },
+  "baseline": {
+    "head": "a6d08d00a5a90c265e55adabe830d07c42dc571e",
+    "sourceSha256": {
+      "rich": "37cd744f118789509188aacd330835f4f491cdd4463c467e9f1f8bc354cb5516",
+      "cards": "4e09da775df5592982fa091dc018889ce2c3decd403fbe49e072c5e0c704eac7"
+    },
+    "renders": [
+      {
+        "kind": "rich",
+        "variant": "Default",
+        "state": "filled",
+        "editing": false,
+        "sha256": "7f69da4b1aa06b2406d61f9c09cacca0bd8cfc86b83ec5facb080c1ed1455ebf"
+      },
+      {
+        "kind": "rich",
+        "variant": "Default",
+        "state": "filled",
+        "editing": true,
+        "sha256": "62b1bfa214b9da53844ca938fea196178159d6cc856cbbcd39ec3b117165e3ce"
+      },
+      {
+        "kind": "rich",
+        "variant": "Default",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "cf845e361cdca8e3a187976b94ed470bb73b1cc1b7aea965ab3760dd953dbafc"
+      },
+      {
+        "kind": "rich",
+        "variant": "Default",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "d1913ec0dea704ff8ae1f11999def45c97171bc6f6a7835f60bd96b59a6e9caa"
+      },
+      {
+        "kind": "rich",
+        "variant": "Default",
+        "state": "absent",
+        "editing": false,
+        "sha256": "cf845e361cdca8e3a187976b94ed470bb73b1cc1b7aea965ab3760dd953dbafc"
+      },
+      {
+        "kind": "rich",
+        "variant": "Default",
+        "state": "absent",
+        "editing": true,
+        "sha256": "cf845e361cdca8e3a187976b94ed470bb73b1cc1b7aea965ab3760dd953dbafc"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIntroduction",
+        "state": "filled",
+        "editing": false,
+        "sha256": "3d317c84fcfa571d2fa5dad6d1c4b1869c18f0b4af0f31d55d216d1121f9f444"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIntroduction",
+        "state": "filled",
+        "editing": true,
+        "sha256": "dd19715e2e10583ec93b074c561f702bcc874464bbeedf68150c0312476bc477"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIntroduction",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "5be0967fe69609be8c7700e4a0869742bb1c2995a38e3c07add579a0e7383dab"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIntroduction",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "644c8b3d6c15bdaf70ed0379d55c5c546e286e320de8c0b980685cc702103b3c"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIntroduction",
+        "state": "absent",
+        "editing": false,
+        "sha256": "5be0967fe69609be8c7700e4a0869742bb1c2995a38e3c07add579a0e7383dab"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIntroduction",
+        "state": "absent",
+        "editing": true,
+        "sha256": "5be0967fe69609be8c7700e4a0869742bb1c2995a38e3c07add579a0e7383dab"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapRiskReturnDescription",
+        "state": "filled",
+        "editing": false,
+        "sha256": "3c1e8d5dda44cc5d046d4ca84e5c47105bedbc24cfda2217343b800113bdcd59"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapRiskReturnDescription",
+        "state": "filled",
+        "editing": true,
+        "sha256": "cee905d89d5f1f60457d20b4e01b64ae7dd200bdb1535c3762c71d7a6820cc12"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapRiskReturnDescription",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "7fdad2171d2ae77ce6a39403c000eb28f977aeeecf06bd99ccd1bb488b548923"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapRiskReturnDescription",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "4cfa7c63b6cd14b621e25d5e81a2775b8661ca354bba29d22afc51624bf12188"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapRiskReturnDescription",
+        "state": "absent",
+        "editing": false,
+        "sha256": "7fdad2171d2ae77ce6a39403c000eb28f977aeeecf06bd99ccd1bb488b548923"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapRiskReturnDescription",
+        "state": "absent",
+        "editing": true,
+        "sha256": "7fdad2171d2ae77ce6a39403c000eb28f977aeeecf06bd99ccd1bb488b548923"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapInvestorProfile",
+        "state": "filled",
+        "editing": false,
+        "sha256": "0a6ae6419599ff36ab4fc813395f826ace2e5d8d66d44601a829a1a262c85bcb"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapInvestorProfile",
+        "state": "filled",
+        "editing": true,
+        "sha256": "0b940bad14cd97fdf87b897aeb68ec29eedf587167b6dceeb640e705a531a8a2"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapInvestorProfile",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "3ec0aeb7ff43cd93e143b9010bbcf5997c21e99fa3c7ebfc936d8158c8e5db7c"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapInvestorProfile",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "e3580d8ff34d05132b3f6edcb0ac330cc32551db684c2ba10902f4bf8d20a806"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapInvestorProfile",
+        "state": "absent",
+        "editing": false,
+        "sha256": "3ec0aeb7ff43cd93e143b9010bbcf5997c21e99fa3c7ebfc936d8158c8e5db7c"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapInvestorProfile",
+        "state": "absent",
+        "editing": true,
+        "sha256": "3ec0aeb7ff43cd93e143b9010bbcf5997c21e99fa3c7ebfc936d8158c8e5db7c"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "filled",
+        "editing": false,
+        "sha256": "8eff0d16a63aa2ef9632f7498b44824076a47227b9889b82c4987d00373f4f7f"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "filled",
+        "editing": true,
+        "sha256": "996ee13b7c6057318cd604094e569f7d6096fefe41720694fb28c7ac5f8e7af3"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "ae5b2d31489dc0cc151b008d0d437c1350fba4f1f9391fca85f8561906891ea6"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "049723e5a91e9cf5b9ae49c802d3f516d0dca12f8b228d0099e737a4173d4533"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "absent",
+        "editing": false,
+        "sha256": "ae5b2d31489dc0cc151b008d0d437c1350fba4f1f9391fca85f8561906891ea6"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "absent",
+        "editing": true,
+        "sha256": "ae5b2d31489dc0cc151b008d0d437c1350fba4f1f9391fca85f8561906891ea6"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexRiskDisclosure",
+        "state": "filled",
+        "editing": false,
+        "sha256": "4b0e133e385f8cdd32b6f95ababc5c5b5a28fc767af9cd7e36edc9734b94ca6d"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexRiskDisclosure",
+        "state": "filled",
+        "editing": true,
+        "sha256": "747450ac6813e00310106b6b322012cf4bc2207620873c88a354e12855863ed9"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexRiskDisclosure",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "85252569926b098561c48c4889f882586646d260aeba56c889646fa0573d6d90"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexRiskDisclosure",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "bc6eda2f53599f20720e9a855741b21912cffbf9e60a9a6003d7c970d6dcfa1e"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexRiskDisclosure",
+        "state": "absent",
+        "editing": false,
+        "sha256": "85252569926b098561c48c4889f882586646d260aeba56c889646fa0573d6d90"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexRiskDisclosure",
+        "state": "absent",
+        "editing": true,
+        "sha256": "85252569926b098561c48c4889f882586646d260aeba56c889646fa0573d6d90"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapResources",
+        "state": "filled",
+        "editing": false,
+        "sha256": "59dc8f63acb7bab36cd92a1cd08668313606755ef8a4c51640b39f231a069e13"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapResources",
+        "state": "filled",
+        "editing": true,
+        "sha256": "2339430ea3e1d5e0e98c6f6201917773a2e699782eadb9929d31ac94ccf16929"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapResources",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "449482a9d3494748cc051729a4519899d079b101640b1a98083a1d3283e920ba"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapResources",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "091c80550b3d39ac70d4a9803efe991f66ccb7e1b7972069c1234aeaa9a9026e"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapResources",
+        "state": "absent",
+        "editing": false,
+        "sha256": "449482a9d3494748cc051729a4519899d079b101640b1a98083a1d3283e920ba"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapResources",
+        "state": "absent",
+        "editing": true,
+        "sha256": "449482a9d3494748cc051729a4519899d079b101640b1a98083a1d3283e920ba"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsContent",
+        "state": "filled",
+        "editing": false,
+        "sha256": "8a94c9558941428ea23300359000f9ed6f23c67a27d16232f56901a8d11bfbe5"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsContent",
+        "state": "filled",
+        "editing": true,
+        "sha256": "c6ada5581517e05cc69c94b805cc4e16b5ca84172bfceb9fabca1dbdc858882a"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsContent",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "f8db01aa47b70cbf766552d76dd6cf0013f3b6fdf4f0772202479bb4da55f3d3"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsContent",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "7dd0230b3242bb40e0b9e737c65550c250e9e684ce924dc997e21ce1e91af71d"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsContent",
+        "state": "absent",
+        "editing": false,
+        "sha256": "f8db01aa47b70cbf766552d76dd6cf0013f3b6fdf4f0772202479bb4da55f3d3"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapIndexDefinitionsContent",
+        "state": "absent",
+        "editing": true,
+        "sha256": "f8db01aa47b70cbf766552d76dd6cf0013f3b6fdf4f0772202479bb4da55f3d3"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapNextStep",
+        "state": "filled",
+        "editing": false,
+        "sha256": "6d15dc30c7191d8cf282e5b9f16af4a7bb794c9b5ba41c62b94599d4171ef3db"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapNextStep",
+        "state": "filled",
+        "editing": true,
+        "sha256": "15933bf9c595b4fbac126945720cc516daa862e72ddaa72de25ffe9f69bd235e"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapNextStep",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "7f26a44dece71a686c8b98a7fea4386eab74f74d6c2f2234600f94859bd03610"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapNextStep",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "edbdf3b871fc6038c78bf0ea5d668afaaaa9a49498c0b494498d7227a7fd272f"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapNextStep",
+        "state": "absent",
+        "editing": false,
+        "sha256": "7f26a44dece71a686c8b98a7fea4386eab74f74d6c2f2234600f94859bd03610"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapNextStep",
+        "state": "absent",
+        "editing": true,
+        "sha256": "7f26a44dece71a686c8b98a7fea4386eab74f74d6c2f2234600f94859bd03610"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapFootnotes",
+        "state": "filled",
+        "editing": false,
+        "sha256": "349c3886a3d4763ca237361768ac7f2d45b9b453afecc231d169b0961d2d8f28"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapFootnotes",
+        "state": "filled",
+        "editing": true,
+        "sha256": "9143f3ff5184de555401d15a8eb1ffec60b20374be9e2cd8555d1608403968cc"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapFootnotes",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "05f18dc40631f2389801261ef049bd349f97a19306284755ce3662d6aebf4bc3"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapFootnotes",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "adeae85e603847ba993af708201ab9bf920abdf933a45770b998fa87cd83bfc8"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapFootnotes",
+        "state": "absent",
+        "editing": false,
+        "sha256": "05f18dc40631f2389801261ef049bd349f97a19306284755ce3662d6aebf4bc3"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapFootnotes",
+        "state": "absent",
+        "editing": true,
+        "sha256": "05f18dc40631f2389801261ef049bd349f97a19306284755ce3662d6aebf4bc3"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapDisclosures",
+        "state": "filled",
+        "editing": false,
+        "sha256": "0bc5584542890f38e63e92ab8a71e0299921e346a24e59b89b899a90f82ad0f8"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapDisclosures",
+        "state": "filled",
+        "editing": true,
+        "sha256": "8bde123f3b9c751e3f7de58dc52171b9acb545b2c55fc75d6d03b2a8c7e65634"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapDisclosures",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "27d3b977e6670ea4a60488fe252d988a634be22ce53105c680d76f8be8e5a472"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapDisclosures",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "6509e4a7e2058d8df0b5799f789c955bde5b5dbfffefd3382e87096816197003"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapDisclosures",
+        "state": "absent",
+        "editing": false,
+        "sha256": "27d3b977e6670ea4a60488fe252d988a634be22ce53105c680d76f8be8e5a472"
+      },
+      {
+        "kind": "rich",
+        "variant": "IapDisclosures",
+        "state": "absent",
+        "editing": true,
+        "sha256": "27d3b977e6670ea4a60488fe252d988a634be22ce53105c680d76f8be8e5a472"
+      },
+      {
+        "kind": "cards",
+        "variant": "Default",
+        "state": "filled",
+        "editing": false,
+        "sha256": "08d77b26a71e543801e1d0b2584a0f2e9d411ec3e758453d40bb255dc85b8e56"
+      },
+      {
+        "kind": "cards",
+        "variant": "Default",
+        "state": "filled",
+        "editing": true,
+        "sha256": "e7b825b12e07c1a4273949ba85e4b29c6ca25b979e70c14f92d12864003d08e6"
+      },
+      {
+        "kind": "cards",
+        "variant": "Default",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "2dd530e38416c60d3ade83a905f2927e02a66258d4607135c7ca046bc6a0ffc0"
+      },
+      {
+        "kind": "cards",
+        "variant": "Default",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "d192c3811f03a51940c8e3bc2b51cfea4d519edf34e6fab08d5e12c86509c777"
+      },
+      {
+        "kind": "cards",
+        "variant": "Default",
+        "state": "absent",
+        "editing": false,
+        "sha256": "2dd530e38416c60d3ade83a905f2927e02a66258d4607135c7ca046bc6a0ffc0"
+      },
+      {
+        "kind": "cards",
+        "variant": "Default",
+        "state": "absent",
+        "editing": true,
+        "sha256": "2dd530e38416c60d3ade83a905f2927e02a66258d4607135c7ca046bc6a0ffc0"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapContractTools",
+        "state": "filled",
+        "editing": false,
+        "sha256": "20bab2541b4e1bfdb5f2a6379f03ac4519c8e9af48cfd56dc898cb2af95b2c52"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapContractTools",
+        "state": "filled",
+        "editing": true,
+        "sha256": "ad3110ece3ca19878e5173e211d96d63d921ba4b556eb27ddd07cffbc29d702b"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapContractTools",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "02e4841b19b83b74f2cb04cf5fc8b816e4a848f4c117dfe3a86eeadad4a692ea"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapContractTools",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "321caa67fc0a518ac977936c637a54aae561740c130f1b2ab329983722783cc7"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapContractTools",
+        "state": "absent",
+        "editing": false,
+        "sha256": "02e4841b19b83b74f2cb04cf5fc8b816e4a848f4c117dfe3a86eeadad4a692ea"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapContractTools",
+        "state": "absent",
+        "editing": true,
+        "sha256": "02e4841b19b83b74f2cb04cf5fc8b816e4a848f4c117dfe3a86eeadad4a692ea"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapSupport",
+        "state": "filled",
+        "editing": false,
+        "sha256": "53af0f70f11ec4c22e153e498fc416127fa1e3978b6a438f5ed4d28b92c7b29f"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapSupport",
+        "state": "filled",
+        "editing": true,
+        "sha256": "62c5974fbc8c8f81d7e85f07efd42be16dca6705a6fa5de55a003cb35c46a17e"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapSupport",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "75ec170aa83d82d89543a31273eea6738157022eb627004508ac74ed79f44497"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapSupport",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "f7bc50e6e9011cddc9cb59dee0aabfbce9af1e86201cc7270cecc5fa60b3e411"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapSupport",
+        "state": "absent",
+        "editing": false,
+        "sha256": "75ec170aa83d82d89543a31273eea6738157022eb627004508ac74ed79f44497"
+      },
+      {
+        "kind": "cards",
+        "variant": "IapSupport",
+        "state": "absent",
+        "editing": true,
+        "sha256": "75ec170aa83d82d89543a31273eea6738157022eb627004508ac74ed79f44497"
+      }
+    ]
+  }
+}

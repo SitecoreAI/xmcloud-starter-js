@@ -468,7 +468,8 @@ const IapInvestorProfileIcon = () => <div className="tileSubGrid__image"><div cl
   </svg>
 </div></div>;
 
-const IapStackedTile = ({ fields, params, role }: AllianzRichTextProps & { role: IapTileRole }) => {
+const IapStackedTile = ({ fields, params, role, indexHeadingLevel = 'h3' }:
+  AllianzRichTextProps & { role: IapTileRole; indexHeadingLevel?: 'h2' | 'h3' }) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
@@ -482,7 +483,7 @@ const IapStackedTile = ({ fields, params, role }: AllianzRichTextProps & { role:
         {role === 'investor-profile' && <IapInvestorProfileIcon />}
         <div className="tileSubGrid__content">
           <header>
-            <div className="tileHeading">{hasHeading && shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={role === 'index-definitions-heading' ? 'h3' : 'h2'} field={data.heading?.jsonValue} />}</div>
+            <div className="tileHeading">{hasHeading && shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={role === 'index-definitions-heading' ? indexHeadingLevel : 'h2'} field={data.heading?.jsonValue} />}</div>
             <div className="tileSubHeading" />
           </header>
           {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className={`tileBody u-font-size-${riskDisclosure ? 'sm' : 'xl'}`} />}
@@ -496,6 +497,7 @@ export const IapIntroduction = (props: AllianzRichTextProps) => <IapStackedTile 
 export const IapRiskReturnDescription = (props: AllianzRichTextProps) => <IapStackedTile {...props} role="risk-return" />;
 export const IapInvestorProfile = (props: AllianzRichTextProps) => <IapStackedTile {...props} role="investor-profile" />;
 export const IapIndexDefinitionsHeading = (props: AllianzRichTextProps) => <IapStackedTile {...props} role="index-definitions-heading" />;
+export const NfIndexDefinitionsHeading = (props: AllianzRichTextProps) => <IapStackedTile {...props} role="index-definitions-heading" indexHeadingLevel="h2" />;
 export const IapIndexRiskDisclosure = (props: AllianzRichTextProps) => <IapStackedTile {...props} role="index-risk-disclosure" />;
 
 /** The resources and definitions keep their complete native Rich Text markup. */
@@ -516,6 +518,39 @@ const IapRichTextBlock = ({ fields, params, resources = false }: AllianzRichText
 
 export const IapResources = (props: AllianzRichTextProps) => <IapRichTextBlock {...props} resources />;
 export const IapIndexDefinitionsContent = (props: AllianzRichTextProps) => <IapRichTextBlock {...props} />;
+
+/** Three existing NF owners form one source-grey resources section. Each keeps
+ * its original body field and article treatment, with spacing at the ends only. */
+const NfResourcesBlock = ({ fields, params, position }:
+  AllianzRichTextProps & { position: 'start' | 'middle' | 'end' }) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  const body = data.body?.jsonValue;
+  const hasBody = shouldRenderTextField(body, isEditing);
+  const spacing = position === 'start' ? ' u-padding-top-xl' : position === 'end' ? ' u-padding-bottom-xl' : '';
+  return <div className={`l-container--full-width t-bg-grey-soft axlTileCollection allianz-nf-resources allianz-nf-resources-${position}`} id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className={`l-grid__row${spacing}`}><div className="l-grid__column-medium-12">
+      {position === 'start' ? (hasBody && <RichText editable={isEditing} field={body} className="o-richTextEditor__wrapper" />) :
+        <article className={position === 'middle' ? 'm-axlTile match-height -is--stacked t-bg-transparent' : 'm-axlIntroductionBlock -is--stacked -no--image'}>
+          <div className={`tileContent ${position === 'middle' ? 'u-text-center' : 'u-text-left'}`}>
+            {position === 'middle' ? <div className="tileSubGrid__content">
+              <header><div className="tileHeading" /><div className="tileSubHeading" /></header>
+              {hasBody && <RichText editable={isEditing} field={body} className="tileBody u-font-size-xl" />}
+            </div> : <>
+              <header><div className="tileHeading" /><div className="tileSubHeading" /></header>
+              {hasBody && <RichText editable={isEditing} field={body} className="tileBody" />}
+            </>}
+          </div>
+        </article>}
+    </div></div></div>
+  </div>;
+};
+
+export const NfResourcesStart = (props: AllianzRichTextProps) => <NfResourcesBlock {...props} position="start" />;
+export const NfResourcesMiddle = (props: AllianzRichTextProps) => <NfResourcesBlock {...props} position="middle" />;
+export const NfResourcesEnd = (props: AllianzRichTextProps) => <NfResourcesBlock {...props} position="end" />;
 
 const IapIntroductionBlock = ({ fields, params, nextStep = false }: AllianzRichTextProps & { nextStep?: boolean }) => {
   const { page } = useSitecore();
