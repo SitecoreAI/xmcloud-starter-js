@@ -1,0 +1,1329 @@
+{
+  "schema": "allianz.select-strategies.source-regression-fixture.v1",
+  "source": {
+    "filename": "SELECT-OFFICIAL-SOURCE-20261017.html",
+    "bytes": 171536,
+    "sha256": "8fe6d596749100391f339280abbf78a6e997eef4a5196f4d187fa2a489e0acd8",
+    "sixGridSourceLines": [
+      1125,
+      1555
+    ]
+  },
+  "fixtureQualification": "Public source body/heading witnesses in synthetic SDK envelopes; no CMS payload, current-native state, approved DAM mapping, upload or publication readiness claim. Runtime must pass original native body field unchanged, including its existing verified DAM hrefs.",
+  "binding": {
+    "componentName": "AllianzAccordion",
+    "variant": "SelectStrategies",
+    "datasource": "local:/Data/08 Index strategies",
+    "nativeRootId": "3D67C852-4D02-4321-A257-3C264A2573EB",
+    "rootFieldFence": {
+      "heading": "",
+      "primaryLink": ""
+    },
+    "nativeObservationProvenance": "Root reported fresh native English1 item read, rev0ecc83ef-a18c-45c4-bbd7-d1ca5c18bb0a, guard1, Components/AllianzAccordion; six child source order verified. No CMS read by fixture preparer."
+  },
+  "sourceGrids": [
+    {
+      "order": 1,
+      "sourceLines": [
+        1125,
+        1190
+      ],
+      "sourceGridSHA256": "34b1276b6c05072693976b6912b313df209ab988909c7b44a2ff9eb3a65d1d88",
+      "gridClass": "l-grid l-grid--max-width l-grid--no-gutters-mobile",
+      "columnClass": "l-grid__column-large-10 l-grid__column-medium-12 l-grid__column-small-12 u-padding-bottom-md",
+      "accordionClass": "c-accordion js-accordion c-accordion--light",
+      "triggerClass": "js-accordion__trigger c-accordion__trigger safari_only",
+      "panelClass": "js-accordion__item-content c-accordion__item-content",
+      "heading": "Index Performance Strategy Multi-Year Terms",
+      "bodySHA256": "75d76744531f7b44bc605366d3bd5c5baab2cc2c285457ff0e73bec01d0aa6b4",
+      "bodyParagraphMarkupUnmodified": true,
+      "sourceBody": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>6-year term<br />\n            3-year term</td>\n            <td>10% buffer<br />\n            20% buffer<br />\n            30% buffer</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            </td>\n            <td>Provides different levels of performance potential (includes a participation rate and may be capped or uncapped) based on the level of buffered protection.</td>\n            <td>Provides a level of protection with a buffer that absorbs a certain percentage of negative index return.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2026/10/06/17/42/RILA-009-Performance-Multi-C.pdf\" target=\"_blank\" aria-label=\"Download Index Performance Strategy Multi-Year Term (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Performance Strategy Multi-Year Term (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+      "pdfHref": "/-/media/Files/Global/documents/2026/10/06/17/42/RILA-009-Performance-Multi-C.pdf",
+      "pdfTarget": "_blank"
+    },
+    {
+      "order": 2,
+      "sourceLines": [
+        1191,
+        1265
+      ],
+      "sourceGridSHA256": "6ec2a13585242edba29d450c17def742479bf638107e9e21a7467db5cbc80cef",
+      "gridClass": "l-grid l-grid--max-width l-grid--no-gutters-mobile",
+      "columnClass": "l-grid__column-large-10 l-grid__column-medium-12 l-grid__column-small-12 u-padding-bottom-md",
+      "accordionClass": "c-accordion js-accordion c-accordion--light",
+      "triggerClass": "js-accordion__trigger c-accordion__trigger safari_only",
+      "panelClass": "js-accordion__item-content c-accordion__item-content",
+      "heading": "Index Performance Strategy 1-Year Term",
+      "bodySHA256": "e230fed9958de395fe587f7a1771eec552697851d3c0f5dbb2ec6021a8f06c06",
+      "bodyParagraphMarkupUnmodified": true,
+      "sourceBody": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term</td>\n            <td>10% buffer<br />\n            20% buffer<br />\n            30% buffer<br />\n            </td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            </td>\n            <td>Provides different levels of performance potential (may be capped or uncapped) based on the level of buffered protection.</td>\n            <td>Provides a level of protection with a buffer that absorbs a certain percentage of negative index return.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/10/04/18/05/RILA-009-Performance-1-B.pdf\" target=\"_blank\" aria-label=\"Download Index Performance Strategy 1-Year Term (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Performance Strategy 1-Year Term (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+      "pdfHref": "/-/media/Files/Global/documents/2023/10/04/18/05/RILA-009-Performance-1-B.pdf",
+      "pdfTarget": "_blank"
+    },
+    {
+      "order": 3,
+      "sourceLines": [
+        1266,
+        1336
+      ],
+      "sourceGridSHA256": "85aaeb864f60da538fc089dae368edbd44594642782dc985cdb9991811579a95",
+      "gridClass": "l-grid l-grid--max-width l-grid--no-gutters-mobile",
+      "columnClass": "l-grid__column-large-10 l-grid__column-medium-12 l-grid__column-small-12 u-padding-bottom-md",
+      "accordionClass": "c-accordion js-accordion c-accordion--light",
+      "triggerClass": "js-accordion__trigger c-accordion__trigger safari_only",
+      "panelClass": "js-accordion__item-content c-accordion__item-content",
+      "heading": "Index Precision Strategy",
+      "bodySHA256": "b8c98ff1aeeb02e8e296d2ac763aa094bee1fb04b4ef4fa58fe18bd9e757eb83",
+      "bodyParagraphMarkupUnmodified": true,
+      "sourceBody": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term</td>\n            <td>10% buffer</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            </td>\n            <td>Credits an annual predetermined trigger rate if the annual index return is positive or zero.</td>\n            <td>Provides a level of protection with a buffer that absorbs the first 10% of negative index return.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/10/15/25/RILA-009-Precision.pdf\" target=\"_blank\" aria-label=\"Download Index Precision Strategy 1-Year Term (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Precision Strategy 1-Year Term (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+      "pdfHref": "/-/media/Files/Global/documents/2023/04/10/15/25/RILA-009-Precision.pdf",
+      "pdfTarget": "_blank"
+    },
+    {
+      "order": 4,
+      "sourceLines": [
+        1337,
+        1413
+      ],
+      "sourceGridSHA256": "1d3aa39572889a5578db192fb96c5fd1288c77d3afde3c2387063da7a792611e",
+      "gridClass": "l-grid l-grid--max-width l-grid--no-gutters-mobile",
+      "columnClass": "l-grid__column-large-10 l-grid__column-medium-12 l-grid__column-small-12 u-padding-bottom-md",
+      "accordionClass": "c-accordion js-accordion c-accordion--light",
+      "triggerClass": "js-accordion__trigger c-accordion__trigger safari_only",
+      "panelClass": "js-accordion__item-content c-accordion__item-content",
+      "heading": "Index Dual Precision Strategy Multi-Year or 1-Year Terms",
+      "bodySHA256": "e701beabf96cf0962174b954f27b9075e88cdb6cd783cc54325ca5d2b5fc2463",
+      "bodyParagraphMarkupUnmodified": true,
+      "sourceBody": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term<br />\n            3-year term<br />\n            6-year term</td>\n            <td>10% buffer<br />\n            20% buffer<br />\n            30% buffer</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            <br />\n            The S&P 500 Index, Russell 2000 Index and Nasdaq-100 Index are the only indexes available with multi-year terms.\n            </td>\n            <td>Credits a predetermined trigger rate if the index return is positive, zero, or negative and within the buffer.</td>\n            <td>Negative index return equal to or within the buffer provides a positive credit of the trigger rate, but if it exceeds the buffer it provides a negative credit equal to the amount of negative index return in excess of the buffer.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2026/10/06/17/41/RILA-009-DualPrecision-B.pdf\" target=\"_blank\" aria-label=\"Download Index Dual Precision Strategy (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Dual Precision Strategy (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+      "pdfHref": "/-/media/Files/Global/documents/2026/10/06/17/41/RILA-009-DualPrecision-B.pdf",
+      "pdfTarget": "_blank"
+    },
+    {
+      "order": 5,
+      "sourceLines": [
+        1414,
+        1484
+      ],
+      "sourceGridSHA256": "d5f3a86b2bd4bf46446c335ad338d586a1f62bffa5ee1b8dc7e81112d925f7bf",
+      "gridClass": "l-grid l-grid--max-width l-grid--no-gutters-mobile",
+      "columnClass": "l-grid__column-large-10 l-grid__column-medium-12 l-grid__column-small-12 u-padding-bottom-md",
+      "accordionClass": "c-accordion js-accordion c-accordion--light",
+      "triggerClass": "js-accordion__trigger c-accordion__trigger safari_only",
+      "panelClass": "js-accordion__item-content c-accordion__item-content",
+      "heading": "Index Guard Strategy",
+      "bodySHA256": "7ec48df30b4f440544837812e4a9fceefc485e20db7d6b5311daa4c465750f1d",
+      "bodyParagraphMarkupUnmodified": true,
+      "sourceBody": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term</td>\n            <td>-10% floor</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            </td>\n            <td>Provides performance potential up to a cap.</td>\n            <td>Provides a level of protection down to the -10% Floor, which means you assume the first 10% of negative index loss and no more.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/10/15/26/RILA-009-Guard.pdf\" target=\"_blank\" aria-label=\"Download Index Guard Strategy 1-Year Term (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Guard Strategy 1-Year Term (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+      "pdfHref": "/-/media/Files/Global/documents/2023/04/10/15/26/RILA-009-Guard.pdf",
+      "pdfTarget": "_blank"
+    },
+    {
+      "order": 6,
+      "sourceLines": [
+        1485,
+        1555
+      ],
+      "sourceGridSHA256": "e02e63982f40a44de075090cf75cb88eddfb8d0855283d69fcf91c7c95cfb984",
+      "gridClass": "l-grid l-grid--max-width l-grid--no-gutters-mobile",
+      "columnClass": "l-grid__column-large-10 l-grid__column-medium-12 l-grid__column-small-12 u-padding-bottom-md",
+      "accordionClass": "c-accordion js-accordion c-accordion--light",
+      "triggerClass": "js-accordion__trigger c-accordion__trigger safari_only",
+      "panelClass": "js-accordion__item-content c-accordion__item-content",
+      "heading": "Index Protection Strategy with Cap and Index Protection Strategy with Trigger",
+      "bodySHA256": "da39a83d83e96c53773bf9e401e4417446c53df5a60189f0a3de5d9b37a0e3ce",
+      "bodyParagraphMarkupUnmodified": true,
+      "sourceBody": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term</td>\n            <td>100% protection from negative index returns</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            </td>\n            <td>Credits performance potential up to a cap or an annual predetermined trigger rate depending on the strategy chosen, if the annual index return is zero or positive.</td>\n            <td>No losses will occur due to negative index returns.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/10/15/25/IAIP-009-Protection.pdf\" target=\"_blank\" aria-label=\"Download Index Protection Strategy with Cap and Index Protection Strategy with Trigger (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Protection Strategy with Cap and Index Protection Strategy with Trigger (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+      "pdfHref": "/-/media/Files/Global/documents/2023/04/10/15/25/IAIP-009-Protection.pdf",
+      "pdfTarget": "_blank"
+    }
+  ],
+  "syntheticSdkEnvelope": {
+    "id": "fixture-only-select-root",
+    "heading": {
+      "jsonValue": {
+        "value": "",
+        "metadata": {
+          "itemId": "fixture-only-select-0",
+          "fieldId": "fixture-only-root-heading-0",
+          "fieldType": "Single-Line Text",
+          "fixtureOnly": true
+        }
+      }
+    },
+    "primaryLink": {
+      "jsonValue": {
+        "value": {
+          "href": ""
+        }
+      }
+    },
+    "children": {
+      "total": 6,
+      "results": [
+        {
+          "id": "fixture-only-select-strategy-1",
+          "heading": {
+            "jsonValue": {
+              "value": "Index Performance Strategy Multi-Year Terms",
+              "metadata": {
+                "itemId": "fixture-only-select-1",
+                "fieldId": "fixture-only-heading-1",
+                "fieldType": "Single-Line Text",
+                "fixtureOnly": true
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>6-year term<br />\n            3-year term</td>\n            <td>10% buffer<br />\n            20% buffer<br />\n            30% buffer</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            </td>\n            <td>Provides different levels of performance potential (includes a participation rate and may be capped or uncapped) based on the level of buffered protection.</td>\n            <td>Provides a level of protection with a buffer that absorbs a certain percentage of negative index return.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2026/10/06/17/42/RILA-009-Performance-Multi-C.pdf\" target=\"_blank\" aria-label=\"Download Index Performance Strategy Multi-Year Term (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Performance Strategy Multi-Year Term (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+              "metadata": {
+                "itemId": "fixture-only-select-1",
+                "fieldId": "fixture-only-body-1",
+                "fieldType": "Rich Text",
+                "fixtureOnly": true
+              }
+            }
+          }
+        },
+        {
+          "id": "fixture-only-select-strategy-2",
+          "heading": {
+            "jsonValue": {
+              "value": "Index Performance Strategy 1-Year Term",
+              "metadata": {
+                "itemId": "fixture-only-select-2",
+                "fieldId": "fixture-only-heading-2",
+                "fieldType": "Single-Line Text",
+                "fixtureOnly": true
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term</td>\n            <td>10% buffer<br />\n            20% buffer<br />\n            30% buffer<br />\n            </td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            </td>\n            <td>Provides different levels of performance potential (may be capped or uncapped) based on the level of buffered protection.</td>\n            <td>Provides a level of protection with a buffer that absorbs a certain percentage of negative index return.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/10/04/18/05/RILA-009-Performance-1-B.pdf\" target=\"_blank\" aria-label=\"Download Index Performance Strategy 1-Year Term (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Performance Strategy 1-Year Term (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+              "metadata": {
+                "itemId": "fixture-only-select-2",
+                "fieldId": "fixture-only-body-2",
+                "fieldType": "Rich Text",
+                "fixtureOnly": true
+              }
+            }
+          }
+        },
+        {
+          "id": "fixture-only-select-strategy-3",
+          "heading": {
+            "jsonValue": {
+              "value": "Index Precision Strategy",
+              "metadata": {
+                "itemId": "fixture-only-select-3",
+                "fieldId": "fixture-only-heading-3",
+                "fieldType": "Single-Line Text",
+                "fixtureOnly": true
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term</td>\n            <td>10% buffer</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            </td>\n            <td>Credits an annual predetermined trigger rate if the annual index return is positive or zero.</td>\n            <td>Provides a level of protection with a buffer that absorbs the first 10% of negative index return.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/10/15/25/RILA-009-Precision.pdf\" target=\"_blank\" aria-label=\"Download Index Precision Strategy 1-Year Term (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Precision Strategy 1-Year Term (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+              "metadata": {
+                "itemId": "fixture-only-select-3",
+                "fieldId": "fixture-only-body-3",
+                "fieldType": "Rich Text",
+                "fixtureOnly": true
+              }
+            }
+          }
+        },
+        {
+          "id": "fixture-only-select-strategy-4",
+          "heading": {
+            "jsonValue": {
+              "value": "Index Dual Precision Strategy Multi-Year or 1-Year Terms",
+              "metadata": {
+                "itemId": "fixture-only-select-4",
+                "fieldId": "fixture-only-heading-4",
+                "fieldType": "Single-Line Text",
+                "fixtureOnly": true
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term<br />\n            3-year term<br />\n            6-year term</td>\n            <td>10% buffer<br />\n            20% buffer<br />\n            30% buffer</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            <br />\n            The S&P 500 Index, Russell 2000 Index and Nasdaq-100 Index are the only indexes available with multi-year terms.\n            </td>\n            <td>Credits a predetermined trigger rate if the index return is positive, zero, or negative and within the buffer.</td>\n            <td>Negative index return equal to or within the buffer provides a positive credit of the trigger rate, but if it exceeds the buffer it provides a negative credit equal to the amount of negative index return in excess of the buffer.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2026/10/06/17/41/RILA-009-DualPrecision-B.pdf\" target=\"_blank\" aria-label=\"Download Index Dual Precision Strategy (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Dual Precision Strategy (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+              "metadata": {
+                "itemId": "fixture-only-select-4",
+                "fieldId": "fixture-only-body-4",
+                "fieldType": "Rich Text",
+                "fixtureOnly": true
+              }
+            }
+          }
+        },
+        {
+          "id": "fixture-only-select-strategy-5",
+          "heading": {
+            "jsonValue": {
+              "value": "Index Guard Strategy",
+              "metadata": {
+                "itemId": "fixture-only-select-5",
+                "fieldId": "fixture-only-heading-5",
+                "fieldType": "Single-Line Text",
+                "fixtureOnly": true
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term</td>\n            <td>-10% floor</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            </td>\n            <td>Provides performance potential up to a cap.</td>\n            <td>Provides a level of protection down to the -10% Floor, which means you assume the first 10% of negative index loss and no more.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/10/15/26/RILA-009-Guard.pdf\" target=\"_blank\" aria-label=\"Download Index Guard Strategy 1-Year Term (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Guard Strategy 1-Year Term (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+              "metadata": {
+                "itemId": "fixture-only-select-5",
+                "fieldId": "fixture-only-body-5",
+                "fieldType": "Rich Text",
+                "fixtureOnly": true
+              }
+            }
+          }
+        },
+        {
+          "id": "fixture-only-select-strategy-6",
+          "heading": {
+            "jsonValue": {
+              "value": "Index Protection Strategy with Cap and Index Protection Strategy with Trigger",
+              "metadata": {
+                "itemId": "fixture-only-select-6",
+                "fieldId": "fixture-only-heading-6",
+                "fieldType": "Single-Line Text",
+                "fixtureOnly": true
+              }
+            }
+          },
+          "body": {
+            "jsonValue": {
+              "value": "<div class=\"table-scroller-container\">\n<table class=\"o-table-index\">\n    <thead>\n        <tr>\n            <th>Term Length</th>\n            <th>Protection Level</th>\n            <th>Indexes Available</th>\n            <th>If Market Is Up</th>\n            <th>If Market Is Down</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>1-year term</td>\n            <td>100% protection from negative index returns</td>\n            <td>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-blue-bright\"> </div>\n            <div class=\"index-table-fund\">S&P 500® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-red-bright\"> </div>\n            <div class=\"index-table-fund\">Russell 2000® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-teal-bright\"> </div>\n            <div class=\"index-table-fund\">Nasdaq-100® Index</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-purple-bright\"> </div>\n            <div class=\"index-table-fund\">iShares® MSCI Emerging Markets ETF</div>\n            </div>\n            <div class=\"index-table-2-col\">\n            <div class=\"index-table-swatch t-bg-direct-green\"> </div>\n            <div class=\"index-table-fund\">EURO STOXX 50®</div>\n            </div>\n            </td>\n            <td>Credits performance potential up to a cap or an annual predetermined trigger rate depending on the strategy chosen, if the annual index return is zero or positive.</td>\n            <td>No losses will occur due to negative index returns.</td>\n        </tr>\n    </tbody>\n    <tfoot></tfoot>\n</table>\n</div>\n\t\t\t\t\t\t\t\t\t\t<a class=\"c-link c-link--block\" href=\"/-/media/Files/Global/documents/2023/04/10/15/25/IAIP-009-Protection.pdf\" target=\"_blank\" aria-label=\"Download Index Protection Strategy with Cap and Index Protection Strategy with Trigger (PDF)\">\n\t\t\t\t\t\t\t\t\t\t\t<span aria-hidden=\"true\" class=\"c-link__icon c-icon c-icon--arrow-right\"></span>\n\t\t\t\t\t\t\t\t\t\t\t<!-- Fix White Space issue-->\n\t\t\t\t\t\t\t\t\t\t\t<span class=\"c-link__text\">Download Index Protection Strategy with Cap and Index Protection Strategy with Trigger (PDF)</span>\n\t\t\t\t\t\t\t\t\t\t</a>",
+              "metadata": {
+                "itemId": "fixture-only-select-6",
+                "fieldId": "fixture-only-body-6",
+                "fieldType": "Rich Text",
+                "fixtureOnly": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "baseline": {
+    "accordionSHA256BeforeSelect": "50005daf66f398893612461accd0fe3d4f664502f3f2b87b5266316185c7e561",
+    "renders": [
+      {
+        "variant": "Default",
+        "state": "filled",
+        "editing": false,
+        "sha256": "6314656d8b631ba96b6fb34e49a4379de78c9331a332c1b09815b1ed4f8f5fcb"
+      },
+      {
+        "variant": "Default",
+        "state": "filled",
+        "editing": true,
+        "sha256": "3a1673da21a8186acf5c3de2363cf3097460b37a3c875ccb32d7254c16d7dc28"
+      },
+      {
+        "variant": "Default",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "203db4d7835fa6dc517c61b4307c585135a53469167cd7d385f4af16f8ea64bc"
+      },
+      {
+        "variant": "Default",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "7737a598370c04b68990b8965e7231e53f3b5db962e2fde0d3d03eff80b5f685"
+      },
+      {
+        "variant": "Default",
+        "state": "absent",
+        "editing": false,
+        "sha256": "203db4d7835fa6dc517c61b4307c585135a53469167cd7d385f4af16f8ea64bc"
+      },
+      {
+        "variant": "Default",
+        "state": "absent",
+        "editing": true,
+        "sha256": "2f555c97c50a91ba0870863919b1452daddf1cb4405f3d3616bc242adf985aca"
+      },
+      {
+        "variant": "FaqRow",
+        "state": "filled",
+        "editing": false,
+        "sha256": "8cab3380b191d503a1261cb9fb4019f5756d695582328beb35db52f97fe1d6e6"
+      },
+      {
+        "variant": "FaqRow",
+        "state": "filled",
+        "editing": true,
+        "sha256": "4e17770c8e21414d34a74fcc486acda70043d9aa58b8fa5636464e7b53a4ddbe"
+      },
+      {
+        "variant": "FaqRow",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "2581f2e918a38a8d69d0cd8d0daff1bb704ad275eb2be990706b98b143a072b2"
+      },
+      {
+        "variant": "FaqRow",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "10f68bc8acdd0a54192601ad50b4dfd197bd3cff07a2df25aaff2f0ae1303182"
+      },
+      {
+        "variant": "FaqRow",
+        "state": "absent",
+        "editing": false,
+        "sha256": "2581f2e918a38a8d69d0cd8d0daff1bb704ad275eb2be990706b98b143a072b2"
+      },
+      {
+        "variant": "FaqRow",
+        "state": "absent",
+        "editing": true,
+        "sha256": "33badf4f0da27aeb20053d4b94a2d1451e74350266e1fc4f8bb2c1fbfb677e2a"
+      },
+      {
+        "variant": "LifeFaqGroup",
+        "state": "filled",
+        "editing": false,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "variant": "LifeFaqGroup",
+        "state": "filled",
+        "editing": true,
+        "sha256": "f281366e15f8bbb9e4a6979f76708b544ba5bf6950c7828f8adc554d2ec40e4a"
+      },
+      {
+        "variant": "LifeFaqGroup",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "variant": "LifeFaqGroup",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "f281366e15f8bbb9e4a6979f76708b544ba5bf6950c7828f8adc554d2ec40e4a"
+      },
+      {
+        "variant": "LifeFaqGroup",
+        "state": "absent",
+        "editing": false,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "variant": "LifeFaqGroup",
+        "state": "absent",
+        "editing": true,
+        "sha256": "f281366e15f8bbb9e4a6979f76708b544ba5bf6950c7828f8adc554d2ec40e4a"
+      },
+      {
+        "variant": "Transcript",
+        "state": "filled",
+        "editing": false,
+        "sha256": "2f6dbc64069a687142eb39c462d1f11e0d8b615d51d3c924c5ec048ba1c94e3b"
+      },
+      {
+        "variant": "Transcript",
+        "state": "filled",
+        "editing": true,
+        "sha256": "72e9451a5319036221b02d8d8119d8856b6cb7a4e760dd07e22435fa4ab90c15"
+      },
+      {
+        "variant": "Transcript",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "d93e70414516def5c1c34599c9f35190a77e74aa73c451df137a44e5758778b5"
+      },
+      {
+        "variant": "Transcript",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "573f5afe779cc1d3f53fe4be36dc320ce4b2e3db639f599c5e2743d1c8c0f43a"
+      },
+      {
+        "variant": "Transcript",
+        "state": "absent",
+        "editing": false,
+        "sha256": "d93e70414516def5c1c34599c9f35190a77e74aa73c451df137a44e5758778b5"
+      },
+      {
+        "variant": "Transcript",
+        "state": "absent",
+        "editing": true,
+        "sha256": "f72ada1c78bbb864706ffe4382e54c4782acb828299f68f6a410a9515f6c988a"
+      },
+      {
+        "variant": "AboutFaq",
+        "state": "filled",
+        "editing": false,
+        "sha256": "6fb236ac2efdba06b6bc0a4e2378831088604f77b3e480163dd20fc90fee5a39"
+      },
+      {
+        "variant": "AboutFaq",
+        "state": "filled",
+        "editing": true,
+        "sha256": "cef85426bdd2bb0d2c118328d96d1f44c15b835efdbfaba1ae6973da4f468fcb"
+      },
+      {
+        "variant": "AboutFaq",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "b349f578b1868f677234c383bff88963253eaf47ad155675d99e79c670446a1a"
+      },
+      {
+        "variant": "AboutFaq",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "9b86101bc172f672cf939ff02da08811a8380adb7883c34a09ca342919e0226d"
+      },
+      {
+        "variant": "AboutFaq",
+        "state": "absent",
+        "editing": false,
+        "sha256": "b349f578b1868f677234c383bff88963253eaf47ad155675d99e79c670446a1a"
+      },
+      {
+        "variant": "AboutFaq",
+        "state": "absent",
+        "editing": true,
+        "sha256": "399f44b4d9bfd3a2b647b3a6cd1c9ba9359188419bf428e1c6566b9c7e4c083a"
+      },
+      {
+        "variant": "FixedTranscript",
+        "state": "filled",
+        "editing": false,
+        "sha256": "025722f4123e2aa385caebd2baba117d6d1e424ad67d1a35a962f171126a9a71"
+      },
+      {
+        "variant": "FixedTranscript",
+        "state": "filled",
+        "editing": true,
+        "sha256": "ff4eb7627097aeef436bf473adfd3db087829a4d9c9d7b1f408b1db71955151d"
+      },
+      {
+        "variant": "FixedTranscript",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "57bcd0da20919781cb235a5ea47b223f04e9ee3c2673b11e685fb8b3657b5d7d"
+      },
+      {
+        "variant": "FixedTranscript",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "54250b3c66806dad3b4ce52ca7344c32c54d08e8d7fd5d7db9af50a1ad620b66"
+      },
+      {
+        "variant": "FixedTranscript",
+        "state": "absent",
+        "editing": false,
+        "sha256": "57bcd0da20919781cb235a5ea47b223f04e9ee3c2673b11e685fb8b3657b5d7d"
+      },
+      {
+        "variant": "FixedTranscript",
+        "state": "absent",
+        "editing": true,
+        "sha256": "8a61364b55a00c96fc6a17f618a77f9936de4831ffdd7c01df5d5a5cb776c41f"
+      },
+      {
+        "variant": "FixedProductAccordion",
+        "state": "filled",
+        "editing": false,
+        "sha256": "3a44583d7b3484d6574c3eb5529d695533dfeda756e64c743d3eee65a365cfe5"
+      },
+      {
+        "variant": "FixedProductAccordion",
+        "state": "filled",
+        "editing": true,
+        "sha256": "59006f3c14016769ec052ddd9b85410c2098ab840480fdc53872464c32e334e7"
+      },
+      {
+        "variant": "FixedProductAccordion",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "29d76f1d9a9ed81d6be65235c68ffe24c6f4e69e78539ea413a772e740de3e7b"
+      },
+      {
+        "variant": "FixedProductAccordion",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "1c7accab8f628533c16da8e55b98d61afff67cec04c935d853761ba2d90e53e9"
+      },
+      {
+        "variant": "FixedProductAccordion",
+        "state": "absent",
+        "editing": false,
+        "sha256": "29d76f1d9a9ed81d6be65235c68ffe24c6f4e69e78539ea413a772e740de3e7b"
+      },
+      {
+        "variant": "FixedProductAccordion",
+        "state": "absent",
+        "editing": true,
+        "sha256": "511195886741b410c2dff87a1b548f305dee26443bf5650bb3f430f5c563ec1f"
+      },
+      {
+        "variant": "RilaTranscript",
+        "state": "filled",
+        "editing": false,
+        "sha256": "3942b33e625679b9ec2bbfb32d824b9377c91cd1bfa1e0d6e96cb0fb2928a9ec"
+      },
+      {
+        "variant": "RilaTranscript",
+        "state": "filled",
+        "editing": true,
+        "sha256": "3c135aa879d344c9966596955b977aee82306dd5169157a3143ff2e169d7a64b"
+      },
+      {
+        "variant": "RilaTranscript",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "7fcd0dfc790d27d9567a03cca19191fcb831db939feee63305a00770a197397f"
+      },
+      {
+        "variant": "RilaTranscript",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "1d2fec527d753b20bdd81c3964acd60fc5404153883f44dcbfa54ee910972afc"
+      },
+      {
+        "variant": "RilaTranscript",
+        "state": "absent",
+        "editing": false,
+        "sha256": "7fcd0dfc790d27d9567a03cca19191fcb831db939feee63305a00770a197397f"
+      },
+      {
+        "variant": "RilaTranscript",
+        "state": "absent",
+        "editing": true,
+        "sha256": "c0e25c7d32585f4f9ff027112a8cdb0c75bcaeb9cd22ea66ade9248916e8ac51"
+      },
+      {
+        "variant": "IapStrategies",
+        "state": "filled",
+        "editing": false,
+        "sha256": "64fd11aa7064cc29b15f76a63c63fde79b3688ddb91934d275deab0f3e0ab74a"
+      },
+      {
+        "variant": "IapStrategies",
+        "state": "filled",
+        "editing": true,
+        "sha256": "340a6aaa42341aa1f430d7c95ee32f0fee664a6dce3d2c80687ffcea247de741"
+      },
+      {
+        "variant": "IapStrategies",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "6fc8bc7f8f2b85b14ac7cd9effba79399bb95556434a52d74263b3bb8a11ccc1"
+      },
+      {
+        "variant": "IapStrategies",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "5708816dc43b446c0a10941466ee51cf54e995f1aaf0a21641c2e42656199366"
+      },
+      {
+        "variant": "IapStrategies",
+        "state": "absent",
+        "editing": false,
+        "sha256": "6fc8bc7f8f2b85b14ac7cd9effba79399bb95556434a52d74263b3bb8a11ccc1"
+      },
+      {
+        "variant": "IapStrategies",
+        "state": "absent",
+        "editing": true,
+        "sha256": "f70b4181730a083b4b9eada9afb93ac1f495d7aae5610d03b017b1b4d6c440d3"
+      },
+      {
+        "variant": "AA5AllocationAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "a836ff4e430d364cf9ec2efec07744bf7f565891e5d17b4f43a2931faa0f81d9"
+      },
+      {
+        "variant": "AA5AllocationAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "784951c330252d2db54232f08a8b35ba9cbcdea4b37bae4f472e820546bb8dd5"
+      },
+      {
+        "variant": "AA5AllocationAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "05d6e85a0a11fc340946cc546b90523613bf9b372c251111fa3bf18cbd3ba30f"
+      },
+      {
+        "variant": "AA5AllocationAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "e4b2e7979d00e30e27eebb978bf2711f55e9caa85f5e611148a0eb1617b5d004"
+      },
+      {
+        "variant": "AA5AllocationAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "05d6e85a0a11fc340946cc546b90523613bf9b372c251111fa3bf18cbd3ba30f"
+      },
+      {
+        "variant": "AA5AllocationAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "b2606a1816344864f5a1ee1a8ba5a26520a02874ad62d4a7f132ee995802cf53"
+      },
+      {
+        "variant": "AA5CreditingAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "33673d2974b515dd557bcef938facffd63cab87ce5ff9174b3f89a632ea3b78f"
+      },
+      {
+        "variant": "AA5CreditingAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "78627725991f2e246069b02fe989cc50e617550accce4f01c22deb491b4ac312"
+      },
+      {
+        "variant": "AA5CreditingAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "e63fd3f69349bd1c6ebbb94ba80a03c73cbc99fd8e234fc3cc508f4150d33d00"
+      },
+      {
+        "variant": "AA5CreditingAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "7ea18486efbc59623f3a5c7a95484532a904a7ad9da0ba7d5fa61fcd604bad20"
+      },
+      {
+        "variant": "AA5CreditingAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "e63fd3f69349bd1c6ebbb94ba80a03c73cbc99fd8e234fc3cc508f4150d33d00"
+      },
+      {
+        "variant": "AA5CreditingAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "4f4d7fa736a6db21c7bc06289bd4d58dfa65f00b769c4e3d9e9788745af30f2e"
+      },
+      {
+        "variant": "AAPlusTranscript",
+        "state": "filled",
+        "editing": false,
+        "sha256": "2e62a3c9ddc43d76003c1076d596fb7e4fcb95a193ab1ef5bd45621cabbf452c"
+      },
+      {
+        "variant": "AAPlusTranscript",
+        "state": "filled",
+        "editing": true,
+        "sha256": "1eec87c8471224045fabebe906b9b838454c95294c7294cfddb0fe0ce30c1b66"
+      },
+      {
+        "variant": "AAPlusTranscript",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+      },
+      {
+        "variant": "AAPlusTranscript",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "43915a6d89d36679cdffa72a6bcd75066e4e1f5b7ae6eba6da97a97b58235a92"
+      },
+      {
+        "variant": "AAPlusTranscript",
+        "state": "absent",
+        "editing": false,
+        "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+      },
+      {
+        "variant": "AAPlusTranscript",
+        "state": "absent",
+        "editing": true,
+        "sha256": "cf37c2a48e163273ae54eafbf958e0f9e1831bdf116157c99eb74da18b685d2b"
+      },
+      {
+        "variant": "AAPlusAllocationAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "2e62a3c9ddc43d76003c1076d596fb7e4fcb95a193ab1ef5bd45621cabbf452c"
+      },
+      {
+        "variant": "AAPlusAllocationAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "1eec87c8471224045fabebe906b9b838454c95294c7294cfddb0fe0ce30c1b66"
+      },
+      {
+        "variant": "AAPlusAllocationAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+      },
+      {
+        "variant": "AAPlusAllocationAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "43915a6d89d36679cdffa72a6bcd75066e4e1f5b7ae6eba6da97a97b58235a92"
+      },
+      {
+        "variant": "AAPlusAllocationAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+      },
+      {
+        "variant": "AAPlusAllocationAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "cf37c2a48e163273ae54eafbf958e0f9e1831bdf116157c99eb74da18b685d2b"
+      },
+      {
+        "variant": "AAPlusCreditingAccordion",
+        "state": "filled",
+        "editing": false,
+        "sha256": "0f5da2a176a4de76bd924603db1ae2deab12bc659b1f48be069c5823e83f6e0e"
+      },
+      {
+        "variant": "AAPlusCreditingAccordion",
+        "state": "filled",
+        "editing": true,
+        "sha256": "12c6ff03c577f1cd869439ea3140af36b4b2e02a9807521f0c42e295562f6e39"
+      },
+      {
+        "variant": "AAPlusCreditingAccordion",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "9b93474442c4c939115c3ba244efe52c4f2dc018d4bd20385ea27642d5bc2e6a"
+      },
+      {
+        "variant": "AAPlusCreditingAccordion",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "c0fe18af594ce9cc5a6ea73632ec0f317d3956dffa0928b2dc9b32db717e8d1f"
+      },
+      {
+        "variant": "AAPlusCreditingAccordion",
+        "state": "absent",
+        "editing": false,
+        "sha256": "9b93474442c4c939115c3ba244efe52c4f2dc018d4bd20385ea27642d5bc2e6a"
+      },
+      {
+        "variant": "AAPlusCreditingAccordion",
+        "state": "absent",
+        "editing": true,
+        "sha256": "aa13f05ce9593cbdc0abf0248a9b346ace5d148f9e2124e3577658e479042408"
+      },
+      {
+        "variant": "ClassicTranscript",
+        "state": "filled",
+        "editing": false,
+        "sha256": "1e51b0de8e4aeaa2ffd2ba0175416638fe8e36ec5d7629973efdd9ad6eaef1ca"
+      },
+      {
+        "variant": "ClassicTranscript",
+        "state": "filled",
+        "editing": true,
+        "sha256": "0c9b50716716622b18df68e86e9b159da53d61ed4e10738fa1885ad62c7a34b5"
+      },
+      {
+        "variant": "ClassicTranscript",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "2c32bfb840f14bbe031b3acd08098551d6ab480cb6b0b64b8b03235850fad87c"
+      },
+      {
+        "variant": "ClassicTranscript",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "7a2eb4ad15c1a3c010686501efcd5e8d2ae0e6d157de07d8fb5d2e8425febb47"
+      },
+      {
+        "variant": "ClassicTranscript",
+        "state": "absent",
+        "editing": false,
+        "sha256": "2c32bfb840f14bbe031b3acd08098551d6ab480cb6b0b64b8b03235850fad87c"
+      },
+      {
+        "variant": "ClassicTranscript",
+        "state": "absent",
+        "editing": true,
+        "sha256": "ddce14d8063823b9faa1a3176c68ea7e1655a77d7558b97b0b0bdbd0975cde8b"
+      },
+      {
+        "variant": "ClassicAllocationAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "2e62a3c9ddc43d76003c1076d596fb7e4fcb95a193ab1ef5bd45621cabbf452c"
+      },
+      {
+        "variant": "ClassicAllocationAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "1eec87c8471224045fabebe906b9b838454c95294c7294cfddb0fe0ce30c1b66"
+      },
+      {
+        "variant": "ClassicAllocationAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+      },
+      {
+        "variant": "ClassicAllocationAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "43915a6d89d36679cdffa72a6bcd75066e4e1f5b7ae6eba6da97a97b58235a92"
+      },
+      {
+        "variant": "ClassicAllocationAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+      },
+      {
+        "variant": "ClassicAllocationAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "cf37c2a48e163273ae54eafbf958e0f9e1831bdf116157c99eb74da18b685d2b"
+      },
+      {
+        "variant": "ClassicCreditingAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "1e51b0de8e4aeaa2ffd2ba0175416638fe8e36ec5d7629973efdd9ad6eaef1ca"
+      },
+      {
+        "variant": "ClassicCreditingAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "0c9b50716716622b18df68e86e9b159da53d61ed4e10738fa1885ad62c7a34b5"
+      },
+      {
+        "variant": "ClassicCreditingAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "2c32bfb840f14bbe031b3acd08098551d6ab480cb6b0b64b8b03235850fad87c"
+      },
+      {
+        "variant": "ClassicCreditingAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "7a2eb4ad15c1a3c010686501efcd5e8d2ae0e6d157de07d8fb5d2e8425febb47"
+      },
+      {
+        "variant": "ClassicCreditingAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "2c32bfb840f14bbe031b3acd08098551d6ab480cb6b0b64b8b03235850fad87c"
+      },
+      {
+        "variant": "ClassicCreditingAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "ddce14d8063823b9faa1a3176c68ea7e1655a77d7558b97b0b0bdbd0975cde8b"
+      },
+      {
+        "variant": "BenefitControlPlusTranscript",
+        "state": "filled",
+        "editing": false,
+        "sha256": "0bccf2f7285a33b5492bf53425d52a5e44307e1b42e9ff132a9946756d589888"
+      },
+      {
+        "variant": "BenefitControlPlusTranscript",
+        "state": "filled",
+        "editing": true,
+        "sha256": "7a5802b903429a93313add81492c66a9a827c7553826666e33c300bd417ea1ce"
+      },
+      {
+        "variant": "BenefitControlPlusTranscript",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "3310edeaf769738eff6463f3ffa2041a6abdb1f03bee325daf7a8246fb6aedd1"
+      },
+      {
+        "variant": "BenefitControlPlusTranscript",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "084cae5e7865b2cc34ba16fe65f3c159cc80b6cf1c306a9c4add8d33a74304c1"
+      },
+      {
+        "variant": "BenefitControlPlusTranscript",
+        "state": "absent",
+        "editing": false,
+        "sha256": "3310edeaf769738eff6463f3ffa2041a6abdb1f03bee325daf7a8246fb6aedd1"
+      },
+      {
+        "variant": "BenefitControlPlusTranscript",
+        "state": "absent",
+        "editing": true,
+        "sha256": "97660317211ed3713842e9d4a62d01b12b28c562a79a223f8e8fad267d3da6fa"
+      },
+      {
+        "variant": "BenefitControlPlusAllocationAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "0652a7ff02e46a4068e229649e09731b5d51b7cc5d8d0ab3f161d440780000da"
+      },
+      {
+        "variant": "BenefitControlPlusAllocationAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "7aa4aa3f69cc1fa23f9df1a8ae05c3b20442b8bf82d8be9c13b0a5f8e95f0d93"
+      },
+      {
+        "variant": "BenefitControlPlusAllocationAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "2f8d77b3bd59f3b03271f87c66f89d16ecc7b76f2e7d50372f549b59c93e0daf"
+      },
+      {
+        "variant": "BenefitControlPlusAllocationAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "5e1bc06ced1a7fdc356f81ced4c43784ed81efbf3150135930ebcbc705a78a90"
+      },
+      {
+        "variant": "BenefitControlPlusAllocationAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "2f8d77b3bd59f3b03271f87c66f89d16ecc7b76f2e7d50372f549b59c93e0daf"
+      },
+      {
+        "variant": "BenefitControlPlusAllocationAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "28f09b7db0b9e43b4779fb20ffa3dda01ac83d45e05720b0b05d7fed05c396b0"
+      },
+      {
+        "variant": "BenefitControlPlusCreditingAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "0652a7ff02e46a4068e229649e09731b5d51b7cc5d8d0ab3f161d440780000da"
+      },
+      {
+        "variant": "BenefitControlPlusCreditingAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "7aa4aa3f69cc1fa23f9df1a8ae05c3b20442b8bf82d8be9c13b0a5f8e95f0d93"
+      },
+      {
+        "variant": "BenefitControlPlusCreditingAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "2f8d77b3bd59f3b03271f87c66f89d16ecc7b76f2e7d50372f549b59c93e0daf"
+      },
+      {
+        "variant": "BenefitControlPlusCreditingAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "5e1bc06ced1a7fdc356f81ced4c43784ed81efbf3150135930ebcbc705a78a90"
+      },
+      {
+        "variant": "BenefitControlPlusCreditingAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "2f8d77b3bd59f3b03271f87c66f89d16ecc7b76f2e7d50372f549b59c93e0daf"
+      },
+      {
+        "variant": "BenefitControlPlusCreditingAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "28f09b7db0b9e43b4779fb20ffa3dda01ac83d45e05720b0b05d7fed05c396b0"
+      },
+      {
+        "variant": "EssentialIncome7Transcript",
+        "state": "filled",
+        "editing": false,
+        "sha256": "7de5eab4bfc4e61e2bdcf37e1b339c11d33fa2aa6d394795d40a641502333938"
+      },
+      {
+        "variant": "EssentialIncome7Transcript",
+        "state": "filled",
+        "editing": true,
+        "sha256": "231ad1161acd98649acae690a8de0e43c0ac606938e7495d5e2ce115a5688cfc"
+      },
+      {
+        "variant": "EssentialIncome7Transcript",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "01327125f0652af4fc2fe4a8c19126463dabf65c77c1493a7cbb36e9b5c4bf84"
+      },
+      {
+        "variant": "EssentialIncome7Transcript",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "fa43daf2376f51a3293499d463299788ade707b360f96ed4d37cc0de316f18da"
+      },
+      {
+        "variant": "EssentialIncome7Transcript",
+        "state": "absent",
+        "editing": false,
+        "sha256": "01327125f0652af4fc2fe4a8c19126463dabf65c77c1493a7cbb36e9b5c4bf84"
+      },
+      {
+        "variant": "EssentialIncome7Transcript",
+        "state": "absent",
+        "editing": true,
+        "sha256": "cd63a9941f8b5609365c6362f2a8c9cce8e504d72af8172f28892764a6070149"
+      },
+      {
+        "variant": "EssentialIncome7AllocationAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "bb996f241197ecc7f06f6512cb841002a51ea90747c2389e35f9cafa6daf621e"
+      },
+      {
+        "variant": "EssentialIncome7AllocationAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "50ede10c48d776e8d117b85880b0c41bebd6b6cee0e6be44fe6c8ec9656a949c"
+      },
+      {
+        "variant": "EssentialIncome7AllocationAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "317fd0bcd21546fd61dc1dbbd7247f68dc921bb6a8894e060fb1b42a56ba85cf"
+      },
+      {
+        "variant": "EssentialIncome7AllocationAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "e5202ccb0d7f76af482553d093dae0ef35c1b568ba11a7e895d0250dbb089972"
+      },
+      {
+        "variant": "EssentialIncome7AllocationAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "317fd0bcd21546fd61dc1dbbd7247f68dc921bb6a8894e060fb1b42a56ba85cf"
+      },
+      {
+        "variant": "EssentialIncome7AllocationAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "e9b60e16a9edab6d5f67f3a7efe2c65a548648f8f75feb4aafb5917b0ff29d31"
+      },
+      {
+        "variant": "EssentialIncome7CreditingAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "28e6addb1bcbdf105f3b8ef83e1a7300534be2f9e2f360ad6c180c13fbf095b5"
+      },
+      {
+        "variant": "EssentialIncome7CreditingAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "ee917d59b25332de346a0d6c942395cfc18e3ba6b15709b8d37bb1893e3ee7c3"
+      },
+      {
+        "variant": "EssentialIncome7CreditingAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "be5ece95f34b6689db81d121ea5b5020525676fb1c2c7c83918615202afa8aa9"
+      },
+      {
+        "variant": "EssentialIncome7CreditingAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "686e2c44bd69582cc7e61619d81e5e54db8b041b36565d0cc1f1ed3ca939bd13"
+      },
+      {
+        "variant": "EssentialIncome7CreditingAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "be5ece95f34b6689db81d121ea5b5020525676fb1c2c7c83918615202afa8aa9"
+      },
+      {
+        "variant": "EssentialIncome7CreditingAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "780ea5d66fbf58a2408a7b2740210860e0c2dc6abcbfe74f2d9334c905c2be7f"
+      },
+      {
+        "variant": "RetirementFoundationAdvAllocationAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "75c9bf21c81dc45847c2b5d91aa24dda32d6bcb699d9a720f81430f9e14af66b"
+      },
+      {
+        "variant": "RetirementFoundationAdvAllocationAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "517c28eac81de1e6922c7c87412d12ea89a742d3e4153fa7755d65316f5423c1"
+      },
+      {
+        "variant": "RetirementFoundationAdvAllocationAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "40e039bc85854be9dad56a855fbeb7b25669304cdf1107695f76642d8d3f908a"
+      },
+      {
+        "variant": "RetirementFoundationAdvAllocationAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "d613d487fb98882692f9b6f2fe32bb430f628017ab899162839bc22dff2d71b3"
+      },
+      {
+        "variant": "RetirementFoundationAdvAllocationAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "40e039bc85854be9dad56a855fbeb7b25669304cdf1107695f76642d8d3f908a"
+      },
+      {
+        "variant": "RetirementFoundationAdvAllocationAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "ce2aed813af7288fe0082e042b10986642cc00e4312e4c5cb12fae746d5da67c"
+      },
+      {
+        "variant": "RetirementFoundationAdvCreditingAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "75c9bf21c81dc45847c2b5d91aa24dda32d6bcb699d9a720f81430f9e14af66b"
+      },
+      {
+        "variant": "RetirementFoundationAdvCreditingAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "517c28eac81de1e6922c7c87412d12ea89a742d3e4153fa7755d65316f5423c1"
+      },
+      {
+        "variant": "RetirementFoundationAdvCreditingAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "40e039bc85854be9dad56a855fbeb7b25669304cdf1107695f76642d8d3f908a"
+      },
+      {
+        "variant": "RetirementFoundationAdvCreditingAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "d613d487fb98882692f9b6f2fe32bb430f628017ab899162839bc22dff2d71b3"
+      },
+      {
+        "variant": "RetirementFoundationAdvCreditingAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "40e039bc85854be9dad56a855fbeb7b25669304cdf1107695f76642d8d3f908a"
+      },
+      {
+        "variant": "RetirementFoundationAdvCreditingAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "ce2aed813af7288fe0082e042b10986642cc00e4312e4c5cb12fae746d5da67c"
+      },
+      {
+        "variant": "CoreIncome7Transcript",
+        "state": "filled",
+        "editing": false,
+        "sha256": "7de5eab4bfc4e61e2bdcf37e1b339c11d33fa2aa6d394795d40a641502333938"
+      },
+      {
+        "variant": "CoreIncome7Transcript",
+        "state": "filled",
+        "editing": true,
+        "sha256": "231ad1161acd98649acae690a8de0e43c0ac606938e7495d5e2ce115a5688cfc"
+      },
+      {
+        "variant": "CoreIncome7Transcript",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "01327125f0652af4fc2fe4a8c19126463dabf65c77c1493a7cbb36e9b5c4bf84"
+      },
+      {
+        "variant": "CoreIncome7Transcript",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "fa43daf2376f51a3293499d463299788ade707b360f96ed4d37cc0de316f18da"
+      },
+      {
+        "variant": "CoreIncome7Transcript",
+        "state": "absent",
+        "editing": false,
+        "sha256": "01327125f0652af4fc2fe4a8c19126463dabf65c77c1493a7cbb36e9b5c4bf84"
+      },
+      {
+        "variant": "CoreIncome7Transcript",
+        "state": "absent",
+        "editing": true,
+        "sha256": "cd63a9941f8b5609365c6362f2a8c9cce8e504d72af8172f28892764a6070149"
+      },
+      {
+        "variant": "CoreIncome7AllocationAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "b54b5fa181151a5b97d8cc0fd223fa5107933721911854efc37ed9ea2e6e7ceb"
+      },
+      {
+        "variant": "CoreIncome7AllocationAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "174a31038fc56e73fb28c7028bd9f49578e82847480282d0cf83b4bcd6425e5e"
+      },
+      {
+        "variant": "CoreIncome7AllocationAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "02cc67576cd29cf9fd8d6e9b4d010e6909cdcd644a6748cc0db4018e46868fc1"
+      },
+      {
+        "variant": "CoreIncome7AllocationAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "4c739f4cdf531a555e05ccf7c55a3b142cf341a54886909637e3d703404d9af6"
+      },
+      {
+        "variant": "CoreIncome7AllocationAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "02cc67576cd29cf9fd8d6e9b4d010e6909cdcd644a6748cc0db4018e46868fc1"
+      },
+      {
+        "variant": "CoreIncome7AllocationAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "77495d249a26cf66024d4e8d19ce387fc1c3c89aa7e904271ec36d22e8a1a8fc"
+      },
+      {
+        "variant": "CoreIncome7CreditingAnswers",
+        "state": "filled",
+        "editing": false,
+        "sha256": "b54b5fa181151a5b97d8cc0fd223fa5107933721911854efc37ed9ea2e6e7ceb"
+      },
+      {
+        "variant": "CoreIncome7CreditingAnswers",
+        "state": "filled",
+        "editing": true,
+        "sha256": "174a31038fc56e73fb28c7028bd9f49578e82847480282d0cf83b4bcd6425e5e"
+      },
+      {
+        "variant": "CoreIncome7CreditingAnswers",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "02cc67576cd29cf9fd8d6e9b4d010e6909cdcd644a6748cc0db4018e46868fc1"
+      },
+      {
+        "variant": "CoreIncome7CreditingAnswers",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "4c739f4cdf531a555e05ccf7c55a3b142cf341a54886909637e3d703404d9af6"
+      },
+      {
+        "variant": "CoreIncome7CreditingAnswers",
+        "state": "absent",
+        "editing": false,
+        "sha256": "02cc67576cd29cf9fd8d6e9b4d010e6909cdcd644a6748cc0db4018e46868fc1"
+      },
+      {
+        "variant": "CoreIncome7CreditingAnswers",
+        "state": "absent",
+        "editing": true,
+        "sha256": "77495d249a26cf66024d4e8d19ce387fc1c3c89aa7e904271ec36d22e8a1a8fc"
+      }
+    ]
+  }
+}

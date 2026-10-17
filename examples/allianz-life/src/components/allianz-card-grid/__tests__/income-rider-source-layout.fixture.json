@@ -1,0 +1,734 @@
+{
+  "schema": "allianz.income.rider.source-witness-and-frozen-oracles.v1",
+  "source": {
+    "permittedSourceLines": [
+      937,
+      1025
+    ],
+    "fragment": "/Users/thlt/Documents/Codex/2026-10-16/task/evidence/migration-closeout-2026-10-17/income/layout-role-preparation-fragments/rider-features-row.source.html",
+    "fragmentSourceLines": [
+      942,
+      1025
+    ],
+    "fragmentSHA256": "dda6b708560b4ecbe16e477b2cb35a6209999ff9e714817c1ce161113dfc389a",
+    "qualification": "Only public rider fragment/source937–1025 inspected; Investor1047–1083 and privatepath excluded."
+  },
+  "geometry": {
+    "headingTags": [
+      "h4",
+      "h4",
+      "h4"
+    ],
+    "rowClass": "l-grid__row match-height-row",
+    "articleClass": "m-axlTile match-height -is--stacked t-bg-transparent",
+    "columnClass": "l-grid__column-medium-4",
+    "bodyClass": "tileBody u-font-size-md",
+    "outerTheme": "grey-soft",
+    "linksPerCard": [
+      1,
+      0,
+      0
+    ]
+  },
+  "sourceCards": [
+    {
+      "heading": "Lifetime Income Percentages increases",
+      "headingTag": "h4",
+      "sourceBody": "<p>For every year you wait to begin income payments.<sup>2</sup></p>",
+      "sourceLinks": [
+        {
+          "sourceLine": 963,
+          "href": "/-/media/Files/Global/documents/2023/04/01/18/04/IAIP-011.pdf",
+          "target": "_blank",
+          "ariaLabel": "Download Index Advantage+ Income® lifetime income percentage chart (PDF)",
+          "caption": "Download Index Advantage+ Income® lifetime income percentage chart (PDF)",
+          "insideFooter": true,
+          "insideTileBody": false,
+          "ancestorTagsAndClasses": [
+            {
+              "tag": "div",
+              "class": "tileLink"
+            },
+            {
+              "tag": "footer",
+              "class": null
+            }
+          ]
+        }
+      ],
+      "glyphs": [
+        {
+          "sourceLine": 948,
+          "sourceTitle": "Line Graph",
+          "paths": [
+            {
+              "sha256": "f67f4113b395d8b60f4842b9bb16775d886d41502c55ffbdeb7c070a68214623",
+              "exactPathInExistingCode": [
+                "allianz-rich-text/AllianzRichText.tsx",
+                "allianz-card-grid/AllianzCardGrid.tsx"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Income payment options",
+      "headingTag": "h4",
+      "sourceBody": "<p>Two choices for receiving income payments – Level Income, or Increasing Income.</p>",
+      "sourceLinks": [],
+      "glyphs": [
+        {
+          "sourceLine": 982,
+          "sourceTitle": "Receive",
+          "paths": [
+            {
+              "sha256": "e7f2fd3fbace884938a8c0bf24209861541c35d681f2957a426f52ee58f2cb65",
+              "exactPathInExistingCode": [
+                "allianz-card-grid/AllianzCardGrid.tsx"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Income Multiplier Benefit",
+      "headingTag": "h4",
+      "sourceBody": "<p>Automatically included with the Income Benefit rider for no separate fee other than the Income Benefit rider fee: Two ways to qualify for double income payments<sup>3</sup> when you’re in need.</p>",
+      "sourceLinks": [],
+      "glyphs": [
+        {
+          "sourceLine": 1006,
+          "sourceTitle": "Money",
+          "paths": [
+            {
+              "sha256": "e798b7bd120bb012ff97de866a42c6942efde66fff0932b12750222ef9ab160b",
+              "exactPathInExistingCode": [
+                "allianz-card-grid/AllianzCardGrid.tsx"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceGlyphs": [
+    {
+      "name": "Line Graph",
+      "paths": [
+        "M0.545454545,22 C0.244363636,22 0,21.7511111 0,21.4444444 L0,2.55555556 C0,2.24888889 0.244363636,2 0.545454545,2 C0.846545455,2 1.09090909,2.24888889 1.09090909,2.55555556 L1.09090909,20.8888889 L23.4545455,20.8888889 C23.7556364,20.8888889 24,21.1377778 24,21.4444444 C24,21.7511111 23.7556364,22 23.4545455,22 L0.545454545,22 Z M18.705,8.82916667 C18.9177273,8.6125 19.2635455,8.6125 19.4762727,8.82916667 C19.689,9.04583333 19.689,9.39805556 19.4762727,9.61472222 L14.0217273,15.1702778 C13.8286364,15.3669444 13.5242727,15.3880556 13.3093636,15.2213889 L9.32318182,12.1780556 L5.29445455,16.2813889 C5.18754545,16.3902778 5.04790909,16.4447222 4.90936364,16.4447222 C4.76972727,16.4447222 4.63009091,16.3902778 4.52318182,16.2813889 C4.31045455,16.0647222 4.31045455,15.7125 4.52318182,15.4958333 L8.88681818,11.0513889 C9.07772727,10.8547222 9.38209091,10.8336111 9.59918182,11.0002778 L13.5853636,14.0436111 L18.705,8.82916667 Z"
+      ],
+      "pathListSHA256": "8de18c6a59327884b79fd0cd9380da2cbb18193a5722883a9098fb4457adb895"
+    },
+    {
+      "name": "Download",
+      "paths": [
+        "M11.0088496,18.601 L5.41052947,13.1737857 C4.86315684,12.6431429 4.86315684,11.7854286 5.41052947,11.2547857 C5.9579021,10.7241429 6.84265787,10.7241429 7.3900305,11.2547857 L10.60007,14.3667143 L10.60007,1.35714286 C10.60007,0.606642857 11.2258387,0 12,0 C12.7741613,0 13.39993,0.606642857 13.39993,1.35714286 L13.39993,14.3667143 L16.6099695,11.2547857 C17.1573421,10.7241429 18.0420979,10.7241429 18.5894705,11.2547857 C19.1368432,11.7854286 19.1368432,12.6431429 18.5894705,13.1737857 L12.9911504,18.601 C12.8623569,18.7272143 12.7069647,18.8262857 12.5347733,18.8955 C12.3639818,18.9647143 12.1819909,19 12,19 C11.8180091,19 11.6360182,18.9647143 11.4652267,18.8955 C11.2930353,18.8262857 11.1376431,18.7272143 11.0088496,18.601 Z M22.9090909,18 C23.5104545,18 24,18.4669565 24,19.0434783 L24,22.9565217 C24,23.5317391 23.5104545,24 22.9090909,24 L1.09090909,24 C0.489545455,24 0,23.5317391 0,22.9565217 L0,19.0434783 C0,18.4669565 0.489545455,18 1.09090909,18 C1.69227273,18 2.18181818,18.4669565 2.18181818,19.0434783 L2.18181818,21.9130435 L21.8181818,21.9130435 L21.8181818,19.0434783 C21.8181818,18.4669565 22.3077273,18 22.9090909,18 Z"
+      ],
+      "pathListSHA256": "309972665d2ef0eefb6a4639e610bc7a2b8f752489d137b9d99e3d4c745585f9"
+    },
+    {
+      "name": "Receive",
+      "paths": [
+        "M18.9928642,6.17052632 C20.0924511,6.17052632 20.9921131,5.23215789 20.9921131,4.08526316 C20.9921131,2.93836842 20.0924511,2 18.9928642,2 C17.8932774,2 16.9936154,2.93836842 16.9936154,4.08526316 C16.9936154,5.23215789 17.8932774,6.17052632 18.9928642,6.17052632 Z M18.9928642,3.04263158 C19.5926389,3.04263158 19.9924887,3.45968421 19.9924887,4.08526316 C19.9924887,4.71084211 19.5926389,5.12789474 18.9928642,5.12789474 C18.3930896,5.12789474 17.9932398,4.71084211 17.9932398,4.08526316 C17.9932398,3.45968421 18.3930896,3.04263158 18.9928642,3.04263158 Z M15.4941787,11.3836842 C14.0947045,11.3836842 12.9951176,10.2367895 12.9951176,8.77710526 C12.9951176,7.31742105 14.0947045,6.17052632 15.4941787,6.17052632 C16.8936529,6.17052632 17.9932398,7.31742105 17.9932398,8.77710526 C17.9932398,10.2367895 16.8936529,11.3836842 15.4941787,11.3836842 Z M15.4941787,7.21315789 C14.6944792,7.21315789 13.9947421,7.943 13.9947421,8.77710526 C13.9947421,9.61121053 14.6944792,10.3410526 15.4941787,10.3410526 C16.2938783,10.3410526 16.9936154,9.61121053 16.9936154,8.77710526 C16.9936154,7.943 16.2938783,7.21315789 15.4941787,7.21315789 Z M23.8910239,12.8433684 C24.0909488,13.0518947 23.9909864,13.3646842 23.7910615,13.5732105 L16.9936154,19.3076842 C16.8936529,19.4119474 15.794066,20.0375263 14.8944041,20.0375263 C14.0947045,20.0375263 7.79707058,19.3076842 6.99737103,19.2034211 L5.9977466,19.4119474 C5.9977466,19.829 5.89778415,20.3503158 5.79782171,20.6631053 C5.69785927,20.8716316 5.59789682,21.3929474 2.69898597,21.81 C2.59902353,21.81 2.59902353,21.81 2.59902353,21.81 C2.2991362,21.81 2.09921131,21.6014737 2.09921131,21.3929474 L0,12.5305789 C0,12.2177895 0.0999624433,12.0092632 0.29988733,11.8007368 C0.399849773,11.8007368 3.19879819,10.9666316 4.99812217,11.4879474 C5.09808461,11.4879474 5.19804705,11.5922105 5.29800949,11.8007368 C5.39797194,12.1135263 5.49793438,12.4263158 5.59789682,12.8433684 C6.29763393,12.5305789 7.59714569,12.1135263 9.49643211,11.4879474 C9.59639456,11.4879474 9.696357,11.4879474 9.79631944,11.4879474 C9.99624433,11.5922105 15.6941036,12.9476316 16.4938031,13.3646842 C16.693728,13.4689474 16.7936905,13.6774737 16.7936905,13.886 L20.5922633,12.0092632 C20.6922258,12.0092632 21.7918126,11.4879474 22.7914371,11.6964737 C22.8913995,11.6964737 22.8913995,11.8007368 22.991362,11.8007368 C23.5911366,12.2177895 23.8910239,12.7391053 23.8910239,12.8433684 Z M2.9988733,20.6631053 C3.6986104,20.5588421 4.49830995,20.3503158 4.89815972,20.1417895 C4.99812217,19.829 4.99812217,19.4119474 5.09808461,18.8906316 C5.09808461,18.7863684 5.09808461,18.7863684 5.09808461,18.6821053 C5.29800949,16.8053684 5.19804705,14.3030526 4.69823484,12.4263158 C3.59864796,12.2177895 1.99924887,12.5305789 1.19954932,12.7391053 L2.9988733,20.6631053 Z M16.4938031,18.3693158 L22.7914371,12.7391053 C22.7914371,12.6348421 22.6914746,12.6348421 22.5915122,12.5305789 C21.8917751,12.4263158 21.0920755,12.8433684 21.0920755,12.8433684 L15.794066,15.4499474 C15.6941036,15.4499474 15.6941036,15.5542105 15.5941412,15.5542105 C15.4941787,15.6584737 15.3942163,15.6584737 15.2942538,15.6584737 C13.5948923,15.6584737 11.3957185,15.5542105 11.3957185,15.5542105 L11.495681,14.5115789 C11.495681,14.5115789 13.4949298,14.6158421 15.1942914,14.6158421 C15.2942538,14.6158421 15.2942538,14.6158421 15.2942538,14.6158421 C15.5941412,14.5115789 15.6941036,14.3030526 15.794066,14.1987895 C14.6944792,13.886 11.8955308,13.1561579 9.79631944,12.6348421 C7.79707058,13.3646842 6.49755881,13.7817368 5.89778415,13.9902632 C6.09770904,15.4499474 6.09770904,16.9096316 5.9977466,18.2650526 L6.89740859,18.1607895 C6.89740859,18.1607895 6.99737103,18.1607895 6.99737103,18.1607895 C8.9966199,18.3693158 14.2946294,18.9948947 14.8944041,18.9948947 C15.4941787,18.9948947 16.2938783,18.4735789 16.4938031,18.3693158 Z"
+      ],
+      "pathListSHA256": "59791b22ee33ef47e030b4645e124f81195e1dc1df44a3518a77ab912f50c33a"
+    },
+    {
+      "name": "Money",
+      "paths": [
+        "M23.4782609,5 L4.69565217,5 C4.3826087,5 4.17391304,5.21428571 4.17391304,5.53571429 L4.17391304,7.14285714 L2.60869565,7.14285714 C2.29565217,7.14285714 2.08695652,7.35714286 2.08695652,7.67857143 L2.08695652,9.28571429 L0.52173913,9.28571429 C0.208695652,9.28571429 0,9.5 0,9.82142857 L0,19.4642857 C0,19.7857143 0.208695652,20 0.52173913,20 L19.3043478,20 C19.6173913,20 19.826087,19.7857143 19.826087,19.4642857 L19.826087,17.8571429 L21.3913043,17.8571429 C21.3913043,17.8571429 21.3913043,17.8571429 21.3913043,17.8571429 C21.4956522,17.8571429 21.7043478,17.75 21.8086957,17.75 C21.9130435,17.6428571 21.9130435,17.5357143 21.9130435,17.3214286 L21.9130435,15.7142857 L23.4782609,15.7142857 C23.7913043,15.7142857 24,15.5 24,15.1785714 L24,5.53571429 C24,5.21428571 23.7913043,5 23.4782609,5 Z M18.7826087,18.9285714 L1.04347826,18.9285714 L1.04347826,10.3571429 L18.7826087,10.3571429 L18.7826087,18.9285714 Z M20.8695652,16.7857143 L19.826087,16.7857143 L19.826087,9.82142857 C19.826087,9.5 19.6173913,9.28571429 19.3043478,9.28571429 L3.13043478,9.28571429 L3.13043478,8.21428571 L20.8695652,8.21428571 L20.8695652,16.7857143 Z M22.9565217,14.6428571 L21.9130435,14.6428571 L21.9130435,7.67857143 C21.9130435,7.35714286 21.7043478,7.14285714 21.3913043,7.14285714 L5.2173913,7.14285714 L5.2173913,6.07142857 L22.9565217,6.07142857 L22.9565217,14.6428571 Z M9.91304348,17.8571429 C11.6869565,17.8571429 13.0434783,16.4642857 13.0434783,14.6428571 C13.0434783,12.8214286 11.6869565,11.4285714 9.91304348,11.4285714 C8.13913043,11.4285714 6.7826087,12.8214286 6.7826087,14.6428571 C6.7826087,16.4642857 8.13913043,17.8571429 9.91304348,17.8571429 Z M9.91304348,12.5 C11.0608696,12.5 12,13.4642857 12,14.6428571 C12,15.8214286 11.0608696,16.7857143 9.91304348,16.7857143 C8.76521739,16.7857143 7.82608696,15.8214286 7.82608696,14.6428571 C7.82608696,13.4642857 8.76521739,12.5 9.91304348,12.5 Z"
+      ],
+      "pathListSHA256": "891d3b884607483031771d3ac35961def786a2131ed22e43f3f527055c534073"
+    }
+  ],
+  "baseline": {
+    "path": "/Users/thlt/Documents/Codex/2026-10-16/task/select-code-candidate-20261017",
+    "CardGridSHA256": "7817c3232d1a26c4f4e1e038635a7507fcfce2c2bb2b013bf5d718f493c88f9e",
+    "qualification": "Frozen Select baseline includes frozenNFcode; no Git or source edits to baseline."
+  },
+  "syntheticSdkEnvelope": {
+    "id": "fixture-only-nf-owner",
+    "heading": {
+      "jsonValue": {
+        "value": "Authored fixture heading ®",
+        "metadata": {
+          "itemId": "fixture-only-nf-owner",
+          "fieldId": "fixture-heading",
+          "fieldType": "Single-Line Text",
+          "fixtureOnly": true
+        }
+      }
+    },
+    "subheading": {
+      "jsonValue": {
+        "value": "<p>Authored <em>fixture subheading</em>.</p>",
+        "metadata": {
+          "itemId": "fixture-only-nf-owner",
+          "fieldId": "fixture-subheading",
+          "fieldType": "Rich Text",
+          "fixtureOnly": true
+        }
+      }
+    },
+    "body": {
+      "jsonValue": {
+        "value": "<p>Authored <strong>fixture body</strong> with an <a href=\"#authored-detail\">authored detail</a>.</p>",
+        "metadata": {
+          "itemId": "fixture-only-nf-owner",
+          "fieldId": "fixture-body",
+          "fieldType": "Rich Text",
+          "fixtureOnly": true
+        }
+      }
+    },
+    "primaryLink": {
+      "jsonValue": {
+        "value": {
+          "href": "/about",
+          "text": "Authored fixture link",
+          "linktype": "internal"
+        },
+        "metadata": {
+          "itemId": "fixture-only-nf-owner",
+          "fieldId": "fixture-primaryLink",
+          "fieldType": "General Link",
+          "fixtureOnly": true
+        }
+      }
+    },
+    "children": {
+      "results": [
+        {
+          "id": "fixture-only-nf-card-0",
+          "fieldCollection": [
+            {
+              "name": "Heading",
+              "jsonValue": {
+                "value": "Already own Index Advantage+ NF®?",
+                "metadata": {
+                  "itemId": "fixture-only-nf-card-0",
+                  "fieldId": "fixture-heading",
+                  "fieldType": "Single-Line Text",
+                  "fixtureOnly": true
+                }
+              }
+            },
+            {
+              "name": "Subheading",
+              "jsonValue": {
+                "value": "<p>Authored card subheading 0</p>",
+                "metadata": {
+                  "itemId": "fixture-only-nf-card-0",
+                  "fieldId": "fixture-subheading",
+                  "fieldType": "Rich Text",
+                  "fixtureOnly": true
+                }
+              }
+            },
+            {
+              "name": "Body",
+              "jsonValue": {
+                "value": "<p>Authored card body 0</p>",
+                "metadata": {
+                  "itemId": "fixture-only-nf-card-0",
+                  "fieldId": "fixture-body",
+                  "fieldType": "Rich Text",
+                  "fixtureOnly": true
+                }
+              }
+            },
+            {
+              "name": "Links",
+              "jsonValue": [
+                {
+                  "id": "fixture-only-nf-card-0-link-0",
+                  "fields": {
+                    "Link": {
+                      "value": {
+                        "href": "#service-unavailable-login",
+                        "text": "Keep disabled login",
+                        "linktype": "internal",
+                        "allianzUnavailable": true
+                      },
+                      "metadata": {
+                        "itemId": "fixture-only-nf-card-0-link-0",
+                        "fieldId": "fixture-link",
+                        "fieldType": "General Link",
+                        "fixtureOnly": true
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fixture-only-nf-card-1",
+          "fieldCollection": [
+            {
+              "name": "Heading",
+              "jsonValue": {
+                "value": "Learn more about RILAs",
+                "metadata": {
+                  "itemId": "fixture-only-nf-card-1",
+                  "fieldId": "fixture-heading",
+                  "fieldType": "Single-Line Text",
+                  "fixtureOnly": true
+                }
+              }
+            },
+            {
+              "name": "Subheading",
+              "jsonValue": {
+                "value": "<p>Authored card subheading 1</p>",
+                "metadata": {
+                  "itemId": "fixture-only-nf-card-1",
+                  "fieldId": "fixture-subheading",
+                  "fieldType": "Rich Text",
+                  "fixtureOnly": true
+                }
+              }
+            },
+            {
+              "name": "Body",
+              "jsonValue": {
+                "value": "<p>Authored card body 1</p>",
+                "metadata": {
+                  "itemId": "fixture-only-nf-card-1",
+                  "fieldId": "fixture-body",
+                  "fieldType": "Rich Text",
+                  "fixtureOnly": true
+                }
+              }
+            },
+            {
+              "name": "Links",
+              "jsonValue": [
+                {
+                  "id": "fixture-only-nf-card-1-link-0",
+                  "fields": {
+                    "Link": {
+                      "value": {
+                        "href": "/about",
+                        "text": "Authored About link",
+                        "linktype": "internal"
+                      },
+                      "metadata": {
+                        "itemId": "fixture-only-nf-card-1-link-0",
+                        "fieldId": "fixture-link",
+                        "fieldType": "General Link",
+                        "fixtureOnly": true
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fixture-only-nf-card-2",
+          "fieldCollection": [
+            {
+              "name": "Heading",
+              "jsonValue": {
+                "value": "Run the numbers",
+                "metadata": {
+                  "itemId": "fixture-only-nf-card-2",
+                  "fieldId": "fixture-heading",
+                  "fieldType": "Single-Line Text",
+                  "fixtureOnly": true
+                }
+              }
+            },
+            {
+              "name": "Subheading",
+              "jsonValue": {
+                "value": "<p>Authored card subheading 2</p>",
+                "metadata": {
+                  "itemId": "fixture-only-nf-card-2",
+                  "fieldId": "fixture-subheading",
+                  "fieldType": "Rich Text",
+                  "fixtureOnly": true
+                }
+              }
+            },
+            {
+              "name": "Body",
+              "jsonValue": {
+                "value": "<p>Authored card body 2</p>",
+                "metadata": {
+                  "itemId": "fixture-only-nf-card-2",
+                  "fieldId": "fixture-body",
+                  "fieldType": "Rich Text",
+                  "fixtureOnly": true
+                }
+              }
+            },
+            {
+              "name": "Links",
+              "jsonValue": [
+                {
+                  "id": "fixture-only-nf-card-2-link-0",
+                  "fields": {
+                    "Link": {
+                      "value": {
+                        "href": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/calculator",
+                        "text": "Authored local calculator",
+                        "linktype": "internal"
+                      },
+                      "metadata": {
+                        "itemId": "fixture-only-nf-card-2-link-0",
+                        "fieldId": "fixture-link",
+                        "fieldType": "General Link",
+                        "fixtureOnly": true
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "fixture-only-nf-card-2-link-1",
+                  "fields": {
+                    "Link": {
+                      "value": {
+                        "href": "/what-we-offer/annuities/registered-index-linked-annuities/define-your-downside",
+                        "text": "Authored downside mock",
+                        "linktype": "internal"
+                      },
+                      "metadata": {
+                        "itemId": "fixture-only-nf-card-2-link-1",
+                        "fieldId": "fixture-link",
+                        "fieldType": "General Link",
+                        "fixtureOnly": true
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "fixture-only-nf-card-2-link-2",
+                  "fields": {
+                    "Link": {
+                      "value": {
+                        "href": "#service-unavailable-rates",
+                        "text": "Keep disabled rates",
+                        "linktype": "internal",
+                        "allianzUnavailable": true
+                      },
+                      "metadata": {
+                        "itemId": "fixture-only-nf-card-2-link-2",
+                        "fieldId": "fixture-link",
+                        "fieldType": "General Link",
+                        "fixtureOnly": true
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "oracleParams": {
+    "RenderingIdentifier": "fixture-select-layout",
+    "headingLevel": "h1",
+    "theme": "blue-soft",
+    "layout": "stacked",
+    "alignment": "left",
+    "spacing": "none"
+  },
+  "oracles": [
+    {
+      "variant": "Default",
+      "state": "filled",
+      "editing": false,
+      "SHA256": "8ea6edcc90c19b5d8146d98ff4687eb68d15cfdfcd6363de41d943065329eee8"
+    },
+    {
+      "variant": "Default",
+      "state": "filled",
+      "editing": true,
+      "SHA256": "838b1437e6d993f9799f969782cbdd2e5e010f9e44f1af9b9a185b617a6223a7"
+    },
+    {
+      "variant": "Default",
+      "state": "cleared",
+      "editing": false,
+      "SHA256": "8f76cec82f39c574a35c1fac1aa89caf38330f440f8602dbbaadb798dff77077"
+    },
+    {
+      "variant": "Default",
+      "state": "cleared",
+      "editing": true,
+      "SHA256": "a739da3dce3fe04df1ff79c13eb55c0e104c80219e52f8f859f1a13f5bd8ea13"
+    },
+    {
+      "variant": "Default",
+      "state": "absent",
+      "editing": false,
+      "SHA256": "8f76cec82f39c574a35c1fac1aa89caf38330f440f8602dbbaadb798dff77077"
+    },
+    {
+      "variant": "Default",
+      "state": "absent",
+      "editing": true,
+      "SHA256": "8f76cec82f39c574a35c1fac1aa89caf38330f440f8602dbbaadb798dff77077"
+    },
+    {
+      "variant": "IapContractTools",
+      "state": "filled",
+      "editing": false,
+      "SHA256": "b86aa508e95922da7f68a8bf7f9550b99377eb92a8944dd96e81d81729067439"
+    },
+    {
+      "variant": "IapContractTools",
+      "state": "filled",
+      "editing": true,
+      "SHA256": "9b8e4c117e7a5d6fd2915139c4ccf2d14e6bed17a5ed42a9bc671b1bbe3e0179"
+    },
+    {
+      "variant": "IapContractTools",
+      "state": "cleared",
+      "editing": false,
+      "SHA256": "71d86adccd17049d287a0884f80ae8bcd68746703da63c6abbb8d0580322e079"
+    },
+    {
+      "variant": "IapContractTools",
+      "state": "cleared",
+      "editing": true,
+      "SHA256": "8508f1fc9c6e06e29cbd4f7d0fbf229d980d13b5055183d1e71ccc1b638b0acc"
+    },
+    {
+      "variant": "IapContractTools",
+      "state": "absent",
+      "editing": false,
+      "SHA256": "71d86adccd17049d287a0884f80ae8bcd68746703da63c6abbb8d0580322e079"
+    },
+    {
+      "variant": "IapContractTools",
+      "state": "absent",
+      "editing": true,
+      "SHA256": "71d86adccd17049d287a0884f80ae8bcd68746703da63c6abbb8d0580322e079"
+    },
+    {
+      "variant": "IapSupport",
+      "state": "filled",
+      "editing": false,
+      "SHA256": "5bcf69b2e69a6bbb080a0d2398dbe88f7f4bd938212dcfd2b45b5fad8466e36f"
+    },
+    {
+      "variant": "IapSupport",
+      "state": "filled",
+      "editing": true,
+      "SHA256": "5885548dea9acbab20c81dac61ad32ac54a2e27fa5b68c062d5f4f87085d3482"
+    },
+    {
+      "variant": "IapSupport",
+      "state": "cleared",
+      "editing": false,
+      "SHA256": "cec8b9fdd09be9a440c77b72deff35aad9f432e47a9e190a29fd53b7f608d026"
+    },
+    {
+      "variant": "IapSupport",
+      "state": "cleared",
+      "editing": true,
+      "SHA256": "f49a879137a0ce65ec5b5b6b7841157caa6b571f917bae9f133faaf9c8986977"
+    },
+    {
+      "variant": "IapSupport",
+      "state": "absent",
+      "editing": false,
+      "SHA256": "cec8b9fdd09be9a440c77b72deff35aad9f432e47a9e190a29fd53b7f608d026"
+    },
+    {
+      "variant": "IapSupport",
+      "state": "absent",
+      "editing": true,
+      "SHA256": "cec8b9fdd09be9a440c77b72deff35aad9f432e47a9e190a29fd53b7f608d026"
+    },
+    {
+      "variant": "NfContractTools",
+      "state": "filled",
+      "editing": false,
+      "SHA256": "02e48e1a104600bd01381c98cfc438326aa011a58d55fa43a8690f9eaad9b347"
+    },
+    {
+      "variant": "NfContractTools",
+      "state": "filled",
+      "editing": true,
+      "SHA256": "46d7844216c376cf2383846fabd8615abc84c84a94599a3fce4aedf6eed05d14"
+    },
+    {
+      "variant": "NfContractTools",
+      "state": "cleared",
+      "editing": false,
+      "SHA256": "71d86adccd17049d287a0884f80ae8bcd68746703da63c6abbb8d0580322e079"
+    },
+    {
+      "variant": "NfContractTools",
+      "state": "cleared",
+      "editing": true,
+      "SHA256": "f1cf77497cd4d14d8f356459e9ca03a033045dddb1cab0fcb07e855ca7c996ad"
+    },
+    {
+      "variant": "NfContractTools",
+      "state": "absent",
+      "editing": false,
+      "SHA256": "71d86adccd17049d287a0884f80ae8bcd68746703da63c6abbb8d0580322e079"
+    },
+    {
+      "variant": "NfContractTools",
+      "state": "absent",
+      "editing": true,
+      "SHA256": "71d86adccd17049d287a0884f80ae8bcd68746703da63c6abbb8d0580322e079"
+    },
+    {
+      "variant": "NfSupport",
+      "state": "filled",
+      "editing": false,
+      "SHA256": "c6823393bc618121e5f955db2521278eb091b7c1911027ffdbb98b7698c6c667"
+    },
+    {
+      "variant": "NfSupport",
+      "state": "filled",
+      "editing": true,
+      "SHA256": "3b11c3c20c26ac5757d56ef2add6cc53ee27937529f26c3ec0203ffb90ce95d3"
+    },
+    {
+      "variant": "NfSupport",
+      "state": "cleared",
+      "editing": false,
+      "SHA256": "cec8b9fdd09be9a440c77b72deff35aad9f432e47a9e190a29fd53b7f608d026"
+    },
+    {
+      "variant": "NfSupport",
+      "state": "cleared",
+      "editing": true,
+      "SHA256": "da8acdd02aaa235bf96b4d5dad341e6fc4037704b3b8f1b81baed0aafdaff1f1"
+    },
+    {
+      "variant": "NfSupport",
+      "state": "absent",
+      "editing": false,
+      "SHA256": "cec8b9fdd09be9a440c77b72deff35aad9f432e47a9e190a29fd53b7f608d026"
+    },
+    {
+      "variant": "NfSupport",
+      "state": "absent",
+      "editing": true,
+      "SHA256": "cec8b9fdd09be9a440c77b72deff35aad9f432e47a9e190a29fd53b7f608d026"
+    },
+    {
+      "variant": "SelectContractTools",
+      "state": "filled",
+      "editing": false,
+      "SHA256": "c1962444cee2ca31341890ace8b978fe2a9cc9b8b63b4c27f880b06bc0576cb9"
+    },
+    {
+      "variant": "SelectContractTools",
+      "state": "filled",
+      "editing": true,
+      "SHA256": "d603a16ca619f78135449186d12c5768a23c46fd26a916fc2d997a942c38d68d"
+    },
+    {
+      "variant": "SelectContractTools",
+      "state": "cleared",
+      "editing": false,
+      "SHA256": "6171699c9a9199cb31a25a354ce46d624d3e95974c02f8f1ddcc3c7a01560f0d"
+    },
+    {
+      "variant": "SelectContractTools",
+      "state": "cleared",
+      "editing": true,
+      "SHA256": "856ab46cd1c2d5adfbb2e68778eabff78eb79a7a20786272620d5cea86b1158a"
+    },
+    {
+      "variant": "SelectContractTools",
+      "state": "absent",
+      "editing": false,
+      "SHA256": "6171699c9a9199cb31a25a354ce46d624d3e95974c02f8f1ddcc3c7a01560f0d"
+    },
+    {
+      "variant": "SelectContractTools",
+      "state": "absent",
+      "editing": true,
+      "SHA256": "6171699c9a9199cb31a25a354ce46d624d3e95974c02f8f1ddcc3c7a01560f0d"
+    },
+    {
+      "variant": "SelectSupport",
+      "state": "filled",
+      "editing": false,
+      "SHA256": "0b0946810e33a83b2dfbb2fc45d4f2776e05abe791ae53bf013e42ba1963df42"
+    },
+    {
+      "variant": "SelectSupport",
+      "state": "filled",
+      "editing": true,
+      "SHA256": "9209866a4b135359f014d7629d9b14e8762517e09d4c81460966f9e9cac84d96"
+    },
+    {
+      "variant": "SelectSupport",
+      "state": "cleared",
+      "editing": false,
+      "SHA256": "6f166ff58564ffe872276f90ce7c9fbee215486a2e16a90e3afb4f4e53e90fab"
+    },
+    {
+      "variant": "SelectSupport",
+      "state": "cleared",
+      "editing": true,
+      "SHA256": "6b6fc16dc144b46953179640b7d040996fa9634dc4af793269561675c9e27d56"
+    },
+    {
+      "variant": "SelectSupport",
+      "state": "absent",
+      "editing": false,
+      "SHA256": "6f166ff58564ffe872276f90ce7c9fbee215486a2e16a90e3afb4f4e53e90fab"
+    },
+    {
+      "variant": "SelectSupport",
+      "state": "absent",
+      "editing": true,
+      "SHA256": "6f166ff58564ffe872276f90ce7c9fbee215486a2e16a90e3afb4f4e53e90fab"
+    },
+    {
+      "variant": "SelectRiderFeatures",
+      "state": "filled",
+      "editing": false,
+      "SHA256": "c56c1e80a997ab059f0eef1124ef51577ac82860effe318f938a4ab73ed819ec"
+    },
+    {
+      "variant": "SelectRiderFeatures",
+      "state": "filled",
+      "editing": true,
+      "SHA256": "517d123a80a6f088b989609a2661c1dfff08d2e787b34771c9cc6be9b6f88082"
+    },
+    {
+      "variant": "SelectRiderFeatures",
+      "state": "cleared",
+      "editing": false,
+      "SHA256": "6729a1c40dfb6332044347303e97ba138de0b9953014ad0a57fc0dbf08865412"
+    },
+    {
+      "variant": "SelectRiderFeatures",
+      "state": "cleared",
+      "editing": true,
+      "SHA256": "eb71899ea55cd6e981e320652d90abd5d468c6a6e94cff070379a9403ba46ca7"
+    },
+    {
+      "variant": "SelectRiderFeatures",
+      "state": "absent",
+      "editing": false,
+      "SHA256": "6729a1c40dfb6332044347303e97ba138de0b9953014ad0a57fc0dbf08865412"
+    },
+    {
+      "variant": "SelectRiderFeatures",
+      "state": "absent",
+      "editing": true,
+      "SHA256": "6729a1c40dfb6332044347303e97ba138de0b9953014ad0a57fc0dbf08865412"
+    }
+  ]
+}

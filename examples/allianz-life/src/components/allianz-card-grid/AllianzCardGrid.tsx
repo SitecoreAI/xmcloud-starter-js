@@ -1254,7 +1254,8 @@ export const FixedProductResourcesH2 = ({ fields, params }: AllianzCardGridProps
       </div>
     </div>
   </div>;
-};
+};
+
 
 /** Fixed product Features retain the source introduction header and its native heading. */
 export const FixedProductFeatures = (props: AllianzCardGridProps) => <AllianzCardGrid {...props} sourceFeaturesIntroduction />;
@@ -1348,39 +1349,47 @@ import { IapSourceGlyph } from './iap-source-glyphs.props';
 
 /** Two finite Index Advantage+ tile rows retain their ordered native fields.
  * Source-only icons are decorative; Login keeps its received disabled link. */
-function SourceIapCards({ fields, params, support = false, headingLevel = 'h4' }:
-  AllianzCardGridProps & { support?: boolean; headingLevel?: 'h2' | 'h3' | 'h4' }) {
+function SourceIapCards({ fields, params, support = false, headingLevel = 'h4', selectRole, riderMatchHeight = false }:
+  AllianzCardGridProps & { support?: boolean; headingLevel?: 'h2' | 'h3' | 'h4'; selectRole?: 'tools' | 'support' | 'rider'; riderMatchHeight?: boolean }) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
   const cards = (data.children?.results ?? []).map(allianzCardFields);
-  return <div className={`l-container--full-width t-bg-${support ? 'green-soft' : 'grey-soft'} axlTileCollection ${support ? 'allianz-iap-support' : 'allianz-iap-contract-tools'}`} id={params.RenderingIdentifier}>
+  const isSelectRider = selectRole === 'rider';
+  return <div className={`l-container--full-width t-bg-${support ? 'green-soft' : 'grey-soft'} axlTileCollection ${isSelectRider ? 'allianz-select-rider-features' : support ? 'allianz-iap-support' : 'allianz-iap-contract-tools'}`} id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width">
-      <div className={`l-grid__row match-height-row${support ? ' u-padding-bottom-xl' : ''}`}>
+      <div className={`l-grid__row${isSelectRider && !riderMatchHeight ? '' : ' match-height-row'}${support || selectRole === 'tools' ? ' u-padding-bottom-xl' : ''}`}>
         {cards.map((card, index) => {
           const glyph = support ? (['Phone', 'User', 'QuestionMark'] as const)[index]
             : (['Laptop', 'LightBulb', 'Calculator'] as const)[index];
+          const selectGlyph = isSelectRider ? (['LineGraph', 'Receive', 'Money'] as const)[index]
+            : selectRole === 'support' && index === 0 ? 'PhoneCall' : undefined;
           const links = card.links?.targetItems ?? [{ id: `${card.id}-link`, link: card.link }];
           const activeLinks = links.filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing));
+          const hasSelectBodyLinks = selectRole === 'tools' && index === 2;
+          const cardLinks = activeLinks.map((item, linkIndex) => {
+            const field = allianzLinkField(item.link?.jsonValue, isEditing);
+            const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
+            const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
+            return <div className="tileLink" key={item.id ?? linkIndex}><Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
+              <span className="a-link__icon" aria-hidden="true">{isSelectRider ? <SourceDownloadLinkIcon /> : <EditorialResourceArrow />}</span><span className="a-link__text">{field.value?.text}</span>
+            </Link></div>;
+          });
           return <div key={card.id} className="l-grid__column-medium-4">
-            <article className="m-axlTile match-height -is--stacked t-bg-primary-white">
+            <article className={`m-axlTile match-height -is--stacked t-bg-${isSelectRider ? 'transparent' : 'primary-white'}`}>
               <div className="tileContent u-text-center">
-                {glyph && <div className="tileSubGrid__image"><div className={`tileIcon ${support ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}><IapSourceGlyph glyph={glyph} /></div></div>}
+                {glyph && <div className="tileSubGrid__image"><div className={`tileIcon ${support ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}>{selectGlyph ? <SelectCardSourceGlyph glyph={selectGlyph} /> : <IapSourceGlyph glyph={glyph} />}</div></div>}
                 <div className="tileSubGrid__content">
                   <header>
                     <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={headingLevel} field={card.heading?.jsonValue} />}</div>
                     {shouldRenderTextField(card.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.subheading?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
                   </header>
-                  {shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" /> : <div className="tileBody u-font-size-md" />}
-                  {activeLinks.length > 0 && <footer>{activeLinks.map((item, linkIndex) => {
-                    const field = allianzLinkField(item.link?.jsonValue, isEditing);
-                    const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
-                    const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'] || field.value?.text;
-                    return <div className="tileLink" key={item.id ?? linkIndex}><Link {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
-                      <span className="a-link__icon" aria-hidden="true"><EditorialResourceArrow /></span><span className="a-link__text">{field.value?.text}</span>
-                    </Link></div>;
-                  })}</footer>}
+                  {hasSelectBodyLinks ? <div className="tileBody u-font-size-md">
+                    {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} />}
+                    {cardLinks}
+                  </div> : shouldRenderTextField(card.body?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" /> : <div className="tileBody u-font-size-md" />}
+                  {!hasSelectBodyLinks && activeLinks.length > 0 && <footer>{cardLinks}</footer>}
                 </div>
               </div>
             </article>
@@ -1397,6 +1406,35 @@ export const IapSupport = (props: AllianzCardGridProps) => <SourceIapCards {...p
 /** NF keeps the same native cards and link policies with its source heading levels. */
 export const NfContractTools = (props: AllianzCardGridProps) => <SourceIapCards {...props} headingLevel="h2" />;
 export const NfSupport = (props: AllianzCardGridProps) => <SourceIapCards {...props} support headingLevel="h3" />;
+
+/** Select keeps its own source row spacing, decorative glyphs and chart footer. */
+export const SelectContractTools = (props: AllianzCardGridProps) => <SourceIapCards {...props} headingLevel="h2" selectRole="tools" />;
+export const SelectSupport = (props: AllianzCardGridProps) => <SourceIapCards {...props} support headingLevel="h3" selectRole="support" />;
+export const SelectRiderFeatures = (props: AllianzCardGridProps) => <SourceIapCards {...props} headingLevel="h3" selectRole="rider" />;
+
+/** Income retains its source H4 cards and equal-height rider row. */
+export const IncomeRiderFeatures = (props: AllianzCardGridProps) => <SourceIapCards {...props} headingLevel="h4" selectRole="rider" riderMatchHeight />;
+
+/** Exact captured Select paths are decorative; adjacent native headings carry meaning. */
+const SELECT_CARD_SOURCE_PATHS = {
+  "PhoneCall": {
+    "d": "M3.00109313,3.15884198 L4.77585601,1.25001136 C4.87140327,1.14747989 4.99550489,1.09076035 5.12619596,1.09076035 C5.25798529,1.09076035 5.38318514,1.14747989 5.47983065,1.25219288 L9.49171729,5.56724083 C9.7124644,5.80502659 9.71026791,6.20097259 9.48732431,6.43330455 L7.95088045,8.03672227 C7.53574408,8.46866336 7.53135111,9.15147934 7.93879976,9.59105577 L14.366824,16.5032041 C14.5710974,16.7235377 14.8731146,16.8478844 15.1509705,16.8457029 C15.4463982,16.8435213 15.7308435,16.7137209 15.930724,16.4912057 L17.4199433,14.8387038 C17.5143923,14.7339908 17.6362974,14.6761805 17.7625955,14.6750898 C17.9031708,14.6805436 18.011897,14.7307185 18.1085425,14.8343408 L22.1193309,19.148298 C22.3433728,19.389356 22.3433728,19.7940281 22.1215274,20.0339954 L20.3467645,21.942826 C19.4758567,22.8797891 17.8120165,23.1873835 16.708281,22.6147344 L16.6577617,22.5918284 C16.6204214,22.5776485 12.8391661,21.0331318 8.23752223,16.0319956 C4.11361467,11.5456983 2.4333008,7.24155797 2.39925522,7.15647866 C1.82267694,5.96100532 2.09833627,4.13070945 3.00109313,3.15884198 M7.42701789,16.7682589 C12.0627073,21.8053902 15.8395697,23.4371677 16.2239552,23.5942371 C16.7642914,23.8691088 17.3760135,24 17.9976198,24 C19.1650536,24 20.3610417,23.5353361 21.1528759,22.6823615 L22.9276388,20.7746216 C23.5448521,20.1114393 23.5437538,19.0719447 22.9265405,18.4076717 L18.9146539,14.0937145 C18.6060472,13.7621233 18.1425881,13.5886925 17.7549078,13.5843294 C17.3145118,13.5876017 16.9059649,13.7741217 16.6017513,14.1111667 L15.1729353,15.7636686 L8.74600937,8.78825615 L10.2824532,7.18592919 C10.9117472,6.53038222 10.9183367,5.49415989 10.2989269,4.82661455 L6.28704025,0.511566605 C5.97953183,0.182156979 5.5676902,0 5.12729421,0 L5.12619596,0 C4.68579998,0 4.27505659,0.181066218 3.96864641,0.509385084 L2.19498177,2.4182157 C0.996797179,3.70640367 0.64426074,6.0439031 1.3910669,7.58623824 C1.4602563,7.76948598 3.15265085,12.1183475 7.42701789,16.7682589",
+    "fillRule": "evenodd"
+  },
+  "Receive": {
+    "d": "M18.9928642,6.17052632 C20.0924511,6.17052632 20.9921131,5.23215789 20.9921131,4.08526316 C20.9921131,2.93836842 20.0924511,2 18.9928642,2 C17.8932774,2 16.9936154,2.93836842 16.9936154,4.08526316 C16.9936154,5.23215789 17.8932774,6.17052632 18.9928642,6.17052632 Z M18.9928642,3.04263158 C19.5926389,3.04263158 19.9924887,3.45968421 19.9924887,4.08526316 C19.9924887,4.71084211 19.5926389,5.12789474 18.9928642,5.12789474 C18.3930896,5.12789474 17.9932398,4.71084211 17.9932398,4.08526316 C17.9932398,3.45968421 18.3930896,3.04263158 18.9928642,3.04263158 Z M15.4941787,11.3836842 C14.0947045,11.3836842 12.9951176,10.2367895 12.9951176,8.77710526 C12.9951176,7.31742105 14.0947045,6.17052632 15.4941787,6.17052632 C16.8936529,6.17052632 17.9932398,7.31742105 17.9932398,8.77710526 C17.9932398,10.2367895 16.8936529,11.3836842 15.4941787,11.3836842 Z M15.4941787,7.21315789 C14.6944792,7.21315789 13.9947421,7.943 13.9947421,8.77710526 C13.9947421,9.61121053 14.6944792,10.3410526 15.4941787,10.3410526 C16.2938783,10.3410526 16.9936154,9.61121053 16.9936154,8.77710526 C16.9936154,7.943 16.2938783,7.21315789 15.4941787,7.21315789 Z M23.8910239,12.8433684 C24.0909488,13.0518947 23.9909864,13.3646842 23.7910615,13.5732105 L16.9936154,19.3076842 C16.8936529,19.4119474 15.794066,20.0375263 14.8944041,20.0375263 C14.0947045,20.0375263 7.79707058,19.3076842 6.99737103,19.2034211 L5.9977466,19.4119474 C5.9977466,19.829 5.89778415,20.3503158 5.79782171,20.6631053 C5.69785927,20.8716316 5.59789682,21.3929474 2.69898597,21.81 C2.59902353,21.81 2.59902353,21.81 2.59902353,21.81 C2.2991362,21.81 2.09921131,21.6014737 2.09921131,21.3929474 L0,12.5305789 C0,12.2177895 0.0999624433,12.0092632 0.29988733,11.8007368 C0.399849773,11.8007368 3.19879819,10.9666316 4.99812217,11.4879474 C5.09808461,11.4879474 5.19804705,11.5922105 5.29800949,11.8007368 C5.39797194,12.1135263 5.49793438,12.4263158 5.59789682,12.8433684 C6.29763393,12.5305789 7.59714569,12.1135263 9.49643211,11.4879474 C9.59639456,11.4879474 9.696357,11.4879474 9.79631944,11.4879474 C9.99624433,11.5922105 15.6941036,12.9476316 16.4938031,13.3646842 C16.693728,13.4689474 16.7936905,13.6774737 16.7936905,13.886 L20.5922633,12.0092632 C20.6922258,12.0092632 21.7918126,11.4879474 22.7914371,11.6964737 C22.8913995,11.6964737 22.8913995,11.8007368 22.991362,11.8007368 C23.5911366,12.2177895 23.8910239,12.7391053 23.8910239,12.8433684 Z M2.9988733,20.6631053 C3.6986104,20.5588421 4.49830995,20.3503158 4.89815972,20.1417895 C4.99812217,19.829 4.99812217,19.4119474 5.09808461,18.8906316 C5.09808461,18.7863684 5.09808461,18.7863684 5.09808461,18.6821053 C5.29800949,16.8053684 5.19804705,14.3030526 4.69823484,12.4263158 C3.59864796,12.2177895 1.99924887,12.5305789 1.19954932,12.7391053 L2.9988733,20.6631053 Z M16.4938031,18.3693158 L22.7914371,12.7391053 C22.7914371,12.6348421 22.6914746,12.6348421 22.5915122,12.5305789 C21.8917751,12.4263158 21.0920755,12.8433684 21.0920755,12.8433684 L15.794066,15.4499474 C15.6941036,15.4499474 15.6941036,15.5542105 15.5941412,15.5542105 C15.4941787,15.6584737 15.3942163,15.6584737 15.2942538,15.6584737 C13.5948923,15.6584737 11.3957185,15.5542105 11.3957185,15.5542105 L11.495681,14.5115789 C11.495681,14.5115789 13.4949298,14.6158421 15.1942914,14.6158421 C15.2942538,14.6158421 15.2942538,14.6158421 15.2942538,14.6158421 C15.5941412,14.5115789 15.6941036,14.3030526 15.794066,14.1987895 C14.6944792,13.886 11.8955308,13.1561579 9.79631944,12.6348421 C7.79707058,13.3646842 6.49755881,13.7817368 5.89778415,13.9902632 C6.09770904,15.4499474 6.09770904,16.9096316 5.9977466,18.2650526 L6.89740859,18.1607895 C6.89740859,18.1607895 6.99737103,18.1607895 6.99737103,18.1607895 C8.9966199,18.3693158 14.2946294,18.9948947 14.8944041,18.9948947 C15.4941787,18.9948947 16.2938783,18.4735789 16.4938031,18.3693158 Z"
+  },
+  "Money": {
+    "d": "M23.4782609,5 L4.69565217,5 C4.3826087,5 4.17391304,5.21428571 4.17391304,5.53571429 L4.17391304,7.14285714 L2.60869565,7.14285714 C2.29565217,7.14285714 2.08695652,7.35714286 2.08695652,7.67857143 L2.08695652,9.28571429 L0.52173913,9.28571429 C0.208695652,9.28571429 0,9.5 0,9.82142857 L0,19.4642857 C0,19.7857143 0.208695652,20 0.52173913,20 L19.3043478,20 C19.6173913,20 19.826087,19.7857143 19.826087,19.4642857 L19.826087,17.8571429 L21.3913043,17.8571429 C21.3913043,17.8571429 21.3913043,17.8571429 21.3913043,17.8571429 C21.4956522,17.8571429 21.7043478,17.75 21.8086957,17.75 C21.9130435,17.6428571 21.9130435,17.5357143 21.9130435,17.3214286 L21.9130435,15.7142857 L23.4782609,15.7142857 C23.7913043,15.7142857 24,15.5 24,15.1785714 L24,5.53571429 C24,5.21428571 23.7913043,5 23.4782609,5 Z M18.7826087,18.9285714 L1.04347826,18.9285714 L1.04347826,10.3571429 L18.7826087,10.3571429 L18.7826087,18.9285714 Z M20.8695652,16.7857143 L19.826087,16.7857143 L19.826087,9.82142857 C19.826087,9.5 19.6173913,9.28571429 19.3043478,9.28571429 L3.13043478,9.28571429 L3.13043478,8.21428571 L20.8695652,8.21428571 L20.8695652,16.7857143 Z M22.9565217,14.6428571 L21.9130435,14.6428571 L21.9130435,7.67857143 C21.9130435,7.35714286 21.7043478,7.14285714 21.3913043,7.14285714 L5.2173913,7.14285714 L5.2173913,6.07142857 L22.9565217,6.07142857 L22.9565217,14.6428571 Z M9.91304348,17.8571429 C11.6869565,17.8571429 13.0434783,16.4642857 13.0434783,14.6428571 C13.0434783,12.8214286 11.6869565,11.4285714 9.91304348,11.4285714 C8.13913043,11.4285714 6.7826087,12.8214286 6.7826087,14.6428571 C6.7826087,16.4642857 8.13913043,17.8571429 9.91304348,17.8571429 Z M9.91304348,12.5 C11.0608696,12.5 12,13.4642857 12,14.6428571 C12,15.8214286 11.0608696,16.7857143 9.91304348,16.7857143 C8.76521739,16.7857143 7.82608696,15.8214286 7.82608696,14.6428571 C7.82608696,13.4642857 8.76521739,12.5 9.91304348,12.5 Z"
+  }
+} as const;
+
+const SelectCardSourceGlyph = ({ glyph }: { glyph: 'LineGraph' | 'Receive' | 'Money' | 'PhoneCall' }) => {
+  if (glyph === 'LineGraph') return <RilaSourceGlyph glyph="GraphVariableUp" />;
+  return <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+    <path {...SELECT_CARD_SOURCE_PATHS[glyph]} />
+  </svg>;
+};
 
 
 import { useId as useClassicGlyphId } from 'react';

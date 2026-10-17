@@ -1,0 +1,54 @@
+/* Preserve the complete native brochure Body, including its link and label. */
+.allianz-select-rider-brochure .tileLink p {
+  margin: 0;
+}
+.allianz-select-rider-brochure .tileLink a {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: "Allianz Neo", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .0625rem;
+  line-height: 1.5rem;
+  position: relative;
+  text-decoration: none;
+  -webkit-hyphens: none;
+  hyphens: none;
+  cursor: pointer;
+  color: #005074;
+  transition: all .3s ease, box-shadow .3s ease;
+}
+.allianz-select-rider-brochure .tileLink a::before {
+  --allianz-select-download: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M11.0088496%2C18.601%20L5.41052947%2C13.1737857%20C4.86315684%2C12.6431429%204.86315684%2C11.7854286%205.41052947%2C11.2547857%20C5.9579021%2C10.7241429%206.84265787%2C10.7241429%207.3900305%2C11.2547857%20L10.60007%2C14.3667143%20L10.60007%2C1.35714286%20C10.60007%2C0.606642857%2011.2258387%2C0%2012%2C0%20C12.7741613%2C0%2013.39993%2C0.606642857%2013.39993%2C1.35714286%20L13.39993%2C14.3667143%20L16.6099695%2C11.2547857%20C17.1573421%2C10.7241429%2018.0420979%2C10.7241429%2018.5894705%2C11.2547857%20C19.1368432%2C11.7854286%2019.1368432%2C12.6431429%2018.5894705%2C13.1737857%20L12.9911504%2C18.601%20C12.8623569%2C18.7272143%2012.7069647%2C18.8262857%2012.5347733%2C18.8955%20C12.3639818%2C18.9647143%2012.1819909%2C19%2012%2C19%20C11.8180091%2C19%2011.6360182%2C18.9647143%2011.4652267%2C18.8955%20C11.2930353%2C18.8262857%2011.1376431%2C18.7272143%2011.0088496%2C18.601%20Z%20M22.9090909%2C18%20C23.5104545%2C18%2024%2C18.4669565%2024%2C19.0434783%20L24%2C22.9565217%20C24%2C23.5317391%2023.5104545%2C24%2022.9090909%2C24%20L1.09090909%2C24%20C0.489545455%2C24%200%2C23.5317391%200%2C22.9565217%20L0%2C19.0434783%20C0%2C18.4669565%200.489545455%2C18%201.09090909%2C18%20C1.69227273%2C18%202.18181818%2C18.4669565%202.18181818%2C19.0434783%20L2.18181818%2C21.9130435%20L21.8181818%2C21.9130435%20L21.8181818%2C19.0434783%20C21.8181818%2C18.4669565%2022.3077273%2C18%2022.9090909%2C18%20Z%22%2F%3E%3C%2Fsvg%3E");
+  content: "";
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin: 2px 8px 0 0;
+  background: currentColor;
+  -webkit-mask: var(--allianz-select-download) center / contain no-repeat;
+  mask: var(--allianz-select-download) center / contain no-repeat;
+}
+.allianz-select-rider-brochure .tileLink a:focus {
+  color: #003781;
+  outline: none;
+}
+.allianz-select-rider-brochure .tileLink a:active,
+.allianz-select-rider-brochure .tileLink a:visited {
+  color: #8a679c;
+  outline: none;
+}
+.allianz-select-rider-brochure .tileLink a:hover {
+  color: #06c;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+.allianz-select-rider-brochure .tileLink a:focus-visible {
+  outline: 0;
+  background-color: #8a679c;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}

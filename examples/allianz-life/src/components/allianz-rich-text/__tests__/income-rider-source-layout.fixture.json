@@ -1,0 +1,791 @@
+{
+  "source": {
+    "file": "INCOME-OFFICIAL-SOURCE-20261017.html",
+    "sourceLines": [
+      901,
+      936
+    ],
+    "fullFileSha256FromExistingPermittedInventory": "0b150f79eba5113b90fdd4b9406238b3f656734e5e6592e6ac9353fc0f66bfaa",
+    "sourceMarkup": "<div class=\"l-container--full-width  t-bg-grey-soft  axlTileCollection\">\r\n\t\t<div class=\"l-grid l-grid--max-width \">\r\n\r\n\t\t\t\r\n\r\n\t\t\t<div class=\"l-grid__row    \">\r\n\t\t\t\t<div class=\"l-grid__column-medium-12\">\r\n\t\t\t\t\t\t<article class=\"m-axlTile match-height    -is--stacked  t-bg-transparent \">\n\t\t<div class=\"tileContent u-text-center\">\n\t\t\t\t<div class=\"tileSubGrid__image\">\n\t\t\t\t\t<div class=\"tileIcon  t-bg-transparent t-icon-primary-black\">\n\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-labelledby=\"titleIconPiggyBank\" aria-describedby=\"descIconPiggyBank\" focusable=\"true\" preserveAspectRatio=\"xMidYMid meet\" viewBox=\"0 0 24 24\"><title id=\"titleIconPiggyBank\">Savings</title><desc id=\"descIconPiggyBank\">Savings</desc>  <path fill-rule=\"evenodd\" d=\"M22.2366635,15.7949913 C22.6083668,15.7949913 22.9981043,15.4733175 22.9981043,15.1797025 L22.9520171,12.7065219 C22.9520171,12.3477704 22.5262114,11.9830063 22.1565118,11.9990399 L21.4812341,11.98 C21.2748436,11.9739874 21.0924986,11.8427124 21.0233678,11.6473031 C20.992309,11.5601205 20.9602483,11.4589085 20.9241801,11.3456713 C20.7288104,10.7223656 20.4332512,9.78339874 19.4293516,8.84342977 L19.031599,8.45862371 C18.7731099,8.23615771 18.8412388,7.9074692 18.9434322,7.40942594 C19.0265895,7.0045779 19.194908,6.18786712 18.9805023,5.92030665 C18.5486853,5.84314502 17.9104777,6.21392169 17.0548587,7.02061148 C16.927618,7.14086338 16.7482786,7.18495574 16.5799601,7.13986128 C15.764417,6.91839737 14.092253,6.78612029 12.9470862,6.78612029 C12.8288625,6.90537008 12.6966122,7.00758419 12.5623582,7.1087962 C12.5563468,7.1128046 12.5513374,7.11881719 12.5443241,7.12282559 C12.4261004,7.21101031 12.2998615,7.28716985 12.1696151,7.35932098 C12.1395582,7.37535457 12.1105032,7.39138815 12.0794445,7.40742174 C11.9461923,7.47656658 11.8109364,7.53769462 11.6686672,7.58880168 C11.6556426,7.59180798 11.6426179,7.59481427 11.6295933,7.59982477 C11.3660947,7.69001369 11.0905734,7.74713334 10.8030293,7.77018162 C10.7549383,7.77419002 10.7068473,7.78320891 10.6587563,7.78521311 C10.6156748,7.7872173 10.575599,7.79824039 10.5325174,7.79824039 C10.4193032,7.79824039 10.3070909,7.78521311 10.1938767,7.77318792 C10.1868634,7.77318792 10.1788482,7.77318792 10.171835,7.77218582 C10.0195468,7.75615223 9.87026435,7.72909556 9.72198378,7.69201789 C9.70495155,7.68800949 9.68691743,7.68500319 9.6698852,7.6809948 C9.50857999,7.63890664 9.35128236,7.58579538 9.19799231,7.51965684 C7.02387855,8.40250616 5.46492878,9.98482066 4.90587095,11.8868048 C4.71851645,12.5131167 4.67743872,13.3719157 4.67743872,13.3809346 C4.67743872,15.2037529 5.62022262,16.9283654 7.33146054,18.2110523 C7.50879609,18.3443315 7.57792689,18.5788227 7.50078092,18.7862572 C7.50078092,18.7872593 7.16414395,19.6961632 6.84053163,20.6000566 C6.64015248,21.1632363 6.77841409,21.2484147 7.20822737,21.4107548 L7.58994964,21.5560591 C7.89953543,21.6723026 8.09290131,21.7454559 8.52672216,21.9047896 C8.89842548,22.0420772 9.14889942,21.918819 9.2931724,21.5360172 L9.85423402,20.0549147 C9.94540653,19.8114046 10.2069013,19.6781254 10.4573753,19.7492744 C12.122526,20.2142484 14.226507,19.946688 15.1061715,19.7392534 C15.3526379,19.674117 15.6051156,19.8174172 15.6922805,20.0559168 L16.2292966,21.5450361 C16.2904123,21.6853299 16.4056303,21.8095902 16.561926,21.8877539 C16.6991857,21.9458757 16.869508,21.9508862 17.0688853,21.8947686 L18.3543175,21.4107548 C18.5005943,21.3476225 18.6248293,21.2333832 18.7029772,21.0770558 C18.7610872,20.9397682 18.7681004,20.7694113 18.7099905,20.5709957 L18.1018398,18.9085133 C18.0146748,18.6720179 18.1178701,18.4074637 18.3422947,18.2912202 C19.3361753,17.7781455 20.059544,17.0776782 20.6176,16.0906106 C20.703763,15.9392936 20.8620625,15.84209 21.0363924,15.8360774 L22.2366635,15.7949913 Z M8.13598282,4.4001223 C8.13598282,4.68371635 8.18607761,4.9622999 8.2832615,5.22785617 C8.46260083,5.71487633 8.80324539,6.13876426 9.24307762,6.42035411 C9.41941127,6.53258921 9.60977146,6.61375924 9.80714492,6.67588939 C9.86826056,6.69492927 9.9303781,6.70495026 9.99149374,6.71797755 C10.1197364,6.74904262 10.2509847,6.76607831 10.383235,6.7740951 C11.1056018,6.81518116 11.8299724,6.53459341 12.3259108,5.97041161 C12.3269127,5.96940951 12.3279146,5.96840741 12.3289165,5.96740531 C12.6976141,5.54652368 12.9280502,5.00138177 12.9280502,4.4001223 C12.9280502,3.07835356 11.8540179,2.00209911 10.5325174,2.00209911 C9.21201885,2.00209911 8.13598282,3.07835356 8.13598282,4.4001223 Z M2.18973159,11.8016264 C2.40914676,11.2143963 2.40714297,10.5961011 2.27689652,10.4808597 C2.18171643,10.5069143 1.97432401,10.7494223 2.18973159,11.8016264 Z M22.1775516,10.9969408 C23.1093147,11.0009492 23.9539128,11.8096432 23.9539128,12.697503 L24,15.1706836 C24,16.0254741 23.1674246,16.7970904 22.2536957,16.7970904 L21.3459782,16.8281555 C20.7859185,17.7380615 20.0896009,18.4295099 19.1888966,18.966635 L19.6627933,20.260345 C19.7940417,20.7163001 19.7730019,21.1211481 19.6106948,21.4989395 C19.4143232,21.8947686 19.1127526,22.1763585 18.7260208,22.3407027 L17.3824786,22.8447586 C16.9246123,22.9770357 16.5188445,22.9579958 16.1421317,22.7966578 C15.7443791,22.5992443 15.4628464,22.2976125 15.2975336,21.9118043 L14.8977772,20.8044848 C13.8497942,20.9968878 12.1575923,21.1411901 10.6347108,20.8235247 L10.2309468,21.8907602 C9.97145582,22.5751939 9.43143402,22.96 8.79623212,22.96 C8.59885866,22.96 8.39246813,22.9229223 8.18207003,22.8457607 C7.74424159,22.6854248 7.54887192,22.6112695 7.23628045,22.4930218 L6.85455817,22.3487195 C6.48285485,22.2084257 5.35672404,21.7815314 5.89674584,20.2633513 C6.09912878,19.6981674 6.3065212,19.1299772 6.43476385,18.7812467 C4.65239133,17.3292051 3.67554298,15.4161979 3.67554298,13.3578863 C3.67654488,13.3498695 3.67754677,13.314796 3.68055246,13.2707037 C3.29081502,13.3318317 2.86200364,13.3368422 2.46224724,13.2316218 C2.34302164,13.3518737 2.21377709,13.4550899 2.07351169,13.537262 C1.90118562,13.6394761 1.64169462,13.7477028 1.32409367,13.7477028 C0.992466183,13.7477028 0.596717365,13.628453 0.171913571,13.2576764 C-0.0364807435,13.0752943 -0.0585224499,12.7596331 0.122820679,12.5501944 C0.3061676,12.3417578 0.621764759,12.3227179 0.830159073,12.5020936 C1.10067092,12.7375869 1.32208988,12.7997171 1.53950126,12.6894862 C1.37619225,12.5000894 1.26498183,12.273615 1.21188135,12.0180798 C0.991464288,10.9568568 1.07061405,10.2383517 1.45033254,9.82047641 C1.68477614,9.56393903 2.02041121,9.44669344 2.39812591,9.4897837 C2.8700188,9.54489915 3.20665577,9.88962125 3.32187378,10.4367674 C3.43408611,10.9728904 3.33389653,11.686385 3.06338468,12.313699 C3.3178662,12.3297326 3.57835909,12.2846381 3.80378564,12.2174975 C3.83985388,12.0120672 3.88594109,11.7996222 3.94505293,11.6012065 C4.53516953,9.59500411 6.0700738,7.9074692 8.20811932,6.87029661 C7.82639704,6.50954093 7.52482642,6.06761522 7.34348329,5.57458246 C7.20522168,5.19779319 7.13408708,4.80296614 7.13408708,4.4001223 C7.13408708,2.52519485 8.6589724,1 10.5325174,1 C12.4060625,1 13.9299459,2.52519485 13.9299459,4.4001223 C13.9299459,4.89916766 13.8157298,5.37115634 13.621362,5.79704846 C14.525072,5.83111983 15.726345,5.92331295 16.5679374,6.10669709 C17.3684521,5.38117733 18.3713497,4.67469745 19.3642284,4.98334398 C19.4133213,4.99837547 19.4604104,5.02142375 19.50249,5.05048462 C20.3330616,5.62869581 20.0775782,6.87029661 19.9242881,7.61084786 C19.9042502,7.71205987 19.8832104,7.80124669 19.8701858,7.87640413 L20.1206597,8.11791001 C21.2768474,9.20117915 21.6465469,10.3044903 21.8619545,10.9879219 L22.1775516,10.9969408 Z M13.8445883,8.08 C14.1035883,8.177 14.2345883,8.465 14.1375883,8.724 C14.0405883,8.981 13.7515883,9.116 13.4935883,9.016 C13.4925883,9.015 12.7825883,8.776 11.3005883,8.995 C9.62058828,9.238 9.19958828,9.749 9.19658828,9.754 C9.10258828,9.901 8.94858828,9.978 8.78758828,9.978 C8.69458828,9.978 8.59858828,9.952 8.51258828,9.897 C8.27958828,9.749 8.21858828,9.43 8.36658828,9.196 C8.45858828,9.052 9.02558828,8.314 11.1565883,8.005 C12.8975883,7.751 13.7535883,8.045 13.8445883,8.08 Z M18.4545883,11.957 C18.7305883,11.957 18.9545883,11.732 18.9545883,11.457 C18.9545883,11.182 18.7305883,10.957 18.4545883,10.957 C18.1785883,10.957 17.9545883,11.182 17.9545883,11.457 C17.9545883,11.732 18.1785883,11.957 18.4545883,11.957 Z M18.4545883,9.957 C19.2815883,9.957 19.9545883,10.63 19.9545883,11.457 C19.9545883,12.284 19.2815883,12.957 18.4545883,12.957 C17.6275883,12.957 16.9545883,12.284 16.9545883,11.457 C16.9545883,10.63 17.6275883,9.957 18.4545883,9.957 Z\"/></svg>\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t<div class=\"tileSubGrid__content\">\n\t\t\t\t<header>\n\t\t\t\t\t<div class=\"tileHeading \"><H2>Income Benefit rider</H2></div>\n\t\t\t\t\t<div class=\"tileSubHeading \"></div>\n\t\t\t\t</header>\n\n\t\t\t\t<div class=\"tileBody u-font-size-xl\">\n\t\t\t\t\t<p>Index Advantage+ Income® with the Income Benefit rider<sup>1</sup> is designed to help reduce risks and uncertainty in retirement. It combines the opportunity to grow your retirement savings with guaranteeing a stream of income in retirement.</p>\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</div>\n\n\t</article>\n\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t\r\n\r\n\t\t</div>\r\n\t</div>",
+    "fragmentSha256": "2f8edcc10661e2828db595a8ce3b97ca301915e71e8686e11907f499af8cbaef",
+    "fragmentHashNormalization": "Original source bytes inside901–936; strip edge whitespace only.",
+    "heading": "Income Benefit rider",
+    "body": "<p>Index Advantage+ Income® with the Income Benefit rider<sup>1</sup> is designed to help reduce risks and uncertainty in retirement. It combines the opportunity to grow your retirement savings with guaranteeing a stream of income in retirement.</p>",
+    "savingsPaths": [
+      "M22.2366635,15.7949913 C22.6083668,15.7949913 22.9981043,15.4733175 22.9981043,15.1797025 L22.9520171,12.7065219 C22.9520171,12.3477704 22.5262114,11.9830063 22.1565118,11.9990399 L21.4812341,11.98 C21.2748436,11.9739874 21.0924986,11.8427124 21.0233678,11.6473031 C20.992309,11.5601205 20.9602483,11.4589085 20.9241801,11.3456713 C20.7288104,10.7223656 20.4332512,9.78339874 19.4293516,8.84342977 L19.031599,8.45862371 C18.7731099,8.23615771 18.8412388,7.9074692 18.9434322,7.40942594 C19.0265895,7.0045779 19.194908,6.18786712 18.9805023,5.92030665 C18.5486853,5.84314502 17.9104777,6.21392169 17.0548587,7.02061148 C16.927618,7.14086338 16.7482786,7.18495574 16.5799601,7.13986128 C15.764417,6.91839737 14.092253,6.78612029 12.9470862,6.78612029 C12.8288625,6.90537008 12.6966122,7.00758419 12.5623582,7.1087962 C12.5563468,7.1128046 12.5513374,7.11881719 12.5443241,7.12282559 C12.4261004,7.21101031 12.2998615,7.28716985 12.1696151,7.35932098 C12.1395582,7.37535457 12.1105032,7.39138815 12.0794445,7.40742174 C11.9461923,7.47656658 11.8109364,7.53769462 11.6686672,7.58880168 C11.6556426,7.59180798 11.6426179,7.59481427 11.6295933,7.59982477 C11.3660947,7.69001369 11.0905734,7.74713334 10.8030293,7.77018162 C10.7549383,7.77419002 10.7068473,7.78320891 10.6587563,7.78521311 C10.6156748,7.7872173 10.575599,7.79824039 10.5325174,7.79824039 C10.4193032,7.79824039 10.3070909,7.78521311 10.1938767,7.77318792 C10.1868634,7.77318792 10.1788482,7.77318792 10.171835,7.77218582 C10.0195468,7.75615223 9.87026435,7.72909556 9.72198378,7.69201789 C9.70495155,7.68800949 9.68691743,7.68500319 9.6698852,7.6809948 C9.50857999,7.63890664 9.35128236,7.58579538 9.19799231,7.51965684 C7.02387855,8.40250616 5.46492878,9.98482066 4.90587095,11.8868048 C4.71851645,12.5131167 4.67743872,13.3719157 4.67743872,13.3809346 C4.67743872,15.2037529 5.62022262,16.9283654 7.33146054,18.2110523 C7.50879609,18.3443315 7.57792689,18.5788227 7.50078092,18.7862572 C7.50078092,18.7872593 7.16414395,19.6961632 6.84053163,20.6000566 C6.64015248,21.1632363 6.77841409,21.2484147 7.20822737,21.4107548 L7.58994964,21.5560591 C7.89953543,21.6723026 8.09290131,21.7454559 8.52672216,21.9047896 C8.89842548,22.0420772 9.14889942,21.918819 9.2931724,21.5360172 L9.85423402,20.0549147 C9.94540653,19.8114046 10.2069013,19.6781254 10.4573753,19.7492744 C12.122526,20.2142484 14.226507,19.946688 15.1061715,19.7392534 C15.3526379,19.674117 15.6051156,19.8174172 15.6922805,20.0559168 L16.2292966,21.5450361 C16.2904123,21.6853299 16.4056303,21.8095902 16.561926,21.8877539 C16.6991857,21.9458757 16.869508,21.9508862 17.0688853,21.8947686 L18.3543175,21.4107548 C18.5005943,21.3476225 18.6248293,21.2333832 18.7029772,21.0770558 C18.7610872,20.9397682 18.7681004,20.7694113 18.7099905,20.5709957 L18.1018398,18.9085133 C18.0146748,18.6720179 18.1178701,18.4074637 18.3422947,18.2912202 C19.3361753,17.7781455 20.059544,17.0776782 20.6176,16.0906106 C20.703763,15.9392936 20.8620625,15.84209 21.0363924,15.8360774 L22.2366635,15.7949913 Z M8.13598282,4.4001223 C8.13598282,4.68371635 8.18607761,4.9622999 8.2832615,5.22785617 C8.46260083,5.71487633 8.80324539,6.13876426 9.24307762,6.42035411 C9.41941127,6.53258921 9.60977146,6.61375924 9.80714492,6.67588939 C9.86826056,6.69492927 9.9303781,6.70495026 9.99149374,6.71797755 C10.1197364,6.74904262 10.2509847,6.76607831 10.383235,6.7740951 C11.1056018,6.81518116 11.8299724,6.53459341 12.3259108,5.97041161 C12.3269127,5.96940951 12.3279146,5.96840741 12.3289165,5.96740531 C12.6976141,5.54652368 12.9280502,5.00138177 12.9280502,4.4001223 C12.9280502,3.07835356 11.8540179,2.00209911 10.5325174,2.00209911 C9.21201885,2.00209911 8.13598282,3.07835356 8.13598282,4.4001223 Z M2.18973159,11.8016264 C2.40914676,11.2143963 2.40714297,10.5961011 2.27689652,10.4808597 C2.18171643,10.5069143 1.97432401,10.7494223 2.18973159,11.8016264 Z M22.1775516,10.9969408 C23.1093147,11.0009492 23.9539128,11.8096432 23.9539128,12.697503 L24,15.1706836 C24,16.0254741 23.1674246,16.7970904 22.2536957,16.7970904 L21.3459782,16.8281555 C20.7859185,17.7380615 20.0896009,18.4295099 19.1888966,18.966635 L19.6627933,20.260345 C19.7940417,20.7163001 19.7730019,21.1211481 19.6106948,21.4989395 C19.4143232,21.8947686 19.1127526,22.1763585 18.7260208,22.3407027 L17.3824786,22.8447586 C16.9246123,22.9770357 16.5188445,22.9579958 16.1421317,22.7966578 C15.7443791,22.5992443 15.4628464,22.2976125 15.2975336,21.9118043 L14.8977772,20.8044848 C13.8497942,20.9968878 12.1575923,21.1411901 10.6347108,20.8235247 L10.2309468,21.8907602 C9.97145582,22.5751939 9.43143402,22.96 8.79623212,22.96 C8.59885866,22.96 8.39246813,22.9229223 8.18207003,22.8457607 C7.74424159,22.6854248 7.54887192,22.6112695 7.23628045,22.4930218 L6.85455817,22.3487195 C6.48285485,22.2084257 5.35672404,21.7815314 5.89674584,20.2633513 C6.09912878,19.6981674 6.3065212,19.1299772 6.43476385,18.7812467 C4.65239133,17.3292051 3.67554298,15.4161979 3.67554298,13.3578863 C3.67654488,13.3498695 3.67754677,13.314796 3.68055246,13.2707037 C3.29081502,13.3318317 2.86200364,13.3368422 2.46224724,13.2316218 C2.34302164,13.3518737 2.21377709,13.4550899 2.07351169,13.537262 C1.90118562,13.6394761 1.64169462,13.7477028 1.32409367,13.7477028 C0.992466183,13.7477028 0.596717365,13.628453 0.171913571,13.2576764 C-0.0364807435,13.0752943 -0.0585224499,12.7596331 0.122820679,12.5501944 C0.3061676,12.3417578 0.621764759,12.3227179 0.830159073,12.5020936 C1.10067092,12.7375869 1.32208988,12.7997171 1.53950126,12.6894862 C1.37619225,12.5000894 1.26498183,12.273615 1.21188135,12.0180798 C0.991464288,10.9568568 1.07061405,10.2383517 1.45033254,9.82047641 C1.68477614,9.56393903 2.02041121,9.44669344 2.39812591,9.4897837 C2.8700188,9.54489915 3.20665577,9.88962125 3.32187378,10.4367674 C3.43408611,10.9728904 3.33389653,11.686385 3.06338468,12.313699 C3.3178662,12.3297326 3.57835909,12.2846381 3.80378564,12.2174975 C3.83985388,12.0120672 3.88594109,11.7996222 3.94505293,11.6012065 C4.53516953,9.59500411 6.0700738,7.9074692 8.20811932,6.87029661 C7.82639704,6.50954093 7.52482642,6.06761522 7.34348329,5.57458246 C7.20522168,5.19779319 7.13408708,4.80296614 7.13408708,4.4001223 C7.13408708,2.52519485 8.6589724,1 10.5325174,1 C12.4060625,1 13.9299459,2.52519485 13.9299459,4.4001223 C13.9299459,4.89916766 13.8157298,5.37115634 13.621362,5.79704846 C14.525072,5.83111983 15.726345,5.92331295 16.5679374,6.10669709 C17.3684521,5.38117733 18.3713497,4.67469745 19.3642284,4.98334398 C19.4133213,4.99837547 19.4604104,5.02142375 19.50249,5.05048462 C20.3330616,5.62869581 20.0775782,6.87029661 19.9242881,7.61084786 C19.9042502,7.71205987 19.8832104,7.80124669 19.8701858,7.87640413 L20.1206597,8.11791001 C21.2768474,9.20117915 21.6465469,10.3044903 21.8619545,10.9879219 L22.1775516,10.9969408 Z M13.8445883,8.08 C14.1035883,8.177 14.2345883,8.465 14.1375883,8.724 C14.0405883,8.981 13.7515883,9.116 13.4935883,9.016 C13.4925883,9.015 12.7825883,8.776 11.3005883,8.995 C9.62058828,9.238 9.19958828,9.749 9.19658828,9.754 C9.10258828,9.901 8.94858828,9.978 8.78758828,9.978 C8.69458828,9.978 8.59858828,9.952 8.51258828,9.897 C8.27958828,9.749 8.21858828,9.43 8.36658828,9.196 C8.45858828,9.052 9.02558828,8.314 11.1565883,8.005 C12.8975883,7.751 13.7535883,8.045 13.8445883,8.08 Z M18.4545883,11.957 C18.7305883,11.957 18.9545883,11.732 18.9545883,11.457 C18.9545883,11.182 18.7305883,10.957 18.4545883,10.957 C18.1785883,10.957 17.9545883,11.182 17.9545883,11.457 C17.9545883,11.732 18.1785883,11.957 18.4545883,11.957 Z M18.4545883,9.957 C19.2815883,9.957 19.9545883,10.63 19.9545883,11.457 C19.9545883,12.284 19.2815883,12.957 18.4545883,12.957 C17.6275883,12.957 16.9545883,12.284 16.9545883,11.457 C16.9545883,10.63 17.6275883,9.957 18.4545883,9.957 Z"
+    ],
+    "savingsPathListSha256": "0aa19e72b6627464df31b685a0859da3344c0da98d711eae895ede5bfd042ac6"
+  },
+  "scope": {
+    "excludedSourceLines": [
+      1047,
+      1083
+    ],
+    "excludedLinesRead": false,
+    "privateInvestorOwnerRead": false,
+    "financialCopyRewrite": false,
+    "wholePageAcceptanceClaim": false
+  },
+  "nativeContract": {
+    "id": "6C17771C-5A69-4DE5-A8D7-9936AEF79973",
+    "revision": "f6e8cd45-b6a9-4097-9ce7-e7cf4ba6ca87",
+    "guard": "1",
+    "heading": "Income Benefit rider",
+    "body": "<p>Index Advantage+ Income® with the Income Benefit rider<sup>1</sup> is designed to help reduce risks and uncertainty in retirement. It combines the opportunity to grow your retirement savings with guaranteeing a stream of income in retirement.</p>",
+    "blankFields": [
+      "subheading",
+      "primaryLink",
+      "icon"
+    ],
+    "provenance": "Parent reported fresh permitted native read; this worker did not operate CMS/browser."
+  },
+  "baseline": {
+    "sourceSha256": "101ca7ea34d13df17cf844659d9077c4ed265e9e1c578c271c7cfc4714bd0859",
+    "provenance": "Frozen Select RichText candidate before Income edit; all cases use synthetic SDK data, no private Income owner body.",
+    "envelope": {
+      "id": "fixture-only-nf-owner",
+      "heading": {
+        "jsonValue": {
+          "value": "Authored fixture heading ®",
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-heading",
+            "fieldType": "Single-Line Text",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "subheading": {
+        "jsonValue": {
+          "value": "<p>Authored <em>fixture subheading</em>.</p>",
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-subheading",
+            "fieldType": "Rich Text",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "body": {
+        "jsonValue": {
+          "value": "<p>Authored <strong>fixture body</strong> with an <a href=\"#authored-detail\">authored detail</a>.</p>",
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-body",
+            "fieldType": "Rich Text",
+            "fixtureOnly": true
+          }
+        }
+      },
+      "primaryLink": {
+        "jsonValue": {
+          "value": {
+            "href": "/about",
+            "text": "Authored fixture link",
+            "linktype": "internal"
+          },
+          "metadata": {
+            "itemId": "fixture-only-nf-owner",
+            "fieldId": "fixture-primaryLink",
+            "fieldType": "General Link",
+            "fixtureOnly": true
+          }
+        }
+      }
+    },
+    "params": {
+      "RenderingIdentifier": "fixture-select-layout",
+      "headingLevel": "h1",
+      "theme": "blue-soft",
+      "layout": "stacked",
+      "alignment": "left",
+      "spacing": "none"
+    },
+    "renders": [
+      {
+        "variant": "Default",
+        "state": "filled",
+        "editing": false,
+        "sha256": "16ef163e4be98c228fcbb6b589c0055c1f68127836c291a760e12dbf5161c3bd"
+      },
+      {
+        "variant": "Default",
+        "state": "filled",
+        "editing": true,
+        "sha256": "790010429ca83d03a5b0fe99765d26c042e659ddd617fe3ba2d08c01970a7666"
+      },
+      {
+        "variant": "Default",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "8bcb81d385f8cc6fb386fd35ee9a73c2d8c5860521c8a4067c9578ec3e93f4f7"
+      },
+      {
+        "variant": "Default",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "2bf0d013ec6df8156cdeb54efebfa92b16391c809125366b2f092e9e75bd530c"
+      },
+      {
+        "variant": "Default",
+        "state": "absent",
+        "editing": false,
+        "sha256": "8bcb81d385f8cc6fb386fd35ee9a73c2d8c5860521c8a4067c9578ec3e93f4f7"
+      },
+      {
+        "variant": "Default",
+        "state": "absent",
+        "editing": true,
+        "sha256": "8bcb81d385f8cc6fb386fd35ee9a73c2d8c5860521c8a4067c9578ec3e93f4f7"
+      },
+      {
+        "variant": "IapIntroduction",
+        "state": "filled",
+        "editing": false,
+        "sha256": "d82a50f58c9c642e81a7b8aca83ed2670b74972dc687148d0abc7e6e82e70ed7"
+      },
+      {
+        "variant": "IapIntroduction",
+        "state": "filled",
+        "editing": true,
+        "sha256": "3591e6a885b22d04d69c72e84fe8763a75dc5a427899181b1b7922597d466cc3"
+      },
+      {
+        "variant": "IapIntroduction",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "a136cff7e2c887cbf3c1446432416b2f9e98a73d4a3cacd69747f58866a97cbb"
+      },
+      {
+        "variant": "IapIntroduction",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "49403022bc7b512aad19cad78ffbab4414557e5ada7d9d460ad786ea623e3bea"
+      },
+      {
+        "variant": "IapIntroduction",
+        "state": "absent",
+        "editing": false,
+        "sha256": "a136cff7e2c887cbf3c1446432416b2f9e98a73d4a3cacd69747f58866a97cbb"
+      },
+      {
+        "variant": "IapIntroduction",
+        "state": "absent",
+        "editing": true,
+        "sha256": "a136cff7e2c887cbf3c1446432416b2f9e98a73d4a3cacd69747f58866a97cbb"
+      },
+      {
+        "variant": "IapRiskReturnDescription",
+        "state": "filled",
+        "editing": false,
+        "sha256": "42d317782237d3efc206f5112111efcf72b56b2ffc1d968dd22960ff1ae8795e"
+      },
+      {
+        "variant": "IapRiskReturnDescription",
+        "state": "filled",
+        "editing": true,
+        "sha256": "d03aa98d466b0316c130f736fc2776c6f6c77a807c915b54a47aa3cea2bf14b5"
+      },
+      {
+        "variant": "IapRiskReturnDescription",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "a2c133c33f0592f84157108f37ff5a9cd93645f7050fdf15432888539eeec7ad"
+      },
+      {
+        "variant": "IapRiskReturnDescription",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "be2884f4ceec43db1c3ded0623663365e91b884653df3a08d33a55fc37caabc1"
+      },
+      {
+        "variant": "IapRiskReturnDescription",
+        "state": "absent",
+        "editing": false,
+        "sha256": "a2c133c33f0592f84157108f37ff5a9cd93645f7050fdf15432888539eeec7ad"
+      },
+      {
+        "variant": "IapRiskReturnDescription",
+        "state": "absent",
+        "editing": true,
+        "sha256": "a2c133c33f0592f84157108f37ff5a9cd93645f7050fdf15432888539eeec7ad"
+      },
+      {
+        "variant": "IapInvestorProfile",
+        "state": "filled",
+        "editing": false,
+        "sha256": "24ad8a5186f3dc302192e61825665da139606482e7014adb0441a5dd13531a98"
+      },
+      {
+        "variant": "IapInvestorProfile",
+        "state": "filled",
+        "editing": true,
+        "sha256": "78a8990e986f595957101ae6532ea0f5257ca80ecd7d28a81508265350fb504c"
+      },
+      {
+        "variant": "IapInvestorProfile",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "361d2547f8d6914ac05fea56bd0135b42b1d801615ef70a2a2eda8882529e155"
+      },
+      {
+        "variant": "IapInvestorProfile",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "58b214c5f4ff253bbeb45705d8d3f6c1318a6be36f126a95f49de779481c1aac"
+      },
+      {
+        "variant": "IapInvestorProfile",
+        "state": "absent",
+        "editing": false,
+        "sha256": "361d2547f8d6914ac05fea56bd0135b42b1d801615ef70a2a2eda8882529e155"
+      },
+      {
+        "variant": "IapInvestorProfile",
+        "state": "absent",
+        "editing": true,
+        "sha256": "361d2547f8d6914ac05fea56bd0135b42b1d801615ef70a2a2eda8882529e155"
+      },
+      {
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "filled",
+        "editing": false,
+        "sha256": "5491aea83371a1cca506b45f0f31188d81eb033c738d8c6d6ef5432f1b8de2c3"
+      },
+      {
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "filled",
+        "editing": true,
+        "sha256": "2fb4fd8fa2f07255534f417d4382f02cb53b149bcee52b06e9ce73e9b2e6ca5a"
+      },
+      {
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "b32e190c9a7f7b851d8756c3501c533e1e465ce1ea173728ec116469239624f4"
+      },
+      {
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "59a14a74cc17ffd1e3b715b5aa9d44efd47a6a72a86698a216f3ff1da0418b74"
+      },
+      {
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "absent",
+        "editing": false,
+        "sha256": "b32e190c9a7f7b851d8756c3501c533e1e465ce1ea173728ec116469239624f4"
+      },
+      {
+        "variant": "IapIndexDefinitionsHeading",
+        "state": "absent",
+        "editing": true,
+        "sha256": "b32e190c9a7f7b851d8756c3501c533e1e465ce1ea173728ec116469239624f4"
+      },
+      {
+        "variant": "NfIndexDefinitionsHeading",
+        "state": "filled",
+        "editing": false,
+        "sha256": "b64fcd59512b10e631c937fe48bbf0810e868784afa0c4bb3195b2a36301dcfa"
+      },
+      {
+        "variant": "NfIndexDefinitionsHeading",
+        "state": "filled",
+        "editing": true,
+        "sha256": "c733190f0b0a5a368aafbd5191b3ddf2eb9c1d710b10c688681b40e2dafb43fe"
+      },
+      {
+        "variant": "NfIndexDefinitionsHeading",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "b32e190c9a7f7b851d8756c3501c533e1e465ce1ea173728ec116469239624f4"
+      },
+      {
+        "variant": "NfIndexDefinitionsHeading",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "bed66471b3d8742b391a82bde81ed14a0c058d6a028c4b7a8be20b9a2f7fc73e"
+      },
+      {
+        "variant": "NfIndexDefinitionsHeading",
+        "state": "absent",
+        "editing": false,
+        "sha256": "b32e190c9a7f7b851d8756c3501c533e1e465ce1ea173728ec116469239624f4"
+      },
+      {
+        "variant": "NfIndexDefinitionsHeading",
+        "state": "absent",
+        "editing": true,
+        "sha256": "b32e190c9a7f7b851d8756c3501c533e1e465ce1ea173728ec116469239624f4"
+      },
+      {
+        "variant": "IapIndexRiskDisclosure",
+        "state": "filled",
+        "editing": false,
+        "sha256": "27f811924100e931178c22d50bc4ad835181dbd33e374e0385c95abee57a1061"
+      },
+      {
+        "variant": "IapIndexRiskDisclosure",
+        "state": "filled",
+        "editing": true,
+        "sha256": "ce5c0078f3b6a7606f12cdccbc37dac259c5dca4e532be9db5c309998d43f1b9"
+      },
+      {
+        "variant": "IapIndexRiskDisclosure",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "5d97ef7ebf560d17b1bda724eb1650f8cf3fead338cd30225b01417ffc72e62e"
+      },
+      {
+        "variant": "IapIndexRiskDisclosure",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "c6424b4fbaaef67d898fb6ec4117e1f7d08d166cfb82cac322fe7f411a2a3536"
+      },
+      {
+        "variant": "IapIndexRiskDisclosure",
+        "state": "absent",
+        "editing": false,
+        "sha256": "5d97ef7ebf560d17b1bda724eb1650f8cf3fead338cd30225b01417ffc72e62e"
+      },
+      {
+        "variant": "IapIndexRiskDisclosure",
+        "state": "absent",
+        "editing": true,
+        "sha256": "5d97ef7ebf560d17b1bda724eb1650f8cf3fead338cd30225b01417ffc72e62e"
+      },
+      {
+        "variant": "IapResources",
+        "state": "filled",
+        "editing": false,
+        "sha256": "2690a7b39c5cb083ccf3582c0ac633d148096042aea91befea0888c73d218cba"
+      },
+      {
+        "variant": "IapResources",
+        "state": "filled",
+        "editing": true,
+        "sha256": "6dbe13625764bf1ae0736ed4eb98d2e1da7c8807d6a31b682bc434929f1decf2"
+      },
+      {
+        "variant": "IapResources",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "aa33ab5335e02fe634ada66c2fb800664594b9334c1494ef1d53d8530336652b"
+      },
+      {
+        "variant": "IapResources",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "91f274edf3fe39ab9a4944d202cf7d6f1409e7b981b5cb05ff3d2493b2abff3e"
+      },
+      {
+        "variant": "IapResources",
+        "state": "absent",
+        "editing": false,
+        "sha256": "aa33ab5335e02fe634ada66c2fb800664594b9334c1494ef1d53d8530336652b"
+      },
+      {
+        "variant": "IapResources",
+        "state": "absent",
+        "editing": true,
+        "sha256": "aa33ab5335e02fe634ada66c2fb800664594b9334c1494ef1d53d8530336652b"
+      },
+      {
+        "variant": "IapIndexDefinitionsContent",
+        "state": "filled",
+        "editing": false,
+        "sha256": "0786a5541b5bfd64dcfea8ac8e1b6b55807a045162765a758f4a044029c09da1"
+      },
+      {
+        "variant": "IapIndexDefinitionsContent",
+        "state": "filled",
+        "editing": true,
+        "sha256": "9dd0ad824769dac3545af7dfe627842521269ee67d4861d3e1fba1ac4f81f3e8"
+      },
+      {
+        "variant": "IapIndexDefinitionsContent",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "486c0f07cd52ad4b4b6f8610913a53f37aa16306cbd624bbc69971b5d1f028f1"
+      },
+      {
+        "variant": "IapIndexDefinitionsContent",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "d11a7ec83e15a604fe2f916e26b961c54d3c64253fba91f69fbd844436a1ae3d"
+      },
+      {
+        "variant": "IapIndexDefinitionsContent",
+        "state": "absent",
+        "editing": false,
+        "sha256": "486c0f07cd52ad4b4b6f8610913a53f37aa16306cbd624bbc69971b5d1f028f1"
+      },
+      {
+        "variant": "IapIndexDefinitionsContent",
+        "state": "absent",
+        "editing": true,
+        "sha256": "486c0f07cd52ad4b4b6f8610913a53f37aa16306cbd624bbc69971b5d1f028f1"
+      },
+      {
+        "variant": "NfResourcesStart",
+        "state": "filled",
+        "editing": false,
+        "sha256": "71cff452f8d3a6dcbb7242572ac138d801e6d57db0e5f3cd322f072a8adecabd"
+      },
+      {
+        "variant": "NfResourcesStart",
+        "state": "filled",
+        "editing": true,
+        "sha256": "6607a084311b9b71fa0f99a9ebee57c6af0c3f0b701e24206eeeacd3bddab0e6"
+      },
+      {
+        "variant": "NfResourcesStart",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "c16e19b327f22e8bf3ec92c23b9e3761fae49aa9f3b71f5e7cb6c362e7d7ea9b"
+      },
+      {
+        "variant": "NfResourcesStart",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "60f6fc91a280a6e8e54c945821f0a9d08f04b1c78340898e41d96aba181fbf50"
+      },
+      {
+        "variant": "NfResourcesStart",
+        "state": "absent",
+        "editing": false,
+        "sha256": "c16e19b327f22e8bf3ec92c23b9e3761fae49aa9f3b71f5e7cb6c362e7d7ea9b"
+      },
+      {
+        "variant": "NfResourcesStart",
+        "state": "absent",
+        "editing": true,
+        "sha256": "c16e19b327f22e8bf3ec92c23b9e3761fae49aa9f3b71f5e7cb6c362e7d7ea9b"
+      },
+      {
+        "variant": "NfResourcesMiddle",
+        "state": "filled",
+        "editing": false,
+        "sha256": "98496f425badc08bf1515dd81536a21a62abde1002ca5a0a3c806b1ff46a8eb1"
+      },
+      {
+        "variant": "NfResourcesMiddle",
+        "state": "filled",
+        "editing": true,
+        "sha256": "1038cac00998f439b5ee1904db1f70a6dff0781a4fea9add47392c57a05eeddd"
+      },
+      {
+        "variant": "NfResourcesMiddle",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "a7523e7c3dd7e8ddee9cf340cab2c5dc8dafee2c944c84656285f07e05052eb9"
+      },
+      {
+        "variant": "NfResourcesMiddle",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "a99b7039d6eda6a20a02f0fe0918e7d2400f12eecbe19783e16092a15758450d"
+      },
+      {
+        "variant": "NfResourcesMiddle",
+        "state": "absent",
+        "editing": false,
+        "sha256": "a7523e7c3dd7e8ddee9cf340cab2c5dc8dafee2c944c84656285f07e05052eb9"
+      },
+      {
+        "variant": "NfResourcesMiddle",
+        "state": "absent",
+        "editing": true,
+        "sha256": "a7523e7c3dd7e8ddee9cf340cab2c5dc8dafee2c944c84656285f07e05052eb9"
+      },
+      {
+        "variant": "NfResourcesEnd",
+        "state": "filled",
+        "editing": false,
+        "sha256": "bebffacbf0d49c3f033f537428e3a11b2d08a8a7b022fad7d5c6b2ec0f5e1576"
+      },
+      {
+        "variant": "NfResourcesEnd",
+        "state": "filled",
+        "editing": true,
+        "sha256": "73780a3957f6bcb08e5ddf1a7e5655f6cd9b7065975a9bcfdbe310f052262e75"
+      },
+      {
+        "variant": "NfResourcesEnd",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "d6239fc7a7206e3bfff2b2dc3baebc8d525f8467da0537400bc1eb021e7b0ad4"
+      },
+      {
+        "variant": "NfResourcesEnd",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "08dc5027c6ae29e82c527ab517c348f5e2529b7339914580ff2166e701b8c42b"
+      },
+      {
+        "variant": "NfResourcesEnd",
+        "state": "absent",
+        "editing": false,
+        "sha256": "d6239fc7a7206e3bfff2b2dc3baebc8d525f8467da0537400bc1eb021e7b0ad4"
+      },
+      {
+        "variant": "NfResourcesEnd",
+        "state": "absent",
+        "editing": true,
+        "sha256": "d6239fc7a7206e3bfff2b2dc3baebc8d525f8467da0537400bc1eb021e7b0ad4"
+      },
+      {
+        "variant": "IapNextStep",
+        "state": "filled",
+        "editing": false,
+        "sha256": "163e998ea28bdb0b751a80652ebe1c31d04743efca5459c781f8bc782fdb0167"
+      },
+      {
+        "variant": "IapNextStep",
+        "state": "filled",
+        "editing": true,
+        "sha256": "cf5e01dd4b3ba02f24d7db5075f38adf0524beb65cdf3f8df244b5a60a2441e6"
+      },
+      {
+        "variant": "IapNextStep",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "bb475368d57cf2010a7c698196f3473f55569b0e370293fb61076f0bf19993e7"
+      },
+      {
+        "variant": "IapNextStep",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "db65bb2c74c2b01369e1619078e4e74795d914766c2a32b7bb56550ed33f16ad"
+      },
+      {
+        "variant": "IapNextStep",
+        "state": "absent",
+        "editing": false,
+        "sha256": "bb475368d57cf2010a7c698196f3473f55569b0e370293fb61076f0bf19993e7"
+      },
+      {
+        "variant": "IapNextStep",
+        "state": "absent",
+        "editing": true,
+        "sha256": "bb475368d57cf2010a7c698196f3473f55569b0e370293fb61076f0bf19993e7"
+      },
+      {
+        "variant": "IapFootnotes",
+        "state": "filled",
+        "editing": false,
+        "sha256": "7b14d91fded965d1881d99c3823c58d2e9e6d6f7832f74ca7a22c7ecbeec7ba3"
+      },
+      {
+        "variant": "IapFootnotes",
+        "state": "filled",
+        "editing": true,
+        "sha256": "4170e5fa7da8ee1f2f4dd90c26b2795f1968d8978c5a971a21a53b050c3712bc"
+      },
+      {
+        "variant": "IapFootnotes",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "2cacb332ecfeae98ef28a885d72d731bbf88d614a7cedd2c90fe67a16353052e"
+      },
+      {
+        "variant": "IapFootnotes",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "156d4180e41b0fa9eb076d0e58068a01ae23a8d74ad6e9de39d0b5a659f9cb0c"
+      },
+      {
+        "variant": "IapFootnotes",
+        "state": "absent",
+        "editing": false,
+        "sha256": "2cacb332ecfeae98ef28a885d72d731bbf88d614a7cedd2c90fe67a16353052e"
+      },
+      {
+        "variant": "IapFootnotes",
+        "state": "absent",
+        "editing": true,
+        "sha256": "2cacb332ecfeae98ef28a885d72d731bbf88d614a7cedd2c90fe67a16353052e"
+      },
+      {
+        "variant": "IapDisclosures",
+        "state": "filled",
+        "editing": false,
+        "sha256": "86ad517abd2704b0e7b171a4364cd033992a0a8b5692bd466f2dfefe00776c44"
+      },
+      {
+        "variant": "IapDisclosures",
+        "state": "filled",
+        "editing": true,
+        "sha256": "f44595a138543d607451e483fb3dcf289ae57c1ea10212e28ce13f8dd472023c"
+      },
+      {
+        "variant": "IapDisclosures",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "951b266d3a6d48b5f385f0d8d97f78cf39f4213de1e2dc65e89bd64886e15b1a"
+      },
+      {
+        "variant": "IapDisclosures",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "8bcbf8a534100683560c5da0e7702ff34bab31fe37d345db1b62a576ac842f6f"
+      },
+      {
+        "variant": "IapDisclosures",
+        "state": "absent",
+        "editing": false,
+        "sha256": "951b266d3a6d48b5f385f0d8d97f78cf39f4213de1e2dc65e89bd64886e15b1a"
+      },
+      {
+        "variant": "IapDisclosures",
+        "state": "absent",
+        "editing": true,
+        "sha256": "951b266d3a6d48b5f385f0d8d97f78cf39f4213de1e2dc65e89bd64886e15b1a"
+      },
+      {
+        "variant": "SelectIncomeBenefitRider",
+        "state": "filled",
+        "editing": false,
+        "sha256": "b9dd846f363698ede6e9f022b46d72fe5ecb07f5f645233958984369673740bf"
+      },
+      {
+        "variant": "SelectIncomeBenefitRider",
+        "state": "filled",
+        "editing": true,
+        "sha256": "d54985c2592f1447cb259cb8be1d56f2fbff410b6f4e4629b33453f80a23eb4a"
+      },
+      {
+        "variant": "SelectIncomeBenefitRider",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "b0647fb18cfcf520260f93f394c260e7b46f91048d8d6e33b4d08a118407896c"
+      },
+      {
+        "variant": "SelectIncomeBenefitRider",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "2f246d7aa78765b03fbc659f940dcf407f6387a63ab6681968275cbd1d3abf1a"
+      },
+      {
+        "variant": "SelectIncomeBenefitRider",
+        "state": "absent",
+        "editing": false,
+        "sha256": "b0647fb18cfcf520260f93f394c260e7b46f91048d8d6e33b4d08a118407896c"
+      },
+      {
+        "variant": "SelectIncomeBenefitRider",
+        "state": "absent",
+        "editing": true,
+        "sha256": "b0647fb18cfcf520260f93f394c260e7b46f91048d8d6e33b4d08a118407896c"
+      },
+      {
+        "variant": "SelectNextStep",
+        "state": "filled",
+        "editing": false,
+        "sha256": "fe2262c103c970acff121c412a19f1fad41eabbaa4db5f2f798e646c47d300e6"
+      },
+      {
+        "variant": "SelectNextStep",
+        "state": "filled",
+        "editing": true,
+        "sha256": "ef7b47e7e64c074f03bbe4bc43a5fb12e788d1a0cc23c4f262571ccb1cb23aba"
+      },
+      {
+        "variant": "SelectNextStep",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "f58dce9b523eecdca5af91391e0fb945266f9d60f95af5b4a1204b927870ba72"
+      },
+      {
+        "variant": "SelectNextStep",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "cc56dbb7a759800e8cbc4217b70af025d741c3899ce093512f3f26d3aaefc49e"
+      },
+      {
+        "variant": "SelectNextStep",
+        "state": "absent",
+        "editing": false,
+        "sha256": "f58dce9b523eecdca5af91391e0fb945266f9d60f95af5b4a1204b927870ba72"
+      },
+      {
+        "variant": "SelectNextStep",
+        "state": "absent",
+        "editing": true,
+        "sha256": "f58dce9b523eecdca5af91391e0fb945266f9d60f95af5b4a1204b927870ba72"
+      },
+      {
+        "variant": "SelectResources",
+        "state": "filled",
+        "editing": false,
+        "sha256": "996d3825474285d46d3406b18ba293cf6b97bad5968a4d956bfd66c1db0681d9"
+      },
+      {
+        "variant": "SelectResources",
+        "state": "filled",
+        "editing": true,
+        "sha256": "af87811fe4701bb96d0df3cb7cf84bf8f193d7aebe2df668b3a4abbb736288fe"
+      },
+      {
+        "variant": "SelectResources",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "469bf0643dae4fb8f756488a298b780dcd49357b084c6ed3617fca2181d524fc"
+      },
+      {
+        "variant": "SelectResources",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "96b4ad5dcd15f3107bdee7c4f3524c492c905a5212470086a7b01c1994b546c3"
+      },
+      {
+        "variant": "SelectResources",
+        "state": "absent",
+        "editing": false,
+        "sha256": "469bf0643dae4fb8f756488a298b780dcd49357b084c6ed3617fca2181d524fc"
+      },
+      {
+        "variant": "SelectResources",
+        "state": "absent",
+        "editing": true,
+        "sha256": "469bf0643dae4fb8f756488a298b780dcd49357b084c6ed3617fca2181d524fc"
+      },
+      {
+        "variant": "SelectRiderBrochure",
+        "state": "filled",
+        "editing": false,
+        "sha256": "13d53dfdc8bdd05fd1f8ff2f719753dbbff841a16738128281db040712ba0e84"
+      },
+      {
+        "variant": "SelectRiderBrochure",
+        "state": "filled",
+        "editing": true,
+        "sha256": "00f86b63a077c842b5f3e212efc69a17aff11314fa6d5c253214f6fe186eab1b"
+      },
+      {
+        "variant": "SelectRiderBrochure",
+        "state": "cleared",
+        "editing": false,
+        "sha256": "95979a6e26130f92de146d4705b44bb5110804c0af4ad3cc5b098e7f716fdafe"
+      },
+      {
+        "variant": "SelectRiderBrochure",
+        "state": "cleared",
+        "editing": true,
+        "sha256": "e1944a0089ac056cee0e36642365945a63e959950298dd92b708dae9dcb059cc"
+      },
+      {
+        "variant": "SelectRiderBrochure",
+        "state": "absent",
+        "editing": false,
+        "sha256": "95979a6e26130f92de146d4705b44bb5110804c0af4ad3cc5b098e7f716fdafe"
+      },
+      {
+        "variant": "SelectRiderBrochure",
+        "state": "absent",
+        "editing": true,
+        "sha256": "95979a6e26130f92de146d4705b44bb5110804c0af4ad3cc5b098e7f716fdafe"
+      }
+    ]
+  }
+}
