@@ -2,7 +2,8 @@
 import { RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useId, useMemo, useRef, useState, type FormEvent } from 'react';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
-import { RETIREMENT_INPUTS, validateCalculator, type AllianzCalculatorProps } from './allianz-calculator.props';
+import { RETIREMENT_INPUTS, validateCalculator, incomeToolsDemoMode, type AllianzCalculatorProps } from './allianz-calculator.props';
+import { IncomeLocalToolsDemo } from 'components/allianz-income-tools/IncomeLocalToolsDemo';
 
 export const Default = ({ fields, params }: AllianzCalculatorProps) => {
   const { page } = useSitecore();
@@ -23,6 +24,13 @@ export const Default = ({ fields, params }: AllianzCalculatorProps) => {
     if (Object.keys(next).length) requestAnimationFrame(() => form.current?.querySelector<HTMLInputElement>('[aria-invalid="true"]')?.focus());
     else setComputed(true);
   };
+  const demoMode = incomeToolsDemoMode(data?.schemaKey);
+  if (demoMode) return <section className="allianz-local-calculator" id={params.RenderingIdentifier}>
+    {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
+    {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}
+    <IncomeLocalToolsDemo mode={demoMode} />
+    {shouldRenderTextField(data?.disclaimer?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.disclaimer?.jsonValue} className="allianz-calculator-disclaimer" />}
+  </section>;
   return <section className="allianz-local-calculator" id={params.RenderingIdentifier}>
     {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
     {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}

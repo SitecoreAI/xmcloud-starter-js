@@ -10,7 +10,7 @@ const {renderToStaticMarkup}=require('react-dom/server'),root=fileURLToPath(new 
 function loader(overrides={}){
  const modules=new Map();
  function load(file){if(modules.has(file))return modules.get(file).exports;const m=new Module(file);m.filename=file;m.paths=Module._nodeModulePaths(path.dirname(file));modules.set(file,m);const native=m.require.bind(m);
-  m.require=(spec)=>{if(Object.hasOwn(overrides,spec))return overrides[spec];const local=spec.startsWith('.')?path.resolve(path.dirname(file),spec):/^(lib|components)\//.test(spec)?path.join(root,spec):undefined;if(local){const p=[local,local+'.ts',local+'.tsx'].find(f=>fs.existsSync(f)&&fs.statSync(f).isFile());if(p&&/\.tsx?$/.test(p))return load(p);}return native(spec);};
+  m.require=(spec)=>{if(Object.hasOwn(overrides,spec))return overrides[spec];if(spec.endsWith('.module.css'))return new Proxy({}, {get:(_,key)=>key==='__esModule'?false:String(key)});const local=spec.startsWith('.')?path.resolve(path.dirname(file),spec):/^(lib|components)\//.test(spec)?path.join(root,spec):undefined;if(local){const p=[local,local+'.ts',local+'.tsx'].find(f=>fs.existsSync(f)&&fs.statSync(f).isFile());if(p&&/\.tsx?$/.test(p))return load(p);}return native(spec);};
   m._compile(ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText,file);return m.exports;
  }return load;
 }

@@ -44,3 +44,10 @@ export function validateCalculator(inputs: CalculatorInput[], values: Record<str
   }
   return errors;
 }
+
+/** Exact authored schema keys for the two explicitly selected local Income demos. */
+export function incomeToolsDemoMode(schemaKey?: TextValue): 'rates' | 'strategy' | null {
+  if (schemaKey?.jsonValue?.value === 'income-rates-demo') return 'rates';
+  if (schemaKey?.jsonValue?.value === 'income-strategy-demo') return 'strategy';
+  return null;
+}

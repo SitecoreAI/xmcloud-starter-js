@@ -225431,7 +225431,8 @@
             "paddingBottom": "none",
             "marginBottom": "none",
             "heroTheme": "variable",
-            "showLogin": "0"
+            "showLogin": "0",
+            "FieldNames": "TitleOnly"
           },
           "fields": {
             "data": {
@@ -225489,6 +225490,71 @@
           "provenance": {
             "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/rila-rates-center-iaip",
             "sourceHtml": "html/7835d53f1863b702.html"
+          }
+        },
+        {
+          "componentName": "AllianzCalculator",
+          "uid": "D21551C9-C03B-5074-B891-17A3CD8250CA",
+          "dataSource": "32D3CC32-171E-51C0-925C-6B845912B122",
+          "sourceKey": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/rila-rates-center-iaip:local-income-rates-demo",
+          "params": {
+            "theme": "transparent",
+            "spacing": "normal"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "schemaKey": {
+                  "jsonValue": {
+                    "value": "income-rates-demo"
+                  }
+                },
+                "sampleResult": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "disclaimer": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "submitLabel": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "resultLabel": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "initialResult": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "id": "32D3CC32-171E-51C0-925C-6B845912B122",
+                "children": {
+                  "results": []
+                }
+              }
+            }
+          },
+          "provenance": {
+            "kind": "user-approved-local-demo",
+            "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/rila-rates-center-iaip",
+            "qualification": "Fictional sample inputs and simplified learning model; source widget/formula not claimed reproduced; no production integration."
           }
         }
       ],
@@ -225675,7 +225741,8 @@
             "paddingBottom": "none",
             "marginBottom": "none",
             "heroTheme": "variable",
-            "showLogin": "0"
+            "showLogin": "0",
+            "FieldNames": "TitleOnly"
           },
           "fields": {
             "data": {
@@ -225786,6 +225853,71 @@
           "provenance": {
             "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/strategy-calculator",
             "sourceHtml": "html/72ad10dc6115b5f6.html"
+          }
+        },
+        {
+          "componentName": "AllianzCalculator",
+          "uid": "E3974E4A-688A-53AF-AB8A-AAA71E6D7CBA",
+          "dataSource": "AE705D5C-060D-5CDA-85F1-56B898DC7420",
+          "sourceKey": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/strategy-calculator:local-income-strategy-demo",
+          "params": {
+            "theme": "transparent",
+            "spacing": "normal"
+          },
+          "fields": {
+            "data": {
+              "datasource": {
+                "heading": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "body": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "schemaKey": {
+                  "jsonValue": {
+                    "value": "income-strategy-demo"
+                  }
+                },
+                "sampleResult": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "disclaimer": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "submitLabel": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "resultLabel": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "initialResult": {
+                  "jsonValue": {
+                    "value": ""
+                  }
+                },
+                "id": "AE705D5C-060D-5CDA-85F1-56B898DC7420",
+                "children": {
+                  "results": []
+                }
+              }
+            }
+          },
+          "provenance": {
+            "kind": "user-approved-local-demo",
+            "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/strategy-calculator",
+            "qualification": "Fictional sample inputs and simplified learning model; source widget/formula not claimed reproduced; no production integration."
           }
         },
         {

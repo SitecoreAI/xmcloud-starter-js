@@ -12,7 +12,11 @@ import scConfig from './sitecore.config';
 // one local-only SDK generator to run from a clean checkout.
 const generateImportMaps = writeImportMap({
   paths: ['src/components'],
-  exclude: ['src/components/**/*.props.ts', 'src/components/**/*.props.tsx'],
+  exclude: [
+    'src/components/**/*.props.ts',
+    'src/components/**/*.props.tsx',
+    'src/components/allianz-income-tools/**',
+  ],
 });
 const generateLocalImportMaps = (context: Parameters<typeof generateImportMaps>[0]) =>
   generateImportMaps({
@@ -32,6 +36,11 @@ export default defineCliConfig({
   },
   componentMap: {
     paths: ['src/components'],
-    exclude: ['src/components/content-sdk/*', 'src/components/**/*.props.ts', 'src/components/**/*.props.tsx'],
+    exclude: [
+      'src/components/content-sdk/*',
+      'src/components/**/*.props.ts',
+      'src/components/**/*.props.tsx',
+      'src/components/allianz-income-tools/**',
+    ],
   },
 });
