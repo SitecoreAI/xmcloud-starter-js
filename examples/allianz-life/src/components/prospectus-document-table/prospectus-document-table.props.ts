@@ -36,9 +36,25 @@ export function automaticDocumentRows(data?: AutomaticDocuments): ProspectusDocu
 }
 
 /** Reuse the established public-document inventory and navigation boundary. */
-export function prospectusLinkField(field: LinkField | undefined, isEditing: boolean): LinkField {
+export function prospectusLinkField(field: LinkField | undefined, isEditing: boolean, ownerId?: string): LinkField {
   if (!field || isEditing || !field.value?.href) return allianzLinkField(field, isEditing);
   if (isVerifiedContentHubDocumentLink(field)) return allianzLinkField(field, false);
+  // This native row owns a verified collection, not an individual captured PDF.
+  // Keep the exception here so it cannot expand the global navigation policy.
+  const value = field.value;
+  const href = field.value.href;
+  if (normalizeDocumentId(ownerId) === '793cf45a831a4431b2e0dac7e6e14dc6' &&
+    value.linktype?.toLowerCase() === 'external' && !value.id && !value.anchor && !href.includes('#')) {
+    const separator = href.indexOf('?');
+    const base = separator < 0 ? href : href.slice(0, separator);
+    const hrefQuery = separator < 0 ? '' : href.slice(separator + 1);
+    const nativeQuery = value.querystring?.replace(/^\?/, '') || '';
+    const query = hrefQuery && nativeQuery && hrefQuery !== nativeQuery
+      ? `${hrefQuery}&${nativeQuery}` : nativeQuery || hrefQuery;
+    if (base === 'https://connect.rightprospectus.com/Allianz' && query === 'site=AZ600') {
+      return { ...field, value: { ...value, href: base, querystring: query, anchor: '' } };
+    }
+  }
   const local = localDocumentHref(field.value.href);
   if (local) {
     const source = new URL(field.value.href, 'https://www.allianzlife.com');

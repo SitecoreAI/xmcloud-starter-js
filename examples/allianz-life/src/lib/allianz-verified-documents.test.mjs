@@ -17,6 +17,8 @@ const destinations = [
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/16cb820b40994ca3b7af38d574a44d59?v=d59e0053' },
   { name: 'Index Advantage+ Income lifetime income percentage chart', target: '_blank',
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/656eaeaaa433418ca03db6fcd7fa3512?v=f87588d4' },
+  { name: 'Index Advantage+ Income Benefit Supplement', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/0aafda00578a4eb1a678b2aa04d15595?v=760d2d3b' },
 ];
 process.env.NODE_ENV = 'test';
 
@@ -152,6 +154,11 @@ test('disabled services, social destinations and third-party prospectuses retain
       'https://www.allianzlife.com/login', 'https://www.allianzlife.com/account',
       'https://www.facebook.com/AllianzLife', 'https://www.linkedin.com/company/allianz-life',
       'https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018817882',
+      'https://vpx.broadridge.com/GetContract1.asp?doctype=isp&cid=allianzmft&fid=018815514',
+      'https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815514',
+      'https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815514',
+      'https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815514',
+      'https://connect.rightprospectus.com/Allianz?site=AZ600',
       'https://www.rightprospectus.com/documents/contract.pdf',
       'https://www.allianzlife.com/unverified-document.pdf',
     ]) {

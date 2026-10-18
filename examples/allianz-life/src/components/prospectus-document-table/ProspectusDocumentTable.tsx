@@ -26,7 +26,7 @@ const DocumentTable = ({ fields, params, rendering, product = false, embedded = 
             <tr key={document.id ?? index}>
               <td>
                 {shouldRenderLinkField(document.documentLink?.jsonValue, isEditing) && (
-                  <Link field={prospectusLinkField(document.documentLink?.jsonValue, isEditing)} editable={isEditing} />
+                  <Link field={prospectusLinkField(document.documentLink?.jsonValue, isEditing, document.id)} editable={isEditing} />
                 )}
                 {shouldRenderTextField(document.contractNote?.jsonValue, isEditing)
                   ? <Text tag="p" field={document.contractNote?.jsonValue} editable={isEditing} /> : <p />}
