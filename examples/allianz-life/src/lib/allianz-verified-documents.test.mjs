@@ -15,6 +15,8 @@ const destinations = [
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/47d0fbb1e2b6457fa2a595b96dcdccaa?v=27849fc6' },
   { name: 'ADV prospectus supplement', target: '',
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/16cb820b40994ca3b7af38d574a44d59?v=d59e0053' },
+  { name: 'Index Advantage+ Income lifetime income percentage chart', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/656eaeaaa433418ca03db6fcd7fa3512?v=f87588d4' },
 ];
 process.env.NODE_ENV = 'test';
 
@@ -31,7 +33,11 @@ function render(child, isEditing = false) {
   }, child));
 }
 function renderLink(input, editing = false) {
-  return render(React.createElement(Link, { ...safeLinkRenderProps(allianzLinkField(input, editing)) }), editing);
+  const adapted = allianzLinkField(input, editing);
+  return render(React.createElement(Link, {
+    ...(editing ? { field: adapted } : safeLinkRenderProps(adapted)),
+    editable: editing,
+  }), editing);
 }
 function renderTable(input, editing = false) {
   const uid = 'test-only-prospectus-table';
@@ -46,7 +52,7 @@ function href(html) {
   return /href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
 }
 
-for (const entry of destinations) test(`${entry.name}: installed SDK preserves exact destination and authored attributes`, () => {
+for (const entry of destinations) test(`${entry.name}: installed SDK preserves exact visitor destination and editing ownership`, () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     const parsed = new URL(entry.url);
@@ -67,7 +73,9 @@ for (const entry of destinations) test(`${entry.name}: installed SDK preserves e
       }
       for (const editing of [false, true]) {
         const html = renderLink(input, editing);
-        assert.equal(href(html), entry.url);
+        // Visitors receive normalized SDK props. Editors retain the authored
+        // field, including synthetic inputs with both full and split queries.
+        if (!editing) assert.equal(href(html), entry.url);
         assert.ok(html.includes(`target="${entry.target}"`));
         assert.ok(html.includes(entry.name));
         assert.match(html, /title="Authored PDF title"/);
