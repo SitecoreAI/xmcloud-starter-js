@@ -35,23 +35,32 @@ export function automaticDocumentRows(data?: AutomaticDocuments): ProspectusDocu
   return items;
 }
 
+// Verified collections and HTML viewers belong only to these native document rows.
+const VERIFIED_OWNER_DESTINATIONS = new Map<string, string>([
+  ['793cf45a831a4431b2e0dac7e6e14dc6', 'https://connect.rightprospectus.com/Allianz?site=AZ600'],
+  ['a32c0c37e5be4dae84f96aeddf656a50', 'https://vpx.broadridge.com/GetContract1.asp?doctype=isp&cid=allianzmft&fid=018815514'],
+  ['4c72bada56d14b0e81f6fa59c9b39410', 'https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815514'],
+  ['b9eaa4ab4aa34907bf92ed1cdd47ed52', 'https://vpx.broadridge.com/GetContract1.asp?doctype=pros&cid=allianzmft&fid=018815514'],
+  ['15d187b6d7cd4b028495e185705d067e', 'https://vpx.broadridge.com/GetContract1.asp?doctype=sai&cid=allianzmft&fid=018815514'],
+]);
+
 /** Reuse the established public-document inventory and navigation boundary. */
 export function prospectusLinkField(field: LinkField | undefined, isEditing: boolean, ownerId?: string): LinkField {
   if (!field || isEditing || !field.value?.href) return allianzLinkField(field, isEditing);
   if (isVerifiedContentHubDocumentLink(field)) return allianzLinkField(field, false);
-  // This native row owns a verified collection, not an individual captured PDF.
-  // Keep the exception here so it cannot expand the global navigation policy.
+  // Keep owner-specific destinations out of the global navigation/PDF policy.
   const value = field.value;
   const href = field.value.href;
-  if (normalizeDocumentId(ownerId) === '793cf45a831a4431b2e0dac7e6e14dc6' &&
+  const destination = VERIFIED_OWNER_DESTINATIONS.get(normalizeDocumentId(ownerId) ?? '');
+  if (destination &&
     value.linktype?.toLowerCase() === 'external' && !value.id && !value.anchor && !href.includes('#')) {
     const separator = href.indexOf('?');
     const base = separator < 0 ? href : href.slice(0, separator);
     const hrefQuery = separator < 0 ? '' : href.slice(separator + 1);
     const nativeQuery = value.querystring?.replace(/^\?/, '') || '';
-    const query = hrefQuery && nativeQuery && hrefQuery !== nativeQuery
-      ? `${hrefQuery}&${nativeQuery}` : nativeQuery || hrefQuery;
-    if (base === 'https://connect.rightprospectus.com/Allianz' && query === 'site=AZ600') {
+    const query = nativeQuery || hrefQuery;
+    if ((!hrefQuery || !nativeQuery || hrefQuery === nativeQuery) &&
+      `${base}${query ? `?${query}` : ''}` === destination) {
       return { ...field, value: { ...value, href: base, querystring: query, anchor: '' } };
     }
   }
