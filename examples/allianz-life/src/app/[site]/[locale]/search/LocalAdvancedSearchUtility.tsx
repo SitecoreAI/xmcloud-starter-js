@@ -81,7 +81,7 @@ export default function LocalAdvancedSearchUtility({ state, matches }: LocalAdva
       <div role="status" aria-live="polite" aria-atomic="true">
         {pending && <p>Searching…</p>}
         {state.query
-          ? <p>{matches.length} {matches.length === 1 ? 'result' : 'results'} for <strong>{state.query}</strong>{matches.length > 0 && <>. Showing {visibleCount} of {matches.length}.</>}</p>
+          ? <p>{matches.length} {matches.length === 1 ? 'result' : 'results'} for <strong className={styles.statusQuery}>{state.query}</strong>{matches.length > 0 && <>. Showing {visibleCount} of {matches.length}.</>}</p>
           : <p>Enter one or more words to search the captured New York pages.</p>}
       </div>
       {state.query && (matches.length ? <>

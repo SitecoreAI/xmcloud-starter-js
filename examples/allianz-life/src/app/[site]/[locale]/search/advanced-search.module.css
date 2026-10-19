@@ -27,3 +27,7 @@
   flex-wrap: wrap;
   gap: 12px;
 }
+
+.statusQuery {
+  overflow-wrap: anywhere;
+}

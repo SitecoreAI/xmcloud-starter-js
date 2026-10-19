@@ -503,3 +503,128 @@ for (const [site, locale, segments] of [
     assert.equal((await h.generateMetadata(requestProps)).title, 'Page');
   });
 }
+
+
+const deathClaimPaths = ['/report-a-death', '/new-york/report-a-death'];
+
+for (const claimPath of deathClaimPaths) {
+  const segments = claimPath.slice(1).split('/');
+
+  test(`${claimPath}: absent production delivery uses only the cloned demo snapshot`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production', deliveryMissing: true });
+    const before = JSON.stringify(h.fixtureContent);
+    const raw = h.getFixturePage(segments, 'allianz-life', 'en');
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...segments);
+    const route = loaded.page.layout.sitecore.route;
+    const expectedCollections = (value) => {
+      if (Array.isArray(value)) return value.map(expectedCollections);
+      if (!value || typeof value !== 'object') return value;
+      const copy = Object.fromEntries(Object.entries(value).map(([key, entry]) => [key, expectedCollections(entry)]));
+      if (copy.children && Array.isArray(copy.children.results)) {
+        copy.children.total = copy.children.results.length;
+        copy.children.pageInfo = { hasNext: false };
+      }
+      return copy;
+    };
+    assert.equal(loaded.needsComponentData, false);
+    assert.equal(loaded.componentFetchOptions, undefined);
+    assert.equal(Object.hasOwn(route, 'itemId'), false);
+    assert.deepEqual(loaded.page.layout.sitecore.context.allianzContentSource, {
+      kind: 'approved-death-claim-bundled-snapshot', canonicalPath: claimPath, nativePublicationVerified: false,
+    });
+    assert.equal(loaded.page.mode.isNormal, true);
+    assert.equal(loaded.page.mode.isEditing, false);
+    assert.equal(loaded.page.mode.isPreview, false);
+    assert.equal(h.collectionsComplete(loaded.page.layout, true), true);
+    assert.deepEqual(route.fields, raw.layout.sitecore.route.fields);
+    assert.deepEqual(route.placeholders, expectedCollections(raw.layout.sitecore.route.placeholders));
+    assert.equal(route.placeholders['headless-main'].length, claimPath.startsWith('/new-york') ? 4 : 3);
+    const form = route.placeholders['headless-main'].find((component) => component.componentName === 'AllianzForm');
+    assert.equal(form.fields.data.datasource.schemaKey.jsonValue.value, 'death-claim');
+    assert.equal(form.integrationPolicy.mode, 'mock-only');
+    assert.equal(form.integrationPolicy.productionSubmission, false);
+    assert.equal(route.placeholders['headless-main'].some((component) => /Hero/.test(component.componentName)), false);
+    const element = await h.default(props(segments));
+    const metadata = await h.generateMetadata(props(segments));
+    assert.deepEqual(renderedPage(element).layout.sitecore.route, route);
+    assert.deepEqual(element.props.children.props.componentProps, {});
+    assert.equal(metadata.title, route.fields.Title.value);
+    assert.equal(metadata.description, route.fields.metadataDescription.value);
+    assert.equal(metadata.alternates.canonical, `https://render-host.invalid${claimPath}`);
+    assert.deepEqual(metadata.robots, { index: false, follow: false, noarchive: true });
+    assert.ok(h.calls.length > 0);
+    assert.ok(h.calls.every((call) => call.backend === 'delivery' && call.contentPath === claimPath));
+    assert.deepEqual(h.requestReads, { headers: 0, cookies: 0 });
+    assert.equal(JSON.stringify(h.fixtureContent), before);
+    route.placeholders['headless-main'][0].fields.data.datasource.heading.jsonValue.value = 'Changed snapshot';
+    assert.equal(JSON.stringify(h.fixtureContent), before);
+  });
+
+  test(`${claimPath}: available native delivery wins without snapshot changes`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production' });
+    h.deliveryLayout.sitecore.route.fields.example = { children: { results: [] } };
+    h.deliveryLayout.sitecore.route.itemId = '11111111-1111-4111-8111-111111111111';
+    const before = structuredClone(h.deliveryLayout.sitecore.route);
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...segments);
+    assert.equal(loaded.page.layout.sitecore.route.fields.pageTitle.value, 'Published delivery title');
+    assert.equal(loaded.needsComponentData, true);
+    assert.equal(loaded.page.layout.sitecore.context.allianzContentSource, undefined);
+    assert.equal(h.collectionsComplete(loaded.page.layout, true), false);
+    assert.equal(loaded.page.layout.sitecore.route.itemId, before.itemId);
+    assert.deepEqual(loaded.page.layout.sitecore.route, before);
+    assert.deepEqual(h.deliveryLayout.sitecore.route, before);
+  });
+
+  for (const status of [401, 403, 404, 500]) {
+    test(`${claimPath}: thrown delivery ${status} never selects a snapshot`, async (t) => {
+      const error = Object.assign(new Error(`Synthetic delivery ${status}`), { status });
+      const h = harness(t, { nodeEnv: 'production', error });
+      await assert.rejects(h.default(props(segments)), (actual) => actual === error);
+      await assert.rejects(h.generateMetadata(props(segments)), (actual) => actual === error);
+    });
+  }
+
+  for (const [mode, editingHeader, backend] of [
+    ['edit', true, 'authoring'],
+    ['preview', true, 'authoring'],
+    [DesignLibraryMode.Metadata, true, 'design-library'],
+    ['edit', false, 'authoring-navigation'],
+  ]) {
+    test(`${claimPath}: missing ${backend}/${mode} never selects a demo snapshot`, async (t) => {
+      const h = harness(t, { nodeEnv: 'production', draft: true, mode, editingHeader, missing: true, deliveryMissing: true });
+      const loaded = await h.loadAllianzPage('allianz-life', 'en', ...segments);
+      assert.equal(loaded.page?.layout.sitecore.route ?? null, null);
+      assert.equal(loaded.needsComponentData, true);
+      assert.equal(loaded.page?.layout.sitecore.context.allianzContentSource, undefined);
+      assert.ok(h.calls.length > 0);
+      assert.ok(h.calls.every((call) => call.backend === backend));
+    });
+  }
+}
+
+for (const [site, locale, segments] of [
+  ['other-site', 'en', ['report-a-death']],
+  ['allianz-life', 'fr', ['report-a-death']],
+  ['allianz-life', 'en-US', ['new-york', 'report-a-death']],
+  ['allianz-life', 'en', []],
+  ['allianz-life', 'en', ['new-york']],
+  ['allianz-life', 'en', ['report-a-death', 'claim-fail']],
+  ['allianz-life', 'en', ['new-york', 'report-a-death', 'claim-fail']],
+  ['allianz-life', 'en', ['new-york', 'report-a-death', 'extra']],
+  ['allianz-life', 'en', ['REPORT-A-DEATH']],
+  ['allianz-life', 'en', ['new-york/report-a-death']],
+  ['allianz-life', 'en', ['new-york%2Freport-a-death']],
+  ['allianz-life', 'en', ['new-york%252Freport-a-death']],
+  ['allianz-life', 'en', ['new-york', '', 'report-a-death']],
+  ['allianz-life', 'en', ['new-york', '.', 'report-a-death']],
+  ['allianz-life', 'en', ['new-york', 'report-a-death/']],
+  ['allianz-life', 'en', ['report-a-death?copy=1']],
+]) {
+  test(`Death-claim snapshot rejects other site/locale/path: ${site}/${locale}/${segments.join('|')}`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production', deliveryMissing: true });
+    const loaded = await h.loadAllianzPage(site, locale, ...segments);
+    assert.equal(loaded.page, null);
+    assert.equal(loaded.needsComponentData, true);
+    assert.equal((await h.generateMetadata({ params: Promise.resolve({ site, locale, path: segments }) })).title, 'Page');
+  });
+}

@@ -56,6 +56,32 @@ function getApprovedCashSnapshot(site: string, locale: string, path: string[]) {
   return page;
 }
 
+const APPROVED_DEATH_CLAIM_PATHS = [
+  ['report-a-death'],
+  ['new-york', 'report-a-death'],
+] as const;
+
+/** Demo snapshots are separate from guarded native CMS publication. */
+function getApprovedDeathClaimSnapshot(site: string, locale: string, path: string[]) {
+  if (site !== 'allianz-life' || locale !== 'en' ||
+    !APPROVED_DEATH_CLAIM_PATHS.some((approved) => approved.length === path.length &&
+      approved.every((segment, index) => segment === path[index]))) return null;
+
+  const page = structuredClone(getFixturePage(path.map(encodeURIComponent), site, locale));
+  const route = page?.layout.sitecore.route;
+  if (!page || !route) return null;
+
+  delete route.itemId;
+  page.layout.sitecore.context.allianzContentSource = {
+    kind: 'approved-death-claim-bundled-snapshot',
+    canonicalPath: `/${path.join('/')}`,
+    nativePublicationVerified: false,
+  };
+  // The captured NY tools list also needs complete bundled collection metadata.
+  completeSnapshotNavigation(route.placeholders);
+  return page;
+}
+
 /** Share authoring/delivery selection for native decoded paths within a request. */
 export const loadAllianzPage = cache(async (site: string, locale: string, ...path: string[]) => {
   const draft = await draftMode();
@@ -106,10 +132,11 @@ export const loadAllianzPage = cache(async (site: string, locale: string, ...pat
     // preserve literal percent sequences while keeping its existing API intact.
     : getFixturePage(path.map(encodeURIComponent), site, locale);
 
-  // Only an absent delivery route can select these two approved snapshots.
+  // Only an absent delivery route can select the exact approved snapshots.
   // Authoring returns above; request failures still propagate from getPage.
   if (connected && page === null) {
-    const snapshot = getApprovedCashSnapshot(site, locale, path);
+    const snapshot = getApprovedCashSnapshot(site, locale, path) ||
+      getApprovedDeathClaimSnapshot(site, locale, path);
     if (snapshot) return { page: snapshot, needsComponentData: false, componentFetchOptions: undefined };
   }
 
