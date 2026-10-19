@@ -660,3 +660,41 @@ for (const claimPath of deathClaimPaths) {
     assert.equal(JSON.stringify(h.fixtureContent), before);
   });
 }
+
+
+for (const cashPath of cashPaths) {
+  test(`${cashPath}: real SDK Cash SSR uses loader canonical path with modeled unrelated pathname`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production', deliveryMissing: true });
+    const before = JSON.stringify(h.fixtureContent);
+    const { page } = await h.loadAllianzPage('allianz-life', 'en', ...cashPath.slice(1).split('/'));
+    const blocks = page.layout.sitecore.route.placeholders['headless-main'].filter((component) =>
+      component.componentName === 'AllianzLegacyRichText');
+    assert.equal(blocks.length, 4);
+    const originalBodies = blocks.map((block) => block.fields.data.datasource.body.jsonValue.value);
+    // Model an unrelated pathname explicitly; this is not a production hook capture.
+    // Do not inject itemPath: the actual Cash snapshot loader must supply it.
+    const html = blocks.map((block) => renderToStaticMarkup(
+      React.createElement(PathnameContext.Provider, { value: '/' },
+        React.createElement(SitecoreProvider, {
+          page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
+        }, React.createElement(LegacyRichText, { params: block.params, fields: block.fields }))))).join('');
+    const pdfLinks = (value) => [...value.matchAll(/<a\b[^>]*href="([^"]+\.pdf)"/g)].map((match) => match[1]);
+    const counts = {
+      notices: (html.match(/class="allianz-cash-demo-notice"/g) || []).length,
+      inertReferences: (html.match(/class="allianz-cash-demo-reference"/g) || []).length,
+      pdfs: pdfLinks(html).length,
+      placeholderAnchors: [...html.matchAll(/<a\b[^>]*href\s*=\s*["']#(?:demo-unavailable|service-unavailable)?["']/gi)].length,
+    };
+    t.diagnostic(JSON.stringify({ cashPath, modeledPathname: '/', counts }));
+    assert.deepEqual(counts, { notices: 1, inertReferences: 10, pdfs: 7, placeholderAnchors: 0 });
+    const { CASH_DEMO_LINK_NOTICE } = loadSdkSource(path.join(sourceRoot, 'lib/cash-equivalent-demo.ts'));
+    assert.ok(html.includes(CASH_DEMO_LINK_NOTICE));
+    assert.deepEqual(pdfLinks(html), pdfLinks(originalBodies.join('')));
+    assert.equal(page.layout.sitecore.context.itemPath, cashPath);
+    assert.deepEqual(page.layout.sitecore.context.allianzContentSource, {
+      kind: 'approved-cash-bundled-snapshot', canonicalPath: cashPath, nativePublicationVerified: false,
+    });
+    assert.deepEqual(blocks.map((block) => block.fields.data.datasource.body.jsonValue.value), originalBodies);
+    assert.equal(JSON.stringify(h.fixtureContent), before);
+  });
+}

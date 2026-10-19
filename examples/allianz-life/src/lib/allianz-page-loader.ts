@@ -46,6 +46,7 @@ function getApprovedCashSnapshot(site: string, locale: string, path: string[]) {
 
   // The adapter's inventory datasource ID is not a published native page identity.
   delete route.itemId;
+  page.layout.sitecore.context.itemPath = `/${path.join('/')}`;
   page.layout.sitecore.context.allianzContentSource = {
     kind: 'approved-cash-bundled-snapshot',
     canonicalPath: `/${path.join('/')}`,
