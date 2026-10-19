@@ -72,6 +72,7 @@ function getApprovedDeathClaimSnapshot(site: string, locale: string, path: strin
   if (!page || !route) return null;
 
   delete route.itemId;
+  page.layout.sitecore.context.itemPath = `/${path.join('/')}`;
   page.layout.sitecore.context.allianzContentSource = {
     kind: 'approved-death-claim-bundled-snapshot',
     canonicalPath: `/${path.join('/')}`,

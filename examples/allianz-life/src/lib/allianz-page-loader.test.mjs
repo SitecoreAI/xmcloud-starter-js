@@ -4,6 +4,7 @@ import Module, { createRequire } from 'node:module';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { loadSource as loadSdkSource } from '../components/executive-biography/__tests__/sdk-test-helper.mjs';
 
 const require = createRequire(import.meta.url);
 const ts = require('typescript');
@@ -15,6 +16,11 @@ const { getRouteRegex } = require('next/dist/shared/lib/router/utils/route-regex
 const { getDynamicParam } = require('next/dist/shared/lib/router/utils/get-dynamic-param');
 const sourceRoot = fileURLToPath(new URL('..', import.meta.url));
 const routeFile = path.join(sourceRoot, 'app/[site]/[locale]/[[...path]]/page.tsx');
+const React = require('react');
+const { renderToStaticMarkup } = require('react-dom/server');
+const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
+const { PathnameContext } = require('next/dist/shared/lib/hooks-client-context.shared-runtime');
+const { Default: LegacyRichText } = loadSdkSource(path.join(sourceRoot, 'components/allianz-legacy-rich-text/AllianzLegacyRichText.tsx'));
 
 function layout(title, description) {
   return { sitecore: {
@@ -626,5 +632,31 @@ for (const [site, locale, segments] of [
     assert.equal(loaded.page, null);
     assert.equal(loaded.needsComponentData, true);
     assert.equal((await h.generateMetadata({ params: Promise.resolve({ site, locale, path: segments }) })).title, 'Page');
+  });
+}
+
+
+for (const claimPath of deathClaimPaths) {
+  test(`${claimPath}: real SDK intro uses loader canonical path with modeled unrelated pathname`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production', deliveryMissing: true });
+    const before = JSON.stringify(h.fixtureContent);
+    const { page } = await h.loadAllianzPage('allianz-life', 'en', ...claimPath.slice(1).split('/'));
+    const intro = page.layout.sitecore.route.placeholders['headless-main'].find((component) =>
+      component.componentName === 'AllianzLegacyRichText');
+    assert.ok(intro, 'render the actual loader-provided introduction');
+    const originalBody = intro.fields.data.datasource.body.jsonValue.value;
+    // This is an explicit unrelated-path model, not captured production hook state.
+    // Do not inject itemPath: the actual loader must provide canonical snapshot data.
+    const html = renderToStaticMarkup(React.createElement(PathnameContext.Provider, { value: '/' },
+      React.createElement(SitecoreProvider, {
+        page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
+      }, React.createElement(LegacyRichText, { params: intro.params, fields: intro.fields }))));
+    assert.match(html, /Completing this demo does not report a death/);
+    assert.doesNotMatch(html, /Once submitted|Please use this form to notify|register or log in/);
+    assert.equal(page.layout.sitecore.context.itemPath, claimPath);
+    assert.equal(page.layout.sitecore.context.allianzContentSource.canonicalPath, claimPath);
+    assert.equal(page.layout.sitecore.context.allianzContentSource.nativePublicationVerified, false);
+    assert.equal(intro.fields.data.datasource.body.jsonValue.value, originalBody);
+    assert.equal(JSON.stringify(h.fixtureContent), before);
   });
 }
