@@ -119,10 +119,10 @@ test('CMS label/options/validation edits and empty fields cannot change code-own
   assert.equal(definitions.length, 9);
 });
 const RealComponent = sourceLoader()(path.join(formRoot, 'GenericForm.props.tsx')).default;
-function sdkRender(data, editing, Component = RealComponent) {
+function sdkRender(data, editing, Component = RealComponent, formConfig = config) {
   const page = { mode: { isEditing: editing, isNormal: !editing }, siteName: 'allianz-life', layout: { sitecore: { context: {}, route: { name: 'Contact test', fields: {}, placeholders: {} } } } };
   return renderToStaticMarkup(React.createElement(realSdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) },
-    React.createElement(Component, { config, params: {} })));
+    React.createElement(Component, { config: formConfig, params: {} })));
 }
 for (const editing of [false, true]) test(`code-owned contact renders with real SDK in ${editing ? 'editing' : 'normal'} mode`, () => {
   const html = sdkRender(undefined, editing);
@@ -153,7 +153,7 @@ for (const [reason, open] of [['Other', false], ['SellProducts', false], ['Purch
 }
 
 // Hook/element harness executes event handlers; it is not a DOM, accessibility-tree or browser test.
-function harness(key = 'new-york-contact', params = {}, data = datasource()) {
+function harness(key = 'new-york-contact', params = {}, data = datasource(), formId) {
   let state = [], cursor = 0, tree; const refs = []; let refCursor = 0; let focusCalls = [];
   const hooks = { ...React, useId: () => 'contact-harness', useMemo: (fn) => fn(),
     useRef: () => { const index = refCursor++; return refs[index] ||= { current: null }; },
@@ -161,7 +161,7 @@ function harness(key = 'new-york-contact', params = {}, data = datasource()) {
   const sdk = { ...realSdk, useSitecore: () => ({ page: { mode: { isEditing: false } } }) };
   const Component = sourceLoader({ react: hooks, '@sitecore-content-sdk/nextjs': sdk })(path.join(formRoot, 'GenericForm.props.tsx')).default;
   data.schemaKey = field('schemaKey', key);
-  const props = { config: key === 'new-york-contact' ? config : configs.find((form) => form.schemaKey === key) || config, params };
+  const props = { config: formId ? configs.find((form) => form.id === formId) : key === 'new-york-contact' ? config : configs.find((form) => form.schemaKey === key) || config, params };
   function nodes(node = tree) { if (Array.isArray(node)) return node.flatMap((child) => nodes(child ?? null)); if (!React.isValidElement(node)) return []; return [node, ...nodes(node.props.children ?? null)]; }
   function text(node = tree) {
     if (Array.isArray(node)) return node.map((child) => text(child ?? null)).join('');
@@ -311,3 +311,45 @@ test('death-claim handlers preserve conditional relationship, 20 policies, maske
     h.click('Start again');assert.equal(h.state()[2],1);assert.equal(h.state()[3],'entry');assert.deepEqual(h.state()[0],{});
   } finally {globalThis.document=priorDocument;}
 });
+
+for (const formId of ['death-claim', 'ny-death-claim']) {
+  for (const outcome of ['success', 'failure']) test(`${formId}: truthful demo notice persists through entry, review, ${outcome} and reset`, () => {
+    const h = harness('death-claim', { mockOutcome: outcome }, datasource(), formId);
+    const notice = () => {
+      const node = h.find((entry) => entry.props.role === 'note' && entry.props['aria-label'] === 'Claim demonstration');
+      assert.match(h.text(node), /does not report a death, submit a claim, check a policy, contact beneficiaries, or mail claim packets/);
+    };
+    notice();
+    assert.doesNotMatch(h.text(), /will then be contacted directly|receive a claim form packet in the mail|claims process proceeds/);
+    // Exercise each outcome with synthetic in-memory values; detailed field validation
+    // and masking remain covered by the adjacent existing death-claim handler test.
+    h.state()[0] = { 'StartClaimAbout.Last4SSN': '1234' };
+    h.state()[3] = 'review'; h.render(); notice();
+    assert.doesNotMatch(h.text(), /1234/);
+    h.click('Continue'); notice();
+    assert.equal(h.state()[3], outcome === 'failure' ? 'failure' : 'complete');
+    assert.deepEqual(h.state()[0], {});
+    assert.match(h.text(), /No information was sent/);
+    h.click('Start again'); notice();
+    assert.equal(h.state()[3], 'entry'); assert.deepEqual(h.state()[0], {});
+    assert.equal(requests, 0); assert.equal(stores, 0);
+  });
+}
+
+for (const formId of ['death-claim', 'ny-death-claim']) for (const editing of [false, true]) {
+  test(`${formId}: real Content SDK SSR preserves ${editing ? 'authoring fields without visitor notice' : 'truthful visitor claim copy'}`, () => {
+    const claim = configs.find((form) => form.id === formId);
+    const html = sdkRender(undefined, editing, RealComponent, claim);
+    if (editing) {
+      assert.doesNotMatch(html, /aria-label="Claim demonstration"|Demonstration only/);
+      assert.ok(html.includes(formDefinitions('death-claim')[0].label));
+    } else {
+      assert.equal((html.match(/aria-label="Claim demonstration"/g) || []).length, 1);
+      assert.match(html, /role="note"/);
+      assert.match(html, /does not report a death, submit a claim, check a policy, contact beneficiaries, or mail claim packets/);
+      assert.match(html, /Use sample contact details to try the review step/);
+      assert.doesNotMatch(html, /will then be contacted directly|receive a claim form packet in the mail|claims process proceeds/);
+    }
+    assert.doesNotMatch(html, /action=|method=|<script/);
+  });
+}

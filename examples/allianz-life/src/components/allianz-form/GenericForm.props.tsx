@@ -6,7 +6,8 @@ import type { AllianzFormProps } from './allianz-form.props';
 import { migrationFormCopy, type MigrationFormConfig } from './migration-form-config.props';
 import { formDefinitions, MAX_POLICIES, POLICY_PREFIX, REASON, validateForm, visibleDefinitions, type FormDefinition, type FormErrors, type FormValues, type FormValue, type SchemaKey } from './form-rules.props';
 
-const ABOUT_YOU = '<p>Allianz may need to contact you as the claims process proceeds. Please provide your contact information below.</p><p><strong>Please note:</strong> All beneficiaries listed on the policy/contract will then be contacted directly, receive a claim form packet in the mail, and speak with Allianz about the claim process and paperwork.</p>';
+const ABOUT_YOU = '<p>Use sample contact details to try the review step. This demonstration does not contact you or any beneficiary, or mail claim packets.</p>';
+const CLAIM_DEMO_NOTICE = 'Demonstration only. This form does not report a death, submit a claim, check a policy, contact beneficiaries, or mail claim packets. Use sample information.';
 const FIRMS = ['Example Financial Group', 'Sample Advisory Partners', 'Other'];
 
 export default function GenericForm({ config, params = {} }: { config: MigrationFormConfig; params?: AllianzFormProps['params'] }) {
@@ -99,6 +100,7 @@ export default function GenericForm({ config, params = {} }: { config: Migration
     return field.name.endsWith('Last4SSN') ? '••••' : field.options.find((option) => option.value === values[field.name])?.label || values[field.name];
   };
   return <section data-source-hidden-form={config.sourceHidden || undefined} hidden={config.sourceHidden && !isEditing} style={config.sourceHidden && !isEditing ? { display: 'none' } : undefined} data-form-id={config.id} className="allianz-local-form" id={params.RenderingIdentifier}>
+    {!isEditing && key === 'death-claim' && <p className="allianz-local-privacy" role="note" aria-label="Claim demonstration">{CLAIM_DEMO_NOTICE}</p>}
     {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={false} tag="h2" field={data.heading?.jsonValue} />}
     {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={false} field={data.body?.jsonValue} />}
     {isEditing ? <div className="allianz-local-form-authoring">
