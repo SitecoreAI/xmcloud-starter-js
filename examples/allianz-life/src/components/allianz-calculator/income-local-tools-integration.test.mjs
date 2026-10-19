@@ -35,12 +35,18 @@ function load(file) {
 const { Default } = load(path.join(root, 'components/allianz-calculator/AllianzCalculator.tsx'));
 const { incomeToolsDemoMode } = load(path.join(root, 'components/allianz-calculator/allianz-calculator.props.ts'));
 const field = (name, value) => ({ jsonValue: { value, metadata: { fieldId: name, itemId: 'income-demo', fieldType: name === 'heading' ? 'Single-Line Text' : 'Rich Text' } } });
-function render(key, editing = false, extra = {}) {
+function render(key, editing = false, extra = {}, props = {}) {
   const page = { mode: { isEditing: editing, isNormal: !editing }, layout: { sitecore: { context: {}, route: { name: 'Income local demo', fields: {}, placeholders: {} } } }, siteName: 'allianz-life' };
   const datasource = { schemaKey: field('schemaKey', key), ...extra };
   return renderToStaticMarkup(React.createElement(sdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) },
-    React.createElement(Default, { params: {}, fields: { data: { datasource } } })));
+    React.createElement(Default, { params: {}, fields: { data: { datasource } }, ...props })));
 }
+
+const incomeRoot = '/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income';
+const approvedSources = [
+  [`${incomeRoot}/rila-rates-center-iaip/Data/AllianzCalculator 03`, /Demo sample rates/],
+  [`${incomeRoot}/strategy-calculator/Data/AllianzCalculator 04`, /Hypothetical starting amount/],
+];
 
 test('only the two explicit authored schema keys select an Income demo', () => {
   assert.equal(incomeToolsDemoMode(field('key', 'income-rates-demo')), 'rates');
@@ -63,6 +69,29 @@ test('installed SDK renders the Strategy demo with explicit sample assumptions',
   assert.match(html, /Dual Precision strategies are not modeled/);
   assert.match(html, /aria-live="polite"/);
   assert.doesNotMatch(html, /How much you need to save|action=|method=|<iframe/);
+});
+test('layouts without component fields render learning tools only for the two approved datasource paths', () => {
+  for (const [dataSource, expected] of approvedSources) {
+    const html = render(undefined, false, {}, { fields: undefined, rendering: { componentName: 'AllianzCalculator', dataSource } });
+    assert.match(html, expected);
+    assert.match(html, /Local learning demo/);
+    assert.doesNotMatch(html, /How much you need to save/);
+  }
+});
+test('explicit blank or unknown authored schema keys override the datasource fallback', () => {
+  for (const [dataSource] of approvedSources) for (const key of ['', 'unknown', 'income-rates-demo ']) {
+    const html = render(key, false, {}, { rendering: { dataSource } });
+    assert.match(html, /How much you need to save/);
+    assert.doesNotMatch(html, /Demo sample rates|Local learning demo/);
+  }
+});
+test('unapproved or changed datasource paths preserve the existing utility when fields are absent', () => {
+  for (const [approved] of approvedSources) for (const dataSource of [undefined, `${approved}/`, approved.toLowerCase(), approved.replace('index-advantage-plus-income', 'index-advantage-income-adv')]) {
+    const html = render(undefined, false, {}, { fields: undefined, rendering: { dataSource } });
+    assert.match(html, /How much you need to save/);
+    assert.equal((html.match(/<input/g) || []).length, 3);
+    assert.doesNotMatch(html, /Demo sample rates|Local learning demo/);
+  }
 });
 test('Income demo surrounding fields retain editable SDK metadata and cleared values', () => {
   const extra = { heading: field('heading', 'Authored heading'), body: field('body', '<p>Authored explanation.</p>'), disclaimer: field('disclaimer', '<p>Authored qualification.</p>') };

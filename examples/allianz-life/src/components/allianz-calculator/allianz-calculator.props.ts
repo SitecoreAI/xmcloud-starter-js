@@ -45,9 +45,14 @@ export function validateCalculator(inputs: CalculatorInput[], values: Record<str
   return errors;
 }
 
-/** Exact authored schema keys for the two explicitly selected local Income demos. */
-export function incomeToolsDemoMode(schemaKey?: TextValue): 'rates' | 'strategy' | null {
+const INCOME_DEMO_DATASOURCE_ROOT = '/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income';
+
+/** Authored keys take precedence; exact approved datasource paths cover layouts that omit fields. */
+export function incomeToolsDemoMode(schemaKey?: TextValue, dataSource?: string): 'rates' | 'strategy' | null {
   if (schemaKey?.jsonValue?.value === 'income-rates-demo') return 'rates';
   if (schemaKey?.jsonValue?.value === 'income-strategy-demo') return 'strategy';
+  if (schemaKey !== undefined) return null;
+  if (dataSource === `${INCOME_DEMO_DATASOURCE_ROOT}/rila-rates-center-iaip/Data/AllianzCalculator 03`) return 'rates';
+  if (dataSource === `${INCOME_DEMO_DATASOURCE_ROOT}/strategy-calculator/Data/AllianzCalculator 04`) return 'strategy';
   return null;
 }
