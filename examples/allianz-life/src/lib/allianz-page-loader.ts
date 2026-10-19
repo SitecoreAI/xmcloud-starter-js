@@ -11,6 +11,51 @@ import client from './sitecore-client';
 // The SDK's App Router editing transport header is not exported from its public editing entry point.
 const EDITING_PARAMS_HEADER = 'x-sitecore-editing-params';
 
+const APPROVED_CASH_PATHS = [
+  ['what-we-offer', 'annuities', 'investment-strategies', 'cash-equivalent'],
+  ['new-york', 'annuities', 'investment-strategies', 'cash-equivalent'],
+] as const;
+
+/** Describe complete bundled navigation arrays, never native query results. */
+function completeSnapshotNavigation(value: unknown): void {
+  if (!value || typeof value !== 'object') return;
+  if (Array.isArray(value)) {
+    value.forEach(completeSnapshotNavigation);
+    return;
+  }
+  const record = value as Record<string, unknown>;
+  if (record.children && typeof record.children === 'object') {
+    const children = record.children as Record<string, unknown>;
+    if (Array.isArray(children.results)) {
+      children.total = children.results.length;
+      children.pageInfo = { hasNext: false };
+    }
+  }
+  Object.values(record).forEach(completeSnapshotNavigation);
+}
+
+/** Approved public snapshots do not imply that their native CMS items published. */
+function getApprovedCashSnapshot(site: string, locale: string, path: string[]) {
+  if (site !== 'allianz-life' || locale !== 'en' ||
+    !APPROVED_CASH_PATHS.some((approved) => approved.length === path.length &&
+      approved.every((segment, index) => segment === path[index]))) return null;
+
+  const page = structuredClone(getFixturePage(path.map(encodeURIComponent), site, locale));
+  const route = page?.layout.sitecore.route;
+  if (!page || !route) return null;
+
+  // The adapter's inventory datasource ID is not a published native page identity.
+  delete route.itemId;
+  page.layout.sitecore.context.allianzContentSource = {
+    kind: 'approved-cash-bundled-snapshot',
+    canonicalPath: `/${path.join('/')}`,
+    nativePublicationVerified: false,
+  };
+  completeSnapshotNavigation(route.placeholders['headless-header']);
+  completeSnapshotNavigation(route.placeholders['headless-footer']);
+  return page;
+}
+
 /** Share authoring/delivery selection for native decoded paths within a request. */
 export const loadAllianzPage = cache(async (site: string, locale: string, ...path: string[]) => {
   const draft = await draftMode();
@@ -60,6 +105,13 @@ export const loadAllianzPage = cache(async (site: string, locale: string, ...pat
     // The legacy fixture adapter decodes its input; encode native segments to
     // preserve literal percent sequences while keeping its existing API intact.
     : getFixturePage(path.map(encodeURIComponent), site, locale);
+
+  // Only an absent delivery route can select these two approved snapshots.
+  // Authoring returns above; request failures still propagate from getPage.
+  if (connected && page === null) {
+    const snapshot = getApprovedCashSnapshot(site, locale, path);
+    if (snapshot) return { page: snapshot, needsComponentData: false, componentFetchOptions: undefined };
+  }
 
   return { page, needsComponentData: connected, componentFetchOptions: undefined };
 });

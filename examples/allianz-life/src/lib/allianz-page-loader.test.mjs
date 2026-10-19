@@ -27,7 +27,7 @@ function layout(title, description) {
 }
 
 /** Exercise real SDK routing, editing-header parsing and FetchOptions forwarding. */
-function harness(t, { draft = false, connected = true, nodeEnv = 'test', contentMode = connected ? 'connected' : 'fixture', authorization, cookie, mode = 'edit', editingHeader = true, missing = false, error, expectedContentPath } = {}) {
+function harness(t, { draft = false, connected = true, nodeEnv = 'test', contentMode = connected ? 'connected' : 'fixture', authorization, cookie, mode = 'edit', editingHeader = true, missing = false, deliveryMissing = false, error, expectedContentPath } = {}) {
   const previousMode = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
   const previousNodeEnv = process.env.NODE_ENV;
   if (contentMode === null) delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
@@ -49,6 +49,7 @@ function harness(t, { draft = false, connected = true, nodeEnv = 'test', content
   const authoringLayout = layout('Current authoring title', 'Current authoring description');
   const deliveryLayout = layout('Published delivery title', 'Published delivery description');
   if (missing) authoringLayout.sitecore.route = null;
+  if (deliveryMissing) deliveryLayout.sitecore.route = null;
   const client = Object.assign(Object.create(SitecoreClient.prototype), {
     initOptions: { defaultSite: 'allianz-life', defaultLanguage: 'en', rewriteMediaUrls: false },
     editingService: { async fetchEditingData(data, fetchOptions) {
@@ -127,7 +128,7 @@ function harness(t, { draft = false, connected = true, nodeEnv = 'test', content
     }).outputText, filename);
     return compiled.exports;
   }
-  return { ...load(routeFile), ...load(path.join(sourceRoot, 'lib/allianz-page-loader.ts')), ...load(path.join(sourceRoot, 'lib/allianz-page.ts')), calls, requestReads, previewData };
+  return { ...load(routeFile), ...load(path.join(sourceRoot, 'lib/allianz-page-loader.ts')), ...load(path.join(sourceRoot, 'lib/allianz-page.ts')), ...load(path.join(sourceRoot, 'lib/collection-completeness.ts')), calls, requestReads, previewData, deliveryLayout };
 }
 
 const props = (segments = ['products', 'annuities']) => ({ params: Promise.resolve({ site: 'allianz-life', locale: 'en', path: segments }) });
@@ -374,3 +375,131 @@ test('automatic component reads inherit authoring routing only in server-local o
   const normal = harness(t);
   assert.equal((await normal.loadAllianzPage('allianz-life', 'en', 'about', 'newsroom')).componentFetchOptions, undefined);
 });
+
+const cashPaths = [
+  '/what-we-offer/annuities/investment-strategies/cash-equivalent',
+  '/new-york/annuities/investment-strategies/cash-equivalent',
+];
+
+for (const cashPath of cashPaths) {
+  const segments = cashPath.slice(1).split('/');
+
+  test(`${cashPath}: absent production delivery uses the exact approved snapshot without mutating its model`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production', deliveryMissing: true });
+    const before = JSON.stringify(h.fixtureContent);
+    const raw = h.getFixturePage(segments, 'allianz-life', 'en');
+    assert.equal(h.collectionsComplete(raw.layout, true), false, 'bundled shells lack native query metadata');
+
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...segments);
+    const { page } = loaded;
+    const route = page.layout.sitecore.route;
+    assert.equal(loaded.needsComponentData, false);
+    assert.equal(loaded.componentFetchOptions, undefined);
+    assert.equal(Object.hasOwn(route, 'itemId'), false, 'captured datasource IDs are not native page identities');
+    assert.deepEqual(page.layout.sitecore.context.allianzContentSource, {
+      kind: 'approved-cash-bundled-snapshot', canonicalPath: cashPath, nativePublicationVerified: false,
+    });
+    assert.equal(page.mode.isNormal, true);
+    assert.equal(page.mode.isEditing, false);
+    assert.equal(page.mode.isPreview, false);
+    assert.equal(h.collectionsComplete(page.layout, true), true, 'connected validation accepts complete bundled arrays');
+    assert.deepEqual(route.fields, raw.layout.sitecore.route.fields);
+    assert.deepEqual(route.placeholders['headless-main'], h.fixtureContent.routes[cashPath].components);
+    assert.equal(route.placeholders['headless-main'].length, 5);
+
+    // The only shell changes describe the arrays present in this copied snapshot.
+    const expectedShell = (value) => {
+      if (Array.isArray(value)) return value.map(expectedShell);
+      if (!value || typeof value !== 'object') return value;
+      const copy = Object.fromEntries(Object.entries(value).map(([key, entry]) => [key, expectedShell(entry)]));
+      if (copy.children && Array.isArray(copy.children.results)) {
+        copy.children.total = copy.children.results.length;
+        copy.children.pageInfo = { hasNext: false };
+      }
+      return copy;
+    };
+    for (const slot of ['headless-header', 'headless-footer']) {
+      assert.deepEqual(route.placeholders[slot], expectedShell(raw.layout.sitecore.route.placeholders[slot]));
+    }
+    assert.deepEqual(route.placeholders['headless-sidebar'], raw.layout.sitecore.route.placeholders['headless-sidebar']);
+
+    const element = await h.default(props(segments));
+    const metadata = await h.generateMetadata(props(segments));
+    assert.deepEqual(renderedPage(element).layout.sitecore.route.fields, route.fields);
+    assert.deepEqual(element.props.children.props.componentProps, {});
+    assert.equal(metadata.title, route.fields.Title.value);
+    assert.equal(metadata.description, route.fields.metadataDescription.value);
+    assert.equal(metadata.alternates.canonical, `https://render-host.invalid${cashPath}`);
+    assert.deepEqual(metadata.robots, { index: false, follow: false, noarchive: true });
+    assert.ok(h.calls.length > 0);
+    assert.ok(h.calls.every((call) => call.backend === 'delivery' && call.contentPath === cashPath));
+    assert.deepEqual(h.requestReads, { headers: 0, cookies: 0 });
+    assert.equal(JSON.stringify(h.fixtureContent), before);
+    route.placeholders['headless-main'][0].fields.data.datasource.heading.jsonValue.value = 'Changed copy';
+    assert.equal(JSON.stringify(h.fixtureContent), before, 'even later snapshot edits cannot mutate the bundled model');
+  });
+
+  test(`${cashPath}: available native delivery wins and retains its completeness checks`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production' });
+    h.deliveryLayout.sitecore.route.fields.example = { children: { results: [] } };
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...segments);
+    assert.equal(loaded.page.layout.sitecore.route.fields.pageTitle.value, 'Published delivery title');
+    assert.equal(loaded.needsComponentData, true);
+    assert.equal(loaded.page.layout.sitecore.context.allianzContentSource, undefined);
+    assert.equal(h.collectionsComplete(loaded.page.layout, true), false, 'native incomplete results remain rejected');
+    assert.deepEqual(h.deliveryLayout.sitecore.route.fields.example, { children: { results: [] } });
+  });
+
+  for (const status of [401, 403, 404, 500]) {
+    test(`${cashPath}: thrown delivery ${status} is not treated as an absent route`, async (t) => {
+      const error = Object.assign(new Error(`Synthetic delivery ${status}`), { status });
+      const h = harness(t, { nodeEnv: 'production', error });
+      await assert.rejects(h.default(props(segments)), (actual) => actual === error);
+      await assert.rejects(h.generateMetadata(props(segments)), (actual) => actual === error);
+      assert.ok(h.calls.every((call) => call.backend === 'delivery'));
+    });
+  }
+
+  for (const [mode, editingHeader, backend] of [
+    ['edit', true, 'authoring'],
+    ['preview', true, 'authoring'],
+    [DesignLibraryMode.Metadata, true, 'design-library'],
+    ['edit', false, 'authoring-navigation'],
+  ]) {
+    test(`${cashPath}: missing ${backend}/${mode} content never selects the public snapshot`, async (t) => {
+      const h = harness(t, { nodeEnv: 'production', draft: true, mode, editingHeader, missing: true, deliveryMissing: true });
+      const loaded = await h.loadAllianzPage('allianz-life', 'en', ...segments);
+      assert.equal(loaded.page?.layout.sitecore.route ?? null, null);
+      assert.equal(loaded.needsComponentData, true);
+      assert.equal(loaded.page?.layout.sitecore.context.allianzContentSource, undefined);
+      assert.equal((await h.generateMetadata(props(segments))).title, 'Page');
+      assert.ok(h.calls.length > 0);
+      assert.ok(h.calls.every((call) => call.backend === backend));
+    });
+  }
+}
+
+for (const [site, locale, segments] of [
+  ['other-site', 'en', cashPaths[0].slice(1).split('/')],
+  ['allianz-life', 'fr', cashPaths[0].slice(1).split('/')],
+  ['allianz-life', 'en', ['new-york']],
+  ['allianz-life', 'en', ['what-we-offer', 'annuities', 'investment-strategies']],
+  ['allianz-life', 'en', [...cashPaths[0].slice(1).split('/'), 'extra']],
+  ['allianz-life', 'en', ['WHAT-WE-OFFER', 'annuities', 'investment-strategies', 'cash-equivalent']],
+  ['allianz-life', 'en', ['what-we-offer/annuities', 'investment-strategies', 'cash-equivalent']],
+  ['allianz-life', 'en', ['what-we-offer%2Fannuities', 'investment-strategies', 'cash-equivalent']],
+  ['allianz-life', 'en', ['what-we-offer%252Fannuities', 'investment-strategies', 'cash-equivalent']],
+  ['allianz-life', 'en', ['what-we-offer', '', 'annuities', 'investment-strategies', 'cash-equivalent']],
+  ['allianz-life', 'en', ['what-we-offer', '.', 'annuities', 'investment-strategies', 'cash-equivalent']],
+  ['allianz-life', 'en', ['what-we-offer', 'annuities', 'investment-strategies', 'cash-equivalent/']],
+]) {
+  test(`Cash snapshot rejects other site/locale/path: ${site}/${locale}/${segments.join('|')}`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production', deliveryMissing: true });
+    const loaded = await h.loadAllianzPage(site, locale, ...segments);
+    assert.equal(loaded.page, null);
+    assert.equal(loaded.needsComponentData, true);
+    const requestProps = { params: Promise.resolve({ site, locale, path: segments }) };
+    await assert.rejects(h.default(requestProps), /NEXT_NOT_FOUND/);
+    assert.equal((await h.generateMetadata(requestProps)).title, 'Page');
+  });
+}
