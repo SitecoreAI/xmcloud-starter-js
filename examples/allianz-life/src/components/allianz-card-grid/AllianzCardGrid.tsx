@@ -38,6 +38,12 @@ type AllianzCardGridPresentation = {
   headingIconAppearance?: 'gray' | 'brand';
 };
 
+// These legacy FAQ destinations belong to excluded account integrations.
+// Keep visitor links on the existing demo dialog without changing native HTML.
+const unavailableAccountHrefs = new Set([
+  '/Login', '/Login/forgot-username-individual', '/Login/forgot-password-individual',
+]);
+
 type CardIconAppearance = 'white-on-black' | 'gray-on-transparent';
 
 /** Finite authorable treatments for external monochrome Image fields. */
@@ -76,9 +82,11 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
   const iconAppearance = sourceIconAppearance ? cardIconAppearance(params.iconAppearance) : undefined;
   const sourceDataId = sourceDestinations ? sourceDestinationId('id' in data ? data.id : undefined) : undefined;
   const sourceDestinationEditing = page?.mode?.isEditing !== false;
-  const cardBodyField = (card: (typeof cards)[number]) =>
-    sourceDataId === '68f5eea4e83f46e2aadfb4d244aa8230' && sourceDestinationId(card.id) === 'c4f12d3c2db14cc98dbc1b6683ecf133'
+  const cardBodyField = (card: (typeof cards)[number]) => {
+    const body = sourceDataId === '68f5eea4e83f46e2aadfb4d244aa8230' && sourceDestinationId(card.id) === 'c4f12d3c2db14cc98dbc1b6683ecf133'
       ? restoreSourceDestinationRichText(card.body?.jsonValue, sourceDestinationEditing, card.id) : card.body?.jsonValue;
+    return safeFaqRichText(body, isEditing, unavailableAccountHrefs);
+  };
   const scalarLinkProps = (card: (typeof cards)[number], props: Parameters<typeof restoreSourceDestinationLinkProps>[0]) => {
     if (sourceDataId !== '0b2c3b00952345b189e732b1b9bbd34a' || ![
       '5b186c8836a64df8b9100187d1bd7101', '143dd9d8760c4ac589591c534360e51c', '5d51bc887cc84f159ed72598ee011858',

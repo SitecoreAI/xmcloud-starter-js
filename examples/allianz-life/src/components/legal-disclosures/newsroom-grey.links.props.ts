@@ -10,7 +10,7 @@ const decodeAttribute = (value: string) => value.replace(/&#(?:x([\da-f]+)|(\d+)
 
 /** Reconcile visitor anchors with existing mock behavior, never native storage.
  * Editing receives the exact original Field, including empty value and metadata. */
-export function safeNewsroomRichText(field: Field<string> | undefined, isEditing: boolean): Field<string> | undefined {
+export function safeNewsroomRichText(field: Field<string> | undefined, isEditing: boolean, onlyHrefs?: ReadonlySet<string>): Field<string> | undefined {
   if (!field || isEditing || !field.value) return field;
   const value = field.value.replace(/<a\b(?:[^'">]|"[^"]*"|'[^']*')*>/gi, (tag) => {
     // Consume each complete attribute, including quoted values, so a title or
@@ -18,7 +18,10 @@ export function safeNewsroomRichText(field: Field<string> | undefined, isEditing
     const attributes = [...tag.matchAll(/(\s+)([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g)];
     const href = attributes.find((attribute) => attribute[2].toLowerCase() === 'href');
     if (!href) return tag;
-    const link = safeLink({ value: { href: decodeAttribute(href[3] ?? href[4] ?? href[5] ?? '') } }).value;
+    const originalHref = decodeAttribute(href[3] ?? href[4] ?? href[5] ?? '');
+    // Bounded consumers can preserve every other authored anchor byte-for-byte.
+    if (onlyHrefs && !onlyHrefs.has(originalHref)) return tag;
+    const link = safeLink({ value: { href: originalHref } }).value;
     const destination = `${link.href ?? ''}${link.querystring ? `?${link.querystring}` : ''}${link.anchor ? `#${link.anchor}` : ''}`;
     const target = attributes.find((attribute) => attribute[2].toLowerCase() === 'target');
     const replacements = [{ index: href.index ?? 0, original: href[0], value: `${href[1]}href="${escapeAttribute(destination)}"` }];
