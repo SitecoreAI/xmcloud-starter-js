@@ -123,10 +123,13 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
           {cards.map((card) => {
             const field = allianzLinkField(card.link?.jsonValue, isEditing);
             const linkProps = scalarLinkProps(card, sourceRelatedIntroduction && !isEditing ? safeLinkRenderProps(field) : { field });
-            return <Link key={card.id} {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="m-card">
+            const content = <>
               {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="m-card__image"><picture className="c-image"><Image editable={isEditing} field={card.image?.jsonValue} sizes={sourceRelatedIntroduction ? '100vw' : undefined} className="c-image__img c-teaser__image-img" /></picture></div>}
               <div className="m-card__header"><Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} /></div><RichText editable={isEditing} field={sourceRelatedIntroduction ? safeEditorialRichText(card.body?.jsonValue, isEditing) : cardBodyField(card)} className="m-card__body" />
-            </Link>;
+            </>;
+            return shouldRenderLinkField(field, isEditing)
+              ? <Link key={card.id} {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>
+              : <div key={card.id} className="m-card">{content}</div>;
           })}
         </div></div> : cards.map((card) => {
           const links = card.links?.targetItems?.length ? card.links.targetItems : [{ id: `${card.id}-link`, link: card.link }];

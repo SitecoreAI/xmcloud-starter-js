@@ -113,6 +113,31 @@ test('every current source CardGrid keeps identical visible HTML with field coll
   assert.ok(grids > 100);
 });
 
+test('public cards keep unlinked content visible without empty anchors and retain linked cards', () => {
+  for (const linkValue of [{}, { href: '' }, undefined]) {
+    const card = (id, heading, value) => ({ id, fieldCollection: [
+      { name: 'Heading', jsonValue: { value: heading } },
+      { name: 'Body', jsonValue: { value: `<p>${heading} body</p>` } },
+      { name: 'Image', jsonValue: { value: { src: `/test-only-${id}.svg`, alt: `${heading} image` } } },
+      ...(value === undefined ? [] : [{ name: 'Link', jsonValue: { value } }]),
+    ] });
+    const datasource = { children: { results: [
+      card('unlinked-card', 'Unlinked service', linkValue),
+      card('linked-card', 'Linked service', { href: '#authored-card-detail', text: 'Read more' }),
+    ] } };
+    const before = JSON.stringify(datasource);
+    const html = render(datasource, { layout: 'cards', columns: '3' });
+    assert.match(html, /<h4>Unlinked service<\/h4>/);
+    assert.match(html, /<p>Unlinked service body<\/p>/);
+    assert.match(html, /src="\/test-only-unlinked-card\.svg"/);
+    assert.match(html, /<h4>Linked service<\/h4>/);
+    assert.match(html, /<a\b[^>]*href="#authored-card-detail"[^>]*class="m-card"/);
+    assert.equal((html.match(/<a\b/g) || []).length, 1, 'only the card with an authored destination is a link');
+    assert.doesNotMatch(html, /<a\b[^>]*href=""/);
+    assert.equal(JSON.stringify(datasource), before);
+  }
+});
+
 test('real SDK editing renders projected empty heading/body/image/link chrome', () => {
   const field = (fieldId, fieldType, value) => ({ value, metadata: { fieldId, fieldType, itemId: 'native-card' } });
   const card = { id: 'native-card', fieldCollection: [
