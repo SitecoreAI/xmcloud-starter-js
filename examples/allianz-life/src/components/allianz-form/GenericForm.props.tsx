@@ -35,7 +35,7 @@ export default function GenericForm({ config, params = {} }: { config: Migration
   };
   const reset = () => {if (key === 'new-york-contact') {setProductOpen(false); setAccountInfoOpen(false);} setValues({ ...config.initialValues }); setErrors({}); setPolicies(1); setStage('entry'); requestAnimationFrame(() => form.current?.querySelector<HTMLElement>('input, select, textarea')?.focus());};
   const closeAccountInfo = () => {setAccountInfoOpen(false); requestAnimationFrame(() => form.current?.querySelector<HTMLInputElement>('input[type="radio"]:checked')?.focus());};
-  const changeStage = (next: typeof stage) => { if (key === 'new-york-contact') setProductOpen(false); setStage(next); requestAnimationFrame(() => {if (key === 'new-york-contact' && next === 'entry') form.current?.querySelector<HTMLElement>('input, select, textarea')?.focus(); else outcomeHeading.current?.focus();}); };
+  const changeStage = (next: typeof stage) => { if (key === 'new-york-contact') setProductOpen(false); setStage(next); requestAnimationFrame(() => {if (next === 'entry') form.current?.querySelector<HTMLElement>('input, select, textarea')?.focus(); else outcomeHeading.current?.focus();}); };
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const next = validateForm(visible, values, key);

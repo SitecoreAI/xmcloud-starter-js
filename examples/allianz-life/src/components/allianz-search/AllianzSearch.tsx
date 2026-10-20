@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useId, useState } from 'react';
 import indexJson from './search-index.json';
-import { searchPublicRoutes } from './search-rules.props';
+import { normalizeSearchQuery, searchPublicRoutes } from './search-rules.props';
 import type { AllianzSearchProps } from './allianz-search.props';
 
 const SearchResults = ({ fields, params = {} }: AllianzSearchProps) => {
@@ -23,7 +23,7 @@ const SearchResults = ({ fields, params = {} }: AllianzSearchProps) => {
     {data?.body?.jsonValue?.value && <RichText field={data.body.jsonValue} />}
     <form role="search" className="form-inline" onSubmit={(event) => {
       event.preventDefault();
-      const nextQuery = input.trim().slice(0, 50);
+      const nextQuery = normalizeSearchQuery(input);
       setLimit(10);
       router.push(nextQuery ? `${searchPath}?q=${encodeURIComponent(nextQuery)}` : searchPath);
     }}>

@@ -551,7 +551,7 @@ export const EssentialIncome7CreditingAnswers = (props: AllianzAccordionProps) =
 
 /** RFA source answer rows preserve contained gutters and one shared outer margin.
  * Whole child fields remain editable, with unique live trigger/panel identities. */
-const RetirementFoundationAdvSourceAnswers = ({ fields, params, sourceRole }:
+const RetirementFoundationAdvSourceAnswers = ({ fields, params }:
   AllianzAccordionProps & { sourceRole: 'allocation' | 'crediting' }) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;

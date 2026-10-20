@@ -6,7 +6,7 @@ export interface SearchEntry { path: string; title: string; description: string;
 export const SEARCH_QUERY_LIMIT = 50;
 
 export function normalizeSearchQuery(value: string | string[] | undefined | null): string {
-  return (Array.isArray(value) ? value[0] || '' : value || '').trim().slice(0, SEARCH_QUERY_LIMIT);
+  return (Array.isArray(value) ? value[0] || '' : value || '').trim().slice(0, SEARCH_QUERY_LIMIT).replace(/[\uD800-\uDFFF]/gu, '');
 }
 
 /** Results only navigate to captured public routes, never a supplied arbitrary URL. */

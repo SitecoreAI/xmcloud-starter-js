@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useId, useState } from 'react';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { safeLink, type AllianzProps } from 'lib/allianz-fields';
+import { normalizeSearchQuery } from '../allianz-search/search-rules.props';
 
 /** Native legacy chrome; search uses the local demo search route. */
 export const Default = ({ fields, params = {} }: AllianzProps) => {
@@ -23,7 +24,7 @@ export const Default = ({ fields, params = {} }: AllianzProps) => {
       <form role="search" className="form-inline navbar-form navbar-right search" onSubmit={(event) => {
         event.preventDefault();
         const searchPath = params.market === 'new-york' ? '/new-york/search' : '/search';
-        const nextQuery = query.trim().slice(0, 50);
+        const nextQuery = normalizeSearchQuery(query);
         router.push(nextQuery ? `${searchPath}?q=${encodeURIComponent(nextQuery)}` : searchPath);
         setQuery('');
         setExpanded(false);
