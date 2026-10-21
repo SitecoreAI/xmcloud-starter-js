@@ -122,7 +122,10 @@ test('real SDK editing retains surrounding field metadata while account control 
     assert.ok(markers.some((m) => JSON.stringify(m) === JSON.stringify(item[name].jsonValue.metadata)), `${item.id}.${name}`);
   }
   for (const item of fixture.children) assert.ok(html.includes(item.link.href));
-  assert.equal(count(html, /class="dropdown-menu dropdown-menu-right" hidden=/g), 0);
+  assert.equal(count(html, /class="dropdown-menu dropdown-menu-right" hidden=/g), 2);
+  assert.doesNotMatch(html, /allianz-document-placeholder-label|allianz-legacy-document-services--editing/);
+  const canvas = html.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, "");
+  assert.equal(count(canvas, />Contact Us<\//g), 1, "The authored contact label appears once inside its native link");
   assert.equal(JSON.stringify(data), before);
 });
 
@@ -143,7 +146,8 @@ test('clear and restore does not introduce fixture fallback or mutate author fie
   const before = JSON.stringify(data); const normal = render(components.LoginWidget, data);
   assert.doesNotMatch(normal, /Login \/ Register|Connect with|Contact Us|Social Media|href=|<input/);
   const editing = render(components.LoginWidget, data, true); const markers = metadata(editing);
-  assert.equal(markers.length, 24 - Object.keys(helpers.DOCUMENT_LOGIN_COPY).length);
+  assert.equal(markers.length, 0, "Cleared optional fields stay available in Content fields without canvas placeholders");
+  assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
   assert.equal(JSON.stringify(data), before);
   Object.assign(data, original); assert.equal(render(components.LoginWidget, data), restored);
   assert.match(render(components.Default, null), /Add a datasource for AllianzLegacyDocumentServices/);
@@ -167,7 +171,8 @@ test('local source sprite is unchanged, and all CSS selectors are confined to th
   const css = fs.readFileSync(path.join(here, '../AllianzLegacyDocumentServices.css'), 'utf8');
   assert.match(css, /url\('\/allianz-legacy-assets\/document-services-social-sprite\.png'\)/);
   const imageRule = css.split('}').find((rule) => rule.includes("url('/allianz-legacy-assets/document-services-social-sprite.png')"));
-  assert.match(imageRule, /:not\(\.allianz-legacy-document-services--editing\)/, 'Image-bearing rule must never match editing mode');
+  assert.match(imageRule, /\.allianz-legacy-document-services \.social-follow li\[class\] a/, 'The same source sprite geometry applies to editing and normal modes');
+  assert.doesNotMatch(css, /--editing|placeholder-label/);
   assert.doesNotMatch(css, /https?:|data:/);
   for (const line of css.split('\n').filter((line) => line.trim().startsWith('.allianz-legacy '))) assert.ok(line.includes('.allianz-legacy-document-services'));
 });

@@ -25,7 +25,6 @@ export const Default = ({ fields, params }: NewsroomFeaturedUpdateProps) => {
           <div className="tileSubHeading">{shouldRenderTextField(release?.title?.jsonValue, editable) && <Text field={release?.title?.jsonValue} editable={editable} tag="h3" />}</div>
         </header>
           {shouldRenderTextField(data.body?.jsonValue, editable) && <RichText field={safeNewsroomRichText(data.body?.jsonValue, editable)} editable={editable} className="tileBody u-font-size-md" />}
-          {editable && !release && <p role="status">Select the featured news release.</p>}
         </div></div>
         {shouldRenderImageField(data.image?.jsonValue, editable) && <div className="tileImage"><picture className="c-image c-teaser__image">
           <Image field={data.image?.jsonValue} editable={editable} className="c-image__img c-teaser__image-img" />

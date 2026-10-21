@@ -34,9 +34,6 @@ function HelpfulResources({ fields, params, isGreen = false }: HelpfulResourcesP
             </article>
           </div>
         </div>}
-      {isEditing && resources.length === 0 && <p role="status" className="allianz-helpful-resources-empty">
-        Add a helpful resource to this section.
-      </p>}
       <div className="l-grid__row">
         <div className="l-grid__column-medium-12">
           <div className="o-cards o-cards__col3">
@@ -48,9 +45,9 @@ function HelpfulResources({ fields, params, isGreen = false }: HelpfulResourcesP
                       className="c-image__img c-teaser__image-img" />
                   </picture></div>}
                 <div className="m-card__header">
-                  <Text field={resource.title?.jsonValue} tag="h4" editable={isEditing} />
+                  {shouldRenderTextField(resource.title?.jsonValue, isEditing) && <Text field={resource.title?.jsonValue} tag="h4" editable={isEditing} />}
                 </div>
-                <RichText field={resource.text?.jsonValue} editable={isEditing} className="m-card__body" />
+                {shouldRenderTextField(resource.text?.jsonValue, isEditing) && <RichText field={resource.text?.jsonValue} editable={isEditing} className="m-card__body" />}
               </>;
               return shouldRenderLinkField(resource.link?.jsonValue, isEditing)
                 ? <Link key={resource.id} field={allianzLinkField(resource.link?.jsonValue, isEditing)}

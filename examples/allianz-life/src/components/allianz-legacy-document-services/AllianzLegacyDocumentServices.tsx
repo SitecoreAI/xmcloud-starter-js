@@ -28,7 +28,6 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
   const unavailableId = `${instanceId}-unavailable`;
 
   useEffect(() => {
-    if (isEditing) return;
     const dismissOutside = (event: PointerEvent) => {
       if (!notice && event.target instanceof Node && !root.current?.contains(event.target)) setPanel(null);
     };
@@ -41,7 +40,7 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
       window.removeEventListener('popstate', dismissNavigation);
       window.removeEventListener('hashchange', dismissNavigation);
     };
-  }, [isEditing, notice]);
+  }, [notice]);
 
   if (!data) return <NoDataFallback componentName="AllianzLegacyDocumentServices" />;
   const visible = (name: DocumentServiceTextField) => shouldRenderTextField(data[name]?.jsonValue, isEditing);
@@ -49,7 +48,6 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
     visible(name) ? <Text editable={isEditing && !(name in DOCUMENT_LOGIN_COPY)} field={data[name]?.jsonValue} tag={tag} className={className} /> : null;
   const value = (name: DocumentServiceTextField) => data[name]?.jsonValue?.value || '';
   const toggle = (requested: Exclude<DocumentRailPanel, null>, control: HTMLButtonElement) => {
-    if (isEditing) return;
     openingControl.current = control;
     setPanel((current) => toggleDocumentRailPanel(current, requested));
   };
@@ -62,8 +60,8 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
     setNotice(label || 'Online service');
   };
   const socialLinks = (data.children?.results || []).map((item) => documentServiceFields(item, ['heading', 'link']));
-  const accountOpen = isEditing || panel === 'account';
-  const socialOpen = isEditing || panel === 'social';
+  const accountOpen = panel === 'account';
+  const socialOpen = panel === 'social';
   const accountVisible = visible('accountLabel');
   const socialVisible = visible('socialLabel') || visible('mobileSocialLabel');
   const action = (name: DocumentServiceTextField, className?: string) => visible(name)
@@ -72,16 +70,16 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
   return <>
     <div className="right-column-flex-space" />
     <ul ref={root} id={params?.RenderingIdentifier}
-      className={`nav navbar-nav right-nav allianz-legacy-document-services${isEditing ? ' allianz-legacy-document-services--editing' : ''}`}
+      className="nav navbar-nav right-nav allianz-legacy-document-services"
       onBlur={(event) => {
-        if (!isEditing && !notice && !event.currentTarget.contains(event.relatedTarget)) setPanel(null);
+        if (!notice && !event.currentTarget.contains(event.relatedTarget)) setPanel(null);
       }}
       onKeyDown={(event) => {
-        if (!isEditing && panel && event.key === 'Escape') {
+        if (panel && event.key === 'Escape') {
           event.preventDefault(); event.stopPropagation(); setPanel(null); openingControl.current?.focus();
         }
       }}>
-      {accountVisible && <li className={`dropdown login${!isEditing ? ' hidden-xs' : ''}${accountOpen ? ' open' : ''}`}>
+      {accountVisible && <li className={`dropdown login hidden-xs${accountOpen ? ' open' : ''}`}>
         <button type="button" className="dropdown-toggle allianz-document-services-trigger"
           aria-expanded={accountOpen} aria-controls={accountId}
           onClick={(event) => toggle('account', event.currentTarget)}>
@@ -96,13 +94,11 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
                   <label className="control-label hidden-sm hidden-xs" htmlFor={`${instanceId}-username`}>{text('usernameLabel')}</label>
                   <input id={`${instanceId}-username`} className="form-control" type="text" disabled autoComplete="off"
                     placeholder={value('usernamePlaceholder')} aria-label={value('usernameLabel') || 'Unavailable account username'} />
-                  {isEditing && text('usernamePlaceholder', 'span', 'allianz-document-placeholder-label')}
                 </div>
                 <div className="form-group">
                   <label className="control-label hidden-sm hidden-xs" htmlFor={`${instanceId}-password`}>{text('passwordLabel')}</label>
                   <input id={`${instanceId}-password`} className="form-control" type="password" disabled autoComplete="off"
                     placeholder={value('passwordPlaceholder')} aria-label={value('passwordLabel') || 'Unavailable account password'} />
-                  {isEditing && text('passwordPlaceholder', 'span', 'allianz-document-placeholder-label')}
                 </div>
                 <div className="checkbox"><label className="checkbox" htmlFor={`${instanceId}-remember`}>
                   <input id={`${instanceId}-remember`} type="checkbox" disabled />{text('rememberLabel')}
@@ -119,10 +115,11 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
         </ul>
       </li>}
       {visible('contactLabel') && shouldRenderLinkField(data.contactLink?.jsonValue, isEditing) && <li className="contact-us">
-        {isEditing ? <>{text('contactLabel')}<Link editable field={allianzLinkField(data.contactLink?.jsonValue, true)} /></>
-          : <Link editable={false} {...safeLinkRenderProps(data.contactLink?.jsonValue)}>
-            {text('contactLabel', 'span', 'btn-icon-mail')}
-          </Link>}
+        <Link editable={isEditing} {...(isEditing
+          ? { field: allianzLinkField(data.contactLink?.jsonValue, true) }
+          : safeLinkRenderProps(data.contactLink?.jsonValue))}>
+          {text('contactLabel', 'span', 'btn-icon-mail')}
+        </Link>
       </li>}
       {socialVisible && <>
         {visible('mobileSocialLabel') && <li className="visible-xs social-media-xs">
@@ -139,20 +136,18 @@ const DocumentServicesView = ({ fields, params, withLogin, isEditing }: Document
               {text('socialHeading', 'h3')}{text('socialBody', 'p')}
               <ul className="social-follow">{socialLinks.map((item) => {
                 const nativeLink = item.link?.jsonValue;
-                if (!shouldRenderLinkField(nativeLink, isEditing) || (!isEditing && !item.heading?.jsonValue?.value && !nativeLink?.value?.text)) return null;
+                if (!shouldRenderLinkField(nativeLink, false) || (!item.heading?.jsonValue?.value && !nativeLink?.value?.text)) return null;
                 const normalized = allianzLinkField(nativeLink, false);
                 const rendered = safeLinkRenderProps(normalized);
                 const opensLocalNotice = normalized.value.href?.endsWith('#service-unavailable');
                 return <li key={item.id} className={documentSocialClass(nativeLink?.value?.href)}>
-                  {isEditing ? <>
-                    {shouldRenderTextField(item.heading?.jsonValue, true) && <Text editable field={item.heading?.jsonValue} />}
-                    <Link editable field={allianzLinkField(nativeLink, true)} />
-                  </> : <Link editable={false} {...rendered} data-allianz-local-service-dialog={opensLocalNotice ? 'true' : undefined} onClick={(event) => {
-                    if (opensLocalNotice) openNotice(event, item.heading?.jsonValue?.value || nativeLink?.value?.text || 'Social');
-                  }}>
+                  <Link editable={isEditing} {...(isEditing ? { field: allianzLinkField(nativeLink, true) } : rendered)}
+                    data-allianz-local-service-dialog={!isEditing && opensLocalNotice ? 'true' : undefined} onClick={(event) => {
+                      if (opensLocalNotice) openNotice(event, item.heading?.jsonValue?.value || nativeLink?.value?.text || 'Social');
+                    }}>
                     {shouldRenderTextField(item.heading?.jsonValue, false)
-                      ? <Text editable={false} field={item.heading?.jsonValue} /> : nativeLink?.value?.text}
-                  </Link>}
+                      ? <Text editable={isEditing} field={item.heading?.jsonValue} /> : nativeLink?.value?.text}
+                  </Link>
                 </li>;
               })}</ul>
             </div></div></div></li>

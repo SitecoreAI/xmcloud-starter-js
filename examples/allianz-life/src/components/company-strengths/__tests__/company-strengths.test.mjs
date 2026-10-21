@@ -26,11 +26,12 @@ test('strengths preserve six actual ordered benefits, source h5/h4 and two close
   assert.deepEqual(links(render(Continuation, continued)), ['/about/financial-ratings']);
 });
 
-test('strengths keep cleared native icon/link/title/body editable, maintain order and fail closed on incomplete children', () => {
+test('strengths omit cleared optional canvas fields, maintain order and fail closed on incomplete children', () => {
   const entry = { id: 'native-strength', heading: field('strength-heading', 'Single-Line Text', ''), body: field('strength-body', 'Rich Text', ''),
     icon: field('strength-icon', 'Image', {}), link: field('strength-link', 'General Link', { href: '', text: '' }) };
   const data = { introduction: field('strength-intro', 'Multi-Line Text', ''), children: complete([wire(entry)]) };
-  assert.deepEqual(editingIds(render(Introduction, data, true)), ['strength-body', 'strength-heading', 'strength-icon', 'strength-intro', 'strength-link']);
+  assert.deepEqual(editingIds(render(Introduction, data, true)), []);
+  assert.doesNotMatch(render(Introduction, data, true), /\[No text in field\]|scEmptyImage/);
   assert.deepEqual(links(render(Introduction, data)), []);
   assert.equal(companyStrengthFields(wire(entry)).body.jsonValue, entry.body.jsonValue);
   assert.equal(companyStrengthsFields({ ...intro, introduction: data.introduction }).introduction, data.introduction);
@@ -52,5 +53,5 @@ test('strengths reject missing children/results in normal and editing SDK modes'
     }
   }
   assert.doesNotMatch(render(Introduction, { ...intro, children: complete([]) }), /role="alert"/);
-  assert.match(render(Introduction, { ...intro, children: complete([]) }, true), /Add a company strength/);
+  assert.doesNotMatch(render(Introduction, { ...intro, children: complete([]) }, true), /Add a company strength/);
 });

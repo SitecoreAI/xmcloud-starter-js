@@ -142,12 +142,12 @@ test('ProductCards keeps all 13 source image/header/body wrappers, H4 order, lin
   }
 });
 
-test('cleared ProductGroup fields remain empty and keep both genuine SDK field markers in editing', () => {
+test('cleared ProductGroup fields stay empty in both canvases with original Content fields retained', () => {
   const datasource = { heading: { jsonValue: field('heading', '') }, body: { jsonValue: field('body', '') } };
   assert.doesNotMatch(render(Introduction.ProductGroup, datasource), /<h3|<p|solutions|No text/);
   const editing = render(Introduction.ProductGroup, datasource, { isEditing: true });
-  assert.deepEqual(metadata(editing).map((entry) => entry.fieldId).sort(), ['authored-product-body', 'authored-product-heading']);
-  assert.match(editing, /\[No text in field\]/);
+  assert.deepEqual(metadata(editing), []);
+  assert.doesNotMatch(editing, /\[No text in field\]/);
 });
 
 test('ProductCards edits only real image, heading and link Fields; blank root and unused card fields never add chrome', () => {
@@ -162,11 +162,25 @@ test('ProductCards edits only real image, heading and link Fields; blank root an
   const html = render(CardGrid.ProductCards, datasource, { params });
   assert.doesNotMatch(html, /<h4|<img|href=|Unused|unused.svg|u-padding|green-soft|<h1|tileHeading/);
   const editing = render(CardGrid.ProductCards, datasource, { params, isEditing: true });
-  assert.deepEqual(metadata(editing).map((entry) => entry.fieldId).sort(),
-    ['authored-product-heading', 'authored-product-image', 'authored-product-link']);
-  assert.match(editing, /\[No text in field\]/);
-  assert.match(editing, /scEmptyImage/);
+  assert.deepEqual(metadata(editing), []);
+  assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
+  assert.equal(editing, html);
   assert.equal(JSON.stringify(datasource), before);
+});
+
+test('cleared ProductCards links cannot expose a whole editor card absent from the visitor canvas', () => {
+  for (const linkValue of [{}, { href: '', text: '' }, { href: '', text: 'Retained label' }]) {
+    const datasource = productDatasource(groups[0]);
+    const first = datasource.children.results[0];
+    first.fieldCollection.find(entry => entry.name === 'link').jsonValue.value = linkValue;
+    const before = JSON.stringify(datasource);
+    const visitor = render(CardGrid.ProductCards, datasource);
+    const editing = render(CardGrid.ProductCards, datasource, { isEditing: true });
+    assert.equal((editing.match(/class="m-card"/g) ?? []).length, (visitor.match(/class="m-card"/g) ?? []).length);
+    assert.equal(metadata(editing).some(entry => entry.itemId === first.id), false);
+    assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
+    assert.equal(JSON.stringify(datasource), before);
+  }
 });
 
 test('ProductCards applies existing unsafe-link policy and retains native links untouched in editing', () => {

@@ -212,8 +212,7 @@ test('Newsroom Return uses safe native General Link handling for fragments, quer
     const link = { value, metadata: { fieldId: 'empty-return-link', fieldType: 'General Link', itemId: 'empty-return-item' } };
     assert.doesNotMatch(render('NewsroomReturn', { link: { jsonValue: link } }), /<a\b|<svg\b|Go to the Newsroom|service-unavailable/);
     const editing = render('NewsroomReturn', { link: { jsonValue: link } }, true);
-    assert.match(editing, /empty-return-link/);
-    assert.match(editing, /\[No text in field\]/);
+    assert.doesNotMatch(editing, /empty-return-link|\[No text in field\]/);
   }
 });
 
@@ -250,8 +249,7 @@ test('each cleared native field retains its own real SDK editing metadata and no
   }
   const before = JSON.stringify(data);
   const editing = render('PressRelease', data, true).replaceAll('&quot;', '"').replaceAll('&amp;', '&');
-  for (const name of ['title','summary','body']) assert.ok(editing.includes(`"fieldId":"native-${name}-field"`));
-  assert.ok(editing.includes('"itemId":"native-press-release-datasource"'));
+  assert.doesNotMatch(editing, /native-(?:title|summary|body)-field|native-press-release-datasource|\[No text in field\]/);
   assert.doesNotMatch(editing, /MINNEAPOLIS|Go to the Newsroom|Add a datasource|Published|By /);
   assert.doesNotMatch(render('PressRelease', data), /data-sc-field|MINNEAPOLIS|Add a datasource/);
   assert.equal(JSON.stringify(data), before);
@@ -273,8 +271,7 @@ test('link clearing preserves real SDK metadata with no synthetic newsroom desti
   } };
   const before = JSON.stringify(link);
   const html = render('NewsroomReturn', { link: { jsonValue: link } }, true).replaceAll('&quot;', '"');
-  assert.ok(html.includes('"fieldId":"native-newsroom-link"'));
-  assert.ok(html.includes('"itemId":"native-newsroom-return"'));
+  assert.doesNotMatch(html, /native-newsroom-link|native-newsroom-return|\[No text in field\]/);
   assert.doesNotMatch(html, /href="\/about\/newsroom"|Go to the Newsroom/);
   assert.equal(JSON.stringify(link), before);
 });
@@ -283,7 +280,7 @@ test('disclosure body clearing preserves SDK metadata independently of the artic
   const data = { body: { jsonValue: { value: '', metadata: { fieldId: 'native-disclosure-body',
     fieldType: 'Rich Text', itemId: 'native-legal-disclosures' } } } };
   const html = render('LegalDisclosures', data, true).replaceAll('&quot;', '"');
-  assert.ok(html.includes('"fieldId":"native-disclosure-body"'));
+  assert.doesNotMatch(html, /native-disclosure-body|\[No text in field\]/);
   assert.doesNotMatch(html, /About Allianz Life|Add a datasource/);
 });
 

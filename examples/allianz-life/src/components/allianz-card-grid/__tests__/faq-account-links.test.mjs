@@ -86,5 +86,5 @@ test('missing and deliberately cleared native bodies stay absent and editable', 
   const original = field('cleared-body', '').jsonValue;
   assert.equal(safeNewsroomRichText(original, false, accountHrefs), original);
   assert.doesNotMatch(render(Default, datasource(''), false, params), /service-unavailable/);
-  assert.ok(render(Default, datasource(''), true, params).includes('test-account-body-field'));
+  assert.ok(!render(Default, datasource(''), true, params).includes('test-account-body-field'));
 });

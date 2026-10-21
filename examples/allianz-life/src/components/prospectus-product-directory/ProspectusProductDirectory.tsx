@@ -32,7 +32,6 @@ export const Default = ({ fields, params, rendering }: ProspectusProductDirector
       {!products && <p role="status">{editable
         ? 'Automatic prospectus pages could not load completely. Check child-page directory groups, captions, and native sort order.'
         : 'The prospectus directory is temporarily unavailable.'}</p>}
-      {editable && products?.length === 0 && <p role="status">Set a child prospectus page’s directory group to current or past to list it here.</p>}
     </div>
   </div>;
 };

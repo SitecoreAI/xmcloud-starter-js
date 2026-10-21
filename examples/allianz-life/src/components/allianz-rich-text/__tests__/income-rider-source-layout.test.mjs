@@ -1,3 +1,4 @@
+import { assertWysiwygCanvas } from '../../allianz-card-grid/__tests__/wysiwyg-assertions.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -102,12 +103,12 @@ test('Income and Select riders differ only by the source-specific named anchor a
   }
 });
 
-test('Income passes original full, cleared and absent fields to installed SDK without projection or synthetic editor fields', () => {
+test('Income passes original populated fields to SDK and omits cleared or absent canvas controls', () => {
   const calls = [], Observed = observedModule(calls);
   for (const state of ['filled', 'cleared', 'absent']) for (const mode of ['normal', 'preview', 'editing']) {
     calls.length = 0; const data = datasource(state), before = JSON.stringify(data);
     const html = renderMode(Observed.IncomeBenefitRider, data, mode);
-    const expected = state === 'filled' || state === 'cleared' && mode === 'editing';
+    const expected = state === 'filled';
     assert.equal(calls.length, expected ? 2 : 0, `${state}/${mode}`);
     for (const native of ['heading', 'body']) {
       const call = calls.find(call => call.field === data[native]?.jsonValue);
@@ -146,7 +147,7 @@ test('only native Heading and Body are exposed; future authored values remain co
   }
 });
 
-test('all 114 pre-Income Select, Iap, NF and Default RichText oracle outputs remain identical', () => {
+test('pre-Income Select, Iap, NF and Default visitor oracles remain identical and editing follows WYSIWYG', () => {
   assert.equal(fixture.baseline.sourceSha256, '101ca7ea34d13df17cf844659d9077c4ed265e9e1c578c271c7cfc4714bd0859');
   assert.equal(fixture.baseline.renders.length, 114);
   for (const item of fixture.baseline.renders) {
@@ -156,8 +157,9 @@ test('all 114 pre-Income Select, Iap, NF and Default RichText oracle outputs rem
       else if (item.state === 'cleared') data[name].jsonValue.value = name === 'primaryLink' ? { href: '' } : '';
     }
     freeze(data); const before = JSON.stringify(data);
-    assert.equal(sha(render(Rich[item.variant], data, item.editing, params)), item.sha256,
-      `${item.variant}/${item.state}/${item.editing ? 'editing' : 'visitor'}`);
+    const visitor = render(Rich[item.variant], data, false, params);
+    if (!item.editing) assert.equal(sha(visitor), item.sha256, `${item.variant}/${item.state}/visitor`);
+    else assertWysiwygCanvas(visitor, render(Rich[item.variant], data, true, params), data, `${item.variant}/${item.state}/editing`);
     assert.equal(JSON.stringify(data), before);
   }
 });

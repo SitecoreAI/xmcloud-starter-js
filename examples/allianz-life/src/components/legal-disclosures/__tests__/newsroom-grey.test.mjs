@@ -52,7 +52,8 @@ test('grey native body metadata, canonical links and deliberate clears remain ed
   assert.equal((render(NewsroomGrey, data).match(/target=""/g) ?? []).length, 2);
   const cleared = { body: field('grey-body', 'Rich Text', ''), fieldCollection: wire(data).fieldCollection };
   assert.equal(legalDisclosuresFields(cleared).body, cleared.body);
-  assert.deepEqual(editingIds(render(NewsroomGrey, cleared, true)), ['grey-body']);
+  assert.deepEqual(editingIds(render(NewsroomGrey, cleared, true)), []);
+  assert.doesNotMatch(render(NewsroomGrey, cleared, true), /\[No text in field\]/);
   assert.doesNotMatch(render(NewsroomGrey, cleared), /AllianzIM|World|href=|<p>/);
   assert.match(render(NewsroomGrey, cleared), /allianz-newsroom-grey-trailing/);
   assert.equal(legalDisclosuresFields(wire(data)).body.jsonValue, original);

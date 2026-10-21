@@ -28,21 +28,19 @@ const freeze = value => {
   return value;
 };
 
-test('empty optional native fields remain editable outside source split-image geometry', () => {
+test('empty optional native fields remain outside the canvas without changing split-image geometry', () => {
   const input = freeze(datasource(card())), before = JSON.stringify(input);
   const html = render(Cards.EditorialTiles, input, true, params), main = article(html), extra = disclosure(html);
-  assert.match(html, /class="allianz-editorial-card-editor"/);
-  assert.match(extra, /<summary>Additional content fields<\/summary>/);
-  assert.doesNotMatch(extra, /<details[^>]*\bopen(?:\s|=|>)/);
-  assert.ok(html.indexOf('</article>') < html.indexOf('<details'));
+  assert.doesNotMatch(html, /allianz-editorial-card-editor|Additional content fields|<details/);
+  assert.equal(extra, '');
   assert.match(main, /<div class="tileSubHeading"><\/div>/);
   assert.doesNotMatch(main, /tileIcon|tileSubGrid__image|<footer/);
   for (const name of ['icon', 'alphanumeral', 'subheading']) {
     assert.ok(!main.includes(`test-only-split-${name}`));
-    assert.ok(extra.includes(`test-only-split-${name}`));
+    assert.ok(!html.includes(`test-only-split-${name}`));
   }
   for (const name of ['heading', 'body', 'image']) assert.ok(main.includes(`test-only-split-${name}`));
-  for (const name of ['heading', 'body', 'image', 'icon', 'alphanumeral', 'subheading']) {
+  for (const name of ['heading', 'body', 'image']) {
     assert.equal(openFields(html).filter(value => value.fieldId === `test-only-split-${name}`).length, 1);
   }
   assert.match(main, /class="c-image__img c-teaser__image-img"/);
@@ -62,7 +60,7 @@ test('native fieldCollection uses the same editable fields and never mutates inp
   assert.equal(JSON.stringify(native), before);
 });
 
-test('populated optional roles stay inline and a clear returns each field to the disclosure', () => {
+test('populated optional roles stay inline and a clear removes its canvas control', () => {
   const populated = card();
   populated.icon = field('icon', { src: '/test-only/icon.svg', alt: 'Icon' });
   populated.alphanumeral = field('alphanumeral', '2');
@@ -79,7 +77,7 @@ test('populated optional roles stay inline and a clear returns each field to the
   cleared.subheading.jsonValue.value = ''; cleared.link.jsonValue.value = { href: '' };
   const empty = render(Cards.EditorialTiles, freeze(datasource(cleared)), true, params);
   for (const name of ['icon', 'alphanumeral', 'subheading', 'link']) {
-    assert.ok(disclosure(empty).includes(`test-only-split-${name}`));
+    assert.ok(!empty.includes(`test-only-split-${name}`));
     assert.ok(!article(empty).includes(`test-only-split-${name}`));
   }
 });
@@ -101,10 +99,10 @@ test('visitor output keeps source empty placeholders with no editing controls', 
   assert.doesNotMatch(html, /<details|allianz-editorial-card-editor|tileIcon|<footer|test-only-split-heading/);
 });
 
-test('non-image tiles, introductions and callouts keep empty fields in their existing layout', () => {
+test('non-image tiles, introductions and callouts omit empty optional canvas controls', () => {
   for (const variant of ['EditorialTiles', 'EditorialIntro', 'EditorialCallout']) {
     const html = render(Cards[variant], freeze(datasource(card())), true, { layout: 'stacked' });
     assert.doesNotMatch(html, /<details|allianz-editorial-card-editor/);
-    for (const name of ['icon', 'alphanumeral', 'subheading']) assert.ok(article(html).includes(`test-only-split-${name}`));
+    for (const name of ['icon', 'alphanumeral', 'subheading']) assert.ok(!html.includes(`test-only-split-${name}`));
   }
 });

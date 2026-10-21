@@ -100,7 +100,7 @@ test('only the one source image field is editable at every viewport, even when o
   assert.equal(JSON.stringify(data), before);
 });
 
-test('native cleared fields keep all three SDK chrome entries without captured-content fallback', () => {
+test('native cleared fields leave no canvas placeholders or captured-content fallback', () => {
   const data = {
     heading: nativeField('cleared-heading', 'Rich Text', ''),
     body: nativeField('cleared-body', 'Rich Text', ''),
@@ -108,10 +108,10 @@ test('native cleared fields keep all three SDK chrome entries without captured-c
   };
   const before = JSON.stringify(data);
   const editing = render(data, {}, true);
-  assert.deepEqual(editingIds(editing), ['cleared-image', 'cleared-heading', 'cleared-body']);
-  assert.match(editing, /\[No text in field\]/);
-  assert.doesNotMatch(editing, /Allianz annuities|For more than 125 years|mountains|Mobile image|Add a datasource/);
+  assert.deepEqual(editingIds(editing), []);
+  assert.doesNotMatch(editing, /Allianz annuities|For more than 125 years|mountains|Mobile image|Add a datasource|No text in field|scEmptyImage/);
   const publicHtml = render(data);
+  assert.equal(editing, publicHtml);
   assert.doesNotMatch(publicHtml, /<h1|c-hero__subHeadline|<img\b|mountains|For more than 125 years|No text in field/);
   assert.equal(JSON.stringify(data), before);
 });

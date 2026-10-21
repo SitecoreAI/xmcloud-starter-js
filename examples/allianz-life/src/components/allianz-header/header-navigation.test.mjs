@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import Module, { createRequire } from 'node:module';
-import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import test from 'node:test';
 
 const require = createRequire(import.meta.url);
@@ -18,7 +19,15 @@ function load(file, mocks = {}) {
   compiled.filename = filename;
   compiled.paths = Module._nodeModulePaths(fileURLToPath(new URL('.', file)));
   const sourceRequire = createRequire(filename);
-  compiled.require = (id) => Object.hasOwn(mocks, id) ? mocks[id] : sourceRequire(id);
+  compiled.require = (id) => {
+    if (Object.hasOwn(mocks, id)) return mocks[id];
+    const local = id.startsWith('.') ? path.resolve(path.dirname(filename), id)
+      : /^(components|lib)\//.test(id) ? fileURLToPath(new URL(`../../${id}`, import.meta.url)) : undefined;
+    const resolved = local && [local, `${local}.ts`, `${local}.tsx`]
+      .find((candidate) => fs.existsSync(candidate) && fs.statSync(candidate).isFile());
+    if (resolved && /\.tsx?$/.test(resolved)) return load(pathToFileURL(resolved));
+    return sourceRequire(resolved || id);
+  };
   compiled._compile(code, filename);
   return compiled.exports;
 }
@@ -136,7 +145,7 @@ function harness(mobile, navigationItems = items, observeStore) {
   };
   const { Default } = load(new URL('./AllianzHeader.tsx', import.meta.url), {
     react: fakeReact,
-    '@sitecore-content-sdk/nextjs': { Image: 'img', Link: 'a', Text: 'span' },
+    '@sitecore-content-sdk/nextjs': { Image: 'img', Link: 'a', Text: 'span', useSitecore: () => ({ page: { mode: { isEditing: false } } }) },
     'next/link': 'a',
     'next/navigation': { useRouter: () => ({ push() {} }) },
     'components/content-sdk/NoDataFallback': 'no-data',

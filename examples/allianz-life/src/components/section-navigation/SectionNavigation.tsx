@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
-import { Link, Text, useComponentProps, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Link, Text, useComponentProps } from '@sitecore-content-sdk/nextjs';
 import { normalizeSectionNavigationId } from 'lib/section-navigation-data';
 import {
   SECTION_NAVIGATION_OVERVIEW, sectionNavigationData, sectionNavigationLink,
@@ -11,17 +11,13 @@ import './SectionNavigation.css';
 
 /** Source secondary navigation, supplied only by the bound server-only native discovery hook. */
 export const Default = ({ rendering, params }: SectionNavigationProps) => {
-  const { page } = useSitecore();
   const componentData = useComponentProps<SectionNavigationComponentData>(rendering?.uid);
-  const editing = page?.mode?.isEditing ?? false;
   const [open, setOpen] = useState(false);
   const listId = useId();
-  const data = sectionNavigationData(componentData?.automaticSectionNavigation, editing);
+  const data = sectionNavigationData(componentData?.automaticSectionNavigation);
   if (data.issue || !data.root) return <nav className="m-navigation-secondary allianz-section-navigation"
     id={params?.RenderingIdentifier} aria-label="Section navigation">
-    <p role="status">{editing
-      ? 'Section navigation needs verified native bindings, complete section pages, navigation titles, and links.'
-      : 'Section navigation is temporarily unavailable.'}</p>
+    <p role="status">Section navigation is temporarily unavailable.</p>
   </nav>;
   return <nav className={`m-navigation-secondary allianz-section-navigation${open ? ' m-navigation-secondary-open' : ''}`}
     id={params?.RenderingIdentifier} aria-label="Section navigation">

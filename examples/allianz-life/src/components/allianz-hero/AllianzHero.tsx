@@ -30,7 +30,6 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
             {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag="h1" field={data.heading?.jsonValue} className="c-heading c-hero__headline u-text-center" />}
             {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="c-hero__subHeadline u-text-center" />}
             {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
-            {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px', height: 'auto' }} /></div>}
           </div>
         </div>
       </div>
@@ -41,7 +40,7 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
       <div className="c-hero__gridWrapper">
         <picture className="c-image c-stage__image--cover">
           {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
-          <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />
+          {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />}
         </picture>
         <div className="c-hero__gridWrapperBackground">
           <div className="l-grid l-grid--max-width"><div className="l-grid__row">
@@ -51,7 +50,6 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
               {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="h4 c-heading c-hero__subHeadline" />}
               {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
               {shouldRenderLinkField(data.secondaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.secondaryLink?.jsonValue, isEditing)} className="a-link" />}
-              {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px', height: 'auto' }} /></div>}
             </div>
             {params.showLogin === '1' && <div className="l-grid__column-small-12 l-grid__column-large-4 c-hero__loginForm"><MockLogin /></div>}
           </div></div>
@@ -109,7 +107,6 @@ const EditorialStage = ({ fields, params, lifeStrategy = false }: AllianzHeroSta
       <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
         {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} field={safeEditorialRichText(data.heading?.jsonValue, isEditing)} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
         {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} tag={hasEditorialBlockMarkup(data.body?.jsonValue?.value) ? 'div' : 'p'} field={safeEditorialRichText(data.body?.jsonValue, isEditing)} className="h4 c-heading c-hero__subHeadline u-text-center" />}
-        {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px', height: 'auto' }} /></div>}
       </div></div>
     </div>
   </div>;
@@ -240,7 +237,6 @@ export const FixedProduct = ({ fields, params }: AllianzHeroProps) => {
       </picture>
       <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
         {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag="h1" field={data.heading?.jsonValue} className="c-heading c-hero__headline u-text-center" />}
-        {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px', height: 'auto' }} /></div>}
       </div></div>
     </div>
   </div>;
@@ -262,7 +258,6 @@ export const RilaHero = ({ fields, params }: AllianzHeroProps) => {
       <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
         {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} field={safeEditorialRichText(data.heading?.jsonValue, isEditing)} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
         {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} tag={hasEditorialBlockMarkup(data.body?.jsonValue?.value) ? 'div' : 'p'} field={safeEditorialRichText(data.body?.jsonValue, isEditing)} className="h4 c-heading c-hero__subHeadline u-text-center" />}
-        {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px', height: 'auto' }} /></div>}
       </div></div>
     </div>
   </div>;
@@ -283,7 +278,6 @@ export const IapHero = ({ fields, params }: AllianzHeroProps) => {
       </picture>
       <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
         {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} field={data.heading?.jsonValue} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
-        {isEditing && data.mobileImage?.jsonValue && <div className="u-padding-top-sm">Mobile image<Image editable={isEditing} field={data.mobileImage.jsonValue} style={{ maxWidth: '240px', height: 'auto' }} /></div>}
       </div></div>
     </div>
   </div>;

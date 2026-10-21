@@ -76,7 +76,11 @@ for (const b of fixtures.blocks) test(`${b.route.split('/').pop()} ${b.sourceBlo
   b.sourceContract.forEach((c,i)=>{for(const cls of c.classes)assert.ok(articleClasses[i].includes(cls),`missing ${cls}`);for(const cls of c.columnClasses)assert.ok(html.includes(cls),`missing ${cls}`);});
   b.children.forEach((child,i)=>{
    if(child.fields.heading) assert.ok(html.includes(`<${child.fields.headingLevel}>`));
-   for(const name of ['heading','subheading','body','icon','alphanumeral', ...(b.params.layout==='image-right' ? ['image'] : [])])assert.ok(editing.includes(`test-only-${name}`),`missing ${name} editing chrome`);
+   for(const name of ['heading','subheading','body','icon','alphanumeral', ...(b.params.layout==='image-right' ? ['image'] : [])]) {
+    const populated = ['icon','image'].includes(name) ? child.fields[name]?.assetIntentKey : child.fields[name];
+    if(populated) assert.ok(editing.includes(`test-only-${name}`),`missing populated ${name} editing chrome`);
+   }
+   assert.doesNotMatch(editing,/\[No text in field\]|scEmptyImage/);
    if(child.fields.body)assert.ok(editing.includes(child.fields.body),`body ${i} changed`);
    if(child.fields.subheading)assert.ok(editing.includes(child.fields.subheading),`subheading ${i} changed`);
    if(child.fields.alphanumeral)assert.ok(html.includes(`>${child.fields.alphanumeral}</em>`));
@@ -113,7 +117,7 @@ test('empty-label opt-in preserves ordered clearing, scalar fallback, cleared ed
  delete card.links;assert.match(render(Cards.EditorialTiles,props(d,false,b.params)),/Stale fallback/);
  card.link=field('link',{href:'',text:'<img src=x onerror=alert(1)>'});
  const inert=render(Cards.EditorialTiles,props(d,false,b.params));assert.match(inert,/&lt;img src=x onerror=alert\(1\)&gt;/);assert.doesNotMatch(inert,/<img src="x"/);
- card.link=field('link',{href:'',text:''});const empty=render(Cards.EditorialTiles,props(d,false,b.params));assert.doesNotMatch(empty,/<footer/);assert.match(render(Cards.EditorialTiles,props(d,true,b.params)),/test-only-link/);
+ card.link=field('link',{href:'',text:''});const empty=render(Cards.EditorialTiles,props(d,false,b.params));assert.doesNotMatch(empty,/<footer/);assert.doesNotMatch(render(Cards.EditorialTiles,props(d,true,b.params)),/test-only-link|\[No text in field\]/);
 });
 
 test('SDK source-empty external placeholder is an inert visitor label with unchanged editing fields',()=>{
@@ -138,7 +142,7 @@ test('SDK placeholder with empty or whitespace label stays absent for visitors a
   const before=JSON.stringify(d);
   for(const variant of ['EditorialTiles','EditorialIntro','EditorialCallout']){
    assert.doesNotMatch(render(Cards[variant],props(d,false,b.params)),/<footer|<a\b|a-link__text/);
-   assert.match(render(Cards[variant],props(d,true,b.params)),/test-only-link/);
+   assert.doesNotMatch(render(Cards[variant],props(d,true,b.params)),/test-only-link|\[No text in field\]/);
   }
   assert.equal(JSON.stringify(d),before);
  }
@@ -227,7 +231,7 @@ test('every wide-statistic child retains its distinct native item and field edit
  const ids=[];
  d.children.results.forEach((card,i)=>{
   for(const name of ['heading','subheading','body','icon','alphanumeral']){
-   const metadata=card[name].jsonValue.metadata;metadata.itemId=`distinct-statistic-${i}`;metadata.fieldId=`distinct-${i}-${name}`;ids.push(metadata.fieldId);
+   const metadata=card[name].jsonValue.metadata;metadata.itemId=`distinct-statistic-${i}`;metadata.fieldId=`distinct-${i}-${name}`;if(name==='icon' ? card[name].jsonValue.value?.src : card[name].jsonValue.value)ids.push(metadata.fieldId);
   }
  });
  const before=JSON.stringify(d),editing=render(Cards.EditorialCallout,props(d,true,b.params));

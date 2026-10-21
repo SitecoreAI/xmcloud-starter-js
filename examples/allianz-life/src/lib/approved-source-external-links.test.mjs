@@ -31,8 +31,40 @@ function href(html) {
   return /href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
 }
 
-test('all 25 approved PDF destinations remain absolute through the installed SDK in visitor and editing modes', () => {
-  assert.equal(pdfs.length, 25);
+// These exact identities are already present in approved HEAD f2f97d59.
+// b898b4e9 added only the Classic PDF to the preceding 25; the count test was stale.
+const approvedPdfIdentities = [
+  ['insights-grid-card-01', 'https://www.allianzlife.com/-/media/Files/Global/documents/2025/11/21/14/54/LIA-381.pdf'],
+  ['insights-grid-card-02', 'https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/19/17/49/LIA-470.pdf'],
+  ['insights-grid-card-03', 'https://www.allianzlife.com/-/media/Files/Global/documents/2024/05/29/13/56/LIA-203.pdf'],
+  ['insights-grid-card-04', 'https://www.allianzlife.com/-/media/Files/Allianz/Documents/LIA-166.pdf'],
+  ['insights-grid-card-05', 'https://www.allianzlife.com/-/media/Files/Global/documents/2024/01/25/19/00/LIA-161.pdf'],
+  ['insights-grid-card-06', 'https://www.allianzlife.com/-/media/Files/Global/documents/2021/10/27/15/05/LIA-008.pdf'],
+  ['insights-grid-card-07', 'https://www.allianzlife.com/-/media/Files/Global/documents/2021/10/27/15/05/LIA-018.pdf'],
+  ['product-grid-card-01', 'https://www.allianzlife.com/-/media/Files/Global/documents/2021/07/14/18/52/LIA-001.pdf'],
+  ['product-grid-card-02', 'https://www.allianzlife.com/-/media/Files/Global/documents/2022/08/24/13/06/LIA-047.pdf'],
+  ['product-grid-card-03', 'https://www.allianzlife.com/-/media/Files/Global/documents/2024/12/20/09/40/LIA-296.pdf'],
+  ['product-grid-card-04', 'https://www.allianzlife.com/-/media/Files/Global/documents/2022/05/20/02/10/LIA-027.pdf'],
+  ['product-grid-card-05', 'https://www.allianzlife.com/-/media/Files/Global/documents/2024/12/20/19/33/LIA-292.pdf'],
+  ['product-grid-card-06', 'https://www.allianzlife.com/-/media/Files/Global/documents/2022/03/16/14/18/LIA-002-R04.pdf'],
+  ['product-grid-card-07', 'https://www.allianzlife.com/-/media/Files/Global/documents/2022/03/24/13/15/LIA-003.pdf'],
+  ['product-grid-card-08', 'https://www.allianzlife.com/-/media/Files/Global/documents/2022/08/17/12/48/LIA-035.pdf'],
+  ['product-grid-card-09', 'https://www.allianzlife.com/-/media/Files/Global/documents/2022/12/16/14/36/LIA-046.pdf'],
+  ['product-grid-card-10', 'https://www.allianzlife.com/-/media/Files/Global/documents/2022/12/16/14/37/LIA-034.pdf'],
+  ['sustainability-results-primaryLink', 'https://www.allianzlife.com/-/media/Files/Allianz/PDFs/community-impact-report-overview.pdf'],
+  ['sustainability-responsible-investments', 'https://www.allianzlife.com/-/media/Files/Allianz/PDFs/EXT-1120.pdf'],
+  ['early-retirement-study-findings-pdf', 'https://www.allianzlife.com/-/media/Files/Global/documents/2023/06/02/17/42/EXT-0080.pdf'],
+  ['aa7-product-brochure', 'https://www.allianzlife.com/-/media/Files/Global/documents/2023/11/10/18/35/AAA7-001.pdf'],
+  ['aa7-product-brochure-insert', 'https://www.allianzlife.com/-/media/Files/Global/documents/2023/11/10/18/35/AAA7-001-B.pdf'],
+  ['aa7-index-lock-brochure', 'https://www.allianzlife.com/-/media/Files/Global/documents/2019/05/15/12/35/CSI-504.pdf'],
+  ['aa5-product-brochure', 'https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/30/15/16/AAA5-001.pdf'],
+  ['aa5-product-brochure-insert', 'https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/30/15/16/AAA5-001-B.pdf'],
+  ['aa-classic-exact-source-2', 'https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/27/12/04/AAAC-001.pdf'],
+];
+
+test('all 26 approved PDF destinations retain their exact source identities and installed SDK behavior', () => {
+  assert.equal(pdfs.length, 26);
+  assert.deepEqual(pdfs.map(({ sourceRecordKey, url }) => [sourceRecordKey, url]), approvedPdfIdentities);
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     for (const entry of pdfs) {

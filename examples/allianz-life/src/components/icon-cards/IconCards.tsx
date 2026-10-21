@@ -2,7 +2,7 @@
 
 import { Image, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
-import { shouldRenderTextField } from 'lib/allianz-field-state';
+import { shouldRenderImageField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { iconCardFields } from 'lib/icon-card-fields';
 import type { IconCardsProps } from './icon-cards.props';
 import './IconCards.css';
@@ -39,15 +39,15 @@ export const Default = ({ fields, params }: IconCardsProps) => {
             <div className="tileContent u-text-center">
               <div className="tileSubGrid__image">
                 <div className="tileIcon t-bg-transparent t-icon-primary-black">
-                  <Image field={card.icon?.jsonValue} editable={isEditing} />
+                  {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <Image field={card.icon?.jsonValue} editable={isEditing} />}
                 </div>
               </div>
               <div className="tileSubGrid__content">
                 <header><div className="tileHeading">
-                  <Text field={card.title?.jsonValue} tag="h3" editable={isEditing} />
+                  {shouldRenderTextField(card.title?.jsonValue, isEditing) && <Text field={card.title?.jsonValue} tag="h3" editable={isEditing} />}
                 </div></header>
-                <RichText field={card.text?.jsonValue} editable={isEditing}
-                  className="tileBody u-font-size-lg" />
+                {shouldRenderTextField(card.text?.jsonValue, isEditing) && <RichText field={card.text?.jsonValue} editable={isEditing}
+                  className="tileBody u-font-size-lg" />}
               </div>
             </div>
           </article>
@@ -87,8 +87,8 @@ export const AboutFacts = ({ fields, params }: IconCardsProps) => {
             <div className="tileContent u-text-center">
               <div className="tileSubGrid__image">
                 <div className="tileIcon t-bg-transparent t-icon-primary-black">
-                  {card.icon?.jsonValue && (isEditing || card.icon.jsonValue.value?.src) &&
-                    <Image field={card.icon.jsonValue} editable={isEditing} className="allianz-about-fact-glyph"
+                  {shouldRenderImageField(card.icon?.jsonValue, isEditing) &&
+                    <Image field={card.icon?.jsonValue} editable={isEditing} className="allianz-about-fact-glyph"
                       width={24} height={24} />}
                 </div>
               </div>

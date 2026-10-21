@@ -111,7 +111,7 @@ test('mixed resource grids keep the introduction outside three ordered static or
     assert.match(cleared, /<div class="m-card">/);
     assert.ok(cleared.includes(data.children.results[1].body.jsonValue.value));
     const editor = render(Cards[entry.variant], data, true, entry.params);
-    assert.ok(editor.includes(data.children.results[1].link.jsonValue.metadata.fieldId));
+    assert.ok(!editor.includes(data.children.results[1].link.jsonValue.metadata.fieldId));
   }
 });
 
@@ -144,17 +144,20 @@ test('native fieldCollection projection retains all child fields and real SDK ed
   })) } };
   assert.equal(render(Cards[entry.variant], projected, false, entry.params), render(Cards[entry.variant], data, false, entry.params));
   const editor = render(Cards[entry.variant], projected, true, entry.params);
-  for (const card of data.children.results) for (const name of ['heading', 'body', 'image']) assert.ok(editor.includes(card[name].jsonValue.metadata.fieldId));
+  for (const card of data.children.results) for (const name of ['heading', 'body', 'image']) {
+    const value = card[name].jsonValue.value;
+    assert.equal(editor.includes(card[name].jsonValue.metadata.fieldId), name === 'image' ? Boolean(value?.src) : Boolean(value));
+  }
 });
 
-test('cleared strategy fields remain cleared and editable without borrowing cleared link content', () => {
+test('cleared strategy fields remain off the canvas without borrowing stale link content', () => {
   const entry = scenario('college-funding--section-5-grid'), data = native(entry), card = data.children.results[1];
   card.heading.jsonValue.value = ''; card.body.jsonValue.value = ''; card.icon.jsonValue.value = {};
   card.links = { targetItems: [] }; card.link.jsonValue.value = {};
   const before = JSON.stringify(data), html = render(Cards[entry.variant], data, false, entry.params);
   assert.doesNotMatch(html, /STALE scalar link/);
   const editor = render(Cards[entry.variant], data, true, entry.params);
-  for (const name of ['heading', 'body', 'icon']) assert.ok(editor.includes(card[name].jsonValue.metadata.fieldId));
+  for (const name of ['heading', 'body', 'icon']) assert.ok(!editor.includes(card[name].jsonValue.metadata.fieldId));
   assert.equal(JSON.stringify(data), before);
 });
 
@@ -176,7 +179,7 @@ test('college and estate source-owned scalar Accumulator links survive the expli
     assert.ok(editor.includes(card.link.jsonValue.metadata.fieldId));
     card.link.jsonValue.value = {};
     assert.doesNotMatch(render(Cards[entry.variant], data, false, entry.params), /Explore Allianz Life Accumulator/);
-    assert.ok(render(Cards[entry.variant], data, true, entry.params).includes(card.link.jsonValue.metadata.fieldId));
+    assert.ok(!render(Cards[entry.variant], data, true, entry.params).includes(card.link.jsonValue.metadata.fieldId));
   }
 });
 
@@ -219,10 +222,10 @@ test('retirement root Accumulator footer renders once after the icon row with ex
   data.primaryLink.jsonValue.value = {};
   const cleared = render(Cards[entry.variant], data, false, entry.params);
   assert.doesNotMatch(cleared, /Explore Allianz Life Accumulator|tileLink u-margin-top-md/);
-  assert.ok(render(Cards[entry.variant], data, true, entry.params).includes(data.primaryLink.jsonValue.metadata.fieldId));
+  assert.ok(!render(Cards[entry.variant], data, true, entry.params).includes(data.primaryLink.jsonValue.metadata.fieldId));
 });
 
-test('author-owned root heading, subheading and body render once and retain cleared SDK controls', () => {
+test('authored root fields render once and cleared fields add no canvas controls', () => {
   const entry = scenario('college-funding--section-5-grid'), data = native(entry);
   data.heading = field('root-heading', 'Root heading');
   data.subheading = field('root-subheading', '<p>Root subheading</p>', 'Rich Text');
@@ -235,5 +238,5 @@ test('author-owned root heading, subheading and body render once and retain clea
   const cleared = render(Cards[entry.variant], data, false, entry.params);
   assert.doesNotMatch(cleared, /Root heading|Root subheading|Root body/);
   const editor = render(Cards[entry.variant], data, true, entry.params);
-  for (const name of ['heading', 'subheading', 'body']) assert.ok(editor.includes(data[name].jsonValue.metadata.fieldId));
+  for (const name of ['heading', 'subheading', 'body']) assert.ok(!editor.includes(data[name].jsonValue.metadata.fieldId));
 });

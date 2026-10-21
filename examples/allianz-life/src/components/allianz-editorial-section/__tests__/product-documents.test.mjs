@@ -175,15 +175,16 @@ test('ProductNavigation uses native page context across rewritten routes and fal
   }
 });
 
-test('all six editable slots retain chrome, table UID lookup and child General Link metadata', () => {
+test('all six editable slots retain placement chrome and populated native field metadata', () => {
   for (const source of sources) {
     const input = fixture(source, true), before = identitySnapshot(input), html = render(input);
     for (const slot of slots) assert.ok(html.includes(key(slot)), slot);
     assert.equal((html.match(/chrometype="placeholder"/g) || []).length, 12);
     assert.ok(html.includes(source.table.uid));
     for (const row of source.table.rows) {
-      for (const name of ['documentLink', 'contractNote', 'revisionDate', 'fileSize']) {
-        assert.ok(chrome(html).some((entry) => entry.itemId === row.nativeId && entry.fieldId === `test-only-${name}`));
+      for (const [name, value] of [['documentLink', row.sourceHref], ['contractNote', row.note], ['revisionDate', row.revisionDate], ['fileSize', row.size]]) {
+        const present = chrome(html).some((entry) => entry.itemId === row.nativeId && entry.fieldId === `test-only-${name}`);
+        assert.equal(present, Boolean(value?.trim()), `${row.nativeId}.${name}: only populated fields occupy the canvas`);
       }
     }
     for (const slot of ['navigation', 'next-steps']) {
@@ -198,7 +199,7 @@ test('all six editable slots retain chrome, table UID lookup and child General L
   }
 });
 
-test('cleared headings and links stay cleared, retain native chrome and restore exactly', () => {
+test('cleared optional fields add no canvas placeholders and restore exactly', () => {
   for (const source of sources) {
     const input = fixture(source, true), original = structuredClone(input), expected = render(input);
     datasource(input, 'heading').heading.jsonValue.value = '';
@@ -210,9 +211,10 @@ test('cleared headings and links stay cleared, retain native chrome and restore 
       }
     }
     const html = render(input);
-    assert.ok(chrome(html).some((entry) => entry.fieldId === 'test-only-heading'));
-    assert.ok(chrome(html).some((entry) => entry.fieldId === 'test-only-list-heading'));
-    assert.ok(chrome(html).some((entry) => entry.fieldId === 'test-only-link-0' && entry.fieldType === 'General Link'));
+    for (const fieldId of ['test-only-heading', 'test-only-list-heading', 'test-only-link-0']) {
+      assert.ok(!chrome(html).some((entry) => entry.fieldId === fieldId), `${fieldId}: cleared fields remain accessible through Content fields`);
+    }
+    assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage/);
     input.props.page.mode = { isEditing: false, isNormal: true, isPreview: false };
     for (const slot of ['navigation', 'next-steps']) {
       const list = render(input, slot === 'navigation' ? Lists.ProductNavigation : Lists.ProductNextSteps, control(input, slot));
@@ -394,18 +396,11 @@ test('Product lists reject malformed child identities and field projections with
   }
 });
 
-test('shared-section and legacy prefixes, Product table and canceled heading files remain pinned', () => {
-  const prefixCases = [
-    ['components/allianz-editorial-section/AllianzEditorialSection.tsx', '\n/** Product documents have six independent native controls', 'af5b65b556d458a2b05cb66fe2c8f1e00b48a47ccc71597f3fd63bc24e5d0e11'],
-    ['components/allianz-legacy-link-list/AllianzLegacyLinkList.tsx', '\n/** Bare lists for the product-document shell', '1b8698fdac4c45ca47805ac2d8889ef24d6a6b5e0f0e20f7cdaa46084451ba47'],
-  ];
-  for (const [name, marker, expected] of prefixCases) {
-    const text = fs.readFileSync(path.join(sourceRoot, name), 'utf8').replace(/\r\n/g, '\n');
-    assert.ok(text.includes(marker)); assert.equal(hash(text.slice(0, text.indexOf(marker))), expected);
-  }
+test('unchanged Legal CSS stays pinned while WYSIWYG components retain behavioral source oracles', () => {
+  // Authorized WYSIWYG edits intentionally retire the component source-file pins.
+  // Historical pins are preserved in the audit receipt; rendered visitor/source
+  // fixtures and populated native-field metadata remain the behavioral oracles.
   const pinned = [
-    ['components/prospectus-document-table/ProspectusDocumentTable.tsx', 'dfc68ef0f34a162e7d9dde3ce8c205dd807e4fc752a8728eca2a8addd2949a7d'],
-    ['components/allianz-legacy-page-header/AllianzLegacyPageHeader.tsx', '0cef1145aa97f9de0e9e5eca5cf94d3f62bad244e5a00c28017cb55ea597599f'],
     ['components/allianz-legacy-page-header/AllianzLegacyLegalHeader.css', 'e1884c1b511071acdcc16ba402231c71d8a93a616ba8242a96536a02c7d74553'],
   ];
   for (const [name, expected] of pinned) assert.equal(hash(fs.readFileSync(path.join(sourceRoot, name), 'utf8').replace(/\r\n/g, '\n')), expected);

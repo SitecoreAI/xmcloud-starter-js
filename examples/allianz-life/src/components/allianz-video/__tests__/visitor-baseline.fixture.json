@@ -1,0 +1,47 @@
+{
+  "qualification": "Visitor-only baseline loaded in memory from the approved HEAD source. No checkout state changed.",
+  "sourceCommit": "f2f97d59e94c06485394c75104607f2bd8e346b8",
+  "sourceFileSha256": "9795de4c34b0b6d7fbcfa667d742d232f0c86519ab268654b8666aef38bf43bc",
+  "records": {
+    "Default": {
+      "populated": "cf40a6240a51b9f5b4baec775957f2f2bfaf61d2e94ff1688328fb29387f1545",
+      "cleared": "5bff54d52fa0a6198e4250851feeea7a100201033d3d53afe0edca75f1203467"
+    },
+    "SourceStatic": {
+      "populated": "33422412d09589dd586065b31720134bc63022c9112141045a333a504a96d7fc",
+      "cleared": "12cfad51a98de8ba9f71af40d1a24783bd549f31497856637864e5955d9efb49"
+    },
+    "FixedSourceStatic": {
+      "populated": "4a98d16e7d1fc12d98542dab8cc4696b2400fcb3fb4ed69fe1b440fc88849e07",
+      "cleared": "43b1053ba83adbc81fb6facce4e9c69be6a52bc31e660239678625b86a2603e7"
+    },
+    "RilaStaticVideo": {
+      "populated": "5a3615491078a47ec3a41e76a04d60a441403024028f48ce53346e0195ae4d84",
+      "cleared": "6529c9d0cd87caf68980f23dc3e5318479b74013d80d4da3ad1ffa14cd5bb641"
+    },
+    "ClassicProductVideo": {
+      "populated": "ea07f5c2136eb41010957981ad0ac22d4533f18a640b424bc627bfdf51a992a6",
+      "cleared": "f02125e594f547c2e81cda0f270fdfeafb39e74349ac6f228415f16f6443ca70"
+    },
+    "AAPlusProductVideo": {
+      "populated": "3363b19c96fab2d37a970159bdd8c8105feffad80a212330111b854fb18e13bc",
+      "cleared": "43ee7c1ec7ebec0bb35f58887f616b92e3207f8adf615b8f5a14c82f053c425a"
+    },
+    "BenefitControlPlusProductVideo": {
+      "populated": "4484e345e12b364deee0f4c3fae2f31d94ce258d32f33c5ea5ce43bc383a0d28",
+      "cleared": "94578787e9a568deb537887ac6862bf16de3c9cd810165f06c0026ebf8d4a95d"
+    },
+    "EssentialIncome7ProductVideo": {
+      "populated": "41effe80eb64bce9907adab63ba0b773d3d106d295cf9d59d7e9ba298c0d47f0",
+      "cleared": "5023c7146383bab14c93f63c15731396de0cd85d9c24704d8fb88d0bbafd20d5"
+    },
+    "CoreIncome7ProductVideo": {
+      "populated": "ac3adcd6f5f9dd883514b1e4ad72a7d6e4308e90dab12f732889bb063a4ef248",
+      "cleared": "6f58ed5e38e53c8e4aa78265b5ad1fcc957129ac16a3bef9f24ccdd087e15d45"
+    },
+    "LifetimeIncomeVideo": {
+      "populated": "8def042f13dda25dc1d36a3cd252d4a57e449ce970b043b57c18f975bcc55ab9",
+      "cleared": "889361065a690ac6eee902a0514791928d0a4e4adbf9bd3bc8a6d01178995e48"
+    }
+  }
+}

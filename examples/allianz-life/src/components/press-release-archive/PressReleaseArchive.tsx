@@ -62,7 +62,6 @@ export const Default = ({ fields, params, rendering }: PressReleaseArchiveProps)
           </div>;
         })}
         {!releases?.complete && <p role="status">The news release archive is temporarily unavailable.</p>}
-        {editable && releases?.complete && !rows.length && <p role="status">Add press release pages beneath this year to populate the archive.</p>}
         {editable && Boolean(releases?.missingDates) && <p role="status">Some release dates are missing or invalid. Edit them on their release pages.</p>}
         {editable && Boolean(releases?.missingSources) && <p role="status">Some release pages still need their article content.</p>}
       </div></div>

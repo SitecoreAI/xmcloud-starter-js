@@ -135,11 +135,11 @@ test('owner, exact URL and external shape are all required; other prospectuses s
   }
 });
 
-test('cleared fields and editing fields stay original without synthesizing a destination or target', () => {
+test('cleared link objects stay original without a destination, target or empty canvas chrome', () => {
   for (const input of [field({ href: '' }), { value: {}, metadata: field().metadata }]) {
     for (const editing of [false, true]) assert.strictEqual(prospectusLinkField(input, editing, owner), input);
     assert.doesNotMatch(renderTable(input), /href=|service-unavailable/);
-    assert.match(renderTable(input, true), /test-only-collection-link/);
+    assert.doesNotMatch(renderTable(input, true), /test-only-collection-link|href=|\[No link/);
   }
   assert.equal(prospectusLinkField(undefined, false, owner).value.href, '');
   const sameTab = field({ target: '' });
@@ -257,12 +257,13 @@ test('HTML viewer pairs reject cross-owner types, alternate URLs and ambiguous q
   }
 });
 
-test('HTML viewer adaptation preserves cleared fields, editor ownership and authored same-tab targets', () => {
+test('HTML viewer adaptation preserves cleared objects and populated editor ownership without empty canvas links', () => {
   for (const entry of viewers) {
     for (const input of [viewerField(entry, { href: '' }), { value: {}, metadata: viewerField(entry).metadata }]) {
       for (const editing of [false, true]) assert.strictEqual(prospectusLinkField(input, editing, entry.owner), input);
       assert.doesNotMatch(renderTable(input, false, entry.owner), /href=|service-unavailable/);
-      assert.ok(renderTable(input, true, entry.owner).includes(`test-only-viewer-${entry.type}`));
+      assert.equal(renderTable(input, true, entry.owner).includes(`test-only-viewer-${entry.type}`), false);
+      assert.doesNotMatch(renderTable(input, true, entry.owner), /href=|\[No link/);
     }
     for (const target of ['', '_self', undefined]) {
       const input = viewerField(entry, { target }), before = JSON.stringify(input);

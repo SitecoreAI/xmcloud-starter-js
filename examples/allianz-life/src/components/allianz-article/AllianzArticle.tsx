@@ -45,7 +45,7 @@ export const EditorialBody = ({ fields, params }: AllianzArticleProps) => {
     {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing)} className={editorialBodyClass(params.bodySize)} />}
   </>;
   return <EditorialFrame params={params} column>
-    {params.scaffold === 'rich-text' ? <RichText editable={isEditing} field={richTextBody} className="o-richTextEditor__wrapper" /> :
+    {params.scaffold === 'rich-text' ? shouldRenderTextField(richTextBody, isEditing) && <RichText editable={isEditing} field={richTextBody} className="o-richTextEditor__wrapper" /> :
       <article className={tile ? 'm-axlTile match-height -is--stacked t-bg-transparent' : 'm-axlIntroductionBlock -is--stacked -no--image'}>
         <div className={`tileContent ${params.alignment === 'center' ? 'u-text-center' : 'u-text-left'}`}>
           {tile ? <div className="tileSubGrid__content">{content}</div> : content}

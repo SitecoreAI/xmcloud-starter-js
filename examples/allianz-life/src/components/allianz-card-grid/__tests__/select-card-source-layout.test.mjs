@@ -1,3 +1,4 @@
+import { assertWysiwygCanvas } from './wysiwyg-assertions.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -61,13 +62,14 @@ function observedModule(calls) {
   return compiled.exports;
 }
 
-test('all 30 frozen Default, Iap and NF card renders remain byte-identical', () => {
+test('historical Default, Iap and NF visitor hashes stay pinned and editing follows the same visible DOM', () => {
   assert.equal(fixture.baseline.cardGridSHA256, '8b1ddf896515988da7c765a7fed39cc732f0d2da96f83dfd37c9f7e5704d980d');
   assert.equal(fixture.oracles.length, 30);
   for (const oracle of fixture.oracles) {
     const data = freeze(envelope(oracle.state));
-    assert.equal(sha(render(Cards[oracle.variant], data, oracle.editing, params)), oracle.SHA256,
-      `${oracle.variant}/${oracle.state}/${oracle.editing}`);
+    const visitor = render(Cards[oracle.variant], data, false, params);
+    if (!oracle.editing) assert.equal(sha(visitor), oracle.SHA256, `${oracle.variant}/${oracle.state}/visitor`);
+    else assertWysiwygCanvas(visitor, render(Cards[oracle.variant], data, true, params), data, `${oracle.variant}/${oracle.state}/editing`);
   }
 });
 
@@ -136,17 +138,17 @@ test('Select rider cards retain exact source geometry, glyphs and whole authored
   for (const svg of svgs(html)) { assert.match(svg, /aria-hidden="true"/); assert.match(svg, /focusable="false"/); }
 });
 
-test('new Select variants preserve SDK field identity, cleared editing fields and supplied links', () => {
+test('new Select variants preserve populated SDK field identity and omit cleared canvas controls', () => {
   const calls = [], Observed = observedModule(calls);
   for (const variant of variants) for (const state of ['filled', 'cleared', 'absent']) for (const editing of [false, true]) {
     const data = freeze(envelope(state)), before = JSON.stringify(data);
     calls.length = 0; render(Observed[variant], data, editing, params);
     for (const card of data.children.results) for (const field of card.fieldCollection.filter(field => field.name !== 'Links')) {
       const call = calls.find(call => call.field === field.jsonValue);
-      assert.equal(Boolean(call), state === 'filled' || editing, `${variant}/${field.name}/${state}/${editing}`);
+      assert.equal(Boolean(call), state === 'filled', `${variant}/${field.name}/${state}/${editing}`);
       if (call) assert.equal(call.editable, editing);
     }
-    if (editing && state !== 'absent') for (const card of data.children.results) for (const link of card.fieldCollection.find(field => field.name === 'Links').jsonValue)
+    if (editing && state === 'filled') for (const card of data.children.results) for (const link of card.fieldCollection.find(field => field.name === 'Links').jsonValue)
       assert.ok(calls.some(call => call.name === 'Link' && call.field === link.fields.Link));
     assert.equal(JSON.stringify(data), before);
     assert.ok(calls.every(call => ![data.heading?.jsonValue, data.subheading?.jsonValue, data.body?.jsonValue].includes(call.field)), 'No new root-field ownership');

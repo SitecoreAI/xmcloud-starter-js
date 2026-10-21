@@ -237,22 +237,28 @@ test('modern source mobile dimensions and scoped reveal rule retain the 703px bo
   assert.equal(value(rule(overrides, '.allianz-modern .c-footer button.c-footer__navigation-headline[aria-expanded="true"]:before'), 'transform'), 'rotate(180deg)');
 });
 
-test('modern editing reveals mobile collections without interaction and retains native field objects', () => {
-  const before = JSON.stringify(data);
-  const h = harness(false, true);
-  const nodes = h.render();
-  assert.equal(nodes.filter((node) => node.type === 'button').length, 0);
-  for (const id of ['products', 'about']) assert.equal(h.list(id).props.hidden, false);
-  for (const group of data.primaryNav.targetItems) {
-    assert.ok(nodes.some((node) => node.props.field === group.title.jsonValue));
-    assert.ok(nodes.some((node) => node.props.field === group.children.results[0].link.jsonValue));
+test('modern editing keeps the same mobile disclosure state and native metadata for populated fields', () => {
+  const native = structuredClone(data);
+  for (const group of native.primaryNav.targetItems) {
+    group.children.results[0].title.jsonValue.value = `${group.title.jsonValue.value} link`;
+    group.children.results[0].link.jsonValue.value = { href: `/${group.id}`, text: `${group.title.jsonValue.value} link` };
   }
-  const html = render(loader()(), data, true);
-  assert.deepEqual(metadataIds(html), ['products-title', 'products-child-title', 'products-child-link', 'about-title', 'about-child-title', 'about-child-link', 'body', 'copyright', 'utility-title', 'utility-link', 'social-link', 'social-icon'].sort());
-  assert.match(html, /\[No text in field\]/);
-  assert.match(html, /scEmptyImage/);
-  assert.doesNotMatch(html, /href="\/"/);
-  assert.equal(JSON.stringify(data), before);
+  const before = JSON.stringify(native);
+  for (const editing of [false, true]) {
+    const h = harness(false, editing, native);
+    const nodes = h.render();
+    assert.equal(nodes.filter((node) => node.type === 'button').length, 2);
+    for (const id of ['products', 'about']) assert.equal(h.list(id).props.hidden, true);
+    h.toggle('products').props.onClick(); h.render();
+    assert.equal(h.list('products').props.hidden, false);
+    assert.equal(h.list('about').props.hidden, true);
+    h.resize(704); h.render();
+    assert.equal(h.list('about').props.hidden, false);
+  }
+  const html = render(loader()(), native, true);
+  assert.deepEqual(metadataIds(html), ['products-title', 'products-child-title', 'products-child-link', 'about-title', 'about-child-title', 'about-child-link'].sort());
+  assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage|href="\/"/);
+  assert.equal(JSON.stringify(native), before);
 });
 
 test('modern native fixture retains source desktop headings, navigation classes and data order', () => {
@@ -288,8 +294,7 @@ test('legacy source category hiding remains <=767 and the desktop list remains v
   }
   assert.equal(value(rule(legacyCss, '.allianz-legacy .footer-nav .navbar-nav .dropdown-menu', '(min-width:768px)'), 'display'), 'block');
   assert.equal(value(rule(legacyCss, '.allianz-legacy .visible-xs', '(max-width:767px)'), 'display'), 'block');
-  const editing = rule(overrides, '.allianz-legacy .allianz-legacy-footer[data-allianz-editing="true"] .navbar-nav.footer-nav .dropdown-menu > li', '(max-width: 767px)');
-  assert.equal(value(editing, 'display'), 'block');
+  overrides.walkRules((entry) => assert.doesNotMatch(entry.selector, /allianz-legacy-footer\[data-allianz-editing/));
 });
 
 test('legacy More button retains native keyboard activation and repeatable source open-class behavior', () => {
@@ -305,17 +310,18 @@ test('legacy More button retains native keyboard activation and repeatable sourc
   }
 });
 
-test('legacy editing retains cleared heading links and opens the source mobile menu', () => {
+test('legacy editing uses the normal collapsed menu and omits cleared optional canvas fields', () => {
   const native = { primaryNav: { targetItems: [group('cleared', '')] }, copyright: text('copyright') };
   const before = JSON.stringify(native);
   const h = harness(true, true, native);
-  const nodes = h.render();
-  assert.equal(h.one((node) => node.type === 'footer').props['data-allianz-editing'], true);
+  h.render();
+  assert.equal(h.one((node) => node.type === 'footer').props['data-allianz-editing'], undefined);
+  assert.equal(h.one((node) => node.type === 'button').props['aria-expanded'], false);
+  h.one((node) => node.type === 'button').props.onClick(); h.render();
   assert.equal(h.one((node) => node.type === 'button').props['aria-expanded'], true);
-  assert.ok(nodes.some((node) => node.type === 'sdk-link' && node.props.field === native.primaryNav.targetItems[0].link.jsonValue));
   const html = render(loader()(true), native, true);
-  assert.deepEqual(metadataIds(html), ['cleared-title', 'cleared-link', 'cleared-child-title', 'cleared-child-link', 'copyright'].sort());
-  assert.doesNotMatch(html, /href="\/"/);
+  assert.deepEqual(metadataIds(html), []);
+  assert.doesNotMatch(html, /href="\/"|\[No text in field\]|scEmptyImage/);
   assert.equal(JSON.stringify(native), before);
 });
 

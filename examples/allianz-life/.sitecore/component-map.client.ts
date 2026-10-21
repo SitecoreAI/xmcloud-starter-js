@@ -67,7 +67,9 @@ import * as AllianzLegacyHeader from 'src/components/allianz-legacy-header/Allia
 import * as AllianzLegacyFooter from 'src/components/allianz-legacy-footer/AllianzLegacyFooter';
 import * as AllianzLegacyDocumentServices from 'src/components/allianz-legacy-document-services/AllianzLegacyDocumentServices';
 import * as AllianzLegacyCardGrid from 'src/components/allianz-legacy-card-grid/AllianzLegacyCardGrid';
+import * as AllianzLegacyBreadcrumbs from 'src/components/allianz-legacy-breadcrumbs/AllianzLegacyBreadcrumbs';
 import * as AllianzLegacyAccordion from 'src/components/allianz-legacy-accordion/AllianzLegacyAccordion';
+import * as AllianzIndexDefinitions from 'src/components/allianz-index-definitions/AllianzIndexDefinitions';
 import * as AllianzHero from 'src/components/allianz-hero/AllianzHero';
 import * as AllianzHeader from 'src/components/allianz-header/AllianzHeader';
 import * as AllianzForm from 'src/components/allianz-form/AllianzForm';
@@ -76,6 +78,7 @@ import * as AllianzCTA from 'src/components/allianz-cta/AllianzCTA';
 import * as AllianzContextBreadcrumbs from 'src/components/allianz-context-breadcrumbs/AllianzContextBreadcrumbs';
 import * as AllianzCardGrid from 'src/components/allianz-card-grid/AllianzCardGrid';
 import * as AllianzCalculator from 'src/components/allianz-calculator/AllianzCalculator';
+import * as AllianzBreadcrumbs from 'src/components/allianz-breadcrumbs/AllianzBreadcrumbs';
 import * as AllianzArticle from 'src/components/allianz-article/AllianzArticle';
 import * as AllianzAccordion from 'src/components/allianz-accordion/AllianzAccordion';
 
@@ -147,7 +150,9 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['AllianzLegacyFooter', { ...AllianzLegacyFooter }],
   ['AllianzLegacyDocumentServices', { ...AllianzLegacyDocumentServices }],
   ['AllianzLegacyCardGrid', { ...AllianzLegacyCardGrid }],
+  ['AllianzLegacyBreadcrumbs', { ...AllianzLegacyBreadcrumbs }],
   ['AllianzLegacyAccordion', { ...AllianzLegacyAccordion }],
+  ['AllianzIndexDefinitions', { ...AllianzIndexDefinitions }],
   ['AllianzHero', { ...AllianzHero }],
   ['AllianzHeader', { ...AllianzHeader }],
   ['AllianzForm', { ...AllianzForm }],
@@ -156,6 +161,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['AllianzContextBreadcrumbs', { ...AllianzContextBreadcrumbs }],
   ['AllianzCardGrid', { ...AllianzCardGrid }],
   ['AllianzCalculator', { ...AllianzCalculator }],
+  ['AllianzBreadcrumbs', { ...AllianzBreadcrumbs }],
   ['AllianzArticle', { ...AllianzArticle }],
   ['AllianzAccordion', { ...AllianzAccordion }],
 ]);

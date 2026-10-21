@@ -77,8 +77,8 @@ test('populated and cleared bodies keep original SDK editing identity without in
   for (const value of [nativePlainBody, body, '']) {
     const data = freeze(datasource(value)), before = JSON.stringify(data);
     const html = render(data, routeId, true);
-    assert.deepEqual(openFields(html).map(({ fieldId: id }) => id), [fieldId]);
-    assert.match(html, /class="tileBody u-font-size-xl allianz-index-options-rich-text"/);
+    assert.deepEqual(openFields(html).map(({ fieldId: id }) => id), value ? [fieldId] : []);
+    if (value) assert.match(html, /class="tileBody u-font-size-xl allianz-index-options-rich-text"/);
     assert.doesNotMatch(html, /tabindex=/);
     assert.equal(JSON.stringify(data), before);
     if (!value) {
@@ -90,7 +90,7 @@ test('populated and cleared bodies keep original SDK editing identity without in
   for (const value of ['', '<p>Index Options introduction</p>', '<p>&lt;table&gt; is text</p>', '<p>Not a <tabletop> element</p>']) {
     const data = freeze(datasource(value));
     assert.doesNotMatch(render(data, routeId), /tabindex=/, 'non-table and cleared bodies acquire no tab stop');
-    assert.deepEqual(openFields(render(data, routeId, true)).map(({ fieldId: id }) => id), [fieldId]);
+    assert.deepEqual(openFields(render(data, routeId, true)).map(({ fieldId: id }) => id), value ? [fieldId] : []);
   }
   assert.match(render(freeze(datasource('<TABLE><TR><TH>Header</TH></TR></TABLE>')), routeId), /tabindex="0"/,
     'native table detection is case-insensitive');

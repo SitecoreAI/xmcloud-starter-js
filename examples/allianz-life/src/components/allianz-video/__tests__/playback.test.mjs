@@ -72,20 +72,21 @@ test('unsafe hosts, paths, schemes, credentials and ambiguous video IDs never cr
   }
 });
 
-test('editing preserves native metadata, all blank field controls and the open transcript', () => {
+test('editing uses one validated player and natural closed transcript without empty field artifacts', () => {
   for (const populated of [false, true]) {
     const data = { heading: field('heading', 'Single-Line Text', populated ? 'Source heading' : ''),
       body: field('body', 'Rich Text', populated ? '<p>Source body</p>' : ''),
       caption: field('caption', 'Rich Text', populated ? '<p>Source caption</p>' : ''),
       transcript: field('transcript', 'Rich Text', populated ? '<p>Source transcript</p>' : ''),
-      poster: field('poster', 'Image', { src: '' }),
+      poster: field('poster', 'Image', { src: '/test-only-poster.jpg', alt: 'Unused poster field' }),
       mediaLink: media({ href: populated ? `${player}?videoId=${ids[0]}` : '', text: populated ? 'Source video' : '' }) };
     const before = JSON.stringify(data);
     const html = render(Video, data, true);
-    assert.deepEqual(editingIds(html), ['body', 'caption', 'heading', 'media', 'poster', 'transcript']);
-    assert.doesNotMatch(html, /<iframe\b/);
-    assert.match(html, /video-placeholder.svg/);
-    assert.match(html, /<details open=""/);
+    assert.deepEqual(editingIds(html), populated ? ['body', 'caption', 'heading', 'media', 'transcript'] : []);
+    assert.equal((html.match(/<iframe\b/g) || []).length, populated ? 1 : 0);
+    assert.equal(html.includes('video-placeholder.svg'), !populated);
+    assert.doesNotMatch(html, /<details open|source-fields|test-only-poster|Unused poster|\[No text in field\]|scEmptyImage/);
+    assert.equal(stripMetadata(html), render(Video, data), 'editing and visitor visual markup match');
     assert.equal(JSON.stringify(data), before);
   }
 });
@@ -132,19 +133,15 @@ function renderMode(Component, datasource, mode, params = {}) {
   }, React.createElement(Component, { params: { RenderingIdentifier: 'owned-video', ...params }, fields: { data: { datasource } } })));
 }
 
-// Exact installed-SDK editor HTML captured from released 2164cc before the repair.
-// Both populated and deliberately cleared fields must retain their existing controls.
-const editorBaseline = {
-  SourceStatic: ['de50095d1c4c0295dc4e63aef8852ffd505bb1e7f903e9a8d3bd758be5b04c35', 'a03f1c780a7393bc3224b85f38ca3f97d5a96ac61d271b92df3fd04a2838ae33'],
-  FixedSourceStatic: ['65517825881bf7f68b36462406603aee98959ea394f2116be968703b5ee21cc0', '6a205a14443b5ae387c730d8228abeddf98955847590efc929a86e223069f64e'],
-  RilaStaticVideo: ['51ac082354d57be4591f94c82e2c9e76dbf2550e2e0d2b7aa61972efc8c110cf', '62648385361618b7a1d19c927fbbb648afb3fc0e3e39fdf5a70fc05da15b840b'],
-  ClassicProductVideo: ['63dd269453051a27c30aa5ac4704196fc4dd9795e13ec4a53e7dc3710008afa0', '89a5382373270001397f8aa530e53d56856fa6331a2724b9d7297bc5c90e616f'],
-  AAPlusProductVideo: ['224459927c5bbcd15d7885e42cd089d03c4d177258124d41984db104a28b4732', 'd4db37ad5e21210c56f8f2dfbcb24841f87c29ac1e2a3a7c7536980c3e63ee9f'],
-  BenefitControlPlusProductVideo: ['94578787e9a568deb537887ac6862bf16de3c9cd810165f06c0026ebf8d4a95d', '94578787e9a568deb537887ac6862bf16de3c9cd810165f06c0026ebf8d4a95d'],
-  EssentialIncome7ProductVideo: ['5023c7146383bab14c93f63c15731396de0cd85d9c24704d8fb88d0bbafd20d5', '5023c7146383bab14c93f63c15731396de0cd85d9c24704d8fb88d0bbafd20d5'],
-  CoreIncome7ProductVideo: ['29e031a5f740d1add1e16a40a14b197431b978ee949d2147af0ee7b54614c26c', '97d12d17fdab3f34b7249d4449a3b68a5f20c139078ea050a307881e20c2d25e'],
-  LifetimeIncomeVideo: ['8851587e189a2ab2501b06db356a22d76cf2c6f15dbe2df7921c3448037f1364', '2bc65d0b2cc3f862c8b113770538562cd87e27bb900adcc6018d762e7db8d84a'],
-};
+const stripMetadata = html => html.replace(/<code\b[^>]*>.*?<\/code>/gs, '');
+const visitorBaseline = JSON.parse(require('node:fs').readFileSync(new URL('./visitor-baseline.fixture.json', import.meta.url), 'utf8'));
+
+test('Default visitor player markup remains identical to the approved release', () => {
+  for (const populated of [true, false]) {
+    const html = renderMode(Video, specializedData(populated), 'normal');
+    assert.equal(createHash('sha256').update(html).digest('hex'), visitorBaseline.records.Default[populated ? 'populated' : 'cleared']);
+  }
+});
 
 for (const name of specializedNames) {
   const Component = videoExports[name];
@@ -170,18 +167,20 @@ for (const name of specializedNames) {
     }
   });
 
-  test(`${name}: populated and cleared editor HTML remains byte-identical to the released SDK output`, () => {
-    for (const [index, populated] of [true, false].entries()) {
+  test(`${name}: populated fields retain native metadata on the same visitor player surface`, () => {
+    for (const populated of [true, false]) {
       const data = specializedData(populated);
       const before = JSON.stringify(data);
       const html = render(Component, data, true, { RenderingIdentifier: 'owned-video' });
-      assert.equal(createHash('sha256').update(html).digest('hex'), editorBaseline[name][index]);
-      const expectedFields = name.includes('SourceStatic') || name === 'RilaStaticVideo'
-        ? ['variant-body', 'variant-caption', 'variant-heading']
-        : ['ClassicProductVideo', 'AAPlusProductVideo'].includes(name) ? ['variant-body', 'variant-heading']
-          : ['CoreIncome7ProductVideo', 'LifetimeIncomeVideo'].includes(name) ? ['variant-media'] : [];
-      assert.deepEqual(editingIds(html), expectedFields);
-      assert.doesNotMatch(html, /<iframe\b|<script\b|<video\b|Separate native transcript|separate-transcript|variant-poster/);
+      const normal = renderMode(Component, data, 'normal');
+      const expectedFields = !populated ? [] : name.includes('SourceStatic') || name === 'RilaStaticVideo'
+        ? ['variant-body', 'variant-caption', 'variant-heading', 'variant-media']
+        : ['ClassicProductVideo', 'AAPlusProductVideo'].includes(name) ? ['variant-body', 'variant-heading', 'variant-media']
+          : ['variant-media'];
+      assert.deepEqual(editingIds(html), expectedFields.sort());
+      assert.equal(stripMetadata(html), normal);
+      assert.equal(createHash('sha256').update(normal).digest('hex'), visitorBaseline.records[name][populated ? 'populated' : 'cleared']);
+      assert.doesNotMatch(html, /<script\b|<video\b|Separate native transcript|separate-transcript|variant-poster|source-static-video-fields|\[No text in field\]|scEmptyImage/);
       assert.equal(JSON.stringify(data), before);
     }
     assert.deepEqual(editingIds(renderMode(Component, {}, 'editing')), []);

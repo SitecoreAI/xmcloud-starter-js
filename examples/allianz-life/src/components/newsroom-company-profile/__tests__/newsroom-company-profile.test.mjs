@@ -48,8 +48,8 @@ test('profile complete native field objects and explicit root clears survive col
     jsonValue: { ...entry.jsonValue, value: /Image$/.test(name) ? {} : '' },
   }]));
   cleared.fieldCollection = wire(data).fieldCollection;
-  const expectedIds = Object.values(data).map((entry) => entry.jsonValue.metadata.fieldId).sort();
-  assert.deepEqual(editingIds(render(Default, cleared, true)), expectedIds);
+  assert.deepEqual(editingIds(render(Default, cleared, true)), []);
+  assert.doesNotMatch(render(Default, cleared, true), /\[No text in field\]|scEmptyImage/);
   assert.doesNotMatch(render(Default, cleared), /About Allianz|AH-Lee-Ahnz|<img|<h[23]|href=/);
   const projected = newsroomCompanyProfileFields(wire(cleared));
   for (const name of Object.keys(data)) assert.equal(projected[name].jsonValue, cleared[name].jsonValue);

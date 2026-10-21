@@ -1,3 +1,4 @@
+import { assertWysiwygCanvas } from '../../allianz-card-grid/__tests__/wysiwyg-assertions.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -121,12 +122,12 @@ test('brochure retains its original complete Body and source footer geometry wit
   assert.ok(rider.includes('Select Income™ with the Income Benefit rider II<sup>1</sup>'));
 });
 
-test('all four Select roles pass untouched full and cleared native field objects to the installed SDK in normal, preview and edit modes', () => {
+test('all four Select roles preserve original populated SDK fields and omit cleared canvas controls in every mode', () => {
   const calls = [], Observed = observedModule(calls);
   for (const name of roles) for (const state of ['filled', 'cleared', 'absent']) for (const mode of ['normal', 'preview', 'editing']) {
     const data = datasource(name, state), before = JSON.stringify(data); calls.length = 0;
     const html = renderMode(Observed[name], data, mode);
-    const bodyExpected = state === 'filled' || state === 'cleared' && mode === 'editing';
+    const bodyExpected = state === 'filled';
     const headingExpected = ['SelectIncomeBenefitRider', 'SelectNextStep'].includes(name) && bodyExpected;
     assert.equal(calls.length, Number(bodyExpected) + Number(headingExpected), `${name}/${state}/${mode}`);
     for (const native of ['heading', 'body']) {
@@ -180,7 +181,7 @@ test('brochure CSS is scoped to its finite role and uses the exact source Downlo
   assert.doesNotMatch(css, /\.allianz-iap|\.allianz-nf|#content|:has|body\s*\{|display:\s*none/);
 });
 
-test('all existing Iap, NF and Default RichText outputs match the 90 independently captured pre-Select oracles', () => {
+test('pre-Select Iap, NF and Default visitor oracles remain pinned and editing follows WYSIWYG', () => {
   assert.equal(fixture.baseline.sourceSha256, '8c78bdfbdb1b0cec6c3df0a6646ecd0a52fb5a7d208115fa0a71c59701976c6a');
   assert.equal(fixture.baseline.renders.length, 90);
   for (const item of fixture.baseline.renders) {
@@ -190,8 +191,9 @@ test('all existing Iap, NF and Default RichText outputs match the 90 independent
       else if (item.state === 'cleared') data[name].jsonValue.value = name === 'primaryLink' ? { href: '' } : '';
     }
     freeze(data); const before = JSON.stringify(data);
-    assert.equal(sha(render(Rich[item.variant], data, item.editing, params)), item.sha256,
-      `${item.variant}/${item.state}/${item.editing ? 'editing' : 'visitor'}`);
+    const visitor = render(Rich[item.variant], data, false, params);
+    if (!item.editing) assert.equal(sha(visitor), item.sha256, `${item.variant}/${item.state}/visitor`);
+    else assertWysiwygCanvas(visitor, render(Rich[item.variant], data, true, params), data, `${item.variant}/${item.state}/editing`);
     assert.equal(JSON.stringify(data), before);
   }
 });

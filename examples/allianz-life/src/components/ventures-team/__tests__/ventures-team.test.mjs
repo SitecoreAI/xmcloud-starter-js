@@ -169,7 +169,7 @@ test('incomplete and mismatched rendering data render one unavailable state with
   const empty = renderTeam({ complete: true, status: 'ready', items: [] });
   assert.doesNotMatch(empty, /temporarily unavailable|<article|<h3/);
   assert.match(renderTeam(complete, false, { missingDatasource: true }), /Add a datasource for Ventures Team/);
-  assert.match(renderTeam(complete, true), /Edit those pages and their Ventures team listing fields/);
+  assert.doesNotMatch(renderTeam(complete, true), /Edit those pages and their Ventures team listing fields/);
 });
 
 test('source CSS supplies the 704px 66/33 layout and the listing adds scoped 16px CTA spacing', () => {

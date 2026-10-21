@@ -129,7 +129,7 @@ test('two FAQ instances retain unique trigger/panel IDs and reciprocal ARIA refe
   }
 });
 
-test('all native questions and answers keep real SDK metadata and all panels open while editing', () => {
+test('native FAQ fields keep real SDK metadata and the same collapsed editing layout', () => {
   const entries = faqFixture.datasource.children.results.map(productFaqFields).map((entry) => ({
     id: entry.id, question: native('question', entry.question.jsonValue.value, entry.id),
     answer: native('answer', entry.answer.jsonValue.value, entry.id),
@@ -140,9 +140,9 @@ test('all native questions and answers keep real SDK metadata and all panels ope
     assert.deepEqual(metadata(html).filter((field) => field.itemId === entry.id)
       .map((field) => field.fieldId).sort(), ['native-answer', 'native-question']);
   }
-  assert.equal((html.match(/aria-expanded="true"/g) || []).length, 7);
-  assert.doesNotMatch(html, /hidden=""/);
-  assert.match(html, /c-accordion__item--is-active/);
+  assert.equal((html.match(/aria-expanded="false"/g) || []).length, 7);
+  assert.equal((html.match(/hidden=""/g) || []).length, 7);
+  assert.doesNotMatch(html, /c-accordion__item--is-active/);
 });
 
 test('compact projection preserves SDK object identity, root ordering and connection metadata', () => {
@@ -215,12 +215,12 @@ test('FAQ escaping and authored answer blocks use the real SDK without synthetic
   assert.deepEqual(metadata(html), []);
 });
 
-test('cleared FAQ fields retain editor chrome and produce no phantom normal-mode FAQ item', () => {
+test('cleared FAQ fields produce no canvas chrome or phantom FAQ item in either mode', () => {
   const data = one({ id: 'empty-child', question: native('question', '', 'empty-child'),
     answer: native('answer', '', 'empty-child') });
   const editing = render(Faq, data, { isEditing: true });
-  assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(), ['native-answer', 'native-question']);
-  assert.match(editing, /\[No text in field\]/);
+  assert.deepEqual(metadata(editing), []);
+  assert.doesNotMatch(editing, /<button|role="region"|\[No text in field\]/);
   const normal = render(Faq, data);
   assert.doesNotMatch(normal, /<button|role="region"|<p>|\[No text in field\]/);
   assert.deepEqual(metadata(normal), []);
@@ -252,11 +252,11 @@ test('incomplete FAQ connections fail closed instead of displaying a misleading 
   ]) {
     assert.equal(render(Faq, { ...full, children }), '');
     const html = render(Faq, { ...full, children }, { isEditing: true });
-    assert.match(html, /role="status">Product FAQ content is incomplete/);
+    assert.equal(html, '');
     assert.doesNotMatch(html, /<button|How much/);
   }
   assert.equal(render(Faq, {}), '');
-  assert.match(render(Faq, {}, { isEditing: true }), /content is incomplete/);
+  assert.equal(render(Faq, {}, { isEditing: true }), '');
   assert.doesNotMatch(render(Faq, { children: connection([]) }), /incomplete|<button/);
 });
 
@@ -305,15 +305,14 @@ test('FAQ Intro native Image uses fixed branded wrapper and local source SVG siz
   assert.match(css, /@media \(min-width: 704px\)[\s\S]*width: 40px;/);
 });
 
-test('cleared Intro canonical fields keep SDK editing metadata without fallback children or old images', () => {
+test('cleared Intro fields stay off the canvas without fallback children or old images', () => {
   const data = { id: 'cleared-intro', heading: native('heading', '', 'cleared-intro'),
     icon: native('icon', {}, 'cleared-intro'), image: native('icon', { src: '/stale.svg' }),
     children: { results: [{ id: 'stale', heading: native('heading', 'Stale child') }] } };
   const before = JSON.stringify(data);
   const editing = render(Intro, data, { isEditing: true });
-  assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(), ['native-heading', 'native-icon']);
-  assert.match(editing, /\[No text in field\]/);
-  assert.match(editing, /scEmptyImage/);
+  assert.deepEqual(metadata(editing), []);
+  assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
   assert.doesNotMatch(editing, /Stale|stale\.svg|Frequently asked/);
   const normal = render(Intro, data);
   assert.doesNotMatch(normal, /<h[1-6]|<img|<svg|Stale|stale\.svg|Frequently asked/);
@@ -328,7 +327,7 @@ for (const name of ['heading', 'icon']) {
     const html = render(Intro, data);
     assert.equal(html.includes('<h3>Authored intro</h3>'), name !== 'heading');
     assert.equal(html.includes('src="/test-only-icon.svg"'), name !== 'icon');
-    assert.equal(metadata(render(Intro, data, { isEditing: true })).length, 2);
+    assert.equal(metadata(render(Intro, data, { isEditing: true })).length, 1);
   });
 }
 

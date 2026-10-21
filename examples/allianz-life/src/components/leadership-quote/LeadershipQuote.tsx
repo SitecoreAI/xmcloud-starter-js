@@ -2,7 +2,7 @@
 
 import { Image, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
-import { shouldRenderImageField } from 'lib/allianz-field-state';
+import { shouldRenderImageField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { collectionsComplete } from 'lib/collection-completeness';
 import { attributionFields, leadershipFields, type LeadershipQuoteProps } from './leadership-quote.props';
 import './LeadershipQuote.css';
@@ -25,8 +25,8 @@ export const Default = ({ fields, params }: LeadershipQuoteProps) => {
       <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
         <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
           <div className="tileIcon t-bg-transparent t-icon-primary-black"><SourceBadge /></div>
-          <header><div className="tileHeading"><Text field={source.heading?.jsonValue} tag="h2" editable={isEditing} /></div></header>
-          <RichText field={source.quote?.jsonValue} editable={isEditing} tag={hasBlockMarkup(source.quote?.jsonValue?.value) ? 'div' : 'h4'} className="tileBody" />
+          <header><div className="tileHeading">{shouldRenderTextField(source.heading?.jsonValue, isEditing) && <Text field={source.heading?.jsonValue} tag="h2" editable={isEditing} />}</div></header>
+          {shouldRenderTextField(source.quote?.jsonValue, isEditing) && <RichText field={source.quote?.jsonValue} editable={isEditing} tag={hasBlockMarkup(source.quote?.jsonValue?.value) ? 'div' : 'h4'} className="tileBody" />}
         </div></article>
       </div></div>
       {entry ? <div className="l-grid__row">
@@ -35,8 +35,8 @@ export const Default = ({ fields, params }: LeadershipQuoteProps) => {
           <article className="m-axlTile match-height -is--flipped tile--stackedImage -is--stacked t-bg-transparent">
             <div className="tileContent u-text-center"><div className="tileSubGrid__content">
               <header><div className="tileHeading" /><div className="tileSubHeading" /></header>
-              <RichText field={entry.attribution?.jsonValue} editable={isEditing}
-                tag={hasBlockMarkup(entry.attribution?.jsonValue?.value) ? 'div' : 'h6'} className="tileBody u-font-size-md" />
+              {shouldRenderTextField(entry.attribution?.jsonValue, isEditing) && <RichText field={entry.attribution?.jsonValue} editable={isEditing}
+                tag={hasBlockMarkup(entry.attribution?.jsonValue?.value) ? 'div' : 'h6'} className="tileBody u-font-size-md" />}
             </div></div>
             {shouldRenderImageField(entry.portrait?.jsonValue, isEditing) &&
               <div className="tileImage"><picture className="c-image c-teaser__image">
@@ -44,7 +44,7 @@ export const Default = ({ fields, params }: LeadershipQuoteProps) => {
               </picture></div>}
           </article>
         </div><div className="l-grid__column-medium-4" />
-      </div> : isEditing && <p role="status">Add the leadership attribution to this section.</p>}
+      </div> : null}
     </div>
   </div>;
 };

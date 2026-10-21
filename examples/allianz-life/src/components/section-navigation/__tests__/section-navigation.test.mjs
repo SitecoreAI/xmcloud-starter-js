@@ -97,6 +97,8 @@ test('blank native fields stay blank in editing mode and missing fields never bo
     const field = page.navigationTitle.jsonValue;
     assert.equal(props.sectionNavigationData(automatic, true).issue, undefined);
     const html = renderData(automatic, true);
+    assert.equal(html, renderData(automatic), 'Blank captions share the same unavailable state');
+    assert.match(html, /Section navigation is temporarily unavailable/);
     assert.doesNotMatch(html, /data-field-id|contenteditable|kind="open"/);
     assert.equal(page.navigationTitle.jsonValue, field);
     delete page.navigationTitle;
@@ -113,7 +115,7 @@ test('missing, unavailable, duplicate, malformed or incomplete automatic data em
     { ...automatic, root: { ...automatic.root, id: 'bad' } }]) {
     assert.equal(hrefs(renderData(invalid)).length, 0);
     assert.match(renderData(invalid), /Section navigation is temporarily unavailable/);
-    assert.match(renderData(invalid, true), /verified native bindings/);
+    assert.equal(renderData(invalid, true), renderData(invalid));
   }
   const rootOnly = { ...automatic, items: [], currentId: automatic.root.id };
   assert.deepEqual(hrefs(renderData(rootOnly)), [automatic.root.url.path]);

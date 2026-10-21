@@ -88,13 +88,13 @@ test('real SDK renders the source 9/3 home composition and a 5-column right over
 
 for (const editing of [false, true]) test(`native ${editing ? 'editing' : 'visitor'} fields preserve authored content and clear without fallback`, () => {
   const input = page({ editing }), html = render(input);
-  if (editing) assert.deepEqual(metadata(html), ['ny-body', 'ny-desktopImage', 'ny-heading', 'ny-mobileImage', 'ny-primaryLink'].sort());
+  if (editing) assert.deepEqual(metadata(html), ['ny-body', 'ny-desktopImage', 'ny-heading', 'ny-primaryLink'].sort());
   else assert.equal(metadata(html).length, 0);
   const cleared = data(); cleared.heading.jsonValue.value = ''; cleared.body.jsonValue.value = '';
   cleared.desktopImage.jsonValue.value = {}; cleared.mobileImage.jsonValue.value = {}; cleared.primaryLink.jsonValue.value = { href: '', text: '' };
   const empty = render(page({ editing, datasource: cleared }));
   assert.doesNotMatch(empty, /New York heading|New York body|Explore annuities|nypublichome|href="\/"|<source\b/);
-  if (editing) assert.deepEqual(metadata(empty), ['ny-body', 'ny-desktopImage', 'ny-heading', 'ny-mobileImage', 'ny-primaryLink'].sort());
+  if (editing) { assert.deepEqual(metadata(empty), []); assert.doesNotMatch(empty, /Mobile image|scEmptyImage|\[No text in field\]/); }
   else assert.doesNotMatch(empty, /class="notepad |<img\b|<a\b/);
   assert.match(empty, /allianz-ny-home-login/);
 });
@@ -128,8 +128,9 @@ for (const editing of [false, true]) test(`real SDK ${editing ? 'editing' : 'vis
   assert.match(render(page({ editing, slots: { 'headless-sidebar': rail } }), true), /id="content-body" class="col-md-8 col-sm-9 center-column"/);
   assert.match(render(page({ editing, slots: { 'headless-right-rail': rail } }), true), /id="content-body" class="col-md-10 col-sm-9 center-column"/);
   const emptyRail = render(page({ editing, slots: { 'headless-right-rail': [] } }), true);
-  if (editing) { assert.match(emptyRail, /class="col-md-2 col-sm-3 right-column"/); assert.match(emptyRail, /chrometype="placeholder"/); assert.match(emptyRail, /headless-right-rail/); }
-  else assert.match(emptyRail, /col-sm-12 center-column allianz-ny-home-content/);
+  assert.match(emptyRail, /col-sm-12 center-column allianz-ny-home-content/);
+  assert.doesNotMatch(emptyRail, /class="col-md-2 col-sm-3 right-column"/);
+  if (editing) { assert.match(emptyRail, /allianz-empty-right-rail-chrome/); assert.match(emptyRail, /chrometype="placeholder"/); assert.match(emptyRail, /headless-right-rail/); }
 });
 
 test('non-home NY, generic legacy and modern Layout compositions remain unchanged', () => {

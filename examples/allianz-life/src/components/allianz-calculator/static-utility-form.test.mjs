@@ -26,13 +26,13 @@ test('stale CMS controls, labels, initial values and sample results cannot overr
  for(const editing of [false,true])assert.equal(render(stale,editing),render(undefined,editing));
 });
 test('calculator surrounding heading/body/disclaimer remain editable without form-field chrome',()=>{
- const html=render(surrounding,true);for(const name of ['heading','body','disclaimer'])assert.match(html,new RegExp(`fieldId&quot;:&quot;${name}`));assert.doesNotMatch(html,/fieldId&quot;:&quot;(principal|interest|payments)|<form|<input/);
+ const html=render(surrounding,true);for(const name of ['heading','body','disclaimer'])assert.match(html,new RegExp(`fieldId&quot;:&quot;${name}`));assert.doesNotMatch(html,/fieldId&quot;:&quot;(principal|interest|payments)|allianz-local-calculator-authoring/);assert.equal((html.match(/<input/g)||[]).length,3);assert.match(html,/<form/);
  for(const editing of [false,true]){const changed=structuredClone(surrounding);changed.heading.jsonValue.value='';changed.body.jsonValue.value='';changed.disclaimer.jsonValue.value='';assert.doesNotMatch(render(changed,editing),/Retirement calculator|Authored explanation|Authored disclaimer/);}
 });
-test('calculator invalid/valid/edit/reset repeat locally, with no computed financial result',()=>{
+for(const editing of [false,true])test(`calculator invalid/valid/edit/reset repeat locally in ${editing?'editing':'normal'} mode, with no computed financial result`,()=>{
  let state=[],cursor=0,tree,requests=0,stores=0;const focus=[];
  const hooks={...React,useId:()=> 'calc',useMemo:fn=>fn(),useRef:()=>({current:{querySelector:()=>({focus:()=>focus.push(true)})}}),useState:initial=>{const i=cursor++;if(!(i in state))state[i]=initial;return[state[i],next=>{state[i]=typeof next==='function'?next(state[i]):next;}];}};
- const Component=loader({react:hooks,'@sitecore-content-sdk/nextjs':{...sdk,useSitecore:()=>({page:{mode:{isEditing:false}}})}})(file).Default;
+ const Component=loader({react:hooks,'@sitecore-content-sdk/nextjs':{...sdk,useSitecore:()=>({page:{mode:{isEditing:editing}}})}})(file).Default;
  const saved={raf:globalThis.requestAnimationFrame,fetch:globalThis.fetch,local:globalThis.localStorage,session:globalThis.sessionStorage};
  globalThis.requestAnimationFrame=fn=>{fn();return 1;};globalThis.fetch=()=>{requests++;throw Error('Forbidden');};globalThis.localStorage=globalThis.sessionStorage={setItem(){stores++;throw Error('Forbidden');},getItem(){stores++;throw Error('Forbidden');}};
  function nodes(n=tree){if(Array.isArray(n))return n.flatMap(child=>nodes(child??null));return React.isValidElement(n)?[n,...nodes(n.props.children??null)]:[];}

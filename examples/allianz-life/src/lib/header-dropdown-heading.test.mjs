@@ -85,11 +85,21 @@ test('linked parents retain their real SDK link/title fields and actual child de
   assert.ok(chrome(html).some(x=>x.fieldId==='support-title'));
 });
 
-test('a cleared required leaf link keeps real authoring chrome',()=>{
-  const cleared={...leaf,id:'cleared-leaf',link:{jsonValue:field('cleared-leaf-link','General Link',{href:'',text:''})}};
-  const html=render([cleared],true,false);
-  assert.ok(chrome(html).some(x=>x.fieldId==='cleared-leaf-link'));
-  assert.match(html,/\[No text in field\]/);
+test('a cleared leaf link leaves no optional canvas placeholder while a populated sibling stays editable',()=>{
+  const cleared={...leaf,id:'cleared-leaf',
+    title:{jsonValue:field('cleared-leaf-title','Single-Line Text','Orphan title without a destination')},
+    link:{jsonValue:field('cleared-leaf-link','General Link',{href:'',text:''})}};
+  const data=[cleared,leaf],before=JSON.stringify(data);
+  for(const mobile of [false,true]) for(const editing of [false,true]) {
+    const html=render(data,editing,mobile);
+    assert.doesNotMatch(html,/cleared-leaf-link|cleared-leaf-title|\[No text in field\]|Orphan title without a destination/);
+    assert.match(html,/href="\/customer-service-frequently-asked-questions"/);
+    if(editing) {
+      assert.ok(chrome(html).some(x=>x.fieldId==='faq-link'));
+      assert.ok(chrome(html).some(x=>x.fieldId==='faq-title'));
+    } else assert.deepEqual(chrome(html),[]);
+  }
+  assert.equal(JSON.stringify(data),before);
 });
 
 test('no destination is invented and group detection does not treat a real anchor as empty',()=>{

@@ -81,14 +81,15 @@ test('LifeImageTitle never reads unused fields and does not invent absent native
   assert.match(render(Hero.LifeImageTitle, undefined, true, params), /AllianzHero/);
 });
 
-test('LifeImageTitle keeps real blank field editing chrome and omits blank visitor image and title', () => {
+test('LifeImageTitle omits blank canvas image and title without changing native fields', () => {
   const input = freeze({ heading: native('heading', ''), desktopImage: native('desktopImage', {}, 'Image') });
   const before = JSON.stringify(input), visitor = render(Hero.LifeImageTitle, input, false, params);
   assert.match(visitor, /<picture class="c-image c-stage__image--cover c-stage__image--short"><\/picture>/);
   assert.doesNotMatch(visitor, /c-hero__headline|<img\b|kind="open"/);
   const editor = render(Hero.LifeImageTitle, input, true, params);
-  assert.deepEqual(markers(editor).map((entry) => entry.fieldId), ['test-only-life-image-desktopImage', 'test-only-life-image-heading']);
-  assert.match(editor, /c-hero__headline/);
+  assert.deepEqual(markers(editor), []);
+  assert.equal(editor, visitor);
+  assert.doesNotMatch(editor, /c-hero__headline|<img\b|scEmptyImage|No text in field/);
   assert.equal(JSON.stringify(input), before);
 });
 

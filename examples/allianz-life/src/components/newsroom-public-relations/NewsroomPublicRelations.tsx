@@ -34,7 +34,6 @@ export const Default = ({ fields, params }: NewsroomPublicRelationsProps) => {
           <MediaContact contact={contact} isEditing={isEditing} />
         </div>)}
         {isEditing && !contacts.complete && <p role="status">The media contact references have not loaded completely.</p>}
-        {isEditing && contacts.complete && contacts.items.length === 0 && <p role="status">Select the media contacts for this section.</p>}
       </div>
     </div>
   </div>;

@@ -79,7 +79,7 @@ test('current state uses destination page GUID, with arbitrary authored labels, 
   }
 });
 
-test('editing keeps all ten native title/link fields exactly once, expands the menu and preserves every target and field object', () => {
+test('editing keeps all ten native title/link fields exactly once with the same initial menu state and targets', () => {
   const data = model(), before = JSON.stringify(data);
   const markup = renderModel(data, true), actual = markers(markup);
   assert.equal(actual.length, 10);
@@ -88,14 +88,14 @@ test('editing keeps all ten native title/link fields exactly once, expands the m
       assert.equal(actual.filter(marker => marker.itemId === item.id && marker.fieldId === fieldId).length, 1);
     }
   }
-  assert.match(markup, /m-navigation-secondary-open allianz-product-navigation-editing/);
-  assert.match(markup, /aria-expanded="true"/);
+  assert.doesNotMatch(markup, /m-navigation-secondary-open|allianz-product-navigation-editing/);
+  assert.match(markup, /aria-expanded="false"/);
   assert.deepEqual(anchors(markup).map(link => link.href), anchors(renderModel(data)).map(link => link.href));
   assert.equal(data.datasource.primaryNav.targetItems[1].link.jsonValue.value.id, `{${currentId}}`);
   assert.equal(JSON.stringify(data), before);
 });
 
-test('missing data uses the normal fallback, while native cleared fields keep their authoring surfaces and do not borrow labels', () => {
+test('missing data uses the normal fallback while cleared optional links stay off the canvas in both modes', () => {
   for (const data of [undefined, {}, { datasource: {} }, { datasource: { primaryNav: { targetItems: [] } } }]) {
     assert.match(renderModel(data), /allianz-missing-data/);
   }
@@ -103,11 +103,12 @@ test('missing data uses the normal fallback, while native cleared fields keep th
   product.title.jsonValue.value = '';
   product.link.jsonValue.value = { href: '' };
   const markup = renderModel(data, true);
-  assert.equal(markers(markup).filter(marker => marker.itemId === product.id).length, 2);
+  assert.equal(markers(markup).filter(marker => marker.itemId === product.id).length, 0);
+  assert.doesNotMatch(markup, /Add a link|\[No text in field\]/);
   assert.doesNotMatch(markup, /Allianz Life Accumulator<|indexed-universal-life"/);
 });
 
-test('mobile disclosure has separate native product link and button, linked ARIA controls, repeated toggles and an expanded author view', () => {
+test('mobile disclosure has the same separate product link and working repeated toggle in both modes', () => {
   let open = false, editing = false;
   const compiled = new Module(filename);
   compiled.filename = filename;
@@ -117,6 +118,7 @@ test('mobile disclosure has separate native product link and button, linked ARIA
     if (specifier === '@sitecore-content-sdk/nextjs') return { ...sdk, useSitecore: () => ({ page: { mode: { isEditing: editing } } }) };
     if (specifier.endsWith('.css')) return {};
     if (specifier === 'lib/allianz-fields') return loadSource(path.join(sourceRoot, 'lib/allianz-fields.ts'));
+    if (specifier === 'lib/allianz-source-destinations') return loadSource(path.join(sourceRoot, 'lib/allianz-source-destinations.ts'));
     if (specifier === 'components/content-sdk/NoDataFallback') return loadSource(path.join(sourceRoot, 'components/content-sdk/NoDataFallback.tsx'));
     return require(specifier);
   };
@@ -139,11 +141,13 @@ test('mobile disclosure has separate native product link and button, linked ARIA
   }
   editing = true; open = false;
   const nav = compiled.exports.Default({ fields: { data: model() }, params: {} });
-  assert.equal(nav.props.children[0].props.children[1].props['aria-expanded'], true);
-  assert.equal(nav.props.children[0].props.children[1].props.disabled, true);
+  assert.equal(nav.props.children[0].props.children[1].props['aria-expanded'], false);
+  assert.notEqual(nav.props.children[0].props.children[1].props.disabled, true);
+  nav.props.children[0].props.children[1].props.onClick();
+  assert.equal(compiled.exports.Default({ fields: { data: model() }, params: {} }).props.children[0].props.children[1].props['aria-expanded'], true);
 });
 
-test('recovered desktop gray tabs and 703/704 breakpoint remain source-owned, with only scoped disclosure and author CSS', () => {
+test('recovered desktop gray tabs and 703/704 breakpoint remain source-owned with scoped disclosure CSS', () => {
   const source = postcss.parse(fs.readFileSync(path.join(sourceRoot, 'assets/allianz-source.css'), 'utf8'));
   const local = postcss.parse(fs.readFileSync(path.join(directory, 'AllianzProductNavigation.css'), 'utf8'));
   const rules = (root, selector, media) => {
@@ -177,7 +181,4 @@ test('recovered desktop gray tabs and 703/704 breakpoint remain source-owned, wi
   local.walkRules(rule => assert.ok(rule.selector.split(',').every(selector => selector.trim().startsWith('.allianz-product-navigation'))));
   assert.equal(rules(local, '.allianz-product-navigation:not(.m-navigation-secondary-open) .nav-sec-list', '(max-width: 703px)').visibility, 'hidden');
   assert.equal(rules(local, '.allianz-product-navigation.m-navigation-secondary-open .nav-sec-list', '(max-width: 703px)').visibility, 'visible');
-  const authorSelector = '.allianz-product-navigation.allianz-product-navigation-editing .nav-sec-list-title';
-  assert.equal(rules(local, authorSelector).display, 'flex');
-  assert.ok((authorSelector.match(/\./g) ?? []).length > 2, 'Author title/link fields must beat source desktop hiding regardless of CSS import order');
 });

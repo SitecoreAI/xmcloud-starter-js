@@ -29,7 +29,7 @@ for(const contentMode of ['fixture','connected']) {
  test(`${contentMode}: cleared and missing editor fields keep existing span placeholders without new visitor badges`,()=>mode(contentMode,()=>{
   for(const value of ['',undefined]){
    const c=card(value,true),input=freeze(data(c));assert.equal(badges(render(Cards.EditorialTiles,input,false,{})).length,0);
-   const editor=render(Cards.EditorialTiles,input,true,{});assert.match(editor,/test-badge-alphanumeral-field/);assert.equal(badges(editor)[0]?.tag,'span');
+   const editor=render(Cards.EditorialTiles,input,true,{});assert.doesNotMatch(editor,/test-badge-alphanumeral-field|\[No text in field\]/);assert.equal(badges(editor).length,0);
   }
   const c=card('unused',true);delete c.alphanumeral;assert.equal(badges(render(Cards.EditorialTiles,freeze(data(c)),true,{})).length,0);
  }));
@@ -45,6 +45,6 @@ for(const contentMode of ['fixture','connected']) {
   for(const editing of [false,true]){const c=card('3',editing),named=freeze(data(c));const projection=freeze({children:{results:[{id:c.id,fieldCollection:Object.entries(c).filter(([key])=>key!=='id').map(([name,value])=>({name,jsonValue:value.jsonValue}))}]}});assert.equal(render(Cards.EditorialTiles,projection,editing,{}),render(Cards.EditorialTiles,named,editing,{}));}
  }));
  test(`${contentMode}: changing or clearing only the badge preserves other native fields and original input`,()=>mode(contentMode,()=>{
-  for(const value of ['1','2','', '0']){const input=freeze(data(card(value,true))),before=JSON.stringify(input),html=render(Cards.EditorialTiles,input,true,{});assert.match(html,/test-badge-heading-field/);assert.match(html,/test-badge-body-field/);assert.match(html,/Unchanged body/);assert.equal(badges(html)[0]?.tag,value?'em':'span');assert.equal(JSON.stringify(input),before);}
+  for(const value of ['1','2','', '0']){const input=freeze(data(card(value,true))),before=JSON.stringify(input),html=render(Cards.EditorialTiles,input,true,{});assert.match(html,/test-badge-heading-field/);assert.match(html,/test-badge-body-field/);assert.match(html,/Unchanged body/);assert.equal(badges(html)[0]?.tag,value?'em':undefined);assert.equal(JSON.stringify(input),before);}
  }));
 }

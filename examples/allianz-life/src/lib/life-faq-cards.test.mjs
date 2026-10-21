@@ -3,8 +3,10 @@ import fs from 'node:fs';
 import Module from 'node:module';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import test from 'node:test';
 import { loadSource, sourceRoot, require, render } from '../components/executive-biography/__tests__/sdk-test-helper.mjs';
+import { assertWysiwygCanvas } from '../components/allianz-card-grid/__tests__/wysiwyg-assertions.mjs';
 
 const React = require('react');
 const sdk = require('@sitecore-content-sdk/nextjs');
@@ -216,7 +218,7 @@ test('installed SDK author markers preserve each used native field once while fi
   }
 });
 
-test('cleared and changed authored text/links keep metadata, never borrow source labels or fallback to a homepage', () => {
+test('authored text stays native while cleared links add no canvas controls or fallback destination', () => {
   const data = navigation();
   data.children.results[0].fieldCollection.find(field => field.name === 'Heading').jsonValue.value = 'An authored category';
   data.children.results[0].fieldCollection.find(field => field.name === 'Link').jsonValue.value = { href: '' };
@@ -224,7 +226,7 @@ test('cleared and changed authored text/links keep metadata, never borrow source
   assert.match(visitor, /An authored category/);
   assert.doesNotMatch(visitor, />General life insurance</);
   assert.equal(select(dom(visitor), 'a').length, 2);
-  assert.ok(markers(editing).some(marker => marker.itemId === id(10) && marker.fieldId === fieldId('link')));
+  assert.ok(!markers(editing).some(marker => marker.itemId === id(10) && marker.fieldId === fieldId('link')));
   for (const Component of [components.LifeFaqNavigation, components.LifeFaqPrompt]) {
     const fallback = render(Component, undefined);
     assert.match(fallback, /allianz-missing-data/);
@@ -233,7 +235,7 @@ test('cleared and changed authored text/links keep metadata, never borrow source
   const p = prompt();
   p.primaryLink.jsonValue.value = { href: '' };
   assert.equal(select(dom(render(components.LifeFaqPrompt, p)), 'div', 'allianz-life-faq-product-cta').length, 0);
-  assert.ok(markers(render(components.LifeFaqPrompt, p, true)).some(marker => marker.itemId === id(30) && marker.fieldId === fieldId('primaryLink')));
+  assert.ok(!markers(render(components.LifeFaqPrompt, p, true)).some(marker => marker.itemId === id(30) && marker.fieldId === fieldId('primaryLink')));
 });
 
 test('React card keys use native owners and every SDK author field retains exact original object identity', () => {
@@ -243,7 +245,8 @@ test('React card keys use native owners and every SDK author field retains exact
   compiled.require = specifier => {
     if (specifier === '@sitecore-content-sdk/nextjs') return { ...sdk, useSitecore: () => ({ page: { mode: { isEditing: editing } } }) };
     if (specifier.endsWith('.css')) return {};
-    const local = /^(components|lib)\//.test(specifier) ? path.join(sourceRoot, specifier) : undefined;
+    const local = specifier.startsWith('.') ? path.resolve(path.dirname(filename), specifier)
+      : /^(components|lib)\//.test(specifier) ? path.join(sourceRoot, specifier) : undefined;
     if (local) return loadSource([local, local + '.ts', local + '.tsx'].find(candidate => fs.existsSync(candidate) && fs.statSync(candidate).isFile()));
     return require(specifier);
   };
@@ -275,15 +278,30 @@ test('React card keys use native owners and every SDK author field retains exact
   editing = false;
 });
 
-test('accepted Default and all seven strategy exports retain identical visitor/SDK author output', () => {
+test('frozen visitor baseline retains its source structure and current editing follows WYSIWYG', () => {
   const beforeFile = path.join(prep, 'implementation/faq-cards/before/src/components/allianz-card-grid/AllianzCardGrid.tsx');
+  assert.equal(createHash('sha256').update(fs.readFileSync(beforeFile)).digest('hex'), '866fc8fc9d454b432fa623010852fc9d248e934a6e343a93ff533be85b95754f');
   const accepted = loadSource(beforeFile);
   const data = prompt();
   const params = { columns: '3', layout: 'cards', headingLevel: 'h4', theme: 'transparent' };
   const names = ['Default', 'StrategyIntro', 'StrategyBrandIntro', 'StrategyIntroSplit', 'StrategyIntroTiles',
     'StrategyIntroFlippedTiles', 'StrategyIntroResources', 'StrategyStackedPair'];
-  for (const name of names) for (const editing of [false, true]) {
-    assert.equal(render(components[name], data, editing, params), render(accepted[name], data, editing, params), name + ' output changed');
+  for (const name of names) {
+    const visitor = render(components[name], data, false, params);
+    let historicalScope = visitor;
+    if (name === 'Default') {
+      // This Oct8 baseline predates the accepted unlinked-card preservation fix.
+      // Verify every restored source body and exact wrapper before comparing all
+      // remaining historical markup, without rewriting the frozen baseline.
+      for (const card of data.children.results) {
+        const body = card.fieldCollection.find(field => field.name === 'Body').jsonValue.value;
+        const restored = `<div class="m-card"><div class="m-card__header"></div><div class="m-card__body">${body}</div></div>`;
+        assert.ok(historicalScope.includes(restored));
+        historicalScope = historicalScope.replace(restored, '');
+      }
+    }
+    assert.equal(historicalScope, render(accepted[name], data, false, params), name + ' historical visitor structure');
+    assertWysiwygCanvas(visitor, render(components[name], data, true, params), data, name + ' editor canvas');
   }
 });
 

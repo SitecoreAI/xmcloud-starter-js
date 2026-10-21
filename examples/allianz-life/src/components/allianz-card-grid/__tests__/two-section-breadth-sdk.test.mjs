@@ -26,6 +26,7 @@ const decode = (html) => html.replaceAll('&amp;', '&').replaceAll('&quot;', '"')
   .replaceAll('&nbsp;', ' ').replaceAll('&reg;', '®').replaceAll('&rsquo;', '’');
 const text = (html) => decode(html.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim();
 const value = (field) => field?.jsonValue?.value;
+const populated = field => { const v = value(field); return typeof v === 'string' ? Boolean(v.trim()) : Boolean(v?.src || v?.href || v?.text); };
 const sourceData = (component) => component.fields.data.datasource;
 const fieldType = (name) => ['body', 'subheading', 'summary'].includes(name) ? 'Rich Text'
   : /Image|image|icon/.test(name) && name !== 'iconTheme' ? 'Image'
@@ -146,12 +147,13 @@ test('early editorial stage and offers short overlay stage retain source heading
     assert.match(visitor, /c-stage__image--short/);
     assert.equal(visitor.includes('c-hero m-hero-overlay'), route === offers);
     const editing = render(Hero[variant], data, true, component.params);
-    for (const name of ['heading', 'body', 'desktopImage', 'mobileImage']) assert.ok(editing.includes(marker(data, name)));
+    for (const name of ['heading', 'body', 'desktopImage']) assert.equal(editing.includes(marker(data, name)), populated(data[name]), name);
+    assert.ok(!editing.includes(marker(data, 'mobileImage')), 'mobile rendition remains available through content fields rather than an extra canvas image');
     assert.equal(JSON.stringify(data), before);
   }
 });
 
-test('cleared stage text and desktop/mobile images stay empty for visitors and retain native editing fields', () => {
+test('cleared stage text and responsive images stay empty in both canvases with native Content data retained', () => {
   for (const [route, variant] of [[early, 'Editorial'], [offers, 'Editorial']]) {
     const component = route.components[1], data = nativeData(component);
     const initial = render(Hero[variant], data, false, component.params), original = structuredClone(data);
@@ -160,7 +162,8 @@ test('cleared stage text and desktop/mobile images stay empty for visitors and r
     const before = JSON.stringify(data), visitor = render(Hero[variant], data, false, component.params);
     assert.doesNotMatch(visitor, /<h1\b|c-hero__subHeadline|<source\b|src="\/allianz-assets\//);
     const editing = render(Hero[variant], data, true, component.params);
-    for (const name of ['heading', 'body', 'desktopImage', 'mobileImage']) assert.ok(editing.includes(marker(data, name)));
+    for (const name of ['heading', 'body', 'desktopImage']) assert.equal(editing.includes(marker(data, name)), populated(data[name]), name);
+    assert.ok(!editing.includes(marker(data, 'mobileImage')), 'mobile rendition remains available through content fields rather than an extra canvas image');
     assert.equal(JSON.stringify(data), before);
     assert.equal(render(Hero[variant], original, false, component.params), initial);
   }
@@ -188,12 +191,12 @@ test('one first-step datasource renders the native introduction once before its 
   assert.match(visitor, /class="l-grid__row u-margin-bottom-lg u-padding-top-lg"/);
   assert.match(visitor, /class="l-grid__column-medium-8 offset-medium-2 l-grid__column-small-12"/);
   const editing = render(Cards.RetirementRiskSteps, data, true, selectedParams(component));
-  for (const name of ['heading', 'subheading', 'body']) assert.ok(editing.includes(marker(data, name)));
+  for (const name of ['heading', 'subheading', 'body']) assert.equal(editing.includes(marker(data, name)), populated(data[name]), name);
   assert.equal(JSON.stringify(data), before);
   const original = data.body.jsonValue.value;
   data.body.jsonValue.value = '';
   assert.equal(count(render(Cards.RetirementRiskSteps, data, false, selectedParams(component)), /<p>/g), 4);
-  assert.ok(render(Cards.RetirementRiskSteps, data, true, selectedParams(component)).includes(marker(data, 'body')));
+  assert.ok(!render(Cards.RetirementRiskSteps, data, true, selectedParams(component)).includes(marker(data, 'body')));
   data.body.jsonValue.value = original;
   assert.equal(render(Cards.RetirementRiskSteps, data, false, selectedParams(component)), visitor);
 });
@@ -227,7 +230,7 @@ test('real SDK main placeholder preserves the complete 7/6 native rendering orde
     assert.equal(count(editing, /chrometype="rendering"/g), named.placements.length * 2);
     for (const placement of named.placements.filter(({ componentName }) => componentName !== 'AllianzBreadcrumbs')) {
       const data = placement.fields.data.datasource;
-      if (data.body && (placement.componentName !== 'AllianzCardGrid' || placement.params.FieldNames === 'RetirementRiskSteps'))
+      if (populated(data.body) && (placement.componentName !== 'AllianzCardGrid' || placement.params.FieldNames === 'RetirementRiskSteps'))
         assert.ok(editing.includes(marker(data, 'body')));
     }
     for (const mode of [false, true]) assert.equal(compact.render(mode), named.render(mode));
@@ -248,7 +251,7 @@ test('grey native bodies and final offers disclosure remain source-complete, uns
     const original = value(data.body);
     data.body.jsonValue.value = '';
     assert.doesNotMatch(render(RichText.Default, data, false, params), /<p\b|<sup\b|<hr\b/);
-    assert.ok(render(RichText.Default, data, true, params).includes(marker(data, 'body')));
+    assert.ok(!render(RichText.Default, data, true, params).includes(marker(data, 'body')));
     data.body.jsonValue.value = original;
     assert.equal(render(RichText.Default, data, false, params), visitor);
   }
@@ -292,7 +295,7 @@ test('study and financial-professional prompts retain distinct icons, source hea
     assert.ok(visitor.includes(`src="${value(card.icon).src}"`));
     if (value(card.body)) assert.ok(visitor.includes(value(card.body)));
     const editing = render(Cards.EditorialIntro, data, true, selectedParams(component));
-    for (const name of ['heading', 'subheading', 'body', 'icon', 'alphanumeral']) assert.ok(editing.includes(marker(card, name)));
+    for (const name of ['heading', 'subheading', 'body', 'icon', 'alphanumeral']) assert.equal(editing.includes(marker(card, name)), populated(card[name]), name);
     assert.equal(JSON.stringify(data), before);
   }
   const component = early.components[5], card = plannedData(component).children.results[0];
@@ -325,7 +328,7 @@ test('offers native pair preserves two grey product tiles, images, superscript d
       assert.ok(text(html).includes(text(value(card.body))));
       assert.ok(html.includes(`src="${value(card.image).src}"`));
       assert.ok(html.includes(`href="${value(card.links.targetItems[0].link).href}"`));
-      if (editing) for (const name of ['heading', 'subheading', 'body', 'image']) assert.ok(html.includes(marker(card, name)));
+      if (editing) for (const name of ['heading', 'subheading', 'body', 'image']) assert.equal(html.includes(marker(card, name)), populated(card[name]), name);
     }
   }
   assert.equal(JSON.stringify(data), before);
@@ -350,14 +353,14 @@ test('canonical native clears override populated fieldCollection without stale s
     }
     const editableNames = variant === 'EditorialStacked' ? ['heading', 'subheading', 'body', 'image']
       : ['heading', 'subheading', 'body', 'icon', 'alphanumeral'];
-    for (const name of editableNames) if (Object.hasOwn(card, name)) assert.ok(editing.includes(marker(card, name)), `${variant} empty ${name} remains editable`);
+    for (const name of editableNames) if (Object.hasOwn(card, name)) assert.ok(!editing.includes(marker(card, name)), `${variant} empty ${name} adds no canvas control`);
     assert.equal(JSON.stringify(data), before);
     data.children.results[0] = original.children.results[0];
     assert.equal(render(Cards[variant], data, false, params), populated);
   }
 });
 
-test('cleared ordered source links remain empty despite populated scalar fallback and original native editors stay mounted', () => {
+test('cleared ordered source links remain absent despite populated scalar fallback, with original Content metadata retained', () => {
   for (const component of [early.components[5], productTiles]) {
     const data = plannedData(component), card = data.children.results[0], variant = selectedVariant(component), params = selectedParams(component);
     const destination = value(card.link).href;
@@ -369,7 +372,7 @@ test('cleared ordered source links remain empty despite populated scalar fallbac
     const before = JSON.stringify(data);
     assert.ok(!render(Cards[variant], data, false, params).includes(`href="${destination}"`));
     const editing = render(Cards[variant], data, true, params);
-    assert.ok(editing.includes(marker(link, 'link')));
+    assert.ok(!editing.includes(marker(link, 'link')));
     assert.doesNotMatch(editing, /href="\/"/);
     assert.equal(JSON.stringify(data), before);
   }
@@ -391,7 +394,7 @@ test('missing link icons use the source SVG; an authored or cleared native Image
     const before = JSON.stringify(data);
     assert.equal(count(render(Cards[variant], data, false, params), /<svg\b/g), 0);
     const editing = render(Cards[variant], data, true, params);
-    assert.ok(editing.includes(marker(item, 'icon')));
+    assert.equal(editing.includes(marker(item, 'icon')), Boolean(value(item.icon)?.src));
     assert.equal(count(editing, /<svg\b/g), 0);
     assert.equal(JSON.stringify(data), before);
     item.icon.jsonValue.value = original;
@@ -416,7 +419,7 @@ test('clears stored directly in native fieldCollection preserve metadata and res
     for (const name of ['heading', 'body']) {
       const stale = original.find((field) => field.name === name)?.jsonValue?.value;
       if (stale) assert.ok(!normal.includes(stale));
-      assert.ok(editing.includes(marker(card, name)));
+      assert.ok(!editing.includes(marker(card, name)));
     }
     assert.equal(JSON.stringify(data), before);
     card.fieldCollection = original;

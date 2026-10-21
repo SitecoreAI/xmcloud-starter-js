@@ -59,7 +59,6 @@ export const Default = ({ fields, params, rendering }: NewsroomRecentReleasesPro
         })}
       </div></div></div>
       {!releases?.complete && <p role="status">Recent news releases are temporarily unavailable.</p>}
-      {editable && releases?.complete && !rows.length && <p role="status">Add dated press release pages beneath Newsroom year pages to populate recent news.</p>}
       {editable && Boolean(releases?.missingDates) && <p role="status">Some release dates are missing or invalid. Edit them on their release pages.</p>}
       {editable && Boolean(releases?.missingSources) && <p role="status">Some release pages still need their article content.</p>}
       <div className="l-grid__row"><div className="l-grid__column-medium-12 u-text-center"><footer><div className="tileLink u-margin-top-md u-margin-bottom-md">

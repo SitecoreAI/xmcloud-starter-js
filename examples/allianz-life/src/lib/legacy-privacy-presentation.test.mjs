@@ -94,27 +94,44 @@ test('Privacy CSS removes only duplicate group margins and is stronger than reco
   assert.deepEqual(rules[0].nodes.map(({ prop, value }) => [prop, value]), [['margin-top', '0'], ['margin-bottom', '0']]);
 });
 
-test('Privacy keeps genuine editor fields, cleared answers, and all ten panels open', () => {
+test('Privacy editing keeps normal closed panels and genuine metadata only for populated answers', () => {
   const data = panels(); data.children.results[0].body = field('body', '', 'entry-0');
   const input = props(data, true); const before = JSON.stringify(input);
   const html = render(Accordion.Privacy, input);
-  assert.equal((html.match(/aria-expanded="true"/g) || []).length, 10);
-  assert.doesNotMatch(html, /hidden=""/);
+  assert.equal((html.match(/aria-expanded="false"/g) || []).length, 10);
+  assert.equal((html.match(/hidden=""/g) || []).length, 10);
+  assert.doesNotMatch(html, /aria-expanded="true"|fieldId.*entry-0-body|\[No text in field\]/);
   for (let i = 0; i < 10; i++) {
     assert.match(html, new RegExp(`fieldId.*entry-${i}-heading`));
-    assert.match(html, new RegExp(`fieldId.*entry-${i}-body`));
+    if (i > 0) assert.match(html, new RegExp(`fieldId.*entry-${i}-body`));
   }
   assert.equal(JSON.stringify(input), before);
   assert.doesNotMatch(render(Accordion.Privacy, props(data)), /Authored <em>answer 0/);
 });
 
-test('Privacy preserves missing-datasource fallback and optional editable heading', () => {
+test('Privacy preserves missing-datasource fallback and only populated optional heading chrome', () => {
   assert.match(render(Accordion.Privacy, props(undefined)), /Add a datasource for AllianzLegacyAccordion/);
   const data = { ...panels(0), heading: field('heading', 'Authored heading') };
   assert.match(render(Accordion.Privacy, props(data)), /<h2>Authored heading<\/h2>/);
+  assert.match(render(Accordion.Privacy, props(data, true)), /fieldId.*test-only-item-heading/);
   data.heading = field('heading', '');
   assert.doesNotMatch(render(Accordion.Privacy, props(data)), /<h2/);
-  assert.match(render(Accordion.Privacy, props(data, true)), /fieldId.*test-only-item-heading/);
+  assert.doesNotMatch(render(Accordion.Privacy, props(data, true)), /fieldId.*test-only-item-heading|\[No text in field\]/);
+});
+
+test('Privacy panels with cleared headings show their body naturally while fully empty entries stay absent', () => {
+  const data = panels(2);
+  for (const entry of data.children.results) entry.heading.jsonValue.value = '';
+  data.children.results[1].body.jsonValue.value = '';
+  const before = JSON.stringify(data);
+  for (const editing of [false, true]) {
+    const html = render(Accordion.Privacy, props(data, editing));
+    assert.equal((html.match(/class="panel panel-default"/g) || []).length, 1);
+    assert.match(html, /<p>Authored <em>answer 0<\/em><\/p>/);
+    assert.doesNotMatch(html, /<button|hidden=""|entry-0-heading|entry-1-heading|entry-1-body|\[No text in field\]/);
+    assert.equal(html.includes('entry-0-body'), editing);
+  }
+  assert.equal(JSON.stringify(data), before);
 });
 
 test('Privacy panels keep unique accessible trigger targets across two renderings', () => {
@@ -138,14 +155,14 @@ test('Privacy keeps genuine SDK nested placeholders and safe authored links', ()
 
 // Exercise the actual component's handlers without a browser; live keyboard and
 // CMS save/reload verification remain publication gates.
-for (const variant of ['Default', 'Privacy']) {
-  test(`${variant} keeps repeated toggle, one-open, and allowMultiple behavior`, () => {
+for (const variant of ['Default', 'Privacy']) for (const editing of [false, true]) {
+  test(`${variant} ${editing ? 'editing' : 'visitor'} keeps repeated toggle, one-open, and allowMultiple behavior`, () => {
     let open = [];
     const hooks = { ...React, useId: () => 'test-instance', useState: () => [open, (fn) => { open = fn(open); }] };
-    const load = sourceLoader({ react: hooks, '@sitecore-content-sdk/nextjs': { ...sdk, useSitecore: () => ({ page: page() }) } });
+    const load = sourceLoader({ react: hooks, '@sitecore-content-sdk/nextjs': { ...sdk, useSitecore: () => ({ page: page(editing) }) } });
     const Component = load(accordionPath)[variant];
     const buttons = (params = {}) => {
-      let tree = Component(props(panels(2), false, params));
+      let tree = Component(props(panels(2), editing, params));
       if (typeof tree.type === 'function') tree = tree.type(tree.props);
       const output = [];
       const visit = (node) => {
@@ -156,8 +173,12 @@ for (const variant of ['Default', 'Privacy']) {
       };
       visit(tree); return output;
     };
+    assert.equal(buttons()[0].props['aria-expanded'], false);
+    assert.equal(buttons()[0].props.type, 'button');
     buttons()[0].props.onClick(); assert.deepEqual(open, ['entry-0']);
+    assert.equal(buttons()[0].props['aria-expanded'], true);
     buttons()[0].props.onClick(); assert.deepEqual(open, []);
+    assert.equal(buttons()[0].props['aria-expanded'], false);
     buttons()[0].props.onClick(); buttons()[1].props.onClick(); assert.deepEqual(open, ['entry-1']);
     buttons({ allowMultiple: '1' })[0].props.onClick(); assert.deepEqual(open, ['entry-1', 'entry-0']);
     buttons({ allowMultiple: '1' })[1].props.onClick(); assert.deepEqual(open, ['entry-0']);
@@ -198,8 +219,9 @@ test('Privacy cards preserve real editor metadata and genuinely cleared links', 
   assert.equal((publicHtml.match(/allianz-legacy-privacy-card-link/g) || []).length, 1);
   assert.doesNotMatch(publicHtml, /Read Policy/);
   const editing = render(Cards.Privacy, props(data, true));
-  assert.match(editing, /fieldId.*card-0-link/);
+  assert.doesNotMatch(editing, /fieldId.*card-0-link|\[No text in field\]/);
   assert.match(editing, /fieldId.*card-0-heading/); assert.match(editing, /fieldId.*card-0-body/);
+  assert.match(editing, /fieldId.*card-1-link/);
 });
 
 test('Privacy card marker is CSS-only, decorative, blue, and source-sized without layout changes', () => {

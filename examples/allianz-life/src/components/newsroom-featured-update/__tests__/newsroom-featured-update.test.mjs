@@ -32,15 +32,15 @@ test('curated feature reuses article title but renders distinct source copy and 
   assert.equal(render(Default, latest), html);
 });
 
-test('featured label/body/image and referenced title retain real empty-field editing metadata', () => {
+test('cleared featured fields stay off the canvas while populated fields keep native metadata', () => {
   const empty = {
     label: field('feature-label', 'Single-Line Text', ''), body: field('feature-body', 'Rich Text', ''), image: field('feature-image', 'Image', {}),
     release: { targetItem: { ...data.release.targetItem, title: field('feature-title', 'Single-Line Text', '') } },
     fieldCollection: [{ name: 'label', jsonValue: data.label.jsonValue }, { name: 'body', jsonValue: data.body.jsonValue }, { name: 'image', jsonValue: data.image.jsonValue }],
   };
-  assert.deepEqual(editingIds(render(Default, empty, true)), ['feature-body', 'feature-image', 'feature-label', 'feature-title']);
+  assert.deepEqual(editingIds(render(Default, empty, true)), []);
   assert.doesNotMatch(render(Default, empty), /Latest update|We have been recognized|<img|Most Ethical/);
-  assert.match(render(Default, { ...empty, release: null }, true), /Select the featured news release/);
+  assert.doesNotMatch(render(Default, { ...empty, release: null }, true), /Select the featured news release/);
   assert.doesNotMatch(render(Default, { ...data, release: { jsonValue: { value: '' }, targetItem: data.release.targetItem } }), /<h3>/);
   assert.doesNotMatch(render(Default, { ...data, release: { jsonValue: evidence.recent[0].nativeIds.articleId, targetItem: data.release.targetItem } }), /<h3>/);
   const external = { ...empty, body: field('feature-body', 'Rich Text', '<p><a href="https://www.linkedin.com/company/allianz-life" target="_blank">LinkedIn</a></p>') };

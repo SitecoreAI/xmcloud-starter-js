@@ -225,22 +225,23 @@ test('LifeFaqGroup owns each root heading and native child heading/body once in 
     for (const child of data.children.results) {
       assert.deepEqual(fields.filter((marker) => marker.itemId === child.id).map((marker) => marker.fieldId).sort(), ['native-body', 'native-heading']);
     }
-    assert.equal((html.match(/aria-expanded="true"/g) ?? []).length, group.questions.length);
-    assert.doesNotMatch(html, /hidden=""|native-primaryLink|Unused root body|Unused link/);
+    assert.equal((html.match(/aria-expanded="false"/g) ?? []).length, group.questions.length);
+    assert.equal((html.match(/hidden=""/g) ?? []).length, group.questions.length);
+    assert.doesNotMatch(html, /native-primaryLink|Unused root body|Unused link/);
     assert.equal(JSON.stringify(data), before);
   }
   assert.equal(count, 29);
 });
 
-test('LifeFaqGroup keeps cleared native fields editable and rejects undeclared anchor presentation', () => {
+test('LifeFaqGroup keeps cleared fields in input without canvas artifacts and rejects undeclared anchor presentation', () => {
   const group = groups[0], data = model(group);
   data.heading.jsonValue.value = '';
   data.children.results[0].body.jsonValue.value = '';
   const before = JSON.stringify(data);
   assert.doesNotMatch(render(Accordion.LifeFaqGroup, data, false, params(group)), /<h2/);
   const editing = render(Accordion.LifeFaqGroup, data, true, params(group));
-  assert.equal(markers(editing).filter((marker) => marker.itemId === `root-${group.anchor}`).length, 1);
-  assert.equal(markers(editing).filter((marker) => marker.itemId === data.children.results[0].id && marker.fieldId === 'native-body').length, 1);
+  assert.equal(markers(editing).filter((marker) => marker.itemId === `root-${group.anchor}`).length, 0);
+  assert.equal(markers(editing).filter((marker) => marker.itemId === data.children.results[0].id && marker.fieldId === 'native-body').length, 0);
   for (const anchor of [undefined, '', 'generallifeinsurancequestions', 'unknown', 'about-indexed-universal-life injected']) {
     assert.equal(render(Accordion.LifeFaqGroup, data, false, { RenderingIdentifier: anchor }), '');
     assert.match(render(Accordion.LifeFaqGroup, data, true, { RenderingIdentifier: anchor }), /role="status"/);
@@ -308,7 +309,9 @@ test('native disclosure handlers toggle entries and instances independently thro
   const tree = draw(), trigger = buttons()[1];
   assert.ok(nodes(tree, (element) => element.props?.id === trigger.props['aria-controls'])[0].props.hidden === false);
   editing = true;
-  assert.deepEqual(expanded(), [true, true, true, true]);
+  assert.deepEqual(expanded(), [false, true, false, false]);
+  buttons()[2].props.onClick();
+  assert.deepEqual(expanded(), [false, true, true, false]);
 });
 
 const heroData = () => ({
@@ -342,16 +345,27 @@ test('LifeFaqTitle supports block RTE titles and cleared authoring without inven
   assert.doesNotMatch(block, /<h1[^>]*><p/);
   data.heading.jsonValue.value = '';
   assert.doesNotMatch(render(Hero.LifeFaqTitle, data), /c-hero__headline/);
-  assert.deepEqual(markers(render(Hero.LifeFaqTitle, data, true)).map((marker) => marker.fieldId), ['native-heading']);
+  assert.deepEqual(markers(render(Hero.LifeFaqTitle, data, true)).map((marker) => marker.fieldId), []);
+  assert.equal(data.heading.jsonValue.value, '');
+  assert.ok(data.heading.jsonValue.metadata);
   assert.match(render(Hero.LifeFaqTitle, undefined), /AllianzHero/);
 });
 
-test('all existing Accordion and Hero variants retain exact installed-SDK visitor and editor output', () => {
+// Keep the historical embedded fingerprints above unchanged. Default Accordion's
+// unique instance-ID release predates this WYSIWYG change; its approved source
+// baseline is pinned separately instead of blessing the candidate's output.
+const approvedNormal = JSON.parse(fs.readFileSync(new URL('./accumulator-wysiwyg-approved-normal-baseline.fixture.json', import.meta.url)));
+const withoutFieldChrome = (html) => html.replace(/<code\b[^>]*type="text\/sitecore"[^>]*>[\s\S]*?<\/code>/g, '');
+test('all existing Accordion and Hero variants preserve approved visitor output and matching editing canvas', () => {
   for (const [key, hashes] of Object.entries(baseline.hashes)) {
     const [family, variant] = key.split('.');
-    for (const [index, editing] of [false, true].entries()) {
-      const html = render(({ Accordion, Hero })[family][variant], baseline.data, editing, baseline.params);
-      assert.equal(createHash('sha256').update(html).digest('hex'), hashes[index], `${key} editing=${editing}`);
-    }
+    const Component = ({ Accordion, Hero })[family][variant];
+    const visitor = render(Component, baseline.data, false, baseline.params);
+    assert.equal(createHash('sha256').update(visitor).digest('hex'), approvedNormal.hashes[key] ?? hashes[0], `${key} visitor`);
+    const editing = render(Component, baseline.data, true, baseline.params);
+    assert.equal(withoutFieldChrome(editing), visitor, `${key} editing canvas`);
+    // Metadata ownership is covered above with populated native entry fields;
+    // this historical fixture intentionally omits metadata on accordion children.
+    for (const marker of markers(editing)) assert.ok(JSON.stringify(baseline.data).includes(marker.fieldId));
   }
 });

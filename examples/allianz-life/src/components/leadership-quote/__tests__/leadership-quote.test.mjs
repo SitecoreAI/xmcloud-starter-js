@@ -19,10 +19,11 @@ test('leadership preserves source h2/h4/h6, centers one attribution and restores
   assert.equal(render(Default, data, false, { headingLevel: 'h4', alignment: 'left', columns: '1', theme: 'blue-soft' }), html);
 });
 
-test('leadership canonical clears preserve real authoring fields and never rehydrate historical quote/portrait', () => {
+test('leadership canonical clears add no canvas artifacts or historical quote/portrait', () => {
   const entry = { ...data.children.results[0], attribution: field('ceo-attribution', 'Rich Text', ''), portrait: field('ceo-portrait', 'Image', {}) };
   const root = { ...data, heading: field('ceo-heading', 'Single-Line Text', ''), quote: field('ceo-quote', 'Rich Text', ''), children: complete([wire(entry)]) };
-  assert.deepEqual(editingIds(render(Default, root, true)), ['ceo-attribution', 'ceo-heading', 'ceo-portrait', 'ceo-quote']);
+  assert.deepEqual(editingIds(render(Default, root, true)), []);
+  assert.doesNotMatch(render(Default, root, true), /\[No text in field\]|scEmptyImage/);
   assert.doesNotMatch(render(Default, root), /A few words|As a leading|Jasmine|<img/);
   assert.equal(leadershipFields(wire(root)).quote.jsonValue, root.quote.jsonValue);
   assert.equal(attributionFields(wire(entry)).portrait.jsonValue, entry.portrait.jsonValue);
@@ -41,5 +42,7 @@ test('leadership preserves the fixed empty attribution header and rejects absent
       assert.doesNotMatch(missing, /Jasmine|A few words|Add the leadership/);
     }
   }
-  assert.doesNotMatch(render(Default, { ...data, children: complete([]) }), /role="alert"/);
+  for (const editing of [false, true]) {
+    assert.doesNotMatch(render(Default, { ...data, children: complete([]) }, editing), /role="alert"|Add the leadership attribution/);
+  }
 });

@@ -93,15 +93,15 @@ test('stacked native query fieldCollection projection preserves values and order
   assert.ok(ids(editor).includes('test-s02-article-01-link-1-icon'));
   assert.ok(ids(editor).includes('test-s02-article-00-image'));
 });
-test('stacked cleared native media stays editable and public decorative images have explicit empty alt', () => {
+test('stacked cleared media adds no canvas control and public decorative images retain empty alt', () => {
   const native=data(stacked), normal=shown(stacked,native);
   const images=normal.match(/<img\b[^>]*class="c-image__img c-teaser__image-img"[^>]*>/g)||[];
   assert.equal(images.length,2);for(const img of images)assert.match(img,/alt=""/);
   native.children.results[0].image.jsonValue.value={};
   const before=JSON.stringify(native), publicHtml=shown(stacked,native), editor=shown(stacked,native,true);
   assert.equal((publicHtml.match(/class="tileImage"/g)||[]).length,1);
-  assert.ok(ids(editor).includes('test-s02-article-00-image'));
-  assert.match(editor,/scEmptyImage/);assert.equal(JSON.stringify(native),before);
+  assert.ok(!ids(editor).includes('test-s02-article-00-image'));
+  assert.doesNotMatch(editor,/scEmptyImage/);assert.equal(JSON.stringify(native),before);
 });
 test('four resource cards preserve exact h4/body/image/category content and a sibling collection footer row', () => {
   const html=shown(resources),native=data(resources),before=JSON.stringify(native);
@@ -128,14 +128,14 @@ test('market resource cards have centered semantic h4 titles without invented im
   assert.equal((html.match(/class="m-card__body"><\/div>/g)||[]).length,3);
   assert.equal((html.match(/class="l-grid__row/g)||[]).length,1);
 });
-test('resource clears preserve native editor controls and keep unlinked public card content static', () => {
+test('resource clears omit empty canvas controls and keep unlinked card content static', () => {
   const native=data(resources);native.primaryLink.jsonValue.value={};
   const first=native.children.results[0];first.link.jsonValue.value={};first.icon.jsonValue.value={};first.subheading.jsonValue.value='';
   const before=JSON.stringify(native),html=shown(resources,native),editor=shown(resources,native,true);
   assert.doesNotMatch(html,/See more articles|class="tileLink/);
   assert.equal((html.match(/class="m-card__footer"/g)||[]).length,3);
   assert.match(html,/<div class="m-card">/);assert.ok(html.includes(escaped(first.heading.jsonValue.value)));
-  for(const id of ['test-parent-risk-resource-cards-primaryLink','test-s04-linked-card-00-link','test-s04-linked-card-00-icon','test-s04-linked-card-00-subheading'])assert.ok(ids(editor).includes(id),id);
+  for(const id of ['test-parent-risk-resource-cards-primaryLink','test-s04-linked-card-00-link','test-s04-linked-card-00-icon','test-s04-linked-card-00-subheading'])assert.ok(!ids(editor).includes(id),id);
   assert.equal(JSON.stringify(native),before);
 });
 test('new resource cards preserve author alt, safe targets, queries/fragments and disabled service policy', () => {

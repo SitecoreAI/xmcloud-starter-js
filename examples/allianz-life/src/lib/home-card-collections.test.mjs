@@ -183,7 +183,7 @@ test('purpose projections recognize only title/text/visual/link and never restor
   }
 });
 
-test('real SDK editing exposes all cleared child fields and helpful root title without fixture resurrection', () => {
+test('real SDK editing omits cleared collection controls without fixture resurrection', () => {
   for (const [Component, visual, expectedIds] of [
     [ProductOfferings, 'icon', ['child-icon', 'child-link', 'child-text', 'child-title']],
     [HelpfulResources, 'image', ['child-image', 'child-link', 'child-text', 'child-title', 'root-title']],
@@ -201,9 +201,9 @@ test('real SDK editing exposes all cleared child fields and helpful root title w
       ] }]) };
     const before = JSON.stringify(data);
     const editing = render(Component, data, {}, true);
-    assert.deepEqual(editingFieldIds(editing), expectedIds);
-    assert.match(editing, /\[No text in field\]/);
-    assert.match(decode(editing), /"itemId":"native-child"/);
+    assert.deepEqual(editingFieldIds(editing), []);
+    assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
+    assert.doesNotMatch(decode(editing), /"itemId":"native-child"/);
     assert.doesNotMatch(editing, /Annuities|About Allianz|Other helpful resources|Old collection|Old child|Add a datasource/);
     const visitor = render(Component, data);
     assert.doesNotMatch(visitor, /<img|href=|Annuities|About Allianz|Other helpful resources|Old collection|Old child/);
@@ -254,7 +254,7 @@ test('obsolete design parameters and unrelated parent/child fields cannot change
   }
 });
 
-test('empty collections show only an editing explanation and never create fictional cards or author buttons', () => {
+test('empty collections add no editor explanation, fictional cards or author buttons', () => {
   for (const [Component, data, itemName] of [
     [ProductOfferings, productData, 'Product Offering'], [HelpfulResources, resourceData, 'Helpful Resource'],
   ]) {
@@ -264,7 +264,7 @@ test('empty collections show only an editing explanation and never create fictio
     assert.deepEqual(titles(visitor), []);
     assert.deepEqual(links(visitor), []);
     assert.doesNotMatch(visitor, /no .* child items|<button|class="m-card"|class="m-axlTile/);
-    assert.ok(editing.includes(`Add a ${itemName.toLowerCase()} to this section.`));
+    assert.ok(!editing.includes(`Add a ${itemName.toLowerCase()} to this section.`));
     assert.doesNotMatch(editing, /<button|href=|class="m-card"|class="m-axlTile/);
   }
 });

@@ -218,10 +218,10 @@ test('Benefits glyph mapping stays positional when authors change titles and reo
   assert.deepEqual(attrs(html, 'img', 'src'), BENEFITS.map(card => '/allianz-ui/life-overview/' + card.glyph + '.svg'));
   assert.doesNotMatch(html, /<h2\b/);
 });
-test('Benefits cleared active fields stay editable while absent fields create no synthetic controls', () => {
+test('Benefits cleared active fields stay absent from the canvas while absent fields create no synthetic controls', () => {
   const data = fixture(BENEFITS); childField(data, 0, 'Heading').value = ''; childField(data, 0, 'Body').value = '';
   assert.equal((render(Cards.LifeBenefitsGrid, data).match(/<h4\b/g) || []).length, 3);
-  assert.equal(markers(render(Cards.LifeBenefitsGrid, data, true)).length, 8);
+  assert.equal(markers(render(Cards.LifeBenefitsGrid, data, true)).length, 6);
   data.children.results[0].fieldCollection = [];
   assert.equal(markers(render(Cards.LifeBenefitsGrid, data, true)).length, 6);
 });
@@ -324,14 +324,14 @@ for (const [name, source, theme, columns, margin] of [
       assert.equal(render(Cards[name], named(data), editing), html); assert.equal(render(Cards[name], data, editing), html);
     }
   });
-  test(`${name} cleared native links/images/text retain author controls without synthetic visitor links`, () => {
+  test(`${name} cleared native links/images/text remain available in content fields without synthetic visitor links`, () => {
     const data = fixture(source, true);
     childField(data, 0, 'Link').value = { href: '', text: '' }; childField(data, 0, 'Image').value = {};
     childField(data, 0, 'Heading').value = ''; childField(data, 0, 'Body').value = '';
     const before = JSON.stringify(data), html = render(Cards[name], data);
     assert.equal(attrs(html, 'a', 'href').length, source.length - 1); assert.equal(attrs(html, 'img', 'src').length, source.length - 1);
     assert.equal((html.match(/class="m-card"/g) || []).length, source.length);
-    assert.equal(markers(render(Cards[name], data, true)).length, source.length * 4); assert.equal(JSON.stringify(data), before);
+    assert.equal(markers(render(Cards[name], data, true)).length, (source.length - 1) * 4); assert.equal(JSON.stringify(data), before);
   });
   test(`${name} does not infer missing active fields or accept the wrong child cardinality`, () => {
     const data = fixture(source, true); data.children.results[0].fieldCollection = [];

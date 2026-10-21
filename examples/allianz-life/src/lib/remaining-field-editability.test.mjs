@@ -89,10 +89,11 @@ function flatten(node) {
 }
 
 for (const [name, data] of cases) {
-  test(`${name}: cleared native fields retain real SDK chrome only in editing`, () => {
+  test(`${name}: cleared native fields create no optional canvas artifacts in any mode`, () => {
     const before = JSON.stringify(data);
     const html = render(components(name), data, 'editing');
-    assert.deepEqual(metadataIds(html), nativeFields(data).map((field) => field.metadata.fieldId).sort());
+    assert.deepEqual(metadataIds(html), []);
+    assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage/);
     assert.doesNotMatch(html, /href="\/"/);
     for (const mode of ['normal', 'preview']) {
       const visitor = render(components(name), data, mode);
@@ -115,7 +116,7 @@ for (const [name, data] of cases) {
     const original = nativeFields(data);
     const before = JSON.stringify(data);
     const nodes = flatten(mocked(props(data))).filter((node) => typeof node.type === 'string' && /^sdk-/.test(node.type));
-    for (const field of original) assert.ok(nodes.some((node) => node.props.field === field), `${field.metadata.fieldId} stays the original SDK object`);
+    assert.equal(nodes.length, 0, 'cleared native fields stay available in content fields without SDK canvas calls');
     assert.ok(nodes.every((node) => original.includes(node.props.field)), 'no nonexistent editing fields');
     for (const next of ['normal', 'preview']) {
       mode = next;
@@ -126,15 +127,17 @@ for (const [name, data] of cases) {
   });
 }
 
-test('editing exposes state-dependent content without calculator/form/video interactions', () => {
-  for (const [name, data] of cases.filter(([name]) => ['calculator', 'form', 'video'].includes(name))) {
-    const html = render(components(name), data, 'editing');
-    assert.doesNotMatch(html, /<form\b|<input\b|<video\b|type="submit"/);
-    if (name === 'video') assert.match(html, /<details open=""/);
+test('editing retains normal closed disclosure and accordion state', () => {
+  const data = { transcript: field('test-only-transcript', 'Rich Text', '<p>Existing transcript.</p>') };
+  for (const mode of ['normal', 'preview', 'editing']) {
+    const html = render(components('video'), data, mode);
+    assert.match(html, /<details class="allianz-local-video-transcript"/);
+    assert.doesNotMatch(html, /<details open/);
   }
   const accordion = cases.find(([name]) => name === 'legacy-accordion')[1];
-  assert.match(render(components('legacy-accordion'), accordion, 'editing'), /aria-expanded="true"/);
-  assert.match(render(components('legacy-accordion'), accordion, 'normal'), /aria-expanded="false"/);
+  for (const mode of ['normal', 'preview', 'editing']) {
+    assert.doesNotMatch(render(components('legacy-accordion'), accordion, mode), /aria-expanded="true"/);
+  }
 });
 
 test('normal and preview keep conditional result, rate, and static video behavior', () => {

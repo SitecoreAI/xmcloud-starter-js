@@ -46,7 +46,7 @@ test('ResourceNextSteps intrinsically renders the exact source child and three S
       assert.ok(position > previous); previous = position;
       if (editing) {
         assert.ok(html.includes(item.link.jsonValue.metadata.fieldId));
-        assert.ok(html.includes(item.icon.jsonValue.metadata.fieldId));
+        assert.ok(!html.includes(item.icon.jsonValue.metadata.fieldId));
       }
     }
     if (editing) for (const name of ['heading', 'body']) assert.ok(html.includes(`test-only-resource-next-${name}-field`));

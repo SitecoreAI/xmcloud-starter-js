@@ -419,7 +419,7 @@ test('all six source category introductions are preserved exactly before their p
   assert.match(html, /m-axlIntroductionBlock -is--stacked -no--image/);
 });
 
-test('real SDK preserves category introduction metadata and cleared-field authoring without root-heading prompts', () => {
+test('real SDK preserves populated category metadata and keeps cleared introductions off the canvas without root-heading prompts', () => {
   const records = dataset(), result = selectFixtureDirectory(records.current, records.biographies, records.categories);
   const obsoleteFields = { id: id(2), heading: field('Unused root heading', 'retired-root-heading'), unassignedHeading: field('Unused unassigned heading', 'retired-unassigned') };
   for (const group of result.groups) {
@@ -432,7 +432,7 @@ test('real SDK preserves category introduction metadata and cleared-field author
     assert.doesNotMatch(editing, /retired-root-heading|retired-unassigned|Unused root heading|Unused unassigned heading/);
     group.introduction = { jsonValue: { ...original, value: '' } };
     const cleared = render(ExpertDirectory, result, { id: id(2) }, true).replaceAll('&quot;', '"');
-    assert.ok(cleared.includes(`"fieldId":"${original.metadata.fieldId}"`));
+    assert.equal(cleared.includes(`"fieldId":"${original.metadata.fieldId}"`), false);
     assert.ok(!render(ExpertDirectory, result, { id: id(2) }).includes(original.value));
     group.introduction = { jsonValue: original };
   }

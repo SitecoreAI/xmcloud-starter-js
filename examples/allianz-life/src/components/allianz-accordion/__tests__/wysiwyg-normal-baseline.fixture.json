@@ -1,0 +1,512 @@
+{
+  "qualification": "Offline synthetic SDK regression baseline, not native CMS evidence. Original historical baseline remains unchanged; this pin reflects the approved accordion instance-ID release before WYSIWYG edits.",
+  "sourceCommit": "f2f97d59e94c06485394c75104607f2bd8e346b8",
+  "componentSourceSHA256": "bc954b8b1dfeefdc255e278ea4a00fd23c0cdfc36965581c02a5d2b1da1e50ee",
+  "inputFixtureSHA256": "2f56e7006f03bc967d4d81766efa9856274e6eeb7f29235f5c5561778383178a",
+  "renders": [
+    {
+      "variant": "Default",
+      "state": "filled",
+      "editing": false,
+      "sha256": "4a4e7dd41a705a6489d3ec4544f396a4b07e44b97981e82dde312b4761e1ee86"
+    },
+    {
+      "variant": "Default",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "f656cbe8dea326f1cefe2dba0c695b6682f5b54dd1d02c102904543680eebb8f"
+    },
+    {
+      "variant": "Default",
+      "state": "absent",
+      "editing": false,
+      "sha256": "f656cbe8dea326f1cefe2dba0c695b6682f5b54dd1d02c102904543680eebb8f"
+    },
+    {
+      "variant": "FaqRow",
+      "state": "filled",
+      "editing": false,
+      "sha256": "8cab3380b191d503a1261cb9fb4019f5756d695582328beb35db52f97fe1d6e6"
+    },
+    {
+      "variant": "FaqRow",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "2581f2e918a38a8d69d0cd8d0daff1bb704ad275eb2be990706b98b143a072b2"
+    },
+    {
+      "variant": "FaqRow",
+      "state": "absent",
+      "editing": false,
+      "sha256": "2581f2e918a38a8d69d0cd8d0daff1bb704ad275eb2be990706b98b143a072b2"
+    },
+    {
+      "variant": "LifeFaqGroup",
+      "state": "filled",
+      "editing": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "variant": "LifeFaqGroup",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "variant": "LifeFaqGroup",
+      "state": "absent",
+      "editing": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "variant": "Transcript",
+      "state": "filled",
+      "editing": false,
+      "sha256": "2f6dbc64069a687142eb39c462d1f11e0d8b615d51d3c924c5ec048ba1c94e3b"
+    },
+    {
+      "variant": "Transcript",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "d93e70414516def5c1c34599c9f35190a77e74aa73c451df137a44e5758778b5"
+    },
+    {
+      "variant": "Transcript",
+      "state": "absent",
+      "editing": false,
+      "sha256": "d93e70414516def5c1c34599c9f35190a77e74aa73c451df137a44e5758778b5"
+    },
+    {
+      "variant": "AboutFaq",
+      "state": "filled",
+      "editing": false,
+      "sha256": "6fb236ac2efdba06b6bc0a4e2378831088604f77b3e480163dd20fc90fee5a39"
+    },
+    {
+      "variant": "AboutFaq",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "b349f578b1868f677234c383bff88963253eaf47ad155675d99e79c670446a1a"
+    },
+    {
+      "variant": "AboutFaq",
+      "state": "absent",
+      "editing": false,
+      "sha256": "b349f578b1868f677234c383bff88963253eaf47ad155675d99e79c670446a1a"
+    },
+    {
+      "variant": "FixedTranscript",
+      "state": "filled",
+      "editing": false,
+      "sha256": "025722f4123e2aa385caebd2baba117d6d1e424ad67d1a35a962f171126a9a71"
+    },
+    {
+      "variant": "FixedTranscript",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "57bcd0da20919781cb235a5ea47b223f04e9ee3c2673b11e685fb8b3657b5d7d"
+    },
+    {
+      "variant": "FixedTranscript",
+      "state": "absent",
+      "editing": false,
+      "sha256": "57bcd0da20919781cb235a5ea47b223f04e9ee3c2673b11e685fb8b3657b5d7d"
+    },
+    {
+      "variant": "FixedProductAccordion",
+      "state": "filled",
+      "editing": false,
+      "sha256": "b7a3b7fc02e6696653939ddf6756f946f1b7b975bbab3a223b84bcdba0e4532e"
+    },
+    {
+      "variant": "FixedProductAccordion",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "a9fe4d3229d3ed5aff978f4b01d82819926fb05daadd62c8501279caaeda7ca8"
+    },
+    {
+      "variant": "FixedProductAccordion",
+      "state": "absent",
+      "editing": false,
+      "sha256": "a9fe4d3229d3ed5aff978f4b01d82819926fb05daadd62c8501279caaeda7ca8"
+    },
+    {
+      "variant": "RilaTranscript",
+      "state": "filled",
+      "editing": false,
+      "sha256": "3942b33e625679b9ec2bbfb32d824b9377c91cd1bfa1e0d6e96cb0fb2928a9ec"
+    },
+    {
+      "variant": "RilaTranscript",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "7fcd0dfc790d27d9567a03cca19191fcb831db939feee63305a00770a197397f"
+    },
+    {
+      "variant": "RilaTranscript",
+      "state": "absent",
+      "editing": false,
+      "sha256": "7fcd0dfc790d27d9567a03cca19191fcb831db939feee63305a00770a197397f"
+    },
+    {
+      "variant": "IapStrategies",
+      "state": "filled",
+      "editing": false,
+      "sha256": "64fd11aa7064cc29b15f76a63c63fde79b3688ddb91934d275deab0f3e0ab74a"
+    },
+    {
+      "variant": "IapStrategies",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "6fc8bc7f8f2b85b14ac7cd9effba79399bb95556434a52d74263b3bb8a11ccc1"
+    },
+    {
+      "variant": "IapStrategies",
+      "state": "absent",
+      "editing": false,
+      "sha256": "6fc8bc7f8f2b85b14ac7cd9effba79399bb95556434a52d74263b3bb8a11ccc1"
+    },
+    {
+      "variant": "AA5AllocationAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "368d455cc4fceaeffe5644dd23fb33e2f9cc7403488e729931b50f45a2885182"
+    },
+    {
+      "variant": "AA5AllocationAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "433ead55983fa9e4a863c75625f7d4f231a7376f14b8f0107c6b9ee92786ca39"
+    },
+    {
+      "variant": "AA5AllocationAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "433ead55983fa9e4a863c75625f7d4f231a7376f14b8f0107c6b9ee92786ca39"
+    },
+    {
+      "variant": "AA5CreditingAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "e6ecf23a2cd889227c8dee1711f361d3a0a6da6ea1e772ed896e9eb22600b172"
+    },
+    {
+      "variant": "AA5CreditingAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "7bdf3a50ccb65d156759516f1215b6cbc398af636def7ee548dafcdc8b40cd6e"
+    },
+    {
+      "variant": "AA5CreditingAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "7bdf3a50ccb65d156759516f1215b6cbc398af636def7ee548dafcdc8b40cd6e"
+    },
+    {
+      "variant": "AAPlusTranscript",
+      "state": "filled",
+      "editing": false,
+      "sha256": "2e62a3c9ddc43d76003c1076d596fb7e4fcb95a193ab1ef5bd45621cabbf452c"
+    },
+    {
+      "variant": "AAPlusTranscript",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+    },
+    {
+      "variant": "AAPlusTranscript",
+      "state": "absent",
+      "editing": false,
+      "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+    },
+    {
+      "variant": "AAPlusAllocationAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "2e62a3c9ddc43d76003c1076d596fb7e4fcb95a193ab1ef5bd45621cabbf452c"
+    },
+    {
+      "variant": "AAPlusAllocationAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+    },
+    {
+      "variant": "AAPlusAllocationAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+    },
+    {
+      "variant": "AAPlusCreditingAccordion",
+      "state": "filled",
+      "editing": false,
+      "sha256": "0f5da2a176a4de76bd924603db1ae2deab12bc659b1f48be069c5823e83f6e0e"
+    },
+    {
+      "variant": "AAPlusCreditingAccordion",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "9b93474442c4c939115c3ba244efe52c4f2dc018d4bd20385ea27642d5bc2e6a"
+    },
+    {
+      "variant": "AAPlusCreditingAccordion",
+      "state": "absent",
+      "editing": false,
+      "sha256": "9b93474442c4c939115c3ba244efe52c4f2dc018d4bd20385ea27642d5bc2e6a"
+    },
+    {
+      "variant": "ClassicTranscript",
+      "state": "filled",
+      "editing": false,
+      "sha256": "1e51b0de8e4aeaa2ffd2ba0175416638fe8e36ec5d7629973efdd9ad6eaef1ca"
+    },
+    {
+      "variant": "ClassicTranscript",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "2c32bfb840f14bbe031b3acd08098551d6ab480cb6b0b64b8b03235850fad87c"
+    },
+    {
+      "variant": "ClassicTranscript",
+      "state": "absent",
+      "editing": false,
+      "sha256": "2c32bfb840f14bbe031b3acd08098551d6ab480cb6b0b64b8b03235850fad87c"
+    },
+    {
+      "variant": "ClassicAllocationAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "2e62a3c9ddc43d76003c1076d596fb7e4fcb95a193ab1ef5bd45621cabbf452c"
+    },
+    {
+      "variant": "ClassicAllocationAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+    },
+    {
+      "variant": "ClassicAllocationAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "8ca81057a07e375ed23a07e2242ff3492d7bd1d3b90c39a3aea35420d34a92cc"
+    },
+    {
+      "variant": "ClassicCreditingAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "1e51b0de8e4aeaa2ffd2ba0175416638fe8e36ec5d7629973efdd9ad6eaef1ca"
+    },
+    {
+      "variant": "ClassicCreditingAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "2c32bfb840f14bbe031b3acd08098551d6ab480cb6b0b64b8b03235850fad87c"
+    },
+    {
+      "variant": "ClassicCreditingAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "2c32bfb840f14bbe031b3acd08098551d6ab480cb6b0b64b8b03235850fad87c"
+    },
+    {
+      "variant": "BenefitControlPlusTranscript",
+      "state": "filled",
+      "editing": false,
+      "sha256": "0bccf2f7285a33b5492bf53425d52a5e44307e1b42e9ff132a9946756d589888"
+    },
+    {
+      "variant": "BenefitControlPlusTranscript",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "3310edeaf769738eff6463f3ffa2041a6abdb1f03bee325daf7a8246fb6aedd1"
+    },
+    {
+      "variant": "BenefitControlPlusTranscript",
+      "state": "absent",
+      "editing": false,
+      "sha256": "3310edeaf769738eff6463f3ffa2041a6abdb1f03bee325daf7a8246fb6aedd1"
+    },
+    {
+      "variant": "BenefitControlPlusAllocationAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "0652a7ff02e46a4068e229649e09731b5d51b7cc5d8d0ab3f161d440780000da"
+    },
+    {
+      "variant": "BenefitControlPlusAllocationAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "2f8d77b3bd59f3b03271f87c66f89d16ecc7b76f2e7d50372f549b59c93e0daf"
+    },
+    {
+      "variant": "BenefitControlPlusAllocationAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "2f8d77b3bd59f3b03271f87c66f89d16ecc7b76f2e7d50372f549b59c93e0daf"
+    },
+    {
+      "variant": "BenefitControlPlusCreditingAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "0652a7ff02e46a4068e229649e09731b5d51b7cc5d8d0ab3f161d440780000da"
+    },
+    {
+      "variant": "BenefitControlPlusCreditingAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "2f8d77b3bd59f3b03271f87c66f89d16ecc7b76f2e7d50372f549b59c93e0daf"
+    },
+    {
+      "variant": "BenefitControlPlusCreditingAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "2f8d77b3bd59f3b03271f87c66f89d16ecc7b76f2e7d50372f549b59c93e0daf"
+    },
+    {
+      "variant": "EssentialIncome7Transcript",
+      "state": "filled",
+      "editing": false,
+      "sha256": "7de5eab4bfc4e61e2bdcf37e1b339c11d33fa2aa6d394795d40a641502333938"
+    },
+    {
+      "variant": "EssentialIncome7Transcript",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "01327125f0652af4fc2fe4a8c19126463dabf65c77c1493a7cbb36e9b5c4bf84"
+    },
+    {
+      "variant": "EssentialIncome7Transcript",
+      "state": "absent",
+      "editing": false,
+      "sha256": "01327125f0652af4fc2fe4a8c19126463dabf65c77c1493a7cbb36e9b5c4bf84"
+    },
+    {
+      "variant": "EssentialIncome7AllocationAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "bb996f241197ecc7f06f6512cb841002a51ea90747c2389e35f9cafa6daf621e"
+    },
+    {
+      "variant": "EssentialIncome7AllocationAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "317fd0bcd21546fd61dc1dbbd7247f68dc921bb6a8894e060fb1b42a56ba85cf"
+    },
+    {
+      "variant": "EssentialIncome7AllocationAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "317fd0bcd21546fd61dc1dbbd7247f68dc921bb6a8894e060fb1b42a56ba85cf"
+    },
+    {
+      "variant": "EssentialIncome7CreditingAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "28e6addb1bcbdf105f3b8ef83e1a7300534be2f9e2f360ad6c180c13fbf095b5"
+    },
+    {
+      "variant": "EssentialIncome7CreditingAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "be5ece95f34b6689db81d121ea5b5020525676fb1c2c7c83918615202afa8aa9"
+    },
+    {
+      "variant": "EssentialIncome7CreditingAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "be5ece95f34b6689db81d121ea5b5020525676fb1c2c7c83918615202afa8aa9"
+    },
+    {
+      "variant": "RetirementFoundationAdvAllocationAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "75c9bf21c81dc45847c2b5d91aa24dda32d6bcb699d9a720f81430f9e14af66b"
+    },
+    {
+      "variant": "RetirementFoundationAdvAllocationAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "40e039bc85854be9dad56a855fbeb7b25669304cdf1107695f76642d8d3f908a"
+    },
+    {
+      "variant": "RetirementFoundationAdvAllocationAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "40e039bc85854be9dad56a855fbeb7b25669304cdf1107695f76642d8d3f908a"
+    },
+    {
+      "variant": "RetirementFoundationAdvCreditingAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "75c9bf21c81dc45847c2b5d91aa24dda32d6bcb699d9a720f81430f9e14af66b"
+    },
+    {
+      "variant": "RetirementFoundationAdvCreditingAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "40e039bc85854be9dad56a855fbeb7b25669304cdf1107695f76642d8d3f908a"
+    },
+    {
+      "variant": "RetirementFoundationAdvCreditingAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "40e039bc85854be9dad56a855fbeb7b25669304cdf1107695f76642d8d3f908a"
+    },
+    {
+      "variant": "CoreIncome7Transcript",
+      "state": "filled",
+      "editing": false,
+      "sha256": "7de5eab4bfc4e61e2bdcf37e1b339c11d33fa2aa6d394795d40a641502333938"
+    },
+    {
+      "variant": "CoreIncome7Transcript",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "01327125f0652af4fc2fe4a8c19126463dabf65c77c1493a7cbb36e9b5c4bf84"
+    },
+    {
+      "variant": "CoreIncome7Transcript",
+      "state": "absent",
+      "editing": false,
+      "sha256": "01327125f0652af4fc2fe4a8c19126463dabf65c77c1493a7cbb36e9b5c4bf84"
+    },
+    {
+      "variant": "CoreIncome7AllocationAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "b54b5fa181151a5b97d8cc0fd223fa5107933721911854efc37ed9ea2e6e7ceb"
+    },
+    {
+      "variant": "CoreIncome7AllocationAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "02cc67576cd29cf9fd8d6e9b4d010e6909cdcd644a6748cc0db4018e46868fc1"
+    },
+    {
+      "variant": "CoreIncome7AllocationAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "02cc67576cd29cf9fd8d6e9b4d010e6909cdcd644a6748cc0db4018e46868fc1"
+    },
+    {
+      "variant": "CoreIncome7CreditingAnswers",
+      "state": "filled",
+      "editing": false,
+      "sha256": "b54b5fa181151a5b97d8cc0fd223fa5107933721911854efc37ed9ea2e6e7ceb"
+    },
+    {
+      "variant": "CoreIncome7CreditingAnswers",
+      "state": "cleared",
+      "editing": false,
+      "sha256": "02cc67576cd29cf9fd8d6e9b4d010e6909cdcd644a6748cc0db4018e46868fc1"
+    },
+    {
+      "variant": "CoreIncome7CreditingAnswers",
+      "state": "absent",
+      "editing": false,
+      "sha256": "02cc67576cd29cf9fd8d6e9b4d010e6909cdcd644a6748cc0db4018e46868fc1"
+    }
+  ]
+}

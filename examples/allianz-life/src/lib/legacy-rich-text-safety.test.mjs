@@ -90,12 +90,13 @@ for (const mode of ['fixture', 'connected']) {
     assert.equal(JSON.stringify(data), before);
   }));
 
-  test(`${mode}: cleared fields remain cleared and editable; missing datasource retains fallback`, () => withMode(mode, () => {
+  test(`${mode}: cleared optional fields add no canvas placeholder; missing datasource retains fallback`, () => withMode(mode, () => {
     const data = { heading: field('', 'heading', 'Single-Line Text'), subheading: field('', 'subheading'), body: field('') };
     const before = JSON.stringify(data);
     assert.doesNotMatch(render(LegacyRichText, data), /<a\b|<h2\b|service-unavailable/);
     const editor = render(LegacyRichText, data, true);
-    for (const name of ['heading', 'subheading', 'body']) assert.ok(editor.includes(`test-legacy-${name}-field`));
+    for (const name of ['heading', 'subheading', 'body']) assert.ok(!editor.includes(`test-legacy-${name}-field`));
+    assert.doesNotMatch(editor, /\[No text in field\]|allianz-legacy-editorial/);
     assert.match(render(LegacyRichText, undefined), /Add a datasource/);
     assert.doesNotMatch(render(LegacyRichText, {}), /<a\b|service-unavailable/);
     assert.equal(JSON.stringify(data), before);
@@ -114,4 +115,26 @@ test('nonediting preview also applies visitor link policy without mutating origi
   }, React.createElement(LegacyRichText, { params: {}, fields: { data: { datasource: data } } })));
   assert.ok(html.includes(expectedVisitorBody(data.body.jsonValue.value)));
   assert.equal(JSON.stringify(data), before);
+});
+
+test('metadata-only optional body stays absent and restored content keeps genuine native metadata', () => {
+  const populated = '<p>Authored body with <strong>source formatting</strong>.</p>';
+  const data = { body: field(populated) }, original = JSON.stringify(data);
+  for (const value of ['', undefined]) {
+    data.body.jsonValue.value = value;
+    const cleared = JSON.stringify(data);
+    for (const editing of [false, true]) {
+      const html = render(LegacyRichText, data, editing);
+      assert.doesNotMatch(html, /\[No text in field\]|test-legacy-body-field|allianz-legacy-editorial/);
+    }
+    assert.equal(JSON.stringify(data), cleared);
+  }
+  data.body.jsonValue.value = populated;
+  for (const editing of [false, true]) {
+    const html = render(LegacyRichText, data, editing);
+    assert.ok(html.includes(populated));
+    assert.match(html, /allianz-legacy-editorial/);
+    assert.equal(html.includes('test-legacy-body-field'), editing);
+  }
+  assert.equal(JSON.stringify(data), original);
 });

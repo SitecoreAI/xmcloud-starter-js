@@ -15,9 +15,6 @@ export const Default = ({ fields, params }: AllianzRateTableProps) => {
     {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}
     {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} />}
     {shouldRenderTextField(data.captionText?.jsonValue, isEditing) && <Text editable={isEditing} tag="p" field={data.captionText?.jsonValue} />}
-    {isEditing ? <>
-      {shouldRenderTextField(data.tableBody?.jsonValue, true) && <RichText editable className="table-responsive" field={data.tableBody?.jsonValue} />}
-      {shouldRenderTextField(data.emptyState?.jsonValue, true) && <RichText editable field={data.emptyState?.jsonValue} />}
-    </> : data.tableBody?.jsonValue?.value ? <RichText editable={isEditing} className="table-responsive" field={data.tableBody?.jsonValue} /> : data.emptyState?.jsonValue?.value ? <RichText editable={isEditing} field={data.emptyState?.jsonValue} /> : null}
+    {shouldRenderTextField(data.tableBody?.jsonValue, isEditing) ? <RichText editable={isEditing} className="table-responsive" field={data.tableBody?.jsonValue} /> : shouldRenderTextField(data.emptyState?.jsonValue, isEditing) ? <RichText editable={isEditing} field={data.emptyState?.jsonValue} /> : null}
   </section>;
 };

@@ -254,7 +254,7 @@ test('Absent ordered collections cannot expose the duplicated scalar card link',
   assert.equal(JSON.stringify(data), before);
 });
 
-test('Cleared active offer fields retain six card author markers and both real navigation fields', () => {
+test('Cleared active offer fields add no empty canvas controls and retain native content field values', () => {
   const data = fixture();
   for (const card of data.children.results) {
     sourceField(card, 'heading').value = '';
@@ -263,7 +263,7 @@ test('Cleared active offer fields retain six card author markers and both real n
     card.fieldCollection.find(field => field.name === 'links').jsonValue[0].fields.link.value = { href: '' };
   }
   const before = JSON.stringify(data);
-  assert.equal(markers(render(Components.OfferCards, data, true)).length, 8);
+  assert.equal(markers(render(Components.OfferCards, data, true)).length, 0);
   const visitor = render(Components.OfferCards, data);
   assert.deepEqual(attributes(visitor, 'a', 'href'), []);
   assert.deepEqual(attributes(visitor, 'img', 'src'), []);
@@ -299,7 +299,7 @@ test('Question heading/icon can be cleared or replaced without inventing image a
   sourceField(card, 'icon').value = {};
   sourceField(card, 'heading').value = '';
   const before = JSON.stringify(data);
-  assert.equal(markers(render(Components.OfferQuestionPrompt, data, true)).length, 2);
+  assert.equal(markers(render(Components.OfferQuestionPrompt, data, true)).length, 0);
   const visitor = render(Components.OfferQuestionPrompt, data);
   assert.deepEqual(attributes(visitor, 'img', 'src'), []);
   assert.deepEqual(attributes(visitor, 'a', 'href'), []);

@@ -102,7 +102,10 @@ function harness({ variant = 'Default', order = 'react-first' } = {}) {
     constructor(attributes = {}, withinRail = false) { this.attributes = attributes; this.withinRail = withinRail; this.isConnected = true; this.textContent = attributes.textContent || ''; }
     getAttribute(name) { return this.attributes[name] ?? null; }
     contains(target) { return Boolean(target?.withinRail); }
-    closest() { return this.anchor || (/\#(?:service|demo)-unavailable$/.test(this.attributes.href || '') ? this : null); }
+    closest(selector) {
+      if (selector === '.editing-mode') return null;
+      return this.anchor || (/\#(?:service|demo)-unavailable$/.test(this.attributes.href || '') ? this : null);
+    }
     focus() {
       const from = document.activeElement; document.activeElement = this;
       if (from?.withinRail && !this.withinRail && rootTree) find(rootTree, (node) => node.type === 'ul' && node.props.onBlur).props.onBlur({ currentTarget: root, relatedTarget: this });

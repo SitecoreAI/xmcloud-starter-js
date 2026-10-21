@@ -78,15 +78,15 @@ test('LifeToolsTitle never reads unused native fields or fabricates absent text 
   assert.match(render(Hero.LifeToolsTitle, undefined, true, params), /AllianzHero/);
 });
 
-test('LifeToolsTitle retains real blank field editing chrome and omits blank visitor text', () => {
+test('LifeToolsTitle omits blank canvas text without changing native fields', () => {
   const input = freeze({ heading: native('heading', ''), body: native('body', '') });
   const before = JSON.stringify(input);
   const visitor = render(Hero.LifeToolsTitle, input, false, params);
   assert.doesNotMatch(visitor, /c-hero__headline|c-hero__subHeadline|kind="open"/);
   const editor = render(Hero.LifeToolsTitle, input, true, params);
-  assert.deepEqual(markers(editor).map((entry) => entry.fieldId), ['test-only-tools-heading', 'test-only-tools-body']);
-  assert.match(editor, /c-hero__headline/);
-  assert.match(editor, /h4 c-heading c-hero__subHeadline/);
+  assert.deepEqual(markers(editor), []);
+  assert.equal(editor, visitor);
+  assert.doesNotMatch(editor, /c-hero__headline|c-hero__subHeadline|No text in field/);
   assert.equal(JSON.stringify(input), before);
 });
 

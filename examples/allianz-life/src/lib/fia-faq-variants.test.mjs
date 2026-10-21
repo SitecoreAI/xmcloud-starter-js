@@ -107,10 +107,11 @@ test('two FAQ instances contain all answers and have unique connected trigger/pa
  for(const entry of fixture.groups.flatMap(x=>x.accordion.children))assert.ok(html.includes(entry.body));
  assert.equal((html.match(/l-grid__row u-margin-bottom-xl/g)||[]).length,2);
 });
-test('editing keeps answer panels open and includes real field metadata, including cleared fields',()=>{
+test('editing retains collapsed panels, populated metadata and cleared input without canvas prompts',()=>{
  const g=group(1);g.children.results[0].body=field('body','');const before=JSON.stringify(g);const html=render(Accordion.FaqRow,props(g,true));
- assert.equal((html.match(/aria-expanded="true"/g)||[]).length,2);assert.doesNotMatch(html,/hidden=""/);assert.match(html,/fieldId.*test-only-item-body/);assert.equal(JSON.stringify(g),before);
- assert.match(render(Hero.FixedFaq,props({heading:field('heading',''),body:field('body','')},true)),/fieldId.*test-only-item-heading/);
+ assert.equal((html.match(/aria-expanded="false"/g)||[]).length,2);assert.equal((html.match(/hidden=""/g)||[]).length,2);assert.match(html,/fieldId.*test-only-item-body/);assert.equal(JSON.stringify(g),before);
+ assert.doesNotMatch(render(Hero.FixedFaq,props({heading:field('heading',''),body:field('body','')},true)),/fieldId|No text in field/);
+ assert.equal(g.children.results[0].body.jsonValue.value,'');assert.ok(g.children.results[0].body.jsonValue.metadata);
 });
 function sectionProps(id='7',editing=false,children=[]) {return {...props(undefined,editing,{DynamicPlaceholderId:id}),rendering:{uid:`test-only-section-${id}`,componentName:'AllianzFaqSection',params:{DynamicPlaceholderId:id},placeholders:{'allianz-faq-section-{*}':children}}};}
 test('section uses genuine SDK AppPlaceholder, rejects guessed IDs and preserves source shared wrappers',()=>{

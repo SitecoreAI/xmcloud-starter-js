@@ -27,7 +27,8 @@ test('MediaContact splits four native fields with source name sizing and role/co
 test('MediaContact retains empty record fields, metadata, and direct aliases without fallback content', () => {
   const empty = { id: 'test-empty-record', name: field('contact-name', 'Single-Line Text', ''), role: field('contact-role', 'Single-Line Text', ''),
     telephone: field('contact-telephone', 'General Link', { href: '', text: '' }), email: field('contact-email', 'General Link', { href: '', text: '' }) };
-  assert.deepEqual(editingIds(renderRecord(MediaContact, empty, true)), ['contact-email', 'contact-name', 'contact-role', 'contact-telephone']);
+  assert.deepEqual(editingIds(renderRecord(MediaContact, empty, true)), []);
+  assert.doesNotMatch(renderRecord(MediaContact, empty, true), /\[No text in field\]/);
   assert.doesNotMatch(renderRecord(MediaContact, empty), /Brett|Claire|href=|<br/);
   const normalized = mediaContactFields(wire(empty));
   assert.equal(normalized.email.jsonValue, empty.email.jsonValue);

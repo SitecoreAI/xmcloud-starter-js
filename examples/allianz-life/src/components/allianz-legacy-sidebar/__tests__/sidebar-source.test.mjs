@@ -143,7 +143,10 @@ test('real SDK preserves current class, authored attributes, editing metadata an
   current.title.jsonValue.value = ''; current.link.jsonValue.value.href = '';
   const h = harness(witness.route); h.render(props(datasource));
   const empty = h.nodes().filter((n) => n.type === 'sdk-link').find((n) => n.props.field.metadata.itemId === current.id);
-  assert.equal(empty.props.field, current.link.jsonValue); assert.equal(empty.props.children.props.field, current.title.jsonValue); assert.equal(empty.props['aria-current'], undefined);
+  assert.equal(empty, undefined, 'A cleared optional link adds no SDK link placeholder');
+  const clearedBefore = JSON.stringify(datasource);
+  for (const editing of [false, true]) assert.doesNotMatch(render(editing), /Add a link|\[No text in field\]/);
+  assert.equal(JSON.stringify(datasource), clearedBefore);
 });
 test('empty and missing data retain an empty sidebar and the Default export', () => {
   const h = harness('/empty');

@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 const ts = require('typescript');
 const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
-const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
+const { SitecoreProvider, Text, Image, Link } = require('@sitecore-content-sdk/nextjs');
 const sourceRoot = fileURLToPath(new URL('..', import.meta.url));
 const modules = new Map();
 
@@ -77,10 +77,9 @@ function metadataIds(html) {
     .map((match) => JSON.parse(match[1].replaceAll('&quot;', '"').replaceAll('&amp;', '&')).fieldId)
     .sort();
 }
-function expectNativeFields(html, expectedIds) {
-  assert.deepEqual(metadataIds(html), [...expectedIds].sort());
-  assert.match(html, /\[No text in field\]/);
-  assert.doesNotMatch(html, /href="\/"/);
+function expectNoEmptyFieldChrome(html) {
+  assert.deepEqual(metadataIds(html), []);
+  assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage|href="\/"/);
 }
 
 const hero = {
@@ -98,38 +97,30 @@ const card = {
   alphanumeral: text('card-alphanumeral'), link: link('card-link'),
 };
 const cases = [
-  ['Hero', 'home', hero, ['hero-heading', 'hero-body', 'hero-eyebrow', 'hero-desktop', 'hero-mobile', 'hero-primary', 'hero-secondary']],
-  ['Hero', 'product', hero, ['hero-heading', 'hero-body', 'hero-desktop', 'hero-mobile', 'hero-primary']],
-  ['RichText', 'introduction', introduction, ['intro-heading', 'intro-subheading', 'intro-body', 'intro-primary']],
-  ['RichText', 'rich-text', introduction, ['intro-body']],
-  ['RichText', 'disclosures', introduction, ['intro-body']],
-  ['Article', 'article', { heading: text('article-heading'), summary: rich('article-summary'), body: rich('article-body') }, ['article-heading', 'article-summary', 'article-body']],
-  ['CTA', 'cta', { heading: text('cta-heading'), body: rich('cta-body'), link: link('cta-link') }, ['cta-heading', 'cta-body', 'cta-link']],
-  ['Accordion', 'accordion', { heading: text('accordion-heading'), primaryLink: link('accordion-link'), children: { results: [{ id: 'entry', heading: text('entry-heading'), body: rich('entry-body') }] } }, ['accordion-heading', 'accordion-link', 'entry-heading', 'entry-body']],
+  ['Hero', 'home', hero],
+  ['Hero', 'product', hero],
+  ['RichText', 'introduction', introduction],
+  ['RichText', 'rich-text', introduction],
+  ['RichText', 'disclosures', introduction],
+  ['Article', 'article', { heading: text('article-heading'), summary: rich('article-summary'), body: rich('article-body') }],
+  ['CTA', 'cta', { heading: text('cta-heading'), body: rich('cta-body'), link: link('cta-link') }],
+  ['Accordion', 'accordion', { heading: text('accordion-heading'), primaryLink: link('accordion-link'), children: { results: [{ id: 'entry', heading: text('entry-heading'), body: rich('entry-body') }] } }],
   ...['stacked', 'image-left', 'image-right', 'bordered'].map((layout) => ['CardGrid', layout,
     { ...introduction, children: { results: [card] } },
-    ['intro-heading', 'intro-subheading', 'intro-body', 'intro-primary', 'card-heading', 'card-subheading', 'card-body', 'card-image', 'card-icon', 'card-alphanumeral', 'card-link'],
   ]),
-  ['CardGrid', 'cards', { ...introduction, children: { results: [card] } }, ['intro-heading', 'intro-subheading', 'intro-body', 'intro-primary', 'card-heading', 'card-body', 'card-image', 'card-link']],
-  ['CardGrid', 'list', { children: { results: [card] } }, ['card-heading', 'card-body', 'card-link']],
+  ['CardGrid', 'cards', { ...introduction, children: { results: [card] } }],
+  ['CardGrid', 'list', { children: { results: [card] } }],
 ];
 
-for (const [name, layout, datasource, expectedIds] of cases) {
-  test(`${name} ${layout}: cleared native fields retain SDK authoring metadata`, () => {
-    const html = render(components[name], datasource, layout, true);
-    expectNativeFields(html, expectedIds);
-    if (name === 'Accordion') {
-      assert.match(html, /aria-expanded="true"/);
-      assert.doesNotMatch(html, /class="c-accordion__item-content" hidden/);
-    }
-    if (expectedIds.some((id) => /image|desktop|mobile|icon/.test(id))) assert.match(html, /scEmptyImage/);
+for (const [name, layout, datasource] of cases) {
+  test(`${name} ${layout}: cleared optional fields do not add Page Builder canvas artifacts`, () => {
+    expectNoEmptyFieldChrome(render(components[name], datasource, layout, true));
   });
   test(`${name} ${layout}: normal mode omits empty native controls`, () => {
     const html = render(components[name], datasource, layout, false);
     assert.deepEqual(metadataIds(html), []);
     assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage|href="\/"/);
     assert.doesNotMatch(html, /class="a-link"/);
-    if (name === 'Accordion') assert.match(html, /aria-expanded="false"/);
   });
 }
 
@@ -149,6 +140,52 @@ for (const name of componentNames) {
   }
 }
 
+test('empty and metadata-only optional fields stay absent in both rendering modes', () => {
+  const checks = [
+    [helpers.shouldRenderTextField, ['', undefined]],
+    [helpers.shouldRenderImageField, [{}, { src: '' }, undefined]],
+    [helpers.shouldRenderLinkField, [{}, { href: '' }, undefined]],
+  ];
+  for (const [shouldRender, emptyValues] of checks) {
+    for (const isEditing of [false, true]) {
+      for (const value of emptyValues) {
+        const field = { metadata: { fieldId: 'retained-in-input', itemId: 'native-datasource' },
+          ...(value === undefined ? {} : { value }) };
+        const original = JSON.stringify(field);
+        assert.equal(shouldRender(field, isEditing), false);
+        assert.equal(JSON.stringify(field), original);
+      }
+    }
+  }
+});
+
+test('populated guarded fields retain native SDK editing metadata and input identity', () => {
+  const datasource = {
+    text: field('populated-text', 'Single-Line Text', 'Authored heading'),
+    image: field('populated-image', 'Image', { src: '/authored.svg', alt: 'Authored image' }),
+    link: field('populated-link', 'General Link', { href: '/about', text: 'Authored link' }),
+  };
+  const original = JSON.stringify(datasource);
+  const Probe = ({ fields }) => {
+    const data = fields.data.datasource;
+    return React.createElement(React.Fragment, null,
+      helpers.shouldRenderTextField(data.text.jsonValue, true)
+        ? React.createElement(Text, { field: data.text.jsonValue, editable: true }) : null,
+      helpers.shouldRenderImageField(data.image.jsonValue, true)
+        ? React.createElement(Image, { field: data.image.jsonValue, editable: true }) : null,
+      helpers.shouldRenderLinkField(data.link.jsonValue, true)
+        ? React.createElement(Link, { field: data.link.jsonValue, editable: true }) : null,
+    );
+  };
+  const html = render(Probe, datasource, 'test', true);
+  assert.deepEqual(metadataIds(html), ['populated-image', 'populated-link', 'populated-text']);
+  assert.match(html, /Authored heading/);
+  assert.match(html, /src="\/authored.svg"/);
+  assert.match(html, /href="\/about"/);
+  assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage/);
+  assert.equal(JSON.stringify(datasource), original);
+});
+
 test('field state preserves real metadata and never invents missing authoring fields', () => {
   for (const shouldRender of [helpers.shouldRenderTextField, helpers.shouldRenderImageField, helpers.shouldRenderLinkField]) {
     assert.equal(shouldRender(undefined, true), false);
@@ -167,12 +204,12 @@ test('field state preserves real metadata and never invents missing authoring fi
   assert.equal(helpers.shouldRenderLinkField(populated, false), true);
 });
 
-test('empty link collection entries keep each SDK link field editable', () => {
+test('empty link collection entries do not add Page Builder canvas artifacts', () => {
   const grid = { children: { results: [{ ...card, links: { targetItems: [
     { id: 'first', link: link('collection-first') }, { id: 'second', link: link('collection-second') },
   ] } }] } };
   const html = render(components.CardGrid, grid, 'stacked', true);
-  expectNativeFields(html, ['card-heading', 'card-subheading', 'card-body', 'card-image', 'card-icon', 'card-alphanumeral', 'collection-first', 'collection-second']);
+  expectNoEmptyFieldChrome(html);
   assert.doesNotMatch(render(components.CardGrid, grid, 'stacked', false), /class="tileLink"/);
 });
 

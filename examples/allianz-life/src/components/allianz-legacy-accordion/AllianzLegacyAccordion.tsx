@@ -19,19 +19,23 @@ export const Default = ({ fields, params, rendering, privacySpacing = false }: L
     {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}
     <div className={privacySpacing ? 'panel-group accordion allianz-legacy-privacy-accordion' : 'panel-group accordion'}>
       {(data.children?.results ?? []).map((item, index) => {
-        const isOpen = isEditing || open.includes(item.id);
+        const showHeading = shouldRenderTextField(item.heading?.jsonValue, isEditing);
+        const showBody = shouldRenderTextField(item.body?.jsonValue, isEditing);
+        const showLink = shouldRenderLinkField(item.link?.jsonValue, isEditing);
+        const isOpen = !showHeading || open.includes(item.id);
         const id = `${instance}-panel-${index}`;
         const placeholder = `allianz-legacy-accordion-${index + 1}`;
         const hasNestedContent = !!rendering.placeholders?.[placeholder]?.length;
+        if (!showHeading && !showBody && !showLink && !hasNestedContent) return null;
         return <section key={item.id} className="panel panel-default">
-          <div className="panel-heading"><h4 className="panel-title">
+          {showHeading && <div className="panel-heading"><h4 className="panel-title">
             <button type="button" className={`allianz-legacy-accordion-trigger ${isOpen ? '' : 'collapsed'}`} aria-expanded={isOpen} aria-controls={id} onClick={() => setOpen((current) => isOpen ? current.filter((key) => key !== item.id) : params.allowMultiple === '1' ? [...current, item.id] : [item.id])}>
               <Text editable={isEditing} field={item.heading?.jsonValue} /><span className="allianz-legacy-accordion-icon" aria-hidden="true">{isOpen ? '−' : '+'}</span>
             </button>
-          </h4></div>
+          </h4></div>}
           <div id={id} className={`panel-collapse collapse ${isOpen ? 'in' : ''}`} hidden={!isOpen}>
-            <div className="panel-body"><RichText editable={isEditing} field={item.body?.jsonValue} />
-              {shouldRenderLinkField(item.link?.jsonValue, isEditing) && <p className="link"><Link editable={isEditing} field={allianzLinkField(item.link?.jsonValue, isEditing)} /></p>}
+            <div className="panel-body">{showBody && <RichText editable={isEditing} field={item.body?.jsonValue} />}
+              {showLink && <p className="link"><Link editable={isEditing} field={allianzLinkField(item.link?.jsonValue, isEditing)} /></p>}
               {hasNestedContent && <Placeholder name={placeholder} rendering={rendering} />}
             </div>
           </div>

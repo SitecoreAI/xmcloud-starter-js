@@ -2,7 +2,7 @@
 
 import { Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
-import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField } from 'lib/allianz-field-state';
+import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { AllianzFieldIcon } from 'lib/allianz-field-icon';
 import { offeringsPromptFields, type OfferingsPromptProps } from './offerings-prompt.props';
 import './OfferingsPrompt.css';
@@ -21,9 +21,9 @@ export const Default = ({ fields, params }: OfferingsPromptProps) => {
         <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
           {shouldRenderImageField(source.icon?.jsonValue, isEditing) &&
             <div className="tileIcon t-bg-primary-brand t-icon-primary-white"><AllianzFieldIcon field={source.icon?.jsonValue} /></div>}
-          <header><div className="tileHeading"><Text field={source.heading?.jsonValue} tag="h2" editable={isEditing} /></div>
-            <div className="tileSubHeading"><RichText field={source.body?.jsonValue} editable={isEditing}
-              tag={hasBlockMarkup(source.body?.jsonValue?.value) ? 'div' : 'h5'} /></div>
+          <header><div className="tileHeading">{shouldRenderTextField(source.heading?.jsonValue, isEditing) && <Text field={source.heading?.jsonValue} tag="h2" editable={isEditing} />}</div>
+            <div className="tileSubHeading">{shouldRenderTextField(source.body?.jsonValue, isEditing) && <RichText field={source.body?.jsonValue} editable={isEditing}
+              tag={hasBlockMarkup(source.body?.jsonValue?.value) ? 'div' : 'h5'} />}</div>
           </header>
           {shouldRenderLinkField(source.link?.jsonValue, isEditing) && <footer><div className="tileLink">
             <Link field={allianzLinkField(source.link?.jsonValue, isEditing)} editable={isEditing}

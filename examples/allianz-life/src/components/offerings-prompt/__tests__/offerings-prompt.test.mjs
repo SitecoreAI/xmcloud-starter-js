@@ -26,10 +26,11 @@ test('offerings renders preserved migrated root content with fixed green h2/h5 a
   assert.equal(render(Default, data, false, { theme: 'white', columns: '3', style: 'arrow', headingLevel: 'h1' }), html);
 });
 
-test('offerings four root fields retain clears and SDK metadata without borrowing historical child data', () => {
+test('offerings cleared fields remain available in input without canvas placeholders or historical child data', () => {
   const root = { ...evidence.datasources[0], heading: field('prompt-heading', 'Single-Line Text', ''), body: field('prompt-body', 'Rich Text', ''),
     icon: field('prompt-icon', 'Image', {}), link: field('prompt-link', 'General Link', { href: '', text: '' }) };
-  assert.deepEqual(editingIds(render(Default, root, true)), ['prompt-body', 'prompt-heading', 'prompt-icon', 'prompt-link']);
+  assert.deepEqual(editingIds(render(Default, root, true)), []);
+  assert.doesNotMatch(render(Default, root, true), /\[No text in field\]|scEmptyImage/);
   assert.doesNotMatch(render(Default, root), /What can we|See how|href=|<img/);
   assert.equal(offeringsPromptFields(wire(root)).link.jsonValue, root.link.jsonValue);
   const missing = { id: root.id, children: root.children };

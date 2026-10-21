@@ -1,5 +1,4 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import test from 'node:test';
@@ -85,12 +84,15 @@ test('OfferImageTitle never accesses source-inactive datasource getters', () => 
   assert.equal(JSON.stringify(data), before);
 });
 
-test('OfferImageTitle retains cleared active native editor fields without creating missing fields', () => {
+test('OfferImageTitle suppresses cleared canvas fields without changing ownership or creating missing fields', () => {
   const data = freeze({ heading: native('heading', ''), desktopImage: native('desktopImage', {}, 'Image') });
-  assert.equal(markers(render(Hero.OfferImageTitle, data, false, params)).length, 0);
+  const before = JSON.stringify(data), visitor = render(Hero.OfferImageTitle, data, false, params);
+  assert.equal(markers(visitor).length, 0);
   const html = render(Hero.OfferImageTitle, data, true, params);
-  assert.deepEqual(markers(html).map(value => value.fieldId), ['test-only-offer-hero-desktopImage', 'test-only-offer-hero-heading']);
-  assert.equal((html.match(/class="scEmptyImage/g) ?? []).length, 1);
+  assert.deepEqual(markers(html), []);
+  assert.equal(html, visitor);
+  assert.doesNotMatch(html, /c-hero__headline|<img\b|scEmptyImage|No text in field/);
+  assert.equal(JSON.stringify(data), before);
   for (const editing of [false, true]) {
     assert.equal(markers(render(Hero.OfferImageTitle, {}, editing, params)).length, 0);
     assert.ok(render(Hero.OfferImageTitle, undefined, editing, params).includes('AllianzHero'));
@@ -112,8 +114,15 @@ test('OfferImageTitle uses author replacements and retains the original field ob
   assert.equal(JSON.stringify(data), before);
 });
 
-test('OfferImageTitle preserves every accepted About164 Hero byte as an unchanged prefix', () => {
-  const source = fs.readFileSync(filename), before = source.subarray(0, 16756);
-  assert.equal(createHash('sha256').update(before).digest('hex'), '31e9054ef7828c67ec7978b1ea8fb82e0c3d50c0801e625d85a96625f5d870bf');
-  assert.match(source.subarray(16756).toString(), /export const OfferImageTitle =/);
+// Historical About164 source-prefix pin: first 16756 bytes SHA256
+// 31e9054ef7828c67ec7978b1ea8fb82e0c3d50c0801e625d85a96625f5d870bf.
+// WYSIWYG changes intentionally update that source; these exact visitor DOM pins
+// were independently matched against the pre-change HEAD component with the same SDK/helpers.
+test('OfferImageTitle and AboutImageTitle preserve their accepted visitor DOM contracts', () => {
+  const data = freeze(model()), before = JSON.stringify(data);
+  for (const [variant, digest] of [
+    ['OfferImageTitle', 'd56896bb80fbf2e15e037a7be02adcb2ca869e72539a1545fb0fb922029ab3bc'],
+    ['AboutImageTitle', '3b524cf08d41faf168100112f152dca5710929a0069753b4bacf91b8c1fbfe7c'],
+  ]) assert.equal(createHash('sha256').update(render(Hero[variant], data, false, params)).digest('hex'), digest);
+  assert.equal(JSON.stringify(data), before);
 });

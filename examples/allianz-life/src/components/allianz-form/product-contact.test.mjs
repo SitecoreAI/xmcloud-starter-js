@@ -51,9 +51,9 @@ const nativeField = (name, value, fieldType = 'Single-Line Text') => ({ jsonValu
 function datasource(key = 'product-contact') {
   return { schemaKey: nativeField('schemaKey', key), heading: nativeField('heading', 'Contact us'), body: nativeField('body', '', 'Rich Text'), secondaryHeading: nativeField('secondaryHeading', 'Already working with a financial professional?'), secondaryBody: nativeField('secondaryBody', '', 'Rich Text'), submitLabel: nativeField('submitLabel', 'Submit'), reviewHeading: nativeField('reviewHeading', 'Review sample information'), successMessage: nativeField('successMessage', '<p>Demo success.</p>', 'Rich Text'), failureMessage: nativeField('failureMessage', '<p>Demo failure.</p>', 'Rich Text'), children: { results: schemas[key].fields.map((definition, i) => ({ id: `product-field-${i}`, name: nativeField(`name-${i}`, definition.name), label: nativeField(`label-${i}`, definition.label), options: nativeField(`options-${i}`, JSON.stringify(definition.options)), placeholder: nativeField(`placeholder-${i}`, definition.placeholder), maxLength: nativeField(`maxLength-${i}`, String(definition.maxLength)) })) } };
 }
-function sdkRender(data, editing = false, Component = DefaultComponent) {
+function sdkRender(data, editing = false, Component = DefaultComponent, formConfig = configFor(data.schemaKey.jsonValue.value)) {
  const page = { mode: { isEditing: editing, isNormal: !editing }, siteName: 'allianz-life', layout: { sitecore: { context: {}, route: { name: 'Product contact', fields: {}, placeholders: {} } } } };
- return renderToStaticMarkup(React.createElement(realSdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) }, React.createElement(Component, { config: configFor(data.schemaKey.jsonValue.value), fields: { data: { datasource: data } }, params: { formId: configFor(data.schemaKey.jsonValue.value).id } })));
+ return renderToStaticMarkup(React.createElement(realSdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) }, React.createElement(Component, { config: formConfig, fields: { data: { datasource: data } }, params: { formId: formConfig.id } })));
 }
 for (const [key, count] of [['product-contact', 11], ['new-york-product-contact', 3]]) {
  const definitions = formDefinitions(key);
@@ -88,12 +88,24 @@ for (const [key, count] of [['product-contact', 11], ['new-york-product-contact'
   assert.equal((html.match(/required=""/g) || []).length, 3);
   assert.match(html, /<sup>®<\/sup>/);
  });
- test(`${key}: SDK editing is code-owned and exposes no stale native metadata`, () => {
-  const html = sdkRender(datasource(key), true);
+ test(`${key}: SDK editing matches the normal form layout without authoring lists or stale metadata`, () => {
+  const data = datasource(key);
+  const html = sdkRender(data, true);
+  assert.equal(html, sdkRender(data, false));
   assert.match(html, /Contact us/); assert.match(html, /Already working with a financial professional/);
-  assert.doesNotMatch(html, /product-label-|product-heading|<form|<input|<textarea|<select/);
+  assert.match(html, /<form[^>]*noValidate/);
+  assert.equal((html.match(/aria-expanded="false"/g) || []).length, 2);
+  assert.doesNotMatch(html, /product-label-|product-heading|allianz-local-form-authoring|allianz-local-confirmation|allianz-local-review|\[No text in field\]/);
  });
 }
+for (const hidden of [false, true]) test(`product form source-hidden=${hidden} is preserved in both modes`, () => {
+ const data = datasource();
+ const config = { ...configFor('product-contact'), sourceHidden: hidden };
+ const normal = sdkRender(data, false, ProductComponent, config);
+ assert.equal(sdkRender(data, true, ProductComponent, config), normal);
+ if (hidden) assert.match(normal, /data-source-hidden-form="true" hidden="" style="display:none"/);
+ else assert.doesNotMatch(normal, /<section[^>]*\bhidden=/);
+});
 test('CMS edits cannot override code-owned product fields/options/limits', () => {
   const data = datasource();
   for (const field of data.children.results) { field.label.jsonValue.value = 'CMS override'; field.options.jsonValue.value = '[]'; field.maxLength.jsonValue.value = '1'; }

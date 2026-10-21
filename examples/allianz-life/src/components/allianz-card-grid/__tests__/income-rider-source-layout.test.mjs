@@ -1,3 +1,4 @@
+import { assertWysiwygCanvas } from './wysiwyg-assertions.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -71,12 +72,13 @@ function observedModule(calls) {
   return compiled.exports;
 }
 
-test('all 48 existing Default, Iap, NF and Select card renders remain byte-identical', () => {
+test('all historical Default, Iap, NF and Select visitor oracles remain byte-identical and editing follows WYSIWYG', () => {
   assert.equal(fixture.baseline.CardGridSHA256, '7817c3232d1a26c4f4e1e038635a7507fcfce2c2bb2b013bf5d718f493c88f9e');
   assert.equal(fixture.oracles.length, 48);
   for (const oracle of fixture.oracles) {
-    assert.equal(sha(render(Cards[oracle.variant], freeze(envelope(oracle.state)), oracle.editing, params)), oracle.SHA256,
-      `${oracle.variant}/${oracle.state}/${oracle.editing}`);
+    const data = freeze(envelope(oracle.state)), visitor = render(Cards[oracle.variant], data, false, params);
+    if (!oracle.editing) assert.equal(sha(visitor), oracle.SHA256, `${oracle.variant}/${oracle.state}/visitor`);
+    else assertWysiwygCanvas(visitor, render(Cards[oracle.variant], data, true, params), data, `${oracle.variant}/${oracle.state}/editing`);
   }
 });
 
@@ -119,17 +121,17 @@ test('Income source glyphs, transparent cards, chart footer and exact financial 
   assert.equal(JSON.stringify(data), before);
 });
 
-test('Income rider keeps original SDK field identity, cleared editing metadata and unavailable policy', () => {
+test('Income rider keeps populated SDK field identity, omits cleared controls and retains the unavailable policy', () => {
   const calls = [], Observed = observedModule(calls);
   for (const state of ['filled', 'cleared', 'absent']) for (const editing of [false, true]) {
     const data = freeze(envelope(state)), before = JSON.stringify(data);
     calls.length = 0; render(Observed.IncomeRiderFeatures, data, editing, params);
     for (const card of data.children.results) for (const field of card.fieldCollection.filter(field => field.name !== 'Links')) {
       const call = calls.find(call => call.field === field.jsonValue);
-      assert.equal(Boolean(call), state === 'filled' || editing);
+      assert.equal(Boolean(call), state === 'filled');
       if (call) assert.equal(call.editable, editing);
     }
-    if (editing && state !== 'absent') for (const card of data.children.results) for (const link of card.fieldCollection.find(field => field.name === 'Links').jsonValue)
+    if (editing && state === 'filled') for (const card of data.children.results) for (const link of card.fieldCollection.find(field => field.name === 'Links').jsonValue)
       assert.ok(calls.some(call => call.name === 'Link' && call.field === link.fields.Link));
     assert.equal(JSON.stringify(data), before);
   }

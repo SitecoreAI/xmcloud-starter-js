@@ -211,11 +211,8 @@ for (const spec of specs) {
     const datasource = Object.fromEntries(spec.fields.map((name) => [name,
       nativeField(name, name === 'image' ? {} : '', itemId)]));
     const editing = render(spec.Component, datasource, { isEditing: true });
-    assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),
-      spec.fields.map((field) => `native-${field}`).sort());
-    assert.ok(metadata(editing).every((field) => field.itemId === itemId));
-    assert.match(editing, /\[No text in field\]/);
-    if (spec.fields.includes('image')) assert.match(editing, /scEmptyImage/);
+    assert.deepEqual(metadata(editing), []);
+    assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
     const normal = render(spec.Component, datasource);
     assert.doesNotMatch(normal, /<h[1-6]|<img|<picture|<p>|\[No text|scEmptyImage|Help prepare|What is an annuity|RILAs are|Income for life/);
     assert.deepEqual(metadata(normal), []);
@@ -249,7 +246,7 @@ for (const spec of specs) {
         : name === 'body' ? '<p>Independent body</p>' : 'Independent headline'), name !== clearedName);
       const editing = render(spec.Component, datasource, { isEditing: true });
       assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),
-        spec.fields.map((field) => `native-${field}`).sort());
+        spec.fields.filter((field) => field !== clearedName).map((field) => `native-${field}`).sort());
       assert.ok(metadata(editing).every((field) => field.itemId === itemId));
     });
   }

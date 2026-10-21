@@ -127,8 +127,9 @@ function sdkRender(data, editing, Component = RealComponent, formConfig = config
 for (const editing of [false, true]) test(`code-owned contact renders with real SDK in ${editing ? 'editing' : 'normal'} mode`, () => {
   const html = sdkRender(undefined, editing);
   assert.doesNotMatch(html, /allianz-missing-data|contact-test-|CMS override|action=|method=/);
-  if (editing) for (const field of definitions) assert.ok(html.includes(field.label));
-  else assert.match(html, /<form[^>]*noValidate/);
+  assert.match(html, /<form[^>]*noValidate/);
+  assert.equal(html, sdkRender(undefined, false));
+  assert.doesNotMatch(html, /allianz-local-form-authoring|allianz-local-review|allianz-local-confirmation|\[No text in field\]/);
 });
 
 // Real React hooks and SDK render seeded conditional fixtures; event behavior is checked below.
@@ -337,19 +338,16 @@ for (const formId of ['death-claim', 'ny-death-claim']) {
 }
 
 for (const formId of ['death-claim', 'ny-death-claim']) for (const editing of [false, true]) {
-  test(`${formId}: real Content SDK SSR preserves ${editing ? 'authoring fields without visitor notice' : 'truthful visitor claim copy'}`, () => {
+  test(`${formId}: real Content SDK SSR preserves truthful claim copy and form layout in ${editing ? 'editing' : 'normal'} mode`, () => {
     const claim = configs.find((form) => form.id === formId);
     const html = sdkRender(undefined, editing, RealComponent, claim);
-    if (editing) {
-      assert.doesNotMatch(html, /aria-label="Claim demonstration"|Demonstration only/);
-      assert.ok(html.includes(formDefinitions('death-claim')[0].label));
-    } else {
-      assert.equal((html.match(/aria-label="Claim demonstration"/g) || []).length, 1);
-      assert.match(html, /role="note"/);
-      assert.match(html, /does not report a death, submit a claim, check a policy, contact beneficiaries, or mail claim packets/);
-      assert.match(html, /Use sample contact details to try the review step/);
-      assert.doesNotMatch(html, /will then be contacted directly|receive a claim form packet in the mail|claims process proceeds/);
-    }
+    assert.equal(html, sdkRender(undefined, false, RealComponent, claim));
+    assert.equal((html.match(/aria-label="Claim demonstration"/g) || []).length, 1);
+    assert.match(html, /role="note"/);
+    assert.match(html, /<form[^>]*noValidate/);
+    assert.match(html, /does not report a death, submit a claim, check a policy, contact beneficiaries, or mail claim packets/);
+    assert.match(html, /Use sample contact details to try the review step/);
+    assert.doesNotMatch(html, /will then be contacted directly|receive a claim form packet in the mail|claims process proceeds|allianz-local-form-authoring/);
     assert.doesNotMatch(html, /action=|method=|<script/);
   });
 }

@@ -35,7 +35,8 @@ test('source statistics retain capsule markup, figure values and explanations th
 test('only the two purposeful child fields are editable; native clear values and metadata survive', () => {
   const blank = { id: 'cleared-figure', figure: field('cleared-number', 'Single-Line Text', ''), caption: field('cleared-caption', 'Rich Text', '') };
   const stored = { ...datasource, children: { ...datasource.children, total: 1, results: [blank] } };
-  assert.deepEqual(editingIds(render(Default, stored, true)), ['cleared-caption', 'cleared-number']);
+  assert.deepEqual(editingIds(render(Default, stored, true)), []);
+  assert.doesNotMatch(render(Default, stored, true), /\[No text in field\]/);
   assert.doesNotMatch(render(Default, stored), /<article|<em|<h[1-6]|<a|scpm/);
   const rich = field('original-caption', 'Rich Text', '<p>Unit <strong>meaning</strong></p>');
   const figure = field('original-figure', 'Single-Line Text', '125+');

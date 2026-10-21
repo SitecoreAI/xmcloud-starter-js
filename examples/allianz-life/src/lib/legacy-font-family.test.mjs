@@ -162,12 +162,18 @@ for (const editing of [false, true]) {
   }
 }
 
-test('cleared legacy body retains genuine SDK editing metadata without invented font or text', () => {
-  const normal = render(fixture(false, 'new-york', ''));
-  const editing = render(fixture(true, 'new-york', ''));
-  assert.doesNotMatch(normal, /Ordinary editorial|font-test-body|AllianzNeoRegular/);
-  assert.match(editing, /fieldId.*font-test-body/);
-  assert.doesNotMatch(editing, /Ordinary editorial|AllianzNeoRegular/);
+test('cleared or metadata-only legacy body adds no canvas field while placement chrome stays available', () => {
+  for (const value of ['', undefined]) for (const editing of [false, true]) {
+    const page = fixture(editing, 'new-york', '');
+    page.layout.sitecore.route.placeholders['headless-main'][0].fields.data.datasource.body.jsonValue.value = value;
+    const before = JSON.stringify(page), html = render(page);
+    assert.doesNotMatch(html, /Ordinary editorial|font-test-body|AllianzNeoRegular|\[No text in field\]/);
+    if (editing) {
+      assert.match(html, /chrometype="placeholder"/);
+      assert.match(html, /chrometype="rendering"[^>]*id="font-test-rendering"/);
+    }
+    assert.equal(JSON.stringify(page), before);
+  }
 });
 
 const PartialDesign = loadSource(path.join(root, 'components/partial-design-dynamic-placeholder/PartialDesignDynamicPlaceholder.tsx'));

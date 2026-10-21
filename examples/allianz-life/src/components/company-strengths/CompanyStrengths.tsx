@@ -23,7 +23,6 @@ const Strengths = ({ fields, params, continuation }: CompanyStrengthsProps & { c
             <header><div className="tileHeading"><Text field={source.introduction?.jsonValue} tag="h5" editable={isEditing} /></div></header>
           </div></article>
         </div></div>}
-      {isEditing && entries.length === 0 && <p role="status">Add a company strength to this section.</p>}
       <div className={`l-grid__row match-height-row${continuation ? ' u-margin-bottom-xl' : ''}`}>
         {entries.map((entry) => <div className="l-grid__column-medium-4" key={entry.id}>
           <article className="m-axlTile match-height -is--stacked t-bg-transparent">
@@ -33,8 +32,8 @@ const Strengths = ({ fields, params, continuation }: CompanyStrengthsProps & { c
                   <AllianzFieldIcon field={entry.icon?.jsonValue} />
                 </div></div>}
               <div className="tileSubGrid__content">
-                <header><div className="tileHeading"><Text field={entry.heading?.jsonValue} tag="h4" editable={isEditing} /></div></header>
-                <RichText field={entry.body?.jsonValue} editable={isEditing} className="tileBody u-font-size-md" />
+                <header><div className="tileHeading">{shouldRenderTextField(entry.heading?.jsonValue, isEditing) && <Text field={entry.heading?.jsonValue} tag="h4" editable={isEditing} />}</div></header>
+                {shouldRenderTextField(entry.body?.jsonValue, isEditing) && <RichText field={entry.body?.jsonValue} editable={isEditing} className="tileBody u-font-size-md" />}
                 {shouldRenderLinkField(entry.link?.jsonValue, isEditing) && <footer><div className="tileLink">
                   <Link field={allianzLinkField(entry.link?.jsonValue, isEditing)} editable={isEditing}
                         renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={entry.link?.jsonValue?.value?.text || undefined}>

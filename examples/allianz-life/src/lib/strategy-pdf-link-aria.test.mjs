@@ -63,7 +63,7 @@ test('an explicitly empty camelCase SDK label takes precedence over the kebab-ca
   }
 });
 
-test('an absent source ARIA label stays absent and cleared links retain editor metadata', () => {
+test('an absent source ARIA label stays absent and cleared links add no canvas controls', () => {
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'fixture';
   const data = datasource('absent-label', 'Resource', mediaValue('Resource'));
   for (const editing of [false, true]) assert.doesNotMatch(resourceAnchor(render(Cards.StrategyIntroResources, data, editing)), /aria-label=/);
@@ -72,7 +72,7 @@ test('an absent source ARIA label stays absent and cleared links retain editor m
   const visitor = render(Cards.StrategyIntroResources, data);
   assert.ok(visitor.includes('<div class="m-card">'), visitor);
   assert.doesNotMatch(visitor, /<a\b[^>]*class="m-card"/);
-  assert.ok(render(Cards.StrategyIntroResources, data, true).includes('test-only-absent-label-link-field'));
+  assert.ok(!render(Cards.StrategyIntroResources, data, true).includes('test-only-absent-label-link-field'));
   assert.equal(JSON.stringify(data), before);
 });
 
@@ -101,5 +101,5 @@ test('representative media shapes preserve fields while visitor URL policy remai
   const data = datasource('id-only', 'Resource', idOnly);
   assert.ok(render(Cards.StrategyIntroResources, data).includes('<div class="m-card">'));
   assert.doesNotMatch(render(Cards.StrategyIntroResources, data), /<a\b[^>]*class="m-card"/);
-  assert.ok(render(Cards.StrategyIntroResources, data, true).includes('test-only-id-only-link-field'));
+  assert.ok(!render(Cards.StrategyIntroResources, data, true).includes('test-only-id-only-link-field'));
 });

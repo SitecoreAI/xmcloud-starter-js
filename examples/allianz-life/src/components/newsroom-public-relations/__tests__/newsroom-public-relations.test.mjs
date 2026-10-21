@@ -48,15 +48,14 @@ test('PR uses ordered reference aliases, preserves an intentional empty selectio
   }
 });
 
-test('PR and referenced records keep real empty SDK authoring fields and exact canonical editing targets', () => {
+test('cleared PR and contact fields stay off the canvas while original canonical objects remain intact', () => {
   const contacts = data.contactReferences.targetItems.map((record, index) => ({ id: record.id,
     name: field(`empty-${index}-name`, 'Single-Line Text', ''), role: field(`empty-${index}-role`, 'Single-Line Text', ''),
     telephone: field(`empty-${index}-telephone`, 'General Link', { href: '', text: '' }),
     email: field(`empty-${index}-email`, 'General Link', { href: '', text: '' }) }));
   const empty = { ...data, heading: field('empty-pr-heading', 'Single-Line Text', ''),
     intro: field('empty-pr-intro', 'Rich Text', ''), contactReferences: { targetItems: contacts } };
-  assert.deepEqual(editingIds(render(Default, empty, true)), ['empty-0-email', 'empty-0-name', 'empty-0-role', 'empty-0-telephone',
-    'empty-1-email', 'empty-1-name', 'empty-1-role', 'empty-1-telephone', 'empty-pr-heading', 'empty-pr-intro']);
+  assert.deepEqual(editingIds(render(Default, empty, true)), []);
   assert.doesNotMatch(render(Default, empty), /Contact our public|Follow us|Brett Weinberg|Claire Woit|href=/);
   assert.deepEqual(links(render(Default, data, true)), ['https://www.linkedin.com/company/allianz-life',
     'tel:763-765-7160', 'mailto:brett.weinberg@allianzlife.com', 'tel:763-765-5106', 'mailto:claire.woit@allianzlife.com']);

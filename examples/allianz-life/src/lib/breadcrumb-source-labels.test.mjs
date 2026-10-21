@@ -29,7 +29,13 @@ function withMode(mode, run) {
 }
 
 for (const mode of ['fixture', 'connected']) {
-  test(`${mode}: all five exact source labels survive with source order, destinations and clickable final item`, () => withMode(mode, () => {
+  // SDK editing and visitor renderers may serialize anchor attributes in a different
+// order. Preserve every attribute value and child node when comparing the canvas.
+const canvas = html => html.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, '').replace(
+  /<([a-z][\w:-]*)(\s+[^<>]*?)?(\/?)>/gi,
+  (tag, name, attributes, closing) => `<${name}${attributes ? ' ' + (attributes.match(/[^\s=<>/]+(?:="[^"]*")?/g) ?? []).sort().join(' ') : ''}${closing}>`);
+
+test(`${mode}: all five exact source labels survive with source order, destinations and clickable final item`, () => withMode(mode, () => {
     const data = frozen(fields(fixture.items)), before = JSON.stringify(data);
     const html = render(Breadcrumbs, data), links = anchors(html);
     assert.equal(links.length, 5);
@@ -46,7 +52,7 @@ for (const mode of ['fixture', 'connected']) {
     assert.equal(JSON.stringify(data), before);
   }));
 
-  test(`${mode}: native Link and Text editing metadata remain exact and independently editable`, () => withMode(mode, () => {
+  test(`${mode}: authored Link and Text retain native editing controls while visitor labels stay exact`, () => withMode(mode, () => {
     const data = frozen(fields(fixture.items, true)), before = JSON.stringify(data);
     const html = render(Breadcrumbs, data, true), links = anchors(html);
     assert.deepEqual(links.map(a => a.attrs['aria-label']), fixture.items.map(item => item.sourceAttributes['aria-label']));
@@ -56,6 +62,9 @@ for (const mode of ['fixture', 'connected']) {
       assert.ok(links[i].body.includes(fixture.items[i].title));
     }
     assert.equal(links.at(-1).attrs['aria-current'], 'page');
+    // The authored absolute Home href stays native in editing; visitor policy maps it to '/'.
+    assert.deepEqual(links.map(a => a.attrs.href), fixture.items.map(item => item.linkValue.href));
+    assert.equal(canvas(html.replace('href=\"https://www.allianzlife.com/\"', 'href=\"/\"')), canvas(render(Breadcrumbs, data, false)));
     assert.equal(JSON.stringify(data), before);
   }));
 
@@ -110,8 +119,8 @@ for (const mode of ['fixture', 'connected']) {
     for (const data of [undefined, {}, { primaryNav: { targetItems: [] } }]) assert.equal(anchors(render(Breadcrumbs, data)).length, 0);
     const data = fields([{ title: '', linkValue: {} }], true), before = JSON.stringify(data);
     const editor = render(Breadcrumbs, frozen(data), true);
-    assert.match(editor, /test-breadcrumb-link-0-field/);
-    // The existing SDK empty-Link placeholder suppresses children; keep that behavior unchanged.
+    assert.doesNotMatch(editor, /test-breadcrumb-link-0-field|kind="open"|\[No text in field\]/);
+    assert.equal(editor, render(Breadcrumbs, data, false));
     assert.equal(JSON.stringify(data), before);
   }));
 }

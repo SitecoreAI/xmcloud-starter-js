@@ -4,6 +4,7 @@ import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, rowSpacing, sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
+import { AllianzFieldContent } from 'lib/allianz-field-content';
 import type { AllianzRichTextDefaultProps, AllianzRichTextProps } from './allianz-rich-text.props';
 import { restoreSourceDestinationRichText } from 'lib/allianz-source-destinations';
 import { bodyArrowLinkGlyphs, bodyDownloadLinkGlyphs } from 'lib/body-download-link-glyphs';
@@ -22,16 +23,24 @@ export const Default = ({ fields, params, brandIcon = false, bodyDownloadLinks =
   const destinationBody = restoreSourceDestinationRichText(nativeData?.body?.jsonValue, page?.mode?.isEditing !== false,
     nativeData && 'id' in nativeData ? nativeData.id : undefined);
   const body = bodyDownloadLinks
-    ? bodyDownloadLinkGlyphs(destinationBody, page?.mode?.isEditing !== false)
-    : bodyArrowLinks ? bodyArrowLinkGlyphs(destinationBody, page?.mode?.isEditing !== false) : destinationBody;
+    ? bodyDownloadLinkGlyphs(destinationBody, false)
+    : bodyArrowLinks ? bodyArrowLinkGlyphs(destinationBody, false) : destinationBody;
   const data = nativeData && body !== nativeData.body?.jsonValue
     ? { ...nativeData, body: { ...nativeData.body, jsonValue: body } } : nativeData;
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  // Visual-only glyph projection retains the original native Body chrome.
+  // The SDK receives projected HTML as non-editable content, never as a changed
+  // authoring value; the native metadata wrapper owns the actual field control.
+  const projectedBody = isEditing && body !== destinationBody;
+  const renderBody = (className: string, tabIndex?: number) => {
+    const content = <RichText editable={isEditing && !projectedBody} field={data.body?.jsonValue} className={className} tabIndex={tabIndex} />;
+    return projectedBody ? <AllianzFieldContent field={nativeData?.body?.jsonValue} editable>{content}</AllianzFieldContent> : content;
+  };
   const bodyValue = data.body?.jsonValue?.value;
   const hasIndexOptionsTable = !!indexOptionsScope && typeof bodyValue === 'string' && /<table\b/i.test(bodyValue);
   if (params.layout === 'rich-text' || params.layout === 'disclosures') return <div className={`l-container--full-width ${params.layout === 'disclosures' ? 'a-axlDisclosures' : sectionTheme(params.theme)}`} id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">
-      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className={params.layout === 'disclosures' ? 'content-body disclosure' : 'o-richTextEditor__wrapper'} />}
+      {shouldRenderTextField(data.body?.jsonValue, isEditing) && renderBody(params.layout === 'disclosures' ? 'content-body disclosure' : 'o-richTextEditor__wrapper')}
     </div></div></div>
   </div>;
   return <div className={`l-container--full-width ${sectionTheme(params.theme)} axlTileCollection`} id={params.RenderingIdentifier}>
@@ -42,7 +51,7 @@ export const Default = ({ fields, params, brandIcon = false, bodyDownloadLinks =
         </div>}
         {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <header><div className="tileHeading"><Text editable={isEditing} tag={headingTag(params.headingLevel)} field={data.heading?.jsonValue} /></div></header>}
         {shouldRenderTextField(data.subheading?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" />}
-        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className={`tileBody ${params.headingLevel === 'h2' ? 'u-font-size-xl' : ''}${indexOptionsScope}`} tabIndex={hasIndexOptionsTable && !isEditing ? 0 : undefined} />}
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && renderBody(`tileBody ${params.headingLevel === 'h2' ? 'u-font-size-xl' : ''}${indexOptionsScope}`, hasIndexOptionsTable && !isEditing ? 0 : undefined)}
         {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
       </div></article>
     </div></div></div>
@@ -122,9 +131,8 @@ const AboutHeading = ({ fields, params, information = false }: AllianzRichTextPr
     <div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
       <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
         {information && <div className="tileIcon t-bg-primary-brand t-icon-primary-white">
-          {data.icon?.jsonValue && (isEditing || data.icon.jsonValue.value?.src) &&
-            <Image field={data.icon.jsonValue} editable={isEditing} className="allianz-about-information-glyph"
-              width={24} height={24} />}
+          {shouldRenderImageField(data.icon?.jsonValue, false) && <Image field={data.icon?.jsonValue} editable={isEditing} className="allianz-about-information-glyph"
+            width={24} height={24} />}
         </div>}
         <header><div className="tileHeading">
           {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}
@@ -186,9 +194,9 @@ export const FixedMvaReference = ({ fields, params }: AllianzRichTextProps) => {
     <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
       <div id="seven-yr-slot" className="well seven-yr-slot">
         {shouldRenderTextField(heading, isEditing) && <h2>
-          {isEditing || !parts ? <Text editable={isEditing} field={heading} /> : <>
+          {parts ? <AllianzFieldContent editable={isEditing} field={heading}>
             <small className="blue">{parts[1]}</small><span {...{ testid: 'currentMVARate' }}>{parts[2]}</span>{parts[3]}<small>{parts[4]}<span {...{ testid: 'currentMVARateEffectiveDate' }}>{parts[5]}</span></small>
-          </>}
+          </AllianzFieldContent> : <Text editable={isEditing} field={heading} />}
         </h2>}
         {shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} />}
       </div>
@@ -912,9 +920,9 @@ export const EssentialIncome7MvaReference = ({ fields, params }: AllianzRichText
       <div className="l-grid__row"><div className="l-grid__column-medium-12">
         <div id="seven-yr-slot" className="well seven-yr-slot">
           {shouldRenderTextField(heading, isEditing) && <h2>
-            {isEditing || !parts ? <Text editable={isEditing} field={heading} /> : <>
+            {parts ? <AllianzFieldContent editable={isEditing} field={heading}>
               <small className="blue">{parts[1]}</small><span {...{ testid: 'currentMVARate' }}>{parts[2]}</span>{parts[3]}<small>{parts[4]}<span {...{ testid: 'currentMVARateEffectiveDate' }}>{parts[5]}</span></small>
-            </>}
+            </AllianzFieldContent> : <Text editable={isEditing} field={heading} />}
           </h2>}
           {shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} />}
         </div>
@@ -999,9 +1007,9 @@ export const RetirementFoundationAdvMvaReference = ({ fields, params }: AllianzR
       <div className="l-grid__row"><div className="l-grid__column-medium-12">
         <div id="seven-yr-slot" className="well seven-yr-slot">
           {shouldRenderTextField(heading, isEditing) && <h2>
-            {isEditing || !parts ? <Text editable={isEditing} field={heading} /> : <>
+            {parts ? <AllianzFieldContent editable={isEditing} field={heading}>
               <small className="blue">{parts[1]}</small><span {...{ testid: 'currentMVARate' }}>{parts[2]}</span>{parts[3]}<small>{parts[4]}<span {...{ testid: 'currentMVARateEffectiveDate' }}>{parts[5]}</span></small>
-            </>}
+            </AllianzFieldContent> : <Text editable={isEditing} field={heading} />}
           </h2>}
           {shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} />}
         </div>
@@ -1125,9 +1133,9 @@ export const CoreIncome7MvaReference = ({ fields, params }: AllianzRichTextProps
       <div className="l-grid__row"><div className="l-grid__column-medium-12">
         <div id="seven-yr-slot" className="well seven-yr-slot">
           {shouldRenderTextField(heading, isEditing) && <h2>
-            {isEditing || !parts ? <Text editable={isEditing} field={heading} /> : <>
+            {parts ? <AllianzFieldContent editable={isEditing} field={heading}>
               <small className="blue">{parts[1]}</small><span {...{ testid: 'currentMVARate' }}>{parts[2]}</span>{parts[3]}<small>{parts[4]}<span {...{ testid: 'currentMVARateEffectiveDate' }}>{parts[5]}</span></small>
-            </>}
+            </AllianzFieldContent> : <Text editable={isEditing} field={heading} />}
           </h2>}
           {shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} />}
         </div>

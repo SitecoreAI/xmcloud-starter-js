@@ -87,7 +87,7 @@ test('AboutImageTitle never reads unused fields or presentation params in either
   }
 });
 
-test('AboutImageTitle omits absent controls and preserves real cleared field ownership without mobile fallback', () => {
+test('AboutImageTitle omits cleared canvas fields without mutating ownership or adding mobile fallback', () => {
   const cleared = freeze({ heading: native('heading', ''), desktopImage: native('desktopImage', {}, 'Image'),
     body: native('body', '<p>Unused body</p>'), eyebrow: native('eyebrow', 'Unused eyebrow'),
     mobileImage: native('mobileImage', { src: '/test-only/unused-mobile.jpg', alt: 'Unused mobile' }, 'Image'),
@@ -97,8 +97,9 @@ test('AboutImageTitle omits absent controls and preserves real cleared field own
   assert.match(visitor, /<picture class="c-image c-stage__image--cover c-stage__image--short"><\/picture>/);
   assert.doesNotMatch(visitor, /c-hero__headline|<img\b|kind="open"|Unused|unused-/);
   const editor = render(Hero.AboutImageTitle, cleared, true, params);
-  assert.deepEqual(markers(editor).map((entry) => entry.fieldId), ['test-only-about-hero-desktopImage', 'test-only-about-hero-heading']);
-  assert.doesNotMatch(editor, /Unused|unused-|Mobile image|<source\b|<a\b/);
+  assert.deepEqual(markers(editor), []);
+  assert.equal(editor, visitor);
+  assert.doesNotMatch(editor, /Unused|unused-|Mobile image|<source\b|<a\b|scEmptyImage|No text in field/);
   assert.equal(JSON.stringify(cleared), before);
   for (const editing of [false, true]) {
     assert.doesNotMatch(render(Hero.AboutImageTitle, {}, editing, params), /c-hero__headline|<img\b|kind="open"/);

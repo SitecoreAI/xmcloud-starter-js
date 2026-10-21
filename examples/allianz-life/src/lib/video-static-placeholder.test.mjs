@@ -74,7 +74,7 @@ test('normal and preview always render the same accessible static graphic withou
   }
 });
 
-test('editing retains all existing SDK field metadata and content without enabling a player', () => {
+test('editing retains populated displayed-field metadata on one unchanged fallback surface', () => {
   const data = { heading: field('heading', 'Single-Line Text', 'Authored <heading>'),
     body: field('body', 'Rich Text', '<p>Authored body</p>'),
     poster: field('poster', 'Image', { src: '/allianz-assets/poster.jpg', alt: 'Authored poster' }),
@@ -83,23 +83,22 @@ test('editing retains all existing SDK field metadata and content without enabli
     transcript: field('transcript', 'Rich Text', '<p>Authored transcript</p>') };
   const before = JSON.stringify(data);
   const html = render(data, 'editing');
-  assert.deepEqual(metadata(html).map((entry) => entry.fieldId).sort(), ['body', 'caption', 'heading', 'media', 'poster', 'transcript']);
+  assert.deepEqual(metadata(html).map((entry) => entry.fieldId).sort(), ['body', 'caption', 'heading', 'media', 'transcript']);
   assert.match(html, /Authored &lt;heading&gt;/);
   assert.match(html, /<p>Authored body<\/p>/);
   assert.match(html, /<p>Authored caption<\/p>/);
-  assert.match(html, /<details open=""/);
+  assert.doesNotMatch(html, /<details open|allianz-local-video-source-fields|poster.jpg/);
   assert.match(html, /<p>Authored transcript<\/p>/);
   assert.match(html, /alt="Video player would go here"/);
   assert.doesNotMatch(html, /<video\b|<iframe\b|<button\b/);
   assert.equal(JSON.stringify(data), before);
 });
 
-test('author clears retain existing field chrome while absent fields are never manufactured', () => {
+test('author clears create no canvas field artifacts and absent fields are never manufactured', () => {
   const data = { heading: field('heading', 'Single-Line Text', ''), body: field('body', 'Rich Text', ''),
     poster: field('poster', 'Image', {}), mediaLink: field('media', 'General Link', {}),
     caption: field('caption', 'Rich Text', ''), transcript: field('transcript', 'Rich Text', '') };
-  assert.deepEqual(metadata(render(data, 'editing')).map((entry) => entry.fieldId).sort(),
-    ['body', 'caption', 'heading', 'media', 'poster', 'transcript']);
+  assert.deepEqual(metadata(render(data, 'editing')), []);
   assert.deepEqual(metadata(render({}, 'editing')), []);
   for (const mode of ['normal', 'preview']) {
     const html = render(data, mode);
@@ -109,15 +108,14 @@ test('author clears retain existing field chrome while absent fields are never m
   }
 });
 
-test('the authored transcript remains readable in visitors and opens only by default in editing', () => {
+test('the authored transcript keeps natural closed details state in every mode', () => {
   const data = { transcript: field('transcript', 'Rich Text', '<p>Exact transcript &amp; formatting.</p>') };
-  for (const mode of ['normal', 'preview']) {
+  for (const mode of ['normal', 'preview', 'editing']) {
     const html = render(data, mode);
     assert.match(html, /<details class="allianz-local-video-transcript"><summary>Read video transcript<\/summary>/);
     assert.match(html, /<p>Exact transcript &amp; formatting\.<\/p>/);
     assert.doesNotMatch(html, /<details open/);
   }
-  assert.match(render(data, 'editing'), /<details open=""/);
 });
 
 test('missing datasources retain the existing fallback instead of inventing authored content', () => {
@@ -136,7 +134,7 @@ test('the repository-native SVG is inert and source dimensions survive legacy pl
 });
 
 
-test('SourceStatic plays a validated native link while preserving its inert editor and separate poster/transcript ownership', () => {
+test('SourceStatic shows the same validated player in each mode and preserves separate poster/transcript ownership', () => {
   const data = {
     heading: field('static-heading', 'Single-Line Text', 'Authored video heading'),
     body: field('static-body', 'Rich Text', '<p>Authored supporting copy</p>'),
@@ -154,22 +152,16 @@ test('SourceStatic plays a validated native link while preserving its inert edit
   const before = JSON.stringify(data);
   for (const mode of ['normal', 'preview', 'editing']) {
     const html = render(data, mode, SourceStatic);
-    if (mode === 'editing') {
-      assert.equal((html.match(/<img\b/g) || []).length, 1);
-      assert.match(html, /<img[^>]*class="allianz-video-placeholder"[^>]*src="\/allianz-ui\/video-placeholder.svg"[^>]*alt="Video player would go here"[^>]*width="640"[^>]*height="360"/);
-      assert.doesNotMatch(html, /<iframe\b|brightcove|Authored playback link/);
-    } else {
-      assert.equal((html.match(/<iframe\b/g) || []).length, 1);
-      assert.match(html, /src="https:\/\/players\.brightcove\.net\/1537381467001\/WioKPWt4t_default\/index\.html\?videoId=6291658616001&amp;preload=none"/);
-      assert.match(html, /title="Authored playback link"/);
-      assert.doesNotMatch(html, /<img\b|video-placeholder/);
-    }
+    assert.equal((html.match(/<iframe\b/g) || []).length, 1);
+    assert.match(html, /src="https:\/\/players\.brightcove\.net\/1537381467001\/WioKPWt4t_default\/index\.html\?videoId=6291658616001&amp;preload=none"/);
+    assert.match(html, /title="Authored playback link"/);
+    assert.doesNotMatch(html, /<img\b|video-placeholder/);
     assert.match(html, /Authored video heading/);
     assert.match(html, /<p>Authored supporting copy<\/p>/);
     assert.match(html, /<p>Authored video caption<\/p>/);
-    assert.doesNotMatch(html, /<video\b|<audio\b|<script\b|<a\b|source-poster|unused poster|allianz-source-static-video-fields|static-media|static-poster|static-transcript|Transcript owned/);
+    assert.doesNotMatch(html, /<video\b|<audio\b|<script\b|<a\b|source-poster|unused poster|allianz-source-static-video-fields|static-poster|static-transcript|Transcript owned/);
     const markers = metadata(html).map(({ fieldId }) => fieldId).sort();
-    assert.deepEqual(markers, mode === 'editing' ? ['static-body', 'static-caption', 'static-heading'] : []);
+    assert.deepEqual(markers, mode === 'editing' ? ['static-body', 'static-caption', 'static-heading', 'static-media'] : []);
     assert.equal(JSON.stringify(data), before);
   }
 });
@@ -184,7 +176,7 @@ test('an empty native media link and absent transcript never manufacture playbac
     assert.match(html, /video-placeholder.svg/);
     assert.doesNotMatch(html, /<iframe\b|brightcove|<details\b|Read video transcript|fieldId[^>]*transcript/);
     assert.deepEqual(metadata(html).map(({ fieldId }) => fieldId).sort(),
-      mode === 'editing' ? ['empty-media-body', 'empty-media-heading', 'empty-media-link'] : []);
+      mode === 'editing' ? ['empty-media-body', 'empty-media-heading'] : []);
   }
   assert.equal(JSON.stringify(data), before);
 });
@@ -218,7 +210,7 @@ test('specialized iframe sizing stays inside the existing responsive source play
   assert.doesNotMatch(iframeRule, /(?:margin|padding|position|overflow)\s*:|url\(/);
 });
 
-test('SourceStatic cleared copy retains only its relevant SDK controls and missing datasource keeps the existing fallback', () => {
+test('SourceStatic cleared copy adds no optional canvas controls and missing datasource keeps the existing fallback', () => {
   const data = {
     heading: field('static-heading', 'Single-Line Text', ''),
     body: field('static-body', 'Rich Text', ''),
@@ -228,7 +220,7 @@ test('SourceStatic cleared copy retains only its relevant SDK controls and missi
   };
   const before = JSON.stringify(data);
   const editing = render(data, 'editing', SourceStatic);
-  assert.deepEqual(metadata(editing).map(({ fieldId }) => fieldId).sort(), ['static-body', 'static-caption', 'static-heading']);
+  assert.deepEqual(metadata(editing), []);
   assert.doesNotMatch(editing, /static-poster|static-media|scEmptyImage|allianz-source-static-video-fields/);
   assert.deepEqual(metadata(render({}, 'editing', SourceStatic)), []);
   for (const mode of ['normal', 'preview']) {

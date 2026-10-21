@@ -175,14 +175,14 @@ test('AboutFacts consumes the six parent saved/reopened Content Hub URLs and exa
   assert.equal(TRANSPORT[5].alt, 'titleIconDetailedGlobe');
 });
 
-test('cleared supported native fields stay editable and absent fields create no synthetic editors', () => {
+test('cleared and absent native fields stay off the canvas without synthetic editors', () => {
   const data = fixture(); data.title.jsonValue.value = ''; data.children.results[0].fieldCollection[0].jsonValue.value = '';
   data.children.results[0].fieldCollection[1].jsonValue.value = '';
-  assert.equal(markers(render(AboutFacts, data, true)).length, 19);
+  assert.equal(markers(render(AboutFacts, data, true)).length, 10);
   assert.equal((render(AboutFacts, data).match(/<h3\b/g) || []).length, 5);
   assert.equal(attrs(render(AboutFacts, data), 'img', 'src').length, 0);
   data.children.results[0].fieldCollection = [];
-  assert.equal(markers(render(AboutFacts, data, true)).length, 16);
+  assert.equal(markers(render(AboutFacts, data, true)).length, 10);
 });
 
 test('AboutFacts authored Image fields follow their card owners through reorder rather than fixed positions', () => {
@@ -194,12 +194,12 @@ test('AboutFacts authored Image fields follow their card owners through reorder 
   assert.equal(markers(render(AboutFacts, data, true)).length, 19);
 });
 
-test('blank and absent Icon fields retain only their real native editors and never borrow source assets', () => {
+test('blank and absent Icon fields create no canvas editors and never borrow source assets', () => {
   const data = fixture(), before = JSON.stringify(data), { components, observed } = instrumented();
   for (const editing of [false, true]) {
     observed.length = 0; const html = render(components.AboutFacts, data, editing);
-    assert.equal(observed.filter(value => value.name === 'Image').length, editing ? 6 : 0);
-    assert.equal(markers(html).length, editing ? 19 : 0);
+    assert.equal(observed.filter(value => value.name === 'Image').length, 0);
+    assert.equal(markers(html).length, editing ? 13 : 0);
     assert.doesNotMatch(html, /allianz-ui\/about-overview|https:\/\/thlt-demo/);
   }
   assert.equal(JSON.stringify(data), before);
@@ -216,9 +216,9 @@ test('canonical Icon clears override stale populated fieldCollection without mut
     observed.length = 0; const html = render(components.AboutFacts, deepFreeze(data), editing);
     const images = observed.filter(value => value.name === 'Image');
     assert.equal(images.some(value => value.field === stale), false);
-    assert.equal(images.some(value => value.field === canonical), editing);
+    assert.equal(images.some(value => value.field === canonical), false);
     assert.deepEqual(attrs(render(AboutFacts, data), 'img', 'src'), TRANSPORT.slice(1).map(item => item.src));
-    assert.equal(markers(html).length, editing ? 19 : 0);
+    assert.equal(markers(html).length, editing ? 18 : 0);
     assert.equal(JSON.stringify(data), before);
   }
   const absent = filledFixture(); absent.children.results[0].icon = { jsonValue: undefined };
@@ -253,8 +253,14 @@ test('retained source witnesses and scoped source gray26/40 CSS stay unchanged w
   assert.match(css,/min-width: 704px/); assert.match(css,/brightness\(0\) invert\(23\.5294%\)/);
 });
 
-test('AboutFacts preserves the complete prior IconCards Default source byte prefix', () => {
-  const source = fs.readFileSync(filename); const mark = Buffer.from("\r\n/** About");
-  const end = source.indexOf(mark); assert.ok(end > 0);
-  assert.equal(createHash('sha256').update(source.subarray(0,end)).digest('hex'), 'bef103d4172e27aafcdf443853df76910dcc140282bf4409ec36f9c53a6aa9fe');
+test('Default and AboutFacts keep populated canvas structure equal to normal output apart from SDK metadata', () => {
+  const { components } = instrumented();
+  for (const Component of [components.Default, components.AboutFacts]) {
+    const data = deepFreeze(filledFixture()), before = JSON.stringify(data);
+    const normal = render(Component, data), editing = render(Component, data, true);
+    assert.equal(editing.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, ''), normal);
+    assert.equal(markers(editing).length, 19);
+    assert.doesNotMatch(editing, /No text in field|scEmptyImage/);
+    assert.equal(JSON.stringify(data), before);
+  }
 });

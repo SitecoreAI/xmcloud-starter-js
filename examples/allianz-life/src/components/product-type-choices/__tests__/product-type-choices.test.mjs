@@ -69,6 +69,10 @@ function metadata(html) {
   return [...html.matchAll(/<code [^>]*kind="open"[^>]*>(.*?)<\/code>/g)]
     .map((match) => JSON.parse(match[1].replaceAll('&quot;', '"').replaceAll('&amp;', '&')));
 }
+const visualMarkup = (html) => html.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, '')
+  // Editing SDK anchors and normal Next Links serialize the same attributes in different orders.
+  .replace(/<a\b([^>]*)>/g, (_, attributes) => `<a${(attributes.match(/[^\s=]+(?:="[^"]*")?/g) ?? [])
+    .sort().map((attribute) => ` ${attribute}`).join('')}>`);
 
 test('native fixture preserves root/two child IDs, exact native values and unresolved media state', () => {
   const root = 'route:/what-we-offer/annuities:component:7:AllianzCardGrid';
@@ -159,10 +163,12 @@ test('real SDK keeps block HTML intact, renders image after content and edits al
   assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),
     ['synthetic-body', 'synthetic-heading', 'synthetic-image', 'synthetic-link']);
   assert.ok(metadata(editing).every((field) => field.itemId === itemId));
+  assert.equal(visualMarkup(editing), visualMarkup(html));
+  assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage|Add a product type choice/);
   assert.equal(JSON.stringify(datasource), before);
 });
 
-test('independent and combined field clearing retain editable chrome without restoring compact content', () => {
+test('independent and combined field clearing suppress empty canvas chrome while retaining populated fields', () => {
   const values = { heading: 'Authored heading', body: '<p>Authored body</p>',
     image: { src: '/allianz-assets/authored.jpg', alt: 'Authored image' },
     link: { href: '/what-we-offer/annuities', text: 'Authored link' } };
@@ -176,16 +182,19 @@ test('independent and combined field clearing retain editable chrome without res
     assert.equal(html.includes('<p>Authored body</p>'), name !== 'body');
     assert.equal(html.includes('/allianz-assets/authored.jpg'), name !== 'image');
     assert.equal(html.includes('Authored link'), name !== 'link');
-    assert.deepEqual(metadata(render(datasource, { isEditing: true })).map((field) => field.fieldId).sort(),
-      ['synthetic-body', 'synthetic-heading', 'synthetic-image', 'synthetic-link']);
+    const editing = render(datasource, { isEditing: true });
+    assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),
+      ['synthetic-body', 'synthetic-heading', 'synthetic-image', 'synthetic-link'].filter((id) => id !== `synthetic-${name}`));
+    assert.equal(visualMarkup(editing), visualMarkup(html));
+    assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
   }
   const cleared = complete([{ id: 'clear-all', fieldCollection: Object.keys(values)
     .map((name) => ({ name, jsonValue: nativeField(name, name === 'image' || name === 'link' ? {} : '') })) }]);
   assert.doesNotMatch(render(cleared), /<h[1-6]|<p>|<img|<svg|Authored|scEmpty|href=/);
   const editing = render(cleared, { isEditing: true });
-  assert.match(editing, /\[No text in field\]/);
-  assert.match(editing, /scEmptyImage/);
-  assert.equal(metadata(editing).length, 4);
+  assert.equal(editing, render(cleared));
+  assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
+  assert.deepEqual(metadata(editing), []);
 });
 
 test('unsafe General Links use existing safe-link policy while authored editing fields stay untouched', () => {
@@ -213,7 +222,7 @@ test('only RenderingIdentifier changes the fixed UI; old root/design/icon/multil
   assert.match(render(decorated, { params: { ...params, RenderingIdentifier: 'authored-choices' } }), /id="authored-choices"/);
 });
 
-test('partial/missing pagination fails closed and complete empty collections give author guidance', () => {
+test('partial/missing pagination fails closed while complete empty collections have the normal visual structure', () => {
   for (const datasource of [{}, { children: {} }, { children: { results: fixture.children.results } },
     { children: { total: 2, pageInfo: {}, results: fixture.children.results } },
     { children: { total: 3, pageInfo: { hasNext: false }, results: fixture.children.results } },
@@ -228,8 +237,11 @@ test('partial/missing pagination fails closed and complete empty collections giv
   }
   for (const isEditing of [false, true]) assert.match(render(undefined, { isEditing, omitFields: true }),
     /Add a datasource for Product Type Choices/);
-  assert.match(render(complete([]), { isEditing: true }), /Add a product type choice child item/);
-  assert.doesNotMatch(render(complete([])), /Add a product type choice child item/);
+  const emptyNormal = render(complete([]));
+  const emptyEditing = render(complete([]), { isEditing: true });
+  assert.equal(emptyEditing, emptyNormal);
+  assert.doesNotMatch(emptyEditing, /Add a product type choice child item|role="status"|<article|\[No text/);
+  assert.deepEqual(metadata(emptyEditing), []);
 });
 
 test('compact GraphQL selects only native children, total/pageInfo and fieldCollection jsonValue', () => {

@@ -132,7 +132,7 @@ test('SDK field objects, empty values and native metadata survive exact-name pro
   assert.equal(iconCardFields(named), named);
 });
 
-test('real SDK editing retains cleared collection title and all three empty child fields', () => {
+test('real SDK editing omits cleared fields from the canvas while retaining their source objects', () => {
   const field = (fieldId, fieldType, value, itemId = 'native-card') => ({
     value, metadata: { fieldId, fieldType, itemId },
   });
@@ -150,8 +150,8 @@ test('real SDK editing retains cleared collection title and all three empty chil
   const editing = render(empty, {}, true);
   const ids = [...editing.matchAll(/<code [^>]*kind="open"[^>]*>(.*?)<\/code>/g)]
     .map((match) => JSON.parse(match[1].replaceAll('&quot;', '"').replaceAll('&amp;', '&')).fieldId);
-  assert.deepEqual(ids.sort(), ['child-icon', 'child-text', 'child-title', 'collection-title']);
-  assert.match(editing, /\[No text in field\]/);
+  assert.deepEqual(ids, []);
+  assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
   assert.doesNotMatch(editing, /Key company facts|Our name|Add a datasource/);
   assert.doesNotMatch(render(empty), /<h2>|Key company facts|Our name|<img/);
   assert.equal(tiles(render(empty)).length, 1);

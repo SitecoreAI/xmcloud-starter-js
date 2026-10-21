@@ -143,7 +143,7 @@ test('native fields preserve their metadata and raw authoring link while visitor
   assert.equal(JSON.stringify(authored), before);
 });
 
-test('cleared fields retain all five real SDK editing regions without restored content', () => {
+test('cleared fields leave the editing canvas empty without restored content or optional placeholders', () => {
   const cleared = {
     heading: nativeField('heading', 'Single-Line Text', ''),
     body: nativeField('body', 'Rich Text', ''),
@@ -153,13 +153,11 @@ test('cleared fields retain all five real SDK editing regions without restored c
   };
   const before = JSON.stringify(cleared);
   const editing = render(cleared, { isEditing: true });
-  assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),
-    ['native-body', 'native-heading', 'native-icon', 'native-image', 'native-link']);
-  assert.ok(metadata(editing).every((field) => field.itemId === captured.id));
-  assert.equal((editing.match(/scEmptyImage/g) ?? []).length, 2);
-  assert.equal((editing.match(/\[No text in field\]/g) ?? []).length, 2);
+  assert.deepEqual(metadata(editing), []);
+  assert.doesNotMatch(editing, /scEmptyImage|\[No text in field\]/);
   assert.doesNotMatch(editing, /Everything we do|We invest|Badge|couple|See why|href="\/"/);
   const normal = render(cleared);
+  assert.equal(editing, normal, 'cleared fields have the same visual structure in both modes');
   assert.deepEqual(metadata(normal), []);
   assert.doesNotMatch(normal, /<img|<a[ >]|<svg|<h3|<header|<footer|scEmptyImage|\[No text in field\]|Everything we do|We invest|Badge|couple|See why/);
   assert.equal(JSON.stringify(cleared), before);
@@ -172,10 +170,18 @@ for (const [name, type, value, removed] of [
   ['icon', 'Image', {}, /0553a9a67d14fa22|alt="Badge"/],
   ['link', 'General Link', {}, /<a[ >]|<svg|See why you should consider Allianz/],
 ]) {
-  test(`clearing ${name} keeps its real editor chrome and the other four authored fields`, () => {
-    const data = { ...captured, [name]: nativeField(name, type, value) };
+  test(`clearing ${name} hides only its canvas region and preserves the other four editable fields`, () => {
+    const types = { heading: 'Single-Line Text', body: 'Rich Text', image: 'Image', icon: 'Image', link: 'General Link' };
+    const data = { id: captured.id, ...Object.fromEntries(Object.entries(types).map(([fieldName, fieldType]) =>
+      [fieldName, nativeField(fieldName, fieldType, captured[fieldName].jsonValue.value)])),
+    [name]: nativeField(name, type, value) };
+    const before = JSON.stringify(data);
     const editing = render(data, { isEditing: true });
-    assert.deepEqual(metadata(editing).map((field) => field.fieldId), [`native-${name}`]);
+    assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),
+      Object.keys(types).filter((fieldName) => fieldName !== name).map((fieldName) => `native-${fieldName}`).sort());
+    assert.ok(metadata(editing).every((field) => field.itemId === captured.id));
+    assert.doesNotMatch(editing, /scEmptyImage|\[No text in field\]/);
+    assert.doesNotMatch(editing, removed);
     const normal = render(data);
     assert.doesNotMatch(normal, removed);
     const expected = {
@@ -183,8 +189,12 @@ for (const [name, type, value, removed] of [
       icon: '/allianz-assets/0553a9a67d14fa22.svg', link: 'See why you should consider Allianz',
     };
     for (const [fieldName, text] of Object.entries(expected)) {
-      if (fieldName !== name) assert.ok(normal.includes(text), `${fieldName} survives clearing ${name}`);
+      if (fieldName !== name) {
+        assert.ok(normal.includes(text), `${fieldName} survives clearing ${name}`);
+        assert.ok(editing.includes(text), `${fieldName} remains editable after clearing ${name}`);
+      }
     }
+    assert.equal(JSON.stringify(data), before);
   });
 }
 
@@ -210,7 +220,8 @@ test('legacy children and redundant link lists cannot supply absent or cleared r
     const cleared = { ...unrelated, heading: nativeField('heading', 'Single-Line Text', '') };
     const clearedHtml = render(cleared, { isEditing });
     assert.doesNotMatch(clearedHtml, /Everything we do|Historical|We invest|See why/);
-    assert.equal(metadata(clearedHtml).length, isEditing ? 1 : 0);
+    assert.deepEqual(metadata(clearedHtml), []);
+    assert.doesNotMatch(clearedHtml, /scEmptyImage|\[No text in field\]/);
   }
 });
 

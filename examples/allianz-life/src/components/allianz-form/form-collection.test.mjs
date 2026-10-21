@@ -48,8 +48,15 @@ for(const config of MIGRATION_FORMS) {
    for(const fields of [...emptyEnvelopes,{data:{datasource:{schemaKey:{jsonValue:{value:'password'}},heading:{jsonValue:{value:'STALE CMS COPY'}},children:{results:[{id:'bad',label:{jsonValue:{value:'STALE LABEL'}},inputType:{jsonValue:{value:'password'}}}]}}}}]) assert.equal(render({...props,fields},p),expected);
    assert.doesNotMatch(expected,/allianz-missing-data|STALE|type="password"|action=|method=|fieldId|itemId/);
    assert.match(expected,new RegExp(`data-form-id="${config.id}"`));
-   if(config.sourceHidden&&!editing) assert.match(expected,/data-source-hidden-form="true" hidden="" style="display:none"/);
+   if(config.sourceHidden) assert.match(expected,/data-source-hidden-form="true" hidden="" style="display:none"/);
   }
+ });
+ test(`${config.id}: Page Builder uses the same responsive form structure and hidden state as normal output`,()=>{
+  const props={params:{formId:config.id}};
+  const normal=render(props,page(undefined,'/api/editing/render',false));
+  const editing=render(props,page(undefined,'/api/editing/render',true));
+  assert.equal(editing,normal);
+  assert.doesNotMatch(editing,/allianz-local-form-authoring|\[No text in field\]/);
  });
  for(const nativeId of config.pageIds) test(`${config.id}: native page identity selects correctly at editing endpoint`,()=>{
   assert.equal(resolveMigrationForm({},page(nativeId,'/api/editing/render',true))?.id,config.id);

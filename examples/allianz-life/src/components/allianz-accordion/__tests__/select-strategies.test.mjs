@@ -108,19 +108,19 @@ test('Select passes exact field objects and metadata once to SDK Text/RichText i
   for (const state of ['filled', 'cleared', 'absent']) for (const editing of [false, true]) {
     const data = freeze(envelope(state)), before = JSON.stringify(data); calls.length = 0;
     render(Observed.SelectStrategies, data, editing, params);
-    assert.equal(calls.length, 12);
+    assert.equal(calls.length, state === 'filled' ? 12 : 0);
     for (const entry of data.children.results) for (const [key, sdkName] of [['heading', 'Text'], ['body', 'RichText']]) {
       const field = entry[key]?.jsonValue;
       const matches = calls.filter(call => call.name === sdkName && call.field === field);
-      assert.equal(matches.length, field ? 1 : 6, `${state}/${key}: no fabricated field`);
+      assert.equal(matches.length, field?.value ? 1 : 0, `${state}/${key}: only populated native fields render`);
       for (const call of matches) assert.equal(call.editable, editing);
-      if (field) assert.ok(matches[0].field.metadata.fixtureOnly);
+      if (field?.value) assert.ok(matches[0].field.metadata.fixtureOnly);
     }
     assert.equal(JSON.stringify(data), before);
   }
 });
 
-test('editing preserves 12 native field markers and opens all six panels; visitor starts collapsed', () => {
+test('editing preserves 12 populated field markers and starts collapsed like the visitor', () => {
   const data = envelope(), expected = data.children.results.flatMap(entry => [entry.heading.jsonValue.metadata, entry.body.jsonValue.metadata]);
   const visitor = render(Accordion.SelectStrategies, data, false, params);
   assert.equal(markers(visitor).length, 0);
@@ -129,8 +129,8 @@ test('editing preserves 12 native field markers and opens all six panels; visito
   const editor = render(Accordion.SelectStrategies, data, true, params), actual = markers(editor);
   assert.equal(actual.length, expected.length);
   for (const owner of expected) assert.equal(actual.filter(marker => marker.itemId === owner.itemId && marker.fieldId === owner.fieldId).length, 1);
-  assert.equal((editor.match(/aria-expanded="true"/g) || []).length, 6);
-  assert.doesNotMatch(editor, /hidden=""/);
+  assert.equal((editor.match(/aria-expanded="false"/g) || []).length, 6);
+  assert.equal((editor.match(/hidden=""/g) || []).length, 6);
 });
 
 test('each Select instance and duplicate child identity receives unique matching trigger/panel IDs', () => {
@@ -168,8 +168,11 @@ test('native button toggles compose functional state, allow independent panels a
   assert.deepEqual(panels(tree).map(panel => panel.props.hidden), [false, false, true, true, true, true]);
   buttons(tree)[0].props.onClick(); assert.deepEqual(buttons(draw()).map(button => button.props['aria-expanded']), [false, true, false, false, false, false]);
   instance = 'two'; assert.ok(buttons(draw()).every(button => !button.props['aria-expanded']));
-  editing = true; tree = draw(); assert.ok(buttons(tree).every(button => button.props['aria-expanded']));
-  assert.ok(panels(tree).every(panel => !panel.props.hidden));
+  editing = true; tree = draw(); assert.ok(buttons(tree).every(button => !button.props['aria-expanded']));
+  assert.ok(panels(tree).every(panel => panel.props.hidden));
+  buttons(tree)[0].props.onClick(); tree = draw();
+  assert.deepEqual(buttons(tree).map(button => button.props['aria-expanded']), [true, false, false, false, false, false]);
+  assert.deepEqual(panels(tree).map(panel => panel.props.hidden), [false, true, true, true, true, true]);
   for (const button of buttons(tree)) { assert.equal(button.props.type, 'button'); assert.equal(button.props.role, undefined); }
 });
 
@@ -194,10 +197,23 @@ test('Select retains inherited hidden/expanded CSS guards and table-scroller mar
   assert.equal((html.match(/focusable="false"/g) || []).length, 6);
 });
 
-test('all 28 pre-existing accordion exports retain 168 captured output hashes, including Iap used by NF', () => {
-  assert.equal(fixture.baseline.accordionSHA256BeforeSelect, '50005daf66f398893612461accd0fe3d4f664502f3f2b87b5266316185c7e561');
-  assert.equal(fixture.baseline.renders.length, 168);
-  for (const item of fixture.baseline.renders) assert.equal(
-    sha(render(Accordion[item.variant], envelope(item.state), item.editing, params)), item.sha256,
-    `${item.variant}/${item.state}/${item.editing ? 'editing' : 'visitor'}`);
+test('all 28 pre-existing accordion exports preserve 84 approved-release visitor outputs', () => {
+  const baseline = JSON.parse(fs.readFileSync(new URL('./wysiwyg-normal-baseline.fixture.json', import.meta.url)));
+  assert.equal(baseline.sourceCommit, 'f2f97d59e94c06485394c75104607f2bd8e346b8');
+  assert.equal(baseline.componentSourceSHA256, 'bc954b8b1dfeefdc255e278ea4a00fd23c0cdfc36965581c02a5d2b1da1e50ee');
+  assert.equal(baseline.inputFixtureSHA256, sha(fs.readFileSync(new URL('./select-strategies.fixture.json', import.meta.url))));
+  assert.equal(baseline.renders.length, 84);
+  for (const item of baseline.renders) {
+    assert.equal(item.editing, false);
+    assert.equal(sha(render(Accordion[item.variant], envelope(item.state), false, params)), item.sha256,
+      `${item.variant}/${item.state}/visitor`);
+  }
+  // Preserve the older source-layout oracle wherever it predates no approved
+  // instance-ID change. Its editing snapshots describe the superseded open-all UI.
+  const instanceScopedAliases = new Set(['Default', 'FixedProductAccordion', 'AA5AllocationAnswers', 'AA5CreditingAnswers']);
+  const compatible = fixture.baseline.renders.filter(item => !item.editing && !instanceScopedAliases.has(item.variant));
+  assert.equal(compatible.length, 72);
+  for (const item of compatible) assert.equal(
+    sha(render(Accordion[item.variant], envelope(item.state), false, params)), item.sha256,
+    `${item.variant}/${item.state}/historical-visitor`);
 });

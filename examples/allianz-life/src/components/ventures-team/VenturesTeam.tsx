@@ -1,6 +1,6 @@
 'use client';
 
-import { Image, Link, RichText, Text, useComponentProps, useSitecore, type LinkField } from '@sitecore-content-sdk/nextjs';
+import { Image, Link, RichText, Text, useComponentProps, type LinkField } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { safeLinkRenderProps } from 'lib/allianz-fields';
@@ -64,8 +64,6 @@ function Profile({ person, index }: { person: VenturesTeamPerson; index: number 
 }
 
 export const Default = ({ fields, rendering, params }: VenturesTeamProps) => {
-  const { page } = useSitecore();
-  const editing = page?.mode?.isEditing ?? false;
   const automatic = useComponentProps<{ automaticVenturesTeam?: AutomaticVenturesTeam }>(rendering?.uid ?? '')?.automaticVenturesTeam;
   if (!fields?.data?.datasource) return <NoDataFallback componentName="Ventures Team" />;
   return <section id={params?.RenderingIdentifier} className="component ventures-team l-container--full-width t-bg-transparent axlTileCollection">
@@ -73,7 +71,6 @@ export const Default = ({ fields, rendering, params }: VenturesTeamProps) => {
       {automatic?.complete
         ? automatic.items.map((person, index) => <Profile key={person.pageId} person={person} index={index} />)
         : <p role="status">The Ventures team is temporarily unavailable.</p>}
-      {editing && <p role="status">Names and portraits come from the selected biography pages. Edit those pages and their Ventures team listing fields to update this listing.</p>}
     </div>
   </section>;
 };

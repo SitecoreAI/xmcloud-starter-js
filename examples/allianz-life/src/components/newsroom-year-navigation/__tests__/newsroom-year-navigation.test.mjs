@@ -126,7 +126,9 @@ test('read-only empty year labels retain native fields without copied titles, sl
   assert.doesNotMatch(editing, /contenteditable|data-field-id/);
   assert.equal(current.navigationTitle.jsonValue, original);
   assert.doesNotMatch(editing, new RegExp(desktop.links.at(-1).text));
-  assert.deepEqual(hrefs(editing), desktop.links.map((link) => link.href));
+  assert.deepEqual(hrefs(editing), []);
+  assert.equal(editing, renderData(data));
+  assert.match(editing, /Press archive navigation is temporarily unavailable/);
   assert.equal(hrefs(renderData(data)).length, 0);
   delete current.navigationTitle;
   assert.equal(newsroomYearNavigationData(data.automaticYears, true).issue, 'missing-title');
@@ -149,13 +151,13 @@ test('missing, failed, duplicate or incomplete automatic years never render a pa
     assert.deepEqual(newsroomYearItems(automaticYears), { items: [], complete: false });
     const rejected = { automaticYears, fields: { data: { datasource: { years: { targetItems: list.items } }, contextItem: { id: list.currentId } } } };
     assert.equal(hrefs(renderData(rejected)).length, 0);
-    assert.match(renderData(rejected, true), /Automatic archive years need complete native pages/);
+    assert.match(renderData(rejected, true), /Press archive navigation is temporarily unavailable/);
     assert.doesNotMatch(renderData(rejected, true), /Add a datasource|Select the archive/);
   }
   const empty = { ...list, items: [] };
   assert.deepEqual(newsroomYearItems(empty), { items: [], complete: true });
   assert.equal(renderData({ automaticYears: empty }), '');
-  assert.match(renderData({ automaticYears: empty }, true), /No automatic archive year pages are available/);
+  assert.equal(renderData({ automaticYears: empty }, true), '');
   assert.equal(newsroomYearNavigationData({ ...list, currentId: undefined }).issue, 'missing-current-year');
   assert.equal(newsroomYearNavigationData({ ...list, currentId: '00000000-0000-4000-8000-000000000999' }).issue, 'missing-current-year');
 });
@@ -206,7 +208,7 @@ test('source disclosure markup uses native button activation and ignores appeara
   hostile.automaticYears.items[0].navigationTitle.jsonValue.value = 'Authored <script>alert(1)</script> & title';
   assert.match(renderData(hostile), /Authored &lt;script&gt;/);
   assert.doesNotMatch(renderData(hostile), /<script>/);
-  assert.match(renderData(undefined, true), /Automatic archive years need complete native pages/);
+  assert.match(renderData(undefined, true), /Press archive navigation is temporarily unavailable/);
   assert.doesNotMatch(renderData(undefined, true), /Add a datasource/);
 });
 
@@ -223,7 +225,7 @@ test('real SDK ComponentPropsContext isolates data by rendering UID and never re
       contextItem: { id: data.automaticYears.currentId },
     } } };
     assert.equal(hrefs(renderData(missing)).length, 0);
-    assert.match(renderData(missing, true), /Automatic archive years need complete native pages/);
+    assert.match(renderData(missing, true), /Press archive navigation is temporarily unavailable/);
   }
 });
 

@@ -23,7 +23,6 @@ export const Default = ({ fields, params }: ProductTypeChoicesProps) => {
   return <div className="l-container--full-width t-bg-blue-soft axlTileCollection allianz-product-type-choices"
     id={params?.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width">
-      {isEditing && choices.length === 0 && <p role="status">Add a product type choice child item to this section.</p>}
       <div className="l-grid__row match-height-row u-padding-bottom-xl">
         {choices.map((choice) => <div key={choice.id} className="l-grid__column-medium-6">
           <article className="m-axlTile match-height -is--flipped tile--stackedImage -is--stacked t-bg-primary-white">

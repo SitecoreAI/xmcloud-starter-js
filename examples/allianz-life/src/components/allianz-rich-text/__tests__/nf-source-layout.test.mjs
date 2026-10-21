@@ -1,3 +1,4 @@
+import { assertWysiwygCanvas } from '../../allianz-card-grid/__tests__/wysiwyg-assertions.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -106,7 +107,7 @@ test('three NF resources reproduce each exact source owner and one shared XL top
   assert.equal((html.match(/0\.20% rider fee/g) || []).length, 1);
 });
 
-test('the existing IapIntroduction selected for NF matches its authentic source and preserves empty editable Body', () => {
+test('the existing IapIntroduction selected for NF matches its authentic source and omits a cleared Body control', () => {
   assert.equal(sha(fixture.introduction.body), fixture.introduction.bodySha256);
   assert.equal(sha(fixture.introduction.sourceMarkup), fixture.introduction.sourceMarkupSha256);
   const data = freeze({ body: field('body', fixture.introduction.body) });
@@ -116,25 +117,25 @@ test('the existing IapIntroduction selected for NF matches its authentic source 
   for (const value of [fixture.introduction.body, '']) for (const editing of [false, true]) {
     calls.length = 0; const data = freeze({ body: field('body', value) });
     render(Observed.IapIntroduction, data, editing, params);
-    assert.equal(calls.length, editing || value ? 1 : 0);
+    assert.equal(calls.length, value ? 1 : 0);
     if (calls.length) { assert.equal(calls[0].name, 'RichText'); assert.equal(calls[0].field, data.body.jsonValue); assert.equal(calls[0].editable, editing); }
   }
 });
 
-test('NF variants pass the original full and cleared field objects to installed SDK components', () => {
+test('NF variants pass original populated fields to SDK and omit cleared canvas controls', () => {
   const calls = [], ObservedRich = observedModule(richFilename, calls), ObservedCards = observedModule(cardsFilename, calls);
   for (const editing of [false, true]) for (const value of ['<p>Full <strong>authored</strong> body</p>', '']) {
     for (const name of ['NfResourcesStart', 'NfResourcesMiddle', 'NfResourcesEnd']) {
       calls.length = 0; const data = freeze({ body: field('body', value) });
       render(ObservedRich[name], data, editing, params);
-      assert.equal(calls.length, editing || value ? 1 : 0);
+      assert.equal(calls.length, value ? 1 : 0);
       if (calls.length) { assert.equal(calls[0].name, 'RichText'); assert.equal(calls[0].field, data.body.jsonValue); assert.equal(calls[0].editable, editing); }
     }
     calls.length = 0; const data = envelope('rich', value ? 'filled' : 'cleared');
     render(ObservedRich.NfIndexDefinitionsHeading, data, editing, params);
     for (const name of ['heading', 'body']) {
       const call = calls.find(call => call.field === data[name].jsonValue);
-      assert.equal(Boolean(call), Boolean(editing || value));
+      assert.equal(Boolean(call), Boolean(value));
       if (call) assert.equal(call.editable, editing);
     }
     for (const name of ['NfContractTools', 'NfSupport']) {
@@ -142,10 +143,10 @@ test('NF variants pass the original full and cleared field objects to installed 
       render(ObservedCards[name], data, editing, params);
       for (const card of data.children.results) for (const native of card.fieldCollection.filter(field => field.name !== 'Links')) {
         const call = calls.find(call => call.field === native.jsonValue);
-        assert.equal(Boolean(call), Boolean(editing || value));
+        assert.equal(Boolean(call), Boolean(value));
         if (call) assert.equal(call.editable, editing);
       }
-      if (editing) for (const card of data.children.results) for (const link of card.fieldCollection.find(field => field.name === 'Links').jsonValue)
+      if (editing && value) for (const card of data.children.results) for (const link of card.fieldCollection.find(field => field.name === 'Links').jsonValue)
         assert.ok(calls.some(call => call.name === 'Link' && call.field === link.fields.Link));
     }
   }
@@ -171,13 +172,14 @@ test('NF cards preserve five authored links and deliberate unavailable and local
   assert.equal(replaceHeading(html, 'h2', 'h4'), render(Cards.IapContractTools, data, false, params));
 });
 
-test('all affected pre-existing Iap and Default variants retain independently captured released output', () => {
+test('affected Iap and Default visitor oracles stay pinned and editing follows WYSIWYG', () => {
   assert.equal(fixture.baseline.head, 'a6d08d00a5a90c265e55adabe830d07c42dc571e');
   for (const item of fixture.baseline.renders) {
     const module = item.kind === 'cards' ? Cards : Rich;
     const data = envelope(item.kind, item.state), before = JSON.stringify(data);
-    assert.equal(sha(render(module[item.variant], data, item.editing, params)), item.sha256,
-      `${item.kind}.${item.variant}/${item.state}/${item.editing ? 'editing' : 'visitor'}`);
+    const visitor = render(module[item.variant], data, false, params);
+    if (!item.editing) assert.equal(sha(visitor), item.sha256, `${item.kind}.${item.variant}/${item.state}/visitor`);
+    else assertWysiwygCanvas(visitor, render(module[item.variant], data, true, params), data, `${item.kind}.${item.variant}/${item.state}/editing`);
     assert.equal(JSON.stringify(data), before);
   }
 });

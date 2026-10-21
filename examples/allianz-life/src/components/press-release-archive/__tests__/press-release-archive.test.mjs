@@ -48,13 +48,13 @@ test('native calendar formatting cannot shift with timezone and validates dates'
   for (const value of ['', 'yesterday', '2025-02-29', '2026-13-01', '2026-04-31']) assert.equal(newsroomCalendarDate(value), undefined);
 });
 
-test('intentional clears retain real SDK editing chrome and owning URLs never use headlines', () => {
+test('intentional clears omit canvas chrome while owning URLs never use headlines', () => {
   const data = archive(evidence.years[0]);
   const original = data.releases.targetItems[0];
   const cleared = { ...original, title: field('release-title', 'Single-Line Text', ''), summary: field('release-summary', 'Rich Text', ''), releaseDate: field('release-date', 'Date', ''),
     fieldCollection: [{ name: 'title', jsonValue: original.title.jsonValue }, { name: 'summary', jsonValue: original.summary.jsonValue }, { name: 'releaseDate', jsonValue: original.releaseDate.jsonValue }] };
   const clearData = { heading: field('archive-heading', 'Single-Line Text', ''), releases: { targetItems: [cleared] } };
-  assert.deepEqual(editingIds(render(Default, clearData, true)), ['archive-heading']);
+  assert.deepEqual(editingIds(render(Default, clearData, true)), []);
   assert.doesNotMatch(render(Default, clearData), /More Americans|Dec 18|Allianz Life New/);
   assert.equal(newsroomReleaseFields(cleared).title.jsonValue, cleared.title.jsonValue);
   const renamed = { ...original, title: field('renamed', 'Single-Line Text', 'A completely different headline') };

@@ -1,6 +1,7 @@
 'use client';
-import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
-import { allianzLinkField, shouldRenderImageField, shouldRenderTextField, shouldRenderLinkField } from 'lib/allianz-field-state';
+import { RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { shouldRenderTextField, shouldRenderLinkField } from 'lib/allianz-field-state';
+import { AllianzFieldContent } from 'lib/allianz-field-content';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { EditorialFrame } from 'lib/allianz-editorial-frame';
 import { brightcoveEmbedSource, type AllianzVideoProps } from './allianz-video.props';
@@ -11,17 +12,20 @@ const VideoPlayer = ({ fields }: Pick<AllianzVideoProps, 'fields'>) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
-  const embedSource = isEditing ? '' : brightcoveEmbedSource(data?.mediaLink?.jsonValue);
+  const embedSource = brightcoveEmbedSource(data?.mediaLink?.jsonValue);
   const playerTitle = data?.mediaLink?.jsonValue?.value?.text?.trim()
     || data?.heading?.jsonValue?.value?.trim() || 'Video player';
-  return embedSource ? <iframe className="allianz-video-player" src={embedSource}
+  const player = embedSource ? <iframe className="allianz-video-player" src={embedSource}
     title={playerTitle} width={640} height={360} loading="lazy" allowFullScreen
     allow="autoplay 'none'; encrypted-media; fullscreen"
     sandbox="allow-scripts allow-same-origin" referrerPolicy="strict-origin-when-cross-origin" />
-    // Keep the established empty-state and editor preview without a remote player.
+    // A missing or unapproved native link keeps the established empty surface.
     // eslint-disable-next-line @next/next/no-img-element
     : <img className="allianz-video-placeholder" src="/allianz-ui/video-placeholder.svg"
       alt="Video player would go here" width={640} height={360} />;
+  return shouldRenderLinkField(data?.mediaLink?.jsonValue, isEditing)
+    ? <AllianzFieldContent field={data?.mediaLink?.jsonValue} editable={isEditing}>{player}</AllianzFieldContent>
+    : player;
 };
 
 export const Default = ({ fields, params }: AllianzVideoProps) => {
@@ -35,12 +39,8 @@ export const Default = ({ fields, params }: AllianzVideoProps) => {
     <article className="video-block"><div className="video-block-content"><div className="bc-video-player"><div className="bc-video-player-inner">
       <VideoPlayer fields={fields} />
     </div></div></div></article>
-    {isEditing && <div className="allianz-local-video-source-fields">
-      {shouldRenderImageField(data.poster?.jsonValue, true) && <Image editable field={data.poster?.jsonValue} />}
-      {shouldRenderLinkField(data.mediaLink?.jsonValue, true) && <Link editable field={allianzLinkField(data.mediaLink?.jsonValue, true)} />}
-    </div>}
     {shouldRenderTextField(data.caption?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.caption?.jsonValue} />}
-    {shouldRenderTextField(data.transcript?.jsonValue, isEditing) && <details open={isEditing || undefined} className="allianz-local-video-transcript"><summary>Read video transcript</summary><RichText editable={isEditing} field={data.transcript?.jsonValue} /></details>}
+    {shouldRenderTextField(data.transcript?.jsonValue, isEditing) && <details className="allianz-local-video-transcript"><summary>Read video transcript</summary><RichText editable={isEditing} field={data.transcript?.jsonValue} /></details>}
   </section>;
 };
 
@@ -196,9 +196,6 @@ export const CoreIncome7ProductVideo = ({ fields, params }: AllianzVideoProps) =
         {shouldRenderLinkField(data.mediaLink?.jsonValue, isEditing) && <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
           <VideoPlayer fields={fields} />
         </div>}
-        {isEditing && data.mediaLink?.jsonValue && <div className="allianz-source-static-video-fields">
-          <Link editable field={data.mediaLink.jsonValue} />
-        </div>}
       </div></div>
     </div>
   </div>;
@@ -208,8 +205,6 @@ export const CoreIncome7ProductVideo = ({ fields, params }: AllianzVideoProps) =
 /** Lifetime keeps its separate native media owner.
  * Source heading and challenge copy require their own native field contract. */
 export const LifetimeIncomeVideo = ({ fields, params }: AllianzVideoProps) => {
-  const { page } = useSitecore();
-  const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzVideo" />;
   const hasApprovedMedia = Boolean(brightcoveEmbedSource(data.mediaLink?.jsonValue));
@@ -218,9 +213,6 @@ export const LifetimeIncomeVideo = ({ fields, params }: AllianzVideoProps) => {
       <div className="l-grid__row u-padding-bottom-xl"><div className="l-grid__column-medium-12">
         {hasApprovedMedia && <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
           <VideoPlayer fields={fields} />
-        </div>}
-        {isEditing && data.mediaLink?.jsonValue && <div className="allianz-source-static-video-fields">
-          <Link editable field={data.mediaLink.jsonValue} />
         </div>}
       </div></div>
     </div>

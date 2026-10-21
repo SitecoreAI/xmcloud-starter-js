@@ -36,7 +36,9 @@ test('Default product-fixed stage preserves native title, subtitle and desktop/m
     assert.match(heroImg(html), /width="2368"/);
     assert.match(heroImg(html), /alt="Image of a woman grocery shopping"/);
     assert.match(html, /<source media="\(max-width: 703px\)" srcSet="\/mobile.jpg"\/>/);
-    if (editing) for (const name of ['heading', 'body', 'desktop', 'mobile']) assert.ok(html.includes(`test-${name}-field`));
+    assert.equal((html.match(/<img\b/g) ?? []).length, 1);
+    assert.doesNotMatch(html, /Mobile image|test-mobile-field|Mobile authored description/);
+    if (editing) for (const name of ['heading', 'body', 'desktop']) assert.ok(html.includes(`test-${name}-field`));
     assert.equal(JSON.stringify(data), before);
   }
   const cleared = {
@@ -44,9 +46,12 @@ test('Default product-fixed stage preserves native title, subtitle and desktop/m
     body: { jsonValue: { value: '', metadata: metadata('body', 'Rich Text') } },
     desktopImage: nativeImage({}, 'desktop'), mobileImage: nativeImage({}, 'mobile'),
   };
+  const beforeCleared = JSON.stringify(cleared);
   const editor = render(Hero.Default, cleared, true, { theme: 'product-fixed', heroTheme: 'fixed' });
-  for (const name of ['heading', 'body', 'desktop', 'mobile']) assert.ok(editor.includes(`test-${name}-field`));
-  assert.doesNotMatch(render(Hero.Default, cleared, false, { theme: 'product-fixed', heroTheme: 'fixed' }), /<img\b|c-hero__headline|c-hero__subHeadline/);
+  const visitor = render(Hero.Default, cleared, false, { theme: 'product-fixed', heroTheme: 'fixed' });
+  assert.equal(editor, visitor);
+  assert.doesNotMatch(editor, /<img\b|c-hero__headline|c-hero__subHeadline|kind="open"|scEmptyImage|No text in field/);
+  assert.equal(JSON.stringify(cleared), beforeCleared);
 });
 
 test('Default product-fixed support leaves unsupported themes, other variants and the home branch unchanged', () => {
@@ -80,22 +85,26 @@ for (const [label, variant, params] of layouts) {
       assert.equal(JSON.stringify(data), before);
     }
   });
-  test(`${label} Hero preserves desktop/mobile editing metadata and populated descriptions`, () => {
+  test(`${label} Hero keeps desktop metadata and a single responsive image without a mobile canvas field`, () => {
     for (const value of [image, { ...image, alt: 'Authored desktop description' }]) {
       const data = datasource(value), before = JSON.stringify(data);
       const html = render(Hero[variant], data, true, params);
-      for (const name of ['desktop', 'mobile']) assert.ok(html.includes(`test-${name}-field`));
+      assert.ok(html.includes('test-desktop-field'));
       assert.ok(heroImg(html).includes(`alt="${value.alt ?? ''}"`));
-      assert.match(html, /alt="Mobile authored description"/);
+      assert.match(html, /<source media="\(max-width: 703px\)" srcSet="\/mobile.jpg"\/>/);
+      assert.equal((html.match(/<img\b/g) ?? []).length, 1);
+      assert.doesNotMatch(html, /test-mobile-field|Mobile image|Mobile authored description/);
       assert.equal(JSON.stringify(data), before);
     }
   });
-  test(`${label} Hero preserves empty native editor placeholders and suppresses absent public images`, () => {
+  test(`${label} Hero suppresses cleared image canvas artifacts in both modes without changing the fields`, () => {
     const data = { desktopImage: nativeImage({}, 'desktop'), mobileImage: nativeImage({}, 'mobile') };
-    assert.doesNotMatch(render(Hero[variant], data, false, params), /<img\b/);
+    const before = JSON.stringify(data), visitor = render(Hero[variant], data, false, params);
+    assert.doesNotMatch(visitor, /<img\b/);
     const html = render(Hero[variant], data, true, params);
-    for (const name of ['desktop', 'mobile']) assert.ok(html.includes(`test-${name}-field`));
-    assert.equal((html.match(/class="scEmptyImage/g) || []).length, 2);
+    assert.equal(html, visitor);
+    assert.doesNotMatch(html, /<img\b|kind="open"|scEmptyImage|Mobile image|No text in field/);
+    assert.equal(JSON.stringify(data), before);
     for (const missing of [{}, undefined]) assert.doesNotMatch(render(Hero[variant], missing, false, params), /<img\b/);
   });
 }

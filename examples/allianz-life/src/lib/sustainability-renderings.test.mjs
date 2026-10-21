@@ -73,7 +73,11 @@ function ordered(html, values) {
   let previous = -1;
   for (const value of values) { const next = html.indexOf(value); assert.ok(next > previous, `Missing/out-of-order source token: ${value}`); previous = next; }
 }
-function metadataPresent(html, wrapped) { assert.ok(html.includes(wrapped.jsonValue.metadata.fieldId), wrapped.jsonValue.metadata.fieldId); }
+function metadataMatchesContent(html, wrapped) {
+  const value = wrapped.jsonValue.value;
+  const populated = typeof value === 'string' ? Boolean(value) : Boolean(value?.src || value?.href);
+  assert.equal(html.includes(wrapped.jsonValue.metadata.fieldId), populated, wrapped.jsonValue.metadata.fieldId);
+}
 function projected(data) {
   return { ...data, children: { results: data.children.results.map(card => ({ id: card.id, links: card.links,
     fieldCollection: Object.entries(card).filter(([name, value]) => name !== 'id' && name !== 'links' && value?.jsonValue).map(([name, value]) => ({ name, jsonValue: value.jsonValue })) })) } };
@@ -106,10 +110,10 @@ for (const editing of [false, true]) {
       for (const card of data[index].children.results) {
         const body = card.body.jsonValue.value;
         if (body) assert.equal(occurrence(htmls[index], body), 1, `One source body: ${card.id}`);
-        if (editing) { metadataPresent(htmls[index], card.body); if (card.heading.jsonValue.value) metadataPresent(htmls[index], card.heading); }
+        if (editing) { metadataMatchesContent(htmls[index], card.body); if (card.heading.jsonValue.value) metadataMatchesContent(htmls[index], card.heading); }
       }
     }
-    if (editing) metadataPresent(htmls[1], data[1].heading);
+    if (editing) metadataMatchesContent(htmls[1], data[1].heading);
     assert.equal(JSON.stringify(data), before);
   });
 
@@ -129,7 +133,7 @@ for (const editing of [false, true]) {
     assert.ok(pdfs[0].body.includes(`d="${downloadPath}"`));
     assert.ok(!pdfs[0].body.includes(`d="${arrowPath}"`));
     assert.match(html, /l-grid__row u-margin-bottom-xl/);
-    if (editing) { metadataPresent(html, data.heading); metadataPresent(html, data.body); metadataPresent(html, data.primaryLink); data.children.results.forEach(card => metadataPresent(html, card.alphanumeral)); }
+    if (editing) { metadataMatchesContent(html, data.heading); metadataMatchesContent(html, data.body); metadataMatchesContent(html, data.primaryLink); data.children.results.forEach(card => metadataMatchesContent(html, card.alphanumeral)); }
   });
 
   test(`${editing ? 'editing' : 'visitor'}: impact anchor starts first Pillars grid; six h3 cards retain source order across two placements`, () => {
@@ -158,7 +162,7 @@ for (const editing of [false, true]) {
     const cta = anchors(html).find(anchor => href(anchor) === 'https://www.allianz.com/en/sustainability.html');
     assert.ok(cta); assert.match(cta.attrs, /target="_blank"/); assert.ok(cta.body.includes(`d="${arrowPath}"`));
     assert.ok(html.includes(card.image.jsonValue.value.src));
-    if (editing) { metadataPresent(html, card.image); metadataPresent(html, card.heading); metadataPresent(html, card.body); metadataPresent(html, card.links.targetItems[0].link); }
+    if (editing) { metadataMatchesContent(html, card.image); metadataMatchesContent(html, card.heading); metadataMatchesContent(html, card.body); metadataMatchesContent(html, card.links.targetItems[0].link); }
   });
 
   test(`${editing ? 'editing' : 'visitor'}: Related Information is before the intro header; three native cards have no padded card row or footer icon`, () => {
@@ -178,9 +182,9 @@ for (const editing of [false, true]) {
       assert.ok(cards[index].body.includes(card.body.jsonValue.value));
       assert.ok(cards[index].body.includes(card.image.jsonValue.value.src));
       assert.match(cards[index].body, /<h4/);
-      if (editing) { metadataPresent(html, card.link); metadataPresent(html, card.image); }
+      if (editing) { metadataMatchesContent(html, card.link); metadataMatchesContent(html, card.image); }
     }
-    if (editing) metadataPresent(html, data.heading);
+    if (editing) metadataMatchesContent(html, data.heading);
   });
 }
 
@@ -205,20 +209,20 @@ test('four exact external URLs and original source targets survive visitor and e
   }
 });
 
-test('held Original images remain absent for visitors; empty SDK image metadata remains editable', () => {
+test('held Original images remain absent from both canvases and keep their Content fields', () => {
   const before = JSON.stringify(candidate);
   for (const index of [2, 3, 7, 8]) {
     const data = datasource(index), visitor = renderPlacement(index, false, data), editor = renderPlacement(index, true, data);
     assert.doesNotMatch(visitor, /<img|src="\/allianz-assets|src="\/test-only-sustainability/);
     const imageOwners = index === 2 ? [data] : data.children.results;
     for (const owner of imageOwners) for (const name of ['desktopImage', 'mobileImage', 'icon', 'image']) {
-      if (owner[name] && (index === 2 || name === (index === 3 ? 'icon' : 'image'))) metadataPresent(editor, owner[name]);
+      if (owner[name] && (index === 2 || name === (index === 3 ? 'icon' : 'image'))) metadataMatchesContent(editor, owner[name]);
     }
   }
   assert.equal(JSON.stringify(candidate), before);
 });
 
-test('explicit text and link clears retain editing metadata without source-copy or CTA fallback', () => {
+test('explicit text and link clears omit canvas controls without source-copy or CTA fallback', () => {
   for (const index of [4, 5, 7, 8]) {
     const data = datasource(index);
     const owner = index === 4 || index === 8 ? data : data.children.results[0];
@@ -232,8 +236,8 @@ test('explicit text and link clears retain editing metadata without source-copy 
     const before = JSON.stringify(data), visitor = renderPlacement(index, false, data), editor = renderPlacement(index, true, data);
     if (originalHeading) assert.ok(!visitor.includes(escape(originalHeading)));
     if (originalBody) assert.ok(!visitor.includes(originalBody));
-    metadataPresent(editor, owner.heading); if (owner.body) metadataPresent(editor, owner.body); if (link && [4, 8].includes(index)) metadataPresent(editor, link);
-    if (owner.links) owner.links.targetItems.forEach(item => metadataPresent(editor, item.link));
+    metadataMatchesContent(editor, owner.heading); if (owner.body) metadataMatchesContent(editor, owner.body); if (link && [4, 8].includes(index)) metadataMatchesContent(editor, link);
+    if (owner.links) owner.links.targetItems.forEach(item => metadataMatchesContent(editor, item.link));
     assert.equal(JSON.stringify(data), before);
   }
   for (const index of [5, 7]) {
@@ -249,7 +253,7 @@ test('native fieldCollection projection preserves structured card bodies and edi
     const data = datasource(index, true), projection = projected(data), before = JSON.stringify(projection);
     assert.equal(renderPlacement(index, false, projection), renderPlacement(index, false, data));
     const editor = renderPlacement(index, true, projection);
-    for (const card of data.children.results) metadataPresent(editor, card.body);
+    for (const card of data.children.results) metadataMatchesContent(editor, card.body);
     assert.equal(JSON.stringify(projection), before);
   }
 });

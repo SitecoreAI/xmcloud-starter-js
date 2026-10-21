@@ -50,10 +50,10 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
   const header = <div id="header">{placeholder('headless-header')}</div>;
   const footer = <div id="footer">{placeholder('headless-footer')}</div>;
   const sidebar = !!route?.placeholders['headless-sidebar']?.length;
-  // The dedicated Allianz layout opts in by declaring this native placeholder.
-  // Keep an explicitly empty slot insertable in Pages; other layouts are unchanged.
-  const rightRail = !!route?.placeholders['headless-right-rail']?.length ||
-    (mode.isEditing && Object.hasOwn(route?.placeholders ?? {}, 'headless-right-rail'));
+  const rightRail = !!route?.placeholders['headless-right-rail']?.length;
+  // Keep the SDK insertion chrome without narrowing an otherwise full-width page.
+  const emptyRightRail = mode.isEditing && !rightRail &&
+    Object.hasOwn(route?.placeholders ?? {}, 'headless-right-rail');
   const nyHome = isNewYorkHomePage(fields) && !sidebar && !rightRail;
   return <>
     <Scripts />
@@ -66,6 +66,7 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
           {sidebar && <aside className="col-md-2 col-sm-3 left-column">{placeholder('headless-sidebar')}</aside>}
           <div id="content-body" className={nyHome ? 'col-sm-12 center-column allianz-ny-home-content' : sidebar ? 'col-md-8 col-sm-9 center-column' : rightRail ? 'col-md-10 col-sm-9 center-column' : 'col-md-10 col-md-offset-1 center-column'}>{placeholder('headless-main')}</div>
           {rightRail && <aside className="col-md-2 col-sm-3 right-column">{placeholder('headless-right-rail')}</aside>}
+          {emptyRightRail && <div className="allianz-empty-right-rail-chrome" style={{ position: 'absolute', insetInlineEnd: 0, width: '16.66666667%' }}>{placeholder('headless-right-rail')}</div>}
         </div></main> : <main id="main"><div id="content">{placeholder('headless-main')}</div></main>}
         {footer}
         <ServiceUnavailable />

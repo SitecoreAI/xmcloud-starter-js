@@ -102,14 +102,14 @@ test('populated text, scalar or ordered links, icons and numerals keep general c
   }
 });
 
-test('original and cleared native image fields remain editable without mutating values or inventing an image', () => {
+test('populated images retain native editing identity while cleared images add no canvas controls', () => {
   const data = datasource(), card = data.children.results[0], original = structuredClone(card.image.jsonValue.value);
   const initial = render(data), metadata = card.image.jsonValue.metadata;
   for (const src of [original.src, '']) {
     card.image.jsonValue.value = { ...original, src };
     const before = JSON.stringify(data), editing = render(data, routeId, true);
-    assert.ok(editing.includes(metadata.fieldId), 'the same real SDK image editor remains mounted');
-    assert.equal(logoCount(editing), 7, 'empty native image fields preserve the source scope');
+    assert.equal(editing.includes(metadata.fieldId), Boolean(src), 'only populated images mount their original native canvas field');
+    assert.equal(logoCount(editing), 7, 'clearing an image retains the source-owned card wrapper');
     assert.equal(imageCount(render(data)), src ? 7 : 6);
     assert.equal(JSON.stringify(data), before);
     assert.equal(card.image.jsonValue.metadata, metadata);

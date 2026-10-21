@@ -104,6 +104,12 @@ const withoutMetadata = (value) => Array.isArray(value) ? value.map(withoutMetad
   : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value)
     .filter(([key]) => key !== 'metadata').map(([key, item]) => [key, withoutMetadata(item)])) : value;
 
+// SDK editing and visitor renderers may serialize anchor attributes in a different
+// order. Preserve every attribute value and child node when comparing the canvas.
+const canvas = html => html.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, '').replace(
+  /<([a-z][\w:-]*)(\s+[^<>]*?)?(\/?)>/gi,
+  (tag, name, attributes, closing) => `<${name}${attributes ? ' ' + (attributes.match(/[^\s=<>/]+(?:="[^"]*")?/g) ?? []).sort().join(' ') : ''}${closing}>`);
+
 test('real SDK renders the exact five authored participant links in Treelist order', () => {
   const data = navigationData(), before = JSON.stringify(data);
   const html = render('navigation', data, { pathname: `${base}/glossary`, params: { RenderingIdentifier: 'participant-strip' } });
@@ -167,28 +173,34 @@ test('route-prefix normalization does not trim site-name lookalikes or arbitrary
   assert.equal(rules.participantCurrentPath('/allianz-life/en/page', 'allianz-life', undefined), '/allianz-life/en/page');
 });
 
-test('native Text, General Link, Image and utility icon authoring metadata remains visible in editing', () => {
-  const nav = navigationData(true), header = headerData();
-  for (const [kind, data, fieldIds] of [
-    ['navigation', nav, ['participant-heading', ...expectedLinks.flatMap((_, index) => [`title-${index}`, `link-${index}`])]],
-    ['header', header, ['participant-logo', 'participant-logo', 'participant-tagline', 'title-contact', 'link-contact',
-      'title-login', 'link-login', 'icon-0', 'icon-1']],
-  ]) {
-    const before = JSON.stringify(data), html = render(kind, data, { isEditing: true });
-    assert.deepEqual(metadata(html).map(({ fieldId }) => fieldId).sort(), fieldIds.sort());
-    assert.equal(JSON.stringify(data), before);
-    assert.deepEqual(metadata(render(kind, withoutMetadata(data))), [], 'ordinary Edge fields without editing metadata emit no chrome');
-  }
+test('authored participant caption, link and title fields retain their native Pages ownership', () => {
+  const nav = navigationData(true), navBefore = JSON.stringify(nav);
+  const normal = render('navigation', nav), editing = render('navigation', nav, { isEditing: true });
+  const expected = [nav.heading.jsonValue.metadata, ...nav.primaryNav.targetItems.flatMap(item =>
+    [item.link.jsonValue.metadata, item.title.jsonValue.metadata])];
+  assert.deepEqual(metadata(editing), expected);
+  assert.equal(canvas(editing), canvas(normal));
+  assert.deepEqual(metadata(normal), []);
+  assert.equal(JSON.stringify(nav), navBefore);
+  const header = headerData(), headerBefore = JSON.stringify(header);
+  const fieldIds = ['participant-logo', 'participant-logo', 'participant-tagline', 'title-contact', 'link-contact',
+    'title-login', 'link-login', 'icon-0', 'icon-1'];
+  assert.deepEqual(metadata(render('header', header, { isEditing: true })).map(({ fieldId }) => fieldId).sort(), fieldIds.sort());
+  assert.deepEqual(metadata(render('header', header)), []);
+  assert.deepEqual(metadata(render('header', withoutMetadata(header))), []);
+  assert.equal(JSON.stringify(header), headerBefore);
 });
 
-test('cleared native fields keep their editing chrome without borrowing source captions or destinations', () => {
-  // The SDK replaces an empty General Link with its editing placeholder, which
-  // intentionally suppresses nested children. Clear Text and Image fields while
-  // their parent links are populated to verify their own editing chrome too.
+test('cleared participant fields share the visitor canvas without empty SDK helpers or copied captions', () => {
   const clearedTitle = navigationData();
   clearedTitle.heading.jsonValue.value = '';
   for (const item of clearedTitle.primaryNav.targetItems) item.title.jsonValue.value = '';
-  assert.equal(metadata(render('navigation', clearedTitle, { isEditing: true })).length, 11);
+  const navBefore = JSON.stringify(clearedTitle);
+  const clearedTitleEditing = render('navigation', clearedTitle, { isEditing: true });
+  assert.deepEqual(metadata(clearedTitleEditing), clearedTitle.primaryNav.targetItems.map(item => item.link.jsonValue.metadata));
+  assert.doesNotMatch(clearedTitleEditing, /\[No text in field\]/);
+  assert.equal(canvas(clearedTitleEditing), canvas(render('navigation', clearedTitle)));
+  assert.equal(JSON.stringify(clearedTitle), navBefore);
   const clearedImages = headerData();
   clearedImages.logo.jsonValue.value = {};
   clearedImages.tagline.jsonValue.value = '';
@@ -196,7 +208,11 @@ test('cleared native fields keep their editing chrome without borrowing source c
     item.title.jsonValue.value = '';
     item.icon.jsonValue.value = {};
   }
-  assert.equal(metadata(render('header', clearedImages, { isEditing: true })).length, 9);
+  const headerBefore = JSON.stringify(clearedImages);
+  const headerEditing = render('header', clearedImages, { isEditing: true });
+  assert.deepEqual(metadata(headerEditing).map(({ fieldId }) => fieldId).sort(), ['link-contact', 'link-login']);
+  assert.doesNotMatch(headerEditing, /\[No (?:text|image) in field\]/);
+  assert.equal(JSON.stringify(clearedImages), headerBefore);
   const nav = navigationData(), header = headerData();
   nav.heading.jsonValue.value = '';
   for (const item of nav.primaryNav.targetItems) {
@@ -210,12 +226,14 @@ test('cleared native fields keep their editing chrome without borrowing source c
     item.link.jsonValue.value = { href: '' };
     item.icon.jsonValue.value = {};
   }
-  for (const [kind, data, count] of [['navigation', nav, 6], ['header', header, 5]]) {
-    const html = render(kind, data, { isEditing: true });
-    assert.equal(metadata(html).length, count);
-    assert.match(html, /\[No text in field\]/);
+  for (const [kind, data] of [['navigation', nav], ['header', header]]) {
+    const before = JSON.stringify(data), html = render(kind, data, { isEditing: true });
+    assert.deepEqual(metadata(html), []);
+    assert.doesNotMatch(html, /\[No (?:text|image) in field\]|Add a link/);
     assert.doesNotMatch(html, /Overview|Taking Income|Contact Us|Allianz Life Insurance Company/);
     assert.doesNotMatch(html, /href="#service-unavailable"/);
+    assert.equal(html, render(kind, data));
+    assert.equal(JSON.stringify(data), before);
   }
   assert.deepEqual(anchors(render('navigation', nav)), []);
   assert.deepEqual(active(render('navigation', nav, { pathname: base })), []);

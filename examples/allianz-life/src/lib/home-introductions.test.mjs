@@ -228,20 +228,18 @@ for (const component of components) {
     assert.equal(JSON.stringify(authored), before);
   });
 
-  test(`${component.name} keeps every cleared native field's editor chrome without restoring content`, () => {
+  test(`${component.name} leaves cleared native fields absent from the canvas without restoring content`, () => {
     const itemId = `cleared-${component.name}`;
     const cleared = Object.fromEntries(component.fields.map((name) => [name,
       nativeField(name, name === 'icon' ? {} : '', itemId)]));
     const before = JSON.stringify(cleared);
     const editing = render(component, cleared, { isEditing: true });
-    assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),
-      component.fields.map((name) => `native-${name}`).sort());
-    assert.ok(metadata(editing).every((field) => field.itemId === itemId));
-    assert.match(editing, /\[No text in field\]/);
-    if (component.fields.includes('icon')) assert.match(editing, /scEmptyImage/);
+    assert.deepEqual(metadata(editing), []);
+    assert.doesNotMatch(editing, /scEmptyImage|\[No text in field\]/);
     assert.doesNotMatch(editing,
       /leading provider|committed to you|Life insurance including annuities|315429dcca05b7d8|Add a datasource/);
     const normal = render(component, cleared);
+    assert.equal(editing, normal, 'cleared fields have the same visual structure in both modes');
     assert.deepEqual(metadata(normal), []);
     assert.doesNotMatch(normal, /<h[1-6]|<img|<svg|<p>|\[No text in field\]|scEmptyImage|leading provider|committed to you|Life insurance including annuities|315429dcca05b7d8/);
     assert.equal(JSON.stringify(cleared), before);
@@ -249,10 +247,16 @@ for (const component of components) {
 
   for (const fieldName of component.fields) {
     test(`${component.name} independently clearing ${fieldName} retains the other fields`, () => {
-      const cleared = { ...component.datasource,
-        [fieldName]: nativeField(fieldName, fieldName === 'icon' ? {} : '', `clear-${component.name}`) };
+      const itemId = `clear-${component.name}`;
+      const cleared = Object.fromEntries(component.fields.map((name) => [name,
+        nativeField(name, component.datasource[name].jsonValue.value, itemId)]));
+      cleared[fieldName] = nativeField(fieldName, fieldName === 'icon' ? {} : '', itemId);
+      const before = JSON.stringify(cleared);
       const editing = render(component, cleared, { isEditing: true });
-      assert.deepEqual(metadata(editing).map((entry) => entry.fieldId), [`native-${fieldName}`]);
+      assert.deepEqual(metadata(editing).map((entry) => entry.fieldId).sort(),
+        component.fields.filter((name) => name !== fieldName).map((name) => `native-${name}`).sort());
+      assert.ok(metadata(editing).every((entry) => entry.itemId === itemId));
+      assert.doesNotMatch(editing, /scEmptyImage|\[No text in field\]/);
       const html = render(component, cleared);
       for (const name of component.fields) {
         const value = component.datasource[name].jsonValue.value;
@@ -263,7 +267,10 @@ for (const component of components) {
         } else {
           assert.equal(html.includes(value), fieldName !== name);
         }
+        if (fieldName !== name) assert.ok(editing.includes(name === 'icon' ? value.src : value),
+          `${name} remains editable after clearing ${fieldName}`);
       }
+      assert.equal(JSON.stringify(cleared), before);
     });
   }
 

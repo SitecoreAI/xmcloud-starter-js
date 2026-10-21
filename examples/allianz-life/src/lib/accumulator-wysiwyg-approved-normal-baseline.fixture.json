@@ -1,0 +1,11 @@
+{
+  "qualification": "Synthetic installed-SDK normal-render baseline captured from approved source commit before WYSIWYG; not native CMS or live authoring evidence. Historic embedded hashes remain untouched.",
+  "sourceCommit": "f2f97d59e94c06485394c75104607f2bd8e346b8",
+  "sourceSHA256": "bc954b8b1dfeefdc255e278ea4a00fd23c0cdfc36965581c02a5d2b1da1e50ee",
+  "inputSHA256": "aaeb45cebbc1dd2aa57633247b58417d5514a6b6e396a77b7530d3ca52c1dc5d",
+  "hashes": {
+    "Accordion.Default": "5fb74198319846a2e0f5d78b185fa4065749f7e554563eef71ae49257b56e187",
+    "Accordion.FaqRow": "594b1b76872abf7d36e3fae8414efb9b7168105913b25abf4ff503e0fb43fef8",
+    "Accordion.Transcript": "ce31c843dd723e72d308f3b29e3c2b1f574e55b6a3c218ea53b34719e1a9d7fe"
+  }
+}

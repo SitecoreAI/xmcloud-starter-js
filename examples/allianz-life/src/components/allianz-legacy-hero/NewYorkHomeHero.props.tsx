@@ -73,7 +73,6 @@ export default function NewYorkHomeHero({ data, params, isEditing }: {
           </div><div className="notepad-corner" aria-hidden="true" />
         </div>}
       </div>
-      {isEditing && mobile && <div>Mobile image<Image editable field={mobile} /></div>}
     </div>
     <NewYorkHomeLogin />
   </div>;

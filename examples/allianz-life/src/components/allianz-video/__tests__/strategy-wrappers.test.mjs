@@ -54,8 +54,8 @@ for (const entry of sources) {
       const trigger = /<button id="([^"]+)"/.exec(html)[1];
       assert.ok(html.includes(`id="${control}" role="region" aria-labelledby="${trigger}"`));
       const editing = render(Component, data, true, params);
-      assert.match(editing, /aria-expanded="true"/);
-      assert.doesNotMatch(editing, / hidden=""/);
+      assert.match(editing, /aria-expanded="false"/);
+      assert.match(editing, / hidden=""/);
       assert.equal((editing.match(/kind="open"/g) ?? []).length, 2);
     } else {
       assert.ok(html.includes(entry.fields.body));
@@ -66,7 +66,7 @@ for (const entry of sources) {
   });
 }
 
-test('SourceStatic keeps cleared native copy editable and preserves unused media values without playback or a duplicate transcript', () => {
+test('SourceStatic omits cleared native copy from the canvas and preserves unused media values without playback or a duplicate transcript', () => {
   const data = { heading: nativeText('heading', ''), body: nativeText('body', ''),
     caption: nativeText('caption', ''), poster: field('poster', 'Image', { src: '' }),
     mediaLink: field('mediaLink', 'General Link', { href: '' }), transcript: nativeText('forbidden-duplicate', '<p>Separate owner</p>'),
@@ -75,7 +75,8 @@ test('SourceStatic keeps cleared native copy editable and preserves unused media
   const html = render(SourceStatic, data);
   const editing = render(SourceStatic, data, true);
   assert.doesNotMatch(html, /Separate owner|<video\b|<iframe\b|clip\.mp4|<a\b/);
-  assert.deepEqual(editingIds(editing), ['body', 'caption', 'heading']);
+  assert.deepEqual(editingIds(editing), []);
+  assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
   assert.doesNotMatch(editing, /Separate owner|forbidden-duplicate|<video\b|<iframe\b|clip\.mp4|<a\b|allianz-source-static-video-fields/);
   assert.equal(JSON.stringify(data), before);
   assert.match(render(SourceStatic, undefined), /Add a datasource for AllianzVideo/);
@@ -84,7 +85,7 @@ test('SourceStatic keeps cleared native copy editable and preserves unused media
   assert.match(css, /\.allianz-source-static-video \.allianz-video-placeholder \{[^}]*aspect-ratio: 16 \/ 9;/);
 });
 
-test('Transcript keeps datasource clears editable and preserves source child order, including repeated item IDs', () => {
+test('Transcript omits datasource clears from the canvas and preserves source child order, including repeated item IDs', () => {
   const data = { heading: nativeText('root-heading', ''), primaryLink: field('root-link', 'General Link', { href: '' }),
     children: { results: ['First', 'Second'].map((text) => ({ id: 'repeated-native-id',
       heading: field(`${text}-heading`, 'Single-Line Text', text), body: nativeText(`${text}-body`, `<p>${text} body</p>`) })) } };
@@ -93,7 +94,7 @@ test('Transcript keeps datasource clears editable and preserves source child ord
   assert.ok(html.indexOf('First body') < html.indexOf('Second body'));
   const controls = [...html.matchAll(/aria-controls="([^"]+)"/g)].map((match) => match[1]);
   assert.equal(new Set(controls).size, 2);
-  assert.deepEqual(editingIds(render(Transcript, data, true)), ['First-body', 'First-heading', 'Second-body', 'Second-heading', 'root-heading', 'root-link']);
+  assert.deepEqual(editingIds(render(Transcript, data, true)), ['First-body', 'First-heading', 'Second-body', 'Second-heading']);
   assert.equal(JSON.stringify(data), before);
   assert.match(render(Transcript, undefined), /Add a datasource for AllianzAccordion/);
 });
@@ -113,7 +114,8 @@ test('new exports have explicit shell ownership and finite wrapper parameters', 
     assert.doesNotMatch(invalid, /evil-class/);
     const cleared = { body: nativeText('body', ''), fieldCollection: wire(body).fieldCollection };
     assert.doesNotMatch(render(Component, cleared), /One source body/);
-    assert.deepEqual(editingIds(render(Component, cleared, true)), ['body']);
+    assert.deepEqual(editingIds(render(Component, cleared, true)), []);
+    assert.doesNotMatch(render(Component, cleared, true), /\[No text in field\]/);
     assert.match(render(Component, undefined), /Add a datasource for Legal Disclosures/);
   }
   assert.doesNotMatch(render(SourceStatic, {}, false, { container: 'row' }), /l-container|axlTileCollection/);

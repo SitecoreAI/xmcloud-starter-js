@@ -12,9 +12,7 @@ const DocumentTable = ({ fields, params, rendering, product = false, embedded = 
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="Prospectus document table" />;
-  if (!rows) return <div role="status" className="allianz-missing-data">{isEditing
-    ? 'Automatic prospectus documents could not load completely. Check the datasource children and native sort order.'
-    : 'Prospectus documents are temporarily unavailable.'}</div>;
+  if (!rows) return <div role="status" className="allianz-missing-data">Prospectus documents are temporarily unavailable.</div>;
   const table = (
         <table className="table table-striped" id={product ? 'prospectusTable' : embedded ? params?.RenderingIdentifier : undefined}>
           <thead><tr>
@@ -31,8 +29,8 @@ const DocumentTable = ({ fields, params, rendering, product = false, embedded = 
                 {shouldRenderTextField(document.contractNote?.jsonValue, isEditing)
                   ? <Text tag="p" field={document.contractNote?.jsonValue} editable={isEditing} /> : <p />}
               </td>
-              <td><Text field={document.revisionDate?.jsonValue} editable={isEditing} /></td>
-              <td><Text field={document.fileSize?.jsonValue} editable={isEditing} /></td>
+              <td>{shouldRenderTextField(document.revisionDate?.jsonValue, isEditing) && <Text field={document.revisionDate?.jsonValue} editable={isEditing} />}</td>
+              <td>{shouldRenderTextField(document.fileSize?.jsonValue, isEditing) && <Text field={document.fileSize?.jsonValue} editable={isEditing} />}</td>
             </tr>
           ))}</tbody>
         </table>

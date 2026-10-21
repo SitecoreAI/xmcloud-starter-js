@@ -37,7 +37,7 @@ test('six canonical recent cards have whole-card native URLs, title/date/summary
 test('root and article clears remain editable, external more link stays inert', () => {
   const empty = { heading: field('recent-heading', 'Single-Line Text', ''), moreLink: field('more-link', 'General Link', { href: '', text: '' }), releases: { targetItems: [] },
     fieldCollection: [{ name: 'heading', jsonValue: data.heading.jsonValue }, { name: 'moreLink', jsonValue: data.moreLink.jsonValue }] };
-  assert.deepEqual(editingIds(render(Default, empty, true)), ['more-link', 'recent-heading']);
+  assert.deepEqual(editingIds(render(Default, empty, true)), []);
   assert.equal(newsroomRecentReleasesFields(empty).moreLink.jsonValue, empty.moreLink.jsonValue);
   assert.equal(links(render(Default, empty)).length, 0);
   const external = { ...empty, moreLink: field('more-link', 'General Link', { href: 'https://www.linkedin.com/company/allianz-life', text: 'Authored link' }) };

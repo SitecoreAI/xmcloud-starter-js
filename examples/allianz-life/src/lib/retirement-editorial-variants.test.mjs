@@ -68,7 +68,10 @@ for (const fixture of fixtures) {
    const normal=render(components[r.componentName][r.variant],props(data,false,r.params));
    const editing=render(components[r.componentName][r.variant],props(data,true,r.params));
    assert.ok(normal.length>0);assert.equal(JSON.stringify(data),before);
-   assert.match(editing,/test-only-/);
+   const visibleFields = ['heading','body','summary','alphanumeral'];
+   const populated = visibleFields.some(name=>r.fields?.[name]) || ['desktopImage','image','icon'].some(name=>r.fields?.[name]?.assetIntentKey) || r.children?.some(child=>visibleFields.some(name=>child.fields?.[name]) || ['image','icon'].some(name=>child.fields?.[name]?.assetIntentKey));
+   if(populated) assert.match(editing,/test-only-/);
+   assert.doesNotMatch(editing,/\[No text in field\]|scEmptyImage/);
    if(r.componentName!=='AllianzHero') assert.doesNotMatch(normal,/<h1\b/);
    if(r.componentName==='AllianzCardGrid') {
     for(const child of r.children) {
@@ -123,7 +126,7 @@ test('native fieldCollection and ordered links preserve download/arrow icons, qu
 test('cleared SDK fields remain editable; cleared ordered links never fall back to a stale single link',()=>{
  const d={children:{results:[{id:'cleared',heading:field('heading',''),body:field('body',''),icon:field('icon',{}),alphanumeral:field('alphanumeral',''),links:{targetItems:[]},link:field('link',{href:'/about',text:'Stale'})}]}};
  const normal=render(Cards.EditorialTiles,props(d));assert.doesNotMatch(normal,/<img|alphaType|Stale|<a\b/);
- const editing=render(Cards.EditorialTiles,props(d,true));for(const name of ['heading','body','icon','alphanumeral']) assert.ok(editing.includes(`test-only-${name}`));
+ const editing=render(Cards.EditorialTiles,props(d,true));assert.doesNotMatch(editing,/test-only-(?:heading|body|icon|alphanumeral)|\[No text in field\]|scEmptyImage/);
  assert.doesNotMatch(editing,/Stale/);
 });
 test('no datasource does not manufacture editorial content',()=>{
@@ -131,12 +134,12 @@ test('no datasource does not manufacture editorial content',()=>{
 });
 test('article field clearing and finite parameters preserve authorability and prevent new H1s or class injection',()=>{
  const d={heading:field('heading',''),summary:field('summary',''),body:field('body','')};const h=render(Article.EditorialBody,props(d,true,{headingLevel:'h1',scaffold:'<unsafe>',bodySize:'evil',sourceWidth:'evil'}));
- for(const k of ['heading','summary','body'])assert.ok(h.includes(`test-only-${k}`));assert.doesNotMatch(h,/<h1|evil|unsafe/);
+ assert.doesNotMatch(h,/test-only-(?:heading|summary|body)|\[No text in field\]|<h1|evil|unsafe/);
 });
 test('hero preserves subtitle typography, responsive images and CKEditor block metadata without invalid nesting',()=>{
  const d={heading:field('heading','<p>Title</p>'),body:field('body','<p>Subtitle</p>'),desktopImage:field('desktopImage',{src:'/test-only/desktop.jpg'}),mobileImage:field('mobileImage',{})};
  const html=render(Hero.Editorial,props(d,true,{theme:'blue-soft',RenderingIdentifier:'hero'}));
- assert.match(html,/role="heading" aria-level="1"/);assert.match(html,/h4 c-heading c-hero__subHeadline/);assert.doesNotMatch(html,/<h1[^>]*><p|<p[^>]*><p/);assert.match(html,/test-only-mobileImage/);assert.match(html,/id="hero"/);
+ assert.match(html,/role="heading" aria-level="1"/);assert.match(html,/h4 c-heading c-hero__subHeadline/);assert.doesNotMatch(html,/<h1[^>]*><p|<p[^>]*><p/);assert.doesNotMatch(html,/test-only-mobileImage|Mobile image|\[No text in field\]|scEmptyImage/);assert.match(html,/test-only-desktopImage/);assert.match(html,/id="hero"/);
 });
 test('visitor prose links keep safe targets/query/fragments and disable demo services; editing is identity-preserving',()=>{
  const f={value:'<p><a title="href=wrong" data-href="wrong" href="/about?a=1&amp;a=2#x" target="_blank" rel="author">Safe</a> <a href="tel:8005551212" target="_blank">Phone</a> <a href="/login">Login</a></p>',metadata:{fieldId:'native'}};
@@ -163,7 +166,7 @@ test('grey and trailing legal preserve stored source and empty scaffolds while e
   const normal=render(C,props(d));const editing=render(C,props(d,true));
   assert.doesNotMatch(normal,/href="tel:|href="\/login"/);assert.match(normal,/#service-unavailable/);
   assert.ok(editing.includes(d.body.jsonValue.value));assert.equal(JSON.stringify(d),before);
-  assert.match(render(C,props({body:field('body','')},true)),/test-only-body/);
+  assert.doesNotMatch(render(C,props({body:field('body','')},true)),/test-only-body|\[No text in field\]/);
  }
  assert.match(render(Product.Editorial,props(d)),/m-axlIntroductionBlock/);
  const note=render(Product.EditorialNote,props(d));assert.match(note,/t-bg-grey-muted axlTileCollection/);assert.match(note,/o-richTextEditor__wrapper/);assert.doesNotMatch(note,/m-axlIntroductionBlock/);

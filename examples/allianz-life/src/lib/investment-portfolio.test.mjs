@@ -321,11 +321,14 @@ test('real SDK render preserves every caption, logo, active CTA and exited inlin
   assert.equal(JSON.stringify(result), before);
 });
 
-test('editable root and child Field metadata survives the actual SDK editing renderer, including cleared optional fields', () => {
+test('populated investment fields retain SDK metadata while cleared optional fields stay off the canvas', () => {
   const records = dataset(), result = select(records); records.datasource.activeHeading.jsonValue.value = '';
   records.items[0].details.jsonValue.value = ''; records.items[0].logo.jsonValue.value = { src: '', alt: '' }; records.items[0].websiteLink.jsonValue.value = { href: '', text: '' };
   const before = JSON.stringify(records), html = decode(render(result, records.datasource, true));
-  for (const name of ['activeHeading', 'exitedHeading', 'name', 'details', 'logo', 'websiteLink']) assert.ok(html.includes(`"fieldId":"test-${name}"`), name);
+  for (const name of ['exitedHeading', 'name', 'details', 'logo', 'websiteLink']) assert.ok(html.includes(`"fieldId":"test-${name}"`), name);
+  assert.doesNotMatch(html, /"fieldId":"test-activeHeading"|No text in field|scEmptyImage/);
+  const markers = [...html.matchAll(/<code [^>]*kind="open"[^>]*>(.*?)<\/code>/g)].map(match => JSON.parse(match[1]));
+  assert.deepEqual(markers.filter(marker => marker.itemId === records.items[0].id).map(marker => marker.fieldId), ['test-name']);
   assert.ok(html.includes(`"itemId":"${records.items[0].id}"`)); assert.equal(JSON.stringify(records), before);
   const normal = render(result, records.datasource); assert.doesNotMatch(normal, /alt="Blaise"|Go to Blaise|Add or edit Investment/);
 });
@@ -455,7 +458,8 @@ test('computed fixture keeps intrinsic logos and 1/2/2/4 columns across mobile, 
 test('unavailable and empty collections preserve authored headings and never use manual or source-fixture children', async () => {
   const records = dataset(); records.datasource.children = { results: records.items };
   const unavailable = render(data.unavailableInvestmentPortfolio('unconfigured'), records.datasource, true);
-  assert.match(unavailable, /Configure the verified native/); assert.doesNotMatch(unavailable, /Blaise|Dili/); assert.match(unavailable, /Active Investments/);
+  assert.match(unavailable, /The investment portfolio is temporarily unavailable/);
+  assert.doesNotMatch(unavailable, /Configure the verified native|Add or edit Investment|Check its child items/); assert.doesNotMatch(unavailable, /Blaise|Dili/); assert.match(unavailable, /Active Investments/);
   const empty = { ...records, items: [] }, { result, calls } = await read(empty);
   assert.equal(result.complete, true); assert.equal(calls.length, 2); assert.deepEqual(result.active, []); assert.deepEqual(result.exited, []);
   const html = render(result, records.datasource); assert.doesNotMatch(html, /temporarily unavailable|Blaise|<img/); assert.match(html, /Exited investments/);
@@ -488,12 +492,23 @@ test('source-backed fixed presentation uses responsive native grid, exact arrow 
   const ownCss = fs.readFileSync(path.join(root, 'components/investment-portfolio/InvestmentPortfolio.css'), 'utf8'); assert.match(ownCss, /height: auto/); assert.doesNotMatch(ownCss, /object-fit:\s*cover|nth-child/);
 });
 
-test('unsafe or deliberately unlabelled company CTAs never become clickable visitor links and remain editor-reported', () => {
+test('unsafe or unlabelled company CTAs stay absent in both modes without canvas diagnostics', () => {
   const records = dataset(); records.items = records.items.slice(0, 1);
   records.items[0].websiteLink.jsonValue.value = { href: 'javascript:alert(1)', text: 'unsafe' };
   let result = select(records); assert.doesNotMatch(render(result, records.datasource), /javascript:|class="a-link"/);
-  assert.match(render(result, records.datasource, true), /without embedded credentials/);
+  assert.doesNotMatch(render(result, records.datasource, true), /without embedded credentials|javascript:|class="a-link"/);
   records.items[0].websiteLink.jsonValue.value = { href: 'https://valid-company.example/', text: '' };
   result = select(records); assert.doesNotMatch(render(result, records.datasource), /class="a-link"/);
-  const editing = decode(render(result, records.datasource, true)); assert.match(editing, /accessible link label/); assert.match(editing, /"fieldId":"test-websiteLink"/);
+  const editing = decode(render(result, records.datasource, true)); assert.doesNotMatch(editing, /accessible link label|"fieldId":"test-websiteLink"|class="a-link"/);
+});
+
+test('complete and unavailable investment layouts match normal mode while populated native fields stay editable', () => {
+  const records = dataset();
+  for (const result of [select(records), data.unavailableInvestmentPortfolio('unconfigured')]) {
+    const normal = render(result, records.datasource), editing = render(result, records.datasource, true);
+    assert.equal(editing.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, ''), normal);
+    assert.doesNotMatch(editing, /Add or edit Investment|Configure the verified native|Check its child items/);
+    assert.match(decode(editing), /"fieldId":"test-activeHeading"/);
+    assert.match(decode(editing), /"fieldId":"test-exitedHeading"/);
+  }
 });

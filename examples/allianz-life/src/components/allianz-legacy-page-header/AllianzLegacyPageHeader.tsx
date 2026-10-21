@@ -14,7 +14,7 @@ export const Default = ({ fields, params }: AllianzProps) => {
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzLegacyPageHeader" />;
   return <header className="page-header" id={params.RenderingIdentifier}>
-    <RichText editable={isEditing} tag="h1" field={data.heading?.jsonValue} />
+    {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag="h1" field={data.heading?.jsonValue} />}
     {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} />}
   </header>;
 };

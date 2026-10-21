@@ -57,17 +57,17 @@ test('TitleOnly never reads optional fields and does not invent a missing headin
   assert.doesNotMatch(render(Hero.TitleOnly, {}, true, params), /c-hero__headline|kind="open"/);
 });
 
-test('TitleOnly keeps real empty heading chrome and block RichText heading semantics', () => {
+test('TitleOnly omits empty canvas headings and keeps populated block RichText semantics', () => {
   for (const value of ['', '<span>Accessibility Policy</span>', '<p>Accessibility <strong>Policy</strong></p>', '<h1>Accessibility Policy</h1>']) {
     const input = freeze({ heading: field('heading', value) }), before = JSON.stringify(input);
     for (const editing of [false, true]) {
       const html = render(Hero.TitleOnly, input, editing, params);
-      if (!value && !editing) assert.doesNotMatch(html, /c-hero__headline/);
-      if (editing) assert.deepEqual(openFields(html).map(field => field.fieldId), ['test-only-title-heading']);
+      if (!value) assert.doesNotMatch(html, /c-hero__headline|kind="open"|No text in field/);
+      if (editing) assert.deepEqual(openFields(html).map(field => field.fieldId), value ? ['test-only-title-heading'] : []);
       if (value.startsWith('<p>') || value.startsWith('<h1>')) {
         assert.match(html, /<div role="heading" aria-level="1" class="h1 c-heading c-hero__headline u-text-center">/);
         assert.doesNotMatch(html, /<h1[^>]*><(?:p|h1)\b/);
-      } else if (value || editing) assert.match(html, /<h1\b[^>]*class="c-heading c-hero__headline u-text-center">/);
+      } else if (value) assert.match(html, /<h1\b[^>]*class="c-heading c-hero__headline u-text-center">/);
       if (value) assert.ok(html.includes(value));
     }
     assert.equal(JSON.stringify(input), before);
@@ -81,16 +81,17 @@ test('actual Policy blank-field values preserve exact Editorial visitor wrappers
   assert.match(render(Hero.TitleOnly, undefined, true, params), /AllianzHero/);
 });
 
-test('Editorial and LifeStrategy retain their native optional authoring fields', () => {
+test('Editorial and LifeStrategy keep populated native fields and use mobile images only in the responsive picture', () => {
   const input = freeze({ ...policy(), body: field('body', 'Native subtitle'),
     desktopImage: field('desktopImage', { src: '/test-only/desktop.jpg', alt: '' }),
     mobileImage: field('mobileImage', { src: '/test-only/mobile.jpg', alt: '' }) });
   for (const variant of ['Editorial', 'LifeStrategy']) {
     const html = render(Hero[variant], input, true, { ...params, heroTheme: 'life', theme: 'product-life' });
     assert.deepEqual(openFields(html).map(value => value.fieldId).sort(),
-      ['test-only-title-body', 'test-only-title-desktopImage', 'test-only-title-heading', 'test-only-title-mobileImage']);
-    assert.match(html, /height:auto/);
+      ['test-only-title-body', 'test-only-title-desktopImage', 'test-only-title-heading']);
+    assert.match(html, /<source media="\(max-width: 703px\)" srcSet="\/test-only\/mobile.jpg"\/>/);
+    assert.equal((html.match(/<img\b/g) ?? []).length, 1);
     assert.match(html, /Native subtitle/);
-    assert.match(html, /Mobile image/);
+    assert.doesNotMatch(html, /Mobile image|test-only-title-mobileImage|No text in field|scEmptyImage/);
   }
 });

@@ -91,13 +91,13 @@ test('label clearing and restoring does not borrow heading or link text and pres
   assert.equal(shown(data), initial);
 });
 
-test('cleared link href stays absent for visitors and the native empty link editor remains mounted', () => {
+test('cleared link href stays absent from both canvases and preserves the Content field', () => {
   const data = datasource(); data.children.results = data.children.results.slice(0, 1);
   const native = linkField(data); native.value = { href: '', text: '', 'aria-label': '' };
   const before = JSON.stringify(data);
   assert.equal(anchors(shown(data, false)).length, 0);
   const editing = shown(data);
-  assert.ok(editing.includes('test-link-13-link'));
+  assert.ok(!editing.includes('test-link-13-link'));
   assert.doesNotMatch(editing, /aria-label=|href="\/"/);
   assert.equal(JSON.stringify(data), before);
   delete data.children.results[0].links;

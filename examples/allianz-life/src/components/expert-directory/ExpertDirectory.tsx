@@ -16,7 +16,7 @@ export const Default = ({ fields, rendering, params }: ExpertDirectoryProps) => 
   if (!data) return <NoDataFallback componentName="Expert Directory" />;
   const groups = automatic?.complete ? automatic.groups : [];
   return <div id={params?.RenderingIdentifier} className="people-directory expert-directory">
-    {groups.filter((group) => editing || group.items.length).map((group, index) => <section key={group.id} className={`l-container--full-width axlTileCollection ${index % 2 === 0 ? 't-bg-grey-soft' : 't-bg-transparent'}`}>
+    {groups.filter((group) => group.items.length).map((group, index) => <section key={group.id} className={`l-container--full-width axlTileCollection ${index % 2 === 0 ? 't-bg-grey-soft' : 't-bg-transparent'}`}>
       <div className="l-grid l-grid--max-width">
         <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
           <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
@@ -28,7 +28,6 @@ export const Default = ({ fields, rendering, params }: ExpertDirectoryProps) => 
       </div>
     </section>)}
     {!automatic?.complete && <p role="status">The expert directory is temporarily unavailable.</p>}
-    {editing && automatic?.complete && <p role="status">Edit each expert biography to update its profile, category, directory order and summary.</p>}
     {editing && Boolean(automatic?.unassigned.length) && <p role="status">Some expert biographies need a directory category before they can appear in the directory.</p>}
     {editing && Boolean(automatic?.missingOrder) && <p role="status">Some biographies have no directory order and appear after ordered entries.</p>}
   </div>;

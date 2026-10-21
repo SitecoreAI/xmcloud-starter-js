@@ -28,7 +28,7 @@ test('RilaHero keeps author fields editable and handles block headings safely', 
   const html = render(Hero.RilaHero, data, true, {});
   assert.match(html, /role="heading" aria-level="1"/);
   assert.doesNotMatch(html, /<h1[^>]*><p/);
-  for (const name of ['desktop', 'mobile']) assert.ok(html.includes(`test-${name}-field`));
+  assert.doesNotMatch(html, /test-desktop-field|test-mobile-field|scEmptyImage|Mobile image|\[No text in field\]/);
   const cleared = render(Hero.RilaHero, { heading: field(''), body: field(''), desktopImage: image({}, 'desktop') }, false, {});
   assert.doesNotMatch(cleared, /<img|c-hero__headline|c-hero__subHeadline/);
   assert.match(render(Hero.RilaHero, undefined), /AllianzHero/);

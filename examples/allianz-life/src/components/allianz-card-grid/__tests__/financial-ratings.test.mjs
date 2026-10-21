@@ -40,11 +40,11 @@ test('saved native rating fields render three grades, three semantic tables and 
   assert.equal(JSON.stringify(data), before);
 });
 
-test('editing preserves empty native image/icon chrome while visitors omit those layout boxes', () => {
+test('editing and visitor canvases both omit empty native image/icon layout boxes', () => {
   const data = structuredClone(fixture.ratings), before = JSON.stringify(data);
   const editing = shown(data, true), visitor = shown(data);
-  assert.equal((editing.match(/class="tileImage"/g) ?? []).length, 3);
-  assert.equal((editing.match(/class="tileIcon /g) ?? []).length, 3);
+  assert.equal((editing.match(/class="tileImage"/g) ?? []).length, 0);
+  assert.equal((editing.match(/class="tileIcon /g) ?? []).length, 0);
   assert.doesNotMatch(visitor, /tileImage|tileIcon|<img/);
   assert.equal((editing.match(/class="tileAlphanumeral"/g) ?? []).length, 3);
   assert.equal(JSON.stringify(data), before);

@@ -15,11 +15,12 @@ export const Default = ({ fields, params }: AllianzProps) => {
   const links = (data?.children?.results ?? []).map((item) => {
     const field = allianzLinkField(item.link?.jsonValue, isEditing);
     const title = item.heading?.jsonValue?.value || field.value.text || '';
+    const label = shouldRenderTextField(item.heading?.jsonValue, false)
+      ? <Text editable={isEditing} field={item.heading?.jsonValue} /> : field.value.text;
     return <li key={item.id} className={style === 'tools' && /^return to top$/i.test(title) ? 'tools-top hidden-xs' : style === 'tools' && /^print$/i.test(title) ? 'tools-print' : undefined}>
-      {isEditing ? <>
-        {shouldRenderTextField(item.heading?.jsonValue, true) && <Text editable field={item.heading?.jsonValue} />}
-        {shouldRenderLinkField(item.link?.jsonValue, true) && <Link editable field={field} />}
-      </> : style === 'tools' && /^print$/i.test(title) ? <button type="button" className="allianz-legacy-print" onClick={() => window.print()}><Text editable={false} field={item.heading?.jsonValue} /></button> : shouldRenderLinkField(item.link?.jsonValue, false) ? <Link editable={false} field={field} className={field.value.href?.toLowerCase() === pathname.toLowerCase() ? 'active' : undefined} aria-current={field.value.href?.toLowerCase() === pathname.toLowerCase() ? 'page' : undefined}>{item.heading?.jsonValue?.value ? <Text editable={false} field={item.heading?.jsonValue} /> : field.value.text}</Link> : null}
+      {style === 'tools' && /^print$/i.test(title)
+        ? <button type="button" className="allianz-legacy-print" onClick={() => { if (!isEditing) window.print(); }}>{label}</button>
+        : shouldRenderLinkField(item.link?.jsonValue, false) ? <Link editable={isEditing} field={field} className={field.value.href?.toLowerCase() === pathname.toLowerCase() ? 'active' : undefined} aria-current={field.value.href?.toLowerCase() === pathname.toLowerCase() ? 'page' : undefined}>{label}</Link> : null}
     </li>;
   });
   if (style === 'tools') return <div className="row" id={params.RenderingIdentifier}><div className="col-xs-12 content-footer"><ul className="tools">{links}</ul></div></div>;
@@ -36,31 +37,27 @@ const ServiceLinks = ({ fields, params, serviceKind }: AllianzServiceLinksProps)
   const data = fields?.data?.datasource;
   const account = serviceKind === 'account';
   const entries = (data?.children?.results ?? []).filter((item) =>
-    shouldRenderLinkField(item.link?.jsonValue, isEditing));
-  if (!isEditing && !entries.length) return null;
+    shouldRenderLinkField(item.link?.jsonValue, false));
+  if (!entries.length) return null;
   return <nav
     id={params.RenderingIdentifier}
     aria-label={data?.heading?.jsonValue?.value || (account ? 'Account services' : 'Contact services')}
-    className={`allianz-legacy-service-links allianz-legacy-service-links--${serviceKind}${account && !isEditing ? ' hidden-xs' : ''}`}
+    className={`allianz-legacy-service-links allianz-legacy-service-links--${serviceKind}${account ? ' hidden-xs' : ''}`}
   >
-    {isEditing && shouldRenderTextField(data?.heading?.jsonValue, true) && <Text editable field={data?.heading?.jsonValue} />}
     <ul className="nav navbar-nav right-nav">{entries.map((item) => {
       const authored = allianzLinkField(item.link?.jsonValue, isEditing);
       // Account variants never enter live services, even if an author supplies
       // a placeholder URL. Keep the original field and its metadata in Pages.
-      const field = account && !isEditing
+      const field = account
         ? safeLink({ ...authored, value: { ...authored.value, href: '#service-unavailable' } })
         : authored;
       return <li key={item.id} className={account ? 'dropdown login' : 'contact-us'}>
-        {isEditing ? <>
-          {shouldRenderTextField(item.heading?.jsonValue, true) && <Text editable field={item.heading?.jsonValue} />}
-          <Link editable field={field} />
-        </> : <Link editable={false} {...safeLinkRenderProps(field)}>
-          {item.heading?.jsonValue
-            ? <Text editable={false} className={account ? undefined : 'btn-icon-mail'} field={item.heading.jsonValue} />
+        <Link editable={isEditing} {...(isEditing ? { field } : safeLinkRenderProps(field))}>
+          {shouldRenderTextField(item.heading?.jsonValue, false)
+            ? <Text editable={isEditing} className={account ? undefined : 'btn-icon-mail'} field={item.heading?.jsonValue} />
             : <span className={account ? undefined : 'btn-icon-mail'}>{field.value.text}</span>}
           {account && <>{' '}<span className="caret" aria-hidden="true" /></>}
-        </Link>}
+        </Link>
       </li>;
     })}</ul>
   </nav>;
@@ -114,14 +111,11 @@ function productDocumentLinks(props: AllianzProps, isEditing: boolean, pathname:
       const field = allianzLinkField(item.link?.jsonValue, isEditing);
       const active = !nextSteps && field.value.href?.toLowerCase() === pathname.toLowerCase();
       return <li key={item.id}>
-        {isEditing ? <>
-          {shouldRenderTextField(item.heading?.jsonValue, true) && <Text editable field={item.heading?.jsonValue} />}
-          {shouldRenderLinkField(item.link?.jsonValue, true) && <Link editable field={field} />}
-        </> : shouldRenderLinkField(item.link?.jsonValue, false) ? <Link editable={false}
-          {...safeLinkRenderProps(field)} className={active ? 'active' : undefined}
-          aria-current={active ? 'page' : undefined}>
-          {item.heading?.jsonValue?.value ? <Text editable={false} field={item.heading.jsonValue} /> : field.value.text}
-        </Link> : null}
+        {shouldRenderLinkField(item.link?.jsonValue, false) && <Link editable={isEditing} {...(isEditing ? { field } : safeLinkRenderProps(field))}
+          className={active ? 'active' : undefined} aria-current={active ? 'page' : undefined}>
+          {shouldRenderTextField(item.heading?.jsonValue, false)
+            ? <Text editable={isEditing} field={item.heading?.jsonValue} /> : field.value.text}
+        </Link>}
       </li>;
     })}
   </ul>;

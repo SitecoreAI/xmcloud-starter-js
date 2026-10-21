@@ -18,9 +18,7 @@ export const Default = ({ fields, params }: ProductFaqProps) => {
   const datasource = fields?.data?.datasource;
   if (!datasource) return <NoDataFallback componentName="Product FAQ" />;
   if (!Array.isArray(datasource.children?.results) || !collectionsComplete(datasource, true)) {
-    return isEditing
-      ? <div className="allianz-missing-data" role="status">Product FAQ content is incomplete.</div>
-      : null;
+    return null;
   }
   const entries = (datasource.children?.results ?? []).map(productFaqFields);
 
@@ -43,7 +41,7 @@ export const Default = ({ fields, params }: ProductFaqProps) => {
                       const entryKey = `${entry.id}-${index}`;
                       const triggerId = `${instanceId}-faq-trigger-${entryKey}`;
                       const panelId = `${instanceId}-faq-panel-${entryKey}`;
-                      const expanded = isEditing || !showQuestion || open.includes(entryKey);
+                      const expanded = !showQuestion || open.includes(entryKey);
                       const toggle = () => setOpen((current) => current.includes(entryKey)
                         ? current.filter((id) => id !== entryKey) : [...current, entryKey]);
 

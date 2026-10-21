@@ -14,10 +14,10 @@ export const Default = ({ fields, params }: AllianzTimelineProps) => {
   return <section className={`l-container--full-width ${sectionTheme(params.theme)}`} id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-8 offset-medium-2 l-grid__column-small-12">
       {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}
-      <RichText editable={isEditing} field={data.body?.jsonValue} />
-      <table className="allianz-timeline"><tbody>{(data.children?.results ?? []).map((item) => <tr key={item.id}><th scope="row"><Text editable={isEditing} field={item.date?.jsonValue} /></th><td>
+      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} />}
+      <table className="allianz-timeline"><tbody>{(data.children?.results ?? []).map((item) => <tr key={item.id}><th scope="row">{shouldRenderTextField(item.date?.jsonValue, isEditing) && <Text editable={isEditing} field={item.date?.jsonValue} />}</th><td>
         {shouldRenderTextField(item.heading?.jsonValue, isEditing) && <Text editable={isEditing} field={item.heading?.jsonValue} tag="h3" />}
-        <RichText editable={isEditing} field={item.body?.jsonValue} />
+        {shouldRenderTextField(item.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={item.body?.jsonValue} />}
         {shouldRenderImageField(item.image?.jsonValue, isEditing) && <Image editable={isEditing} field={item.image?.jsonValue} />}
         {shouldRenderLinkField(item.link?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(item.link?.jsonValue, isEditing)} className="a-link" />}
       </td></tr>)}</tbody></table>
@@ -58,9 +58,9 @@ export const AboutHistory = ({ fields, params }: AllianzTimelineProps) => {
             <table className="allianz-about-history-table"><tbody>
               {entries.map((item, index) => <Fragment key={item.id}>
                 <tr className="allianz-about-history-entry">
-                  <td className="allianz-about-history-date"><Text editable={isEditing} tag="strong" field={item.date?.jsonValue} /></td>
+                  <td className="allianz-about-history-date">{shouldRenderTextField(item.date?.jsonValue, isEditing) && <Text editable={isEditing} tag="strong" field={item.date?.jsonValue} />}</td>
                   <td className="allianz-about-history-gap" aria-hidden="true">{'\u00a0'}</td>
-                  <td className="allianz-about-history-body"><RichText editable={isEditing} field={item.body?.jsonValue} /></td>
+                  <td className="allianz-about-history-body">{shouldRenderTextField(item.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={item.body?.jsonValue} />}</td>
                 </tr>
                 {index < entries.length - 1 && <tr className="allianz-about-history-spacer" aria-hidden="true">
                   <td>{'\u00a0'}</td><td>{'\u00a0'}</td><td>{'\u00a0'}</td>

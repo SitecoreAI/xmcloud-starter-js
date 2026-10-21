@@ -94,7 +94,11 @@ test('editing preserves independent placeholder/rendering chrome, field metadata
     const slots = source.notice !== undefined ? ['notice', 'table'] : ['heading', 'table', 'disclosure'];
     for (const slot of slots) assert.ok(html.includes(key(slot)), slot);
     assert.equal((html.match(/chrometype="placeholder"/g) || []).length, slots.length * 2);
-    for (const name of ['documentLink', 'contractNote', 'revisionDate', 'fileSize']) assert.equal((html.match(new RegExp(`fieldId&quot;:&quot;test-only-${name}&quot;`, 'g')) || []).length, source.rows.length);
+    for (const name of ['documentLink', 'contractNote', 'revisionDate', 'fileSize']) {
+      const populated = source.rows.filter((row) => name === 'documentLink'
+        ? row[name].jsonValue.value.href : row[name].jsonValue.value).length;
+      assert.equal((html.match(new RegExp(`fieldId&quot;:&quot;test-only-${name}&quot;`, 'g')) || []).length, populated);
+    }
     for (const row of source.rows) assert.ok(html.includes(row.documentLink.jsonValue.value.href.replaceAll('&', '&amp;')));
     if (source.notice !== undefined) assert.match(html, /test-only-contractNotice/); else { assert.match(html, /test-only-heading/); assert.match(html, /test-only-body/); }
     assert.equal(JSON.stringify(input), before);
@@ -107,12 +111,18 @@ test('empty slots stay insertable in editing and cannot resurrect removed conten
     input.props.page.mode = { isEditing: false, isNormal: true, isPreview: false }; assert.doesNotMatch(render(Section[source.variant], input), /<table|<h1|For contracts|<p/);
   }
 });
-test('clear and restore retains native metadata and stable source order', () => {
+test('clear and restore omits optional canvas fields while retaining native links and stable source order', () => {
   for (const source of sources) {
     const input = fixture(source, true); const saved = structuredClone(input); const expected = render(Section[source.variant], input);
     for (const value of Object.values(input.automatic)) for (const row of value.automaticDocuments.items) { row.contractNote.jsonValue.value = ''; row.revisionDate.jsonValue.value = ''; row.fileSize.jsonValue.value = ''; }
     for (const children of Object.values(input.props.rendering.placeholders)) for (const control of children) for (const f of Object.values(control.fields.data.datasource)) f.jsonValue.value = '';
-    const html = render(Section[source.variant], input); assert.match(html, /test-only-revisionDate/); assert.doesNotMatch(html, /For contracts issued|Annuity Prospectus|Registered index-linked/); assert.equal(render(Section[source.variant], saved), expected);
+    const cleared = JSON.stringify(input), html = render(Section[source.variant], input);
+    for (const name of ['contractNote', 'revisionDate', 'fileSize', 'contractNotice', 'heading', 'body']) assert.equal((html.match(new RegExp(`fieldId&quot;:&quot;test-only-${name}&quot;`, 'g')) || []).length, 0);
+    assert.equal((html.match(/fieldId&quot;:&quot;test-only-documentLink&quot;/g) || []).length, source.rows.length);
+    assert.match(html, /chrometype="placeholder"/); assert.match(html, /chrometype="rendering"/);
+    assert.doesNotMatch(html, /For contracts issued|Annuity Prospectus|Registered index-linked|\[No text in field\]/);
+    assert.equal(JSON.stringify(input), cleared);
+    assert.equal(render(Section[source.variant], saved), expected);
   }
 });
 test('invalid or missing native DynamicPlaceholderId fails closed', () => {

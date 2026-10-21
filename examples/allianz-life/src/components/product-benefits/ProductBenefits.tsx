@@ -27,7 +27,6 @@ const Benefits = ({ fields, params, variant }: ProductBenefitsProps & {
   return <div className={`${threeUp ? 'l-container--full-width' : 'l-container'}${finalRow ? ' u-row-spacing' : ''} t-bg-transparent axlTileCollection allianz-product-benefits`}
     id={params?.RenderingIdentifier}>
     <div className={`l-grid l-grid--max-width${threeUp ? '' : ' l-grid--no-gutters-outer'}`}>
-      {isEditing && benefits.length === 0 && <p role="status">Add a benefit child item to this section.</p>}
       <div className={`l-grid__row match-height-row${finalRow ? ' u-margin-bottom-xl' : ''}`}>
         {benefits.map((benefit) => <div key={benefit.id}
           className={threeUp ? 'l-grid__column-medium-4' : 'l-grid__column-medium-6'}>

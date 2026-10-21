@@ -96,11 +96,19 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
   const column = ({ '1':12, '2':6, '3':4, '4':3 } as Record<string, number>)[params.columns] ?? 12;
   const isCards = params.layout === 'cards';
   const splitClass = params.splitRatio === '33:67' ? 'tile--3366' : params.splitRatio === '67:33' ? 'tile--6633' : 'tile--5050';
-  if (params.layout === 'list') return <section className={`l-container--full-width ${sectionTheme(params.theme)}`} id={params.RenderingIdentifier}><div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12"><div className="c-search-result-text-teaser">{cards.map((card) => <article className="c-search-result-text-teaser__item" key={card.id}><h5 className="c-search-result-text-teaser__headline"><Link editable={isEditing} {...scalarLinkProps(card, { field: allianzLinkField(card.link?.jsonValue, isEditing) })} renderChildrenWhenEmpty={isEditing}><Text editable={isEditing} field={card.heading?.jsonValue} /></Link></h5><RichText editable={isEditing} field={cardBodyField(card)} className="c-search-result-text-teaser__copytext" /></article>)}</div></div></div></div></section>;
+  if (params.layout === 'list') return <section className={`l-container--full-width ${sectionTheme(params.theme)}`} id={params.RenderingIdentifier}><div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12"><div className="c-search-result-text-teaser">{cards.map((card) => {
+    const heading = shouldRenderTextField(card.heading?.jsonValue, false) && <Text editable={isEditing} field={card.heading?.jsonValue} />;
+    return <article className="c-search-result-text-teaser__item" key={card.id}>
+      <h5 className="c-search-result-text-teaser__headline">{shouldRenderLinkField(card.link?.jsonValue, false)
+        ? <Link editable={isEditing} {...scalarLinkProps(card, { field: allianzLinkField(card.link?.jsonValue, isEditing) })} renderChildrenWhenEmpty={isEditing}>{heading}</Link>
+        : heading}</h5>
+      {shouldRenderTextField(card.body?.jsonValue, false) && <RichText editable={isEditing} field={cardBodyField(card)} className="c-search-result-text-teaser__copytext" />}
+    </article>;
+  })}</div></div></div></div></section>;
   const headingIcon = headingIconAppearance ? data.icon?.jsonValue : undefined;
   const showHeadingIcon = !!headingIconAppearance && shouldRenderImageField(headingIcon, isEditing);
   const introductionHeading = <>
-    <div className="tileHeading"><Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} /></div><RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" />
+    <div className="tileHeading"><Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} /></div>{shouldRenderTextField(data.subheading?.jsonValue, false) && <RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" />}
   </>;
   const sourceAnchorProps: import('react').AnchorHTMLAttributes<HTMLAnchorElement> & { name?: 'impact' } = { name: sourceAnchor };
   return <div data-allianz-index-partner-logos={isIndexPartnerLogos ? "" : undefined} data-allianz-card-grid={isFinancialRatings ? nativeDataId : undefined} className={`l-container--full-width ${sectionTheme(params.theme)}${sourceRelatedIntroduction ? '' : ' axlTileCollection'}${faqAppearance ? ' allianz-faq-cards' : ''}`} id={params.RenderingIdentifier}>
@@ -121,7 +129,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
           <div className="tileHeading"><h2><Text editable={isEditing} field={data.heading?.jsonValue} /><br /></h2></div>
           {shouldRenderTextField(data.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
         </header> : <>
-          {showHeadingIcon ? <header>{introductionHeading}</header> : introductionHeading}<RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />{shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
+          {showHeadingIcon ? <header>{introductionHeading}</header> : introductionHeading}{shouldRenderTextField(data.body?.jsonValue, false) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}{shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
         </>}
         {sourceFeaturesIntroduction && shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
         {sourceFeaturesIntroduction && shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
@@ -133,7 +141,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
             const linkProps = scalarLinkProps(card, sourceRelatedIntroduction && !isEditing ? safeLinkRenderProps(field) : { field });
             const content = <>
               {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="m-card__image"><picture className="c-image"><Image editable={isEditing} field={card.image?.jsonValue} sizes={sourceRelatedIntroduction ? '100vw' : undefined} className="c-image__img c-teaser__image-img" /></picture></div>}
-              <div className="m-card__header"><Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} /></div><RichText editable={isEditing} field={sourceRelatedIntroduction ? safeEditorialRichText(card.body?.jsonValue, isEditing) : cardBodyField(card)} className="m-card__body" />
+              <div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, false) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, false) && <RichText editable={isEditing} field={sourceRelatedIntroduction ? safeEditorialRichText(card.body?.jsonValue, isEditing) : cardBodyField(card)} className="m-card__body" />}
             </>;
             return shouldRenderLinkField(field, isEditing)
               ? <Link key={card.id} {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>
@@ -153,8 +161,8 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
               {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="tileSubGrid__image"><div className={`tileIcon ${cardIconTheme(card.iconTheme?.jsonValue?.value, iconAppearance)}`} data-allianz-card-icon-appearance={iconAppearance}><Image editable={isEditing} field={card.icon?.jsonValue} {...(iconAppearance ? { className: 'allianz-card-icon-glyph' } : {})} /></div></div>}
               {shouldRenderTextField(card.alphanumeral?.jsonValue, isEditing) && <div className="tileSubGrid__image"><Text editable={isEditing} tag={isFinancialRatings ? 'span' : undefined} field={card.alphanumeral?.jsonValue} className="tileAlphanumeral" /></div>}
               {shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'bordered' && <div className="tileSubGrid__image"><div className="tileImage"><Image editable={isEditing} field={card.image?.jsonValue} /></div></div>}
-              <div className="tileSubGrid__content"><header><div className="tileHeading"><Text editable={isEditing} tag={headingTag(card.headingLevel?.jsonValue?.value || params.headingLevel)} field={card.heading?.jsonValue} /></div><RichText editable={isEditing} field={card.subheading?.jsonValue} className="tileSubHeading" /></header>
-                <RichText editable={isEditing} field={faqAppearance ? safeFaqRichText(card.body?.jsonValue, isEditing) : isFinancialRatings ? financialRatingsRichText(card.body?.jsonValue, isEditing, card.id) : cardBodyField(card)} className={`tileBody ${isRilaPromotion ? 'u-font-size-lg' : params.headingLevel === 'h2' ? 'u-font-size-xl' : 'u-font-size-md'}`} />
+              <div className="tileSubGrid__content"><header><div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, false) && <Text editable={isEditing} tag={headingTag(card.headingLevel?.jsonValue?.value || params.headingLevel)} field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.subheading?.jsonValue, false) && <RichText editable={isEditing} field={card.subheading?.jsonValue} className="tileSubHeading" />}</header>
+                {shouldRenderTextField(card.body?.jsonValue, false) && <RichText editable={isEditing} field={faqAppearance ? safeFaqRichText(card.body?.jsonValue, isEditing) : isFinancialRatings ? financialRatingsRichText(card.body?.jsonValue, isEditing, card.id) : cardBodyField(card)} className={`tileBody ${isRilaPromotion ? 'u-font-size-lg' : params.headingLevel === 'h2' ? 'u-font-size-xl' : 'u-font-size-md'}`} />}
                 {hasLinks && <footer><div className="tileLink">{links.filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing)).map((item, linkIndex) => {
                   const field = allianzLinkField(item.link?.jsonValue, isEditing);
                   const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'];
@@ -229,6 +237,8 @@ export const ProductCards = ({ fields, params }: AllianzCardGridProps) => {
           <div className="l-grid__column-medium-12">
             <div className="o-cards o-cards__col3">
               {cards.map((card) => {
+                // This linked-product presentation has no visitor card without a destination.
+                if (!shouldRenderLinkField(card.link?.jsonValue, false)) return null;
                 const field = allianzLinkField(card.link?.jsonValue, isEditing);
                 const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
                 return (
@@ -292,11 +302,10 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
     ? Boolean(field?.value?.text?.trim()) : shouldRenderLinkField(field, false);
   return <EditorialFrame params={params}>
       {cards.map((card) => {
-        // Empty optional chrome belongs outside the split tile so it cannot
-        // enlarge the text half and stretch the source cover image.
-        const compactEditing = isEditing && imageSplit;
-        const hasIcon = shouldRenderImageField(card.icon?.jsonValue, compactEditing ? false : isEditing);
-        const hasNumber = shouldRenderTextField(card.alphanumeral?.jsonValue, compactEditing ? false : isEditing);
+        // The canvas follows the rendered card. Empty optional fields remain
+        // available through the native content fields instead of extra canvas UI.
+        const hasIcon = shouldRenderImageField(card.icon?.jsonValue, false);
+        const hasNumber = shouldRenderTextField(card.alphanumeral?.jsonValue, false);
         const icon = (hasIcon || hasNumber) && <div className={`tileIcon${wideStatistic ? ' -is--wide' : ''} ${card.iconTheme?.jsonValue?.value === 'primary-brand' ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}>
           {hasIcon && <Image editable={isEditing} field={card.icon?.jsonValue} />}
           {hasNumber && <Text editable={isEditing} field={card.alphanumeral?.jsonValue} tag={wideStatistic || (split && !imageSplit && shouldRenderTextField(card.alphanumeral?.jsonValue, false)) ? 'em' : 'span'} className="alphaType" />}
@@ -304,8 +313,7 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
         // An explicitly cleared ordered collection stays cleared. The single-link
         // field is used only when that collection is absent from the query result.
         const links = (card.links?.targetItems ?? [{ id: `${card.id}-link`, link: card.link, icon: undefined }])
-          .filter((item) => isEditing ? shouldRenderLinkField(item.link?.jsonValue, true)
-            : hasEditorialLinkContent(item.link?.jsonValue));
+          .filter((item) => hasEditorialLinkContent(item.link?.jsonValue));
         const renderedLinks = links.map((item) => {
           const field = allianzLinkField(item.link?.jsonValue, isEditing);
           const linkProps = isEditing ? { field } : safeLinkRenderProps(field);
@@ -326,26 +334,14 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
             ? <div key={item.id} className="tileLink">{link}</div>
             : <Fragment key={item.id}>{link}</Fragment>;
         });
-        const hasLinkContent = links.map((item) => hasEditorialLinkContent(item.link?.jsonValue));
-        const visibleLinks = renderedLinks.filter((_, index) => !compactEditing || hasLinkContent[index]);
-        const additionalFields = [
-          compactEditing && shouldRenderImageField(card.icon?.jsonValue, true) && !hasIcon
-            ? <div key="icon" className="allianz-editorial-card-field" role="group" aria-label="Icon"><span>Icon</span><Image editable field={card.icon?.jsonValue} /></div> : null,
-          compactEditing && shouldRenderTextField(card.alphanumeral?.jsonValue, true) && !hasNumber
-            ? <div key="number" className="allianz-editorial-card-field" role="group" aria-label="Number"><span>Number</span><Text editable field={card.alphanumeral?.jsonValue} tag="span" className="alphaType" /></div> : null,
-          compactEditing && shouldRenderTextField(card.subheading?.jsonValue, true) && !shouldRenderTextField(card.subheading?.jsonValue, false)
-            ? <div key="subheading" className="allianz-editorial-card-field" role="group" aria-label="Subheading"><span>Subheading</span><RichText editable field={card.subheading?.jsonValue} /></div> : null,
-          ...renderedLinks.map((link, index) => compactEditing && !hasLinkContent[index]
-            ? <div key={`link-${links[index].id}`} className="allianz-editorial-card-field" role="group" aria-label="Link"><span>Link</span>{link}</div> : null),
-        ];
         const content = <>
           <header>
             <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={editorialHeadingTag(card.headingLevel?.jsonValue?.value || params.headingLevel)} field={card.heading?.jsonValue} />}</div>
-            {shouldRenderTextField(card.subheading?.jsonValue, compactEditing ? false : isEditing) ? <RichText editable={isEditing} field={safeEditorialRichText(card.subheading?.jsonValue, isEditing)} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+            {shouldRenderTextField(card.subheading?.jsonValue, false) ? <RichText editable={isEditing} field={safeEditorialRichText(card.subheading?.jsonValue, isEditing)} className="tileSubHeading" /> : <div className="tileSubHeading" />}
           </header>
           {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(card.body?.jsonValue, isEditing)} className={editorialBodyClass(bodySize)} />}
-          {visibleLinks.length > 0 && <footer>{params.linkLayout === 'rows'
-            ? visibleLinks : <div className="tileLink">{visibleLinks}</div>}</footer>}
+          {renderedLinks.length > 0 && <footer>{params.linkLayout === 'rows'
+            ? renderedLinks : <div className="tileLink">{renderedLinks}</div>}</footer>}
         </>;
         const article = <article className={intro ? 'm-axlIntroductionBlock -is--stacked -no--image allianz-editorial-cards' : `allianz-editorial-cards m-axlTile match-height ${ratio}${flipped ? ' -is--flipped' : ''}${params.framed === '1' ? ' -is--framed' : ''}${(split && !imageSplit) || wideStatistic ? ' tile--alphaNumeric' : ''} ${split ? '-is--split' : '-is--stacked'} ${sectionTheme(card.theme?.jsonValue?.value)}${params.tileMarginBottom === 'xl' ? ' u-margin-bottom-xl' : ''}`}>
             <div className={`tileContent ${params.alignment === 'left' || (split && params.alignment !== 'center') ? 'u-text-left' : 'u-text-center'}`}>
@@ -353,14 +349,7 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
             </div>
             {imageSplit && shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} className="c-image__img c-teaser__image-img" /></picture></div>}
           </article>;
-        const editableCard = additionalFields.some(Boolean) ? <div className="allianz-editorial-card-editor">
-          {article}
-          <details className="allianz-editorial-card-fields">
-            <summary>Additional content fields</summary>
-            <div className="allianz-editorial-card-fields__items">{additionalFields}</div>
-          </details>
-        </div> : article;
-        return params.container === 'content' ? <Fragment key={card.id}>{editableCard}</Fragment> : <div key={card.id} className={editorialColumnClass(params)}>{editableCard}</div>;
+        return params.container === 'content' ? <Fragment key={card.id}>{article}</Fragment> : <div key={card.id} className={editorialColumnClass(params)}>{article}</div>;
       })}
   </EditorialFrame>;
 }
@@ -1587,7 +1576,7 @@ export const AA5Questions = ({ fields, params }: AllianzCardGridProps) => {
           const nativeLink = card.link?.jsonValue;
           const content = <><div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="m-card__body" />}</>;
           if (nativeLink?.value?.href) return <Link key={card.id} editable={isEditing} field={allianzLinkField(nativeLink, isEditing)} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>;
-          return <div key={card.id} className="m-card">{isEditing && nativeLink && <Link editable={isEditing} field={nativeLink} />}{content}</div>;
+          return <div key={card.id} className="m-card">{content}</div>;
         })}
       </div></div></div>
     </div>
@@ -1742,7 +1731,7 @@ export const BenefitControlPlusQuestions = ({ fields, params }: AllianzCardGridP
           const nativeLink = card.link?.jsonValue;
           const content = <><div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="m-card__body" />}</>;
           if (nativeLink?.value?.href) return <Link key={card.id} editable={isEditing} field={allianzLinkField(nativeLink, isEditing)} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>;
-          return <div key={card.id} className="m-card">{isEditing && nativeLink && <Link editable={isEditing} field={nativeLink} />}{content}</div>;
+          return <div key={card.id} className="m-card">{content}</div>;
         })}
       </div></div></div>
     </div>
@@ -1848,7 +1837,7 @@ export const EssentialIncome7Questions = ({ fields, params }: AllianzCardGridPro
           const nativeLink = card.link?.jsonValue;
           const content = <><div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="m-card__body" />}</>;
           if (nativeLink?.value?.href) return <Link key={card.id} editable={isEditing} field={allianzLinkField(nativeLink, isEditing)} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>;
-          return <div key={card.id} className="m-card">{isEditing && nativeLink && <Link editable={isEditing} field={nativeLink} />}{content}</div>;
+          return <div key={card.id} className="m-card">{content}</div>;
         })}
       </div></div></div>
     </div>
@@ -1910,7 +1899,7 @@ export const RetirementFoundationAdvQuestions = ({ fields, params }: AllianzCard
           const nativeLink = card.link?.jsonValue;
           const content = <><div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="m-card__body" />}</>;
           if (nativeLink?.value?.href) return <Link key={card.id} editable={isEditing} field={allianzLinkField(nativeLink, isEditing)} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>;
-          return <div key={card.id} className="m-card">{isEditing && nativeLink && <Link editable={isEditing} field={nativeLink} />}{content}</div>;
+          return <div key={card.id} className="m-card">{content}</div>;
         })}
       </div></div></div>
     </div>
@@ -2092,7 +2081,7 @@ export const Allianz360Questions = ({ fields, params }: AllianzCardGridProps) =>
           const nativeLink = card.link?.jsonValue;
           const content = <><div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="m-card__body" />}</>;
           if (nativeLink?.value?.href) return <Link key={card.id} editable={isEditing} field={allianzLinkField(nativeLink, isEditing)} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>;
-          return <div key={card.id} className="m-card">{isEditing && nativeLink && <Link editable={isEditing} field={nativeLink} />}{content}</div>;
+          return <div key={card.id} className="m-card">{content}</div>;
         })}
       </div></div></div>
     </div>

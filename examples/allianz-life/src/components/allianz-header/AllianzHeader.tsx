@@ -1,5 +1,5 @@
 'use client';
-import { Image, Link, Text } from '@sitecore-content-sdk/nextjs';
+import { Image, Link, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useReducer, useRef, useState, useSyncExternalStore } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -27,6 +27,8 @@ const isDropdownHeading = (item: NavigationItem) => {
 };
 
 export const Default = ({ fields }: AllianzHeaderProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
   const [menu, dispatchMenu] = useReducer(mobileMenuReducer, initialMobileMenuState);
   const isMobile = useSyncExternalStore(subscribeViewport, () => window.matchMedia(mobileQuery).matches, () => false);
   const menuToggle = useRef<HTMLButtonElement>(null);
@@ -58,11 +60,11 @@ export const Default = ({ fields }: AllianzHeaderProps) => {
         dispatchDesktopMenu({ type: 'hover', path });
       } : undefined} onMouseLeave={hoverEnabled ? (event) => { if (!event.currentTarget.contains(document.activeElement)) dispatchDesktopMenu({ type: 'leave', path }); } : undefined}>
         {children.length > 0 && level > 1 ? <button type="button" className="allianz-nav-toggle" aria-label={`${item.title?.jsonValue?.value} submenu`} aria-expanded={isExpanded} aria-controls={`allianz-nav-${item.id}`} onClick={() => dispatchDesktopMenu({ type: 'toggle', path })} style={{ position: 'relative', top: 'auto', right: 'auto', transform: 'none', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '100%', minHeight: 0, padding: `15px 15px 15px ${level === 2 ? 15 : level === 3 ? 30 : 40}px`, border: 0, font: 'inherit', fontSize: 16, lineHeight: '1.5em', textAlign: 'left', background: isExpanded ? level === 2 ? '#006192' : '#d5edf4' : 'transparent', color: isExpanded && level === 2 ? '#fff' : '#3c3c3c' }}>
-          <Text field={item.title?.jsonValue} tag="span" />
+          {item.title?.jsonValue?.value ? <Text editable={isEditing} field={item.title?.jsonValue} tag="span" /> : <></>}
           <i aria-hidden="true" className="c-icon c-icon--chevron-down" style={{ marginLeft: 'auto', transform: isExpanded ? 'rotate(180deg)' : undefined }} />
-        </button> : isDropdownHeading(item) ? <Text field={item.title?.jsonValue} tag="span" className="allianz-nav-group-heading" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', fontSize: 16, padding: '25px 28px 25px 0', color: isExpanded ? '#006192' : '#3c3c3c', textShadow: isExpanded ? '0 0 1px #006192' : undefined, borderBottom: `3px solid ${isExpanded ? '#006192' : 'transparent'}` }} /> : <Link {...safeLinkRenderProps(item.link?.jsonValue)} aria-expanded={children.length ? isExpanded : undefined}>
-          <Text field={item.title?.jsonValue} tag="span" />
-        </Link>}
+        </button> : isDropdownHeading(item) ? (item.title?.jsonValue?.value && <Text editable={isEditing} field={item.title?.jsonValue} tag="span" className="allianz-nav-group-heading" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', fontSize: 16, padding: '25px 28px 25px 0', color: isExpanded ? '#006192' : '#3c3c3c', textShadow: isExpanded ? '0 0 1px #006192' : undefined, borderBottom: `3px solid ${isExpanded ? '#006192' : 'transparent'}` }} />) : item.link?.jsonValue?.value?.href ? <Link editable={isEditing} {...safeLinkRenderProps(item.link?.jsonValue)} aria-expanded={children.length ? isExpanded : undefined}>
+          {item.title?.jsonValue?.value ? <Text editable={isEditing} field={item.title?.jsonValue} tag="span" /> : <></>}
+        </Link> : null}
         {children.length > 0 && level === 1 && <button type="button" className="allianz-nav-toggle" aria-label={`${item.title?.jsonValue?.value} submenu`} aria-expanded={isExpanded} aria-controls={`allianz-nav-${item.id}`} onClick={() => dispatchDesktopMenu({ type: 'toggle', path })}><i aria-hidden="true" className="c-icon c-icon--chevron-down" style={{ transform: isExpanded ? 'rotate(180deg)' : undefined }} /></button>}
         {children.length > 0 && renderNavigation(children, level + 1, collapsed || !isExpanded, path)}
       </li>;
@@ -93,23 +95,23 @@ export const Default = ({ fields }: AllianzHeaderProps) => {
     }
   }}>
     <div className="m-navigationUtilityWrapper"><div className="l-container"><nav className="m-navigationUtility" aria-label="Utility navigation">
-      <ul className="azl-nav-list logo-name"><li className="logo-icon"><NextLink href="/" aria-label="Allianz Life home"><Image field={data.logo?.jsonValue} /></NextLink></li><li><Text field={data.tagline?.jsonValue} /></li></ul>
-      <ul className="azl-nav-list">{(data.utilityNav?.targetItems ?? []).map((item) => <li key={item.id}><Link {...safeLinkRenderProps(item.link?.jsonValue)} className="a-link"><span className="a-link__icon"><AllianzFieldIcon field={item.icon?.jsonValue} decorative /></span><span className="a-link__text"><Text field={item.title?.jsonValue} /></span></Link></li>)}</ul>
+      <ul className="azl-nav-list logo-name"><li className="logo-icon">{data.logo?.jsonValue?.value?.src && <NextLink href="/" aria-label="Allianz Life home"><Image editable={isEditing} field={data.logo?.jsonValue} /></NextLink>}</li><li>{data.tagline?.jsonValue?.value && <Text editable={isEditing} field={data.tagline?.jsonValue} />}</li></ul>
+      <ul className="azl-nav-list">{(data.utilityNav?.targetItems ?? []).map((item) => <li key={item.id}>{item.link?.jsonValue?.value?.href && <Link editable={isEditing} {...safeLinkRenderProps(item.link?.jsonValue)} className="a-link"><span className="a-link__icon"><AllianzFieldIcon field={item.icon?.jsonValue} decorative /></span><span className="a-link__text">{item.title?.jsonValue?.value ? <Text editable={isEditing} field={item.title?.jsonValue} /> : <></>}</span></Link>}</li>)}</ul>
     </nav></div></div>
     <div className="header-wrapper l-container"><nav ref={navigation} id="allianz-main-navigation" className="m-navigation-primary" aria-label="Main navigation" aria-hidden={isMobile ? !menu.open : undefined} inert={isMobile && !menu.open ? true : undefined} onBlur={(event) => { if (!isMobile && !event.currentTarget.contains(event.relatedTarget as Node | null)) dispatchDesktopMenu({ type: 'close' }); }}>
       <a className={`m-nav-slide-back ${menu.open ? 'm-nav-show' : ''}`} href="#allianz-main-navigation" role="button" onClick={(event) => { event.preventDefault(); dispatchMenu({ type: 'back' }); if (menu.path.length) focusNavigation(); else menuToggle.current?.focus(); }} onKeyDown={(event) => { if (event.key === ' ') { event.preventDefault(); event.currentTarget.click(); } }}><i aria-hidden="true" className="c-icon c-icon--arrow-left" /><span>{menu.path.length ? 'Back to previous menu' : 'Close menu'}</span></a>
-      <h5 className={`m-nav-slide-title ${menu.open ? 'm-nav-show' : ''}`}>{isMobile && activeNavigation.parent ? <Text field={activeNavigation.parent.title?.jsonValue} /> : 'Main Menu'}</h5>
+      <h5 className={`m-nav-slide-title ${menu.open ? 'm-nav-show' : ''}`}>{isMobile && activeNavigation.parent ? (activeNavigation.parent.title?.jsonValue?.value && <Text editable={isEditing} field={activeNavigation.parent.title?.jsonValue} />) : 'Main Menu'}</h5>
       {isMobile ? <ul data-level={menu.path.length + 1} className={menu.path.length ? 'nav-list-nested' : ''} style={{ left: 0, top: 0, position: 'relative', boxShadow: 'none' }}>
         {activeNavigation.items.map((item) => {
           const children = item.children?.results ?? [];
           return <li key={item.id}>
-            {isDropdownHeading(item) ? <Text field={item.title?.jsonValue} tag="span" className="allianz-nav-group-heading" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', fontSize: 18, lineHeight: '1.5em', padding: '15px 52px 15px 15px', color: '#3c3c3c' }} /> : <Link {...safeLinkRenderProps(item.link?.jsonValue)} onClick={(event) => { if (children.length) { event.preventDefault(); enterMobileMenu(item.id); } else closeMenu(); }} aria-haspopup={children.length ? true : undefined} aria-expanded={children.length ? false : undefined}><Text field={item.title?.jsonValue} tag="span" /></Link>}
+            {isDropdownHeading(item) ? (item.title?.jsonValue?.value && <Text editable={isEditing} field={item.title?.jsonValue} tag="span" className="allianz-nav-group-heading" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', fontSize: 18, lineHeight: '1.5em', padding: '15px 52px 15px 15px', color: '#3c3c3c' }} />) : item.link?.jsonValue?.value?.href ? <Link editable={isEditing} {...safeLinkRenderProps(item.link?.jsonValue)} onClick={(event) => { if (children.length) { event.preventDefault(); enterMobileMenu(item.id); } else closeMenu(); }} aria-haspopup={children.length ? true : undefined} aria-expanded={children.length ? false : undefined}>{item.title?.jsonValue?.value ? <Text editable={isEditing} field={item.title?.jsonValue} tag="span" /> : <></>}</Link> : null}
             {children.length > 0 && <button type="button" className="allianz-nav-toggle" aria-label={`Open ${item.title?.jsonValue?.value} submenu`} aria-expanded="false" onClick={() => enterMobileMenu(item.id)}><i aria-hidden="true" className="c-icon c-icon--chevron-right" /></button>}
           </li>;
         })}
       </ul> : renderNavigation(items,1)}
     </nav>
-      <NextLink href="/" className="a-logo__svgLogo c-header__logo js-header__logo" aria-label="Allianz Life home"><Image field={data.logo?.jsonValue} /></NextLink>
+      {data.logo?.jsonValue?.value?.src && <NextLink href="/" className="a-logo__svgLogo c-header__logo js-header__logo" aria-label="Allianz Life home"><Image editable={isEditing} field={data.logo?.jsonValue} /></NextLink>}
       <div className="allianz-header-search">
         <button ref={searchToggle} type="button" className="allianz-text-button a-link" aria-label="Search" aria-expanded={searchOpen} aria-controls="allianz-header-search" onClick={() => { closeMenu(); setSearchOpen(!searchOpen); }}><i aria-hidden="true" className="c-icon c-icon--search" /><span>Search</span></button>
         {searchOpen && <form id="allianz-header-search" role="search" onSubmit={(event) => { event.preventDefault(); if (query.trim()) router.push(`/search?q=${encodeURIComponent(query.trim())}`); }}><label className="u-sr-only" htmlFor="allianz-search-query">Search this website</label><input autoFocus id="allianz-search-query" type="search" maxLength={100} value={query} onChange={(event) => setQuery(event.target.value)} /><button type="submit" className="c-button c-button--primary">Search</button></form>}

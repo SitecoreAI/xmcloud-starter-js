@@ -48,17 +48,18 @@ test('LifeStrategy preserves native desktop/mobile images and editing identity w
   const img = visitor.match(/<img\b[^>]*>/)?.[0] ?? '';
   for (const attribute of ['src="/desktop.jpg"', 'alt=""', 'width="2368"', 'height="600"']) assert.ok(img.includes(attribute));
   const editor = render(Hero.LifeStrategy, data, true, params);
-  for (const name of ['heading', 'body', 'desktop', 'mobile']) assert.ok(editor.includes(`test-${name}-field`));
-  assert.match(editor, /alt="Mobile authored alt"/);
+  for (const name of ['heading', 'body', 'desktop']) assert.ok(editor.includes(`test-${name}-field`));
+  assert.match(editor, /srcSet="\/mobile.jpg"/);
+  assert.doesNotMatch(editor, /Mobile image|test-mobile-field|alt="Mobile authored alt"/);
   assert.equal(JSON.stringify(data), before);
 });
 
-test('LifeStrategy leaves empty native fields editable and rejects raw theme class injection', () => {
+test('LifeStrategy leaves cleared optional fields out of the canvas and rejects raw theme class injection', () => {
   const empty = { heading: field(''), body: field(''), desktopImage: nativeImage({}, 'desktop'), mobileImage: nativeImage({}, 'mobile') };
   const visitor = render(Hero.LifeStrategy, empty);
   assert.doesNotMatch(visitor, /c-hero__headline|c-hero__subHeadline|<img\b/);
   const editor = render(Hero.LifeStrategy, empty, true);
-  for (const name of ['desktop', 'mobile']) assert.ok(editor.includes(`test-${name}-field`));
+  assert.doesNotMatch(editor, /test-desktop-field|test-mobile-field|scEmptyImage|Mobile image|\[No text in field\]/);
   for (const theme of ['product-life injected-class', 'product-fixed', 'product-life" onclick="blocked']) {
     const html = render(Hero.LifeStrategy, { heading: field('Title') }, false, { theme, heroTheme: 'life injected-class' });
     assert.match(html, /t-bg-transparent/);
@@ -67,7 +68,7 @@ test('LifeStrategy leaves empty native fields editable and rejects raw theme cla
   assert.match(render(Hero.LifeStrategy, undefined), /AllianzHero/);
 });
 
-test('existing Hero variants retain their exact real-SDK visitor and editor output', () => {
+test('existing Hero variants retain visitor output and match its visual structure while editing', () => {
   const data = {
     heading: field('<span>Authored title</span>'), body: field('Authored subtitle'),
     desktopImage: nativeImage({ src: '/desktop.jpg', alt: '', width: '2368', height: '600' }, 'desktop'),
@@ -79,11 +80,14 @@ test('existing Hero variants retain their exact real-SDK visitor and editor outp
     FixedFaq: ['ce2fad09f0e925e2e413779377f5d0a8b8bae3b2220191a65a7accb096906bc7', 'ce2fad09f0e925e2e413779377f5d0a8b8bae3b2220191a65a7accb096906bc7'],
   };
   for (const [variant, hashes] of Object.entries(baselines)) {
-    for (const [index, isEditing] of [false, true].entries()) {
+    for (const isEditing of [false, true]) {
       const html = render(Hero[variant], data, isEditing, { heroTheme: 'life', theme: 'green-soft', RenderingIdentifier: 'native-hero' });
-      // Authoring thumbnails scale proportionally; all other native SDK markup stays fixed.
-      const preservedOutput = isEditing ? html.replaceAll('max-width:240px;height:auto', 'max-width:240px') : html;
-      assert.equal(createHash('sha256').update(preservedOutput).digest('hex'), hashes[index]);
+      if (!isEditing) assert.equal(createHash('sha256').update(html).digest('hex'), hashes[0]);
+      else {
+        const visual = html.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, '');
+        assert.equal(visual, render(Hero[variant], data, false, { heroTheme: 'life', theme: 'green-soft', RenderingIdentifier: 'native-hero' }));
+        assert.doesNotMatch(html, /Mobile image|scEmptyImage|\[No text in field\]/);
+      }
     }
   }
 });

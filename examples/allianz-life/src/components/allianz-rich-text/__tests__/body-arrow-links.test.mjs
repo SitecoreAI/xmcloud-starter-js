@@ -4,7 +4,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import test from 'node:test';
 import { loadSource } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
-import { baselineSource, compile, filename, fixture, freeze, params, renderSDK, sourceRoot } from './optional-icons-fixture.mjs';
+import { baselineSource, compile, filename, fixture, freeze, metadata, params, renderSDK, sourceRoot } from './optional-icons-fixture.mjs';
 
 const Components = compile(fs.readFileSync(filename, 'utf8'));
 const Baseline = compile(baselineSource());
@@ -66,16 +66,20 @@ test('BodyArrowLinks retains the complete Default field/layout surface and desti
   assert.equal(JSON.stringify(data), before);
 });
 
-test('editing passes the exact original Body Field and metadata to the SDK', () => {
+test('editing shows source arrow framing with exactly one original native Body metadata wrapper', () => {
   const observed = [], Observed = compile(fs.readFileSync(filename, 'utf8'), { observe: observed });
   const data = freeze(nativeData()), before = JSON.stringify(data), field = data.body.jsonValue;
   const html = renderSDK(Observed.BodyArrowLinks, data, params(), 'editing');
   const bodyCalls = observed.filter(call => call.name === 'RichText' && call.field?.metadata?.fieldId === field.metadata.fieldId);
-  assert.equal(bodyCalls.length, 1); assert.equal(bodyCalls[0].field, field);
-  assert.equal(bodyCalls[0].field.metadata, field.metadata); assert.equal(bodyCalls[0].editable, true);
+  assert.equal(bodyCalls.length, 1); assert.notEqual(bodyCalls[0].field, field);
+  assert.equal(bodyCalls[0].field.value, bodyArrowLinkGlyphs(field, false).value);
+  assert.equal(bodyCalls[0].field.metadata, field.metadata); assert.equal(bodyCalls[0].editable, false);
+  assert.deepEqual(metadata(html).filter(entry => entry.fieldId === field.metadata.fieldId),
+    metadata(renderSDK(Components.Default, data, params(), 'editing')).filter(entry => entry.fieldId === field.metadata.fieldId),
+    'original native metadata retains the exact installed-SDK serialization, including rawValue escaping');
   assert.equal(bodyArrowLinkGlyphs(field, true), field); assert.equal(bodyArrowLinkGlyphs(field, undefined), field);
-  assert.equal(html, renderSDK(Components.Default, data, params(), 'editing'));
-  assert.equal(svgTags(html).length, 0); assert.ok(html.toLowerCase().includes(field.metadata.fieldId.toLowerCase()));
+  assert.equal(removePresentation(html), renderSDK(Components.Default, data, params(), 'editing'));
+  assert.equal(svgTags(html).length, 1); assert.ok(html.toLowerCase().includes(field.metadata.fieldId.toLowerCase()));
   assert.equal(JSON.stringify(data), before);
 });
 
@@ -124,7 +128,7 @@ test('the existing link safety policy remains identical to Default', () => {
   const before = JSON.stringify(data), html = renderSDK(Components.BodyArrowLinks, data);
   assert.equal(removePresentation(html), renderSDK(Components.Default, data));
   assert.match(html, /href="#service-unavailable"/, 'The existing primary General Link policy remains applied');
-  assert.equal(renderSDK(Components.BodyArrowLinks, data, params(), 'editing'), renderSDK(Components.Default, data, params(), 'editing'));
+  assert.equal(removePresentation(renderSDK(Components.BodyArrowLinks, data, params(), 'editing')), renderSDK(Components.Default, data, params(), 'editing'));
   assert.equal(JSON.stringify(data), before);
 });
 

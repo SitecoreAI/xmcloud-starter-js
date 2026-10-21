@@ -84,7 +84,8 @@ test('cleared body retains editable SDK metadata and empty structural host', () 
     const field = editableBody(value);
     const data = { body: { jsonValue: field } };
     assert.equal(render(Legacy, data), host(value));
-    assert.deepEqual(metadata(render(Legacy, data, true)), [field.metadata]);
+    assert.deepEqual(metadata(render(Legacy, data, true)), value ? [field.metadata] : []);
+    assert.doesNotMatch(render(Legacy, data, true), /\[No text in field\]/);
   }
   assert.equal(render(Legacy, {}), host(''));
   assert.deepEqual(metadata(render(Legacy, {}, true)), []);

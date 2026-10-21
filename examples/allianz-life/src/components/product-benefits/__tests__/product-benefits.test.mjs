@@ -182,10 +182,12 @@ test('real SDK renders authored block HTML and Image while retaining all native 
   const editing = render(datasource, { isEditing: true });
   assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(), ['synthetic-body', 'synthetic-heading', 'synthetic-icon']);
   assert.ok(metadata(editing).every((field) => field.itemId === itemId));
+  assert.equal(editing.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, ''), html);
+  assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage|Add a benefit child/);
   assert.equal(JSON.stringify(datasource), before);
 });
 
-test('each canonical clearing keeps editor chrome, siblings and no historical content resurrection', () => {
+test('each canonical clearing suppresses empty chrome while preserving populated siblings without content resurrection', () => {
   const values = { heading: 'Authored heading', body: '<p>Authored body</p>', icon: { src: '/allianz-assets/authored.svg', alt: 'Icon' } };
   for (const name of Object.keys(values)) {
     const entry = { id: 'clear-one', fieldCollection: Object.entries(values)
@@ -196,17 +198,40 @@ test('each canonical clearing keeps editor chrome, siblings and no historical co
     assert.equal(html.includes('Authored heading'), name !== 'heading');
     assert.equal(html.includes('<p>Authored body</p>'), name !== 'body');
     assert.equal(html.includes('/allianz-assets/authored.svg'), name !== 'icon');
-    assert.deepEqual(metadata(render(datasource, { isEditing: true })).map((field) => field.fieldId).sort(),
-      ['synthetic-body', 'synthetic-heading', 'synthetic-icon']);
+    const editing = render(datasource, { isEditing: true });
+    assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),
+      ['synthetic-body', 'synthetic-heading', 'synthetic-icon'].filter((id) => id !== `synthetic-${name}`));
+    assert.equal(editing.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, ''), html);
+    assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
   }
   const cleared = complete([{ id: 'clear-all', fieldCollection: Object.keys(values)
     .map((name) => ({ name, jsonValue: nativeField(name, name === 'icon' ? {} : '') })) }]);
   assert.doesNotMatch(render(cleared), /<h[1-6]|<p>|<img|<svg|Authored|scEmpty/);
   const editing = render(cleared, { isEditing: true });
-  assert.match(editing, /\[No text in field\]/);
-  assert.match(editing, /scEmptyImage/);
-  assert.equal(metadata(editing).length, 3);
+  assert.equal(editing, render(cleared));
+  assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage/);
+  assert.deepEqual(metadata(editing), []);
 });
+
+for (const variant of ['Default', 'TwoUp', 'TwoUpFinal', 'ThreeUp']) {
+  test(`${variant} retains populated SDK fields and the same editing layout`, () => {
+    const itemId = `synthetic-${variant}`;
+    const datasource = complete([{ id: itemId,
+      heading: { jsonValue: nativeField('heading', 'Authored benefit', itemId) },
+      body: { jsonValue: nativeField('body', '<p>Authored benefit details.</p>', itemId) },
+      icon: { jsonValue: nativeField('icon', { src: '/allianz-assets/authored.svg', alt: 'Authored icon' }, itemId) },
+    }]);
+    const before = JSON.stringify(datasource);
+    const normal = render(datasource, { variant });
+    const editing = render(datasource, { variant, isEditing: true });
+    assert.equal(editing.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, ''), normal);
+    assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(), ['synthetic-body', 'synthetic-heading', 'synthetic-icon']);
+    assert.ok(metadata(editing).every((field) => field.itemId === itemId));
+    assert.deepEqual(metadata(normal), []);
+    assert.doesNotMatch(editing, /\[No text in field\]|scEmptyImage|Add a benefit child/);
+    assert.equal(JSON.stringify(datasource), before);
+  });
+}
 
 test('only RenderingIdentifier affects each fixed variant; root and kitchen-sink child fields are ignored', () => {
   const params = { theme: 'primary-brand', columns: '4', alignment: 'right', headingLevel: 'h1',
@@ -223,7 +248,7 @@ test('only RenderingIdentifier affects each fixed variant; root and kitchen-sink
   }
 });
 
-test('missing/incomplete collections fail closed and complete empty collections have meaningful author guidance', () => {
+test('missing/incomplete collections fail closed while complete empty collections have normal visual structure', () => {
   const incomplete = [ {}, { children: {} }, { children: { results: fixtures.twoUp.children.results } },
     { children: { total: 2, pageInfo: {}, results: fixtures.twoUp.children.results } },
     { children: { total: 3, pageInfo: { hasNext: false }, results: fixtures.twoUp.children.results } },
@@ -240,8 +265,13 @@ test('missing/incomplete collections fail closed and complete empty collections 
   for (const isEditing of [false, true]) {
     assert.match(render(undefined, { isEditing, omitFields: true }), /Add a datasource for Product Benefits/);
   }
-  assert.match(render(complete([]), { isEditing: true }), /Add a benefit child item/);
-  assert.doesNotMatch(render(complete([])), /Add a benefit child item/);
+  for (const variant of ['Default', 'TwoUp', 'TwoUpFinal', 'ThreeUp']) {
+    const normal = render(complete([]), { variant });
+    const editing = render(complete([]), { variant, isEditing: true });
+    assert.equal(editing, normal);
+    assert.doesNotMatch(editing, /Add a benefit child item|role="status"|<article|\[No text/);
+    assert.deepEqual(metadata(editing), []);
+  }
 });
 
 test('the compact query declares full child count and page metadata without root author fields', () => {

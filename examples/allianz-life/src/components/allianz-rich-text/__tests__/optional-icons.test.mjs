@@ -95,9 +95,9 @@ test('editing mounts only existing original optional fields and never invents co
     observed.length = 0;
     const html = renderSDK(instrumented[name], data, params(), 'editing');
     const images = observed.filter(call => call.name === 'Image');
-    assert.equal(images.length, original ? 1 : 0, `${name}/${iconState}`);
-    assert.equal(metadata(html).length, original ? 5 : 4);
-    if (original) { assert.equal(images[0].field, original); assert.equal(images[0].editable, true); assert.equal(countField(html, original), 1); }
+    assert.equal(images.length, 0, `${name}/${iconState}`);
+    assert.equal(metadata(html).length, 4);
+    if (original) assert.equal(countField(html, original), 0);
     else assert.equal(html, renderSDK(Baseline.Default, data, params(), 'editing'));
   }
 });

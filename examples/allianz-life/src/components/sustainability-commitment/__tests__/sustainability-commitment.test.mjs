@@ -24,12 +24,13 @@ test('sustainability renders the preserved split statement before three h3 white
   assert.doesNotMatch(html, /<img/); // Pending native images are not fabricated.
 });
 
-test('new statement clears remain empty and every root/child field remains editable through the real SDK', () => {
+test('cleared root and child fields add no canvas artifacts or reconstructed source content', () => {
   const entry = { id: 'native-commitment', heading: field('commitment-heading', 'Single-Line Text', ''), body: field('commitment-body', 'Rich Text', ''),
     image: field('commitment-image', 'Image', {}), link: field('commitment-link', 'General Link', { href: '', text: '' }) };
   const root = { ...data, heading: field('sustainability-heading', 'Single-Line Text', ''), overview: field('sustainability-overview', 'Rich Text', ''),
     supportingStatement: field('sustainability-statement', 'Rich Text', ''), link: field('sustainability-link', 'General Link', { href: '', text: '' }), children: complete([wire(entry)]) };
-  assert.deepEqual(editingIds(render(Default, root, true)), ['commitment-body', 'commitment-heading', 'commitment-image', 'commitment-link', 'sustainability-heading', 'sustainability-link', 'sustainability-overview', 'sustainability-statement']);
+  assert.deepEqual(editingIds(render(Default, root, true)), []);
+  assert.doesNotMatch(render(Default, root, true), /\[No text in field\]|scEmptyImage/);
   assert.doesNotMatch(render(Default, root), /At Allianz|For more than|href=|<img/);
   assert.equal(sustainabilityFields(wire(root)).supportingStatement.jsonValue, root.supportingStatement.jsonValue);
   assert.equal(commitmentFields(wire(entry)).image.jsonValue, entry.image.jsonValue);

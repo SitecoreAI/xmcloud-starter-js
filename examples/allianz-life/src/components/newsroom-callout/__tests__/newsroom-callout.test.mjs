@@ -39,7 +39,8 @@ for (const [name, file, theme, iconTheme, blankColumn] of [
   test(`${name} preserves deliberate empty SDK fields, exact editor targets and visitor mock protection`, () => {
     const empty = { ...data, heading: field(`${file}-heading`, 'Single-Line Text', ''), body: field(`${file}-body`, 'Rich Text', ''),
       link: field(`${file}-link`, 'General Link', { href: '', text: '' }) };
-    assert.deepEqual(editingIds(render(Variant, empty, true)), [`${file}-body`, `${file}-heading`, `${file}-link`]);
+    assert.deepEqual(editingIds(render(Variant, empty, true)), []);
+    assert.doesNotMatch(render(Variant, empty, true), /\[No text in field\]/);
     assert.doesNotMatch(render(Variant, empty), /href=|<h2>|a-link__icon/);
     assert.equal(newsroomCalloutFields(wire(empty)).link.jsonValue, empty.link.jsonValue);
     const external = { ...empty, body: field(`${file}-body`, 'Rich Text', '<p><a href="mailto:news@example.com">Email</a></p>'),

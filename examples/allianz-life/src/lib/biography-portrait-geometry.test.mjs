@@ -112,15 +112,13 @@ test('intentional source portrait absence and CMS-cleared portraits stay absent 
   }
 });
 
-test('cleared portraits retain their own real SDK editing metadata without a source fallback', () => {
+test('cleared portraits leave no editing placeholder or source fallback in every biography variant', () => {
   for (const { label, Component } of variants) {
     const data = freeze({ portrait: { jsonValue: { value: {}, metadata: metadata('portrait', 'Image') } } });
     const before = JSON.stringify(data);
     const html = render(Component, data, true);
-    assert.ok(html.replaceAll('&quot;', '"').includes('"fieldId":"test-portrait-field"'), label);
-    const attrs = attributes(html);
-    assert.match(attrs.class, /\bscEmptyImage\b/, `${label}: cleared field keeps the SDK editing placeholder`);
-    assert.match(attrs.src, /^data:image\/svg\+xml,/, `${label}: the editor placeholder is not a source portrait fallback`);
+    assert.doesNotMatch(html, /test-portrait-field|<img\b|<picture\b|class="tileImage"|scEmptyImage|\[No text in field\]/, label);
+    assert.equal(html, render(Component, data), `${label}: cleared portrait has the same visual structure in both modes`);
     assert.ok(!html.includes(nativeSrc), label);
     assert.equal(JSON.stringify(data), before, label);
   }

@@ -4,7 +4,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import test from 'node:test';
 import { loadSource } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
-import { baselineSource, compile, filename, fixture, freeze, params, renderSDK, sourceRoot } from './optional-icons-fixture.mjs';
+import { baselineSource, compile, filename, fixture, freeze, metadata, params, renderSDK, sourceRoot } from './optional-icons-fixture.mjs';
 
 const Components = compile(fs.readFileSync(filename, 'utf8'));
 const Baseline = compile(baselineSource());
@@ -55,6 +55,7 @@ const NATIVE_BODIES = [
 const SOURCE_PATH_SHA256 = '0c64a1ca1ea4f731cc5db370e9812ab9078cc839f246d02c8a434a9c1dbdd233';
 const svgTags = html => html.match(/<svg\b[\s\S]*?<\/svg>/g) ?? [];
 const removeGlyph = html => html.replace(/<svg\b[\s\S]*?<\/svg>/g, '');
+const visible = html => html.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, '');
 const nativeData = record => ({ ...fixture({ iconState: 'missing' }), id: record.ownerId, body: { jsonValue: structuredClone(record.field) } });
 const htmlField = value => ({ value, metadata: { itemId: 'synthetic-body-owner', fieldId: 'synthetic-body', fieldType: 'Rich Text' } });
 const iconSlot = ' <span aria-hidden="true" class="a-link__icon">\r\n\t </span> ';
@@ -92,22 +93,70 @@ test('the complete variant preserves Default layout, all other fields, anchor at
   }
 });
 
-test('editing passes the original Body object, value and native authoring metadata to the SDK', () => {
+test('editing shows the same glyph projection with exactly one original native Body metadata wrapper', () => {
   const observed = [], instrumented = compile(fs.readFileSync(filename, 'utf8'), { observe: observed });
   for (const record of NATIVE_BODIES) {
     const data = freeze(nativeData(record)), field = data.body.jsonValue, before = JSON.stringify(data);
     observed.length = 0;
     const html = renderSDK(instrumented.BodyDownloadLinks, data, params(), 'editing');
-    const bodyCalls = observed.filter(call => call.field === field);
-    assert.equal(bodyCalls.length, 1); assert.equal(bodyCalls[0].editable, true);
+    const bodyCalls = observed.filter(call => call.name === 'RichText' && call.field?.metadata === field.metadata);
+    assert.equal(bodyCalls.length, 1); assert.equal(bodyCalls[0].editable, false);
+    assert.notEqual(bodyCalls[0].field, field);
+    assert.equal(bodyCalls[0].field.value, bodyDownloadLinkGlyphs(field, false).value);
     assert.equal(bodyCalls[0].field.metadata, field.metadata);
+    assert.deepEqual(metadata(html).filter(entry => entry.fieldId === field.metadata.fieldId),
+      metadata(renderSDK(Components.Default, data, params(), 'editing')).filter(entry => entry.fieldId === field.metadata.fieldId),
+      'original native metadata retains the exact installed-SDK serialization, including rawValue escaping');
     assert.equal(bodyDownloadLinkGlyphs(field, true), field);
     assert.equal(bodyDownloadLinkGlyphs(field, undefined), field);
-    assert.equal(html, renderSDK(Components.Default, data, params(), 'editing'));
+    assert.equal(removeGlyph(html), renderSDK(Components.Default, data, params(), 'editing'));
+    // Other populated fields retain the existing per-mode link policy. The Body
+    // projection and its glyph are exact; body-only canvas parity is checked below.
+    assert.deepEqual(svgTags(html), svgTags(renderSDK(Components.BodyDownloadLinks, data)));
     assert.ok(html.toLowerCase().includes(field.metadata.fieldId.toLowerCase()));
-    assert.equal(svgTags(html).length, 0); assert.equal(JSON.stringify(data), before);
+    assert.equal(svgTags(html).length, 1); assert.equal(JSON.stringify(data), before);
   }
 });
+
+for (const [variant, value] of [
+  ['BodyDownloadLinks', `<p>${anchor()}</p>`],
+  ['BodyArrowLinks', '<a href="/about" target="_self" aria-label="Original authored label"> Authored label </a>'],
+]) {
+  test(`${variant} preserves its visible body and one original editor field across every Default layout`, () => {
+    const data = freeze({ body: { jsonValue: htmlField(value) } }), before = JSON.stringify(data);
+    for (const layout of ['plain', 'rich-text', 'disclosures']) {
+      const input = params({ layout });
+      const editing = renderSDK(Components[variant], data, input, 'editing');
+      assert.equal(visible(editing), renderSDK(Components[variant], data, input));
+      assert.equal(svgTags(editing).length, 1);
+      assert.deepEqual(metadata(editing), [data.body.jsonValue.metadata], 'one native field; no nested or synthetic chrome');
+    }
+    assert.equal(JSON.stringify(data), before);
+  });
+
+  test(`${variant} handles absent or empty metadata without creating a field identity`, () => {
+    for (const originalMetadata of [undefined, {}]) {
+      const field = { value, ...(originalMetadata ? { metadata: originalMetadata } : {}) };
+      const data = freeze({ body: { jsonValue: field } }), before = JSON.stringify(data);
+      const editing = renderSDK(Components[variant], data, params(), 'editing');
+      assert.equal(visible(editing), renderSDK(Components[variant], data));
+      assert.deepEqual(metadata(editing), originalMetadata ? [originalMetadata] : []);
+      assert.equal(svgTags(editing).length, 1);
+      assert.equal(JSON.stringify(data), before);
+    }
+  });
+
+  test(`${variant} omits cleared or metadata-only Body controls without stale glyphs`, () => {
+    for (const body of ['', undefined]) {
+      const data = freeze({ body: { jsonValue: htmlField(body) } }), before = JSON.stringify(data);
+      const editing = renderSDK(Components[variant], data, params(), 'editing');
+      assert.equal(editing, renderSDK(Components[variant], data));
+      assert.deepEqual(metadata(editing), []);
+      assert.doesNotMatch(editing, /<svg\b|\[No text in field\]|tileLink/);
+      assert.equal(JSON.stringify(data), before);
+    }
+  });
+}
 
 test('ordinary links, populated or nonblank slots, ambiguous slots and malformed markup stay unchanged', () => {
   const unchanged = [
@@ -166,7 +215,7 @@ test('link safety and the existing source-destination overlay retain their exact
     assert.equal(removeGlyph(html), renderSDK(Components.Default, data));
     assert.match(html, /href="#service-unavailable"/, 'Existing primary General Link policy remains applied');
     if (sourceDestination) assert.match(html, /href="https:\/\/www\.allianzlife\.com\/for-financial-professionals\/Life-Sales-Tools\/life-advanced-markets-turnkey-programs\?source=body#details"/);
-    assert.equal(renderSDK(Components.BodyDownloadLinks, data, params(), 'editing'), renderSDK(Components.Default, data, params(), 'editing'));
+    assert.equal(removeGlyph(renderSDK(Components.BodyDownloadLinks, data, params(), 'editing')), renderSDK(Components.Default, data, params(), 'editing'));
     assert.equal(JSON.stringify(data), before);
   }
 });

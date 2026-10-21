@@ -19,8 +19,8 @@ export const Default = ({ fields, params }: SustainabilityCommitmentProps) => {
     <div className="l-grid l-grid--max-width">
       <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
         <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
-          <header><div className="tileHeading"><Text field={source.heading?.jsonValue} tag="h2" editable={isEditing} /></div></header>
-          <RichText field={source.overview?.jsonValue} editable={isEditing} className="tileBody" />
+          <header><div className="tileHeading">{shouldRenderTextField(source.heading?.jsonValue, isEditing) && <Text field={source.heading?.jsonValue} tag="h2" editable={isEditing} />}</div></header>
+          {shouldRenderTextField(source.overview?.jsonValue, isEditing) && <RichText field={source.overview?.jsonValue} editable={isEditing} className="tileBody" />}
           {shouldRenderLinkField(source.link?.jsonValue, isEditing) && <footer><div className="tileLink">
             <Link field={allianzLinkField(source.link?.jsonValue, isEditing)} editable={isEditing}
                         renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={source.link?.jsonValue?.value?.text || undefined}>
@@ -37,13 +37,12 @@ export const Default = ({ fields, params }: SustainabilityCommitmentProps) => {
             <RichText field={statement?.jsonValue} editable={isEditing} className="tileBody" />
           </div></article>}
       </div></div>
-      {isEditing && entries.length === 0 && <p role="status">Add a sustainability commitment to this section.</p>}
       <div className="l-grid__row match-height-row u-padding-bottom-xl">
         {entries.map((entry) => <div className="l-grid__column-medium-4" key={entry.id}>
           <article className="m-axlTile match-height -is--flipped tile--stackedImage -is--stacked t-bg-primary-white">
             <div className="tileContent u-text-left"><div className="tileSubGrid__content">
-              <header><div className="tileHeading"><Text field={entry.heading?.jsonValue} tag="h3" editable={isEditing} /></div></header>
-              <RichText field={entry.body?.jsonValue} editable={isEditing} className="tileBody u-font-size-md" />
+              <header><div className="tileHeading">{shouldRenderTextField(entry.heading?.jsonValue, isEditing) && <Text field={entry.heading?.jsonValue} tag="h3" editable={isEditing} />}</div></header>
+              {shouldRenderTextField(entry.body?.jsonValue, isEditing) && <RichText field={entry.body?.jsonValue} editable={isEditing} className="tileBody u-font-size-md" />}
               {shouldRenderLinkField(entry.link?.jsonValue, isEditing) && <footer><div className="tileLink">
                 <Link field={allianzLinkField(entry.link?.jsonValue, isEditing)} editable={isEditing}
                         renderChildrenWhenEmpty={isEditing} className="a-link" aria-label={entry.link?.jsonValue?.value?.text || undefined}>

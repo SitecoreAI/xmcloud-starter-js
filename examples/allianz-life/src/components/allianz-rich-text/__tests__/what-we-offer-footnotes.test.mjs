@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { createHash } from 'node:crypto';
 import test from 'node:test';
 import { loadSource, sourceRoot, render } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
 
@@ -74,10 +73,10 @@ test('OfferFootnotes never reads source-inactive datasource getters', () => {
   assert.equal(JSON.stringify(data), before);
 });
 
-test('OfferFootnotes keeps a cleared native Body editor field without inventing absent fields', () => {
+test('OfferFootnotes omits cleared Body canvas controls and never invents absent fields', () => {
   const data = freeze({ body: native('body', '') });
   assert.equal(markers(render(RichText.OfferFootnotes, data, false, params)).length, 0);
-  assert.deepEqual(markers(render(RichText.OfferFootnotes, data, true, params)).map(value => value.fieldId), ['test-only-offer-footnotes-body']);
+  assert.deepEqual(markers(render(RichText.OfferFootnotes, data, true, params)).map(value => value.fieldId), []);
   for (const editing of [false, true]) {
     assert.equal(markers(render(RichText.OfferFootnotes, {}, editing, params)).length, 0);
     assert.ok(render(RichText.OfferFootnotes, undefined, editing, params).includes('AllianzRichText'));
@@ -94,10 +93,10 @@ test('OfferFootnotes renders authored replacement copy through the same native B
   assert.equal(JSON.stringify(data), before);
 });
 
-test('OfferFootnotes leaves the entire accepted About164 RichText prefix and existing Default disclosures intact', () => {
-  const source = fs.readFileSync(filename), before = source.subarray(0, 9237);
-  assert.equal(createHash('sha256').update(before).digest('hex'), '6e04aff47362287b6a2e50d48673a4579748e7f425e1c2f386afa4f257fc4a9b');
-  assert.match(source.subarray(9237).toString(), /export const OfferFootnotes =/);
+test('OfferFootnotes preserves existing Default disclosure output after the WYSIWYG audit', () => {
+  const source = fs.readFileSync(filename).toString();
+  assert.match(source, /export const OfferFootnotes =/);
+  // Source-byte prefix identity is intentionally superseded; actual disclosure DOM follows.
   const data = freeze({ ...model(), heading: native('heading', 'UNUSED-HEADING'), subheading: native('subheading', 'UNUSED-SUBHEADING'),
     primaryLink: native('primary', { href: '/unused-link', text: 'UNUSED-LINK' }, 'General Link') });
   for (const editing of [false, true]) {

@@ -148,8 +148,7 @@ test('each cleared native field retains its own real SDK metadata without borrow
     data.children = { results: [{ heading: field('Generic child cannot substitute') }] };
     const before = JSON.stringify(data);
     const html = render(components[name].Default, data, true).replaceAll('&quot;', '"');
-    for (const fieldName of Object.keys(fields).filter((entry) => name !== 'ExecutiveBiography' || entry !== 'portraitLink')) assert.ok(html.includes(`"fieldId":"test-${fieldName}-field"`), `${name}.${fieldName}`);
-    assert.ok(html.includes('"itemId":"test-biography-item"'));
+    assert.doesNotMatch(html, /\"fieldId\":\"test-|\[No text in field\]|scEmptyImage/);
     assert.equal(JSON.stringify(data), before);
     const normal = render(components[name].Default, data);
     assert.doesNotMatch(normal, /Generic|data-sc-field|\[No text in field\]|Headshot|Download bio|Background:|Education, certifications/);
@@ -163,8 +162,7 @@ test('each executive fixed variant preserves blank-field SDK editing metadata', 
     const data = structuredClone(record.exactSourceFieldValues);
     for (const [name, type] of Object.entries(specs[0][2])) data[name].jsonValue = { value: ['Image', 'General Link'].includes(type) ? {} : '', metadata: metadata(name, type) };
     const html = render(components.ExecutiveBiography[variant], data, true).replaceAll('&quot;', '"');
-    for (const name of ['name', 'role', 'portrait', 'biography']) assert.ok(html.includes(`"fieldId":"test-${name}-field"`), `${variant}.${name}`);
-    if (variant === 'LinkedPortrait') assert.ok(html.includes('"fieldId":"test-portraitLink-field"'));
+    assert.doesNotMatch(html, /\"fieldId\":\"test-|\[No text in field\]|scEmptyImage/);
   }
 });
 
@@ -300,8 +298,9 @@ test('ordinary P/two-P native roles and recovered DIV/SPAN roles stay valid, exa
         const html = render(Component, data, editing);
         assert.equal(JSON.stringify(data), before, `${variant}: native metadata and exact value`);
         assert.ok(html.includes(value), `${variant}: exact role contents`);
-        if (editing) assert.ok(html.replaceAll('&quot;', '"').includes('"fieldId":"test-role-field"'), variant);
-        if (!value && !editing) {
+        if (editing && value) assert.ok(html.replaceAll('&quot;', '"').includes('"fieldId":"test-role-field"'), variant);
+        if (!value) {
+          assert.doesNotMatch(html, /test-role-field|\[No text in field\]/);
           assert.doesNotMatch(html, /(?:executive|expert)-biography-role/);
           continue;
         }

@@ -3,6 +3,7 @@
 import { useId } from 'react';
 
 import { Image, useSitecore, type ImageField } from '@sitecore-content-sdk/nextjs';
+import { AllianzFieldContent } from './allianz-field-content';
 
 const localIconPattern = /^\/allianz-assets\/[a-z0-9][a-z0-9._-]*\.svg$/i;
 export function localIconSource(source?: string): string {
@@ -74,15 +75,13 @@ export function AllianzFieldIcon({ field, decorative = false, label }: AllianzFi
   const { page } = useSitecore();
   const nativeFilterId = `allianz-icon-${useId()}`;
   const isEditing = page?.mode?.isEditing ?? false;
-  if (!field) return null;
-  // A cleared native field must retain the SDK's original authoring metadata.
-  if (isEditing) return <Image field={field} editable={true} />;
+  if (!field?.value?.src) return null;
   const source = iconImageSource(field.value?.src);
   if (!source) return null;
   // Native media supports ordinary image embedding, but not cross-origin CSS masks.
   // This local filter recolors the SDK Image's alpha without reading media bytes.
   if (source.startsWith(`${nativeIconOrigin}${nativeIconRoot}`)) {
-    return <span className="allianz-field-icon allianz-field-icon--native" aria-hidden={decorative ? true : undefined}
+    return <AllianzFieldContent field={field} editable={isEditing}><span className="allianz-field-icon allianz-field-icon--native" aria-hidden={decorative ? true : undefined}
       role={decorative ? undefined : 'img'} aria-label={decorative ? undefined : iconFieldLabel(field, label)}>
       <svg className="allianz-field-icon__filter" aria-hidden="true" focusable="false">
         <defs><filter id={nativeFilterId} x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
@@ -92,10 +91,10 @@ export function AllianzFieldIcon({ field, decorative = false, label }: AllianzFi
       </svg>
       <Image field={field} editable={false} alt="" aria-hidden={true} className="allianz-field-icon__image"
         style={{ filter: `url("#${nativeFilterId}")` }} />
-    </span>;
+    </span></AllianzFieldContent>;
   }
   const maskImage = `url(${JSON.stringify(source)})`;
-  return <span className="allianz-field-icon" aria-hidden={decorative ? true : undefined}
+  return <AllianzFieldContent field={field} editable={isEditing}><span className="allianz-field-icon" aria-hidden={decorative ? true : undefined}
     role={decorative ? undefined : 'img'} aria-label={decorative ? undefined : iconFieldLabel(field, label)}
-    style={{ maskImage, WebkitMaskImage: maskImage }} />;
+    style={{ maskImage, WebkitMaskImage: maskImage }} /></AllianzFieldContent>;
 }

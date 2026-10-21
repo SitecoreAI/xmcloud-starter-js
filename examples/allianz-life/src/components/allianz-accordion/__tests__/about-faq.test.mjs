@@ -201,7 +201,7 @@ test('AboutFaq preserves exact authored answer HTML, duplicate source copy and a
   assert.equal(JSON.stringify(data), before);
 });
 
-test('installed SDK exposes one root title and six child field markers, with every editor panel open', () => {
+test('installed SDK retains populated title and answer editing metadata without forcing panels open', () => {
   const data = fixture(), before = JSON.stringify(data);
   const visitor = render(Accordion.AboutFaq, data, false, staleParams);
   assert.equal(markers(visitor).length, 0);
@@ -210,8 +210,8 @@ test('installed SDK exposes one root title and six child field markers, with eve
     ...data.children.results.flatMap(entry => [entry.heading.jsonValue.metadata, entry.body.jsonValue.metadata])];
   assert.equal(actual.length, 7);
   for (const owner of expected) assert.equal(actual.filter(marker => marker.itemId === owner.itemId && marker.fieldId === owner.fieldId).length, 1);
-  assert.equal((html.match(/aria-expanded="true"/g) ?? []).length, 3);
-  assert.doesNotMatch(html, /hidden=""/);
+  assert.equal((html.match(/aria-expanded="false"/g) ?? []).length, 3);
+  assert.equal((html.match(/hidden=""/g) ?? []).length, 3);
   assert.equal(JSON.stringify(data), before);
 });
 
@@ -242,7 +242,7 @@ test('every SDK field retains its exact original object and metadata with frozen
   }
 });
 
-test('cleared native fields stay editable and changed copy is never replaced with captured source text', () => {
+test('cleared optional fields stay off canvas and changed copy is never replaced with captured source text', () => {
   const data = fixture();
   data.heading.jsonValue.value = '';
   data.children.results[0].heading.jsonValue.value = '';
@@ -254,7 +254,8 @@ test('cleared native fields stay editable and changed copy is never replaced wit
   assert.doesNotMatch(visitor, /<h2|Frequently asked questions|Is Allianz Life a financially stable company|What types of annuities/);
   assert.ok(visitor.includes('Authored replacement question'));
   assert.ok(visitor.includes('<p>Authored replacement answer</p>'));
-  assert.equal(markers(editing).length, 7);
+  assert.equal(markers(editing).length, 4);
+  assert.doesNotMatch(editing, /\[No text in field\]/);
   assert.equal(JSON.stringify(data), before);
 });
 
@@ -304,7 +305,10 @@ test('rapid pointer handlers compose state, toggle each panel reversibly and iso
     assert.equal(button.props.role, undefined);
   });
   harness.setEditing(true);
+  assert.deepEqual(expanded(), [false, true, true]);
+  buttons()[0].props.onClick();
   assert.deepEqual(expanded(), [true, true, true]);
+  buttons()[0].props.onClick();
   harness.setEditing(false);
   assert.deepEqual(expanded(), [false, true, true]);
 });

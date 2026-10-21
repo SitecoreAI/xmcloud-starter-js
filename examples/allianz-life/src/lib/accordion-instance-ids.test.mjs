@@ -44,15 +44,15 @@ test('two Default instances sharing children have unique, bidirectional disclosu
   assert.equal(JSON.stringify(data), before);
 });
 
-test('editing keeps all supplied answers open and preserves Sitecore field metadata', () => {
+test('editing uses the normal collapsed state and preserves populated Sitecore field metadata', () => {
   const data = datasource();
   const before = JSON.stringify(data);
   const html = render(Accordion, data, true);
   const { triggers, panels } = pairs(html);
   assert.equal(triggers.length, 2);
   assert.equal(panels.length, 2);
-  assert.equal((html.match(/aria-expanded="true"/g) || []).length, 2);
-  assert.doesNotMatch(html, /hidden=""/);
+  assert.equal((html.match(/aria-expanded="false"/g) || []).length, 2);
+  assert.equal((html.match(/hidden=""/g) || []).length, 2);
   assert.match(html, /test-shared-first-field/);
   assert.match(html, /test-shared-second-field/);
   assert.equal(JSON.stringify(data), before);

@@ -104,7 +104,7 @@ test('readable captures allow only LF/CRLF conversion while raw hashes and exact
   assert.match(result.stdout, /30 raw witnesses survive LF and CRLF checkouts; content normalization rejected/);
 });
 
-test('native document fields retain complete metadata in editing, including four independently cleared fields', () => {
+test('populated document fields retain SDK metadata while cleared fields stay off the canvas', () => {
   for (const empty of [false, true]) {
     const row = {
       documentLink: editableField('documentLink', empty ? { href: '', text: '' } : {
@@ -118,7 +118,8 @@ test('native document fields retain complete metadata in editing, including four
     const datasource = { documents: { targetItems: [row] } };
     const before = JSON.stringify(datasource);
     const html = render(documentTable, datasource, true);
-    assert.deepEqual(metadata(html), Object.values(row).map((f) => f.jsonValue.metadata));
+    assert.deepEqual(metadata(html), empty ? [] : Object.values(row).map((f) => f.jsonValue.metadata));
+    assert.doesNotMatch(html, /\[No text|\[No link/);
     assert.equal(JSON.stringify(datasource), before);
     assert.match(html, /<th>Description \/ Name<\/th><th>Revision Date<\/th><th>Size<\/th>/);
     if (!empty) assert.match(html, /vpx\.broadridge\.com/);
@@ -256,7 +257,7 @@ test('approved captured documents preserve encoded href suffixes and native quer
   assert.equal(prospectusLinkField(unavailable, false).value.target, '');
 });
 
-test('directory, introduction and shareholder fields emit real editing chrome after clearing', () => {
+test('cleared directory, introduction and shareholder fields produce no canvas editor placeholders', () => {
   const cases = [
     [{ directory: 'prospectus-introduction', component: 'ProspectusIntroduction', variant: 'Default' },
       { introductoryCopy: editableField('introductoryCopy', '', 'Rich Text') }, ['introductoryCopy']],
@@ -269,10 +270,11 @@ test('directory, introduction and shareholder fields emit real editing chrome af
     [{ directory: 'shareholder-report-access', component: 'ShareholderReportAccess', variant: 'NewYork' },
       { reportsLink: editableField('reportsLink', { href: '', text: '' }, 'General Link') }, ['reportsLink']],
   ];
-  for (const [section, datasource, names] of cases) {
+  for (const [section, datasource] of cases) {
     const Component = component(section);
     const before = JSON.stringify(datasource);
-    assert.deepEqual(metadata(render(Component, datasource, true)).map((m) => m.fieldId), names.map((n) => `test-${n}`));
+    assert.deepEqual(metadata(render(Component, datasource, true)), []);
+    assert.doesNotMatch(render(Component, datasource, true), /\[No text|\[No link/);
     assert.equal(JSON.stringify(datasource), before);
     assert.doesNotMatch(render(Component, datasource), /\[No text|\[No link|View Reports|Authored prospectus/);
     assert.match(render(Component, undefined), /Add a datasource/);
@@ -354,7 +356,7 @@ test('captured source stylesheet supplies the fixed striped table and report gat
 });
 
 
-test('directory headings retain editing chrome while derived captions are read-only, including clears', () => {
+test('populated directory headings retain editing chrome while cleared headings stay off canvas and captions remain read-only', () => {
   const Directory = component({ directory: 'prospectus-product-directory', component: 'ProspectusProductDirectory', variant: 'Default' });
   for (const empty of [false, true]) {
     const datasource = { currentHeading: editableField('currentHeading', empty ? '' : 'Available products'),
@@ -365,7 +367,7 @@ test('directory headings retain editing chrome while derived captions are read-o
     const automatic = { automaticProducts: { items: [page], complete: true, status: 'ready' } };
     const snapshot = JSON.stringify({ datasource, automatic });
     assert.deepEqual(metadata(render(Directory, datasource, true, {}, automatic)).map((m) => m.fieldId),
-      ['currentHeading', 'pastHeading'].map((n) => `test-${n}`));
+      empty ? [] : ['currentHeading', 'pastHeading'].map((n) => `test-${n}`));
     const normal = render(Directory, datasource, false, {}, automatic);
     assert.deepEqual(metadata(normal), []);
     assert.doesNotMatch(normal, /Current Products|Past Products|\[No text/);
@@ -423,4 +425,21 @@ test('directory group Droplist contract requires real named option items and a r
   assert.ok(field.sourceBinding.children.every((entry) => entry.itemId === null));
   assert.deepEqual(field.storedValues, ['current', 'past', '']);
   assert.equal(field.sourceBinding.freshReadRequired, true);
+});
+
+test('all document table variants use the same populated visual layout and unavailable message in both modes', () => {
+  const row = { documentLink: editableField('documentLink', { href: '#service-unavailable', text: 'Authored document', title: 'This service is unavailable', target: '' }, 'General Link'),
+    contractNote: editableField('contractNote', 'Authored note'), revisionDate: editableField('revisionDate', '5/1/2026'),
+    fileSize: editableField('fileSize', '403KB') };
+  const datasource = { documents: { targetItems: [row] } };
+  for (const variant of ['Default', 'Product', 'Embedded']) {
+    const Component = component({ directory: 'prospectus-document-table', component: 'ProspectusDocumentTable', variant });
+    const normal = render(Component, datasource), editing = render(Component, datasource, true);
+    assert.equal(editing.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, ''), normal);
+    assert.deepEqual(metadata(editing).map(field => field.fieldId), ['test-documentLink', 'test-contractNote', 'test-revisionDate', 'test-fileSize']);
+    const automatic = { automaticDocuments: { items: [], complete: false, status: 'unavailable' } };
+    assert.equal(render(Component, datasource, true, {}, automatic), render(Component, datasource, false, {}, automatic));
+    assert.match(render(Component, datasource, true, {}, automatic), /Prospectus documents are temporarily unavailable/);
+    assert.doesNotMatch(render(Component, datasource, true, {}, automatic), /Check the datasource|Automatic prospectus/);
+  }
 });

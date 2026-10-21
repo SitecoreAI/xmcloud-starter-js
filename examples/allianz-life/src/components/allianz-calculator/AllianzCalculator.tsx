@@ -34,14 +34,7 @@ export const Default = ({ fields, params, rendering }: AllianzCalculatorProps) =
   return <section className="allianz-local-calculator" id={params.RenderingIdentifier}>
     {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
     {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}
-    {isEditing ? <div className="allianz-local-calculator-authoring">
-      {inputs.map((input) => <div key={input.id}>
-        <Text editable={false} tag="p" field={input.label?.jsonValue} />
-        {input.footnote && <Text editable={false} tag="sup" field={input.footnote.jsonValue} />}
-        <Text editable={false} tag="p" field={input.initialValue?.jsonValue} />
-      </div>)}
-      <p>Compute</p><p>How much you need to save</p><p>-</p>
-    </div> : inputs.length > 0 && <div className="grid-highlight"><div className="l-container--full-width t-bg-transparent"><div className="l-grid__row"><div className="l-grid__column-12"><div className="l-grid__row"><div className="l-grid__column-6">
+    {inputs.length > 0 && <div className="grid-highlight"><div className="l-container--full-width t-bg-transparent"><div className="l-grid__row"><div className="l-grid__column-12"><div className="l-grid__row"><div className="l-grid__column-6">
       <form ref={form} className="m-form" noValidate onSubmit={compute} autoComplete="off">
         {inputs.map((input) => {
           const name = input.name?.jsonValue?.value || input.id;

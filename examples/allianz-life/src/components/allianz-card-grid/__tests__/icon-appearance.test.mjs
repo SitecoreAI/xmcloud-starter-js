@@ -78,7 +78,7 @@ test('named and native fieldCollection shapes render identically for both opt-in
   }
 });
 
-test('cleared native Image fields retain their exact editor controls and canonical clears beat stale fieldCollection', () => {
+test('cleared native Image fields stay absent from the canvas and retain their stored metadata and canonical clears beat stale fieldCollection', () => {
   for (const name of variants) for (const appearance of appearances) {
     const data = fixtureData(); for (const card of data.children.results) card.icon.jsonValue.value = {};
     const before = JSON.stringify(data), observed = [], instrumented = compile(currentSource, { observe: observed });
@@ -86,8 +86,8 @@ test('cleared native Image fields retain their exact editor controls and canonic
     for (const mode of modes) {
       observed.length = 0; const html = renderSDK(instrumented[name], data, params(appearance), mode);
       const calls = observed.filter(call => call.name === 'Image');
-      assert.equal(calls.length, mode === 'editing' ? 6 : 0);
-      assert.equal(metadata(html).filter(entry => entry.fieldId === 'fixture-icon').length, mode === 'editing' ? 6 : 0);
+      assert.equal(calls.length, 0);
+      assert.equal(metadata(html).filter(entry => entry.fieldId === 'fixture-icon').length, 0);
       for (const [index, call] of calls.entries()) assert.equal(call.field, data.children.results[index].icon.jsonValue);
       assert.equal(JSON.stringify(data), before);
     }

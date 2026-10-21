@@ -114,7 +114,7 @@ test('real SDK editing has native placeholder/rendering chrome and all heading/s
   const input = section(true); const before = JSON.stringify(input); const html = render(Section.Default, input);
   assert.match(html, /chrometype="placeholder"/);
   assert.equal(count(html, /chrometype="rendering"/g), 4);
-  for (const name of ['heading', 'subheading', 'body']) assert.equal(count(html, new RegExp(`fieldId&quot;:&quot;test-only-${name}&quot;`, 'g')), 2);
+  for (const name of ['heading', 'subheading', 'body']) assert.equal(count(html, new RegExp(`fieldId&quot;:&quot;test-only-${name}&quot;`, 'g')), name === 'subheading' ? 0 : 2);
   for (const p of fixture.placements) assert.ok(html.includes(p.fields.children[0].body));
   assert.equal(JSON.stringify(input), before);
 });
@@ -130,7 +130,7 @@ test('clear and restore preserves genuine editable fields with no stale content 
     const before = JSON.stringify(d); const normal = render(Cards.EditorialLegal, props(d, false, p.params));
     assert.doesNotMatch(normal, /<h[1-6]\b|class="tileBody"|Confidentiality|New York/);
     const editing = render(Cards.EditorialLegal, props(d, true, p.params));
-    for (const name of ['heading', 'subheading', 'body']) assert.match(editing, new RegExp(`test-only-${name}`));
+    for (const name of ['heading', 'subheading', 'body']) assert.doesNotMatch(editing, new RegExp(`test-only-${name}`));
     assert.equal(JSON.stringify(d), before);
     d.children.results[0].fieldCollection = original.children.results[0].fieldCollection;
     assert.equal(render(Cards.EditorialLegal, props(d, false, p.params)), expected);
@@ -141,7 +141,7 @@ test('explicit canonical clears override populated fieldCollection values', () =
   card.heading = field('heading', ''); card.subheading = field('subheading', ''); card.body = field('body', '');
   const h = render(Cards.EditorialLegal, props(d, false, p.params));
   assert.doesNotMatch(h, /Confidentiality|Several state laws|<h1/);
-  assert.match(render(Cards.EditorialLegal, props(d, true, p.params)), /test-only-body/);
+  assert.doesNotMatch(render(Cards.EditorialLegal, props(d, true, p.params)), /test-only-body/);
 });
 test('missing datasource uses the existing fallback and an authored empty list remains empty', () => {
   for (const editing of [false, true]) {
@@ -193,7 +193,7 @@ test('modern Default and EditorialIntro keep their distinct baseline markup and 
     assert.ok(headingPositions.every((position) => position >= 0));
     assert.ok(headingPositions.every((position, index) => index === 0 || position > headingPositions[index - 1]));
     if (editing) for (const name of ['heading', 'subheading', 'body']) {
-      assert.equal(count(html, new RegExp(`fieldId&quot;:&quot;test-only-${name}&quot;`, 'g')), 2);
+      assert.equal(count(html, new RegExp(`fieldId&quot;:&quot;test-only-${name}&quot;`, 'g')), name === 'subheading' ? 0 : 2);
     }
   }
   assert.equal(JSON.stringify({ d, native }), before);

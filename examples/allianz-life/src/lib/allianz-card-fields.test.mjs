@@ -138,7 +138,7 @@ test('public cards keep unlinked content visible without empty anchors and retai
   }
 });
 
-test('real SDK editing renders projected empty heading/body/image/link chrome', () => {
+test('projected empty native fields remain off both canvases with Content metadata unchanged', () => {
   const field = (fieldId, fieldType, value) => ({ value, metadata: { fieldId, fieldType, itemId: 'native-card' } });
   const card = { id: 'native-card', fieldCollection: [
     { name: 'heading', jsonValue: field('native-heading', 'Single-Line Text', '') },
@@ -146,10 +146,12 @@ test('real SDK editing renders projected empty heading/body/image/link chrome', 
     { name: 'image', jsonValue: field('native-image', 'Image', {}) },
     { name: 'link', jsonValue: field('native-link', 'General Link', {}) },
   ] };
-  const html = render({ children: { results: [card] } }, { layout: 'cards', columns: '3' }, true);
+  const datasource = { children: { results: [card] } }, before = JSON.stringify(datasource);
+  const html = render(datasource, { layout: 'cards', columns: '3' }, true);
   const ids = [...html.matchAll(/<code [^>]*kind="open"[^>]*>(.*?)<\/code>/g)]
     .map((match) => JSON.parse(match[1].replaceAll('&quot;', '"').replaceAll('&amp;', '&')).fieldId);
-  assert.deepEqual(ids.sort(), ['native-body', 'native-heading', 'native-image', 'native-link']);
-  assert.match(html, /\[No text in field\]/);
+  assert.deepEqual(ids, []);
+  assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage/);
   assert.doesNotMatch(html, /Add a datasource/);
+  assert.equal(JSON.stringify(datasource), before);
 });

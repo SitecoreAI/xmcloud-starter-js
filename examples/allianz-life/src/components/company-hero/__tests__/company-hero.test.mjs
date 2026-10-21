@@ -20,7 +20,8 @@ test('Company Hero preserves actual native text, overlay/h1 design and one-pictu
 test('Company Hero canonical clears suppress historical fallback while SDK metadata and authored HTML survive', () => {
   const native = { ...data, heading: field('hero-heading', 'Single-Line Text', ''), subtitle: field('hero-subtitle', 'Rich Text', ''),
     image: field('hero-image', 'Image', {}) };
-  assert.deepEqual(editingIds(render(Overlay, native, true)), ['hero-heading', 'hero-image', 'hero-subtitle']);
+  assert.deepEqual(editingIds(render(Overlay, native, true)), []);
+  assert.doesNotMatch(render(Overlay, native, true), /\[No text in field\]|scEmptyImage/);
   assert.doesNotMatch(render(Overlay, native), /Why Allianz|Our mission|<img/);
   const source = { ...data, subtitle: field('hero-html', 'Rich Text', '<p>Keep <strong>authored</strong> HTML.</p>') };
   assert.match(render(Overlay, source), /<div class="h4 c-heading c-hero__subHeadline u-text-center"><p>Keep <strong>authored<\/strong> HTML\.<\/p><\/div>/);

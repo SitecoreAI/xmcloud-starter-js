@@ -133,7 +133,7 @@ test('presentation stays fixed when historic kitchen-sink parameters are passed'
     /id="olympic-partnership"/);
 });
 
-test('all three cleared native fields keep SDK editor chrome and never restore source values', () => {
+test('all three cleared native fields leave no canvas placeholders or restored source values', () => {
   const cleared = {
     partnershipLogo: nativeField('logo', 'Image', {}),
     partnershipText: nativeField('text', 'Rich Text', ''),
@@ -141,12 +141,11 @@ test('all three cleared native fields keep SDK editor chrome and never restore s
   };
   const before = JSON.stringify(cleared);
   const editing = render(cleared, { isEditing: true });
-  assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(), ['native-link', 'native-logo', 'native-text']);
-  assert.ok(metadata(editing).every((field) => field.itemId === captured.id));
-  assert.match(editing, /scEmptyImage/);
-  assert.match(editing, /\[No text in field\]/);
+  assert.deepEqual(metadata(editing), []);
+  assert.doesNotMatch(editing, /scEmptyImage|\[No text in field\]/);
   assert.doesNotMatch(editing, /Worldwide Insurance Partner|b4c93bec95f870e9|Learn more about our partnership|href="\/"/);
   const normal = render(cleared);
+  assert.equal(editing, normal, 'cleared fields have the same visual structure in both modes');
   assert.deepEqual(metadata(normal), []);
   assert.doesNotMatch(normal, /<img|<a[ >]|<svg|scEmptyImage|\[No text in field\]|Worldwide Insurance Partner|b4c93bec95f870e9|Learn more about our partnership/);
   assert.equal(JSON.stringify(cleared), before);
@@ -157,10 +156,17 @@ for (const [name, type, value] of [
   ['partnershipText', 'Rich Text', ''],
   ['partnershipLink', 'General Link', {}],
 ]) {
-  test(`clearing ${name} preserves its editor field and the other two authored fields`, () => {
-    const data = { ...captured, [name]: nativeField(name, type, value) };
+  test(`clearing ${name} hides only its canvas region and preserves the other two editable fields`, () => {
+    const types = { partnershipLogo: 'Image', partnershipText: 'Rich Text', partnershipLink: 'General Link' };
+    const data = { id: captured.id, ...Object.fromEntries(Object.entries(types).map(([fieldName, fieldType]) =>
+      [fieldName, nativeField(fieldName, fieldType, captured[fieldName].jsonValue.value)])),
+    [name]: nativeField(name, type, value) };
+    const before = JSON.stringify(data);
     const editing = render(data, { isEditing: true });
-    assert.deepEqual(metadata(editing).map((field) => field.fieldId), [`native-${name}`]);
+    assert.deepEqual(metadata(editing).map((field) => field.fieldId).sort(),
+      Object.keys(types).filter((fieldName) => fieldName !== name).map((fieldName) => `native-${fieldName}`).sort());
+    assert.ok(metadata(editing).every((field) => field.itemId === captured.id));
+    assert.doesNotMatch(editing, /scEmptyImage|\[No text in field\]/);
     const normal = render(data);
     if (name === 'partnershipLogo') {
       assert.doesNotMatch(normal, /<img|b4c93bec95f870e9/);
@@ -175,6 +181,12 @@ for (const [name, type, value] of [
       assert.match(normal, /b4c93bec95f870e9/);
       assert.ok(normal.includes(capturedText));
     }
+    for (const fieldName of Object.keys(types).filter((fieldName) => fieldName !== name)) {
+      const fieldValue = captured[fieldName].jsonValue.value;
+      assert.ok(editing.includes(typeof fieldValue === 'string' ? fieldValue : fieldValue.src ?? fieldValue.text),
+        `${fieldName} remains editable after clearing ${name}`);
+    }
+    assert.equal(JSON.stringify(data), before);
   });
 }
 

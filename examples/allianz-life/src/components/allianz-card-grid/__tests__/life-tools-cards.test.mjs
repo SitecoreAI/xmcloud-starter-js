@@ -108,13 +108,13 @@ test('native link destination, target and split query/anchor semantics survive w
   assert.equal(JSON.stringify(data), before);
 });
 
-test('a cleared card link becomes inert for visitors and retains its original author marker', () => {
+test('a cleared card link becomes inert in both canvases and retains its original Content metadata', () => {
   const data = fixture(2);childField(data, 0, 'Link').value = { href: '', text: '' };
   const before = JSON.stringify(data), visitor = render(Cards.LifeToolsNeeds, data);
   assert.equal(attrs(visitor, 'a', 'href').length, 1);
   assert.equal((visitor.match(/class="m-card"/g) || []).length, 2);
   const value = childField(data, 0, 'Link'), actual = markers(render(Cards.LifeToolsNeeds, data, true));
-  assert.equal(actual.filter(marker => marker.itemId === value.metadata.itemId && marker.fieldId === value.metadata.fieldId).length, 1);
+  assert.equal(actual.filter(marker => marker.itemId === value.metadata.itemId && marker.fieldId === value.metadata.fieldId).length, 0);
   assert.equal(JSON.stringify(data), before);
 });
 
@@ -165,10 +165,10 @@ test('Help respects explicit native ARIA aliases and derives the source fallback
   data.primaryLink.jsonValue.value.text = 'Changed native CTA label';
   assert.deepEqual(attrs(render(Cards.LifeToolsHelp, data), 'a', 'aria-label'), ['Changed native CTA label']);
 });
-test('cleared Help link keeps native author chrome but no visitor CTA', () => {
+test('cleared Help link adds no editor or visitor CTA', () => {
   const data = help();data.primaryLink.jsonValue.value = { href: '', text: '' };
   assert.equal(attrs(render(Cards.LifeToolsHelp, data), 'a', 'href').length, 0);
-  assert.equal(markers(render(Cards.LifeToolsHelp, data, true)).filter(marker => marker.fieldId === data.primaryLink.jsonValue.metadata.fieldId).length, 1);
+  assert.equal(markers(render(Cards.LifeToolsHelp, data, true)).filter(marker => marker.fieldId === data.primaryLink.jsonValue.metadata.fieldId).length, 0);
 });
 test('all fixed glyphs are decorative, exact recovered source bytes and never SDK Image controls', () => {
   const assetRoot = path.resolve(sourceRoot, '../public/allianz-ui/life-tools');

@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
-import { Link, Text, useComponentProps, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { Link, Text, useComponentProps } from '@sitecore-content-sdk/nextjs';
 import {
   newsroomYearLink, newsroomYearNavigationData, type NewsroomYearNavigationProps,
   type NewsroomYearNavigationComponentData,
@@ -10,19 +10,15 @@ import './NewsroomYearNavigation.css';
 
 /** Fixed source navigation; native archive years are discovered by the server hook. */
 export const Default = ({ rendering, params }: NewsroomYearNavigationProps) => {
-  const { page } = useSitecore();
   const componentData = useComponentProps<NewsroomYearNavigationComponentData>(rendering?.uid);
-  const editable = page?.mode?.isEditing ?? false;
   const [open, setOpen] = useState(false);
   const listId = useId();
-  const data = newsroomYearNavigationData(componentData?.automaticYears, editable);
+  const data = newsroomYearNavigationData(componentData?.automaticYears);
   if (data.issue) return <nav className="m-navigation-secondary allianz-newsroom-year-navigation"
     id={params?.RenderingIdentifier} aria-label="Press archive navigation">
-    <p role="status">{editable
-      ? 'Automatic archive years need complete native pages, navigation titles, links, and the current year page.'
-      : 'Press archive navigation is temporarily unavailable.'}</p>
+    <p role="status">Press archive navigation is temporarily unavailable.</p>
   </nav>;
-  if (!data.active) return editable ? <p role="status">No automatic archive year pages are available.</p> : null;
+  if (!data.active) return null;
   return <nav className={`m-navigation-secondary allianz-newsroom-year-navigation${open ? ' m-navigation-secondary-open' : ''}`}
     id={params?.RenderingIdentifier} aria-label="Press archive navigation">
     <button type="button" className="nav-sec-list-title" aria-expanded={open} aria-controls={listId}

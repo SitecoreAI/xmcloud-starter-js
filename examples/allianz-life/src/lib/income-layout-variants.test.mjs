@@ -67,13 +67,13 @@ test('one benefits datasource retains four exact child bodies once and in source
   assert.equal(JSON.stringify(data), before);
 });
 
-test('held photos/icons stay absent for visitors and their cleared SDK fields stay editable', () => {
+test('held photos/icons stay absent in both canvases with original Content metadata retained', () => {
   const data = native('section-3-grid');
   data.children.results.forEach((card, index) => { const name = index === 0 ? 'icon' : 'image'; card[name] = field(`${card.id}-${name}`, {}, 'Image'); });
   const before = JSON.stringify(data), visitor = render(Cards.IncomeBenefits, data);
   assert.doesNotMatch(visitor, /<img|allianz-assets|allianz-legacy-assets|test-only-income\//);
   const editor = render(Cards.IncomeBenefits, data, true);
-  for (const card of data.children.results) assert.ok(editor.includes((card.icon || card.image).jsonValue.metadata.fieldId));
+  for (const card of data.children.results) assert.ok(!editor.includes((card.icon || card.image).jsonValue.metadata.fieldId));
   assert.equal(JSON.stringify(data), before);
 });
 
@@ -100,7 +100,7 @@ test('Income scalar CTA survives a cleared Multilist and retains the source butt
   assert.equal(JSON.stringify(data), before);
   card.link.jsonValue.value = {};
   assert.doesNotMatch(render(Cards.IncomeCallout, data), /Schedule a product demo|m-axlButton/);
-  assert.ok(render(Cards.IncomeCallout, data, true).includes(card.link.jsonValue.metadata.fieldId));
+  assert.ok(!render(Cards.IncomeCallout, data, true).includes(card.link.jsonValue.metadata.fieldId));
 });
 
 test('source-native fieldCollection projection preserves Income body and scalar CTA SDK controls', () => {
@@ -116,7 +116,7 @@ test('source-native fieldCollection projection preserves Income body and scalar 
   }
 });
 
-test('authored heading semantics and cleared text remain native and editable', () => {
+test('authored heading semantics stay native while cleared text omits canvas controls', () => {
   const data = native('section-3-grid'), card = data.children.results[1];
   card.headingLevel.jsonValue.value = 'h4';
   assert.ok(render(Cards.IncomeBenefits, data).includes(`<h4>${card.heading.jsonValue.value}</h4>`));
@@ -124,7 +124,7 @@ test('authored heading semantics and cleared text remain native and editable', (
   const before = JSON.stringify(data), visitor = render(Cards.IncomeBenefits, data);
   assert.doesNotMatch(visitor, /Mastering risk|Baseline mastery/);
   const editor = render(Cards.IncomeBenefits, data, true);
-  for (const name of ['heading', 'body']) assert.ok(editor.includes(card[name].jsonValue.metadata.fieldId));
+  for (const name of ['heading', 'body']) assert.ok(!editor.includes(card[name].jsonValue.metadata.fieldId));
   assert.equal(JSON.stringify(data), before);
 });
 

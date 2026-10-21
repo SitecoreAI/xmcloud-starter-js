@@ -17,7 +17,6 @@ export const Default = ({ fields, rendering, params }: ExecutiveDirectoryProps) 
     <div className="l-grid l-grid--max-width">
       <div className="u-margin-bottom-xl"><PeopleCards items={automatic?.complete ? automatic.items : []} editing={editing} /></div>
       {!automatic?.complete && <p role="status">The executive directory is temporarily unavailable.</p>}
-      {editing && automatic?.complete && <p role="status">Names, roles, portraits and links come from the executive biography pages. Edit those pages to update this directory.</p>}
       {editing && Boolean(automatic?.missingOrder) && <p role="status">Some biographies have no directory order and appear after ordered entries.</p>}
     </div>
   </section>;

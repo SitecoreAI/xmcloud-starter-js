@@ -30,6 +30,6 @@ export const Default = ({ fields, params }: AllianzProps) => {
     {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={headingTag(params.headingLevel)} field={data.heading?.jsonValue} />}
     {shouldRenderTextField(data.subheading?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.subheading?.jsonValue, isEditing)} />}
     {body.showNotice && <p className="allianz-cash-demo-notice" role="note">{CASH_DEMO_LINK_NOTICE}</p>}
-    <RichText editable={isEditing} field={body.field} className="allianz-legacy-editorial" />
+    {shouldRenderTextField(body.field, isEditing) && <RichText editable={isEditing} field={body.field} className="allianz-legacy-editorial" />}
   </div></div>;
 };

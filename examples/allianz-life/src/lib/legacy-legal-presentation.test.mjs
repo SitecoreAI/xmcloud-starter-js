@@ -88,10 +88,15 @@ test('Legal accepts editor paragraph markup without invalid nesting', () => {
   assert.doesNotMatch(html, /<h1[^>]*><p/);
 });
 
-test('cleared Legal title stays empty for visitors and retains genuine SDK editor metadata', () => {
+test('cleared optional Legal fields share the visitor canvas while populated fields retain native metadata', () => {
   const data = { heading: field('heading', ''), body: field('body', '') };
-  assert.equal(render(Header.Legal, props(data)), '<header class="page-header allianz-legacy-legal-header"></header>');
-  const editing = render(Header.Legal, props(data, true));
+  const before = JSON.stringify(data);
+  const normal = '<header class="page-header allianz-legacy-legal-header"></header>';
+  assert.equal(render(Header.Legal, props(data)), normal);
+  assert.equal(render(Header.Legal, props(data, true)), normal);
+  assert.equal(JSON.stringify(data), before);
+  const populated = { heading: field('heading', 'Saved legal title'), body: field('body', '<p>Saved legal copy</p>') };
+  const editing = render(Header.Legal, props(populated, true));
   assert.match(editing, /fieldId.*test-only-heading/);
   assert.match(editing, /fieldId.*test-only-body/);
   assert.match(render(Header.Legal, props(undefined)), /Add a datasource for AllianzLegacyPageHeader/);
@@ -144,18 +149,20 @@ test('ContactServices preserves native destination, source contact styling and o
   assert.match(render(Links.ContactServices, props(linksData('https://external.example/account'))), /href="#service-unavailable"/);
 });
 
-test('service editing preserves original fields and cleared link chrome without mobile hiding', () => {
+test('service editing retains populated field metadata inside the normal visual link and mobile visibility', () => {
   for (const Component of [Links.AccountServices, Links.ContactServices]) {
     const data = linksData('/new-york/login');
     const before = JSON.stringify(data);
     const html = render(Component, props(data, true));
-    assert.match(html, /href="\/new-york\/login"/);
+    assert.match(html, Component === Links.AccountServices ? /href="#service-unavailable"/ : /href="\/new-york\/login"/);
     assert.match(html, /fieldId.*test-only-link/);
     assert.match(html, /fieldId.*test-only-entry-heading/);
-    assert.doesNotMatch(html, /hidden-xs/);
+    if (Component === Links.AccountServices) assert.match(html, /hidden-xs/);
+    else assert.doesNotMatch(html, /hidden-xs/);
+    const canvas = html.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, '');
+    assert.equal((canvas.match(/Authored label/g) || []).length, 1);
     data.children.results[0].link.jsonValue.value.href = '';
-    assert.equal(render(Component, props(data)), '');
-    assert.match(render(Component, props(data, true)), /fieldId.*test-only-link/);
+    for (const editing of [false, true]) assert.equal(render(Component, props(data, editing)), '');
     data.children.results[0].link.jsonValue.value.href = '/new-york/login';
     assert.equal(JSON.stringify(data), before);
     assert.equal(render(Component, props(undefined)), '');
@@ -197,7 +204,9 @@ test('Layout keeps an explicitly declared empty rail editable while visitor and 
   const editing = render(Layout, { page: page(true, declared) });
   assert.match(editing, /sc-jss-empty-placeholder/);
   assert.match(editing, /id="headless-right-rail_00000000-0000-0000-0000-000000000000"/);
-  assert.match(editing, /col-md-10 col-sm-9 center-column/);
+  assert.match(editing, /col-md-10 col-md-offset-1 center-column/);
+  assert.match(editing, /class="allianz-empty-right-rail-chrome" style="position:absolute;inset-inline-end:0;width:16.66666667%"/);
+  assert.doesNotMatch(editing, /<aside class="[^"]*right-column/);
   for (const editingMode of [false, true]) {
     const html = render(Layout, { page: page(editingMode, { 'headless-main': [] }) });
     assert.doesNotMatch(html, /right-column|headless-right-rail/);

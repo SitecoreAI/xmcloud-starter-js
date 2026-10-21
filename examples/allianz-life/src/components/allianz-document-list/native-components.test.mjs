@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import Module, { createRequire } from 'node:module';
+import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
@@ -11,13 +12,24 @@ const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
 const sdk = require('@sitecore-content-sdk/nextjs');
 function load(file, mocks = {}) {
-  const filename = fileURLToPath(file);
+  const filename = typeof file === 'string' ? file : fileURLToPath(file);
   const compiled = new Module(filename);
   compiled.filename = filename;
-  compiled.paths = Module._nodeModulePaths(fileURLToPath(new URL('.', file)));
-  const localRequire = createRequire(file);
-  compiled.require = (id) => Object.hasOwn(mocks, id) ? mocks[id] : localRequire(id);
-  compiled._compile(ts.transpileModule(fs.readFileSync(file, 'utf8'), {
+  compiled.paths = Module._nodeModulePaths(path.dirname(filename));
+  const localRequire = createRequire(filename);
+  compiled.require = (id) => {
+    if (Object.hasOwn(mocks, id)) return mocks[id];
+    if (id.endsWith('.css')) return {};
+    const local = id.startsWith('.') ? path.resolve(path.dirname(filename), id)
+      : /^(components|lib)\//.test(id) ? path.join(fileURLToPath(new URL('../../', import.meta.url)), id) : undefined;
+    if (local) {
+      const resolved = [local, `${local}.ts`, `${local}.tsx`]
+        .find(candidate => fs.existsSync(candidate) && fs.statSync(candidate).isFile());
+      if (resolved && /\.tsx?$/.test(resolved)) return load(resolved, mocks);
+    }
+    return localRequire(id);
+  };
+  compiled._compile(ts.transpileModule(fs.readFileSync(filename, 'utf8'), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true },
   }).outputText, filename);
   return compiled.exports;
@@ -59,14 +71,13 @@ test('missing datasources, absent params, and empty children remain safe', () =>
   for (const datasource of [{}, { children: {} }, { children: { results: [] } }]) {
     const nodes = flatten(DocumentList({ fields: { data: { datasource } } }));
     assert.equal(nodes.filter((node) => node.type === 'li').length, 0);
-    assert.ok(nodes.some((node) => node.type === 'sdk-text'));
-    assert.ok(nodes.some((node) => node.type === 'sdk-rich-text'));
+    assert.ok(nodes.every((node) => node.type !== 'sdk-text' && node.type !== 'sdk-rich-text'));
   }
 });
 
-test('document fields preserve SDK field objects and empty editing metadata', () => {
-  const heading = field('', { editable: '<span>Edit heading</span>', metadata: { fieldId: 'heading' } });
-  const body = field('', { editable: '<p>Edit body</p>' });
+test('populated document fields preserve original SDK field objects and editing metadata', () => {
+  const heading = field('Authored heading', { editable: '<span>Edit heading</span>', metadata: { fieldId: 'heading' } });
+  const body = field('<p>Authored body</p>', { editable: '<p>Edit body</p>' });
   const title = field('Public PDF', { metadata: { fieldId: 'title' } });
   const description = field('<p>Document <strong>description</strong></p>');
   const date = field('2026-09-30T00:00:00Z', { metadata: { fieldId: 'publishedDate' } });
@@ -126,12 +137,14 @@ test('real SDK server rendering preserves rich text, file anchors, titles and da
   assert.doesNotMatch(html, /https:\/\/www\.allianzlife\.com/);
 });
 
-test('an empty authored title retains its SDK field and an accessible file label', () => {
+test('an empty authored title stays off canvas while the file keeps an accessible label', () => {
   const { Default } = load(new URL('./AllianzDocumentList.tsx', import.meta.url), { ...documentMocks, '@sitecore-content-sdk/nextjs': sdk });
   const html = renderToStaticMarkup(React.createElement(Default, listProps({ children: { results: [{ id: 'empty-title', title: field(''), file: available.file }] } })));
   assert.match(html, /<a[^>]+>View document<\/a>/);
   const nodes = flatten(DocumentList(listProps({ children: { results: [{ id: 'edit-title', title: field('', { editable: '<span>Edit title</span>' }), file: available.file }] } })));
-  assert.ok(nodes.some((node) => node.type === 'sdk-text' && node.props.field?.editable === '<span>Edit title</span>'));
+  assert.ok(nodes.every((node) => node.type !== 'sdk-text'));
+  const cleared = flatten(DocumentList(listProps({ children: { results: [{ id: 'cleared-date', title: field('Public PDF'), file: available.file, publishedDate: field('', { metadata: { fieldId: 'date' } }) }] } })));
+  assert.ok(cleared.every(node => node.type !== 'sdk-date'));
 });
 
 const searchRules = load(new URL('../allianz-search/search-rules.props.ts', import.meta.url));
@@ -146,7 +159,7 @@ function searchHarness(kind, initial = { pathname: '/search', query: 'Annuities'
     return [hooks[slot], (next) => { hooks[slot] = typeof next === 'function' ? next(hooks[slot]) : next; }];
   } };
   const mocks = {
-    react: fakeReact, '@sitecore-content-sdk/nextjs': markerSdk, 'next/link': 'a',
+    react: fakeReact, '@sitecore-content-sdk/nextjs': { ...markerSdk, useSitecore: () => ({ page: { mode: { isEditing: false } } }) }, 'next/link': 'a',
     'next/navigation': { useRouter: () => ({ push: (value) => pushes.push(value) }), usePathname: () => pathname, useSearchParams: () => new URLSearchParams(query ? { q: query } : {}) },
     'components/content-sdk/NoDataFallback': 'no-data', 'lib/allianz-fields': fields,
     './search-rules.props': searchRules,

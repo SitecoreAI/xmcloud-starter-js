@@ -225,12 +225,12 @@ test('actual SDK RichText.Default restores both source owners only in visitor an
   });
 });
 
-test('actual SDK RichText.Default leaves wrong-owner bodies and cleared author controls intact', () => {
+test('actual SDK RichText.Default leaves wrong-owner bodies and cleared fields available through Content without canvas controls', () => {
   const [, destination] = richPairs[0];
   const data = { id: otherOwner, body: field('sdk-unrelated-body', `<a href="${destination}">Unrelated owner</a>`, 'Rich Text') };
   assert.equal(anchors(render(RichText, data, { params: { layout: 'rich-text' } }))[0].href, destination);
   data.id = richPairs[0][0]; data.body.jsonValue.value = '';
-  assert.equal(metadata(render(RichText, data, { mode: 'editing', params: { layout: 'rich-text' } }))[0].fieldId, 'sdk-unrelated-body');
+  assert.deepEqual(metadata(render(RichText, data, { mode: 'editing', params: { layout: 'rich-text' } })), []);
   assert.deepEqual(anchors(render(RichText, data, { params: { layout: 'rich-text' } })), []);
 });
 
@@ -267,7 +267,8 @@ test('actual SDK FixedTabs restores both Rates links with native query, target, 
       const rates = anchors(editor).find(({ text }) => text === 'Rates');
       assert.equal(rates.href, `${expectedEditor.href}${expectedEditor.querystring ? `?${expectedEditor.querystring}` : ''}${expectedEditor.anchor ? `#${expectedEditor.anchor}` : ''}`);
       assert.equal(metadata(editor).some(({ fieldId }) => fieldId === 'rates-link'), true);
-      assert.match(editor, /aria-expanded="true"[^>]*disabled=""/);
+      assert.match(editor, /aria-expanded="false"/);
+      assert.doesNotMatch(editor, /<button\b[^>]*disabled=/);
       assert.equal(JSON.stringify(data), before);
     }
   });
@@ -502,7 +503,7 @@ test('CardGrid restoration is closed for unknown SDK modes, unrelated datasource
   });
 });
 
-test('canonical CardGrid author clears override stale fieldCollection and retain only the existing native editor controls', () => {
+test('canonical CardGrid author clears override stale fieldCollection and leave no empty native canvas controls', () => {
   for (const layout of cardLayouts) {
     const indexData = indexCardData(), indexCard = indexData.children.results[0];
     indexCard.body = cardField(indexCard.id, 'body', '', 'Rich Text');
@@ -510,7 +511,7 @@ test('canonical CardGrid author clears override stale fieldCollection and retain
     for (const mode of ['normal', 'preview', 'editing']) {
       const html = render(CardGrid.Default, indexData, { mode, params: cardParams(layout) });
       assert.doesNotMatch(html, /Index-Lock|Index Lock details|original formatting/);
-      if (mode === 'editing') assert.ok(metadata(html).some(({ fieldId }) => fieldId === 'source-card-body'));
+      if (mode === 'editing') assert.ok(!metadata(html).some(({ fieldId }) => fieldId === 'source-card-body'));
     }
     const advanced = advancedCardData();
     for (const card of advanced.children.results) card.link = cardField(card.id, 'link', {}, 'General Link');
@@ -520,7 +521,7 @@ test('canonical CardGrid author clears override stale fieldCollection and retain
       assert.equal(hrefAttributes(html).filter(({ href }) => href).length, 0);
       assert.doesNotMatch(html, /flexible-estate-planning-materials|key-employee-compensation-materials|essential-concepts/);
       if (mode === 'editing') {
-        for (const [owner] of linkPairs.slice(0, 3)) assert.ok(metadata(html).some(({ itemId, fieldId }) => itemId === owner && fieldId === 'source-card-link'));
+        for (const [owner] of linkPairs.slice(0, 3)) assert.ok(!metadata(html).some(({ itemId, fieldId }) => itemId === owner && fieldId === 'source-card-link'));
       }
     }
   }

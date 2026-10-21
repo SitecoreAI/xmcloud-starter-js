@@ -2,7 +2,7 @@
 
 import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
-import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField } from 'lib/allianz-field-state';
+import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { productOfferingFields } from 'lib/product-offering-fields';
 import type { ProductOfferingsProps } from './product-offerings.props';
 import './ProductOfferings.css';
@@ -18,9 +18,6 @@ export const Default = ({ fields, params }: ProductOfferingsProps) => {
   return <div className="l-container--full-width t-bg-blue-soft axlTileCollection allianz-product-offerings"
     id={params?.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width">
-      {isEditing && offerings.length === 0 && <p role="status" className="allianz-product-offerings-empty">
-        Add a product offering to this section.
-      </p>}
       <div className="l-grid__row match-height-row">
         {offerings.map((offering) => <div key={offering.id} className="l-grid__column-medium-4">
           <article className="m-axlTile match-height -is--stacked t-bg-transparent">
@@ -33,10 +30,10 @@ export const Default = ({ fields, params }: ProductOfferingsProps) => {
                 </div>}
               <div className="tileSubGrid__content">
                 <header><div className="tileHeading">
-                  <Text field={offering.title?.jsonValue} tag="h4" editable={isEditing} />
+                  {shouldRenderTextField(offering.title?.jsonValue, isEditing) && <Text field={offering.title?.jsonValue} tag="h4" editable={isEditing} />}
                 </div></header>
-                <RichText field={offering.text?.jsonValue} editable={isEditing}
-                  className="tileBody u-font-size-md" />
+                {shouldRenderTextField(offering.text?.jsonValue, isEditing) && <RichText field={offering.text?.jsonValue} editable={isEditing}
+                  className="tileBody u-font-size-md" />}
                 {shouldRenderLinkField(offering.link?.jsonValue, isEditing) &&
                   <footer><div className="tileLink">
                     <Link field={allianzLinkField(offering.link?.jsonValue, isEditing)}

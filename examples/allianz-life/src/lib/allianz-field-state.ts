@@ -1,17 +1,23 @@
 import type { Field, ImageField, LinkField } from '@sitecore-content-sdk/nextjs';
 import { safeLink } from './allianz-fields';
 
-/** Keep real empty fields mounted so the SDK can render their authoring chrome. */
+/** Render source content consistently in Page Builder and normal mode.
+ * Empty optional fields remain available through the content field panel.
+ * Populated fields still pass unchanged to the native SDK field components.
+ */
 export function shouldRenderTextField(field: Field<string> | undefined, isEditing: boolean): boolean {
-  return Boolean(field && (isEditing || field.value));
+  void isEditing;
+  return Boolean(field?.value);
 }
 
 export function shouldRenderImageField(field: ImageField | undefined, isEditing: boolean): boolean {
-  return Boolean(field && (isEditing || field.value?.src));
+  void isEditing;
+  return Boolean(field?.value?.src);
 }
 
 export function shouldRenderLinkField(field: LinkField | undefined, isEditing: boolean): boolean {
-  return Boolean(field && (isEditing || field.value?.href));
+  void isEditing;
+  return Boolean(field?.value?.href);
 }
 
 /** Never turn a cleared native link into a synthetic homepage link. */

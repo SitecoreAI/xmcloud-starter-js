@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import Module, { createRequire } from 'node:module';
-import { createHash } from 'node:crypto';
 import test from 'node:test';
 import { component, loadSource, render, sourceRoot } from '../../press-release-archive/__tests__/runtime.mjs';
 
@@ -10,7 +9,7 @@ const require = createRequire(import.meta.url);
 const ts = require('typescript');
 const sdk = require('@sitecore-content-sdk/nextjs');
 const postcss = require('postcss');
-const { AboutHistory } = component('allianz-timeline', 'AllianzTimeline');
+const { Default, AboutHistory } = component('allianz-timeline', 'AllianzTimeline');
 // Bounded public SDK fixture projected from the saved About history placement.
 // IDs and values are test inputs, not native acceptance evidence.
 // Independent source expectations were extracted from SOURCE-CONTENT-LAYOUT.json
@@ -439,7 +438,7 @@ test('fixed source presentation ignores historic design parameters and renders c
   assert.match(render(AboutHistory, data, false, { RenderingIdentifier: 'native-history' }), /id="native-history"/);
 });
 
-test('real SDK editing retains all 36 selected cleared fields once without recreating source content or optional fields', () => {
+test('real SDK editing omits all 36 cleared optional fields without recreating source content', () => {
   // Explicit test-only authoring metadata; no fixture ID is native-readback evidence.
   const cleared = structuredClone(data);
   for (const [index, field] of selected(cleared).entries()) {
@@ -451,7 +450,8 @@ test('real SDK editing retains all 36 selected cleared fields once without recre
   const before = JSON.stringify(cleared);
   const editing = render(AboutHistory, cleared, true);
   assert.equal(selected(cleared).length, 36);
-  assert.deepEqual(markers(editing).map(row => row.fieldId).sort(), selected(cleared).map(field => field.metadata.fieldId).sort());
+  assert.deepEqual(markers(editing), []);
+  assert.doesNotMatch(editing, /\[No text in field\]/);
   assert.equal(table(editing).length, 33);
   assert.doesNotMatch(editing, /keeping promises|Henry M\. Little|scEmptyImage|<h3|<img\b|<a\b/);
   const visitor = render(AboutHistory, cleared);
@@ -484,7 +484,7 @@ test('the variant passes every original selected SDK field object once with the 
   for (const editing of [false, true]) {
     consumed.length = 0;
     render(compiled.exports.AboutHistory, data, editing);
-    const expected = selected(data).filter(field => editing || plain(field.value));
+    const expected = selected(data).filter(field => plain(field.value));
     assert.equal(consumed.length, expected.length);
     for (const field of expected) assert.equal(consumed.filter(props => props.field === field).length, 1);
     assert.ok(consumed.every(props => props.editable === editing && expected.includes(props.field)));
@@ -506,10 +506,15 @@ test('native child removal or missing fields never cause historical entries or v
   assert.match(render(AboutHistory, undefined), /Add a datasource for AllianzTimeline/);
 });
 
-test('original Default bytes remain unchanged and new alignment rules stay scoped without the captured offset', () => {
-  const current = fs.readFileSync(path.join(sourceRoot, 'components/allianz-timeline/AllianzTimeline.tsx'));
-  assert.equal(createHash('sha256').update(current.subarray(0, 2032)).digest('hex'),
-    '88ca97ba3f89e7b3856da64761480d59f146e6a01ec253d1abcca4339614841e');
+test('Default keeps authored dates and bodies in both modes while alignment rules stay scoped', () => {
+  for (const editing of [false, true]) {
+    const html = render(Default, data, editing);
+    for (const entry of data.children.results) {
+      assert.ok(html.includes(entry.date.jsonValue.value));
+      assert.ok(html.includes(entry.body.jsonValue.value));
+    }
+    assert.doesNotMatch(html, /\[No text in field\]|scEmptyImage/);
+  }
   const css = postcss.parse(fs.readFileSync(path.join(sourceRoot, 'components/allianz-timeline/AboutHistory.css'), 'utf8'));
   css.walkRules(rule => {
     assert.ok(rule.selectors.every(selector => selector.startsWith('.allianz-about-history ')));

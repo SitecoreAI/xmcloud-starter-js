@@ -1,5 +1,5 @@
 'use client';
-import { RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { RichText, Text } from '@sitecore-content-sdk/nextjs';
 import { useId, useMemo, useRef, useState, type FormEvent } from 'react';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
 import type { AllianzFormProps } from './allianz-form.props';
@@ -11,8 +11,6 @@ const CLAIM_DEMO_NOTICE = 'Demonstration only. This form does not report a death
 const FIRMS = ['Example Financial Group', 'Sample Advisory Partners', 'Other'];
 
 export default function GenericForm({ config, params = {} }: { config: MigrationFormConfig; params?: AllianzFormProps['params'] }) {
-  const { page } = useSitecore();
-  const isEditing = page?.mode?.isEditing ?? false;
   const data = useMemo(() => migrationFormCopy(config), [config]);
   const instance = useId().replace(/:/g, '');
   const form = useRef<HTMLFormElement>(null);
@@ -99,19 +97,11 @@ export default function GenericForm({ config, params = {} }: { config: Migration
     if (prefix) return `${field.options.find((option) => option.value === values[field.name])?.label || values[field.name]} ${values[prefix + 'Day']}, ${values[prefix + 'Year']}`;
     return field.name.endsWith('Last4SSN') ? '••••' : field.options.find((option) => option.value === values[field.name])?.label || values[field.name];
   };
-  return <section data-source-hidden-form={config.sourceHidden || undefined} hidden={config.sourceHidden && !isEditing} style={config.sourceHidden && !isEditing ? { display: 'none' } : undefined} data-form-id={config.id} className="allianz-local-form" id={params.RenderingIdentifier}>
-    {!isEditing && key === 'death-claim' && <p className="allianz-local-privacy" role="note" aria-label="Claim demonstration">{CLAIM_DEMO_NOTICE}</p>}
-    {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={false} tag="h2" field={data.heading?.jsonValue} />}
-    {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={false} field={data.body?.jsonValue} />}
-    {isEditing ? <div className="allianz-local-form-authoring">
-      {definitions.map((field) => <Text key={field.name} editable={false} tag="p" field={field.labelField?.jsonValue} />)}
-      {shouldRenderTextField(data.submitLabel?.jsonValue, true) && <Text editable={false} tag="p" field={data.submitLabel?.jsonValue} />}
-      {shouldRenderTextField(data.secondaryHeading?.jsonValue, true) && <Text editable={false} tag="h3" field={data.secondaryHeading?.jsonValue} />}
-      {shouldRenderTextField(data.secondaryBody?.jsonValue, true) && <RichText editable={false} field={data.secondaryBody?.jsonValue} />}
-      {shouldRenderTextField(data.reviewHeading?.jsonValue, true) && <Text editable={false} tag="h2" field={data.reviewHeading?.jsonValue} />}
-      {shouldRenderTextField(data.successMessage?.jsonValue, true) && <RichText editable={false} field={data.successMessage?.jsonValue} />}
-      {shouldRenderTextField(data.failureMessage?.jsonValue, true) && <RichText editable={false} field={data.failureMessage?.jsonValue} />}
-    </div> : stage === 'entry' ? <form ref={form} noValidate autoComplete="off" onSubmit={submit} className="cui-portletform clearfix">
+  return <section data-source-hidden-form={config.sourceHidden || undefined} hidden={config.sourceHidden} style={config.sourceHidden ? { display: 'none' } : undefined} data-form-id={config.id} className="allianz-local-form" id={params.RenderingIdentifier}>
+    {key === 'death-claim' && <p className="allianz-local-privacy" role="note" aria-label="Claim demonstration">{CLAIM_DEMO_NOTICE}</p>}
+    {shouldRenderTextField(data.heading?.jsonValue, false) && <Text editable={false} tag="h2" field={data.heading?.jsonValue} />}
+    {shouldRenderTextField(data.body?.jsonValue, false) && <RichText editable={false} field={data.body?.jsonValue} />}
+    {stage === 'entry' ? <form ref={form} noValidate autoComplete="off" onSubmit={submit} className="cui-portletform clearfix">
       <p className="allianz-local-privacy">Use sample information. Information entered here stays in this browser and is not sent.</p>
       {Object.keys(errors).length > 0 && <div className="validation-summary-errors" role="alert">Please check the highlighted fields.</div>}
       {visible.map((field) => <div key={field.name}>
@@ -128,6 +118,6 @@ export default function GenericForm({ config, params = {} }: { config: Migration
     </div> : <div className="allianz-local-confirmation" role="status"><h2 ref={outcomeHeading} tabIndex={-1}>{stage === 'failure' ? 'Unable to continue' : 'Review complete'}</h2>
       <RichText editable={false} field={stage === 'failure' ? data.failureMessage?.jsonValue || { value: '<p>We were unable to complete this request. Please try again.</p>' } : data.successMessage?.jsonValue || { value: '<p>Your information has been reviewed.</p>' }} /><p>No information was sent.</p><button className="btn btn-primary" type="button" onClick={reset}>Start again</button>
     </div>}
-    {!isEditing && accountInfoOpen && <div className="allianz-local-account-overlay" role="presentation" onKeyDown={(event) => {if (event.key === 'Escape') closeAccountInfo();if (event.key === 'Tab') {event.preventDefault();event.currentTarget.querySelector<HTMLButtonElement>('button')?.focus();}}}><div role="dialog" aria-modal="true" aria-labelledby={`${instance}-account-title`} className="modal-content"><h2 id={`${instance}-account-title`}>Policy or contract questions</h2><p>For personal account information, please contact your Allianz service team.</p><button type="button" className="btn btn-primary" autoFocus onClick={closeAccountInfo}>Continue</button></div></div>}
+    {accountInfoOpen && <div className="allianz-local-account-overlay" role="presentation" onKeyDown={(event) => {if (event.key === 'Escape') closeAccountInfo();if (event.key === 'Tab') {event.preventDefault();event.currentTarget.querySelector<HTMLButtonElement>('button')?.focus();}}}><div role="dialog" aria-modal="true" aria-labelledby={`${instance}-account-title`} className="modal-content"><h2 id={`${instance}-account-title`}>Policy or contract questions</h2><p>For personal account information, please contact your Allianz service team.</p><button type="button" className="btn btn-primary" autoFocus onClick={closeAccountInfo}>Continue</button></div></div>}
   </section>;
 };

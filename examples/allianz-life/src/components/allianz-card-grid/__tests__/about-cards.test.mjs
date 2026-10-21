@@ -92,7 +92,7 @@ test('AboutTeaserCards keeps explicitly authored native target/ARIA on an exactl
   assert.equal(JSON.stringify(data), before);
 });
 
-test('About teaser cleared fields retain original author metadata, without invented visitor actions', () => {
+test('About teaser cleared fields remain absent on the canvas with original metadata retained in content fields, without invented visitor actions', () => {
   const data = fixture();
   for (let index = 0; index < 3; index++) {
     for (const name of ['Heading', 'Body']) childField(data, index, name).value = '';
@@ -100,18 +100,18 @@ test('About teaser cleared fields retain original author metadata, without inven
     childField(data, index, 'Link').value = { href: '' };
   }
   const before = JSON.stringify(data);
-  assert.equal(markers(render(Components.AboutTeaserCards, data, true)).length, 12);
+  assert.equal(markers(render(Components.AboutTeaserCards, data, true)).length, 0);
   assert.deepEqual(attrs(render(Components.AboutTeaserCards, data), 'a', 'href'), []);
   assert.deepEqual(attrs(render(Components.AboutTeaserCards, data), 'img', 'src'), []);
   assert.equal(JSON.stringify(data), before);
 });
 
-test('About parent cleared body/image still expose both real SDK fields and missing ones stay missing', () => {
+test('About parent cleared body/image stay absent on the canvas and missing ones stay missing', () => {
   const data = fixture(true);
   childField(data, 0, 'Body').value = '';
   childField(data, 0, 'Image').value = { src: '', alt: '' };
   const before = JSON.stringify(data);
-  assert.equal(markers(render(Components.AboutParentCompany, data, true)).length, 2);
+  assert.equal(markers(render(Components.AboutParentCompany, data, true)).length, 0);
   assert.equal(JSON.stringify(data), before);
   data.children.results[0].fieldCollection = data.children.results[0].fieldCollection.filter(value => !['Body', 'Image'].includes(value.name));
   assert.equal(markers(render(Components.AboutParentCompany, data, true)).length, 0);

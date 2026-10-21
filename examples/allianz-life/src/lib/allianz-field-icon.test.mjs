@@ -60,6 +60,7 @@ function render(component, props, isEditing = false) {
 }
 const editableField = (id, value) => ({ value, metadata: { fieldId: id, fieldType: 'Image', itemId: 'native-datasource' } });
 const decode = (html) => html.replaceAll('&quot;', '"').replaceAll('&amp;', '&');
+const visual = (html) => html.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, '');
 const nativeOrigin = 'https://xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io';
 const nativeRoot = '/-/media/Project/Allianz-Life/Images/';
 const nativeNames = ['public-0f406fb22be00338.svg', 'public-fb25410fd3ccc058.svg',
@@ -82,8 +83,9 @@ test('verified product/company SVG Originals render visitor masks and retain nat
     const before = JSON.stringify(field);
     assert.ok(decode(render(AllianzFieldIcon, { field })).includes(`mask-image:url("${original.src}")`));
     const editing = decode(render(AllianzFieldIcon, { field }, true));
-    assert.match(editing, /<img/);
+    assert.doesNotMatch(editing, /<img/);
     assert.ok(editing.includes(`"fieldId":"dam-product-icon-${original.assetId}"`));
+    assert.equal(visual(editing), decode(render(AllianzFieldIcon, { field })));
     assert.equal(JSON.stringify(field), before);
     assert.equal(iconImageSource(original.src + '&crop=1'), '');
     assert.equal(iconImageSource(original.src.replace(/v=[a-f0-9]+$/, 'v=unverified')), '');
@@ -129,7 +131,8 @@ test('native visitor images preserve signed URLs without CSS masks or CORS mode 
   assert.match(editor, /<img/);
   assert.match(editor, /"fieldId":"native-media-icon"/);
   assert.equal(field.value.src, source);
-  assert.doesNotMatch(editor, /allianz-field-icon|mask-image/);
+  assert.match(editor, /allianz-field-icon--native/);
+  assert.equal(visual(editor), decode(render(AllianzFieldIcon, { field })));
 });
 
 test('the seven previously verified Header/Footer SVG Original versions remain valid icon masks', () => {
@@ -199,20 +202,18 @@ test('empty and unsafe visitor fields render no request-bearing icon or invented
   assert.equal(render(AllianzFieldIcon, { field: undefined }, true), '');
 });
 
-test('actual editing retains real SDK chrome for cleared and changed Image fields', () => {
+test('editing keeps cleared icons out of the canvas and preserves native metadata on changed visual icons', () => {
   const cleared = editableField('cleared-native-icon', {});
   const emptyHtml = decode(render(AllianzFieldIcon, { field: cleared }, true));
-  assert.match(emptyHtml, /scEmptyImage/);
-  assert.match(emptyHtml, /"fieldId":"cleared-native-icon"/);
-  assert.doesNotMatch(emptyHtml, /allianz-field-icon|mask-image/);
+  assert.equal(emptyHtml, '');
   assert.deepEqual(cleared.value, {});
   const editedSource = utility[1].icon.jsonValue.value.src;
   const edited = editableField('changed-native-icon', { src: editedSource, alt: 'Changed icon' });
   const editedHtml = decode(render(AllianzFieldIcon, { field: edited }, true));
-  assert.match(editedHtml, /<img/);
-  assert.ok(editedHtml.includes(`src="${editedSource}"`));
+  assert.doesNotMatch(editedHtml, /<img/);
+  assert.ok(editedHtml.includes(`mask-image:url("${editedSource}")`));
   assert.match(editedHtml, /"fieldId":"changed-native-icon"/);
-  assert.doesNotMatch(editedHtml, /allianz-field-icon|mask-image/);
+  assert.equal(visual(editedHtml), decode(render(AllianzFieldIcon, { field: edited })));
   const visitorHtml = decode(render(AllianzFieldIcon, { field: edited }));
   assert.ok(visitorHtml.includes(`mask-image:url("${editedSource}")`), 'visitor presentation follows the edited field rather than a fixed icon identity');
 });
@@ -231,7 +232,7 @@ test('current native Header and Footer render all seven field masks, accessible 
   assert.equal((header.match(new RegExp(`<img[^>]*src="${logo}"`, 'g')) || []).length, 2, 'both original responsive logo instances remain SDK Images');
 });
 
-test('cleared Header/Footer icon fields remain editable through their actual component occurrences', () => {
+test('cleared Header/Footer icon fields add no canvas image and remain unchanged in the datasource', () => {
   for (const [component, original, collection, id] of [
     [Header, native.shared.header, 'utilityNav', 'header-native-icon'],
     [Footer, native.shared.footer, 'socialNav', 'footer-native-icon'],
@@ -242,9 +243,10 @@ test('cleared Header/Footer icon fields remain editable through their actual com
     const expectedMasks = collection === 'utilityNav' ? 1 : 4;
     assert.equal((visitor.match(/class="allianz-field-icon"/g) || []).length, expectedMasks);
     const editing = decode(render(component, props, true));
-    assert.match(editing, /scEmptyImage/);
-    assert.ok(editing.includes(`"fieldId":"${id}"`));
-    assert.doesNotMatch(editing, /allianz-field-icon|mask-image/);
+    assert.doesNotMatch(editing, /scEmptyImage/);
+    assert.ok(!editing.includes(`"fieldId":"${id}"`));
+    assert.equal((editing.match(/class="allianz-field-icon"/g) || []).length, expectedMasks);
+    assert.deepEqual(props.fields.data.datasource[collection].targetItems[0].icon.jsonValue.value, {});
   }
 });
 
@@ -270,7 +272,8 @@ test('all seven native paths use real SDK images with exact sources and unique s
     assert.ok(html.includes(`role="img" aria-label="${field.value.alt}"`));
     const editing = decode(render(AllianzFieldIcon, { field }, true));
     assert.ok(editing.includes(`"fieldId":"${field.metadata.fieldId}"`));
-    assert.doesNotMatch(editing, /<filter|allianz-field-icon|mask-image/);
+    assert.match(editing, /<filter|allianz-field-icon/);
+    assert.equal(visual(editing), decode(render(AllianzFieldIcon, { field })));
   }
   assert.equal(JSON.stringify(fields), before);
   assert.doesNotMatch(html, /mask-image|crossorigin|jssmedia|<script/);

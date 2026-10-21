@@ -71,14 +71,12 @@ test('layout, theme, typography and spacing parameters cannot redesign company m
   assert.match(render(statement, { RenderingIdentifier: 'our-mission' }), /id="our-mission"/);
 });
 
-test('cleared mission keeps real native editable chrome without source-content fallback', () => {
+test('cleared mission stays off the canvas without native chrome or source-content fallback', () => {
   const statement = { value: '', metadata: { fieldId: 'native-mission-field',
     fieldType: 'Rich Text', itemId: 'native-company-mission' } };
-  const editing = render(statement, {}, true).replaceAll('&quot;', '"').replaceAll('&amp;', '&');
-  assert.match(editing, /"fieldId":"native-mission-field"/);
-  assert.match(editing, /"itemId":"native-company-mission"/);
-  assert.doesNotMatch(editing, /Our mission|Add a datasource/);
-  assert.doesNotMatch(render(statement), /Our mission|Authored mission/);
+  const editing = render(statement, {}, true);
+  assert.equal(editing, render(statement));
+  assert.doesNotMatch(editing, /kind="open"|native-mission-field|native-company-mission|No text in field|o-richTextEditor__wrapper|Our mission|Add a datasource/);
   assert.equal(statement.value, '');
 });
 

@@ -26,7 +26,7 @@ export const Default = ({ fields, params }: AllianzProductNavigationProps) => {
   const listId = useId();
   const datasource = fields?.data?.datasource;
   const [product, ...tabs] = datasource?.primaryNav?.targetItems ?? [];
-  const expanded = editing || open;
+  const expanded = open;
   const currentId = nativeId(fields?.data?.contextItem?.id);
   if (!datasource || !product) return <NoDataFallback componentName="Product navigation" />;
 
@@ -35,23 +35,19 @@ export const Default = ({ fields, params }: AllianzProductNavigationProps) => {
     const props = safeLinkRenderProps(original);
     const ariaLabel = typeof original?.value?.ariaLabel === 'string' ? original.value.ariaLabel
       : typeof original?.value?.['aria-label'] === 'string' ? original.value['aria-label'] : undefined;
-    // The SDK's empty-link editor omits children; keep its separately owned title editable.
-    if (editing && !original?.value?.href) return <span className={className}>
-      <Link {...props} editable={editing} aria-label={ariaLabel} />
-      <Text field={item.title?.jsonValue} editable={editing} />
-    </span>;
+    if (!original?.value?.href) return null;
     return <Link {...props} className={className} editable={editing} aria-label={ariaLabel}
       aria-current={active ? 'page' : undefined}>
-      <Text field={item.title?.jsonValue} editable={editing} />
+      {item.title?.jsonValue?.value ? <Text field={item.title?.jsonValue} editable={editing} /> : <></>}
     </Link>;
   };
 
-  return <nav className={`m-navigation-secondary allianz-product-navigation${expanded ? ' m-navigation-secondary-open' : ''}${editing ? ' allianz-product-navigation-editing' : ''}`}
+  return <nav className={`m-navigation-secondary allianz-product-navigation${expanded ? ' m-navigation-secondary-open' : ''}`}
     id={params?.RenderingIdentifier} aria-label="Product navigation">
     <div className="nav-sec-list-title">
       {itemLink(product, 'nav-sec-product-link')}
       <button type="button" className="nav-sec-toggle" aria-label="Toggle product navigation"
-        aria-expanded={expanded} aria-controls={listId} disabled={editing}
+        aria-expanded={expanded} aria-controls={listId}
         onClick={() => setOpen((current) => !current)}>
         <i className="c-icon c-icon--chevron-down" aria-hidden="true" />
       </button>
@@ -72,7 +68,7 @@ export const FixedTabs = ({ fields, params }: AllianzProductNavigationProps) => 
   const listId = useId();
   const datasource = fields?.data?.datasource;
   const [product, ...tabs] = datasource?.primaryNav?.targetItems ?? [];
-  const expanded = editing || open;
+  const expanded = open;
   const currentId = nativeId(fields?.data?.contextItem?.id);
   if (!datasource || !product) return <NoDataFallback componentName="Product navigation" />;
 
@@ -84,26 +80,22 @@ export const FixedTabs = ({ fields, params }: AllianzProductNavigationProps) => 
     const props = restoreSourceDestinationLinkProps(safeLinkRenderProps(original), original, page?.mode?.isEditing !== false, ownerId);
     const ariaLabel = typeof original?.value?.ariaLabel === 'string' ? original.value.ariaLabel
       : typeof original?.value?.['aria-label'] === 'string' ? original.value['aria-label'] : undefined;
-    // The SDK's empty-link editor omits children; keep its separately owned title editable.
-    if (editing && !original?.value?.href) return <span className={className}>
-      <Link {...props} editable={editing} aria-label={ariaLabel} />
-      <Text field={item.title?.jsonValue} editable={editing} />
-    </span>;
+    if (!original?.value?.href) return null;
     return <Link {...props} className={className} editable={editing} aria-label={ariaLabel} onClick={onClick}
       aria-current={active ? 'page' : undefined}>
-      <Text field={item.title?.jsonValue} editable={editing} />
+      {item.title?.jsonValue?.value ? <Text field={item.title?.jsonValue} editable={editing} /> : <></>}
     </Link>;
   };
 
-  return <nav className={`m-navigation-secondary allianz-product-navigation${expanded ? ' m-navigation-secondary-open' : ''}${editing ? ' allianz-product-navigation-editing' : ''}`}
+  return <nav className={`m-navigation-secondary allianz-product-navigation${expanded ? ' m-navigation-secondary-open' : ''}`}
     id={params?.RenderingIdentifier} aria-label="Product navigation">
     <div className="nav-sec-list-title">
-      {itemLink(product, 'nav-sec-product-link', false, editing ? undefined : (event) => {
+      {itemLink(product, 'nav-sec-product-link', false, (event) => {
           event.preventDefault();
           setOpen((current) => !current);
         })}
       <button type="button" className="nav-sec-toggle" aria-label="Toggle product navigation"
-        aria-expanded={expanded} aria-controls={listId} disabled={editing}
+        aria-expanded={expanded} aria-controls={listId}
         onClick={() => setOpen((current) => !current)}>
         <i className="c-icon c-icon--chevron-down" aria-hidden="true" />
       </button>

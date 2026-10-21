@@ -1,6 +1,7 @@
 'use client';
 
 import { RichText, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { shouldRenderTextField } from 'lib/allianz-field-state';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import type { CompanyMissionProps } from './company-mission.props';
 
@@ -13,8 +14,8 @@ export const Default = ({ fields, params }: CompanyMissionProps) => {
     <div className="l-grid l-grid--max-width">
       <div className="l-grid__row u-margin-bottom-xl">
         <div className="l-grid__column-medium-12">
-          <RichText field={datasource.missionStatement?.jsonValue}
-            editable={page?.mode?.isEditing ?? false} className="o-richTextEditor__wrapper u-text-center" />
+          {shouldRenderTextField(datasource.missionStatement?.jsonValue, false) && <RichText field={datasource.missionStatement?.jsonValue}
+            editable={page?.mode?.isEditing ?? false} className="o-richTextEditor__wrapper u-text-center" />}
         </div>
       </div>
     </div>

@@ -76,7 +76,7 @@ for (const variant of variants) {
     const data = fixture();
     for (const name of variant.active) data[name].jsonValue.value = name === 'icon' ? {} : '';
     const before = JSON.stringify(data);
-    assert.equal(markers(render(Components[variant.name], data, true)).length, variant.active.length);
+    assert.equal(markers(render(Components[variant.name], data, true)).length, 0);
     assert.equal(markers(render(Components[variant.name], data, false)).length, 0);
     assert.equal(JSON.stringify(data), before);
     for (const name of variant.active) delete data[name];
@@ -134,7 +134,7 @@ test('Information passes each original heading/body/icon object to its real SDK 
   }
 });
 
-test('Information treats absent and cleared optional icons as native field state while preserving heading/body and circle wrappers', () => {
+test('Information treats absent and cleared optional icons as native field state while preserving heading/body and source circle wrappers', () => {
   const { components, observed } = instrumented();
   for (const state of ['missing', 'undefined-json', 'cleared', 'filled']) {
     const data = fixture();
@@ -144,9 +144,9 @@ test('Information treats absent and cleared optional icons as native field state
     const before = JSON.stringify(data);
     for (const editing of [false, true]) {
       observed.length = 0; const html = render(components.AboutInformationHeading, data, editing);
-      const hasField = ['cleared', 'filled'].includes(state), shouldMount = state === 'filled' || editing && hasField;
+      const shouldMount = state === 'filled';
       assert.equal(observed.filter(call => call.name === 'Image').length, shouldMount ? 1 : 0);
-      assert.equal(markers(html).length, editing ? 2 + Number(hasField) : 0);
+      assert.equal(markers(html).length, editing ? 2 + Number(shouldMount) : 0);
       assert.ok(html.includes(data.heading.jsonValue.value)); assert.ok(html.includes(data.body.jsonValue.value));
       assert.match(html, /tileIcon t-bg-primary-brand t-icon-primary-white/);
       assert.doesNotMatch(html, /allianz-ui\/about-overview/);

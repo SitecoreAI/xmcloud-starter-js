@@ -66,33 +66,13 @@
   margin-top: 0;
   margin-bottom: 0;
 }
-.allianz-legacy .allianz-legacy-document-services:not(.allianz-legacy-document-services--editing) .social-follow li[class] a {
+.allianz-legacy .allianz-legacy-document-services .social-follow li[class] a {
   background-image: url('/allianz-legacy-assets/document-services-social-sprite.png');
 }
 .allianz-legacy .allianz-legacy-document-services .social-follow li:not([class]) a {
   text-indent: 0;
   height: auto;
   width: auto;
-}
-.allianz-legacy .allianz-legacy-document-services--editing .hidden-xs,
-.allianz-legacy .allianz-legacy-document-services--editing .hidden-sm,
-.allianz-legacy .allianz-legacy-document-services--editing .visible-xs {
-  display: block !important;
-}
-.allianz-legacy .allianz-legacy-document-services--editing .dropdown-menu {
-  display: block;
-  position: static;
-  float: none;
-  min-width: 0;
-}
-.allianz-legacy .allianz-legacy-document-services--editing .social-follow li a {
-  background: none;
-  text-indent: 0;
-  height: auto;
-  width: auto;
-}
-.allianz-legacy .allianz-legacy-document-services--editing .allianz-document-placeholder-label {
-  display: block;
 }
 @media (min-width: 768px) {
   .allianz-legacy .allianz-legacy-document-services .allianz-document-register {
