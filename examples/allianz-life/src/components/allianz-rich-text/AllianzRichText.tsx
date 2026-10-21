@@ -33,7 +33,9 @@ export const Default = ({ fields, params, brandIcon = false, bodyDownloadLinks =
   // authoring value; the native metadata wrapper owns the actual field control.
   const projectedBody = isEditing && body !== destinationBody;
   const renderBody = (className: string, tabIndex?: number) => {
-    const content = <RichText editable={isEditing && !projectedBody} field={data.body?.jsonValue} className={className} tabIndex={tabIndex} />;
+    // Non-editable projections must not activate the SDK's visitor link routing.
+    const content = <RichText editable={isEditing && !projectedBody} field={data.body?.jsonValue}
+      internalLinksSelector={projectedBody ? ':not(*)' : undefined} className={className} tabIndex={tabIndex} />;
     return projectedBody ? <AllianzFieldContent field={nativeData?.body?.jsonValue} editable>{content}</AllianzFieldContent> : content;
   };
   const bodyValue = data.body?.jsonValue?.value;
