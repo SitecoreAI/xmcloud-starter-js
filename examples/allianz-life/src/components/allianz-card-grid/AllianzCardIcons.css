@@ -27,6 +27,11 @@
   filter: brightness(0) invert(1);
 }
 
+/* Finite Lifetime source presentation; the public parameter stays two-mode. */
+.tileIcon[data-allianz-card-icon-appearance="white-on-brand"] .allianz-card-icon-glyph {
+  filter: brightness(0) invert(1);
+}
+
 .tileIcon[data-allianz-card-icon-appearance="gray-on-transparent"] {
   background-color: transparent;
   color: #3c3c3c;

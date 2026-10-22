@@ -96,11 +96,21 @@ test('Select preserves every whole source body, table, financial sentence and PD
       if (source.pdfTarget) assert.ok(html.includes(`target="${source.pdfTarget}"`));
     }
   }
+  // This deliberately unapproved synthetic URL is not a native asset mapping.
   const linked = envelope();
-  const nativeBody = '<p>Existing 0.70% wording and 1.55% wording stay authored.</p><table class="o-table-index"><tbody><tr><td>Authored</td></tr></tbody></table><a href="https://dam.example.test/original.pdf?v=fixture-only" target="_blank" aria-label="Keep authored PDF">PDF</a>';
-  linked.children.results[0].body.jsonValue.value = nativeBody;
-  assert.ok(render(Accordion.SelectStrategies, freeze(linked), false, params).includes(nativeBody),
-    'Native DAM href, query, target and ARIA are passed through; this reserved test URL is not an asset mapping');
+  const unapprovedBody = '<p>Existing 0.70% wording and 1.55% wording stay authored.</p><table class="o-table-index"><tbody><tr><td>Authored</td></tr></tbody></table><a href="https://dam.example.test/original.pdf?v=fixture-only" target="_blank" aria-label="Keep authored PDF">PDF</a>';
+  const unavailableBody = '<p>Existing 0.70% wording and 1.55% wording stay authored.</p><table class="o-table-index"><tbody><tr><td>Authored</td></tr></tbody></table><a href="#service-unavailable" target="" aria-label="Keep authored PDF">PDF</a>';
+  linked.children.results[0].body.jsonValue.value = unapprovedBody;
+  const original = linked.children.results[0].body.jsonValue, before = JSON.stringify(linked);
+  const calls = [], Observed = observedModule(calls);
+  freeze(linked);
+  assert.ok(render(Observed.SelectStrategies, linked, false, params).includes(unavailableBody),
+    'An unapproved synthetic URL stays inert while the financial sentence, table and ARIA remain exact');
+  assert.ok(calls.some(call => call.name === 'RichText' && call.field.value === unavailableBody && call.field.metadata === original.metadata));
+  calls.length = 0;
+  assert.ok(render(Observed.SelectStrategies, linked, true, params).includes(unapprovedBody));
+  assert.ok(calls.some(call => call.name === 'RichText' && call.field === original), 'editing receives the original complete Field');
+  assert.equal(JSON.stringify(linked), before);
 });
 
 test('Select passes exact field objects and metadata once to SDK Text/RichText in visitor and editing modes', () => {

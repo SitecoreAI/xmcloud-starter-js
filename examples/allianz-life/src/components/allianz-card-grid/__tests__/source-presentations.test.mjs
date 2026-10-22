@@ -7,7 +7,8 @@ import test from 'node:test';
 import { loadSource, render, sourceRoot } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
 
 const Cards = loadSource(path.join(sourceRoot, 'components/allianz-card-grid/AllianzCardGrid.tsx'));
-const fixture = JSON.parse(fs.readFileSync(new URL('./source-presentations.fixture.json', import.meta.url)));
+const fixtureBytes = fs.readFileSync(new URL('./source-presentations.fixture.json', import.meta.url));
+const fixture = JSON.parse(fixtureBytes);
 const sha = value => createHash('sha256').update(value).digest('hex');
 const freeze = value => { if (value && typeof value === 'object') { Object.freeze(value); Object.values(value).forEach(freeze); } return value; };
 const data = record => structuredClone(record.rendering.fields.data.datasource);
@@ -18,16 +19,46 @@ const oldVariants = Object.entries(Cards).filter(([name, component]) => typeof c
 const iconSpans = html => html.match(/<span class="a-link__icon" aria-hidden="true">[\s\S]*?<\/span>/g) || [];
 const withoutFooterIcons = html => html.replace(/<span class="a-link__icon" aria-hidden="true">[\s\S]*?<\/span>/g, '');
 const withoutHeadingGraft = html => html.replace(/<link rel="preload" as="image" href="\/test-proposed-root-heading-icon\.svg\?version=original"\/>/, '').replace(/<div class="tileIcon [^"]*" data-allianz-card-grid-heading-icon="(?:gray|brand)">[\s\S]*?<\/div>/, '').replace(/<header>(<div class="tileHeading"><h2>[\s\S]*?<\/h2><\/div>(?:<div class="tileSubHeading">[\s\S]*?<\/div>)?)<\/header>/, '$1');
+// These two captured Bodies are the only historical fixture href changes under
+// the shared inert-contact policy. Keep the fixture and its genuine old hashes.
+const questionBodyWitnesses = [
+  { owner: 'F2EB8499721849489EDE2E82DE10BD72', sha256: '5399db1d9eb7e2b664b52680ba1e2e22d3841d51a337d86bea431a48757a5c85',
+    visitor: '<p>We can help answer your questions about submitting new business or put you in touch with our Underwriting and New Business Teams.</p> <p>Life Case Design Team, <a href="#service-unavailable">800.950.7372, option 1</a></p>' },
+  { owner: 'C1E50B54E2B54DE48F07B2AC2784F956', sha256: '26123f755b10ce285c655e6f7559f997d7225a3a1cbf4d2fb5c26c36e02db1d9',
+    visitor: '<p>We can help answer any questions related to inforce business.</p> <p>Contact Center, <a href="#service-unavailable"> 800.950.7372, option 3</a></p>' },
+];
 
-test('five complete native fixtures retain the genuine pre-change Default oracle and child cardinality', () => {
+test('five native fixtures retain their historical oracle with only two witnessed inert-contact href changes', () => {
   assert.equal(fixture.records.length, 5);
+  assert.equal(sha(fixtureBytes), 'd237fa5d04bccb25b88ddfa9583476ea5b1a3498e510295ca4980ea7ab4d30c7');
   assert.equal(fixture.beforeSourceSHA256, 'bf03e2e3f0e0639233a43756f44590873d30d660571dee22d9b6c1cd19e6036b');
   for (const record of fixture.records) {
     const original = freeze(data(record)), before = JSON.stringify(original);
     assert.equal(original.children.results.length, record.children);
     const visitor = markup('Default', original, record, false);
-    assert.equal(sha(visitor), record.beforeDefault.visitor, record.key);
     let editing = markup('Default', original, record, true);
+    let historicalVisitor = visitor;
+    if (record.key === 'question') {
+      assert.equal(original.children.results.length, questionBodyWitnesses.length);
+      assert.equal((visitor.match(/href="#service-unavailable"/g) ?? []).length, 2);
+      assert.doesNotMatch(visitor, /href="tel:/);
+      assert.equal((editing.match(/href="tel:8009507372"/g) ?? []).length, 2);
+      for (const [index, witness] of questionBodyWitnesses.entries()) {
+        const card = original.children.results[index];
+        const body = card.fieldCollection.find(field => field.name === 'body').jsonValue;
+        assert.equal(card.id, witness.owner);
+        assert.equal(sha(body.value), witness.sha256);
+        assert.equal(body.value, witness.visitor.replace('href="#service-unavailable"', 'href="tel:8009507372"'));
+        assert.equal(visitor.split(witness.visitor).length - 1, 1);
+        assert.equal(editing.split(body.value).length - 1, 1);
+        // Reverse only this proven Body href in the historical-oracle copy.
+        // Normalize the same exact difference in the editing comparison only;
+        // the original native Body and its SDK metadata remain unchanged.
+        historicalVisitor = historicalVisitor.replace(witness.visitor, body.value);
+        editing = editing.replace(body.value, witness.visitor);
+      }
+    }
+    assert.equal(sha(historicalVisitor), record.beforeDefault.visitor, record.key);
     if (record.key === 'download' || record.key === 'document') {
       // The existing demo link policy intentionally disables this visitor service;
       // editing keeps its genuine native URL. Check that bounded difference before
@@ -45,7 +76,7 @@ test('five complete native fixtures retain the genuine pre-change Default oracle
     }
     // Existing native/visitor link projections may retain the official origin
     // or use its identical local path. Permit only that exact origin difference;
-    // every visitor href remains pinned by the untouched historical hash above.
+    // every visitor href is pinned by the old hash or exact contact witnesses above.
     const visitorLinks = visitor.match(/<a\b[^>]*>/g) ?? [], editorLinks = editing.match(/<a\b[^>]*>/g) ?? [];
     assert.equal(editorLinks.length, visitorLinks.length);
     for (const [index, editorLink] of editorLinks.entries()) {

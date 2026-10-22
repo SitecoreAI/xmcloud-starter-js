@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
 import path from 'node:path';
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import Module from 'node:module';
 import test from 'node:test';
 import { loadSource, sourceRoot, require } from '../components/executive-biography/__tests__/sdk-test-helper.mjs';
 
@@ -8,6 +11,8 @@ const { renderToStaticMarkup } = require('react-dom/server');
 const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
 const { sourceDestinationLinkField, restoreSourceDestinationLinkProps, restoreSourceDestinationRichText } =
   loadSource(path.join(sourceRoot, 'lib/allianz-source-destinations.ts'));
+const { isSourceDestinationRichTextHref } = loadSource(path.join(sourceRoot, 'lib/allianz-source-destinations.ts'));
+const { safeNewsroomRichText } = loadSource(path.join(sourceRoot, 'components/legal-disclosures/newsroom-grey.links.props.ts'));
 const { safeLinkRenderProps } = loadSource(path.join(sourceRoot, 'lib/allianz-fields.ts'));
 const { Default: RichText } = loadSource(path.join(sourceRoot, 'components/allianz-rich-text/AllianzRichText.tsx'));
 const { Default: Navigation, FixedTabs } = loadSource(path.join(sourceRoot, 'components/allianz-product-navigation/AllianzProductNavigation.tsx'));
@@ -463,6 +468,9 @@ test('ordered nested CardGrid Links keep their distinct owner context and do not
 
 test('CardGrid restoration is closed for unknown SDK modes, unrelated datasources, wrong owners and changed source paths', () => {
   for (const contentMode of ['fixture', 'connected']) withContentMode(contentMode, () => {
+    // The inert Body policy closes unavailable fixture routes without granting
+    // the owner-specific absolute source projection. Connected safe paths stay.
+    const unapprovedHref = (href) => contentMode === 'fixture' ? '#service-unavailable' : href;
     for (const layout of cardLayouts) {
       for (const mode of ['unknown', 'missing']) {
         const indexData = freeze(indexCardData()), advanced = freeze(advancedCardData());
@@ -479,16 +487,19 @@ test('CardGrid restoration is closed for unknown SDK modes, unrelated datasource
       }
       for (const datasourceId of [undefined, null, '', otherOwner, 'bad-native-id', cardDatasources.advanced]) {
         const indexData = indexCardData(); indexData.id = datasourceId;
-        assert.ok(hrefAttributes(render(CardGrid.Default, indexData, { params: cardParams(layout) }))
-          .some(({ href }) => href === `${richPairs[0][1]}?tag=one&tag=two&q=a%23b#details`));
+        const links = hrefAttributes(render(CardGrid.Default, indexData, { params: cardParams(layout) }));
+        assert.ok(links.some(({ href }) => href === unapprovedHref(`${richPairs[0][1]}?tag=one&tag=two&q=a%23b#details`)));
+        assert.ok(!links.some(({ href }) => href.startsWith(`${origin}${richPairs[0][1]}`)));
       }
       const wrongIndexOwner = indexCardData(); wrongIndexOwner.children.results[0].id = otherOwner;
-      assert.ok(hrefAttributes(render(CardGrid.Default, wrongIndexOwner, { params: cardParams(layout) }))
-        .some(({ href }) => href === `${richPairs[0][1]}?tag=one&tag=two&q=a%23b#details`));
+      const wrongOwnerLinks = hrefAttributes(render(CardGrid.Default, wrongIndexOwner, { params: cardParams(layout) }));
+      assert.ok(wrongOwnerLinks.some(({ href }) => href === unapprovedHref(`${richPairs[0][1]}?tag=one&tag=two&q=a%23b#details`)));
+      assert.ok(!wrongOwnerLinks.some(({ href }) => href.startsWith(`${origin}${richPairs[0][1]}`)));
       const wrongIndexPath = indexCardData();
       collectionField(wrongIndexPath.children.results[0], 'body').value = `<a href="${richPairs[0][1].toLowerCase()}">Changed source path</a>`;
-      assert.ok(hrefAttributes(render(CardGrid.Default, wrongIndexPath, { params: cardParams(layout) }))
-        .some(({ href }) => href === richPairs[0][1].toLowerCase()));
+      const wrongPathLinks = hrefAttributes(render(CardGrid.Default, wrongIndexPath, { params: cardParams(layout) }));
+      assert.ok(wrongPathLinks.some(({ href }) => href === unapprovedHref(richPairs[0][1].toLowerCase())));
+      assert.ok(!wrongPathLinks.some(({ href }) => href.startsWith(`${origin}${richPairs[0][1]}`)));
       for (const value of [{ href: linkPairs[0][1].toLowerCase(), linktype: 'external' },
         { href: linkPairs[1][1], linktype: 'external' }, { href: '/Login', linktype: 'external' },
         { href: linkPairs[0][1], linktype: 'internal', id: otherOwner },
@@ -541,4 +552,207 @@ test('other exported variants sharing the private CardGrid never opt into the ne
       }
     }
   });
+});
+
+// Exact native Body read in the supported Content Editor on 2026-10-22.
+// Native field ID/metadata were not captured; any added metadata below is
+// explicitly diagnostic, while the Body value/hash and card owner are actual.
+const actualTeamsBody = "<p><strong>Calvin Walls</strong><br /> Sales support for Brian Landwer</p> <p>Phone: <a href=\"tel:763-765-6598\">763.765.6598</a></p> <a href=\"mailto:calvin.walls@allianzlife.com\"> Email Calvin Walls </a> <p><strong>States covered:<br /> </strong>AK, AR, AZ, CA, CO, HI, IA, ID, Northern IL, KS, MI, MN, MO, MT, ND, NE, NM, NV, OK, OR, SD, TX, UT, WA, WI, WY</p>";
+const actualTeamsBodySHA256 = 'ca8864e2a2d4fc64f814d8052e0f7d4dc8f68ffc222721e1d96d24dac06c0d71';
+for (const contentMode of ['fixture', 'connected']) for (const mode of ['normal', 'preview', 'editing']) {
+  test(`exact native Teams Body keeps contact services inert in ${contentMode}/${mode}`, () => withContentMode(contentMode, () => {
+    assert.equal(crypto.createHash('sha256').update(actualTeamsBody).digest('hex'), actualTeamsBodySHA256);
+    for (const layout of cardLayouts) for (const asFieldCollection of [false, true]) for (const withDiagnosticMetadata of [false, true]) {
+      const original = withDiagnosticMetadata
+        ? cardField('973A3CD9-BF90-4F2E-A8EA-39E7CE329831', 'diagnostic-Teams-body', actualTeamsBody, 'Rich Text')
+        : { jsonValue: { value: actualTeamsBody } };
+      const card = { id: '973A3CD9-BF90-4F2E-A8EA-39E7CE329831', body: original };
+      const data = freeze({ id: 'A39679A6-2610-4D76-BF57-F3C8B1DABC85',
+        children: { results: [asFieldCollection ? wireCard(card) : card] } });
+      const before = JSON.stringify(data);
+      const html = render(CardGrid.Default, data, { mode, params: cardParams(layout) });
+      const links = anchors(html);
+      assert.deepEqual(links.map(({ href }) => href), mode === 'editing'
+        ? ['tel:763-765-6598', 'mailto:calvin.walls@allianzlife.com']
+        : ['#service-unavailable', '#service-unavailable']);
+      assert.match(html, /Calvin Walls/); assert.match(html, /Sales support for Brian Landwer/);
+      assert.match(html, /States covered/);
+      if (mode === 'editing') {
+        assert.ok(html.includes(actualTeamsBody));
+        if (withDiagnosticMetadata) assert.ok(metadata(html).some(({ itemId, fieldId }) =>
+          itemId === card.id && fieldId === 'source-card-diagnostic-Teams-body'));
+      } else assert.doesNotMatch(html, /href="(?:tel:|mailto:)/);
+      assert.equal(JSON.stringify(data), before);
+    }
+  }));
+}
+
+
+test('raw Rich Text decision reuses both existing owner/path pairs without normalization', () => {
+  for (const [owner, destination] of richPairs) {
+    for (const href of [destination, `${origin}${destination}`, `${destination}?tag=one&amp;tag=two#details`]) {
+      for (const id of [owner, owner.toUpperCase(), `{${owner.toUpperCase()}}`, owner.replaceAll('-', '')]) {
+        assert.equal(isSourceDestinationRichTextHref(href, id), true);
+      }
+    }
+    for (const href of [destination.toLowerCase(), destination.replace('/', '&#47;'), destination.replace('/', '%2F'),
+      `${origin}:443${destination}`, `${origin.replace('www.', 'WWW.')}${destination}`, `${origin.replace('https:', 'http:')}${destination}`,
+      `https://user:password@www.allianzlife.com${destination}`, `${destination}/`, ` ${destination}`, `${destination}#demo-unavailable`]) {
+      assert.equal(isSourceDestinationRichTextHref(href, owner), false, href);
+    }
+    for (const id of [undefined, null, '', otherOwner, ` ${owner}`, `{${owner}`, linkPairs[0][0]]) {
+      assert.equal(isSourceDestinationRichTextHref(destination, id), false);
+    }
+  }
+});
+
+test('opt-in Rich Text selector receives distinct raw and decoded attributes without changing Set behavior', () => {
+  const value = '<p><a title="href=wrong > value" data-href="/masked" HREF="&#47;Login" TARGET="_blank" rel="author">Login</a></p>';
+  const input = freeze({ value, metadata: { itemId: 'diagnostic-owner', fieldId: 'diagnostic-body', fieldType: 'Rich Text' } });
+  const calls = [];
+  const result = safeNewsroomRichText(input, false, (decodedHref, rawHref) => {
+    calls.push({ decodedHref, rawHref }); return decodedHref === '/Login';
+  });
+  assert.deepEqual(calls, [{ decodedHref: '/Login', rawHref: '&#47;Login' }]);
+  const expected = '<p><a title="href=wrong > value" data-href="/masked" href="#service-unavailable" target="" rel="author">Login</a></p>';
+  assert.equal(result.value, expected);
+  assert.equal(safeNewsroomRichText(input, false, new Set(['/Login'])).value, expected);
+  assert.equal(safeNewsroomRichText(input, false, new Set(['&#47;Login'])), input);
+  assert.equal(result.metadata, input.metadata); assert.equal(input.value, value);
+  assert.equal(safeNewsroomRichText(input, false, () => false), input);
+});
+
+test('omitted and Set Rich Text filters retain the existing target and href policy exactly', () => {
+  const value = '<a href="/about" target="_blank" rel="author">About</a> <a href="/Login" target="_blank">Login</a>';
+  const input = freeze({ value, metadata: { itemId: 'diagnostic-owner', fieldId: 'diagnostic-body', fieldType: 'Rich Text' } });
+  assert.equal(safeNewsroomRichText(input, false).value,
+    '<a href="/about" target="" rel="author">About</a> <a href="#service-unavailable" target="">Login</a>');
+  assert.equal(safeNewsroomRichText(input, false, new Set(['/Login'])).value,
+    '<a href="/about" target="_blank" rel="author">About</a> <a href="#service-unavailable" target="">Login</a>');
+  assert.equal(safeNewsroomRichText(input, true), input);
+  assert.equal(safeNewsroomRichText(input, true, new Set(['/Login'])), input);
+});
+
+test('editing, metadata-only and clear Rich Text fields never call the opt-in selector', () => {
+  const fail = () => { throw new Error('Selector must not run on native editing or empty fields'); };
+  for (const input of [undefined, { value: '' }, { metadata: { itemId: 'diagnostic-only' } }]) {
+    assert.equal(safeNewsroomRichText(input, false, fail), input);
+    assert.equal(safeNewsroomRichText(input, true, fail), input);
+  }
+  const input = freeze({ value: actualTeamsBody, metadata: { itemId: 'diagnostic-only' } });
+  assert.equal(safeNewsroomRichText(input, true, fail), input);
+});
+
+test('approved source href protection is per anchor and also covers already-absolute source values', () => {
+  for (const contentMode of ['fixture', 'connected']) withContentMode(contentMode, () => {
+    for (const layout of cardLayouts) for (const absolute of [false, true]) for (const mode of ['normal', 'preview', 'editing']) {
+      const data = indexCardData(), card = data.children.results[0];
+      const original = collectionField(card, 'body');
+      original.value = `<p><a data-control="source" href="${absolute ? origin : ''}${richPairs[0][1]}?tag=one&amp;tag=two#details" target="_blank" rel="author">Source control</a> <a data-control="phone" href="tel:763-765-6598" target="_blank">Phone control</a> <a data-control="email" href="mailto:calvin.walls@allianzlife.com">Email control</a></p>`;
+      freeze(data); const before = JSON.stringify(data);
+      const html = render(CardGrid.Default, data, { mode, params: cardParams(layout) });
+      const links = hrefAttributes(html), source = links.find(({ attributes }) => attributes.includes('data-control="source"'));
+      assert.equal(source.href, `${mode === 'editing' ? absolute ? origin : '' : origin}${richPairs[0][1]}?tag=one&tag=two#details`);
+      assert.match(source.attributes, /target="_blank" rel="author"/);
+      assert.deepEqual(links.filter(({ attributes }) => /data-control="(?:phone|email)"/.test(attributes)).map(({ href }) => href), mode === 'editing'
+        ? ['tel:763-765-6598', 'mailto:calvin.walls@allianzlife.com'] : ['#service-unavailable', '#service-unavailable']);
+      if (mode === 'editing') assert.ok(html.includes(original.value));
+      assert.equal(JSON.stringify(data), before);
+    }
+  });
+});
+
+test('same decoded source href cannot grant approval to an entity-encoded raw sibling', () => {
+  for (const contentMode of ['fixture', 'connected']) withContentMode(contentMode, () => {
+    for (const layout of cardLayouts) for (const mode of ['normal', 'preview', 'editing']) {
+      const data = indexCardData(), card = data.children.results[0], original = collectionField(card, 'body');
+      original.value = `<p><a href="${richPairs[0][1]}" data-raw="exact">Exact raw</a> <a href="&#47;what-we-offer/Index-Lock" data-raw="encoded">Encoded raw</a></p>`;
+      freeze(data); const before = JSON.stringify(data);
+      const html = render(CardGrid.Default, data, { mode, params: cardParams(layout) });
+      const links = hrefAttributes(html);
+      assert.equal(links.find(({ attributes }) => attributes.includes('data-raw="exact"')).href, `${mode === 'editing' ? '' : origin}${richPairs[0][1]}`);
+      const encoded = links.find(({ attributes }) => attributes.includes('data-raw="encoded"'));
+      assert.equal(encoded.href, mode !== 'editing' && contentMode === 'fixture' ? '#service-unavailable' : '&#47;what-we-offer/Index-Lock');
+      assert.notEqual(encoded.href, `${origin}${richPairs[0][1]}`);
+      if (mode === 'editing') assert.ok(html.includes(original.value));
+      assert.equal(JSON.stringify(data), before);
+    }
+  });
+});
+
+const sharedBodyWrappers = ['Default', 'SourceDownloadLinks', 'HeadingIcon', 'BrandHeadingIcon', 'SustainabilityPillars', 'RilaPromotion', 'FixedProductFeatures'];
+const existingAccountHrefs = ['/Login', '/Login/forgot-username-individual', '/Login/forgot-password-individual'];
+const policyTestCardData = (value) => ({ id: 'diagnostic-grid', children: { results: [{ id: 'diagnostic-card',
+  heading: cardField('diagnostic-card', 'heading', 'Mounted diagnostic card'),
+  body: cardField('diagnostic-card', 'body', value, 'Rich Text') }] } });
+
+test('every actual shared card Body caller keeps contact and account services inert with native editing ownership', () => {
+  for (const contentMode of ['fixture', 'connected']) withContentMode(contentMode, () => {
+    for (const name of sharedBodyWrappers) for (const mode of ['normal', 'preview', 'editing']) {
+      const value = '<p>Mounted Body control <a href="mailto:service@example.invalid">Email control</a> <a href="tel:12345">Phone control</a> '
+        + existingAccountHrefs.map((href, i) => `<a href="${href}" target="_blank">Account control ${i}</a>`).join(' ') + '</p>';
+      const data = freeze(policyTestCardData(value)), before = JSON.stringify(data);
+      const html = render(CardGrid[name], data, { mode, params: cardParams('stacked') });
+      assert.match(html, /Mounted Body control/, `${name} must actually mount the Body`);
+      const links = anchors(html).filter(({ text }) => /^(?:Email|Phone|Account) control/.test(text));
+      assert.equal(links.length, 5);
+      assert.deepEqual(links.map(({ href }) => href), mode === 'editing'
+        ? ['mailto:service@example.invalid', 'tel:12345', ...existingAccountHrefs] : Array(5).fill('#service-unavailable'));
+      if (mode === 'editing') {
+        assert.ok(html.includes(value));
+        assert.ok(metadata(html).some(({ fieldId }) => fieldId === 'source-card-body'));
+      }
+      assert.equal(JSON.stringify(data), before);
+    }
+  });
+});
+
+test('shared card Body policy preserves safe local PDF, internal and approved external anchors byte-for-byte', () => {
+  const approved = require(path.join(sourceRoot, 'lib/approved-source-external-links.fixture.json')).entries
+    .find(({ url }) => url.startsWith('https:')).url;
+  const value = '<p>Mounted safe Body <a href="/about?tag=one&amp;tag=two#details" target="_blank" rel="author">About control</a> '
+    + '<a href="/allianz-assets/b049bad91a3e5c1d-ENT-3301-N.pdf" target="_blank" rel="author">Captured PDF control one</a> '
+    + '<a href="/allianz-assets/44a80c49282f3293-M-7391.pdf">Captured PDF control two</a> '
+    + `<a href="${approved.replaceAll('&', '&amp;').replaceAll('"', '&quot;')}" target="_blank" rel="author">Approved external control</a> `
+    + '<a href="#demo-unavailable" target="_blank" rel="author">Existing demo control</a></p>';
+  for (const contentMode of ['fixture', 'connected']) withContentMode(contentMode, () => {
+    for (const name of sharedBodyWrappers) for (const mode of ['normal', 'preview', 'editing']) {
+      const data = freeze(policyTestCardData(value)), before = JSON.stringify(data);
+      const html = render(CardGrid[name], data, { mode, params: cardParams('stacked') });
+      assert.match(html, /Mounted safe Body/); assert.ok(html.includes(value), `${name}: ${mode} safe Body bytes`);
+      assert.equal(JSON.stringify(data), before);
+    }
+  });
+});
+
+test('real SDK RichText receives the original editing Body object through shared CardGrid callers', () => {
+  const sdk = require('@sitecore-content-sdk/nextjs'), ts = require('typescript'), observed = [];
+  const filename = path.join(sourceRoot, 'components/allianz-card-grid/AllianzCardGrid.tsx');
+  const compiled = new Module(filename);
+  compiled.filename = filename;
+  compiled.paths = Module._nodeModulePaths(path.resolve(sourceRoot, '..'));
+  compiled.require = (specifier) => {
+    if (specifier.endsWith('.css')) return {};
+    if (specifier === '@sitecore-content-sdk/nextjs') return { ...sdk, RichText: (props) => {
+      observed.push(props); return React.createElement(sdk.RichText, props);
+    } };
+    const local = specifier.startsWith('.') ? path.resolve(path.dirname(filename), specifier)
+      : /^(components|lib)\//.test(specifier) ? path.join(sourceRoot, specifier) : undefined;
+    const resolved = local && [local, `${local}.ts`, `${local}.tsx`]
+      .find((candidate) => fs.existsSync(candidate) && fs.statSync(candidate).isFile());
+    return resolved ? /\.tsx?$/.test(resolved) ? loadSource(resolved) : require(resolved) : require(specifier);
+  };
+  compiled._compile(ts.transpileModule(fs.readFileSync(filename, 'utf8'), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022,
+      jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true },
+  }).outputText, filename);
+  for (const name of sharedBodyWrappers) for (const asFieldCollection of [false, true]) {
+    const data = policyTestCardData(actualTeamsBody), card = data.children.results[0], original = card.body.jsonValue;
+    if (asFieldCollection) data.children.results[0] = wireCard(card);
+    freeze(data); const before = JSON.stringify(data); observed.length = 0;
+    const html = render(compiled.exports[name], data, { mode: 'editing', params: cardParams('stacked') });
+    assert.match(html, /Calvin Walls/, `${name} must mount the actual Body`);
+    assert.ok(observed.some(({ field, editable }) => field === original && editable === true), name);
+    assert.equal(JSON.stringify(data), before);
+  }
 });

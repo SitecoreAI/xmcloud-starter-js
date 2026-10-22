@@ -1,7 +1,8 @@
 /* Native controls adapt the recovered public CSS, whose raw stylesheet is
  * intentionally served without changing its media-query grammar. These scoped
  * selectors remain stronger even when that stylesheet is loaded later. */
-.allianz-modern .c-accordion .c-accordion__item-content[hidden] {
+.allianz-modern .c-accordion .c-accordion__item-content[hidden],
+.allianz-legacy .c-accordion .c-accordion__item-content[hidden] {
   display: none;
 }
 /* This historical NY article prints full regulatory URLs as inline link text. */
@@ -15,7 +16,8 @@
     overflow-x: auto;
   }
 }
-.allianz-modern .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) {
+.allianz-modern .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]),
+.allianz-legacy .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) {
   display: block;
   max-height: none;
   overflow: visible;

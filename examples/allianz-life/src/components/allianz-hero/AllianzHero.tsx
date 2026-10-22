@@ -17,7 +17,14 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
   if (!data) return <NoDataFallback componentName="AllianzHero" />;
   const home = params.layout === 'home';
   const productTheme = ['fixed','variable','life'].includes(params.heroTheme) ? `c-hero__theme--${params.heroTheme}` : '';
-  const themeClass = params.theme === 'product-fixed' ? 't-bg-product-fixed' : sectionTheme(params.theme);
+  const useProductStageBackground = !home && productTheme !== ''
+    && [undefined, '', 'transparent'].includes(params.theme)
+    && (shouldRenderImageField(data.desktopImage?.jsonValue, false)
+      || shouldRenderTextField(data.heading?.jsonValue, false)
+      || shouldRenderTextField(data.body?.jsonValue, false)
+      || shouldRenderLinkField(data.primaryLink?.jsonValue, false));
+  const themeClass = params.theme === 'product-fixed' ? 't-bg-product-fixed'
+    : useProductStageBackground ? '' : sectionTheme(params.theme);
   if (!home) return (
     <div className={`l-container-full-width ${themeClass} ${productTheme}`}>
       <div className="m-axlHero">

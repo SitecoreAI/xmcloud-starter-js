@@ -1,7 +1,16 @@
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import test from 'node:test';
-import { loadSource, sourceRoot, render, metadata } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
+import { loadSource, sourceRoot, render, metadata, require } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
+
+const React = require('react');
+const { renderToStaticMarkup } = require('react-dom/server');
+const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
+const renderMode = (Component, datasource, mode, params) => renderToStaticMarkup(React.createElement(SitecoreProvider, {
+  page: { mode: { isEditing: mode === 'editing', isNormal: mode === 'normal', isPreview: mode === 'preview' }, siteName: 'allianz-life',
+    layout: { sitecore: { context: {}, route: { name: 'Account help', fields: {}, placeholders: {} } } } },
+  api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
+}, React.createElement(Component, { params, fields: { data: { datasource } } })));
 
 // Synthetic native fields exercise the installed SDK; these are not CMS prepins.
 const { Default } = loadSource(path.join(sourceRoot, 'components/allianz-card-grid/AllianzCardGrid.tsx'));
@@ -17,18 +26,22 @@ const unavailableBody = '<p><a href="#service-unavailable" class="login">Log in<
 const otherBody = '<p><a href="tel:800-950-1962" target="_self">Call us</a> '
   + '<a href="/about?one=1&amp;two=2#details" target="_blank" rel="author">About</a> '
   + '<a href="#details">Details</a> <a href="https://example.invalid/" target="_blank">External</a></p>';
+const unavailableOtherBody = '<p><a href="#service-unavailable" target="">Call us</a> '
+  + '<a href="/about?one=1&amp;two=2#details" target="_blank" rel="author">About</a> '
+  + '<a href="#details">Details</a> <a href="#service-unavailable" target="">External</a></p>';
 const datasource = (body) => ({ children: { results: [{ id: 'synthetic-help-card',
   heading: field('account-heading', 'Account help', 'Single-Line Text'), body: field('account-body', body),
 }] } });
 const params = { layout: 'stacked', columns: '3', headingLevel: 'h3' };
 
-test('Default CardGrid exact three account anchors use the existing unavailable dialog destination', () => {
+test('Default CardGrid keeps account, contact and unapproved external services inert while preserving safe anchors', () => {
   const data = datasource(accountBody + otherBody), before = JSON.stringify(data);
-  const html = render(Default, data, false, params);
-  assert.ok(html.includes(unavailableBody));
-  assert.ok(html.includes(otherBody), 'all other anchors and their attributes stay byte-identical');
-  assert.doesNotMatch(html, /href="\/Login(?:"|\/)/);
-  assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 3);
+  for (const mode of ['normal', 'preview']) {
+    const html = renderMode(Default, data, mode, params);
+    assert.ok(html.includes(unavailableBody + unavailableOtherBody), mode);
+    assert.doesNotMatch(html, /href="(?:\/Login(?:"|\/)|tel:|https:\/\/example\.invalid\/)/);
+    assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 5, mode);
+  }
   assert.equal(JSON.stringify(data), before);
 });
 
@@ -42,14 +55,29 @@ test('native editing retains original HTML and real Rich Text metadata without m
   assert.equal(safeNewsroomRichText(original, true, accountHrefs), original);
 });
 
-test('the exact-only policy does not normalize casing, prefixes, queries, fragments or official-host URLs', () => {
+test('the Set-filter parser keeps its exact-only compatibility while Default follows the shared inert policy', () => {
   const body = '<a href="/login">Lowercase</a> <a href="/LOGIN">Uppercase</a> '
     + '<a href="/Login/">Trailing slash</a> <a href="/Login?next=1">Query</a> '
     + '<a href="/Login#help">Fragment</a> <a href="/Login/forgot-password-individual-extra">Other path</a> '
     + '<a href="https://www.allianzlife.com/Login" target="_blank">Official host</a>';
   const original = field('nonmatching-body', body).jsonValue;
   assert.equal(safeNewsroomRichText(original, false, accountHrefs), original);
-  assert.ok(render(Default, datasource(body), false, params).includes(body));
+  const expected = '<a href="#service-unavailable">Lowercase</a> <a href="#service-unavailable">Uppercase</a> '
+    + '<a href="#service-unavailable">Trailing slash</a> <a href="#service-unavailable">Query</a> '
+    + '<a href="#service-unavailable">Fragment</a> <a href="#service-unavailable">Other path</a> '
+    + '<a href="https://www.allianzlife.com/Login" target="_blank">Official host</a>';
+  const data = datasource(body), before = JSON.stringify(data);
+  for (const mode of ['normal', 'preview']) {
+    const html = renderMode(Default, data, mode, params);
+    assert.ok(html.includes(expected), mode);
+    assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 6, mode);
+  }
+  // This literal absolute URL is an existing finite source exception. It does
+  // not grant an exception to any relative, query or fragment account variant.
+  const editing = render(Default, data, true, params);
+  assert.ok(editing.includes(body));
+  assert.ok(editing.includes('test-account-body-field'));
+  assert.equal(JSON.stringify(data), before);
 });
 
 test('the shared parser filters decoded href attributes and leaves unrelated attributes and content intact', () => {
@@ -64,9 +92,14 @@ test('the shared parser filters decoded href attributes and leaves unrelated att
 
 test('the Default list and cards layouts apply the same bounded body policy', () => {
   for (const layout of ['list', 'cards']) {
-    const html = render(Default, datasource(accountBody + otherBody), false, { ...params, layout });
-    assert.ok(html.includes(unavailableBody), layout);
-    assert.ok(html.includes(otherBody), layout);
+    const data = datasource(accountBody + otherBody), before = JSON.stringify(data);
+    for (const mode of ['normal', 'preview']) {
+      const html = renderMode(Default, data, mode, { ...params, layout });
+      assert.ok(html.includes(unavailableBody + unavailableOtherBody), `${layout}:${mode}`);
+      assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 5, `${layout}:${mode}`);
+    }
+    assert.ok(render(Default, data, true, { ...params, layout }).includes(accountBody + otherBody));
+    assert.equal(JSON.stringify(data), before);
   }
 });
 
@@ -76,7 +109,9 @@ test('modern fieldCollection projects the same native body policy without changi
     { name: 'heading', jsonValue: heading.jsonValue }, { name: 'body', jsonValue: body.jsonValue },
   ] }));
   const before = JSON.stringify(data);
-  assert.ok(render(Default, data, false, params).includes(unavailableBody + otherBody));
+  for (const mode of ['normal', 'preview']) {
+    assert.ok(renderMode(Default, data, mode, params).includes(unavailableBody + unavailableOtherBody), mode);
+  }
   assert.ok(render(Default, data, true, params).includes(accountBody + otherBody));
   assert.equal(JSON.stringify(data), before);
 });

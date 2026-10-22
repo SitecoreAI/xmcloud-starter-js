@@ -44,6 +44,12 @@ function sourceDestination(href: string, path: string) {
   };
 }
 
+/** Expose the existing raw Rich Text decision without granting projection. */
+export function isSourceDestinationRichTextHref(rawHref: string, ownerId: unknown): boolean {
+  const path = RICH_TEXT_DESTINATIONS[normalizedOwnerId(ownerId)];
+  return !!path && !!sourceDestination(rawHref, path);
+}
+
 /** Visitor-only projection for five witnessed native General Link owners. */
 export function sourceDestinationLinkField(
   field: LinkField | undefined,

@@ -1,0 +1,430 @@
+{
+  "assetOwners": [
+    {
+      "componentName": "AllianzCardGrid",
+      "datasourceId": "77380671376541979d5f087a3dec0486",
+      "entryId": "9b66eb7015104e4e8c4d1c7f62d64332",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/06f4a478677049b99aaad62f7e5c5a72?v=9e703ece",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/713f9c754cf447ca82fe9d659fdc76da?v=f9b3c003"
+      ]
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "datasourceId": "d23735131f7e48a0bc3f18201e27d229",
+      "entryId": "0bb473ed33e548ed9def4e748c7a92c9",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/dd4b7da2e79b4f00baf855edf62b6d3e?v=26327524"
+      ]
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "datasourceId": "68f5eea4e83f46e2aadfb4d244aa8230",
+      "entryId": "b66d295e016549989c7537b75d8dfd91",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/c6a3d572182b4d01a53a8dc963f4dff3?v=9a543ba8",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/6142c2c4eb554829b54e700b8bac05fc?v=88bd4027",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e4d3595c1b9e463dbee07f7e328ee5f7?v=22410764",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/46c921870c204fedbd006c33f432c5b2?v=a2ffc883",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e74df7f05c424ef883b33602b843046f?v=579fa2a3"
+      ]
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "datasourceId": "68f5eea4e83f46e2aadfb4d244aa8230",
+      "entryId": "c4f12d3c2db14cc98dbc1b6683ecf133",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/c5915b8b27ac45889d5d48f0327dad1c?v=cbf17b6c",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/8e13f769a8cd447e9cabc7beaf212cde?v=7fafc1d1",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/f47d2f809a7d4bbc914afcc088010bd0?v=9f2d51d8"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "7c7f6130274c4c9ba3d69b67f9db75a7",
+      "entryId": "5f5849ff91d44944829cc5ff7eb6c7f9",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/b81873a6d1b64390b893a7a7ce1569b0?v=55b98a9f"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "7a373530bf2a415cb3f3816889f55061",
+      "entryId": "e429aff2b27a4673b2108bf3f7372930",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e555315ae75b4b3e94ebfc706bb7499c?v=cf97c671"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "7a373530bf2a415cb3f3816889f55061",
+      "entryId": "cc502c7b7ac24b1ba9ce929911814d47",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/85f1f28548634406887eb5f161bbbea6?v=47473186",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e555315ae75b4b3e94ebfc706bb7499c?v=cf97c671"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "7a373530bf2a415cb3f3816889f55061",
+      "entryId": "7869d6b690924bef9e2d8f0fac3b84ae",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/1972ab20c93c40a48ec008afa3f90292?v=5662ff1f",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e0362b6dadb742449b99de8fbec67ea4?v=52ea37b9",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/d82f4a81a78a4ea7b24ab43a4eb66d3d?v=d1735ec5"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "7a373530bf2a415cb3f3816889f55061",
+      "entryId": "0669e118a2044477a17219fee6d0ec2c",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/1972ab20c93c40a48ec008afa3f90292?v=5662ff1f",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e0362b6dadb742449b99de8fbec67ea4?v=52ea37b9"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "77365a0a946848af98dfdc357a4c596f",
+      "entryId": "9225d721f24144169df2df59458c09a1",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e555315ae75b4b3e94ebfc706bb7499c?v=cf97c671"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "77365a0a946848af98dfdc357a4c596f",
+      "entryId": "f50f96e46f664143bb09eb76fad2c9a0",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/07950524204e452b84c155834d9ac5f1?v=a0291716",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/546829a05bd94b1680f9810206ea984c?v=d7ab84d4"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "77365a0a946848af98dfdc357a4c596f",
+      "entryId": "7e9d5aa4fcfd4d8a9501fd7f2ea9ff3f",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/1972ab20c93c40a48ec008afa3f90292?v=5662ff1f",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e0362b6dadb742449b99de8fbec67ea4?v=52ea37b9",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/d82f4a81a78a4ea7b24ab43a4eb66d3d?v=d1735ec5"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "77365a0a946848af98dfdc357a4c596f",
+      "entryId": "9875695ff6c3436da8e840b8b23c32a0",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/1650d946416044ebac04e668885cf31a?v=c1717eac",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/0daaa3e23ee84ef194177a9a1c99aa25?v=1ca934d3"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "77365a0a946848af98dfdc357a4c596f",
+      "entryId": "479a4e308a8d413fba594694a514fdaf",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/bad201e39e064292b5c8da017982081d?v=4a7d7490"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "703d7fb27f1f444b80a167c7c7119394",
+      "entryId": "440544a00d29419ca6b0c4e83fe9b0d0",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/0e499e1d1cfe4ad1b9491b9f20ba0cd6?v=7cb4724b"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "703d7fb27f1f444b80a167c7c7119394",
+      "entryId": "627b419b066b482b8b51d33a1df6758d",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/5d702fa3892e4c3c9c1fbd112cdde6a3?v=ad395877"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "703d7fb27f1f444b80a167c7c7119394",
+      "entryId": "81820d53309740d1a9ba9a1afb75e574",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e1675cb673424e2f8162bb1e277a792b?v=7026d1dc"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "703d7fb27f1f444b80a167c7c7119394",
+      "entryId": "87d851b07f2b49d5be778ab31f7ad616",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/348defe42b21468189ea02b728550724?v=2600dcf2"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "703d7fb27f1f444b80a167c7c7119394",
+      "entryId": "349cb1fd229f438587999349cb2b69f5",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/892631ac10c447c3a2398eecadc1f4da?v=86a4a204"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "703d7fb27f1f444b80a167c7c7119394",
+      "entryId": "deeb6d96e72a42ec9c8ca3d6f392d13c",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/05f2743513dc4de38a3e3f6d4557588c?v=5861d5f2"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "8c8e93503d914082ab9c255d5d17bb61",
+      "entryId": "f59a0d09fc274b65a730b0cb03816574",
+      "hrefs": [
+        "https://xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io/-/media/Project/Allianz-Life/Documents/RILA-009-Performance-Multi-C.pdf?ttc=63928232116&tt=F725DB2A6FF39F1DBD3CEB6A21E8AE94"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "a18d314032714540bf0596a88c091eb0",
+      "entryId": "0989283ee5194a1aad26fd38d61047d3",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/5d702fa3892e4c3c9c1fbd112cdde6a3?v=ad395877"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "18b99b1b43764ff5af172769143e61f2",
+      "entryId": "4ecf6144afe14b74819fa79d0ca4967a",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e1675cb673424e2f8162bb1e277a792b?v=7026d1dc"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "459f80af6b9d4209ac8af146001dd6d4",
+      "entryId": "e21cb48b99a04292ba8741e55696462a",
+      "hrefs": [
+        "https://xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io/-/media/Project/Allianz-Life/Documents/RILA-009-DualPrecision-B.pdf?ttc=63928232116&tt=C4AA1A8C1A4D33A5DA51DD8853BCCBE8"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "dec3cfb82cf44875878005b102b878ce",
+      "entryId": "6b3ed7e0f2d24aa1b149c3b117c4d0d3",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/892631ac10c447c3a2398eecadc1f4da?v=86a4a204"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "6da8db6418cc4b529bb763126273cf49",
+      "entryId": "90cfa5c829704039883132b85c6ee3fc",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/44c807d113cc48f59ebd015f28574896?v=4adec1bc"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "3d67c8524d024321a2573c264a2573eb",
+      "entryId": "d84ae374a82c443f8b40443bd7405aca",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/5d702fa3892e4c3c9c1fbd112cdde6a3?v=ad395877"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "3d67c8524d024321a2573c264a2573eb",
+      "entryId": "51d13feced1c4f9fad61aa129132d854",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e1675cb673424e2f8162bb1e277a792b?v=7026d1dc"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "3d67c8524d024321a2573c264a2573eb",
+      "entryId": "980129a742ad488cb8a4096e625249b0",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/892631ac10c447c3a2398eecadc1f4da?v=86a4a204"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "3d67c8524d024321a2573c264a2573eb",
+      "entryId": "91748841dd634e8d822e186a037e2b15",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/05f2743513dc4de38a3e3f6d4557588c?v=5861d5f2"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "0843ff42653c4147a70b7466bab725fb",
+      "entryId": "3270c9434b934a7b9476a2ce947541f0",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/5d702fa3892e4c3c9c1fbd112cdde6a3?v=ad395877"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "0843ff42653c4147a70b7466bab725fb",
+      "entryId": "0a5b8f9743a648dab28a25b61ad3c932",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/e1675cb673424e2f8162bb1e277a792b?v=7026d1dc"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "0843ff42653c4147a70b7466bab725fb",
+      "entryId": "2c7405d0560c4a91b479e935c59a4825",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/892631ac10c447c3a2398eecadc1f4da?v=86a4a204"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "0843ff42653c4147a70b7466bab725fb",
+      "entryId": "958b1f1f4bc94c4ca1c17caca8235b67",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/05f2743513dc4de38a3e3f6d4557588c?v=5861d5f2"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "1dbaace25c9147b7bf19586a3705b3b9",
+      "entryId": "42957e16aa294e9f99e82852b408e531",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/d6e4666b9c1a49c5a68f937245a05534?v=6496149f"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "1dbaace25c9147b7bf19586a3705b3b9",
+      "entryId": "e7ffa273d31442c9a647e13b156d4c20",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/cd7153beea8045799ea7adbd992ad60d?v=94fb3418"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "1dbaace25c9147b7bf19586a3705b3b9",
+      "entryId": "2c113a59c64841d1a3332ea87be1b468",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/0f1af3084391429989bd594808174161?v=57d9733b"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "1dbaace25c9147b7bf19586a3705b3b9",
+      "entryId": "67312577fa404003b4d3f2c1900c7390",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/77f602ce063c4fcab1eb68866aa1755b?v=e6483ad9"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "f90eb142e0424a88b912617bddafae6e",
+      "entryId": "75f039c8c7484e3a8d5958cc19755e0d",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/8e35ad4113de4c7f88a73028fc20067b?v=302ecdcc",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/4550d91f2a834c6c947389b32b34fdc2?v=b51eeae8"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "ef616a8573a84292b52df302cfd94692",
+      "entryId": "307c0b896ba64b3c943d6a9c6aea671d",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/a174c87c8bb84e968db39e737126280b?v=642c9495",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/3f699c30d29249bb9b63661615eae1ca?v=f28fb494",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/ba5afb210c38448c9c2a66f9943395d5?v=00ecc9d7"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "9b719b3c843f42a88dc27188c97cff21",
+      "entryId": "e3133fc72368472497a59058f4e06795",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/88e650bdd2c547199f65dd794ff1df4d?v=49f4c112",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/05ae3ed4ca9a43dbaa752a605f418777?v=5bce6c2d"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "6adb752bd030420bb8a0eca457a7c545",
+      "entryId": "1aa2f0cedd4b481580576c6a6ea54f23",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/04924984def745c79fee4d1fa521a2af?v=0bab6d10"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "e48d9f2bffd64b6d9417fc8cc88a1d4b",
+      "entryId": "61344ca07a4a433a96d3b7215e37062b",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/51b3aa773ea445faa7a42ffb18f7f7f6?v=869d7e47",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/f6aa13170a2c4a72b1674a0e33000e14?v=38ef45ba"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "e48d9f2bffd64b6d9417fc8cc88a1d4b",
+      "entryId": "edc5c7ffdf52472194dbcc6e45f5c267",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/cd7a8f6c84af4ff79772b61fe4dfd4a1?v=04e2c00a"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "e48d9f2bffd64b6d9417fc8cc88a1d4b",
+      "entryId": "5be57476f1cf4639b47218380e2f663d",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/cd7a8f6c84af4ff79772b61fe4dfd4a1?v=04e2c00a"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "94e71b3e8c9d45f79c9f43909ded7030",
+      "entryId": "e82599e4827a4cc49d9200416c1709a1",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/1c514313f0614367888f0c6a3165c4dd?v=dfa7bbc8"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "94e71b3e8c9d45f79c9f43909ded7030",
+      "entryId": "abe627d517bc4c6e832f73c3907970f5",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/05ae3ed4ca9a43dbaa752a605f418777?v=5bce6c2d"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "94e71b3e8c9d45f79c9f43909ded7030",
+      "entryId": "c775c0a9d1a14a6a85d397b55c17417d",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/417e2fb78783439b97dd7216e1cc5866?v=35e98d17"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "d4f514408eda4fb1a1a8f1dbe6aa30a7",
+      "entryId": "a68c4c800a9549548ac8b306e6fce40d",
+      "hrefs": [
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/76aef9960f8c40f0b1021c96c294ba2a?v=b300d45d",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/485b254497f242778d3e2b0131037ef4?v=b3e2083c",
+        "https://thlt-demo.sitecoresandbox.cloud/api/public/content/51b3aa773ea445faa7a42ffb18f7f7f6?v=869d7e47"
+      ]
+    }
+  ],
+  "excludedBodyOwners": [
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "d4f514408eda4fb1a1a8f1dbe6aa30a7",
+      "entryId": "870b42dd53ad4ca7aeaee5cdd4b23adb"
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "4a4de2a435ea49b2802c4ad7426758ea",
+      "entryId": "0f6ab9bff0c2482f8be7368df0a18a10"
+    }
+  ]
+}

@@ -76,20 +76,52 @@ test('mobile Sidebar button occupies the source right-edge target above the root
   assert.deepEqual(toggle.nodes.filter((node) => node.type === 'decl').map((node) => node.prop).sort(), ['height', 'width', 'z-index']);
 });
 
-test('expanded native accordion defeats recovered max-height zero regardless of stylesheet order', () => {
-  const recovered = rule(source, '.c-accordion .c-accordion__item-content');
+test('expanded native accordion defeats recovered max-height zero in both shells regardless of stylesheet order', () => {
+  const recoveredSelector = '.c-accordion .c-accordion__item-content';
+  const recovered = rule(source, recoveredSelector);
   assert.equal(value(recovered, 'max-height'), '0');
-  const expanded = rule(overrides, '.allianz-modern .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden])');
-  assert.ok(stronger(expanded.selector, recovered.selector));
-  assert.equal(value(expanded, 'display'), 'block');
-  assert.equal(value(expanded, 'max-height'), 'none');
-  assert.equal(value(expanded, 'overflow'), 'visible');
-  const collapsed = rule(overrides, '.allianz-modern .c-accordion .c-accordion__item-content[hidden]');
-  assert.equal(value(collapsed, 'display'), 'none');
-  assert.ok(stronger(collapsed.selector, recovered.selector));
+  for (const shell of ['allianz-modern', 'allianz-legacy']) {
+    const expandedSelector = `.${shell} .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden])`;
+    const expanded = rule(overrides, expandedSelector);
+    // Compare one matching arm, never the sum of a comma-separated selector list.
+    assert.ok(stronger(expandedSelector, recoveredSelector));
+    assert.equal(value(expanded, 'display'), 'block');
+    assert.equal(value(expanded, 'max-height'), 'none');
+    assert.equal(value(expanded, 'overflow'), 'visible');
+    const collapsedSelector = `.${shell} .c-accordion .c-accordion__item-content[hidden]`;
+    const collapsed = rule(overrides, collapsedSelector);
+    assert.equal(value(collapsed, 'display'), 'none');
+    assert.ok(stronger(collapsedSelector, recoveredSelector));
+    if (shell === 'allianz-legacy') {
+      const scopedRecoveredSelector = '.allianz-legacy .mfe .c-accordion .c-accordion__item-content';
+      assert.equal(value(rule(legacy, scopedRecoveredSelector), 'max-height'), '0');
+      assert.ok(stronger(expandedSelector, scopedRecoveredSelector));
+      // The witnessed NY shell has no .mfe ancestor. Its hidden rule beats the
+      // applicable global rule; no order-independent hidden claim is made for .mfe.
+    }
+  }
   const component = read('../components/allianz-accordion/AllianzAccordion.tsx');
   assert.match(component, /aria-expanded=\{expanded\}/);
   assert.match(component, /className="c-accordion__item-content" hidden=\{!expanded\}/);
+  assert.match(component, /<\/button>\s*<div id=\{panelId\} role="region"/);
+});
+
+test('native accordion recovery retains state gates and excludes Bootstrap panels and unrelated content', () => {
+  const arms = [];
+  overrides.walkRules((node) => {
+    if (node.selector.includes('.c-accordion')) arms.push(...node.selector.split(',').map((part) => part.trim()));
+  });
+  assert.deepEqual(arms.sort(), ['allianz-modern', 'allianz-legacy'].flatMap((shell) => [
+    `.${shell} .c-accordion .c-accordion__item-content[hidden]`,
+    `.${shell} .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden])`,
+  ]).sort(), 'only the two native control shapes receive shell coverage');
+  // Actual legacy Bootstrap markup has no modern c-accordion wrapper, trigger or
+  // panel class, so neither arm can match it or a standalone RichText/region.
+  const bootstrap = read('../components/allianz-legacy-accordion/AllianzLegacyAccordion.tsx');
+  assert.match(bootstrap, /panel-group accordion/);
+  assert.match(bootstrap, /className=\{`panel-collapse collapse/);
+  assert.doesNotMatch(bootstrap, /c-accordion/);
+  assert.doesNotMatch(arms.join('\n'), /panel-group|panel-collapse|\.accordionContent|\[role=/);
 });
 
 test('mobile open header does not clip the source absolute menu and closed menus have no layout box', () => {
