@@ -15,6 +15,17 @@
     max-width: 100%;
     overflow-x: auto;
   }
+  /* The recovered Back label is a flex item but inherits nowrap from the
+   * desktop trail. Let long native page titles fit the mobile container. */
+  .allianz-modern .azl-breadcrumb .c-breadcrumb__list > .c-breadcrumb__item:nth-last-child(2) {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+  }
+  .allianz-modern .azl-breadcrumb .c-breadcrumb__list > .c-breadcrumb__item:nth-last-child(2) > .c-breadcrumb__link {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
 }
 .allianz-modern .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]),
 .allianz-legacy .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) {

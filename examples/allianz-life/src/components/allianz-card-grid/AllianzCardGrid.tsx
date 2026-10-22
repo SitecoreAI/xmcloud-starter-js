@@ -83,6 +83,33 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
     && params.layout === 'stacked' && params.columns === '3';
   const cards = (data.children?.results ?? []).map(allianzCardFields);
   const iconAppearance = sourceIconAppearance ? cardIconAppearance(params.iconAppearance) : undefined;
+  // Keep the witnessed Claims process in its three ordinary source columns.
+  const claimsStepIds = ['2a7e982f64794ca4b1d5649f67de3b9e', 'ff80e7eae9cc4de88ab80a3badd9c4a9',
+    '401c3f0732984e56b557b045dd377f61'];
+  const isClaimsSteps = sourceDestinations && sourceIconAppearance && sourceStatisticBadges
+    && !sourceDownloadLinks && !headingIconAppearance && !isRilaPromotion && !faqAppearance
+    && !sourceAnchor && !sourceRelatedIntroduction && !sourceFeaturesIntroduction
+    && sourceDestinationId(routeId) === '020ebca91af55887b0716295be26d994'
+    && sourceDestinationId('id' in data ? data.id : undefined) === '8070c534acb742268e28fde9efe92813'
+    && params.layout === 'stacked' && params.columns === '3' && params.alignment === 'center'
+    && params.theme === 'transparent' && params.headingLevel === 'h3'
+    && cards.length === claimsStepIds.length
+    && new Set(cards.map(card => sourceDestinationId(card.id))).size === claimsStepIds.length
+    && cards.every(card => claimsStepIds.includes(sourceDestinationId(card.id) ?? '')
+      && !shouldRenderImageField(card.icon?.jsonValue, false) && !shouldRenderImageField(card.image?.jsonValue, false)
+      && card.iconTheme?.jsonValue?.value === 'primary-brand'
+      && [undefined, '', 'transparent'].includes(card.theme?.jsonValue?.value));
+  // Retain the source white Question glyph only for its witnessed Claims owner.
+  const isClaimsQuestion = sourceDestinations && sourceIconAppearance && sourceStatisticBadges
+    && !sourceDownloadLinks && !headingIconAppearance && !isRilaPromotion && !faqAppearance
+    && !sourceAnchor && !sourceRelatedIntroduction && !sourceFeaturesIntroduction
+    && sourceDestinationId(routeId) === '020ebca91af55887b0716295be26d994'
+    && sourceDestinationId('id' in data ? data.id : undefined) === '44c1fa729b724b5ea007599b8c6a687b'
+    && params.layout === 'plain' && params.columns === '1' && params.alignment === 'center'
+    && params.theme === 'transparent' && params.headingLevel === 'h2'
+    && (params.iconAppearance === undefined || params.iconAppearance === '')
+    && cards.length === 1 && sourceDestinationId(cards[0].id) === 'b912d4ba7684488e8d151c30ebc21acc'
+    && [undefined, '', 'transparent'].includes(cards[0].theme?.jsonValue?.value);
   // Recover only the witnessed Lifetime Default groups, without widening FPro.
   const isLifetimeDefault = sourceDestinations && sourceIconAppearance && sourceStatisticBadges
     && !sourceDownloadLinks && !headingIconAppearance && !isRilaPromotion && !faqAppearance
@@ -195,16 +222,19 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
           // The six source samples use circles for two characters, wide badges beyond.
           const wideNumberBadge = sourceNumberBadge && Array.from(numeral.trim()).length > 2;
           const lifetimeNumberBadge = isLifetimeSteps && typeof numeral === 'string' && numeral.trim().length > 0;
-          const cardAppearance = iconAppearance ?? (isLifetimeInformation
-            && sourceDestinationId(card.id) === '3bed4184604d4f66a8132654c28ea1f6'
+          const claimsNumberBadge = isClaimsSteps && typeof numeral === 'string' && numeral.trim().length > 0;
+          const numberBadge = sourceNumberBadge || lifetimeNumberBadge || claimsNumberBadge;
+          const sourceWhiteIcon = (isLifetimeInformation
+            && sourceDestinationId(card.id) === '3bed4184604d4f66a8132654c28ea1f6') || isClaimsQuestion;
+          const cardAppearance = iconAppearance ?? (sourceWhiteIcon
             && card.iconTheme?.jsonValue?.value === 'primary-brand'
             && shouldRenderImageField(card.icon?.jsonValue, false)
             && !shouldRenderImageField(card.image?.jsonValue, false) ? 'white-on-brand' : undefined);
           return <CardColumn key={card.id} {...(isLifetimeSteps ? {} : { className: `l-grid__column-medium-${column}` })}>
-          <article data-allianz-index-partner-logo={isPartnerLogo ? "" : undefined} data-allianz-card={isFinancialRatings ? card.id.replace(/[{}-]/g, '').toLowerCase() : undefined} className={`m-axlTile match-height ${sectionTheme(card.theme?.jsonValue?.value)} ${sourceNumberBadge || lifetimeNumberBadge ? 'tile--alphaNumeric ' : ''}${isLifetimeSteps ? '-is--split' : faqAppearance === 'help' ? '-is--flipped -is--stacked' : faqAppearance === 'professional' ? 'tile--stackedImage -is--stacked' : params.layout === 'image-left' || params.layout === 'image-right' ? `${splitClass} -is--split ${params.layout === 'image-right' ? '-is--flipped' : ''}` : shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'stacked' ? '-is--flipped tile--stackedImage -is--stacked' : '-is--stacked'} ${params.layout === 'bordered' ? 'allianz-bordered' : ''}`}>
+          <article data-allianz-index-partner-logo={isPartnerLogo ? "" : undefined} data-allianz-card={isFinancialRatings ? card.id.replace(/[{}-]/g, '').toLowerCase() : undefined} className={`m-axlTile match-height ${sectionTheme(card.theme?.jsonValue?.value)} ${numberBadge ? 'tile--alphaNumeric ' : ''}${isLifetimeSteps ? '-is--split' : faqAppearance === 'help' ? '-is--flipped -is--stacked' : faqAppearance === 'professional' ? 'tile--stackedImage -is--stacked' : params.layout === 'image-left' || params.layout === 'image-right' ? `${splitClass} -is--split ${params.layout === 'image-right' ? '-is--flipped' : ''}` : shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'stacked' ? '-is--flipped tile--stackedImage -is--stacked' : '-is--stacked'} ${params.layout === 'bordered' ? 'allianz-bordered' : ''}`}>
             <div className={`tileContent ${params.alignment === 'left' ? 'u-text-left' : 'u-text-center'}`}>
               {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="tileSubGrid__image"><div className={`tileIcon ${cardIconTheme(card.iconTheme?.jsonValue?.value, cardAppearance)}`} data-allianz-card-icon-appearance={cardAppearance}><Image editable={isEditing} field={card.icon?.jsonValue} {...(cardAppearance ? { className: 'allianz-card-icon-glyph' } : {})} /></div></div>}
-              {shouldRenderTextField(card.alphanumeral?.jsonValue, isEditing) && <div className="tileSubGrid__image">{sourceNumberBadge || lifetimeNumberBadge
+              {shouldRenderTextField(card.alphanumeral?.jsonValue, isEditing) && <div className="tileSubGrid__image">{numberBadge
                 ? <div className={`tileIcon${wideNumberBadge ? ' -is--wide' : ''} t-bg-primary-brand t-icon-primary-white`}><Text editable={isEditing} tag="em" field={card.alphanumeral?.jsonValue} className="alphaType" /></div>
                 : <Text editable={isEditing} tag={isFinancialRatings ? 'span' : undefined} field={card.alphanumeral?.jsonValue} className="tileAlphanumeral" />}</div>}
               {shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'bordered' && <div className="tileSubGrid__image"><div className="tileImage"><Image editable={isEditing} field={card.image?.jsonValue} /></div></div>}
