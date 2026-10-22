@@ -110,6 +110,35 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
     && (params.iconAppearance === undefined || params.iconAppearance === '')
     && cards.length === 1 && sourceDestinationId(cards[0].id) === 'b912d4ba7684488e8d151c30ebc21acc'
     && [undefined, '', 'transparent'].includes(cards[0].theme?.jsonValue?.value);
+  // Keep the source white Information glyph on its exact native FPro owner.
+  const isFProInformation = sourceDestinations && sourceIconAppearance && sourceStatisticBadges
+    && !sourceDownloadLinks && !headingIconAppearance && !isRilaPromotion && !faqAppearance
+    && !sourceAnchor && !sourceRelatedIntroduction && !sourceFeaturesIntroduction
+    && sourceDestinationId(routeId) === '76934d360dc45c21969cf98a3d915fde'
+    && sourceDestinationId('id' in data ? data.id : undefined) === '217d8e4e267143ea82f8e5647b94a223'
+    && params.layout === 'stacked' && params.columns === '1' && params.alignment === 'center'
+    && params.theme === 'green-soft' && params.headingLevel === 'h3'
+    && (params.iconAppearance === undefined || params.iconAppearance === '')
+    && cards.length === 1 && sourceDestinationId(cards[0].id) === 'b0194ab31add4001bd330b5ab61c8ad2'
+    && [undefined, '', 'transparent'].includes(cards[0].theme?.jsonValue?.value);
+  // These five native industry articles share the source column and split layout.
+  const fproIndustryIds = ['94fdbc1a4bb14979b2f98f248f3e84e0', '4c3bfd1658fd4fe4b6fba4e3eedb619e',
+    '4cf80ef355b640a28095924523ed3d2f', 'dc3bce1dfed94b78818126d1cf5ec438', '74f51b4dee5b4ad39684a76de86fbf13'];
+  const isFProIndustry = sourceDestinations && sourceIconAppearance && sourceStatisticBadges
+    && !sourceDownloadLinks && !headingIconAppearance && !isRilaPromotion && !faqAppearance
+    && !sourceAnchor && !sourceRelatedIntroduction && !sourceFeaturesIntroduction
+    && sourceDestinationId(routeId) === '76934d360dc45c21969cf98a3d915fde'
+    && sourceDestinationId('id' in data ? data.id : undefined) === '59997a3b71bf47cdba79457f935f6f7a'
+    && params.layout === 'stacked' && params.columns === '4' && params.alignment === 'left'
+    && params.theme === 'transparent' && params.headingLevel === 'h4'
+    && (params.iconAppearance === undefined || params.iconAppearance === '')
+    && cards.length === fproIndustryIds.length
+    && new Set(cards.map(card => sourceDestinationId(card.id))).size === fproIndustryIds.length
+    && cards.every(card => fproIndustryIds.includes(sourceDestinationId(card.id) ?? '')
+      && !shouldRenderImageField(card.image?.jsonValue, false)
+      && !shouldRenderTextField(card.alphanumeral?.jsonValue, false)
+      && [undefined, ''].includes(card.iconTheme?.jsonValue?.value)
+      && [undefined, '', 'transparent'].includes(card.theme?.jsonValue?.value));
   // Recover only the witnessed Lifetime Default groups, without widening FPro.
   const isLifetimeDefault = sourceDestinations && sourceIconAppearance && sourceStatisticBadges
     && !sourceDownloadLinks && !headingIconAppearance && !isRilaPromotion && !faqAppearance
@@ -130,8 +159,9 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
     && params.layout === 'stacked' && params.columns === '1' && params.alignment === 'center'
     && params.theme === 'green-soft' && params.headingLevel === 'h2' && cards.length === 1
     && (params.iconAppearance === undefined || params.iconAppearance === '');
-  const CardGroup = isLifetimeSteps ? 'div' : Fragment;
-  const CardColumn = isLifetimeSteps ? Fragment : 'div';
+  const hasSharedSourceColumn = isLifetimeSteps || isFProIndustry;
+  const CardGroup = hasSharedSourceColumn ? 'div' : Fragment;
+  const CardColumn = hasSharedSourceColumn ? Fragment : 'div';
   const sourceDataId = sourceDestinations ? sourceDestinationId('id' in data ? data.id : undefined) : undefined;
   const sourceDestinationEditing = page?.mode?.isEditing !== false;
   const cardBodyField = (card: (typeof cards)[number]) => {
@@ -193,7 +223,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
         {sourceFeaturesIntroduction && shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
         {sourceFeaturesIntroduction && shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
       </div></article></div></div>}
-      <div className={`l-grid__row ${isCards || isLifetimeSteps ? '' : 'match-height-row'} ${rowSpacing(params)}`}>
+      <div className={`l-grid__row ${isCards || hasSharedSourceColumn ? '' : 'match-height-row'} ${rowSpacing(params)}`}>
         {isCards ? <div className="l-grid__column-medium-12"><div className={`o-cards o-cards__col${params.columns || '3'}`}>
           {cards.map((card) => {
             const field = allianzLinkField(card.link?.jsonValue, isEditing);
@@ -206,7 +236,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
               ? <Link key={card.id} {...linkProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="m-card">{content}</Link>
               : <div key={card.id} className="m-card">{content}</div>;
           })}
-        </div></div> : <CardGroup {...(isLifetimeSteps ? { className: 'l-grid__column-medium-8 offset-medium-2 l-grid__column-small-12' } : {})}>{cards.map((card) => {
+        </div></div> : <CardGroup {...(hasSharedSourceColumn ? { className: 'l-grid__column-medium-8 offset-medium-2 l-grid__column-small-12' } : {})}>{cards.map((card) => {
           const links = card.links?.targetItems?.length ? card.links.targetItems : [{ id: `${card.id}-link`, link: card.link }];
           const hasLinks = Boolean(card.links?.targetItems?.some((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing)) || shouldRenderLinkField(card.link?.jsonValue, isEditing));
           const isPartnerLogo = isIndexPartnerLogos && Boolean(card.image?.jsonValue)
@@ -225,13 +255,13 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
           const claimsNumberBadge = isClaimsSteps && typeof numeral === 'string' && numeral.trim().length > 0;
           const numberBadge = sourceNumberBadge || lifetimeNumberBadge || claimsNumberBadge;
           const sourceWhiteIcon = (isLifetimeInformation
-            && sourceDestinationId(card.id) === '3bed4184604d4f66a8132654c28ea1f6') || isClaimsQuestion;
+            && sourceDestinationId(card.id) === '3bed4184604d4f66a8132654c28ea1f6') || isClaimsQuestion || isFProInformation;
           const cardAppearance = iconAppearance ?? (sourceWhiteIcon
             && card.iconTheme?.jsonValue?.value === 'primary-brand'
             && shouldRenderImageField(card.icon?.jsonValue, false)
             && !shouldRenderImageField(card.image?.jsonValue, false) ? 'white-on-brand' : undefined);
-          return <CardColumn key={card.id} {...(isLifetimeSteps ? {} : { className: `l-grid__column-medium-${column}` })}>
-          <article data-allianz-index-partner-logo={isPartnerLogo ? "" : undefined} data-allianz-card={isFinancialRatings ? card.id.replace(/[{}-]/g, '').toLowerCase() : undefined} className={`m-axlTile match-height ${sectionTheme(card.theme?.jsonValue?.value)} ${numberBadge ? 'tile--alphaNumeric ' : ''}${isLifetimeSteps ? '-is--split' : faqAppearance === 'help' ? '-is--flipped -is--stacked' : faqAppearance === 'professional' ? 'tile--stackedImage -is--stacked' : params.layout === 'image-left' || params.layout === 'image-right' ? `${splitClass} -is--split ${params.layout === 'image-right' ? '-is--flipped' : ''}` : shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'stacked' ? '-is--flipped tile--stackedImage -is--stacked' : '-is--stacked'} ${params.layout === 'bordered' ? 'allianz-bordered' : ''}`}>
+          return <CardColumn key={card.id} {...(hasSharedSourceColumn ? {} : { className: `l-grid__column-medium-${column}` })}>
+          <article data-allianz-index-partner-logo={isPartnerLogo ? "" : undefined} data-allianz-card={isFinancialRatings ? card.id.replace(/[{}-]/g, '').toLowerCase() : undefined} className={`m-axlTile match-height ${sectionTheme(card.theme?.jsonValue?.value)} ${numberBadge || isFProIndustry ? 'tile--alphaNumeric ' : ''}${hasSharedSourceColumn ? '-is--split' : faqAppearance === 'help' ? '-is--flipped -is--stacked' : faqAppearance === 'professional' ? 'tile--stackedImage -is--stacked' : params.layout === 'image-left' || params.layout === 'image-right' ? `${splitClass} -is--split ${params.layout === 'image-right' ? '-is--flipped' : ''}` : shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'stacked' ? '-is--flipped tile--stackedImage -is--stacked' : '-is--stacked'} ${params.layout === 'bordered' ? 'allianz-bordered' : ''}`}>
             <div className={`tileContent ${params.alignment === 'left' ? 'u-text-left' : 'u-text-center'}`}>
               {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="tileSubGrid__image"><div className={`tileIcon ${cardIconTheme(card.iconTheme?.jsonValue?.value, cardAppearance)}`} data-allianz-card-icon-appearance={cardAppearance}><Image editable={isEditing} field={card.icon?.jsonValue} {...(cardAppearance ? { className: 'allianz-card-icon-glyph' } : {})} /></div></div>}
               {shouldRenderTextField(card.alphanumeral?.jsonValue, isEditing) && <div className="tileSubGrid__image">{numberBadge
