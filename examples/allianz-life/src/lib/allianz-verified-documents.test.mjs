@@ -19,6 +19,8 @@ const destinations = [
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/656eaeaaa433418ca03db6fcd7fa3512?v=f87588d4' },
   { name: 'Index Advantage+ Income Benefit Supplement', target: '_blank',
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/0aafda00578a4eb1a678b2aa04d15595?v=760d2d3b' },
+  { name: 'Weatherproofing retirement EXT-1084 fact sheet', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f109cc47edba46de921fecb735c567ea?v=68ea6fa3' },
 ];
 process.env.NODE_ENV = 'test';
 

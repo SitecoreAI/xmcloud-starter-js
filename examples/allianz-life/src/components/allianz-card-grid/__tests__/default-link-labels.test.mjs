@@ -71,6 +71,33 @@ test('local visitor links retain official-host normalization, query, fragment, t
   assert.equal(link.attrs['aria-label'], 'Read About Allianz');
 });
 
+test('the verified EXT-1084 destination works through ordered card links without losing labels or editing ownership', () => {
+  const url = 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f109cc47edba46de921fecb735c567ea?v=68ea6fa3';
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    const data = datasource(); data.children.results = data.children.results.slice(0, 1);
+    const native = linkField(data);
+    native.value = { href: url, text: 'Fact sheet', target: '_blank', linktype: 'external',
+      'aria-label': 'Download the Weatherproofing retirement fact sheet' };
+    const before = JSON.stringify(data);
+    for (const editing of [false, true]) {
+      const html = shown(data, editing), [link] = anchors(html);
+      assert.equal(link.attrs.href, url);
+      assert.equal(link.attrs.target, '_blank');
+      assert.equal(link.attrs['aria-label'], native.value['aria-label']);
+      assert.ok(link.body.includes('Fact sheet'));
+      if (editing) assert.ok(html.includes(native.metadata.fieldId));
+      else assert.match(link.attrs.rel, /noopener/);
+    }
+    assert.equal(JSON.stringify(data), before);
+    native.value.href = url.replace('v=68ea6fa3', 'v=unverified');
+    const [blocked] = anchors(shown(data, false));
+    assert.equal(blocked.attrs.href, '#service-unavailable');
+    assert.ok(!blocked.attrs.target);
+    assert.ok(shown(data, true).includes(native.metadata.fieldId));
+  }
+});
+
 test('missing, empty and malformed labels add no aria-label or synthetic accessible name', () => {
   for (const value of [undefined, '', null, false, 42, {}, []]) {
     const data = datasource();
