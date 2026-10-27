@@ -45,3 +45,17 @@ Both exact-source SVGs are now in Content Hub, public Originals byte-matched, an
 ## Icon release and publication closeout
 
 Code `4f49ece72982798806d360ab2e53d3491ab43794` is pushed. Both card-item jobs completed, one item each; page-only job `e2f3ec4b-785b-4ff6-a911-52d454fb027e` skipped the page. Public output still has empty icon values, so the icon slice is **not live accepted**. Do not replay saves or Smart jobs. See the updated icon manifest and `docs/migration-checkpoints/REMAINING-OPERATOR-AND-ACCEPTANCE-GATES.md`. A localhost runtime check returned500/ECONNRESET and one retry timed out; its owned process is stopped, no listener remains, and it is not an acceptance pass.
+
+## Latest runtime and AA5 findings
+
+Alignment code `45a5b686a2fcd31703f70ece826bfdee6ddb5dc3` is pushed: 85 regressions, lint/types, 382-page build, actual 1024px / 370px local pixels and same-tab contact journey passed. Use startup hostname `localhost`, not127, for this Next16/Sitecore proxy pipeline. This fixes local validation without changing app configuration or credentials.
+
+AA5 staging is already satisfied by three existing Content Hub Originals and current link fields, freshly source-byte-verified. No PDF upload/save/publication was performed. The two disabled brochure buttons are a separate exact destination-registry gap. The adjacent unapplied patch passes 13 offline tests and must remain unapplied/unreleased while the PDF direction requires unpublished changes. No source PDF bytes are in the repository.
+
+## Terminal deployment and operator checkpoint
+
+The alignment release `45a5b686a2fcd31703f70ece826bfdee6ddb5dc3` reached Vercel Ready Production (`dpl_3vh6MayaRVEr3aErvtjS51qoZCrW`). Editing job `1IoEr5O6CZ2i1GoANZ5N5X` built successfully in 2m45 but deployment failed after 7m18. The UI log provides tracing ID `f1c948d9-3474-4d82-8acd-197d814039a5` and directs inspection of environment CM/rendering-host logs. No retry has been submitted. Last verified successful editing code is `4f49ece72982798806d360ab2e53d3491ab43794`. Public output contains the new grid namespace but still zero icons; upstream recomposition remains unresolved.
+
+A bounded native Oct20 publication-history review found no exact Legal target/matching-time record. That negative result does not resolve the historical SearchPublisher outcome and does not authorize replay. The original status/date filter was restored.
+
+This pass performed zero PDF uploads, zero CMS saves and zero CMS publications. Three AA5 documents already match their existing Content Hub Originals and current draft bindings. Two public brochure buttons are blocked by the exact destination allowlist; the saved proposal is intentionally unapplied. All owned localhost4184 server processes were stopped after testing.

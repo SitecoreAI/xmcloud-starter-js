@@ -55,7 +55,7 @@
     "scope": "English, two separate content-items only/no subitems, then one page-only/no subpages/no references. No repeat."
   },
   "liveAcceptance": "NOT PASSED: public payload still has both card IDs but empty icon values after normal ISR regeneration; no frontend override.",
-  "runtimeAcceptance": "NOT PASSED: ordinary localhost4184 server started, request500/socket hang up ECONNRESET; one retry timed out, owned PID2996 terminated, session143 and no listener verified. Not run03.",
+  "runtimeAcceptance": "Passed the normal localhost-started app at actual 1024px and 370px widths. The previous 127.0.0.1 startup hostname caused self-forwarding: NextURL normalizes loopback to localhost, while initURL uses the startup hostname. No browser cookies, settings, credentials, framework or Next configuration changed.",
   "deployments": {
     "vercel": {
       "id": "dpl_9jzgFHqXc92MgHTWtqaxzDjGWPb5",
@@ -68,6 +68,89 @@
       "status": "Complete",
       "build": "2m39",
       "deployment": "3m7"
+    }
+  },
+  "priorRuntimeFailure": "NOT PASSED: ordinary localhost4184 server started, request500/socket hang up ECONNRESET; one retry timed out, owned PID2996 terminated, session143 and no listener verified. Not run03.",
+  "alignmentRelease": {
+    "commit": "45a5b686a2fcd31703f70ece826bfdee6ddb5dc3",
+    "remoteVerified": true,
+    "sourceDesktop": {
+      "viewport": 1024,
+      "icon": [
+        32,
+        32
+      ],
+      "circle": [
+        50,
+        50
+      ],
+      "inset": [
+        9,
+        9
+      ]
+    },
+    "sourceMobile": {
+      "viewport": 370,
+      "icon": [
+        30,
+        30
+      ],
+      "circle": [
+        50,
+        50
+      ],
+      "inset": [
+        10,
+        10
+      ]
+    },
+    "localDesktop": {
+      "viewport": 1024,
+      "documentAndScroll": 1018,
+      "icon": [
+        32,
+        32
+      ],
+      "inset": [
+        9,
+        9
+      ],
+      "loaded": true,
+      "decorative": true
+    },
+    "localMobile": {
+      "viewport": 370,
+      "documentAndScroll": 364,
+      "icon": [
+        30,
+        30
+      ],
+      "inset": [
+        10,
+        10
+      ],
+      "loaded": true,
+      "decorative": true
+    },
+    "keyboardContactJourney": "Same-tab /new-york/contact-us and Back passed; no form submission",
+    "regressions": 85,
+    "lintTypesAnd382Build": "pass",
+    "codeScope": "Component namespace and responsive vertical centering only; other grids, card photographs and CMS fields are unchanged.",
+    "publicAcceptance": "New component namespace verified in public output at actual1024px, but zero icons because delivered icon values remain empty. NOT live icon acceptance.",
+    "deployments": {
+      "vercel": {
+        "id": "dpl_3vh6MayaRVEr3aErvtjS51qoZCrW",
+        "status": "Ready Production",
+        "commit": "45a5b686a2fcd31703f70ece826bfdee6ddb5dc3"
+      },
+      "editing": {
+        "id": "1IoEr5O6CZ2i1GoANZ5N5X",
+        "status": "Failed",
+        "build": "Complete 2m45",
+        "deployment": "Failed 7m18",
+        "tracingId": "f1c948d9-3474-4d82-8acd-197d814039a5",
+        "retrySubmitted": false
+      }
     }
   }
 }

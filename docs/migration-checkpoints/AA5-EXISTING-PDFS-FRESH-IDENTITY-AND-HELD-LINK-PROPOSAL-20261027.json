@@ -1,0 +1,162 @@
+{
+  "checkedUTC": "2026-10-27T13:38:36.931200+00:00",
+  "sourcePage": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+  "freshSourceAndExistingOriginalAndRetainedMatches": 3,
+  "files": [
+    {
+      "filename": "AAA5-001.pdf",
+      "currentSourceUrls": [
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/30/15/16/AAA5-001.pdf"
+      ],
+      "existingContentHubOriginal": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/c6a2704a1caf45399126f247a1af0c76?v=d9883096",
+      "linkItemId": "11239CFE-C00A-456F-BC68-1A0365FCB626",
+      "retainedSHA256": "b170b53a253849d0e41d9a11be1f3f6ea7ff0ae33abb8ab4ad702e974e9b73e5",
+      "anchorTargets": [
+        "_blank"
+      ],
+      "source": {
+        "http": 200,
+        "mime": "application/pdf",
+        "bytes": 487946,
+        "pdfSignature": true,
+        "sha256": "b170b53a253849d0e41d9a11be1f3f6ea7ff0ae33abb8ab4ad702e974e9b73e5"
+      },
+      "existingDelivery": {
+        "http": 200,
+        "mime": "application/pdf",
+        "bytes": 487946,
+        "pdfSignature": true,
+        "sha256": "b170b53a253849d0e41d9a11be1f3f6ea7ff0ae33abb8ab4ad702e974e9b73e5"
+      },
+      "freshSourceMatchesExistingDeliveryAndRetained": true
+    },
+    {
+      "filename": "AAA5-001-B.pdf",
+      "currentSourceUrls": [
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/30/15/16/AAA5-001-B.pdf"
+      ],
+      "existingContentHubOriginal": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/95ccf9fab8e640c3880115f40ef5d78e?v=cc1b2793",
+      "linkItemId": "9DBCC8DF-9C78-4C85-8CCA-D6BE706C0F40",
+      "retainedSHA256": "a91c88b959cf3d1567d7304e9a9eda39062f0a3cea2f63f1827653368d01f54d",
+      "anchorTargets": [
+        "_blank"
+      ],
+      "source": {
+        "http": 200,
+        "mime": "application/pdf",
+        "bytes": 62258,
+        "pdfSignature": true,
+        "sha256": "a91c88b959cf3d1567d7304e9a9eda39062f0a3cea2f63f1827653368d01f54d"
+      },
+      "existingDelivery": {
+        "http": 200,
+        "mime": "application/pdf",
+        "bytes": 62258,
+        "pdfSignature": true,
+        "sha256": "a91c88b959cf3d1567d7304e9a9eda39062f0a3cea2f63f1827653368d01f54d"
+      },
+      "freshSourceMatchesExistingDeliveryAndRetained": true
+    },
+    {
+      "filename": "CSI-504.pdf",
+      "currentSourceUrls": [
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2019/05/15/12/35/CSI-504.pdf"
+      ],
+      "existingContentHubOriginal": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa",
+      "linkItemId": "39C410A7-ECEC-4536-B3E4-A67B70C6A81B",
+      "retainedSHA256": "7899e41273f900272c58914b81ade9e697f532568cc661e5ea2e6b3a5e662929",
+      "anchorTargets": [
+        "_blank"
+      ],
+      "source": {
+        "http": 200,
+        "mime": "application/pdf",
+        "bytes": 99407,
+        "pdfSignature": true,
+        "sha256": "7899e41273f900272c58914b81ade9e697f532568cc661e5ea2e6b3a5e662929"
+      },
+      "existingDelivery": {
+        "http": 200,
+        "mime": "application/pdf",
+        "bytes": 99407,
+        "pdfSignature": true,
+        "sha256": "7899e41273f900272c58914b81ade9e697f532568cc661e5ea2e6b3a5e662929"
+      },
+      "freshSourceMatchesExistingDeliveryAndRetained": true
+    }
+  ],
+  "currentDraftLinks": {
+    "brochure": {
+      "id": "11239CFEC00A456FBC681A0365FCB626",
+      "link": {
+        "value": "<link text=\"Download the product brochure (PDF)\" target=\"_blank\" linktype=\"external\" url=\"https://thlt-demo.sitecoresandbox.cloud/api/public/content/c6a2704a1caf45399126f247a1af0c76?v=d9883096\" aria-label=\"Download the product brochure (PDF)\" />",
+        "jsonValue": {
+          "value": {
+            "href": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/c6a2704a1caf45399126f247a1af0c76?v=d9883096",
+            "text": "Download the product brochure (PDF)",
+            "target": "_blank",
+            "linktype": "external",
+            "url": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/c6a2704a1caf45399126f247a1af0c76?v=d9883096",
+            "aria-label": "Download the product brochure (PDF)"
+          }
+        }
+      },
+      "title": {
+        "value": "Download the product brochure (PDF)"
+      }
+    },
+    "insert": {
+      "id": "9DBCC8DF9C784C858CCAD6BE706C0F40",
+      "link": {
+        "value": "<link text=\"Download the brochure insert (PDF)\" target=\"_blank\" linktype=\"external\" url=\"https://thlt-demo.sitecoresandbox.cloud/api/public/content/95ccf9fab8e640c3880115f40ef5d78e?v=cc1b2793\" aria-label=\"Download the brochure insert (PDF)\" />",
+        "jsonValue": {
+          "value": {
+            "href": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/95ccf9fab8e640c3880115f40ef5d78e?v=cc1b2793",
+            "text": "Download the brochure insert (PDF)",
+            "target": "_blank",
+            "linktype": "external",
+            "url": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/95ccf9fab8e640c3880115f40ef5d78e?v=cc1b2793",
+            "aria-label": "Download the brochure insert (PDF)"
+          }
+        }
+      },
+      "title": {
+        "value": "Download the brochure insert (PDF)"
+      }
+    },
+    "indexLock": {
+      "id": "39C410A7ECEC4536B3E4A67B70C6A81B",
+      "link": {
+        "value": "<link text=\"See how Index Lock works (PDF)\" target=\"_blank\" linktype=\"external\" url=\"https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa\" aria-label=\"See how Index Lock works (PDF)\" />",
+        "jsonValue": {
+          "value": {
+            "href": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa",
+            "text": "See how Index Lock works (PDF)",
+            "target": "_blank",
+            "linktype": "external",
+            "url": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa",
+            "aria-label": "See how Index Lock works (PDF)"
+          }
+        }
+      },
+      "title": {
+        "value": "See how Index Lock works (PDF)"
+      }
+    }
+  },
+  "mutations": {
+    "uploads": 0,
+    "cmsSaves": 0,
+    "publications": 0,
+    "publicLinksCreated": 0
+  },
+  "reuseConclusion": "All three existing Content Hub Originals and current draft bindings are correct. Duplicate uploads or Media Library copies are unnecessary. No PDF bytes were added to GitHub.",
+  "liveFinding": "Index Lock is active with the source target=_blank. Brochure and insert buttons are #service-unavailable despite correct public payload and draft URLs. The actual safeLink helper reproduces this: only CSI-504 is in the current verified destination set. This is a renderer policy omission, not a missing upload, binding or delivery recomposition.",
+  "heldProposal": {
+    "path": "docs/migration-checkpoints/PROPOSED-NOT-APPLIED-AA5-TWO-VERIFIED-DOCUMENTS.patch",
+    "applied": false,
+    "offlineInMemoryTestsPass": 13,
+    "scope": "Only two exact, byte-verified Content Hub URLs and their fixtures. Query, version and authority negative cases remain intact.",
+    "releaseHold": "The latest PDF staging instruction keeps affected changes unpublished. Separate direction is needed before enabling the two live buttons; broad code release authority has not been used to override this hold."
+  }
+}

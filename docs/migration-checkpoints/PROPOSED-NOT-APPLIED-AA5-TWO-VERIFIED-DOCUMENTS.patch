@@ -1,0 +1,24 @@
+--- a/examples/allianz-life/src/lib/allianz-verified-documents.ts
++++ b/examples/allianz-life/src/lib/allianz-verified-documents.ts
+@@ -10,6 +10,8 @@
+   'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f109cc47edba46de921fecb735c567ea?v=68ea6fa3',
+   'https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa',
+   'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f2c2be58cff1453f93f24f122d3c30e1?v=1d29b652',
++  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/c6a2704a1caf45399126f247a1af0c76?v=d9883096',
++  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/95ccf9fab8e640c3880115f40ef5d78e?v=cc1b2793',
+ ]);
+ 
+ /** Match full or SDK-split external links without extending native media/page policy. */
+--- a/examples/allianz-life/src/lib/allianz-verified-documents.test.mjs
++++ b/examples/allianz-life/src/lib/allianz-verified-documents.test.mjs
+@@ -25,6 +25,10 @@
+     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa' },
+   { name: 'ABCPL-001 Benefit Control+ product brochure', target: '_blank',
+     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f2c2be58cff1453f93f24f122d3c30e1?v=1d29b652' },
++  { name: 'AAA5-001 Accumulation Advantage5 product brochure', target: '_blank',
++    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/c6a2704a1caf45399126f247a1af0c76?v=d9883096' },
++  { name: 'AAA5-001-B Accumulation Advantage5 brochure insert', target: '_blank',
++    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/95ccf9fab8e640c3880115f40ef5d78e?v=cc1b2793' },
+ ];
+ process.env.NODE_ENV = 'test';
+ 
