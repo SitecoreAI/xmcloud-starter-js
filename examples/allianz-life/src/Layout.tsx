@@ -65,6 +65,7 @@ const Layout = ({ page, mainContent }: LayoutProps): JSX.Element => {
     <div id={sourceBodyId} className={`${mode.isEditing ? 'editing-mode' : 'prod-mode'} ${legacy ? `allianz-legacy ${ny ? 'new-york' : ''}` : 'allianz-modern'} ${classes}`}>
       {mode.isDesignLibrary ? route && <DesignLibraryApp page={page} rendering={route} componentMap={componentMap} loadServerImportMap={() => import('.sitecore/import-map.server')} /> : <>
         <ConsentControls />
+        <a id="skipToContent" href="#main" className="skip-to-content sr-only sr-only-focusable">Skip to main content</a>
         {header}
         {mainContent ?? (legacy ? <main id="main" className="container-fluid azl-contents"><div className="row">
           {sidebar && <aside className="col-md-2 col-sm-3 left-column">{placeholder('headless-sidebar')}</aside>}

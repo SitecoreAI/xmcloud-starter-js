@@ -215,3 +215,21 @@ test('Layout keeps an explicitly declared empty rail editable while visitor and 
   assert.doesNotMatch(render(Layout, { page: page(false, declared) }), /right-column|headless-right-rail/);
   assert.doesNotMatch(render(Layout, { page: page(true, declared, false) }), /right-column|headless-right-rail/);
 });
+
+
+test('shared shells restore one source keyboard bypass link to their existing main, including utility overrides', () => {
+  for (const legacy of [false, true]) for (const editing of [false, true]) {
+    for (const utility of [false, true]) {
+      const input = { page: page(editing, {}, legacy), ...(utility ? {
+        mainContent: React.createElement('main', { id: 'main' }, 'Utility content'),
+      } : {}) };
+      const before = JSON.stringify(input.page);
+      const html = render(Layout, input);
+      assert.equal((html.match(/id="skipToContent"/g) ?? []).length, 1);
+      assert.match(html, /<a id="skipToContent" href="#main" class="skip-to-content sr-only sr-only-focusable">Skip to main content<\/a>/);
+      assert.ok(html.indexOf('id="skipToContent"') < html.indexOf('id="header"'));
+      assert.equal((html.match(/<main id="main"/g) ?? []).length, 1);
+      assert.equal(JSON.stringify(input.page), before);
+    }
+  }
+});
