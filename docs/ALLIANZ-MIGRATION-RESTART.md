@@ -41,3 +41,7 @@ Detailed local receipts and the active acceptance matrix are retained under task
 ## New York card icons (latest work)
 
 Both exact-source SVGs are now in Content Hub, public Originals byte-matched, and bound to the existing two cards with native independent reopen and unchanged text/links. See `docs/migration-checkpoints/NY-CARD-ICONS-20261027.json` for IDs, hashes and saved revisions. The icon renderer preserves source decorative semantics for visitors while retaining editing metadata and standalone-icon alternatives. Before repeating any operation, check current code deployment and card publication/live status: the 70-test regression suite, lint, typecheck and 382-page production build have passed; deployed browser QA and card publication follow this push. PDF third card remains held.
+
+## Icon release and publication closeout
+
+Code `4f49ece72982798806d360ab2e53d3491ab43794` is pushed. Both card-item jobs completed, one item each; page-only job `e2f3ec4b-785b-4ff6-a911-52d454fb027e` skipped the page. Public output still has empty icon values, so the icon slice is **not live accepted**. Do not replay saves or Smart jobs. See the updated icon manifest and `docs/migration-checkpoints/REMAINING-OPERATOR-AND-ACCEPTANCE-GATES.md`. A localhost runtime check returned500/ECONNRESET and one retry timed out; its owned process is stopped, no listener remains, and it is not an acceptance pass.

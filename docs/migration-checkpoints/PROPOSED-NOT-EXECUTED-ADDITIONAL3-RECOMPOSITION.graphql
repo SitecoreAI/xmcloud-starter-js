@@ -1,0 +1,17 @@
+# Operator preparation only; not executed. Recheck current eligibility and exact scope first.
+mutation RestoreAllianzAdditionalThreePublishedLayouts {
+  publishItem(input: {
+    sourceDatabase: "master"
+    targetDatabases: ["experienceedge"]
+    rootItemIds: [
+      "{BFBCD304-87A6-411B-AE71-DB48EDEA8D76}"
+      "{202F11F2-C6CF-59EF-89AE-10318E5B3858}"
+      "{0A246F0D-338C-44F5-9B46-4B9CFEA287AE}"
+    ]
+    publishSubItems: false
+    publishRelatedItems: false
+    publishItemMode: FULL
+    languages: ["en"]
+    displayName: "Allianz additional three published layout recomposition"
+  }) { operationId }
+}

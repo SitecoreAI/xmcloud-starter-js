@@ -31,7 +31,43 @@
   "uploads": "Exactly2files; bothApproved; oneOriginal publiclinkeach, anonymousHTTP200 image/svg+xml byte-identical",
   "nativeFields": "Each53field fence changes only icon, Revision, Updated; independently reopened. Cardtext/body/link unchanged. Baseline1warning/noerrors restored.",
   "ariaFinding": "Native image serializer omits raw aria-hidden from jsonValue. Renderer therefore sets visitor-only decorative ARIA when a heading is present; preserves editor metadata and standalone icon alt.",
-  "preRelease": "70 regression tests, lint, typecheck and normal production Webpack382-page build pass. Cardpublication and deployed desktop/mobileQA pending; do not replay saves.",
+  "preRelease": "70 regression tests, lint, typecheck and normal production Webpack382-page build pass.",
   "restrictions": "PDFthirdCTA unchanged and held; no full migration acceptance claim",
-  "timestampUTC": "2026-10-27T13:14:19.172827+00:00"
+  "timestampUTC": "2026-10-27T13:14:19.172827+00:00",
+  "codeCommit": "4f49ece72982798806d360ab2e53d3491ab43794",
+  "remoteVerified": true,
+  "publication": {
+    "shield": {
+      "job": "f3a26620-15f7-4cb9-bdf9-21cc06ea6e75",
+      "terminal": "COMPLETED",
+      "published": 1
+    },
+    "chat": {
+      "job": "dfe7375e-8284-4aa5-bbb8-7150a2495df8",
+      "terminal": "COMPLETED",
+      "published": 1
+    },
+    "page": {
+      "job": "e2f3ec4b-785b-4ff6-a911-52d454fb027e",
+      "terminal": "COMPLETED",
+      "skipped": 1
+    },
+    "scope": "English, two separate content-items only/no subitems, then one page-only/no subpages/no references. No repeat."
+  },
+  "liveAcceptance": "NOT PASSED: public payload still has both card IDs but empty icon values after normal ISR regeneration; no frontend override.",
+  "runtimeAcceptance": "NOT PASSED: ordinary localhost4184 server started, request500/socket hang up ECONNRESET; one retry timed out, owned PID2996 terminated, session143 and no listener verified. Not run03.",
+  "deployments": {
+    "vercel": {
+      "id": "dpl_9jzgFHqXc92MgHTWtqaxzDjGWPb5",
+      "status": "Ready Production",
+      "commitDashboardCheck": "Verified exact 4f49ece72982798806d360ab2e53d3491ab43794 link on Ready Production row"
+    },
+    "editing": {
+      "id": "3DwvUB0pGF3pnI9k5ZDGVO",
+      "commit": "4f49ece72982798806d360ab2e53d3491ab43794",
+      "status": "Complete",
+      "build": "2m39",
+      "deployment": "3m7"
+    }
+  }
 }
