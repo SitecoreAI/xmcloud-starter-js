@@ -1945,7 +1945,7 @@
                 "logo": {
                   "jsonValue": {
                     "value": {
-                      "src": "/allianz-legacy-assets/logo.png",
+                      "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/bcbd0f72faa148189e4aea65aecf1fdf?v=0bffd208",
                       "alt": "Allianz"
                     }
                   },
@@ -2663,7 +2663,7 @@
                 "logo": {
                   "jsonValue": {
                     "value": {
-                      "src": "/allianz-legacy-assets/logo.png",
+                      "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/bcbd0f72faa148189e4aea65aecf1fdf?v=0bffd208",
                       "alt": "Allianz"
                     }
                   },
