@@ -1,0 +1,3211 @@
+{
+  "checkedUTC": "2026-10-27T15:09:42.529802+00:00",
+  "population": 322,
+  "criterion": "New rendered anchor/fragment inventory; not a repeated structural acceptance pass",
+  "noAuth": true,
+  "maxConcurrency": 6,
+  "redirectsFollowed": false,
+  "retries": 0,
+  "qualification": "Potential defects require source comparison. Outside-inventory paths are leads, not404 proof. Missing fragments may be dynamic; no native/CMS/PDF actions.",
+  "rows": [
+    {
+      "route": "/",
+      "http": 200,
+      "links": 90,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about",
+      "http": 200,
+      "links": 92,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities",
+        "https://www.allianzlife.com/why-allianz/culture"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/allianz-field",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about/apply-for-a-grant",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/executives",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/executives/adam-brown",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/executives/bill-gaumond",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/executives/eric-thomes",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/executives/gretchen-cepek",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/executives/jasmine-jirele",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/executives/jean-roch-sibille",
+      "http": 200,
+      "links": 80,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/executives/jenny-guldseth",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/executives/luca-gallo",
+      "http": 200,
+      "links": 79,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/financial-ratings",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about/newsroom",
+      "http": 200,
+      "links": 102,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases",
+      "http": 200,
+      "links": 116,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-expands-sales-team-to-support-increasing-interest-in-protecting-retirement-assets",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-celebrates-15th-year-as-a-top-mn-workplace",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/careers"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-gives-grants-to-four-local-nonprofits",
+      "http": 200,
+      "links": 91,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/allianzfortomorrow"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-launches-new-accumulation-annuity",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-launches-new-indexed-universal-life-insurance-product",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-named-as-a-100-best-company-for-working-parents",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/culture"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-named-as-a-2024-best-workplace-in-financial-services-and-insurance",
+      "http": 200,
+      "links": 98,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-named-as-one-of-the-2024-worlds-most-ethical-companies",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-named-one-of-the-2024-fortune-100-best-companies",
+      "http": 200,
+      "links": 96,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/culture"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-named-seramount-top-company-for-executive-women",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-named-to-the-seramount-2024-inclusion-index",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-partners-with-empower",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-receives-great-place-to-work-certification",
+      "http": 200,
+      "links": 93,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-recognized-for-training-and-development-programs",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/culture"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianz-life-taps-ben-thomason-to-drive-growth-in-defined-contribution-market",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianzim-expands-its-risk-mitigation-toolkit-with-new-6-month-floor5-etf-series",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianzim-launches-four-new-6-month-buffer10-etfs",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/allianzim-launches-new-buffer15-uncapped-etf-series",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/americans-lack-knowledge-about-social-security-benefits-in-retirement",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/americans-lack-plans-for-retirement-income",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/americans-less-fearful-about-a-recession-and-investing",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/americans-reducing-retirement-savings-and-taking-on-debt-due-to-inflation",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/debt-is-limiting-american-retirement-savings",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/fewer-americans-are-optimistic-about-the-economy-in-2024",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/gen-x-approaching-retirement-crunch-time-with-savings-regrets",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/market-volatility-fuels-risk-averse-stance-among-investors",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/more-americans-plan-to-focus-on-finances-in-2025",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/nearly-2-in-3-americans-worry-more-about-running-out-of-money-than-death",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/nearly-half-of-americans-expect-slow-transition-into-retirement",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/new-tool-turns-life-insurance-illustrations-into-full-policy-proposals-instantly",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/press-americans-worry-extreme-weather-will-rain-on-their-retirement",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2024-press-releases/women-taking-on-more-financial-responsibility",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases",
+      "http": 200,
+      "links": 109,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/allianz-and-keystone-fight-hunger",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/AllianzForTomorrow"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/allianz-life-names-new-chief-operating-officer-and-chief-actuary",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/allianz-life-recognized-as-a-top-workplace-for-lgbtq-employees",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/allianz-life-retirement-solutions-now-available-through-morgan-stanley",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/allianz-life-study-finds-record-high-investment-anxiety",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/allianzim-expands-buffer-allocation-etf-suite",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/allianzim-introduces-suite-of-buffer-allocation-etfs",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/allianzim-launches-quarterly-reset-buffered-etfs-to-enhance-risk-management-flexibility",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/allianzim-to-transfer-exchange-listings",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/american-financial-confidence-on-decline-since-2020",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/americans-are-more-worried-about-running-out-of-money-than-death",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/americans-lack-knowledge-about-social-security",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/apex-training-award",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/fortune-100-best-companies",
+      "http": 200,
+      "links": 101,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/culture"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/gen-x-nearing-retirement-with-worries",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/gptw-certification",
+      "http": 200,
+      "links": 93,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/gray-divorce-trend-threatens-retirement-security",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/inflation-and-tariffs-increasingly-worrying-americans",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/majority-of-americans-anticipate-improved-economy-in-2025",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/nearly-half-of-americans-more-stressed-heading-into-2026",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/new-versions-of-top-selling-fixed-index-annuities",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/retirement-plan-participants-seek-lifetime-income-and-guidance",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/sandwich-generation-neglecting-retirement-savings",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/star-tribune-top-workplace",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/careers"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2025-press-releases/wmec",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases",
+      "http": 200,
+      "links": 108,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/3-in-4-americans-think-market-highs-are-unsustainable",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-adds-new-accumulation-focused-fixed-index-annuities",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-earns-great-place-to-work-certificatio-for-16th-consecutive-year",
+      "http": 200,
+      "links": 93,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-earns-spot-on-the-2026-fortune-100-best-companies-to-work-for-list",
+      "http": 200,
+      "links": 104,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-invests-$750000-to-help-address-growing-housing-and-food-insecurity-in-the-twin-cities",
+      "http": 200,
+      "links": 106,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/allianzfortomorrow"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-invests-in-financial-opportunity-centers-to-strengthen-financial-resilience",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-launches-fixed-index-annuity-content-on-interactive-tool",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-named-as-one-of-the-2026-worlds-most-ethical-companies",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-named-star-tribune-top-workplace-for-17th-consecutive-year",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "http://www.allianzlife.com/careers"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-recognized-for-training-and-development-programs",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-study-finds-americans-struggle-to-shift-from-retirement-saving-to-spending",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianz-life-supports-dress-for-success-twin-cities-with-three-year-grant",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianzim-buffered-etf-suite-expands-with-launch-of-international-fund",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianzim-expands-buffered-etf-suite",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/allianzim-grows-international-buffered-etf-lineup-with-launch-of-juli",
+      "http": 200,
+      "links": 83,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/americans-cutting-back-on-retirement-savings",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/americans-without-children-are-less-confident-about-retirement",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/fear-of-running-out-of-money-over-death-at-record-high",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/jessie-diggins-returns-to-minnesota-for-celebration-event-following-retirement-from-ski-racing",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/many-americans-retire-earlier-than-planned",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/new-allianz-life-annuity-offers-added-flexibility-in-income-benefits",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/only-1-in-4-americans-think-now-is-a-good-time-to-invest",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/retirement-tax-worries-on-the-rise-among-americans",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/newsroom/2026-press-releases/women-now-are-the-chief-financial-officer",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/olympic-and-paralympic-partnership",
+      "http": 200,
+      "links": 83,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about/subject-matter-experts",
+      "http": 200,
+      "links": 109,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/adam-brown",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/angela-hollan",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/angelica-bonacci",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/austin-bichler",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/benjamin-thomason",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/brian-muench",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/calvin-buchanan",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/carlota-balet-gusils",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/charles-champagne",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/charlie-ripley",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/chris-chambs",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/corey-walther",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/dwayne-maddox",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/eric-thomes",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/heidi-vanderkloot",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/jason-wellmann",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/jeng-chiu",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/jenny-guldseth",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/jessica-drake",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/kelly-lavigne",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/kenna-poppler",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/lorinda-niemeyer",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/machenzie-wickre",
+      "http": 200,
+      "links": 79,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/matt-gray",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/melanie-christensen",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/paul-cahill",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/steven-sweeney",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/tracy-bruckschen",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/subject-matter-experts/waldean-wall",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/ventures",
+      "http": 200,
+      "links": 95,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/about/ventures/clay-bottensek",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/ventures/collin-bhojwani",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/ventures/newsroom",
+      "http": 200,
+      "links": 92,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/ventures/portfolio",
+      "http": 200,
+      "links": 115,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/ventures/ron-gonen",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/ventures/taylor-sieverling",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/about/ventures/team",
+      "http": 200,
+      "links": 95,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/accessibility-policy",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/confidentiality-for-victims-of-domestic-abuse",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/contact-us",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/customer-service-frequently-asked-questions",
+      "http": 200,
+      "links": 181,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2016/05/09/17/31/S2004.pdf"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals/2025-spirit-of-giving-thank-you",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/advisory-solutions/teams",
+      "http": 200,
+      "links": 103,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [
+        "/for-financial-professionals/advisory-solutions",
+        "/for-financial-professionals/advisory-solutions/ria-concierge-desk"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement",
+      "http": 200,
+      "links": 111,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-reasons-for-financial-professionals-to-call-their-clients-right-now",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-ways-an-annuity-can-strengthen-retirement-strategy",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/5-ways-iul-strengthens-retirement-income",
+      "http": 200,
+      "links": 83,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/6-tax-strategies-your-clients-can-use-in-retirement",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2024",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2025",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2026",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2q-2024",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-2q-2025",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-3q-2024",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-3q-2025",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-4q-2024",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q2-2026",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q3-2026",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/allianz-investment-management-market-outlook-q4-2025",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/annual-retirement-study",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/asian-americans-may-need-to-protect-rainy-day-funds-from-extreme-weather",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/black-americans-may-underestimate-the-risk-of-extreme-weather-on-their-financial-future",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/divorced-clients-can-get-spousal-social-security-benefits",
+      "http": 200,
+      "links": 83,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/hispanic-americans-may-move-to-reduce-the-risk-of-extreme-weather",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-balance-debt-and-retirement-savings",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-build-a-retirement-strategy",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/how-to-help-clients-get-on-track-with-retirement-savings",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/allianz-center-for-the-future-of-retirement/why-americans-may-not-retire-when-they-think",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/grow-your-business-in-multicultural-markets",
+      "http": 200,
+      "links": 91,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/for-financial-professionals/income-that-cannot-be-outlived",
+      "http": 200,
+      "links": 79,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/life-sales-tools/marketing-concepts",
+      "http": 200,
+      "links": 96,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [
+        "/Login"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources",
+      "http": 200,
+      "links": 101,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [
+        "/for-financial-professionals/resources/4-ways-to-help-clients-fight-inflation"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources/3-reasons-to-talk-to-your-clients-about-the-weather",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources/3-retirement-income-concerns-for-underprepared-clients",
+      "http": 200,
+      "links": 82,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources/5-annuity-strategies-for-retirement-planning",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources/5-annuity-strategies-for-retirement-planning-remove",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources/5-ways-iul-can-help-clients-leave-a-legacy",
+      "http": 200,
+      "links": 83,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources/creating-tailored-strategies-for-business-owners-in-niche-markets",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources/help-clients-prepare-for-retirement",
+      "http": 200,
+      "links": 83,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources/how-to-help-clients-make-a-plan-for-selling-or-gifting-their-small-business",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [
+        "/for-financial-professionals/Life-Sales-Tools/business-succession-planning-materials"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/for-financial-professionals/resources/what-keeps-women-up-at-night",
+      "http": 200,
+      "links": 82,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/get-answers",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Calculator"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/get-answers/calculate-your-rmd",
+      "http": 200,
+      "links": 80,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/get-answers/how-to-address-financial-risks-of-early-retirement",
+      "http": 200,
+      "links": 83,
+      "inherited404Targets": [
+        "/error-pages/404?item=web%3a%7b1E5EBA94-0237-4CEE-A3A9-5134E9B54A1C%7d%40en"
+      ],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/get-answers/retirement-income-calculator",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/get-answers/tax-deferral-calculator",
+      "http": 200,
+      "links": 80,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/get-answers/value-of-income-planning",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york",
+      "http": 200,
+      "links": 23,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/90-day-grace-period-on-premium-payments-for-your-life-insurance-policy",
+      "http": 200,
+      "links": 28,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/about",
+      "http": 200,
+      "links": 30,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/about/careers",
+      "http": 200,
+      "links": 29,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/about/why-allianz-life-of-ny",
+      "http": 200,
+      "links": 30,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities",
+      "http": 200,
+      "links": 31,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities/investment-strategies",
+      "http": 200,
+      "links": 33,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities/investment-strategies/cash-equivalent",
+      "http": 200,
+      "links": 30,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities/investment-strategies/variable-options",
+      "http": 200,
+      "links": 43,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities/registered-index-linked-annuities",
+      "http": 200,
+      "links": 28,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+      "http": 200,
+      "links": 43,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/calculator",
+      "http": 200,
+      "links": 30,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/rates-inyp",
+      "http": 200,
+      "links": 23,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/renewal-rates",
+      "http": 200,
+      "links": 23,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york/video",
+      "http": 200,
+      "links": 27,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/new-york/annuities/registered-index-linked-annuities/renewal-rates",
+      "http": 200,
+      "links": 24,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/contact-us",
+      "http": 200,
+      "links": 23,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/customer-service/accessibility-policy",
+      "http": 200,
+      "links": 27,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/customer-service/confidentiality-for-victims-of-domestic-abuse",
+      "http": 200,
+      "links": 25,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/customer-service/legal-and-obligations",
+      "http": 200,
+      "links": 29,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/customer-service/privacy",
+      "http": 200,
+      "links": 31,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/legal-notes",
+      "http": 200,
+      "links": 27,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/report-a-death",
+      "http": 200,
+      "links": 25,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/report-a-death/claim-fail",
+      "http": 200,
+      "links": 24,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/retirement-and-planning-tools",
+      "http": 200,
+      "links": 31,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/search",
+      "http": 200,
+      "links": 25,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/search/advanced-search",
+      "http": 200,
+      "links": 25,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/tax-statement-frequently-asked-questions",
+      "http": 200,
+      "links": 40,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/terms-of-use",
+      "http": 200,
+      "links": 28,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/new-york/welcome-morgan-stanley",
+      "http": 200,
+      "links": 28,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/privacy",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/report-a-death",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/annuities"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/allocation-insights-tool",
+      "http": 200,
+      "links": 83,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities",
+      "http": 200,
+      "links": 102,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/Contact-Us",
+        "https://www.allianzlife.com/Login",
+        "https://www.allianzlife.com/what-we-offer/Index-options",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222-plus",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/360",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-Classic",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-plus",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Benefit-Control",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Benefit-Control-Plus",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Core-Income-7",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Essential-Income-7",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Retirement-Foundation-ADV",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/222-plus",
+      "http": 200,
+      "links": 96,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=15fa793f-234f-4b1b-ba53-859c036a499f",
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/222-plus/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/222-plus/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/222/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/360",
+      "http": 200,
+      "links": 95,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=979c4caa-9fd0-42d4-9cf3-8b2449751602",
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/360/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#mva-rate"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/360/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage",
+      "http": 200,
+      "links": 96,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=15370215-0b7b-45b0-ad93-9c1f6850ae64",
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+      "http": 200,
+      "links": 97,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5/rates"
+      ],
+      "routesOutsideKnownInventory": [
+        "/SPA/MVARate/DisplayHistoricalRates"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-7",
+      "http": 200,
+      "links": 97,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=4569f828-25d8-4d9a-8538-edc5959a0a12",
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-7/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-classic",
+      "http": 200,
+      "links": 96,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=ded49e49-2cce-4edb-a90d-cbd7c8fa30f2",
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-Classic/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-classic/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-plus",
+      "http": 200,
+      "links": 97,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/Login",
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=c8bc9066-0dd3-4cfd-97d2-ba8bb7887c3d",
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-plus/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-plus/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/benefit-control",
+      "http": 200,
+      "links": 95,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=66f6d79b-15f2-4560-a705-0d61a12493ba",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus",
+      "http": 200,
+      "links": 96,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/Login",
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=f2b9cd46-5354-4f0f-84f1-78cfbc01154f",
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Benefit-Control-Plus/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus/rates",
+      "http": 200,
+      "links": 33,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Benefit-Control-Plus/-/media/Files/Allianz/PDFs/FIA%20rates/M-8888.pdf",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Benefit-Control/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus/-/media/Files/Allianz/PDFs/FIA%20rates/M-8888-VA.pdf"
+      ],
+      "routesOutsideKnownInventory": [
+        "/what-we-offer/annuities/fixed-index-annuities/rider-charge-management-criteria"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/benefit-control/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/core-income-7",
+      "http": 200,
+      "links": 92,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=6aca913e-d6d8-4fb7-b4fc-203f845a02d8",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Core-Income-7/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#allocation-options",
+        "#mva-rate"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/core-income-7/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/essential-income-7",
+      "http": 200,
+      "links": 94,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/Login",
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=c920fc3b-07d8-4689-a695-b30a61e691a4",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Essential-Income-7/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/essential-income-7/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/frequently-asked-questions-for-fias",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus",
+      "http": 200,
+      "links": 93,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/how-the-product-works"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/calculator",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/how-the-product-works",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education",
+      "http": 200,
+      "links": 98,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/how-the-product-works"
+      ],
+      "routesOutsideKnownInventory": [
+        "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/participants-use-of-ai",
+        "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/retirement-income-belongs-in-affordability-conversation"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/addressing-racial-disparities-in-defined-contribution-plans",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/blogs",
+      "http": 200,
+      "links": 98,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/digital-strategy-can-help-enhance-participant-outcomes",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/embracing-personalization-and-predictable-income",
+      "http": 200,
+      "links": 90,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/fiduciary-concerns-for-guaranteed-lifetime-income",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/market-volatility-and-retirement-risk-management",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/participant-interest-and-regulatory-shifts",
+      "http": 200,
+      "links": 91,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/resources",
+      "http": 200,
+      "links": 98,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/how-the-product-works"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-technology-beyond-secure-2",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/rethinking-the-risk-reward-framework",
+      "http": 200,
+      "links": 89,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/retirement-income",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/tech-enabled-solutions",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/the-force-of-change-retirement-income-inertia",
+      "http": 200,
+      "links": 89,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/unique-approach-to-hedging",
+      "http": 200,
+      "links": 89,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/frequently-asked-questions",
+      "http": 200,
+      "links": 39,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [
+        "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus",
+        "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/taking-income"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/getting-started",
+      "http": 200,
+      "links": 46,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [
+        "/Login",
+        "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus",
+        "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/taking-income"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/glossary",
+      "http": 200,
+      "links": 2,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/retirement-foundation-adv",
+      "http": 200,
+      "links": 91,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/Rates",
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=c23373fe-51cf-40bb-aa7f-5057603c6f51",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-7/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/Frequently-Asked-Questions-for-FIAs"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/retirement-foundation-adv/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/understanding-your-fixed-index-annuity-allocation-options",
+      "http": 200,
+      "links": 105,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/secured/accounts/personal-accounts"
+      ],
+      "routesOutsideKnownInventory": [
+        "/registration/individual"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/increasing-income-potential",
+      "http": 200,
+      "links": 91,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/investment-strategies",
+      "http": 200,
+      "links": 30,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/investment-strategies/allianz-investment-options",
+      "http": 200,
+      "links": 96,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/annuities/investment-strategies/Cash-Equivalent"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/investment-strategies/cash-equivalent",
+      "http": 200,
+      "links": 33,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities",
+      "http": 200,
+      "links": 96,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/Contact-Us",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions",
+      "http": 200,
+      "links": 92,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+      "http": 200,
+      "links": 118,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/04/01/18/04/IAI-006-ADV.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/04/01/18/04/RILA-002.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/04/01/18/04/RILA-004.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/10/04/18/05/RILA-009-DualPrecision.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/10/04/18/05/RILA-009-Performance-Multi-B.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2026/09/21/18/35/IAI-136-ADV.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2026/10/06/17/42/RILA-060-Income-B.pdf",
+        "https://www.allianzlife.com/Rates",
+        "https://www.allianzlife.com/SPA/MVARate/DisplayHistoricalRates?productGuid=5ff40038-9e8d-469f-b98f-1807146f174c",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/define-your-downside",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/income-calculator",
+      "http": 200,
+      "links": 92,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/rila-rates-center-iadv",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/strategy-calculator",
+      "http": 200,
+      "links": 100,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/video",
+      "http": 200,
+      "links": 95,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus",
+      "http": 200,
+      "links": 25,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/",
+        "https://www.allianzlife.com/Contact-Us",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/define-your-downside",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/rila-rates-center-ixap"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income",
+      "http": 200,
+      "links": 116,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/",
+        "https://www.allianzlife.com/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/define-your-downside",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/income-calculator",
+      "http": 200,
+      "links": 92,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/rila-rates-center-iaip",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/strategy-calculator",
+      "http": 200,
+      "links": 100,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/video",
+      "http": 200,
+      "links": 95,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf",
+      "http": 200,
+      "links": 112,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/04/10/16/05/INFP-009-Performance-Multi.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/10/04/18/05/RILA-009-DualPrecision.pdf",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/define-your-downside",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions"
+      ],
+      "routesOutsideKnownInventory": [
+        "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/rila-rates-center-infp"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/calculator",
+      "http": 200,
+      "links": 99,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/video",
+      "http": 200,
+      "links": 94,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [
+        "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/rila-rates-center-infp"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income",
+      "http": 200,
+      "links": 118,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/04/01/18/04/RILA-002.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/04/01/18/04/RILA-004.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/10/04/18/05/RILA-009-DualPrecision.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2023/10/04/18/05/RILA-009-Performance-Multi-B.pdf",
+        "https://www.allianzlife.com/-/media/Files/Global/documents/2026/09/21/18/36/IASI-002-LP.pdf",
+        "https://www.allianzlife.com/Rates",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/define-your-downside",
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions"
+      ],
+      "routesOutsideKnownInventory": [
+        "/what-we-offer/annuities/registered-index-linked-annuities/rila-rates-center"
+      ],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/income-calculator",
+      "http": 200,
+      "links": 93,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/rila-rates-center-iasi",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/strategy-calculator",
+      "http": 200,
+      "links": 100,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/video",
+      "http": 200,
+      "links": 95,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator",
+      "http": 200,
+      "links": 99,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/rila-rates-center-ixap",
+      "http": 200,
+      "links": 84,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/video",
+      "http": 200,
+      "links": 94,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/renewal-rates",
+      "http": 200,
+      "links": 79,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/what-we-offer/index-options",
+      "http": 200,
+      "links": 101,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/Index-options",
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/strategies-for-business-owners"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/calculator",
+      "http": 200,
+      "links": 82,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/college-funding",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/flexible-estate-planning-strategies",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/indexed-universal-life",
+      "http": 200,
+      "links": 78,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator",
+      "http": 200,
+      "links": 92,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life",
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/Rates",
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/frequently-asked-questions",
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/tools-and-resources"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator/frequently-asked-questions",
+      "http": 200,
+      "links": 93,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Calculator",
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/Rates",
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/tools-and-resources",
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator/rates",
+      "http": 200,
+      "links": 26,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator/tools-and-resources",
+      "http": 200,
+      "links": 96,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Calculator",
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/Indexed-Universal-Life/Allianz-Life-Accumulator/Rates",
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/The-underwriting-process",
+        "https://www.allianzlife.com/what-we-offer/Life-Insurance/strategies-for-business-owners",
+        "https://www.allianzlife.com/what-we-offer/allocation-insights-tool"
+      ],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/retirement-planning",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/strategies-for-business-owners",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/strategies-for-business-owners/5-tips-for-business-buy-sell-agreements",
+      "http": 200,
+      "links": 85,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/strategies-for-business-owners/business-succession-planning-and-risk-management",
+      "http": 200,
+      "links": 87,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/strategies-for-business-owners/family-business-succession-planning",
+      "http": 200,
+      "links": 86,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/what-we-offer/life-insurance/strategies-for-business-owners/retaining-attracting-and-motivating-key-employees",
+      "http": 200,
+      "links": 90,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/why-allianz",
+      "http": 200,
+      "links": 88,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": [
+        "#demo-unavailable"
+      ]
+    },
+    {
+      "route": "/why-allianz/community",
+      "http": 200,
+      "links": 90,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/why-allianz/inclusion",
+      "http": 200,
+      "links": 81,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    },
+    {
+      "route": "/why-allianz/sustainability",
+      "http": 200,
+      "links": 92,
+      "inherited404Targets": [],
+      "unmappedSourceUrls": [],
+      "routesOutsideKnownInventory": [],
+      "unresolvedLocalFragments": []
+    }
+  ]
+}

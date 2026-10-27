@@ -1,0 +1,365 @@
+{
+  "status": "FOUR_NEW_SOURCE_BACKED_PUBLIC_GAPS_OUTSIDE_ORIGINAL_SCREEN",
+  "advisory": {
+    "route": "/for-financial-professionals/advisory-solutions",
+    "sourceH1": "Allianz Advisory Solutions",
+    "sourceMainChars": 22321,
+    "publicPrompts": 31,
+    "publicH1": [],
+    "DataFolder": {
+      "id": "945BF50BDFC54838A02905C844992E1F",
+      "name": "Data",
+      "children": {
+        "total": 37,
+        "results": [
+          {
+            "id": "5445DCFD961F47E4BE9A0D6E86230ADD",
+            "name": "About Allianz SE",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "64EB29EFE87048BE87D1A3130B3074AE",
+            "name": "Additional annuity and life insurance solutions cards",
+            "children": {
+              "total": 2
+            }
+          },
+          {
+            "id": "21E9A9B8E28449589DD6D3472EDF201B",
+            "name": "Allianz Advisory Solutions teams",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "1ADFE6A7C392461F817AA221ACA49BE9",
+            "name": "Allianz Advisory Solutions teams image cards",
+            "children": {
+              "total": 1
+            }
+          },
+          {
+            "id": "67852D27B0704633807E75A98781B6BF",
+            "name": "Allianz RIA Concierge Desk",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "901C3EF8D0834E23A36F8CE520FA1697",
+            "name": "Allianz RIA Concierge Desk image cards",
+            "children": {
+              "total": 1
+            }
+          },
+          {
+            "id": "123DED0A56F04834BEA679CA07CAFCFF",
+            "name": "Built for where you are and where youre headed",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "7141C924F6494C3D8503A618637B7B95",
+            "name": "Cards 25 cards",
+            "children": {
+              "total": 4
+            }
+          },
+          {
+            "id": "7F4F7443A02D4B75A18444CE1DDC924C",
+            "name": "Content section",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "436E7D46DF8A4D6AA757687AC0307670",
+            "name": "Content section 2",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "098E1455D20E4913875E0C213EE1C4DA",
+            "name": "Content section 3",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "CA524D4E46434EF0A05DC5B0188479E3",
+            "name": "Content section 4",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "4583BE2346134A6694A02A23AE7B937C",
+            "name": "Content section 5",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "82A8943CA53E4F77813E268A6D5732C9",
+            "name": "Content section 5 image cards",
+            "children": {
+              "total": 1
+            }
+          },
+          {
+            "id": "471F2D5805944E8BBB5C4FB4310DE0CC",
+            "name": "Explore the suite of products",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "639121C0A01041A780EA70938E007A05",
+            "name": "Hero",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "C09A4FCB042847B69D99CE56CEA613CD",
+            "name": "Index Advantage Income ADV Annuity",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "1C71C4F64086422F83959BBFA938F916",
+            "name": "Index Advantage Income ADV Annuity image cards",
+            "children": {
+              "total": 1
+            }
+          },
+          {
+            "id": "F9498AE8546A49FF9EC4697D5655738D",
+            "name": "Innovative fintech and data integrations",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "D798C9C27FC94ED482A491C7F3471D82",
+            "name": "Insurance licensing partners",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "611584B425A1400EAA2C124D0DCB87EE",
+            "name": "Insurance licensing partners image cards",
+            "children": {
+              "total": 1
+            }
+          },
+          {
+            "id": "7ECFD738161141718485754993419958",
+            "name": "Legal disclosures",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "00AE8A631564415FAC0B0DA817EBADEC",
+            "name": "Modernized fee-based annuity solutions",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "9032A280385A484887280FF4F9CB3D15",
+            "name": "Onboard in three simple phases",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "77A584C26FEE4DB98C7F327660CDB9F4",
+            "name": "Ready to access modernized fee-based annuity solutions through AllianzLifec",
+            "children": {
+              "total": 2
+            }
+          },
+          {
+            "id": "476DD83ABDAF43348DE8EBAFC01ED4A4",
+            "name": "Register as an RIA cards",
+            "children": {
+              "total": 3
+            }
+          },
+          {
+            "id": "C6998401DB6F4960BDE821D7DC8AB357",
+            "name": "Research and resources",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "EEECB0DDA9B04A9085D212F20D4CBD73",
+            "name": "Retirement Foundation ADV Annuity",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "C9CF34300A52413A813EC03EF44F7C62",
+            "name": "Retirement Foundation ADV Annuity image cards",
+            "children": {
+              "total": 1
+            }
+          },
+          {
+            "id": "8746F78A723A4A6CBB01357B064A8D71",
+            "name": "Risk management and retirement planning insights cards",
+            "children": {
+              "total": 3
+            }
+          },
+          {
+            "id": "9B5CF36DA42C4CCBBBF9B9CBA253BE1D",
+            "name": "To explore additional product offerings connect with the respective product",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "3F76B70B778D4F2B8AC7BE0C4B49D42F",
+            "name": "Wealth management platforms cards",
+            "children": {
+              "total": 3
+            }
+          },
+          {
+            "id": "DEA8D4A2CA6B4C6699CA82E8120B6D46",
+            "name": "Your choice",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "F23C6B31FCC64032A9F8C828BD9EA9A4",
+            "name": "Your clients",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "35C2D95124E647809F77F91AD5733109",
+            "name": "Your practice",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "3B55B9D39B184B6CA3F497431FB2B66A",
+            "name": "Your practice cards",
+            "children": {
+              "total": 3
+            }
+          },
+          {
+            "id": "44FA17EB491049E5A3FC3CF590F77D97",
+            "name": "Your teams and resources when and how you need them",
+            "children": {
+              "total": 0
+            }
+          }
+        ]
+      }
+    },
+    "guardChanges": [
+      {
+        "id": "945BF50B-DFC5-4838-A029-05C844992E1F",
+        "name": "Data",
+        "fields": 42,
+        "verified": "Saved and independently reloaded; only NP/shared revision/revision/updated changed",
+        "revision": "780b7b5d-4e79-43c6-a35a-0a0ca5a1783f"
+      },
+      {
+        "id": "639121C0-A010-41A7-80EA-70938E007A05",
+        "name": "Hero",
+        "fields": 48,
+        "verified": "Save helper checked guard-only plus metadata delta; settled independent reload verified",
+        "revision": "78a669e9-9de0-4310-874c-c8a7c6509746"
+      },
+      {
+        "id": "123DED0A-56F0-4834-BEA6-79CA07CAFCFF",
+        "name": "Built for where you are and where youre headed",
+        "fields": 47,
+        "verified": "Saved and independently reloaded; only NP/shared revision/revision/updated changed",
+        "revision": "5101ebd8-ab26-4e8d-8bd5-fab593e25157"
+      },
+      {
+        "id": "7ECFD738-1611-4171-8485-754993419958",
+        "name": "Legal disclosures",
+        "fields": 47,
+        "verified": "Save helper checked permitted delta before reopen loading mismatch; settled independent read guard clear. Pre-save raw values not retained after REPL error. Do not replay.",
+        "revision": "b99cc2b6-2ed3-4505-a098-ca7a634b64d3"
+      },
+      {
+        "id": "5445DCFD-961F-47E4-BE9A-0D6E86230ADD",
+        "name": "About Allianz SE",
+        "fields": 47,
+        "verified": "One save submitted; immediate check stopped before metadata settled. Later exact identity/revision/empty NP read, then independent reload matched all47fields. No replay. Full pre-save fence not retained; no claim of exact old bytes.",
+        "revision": "21b2ac37-168b-4f9b-8677-21b13a6b91f9"
+      }
+    ],
+    "qualification": "No Advisory publication or source text/image edits. Scope has37roots plus children. Remaining eligibility/source/rendered preflight needed. Four root guards and Data folder cleared, not live recovery."
+  },
+  "additional": {
+    "business": {
+      "route": "/for-financial-professionals/Life-Sales-Tools/business-succession-planning-materials",
+      "sourceH1": "Business succession planning",
+      "sourceMainChars": 2431,
+      "publicPrompts": 8,
+      "draftDataFolder": {
+        "id": "DE33EE9039624D33B6463DE583FD28EE",
+        "name": "Data",
+        "children": {
+          "total": 8
+        }
+      },
+      "status": "Confirmed fresh official content; public noH1+prompts. No native mutation/publication."
+    },
+    "lifetime": {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus",
+      "sourceH1": "Allianz Lifetime Income+\u00ae Annuity with the Lifetime Income Benefit",
+      "sourceMainChars": 4428,
+      "publicPrompts": 9,
+      "draftDataFolder": {
+        "id": "E1B44EF3C6BE4B1494D9AB2EFCF21FC1",
+        "name": "Data",
+        "children": {
+          "total": 9
+        }
+      },
+      "status": "Confirmed fresh official content; public noH1+prompts. No native mutation/publication."
+    },
+    "taking": {
+      "route": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/taking-income",
+      "sourceH1": "Beginning guaranteed lifetime income",
+      "sourceMainChars": 7532,
+      "publicPrompts": 7,
+      "draftDataFolder": {
+        "id": "53A75AD3C01E4F9AB6DA9DAA7BBF57C0",
+        "name": "Data",
+        "children": {
+          "total": 8
+        }
+      },
+      "status": "Confirmed fresh official content; public noH1+prompts. No native mutation/publication."
+    }
+  },
+  "normalReadConstraint": "Large three-scope child inventory query exceeded query complexity. Reduced folder-only query succeeded; not permission denial, no credential or route bypass.",
+  "twoOtherLinkedArticles": "Participants use ofAI and retirement income affordability both render substantive H1/main content with zero prompts; rawHTML notFoundText was a false positive.",
+  "original28LedgerUnchanged": true,
+  "next": "Finish exact unpublished eligibility/source preflight for Advisory and new scopes, then scoped publication only through an available supported UI/operator. Existing Authoring API/Culture/Legal/222 restrictions remain.",
+  "noPendingSave": true
+}

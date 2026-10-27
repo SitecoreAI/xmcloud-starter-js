@@ -1,0 +1,59 @@
+{
+  "utc": "2026-10-27T15:11:59.588557+00:00",
+  "noAuth": true,
+  "noRedirectFollow": true,
+  "noRetries": true,
+  "qualification": "Destination checks only, not content/visual acceptance. Known Concierge and protected account/app targets excluded.",
+  "rows": [
+    {
+      "path": "/for-financial-professionals/Life-Sales-Tools/business-succession-planning-materials",
+      "status": 200,
+      "notFoundText": true
+    },
+    {
+      "path": "/for-financial-professionals/advisory-solutions",
+      "status": 200,
+      "notFoundText": true
+    },
+    {
+      "path": "/for-financial-professionals/resources/4-ways-to-help-clients-fight-inflation",
+      "status": 308,
+      "location": "/for-financial-professionals/resources"
+    },
+    {
+      "path": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/participants-use-of-ai",
+      "status": 200,
+      "notFoundText": true
+    },
+    {
+      "path": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education/retirement-income-belongs-in-affordability-conversation",
+      "status": 200,
+      "notFoundText": true
+    },
+    {
+      "path": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus",
+      "status": 200,
+      "notFoundText": true
+    },
+    {
+      "path": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/taking-income",
+      "status": 200,
+      "notFoundText": true
+    },
+    {
+      "path": "/what-we-offer/annuities/fixed-index-annuities/rider-charge-management-criteria",
+      "status": 404,
+      "location": null
+    },
+    {
+      "path": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/rila-rates-center-infp",
+      "status": 404,
+      "location": null
+    },
+    {
+      "path": "/what-we-offer/annuities/registered-index-linked-annuities/rila-rates-center",
+      "status": 404,
+      "location": null
+    }
+  ]
+}

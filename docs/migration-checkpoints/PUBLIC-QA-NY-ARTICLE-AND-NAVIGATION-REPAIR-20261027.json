@@ -17,7 +17,26 @@
     "nyMobile": "About and Careers screenshots inspected at actual370, loaded heroes, settled364/364 document/scroll. Annuities screenshot inspected, full text reach; initial image/width reads were unsettled, not failures.",
     "nyRatings": "Why Allianz rating table exact fresh source cells; same-tab About journey passes",
     "article": "Early retirement article actual370, six article sections/images loaded and no overflow; headings match source; its one404 study link is also broken on official source, not invented repaired",
-    "broadVisualAcceptance": false
+    "broadVisualAcceptance": false,
+    "sustainability": {
+      "actualViewport": 370,
+      "widthAndScroll": 364,
+      "sixPillarsAndHeadings": "present",
+      "images": "all6mainimagesloaded",
+      "fullPageScreenshotInspected": true,
+      "pdfAndCultureActions": "held/unaccepted; not activated"
+    },
+    "confidentiality": {
+      "route": "/confidentiality-for-victims-of-domestic-abuse",
+      "freshSourceBlocks": 13,
+      "publicBlocks": 13,
+      "unmatched": 0,
+      "comparison": "Text whitespace normalized; not byte-level legal certification",
+      "mobileActual": 370,
+      "widthAndScroll": 364,
+      "fullPageScreenshotInspected": true,
+      "contactActionsActivated": false
+    }
   },
   "newFindings": {
     "sourceDomainLinks": "56 routes in server HTML require provenance/settled-DOM qualification; some are intentional exact temporary external fallbacks",
@@ -50,7 +69,28 @@
       "sameTabCount": true,
       "CulturePreserved": true
     },
-    "deployment": "Not yet submitted; source push follows qualified checks"
+    "deployment": "BOTH_TARGETS_TERMINAL; focused public keyboard/mobile same-tab journeys pass. Native private host not retried.",
+    "commit": "03d792d9176e51603576fc527c8a3db89e7bf8fb",
+    "remoteVerified": true,
+    "vercel": {
+      "id": "dpl_CrZ5E1Hryw1kMhUKKFgAF2mJBXHL",
+      "url": "https://allianz-life-oojwuv19p-thomas-lins-projects-67630b98.vercel.app",
+      "status": "Ready Production",
+      "exactCommitDashboardVerified": true
+    },
+    "editing": {
+      "job": "2txNSoh5C0JhW9olv8u8q6",
+      "exactCommit": "03d792d9176e51603576fc527c8a3db89e7bf8fb",
+      "status": "Complete",
+      "build": "2m42",
+      "deployment": "2m46",
+      "postActions": "Complete21ms"
+    },
+    "liveQA": {
+      "desktopKeyboard": "Executives settled local H1, same-tab count unchanged",
+      "mobilePointer": "Newsroom settled local H1, actual370/doc364/scroll364, same-tab count unchanged",
+      "cultureFallback": "preserved"
+    }
   },
   "cms360Rate": {
     "item": "BEFD38D6-C220-4AF5-AE68-B6106B97771E",
@@ -78,5 +118,36 @@
     "222 blocked saves",
     "PDF allowlist proposal",
     "private-host Forbidden"
-  ]
+  ],
+  "postReleaseScreen": {
+    "routes": 322,
+    "unchecked": 0,
+    "beforeSourceUrlRoutes": 56,
+    "afterSourceUrlRoutes": 48,
+    "routesWithFewerSourceUrls": [
+      "/about",
+      "/about/ventures/portfolio",
+      "/about/ventures/team",
+      "/customer-service-frequently-asked-questions",
+      "/for-financial-professionals/advisory-solutions/teams",
+      "/for-financial-professionals/grow-your-business-in-multicultural-markets",
+      "/new-york/retirement-and-planning-tools",
+      "/what-we-offer/annuities/fixed-index-annuities",
+      "/what-we-offer/annuities/fixed-index-annuities/222-plus",
+      "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage",
+      "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-classic",
+      "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-plus",
+      "/what-we-offer/annuities/fixed-index-annuities/benefit-control",
+      "/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus",
+      "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/insights-and-education",
+      "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+      "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income",
+      "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income",
+      "/what-we-offer/life-insurance",
+      "/what-we-offer/life-insurance/flexible-estate-planning-strategies",
+      "/what-we-offer/life-insurance/strategies-for-business-owners/family-business-succession-planning",
+      "/what-we-offer/life-insurance/strategies-for-business-owners/retaining-attracting-and-motivating-key-employees"
+    ],
+    "qualification": "Not48confirmeddefects. Remaining exact fallback/doc/account destinations need provenance and target-readiness checks; no blanket rewrite."
+  }
 }
