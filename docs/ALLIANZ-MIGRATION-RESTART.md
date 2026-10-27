@@ -98,3 +98,8 @@ Use [the final operator handoff](migration-checkpoints/OPERATOR-HANDOFF-20261027
 ## Asset/calculator qualification, 2026-10-27
 
 Remote 20a0e95f6281799ac5d6d25e00b457d1337a6af4 independently confirmed. All16 PDF byte matches and draft bindings remain unpublished. Six saved thumbnail bindings are NOT accepted: source related images have empty alt and native validation reports missing alt; donor DAM identifiers need current-tenant cross-check. Similar asset120162 is a different meeting photo and was not substituted. Calculator workbook retrieved HTTP200 (12869bytes), SHA256944cd27387c27229e7e1f861ad14d73c0a7a2df77c85c3b6f82cb021feb465a5. Active static call chain uses workbook; legacy REST calls are only bundled leads, not proven active dependencies. See migration-checkpoints/SALES-TOOLS-ASSETS-CALCULATOR-QUALIFIED-CHECKPOINT-20261027.json. No pending writes/jobs.
+
+
+## Six image validation corrections, 2026-10-27
+
+All six related-card image alt errors are resolved by factual descriptions based on visual inspection of the exact source images. Each save was independently reopened and compared across 53 fields; only image alt text, Revision and Updated changed. Native validation now reports one warning and no errors on each. The source uses empty alt, so this is a documented accessibility difference, not claimed exact-alt parity. No validator configuration changed. See migration-checkpoints/SIX-SALES-TOOLS-IMAGE-ALT-CORRECTIONS-20261027.json. Draft pages and PDFs remain unpublished; further image and rendering acceptance remains open.

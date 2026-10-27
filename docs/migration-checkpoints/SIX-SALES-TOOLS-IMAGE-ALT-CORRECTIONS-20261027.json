@@ -1,0 +1,86 @@
+{
+  "utc": "2026-10-27T18:58:26.491781+00:00",
+  "sourceAltDifference": "Official related-card images use empty alt; brief factual descriptions were authored from visual inspection of the exact byte-matched source images to satisfy native image validation. No template validator was disabled.",
+  "bindings": [
+    {
+      "id": "90607982-1004-4E64-AE36-458E30997215",
+      "revision": "74df4c60-dacc-418c-b5a6-60a95966eb7c",
+      "alt": "Colleagues talking around a meeting table",
+      "independentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "validation": "1 warning; no errors"
+    },
+    {
+      "id": "03D15EF7-D512-437C-B780-DB19583D053C",
+      "revision": "39f0e5b6-5a0e-40cd-a0a2-59d89b22362e",
+      "alt": "Colleagues talking around a meeting table",
+      "independentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "validation": "1 warning; no errors"
+    },
+    {
+      "id": "D1A9F9A2-3AD3-427E-8191-458336079F97",
+      "revision": "6b5b9563-5976-4d1e-9cc1-60fbf22de37f",
+      "alt": "Woman using a phone beside a laptop",
+      "independentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "validation": "1 warning; no errors"
+    },
+    {
+      "id": "266B5AD2-38D9-4336-BAC3-B1B550812385",
+      "revision": "6cb057d3-56eb-4f21-87e7-870ee82b659b",
+      "alt": "People walking together outdoors",
+      "independentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "validation": "1 warning; no errors"
+    },
+    {
+      "id": "E88C482B-485B-4498-A8BD-780B809700FC",
+      "revision": "e0c6b8c9-6937-4195-bd22-f2caf3a5fbbd",
+      "alt": "Woman using a phone beside a laptop",
+      "independentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "validation": "1 warning; no errors"
+    },
+    {
+      "id": "05E2938E-6242-46D6-9373-680BB0B43425",
+      "revision": "93b4ac33-1220-4e9f-acf7-3f79c34a04a0",
+      "alt": "People walking together outdoors",
+      "independentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "validation": "1 warning; no errors"
+    }
+  ],
+  "published": 0,
+  "remaining": "Current draft render, current tenant asset identity cross-check, remaining exact resource thumbnails, and separate validation warning remain open."
+}
