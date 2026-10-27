@@ -73,3 +73,7 @@ AA5 draft-only clarification: all three saved PDF links are already exact. There
 One supported environment Build and deploy retry was submitted immediately by that menu action (no confirmation screen): `2xKvbB2oMkJkBFtTe9AgvF`. It completed successfully on Oct27 at09:43:21Chicago: build3m1, deployment3m19, post-actions18ms. No further retry. Its manual row identifies the creator rather than a commit SHA; the branch app tree at submission was identical to45a5, but the manual row is not SHA verification. Retain original failed job/tracing evidence and last-good4f49 rollback.
 
 The ordinary browser root request to `https://xmc-5sqbydqb8mxegha2jk0xig-eh.sitecorecloud.io` returned Forbidden. No bypass, configuration/access change, editing-secret URL or alternate route was attempted. Successful deployment is verified; native runtime acceptance remains blocked by host access. PDF proposal remains unapplied and saved fields unchanged.
+
+## Consolidated operator/personal-laptop handoff
+
+Use [the final operator handoff](migration-checkpoints/OPERATOR-HANDOFF-20261027.md) for the exact six recomposition pages, three held operations, successful editing retry, native Forbidden limitation, unapplied PDF patch, calculator contract, rollback and personal-laptop resume. This supersedes older active/pending wording above where explicitly noted, without discarding historical evidence. Migration acceptance remains incomplete.

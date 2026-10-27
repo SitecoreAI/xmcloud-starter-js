@@ -1,0 +1,257 @@
+{
+  "documentedUTC": "2026-10-27T02:01:29.844943+00:00",
+  "status": "SOURCE_CONTRACT_DOCUMENTED_IMPLEMENTATION_NOT_COMPLETE",
+  "sourcePage": "https://www.allianzlife.com/what-we-offer/life-insurance/calculator",
+  "canonicalSourcePage": "https://www.allianzlife.com/what-we-offer/Life-Insurance/Calculator",
+  "sourceBundle": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-life-insurance/dx-life-insurance.js?v=14",
+  "bundleVersion": "@dx-toolshed/dx-life-insurance 0.7.2, build 2026-09-02",
+  "bundleSHA256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "bundleBytes": 1655293,
+  "mount": "dx-life-insurance",
+  "stages": [
+    {
+      "name": "About you",
+      "inputs": [
+        "currentAge",
+        "currentAnnualIncome",
+        "hasPartner",
+        "partnerAge",
+        "partnerAnnualIncome",
+        "partnerRetirementAge"
+      ],
+      "conditional": "Partner fields shown when hasPartner=yes."
+    },
+    {
+      "name": "One-time costs",
+      "inputs": [
+        "finalExpenses",
+        "currentMortgageBalance",
+        "debts"
+      ]
+    },
+    {
+      "name": "Long-term income needs",
+      "inputs": [
+        "desiredAnnualIncome",
+        "yearsIncomeNeeded",
+        "collegeCosts"
+      ]
+    },
+    {
+      "name": "Available assets",
+      "inputs": [
+        "inflationRate",
+        "investmentAssets",
+        "returnRate",
+        "currentLifeInsurance",
+        "socialSecuritySurvivorBenefit"
+      ]
+    },
+    {
+      "name": "Summary",
+      "inputs": []
+    }
+  ],
+  "inputs": [
+    {
+      "name": "currentAge",
+      "requiredInSchema": true,
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    {
+      "name": "currentAnnualIncome",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    },
+    {
+      "name": "hasPartner",
+      "requiredInSchema": true,
+      "type": "yes/no",
+      "default": "yes"
+    },
+    {
+      "name": "partnerAge",
+      "requiredInSchema": true,
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    {
+      "name": "partnerAnnualIncome",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    },
+    {
+      "name": "partnerRetirementAge",
+      "requiredInSchema": true,
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    {
+      "name": "finalExpenses",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    },
+    {
+      "name": "currentMortgageBalance",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    },
+    {
+      "name": "debts",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    },
+    {
+      "name": "desiredAnnualIncome",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    },
+    {
+      "name": "yearsIncomeNeeded",
+      "requiredInSchema": true,
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    {
+      "name": "collegeCosts",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    },
+    {
+      "name": "inflationRate",
+      "requiredInSchema": true,
+      "type": "percent",
+      "minimum": -12,
+      "maximum": 12
+    },
+    {
+      "name": "investmentAssets",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    },
+    {
+      "name": "returnRate",
+      "requiredInSchema": true,
+      "type": "percent",
+      "minimum": -12,
+      "maximum": 12
+    },
+    {
+      "name": "currentLifeInsurance",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    },
+    {
+      "name": "socialSecuritySurvivorBenefit",
+      "requiredInSchema": true,
+      "type": "currency",
+      "minimum": 0,
+      "maximum": 999999999
+    }
+  ],
+  "initialRenderedObservation": {
+    "sourceAppMounted": true,
+    "numericInputsEmpty": true,
+    "hasPartnerYesSelected": true,
+    "continueDisabled": true,
+    "DOMIncludesBothMobileAndDesktopControls": true,
+    "noUserFinancialDataEntered": true
+  },
+  "outputs": [
+    "Year-by-year partner age/income and desired annual income projections",
+    "Immediate needs",
+    "Long-term needs",
+    "Total needs",
+    "Investment assets and Social Security survivor benefit",
+    "Existing life insurance",
+    "Total resources",
+    "Shortfall",
+    "Additional life insurance needed"
+  ],
+  "sourceComputationPipeline": [
+    "iterateYears",
+    "iteratePartnerAge",
+    "iterateRows",
+    "iterateSums",
+    "immediateNeeds",
+    "longTermNeeds",
+    "totalNeeds",
+    "investmentAssetsAndSocialSecurity",
+    "existingLifeInsurance",
+    "totalResources",
+    "shortfall"
+  ],
+  "formulaPolicy": "Preserve the recovered source implementation and its validation/rounding assumptions or derive independently tested equivalence. No financial formula has been invented, executed or added by this investigation.",
+  "resultsIntegration": {
+    "videoIframe": "https://www.calcxml.com/ins01.htm",
+    "textDescription": "https://www.calcxml.com/ins01t.htm",
+    "queryParameters": [
+      "immediateNeeds",
+      "longtermNeeds",
+      "totalNeeds",
+      "shortfall",
+      "totalResources",
+      "lifeInsuranceNeeded"
+    ],
+    "financialQuantityTransmission": "Source result iframe and description link include calculated financial quantities in query parameters. Retain source privacy/disclosure behavior only through verified integration; no actual user financial values transmitted in this pass.",
+    "notAStandaloneCalculatorReplacement": true
+  },
+  "styling": "Official page style.css?vs=140 and bundle UI; existing source stylesheet is retained in the migration, but app-specific compatibility must be verified.",
+  "embedding": {
+    "wholeSourcePage": "NOT_PERMITTED_FROM_MIGRATION_ORIGIN_BY_OBSERVED_SOURCE_FRAME_HEADERS",
+    "xFrameOptions": "SAMEORIGIN",
+    "frameAncestors": "'self' https://horizonazllocal",
+    "noBypassAttempted": true,
+    "standaloneSupportedEmbedURL": "Not established. CalcXML results iframe is not the five-stage input application."
+  },
+  "deliveryOptions": {
+    "faithfulImplementation": "Within migration code scope in principle; substantial new implementation/integration and independent financial-result equivalence, accessibility, responsive, reset/navigation, privacy, third-party dependency and WYSIWYG validation required. Do not use unrelated retirement calculator.",
+    "wholePageIframe": "Rejected by observed source policy; not attempted.",
+    "officialSourceLink": "Technically an ordinary link to the verified official calculator. An explicitly labeled temporary fallback could be prepared, but it changes the in-site journey and does not close the calculator migration gate. No fallback silently added.",
+    "vendorBundleReuse": "Source recovered for inspection only. Production redistribution/lifecycle/dependency/asset approval and source ownership have not been established; no wholesale bundle copy added to held candidate."
+  },
+  "requiredAcceptance": [
+    "All17 validation fields and both partner branches",
+    "All5 stages and keyboard focus/step navigation",
+    "Source-equivalent results for synthetic boundary and representative scenarios",
+    "No private input leakage beyond verified source contract",
+    "Exact required legal notices retained",
+    "Actual370px and desktop layout; complete content reach",
+    "Source-backed results/video/text behavior",
+    "Native authored field ownership and WYSIWYG; no helper panels",
+    "Reviewed candidate build/regression and applicable release authorization"
+  ],
+  "changes": {
+    "applicationSource": false,
+    "CMS": false,
+    "deployment": false,
+    "publication": false
+  },
+  "cleanup": {
+    "ownedOfficialTabClosed": true,
+    "financialInputsEntered": false
+  }
+}

@@ -1,0 +1,17 @@
+# Operator preparation only; not executed. Recheck current schema, eligibility and exact scope first.
+mutation RestoreAllianzExactThreePublishedLayouts {
+  publishItem(input: {
+    sourceDatabase: "master"
+    targetDatabases: ["experienceedge"]
+    rootItemIds: [
+      "{EC1439DD-3041-5674-B573-0F14DDAC00A6}"
+      "{8B85231C-9FAA-52AA-94CE-EA0A5D3E7BF1}"
+      "{C8C16CA0-3E34-43CD-9884-9A943D23F267}"
+    ]
+    publishSubItems: false
+    publishRelatedItems: false
+    publishItemMode: FULL
+    languages: ["en"]
+    displayName: "Allianz exact three published layout recomposition"
+  }) { operationId }
+}
