@@ -8,14 +8,15 @@
       "id": "8351A335-031D-4AF8-B526-8AD05B081926",
       "slug": "flexible-estate-planning-materials",
       "data": "87EE223C-1179-4503-8D68-3185FF0B2BB7",
-      "state": "EIGHT_COMPONENTS_BOUND_SAVED_REOPENED_LOCAL_1024_370_QUALIFIED"
+      "state": "EIGHT_COMPONENTS_BOUND_SAVED_REOPENED_LOCAL_1024_370_QUALIFIED",
+      "layoutRevision": "6f213506-2b9c-4040-9479-7b7ea6c09dcc"
     },
     "keyEmployee": {
       "id": "F6EAF341-79DC-4D31-9E60-CAB6E50680AA",
       "slug": "key-employee-compensation-materials",
       "data": "0179EAC9-74D2-419D-99B4-21F3E3D32910",
       "state": "EIGHT_COMPONENTS_BOUND_SAVED_REOPENED_LOCAL_1024_370_QUALIFIED",
-      "layoutRevision": "a7742e2d-309a-4b48-8357-ffa4c2b7489f",
+      "layoutRevision": "ee46ce06-05c4-4125-ac7f-b710fc0c8c93",
       "roots": {
         "Hero": "748CCAB2-E1A5-4CF6-9DC6-E94CBEA3088E",
         "Introduction": "04935CB3-C48F-40C4-894A-A2140FB53767",
@@ -57,7 +58,7 @@
       "slug": "essential-concepts",
       "data": "4598D23E-E4D2-4850-8EA9-E176D019480E",
       "state": "SEVEN_COMPONENTS_BOUND_SAVED_REOPENED_LOCAL_1024_370_QUALIFIED",
-      "layoutRevision": "4930b68e-0519-4252-8643-0bda0c83e07d",
+      "layoutRevision": "28a07f9c-05c8-475a-8c03-a806cf1163a5",
       "roots": {
         "Hero": "77A19D7A-217C-4B5F-AC0F-2DEAC693CFB5",
         "Introduction": "B9957446-3EF1-42F3-B5E5-30A563A12A40",
@@ -175,7 +176,7 @@
       "target": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884"
     }
   ],
-  "qualification": "All three native layouts and source text saved and independently reopened. Qualified connected local desktop/mobile checks only. Images/documents and shared secondary navigation remain incomplete; no publication submitted. Calculator remains absent and unimplemented.",
+  "qualification": "All three native bodies/layouts and shared source-ordered secondary navigation saved/reopened and current SDK resolved. Qualified connected local 1024/370 checks; no publication submitted. Source thumbnails, 16 PDF destinations, complete visual/native editing/public QA and separate calculator integration remain open.",
   "remaining": [
     "Add exact source introduction paragraph",
     "Bind estate native Final renderings and verify current draft desktop/mobile/internal routes",
@@ -212,5 +213,7 @@
       "Secondary sales-tools navigation missing",
       "Key Employee and Essential bodies unfinished"
     ]
-  }
+  },
+  "sharedNavigation": "05F1C287-FC80-4ABB-820C-2FDB3340090C",
+  "sharedNavigationEvidence": "THREE-SALES-TOOLS-SHARED-NATIVE-NAVIGATION-20261027.json"
 }

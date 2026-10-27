@@ -1,3 +1,5 @@
+Latest: three sales-tool drafts now include shared native secondary navigation; SDK resolution and local 1024/370/menu keyboard checks passed. See THREE-SALES-TOOLS-SHARED-NATIVE-NAVIGATION-20261027.json. Remaining thumbnails/PDFs/publication/live/native gates stay open. No pending CMS save/job; owned QA server stopped.
+
 Latest: [Three native sales-tools draft QA](migration-checkpoints/THREE-NATIVE-SALES-TOOLS-DRAFT-QA-20261027.md). All three bodies/layouts are saved; remaining navigation/assets/PDF/publication/live gates are explicit.
 
 Current: Estate and Key Employee body/layout saved and locally checked at 1024/370; continue Essential Concepts using existing page EF35367F-E05C-4CE9-9FD7-8E2B42F07884. Exact IDs in THREE-NEW-NATIVE-PAGES-CREATED-REGISTRY-20261027.json. No new publication.

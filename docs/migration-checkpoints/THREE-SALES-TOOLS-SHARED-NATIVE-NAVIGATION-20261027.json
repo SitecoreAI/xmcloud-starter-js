@@ -1,0 +1,382 @@
+{
+  "utc": "2026-10-27T18:02:45.860904+00:00",
+  "state": "SAVED_REOPENED_CURRENT_SDK_RESOLVED_LOCAL_RESPONSIVE_QUALIFIED",
+  "datasource": "05F1C287-FC80-4ABB-820C-2FDB3340090C",
+  "datasourceRevision": "f7331d37-8fa2-4195-959d-7b5cdc91a6ab",
+  "renderer": "CEE63058-9AD5-444D-8636-3D9EF8459D6E",
+  "variant": "BF543D9C-AAE0-4AB3-BFC3-1AE27B840DDD",
+  "existingComponent": "AllianzProductNavigation",
+  "layouts": [
+    {
+      "page": "8351A335-031D-4AF8-B526-8AD05B081926",
+      "revision": "6f213506-2b9c-4040-9479-7b7ea6c09dcc"
+    },
+    {
+      "page": "F6EAF341-79DC-4D31-9E60-CAB6E50680AA",
+      "revision": "ee46ce06-05c4-4125-ac7f-b710fc0c8c93"
+    },
+    {
+      "page": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884",
+      "revision": "28a07f9c-05c8-475a-8c03-a806cf1163a5"
+    }
+  ],
+  "currentSDK": [
+    {
+      "slug": "flexible-estate-planning-materials",
+      "componentCount": 9,
+      "navigationUID": "8ad0602e-569b-48a3-bc5f-609f860c0f4d",
+      "variant": "FixedTabs",
+      "links": [
+        {
+          "id": "9B579CBE8A36417C96295B2F5F8ABF70",
+          "title": "Life Sales Tools",
+          "link": {
+            "text": "Life Sales Tools",
+            "linktype": "internal",
+            "id": "{54DB3B57-0EF5-424E-A50A-8C065CCF7921}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools"
+          }
+        },
+        {
+          "id": "A237649F0C8E40E9A8F4847A838970C6",
+          "title": "Overview",
+          "link": {
+            "text": "Overview",
+            "linktype": "internal",
+            "id": "{54DB3B57-0EF5-424E-A50A-8C065CCF7921}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools"
+          }
+        },
+        {
+          "id": "4DEF7A83A32A430AB6CBDB52CCE04F52",
+          "title": "Product Information",
+          "link": {
+            "text": "Product Information",
+            "linktype": "internal",
+            "id": "{106150B2-0FD3-4882-AF5E-7E303BCBB8CD}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/product-information"
+          }
+        },
+        {
+          "id": "8BFE1FF75EDF43E49FB110504E4360F1",
+          "title": "Sales Resources",
+          "link": {
+            "text": "Sales Resources",
+            "linktype": "internal",
+            "id": "{1A2F2F37-F363-485F-BE8C-DFBAA3D1BA19}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/sales-resources"
+          }
+        },
+        {
+          "id": "C45344A8FB5B4808A67D537E112908CA",
+          "title": "Advanced Markets",
+          "link": {
+            "text": "Advanced Markets",
+            "linktype": "internal",
+            "id": "{AD6F3216-A3C0-47A9-B60D-F960AA11D4B4}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/advanced-markets"
+          }
+        },
+        {
+          "id": "B6D489FF4E6E4A43A5E5DF2D183BFCFE",
+          "title": "Premium Finance",
+          "link": {
+            "text": "Premium Finance",
+            "linktype": "internal",
+            "id": "{FB49A6D8-A312-4D07-B445-535705DBE56C}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/premium-finance"
+          }
+        },
+        {
+          "id": "CACBC4DAE9C3411C83FBA0E9BB70D52D",
+          "title": "Allianz Global Citizen Program",
+          "link": {
+            "text": "Allianz Global Citizen Program",
+            "linktype": "internal",
+            "id": "{85DE6322-9FA1-44E8-9FEF-68F1B638E180}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/allianz-global-citizen-program"
+          }
+        },
+        {
+          "id": "28371F0C3A004B5781A7B4E53712DB7A",
+          "title": "Submission to servicing",
+          "link": {
+            "text": "Submission to servicing",
+            "linktype": "internal",
+            "id": "{0FC18D56-B992-4BD4-A250-C9EF2BCFB742}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/submission-to-servicing"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "key-employee-compensation-materials",
+      "componentCount": 9,
+      "navigationUID": "c3191bf9-4ae9-4594-89fc-fd609a520ba5",
+      "variant": "FixedTabs",
+      "links": [
+        {
+          "id": "9B579CBE8A36417C96295B2F5F8ABF70",
+          "title": "Life Sales Tools",
+          "link": {
+            "text": "Life Sales Tools",
+            "linktype": "internal",
+            "id": "{54DB3B57-0EF5-424E-A50A-8C065CCF7921}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools"
+          }
+        },
+        {
+          "id": "A237649F0C8E40E9A8F4847A838970C6",
+          "title": "Overview",
+          "link": {
+            "text": "Overview",
+            "linktype": "internal",
+            "id": "{54DB3B57-0EF5-424E-A50A-8C065CCF7921}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools"
+          }
+        },
+        {
+          "id": "4DEF7A83A32A430AB6CBDB52CCE04F52",
+          "title": "Product Information",
+          "link": {
+            "text": "Product Information",
+            "linktype": "internal",
+            "id": "{106150B2-0FD3-4882-AF5E-7E303BCBB8CD}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/product-information"
+          }
+        },
+        {
+          "id": "8BFE1FF75EDF43E49FB110504E4360F1",
+          "title": "Sales Resources",
+          "link": {
+            "text": "Sales Resources",
+            "linktype": "internal",
+            "id": "{1A2F2F37-F363-485F-BE8C-DFBAA3D1BA19}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/sales-resources"
+          }
+        },
+        {
+          "id": "C45344A8FB5B4808A67D537E112908CA",
+          "title": "Advanced Markets",
+          "link": {
+            "text": "Advanced Markets",
+            "linktype": "internal",
+            "id": "{AD6F3216-A3C0-47A9-B60D-F960AA11D4B4}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/advanced-markets"
+          }
+        },
+        {
+          "id": "B6D489FF4E6E4A43A5E5DF2D183BFCFE",
+          "title": "Premium Finance",
+          "link": {
+            "text": "Premium Finance",
+            "linktype": "internal",
+            "id": "{FB49A6D8-A312-4D07-B445-535705DBE56C}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/premium-finance"
+          }
+        },
+        {
+          "id": "CACBC4DAE9C3411C83FBA0E9BB70D52D",
+          "title": "Allianz Global Citizen Program",
+          "link": {
+            "text": "Allianz Global Citizen Program",
+            "linktype": "internal",
+            "id": "{85DE6322-9FA1-44E8-9FEF-68F1B638E180}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/allianz-global-citizen-program"
+          }
+        },
+        {
+          "id": "28371F0C3A004B5781A7B4E53712DB7A",
+          "title": "Submission to servicing",
+          "link": {
+            "text": "Submission to servicing",
+            "linktype": "internal",
+            "id": "{0FC18D56-B992-4BD4-A250-C9EF2BCFB742}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/submission-to-servicing"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "essential-concepts",
+      "componentCount": 8,
+      "navigationUID": "4628ca90-2527-493c-95e8-c05f6e995b75",
+      "variant": "FixedTabs",
+      "links": [
+        {
+          "id": "9B579CBE8A36417C96295B2F5F8ABF70",
+          "title": "Life Sales Tools",
+          "link": {
+            "text": "Life Sales Tools",
+            "linktype": "internal",
+            "id": "{54DB3B57-0EF5-424E-A50A-8C065CCF7921}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools"
+          }
+        },
+        {
+          "id": "A237649F0C8E40E9A8F4847A838970C6",
+          "title": "Overview",
+          "link": {
+            "text": "Overview",
+            "linktype": "internal",
+            "id": "{54DB3B57-0EF5-424E-A50A-8C065CCF7921}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools"
+          }
+        },
+        {
+          "id": "4DEF7A83A32A430AB6CBDB52CCE04F52",
+          "title": "Product Information",
+          "link": {
+            "text": "Product Information",
+            "linktype": "internal",
+            "id": "{106150B2-0FD3-4882-AF5E-7E303BCBB8CD}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/product-information"
+          }
+        },
+        {
+          "id": "8BFE1FF75EDF43E49FB110504E4360F1",
+          "title": "Sales Resources",
+          "link": {
+            "text": "Sales Resources",
+            "linktype": "internal",
+            "id": "{1A2F2F37-F363-485F-BE8C-DFBAA3D1BA19}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/sales-resources"
+          }
+        },
+        {
+          "id": "C45344A8FB5B4808A67D537E112908CA",
+          "title": "Advanced Markets",
+          "link": {
+            "text": "Advanced Markets",
+            "linktype": "internal",
+            "id": "{AD6F3216-A3C0-47A9-B60D-F960AA11D4B4}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/advanced-markets"
+          }
+        },
+        {
+          "id": "B6D489FF4E6E4A43A5E5DF2D183BFCFE",
+          "title": "Premium Finance",
+          "link": {
+            "text": "Premium Finance",
+            "linktype": "internal",
+            "id": "{FB49A6D8-A312-4D07-B445-535705DBE56C}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/premium-finance"
+          }
+        },
+        {
+          "id": "CACBC4DAE9C3411C83FBA0E9BB70D52D",
+          "title": "Allianz Global Citizen Program",
+          "link": {
+            "text": "Allianz Global Citizen Program",
+            "linktype": "internal",
+            "id": "{85DE6322-9FA1-44E8-9FEF-68F1B638E180}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/allianz-global-citizen-program"
+          }
+        },
+        {
+          "id": "28371F0C3A004B5781A7B4E53712DB7A",
+          "title": "Submission to servicing",
+          "link": {
+            "text": "Submission to servicing",
+            "linktype": "internal",
+            "id": "{0FC18D56-B992-4BD4-A250-C9EF2BCFB742}",
+            "anchor": "",
+            "querystring": "",
+            "target": "",
+            "href": "/for-financial-professionals/life-sales-tools/submission-to-servicing"
+          }
+        }
+      ]
+    }
+  ],
+  "published": false,
+  "codeChanged": false,
+  "localQA": {
+    "allThreeRoutesHaveNavigation": true,
+    "linksPerPage": 8,
+    "actualWidths": [
+      1024,
+      370
+    ],
+    "documentOverflow": false,
+    "mobileClickExpand": true,
+    "mobileSpaceCollapse": true,
+    "mobileEnterExpand": true,
+    "missingDatasourcePrompts": 0,
+    "sourceOrderMatches": true,
+    "targetsEmpty": true,
+    "visualQualification": "Local current-draft rendering; no native Page Builder or public live acceptance; exact source geometry not fully sampled"
+  },
+  "noPendingSaveOrPublication": true,
+  "ownedServerStopped": true,
+  "ownedQATabClosed": true
+}
