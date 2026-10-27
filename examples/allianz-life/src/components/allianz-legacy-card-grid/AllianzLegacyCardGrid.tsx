@@ -5,6 +5,7 @@ import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, should
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, type AllianzProps } from 'lib/allianz-fields';
 import type { LegacyCardGridProps } from './allianz-legacy-card-grid.props';
+import './AllianzLegacyCardGrid.css';
 import './AllianzLegacyPrivacyCards.css';
 
 export const Default = ({ fields, params, privacyLinks = false }: LegacyCardGridProps) => {
@@ -15,7 +16,7 @@ export const Default = ({ fields, params, privacyLinks = false }: LegacyCardGrid
   const columns = ({ '1': 12, '2': 6, '3': 4, '4': 3 } as Record<string, number>)[params.columns] ?? 6;
   const breakpoint = params.breakpoint === 'md' ? 'md' : 'sm';
   const region = ['pre-content', 'content', 'post-content', 'disclosure'].includes(params.region) ? params.region : 'content';
-  return <div className="row" id={params.RenderingIdentifier}><div className={`col-md-12 content-body ${region}`}>
+  return <div className="row allianz-legacy-card-grid" id={params.RenderingIdentifier}><div className={`col-md-12 content-body ${region}`}>
     {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}
     <div className={`row mod-row ${params.noMarginBottom === '1' ? 'no-margin-bottom' : ''}`}>
       {(data.children?.results ?? []).map((card) => <div className={`col-${breakpoint}-${columns}`} key={card.id}><article className="mod">

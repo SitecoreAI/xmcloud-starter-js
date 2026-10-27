@@ -1,0 +1,7 @@
+/* Native image fields render img rather than the source's inline svg.
+ * Center the existing responsive icon (32px desktop / 30px mobile) in its
+ * unchanged 50px circle without affecting card photographs or other grids. */
+.allianz-legacy-card-grid .icon-container img.icon.icon-story {
+  top: 50%;
+  transform: translateY(-50%);
+}
