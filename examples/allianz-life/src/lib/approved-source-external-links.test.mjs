@@ -825,3 +825,26 @@ test('Related Sites footer preserves exactly the three official external URLs an
     assert.equal(href(render(field('https://www.allianzlife.com/login', { target: '_blank' }))), '#service-unavailable');
   }
 });
+
+test('newsroom profile retains only its four additional verified official destinations', () => {
+  const urls = [
+    'https://www.allianz.com/en.html',
+    'https://www.agcs.allianz.com/',
+    'https://www.allianztravelinsurance.com/',
+    'https://www.allianz-trade.com/en_global.html',
+  ];
+  assert.deepEqual(source.entries.filter(({ sourceRecordKey }) => sourceRecordKey.startsWith('newsroom-company-profile-')).map(({ url }) => url), urls);
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const url of urls) {
+      for (const editing of [false, true]) {
+        const html = render(field(url, { target: '_blank' }), editing);
+        assert.equal(href(html), url);
+        assert.match(html, /target="_blank" rel="noopener noreferrer"/);
+      }
+      for (const invalid of [url.replace('https://', 'http://'), `${url}?redirect=https://example.invalid`, url.replace('https://', 'https://user:password@')]) {
+        assert.equal(href(render(field(invalid, { target: '_blank' }))), '#service-unavailable');
+      }
+    }
+  }
+});

@@ -85,5 +85,23 @@
     ],
     "gate": "Known unavailable publishing wizard / denied Authoring API remains; do not repeat or bypass. Operator can publish only these exact verified link items via a supported scope-confirming UI, then verify public delivery."
   },
-  "deployment": "Pushes auto-deploy; terminal host outcomes/live behavior must be verified separately. No manual deploy submitted in this pass."
+  "deployment": "Pushes auto-deploy; terminal host outcomes/live behavior must be verified separately. No manual deploy submitted in this pass.",
+  "verifiedRelease": {
+    "commit": "2c5ce1449eb2ca3bfe8d67d6cab82b92c4170a18",
+    "vercel": {
+      "id": "dpl_9vqwot68fVicgNyBkr67uDeUmTzr",
+      "status": "Ready Production",
+      "currentAlias": "allianz-life.vercel.app",
+      "buildDuration": "1m 10s"
+    },
+    "editing": {
+      "id": "7DdkkCwTwFW11kAl4OBHlV",
+      "status": "Complete",
+      "target": "thlt-allianz-demo/dev",
+      "duration": "4m 18s",
+      "build": "2m 34s",
+      "deployment": "1m 43s"
+    },
+    "liveQualification": "Newsroom PIMCO link matches source; three footer CMS link items are saved but unpublished, so their public anchors remain service-unavailable."
+  }
 }

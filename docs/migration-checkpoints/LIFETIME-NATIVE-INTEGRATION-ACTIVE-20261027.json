@@ -230,7 +230,24 @@
     "calculatorDatasourceRevisionUnchanged": "65bc0087-c24c-491d-ab7e-9b1ff9af30f8",
     "rootEvidence": "AllianzHero heading is defined as Rich Text; native CKEditor activation normalizes markup",
     "status": "FAIL: byte-stable activation/editing acceptance remains open; no global template or editor configuration changed",
-    "nativeCalculatorEngineInteraction": "not verified on editing host; local candidate coverage is separate"
+    "nativeCalculatorEngineInteraction": {
+      "status": "Qualified native Page Builder runtime sample passed after release 2c5ce144",
+      "renderedTableRows": 31,
+      "defaults": [
+        "$8,550.24",
+        "$7,207.26",
+        "$4,048.93"
+      ],
+      "oneTimeSample": [
+        "$819.11",
+        "$609.50",
+        "$609.50"
+      ],
+      "recurringDefaultsRestored": true,
+      "CMSAutosaveTriggered": false,
+      "mobile": "Native Mobile (370px) mode visually exposes source controls; actual innerWidth not instrumented in native canvas, unlike earlier local 370px measurements.",
+      "remaining": "Native heading activation normalization remains failed; no further heading mutation attempted."
+    }
   },
   "participantNavigationQA": {
     "scope": "local candidate; five links clicked and browser Back returned to calculator",
@@ -258,7 +275,7 @@
     "publication": false,
     "blockedAction": null,
     "observedUI": "Media tree showed allianz-life and shared only, not the known Project/Documents folder; exact LIA-001 search reported no search results",
-    "outcome": "Picker canceled; Rich Text Editor rejected; no disclosure save or speculative URL rewrite",
+    "outcome": "Saved and independently reopened exact native binding; only disclaimer, Revision and Updated changed. Earlier canceled picker attempts and invalid leading-slash experiment are historical and superseded.",
     "requiredEvidence": "Final native editor/engine acceptance and page/media publication remain held; rendered-link download attempt did not return a receipt.",
     "status": "Draft binding saved and independently reopened; prior picker blocker resolved through standard INTERNAL LINK full tree",
     "nativePickerPath": "INTERNAL LINK -> sitecore -> Media Library -> Project -> Allianz Life -> Documents -> LIA-001",

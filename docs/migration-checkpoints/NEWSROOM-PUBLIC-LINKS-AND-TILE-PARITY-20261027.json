@@ -1,0 +1,72 @@
+{
+  "utc": "2026-10-27T22:46:59.632394+00:00",
+  "sourceURL": "https://www.allianzlife.com/about/newsroom",
+  "scope": "Four exact public source URL additions; PIMCO already released in 2c5ce144. No native field, layout, routing, financial calculation or permission change.",
+  "links": [
+    {
+      "text": "Allianz SE",
+      "href": "https://www.allianz.com/en.html",
+      "target": "_blank"
+    },
+    {
+      "text": "Allianz Global Corporate & Specialty (AGCS)",
+      "href": "https://www.agcs.allianz.com/",
+      "target": "_blank"
+    },
+    {
+      "text": "PIMCO",
+      "href": "https://www.pimco.com/us/en",
+      "target": "_blank"
+    },
+    {
+      "text": "Allianz Global Assistance USA",
+      "href": "https://www.allianztravelinsurance.com/",
+      "target": "_blank"
+    },
+    {
+      "text": "Allianz Trade",
+      "href": "https://www.allianz-trade.com/en_global.html",
+      "target": "_blank"
+    }
+  ],
+  "localNativeDataMatchesCurrentSourceExactly": true,
+  "visitorFieldIdentityPreserved": true,
+  "regression": {
+    "tests": 2767,
+    "pass": 2766,
+    "fail": 0,
+    "skip": 1,
+    "skipQualification": "Existing opt-in portfolio browser fixture",
+    "lint": "pass",
+    "types": "pass",
+    "webpackBuild": "pass, 386 paths; not visual acceptance"
+  },
+  "matchedTileGeometry": {
+    "desktop": {
+      "actualViewport": 1024,
+      "contentImageColumnWidth": 477,
+      "columnX": [
+        32,
+        509
+      ],
+      "firstImage": "left",
+      "secondImage": "right",
+      "sourcePublicMatch": true
+    },
+    "mobile": {
+      "actualViewport": 370,
+      "documentWidth": 364,
+      "columnX": 16,
+      "columnWidth": 332,
+      "order": "content then image for both tiles",
+      "sourcePublicMatch": true
+    }
+  },
+  "remainingQualification": "Public profile starts farther down on mobile than official source. Two-tile orientation/width parity does not accept preceding sections or the whole page. Diagnose before any layout change.",
+  "publication": {
+    "newCMSWrites": 0,
+    "newCMSJobs": 0,
+    "calculatorAndSourcePDFsRemainUnpublished": true
+  },
+  "deployment": "Await commit push and automatic terminal host results; do not manually deploy documentation-only changes."
+}

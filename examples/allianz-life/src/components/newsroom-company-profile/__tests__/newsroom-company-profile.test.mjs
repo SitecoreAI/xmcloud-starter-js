@@ -60,11 +60,11 @@ test('profile complete native field objects and explicit root clears survive col
   assert.match(render(Default, undefined), /Add a datasource for Newsroom Company Profile/);
 });
 
-test('profile visitors preserve the verified PIMCO exception and restrict other links without changing native fields', () => {
+test('profile visitors preserve all five verified official public destinations and exact native field identity', () => {
   const original = data.parentBody.jsonValue;
   const snapshot = JSON.stringify(original);
   const visitor = safeNewsroomRichText(original, false);
-  assert.notEqual(visitor, original);
+  assert.equal(visitor, original);
   assert.equal(visitor.metadata, original.metadata);
   assert.equal(JSON.stringify(original), snapshot);
   assert.equal(safeNewsroomRichText(original, true), original);
@@ -72,11 +72,11 @@ test('profile visitors preserve the verified PIMCO exception and restrict other 
   assert.equal(safeNewsroomRichText(undefined, false), undefined);
   const empty = field('empty', 'Rich Text', '').jsonValue;
   assert.equal(safeNewsroomRichText(empty, false), empty);
-  assert.deepEqual(links(render(Default, data)), ['#service-unavailable', '#service-unavailable', 'https://www.pimco.com/us/en', '#service-unavailable', '#service-unavailable']);
+  assert.deepEqual(links(render(Default, data)), links(source));
   assert.deepEqual(links(render(Default, data, true)), links(source));
   assert.equal((render(Default, data).match(/rel="noopener noreferrer"/g) ?? []).length, 5);
-  assert.equal((render(Default, data).match(/target=""/g) ?? []).length, 4);
-  assert.equal((render(Default, data).match(/target="_blank"/g) ?? []).length, 1);
+  assert.equal((render(Default, data).match(/target=""/g) ?? []).length, 0);
+  assert.equal((render(Default, data).match(/target="_blank"/g) ?? []).length, 5);
   assert.doesNotMatch(render(Default, data), /data-demo-disabled/);
   const tricky = field('custom', 'Rich Text', '<p><a data-href="keep" data-target="also keep" href="mailto:media@example.com" target="_blank" rel="author external">Email</a></p>').jsonValue;
   assert.equal(safeNewsroomRichText(tricky, false).value, '<p><a data-href="keep" data-target="also keep" href="#service-unavailable" target="" rel="author external">Email</a></p>');
