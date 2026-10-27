@@ -1,0 +1,154 @@
+{
+  "recordedUTC": "2026-10-27T23:35:29.446560+00:00",
+  "scope": [
+    {
+      "slug": "americans-worry-they-cannot-afford-health-care-in-retirement",
+      "page": "A09430B8-A52D-4FB5-AD0B-084F10FFD18C",
+      "data": "3236741F-1828-4D1D-881D-A12A8E45D287",
+      "article": "BE1DB09A-23AE-4A34-9858-3DFB583E47F7",
+      "legal": "4A8D5E3A-295F-4DFD-A78E-D8CEE2FF6CE1",
+      "releaseDate": "2026-10-20",
+      "sourceSHA256": "822b3fae205d1cafd2e0590565def329de90cfffb0e99ff3ef75cf7dfe8e061a",
+      "status": "New native draft; source readback and local desktop/mobile pass",
+      "route": "/about/newsroom/2026-press-releases/americans-worry-they-cannot-afford-health-care-in-retirement",
+      "source": "https://www.allianzlife.com/about/newsroom/2026-press-releases/americans-worry-they-cannot-afford-health-care-in-retirement",
+      "publishedThisPass": false
+    },
+    {
+      "slug": "allianz-life-to-offer-one-of-a-kind-rila-benefit-that-protects-both-income-and-legacy",
+      "page": "216D2CB5-725C-4E61-B0FC-E20EC4118CC4",
+      "data": "BB46809B-F5E4-49CD-A561-97C1D7D2C8A7",
+      "article": "F01D2579-2604-44DE-B39D-80BAB0944A7E",
+      "legal": "C846D726-96C7-4177-BD1F-A53B9B6FAF2C",
+      "releaseDate": "2026-10-13",
+      "sourceSHA256": "b71bab274ec14944c66c39b73b0ccd30d475d2b0a4a400e9b7ffdc410f5494ce",
+      "status": "New native draft; source readback and local desktop/mobile pass",
+      "route": "/about/newsroom/2026-press-releases/allianz-life-to-offer-one-of-a-kind-rila-benefit-that-protects-both-income-and-legacy",
+      "source": "https://www.allianzlife.com/about/newsroom/2026-press-releases/allianz-life-to-offer-one-of-a-kind-rila-benefit-that-protects-both-income-and-legacy",
+      "publishedThisPass": false
+    },
+    {
+      "slug": "allianzim-adds-octi-to-international-uncapped-buffered-etf-lineup",
+      "page": "32E7D711-6963-4C74-8331-D8460422F41C",
+      "data": "71016B3F-D735-4D8E-B708-4A5ADD9D3AA6",
+      "article": "4A783AC0-E97A-471B-82D4-B90D25FB7827",
+      "legal": "D3688948-8C6E-40B6-8317-52057CA71670",
+      "releaseDate": "2026-10-01",
+      "status": "Existing page; three Never publish guards cleared and reopened, full article/disclosure content unchanged; fresh official source match; public still has missing datasource prompts",
+      "route": "/about/newsroom/2026-press-releases/allianzim-adds-octi-to-international-uncapped-buffered-etf-lineup",
+      "source": "https://www.allianzlife.com/about/newsroom/2026-press-releases/allianzim-adds-octi-to-international-uncapped-buffered-etf-lineup",
+      "publishedThisPass": false
+    }
+  ],
+  "nativeImplementation": {
+    "pageTemplate": "273E2551-3E06-52A6-BEA5-6F7D6E506913",
+    "pressReleaseTemplate": "8C7BA106-BF89-4B94-8667-06F4FEBE9D1A",
+    "pageDesign": "95E59645-E2D2-5E9D-A29D-A0FFA99921E8",
+    "routing": "Existing Sitecore tree and SDK catch-all only; no page-specific route files or hard-coded feed rows",
+    "newItems": 8,
+    "guardOnlyExistingItems": 3,
+    "duplicationNote": "First page-only copy lacked Data; Save warning cancelled, Data copied through native Copy to and repaired before metadata save. Second copy included its verified subtree. No duplicate page creation.",
+    "sourceImages": "Neither new official article includes images; none substituted",
+    "disclosures": "New articles retain full source disclosures in their body. Copied unrelated OCTI-only local disclosure cleared.",
+    "normalization": "Saved source article HTML differs only by native CRLF and XHTML void-tag normalization; complete text and every link attribute match source.",
+    "editorThumbnail": "Native page saves generated administrative thumbnail IDs; not used as public article imagery.",
+    "nativeValidation": "Current summary/body XHTML, links and image checks pass. Existing spaced datasource item-name warning retained.",
+    "rawFieldFenceQualification": "Native AX can project long raw values to 512 characters. Normal Insert options editor confirmed all 36 inherited selections remained; no restore or template change was performed."
+  },
+  "qa": {
+    "viewports": [
+      1280,
+      370
+    ],
+    "allThreeLocalRoutes": "Correct single H1, full content, no datasource prompt, no document overflow",
+    "twoNewFullTextReadback": "Headlines, summaries, release dates, complete text/disclosures and all link attributes match official originals",
+    "octiFreshSource": "Headline, complete article text (6,124 normalized characters) and complete disclosure match current official source; all saved content fields unchanged after guards",
+    "navigation": "Homepage href local /, same-tab click verified with stable tab count; Back returns article; Newsroom return shows automatic Oct20/Oct13/Oct1 feed order",
+    "nativeWysiwyg": "SDK editing HTML/metadata regression passes; known heading activation normalization remains open, not retested"
+  },
+  "codeChange": "PressRelease reuses existing visitor-only internal-page policy, preserves external/document/vanity exceptions and exact native editing fields",
+  "checks": {
+    "focusedPass": 22,
+    "fullPass": 2767,
+    "fullFail": 0,
+    "existingOptInSkip": 1,
+    "lint": "pass",
+    "types": "pass",
+    "webpack": "pass, 388 generated paths; not visual acceptance"
+  },
+  "publicationGate": {
+    "status": "No job submitted. Operator needed because supported exact-scope wizard unavailable and Authoring API remains denied; no retry or alternate API used.",
+    "preparedItemCount": 12,
+    "items": [
+      {
+        "id": "A09430B8-A52D-4FB5-AD0B-084F10FFD18C",
+        "kind": "page",
+        "route": "/about/newsroom/2026-press-releases/americans-worry-they-cannot-afford-health-care-in-retirement"
+      },
+      {
+        "id": "3236741F-1828-4D1D-881D-A12A8E45D287",
+        "kind": "data",
+        "route": "/about/newsroom/2026-press-releases/americans-worry-they-cannot-afford-health-care-in-retirement"
+      },
+      {
+        "id": "BE1DB09A-23AE-4A34-9858-3DFB583E47F7",
+        "kind": "article",
+        "route": "/about/newsroom/2026-press-releases/americans-worry-they-cannot-afford-health-care-in-retirement"
+      },
+      {
+        "id": "4A8D5E3A-295F-4DFD-A78E-D8CEE2FF6CE1",
+        "kind": "legal",
+        "route": "/about/newsroom/2026-press-releases/americans-worry-they-cannot-afford-health-care-in-retirement"
+      },
+      {
+        "id": "216D2CB5-725C-4E61-B0FC-E20EC4118CC4",
+        "kind": "page",
+        "route": "/about/newsroom/2026-press-releases/allianz-life-to-offer-one-of-a-kind-rila-benefit-that-protects-both-income-and-legacy"
+      },
+      {
+        "id": "BB46809B-F5E4-49CD-A561-97C1D7D2C8A7",
+        "kind": "data",
+        "route": "/about/newsroom/2026-press-releases/allianz-life-to-offer-one-of-a-kind-rila-benefit-that-protects-both-income-and-legacy"
+      },
+      {
+        "id": "F01D2579-2604-44DE-B39D-80BAB0944A7E",
+        "kind": "article",
+        "route": "/about/newsroom/2026-press-releases/allianz-life-to-offer-one-of-a-kind-rila-benefit-that-protects-both-income-and-legacy"
+      },
+      {
+        "id": "C846D726-96C7-4177-BD1F-A53B9B6FAF2C",
+        "kind": "legal",
+        "route": "/about/newsroom/2026-press-releases/allianz-life-to-offer-one-of-a-kind-rila-benefit-that-protects-both-income-and-legacy"
+      },
+      {
+        "id": "32E7D711-6963-4C74-8331-D8460422F41C",
+        "kind": "page",
+        "route": "/about/newsroom/2026-press-releases/allianzim-adds-octi-to-international-uncapped-buffered-etf-lineup"
+      },
+      {
+        "id": "71016B3F-D735-4D8E-B708-4A5ADD9D3AA6",
+        "kind": "data",
+        "route": "/about/newsroom/2026-press-releases/allianzim-adds-octi-to-international-uncapped-buffered-etf-lineup"
+      },
+      {
+        "id": "4A783AC0-E97A-471B-82D4-B90D25FB7827",
+        "kind": "article",
+        "route": "/about/newsroom/2026-press-releases/allianzim-adds-octi-to-international-uncapped-buffered-etf-lineup"
+      },
+      {
+        "id": "D3688948-8C6E-40B6-8317-52057CA71670",
+        "kind": "legal",
+        "route": "/about/newsroom/2026-press-releases/allianzim-adds-octi-to-international-uncapped-buffered-etf-lineup"
+      }
+    ],
+    "operatorSteps": [
+      "Recheck exact identities, English version, guards, workflow and locks. No lock overrides.",
+      "Using existing authorized publishing access, publish only explicit 12 items from master to experienceedge, English, no related items or implicit subitems; do not expand to site root.",
+      "Capture job ID and terminal result. Inspect three public articles and automatic newsroom feed, desktop/mobile, without equating drafts or build output to live recovery.",
+      "If delivery remains stale, collect exact item/delivery evidence; do not loop Smart publication or bypass API denial."
+    ],
+    "rollback": "Retain original OCTI content and revisions; eight new items remain identifiable drafts. No deletion or permanent purge.",
+    "excluded": "All previously restricted PDFs/media/calculator/sales-tool draft pages, held Culture/Legal/222 operations, unrelated items."
+  },
+  "remaining": "Three footer drafts, native heading autosave, Content Hub Add/import dependency, protected native runtime/authoring API gates, separate Life calculator integration and whole-site visual acceptance remain open."
+}

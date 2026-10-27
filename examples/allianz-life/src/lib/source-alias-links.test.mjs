@@ -112,3 +112,25 @@ test('the real SDK General Link renderer preserves source aliases, queries and n
     else process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = previous;
   }
 });
+
+
+test('press-release visitor links stay local while external and document destinations and editing remain authored', () => {
+  const summary = '<h4><a href="https://www.allianzlife.com/about" target="_blank">About</a></h4>';
+  const body = '<p><a href="https://www.allianzlife.com/" target="_blank">Allianz Life</a> '
+    + '<a href="https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/nhe-fact-sheet" target="_blank" rel="author">Official facts</a> '
+    + '<a href="https://www.allianzlife.com/-/media/files/brochure.pdf" target="_blank">Brochure</a></p>';
+  const fields = { title: { jsonValue: { value: 'Source headline' } },
+    summary: { jsonValue: { value: summary, metadata: metadata('release-summary', 'Rich Text') } },
+    body: { jsonValue: { value: body, metadata: metadata('release-body', 'Rich Text') } } };
+  const before = JSON.stringify(fields);
+  const visitor = render(PressRelease, fields);
+  assert.match(visitor, /href="\/about" target=""/);
+  assert.match(visitor, /href="\/" target=""/);
+  assert.ok(visitor.includes('<a href="https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/nhe-fact-sheet" target="_blank" rel="author">Official facts</a>'));
+  assert.ok(visitor.includes('<a href="https://www.allianzlife.com/-/media/files/brochure.pdf" target="_blank">Brochure</a>'));
+  const editor = render(PressRelease, fields, true);
+  assert.ok(editor.includes(summary));
+  assert.ok(editor.includes(body));
+  assert.match(editor, /test-release-body-field/);
+  assert.equal(JSON.stringify(fields), before);
+});

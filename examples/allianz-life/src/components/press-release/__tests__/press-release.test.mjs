@@ -89,7 +89,7 @@ test('one-link return and body-only disclosures have the same source design on a
   }
 });
 
-test('all exact captured HTML survives the real SDK, including styles, lists, tables, endnotes and blank disclosures', () => {
+test('all exact captured HTML survives real SDK editing, including styles, lists, tables, endnotes and blank disclosures', () => {
   const years = { 2024: 0, 2025: 0, 2026: 0 };
   const counts = { styledBodies: 0, formattingDivs: 0, lists: 0, tables: 0, endnotes: 0, nonemptyDisclosures: 0 };
   const disclosures = new Set();
@@ -97,7 +97,8 @@ test('all exact captured HTML survives the real SDK, including styles, lists, ta
     years[record.route.match(/\/(\d{4})-press-releases\//)[1]]++;
     const fields = record.exactSourceFieldValues;
     const before = JSON.stringify(fields);
-    const html = render('PressRelease', fields);
+    // Visitor hrefs intentionally localize; native editing must retain every source byte.
+    const html = render('PressRelease', fields, true);
     for (const name of ['summary', 'body']) {
       assert.ok(html.includes(fields[name].jsonValue.value), `${record.route}: exact ${name}`);
     }
