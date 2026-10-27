@@ -39,7 +39,7 @@ function render(input, isEditing = false, editable = true) {
       mode: { isEditing, isNormal: !isEditing, isPreview: false },
       layout: { sitecore: { context: {}, route: { name: 'Link contract test', fields: {}, placeholders: {} } } },
     }, api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
-  }, React.createElement(Link, { ...safeLinkRenderProps(input), editable })));
+  }, React.createElement(Link, { ...safeLinkRenderProps(input, isEditing), editable })));
 }
 function renderedHref(input, editable = true) {
   const html = render(input, false, editable);
@@ -87,22 +87,22 @@ test('embedded query/hash values preserve encoding, repeated keys, and native at
   assert.equal(output.value.href, '/about');
   assert.equal(output.value.querystring, 'tag=one&tag=two&q=a%23b&term=c%26d');
   assert.equal(output.value.anchor, 'overview');
-  assert.equal(output.value.target, '_blank');
+  assert.equal(output.value.target, '');
   assert.equal(output.value.linktype, 'internal');
   assert.equal(output.value.class, 'native-link');
   assert.equal(output.value.title, 'About');
   assert.equal(renderedHref(input), '/about?tag=one&tag=two&q=a%23b&term=c%26d#overview');
-  assert.match(render(input), /target="_blank"/);
+  assert.match(render(input), /target=""/);
 });
 
-test('native targets survive real SDK route and file rendering without inventing a target', () => {
+test('internal pages stay same-tab while files retain authored targets without inventing a target', () => {
   for (const destination of ['/about', 'https://www.allianzlife.com/about']) {
     const input = field(destination, { target: '_blank', linktype: 'internal' });
-    assert.equal(safeLink(input).value.target, '_blank');
+    assert.equal(safeLink(input).value.target, '');
     const html = render(input);
     assert.match(html, /href="\/about"/);
-    assert.match(html, /target="_blank"/);
-    assert.match(html, /rel="noopener noreferrer"/);
+    assert.match(html, /target=""/);
+    assert.doesNotMatch(html, /rel="noopener noreferrer"/);
   }
   const file = field('/allianz-assets/source.pdf', { target: '_blank', linktype: 'media' });
   assert.equal(safeLink(file).value.linktype, 'media');
@@ -123,15 +123,15 @@ test('supported SDK rel props preserve authored tokens and protect both renderer
   for (const destination of ['/about', '/allianz-assets/source.pdf', '#section']) {
     const input = field(destination, { target: '_blank', rel: 'author nofollow' });
     const props = safeLinkRenderProps(input);
-    assert.equal(props.rel, 'author nofollow noopener noreferrer');
+    assert.equal(props.rel, destination.endsWith('.pdf') ? 'author nofollow noopener noreferrer' : 'author nofollow');
     assert.equal(props.field.value.rel, 'author nofollow');
     assert.equal(input.value.rel, 'author nofollow');
-    assert.match(render(input), /target="_blank"/);
-    assert.match(render(input), /rel="author nofollow noopener noreferrer"/);
+    assert.match(render(input), destination.endsWith('.pdf') ? /target="_blank"/ : /target=""/);
+    assert.match(render(input), destination.endsWith('.pdf') ? /rel="author nofollow noopener noreferrer"/ : /rel="author nofollow"/);
   }
   const protectedInput = field('/about', { target: '_BLANK', rel: 'author NoOpener noreferrer' });
   assert.equal(safeLinkRenderProps(protectedInput).rel, 'author NoOpener noreferrer');
-  assert.match(render(protectedInput), /target="_BLANK"/);
+  assert.match(render(protectedInput), /target=""/);
   assert.match(render(protectedInput), /rel="author NoOpener noreferrer"/);
   const sameTab = field('/about', { target: '_self', rel: 'author' });
   assert.equal(safeLinkRenderProps(sameTab).rel, 'author');
@@ -200,8 +200,8 @@ test('cleared native fields and real metadata survive normal and editing SDK ren
   assert.match(editing, /native-general-link/);
   assert.match(editing, /href="\/about\?view=public#overview"/);
   assert.match(editing, /target="_blank" rel="noopener noreferrer"/);
-  assert.match(render(populated), /target="_blank" rel="noopener noreferrer"/);
-  assert.match(render(populated, false, false), /target="_blank" rel="noopener noreferrer"/);
+  assert.match(render(populated), /target=""/);
+  assert.match(render(populated, false, false), /target=""/);
   assert.deepEqual(populated.value, { href: '/about?view=public#overview', text: 'Open', target: '_blank', linktype: 'internal' });
 });
 

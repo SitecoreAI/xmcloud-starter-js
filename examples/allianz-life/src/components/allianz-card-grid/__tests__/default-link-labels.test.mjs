@@ -67,7 +67,7 @@ test('local visitor links retain official-host normalization, query, fragment, t
     querystring: 'next=3', text: 'About', target: '_blank', 'aria-label': 'Read About Allianz' };
   const [link] = anchors(shown(data, false));
   assert.equal(link.attrs.href, '/about?first=1&first=2&next=3#overview');
-  assert.equal(link.attrs.target, '_blank');
+  assert.equal(link.attrs.target, '');
   assert.equal(link.attrs['aria-label'], 'Read About Allianz');
 });
 
@@ -95,6 +95,63 @@ test('the verified EXT-1084 destination works through ordered card links without
     assert.equal(blocked.attrs.href, '#service-unavailable');
     assert.ok(!blocked.attrs.target);
     assert.ok(shown(data, true).includes(native.metadata.fieldId));
+  }
+});
+
+const verifiedProductDocuments = [
+  { variant: 'AA5Features', explicitAria: true },
+  { variant: 'CoreIncome7ProductFeatures' },
+  { variant: 'BenefitControlPlusProductFeatures' },
+  { variant: 'ClassicProductFeatures' },
+  { variant: 'AAPlusProductFeaturesContinuation' },
+  { variant: 'BenefitControlPlusProductResources', brochure: true },
+];
+for (const entry of verifiedProductDocuments) test(`${entry.variant}: verified product PDF keeps native link ownership, labels and visitor destination`, () => {
+  const url = entry.brochure
+    ? 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f2c2be58cff1453f93f24f122d3c30e1?v=1d29b652'
+    : 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa';
+  const text = entry.brochure ? 'Download the product brochure (PDF)' : 'See how Index Lock works (PDF)';
+  const parsed = new URL(url);
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const splitQuery of [false, true]) for (const projected of [false, true]) {
+      const data = datasource(); data.children.results = data.children.results.slice(0, 1);
+      const native = linkField(data);
+      native.value = { href: splitQuery ? `${parsed.origin}${parsed.pathname}` : url,
+        ...(splitQuery ? { querystring: parsed.search.slice(1) } : {}),
+        text, target: '_blank', linktype: 'external',
+        ...(entry.explicitAria ? { 'aria-label': text } : {}) };
+      if (projected) {
+        const card = data.children.results[0];
+        data.children.results[0] = { id: card.id, fieldCollection: [
+          { name: 'heading', jsonValue: card.heading.jsonValue },
+          { name: 'body', jsonValue: card.body.jsonValue },
+          { name: 'links', jsonValue: [{ id: card.links.targetItems[0].id, fields: { Link: native } }] },
+        ] };
+      }
+      const before = JSON.stringify(data);
+      for (const editing of [false, true]) {
+        const html = shown(data, editing, entry.variant), links = anchors(html);
+        assert.equal(links.length, 1);
+        const [link] = links;
+        assert.equal(link.attrs.href, url);
+        assert.equal(link.attrs['aria-label'], text);
+        assert.equal(link.attrs.target, '_blank');
+        assert.match(link.attrs.rel, /noopener/);
+        assert.match(link.attrs.rel, /noreferrer/);
+        assert.ok(link.body.includes(text));
+        if (editing) assert.ok(html.includes(native.metadata.fieldId));
+      }
+      assert.equal(JSON.stringify(data), before);
+      native.value.href = `${parsed.origin}${parsed.pathname}`;
+      native.value.querystring = 'v=unverified';
+      const blockedBefore = JSON.stringify(data);
+      const [blocked] = anchors(shown(data, false, entry.variant));
+      assert.equal(blocked.attrs.href, '#service-unavailable');
+      assert.ok(!blocked.attrs.target);
+      assert.ok(shown(data, true, entry.variant).includes(native.metadata.fieldId));
+      assert.equal(JSON.stringify(data), blockedBefore);
+    }
   }
 });
 

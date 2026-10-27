@@ -1,5 +1,6 @@
 import type { Field } from '@sitecore-content-sdk/nextjs';
 import { safeNewsroomRichText } from 'components/legal-disclosures/newsroom-grey.links.props';
+import { safeEditorialRichText } from './allianz-editorial';
 import { safeLink } from './allianz-fields';
 import retained from './allianz-retained-native-body-assets.fixture.json';
 
@@ -50,6 +51,7 @@ export function isUnavailableNativeBodyHref(decodedHref: string, rawHref: string
 export function safeNativeBodyRichText(field: Field<string> | undefined, isEditing: boolean,
   context?: NativeBodyLinkContext): Field<string> | undefined {
   if (!field || isEditing || !field.value || isExcludedNativeBodyOwner(context)) return field;
-  return safeNewsroomRichText(field, false, (decodedHref, rawHref) =>
+  const availableBody = safeNewsroomRichText(field, false, (decodedHref, rawHref) =>
     isUnavailableNativeBodyHref(decodedHref, rawHref, context));
+  return safeEditorialRichText(availableBody, false, true);
 }

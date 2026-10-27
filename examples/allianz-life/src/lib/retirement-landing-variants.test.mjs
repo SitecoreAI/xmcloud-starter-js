@@ -147,9 +147,9 @@ test('new resource cards preserve author alt, safe targets, queries/fragments an
   const html=shown(resources,native);
   assert.match(html,/alt="A meaningful authored image"/);
   assert.match(html,/href="\/about\?tag=one&amp;tag=two&amp;q=a%23b&amp;native=2#new"/);
-  assert.match(html,/rel="author noopener noreferrer"/);assert.match(html,/aria-label="Authored card label"/);
+  assert.match(html,/rel="author"/);assert.match(html,/aria-label="Authored card label"/);
   assert.match(html,/href="#service-unavailable"/);assert.doesNotMatch(html,/href="https:\/\/external/);
-  assert.match(html,/rel="nofollow noopener noreferrer"/);
+  assert.match(html,/rel="nofollow"/);
 });
 test('resource native fieldCollection card fields preserve optional category and link editing metadata', () => {
   const native=data(resources),projected={...native,children:{results:native.children.results.map(card=>({id:card.id,

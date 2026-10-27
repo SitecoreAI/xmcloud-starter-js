@@ -120,7 +120,7 @@ test('native fieldCollection and ordered links preserve download/arrow icons, qu
  const f=(name,value)=>({name,jsonValue:{value,metadata:{fieldId:`test-only-${name}`}}});
  const d={children:{results:[{id:'native-card',fieldCollection:[f('heading','Links'),f('body','<p>Body</p>'),{name:'links',jsonValue:[{id:'download',fields:{link:{value:{href:'/about?x=1#part',text:'Download',target:'_blank',rel:'author',ariaLabel:'Download source'}},icon:{value:{src:'/test-only/download.svg'}}}},{id:'arrow',fields:{link:{value:{href:'/about',text:'Read'}},icon:{value:{src:'/test-only/arrow.svg'}}}}]}]}]}};
  const before=JSON.stringify(d);const html=render(Cards.EditorialCallout,props(d));
- assert.match(html,/href="\/about\?x=1#part"/);assert.match(html,/rel="author noopener noreferrer"/);assert.match(html,/target="_blank"/);assert.match(html,/aria-label="Download source"/);
+ assert.match(html,/href="\/about\?x=1#part"/);assert.match(html,/rel="author"/);assert.match(html,/target=""/);assert.match(html,/aria-label="Download source"/);
  assert.ok(html.indexOf('/test-only/download.svg')<html.lastIndexOf('/test-only/arrow.svg'));assert.doesNotMatch(html,/<svg/);assert.equal(JSON.stringify(d),before);
 });
 test('cleared SDK fields remain editable; cleared ordered links never fall back to a stale single link',()=>{
@@ -144,7 +144,7 @@ test('hero preserves subtitle typography, responsive images and CKEditor block m
 test('visitor prose links keep safe targets/query/fragments and disable demo services; editing is identity-preserving',()=>{
  const f={value:'<p><a title="href=wrong" data-href="wrong" href="/about?a=1&amp;a=2#x" target="_blank" rel="author">Safe</a> <a href="tel:8005551212" target="_blank">Phone</a> <a href="/login">Login</a></p>',metadata:{fieldId:'native'}};
  assert.equal(safeEditorialRichText(f,true),f);const v=safeEditorialRichText(f,false);
- assert.match(v.value,/href="\/about\?a=1&amp;a=2#x"/);assert.match(v.value,/target="_blank" rel="author noopener noreferrer"/);assert.match(v.value,/href="#service-unavailable" target=""/);assert.equal(v.metadata,f.metadata);assert.ok(f.value.includes('tel:'));
+ assert.match(v.value,/href="\/about\?a=1&amp;a=2#x"/);assert.match(v.value,/target="" rel="author"/);assert.match(v.value,/href="#service-unavailable" target=""/);assert.equal(v.metadata,f.metadata);assert.ok(f.value.includes('tel:'));
 });
 test('structural placeholder rejects fabricated/missing dynamic identifiers and preserves native props',()=>{
  const section={parameterIntent:{}};const p=sectionInput(section,[]);const node=Section.Default(p);const holder=node.props.children.props.children;

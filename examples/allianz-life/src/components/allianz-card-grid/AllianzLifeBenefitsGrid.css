@@ -17,6 +17,13 @@
   filter: brightness(0) invert(23.5294%);
 }
 
+@media (max-width: 703px) {
+  .allianz-life-benefits-grid .m-axlTile .tileContent {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 @media (min-width: 704px) {
   .allianz-life-benefits-grid .tileIcon > .allianz-life-benefit-glyph {
     width: 40px;

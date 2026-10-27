@@ -114,7 +114,11 @@ test('live imported snapshot returns real internal results without adding a cano
 });
 
 const notFound = new Error('NEXT_NOT_FOUND_TEST');
-const pageLoad = loader({ 'next/navigation': { useRouter: () => ({ push() {} }), notFound() { throw notFound; } } });
+// This suite owns the utility's existing data/handlers; shell integration has its own regression suite.
+const pageLoad = loader({
+  'next/navigation': { useRouter: () => ({ push() {} }), notFound() { throw notFound; } },
+  '../../search/NewYorkSearchUtilityShell': { __esModule: true, default: async ({ children }) => children },
+});
 const page = pageLoad(path.join(routeRoot, 'page.tsx'));
 const newYorkPage = pageLoad(path.join(newYorkRouteRoot, 'page.tsx'));
 async function pageElement(q, site = 'allianz-life', locale = 'en') {

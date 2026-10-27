@@ -112,7 +112,7 @@ test('authored empty alt, dimensions and versioned image URL survive while compl
     assert.doesNotMatch(image, /aria-hidden|role="presentation"/);
     assert.equal(removeIcon(html), renderSDK(Baseline.Default, data, params(), mode));
     const link = [...html.matchAll(/<a\b[^>]*>/g)].map(match => match[0]).find(tag => attribute(tag, 'class') === 'a-link');
-    assert.ok(link); assert.equal(attribute(link, 'target'), '_blank');
+    assert.ok(link); assert.equal(attribute(link, 'target'), mode === 'editing' ? '_blank' : '');
     assert.equal(attribute(link, 'href'), '/about?source=fixture&value=one#fixture-details');
     const baselineLink = [...renderSDK(Baseline.Default, data, params(), mode).matchAll(/<a\b[^>]*>/g)]
       .map(match => match[0]).find(tag => attribute(tag, 'class') === 'a-link');

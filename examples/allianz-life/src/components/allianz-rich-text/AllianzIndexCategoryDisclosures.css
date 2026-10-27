@@ -1,0 +1,48 @@
+/* Finite native Index category projection. Retained source spacing and indicators;
+   native desktop/mobile visual acceptance remains a separate release gate. */
+.allianz-index-category-accordions > .allianz-index-category-disclosure {
+  border-bottom: 1px solid #ccc;
+}
+
+.allianz-index-category-accordions > details > summary {
+  position: relative;
+  display: block;
+  list-style: none;
+  padding: 10px 36px 10px 10px;
+  cursor: pointer;
+}
+
+.allianz-index-category-accordions > details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.allianz-index-category-accordions > details > summary > h4 {
+  display: inline;
+  margin: 0;
+}
+
+/* Painted indicator avoids adding decorative text to the accessible name. */
+.allianz-index-category-accordions > details > summary::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  background: linear-gradient(#428bca, #428bca) center / 100% 2px no-repeat,
+    linear-gradient(#428bca, #428bca) center / 2px 100% no-repeat;
+}
+
+.allianz-index-category-accordions > details[open] > summary::after {
+  background-size: 100% 2px, 0 0;
+}
+
+.allianz-index-category-accordions > details > summary:focus-visible {
+  outline: 2px solid #003781;
+  outline-offset: 2px;
+}
+
+.allianz-index-category-accordions .allianz-index-category-answer {
+  padding-top: 20px;
+}

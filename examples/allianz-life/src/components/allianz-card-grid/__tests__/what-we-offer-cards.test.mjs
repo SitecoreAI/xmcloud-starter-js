@@ -126,7 +126,7 @@ test('OfferCards preserves ordered structured native links and their explicit ta
     assert.deepEqual(attributes(html, 'a', 'href'), ['#test-only-offer-0', '#test-only-second', '#test-only-offer-1']);
     assert.deepEqual(attributes(html, 'a', 'aria-label'), ['Native destination 0', 'Explicit native label', 'Native destination 1']);
     assert.ok(html.includes('Second native destination'));
-    if (!editing) assert.deepEqual(attributes(html, 'a', 'rel'), ['noopener noreferrer']);
+    if (!editing) { assert.deepEqual(attributes(html, 'a', 'rel'), []); assert.ok(!attributes(html, 'a', 'target').includes('_blank')); }
     assert.doesNotMatch(html, /UNUSED|unused-/);
   }
   assert.equal(markers(render(Components.OfferCards, data, true)).length, 9);

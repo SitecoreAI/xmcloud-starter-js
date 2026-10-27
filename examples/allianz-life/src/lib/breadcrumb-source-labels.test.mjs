@@ -110,7 +110,7 @@ test(`${mode}: all five exact source labels survive with source order, destinati
   test(`${mode}: normal href query, case, hash, target and existing tooltip behavior remain intact`, () => withMode(mode, () => {
     const [a] = anchors(render(Breadcrumbs, one({ href: '/About?a=one&a=two#details', target: '_blank', 'aria-label': 'About details' })));
     assert.equal(a.attrs.href, '/About?a=one&a=two#details');
-    assert.equal(a.attrs.target, '_blank');
+    assert.equal(a.attrs.target, '');
     assert.equal(a.attrs.title, 'Tooltip is not an aria fallback');
     assert.equal(a.attrs['aria-label'], 'About details');
   }));

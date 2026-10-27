@@ -4,7 +4,9 @@ import type { EditingPreviewData } from '@sitecore-content-sdk/content/editing';
 
 import { isDesignLibraryPreviewData, PREVIEW_COOKIES } from '@sitecore-content-sdk/nextjs/editing';
 import { cookies, draftMode, headers } from 'next/headers';
+import { permanentRedirect } from 'next/navigation';
 import { cache } from 'react';
+import publicRouteIndex from '../../content/public-route-index.json';
 import { getFixturePage, isConnected } from './allianz-page';
 import client from './sitecore-client';
 
@@ -125,6 +127,18 @@ export const loadAllianzPage = cache(async (site: string, locale: string, ...pat
         ...(editingData.previewTime ? { sc_previewTime: editingData.previewTime } : {}),
       } };
     return { page, needsComponentData: true, componentFetchOptions };
+  }
+
+  // The three captured aliases have no native CMS item. Resolve only recorded
+  // public aliases, after authoring has returned, so connected delivery does not
+  // turn their canonical source destinations into 404s.
+  if (site === 'allianz-life' && locale === 'en') {
+    const publicPath = `/${path.join('/')}`.toLowerCase();
+    const routes: Record<string, string> = publicRouteIndex;
+    const canonical = routes[publicPath];
+    if (canonical && canonical !== publicPath && routes[canonical] === canonical) {
+      permanentRedirect(canonical);
+    }
   }
 
   const connected = isConnected();

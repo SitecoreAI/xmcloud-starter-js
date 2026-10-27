@@ -571,17 +571,15 @@ test('header destinations pass validated native targets and rel alongside author
     h.render(props);
     for (const item of [root, utility]) {
       const link = h.one((x) => x.type === 'a' && x.props.field?.value.href === item.link.jsonValue.value.href);
-      assert.equal(link.props.field.value.target, '_blank');
-      assert.match(link.props.rel, /noopener/);
-      assert.match(link.props.rel, /noreferrer/);
+      assert.equal(link.props.field.value.target, '');
+      assert.equal(link.props.rel, undefined);
       assert.equal(link.props.field.editable, item.link.jsonValue.editable);
     }
     assert.equal(h.one((x) => x.type === 'a' && x.props.field?.value.href === '/ordinary').props.rel, undefined);
     if (!mobile) {
       const leaf = h.one((x) => x.type === 'a' && x.props.field?.value.href === '/blank');
-      assert.equal(leaf.props.field.value.target, '_blank');
-      assert.match(leaf.props.rel, /noopener/);
-      assert.match(leaf.props.rel, /noreferrer/);
+      assert.equal(leaf.props.field.value.target, '');
+      assert.equal(leaf.props.rel, undefined);
       assert.equal(leaf.props.onClick, undefined, 'leaf target follows native navigation');
     }
   }

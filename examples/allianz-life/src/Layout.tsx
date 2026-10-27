@@ -10,7 +10,11 @@ import { collectionsComplete } from 'lib/collection-completeness';
 import { isConnected } from 'lib/allianz-content-mode';
 import { isNewYorkHomePage } from 'lib/allianz-new-york-page';
 
-interface LayoutProps { page: Page }
+interface LayoutProps {
+  page: Page;
+  /** Complete app-owned main region; native CMS pages keep their existing main. */
+  mainContent?: React.ReactNode;
+}
 export interface RouteFields {
   [key: string]: unknown;
   Title?: Field;
@@ -34,7 +38,7 @@ const hasLegacyHeader = (renderings: ComponentRendering[] = []): boolean =>
   renderings.some((rendering) => rendering.componentName === 'AllianzLegacyHeader' ||
     Object.values(rendering.placeholders ?? {}).some(hasLegacyHeader));
 
-const Layout = ({ page }: LayoutProps): JSX.Element => {
+const Layout = ({ page, mainContent }: LayoutProps): JSX.Element => {
   const { layout, mode } = page;
   const { route } = layout.sitecore;
   if (!collectionsComplete(layout, isConnected())) {
@@ -62,12 +66,12 @@ const Layout = ({ page }: LayoutProps): JSX.Element => {
       {mode.isDesignLibrary ? route && <DesignLibraryApp page={page} rendering={route} componentMap={componentMap} loadServerImportMap={() => import('.sitecore/import-map.server')} /> : <>
         <ConsentControls />
         {header}
-        {legacy ? <main id="main" className="container-fluid azl-contents"><div className="row">
+        {mainContent ?? (legacy ? <main id="main" className="container-fluid azl-contents"><div className="row">
           {sidebar && <aside className="col-md-2 col-sm-3 left-column">{placeholder('headless-sidebar')}</aside>}
           <div id="content-body" className={nyHome ? 'col-sm-12 center-column allianz-ny-home-content' : sidebar ? 'col-md-8 col-sm-9 center-column' : rightRail ? 'col-md-10 col-sm-9 center-column' : 'col-md-10 col-md-offset-1 center-column'}>{placeholder('headless-main')}</div>
           {rightRail && <aside className="col-md-2 col-sm-3 right-column">{placeholder('headless-right-rail')}</aside>}
           {emptyRightRail && <div className="allianz-empty-right-rail-chrome" style={{ position: 'absolute', insetInlineEnd: 0, width: '16.66666667%' }}>{placeholder('headless-right-rail')}</div>}
-        </div></main> : <main id="main"><div id="content">{placeholder('headless-main')}</div></main>}
+        </div></main> : <main id="main"><div id="content">{placeholder('headless-main')}</div></main>)}
         {footer}
         <ServiceUnavailable />
       </>}

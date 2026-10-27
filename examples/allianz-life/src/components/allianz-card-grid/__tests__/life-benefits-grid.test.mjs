@@ -350,7 +350,7 @@ test('whole-card native target/query/anchor/ARIA and approved business URL survi
     const html = render(Cards.LifeNeedsCards, data, editing);
     assert.ok(attrs(html, 'a', 'href').includes(RESOURCE_GROUPS[0][0].href + '?source=native#financial-needs'));
     assert.ok(attrs(html, 'a', 'href').includes('https://www.allianzlife.com/what-we-offer/Life-Insurance/strategies-for-business-owners'));
-    assert.ok(attrs(html, 'a', 'aria-label').includes('An explicit native label')); assert.ok(attrs(html, 'a', 'target').includes('_blank'));
+    assert.ok(attrs(html, 'a', 'aria-label').includes('An explicit native label')); assert.ok(attrs(html, 'a', 'target').includes(editing ? '_blank' : ''));assert.equal(attrs(html, 'a', 'target').filter(value => value === '_blank').length, editing ? 1 : 0);
   }
   assert.equal(JSON.stringify(data), before);
 });

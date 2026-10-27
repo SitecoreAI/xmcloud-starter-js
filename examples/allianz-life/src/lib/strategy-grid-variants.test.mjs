@@ -196,7 +196,7 @@ test('new variants preserve alt, aria label, target and safe encoded query/fragm
   const entry = scenario('college-funding--section-8-grid'), data = native(entry);
   const html = render(Cards[entry.variant], data, false, entry.params);
   assert.match(html, /href="\/about\?source=strategy#details"/);
-  assert.match(html, /target="_blank"/); assert.match(html, /rel="noopener noreferrer"/);
+  assert.match(html, /target=""/); assert.doesNotMatch(html, /target="_blank"/);
   for (const card of data.children.results) assert.ok(html.includes(`aria-label="${card.link.jsonValue.value.ariaLabel}"`));
   for (const card of data.children.results.filter(card => card.image.jsonValue.value.src)) assert.ok(html.includes(`alt="${card.image.jsonValue.value.alt}"`));
 });

@@ -179,13 +179,19 @@ export function safeLink(field?: LinkField): LinkField {
       href: isLocalAnchor ? `${nativeQuery ? `?${nativeQuery}` : ''}${href}` : isQueryOnly ? `?${querystring}${anchor ? `#${anchor}` : ''}` : url.pathname,
       querystring: isLocalAnchor || isQueryOnly ? '' : querystring,
       anchor: isLocalAnchor || isQueryOnly ? '' : anchor,
+      // Internal page navigation stays in the current browsing context. Native
+      // document/download links and retained external-source exceptions return
+      // above or keep their authored target. Do not intercept modifier clicks.
+      ...(field.value.target && field.value.target.toLowerCase() !== '_self' &&
+        !/\.(?:pdf|docx?|xlsx?|pptx?|csv|zip|mp4|mp3)$/i.test(url.pathname) &&
+        !Object.hasOwn(field.value, 'download') ? { target: '' } : {}),
     },
   };
 }
 
 /** Both SDK renderers accept rel as a Link prop, rather than a field value. */
-export function safeLinkRenderProps(field?: LinkField): Pick<LinkProps, 'field' | 'rel'> {
-  const normalized = safeLink(field);
+export function safeLinkRenderProps(field?: LinkField, isEditing = false): Pick<LinkProps, 'field' | 'rel'> {
+  const normalized = isEditing && field ? field : safeLink(field);
   const authoredRel = normalized.value?.rel;
   const rel = typeof authoredRel === 'string' ? authoredRel : undefined;
   if (!normalized.value?.href || normalized.value.target?.toLowerCase() !== '_blank') {

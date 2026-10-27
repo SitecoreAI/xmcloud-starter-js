@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import SearchUtilityPage, { type SearchPageProps } from '../../search/SearchUtilityPage';
+import NewYorkSearchUtilityShell from '../../search/NewYorkSearchUtilityShell';
 
 export const metadata: Metadata = {
   title: 'Local New York website search | Allianz Life demo',
@@ -9,5 +10,7 @@ export const metadata: Metadata = {
 
 /** Local integration wrapper; the captured source record and counts stay intact. */
 export default async function NewYorkSearchPage(props: SearchPageProps) {
-  return SearchUtilityPage({ ...props, market: 'new-york' });
+  const { site, locale } = await props.params;
+  const content = await SearchUtilityPage({ ...props, market: 'new-york' });
+  return NewYorkSearchUtilityShell({ site, locale, kind: 'search', children: content });
 }

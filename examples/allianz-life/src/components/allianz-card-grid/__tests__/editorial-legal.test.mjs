@@ -172,7 +172,7 @@ test('visitor service policy disables source mail and phone while editing preser
   d.children.results[0].body = field('body', raw); const before = JSON.stringify(d);
   const normal = render(Cards.EditorialLegal, props(d));
   assert.doesNotMatch(normal, /href="mailto:|href="tel:/); assert.match(normal, /#service-unavailable/);
-  assert.match(normal, /href="\/about\?a=1&amp;a=2#x" target="_blank" rel="author noopener noreferrer"/);
+  assert.match(normal, /href="\/about\?a=1&amp;a=2#x" target="" rel="author"/);
   assert.ok(render(Cards.EditorialLegal, props(d, true)).includes(raw)); assert.equal(JSON.stringify(d), before);
 });
 test('modern Default and EditorialIntro keep their distinct baseline markup and heading semantics', () => {

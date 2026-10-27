@@ -1,41 +1,58 @@
 'use client';
 
 import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { useId } from 'react';
+import { projectIndexCategoryBody } from 'lib/index-category-projection';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, rowSpacing, sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { AllianzFieldContent } from 'lib/allianz-field-content';
 import type { AllianzRichTextDefaultProps, AllianzRichTextProps } from './allianz-rich-text.props';
-import { restoreSourceDestinationRichText } from 'lib/allianz-source-destinations';
+import { safeEditorialRichText } from 'lib/allianz-editorial';
+import { isSourceDestinationRichTextHref, restoreSourceDestinationRichText } from 'lib/allianz-source-destinations';
 import { bodyArrowLinkGlyphs, bodyDownloadLinkGlyphs } from 'lib/body-download-link-glyphs';
 import './AllianzLifeOverviewHeadings.css';
 import './AllianzAboutHeadings.css';
 import './AllianzInvestmentOptions.css';
 import './AllianzRichTextIcons.css';
+import './AllianzIndexCategoryDisclosures.css';
 
-export const Default = ({ fields, params, brandIcon = false, bodyDownloadLinks = false, bodyArrowLinks = false }: AllianzRichTextDefaultProps) => {
+export const Default = ({ fields, params, rendering, brandIcon = false, bodyDownloadLinks = false, bodyArrowLinks = false }: AllianzRichTextDefaultProps) => {
   const { page } = useSitecore();
+  const categoryInstance = useId();
   const isEditing = page?.mode?.isEditing ?? false;
   const routeId = page?.layout?.sitecore?.route?.itemId;
   const indexOptionsScope = typeof routeId === 'string' && routeId.replace(/[{}-]/g, '').toLowerCase() === 'e8e1893aff9b4b4a81bca809693ccf88'
     ? ' allianz-index-options-rich-text' : '';
   const nativeData = fields?.data?.datasource;
-  const destinationBody = restoreSourceDestinationRichText(nativeData?.body?.jsonValue, page?.mode?.isEditing !== false,
-    nativeData && 'id' in nativeData ? nativeData.id : undefined);
-  const body = bodyDownloadLinks
+  const ownerId = nativeData && 'id' in nativeData ? nativeData.id : undefined;
+  const restoredBody = restoreSourceDestinationRichText(nativeData?.body?.jsonValue, page?.mode?.isEditing !== false, ownerId);
+  const destinationBody = safeEditorialRichText(restoredBody, isEditing, true,
+    (href) => isSourceDestinationRichTextHref(href, ownerId));
+  const glyphBody = bodyDownloadLinks
     ? bodyDownloadLinkGlyphs(destinationBody, false)
     : bodyArrowLinks ? bodyArrowLinkGlyphs(destinationBody, false) : destinationBody;
+  const category = projectIndexCategoryBody({ pageID: routeId,
+    ownerID: nativeData && 'id' in nativeData ? nativeData.id : undefined,
+    renderingUID: rendering?.uid, instanceToken: categoryInstance, html: glyphBody?.value });
+  const body = category ? { ...glyphBody, value: category.html } : glyphBody;
   const data = nativeData && body !== nativeData.body?.jsonValue
     ? { ...nativeData, body: { ...nativeData.body, jsonValue: body } } : nativeData;
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
-  // Visual-only glyph projection retains the original native Body chrome.
+  // This source page title was imported as h2. Keep its existing h2 visual
+  // treatment while restoring the source-owned level-one heading semantics.
+  const compactId = (value: unknown) => typeof value === 'string' ? value.replace(/[{}-]/g, '').toLowerCase() : '';
+  const calculatorTitle = compactId('id' in data ? data.id : undefined) === 'c4048ff267ec4d989d2a95b28c2d64a2'
+    && compactId(rendering?.uid) === '57532c337e0f5dfa8bc9793e493c6fa1';
+  // Visual-only projections retain the original native Body chrome.
   // The SDK receives projected HTML as non-editable content, never as a changed
   // authoring value; the native metadata wrapper owns the actual field control.
   const projectedBody = isEditing && body !== destinationBody;
   const renderBody = (className: string, tabIndex?: number) => {
     // Non-editable projections must not activate the SDK's visitor link routing.
     const content = <RichText editable={isEditing && !projectedBody} field={data.body?.jsonValue}
-      internalLinksSelector={projectedBody ? ':not(*)' : undefined} className={className} tabIndex={tabIndex} />;
+      internalLinksSelector={projectedBody ? ':not(*)' : undefined}
+      className={`${className}${category ? ' allianz-index-category-accordions' : ''}`} tabIndex={tabIndex} />;
     return projectedBody ? <AllianzFieldContent field={nativeData?.body?.jsonValue} editable>{content}</AllianzFieldContent> : content;
   };
   const bodyValue = data.body?.jsonValue?.value;
@@ -51,7 +68,7 @@ export const Default = ({ fields, params, brandIcon = false, bodyDownloadLinks =
         {shouldRenderImageField(data.icon?.jsonValue, isEditing) && <div className={`tileIcon ${brandIcon ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`} data-allianz-rich-text-icon={brandIcon ? 'brand' : 'gray'}>
           <Image editable={isEditing} field={data.icon?.jsonValue} className="allianz-rich-text-icon-glyph" />
         </div>}
-        {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <header><div className="tileHeading"><Text editable={isEditing} tag={headingTag(params.headingLevel)} field={data.heading?.jsonValue} /></div></header>}
+        {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <header><div className="tileHeading"><Text editable={isEditing} tag={calculatorTitle ? 'h1' : headingTag(params.headingLevel)} className={calculatorTitle ? 'h2' : undefined} field={data.heading?.jsonValue} /></div></header>}
         {shouldRenderTextField(data.subheading?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" />}
         {shouldRenderTextField(data.body?.jsonValue, isEditing) && renderBody(`tileBody ${params.headingLevel === 'h2' ? 'u-font-size-xl' : ''}${indexOptionsScope}`, hasIndexOptionsTable && !isEditing ? 0 : undefined)}
         {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}

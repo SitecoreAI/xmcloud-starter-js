@@ -102,7 +102,7 @@ test('native link destination, target and split query/anchor semantics survive w
   for (const editing of [false, true]) {
     const html = render(Cards.LifeToolsNeeds, data, editing);
     assert.ok(attrs(html, 'a', 'href').includes('/what-we-offer/life-insurance/college-funding?tools=native#source-section'));
-    assert.ok(attrs(html, 'a', 'target').includes('_blank'));
+    assert.ok(attrs(html, 'a', 'target').includes(editing ? '_blank' : ''));assert.equal(attrs(html, 'a', 'target').filter(value => value === '_blank').length, editing ? 1 : 0);
     assert.ok(attrs(html, 'a', 'aria-label').includes('Explicit native label'));
   }
   assert.equal(JSON.stringify(data), before);

@@ -137,7 +137,7 @@ test('ProductCards keeps all 13 source image/header/body wrappers, H4 order, lin
       assert.ok(image, `source image ${card.image.src}`);
       assert.ok(image.includes(`alt="${card.image.alt}"`), `source alt for ${card.image.src}`);
     }
-    if (group.cards.some((card) => card.target === '_blank')) assert.match(html, /target="_blank"[^>]*rel="noopener noreferrer"/);
+    if (group.cards.some((card) => card.target === '_blank')) { assert.match(html, /target=""/); assert.doesNotMatch(html, /target="_blank"/); }
     assert.equal(JSON.stringify(datasource), before);
   }
 });

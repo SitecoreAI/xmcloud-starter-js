@@ -25,19 +25,28 @@ const decodeAttribute = (value: string) => value.replace(/&#(?:x([\da-f]+)|(\d+)
   .replaceAll('&colon;', ':').replaceAll('&Tab;', '\t').replaceAll('&NewLine;', '\n').replaceAll('&amp;', '&');
 
 /** Visitor-only link policy. Original content and SDK editing metadata stay intact.
- * Unlike the FAQ's adapter, safe source new-tab links retain their target. */
-export function safeEditorialRichText(field: Field<string> | undefined, isEditing: boolean): Field<string> | undefined {
+ * Internal page targets follow safeLink; document and external targets remain authored. */
+export function safeEditorialRichText(field: Field<string> | undefined, isEditing: boolean, internalPagesOnly = false,
+  retainHref?: (href: string) => boolean): Field<string> | undefined {
   if (!field || isEditing || !field.value) return field;
   const value = field.value.replace(/<a\b(?:[^'">]|"[^"]*"|'[^']*')*>/gi, (tag) => {
     const attrs = [...tag.matchAll(/(\s+)([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g)];
     const attr = (name: string) => attrs.find((item) => item[2].toLowerCase() === name);
     const contents = (item: RegExpMatchArray | undefined) => decodeAttribute(item?.[3] ?? item?.[4] ?? item?.[5] ?? '');
     const href = attr('href');
-    if (!href) return tag;
+    if (!href || retainHref?.(contents(href))) return tag;
     const target = attr('target');
     const rel = attr('rel');
-    const link = safeLink({ value: { href: contents(href), target: contents(target) } }).value;
+    if (internalPagesOnly && (!target || !contents(target) || contents(target).toLowerCase() === '_self')) return tag;
+    const link = safeLink({ value: { href: contents(href), target: contents(target),
+      ...(attr('download') ? { download: contents(attr('download')) } : {}) } }).value;
     const destination = `${link.href ?? ''}${link.querystring ? `?${link.querystring}` : ''}${link.anchor ? `#${link.anchor}` : ''}`;
+    // Native bodies retain their existing asset/external anchors byte-for-byte.
+    // This mode only normalizes supported internal page navigation.
+    if (internalPagesOnly && (!/^(?:\/(?!\/)|#|\?)/.test(destination)
+      || destination === '#service-unavailable' || destination === '#demo-unavailable'
+      || /\.(?:pdf|docx?|xlsx?|pptx?|csv|zip|mp4|mp3)(?:[?#]|$)/i.test(destination)
+      || attr('download'))) return tag;
     const changes = [{ index: href.index ?? 0, length: href[0].length, value: `${href[1]}href="${escapeAttribute(destination)}"` }];
     if (target && contents(target) !== link.target) changes.push({ index: target.index ?? 0, length: target[0].length, value: `${target[1]}target="${escapeAttribute(link.target ?? '')}"` });
     let append = '';

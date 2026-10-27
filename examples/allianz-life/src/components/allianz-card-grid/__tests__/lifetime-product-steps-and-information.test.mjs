@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import test from 'node:test';
+import { withLegacyInternalTargets, assertOnlyInternalTargetChanges } from '../../../lib/internal-target-baseline-helper.mjs';
 import { compile, deepFreeze, filename, require, sourceRoot } from './icon-appearance-fixture.mjs';
 
 const React = require('react');
@@ -201,7 +202,11 @@ const baseline = { normal: '7898b6a6f0f35132db6629bca27fc6f3aecaef92d0dd378b2b05
   editing: 'cfde8aad16e8ce12c4ccf2dddc1f4fddab3e7d3d925a51039e6c99507b21fe48' };
 function preservationDigest(mode) {
   const digest = createHash('sha256'); let count = 0;
-  for (const current of preservationCases()) { digest.update(current.label + '\0' + render(current, mode) + '\0'); count++; }
+  for (const current of preservationCases()) {
+    const html = render(current, mode), legacy = withLegacyInternalTargets(() => render(current, mode));
+    assertOnlyInternalTargetChanges(html, legacy, current.label);
+    digest.update(current.label + '\0' + legacy + '\0'); count++;
+  }
   return { count, sha256: digest.digest('hex') };
 }
 for (const mode of modes) test(`${mode} all excluded owners/params/variants and unrelated numeric/icon content retain sealed16 whole output`, () => {

@@ -171,8 +171,8 @@ for (const mode of ['fixture', 'connected']) {
     const attrs = { value: '<a target="_blank" rel="author" href="www.allianzlife.com/?a=1&amp;a=2#part">Site</a>' };
     const normal = safeEditorialRichText(attrs, false).value;
     assert.match(normal, /href="\/\?a=1&amp;a=2#part"/);
-    assert.match(normal, /target="_blank"/);
-    assert.match(normal, /rel="author noopener noreferrer"/);
+    assert.match(normal, /target=""/);
+    assert.match(normal, /rel="author"/);
   }));
 }
 
@@ -198,9 +198,9 @@ for (const mode of ['fixture', 'connected']) {
       const before = JSON.stringify(input), output = safeLink(input);
       assert.equal(outputHref(input), expected, href);
       assert.strictEqual(output.metadata, input.metadata);
-      assert.equal(output.value.target, '_blank');
+      assert.equal(output.value.target, '');
       assert.equal(output.value.title, 'Original title');
-      assert.equal(safeLinkRenderProps(input).rel, 'author noopener noreferrer');
+      assert.equal(safeLinkRenderProps(input).rel, 'author');
       assert.equal(JSON.stringify(input), before);
     }
     assert.equal(outputHref(link('http://www.allianzlife.com/new-york?existing=1#captured', { querystring: '?native=2', anchor: '#native' })), '/new-york?existing=1&native=2#native');

@@ -20,7 +20,9 @@ const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
 const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
 const { PathnameContext } = require('next/dist/shared/lib/hooks-client-context.shared-runtime');
+const { AppRouterContext } = require('next/dist/shared/lib/app-router-context.shared-runtime');
 const { Default: LegacyRichText } = loadSdkSource(path.join(sourceRoot, 'components/allianz-legacy-rich-text/AllianzLegacyRichText.tsx'));
+const { Default: LegacyHeader } = loadSdkSource(path.join(sourceRoot, 'components/allianz-legacy-header/AllianzLegacyHeader.tsx'));
 
 function layout(title, description) {
   return { sitecore: {
@@ -696,5 +698,39 @@ for (const cashPath of cashPaths) {
     });
     assert.deepEqual(blocks.map((block) => block.fields.data.datasource.body.jsonValue.value), originalBodies);
     assert.equal(JSON.stringify(h.fixtureContent), before);
+  });
+}
+
+for (const snapshotPath of [...cashPaths, ...deathClaimPaths]) {
+  test(`${snapshotPath}: real SDK snapshot header uses the identical Content Hub logo`, async (t) => {
+    const h = harness(t, { nodeEnv: 'production', deliveryMissing: true });
+    const before = JSON.stringify(h.fixtureContent);
+    const market = snapshotPath.startsWith('/new-york/') ? 'new-york' : 'allianz-life';
+    const logoSrc = 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/bcbd0f72faa148189e4aea65aecf1fdf?v=0bffd208';
+    const sharedHeader = h.fixtureContent.shared.legacyShared[market].header;
+    assert.deepEqual(sharedHeader.fields.data.datasource.logo.jsonValue.value, { src: logoSrc, alt: 'Allianz' });
+
+    const { page } = await h.loadAllianzPage('allianz-life', 'en', ...snapshotPath.slice(1).split('/'));
+    const pageBefore = JSON.stringify(page);
+    const header = page.layout.sitecore.route.placeholders['headless-header'].find((component) =>
+      component.componentName === 'AllianzLegacyHeader');
+    assert.ok(header, 'render the actual loader-provided header');
+    assert.deepEqual(header.fields.data.datasource.logo, sharedHeader.fields.data.datasource.logo);
+    const html = renderToStaticMarkup(React.createElement(AppRouterContext.Provider, {
+      value: { push() { throw new Error('SSR must not navigate'); } },
+    }, React.createElement(PathnameContext.Provider, { value: snapshotPath },
+      React.createElement(SitecoreProvider, {
+        page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
+      }, React.createElement(LegacyHeader, { params: header.params, fields: header.fields })))));
+    const brand = html.match(/<a\b[^>]*class="navbar-brand"[^>]*>[\s\S]*?<\/a>/)?.[0];
+    assert.ok(brand, 'SDK home link and logo render together');
+    assert.ok(brand.includes(`src="${logoSrc.replaceAll('&', '&amp;')}"`));
+    assert.match(brand, /alt="Allianz"/);
+    assert.ok(brand.includes(`href="${market === 'new-york' ? '/new-york' : '/'}"`));
+    assert.equal((brand.match(/<img\b/g) || []).length, 1);
+    assert.doesNotMatch(brand, /allianz-legacy-assets/);
+    assert.equal(page.layout.sitecore.context.allianzContentSource.nativePublicationVerified, false);
+    assert.equal(JSON.stringify(page), pageBefore, 'SSR must preserve the loaded page and Header fields');
+    assert.equal(JSON.stringify(h.fixtureContent), before, 'rendering must preserve the shared model');
   });
 }

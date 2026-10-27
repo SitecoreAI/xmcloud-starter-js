@@ -72,7 +72,7 @@ for (const mode of ['fixture', 'connected']) {
     const data = { body: field(body), subheading: field(subheading, 'subheading') }, before = JSON.stringify(data);
     const visitor = render(LegacyRichText, data);
     assert.match(visitor, /title="Source title" class="job-link" target="" href="#service-unavailable">Search current job openings<\/a>/);
-    assert.match(visitor, /href="\/About\?tag=one&amp;tag=two#detail" target="_blank" rel="author noopener noreferrer"/);
+    assert.match(visitor, /href="\/About\?tag=one&amp;tag=two#detail" target="" rel="author"/);
     assert.match(visitor, /href="#content-body">Jump<\/a>/);
     const editor = render(LegacyRichText, data, true);
     assert.ok(editor.includes(body)); assert.ok(editor.includes(subheading));

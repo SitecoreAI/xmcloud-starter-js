@@ -251,7 +251,7 @@ test('safe-link conventions block unsafe destinations only for visitors and reta
   }
   input.props.page.mode.isEditing = false;
   item.link.jsonValue.value = { href: sources[0].navigation[0].href, target: '_blank', rel: 'author' };
-  assert.match(render(input, Lists.ProductNavigation, control(input, 'navigation')), /rel="author noopener noreferrer"/);
+  assert.match(render(input, Lists.ProductNavigation, control(input, 'navigation')), /target="" rel="author"/);
 });
 
 test('resolved and wildcard keys agree; real numeric instance IDs remain isolated', () => {

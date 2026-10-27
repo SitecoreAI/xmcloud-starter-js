@@ -21,6 +21,10 @@ const destinations = [
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/0aafda00578a4eb1a678b2aa04d15595?v=760d2d3b' },
   { name: 'Weatherproofing retirement EXT-1084 fact sheet', target: '_blank',
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f109cc47edba46de921fecb735c567ea?v=68ea6fa3' },
+  { name: 'CSI-504 Index Lock guide', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa' },
+  { name: 'ABCPL-001 Benefit Control+ product brochure', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f2c2be58cff1453f93f24f122d3c30e1?v=1d29b652' },
 ];
 process.env.NODE_ENV = 'test';
 

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import NextLink from 'next/link';
 import { notFound } from 'next/navigation';
 import LocalAdvancedSearchUtility from '../../../search/LocalAdvancedSearchUtility';
+import NewYorkSearchUtilityShell from '../../../search/NewYorkSearchUtilityShell';
 import { advancedSearchHref, type AdvancedSearchParams } from '../../../search/advanced-search-model';
 import { isLocalSearchScope, localAdvancedSearchResults } from '../../../search/search-data';
 
@@ -21,7 +22,7 @@ export default async function AdvancedSearchPage({ params, searchParams }: Advan
   const { site, locale } = await params;
   if (!isLocalSearchScope(site, locale)) notFound();
   const { state, matches } = localAdvancedSearchResults(await searchParams);
-  return <div className="allianz-modern prod-mode">
+  const content = <div className="allianz-modern prod-mode">
     <main id="main" className="l-container u-padding-top-md u-padding-bottom-md">
       <nav aria-label="Breadcrumb">
         <NextLink href="/new-york">Allianz Life New York home</NextLink><span> / </span>
@@ -33,4 +34,5 @@ export default async function AdvancedSearchPage({ params, searchParams }: Advan
       <LocalAdvancedSearchUtility key={advancedSearchHref(state)} state={state} matches={matches} />
     </main>
   </div>;
+  return NewYorkSearchUtilityShell({ site, locale, kind: 'advanced', children: content });
 }

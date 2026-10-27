@@ -34,6 +34,16 @@
   overflow: visible;
 }
 
+/* Reduce only the native answer wrapper's desktop inset on mobile.
+ * Keep authored paragraph margins, bottom spacing and SDK field markup intact. */
+@media (max-width: 703px) {
+  .allianz-modern .c-accordion > .c-accordion__item-wrapper > button.c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) > .accordionContent,
+  .allianz-legacy .c-accordion > .c-accordion__item-wrapper > button.c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) > .accordionContent {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 /* aria-hidden/inert must also remove a collapsed dropdown's layout box. The
  * recovered 340px panel otherwise overflows the 768px viewport while closed. */
 .allianz-modern .O-azl-header .m-navigation-primary ul[aria-hidden="true"] {
@@ -297,5 +307,140 @@
     min-width: 0;
     max-width: 100%;
     white-space: normal;
+  }
+}
+/* The native Rates body retains the official Ratewatch classes, but not its
+ * #rates application root. Keep this adaptation inside that presentation.
+ * Values measured on the official BCP Rates page, 2026-10-26. */
+.allianz-local-rates .azl-ratewatch-product-tables figure.table {
+  border: 0 !important;
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 20px;
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 16px;
+  line-height: 1.42857143;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table th {
+  padding: 8px;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > thead > tr > th {
+  border-top: 0;
+  border-bottom: 0;
+  color: #fff;
+  text-align: center;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > thead > tr > th.primary.fia {
+  background-color: #5f259f;
+  font-weight: 700;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr:nth-of-type(odd) {
+  background-color: #f2f2f1;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr:nth-of-type(even) {
+  background-color: #e4e4e4;
+}
+/* CKEditor groups the year-label row in thead; its source class still owns
+ * the secondary gray treatment regardless of the row group's serialization. */
+.allianz-local-rates .azl-ratewatch-product-tables .product-table th.default {
+  border: 0;
+  background-color: #c1c1c1;
+  color: #fff;
+  font-weight: 400;
+  text-align: left;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td {
+  position: relative;
+  padding: 10px;
+  border: 0;
+  background-color: transparent;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td.left {
+  text-align: left;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td.right {
+  text-align: right;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td.center {
+  text-align: center;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td.ratewatch-shading {
+  background-color: #d3effb;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table.is-fixed {
+  table-layout: fixed;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table.is-fixed col:first-child {
+  width: 50%;
+}
+
+/* Editor-inserted equal-width colgroups are presentation metadata, not rate
+ * values. Restore the source's automatic columns, with the fixed-table label
+ * column occupying half the table. Inline widths require this narrow override. */
+.allianz-local-rates .azl-ratewatch-product-tables .product-table col {
+  width: auto !important;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table.is-fixed col:first-child {
+  width: 50% !important;
+}
+.allianz-local-rates .azl-ratewatch-product-tables figure.table table.product-table {
+  border: 0 !important;
+  background-color: transparent;
+}
+@media only screen and (max-width: 767px) {
+  .allianz-local-rates .azl-ratewatch-product-tables .product-table {
+    font-size: 15px;
+  }
+}
+
+.allianz-local-rates .azl-ratewatch-product-tables figure.table .product-table th,
+.allianz-local-rates .azl-ratewatch-product-tables figure.table .product-table td {
+  border: 0 !important;
+}
+/* Match Ratewatch's own narrow-table scrolling rather than squeezing data
+ * into editor-generated columns. The row groups retain full content width. */
+@media (max-width: 992px) {
+  .allianz-local-rates .azl-ratewatch-product-tables .product-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .allianz-local-rates .azl-ratewatch-product-tables .product-table tbody,
+  .allianz-local-rates .azl-ratewatch-product-tables .product-table thead {
+    display: table;
+    width: 100%;
+  }
+}
+/* The editor moves the source's first gray label row into thead. Keep the
+ * following data-row stripe sequence equivalent to the source. */
+.allianz-local-rates .azl-ratewatch-product-tables .product-table thead:has(th.default) + tbody > tr:nth-of-type(odd) {
+  background-color: #e4e4e4;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table thead:has(th.default) + tbody > tr:nth-of-type(even) {
+  background-color: #f2f2f1;
+}
+
+/* The inherited legacy header gradient otherwise paints over FIA's purple. */
+.allianz-local-rates .azl-ratewatch-product-tables .product-table thead,
+.allianz-local-rates .azl-ratewatch-product-tables .product-table th {
+  background-image: none;
+}
+
+/* The official NY product page wraps this comparison table in table-responsive.
+ * Its authored native RichText has no wrapper: constrain the table itself so
+ * its four columns scroll without widening the whole mobile document. */
+@media (max-width: 767px) {
+  #page-index-advantage-plus-new-york .allianz-legacy-editorial table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
   }
 }

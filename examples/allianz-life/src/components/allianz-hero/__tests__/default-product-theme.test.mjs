@@ -4,6 +4,7 @@ import path from 'node:path';
 import Module from 'node:module';
 import { createHash } from 'node:crypto';
 import test from 'node:test';
+import { withLegacyInternalTargets, assertOnlyInternalTargetChanges } from '../../../lib/internal-target-baseline-helper.mjs';
 import { loadSource, require, sourceRoot } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
 
 const filename = path.join(sourceRoot, 'components/allianz-hero/AllianzHero.tsx');
@@ -127,7 +128,9 @@ function digestCases(cases, mode, transform = html => html) {
   for (const current of cases) {
     freeze(current); const before = JSON.stringify(current);
     const html = render(Hero[current.variant ?? 'Default'], current.data, current.params, mode);
-    digest.update(current.label + '\0' + transform(html, current) + '\0');
+    const legacy = withLegacyInternalTargets(() => render(Hero[current.variant ?? 'Default'], current.data, current.params, mode));
+    assertOnlyInternalTargetChanges(html, legacy, current.label);
+    digest.update(current.label + '\0' + transform(legacy, current) + '\0');
     assert.equal(JSON.stringify(current), before, current.label); count++;
   }
   return { count, sha256: digest.digest('hex') };

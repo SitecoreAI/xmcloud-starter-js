@@ -948,7 +948,7 @@ test('the shared adapter preserves safe controls, exact parser attributes and im
     + '<a href="#demo-unavailable" target="_self">Existing</a><a href="#service-unavailable">Existing2</a>';
   const input = freeze(syntheticField(body));
   const result = policy.safeNativeBodyRichText(input, false, context(first));
-  assert.equal(result.value, body.replace("HREF='&#47;Login' TARGET=\"_blank\"", 'href="#service-unavailable" target=""'));
+  assert.equal(result.value, body.replace("HREF='&#47;Login' TARGET=\"_blank\"", 'href="#service-unavailable" target=""').replace('href="/about?one=1&amp;two=2#details" target="_blank"', 'href="/about?one=1&amp;two=2#details" target=""'));
   assert.equal(result.metadata, input.metadata);
   assert.equal(policy.safeNativeBodyRichText(input, true, context(first)), input);
   assert.equal(policy.safeNativeBodyRichText(undefined, false, context(first)), undefined);

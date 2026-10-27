@@ -166,7 +166,7 @@ test('empty-label placeholder handling preserves populated destinations and exis
    assert.equal(html,render(Cards.EditorialTiles,props(d,editing,{...b.params,emptyLink:undefined})));assert.match(html,/<a\b/);
    if(!editing){
     if(value.href.startsWith('http://www.allianzlife.com/')||value.href.startsWith('https://www.allianzlife.com/')){
-     assert.match(html,/href="\/about\?ref=cta#details"/);assert.match(html,/rel="author noopener noreferrer"/);
+     assert.match(html,/href="\/about\?ref=cta#details"/);assert.match(html,/target=""/);assert.match(html,/rel="author"/);
     }else assert.match(html,/href="#service-unavailable"/);
    }
   }

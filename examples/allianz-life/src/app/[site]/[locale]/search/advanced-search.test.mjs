@@ -104,7 +104,11 @@ test('real captured NY snapshot remains safe and title mode is strictly title-on
 });
 
 const notFound = new Error('NEXT_NOT_FOUND_TEST');
-const page = loader({ 'next/navigation': { useRouter: () => ({ push() {} }), notFound() { throw notFound; } } })(pageFile);
+// This suite owns the utility's existing filters/handlers; shell integration has its own regression suite.
+const page = loader({
+  'next/navigation': { useRouter: () => ({ push() {} }), notFound() { throw notFound; } },
+  '../../../search/NewYorkSearchUtilityShell': { __esModule: true, default: async ({ children }) => children },
+})(pageFile);
 const pageElement = (params = {}, site = 'allianz-life', locale = 'en') => page.default({
   params: Promise.resolve({ site, locale }), searchParams: Promise.resolve(params),
 });
