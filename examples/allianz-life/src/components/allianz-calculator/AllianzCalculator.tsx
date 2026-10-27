@@ -4,31 +4,23 @@ import { useEffect, useId, useMemo, useRef, useState, type FormEvent } from 'rea
 import { shouldRenderTextField } from 'lib/allianz-field-state';
 import { RETIREMENT_INPUTS, validateCalculator, incomeToolsDemoMode, type AllianzCalculatorProps } from './allianz-calculator.props';
 import { IncomeLocalToolsDemo } from 'components/allianz-income-tools/IncomeLocalToolsDemo';
+import { observeLifetimeFrame } from './lifetime-frame';
 
 /** Isolate the original calculator's bundled React, CSS and Highcharts globals. */
 const LifetimeIncomeFrame = () => {
   const frame = useRef<HTMLIFrameElement>(null);
-  const observer = useRef<ResizeObserver | null>(null);
   const [height, setHeight] = useState(1000);
   const [failed, setFailed] = useState(false);
-  useEffect(() => () => observer.current?.disconnect(), []);
-  const loaded = () => {
-    observer.current?.disconnect();
-    const root = frame.current?.contentDocument?.getElementById('allianz-calculator-frame');
-    if (!root) { setFailed(true); return; }
-    setFailed(false);
-    const measure = () => {
-      const next = Math.ceil(root.getBoundingClientRect().height) + 2;
-      if (next > 0 && next < 20000) setHeight((previous) => Math.abs(previous - next) > 1 ? next : previous);
-    };
-    observer.current = new ResizeObserver(measure);
-    observer.current.observe(root);
-    measure();
-  };
+  useEffect(() => {
+    if (!frame.current) return;
+    return observeLifetimeFrame(frame.current,
+      (next) => setHeight((previous) => Math.abs(previous - next) > 1 ? next : previous),
+      (available) => setFailed(!available));
+  }, []);
   return <>
-    <iframe ref={frame} src="/allianz-assets/lifetime-income/index.html"
-      title="Allianz Lifetime Income+ annuity income calculator" onLoad={loaded}
-      style={{ display: 'block', width: '100%', height, border: 0 }} />
+    <div style={{ width: '100%', overflow: 'hidden' }}><iframe ref={frame} src="/allianz-assets/lifetime-income/index.html"
+      title="Allianz Lifetime Income+ annuity income calculator"
+      style={{ display: 'block', width: '100vw', height, border: 0 }} /></div>
     {failed && <p role="alert">The income calculator could not be loaded. Please try again later.</p>}
   </>;
 };
@@ -39,10 +31,13 @@ export const LifetimeIncome = ({ fields, params }: AllianzCalculatorProps) => {
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   return <section className="allianz-lifetime-income-calculator" id={params.RenderingIdentifier}>
-    {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
-    {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}
-    <LifetimeIncomeFrame />
-    {shouldRenderTextField(data?.disclaimer?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.disclaimer?.jsonValue} />}
+    <div className="l-container--full-width u-row-spacing t-bg-transparent axlTileCollection"><div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
+      {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
+      {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} className="o-richTextEditor__wrapper" />}
+    </div></div></div>
+      <LifetimeIncomeFrame />
+    </div>
+    {shouldRenderTextField(data?.disclaimer?.jsonValue, isEditing) && <div className="l-container--full-width t-bg-grey-muted axlTileCollection"><div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12"><RichText editable={isEditing} field={data?.disclaimer?.jsonValue} className="o-richTextEditor__wrapper" /></div></div></div></div>}
   </section>;
 };
 

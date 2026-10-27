@@ -1,6 +1,6 @@
 {
-  "utc": "2026-10-27T19:24:10.751209+00:00",
-  "state": "CODE_IMPLEMENTED_CHECKED_DRAFT_PAGE_NOT_YET_CREATED",
+  "utc": "2026-10-27T19:52:52.773934+00:00",
+  "state": "NATIVE_DRAFT_CREATED_BOUND_SOURCE_TEXT_VERIFIED_RUNTIME_QA_ACTIVE",
   "nativeContract": {
     "rendering": "AllianzCalculator",
     "existingRenderingId": "45E446AF-6284-5804-AD6D-25486AA75C5E",
@@ -12,8 +12,18 @@
       "disclaimer"
     ],
     "parentId": "7A122774-4317-4E10-97C4-2D31939FBAD3",
-    "calculatorChildFreshRead": null,
-    "proposedSlug": "calculator"
+    "calculatorChildFreshRead": "Created once after prior null read; independently verified native path/id",
+    "proposedSlug": "calculator",
+    "pageId": "BFB037E8-12A7-4BA8-9EE4-25C937E8D36C",
+    "dataFolderId": "23AA1FBB-272E-4422-A43E-539AD7321F61",
+    "heroId": "80DB6A43-5617-4386-AB03-A62E9B75E5F7",
+    "calculatorDatasourceId": "B5C705E5-0871-4979-93DC-F649565BAA53",
+    "pageDesign": "239DDB01-4164-4941-AF4A-46A9629F56C4",
+    "pageDesignName": "Lifetime Income participant",
+    "pageRevision": "850b6a83-d3e7-482d-996c-774b49f47a2a",
+    "finalLayoutRevision": "45fbfc5e-4c20-482a-a037-ee442569acae",
+    "heroRevision": "db0a772d-932d-4b03-92ee-cb41a495a3ea",
+    "calculatorRevision": "65bc0087-c24c-491d-ab7e-9b1ff9af30f8"
   },
   "architecture": "Existing native Calculator template/renderer selects an isolated same-origin static frame. Unmodified official engine, workbook and source CSS; all 18 source font dependencies staged. Exact original XLSX asset is excluded from page middleware; neighboring resources and the calculator page retain normal SDK routing.",
   "checks": {
@@ -22,28 +32,164 @@
       "fail": 0
     },
     "fullRegression": {
-      "tests": 2761,
-      "pass": 2760,
+      "tests": 2762,
+      "pass": 2761,
       "fail": 0,
       "skipped": 1,
       "skip": "Existing opt-in isolated Chrome portfolio regression; not counted passed"
     },
     "types": "PASS after SDK prop-forwarding correction",
     "lint": "PASS",
-    "productionBuild": "PASS webpack; 385 generated paths, not visual acceptance",
+    "productionBuild": "Latest completed build PASS webpack with 386 generated paths. Further full-width wrapper rebuild active; not visual acceptance.",
     "assetManifest": "public/allianz-assets/lifetime-income/source-manifest.json",
     "existingCalculators": "Existing retirement and two income-demo checks pass unchanged"
   },
   "remaining": [
-    "Candidate static asset and frame runtime checks at desktop/mobile",
-    "Native draft page/Data/datasource/layout composition with exact source disclosures",
-    "Save/reopen current SDK rendering checks",
-    "Interaction, resize, native authoring and final visual acceptance"
+    "Finish full-width integrated desktop/mobile/resize/keyboard checks",
+    "Repeat integrated calculator output comparisons",
+    "Native Page Builder canvas acceptance remains separate from tested SDK edit metadata and native field save/reopen",
+    "Resolve/record source brochure migration and Content Hub thumbnail import blockers",
+    "Keep calculator and PDF pages unpublished"
   ],
   "publication": "Calculator page and restricted PDFs remain unpublished",
   "unrelatedChangesPreserved": [
     "examples/allianz-life/next-env.d.ts",
     "tmp/"
   ],
-  "deployedStatus": "Not assessed; repository checkpoint is not a deployment receipt"
+  "deployedStatus": "Not assessed; repository checkpoint is not a deployment receipt",
+  "savedFieldFences": [
+    {
+      "item": "Hero",
+      "fieldsCompared": 48,
+      "changes": [
+        "heading",
+        "Revision",
+        "Updated"
+      ],
+      "reopened": true,
+      "validation": "No errors or warnings"
+    },
+    {
+      "item": "Income calculator",
+      "fieldsCompared": 50,
+      "changes": [
+        "body",
+        "schemaKey",
+        "disclaimer",
+        "Revision",
+        "Updated"
+      ],
+      "reopened": true,
+      "validation": "2 warnings; one observed rule asks external PDF links to open in a new tab; original source behavior is retained instead of changing target merely to silence warning."
+    },
+    {
+      "item": "Page final layout",
+      "fieldsCompared": 71,
+      "changes": [
+        "Final renderings",
+        "Revision",
+        "Updated"
+      ],
+      "reopened": true,
+      "validation": "No errors or warnings"
+    },
+    {
+      "item": "Page source provenance/class",
+      "fieldsCompared": 71,
+      "changes": [
+        "sourceUrl",
+        "sourceHash",
+        "sourceBodyClasses",
+        "Revision",
+        "Updated"
+      ],
+      "reopened": true,
+      "validation": "No errors or warnings"
+    }
+  ],
+  "queryRepair": {
+    "cause": "Existing exact rendering query failed the platform query-complexity check (HTTP 200 GraphQL errors); child-form fanout is not consumed by current calculator code.",
+    "change": "Removed only children(first:16) branch; retained authored root fields and existing variables. Platform limit unchanged.",
+    "directReducedQuery": "PASS: datasource id/schema/body/disclosure returned",
+    "sdkAssemblyAfterSave": "PASS: native Calculator fields resolve",
+    "nativeFieldFence": {
+      "fieldsCompared": 78,
+      "changes": [
+        "Component GraphQL Query",
+        "Shared revision",
+        "Revision",
+        "Updated"
+      ],
+      "revision": "bdfafd3f-9607-46f8-8a8f-5c0e06382c08",
+      "sharedRevision": "191c9f62-9eda-4a15-b06a-19b3295a3b42",
+      "independentReopen": true,
+      "validation": "No errors or warnings"
+    },
+    "published": false,
+    "rollbackOriginalQuery": "4a14b2799d6b24eec409534627ebf29946fcc980:authoring/allianz-life/items/allianz.renderings/Allianz Life/Calculator.yml",
+    "oldNativeRevision": "899a1c07-0197-4b1e-a9e1-9e4e74091aba"
+  },
+  "fullSourceTextComparison": {
+    "componentNames": [
+      "PartialDesignDynamicPlaceholder",
+      "AllianzParticipantHeader",
+      "AllianzParticipantNavigation",
+      "AllianzHero",
+      "AllianzCalculator",
+      "PartialDesignDynamicPlaceholder",
+      "AllianzFooter"
+    ],
+    "datasourceId": "B5C705E50871497993DCF649565BAA53",
+    "schemaKey": "lifetime-income-official",
+    "bodyTextMatchesFullSource": true,
+    "disclosureTextMatchesFullSource": true,
+    "published": false
+  },
+  "localRuntimeRecovery": {
+    "failed": "Next started with --hostname 127.0.0.1 produced proxy ECONNRESET and terminal page 500.",
+    "evidence": "Installed Next normalizes loopback NextURL hostname to localhost; server initURL uses configured fetchHostname.",
+    "resolution": "Stopped owned server; restarted --hostname localhost on same loopback-only port 4184. Same normal route HTTP 200, one H1, native frame/disclosures present. No routing-code or security-setting workaround.",
+    "currentAcceptance": "Frame viewport narrower than source caused breakpoint mismatch; corrected wrapper to full viewport with original grid inside isolated document. Final rebuild/browser retest active."
+  },
+  "pdfQualification": "The source consumer brochure link is kept as an absolute official-source URL in draft; text and original target behavior preserved. No new PDF uploaded or published in this calculator pass; document migration/acceptance remains open.",
+  "latestValidation": {
+    "regression": {
+      "tests": 2765,
+      "pass": 2764,
+      "fail": 0,
+      "skip": 1
+    },
+    "types": "passed",
+    "lint": "passed",
+    "webpackBuild": "passed; 386 paths, not visual acceptance",
+    "integratedOfficialCases": {
+      "cases": 4,
+      "cells": 496,
+      "allMatch": true
+    },
+    "desktop": {
+      "viewport": 1280,
+      "widgetWidth": 1120,
+      "sourceWidgetWidth": 1120,
+      "tableWidth": 640,
+      "sourceTableWidth": 640
+    },
+    "mobile": {
+      "actualViewport": 370,
+      "outerDocumentWidth": 364,
+      "frameWidth": 370,
+      "childDocumentWidth": 392,
+      "frameHeight": 4053,
+      "rootHeight": 4050.953125,
+      "status": "qualified; source also overflows at 370; mobile table usability remains open"
+    },
+    "publication": "none",
+    "deployment": "none",
+    "pendingCmsSave": false
+  },
+  "followupCorrections": [
+    "Source grid and full viewport iframe preserve official responsive breakpoints",
+    "Cached-load and ResizeObserver sizing helper with three regression tests",
+    "Calculator native query removes unused child collection that exceeded GraphQL complexity; root authored fields preserved; saved and independently reopened, not published"
+  ]
 }

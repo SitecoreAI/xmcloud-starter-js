@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { parse, visit } from 'graphql';
 
 const publicRoot = fileURLToPath(new URL('../../../public/', import.meta.url));
 const assets = path.join(publicRoot, 'allianz-assets/lifetime-income');
@@ -34,4 +35,15 @@ test('the isolated document loads local source assets with the exact original mo
   assert.match(html, /name="viewport" content="width=device-width, initial-scale=1"/);
   assert.doesNotMatch(html, /https?:|<iframe|onload=|eval\(/);
   for (const match of html.matchAll(/(?:href|src)="([^\"]+)"/g)) assert.ok(fs.existsSync(path.join(assets, match[1])), match[1]);
+});
+
+test('the native Calculator query preserves authored fields without the unused child-form fanout', () => {
+  const yaml = fs.readFileSync(path.resolve(publicRoot, '../../../authoring/allianz-life/items/allianz.renderings/Allianz Life/Calculator.yml'), 'utf8');
+  const query = yaml.split('Value: |\n')[1].split('\n- ID:')[0];
+  const names = [];
+  visit(parse(query), { Field(node) { names.push(node.name.value); } });
+  assert.equal(names[0], 'item');
+  assert.equal(names.includes('children'), false);
+  assert.ok(names.length < 30, 'keep the rendering query bounded independently of authored child counts');
+  for (const field of ['heading', 'body', 'schemaKey', 'disclaimer']) assert.match(query, new RegExp(`${field}: field\\(name: "${field}"\\)`));
 });
