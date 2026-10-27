@@ -191,5 +191,32 @@
     "Source grid and full viewport iframe preserve official responsive breakpoints",
     "Cached-load and ResizeObserver sizing helper with three regression tests",
     "Calculator native query removes unused child collection that exceeded GraphQL complexity; root authored fields preserved; saved and independently reopened, not published"
-  ]
+  ],
+  "mobileScrollFollowup": {
+    "status": "passed focused local browser QA; unpublished",
+    "actualViewport": 370,
+    "childDocumentWidth": 370,
+    "scrollRegionClientWidth": 338,
+    "scrollRegionScrollWidth": 376,
+    "keyboardArrowRightReachedScrollLeft": 38,
+    "lastColumnRight": 352.78125,
+    "regionRight": 354,
+    "implementation": "Static labeled keyboard-focusable region; original source geometry preserved; no financial engine, workbook, table nodes or input state mutation",
+    "referenceCases": 4,
+    "matchedCells": 496,
+    "allInputStatesMatch": true,
+    "resize1280": {
+      "childDocumentWidth": 1280,
+      "choicesPreserved": [
+        "one-time",
+        "joint",
+        "cumulative"
+      ]
+    },
+    "remaining": [
+      "Native Page Builder canvas edit/save acceptance",
+      "Brochure PDF native draft migration and identity",
+      "Publication remains held for calculator and associated drafts"
+    ]
+  }
 }
