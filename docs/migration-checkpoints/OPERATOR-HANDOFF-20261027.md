@@ -102,3 +102,7 @@ The latter three have no new CMS mutation/publication. All four fresh official p
 ## Advisory interim preflight checkpoint
 
 [Exact dependency and guard checkpoint](ADVISORY-EXACT-DEPENDENCIES-AND-17-ROOT-GUARD-CHECKPOINT-20261027.json): Data folder plus 17 of 37 root guards saved/reopened; 20 root and 26 card-child eligibility checks remain. Page and all direct child IDs retained; do not replay completed saves. This is unpublished preparation, not acceptance. No save/job is pending at this checkpoint. Smaller-scope exact root inventories are included for continuation.
+
+## Advisory root-guard stage complete
+
+[Current Advisory root checkpoint](ADVISORY-EXACT-DEPENDENCIES-AND-ROOT-GUARDS-CURRENT-20261027.json) supersedes the17-root count: all37datasource-root guards and Data folder saved/reopened, no pending save/job. This does not establish date/target eligibility, child readiness or source/rendered acceptance. The26card children, page/ancestor check, rendered source comparison and publication/live QA remain. Do not replay completed root saves.

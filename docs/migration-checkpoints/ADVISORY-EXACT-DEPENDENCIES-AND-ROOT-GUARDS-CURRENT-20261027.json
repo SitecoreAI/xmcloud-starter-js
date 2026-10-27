@@ -1,0 +1,816 @@
+{
+  "checkpointUTC": "2026-10-27T16:03:09.124594+00:00",
+  "scope": "/for-financial-professionals/advisory-solutions",
+  "page": {
+    "id": "56B24DC839894400824CFE2E17485C43",
+    "name": "advisory-solutions"
+  },
+  "DataFolder": {
+    "id": "945BF50BDFC54838A02905C844992E1F",
+    "guard": "cleared and independently reopened",
+    "revision": "780b7b5d-4e79-43c6-a35a-0a0ca5a1783f"
+  },
+  "inventory": {
+    "roots": [
+      {
+        "id": "5445DCFD961F47E4BE9A0D6E86230ADD",
+        "name": "About Allianz SE",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "64EB29EFE87048BE87D1A3130B3074AE",
+        "name": "Additional annuity and life insurance solutions cards",
+        "children": {
+          "total": 2
+        }
+      },
+      {
+        "id": "21E9A9B8E28449589DD6D3472EDF201B",
+        "name": "Allianz Advisory Solutions teams",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "1ADFE6A7C392461F817AA221ACA49BE9",
+        "name": "Allianz Advisory Solutions teams image cards",
+        "children": {
+          "total": 1
+        }
+      },
+      {
+        "id": "67852D27B0704633807E75A98781B6BF",
+        "name": "Allianz RIA Concierge Desk",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "901C3EF8D0834E23A36F8CE520FA1697",
+        "name": "Allianz RIA Concierge Desk image cards",
+        "children": {
+          "total": 1
+        }
+      },
+      {
+        "id": "123DED0A56F04834BEA679CA07CAFCFF",
+        "name": "Built for where you are and where youre headed",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "7141C924F6494C3D8503A618637B7B95",
+        "name": "Cards 25 cards",
+        "children": {
+          "total": 4
+        }
+      },
+      {
+        "id": "7F4F7443A02D4B75A18444CE1DDC924C",
+        "name": "Content section",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "436E7D46DF8A4D6AA757687AC0307670",
+        "name": "Content section 2",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "098E1455D20E4913875E0C213EE1C4DA",
+        "name": "Content section 3",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "CA524D4E46434EF0A05DC5B0188479E3",
+        "name": "Content section 4",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "4583BE2346134A6694A02A23AE7B937C",
+        "name": "Content section 5",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "82A8943CA53E4F77813E268A6D5732C9",
+        "name": "Content section 5 image cards",
+        "children": {
+          "total": 1
+        }
+      },
+      {
+        "id": "471F2D5805944E8BBB5C4FB4310DE0CC",
+        "name": "Explore the suite of products",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "639121C0A01041A780EA70938E007A05",
+        "name": "Hero",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "C09A4FCB042847B69D99CE56CEA613CD",
+        "name": "Index Advantage Income ADV Annuity",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "1C71C4F64086422F83959BBFA938F916",
+        "name": "Index Advantage Income ADV Annuity image cards",
+        "children": {
+          "total": 1
+        }
+      },
+      {
+        "id": "F9498AE8546A49FF9EC4697D5655738D",
+        "name": "Innovative fintech and data integrations",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "D798C9C27FC94ED482A491C7F3471D82",
+        "name": "Insurance licensing partners",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "611584B425A1400EAA2C124D0DCB87EE",
+        "name": "Insurance licensing partners image cards",
+        "children": {
+          "total": 1
+        }
+      },
+      {
+        "id": "7ECFD738161141718485754993419958",
+        "name": "Legal disclosures",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "00AE8A631564415FAC0B0DA817EBADEC",
+        "name": "Modernized fee-based annuity solutions",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "9032A280385A484887280FF4F9CB3D15",
+        "name": "Onboard in three simple phases",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "77A584C26FEE4DB98C7F327660CDB9F4",
+        "name": "Ready to access modernized fee-based annuity solutions through AllianzLifec",
+        "children": {
+          "total": 2
+        }
+      },
+      {
+        "id": "476DD83ABDAF43348DE8EBAFC01ED4A4",
+        "name": "Register as an RIA cards",
+        "children": {
+          "total": 3
+        }
+      },
+      {
+        "id": "C6998401DB6F4960BDE821D7DC8AB357",
+        "name": "Research and resources",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "EEECB0DDA9B04A9085D212F20D4CBD73",
+        "name": "Retirement Foundation ADV Annuity",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "C9CF34300A52413A813EC03EF44F7C62",
+        "name": "Retirement Foundation ADV Annuity image cards",
+        "children": {
+          "total": 1
+        }
+      },
+      {
+        "id": "8746F78A723A4A6CBB01357B064A8D71",
+        "name": "Risk management and retirement planning insights cards",
+        "children": {
+          "total": 3
+        }
+      },
+      {
+        "id": "9B5CF36DA42C4CCBBBF9B9CBA253BE1D",
+        "name": "To explore additional product offerings connect with the respective product",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "3F76B70B778D4F2B8AC7BE0C4B49D42F",
+        "name": "Wealth management platforms cards",
+        "children": {
+          "total": 3
+        }
+      },
+      {
+        "id": "DEA8D4A2CA6B4C6699CA82E8120B6D46",
+        "name": "Your choice",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "F23C6B31FCC64032A9F8C828BD9EA9A4",
+        "name": "Your clients",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "35C2D95124E647809F77F91AD5733109",
+        "name": "Your practice",
+        "children": {
+          "total": 0
+        }
+      },
+      {
+        "id": "3B55B9D39B184B6CA3F497431FB2B66A",
+        "name": "Your practice cards",
+        "children": {
+          "total": 3
+        }
+      },
+      {
+        "id": "44FA17EB491049E5A3FC3CF590F77D97",
+        "name": "Your teams and resources when and how you need them",
+        "children": {
+          "total": 0
+        }
+      }
+    ],
+    "cardChildren": [
+      {
+        "id": "C4E5C4AA9E57493ABD3719AE84406BF1",
+        "name": "Card 01",
+        "parent": "64EB29EFE87048BE87D1A3130B3074AE"
+      },
+      {
+        "id": "26A49F2BA88746D7AA2224F576BDDDB4",
+        "name": "Card 02",
+        "parent": "64EB29EFE87048BE87D1A3130B3074AE"
+      },
+      {
+        "id": "D7FE71601F6645DE8FEBCE91B98F6515",
+        "name": "Card 01",
+        "parent": "1ADFE6A7C392461F817AA221ACA49BE9"
+      },
+      {
+        "id": "993E1AEF465A468C8E2FF9326DCD0C09",
+        "name": "Card 01",
+        "parent": "901C3EF8D0834E23A36F8CE520FA1697"
+      },
+      {
+        "id": "E4B9765906D94CAAB17DD33EB816B1E7",
+        "name": "Card 01",
+        "parent": "7141C924F6494C3D8503A618637B7B95"
+      },
+      {
+        "id": "FC63D7DB85664ACB99DF681C02C236AC",
+        "name": "Card 02",
+        "parent": "7141C924F6494C3D8503A618637B7B95"
+      },
+      {
+        "id": "1D396DB27FCC4CABB72FB7EC727C732F",
+        "name": "Card 03",
+        "parent": "7141C924F6494C3D8503A618637B7B95"
+      },
+      {
+        "id": "715D0117B8444164856F2D0AE5D7142B",
+        "name": "Card 04",
+        "parent": "7141C924F6494C3D8503A618637B7B95"
+      },
+      {
+        "id": "61CCC1DA85664F21BB83A0EB333BEFC5",
+        "name": "Card 01",
+        "parent": "82A8943CA53E4F77813E268A6D5732C9"
+      },
+      {
+        "id": "2E987980391C452698E9FA7E0EB98254",
+        "name": "Card 01",
+        "parent": "1C71C4F64086422F83959BBFA938F916"
+      },
+      {
+        "id": "296DF331DF094C3F8C4854EE25F09C35",
+        "name": "Card 01",
+        "parent": "611584B425A1400EAA2C124D0DCB87EE"
+      },
+      {
+        "id": "9AE48C4F41CB4DC89F218EA8B7F64F4E",
+        "name": "Card 01",
+        "parent": "77A584C26FEE4DB98C7F327660CDB9F4"
+      },
+      {
+        "id": "7F919169166B4F1F805D221553BA638A",
+        "name": "Card 02",
+        "parent": "77A584C26FEE4DB98C7F327660CDB9F4"
+      },
+      {
+        "id": "275ED1E4BA97441096ECD4381F9E67B0",
+        "name": "Card 01",
+        "parent": "476DD83ABDAF43348DE8EBAFC01ED4A4"
+      },
+      {
+        "id": "A0B98C0B4B364443B0411FCA20EE3EAE",
+        "name": "Card 02",
+        "parent": "476DD83ABDAF43348DE8EBAFC01ED4A4"
+      },
+      {
+        "id": "0D7A68BA059B4930AC1B98403EB2B7F0",
+        "name": "Card 03",
+        "parent": "476DD83ABDAF43348DE8EBAFC01ED4A4"
+      },
+      {
+        "id": "2A650D8B573E4538A88499C4E8D8823E",
+        "name": "Card 01",
+        "parent": "C9CF34300A52413A813EC03EF44F7C62"
+      },
+      {
+        "id": "41636B380AE443E68A21151E64107AB9",
+        "name": "Card 01",
+        "parent": "8746F78A723A4A6CBB01357B064A8D71"
+      },
+      {
+        "id": "50A736C96EF34B24BEF145C446A6E08E",
+        "name": "Card 02",
+        "parent": "8746F78A723A4A6CBB01357B064A8D71"
+      },
+      {
+        "id": "3DDDE016E13C4640A133B049B0DEB0BF",
+        "name": "Card 03",
+        "parent": "8746F78A723A4A6CBB01357B064A8D71"
+      },
+      {
+        "id": "167967A272374EBBA9B05FABBE6981FB",
+        "name": "Card 01",
+        "parent": "3F76B70B778D4F2B8AC7BE0C4B49D42F"
+      },
+      {
+        "id": "01F7AD8C9F614ACCBE8EDE99D6FB9B4D",
+        "name": "Card 02",
+        "parent": "3F76B70B778D4F2B8AC7BE0C4B49D42F"
+      },
+      {
+        "id": "C121537D0FEC4881BB11FBA8970C6CBE",
+        "name": "Card 03",
+        "parent": "3F76B70B778D4F2B8AC7BE0C4B49D42F"
+      },
+      {
+        "id": "AEE075C479EA46EAAF1AD09CA71B4E89",
+        "name": "Card 01",
+        "parent": "3B55B9D39B184B6CA3F497431FB2B66A"
+      },
+      {
+        "id": "3928A798D2254C1EB1E2A22AFC63E002",
+        "name": "Card 02",
+        "parent": "3B55B9D39B184B6CA3F497431FB2B66A"
+      },
+      {
+        "id": "C4811CE382B54D8AA330C2D88E416039",
+        "name": "Card 03",
+        "parent": "3B55B9D39B184B6CA3F497431FB2B66A"
+      }
+    ],
+    "dataScopeUniqueCount": 64,
+    "pagePlusDataCount": 65,
+    "grandchildQualification": "Child IDs complete at direct-card depth; deeper dependencies still require preflight, not assumed absent."
+  },
+  "verifiedRootGuards": [
+    {
+      "id": "639121C0-A010-41A7-80EA-70938E007A05",
+      "revision": "78a669e9-9de0-4310-874c-c8a7c6509746",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "123DED0A-56F0-4834-BEA6-79CA07CAFCFF",
+      "revision": "5101ebd8-ab26-4e8d-8bd5-fab593e25157",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "7ECFD738-1611-4171-8485-754993419958",
+      "revision": "b99cc2b6-2ed3-4505-a098-ca7a634b64d3",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "64EB29EF-E870-48BE-87D1-A3130B3074AE",
+      "revision": "eea762bd-1139-4f08-9c0e-bec4af33c34d",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "5445DCFD-961F-47E4-BE9A-0D6E86230ADD",
+      "revision": "21b2ac37-168b-4f9b-8677-21b13a6b91f9",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "21E9A9B8-E284-4958-9DD6-D3472EDF201B",
+      "revision": "39ac0b82-c531-4ea1-a6ff-3b154a7e7ce6",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "1ADFE6A7-C392-461F-817A-A221ACA49BE9",
+      "revision": "2cf3f832-21e0-46eb-bbeb-e50e6191d67f",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "67852D27-B070-4633-807E-75A98781B6BF",
+      "revision": "512185a1-2586-4f97-8e61-481b483be196",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "901C3EF8-D083-4E23-A36F-8CE520FA1697",
+      "revision": "f8eed1e7-0e10-4dd8-aef4-16fa6a017b40",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "7141C924-F649-4C3D-8503-A618637B7B95",
+      "revision": "56725b56-15f7-4f03-a2fd-4abba239afa5",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "7F4F7443-A02D-4B75-A184-44CE1DDC924C",
+      "revision": "e06db74a-53df-47ee-bd36-952f22df56fa",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "436E7D46-DF8A-4D6A-A757-687AC0307670",
+      "revision": "afc41353-2cd3-4e8a-995a-acb5014b73f0",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "098E1455-D20E-4913-875E-0C213EE1C4DA",
+      "revision": "e00b7535-5c20-479f-8c92-c61d7875a5c3",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "CA524D4E-4643-4EF0-A05D-C5B0188479E3",
+      "revision": "10719774-d43e-47cd-a00a-2495de81e812",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "4583BE23-4613-4A66-94A0-2A23AE7B937C",
+      "revision": "c9fa185b-8e4c-4292-bf43-0afeacd3a2bd",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "82A8943C-A53E-4F77-813E-268A6D5732C9",
+      "revision": "560ce489-12c3-4dce-be0b-b61584bd9640",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "471F2D58-0594-4E8B-BB5C-4FB4310DE0CC",
+      "revision": "82b779c3-4872-44e6-bc6d-8fb32b7d3563",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "C09A4FCB-0428-47B6-9D99-CE56CEA613CD",
+      "revision": "224b8a2e-940d-44a5-8306-b4ebd87c3e21",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "1C71C4F6-4086-422F-8395-9BBFA938F916",
+      "revision": "f3324143-f51c-4065-9965-fd7cc5123f00",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "F9498AE8-546A-49FF-9EC4-697D5655738D",
+      "revision": "52811ac9-859f-4f36-abe7-bb31f6b9118e",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "D798C9C2-7FC9-4ED4-82A4-91C7F3471D82",
+      "revision": "14094e4a-f3ff-4462-bafd-e7c798a3e0e9",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "611584B4-25A1-400E-AA2C-124D0DCB87EE",
+      "revision": "c1b66401-b0e4-4d2a-93e6-1531b48c5809",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "00AE8A63-1564-415F-AC0B-0DA817EBADEC",
+      "revision": "46caae15-c165-4eed-b04a-9a742b261682",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "9032A280-385A-4848-8728-0FF4F9CB3D15",
+      "revision": "6bcf1d3a-f365-4969-b673-a5e0252dbed8",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "77A584C2-6FEE-4DB9-8C7F-327660CDB9F4",
+      "revision": "1124716b-6c2d-4903-8da9-c5968169c686",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "476DD83A-BDAF-4334-8DE8-EBAFC01ED4A4",
+      "revision": "7ac6c7c5-cc4b-4def-86a6-27708bf14e32",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "C6998401-DB6F-4960-BDE8-21D7DC8AB357",
+      "revision": "4f3c3ccc-cde4-4b8b-a131-6a595116408e",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "EEECB0DD-A9B0-4A90-85D2-12F20D4CBD73",
+      "revision": "6a725049-c0ca-4107-96d1-ca3080b10903",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "C9CF3430-0A52-413A-813E-C03EF44F7C62",
+      "revision": "84a29ad0-2a29-4ef8-95b2-ab388ff3b0c2",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "8746F78A-723A-4A6C-BB01-357B064A8D71",
+      "revision": "c769a019-87ff-4698-b1f8-3611cf281ef5",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "9B5CF36D-A42C-4CCB-BBF9-B9CBA253BE1D",
+      "revision": "21f0eb69-502f-4815-b85a-0c560d1e5301",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "3F76B70B-778D-4F2B-8AC7-BE0C4B49D42F",
+      "revision": "de4eabf8-0074-4c9d-b0fc-12fa90fb8002",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "DEA8D4A2-CA6B-4C66-99CA-82E8120B6D46",
+      "revision": "e4f8a746-7e5b-43bc-bd4b-e1860519c23f",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "F23C6B31-FCC6-4032-A9F8-C828BD9EA9A4",
+      "revision": "56d3917f-bc32-4bb2-b86f-3ec56bf23783",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "35C2D951-24E6-4780-9F77-F91AD5733109",
+      "revision": "e332af6d-2563-48a9-b469-d71d7daee7ef",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "3B55B9D3-9B18-4B6C-A3F4-97431FB2B66A",
+      "revision": "2fd3bcb7-6160-49e7-937c-527499dc1c00",
+      "state": "SAVED_REOPENED"
+    },
+    {
+      "id": "44FA17EB-4910-49E5-A3FC-3CF590F77D97",
+      "revision": "95abd3ab-a9dc-4fd3-8b42-e19cf0d9ae9c",
+      "state": "SAVED_REOPENED"
+    }
+  ],
+  "remainingRoots": [],
+  "remainingCardChildEligibility": 26,
+  "noPendingSave": true,
+  "publicationSubmitted": false,
+  "sourceFieldsChanged": false,
+  "verification": "Exact native identity/focus, lock/workflow read, only Never publish plus normal shared/version revision and update metadata. Independent browser reload. Preserve earlier two partial raw-fence qualifications in four-gap receipt. No lock field changed; empty <r /> was verified as no owner.",
+  "publishingControl": "Both AX and screenshot-grounded Publish item activation exposed no wizard/job for360. No repeat pending. Supported workflow/operator still needed; do not bypass Authoring API denial.",
+  "otherThreeScopes": {
+    "business": {
+      "id": "DE33EE9039624D33B6463DE583FD28EE",
+      "name": "Data",
+      "children": {
+        "total": 8,
+        "results": [
+          {
+            "id": "14DBD829182C439A803110F99D0B6AEE",
+            "name": "Advanced Markets resource cards",
+            "children": {
+              "total": 3
+            }
+          },
+          {
+            "id": "3866375DB50C496DBB42056F76FCADEC",
+            "name": "Advanced Markets sales materials",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "11CFF1E2E3904944893A44DAC2A4EF19",
+            "name": "Business continuation resources",
+            "children": {
+              "total": 3
+            }
+          },
+          {
+            "id": "1866C4B0C6C2471988940348E46A91C2",
+            "name": "Help ensure a successful business continuation with these potential strategies a",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "00F74F7FCB4742F6BBC87A75044BC729",
+            "name": "Hero",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "48E48BBB69004CC3B67DA0E34EC26C03",
+            "name": "Legal disclosures 4",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "F275A5DBAFF54632943681F62BEB38D7",
+            "name": "Legal disclosures 5",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "9D4359209B5F417F916B043B236D2D6E",
+            "name": "Ready to learn more",
+            "children": {
+              "total": 0
+            }
+          }
+        ]
+      }
+    },
+    "lifetime": {
+      "id": "E1B44EF3C6BE4B1494D9AB2EFCF21FC1",
+      "name": "Data",
+      "children": {
+        "total": 9,
+        "results": [
+          {
+            "id": "DD92D7512D22467F85408113845387E3",
+            "name": "Hero",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "9AB234BF3B754D29A8DAB43C3CB5DD7E",
+            "name": "Source video",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "5027856BF13243A1835426226D65E77B",
+            "name": "Introduction",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "83BFB72D20AF48EC9996A4FF5D7F4C25",
+            "name": "Take action",
+            "children": {
+              "total": 4
+            }
+          },
+          {
+            "id": "EC4A5F435ACE4630A3024A07BA029E9D",
+            "name": "Plan fit",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "168BACC9B5F84341A95D13ECC7B0374A",
+            "name": "Income calculator",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "14BA9E2690854DEA8BBBB286865E5588",
+            "name": "Resources",
+            "children": {
+              "total": 3
+            }
+          },
+          {
+            "id": "03D5066352B445799BBE063D5AB70569",
+            "name": "Learn more",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "552BB171D88543C18C6EC5535CBE4B44",
+            "name": "Legal disclosures",
+            "children": {
+              "total": 0
+            }
+          }
+        ]
+      }
+    },
+    "taking": {
+      "id": "53A75AD3C01E4F9AB6DA9DAA7BBF57C0",
+      "name": "Data",
+      "children": {
+        "total": 8,
+        "results": [
+          {
+            "id": "6B03A0DF0D9641F88CA54F303EF88786",
+            "name": "Additional resources",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "0CF4E41D29BA45F7B86D590D3499E4B5",
+            "name": "Beginning guaranteed lifetime income",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "4708F755DFF940FCB0BECD73132541D8",
+            "name": "Introduction",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "1638FBCBB08E415EA2A075428A0ACF92",
+            "name": "Legal disclosures",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "5CA644D80436484BA6C269669C413FBB",
+            "name": "Source video",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "E7F068CCD4D1451EBA6F84187C402954",
+            "name": "Video introduction",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "D9BB9DC1FED7438BBF725075AA7A374F",
+            "name": "Video transcript",
+            "children": {
+              "total": 0
+            }
+          },
+          {
+            "id": "D5C06E3C587A47A5BCB170B0394B1C8D",
+            "name": "Video transcript accordion",
+            "children": {
+              "total": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "remainingPreflight": [
+    "26 direct card-child eligibility checks",
+    "Current root/child date/target eligibility and page/ancestor guard checks",
+    "Source-backed assembled local draft desktop/mobile rendering",
+    "Supported scoped publication and immediate live acceptance"
+  ],
+  "qualification": "37root guard clears are not full eligibility, source parity, publication or live acceptance. No source text/image/layout changes; no lock overrides. Two earlier raw-fence limitations remain recorded separately."
+}
