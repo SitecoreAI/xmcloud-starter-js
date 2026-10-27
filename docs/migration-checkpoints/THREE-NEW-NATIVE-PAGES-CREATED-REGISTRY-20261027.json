@@ -1,5 +1,5 @@
 {
-  "utc": "2026-10-27T17:37:28.940193+00:00",
+  "utc": "2026-10-27T17:46:45.175500+00:00",
   "state": "DRAFT_NATIVE_COMPOSITION_IN_PROGRESS_NOT_PUBLISHED",
   "noPendingSave": true,
   "applicationRoutingChanged": false,
@@ -13,8 +13,44 @@
     "keyEmployee": {
       "id": "F6EAF341-79DC-4D31-9E60-CAB6E50680AA",
       "slug": "key-employee-compensation-materials",
-      "data": null,
-      "state": "METADATA_DESIGN_SAVED_REOPENED_BODY_NOT_COMPOSED"
+      "data": "0179EAC9-74D2-419D-99B4-21F3E3D32910",
+      "state": "EIGHT_COMPONENTS_BOUND_SAVED_REOPENED_LOCAL_1024_370_QUALIFIED",
+      "layoutRevision": "a7742e2d-309a-4b48-8357-ffa4c2b7489f",
+      "roots": {
+        "Hero": "748CCAB2-E1A5-4CF6-9DC6-E94CBEA3088E",
+        "Introduction": "04935CB3-C48F-40C4-894A-A2140FB53767",
+        "Key employee resource cards": "072900E8-2E08-4797-B948-B2D56C236E5B",
+        "Advanced Markets sales materials": "D35F5FFD-E56F-4632-9478-F08F99FFC01A",
+        "Related sales tools cards": "4C361EA9-47E1-4B18-B3E7-43EA8E772157",
+        "Ready to learn more": "CC82DE59-521D-49C2-B6A5-3680B0C7F5B1",
+        "Strategy disclosures": "2DC2D307-119F-47B7-B1CA-07EBEEB54F6F",
+        "Product disclosures": "929A27E9-848D-4B7B-A54D-929D7C61B88A"
+      },
+      "resourceCards": [
+        "07FDAD82-0CC6-4599-9F43-BE5E064DC396",
+        "40D7755B-DBC5-4AF1-BB8F-63F2008F38C0",
+        "347DDF2A-FAFC-4871-8511-D5CE60A73C38",
+        "5F222A30-960B-4B77-8BB1-9F2AEB4CDB39",
+        "81365E59-3FB8-4D19-AAF8-E2BBC4616FD1"
+      ],
+      "relatedCards": [
+        "266B5AD2-38D9-4336-BAC3-B1B550812385",
+        "59AD1832-2D48-40AA-AC84-894F3ED2C1A5",
+        "E88C482B-485B-4498-A8BD-780B809700FC"
+      ],
+      "qa": {
+        "currentSDKComponents": 8,
+        "sourceSegmentsMatched": 25,
+        "sourceSegmentsChecked": 25,
+        "actualWidths": [
+          1024,
+          370
+        ],
+        "missingDatasourcePrompts": 0,
+        "documentOverflow": false,
+        "published": false,
+        "thumbnailsDocumentsNavigationIncomplete": true
+      }
     },
     "essential": {
       "id": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884",
@@ -105,7 +141,7 @@
       "target": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884"
     }
   ],
-  "qualification": "Estate native body/layout saved and independently reopened; qualified local responsive rendering only. Images/documents and secondary navigation remain incomplete; no new publication. Key Employee and Essential remain saved page shells.",
+  "qualification": "Estate and Key Employee native layouts/content saved and independently reopened; qualified local responsive checks only. Thumbnails, documents and shared secondary navigation remain incomplete. Essential remains a saved page shell. No new publication.",
   "remaining": [
     "Add exact source introduction paragraph",
     "Bind estate native Final renderings and verify current draft desktop/mobile/internal routes",

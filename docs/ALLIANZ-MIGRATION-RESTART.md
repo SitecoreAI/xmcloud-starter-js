@@ -1,3 +1,5 @@
+Current: Estate and Key Employee body/layout saved and locally checked at 1024/370; continue Essential Concepts using existing page EF35367F-E05C-4CE9-9FD7-8E2B42F07884. Exact IDs in THREE-NEW-NATIVE-PAGES-CREATED-REGISTRY-20261027.json. No new publication.
+
 Latest native draft checkpoint: [Estate responsive checkpoint](migration-checkpoints/ESTATE-NATIVE-DRAFT-RESPONSIVE-CHECKPOINT-20261027.md). Continue Key Employee and Essential body composition using the existing registry IDs; do not recreate items.
 
 # Allianz migration restart checkpoint
