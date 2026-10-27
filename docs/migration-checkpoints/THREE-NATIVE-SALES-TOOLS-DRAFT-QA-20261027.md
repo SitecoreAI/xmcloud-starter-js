@@ -1,0 +1,9 @@
+# Three native sales-tools drafts
+
+Estate, Key Employee Compensation and Essential Concepts now use native Section Landing items, Data folders, Hero, RichText and CardGrid components with native internal links. No custom Next.js routes, routing overrides or maps were added. All component content and final layouts were saved and independently reopened. Exact IDs are in THREE-NEW-NATIVE-PAGES-CREATED-REGISTRY-20261027.json.
+
+Current configured SDK source comparisons matched Estate 29/29, Key Employee 25/25 and Essential 27/27 normalized heading/paragraph segments, including professional-use notices and disclosures. Connected local rendering at actual 1024px and 370px has no datasource prompts or horizontal document overflow. Related internal links have empty targets; Essential-to-Key Employee and Back were verified in one tab. These are qualified local draft checks, not native Page Builder acceptance or public live results. Initial local 404s resolved with ordinary ISR regeneration; no routing changes or cache purges.
+
+Remaining: shared sales-tools secondary navigation, source resource and related-card thumbnails where applicable (exact source asset mapping required), 16 PDF destinations across the three pages (8/5/3), complete lower-page visual parity, publication through a supported exact-scope workflow and subsequent live QA. PDFs/assets remain unbound and unpublished; no fallback remote assets substituted. Existing Authoring API denial and other operator holds remain unchanged. Lifetime calculator is a separate absent item with unverified source integration, not implemented.
+
+Temporary QA tabs closed, viewport reset, owned local server stopped. No pending CMS save or publication job. Preserve generated next-env.d.ts modification. Continue from registry, do not recreate items.

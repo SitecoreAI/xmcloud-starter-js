@@ -1,5 +1,5 @@
 {
-  "utc": "2026-10-27T17:46:45.175500+00:00",
+  "utc": "2026-10-27T17:55:09.003306+00:00",
   "state": "DRAFT_NATIVE_COMPOSITION_IN_PROGRESS_NOT_PUBLISHED",
   "noPendingSave": true,
   "applicationRoutingChanged": false,
@@ -55,8 +55,42 @@
     "essential": {
       "id": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884",
       "slug": "essential-concepts",
-      "data": null,
-      "state": "METADATA_DESIGN_SAVED_REOPENED_BODY_NOT_COMPOSED"
+      "data": "4598D23E-E4D2-4850-8EA9-E176D019480E",
+      "state": "SEVEN_COMPONENTS_BOUND_SAVED_REOPENED_LOCAL_1024_370_QUALIFIED",
+      "layoutRevision": "4930b68e-0519-4252-8643-0bda0c83e07d",
+      "roots": {
+        "Hero": "77A19D7A-217C-4B5F-AC0F-2DEAC693CFB5",
+        "Introduction": "B9957446-3EF1-42F3-B5E5-30A563A12A40",
+        "Essential concepts resource cards": "3AB84898-17A8-4DDB-B32B-6AC353B822C9",
+        "Advanced Markets sales materials": "36706E99-48EA-4903-A221-2DEBCA77632A",
+        "Related sales tools cards": "E8A7FD78-03A6-4603-A48E-BD481E65DB2B",
+        "Have other questions": "6374D6F5-CC2C-4D6F-83BC-54D65714F0C5",
+        "Product disclosures": "1893B973-2D16-4FA5-86DB-3F3EEAE339D3"
+      },
+      "resourceCards": [
+        "6D7759A5-0CC7-4343-B536-E8A55C189D07",
+        "6A9768F6-AE10-4F4F-8548-064D8F16AA22",
+        "38EFD8CB-3401-4C29-87A3-A3C1BC3994FD"
+      ],
+      "relatedCards": [
+        "05E2938E-6242-46D6-9373-680BB0B43425",
+        "90607982-1004-4E64-AE36-458E30997215",
+        "4BD2A8E9-79F2-4326-86B0-7A69F6D66CC1"
+      ],
+      "qa": {
+        "currentSDKComponents": 7,
+        "sourceSegmentsMatched": 27,
+        "sourceSegmentsChecked": 27,
+        "actualWidths": [
+          1024,
+          370
+        ],
+        "missingDatasourcePrompts": 0,
+        "documentOverflow": false,
+        "nativeKeyEmployeeSameTabRoundtrip": true,
+        "published": false,
+        "thumbnailsDocumentsNavigationIncomplete": true
+      }
     }
   },
   "estateRoots": {
@@ -141,7 +175,7 @@
       "target": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884"
     }
   ],
-  "qualification": "Estate and Key Employee native layouts/content saved and independently reopened; qualified local responsive checks only. Thumbnails, documents and shared secondary navigation remain incomplete. Essential remains a saved page shell. No new publication.",
+  "qualification": "All three native layouts and source text saved and independently reopened. Qualified connected local desktop/mobile checks only. Images/documents and shared secondary navigation remain incomplete; no publication submitted. Calculator remains absent and unimplemented.",
   "remaining": [
     "Add exact source introduction paragraph",
     "Bind estate native Final renderings and verify current draft desktop/mobile/internal routes",
