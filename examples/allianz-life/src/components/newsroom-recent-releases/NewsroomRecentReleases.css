@@ -17,3 +17,9 @@
   letter-spacing: inherit;
   margin: 0;
 }
+
+/* Official card summaries have 16px block margins, including when an authored
+   article introduction needs a div wrapper to retain its original HTML. */
+.allianz-newsroom-recent-releases .allianz-newsroom-recent-releases__summary {
+  margin: 16px 0;
+}

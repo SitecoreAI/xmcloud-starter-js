@@ -1,0 +1,40 @@
+{
+  "recordedUTC": "2026-10-27T22:57:53.645584+00:00",
+  "change": "Scope source paragraph block margins to newsroom card summary wrappers; preserve original rich text, article selection and dates.",
+  "source": "https://www.allianzlife.com/about/newsroom",
+  "localQA": {
+    "actualMobileViewport": 370,
+    "matchingCardHeightsPx": [
+      296,
+      328,
+      384
+    ],
+    "sourceAndLocalSummaryMargin": "16px 0px",
+    "desktopViewport": 1024,
+    "desktopHorizontalOverflow": false,
+    "summaryTypography": "16px / 24px"
+  },
+  "checks": {
+    "focusedPassed": 17,
+    "fullPassed": 2766,
+    "fullFailed": 0,
+    "existingOptInSkipped": 1,
+    "lint": "pass",
+    "types": "pass",
+    "webpackBuild": "pass"
+  },
+  "separateContentGap": {
+    "complete2026DraftYearCensus": 26,
+    "hasNext": false,
+    "twoCurrentOfficialArticlesAbsent": [
+      "Americans-Worry-They-Cannot-Afford-Health-Care-in-Retirement",
+      "Allianz-Life-to-Offer-One-of-A-Kind-RILA-Benefit-That-Protects-Both-Income-and-Legacy"
+    ],
+    "OCTI": "Exists in draft and local feed; public delivery freshness remains separately unverified."
+  },
+  "qualifications": [
+    "Not whole-page or whole-site acceptance.",
+    "No CMS content or PDF publication performed.",
+    "Generated next-env.d.ts and unrelated tmp files excluded."
+  ]
+}
