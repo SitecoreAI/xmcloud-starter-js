@@ -1,0 +1,191 @@
+{
+  "utc": "2026-10-27T18:19:32.763357+00:00",
+  "state": "13_UPLOADED_TERMINAL_UI_AND_16_ITEM_METADATA_VERIFIED_BINDINGS_PENDING",
+  "destination": "/sitecore/media library/Project/Allianz Life/Documents",
+  "uploaded": 13,
+  "reusedExisting": 3,
+  "published": 0,
+  "overwriteEnabled": false,
+  "sourcePDFsRetainedUnmodified": true,
+  "sourceFirstPagesVisuallyReviewed": 16,
+  "sourceFullTextExtracted": 16,
+  "storedPayloadQualification": "Unauthenticated authoring media HTTP requests returned HTML, not PDF bytes; no stored-byte match claimed. Authenticated native readback pending.",
+  "items": [
+    {
+      "name": "AMK-485.pdf",
+      "itemId": "B1E3F927EB9D4590803DE3295E4DD2CC",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-485",
+      "bytes": 3046954,
+      "sourceSHA256": "827f7d4b3d9d153e9fcc439bdb0459d661bde2fd27f3a9e5153954c35e3b0a5f",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-485.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-493.pdf",
+      "itemId": "41AE0840BECB4CF89503C17C024BA261",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-493",
+      "bytes": 107484,
+      "sourceSHA256": "ad7a8b2ed395d1d00ff7504d8d37da48748f7e724b719dc7cca2f6f9378f9930",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-493.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-492.pdf",
+      "itemId": "3129290C927049FB92D0AD098EA60C5F",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-492",
+      "bytes": 1219502,
+      "sourceSHA256": "607f735e42aab3499a05389ac60e9df9cbf70dee0bb076e6e89e616792554a20",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-492.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-496.pdf",
+      "itemId": "394C17306F9B45B082E686DE9A870F19",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-496",
+      "bytes": 886171,
+      "sourceSHA256": "c03843a0c06e1afb5f17a660ec5f5d5d0da3bed911e719ce750e991797d9c872",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-496.pdf",
+      "uploadedThisPass": false,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-501.pdf",
+      "itemId": "584775856E1B4F938108B1E8E3361A8D",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-501",
+      "bytes": 841749,
+      "sourceSHA256": "e3d48719f5d3b86b55a17648a8a3615eb8c1306868f18cfcdd4003d0fe80abba",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-501.pdf",
+      "uploadedThisPass": false,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-488.pdf",
+      "itemId": "A8F20CD821A04F569E3B5828CAC83BC9",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-488",
+      "bytes": 635813,
+      "sourceSHA256": "ab8fe524f1b08c13dc7d28eaa6ec07edb2173b8a746247dbf48a8f11271171e3",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-488.pdf",
+      "uploadedThisPass": false,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "CSI-431.pdf",
+      "itemId": "985FEB3F138D4493AED0130D18655A6E",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/CSI-431",
+      "bytes": 523258,
+      "sourceSHA256": "dca2df9ebb262999c434de5d2ee5cd07dc97c6820a13e1df02928f5250b156b7",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2016/05/18/08/26/CSI-431.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "M-5528.pdf",
+      "itemId": "81B62DC250FD4FD2AEF0FCC5057021A6",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/M-5528",
+      "bytes": 924957,
+      "sourceSHA256": "a1936fc96fef58d4a782a1e99f40f803a13048a9df751b993d9cfcb35b2b0b83",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2016/05/18/08/29/M-5528.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-506.pdf",
+      "itemId": "0337CBA9A7824E09857F0DBE5FED6F48",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-506",
+      "bytes": 580260,
+      "sourceSHA256": "3afecdf7685b32e6b4b57f8e9ae49e14509b7665d78657461275dd7497589ade",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/19/17/AMK-506.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-511.pdf",
+      "itemId": "C449B375FEB94E20968CD3DCE0CFB64A",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-511",
+      "bytes": 136868,
+      "sourceSHA256": "64e79d0c6aba68ccc9a86373644dc01e088a2864228d981afa66fe2684b867e4",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/01/07/14/56/AMK-511.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-515.pdf",
+      "itemId": "09E05FEA6233419CAAD6BC176E9DD8D4",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-515",
+      "bytes": 993923,
+      "sourceSHA256": "f76d37aa53a3ed729bbff47c88dcf7a7defe1fc4050eb929c1f3e762c4d99d85",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/01/25/18/19/AMK-515.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-517.pdf",
+      "itemId": "940C9E16ACE84F31AD5ADD95D8E07C1E",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-517",
+      "bytes": 899953,
+      "sourceSHA256": "1b381c902eab08d0a3fbf6dc2752dba9560052b6eae639b7ff8d8b8d59678d3a",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/02/18/14/14/AMK-517.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-507.pdf",
+      "itemId": "B0992EE5595A43F3BB7DEC00D794204D",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-507",
+      "bytes": 170072,
+      "sourceSHA256": "f4ff0243ad62429b30e7f3be2e62968db9eb5b40983b93f8ca149312c53bb80b",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/02/12/15/18/AMK-507.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-776.pdf",
+      "itemId": "234FA52060EA41D398D6D3ACBFB38042",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-776",
+      "bytes": 37420,
+      "sourceSHA256": "cc9577d03cba931e1911237fe50c8373e8fd94010c68f70289c0cf0182f2132a",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2024/12/23/09/03/AMK-776.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-783.pdf",
+      "itemId": "D65540A9DEAB4EE69776378866E4151A",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-783",
+      "bytes": 3013903,
+      "sourceSHA256": "30876b539b8bda17d1caaaec029698475672ce31e2d5c9a1eccbbbd5dbe9ba4e",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2025/03/17/19/08/AMK-783.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    },
+    {
+      "name": "AMK-792.pdf",
+      "itemId": "9D8D77D663A745F3895AB162C5C05DD5",
+      "path": "/sitecore/media library/Project/Allianz Life/Documents/AMK-792",
+      "bytes": 205045,
+      "sourceSHA256": "ac85d796bed2dd38cfd13cb2cae3795585768777d2646211c152a5b0ab0b2b63",
+      "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2025/03/26/13/00/AMK-792.pdf",
+      "uploadedThisPass": true,
+      "metadataSizeMatch": true,
+      "storedByteIdentityVerified": false
+    }
+  ]
+}
