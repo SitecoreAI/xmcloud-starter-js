@@ -67,3 +67,9 @@ The environment's current Logs navigation works; the obsolete link printed in th
 App tree comparison: last good4f49 is16c742774614cd43fbf936934e60040abf76ea62; failed45a5 and docs checkpointd8b7 both havee76bd6f19fd288563d8f8839bafc0a4c13aa5ba0. Only the two scoped icon-alignment files differ. Do not deploy documentation-only checkpoints redundantly.
 
 AA5 draft-only clarification: all three saved PDF links are already exact. There is no incorrect draft field to repair. The proposed two-URL renderer registry addition would enable two already-delivered public brochure buttons after deployment; it is therefore held as a live behavior change under the specific unpublished-PDF direction. It has not been applied to production source.
+
+### Single retry terminal success
+
+One supported environment Build and deploy retry was submitted immediately by that menu action (no confirmation screen): `2xKvbB2oMkJkBFtTe9AgvF`. It completed successfully on Oct27 at09:43:21Chicago: build3m1, deployment3m19, post-actions18ms. No further retry. Its manual row identifies the creator rather than a commit SHA; the branch app tree at submission was identical to45a5, but the manual row is not SHA verification. Retain original failed job/tracing evidence and last-good4f49 rollback.
+
+The ordinary browser root request to `https://xmc-5sqbydqb8mxegha2jk0xig-eh.sitecorecloud.io` returned Forbidden. No bypass, configuration/access change, editing-secret URL or alternate route was attempted. Successful deployment is verified; native runtime acceptance remains blocked by host access. PDF proposal remains unapplied and saved fields unchanged.

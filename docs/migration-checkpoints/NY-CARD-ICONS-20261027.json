@@ -166,6 +166,19 @@
       "conclusion": "Process reached Ready but deployment later failed. No crash cause or transient condition established. Do not infer code failure or retry blindly.",
       "operatorAction": "Investigate deployment tracing ID f1c948d9-3474-4d82-8acd-197d814039a5 for job1IoEr5O6CZ2i1GoANZ5N5X; platform rollout/health failure cause is absent from available rendering log.",
       "retrySubmitted": false
+    },
+    "singleRetry": {
+      "job": "2xKvbB2oMkJkBFtTe9AgvF",
+      "action": "Existing environment Options > Build and deploy submits immediately without a confirmation dialog.",
+      "state": "Complete",
+      "appTreeAtSubmission": "e76bd6f19fd288563d8f8839bafc0a4c13aa5ba0",
+      "note": "Only one retry. Latest branch includes documentation-only checkpoints with identical app tree. Verify resolved commit and terminal state; do not resubmit.",
+      "build": "3m1",
+      "deployment": "3m19",
+      "postActions": "Complete18ms",
+      "completedLogTimeChicago": "2026-10-27 09:43:21",
+      "sourceIdentity": "Manual deployment row names creator, not commit SHA. App tree at submission matches45a5; do not call SHA dashboard-verified.",
+      "nativeRuntimeCheck": "One ordinary browser GET of editing-host root returned Forbidden. No alternate route, credentials, permission change or retry. Native acceptance remains blocked."
     }
   }
 }
