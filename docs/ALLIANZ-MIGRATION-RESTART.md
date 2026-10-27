@@ -1,3 +1,5 @@
+Latest: six related-card images saved/reopened using three existing Content Hub Originals whose bytes exactly match source. No image uploads or new public links. See THREE-SALES-TOOLS-SIX-VERIFIED-CONTENTHUB-REUSE-BINDINGS-20261027.json. Further parent-page reuse census active;14 unique thumbnail identities remain.
+
 Latest: 13 missing source PDFs uploaded into authorized Documents folder;3 existing reused; all16 stored originals byte-matched via authenticated native download and16 draft card links saved/reopened with53-field fences. Keep documents and pages unpublished. See THREE-SALES-TOOLS-16-PDF-DRAFT-STAGING-20261027.json and THREE-SALES-TOOLS-16-PDF-DRAFT-BINDINGS-20261027.json. Continue Content Hub thumbnails and draft-renderer acceptance.
 
 Latest: three sales-tool drafts now include shared native secondary navigation; SDK resolution and local 1024/370/menu keyboard checks passed. See THREE-SALES-TOOLS-SHARED-NATIVE-NAVIGATION-20261027.json. Remaining thumbnails/PDFs/publication/live/native gates stay open. No pending CMS save/job; owned QA server stopped.

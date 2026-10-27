@@ -1,0 +1,135 @@
+{
+  "utc": "2026-10-27T18:37:34.489819+00:00",
+  "sourceByteMatchedExistingOriginals": [
+    {
+      "imageField": {
+        "height": "350",
+        "dam-content-type": "Image",
+        "width": "512",
+        "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/286ec083c90a4b3aa37d1e1d99746c96?v=f4495d35",
+        "dam-id": "XddcDublRcKD_V7MMNCZVw"
+      },
+      "status": "PUBLIC_ORIGINAL_READ",
+      "bytes": 65005,
+      "sha256": "97289b241b17c1497ac462717a2dc85cab876604aba5ed9c30c467209369754f",
+      "exactSourceMatches": [
+        "card-azl-flexible-estate-planning-amk-488.jpg"
+      ]
+    },
+    {
+      "imageField": {
+        "height": "350",
+        "dam-content-type": "Image",
+        "width": "512",
+        "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/1ca3a651901244c8b2d5dfffac59abd9?v=abe31683",
+        "dam-id": "gKJTtDopT7WsYAux6ELfkQ"
+      },
+      "status": "PUBLIC_ORIGINAL_READ",
+      "bytes": 47574,
+      "sha256": "4a35600dca8a1974d782ed47c794564b3f673e535d02dc9d0063cb1bf3af6516",
+      "exactSourceMatches": [
+        "card-azl-key-employee-compensation-amk-506.jpg"
+      ]
+    },
+    {
+      "imageField": {
+        "height": "350",
+        "dam-content-type": "Image",
+        "width": "512",
+        "src": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/ee90039bac364382bd6e2d7d03c32608?v=7e000659",
+        "dam-id": "cPE9pZM2TgqZhgdmtDMhGA"
+      },
+      "status": "PUBLIC_ORIGINAL_READ",
+      "bytes": 42076,
+      "sha256": "1e66728dc70ec7c4f4c50f39f2a0996e551ce32a039b221cea72007e1f4751ba",
+      "exactSourceMatches": [
+        "card-azl-digital-strategy-can-help-enhance-participant-outcome-1.jpg"
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "card": "03D15EF7-D512-437C-B780-DB19583D053C",
+      "source": "card-azl-key-employee-compensation-amk-506.jpg",
+      "revision": "ffbff8d2-036e-444d-89d3-9bb376345453",
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "savedIndependentlyReopened": true,
+      "published": false
+    },
+    {
+      "card": "D1A9F9A2-3AD3-427E-8191-458336079F97",
+      "source": "card-azl-digital-strategy-can-help-enhance-participant-outcome-1.jpg",
+      "revision": "0c024e4f-d981-4778-8728-0abce0bed49e",
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "savedIndependentlyReopened": true,
+      "published": false
+    },
+    {
+      "card": "266B5AD2-38D9-4336-BAC3-B1B550812385",
+      "source": "card-azl-flexible-estate-planning-amk-488.jpg",
+      "revision": "890f81aa-1615-4033-8370-9040037520b1",
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "savedIndependentlyReopened": true,
+      "published": false
+    },
+    {
+      "card": "E88C482B-485B-4498-A8BD-780B809700FC",
+      "source": "card-azl-digital-strategy-can-help-enhance-participant-outcome-1.jpg",
+      "revision": "11d77b24-7c49-411d-92be-5f2c00a1e036",
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "savedIndependentlyReopened": true,
+      "published": false
+    },
+    {
+      "card": "05E2938E-6242-46D6-9373-680BB0B43425",
+      "source": "card-azl-flexible-estate-planning-amk-488.jpg",
+      "revision": "89fa1290-a96f-4189-96ee-f90ae0fdefa9",
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "savedIndependentlyReopened": true,
+      "published": false
+    },
+    {
+      "card": "90607982-1004-4E64-AE36-458E30997215",
+      "source": "card-azl-key-employee-compensation-amk-506.jpg",
+      "revision": "1a624537-0661-467f-bca3-79f0b4e13d16",
+      "fieldsCompared": 53,
+      "changedFields": [
+        "image",
+        "Revision",
+        "Updated"
+      ],
+      "savedIndependentlyReopened": true,
+      "published": false
+    }
+  ],
+  "newUploads": 0,
+  "newPublicLinks": 0,
+  "published": 0,
+  "renderQA": "Pending current saved-draft render check",
+  "remainingUniqueThumbnails": 14
+}
