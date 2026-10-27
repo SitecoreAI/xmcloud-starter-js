@@ -98,3 +98,7 @@ Navigation commit `03d792d9176e51603576fc527c8a3db89e7bf8fb` is pushed and both 
 - Taking Income: `/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/taking-income`,7prompts, Data `53A75AD3-C01E-4F9A-B6DA-9DAA7BBF57C0`,8roots.
 
 The latter three have no new CMS mutation/publication. All four fresh official pages are substantive. Prioritize their headers/main content over secondary links. Normal SDK inventory is available; large grouped queries hit complexity limits, so use bounded reads rather than access changes. The 360 saved current-rate item is still unpublished because Publish item exposed no wizard/job; do not claim live correction. No new publication job or private-host access was attempted in this QA pass.
+
+## Advisory interim preflight checkpoint
+
+[Exact dependency and guard checkpoint](ADVISORY-EXACT-DEPENDENCIES-AND-17-ROOT-GUARD-CHECKPOINT-20261027.json): Data folder plus 17 of 37 root guards saved/reopened; 20 root and 26 card-child eligibility checks remain. Page and all direct child IDs retained; do not replay completed saves. This is unpublished preparation, not acceptance. No save/job is pending at this checkpoint. Smaller-scope exact root inventories are included for continuation.
