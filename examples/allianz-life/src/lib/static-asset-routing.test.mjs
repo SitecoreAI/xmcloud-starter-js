@@ -34,6 +34,17 @@ const current = load(sourceFile);
 const before = { matcher: ['/', '/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|healthz|sitecore/api/|-/|allianz-assets/|allianz-legacy-assets/|fonts/|favicon.ico|sc_logo.svg|ai/).*)'] };
 const asset = '/allianz-ui/video-placeholder.svg';
 const doesMatch = (config, url, extra = {}) => matches({ config, nextConfig: {}, url, ...extra });
+const lifetimeWorkbook = '/~/Media/Files/Global/ToolShed/dx-allianz-in-plan-annuity/dx-allianz-in-plan-annuity-xlsx.xlsx';
+
+test('the unchanged Lifetime engine workbook is a static resource, while neighboring URLs retain normal routing', () => {
+  assert.equal(doesMatch(current.config, lifetimeWorkbook), false);
+  assert.equal(doesMatch(current.config, lifetimeWorkbook + '?v=source'), false);
+  for (const url of [lifetimeWorkbook + '/extra', lifetimeWorkbook + '.exe',
+    lifetimeWorkbook.replace('.xlsx', 'Xxlsx'), lifetimeWorkbook.replace('dx-allianz-in-plan-annuity-xlsx.xlsx', 'other.xlsx'),
+    '/~/Media/private', '/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/calculator']) {
+    assert.equal(doesMatch(current.config, url), true, url);
+  }
+});
 function env(t, values) {
   for (const [key, value] of Object.entries(values)) {
     const old = process.env[key]; process.env[key] = value;

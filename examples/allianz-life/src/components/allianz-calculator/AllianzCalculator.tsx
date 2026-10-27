@@ -1,11 +1,53 @@
 'use client';
 import { RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
-import { useId, useMemo, useRef, useState, type FormEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type FormEvent } from 'react';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
 import { RETIREMENT_INPUTS, validateCalculator, incomeToolsDemoMode, type AllianzCalculatorProps } from './allianz-calculator.props';
 import { IncomeLocalToolsDemo } from 'components/allianz-income-tools/IncomeLocalToolsDemo';
 
-export const Default = ({ fields, params, rendering }: AllianzCalculatorProps) => {
+/** Isolate the original calculator's bundled React, CSS and Highcharts globals. */
+const LifetimeIncomeFrame = () => {
+  const frame = useRef<HTMLIFrameElement>(null);
+  const observer = useRef<ResizeObserver | null>(null);
+  const [height, setHeight] = useState(1000);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => () => observer.current?.disconnect(), []);
+  const loaded = () => {
+    observer.current?.disconnect();
+    const root = frame.current?.contentDocument?.getElementById('allianz-calculator-frame');
+    if (!root) { setFailed(true); return; }
+    setFailed(false);
+    const measure = () => {
+      const next = Math.ceil(root.getBoundingClientRect().height) + 2;
+      if (next > 0 && next < 20000) setHeight((previous) => Math.abs(previous - next) > 1 ? next : previous);
+    };
+    observer.current = new ResizeObserver(measure);
+    observer.current.observe(root);
+    measure();
+  };
+  return <>
+    <iframe ref={frame} src="/allianz-assets/lifetime-income/index.html"
+      title="Allianz Lifetime Income+ annuity income calculator" onLoad={loaded}
+      style={{ display: 'block', width: '100%', height, border: 0 }} />
+    {failed && <p role="alert">The income calculator could not be loaded. Please try again later.</p>}
+  </>;
+};
+
+/** Native variant: only the verified original widget is code-owned. */
+export const LifetimeIncome = ({ fields, params }: AllianzCalculatorProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  return <section className="allianz-lifetime-income-calculator" id={params.RenderingIdentifier}>
+    {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
+    {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}
+    <LifetimeIncomeFrame />
+    {shouldRenderTextField(data?.disclaimer?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.disclaimer?.jsonValue} />}
+  </section>;
+};
+
+export const Default = (props: AllianzCalculatorProps) => {
+  const { fields, params, rendering } = props;
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
@@ -25,6 +67,8 @@ export const Default = ({ fields, params, rendering }: AllianzCalculatorProps) =
     else setComputed(true);
   };
   const demoMode = incomeToolsDemoMode(data?.schemaKey, rendering?.dataSource);
+  // The existing native Calculator template selects this verified tool explicitly.
+  if (data?.schemaKey?.jsonValue?.value === 'lifetime-income-official') return <LifetimeIncome {...props} />;
   if (demoMode) return <section className="allianz-local-calculator" id={params.RenderingIdentifier}>
     {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
     {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}

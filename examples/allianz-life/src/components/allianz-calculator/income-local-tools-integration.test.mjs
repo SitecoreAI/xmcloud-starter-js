@@ -32,14 +32,14 @@ function load(file) {
   } }).outputText, file);
   return m.exports;
 }
-const { Default } = load(path.join(root, 'components/allianz-calculator/AllianzCalculator.tsx'));
+const { Default, LifetimeIncome } = load(path.join(root, 'components/allianz-calculator/AllianzCalculator.tsx'));
 const { incomeToolsDemoMode } = load(path.join(root, 'components/allianz-calculator/allianz-calculator.props.ts'));
 const field = (name, value) => ({ jsonValue: { value, metadata: { fieldId: name, itemId: 'income-demo', fieldType: name === 'heading' ? 'Single-Line Text' : 'Rich Text' } } });
-function render(key, editing = false, extra = {}, props = {}) {
+function render(key, editing = false, extra = {}, props = {}, Component = Default) {
   const page = { mode: { isEditing: editing, isNormal: !editing }, layout: { sitecore: { context: {}, route: { name: 'Income local demo', fields: {}, placeholders: {} } } }, siteName: 'allianz-life' };
   const datasource = { schemaKey: field('schemaKey', key), ...extra };
   return renderToStaticMarkup(React.createElement(sdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) },
-    React.createElement(Default, { params: {}, fields: { data: { datasource } }, ...props })));
+    React.createElement(Component, { params: {}, fields: { data: { datasource } }, ...props })));
 }
 
 const incomeRoot = '/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income';
@@ -109,4 +109,28 @@ test('unknown schemas keep the existing retirement utility behavior', () => {
   assert.match(html, /How much you need to save/);
   assert.equal((html.match(/<input/g) || []).length, 3);
   assert.doesNotMatch(html, /Demo sample rates|Local learning demo/);
+});
+
+
+test('native Lifetime variant isolates the original widget and preserves editable source surroundings', () => {
+  for (const editing of [false, true]) {
+    const html = render(undefined, editing, {
+      heading: field('heading', 'Participant income'),
+      body: field('body', '<p>Exact authored source explanation.</p>'),
+      disclaimer: field('disclaimer', '<p>Exact authored source disclosures.</p>'),
+    }, {}, LifetimeIncome);
+    assert.match(html, /<iframe[^>]+src="\/allianz-assets\/lifetime-income\/index.html"/);
+    assert.match(html, /title="Allianz Lifetime Income\+ annuity income calculator"/);
+    assert.match(html, /Exact authored source explanation/);
+    assert.match(html, /Exact authored source disclosures/);
+    assert.doesNotMatch(html, /<script|<input|How much you need to save|www.allianzlife.com/);
+    if (editing) for (const name of ['heading', 'body', 'disclaimer']) assert.match(html, new RegExp(`fieldId&quot;:&quot;${name}`));
+  }
+});
+
+test('only the exact authored Lifetime schema selects the official tool through the existing Calculator template', () => {
+  assert.match(render('lifetime-income-official'), /<iframe/);
+  for (const key of ['lifetime-income-official ', 'LIFETIME-INCOME-OFFICIAL', 'lifetime-income', '']) {
+    assert.doesNotMatch(render(key), /<iframe/);
+  }
 });

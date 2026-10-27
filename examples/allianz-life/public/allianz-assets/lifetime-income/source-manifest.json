@@ -1,0 +1,115 @@
+{
+  "source": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/calculator",
+  "engineAndWorkbookUnmodified": true,
+  "assets": [
+    {
+      "path": "allianz-assets/lifetime-income/widget.js",
+      "source": "LIFETIME-OFFICIAL-WIDGET-SCRIPT-SOURCE-20261027.js",
+      "sha256": "b967b34b0549cac8bce19ac625881a5184f1ae7c151c51bd31ab8b770efb368f"
+    },
+    {
+      "path": "allianz-assets/lifetime-income/widget.css",
+      "source": "LIFETIME-OFFICIAL-WIDGET-STYLES-SOURCE-20261027.css",
+      "sha256": "7c01e98677f3c40f4ce62700a54e7127f1ede9577c7e1541da0a5df5c34811a1"
+    },
+    {
+      "path": "allianz-assets/lifetime-income/base.css",
+      "source": "LIFETIME-OFFICIAL-BASE-STYLES-SOURCE-20261027.css",
+      "sha256": "11de986b98b0afc9c4cd391d4b1072ff19d65c00567b70f5ded193fffe9f8c3f"
+    },
+    {
+      "path": "~/Media/Files/Global/ToolShed/dx-allianz-in-plan-annuity/dx-allianz-in-plan-annuity-xlsx.xlsx",
+      "sha256": "944cd27387c27229e7e1f861ad14d73c0a7a2df77c85c3b6f82cb021feb465a5"
+    },
+    {
+      "path": "fonts/allianz-icons/Allianz-Icons.woff",
+      "sha256": "647836120600515e552b198bf49864b64ff629a89c4cd5b01cb5fff41536b730",
+      "bytes": 62580
+    },
+    {
+      "path": "fonts/allianz-icons/Allianz-Icons.woff2",
+      "sha256": "aad67e30ae743483c8767178a3adb6ea5146591b98e9d28b767c940e61b6c447",
+      "bytes": 52796
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-Bold.woff",
+      "sha256": "3c0e8752716636893774c1fde9cbecb21005fc837a2cf09cc8f25cd8e8de5f0a",
+      "bytes": 22269
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-Bold.woff2",
+      "sha256": "8e3d4ac519e4e10245d89e42e4474b974154bfcf69037974287fbc9853275d7c",
+      "bytes": 19740
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-BoldItalic.woff",
+      "sha256": "e1069e7c168d7e56bf0245f92191f11f6c54e51897b2dc0120958c46f33ba7b2",
+      "bytes": 21486
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-BoldItalic.woff2",
+      "sha256": "7eaa559e57d62c1aef2f83b29044ee81301419be5053c34362d39608404ea881",
+      "bytes": 18516
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-Italic.woff",
+      "sha256": "afa60ec6932e84bee4439bf29ac3cb642ffa8dd3d49c10268a07734515d399dd",
+      "bytes": 21231
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-Italic.woff2",
+      "sha256": "b3727d04e4d4340a1543feb4cf5069830fd965c4c3a6fcb59d90863ca948249a",
+      "bytes": 18396
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-Light.woff",
+      "sha256": "1a219989158c9ab4fe896476af1f2ef5490bc47a19a888237a6abf9740046399",
+      "bytes": 20017
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-Light.woff2",
+      "sha256": "b9839ccc0adcf82e73c521619c993b0f5488c71ce80aec4921e37da9e947fe00",
+      "bytes": 17276
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-LightItalic.woff",
+      "sha256": "0502ec73bdfb9a202dbe591e442a93f01980ed3632e6e5e2968acba0c0cb795c",
+      "bytes": 21200
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-LightItalic.woff2",
+      "sha256": "29cec9b168536f78905a86f0d42e05753157f78453ebd4b2a3d87eaa1a6f252d",
+      "bytes": 18208
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-Regular.woff",
+      "sha256": "bc4f733b0438e2013e76eb76ca829e0de11752747f60729cfde8af50071d14e7",
+      "bytes": 20159
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-Regular.woff2",
+      "sha256": "c6bca25175ddd8237dd432141cff1c12bf5afea4a8da4505199c59fcbea14226",
+      "bytes": 17556
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-SemiBold.woff",
+      "sha256": "1a1d66a575e0db0be43d404e08adcd348ec6eba5046cf8fc238dda559ea921c1",
+      "bytes": 20162
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-SemiBold.woff2",
+      "sha256": "6f0b7ea814ab43aef5d6d74d5ece41c6a16723ca07cf68762c19128972e1c1a3",
+      "bytes": 17296
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-SemiBoldIt.woff",
+      "sha256": "908eca51838faf6fb8804064e710a9113b9b40aa81a25ef2f8449278f5040a94",
+      "bytes": 21077
+    },
+    {
+      "path": "fonts/allianz-neo/AllianzNeoW01-SemiBoldIt.woff2",
+      "sha256": "91dec8332d7a02c79213faaddbb59adbbf95e07ed11a4b36e9ec4b7c8243d259",
+      "bytes": 18072
+    }
+  ]
+}

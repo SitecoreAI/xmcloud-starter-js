@@ -1,0 +1,49 @@
+{
+  "utc": "2026-10-27T19:24:10.751209+00:00",
+  "state": "CODE_IMPLEMENTED_CHECKED_DRAFT_PAGE_NOT_YET_CREATED",
+  "nativeContract": {
+    "rendering": "AllianzCalculator",
+    "existingRenderingId": "45E446AF-6284-5804-AD6D-25486AA75C5E",
+    "existingDatasourceTemplate": "B09FA4BC-2940-5EC2-99A3-D336F6863926",
+    "schemaKey": "lifetime-income-official",
+    "authorableFields": [
+      "heading",
+      "body",
+      "disclaimer"
+    ],
+    "parentId": "7A122774-4317-4E10-97C4-2D31939FBAD3",
+    "calculatorChildFreshRead": null,
+    "proposedSlug": "calculator"
+  },
+  "architecture": "Existing native Calculator template/renderer selects an isolated same-origin static frame. Unmodified official engine, workbook and source CSS; all 18 source font dependencies staged. Exact original XLSX asset is excluded from page middleware; neighboring resources and the calculator page retain normal SDK routing.",
+  "checks": {
+    "focusedTests": {
+      "pass": 30,
+      "fail": 0
+    },
+    "fullRegression": {
+      "tests": 2761,
+      "pass": 2760,
+      "fail": 0,
+      "skipped": 1,
+      "skip": "Existing opt-in isolated Chrome portfolio regression; not counted passed"
+    },
+    "types": "PASS after SDK prop-forwarding correction",
+    "lint": "PASS",
+    "productionBuild": "PASS webpack; 385 generated paths, not visual acceptance",
+    "assetManifest": "public/allianz-assets/lifetime-income/source-manifest.json",
+    "existingCalculators": "Existing retirement and two income-demo checks pass unchanged"
+  },
+  "remaining": [
+    "Candidate static asset and frame runtime checks at desktop/mobile",
+    "Native draft page/Data/datasource/layout composition with exact source disclosures",
+    "Save/reopen current SDK rendering checks",
+    "Interaction, resize, native authoring and final visual acceptance"
+  ],
+  "publication": "Calculator page and restricted PDFs remain unpublished",
+  "unrelatedChangesPreserved": [
+    "examples/allianz-life/next-env.d.ts",
+    "tmp/"
+  ],
+  "deployedStatus": "Not assessed; repository checkpoint is not a deployment receipt"
+}
