@@ -21,7 +21,7 @@ export const Default = ({ fields, params, privacyLinks = false }: LegacyCardGrid
       {(data.children?.results ?? []).map((card) => <div className={`col-${breakpoint}-${columns}`} key={card.id}><article className="mod">
         <div className={params.alignment === 'center' ? 'icon-with-text text-center' : undefined}>
           {shouldRenderImageField(card.image?.jsonValue, isEditing) && <Image editable={isEditing} field={card.image?.jsonValue} className="allianz-legacy-card-image" />}
-          {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="icon-container"><div className="icon-background primary-01-bg" /><Image editable={isEditing} field={card.icon?.jsonValue} className="icon icon-story" /></div>}
+          {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="icon-container"><div className="icon-background primary-01-bg" /><Image editable={isEditing} field={card.icon?.jsonValue} className="icon icon-story" aria-hidden={!isEditing && shouldRenderTextField(card.heading?.jsonValue, false) ? true : undefined} /></div>}
           {shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={headingTag(card.headingLevel?.jsonValue?.value || params.headingLevel || 'h3')} field={card.heading?.jsonValue} />}
           {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} />}
           {shouldRenderLinkField(card.link?.jsonValue, isEditing) && <p className={privacyLinks ? 'link allianz-legacy-privacy-card-link' : 'link'}><Link editable={isEditing} field={allianzLinkField(card.link?.jsonValue, isEditing)} /></p>}

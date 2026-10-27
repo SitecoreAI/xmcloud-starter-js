@@ -1,0 +1,37 @@
+{
+  "sourcePage": "https://www.allianzlife.com/new-york/annuities/registered-index-linked-annuities/index-advantage-plus-new-york",
+  "sourceSprite": "https://www.allianzlife.com/~/media/Images/icons/symbol-defs.svg",
+  "sourceGeometry": "Exact path arrays and viewBox retained; white32px SVG on source blue50pxcircle",
+  "assets": [
+    {
+      "file": "icon-allianz-chat-bubble.svg",
+      "assetId": 129663,
+      "identifier": "oY6G1bgkSWCVfDq2AP82Iw",
+      "publicOriginal": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/d585309bd9a64933851d300433851938?v=f17942ef",
+      "bytes": 1176,
+      "sha256": "743dbb49b789bd145c64342a15dc2ee3e9d15c0aa09379f0a192da891dced094",
+      "card": "6A4C7FBB-0B61-48D8-8BC2-DF02C3560443",
+      "heading": "Don't have a financial professional?",
+      "savedRevision": "d686e643-5545-4045-8472-7c3e603e6f90",
+      "savedUpdated": "20261027T131109Z"
+    },
+    {
+      "file": "icon-shield-person.svg",
+      "assetId": 129662,
+      "identifier": "dvLj3A3WRlC7ZHuprYAzXQ",
+      "publicOriginal": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/2f9517ab1c5241e2a684faa7d37d9e1b?v=22038453",
+      "bytes": 863,
+      "sha256": "6c30b253b1dfe13e064e8a2c67d61998ea3c195484f8a0b3461b5e66fcf85ac7",
+      "card": "B6E72522-A466-4642-8616-2D5EDE95A6C3",
+      "heading": "Already working with a financial professional?",
+      "savedRevision": "bdb791e9-17cd-4b3c-ad90-0484df590db5",
+      "savedUpdated": "20261027T131143Z"
+    }
+  ],
+  "uploads": "Exactly2files; bothApproved; oneOriginal publiclinkeach, anonymousHTTP200 image/svg+xml byte-identical",
+  "nativeFields": "Each53field fence changes only icon, Revision, Updated; independently reopened. Cardtext/body/link unchanged. Baseline1warning/noerrors restored.",
+  "ariaFinding": "Native image serializer omits raw aria-hidden from jsonValue. Renderer therefore sets visitor-only decorative ARIA when a heading is present; preserves editor metadata and standalone icon alt.",
+  "preRelease": "70 regression tests, lint, typecheck and normal production Webpack382-page build pass. Cardpublication and deployed desktop/mobileQA pending; do not replay saves.",
+  "restrictions": "PDFthirdCTA unchanged and held; no full migration acceptance claim",
+  "timestampUTC": "2026-10-27T13:14:19.172827+00:00"
+}

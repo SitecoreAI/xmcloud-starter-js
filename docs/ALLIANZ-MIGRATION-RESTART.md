@@ -37,3 +37,7 @@ Updated 2026-10-27. Continue the existing migration; this checkpoint does not de
 ## Evidence and continuity
 
 Detailed local receipts and the active acceptance matrix are retained under task-workspace `migration-resume-after-routing-release-20261021/benefit-control-live-visibility-diagnosis-20261026/`. Do not assume these local receipts exist on a different laptop. Use the item/job IDs above to check current state rather than replay operations. Obtain existing project access through normal sign-in; no authentication is transferred by this repository.
+
+## New York card icons (latest work)
+
+Both exact-source SVGs are now in Content Hub, public Originals byte-matched, and bound to the existing two cards with native independent reopen and unchanged text/links. See `docs/migration-checkpoints/NY-CARD-ICONS-20261027.json` for IDs, hashes and saved revisions. The icon renderer preserves source decorative semantics for visitors while retaining editing metadata and standalone-icon alternatives. Before repeating any operation, check current code deployment and card publication/live status: the 70-test regression suite, lint, typecheck and 382-page production build have passed; deployed browser QA and card publication follow this push. PDF third card remains held.

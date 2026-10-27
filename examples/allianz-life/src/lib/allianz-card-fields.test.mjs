@@ -39,6 +39,7 @@ function loadSource(filename) {
 
 const { allianzCardFields } = loadSource(path.join(sourceRoot, 'lib/allianz-card-fields.ts'));
 const CardGrid = loadSource(path.join(sourceRoot, 'components/allianz-card-grid/AllianzCardGrid.tsx')).Default;
+const LegacyCardGrid = loadSource(path.join(sourceRoot, 'components/allianz-legacy-card-grid/AllianzLegacyCardGrid.tsx')).Default;
 const content = JSON.parse(fs.readFileSync(path.join(sourceRoot, '../content/native-content.json')));
 
 function wireCard(card) {
@@ -50,13 +51,51 @@ function wireCard(card) {
   })) };
 }
 
-function render(datasource, params, isEditing = false) {
+function render(datasource, params, isEditing = false, Component = CardGrid) {
   return renderToStaticMarkup(React.createElement(SitecoreProvider, {
     page: { mode: { isEditing, isNormal: !isEditing, isPreview: false }, siteName: 'allianz-life',
       layout: { sitecore: { context: {}, route: { name: 'Native fields test', fields: {}, placeholders: {} } } } },
     api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
-  }, React.createElement(CardGrid, { params, fields: { data: { datasource } } })));
+  }, React.createElement(Component, { params, fields: { data: { datasource } } })));
 }
+
+const legacyIconCard = (heading) => ({
+  id: 'native-icon-card',
+  heading: { jsonValue: { value: heading } },
+  icon: { jsonValue: { value: { src: '/source-icon.svg', alt: 'Conversation', width: '32', height: '32' },
+    metadata: { fieldId: 'native-card-icon', fieldType: 'Image', itemId: 'native-icon-card' } } },
+});
+
+test('legacy icons beside a heading are decorative without discarding valid authored alt text', () => {
+  const card = legacyIconCard('Contact a financial professional');
+  const before = JSON.stringify(card);
+  const html = render({ children: { results: [card] } }, { columns: '3' }, false, LegacyCardGrid);
+  const image = html.match(/<img\b[^>]*>/)?.[0];
+  assert.ok(image);
+  assert.match(image, /alt="Conversation"/);
+  assert.match(image, /aria-hidden="true"/);
+  assert.match(html, /Contact a financial professional/);
+  assert.equal(JSON.stringify(card), before);
+});
+
+test('legacy icon editing keeps the native field identity and does not hide the image from editors', () => {
+  const card = legacyIconCard('Contact a financial professional');
+  const before = JSON.stringify(card);
+  const html = render({ children: { results: [card] } }, { columns: '3' }, true, LegacyCardGrid);
+  assert.match(html, /native-card-icon/);
+  const image = html.match(/<img\b[^>]*>/)?.[0];
+  assert.ok(image);
+  assert.doesNotMatch(image, /aria-hidden=/);
+  assert.equal(JSON.stringify(card), before);
+});
+
+test('legacy standalone icons retain their accessible authored alternative', () => {
+  const html = render({ children: { results: [legacyIconCard('')] } }, { columns: '3' }, false, LegacyCardGrid);
+  const image = html.match(/<img\b[^>]*>/)?.[0];
+  assert.ok(image);
+  assert.match(image, /alt="Conversation"/);
+  assert.doesNotMatch(image, /aria-hidden=/);
+});
 
 test('existing named-query cards retain their objects and SDK metadata', () => {
   const heading = { jsonValue: { value: 'Source heading', metadata: { fieldId: 'native-heading' } } };
