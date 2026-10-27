@@ -1,5 +1,7 @@
 # Allianz migration restart checkpoint
 
+Latest native work in progress: [estate-planning composition](migration-checkpoints/ESTATE-NATIVE-COMPOSITION-IN-PROGRESS-20261027.md). One previously absent page and five page/data descendants now exist in draft; reuse exact IDs, do not recreate. Native session reset after verified card save; no save pending. Composition/binding and visual acceptance remain unfinished, no publication.
+
 Start with [the current consolidated handoff](migration-checkpoints/CURRENT-CONSOLIDATED-HANDOFF-20261027.md) and [exact four-scope publication queue](migration-checkpoints/EXACT-FOUR-SCOPE-DRAFT-PUBLICATION-QUEUE-20261027.json). These supersede older counts/release identities below while preserving historical evidence. Four recovered draft scopes are not published; four newly checked source destinations are public 404s and absent from the draft parent inventories. Independent source-backed page/application work remains; do not claim completion or repeat denied publishing routes.
 
 Updated 2026-10-27. Continue the existing migration; this checkpoint does not declare completion.
