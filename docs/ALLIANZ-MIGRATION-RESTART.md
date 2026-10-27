@@ -1,3 +1,5 @@
+Latest native draft checkpoint: [Estate responsive checkpoint](migration-checkpoints/ESTATE-NATIVE-DRAFT-RESPONSIVE-CHECKPOINT-20261027.md). Continue Key Employee and Essential body composition using the existing registry IDs; do not recreate items.
+
 # Allianz migration restart checkpoint
 
 Latest native work in progress: [estate-planning composition](migration-checkpoints/ESTATE-NATIVE-COMPOSITION-IN-PROGRESS-20261027.md). One previously absent page and five page/data descendants now exist in draft; reuse exact IDs, do not recreate. Native session reset after verified card save; no save pending. Composition/binding and visual acceptance remain unfinished, no publication.

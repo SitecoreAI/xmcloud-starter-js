@@ -1,5 +1,5 @@
 {
-  "utc": "2026-10-27T17:27:11.266058+00:00",
+  "utc": "2026-10-27T17:37:28.940193+00:00",
   "state": "DRAFT_NATIVE_COMPOSITION_IN_PROGRESS_NOT_PUBLISHED",
   "noPendingSave": true,
   "applicationRoutingChanged": false,
@@ -7,7 +7,8 @@
     "estate": {
       "id": "8351A335-031D-4AF8-B526-8AD05B081926",
       "slug": "flexible-estate-planning-materials",
-      "data": "87EE223C-1179-4503-8D68-3185FF0B2BB7"
+      "data": "87EE223C-1179-4503-8D68-3185FF0B2BB7",
+      "state": "EIGHT_COMPONENTS_BOUND_SAVED_REOPENED_LOCAL_1024_370_QUALIFIED"
     },
     "keyEmployee": {
       "id": "F6EAF341-79DC-4D31-9E60-CAB6E50680AA",
@@ -104,7 +105,7 @@
       "target": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884"
     }
   ],
-  "qualification": "All three page metadata/design saved/reopened. Estate root headings, CTA and exact disclosures, eight resource headings and three related card bodies/native internal links saved/reopened. Introduction source paragraph still needs addition. Estate Final renderings not yet bound; no new-page rendered acceptance. No image/document bindings or publication. Do not recreate existing items.",
+  "qualification": "Estate native body/layout saved and independently reopened; qualified local responsive rendering only. Images/documents and secondary navigation remain incomplete; no new publication. Key Employee and Essential remain saved page shells.",
   "remaining": [
     "Add exact source introduction paragraph",
     "Bind estate native Final renderings and verify current draft desktop/mobile/internal routes",
@@ -119,5 +120,27 @@
     "estateH1FontSize": "54px",
     "estateResourceColumns": 4,
     "officialProfessionalConfirmation": "Prompt shown; no confirmation/attestation accepted. Read-only styles of already delivered public DOM measured; owned source tab closed."
+  },
+  "estateLayoutRevision": "db9360c7-c391-4d5f-aae1-f9a7d91376e5",
+  "estateIntroductionRevision": "85721da7-00f8-443a-872c-e75a57b18a22",
+  "estateQA": {
+    "sourceTextSegmentsMatched": 29,
+    "sourceTextSegmentsChecked": 29,
+    "configuredSdkPopulatedComponents": 8,
+    "resourceChildren": 8,
+    "relatedChildren": 3,
+    "actualViewports": [
+      1024,
+      370
+    ],
+    "missingDatasourcePrompts": 0,
+    "horizontalDocumentOverflow": false,
+    "relatedInternalTargetsEmpty": true,
+    "published": false,
+    "visualQualifications": [
+      "Thumbnails and PDFs unbound",
+      "Secondary sales-tools navigation missing",
+      "Key Employee and Essential bodies unfinished"
+    ]
   }
 }
