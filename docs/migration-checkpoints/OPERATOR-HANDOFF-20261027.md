@@ -1,5 +1,7 @@
 # Allianz operator and personal-laptop handoff
 
+Current authoritative summary: [consolidated handoff](CURRENT-CONSOLIDATED-HANDOFF-20261027.md), including the current 03d792d9 application release, exact 110-item unpublished queue, latest draft QA and four additional confirmed missing destinations. Older release identities/counts below are historical where superseded.
+
 This is an incomplete migration handoff, not acceptance. Updated October 27, 2026 after the single successful editing-host retry. Work only in SitecoreAI/xmcloud-starter-js, branch `allianz-life`, app `examples/allianz-life`, existing project `thlt-allianz-demo`, authoring environment `dev`. Preserve unrelated work, one browser writer, user tabs and all rollback material. No external support message has been sent.
 
 ## Repository continuity and releases

@@ -1,0 +1,90 @@
+{
+  "utc": "2026-10-27T16:51:25.422401+00:00",
+  "readOnly": true,
+  "noAuth": true,
+  "redirectsFollowed": false,
+  "retries": 0,
+  "qualification": "Four previously unscreened destinations; structural/source comparison, not visual acceptance",
+  "rows": [
+    {
+      "key": "1",
+      "path": "/for-financial-professionals/life-sales-tools/flexible-estate-planning-materials",
+      "url": "https://allianz-life.vercel.app/for-financial-professionals/life-sales-tools/flexible-estate-planning-materials",
+      "status": 404,
+      "location": null
+    },
+    {
+      "key": "1",
+      "path": "/for-financial-professionals/life-sales-tools/flexible-estate-planning-materials",
+      "url": "https://www.allianzlife.com/for-financial-professionals/life-sales-tools/flexible-estate-planning-materials",
+      "status": 200,
+      "h1": [
+        "\r\n\t\t\t\t\t\tFlexible estate planning strategies\r\n\t\t\t\t\t"
+      ],
+      "visibleChars": 4862,
+      "prompts": 0,
+      "sha256": "290931e9d02c90bdf4334e70510426a5cd99b2e2d208ce25720172f4d0ec1454",
+      "html": "DEPENDENT-1-SOURCE-20261027.html"
+    },
+    {
+      "key": "2",
+      "path": "/for-financial-professionals/Life-Sales-Tools/key-employee-compensation-materials",
+      "url": "https://allianz-life.vercel.app/for-financial-professionals/Life-Sales-Tools/key-employee-compensation-materials",
+      "status": 404,
+      "location": null
+    },
+    {
+      "key": "2",
+      "path": "/for-financial-professionals/Life-Sales-Tools/key-employee-compensation-materials",
+      "url": "https://www.allianzlife.com/for-financial-professionals/Life-Sales-Tools/key-employee-compensation-materials",
+      "status": 200,
+      "h1": [
+        "\r\n\t\t\t\t\t\tKey employee compensation strategies\r\n\t\t\t\t\t"
+      ],
+      "visibleChars": 4903,
+      "prompts": 0,
+      "sha256": "8d900dcd84230fd2bcc3b00289531a8a8f18d21e5aed17942bdfb062d3770294",
+      "html": "DEPENDENT-2-SOURCE-20261027.html"
+    },
+    {
+      "key": "3",
+      "path": "/for-financial-professionals/Life-Sales-Tools/essential-concepts",
+      "url": "https://allianz-life.vercel.app/for-financial-professionals/Life-Sales-Tools/essential-concepts",
+      "status": 404,
+      "location": null
+    },
+    {
+      "key": "3",
+      "path": "/for-financial-professionals/Life-Sales-Tools/essential-concepts",
+      "url": "https://www.allianzlife.com/for-financial-professionals/Life-Sales-Tools/essential-concepts",
+      "status": 200,
+      "h1": [
+        "\r\n\t\t\t\t\t\tEssential concepts to know regarding life insurance\r\n\t\t\t\t\t"
+      ],
+      "visibleChars": 4975,
+      "prompts": 0,
+      "sha256": "0533033d2a8f82d36230a558b0b0ad03d4e0551ad9a6a14f9322d591b902b909",
+      "html": "DEPENDENT-3-SOURCE-20261027.html"
+    },
+    {
+      "key": "4",
+      "path": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/calculator",
+      "url": "https://allianz-life.vercel.app/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/calculator",
+      "status": 404,
+      "location": null
+    },
+    {
+      "key": "4",
+      "path": "/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/calculator",
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/calculator",
+      "status": 200,
+      "h1": [
+        "\r\n\t\t\t\t\t\tIncome Calculator for Allianz Lifetime Income+\u00ae\u00a0Annuity with the Lifetime Income Benefit\r\n\t\t\t\t\t"
+      ],
+      "visibleChars": 4979,
+      "prompts": 0,
+      "sha256": "eafd7c4005ca25d63a1e677bf72631e3799aca5bc54efd7b4199738178b68613",
+      "html": "DEPENDENT-4-SOURCE-20261027.html"
+    }
+  ]
+}

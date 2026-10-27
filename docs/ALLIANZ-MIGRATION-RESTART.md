@@ -1,5 +1,7 @@
 # Allianz migration restart checkpoint
 
+Start with [the current consolidated handoff](migration-checkpoints/CURRENT-CONSOLIDATED-HANDOFF-20261027.md) and [exact four-scope publication queue](migration-checkpoints/EXACT-FOUR-SCOPE-DRAFT-PUBLICATION-QUEUE-20261027.json). These supersede older counts/release identities below while preserving historical evidence. Four recovered draft scopes are not published; four newly checked source destinations are public 404s and absent from the draft parent inventories. Independent source-backed page/application work remains; do not claim completion or repeat denied publishing routes.
+
 Updated 2026-10-27. Continue the existing migration; this checkpoint does not declare completion.
 
 ## Repository and release

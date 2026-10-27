@@ -1,0 +1,90 @@
+{
+  "startedUTC": "2026-10-27T16:52:59.354Z",
+  "readOnly": true,
+  "calls": 2,
+  "retries": 0,
+  "items": [
+    {
+      "route": "for-financial-professionals/life-sales-tools",
+      "item": {
+        "id": "54DB3B570EF5424EA50A8C065CCF7921",
+        "name": "life-sales-tools",
+        "children": {
+          "total": 9,
+          "results": [
+            {
+              "id": "AD6F3216A3C047A9B60DF960AA11D4B4",
+              "name": "advanced-markets"
+            },
+            {
+              "id": "85DE63229FA144E89FEF68F1B638E180",
+              "name": "allianz-global-citizen-program"
+            },
+            {
+              "id": "84958893FF0D4AEAB2B817170868F670",
+              "name": "business-succession-planning-materials"
+            },
+            {
+              "id": "8400EC57CA404D228D92D343D60E1EE9",
+              "name": "Data"
+            },
+            {
+              "id": "CEF2C989EBCF498E98D38F0589159871",
+              "name": "marketing-concepts"
+            },
+            {
+              "id": "FB49A6D8A3124D07B445535705DBE56C",
+              "name": "premium-finance"
+            },
+            {
+              "id": "106150B20FD34882AF5E7E303BCBB8CD",
+              "name": "product-information"
+            },
+            {
+              "id": "1A2F2F37F363485FBE8CDFBAA3D1BA19",
+              "name": "sales-resources"
+            },
+            {
+              "id": "0FC18D56B9924BD4A250C9EF2BCFB742",
+              "name": "submission-to-servicing"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "route": "what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus",
+      "item": {
+        "id": "7A12277443174E1097C42D31939FBAD3",
+        "name": "my-lifetime-income-plus",
+        "children": {
+          "total": 5,
+          "results": [
+            {
+              "id": "E1B44EF3C6BE4B1494D9AB2EFCF21FC1",
+              "name": "Data"
+            },
+            {
+              "id": "5A5D37EE1F184960B030FF5691D71DC9",
+              "name": "frequently-asked-questions"
+            },
+            {
+              "id": "A710C049C4024B6CA2BC94816849DF98",
+              "name": "getting-started"
+            },
+            {
+              "id": "BFBCD30487A6411BAE71DB48EDEA8D76",
+              "name": "glossary"
+            },
+            {
+              "id": "8841D82E8B1D45F890DC4A3A3E539AD9",
+              "name": "taking-income"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "status": "READ_COMPLETE",
+  "finishedUTC": "2026-10-27T16:52:59.716Z"
+}
