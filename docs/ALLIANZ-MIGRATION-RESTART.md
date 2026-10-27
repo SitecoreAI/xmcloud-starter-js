@@ -1,4 +1,4 @@
-Latest: six related-card images saved/reopened using three existing Content Hub Originals whose bytes exactly match source. No image uploads or new public links. See THREE-SALES-TOOLS-SIX-VERIFIED-CONTENTHUB-REUSE-BINDINGS-20261027.json. Further parent-page reuse census active;14 unique thumbnail identities remain.
+Latest: six related-card images saved/reopened using three existing Content Hub Originals whose bytes exactly match source. No image uploads or new public links. See THREE-SALES-TOOLS-SIX-VERIFIED-CONTENTHUB-REUSE-BINDINGS-20261027.json. Six alt errors subsequently resolved; thirteen unique resource thumbnails remain, plus remaining related placements and acceptance. See later dated receipts.
 
 Latest: 13 missing source PDFs uploaded into authorized Documents folder;3 existing reused; all16 stored originals byte-matched via authenticated native download and16 draft card links saved/reopened with53-field fences. Keep documents and pages unpublished. See THREE-SALES-TOOLS-16-PDF-DRAFT-STAGING-20261027.json and THREE-SALES-TOOLS-16-PDF-DRAFT-BINDINGS-20261027.json. Continue Content Hub thumbnails and draft-renderer acceptance.
 
@@ -108,3 +108,8 @@ All six related-card image alt errors are resolved by factual descriptions based
 ## Content Hub import UI checkpoint, 2026-10-27
 
 The existing authenticated Create page Add dropdown is blank in both current accessibility tree and native screenshot. No upload/import was initiated; Escape dismissed the menu. Thirteen exact resource thumbnails still require verified matching or import, plus remaining related placements and current draft rendering checks. This is an observed UI blocker, not a permission denial. Original tabs and all saved data are preserved. No pending save or job. Remote fd7f72196d5e441048fe83d181686ba28aebf84d was verified before this note.
+
+
+## Official calculator integration proof and recovery
+
+The unchanged official script, CSS and workbook render a working calculator on a temporary localhost-only static proof. Default age-65 and age-94 displayed results match the official page; four official reference scenarios are retained. The full four-case local comparison is NOT complete. No legacy REST call was observed for these interactions. Native Sitecore integration, source/legal content and full responsive acceptance remain open; the proof is not a migrated page or deployed feature. The temporary server was stopped through session 3575 and exited successfully after an environment interruption. Browser control is currently unavailable, so native import and browser QA are stopped without pending CMS writes. See migration-checkpoints/LIFETIME-OFFICIAL-WIDGET-INTEGRATION-PROOF-20261027.json. All three sales-tool pages and their PDFs remain unpublished.

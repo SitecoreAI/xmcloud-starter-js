@@ -1,0 +1,144 @@
+{
+  "utc": "2026-10-27T19:05:50.486318+00:00",
+  "officialUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/my-lifetime-income-plus/calculator",
+  "hypotheticalInputs": {
+    "currentAge": 55,
+    "incomeStarts": 65,
+    "initialContribution": 10000,
+    "recurringContributionWhenUsed": 1000,
+    "estimatedIndexInterestPercent": 2
+  },
+  "officialReferenceCases": [
+    {
+      "name": "recurring-monthly-single-annual",
+      "tableRowsIncludingHeader": 31,
+      "age65": [
+        "65",
+        "$8,550.24",
+        "$7,207.26",
+        "$4,048.93"
+      ],
+      "age66": [
+        "66",
+        "$8,806.75",
+        "$7,207.26",
+        "$4,048.93"
+      ],
+      "age94": [
+        "94",
+        "$20,149.21",
+        "$7,207.26",
+        "$4,048.93"
+      ]
+    },
+    {
+      "name": "one-time-single-annual",
+      "tableRowsIncludingHeader": 31,
+      "age65": [
+        "65",
+        "$819.11",
+        "$609.50",
+        "$609.50"
+      ],
+      "age66": [
+        "66",
+        "$843.69",
+        "$609.50",
+        "$609.50"
+      ],
+      "age94": [
+        "94",
+        "$1,930.29",
+        "$609.50",
+        "$609.50"
+      ]
+    },
+    {
+      "name": "one-time-joint-annual",
+      "tableRowsIncludingHeader": 31,
+      "age65": [
+        "65",
+        "$737.20",
+        "$548.55",
+        "$548.55"
+      ],
+      "age66": [
+        "66",
+        "$759.32",
+        "$548.55",
+        "$548.55"
+      ],
+      "age94": [
+        "94",
+        "$1,737.26",
+        "$548.55",
+        "$548.55"
+      ]
+    },
+    {
+      "name": "one-time-joint-cumulative",
+      "tableRowsIncludingHeader": 31,
+      "age65": [
+        "65",
+        "$737.20",
+        "$548.55",
+        "$548.55"
+      ],
+      "age66": [
+        "66",
+        "$1,496.52",
+        "$1,097.09",
+        "$1,097.09"
+      ],
+      "age94": [
+        "94",
+        "$35,072.69",
+        "$16,456.42",
+        "$16,456.42"
+      ]
+    }
+  ],
+  "officialObservedDependencies": {
+    "script": {
+      "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-allianz-in-plan-annuity/dx-allianz-in-plan-annuity.js?v=6",
+      "sha256": "b967b34b0549cac8bce19ac625881a5184f1ae7c151c51bd31ab8b770efb368f"
+    },
+    "stylesheet": {
+      "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-allianz-in-plan-annuity/dx-allianz-in-plan-annuity-css.css?v=4",
+      "sha256": "7c01e98677f3c40f4ce62700a54e7127f1ede9577c7e1541da0a5df5c34811a1"
+    },
+    "workbook": {
+      "url": "https://www.allianzlife.com/~/Media/Files/Global/ToolShed/dx-allianz-in-plan-annuity/dx-allianz-in-plan-annuity-xlsx.xlsx",
+      "sha256": "944cd27387c27229e7e1f861ad14d73c0a7a2df77c85c3b6f82cb021feb465a5"
+    }
+  },
+  "legacyApi": "No legacy REST request observed in page asset inventory for these interactions. Bundled shared-library functions alone do not establish dependency.",
+  "localhostProof": {
+    "origin": "http://127.0.0.1:4186",
+    "allThreeAssetBytesUnchanged": true,
+    "dataPath": "/~/Media/Files/Global/ToolShed/dx-allianz-in-plan-annuity/dx-allianz-in-plan-annuity-xlsx.xlsx",
+    "serverRequests": "HTML, JS, CSS and workbook HTTP 200; favicon 404 only",
+    "defaultVisibleResultMatchesOfficial": true,
+    "defaultAge65": [
+      "65",
+      "$8,550.24",
+      "$7,207.26",
+      "$4,048.93"
+    ],
+    "defaultAge94": [
+      "94",
+      "$20,149.21",
+      "$7,207.26",
+      "$4,048.93"
+    ],
+    "fourCaseAutomatedComparison": "NOT COMPLETED: browser tool became unavailable before comparison; do not claim full pass",
+    "visualParity": "Not accepted: isolated proof excludes source global styles, surrounding content and disclosures.",
+    "serverCleanup": "Original execution session 3575 stopped with Ctrl-C; exited 0 with Keyboard interrupt received, exiting.",
+    "noCredentials": true
+  },
+  "implementationDecision": "A native Sitecore calculator rendering can mount the unchanged official widget with its exact workbook and stylesheet. Proof demonstrates a viable unchanged-engine path without invented formulas or bespoke page routing. Native component integration, authorable surrounding source/legal content, static asset compatibility and full regression remain unimplemented/unaccepted. Do not deploy the isolated proof.",
+  "contentHubImport": "One clean Create-page reload still exposes blank Add dropdown in AX and screenshot; dismissed. No upload/import initiated. No callable Content Hub MCP found.",
+  "currentBlocker": "Browser control tool became unavailable during environment interruption. Execution returned for cleanup and repository checkpointing, but browser control is not exposed; remaining browser QA and import cannot execute in this turn.",
+  "published": 0,
+  "deployed": 0
+}
