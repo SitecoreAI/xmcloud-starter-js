@@ -114,7 +114,7 @@ test('mobile disclosure has the same separate product link and working repeated 
   compiled.filename = filename;
   compiled.paths = Module._nodeModulePaths(path.dirname(sourceRoot));
   compiled.require = specifier => {
-    if (specifier === 'react') return { ...React, useState: () => [open, updater => { open = updater(open); }], useId: () => 'product-tabs' };
+    if (specifier === 'react') return { ...React, useState: () => [open, updater => { open = typeof updater === 'function' ? updater(open) : updater; }], useId: () => 'product-tabs' };
     if (specifier === '@sitecore-content-sdk/nextjs') return { ...sdk, useSitecore: () => ({ page: { mode: { isEditing: editing } } }) };
     if (specifier.endsWith('.css')) return {};
     if (specifier === 'lib/allianz-fields') return loadSource(path.join(sourceRoot, 'lib/allianz-fields.ts'));
@@ -138,6 +138,25 @@ test('mobile disclosure has the same separate product link and working repeated 
     assert.equal(button.props.href, undefined);
     assert.equal(button.props.children.type, 'i');
     button.props.onClick();
+  }
+  // Tab activation closes same-route navigation without cancelling the browser event.
+  for (const variant of ['Default', 'FixedTabs']) {
+    for (editing of [false, true]) {
+      open = true;
+      const data = model(), before = JSON.stringify(data);
+      const tree = compiled.exports[variant]({ fields: { data }, params: {} });
+      const overview = tree.props.children[1].props.children[0].props.children;
+      let cancelled = false;
+      overview.props.onClick({ preventDefault: () => { cancelled = true; }, metaKey: false });
+      assert.equal(open, editing, `${variant}: visitor closes, editor retains selectable field`);
+      assert.equal(cancelled, false, 'same-route keyboard/pointer activation retains default navigation');
+      assert.equal(overview.props.editable, editing);
+      assert.equal(JSON.stringify(data), before);
+      open = true;
+      overview.props.onClick({ preventDefault: () => { cancelled = true; }, metaKey: true });
+      assert.equal(cancelled, false, 'modifier navigation is not cancelled');
+      assert.equal(open, editing);
+    }
   }
   editing = true; open = false;
   const nav = compiled.exports.Default({ fields: { data: model() }, params: {} });

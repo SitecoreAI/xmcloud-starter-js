@@ -30,13 +30,13 @@ export const Default = ({ fields, params }: AllianzProductNavigationProps) => {
   const currentId = nativeId(fields?.data?.contextItem?.id);
   if (!datasource || !product) return <NoDataFallback componentName="Product navigation" />;
 
-  const itemLink = (item: NavigationItem, className: string, active = false) => {
+  const itemLink = (item: NavigationItem, className: string, active = false, onClick?: React.MouseEventHandler<HTMLAnchorElement>) => {
     const original = item.link?.jsonValue;
     const props = safeLinkRenderProps(original);
     const ariaLabel = typeof original?.value?.ariaLabel === 'string' ? original.value.ariaLabel
       : typeof original?.value?.['aria-label'] === 'string' ? original.value['aria-label'] : undefined;
     if (!original?.value?.href) return null;
-    return <Link {...props} className={className} editable={editing} aria-label={ariaLabel}
+    return <Link {...props} className={className} editable={editing} aria-label={ariaLabel} onClick={onClick}
       aria-current={active ? 'page' : undefined}>
       {item.title?.jsonValue?.value ? <Text field={item.title?.jsonValue} editable={editing} /> : <></>}
     </Link>;
@@ -55,7 +55,9 @@ export const Default = ({ fields, params }: AllianzProductNavigationProps) => {
     <ul className="nav-sec-list" id={listId}>{tabs.map((item) => {
       const destinationId = nativeId(item.link?.jsonValue?.value?.id);
       const active = Boolean(currentId && destinationId === currentId);
-      return <li key={item.id}>{itemLink(item, active ? '-is-active' : '', active)}</li>;
+      return <li key={item.id}>{itemLink(item, active ? '-is-active' : '', active, () => {
+        if (!editing) setOpen(false);
+      })}</li>;
     })}</ul>
   </nav>;
 };
@@ -103,7 +105,9 @@ export const FixedTabs = ({ fields, params }: AllianzProductNavigationProps) => 
     <ul className="nav-sec-list" id={listId}>{tabs.map((item) => {
       const destinationId = nativeId(item.link?.jsonValue?.value?.id);
       const active = Boolean(currentId && destinationId === currentId);
-      return <li key={item.id}>{itemLink(item, active ? '-is-active' : '', active)}</li>;
+      return <li key={item.id}>{itemLink(item, active ? '-is-active' : '', active, () => {
+        if (!editing) setOpen(false);
+      })}</li>;
     })}</ul>
   </nav>;
 };
