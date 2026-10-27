@@ -1,0 +1,123 @@
+{
+  "utc": "2026-10-27T17:27:11.266058+00:00",
+  "state": "DRAFT_NATIVE_COMPOSITION_IN_PROGRESS_NOT_PUBLISHED",
+  "noPendingSave": true,
+  "applicationRoutingChanged": false,
+  "pages": {
+    "estate": {
+      "id": "8351A335-031D-4AF8-B526-8AD05B081926",
+      "slug": "flexible-estate-planning-materials",
+      "data": "87EE223C-1179-4503-8D68-3185FF0B2BB7"
+    },
+    "keyEmployee": {
+      "id": "F6EAF341-79DC-4D31-9E60-CAB6E50680AA",
+      "slug": "key-employee-compensation-materials",
+      "data": null,
+      "state": "METADATA_DESIGN_SAVED_REOPENED_BODY_NOT_COMPOSED"
+    },
+    "essential": {
+      "id": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884",
+      "slug": "essential-concepts",
+      "data": null,
+      "state": "METADATA_DESIGN_SAVED_REOPENED_BODY_NOT_COMPOSED"
+    }
+  },
+  "estateRoots": {
+    "Hero": "C8EB2B8E-C67E-4E80-9A4C-98BD0EF3D4AB",
+    "Introduction": "543C83B6-20ED-4320-A4F4-17C207A9AB56",
+    "Estate planning resource cards": "D747FC91-6C07-4062-A9DF-55F486D7E59B",
+    "Advanced Markets sales materials": "FC552465-8B90-4A94-AA5E-02A955C2464E",
+    "Related sales tools cards": "A1CDDB61-AA6B-4EED-963E-34C0BF0057E8",
+    "Ready to learn more": "41EFCF35-7D26-4C4D-8C84-21FE67386BAF",
+    "Strategy disclosures": "30A40908-5A16-4686-B22D-63767BCD8CD5",
+    "Product disclosures": "68DB8041-B821-48AF-B8E1-84B1D2A8AF78"
+  },
+  "estateResourceCards": [
+    {
+      "name": "Private finance client",
+      "id": "B99A4979-4FFB-4725-A37E-9DB02E64E77C",
+      "headingSavedReopened": true,
+      "imageBound": false,
+      "documentBound": false
+    },
+    {
+      "name": "SLAT client",
+      "id": "E962162A-97D7-41B0-86AB-CED54B0AB57D",
+      "headingSavedReopened": true,
+      "imageBound": false,
+      "documentBound": false
+    },
+    {
+      "name": "SLAT producer",
+      "id": "250FA299-8F94-4434-9918-E5CE16D173DC",
+      "headingSavedReopened": true,
+      "imageBound": false,
+      "documentBound": false
+    },
+    {
+      "name": "Private split-dollar client",
+      "id": "397CE840-C613-4A53-8E5E-B0BB754CAF36",
+      "headingSavedReopened": true,
+      "imageBound": false,
+      "documentBound": false
+    },
+    {
+      "name": "ILIT client",
+      "id": "53C4D191-64A8-4881-9B51-C409A8F6ADF4",
+      "headingSavedReopened": true,
+      "imageBound": false,
+      "documentBound": false
+    },
+    {
+      "name": "Flexible estate planning strategies overview",
+      "id": "4978CA94-E4EC-4A79-8D20-D7B52A9FADF9",
+      "headingSavedReopened": true,
+      "imageBound": false,
+      "documentBound": false
+    },
+    {
+      "name": "Charitable remainder trusts and life insurance",
+      "id": "AD73C5F2-3FFD-478B-99BF-53AD8F1C96B9",
+      "headingSavedReopened": true,
+      "imageBound": false,
+      "documentBound": false
+    },
+    {
+      "name": "Supplemental needs trust",
+      "id": "194E065C-1521-4B04-8C2C-1821DBBFFA56",
+      "headingSavedReopened": true,
+      "imageBound": false,
+      "documentBound": false
+    }
+  ],
+  "estateRelatedCards": [
+    {
+      "id": "03D15EF7-D512-437C-B780-DB19583D053C",
+      "target": "F6EAF341-79DC-4D31-9E60-CAB6E50680AA"
+    },
+    {
+      "id": "7196D89F-7E67-45A0-A525-AD93FEC0D6A1",
+      "target": "84958893-FF0D-4AEA-B2B8-17170868F670"
+    },
+    {
+      "id": "D1A9F9A2-3AD3-427E-8191-458336079F97",
+      "target": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884"
+    }
+  ],
+  "qualification": "All three page metadata/design saved/reopened. Estate root headings, CTA and exact disclosures, eight resource headings and three related card bodies/native internal links saved/reopened. Introduction source paragraph still needs addition. Estate Final renderings not yet bound; no new-page rendered acceptance. No image/document bindings or publication. Do not recreate existing items.",
+  "remaining": [
+    "Add exact source introduction paragraph",
+    "Bind estate native Final renderings and verify current draft desktop/mobile/internal routes",
+    "Create keyEmployee/essential Data folders and native source compositions",
+    "Verify Content Hub images/document scope before binding/publishing dependencies",
+    "Shared source sales-tools secondary navigation currently absent; existing parent Data inventory has no navigation datasource",
+    "Lifetime calculator remains separate unimplemented source contract"
+  ],
+  "sourceMeasurements": {
+    "estateHeroBackground": "rgb(121, 36, 47)",
+    "estateH1Color": "rgb(255, 255, 255)",
+    "estateH1FontSize": "54px",
+    "estateResourceColumns": 4,
+    "officialProfessionalConfirmation": "Prompt shown; no confirmation/attestation accepted. Read-only styles of already delivered public DOM measured; owned source tab closed."
+  }
+}
