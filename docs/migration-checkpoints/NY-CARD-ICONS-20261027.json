@@ -151,6 +151,21 @@
         "tracingId": "f1c948d9-3474-4d82-8acd-197d814039a5",
         "retrySubmitted": false
       }
+    },
+    "appTree": "e76bd6f19fd288563d8f8839bafc0a4c13aa5ba0",
+    "lastGoodEditingAppTree": "16c742774614cd43fbf936934e60040abf76ea62",
+    "editingFailureInvestigation": {
+      "queue": "Latest failed45a5 job; preceding4f49 Complete. No newer job pending in current list.",
+      "supportedLog": "RenderingHost.allianz-life.log.20261027.021121.txt",
+      "runtimeEvidence": [
+        "next:start / next start",
+        "Next.js16.3.8",
+        "Ready in150ms",
+        "Running next.config.ts took116ms"
+      ],
+      "conclusion": "Process reached Ready but deployment later failed. No crash cause or transient condition established. Do not infer code failure or retry blindly.",
+      "operatorAction": "Investigate deployment tracing ID f1c948d9-3474-4d82-8acd-197d814039a5 for job1IoEr5O6CZ2i1GoANZ5N5X; platform rollout/health failure cause is absent from available rendering log.",
+      "retrySubmitted": false
     }
   }
 }

@@ -59,3 +59,11 @@ The alignment release `45a5b686a2fcd31703f70ece826bfdee6ddb5dc3` reached Vercel 
 A bounded native Oct20 publication-history review found no exact Legal target/matching-time record. That negative result does not resolve the historical SearchPublisher outcome and does not authorize replay. The original status/date filter was restored.
 
 This pass performed zero PDF uploads, zero CMS saves and zero CMS publications. Three AA5 documents already match their existing Content Hub Originals and current draft bindings. Two public brochure buttons are blocked by the exact destination allowlist; the saved proposal is intentionally unapplied. All owned localhost4184 server processes were stopped after testing.
+
+### Follow-up supported deployment diagnostics
+
+The environment's current Logs navigation works; the obsolete link printed in the failure log remained on Loading. RenderingHost.allianz-life.log.20261027.021121.txt shows Next16.3.8 starting normally and Ready in150ms, with no error afterward. The rollout still failed. The deployment queue has no newer pending job. A transient platform failure is not proven; no retry was submitted. Ask a platform operator/support to correlate the existing tracing ID with rollout/health diagnostics, preserving the last successful deployment.
+
+App tree comparison: last good4f49 is16c742774614cd43fbf936934e60040abf76ea62; failed45a5 and docs checkpointd8b7 both havee76bd6f19fd288563d8f8839bafc0a4c13aa5ba0. Only the two scoped icon-alignment files differ. Do not deploy documentation-only checkpoints redundantly.
+
+AA5 draft-only clarification: all three saved PDF links are already exact. There is no incorrect draft field to repair. The proposed two-URL renderer registry addition would enable two already-delivered public brochure buttons after deployment; it is therefore held as a live behavior change under the specific unpublished-PDF direction. It has not been applied to production source.
