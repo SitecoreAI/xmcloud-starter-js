@@ -93,3 +93,8 @@ The ordinary browser root request to `https://xmc-5sqbydqb8mxegha2jk0xig-eh.site
 ## Consolidated operator/personal-laptop handoff
 
 Use [the final operator handoff](migration-checkpoints/OPERATOR-HANDOFF-20261027.md) for the exact six recomposition pages, three held operations, successful editing retry, native Forbidden limitation, unapplied PDF patch, calculator contract, rollback and personal-laptop resume. This supersedes older active/pending wording above where explicitly noted, without discarding historical evidence. Migration acceptance remains incomplete.
+
+
+## Asset/calculator qualification, 2026-10-27
+
+Remote 20a0e95f6281799ac5d6d25e00b457d1337a6af4 independently confirmed. All16 PDF byte matches and draft bindings remain unpublished. Six saved thumbnail bindings are NOT accepted: source related images have empty alt and native validation reports missing alt; donor DAM identifiers need current-tenant cross-check. Similar asset120162 is a different meeting photo and was not substituted. Calculator workbook retrieved HTTP200 (12869bytes), SHA256944cd27387c27229e7e1f861ad14d73c0a7a2df77c85c3b6f82cb021feb465a5. Active static call chain uses workbook; legacy REST calls are only bundled leads, not proven active dependencies. See migration-checkpoints/SALES-TOOLS-ASSETS-CALCULATOR-QUALIFIED-CHECKPOINT-20261027.json. No pending writes/jobs.
