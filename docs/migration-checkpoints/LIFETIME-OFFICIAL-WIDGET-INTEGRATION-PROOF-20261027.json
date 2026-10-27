@@ -131,14 +131,88 @@
       "$7,207.26",
       "$4,048.93"
     ],
-    "fourCaseAutomatedComparison": "NOT COMPLETED: browser tool became unavailable before comparison; do not claim full pass",
+    "fourCaseAutomatedComparison": "Completed: all 496 rendered table cells match across four official reference scenarios.",
     "visualParity": "Not accepted: isolated proof excludes source global styles, surrounding content and disclosures.",
-    "serverCleanup": "Original execution session 3575 stopped with Ctrl-C; exited 0 with Keyboard interrupt received, exiting.",
+    "serverCleanup": "Original resumed session 39496 stopped with Ctrl-C; exited 0 with Keyboard interrupt received, exiting.",
     "noCredentials": true
   },
   "implementationDecision": "A native Sitecore calculator rendering can mount the unchanged official widget with its exact workbook and stylesheet. Proof demonstrates a viable unchanged-engine path without invented formulas or bespoke page routing. Native component integration, authorable surrounding source/legal content, static asset compatibility and full regression remain unimplemented/unaccepted. Do not deploy the isolated proof.",
   "contentHubImport": "One clean Create-page reload still exposes blank Add dropdown in AX and screenshot; dismissed. No upload/import initiated. No callable Content Hub MCP found.",
-  "currentBlocker": "Browser control tool became unavailable during environment interruption. Execution returned for cleanup and repository checkpointing, but browser control is not exposed; remaining browser QA and import cannot execute in this turn.",
+  "currentBlocker": "Content Hub import remains blocked by blank Add menu after supported clean reload. Browser access recovered and four-case calculator comparison completed; no remaining browser-access blocker established.",
   "published": 0,
-  "deployed": 0
+  "deployed": 0,
+  "latestUtc": "2026-10-27T19:12:47.691755+00:00",
+  "fourCaseComparison": {
+    "status": "PASS for bounded four scenarios",
+    "method": "Read complete rendered table rows from both official website and unchanged local widget after supported radio/checkbox interactions; compare JSON cell strings exactly.",
+    "cases": [
+      {
+        "name": "one-time-joint-cumulative",
+        "rowsIncludingHeader": 31,
+        "cellsCompared": 124,
+        "allCellsMatch": true
+      },
+      {
+        "name": "one-time-joint-annual",
+        "rowsIncludingHeader": 31,
+        "cellsCompared": 124,
+        "allCellsMatch": true
+      },
+      {
+        "name": "one-time-single-annual",
+        "rowsIncludingHeader": 31,
+        "cellsCompared": 124,
+        "allCellsMatch": true
+      },
+      {
+        "name": "recurring-monthly-single-annual",
+        "rowsIncludingHeader": 31,
+        "cellsCompared": 124,
+        "allCellsMatch": true
+      }
+    ],
+    "totalCellsCompared": 496,
+    "qualification": "These are four reference scenarios, not exhaustive domain, input validation, accessibility or complete visual acceptance."
+  },
+  "responsiveAssessment": {
+    "localFreshLoad": {
+      "actualViewportWidth": 370,
+      "documentWidth": 370,
+      "horizontalDocumentOverflow": false
+    },
+    "resizeQualification": "Immediate resize from a desktop-loaded chart initially showed stale wide chart dimensions; a fresh 370px load did not overflow. Settled resize behavior is NOT accepted or repaired.",
+    "sourceMeasurementQualification": "A source tab retained actual 1280px viewport despite an earlier request; excluded from mobile comparison. A separately selected source tab measured actual 370px with document width 635px immediately after resize; not treated as an established source defect or parity baseline.",
+    "styling": "Isolated proof omits global source stylesheet/fonts; visual parity is not passed."
+  },
+  "nativeIntegrationAssessment": {
+    "preferred": "Existing native Sitecore page/template, existing SDK catch-all route, and a dedicated AllianzCalculator rendering variant. Surrounding heading/body/disclosures remain authored Sitecore fields.",
+    "isolation": "Same-origin static calculator frame isolates bundled React, unscoped widget CSS and source script resetting window.Highcharts to null. Do not embed the external source page or bypass framing controls.",
+    "engine": "Reuse byte-identical official script and workbook. No financial formula changes or invented logic.",
+    "assets": "Source script requests the root-relative /~/Media/Files/Global/ToolShed/dx-allianz-in-plan-annuity/dx-allianz-in-plan-annuity-xlsx.xlsx. Static file delivery must support that resource without a custom page route, or a separately reviewed configuration-only adaptation must preserve all calculation code. No API proxy is shown necessary.",
+    "styles": {
+      "officialBaseCssSha256": "11de986b98b0afc9c4cd391d4b1072ff19d65c00567b70f5ded193fffe9f8c3f",
+      "officialBaseCssBytes": 398267,
+      "existingSourceCssIdentical": false,
+      "fonts": "Official base stylesheet references /fonts/allianz-neo and /fonts/allianz-icons. Existing local fonts use /fonts/allianz; exact font identity and delivery mapping need verification, not guessed substitutes."
+    },
+    "remainingGates": [
+      "Implement and register dedicated native rendering/variant without altering existing calculators",
+      "Create/bind exact source-authored page layout and legal/disclosure fields under draft-only restrictions",
+      "Test frame loading/height/resize, keyboard navigation and editor-safe behavior",
+      "Repeat four-case output comparisons in integrated candidate",
+      "Complete source-matching desktop/mobile visual and applicable lint/type/test/build checks",
+      "Do not publish restricted draft pages/PDFs under this work"
+    ]
+  },
+  "cleanup": {
+    "ownedQaTabsClosed": [
+      "99",
+      "100",
+      "101"
+    ],
+    "remainingIabTabs": 0,
+    "viewportOverrideReset": true,
+    "temporaryServerStopped": true,
+    "pendingCmsWritesOrJobs": false
+  }
 }
