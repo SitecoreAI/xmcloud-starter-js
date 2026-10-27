@@ -218,5 +218,48 @@
       "Brochure PDF native draft migration and identity",
       "Publication remains held for calculator and associated drafts"
     ]
-  }
+  },
+  "nativeAuthoringFollowup": {
+    "pageBuilderOpenedExactDraft": true,
+    "headingActivationOnlyTriggeredAutosave": true,
+    "observedDelta": "plain source heading changed to div.ck-content containing p; Undo retained div.ck-content",
+    "nativeUndoRestoredExactBytes": false,
+    "restoredInContentEditor": true,
+    "restoredHeroRevision": "2b1c6758-470d-47ee-a3b5-10de5dc0eebb",
+    "independentSDKAllSelectedAuthoredFieldsRestored": true,
+    "calculatorDatasourceRevisionUnchanged": "65bc0087-c24c-491d-ab7e-9b1ff9af30f8",
+    "rootEvidence": "AllianzHero heading is defined as Rich Text; native CKEditor activation normalizes markup",
+    "status": "FAIL: byte-stable activation/editing acceptance remains open; no global template or editor configuration changed",
+    "nativeCalculatorEngineInteraction": "not verified on editing host; local candidate coverage is separate"
+  },
+  "participantNavigationQA": {
+    "scope": "local candidate; five links clicked and browser Back returned to calculator",
+    "routes": [
+      "my-lifetime-income-plus",
+      "my-lifetime-income-plus/getting-started",
+      "my-lifetime-income-plus/taking-income",
+      "my-lifetime-income-plus/frequently-asked-questions",
+      "my-lifetime-income-plus/glossary"
+    ],
+    "allSameTab": true,
+    "eachOneH1": true,
+    "datasourcePrompts": false,
+    "keyboardFrameExit": "Tab from the last calculator toggle reaches the authored consumer brochure link; no keyboard trap"
+  },
+  "brochureFollowup": {
+    "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/07/14/18/52/LIA-001.pdf",
+    "existingNativeItem": "27344340-464E-4054-AFAA-D687D271554D",
+    "path": "/sitecore/media library/Project/Allianz Life/Documents/LIA-001",
+    "bytes": 3409469,
+    "sha256": "c42997050f2078594b813de1bf03dbbafb00192985d07c9d8f0f8951fa8bbed4",
+    "nativeDownloadByteMatchesOfficial": true,
+    "newUploads": 0,
+    "draftLinkUnchanged": true,
+    "publication": false,
+    "blockedAction": "Select existing document in native Rich Text Insert Sitecore Link media picker",
+    "observedUI": "Media tree showed allianz-life and shared only, not the known Project/Documents folder; exact LIA-001 search reported no search results",
+    "outcome": "Picker canceled; Rich Text Editor rejected; no disclosure save or speculative URL rewrite",
+    "requiredEvidence": "Supported picker selection of exact existing item or a verified native-generated Rich Text media link; retain draft-only restriction"
+  },
+  "securityNote": "Native accessibility output can include editing-query credentials. Subsequent observations suppress those lines. No values are retained in this repository receipt or copied into configuration; no credential rotation or access changes performed."
 }
