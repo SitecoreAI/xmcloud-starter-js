@@ -103,3 +103,8 @@ Remote 20a0e95f6281799ac5d6d25e00b457d1337a6af4 independently confirmed. All16 P
 ## Six image validation corrections, 2026-10-27
 
 All six related-card image alt errors are resolved by factual descriptions based on visual inspection of the exact source images. Each save was independently reopened and compared across 53 fields; only image alt text, Revision and Updated changed. Native validation now reports one warning and no errors on each. The source uses empty alt, so this is a documented accessibility difference, not claimed exact-alt parity. No validator configuration changed. See migration-checkpoints/SIX-SALES-TOOLS-IMAGE-ALT-CORRECTIONS-20261027.json. Draft pages and PDFs remain unpublished; further image and rendering acceptance remains open.
+
+
+## Content Hub import UI checkpoint, 2026-10-27
+
+The existing authenticated Create page Add dropdown is blank in both current accessibility tree and native screenshot. No upload/import was initiated; Escape dismissed the menu. Thirteen exact resource thumbnails still require verified matching or import, plus remaining related placements and current draft rendering checks. This is an observed UI blocker, not a permission denial. Original tabs and all saved data are preserved. No pending save or job. Remote fd7f72196d5e441048fe83d181686ba28aebf84d was verified before this note.

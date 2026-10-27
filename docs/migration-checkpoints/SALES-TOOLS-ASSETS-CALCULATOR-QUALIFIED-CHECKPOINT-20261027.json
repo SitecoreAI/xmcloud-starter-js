@@ -1,6 +1,6 @@
 {
   "utc": "2026-10-27T18:54:16.870582+00:00",
-  "remoteVerified": "20a0e95f6281799ac5d6d25e00b457d1337a6af4",
+  "remoteVerified": "fd7f72196d5e441048fe83d181686ba28aebf84d",
   "draftOnly": true,
   "pdfs": {
     "storedByteMatches": 16,
@@ -10,7 +10,7 @@
   "thumbnailQualifications": {
     "savedBindings": 6,
     "accepted": false,
-    "nativeValidation": "Alternate text is missing in the Image field image",
+    "nativeValidation": "Six alt errors resolved; each saved/reopened across 53 fields with only image alt, Revision and Updated changed; one separate warning remains. See SIX-SALES-TOOLS-IMAGE-ALT-CORRECTIONS-20261027.json.",
     "sourceAlt": "Empty on related cards; no supported decorative authoring exception established. Do not invent alt or disable validation.",
     "damIdentity": "Public Original bytes match; donor image identifiers not yet cross-checked against current tenant entity metadata.",
     "similarNamedAssetRejected": {
@@ -38,5 +38,16 @@
     "legacyRestQualification": "Legacy functions occur in shared bundled code; active calculator calls to these endpoints not established. Not a confirmed dependency/blocker.",
     "integration": "Not implemented or executed. Prefer a native Sitecore component mounting the original verified widget with exact workbook support if supported and validated; no custom page route, invented formulas, or speculative legacy API proxy. Requires official browser input/output golden cases and dependency/runtime checks before acceptance."
   },
-  "pendingOperations": []
+  "pendingOperations": [],
+  "latestUtc": "2026-10-27T19:00:31.946493+00:00",
+  "thumbnailImportBlocker": {
+    "origin": "https://thlt-demo.sitecoresandbox.cloud",
+    "page": "/en-us/create",
+    "operation": "Add menu inspection, before import or upload",
+    "observed": "Blank dropdown in both fresh accessibility tree and screenshot. No Upload files or From link control exposed.",
+    "outcome": "No upload or import attempted. Escape dismissed dropdown. No pending save/job.",
+    "classification": "UI blocker, not an observed permission denial.",
+    "remainingExactUniqueResourceThumbnails": 13,
+    "nextAction": "Restore supported Upload files/From link control in existing authenticated Content Hub session; no repeated unchanged Add clicks or security/config changes."
+  }
 }
