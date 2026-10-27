@@ -1,0 +1,82 @@
+{
+  "checkedUTC": "2026-10-27T15:04:44.215034+00:00",
+  "status": "PUBLIC_QA_AND_QUALIFIED_NAVIGATION_CANDIDATE",
+  "coverage": {
+    "linkScreen": {
+      "population": 322,
+      "unchecked": 0,
+      "criterion": "Rendered anchor and local fragment leads, not visual acceptance",
+      "receipt": "PUBLIC-322-LINK-AND-FRAGMENT-SCREEN-20261027.json"
+    },
+    "nySourceHeadingFalsePositives": [
+      "/new-york/about",
+      "/new-york/about/careers",
+      "/new-york/annuities"
+    ],
+    "nyQualification": "Exact H1/H2 arrays match fresh official pages; do not normalize away source semantics",
+    "nyMobile": "About and Careers screenshots inspected at actual370, loaded heroes, settled364/364 document/scroll. Annuities screenshot inspected, full text reach; initial image/width reads were unsettled, not failures.",
+    "nyRatings": "Why Allianz rating table exact fresh source cells; same-tab About journey passes",
+    "article": "Early retirement article actual370, six article sections/images loaded and no overflow; headings match source; its one404 study link is also broken on official source, not invented repaired",
+    "broadVisualAcceptance": false
+  },
+  "newFindings": {
+    "sourceDomainLinks": "56 routes in server HTML require provenance/settled-DOM qualification; some are intentional exact temporary external fallbacks",
+    "retiredFallbacks": [
+      "https://www.allianzlife.com/about/executives",
+      "https://www.allianzlife.com/about/newsroom"
+    ],
+    "heldCultureFallbackUnchanged": true,
+    "nativeBodyCause": "internalPagesOnly returned early for empty/_self target before rebasing official absolute page URLs. Candidate rebases supported pages and preserves already-local same-tab bytes, metadata, editing originals, documents and external exceptions.",
+    "mvaAnchors": "360 #mva-rate also absent on official source; no invented replacement. Core remains known upstream layout discrepancy."
+  },
+  "candidate": {
+    "scope": "Two shared TypeScript helpers plus four affected regression files; no CMS schema/config/permission change",
+    "fullTests": {
+      "pass": 2754,
+      "skip": 1,
+      "fail": 0,
+      "existingProjectPythonEnvironmentUsed": true
+    },
+    "focusedTests": 155,
+    "lint": "pass",
+    "types": "pass",
+    "webpackPages": 382,
+    "localRuntime": {
+      "desktopViewport": 1024,
+      "mobileViewport": 370,
+      "mobileDocumentAndScroll": 364,
+      "execPointerAndNewsKeyboardSameTab": "pass",
+      "mobileNewsSameTab": "pass",
+      "sameTabCount": true,
+      "CulturePreserved": true
+    },
+    "deployment": "Not yet submitted; source push follows qualified checks"
+  },
+  "cms360Rate": {
+    "item": "BEFD38D6-C220-4AF5-AE68-B6106B97771E",
+    "page": "B06CC653-003E-5267-A178-12FF250FB7F0",
+    "path": "/sitecore/content/allianz/allianz-life/Home/what-we-offer/annuities/fixed-index-annuities/360/Data/MVA reference rate",
+    "oldHeading": "Current MVA reference rate: 5.75 % as of 10/13/2026",
+    "newHeading": "Current MVA reference rate: 5.65 % as of 10/27/2026",
+    "source": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/360",
+    "independentReload": true,
+    "fenceVisibleFields": 47,
+    "onlyChanged": [
+      "heading",
+      "Revision",
+      "Updated"
+    ],
+    "revision": "ff09c671-e19f-41d3-ad9e-fe2a81c13857",
+    "updated": "20261027T150148Z",
+    "lockWorkflowNP": "empty; no override or guard change",
+    "publication": "One supported Publish menu > Publish item action exposed no wizard/job. No duplicate click, no job submitted. Live rate not accepted."
+  },
+  "heldActionsUntouched": [
+    "Authoring API denial",
+    "Culture",
+    "Legal uncertain historical job",
+    "222 blocked saves",
+    "PDF allowlist proposal",
+    "private-host Forbidden"
+  ]
+}

@@ -364,7 +364,7 @@ const aboutTeaserDestinations = [
   'https://www.allianzlife.com/why-allianz/culture',
 ];
 
-test('About Us preserves only its three recorded teaser destinations through the installed SDK', () => {
+test('About Us routes two verified local teasers while retaining the held Culture source fallback through the installed SDK', () => {
   const entries = source.entries.filter(({ kind }) => kind === 'about-teaser-page');
   assert.deepEqual(entries.map(({ url }) => url), aboutTeaserDestinations);
   assert.ok(source.sourcePins.some(pin => pin.path === 'preparation/about-us-ancestor-final-qa-v1/source/SOURCE-CONTENT-LAYOUT.json'
@@ -378,7 +378,7 @@ test('About Us preserves only its three recorded teaser destinations through the
       const before = JSON.stringify(input);
       for (const isEditing of [false, true]) {
         const html = render(input, isEditing);
-        assert.equal(href(html), url);
+        assert.equal(href(html), url.endsWith('/why-allianz/culture') ? url : new URL(url).pathname);
         assert.match(html, /target=""/);
         assert.doesNotMatch(html, /rel="noopener noreferrer"/);
         if (isEditing) assert.match(html, /test-only-source-link-field/);

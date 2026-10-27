@@ -63,7 +63,7 @@ test('AboutTeaserCards preserves three full native anchors, H4s, bodies, images 
     assert.ok(html.includes('l-grid__row u-margin-bottom-xl'));
     assert.equal((html.match(/class="m-card"/g) ?? []).length, 3);
     assert.equal((html.match(/<h4\b/g) ?? []).length, 3);
-    assert.deepEqual(attrs(html, 'a', 'href'), urls);
+    assert.deepEqual(attrs(html, 'a', 'href'), editing ? urls : ['/about/executives', '/about/newsroom', urls[2]]);
     assert.deepEqual(attrs(html, 'a', 'aria-label'), []);
     assert.deepEqual(attrs(html, 'img', 'alt'), Array(3).fill(' '));
     for (let index = 0; index < 3; index++) assert.ok(html.includes(childField(data, index, 'Body').value));
@@ -78,16 +78,19 @@ test('AboutTeaserCards preserves three full native anchors, H4s, bodies, images 
   assert.equal(JSON.stringify(data), before);
 });
 
-test('AboutTeaserCards keeps explicitly authored native target/ARIA on an exactly approved source destination', () => {
+test('AboutTeaserCards keeps editable source target/ARIA while verified visitor pages stay local and same-tab', () => {
   const data = fixture(), link = childField(data, 0, 'Link');
   Object.assign(link.value, { target: '_blank', 'aria-label': 'Explicit native author label' });
   const before = JSON.stringify(data);
   for (const editing of [false, true]) {
     const html = render(Components.AboutTeaserCards, data, editing);
-    assert.ok(attrs(html, 'a', 'href').includes(urls[0]));
+    assert.ok(attrs(html, 'a', 'href').includes(editing ? urls[0] : '/about/executives'));
     assert.ok(attrs(html, 'a', 'aria-label').includes('Explicit native author label'));
-    assert.ok(attrs(html, 'a', 'target').includes('_blank'));
-    if (!editing) assert.ok(attrs(html, 'a', 'rel').includes('noopener noreferrer'));
+    if (editing) assert.ok(attrs(html, 'a', 'target').includes('_blank'));
+    else {
+      assert.ok(attrs(html, 'a', 'target').includes(''));
+      assert.ok(!attrs(html, 'a', 'rel').includes('noopener noreferrer'));
+    }
   }
   assert.equal(JSON.stringify(data), before);
 });

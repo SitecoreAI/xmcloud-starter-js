@@ -37,7 +37,6 @@ export function safeEditorialRichText(field: Field<string> | undefined, isEditin
     if (!href || retainHref?.(contents(href))) return tag;
     const target = attr('target');
     const rel = attr('rel');
-    if (internalPagesOnly && (!target || !contents(target) || contents(target).toLowerCase() === '_self')) return tag;
     const link = safeLink({ value: { href: contents(href), target: contents(target),
       ...(attr('download') ? { download: contents(attr('download')) } : {}) } }).value;
     const destination = `${link.href ?? ''}${link.querystring ? `?${link.querystring}` : ''}${link.anchor ? `#${link.anchor}` : ''}`;
@@ -47,6 +46,9 @@ export function safeEditorialRichText(field: Field<string> | undefined, isEditin
       || destination === '#service-unavailable' || destination === '#demo-unavailable'
       || /\.(?:pdf|docx?|xlsx?|pptx?|csv|zip|mp4|mp3)(?:[?#]|$)/i.test(destination)
       || attr('download'))) return tag;
+    // Already-local same-tab markup remains byte-for-byte unchanged. An official
+    // absolute page URL still needs local rebasing even when its target is _self.
+    if (internalPagesOnly && destination === contents(href) && (!target || contents(target) === (link.target ?? ''))) return tag;
     const changes = [{ index: href.index ?? 0, length: href[0].length, value: `${href[1]}href="${escapeAttribute(destination)}"` }];
     if (target && contents(target) !== link.target) changes.push({ index: target.index ?? 0, length: target[0].length, value: `${target[1]}target="${escapeAttribute(link.target ?? '')}"` });
     let append = '';

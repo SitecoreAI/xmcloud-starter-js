@@ -46,7 +46,11 @@ for (const entry of sources) {
       assert.equal((html.match(/src="\/allianz-ui\/video-placeholder\.svg"/g) ?? []).length, 1);
       assert.doesNotMatch(html, /<video\b|<video-js|<iframe\b|<script\b|data-video-id|data-account|transcript|<details/);
     } else if (entry.role === 'transcript') {
-      assert.ok(html.includes(entry.fields.body));
+      // The source homepage link is a local visitor journey; all other
+      // transcript bytes and the editable original remain exact.
+      const visitorBody = entry.fields.body.replace('href="https://www.allianzlife.com"', 'href="/"');
+      assert.ok(html.includes(visitorBody));
+      assert.ok(render(Component, data, true, params).includes(entry.fields.body));
       assert.deepEqual(editingIds(render(Component, data, true, params)), ['transcript-body', 'transcript-heading']);
       assert.match(html, /aria-expanded="false"/);
       assert.match(html, /class="c-accordion__item-content" hidden=""/);

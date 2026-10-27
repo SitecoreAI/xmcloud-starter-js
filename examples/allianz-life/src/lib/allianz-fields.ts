@@ -83,6 +83,13 @@ export function headingTag(level?: string): 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '
 // These captured source destinations are explicitly approved external links.
 // Extend the evidence-backed list for a new source URL rather than a domain policy.
 const APPROVED_SOURCE_LINKS = new Set(approvedSourceLinks.entries.map(({ url }) => url));
+// These two temporary About source fallbacks now have verified rendered local
+// destinations (public QA 2026-10-27). Keep other exact exceptions, including
+// the separately held Culture destination, unchanged.
+const VERIFIED_LOCAL_SOURCE_LINKS = new Set([
+  'https://www.allianzlife.com/about/executives',
+  'https://www.allianzlife.com/about/newsroom',
+]);
 
 // Native document links stay on this approved CMS delivery origin. The QA
 // examples are evidence only: ordinary authored media replacements need no ID list.
@@ -165,7 +172,7 @@ export function safeLink(field?: LinkField): LinkField {
   }
   const linkType = field.value.linktype?.toLowerCase();
   const isSourceExternal = linkType === 'external' || (!linkType && !field.value.id);
-  if (!isUnavailable && isSourceExternal && APPROVED_SOURCE_LINKS.has(sourceDestination)) {
+  if (!isUnavailable && isSourceExternal && APPROVED_SOURCE_LINKS.has(sourceDestination) && !VERIFIED_LOCAL_SOURCE_LINKS.has(sourceDestination)) {
     return { ...field, value: { ...field.value, href: sourceBase, querystring, anchor } };
   }
   if (isUnavailable || (!canNavigate && !isLocalAnchor)) return unavailable();

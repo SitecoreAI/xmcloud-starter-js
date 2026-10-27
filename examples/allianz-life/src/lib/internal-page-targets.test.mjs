@@ -100,3 +100,21 @@ test('Default native Rich Text uses same-tab visitor links and preserves origina
   assert.match(editing, /fieldId/);
   assert.equal(data.body.jsonValue.value, body.value);
 });
+
+
+test('native same-tab official page URLs are rebased while already local markup and external assets stay exact', () => {
+  for (const target of ['', ' target="_self"']) {
+    const body = { value: `<p><a href="https://www.allianzlife.com/about?one=1&amp;two=2#team"${target}>About</a></p>`, metadata: { fieldId: 'native-body' } };
+    const original = body.value;
+    const result = safeEditorialRichText(body, false, true);
+    assert.match(result.value, /href="\/about\?one=1&amp;two=2#team"/);
+    assert.ok(result.value.includes(target));
+    assert.strictEqual(result.metadata, body.metadata);
+    assert.strictEqual(safeEditorialRichText(body, true, true), body);
+    assert.equal(body.value, original);
+  }
+  for (const value of ["<a href='/about' target='_self' data-keep='yes'>Local</a>", '<a href="https://external.example.test/page">External</a>', '<a href="https://assets.example.test/original.pdf" target="_blank">PDF</a>']) {
+    const body = { value };
+    assert.strictEqual(safeEditorialRichText(body, false, true), body);
+  }
+});
