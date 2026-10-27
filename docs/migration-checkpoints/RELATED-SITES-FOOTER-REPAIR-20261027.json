@@ -1,0 +1,89 @@
+{
+  "recordedUTC": "2026-10-27T22:22:00.153000+00:00",
+  "source": "https://www.allianzlife.com/",
+  "publicComparison": "https://allianz-life.vercel.app/",
+  "before": "All three public Related Sites footer anchors were service-unavailable; official source uses exact external URLs and target=_blank",
+  "scope": "Three shared native link items plus exact URL approvals; no account/login, PDF allowlist, template or permission changes",
+  "items": [
+    {
+      "id": "6DF69EC6-BA56-55AB-8EDE-EBF09CDFDA86",
+      "caption": "Allianz Group",
+      "url": "https://www.allianz.com/en_GB.html",
+      "target": "_blank",
+      "revision": "0807c0ed-d068-4361-a6b2-55b0cc20413c",
+      "fieldFence": {
+        "before": 45,
+        "after": 45,
+        "changed": [
+          "link",
+          "Revision",
+          "Updated"
+        ],
+        "independentlyReopenedExactXML": true
+      }
+    },
+    {
+      "id": "17FDF32B-9FDC-5F51-B5C4-F8B61E1C24B8",
+      "caption": "Allianz Investment Management LLC",
+      "url": "https://www.allianzim.com",
+      "target": "_blank",
+      "revision": "71f66314-b39e-431b-bef9-40bf65085529",
+      "fieldFence": {
+        "before": 45,
+        "after": 45,
+        "changed": [
+          "link",
+          "Revision",
+          "Updated"
+        ],
+        "independentlyReopenedExactXML": true
+      }
+    },
+    {
+      "id": "3D788667-5924-5574-ABF4-7FBD10B48399",
+      "caption": "PIMCO",
+      "url": "https://www.pimco.com/us/en",
+      "target": "_blank",
+      "revision": "e51abf80-1454-43ef-bdfb-0f24098a2d1e",
+      "fieldFence": {
+        "before": 45,
+        "after": 45,
+        "changed": [
+          "link",
+          "Revision",
+          "Updated"
+        ],
+        "independentlyReopenedExactXML": true
+      }
+    }
+  ],
+  "localRenderedQA": {
+    "allThreeExactURLs": true,
+    "allThreeTargetBlank": true,
+    "allThreeRel": "noopener noreferrer",
+    "sourceSameTabInternalPolicyPreserved": true
+  },
+  "newsroomPimco": "Same verified exact URL is also present in company-profile source. Visitor adapter now preserves its intentional external target; other unavailable links and native editor fields remain unchanged.",
+  "validation": {
+    "focusedTests": 40,
+    "fullTests": 2766,
+    "passed": 2765,
+    "failed": 0,
+    "skipped": 1,
+    "skip": "Existing opt-in browser portfolio fixture",
+    "lint": "passed",
+    "types": "passed",
+    "webpackBuild": "passed; 386 paths, not whole-site acceptance",
+    "initialFullRun": "Two transport tests could not bind under sandbox; one old PIMCO unavailable expectation identified intended behavior change. Final complete run passed with ordinary approved localhost test access."
+  },
+  "cmsPublication": {
+    "submitted": false,
+    "exactNextScope": [
+      "6DF69EC6-BA56-55AB-8EDE-EBF09CDFDA86",
+      "17FDF32B-9FDC-5F51-B5C4-F8B61E1C24B8",
+      "3D788667-5924-5574-ABF4-7FBD10B48399"
+    ],
+    "gate": "Known unavailable publishing wizard / denied Authoring API remains; do not repeat or bypass. Operator can publish only these exact verified link items via a supported scope-confirming UI, then verify public delivery."
+  },
+  "deployment": "Pushes auto-deploy; terminal host outcomes/live behavior must be verified separately. No manual deploy submitted in this pass."
+}

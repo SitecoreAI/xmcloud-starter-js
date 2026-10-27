@@ -8,7 +8,7 @@ const decodeAttribute = (value: string) => value.replace(/&#(?:x([\da-f]+)|(\d+)
 }).replaceAll('&quot;', '"').replaceAll('&#39;', "'").replaceAll('&apos;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>')
   .replaceAll('&colon;', ':').replaceAll('&Tab;', '\t').replaceAll('&NewLine;', '\n').replaceAll('&amp;', '&');
 
-/** Reconcile visitor anchors with existing mock behavior, never native storage.
+/** Reconcile visitor anchors with the shared native link policy, never native storage.
  * Editing receives the exact original Field, including empty value and metadata. */
 export function safeNewsroomRichText(field: Field<string> | undefined, isEditing: boolean): Field<string> | undefined {
   if (!field || isEditing || !field.value) return field;
@@ -18,11 +18,12 @@ export function safeNewsroomRichText(field: Field<string> | undefined, isEditing
     const attributes = [...tag.matchAll(/(\s+)([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g)];
     const href = attributes.find((attribute) => attribute[2].toLowerCase() === 'href');
     if (!href) return tag;
-    const link = safeLink({ value: { href: decodeAttribute(href[3] ?? href[4] ?? href[5] ?? '') } }).value;
-    const destination = `${link.href ?? ''}${link.querystring ? `?${link.querystring}` : ''}${link.anchor ? `#${link.anchor}` : ''}`;
     const target = attributes.find((attribute) => attribute[2].toLowerCase() === 'target');
+    const link = safeLink({ value: { href: decodeAttribute(href[3] ?? href[4] ?? href[5] ?? ''),
+      target: target ? decodeAttribute(target[3] ?? target[4] ?? target[5] ?? '') : '' } }).value;
+    const destination = `${link.href ?? ''}${link.querystring ? `?${link.querystring}` : ''}${link.anchor ? `#${link.anchor}` : ''}`;
     const replacements = [{ index: href.index ?? 0, original: href[0], value: `${href[1]}href="${escapeAttribute(destination)}"` }];
-    if (target) replacements.push({ index: target.index ?? 0, original: target[0], value: `${target[1]}target=""` });
+    if (target) replacements.push({ index: target.index ?? 0, original: target[0], value: `${target[1]}target="${escapeAttribute(link.target ?? '')}"` });
     return replacements.sort((a, b) => b.index - a.index).reduce((result, replacement) =>
       result.slice(0, replacement.index) + replacement.value + result.slice(replacement.index + replacement.original.length), tag);
   });

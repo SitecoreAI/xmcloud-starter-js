@@ -800,3 +800,28 @@ test('FIA exact Login approval leaves URL variants, native internal/media fields
     }
   }
 });
+
+test('Related Sites footer preserves exactly the three official external URLs and intentional new tabs', () => {
+  const links = [
+    'https://www.allianz.com/en_GB.html',
+    'https://www.allianzim.com',
+    'https://www.pimco.com/us/en',
+  ];
+  assert.deepEqual(source.entries.filter(({ sourceRecordKey }) => sourceRecordKey.startsWith('footer-related-sites-')).map(({ url }) => url), links);
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const url of links) {
+      const input = field(url, { target: '_blank' });
+      for (const editing of [false, true]) {
+        const html = render(input, editing);
+        assert.equal(href(html), url);
+        assert.match(html, /target="_blank"/);
+        assert.match(html, /rel="noopener noreferrer"/);
+      }
+      for (const unverified of [`${url}/not-verified`, `${url}?redirect=https://example.invalid`, url.replace('https://', 'http://')]) {
+        assert.equal(href(render(field(unverified, { target: '_blank' }))), '#service-unavailable');
+      }
+    }
+    assert.equal(href(render(field('https://www.allianzlife.com/login', { target: '_blank' }))), '#service-unavailable');
+  }
+});

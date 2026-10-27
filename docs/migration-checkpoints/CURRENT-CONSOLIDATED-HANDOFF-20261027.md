@@ -1,3 +1,9 @@
+## Latest qualified work — supersedes stale calculator/missing-page wording below
+
+The three sales-tool pages and native Lifetime calculator now exist as unpublished drafts; standard SDK routing is used. Their exact IDs, PDF staging and image qualifications are in newer dated receipts and ALLIANZ-MIGRATION-RESTART.md. Lifetime integrated engine matches all496cells across4official cases. Mobile keyboard scrolling, input preservation on resize and5participant route checks pass locally. Native heading activation still auto-normalizes markup; original heading restored and independently verified. Existing LIA-001 brochure is byte-identical and now draft-bound through the supported full content-tree picker, with onlydisclaimer/Revision/Updated changed across50fields. Its rendered native URL is verified; an additional browser download check was interrupted before returning a filepath. All affected pages/media remain unpublished.
+
+Three source-matching Related Sites footer links are saved and independently reopened. Exact scope/revisions and finalcodevalidation are in RELATED-SITES-FOOTER-REPAIR-20261027.json. Publication is not submitted because the supported scope-confirming wizard remains unavailable and Authoring API denial is still held. Do not retry old blocked operations. No current whole-site completion claim.
+
 # Current Allianz migration handoff
 
 Incomplete migration. This summary supersedes older active counts/release identities in historical notes. Repository: https://github.com/SitecoreAI/xmcloud-starter-js.git, branch allianz-life, same task, one browser writer. No credentials, security settings, permissions or locks changed.

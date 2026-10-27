@@ -254,12 +254,35 @@
     "sha256": "c42997050f2078594b813de1bf03dbbafb00192985d07c9d8f0f8951fa8bbed4",
     "nativeDownloadByteMatchesOfficial": true,
     "newUploads": 0,
-    "draftLinkUnchanged": true,
+    "draftLinkUnchanged": false,
     "publication": false,
-    "blockedAction": "Select existing document in native Rich Text Insert Sitecore Link media picker",
+    "blockedAction": null,
     "observedUI": "Media tree showed allianz-life and shared only, not the known Project/Documents folder; exact LIA-001 search reported no search results",
     "outcome": "Picker canceled; Rich Text Editor rejected; no disclosure save or speculative URL rewrite",
-    "requiredEvidence": "Supported picker selection of exact existing item or a verified native-generated Rich Text media link; retain draft-only restriction"
+    "requiredEvidence": "Final native editor/engine acceptance and page/media publication remain held; rendered-link download attempt did not return a receipt.",
+    "status": "Draft binding saved and independently reopened; prior picker blocker resolved through standard INTERNAL LINK full tree",
+    "nativePickerPath": "INTERNAL LINK -> sitecore -> Media Library -> Project -> Allianz Life -> Documents -> LIA-001",
+    "storedNativeReference": "-/media/27344340464E4054AFAAD687D271554D.ashx",
+    "savedRevision": "b583744a-de87-45ed-b9a6-ad2e9ecd1703",
+    "independentNativeReadback": {
+      "fieldCount": 50,
+      "changedFields": [
+        "disclaimer",
+        "Revision",
+        "Updated"
+      ],
+      "exactNonLinkBytesPreserved": true
+    },
+    "sdkResolvedBase": "https://xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io/-/media/Project/Allianz-Life/Documents/LIA-001.pdf",
+    "generatedQueryKeysOnly": [
+      "ttc",
+      "tt"
+    ],
+    "generatedQueryValuesRetained": false,
+    "correctionHistory": "Adding a root slash produced an invalid expanded URL; corrected to exact native-generated syntax before acceptance. Exploratory RTE HTML entity normalization replaced with original bytes plus native href only.",
+    "localRenderedHrefVerified": true,
+    "localRenderedTarget": null,
+    "renderedDownloadCheck": "Interrupted before any filepath returned; no retry. Earlier supported native Download bytes independently match official original."
   },
   "securityNote": "Native accessibility output can include editing-query credentials. Subsequent observations suppress those lines. No values are retained in this repository receipt or copied into configuration; no credential rotation or access changes performed."
 }

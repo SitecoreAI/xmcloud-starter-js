@@ -60,7 +60,7 @@ test('profile complete native field objects and explicit root clears survive col
   assert.match(render(Default, undefined), /Add a datasource for Newsroom Company Profile/);
 });
 
-test('profile visitors use existing unavailable-service links without modifying native body or Field metadata', () => {
+test('profile visitors preserve the verified PIMCO exception and restrict other links without changing native fields', () => {
   const original = data.parentBody.jsonValue;
   const snapshot = JSON.stringify(original);
   const visitor = safeNewsroomRichText(original, false);
@@ -72,10 +72,11 @@ test('profile visitors use existing unavailable-service links without modifying 
   assert.equal(safeNewsroomRichText(undefined, false), undefined);
   const empty = field('empty', 'Rich Text', '').jsonValue;
   assert.equal(safeNewsroomRichText(empty, false), empty);
-  assert.deepEqual(links(render(Default, data)), Array(5).fill('#service-unavailable'));
+  assert.deepEqual(links(render(Default, data)), ['#service-unavailable', '#service-unavailable', 'https://www.pimco.com/us/en', '#service-unavailable', '#service-unavailable']);
   assert.deepEqual(links(render(Default, data, true)), links(source));
   assert.equal((render(Default, data).match(/rel="noopener noreferrer"/g) ?? []).length, 5);
-  assert.equal((render(Default, data).match(/target=""/g) ?? []).length, 5);
+  assert.equal((render(Default, data).match(/target=""/g) ?? []).length, 4);
+  assert.equal((render(Default, data).match(/target="_blank"/g) ?? []).length, 1);
   assert.doesNotMatch(render(Default, data), /data-demo-disabled/);
   const tricky = field('custom', 'Rich Text', '<p><a data-href="keep" data-target="also keep" href="mailto:media@example.com" target="_blank" rel="author external">Email</a></p>').jsonValue;
   assert.equal(safeNewsroomRichText(tricky, false).value, '<p><a data-href="keep" data-target="also keep" href="#service-unavailable" target="" rel="author external">Email</a></p>');

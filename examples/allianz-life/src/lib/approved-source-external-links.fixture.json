@@ -1,6 +1,6 @@
 {
   "schema": "allianz.approved-source-external-links.v1",
-  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled. The four exact AA Classic source rates, brochure and historical MVA URLs retain their captured destinations; the Login binding remains disabled. The two exact Essential Income 7 source Rates and historical MVA destinations retain their captured absolute URLs. The exact Retirement Foundation ADV resource Rates and historical MVA source destinations retain their captured absolute URLs. The exact Core Income 7 Rates and historical MVA source destinations retain their captured absolute URLs.",
+  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled. The four exact AA Classic source rates, brochure and historical MVA URLs retain their captured destinations; the Login binding remains disabled. The two exact Essential Income 7 source Rates and historical MVA destinations retain their captured absolute URLs. The exact Retirement Foundation ADV resource Rates and historical MVA source destinations retain their captured absolute URLs. The exact Core Income 7 Rates and historical MVA source destinations retain their captured absolute URLs. The three exact public Related Sites footer destinations retain their verified external URLs and intentional new-tab behavior; account services remain disabled.",
   "sourcePins": [
     {
       "path": "preparation/resources-exact-scope-v8/PDF-EXTERNAL-EXACT-FIELD-CANDIDATE.json",
@@ -196,6 +196,11 @@
       "sha256": "bc304976340c25d330097e0f43cc72ffa055ce687b490b5fd5e4e0b3e3b1cc3a",
       "sourceUrl": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/360",
       "evidence": "Exact supplied official360 Source Rates href and same-window target; resource General Link20FC438C and Fixed Interest bodyD51CB783 already own this exact absolute destination. No native mutation or additional destination is approved."
+    },
+    {
+      "url": "https://www.allianzlife.com/",
+      "capturedAtUtc": "2026-10-27T20:36:51.703181+00:00",
+      "evidence": "Rendered official footer DOM: Related Sites exact href and target=_blank for Allianz Group, Allianz Investment Management LLC and PIMCO; public migration counterpart currently service-unavailable."
     }
   ],
   "entries": [
@@ -633,6 +638,21 @@
       "kind": "public-page",
       "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/360/Rates",
       "sourceRecordKey": "360-resource-and-fixed-interest-rates-exact-source-1"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianz.com/en_GB.html",
+      "sourceRecordKey": "footer-related-sites-allianz-group"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzim.com",
+      "sourceRecordKey": "footer-related-sites-allianzim"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.pimco.com/us/en",
+      "sourceRecordKey": "footer-related-sites-pimco"
     }
   ]
 }
