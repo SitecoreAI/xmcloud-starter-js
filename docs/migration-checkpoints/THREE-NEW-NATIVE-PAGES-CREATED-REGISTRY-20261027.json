@@ -9,7 +9,8 @@
       "slug": "flexible-estate-planning-materials",
       "data": "87EE223C-1179-4503-8D68-3185FF0B2BB7",
       "state": "EIGHT_COMPONENTS_BOUND_SAVED_REOPENED_LOCAL_1024_370_QUALIFIED",
-      "layoutRevision": "6f213506-2b9c-4040-9479-7b7ea6c09dcc"
+      "layoutRevision": "6f213506-2b9c-4040-9479-7b7ea6c09dcc",
+      "draftPDFBindingsSavedReopened": true
     },
     "keyEmployee": {
       "id": "F6EAF341-79DC-4D31-9E60-CAB6E50680AA",
@@ -51,7 +52,8 @@
         "documentOverflow": false,
         "published": false,
         "thumbnailsDocumentsNavigationIncomplete": true
-      }
+      },
+      "draftPDFBindingsSavedReopened": true
     },
     "essential": {
       "id": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884",
@@ -91,7 +93,8 @@
         "nativeKeyEmployeeSameTabRoundtrip": true,
         "published": false,
         "thumbnailsDocumentsNavigationIncomplete": true
-      }
+      },
+      "draftPDFBindingsSavedReopened": true
     }
   },
   "estateRoots": {
@@ -110,56 +113,56 @@
       "id": "B99A4979-4FFB-4725-A37E-9DB02E64E77C",
       "headingSavedReopened": true,
       "imageBound": false,
-      "documentBound": false
+      "documentBound": true
     },
     {
       "name": "SLAT client",
       "id": "E962162A-97D7-41B0-86AB-CED54B0AB57D",
       "headingSavedReopened": true,
       "imageBound": false,
-      "documentBound": false
+      "documentBound": true
     },
     {
       "name": "SLAT producer",
       "id": "250FA299-8F94-4434-9918-E5CE16D173DC",
       "headingSavedReopened": true,
       "imageBound": false,
-      "documentBound": false
+      "documentBound": true
     },
     {
       "name": "Private split-dollar client",
       "id": "397CE840-C613-4A53-8E5E-B0BB754CAF36",
       "headingSavedReopened": true,
       "imageBound": false,
-      "documentBound": false
+      "documentBound": true
     },
     {
       "name": "ILIT client",
       "id": "53C4D191-64A8-4881-9B51-C409A8F6ADF4",
       "headingSavedReopened": true,
       "imageBound": false,
-      "documentBound": false
+      "documentBound": true
     },
     {
       "name": "Flexible estate planning strategies overview",
       "id": "4978CA94-E4EC-4A79-8D20-D7B52A9FADF9",
       "headingSavedReopened": true,
       "imageBound": false,
-      "documentBound": false
+      "documentBound": true
     },
     {
       "name": "Charitable remainder trusts and life insurance",
       "id": "AD73C5F2-3FFD-478B-99BF-53AD8F1C96B9",
       "headingSavedReopened": true,
       "imageBound": false,
-      "documentBound": false
+      "documentBound": true
     },
     {
       "name": "Supplemental needs trust",
       "id": "194E065C-1521-4B04-8C2C-1821DBBFFA56",
       "headingSavedReopened": true,
       "imageBound": false,
-      "documentBound": false
+      "documentBound": true
     }
   ],
   "estateRelatedCards": [
@@ -176,7 +179,7 @@
       "target": "EF35367F-E05C-4CE9-9FD7-8E2B42F07884"
     }
   ],
-  "qualification": "All three native bodies/layouts and shared source-ordered secondary navigation saved/reopened and current SDK resolved. Qualified connected local 1024/370 checks; no publication submitted. Source thumbnails, 16 PDF destinations, complete visual/native editing/public QA and separate calculator integration remain open.",
+  "qualification": "All three native bodies/layouts/shared navigation and16 native PDF card links saved and independently reopened. All16 stored PDFs byte-match source;13 newly uploaded,3 reused. No publication submitted. Thumbnail Content Hub identity/binding and draft PDF renderer acceptance remain open; calculator remains separate.",
   "remaining": [
     "Add exact source introduction paragraph",
     "Bind estate native Final renderings and verify current draft desktop/mobile/internal routes",

@@ -1,0 +1,296 @@
+{
+  "utc": "2026-10-27T18:26:32.680287+00:00",
+  "bindings": [
+    {
+      "page": 1,
+      "cardId": "B99A4979-4FFB-4725-A37E-9DB02E64E77C",
+      "documentId": "B1E3F927EB9D4590803DE3295E4DD2CC",
+      "name": "AMK-485",
+      "title": "Private finance client",
+      "sourceTarget": "_blank",
+      "revision": "c97e4d85-84d9-4307-b6c2-6559ff2340c5",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 1,
+      "cardId": "E962162A-97D7-41B0-86AB-CED54B0AB57D",
+      "documentId": "41AE0840BECB4CF89503C17C024BA261",
+      "name": "AMK-493",
+      "title": "SLAT client",
+      "sourceTarget": "_blank",
+      "revision": "e01e5f1d-925c-4f49-8614-9c0cd51baaef",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 1,
+      "cardId": "250FA299-8F94-4434-9918-E5CE16D173DC",
+      "documentId": "3129290C927049FB92D0AD098EA60C5F",
+      "name": "AMK-492",
+      "title": "SLAT producer",
+      "sourceTarget": "_blank",
+      "revision": "2e07f2c6-de36-422a-bc0b-2f3d98180b31",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 1,
+      "cardId": "397CE840-C613-4A53-8E5E-B0BB754CAF36",
+      "documentId": "394C17306F9B45B082E686DE9A870F19",
+      "name": "AMK-496",
+      "title": "Private split-dollar client",
+      "sourceTarget": "_blank",
+      "revision": "91522e45-27cf-4fde-a692-3201dd796119",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 1,
+      "cardId": "53C4D191-64A8-4881-9B51-C409A8F6ADF4",
+      "documentId": "584775856E1B4F938108B1E8E3361A8D",
+      "name": "AMK-501",
+      "title": "ILIT client",
+      "sourceTarget": "_blank",
+      "revision": "06981484-c2a8-43e3-9b6c-827af608633a",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 1,
+      "cardId": "4978CA94-E4EC-4A79-8D20-D7B52A9FADF9",
+      "documentId": "A8F20CD821A04F569E3B5828CAC83BC9",
+      "name": "AMK-488",
+      "title": "Flexible estate planning strategies overview",
+      "sourceTarget": "_blank",
+      "revision": "22945714-6eec-4a73-9c08-16d29806a19d",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 1,
+      "cardId": "AD73C5F2-3FFD-478B-99BF-53AD8F1C96B9",
+      "documentId": "985FEB3F138D4493AED0130D18655A6E",
+      "name": "CSI-431",
+      "title": "Charitable remainder trusts and life insurance",
+      "sourceTarget": "_blank",
+      "revision": "7f4acc16-3fb1-4709-8abf-9063c7fb0885",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 1,
+      "cardId": "194E065C-1521-4B04-8C2C-1821DBBFFA56",
+      "documentId": "81B62DC250FD4FD2AEF0FCC5057021A6",
+      "name": "M-5528",
+      "title": "Supplemental needs trust",
+      "sourceTarget": "_blank",
+      "revision": "193d4a70-eed2-4985-8693-b637988c96e4",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 2,
+      "cardId": "07FDAD82-0CC6-4599-9F43-BE5E064DC396",
+      "documentId": "0337CBA9A7824E09857F0DBE5FED6F48",
+      "name": "AMK-506",
+      "title": "Key employee compensation strategy",
+      "sourceTarget": "_blank",
+      "revision": "31676bd1-bcc0-4426-b485-d0665482f083",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 2,
+      "cardId": "40D7755B-DBC5-4AF1-BB8F-63F2008F38C0",
+      "documentId": "C449B375FEB94E20968CD3DCE0CFB64A",
+      "name": "AMK-511",
+      "title": "Nonqualified deferred compensation plans",
+      "sourceTarget": "_blank",
+      "revision": "c8a3cec2-5d0f-4d1d-ae6f-7b8d47f1fe93",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 2,
+      "cardId": "347DDF2A-FAFC-4871-8511-D5CE60A73C38",
+      "documentId": "09E05FEA6233419CAAD6BC176E9DD8D4",
+      "name": "AMK-515",
+      "title": "Split-dollar life insurance arrangements",
+      "sourceTarget": "_blank",
+      "revision": "df04fd1b-39ca-4a18-b3d9-bc73d0a219ee",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 2,
+      "cardId": "5F222A30-960B-4B77-8BB1-9F2AEB4CDB39",
+      "documentId": "940C9E16ACE84F31AD5ADD95D8E07C1E",
+      "name": "AMK-517",
+      "title": "Business continuation bonus plan",
+      "sourceTarget": "_blank",
+      "revision": "cfdb87ec-c87e-409f-83d2-4a0845922ffd",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 2,
+      "cardId": "81365E59-3FB8-4D19-AAF8-E2BBC4616FD1",
+      "documentId": "B0992EE5595A43F3BB7DEC00D794204D",
+      "name": "AMK-507",
+      "title": "Key employee restricted bonus plan",
+      "sourceTarget": "_blank",
+      "revision": "f2b8779e-24e3-41f9-82df-5f7b4ff8c453",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 3,
+      "cardId": "6D7759A5-0CC7-4343-B536-E8A55C189D07",
+      "documentId": "234FA52060EA41D398D6D3ACBFB38042",
+      "name": "AMK-776",
+      "title": "Understanding the tax trap of the Goodman Triangle (PDF)",
+      "sourceTarget": "_blank",
+      "revision": "715b7446-45c6-40e6-baee-ec8b7164ba8f",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 3,
+      "cardId": "6A9768F6-AE10-4F4F-8548-064D8F16AA22",
+      "documentId": "D65540A9DEAB4EE69776378866E4151A",
+      "name": "AMK-783",
+      "title": "The Transfer-for-Value Rule in life insurance, explained (PDF)",
+      "sourceTarget": "_blank",
+      "revision": "b8aef6eb-f654-46ac-9ac6-c38b75c74111",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    },
+    {
+      "page": 3,
+      "cardId": "38EFD8CB-3401-4C29-87A3-A3C1BC3994FD",
+      "documentId": "9D8D77D663A745F3895AB162C5C05DD5",
+      "name": "AMK-792",
+      "title": "Demystifying the Insurable Interest Rule for life insurance (PDF)",
+      "sourceTarget": "_blank",
+      "revision": "4ed029cf-de78-4f59-8ff5-a55dce037ff4",
+      "savedIndependentlyReopened": true,
+      "fieldsCompared": 53,
+      "changedFields": [
+        "link",
+        "Revision",
+        "Updated"
+      ],
+      "linkType": "media",
+      "published": false
+    }
+  ],
+  "noPendingSave": true,
+  "published": 0,
+  "downloadRenderingAcceptancePending": true
+}

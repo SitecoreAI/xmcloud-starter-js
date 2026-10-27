@@ -1,6 +1,6 @@
 {
   "utc": "2026-10-27T18:19:32.763357+00:00",
-  "state": "13_UPLOADED_TERMINAL_UI_AND_16_ITEM_METADATA_VERIFIED_BINDINGS_PENDING",
+  "state": "13_NEW_PLUS3_REUSED_ALL16_STORED_BYTES_MATCH_AND_DRAFT_LINKS_SAVED_REOPENED",
   "destination": "/sitecore/media library/Project/Allianz Life/Documents",
   "uploaded": 13,
   "reusedExisting": 3,
@@ -9,7 +9,7 @@
   "sourcePDFsRetainedUnmodified": true,
   "sourceFirstPagesVisuallyReviewed": 16,
   "sourceFullTextExtracted": 16,
-  "storedPayloadQualification": "Unauthenticated authoring media HTTP requests returned HTML, not PDF bytes; no stored-byte match claimed. Authenticated native readback pending.",
+  "storedPayloadQualification": "All16 originals downloaded through authenticated native Media ribbon Download and SHA256 matched the fresh official source; earlier unauthenticated HTML responses were not treated as PDFs.",
   "items": [
     {
       "name": "AMK-485.pdf",
@@ -20,7 +20,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-485.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-493.pdf",
@@ -31,7 +31,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-493.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-492.pdf",
@@ -42,7 +42,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-492.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-496.pdf",
@@ -53,7 +53,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-496.pdf",
       "uploadedThisPass": false,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-501.pdf",
@@ -64,7 +64,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-501.pdf",
       "uploadedThisPass": false,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-488.pdf",
@@ -75,7 +75,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/18/34/AMK-488.pdf",
       "uploadedThisPass": false,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "CSI-431.pdf",
@@ -86,7 +86,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2016/05/18/08/26/CSI-431.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "M-5528.pdf",
@@ -97,7 +97,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2016/05/18/08/29/M-5528.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-506.pdf",
@@ -108,7 +108,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2020/12/11/19/17/AMK-506.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-511.pdf",
@@ -119,7 +119,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/01/07/14/56/AMK-511.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-515.pdf",
@@ -130,7 +130,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/01/25/18/19/AMK-515.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-517.pdf",
@@ -141,7 +141,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/02/18/14/14/AMK-517.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-507.pdf",
@@ -152,7 +152,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2021/02/12/15/18/AMK-507.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-776.pdf",
@@ -163,7 +163,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2024/12/23/09/03/AMK-776.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-783.pdf",
@@ -174,7 +174,7 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2025/03/17/19/08/AMK-783.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     },
     {
       "name": "AMK-792.pdf",
@@ -185,7 +185,9 @@
       "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/documents/2025/03/26/13/00/AMK-792.pdf",
       "uploadedThisPass": true,
       "metadataSizeMatch": true,
-      "storedByteIdentityVerified": false
+      "storedByteIdentityVerified": true
     }
-  ]
+  ],
+  "draftBindingsSavedReopened": 16,
+  "storedByteIdentityVerified": 16
 }
