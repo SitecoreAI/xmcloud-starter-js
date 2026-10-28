@@ -21,7 +21,7 @@
   "remaining": [
     "Exact Highcharts rounded geometry/HTML tooltip and complete visual parity",
     "External CalcXML video/description rendering and origin/playback acceptance; URL builder and two synthetic HTTP200 reads only",
-    "Durable print error/timeout/unmount tests and broader browser/mobile source-PDF comparison",
+    "React unmount integration and source-versus-candidate PDF comparison; 17 lifecycle tests and current desktop/mobile print/cancel cycles pass",
     "Fresh No-partner B2 and broader independent official boundary references",
     "Native SDK field ownership, Page Builder editing, component registration and production regression"
   ],
@@ -30,7 +30,7 @@
     "failed": 0
   },
   "totalTestsPassed": 157,
-  "productionAppSourceModified": false,
+  "productionAppSourceModified": true,
   "prototypeRepositoryFilesChanged": true,
   "harnessExternalCalcXmlRequests": false,
   "separateSyntheticPublicEndpointReads": 2,
@@ -76,5 +76,132 @@
     "layout": "Source flex layout, h3 headings, right-side icons, has-error and live engine sidebar; integrated browser acceptance pending",
     "chart": "400px height and physical measured geometry; SVG pointer/focus tooltip; exact rounded paths/pixel parity pending"
   },
-  "browserFeatureQaAppliesTo": "Previously verified9d5beac2. New report/layout/chart refinements have not yet received full browser acceptance."
+  "browserFeatureQaAppliesTo": "Earlier browserFeatureQa is9d5beac2; currentPrototypeBrowserAcceptance below verifies e4e314ffd106b697a1ab056f62d483e3e45641cf private harness. Native integration requires separate acceptance.",
+  "currentPrototypeBrowserAcceptance": {
+    "recordedUtc": "2026-10-28T10:59:57.927592+00:00",
+    "codeCommit": "e4e314ffd106b697a1ab056f62d483e3e45641cf",
+    "sourceReferences": "Pinned official partner A and retained-no-partner B1; no new source financial-input transmission",
+    "desktop": {
+      "viewport": 1280,
+      "scrollWidth": 1274,
+      "partnerDisplayedAmountsMatched": 9,
+      "chartContainer": [
+        625.875,
+        400
+      ],
+      "plot": [
+        321.59375,
+        375
+      ],
+      "legendDirection": "column",
+      "nativeRenderedReport": "Readable; source summary/table structure and all amounts present"
+    },
+    "repeatedEdits": "Investment assets150000 to160000 to150000 updates resources and restores all original A amounts; no stale result reuse",
+    "mobile": {
+      "viewport": 370,
+      "scrollWidth": 364,
+      "officialDisplayedAmountsMatched": 18,
+      "sliceCounts": [
+        4,
+        3
+      ],
+      "chartContainer": [
+        240.65625,
+        400
+      ],
+      "legendDirection": "row",
+      "focusedAgeAndValueRetainedAcrossResize": true,
+      "hiddenPartnerValuesRestored": [
+        "38",
+        "$75,000.00",
+        "65"
+      ]
+    },
+    "chartInteractions": [
+      "Single selection",
+      "ControlOrMeta multi-select",
+      "Space deselect",
+      "Legend4 to3 to4 with report amounts unchanged",
+      "Formatted focus/pointer tooltip amount"
+    ],
+    "print": {
+      "nativeEdgeDesktopCycles": 2,
+      "nativeEdgeMobile370Cycles": 1,
+      "previewPagesEach": 2,
+      "reportOnly": true,
+      "chartAndAllThreeTablesPresent": true,
+      "cancelRestoresEnabledFocusedPrintButton": true,
+      "savedOrPhysicalPrinting": false
+    },
+    "console": {
+      "iabErrorsOrWarnings": 0,
+      "nativeCspIssues": "Two blocked connect-src debug requests only: DevTools well-known config and harness source map. No CSP relaxation."
+    },
+    "externalFinancialRequests": 0,
+    "limitations": [
+      "IAB full-page screenshots render animated panel faintly despite computed opacity1; native Edge screenshot confirms clear rendering",
+      "Exact chart rounded corners/tooltip pixels and source-versus-candidate PDF parity remain open",
+      "Native runtime/scoped CSS integration is a separate changed boundary and not accepted by this private e4 evidence"
+    ]
+  },
+  "nativeCoreIntegration": {
+    "recordedUtc": "2026-10-28T11:33:56.440007+00:00",
+    "selector": "life-insurance-source-core",
+    "runtime": "examples/allianz-life/src/lib/life-insurance/LifeInsuranceRuntime.tsx",
+    "existingNativeCalculatorReused": true,
+    "newRoutes": 0,
+    "newTemplates": 0,
+    "cmsPlacementSaved": false,
+    "liveAcceptance": false,
+    "appRegression": {
+      "tests": 2781,
+      "passed": 2780,
+      "failed": 0,
+      "existingSkipped": 1,
+      "files": 189,
+      "environment": "Existing original Python/preparation artifacts; local listener tests run with normal localhost access"
+    },
+    "strictTypeScript": "PASS",
+    "eslint": "PASS",
+    "productionWebpackBuild": "PASS",
+    "localTurbopack": "External reused node_modules symlink lies outside inferred build root; no production config change. Remote native Turbopack build remains to verify.",
+    "sdk": "Exact schema selection, unknown-key isolation, editable metadata and cleared fields pass",
+    "sourceStyleContext": "Actual public source-style.css, allianz-modern marker and source outer container/grid/row/column/RTE wrappers",
+    "browser": {
+      "sourceNavigationFont": "600 16px/24px Allianz Neo;1px letter spacing matches fresh empty official source",
+      "sourceInputSizes": {
+        "small": [
+          100,
+          38
+        ],
+        "large": [
+          200,
+          38
+        ]
+      },
+      "desktopRootWidth": 1120,
+      "canonicalAAmounts": 9,
+      "canonicalMobileAB1Amounts": 18,
+      "mobileScrollWidth": 364,
+      "mobileViewport": 370,
+      "hiddenPartnerRestoration": "PASS",
+      "focusedInputAcrossResize": "PASS",
+      "legendAmountsUnchanged": "PASS",
+      "nativePrintDesktopPages": 2,
+      "nativePrintMobilePages": 2,
+      "printReportOnly": true,
+      "chartAndAllThreeTablesPresent": true,
+      "cancelRestoresEnabledFocusedPrintButton": true
+    },
+    "financialModulesByteExact": true,
+    "outboundFinancialRequests": 0,
+    "externalResultRendering": false,
+    "remaining": [
+      "Actual saved native layout/datasource and Page Builder acceptance",
+      "Remote deployment and public release verification",
+      "Exact chart rounded corners/tooltip pixels and source-versus-candidate PDF parity",
+      "Broader independent source references including fresh No-partner",
+      "Personalized external video/text remains unimplemented and no financial values are transmitted"
+    ]
+  }
 }

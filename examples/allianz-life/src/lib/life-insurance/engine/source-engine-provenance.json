@@ -1,0 +1,37 @@
+{
+  "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-life-insurance/dx-life-insurance.js?v=14",
+  "version": "0.7.2/v14",
+  "bundleSHA256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "bundleBytes": 1655293,
+  "offsetUnits": "JavaScript UTF-16 code units plus explicit UTF-8 byte offsets",
+  "parts": [
+    {
+      "name": "pz",
+      "type": "VariableDeclarator",
+      "start": 1644921,
+      "end": 1647241,
+      "startUTF8Byte": 1644921,
+      "endUTF8Byte": 1647241,
+      "sliceSHA256": "105eb4bf2181749a7a0a310ad1ab0ec17c4f732e1d84d8004fcefab4bd049ee6"
+    },
+    {
+      "name": "pW",
+      "type": "VariableDeclarator",
+      "start": 1647242,
+      "end": 1650002,
+      "startUTF8Byte": 1647242,
+      "endUTF8Byte": 1650002,
+      "sliceSHA256": "99444682f6a09a97f283e73a7611c76da2e52df821921168537bd7349f92a92d"
+    }
+  ],
+  "schemas": [
+    {
+      "offset": 1590022,
+      "end": 1593803,
+      "owner": "hF"
+    }
+  ],
+  "privateOracle": true,
+  "rawFullBundleStored": false,
+  "networkCodeInClosure": false
+}

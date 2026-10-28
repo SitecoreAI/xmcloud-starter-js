@@ -1,9 +1,10 @@
-# Private Life Insurance UI prototype
+# Life Insurance core runtime QA harness
 
-This is private implementation and QA for the distinct Allianz Life Insurance
-calculator. It is not registered with Sitecore, attached to a route, published,
-deployed, or accepted as a completed migration. It uses the source-isolated engine
-in `../engine/` and the synthetic official browser cases in `../reference/`.
+This private harness tests the distinct Allianz Life Insurance core runtime now
+located in `examples/allianz-life/src/lib/life-insurance`. The existing native
+Calculator component selects it only for `life-insurance-source-core`. Saved CMS
+placement, Page Builder editing, publication and live acceptance remain separate.
+The source reference is retained here, with synthetic official cases in `../reference/`.
 
 Implemented: all 17 source fields, five stages, exact recovered labels/placeholders
 and help copy, both partner branches, source defaults, event-driven desired-income
@@ -48,7 +49,7 @@ node ui/serve.mjs
 ```
 
 The server binds `localhost:4196`; `LIFE_UI_PORT` can choose another local port.
-Its finite routes serve only the built harness, source CSS and whitelisted local
+Its finite routes serve only the built harness, the application's actual source CSS and whitelisted local
 Allianz fonts. CSP blocks connections and external frames, permitting a same-origin
 print document only, so no private input or computed
 quantity is sent to CalcXML or another service. The page has no telemetry, storage,
@@ -81,8 +82,12 @@ The current Report and sidebar Actions markup are pinned against exact source
 render functions for the recorded cases. The layout now uses the source natural
 flex structure, title-before-icon menu order, h3 headings, live source-engine
 sidebar values and source error classes. A single control set moves at the source
-704px breakpoint; values and a focused input are retained. These latest layout and
-chart refinements still require browser acceptance after integration.
+704px breakpoint; values and a focused input are retained. The e4 private harness
+now matches all 18 recorded amounts at desktop/mobile, preserves a focused input
+across resize, and restores results after repeated edits. Chart selection and
+legend controls pass. Two desktop and one 370px native Edge print/cancel cycles
+showed the chart and all three tables across two pages, then restored an enabled,
+focused print button. Native integration and its scoped CSS require separate QA.
 
 Seventeen print lifecycle tests cover loading, timeout/error, duplicate activation,
 cancellation, cleanup and reentrant focus. They reproduced and closed two bugs:
@@ -103,6 +108,8 @@ explicit accessibility adaptation; source static inspection established scrollin
 but did not establish a focus call.
 
 Exact page-level legal/disclosures remain surrounding authored content, outside
-this widget. Native SDK field ownership, Page Builder editing, component-map
-registration, production build/regression and full financial boundary/reference
-coverage remain unfinished. Neither the UI nor its tests close the migration gate.
+this widget. Native SDK selection and editable/cleared surrounding fields pass
+installed-SDK tests; type checking, lint, production webpack build and app
+regression pass. Actual CMS placement, Page Builder editing, live delivery and full
+financial boundary/reference coverage remain unfinished. These checks do not close
+the complete calculator migration gate.

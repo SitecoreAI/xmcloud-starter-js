@@ -11,7 +11,8 @@ const directory = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(path.join(resolveDependenciesRoot(), 'package.json'));
 const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'life-summary-print-test-'));
 const compiled = path.join(temporary, 'summary-print.cjs');
-await require('esbuild').build({ entryPoints: [path.join(directory, 'summary-print.ts')], bundle: true,
+const canonicalHelper = path.resolve(directory, '../../../../examples/allianz-life/src/lib/life-insurance/ui/summary-print.ts');
+await require('esbuild').build({ entryPoints: [canonicalHelper], bundle: true,
   platform: 'node', format: 'cjs', outfile: compiled, logLevel: 'silent' });
 const { printSummary } = require(compiled);
 
@@ -164,6 +165,8 @@ test('print document contains only the selected report, preserving amounts, SVG 
   event(frame, 'load');
   await settle();
   const document = frame.contentDocument;
+  assert.equal(document.body.children[0].className,
+    'allianz-modern allianz-life-insurance-calculator life-insurance-private life-print-document');
   assert.equal(document.documentElement.lang, 'en-US');
   assert.equal(document.title, 'Life insurance report');
   assert.equal(document.body.textContent, '$285,000.00Life insurance resources');

@@ -2,9 +2,11 @@
 
 This backs up source-faithful implementation work for the distinct
 [Life Insurance calculator](https://www.allianzlife.com/what-we-offer/Life-Insurance/Calculator).
-It is outside the application source tree and has no Sitecore component-map,
-route, content, deployment or publication integration. It does not change the
-public calculator or complete its migration.
+This directory retains the source reference and local QA harness. The harness now
+uses the canonical core runtime in `examples/allianz-life/src/lib/life-insurance`,
+selected by an exact schema key through the existing native Calculator component.
+Code integration does not certify saved CMS placement, Page Builder editing,
+publication, live output or completion of the calculator migration.
 
 The prototype includes a dependency-closed source calculation adapter with
 provenance, source-equivalence tests, the 17-field/five-stage React UI, and a
@@ -33,8 +35,10 @@ cover the full financial boundary space. Fresh no-partner inputs without retaine
 partner values remain an unverified official-browser case. Inline source icons,
 the raw-series pie candidate and Summary-only printing are now implemented.
 Native Edge report preview/cancellation and 370px A/B1 amounts were checked.
-Highcharts pixel/tooltip parity, CalcXML video/text behavior, complete responsive
-coverage, native SDK field ownership/editor acceptance and production regression remain open.
+The native core passes SDK selection/field-ownership tests, type checking, lint,
+a production webpack build, and 2,780 app regressions with one existing skip.
+Highcharts pixel/tooltip parity, CalcXML video/text behavior, full financial
+boundaries and actual native editor/live acceptance remain open.
 No financial formula, rate or placeholder output has been invented to close them.
 
 The local harness sends no calculations or inputs to external services; its CSP

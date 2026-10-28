@@ -1,0 +1,121 @@
+/* Native Life Insurance adapters only. The existing /allianz-assets/source-style.css
+ * already supplies the verified tabs,704px layout, form controls, report grid and tables.
+ * Keep source control widths100/200px and height38px; do not load private harness resets.
+ */
+.allianz-life-insurance-calculator {
+  min-width: 0;
+}
+
+.allianz-life-insurance-calculator .life-insurance-private {
+  position: relative;
+  min-width: 0;
+}
+
+/* The accessible native nav wrapper must preserve the source direct flex-item layout. */
+.allianz-life-insurance-calculator .life-insurance-private > nav {
+  display: contents;
+}
+
+.allianz-life-insurance-calculator .axl-tab-list {
+  padding: 0;
+}
+
+.allianz-life-insurance-calculator .axl-tab-list-item,
+.allianz-life-insurance-calculator .axl-tab-panel-desktop,
+.allianz-life-insurance-calculator .axl-tab-panel-content-desktop,
+.allianz-life-insurance-calculator .axl-tab-panel-content-mobile {
+  min-width: 0;
+}
+
+.allianz-life-insurance-calculator .panel-header {
+  scroll-margin-top: 16px;
+}
+
+.allianz-life-insurance-calculator .life-label-row {
+  display: flex;
+  align-items: start;
+  gap: 8px;
+}
+
+.allianz-life-insurance-calculator .life-partner-field {
+  border: 0;
+  min-width: 0;
+}
+
+.allianz-life-insurance-calculator .life-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 24px 0 0;
+}
+
+.allianz-life-insurance-calculator .a-input {
+  max-width: 100%;
+}
+
+.allianz-life-insurance-calculator .life-help-toggle {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #003781;
+  border-radius: 50%;
+  color: #003781;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.allianz-life-insurance-calculator .life-help {
+  max-width: 520px;
+  margin: 0 0 12px;
+  padding: 12px 16px;
+  border-left: 3px solid #003781;
+  background: #f1f7fa;
+}
+
+.allianz-life-insurance-calculator .life-help p {
+  margin: 0 0 8px;
+}
+
+.allianz-life-insurance-calculator .life-help p:last-child {
+  margin-bottom: 0;
+}
+
+.allianz-life-insurance-calculator .life-summary-warning {
+  color: #b12828;
+  font-weight: 700;
+}
+
+.allianz-life-insurance-calculator button:focus-visible,
+.allianz-life-insurance-calculator input:focus-visible {
+  outline: 3px solid #007ab3;
+  outline-offset: 3px;
+}
+
+/* The runtime mounts one active control set; its704px media subscription owns placement. */
+@media (max-width: 703px) {
+  .allianz-life-insurance-calculator .axl-tab-panel-content-mobile {
+    max-width: 100%;
+  }
+}
+
+/* summary-print supplies both classes on its local print context, with no site shell. */
+@media print {
+  .allianz-life-insurance-calculator.life-print-document {
+    position: static;
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .allianz-life-insurance-calculator.life-print-document .life-summary {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .allianz-life-insurance-calculator.life-print-document .life-pie-tooltip-layer {
+    display: none;
+  }
+}

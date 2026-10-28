@@ -9,7 +9,8 @@ const routes = new Map([
   ['/', path.join(root, 'dist/index.html')], ['/index.html', path.join(root, 'dist/index.html')],
   ['/harness.js', path.join(root, 'dist/harness.js')], ['/harness.css', path.join(root, 'dist/harness.css')],
   ['/harness.js.map', path.join(root, 'dist/harness.js.map')],
-  ['/global-source.css', path.join(app, 'src/assets/allianz-source.css')],
+  // Exercise the same global source stylesheet linked by the native application.
+  ['/global-source.css', path.join(app, 'public/allianz-assets/source-style.css')],
 ]);
 const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.map': 'application/json', '.woff': 'font/woff', '.woff2': 'font/woff2' };
 const port = Number(process.env.LIFE_UI_PORT || 4196);

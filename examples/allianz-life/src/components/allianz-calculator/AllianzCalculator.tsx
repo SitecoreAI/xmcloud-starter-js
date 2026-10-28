@@ -5,6 +5,7 @@ import { shouldRenderTextField } from 'lib/allianz-field-state';
 import { RETIREMENT_INPUTS, validateCalculator, incomeToolsDemoMode, type AllianzCalculatorProps } from './allianz-calculator.props';
 import { IncomeLocalToolsDemo } from 'components/allianz-income-tools/IncomeLocalToolsDemo';
 import { observeLifetimeFrame } from './lifetime-frame';
+import { LifeInsuranceNative } from 'lib/life-insurance/LifeInsuranceNative';
 
 /** Isolate the original calculator's bundled React, CSS and Highcharts globals. */
 const LifetimeIncomeFrame = () => {
@@ -64,6 +65,7 @@ export const Default = (props: AllianzCalculatorProps) => {
   const demoMode = incomeToolsDemoMode(data?.schemaKey, rendering?.dataSource);
   // The existing native Calculator template selects this verified tool explicitly.
   if (data?.schemaKey?.jsonValue?.value === 'lifetime-income-official') return <LifetimeIncome {...props} />;
+  if (data?.schemaKey?.jsonValue?.value === 'life-insurance-source-core') return <LifeInsuranceNative {...props} />;
   if (demoMode) return <section className="allianz-local-calculator" id={params.RenderingIdentifier}>
     {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
     {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}

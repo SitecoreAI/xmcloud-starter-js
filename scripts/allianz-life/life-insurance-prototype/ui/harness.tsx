@@ -1,12 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { LifeInsuranceCalculator } from './LifeInsuranceCalculator';
-import { lifeUiCopy } from './ui-copy';
-import { calculateLifeInsurance, validateLifeInsuranceInputs, updateLifeInsuranceField } from '../engine/life-insurance-engine.mjs';
-import { formatCurrency } from '../engine/formatting/source-numeral-formatters.mjs';
-import './source-app.css';
-import './private-ui.css';
+import { LifeInsuranceRuntime } from '../../../../examples/allianz-life/src/lib/life-insurance/LifeInsuranceRuntime';
 
-const source = { calculateLifeInsurance, validateLifeInsuranceInputs, updateSourceIncome: updateLifeInsuranceField };
-createRoot(document.getElementById('dx-life-insurance')!).render(<LifeInsuranceCalculator copy={lifeUiCopy} source={source}
-  formatSummaryValue={(value) => String(formatCurrency(value))} />);
+createRoot(document.getElementById('dx-life-insurance')!).render(<div className="allianz-modern allianz-life-insurance-calculator">
+  <div className="l-container--full-width u-row-spacing t-bg-transparent axlTileCollection"><div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-xl"><div className="l-grid__column-medium-12"><div className="o-richTextEditor__wrapper">
+    <LifeInsuranceRuntime />
+  </div></div></div></div></div>
+</div>);

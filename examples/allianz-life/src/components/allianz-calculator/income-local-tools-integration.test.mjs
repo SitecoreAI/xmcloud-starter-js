@@ -20,7 +20,7 @@ function load(file) {
   modules.set(file, m);
   const nativeRequire = m.require.bind(m);
   m.require = (specifier) => {
-    if (specifier.endsWith('.module.css')) return new Proxy({}, { get: (_, key) => key === '__esModule' ? false : String(key) });
+    if (specifier.endsWith('.css')) return new Proxy({}, { get: (_, key) => key === '__esModule' ? false : String(key) });
     const local = specifier.startsWith('.') ? path.resolve(path.dirname(file), specifier)
       : /^(lib|components)\//.test(specifier) ? path.join(root, specifier) : null;
     const source = local && [local, `${local}.ts`, `${local}.tsx`].find((p) => fs.existsSync(p) && fs.statSync(p).isFile());
@@ -132,5 +132,35 @@ test('only the exact authored Lifetime schema selects the official tool through 
   assert.match(render('lifetime-income-official'), /<iframe/);
   for (const key of ['lifetime-income-official ', 'LIFETIME-INCOME-OFFICIAL', 'lifetime-income', '']) {
     assert.doesNotMatch(render(key), /<iframe/);
+  }
+});
+
+test('the exact authored Life Insurance core schema renders the distinct five-stage source tool', () => {
+  const html = render('life-insurance-source-core');
+  for (const label of ['About you', 'One-time costs', 'Long-term income needs', 'Available assets', 'Summary']) assert.match(html, new RegExp(label));
+  assert.match(html, /allianz-life-insurance-calculator/);
+  assert.match(html, /How old are you\?/);
+  assert.match(html, /Do you have a spouse or domestic partner\?/);
+  assert.match(html, /Continue/);
+  assert.doesNotMatch(html, /How much you need to save|Demo sample rates|Hypothetical starting amount|<iframe|calcxml|action=|method=/i);
+});
+
+test('Life Insurance selection has no guessed route, datasource or near-key fallback', () => {
+  for (const key of ['life-insurance-source-core ', 'LIFE-INSURANCE-SOURCE-CORE', 'life-insurance', '']) {
+    const html = render(key);
+    assert.match(html, /How much you need to save/);
+    assert.doesNotMatch(html, /allianz-life-insurance-calculator/);
+  }
+});
+
+test('native Life Insurance surroundings retain SDK edit metadata and cleared-field ownership', () => {
+  const extra = { heading: field('heading', 'Authored life heading'), body: field('body', '<p>Authored life explanation.</p>'), disclaimer: field('disclaimer', '<p>Authored life disclosure.</p>') };
+  const editing = render('life-insurance-source-core', true, extra);
+  for (const name of ['heading', 'body', 'disclaimer']) assert.match(editing, new RegExp(`fieldId&quot;:&quot;${name}`));
+  for (const isEditing of [false, true]) {
+    const cleared = Object.fromEntries(Object.keys(extra).map((name) => [name, field(name, '')]));
+    const html = render('life-insurance-source-core', isEditing, cleared);
+    assert.doesNotMatch(html, /Authored life heading|Authored life explanation|Authored life disclosure/);
+    assert.match(html, /How old are you\?/);
   }
 });
