@@ -1,5 +1,5 @@
 {
-  "recordedUTC": "2026-10-28T01:58:22.132281+00:00",
+  "recordedUTC": "2026-10-28T02:08:25.782348+00:00",
   "state": "SOURCE_TEXT_AND_COMPONENT_DRAFT_QA_PASS_IMAGES_INCOMPLETE_NOT_PUBLISHED",
   "route": "/what-we-offer/annuities/fixed-index-annuities/rider-charge-management-criteria",
   "parent": "B78C7AA0-3F99-5275-B32E-4EFF60C2ADE3",
@@ -132,10 +132,9 @@
       "newPublicLink": false
     },
     "unresolved": [
-      "Source Hero photograph /-/media/Feature/Hero/Allianz-Life/hero-azl-rider-charge-management-criteria.jpg",
-      "Source Stocks SVG titleIconStockGraphUp"
+      "Source Hero photograph /-/media/Feature/Hero/Allianz-Life/hero-azl-rider-charge-management-criteria.jpg"
     ],
-    "instruction": "Exact Line Graph and Money assets reused. Hero photograph and Stocks remain unmatched. Fresh authenticated Content Hub Create \u2192 Add showed an empty dropdown; dismissed without upload. An operator can open the ordinary Upload files dialog in the existing Create tab and leave it ready. No permission change or hidden API workaround.",
+    "instruction": "Line Graph, Money and Stocks exact existing Originals reused. Settled Stocks search returned seven matches including entity 124906; initial zero was a transient loading state. Settled criteria Hero search returned no results. Hero remains unmatched; unchanged Add-menu gate held. No new upload/public link.",
     "reusedMoney": {
       "entity": 125284,
       "damIdentifier": "2i_gZazeQEylRxlahXVNPQ",
@@ -146,14 +145,45 @@
       "independentFieldFence": "Expected public URL and DAM identifier verified. Heading, body, theme, headingLevel, iconTheme and link unchanged.",
       "renderedImageLoadVerified": false,
       "newUpload": false,
-      "newPublicLink": false
+      "newPublicLink": false,
+      "publicOriginalVisiblyRenders": true,
+      "publicOriginalDOM": {
+        "title": "Money",
+        "viewBox": "0 0 24 24",
+        "paths": 1
+      }
+    },
+    "reusedStocks": {
+      "recordedUTC": "2026-10-28T02:05:58.767Z",
+      "entity": 124906,
+      "damIdentifier": "xTvRHdcaSQCSwwkYAVbi3g",
+      "publicOriginalURL": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/671c7018c11e4b3d8d65212494c44cf0?v=d36fad01",
+      "bytes": 736,
+      "sha256": "4f57f775d6b164cb24f5eec315e5c129ac34699c2616332ef7b201f7867763dd",
+      "sourcePathCount": 1,
+      "originalPathCount": 1,
+      "sourcePathGeometryExact": true,
+      "contentType": "image/svg+xml",
+      "newUpload": false,
+      "newPublicLink": false,
+      "savedRevision": "65db725c-6a6a-4d90-aa2c-82243c011355",
+      "independentSDKReadback": true,
+      "unrelatedFieldsUnchanged": [
+        "heading",
+        "body",
+        "theme",
+        "headingLevel",
+        "iconTheme",
+        "link"
+      ],
+      "renderedCardLoadVerified": false
     }
   },
   "publication": {
     "jobsSubmitted": 0,
     "eligibleAcceptance": false,
     "blockers": [
-      "Two source assets not bound; new Money image rendered-load check remains open",
+      "Hero photograph not bound; saved Money/Stocks card rendered-load checks held on local self-proxy ECONNRESET",
       "Native Page Builder acceptance remains qualified",
       "Exact-scope publication controls unavailable; existing Authoring API denial held"
     ],

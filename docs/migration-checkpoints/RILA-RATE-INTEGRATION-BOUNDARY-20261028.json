@@ -43,5 +43,20 @@
   "nextGate": "A supported request-status diagnostic or vendor-supported origin/configuration contract is required before selecting native integration. Do not proxy a denied response, alter CORS/authentication, hard-code rates or invent formulas. No native blank page created.",
   "cmsPublication": false,
   "deployment": false,
-  "applicationCodeChanged": false
+  "applicationCodeChanged": false,
+  "followupStaticContract": {
+    "sourceHashUnchanged": true,
+    "hostnameSelector": "Production is false when hostname contains localhost; URL and key configuration select UAT in that case. Only redacted selector logic examined; no key values output.",
+    "proofMismatch": "Previous localhost proof allowed production connect origin only, but unchanged source client chooses UAT on localhost. This proof is not a valid production-service test.",
+    "qualification": "This establishes a configuration mismatch in the disposable proof, not the full observed spinner root cause, network response status or production-demo failure.",
+    "newServiceCalls": 0,
+    "configurationOrCredentialChanges": false,
+    "next": "Obtain vendor-supported production origin/configuration contract and supported request-status diagnostics before native integration; no credential extraction, hostname disguise, service proxy or security change."
+  },
+  "moneyRenderFollowup": {
+    "publicOriginalVisiblyRenders": true,
+    "wholeDraftRoute": "Both localhost and bound 127.0.0.1 normal routes returned Internal Server Error; server reports self-proxy ECONNRESET to /allianz-life/en/... . No API denial bypass or routing override attempted.",
+    "rootCauseUnestablished": true,
+    "ownedNextProcessStopped": true
+  }
 }
