@@ -883,6 +883,7 @@ const heldBodies = [
   }
 ];
 const futureTeamsBody = "<p><a href=\"https://www.dplfp.com/\" target=\"_blank\"> DPL Financial Partners </a></p> <p><a href=\"https://simplicityoid.com/\" target=\"_blank\"> Simplicity OID </a></p> <p><a href=\"https://haloinvesting.com/annuities/\" target=\"_blank\"> Halo Investing </a></p> <p><a href=\"https://www.ria-insurancesolutions.com/\" target=\"_blank\"> RIA Insurance Solutions </a></p>";
+const unapprovedPartnerBody = futureTeamsBody.replace(/href="([^"]*)"/g, (_, href) => `href="${href}?unrecorded=1"`);
 
 
 test('finite fixture contains only exact consumer ownership and raw href records, with two URI-free exclusions', () => {
@@ -990,15 +991,34 @@ for (const group of capturedNY) for (const mode of modes) test(`captured NY ${gr
   assert.equal(JSON.stringify(data), before);
 });
 
-for (const mode of modes) test(`future Teams ${mode} preserves four exact paragraphs with inert partners`, () => {
+for (const mode of modes) test(`source-approved partner paragraphs ${mode} retain exact links and native field identity`, () => {
   const original = freeze(syntheticField(futureTeamsBody));
   const data = freeze({ id: '11111111111111111111111111111111', children: { results: [{ id: '22222222222222222222222222222222', body: { jsonValue: original } }] } });
   accordionCalls.length = 0;
   renderSDK(Accordion.Default, data, params, mode);
-  const call = accordionCalls.find(({ field }) => field?.value === (mode === 'editing' ? futureTeamsBody : inertAllPartners(futureTeamsBody)));
+  const call = accordionCalls.find(({ field }) => field?.value === futureTeamsBody);
   assert.ok(call);
   assert.equal(call.field.metadata, original.metadata);
-  if (mode === 'editing') assert.equal(call.field, original);
+  assert.equal(call.field, original);
+});
+
+test('source-approved partners do not grant native Body approval to URL or authority variants', () => {
+  for (const [, href] of futureTeamsBody.matchAll(/href="([^"]*)"/g)) {
+    assert.equal(policy.isRetainedNativeBodyAssetHref(href, context(first)), false,
+      'global exact public-page approval does not add a finite native asset exception');
+    const url = new URL(href);
+    for (const variant of [`${href}unrecorded`, `${href}?unrecorded=1`, `${href}#unrecorded`, `${href}%2f`,
+      href.replace('https:', 'http:'), href.replace(url.host, `${url.host}.example.invalid`),
+      href.replace(url.host, `${url.host}:443`), href.replace('https://', 'https://user:password@')]) {
+      const value = `<p><a href="${variant}" target="_blank">Original partner</a></p>`;
+      const original = freeze(syntheticField(value));
+      const result = policy.safeNativeBodyRichText(original, false, context(first));
+      assert.equal(result.value, '<p><a href="#service-unavailable" target="">Original partner</a></p>', variant);
+      assert.equal(result.metadata, original.metadata);
+      assert.equal(policy.safeNativeBodyRichText(original, true, context(first)), original);
+      assert.equal(original.value, value);
+    }
+  }
 });
 
 for (const owner of heldBodies) test(`held entire Body ${owner.entryId} stays outside this patch without URI admission`, () => {
@@ -1037,10 +1057,10 @@ test('all 29 modern exports mount the shared Body policy with native editing ide
   const assetHref = accordionOwner.hrefs[0];
   const body = `<p><a href="/Login" target="_blank">Account</a><a href="mailto:example@example.invalid">Contact</a><a href="${assetHref}" target="_blank" rel="author">Asset</a>`
     + '<a href="/allianz-assets/b049bad91a3e5c1d-ENT-3301-N.pdf" target="_blank">Local PDF</a><a href="#demo-unavailable" target="_self">Existing</a></p>';
-  for (const name of names) for (const value of [body, futureTeamsBody]) for (const mode of modes) {
+  for (const name of names) for (const value of [body, futureTeamsBody, unapprovedPartnerBody]) for (const mode of modes) {
     const original = freeze(syntheticField(value));
     const data = freeze({ id: accordionOwner.datasourceId, children: { results: [{ id: accordionOwner.entryId, heading: { jsonValue: { value: 'Synthetic native observer' } }, body: { jsonValue: original } }] } });
-    let expected = mode === 'editing' ? value : value === futureTeamsBody ? inertAllPartners(value)
+    let expected = mode === 'editing' || value === futureTeamsBody ? value : value === unapprovedPartnerBody ? inertAllPartners(value)
       : body.replace('href="/Login" target="_blank"', 'href="#service-unavailable" target=""').replace('href="mailto:example@example.invalid"', 'href="#service-unavailable"');
     // These existing source wrappers intentionally omit the datasource root and
     // have no native asset anchors. Missing root never inherits a finite exception.
@@ -1049,7 +1069,7 @@ test('all 29 modern exports mount the shared Body policy with native editing ide
     accordionCalls.length = 0;
     renderSDK(Accordion[name], data, params, mode);
     const call = accordionCalls.find(({ field }) => field?.value === expected);
-    assert.ok(call, `${name}:${mode}:${value === body ? 'services/assets' : 'future Teams'}`);
+    assert.ok(call, `${name}:${mode}:${value === body ? 'services/assets' : value === futureTeamsBody ? 'approved partners' : 'unapproved partners'}`);
     assert.equal(call.field.metadata, original.metadata);
     if (mode === 'editing') assert.equal(call.field, original);
   }
