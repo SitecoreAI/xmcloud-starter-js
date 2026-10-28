@@ -25,6 +25,19 @@ const destinations = [
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa' },
   { name: 'ABCPL-001 Benefit Control+ product brochure', target: '_blank',
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f2c2be58cff1453f93f24f122d3c30e1?v=1d29b652' },
+
+  { name: 'M-5391 verified source PDF', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/7782b0dd295b4429815149f2c15039ae?v=71fb078a' },
+  { name: 'M-5133 verified source PDF', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/1ea05d7fc4634af481700ebb8d0c65a7?v=37883710' },
+  { name: 'AMK-605 verified source PDF', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/bf076ddaeea94fb6860c313589b4bb92?v=5e8d814f' },
+  { name: 'LIA-003 verified source PDF', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/35d9e32f7d0f47bc8f54010dfdf4d977?v=f296bdeb' },
+  { name: 'LIA-046 verified source PDF', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/96ef14f000424a3cab89e7f3c96fec68?v=6a52fdda' },
+  { name: 'LIA-034 verified source PDF', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/75abd5399396429db7940b01a1441a4c?v=9338bf84' },
 ];
 process.env.NODE_ENV = 'test';
 
@@ -93,6 +106,23 @@ for (const entry of destinations) test(`${entry.name}: installed SDK preserves e
       }
       assert.strictEqual(allianzLinkField(input, true), input);
       assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
+
+test('six source-matched PDF additions preserve either authored target without changing their destination', () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const entry of destinations.slice(-6)) {
+      for (const target of ['', '_blank']) {
+        const input = field(entry, { target }), before = JSON.stringify(input);
+        const markup = renderLink(input);
+        assert.equal(href(markup), entry.url);
+        assert.ok(markup.includes(`target="${target}"`));
+        assert.equal(markup.includes('noopener noreferrer'), target === '_blank');
+        assert.equal(safeLink(input).value.target, target);
+        assert.equal(JSON.stringify(input), before);
+      }
     }
   }
 });

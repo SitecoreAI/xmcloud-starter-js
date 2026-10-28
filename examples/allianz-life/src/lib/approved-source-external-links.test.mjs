@@ -848,3 +848,70 @@ test('newsroom profile retains only its four additional verified official destin
     }
   }
 });
+
+const advisoryDestinations = [
+  ['advisory-allianzim-etfs', 'https://www.allianzim.com/etfs/'],
+  ['advisory-ria-onboarding', 'https://azldigital.qualtrics.com/jfe/form/SV_8tRF7zOOWAfHp5k'],
+  ['advisory-iar-onboarding', 'https://azldigital.qualtrics.com/jfe/form/SV_3NSDoToKKIM8ugK'],
+];
+
+test('Advisory preserves its three exact public source destinations through the installed SDK', () => {
+  assert.deepEqual(source.entries.filter(({ sourceRecordKey }) => sourceRecordKey.startsWith('advisory-')),
+    advisoryDestinations.map(([sourceRecordKey, url]) => ({ kind: 'public-page', url, sourceRecordKey })));
+  assert.ok(source.sourcePins.some((pin) =>
+    pin.url === 'https://www.allianzlife.com/for-financial-professionals/advisory-solutions'
+    && pin.sourceHtmlSha256 === '3379420feba810ad2e701d12bfd365093f86296b916a6622f4b24477381d00e0'));
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const [, url] of advisoryDestinations) {
+      const input = field(url, { target: '_blank', rel: 'author' }), before = JSON.stringify(input);
+      for (const editing of [false, true]) {
+        const markup = render(input, editing);
+        assert.equal(href(markup), url);
+        assert.match(markup, /target="_blank"/);
+        assert.match(markup, /rel="author noopener noreferrer"/);
+        if (editing) assert.match(markup, /test-only-source-link-field/);
+      }
+      assert.strictEqual(safeLinkRenderProps(input, true).field, input);
+      assert.strictEqual(safeLink(input).metadata, input.metadata);
+      assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
+
+test('Advisory approvals reject unrecorded URL, query, fragment and authority variants', () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const [, url] of advisoryDestinations) {
+      const parsed = new URL(url);
+      const variants = [
+        `${url}?redirect=unapproved`, `${url}#unrecorded`, `${url}/extra`,
+        url.replace('https:', 'http:'), url.replace('https:', ''),
+        url.replace('https://', 'https://user:password@'),
+        url.replace(parsed.host, `${parsed.host}:443`),
+        url.replace(parsed.host, `${parsed.host}.example.invalid`),
+        url.replace('/etfs/', '/%65tfs/').replace('/form/', '/%66orm/'),
+        ` ${url}`, `${url} `,
+      ];
+      const inputs = variants.map((variant) => field(variant, { target: '_blank' }));
+      inputs.push(field(url, { target: '_blank', querystring: 'redirect=unapproved' }));
+      inputs.push(field(url, { target: '_blank', anchor: 'unrecorded' }));
+      for (const linktype of ['internal', 'media']) inputs.push(field(url,
+        { target: '_blank', linktype, id: '{TEST-ONLY-ADVISORY-NATIVE-ITEM}' }));
+      for (const input of inputs) {
+        const before = JSON.stringify(input), output = safeLink(input);
+        assert.equal(output.value.href, '#service-unavailable', input.value.href);
+        assert.equal(output.value.target, '');
+        assert.equal(output.value.querystring, '');
+        assert.equal(output.value.anchor, '');
+        assert.strictEqual(output.metadata, input.metadata);
+        assert.equal(href(render(input)), '#service-unavailable');
+        assert.equal(JSON.stringify(input), before);
+      }
+    }
+    for (const unrecorded of [
+      'https://azldigital.qualtrics.com/jfe/form/SV_UNRECORDED',
+      'https://www.allianzim.com/etfs/unrecorded', '/Login',
+    ]) assert.equal(href(render(field(unrecorded, { target: '_blank' }))), '#service-unavailable');
+  }
+});

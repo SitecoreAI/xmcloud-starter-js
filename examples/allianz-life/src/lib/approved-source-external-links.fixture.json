@@ -206,6 +206,14 @@
       "url": "https://www.allianzlife.com/about/newsroom",
       "capturedAtUtc": "2026-10-27T22:42:10.858943+00:00",
       "evidence": "Current official rendered company-profile anchors: Allianz SE, AGCS, Allianz Global Assistance USA and Allianz Trade use these exact hrefs and target=_blank. PIMCO was verified in the preceding release."
+    },
+    {
+      "url": "https://www.allianzlife.com/for-financial-professionals/advisory-solutions",
+      "httpStatus": 200,
+      "capturedAtUtc": "2026-10-28T18:54:50.809627+00:00",
+      "responseBytes": 157003,
+      "sourceHtmlSha256": "3379420feba810ad2e701d12bfd365093f86296b916a6622f4b24477381d00e0",
+      "evidence": "Current official Advisory Solutions main anchors: exact AllianzIM ETF, RIA onboarding and IAR onboarding hrefs, each target=_blank. This preserves user-initiated navigation; no form submission or input transmission is added."
     }
   ],
   "entries": [
@@ -678,6 +686,21 @@
       "kind": "public-page",
       "url": "https://www.allianz-trade.com/en_global.html",
       "sourceRecordKey": "newsroom-company-profile-allianz-trade"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.allianzim.com/etfs/",
+      "sourceRecordKey": "advisory-allianzim-etfs"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://azldigital.qualtrics.com/jfe/form/SV_8tRF7zOOWAfHp5k",
+      "sourceRecordKey": "advisory-ria-onboarding"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://azldigital.qualtrics.com/jfe/form/SV_3NSDoToKKIM8ugK",
+      "sourceRecordKey": "advisory-iar-onboarding"
     }
   ]
 }
