@@ -2,6 +2,9 @@
 import { useEffect, useId, useMemo, useRef, useState, type FormEvent } from 'react';
 import { initialLifeUiState, reduceLifeUi, stageErrors, visibleStageFields, type LifeField } from './life-ui-model';
 import type { LifeInsuranceCalculatorProps } from './life-ui.props';
+import { LifeInsuranceStageIcon, type LifeStageIndex } from './LifeInsuranceStageIcon';
+import { LifeInsurancePieChart } from './LifeInsurancePieChart';
+import { printSummary, type SummaryPrintJob } from './summary-print';
 
 /** Private source-faithful input/report prototype; no third-party request or storage. */
 export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCalculated, initialState }: LifeInsuranceCalculatorProps) {
@@ -12,6 +15,11 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
   const container = useRef<HTMLDivElement>(null);
   const [desktopHeight, setDesktopHeight] = useState<number | undefined>();
   const heading = useRef<HTMLHeadingElement>(null);
+  const report = useRef<HTMLDivElement>(null);
+  const printJob = useRef<SummaryPrintJob | null>(null);
+  const mounted = useRef(true);
+  const [printing, setPrinting] = useState(false);
+  const [printError, setPrintError] = useState(false);
   const prefix = useId().replace(/:/g, '');
   const errors = useMemo(() => stageErrors(state, source), [state, source]);
   const stage = copy.stages[state.step];
@@ -43,6 +51,25 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
     if (state.result) onCalculated?.(state.result);
   }, [state.result, onCalculated]);
 
+  useEffect(() => {
+    mounted.current = true;
+    return () => { mounted.current = false; printJob.current?.cancel(); };
+  }, []);
+
+  function printReport(trigger: HTMLButtonElement) {
+    if (!report.current || printJob.current) return;
+    setPrintError(false);
+    setPrinting(true);
+    const finish = (failed = false) => {
+      printJob.current = null;
+      if (mounted.current) { setPrinting(false); setPrintError(failed); }
+    };
+    try {
+      printJob.current = printSummary(report.current, trigger);
+      void printJob.current.done.then(() => finish(), () => finish(true));
+    } catch { finish(true); }
+  }
+
   function displayedValue(name: LifeField) {
     const value = state.values[name];
     if (value === undefined || editing === name) return value ?? '';
@@ -60,7 +87,7 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
   const activePanel = (
     <section ref={panel} className="axl-tab-panel axl-tab-panel-desktop" id={`${prefix}-${stage.id}`} aria-labelledby={`${prefix}-heading`}>
       <h2 className="panel-header" ref={heading} id={`${prefix}-heading`} tabIndex={-1}>{stage.name}</h2>
-      {stage.introduction && <p className="life-stage-introduction">{stage.introduction}</p>}
+      {state.step < 4 && stage.introduction && <p className="life-stage-introduction">{stage.introduction}</p>}
       {state.step < 4 ? <form className="m-form" noValidate autoComplete="off" onSubmit={submit}
         onKeyDown={(event) => { if (event.key === 'Enter' && event.target instanceof HTMLInputElement) event.preventDefault(); }}>
         {fields.map((name) => {
@@ -91,13 +118,18 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
           </div>;
         })}
         <button type="submit" className="m-axlButton m-axlButton--primary" disabled={Object.keys(errors).length > 0}>{copy.buttons.next}</button>
-      </form> : state.result?.sourceSummaryValid && state.result.summary ? <div className="life-summary">
-        <button type="button" className="m-axlButton m-axlButton--primary life-print" onClick={() => window.print()}>{copy.buttons.print}</button>
+      </form> : state.result?.sourceSummaryValid && state.result.summary ? <>
+        <button type="button" className="m-axlButton m-axlButton--primary life-print" aria-busy={printing} aria-disabled={printing}
+          onClick={(event) => printReport(event.currentTarget)}>{copy.buttons.print}</button>
+        {printError && <p role="alert">The report could not be prepared for printing. Please try again.</p>}
+        <div className="life-summary" data-life-summary-report ref={report}>
+        {stage.introduction && <p className="life-stage-introduction">{stage.introduction}</p>}
         <dl className="life-summary-top">
           {copy.summary.rows.map((row) => <div key={row.key}>
             <dt>{row.label}</dt><dd data-summary-field={row.key}>{formatSummaryValue(state.result!.summary![row.key], row.key)}</dd>
           </div>)}
         </dl>
+        <LifeInsurancePieChart summary={state.result.summary} hasPartner={state.values.hasPartner} />
         {copy.summary.tables.map((table) => <section className="life-report-section" key={table.heading}>
           <h3>{table.heading}</h3>
           <table className="a-table a-table__summary table-RILA"><caption>{table.caption}</caption><tbody>
@@ -105,7 +137,7 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
               <td data-summary-field={row.key}>{formatSummaryValue(state.result!.summary![row.key], row.key)}</td></tr>)}
           </tbody></table>
         </section>)}
-      </div> : <p className="life-summary-warning" role="alert">{copy.summary.warning}</p>}
+      </div></> : <p className="life-summary-warning" role="alert">{copy.summary.warning}</p>}
       {copy.legalText && <p className="life-widget-legal">{copy.legalText}</p>}
     </section>
   );
@@ -116,6 +148,7 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
         {copy.stages.map((item, index) => <li className={`axl-tab-list-item${state.step === index ? ' --is-active' : ''}`} key={item.id}>
           <button type="button" className="axl-tab-list-button" aria-current={state.step === index ? 'step' : undefined}
             aria-controls={state.step === index ? `${prefix}-${item.id}` : undefined} onClick={() => { setHelp(null); dispatch({ type: 'jump', step: index }); }}>
+            <span className="axl-tab-list-icon"><LifeInsuranceStageIcon stageIndex={index as LifeStageIndex} icoName={`${prefix}-stage-${index}`} /></span>
             <span className="axl-tab-list-title">{item.name}</span>
           </button>
           {state.step === index && activePanel}

@@ -1,9 +1,9 @@
 {
-  "recordedUtc": "2026-10-28T04:31:09.811527+00:00",
+  "recordedUtc": "2026-10-28",
   "status": "PRIVATE_PROTOTYPE_NOT_RELEASED",
   "sourceBundleSha256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
   "uiAndPathTests": {
-    "passed": 27,
+    "passed": 62,
     "failed": 0
   },
   "strictTypeScript": "PASS",
@@ -12,8 +12,6 @@
   "officialDisplayedAmountsChecked": 18,
   "inputs": 17,
   "stages": 5,
-  "externalCalcXmlRequests": false,
-  "productionRepoModified": false,
   "cmsMutated": false,
   "published": false,
   "portablePathOverrides": [
@@ -21,11 +19,49 @@
     "LIFE_UI_DEPS_ROOT"
   ],
   "remaining": [
-    "Source pie chart",
-    "Stage icons",
-    "Actual viewport/tooltip/focus/resize/print browser acceptance",
-    "External CalcXML result/video/description integration",
-    "Page-level native legal/field ownership and Page Builder editing",
-    "Production registration/build/regression and full boundary reference coverage"
-  ]
+    "Exact Highcharts rounded geometry/HTML tooltip and complete visual parity",
+    "External CalcXML video/description rendering and origin/playback acceptance; URL builder and two synthetic HTTP200 reads only",
+    "Durable print error/timeout/unmount tests and broader browser/mobile source-PDF comparison",
+    "Fresh No-partner B2 and broader independent official boundary references",
+    "Native SDK field ownership, Page Builder editing, component registration and production regression"
+  ],
+  "engineAndFormatterTests": {
+    "passed": 56,
+    "failed": 0
+  },
+  "totalTestsPassed": 118,
+  "productionAppSourceModified": false,
+  "prototypeRepositoryFilesChanged": true,
+  "harnessExternalCalcXmlRequests": false,
+  "separateSyntheticPublicEndpointReads": 2,
+  "browserFeatureQa": {
+    "desktopNativeEdge": {
+      "recordedCase": "official-partner-a",
+      "officialAmountsMatched": 9,
+      "printPreviewPages": 2,
+      "printReportScopeVerified": true,
+      "allThreeTablesNoClippingObserved": true,
+      "printCancelledWithoutSavingOrPrinting": true,
+      "printButtonEnabledAndFocusedAfterCancel": true,
+      "legendHideShow": "PASS; amount retained and sector count4\u21923\u21924",
+      "modifierMultiSelectAndKeyboardClear": "PASS"
+    },
+    "mobileIab": {
+      "width": 370,
+      "documentScrollWidth": 364,
+      "sourceCases": [
+        "official-partner-a",
+        "official-no-partner-retained-b1"
+      ],
+      "officialAmountsMatched": 18,
+      "sliceCounts": [
+        4,
+        3
+      ],
+      "iconCount": 5,
+      "legendDirection": "row",
+      "headingFocus": "Summary"
+    },
+    "embeddedBrowserPrint": "IAB JavaScript reads blocked during print; owned session closed; native Edge used successfully instead"
+  }
 }

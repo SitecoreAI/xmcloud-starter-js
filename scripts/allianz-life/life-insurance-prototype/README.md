@@ -30,11 +30,14 @@ ignored. See the engine and UI READMEs for source contracts and remaining limits
 
 The two recorded cases establish 18 displayed monetary comparisons. They do not
 cover the full financial boundary space. Fresh no-partner inputs without retained
-partner values remain an unverified official-browser case. Source pie chart,
-stage icons, CalcXML video/text behavior, complete mobile geometry, native SDK
-field ownership/editor acceptance and production regression remain open.
+partner values remain an unverified official-browser case. Inline source icons,
+the raw-series pie candidate and Summary-only printing are now implemented.
+Native Edge report preview/cancellation and 370px A/B1 amounts were checked.
+Highcharts pixel/tooltip parity, CalcXML video/text behavior, complete responsive
+coverage, native SDK field ownership/editor acceptance and production regression remain open.
 No financial formula, rate or placeholder output has been invented to close them.
 
 The local harness sends no calculations or inputs to external services; its CSP
-blocks connections and frames. Shipping the calculator requires completing the
+blocks connections and external frames, allowing only a local print document.
+The tested CalcXML URL builder does not load its returned URLs. Shipping requires completing the
 remaining source, functional, responsive, editor and financial equivalence QA.

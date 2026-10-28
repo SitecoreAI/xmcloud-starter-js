@@ -53,6 +53,7 @@ test('source menu can jump to invalid Summary and show the exact warning without
   const html = render(state);
   assert.ok(html.includes(contract.summary.invalidWarning));
   assert.ok(!html.includes('data-summary-field'));
+  assert.ok(!html.includes(lifeUiCopy.stages[4].introduction));
   assert.equal((html.match(/class="axl-tab-list-button"/g) || []).length, 5);
   assert.ok(!html.includes('>Back<') && !html.includes('>Reset<'));
 });
@@ -102,6 +103,31 @@ for (const { name, minimum, maximum } of Object.values(engine.LIFE_INSURANCE_FIE
     assert.ok(stageErrors(change(state, name, String(maximum + 1)), source)[name]);
   });
 }
+
+test('valid Summary report scope includes intro, values, chart and tables while action and stage heading stay outside', () => {
+  const state = reduceLifeUi({ ...initialLifeUiState(), values: { ...inputCase } }, { type: 'jump', step: 4 }, source);
+  const html = render(state);
+  const reportStart = html.indexOf('data-life-summary-report');
+  assert.ok(reportStart > html.indexOf('class="m-axlButton m-axlButton--primary life-print"'));
+  assert.ok(reportStart > html.indexOf('>Summary</h2>'));
+  assert.ok(html.indexOf(lifeUiCopy.stages[4].introduction) > reportStart);
+  const report = html.slice(reportStart);
+  assert.equal((report.match(/data-summary-field=/g) || []).length, 12);
+  assert.equal((report.match(/<table /g) || []).length, 3);
+  assert.ok(report.includes('data-life-pie-state="positive"'));
+  assert.ok(!report.includes('life-print"'));
+  assert.ok(html.indexOf('life-insurance-pie') < html.indexOf('life-report-section'));
+});
+
+test('stage icons keep all five source SVG identities and IDs unique between calculator instances', () => {
+  const props = { copy: lifeUiCopy, source, initialState: initialLifeUiState(), formatSummaryValue: String };
+  const html = renderToStaticMarkup(React.createElement(React.Fragment, null,
+    React.createElement(LifeInsuranceCalculator, { ...props, key: 'first' }),
+    React.createElement(LifeInsuranceCalculator, { ...props, key: 'second' })));
+  assert.equal((html.match(/class="axl-tab-list-icon"/g) || []).length, 10);
+  assert.equal((html.match(/preserveAspectRatio="xMidYMid meet"/g) || []).length, 10);
+  assert.equal(new Set([...html.matchAll(/id="((?:title|desc)Icon[^"]+)"/g)].map(match => match[1])).size, 20);
+});
 
 for (const item of oracle.cases.filter(item => item.officialBrowserVerified)) {
   test(`${item.id}: form state advances through5stages and SSR shows every official monetary output`, () => {

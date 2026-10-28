@@ -1,0 +1,25 @@
+{
+  "sourceBundleSha256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "sourceVersion": "0.7.2 / v14",
+  "sourceUrl": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-life-insurance/dx-life-insurance.js?v=14",
+  "calcXml": {
+    "videoBuilderOffset": 1629539,
+    "descriptionBuilderOffset": 1629918,
+    "serialization": "Direct String.concat of six raw quantities in source order; no rounding or encoding",
+    "builderMakesRequests": false,
+    "externalRenderingEnabled": false
+  },
+  "print": {
+    "summaryComponentOffsets": [1626628, 1633330],
+    "wrapperOffset": 1640248,
+    "libraryOffsets": [1043235, 1053452],
+    "validReportOrder": ["intro", "three top values", "pie", "CalcXML iframe and description", "three tables"],
+    "outsideReport": ["navigation", "Summary panel heading", "print action", "surrounding page disclosures"],
+    "invalidSummaryIntro": false,
+    "candidateExternalContent": "CalcXML stays absent; not a complete source report",
+    "candidateAdaptations": ["local stylesheet resources only", "cleanup after printing/cancellation/error", "focus restoration", "unique SVG IDs"]
+  },
+  "sourceFullBundleIncludedInRepository": false,
+  "financialEngineChanged": false,
+  "productionRegistration": false
+}

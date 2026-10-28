@@ -8,7 +8,8 @@ in `../engine/` and the synthetic official browser cases in `../reference/`.
 Implemented: all 17 source fields, five stages, exact recovered labels/placeholders
 and help copy, both partner branches, source defaults, event-driven desired-income
 prefill, input masks, free stage-menu navigation, source invalid-summary handling,
-three source report tables and local print control. Numeric fields initially stay
+three source report tables, five inline stage icons, the raw-series pie candidate
+and a Summary-only print document. Numeric fields initially stay
 undefined; placeholder text is never substituted for data. Hidden partner values
 remain stored when No is selected. The source has no Back or Reset app button, so
 none was added. Financial logic stays in the source engine; this UI adds no formula.
@@ -48,7 +49,8 @@ node ui/serve.mjs
 
 The server binds `localhost:4196`; `LIFE_UI_PORT` can choose another local port.
 Its finite routes serve only the built harness, source CSS and whitelisted local
-Allianz fonts. CSP blocks connections and frames, so no private input or computed
+Allianz fonts. CSP blocks connections and external frames, permitting a same-origin
+print document only, so no private input or computed
 quantity is sent to CalcXML or another service. The page has no telemetry, storage,
 query-value import, fixture buttons or diagnostic panels. Build output stays in
 `ui/dist/` and is not source backup content.
@@ -61,11 +63,28 @@ field's inclusive bounds, and all 18 displayed monetary values from the two offi
 browser cases. Strict TypeScript and the browser bundle build pass. Path tests check
 portable repository discovery and fail without installing missing packages.
 
-The source pie chart, stage icons and external CalcXML video/description integration
-are absent. The single active control set is placed under its active menu item on
+The pie preserves source series/colors/formatting, source-library invalid/zero-point
+rules, legend visibility toggles and modifier-key selection. It uses native SVG;
+Highcharts rounded paths, pixel geometry, HTML tooltip appearance and broader live
+edge references remain unaccepted. Icons retain source paths, wrapper and labels;
+instance IDs are unique rather than repeating across responsive control sets.
+
+The print helper clones only the valid report intro, amounts, chart and three tables,
+excluding menu, outer Summary heading, action and surrounding legal content. It
+copies local stylesheets and waits for styles/fonts. Cleanup, error handling and
+trigger-focus restoration are explicit improvements over source defaults. Native
+Edge rendered a two-page preview without clipping and cancellation restored the
+enabled print control. This is not yet source-versus-candidate PDF acceptance.
+
+`calcxml-urls.mjs` preserves both exact source endpoints and all six raw unrounded
+parameters. Calling the builder sends nothing. External video/description rendering
+remains absent and blocked in this harness.
+
+The single active control set is placed under its active menu item on
 mobile and beside the menu on desktop; source uses duplicate responsive control
-sets. Geometry, tooltip behavior, focus/scroll, resize/input retention and print
-still require actual browser acceptance. The focus-on-navigation addition is an
+sets. Mobile 370px A/B1 retained all 18 official amounts and 4/3 sectors with no
+horizontal overflow. Complete geometry, source tooltip appearance and mobile print
+still require acceptance. The focus-on-navigation addition is an
 explicit accessibility adaptation; source static inspection established scrolling
 but did not establish a focus call.
 

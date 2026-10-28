@@ -44,4 +44,6 @@ body { margin: 0; background: #fff; }
   .life-insurance-private .axl-tab-list-item:not(.--is-active) { display: none; }
   .life-insurance-private { max-width: none; padding: 0; min-height: auto !important; }
   .life-insurance-private .axl-tab-panel { position: static; width: 100%; }
+  .life-print-document { position: static; width: 100%; max-width: none; margin: 0; padding: 0; }
+  .life-print-document .life-report-section { break-inside: avoid; }
 }
