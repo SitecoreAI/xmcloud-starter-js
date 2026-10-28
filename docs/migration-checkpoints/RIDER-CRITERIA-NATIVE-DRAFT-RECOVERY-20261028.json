@@ -1,5 +1,5 @@
 {
-  "recordedUTC": "2026-10-28T01:15:25.888318+00:00",
+  "recordedUTC": "2026-10-28T01:58:22.132281+00:00",
   "state": "SOURCE_TEXT_AND_COMPONENT_DRAFT_QA_PASS_IMAGES_INCOMPLETE_NOT_PUBLISHED",
   "route": "/what-we-offer/annuities/fixed-index-annuities/rider-charge-management-criteria",
   "parent": "B78C7AA0-3F99-5275-B32E-4EFF60C2ADE3",
@@ -133,16 +133,27 @@
     },
     "unresolved": [
       "Source Hero photograph /-/media/Feature/Hero/Allianz-Life/hero-azl-rider-charge-management-criteria.jpg",
-      "Source Stocks SVG titleIconStockGraphUp",
-      "Source Money SVG titleIconMoney"
+      "Source Stocks SVG titleIconStockGraphUp"
     ],
-    "instruction": "Find exact existing Content Hub matches first. No unverified asset or similarly named Money Exchange substitution. Use supported authorized import only if needed. Prior Add-menu issue was not re-tested in this pass."
+    "instruction": "Exact Line Graph and Money assets reused. Hero photograph and Stocks remain unmatched. Fresh authenticated Content Hub Create \u2192 Add showed an empty dropdown; dismissed without upload. An operator can open the ordinary Upload files dialog in the existing Create tab and leave it ready. No permission change or hidden API workaround.",
+    "reusedMoney": {
+      "entity": 125284,
+      "damIdentifier": "2i_gZazeQEylRxlahXVNPQ",
+      "originalURL": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/0fd35a38fbfa42928030d128ac245cb8?v=d36fffc7",
+      "sha256": "f123d9ba5323ac68f12dec6a21ecc4aeefb51c04d19615869f100111647958e4",
+      "sourceSVGPathGeometryExact": true,
+      "savedCardRevision": "4bc052eb-1337-41f7-9846-343763a64ddb",
+      "independentFieldFence": "Expected public URL and DAM identifier verified. Heading, body, theme, headingLevel, iconTheme and link unchanged.",
+      "renderedImageLoadVerified": false,
+      "newUpload": false,
+      "newPublicLink": false
+    }
   },
   "publication": {
     "jobsSubmitted": 0,
     "eligibleAcceptance": false,
     "blockers": [
-      "Three source assets not bound",
+      "Two source assets not bound; new Money image rendered-load check remains open",
       "Native Page Builder acceptance remains qualified",
       "Exact-scope publication controls unavailable; existing Authoring API denial held"
     ],
@@ -153,5 +164,5 @@
     "currentReleasedCommit": "fbfcfe794791144ee5d4c55b69bd9b4b4be37dc1",
     "validation": "Existing 2,768-pass application build reused; current native draft rendered through its standard catch-all. Build path count388 predates this new page and is not acceptance."
   },
-  "remainingReadyWork": "Two source RILA rates application routes are absent from draft/native inventories. Establish official inputs/output/API/integration contract before native implementation; never populate invented rates or a blank substitute."
+  "remainingReadyWork": "Official RILA source contract sampled; unchanged-client localhost proof mounted but remained on spinner with zero tables and no captured browser error. Do not infer root cause or working integration. See RILA-RATE-INTEGRATION-BOUNDARY-20261028.json."
 }

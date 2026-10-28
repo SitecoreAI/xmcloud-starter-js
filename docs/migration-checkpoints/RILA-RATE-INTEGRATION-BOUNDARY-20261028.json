@@ -1,0 +1,47 @@
+{
+  "recordedUTC": "2026-10-28T01:58:22.132281+00:00",
+  "state": "CLIENT_MOUNTS_DATA_LOADING_UNRESOLVED_NOT_NATIVE_INTEGRATION",
+  "sourceScriptSHA256": "59052493b5b475271ac91728f50728bd0babc8806eb21c8e7821b918b4a17fe8",
+  "officialSource": {
+    "genericAndNF": "Both substantive official pages load the same source client; NF preselects Index Advantage+ NF. Generic offers five products and state selection.",
+    "sampleProduct": "Index Advantage+",
+    "state": "All other states",
+    "currentPeriod": "10/13/2026\u201311/02/2026",
+    "declaredPeriod": "11/03/2026\u201311/27/2026",
+    "rateCellsPerCase": 99,
+    "changedCellsCurrentVersusDeclared": 38,
+    "tablesPerCase": 3,
+    "observedProductionServiceOrigin": "https://excel.us.coherent.global",
+    "observedProductionServicePath": "/allianz/api/v3/folders/RILA%20Rates/services/RILA%20Rates%20Compliance%20Version/execute",
+    "sourcePDFGenerated": false
+  },
+  "localProof": {
+    "isolated": true,
+    "environmentOrCredentialFilesRead": false,
+    "officialBundle": "Fetched once into process memory, hash fenced, not committed or retained on disk.",
+    "binding": "127.0.0.1:4184",
+    "originalSourcePathnamesPreserved": true,
+    "configurationChanged": false,
+    "serviceProxy": false,
+    "clientLoadedAndMounted": true,
+    "mountState": "aria-busy=true loading spinner",
+    "renderedTables": 0,
+    "renderedRateCells": 0,
+    "capturedBrowserErrors": 0,
+    "qualification": "No request status or CORS/authentication root cause established. Browser performance inspection unsupported. Do not claim failure classification, output parity or integration acceptance.",
+    "processStopped": true,
+    "ownedListenerClosed": true,
+    "listenerAbsenceIndependentlyChecked": true,
+    "ownedTabsClosed": true
+  },
+  "security": {
+    "credentialValuesExtractedOrOutput": false,
+    "serviceCredentialConfigurationCreated": false,
+    "directCredentialedServiceProbe": false,
+    "accessProtectionBypass": false
+  },
+  "nextGate": "A supported request-status diagnostic or vendor-supported origin/configuration contract is required before selecting native integration. Do not proxy a denied response, alter CORS/authentication, hard-code rates or invent formulas. No native blank page created.",
+  "cmsPublication": false,
+  "deployment": false,
+  "applicationCodeChanged": false
+}
