@@ -2,11 +2,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import { loadSource, sourceRoot, require } from '../components/executive-biography/__tests__/sdk-test-helper.mjs';
+import { loadSource, sourceRoot, require, render as renderComponent } from '../components/executive-biography/__tests__/sdk-test-helper.mjs';
 
 const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
-const { Link, SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
+const { Link, RichText, SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
 const { safeLink, safeLinkRenderProps } = loadSource(path.join(sourceRoot, 'lib/allianz-fields.ts'));
 const { safeEditorialRichText } = loadSource(path.join(sourceRoot, 'lib/allianz-editorial.ts'));
 const source = JSON.parse(fs.readFileSync(new URL('./approved-source-external-links.fixture.json', import.meta.url), 'utf8'));
@@ -854,16 +854,23 @@ const advisoryDestinations = [
   ['advisory-ria-onboarding', 'https://azldigital.qualtrics.com/jfe/form/SV_8tRF7zOOWAfHp5k'],
   ['advisory-iar-onboarding', 'https://azldigital.qualtrics.com/jfe/form/SV_3NSDoToKKIM8ugK'],
 ];
+const advisoryPartnerDestinations = [
+  ['advisory-partner-dpl-financial-partners', 'https://www.dplfp.com/'],
+  ['advisory-partner-simplicity-oid', 'https://simplicityoid.com/'],
+  ['advisory-partner-halo-investing-annuities', 'https://haloinvesting.com/annuities/'],
+  ['advisory-partner-ria-insurance-solutions', 'https://www.ria-insurancesolutions.com/'],
+];
+const advisorySourceDestinations = [...advisoryDestinations, ...advisoryPartnerDestinations];
 
-test('Advisory preserves its three exact public source destinations through the installed SDK', () => {
+test('Advisory preserves its seven exact public source destinations through the installed SDK', () => {
   assert.deepEqual(source.entries.filter(({ sourceRecordKey }) => sourceRecordKey.startsWith('advisory-')),
-    advisoryDestinations.map(([sourceRecordKey, url]) => ({ kind: 'public-page', url, sourceRecordKey })));
+    advisorySourceDestinations.map(([sourceRecordKey, url]) => ({ kind: 'public-page', url, sourceRecordKey })));
   assert.ok(source.sourcePins.some((pin) =>
     pin.url === 'https://www.allianzlife.com/for-financial-professionals/advisory-solutions'
     && pin.sourceHtmlSha256 === '3379420feba810ad2e701d12bfd365093f86296b916a6622f4b24477381d00e0'));
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
-    for (const [, url] of advisoryDestinations) {
+    for (const [, url] of advisorySourceDestinations) {
       const input = field(url, { target: '_blank', rel: 'author' }), before = JSON.stringify(input);
       for (const editing of [false, true]) {
         const markup = render(input, editing);
@@ -875,6 +882,73 @@ test('Advisory preserves its three exact public source destinations through the 
       assert.strictEqual(safeLinkRenderProps(input, true).field, input);
       assert.strictEqual(safeLink(input).metadata, input.metadata);
       assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
+
+function partnerBody(url, rel = '') {
+  const escaped = url.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
+  return {
+    value: `<p><a class="a-link" href="${escaped}" target="_blank"${rel ? ` rel="${rel}"` : ''}>Public partner</a></p>`,
+    metadata: { itemId: 'test-only-partner-item', fieldId: 'test-only-partner-body', fieldType: 'Rich Text' },
+  };
+}
+
+function renderPartnerBody(input, isEditing = false) {
+  return renderComponent(() => React.createElement(RichText, {
+    field: safeEditorialRichText(input, isEditing), editable: isEditing,
+  }), {}, isEditing);
+}
+
+test('Advisory partner body links preserve exact source new-tab behavior and native editing fields', () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const [, url] of advisoryPartnerDestinations) {
+      for (const rel of ['', 'author']) {
+        const input = partnerBody(url, rel), before = JSON.stringify(input);
+        const visitor = renderPartnerBody(input);
+        assert.equal(href(visitor), url);
+        assert.match(visitor, /target="_blank"/);
+        assert.ok(visitor.includes(`rel="${rel ? `${rel} ` : ''}noopener noreferrer"`));
+        assert.strictEqual(safeEditorialRichText(input).metadata, input.metadata);
+        assert.strictEqual(safeEditorialRichText(input, true), input);
+        const editing = renderPartnerBody(input, true);
+        assert.equal(href(editing), url);
+        assert.match(editing, /target="_blank"/);
+        if (rel) assert.match(editing, /rel="author"/);
+        else assert.doesNotMatch(editing, /rel=/);
+        assert.doesNotMatch(editing, /noopener|noreferrer/);
+        assert.match(editing, /test-only-partner-body/);
+        assert.equal(JSON.stringify(input), before);
+      }
+    }
+  }
+});
+
+test('Advisory partner body approvals reject URL lookalikes and unrecorded path, query and fragment variants', () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const [, url] of advisoryPartnerDestinations) {
+      const parsed = new URL(url);
+      const variants = [
+        `${url}unrecorded`, `${url}?redirect=unapproved`, `${url}#unrecorded`, `${url}%2f`,
+        url.replace('https:', 'http:'), url.replace('https:', ''),
+        url.replace('https://', 'https://user:password@'),
+        url.replace(parsed.host, `${parsed.host}:443`),
+        url.replace(parsed.host, `${parsed.host}.example.invalid`),
+        ` ${url}`, `${url} `,
+      ];
+      for (const variant of variants) {
+        const input = partnerBody(variant), before = JSON.stringify(input);
+        const normalized = safeEditorialRichText(input);
+        const visitor = renderPartnerBody(input);
+        assert.equal(href(visitor), '#service-unavailable', variant);
+        assert.match(visitor, /target=""/);
+        assert.doesNotMatch(visitor, /noopener|noreferrer/);
+        assert.strictEqual(normalized.metadata, input.metadata);
+        assert.strictEqual(safeEditorialRichText(input, true), input);
+        assert.equal(JSON.stringify(input), before);
+      }
     }
   }
 });

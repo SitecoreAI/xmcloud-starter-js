@@ -213,7 +213,7 @@
       "capturedAtUtc": "2026-10-28T18:54:50.809627+00:00",
       "responseBytes": 157003,
       "sourceHtmlSha256": "3379420feba810ad2e701d12bfd365093f86296b916a6622f4b24477381d00e0",
-      "evidence": "Current official Advisory Solutions main anchors: exact AllianzIM ETF, RIA onboarding and IAR onboarding hrefs, each target=_blank. This preserves user-initiated navigation; no form submission or input transmission is added."
+      "evidence": "Current official Advisory Solutions main anchors: exact AllianzIM ETF, RIA onboarding, IAR onboarding and four licensing-partner hrefs (DPL Financial Partners, Simplicity OID, Halo Investing and RIA Insurance Solutions), each target=_blank. This preserves user-initiated navigation; no form submission or input transmission is added."
     }
   ],
   "entries": [
@@ -701,6 +701,26 @@
       "kind": "public-page",
       "url": "https://azldigital.qualtrics.com/jfe/form/SV_3NSDoToKKIM8ugK",
       "sourceRecordKey": "advisory-iar-onboarding"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.dplfp.com/",
+      "sourceRecordKey": "advisory-partner-dpl-financial-partners"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://simplicityoid.com/",
+      "sourceRecordKey": "advisory-partner-simplicity-oid"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://haloinvesting.com/annuities/",
+      "sourceRecordKey": "advisory-partner-halo-investing-annuities"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.ria-insurancesolutions.com/",
+      "sourceRecordKey": "advisory-partner-ria-insurance-solutions"
     }
   ]
 }
