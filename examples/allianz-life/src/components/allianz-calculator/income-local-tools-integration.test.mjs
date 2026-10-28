@@ -157,6 +157,16 @@ test('native Life Insurance surroundings retain SDK edit metadata and cleared-fi
   const extra = { heading: field('heading', 'Authored life heading'), body: field('body', '<p>Authored life explanation.</p>'), disclaimer: field('disclaimer', '<p>Authored life disclosure.</p>') };
   const editing = render('life-insurance-source-core', true, extra);
   for (const name of ['heading', 'body', 'disclaimer']) assert.match(editing, new RegExp(`fieldId&quot;:&quot;${name}`));
+  const heading = editing.match(/<h4\b[^>]*>[\s\S]*?<\/h4>/)?.[0];
+  assert.ok(heading, 'The authored heading must use the source H4 tag.');
+  assert.match(heading, /Authored life heading/);
+  assert.match(editing, /<code\b[^>]*kind="open"[^>]*>[^<]*fieldId&quot;:&quot;heading[^<]*<\/code><h4>Authored life heading<\/h4><code\b[^>]*kind="close"[^>]*><\/code>/);
+  const normal = render('life-insurance-source-core', false, extra);
+  assert.match(normal, /<div class="l-container--full-width u-row-spacing t-bg-transparent axlTileCollection"><div class="l-grid l-grid--max-width"><div class="l-grid__row u-margin-bottom-xl"><div class="l-grid__column-medium-12"><div class="o-richTextEditor__wrapper"><h4>Authored life heading<\/h4>/);
+  assert.ok(normal.indexOf('Authored life heading') < normal.indexOf('Authored life explanation'));
+  assert.ok(normal.indexOf('Authored life explanation') < normal.indexOf('data-private-life-calculator'));
+  assert.ok(normal.indexOf('Authored life disclosure') > normal.indexOf('data-private-life-calculator'));
+  assert.doesNotMatch(normal, /<h2\b/);
   for (const isEditing of [false, true]) {
     const cleared = Object.fromEntries(Object.keys(extra).map((name) => [name, field(name, '')]));
     const html = render('life-insurance-source-core', isEditing, cleared);

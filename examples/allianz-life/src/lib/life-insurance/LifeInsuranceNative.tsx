@@ -12,13 +12,9 @@ export function LifeInsuranceNative({ fields, params }: AllianzCalculatorProps) 
   const data = fields?.data?.datasource;
 
   return <section className="allianz-life-insurance-calculator" id={params.RenderingIdentifier}>
-    {(shouldRenderTextField(data?.heading?.jsonValue, isEditing) ||
-      shouldRenderTextField(data?.body?.jsonValue, isEditing)) &&
-      <div className="l-container--full-width u-row-spacing t-bg-transparent"><div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
-        {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
-        {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} className="o-richTextEditor__wrapper" />}
-      </div></div></div></div>}
     <div className="l-container--full-width u-row-spacing t-bg-transparent axlTileCollection"><div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-xl"><div className="l-grid__column-medium-12"><div className="o-richTextEditor__wrapper">
+      {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h4" field={data?.heading?.jsonValue} />}
+      {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}
       <LifeInsuranceRuntime />
     </div></div></div></div></div>
     {shouldRenderTextField(data?.disclaimer?.jsonValue, isEditing) &&
