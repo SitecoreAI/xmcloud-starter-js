@@ -57,6 +57,15 @@
     "publicOriginalVisiblyRenders": true,
     "wholeDraftRoute": "Both localhost and bound 127.0.0.1 normal routes returned Internal Server Error; server reports self-proxy ECONNRESET to /allianz-life/en/... . No API denial bypass or routing override attempted.",
     "rootCauseUnestablished": true,
-    "ownedNextProcessStopped": true
+    "ownedNextProcessStopped": true,
+    "compiledBuildCheck": {
+      "existingBuildStarted": true,
+      "sameProxyECONNRESET": true,
+      "browserResult": "Internal Server Error; zero images",
+      "boundedDirectRewrittenSDKRouteRead": "15-second timeout",
+      "qualification": "Not specific to dev mode; underlying routing/network cause not established. No custom route or access bypass.",
+      "ownedServerExit": 130,
+      "ownedTabClosed": true
+    }
   }
 }
