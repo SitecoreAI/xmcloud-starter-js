@@ -254,9 +254,6 @@ test('unproved query shapes, unknown parameters, duplicate keys and inconsistent
 
 // Reuse the existing tracked bindings; no new CMS inventory or delivery capture is bundled.
 const salesBindings = JSON.parse(fs.readFileSync(new URL('../../../../docs/migration-checkpoints/THREE-SALES-TOOLS-16-PDF-DRAFT-BINDINGS-20261027.json', import.meta.url), 'utf8')).bindings;
-const verifiedSalesNames = new Set(['AMK-496', 'AMK-501', 'AMK-488']);
-const verifiedSalesBindings = salesBindings.filter(({ name }) => verifiedSalesNames.has(name));
-const heldSalesBindings = salesBindings.filter(({ name }) => !verifiedSalesNames.has(name));
 const edgeDocumentRoot = 'https://edge.sitecorecloud.io/sitecoresaaef4e-thltmnpdemof1fc-devdd6f-106b/media/Project/Allianz-Life/Documents/';
 const nativeGuid = (id) => id.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5');
 function salesEdgeField(binding, attributes = {}) {
@@ -266,15 +263,13 @@ function salesEdgeField(binding, attributes = {}) {
   });
 }
 
-test('the three verified sales PDF identities retain their exact Edge destinations and native field ownership', () => {
+test('all 16 tracked sales PDF identities retain their exact Edge destinations and native field ownership', () => {
   assert.equal(salesBindings.length, 16);
   assert.equal(new Set(salesBindings.map(({ documentId }) => documentId)).size, 16);
   assert.equal(new Set(salesBindings.map(({ name }) => name)).size, 16);
-  assert.equal(verifiedSalesBindings.length, 3);
-  assert.equal(heldSalesBindings.length, 13);
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
-    for (const binding of verifiedSalesBindings) {
+    for (const binding of salesBindings) {
       for (const id of [nativeGuid(binding.documentId), `{${nativeGuid(binding.documentId).toLowerCase()}}`]) {
         for (const target of [undefined, '', '_self', '_blank']) {
           const input = salesEdgeField(binding, { id, target });
@@ -292,7 +287,7 @@ test('the three verified sales PDF identities retain their exact Edge destinatio
   }
 });
 
-test('sales download-card visitors receive only three verified Edge destinations while editors retain native fields', () => {
+test('sales download-card visitor and editor rendering retain all 16 Edge PDF links', () => {
   const data = { children: { results: salesBindings.map((binding) => ({
     id: `test-only-card-${binding.documentId}`,
     heading: { jsonValue: { value: binding.title } },
@@ -303,20 +298,19 @@ test('sales download-card visitors receive only three verified Edge destinations
     const html = renderComponent(Cards.SourceDownloadLinks, data, editing, { layout: 'stacked', columns: '3' });
     const anchors = [...html.matchAll(/<a\b[^>]*>/g)].map(([tag]) => tag);
     assert.equal(anchors.length, 16);
-    assert.deepEqual(anchors.map(renderedHref), salesBindings.map(({ name }) => editing || verifiedSalesNames.has(name)
-      ? `${edgeDocumentRoot}${name}.pdf` : '#service-unavailable'));
-    assert.equal(anchors.filter((tag) => /target="_blank"/.test(tag)).length, editing ? 16 : 3);
+    assert.deepEqual(anchors.map(renderedHref), salesBindings.map(({ name }) => `${edgeDocumentRoot}${name}.pdf`));
+    assert.equal(anchors.filter((tag) => /target="_blank"/.test(tag)).length, 16);
     if (editing) assert.match(html, /test-only-resource-link/);
   }
   assert.equal(JSON.stringify(data), before);
 });
 
-test('the other 13 tracked sales PDFs remain unavailable to visitors pending verified public delivery', () => {
-  assert.equal(heldSalesBindings.length, 13);
+test('untracked Edge PDF filenames remain unavailable even when paired with a tracked media GUID', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
-    for (const binding of heldSalesBindings) {
-      const input = salesEdgeField(binding), before = JSON.stringify(input);
+    for (const binding of salesBindings) {
+      const input = salesEdgeField(binding, { href: `${edgeDocumentRoot}${binding.name}-unverified.pdf` });
+      const before = JSON.stringify(input);
       assert.equal(renderedHref(render(input)), '#service-unavailable');
       assert.equal(safeLink(input).value.target, '');
       assert.strictEqual(safeLink(input).metadata, input.metadata);
@@ -327,8 +321,8 @@ test('the other 13 tracked sales PDFs remain unavailable to visitors pending ver
 });
 
 test('sales Edge allowance requires the exact paired native media identity and filename', () => {
-  for (const [index, binding] of verifiedSalesBindings.entries()) {
-    const other = verifiedSalesBindings[(index + 1) % verifiedSalesBindings.length];
+  for (const [index, binding] of salesBindings.entries()) {
+    const other = salesBindings[(index + 1) % salesBindings.length];
     for (const attributes of [
       { id: `{${nativeGuid(other.documentId)}}` },
       { href: `${edgeDocumentRoot}${other.name}.pdf` },
@@ -341,7 +335,7 @@ test('sales Edge allowance requires the exact paired native media identity and f
 });
 
 test('sales Edge links reject altered origin, tenant, raw paths, queries, fragments and native query fields', () => {
-  const binding = verifiedSalesBindings[0], href = salesEdgeField(binding).value.href;
+  const binding = salesBindings[0], href = salesEdgeField(binding).value.href;
   for (const invalidHref of [
     href.replace('https:', 'http:'), href.replace('https:', ''),
     href.replace('edge.sitecorecloud.io', 'edge.sitecorecloud.io.evil.invalid'),

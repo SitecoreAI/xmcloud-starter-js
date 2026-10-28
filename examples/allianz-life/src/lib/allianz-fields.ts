@@ -98,12 +98,24 @@ const NATIVE_DOCUMENT_PREFIX = '/-/media/Project/Allianz-Life/Documents/';
 // This published Essential brochure was verified against its native PDF bytes.
 const VERIFIED_EDGE_DOCUMENT_ID = 'E74B58F0-8F94-4A52-8765-9BEF4D3EF758';
 const VERIFIED_EDGE_DOCUMENT_URL = 'https://edge.sitecorecloud.io/sitecoresaaef4e-thltmnpdemof1fc-devdd6f-106b/media/Project/Allianz-Life/Documents/CB61892.pdf';
-// Only these three tracked sales PDFs have verified public payloads.
-// Other native documents remain held until their delivery is verified.
+// Exact media identities and filenames from the tracked sales-tool PDF bindings.
 const VERIFIED_SALES_EDGE_DOCUMENTS = new Map([
+  ['B1E3F927EB9D4590803DE3295E4DD2CC', 'AMK-485.pdf'],
+  ['41AE0840BECB4CF89503C17C024BA261', 'AMK-493.pdf'],
+  ['3129290C927049FB92D0AD098EA60C5F', 'AMK-492.pdf'],
   ['394C17306F9B45B082E686DE9A870F19', 'AMK-496.pdf'],
   ['584775856E1B4F938108B1E8E3361A8D', 'AMK-501.pdf'],
   ['A8F20CD821A04F569E3B5828CAC83BC9', 'AMK-488.pdf'],
+  ['985FEB3F138D4493AED0130D18655A6E', 'CSI-431.pdf'],
+  ['81B62DC250FD4FD2AEF0FCC5057021A6', 'M-5528.pdf'],
+  ['0337CBA9A7824E09857F0DBE5FED6F48', 'AMK-506.pdf'],
+  ['C449B375FEB94E20968CD3DCE0CFB64A', 'AMK-511.pdf'],
+  ['09E05FEA6233419CAAD6BC176E9DD8D4', 'AMK-515.pdf'],
+  ['940C9E16ACE84F31AD5ADD95D8E07C1E', 'AMK-517.pdf'],
+  ['B0992EE5595A43F3BB7DEC00D794204D', 'AMK-507.pdf'],
+  ['234FA52060EA41D398D6D3ACBFB38042', 'AMK-776.pdf'],
+  ['D65540A9DEAB4EE69776378866E4151A', 'AMK-783.pdf'],
+  ['9D8D77D663A745F3895AB162C5C05DD5', 'AMK-792.pdf'],
 ]);
 const VERIFIED_EDGE_DOCUMENT_ROOT = VERIFIED_EDGE_DOCUMENT_URL.slice(0, VERIFIED_EDGE_DOCUMENT_URL.lastIndexOf('/') + 1);
 function isNativeDocumentLink(field: LinkField, url: URL, sourceBase: string, querystring: string) {
