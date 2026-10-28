@@ -74,5 +74,17 @@
       "freshLocalhostDevRoute": "All three exact Content Hub icons loaded at 1280 and 370; Money and Stocks confirmed.",
       "applicationCodeChanged": false
     }
+  },
+  "productionSelectionContract": {
+    "excludedHostnameFragments": [
+      "preview",
+      "localhost",
+      "127.0.0.1",
+      "stg"
+    ],
+    "allianzLifeVercelAppSelectsProduction": true,
+    "qualification": "Static selector evaluation only; no origin impersonation, service request or production integration acceptance.",
+    "currentVisitorCSP": "Allows self scripts and self/Sitecore connections; excludes official remote script and Coherent. No CSP change made.",
+    "nextGate": "Consolidate source-supported initialization/dependencies and review a narrowly scoped security-policy change before executing remote client in migration. No blanket approval bypass."
   }
 }

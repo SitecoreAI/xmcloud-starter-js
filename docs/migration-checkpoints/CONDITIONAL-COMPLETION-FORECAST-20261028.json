@@ -1,0 +1,99 @@
+{
+  "recordedUTC": "2026-10-28T02:17:49Z",
+  "timezone": "America/Chicago",
+  "status": "CONDITIONAL_PLANNING_FORECAST_NOT_COMPLETION_COMMITMENT",
+  "planningTarget": "2026-10-30T17:00:00-05:00",
+  "gateAssumption": "Critical external gates cleared by Wednesday October 28 noon Central; one browser writer remains available, no new material source defects, no expansion beyond existing migration scope.",
+  "hoursExcludeExternalWaiting": true,
+  "categories": [
+    {
+      "category": "Native visible content, layout, images and routes",
+      "bestHours": 6,
+      "likelyHours": 12,
+      "conservativeHours": 20,
+      "knownScope": "Two missing RILA application pages/shared integration; one Criteria Hero; thirteen sales-tool thumbnail identities/imports; held visible Culture/Legal/222 actions. Existing completed native drafts preserved.",
+      "gate": "Exact asset match/import UI, supported rate initialization/dependencies, held action clearance. Existing ordinary draft code/content authority suffices; no permission or security bypass."
+    },
+    {
+      "category": "Responsive, navigation and interactions",
+      "bestHours": 3,
+      "likelyHours": 6,
+      "conservativeHours": 12,
+      "knownScope": "Changed and still-unaccepted layout families plus repeatable route/link breadth; representative visual checks, not a false all-route visual claim.",
+      "gate": "Current native/delivery data and route outputs. Existing QA authority suffices."
+    },
+    {
+      "category": "Native authoring acceptance",
+      "bestHours": 2,
+      "likelyHours": 5,
+      "conservativeHours": 10,
+      "knownScope": "Page Builder embedded canvas, heading-activation autosave normalization and affected authorable fields; originals preserved.",
+      "gate": "Supported platform recovery/vendor fix. Hands-on estimate excludes potentially unbounded external repair wait; existing Content Editor readback is not acceptance."
+    },
+    {
+      "category": "Scoped publication and recomposition",
+      "bestHours": 2,
+      "likelyHours": 4,
+      "conservativeHours": 8,
+      "knownScope": "Four prepared scopes/110 items, newsroom12, Fortune changed2 plus checked dependencies, Related Sites3, six page-only recomposition proposals, Criteria14 when ready. Scope overlaps must be reconciled, not summed as a site inventory.",
+      "gate": "Supported exact-scope publishing control; Authoring API denied, no retry/bypass. Legal historical job must be reconciled. Existing qualified publication authority does not override these gates or PDF holds."
+    },
+    {
+      "category": "Deployments and live affected QA",
+      "bestHours": 2,
+      "likelyHours": 4,
+      "conservativeHours": 7,
+      "knownScope": "Exact qualified commit on both hosts, terminal outcomes/rollback, public desktop/mobile and interactions after each coherent release.",
+      "gate": "Applicable pre-release checks and normal platform approval. Native private root Forbidden still blocks that host acceptance; no access bypass."
+    },
+    {
+      "category": "Documents, asset/live-consumer acceptance and recoverable cleanup",
+      "bestHours": 4,
+      "likelyHours": 8,
+      "conservativeHours": 16,
+      "knownScope": "Existing16 staged sales-tool PDFs, other retained migration mappings and live consumers; complete current inventory must be reconciled. Earlier120 documents/48 images are provisional, not final denominators.",
+      "gate": "Explicit unpublished page/PDF/media direction must be resolved before their live acceptance. Replacement, file identity, all consumers and recovery must be verified before any old-item deletion; no purge."
+    },
+    {
+      "category": "Final recoverable handoff",
+      "bestHours": 1,
+      "likelyHours": 2,
+      "conservativeHours": 3,
+      "knownScope": "Acceptance exceptions, exact item/operator scopes, full remote SHA, rollback, secret-free restart and owned-tab/process cleanup.",
+      "gate": "No external gate for notes; cannot mark blocked acceptance complete."
+    }
+  ],
+  "hours": {
+    "best": 20,
+    "likely": 41,
+    "conservative": 76
+  },
+  "conditionalWindowsIfGatesClearWednesdayNoonCentral": {
+    "best": "Thursday October 29 about 8 a.m. Central",
+    "likelyHandsOnEnd": "Friday October 30 about 5 a.m. Central",
+    "planningTargetWithContingency": "Friday October 30 at 5 p.m. Central",
+    "conservativeHandsOnEnd": "Saturday October 31 about 4 p.m. Central; external waiting can make it later"
+  },
+  "basis": "Observed native creation/binding/independent readback and source-to-desktop/mobile cycle is roughly tens of minutes per bounded component/asset batch; coherent route recoveries take longer. Recent fourteen-item Criteria composition and icon recovery spans hours. Terminal app builds/deployments take minutes but do not replace content, native editor or live QA. These are low-confidence planning allowances, not measured remaining task durations.",
+  "invalidation": [
+    "Any critical gate unresolved past Wednesday noon shifts the target; platform repair wait has no bounded estimate.",
+    "Complete census reveals substantially more missing bespoke content, media or legal/source discrepancies.",
+    "Rate client needs a vendor-supported integration beyond the unchanged public client; no invented rates or credentials.",
+    "Work Mac disconnects or no authorized single writer is available.",
+    "Native editing defects require a platform change outside current authority.",
+    "Unpublished PDF/media direction remains in force: full live migration acceptance then cannot finish regardless of code readiness."
+  ],
+  "parallelism": {
+    "independent": "File/source comparison, manifest reconciliation, pure tests and code review can run independently of native UI; batch assets/content when controls are available.",
+    "serial": "CMS mutations, exact publication/job checks and native visual/editor acceptance share one browser writer. Do not add their best durations as if all run concurrently."
+  },
+  "completedSincePriorCheckpoint": [
+    "Stocks entity124906 matched exact source SVG and saved; six unrelated fields unchanged by independent SDK fence.",
+    "Money, Stocks and Line Graph current draft images loaded at actual1280/370 with no prompts/overflow.",
+    "Local self-proxy failure resolved by matching localhost binding; no app/security/config changes.",
+    "Official hostname selector excludes preview, localhost,127.0.0.1,stg; allianz-life.vercel.app selects production. Existing CSP excludes remote official script and Coherent origin; no policy changed.",
+    "Settled SLAT asset search returned four unrelated results, no exact source thumbnail match; no substitute/upload."
+  ],
+  "lastVerifiedRemoteSHA": "97b96fa3668be83e8a73f1b5f0b1254cb348a9c3",
+  "overallAcceptance": "Incomplete; no defensible overall accepted-page count or percent.357 canonical routes/360 checklist URLs/388 build paths are different denominators."
+}
