@@ -110,7 +110,7 @@ test('all exact captured HTML survives real SDK editing, including styles, lists
     counts.tables += /<table\b/.test(body);
     counts.endnotes += /id="edn/.test(body);
     const legal = record.exactSourceLegalBody.jsonValue.value;
-    assert.ok(render('LegalDisclosures', { body: record.exactSourceLegalBody }).includes(legal), record.route);
+    assert.ok(render('LegalDisclosures', { body: record.exactSourceLegalBody }, true).includes(legal), record.route);
     if (legal.trim()) {
       counts.nonemptyDisclosures++;
       disclosures.add(legal.trim());

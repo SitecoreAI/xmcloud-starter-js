@@ -25,7 +25,7 @@ export const Default = ({ fields, params, isFaq = false }: LegalDisclosuresPrese
           <div className="l-grid__column">
             <div className="row">
               {shouldRenderTextField(body, editable)
-                ? <RichText className="col-md-12 content-body disclosure" field={body} editable={editable} />
+                ? <RichText className="col-md-12 content-body disclosure" field={safeEditorialRichText(body, editable, true)} editable={editable} />
                 : <div className="col-md-12 content-body disclosure" />}
             </div>
           </div>

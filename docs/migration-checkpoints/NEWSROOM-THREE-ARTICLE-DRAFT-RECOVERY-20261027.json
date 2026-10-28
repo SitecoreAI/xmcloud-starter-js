@@ -49,8 +49,8 @@
     "guardOnlyExistingItems": 3,
     "duplicationNote": "First page-only copy lacked Data; Save warning cancelled, Data copied through native Copy to and repaired before metadata save. Second copy included its verified subtree. No duplicate page creation.",
     "sourceImages": "Neither new official article includes images; none substituted",
-    "disclosures": "New articles retain full source disclosures in their body. Copied unrelated OCTI-only local disclosure cleared.",
-    "normalization": "Saved source article HTML differs only by native CRLF and XHTML void-tag normalization; complete text and every link attribute match source.",
+    "disclosures": "Corrected before publication: article-specific disclosures remain in each exact source body. Both separate corporate About Allianz Life sections (1,067 normalized characters each) are now saved in each article's own Legal Disclosures item. The copied OCTI-only paragraph was removed. Earlier empty-disclosure qualification was incomplete and is superseded.",
+    "normalization": "Article bodies retain full text, markup and links with native CRLF/XHTML normalization. Corporate disclosures retain complete source text, all tags and link attributes, with native newline, entity and surrounding-whitespace serialization only.",
     "editorThumbnail": "Native page saves generated administrative thumbnail IDs; not used as public article imagery.",
     "nativeValidation": "Current summary/body XHTML, links and image checks pass. Existing spaced datasource item-name warning retained.",
     "rawFieldFenceQualification": "Native AX can project long raw values to 512 characters. Normal Insert options editor confirmed all 36 inherited selections remained; no restore or template change was performed."
@@ -61,20 +61,23 @@
       370
     ],
     "allThreeLocalRoutes": "Correct single H1, full content, no datasource prompt, no document overflow",
-    "twoNewFullTextReadback": "Headlines, summaries, release dates, complete text/disclosures and all link attributes match official originals",
+    "twoNewFullTextReadback": "Headlines, summaries, release dates, complete article bodies, separate corporate sections, markup and all authored link attributes match official originals. Fortune's own disclosure stays empty.",
     "octiFreshSource": "Headline, complete article text (6,124 normalized characters) and complete disclosure match current official source; all saved content fields unchanged after guards",
     "navigation": "Homepage href local /, same-tab click verified with stable tab count; Back returns article; Newsroom return shows automatic Oct20/Oct13/Oct1 feed order",
-    "nativeWysiwyg": "SDK editing HTML/metadata regression passes; known heading activation normalization remains open, not retested"
+    "nativeWysiwyg": "SDK editing HTML/metadata regression passes; known heading activation normalization remains open, not retested",
+    "corporateDisclosureCorrection": "Independent three-field SDK read verifies both complete corporate sections and the unchanged empty Fortune disclosure. A larger combined read failed without writes; reduced scoped verification succeeded.",
+    "correctionValidation": "23 focused passed; full regression 2,768 passed, zero failed, one existing opt-in skip; lint, types and webpack build pass (388 generated paths). Both corporate sections match all 1,067 source text characters at actual 1280px and 370px, visible, single H1, no prompts or horizontal overflow. Biography sample preserves external FINRA and telephone links while homepage stays local same-tab."
   },
-  "codeChange": "PressRelease reuses existing visitor-only internal-page policy, preserves external/document/vanity exceptions and exact native editing fields",
+  "codeChange": "PressRelease and default LegalDisclosures reuse the existing visitor-only internal-page policy, retaining external/document/vanity exceptions and exact native editing fields.",
   "checks": {
-    "focusedPass": 22,
-    "fullPass": 2767,
+    "focusedPass": 23,
+    "fullPass": 2768,
     "fullFail": 0,
     "existingOptInSkip": 1,
     "lint": "pass",
     "types": "pass",
-    "webpack": "pass, 388 generated paths; not visual acceptance"
+    "webpack": "pass, 388 generated paths; not visual acceptance",
+    "correctionValidation": "23 focused passed; full regression 2,768 passed, zero failed, one existing opt-in skip; lint, types and webpack build pass (388 generated paths). Both corporate sections match all 1,067 source text characters at actual 1280px and 370px, visible, single H1, no prompts or horizontal overflow. Biography sample preserves external FINRA and telephone links while homepage stays local same-tab."
   },
   "publicationGate": {
     "status": "No job submitted. Operator needed because supported exact-scope wizard unavailable and Authoring API remains denied; no retry or alternate API used.",
@@ -150,5 +153,6 @@
     "rollback": "Retain original OCTI content and revisions; eight new items remain identifiable drafts. No deletion or permanent purge.",
     "excluded": "All previously restricted PDFs/media/calculator/sales-tool draft pages, held Culture/Legal/222 operations, unrelated items."
   },
-  "remaining": "Three footer drafts, native heading autosave, Content Hub Add/import dependency, protected native runtime/authoring API gates, separate Life calculator integration and whole-site visual acceptance remain open."
+  "remaining": "Three footer drafts, native heading autosave, Content Hub Add/import dependency, protected native runtime/authoring API gates, separate Life calculator integration and whole-site visual acceptance remain open.",
+  "correctionRecordedUTC": "2026-10-28T00:20:28.930347+00:00"
 }

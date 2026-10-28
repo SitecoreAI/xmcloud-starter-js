@@ -1,0 +1,58 @@
+{
+  "recordedUTC": "2026-10-28T00:20:28.939756+00:00",
+  "route": "/about/newsroom/2026-press-releases/allianz-life-earns-spot-on-the-2026-fortune-100-best-companies-to-work-for-list",
+  "page": "77211CA6-76E4-4CD9-9D06-1E501531FDBF",
+  "dataFolder": "9476A574-432D-4716-803A-1FF194E65E25",
+  "existingCorrectPressRelease": "3C5DD648-7B87-4CB3-81E8-C0730E9EE1E8",
+  "newOwnEmptyLegalDisclosures": "0AE51FCC-54F7-4FEE-B7F5-4ADDACD01440",
+  "source": "https://www.allianzlife.com/about/newsroom/2026-press-releases/allianz-life-earns-spot-on-the-2026-fortune-100-best-companies-to-work-for-list",
+  "diagnosis": "Public page rendered older generic AllianzArticle 02 with 19 disabled anchors, despite an existing complete source Press Release datasource. Main content was present; not an additional datasource-prompt route.",
+  "savedRepair": "Only page Final renderings, Revision and Updated changed. Original three rendering UIDs retained; native Breadcrumb, PressRelease, NewsroomReturn and empty LegalDisclosures purposes used. Old datasource items and content retained; no new route files or global overrides.",
+  "pageRevision": "b8ea6624-d20e-4a72-bbb0-9244f20e205d",
+  "sourceParity": {
+    "heading": true,
+    "summary": true,
+    "completeArticleText": true,
+    "articleTextCharacters": 4732,
+    "sourceImages": 0,
+    "originalReleaseDate": "2026-04-01",
+    "linkQualification": "20 source anchors preserved, except pre-existing local homepage and culture aliases. Visitor homepage stays local; existing source vanity exception is retained.",
+    "corporateLegal": "Official section empty; own item remains empty, independently checked after other pages' disclosure corrections."
+  },
+  "qa": {
+    "viewports": [
+      1280,
+      370
+    ],
+    "result": "Correct single H1, complete text, no datasource prompts or disabled article anchors, no horizontal overflow.",
+    "rankingHref": "https://www.greatplacetowork.com/best-workplaces/100-best/2026",
+    "rankingTarget": "_blank",
+    "rankingRel": "noopener noreferrer",
+    "destinationHTTP": 200,
+    "nativeEdgeNewTab": "Pass: tabs 10 to 11, exact destination URL and 2026 ranking H1. Closed owned external and local QA tabs afterward.",
+    "IABQualification": "Popup click not exposed; not counted as pass. Native Edge check resolves the interaction gate.",
+    "renderedCorporateCorrections": "Passed final refreshed build: both other new drafts have exact 1,067-character source corporate text at actual 1280/370px, visible sections, local same-tab homepage, one H1, no prompts or document overflow. Fortune own empty disclosure independently unchanged."
+  },
+  "rollback": {
+    "originalFinalRenderings": "<r xmlns:p=\"p\" xmlns:s=\"s\" p:p=\"1\"><d id=\"{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}\"><r uid=\"{2FFBEFE7-67D1-57C4-99F6-A5F49404C887}\" s:id=\"{0BD23A13-5792-50BD-A8EB-D4297D02C06D}\" s:ds=\"local:/Data/AllianzBreadcrumbs 01\" s:ph=\"headless-main\" s:par=\"DynamicPlaceholderId=1&amp;FieldNames=Default\" p:before=\"*\" /><r uid=\"{60C400AE-D2BF-5FD5-82B7-A09A06C4A699}\" s:id=\"{C4FBFD1B-2FC0-5AF5-85C1-BABC12FF56DA}\" s:ds=\"local:/Data/AllianzArticle 02\" s:ph=\"headless-main\" s:par=\"theme=transparent&amp;layout=plain&amp;columns=1&amp;alignment=left&amp;spacing=none&amp;headingLevel=h1&amp;paddingTop=none&amp;paddingBottom=none&amp;marginBottom=xl&amp;DynamicPlaceholderId=2&amp;FieldNames=%7BF593D44B-184C-43AF-805B-8E085A3637D7%7D\" p:after=\"r[@uid='{2FFBEFE7-67D1-57C4-99F6-A5F49404C887}']\" /><r uid=\"{952077C6-075F-5931-8786-38FB9E9032EB}\" s:id=\"{EA0674F1-31A1-540C-8622-91399E29FFE0}\" s:ds=\"local:/Data/AllianzCardGrid 03\" s:ph=\"headless-main\" s:par=\"theme=transparent&amp;layout=stacked&amp;columns=1&amp;alignment=center&amp;spacing=none&amp;headingLevel=h4&amp;paddingTop=none&amp;paddingBottom=none&amp;marginBottom=xl&amp;DynamicPlaceholderId=3&amp;FieldNames=%7BA9538E4C-C44E-5C01-BCF2-0DE4DE3DB2BA%7D\" p:after=\"r[@uid='{60C400AE-D2BF-5FD5-82B7-A09A06C4A699}']\" /></d></r>",
+    "repairedFinalRenderings": "<r xmlns:p=\"p\" xmlns:s=\"s\" p:p=\"1\"><d id=\"{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}\"><r uid=\"{2FFBEFE7-67D1-57C4-99F6-A5F49404C887}\" p:before=\"*\" s:id=\"{97E50373-18E6-42D4-ACEC-47D5F8270380}\" s:par=\"FieldNames=%7BBB46C574-E018-4D67-9F97-6C6A260965F3%7D&amp;CSSStyles\" s:ph=\"headless-main\" /><r uid=\"{60C400AE-D2BF-5FD5-82B7-A09A06C4A699}\" p:after=\"r[@uid='{2FFBEFE7-67D1-57C4-99F6-A5F49404C887}']\" s:ds=\"local:/Data/Press Release\" s:id=\"{61388B92-B6DD-43B0-8DE3-89C8DF20AE2D}\" s:par=\"FieldNames=%7B319309C2-BEF7-4E92-A55E-DF1E08347268%7D&amp;CSSStyles\" s:ph=\"headless-main\" /><r uid=\"{952077C6-075F-5931-8786-38FB9E9032EB}\" p:after=\"r[@uid='{60C400AE-D2BF-5FD5-82B7-A09A06C4A699}']\" s:ds=\"{8DB161A5-FE22-40D8-8C8C-CC1EB34DE3DF}\" s:id=\"{FE71DD88-CB8D-4463-A2B8-48CEE6640D6A}\" s:par=\"FieldNames=%7B6FBEDB95-34E6-4E1F-ABC3-7E6D0A175C07%7D&amp;CSSStyles\" s:ph=\"headless-main\" /><r uid=\"{08846EBC-3AA0-5791-A928-4AC37C984AD1}\" p:after=\"*[1=2]\" s:ds=\"local:/Data/Legal Disclosures\" s:id=\"{F7E18515-349E-44A1-AD83-320CAD3AF403}\" s:par=\"FieldNames=%7BDB949495-936E-46D7-8BC5-775F1FF8E84C%7D&amp;CSSStyles\" s:ph=\"headless-main\" /></d></r>",
+    "originalSHA256": "69a44047c10c07976e1ad5be019a354d29c0a8c9fcf8b5235456382a213f6204",
+    "repairedSHA256": "14270f9b34f1bc582c37e49970aae1caf0cb3148363b7cb0f0c20924263a0a74",
+    "instruction": "An authorized operator can restore only the original Final renderings field after confirming current item/revision. Do not delete retained datasource items or purge anything."
+  },
+  "publication": {
+    "submitted": false,
+    "separateFromThreeArticleTwelveItemBatch": true,
+    "requiredChangedItems": [
+      "77211CA6-76E4-4CD9-9D06-1E501531FDBF",
+      "0AE51FCC-54F7-4FEE-B7F5-4ADDACD01440"
+    ],
+    "dependencyChecks": [
+      "9476A574-432D-4716-803A-1FF194E65E25",
+      "3C5DD648-7B87-4CB3-81E8-C0730E9EE1E8"
+    ],
+    "operatorSteps": "Recheck English version, eligibility, locks and current delivery dependencies; publish only qualified explicit changed items from master to experienceedge, no subitems or related expansion. Add an existing dependency only if shown missing/stale and separately included in exact preflight. Capture terminal job and live affected behavior.",
+    "blocker": "Exact-scope publishing UI unavailable; Authoring API denial remains held. No unchanged wizard retry or alternate denied API used."
+  },
+  "restrictions": "All staged PDFs/media/calculator/sales-tool drafts stay unpublished; Culture/Legal/222 held actions, native autosave and other operator gates remain open."
+}

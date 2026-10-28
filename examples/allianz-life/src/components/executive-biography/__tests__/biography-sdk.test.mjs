@@ -47,7 +47,7 @@ test('the real SDK preserves every recovered biography shell, heading tag, optio
   }
 });
 
-test('every exact role, focus, biography and grey/legal HTML value survives the SDK without runtime normalization', () => {
+test('role, focus, biography and grey HTML remain exact; legal editing retains source bytes while visitor links localize', () => {
   for (const record of records) {
     const fields = record.exactSourceFieldValues;
     const html = render(componentFor(record), fields);
@@ -60,7 +60,8 @@ test('every exact role, focus, biography and grey/legal HTML value survives the 
       assert.deepEqual(skeleton('BiographyDisclosures', grey), skeleton('BiographyDisclosures', capture(record)), record.route);
     }
     const legal = render(components.LegalDisclosures.Default, record.legalDisclosures);
-    assert.ok(legal.includes(record.legalDisclosures.body.jsonValue.value), record.route);
+    const legalEditing = render(components.LegalDisclosures.Default, record.legalDisclosures, true);
+    assert.ok(legalEditing.includes(record.legalDisclosures.body.jsonValue.value), record.route);
     assert.deepEqual(skeleton('LegalDisclosures', legal), skeleton('LegalDisclosures', capture(record)), record.route);
   }
 });

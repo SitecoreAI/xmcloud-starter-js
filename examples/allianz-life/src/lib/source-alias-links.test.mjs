@@ -7,6 +7,7 @@ import { loadSource, sourceRoot, render, metadata, require } from '../components
 const { restoreSourceAliasRichText } = loadSource(path.join(sourceRoot, 'lib/allianz-source-aliases.ts'));
 const { safeLinkRenderProps } = loadSource(path.join(sourceRoot, 'lib/allianz-fields.ts'));
 const { Default: PressRelease } = loadSource(path.join(sourceRoot, 'components/press-release/PressRelease.tsx'));
+const { Default: LegalDisclosures } = loadSource(path.join(sourceRoot, 'components/legal-disclosures/LegalDisclosures.tsx'));
 const { Link } = require('@sitecore-content-sdk/nextjs');
 const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
@@ -132,5 +133,23 @@ test('press-release visitor links stay local while external and document destina
   assert.ok(editor.includes(summary));
   assert.ok(editor.includes(body));
   assert.match(editor, /test-release-body-field/);
+  assert.equal(JSON.stringify(fields), before);
+});
+
+
+test('default disclosures keep same-site links local without altering external links or native editing HTML', () => {
+  const value = '<p><a href="https://www.allianzlife.com/" target="_blank">Allianz Life</a> '
+    + '<a href="https://www.ssa.gov/" target="_blank" rel="author">Social Security</a> '
+    + '<a href="https://www.allianzlife.com/-/media/files/brochure.pdf" target="_blank">Brochure</a></p>';
+  const body = { value, metadata: metadata('source-disclosure', 'Rich Text') };
+  const fields = { body: { jsonValue: body } };
+  const before = JSON.stringify(fields);
+  const visitor = render(LegalDisclosures, fields);
+  assert.match(visitor, /href="\/" target=""/);
+  assert.ok(visitor.includes('<a href="https://www.ssa.gov/" target="_blank" rel="author">Social Security</a>'));
+  assert.ok(visitor.includes('<a href="https://www.allianzlife.com/-/media/files/brochure.pdf" target="_blank">Brochure</a>'));
+  const editor = render(LegalDisclosures, fields, true);
+  assert.ok(editor.includes(value));
+  assert.match(editor, /test-source-disclosure-field/);
   assert.equal(JSON.stringify(fields), before);
 });
