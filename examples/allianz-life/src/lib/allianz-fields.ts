@@ -98,6 +98,14 @@ const NATIVE_DOCUMENT_PREFIX = '/-/media/Project/Allianz-Life/Documents/';
 // This published Essential brochure was verified against its native PDF bytes.
 const VERIFIED_EDGE_DOCUMENT_ID = 'E74B58F0-8F94-4A52-8765-9BEF4D3EF758';
 const VERIFIED_EDGE_DOCUMENT_URL = 'https://edge.sitecorecloud.io/sitecoresaaef4e-thltmnpdemof1fc-devdd6f-106b/media/Project/Allianz-Life/Documents/CB61892.pdf';
+// Only these three tracked sales PDFs have verified public payloads.
+// Other native documents remain held until their delivery is verified.
+const VERIFIED_SALES_EDGE_DOCUMENTS = new Map([
+  ['394C17306F9B45B082E686DE9A870F19', 'AMK-496.pdf'],
+  ['584775856E1B4F938108B1E8E3361A8D', 'AMK-501.pdf'],
+  ['A8F20CD821A04F569E3B5828CAC83BC9', 'AMK-488.pdf'],
+]);
+const VERIFIED_EDGE_DOCUMENT_ROOT = VERIFIED_EDGE_DOCUMENT_URL.slice(0, VERIFIED_EDGE_DOCUMENT_URL.lastIndexOf('/') + 1);
 function isNativeDocumentLink(field: LinkField, url: URL, sourceBase: string, querystring: string) {
   const id = field.value.id;
   if (field.value.linktype !== 'media' || typeof id !== 'string' ||
@@ -105,6 +113,9 @@ function isNativeDocumentLink(field: LinkField, url: URL, sourceBase: string, qu
   if (id.replace(/^\{|\}$/g, '').toUpperCase() === VERIFIED_EDGE_DOCUMENT_ID &&
     field.value.href === VERIFIED_EDGE_DOCUMENT_URL && !querystring &&
     !field.value.querystring && !field.value.anchor) return true;
+  const salesDocument = VERIFIED_SALES_EDGE_DOCUMENTS.get(id.replace(/[{}-]/g, '').toUpperCase());
+  if (salesDocument && field.value.href === `${VERIFIED_EDGE_DOCUMENT_ROOT}${salesDocument}` &&
+    !querystring && !field.value.querystring && !field.value.anchor) return true;
   if (url.origin !== NATIVE_DOCUMENT_ORIGIN || url.protocol !== 'https:' ||
     url.username || url.password || url.port || sourceBase !== `${url.origin}${url.pathname}` ||
     !url.pathname.startsWith(NATIVE_DOCUMENT_PREFIX) || field.value.href?.includes('#') || field.value.anchor ||
