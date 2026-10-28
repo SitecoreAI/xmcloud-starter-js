@@ -1,0 +1,75 @@
+{
+  "recordedUTC": "2026-10-28T04:17:09.671Z",
+  "purpose": "PRIVATE exact Life Insurance formatting equivalence; no deployment/publication permission implied",
+  "sourceURL": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-life-insurance/dx-life-insurance.js?v=14",
+  "sourceBundleBytes": 1655293,
+  "sourceBundleSHA256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "moduleId": 7242,
+  "moduleSpan": {
+    "start": 870176,
+    "end": 881280,
+    "offsetUnit": "JavaScript UTF-16 code units"
+  },
+  "originalModuleBytes": 11104,
+  "originalModuleSHA256": "13569c6318e7089206468071d0753eca90ade895bc736c7586365d8b13fcaeff",
+  "moduleParameters": [
+    "e"
+  ],
+  "webpackDependencies": [],
+  "globalIdentifiers": [
+    "Array",
+    "Error",
+    "Math",
+    "Number",
+    "Object",
+    "RegExp",
+    "String",
+    "TypeError",
+    "arguments",
+    "console",
+    "define",
+    "isNaN"
+  ],
+  "formatterSpans": [
+    {
+      "name": "hs",
+      "start": 1589608,
+      "end": 1589679
+    },
+    {
+      "name": "ho",
+      "start": 1589679,
+      "end": 1589748
+    }
+  ],
+  "bindingTrace": [
+    {
+      "name": "ha",
+      "start": 1589581,
+      "end": 1589591,
+      "code": "ha=r.n(hr)"
+    },
+    {
+      "name": "hr",
+      "start": 1589570,
+      "end": 1589580,
+      "code": "hr=r(7242)"
+    }
+  ],
+  "sourceModuleUnmodified": true,
+  "adapter": "Node CJS module bootstrap and CJS default-export resolution ha=()=>numeral. Original hs and ho are unchanged.",
+  "outputFile": "source-numeral-formatters.cjs",
+  "outputBytes": 11817,
+  "outputSHA256": "cd66f80be5e2cf364499be46affb27a4e495db71d08bb6b234f9e2585f833ca5",
+  "fullBundleSaved": false,
+  "networkServiceCalls": 0,
+  "thirdPartyResultCalls": 0,
+  "configurationOrSecretsExtracted": false,
+  "browserESM": {
+    "outputFile": "source-numeral-formatters.mjs",
+    "outputBytes": 11800,
+    "outputSHA256": "0a84ae1e088ee9874a2f2b44650d16c13ced2b7a71475cf86120d66b9eeb4a13",
+    "sameExactSourceFactoryAndFormatters": true,
+    "adapter": "ESM exports replace only CJS export statement; factory/bootstrap/hs/ho are identical."
+  }
+}

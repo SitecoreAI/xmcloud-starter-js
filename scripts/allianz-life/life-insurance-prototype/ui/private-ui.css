@@ -1,0 +1,47 @@
+/* Private harness layout only; global source form styles and source-app.css are loaded first. */
+html { color: #414141; font-family: 'Allianz Neo', Arial, sans-serif; }
+body { margin: 0; background: #fff; }
+.life-insurance-private { position: relative; display: block; max-width: 1088px; margin: 24px auto; box-sizing: border-box; }
+.life-insurance-private *, .life-insurance-private *::before, .life-insurance-private *::after { box-sizing: border-box; }
+.life-insurance-private nav { flex: 0 0 36%; width: 36%; }
+.life-insurance-private .axl-tab-list { width: 100%; list-style: none; margin: 0; padding: 0; }
+.life-insurance-private .axl-tab-list-item { min-width: 0; }
+.life-insurance-private .axl-tab-list-button { width: 100%; min-height: 64px; padding: 12px; }
+.life-insurance-private .axl-tab-panel { position: absolute; top: 0; right: 0; width: 64%; min-width: 0; padding: 24px 30px; margin: 0; }
+.life-insurance-private .panel-header { margin-top: 0; scroll-margin-top: 16px; }
+.life-insurance-private .m-form-group { margin-bottom: 24px; border: 0; padding: 0; min-width: 0; }
+.life-label-row { display: flex; align-items: start; gap: 8px; }
+.life-insurance-private .a-input__label { display: inline-block; margin-bottom: 8px; }
+.life-insurance-private .a-input { display: block; padding: 12px; max-width: 100%; min-height: 48px; border: 1px solid #999; font: inherit; background: #fff; }
+.life-insurance-private .a-input.--is-large { width: 320px; }
+.life-insurance-private .a-input.--is-small { width: 160px; }
+.life-radio { display: inline-flex; gap: 8px; margin: 0 24px 0 0; align-items: center; }
+.life-help-toggle { border-radius: 50%; border: 1px solid #003781; color: #003781; background: #fff; width: 28px; height: 28px; flex: 0 0 28px; font: inherit; cursor: pointer; }
+.life-help { max-width: 520px; padding: 12px 16px; margin: 0 0 12px; background: #f1f7fa; border-left: 3px solid #003781; }
+.life-help p { margin: 0 0 8px; }
+.life-help p:last-child { margin-bottom: 0; }
+.life-insurance-private .a-input__helper, .life-summary-warning { color: #a6192e; }
+.life-insurance-private .m-axlButton { border: 0; background: #007ab3; color: #fff; padding: 12px 28px; min-height: 48px; font: inherit; cursor: pointer; }
+.life-insurance-private .m-axlButton:disabled { background: #eee; color: #777; cursor: default; }
+.life-insurance-private button:focus-visible, .life-insurance-private input:focus-visible { outline: 3px solid #007ab3; outline-offset: 3px; }
+.life-summary-top { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
+.life-summary-top dt { font-size: 18px; }
+.life-summary-top dd { margin: 8px 0 0; font-size: 26px; color: #003781; }
+.life-insurance-private table { width: 100%; border-collapse: collapse; }
+.life-insurance-private caption { text-align: left; padding: 8px; }
+.life-insurance-private th, .life-insurance-private td { padding: 12px; border-bottom: 1px solid #ccc; text-align: left; }
+.life-insurance-private td { text-align: right; white-space: nowrap; }
+@media (max-width: 703px) {
+  .life-insurance-private { margin: 0; padding: 4px; }
+  .life-insurance-private nav { flex: 0 0 auto; width: 100%; }
+  .life-insurance-private .axl-tab-panel { position: static; width: 100%; padding: 24px 16px; margin: 0 0 4px; border: 2px solid #006192; border-top: none; }
+  .life-insurance-private .axl-tab-list-button { min-height: 48px; text-align: left; }
+  .life-summary-top { grid-template-columns: 1fr; }
+}
+@media print {
+  .life-insurance-private .axl-tab-list-button, .life-print { display: none; }
+  .life-insurance-private nav { width: 100%; }
+  .life-insurance-private .axl-tab-list-item:not(.--is-active) { display: none; }
+  .life-insurance-private { max-width: none; padding: 0; min-height: auto !important; }
+  .life-insurance-private .axl-tab-panel { position: static; width: 100%; }
+}

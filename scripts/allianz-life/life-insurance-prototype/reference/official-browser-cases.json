@@ -1,0 +1,86 @@
+{
+  "recordedUtc": "2026-10-28T04:19:11.374790+00:00",
+  "source": "https://www.allianzlife.com/what-we-offer/Life-Insurance/Calculator",
+  "sourceBundleSha256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "dataPolicy": "Fictional fixed QA numbers only; no user financial data. These are software parity cases, not financial guidance.",
+  "method": "Official interactive browser DOM/table observations;9displayed monetary outputs per case. Duplicate desktop/mobile tables agreed.",
+  "cases": [
+    {
+      "id": "official-partner-a",
+      "inputs": {
+        "currentAge": "40",
+        "currentAnnualIncome": "100000",
+        "hasPartner": "yes",
+        "partnerAge": "38",
+        "partnerAnnualIncome": "75000",
+        "partnerRetirementAge": "65",
+        "finalExpenses": "15000",
+        "currentMortgageBalance": "250000",
+        "debts": "20000",
+        "desiredAnnualIncome": "80000",
+        "yearsIncomeNeeded": "20",
+        "collegeCosts": "100000",
+        "inflationRate": "2",
+        "investmentAssets": "150000",
+        "returnRate": "4",
+        "currentLifeInsurance": "250000",
+        "socialSecuritySurvivorBenefit": "12000"
+      },
+      "expectedDisplayedTwoDecimals": {
+        "immediateNeeds": 285000.0,
+        "longTermNeeds": 2043789.58,
+        "totalNeeds": 2328789.58,
+        "investmentAssetsAndSocialSecurity": 162000.0,
+        "existingLifeInsurance": 250000.0,
+        "partnerEarnings": 1822302.73,
+        "totalResources": 2234302.73,
+        "shortfall": -94486.85,
+        "additionalLifeInsuranceNeeded": 94486.85
+      },
+      "observedChartSlices": 4,
+      "officialBrowserVerified": true,
+      "inputFlow": "Filled all17 numeric/choice inputs through5source stages, explicitly overriding desiredAnnualIncome prefill131250 using real select-all/backspace/type."
+    },
+    {
+      "id": "official-no-partner-retained-b1",
+      "inputs": {
+        "currentAge": "40",
+        "currentAnnualIncome": "100000",
+        "hasPartner": "no",
+        "partnerAge": "38",
+        "partnerAnnualIncome": "75000",
+        "partnerRetirementAge": "65",
+        "finalExpenses": "15000",
+        "currentMortgageBalance": "250000",
+        "debts": "20000",
+        "desiredAnnualIncome": "80000",
+        "yearsIncomeNeeded": "20",
+        "collegeCosts": "100000",
+        "inflationRate": "2",
+        "investmentAssets": "150000",
+        "returnRate": "4",
+        "currentLifeInsurance": "250000",
+        "socialSecuritySurvivorBenefit": "12000"
+      },
+      "expectedDisplayedTwoDecimals": {
+        "immediateNeeds": 285000.0,
+        "longTermNeeds": 2043789.58,
+        "totalNeeds": 2328789.58,
+        "investmentAssetsAndSocialSecurity": 162000.0,
+        "existingLifeInsurance": 250000.0,
+        "partnerEarnings": 0.0,
+        "totalResources": 412000.0,
+        "shortfall": -1916789.58,
+        "additionalLifeInsuranceNeeded": 1916789.58
+      },
+      "observedChartSlices": 3,
+      "officialBrowserVerified": true,
+      "inputFlow": "From completedA, usedAboutyou stage button, choseNo, retained hidden partner values, usedSummary stage button."
+    }
+  ],
+  "unverifiedCases": [
+    "Freshno-partner hiddenundefined B2: ComputerUse returned JavaScript execution was denied. Read-only state confirms blankfirststage remained; no interaction retried.",
+    "Full age/year/currency/rate and validation boundary oracle cases remain unrecorded."
+  ],
+  "qualification": "Two representative source cases do not establish complete financial, interactive, accessibility, native editor or release acceptance."
+}

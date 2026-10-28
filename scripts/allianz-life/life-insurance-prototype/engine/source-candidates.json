@@ -1,0 +1,100 @@
+{
+  "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-life-insurance/dx-life-insurance.js?v=14",
+  "sha256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "bytes": 1655293,
+  "hits": [
+    {
+      "literal": "iterateYears",
+      "offset": 1647397,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1647392,
+      "ownerEnd": 1647600,
+      "code": "{\n  key: \"iterateYears\",\n  value: function () {\n    try {\n      var e,\n        i = (e = this.inputs.yearsIncomeNeeded + 1, Array.apply(null, Array(e)).map(function (e, i) {\n          return i;\n        }));\n      return this._value = i.slice(1, i.length), this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "iteratePartnerAge",
+      "offset": 1647606,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1647601,
+      "ownerEnd": 1647833,
+      "code": "{\n  key: \"iteratePartnerAge\",\n  value: function () {\n    try {\n      var e = this.inputs,\n        i = e.hasPartner,\n        r = e.partnerAge;\n      return this._value = this._value.reduce(function (e, l) {\n        return e.push({\n          year: l,\n          partnerAge: \"yes\" === i ? r++ : 0\n        }), e;\n      }, []), this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "iterateRows",
+      "offset": 1647839,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1647834,
+      "ownerEnd": 1648140,
+      "code": "{\n  key: \"iterateRows\",\n  value: function () {\n    var e = this;\n    try {\n      return this._value = this._value.reduce(function (i, r, l) {\n        var f = new pz(i, r, l, e.inputs).partnerAnnualIncome().desiredAnnualIncome().annualShortfall().annualAvailableResources().annualInsuranceNeeded().values;\n        return i.push(f), i;\n      }, []), this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "iterateSums",
+      "offset": 1648146,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1648141,
+      "ownerEnd": 1648433,
+      "code": "{\n  key: \"iterateSums\",\n  value: function () {\n    try {\n      return this._value = this._value.reduce(function (e, i, r) {\n        return Object.keys(i).filter(function (e) {\n          return \"year\" !== e && \"partnerAge\" !== e;\n        }).reduce(function (e, l) {\n          var f = \"\".concat(l, \"Sum\");\n          return e[f] = 0 === r ? i[l] : e[f] + i[l], e;\n        }, e), e;\n      }, {}), this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "immediateNeeds",
+      "offset": 1648439,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1648434,
+      "ownerEnd": 1648618,
+      "code": "{\n  key: \"immediateNeeds\",\n  value: function () {\n    try {\n      var e = this.inputs,\n        i = e.currentMortgageBalance,\n        r = e.debts,\n        l = e.finalExpenses;\n      return this._value.immediateNeeds = i + r + l, this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "longTermNeeds",
+      "offset": 1648624,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1648619,
+      "ownerEnd": 1648794,
+      "code": "{\n  key: \"longTermNeeds\",\n  value: function () {\n    try {\n      var e = this.inputs.collegeCosts,\n        i = this._value.desiredAnnualIncomeSum;\n      return this._value.longTermNeeds = i + e, this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "totalNeeds",
+      "offset": 1648800,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1648795,
+      "ownerEnd": 1648951,
+      "code": "{\n  key: \"totalNeeds\",\n  value: function () {\n    try {\n      var e = this._value,\n        i = e.immediateNeeds,\n        r = e.longTermNeeds;\n      return this._value.totalNeeds = i + r, this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "investmentAssetsAndSocialSecurity",
+      "offset": 1648957,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1648952,
+      "ownerEnd": 1649172,
+      "code": "{\n  key: \"investmentAssetsAndSocialSecurity\",\n  value: function () {\n    try {\n      var e = this.inputs,\n        i = e.investmentAssets,\n        r = e.socialSecuritySurvivorBenefit;\n      return this._value.investmentAssetsAndSocialSecurity = i + r, this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "existingLifeInsurance",
+      "offset": 1649178,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1649173,
+      "ownerEnd": 1649333,
+      "code": "{\n  key: \"existingLifeInsurance\",\n  value: function () {\n    try {\n      var e = this.inputs.currentLifeInsurance;\n      return this._value.existingLifeInsurance = e, this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "totalResources",
+      "offset": 1649339,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1649334,
+      "ownerEnd": 1649554,
+      "code": "{\n  key: \"totalResources\",\n  value: function () {\n    try {\n      var e = this._value,\n        i = e.partnerAnnualIncomeSum,\n        r = e.investmentAssetsAndSocialSecurity,\n        l = e.existingLifeInsurance;\n      return this._value.totalResources = i + r + l, this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "literal": "shortfall",
+      "offset": 1649560,
+      "ownerType": "ObjectExpression",
+      "ownerStart": 1649555,
+      "ownerEnd": 1649767,
+      "code": "{\n  key: \"shortfall\",\n  value: function () {\n    try {\n      var e,\n        i = this._value,\n        r = i.totalResources,\n        l = i.totalNeeds;\n      return e = r - l > 0 ? 0 : r - l, this._value.shortfall = e, this._value.additionalLifeInsuranceNeeded = -1 * e, this;\n    } catch (e) {\n      return this;\n    }\n  }\n}"
+    },
+    {
+      "name": "iterateYears",
+      "offset": 1652465,
+      "parent": "MemberExpression"
+    }
+  ]
+}

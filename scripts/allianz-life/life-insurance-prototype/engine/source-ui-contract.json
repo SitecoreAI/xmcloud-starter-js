@@ -1,0 +1,405 @@
+{
+  "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-life-insurance/dx-life-insurance.js?v=14",
+  "sha256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "sourceOrchestration": [
+    {
+      "offset": 1652445,
+      "code": "function () {\n  return new pW(this.inputs).iterateYears().iteratePartnerAge().iterateRows().iterateSums().immediateNeeds().longTermNeeds().totalNeeds().investmentAssetsAndSocialSecurity().existingLifeInsurance().totalResources().shortfall().value;\n}"
+    }
+  ],
+  "bindings": [
+    {
+      "name": "hs",
+      "start": 1589608,
+      "end": 1589679,
+      "code": "function hs(e) {\n  try {\n    return ha()(e).format(\"$0,0.00\");\n  } catch (i) {\n    return e;\n  }\n}"
+    },
+    {
+      "name": "ho",
+      "start": 1589679,
+      "end": 1589748,
+      "code": "function ho(e) {\n  try {\n    return ha()(e).format(\"0.00%\");\n  } catch (i) {\n    return e;\n  }\n}"
+    },
+    {
+      "name": "hl",
+      "start": 1589752,
+      "end": 1589756,
+      "code": "hl = 0"
+    },
+    {
+      "name": "hc",
+      "start": 1589757,
+      "end": 1589763,
+      "code": "hc = 100"
+    },
+    {
+      "name": "hd",
+      "start": 1589764,
+      "end": 1589768,
+      "code": "hd = 0"
+    },
+    {
+      "name": "hu",
+      "start": 1589769,
+      "end": 1589782,
+      "code": "hu = 0x3b9ac9ff"
+    },
+    {
+      "name": "hh",
+      "start": 1589783,
+      "end": 1589787,
+      "code": "hh = 0"
+    },
+    {
+      "name": "hp",
+      "start": 1589788,
+      "end": 1589794,
+      "code": "hp = 100"
+    },
+    {
+      "name": "hf",
+      "start": 1589795,
+      "end": 1589799,
+      "code": "hf = 0"
+    },
+    {
+      "name": "hm",
+      "start": 1589800,
+      "end": 1589813,
+      "code": "hm = 0x3b9ac9ff"
+    },
+    {
+      "name": "hy",
+      "start": 1589814,
+      "end": 1589818,
+      "code": "hy = 0"
+    },
+    {
+      "name": "hg",
+      "start": 1589819,
+      "end": 1589825,
+      "code": "hg = 100"
+    },
+    {
+      "name": "h_",
+      "start": 1589826,
+      "end": 1589830,
+      "code": "h_ = 0"
+    },
+    {
+      "name": "hb",
+      "start": 1589831,
+      "end": 1589844,
+      "code": "hb = 0x3b9ac9ff"
+    },
+    {
+      "name": "hv",
+      "start": 1589845,
+      "end": 1589849,
+      "code": "hv = 0"
+    },
+    {
+      "name": "hL",
+      "start": 1589850,
+      "end": 1589863,
+      "code": "hL = 0x3b9ac9ff"
+    },
+    {
+      "name": "hx",
+      "start": 1589864,
+      "end": 1589868,
+      "code": "hx = 0"
+    },
+    {
+      "name": "hM",
+      "start": 1589869,
+      "end": 1589882,
+      "code": "hM = 0x3b9ac9ff"
+    },
+    {
+      "name": "hC",
+      "start": 1589883,
+      "end": 1589887,
+      "code": "hC = 0"
+    },
+    {
+      "name": "hw",
+      "start": 1589888,
+      "end": 1589901,
+      "code": "hw = 0x3b9ac9ff"
+    },
+    {
+      "name": "hk",
+      "start": 1589902,
+      "end": 1589906,
+      "code": "hk = 0"
+    },
+    {
+      "name": "hS",
+      "start": 1589907,
+      "end": 1589913,
+      "code": "hS = 100"
+    },
+    {
+      "name": "hT",
+      "start": 1589914,
+      "end": 1589918,
+      "code": "hT = 0"
+    },
+    {
+      "name": "hD",
+      "start": 1589919,
+      "end": 1589932,
+      "code": "hD = 0x3b9ac9ff"
+    },
+    {
+      "name": "hj",
+      "start": 1589933,
+      "end": 1589939,
+      "code": "hj = -12"
+    },
+    {
+      "name": "hY",
+      "start": 1589940,
+      "end": 1589945,
+      "code": "hY = 12"
+    },
+    {
+      "name": "hA",
+      "start": 1589946,
+      "end": 1589950,
+      "code": "hA = 0"
+    },
+    {
+      "name": "hE",
+      "start": 1589951,
+      "end": 1589964,
+      "code": "hE = 0x3b9ac9ff"
+    },
+    {
+      "name": "hO",
+      "start": 1589965,
+      "end": 1589971,
+      "code": "hO = -12"
+    },
+    {
+      "name": "hP",
+      "start": 1589972,
+      "end": 1589977,
+      "code": "hP = 12"
+    },
+    {
+      "name": "hN",
+      "start": 1589978,
+      "end": 1589982,
+      "code": "hN = 0"
+    },
+    {
+      "name": "hH",
+      "start": 1589983,
+      "end": 1589996,
+      "code": "hH = 0x3b9ac9ff"
+    },
+    {
+      "name": "hI",
+      "start": 1589997,
+      "end": 1590001,
+      "code": "hI = 0"
+    },
+    {
+      "name": "hR",
+      "start": 1590002,
+      "end": 1590015,
+      "code": "hR = 0x3b9ac9ff"
+    }
+  ],
+  "fieldProps": [
+    {
+      "field": "currentAge",
+      "offset": 1597640,
+      "code": "{\n  name: \"currentAge\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"How old are you?\"\n      }), (0, G.jsx)(oH, hG(hZ({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"number\",\n        placeholder: \"55\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          b(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        small: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "currentAnnualIncome",
+      "offset": 1598221,
+      "code": "{\n  name: \"currentAnnualIncome\",\n  children: function (e) {\n    var r = e.field,\n      _ = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: _.touched && _.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"What is your current annual income?\"\n      }), (0, G.jsx)(oI, hG(hZ({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"80000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          b(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n          var l = (parseFloat(f.partnerAnnualIncome) + parseFloat(e.target.value)) * .75;\n          isNaN(l) || (b(\"desiredAnnualIncome\", l), i.data.setInput(\"desiredAnnualIncome\", l));\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "hasPartner",
+      "offset": 1598996,
+      "code": "{\n  name: \"hasPartner\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsx)(oP, {\n      error: f.touched && f.error,\n      children: (0, G.jsx)(oB, hG(hZ({}, r), {\n        legend: \"Do you have a spouse or domestic partner?\",\n        dataTest: \"panel-about-you-radio-group\",\n        onChange: function (e) {\n          b(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        options: [{\n          label: \"Yes\",\n          value: \"yes\",\n          id: \"yes\".concat(l ? \"-mobile\" : \"\")\n        }, {\n          label: \"No\",\n          value: \"no\",\n          id: \"no\".concat(l ? \"-mobile\" : \"\")\n        }]\n      }))\n    });\n  }\n}"
+    },
+    {
+      "field": "partnerAge",
+      "offset": 1599521,
+      "code": "{\n  name: \"partnerAge\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"How old is your spouse or domestic partner?\"\n      }), (0, G.jsx)(oH, hG(hZ({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"number\",\n        placeholder: \"55\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          b(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        small: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "partnerAnnualIncome",
+      "offset": 1600129,
+      "code": "{\n  name: \"partnerAnnualIncome\",\n  children: function (e) {\n    var r = e.field,\n      _ = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: _.touched && _.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"What is your spouse or domestic partner's current annual income?\"\n      }), (0, G.jsx)(oI, hG(hZ({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"80000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          b(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n          var l = (parseFloat(f.currentAnnualIncome) + parseFloat(e.target.value)) * .75;\n          isNaN(l) || (b(\"desiredAnnualIncome\", l), i.data.setInput(\"desiredAnnualIncome\", l));\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "partnerRetirementAge",
+      "offset": 1600933,
+      "code": "{\n  name: \"partnerRetirementAge\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"What is your spouse or domestic partner's desired retirement age?\"\n      }), (0, G.jsx)(oA, {\n        anchorSelect: \"#partnerRetirementAgeTooltip\",\n        content: (0, G.jsxs)(\"div\", {\n          children: [(0, G.jsx)(\"p\", {\n            children: \"Number of years your spouse's or domestic partner's income would be projected:\"\n          }), (0, G.jsx)(\"p\", {\n            children: \"How many years does your spouse or domestic partner plan to work until retirement?\"\n          }), (0, G.jsx)(\"p\", {\n            children: \"Depending on their age, they could potentially need to continue working for 20 or 30 more years.\"\n          })]\n        }),\n        id: \"partnerRetirementAgeBubble\",\n        place: \"right\",\n        children: (0, G.jsx)(iJ, {\n          ariaLabelledby: \"partnerRetirementAge\",\n          dataHtml: !0,\n          hasIcon: !0,\n          id: \"partnerRetirementAgeTooltip\",\n          size: \"small\",\n          variant: \"bubble\",\n          children: (0, G.jsx)(\"span\", {\n            className: \"m-axlButton__icon\",\n            children: (0, G.jsx)(ss.QuestionMark, {})\n          })\n        })\n      }), (0, G.jsx)(oH, hG(hZ({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"number\",\n        placeholder: \"65\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          b(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        small: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "finalExpenses",
+      "offset": 1605687,
+      "code": "{\n  name: \"finalExpenses\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"What are your estimated funeral and other final expenses?\"\n      }), (0, G.jsx)(oA, {\n        anchorSelect: \"#finalExpensesTooltip\",\n        content: (0, G.jsx)(\"div\", {\n          children: (0, G.jsx)(\"p\", {\n            children: \"Speculate what sums will incur for funeral expenses, uncovered medical payments, legal costs, and final estate settlement costs.\"\n          })\n        }),\n        id: \"finalExpensesTooltip\",\n        place: \"right\",\n        children: (0, G.jsx)(iJ, {\n          ariaLabelledby: \"finalExpenses\",\n          dataHtml: !0,\n          hasIcon: !0,\n          id: \"finalExpensesTooltip\",\n          size: \"small\",\n          variant: \"bubble\",\n          children: (0, G.jsx)(\"span\", {\n            className: \"m-axlButton__icon\",\n            children: (0, G.jsx)(ss.QuestionMark, {})\n          })\n        })\n      }), (0, G.jsx)(oI, hQ(hJ({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"80000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "currentMortgageBalance",
+      "offset": 1606844,
+      "code": "{\n  name: \"currentMortgageBalance\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"What is your current mortgage balance?\"\n      }), (0, G.jsx)(oI, hQ(hJ({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"80000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "debts",
+      "offset": 1607472,
+      "code": "{\n  name: \"debts\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"Enter the total amount of your other debts or obligations.\"\n      }), (0, G.jsx)(oI, hQ(hJ({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"80000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "desiredAnnualIncome",
+      "offset": 1611219,
+      "code": "{\n  name: \"desiredAnnualIncome\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"What is your desired annual income?\"\n      }), (0, G.jsx)(oA, {\n        anchorSelect: \"#desiredAnnualIncomeTooltip\",\n        content: (0, G.jsx)(\"div\", {\n          children: (0, G.jsx)(\"p\", {\n            children: \"Desired annual income is typically estimated as 70 to 80% of current combined income for planning purposes.\"\n          })\n        }),\n        id: \"desiredAnnualIncomeTooltip\",\n        place: \"right\",\n        children: (0, G.jsx)(iJ, {\n          ariaLabelledby: \"desiredAnnualIncome\",\n          dataHtml: !0,\n          hasIcon: !0,\n          id: \"desiredAnnualIncomeTooltip\",\n          size: \"small\",\n          variant: \"bubble\",\n          children: (0, G.jsx)(\"span\", {\n            className: \"m-axlButton__icon\",\n            children: (0, G.jsx)(ss.QuestionMark, {})\n          })\n        })\n      }), (0, G.jsx)(oI, h5(h4({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"80000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "yearsIncomeNeeded",
+      "offset": 1612363,
+      "code": "{\n  name: \"yearsIncomeNeeded\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"How many years will income be needed?\"\n      }), (0, G.jsx)(oA, {\n        anchorSelect: \"#yearsIncomeNeededTooltip\",\n        content: (0, G.jsxs)(\"div\", {\n          children: [(0, G.jsx)(\"p\", {\n            children: \"How many years would your beneficiaries continue to receive income based on your current financial situation?\"\n          }), (0, G.jsx)(\"p\", {\n            children: \"Talk to your financial professional about the factors that can influence income supplementation.\"\n          })]\n        }),\n        id: \"yearsIncomeNeededTooltip\",\n        place: \"right\",\n        children: (0, G.jsx)(iJ, {\n          ariaLabelledby: \"yearsIncomeNeeded\",\n          dataHtml: !0,\n          hasIcon: !0,\n          id: \"yearsIncomeNeededTooltip\",\n          size: \"small\",\n          variant: \"bubble\",\n          children: (0, G.jsx)(\"span\", {\n            className: \"m-axlButton__icon\",\n            children: (0, G.jsx)(ss.QuestionMark, {})\n          })\n        })\n      }), (0, G.jsx)(oH, h5(h4({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"55\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        small: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "collegeCosts",
+      "offset": 1613614,
+      "code": "{\n  name: \"collegeCosts\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"Enter an estimated amount needed to pay for college.\"\n      }), (0, G.jsx)(oA, {\n        anchorSelect: \"#collegeCostsTooltip\",\n        content: (0, G.jsx)(\"div\", {\n          children: (0, G.jsx)(\"p\", {\n            children: \"If current trends continue, the total cost per child, with room and board, of four years at an in-state public university will hit $160,000 for the class of 2036.\"\n          })\n        }),\n        id: \"collegeCostsTooltip\",\n        place: \"right\",\n        children: (0, G.jsx)(iJ, {\n          ariaLabelledby: \"collegeCosts\",\n          dataHtml: !0,\n          hasIcon: !0,\n          id: \"collegeCostsTooltip\",\n          size: \"small\",\n          variant: \"bubble\",\n          children: (0, G.jsx)(\"span\", {\n            className: \"m-axlButton__icon\",\n            children: (0, G.jsx)(ss.QuestionMark, {})\n          })\n        })\n      }), (0, G.jsx)(oI, h5(h4({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"80000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "inflationRate",
+      "offset": 1617950,
+      "code": "{\n  name: \"inflationRate\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"Enter an anticipated inflation rate\"\n      }), (0, G.jsx)(oI, pt(pe({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"1.58\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        small: !0,\n        percent: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "investmentAssets",
+      "offset": 1618564,
+      "code": "{\n  name: \"investmentAssets\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"What is the total amount of your current savings and investment assets?\"\n      }), (0, G.jsx)(oA, {\n        anchorSelect: \"#investmentAssetsTooltip\",\n        content: (0, G.jsx)(\"div\", {\n          children: (0, G.jsx)(\"p\", {\n            children: \"What current savings and investments as property, stocks, bonds, deposits, or other holdings do you possess?\"\n          })\n        }),\n        id: \"investmentAssetsTooltip\",\n        place: \"right\",\n        children: (0, G.jsx)(iJ, {\n          ariaLabelledby: \"investmentAssets\",\n          dataHtml: !0,\n          hasIcon: !0,\n          id: \"investmentAssetsTooltip\",\n          size: \"small\",\n          variant: \"bubble\",\n          children: (0, G.jsx)(\"span\", {\n            className: \"m-axlButton__icon\",\n            children: (0, G.jsx)(ss.QuestionMark, {})\n          })\n        })\n      }), (0, G.jsx)(oI, pt(pe({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"100000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "returnRate",
+      "offset": 1619731,
+      "code": "{\n  name: \"returnRate\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"Enter an expected return for your investments\"\n      }), (0, G.jsx)(oI, pt(pe({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"1.58\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        small: !0,\n        percent: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "currentLifeInsurance",
+      "offset": 1620352,
+      "code": "{\n  name: \"currentLifeInsurance\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"How much life insurance do you currently have?\"\n      }), (0, G.jsx)(oI, pt(pe({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"250000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    },
+    {
+      "field": "socialSecuritySurvivorBenefit",
+      "offset": 1620987,
+      "code": "{\n  name: \"socialSecuritySurvivorBenefit\",\n  children: function (e) {\n    var r = e.field,\n      f = e.meta;\n    return (0, G.jsxs)(oP, {\n      error: f.touched && f.error,\n      children: [(0, G.jsx)(oR, {\n        input: !0,\n        htmlFor: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        labelValue: \"Enter your estimated Social Security survivor benefit\"\n      }), (0, G.jsx)(oA, {\n        anchorSelect: \"#socialSecuritySurvivorBenefitTooltip\",\n        content: (0, G.jsx)(\"div\", {\n          children: (0, G.jsx)(\"p\", {\n            children: \"Talk to your financial professional about Social Security, income planning, and your situation.\"\n          })\n        }),\n        id: \"socialSecuritySurvivorBenefitTooltip\",\n        place: \"right\",\n        children: (0, G.jsx)(iJ, {\n          ariaLabelledby: \"socialSecuritySurvivorBenefitTooltip\",\n          dataHtml: !0,\n          hasIcon: !0,\n          id: \"socialSecuritySurvivorBenefitTooltip\",\n          size: \"small\",\n          variant: \"bubble\",\n          children: (0, G.jsx)(\"span\", {\n            className: \"m-axlButton__icon\",\n            children: (0, G.jsx)(ss.QuestionMark, {})\n          })\n        })\n      }), (0, G.jsx)(oI, pt(pe({}, r), {\n        id: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        type: \"text\",\n        placeholder: \"80000\",\n        onKeyDown: y,\n        onKeyPress: y,\n        onChange: function (e) {\n          _(r.name, e.target.value), i.data.setInput(r.name, e.target.value);\n        },\n        large: !0,\n        currency: !0\n      })), (0, G.jsx)(uf, {\n        name: \"\".concat(r.name).concat(l ? \"-mobile\" : \"\"),\n        render: function (e) {\n          return (0, G.jsx)(oN, {\n            children: e\n          });\n        }\n      })]\n    });\n  }\n}"
+    }
+  ],
+  "stageMetadata": [
+    {
+      "value": "About you",
+      "offset": 1640799,
+      "code": "{\n  title: \"About you\",\n  icon: (0, G.jsx)(ss.PeopleLove, {})\n}"
+    },
+    {
+      "value": "About you",
+      "offset": 1640867,
+      "code": "{\n  header: \"About you\",\n  mobile: !0,\n  children: (0, G.jsx)(hK, {\n    mobile: !0,\n    setActiveId: f,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick\n  })\n}"
+    },
+    {
+      "value": "One-time costs",
+      "offset": 1641151,
+      "code": "{\n  title: \"One-time costs\",\n  icon: (0, G.jsx)(ss.DollarSign, {})\n}"
+    },
+    {
+      "value": "One-time costs",
+      "offset": 1641224,
+      "code": "{\n  header: \"One-time costs\",\n  mobile: !0,\n  children: (0, G.jsx)(h0, {\n    mobile: !0,\n    setActiveId: f,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick\n  })\n}"
+    },
+    {
+      "value": "Long-term income needs",
+      "offset": 1641513,
+      "code": "{\n  title: \"Long-term income needs\",\n  icon: (0, G.jsx)(ss.HandsAndCoins, {})\n}"
+    },
+    {
+      "value": "Long-term income needs",
+      "offset": 1641597,
+      "code": "{\n  header: \"Long-term income needs\",\n  mobile: !0,\n  children: (0, G.jsx)(h6, {\n    mobile: !0,\n    setActiveId: f,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick\n  })\n}"
+    },
+    {
+      "value": "Available assets",
+      "offset": 1641894,
+      "code": "{\n  title: \"Available assets\",\n  icon: (0, G.jsx)(ss.MoneyExchange, {})\n}"
+    },
+    {
+      "value": "Available assets",
+      "offset": 1641972,
+      "code": "{\n  header: \"Available assets\",\n  mobile: !0,\n  children: (0, G.jsx)(pr, {\n    mobile: !0,\n    setActiveId: f,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick\n  })\n}"
+    },
+    {
+      "value": "Summary",
+      "offset": 1642263,
+      "code": "{\n  title: \"Summary\",\n  icon: (0, G.jsx)(ss.Badge, {})\n}"
+    },
+    {
+      "value": "Summary",
+      "offset": 1642324,
+      "code": "{\n  header: \"Summary\",\n  mobile: !0,\n  children: (0, G.jsx)(pM, {\n    setActiveId: f,\n    mobile: !0,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick,\n    computations: i.data.computations,\n    hasPartner: i.data.inputs.hasPartner,\n    ref: function (i) {\n      return e.componentRef = i;\n    }\n  })\n}"
+    },
+    {
+      "value": "About you",
+      "offset": 1642857,
+      "code": "{\n  title: \"About you\",\n  icon: (0, G.jsx)(ss.PeopleLove, {})\n}"
+    },
+    {
+      "value": "One-time costs",
+      "offset": 1642955,
+      "code": "{\n  title: \"One-time costs\",\n  icon: (0, G.jsx)(ss.DollarSign, {})\n}"
+    },
+    {
+      "value": "Long-term income needs",
+      "offset": 1643058,
+      "code": "{\n  title: \"Long-term income needs\",\n  icon: (0, G.jsx)(ss.HandsAndCoins, {})\n}"
+    },
+    {
+      "value": "Available assets",
+      "offset": 1643172,
+      "code": "{\n  title: \"Available assets\",\n  icon: (0, G.jsx)(ss.MoneyExchange, {})\n}"
+    },
+    {
+      "value": "Summary",
+      "offset": 1643280,
+      "code": "{\n  title: \"Summary\",\n  icon: (0, G.jsx)(ss.Badge, {})\n}"
+    },
+    {
+      "value": "About you",
+      "offset": 1643352,
+      "code": "{\n  id: iV,\n  header: \"About you\",\n  children: (0, G.jsx)(hK, {\n    setActiveId: f,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick\n  })\n}"
+    },
+    {
+      "value": "One-time costs",
+      "offset": 1643530,
+      "code": "{\n  id: iZ,\n  header: \"One-time costs\",\n  children: (0, G.jsx)(h0, {\n    setActiveId: f,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick\n  })\n}"
+    },
+    {
+      "value": "Long-term income needs",
+      "offset": 1643713,
+      "code": "{\n  id: iG,\n  header: \"Long-term income needs\",\n  children: (0, G.jsx)(h6, {\n    setActiveId: f,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick\n  })\n}"
+    },
+    {
+      "value": "Available assets",
+      "offset": 1643904,
+      "code": "{\n  id: i$,\n  header: \"Available assets\",\n  children: (0, G.jsx)(pr, {\n    setActiveId: f,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick\n  })\n}"
+    },
+    {
+      "value": "Summary",
+      "offset": 1644089,
+      "code": "{\n  id: iq,\n  header: \"Summary\",\n  children: (0, G.jsx)(pM, {\n    setActiveId: f,\n    handleSubmit: e.handleSubmit,\n    handleKeyDown: e.handleKeyDown,\n    handleTooltipClick: e.handleTooltipClick,\n    computations: i.data.computations,\n    hasPartner: i.data.inputs.hasPartner,\n    ref: function (i) {\n      return e.componentRef = i;\n    }\n  })\n}"
+    }
+  ]
+}

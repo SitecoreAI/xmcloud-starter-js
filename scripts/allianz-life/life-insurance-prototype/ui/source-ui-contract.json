@@ -1,0 +1,750 @@
+{
+  "source": {
+    "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-life-insurance/dx-life-insurance.js?v=14",
+    "bundleSHA256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+    "bundleBytes": 1655293,
+    "version": "0.7.2/v14",
+    "rawBundleStored": false,
+    "method": "Static source inspection plus exact field-property extraction from verified source; no runtime/service calls"
+  },
+  "stages": [
+    {
+      "id": "about-you",
+      "name": "About you",
+      "schemaGroup": "AboutYou",
+      "fields": [
+        "currentAge",
+        "currentAnnualIncome",
+        "hasPartner",
+        "partnerAge",
+        "partnerAnnualIncome",
+        "partnerRetirementAge"
+      ],
+      "intro": "First we'll need some basic information about you and your spouse or domestic partner, if applicable."
+    },
+    {
+      "id": "one-time-costs",
+      "name": "One-time costs",
+      "schemaGroup": "OneTimeCosts",
+      "fields": [
+        "finalExpenses",
+        "currentMortgageBalance",
+        "debts"
+      ],
+      "intro": "Now we'll ask you questions about larger, one-time costs. For some questions, we've set a national average as a placeholder. If you don't know the answer for your particular situation, you may choose to leave the number we've set until you have a clearer answer. Please be aware that your results may not be as accurate as a result."
+    },
+    {
+      "id": "long-term-income-needs",
+      "name": "Long-term income needs",
+      "schemaGroup": "LongTermIncome",
+      "fields": [
+        "desiredAnnualIncome",
+        "yearsIncomeNeeded",
+        "collegeCosts"
+      ],
+      "intro": "This section will address your long-term income needs and goals."
+    },
+    {
+      "id": "available-assets",
+      "name": "Available assets",
+      "schemaGroup": "AvailableAssets",
+      "fields": [
+        "inflationRate",
+        "investmentAssets",
+        "returnRate",
+        "currentLifeInsurance",
+        "socialSecuritySurvivorBenefit"
+      ],
+      "intro": "In this section we'll ask you about your current investments, including any current life insurance."
+    },
+    {
+      "id": "summary",
+      "name": "Summary",
+      "fields": [],
+      "intro": "The information on this screen is calculated from your answers on previous screens. You can adjust your outcome by going back to the various sections and adjusting your answers. Use the menu buttons to jump to whichever section you would like to revisit."
+    }
+  ],
+  "fields": [
+    {
+      "name": "currentAge",
+      "label": "How old are you?",
+      "type": "number",
+      "placeholder": "55",
+      "currency": false,
+      "percent": false,
+      "small": true,
+      "large": false,
+      "help": [],
+      "sourceOffset": 1597640
+    },
+    {
+      "name": "currentAnnualIncome",
+      "label": "What is your current annual income?",
+      "type": "text",
+      "placeholder": "80000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [],
+      "sourceOffset": 1598221
+    },
+    {
+      "name": "hasPartner",
+      "label": "Do you have a spouse or domestic partner?",
+      "type": "radio",
+      "placeholder": null,
+      "currency": false,
+      "percent": false,
+      "small": false,
+      "large": false,
+      "help": [],
+      "sourceOffset": 1598996,
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        },
+        {
+          "label": "No",
+          "value": "no"
+        }
+      ],
+      "default": "yes"
+    },
+    {
+      "name": "partnerAge",
+      "label": "How old is your spouse or domestic partner?",
+      "type": "number",
+      "placeholder": "55",
+      "currency": false,
+      "percent": false,
+      "small": true,
+      "large": false,
+      "help": [],
+      "sourceOffset": 1599521,
+      "visibleWhen": {
+        "hasPartner": "yes"
+      }
+    },
+    {
+      "name": "partnerAnnualIncome",
+      "label": "What is your spouse or domestic partner's current annual income?",
+      "type": "text",
+      "placeholder": "80000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [],
+      "sourceOffset": 1600129,
+      "visibleWhen": {
+        "hasPartner": "yes"
+      }
+    },
+    {
+      "name": "partnerRetirementAge",
+      "label": "What is your spouse or domestic partner's desired retirement age?",
+      "type": "number",
+      "placeholder": "65",
+      "currency": false,
+      "percent": false,
+      "small": true,
+      "large": false,
+      "help": [
+        "Number of years your spouse's or domestic partner's income would be projected:",
+        "How many years does your spouse or domestic partner plan to work until retirement?",
+        "Depending on their age, they could potentially need to continue working for 20 or 30 more years."
+      ],
+      "sourceOffset": 1600933,
+      "visibleWhen": {
+        "hasPartner": "yes"
+      }
+    },
+    {
+      "name": "finalExpenses",
+      "label": "What are your estimated funeral and other final expenses?",
+      "type": "text",
+      "placeholder": "80000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [
+        "Speculate what sums will incur for funeral expenses, uncovered medical payments, legal costs, and final estate settlement costs."
+      ],
+      "sourceOffset": 1605687
+    },
+    {
+      "name": "currentMortgageBalance",
+      "label": "What is your current mortgage balance?",
+      "type": "text",
+      "placeholder": "80000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [],
+      "sourceOffset": 1606844
+    },
+    {
+      "name": "debts",
+      "label": "Enter the total amount of your other debts or obligations.",
+      "type": "text",
+      "placeholder": "80000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [],
+      "sourceOffset": 1607472
+    },
+    {
+      "name": "desiredAnnualIncome",
+      "label": "What is your desired annual income?",
+      "type": "text",
+      "placeholder": "80000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [
+        "Desired annual income is typically estimated as 70 to 80% of current combined income for planning purposes."
+      ],
+      "sourceOffset": 1611219
+    },
+    {
+      "name": "yearsIncomeNeeded",
+      "label": "How many years will income be needed?",
+      "type": "text",
+      "placeholder": "55",
+      "currency": false,
+      "percent": false,
+      "small": true,
+      "large": false,
+      "help": [
+        "How many years would your beneficiaries continue to receive income based on your current financial situation?",
+        "Talk to your financial professional about the factors that can influence income supplementation."
+      ],
+      "sourceOffset": 1612363
+    },
+    {
+      "name": "collegeCosts",
+      "label": "Enter an estimated amount needed to pay for college.",
+      "type": "text",
+      "placeholder": "80000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [
+        "If current trends continue, the total cost per child, with room and board, of four years at an in-state public university will hit $160,000 for the class of 2036."
+      ],
+      "sourceOffset": 1613614
+    },
+    {
+      "name": "inflationRate",
+      "label": "Enter an anticipated inflation rate",
+      "type": "text",
+      "placeholder": "1.58",
+      "currency": false,
+      "percent": true,
+      "small": true,
+      "large": false,
+      "help": [],
+      "sourceOffset": 1617950
+    },
+    {
+      "name": "investmentAssets",
+      "label": "What is the total amount of your current savings and investment assets?",
+      "type": "text",
+      "placeholder": "100000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [
+        "What current savings and investments as property, stocks, bonds, deposits, or other holdings do you possess?"
+      ],
+      "sourceOffset": 1618564
+    },
+    {
+      "name": "returnRate",
+      "label": "Enter an expected return for your investments",
+      "type": "text",
+      "placeholder": "1.58",
+      "currency": false,
+      "percent": true,
+      "small": true,
+      "large": false,
+      "help": [],
+      "sourceOffset": 1619731
+    },
+    {
+      "name": "currentLifeInsurance",
+      "label": "How much life insurance do you currently have?",
+      "type": "text",
+      "placeholder": "250000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [],
+      "sourceOffset": 1620352
+    },
+    {
+      "name": "socialSecuritySurvivorBenefit",
+      "label": "Enter your estimated Social Security survivor benefit",
+      "type": "text",
+      "placeholder": "80000",
+      "currency": true,
+      "percent": false,
+      "small": false,
+      "large": true,
+      "help": [
+        "Talk to your financial professional about Social Security, income planning, and your situation."
+      ],
+      "sourceOffset": 1620987
+    }
+  ],
+  "controls": {
+    "continue": "Continue",
+    "print": "Print my report",
+    "backButtonObserved": false,
+    "resetButtonObserved": false,
+    "menuButtonsJumpFreely": true,
+    "menuAriaCurrent": "step",
+    "enterKeyDefaultPrevented": true,
+    "sourceMenuClass": "axl-tab-list-button"
+  },
+  "navigation": {
+    "activeDefault": "about-you",
+    "menu": "o9 calls tab context setActiveId(id) unconditionally. o7 context changes activeId directly; all five stage menus are reachable without prior-stage validity.",
+    "continue": "Each of first four Continue controls targets the next context panel; it is disabled while submitting, if errors belong to current group, or if any required current-group value is undefined.",
+    "stageMembership": {
+      "AboutYouYes": [
+        "currentAge",
+        "currentAnnualIncome",
+        "partnerAge",
+        "partnerAnnualIncome",
+        "partnerRetirementAge"
+      ],
+      "AboutYouNo": [
+        "currentAge",
+        "currentAnnualIncome"
+      ],
+      "OneTimeCosts": [
+        "finalExpenses",
+        "currentMortgageBalance",
+        "debts"
+      ],
+      "LongTermIncome": [
+        "desiredAnnualIncome",
+        "yearsIncomeNeeded",
+        "collegeCosts"
+      ],
+      "AvailableAssets": [
+        "inflationRate",
+        "investmentAssets",
+        "returnRate",
+        "currentLifeInsurance",
+        "socialSecuritySurvivorBenefit"
+      ]
+    },
+    "mobile": "Both mobile and desktop controls are rendered; source responsive classes control display. Mobile active panel wrapper scrolls into view smoothly at start after an update.",
+    "focus": "Panel headers use tabIndex0 with activeHeader ref. No explicit source focus() call established in inspected active app code.",
+    "inputRetention": "Radio handler only stores hasPartner. No hidden-partner clearing in handler; tab/menu changes retain store inputs."
+  },
+  "state": {
+    "initial": "hF.getDefaultFromShape(): hasPartner yes; numeric fields undefined. Placeholders are not initial values. URL query overrides are parsed by pG.",
+    "queryDefaults": "activeId initializes from query or about-you; input query values parseFloat except hasPartner string.",
+    "incomePrefill": "Every currentAnnualIncome or partnerAnnualIncome change computes 0.75*(parseFloat(otherIncome)+parseFloat(newValue)); if not NaN stores desiredAnnualIncome immediately. No hasPartner guard in these handlers.",
+    "prefillSourceOffsets": {
+      "currentAnnualIncome": 1598221,
+      "partnerAnnualIncome": 1600129
+    },
+    "validationDisplay": "Formik error wrapper uses touched && error; ErrorMessage names append -mobile for mobile copies, which must be browser-checked rather than silently corrected as source behavior."
+  },
+  "formatting": {
+    "currencyInputDisplay": "Intl.NumberFormat(en-US,{style:currency,currency:USD,minimumFractionDigits:2}).format(value)",
+    "percentInputDisplay": "Intl.NumberFormat(en-US,{style:percent,minimumFractionDigits:2}).format(value/100)",
+    "editing": "Currency/percent controls show raw stored value while focused; masked display otherwise.",
+    "summaryCurrency": "Source numeral format $0,0.00; engine worker preserves source formatter.",
+    "schemaPercentError": "Source numeral format0.00% is used directly on min/max bounds; do not repair its unusual percentage error formatting without proof."
+  },
+  "summary": {
+    "heading": "Your life insurance need is",
+    "topFields": [
+      {
+        "label": "Your life insurance need is",
+        "key": "additionalLifeInsuranceNeeded"
+      },
+      {
+        "label": "Immediate needs",
+        "key": "immediateNeeds"
+      },
+      {
+        "label": "Long-term needs",
+        "key": "longTermNeeds"
+      }
+    ],
+    "tables": [
+      {
+        "heading": "Needs",
+        "caption": "Your savings needs",
+        "rows": [
+          {
+            "label": "Immediate needs",
+            "key": "immediateNeeds"
+          },
+          {
+            "label": "Long-term needs",
+            "key": "longTermNeeds"
+          },
+          {
+            "label": "Total needs",
+            "key": "totalNeeds"
+          }
+        ]
+      },
+      {
+        "heading": "Resources",
+        "caption": "Your savings resources",
+        "rows": [
+          {
+            "label": "Investment assets and Social Security",
+            "key": "investmentAssetsAndSocialSecurity"
+          },
+          {
+            "label": "Existing life insurance",
+            "key": "existingLifeInsurance"
+          },
+          {
+            "label": "Spouse or domestic partner's earnings",
+            "key": "partnerAnnualIncomeSum"
+          },
+          {
+            "label": "Total resources",
+            "key": "totalResources"
+          }
+        ]
+      },
+      {
+        "heading": "Savings Summary",
+        "caption": "Your savings summary",
+        "rows": [
+          {
+            "label": "Shortfall",
+            "key": "shortfall"
+          },
+          {
+            "label": "Additional life insurance needed",
+            "key": "additionalLifeInsuranceNeeded"
+          }
+        ]
+      }
+    ],
+    "invalidWarning": "You have not filled out all of the fields or have errors in 1 or more fields.  Please go back to the sections and correct the information.",
+    "descriptionLinkText": "Read a description of the video above",
+    "dataTests": {
+      "additionalLifeInsuranceNeeded": "summary-additional-life-insurance",
+      "immediateNeeds": "summary-immediate-needs",
+      "longTermNeeds": "summary-long-term-needs"
+    },
+    "externalResultsDisabledInPrivateHarness": true,
+    "validityPredicate": {
+      "name": "hU",
+      "qualification": "Exact inspected hU helper expression; helper symbol identifies the source binding.",
+      "expression": "Object.values(computations).length > 0 && Object.values(computations).every(value => !Number.isNaN(value))",
+      "usesGlobalSchemaValidity": false,
+      "doesNotRejectUndefinedByItself": true
+    },
+    "partnerEarningsTableRowAlwaysPresent": true,
+    "partnerEarningsPieSliceOnlyWhenPartnerYes": true
+  },
+  "insideWidgetLegalCopy": {
+    "dedicatedLegalBlockObserved": false,
+    "qualification": "No separate legal/disclaimer block appears in inspected active stage/summary code. Page-level legal/disclosures remain authored surrounding content; exact source has helper text and summary instruction/warning listed here."
+  },
+  "classes": {
+    "root": "axl-tab-layout",
+    "list": "axl-tab-list",
+    "listItem": "axl-tab-list-item",
+    "button": "axl-tab-list-button",
+    "panel": "axl-tab-panel",
+    "header": "panel-header",
+    "group": "m-form-group",
+    "input": "a-input",
+    "label": "a-input__label",
+    "error": "a-input__helper",
+    "currencySize": "--is-large",
+    "numberSize": "--is-small",
+    "summaryTable": "a-table a-table__summary table-RILA"
+  },
+  "unknowns": [
+    "Exact tooltip pointer/focus visual behavior and mobile ErrorMessage path behavior require browser validation.",
+    "No reset semantics can be claimed because no reset control was found.",
+    "Page-level layout/CSS/editor acceptance and external CalcXML behavior are outside this static UI contract."
+  ],
+  "provenance": [
+    {
+      "name": "stepConstants",
+      "offset": 1141410,
+      "end": 1141530,
+      "sha256": "94c9fc5052c99cef9e82db3ef7c36e9e624a318e1c650f830b147cd186bfa15b",
+      "sourceExcerpt": ".n(iz),iU=\"actions\",iV=\"about-you\",iZ=\"one-time-costs\",iG=\"long-term-income-needs\",i$=\"available-assets\",iq=\"summary\",iK"
+    },
+    {
+      "name": "tabContext",
+      "offset": 1516768,
+      "end": 1517350,
+      "sha256": "44015160923f84845c511a238afe9b3a8ed5e74125496ba85a961e8dd43ad480",
+      "sourceExcerpt": "o7=class extends id.Component{constructor(e){super(e),this.activeHeader=id.createRef(),this.state={activeId:this.props.defaultActiveId,setActiveId:this.setActiveId,isActive:this.isActive,activeHeader:this.activeHeader}}setActiveId=e=>{this.setState({activeId:e})};isActive=(e,i,r=!1)=>!!r||!i&&!!this.props.independent||e===this.state.activeId;render(){let{independent:e,disabled:i,dataTrack:r,dataTest:l,id:f}=this.props;return(0,G.jsx)(o5.Provider,{value:this.state,children:(0,G.jsx)(\"div\",{\"data-track\":r||f,\"data-test\":l||f,id:f,className:iX()({\"axl-tab-layout\":!0,\"--is-defaul"
+    },
+    {
+      "name": "menuButton",
+      "offset": 1517953,
+      "end": 1518380,
+      "sha256": "e5e13537e6bbc54a84a79ac30004e917121f97d3d271d5a5a9f77fddaeac3a30",
+      "sourceExcerpt": "o9({id:e,title:i,icon:r}){return(0,G.jsx)(o5.Consumer,{children:({setActiveId:l,activeId:f})=>(0,G.jsxs)(\"button\",{className:\"axl-tab-list-button\",\"aria-current\":f===e?\"step\":null,onClick:()=>{l(e)},children:[(0,G.jsx)(\"span\",{className:\"axl-tab-list-title\",children:i}),(0,G.jsx)(\"span\",{className:\"axl-tab-list-icon\",children:r})]})})}function le({hasBackground:e,hasBorder:i,children:r}){let l=iX()({\"axl-tab-list-item__pane"
+    },
+    {
+      "name": "mobileScrollWrapper",
+      "offset": 1518988,
+      "end": 1519422,
+      "sha256": "e24416ea935998c972b5d414afa0b9992c40870a2dc4cf8f44ba3654ff0441f8",
+      "sourceExcerpt": "ln=class extends id.Component{constructor(e){super(e),this.tabPanelWrapperRef=id.createRef()}scrollIntoView=()=>{this.tabPanelWrapperRef.current.scrollIntoView({behavior:\"smooth\",block:\"start\"})};componentDidUpdate(){this.context.activeId===this.props.id&&this.scrollIntoView()}render(){let{children:e}=this.props;return(0,G.jsx)(\"div\",{ref:this.tabPanelWrapperRef,children:e({scrollIntoView:this.scrollIntoView})})}};ln.contextType=o"
+    },
+    {
+      "name": "inputMask",
+      "offset": 1495633,
+      "end": 1496896,
+      "sha256": "0018066d453e588ca554f1256fb1f6522503e40b8ea83e158515732964428d8d",
+      "sourceExcerpt": "oI=function(e){return class extends id.Component{constructor(e){super(e),this.state={value:this.props.value,isEditing:!1}}static getDerivedStateFromProps(e,i){let{value:r}=e;return r===i.value?null:{value:r}}onChange=e=>{this.setState({value:e.target.value}),this.props.onChange(e)};onBlur=e=>{this.toggleEditing(),this.props.onBlur(e)};toggleEditing=()=>{this.setState({isEditing:!this.state.isEditing})};toCurrency=e=>new Intl.NumberFormat(\"en-US\",{style:\"currency\",currency:\"USD\",minimumFractionDigits:2}).format(e);toPercent=e=>new Intl.NumberFormat(\"en-US\",{style:\"percent\",minimumFractionDigits:2}).format(e/100);maskValue=e=>{let{currency:i,percent:r}=this.props;return void 0===e||\"0\"===e.length?e:i?this.toCurrency(e):r?this.toPercent(e):e};render(){let{currency:i,percent:r,type:l,id:f,name:y,placeholder:_,large:b,small:L,dataTrack:x,dataTest:M}=this.props;return(0,G.jsx)(\"div\",{children:this.state.isEditing?(0,G.jsx)(e,{type:l,id:f,name:y,placeholder:_,large:b,small:L,value:this.state.value,onChange:this.onChange,onBlur:this.onBlur,inputmode:i||r?\"numeric\":\"\",dataTrack:x,dataTest:M}):(0,G.jsx)(e,{type:l,id:f,name:y,placeholder:_,large:b,small:L,value:this.maskValue(this.state.value),onFocus:this.toggleEditing,dataTrack:x,dataTest:M})})}}}(oH),"
+    },
+    {
+      "name": "enterPrevention",
+      "offset": 1639745,
+      "end": 1639910,
+      "sha256": "f792a1c0b0811da0bb6ca0cd023828b3c5a091f3887ae1d062c9dcb769efe9db",
+      "sourceExcerpt": "ndleSubmit(i),l(!1)}),pN(e,\"handleKeyDown\",function(e){13===e.keyCode&&e.preventDefault()}),pN(e,\"handleTooltipClick\",function(e){e.preventDefault()}),e}return r.pro"
+    },
+    {
+      "name": "namespaceDefaultsBinding",
+      "offset": 1076180,
+      "end": 1076280,
+      "sha256": "ceae22612010b97dcbb72430cb91836d726bb026623ecbb7d0e5d502a24d9c06",
+      "sourceExcerpt": "M,C,T,D,j,Y,E,H,R,F,B,z,U,V,Z={};r.r(Z),r.d(Z,{activeId:()=>pZ,inputs:()=>pG});var G=r(1085);r(8511)"
+    },
+    {
+      "name": "inputDefaultsFactory",
+      "offset": 1650234,
+      "end": 1651590,
+      "sha256": "02da0e3edaf7414dac83e682697a18ceba348738553d29414c6ef751afedf26f",
+      "sourceExcerpt": "pG(){var e=hF.getDefaultFromShape();try{var i=!0,r=!1,l=void 0;try{for(var f,y=pV.entries()[Symbol.iterator]();!(i=(f=y.next()).done);i=!0)!function(){var i,r=(i=f.value,function(e){if(Array.isArray(e))return e}(i)||function(e,i){var r,l,f=null==e?null:\"undefined\"!=typeof Symbol&&e[Symbol.iterator]||e[\"@@iterator\"];if(null!=f){var y=[],_=!0,b=!1;try{for(f=f.call(e);!(_=(r=f.next()).done)&&(y.push(r.value),2!==y.length);_=!0);}catch(e){b=!0,l=e}finally{try{_||null==f.return||f.return()}finally{if(b)throw l}}return y}}(i,2)||function(e,i){if(e){if(\"string\"==typeof e)return pU(e,2);var r=Object.prototype.toString.call(e).slice(8,-1);if(\"Object\"===r&&e.constructor&&(r=e.constructor.name),\"Map\"===r||\"Set\"===r)return Array.from(r);if(\"Arguments\"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return pU(e,2)}}(i,2)||function(){throw TypeError(\"Invalid attempt to destructure non-iterable instance.\\\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\")}()),l=r[0],y=r[1];if(\"activeId\"!==l){var _={default:function(){e[l]=parseFloat(y)},hasPartner:function(){e[l]=y}};_[l]?_[l]():_.default()}}()}catch(e){r=!0,l=e}finally{try{i||null==y.return||y.return()}finally{if(r)throw l}}return e}catch(i){return e}}function p$(e,i,r){return i in e?Object.defineProperty(e,i,{value:r,enumerable:!0,configurable:!0,writable"
+    }
+  ],
+  "appCss": {
+    "url": "https://www.allianzlife.com/-/media/Sites/AzlCommon/Project/styles/style.css?vs=140",
+    "http": 200,
+    "fullStylesheetSHA256": "11de986b98b0afc9c4cd391d4b1072ff19d65c00567b70f5ded193fffe9f8c3f",
+    "fullStylesheetBytes": 398267,
+    "file": "source-app.css",
+    "bytes": 4083,
+    "sha256": "bb911d016f9b7d13da2d991e8dc912910a4f932bde09fea58a4e1ed316a45e4a",
+    "ruleCount": 38,
+    "rules": [
+      {
+        "selector": ".axl-tab-list-button",
+        "start": 134504,
+        "end": 134777
+      },
+      {
+        "selector": ".axl-tab-list-button:last-child",
+        "start": 134776,
+        "end": 134825
+      },
+      {
+        "selector": ".axl-tab-list-button .axl-tab-list-icon",
+        "start": 134824,
+        "end": 134915
+      },
+      {
+        "selector": ".axl-tab-list-button:hover",
+        "start": 134914,
+        "end": 134972
+      },
+      {
+        "selector": ".axl-tab-list-button:hover .axl-tab-list-icon svg",
+        "start": 134971,
+        "end": 135066
+      },
+      {
+        "selector": ".axl-tab-list-button:focus",
+        "start": 135065,
+        "end": 135142
+      },
+      {
+        "selector": ".axl-tab-list-button:focus .axl-tab-list-icon svg",
+        "start": 135141,
+        "end": 135233
+      },
+      {
+        "selector": ".axl-tab-list-button .axl-tab-list-title",
+        "start": 135232,
+        "end": 135320
+      },
+      {
+        "selector": "ul:not(.azl-nav-list):not(.nav-sec-list):not(.axl-tab-list):not(.nav-list-nested):not(.o-tabList):not(ul[data-level]):not(.m-navigation-tabs--list) li:not(.c-breadcrumb__item):not(.c-footer__navigation-item):not(.m-hidden-list):not(.m-active-list):not(.m-navigation-tabs-list li)",
+        "start": 150898,
+        "end": 151193
+      },
+      {
+        "selector": ".axl-tab-layout",
+        "start": 257604,
+        "end": 257751
+      },
+      {
+        "selector": ".axl-tab-layout.--is-default",
+        "start": 257750,
+        "end": 257792
+      },
+      {
+        "selector": ".axl-tab-layout.--is-independent .axl-tab-panel-desktop",
+        "start": 257791,
+        "end": 257925
+      },
+      {
+        "selector": ".axl-tab-layout.--is-disabled .axl-tab-panel-desktop,.axl-tab-layout.--is-independent .axl-tab-panel-desktop.--is-disabled",
+        "start": 257924,
+        "end": 258073
+      },
+      {
+        "selector": ".axl-tab-layout",
+        "start": 258097,
+        "end": 258160
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list",
+        "start": 258160,
+        "end": 258306
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list",
+        "start": 258330,
+        "end": 258397
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list .axl-tab-list-item",
+        "start": 258397,
+        "end": 258502
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list .axl-tab-list-item:last-child",
+        "start": 258501,
+        "end": 258578
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list .axl-tab-list-item",
+        "start": 258602,
+        "end": 258698
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list .axl-tab-list-item.--is-active .axl-tab-list-button",
+        "start": 258698,
+        "end": 258830
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list .axl-tab-list-item.--is-active .axl-tab-list-button .axl-tab-list-icon svg",
+        "start": 258829,
+        "end": 258976
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list .axl-tab-list-item__panel",
+        "start": 258975,
+        "end": 259056
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list .axl-tab-list-item__panel.--has-background",
+        "start": 259055,
+        "end": 259154
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-list .axl-tab-list-item__panel.--has-border",
+        "start": 259153,
+        "end": 259248
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-panel-content-mobile,.axl-tab-layout .axl-tab-panel-desktop",
+        "start": 259247,
+        "end": 259359
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-panel .panel-header",
+        "start": 259358,
+        "end": 259422
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-panel-desktop",
+        "start": 259421,
+        "end": 259504
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-panel-content-desktop",
+        "start": 259503,
+        "end": 259675
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-panel-content-desktop",
+        "start": 259687,
+        "end": 259750
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-panel-content-mobile",
+        "start": 259750,
+        "end": 260007
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-panel-content-mobile",
+        "start": 260019,
+        "end": 260081
+      },
+      {
+        "selector": ".axl-tab-layout .axl-tab-panel-content-mobile",
+        "start": 260106,
+        "end": 260165
+      },
+      {
+        "selector": ".axl-tab-layout .--is-active .axl-tab-panel-content-mobile",
+        "start": 260165,
+        "end": 260239
+      },
+      {
+        "selector": ".tab-panel__summary-grid .tab-panel__summary-title",
+        "start": 260238,
+        "end": 260308
+      },
+      {
+        "selector": ".tab-panel__summary-grid .tab-panel__summary-total",
+        "start": 260307,
+        "end": 260404
+      },
+      {
+        "selector": ".tab-panel-summary-total",
+        "start": 260403,
+        "end": 260460
+      },
+      {
+        "selector": ".tab-panel-total p:first-child",
+        "start": 260459,
+        "end": 260509
+      },
+      {
+        "selector": ".axl-panel-layout .axl-panel-content .panel-header",
+        "start": 324651,
+        "end": 324721
+      }
+    ],
+    "qualification": "Calculator-specific selectors extracted from source-declared global stylesheet with media/support/container wrappers preserved. No whole vendor/site stylesheet copied. Source input/grid classes still supplied by existing global CSS."
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-life-insurance/dx-life-insurance.js?v=14",
+  "bundleSHA256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "bindings": [
+    {
+      "name": "pq",
+      "start": 1651609,
+      "end": 1652856,
+      "sha256": "66a810229678bd52ac7f54cb7f50167c583b828bebac9e8bbde6c334bc50b24b",
+      "code": "pq=function(){var e;function i(e){if(!(this instanceof i))throw TypeError(\"Cannot call a class as a function\");p$(this,\"store\",void 0),p$(this,\"inputs\",Z.inputs()),p$(this,\"isValid\",!0),this.store=e,nS(this)}return e=[{key:\"handleSubmit\",value:function(e){var i=this,r={default:function(e,r){i.inputs[e]=parseFloat(r)},hasPartner:function(e,r){i.inputs[e]=r}};Object.keys(e).map(function(i){return r[i]?r[i](i,e[i]):r.default(i,e[i])}),hF.isValid(this.inputs).then(function(e){nn(function(){i.isValid=e})}),this.store.ui.setActiveId(this.store.ui.nextActiveId)}},{key:\"setInput\",value:function(e,i){var r=this,l={default:function(){r.inputs[e]=parseFloat(i)},hasPartner:function(){r.inputs[e]=i}};l[e]?l[e]():l.default(),hF.isValid(this.inputs).then(function(e){nn(function(){r.isValid=e})})}},{key:\"computations\",get:function(){return new pW(this.inputs).iterateYears().iteratePartnerAge().iterateRows().iterateSums().immediateNeeds().longTermNeeds().totalNeeds().investmentAssetsAndSocialSecurity().existingLifeInsurance().totalResources().shortfall().value}}],function(e,i){for(var r=0;r<i.length;r++){var l=i[r];l.enumerable=l.enumerable||!1,l.configurable=!0,\"value\"in l&&(l.writable=!0),Object.defineProperty(e,l.key,l)}}(i.prototype,e),i}()",
+      "pretty": "pq = function () {\n  var e;\n  function i(e) {\n    if (!(this instanceof i)) throw TypeError(\"Cannot call a class as a function\");\n    p$(this, \"store\", void 0), p$(this, \"inputs\", Z.inputs()), p$(this, \"isValid\", !0), this.store = e, nS(this);\n  }\n  return e = [{\n    key: \"handleSubmit\",\n    value: function (e) {\n      var i = this,\n        r = {\n          default: function (e, r) {\n            i.inputs[e] = parseFloat(r);\n          },\n          hasPartner: function (e, r) {\n            i.inputs[e] = r;\n          }\n        };\n      Object.keys(e).map(function (i) {\n        return r[i] ? r[i](i, e[i]) : r.default(i, e[i]);\n      }), hF.isValid(this.inputs).then(function (e) {\n        nn(function () {\n          i.isValid = e;\n        });\n      }), this.store.ui.setActiveId(this.store.ui.nextActiveId);\n    }\n  }, {\n    key: \"setInput\",\n    value: function (e, i) {\n      var r = this,\n        l = {\n          default: function () {\n            r.inputs[e] = parseFloat(i);\n          },\n          hasPartner: function () {\n            r.inputs[e] = i;\n          }\n        };\n      l[e] ? l[e]() : l.default(), hF.isValid(this.inputs).then(function (e) {\n        nn(function () {\n          r.isValid = e;\n        });\n      });\n    }\n  }, {\n    key: \"computations\",\n    get: function () {\n      return new pW(this.inputs).iterateYears().iteratePartnerAge().iterateRows().iterateSums().immediateNeeds().longTermNeeds().totalNeeds().investmentAssetsAndSocialSecurity().existingLifeInsurance().totalResources().shortfall().value;\n    }\n  }], function (e, i) {\n    for (var r = 0; r < i.length; r++) {\n      var l = i[r];\n      l.enumerable = l.enumerable || !1, l.configurable = !0, \"value\" in l && (l.writable = !0), Object.defineProperty(e, l.key, l);\n    }\n  }(i.prototype, e), i;\n}()"
+    },
+    {
+      "name": "p0",
+      "start": 1653890,
+      "end": 1654874,
+      "sha256": "943d601ce24176f8113f6a85513df50272dc29aa626ac08a17ec62faaf5643c2",
+      "code": "p0=function(e){var i;if(\"function\"!=typeof e&&null!==e)throw TypeError(\"Super expression must either be null or a function\");function r(){var e,i;if(!(this instanceof r))throw TypeError(\"Cannot call a class as a function\");return e=r,i=arguments,e=pQ(e),function(e,i){var r;if(i&&(\"object\"==((r=i)&&\"undefined\"!=typeof Symbol&&r.constructor===Symbol?\"symbol\":typeof r)||\"function\"==typeof i))return i;if(void 0===e)throw ReferenceError(\"this hasn't been initialised - super() hasn't been called\");return e}(this,p2()?Reflect.construct(e,i||[],pQ(this).constructor):e.apply(this,i))}return r.prototype=Object.create(e&&e.prototype,{constructor:{value:r,writable:!0,configurable:!0}}),e&&p1(r,e),i=[{key:\"render\",value:function(){return(0,G.jsx)(iR,{store:pJ,children:(0,G.jsx)(pB,{})})}}],function(e,i){for(var r=0;r<i.length;r++){var l=i[r];l.enumerable=l.enumerable||!1,l.configurable=!0,\"value\"in l&&(l.writable=!0),Object.defineProperty(e,l.key,l)}}(r.prototype,i),r}(id.Component)",
+      "pretty": "p0 = function (e) {\n  var i;\n  if (\"function\" != typeof e && null !== e) throw TypeError(\"Super expression must either be null or a function\");\n  function r() {\n    var e, i;\n    if (!(this instanceof r)) throw TypeError(\"Cannot call a class as a function\");\n    return e = r, i = arguments, e = pQ(e), function (e, i) {\n      var r;\n      if (i && (\"object\" == ((r = i) && \"undefined\" != typeof Symbol && r.constructor === Symbol ? \"symbol\" : typeof r) || \"function\" == typeof i)) return i;\n      if (void 0 === e) throw ReferenceError(\"this hasn't been initialised - super() hasn't been called\");\n      return e;\n    }(this, p2() ? Reflect.construct(e, i || [], pQ(this).constructor) : e.apply(this, i));\n  }\n  return r.prototype = Object.create(e && e.prototype, {\n    constructor: {\n      value: r,\n      writable: !0,\n      configurable: !0\n    }\n  }), e && p1(r, e), i = [{\n    key: \"render\",\n    value: function () {\n      return (0, G.jsx)(iR, {\n        store: pJ,\n        children: (0, G.jsx)(pB, {})\n      });\n    }\n  }], function (e, i) {\n    for (var r = 0; r < i.length; r++) {\n      var l = i[r];\n      l.enumerable = l.enumerable || !1, l.configurable = !0, \"value\" in l && (l.writable = !0), Object.defineProperty(e, l.key, l);\n    }\n  }(r.prototype, i), r;\n}(id.Component)"
+    }
+  ],
+  "hits": [
+    {
+      "key": "initialValues",
+      "offset": 1597211,
+      "code": "initialValues: i.data.inputs"
+    },
+    {
+      "key": "validationSchema",
+      "offset": 1597239,
+      "code": "validationSchema: hF"
+    },
+    {
+      "key": "initialValues",
+      "offset": 1605046,
+      "code": "initialValues: i.data.inputs"
+    },
+    {
+      "key": "validationSchema",
+      "offset": 1605074,
+      "code": "validationSchema: hF"
+    },
+    {
+      "key": "initialValues",
+      "offset": 1610846,
+      "code": "initialValues: i.data.inputs"
+    },
+    {
+      "key": "validationSchema",
+      "offset": 1610874,
+      "code": "validationSchema: hF"
+    },
+    {
+      "key": "initialValues",
+      "offset": 1617542,
+      "code": "initialValues: i.data.inputs"
+    },
+    {
+      "key": "validationSchema",
+      "offset": 1617570,
+      "code": "validationSchema: hF"
+    }
+  ]
+}

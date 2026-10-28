@@ -1,0 +1,93 @@
+{
+  "recordedUTC": "2026-10-28T04:27:52.549895+00:00",
+  "state": "PRIVATE_SOURCE_ENGINE_IMPLEMENTED_TESTED_NOT_RELEASED",
+  "sourceBundleSHA256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "tests": {
+    "tests": 56,
+    "pass": 56,
+    "fail": 0,
+    "skipped": 0
+  },
+  "exactSourcePipelineSyntheticCases": 34,
+  "pipelineStepsPerCase": 11,
+  "officialBrowserReferenceFile": "../reference/official-browser-cases.json",
+  "independentBrowserCases": [
+    "official-partner-a",
+    "official-no-partner-retained-b1"
+  ],
+  "independentDisplayedAmountsCompared": 18,
+  "oracleQualification": "Synthetic comparisons share exact source engine functions and establish extraction/adapter equivalence only. Eighteen displayed amounts independently agree with root recorded official browser cases; this is bounded representative evidence.",
+  "preservedSourceSemantics": [
+    "Both partner branches and retained hidden partner values",
+    "parseFloat numeric normalization; blank is NaN, not zero",
+    "Exact income onChange prefill",
+    "Unrounded intermediate projections/sums",
+    "Original numeral 2.0.6 currency/percent rounding",
+    "Global schema diagnostics separate from source Summary NaN guard",
+    "Zero/fractional-year invalid-summary behavior retained"
+  ],
+  "remaining": [
+    "Fresh no-partner hidden-undefined official browser case B2 denied and not retried; extraction behavior is not browser acceptance",
+    "Full authoritative browser boundary/domain outputs",
+    "Complete Yup arbitrary-input casting/type-error-message equivalence not claimed",
+    "CalcXML result/video/privacy integration disabled and unverified",
+    "Native authoring and complete responsive/accessibility/print/release QA"
+  ],
+  "noServiceRuntimeOrCredentialActions": true,
+  "noCMSPublicationDeploymentOrPush": true,
+  "privateOutsideGit": true,
+  "files": [
+    {
+      "path": "life-insurance-engine.mjs",
+      "bytes": 9609,
+      "sha256": "2bccc7a6e0acba00f7f99a2c59ee75cc4e0fd94a41dfa6ff3fab3e93d21f3cb6"
+    },
+    {
+      "path": "life-insurance-engine.d.mts",
+      "bytes": 3007,
+      "sha256": "47ce6de32fa10ed5c56b014deb07bb0a3de7be1a5c1ffcdac000094dba181ea6"
+    },
+    {
+      "path": "source-engine-exact.mjs",
+      "bytes": 5221,
+      "sha256": "a3b01adc8636486dc84ab9fa63bcbe74db2e3fd6b81e27c85827f9165ac7b984"
+    },
+    {
+      "path": "source-engine-exact.cjs",
+      "bytes": 5193,
+      "sha256": "1cb6d89c4374b8afc0fe4d90e13e67d98d2c76a5056e3623e485c318f60eca60"
+    },
+    {
+      "path": "source-engine-provenance.json",
+      "bytes": 1073,
+      "sha256": "c0a0a1754f8dc831f6b390c5eeb30c3ae1507dde91ae93916dbd8bbb4bb0246d"
+    },
+    {
+      "path": "life-insurance-engine.test.mjs",
+      "bytes": 14413,
+      "sha256": "f6e8cd4b9a666f19d79f73acdd5e213e42bedad293dd836eecb5a3264217dc7e"
+    },
+    {
+      "path": "formatting/source-numeral-formatters.mjs",
+      "bytes": 11800,
+      "sha256": "0a84ae1e088ee9874a2f2b44650d16c13ced2b7a71475cf86120d66b9eeb4a13"
+    },
+    {
+      "path": "formatting/source-numeral-formatters.cjs",
+      "bytes": 11817,
+      "sha256": "cd66f80be5e2cf364499be46affb27a4e495db71d08bb6b234f9e2585f833ca5"
+    },
+    {
+      "path": "formatting/provenance.json",
+      "bytes": 2136,
+      "sha256": "401a1752b1bfb3e2feff5cbefa32620fa9de3b910ecbf1494c8e27666d2996fb"
+    }
+  ],
+  "runtimeProvenanceRegression": {
+    "CJSOracleSliceHashes": true,
+    "importedMJSRuntimeSliceHashes": true,
+    "importedRuntimeConstructorAndPrototypeMethodsMatchOracle": true,
+    "sourceSHA256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+    "runtimeBehaviorChanged": false
+  }
+}
