@@ -65,8 +65,9 @@ portable repository discovery and fail without installing missing packages.
 
 The pie preserves source series/colors/formatting, source-library invalid/zero-point
 rules, legend visibility toggles and modifier-key selection. It uses native SVG;
-Highcharts rounded paths, pixel geometry, HTML tooltip appearance and broader live
-edge references remain unaccepted. Icons retain source paths, wrapper and labels;
+fixed chart height, measured physical geometry and pointer/focus tooltip now follow
+the recovered Highcharts defaults. Rounded paths, exact tooltip/legend pixels and
+broader live edge references remain unaccepted. Icons retain source paths, wrapper and labels;
 instance IDs are unique rather than repeating across responsive control sets.
 
 The print helper clones only the valid report intro, amounts, chart and three tables,
@@ -75,6 +76,19 @@ copies local stylesheets and waits for styles/fonts. Cleanup, error handling and
 trigger-focus restoration are explicit improvements over source defaults. Native
 Edge rendered a two-page preview without clipping and cancellation restored the
 enabled print control. This is not yet source-versus-candidate PDF acceptance.
+
+The current Report and sidebar Actions markup are pinned against exact source
+render functions for the recorded cases. The layout now uses the source natural
+flex structure, title-before-icon menu order, h3 headings, live source-engine
+sidebar values and source error classes. A single control set moves at the source
+704px breakpoint; values and a focused input are retained. These latest layout and
+chart refinements still require browser acceptance after integration.
+
+Seventeen print lifecycle tests cover loading, timeout/error, duplicate activation,
+cancellation, cleanup and reentrant focus. They reproduced and closed two bugs:
+failed iframe insertion left a stale job, and focus-triggered cancellation could
+still invoke print. React unmount integration and broader browser behavior remain
+separate acceptance checks.
 
 `calcxml-urls.mjs` preserves both exact source endpoints and all six raw unrounded
 parameters. Calling the builder sends nothing. External video/description rendering

@@ -12,6 +12,11 @@ export const LIFE_PIE_SOURCE = Object.freeze({
     modifierClick: 135076, pointSelect: 139138, legendEvents: 200730, pieSetVisible: 262915, selectedStateGuard: 140715,
     legendKeyboard: 324051, keyboardWrapAround: 406002 },
   legendBreakpoint: 500,
+  chartHeight: 400,
+  spacing: [10, 10, 15, 10] as const,
+  legendPadding: 8,
+  legendMargin: 12,
+  tooltip: { background: '#ffffff', color: '#333333', fontSize: '0.8em', padding: 8, radius: 3, hideDelay: 500 },
   legendStyle: { color: '#333333', hoverColor: '#000000', hiddenColor: '#666666', hiddenTextDecoration: 'line-through', inactiveOpacity: 0.2 },
   accessibilityDescription: "This is a pie chart showing the relationship between investment assets and Social Security, existing life insurance, additional life insurance needed, and spour or domestic partner's earnings",
 });
@@ -43,6 +48,23 @@ export interface LifePieGeometry {
   state: LifePieState;
   points: LifePieArc[];
   total: number;
+  center: { x: number; y: number; radius: number };
+}
+
+export interface LifePiePlotSize { width: number; height: number }
+
+/** Exact CenteredUtilities default formula (261248) after measured legend/margins reserve the plot.
+ * Pie slicedOffset10 reserves20px in the diameter; SVG coordinates stay in physical CSS pixels.
+ */
+export function lifePieCenter(plot: LifePiePlotSize): { x: number; y: number; radius: number } {
+  return { x: plot.width / 2, y: plot.height / 2, radius: Math.max(0, (Math.min(plot.width, plot.height) - 20) / 2) };
+}
+
+export function positionLifePieTooltip(anchor: { x: number; y: number }, size: LifePiePlotSize, chart: LifePiePlotSize) {
+  const x = Math.max(10, Math.min(anchor.x - size.width / 2, chart.width - size.width - 10));
+  const preferredY = anchor.y - size.height - 16;
+  const y = Math.max(10, Math.min(preferredY >= 10 ? preferredY : anchor.y + 16, chart.height - size.height - 15));
+  return { x, y };
 }
 
 export interface LifePieInteractionState {
@@ -102,20 +124,20 @@ export function lifePieLegendLayout(chartWidth: number): 'horizontal' | 'vertica
 const TAU = Math.PI * 2;
 const START = -Math.PI / 2;
 const clean = (value: number) => Math.abs(value) < 1e-10 ? 0 : Number(value.toFixed(9));
-const coordinate = (angle: number, radius: number) => ({ x: clean(200 + Math.cos(angle) * radius), y: clean(200 + Math.sin(angle) * radius) });
+const coordinate = (angle: number, center: LifePieGeometry['center']) => ({ x: clean(center.x + Math.cos(angle) * center.radius), y: clean(center.y + Math.sin(angle) * center.radius) });
 
-function sectorPath(start: number, end: number): string | null {
+function sectorPath(start: number, end: number, center: LifePieGeometry['center']): string | null {
   const span = end - start;
-  if (!(span > 0)) return null;
-  // Default Highcharts center/size for this isolated400x400 plot:190radius,10px slicing allowance.
+  if (!(span > 0) || center.radius <= 0) return null;
   // This native renderer does not claim Highcharts rounded-corner/pixel/path identity.
-  const first = coordinate(start, 190);
+  const first = coordinate(start, center);
+  const radius = clean(center.radius);
   if (span >= TAU - 1e-9) {
-    const opposite = coordinate(start + Math.PI, 190);
-    return `M ${first.x} ${first.y} A 190 190 0 1 1 ${opposite.x} ${opposite.y} A 190 190 0 1 1 ${first.x} ${first.y} Z`;
+    const opposite = coordinate(start + Math.PI, center);
+    return `M ${first.x} ${first.y} A ${radius} ${radius} 0 1 1 ${opposite.x} ${opposite.y} A ${radius} ${radius} 0 1 1 ${first.x} ${first.y} Z`;
   }
-  const last = coordinate(end, 190);
-  return `M 200 200 L ${first.x} ${first.y} A 190 190 0 ${span > Math.PI ? 1 : 0} 1 ${last.x} ${last.y} Z`;
+  const last = coordinate(end, center);
+  return `M ${clean(center.x)} ${clean(center.y)} L ${first.x} ${first.y} A ${radius} ${radius} 0 ${span > Math.PI ? 1 : 0} 1 ${last.x} ${last.y} Z`;
 }
 
 /** Native SVG sectors for finite nonnegative source series. Geometry is presentation-only.
@@ -124,7 +146,8 @@ function sectorPath(start: number, end: number): string | null {
  * point legends retain them. No raw value is altered. Exact Highcharts rounded-corner/path/legend
  * styling and runtime edge rendering require separate source/reference acceptance.
  */
-export function createLifePieGeometry(series: readonly LifePiePoint[], hiddenKeys: readonly LifePieKey[] = []): LifePieGeometry {
+export function createLifePieGeometry(series: readonly LifePiePoint[], hiddenKeys: readonly LifePieKey[] = [], plot: LifePiePlotSize = { width: 400, height: 400 }): LifePieGeometry {
+  const center = lifePieCenter(plot);
   const hidden = new Set(hiddenKeys);
   const isValid = (point: LifePiePoint) => Number.isFinite(point.value) && point.value >= 0;
   const total = series.reduce((sum, point) => sum + (isValid(point) && !hidden.has(point.key) ? point.value : 0), 0);
@@ -140,8 +163,8 @@ export function createLifePieGeometry(series: readonly LifePiePoint[], hiddenKey
     if (canPlot && isValid(point) && visible) angle = index === lastPositive ? START + TAU : angle + point.value / total * TAU;
     const endAngle = angle;
     const middle = (startAngle + endAngle) / 2;
-    return { ...point, visible, startAngle, endAngle, path: canPlot ? sectorPath(startAngle, endAngle) : null,
+    return { ...point, visible, startAngle, endAngle, path: canPlot ? sectorPath(startAngle, endAngle, center) : null,
       selectionOffset: { x: Math.round(Math.cos(middle) * 10), y: Math.round(Math.sin(middle) * 10) } };
   });
-  return { state, points, total };
+  return { state, points, total, center };
 }

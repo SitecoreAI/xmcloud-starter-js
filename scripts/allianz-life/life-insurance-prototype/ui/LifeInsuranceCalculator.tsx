@@ -1,10 +1,15 @@
 'use client';
-import { useEffect, useId, useMemo, useRef, useState, type FormEvent } from 'react';
+import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent } from 'react';
 import { initialLifeUiState, reduceLifeUi, stageErrors, visibleStageFields, type LifeField } from './life-ui-model';
 import type { LifeInsuranceCalculatorProps } from './life-ui.props';
 import { LifeInsuranceStageIcon, type LifeStageIndex } from './LifeInsuranceStageIcon';
-import { LifeInsurancePieChart } from './LifeInsurancePieChart';
+import { LifeInsuranceReport } from './LifeInsuranceReport';
+import { LifeInsuranceActions } from './LifeInsuranceActions';
 import { printSummary, type SummaryPrintJob } from './summary-print';
+
+const desktopQuery = '(min-width: 704px)';
+const desktopSnapshot = () => window.matchMedia(desktopQuery).matches;
+const serverLayoutSnapshot = () => false;
 
 /** Private source-faithful input/report prototype; no third-party request or storage. */
 export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCalculated, initialState }: LifeInsuranceCalculatorProps) {
@@ -12,8 +17,7 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
   const [editing, setEditing] = useState<LifeField | null>(null);
   const [help, setHelp] = useState<LifeField | null>(null);
   const panel = useRef<HTMLElement>(null);
-  const container = useRef<HTMLDivElement>(null);
-  const [desktopHeight, setDesktopHeight] = useState<number | undefined>();
+  const resizedField = useRef<string | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const report = useRef<HTMLDivElement>(null);
   const printJob = useRef<SummaryPrintJob | null>(null);
@@ -21,21 +25,27 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
   const [printing, setPrinting] = useState(false);
   const [printError, setPrintError] = useState(false);
   const prefix = useId().replace(/:/g, '');
+  const subscribeLayout = useCallback((listener: () => void) => {
+    const media = window.matchMedia(desktopQuery);
+    const update = () => {
+      const active = document.activeElement;
+      resizedField.current = active instanceof HTMLInputElement && panel.current?.contains(active) ? active.name : null;
+      listener();
+    };
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+  const desktop = useSyncExternalStore(subscribeLayout, desktopSnapshot, serverLayoutSnapshot);
+  const currentResult = useMemo(() => source.calculateLifeInsurance(state.values), [source, state.values]);
   const errors = useMemo(() => stageErrors(state, source), [state, source]);
   const stage = copy.stages[state.step];
   const fields = visibleStageFields(state);
   const dispatch = (action: Parameters<typeof reduceLifeUi>[1]) => setState((previous) => reduceLifeUi(previous, action, source));
 
-  useEffect(() => {
-    const media = window.matchMedia('(min-width: 704px)');
-    const update = () => setDesktopHeight(media.matches && panel.current
-      ? Math.max(panel.current.getBoundingClientRect().height, container.current?.querySelector('nav')?.getBoundingClientRect().height ?? 0) : undefined);
-    const observer = new ResizeObserver(update);
-    if (panel.current) observer.observe(panel.current);
-    media.addEventListener('change', update);
-    update();
-    return () => { observer.disconnect(); media.removeEventListener('change', update); };
-  }, [state.step]);
+  useLayoutEffect(() => {
+    if (resizedField.current) panel.current?.querySelector<HTMLInputElement>(`[name="${resizedField.current}"]`)?.focus({ preventScroll: true });
+    resizedField.current = null;
+  }, [desktop]);
 
   useEffect(() => {
     if (!state.focusVersion || !state.focus) return;
@@ -85,8 +95,8 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
   }
 
   const activePanel = (
-    <section ref={panel} className="axl-tab-panel axl-tab-panel-desktop" id={`${prefix}-${stage.id}`} aria-labelledby={`${prefix}-heading`}>
-      <h2 className="panel-header" ref={heading} id={`${prefix}-heading`} tabIndex={-1}>{stage.name}</h2>
+    <section ref={panel} className={`axl-tab-panel axl-tab-panel-content-${desktop ? 'desktop' : 'mobile'}`} id={`${prefix}-${stage.id}`} aria-labelledby={`${prefix}-heading`}>
+      <div><h3 className="panel-header" ref={heading} id={`${prefix}-heading`} tabIndex={-1}>{stage.name}</h3></div>
       {state.step < 4 && stage.introduction && <p className="life-stage-introduction">{stage.introduction}</p>}
       {state.step < 4 ? <form className="m-form" noValidate autoComplete="off" onSubmit={submit}
         onKeyDown={(event) => { if (event.key === 'Enter' && event.target instanceof HTMLInputElement) event.preventDefault(); }}>
@@ -102,7 +112,7 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
                 onChange={() => dispatch({ type: 'change', name, value })} />{copy.partnerOptions[value]}
             </label>)}
           </fieldset>;
-          return <div className={`m-form-group${error ? ' --is-error' : ''}`} key={name}>
+          return <div className={`m-form-group${error ? ' has-error' : ''}`} key={name}>
             <div className="life-label-row"><label className="a-input__label" htmlFor={control}>{field.label}</label>
               {!!field.help?.length && <button type="button" className="life-help-toggle" aria-label={field.label} aria-expanded={help === name}
                 aria-controls={helpId} onClick={() => setHelp((previous) => previous === name ? null : name)}>?</button>}
@@ -118,42 +128,34 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
           </div>;
         })}
         <button type="submit" className="m-axlButton m-axlButton--primary" disabled={Object.keys(errors).length > 0}>{copy.buttons.next}</button>
-      </form> : state.result?.sourceSummaryValid && state.result.summary ? <>
-        <button type="button" className="m-axlButton m-axlButton--primary life-print" aria-busy={printing} aria-disabled={printing}
-          onClick={(event) => printReport(event.currentTarget)}>{copy.buttons.print}</button>
-        {printError && <p role="alert">The report could not be prepared for printing. Please try again.</p>}
-        <div className="life-summary" data-life-summary-report ref={report}>
-        {stage.introduction && <p className="life-stage-introduction">{stage.introduction}</p>}
-        <dl className="life-summary-top">
-          {copy.summary.rows.map((row) => <div key={row.key}>
-            <dt>{row.label}</dt><dd data-summary-field={row.key}>{formatSummaryValue(state.result!.summary![row.key], row.key)}</dd>
-          </div>)}
-        </dl>
-        <LifeInsurancePieChart summary={state.result.summary} hasPartner={state.values.hasPartner} />
-        {copy.summary.tables.map((table) => <section className="life-report-section" key={table.heading}>
-          <h3>{table.heading}</h3>
-          <table className="a-table a-table__summary table-RILA"><caption>{table.caption}</caption><tbody>
-            {table.rows.map((row) => <tr key={row.key}><th scope="row">{row.label}</th>
-              <td data-summary-field={row.key}>{formatSummaryValue(state.result!.summary![row.key], row.key)}</td></tr>)}
-          </tbody></table>
-        </section>)}
-      </div></> : <p className="life-summary-warning" role="alert">{copy.summary.warning}</p>}
+      </form> : <div className="life-summary" data-life-summary-report ref={report}>
+        {currentResult.sourceSummaryValid && currentResult.summary
+          ? <LifeInsuranceReport summary={currentResult.summary} copy={copy} formatSummaryValue={formatSummaryValue} hasPartner={state.values.hasPartner} />
+          : <section><p className="life-summary-warning" role="alert">{copy.summary.warning}</p></section>}
+      </div>}
       {copy.legalText && <p className="life-widget-legal">{copy.legalText}</p>}
     </section>
   );
 
-  return <div className="life-insurance-private axl-tab-layout --is-default" data-private-life-calculator ref={container} style={{ minHeight: desktopHeight }}>
+  return <div className="life-insurance-private axl-tab-layout --is-default" data-private-life-calculator>
     <nav aria-label="Life insurance calculator">
       <ul className="axl-tab-list">
+        {currentResult.summary && (!desktop || currentResult.sourceSummaryValid) && <li className="axl-tab-list-item life-actions">
+          <div className="axl-tab-list-item__panel --has-background --has-border">
+            <LifeInsuranceActions isSummary={state.step === 4} summary={currentResult.summary}
+              copy={copy} formatSummaryValue={formatSummaryValue} onPrint={printReport} printing={printing} printError={printError} idPrefix={prefix} />
+          </div>
+        </li>}
         {copy.stages.map((item, index) => <li className={`axl-tab-list-item${state.step === index ? ' --is-active' : ''}`} key={item.id}>
           <button type="button" className="axl-tab-list-button" aria-current={state.step === index ? 'step' : undefined}
             aria-controls={state.step === index ? `${prefix}-${item.id}` : undefined} onClick={() => { setHelp(null); dispatch({ type: 'jump', step: index }); }}>
-            <span className="axl-tab-list-icon"><LifeInsuranceStageIcon stageIndex={index as LifeStageIndex} icoName={`${prefix}-stage-${index}`} /></span>
             <span className="axl-tab-list-title">{item.name}</span>
+            <span className="axl-tab-list-icon"><LifeInsuranceStageIcon stageIndex={index as LifeStageIndex} icoName={`${prefix}-stage-${index}`} /></span>
           </button>
-          {state.step === index && activePanel}
+          {!desktop && state.step === index && activePanel}
         </li>)}
       </ul>
     </nav>
+    {desktop && <div className="axl-tab-panel-desktop">{activePanel}</div>}
   </div>;
 }

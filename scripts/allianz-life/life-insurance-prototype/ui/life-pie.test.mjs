@@ -23,8 +23,8 @@ const bundle = new Module(compiled);
 bundle.filename = compiled;
 bundle.paths = [deps];
 bundle._compile(fs.readFileSync(compiled, 'utf8'), compiled);
-const { LifeInsurancePieChart, createLifePieSeries, createLifePieGeometry, formatLifePieValue, initialLifePieInteraction,
-  lifePieLegendLayout, lifePiePointOpacity, nextLifePieLegendIndex, reduceLifePieInteraction, LIFE_PIE_SOURCE } = bundle.exports;
+const { LifeInsurancePieChart, LifePieTooltip, createLifePieSeries, createLifePieGeometry, formatLifePieValue, initialLifePieInteraction,
+  lifePieCenter, lifePieLegendLayout, lifePiePointOpacity, nextLifePieLegendIndex, positionLifePieTooltip, reduceLifePieInteraction, LIFE_PIE_SOURCE } = bundle.exports;
 const oracle = JSON.parse(fs.readFileSync(new URL('../reference/official-browser-cases.json', import.meta.url)));
 const render = (summary, hasPartner, initialInteraction) => renderToStaticMarkup(React.createElement(LifeInsurancePieChart, { summary, hasPartner, initialInteraction }));
 const baseSummary = { investmentAssetsAndSocialSecurity: 10, existingLifeInsurance: 20, additionalLifeInsuranceNeeded: 30, partnerAnnualIncomeSum: 40 };
@@ -59,7 +59,7 @@ for (const item of oracle.cases.filter((item) => item.officialBrowserVerified)) 
     const html = render(result.summary, item.inputs.hasPartner);
     assert.equal((html.match(/class="life-pie-sector"/g) || []).length, item.observedChartSlices);
     assert.equal((html.match(/class="life-pie-symbol"/g) || []).length, item.observedChartSlices);
-    for (const point of series) assert.ok(html.includes(`<title>${formatLifePieValue(point.value)}</title>`));
+    for (const point of series) assert.ok(html.includes(`: ${formatLifePieValue(point.value)}"`));
     assert.ok(!html.includes('<iframe') && !html.includes('calcxml'));
   });
 }
@@ -70,7 +70,7 @@ test('tooltip uses source numeral rounding and preserves raw precision in the po
   assert.equal(formatLifePieValue(1.005), '$1.01');
   assert.equal(formatLifePieValue(-1.005), '-$1.00');
   assert.ok(render(summary, 'no').includes('data-life-pie-raw-value="1.005"'));
-  assert.ok(render(summary, 'no').includes('<title>$1.01</title>'));
+  assert.ok(render(summary, 'no').includes('aria-label="Investment assets and Social Security: $1.01"'));
 });
 
 test('positive SVG geometry closes one turn, keeps proportions, starts at12oclock and has finite coordinates', () => {
@@ -93,8 +93,9 @@ test('single positive resource produces a complete circle, retaining zero-valued
   assert.equal(geometry.points.filter((point) => point.path).length, 1);
   assert.equal((geometry.points[0].path.match(/ A /g) || []).length, 2);
   const html = render(summary, 'no');
-  assert.equal((html.match(/class="life-pie-legend-value"/g) || []).length, 3);
-  assert.equal((html.match(/>\$0\.00<\/span>/g) || []).length, 2);
+  assert.equal((html.match(/class="life-pie-legend-label"/g) || []).length, 3);
+  assert.ok(html.includes('Hide Existing life insurance: $0.00'));
+  assert.ok(html.includes('Hide Additional life insurance needed: $0.00'));
 });
 
 test('synthetic source-engine surplus preserves zero additional insurance in the model and legend', () => {
@@ -111,10 +112,10 @@ test('synthetic source-engine surplus preserves zero additional insurance in the
   assert.equal(geometry.points.filter((point) => point.path).length, 3);
   const html = render(result.summary, 'yes');
   assert.equal(formatLifePieValue(additional.value), '$0.00');
-  assert.ok(html.includes('Additional life insurance needed<span class="life-pie-legend-value">$0.00</span>'));
+  assert.ok(html.includes('Hide Additional life insurance needed: $0.00'));
 });
 
-test('allzero data retains every visible amount with no invented sectors or substituted financial data', () => {
+test('allzero data retains every accessible amount with no invented sectors or substituted financial data', () => {
   const summary = Object.fromEntries(Object.keys(baseSummary).map((key) => [key, 0]));
   const geometry = createLifePieGeometry(createLifePieSeries(summary, 'yes'));
   assert.equal(geometry.state, 'zero');
@@ -123,7 +124,7 @@ test('allzero data retains every visible amount with no invented sectors or subs
   const html = render(summary, 'yes');
   assert.ok(html.includes('data-life-pie-state="zero"'));
   assert.ok(html.includes('class="life-pie-empty"') && html.includes('stroke="#cccccc"'));
-  assert.equal((html.match(/>\$0\.00<\/span>/g) || []).length, 4);
+  assert.equal((html.match(/aria-label="Hide [^"]+: \$0\.00"/g) || []).length, 4);
   assert.ok(!html.includes('NaN') && !html.includes('Infinity'));
 });
 
@@ -139,9 +140,9 @@ test('negative and nonfinite inputs are never abs/clamped/filtered out of the ra
     assert.equal(geometry.total, 90, 'source library totals exclude invalid points');
     const html = render(summary, 'yes');
     assert.ok(html.includes(`data-life-pie-raw-value="${value}"`));
-    assert.equal((html.match(/class="life-pie-legend-value"/g) || []).length, 4);
+    assert.equal((html.match(/class="life-pie-legend-label"/g) || []).length, 4);
     if (value === -10) assert.ok(html.includes('-$10.00'));
-    if (!Number.isFinite(value)) assert.ok(html.includes(`>${value}</span>`), 'unsupported value must remain apparent');
+    if (!Number.isFinite(value)) assert.ok(html.includes(`: ${value}"`), 'unsupported raw value must remain accessible');
   }
 });
 
@@ -157,13 +158,14 @@ test('responsive legend uses source chart-container threshold500, square20px sym
   assert.ok(html.includes(LIFE_PIE_SOURCE.accessibilityDescription.replace(/'/g, '&#x27;')));
 });
 
-test('positive sectors expose keyboard selection semantics and source currency tooltip while amounts remain in the legend', () => {
+test('positive sectors expose keyboard selection and currency labels; primary tooltip is SVG rather than OS title', () => {
   const html = render(baseSummary, 'yes');
   assert.equal((html.match(/role="button"/g) || []).length, 4);
   assert.equal((html.match(/tabindex="0"/g) || []).length, 4);
   assert.equal((html.match(/aria-pressed="false"/g) || []).length, 4);
   assert.ok(html.includes('aria-label="Investment assets and Social Security: $10.00"'));
-  assert.ok(html.includes('<title>$10.00</title>'));
+  assert.ok(!html.includes('<title>'));
+  assert.ok(html.includes('class="life-pie-tooltip-layer"'));
   assert.ok(html.includes('aria-label="Chart amounts"'));
 });
 
@@ -204,7 +206,7 @@ test('hiding every point gives source empty outline and four accessible raw amou
   assert.equal((html.match(/class="life-pie-legend-toggle"/g) || []).length, 4);
   for (const point of series) {
     assert.ok(html.includes(`Show ${point.name.replace(/'/g, '&#x27;')}: ${formatLifePieValue(point.value)}`));
-    assert.ok(html.includes(`>${formatLifePieValue(point.value)}</span>`));
+    assert.ok(html.includes(`data-life-pie-raw-value="${point.value}"`));
   }
   assert.ok(html.includes('color:#666666;text-decoration:line-through'));
   assert.equal((html.match(/background-color:#666666/g) || []).length, 4);
@@ -275,6 +277,59 @@ test('native legend button arrow adaptation follows source directions and defaul
   assert.equal(nextLifePieLegendIndex(0, 1, 'ArrowRight'), 0);
   assert.equal(nextLifePieLegendIndex(0, 0, 'ArrowRight'), null);
   assert.equal(nextLifePieLegendIndex(0, 4, 'Enter'), null, 'Enter/Space remain native button click activation');
+});
+
+test('measured source625x400 case derives the observed301px circle from plot321x375 without a fixed square scale', () => {
+  // Root's official live A DOM measurement:chart625x400, circle301x300.97. Source legend width272
+  // reserves272+12margin+10spacingRight; leftspacing10 leaves plot321x375.
+  const plot = { width: 625 - 10 - 272 - 12 - 10, height: 400 - 10 - 15 };
+  const center = lifePieCenter(plot);
+  assert.deepEqual(center, { x: 160.5, y: 187.5, radius: 150.5 });
+  assert.ok(Math.abs(center.radius * 2 - 301) < 0.001);
+  const geometry = createLifePieGeometry(createLifePieSeries(baseSummary, 'yes'), [], plot);
+  assert.deepEqual(geometry.center, center);
+  assert.match(geometry.points[0].path, /^M 160\.5 187\.5 L 160\.5 37 A 150\.5 150\.5 /);
+  const otherSize = createLifePieGeometry(createLifePieSeries(baseSummary, 'yes'), [], { width: 200, height: 300 });
+  assert.equal(otherSize.center.radius, 90);
+  assert.deepEqual(otherSize.points.map((point) => point.selectionOffset), geometry.points.map((point) => point.selectionOffset), '10px slice displacement stays physical rather than scaling with viewBox');
+  assert.deepEqual(otherSize.points.map((point) => point.value), geometry.points.map((point) => point.value));
+});
+
+test('chart uses source400pxheight, spacing/font and measured legend footprint; visible legend contains names only', () => {
+  const html = render(baseSummary, 'yes');
+  assert.ok(html.includes('height:400px'));
+  assert.ok(html.includes('padding:10px 10px 15px'));
+  assert.ok(html.includes('font-family:Helvetica, Arial, sans-serif;font-size:1rem'));
+  assert.ok(html.includes('gap:12px'));
+  assert.ok(html.includes('padding:8px'));
+  assert.ok(!html.includes('max-width:400px') && !html.includes('height:auto'));
+  assert.ok(!html.includes('life-pie-legend-value'));
+  const visible = html.replace(/<style>[\s\S]*?<\/style>/g, '').replace(/<[^>]*>/g, '');
+  assert.ok(!visible.includes('$'), 'source legend labels have no additional amount lines');
+  assert.ok(html.includes('Hide Investment assets and Social Security: $10.00'));
+  assert.ok(html.includes('data-life-pie-raw-value="10"'));
+});
+
+test('SVG tooltip uses source currency/default colors, padding8, radius3, shadow and500ms hide contract', () => {
+  const html = renderToStaticMarkup(React.createElement('svg', null, React.createElement(LifePieTooltip, {
+    id: 'source-tooltip', text: formatLifePieValue(1.005), position: { x: 20, y: 30 }, size: { width: 60, height: 32 },
+  })));
+  assert.ok(html.includes('role="tooltip" transform="translate(20 30)"'));
+  assert.ok(html.includes('rx="3" fill="#ffffff" filter="url(#source-tooltip-shadow)"'));
+  assert.ok(html.includes('x="8" y="8"'));
+  assert.ok(html.includes('fill="#333333" style="font-size:0.8em"'));
+  assert.ok(html.includes('>$1.01</text>'));
+  assert.equal(LIFE_PIE_SOURCE.tooltip.hideDelay, 500);
+});
+
+test('pointer/focus tooltip positioning remains within source chart spacing for top/right/bottom anchors', () => {
+  const chart = { width: 625, height: 400 }, size = { width: 120, height: 32 };
+  assert.deepEqual(positionLifePieTooltip({ x: 312, y: 200 }, size, chart), { x: 252, y: 152 });
+  for (const anchor of [{ x: 0, y: 0 }, { x: 625, y: 0 }, { x: 625, y: 400 }]) {
+    const position = positionLifePieTooltip(anchor, size, chart);
+    assert.ok(position.x >= 10 && position.x + size.width <= 615);
+    assert.ok(position.y >= 10 && position.y + size.height <= 385);
+  }
 });
 
 test.after(() => fs.rmSync(temp, { recursive: true, force: true }));

@@ -47,10 +47,9 @@ export function printSummary(report: HTMLElement, trigger: HTMLElement): Summary
   parentWindow.addEventListener('pagehide', cancel, { once: true });
 
   const loaded = new Promise<void>((resolve) => frame.addEventListener('load', () => resolve(), { once: true }));
-  frame.srcdoc = '<!doctype html><html><head></head><body></body></html>';
-  owner.body.appendChild(frame);
-
   void (async () => {
+    frame.srcdoc = '<!doctype html><html><head></head><body></body></html>';
+    owner.body.appendChild(frame);
     await loaded;
     if (complete) return;
     const document = frame.contentDocument;
@@ -88,6 +87,7 @@ export function printSummary(report: HTMLElement, trigger: HTMLElement): Summary
     parentWindow.clearTimeout(timer);
     frameWindow.addEventListener('afterprint', afterPrint, { once: true });
     frameWindow.focus();
+    if (complete) return;
     frameWindow.print();
   })().catch((error: unknown) => finish(error instanceof Error ? error : new Error('The report could not be printed.')));
   return job;

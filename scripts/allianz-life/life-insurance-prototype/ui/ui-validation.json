@@ -3,7 +3,7 @@
   "status": "PRIVATE_PROTOTYPE_NOT_RELEASED",
   "sourceBundleSha256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
   "uiAndPathTests": {
-    "passed": 62,
+    "passed": 101,
     "failed": 0
   },
   "strictTypeScript": "PASS",
@@ -29,7 +29,7 @@
     "passed": 56,
     "failed": 0
   },
-  "totalTestsPassed": 118,
+  "totalTestsPassed": 157,
   "productionAppSourceModified": false,
   "prototypeRepositoryFilesChanged": true,
   "harnessExternalCalcXmlRequests": false,
@@ -63,5 +63,18 @@
       "headingFocus": "Summary"
     },
     "embeddedBrowserPrint": "IAB JavaScript reads blocked during print; owned session closed; native Edge used successfully instead"
-  }
+  },
+  "latestAcceptanceRefinements": {
+    "sourceReportOracle": "8tests; exact pinned pM.render A/B1 markup, chartstub and disabled external content qualified",
+    "sourceSidebarActions": "10tests; exact pY/pS markup and source CategoryArticle geometry",
+    "printLifecycleTests": 17,
+    "printBugsFixed": [
+      "iframe insertion failure stale job",
+      "print after focus-triggered cancellation"
+    ],
+    "pieTests": 25,
+    "layout": "Source flex layout, h3 headings, right-side icons, has-error and live engine sidebar; integrated browser acceptance pending",
+    "chart": "400px height and physical measured geometry; SVG pointer/focus tooltip; exact rounded paths/pixel parity pending"
+  },
+  "browserFeatureQaAppliesTo": "Previously verified9d5beac2. New report/layout/chart refinements have not yet received full browser acceptance."
 }

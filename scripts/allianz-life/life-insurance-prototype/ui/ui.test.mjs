@@ -108,15 +108,17 @@ test('valid Summary report scope includes intro, values, chart and tables while 
   const state = reduceLifeUi({ ...initialLifeUiState(), values: { ...inputCase } }, { type: 'jump', step: 4 }, source);
   const html = render(state);
   const reportStart = html.indexOf('data-life-summary-report');
-  assert.ok(reportStart > html.indexOf('class="m-axlButton m-axlButton--primary life-print"'));
-  assert.ok(reportStart > html.indexOf('>Summary</h2>'));
+  const printAction = html.indexOf('class="m-axlButton m-axlButton--secondary-panel m-axlButton-icon"');
+  assert.ok(printAction >= 0 && reportStart > printAction);
+  const heading = html.indexOf('>Summary</h3>');
+  assert.ok(heading >= 0 && reportStart > heading);
   assert.ok(html.indexOf(lifeUiCopy.stages[4].introduction) > reportStart);
   const report = html.slice(reportStart);
   assert.equal((report.match(/data-summary-field=/g) || []).length, 12);
   assert.equal((report.match(/<table /g) || []).length, 3);
   assert.ok(report.includes('data-life-pie-state="positive"'));
   assert.ok(!report.includes('life-print"'));
-  assert.ok(html.indexOf('life-insurance-pie') < html.indexOf('life-report-section'));
+  assert.ok(html.indexOf('life-insurance-pie') < html.indexOf('table-summary-results'));
 });
 
 test('stage icons keep all five source SVG identities and IDs unique between calculator instances', () => {
@@ -127,6 +129,7 @@ test('stage icons keep all five source SVG identities and IDs unique between cal
   assert.equal((html.match(/class="axl-tab-list-icon"/g) || []).length, 10);
   assert.equal((html.match(/preserveAspectRatio="xMidYMid meet"/g) || []).length, 10);
   assert.equal(new Set([...html.matchAll(/id="((?:title|desc)Icon[^"]+)"/g)].map(match => match[1])).size, 20);
+  assert.ok(html.indexOf('axl-tab-list-title') < html.indexOf('axl-tab-list-icon'));
 });
 
 for (const item of oracle.cases.filter(item => item.officialBrowserVerified)) {
