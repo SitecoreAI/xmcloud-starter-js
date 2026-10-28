@@ -1209,3 +1209,56 @@ export const LifetimeIncomePlanFit = ({ fields, params }: AllianzRichTextProps) 
     </div></div></div>
   </div>;
 };
+/** Taking Income keeps its source video introduction in the existing heading owner. */
+export const TakingIncomeVideoIntroduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const glyphId = useId();
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  return <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
+      <article className="m-axlTile match-height -is--stacked t-bg-transparent"><div className="tileContent u-text-center">
+        <div className="tileSubGrid__image"><div className="tileIcon t-bg-transparent t-icon-primary-black">
+          <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby={`${glyphId}-title`} aria-describedby={`${glyphId}-description`} focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <title id={`${glyphId}-title`}>Video Camera</title><desc id={`${glyphId}-description`}>Video Camera</desc>
+            <path d="M23.7,11.1 C23.5,11 23.3,11 23.2,11.1 L20,13.4 C19.9,12.1 18.8,11 17.5,11 L17.3,11 C18.3,10.2 19,8.9 19,7.5 C19,5 17,3 14.5,3 C12.7,3 11.2,4 10.5,5.5 C9.8,4 8.3,3 6.5,3 C4,3 2,5 2,7.5 C2,8.9 2.7,10.2 3.7,11 L2.5,11 C1.1,11 0,12.1 0,13.5 L0,18.5 C0,19.9 1.1,21 2.5,21 L17.5,21 C18.9,21 20,19.9 20,18.5 L23.2,20.9 C23.3,21 23.4,21 23.5,21 C23.6,21 23.7,21 23.7,20.9 C23.9,20.8 24,20.6 24,20.5 L24,11.5 C24,11.3 23.9,11.1 23.7,11.1 Z M14.5,4 C16.4,4 18,5.6 18,7.5 C18,9.4 16.4,11 14.5,11 C12.6,11 11,9.4 11,7.5 C11,5.6 12.6,4 14.5,4 Z M11.7,11 L9.3,11 C9.8,10.6 10.2,10.1 10.5,9.5 C10.8,10.1 11.2,10.6 11.7,11 Z M3,7.5 C3,5.6 4.6,4 6.5,4 C8.4,4 10,5.6 10,7.5 C10,9.4 8.4,11 6.5,11 C4.6,11 3,9.4 3,7.5 Z M19,18.5 C19,19.3 18.3,20 17.5,20 L2.5,20 C1.7,20 1,19.3 1,18.5 L1,13.5 C1,12.7 1.7,12 2.5,12 L17.5,12 C18.3,12 19,12.7 19,13.5 L19,14.4 L19,17.5 L19,18.5 Z M23,19.5 L20,17.3 L20,14.7 L23,12.6 L23,19.5 Z" />
+          </svg>
+        </div></div>
+        <div className="tileSubGrid__content">
+          <header><div className="tileHeading" /><div className="tileSubHeading" /></header>
+          <div className="tileBody u-font-size-md">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+        </div>
+      </div></article>
+    </div></div></div>
+  </div>;
+};
+
+/** The two source resource cards remain one native Body field beneath their heading. */
+export const TakingIncomeResources = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const glyphId = useId();
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  const body = safeEditorialRichText(data.body?.jsonValue, isEditing, true);
+  return <div className="l-container--full-width t-bg-green-soft axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width">
+      <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+        <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+          <div className="tileIcon t-bg-purple-bright t-icon-primary-white">
+            <svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby={`${glyphId}-title`} aria-describedby={`${glyphId}-description`} focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+              <title id={`${glyphId}-title`}>Information</title><desc id={`${glyphId}-description`}>Information</desc>
+              <path d="M14,8 C14.3,8 14.5,8.2 14.5,8.5 L14.5,23.5 C14.5,23.8 14.3,24 14,24 L10,24 C9.7,24 9.5,23.8 9.5,23.5 L9.5,8.5 C9.5,8.2 9.7,8 10,8 L14,8 Z M12,6 C10.3,6 9,4.7 9,3 C9,1.3 10.3,0 12,0 C13.7,0 15,1.3 15,3 C15,4.7 13.7,6 12,6 Z" />
+            </svg>
+          </div>
+          <header>
+            <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+            <div className="tileSubHeading" />
+          </header>
+        </div></article>
+      </div></div>
+      {shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} className="l-grid__row match-height-row u-padding-bottom-xl" />}
+    </div>
+  </div>;
+};

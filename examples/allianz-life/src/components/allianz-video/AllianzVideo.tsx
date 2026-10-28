@@ -218,3 +218,16 @@ export const LifetimeIncomeVideo = ({ fields, params }: AllianzVideoProps) => {
     </div>
   </div>;
 };
+/** Taking Income has a player-only row; its introduction and transcript keep separate owners. */
+export const TakingIncomeVideo = ({ fields, params }: AllianzVideoProps) => {
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzVideo" />;
+  const hasApprovedMedia = Boolean(brightcoveEmbedSource(data.mediaLink?.jsonValue));
+  return <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
+      {hasApprovedMedia && <div className="m-bcVideo u-margin-top-xl u-center-block allianz-source-static-video">
+        <VideoPlayer fields={fields} />
+      </div>}
+    </div></div></div>
+  </div>;
+};
