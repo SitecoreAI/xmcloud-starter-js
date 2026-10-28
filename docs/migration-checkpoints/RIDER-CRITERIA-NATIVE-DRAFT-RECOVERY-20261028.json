@@ -1,5 +1,5 @@
 {
-  "recordedUTC": "2026-10-28T02:08:25.782348+00:00",
+  "recordedUTC": "2026-10-28T02:13:38.730748+00:00",
   "state": "SOURCE_TEXT_AND_COMPONENT_DRAFT_QA_PASS_IMAGES_INCOMPLETE_NOT_PUBLISHED",
   "route": "/what-we-offer/annuities/fixed-index-annuities/rider-charge-management-criteria",
   "parent": "B78C7AA0-3F99-5275-B32E-4EFF60C2ADE3",
@@ -143,7 +143,7 @@
       "sourceSVGPathGeometryExact": true,
       "savedCardRevision": "4bc052eb-1337-41f7-9846-343763a64ddb",
       "independentFieldFence": "Expected public URL and DAM identifier verified. Heading, body, theme, headingLevel, iconTheme and link unchanged.",
-      "renderedImageLoadVerified": false,
+      "renderedImageLoadVerified": true,
       "newUpload": false,
       "newPublicLink": false,
       "publicOriginalVisiblyRenders": true,
@@ -176,14 +176,28 @@
         "iconTheme",
         "link"
       ],
-      "renderedCardLoadVerified": false
+      "renderedCardLoadVerified": true
+    },
+    "iconRenderingQA": {
+      "normalCurrentSDKDraftRoute": true,
+      "actualViewports": [
+        1280,
+        370
+      ],
+      "allThreeIconImagesComplete": true,
+      "desktopIconWidthHeight": 40,
+      "mobileIconWidthHeight": 26,
+      "documentOverflow": false,
+      "datasourcePrompts": 0,
+      "h1Count": 1,
+      "qualification": "Current draft via fresh dev render; compiled build retained older icon data. Not publication/live or full native Page Builder acceptance."
     }
   },
   "publication": {
     "jobsSubmitted": 0,
     "eligibleAcceptance": false,
     "blockers": [
-      "Hero photograph not bound; saved Money/Stocks card rendered-load checks held on local self-proxy ECONNRESET",
+      "Hero photograph not bound",
       "Native Page Builder acceptance remains qualified",
       "Exact-scope publication controls unavailable; existing Authoring API denial held"
     ],

@@ -66,6 +66,13 @@
       "qualification": "Not specific to dev mode; underlying routing/network cause not established. No custom route or access bypass.",
       "ownedServerExit": 130,
       "ownedTabClosed": true
+    },
+    "resolvedLocalRuntime": {
+      "evidence": "SDK clones NextURL for absolute rewrite; 127.0.0.1-bound server logged localhost self-proxy ECONNRESET. Rebinding existing server as localhost restored normal SDK route immediately without source/config/security changes.",
+      "localhostCompiledRouteRenders": true,
+      "compiledIcons": "Older set only; current new save not assumed absent.",
+      "freshLocalhostDevRoute": "All three exact Content Hub icons loaded at 1280 and 370; Money and Stocks confirmed.",
+      "applicationCodeChanged": false
     }
   }
 }
