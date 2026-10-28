@@ -1,3 +1,5 @@
+> Current status: [October28 consolidated checkpoint](CURRENT-CONSOLIDATED-HANDOFF-20261028.md). Older identities and unfinished/missing-page claims below are historical where superseded.
+
 # Remaining operator and acceptance gates
 
 2026-10-27 checkpoint. Repository: https://github.com/SitecoreAI/xmcloud-starter-js, branch `allianz-life`. Continue this migration and preserve unrelated work. No whole-site completion claim.

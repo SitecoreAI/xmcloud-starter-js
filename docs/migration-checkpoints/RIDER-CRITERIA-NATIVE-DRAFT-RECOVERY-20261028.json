@@ -1,0 +1,157 @@
+{
+  "recordedUTC": "2026-10-28T01:15:25.888318+00:00",
+  "state": "SOURCE_TEXT_AND_COMPONENT_DRAFT_QA_PASS_IMAGES_INCOMPLETE_NOT_PUBLISHED",
+  "route": "/what-we-offer/annuities/fixed-index-annuities/rider-charge-management-criteria",
+  "parent": "B78C7AA0-3F99-5275-B32E-4EFF60C2ADE3",
+  "source": {
+    "url": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/rider-charge-management-criteria",
+    "sha256": "8a5acc8b9ddaa64940c0d7218e4f2033ff47f32f207f2bccb036c07573630087",
+    "retrievedUTC": "2026-10-28T00:45:16.603360+00:00"
+  },
+  "items": [
+    {
+      "name": "Page",
+      "id": "E4FA451D-DFC8-4937-951A-3FC8A6313B91"
+    },
+    {
+      "name": "Data",
+      "id": "AFA4ACB2-6BC5-4DEE-AE4E-1D04D392AC5E"
+    },
+    {
+      "name": "Hero",
+      "id": "180CD007-74A4-443B-8BBA-826BE0CAD4F9"
+    },
+    {
+      "name": "Introduction",
+      "id": "C34EA450-2F34-4154-AADE-736740B180ED"
+    },
+    {
+      "name": "Criteria cards",
+      "id": "828C8B19-55BB-4A6E-AEEB-7BFBF932538B"
+    },
+    {
+      "name": "Criteria cards/Annual average U.S. 10-year Treasury rate",
+      "id": "EA980379-6A84-4CE0-9365-AD0C6D7C2CEB"
+    },
+    {
+      "name": "Criteria cards/Calendar-year corporate bond downgrades",
+      "id": "5F77A7B9-BA30-4495-BCF0-90CA2A5FAFE9"
+    },
+    {
+      "name": "Criteria cards/Calendar-year investment-grade corporate bond defaults",
+      "id": "11E67A87-38BA-4182-9AF2-89AED9246B9F"
+    },
+    {
+      "name": "Questions and quick links",
+      "id": "8AF1FE08-0DC8-450E-A31B-10AF28E7194D"
+    },
+    {
+      "name": "US Treasury criterion",
+      "id": "E0332164-DAC2-44F5-BA08-51DDE0A1284E"
+    },
+    {
+      "name": "Corporate bond criterion",
+      "id": "DF6BB566-BA90-4FED-928C-6AFFE2556550"
+    },
+    {
+      "name": "Investment grade criterion",
+      "id": "439DDED6-102B-4DCC-89F0-9DDDDEDD15DC"
+    },
+    {
+      "name": "Sustainability",
+      "id": "6B7CABE0-DAD0-4F77-85B8-B41773A51406"
+    },
+    {
+      "name": "Legal Disclosures",
+      "id": "A69EE416-FE04-4614-B0A3-5E9122B1B9B3"
+    }
+  ],
+  "pageRevision": "258fbd60-a98a-463d-a769-3186222ecd27",
+  "composition": {
+    "nativeComponents": 9,
+    "criteriaCards": 3,
+    "routing": "Existing Sitecore tree and SDK catch-all; no custom Next route, fixture route or routing override.",
+    "template": "Existing Section Landing",
+    "pageDesign": "95E59645-E2D2-5E9D-A29D-A0FFA99921E8",
+    "shell": "modern; verified existing AllianzHeader and AllianzFooter",
+    "variants": "Explicit verified Default IDs, avoiding literal-name alphabetical fallback. No global variant definition changed.",
+    "finalRenderings": "<r xmlns:p=\"p\" xmlns:s=\"s\" p:p=\"1\"><d id=\"{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}\"><r uid=\"{9C01D0A4-D845-40BC-91B4-F04DFDE7705C}\" p:before=\"*\" s:id=\"{1D75F6BA-CC96-5FD7-9DB6-7AAB3A8C6A6E}\" s:ds=\"local:/Data/Hero\" s:ph=\"headless-main\" s:par=\"FieldNames=%7B49AB3A5E-03AF-518E-9DD3-60A66B09E67D%7D&amp;theme=product-fixed&amp;heroTheme=fixed&amp;headingLevel=h1\" /><r uid=\"{05DDEDEC-EAC1-41A1-AA10-BBDB464E718F}\" p:after=\"r[@uid='{9C01D0A4-D845-40BC-91B4-F04DFDE7705C}']\" s:id=\"{7956AAF8-596E-5405-85D5-721989505A95}\" s:ds=\"local:/Data/Introduction\" s:ph=\"headless-main\" s:par=\"FieldNames=%7BDA435E21-954E-59E2-A33C-1E7A08A78FBF%7D&amp;theme=transparent&amp;alignment=left&amp;headingLevel=h4&amp;marginBottom=xl\" /><r uid=\"{B8EE78D1-C425-441D-BD99-313357612927}\" p:after=\"r[@uid='{05DDEDEC-EAC1-41A1-AA10-BBDB464E718F}']\" s:id=\"{EA0674F1-31A1-540C-8622-91399E29FFE0}\" s:ds=\"local:/Data/Criteria cards\" s:ph=\"headless-main\" s:par=\"FieldNames=%7BA9538E4C-C44E-5C01-BCF2-0DE4DE3DB2BA%7D&amp;theme=transparent&amp;layout=stacked&amp;columns=3&amp;alignment=center&amp;headingLevel=h4&amp;marginBottom=xl&amp;iconAppearance=gray-on-transparent\" /><r uid=\"{66D73387-2B99-4BF2-B543-B17C6C436992}\" p:after=\"r[@uid='{B8EE78D1-C425-441D-BD99-313357612927}']\" s:id=\"{7956AAF8-596E-5405-85D5-721989505A95}\" s:ds=\"local:/Data/Questions and quick links\" s:ph=\"headless-main\" s:par=\"FieldNames=%7BDA435E21-954E-59E2-A33C-1E7A08A78FBF%7D&amp;theme=transparent&amp;alignment=center&amp;headingLevel=h2\" /><r uid=\"{1F6E7F49-42CC-4F35-B2B1-6431104A68F8}\" p:after=\"r[@uid='{66D73387-2B99-4BF2-B543-B17C6C436992}']\" s:id=\"{7956AAF8-596E-5405-85D5-721989505A95}\" s:ds=\"local:/Data/US Treasury criterion\" s:ph=\"headless-main\" s:par=\"FieldNames=%7BDA435E21-954E-59E2-A33C-1E7A08A78FBF%7D&amp;theme=transparent&amp;layout=rich-text&amp;paddingBottom=xl\" /><r uid=\"{AD490655-D020-412F-A553-1CB1A07D3A88}\" p:after=\"r[@uid='{1F6E7F49-42CC-4F35-B2B1-6431104A68F8}']\" s:id=\"{7956AAF8-596E-5405-85D5-721989505A95}\" s:ds=\"local:/Data/Corporate bond criterion\" s:ph=\"headless-main\" s:par=\"FieldNames=%7BDA435E21-954E-59E2-A33C-1E7A08A78FBF%7D&amp;theme=transparent&amp;layout=rich-text&amp;paddingBottom=xl\" /><r uid=\"{B5893271-A0AE-4AF8-826D-FA4399A44B11}\" p:after=\"r[@uid='{AD490655-D020-412F-A553-1CB1A07D3A88}']\" s:id=\"{7956AAF8-596E-5405-85D5-721989505A95}\" s:ds=\"local:/Data/Investment grade criterion\" s:ph=\"headless-main\" s:par=\"FieldNames=%7BDA435E21-954E-59E2-A33C-1E7A08A78FBF%7D&amp;theme=transparent&amp;layout=rich-text&amp;paddingBottom=xl\" /><r uid=\"{FCADD7AF-67C2-4954-8741-B99B5F1EDD11}\" p:after=\"r[@uid='{B5893271-A0AE-4AF8-826D-FA4399A44B11}']\" s:id=\"{7956AAF8-596E-5405-85D5-721989505A95}\" s:ds=\"local:/Data/Sustainability\" s:ph=\"headless-main\" s:par=\"FieldNames=%7BDA435E21-954E-59E2-A33C-1E7A08A78FBF%7D&amp;theme=green-soft&amp;alignment=center&amp;headingLevel=h2&amp;paddingTop=xl&amp;paddingBottom=xl\" /><r uid=\"{912F5A02-A20E-48E7-B998-A2806567CDBE}\" p:after=\"r[@uid='{FCADD7AF-67C2-4954-8741-B99B5F1EDD11}']\" s:id=\"{F7E18515-349E-44A1-AD83-320CAD3AF403}\" s:ds=\"local:/Data/Legal Disclosures\" s:ph=\"headless-main\" s:par=\"FieldNames=%7BDB949495-936E-46D7-8BC5-775F1FF8E84C%7D\" /></d></r>",
+    "finalRenderingsSHA256": "fd67ee033c4e3e1226c77c5ed46c295cc71856a52e7bc729588a11cc010183c6",
+    "independentNativeReopen": "Exact 3,179-byte field comparison passed; sourceHash and modern shell independently verified through SDK. Standard Final Renderings is omitted by Edge field query, so null is not treated as blank.",
+    "rollback": "New page originally had empty Final renderings. Preserve all 14 IDs and field evidence; do not delete or purge items. Unrelated existing items are unchanged."
+  },
+  "sourceAdaptations": [
+    "Plain native introduction heading retains source text while omitting its trailing HTML br marker.",
+    "Three obsolete empty a[name] markers became equivalent span[id] fragment targets to satisfy native XHTML validation, preserving all text and targets.",
+    "General Link uses native anchor type for the source same-page action."
+  ],
+  "qa": {
+    "actualViewports": [
+      1280,
+      370
+    ],
+    "sourceTextBlocksMatched": 41,
+    "sourceTextBlocksChecked": 41,
+    "allNineDatasourcesPopulated": true,
+    "singleH1": true,
+    "headerFooter": true,
+    "cards": 3,
+    "legalParagraphs": 3,
+    "datasourcePrompts": 0,
+    "documentOverflow": false,
+    "mobileCardGeometry": {
+      "x": 16,
+      "width": 332,
+      "sourceMatch": true
+    },
+    "desktopCardGeometry": {
+      "x": [
+        77,
+        461,
+        845
+      ],
+      "width": 352,
+      "sourceMatch": true
+    },
+    "fragmentTargets": 3,
+    "fragmentLinks": 4,
+    "pointerTreasuryLink": "pass, correct hash and target top 0",
+    "keyboardCorporateLink": "pass, Enter reaches correct hash and target top 0",
+    "nativeValidation": "Page no errors/warnings. Space-containing datasource names have URL-encoding warnings only; XHTML error corrected.",
+    "fullNativePageBuilderAcceptance": false
+  },
+  "images": {
+    "reusedLineGraph": {
+      "entity": 124955,
+      "damIdentifier": "Xfkp4Mv3QQCotCmqRDvJmA",
+      "originalURL": "https://thlt-demo.sitecoresandbox.cloud/api/public/content/4bec4b5dd1284ebba2b3554bf868e75b?v=1258fcec",
+      "sha256": "8d5a89a2e3dcc056518e4e385807b804f1bb5df886c4cbd2d9cb3144c40bc00c",
+      "sourceSVGPathGeometryExact": true,
+      "loaded": true,
+      "newUpload": false,
+      "newPublicLink": false
+    },
+    "unresolved": [
+      "Source Hero photograph /-/media/Feature/Hero/Allianz-Life/hero-azl-rider-charge-management-criteria.jpg",
+      "Source Stocks SVG titleIconStockGraphUp",
+      "Source Money SVG titleIconMoney"
+    ],
+    "instruction": "Find exact existing Content Hub matches first. No unverified asset or similarly named Money Exchange substitution. Use supported authorized import only if needed. Prior Add-menu issue was not re-tested in this pass."
+  },
+  "publication": {
+    "jobsSubmitted": 0,
+    "eligibleAcceptance": false,
+    "blockers": [
+      "Three source assets not bound",
+      "Native Page Builder acceptance remains qualified",
+      "Exact-scope publication controls unavailable; existing Authoring API denial held"
+    ],
+    "futureScope": "14 explicit new items above, plus only separately verified necessary asset dependencies. Recheck source, all eligibility/locks and target first. No implicit site/subitem expansion."
+  },
+  "application": {
+    "sourceCodeChanged": false,
+    "currentReleasedCommit": "fbfcfe794791144ee5d4c55b69bd9b4b4be37dc1",
+    "validation": "Existing 2,768-pass application build reused; current native draft rendered through its standard catch-all. Build path count388 predates this new page and is not acceptance."
+  },
+  "remainingReadyWork": "Two source RILA rates application routes are absent from draft/native inventories. Establish official inputs/output/API/integration contract before native implementation; never populate invented rates or a blank substitute."
+}

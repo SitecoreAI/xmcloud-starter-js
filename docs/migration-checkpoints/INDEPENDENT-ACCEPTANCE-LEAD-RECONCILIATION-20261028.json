@@ -1,0 +1,60 @@
+{
+  "scope": "Bounded existing-ledger leads, not another whole-site census",
+  "twoInsightArticles": {
+    "participantsUseOfAI": {
+      "sourceParagraphs": 43,
+      "allPresentInPublicMain": true
+    },
+    "retirementIncomeAffordability": {
+      "sourceParagraphs": 42,
+      "allPresentInPublicMain": true
+    },
+    "visibleNotFound": false,
+    "datasourcePrompts": false,
+    "qualification": "Earlier raw HTML notFoundText detected serialized fallback text. Does not prove full visual or interaction acceptance."
+  },
+  "newsroom370": {
+    "leadingSourcePublicPositions": {
+      "h1": 249,
+      "latestUpdate": 641,
+      "latestSubtitle": 705,
+      "recentNews": 1585
+    },
+    "leadingMatch": true,
+    "laterSourceMinusPublic": 40,
+    "qualification": "Different release feed remains because new CMS drafts are unpublished. No independent CSS repair justified."
+  },
+  "newCriteriaRecovery": "RIDER-CRITERIA-NATIVE-DRAFT-RECOVERY-20261028.json",
+  "twoRilaRatesRoutes": {
+    "currentPublicHTTP": [
+      404,
+      404
+    ],
+    "exactDraftPathsAbsent": true,
+    "completeParentInventories": true,
+    "sourceHTTP": [
+      200,
+      200
+    ],
+    "sourceWidget": "dx-rila-new-business-rates",
+    "sourceScriptSHA256": "59052493b5b475271ac91728f50728bd0babc8806eb21c8e7821b918b4a17fe8",
+    "sourceInputsAfterLoad": 3,
+    "serviceDomains": [
+      "excel.us.coherent.global",
+      "excel.uat.us.coherent.global"
+    ],
+    "authenticationHeaderNames": [
+      "x-synthetic-key",
+      "x-tenant-name"
+    ],
+    "directServiceCalls": 0,
+    "credentialValuesEstablished": false,
+    "credentialValuesOutput": false,
+    "temporaryBundleRemoved": true,
+    "remaining": "Source configuration and native integration investigation; no invented rates or credential reuse."
+  },
+  "noNewApplicationCode": true,
+  "noCMSPublication": true,
+  "independentReadyWorkExhausted": false,
+  "recordedUTC": "2026-10-28T01:20:05.988726+00:00"
+}

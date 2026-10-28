@@ -1,3 +1,5 @@
+> Current status: [October28 consolidated checkpoint](CURRENT-CONSOLIDATED-HANDOFF-20261028.md). Older identities and unfinished/missing-page claims below are historical where superseded.
+
 # Allianz operator and personal-laptop handoff
 
 Current authoritative summary: [consolidated handoff](CURRENT-CONSOLIDATED-HANDOFF-20261027.md), including the current 03d792d9 application release, exact 110-item unpublished queue, latest draft QA and four additional confirmed missing destinations. Older release identities/counts below are historical where superseded.

@@ -1,3 +1,5 @@
+> Current status: [October28 consolidated checkpoint](CURRENT-CONSOLIDATED-HANDOFF-20261028.md). Older identities and unfinished/missing-page claims below are historical where superseded.
+
 ## Latest qualified work — supersedes stale calculator/missing-page wording below
 
 The three sales-tool pages and native Lifetime calculator now exist as unpublished drafts; standard SDK routing is used. Their exact IDs, PDF staging and image qualifications are in newer dated receipts and ALLIANZ-MIGRATION-RESTART.md. Lifetime integrated engine matches all496cells across4official cases. Mobile keyboard scrolling, input preservation on resize and5participant route checks pass locally. Native heading activation still auto-normalizes markup; original heading restored and independently verified. Existing LIA-001 brochure is byte-identical and now draft-bound through the supported full content-tree picker, with onlydisclaimer/Revision/Updated changed across50fields. Its rendered native URL is verified; an additional browser download check was interrupted before returning a filepath. All affected pages/media remain unpublished.

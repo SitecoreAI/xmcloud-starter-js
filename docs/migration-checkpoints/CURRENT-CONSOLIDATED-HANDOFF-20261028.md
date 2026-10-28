@@ -1,0 +1,56 @@
+# Current Allianz migration checkpoint — October 28, 2026
+
+The migration is incomplete. This supersedes stale release identities and missing-page/calculator statements in the October 27 handoffs; retain those files as history. Repository: https://github.com/SitecoreAI/xmcloud-starter-js/tree/allianz-life . App: examples/allianz-life. Authoring: thlt-allianz-demo/dev. Same task and one browser writer; preserve all user work. No credentials, security settings, permissions or locks changed.
+
+## Current released code
+
+Application commit **fbfcfe794791144ee5d4c55b69bd9b4b4be37dc1** is pushed and independently remote-verified. Vercel **dpl_12sMuBKW5rMygwJL9Wx5S7oP52Gn** is Ready, Current Production/allianz-life.vercel.app (52 seconds). Editing **1m4QsndQZ7EndO5Wu1YGPp** is Complete for the same exact commit: build 2 min 30 sec, deployment 2 min 51 sec, post-actions 18 ms. Retain preceding application commit10ffca480f4ec4906d6c1f03727e797c8c7acfb4 and its terminal receipts as rollback evidence; do not destructively reset user work.
+
+The release applies the existing visitor-only internal-page same-tab policy to Default LegalDisclosures while preserving native editing HTML/metadata and external/document/vanity exceptions. Live Jenny Guldseth biography passes actual 1280/370 layout, local homepage click/Back with unchanged tab count, FINRA intentional new tab and telephone preservation. Full regression: 2,768 pass / 0 fail / 1 existing opt-in skip; 23 focused, lint/types and webpack pass. The 388 generated build paths are not visual acceptance and predate the new criteria draft below. Later documentation-only checkpoints do not require another app deployment.
+
+## New independent criteria-page recovery
+
+[Exact 14-item registry, source provenance, layout and QA](RIDER-CRITERIA-NATIVE-DRAFT-RECOVERY-20261028.json). The source-backed `/what-we-offer/annuities/fixed-index-annuities/rider-charge-management-criteria` page was genuinely absent from its complete 18-child native parent inventory and publicly404. Created normal Section Landing **E4FA451D-DFC8-4937-951A-3FC8A6313B91**, Data **AFA4ACB2-6BC5-4DEE-AE4E-1D04D392AC5E**, nine existing native components and three criterion cards. No per-page Next router, fixture route or code override.
+
+All 41 source text blocks, dated 2025 card values, thresholds and three disclosures match at actual 1280/370; nine populated datasources, one H1, header/footer, three cards and no document overflow/prompts. Native General Link anchor type and equivalent span[id] markers preserve the source fragment destinations while passing XHTML validation. Pointer and keyboard journeys pass. Explicit existing Default variant IDs avoid alphabetical fallback; modern shell matches the source, removing an incorrectly chosen legacy center column. Source/draft cards match 332px at mobile and 352px in the same desktop positions. Remaining datasource warnings concern spaces being URL encoded; the page has no validation errors/warnings.
+
+Existing Content Hub Line Graph entity 124955/Original was reused only after exact SVG path and byte identity verification; it loads. No upload or public link was created. Hero photograph, Stocks and Money icons remain unbound pending exact Content Hub matches/import. Do not substitute similarly named Money Exchange. This draft is NOT publication-ready or whole-page visually accepted. Final page revision258fbd60-a98a-463d-a769-3186222ecd27; exact 3,179-byte native layout reopen passes. No publication job submitted.
+
+Two old article destination leads are not missing: the AI article has all 43 source paragraphs and affordability article all 42, matching H1s, no visible404/prompts. Serialized fallback text caused the old false positive. Newsroom leading mobile sections now match source positions; later 40px feed difference is qualified by the still-unpublished new releases, not an unexplained CSS defect.
+
+## Publication queues — separate exact scopes
+
+An appropriately authorized operator needs an existing supported publishing control that exposes exact items/options/target. The agent's ordinary Publish item wizard is unavailable and Authoring API access remains denied. Do not repeat blind clicks or use another route to evade that denial. Recheck current English versions, source, ancestor/item guards, workflow/locks, master to intended experienceedge target, recoverability and existing jobs. No lock overrides or implicit related/subitem expansion. Capture operation ID and terminal outcome, then delivery and public desktop/mobile content/interaction QA. FULL recomposition remains a proposed bounded test, not a proven fix.
+
+- [Existing four-scope queue](EXACT-FOUR-SCOPE-DRAFT-PUBLICATION-QUEUE-20261027.json): Advisory 65, Business Succession 16, My Lifetime Income+ 18, Taking Income 11 explicit items, 110 total; saved guards and qualified draft checks, not live acceptance. Source-PDF dependencies retain their separate unpublished direction.
+- [Six page-only recomposition proposals](REMAINING-OPERATOR-AND-ACCEPTANCE-GATES.md): Core/RFA/Tools and separately Glossary/Investment Options/NY product. Preserve prior skipped jobs and do not resubmit Smart unchanged.
+- [Newsroom 12-item queue](NEWSROOM-THREE-ARTICLE-DRAFT-RECOVERY-20261027.json): two new source-complete releases plus OCTI page/Data/article/legal. Both new separate 1,067-character corporate disclosures are saved and verified; earlier empty-disclosure wording was incomplete and superseded. No job submitted; new public routes remain404 and OCTI still has datasource prompts until successful delivery.
+- [Separate Fortune layout supplement](FORTUNE-NATIVE-LAYOUT-OPERATOR-SUPPLEMENT-20261028.json): changed page 77211CA6-76E4-4CD9-9D06-1E501531FDBF and own empty disclosure 0AE51FCC-54F7-4FEE-B7F5-4ADDACD01440; recheck its two existing dependencies, do not silently include them. Source-exact draft and native external-ranking click pass; old public generic layout remains until publication. Original/repaired XML and rollback hashes retained.
+- [Three saved Related Sites links](RELATED-SITES-FOOTER-REPAIR-20261027.json) remain unpublished.
+- 360 rate item BEFD38D6-C220-4AF5-AE68-B6106B97771E remains draft 5.65% as of October27; fetch fresh official source again before publication.
+- New criteria 14-item scope above is held for its three missing assets and remaining applicable authoring/visual preflight; do not add it to a ready publishing job yet.
+
+## Held actions and unfinished acceptance
+
+Culture Data 8F581AA0-9DD1-4114-ACDA-332C21797754 exact navigation denied/known not executed: needs materially relevant exact-action clearance through normal review, no alternate route. Legal Data F9C984FD-94E6-4938-B589-20F46FD16D48 historical 35-item publication at 2026-10-20T20:47:42.064Z remains uncertain: operator must correlate existing logs before resubmission. 222 Hero 1EBE5D7E-37E0-486A-B32A-52A95DE02DA4 has two nonpersisted blocked saves, rays a4d978bba8a68de1/a4d978c05a9f8de1: platform recovery evidence needed before another attempt, no WAF change/lock override.
+
+Native private editing-root Forbidden, embedded canvas and heading-activation autosave normalization remain platform/editor gates. Original values were restored; do not disable editing or mutate headings again without a new supported fix. Native Content Editor saved-field checks are not Page Builder acceptance.
+
+Three sales-tool pages now exist with qualified native desktop/mobile composition and 16 verified draft PDF bindings, unlike older missing-page statements. Their pages/PDFs/media stay unpublished. Six thumbnail alt corrections are saved; 13 exact thumbnail imports/identity qualifications remain. Existing Content Hub Add-menu issue was not re-tested in this criteria pass; restore supported Upload files/From link controls only through normal authorized workflow, no hidden API or permission change. All assets need verified live consumers before recoverable Media Library cleanup; no deletion merely from draft bindings.
+
+Native Lifetime calculator now exists as an unpublished draft with unchanged official engine/workbook: 4 reference cases / 496 cells, mobile keyboard scroll, resize/input preservation and 5 participant route checks pass locally. Existing LIA-001 brochure is byte-identical and draft-bound, no duplicate upload; final browser download/editor acceptance remains qualified. Distinct Life Insurance calculator/source integration is still incomplete. Never invent financial formulas or equate an outbound link to migrated functionality. AA5's two-document live allowlist patch remains unapplied under the separate unpublished-PDF direction.
+
+## Ready next work and honest limits
+
+Independent work is NOT exhausted: two real public 404 rate application routes are also absent by exact saved path and complete parent inventories:
+
+- `/what-we-offer/annuities/registered-index-linked-annuities/rila-rates-center` (parent 224ABF70-929E-59EC-8B54-257D12A8752C).
+- `/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf/rila-rates-center-infp` (parent FA06BD05-2DC5-5B47-9648-249709639982; complete four-child census has calculator/Data/prospectus/video only).
+
+Both official destinations are substantive 200 pages. Generic source mounts `dx-rila-new-business-rates` using official `/-/media/Files/Global/ToolShed/dx-rila-rates-center/dx-rila-rates-center-js.js`; three inputs appeared after load. The public bundle references Coherent production and UAT execute services and computed x-synthetic-key/x-tenant-name headers. No direct service call or credential reuse was attempted; no header values were output, and the temporary bundle was removed after inspection. Actual credential values were not established. Trace the source configuration and supported integration before making new third-party requests. Exact inputs/output/API behavior and the NF variant remain uncharacterized. Next safe work is read-only source contract/golden-case preparation and exact Content Hub matches, then standard native page/component integration if supported. Do not create a blank substitute, hard-code sample rates, invent calculations, bypass framing/authentication or introduce per-page routing.
+
+Broad route sampling and structural tests are not all-route visual, legal/financial, interaction or WYSIWYG acceptance. 357 canonical routes, 360 checklist URLs, 322 public-screen population, 84 article checks and 388 generated paths are different denominators. No defensible overall percent or fully accepted page count exists. No unsupported completion estimate.
+
+## Resume and continuity
+
+Use the same task/one authorized computer writer. Fetch the verified allianz-life branch, inspect status/instructions and preserve user work; never transfer env files, cookies, credentials or editing queries. Source evidence is retained locally under the existing migration evidence directory; repository registries carry all critical IDs and public-source provenance. Revalidate official sources when working elsewhere. All app code is pushed; generated next-env.d.ts and local tmp PDF files are excluded. Do not manually redeploy docs-only commits. Keep original eight Edge tabs and close only owned tabs/server after each pass. Do not relaunch exhausted run03 or the completed one-off Production diagnostic.
