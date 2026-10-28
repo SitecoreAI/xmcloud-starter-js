@@ -1,0 +1,46 @@
+{
+  "recordedUTC": "2026-10-28T02:34:16.443528+00:00",
+  "state": "READ_ONLY_SETUP_PREFLIGHT_COMPLETE_NO_CREDENTIAL_CREATED",
+  "authenticatedDeploySession": true,
+  "proposedClient": {
+    "type": "Environment Automation",
+    "project": "thlt-allianz-demo",
+    "environment": "dev",
+    "organizationWide": false,
+    "edgeOrPreviewCredentialReuse": false,
+    "proposedLabel": "allianz-migration-authoring-dev",
+    "rolesSelectableInObservedDialog": false,
+    "permissionQualification": "Environment-scoped CM/Authoring Management access, not a demonstrated read-only or subtree-limited grant. Documentation example token scope xmcloud.cm:admin is illustrative; actual returned scope must be checked after approved setup.",
+    "existingEnvironmentOrchestratorClientListed": true,
+    "existingClientSecretRetrieved": false,
+    "createClicked": false
+  },
+  "destinations": {
+    "tokenExchange": "https://auth.sitecorecloud.io/oauth/token",
+    "audience": "https://api.sitecorecloud.io",
+    "authoringOrigin": "https://xmc-sitecoresaaef4e-thltmnpdemof1fc-devdd6f.sitecorecloud.io",
+    "authoringPath": "/sitecore/api/authoring/graphql/v1/",
+    "firstVerification": "Read-only sites and exact known item identity after normal approved setup; no mutation before scope/identity validation."
+  },
+  "storageProposal": {
+    "secretInGitOrTranscript": false,
+    "recommended": "User-controlled secure credential store such as Mac Keychain; user handles one-time secret entry. Consume only in approved local process memory for token exchange; never command arguments, logs or repository files.",
+    "entryCreated": false,
+    "storageImplementationConfirmed": false,
+    "qualification": "Secure handling must be agreed before Create because secret is shown only once. No credential files/stores read or modified in this preflight."
+  },
+  "exactApprovalNeeded": "Create one environment Automation client for thlt-allianz-demo/dev with content-management capabilities, securely retain its one-time secret outside Git under user control, and exchange it only with Sitecore auth for bounded environment Authoring API use. This is new persistent security-sensitive access; not covered merely by a generic future-permissions statement.",
+  "noPlaygroundRequired": true,
+  "noExposePlaygroundVariableOrRedeploymentRequested": true,
+  "sources": [
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/deploying-sitecoreai/deploy-app/managing-sitecoreai-client-credentials/manage-client-credentials-for-a-sitecoreai-organization-or-environment.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/deploying-sitecoreai/deploy-app/managing-sitecoreai-client-credentials/create-a-json-web-token-for-the-authoring-and-management-api-or-the-deploy-api.html",
+    "https://doc.sitecore.com/sai/en/developers/sitecoreai/content-modeling-and-presentation/sitecore-authoring-and-management-graphql-api/walkthrough--enabling-and-authorizing-requests-to-the-authoring-and-management-api.html"
+  ],
+  "separateConstraints": [
+    "No Authoring API probe performed; previous denial not bypassed.",
+    "MCP consent separate: openid/email/profile/offline_access not accepted.",
+    "No publishing/media-upload capability assumed from Marketer MCP.",
+    "PDF/media draft publication restrictions, Culture/Legal/222 safeguards persist."
+  ]
+}

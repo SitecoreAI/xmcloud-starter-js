@@ -1,6 +1,6 @@
 {
   "recordedUTC": "2026-10-28T02:26:17.375815+00:00",
-  "state": "EXISTING_MARKETER_RECONNECT_AT_CONSENT_NOT_AUTHENTICATED",
+  "state": "CONSENT_NOT_ACCEPTED_CALLBACK_TIMED_OUT",
   "currentToolCatalogSitecoreOrContentHubMatches": 0,
   "configuration": {
     "globalMarketerExists": true,
@@ -33,7 +33,8 @@
     "needsActionTimeConfirmation": "Codex access to Sitecore identity information plus persistent offline access. Stop before Allow Access until user explicitly confirms this exact grant.",
     "callback": "Owned temporary loopback callback; no authorization URLs/state/codes/keys in repository.",
     "maximumPendingMinutes": 5,
-    "afterConsent": "Complete supported Sitecore Identity and intended tenant selection, then read-only list-sites; refresh catalog only after authenticated success. Stop on unexpected grants or tenant scope."
+    "afterConsent": "Complete supported Sitecore Identity and intended tenant selection, then read-only list-sites; refresh catalog only after authenticated success. Stop on unexpected grants or tenant scope.",
+    "callbackOutcome": "Five-minute owned callback exited -2 without consent; browser still showed Allow Access. No authenticated success. Restart same normal flow after exact confirmation, not stale callback."
   },
   "doesNotResolve": [
     "Separate Authoring Management API denial",
