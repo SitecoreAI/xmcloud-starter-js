@@ -1,0 +1,49 @@
+{
+  "recordedUTC": "2026-10-28T02:26:17.375815+00:00",
+  "state": "EXISTING_MARKETER_RECONNECT_AT_CONSENT_NOT_AUTHENTICATED",
+  "currentToolCatalogSitecoreOrContentHubMatches": 0,
+  "configuration": {
+    "globalMarketerExists": true,
+    "marketerOrigin": "https://marketer.sitecorecloud.io",
+    "marketerPath": "/mcp/marketer-mcp-prod",
+    "supportedCurrentEndpoint": true,
+    "deprecatedEndpointUsed": false,
+    "repoMcpConfigFound": false,
+    "staticCredentialsOrHeaderValuesRead": false,
+    "configurationChanged": false
+  },
+  "initialization": {
+    "marketer": "Auth required during initialize; resources and templates calls failed before tool catalog.",
+    "documentation": "Auth required during initialize as separate connection.",
+    "classification": "Authentication required, not established as repo plugin scope or stale catalog. No authenticated tenant authorization yet established."
+  },
+  "supportedRepair": {
+    "officialOpenAIDoc": "https://developers.openai.com/codex/mcp",
+    "existingInstalledCLI": "ChatGPT bundled Codex CLI; standard mcp login marketer, no scope override or config override.",
+    "normalOAuthFlowStarted": true,
+    "consentPageTitle": "Authorization Request",
+    "consentButton": "Allow Access",
+    "requestedScopes": [
+      "openid",
+      "email",
+      "profile",
+      "offline_access"
+    ],
+    "consentAccepted": false,
+    "needsActionTimeConfirmation": "Codex access to Sitecore identity information plus persistent offline access. Stop before Allow Access until user explicitly confirms this exact grant.",
+    "callback": "Owned temporary loopback callback; no authorization URLs/state/codes/keys in repository.",
+    "maximumPendingMinutes": 5,
+    "afterConsent": "Complete supported Sitecore Identity and intended tenant selection, then read-only list-sites; refresh catalog only after authenticated success. Stop on unexpected grants or tenant scope."
+  },
+  "doesNotResolve": [
+    "Separate Authoring Management API denial",
+    "Culture exact navigation denial",
+    "Legal uncertain prior job",
+    "222 blocked saves",
+    "PDF/media unpublished direction"
+  ],
+  "userOrOperatorAction": "Confirm the specific existing Marketer OAuth consent, including offline_access. No new token/manual credentials or permission changes requested.",
+  "savedCmsAndCodePreserved": true,
+  "publication": false,
+  "deployment": false
+}

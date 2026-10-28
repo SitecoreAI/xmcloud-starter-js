@@ -58,3 +58,7 @@ Broad route sampling and structural tests are not all-route visual, legal/financ
 ## Resume and continuity
 
 Use the same task/one authorized computer writer. Fetch the verified allianz-life branch, inspect status/instructions and preserve user work; never transfer env files, cookies, credentials or editing queries. Source evidence is retained locally under the existing migration evidence directory; repository registries carry all critical IDs and public-source provenance. Revalidate official sources when working elsewhere. All app code is pushed; generated next-env.d.ts and local tmp PDF files are excluded. Do not manually redeploy docs-only commits. Keep original eight Edge tabs and close only owned tabs/server after each pass. Do not relaunch exhausted run03 or the completed one-off Production diagnostic.
+
+## Acceleration: Marketer MCP reconnect
+
+[Exact authentication diagnosis](MARKETER-MCP-AUTHENTICATION-DIAGNOSIS-20261028.json): the existing global Marketer URL is the supported current endpoint. Tool discovery exposes no Sitecore tools because initialize returns Auth required. The standard installed Codex OAuth reconnect reached an Allow Access consent for openid/email/profile/offline_access; it has NOT been accepted. Persistent offline access requires exact action-time confirmation. No credentials or authorization URLs are stored here. After confirmed consent, use intended tenant selection and read-only list-sites, then reassess actual tool capabilities. This does not authorize retrying the separate Authoring API denial.
