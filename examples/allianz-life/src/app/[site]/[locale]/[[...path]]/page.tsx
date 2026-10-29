@@ -13,6 +13,7 @@ import { getBaseUrl } from "lib/utils";
 import { loadAllianzPage } from 'lib/allianz-page-loader';
 import { allianzMetadata } from 'lib/allianz-metadata';
 import { enrichAllianzComponentMap } from 'lib/allianz-automatic-components';
+import { excludeNewYorkSearchStaticPaths } from 'lib/allianz-static-paths';
 
 // Refresh prerendered CMS pages after 60 seconds using stale-while-revalidate.
 export const revalidate = 60;
@@ -85,10 +86,10 @@ export const generateStaticParams = async () => {
           .filter((site: SiteInfo) => site.name === defaultSite)
           .map((site: SiteInfo) => site.name)
       : sites.map((site: SiteInfo) => site.name);
-    return await client.getAppRouterStaticParams(
+    return excludeNewYorkSearchStaticPaths(await client.getAppRouterStaticParams(
       allowedSites,
       routing.locales.slice(),
-    );
+    ));
   }
   return [];
 };
