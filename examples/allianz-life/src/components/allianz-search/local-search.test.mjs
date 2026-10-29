@@ -118,6 +118,7 @@ const notFound = new Error('NEXT_NOT_FOUND_TEST');
 const pageLoad = loader({
   'next/navigation': { useRouter: () => ({ push() {} }), notFound() { throw notFound; } },
   '../../search/NewYorkSearchUtilityShell': { __esModule: true, default: async ({ children }) => children },
+  './NationwideSearchUtilityShell': { __esModule: true, default: async ({ children }) => children },
 });
 const page = pageLoad(path.join(routeRoot, 'page.tsx'));
 const newYorkPage = pageLoad(path.join(newYorkRouteRoot, 'page.tsx'));
@@ -132,13 +133,15 @@ test('explicit utility route renders accessible query, results, empty and unmatc
   const html = renderToStaticMarkup(await pageElement('annuities'));
   assert.match(html, /<h1[^>]*>Search<\/h1>/);
   assert.match(html, /role="search"/);
+  assert.match(html, /aria-label="Search this website"/);
   assert.match(html, /<label for="[^"]+">Search this website<\/label>/);
   assert.match(html, /type="search"[^>]*name="q"/);
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /href="\/what-we-offer\/annuities"/);
   assert.match(html, /Show more results/);
-  assert.match(html, /imported public-content snapshot/);
-  assert.match(html, /not a live Sitecore search index/);
+  assert.match(html, /Search articles and resources/);
+  assert.doesNotMatch(html, /imported public-content snapshot|not a live Sitecore search index/);
+  assert.match(html, /Enable JavaScript to search this website/);
   assert.doesNotMatch(html, /%23consumer|Page not found|action="https:|<iframe/);
   assert.match(renderToStaticMarkup(await pageElement('')), /Enter a word or phrase/);
   assert.match(renderToStaticMarkup(await pageElement('unlikelytermzzzzzz')), /No results found/);
@@ -202,7 +205,7 @@ test('fixture proxy preserves NY query and reaches the explicit utility without 
 test('NY wrapper reuses accessible utility states, NY-only results and NY home breadcrumb', async () => {
   const html = renderToStaticMarkup(await newYorkPageElement('annuities'));
   assert.match(html, /href="\/new-york">Allianz Life New York home/);
-  assert.match(html, /imported New York public-content snapshot/);
+  assert.match(html, /Search New York articles and resources/);
   assert.match(html, /role="search"/);
   assert.match(html, /aria-live="polite"/);
   const resultView = flatten(await newYorkPageElement('annuities')).find((node) => node.props.matches);

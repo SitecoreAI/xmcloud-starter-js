@@ -60,6 +60,7 @@ function harness({ page = fixturePage(), needsComponentData = true, fetchOptions
   const componentProps = { fixture: { resolved: true } };
   const sdk = {
     useSitecore: () => ({ page: React.useContext(PageContext) }),
+    withFieldMetadata: (Component) => Component,
     Text: ({ field: f, tag = 'span', editable, ...props }) => React.createElement(tag, props, f?.value ?? ''),
     RichText: ({ field: f, tag = 'div', editable, ...props }) => React.createElement(tag, { ...props, dangerouslySetInnerHTML: { __html: f?.value || '' } }),
     Link: ({ field: f, editable, renderChildrenWhenEmpty, children, ...props }) => React.createElement('a', {
@@ -148,6 +149,8 @@ function harness({ page = fixturePage(), needsComponentData = true, fetchOptions
   }
   componentMap.set('AllianzLegacyHeader', load('src/components/allianz-legacy-header/AllianzLegacyHeader.tsx').Default);
   componentMap.set('AllianzLegacyFooter', load('src/components/allianz-legacy-footer/AllianzLegacyFooter.tsx').Default);
+  componentMap.set('AllianzHeader', load('src/components/allianz-header/AllianzHeader.tsx').Default);
+  componentMap.set('AllianzFooter', load('src/components/allianz-footer/AllianzFooter.tsx').Default);
   return { page, calls, client, fetchOptions, componentProps, componentMap, load, notFound, render: (element) => renderToStaticMarkup(element) };
 }
 
@@ -226,7 +229,7 @@ for (const mode of ['isEditing', 'isPreview', 'isDesignLibrary']) {
 
 test('real basic and advanced routes retain their utility forms and NY-only results inside the real shell', async () => {
   for (const [file, searchParams, expectedForm] of [
-    [basicFile, { q: 'annuities' }, /aria-label="Search imported public content"/],
+    [basicFile, { q: 'annuities' }, /aria-label="Search this website"/],
     [advancedFile, { q: 'annuities', within: 'titles', sort: 'title', size: '12' }, /Search words/],
   ]) {
     const h = harness();
@@ -286,4 +289,35 @@ test('actual basic and advanced client forms still prevent submissions and navig
     assert.equal(prevented, true);
     assert.equal(h.calls.routerPushes.at(-1), expected);
   }
+});
+
+test('nationwide utility renders real modern native header and footer, without Home content or identity', async () => {
+  const original = fixturePage();
+  original.layout.sitecore.context.itemPath = '/';
+  original.layout.sitecore.route.itemId = 'fixture-home';
+  original.layout.sitecore.route.fields = {};
+  const header = original.layout.sitecore.route.placeholders['headless-header'][0];
+  header.componentName = 'AllianzHeader';
+  header.fields.data.datasource.primaryNav.targetItems[0].title = field('What we offer');
+  header.fields.data.datasource.primaryNav.targetItems[0].link = field({ href: '/what-we-offer' });
+  const footer = original.layout.sitecore.route.placeholders['headless-footer'][0];
+  footer.componentName = 'AllianzFooter';
+  footer.fields.data.datasource.primaryNav.targetItems[0].children.results[0].title = field('Privacy');
+  footer.fields.data.datasource.primaryNav.targetItems[0].children.results[0].link = field({ href: '/privacy' });
+  const before = JSON.stringify(original), h = harness({ page: original });
+  const html = h.render(await h.load('src/app/[site]/[locale]/search/NationwideSearchUtilityShell.tsx').default({
+    site: 'allianz-life', locale: 'en', children: customMain(),
+  }));
+  assert.deepEqual(h.calls.loader, [['allianz-life', 'en']]);
+  assert.equal(h.calls.providers[0].page.layout.sitecore.route.itemId, undefined);
+  assert.equal(h.calls.providers[0].page.layout.sitecore.context.itemPath, '/search');
+  assert.equal(JSON.stringify(original), before);
+  assert.equal(count(html, /<main\b/g), 1);
+  assert.equal(count(html, /<header\b/g), 1);
+  assert.equal(count(html, /<footer\b/g), 1);
+  assert.match(html, /aria-label="Main navigation"/);
+  assert.match(html, /href="\/what-we-offer"/);
+  assert.match(html, /href="\/privacy"/);
+  assert.match(html, /UTILITY_CONTENT_ONCE/);
+  assert.doesNotMatch(html, /Native CMS search|data-native-search/);
 });
