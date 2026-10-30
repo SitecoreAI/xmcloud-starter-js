@@ -102,8 +102,11 @@ const LifeOverviewHeading = ({ fields, params, icon, includeBody = false }: Life
   const body = includeBody ? data.body?.jsonValue : undefined;
   const information = icon === 'information';
   const theme = information ? (params.theme === 'green-soft' ? 'green-soft' : 'yellow-soft') : 'transparent';
+  // Keep the yellow heading's existing 32px gap inside its painted wrapper
+  // when the separately owned video follows it. Other heading variants retain their spacing.
+  const bottomSpacing = information && theme === 'yellow-soft' ? 'u-padding-bottom-lg' : 'u-margin-bottom-lg';
   return <div className={`l-container--full-width ${sectionTheme(theme)} axlTileCollection allianz-life-overview-heading`} id={params.RenderingIdentifier}>
-    <div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+    <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${bottomSpacing} u-padding-top-lg`}><div className="l-grid__column-medium-12">
       <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
         <div className={`tileIcon ${information ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}>
             {/* Source decorative glyphs have no editable image field. */}

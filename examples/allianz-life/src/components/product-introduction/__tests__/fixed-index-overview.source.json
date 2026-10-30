@@ -1,0 +1,112 @@
+{
+  "sourceURL": "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities",
+  "capturedUTC": "2026-10-30T12:47:30Z",
+  "documentSHA256": "7c7841bcc9fc9488bf7824176df843a54f232ba21306c5ae18581a6b9ad57b1c",
+  "fragmentSHA256": "bd4fd82c0282e6128b8cb02b39458637c8595e45b74310020565b15e61dd0037",
+  "sourceHeadingInlineStyle": "font-size:1.625rem;line-height:2rem;",
+  "sourceHeadingGlobalMargin": "24px 0",
+  "sourceBodyClass": "tileBody u-font-size-lg",
+  "sourceBodyFontSize": "1.125rem",
+  "sourceBodyLineHeight": "1.625rem",
+  "baseSHA": "e5a055822a999480ae1b1b80ba4295cac7b09197",
+  "baseComponentSHA256": "faf99cd830b1fe8f01216b63f3185eec6c40b7f7ea889d1651f1353b6f2eba49",
+  "legacyCases": [
+    {
+      "id": "populated",
+      "heading": "Native <overview> & heading",
+      "body": "<p>Native body <strong>formatting</strong>.</p>"
+    },
+    {
+      "id": "heading-cleared",
+      "heading": "",
+      "body": "<p>Retained body content.</p>"
+    },
+    {
+      "id": "body-cleared",
+      "heading": "Retained heading",
+      "body": ""
+    },
+    {
+      "id": "both-cleared",
+      "heading": "",
+      "body": ""
+    }
+  ],
+  "legacyActualSDKSSR": {
+    "Default": {
+      "populated": {
+        "normal": "56f3b9b992880aa15c259d9489528695e0fa9218002e61cf6338c3838c6b2ae4",
+        "editing": "7740e28f01d3e2eddedc967bef5a2190b7e08be3fb03f7ac3287d5dc8c937232"
+      },
+      "heading-cleared": {
+        "normal": "8b8e613cbefdc0b2ab3c5d3f9cdb7f085496d9aaf53c29a73d898c9c6a2a6690",
+        "editing": "633e7611c825d963aeba11b1d544c65a314b436f4c8d235d2a0fdc109f98350a"
+      },
+      "body-cleared": {
+        "normal": "f59c3337942a631cb710ca7ab6595408bc2796d5e533b138bc9d721fe1da5893",
+        "editing": "4a9777bfa3cde0de366198bef8d77a3316b690c4825a0baf7c00c3e9d21647c5"
+      },
+      "both-cleared": {
+        "normal": "1b6cc364b573e2c46f96ed9b065d8f6f37f9a709e7fbf89b15d53b9d525cbd47",
+        "editing": "1b6cc364b573e2c46f96ed9b065d8f6f37f9a709e7fbf89b15d53b9d525cbd47"
+      }
+    },
+    "Blue": {
+      "populated": {
+        "normal": "1c2724b5d98e7bb9008fc65c0854f4e2d9217e43a20eac5fef6147f5b93117ab",
+        "editing": "fd615060c2d34b588fc5a103359bbfd90620178d7b8cd3f3b46e0374afb06854"
+      },
+      "heading-cleared": {
+        "normal": "4ea571f841c37e70e9e963b99c5dc45755c4789ceb200f4c9cc2b02b527ae1c0",
+        "editing": "2ad94a4541999d829026dd5a6c9f7c69e3435b5c8cad3e7d75a5a59d5a48ba7e"
+      },
+      "body-cleared": {
+        "normal": "dc9079a944055cf553907a0c6ecfad6aaf77c9a48d9157a91ce159a8ac37654d",
+        "editing": "73d0f4c8b7ab8de58963018c11cfd4c70a1bfccd95f9a101547a83185f779a52"
+      },
+      "both-cleared": {
+        "normal": "5c1619f3d7b93314ff19c6d985aa81ab058c8896412bc45457b19802cb77d536",
+        "editing": "5c1619f3d7b93314ff19c6d985aa81ab058c8896412bc45457b19802cb77d536"
+      }
+    },
+    "Plain": {
+      "populated": {
+        "normal": "742cbfe325d95fef743490f0c22d959a96d2483fc06f594d92180341b9863ecc",
+        "editing": "8b8fd578694f1089e2d2df1a33bc4463141ddf647627e527a6c2e68ce66a1ba3"
+      },
+      "heading-cleared": {
+        "normal": "c9d08b9139bf28ee5f029289e9d8374a62c0d727368918e7821dd5ae54ced1e5",
+        "editing": "9756301ce07d34aee2b612f85580ca6b246588b8ae839d513f0a328d08d06bfe"
+      },
+      "body-cleared": {
+        "normal": "49e437384e3563b6a3e099a2dafe2509f0833fdc4aaa06429b428412f0a2cb72",
+        "editing": "49e437384e3563b6a3e099a2dafe2509f0833fdc4aaa06429b428412f0a2cb72"
+      },
+      "both-cleared": {
+        "normal": "49e437384e3563b6a3e099a2dafe2509f0833fdc4aaa06429b428412f0a2cb72",
+        "editing": "49e437384e3563b6a3e099a2dafe2509f0833fdc4aaa06429b428412f0a2cb72"
+      }
+    },
+    "ProductGroup": {
+      "populated": {
+        "normal": "4428ab6ac35bd9f2ae4578b741adc4d43156e95c46a15a347263ddb862b009e2",
+        "editing": "6d15d01c306dc489d41d17ffc6b54db5dcf425e920a106a240ec848bb976acaf"
+      },
+      "heading-cleared": {
+        "normal": "a14b8f030acf11a1919390f6aaa756daf1a895f27dc3258759080b0b20f67b29",
+        "editing": "7c7595f6824bdf5263bea09b4a5f2a562e17da8a7bd8905d435d18e9cf4bfe30"
+      },
+      "body-cleared": {
+        "normal": "bbe4269a04fd287a4c91e4a49a2726a14c5099fb6faa1457f4d8165bb4c697ff",
+        "editing": "70dadef12f26298a8d46f02cbd080a72b897835d7f3ac9771b07e836efba44d1"
+      },
+      "both-cleared": {
+        "normal": "2449fd47c2bbf7f6dcd503d597a3fdf8198f087361bbd66a1c04852ff0c61a8f",
+        "editing": "2449fd47c2bbf7f6dcd503d597a3fdf8198f087361bbd66a1c04852ff0c61a8f"
+      }
+    }
+  },
+  "SDKVersion": "2.2.0",
+  "ReactVersion": "19.2.7",
+  "fragmentNormalization": "CRLF-to-LF universal-newline normalization of retained source HTML; otherwise exact source component substring."
+}

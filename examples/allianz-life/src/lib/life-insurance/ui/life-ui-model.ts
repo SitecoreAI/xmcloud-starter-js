@@ -21,6 +21,7 @@ export type LifeSourceAdapter = {
 };
 
 export interface LifeUiState {
+  /** -1 preserves a source query activeId that matches no regular panel. */
   step: number;
   values: RawLifeValues;
   touched: Partial<Record<LifeField, true>>;
@@ -40,12 +41,12 @@ export function initialLifeUiState(): LifeUiState {
 }
 
 export function visibleStageFields(state: Pick<LifeUiState, 'step' | 'values'>): LifeField[] {
-  return [...STAGE_FIELDS[state.step as 0 | 1 | 2 | 3 | 4]].filter((name) =>
-    state.values.hasPartner !== 'no' || !PARTNER_FIELDS.includes(name));
+  return [...(STAGE_FIELDS[state.step as 0 | 1 | 2 | 3 | 4] ?? [])].filter((name) =>
+    state.values.hasPartner === 'yes' || !PARTNER_FIELDS.includes(name));
 }
 
 export function stageErrors(state: LifeUiState, source: LifeSourceAdapter): LifeErrors {
-  if (state.step === 4) return {};
+  if (state.step < 0 || state.step === 4) return {};
   const errors = source.validateLifeInsuranceInputs(state.values, { stageIndex: state.step }).errors;
   return Object.fromEntries(visibleStageFields(state).filter((name) => errors[name]).map((name) => [name, errors[name]]));
 }
@@ -69,7 +70,7 @@ export function reduceLifeUi(state: LifeUiState, action: LifeAction, source: Lif
     return { ...state, step: action.step, result: action.step === 4 ? source.calculateLifeInsurance(state.values) : null,
       focus: { kind: 'stage' }, focusVersion: state.focusVersion + 1 };
   }
-  if (state.step === 4) return state;
+  if (state.step < 0 || state.step === 4) return state;
   const errors = stageErrors(state, source);
   const invalid = visibleStageFields(state).find((name) => errors[name]);
   if (invalid) return {

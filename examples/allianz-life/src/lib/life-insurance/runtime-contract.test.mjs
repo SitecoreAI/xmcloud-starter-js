@@ -82,7 +82,8 @@ test('canonical initial/invalid Summary stays local and does not fabricate a rep
   const values = engine.createLifeInsuranceInputs();
   const result = engine.calculateLifeInsurance(values);
   assert.equal(result.sourceSummaryValid, false);
-  const initial = render({});
+  assert.equal(render({}), '', 'Normal source controls initialize after browser query defaults are available.');
+  const initial = render({ initialState: { values, result: null, step: 0, touched: {}, focus: null, focusVersion: 0 } });
   assert.equal((initial.match(/\$0\.00/g) ?? []).length, 3, 'Unconditional mobile source banner formats raw NaNs.');
   const invalid = render({ initialState: summaryState(values, result) });
   assert.ok(invalid.includes('You have not filled out all of the fields'));

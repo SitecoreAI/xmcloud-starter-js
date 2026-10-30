@@ -11,6 +11,13 @@ const VERIFIED_CONTENT_HUB_DOCUMENTS = new Set([
   'https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa',
   'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f2c2be58cff1453f93f24f122d3c30e1?v=1d29b652',
 
+  // Public source: https://www.allianzlife.com/-/media/Files/Global/documents/2018/12/10/17/12/CB95374.pdf
+  // SHA-256 474186d937f1fbcc97b213fdb57820d375242720f1cca35a9bc66bbb24a1bce0 (614341 bytes).
+  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/21d0a45c554a43cf8b28a1612f494e4b?v=95bc816d',
+  // Public source: https://www.allianzlife.com/-/media/Files/Global/documents/2017/01/23/11/44/RFA-001.pdf
+  // SHA-256 06a3889395b1dd61b6adb9de1eb05ed2847453f12408d8b032e2a4e9d36a9f28 (92130 bytes).
+  'https://thlt-demo.sitecoresandbox.cloud/api/public/content/a1470b7a389f4352b62c1603bfbf01e0?v=58949376',
+
   // Public source: https://www.allianzlife.com/-/media/Files/Global/documents/2016/09/15/16/03/M-5391.pdf
   // SHA-256 0214f22a49307bbe3961be0fccb48ad64ebb13560b6a1a52096b113c1afbecf4 (290228 bytes).
   'https://thlt-demo.sitecoresandbox.cloud/api/public/content/7782b0dd295b4429815149f2c15039ae?v=71fb078a',

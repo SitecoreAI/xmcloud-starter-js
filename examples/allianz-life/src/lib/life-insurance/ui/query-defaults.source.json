@@ -1,0 +1,90 @@
+{
+  "sourceUrl": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-life-insurance/dx-life-insurance.js?v=14",
+  "sourceVersion": "0.7.2/v14",
+  "sourceBundleSHA256": "75aa6f4d5c0dd662839844b490f99ab1534a24c8330f81b1c5cfd31a9d7371d7",
+  "offsetUnits": "JavaScript/Python Unicode character indices of decoded UTF-8; matches retained historical offsets",
+  "method": "Static inspection of retained official source bytes; no source execution or service calls.",
+  "snippets": [
+    {
+      "name": "querySnapshotAndActiveIdFactory",
+      "start": 1650106,
+      "end": 1650225,
+      "sha256": "669a5acf4a2d4331578981c832b762a033eed20bcf0c23e8660d108143a62f1c",
+      "code": "var pV=new URLSearchParams(window.location.search);function pZ(){try{return pV.get(\"activeId\")||iV}catch(e){return iV}}"
+    },
+    {
+      "name": "inputDefaultsFactory",
+      "start": 1650225,
+      "end": 1651484,
+      "sha256": "c6769f77e51d355157092742f0b424697d93b2b5d62a08835e0594ac229f8960",
+      "code": "function pG(){var e=hF.getDefaultFromShape();try{var i=!0,r=!1,l=void 0;try{for(var f,y=pV.entries()[Symbol.iterator]();!(i=(f=y.next()).done);i=!0)!function(){var i,r=(i=f.value,function(e){if(Array.isArray(e))return e}(i)||function(e,i){var r,l,f=null==e?null:\"undefined\"!=typeof Symbol&&e[Symbol.iterator]||e[\"@@iterator\"];if(null!=f){var y=[],_=!0,b=!1;try{for(f=f.call(e);!(_=(r=f.next()).done)&&(y.push(r.value),2!==y.length);_=!0);}catch(e){b=!0,l=e}finally{try{_||null==f.return||f.return()}finally{if(b)throw l}}return y}}(i,2)||function(e,i){if(e){if(\"string\"==typeof e)return pU(e,2);var r=Object.prototype.toString.call(e).slice(8,-1);if(\"Object\"===r&&e.constructor&&(r=e.constructor.name),\"Map\"===r||\"Set\"===r)return Array.from(r);if(\"Arguments\"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r))return pU(e,2)}}(i,2)||function(){throw TypeError(\"Invalid attempt to destructure non-iterable instance.\\\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\")}()),l=r[0],y=r[1];if(\"activeId\"!==l){var _={default:function(){e[l]=parseFloat(y)},hasPartner:function(){e[l]=y}};_[l]?_[l]():_.default()}}()}catch(e){r=!0,l=e}finally{try{i||null==y.return||y.return()}finally{if(r)throw l}}return e}catch(i){return e}}"
+    },
+    {
+      "name": "dataStoreInputDefaultsInvocation",
+      "start": 1651605,
+      "end": 1651817,
+      "sha256": "7505fdc333be90078161353be6e47bd4a2271bb41443b7ec11b5027be2503c48",
+      "code": "var pq=function(){var e;function i(e){if(!(this instanceof i))throw TypeError(\"Cannot call a class as a function\");p$(this,\"store\",void 0),p$(this,\"inputs\",Z.inputs()),p$(this,\"isValid\",!0),this.store=e,nS(this)}"
+    },
+    {
+      "name": "uiStoreDefaultsAndRootInitializationOrder",
+      "start": 1652978,
+      "end": 1653516,
+      "sha256": "7f1477f73f983c6faa4e9288e1e4dfde8eed2916b8a86add6baed8673bcd7442",
+      "code": "let pX=function e(i){var r=this;if(!(this instanceof e))throw TypeError(\"Cannot call a class as a function\");pK(this,\"store\",void 0),pK(this,\"activeId\",Z.activeId()),pK(this,\"nextActiveId\",iZ),pK(this,\"setActiveId\",function(e){hF.isValid(r.store.data.inputs).then(function(i){i&&nn(function(){r.activeId=e})})}),pK(this,\"setNextActiveId\",function(e){r.nextActiveId=e}),this.store=i,nS(this)};var pJ=new function e(){if(!(this instanceof e))throw TypeError(\"Cannot call a class as a function\");this.data=new pq(this),this.ui=new pX(this)};"
+    },
+    {
+      "name": "tabContextDefaultAndExactActivation",
+      "start": 1516768,
+      "end": 1517444,
+      "sha256": "a694c8cca5d9e0800736b4e545a082d2c6430e99d64977b734fbaec4258ca818",
+      "code": "o7=class extends id.Component{constructor(e){super(e),this.activeHeader=id.createRef(),this.state={activeId:this.props.defaultActiveId,setActiveId:this.setActiveId,isActive:this.isActive,activeHeader:this.activeHeader}}setActiveId=e=>{this.setState({activeId:e})};isActive=(e,i,r=!1)=>!!r||!i&&!!this.props.independent||e===this.state.activeId;render(){let{independent:e,disabled:i,dataTrack:r,dataTest:l,id:f}=this.props;return(0,G.jsx)(o5.Provider,{value:this.state,children:(0,G.jsx)(\"div\",{\"data-track\":r||f,\"data-test\":l||f,id:f,className:iX()({\"axl-tab-layout\":!0,\"--is-default\":!e,\"--is-independent\":e,\"--is-disabled\":i}),children:this.props.children(this.state)})})}};"
+    },
+    {
+      "name": "panelActivationGuard",
+      "start": 1518474,
+      "end": 1518988,
+      "sha256": "96d01a9e3d84253ce2c4db4e6e392bff6d17e7295e7a35b6cfc0823da09157b9",
+      "code": "function lt({id:e,header:i,mobile:r,children:l}){let f=f=>(0,G.jsx)(\"section\",{className:iX()({\"axl-tab-panel\":!0,\"axl-tab-panel-content-desktop\":!r,\"axl-tab-panel-content-mobile\":r}),children:(0,G.jsxs)(\"div\",{children:[i&&(0,G.jsx)(\"h3\",{className:\"panel-header\",ref:f,tabIndex:0,id:`${e}-header`,children:i}),l]})});return(0,G.jsx)(o5.Consumer,{children:({isActive:i,activeHeader:l})=>i(e)?r?f(l):(0,G.jsx)(\"div\",{className:iX()({\"axl-tab-panel-desktop\":!0,\"u-hidden-small-down\":!0}),children:f(l)}):null})}var "
+    },
+    {
+      "name": "appPassesActiveIdDirectly",
+      "start": 1640329,
+      "end": 1640442,
+      "sha256": "bace4a9db9b36c03b6cd27f256c9ab3a133202bd73912e362e35e2e0c2d1c87b",
+      "code": "defaultActiveId:i.ui.activeId,children:function(r){var l=r.activeId,f=r.setActiveId;return(0,G.jsxs)(G.Fragment,{"
+    },
+    {
+      "name": "stageIdConstants",
+      "start": 1141430,
+      "end": 1141527,
+      "sha256": "f41b6dfee44af99d17a3a268de25ff0f26d70a9ec985a06d24d458dd47e2a7a9",
+      "code": "iV=\"about-you\",iZ=\"one-time-costs\",iG=\"long-term-income-needs\",i$=\"available-assets\",iq=\"summary\""
+    },
+    {
+      "name": "rawInputValueForwarding",
+      "start": 1495097,
+      "end": 1495633,
+      "sha256": "c6bacebeb0c4e5791f8f53701da3e6c067481470f39e0bdde7b0002494db6881",
+      "code": "oH=id.forwardRef(({formControl:e,small:i,large:r,value:l,defaultValue:f,autocomplete:y,type:_,id:b,name:L,placeholder:x,onKeyDown:M,onChange:C,onBlur:T,onFocus:D,onWheel:j,disabled:Y,minValue:E,maxValue:H,dataTrack:R,dataTest:F},B)=>{let z=iX()({\"a-input\":!0,\"form-control\":e,\"--is-small\":i,\"--is-large\":r});return(0,G.jsx)(\"input\",{className:z,value:l,defaultValue:f,ref:B,autoComplete:y,type:_,id:b,name:L,placeholder:x,onKeyDown:M,onChange:C,onBlur:T,onFocus:D,onWheel:j,disabled:Y,min:E,max:H,\"data-track\":R||b,\"data-test\":F||b})}),"
+    },
+    {
+      "name": "exactPartnerVisibilityGuard",
+      "start": 1599446,
+      "end": 1599480,
+      "sha256": "3f6c77da15d42ab1bb0c0b4852125cbb34c15265abae2f13a642160a788f4990",
+      "code": "\"yes\"===i.data.inputs.hasPartner&&"
+    }
+  ],
+  "established": {
+    "snapshot": "pV is created once from window.location.search before the data/UI stores are instantiated",
+    "activeStage": "pZ returns first URLSearchParams.get(activeId) value if truthy, otherwise about-you; exceptions return about-you; no allowlist or normalization in factory",
+    "duplicates": "activeId uses first get(); input entries are processed sequentially, so repeated ordinary numeric/hasPartner names overwrite earlier values",
+    "inputDefaults": "hF.getDefaultFromShape() then direct parseFloat assignment except hasPartner raw string and activeId excluded; no call to income onChange callbacks/updateSourceIncome during defaults",
+    "invocationOrder": "root pJ constructs data pq (Z.inputs()) first, then ui pX (Z.activeId()); app passes ui.activeId directly as tab defaultActiveId",
+    "unknownNonemptyStage": "No initial normalization after pZ found: context assigns raw defaultActiveId; isActive compares equality; lt renders only if isActive(id), so all five regular stages remain unmatched until user selects one. Actions banner/pane can still exist separately; do not claim blank entire widget.",
+    "malformedNumericDisplay": "Source oH forwards value directly to native input, without NaN or Infinity normalization. Development React warnings and browser number-input sanitization are separate from source parsing.",
+    "partnerVisibility": "The About You partner fields render only for exact hasPartner === yes; empty/unknown choices remain raw and keep those fields hidden."
+  },
+  "qualification": "Source-static contract; official browser query-prefill, native editor and release acceptance remain separate."
+}

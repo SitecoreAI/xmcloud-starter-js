@@ -1,10 +1,19 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import { loadSource, sourceRoot, render } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
+import { loadSource, sourceRoot, render, require } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
 
 const filename = path.join(sourceRoot, 'components/allianz-rich-text/AllianzRichText.tsx');
 const RTE = loadSource(filename);
+const React = require('react');
+const { renderToStaticMarkup } = require('react-dom/server');
+const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
+const renderPreview = (Component, data, params) => renderToStaticMarkup(React.createElement(SitecoreProvider, {
+  page: { mode: { isEditing: false, isNormal: false, isPreview: true }, siteName: 'allianz-life',
+    layout: { sitecore: { context: {}, route: { name: 'Life Insurance', fields: {}, placeholders: {} } } } },
+  api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
+}, React.createElement(Component, { params, fields: { data: { datasource: data } } })));
 const decode = value => value.replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&#39;', "'").replaceAll('&amp;', '&');
 const markers = html => [...html.matchAll(/<code [^>]*kind="open"[^>]*>(.*?)<\/code>/g)].map(match => JSON.parse(decode(match[1])));
 const field = (name, value, type = 'Single-Line Text') => ({ jsonValue: { value,
@@ -26,7 +35,9 @@ for (const [name, icon, hasBody] of headingVariants) {
       assert.match(html, new RegExp(`/allianz-ui/life-overview/${icon}\\.svg`));
       assert.match(html, /alt="" aria-hidden="true"/);
       assert.match(html, /class="tileContent u-text-center"><div class="tileIcon[^>]*><img[^>]*><\/div><header>/);
-      assert.match(html, /l-grid__row u-margin-bottom-lg u-padding-top-lg/);
+      assert.match(html, name === 'LifeInformationHeading'
+        ? /l-grid__row u-padding-bottom-lg u-padding-top-lg/
+        : /l-grid__row u-margin-bottom-lg u-padding-top-lg/);
       assert.doesNotMatch(html, /UNUSED|u-font-size-xl|a-axlDisclosures/);
       if (hasBody) assert.match(html, /class="tileBody"[^>]*><p style="text-align:left;">Native <strong>body<\/strong>\.<\/p>/);
       else assert.doesNotMatch(html, /class="tileBody"/);
@@ -60,6 +71,52 @@ test('Information fixed circle and ordinary source yellow/green theme', () => {
     assert.match(html, /allianz-life-overview-glyph-white/);
   }
   for (const name of ['LifeShapesHeading', 'LifePuzzleHeading']) assert.match(render(RTE[name], fixture(), false, { theme: 'green-soft' }), /t-bg-transparent/);
+});
+
+test('only resolved-yellow Information moves the same 32px bottom gap inside its background', () => {
+  const postcss = require('postcss');
+  const css = postcss.parse(fs.readFileSync(path.join(sourceRoot, '../public/allianz-assets/source-style.css'), 'utf8'));
+  const utility = (selector, property) => {
+    const values = [];
+    css.walkRules(selector, rule => rule.walkDecls(property, declaration => values.push(declaration.value)));
+    return values;
+  };
+  assert.deepEqual(utility('.u-margin-bottom-lg', 'margin-bottom'), ['32px']);
+  assert.deepEqual(utility('.u-padding-bottom-lg', 'padding-bottom'), ['32px']);
+  assert.deepEqual(utility('.u-padding-top-lg', 'padding-top'), ['32px']);
+
+  for (const theme of ['yellow-soft', 'transparent', 'purple-soft', undefined]) {
+    const data = fixture(), before = JSON.stringify(data);
+    const originalHeading = data.heading.jsonValue;
+    for (const editing of [false, true]) {
+      const html = render(RTE.LifeInformationHeading, data, editing, { ...staleParams, theme });
+      assert.match(html, /t-bg-yellow-soft/);
+      assert.match(html, /l-grid__row u-padding-bottom-lg u-padding-top-lg/);
+      assert.doesNotMatch(html, /u-margin-bottom-lg|u-padding-bottom-xl|u-margin-bottom-xl/);
+      assert.equal(markers(html).length, editing ? 1 : 0);
+      assert.strictEqual(data.heading.jsonValue, originalHeading);
+    }
+    const preview = renderPreview(RTE.LifeInformationHeading, data, { ...staleParams, theme });
+    assert.match(preview, /t-bg-yellow-soft/);
+    assert.match(preview, /l-grid__row u-padding-bottom-lg u-padding-top-lg/);
+    assert.doesNotMatch(preview, /u-margin-bottom-lg|u-padding-bottom-xl|u-margin-bottom-xl/);
+    assert.equal(markers(preview).length, 0);
+    assert.strictEqual(data.heading.jsonValue, originalHeading);
+    assert.equal(JSON.stringify(data), before);
+  }
+  for (const [name, themes] of [
+    ['LifeInformationHeading', ['green-soft']],
+    ['LifeShapesHeading', ['yellow-soft', 'green-soft']],
+    ['LifePuzzleHeading', ['yellow-soft', 'green-soft']],
+    ['AboutSectionHeading', ['yellow-soft']],
+    ['AboutInformationHeading', ['yellow-soft']],
+  ]) {
+    for (const theme of themes) {
+      const html = render(RTE[name], fixture(), false, { theme });
+      assert.match(html, /l-grid__row u-margin-bottom-lg u-padding-top-lg/, `${name}/${theme}`);
+      assert.doesNotMatch(html, /u-padding-bottom-lg/, `${name}/${theme}`);
+    }
+  }
 });
 
 test('Footnotes: body-only original editor identity, source wrapper and absent/blank cases', () => {

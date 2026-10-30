@@ -36,7 +36,7 @@ section.allianz-local-video article.video-block {
 }
 
 /* Keep source player rows responsive without adding a layout wrapper. */
-.allianz-source-static-video > .allianz-video-player {
+.allianz-source-static-video .allianz-video-player {
   display: block;
   width: 100%;
   height: auto;
