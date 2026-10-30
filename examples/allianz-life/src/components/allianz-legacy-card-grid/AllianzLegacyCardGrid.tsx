@@ -34,3 +34,25 @@ export const Default = ({ fields, params, privacyLinks = false }: LegacyCardGrid
 
 /** Restore the source decorative link marker only for the native Privacy cards. */
 export const Privacy = (props: AllianzProps) => <Default {...props} privacyLinks />;
+
+/** Source home cards retain the container inset without generic editorial typography. */
+export const NewYorkHomeCards = ({ fields, params }: AllianzProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzLegacyCardGrid" />;
+  const columns = ({ '1': 12, '2': 6, '3': 4, '4': 3 } as Record<string, number>)[params.columns] ?? 6;
+  const breakpoint = params.breakpoint === 'md' ? 'md' : 'sm';
+  return <div className="container-fluid allianz-legacy-card-grid allianz-ny-home-cards" id={params.RenderingIdentifier}>
+    {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}
+    <div className={`row mod-row ${params.noMarginBottom === '1' ? 'no-margin-bottom' : ''}`}>
+      {(data.children?.results ?? []).map((card) => <div className={`col-${breakpoint}-${columns}`} key={card.id}><div className={params.alignment === 'center' ? 'mod icon-with-text text-center' : 'mod'}>
+        {shouldRenderImageField(card.image?.jsonValue, isEditing) && <Image editable={isEditing} field={card.image?.jsonValue} className="allianz-legacy-card-image" />}
+        {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="icon-container"><div className="icon-background primary-01-bg" /><Image editable={isEditing} field={card.icon?.jsonValue} className="icon icon-story" aria-hidden={!isEditing && shouldRenderTextField(card.heading?.jsonValue, false) ? true : undefined} /></div>}
+        {shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={headingTag(card.headingLevel?.jsonValue?.value || params.headingLevel || 'h3')} field={card.heading?.jsonValue} />}
+        {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} />}
+        {shouldRenderLinkField(card.link?.jsonValue, isEditing) && <p className="link"><Link editable={isEditing} field={allianzLinkField(card.link?.jsonValue, isEditing)} /></p>}
+      </div></div>)}
+    </div>
+  </div>;
+};

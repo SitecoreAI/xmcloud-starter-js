@@ -3,6 +3,7 @@ import { safeNewsroomRichText } from 'components/legal-disclosures/newsroom-grey
 import { safeEditorialRichText } from './allianz-editorial';
 import { safeLink } from './allianz-fields';
 import retained from './allianz-retained-native-body-assets.fixture.json';
+import serviceLinks from './allianz-source-service-body-links.fixture.json';
 
 export type NativeBodyLinkContext = {
   componentName: 'AllianzCardGrid' | 'AllianzAccordion';
@@ -43,6 +44,17 @@ function isContactUsPhoneHref(decodedHref: string, rawHref: string, context?: Na
     && CONTACT_US_PHONE_HREFS.has(rawHref);
 }
 
+// Exact source Body links at their witnessed native owners only. In particular,
+// this does not make telephone, email or either external site generally allowed.
+const serviceBodyHrefs = new Map(serviceLinks.owners.map((owner) => [
+  `${owner.componentName}:${owner.datasourceId}:${owner.entryId}`, new Set(owner.hrefs),
+]));
+
+function isSourceServiceBodyHref(decodedHref: string, rawHref: string, context?: NativeBodyLinkContext): boolean {
+  const key = ownerKey(context);
+  return decodedHref === rawHref && key !== undefined && serviceBodyHrefs.get(key)?.has(rawHref) === true;
+}
+
 export function isExcludedNativeBodyOwner(context?: NativeBodyLinkContext): boolean {
   const key = ownerKey(context);
   return key !== undefined && excludedOwners.has(key);
@@ -55,7 +67,8 @@ export function isRetainedNativeBodyAssetHref(rawHref: string, context?: NativeB
 
 export function isUnavailableNativeBodyHref(decodedHref: string, rawHref: string, context?: NativeBodyLinkContext): boolean {
   if (isExcludedNativeBodyOwner(context) || /#(?:demo|service)-unavailable$/.test(decodedHref)
-    || isRetainedNativeBodyAssetHref(rawHref, context) || isContactUsPhoneHref(decodedHref, rawHref, context)) return false;
+    || isRetainedNativeBodyAssetHref(rawHref, context) || isContactUsPhoneHref(decodedHref, rawHref, context)
+    || isSourceServiceBodyHref(decodedHref, rawHref, context)) return false;
   return safeLink({ value: { href: decodedHref } }).value.href === '#service-unavailable';
 }
 
