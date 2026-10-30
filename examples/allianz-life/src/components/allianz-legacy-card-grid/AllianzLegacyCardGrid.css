@@ -5,3 +5,15 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+/* The source New York home cards use the legacy Regular-only face at weight
+ * 500. Keep the modern source heading rule out of this native variant. */
+.allianz-legacy.new-york .allianz-ny-home-cards h3 {
+  font-family: AllianzNeoRegular, sans-serif !important;
+}
+
+/* The globally loaded modern list rule has high :not() specificity. Restore
+ * the source zero-margin link rows only within the New York home cards. */
+.allianz-legacy.new-york .allianz-ny-home-cards .link-list > li {
+  margin: 0 !important;
+}
