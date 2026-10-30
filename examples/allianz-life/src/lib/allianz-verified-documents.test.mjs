@@ -8,8 +8,15 @@ const { renderToStaticMarkup } = require('react-dom/server');
 const { Link, SitecoreProvider, ComponentPropsContext } = require('@sitecore-content-sdk/nextjs');
 const { safeLink, safeLinkRenderProps } = loadSource(path.join(sourceRoot, 'lib/allianz-fields.ts'));
 const { allianzLinkField } = loadSource(path.join(sourceRoot, 'lib/allianz-field-state.ts'));
+const { CoreIncome7ProductResources, EditorialStacked } = loadSource(path.join(sourceRoot, 'components/allianz-card-grid/AllianzCardGrid.tsx'));
 const { prospectusLinkField } = loadSource(path.join(sourceRoot, 'components/prospectus-document-table/prospectus-document-table.props.ts'));
 const { Default: DocumentTable } = loadSource(path.join(sourceRoot, 'components/prospectus-document-table/ProspectusDocumentTable.tsx'));
+const productBrochures = [
+  { name: 'CB95374 Core Income 7 product brochure', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/21d0a45c554a43cf8b28a1612f494e4b?v=95bc816d' },
+  { name: 'RFA-001 Retirement Foundation ADV product brochure', target: '_blank',
+    url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/a1470b7a389f4352b62c1603bfbf01e0?v=58949376' },
+];
 const destinations = [
   { name: 'Lifetime income percentage chart', target: '_blank',
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/47d0fbb1e2b6457fa2a595b96dcdccaa?v=27849fc6' },
@@ -25,6 +32,8 @@ const destinations = [
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/ac0957d84998445e98adffaec3c6402f?v=4cfa94aa' },
   { name: 'ABCPL-001 Benefit Control+ product brochure', target: '_blank',
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/f2c2be58cff1453f93f24f122d3c30e1?v=1d29b652' },
+
+  ...productBrochures,
 
   { name: 'M-5391 verified source PDF', target: '_blank',
     url: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/7782b0dd295b4429815149f2c15039ae?v=71fb078a' },
@@ -72,6 +81,36 @@ function renderTable(input, editing = false) {
 function href(html) {
   return /href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
 }
+
+test('native product resource variants retain exact verified brochure links and reject an unregistered DAM document', () => {
+  const variants = [CoreIncome7ProductResources, EditorialStacked];
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const [index, entry] of productBrochures.entries()) {
+      for (const registered of [true, false]) {
+        const input = field(entry, registered ? {} : {
+          href: 'https://thlt-demo.sitecoresandbox.cloud/api/public/content/00000000000000000000000000000000?v=95bc816d',
+        });
+        const before = JSON.stringify(input);
+        const markup = render(React.createElement(variants[index], {
+          params: {},
+          rendering: { uid: 'test-only-product-resources', componentName: 'AllianzCardGrid' },
+          fields: { data: { datasource: { children: { results: [{
+            id: 'test-only-brochure-card',
+            fieldCollection: [{ name: 'links', jsonValue: [{
+              id: 'test-only-brochure-link', fields: { link: input },
+            }] }],
+          }] } } } },
+        }));
+        assert.equal(href(markup), registered ? entry.url : '#service-unavailable');
+        assert.match(markup, registered ? /target="_blank"/ : /target=""/);
+        assert.equal(markup.includes('noopener noreferrer'), registered);
+        assert.equal(markup.includes(' download='), false);
+        assert.equal(JSON.stringify(input), before);
+      }
+    }
+  }
+});
 
 for (const entry of destinations) test(`${entry.name}: installed SDK preserves exact visitor destination and editing ownership`, () => {
   for (const mode of ['fixture', 'connected']) {
@@ -197,6 +236,8 @@ test('disabled services, social destinations and third-party prospectuses retain
       'https://connect.rightprospectus.com/Allianz?site=AZ600',
       'https://www.rightprospectus.com/documents/contract.pdf',
       'https://www.allianzlife.com/unverified-document.pdf',
+      'https://thlt-demo.sitecoresandbox.cloud/api/public/content/00000000000000000000000000000000?v=95bc816d',
+      'https://[invalid', 'javascript:alert(1)', 'data:application/pdf;base64,JVBER',
     ]) {
       const input = field({ ...destinations[0], url });
       // Connected official page navigation is deliberately broader than document approval.

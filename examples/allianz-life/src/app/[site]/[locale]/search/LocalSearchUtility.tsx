@@ -16,7 +16,7 @@ export default function LocalSearchUtility({ query, matches, market }: LocalSear
   const id = useId().replace(/:/g, '');
   const searchPath = market === 'new-york' ? '/new-york/search' : '/search';
   return <section className="allianz-local-search" aria-label="Local website search">
-    <form role="search" aria-label="Search imported public content" className="form-inline" onSubmit={(event) => {
+    <form role="search" aria-label="Search this website" className="form-inline" onSubmit={(event) => {
       event.preventDefault();
       const nextQuery = normalizeSearchQuery(input);
       setLimit(10);
@@ -37,6 +37,6 @@ export default function LocalSearchUtility({ query, matches, market }: LocalSear
         {matches.length > limit && <button className="btn btn-default" type="button" onClick={() => setLimit((previous) => previous + 10)}>Show more results</button>}
       </> : <p>Enter a word or phrase to search this website.</p>}
     </div>
-    <noscript><p>Local search navigation needs JavaScript. Form submissions are disabled in this demo.</p></noscript>
+    <noscript><p>Enable JavaScript to search this website.</p></noscript>
   </section>;
 }

@@ -83,12 +83,13 @@ export function headingTag(level?: string): 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | '
 // These captured source destinations are explicitly approved external links.
 // Extend the evidence-backed list for a new source URL rather than a domain policy.
 const APPROVED_SOURCE_LINKS = new Set(approvedSourceLinks.entries.map(({ url }) => url));
-// These two temporary About source fallbacks now have verified rendered local
-// destinations (public QA 2026-10-27). Keep other exact exceptions, including
-// the separately held Culture destination, unchanged.
+// These exact source fallbacks now have substantive native local destinations.
+// Keep other source exceptions, including the held Culture destination, unchanged.
 const VERIFIED_LOCAL_SOURCE_LINKS = new Set([
   'https://www.allianzlife.com/about/executives',
   'https://www.allianzlife.com/about/newsroom',
+  'https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities',
+  'https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities',
 ]);
 
 // Native document links stay on this approved CMS delivery origin. The QA

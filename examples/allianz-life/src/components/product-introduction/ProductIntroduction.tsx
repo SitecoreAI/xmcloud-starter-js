@@ -45,6 +45,41 @@ export const Default = (props: ProductIntroductionProps) => <ProductIntroduction
 /** Blue introduction used by the source's "Explore our annuities" section. */
 export const Blue = (props: ProductIntroductionProps) => <ProductIntroduction {...props} blue />;
 
+/** FIA's overview keeps its native heading within the source's smaller body typography. */
+export const FixedIndexOverview = ({ fields, params }: ProductIntroductionProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const datasource = fields?.data?.datasource;
+  if (!datasource) return <NoDataFallback componentName="Product Introduction" />;
+  const heading = datasource.heading?.jsonValue;
+  const body = datasource.body?.jsonValue;
+
+  return (
+    <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params?.RenderingIdentifier}>
+      <div className="l-grid l-grid--max-width">
+        <div className="l-grid__row">
+          <div className="l-grid__column-medium-12">
+            <article className="m-axlTile match-height -is--stacked t-bg-transparent">
+              <div className="tileContent u-text-center">
+                <div className="tileSubGrid__content">
+                  <header aria-hidden="true"><div className="tileHeading" /><div className="tileSubHeading" /></header>
+                  <div className="tileBody u-font-size-lg">
+                    {shouldRenderTextField(heading, isEditing) && (
+                      <Text field={heading} editable={isEditing} tag="h2"
+                        style={{ fontSize: '1.625rem', lineHeight: '2rem', margin: '24px 0' }} />
+                    )}
+                    {shouldRenderTextField(body, isEditing) && <RichText field={body} editable={isEditing} />}
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 /** Plain centered rich text uses the source's overview scaffold without a heading field. */
 export const Plain = ({ fields, params }: ProductIntroductionProps) => {
   const { page } = useSitecore();

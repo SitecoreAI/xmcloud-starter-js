@@ -18,7 +18,7 @@ export default async function SearchUtilityPage({ params, searchParams, market }
     <main id="main" className="l-container u-padding-top-md u-padding-bottom-md">
       <nav aria-label="Breadcrumb"><NextLink href={newYork ? '/new-york' : '/'}>{newYork ? 'Allianz Life New York home' : 'Allianz Life home'}</NextLink><span> / Search</span></nav>
       <h1 className="c-heading c-heading--section">Search</h1>
-      <p>Local demo search uses the imported {newYork ? 'New York ' : ''}public-content snapshot. Results are not a live Sitecore search index.</p>
+      <p>Search {newYork ? 'New York ' : ''}articles and resources.</p>
       <LocalSearchUtility key={query} query={query} matches={matches} market={market} />
     </main>
   </div>;

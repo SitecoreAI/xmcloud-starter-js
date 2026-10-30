@@ -198,6 +198,13 @@ test('prior exports retain visitor markup and use the same visible editing canva
                 .replace('<img class="allianz-about-information-glyph" src="/allianz-ui/about-overview/information.svg" alt="Information"/>', '');
               assert.doesNotMatch(visitor, /about-overview\/information\.svg|<img\b/);
             }
+            if (name === 'LifeInformationHeading') {
+              // This historical baseline predates the yellow-only paint repair.
+              // Its transparent parameter resolves to yellow for Information:
+              // retain the same 32px gap as internal padding, not an escaped margin.
+              expected = expected.replace('l-grid__row u-margin-bottom-lg u-padding-top-lg',
+                'l-grid__row u-padding-bottom-lg u-padding-top-lg');
+            }
             assert.equal(visitor, expected, `${name}/visitor/${layout}`);
           }
           else assertWysiwygCanvas(visitor, render(Candidate[name], input, true, params), input, `${name}/editing/${layout}`);

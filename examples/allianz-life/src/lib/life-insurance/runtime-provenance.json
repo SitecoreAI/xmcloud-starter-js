@@ -17,9 +17,9 @@
       "sourceSHA256": "3a585393d45eac60199c40062c98be7e07a8dc0017a61bf96c39eaf488b56d8d",
       "bytes": 9764,
       "mode": "native-integration-adaptation",
-      "runtimeSHA256": "a4d326906cedc39c32d58d96d105e76c3c73a21a86b4d8291c1efc077cd893b9",
-      "runtimeBytes": 9865,
-      "adaptation": "Optional instancePrefix; generated default remains. Pass instance prefix into the report to avoid duplicate IDs across native renderings."
+      "runtimeSHA256": "327436df8bc7769a2bbb5b0dd54c68a02b924255d6b63988f79156708117b33c",
+      "runtimeBytes": 9880,
+      "adaptation": "Optional instancePrefix and report IDs; source query activeId with no matching stage leaves regular panels unrendered."
     },
     {
       "file": "ui/LifeInsuranceActions.tsx",
@@ -63,9 +63,10 @@
       "prototype": "scripts/allianz-life/life-insurance-prototype/ui/life-ui-model.ts",
       "sourceSHA256": "906b87780429942c19bc5675a286795aa5708beb27c7e30d3b537894af21fe31",
       "bytes": 4425,
-      "mode": "exact",
-      "runtimeSHA256": "906b87780429942c19bc5675a286795aa5708beb27c7e30d3b537894af21fe31",
-      "runtimeBytes": 4425
+      "mode": "native-integration-adaptation",
+      "runtimeSHA256": "7b9c858a92feefe3b48ad2f4a31bc7155db2f0ee8dd319561f96e8ca5dd76eda",
+      "runtimeBytes": 4547,
+      "adaptation": "Preserve an unmatched source query stage as step -1 with no fields, errors or Continue action; ordinary menu selection still restores a regular panel. Preserve exact yes-only partner visibility for empty/unknown query choices."
     },
     {
       "file": "ui/life-ui.props.ts",
@@ -245,7 +246,7 @@
   "adaptations": [
     {
       "file": "ui/LifeInsuranceCalculator.tsx",
-      "reason": "Optional instancePrefix; generated default remains. Pass instance prefix into the report to avoid duplicate IDs across native renderings."
+      "reason": "Optional instancePrefix and report IDs; source query activeId with no matching stage leaves regular panels unrendered."
     },
     {
       "file": "ui/life-ui.props.ts",
@@ -262,10 +263,21 @@
     {
       "file": "ui/summary-print.ts",
       "reason": "Add allianz-life-insurance-calculator scoped root class to local print document context."
+    },
+    {
+      "file": "ui/life-ui-model.ts",
+      "reason": "Preserve an unmatched source query stage as step -1 with no fields, errors or Continue action; ordinary menu selection still restores a regular panel. Preserve exact yes-only partner visibility for empty/unknown query choices."
     }
   ],
   "sourceEvidence": "scripts/allianz-life/life-insurance-prototype/ui/feature-source-provenance.json",
   "entry": "LifeInsuranceRuntime.tsx",
   "requiredScopeClass": "allianz-life-insurance-calculator",
-  "stylesheet": "life-insurance.css (separate scoped-style owner)"
+  "stylesheet": "life-insurance.css (separate scoped-style owner)",
+  "queryDefaults": {
+    "sourceEvidence": "ui/query-defaults.source.json",
+    "parser": "ui/life-query-defaults.ts",
+    "browserInitialization": "LifeInsuranceRuntime.tsx reads defaults once after hydration unless explicit local QA initialState is supplied",
+    "financialEngineChanged": false,
+    "networkOrPersistenceAdded": false
+  }
 }

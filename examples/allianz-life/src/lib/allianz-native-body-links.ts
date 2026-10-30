@@ -31,6 +31,18 @@ const assetHrefs = new Map(retained.assetOwners.map((owner) => [
 const excludedOwners = new Set(retained.excludedBodyOwners.map((owner) =>
   `${owner.componentName}:${owner.datasourceId}:${owner.entryId}`));
 
+// Preserve the five authored Contact Us phone links only in their verified card.
+const CONTACT_US_PHONE_OWNER = 'AllianzCardGrid:951486c75f92425cb47bb28e975be455:972d9c6ef06a4abeaca17db1add18d97';
+const CONTACT_US_PHONE_HREFS = new Set([
+  'tel:800-950-1962', 'tel:800-950-7372', 'tel:800-624-0197',
+  'tel:800-542-5427', 'tel:800-950-3347',
+]);
+
+function isContactUsPhoneHref(decodedHref: string, rawHref: string, context?: NativeBodyLinkContext): boolean {
+  return decodedHref === rawHref && ownerKey(context) === CONTACT_US_PHONE_OWNER
+    && CONTACT_US_PHONE_HREFS.has(rawHref);
+}
+
 export function isExcludedNativeBodyOwner(context?: NativeBodyLinkContext): boolean {
   const key = ownerKey(context);
   return key !== undefined && excludedOwners.has(key);
@@ -43,7 +55,7 @@ export function isRetainedNativeBodyAssetHref(rawHref: string, context?: NativeB
 
 export function isUnavailableNativeBodyHref(decodedHref: string, rawHref: string, context?: NativeBodyLinkContext): boolean {
   if (isExcludedNativeBodyOwner(context) || /#(?:demo|service)-unavailable$/.test(decodedHref)
-    || isRetainedNativeBodyAssetHref(rawHref, context)) return false;
+    || isRetainedNativeBodyAssetHref(rawHref, context) || isContactUsPhoneHref(decodedHref, rawHref, context)) return false;
   return safeLink({ value: { href: decodedHref } }).value.href === '#service-unavailable';
 }
 

@@ -9,6 +9,9 @@ const { renderToStaticMarkup } = require('react-dom/server');
 const { Link, RichText, SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
 const { safeLink, safeLinkRenderProps } = loadSource(path.join(sourceRoot, 'lib/allianz-fields.ts'));
 const { safeEditorialRichText } = loadSource(path.join(sourceRoot, 'lib/allianz-editorial.ts'));
+const { allianzLinkField } = loadSource(path.join(sourceRoot, 'lib/allianz-field-state.ts'));
+const { safeNativeBodyRichText } = loadSource(path.join(sourceRoot, 'lib/allianz-native-body-links.ts'));
+const { allianzCardFields } = loadSource(path.join(sourceRoot, 'lib/allianz-card-fields.ts'));
 const source = JSON.parse(fs.readFileSync(new URL('./approved-source-external-links.fixture.json', import.meta.url), 'utf8'));
 const pdfs = source.entries.filter(({ kind }) => kind === 'public-pdf');
 const how = source.entries.find(({ kind }) => kind === 'public-page').url;
@@ -233,12 +236,12 @@ function toolsData(input, label) {
       link: { jsonValue: input }, subheading: { jsonValue: { value: 'Video' } },
     }] } };
 }
-function renderTools(Component, datasource, isEditing) {
+function renderTools(Component, datasource, isEditing, isPreview = false, params = {}) {
   return renderToStaticMarkup(React.createElement(SitecoreProvider, {
-    page: { siteName: 'allianz-life', mode: { isEditing, isNormal: !isEditing, isPreview: false },
+    page: { siteName: 'allianz-life', mode: { isEditing, isNormal: !isEditing && !isPreview, isPreview },
       layout: { sitecore: { context: {}, route: { name: 'Tools links', fields: {}, placeholders: {} } } } },
     api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
-  }, React.createElement(Component, { params: {}, fields: { data: { datasource } } })));
+  }, React.createElement(Component, { params, fields: { data: { datasource } } })));
 }
 // React may prepend image preload links; inspect the rendered card anchor itself.
 const toolsHref = html => /<a\b[^>]*href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
@@ -459,7 +462,7 @@ test('What We Offer source approval does not preserve augmented Annuities URLs o
 });
 
 
-// The two source product pages have no verified native destinations in this page scope.
+// The two source product pages now have substantive native local destinations.
 // Exercise the real purpose component, including its installed SDK Link renderer.
 const annuitiesProductChoices = loadSource(path.join(sourceRoot, 'components/product-type-choices/ProductTypeChoices.tsx'));
 const annuitiesProductDestinations = [
@@ -476,12 +479,14 @@ function annuitiesChoiceAnchors(html) {
   return [...html.matchAll(/<a\b[^>]*class="a-link"[^>]*>/g)].map(([anchor]) => anchor);
 }
 
-test('Annuities exact product source URLs remain absolute in the real ProductTypeChoices visitor and editing rendering', () => {
+test('Annuities choices use local same-tab pages in visitor/preview and retain native editing fields', () => {
   assert.deepEqual(source.entries.filter(entry => entry.sourceRecordKey.startsWith('annuities-product-choice-')),
     annuitiesProductDestinations.map(([url, , sourceRecordKey]) => ({ kind: 'public-page', url, sourceRecordKey })));
   assert.ok(source.sourcePins.some(pin => pin.path === 'preparation/annuities-final-qa-v1/source/SOURCE-FACTS.json'
     && pin.sha256 === '6068f3532acd0aaaf1355143487356bb45d23d371c1c8c17774522d43952b468'
     && JSON.stringify(pin.jsonPointers) === JSON.stringify(['/sections/5/tiles/0/links/0/resolvedUrl', '/sections/5/tiles/1/links/0/resolvedUrl'])));
+  assert.ok(source.sourcePins.some(pin => pin.url === 'https://www.allianzlife.com/what-we-offer/annuities'
+    && pin.sourceHtmlSha256 === '8a59679052f16a35b6eee6e21f59ed94d58429754a27afca5c4940133339453c'));
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     const inputs = annuitiesProductDestinations.map(([url, text], index) => {
@@ -491,17 +496,19 @@ test('Annuities exact product source URLs remain absolute in the real ProductTyp
       return original;
     });
     const data = annuitiesChoiceData(inputs), before = JSON.stringify(data);
-    for (const editing of [false, true]) {
-      const html = renderTools(annuitiesProductChoices.Default, data, editing);
+    for (const [editing, preview] of [[false, false], [false, true], [true, false]]) {
+      const html = renderTools(annuitiesProductChoices.Default, data, editing, preview);
       const anchors = annuitiesChoiceAnchors(html);
       assert.equal(anchors.length, 2);
       inputs.forEach((original, index) => {
-        assert.equal(href(anchors[index]), original.value.href, `${mode}/${editing}/${index}`);
+        assert.equal(href(anchors[index]), editing ? original.value.href : new URL(original.value.href).pathname,
+          `${mode}/${editing}/${preview}/${index}`);
         assert.ok(anchors[index].includes(`aria-label="${original.value.text}"`));
         assert.match(anchors[index], /target=""/);
         assert.doesNotMatch(anchors[index], /\brel=/);
         if (editing) assert.ok(html.includes(original.metadata.fieldId));
         assert.strictEqual(safeLink(original).metadata, original.metadata);
+        assert.strictEqual(allianzLinkField(original, true), original);
         assert.strictEqual(data.children.results[index].link.jsonValue, original);
       });
     }
@@ -823,6 +830,80 @@ test('Related Sites footer preserves exactly the three official external URLs an
       }
     }
     assert.equal(href(render(field('https://www.allianzlife.com/login', { target: '_blank' }))), '#service-unavailable');
+  }
+});
+
+const aboutCorporateDestinations = [
+  ['https://www.agcs.allianz.com/global-offices/united-states.html', 'Allianz Global Corporate & Specialty', 'about-parent-company-agcs'],
+  ['https://www.allianzworldwidepartners.com/usa/', 'Allianz Partners', 'about-parent-company-partners'],
+  ['https://www.allianz-trade.com/en_US.html', 'Allianz Trade', 'about-parent-company-trade'],
+];
+const corporateContext = {
+  componentName: 'AllianzCardGrid', datasourceId: '4B9BEE98-EC6E-4082-A0EB-C4FF2C4C69E7',
+  entryId: 'DDFFD29F-7AFD-4AFD-B169-22783948C013',
+};
+function corporateData(body) {
+  return { id: corporateContext.datasourceId, children: { results: [{ id: corporateContext.entryId,
+    fieldCollection: [{ name: 'body', jsonValue: body }],
+  }] } };
+}
+const corporateParams = { layout: 'image-left', splitRatio: '67:33', columns: '1', alignment: 'left' };
+
+test('About corporate body preserves three exact source URLs and the existing PIMCO anchor in real SDK modes', () => {
+  assert.deepEqual(source.entries.filter(({ sourceRecordKey }) => sourceRecordKey.startsWith('about-parent-company-')),
+    aboutCorporateDestinations.map(([url, , sourceRecordKey]) => ({ kind: 'public-page', url, sourceRecordKey })));
+  assert.ok(source.sourcePins.some(pin => pin.url === 'https://www.allianzlife.com/about'
+    && pin.sourceHtmlSha256 === '70d30879ae603f36f1653350a87e86eb5d083544118d4d65d1ad8278f63bc997'));
+  const destinations = [...aboutCorporateDestinations, ['https://www.pimco.com/us/en', 'PIMCO']];
+  const body = Object.freeze({ value: destinations.map(([url, text]) =>
+    `<p><a href="${url}" target="_blank" rel="noopener noreferrer">${text.replaceAll('&', '&amp;')}</a></p>`).join(''),
+  metadata: Object.freeze({ itemId: 'test-only-about-corporate-card', fieldId: 'test-only-corporate-body', fieldType: 'Rich Text' }) });
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    const data = corporateData(body), before = JSON.stringify(data);
+    assert.strictEqual(allianzCardFields(data.children.results[0]).body.jsonValue, body);
+    for (const [editing, preview] of [[false, false], [false, true], [true, false]]) {
+      const markup = renderTools(toolsCards.Default, data, editing, preview, corporateParams);
+      for (const [url] of destinations) {
+        assert.ok(markup.includes(`href="${url}" target="_blank" rel="noopener noreferrer"`), `${mode}/${editing}/${preview}/${url}`);
+        assert.equal(safeLink(field(url, { target: '_blank' })).value.href, url);
+      }
+      assert.ok(!markup.includes('#service-unavailable'));
+      assert.strictEqual(safeNativeBodyRichText(body, editing, corporateContext), body);
+      if (editing) assert.ok(markup.includes(body.metadata.fieldId));
+    }
+    assert.equal(JSON.stringify(data), before);
+  }
+});
+
+test('About corporate additions reject unrecorded URL variants without changing native editing fields', () => {
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const [url] of aboutCorporateDestinations) {
+      const parsed = new URL(url);
+      const variants = [`${url}?redirect=unapproved`, `${url}#uncaptured`, `${url}/extra`,
+        url.replace(parsed.hostname, `${parsed.hostname}.evil.invalid`),
+        url.replace('https://', 'https://user:password@'),
+        url.replace(parsed.hostname, `${parsed.hostname}:444`), url.replace('https://', 'http://')];
+      for (const candidate of variants) {
+        const input = field(candidate, { target: '_blank' }), before = JSON.stringify(input);
+        assert.equal(safeLink(input).value.href, '#service-unavailable', candidate);
+        assert.strictEqual(allianzLinkField(input, true), input);
+        const body = { value: `<p><a href="${candidate}" target="_blank">Corporate variant</a></p>`,
+          metadata: { itemId: 'test-only-corporate-variant', fieldId: 'test-only-variant-body', fieldType: 'Rich Text' } };
+        const data = corporateData(body), bodyBefore = JSON.stringify(data);
+        for (const preview of [false, true]) {
+          const markup = renderTools(toolsCards.Default, data, false, preview, corporateParams);
+          assert.ok(markup.includes('href="#service-unavailable" target=""'));
+          assert.ok(!markup.includes(`href="${candidate}"`));
+        }
+        assert.strictEqual(safeNativeBodyRichText(body, true, corporateContext), body);
+        assert.equal(JSON.stringify(input), before);
+        assert.equal(JSON.stringify(data), bodyBefore);
+      }
+    }
+    assert.equal(safeLink(field('/Login')).value.href, '#service-unavailable');
+    assert.equal(safeLink(field('https://unrecorded.example.invalid/')).value.href, '#service-unavailable');
   }
 });
 

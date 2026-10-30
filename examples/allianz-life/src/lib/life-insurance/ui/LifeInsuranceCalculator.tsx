@@ -95,7 +95,7 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
     dispatch({ type: 'next' });
   }
 
-  const activePanel = (
+  const activePanel = stage ? (
     <section ref={panel} className={`axl-tab-panel axl-tab-panel-content-${desktop ? 'desktop' : 'mobile'}`} id={`${prefix}-${stage.id}`} aria-labelledby={`${prefix}-heading`}>
       <div><h3 className="panel-header" ref={heading} id={`${prefix}-heading`} tabIndex={-1}>{stage.name}</h3></div>
       {state.step < 4 && stage.introduction && <p className="life-stage-introduction">{stage.introduction}</p>}
@@ -136,7 +136,7 @@ export function LifeInsuranceCalculator({ copy, source, formatSummaryValue, onCa
       </div>}
       {copy.legalText && <p className="life-widget-legal">{copy.legalText}</p>}
     </section>
-  );
+  ) : null;
 
   return <div className="life-insurance-private axl-tab-layout --is-default" data-private-life-calculator>
     <nav aria-label="Life insurance calculator">

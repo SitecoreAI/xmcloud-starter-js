@@ -1074,3 +1074,100 @@ test('all 29 modern exports mount the shared Body policy with native editing ide
     if (mode === 'editing') assert.equal(call.field, original);
   }
 });
+
+const contactPhoneContext = {
+  componentName: 'AllianzCardGrid',
+  datasourceId: '951486C7-5F92-425C-B47B-B28E975BE455',
+  entryId: '972D9C6E-F06A-4ABE-ACA1-7DB1ADD18D97',
+};
+const contactPhoneHrefs = [
+  'tel:800-950-1962', 'tel:800-950-7372', 'tel:800-624-0197',
+  'tel:800-542-5427', 'tel:800-950-3347',
+];
+// Public source numbers and synthetic SDK metadata; no private CMS snapshot.
+const contactPhoneBody = '<p>' + contactPhoneHrefs.map((href) =>
+  `<a href="${href}">${href.slice(4).replaceAll('-', '.')}</a>`).join(' <br /> ') + '</p>';
+
+test('Contact Us retains the five exact phone hrefs while the generic General Link policy stays unchanged', () => {
+  const original = freeze(syntheticField(contactPhoneBody));
+  for (const href of contactPhoneHrefs) {
+    assert.equal(policy.isUnavailableNativeBodyHref(href, href, contactPhoneContext), false);
+    assert.equal(safeLink({ value: { href } }).value.href, '#service-unavailable');
+  }
+  for (const editing of [false, true]) {
+    assert.equal(policy.safeNativeBodyRichText(original, editing, contactPhoneContext), original);
+  }
+  assert.equal(original.value, contactPhoneBody);
+});
+
+test('Contact Us phone preservation requires the exact component, datasource and card with strict native IDs', () => {
+  const compact = (id) => id.replaceAll('-', '').toLowerCase();
+  const good = [contactPhoneContext, {
+    ...contactPhoneContext, datasourceId: `{${contactPhoneContext.datasourceId}}`,
+    entryId: compact(contactPhoneContext.entryId),
+  }];
+  for (const ctx of good) for (const href of contactPhoneHrefs) {
+    assert.equal(policy.isUnavailableNativeBodyHref(href, href, ctx), false);
+  }
+  const wrong = [undefined, { ...contactPhoneContext, componentName: 'AllianzAccordion' },
+    { ...contactPhoneContext, componentName: 'Other' },
+    { ...contactPhoneContext, datasourceId: '00000000000000000000000000000000' },
+    { ...contactPhoneContext, entryId: '00000000000000000000000000000000' },
+    { ...contactPhoneContext, datasourceId: contactPhoneContext.entryId, entryId: contactPhoneContext.datasourceId }];
+  for (const id of [undefined, null, 42, {}, '', ` ${contactPhoneContext.datasourceId}`,
+    `${contactPhoneContext.datasourceId} `, `{${contactPhoneContext.datasourceId}`,
+    `{{${contactPhoneContext.datasourceId}}}`, contactPhoneContext.datasourceId.replace('-', '--')]) {
+    wrong.push({ ...contactPhoneContext, datasourceId: id }, { ...contactPhoneContext, entryId: id });
+  }
+  for (const ctx of wrong) for (const href of contactPhoneHrefs) {
+    assert.equal(policy.isUnavailableNativeBodyHref(href, href, ctx), true);
+  }
+});
+
+test('Contact Us phone ownership does not admit URI variants, other numbers or account and email services', () => {
+  for (const href of contactPhoneHrefs) {
+    const variants = [href.replace('tel:', 'TEL:'), href.replaceAll('-', ''), href.replace('tel:', 'tel:+1-'),
+      `${href};ext=1`, `${href}?extra=1`, `${href}#details`, ` ${href}`, `${href}\n`,
+      href.replace('tel:', 'https://')];
+    for (const raw of variants) assert.equal(policy.isUnavailableNativeBodyHref(raw, raw, contactPhoneContext), true, raw);
+    const encodedColon = href.replace('tel:', 'tel%3A');
+    // The existing general policy treats an encoded colon as a relative page URL.
+    // It gains no phone exception, including when a caller supplies decoded text.
+    assert.equal(policy.isUnavailableNativeBodyHref(encodedColon, encodedColon, contactPhoneContext),
+      safeLink({ value: { href: encodedColon } }).value.href === '#service-unavailable');
+    assert.equal(policy.isUnavailableNativeBodyHref(href, encodedColon, contactPhoneContext), true);
+    for (const raw of [href.replace('tel:', 'tel&#58;'), href.replace('tel:', 'tel&colon;'), href.replace('-', '&#45;')]) {
+      assert.equal(policy.isUnavailableNativeBodyHref(href, raw, contactPhoneContext), true, raw);
+      const original = freeze(syntheticField(`<a href="${raw}" target="_blank">Phone variant</a>`));
+      assert.equal(policy.safeNativeBodyRichText(original, false, contactPhoneContext).value,
+        '<a href="#service-unavailable" target="">Phone variant</a>');
+    }
+  }
+  for (const href of ['tel:800-555-1212', 'mailto:service@example.invalid', '/Login']) {
+    assert.equal(policy.isUnavailableNativeBodyHref(href, href, contactPhoneContext), true, href);
+  }
+});
+
+test('actual CardGrid normal and preview renders retain the five phone anchors and editing keeps original SDK fields', () => {
+  const controls = '<a href="tel:800-555-1212" target="_blank">Other phone</a>'
+    + '<a href="mailto:service@example.invalid" target="_blank">Email</a><a href="/Login" target="_blank">Account</a>';
+  const original = freeze(syntheticField(contactPhoneBody + controls));
+  const data = freeze({ id: contactPhoneContext.datasourceId, children: { results: [{ id: contactPhoneContext.entryId,
+    fieldCollection: [{ name: 'heading', jsonValue: { value: 'Phone' } }, { name: 'body', jsonValue: original }],
+  }] } });
+  const before = JSON.stringify(data);
+  const visitorBody = original.value.replace(/href="(?:tel:800-555-1212|mailto:service@example.invalid|\/Login)" target="_blank"/g,
+    'href="#service-unavailable" target=""');
+  for (const mode of modes) {
+    cardCalls.length = 0;
+    const html = renderSDK(Cards.Default, data, params, mode);
+    for (const href of contactPhoneHrefs) assert.equal(html.split(`href="${href}"`).length - 1, 1, `${mode}:${href}`);
+    const expectedBody = mode === 'editing' ? original.value : visitorBody;
+    const call = cardCalls.find(({ field }) => field?.value === expectedBody);
+    assert.ok(call, `${mode}: complete native Body reaches SDK RichText`);
+    assert.equal(call.field.metadata, original.metadata);
+    if (mode === 'editing') assert.equal(call.field, original);
+    else assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 3);
+    assert.equal(JSON.stringify(data), before);
+  }
+});
