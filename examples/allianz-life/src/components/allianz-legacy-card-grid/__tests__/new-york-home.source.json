@@ -1,0 +1,138 @@
+{
+  "sourceURL": "https://www.allianzlife.com/new-york",
+  "capturedUTC": "2026-10-30T15:03:55.044108+00:00",
+  "sourceDocumentSHA256": "66f8ad30cada30be780d7f99ca91a0d70c18682d42b450f5201d3212f3dfacfb",
+  "fragmentSHA256": "469f58914332d49fe5227d72e1819076e910f898b1fc6300bc9b72d68e50fc49",
+  "baselineCommit": "e5a055822a999480ae1b1b80ba4295cac7b09197",
+  "baselineComponentSHA256": "fe6b2b56bb6035d6131d87c569df4579b2caf8ef5fbba66197c0842e810d04b6",
+  "sourceCards": [
+    {
+      "id": "TEST-ONLY-NY-CARD-1-NOT-A-CMS-ID",
+      "heading": "Consumer confidence",
+      "body": "<p>Allianz Life Insurance Company of New York (Allianz Life of NY) values the confidence that consumers have in us and our products. We recognize the responsibility that comes with that confidence and are committed to helping consumers prepare for their financial futures with the solutions and products that fit their financial objectives. </p>\n<ul class=\"link-list\">\n    <li><a href=\"/new-york/about\" aria-label=\"Learn more about Allianz Life of New York\">Learn more about Allianz Life of NY</a> </li>\n    <li><a href=\"/new-york/contact-us\" aria-label=\"Contact Us\">Contact us</a> </li>\n</ul>",
+      "sortOrder": 100
+    },
+    {
+      "id": "TEST-ONLY-NY-CARD-2-NOT-A-CMS-ID",
+      "heading": "Allianz Index Advantage+ New York™ Variable Annuity",
+      "body": "<p>Learn more about Allianz Index Advantage+ New&nbsp;York&trade;. </p>\n<ul class=\"link-list\">\n    <li> <a href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york\" aria-label=\"Learn more about Allianz Index Advantage+ New York variable annuity\">Learn more</a> </li>\n</ul>",
+      "sortOrder": 200
+    }
+  ],
+  "cases": [
+    {
+      "id": "source",
+      "cards": [
+        {
+          "id": "TEST-ONLY-NY-CARD-1-NOT-A-CMS-ID",
+          "heading": "Consumer confidence",
+          "body": "<p>Allianz Life Insurance Company of New York (Allianz Life of NY) values the confidence that consumers have in us and our products. We recognize the responsibility that comes with that confidence and are committed to helping consumers prepare for their financial futures with the solutions and products that fit their financial objectives. </p>\n<ul class=\"link-list\">\n    <li><a href=\"/new-york/about\" aria-label=\"Learn more about Allianz Life of New York\">Learn more about Allianz Life of NY</a> </li>\n    <li><a href=\"/new-york/contact-us\" aria-label=\"Contact Us\">Contact us</a> </li>\n</ul>",
+          "sortOrder": 100
+        },
+        {
+          "id": "TEST-ONLY-NY-CARD-2-NOT-A-CMS-ID",
+          "heading": "Allianz Index Advantage+ New York™ Variable Annuity",
+          "body": "<p>Learn more about Allianz Index Advantage+ New&nbsp;York&trade;. </p>\n<ul class=\"link-list\">\n    <li> <a href=\"/New-York/annuities/registered-index-linked-annuities/index-advantage-plus-new-york\" aria-label=\"Learn more about Allianz Index Advantage+ New York variable annuity\">Learn more</a> </li>\n</ul>",
+          "sortOrder": 200
+        }
+      ]
+    },
+    {
+      "id": "authored",
+      "heading": "Authored grid <heading> & title",
+      "cards": [
+        {
+          "id": "TEST-ONLY-AUTHORED-CARD",
+          "heading": "Authored <card> & title",
+          "body": "<p>Authored <strong>body</strong>.</p><ul class=\"link-list\"><li><a href=\"/new-york/about\" aria-label=\"Authored About\">Authored link</a></li></ul>"
+        }
+      ]
+    },
+    {
+      "id": "cleared",
+      "heading": "",
+      "cards": [
+        {
+          "id": "TEST-ONLY-CLEARED-CARD",
+          "heading": "",
+          "body": ""
+        }
+      ]
+    },
+    {
+      "id": "media-link",
+      "heading": "Native media and link",
+      "params": {
+        "columns": "4",
+        "breakpoint": "md",
+        "headingLevel": "h4",
+        "alignment": "center",
+        "region": "disclosure",
+        "noMarginBottom": "1"
+      },
+      "cards": [
+        {
+          "id": "TEST-ONLY-MEDIA-CARD",
+          "heading": "Media <card>",
+          "body": "<p>Native media body.</p>",
+          "image": {
+            "src": "/allianz-assets/test-image.svg",
+            "alt": "Authored image",
+            "width": 24,
+            "height": 24
+          },
+          "icon": {
+            "src": "/allianz-assets/test-icon.svg",
+            "alt": "Authored icon",
+            "width": 24,
+            "height": 24
+          },
+          "link": {
+            "href": "/new-york/about",
+            "text": "Native About",
+            "target": ""
+          }
+        }
+      ]
+    }
+  ],
+  "legacyActualSDKSSR": {
+    "Default": {
+      "source": {
+        "normal": "47a17a86eb48b6174fda490a7bea2ac242ea4fdd3cafcdc4a2cb63feb89d9a0b",
+        "editing": "e417a8449b5a1c9dc4e9f70829a6a8870544366fec42b527d71a760f3bb877f5"
+      },
+      "authored": {
+        "normal": "c227a0cebeeee8997a9b803364fafd5ce23b810d3851af669f7725c6f66e5420",
+        "editing": "aad8fdd9eb1295465b2e5411af87c00084ec64178665c803f370942e9f27ab77"
+      },
+      "cleared": {
+        "normal": "676e674895349d1f45fec43b567cbcc1e396f899b7b51e4a6bbde111ddd25870",
+        "editing": "676e674895349d1f45fec43b567cbcc1e396f899b7b51e4a6bbde111ddd25870"
+      },
+      "media-link": {
+        "normal": "1ca9d9b92b48f423bde78741a7d142e2fc40a1af089a1351f961fbd94f40dc33",
+        "editing": "cad337d548b0f37e29f021443761336b0869df7849427a01d6e70ddad2e02a57"
+      }
+    },
+    "Privacy": {
+      "source": {
+        "normal": "47a17a86eb48b6174fda490a7bea2ac242ea4fdd3cafcdc4a2cb63feb89d9a0b",
+        "editing": "e417a8449b5a1c9dc4e9f70829a6a8870544366fec42b527d71a760f3bb877f5"
+      },
+      "authored": {
+        "normal": "c227a0cebeeee8997a9b803364fafd5ce23b810d3851af669f7725c6f66e5420",
+        "editing": "aad8fdd9eb1295465b2e5411af87c00084ec64178665c803f370942e9f27ab77"
+      },
+      "cleared": {
+        "normal": "676e674895349d1f45fec43b567cbcc1e396f899b7b51e4a6bbde111ddd25870",
+        "editing": "676e674895349d1f45fec43b567cbcc1e396f899b7b51e4a6bbde111ddd25870"
+      },
+      "media-link": {
+        "normal": "818b353d9974106383d6d659da6385e7387899133fe622c1003d018da521c388",
+        "editing": "34e5bb20321bfc1c7cddf46bf39cf1ed5adf1e2c79e1eac1bc844e8e2045640b"
+      }
+    }
+  },
+  "qualification": "Exact retained source fragment; synthetic TEST-ONLY fixture IDs are not CMS identities. Browser/native/live acceptance remains separate."
+}

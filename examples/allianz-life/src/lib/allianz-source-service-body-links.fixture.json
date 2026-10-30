@@ -1,0 +1,106 @@
+{
+  "schema": "allianz.verified-source-service-body-links.v1",
+  "scope": "Only the exact href bytes at the nine verified Claims/FAQ native Body owners. This does not allow these protocols or domains generally, reconstruct placeholders, change General Link policy, or change CMS content.",
+  "sourcePins": [
+    {
+      "url": "https://www.allianzlife.com/claims-information",
+      "capturedAtUtc": "2026-10-30T15:29:50.142434+00:00",
+      "httpStatus": 200,
+      "htmlSHA256": "234e2819f3bad5c2c59530fea838f9701736dd517778091c1c79cd96f77d981e",
+      "qualification": "Ordinary anonymous source HTML; no asset or service requests. Exact hrefs matched to these native owners in a separate private source/delivery/CM matrix."
+    },
+    {
+      "url": "https://www.allianzlife.com/customer-service-frequently-asked-questions",
+      "capturedAtUtc": "2026-10-30T15:29:50.142823+00:00",
+      "httpStatus": 200,
+      "htmlSHA256": "56be688bf7f4f46a6faba6f136e72360dfd0a0d93a350cc262b64a144205fe28",
+      "qualification": "Ordinary anonymous source HTML; no asset or service requests. Exact hrefs matched to these native owners in a separate private source/delivery/CM matrix."
+    }
+  ],
+  "owners": [
+    {
+      "componentName": "AllianzCardGrid",
+      "datasourceId": "a1f100d06ce24cca8cec282873ddde28",
+      "entryId": "3f2f9cc424bb40ab8a276379f11e6357",
+      "hrefs": [
+        "tel:800-950-1962",
+        "tel:800-624-0197"
+      ]
+    },
+    {
+      "componentName": "AllianzCardGrid",
+      "datasourceId": "08fb929580cd439e95868ad5bb1ffd2f",
+      "entryId": "f25567668e784f6aa3a6b095b467b984",
+      "hrefs": [
+        "tel:800-950-1962",
+        "tel:800-624-0197"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "5e25a48649b44f309d34fc3378960cb9",
+      "entryId": "9625b30455e84a28bc8225120b016aec",
+      "hrefs": [
+        "tel:800-950-3347"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "7a373530bf2a415cb3f3816889f55061",
+      "entryId": "e429aff2b27a4673b2108bf3f7372930",
+      "hrefs": [
+        "mailto:fixedannuity@send.allianzlife.com?subject=Fixed Annuity Document",
+        "mailto:variableannuity@send.allianzlife.com?subject=Variable Annuity Document",
+        "mailto:lifeinsurance@send.allianzlife.com?subject=Life Insurance Document"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "7a373530bf2a415cb3f3816889f55061",
+      "entryId": "cc502c7b7ac24b1ba9ce929911814d47",
+      "hrefs": [
+        "mailto:fixedannuity@send.allianzlife.com?subject=Fixed Annuity Document",
+        "mailto:variableannuity@send.allianzlife.com?subject=Variable Annuity Document",
+        "mailto:lifeinsurance@send.allianzlife.com?subject=Life Insurance Document"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "7a373530bf2a415cb3f3816889f55061",
+      "entryId": "7869d6b690924bef9e2d8f0fac3b84ae",
+      "hrefs": [
+        "mailto:fixedannuity@send.allianzlife.com?subject=Fixed Annuity Document",
+        "mailto:variableannuity@send.allianzlife.com?subject=Variable Annuity Document",
+        "mailto:lifeinsurance@send.allianzlife.com?subject=Life Insurance Document"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "7a373530bf2a415cb3f3816889f55061",
+      "entryId": "0669e118a2044477a17219fee6d0ec2c",
+      "hrefs": [
+        "mailto:fixedannuity@send.allianzlife.com?subject=Fixed Annuity Document",
+        "mailto:variableannuity@send.allianzlife.com?subject=Variable Annuity Document"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "77365a0a946848af98dfdc357a4c596f",
+      "entryId": "eb99e34bf812436b8e616637d219b1b9",
+      "hrefs": [
+        "mailto:fixedannuity@send.allianzlife.com?subject=Fixed Annuity Document",
+        "mailto:variableannuity@send.allianzlife.com?subject=Variable Annuity Document",
+        "mailto:lifeinsurance@send.allianzlife.com?subject=Life Insurance Document"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "4a4de2a435ea49b2802c4ad7426758ea",
+      "entryId": "91e0af244b3845d7a95682f0ce6222aa",
+      "hrefs": [
+        "http://www.naic.org/state_web_map.htm",
+        "http://www.finra.org/"
+      ]
+    }
+  ]
+}
