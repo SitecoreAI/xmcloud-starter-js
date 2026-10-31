@@ -1,5 +1,6 @@
 import type { Field, ImageField } from '@sitecore-content-sdk/nextjs';
 import type { FetchOptions } from '@sitecore-content-sdk/content/client';
+import type { QueryFailureKind } from './allianz-query-failure';
 
 /** Native IDs verified in Biography-41 native checkpoint, 2026-10-02, version 0. */
 export const PEOPLE_CATEGORY_INTRODUCTION_FIELD_ID = 'b161bbde-4549-4d1e-bd99-7d0840708ff6';
@@ -39,14 +40,29 @@ export type PeopleInvalidIdDiagnostic = Readonly<{
   /** One-based position among returned rows, not editorial order or an item identity. */
   rowOrdinal: number;
 }>;
+export type PeoplePageShape = Readonly<{ rows: number; nullRows: number; objectRows: number; otherRows: number }>;
+/** Server-private failed-page inputs. Never attach this cue to component props. */
+export type PeopleNullRowComparisonContext = Readonly<{ after?: string; total: number; hasNext: boolean; shape: PeoplePageShape }>;
+export type PeopleProjectionComparison = {
+  outcome: 'completed' | 'inconclusive' | 'request-failed' | 'wait-budget-exceeded' | 'context-unavailable' | 'logging-blocked';
+  full?: PeoplePageShape;
+  idOnly?: PeoplePageShape & { validIdRows: number };
+  responseShape?: 'bounded-array' | 'missing-search' | 'invalid-total' | 'invalid-page-info' | 'invalid-results' | 'oversized-page' | 'unclassified';
+  totalMatch?: 'same' | 'different';
+  rowCountMatch?: 'same' | 'different';
+  hasNextMatch?: 'same' | 'different';
+  error?: { failureKind: QueryFailureKind; graphqlErrorCount: number; countTruncated: boolean };
+};
 export type NativePeopleDiagnostic = {
   failureStage: 'scope-request' | 'scope-validation' | 'biographies-request' | 'biographies-validation' |
     'categories-request' | 'categories-validation' | 'selection-validation' | 'invalid-scope' | 'unknown';
   validationReason: PeopleSearchValidationReason | 'not-reported';
   invalidId?: PeopleInvalidIdDiagnostic;
+  projectionComparison?: PeopleProjectionComparison;
 };
 const searchValidationReasons = new WeakMap<object, PeopleSearchValidationReason>();
 const invalidIdDiagnostics = new WeakMap<object, PeopleInvalidIdDiagnostic>();
+const nullRowComparisonContexts = new WeakMap<object, PeopleNullRowComparisonContext>();
 function invalidPeopleSearch(reason: PeopleSearchValidationReason, message: string, invalidId?: PeopleInvalidIdDiagnostic): Error {
   const error = new Error(message);
   searchValidationReasons.set(error, reason);
@@ -60,6 +76,33 @@ export function getPeopleSearchValidationReason(error: unknown): PeopleSearchVal
 /** Fixed local classifications only; the original row and ID are never retained. */
 export function getPeopleInvalidIdDiagnostic(error: unknown): PeopleInvalidIdDiagnostic | undefined {
   return typeof error === 'object' && error !== null ? invalidIdDiagnostics.get(error) : undefined;
+}
+export function getPeopleNullRowComparisonContext(error: unknown): PeopleNullRowComparisonContext | undefined {
+  return typeof error === 'object' && error !== null ? nullRowComparisonContexts.get(error) : undefined;
+}
+/** Count only row shapes; do not read any original row's ID a second time. */
+export function boundedPeoplePageShape(rows: unknown): PeoplePageShape | undefined {
+  try {
+    if (!Array.isArray(rows)) return undefined;
+    const length = rows.length;
+    if (!Number.isSafeInteger(length) || length < 0 || length > 10) return undefined;
+    let nullRows = 0, objectRows = 0, otherRows = 0;
+    for (let i = 0; i < length; i++) {
+      const row = rows[i];
+      if (row === null) nullRows++;
+      else if (typeof row === 'object' && !Array.isArray(row)) objectRows++;
+      else otherRows++;
+    }
+    return Object.freeze({ rows: length, nullRows, objectRows, otherRows });
+  } catch { return undefined; }
+}
+function captureNullRowComparisonContext(error: Error, data: Connection<unknown>, after?: string): void {
+  try {
+    const shape = boundedPeoplePageShape(data.results);
+    const total = data.total, hasNext = data.pageInfo?.hasNext;
+    if (shape && Number.isSafeInteger(total) && total >= 0 && typeof hasNext === 'boolean')
+      nullRowComparisonContexts.set(error, Object.freeze({ after, total, hasNext, shape }));
+  } catch { /* Optional observation must not replace the collection failure. */ }
 }
 function classifyInvalidPeopleId(row: unknown, value: unknown, rowOrdinal: number): PeopleInvalidIdDiagnostic {
   try {
@@ -149,9 +192,15 @@ export function validPeopleScope(scope: PeopleScope, response: { root?: PeoplePa
 
 /** Fully literal search inputs follow the same supported Edge contract as Newsroom. */
 export function buildPeopleSearchQuery(kind: PeopleQueryKind, scope: PeopleScope, after?: string): string {
+  return buildPeopleSearchQueryWithProjection(kind, scope, after, false);
+}
+export function buildPeopleIdOnlySearchQuery(scope: PeopleScope, after?: string): string {
+  return buildPeopleSearchQueryWithProjection('biographies', scope, after, true);
+}
+function buildPeopleSearchQueryWithProjection(kind: PeopleQueryKind, scope: PeopleScope, after: string | undefined, idOnly: boolean): string {
   const { root, datasource, language } = checkedScope(scope);
   if (after !== undefined && !after) throw new Error('Invalid people-directory cursor');
-  const projection = kind === 'biographies'
+  const projection = idOnly ? 'id' : kind === 'biographies'
     ? `id ownerPages: ancestors(includeTemplateIDs: "${checkedId(BIOGRAPHY_PAGE_TEMPLATE_ID)}") { id }
       name: field(name: "name") { jsonValue }
       role: field(name: "role") { jsonValue }
@@ -193,8 +242,12 @@ export async function collectPeopleSearch<T extends { id: string }>(getData: Peo
     for (const row of data.results) {
       const rawId = row?.id;
       const id = normalizePeopleId(rawId);
-      if (!id) throw invalidPeopleSearch('invalid-id', 'Invalid or duplicate people-directory item',
-        classifyInvalidPeopleId(row, rawId, rows.length + 1));
+      if (!id) {
+        const diagnostic = classifyInvalidPeopleId(row, rawId, rows.length + 1);
+        const error = invalidPeopleSearch('invalid-id', 'Invalid or duplicate people-directory item', diagnostic);
+        if (kind === 'biographies' && diagnostic.idPresence === 'row-null') captureNullRowComparisonContext(error, data, after);
+        throw error;
+      }
       if (ids.has(id)) throw invalidPeopleSearch('duplicate-id', 'Invalid or duplicate people-directory item');
       rows.push(row); ids.add(id);
     }

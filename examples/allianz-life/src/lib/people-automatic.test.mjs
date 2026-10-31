@@ -12,12 +12,21 @@ const { renderToStaticMarkup } = require('react-dom/server');
 const { SitecoreProvider, ComponentPropsService, ComponentPropsContext } = require('@sitecore-content-sdk/nextjs');
 const { SitecoreClient } = require('@sitecore-content-sdk/nextjs/client');
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), modules = new Map();
+let comparisonDebugState;
 function load(filename) {
   if (modules.has(filename)) return modules.get(filename).exports;
   const compiled = new Module(filename); compiled.filename = filename;
   compiled.paths = Module._nodeModulePaths(path.dirname(filename)); modules.set(filename, compiled);
   compiled.require = (specifier) => {
     if (specifier === 'server-only' || specifier.endsWith('.css')) return {};
+    if (specifier === '@sitecore-content-sdk/core' && filename.endsWith('people-automatic-server.ts')) {
+      const actual = require(specifier);
+      return { ...actual, debug: { ...actual.debug, http: { get enabled() {
+        if (comparisonDebugState) comparisonDebugState.reads = (comparisonDebugState.reads ?? 0) + 1;
+        if (comparisonDebugState?.throws) throw new Error('synthetic-private-debug-inspection');
+        return comparisonDebugState ? comparisonDebugState.value : false;
+      } } } };
+    }
     const local = specifier.startsWith('.') ? path.resolve(path.dirname(filename), specifier) : /^(lib|components)\//.test(specifier) ? path.join(sourceRoot, specifier) : undefined;
     if (local) {
       const resolved = [local, `${local}.ts`, `${local}.tsx`].find((entry) => fs.existsSync(entry) && fs.statSync(entry).isFile());
@@ -99,7 +108,7 @@ function harness(records, change, { rejectTemplateProjection = false } = {}) {
   const calls = [];
   const client = Object.assign(Object.create(SitecoreClient.prototype), { componentPropsService: new ComponentPropsService(), graphQLClient: {
     async request(query, variables, fetchOptions) {
-      const { name, args } = queryArgs(query); calls.push({ name, args, variables, fetchOptions });
+      const { name, args } = queryArgs(query); calls.push({ name, args, variables, fetchOptions, query });
       if (rejectTemplateProjection) {
         const nodes = []; visit(parse(query), { Field(node) { if (node.name.value === 'template') nodes.push(node); } });
         if (nodes.length) throw new ClientError({ status: 200, headers: new Headers({ 'content-type': 'application/json' }),
@@ -115,7 +124,7 @@ function harness(records, change, { rejectTemplateProjection = false } = {}) {
       const rows = source.filter((row) => indexedTemplateMatches(row, predicate.value)).map((row) => nativeProjection(kind, row));
       const offset = Number(args.after ?? 0), hasNext = offset + args.first < rows.length;
       const response = { search: { total: rows.length, results: rows.slice(offset, offset + args.first), pageInfo: { hasNext, endCursor: hasNext ? String(offset + args.first) : null } } };
-      return change ? change(response, name, args) : response;
+      return change ? change(response, name, args, query) : response;
     },
   } });
   return { client, calls };
@@ -280,6 +289,203 @@ test('upstream properties and reused branded errors cannot smuggle ID metadata i
     assert.deepEqual(props.nativePeopleDiagnostic, { failureStage: 'biographies-request', validationReason: 'not-reported' });
     assert.doesNotMatch(JSON.stringify(props), /synthetic-private|idPresence|idType|idFormat|rowOrdinal|invalidId/);
   }
+});
+
+function isIdOnlyQuery(query) {
+  const operation = parse(query).definitions[0];
+  const search = operation.selectionSet.selections[0];
+  const results = search.selectionSet.selections.find(x => x.name.value === 'results');
+  return results?.selectionSet.selections.length === 1 && results.selectionSet.selections[0].name.value === 'id';
+}
+const previewFetchOptions = () => ({ headers: { sc_previewMode: 'true', sc_editMode: 'false', sc_site: 'allianz-life', sc_layoutKind: 'final', Authorization: 'synthetic-private-authorization' } });
+function comparisonHarness(fixture, change) {
+  return harness(fixture.records, (response, name, args, query) => {
+    if (name !== 'AutomaticPeopleBiographies') return response;
+    if (isIdOnlyQuery(query)) {
+      response.search.results = response.search.results.map(row => ({ id: row.id }));
+      return change ? change(response, args, query) : response;
+    }
+    response.search.results[0] = null;
+    return response;
+  });
+}
+async function comparisonProps(fixture, client, { enabled = true, fetchOptions = previewFetchOptions() } = {}) {
+  return (await client.getComponentData(fixture.page, {}, enrichPeopleComponentMap(componentMap(), {
+    getData: client.getData.bind(client), nativePeopleDiagnostics: enabled, fetchOptions,
+  })))[fixture.rendering.uid];
+}
+function noPrivateComparisonValues(value) {
+  assert.doesNotMatch(JSON.stringify(value), /synthetic-private|Authorization|"(?:after|endCursor|query|headers|comparisonContext|total|hasNext)"\s*:|00000000-0000-4000-8000/i);
+}
+
+test('native null-row comparison keeps filters/context, reports bounded shapes and never repairs the collection', async () => {
+  const fixture = nativeDiagnosticFixture(), { client, calls } = comparisonHarness(fixture);
+  const fetchOptions = previewFetchOptions();
+  const props = await comparisonProps(fixture, client, { fetchOptions });
+  const expected = { outcome: 'completed', full: { rows: 8, nullRows: 1, objectRows: 7, otherRows: 0 },
+    idOnly: { rows: 8, nullRows: 0, objectRows: 8, otherRows: 0, validIdRows: 8 },
+    responseShape: 'bounded-array', totalMatch: 'same', rowCountMatch: 'same', hasNextMatch: 'same' };
+  assert.deepEqual(props.nativePeopleDiagnostic.projectionComparison, expected);
+  const queries = calls.filter(x => x.name === 'AutomaticPeopleBiographies');
+  assert.equal(queries.length, 2);
+  assert.equal(isIdOnlyQuery(queries[0].query), false); assert.equal(isIdOnlyQuery(queries[1].query), true);
+  assert.deepEqual(queries[0].args, queries[1].args);
+  assert.equal(queries[1].args.first, 10);
+  assert.equal(queries[1].variables, undefined);
+  assert.equal(queries[0].fetchOptions, fetchOptions);
+  assert.equal(queries[1].fetchOptions.headers, fetchOptions.headers);
+  assert.equal(queries[1].fetchOptions.retryStrategy.shouldRetry({}, 1, 3), false);
+  assert.equal(typeof queries[1].fetchOptions.debugger, 'function');
+  assert.equal(props.automaticPeople.complete, false); assert.deepEqual(props.automaticPeople.items, []);
+  assert.equal(Object.hasOwn(props.automaticPeople, 'projectionComparison'), false);
+  assert.equal(Object.hasOwn(props.automaticPeople, 'comparisonContext'), false);
+  const baselineFixture = nativeDiagnosticFixture(), baseline = comparisonHarness(baselineFixture);
+  const withoutProbe = await comparisonProps(baselineFixture, baseline.client, { enabled: false });
+  assert.deepEqual(props.automaticPeople, withoutProbe.automaticPeople);
+  const html = render(ExecutiveDirectory, props.automaticPeople, fixture.rendering.fields.data.datasource, false, props);
+  assert.match(html, /data-people-projection-comparison=/); assert.match(html, /temporarily unavailable/);
+  noPrivateComparisonValues(props); assert.doesNotMatch(html, /synthetic-private|Authorization|after|endCursor/);
+});
+
+test('public, Edit, wrong placements, other failures and spoofed input cannot start a comparison', async () => {
+  const cases = [
+    { enabled: false },
+    { header: 'false' },
+    { header: 'TRUE' },
+    { header: undefined },
+    { mutate(f) { f.rendering.uid = id(999); } },
+    { mutate(f) { f.page.sitecore.route.itemId = id(999); } },
+    { mutate(f) { f.rendering.dataSource = id(999); } },
+    { mutate(f) { f.page.sitecore.context.language = 'en-GB'; } },
+    { mutate(f) { f.page.sitecore.context.site.name = 'other-site'; } },
+    { mutate(f) { f.rendering.componentName = 'ExpertDirectory'; } },
+    { nonNullInvalidId: true },
+    { nonIdFailure: true },
+  ];
+  for (const item of cases) {
+    const fixture = nativeDiagnosticFixture(); item.mutate?.(fixture);
+    const { client, calls } = harness(fixture.records, (response, name, _args, query) => {
+      if (name === 'AutomaticPeopleBiographies') {
+        assert.equal(isIdOnlyQuery(query), false);
+        if (item.nonIdFailure) response.search.total = -1;
+        else response.search.results[0] = item.nonNullInvalidId ? { id: 'synthetic-private-value' } : null;
+      }
+      return response;
+    });
+    const fetchOptions = previewFetchOptions(); if (Object.hasOwn(item, 'header')) fetchOptions.headers.sc_previewMode = item.header;
+    const props = await comparisonProps(fixture, client, { enabled: item.enabled ?? true, fetchOptions });
+    assert.equal(props.nativePeopleDiagnostic?.projectionComparison, undefined);
+    assert.equal(calls.filter(x => x.name === 'AutomaticPeopleBiographies' && isIdOnlyQuery(x.query)).length, 0);
+    assert.equal(Object.hasOwn(props.automaticPeople, 'comparisonContext'), false);
+    noPrivateComparisonValues(props);
+  }
+});
+
+test('one comparison is cached before dispatch and cannot leak through another UID', async () => {
+  for (const otherFirst of [false, true]) {
+    const fixture = nativeDiagnosticFixture(), { client, calls } = comparisonHarness(fixture);
+    const map = enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client), nativePeopleDiagnostics: true, fetchOptions: previewFetchOptions() });
+    const hook = map.get('ExecutiveDirectory').getComponentServerProps;
+    const other = { ...fixture.rendering, uid: id(999) };
+    const placements = otherFirst ? [other, fixture.rendering, fixture.rendering] : [fixture.rendering, fixture.rendering, other];
+    const props = await Promise.all(placements.map(x => hook(x, fixture.page)));
+    const hidden = props[otherFirst ? 0 : 2];
+    assert.equal(hidden.nativePeopleDiagnostic, undefined);
+    assert.equal(Object.hasOwn(hidden.automaticPeople, 'projectionComparison'), false);
+    assert.equal(calls.filter(x => x.name === 'AutomaticPeopleBiographies' && isIdOnlyQuery(x.query)).length, 1);
+    for (const value of props) noPrivateComparisonValues(value);
+  }
+});
+
+test('later-page comparison reuses the incoming cursor rather than the failed response cursor', async () => {
+  const fixture = nativeDiagnosticFixture();
+  for (let i = 0; i < 5; i++) { const row = structuredClone(fixture.records.biographies[0]); row.id = id(800 + i); row.parent.parent.id = id(900 + i); fixture.records.biographies.push(row); }
+  const { client, calls } = harness(fixture.records, (response, name, args, query) => {
+    if (name === 'AutomaticPeopleBiographies' && args.after) {
+      if (isIdOnlyQuery(query)) response.search.results = response.search.results.map(x => ({ id: x.id }));
+      else { response.search.results[2] = null; response.search.pageInfo.endCursor = 'synthetic-private-failed-cursor'; }
+    }
+    return response;
+  });
+  const props = await comparisonProps(fixture, client);
+  assert.equal(props.nativePeopleDiagnostic.invalidId.rowOrdinal, 13);
+  assert.deepEqual(calls.filter(x => x.name === 'AutomaticPeopleBiographies').map(x => x.args.after), [undefined, '10', '10']);
+  assert.equal(props.nativePeopleDiagnostic.projectionComparison.full.rows, 3);
+  assert.equal(props.nativePeopleDiagnostic.projectionComparison.full.nullRows, 1);
+  assert.equal(props.nativePeopleDiagnostic.projectionComparison.idOnly.rows, 3);
+  noPrivateComparisonValues(props);
+});
+
+test('malformed or changing comparison responses stay inconclusive and expose no partial directory', async (t) => {
+  const cases = [
+    { name: 'missing search', shape: 'missing-search', change() { return {}; } },
+    { name: 'invalid total', shape: 'invalid-total', change(r) { r.search.total = 'synthetic-private'; return r; } },
+    { name: 'invalid page info', shape: 'invalid-page-info', change(r) { r.search.pageInfo.hasNext = 'synthetic-private'; return r; } },
+    { name: 'invalid results', shape: 'invalid-results', change(r) { r.search.results = 'synthetic-private'; return r; } },
+    { name: 'oversized', shape: 'oversized-page', change(r) { r.search.results = Array(11).fill(null); return r; } },
+    { name: 'changed total', shape: 'bounded-array', change(r) { r.search.total++; return r; } },
+    { name: 'changed rows', shape: 'bounded-array', change(r) { r.search.results.pop(); return r; } },
+    { name: 'changed pagination', shape: 'bounded-array', change(r) { r.search.pageInfo.hasNext = true; return r; } },
+    { name: 'malformed id', shape: 'bounded-array', change(r) { r.search.results[0].id = 'synthetic-private'; return r; } },
+    { name: 'arbitrary extra fields ignored', shape: 'bounded-array', outcome: 'completed', change(r) { r.secret = 'synthetic-private'; r.search.results[0].secret = 'synthetic-private'; return r; } },
+    { name: 'both projections null', shape: 'bounded-array', outcome: 'completed', change(r) { r.search.results[0] = null; return r; } },
+    { name: 'reported error', outcome: 'request-failed', change() { throw new ClientError({ status: 200, data: { secret: 'synthetic-private' }, errors: [{ message: 'synthetic-private', extensions: { code: 'INTERNAL_SERVER_ERROR' } }] }, { query: 'synthetic-private' }); } },
+  ];
+  for (const item of cases) await t.test(item.name, async () => {
+    const fixture = nativeDiagnosticFixture(), { client, calls } = comparisonHarness(fixture, item.change);
+    const props = await comparisonProps(fixture, client), comparison = props.nativePeopleDiagnostic.projectionComparison;
+    assert.equal(comparison.outcome, item.outcome ?? 'inconclusive');
+    if (item.shape) assert.equal(comparison.responseShape, item.shape);
+    if (item.outcome === 'request-failed') assert.deepEqual(comparison.error, { failureKind: 'upstream', graphqlErrorCount: 1, countTruncated: false });
+    assert.equal(props.automaticPeople.complete, false); assert.deepEqual(props.automaticPeople.items, []);
+    assert.equal(calls.filter(x => x.name === 'AutomaticPeopleBiographies' && isIdOnlyQuery(x.query)).length, 1);
+    noPrivateComparisonValues(props);
+  });
+});
+
+test('enabled or unverifiable SDK success logging blocks the comparison without reconfiguring it', async () => {
+  for (const state of [{ value: true }, { value: undefined }, { value: 'synthetic-private' }, { throws: true }]) {
+    comparisonDebugState = state;
+    try {
+      const fixture = nativeDiagnosticFixture(), { client, calls } = comparisonHarness(fixture);
+      const props = await comparisonProps(fixture, client);
+      assert.equal(props.nativePeopleDiagnostic.projectionComparison.outcome, 'logging-blocked');
+      assert.equal(calls.filter(x => x.name === 'AutomaticPeopleBiographies' && isIdOnlyQuery(x.query)).length, 0);
+      assert.equal(props.automaticPeople.complete, false); assert.deepEqual(props.automaticPeople.items, []);
+      assert.equal(comparisonDebugState, state); assert.equal(state.reads, 1); noPrivateComparisonValues(props);
+    } finally { comparisonDebugState = undefined; }
+  }
+});
+
+test('supported per-call strategy prevents SDK retries for a failing comparison request', async () => {
+  const { GraphQLRequestClient } = require('@sitecore-content-sdk/core');
+  const fixture = nativeDiagnosticFixture(), base = comparisonHarness(fixture), backend = base.client.graphQLClient;
+  let minimalHttpCalls = 0;
+  base.client.graphQLClient = new GraphQLRequestClient('https://synthetic.invalid/graphql', { retries: 3, debugger: () => {}, fetch: async (_url, options) => {
+    const { query, variables } = JSON.parse(options.body);
+    if (isIdOnlyQuery(query)) {
+      minimalHttpCalls++;
+      return new Response(JSON.stringify({ errors: [{ message: 'synthetic-private', extensions: { code: 'INTERNAL_SERVER_ERROR' } }] }), { status: 503, headers: { 'content-type': 'application/json' } });
+    }
+    return new Response(JSON.stringify({ data: await backend.request(query, variables) }), { status: 200, headers: { 'content-type': 'application/json' } });
+  } });
+  const props = await comparisonProps(fixture, base.client);
+  assert.equal(minimalHttpCalls, 1);
+  assert.equal(props.nativePeopleDiagnostic.projectionComparison.outcome, 'request-failed');
+  assert.deepEqual(props.automaticPeople.items, []); noPrivateComparisonValues(props);
+});
+
+test('comparison stops waiting after its fixed budget without starting another call or changing the failure', async () => {
+  const fixture = nativeDiagnosticFixture(); let release;
+  const { client, calls } = comparisonHarness(fixture, r => new Promise(resolve => { release = () => resolve(r); }));
+  const props = await comparisonProps(fixture, client);
+  const comparison = props.nativePeopleDiagnostic.projectionComparison;
+  assert.equal(comparison.outcome, 'wait-budget-exceeded'); assert.equal(typeof release, 'function');
+  assert.equal(props.automaticPeople.complete, false); assert.deepEqual(props.automaticPeople.items, []);
+  release(); await new Promise(resolve => setImmediate(resolve));
+  assert.equal(comparison.outcome, 'wait-budget-exceeded');
+  assert.equal(calls.filter(x => x.name === 'AutomaticPeopleBiographies' && isIdOnlyQuery(x.query)).length, 1);
+  noPrivateComparisonValues(props);
 });
 
 test('native exact-placement failure readout contains only fixed markers and public props omit the new reason', async () => {

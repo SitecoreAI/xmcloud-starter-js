@@ -23,7 +23,8 @@ export const Default = ({ fields, rendering, params }: ExecutiveDirectoryProps) 
         data-people-id-presence={diagnostic?.invalidId?.idPresence}
         data-people-id-type={diagnostic?.invalidId?.idType}
         data-people-id-format={diagnostic?.invalidId?.idFormat}
-        data-people-row-ordinal={diagnostic?.invalidId?.rowOrdinal}>The executive directory is temporarily unavailable.</p>}
+        data-people-row-ordinal={diagnostic?.invalidId?.rowOrdinal}
+        data-people-projection-comparison={diagnostic?.projectionComparison ? JSON.stringify(diagnostic.projectionComparison) : undefined}>The executive directory is temporarily unavailable.</p>}
       {editing && Boolean(automatic?.missingOrder) && <p role="status">Some biographies have no directory order and appear after ordered entries.</p>}
     </div>
   </section>;
