@@ -78,3 +78,89 @@ test('existing body-only Default keeps its original wrapper and grey-only styles
   assert.match(query, /body: field\(name: "body"\) \{ jsonValue \}/);
   assert.doesNotMatch(query, /children|heading|trailing/);
 });
+
+const newsroomGreyOwner = '39B0FCF0-F366-471E-85BD-F501DE33DF5C';
+const ownedGrey = (value = body, id = newsroomGreyOwner) => ({ id, body: field('owned-grey-body', 'Rich Text', value) });
+
+test('verified NewsroomGrey disclosure preserves its two complete source anchors and plain source contact text', () => {
+  const native = ownedGrey();
+  const snapshot = JSON.stringify(native);
+  const html = render(NewsroomGrey, native);
+  assert.ok(html.includes(body));
+  assert.deepEqual(links(html), ['https://www.ssa.gov/', 'http://www.finra.org']);
+  assert.equal((html.match(/target="_blank"/g) ?? []).length, 2);
+  assert.equal((html.match(/rel="noopener noreferrer"/g) ?? []).length, 2);
+  assert.equal((html.match(/class="disclosure-finra"/g) ?? []).length, 1);
+  assert.match(html, /800\.542\.5427 www\.allianzlife\.com<\/p>/);
+  assert.doesNotMatch(html, /href="tel:800|href="(?:https?:\/\/)?www\.allianzlife\.com/);
+  assert.equal(JSON.stringify(native), snapshot);
+  assert.equal(render(NewsroomGrey, wire(native)), html);
+});
+
+test('verified NewsroomGrey owner accepts native GUID wire forms without accepting malformed or different owners', () => {
+  for (const id of [newsroomGreyOwner, newsroomGreyOwner.toLowerCase(), `{${newsroomGreyOwner}}`, newsroomGreyOwner.replaceAll('-', '')]) {
+    assert.deepEqual(links(render(NewsroomGrey, ownedGrey(body, id))), ['https://www.ssa.gov/', 'http://www.finra.org']);
+  }
+  for (const id of [undefined, '', 'native-author-item', '39B0FCF0-F366-471E-85BD-F501DE33DF5D',
+    `prefix${newsroomGreyOwner}`, `${newsroomGreyOwner}suffix`, `{${newsroomGreyOwner}`, `${newsroomGreyOwner}}`, 39]) {
+    const native = { id, body: field('wrong-owner-body', 'Rich Text', body) };
+    assert.deepEqual(links(render(NewsroomGrey, native)), ['#service-unavailable', '#service-unavailable']);
+  }
+});
+
+test('the verified disclosure does not enable altered URL spellings, protocols, paths, suffixes or encoded raw hrefs', () => {
+  const rejected = [
+    'https://www.ssa.gov', 'http://www.ssa.gov/', 'HTTPS://www.ssa.gov/',
+    'https://www.ssa.gov:443/', 'https://user@www.ssa.gov/', 'https://www.ssa.gov.evil.test/',
+    'https://www.ssa.gov/path', 'https://www.ssa.gov/?q=x', 'https://www.ssa.gov/#details',
+    'https://www.ssa.gov&#47;', 'https&colon;//www.ssa.gov/', 'https://www.ssa.gov/&#10;',
+    'http://www.finra.org/', 'https://www.finra.org', 'http://www.finra.org/path',
+    'http://www.finra.org?x=1', 'http://www.finra.org#details', 'http://www.finra.org:80',
+    'http://www.finra.org.evil.test', 'http://www.finra&#46;org',
+    'javascript:alert(1)', '//www.ssa.gov/', 'tel:800-542-5427', 'mailto:person@example.com',
+  ];
+  for (const href of rejected) {
+    const native = ownedGrey(`<p><a href="${href}" target="_blank">Unverified destination</a></p>`);
+    const snapshot = JSON.stringify(native);
+    assert.deepEqual(links(render(NewsroomGrey, native)), ['#service-unavailable'], href);
+    assert.equal(JSON.stringify(native), snapshot, href);
+  }
+});
+
+test('the verified disclosure preserves its source links while ordinary unsupported and internal anchors retain their policy', () => {
+  const text = '<p><a href="https://www.ssa.gov/" target="_blank" rel="noopener noreferrer">SSA</a> '
+    + '<a href="http://www.finra.org" target="_blank" rel="noopener noreferrer" class="disclosure-finra">FINRA</a> '
+    + '<a href="https://unknown.example/" target="_blank">Unknown</a> '
+    + '<a href="https://www.allianzlife.com/Login" target="_blank">Account</a> '
+    + '<a href="https://www.allianzlife.com/about" target="_blank">About</a></p>';
+  const html = render(NewsroomGrey, ownedGrey(text));
+  const baseline = render(NewsroomGrey, { body: field('generic-grey-body', 'Rich Text', text) });
+  assert.deepEqual(links(html).slice(0, 2), ['https://www.ssa.gov/', 'http://www.finra.org']);
+  assert.deepEqual(links(html).slice(2), links(baseline).slice(2));
+  assert.equal((html.match(/target="_blank"/g) ?? []).length, 2);
+});
+
+test('href-looking title or data attributes cannot make an unverified disclosure destination count as a source URL', () => {
+  const html = render(NewsroomGrey, ownedGrey('<p><a title="href=https://www.ssa.gov/" data-href="http://www.finra.org" href="https://unknown.example/" target="_blank">Unverified</a></p>'));
+  assert.deepEqual(links(html), ['#service-unavailable']);
+  assert.match(html, /title="href=https:\/\/www\.ssa\.gov\/"/);
+  assert.match(html, /data-href="http:\/\/www\.finra\.org"/);
+});
+
+test('verified disclosure editing, deliberate clears and existing placeholders remain native without reconstruction', () => {
+  const native = ownedGrey();
+  const snapshot = JSON.stringify(native);
+  const editing = render(NewsroomGrey, native, true);
+  assert.ok(editing.includes(body));
+  assert.deepEqual(editingIds(editing), ['owned-grey-body']);
+  assert.deepEqual(links(editing), ['https://www.ssa.gov/', 'http://www.finra.org']);
+  assert.equal(JSON.stringify(native), snapshot);
+  const cleared = { ...native, body: field('owned-grey-body', 'Rich Text', ''), fieldCollection: wire(native).fieldCollection };
+  assert.doesNotMatch(render(NewsroomGrey, cleared), /href=|World|AllianzIM/);
+  assert.doesNotMatch(render(NewsroomGrey, cleared, true), /\[No text in field\]|href=|World|AllianzIM/);
+  const placeholder = '<p><a href="#demo-unavailable">SSA</a><a>FINRA</a>800.542.5427 www.allianzlife.com</p>';
+  const output = render(NewsroomGrey, ownedGrey(placeholder));
+  assert.deepEqual(links(output), ['#service-unavailable']);
+  assert.doesNotMatch(output, /href="https:\/\/www\.ssa\.gov\/"|href="http:\/\/www\.finra\.org"|href="tel:/);
+  assert.match(output, /800\.542\.5427 www\.allianzlife\.com/);
+});

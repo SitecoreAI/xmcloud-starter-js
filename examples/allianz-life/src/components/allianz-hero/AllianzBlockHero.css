@@ -1,0 +1,5 @@
+/* Only block-form native headings in Default and FixedProduct. */
+.c-hero__headline[data-allianz-hero-block-heading="true"] p {
+  margin: 0;
+  font: inherit;
+}
