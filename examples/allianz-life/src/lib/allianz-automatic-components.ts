@@ -15,6 +15,8 @@ export type AllianzAutomaticServerOptions = NewsroomAutomaticServerOptions & {
   investmentPortfolioBindings?: InvestmentPortfolioBindings;
   sectionNavigationBindings?: SectionNavigationBindings;
   venturesTeamBindings?: VenturesTeamBindings;
+  /** Set only after the server loader verifies the protected native editing context. */
+  nativePeopleDiagnostics?: boolean;
 };
 
 /** Compose native component hooks once per request, sharing its scoped SDK reader. */

@@ -39,7 +39,7 @@ export default async function Page({ params }: PageProps) {
   // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary
   setRequestLocale(`${site}_${locale}`);
 
-  const { page, needsComponentData, componentFetchOptions } = await loadAllianzPage(site, locale, ...contentPath);
+  const { page, needsComponentData, componentFetchOptions, nativePeopleDiagnostics } = await loadAllianzPage(site, locale, ...contentPath);
 
   // If the page is not found, return a 404
   if (!page) {
@@ -51,6 +51,7 @@ export default async function Page({ params }: PageProps) {
     ? await client.getComponentData(page.layout, {}, enrichAllianzComponentMap(components, {
       getData: client.getData.bind(client),
       fetchOptions: componentFetchOptions,
+      nativePeopleDiagnostics,
       // Native templates created and verified by the owning CMS writer.
       venturesTeamBindings: {
         datasourceTemplateId: '22b14dac-84ad-4d93-83ef-4aa5a958e554',

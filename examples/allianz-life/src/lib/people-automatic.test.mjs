@@ -128,13 +128,126 @@ function layout(kind = 'experts', overrides = {}, repeat = false) {
 function componentMap(dynamic = false) {
   return new Map([['ExecutiveDirectory', { Default: ExecutiveDirectory, componentType: 'client' }], ['ExpertDirectory', dynamic ? { dynamicModule: async () => ({ Default: ExpertDirectory }), componentType: 'client' } : { Default: ExpertDirectory, componentType: 'client' }]]);
 }
-function render(Component, componentProps, datasource, editing = false) {
+function render(Component, componentProps, datasource, editing = false, additionalProps = {}) {
   return renderToStaticMarkup(React.createElement(SitecoreProvider, {
     page: { mode: { isEditing: editing, isNormal: !editing, isPreview: false }, siteName: 'allianz-life', layout: layout() },
     api: {}, componentMap: componentMap(), loadImportMap: async () => ({}),
-  }, React.createElement(ComponentPropsContext, { value: { directory: { automaticPeople: componentProps } } },
+  }, React.createElement(ComponentPropsContext, { value: { directory: { automaticPeople: componentProps, ...additionalProps } } },
     React.createElement(Component, { rendering: { uid: 'directory' }, params: {}, fields: { data: { datasource } } }))));
 }
+
+function nativeDiagnosticFixture() {
+  const records = dataset('executives'), target = data.NATIVE_PEOPLE_DIAGNOSTIC_SCOPE;
+  Object.assign(records.current, { rootId: target.rootId, datasourceId: target.datasourceId });
+  records.root.id = target.rootId;
+  records.datasource.id = target.datasourceId;
+  records.datasource.parent.parent.id = target.rootId;
+  for (const row of records.biographies) row.parent.parent.parent.id = target.rootId;
+  const page = layout('executives');
+  page.sitecore.route.itemId = target.rootId;
+  const rendering = page.sitecore.route.placeholders['headless-main'][0];
+  Object.assign(rendering, { uid: target.placementId, dataSource: target.datasourceId });
+  rendering.fields.data.datasource.id = target.datasourceId;
+  return { records, page, rendering };
+}
+
+test('native exact-placement failure readout contains only fixed markers and public props omit the new reason', async () => {
+  for (const enabled of [false, true]) {
+    const { records, page, rendering } = nativeDiagnosticFixture();
+    const { client } = harness(records, (response, name) => {
+      if (name === 'AutomaticPeopleBiographies') response.search.total = -1;
+      return response;
+    });
+    const props = (await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
+      getData: client.getData.bind(client), nativePeopleDiagnostics: enabled,
+    })))[rendering.uid];
+    assert.equal(props.automaticPeople.complete, false);
+    assert.equal(Object.hasOwn(props.automaticPeople, 'validationReason'), false);
+    assert.deepEqual(props.automaticPeople.items, []);
+    if (enabled) assert.deepEqual(props.nativePeopleDiagnostic, {
+      failureStage: 'biographies-validation', validationReason: 'invalid-total',
+    });
+    else assert.equal(Object.hasOwn(props, 'nativePeopleDiagnostic'), false);
+    for (const editing of [false, true]) {
+      const html = render(ExecutiveDirectory, props.automaticPeople, rendering.fields.data.datasource, editing, props);
+      assert.match(html, /temporarily unavailable/);
+      if (enabled) {
+        assert.match(html, /data-people-failure-stage="biographies-validation"/);
+        assert.match(html, /data-people-validation-reason="invalid-total"/);
+      } else assert.doesNotMatch(html, /data-people-(?:failure-stage|validation-reason)/);
+      assert.doesNotMatch(html, /Authorization|fetchOptions|synthetic-private|rootId|datasourceId|placementId/);
+    }
+  }
+});
+
+test('native readout is fenced by exact owner, placement, site, language and directory kind', async () => {
+  const cases = [
+    (page, rendering) => { rendering.uid = id(909); },
+    (page) => { page.sitecore.route.itemId = id(909); },
+    (page, rendering) => { rendering.dataSource = id(909); },
+    (page) => { page.sitecore.context.site.name = 'other-site'; },
+    (page) => { page.sitecore.context.language = 'en-GB'; },
+    (page, rendering) => { rendering.componentName = 'ExpertDirectory'; },
+  ];
+  for (const mutate of cases) {
+    const { records, page, rendering } = nativeDiagnosticFixture();
+    mutate(page, rendering);
+    const { client } = harness(records, (response, name) => {
+      if (name === 'AutomaticPeopleBiographies') response.search.total = -1;
+      return response;
+    });
+    const props = (await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
+      getData: client.getData.bind(client), nativePeopleDiagnostics: true,
+    })))[rendering.uid];
+    assert.equal(Object.hasOwn(props, 'nativePeopleDiagnostic'), false);
+    assert.equal(Object.hasOwn(props.automaticPeople, 'validationReason'), false);
+    assert.equal(props.automaticPeople.complete, false);
+  }
+});
+
+test('shared collection reads do not carry one native placement diagnostic into a different UID', async () => {
+  for (const otherFirst of [false, true]) {
+    const { records, page, rendering } = nativeDiagnosticFixture();
+    const other = { ...rendering, uid: id(909) };
+    page.sitecore.route.placeholders['headless-main'] = otherFirst ? [other, rendering] : [rendering, other];
+    const { client, calls } = harness(records, (response, name) => {
+      if (name === 'AutomaticPeopleBiographies') response.search.total = -1;
+      return response;
+    });
+    const props = await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
+      getData: client.getData.bind(client), nativePeopleDiagnostics: true,
+    }));
+    assert.equal(props[rendering.uid].automaticPeople, props[other.uid].automaticPeople);
+    assert.equal(props[rendering.uid].nativePeopleDiagnostic.validationReason, 'invalid-total');
+    assert.equal(Object.hasOwn(props[other.uid], 'nativePeopleDiagnostic'), false);
+    assert.equal(calls.filter((call) => call.name === 'AutomaticPeopleScope').length, 1);
+    assert.equal(calls.filter((call) => call.name === 'AutomaticPeopleBiographies').length, 1);
+  }
+});
+
+test('native success has no readout and upstream messages/properties cannot supply a diagnostic reason', async () => {
+  for (const fail of [false, true]) {
+    const { records, page, rendering } = nativeDiagnosticFixture();
+    const { client } = harness(records, (response, name) => {
+      if (fail && name === 'AutomaticPeopleBiographies') throw Object.assign(new Error('synthetic-private-message'), {
+        validationReason: 'duplicate-id', request: { headers: { Authorization: 'synthetic-private-authorization' } },
+      });
+      return response;
+    });
+    const props = (await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
+      getData: client.getData.bind(client), nativePeopleDiagnostics: true,
+    })))[rendering.uid];
+    assert.equal(Object.hasOwn(props.automaticPeople, 'validationReason'), false);
+    if (fail) assert.deepEqual(props.nativePeopleDiagnostic, {
+      failureStage: 'biographies-request', validationReason: 'not-reported',
+    });
+    else {
+      assert.equal(props.automaticPeople.items.length, 8);
+      assert.equal(Object.hasOwn(props, 'nativePeopleDiagnostic'), false);
+    }
+    assert.doesNotMatch(JSON.stringify(props), /synthetic-private|Authorization|"(?:request|stack|query|headers)"\s*:/);
+  }
+});
 
 test('recovered source/native crosswalk retains 8 executives in source order, 29 experts and all 6 editable topics', () => {
   assert.equal(contract.executives.length, 8); assert.equal(contract.experts.length, 29); assert.equal(contract.categories.length, 6);
@@ -254,9 +367,9 @@ test('failed operations expose only a fixed stage marker without request, respon
     { kind: 'executives', expected: 'scope-request', mutate(response, name) { if (name === 'AutomaticPeopleScope') throw privateError(); return response; } },
     { kind: 'executives', expected: 'scope-validation', mutate(response, name) { if (name === 'AutomaticPeopleScope') response.root.url.path = {}; return response; } },
     { kind: 'executives', expected: 'biographies-request', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') throw privateError(); return response; } },
-    { kind: 'executives', expected: 'biographies-validation', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') delete response.search.total; return response; } },
+    { kind: 'executives', expected: 'biographies-validation', reason: 'invalid-total', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') delete response.search.total; return response; } },
     { kind: 'experts', expected: 'categories-request', mutate(response, name) { if (name === 'AutomaticPeopleCategories') throw privateError(); return response; } },
-    { kind: 'experts', expected: 'categories-validation', mutate(response, name) { if (name === 'AutomaticPeopleCategories') delete response.search.pageInfo; return response; } },
+    { kind: 'experts', expected: 'categories-validation', reason: 'invalid-page-info', mutate(response, name) { if (name === 'AutomaticPeopleCategories') delete response.search.pageInfo; return response; } },
     { kind: 'executives', expected: 'selection-validation', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') { response.search.results.push({ ...response.search.results[0], id: id(999) }); response.search.total++; } return response; } },
   ];
   for (const record of cases) {
@@ -267,7 +380,9 @@ test('failed operations expose only a fixed stage marker without request, respon
     assert.equal(output.error, 'unavailable');
     assert.equal(output.failureStage, record.expected);
     assert.equal(output.failureKind, 'unknown');
+    assert.equal(Object.hasOwn(output, 'validationReason'), false);
     assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'failureKind', 'groups', 'items', 'status', 'unassigned', ...diagnosticKeys].sort());
+    assert.equal(Object.hasOwn(result.directory, 'nativePeopleDiagnostic'), false);
     assertResponseDiagnostic(output);
     assert.deepEqual(output.items, []);
     assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization|\"(?:request|response|stack|query|headers)\"\s*:/);
@@ -279,10 +394,95 @@ test('failed operations expose only a fixed stage marker without request, respon
   const complete = await success.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: success.client.getData.bind(success.client) }));
   assert.equal(complete.directory.automaticPeople.items.length, 8);
   assert.equal(Object.hasOwn(complete.directory.automaticPeople, 'failureStage'), false);
+  assert.equal(Object.hasOwn(complete.directory.automaticPeople, 'validationReason'), false);
   const invalid = harness(dataset('executives'), (response, name) => { if (name === 'AutomaticPeopleScope') response.datasource.parent.parent.id = id(999); return response; });
   const rejected = await invalid.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: invalid.client.getData.bind(invalid.client) }));
   assert.equal(rejected.directory.automaticPeople.error, 'invalid-scope');
   assert.equal(Object.hasOwn(rejected.directory.automaticPeople, 'failureStage'), false);
+  assert.equal(Object.hasOwn(rejected.directory.automaticPeople, 'validationReason'), false);
+});
+
+test('collection guards expose fixed reasons through the real SDK without partial rows or private values', async (t) => {
+  const cases = [
+    { reason: 'missing-search', mutate(response) { delete response.search; } },
+    { reason: 'invalid-total', mutate(response) { response.search.total = -1; } },
+    { reason: 'invalid-total', label: 'unsafe total', mutate(response) { response.search.total = Number.MAX_SAFE_INTEGER + 1; } },
+    { reason: 'invalid-total', label: 'fractional total', mutate(response) { response.search.total = 1.5; } },
+    { reason: 'invalid-page-info', mutate(response) { response.search.pageInfo.hasNext = 'synthetic-private-value'; } },
+    { reason: 'invalid-results', mutate(response) { response.search.results = { privateValue: 'synthetic-private-value' }; } },
+    { reason: 'oversized-page', mutate(response) { response.search.results.push(response.search.results[0]); } },
+    { reason: 'total-changed', mutate(response, args) { if (args.after) response.search.total++; } },
+    { reason: 'invalid-id', mutate(response) { response.search.results[0].id = 'synthetic-private-value'; } },
+    { reason: 'duplicate-id', mutate(response) { response.search.results[1].id = `{${response.search.results[0].id.toUpperCase()}}`; } },
+    { reason: 'count-exceeds-total', mutate(response) { response.search.total = 9; } },
+    { reason: 'final-count-mismatch', mutate(response) { response.search.pageInfo.hasNext = false; } },
+    { reason: 'invalid-cursor', label: 'missing cursor', mutate(response) { response.search.pageInfo.endCursor = null; } },
+    { reason: 'invalid-cursor', label: 'repeated cursor', mutate(response, args) { if (args.after) response.search.pageInfo.endCursor = args.after; } },
+    { reason: 'invalid-cursor', label: 'empty next page', mutate(response) { response.search.results = []; } },
+    { reason: 'invalid-cursor', label: 'hasNext at total', mutate(response) { response.search.total = response.search.results.length; } },
+  ];
+  for (const record of cases) await t.test(record.label ?? record.reason, async () => {
+    const records = dataset();
+    const { client } = harness(records, (response, name, args) => {
+      if (name === 'AutomaticPeopleBiographies') record.mutate(response, args);
+      return response;
+    });
+    await assert.rejects(() => data.collectPeopleSearch(client.getData.bind(client), 'biographies', records.current),
+      (error) => data.getPeopleSearchValidationReason(error) === record.reason);
+    const result = await client.getComponentData(layout(), {}, enrichPeopleComponentMap(componentMap(), {
+      getData: client.getData.bind(client), fetchOptions: { headers: { Authorization: 'synthetic-private-value' } },
+    }));
+    const output = result.directory.automaticPeople;
+    assert.equal(output.complete, false);
+    assert.equal(output.status, 'unavailable');
+    assert.equal(output.failureStage, 'biographies-validation');
+    assert.equal(Object.hasOwn(output, 'validationReason'), false);
+    assert.equal(Object.hasOwn(result.directory, 'nativePeopleDiagnostic'), false);
+    assert.deepEqual(output.items, []);
+    assert.deepEqual(output.groups, []);
+    assert.deepEqual(output.unassigned, []);
+    assertResponseDiagnostic(output);
+    assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'failureKind', 'groups', 'items', 'status', 'unassigned', ...diagnosticKeys].sort());
+    assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization|[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}|"(?:request|response|stack|query|headers)"\s*:/i);
+  });
+});
+
+test('only locally branded collection errors can supply a reason, never upstream request errors', async () => {
+  let branded;
+  try { await data.collectPeopleSearch(async () => ({ search: { total: -1 } }), 'biographies', scope()); }
+  catch (error) { branded = error; }
+  assert.equal(data.getPeopleSearchValidationReason(branded), 'invalid-total');
+  const spoofed = Object.assign(new Error('synthetic-private-value'), { validationReason: 'duplicate-id',
+    request: { headers: { Authorization: 'synthetic-private-value' } } });
+  assert.equal(data.getPeopleSearchValidationReason(spoofed), undefined);
+  assert.equal(data.getPeopleSearchValidationReason({ validationReason: 'invalid-id' }), undefined);
+  assert.equal(data.getPeopleSearchValidationReason(null), undefined);
+  for (const error of [spoofed, branded]) {
+    const { client } = harness(dataset('executives'), (response, name) => {
+      if (name === 'AutomaticPeopleBiographies') throw error;
+      return response;
+    });
+    const result = await client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+    const output = result.directory.automaticPeople;
+    assert.equal(output.failureStage, 'biographies-request');
+    assert.equal(Object.hasOwn(output, 'validationReason'), false);
+    assert.deepEqual(output.items, []);
+    assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization/);
+  }
+});
+
+test('complete empty and paginated collections retain their unchanged success shape without a reason', async () => {
+  const empty = await data.collectPeopleSearch(async () => ({ search: { total: 0, results: [], pageInfo: { hasNext: false, endCursor: null } } }), 'biographies', scope());
+  assert.deepEqual(empty, { items: [], complete: true, queryKind: 'biographies',
+    baseTemplateId: data.normalizePeopleId(data.PEOPLE_DIRECTORY_CONTRACTS.executives.templateId),
+    scope: { ...scope(), rootId: data.normalizePeopleId(scope().rootId), datasourceId: data.normalizePeopleId(scope().datasourceId) } });
+  assert.equal(Object.hasOwn(empty, 'validationReason'), false);
+  for (const kind of ['executives', 'experts']) {
+    const records = dataset(kind), { client } = harness(records);
+    const result = await client.getComponentData(layout(kind), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+    assert.deepEqual(result.directory.automaticPeople, selectFixtureDirectory(records.current, records.biographies, records.categories));
+    assert.equal(Object.hasOwn(result.directory.automaticPeople, 'validationReason'), false);
+  }
 });
 
 test('scope transport failures expose fixed GraphQL classification and numeric status through the real SDK', async () => {

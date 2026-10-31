@@ -9,6 +9,7 @@ import { cache } from 'react';
 import publicRouteIndex from '../../content/public-route-index.json';
 import { getFixturePage, isConnected } from './allianz-page';
 import client from './sitecore-client';
+import { NATIVE_PEOPLE_DIAGNOSTIC_SCOPE, normalizePeopleId } from './people-automatic-data';
 
 // The SDK's App Router editing transport header is not exported from its public editing entry point.
 const EDITING_PARAMS_HEADER = 'x-sitecore-editing-params';
@@ -126,7 +127,17 @@ export const loadAllianzPage = cache(async (site: string, locale: string, ...pat
         sc_site: site,
         ...(editingData.previewTime ? { sc_previewTime: editingData.previewTime } : {}),
       } };
-    return { page, needsComponentData: true, componentFetchOptions };
+    // Only successful protected native renders on the internal production host may
+    // expose fixed people-directory failure markers. Cookie-only navigation and
+    // public query/header flags cannot opt in; authorization never leaves this loader.
+    const nativePeopleDiagnostics = Boolean(process.env.SITECORE && process.env.NODE_ENV === 'production' &&
+      requestHeaders.get('Authorization')?.trim() && editingData &&
+      site === 'allianz-life' && locale === 'en' && editingData.site === site && editingData.language === locale &&
+      normalizePeopleId(editingData.itemId) === NATIVE_PEOPLE_DIAGNOSTIC_SCOPE.rootId &&
+      page?.layout.sitecore.context.site?.name === site && page.layout.sitecore.context.language === locale &&
+      (editingData.mode === 'edit' ? page.mode.isEditing : page.mode.isPreview) &&
+      normalizePeopleId(page.layout.sitecore.route?.itemId) === NATIVE_PEOPLE_DIAGNOSTIC_SCOPE.rootId);
+    return { page, needsComponentData: true, componentFetchOptions, nativePeopleDiagnostics };
   }
 
   // The three captured aliases have no native CMS item. Resolve only recorded

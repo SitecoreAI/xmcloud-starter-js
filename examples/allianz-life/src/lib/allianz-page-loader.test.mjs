@@ -35,7 +35,7 @@ function layout(title, description) {
 }
 
 /** Exercise real SDK routing, editing-header parsing and FetchOptions forwarding. */
-function harness(t, { draft = false, connected = true, nodeEnv = 'test', contentMode = connected ? 'connected' : 'fixture', authorization, cookie, mode = 'edit', editingHeader = true, missing = false, deliveryMissing = false, error, expectedContentPath } = {}) {
+function harness(t, { draft = false, connected = true, nodeEnv = 'test', contentMode = connected ? 'connected' : 'fixture', authorization, cookie, mode = 'edit', editingHeader = true, missing = false, deliveryMissing = false, error, expectedContentPath, sitecore, previewDataOverrides = {} } = {}) {
   const previousMode = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
   const previousNodeEnv = process.env.NODE_ENV;
   if (contentMode === null) delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
@@ -47,10 +47,19 @@ function harness(t, { draft = false, connected = true, nodeEnv = 'test', content
     if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
     else process.env.NODE_ENV = previousNodeEnv;
   });
+  if (sitecore !== undefined) {
+    const previousSitecore = process.env.SITECORE;
+    if (sitecore === null) delete process.env.SITECORE;
+    else process.env.SITECORE = sitecore;
+    t.after(() => {
+      if (previousSitecore === undefined) delete process.env.SITECORE;
+      else process.env.SITECORE = previousSitecore;
+    });
+  }
 
   const calls = [];
   const requestReads = { headers: 0, cookies: 0 };
-  const previewData = { mode, site: 'allianz-life', language: 'en', itemId: 'unit-test-item', version: 'latest', layoutKind: 'Final' };
+  const previewData = { mode, site: 'allianz-life', language: 'en', itemId: 'unit-test-item', version: 'latest', layoutKind: 'Final', ...previewDataOverrides };
   const requestHeaders = new Headers();
   if (editingHeader) requestHeaders.set('x-sitecore-editing-params', JSON.stringify(previewData));
   if (authorization !== undefined) requestHeaders.set('authorization', authorization);
@@ -136,7 +145,7 @@ function harness(t, { draft = false, connected = true, nodeEnv = 'test', content
     }).outputText, filename);
     return compiled.exports;
   }
-  return { ...load(routeFile), ...load(path.join(sourceRoot, 'lib/allianz-page-loader.ts')), ...load(path.join(sourceRoot, 'lib/allianz-page.ts')), ...load(path.join(sourceRoot, 'lib/collection-completeness.ts')), calls, requestReads, previewData, deliveryLayout };
+  return { ...load(routeFile), ...load(path.join(sourceRoot, 'lib/allianz-page-loader.ts')), ...load(path.join(sourceRoot, 'lib/allianz-page.ts')), ...load(path.join(sourceRoot, 'lib/collection-completeness.ts')), calls, requestReads, previewData, deliveryLayout, authoringLayout, requestHeaders, client };
 }
 
 const props = (segments = ['products', 'annuities']) => ({ params: Promise.resolve({ site: 'allianz-life', locale: 'en', path: segments }) });
@@ -382,6 +391,171 @@ test('automatic component reads inherit authoring routing only in server-local o
   }
   const normal = harness(t);
   assert.equal((await normal.loadAllianzPage('allianz-life', 'en', 'about', 'newsroom')).componentFetchOptions, undefined);
+});
+
+const nativePeopleRootId = '6808FBA5-C1BB-5F29-AB64-09BFB8B3F594';
+const otherNativePeopleRootId = '6005A352-88D7-402A-B9E8-4C7DDB8CE309';
+const nativePeoplePath = ['about', 'executives'];
+
+function nativePeopleDiagnosticHarness(t, { previewDataOverrides, ...options } = {}) {
+  const h = harness(t, {
+    draft: true, nodeEnv: 'production', sitecore: 'synthetic-internal-sitecore-host',
+    authorization: 'synthetic-explicit-native-authorization', mode: 'preview',
+    ...options, previewDataOverrides: { itemId: nativePeopleRootId, ...previewDataOverrides },
+  });
+  if (h.authoringLayout.sitecore.route) h.authoringLayout.sitecore.route.itemId = nativePeopleRootId;
+  return h;
+}
+
+for (const mode of ['edit', 'preview']) {
+  test(`native people diagnostics require a successful exact protected ${mode} render`, async (t) => {
+    const h = nativePeopleDiagnosticHarness(t, { mode });
+    // The native scope is identity-based, rather than sensitive to GUID formatting.
+    h.authoringLayout.sitecore.route.itemId = nativePeopleRootId.replaceAll('-', '').toLowerCase();
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+    assert.equal(loaded.nativePeopleDiagnostics, true);
+    assert.equal(loaded.needsComponentData, true);
+    assert.equal(loaded.page.mode.isEditing, mode === 'edit');
+    assert.equal(loaded.page.mode.isPreview, mode === 'preview');
+    assert.deepEqual(h.calls.map((call) => call.backend), ['authoring']);
+    assert.equal(h.calls[0].data.itemId, nativePeopleRootId);
+    assert.equal(h.calls[0].data.language, 'en');
+    assert.equal(h.calls[0].data.site, 'allianz-life');
+    assert.deepEqual(loaded.componentFetchOptions, { headers: {
+      Authorization: 'synthetic-explicit-native-authorization', sc_layoutKind: 'Final',
+      sc_editMode: String(mode === 'edit'), sc_previewMode: String(mode === 'preview'), sc_site: 'allianz-life',
+    } });
+    assert.equal(h.requestReads.cookies, 0);
+    assert.doesNotMatch(JSON.stringify(loaded.page), /synthetic-explicit-native-authorization|nativePeopleDiagnostics/);
+  });
+}
+
+test('public spoofed native headers cannot enable people diagnostics without draft mode', async (t) => {
+  const h = nativePeopleDiagnosticHarness(t, { draft: false });
+  h.requestHeaders.set('x-sitecore-native-people-diagnostics', 'true');
+  const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+  assert.equal(loaded.nativePeopleDiagnostics, undefined);
+  assert.equal(Object.hasOwn(loaded, 'nativePeopleDiagnostics'), false);
+  assert.equal(loaded.page.mode.isNormal, true);
+  assert.deepEqual(h.calls.map((call) => call.backend), ['delivery']);
+  assert.deepEqual(h.requestReads, { headers: 0, cookies: 0 });
+});
+
+for (const sitecore of [null, '']) {
+  test(`native people diagnostics stay disabled when internal host flag is ${sitecore === null ? 'absent' : 'empty'}`, async (t) => {
+    const h = nativePeopleDiagnosticHarness(t, { sitecore });
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+    assert.equal(loaded.nativePeopleDiagnostics, false);
+    assert.deepEqual(h.calls.map((call) => call.backend), ['authoring']);
+  });
+}
+
+for (const nodeEnv of ['test', 'development']) {
+  test(`native people diagnostics stay disabled outside production (${nodeEnv})`, async (t) => {
+    const h = nativePeopleDiagnosticHarness(t, { nodeEnv });
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+    assert.equal(loaded.nativePeopleDiagnostics, false);
+    assert.deepEqual(h.calls.map((call) => call.backend), ['authoring']);
+  });
+}
+
+for (const [name, authorization, cookie] of [
+  ['no authorization', undefined, undefined],
+  ['cookie authorization only', undefined, 'synthetic-cookie-native-authorization'],
+  ['blank header with cookie fallback', '   ', 'synthetic-cookie-native-authorization'],
+]) {
+  test(`native people diagnostics require an explicit nonblank Authorization header: ${name}`, async (t) => {
+    const h = nativePeopleDiagnosticHarness(t, { authorization, cookie });
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+    assert.equal(loaded.nativePeopleDiagnostics, false);
+    assert.deepEqual(h.calls.map((call) => call.backend), ['authoring']);
+    assert.ok(h.requestReads.cookies > 0);
+    assert.equal(h.calls[0].fetchOptions?.headers.Authorization, cookie);
+  });
+}
+
+test('authorized native navigation without an editing payload cannot enable people diagnostics', async (t) => {
+  const h = nativePeopleDiagnosticHarness(t, { editingHeader: false });
+  const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+  assert.equal(loaded.nativePeopleDiagnostics, undefined);
+  assert.deepEqual(h.calls.map((call) => call.backend), ['authoring-navigation']);
+  assert.equal(loaded.componentFetchOptions.headers.Authorization, 'synthetic-explicit-native-authorization');
+});
+
+for (const mode of [DesignLibraryMode.Metadata, DesignLibraryMode.Normal, 'normal', 'unrecognized-mode']) {
+  test(`native people diagnostics reject a non-edit/preview payload (${mode})`, async (t) => {
+    const h = nativePeopleDiagnosticHarness(t, { mode });
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+    assert.equal(loaded.nativePeopleDiagnostics, false);
+    assert.equal(h.calls.length, 1);
+    assert.ok(['authoring', 'design-library'].includes(h.calls[0].backend));
+  });
+}
+
+for (const [name, site, locale, previewDataOverrides] of [
+  ['input site', 'other-site', 'en', {}],
+  ['input language', 'allianz-life', 'fr', {}],
+  ['payload site', 'allianz-life', 'en', { site: 'other-site' }],
+  ['payload language', 'allianz-life', 'en', { language: 'fr' }],
+  ['payload root', 'allianz-life', 'en', { itemId: otherNativePeopleRootId }],
+  ['missing payload root', 'allianz-life', 'en', { itemId: undefined }],
+]) {
+  test(`native people diagnostics reject mismatched ${name}`, async (t) => {
+    const h = nativePeopleDiagnosticHarness(t, { previewDataOverrides });
+    const loaded = await h.loadAllianzPage(site, locale, ...nativePeoplePath);
+    assert.equal(loaded.nativePeopleDiagnostics, false);
+    assert.deepEqual(h.calls.map((call) => call.backend), ['authoring']);
+  });
+}
+
+for (const [name, change] of [
+  ['returned site', (page) => { page.sitecore.context.site.name = 'other-site'; }],
+  ['returned language', (page) => { page.sitecore.context.language = 'fr'; }],
+  ['returned root', (page) => { page.sitecore.route.itemId = otherNativePeopleRootId; }],
+  ['missing returned root', (page) => { delete page.sitecore.route.itemId; }],
+  ['missing returned site', (page) => { delete page.sitecore.context.site; }],
+]) {
+  test(`native people diagnostics verify ${name} after the protected SDK read succeeds`, async (t) => {
+    const h = nativePeopleDiagnosticHarness(t);
+    change(h.authoringLayout);
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+    assert.equal(loaded.nativePeopleDiagnostics, false);
+    assert.deepEqual(h.calls.map((call) => call.backend), ['authoring']);
+  });
+}
+
+for (const [name, change] of [
+  ['null returned route', (page) => { page.sitecore.route = null; }],
+  ['missing returned route', (page) => { delete page.sitecore.route; }],
+]) {
+  test(`native people diagnostics stay disabled for ${name}`, async (t) => {
+    const h = nativePeopleDiagnosticHarness(t);
+    change(h.authoringLayout);
+    const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+    assert.equal(loaded.page, null);
+    assert.equal(loaded.nativePeopleDiagnostics, false);
+    assert.deepEqual(h.calls.map((call) => call.backend), ['authoring']);
+  });
+}
+
+test('native people diagnostics verify the returned page mode independently of the input payload', async (t) => {
+  const h = nativePeopleDiagnosticHarness(t);
+  const getPreview = h.client.getPreview.bind(h.client);
+  h.client.getPreview = async (...args) => {
+    const page = await getPreview(...args);
+    return { ...page, mode: { ...page.mode, isEditing: false, isPreview: false } };
+  };
+  const loaded = await h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath);
+  assert.equal(loaded.nativePeopleDiagnostics, false);
+  assert.equal(h.previewData.mode, 'preview');
+  assert.deepEqual(h.calls.map((call) => call.backend), ['authoring']);
+});
+
+test('a failed protected native read cannot return diagnostic authorization or a delivery fallback', async (t) => {
+  const error = new Error('synthetic protected native read failed');
+  const h = nativePeopleDiagnosticHarness(t, { error });
+  await assert.rejects(h.loadAllianzPage('allianz-life', 'en', ...nativePeoplePath), (actual) => actual === error);
+  assert.deepEqual(h.calls.map((call) => call.backend), ['authoring']);
 });
 
 const cashPaths = [
