@@ -1,0 +1,5 @@
+/* Source forgotten-account links have no button bottom margin. Keep the
+ * account-service mock and every other hero/login presentation unchanged. */
+.allianz-professional-login-hero .c-hero__loginForm .o-axlLogin__linkGroupItem > .allianz-text-button {
+  margin: 0;
+}

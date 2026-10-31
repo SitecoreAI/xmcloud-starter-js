@@ -1265,3 +1265,36 @@ export const TakingIncomeResources = ({ fields, params }: AllianzRichTextProps) 
     </div>
   </div>;
 };
+
+/** Source professional introductions keep Body plain or inside the header. */
+const ProfessionalIntroduction = ({ fields, params, bodyInSubheading = false }:
+  AllianzRichTextProps & { bodyInSubheading?: boolean }) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  const ownerId = 'id' in data ? data.id : undefined;
+  const restoredBody = restoreSourceDestinationRichText(data.body?.jsonValue,
+    page?.mode?.isEditing !== false, ownerId);
+  const body = safeEditorialRichText(restoredBody, isEditing, true,
+    (href) => isSourceDestinationRichTextHref(href, ownerId));
+  const subheading = bodyInSubheading ? body : data.subheading?.jsonValue;
+  return <div className={`l-container--full-width ${sectionTheme(params.theme)} axlTileCollection`} id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">
+      <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className={`tileContent ${params.alignment === 'left' ? 'u-text-left' : 'u-text-center'}`}>
+        {shouldRenderImageField(data.icon?.jsonValue, isEditing) && <div className="tileIcon t-bg-transparent t-icon-primary-black" data-allianz-rich-text-icon="gray">
+          <Image editable={isEditing} field={data.icon?.jsonValue} className="allianz-rich-text-icon-glyph" />
+        </div>}
+        <header>
+          <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={headingTag(params.headingLevel)} field={data.heading?.jsonValue} />}</div>
+          {shouldRenderTextField(subheading, isEditing) ? <RichText editable={isEditing} field={subheading} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+        </header>
+        {!bodyInSubheading && shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} className="tileBody" />}
+        {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
+      </div></article>
+    </div></div></div>
+  </div>;
+};
+
+export const ProfessionalPlainIntroduction = (props: AllianzRichTextProps) => <ProfessionalIntroduction {...props} />;
+export const ProfessionalSubheadingIntroduction = (props: AllianzRichTextProps) => <ProfessionalIntroduction {...props} bodyInSubheading />;

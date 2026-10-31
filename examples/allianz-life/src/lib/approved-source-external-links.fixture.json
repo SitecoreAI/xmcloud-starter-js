@@ -1,6 +1,6 @@
 {
   "schema": "allianz.approved-source-external-links.v1",
-  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled. The four exact AA Classic source rates, brochure and historical MVA URLs retain their captured destinations; the Login binding remains disabled. The two exact Essential Income 7 source Rates and historical MVA destinations retain their captured absolute URLs. The exact Retirement Foundation ADV resource Rates and historical MVA source destinations retain their captured absolute URLs. The exact Core Income 7 Rates and historical MVA source destinations retain their captured absolute URLs. The three exact public Related Sites footer destinations retain their verified external URLs and intentional new-tab behavior; account services remain disabled. The four remaining exact official newsroom company-profile destinations retain source new-tab behavior; this does not enable other URLs or account services. The two Annuities product-choice source fallbacks now use substantive verified local destinations. The three exact About parent-company affiliate URLs retain captured source new-tab behavior; no domain-wide navigation rule or access permission changes.",
+  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled. The four exact AA Classic source rates, brochure and historical MVA URLs retain their captured destinations; the Login binding remains disabled. The two exact Essential Income 7 source Rates and historical MVA destinations retain their captured absolute URLs. The exact Retirement Foundation ADV resource Rates and historical MVA source destinations retain their captured absolute URLs. The exact Core Income 7 Rates and historical MVA source destinations retain their captured absolute URLs. The three exact public Related Sites footer destinations retain their verified external URLs and intentional new-tab behavior; account services remain disabled. The four remaining exact official newsroom company-profile destinations retain source new-tab behavior; this does not enable other URLs or account services. The two Annuities product-choice source fallbacks now use substantive verified local destinations. The three exact About parent-company affiliate URLs retain captured source new-tab behavior; no domain-wide navigation rule or access permission changes. The Professionals Alliance for Lifetime Income link preserves only its exact captured source URL and new-tab behavior; no host-wide navigation rule or access permission changes.",
   "sourcePins": [
     {
       "path": "preparation/resources-exact-scope-v8/PDF-EXTERNAL-EXACT-FIELD-CANDIDATE.json",
@@ -232,6 +232,11 @@
       "sourceHtmlSha256": "70d30879ae603f36f1653350a87e86eb5d083544118d4d65d1ad8278f63bc997",
       "sourceRoute": "/about",
       "evidence": "Retained official About parent-company body contains these three exact affiliate URLs with target=_blank and rel=noopener noreferrer. Destination availability is separate: Partners returned informational HTTP200; AGCS/Trade returned HTTP403 without retry and remain unverified."
+    },
+    {
+      "url": "https://www.allianzlife.com/for-financial-professionals",
+      "sourceRoute": "/for-financial-professionals",
+      "evidence": "The current official public page links to exactly https://www.protectedincome.org/ with target=_blank. This record registers that source link only; redirected destinations are not registered."
     }
   ],
   "entries": [
@@ -754,6 +759,11 @@
       "kind": "public-page",
       "url": "https://www.allianz-trade.com/en_US.html",
       "sourceRecordKey": "about-parent-company-trade"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.protectedincome.org/",
+      "sourceRecordKey": "professionals-alliance-for-lifetime-income"
     }
   ]
 }

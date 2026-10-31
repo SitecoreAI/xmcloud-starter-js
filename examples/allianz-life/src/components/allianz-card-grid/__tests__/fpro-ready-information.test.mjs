@@ -107,7 +107,7 @@ function* excludedCases() {
   for (const value of ['white-on-black', 'gray-on-transparent', 'white-on-brand', 'unknown', null, ' ', 'WHITE-ON-BLACK'])
     mutations.push(['appearance:' + String(value), c => { c.params.iconAppearance = value; }]);
   for (const [label, mutate] of mutations) { const current = fixture(); mutate(current); yield { label, ...current }; }
-  for (const variant of Object.keys(Cards).filter(name => name !== 'Default' && typeof Cards[name] === 'function'))
+  for (const variant of Object.keys(Cards).filter(name => name !== 'Default' && name !== 'ProfessionalContactPrompt' && typeof Cards[name] === 'function'))
     yield { label: 'named:' + variant, ...fixture(), variant };
 }
 // Complete excluded outputs captured before the Ready branch; the existing

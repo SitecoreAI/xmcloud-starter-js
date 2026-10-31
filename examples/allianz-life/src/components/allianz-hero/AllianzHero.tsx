@@ -9,6 +9,7 @@ import { hasEditorialBlockMarkup, safeEditorialRichText } from 'lib/allianz-edit
 import './AllianzEditorialHero.css';
 import type { AllianzHeroProps, AllianzHeroStageProps } from './allianz-hero.props';
 import './AllianzFaqHero.css';
+import './AllianzProfessionalHero.css';
 
 export const Default = ({ fields, params }: AllianzHeroProps) => {
   const { page } = useSitecore();
@@ -289,3 +290,10 @@ export const IapHero = ({ fields, params }: AllianzHeroProps) => {
     </div>
   </div>;
 };
+
+/** Source professional login stage; account actions retain the unavailable dialog. */
+export const ProfessionalLoginHero = (props: AllianzHeroProps) => (
+  <div className="allianz-professional-login-hero" id={props.params.RenderingIdentifier}>
+    <Default {...props} params={{ ...props.params, layout: 'home', showLogin: '1' }} />
+  </div>
+);

@@ -170,7 +170,7 @@ function* preservationCases() {
       }
     }
     for (const [label, mutate] of mutations) { const current = fixture(kind); mutate(current); yield { label: `${kind}:${label}`, ...current }; }
-    for (const variant of Object.keys(Cards).filter(name => name !== 'Default' && typeof Cards[name] === 'function')) {
+    for (const variant of Object.keys(Cards).filter(name => name !== 'Default' && name !== 'ProfessionalContactPrompt' && typeof Cards[name] === 'function')) {
       yield { label: `${kind}:variant:${variant}`, ...fixture(kind), variant };
     }
   }

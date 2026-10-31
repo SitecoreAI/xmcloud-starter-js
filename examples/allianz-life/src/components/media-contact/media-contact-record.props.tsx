@@ -1,8 +1,8 @@
 'use client';
 
 import { Link, Text } from '@sitecore-content-sdk/nextjs';
-import { allianzLinkField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
-import { mediaContactFields, type MediaContactProps } from './media-contact.props';
+import { shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
+import { mediaContactFields, mediaContactLinkField, type MediaContactProps } from './media-contact.props';
 import './MediaContact.css';
 
 /** Internal record renderer: its four fields are edited on the selected contact. */
@@ -18,9 +18,9 @@ export const MediaContact = ({ contact, isEditing }: MediaContactProps) => {
           className="tileBody u-font-size-xl" editable={isEditing} />}
         {shouldRenderTextField(source.role?.jsonValue, isEditing) && <Text field={source.role?.jsonValue} editable={isEditing} />}
         {(telephone || email) && <p>
-          {telephone && <Link field={allianzLinkField(source.telephone?.jsonValue, isEditing)} editable={isEditing} />}
+          {telephone && <Link field={mediaContactLinkField(source, 'telephone', isEditing)} editable={isEditing} />}
           {telephone && email && <br />}
-          {email && <Link field={allianzLinkField(source.email?.jsonValue, isEditing)} editable={isEditing} />}
+          {email && <Link field={mediaContactLinkField(source, 'email', isEditing)} editable={isEditing} />}
         </p>}
       </div>
     </div></div>
