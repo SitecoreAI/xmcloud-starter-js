@@ -15,7 +15,7 @@ const data = record => structuredClone(record.rendering.fields.data.datasource);
 const markup = (name, datasource, record, editing = false, params = record.rendering.params) => render(Cards[name], datasource, editing, params);
 const image = (value, owner = 'proposed-root-owner') => ({ jsonValue: { value, metadata: { datasource: { id: owner, language: 'en', revision: 'proposed-fixture-revision', version: 1 }, fieldId: 'test-proposed-root-icon-field', fieldType: 'Image', title: 'Heading icon' } } });
 const populated = { src: '/test-proposed-root-heading-icon.svg?version=original', alt: '', width: '24', height: '24' };
-const oldVariants = Object.entries(Cards).filter(([name, component]) => typeof component === 'function' && !['SourceDownloadLinks', 'HeadingIcon', 'BrandHeadingIcon'].includes(name));
+const oldVariants = Object.entries(Cards).filter(([name, component]) => typeof component === 'function' && !['SourceDownloadLinks', 'HeadingIcon', 'BrandHeadingIcon', 'ProfessionalContactPrompt'].includes(name));
 const iconSpans = html => html.match(/<span class="a-link__icon" aria-hidden="true">[\s\S]*?<\/span>/g) || [];
 const withoutFooterIcons = html => html.replace(/<span class="a-link__icon" aria-hidden="true">[\s\S]*?<\/span>/g, '');
 const withoutHeadingGraft = html => html.replace(/<link rel="preload" as="image" href="\/test-proposed-root-heading-icon\.svg\?version=original"\/>/, '').replace(/<div class="tileIcon [^"]*" data-allianz-card-grid-heading-icon="(?:gray|brand)">[\s\S]*?<\/div>/, '').replace(/<header>(<div class="tileHeading"><h2>[\s\S]*?<\/h2><\/div>(?:<div class="tileSubHeading">[\s\S]*?<\/div>)?)<\/header>/, '$1');
@@ -204,5 +204,5 @@ test('root query adds only the optional Icon alias and retains the original comp
 });
 
 test('new presentations retain the original missing-datasource fallback', () => {
-  for (const name of ['SourceDownloadLinks', 'HeadingIcon', 'BrandHeadingIcon']) for (const editing of [false, true]) assert.equal(render(Cards[name], undefined, editing), render(Cards.Default, undefined, editing));
+  for (const name of ['SourceDownloadLinks', 'HeadingIcon', 'BrandHeadingIcon', 'ProfessionalContactPrompt']) for (const editing of [false, true]) assert.equal(render(Cards[name], undefined, editing), render(Cards.Default, undefined, editing));
 });

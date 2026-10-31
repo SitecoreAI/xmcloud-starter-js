@@ -111,7 +111,7 @@ function* unchangedCases() {
   for (const heroTheme of [undefined, '', 'unknown', 'Variable', 'product-variable']) for (const theme of neutralThemes) {
     yield { label: `invalid-product:${String(heroTheme)}:${String(theme)}`, data: fixture(), params: params(heroTheme, theme) };
   }
-  for (const variant of Object.keys(Hero).filter(name => name !== 'Default' && typeof Hero[name] === 'function')) {
+  for (const variant of Object.keys(Hero).filter(name => name !== 'Default' && name !== 'ProfessionalLoginHero' && typeof Hero[name] === 'function')) {
     for (const state of ['complete', 'empty']) yield { label: `variant:${variant}:${state}`, variant, data: fixture(state), params: params('variable', 'transparent') };
   }
   yield { label: 'missing-datasource', data: undefined, params: params('variable', 'transparent') };

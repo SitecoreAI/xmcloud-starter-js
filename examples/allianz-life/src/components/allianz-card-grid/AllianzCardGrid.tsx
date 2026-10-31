@@ -2329,3 +2329,46 @@ export const LifetimeIncomeCallout = ({ fields, params }: AllianzCardGridProps) 
     </div></div></div>
   </div>;
 };
+
+/** Professional contact introduction uses the child fields without card padding. */
+export const ProfessionalContactPrompt = ({ fields, params }: AllianzCardGridProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
+  const cards = (data.children?.results ?? []).map(allianzCardFields);
+  return <div className={`l-container--full-width ${sectionTheme(params.theme)}`} id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}>
+      {cards.map((card) => {
+        const restored = restoreSourceDestinationRichText(card.body?.jsonValue,
+          page?.mode?.isEditing !== false, card.id);
+        const body = safeEditorialRichText(restored, isEditing, true,
+          (href) => isSourceDestinationRichTextHref(href, card.id));
+        const links = card.links?.targetItems
+          ?? (card.link ? [{ id: `${card.id}-link`, link: card.link }] : []);
+        const visibleLinks = links.filter((item) => shouldRenderLinkField(item.link?.jsonValue, isEditing));
+        return <div key={card.id} className="l-grid__column-medium-12">
+          <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+            {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="tileIcon t-bg-primary-brand t-icon-primary-white" data-allianz-card-icon-appearance="white-on-brand">
+              <Image editable={isEditing} field={card.icon?.jsonValue} className="allianz-card-icon-glyph" />
+            </div>}
+            <header>
+              <div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={card.heading?.jsonValue} />}</div>
+              {shouldRenderTextField(card.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={card.subheading?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+            </header>
+            {shouldRenderTextField(body, isEditing) && <RichText editable={isEditing} field={body} className="tileBody" />}
+            {visibleLinks.length > 0 && <footer><div className="tileLink">{visibleLinks.map((item, index) => {
+              const field = allianzLinkField(item.link?.jsonValue, isEditing);
+              const linkProps = card.links?.targetItems !== undefined ? { field }
+                : restoreSourceDestinationLinkProps({ field }, card.link?.jsonValue,
+                  page?.mode?.isEditing !== false, card.id);
+              return <Link key={item.id ?? index} {...linkProps} editable={isEditing} className="a-link">
+                <span className="a-link__icon" aria-hidden="true"><EditorialResourceArrow /></span><span className="a-link__text">{item.link?.jsonValue?.value?.text}</span>
+              </Link>;
+            })}</div></footer>}
+          </div></article>
+        </div>;
+      })}
+    </div></div>
+  </div>;
+};

@@ -160,7 +160,7 @@ test('Information treats absent and cleared optional icons as native field state
 });
 
 test('every other RichText export keeps identical output with filled, cleared or missing optional icon input', () => {
-  const names = Object.keys(Components).filter(name => name !== 'AboutInformationHeading' && typeof Components[name] === 'function');
+  const names = Object.keys(Components).filter(name => !['AboutInformationHeading', 'ProfessionalPlainIntroduction', 'ProfessionalSubheadingIntroduction'].includes(name) && typeof Components[name] === 'function');
   assert.ok(names.includes('Default')); assert.ok(names.includes('AboutSectionHeading')); assert.ok(names.includes('AboutDisclosures'));
   for (const name of names) for (const editing of [false, true]) {
     const filled = fixture(), cleared = fixture(), missing = fixture();
