@@ -1298,3 +1298,26 @@ const ProfessionalIntroduction = ({ fields, params, bodyInSubheading = false }:
 
 export const ProfessionalPlainIntroduction = (props: AllianzRichTextProps) => <ProfessionalIntroduction {...props} />;
 export const ProfessionalSubheadingIntroduction = (props: AllianzRichTextProps) => <ProfessionalIntroduction {...props} bodyInSubheading />;
+
+/** Source ratings history keeps its original Body inside the contained heading. */
+export const FinancialRatingsHistoryIntroduction = ({ fields, params }: AllianzRichTextProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  const ownerId = 'id' in data ? data.id : undefined;
+  const restoredBody = restoreSourceDestinationRichText(data.body?.jsonValue,
+    page?.mode?.isEditing !== false, ownerId);
+  const body = safeEditorialRichText(restoredBody, isEditing, true,
+    (href) => isSourceDestinationRichTextHref(href, ownerId));
+  return <div className={`l-container ${sectionTheme(params.theme)} axlTileCollection`} id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width l-grid--no-gutters-outer"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">
+      <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
+        <header>
+          <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+          {shouldRenderTextField(body, isEditing) ? <RichText editable={isEditing} field={body} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+        </header>
+      </div></article>
+    </div></div></div>
+  </div>;
+};
