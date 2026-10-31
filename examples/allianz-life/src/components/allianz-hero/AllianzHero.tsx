@@ -10,12 +10,14 @@ import './AllianzEditorialHero.css';
 import type { AllianzHeroProps, AllianzHeroStageProps } from './allianz-hero.props';
 import './AllianzFaqHero.css';
 import './AllianzProfessionalHero.css';
+import './AllianzBlockHero.css';
 
 export const Default = ({ fields, params }: AllianzHeroProps) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzHero" />;
+  const blockHeading = hasEditorialBlockMarkup(data.heading?.jsonValue?.value);
   const home = params.layout === 'home';
   const productTheme = ['fixed','variable','life'].includes(params.heroTheme) ? `c-hero__theme--${params.heroTheme}` : '';
   const useProductStageBackground = !home && productTheme !== ''
@@ -35,7 +37,7 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
         </picture>}
         <div className="l-grid l-grid--max-width l-grid--no-gutters">
           <div className="l-grid__column-medium-12 c-hero__wrapper">
-            {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag="h1" field={data.heading?.jsonValue} className="c-heading c-hero__headline u-text-center" />}
+            {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} data-allianz-hero-block-heading={blockHeading || undefined} field={data.heading?.jsonValue} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
             {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="c-hero__subHeadline u-text-center" />}
             {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
           </div>
@@ -54,7 +56,7 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
           <div className="l-grid l-grid--max-width"><div className="l-grid__row">
             <div className={params.showLogin === '1' ? 'l-grid__column-small-12 l-grid__column-large-8' : 'l-grid__column-small-12'}>
               {shouldRenderTextField(data.eyebrow?.jsonValue, isEditing) && <Text editable={isEditing} field={data.eyebrow?.jsonValue} tag="p" />}
-              {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag="h1" field={data.heading?.jsonValue} className="c-heading c-hero__headline" />}
+              {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} data-allianz-hero-block-heading={blockHeading || undefined} field={data.heading?.jsonValue} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline`} />}
               {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="h4 c-heading c-hero__subHeadline" />}
               {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
               {shouldRenderLinkField(data.secondaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.secondaryLink?.jsonValue, isEditing)} className="a-link" />}
@@ -93,7 +95,8 @@ export const FixedFaq = ({ fields, params }: AllianzHeroProps) => {
 };
 
 /** Shared short stage; product background support is opt-in for LifeStrategy. */
-const EditorialStage = ({ fields, params, lifeStrategy = false }: AllianzHeroStageProps) => {
+const EditorialStage = ({ fields, params, lifeStrategy = false, sourceCover = false }:
+  AllianzHeroStageProps & { sourceCover?: boolean }) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
@@ -106,9 +109,9 @@ const EditorialStage = ({ fields, params, lifeStrategy = false }: AllianzHeroSta
   const stageClasses = lifeStrategy
     ? `l-container-full-width ${themeClass} ${productTheme} allianz-editorial-hero`
     : `l-container-full-width ${themeClass}${params.layout === 'home' ? ' c-hero m-hero-overlay' : ''} allianz-editorial-hero`;
-  return <div className={stageClasses} id={params.RenderingIdentifier}>
+  return <div className={sourceCover ? `${stageClasses} allianz-editorial-cover-hero` : stageClasses} id={params.RenderingIdentifier}>
     <div className="m-axlHero">
-      <picture className="c-image c-stage__image--cover c-stage__image--short">
+      <picture className={`c-image c-stage__image--cover${sourceCover ? '' : ' c-stage__image--short'}`}>
         {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
         {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />}
       </picture>
@@ -122,6 +125,9 @@ const EditorialStage = ({ fields, params, lifeStrategy = false }: AllianzHeroSta
 
 /** Short editorial stage with source subtitle typography and native DAM fields. */
 export const Editorial = (props: AllianzHeroProps) => <EditorialStage {...props} />;
+
+/** Source overlay height follows its native subtitle rather than the short-image cap. */
+export const EditorialCover = (props: AllianzHeroProps) => <EditorialStage {...props} sourceCover />;
 
 /** Life strategy stage: heroTheme=life; optional theme=product-life. */
 export const LifeStrategy = (props: AllianzHeroProps) => <EditorialStage {...props} lifeStrategy />;
@@ -237,6 +243,7 @@ export const FixedProduct = ({ fields, params }: AllianzHeroProps) => {
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzHero" />;
+  const blockHeading = hasEditorialBlockMarkup(data.heading?.jsonValue?.value);
   return <div className="l-container-full-width c-hero__theme--fixed" id={params?.RenderingIdentifier}>
     <div className="m-axlHero">
       <picture className="c-image c-stage__image--cover c-stage__image--short">
@@ -244,7 +251,7 @@ export const FixedProduct = ({ fields, params }: AllianzHeroProps) => {
         {shouldRenderImageField(data.desktopImage?.jsonValue, isEditing) && <Image editable={isEditing} field={data.desktopImage?.jsonValue} alt={data.desktopImage?.jsonValue?.value?.alt ?? ''} className="c-image__img c-hero__image" />}
       </picture>
       <div className="l-grid l-grid--max-width l-grid--no-gutters"><div className="l-grid__column-medium-12 c-hero__wrapper">
-        {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag="h1" field={data.heading?.jsonValue} className="c-heading c-hero__headline u-text-center" />}
+        {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} data-allianz-hero-block-heading={blockHeading || undefined} field={data.heading?.jsonValue} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline u-text-center`} />}
       </div></div>
     </div>
   </div>;

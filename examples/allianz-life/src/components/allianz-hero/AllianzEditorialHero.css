@@ -11,3 +11,8 @@
 .allianz-editorial-hero .c-hero__subHeadline > .ck-content > p:last-child {
   margin-bottom: 0;
 }
+
+/* The source overlay paragraph keeps its outer margin even after CKEditor wraps Body. */
+.allianz-editorial-cover-hero .c-hero__subHeadline {
+  margin-bottom: 1em;
+}

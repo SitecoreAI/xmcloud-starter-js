@@ -149,7 +149,7 @@ function* excludedCases() {
     ['iconAppearance', 'unknown']]) mutations.push([`param:${name}:${value}`, c => { c.params[name] = value; }]);
   for (const name of ['layout', 'columns', 'alignment', 'theme', 'headingLevel']) mutations.push([`missing-param:${name}`, c => { delete c.params[name]; }]);
   for (const [label, mutate] of mutations) { const current = fixture(); mutate(current); yield { label, ...current }; }
-  for (const variant of Object.keys(Cards).filter(name => name !== 'Default' && name !== 'ProfessionalContactPrompt' && typeof Cards[name] === 'function')) {
+  for (const variant of Object.keys(Cards).filter(name => name !== 'Default' && name !== 'ProfessionalContactPrompt' && name !== 'EditorialIntroArrow' && typeof Cards[name] === 'function')) {
     yield { label: `named:${variant}`, ...fixture(), variant };
   }
 }

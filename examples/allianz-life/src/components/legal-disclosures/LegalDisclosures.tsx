@@ -35,19 +35,34 @@ export const Default = ({ fields, params, isFaq = false }: LegalDisclosuresPrese
   );
 };
 
+// Preserve only the two source disclosure anchors at their verified native owner.
+// This leaves all other URLs and consumers on the existing visitor link policy.
+const NEWSROOM_GREY_OWNER = '39b0fcf0f366471e85bdf501de33df5c';
+const NEWSROOM_GREY_SOURCE_HREFS = new Set(['https://www.ssa.gov/', 'http://www.finra.org']);
+function isNewsroomGreySourceHref(ownerId: unknown, decodedHref: string, rawHref: string): boolean {
+  if (typeof ownerId !== 'string') return false;
+  const id = ownerId.startsWith('{') && ownerId.endsWith('}') ? ownerId.slice(1, -1) : ownerId;
+  return /^(?:[0-9a-f]{32}|[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})$/i.test(id)
+    && id.replaceAll('-', '').toLowerCase() === NEWSROOM_GREY_OWNER
+    && decodedHref === rawHref && NEWSROOM_GREY_SOURCE_HREFS.has(rawHref);
+}
+
 /** Newsroom source grey body, followed by its empty structural disclosure wrapper. */
 export const NewsroomGrey = ({ fields, params }: LegalDisclosuresProps) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   if (!fields?.data?.datasource) return <NoDataFallback componentName="Legal Disclosures" />;
-  const body = legalDisclosuresFields(fields.data.datasource).body?.jsonValue;
+  const data = legalDisclosuresFields(fields.data.datasource);
+  const body = data.body?.jsonValue;
+  const visitorBody = safeNewsroomRichText(body, isEditing, (decodedHref, rawHref) =>
+    !isNewsroomGreySourceHref(data.id, decodedHref, rawHref));
   return <>
     <div className="l-container--full-width t-bg-grey-muted axlTileCollection allianz-newsroom-grey" id={params?.RenderingIdentifier}>
       <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
         <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-left">
           <header><div className="tileHeading" /><div className="tileSubHeading" /></header>
           {shouldRenderTextField(body, isEditing)
-            ? <RichText field={safeNewsroomRichText(body, isEditing)} editable={isEditing} className="tileBody" />
+            ? <RichText field={visitorBody} editable={isEditing} className="tileBody" />
             : <div className="tileBody" />}
         </div></article>
       </div></div></div>

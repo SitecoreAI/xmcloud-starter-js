@@ -429,7 +429,7 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
           const contents = <>
             {shouldRenderImageField(item.icon?.jsonValue, isEditing) && <span className="a-link__icon" aria-hidden={isEditing ? undefined : true}><Image editable={isEditing} field={item.icon?.jsonValue} /></span>}
             {sourceDownload && !item.icon?.jsonValue && <span className="a-link__icon" aria-hidden="true"><SustainabilityDownloadIcon /></span>}
-            {sourceArrows && !shouldRenderImageField(item.icon?.jsonValue, false) && <span className="a-link__icon" aria-hidden="true"><EditorialResourceArrow /></span>}
+            {sourceArrows && !sourceDownload && !shouldRenderImageField(item.icon?.jsonValue, false) && <span className="a-link__icon" aria-hidden="true"><EditorialResourceArrow /></span>}
             <span className="a-link__text">{field.value?.text}</span>
           </>;
           // Preserve a source label with no destination as inert visitor text.
@@ -463,6 +463,9 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
 
 export const EditorialTiles = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="tiles" />;
 export const EditorialIntro = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="intro" />;
+
+/** Source introduction CTA arrows opt in without changing other editorial cards. */
+export const EditorialIntroArrow = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="intro" sourceArrows />;
 export const EditorialCallout = (props: AllianzCardGridProps) => <EditorialCards {...props} appearance="callout" />;
 
 /** Early retirement keeps the root introduction before its first numbered tile. */
