@@ -254,9 +254,9 @@ test('failed operations expose only a fixed stage marker without request, respon
     { kind: 'executives', expected: 'scope-request', mutate(response, name) { if (name === 'AutomaticPeopleScope') throw privateError(); return response; } },
     { kind: 'executives', expected: 'scope-validation', mutate(response, name) { if (name === 'AutomaticPeopleScope') response.root.url.path = {}; return response; } },
     { kind: 'executives', expected: 'biographies-request', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') throw privateError(); return response; } },
-    { kind: 'executives', expected: 'biographies-validation', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') delete response.search.total; return response; } },
+    { kind: 'executives', expected: 'biographies-validation', reason: 'invalid-total', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') delete response.search.total; return response; } },
     { kind: 'experts', expected: 'categories-request', mutate(response, name) { if (name === 'AutomaticPeopleCategories') throw privateError(); return response; } },
-    { kind: 'experts', expected: 'categories-validation', mutate(response, name) { if (name === 'AutomaticPeopleCategories') delete response.search.pageInfo; return response; } },
+    { kind: 'experts', expected: 'categories-validation', reason: 'invalid-page-info', mutate(response, name) { if (name === 'AutomaticPeopleCategories') delete response.search.pageInfo; return response; } },
     { kind: 'executives', expected: 'selection-validation', mutate(response, name) { if (name === 'AutomaticPeopleBiographies') { response.search.results.push({ ...response.search.results[0], id: id(999) }); response.search.total++; } return response; } },
   ];
   for (const record of cases) {
@@ -267,7 +267,8 @@ test('failed operations expose only a fixed stage marker without request, respon
     assert.equal(output.error, 'unavailable');
     assert.equal(output.failureStage, record.expected);
     assert.equal(output.failureKind, 'unknown');
-    assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'failureKind', 'groups', 'items', 'status', 'unassigned', ...diagnosticKeys].sort());
+    assert.equal(output.validationReason, record.reason);
+    assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'failureKind', 'groups', 'items', 'status', 'unassigned', ...diagnosticKeys, ...(record.reason ? ['validationReason'] : [])].sort());
     assertResponseDiagnostic(output);
     assert.deepEqual(output.items, []);
     assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization|\"(?:request|response|stack|query|headers)\"\s*:/);
@@ -279,10 +280,91 @@ test('failed operations expose only a fixed stage marker without request, respon
   const complete = await success.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: success.client.getData.bind(success.client) }));
   assert.equal(complete.directory.automaticPeople.items.length, 8);
   assert.equal(Object.hasOwn(complete.directory.automaticPeople, 'failureStage'), false);
+  assert.equal(Object.hasOwn(complete.directory.automaticPeople, 'validationReason'), false);
   const invalid = harness(dataset('executives'), (response, name) => { if (name === 'AutomaticPeopleScope') response.datasource.parent.parent.id = id(999); return response; });
   const rejected = await invalid.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: invalid.client.getData.bind(invalid.client) }));
   assert.equal(rejected.directory.automaticPeople.error, 'invalid-scope');
   assert.equal(Object.hasOwn(rejected.directory.automaticPeople, 'failureStage'), false);
+  assert.equal(Object.hasOwn(rejected.directory.automaticPeople, 'validationReason'), false);
+});
+
+test('collection guards expose fixed reasons through the real SDK without partial rows or private values', async (t) => {
+  const cases = [
+    { reason: 'missing-search', mutate(response) { delete response.search; } },
+    { reason: 'invalid-total', mutate(response) { response.search.total = -1; } },
+    { reason: 'invalid-total', label: 'unsafe total', mutate(response) { response.search.total = Number.MAX_SAFE_INTEGER + 1; } },
+    { reason: 'invalid-total', label: 'fractional total', mutate(response) { response.search.total = 1.5; } },
+    { reason: 'invalid-page-info', mutate(response) { response.search.pageInfo.hasNext = 'synthetic-private-value'; } },
+    { reason: 'invalid-results', mutate(response) { response.search.results = { privateValue: 'synthetic-private-value' }; } },
+    { reason: 'oversized-page', mutate(response) { response.search.results.push(response.search.results[0]); } },
+    { reason: 'total-changed', mutate(response, args) { if (args.after) response.search.total++; } },
+    { reason: 'invalid-id', mutate(response) { response.search.results[0].id = 'synthetic-private-value'; } },
+    { reason: 'duplicate-id', mutate(response) { response.search.results[1].id = `{${response.search.results[0].id.toUpperCase()}}`; } },
+    { reason: 'count-exceeds-total', mutate(response) { response.search.total = 9; } },
+    { reason: 'final-count-mismatch', mutate(response) { response.search.pageInfo.hasNext = false; } },
+    { reason: 'invalid-cursor', label: 'missing cursor', mutate(response) { response.search.pageInfo.endCursor = null; } },
+    { reason: 'invalid-cursor', label: 'repeated cursor', mutate(response, args) { if (args.after) response.search.pageInfo.endCursor = args.after; } },
+    { reason: 'invalid-cursor', label: 'empty next page', mutate(response) { response.search.results = []; } },
+    { reason: 'invalid-cursor', label: 'hasNext at total', mutate(response) { response.search.total = response.search.results.length; } },
+  ];
+  for (const record of cases) await t.test(record.label ?? record.reason, async () => {
+    const { client } = harness(dataset(), (response, name, args) => {
+      if (name === 'AutomaticPeopleBiographies') record.mutate(response, args);
+      return response;
+    });
+    const result = await client.getComponentData(layout(), {}, enrichPeopleComponentMap(componentMap(), {
+      getData: client.getData.bind(client), fetchOptions: { headers: { Authorization: 'synthetic-private-value' } },
+    }));
+    const output = result.directory.automaticPeople;
+    assert.equal(output.complete, false);
+    assert.equal(output.status, 'unavailable');
+    assert.equal(output.failureStage, 'biographies-validation');
+    assert.equal(output.validationReason, record.reason);
+    assert.deepEqual(output.items, []);
+    assert.deepEqual(output.groups, []);
+    assert.deepEqual(output.unassigned, []);
+    assertResponseDiagnostic(output);
+    assert.deepEqual(Object.keys(output).sort(), ['complete', 'error', 'failureStage', 'failureKind', 'groups', 'items', 'status', 'unassigned', 'validationReason', ...diagnosticKeys].sort());
+    assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization|[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}|"(?:request|response|stack|query|headers)"\s*:/i);
+  });
+});
+
+test('only locally branded collection errors can supply a reason, never upstream request errors', async () => {
+  let branded;
+  try { await data.collectPeopleSearch(async () => ({ search: { total: -1 } }), 'biographies', scope()); }
+  catch (error) { branded = error; }
+  assert.equal(data.getPeopleSearchValidationReason(branded), 'invalid-total');
+  const spoofed = Object.assign(new Error('synthetic-private-value'), { validationReason: 'duplicate-id',
+    request: { headers: { Authorization: 'synthetic-private-value' } } });
+  assert.equal(data.getPeopleSearchValidationReason(spoofed), undefined);
+  assert.equal(data.getPeopleSearchValidationReason({ validationReason: 'invalid-id' }), undefined);
+  assert.equal(data.getPeopleSearchValidationReason(null), undefined);
+  for (const error of [spoofed, branded]) {
+    const { client } = harness(dataset('executives'), (response, name) => {
+      if (name === 'AutomaticPeopleBiographies') throw error;
+      return response;
+    });
+    const result = await client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+    const output = result.directory.automaticPeople;
+    assert.equal(output.failureStage, 'biographies-request');
+    assert.equal(Object.hasOwn(output, 'validationReason'), false);
+    assert.deepEqual(output.items, []);
+    assert.doesNotMatch(JSON.stringify(result), /synthetic-private|Authorization/);
+  }
+});
+
+test('complete empty and paginated collections retain their unchanged success shape without a reason', async () => {
+  const empty = await data.collectPeopleSearch(async () => ({ search: { total: 0, results: [], pageInfo: { hasNext: false, endCursor: null } } }), 'biographies', scope());
+  assert.deepEqual(empty, { items: [], complete: true, queryKind: 'biographies',
+    baseTemplateId: data.normalizePeopleId(data.PEOPLE_DIRECTORY_CONTRACTS.executives.templateId),
+    scope: { ...scope(), rootId: data.normalizePeopleId(scope().rootId), datasourceId: data.normalizePeopleId(scope().datasourceId) } });
+  assert.equal(Object.hasOwn(empty, 'validationReason'), false);
+  for (const kind of ['executives', 'experts']) {
+    const records = dataset(kind), { client } = harness(records);
+    const result = await client.getComponentData(layout(kind), {}, enrichPeopleComponentMap(componentMap(), { getData: client.getData.bind(client) }));
+    assert.deepEqual(result.directory.automaticPeople, selectFixtureDirectory(records.current, records.biographies, records.categories));
+    assert.equal(Object.hasOwn(result.directory.automaticPeople, 'validationReason'), false);
+  }
 });
 
 test('scope transport failures expose fixed GraphQL classification and numeric status through the real SDK', async () => {

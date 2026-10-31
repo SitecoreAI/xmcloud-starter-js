@@ -23,6 +23,19 @@ export type PeopleOrder = { jsonValue?: Field<string | number> };
 export type PeoplePage = { id: string; path: string; url: { path: string }; template?: { id: string }; parent?: { id: string } };
 export type PeopleScope = { kind: PeopleDirectoryKind; rootId: string; datasourceId: string; language: string };
 export type PeopleQueryKind = 'biographies' | 'categories';
+/** Fixed local guard names only; never include search rows, identifiers or upstream errors. */
+export type PeopleSearchValidationReason = 'missing-search' | 'invalid-total' | 'invalid-page-info' | 'invalid-results' |
+  'oversized-page' | 'total-changed' | 'invalid-id' | 'duplicate-id' | 'count-exceeds-total' | 'final-count-mismatch' | 'invalid-cursor';
+const searchValidationReasons = new WeakMap<object, PeopleSearchValidationReason>();
+function invalidPeopleSearch(reason: PeopleSearchValidationReason, message: string): Error {
+  const error = new Error(message);
+  searchValidationReasons.set(error, reason);
+  return error;
+}
+/** Only errors created by this module can supply a validation reason. */
+export function getPeopleSearchValidationReason(error: unknown): PeopleSearchValidationReason | undefined {
+  return typeof error === 'object' && error !== null ? searchValidationReasons.get(error) : undefined;
+}
 /** Provenance of a complete native search, whose _templates predicate includes inherited templates. */
 export type PeopleSearchResult<T> = { items: T[]; complete: true; queryKind: PeopleQueryKind; baseTemplateId: string; scope: PeopleScope };
 export type PeopleCategory = { id: string; heading?: PeopleText; introduction?: PeopleText; sortOrder?: PeopleOrder; template?: { id: string; name?: string }; parent?: { id: string } };
@@ -43,6 +56,7 @@ export type AutomaticPeople = {
   complete: boolean;
   status: 'ready' | 'unavailable';
   error?: 'invalid-scope' | 'unavailable';
+  validationReason?: PeopleSearchValidationReason;
   items: DirectoryPerson[];
   groups: Array<{ id: string; heading?: PeopleText; introduction?: PeopleText; items: DirectoryPerson[] }>;
   unassigned: DirectoryPerson[];
@@ -127,22 +141,27 @@ export async function collectPeopleSearch<T extends { id: string }>(getData: Peo
   for (;;) {
     const response = await getData<{ search?: Connection<T> }>(buildPeopleSearchQuery(kind, scope, after), undefined, fetchOptions);
     const data = response?.search;
-    if (!data || !Number.isSafeInteger(data.total) || data.total < 0 || typeof data.pageInfo?.hasNext !== 'boolean' || !Array.isArray(data.results) || data.results.length > PEOPLE_PAGE_LIMITS[kind]) throw new Error('Incomplete people-directory search');
-    if (total !== undefined && total !== data.total) throw new Error('People-directory count changed during pagination');
+    if (!data) throw invalidPeopleSearch('missing-search', 'Incomplete people-directory search');
+    if (!Number.isSafeInteger(data.total) || data.total < 0) throw invalidPeopleSearch('invalid-total', 'Incomplete people-directory search');
+    if (typeof data.pageInfo?.hasNext !== 'boolean') throw invalidPeopleSearch('invalid-page-info', 'Incomplete people-directory search');
+    if (!Array.isArray(data.results)) throw invalidPeopleSearch('invalid-results', 'Incomplete people-directory search');
+    if (data.results.length > PEOPLE_PAGE_LIMITS[kind]) throw invalidPeopleSearch('oversized-page', 'Incomplete people-directory search');
+    if (total !== undefined && total !== data.total) throw invalidPeopleSearch('total-changed', 'People-directory count changed during pagination');
     total = data.total;
     for (const row of data.results) {
       const id = normalizePeopleId(row?.id);
-      if (!id || ids.has(id)) throw new Error('Invalid or duplicate people-directory item');
+      if (!id) throw invalidPeopleSearch('invalid-id', 'Invalid or duplicate people-directory item');
+      if (ids.has(id)) throw invalidPeopleSearch('duplicate-id', 'Invalid or duplicate people-directory item');
       rows.push(row); ids.add(id);
     }
-    if (rows.length > total) throw new Error('People-directory count exceeds total');
+    if (rows.length > total) throw invalidPeopleSearch('count-exceeds-total', 'People-directory count exceeds total');
     if (!data.pageInfo.hasNext) {
-      if (rows.length !== total) throw new Error('People-directory final count differs from total');
+      if (rows.length !== total) throw invalidPeopleSearch('final-count-mismatch', 'People-directory final count differs from total');
       return { items: rows, complete: true, queryKind: kind, baseTemplateId,
         scope: { kind: scope.kind, rootId: root, datasourceId: datasource, language } };
     }
     const cursor = data.pageInfo.endCursor;
-    if (!data.results.length || rows.length >= total || typeof cursor !== 'string' || !cursor || cursors.has(cursor)) throw new Error('Invalid people-directory pagination cursor');
+    if (!data.results.length || rows.length >= total || typeof cursor !== 'string' || !cursor || cursors.has(cursor)) throw invalidPeopleSearch('invalid-cursor', 'Invalid people-directory pagination cursor');
     cursors.add(cursor); after = cursor;
   }
 }
