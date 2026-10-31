@@ -14,13 +14,16 @@ const Cards = loadSource(path.join(sourceRoot, 'components/allianz-card-grid/All
 const Accordion = loadSource(path.join(sourceRoot, 'components/allianz-accordion/AllianzAccordion.tsx'));
 process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
 
-// Independent source/owner oracle from the witnessed Claims/FAQ field matrix.
+// Independent source/owner oracle from the witnessed Claims/FAQ and RILA fields.
 const PHONE = ['tel:800-950-1962', 'tel:800-624-0197'];
 const MAIL = [
   'mailto:fixedannuity@send.allianzlife.com?subject=Fixed Annuity Document',
   'mailto:variableannuity@send.allianzlife.com?subject=Variable Annuity Document',
   'mailto:lifeinsurance@send.allianzlife.com?subject=Life Insurance Document',
 ];
+const RILA_FINRA = 'http://www.finra.org';
+const rilaTranscriptOwner = { componentName: 'AllianzAccordion',
+  datasourceId: 'a52aa60ae9e54ea0978bc0018294228e', entryId: 'f4f3144ea745495cbcddfff3818655f3' };
 const expectedPairs = [
   ['AllianzCardGrid', 'a1f100d06ce24cca8cec282873ddde28', '3f2f9cc424bb40ab8a276379f11e6357', PHONE],
   ['AllianzCardGrid', '08fb929580cd439e95868ad5bb1ffd2f', 'f25567668e784f6aa3a6b095b467b984', PHONE],
@@ -33,6 +36,7 @@ const expectedPairs = [
   ].map(([entry, count]) => ['AllianzAccordion', '7a373530bf2a415cb3f3816889f55061', entry, MAIL.slice(0, count)]),
   ['AllianzAccordion', '77365a0a946848af98dfdc357a4c596f', 'eb99e34bf812436b8e616637d219b1b9', MAIL],
   ['AllianzAccordion', '4a4de2a435ea49b2802c4ad7426758ea', '91e0af244b3845d7a95682f0ce6222aa', ['http://www.naic.org/state_web_map.htm', 'http://www.finra.org/']],
+  ['AllianzAccordion', rilaTranscriptOwner.datasourceId, rilaTranscriptOwner.entryId, [RILA_FINRA]],
 ];
 const key = ({ componentName, datasourceId, entryId }) => `${componentName}:${datasourceId}:${entryId}`;
 const context = (owner) => ({ componentName: owner.componentName, datasourceId: owner.datasourceId, entryId: owner.entryId });
@@ -41,18 +45,19 @@ const body = (href) => `<p>Before <strong>preserved</strong> <a href="${href}" d
 const field = (value, owner) => ({ value, metadata: { itemId: owner.entryId, fieldId: 'test-only-service-body', fieldType: 'Rich Text' } });
 const freeze = (value) => { if (value && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value); } return value; };
 
-test('source service scope is exactly nine witnessed owners and 21 href occurrences', () => {
+test('source service scope is exactly ten witnessed owners and 22 owner/href pairs', () => {
   const actual = fixture.owners.map(o => [o.componentName, o.datasourceId, o.entryId, o.hrefs]);
   assert.deepEqual(actual, expectedPairs);
-  assert.equal(fixture.owners.reduce((n, o) => n + o.hrefs.length, 0), 21);
-  assert.equal(new Set(fixture.owners.map(key)).size, 9);
+  assert.equal(fixture.owners.reduce((n, o) => n + o.hrefs.length, 0), 22);
+  assert.equal(new Set(fixture.owners.map(key)).size, 10);
   const excluded = new Set(retained.excludedBodyOwners.map(key));
   for (const owner of fixture.owners) assert.equal(excluded.has(key(owner)), false);
   for (const pin of fixture.sourcePins) {
     assert.equal(pin.httpStatus, 200);
     assert.match(pin.htmlSHA256, /^[0-9a-f]{64}$/);
-    assert.match(pin.url, /^https:\/\/www\.allianzlife\.com\/(claims-information|customer-service-frequently-asked-questions)$/);
+    assert.match(pin.url, /^https:\/\/www\.allianzlife\.com\/(claims-information|customer-service-frequently-asked-questions|what-we-offer\/annuities\/registered-index-linked-annuities)$/);
   }
+  assert.equal(new Set(fixture.sourcePins.map(pin => pin.url)).size, 3);
 });
 
 for (const owner of fixture.owners) for (const href of owner.hrefs) {
@@ -136,7 +141,7 @@ test('service contracts never reconstruct placeholders or alter held owners, emp
   }
 });
 
-for (const mode of ['normal', 'preview', 'editing']) test(`actual SDK ${mode} retains all 21 exact service hrefs with text and target ownership`, () => {
+for (const mode of ['normal', 'preview', 'editing']) test(`actual SDK ${mode} retains all 22 exact service hrefs with text and target ownership`, () => {
   let count = 0;
   for (const owner of fixture.owners) for (const href of owner.hrefs) {
     const entry = { id: owner.entryId, heading: { jsonValue: { value: 'Fixture heading' } }, body: { jsonValue: field(body(href), owner) } };
@@ -152,5 +157,51 @@ for (const mode of ['normal', 'preview', 'editing']) test(`actual SDK ${mode} re
     assert.equal(entry.body.jsonValue.metadata.itemId, owner.entryId);
     count++;
   }
-  assert.equal(count, 21);
+  assert.equal(count, 22);
+});
+
+const transcriptAnchor = '<a rel="noopener noreferrer" href="http://www.finra.org" class="disclosure-finra" target="_blank">member FINRA</a>';
+// Synthetic surrounding copy makes byte preservation independent of the product text.
+const transcriptBody = `<p>First <strong>unchanged</strong> disclosure, ${transcriptAnchor}, retained.</p>\n<p style="margin-left: 40px;">Second disclosure, ${transcriptAnchor}, retained &amp; complete.</p>`;
+
+for (const mode of ['normal', 'preview', 'editing']) test(`actual SDK RILA transcript ${mode} preserves both FINRA anchors and the whole native Body`, () => {
+  for (const contentMode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = contentMode;
+    const original = freeze(field(transcriptBody, rilaTranscriptOwner));
+    const entry = { id: rilaTranscriptOwner.entryId, heading: { jsonValue: { value: 'Read video transcript' } }, body: { jsonValue: original } };
+    const data = { id: rilaTranscriptOwner.datasourceId, children: { results: [entry] } };
+    const page = { siteName: 'allianz-life', mode: { isEditing: mode === 'editing', isNormal: mode === 'normal', isPreview: mode === 'preview' },
+      layout: { sitecore: { context: { site: { name: 'allianz-life' }, language: 'en' }, route: {
+        itemId: '224abf70929e59ec8b54257d12a8752c', name: 'RILA transcript test fixture', fields: {}, placeholders: {},
+      } } } };
+    const html = renderToStaticMarkup(React.createElement(sdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) },
+      React.createElement(Accordion.RilaTranscript, { fields: { data: { datasource: data } }, params: {} })));
+    assert.ok(html.includes(transcriptBody));
+    assert.equal(html.split(transcriptAnchor).length - 1, 2);
+    assert.equal(original.value, transcriptBody);
+    assert.equal(original.metadata.itemId, rilaTranscriptOwner.entryId);
+    assert.equal(policy.safeNativeBodyRichText(original, true, context(rilaTranscriptOwner)), original);
+    assert.equal(safeLink({ value: { href: RILA_FINRA } }).value.href, '#service-unavailable');
+  }
+  process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
+});
+
+test('RILA transcript registration does not admit FINRA aliases, different owners or adjacent anchors', () => {
+  const valid = context(rilaTranscriptOwner);
+  for (const href of ['http://www.finra.org/', 'https://www.finra.org', 'http://finra.org',
+    'HTTP://www.finra.org', 'http://www.FINRA.org', 'http://www.finra.org:80',
+    'http://user@www.finra.org', '//www.finra.org', 'http://www.finra.org?unregistered=1']) {
+    assert.equal(policy.isUnavailableNativeBodyHref(href, href, valid), true, href);
+  }
+  for (const owner of expectedPairs.slice(0, -1)) {
+    const different = { componentName: owner[0], datasourceId: owner[1], entryId: owner[2] };
+    assert.equal(policy.isUnavailableNativeBodyHref(RILA_FINRA, RILA_FINRA, different), true);
+  }
+  const input = freeze(field(`${transcriptBody}<p><a href="http://www.finra.org/">Unregistered adjacent destination</a></p>`, rilaTranscriptOwner));
+  const output = policy.safeNativeBodyRichText(input, false, valid);
+  assert.ok(output.value.startsWith(transcriptBody));
+  assert.equal(output.value.split(transcriptAnchor).length - 1, 2);
+  assert.match(output.value, /href="#service-unavailable"[^>]*>Unregistered adjacent destination<\/a>/);
+  assert.strictEqual(output.metadata, input.metadata);
+  assert.ok(input.value.includes('href="http://www.finra.org/"'));
 });

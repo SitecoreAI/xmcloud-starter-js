@@ -1,6 +1,6 @@
 {
   "schema": "allianz.verified-source-service-body-links.v1",
-  "scope": "Only the exact href bytes at the nine verified Claims/FAQ native Body owners. This does not allow these protocols or domains generally, reconstruct placeholders, change General Link policy, or change CMS content.",
+  "scope": "Only the exact href bytes at the nine verified Claims/FAQ native Body owners and the single RILA video-transcript Body owner. The transcript retains its two existing FINRA anchors through one exact owner/href pair. This does not allow these protocols or domains generally, reconstruct placeholders, change General Link policy, or change CMS content.",
   "sourcePins": [
     {
       "url": "https://www.allianzlife.com/claims-information",
@@ -8,6 +8,13 @@
       "httpStatus": 200,
       "htmlSHA256": "234e2819f3bad5c2c59530fea838f9701736dd517778091c1c79cd96f77d981e",
       "qualification": "Ordinary anonymous source HTML; no asset or service requests. Exact hrefs matched to these native owners in a separate private source/delivery/CM matrix."
+    },
+    {
+      "url": "https://www.allianzlife.com/what-we-offer/annuities/registered-index-linked-annuities",
+      "capturedAtUtc": "2026-10-30T17:14:42.709312+00:00",
+      "httpStatus": 200,
+      "htmlSHA256": "ced85493e23b5dd124da5e0e3ecd66e2b585494535a5e2c948873aa1965fa5a7",
+      "qualification": "Ordinary anonymous source HTML. Both FINRA anchors already exist with this exact href, target=_blank and rel=noopener noreferrer in the delivered RILA video-transcript Body; preserve their native owner and complete field text."
     },
     {
       "url": "https://www.allianzlife.com/customer-service-frequently-asked-questions",
@@ -100,6 +107,14 @@
       "hrefs": [
         "http://www.naic.org/state_web_map.htm",
         "http://www.finra.org/"
+      ]
+    },
+    {
+      "componentName": "AllianzAccordion",
+      "datasourceId": "a52aa60ae9e54ea0978bc0018294228e",
+      "entryId": "f4f3144ea745495cbcddfff3818655f3",
+      "hrefs": [
+        "http://www.finra.org"
       ]
     }
   ]
