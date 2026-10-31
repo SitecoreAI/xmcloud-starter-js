@@ -13,7 +13,9 @@ export const PeopleCards = ({ items, editing }: { items: DirectoryPerson[]; edit
       <h4><a href={person.href} className={`people-directory__link${editing ? '' : ' people-directory__link--stretched'}`}>
         {shouldRenderTextField(person.name?.jsonValue, false) ? <Text field={person.name?.jsonValue} editable={false} /> : <span>View biography</span>}
       </a></h4>
-      {shouldRenderTextField(person.role?.jsonValue, false) && <RichText tag="div" field={person.role?.jsonValue} editable={false} className="people-directory__role" />}
+      {shouldRenderTextField(person.role?.jsonValue, false) && (person.roleFormat === 'text'
+        ? <Text tag="h6" field={person.role?.jsonValue} editable={false} />
+        : <RichText tag="div" field={person.role?.jsonValue} editable={false} className="people-directory__role" />)}
     </div>
     {shouldRenderTextField(person.directorySummary?.jsonValue, false) && <RichText tag="div" field={person.directorySummary?.jsonValue} editable={false} className="m-card__body" />}
   </article>)}

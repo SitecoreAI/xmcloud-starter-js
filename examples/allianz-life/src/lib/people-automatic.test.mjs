@@ -533,9 +533,17 @@ test('native inherited filters survive renamed labels without returning virtual 
   }
 });
 
-test('native metadata reads use the four confirmed GUID selectors without changing public aliases or Field objects', () => {
+test('native metadata reads retain confirmed GUID selectors and executive-only override aliases without changing Field objects', () => {
+  for (const key of ['executivePortrait', 'executiveRole']) {
+    const selector = data.PEOPLE_DIRECTORY_FIELD_IDS[key];
+    assert.equal(typeof selector, 'string');
+    assert.match(selector, /^\{?[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}\}?$/i);
+  }
+  assert.notEqual(data.PEOPLE_DIRECTORY_FIELD_IDS.executivePortrait, data.PEOPLE_DIRECTORY_FIELD_IDS.executiveRole);
   const expected = {
-    executives: { directoryOrder: 'b6a7493c-740f-45b5-8bae-b90b80d5aff3' },
+    executives: { directoryOrder: 'b6a7493c-740f-45b5-8bae-b90b80d5aff3',
+      directoryPortrait: data.PEOPLE_DIRECTORY_FIELD_IDS.executivePortrait,
+      directoryRole: data.PEOPLE_DIRECTORY_FIELD_IDS.executiveRole },
     experts: { directoryOrder: '7ec198c6-9914-4f31-8144-b47933cdb165', directoryCategory: '2b371226-4ba2-4b89-b0a1-2819f61cd2fe', directorySummary: '52bd7e33-c42d-466b-897d-54d6304a3f01' },
   };
   for (const kind of ['executives', 'experts']) {
@@ -545,7 +553,7 @@ test('native metadata reads use the four confirmed GUID selectors without changi
     const metadata = Object.fromEntries(fields.filter((node) => node.alias?.value.startsWith('directory')).map((node) => [node.alias.value, node.arguments.find((argument) => argument.name.value === 'name').value.value]));
     assert.deepEqual(metadata, expected[kind]);
     for (const name of ['name', 'role', 'portrait']) assert.equal(fields.find((node) => node.alias?.value === name).arguments[0].value.value, name);
-    for (const name of ['directoryOrder', ...(kind === 'experts' ? ['directorySummary'] : [])]) {
+    for (const name of ['directoryOrder', ...(kind === 'experts' ? ['directorySummary'] : ['directoryPortrait', 'directoryRole'])]) {
       assert.deepEqual(fields.find((node) => node.alias?.value === name).selectionSet.selections.map((node) => node.name.value), ['jsonValue']);
     }
     const records = dataset(kind), before = JSON.stringify(records.biographies);
@@ -665,4 +673,190 @@ test('purpose queries have valid GraphQL, no fixture IDs or author collection fa
   assert.ok(introduction);
   assert.equal(introduction.arguments.find((argument) => argument.name.value === 'name').value.value, data.PEOPLE_CATEGORY_INTRODUCTION_FIELD_ID);
   assert.deepEqual(introduction.selectionSet.selections.map((node) => node.name.value), ['jsonValue']);
+});
+
+test('executive directory overrides are independent and preserve original biography fields and metadata', () => {
+  for (const overrides of [{ role: true, portrait: false }, { role: false, portrait: true }, { role: true, portrait: true }]) {
+    const records = dataset('executives'), row = records.biographies[0];
+    const originalRole = row.role, originalPortrait = row.portrait;
+    const title = field('President and Chief Executive Officer', 'directoryRole', row.id);
+    const portrait = field({ src: '/allianz-assets/directory-card.jpg?v=exact', alt: '', width: '512', height: '350',
+      'dam-id': 'synthetic-directory-media' }, 'directoryPortrait', row.id, 'Image');
+    if (overrides.role) row.directoryRole = title;
+    if (overrides.portrait) row.directoryPortrait = portrait;
+    const before = JSON.stringify(records.biographies);
+    const result = selectFixtureDirectory(records.current, records.biographies);
+    const person = result.items.find((item) => item.id === row.id);
+    assert.strictEqual(person.role, overrides.role ? title : originalRole);
+    assert.strictEqual(person.portrait, overrides.portrait ? portrait : originalPortrait);
+    assert.equal(person.roleFormat, overrides.role ? 'text' : undefined);
+    assert.strictEqual(row.role, originalRole);
+    assert.strictEqual(row.portrait, originalPortrait);
+    assert.equal(JSON.stringify(records.biographies), before);
+    assert.deepEqual(result.items.map((item) => item.href), contract.executives.map((item) => item.route));
+    for (const editing of [false, true]) {
+      render(ExecutiveDirectory, { ...result, items: [person] }, { id: id(2) }, editing);
+      assert.equal(JSON.stringify(records.biographies), before);
+    }
+    if (overrides.role) assert.strictEqual(person.role.jsonValue.metadata, title.jsonValue.metadata);
+    if (overrides.portrait) assert.strictEqual(person.portrait.jsonValue.metadata, portrait.jsonValue.metadata);
+  }
+});
+
+test('executive directory portraits accept native root-relative and credential-free HTTPS fields without inventing alt or dimensions', () => {
+  for (const value of [
+    { src: '/allianz-assets/directory-card.jpg?v=retained', alt: '' },
+    { src: 'https://media.example.invalid/card.jpg?v=retained', alt: 'Authored card portrait', width: '512', height: '350' },
+  ]) {
+    const records = dataset('executives'), row = records.biographies[0];
+    row.directoryPortrait = field(value, 'directoryPortrait', row.id, 'Image');
+    const before = JSON.stringify(row), result = selectFixtureDirectory(records.current, records.biographies);
+    const person = result.items.find((item) => item.id === row.id);
+    assert.strictEqual(person.portrait, row.directoryPortrait);
+    assert.deepEqual(person.portrait.jsonValue.value, value);
+    const html = render(ExecutiveDirectory, { ...result, items: [person] }, { id: id(2) });
+    assert.ok(html.includes('src="' + value.src + '"'));
+    assert.ok(html.includes('alt="' + value.alt + '"'));
+    assert.equal(JSON.stringify(row), before);
+  }
+});
+
+test('unset, cleared and invalid directory titles independently fall back to the original RichText role', () => {
+  const cases = [
+    undefined, null, {}, [], { jsonValue: null }, { jsonValue: [] }, { jsonValue: {} },
+    field(''), field(' \u00a0 '), field(0), field(false), field({}), field([]),
+    ...['\u0000', '\t', '\n', '\r', '\u001f', '\u007f'].map((control) => field('Title' + control)),
+  ];
+  for (const directoryRole of cases) {
+    const records = dataset('executives'), row = records.biographies[0];
+    row.directoryRole = directoryRole;
+    row.directoryPortrait = field({ src: '/allianz-assets/card-only.jpg', alt: '' }, 'directoryPortrait', row.id, 'Image');
+    const before = JSON.stringify(row), result = selectFixtureDirectory(records.current, records.biographies);
+    const person = result.items.find((item) => item.id === row.id);
+    assert.strictEqual(person.role, row.role);
+    assert.equal(person.roleFormat, undefined);
+    assert.strictEqual(person.portrait, row.directoryPortrait);
+    assert.equal(JSON.stringify(row), before);
+  }
+});
+
+test('unset, cleared and invalid directory portraits independently fall back without coercing a new title to RichText', () => {
+  const invalidValues = [
+    {}, { src: '' }, { src: ' ' }, { src: 17 }, { src: false }, { src: {} }, { src: [] },
+    { src: '//outside.example.invalid/card.jpg' }, { src: '/\\outside.example.invalid/card.jpg' },
+    { src: 'https://user:secret@media.example.invalid/card.jpg' }, { src: 'https://user@media.example.invalid/card.jpg' },
+    { src: 'http://media.example.invalid/card.jpg' }, { src: 'javascript:alert(1)' },
+    { src: 'data:image/svg+xml,<svg/>' }, { src: 'blob:https://media.example.invalid/card' },
+    { src: 'relative/card.jpg' }, { src: '#demo-unavailable' }, { src: 'https://' },
+    { src: 'https://media.example.invalid/a b.jpg' }, { src: '/allianz-assets/a\nb.jpg' },
+    { src: '/allianz-assets/a\u007fb.jpg' }, { src: '/allianz-assets/card.jpg', alt: {} },
+    { src: '/allianz-assets/card.jpg', alt: null }, { src: '/allianz-assets/card.jpg', alt: 17 },
+  ];
+  const cases = [undefined, null, {}, [], { jsonValue: null }, { jsonValue: [] }, { jsonValue: {} },
+    ...invalidValues.map((value) => field(value, 'directoryPortrait', id(2), 'Image'))];
+  for (const directoryPortrait of cases) {
+    const records = dataset('executives'), row = records.biographies[0];
+    row.directoryRole = field('Short native title', 'directoryRole', row.id);
+    row.directoryPortrait = directoryPortrait;
+    const before = JSON.stringify(row), result = selectFixtureDirectory(records.current, records.biographies);
+    const person = result.items.find((item) => item.id === row.id);
+    assert.strictEqual(person.portrait, row.portrait);
+    assert.strictEqual(person.role, row.directoryRole);
+    assert.equal(person.roleFormat, 'text');
+    assert.equal(JSON.stringify(row), before);
+  }
+});
+
+test('clearing executive overrides restores the original fields and absent originals stay absent', () => {
+  const records = dataset('executives'), row = records.biographies[0];
+  const originalRole = row.role, originalPortrait = row.portrait;
+  row.directoryRole = field('Directory title', 'directoryRole', row.id);
+  row.directoryPortrait = field({ src: '/allianz-assets/directory.jpg' }, 'directoryPortrait', row.id, 'Image');
+  let result = selectFixtureDirectory(records.current, records.biographies);
+  assert.strictEqual(result.items[0].role, row.directoryRole);
+  row.directoryRole = field('', 'directoryRole', row.id);
+  row.directoryPortrait = field({ src: '' }, 'directoryPortrait', row.id, 'Image');
+  result = selectFixtureDirectory(records.current, records.biographies);
+  assert.strictEqual(result.items[0].role, originalRole);
+  assert.strictEqual(result.items[0].portrait, originalPortrait);
+  assert.equal(Object.hasOwn(result.items[0], 'roleFormat'), false);
+  delete row.role;
+  delete row.portrait;
+  result = selectFixtureDirectory(records.current, records.biographies);
+  const person = result.items.find((item) => item.id === row.id);
+  assert.equal(person.role, undefined);
+  assert.equal(person.portrait, undefined);
+  const html = render(ExecutiveDirectory, { ...result, items: [person] }, { id: id(2) });
+  assert.doesNotMatch(html, /<img\b|<h6\b|people-directory__role/);
+  assert.ok(html.includes('href="' + person.href + '"'));
+});
+
+test('directory titles render as encoded SDK Text H6 while fallback roles retain their original RichText surface', () => {
+  const records = dataset('executives'), row = records.biographies[0];
+  row.directoryRole = field('Chief <em>Actuary</em> & "Advisor"', 'directoryRole', row.id);
+  row.role = field('<p>Full biography role <strong>with organization</strong></p>', 'role', row.id, 'Rich Text');
+  let result = selectFixtureDirectory(records.current, records.biographies);
+  let person = result.items.find((item) => item.id === row.id);
+  for (const editing of [false, true]) {
+    const html = render(ExecutiveDirectory, { ...result, items: [person] }, { id: id(2) }, editing);
+    assert.match(html, /<h6\b/);
+    assert.ok(html.includes('Chief &lt;em&gt;Actuary&lt;/em&gt; &amp; &quot;Advisor&quot;'));
+    assert.doesNotMatch(html, /<em>|people-directory__role|data-sc-field/);
+    assert.ok(!html.includes(row.role.jsonValue.value));
+  }
+  row.directoryRole = field(' ', 'directoryRole', row.id);
+  result = selectFixtureDirectory(records.current, records.biographies);
+  person = result.items.find((item) => item.id === row.id);
+  for (const editing of [false, true]) {
+    const html = render(ExecutiveDirectory, { ...result, items: [person] }, { id: id(2) }, editing);
+    assert.match(html, /<div\b[^>]*class="people-directory__role"/);
+    assert.ok(html.includes(row.role.jsonValue.value));
+    assert.doesNotMatch(html, /<h6\b/);
+  }
+});
+
+test('expert queries and all expert directory projections ignore executive-only overrides', () => {
+  const records = dataset('experts');
+  const baseline = selectFixtureDirectory(records.current, records.biographies, records.categories);
+  for (const row of records.biographies) {
+    row.directoryRole = field('Must not replace an expert role', 'directoryRole', row.id);
+    row.directoryPortrait = field({ src: '/allianz-assets/must-not-replace-expert.jpg' }, 'directoryPortrait', row.id, 'Image');
+  }
+  const before = JSON.stringify(records.biographies);
+  const result = selectFixtureDirectory(records.current, records.biographies, records.categories);
+  assert.deepEqual(result, baseline);
+  assert.equal(JSON.stringify(records.biographies), before);
+  assert.ok(result.items.every((person) => !Object.hasOwn(person, 'roleFormat')));
+  assert.doesNotMatch(data.buildPeopleSearchQuery('biographies', records.current), /directoryPortrait|directoryRole/);
+  const html = render(ExpertDirectory, result, { id: id(2) });
+  assert.doesNotMatch(html, /Must not replace|must-not-replace-expert|<h6\b/);
+});
+
+test('valid executive overrides survive the native SDK hook without weakening scope or complete-search guards', async () => {
+  const records = dataset('executives'), row = records.biographies[0];
+  row.directoryRole = field('Native directory title', 'directoryRole', row.id);
+  row.directoryPortrait = field({ src: '/allianz-assets/native-card.jpg', alt: '' }, 'directoryPortrait', row.id, 'Image');
+  const before = JSON.stringify(records.biographies), current = harness(records);
+  const props = await current.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), {
+    getData: current.client.getData.bind(current.client),
+  }));
+  const person = props.directory.automaticPeople.items.find((item) => item.id === row.id);
+  assert.strictEqual(person.role, row.directoryRole);
+  assert.strictEqual(person.portrait, row.directoryPortrait);
+  assert.equal(person.roleFormat, 'text');
+  assert.equal(JSON.stringify(records.biographies), before);
+  for (const change of [
+    (response, name) => { if (name === 'AutomaticPeopleScope') response.datasource.parent.parent.id = id(999); return response; },
+    (response, name) => { if (name === 'AutomaticPeopleBiographies') response.search.total++; return response; },
+  ]) {
+    const guarded = harness(structuredClone(records), change);
+    const failed = await guarded.client.getComponentData(layout('executives'), {}, enrichPeopleComponentMap(componentMap(), {
+      getData: guarded.client.getData.bind(guarded.client),
+    }));
+    const value = failed.directory.automaticPeople;
+    assert.equal(value.complete, false);
+    assert.deepEqual(value.items, []);
+    assert.deepEqual(value.groups, []);
+    assert.doesNotMatch(render(ExecutiveDirectory, value, { id: id(2) }), /Native directory title|native-card\.jpg/);
+  }
 });

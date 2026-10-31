@@ -8,6 +8,9 @@ export const BIOGRAPHY_PAGE_TEMPLATE_ID = 'ad3a7fa4-b3e7-4578-9a76-1fefa535485c'
 export const EXPERT_DIRECTORY_CATEGORY_TEMPLATE_ID = 'bbaca5d1-9d26-479a-81c1-c37caa661a1e';
 export const PEOPLE_DIRECTORY_FIELD_IDS = {
   executiveOrder: 'b6a7493c-740f-45b5-8bae-b90b80d5aff3',
+  /** Optional directory-only fields verified in the native template on 2026-10-31. */
+  executivePortrait: '38cb73b5-fc21-4414-a520-df5b5f4adae5',
+  executiveRole: '87f09c64-8bae-4efe-ab84-dfce157b0370',
   expertOrder: '7ec198c6-9914-4f31-8144-b47933cdb165',
   expertCategory: '2b371226-4ba2-4b89-b0a1-2819f61cd2fe',
   expertSummary: '52bd7e33-c42d-466b-897d-54d6304a3f01',
@@ -33,12 +36,14 @@ export type PeopleBiography = {
   name?: PeopleText;
   role?: PeopleText;
   portrait?: { jsonValue?: ImageField };
+  directoryPortrait?: { jsonValue?: ImageField };
+  directoryRole?: PeopleText;
   directoryOrder?: PeopleOrder;
   directorySummary?: PeopleText;
   directoryCategory?: { targetItem?: { id: string } | null };
   parent?: { name: string; parent?: PeoplePage };
 };
-export type DirectoryPerson = Pick<PeopleBiography, 'id' | 'name' | 'role' | 'portrait' | 'directorySummary'> & { pageId: string; href: string };
+export type DirectoryPerson = Pick<PeopleBiography, 'id' | 'name' | 'role' | 'portrait' | 'directorySummary'> & { pageId: string; href: string; roleFormat?: 'text' };
 export type AutomaticPeople = {
   complete: boolean;
   status: 'ready' | 'unavailable';
@@ -102,7 +107,8 @@ export function buildPeopleSearchQuery(kind: PeopleQueryKind, scope: PeopleScope
       portrait: field(name: "portrait") { jsonValue }
       directoryOrder: field(name: "${scope.kind === 'executives' ? PEOPLE_DIRECTORY_FIELD_IDS.executiveOrder : PEOPLE_DIRECTORY_FIELD_IDS.expertOrder}") { jsonValue }
       ${scope.kind === 'experts' ? `directorySummary: field(name: "${PEOPLE_DIRECTORY_FIELD_IDS.expertSummary}") { jsonValue }
-      directoryCategory: field(name: "${PEOPLE_DIRECTORY_FIELD_IDS.expertCategory}") { ... on LookupField { targetItem { id } } }` : ''}
+      directoryCategory: field(name: "${PEOPLE_DIRECTORY_FIELD_IDS.expertCategory}") { ... on LookupField { targetItem { id } } }` : `directoryPortrait: field(name: "${PEOPLE_DIRECTORY_FIELD_IDS.executivePortrait}") { jsonValue }
+      directoryRole: field(name: "${PEOPLE_DIRECTORY_FIELD_IDS.executiveRole}") { jsonValue }`}
       parent { name parent { id path url { path } parent { id } } }`
     : `id heading: field(name: "heading") { jsonValue } introduction: field(name: "${PEOPLE_CATEGORY_INTRODUCTION_FIELD_ID}") { jsonValue } sortOrder: field(name: "__Sortorder") { jsonValue } parent { id }`;
   return `query AutomaticPeople${kind === 'biographies' ? 'Biographies' : 'Categories'} {
@@ -171,6 +177,25 @@ function searchedItems<T>(scope: PeopleScope, kind: PeopleQueryKind, result: Peo
   return result.items;
 }
 
+function validDirectoryRole(field?: PeopleText): boolean {
+  const value = field?.jsonValue?.value;
+  return Boolean(field && !Array.isArray(field) && field.jsonValue && !Array.isArray(field.jsonValue) &&
+    typeof value === 'string' && value.trim() && !/[\u0000-\u001f\u007f]/.test(value));
+}
+
+function validDirectoryPortrait(field?: PeopleBiography['directoryPortrait']): boolean {
+  const value = field?.jsonValue?.value;
+  if (!field || Array.isArray(field) || !field.jsonValue || Array.isArray(field.jsonValue) ||
+    !value || typeof value !== 'object' || Array.isArray(value) || typeof value.src !== 'string' ||
+    !value.src || /[\s\\\u0000-\u001f\u007f]/.test(value.src) ||
+    (value.alt !== undefined && typeof value.alt !== 'string')) return false;
+  if (value.src.startsWith('/')) return !value.src.startsWith('//');
+  try {
+    const url = new URL(value.src);
+    return url.protocol === 'https:' && !url.username && !url.password;
+  } catch { return false; }
+}
+
 /** Native search determines inherited membership; owning pages determine links and metadata orders/groups. */
 export function selectPeopleDirectory(scope: PeopleScope, biographies: PeopleSearchResult<PeopleBiography>, categories?: PeopleSearchResult<PeopleCategory>): AutomaticPeople {
   checkedScope(scope);
@@ -187,9 +212,14 @@ export function selectPeopleDirectory(scope: PeopleScope, biographies: PeopleSea
     pages.add(id);
   }
   eligible.sort((a, b) => (order(a.directoryOrder) ?? Number.MAX_SAFE_INTEGER) - (order(b.directoryOrder) ?? Number.MAX_SAFE_INTEGER) || checkedId(a.parent!.parent!.id).localeCompare(checkedId(b.parent!.parent!.id)));
-  const person = (row: PeopleBiography): DirectoryPerson => ({ id: row.id, pageId: row.parent!.parent!.id,
-    href: row.parent!.parent!.url.path, name: row.name, role: row.role, portrait: row.portrait,
-    ...(scope.kind === 'experts' ? { directorySummary: row.directorySummary } : {}) });
+  const person = (row: PeopleBiography): DirectoryPerson => {
+    const role = scope.kind === 'executives' && validDirectoryRole(row.directoryRole) ? row.directoryRole : undefined;
+    const portrait = scope.kind === 'executives' && validDirectoryPortrait(row.directoryPortrait) ? row.directoryPortrait : row.portrait;
+    return { id: row.id, pageId: row.parent!.parent!.id,
+      href: row.parent!.parent!.url.path, name: row.name, role: role ?? row.role, portrait,
+      ...(role ? { roleFormat: 'text' } : {}),
+      ...(scope.kind === 'experts' ? { directorySummary: row.directorySummary } : {}) };
+  };
   const items = eligible.map(person);
   const groups = (categories ? searchedItems(scope, 'categories', categories) : []).filter((category) => normalizePeopleId(category.parent?.id) === normalizePeopleId(scope.datasourceId))
     .sort((a, b) => (order(a.sortOrder) ?? Number.MAX_SAFE_INTEGER) - (order(b.sortOrder) ?? Number.MAX_SAFE_INTEGER) || checkedId(a.id).localeCompare(checkedId(b.id)))
