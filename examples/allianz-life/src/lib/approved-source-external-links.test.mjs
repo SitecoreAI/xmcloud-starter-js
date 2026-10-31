@@ -1070,3 +1070,73 @@ test('Advisory approvals reject unrecorded URL, query, fragment and authority va
     ]) assert.equal(href(render(field(unrecorded, { target: '_blank' }))), '#service-unavailable');
   }
 });
+
+const professionalsAllianceUrl = 'https://www.protectedincome.org/';
+
+test('Professionals preserves only the recorded Alliance source link and its SDK new-tab policy', () => {
+  assert.deepEqual(source.entries.filter(({ sourceRecordKey }) =>
+    sourceRecordKey === 'professionals-alliance-for-lifetime-income'), [
+    { kind: 'public-page', url: professionalsAllianceUrl, sourceRecordKey: 'professionals-alliance-for-lifetime-income' },
+  ]);
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const rel of ['', 'author']) {
+      const input = field(professionalsAllianceUrl, { target: '_blank', rel });
+      const before = JSON.stringify(input);
+      assert.equal(safeLink(input).value.href, professionalsAllianceUrl);
+      assert.strictEqual(safeLink(input).metadata, input.metadata);
+      assert.strictEqual(allianzLinkField(input, true), input);
+      assert.strictEqual(safeLinkRenderProps(input, true).field, input);
+      for (const editing of [false, true]) {
+        const markup = render(input, editing);
+        assert.equal(href(markup), professionalsAllianceUrl);
+        assert.match(markup, /target="_blank"/);
+        assert.ok(markup.includes(`rel="${rel ? `${rel} ` : ''}noopener noreferrer"`));
+        if (editing) assert.match(markup, /test-only-source-link-field/);
+      }
+      assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
+
+test('Professionals Alliance registration does not admit URL variants or native-link identities', () => {
+  const variants = [
+    'https://protectedincome.org/',
+    'http://www.protectedincome.org/',
+    '//www.protectedincome.org/',
+    'https://user:password@www.protectedincome.org/',
+    'https://www.protectedincome.org:443/',
+    'https://www.protectedincome.org:444/',
+    'https://www.protectedincome.org.example.invalid/',
+    'https://www.protectedincome.org/unrecorded',
+    'https://www.protectedincome.org/%2f',
+    'https://www.protectedincome.org/?redirect=unapproved',
+    'https://www.protectedincome.org/#unrecorded',
+    'https://www.protectedincome.org',
+    ` ${professionalsAllianceUrl}`,
+    `${professionalsAllianceUrl} `,
+    'https://www.limraconsumer.com/',
+    '/Login',
+  ];
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    const inputs = variants.map((url) => field(url, { target: '_blank' }));
+    inputs.push(field(professionalsAllianceUrl, { target: '_blank', querystring: 'redirect=unapproved' }));
+    inputs.push(field(professionalsAllianceUrl, { target: '_blank', anchor: 'unrecorded' }));
+    for (const linktype of ['internal', 'media']) inputs.push(field(professionalsAllianceUrl,
+      { target: '_blank', linktype, id: '{TEST-ONLY-ALLIANCE-NATIVE-ITEM}' }));
+    for (const input of inputs) {
+      const before = JSON.stringify(input), output = safeLink(input);
+      assert.equal(output.value.href, '#service-unavailable', JSON.stringify(input.value));
+      assert.equal(output.value.target, '');
+      assert.equal(output.value.querystring, '');
+      assert.equal(output.value.anchor, '');
+      assert.strictEqual(output.metadata, input.metadata);
+      assert.strictEqual(allianzLinkField(input, true), input);
+      const visitor = render(input);
+      assert.equal(href(visitor), '#service-unavailable');
+      assert.doesNotMatch(visitor, /target="_blank"|noopener|noreferrer/);
+      assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
