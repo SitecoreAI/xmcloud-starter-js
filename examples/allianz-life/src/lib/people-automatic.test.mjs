@@ -151,6 +151,137 @@ function nativeDiagnosticFixture() {
   return { records, page, rendering };
 }
 
+test('invalid-ID shapes expose only fixed metadata to the authorized native placement', async (t) => {
+  const cases = [
+    { label: 'absent', mutate(row) { delete row.id; }, presence: 'missing', type: 'undefined', format: 'not-string' },
+    { label: 'undefined', value: undefined, presence: 'present', type: 'undefined', format: 'not-string' },
+    { label: 'null', value: null, presence: 'present', type: 'null', format: 'not-string' },
+    { label: 'number', value: 73, presence: 'present', type: 'number', format: 'not-string' },
+    { label: 'boolean', value: false, presence: 'present', type: 'boolean', format: 'not-string' },
+    { label: 'array', value: ['synthetic-private-value'], presence: 'present', type: 'array', format: 'not-string' },
+    { label: 'object', value: { secret: 'synthetic-private-value', toString() { throw new Error('Must not coerce'); } }, presence: 'present', type: 'object', format: 'not-string' },
+    { label: 'empty', value: '', presence: 'present', type: 'string', format: 'empty-string' },
+    { label: 'whitespace', value: ' \t\n ', presence: 'present', type: 'string', format: 'whitespace-only' },
+    { label: 'wrapped GUID', value: ` ${id(701)} `, presence: 'present', type: 'string', format: 'guid-with-whitespace' },
+    { label: 'braced compact GUID', value: `{${id(701).replaceAll('-', '')}}`, presence: 'present', type: 'string', format: 'braced-compact-guid' },
+    { label: 'opaque', value: 'synthetic-private-value', presence: 'present', type: 'string', format: 'other-string' },
+    { label: 'long', value: 'synthetic-private-value'.repeat(20), presence: 'present', type: 'string', format: 'other-string' },
+    { label: 'null row', replace: null, presence: 'row-null', type: 'undefined', format: 'not-string' },
+    { label: 'undefined row', replace: undefined, presence: 'row-undefined', type: 'undefined', format: 'not-string' },
+    { label: 'array row', replace: [], presence: 'row-array', type: 'undefined', format: 'not-string' },
+    { label: 'primitive row', replace: 'synthetic-private-value', presence: 'row-primitive', type: 'undefined', format: 'not-string' },
+  ];
+  for (const record of cases) for (const enabled of [false, true]) await t.test(`${record.label}/${enabled ? 'native' : 'public'}`, async () => {
+    const { records, page, rendering } = nativeDiagnosticFixture();
+    const { client } = harness(records, (response, name) => {
+      if (name === 'AutomaticPeopleBiographies') {
+        if (Object.hasOwn(record, 'replace')) response.search.results[0] = record.replace;
+        else if (record.mutate) record.mutate(response.search.results[0]);
+        else response.search.results[0].id = record.value;
+      }
+      return response;
+    });
+    const props = (await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
+      getData: client.getData.bind(client), nativePeopleDiagnostics: enabled,
+    })))[rendering.uid];
+    assert.equal(props.automaticPeople.complete, false);
+    assert.deepEqual(props.automaticPeople.items, []);
+    assert.equal(Object.hasOwn(props.automaticPeople, 'validationReason'), false);
+    assert.equal(Object.hasOwn(props.automaticPeople, 'invalidIdDiagnostic'), false);
+    assert.equal(Object.hasOwn(props.automaticPeople, 'invalidId'), false);
+    if (enabled) {
+      assert.deepEqual(props.nativePeopleDiagnostic, { failureStage: 'biographies-validation', validationReason: 'invalid-id', invalidId: {
+        idPresence: record.presence, idType: record.type, idFormat: record.format, rowOrdinal: 1,
+      } });
+      assert.ok(Object.isFrozen(props.nativePeopleDiagnostic.invalidId));
+    } else {
+      assert.equal(Object.hasOwn(props, 'nativePeopleDiagnostic'), false);
+      assert.doesNotMatch(JSON.stringify(props), /idPresence|idType|idFormat|rowOrdinal|invalidId/);
+    }
+    const html = render(ExecutiveDirectory, props.automaticPeople, rendering.fields.data.datasource, false, props);
+    if (enabled) {
+      assert.ok(html.includes(`data-people-id-presence="${record.presence}"`));
+      assert.ok(html.includes(`data-people-id-type="${record.type}"`));
+      assert.ok(html.includes(`data-people-id-format="${record.format}"`));
+      assert.match(html, /data-people-row-ordinal="1"/);
+    } else assert.doesNotMatch(html, /data-people-(?:id-|row-ordinal)/);
+    assert.doesNotMatch(JSON.stringify(props) + html, /synthetic-private|Must not coerce|Authorization|fetchOptions|00000000-0000-4000-8000/);
+  });
+});
+
+test('invalid-ID ordinal spans pagination and accepted GUID forms never gain diagnostic details', async () => {
+  const { records, page, rendering } = nativeDiagnosticFixture();
+  for (let i = 0; i < 5; i++) {
+    const row = structuredClone(records.biographies[0]); row.id = id(800 + i); row.parent.parent.id = id(900 + i); records.biographies.push(row);
+  }
+  const { client, calls } = harness(records, (response, name, args) => {
+    if (name === 'AutomaticPeopleBiographies' && args.after) response.search.results[2].id = 'synthetic-private-value';
+    return response;
+  });
+  const props = (await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
+    getData: client.getData.bind(client), nativePeopleDiagnostics: true,
+  })))[rendering.uid];
+  assert.equal(props.nativePeopleDiagnostic.invalidId.rowOrdinal, 13);
+  assert.deepEqual(props.automaticPeople.items, []);
+  assert.deepEqual(calls.filter(x => x.name === 'AutomaticPeopleBiographies').map(x => x.args.after), [undefined, '10']);
+  for (const form of [id(701), id(701).replaceAll('-', '').toUpperCase(), `{${id(701).toUpperCase()}}`]) {
+    const fixture = nativeDiagnosticFixture();
+    const success = harness(fixture.records, (response, name) => { if (name === 'AutomaticPeopleBiographies') response.search.results[0].id = form; return response; });
+    const result = (await success.client.getComponentData(fixture.page, {}, enrichPeopleComponentMap(componentMap(), {
+      getData: success.client.getData.bind(success.client), nativePeopleDiagnostics: true,
+    })))[fixture.rendering.uid];
+    assert.equal(result.automaticPeople.complete, true);
+    assert.equal(result.automaticPeople.items.length, 8);
+    assert.equal(Object.hasOwn(result, 'nativePeopleDiagnostic'), false);
+  }
+});
+
+test('optional shape inspection reads the ID once and cannot replace the original failure', async () => {
+  for (const inspectionThrows of [false, true]) {
+    let idReads = 0;
+    const { records, page, rendering } = nativeDiagnosticFixture();
+    const { client } = harness(records, (response, name) => {
+      if (name === 'AutomaticPeopleBiographies') response.search.results[0] = new Proxy(response.search.results[0], {
+        get(target, key) { if (key === 'id') { idReads++; return 'synthetic-private-value'; } return Reflect.get(target, key); },
+        getOwnPropertyDescriptor(target, key) { if (inspectionThrows) throw new Error('synthetic-private-inspection'); return Reflect.getOwnPropertyDescriptor(target, key); },
+      });
+      return response;
+    });
+    const props = (await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
+      getData: client.getData.bind(client), nativePeopleDiagnostics: true,
+    })))[rendering.uid];
+    assert.equal(idReads, 1);
+    assert.equal(props.nativePeopleDiagnostic.validationReason, 'invalid-id');
+    assert.deepEqual(props.nativePeopleDiagnostic.invalidId, {
+      idPresence: inspectionThrows ? 'unclassified' : 'present', idType: inspectionThrows ? 'other' : 'string',
+      idFormat: inspectionThrows ? 'unclassified' : 'other-string', rowOrdinal: 1,
+    });
+    assert.deepEqual(props.automaticPeople.items, []);
+    assert.doesNotMatch(JSON.stringify(props), /synthetic-private|inspectionThrows|idReads/);
+  }
+});
+
+test('upstream properties and reused branded errors cannot smuggle ID metadata into request failures', async () => {
+  let branded;
+  try { await data.collectPeopleSearch(async () => ({ search: { total: 1, results: [{ id: null }], pageInfo: { hasNext: false } } }), 'biographies', scope()); }
+  catch (error) { branded = error; }
+  const spoofed = Object.assign(new Error('synthetic-private-value'), {
+    validationReason: 'invalid-id', invalidIdDiagnostic: { idPresence: 'synthetic-private-value', rowOrdinal: 99 },
+  });
+  assert.equal(data.getPeopleInvalidIdDiagnostic(spoofed), undefined);
+  assert.equal(data.getPeopleInvalidIdDiagnostic(null), undefined);
+  assert.deepEqual(data.getPeopleInvalidIdDiagnostic(branded), { idPresence: 'present', idType: 'null', idFormat: 'not-string', rowOrdinal: 1 });
+  for (const error of [spoofed, branded]) {
+    const { records, page, rendering } = nativeDiagnosticFixture();
+    const { client } = harness(records, (response, name) => { if (name === 'AutomaticPeopleBiographies') throw error; return response; });
+    const props = (await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
+      getData: client.getData.bind(client), nativePeopleDiagnostics: true,
+    })))[rendering.uid];
+    assert.deepEqual(props.nativePeopleDiagnostic, { failureStage: 'biographies-request', validationReason: 'not-reported' });
+    assert.doesNotMatch(JSON.stringify(props), /synthetic-private|idPresence|idType|idFormat|rowOrdinal|invalidId/);
+  }
+});
+
 test('native exact-placement failure readout contains only fixed markers and public props omit the new reason', async () => {
   for (const enabled of [false, true]) {
     const { records, page, rendering } = nativeDiagnosticFixture();
@@ -193,7 +324,7 @@ test('native readout is fenced by exact owner, placement, site, language and dir
     const { records, page, rendering } = nativeDiagnosticFixture();
     mutate(page, rendering);
     const { client } = harness(records, (response, name) => {
-      if (name === 'AutomaticPeopleBiographies') response.search.total = -1;
+      if (name === 'AutomaticPeopleBiographies') response.search.results[0].id = 'synthetic-private-value';
       return response;
     });
     const props = (await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
@@ -211,14 +342,14 @@ test('shared collection reads do not carry one native placement diagnostic into 
     const other = { ...rendering, uid: id(909) };
     page.sitecore.route.placeholders['headless-main'] = otherFirst ? [other, rendering] : [rendering, other];
     const { client, calls } = harness(records, (response, name) => {
-      if (name === 'AutomaticPeopleBiographies') response.search.total = -1;
+      if (name === 'AutomaticPeopleBiographies') response.search.results[0].id = 'synthetic-private-value';
       return response;
     });
     const props = await client.getComponentData(page, {}, enrichPeopleComponentMap(componentMap(), {
       getData: client.getData.bind(client), nativePeopleDiagnostics: true,
     }));
     assert.equal(props[rendering.uid].automaticPeople, props[other.uid].automaticPeople);
-    assert.equal(props[rendering.uid].nativePeopleDiagnostic.validationReason, 'invalid-total');
+    assert.equal(props[rendering.uid].nativePeopleDiagnostic.validationReason, 'invalid-id');
     assert.equal(Object.hasOwn(props[other.uid], 'nativePeopleDiagnostic'), false);
     assert.equal(calls.filter((call) => call.name === 'AutomaticPeopleScope').length, 1);
     assert.equal(calls.filter((call) => call.name === 'AutomaticPeopleBiographies').length, 1);

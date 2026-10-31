@@ -19,7 +19,11 @@ export const Default = ({ fields, rendering, params }: ExecutiveDirectoryProps) 
     <div className="l-grid l-grid--max-width">
       <div className="u-margin-bottom-xl"><PeopleCards items={automatic?.complete ? automatic.items : []} editing={editing} /></div>
       {!automatic?.complete && <p role="status" data-people-failure-stage={diagnostic?.failureStage}
-        data-people-validation-reason={diagnostic?.validationReason}>The executive directory is temporarily unavailable.</p>}
+        data-people-validation-reason={diagnostic?.validationReason}
+        data-people-id-presence={diagnostic?.invalidId?.idPresence}
+        data-people-id-type={diagnostic?.invalidId?.idType}
+        data-people-id-format={diagnostic?.invalidId?.idFormat}
+        data-people-row-ordinal={diagnostic?.invalidId?.rowOrdinal}>The executive directory is temporarily unavailable.</p>}
       {editing && Boolean(automatic?.missingOrder) && <p role="status">Some biographies have no directory order and appear after ordered entries.</p>}
     </div>
   </section>;

@@ -32,21 +32,53 @@ export const NATIVE_PEOPLE_DIAGNOSTIC_SCOPE = {
   datasourceId: '36837b6b753043b7b768005981ace58c',
   placementId: 'e808767f7ce641fa9de1efeed9424256',
 } as const;
+export type PeopleInvalidIdDiagnostic = Readonly<{
+  idPresence: 'missing' | 'present' | 'row-null' | 'row-undefined' | 'row-array' | 'row-primitive' | 'unclassified';
+  idType: 'undefined' | 'null' | 'string' | 'number' | 'boolean' | 'array' | 'object' | 'other';
+  idFormat: 'not-string' | 'empty-string' | 'whitespace-only' | 'guid-with-whitespace' | 'braced-compact-guid' | 'other-string' | 'unclassified';
+  /** One-based position among returned rows, not editorial order or an item identity. */
+  rowOrdinal: number;
+}>;
 export type NativePeopleDiagnostic = {
   failureStage: 'scope-request' | 'scope-validation' | 'biographies-request' | 'biographies-validation' |
     'categories-request' | 'categories-validation' | 'selection-validation' | 'invalid-scope' | 'unknown';
   validationReason: PeopleSearchValidationReason | 'not-reported';
+  invalidId?: PeopleInvalidIdDiagnostic;
 };
 const searchValidationReasons = new WeakMap<object, PeopleSearchValidationReason>();
-function invalidPeopleSearch(reason: PeopleSearchValidationReason, message: string): Error {
+const invalidIdDiagnostics = new WeakMap<object, PeopleInvalidIdDiagnostic>();
+function invalidPeopleSearch(reason: PeopleSearchValidationReason, message: string, invalidId?: PeopleInvalidIdDiagnostic): Error {
   const error = new Error(message);
   searchValidationReasons.set(error, reason);
+  if (reason === 'invalid-id' && invalidId) invalidIdDiagnostics.set(error, invalidId);
   return error;
 }
 /** Only errors created by this module can supply a validation reason. */
 export function getPeopleSearchValidationReason(error: unknown): PeopleSearchValidationReason | undefined {
   return typeof error === 'object' && error !== null ? searchValidationReasons.get(error) : undefined;
 }
+/** Fixed local classifications only; the original row and ID are never retained. */
+export function getPeopleInvalidIdDiagnostic(error: unknown): PeopleInvalidIdDiagnostic | undefined {
+  return typeof error === 'object' && error !== null ? invalidIdDiagnostics.get(error) : undefined;
+}
+function classifyInvalidPeopleId(row: unknown, value: unknown, rowOrdinal: number): PeopleInvalidIdDiagnostic {
+  try {
+    const idPresence = row === null ? 'row-null' : row === undefined ? 'row-undefined' : Array.isArray(row) ? 'row-array' :
+      typeof row !== 'object' ? 'row-primitive' : Object.prototype.hasOwnProperty.call(row, 'id') ? 'present' : 'missing';
+    const valueType = typeof value;
+    const idType = value === null ? 'null' : Array.isArray(value) ? 'array' :
+      valueType === 'undefined' || valueType === 'string' || valueType === 'number' || valueType === 'boolean' || valueType === 'object' ? valueType : 'other';
+    // Bound optional string classification; never decode, coerce or retain the value.
+    const idFormat = typeof value !== 'string' ? 'not-string' : value.length === 0 ? 'empty-string' : value.length > 128 ? 'other-string' :
+      value.trim().length === 0 ? 'whitespace-only' : normalizePeopleId(value.trim()) ? 'guid-with-whitespace' :
+      /^\{[a-f\d]{32}\}$/i.test(value) ? 'braced-compact-guid' : 'other-string';
+    return Object.freeze({ idPresence, idType, idFormat, rowOrdinal });
+  } catch {
+    // Optional classification must never replace the original invalid-ID failure.
+    return Object.freeze({ idPresence: 'unclassified', idType: 'other', idFormat: 'unclassified', rowOrdinal });
+  }
+}
+
 /** Provenance of a complete native search, whose _templates predicate includes inherited templates. */
 export type PeopleSearchResult<T> = { items: T[]; complete: true; queryKind: PeopleQueryKind; baseTemplateId: string; scope: PeopleScope };
 export type PeopleCategory = { id: string; heading?: PeopleText; introduction?: PeopleText; sortOrder?: PeopleOrder; template?: { id: string; name?: string }; parent?: { id: string } };
@@ -159,8 +191,10 @@ export async function collectPeopleSearch<T extends { id: string }>(getData: Peo
     if (total !== undefined && total !== data.total) throw invalidPeopleSearch('total-changed', 'People-directory count changed during pagination');
     total = data.total;
     for (const row of data.results) {
-      const id = normalizePeopleId(row?.id);
-      if (!id) throw invalidPeopleSearch('invalid-id', 'Invalid or duplicate people-directory item');
+      const rawId = row?.id;
+      const id = normalizePeopleId(rawId);
+      if (!id) throw invalidPeopleSearch('invalid-id', 'Invalid or duplicate people-directory item',
+        classifyInvalidPeopleId(row, rawId, rows.length + 1));
       if (ids.has(id)) throw invalidPeopleSearch('duplicate-id', 'Invalid or duplicate people-directory item');
       rows.push(row); ids.add(id);
     }
