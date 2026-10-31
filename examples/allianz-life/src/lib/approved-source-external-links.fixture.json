@@ -1,6 +1,6 @@
 {
   "schema": "allianz.approved-source-external-links.v1",
-  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled. The four exact AA Classic source rates, brochure and historical MVA URLs retain their captured destinations; the Login binding remains disabled. The two exact Essential Income 7 source Rates and historical MVA destinations retain their captured absolute URLs. The exact Retirement Foundation ADV resource Rates and historical MVA source destinations retain their captured absolute URLs. The exact Core Income 7 Rates and historical MVA source destinations retain their captured absolute URLs. The three exact public Related Sites footer destinations retain their verified external URLs and intentional new-tab behavior; account services remain disabled. The four remaining exact official newsroom company-profile destinations retain source new-tab behavior; this does not enable other URLs or account services. The two Annuities product-choice source fallbacks now use substantive verified local destinations. The three exact About parent-company affiliate URLs retain captured source new-tab behavior; no domain-wide navigation rule or access permission changes. The Professionals Alliance for Lifetime Income link preserves only its exact captured source URL and new-tab behavior; no host-wide navigation rule or access permission changes. The three exact Financial Ratings agency destinations retain their captured source URLs and intentional new-tab behavior; no domain-wide navigation rule or access permission changes.",
+  "scope": "Exact original URLs from Resources, Income, Sustainability and the selected early-retirement route; native internal links retain local navigation Exact Accumulator product-title, FAQ, Tools & Resources and Rates source URLs are approved where a viable native target is absent. The four external Tools card destinations retain their exact captured source URLs. The exact Life Insurance overview benefit-body Index Options source destination remains absolute. The three exact About Us teaser source destinations stay absolute while their native destinations are unverified. The exact What We Offer Annuities source destination remains absolute while its native destination is unverified. The five exact RILA product source destinations remain absolute while the native target pages are guarded and lack current accepted delivery. The six exact Index Advantage+ navigation/tool/support source destinations retain their captured absolute URLs where native accepted delivery is absent; existing Login binding remains disabled. The four exact AA Classic source rates, brochure and historical MVA URLs retain their captured destinations; the Login binding remains disabled. The two exact Essential Income 7 source Rates and historical MVA destinations retain their captured absolute URLs. The exact Retirement Foundation ADV resource Rates and historical MVA source destinations retain their captured absolute URLs. The exact Core Income 7 Rates and historical MVA source destinations retain their captured absolute URLs. The three exact public Related Sites footer destinations retain their verified external URLs and intentional new-tab behavior; account services remain disabled. The four remaining exact official newsroom company-profile destinations retain source new-tab behavior; this does not enable other URLs or account services. The two Annuities product-choice source fallbacks now use substantive verified local destinations. The three exact About parent-company affiliate URLs retain captured source new-tab behavior; no domain-wide navigation rule or access permission changes. The Professionals Alliance for Lifetime Income link preserves only its exact captured source URL and new-tab behavior; no host-wide navigation rule or access permission changes. The three exact Financial Ratings agency destinations retain their captured source URLs and intentional new-tab behavior; no domain-wide navigation rule or access permission changes. The six exact public footer Careers and social destinations retain their captured source URLs and new-tab targets; no domain-wide rule, account-service, CSP or authentication changes.",
   "sourcePins": [
     {
       "path": "preparation/resources-exact-scope-v8/PDF-EXTERNAL-EXACT-FIELD-CANDIDATE.json",
@@ -244,6 +244,22 @@
       "sourceRoute": "/about/financial-ratings",
       "sourceDomSha256": "8d6c101c9c2c3e67f0168f34cd6fe003a46ae611aaf147ca21100ac944ae59a3",
       "evidence": "Fresh official rendered DOM and source desktop measurement witness: three agency CTA hrefs, labels and target=_blank. Native link fields were independently saved and refreshed by the migration task; only the exact public source destinations are registered here. No HTTP status, target-page functionality or whole-page acceptance is inferred."
+    },
+    {
+      "url": "https://www.allianzlife.com/get-answers",
+      "httpStatus": 200,
+      "capturedAtUtc": "2026-10-31T06:27:58.624429+00:00",
+      "sourceHtmlSha256": "83960ac2dbd84e9effa1e5e7f5730d911ac601d256e49bb5dc4279911a713f91",
+      "sourceRoute": "/get-answers",
+      "sourceRecordKeys": [
+        "footer-public-careers",
+        "footer-public-facebook",
+        "footer-public-linkedin",
+        "footer-public-twitter",
+        "footer-public-instagram",
+        "footer-public-youtube"
+      ],
+      "evidence": "Fresh public source HTML preserves only the six recorded Careers and social footer hrefs with target=_blank. These are outgoing content destinations; existing local account-service and document restrictions remain unchanged."
     }
   ],
   "entries": [
@@ -786,6 +802,36 @@
       "kind": "public-page",
       "url": "https://www.standardandpoors.com/en_US/web/guest/home",
       "sourceRecordKey": "financial-ratings-agency-standard-and-poors"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://careers.allianz.com/US/go/Allianz-US-Life/5140601/",
+      "sourceRecordKey": "footer-public-careers"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.facebook.com/AllianzLife",
+      "sourceRecordKey": "footer-public-facebook"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.linkedin.com/company/allianz-life",
+      "sourceRecordKey": "footer-public-linkedin"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://twitter.com/allianzlife",
+      "sourceRecordKey": "footer-public-twitter"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.instagram.com/allianzlife/",
+      "sourceRecordKey": "footer-public-instagram"
+    },
+    {
+      "kind": "public-page",
+      "url": "https://www.youtube.com/user/allianzus",
+      "sourceRecordKey": "footer-public-youtube"
     }
   ]
 }

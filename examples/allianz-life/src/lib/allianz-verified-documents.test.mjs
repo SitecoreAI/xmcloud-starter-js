@@ -221,13 +221,13 @@ test('same-host URLs, changed versions, ambiguous queries, fragments and alterna
   }
 });
 
-test('disabled services, social destinations and third-party prospectuses retain their existing boundary', () => {
+test('disabled services, unregistered social destinations and third-party prospectuses retain their existing boundary', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     for (const url of [
       '#demo-unavailable', '#service-unavailable',
       'https://www.allianzlife.com/login', 'https://www.allianzlife.com/account',
-      'https://www.facebook.com/AllianzLife', 'https://www.linkedin.com/company/allianz-life',
+      'https://www.facebook.com/AllianzLife/unregistered', 'https://www.linkedin.com/company/allianz-life/unregistered',
       'https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018817882',
       'https://vpx.broadridge.com/GetContract1.asp?doctype=isp&cid=allianzmft&fid=018815514',
       'https://vpx.broadridge.com/GetContract1.asp?doctype=usp&cid=allianzmft&fid=018815514',
