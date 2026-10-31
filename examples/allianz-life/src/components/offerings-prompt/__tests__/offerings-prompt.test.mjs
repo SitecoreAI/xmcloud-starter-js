@@ -37,9 +37,9 @@ test('offerings cleared fields remain available in input without canvas placehol
   assert.equal(offeringsPromptFields(missing).heading, undefined);
   assert.doesNotMatch(render(Default, missing), /What can we|See how|href=|<img/);
   const external = { ...root, heading: field('prompt-heading', 'Single-Line Text', 'Heading'), link: field('prompt-link', 'General Link', {
-    href: 'https://careers.allianz.com/us/en/allianz-us-life', text: 'Authored external', target: '_blank' }) };
+    href: 'https://careers.allianz.com/us/en/unrecorded-careers', text: 'Authored external', target: '_blank' }) };
   assert.deepEqual(links(render(Default, external)), ['#service-unavailable']);
-  assert.deepEqual(links(render(Default, external, true)), ['https://careers.allianz.com/us/en/allianz-us-life']);
+  assert.deepEqual(links(render(Default, external, true)), ['https://careers.allianz.com/us/en/unrecorded-careers']);
   assert.match(decode(render(Default, external, true)), /"fieldId":"prompt-link"/);
   assert.equal(render(Default, { ...data, children: { total: 10 } }), render(Default, data));
 });
