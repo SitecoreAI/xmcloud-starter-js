@@ -73,7 +73,7 @@ test('Information fixed circle and ordinary source yellow/green theme', () => {
   for (const name of ['LifeShapesHeading', 'LifePuzzleHeading']) assert.match(render(RTE[name], fixture(), false, { theme: 'green-soft' }), /t-bg-transparent/);
 });
 
-test('only resolved-yellow Information moves the same 32px bottom gap inside its background', () => {
+test('Life keeps its yellow-only spacing rule alongside source-green About Information', () => {
   const postcss = require('postcss');
   const css = postcss.parse(fs.readFileSync(path.join(sourceRoot, '../public/allianz-assets/source-style.css'), 'utf8'));
   const utility = (selector, property) => {
@@ -113,8 +113,16 @@ test('only resolved-yellow Information moves the same 32px bottom gap inside its
   ]) {
     for (const theme of themes) {
       const html = render(RTE[name], fixture(), false, { theme });
-      assert.match(html, /l-grid__row u-margin-bottom-lg u-padding-top-lg/, `${name}/${theme}`);
-      assert.doesNotMatch(html, /u-padding-bottom-lg/, `${name}/${theme}`);
+      // About Information now paints its own source-green 32px space internally.
+      // Life's separate green rule and ordinary headings retain their prior margin.
+      if (name === 'AboutInformationHeading') {
+        assert.match(html, /t-bg-green-soft/);
+        assert.match(html, /l-grid__row u-padding-bottom-lg u-padding-top-lg/, `${name}/${theme}`);
+        assert.doesNotMatch(html, /u-margin-bottom-lg/, `${name}/${theme}`);
+      } else {
+        assert.match(html, /l-grid__row u-margin-bottom-lg u-padding-top-lg/, `${name}/${theme}`);
+        assert.doesNotMatch(html, /u-padding-bottom-lg/, `${name}/${theme}`);
+      }
     }
   }
 });

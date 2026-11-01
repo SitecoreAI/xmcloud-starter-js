@@ -149,8 +149,11 @@ const AboutHeading = ({ fields, params, information = false }: AllianzRichTextPr
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  // Keep Information's existing 32px gap inside its green painted wrapper.
+  // Its separately owned green cards follow without exposing the page background.
+  const bottomSpacing = information ? 'u-padding-bottom-lg' : 'u-margin-bottom-lg';
   return <div className={`l-container--full-width ${information ? 't-bg-green-soft' : 't-bg-transparent'} axlTileCollection allianz-about-heading`} id={params.RenderingIdentifier}>
-    <div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-lg u-padding-top-lg"><div className="l-grid__column-medium-12">
+    <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${bottomSpacing} u-padding-top-lg`}><div className="l-grid__column-medium-12">
       <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className="tileContent u-text-center">
         {information && <div className="tileIcon t-bg-primary-brand t-icon-primary-white">
           {shouldRenderImageField(data.icon?.jsonValue, false) && <Image field={data.icon?.jsonValue} editable={isEditing} className="allianz-about-information-glyph"

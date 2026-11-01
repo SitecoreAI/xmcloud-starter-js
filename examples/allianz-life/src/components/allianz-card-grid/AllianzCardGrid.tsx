@@ -40,7 +40,7 @@ type AllianzCardGridPresentation = {
   headingIconAppearance?: 'gray' | 'brand';
 };
 
-type CardIconAppearance = 'white-on-black' | 'gray-on-transparent' | 'white-on-brand';
+type CardIconAppearance = 'white-on-black' | 'gray-on-transparent' | 'white-on-brand' | 'white-on-purple';
 
 /** Finite authorable treatments for external monochrome Image fields. */
 function cardIconAppearance(value: unknown): CardIconAppearance | undefined {
@@ -49,6 +49,7 @@ function cardIconAppearance(value: unknown): CardIconAppearance | undefined {
 
 function cardIconTheme(theme: unknown, appearance?: CardIconAppearance): string {
   if (appearance === 'white-on-black') return 't-bg-primary-black t-icon-primary-white';
+  if (appearance === 'white-on-purple') return 't-bg-purple-bright t-icon-primary-white';
   if (appearance === 'gray-on-transparent') return 't-bg-transparent t-icon-primary-black';
   return theme === 'primary-brand' ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black';
 }
@@ -121,6 +122,23 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
     && (params.iconAppearance === undefined || params.iconAppearance === '')
     && cards.length === 1 && sourceDestinationId(cards[0].id) === 'b0194ab31add4001bd330b5ab61c8ad2'
     && [undefined, '', 'transparent'].includes(cards[0].theme?.jsonValue?.value);
+  // Only the witnessed Glossary support owner receives the source purple Question.
+  // This private presentation does not add a public iconAppearance or native theme.
+  const isGlossaryQuestion = sourceDestinations && sourceIconAppearance && sourceStatisticBadges
+    && !sourceDownloadLinks && !headingIconAppearance && !isRilaPromotion && !faqAppearance
+    && !sourceAnchor && !sourceRelatedIntroduction && !sourceFeaturesIntroduction
+    && sourceDestinationId(routeId) === 'bfbcd30487a6411bae71db48edea8d76'
+    && sourceDestinationId('id' in data ? data.id : undefined) === '1c78e315aafc415aa936f3df44a93185'
+    && params.layout === 'stacked' && params.columns === '1' && params.alignment === 'center'
+    && params.theme === 'green-soft' && params.headingLevel === 'h2'
+    && (params.iconAppearance === undefined || params.iconAppearance === '')
+    && cards.length === 1 && sourceDestinationId(cards[0].id) === 'b6f8bf83a7e24412a3f19282a20f4369'
+    && cards[0].theme?.jsonValue?.value === 'transparent'
+    && cards[0].iconTheme?.jsonValue?.value === ''
+    && typeof cards[0].icon?.jsonValue?.value?.src === 'string'
+    && cards[0].icon.jsonValue.value.src.trim().length > 0
+    && shouldRenderImageField(cards[0].icon?.jsonValue, false)
+    && !shouldRenderImageField(cards[0].image?.jsonValue, false);
   // These five native industry articles share the source column and split layout.
   const fproIndustryIds = ['94fdbc1a4bb14979b2f98f248f3e84e0', '4c3bfd1658fd4fe4b6fba4e3eedb619e',
     '4cf80ef355b640a28095924523ed3d2f', 'dc3bce1dfed94b78818126d1cf5ec438', '74f51b4dee5b4ad39684a76de86fbf13'];
@@ -256,7 +274,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
           const numberBadge = sourceNumberBadge || lifetimeNumberBadge || claimsNumberBadge;
           const sourceWhiteIcon = (isLifetimeInformation
             && sourceDestinationId(card.id) === '3bed4184604d4f66a8132654c28ea1f6') || isClaimsQuestion || isFProInformation;
-          const cardAppearance = iconAppearance ?? (sourceWhiteIcon
+          const cardAppearance = iconAppearance ?? (isGlossaryQuestion ? 'white-on-purple' : undefined) ?? (sourceWhiteIcon
             && card.iconTheme?.jsonValue?.value === 'primary-brand'
             && shouldRenderImageField(card.icon?.jsonValue, false)
             && !shouldRenderImageField(card.image?.jsonValue, false) ? 'white-on-brand' : undefined);
