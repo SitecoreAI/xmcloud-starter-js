@@ -53,8 +53,9 @@ test('retained source owns two plain modules with three same-tab labelled links'
   assert.doesNotMatch(source, /<img|class="content-body|<article/);
 });
 
-test('the entire existing Default and Privacy implementation remains byte-identical to e5', () => {
-  const code = fs.readFileSync(filename, 'utf8');
+test('the entire existing Default and Privacy implementation remains canonical-LF byte-identical to e5', () => {
+  // Compare Git's canonical LF source across checkout line endings.
+  const code = fs.readFileSync(filename, 'utf8').replace(/\r\n/g, '\n');
   const marker = code.indexOf('\n/** Source home cards retain');
   assert.ok(marker > 0);
   assert.equal(hash(code.slice(0, marker)), fixture.baselineComponentSHA256);
