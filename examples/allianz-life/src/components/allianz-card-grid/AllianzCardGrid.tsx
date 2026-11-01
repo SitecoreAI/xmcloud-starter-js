@@ -1417,7 +1417,7 @@ function SourceRilaCards({ fields, params, role }: AllianzCardGridProps & { role
                   })}</footer>}
                 </div>
               </div>
-              {isProduct && shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} sizes="100vw" className="c-image__img c-teaser__image-img" /></picture></div>}
+              {isProduct && shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} sizes="100vw" className="c-image__img c-teaser__image-img" /></picture></div>}
             </article>
           </div>;
         })}
