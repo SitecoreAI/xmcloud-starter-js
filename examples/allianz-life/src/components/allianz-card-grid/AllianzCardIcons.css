@@ -32,6 +32,11 @@
   filter: brightness(0) invert(1);
 }
 
+/* Exact Glossary support owner only; the public parameter remains two-mode. */
+.tileIcon[data-allianz-card-icon-appearance="white-on-purple"] .allianz-card-icon-glyph {
+  filter: brightness(0) invert(1);
+}
+
 .tileIcon[data-allianz-card-icon-appearance="gray-on-transparent"] {
   background-color: transparent;
   color: #3c3c3c;
