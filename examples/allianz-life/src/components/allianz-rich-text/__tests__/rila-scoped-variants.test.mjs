@@ -193,7 +193,11 @@ test('prior exports retain visitor markup and use the same visible editing canva
               // This frozen RILA baseline predates the native optional Icon contract,
               // independently covered by about-variants and optional-icons. These
               // fixtures have no Icon field: retain all other historical DOM exactly.
+              // The source Information introduction and cards share one green parent.
+              // Separate native wrappers retain its 32px space as painted padding.
               expected = expected
+                .replace('l-grid__row u-margin-bottom-lg u-padding-top-lg',
+                  'l-grid__row u-padding-bottom-lg u-padding-top-lg')
                 .replace('<link rel="preload" as="image" href="/allianz-ui/about-overview/information.svg"/>', '')
                 .replace('<img class="allianz-about-information-glyph" src="/allianz-ui/about-overview/information.svg" alt="Information"/>', '');
               assert.doesNotMatch(visitor, /about-overview\/information\.svg|<img\b/);

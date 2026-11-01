@@ -58,7 +58,10 @@ for (const variant of variants) {
         assert.doesNotMatch(html, /a-axlDisclosures|content-body disclosure/);
       } else {
         assert.ok(html.includes('tileContent u-text-center'));
-        assert.ok(html.includes('l-grid__row u-margin-bottom-lg u-padding-top-lg'));
+        // Information keeps the same 32px space painted green; ordinary headings retain margin.
+        assert.ok(html.includes(variant.information
+          ? 'l-grid__row u-padding-bottom-lg u-padding-top-lg'
+          : 'l-grid__row u-margin-bottom-lg u-padding-top-lg'));
       }
     }
     assert.equal(JSON.stringify(data), before);
@@ -220,3 +223,108 @@ test('Information preserves the approved native Image identity and accepts autho
     assert.equal(html.includes(INFORMATION_TRANSPORT), false);
   }
 });
+
+// Source-backed Information paint continuity; existing About tests remain above.
+{
+const RTE = loadSource(path.join(sourceRoot, 'components/allianz-rich-text/AllianzRichText.tsx'));
+const freeze = value => {
+  if (value && typeof value === 'object') {
+    Object.freeze(value);
+    Object.values(value).forEach(freeze);
+  }
+  return value;
+};
+const field = (name, value, fieldType = 'Single-Line Text') => ({ jsonValue: { value,
+  metadata: { itemId: 'test-information-owner', fieldId: `test-information-${name}`, fieldType },
+} });
+const fixture = () => ({
+  heading: field('heading', 'Retained synthetic heading'),
+  body: field('body', '<p>Retained synthetic <strong>body</strong>.</p>', 'Rich Text'),
+  icon: field('icon', { src: '/test-information.svg', alt: 'Authored synthetic icon' }, 'Image'),
+});
+const markers = html => [...html.matchAll(/<code [^>]*kind="open"[^>]*>(.*?)<\/code>/g)]
+  .map(match => JSON.parse(match[1].replaceAll('&quot;', '"').replaceAll('&amp;', '&')));
+const params = { theme: 'yellow-soft', paddingTop: 'xl', paddingBottom: 'none', marginBottom: 'xl',
+  RenderingIdentifier: 'test-information-section' };
+
+test('captured and runtime utilities preserve the same 32px spacing and source green paint', () => {
+  const postcss = require('postcss');
+  for (const filename of ['../public/allianz-assets/source-style.css', 'assets/allianz-source.css']) {
+    const css = postcss.parse(fs.readFileSync(path.join(sourceRoot, filename), 'utf8'));
+    for (const [selector, property, expected] of [
+      ['.u-margin-bottom-lg', 'margin-bottom', '32px'],
+      ['.u-padding-bottom-lg', 'padding-bottom', '32px'],
+      ['.u-padding-top-lg', 'padding-top', '32px'],
+      ['.t-bg-green-soft', 'background-color', '#e5efca'],
+    ]) {
+      const values = [];
+      css.walkRules(selector, rule => rule.walkDecls(property, declaration => values.push(declaration.value)));
+      assert.deepEqual(values, [expected], `${filename}: ${selector}`);
+    }
+  }
+});
+
+for (const editing of [false, true]) {
+  test(`Information keeps its 32px bottom space inside green paint in ${editing ? 'editing' : 'visitor'} mode`, () => {
+    const data = freeze(fixture()), before = JSON.stringify(data);
+    const html = render(RTE.AboutInformationHeading, data, editing, params);
+    assert.match(html, /t-bg-green-soft axlTileCollection allianz-about-heading/);
+    assert.match(html, /l-grid__row u-padding-bottom-lg u-padding-top-lg/);
+    assert.doesNotMatch(html, /u-margin-bottom-lg|u-padding-bottom-xl|u-margin-bottom-xl/);
+    assert.match(html, /id="test-information-section"/);
+    assert.match(html, /<h2[^>]*>Retained synthetic heading<\/h2>/);
+    assert.ok(html.includes(data.body.jsonValue.value));
+    assert.match(html, /src="\/test-information\.svg"/);
+    assert.match(html, /alt="Authored synthetic icon"/);
+    assert.match(html, /width="24" height="24"/);
+    const actual = markers(html);
+    assert.deepEqual(actual.map(value => value.fieldId).sort(), editing
+      ? ['test-information-body', 'test-information-heading', 'test-information-icon'] : []);
+    assert.ok(actual.every(value => value.itemId === 'test-information-owner'));
+    assert.equal(JSON.stringify(data), before);
+  });
+
+  test(`ordinary About headings retain transparent background and bottom margin in ${editing ? 'editing' : 'visitor'} mode`, () => {
+    const data = freeze(fixture()), before = JSON.stringify(data);
+    const html = render(RTE.AboutSectionHeading, data, editing, params);
+    assert.match(html, /t-bg-transparent axlTileCollection allianz-about-heading/);
+    assert.match(html, /l-grid__row u-margin-bottom-lg u-padding-top-lg/);
+    assert.doesNotMatch(html, /u-padding-bottom-lg|<img\b|Retained synthetic <strong>body/);
+    assert.deepEqual(markers(html).map(value => value.fieldId), editing ? ['test-information-heading'] : []);
+    assert.equal(JSON.stringify(data), before);
+  });
+}
+
+test('the separate Life overview yellow-only spacing rule remains unchanged', () => {
+  for (const editing of [false, true]) {
+    const data = freeze(fixture()), before = JSON.stringify(data);
+    for (const theme of ['yellow-soft', 'green-soft']) {
+      const html = render(RTE.LifeInformationHeading, data, editing, { theme });
+      assert.match(html, new RegExp(`t-bg-${theme}`));
+      assert.ok(html.includes(theme === 'yellow-soft'
+        ? 'l-grid__row u-padding-bottom-lg u-padding-top-lg'
+        : 'l-grid__row u-margin-bottom-lg u-padding-top-lg'));
+    }
+    for (const name of ['LifeShapesHeading', 'LifePuzzleHeading']) {
+      const html = render(RTE[name], data, editing, { theme: 'green-soft' });
+      assert.match(html, /t-bg-transparent/);
+      assert.match(html, /l-grid__row u-margin-bottom-lg u-padding-top-lg/);
+    }
+    assert.equal(JSON.stringify(data), before);
+  }
+});
+
+test('missing and cleared Information fields retain their guards without invented values', () => {
+  for (const editing of [false, true]) {
+    for (const data of [freeze({}), freeze({ heading: field('heading', ''), body: field('body', '', 'Rich Text'),
+      icon: field('icon', {}, 'Image') })]) {
+      const before = JSON.stringify(data);
+      const html = render(RTE.AboutInformationHeading, data, editing, params);
+      assert.doesNotMatch(html, /<h2\b|<img\b|Retained synthetic|scEmptyImage/);
+      assert.deepEqual(markers(html), []);
+      assert.equal(JSON.stringify(data), before);
+    }
+    assert.match(render(RTE.AboutInformationHeading, undefined, editing, params), /AllianzRichText/);
+  }
+});
+}
