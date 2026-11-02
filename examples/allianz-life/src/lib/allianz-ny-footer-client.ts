@@ -8,6 +8,25 @@ type PageResult = Awaited<ReturnType<SitecoreClient['getPage']>>;
 type ReadPage = (...args: PageArguments) => Promise<PageResult>;
 type Runtime = Readonly<{ VERCEL_ENV?: string; VERCEL_GIT_COMMIT_REF?: string }>;
 
+/** Follow the SDK factory's existing branch without returning any configuration values. */
+function connectionCategory(init: ClientInit) {
+  try {
+    const edge = init.api?.edge;
+    if (edge?.contextId) {
+      const host = new URL(edge.edgeUrl || 'https://edge-platform.sitecorecloud.io').hostname;
+      return host === 'edge-platform.sitecorecloud.io' ? 'platform-context' : 'other-context';
+    }
+    const local = init.api?.local;
+    if (local?.apiKey && local.apiHost) {
+      const host = new URL(local.apiHost).hostname;
+      if (host === 'edge.sitecorecloud.io') return 'direct-edge';
+      if (host.startsWith('xmc-') && host.endsWith('.sitecorecloud.io')) return 'sitecore-cm';
+      return 'other-local-api';
+    }
+  } catch { /* A fixed category only; never include configuration or exception text. */ }
+  return 'unclassified';
+}
+
 const BRANCH = 'codex/allianz-ny-footer-projection-20261102';
 const ROUTES = new Set(['/new-york', '/new-york/about', '/new-york/annuities']);
 const ROUTE_IDS: Record<string, string> = {
@@ -81,7 +100,7 @@ export async function readPageWithNyFooterProbe(
 
   try {
     const after = summarizeNyFooterProbe(page, path);
-    context.allianzNyFooterProbe = Object.freeze({ schemaVersion: 1, before, after });
+    context.allianzNyFooterProbe = Object.freeze({ schemaVersion: 1, connection: connectionCategory(init), before, after });
   } catch {
     // A probe failure must not change page rendering or expose an exception.
   }

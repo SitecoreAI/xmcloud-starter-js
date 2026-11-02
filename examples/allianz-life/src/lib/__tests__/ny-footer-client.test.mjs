@@ -178,3 +178,19 @@ test('concurrent calls retain independent primitive snapshots', async () => {
   assert.equal(first.calls.length, 1);
   assert.equal(second.calls.length, 1);
 });
+
+for (const [category, api] of [
+  ['platform-context', { edge: { contextId: 'SYNTHETIC_SECRET_CONTEXT' }, local: { apiKey: 'SYNTHETIC_SECRET_KEY', apiHost: 'https://edge.sitecorecloud.io' } }],
+  ['other-context', { edge: { contextId: 'SYNTHETIC_SECRET_CONTEXT', edgeUrl: 'https://synthetic.invalid' } }],
+  ['direct-edge', { local: { apiKey: 'SYNTHETIC_SECRET_KEY', apiHost: 'https://edge.sitecorecloud.io' } }],
+  ['sitecore-cm', { local: { apiKey: 'SYNTHETIC_SECRET_KEY', apiHost: 'https://xmc-synthetic.sitecorecloud.io' } }],
+  ['other-local-api', { local: { apiKey: 'SYNTHETIC_SECRET_KEY', apiHost: 'https://synthetic.invalid' } }],
+  ['unclassified', {}],
+]) test(`connection metadata is only the fixed ${category} category`, async () => {
+  const h = harness();
+  const result = await h.adapter.readPageWithNyFooterProbe({ api }, ARGS, () => assert.fail(), RUNTIME);
+  const proof = result.layout.sitecore.context.allianzNyFooterProbe;
+  assert.equal(proof.connection, category);
+  assert.doesNotMatch(JSON.stringify(proof), /SYNTHETIC|SECRET|https?:|contextId|apiKey|apiHost|edgeUrl/);
+  assert.equal(h.calls.length, 1);
+});
