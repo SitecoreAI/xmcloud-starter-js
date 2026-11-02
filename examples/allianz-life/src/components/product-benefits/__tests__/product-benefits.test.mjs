@@ -127,10 +127,29 @@ test('ThreeUp matches FIA and RILA full-width three-column h3/md source grids', 
       const projected = productBenefitFields(child);
       assert.ok(source.includes(`<H3>${projected.heading.jsonValue.value}</H3>`));
       assert.ok(html.includes(`<h3>${projected.heading.jsonValue.value}</h3>`));
+      // The captured relative href already stays inside the demo; preserve its
+      // authored case here and verify absolute-source canonicalization below.
       assert.ok(html.includes(projected.body.jsonValue.value));
+      assert.ok(render(adjacent[index].datasource, { variant: 'ThreeUp', isEditing: true }).includes(projected.body.jsonValue.value));
     }
     assert.doesNotMatch(html, /no-gutters-outer|u-row-spacing|u-margin-bottom-xl|<h4/);
   }
+});
+
+test('ThreeUp localizes the source external-index anchor while editing keeps the original field and metadata', () => {
+  const itemId = 'synthetic-fia-index-benefit';
+  const body = '<p>Growth of an <a href="https://www.allianzlife.com/what-we-offer/Index-options" target="_blank" rel="author">external index</a>.</p>';
+  const original = nativeField('body', body, itemId);
+  const datasource = complete([{ id: itemId, body: { jsonValue: original } }]);
+  const before = JSON.stringify(datasource);
+  const normal = render(datasource, { variant: 'ThreeUp' });
+  assert.ok(normal.includes('<p>Growth of an <a href="/what-we-offer/index-options" target="" rel="author">external index</a>.</p>'));
+  assert.doesNotMatch(normal, /href="https:\/\/www\.allianzlife\.com|target="_blank"/);
+  const editing = render(datasource, { variant: 'ThreeUp', isEditing: true });
+  assert.ok(editing.includes(body));
+  assert.deepEqual(metadata(editing).map(field => [field.itemId, field.fieldId, field.fieldType]), [[itemId, 'synthetic-body', 'Rich Text']]);
+  assert.strictEqual(datasource.children.results[0].body.jsonValue, original);
+  assert.equal(JSON.stringify(datasource), before);
 });
 
 test('compact projection preserves jsonValue identity and cleared canonical precedence', () => {

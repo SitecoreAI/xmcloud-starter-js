@@ -30,7 +30,11 @@ const decodeAttribute = (value: string) => value.replace(/&#(?:x([\da-f]+)|(\d+)
 export function safeEditorialRichText(field: Field<string> | undefined, isEditing: boolean, internalPagesOnly = false,
   retainHref?: (href: string) => boolean): Field<string> | undefined {
   if (!field || isEditing || !field.value) return field;
-  const value = field.value.replace(/<a\b(?:[^'">]|"[^"]*"|'[^']*')*>/gi, (tag) => {
+  const value = field.value.replace(/<!--[\s\S]*?(?:-->|$)|<(script|style|textarea|title)\b(?:[^'">]|"[^"]*"|'[^']*')*>[\s\S]*?(?:<\/\1\s*>|$)|<a\b(?:[^'">]|"[^"]*"|'[^']*')*>|<\/?[a-z][a-z\d:-]*\b(?:[^'">]|"[^"]*"|'[^']*')*>/gi, (tag) => {
+    // Captured rate HTML may contain scripts, CSS and literal markup data.
+    // Contain actual navigation anchors without rewriting those source bytes,
+    // comments, or literal markup inside other elements' quoted attributes.
+    if (!/^<a\b/i.test(tag)) return tag;
     const attrs = [...tag.matchAll(/(\s+)([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g)];
     const attr = (name: string) => attrs.find((item) => item[2].toLowerCase() === name);
     const contents = (item: RegExpMatchArray | undefined) => decodeAttribute(item?.[3] ?? item?.[4] ?? item?.[5] ?? '');

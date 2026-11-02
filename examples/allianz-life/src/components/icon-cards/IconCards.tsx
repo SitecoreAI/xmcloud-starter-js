@@ -2,6 +2,7 @@
 
 import { Image, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
+import { safeEditorialRichText } from 'lib/allianz-editorial';
 import { shouldRenderImageField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { iconCardFields } from 'lib/icon-card-fields';
 import type { IconCardsProps } from './icon-cards.props';
@@ -46,7 +47,7 @@ export const Default = ({ fields, params }: IconCardsProps) => {
                 <header><div className="tileHeading">
                   {shouldRenderTextField(card.title?.jsonValue, isEditing) && <Text field={card.title?.jsonValue} tag="h3" editable={isEditing} />}
                 </div></header>
-                {shouldRenderTextField(card.text?.jsonValue, isEditing) && <RichText field={card.text?.jsonValue} editable={isEditing}
+                {shouldRenderTextField(card.text?.jsonValue, isEditing) && <RichText field={safeEditorialRichText(card.text?.jsonValue, isEditing, true, () => true)} editable={isEditing}
                   className="tileBody u-font-size-lg" />}
               </div>
             </div>
@@ -98,7 +99,7 @@ export const AboutFacts = ({ fields, params }: IconCardsProps) => {
                     <Text field={card.title?.jsonValue} tag="h3" editable={isEditing} />}
                 </div><div className="tileSubHeading" /></header>
                 {shouldRenderTextField(card.text?.jsonValue, isEditing) &&
-                  <RichText field={card.text?.jsonValue} editable={isEditing} className="tileBody u-font-size-lg" />}
+                  <RichText field={safeEditorialRichText(card.text?.jsonValue, isEditing, true, () => true)} editable={isEditing} className="tileBody u-font-size-lg" />}
               </div>
             </div>
           </article>

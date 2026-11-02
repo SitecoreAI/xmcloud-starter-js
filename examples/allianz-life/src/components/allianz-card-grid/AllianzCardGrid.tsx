@@ -1175,7 +1175,7 @@ export const AboutParentCompany = ({ fields, params }: AllianzCardGridProps) => 
       {cards.map((card) => <article key={card.id} className="m-axlTile match-height tile--6633 -is--split t-bg-transparent u-margin-bottom-xl">
         <div className="tileContent u-text-left"><div className="tileSubGrid__content">
           <header><div className="tileHeading" /><div className="tileSubHeading" /></header>
-          {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" />}
+          {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(card.body?.jsonValue, isEditing, true, () => true)} className="tileBody u-font-size-md" />}
         </div></div>
         {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image">
           <Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} sizes="100vw" className="c-image__img c-teaser__image-img" />
