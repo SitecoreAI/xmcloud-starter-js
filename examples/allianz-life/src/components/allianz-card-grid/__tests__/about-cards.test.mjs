@@ -13,6 +13,8 @@ const field = (owner, name, value, type = 'Single-Line Text') => ({ jsonValue: {
 const urls = ['https://www.allianzlife.com/about/executives', 'https://www.allianzlife.com/about/newsroom', 'https://www.allianzlife.com/why-allianz/culture'];
 const affiliates = ['https://www.agcs.allianz.com/global-offices/united-states.html', 'https://www.allianzworldwidepartners.com/usa/', 'https://www.allianz-trade.com/en_US.html', 'https://www.pimco.com/us/en'];
 const parentBody = '<p>Complete native parent body with <sup>2</sup> reference.</p>' + affiliates.map((url, index) => `<p style="margin-left: 40px;"><a rel="noopener noreferrer" href="${url}" target="_blank">Native affiliate ${index}</a></p>`).join('');
+const visitorParentBody = affiliates.slice(0, 3).reduce((body, url) =>
+  body.replace(`href="${url}" target="_blank"`, 'href="#" target=""'), parentBody);
 function fixture(parent = false) {
   const root = 'test-only-about-root';
   return { heading: field(root, 'heading', 'UNUSED-ROOT-HEADING'), body: field(root, 'body', 'UNUSED-ROOT-BODY', 'Rich Text'),
@@ -32,7 +34,7 @@ function fixture(parent = false) {
 }
 const childField = (data, index, name) => data.children.results[index].fieldCollection.find(value => value.name === name).jsonValue;
 
-test('AboutParentCompany retains original body/affiliate links and portrait after the content in both modes', () => {
+test('AboutParentCompany contains corporate visitor links and retains PIMCO, exact editing body and portrait layout', () => {
   const data = fixture(true), before = JSON.stringify(data);
   for (const editing of [false, true]) {
     const html = render(Components.AboutParentCompany, data, editing, { theme: 'green-soft', layout: 'image-right', splitRatio: '50:50', columns: '4' });
@@ -40,9 +42,9 @@ test('AboutParentCompany retains original body/affiliate links and portrait afte
     assert.ok(html.includes('m-axlTile match-height tile--6633 -is--split t-bg-transparent u-margin-bottom-xl'));
     assert.ok(html.includes('tileContent u-text-left'));
     assert.ok(html.includes('tileBody u-font-size-md'));
-    assert.ok(html.includes(parentBody));
-    assert.deepEqual(attrs(html, 'a', 'href'), affiliates);
-    assert.deepEqual(attrs(html, 'a', 'target'), Array(4).fill('_blank'));
+    assert.ok(html.includes(editing ? parentBody : visitorParentBody));
+    assert.deepEqual(attrs(html, 'a', 'href'), editing ? affiliates : ['#', '#', '#', 'https://www.pimco.com/us/en']);
+    assert.deepEqual(attrs(html, 'a', 'target'), editing ? Array(4).fill('_blank') : ['', '', '', '_blank']);
     assert.deepEqual(attrs(html, 'a', 'rel'), Array(4).fill('noopener noreferrer'));
     assert.deepEqual(attrs(html, 'img', 'alt'), [' ']);
     assert.ok(html.indexOf('tileSubGrid__content') < html.indexOf('class="tileImage"'));
@@ -63,7 +65,7 @@ test('AboutTeaserCards preserves three full native anchors, H4s, bodies, images 
     assert.ok(html.includes('l-grid__row u-margin-bottom-xl'));
     assert.equal((html.match(/class="m-card"/g) ?? []).length, 3);
     assert.equal((html.match(/<h4\b/g) ?? []).length, 3);
-    assert.deepEqual(attrs(html, 'a', 'href'), editing ? urls : ['/about/executives', '/about/newsroom', urls[2]]);
+    assert.deepEqual(attrs(html, 'a', 'href'), editing ? urls : ['/about/executives', '/about/newsroom', '/why-allianz/culture']);
     assert.deepEqual(attrs(html, 'a', 'aria-label'), []);
     assert.deepEqual(attrs(html, 'img', 'alt'), Array(3).fill(' '));
     for (let index = 0; index < 3; index++) assert.ok(html.includes(childField(data, index, 'Body').value));

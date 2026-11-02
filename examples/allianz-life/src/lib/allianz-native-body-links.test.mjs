@@ -949,7 +949,7 @@ test('the shared adapter preserves safe controls, exact parser attributes and im
     + '<a href="#demo-unavailable" target="_self">Existing</a><a href="#service-unavailable">Existing2</a>';
   const input = freeze(syntheticField(body));
   const result = policy.safeNativeBodyRichText(input, false, context(first));
-  assert.equal(result.value, body.replace("HREF='&#47;Login' TARGET=\"_blank\"", 'href="#service-unavailable" target=""').replace('href="/about?one=1&amp;two=2#details" target="_blank"', 'href="/about?one=1&amp;two=2#details" target=""'));
+  assert.equal(result.value, body.replace("HREF='&#47;Login' TARGET=\"_blank\"", 'href="#" target=""').replace('href="/about?one=1&amp;two=2#details" target="_blank"', 'href="/about?one=1&amp;two=2#details" target=""'));
   assert.equal(result.metadata, input.metadata);
   assert.equal(policy.safeNativeBodyRichText(input, true, context(first)), input);
   assert.equal(policy.safeNativeBodyRichText(undefined, false, context(first)), undefined);
@@ -969,7 +969,15 @@ for (const captured of capturedCards) for (const mode of modes) test(`captured C
   cardCalls.length = 0;
   const html = renderSDK(Cards.Default, data, params, mode);
   for (const tag of captured.tags) assert.ok(html.includes(tag), `${mode}:${tag}`);
-  const expected = restoreSourceDestinationRichText(original, mode === 'editing', captured.entryId);
+  const sourceProjected = restoreSourceDestinationRichText(original, mode === 'editing', captured.entryId);
+  const missingSourcePdf = 'https://www.allianzlife.com/-/media/Files/Global/documents/2017/01/03/09/08/M-5640.pdf';
+  const expected = mode === 'editing' ? sourceProjected : { ...sourceProjected,
+    value: sourceProjected.value.replace(`href="${missingSourcePdf}" target="_blank"`, 'href="#" target=""'),
+  };
+  if (mode !== 'editing' && original.value.includes(missingSourcePdf)) {
+    assert.ok(html.includes('href="#" target=""> Indexes used to determine interest potential (PDF)'));
+    assert.ok(!html.includes(missingSourcePdf));
+  }
   const call = cardCalls.find(({ field }) => field?.value === expected.value);
   assert.ok(call, 'the complete native Body is preserved except the existing source projection');
   if (mode === 'editing') assert.equal(call.field, original);
@@ -1061,7 +1069,7 @@ test('all 29 modern exports mount the shared Body policy with native editing ide
     const original = freeze(syntheticField(value));
     const data = freeze({ id: accordionOwner.datasourceId, children: { results: [{ id: accordionOwner.entryId, heading: { jsonValue: { value: 'Synthetic native observer' } }, body: { jsonValue: original } }] } });
     let expected = mode === 'editing' || value === futureTeamsBody ? value : value === unapprovedPartnerBody ? inertAllPartners(value)
-      : body.replace('href="/Login" target="_blank"', 'href="#service-unavailable" target=""').replace('href="mailto:example@example.invalid"', 'href="#service-unavailable"');
+      : body.replace('href="/Login" target="_blank"', 'href="#" target=""').replace('href="mailto:example@example.invalid"', 'href="#service-unavailable"');
     // These existing source wrappers intentionally omit the datasource root and
     // have no native asset anchors. Missing root never inherits a finite exception.
     if (mode !== 'editing' && ['AA5AllocationAnswers', 'AA5CreditingAnswers'].includes(name))
@@ -1156,8 +1164,8 @@ test('actual CardGrid normal and preview renders retain the five phone anchors a
     fieldCollection: [{ name: 'heading', jsonValue: { value: 'Phone' } }, { name: 'body', jsonValue: original }],
   }] } });
   const before = JSON.stringify(data);
-  const visitorBody = original.value.replace(/href="(?:tel:800-555-1212|mailto:service@example.invalid|\/Login)" target="_blank"/g,
-    'href="#service-unavailable" target=""');
+  const visitorBody = original.value.replace(/href="(?:tel:800-555-1212|mailto:service@example.invalid)" target="_blank"/g,
+    'href="#service-unavailable" target=""').replace('href="/Login" target="_blank"', 'href="#" target=""');
   for (const mode of modes) {
     cardCalls.length = 0;
     const html = renderSDK(Cards.Default, data, params, mode);
@@ -1167,7 +1175,10 @@ test('actual CardGrid normal and preview renders retain the five phone anchors a
     assert.ok(call, `${mode}: complete native Body reaches SDK RichText`);
     assert.equal(call.field.metadata, original.metadata);
     if (mode === 'editing') assert.equal(call.field, original);
-    else assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 3);
+    else {
+      assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 2);
+      assert.equal((html.match(/href="#"/g) ?? []).length, 1);
+    }
     assert.equal(JSON.stringify(data), before);
   }
 });

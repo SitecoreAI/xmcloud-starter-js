@@ -2,6 +2,7 @@
 
 import { Image, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
+import { safeEditorialRichText } from 'lib/allianz-editorial';
 import { shouldRenderImageField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { collectionsComplete } from 'lib/collection-completeness';
 import { productBenefitFields } from './product-benefits-fields.props';
@@ -47,7 +48,7 @@ const Benefits = ({ fields, params, variant }: ProductBenefitsProps & {
                   <div className="tileSubHeading" aria-hidden="true" />
                 </header>
                 {shouldRenderTextField(benefit.body?.jsonValue, isEditing) &&
-                  <RichText field={benefit.body?.jsonValue} editable={isEditing} className="tileBody u-font-size-md" />}
+                  <RichText field={safeEditorialRichText(benefit.body?.jsonValue, isEditing, true, () => true)} editable={isEditing} className="tileBody u-font-size-md" />}
               </div>
             </div>
           </article>

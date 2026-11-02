@@ -187,12 +187,13 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
       && sourceDestinationId(card.id) === 'c4f12d3c2db14cc98dbc1b6683ecf133';
     const body = hasSourceBodyDestination
       ? restoreSourceDestinationRichText(card.body?.jsonValue, sourceDestinationEditing, card.id) : card.body?.jsonValue;
-    return safeFaqRichText(body, isEditing, (decodedHref, rawHref) => {
+    const availableBody = safeFaqRichText(body, isEditing, (decodedHref, rawHref) => {
       // Keep the existing source projection gate ahead of the shared Body policy.
       if (hasSourceBodyDestination && isSourceDestinationRichTextHref(rawHref, card.id)) return false;
       return isUnavailableNativeBodyHref(decodedHref, rawHref, { componentName: 'AllianzCardGrid',
         datasourceId: 'id' in data ? data.id : undefined, entryId: card.id });
     });
+    return safeEditorialRichText(availableBody, isEditing, true);
   };
   const scalarLinkProps = (card: (typeof cards)[number], props: Parameters<typeof restoreSourceDestinationLinkProps>[0]) => {
     if (sourceDataId !== '0b2c3b00952345b189e732b1b9bbd34a' || ![
@@ -1174,7 +1175,7 @@ export const AboutParentCompany = ({ fields, params }: AllianzCardGridProps) => 
       {cards.map((card) => <article key={card.id} className="m-axlTile match-height tile--6633 -is--split t-bg-transparent u-margin-bottom-xl">
         <div className="tileContent u-text-left"><div className="tileSubGrid__content">
           <header><div className="tileHeading" /><div className="tileSubHeading" /></header>
-          {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" />}
+          {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(card.body?.jsonValue, isEditing, true, () => true)} className="tileBody u-font-size-md" />}
         </div></div>
         {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image">
           <Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} sizes="100vw" className="c-image__img c-teaser__image-img" />
@@ -1671,7 +1672,7 @@ export const AA5Features = ({ fields, params }: AllianzCardGridProps) => {
             <article className="m-axlTile match-height t-bg-grey-soft -is--stacked ">
               <div className="tileContent u-text-left"><div className="tileSubGrid__content">
                 <header><div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={card.heading?.jsonValue} />}</div></header>
-                {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" />}
+                {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(card.body?.jsonValue, isEditing, true, () => true)} className="tileBody u-font-size-md" />}
                 {links.length > 0 && <footer><div className="tileLink">{links.map((item, linkIndex) => {
                   const field = allianzLinkField(item.link?.jsonValue, isEditing);
                   const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'];

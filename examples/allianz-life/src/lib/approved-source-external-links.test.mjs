@@ -22,17 +22,181 @@ function field(href, attributes = {}) {
   return { value: { href, text: 'Original source link', linktype: 'external', ...attributes },
     metadata: { itemId: 'test-only-source-link-item', fieldId: 'test-only-source-link-field', fieldType: 'General Link' } };
 }
-function render(input, isEditing = false, editable = true) {
+function render(input, isEditing = false, editable = true, isPreview = false) {
   return renderToStaticMarkup(React.createElement(SitecoreProvider, {
-    page: { siteName: 'allianz-life', locale: 'en', mode: { isEditing, isNormal: !isEditing, isPreview: false },
+    page: { siteName: 'allianz-life', locale: 'en', mode: { isEditing, isNormal: !isEditing && !isPreview, isPreview },
       layout: { sitecore: { context: {}, route: { name: 'Source links', fields: {}, placeholders: {} } } } },
     api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
-  }, React.createElement(Link, { ...safeLinkRenderProps(input), editable,
+  }, React.createElement(Link, { ...safeLinkRenderProps(input, isEditing), editable,
     'aria-label': input.value?.ariaLabel || input.value?.['aria-label'] })));
+}
+function assertContext(html, target, authoredRel = '') {
+  assert.ok(html.includes(`target="${target}"`), html);
+  const expectedRel = target === '_blank'
+    ? [authoredRel, 'noopener noreferrer'].filter(Boolean).join(' ') : authoredRel;
+  if (expectedRel) assert.ok(html.includes(`rel="${expectedRel}"`), html);
+  else assert.doesNotMatch(html, /\brel=/);
 }
 function href(html) {
   return /href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
 }
+
+// Reviewed visitor outcomes for every frozen source registration. These literals are
+// independent of the production route resolver and its route-availability fixture.
+const expectedSourceHrefs = {
+  "insights-grid-card-01": "#",
+  "insights-grid-card-02": "#",
+  "insights-grid-card-03": "#",
+  "insights-grid-card-04": "#",
+  "insights-grid-card-05": "#",
+  "insights-grid-card-06": "#",
+  "insights-grid-card-07": "#",
+  "product-grid-card-01": "#",
+  "product-grid-card-02": "#",
+  "product-grid-card-03": "#",
+  "product-grid-card-04": "#",
+  "product-grid-card-05": "#",
+  "product-grid-card-06": "#",
+  "product-grid-card-07": "#",
+  "product-grid-card-08": "#",
+  "product-grid-card-09": "#",
+  "product-grid-card-10": "#",
+  "next-step-link-2": "/what-we-offer/annuities/fixed-index-annuities/lifetime-income-plus/how-the-product-works",
+  "next-step-link-3": "#",
+  "section-5-card-1": "#",
+  "sustainability-results-primaryLink": "#",
+  "sustainability-responsible-investments": "#",
+  "sustainability-climate": "#",
+  "sustainability-global": "#",
+  "early-retirement-study-findings-pdf": "#",
+  "accumulator-product-navigation-product-title": "#",
+  "accumulator-product-navigation-faq": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator/frequently-asked-questions",
+  "accumulator-product-navigation-tools-and-resources": "/what-we-offer/life-insurance/indexed-universal-life/allianz-life-accumulator/tools-and-resources",
+  "accumulator-product-navigation-rates": "#",
+  "accumulator-tools-card-1": "/what-we-offer/life-insurance/calculator",
+  "accumulator-tools-card-2": "/what-we-offer/allocation-insights-tool",
+  "accumulator-tools-card-5": "/what-we-offer/life-insurance/strategies-for-business-owners",
+  "accumulator-tools-card-8": "/what-we-offer/life-insurance/the-underwriting-process",
+  "life-insurance-overview-benefit-external-index": "/what-we-offer/index-options",
+  "about-us-teaser-01": "/about/executives",
+  "about-us-teaser-02": "/about/newsroom",
+  "about-us-teaser-03": "/why-allianz/culture",
+  "what-we-offer-annuities-cta": "/what-we-offer/annuities",
+  "annuities-product-choice-fia": "/what-we-offer/annuities/fixed-index-annuities",
+  "annuities-product-choice-rila": "/what-we-offer/annuities/registered-index-linked-annuities",
+  "fia-product-card-01": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
+  "fia-product-card-02": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-7",
+  "fia-product-card-03": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage",
+  "fia-product-card-04": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-plus",
+  "fia-product-card-05": "/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-classic",
+  "fia-product-card-06": "/what-we-offer/annuities/fixed-index-annuities/222",
+  "fia-product-card-07": "/what-we-offer/annuities/fixed-index-annuities/222-plus",
+  "fia-product-card-08": "/what-we-offer/annuities/fixed-index-annuities/360",
+  "fia-product-card-09": "/what-we-offer/annuities/fixed-index-annuities/benefit-control",
+  "fia-product-card-10": "/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus",
+  "fia-product-card-11": "/what-we-offer/annuities/fixed-index-annuities/core-income-7",
+  "fia-product-card-12": "/what-we-offer/annuities/fixed-index-annuities/essential-income-7",
+  "fia-product-card-13": "/what-we-offer/annuities/fixed-index-annuities/retirement-foundation-adv",
+  "fia-explore-faq": "/what-we-offer/annuities/fixed-index-annuities/frequently-asked-questions-for-fias",
+  "fia-explore-contact-us": "/contact-us",
+  "fia-explore-login": "#",
+  "aa7-rates-source": "#",
+  "aa7-product-brochure": "#",
+  "aa7-product-brochure-insert": "#",
+  "aa7-index-lock-brochure": "#",
+  "aa5-rates-source": "#",
+  "aa5-product-brochure": "#",
+  "aa5-product-brochure-insert": "#",
+  "rila-product-1-69da6e33-d800-4812-9830-87069a0ed144": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus",
+  "rila-product-2-4907340b-9572-481d-b24a-61792439981d": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-nf",
+  "rila-product-3-8fc76b2d-5f5e-4ae2-8211-0a5ed2e8fa11": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income",
+  "rila-product-4-6eac7bdc-d302-47b8-a358-0a98b1f7a168": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income",
+  "rila-product-5-efafbcc2-0c2b-4e84-a3d0-ebed43f07e92": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv",
+  "iap-nav-video": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/video",
+  "iap-nav-prospectus": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/prospectus",
+  "iap-nav-and-tools-rates": "#",
+  "iap-nav-and-tools-calculator": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator",
+  "iap-tools-define-downside": "#",
+  "iap-support-faq": "/what-we-offer/annuities/registered-index-linked-annuities/frequently-asked-questions",
+  "aa-classic-exact-source-1": "#",
+  "aa-classic-exact-source-2": "#",
+  "aa-classic-exact-source-3": "#",
+  "aa-classic-exact-source-4": "#",
+  "essential-income-7-exact-source-1": "#",
+  "essential-income-7-exact-source-2": "#",
+  "retirement-foundation-adv-exact-source-1": "#",
+  "retirement-foundation-adv-exact-source-2": "#",
+  "core-income-7-exact-source-1": "#",
+  "core-income-7-exact-source-2": "#",
+  "retirement-foundation-adv-product-navigation-exact-source-1": "#",
+  "222-plus-resource-rates-exact-source-1": "#",
+  "360-resource-and-fixed-interest-rates-exact-source-1": "#",
+  "footer-related-sites-allianz-group": "#",
+  "footer-related-sites-allianzim": "#",
+  "footer-related-sites-pimco": "https://www.pimco.com/us/en",
+  "newsroom-company-profile-allianz-se": "#",
+  "newsroom-company-profile-agcs": "#",
+  "newsroom-company-profile-allianz-assistance": "#",
+  "newsroom-company-profile-allianz-trade": "#",
+  "advisory-allianzim-etfs": "#",
+  "advisory-ria-onboarding": "https://azldigital.qualtrics.com/jfe/form/SV_8tRF7zOOWAfHp5k",
+  "advisory-iar-onboarding": "https://azldigital.qualtrics.com/jfe/form/SV_3NSDoToKKIM8ugK",
+  "advisory-partner-dpl-financial-partners": "https://www.dplfp.com/",
+  "advisory-partner-simplicity-oid": "https://simplicityoid.com/",
+  "advisory-partner-halo-investing-annuities": "https://haloinvesting.com/annuities/",
+  "advisory-partner-ria-insurance-solutions": "https://www.ria-insurancesolutions.com/",
+  "about-parent-company-agcs": "#",
+  "about-parent-company-partners": "#",
+  "about-parent-company-trade": "#",
+  "professionals-alliance-for-lifetime-income": "https://www.protectedincome.org/",
+  "financial-ratings-agency-am-best": "http://www.ambest.com/home/default.aspx",
+  "financial-ratings-agency-moodys": "https://www.moodys.com/",
+  "financial-ratings-agency-standard-and-poors": "https://www.standardandpoors.com/en_US/web/guest/home",
+  "footer-public-careers": "#",
+  "footer-public-facebook": "https://www.facebook.com/AllianzLife",
+  "footer-public-linkedin": "https://www.linkedin.com/company/allianz-life",
+  "footer-public-twitter": "https://twitter.com/allianzlife",
+  "footer-public-instagram": "https://www.instagram.com/allianzlife/",
+  "footer-public-youtube": "https://www.youtube.com/user/allianzus",
+  "home-helpful-resources-careers": "#",
+};
+function sourceVariantHref(url, suffix = '') {
+  const destination = sourceVisitorHref(url);
+  return destination === '#' ? '#' : `${destination}${suffix}`;
+}
+function sourceVisitorHref(url) {
+  const entry = source.entries.find(entry => entry.url === url);
+  assert.ok(entry, `Source registration missing: ${url}`);
+  assert.ok(Object.hasOwn(expectedSourceHrefs, entry.sourceRecordKey), `Expected visitor outcome missing: ${entry.sourceRecordKey}`);
+  return expectedSourceHrefs[entry.sourceRecordKey];
+}
+
+test('all 115 source registrations have explicit visitor/preview outcomes and preserve authored SDK editing fields', () => {
+  assert.equal(source.entries.length, 115);
+  assert.deepEqual(Object.keys(expectedSourceHrefs), source.entries.map(entry => entry.sourceRecordKey));
+  for (const mode of ['fixture', 'connected']) {
+    process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
+    for (const entry of source.entries) {
+      const input = field(entry.url, { target: '_blank' }), before = JSON.stringify(input);
+      for (const preview of [false, true]) {
+        const visitor = render(input, false, true, preview);
+        assert.equal(href(visitor), expectedSourceHrefs[entry.sourceRecordKey], `${mode}/${preview}/${entry.sourceRecordKey}`);
+        if (expectedSourceHrefs[entry.sourceRecordKey].startsWith('http')) {
+          assert.match(visitor, /target="_blank" rel="noopener noreferrer"/);
+        } else {
+          assert.match(visitor, /target=""/);
+          assert.doesNotMatch(visitor, /noopener|noreferrer/);
+        }
+      }
+      const editing = render(input, true);
+      assert.equal(href(editing), entry.url);
+      assert.match(editing, /test-only-source-link-field/);
+      assert.strictEqual(safeLinkRenderProps(input, true).field, input);
+      assert.strictEqual(safeLink(input).metadata, input.metadata);
+      assert.equal(JSON.stringify(input), before);
+    }
+  }
+});
 
 // These exact identities are already present in approved HEAD f2f97d59.
 // b898b4e9 added only the Classic PDF to the preceding 25; the count test was stale.
@@ -65,7 +229,7 @@ const approvedPdfIdentities = [
   ['aa-classic-exact-source-2', 'https://www.allianzlife.com/-/media/Files/Global/documents/2026/03/27/12/04/AAAC-001.pdf'],
 ];
 
-test('all 26 approved PDF destinations retain their exact source identities and installed SDK behavior', () => {
+test('all 26 source PDF identities render inert visitor anchors and retain installed SDK editing behavior', () => {
   assert.equal(pdfs.length, 26);
   assert.deepEqual(pdfs.map(({ sourceRecordKey, url }) => [sourceRecordKey, url]), approvedPdfIdentities);
   for (const mode of ['fixture', 'connected']) {
@@ -75,45 +239,46 @@ test('all 26 approved PDF destinations retain their exact source identities and 
       const before = JSON.stringify(input);
       for (const isEditing of [false, true]) {
         const html = render(input, isEditing);
-        assert.equal(href(html), entry.url, entry.sourceRecordKey);
-        assert.match(html, /target="_blank"/);
-        assert.match(html, /rel="author noopener noreferrer"/);
+        assert.equal(href(html), isEditing ? entry.url : sourceVisitorHref(entry.url), entry.sourceRecordKey);
+        assertContext(html, isEditing ? '_blank' : '', 'author');
         if (isEditing) assert.match(html, /test-only-source-link-field/);
       }
-      assert.equal(href(render(input, false, false)), entry.url);
+      assert.equal(href(render(input, false, false)), sourceVisitorHref(entry.url));
       assert.strictEqual(safeLink(input).metadata, input.metadata);
       assert.equal(JSON.stringify(input), before);
     }
   }
 });
 
-test('How it Works preserves its approved external destination and source same-tab target', () => {
+test('How it Works uses its verified local visitor route and retains its source destination in editing', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     const input = field(how, { text: 'How it Works', target: '', 'aria-label': 'How it Works' });
     for (const isEditing of [false, true]) {
       const html = render(input, isEditing);
-      assert.equal(href(html), how);
+      assert.equal(href(html), isEditing ? how : sourceVisitorHref(how));
       assert.match(html, /target=""/);
       assert.doesNotMatch(html, /rel=/);
     }
   }
 });
 
-test('only the two captured contact URLs retain their original ordered query and new-tab behavior', () => {
+test('the two captured contact URLs become inert for visitors and retain ordered queries in editing', () => {
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'fixture';
   assert.equal(contacts.length, 2);
   for (const { url } of contacts) {
     const parsed = new URL(url);
-    for (const input of [
-      field(url, { target: '_blank' }),
-      field(`${parsed.origin}${parsed.pathname}`, { querystring: parsed.search.slice(1), target: '_blank' }),
-      field(url, { querystring: parsed.search.slice(1), target: '_blank' }),
+    // Editing passes the original field directly to the installed SDK, including
+    // its verbatim rendering when both href and querystring carry the query.
+    for (const [input, editingHref] of [
+      [field(url, { target: '_blank' }), url],
+      [field(`${parsed.origin}${parsed.pathname}`, { querystring: parsed.search.slice(1), target: '_blank' }), url],
+      [field(url, { querystring: parsed.search.slice(1), target: '_blank' }), `${url}${parsed.search}`],
     ]) {
       for (const isEditing of [false, true]) {
         const html = render(input, isEditing);
-        assert.equal(href(html), url);
-        assert.match(html, /target="_blank" rel="noopener noreferrer"/);
+        assert.equal(href(html), isEditing ? editingHref : sourceVisitorHref(url));
+        assertContext(html, isEditing ? '_blank' : '');
         if (isEditing) assert.match(html, /test-only-source-link-field/);
       }
     }
@@ -124,49 +289,49 @@ test('lookalikes, credential URLs and unapproved source service variants still r
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'fixture';
   const pdf = pdfs[0].url;
   const contact = contacts[0].url;
-  for (const destination of [
-    pdf.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'),
-    pdf.replace('https://', 'https://user:password@'),
-    pdf.replace('www.allianzlife.com', 'www.allianzlife.com:444'),
-    pdf.replace('https://', 'http://'),
-    pdf.replace('/-/media/', '/%2f-/media/'),
-    pdf.replace('.pdf', '-uncaptured.pdf'),
-    contact.replace('lp.allianzlife.com', 'lp.allianzlife.com.evil.invalid'),
-    contact.replace('https://', 'https://user:password@'),
-    contact.replace('lp.allianzlife.com', 'lp.allianzlife.com:444'),
-    contact.replace('utm_content=em_resources', 'utm_content=unknown'),
-    `${contact}&redirect=https%3A%2F%2Fevil.invalid`,
-    'https://lp.allianzlife.com/EMContactUS.html',
-    'javascript:alert(1)',
+  for (const [destination, expected] of [
+    [pdf.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'), '#service-unavailable'],
+    [pdf.replace('https://', 'https://user:password@'), '#service-unavailable'],
+    [pdf.replace('www.allianzlife.com', 'www.allianzlife.com:444'), '#service-unavailable'],
+    [pdf.replace('https://', 'http://'), '#'],
+    [pdf.replace('/-/media/', '/%2f-/media/'), '#service-unavailable'],
+    [pdf.replace('.pdf', '-uncaptured.pdf'), '#'],
+    [contact.replace('lp.allianzlife.com', 'lp.allianzlife.com.evil.invalid'), '#service-unavailable'],
+    [contact.replace('https://', 'https://user:password@'), '#service-unavailable'],
+    [contact.replace('lp.allianzlife.com', 'lp.allianzlife.com:444'), '#service-unavailable'],
+    [contact.replace('utm_content=em_resources', 'utm_content=unknown'), '#'],
+    [`${contact}&redirect=https%3A%2F%2Fevil.invalid`, '#'],
+    ['https://lp.allianzlife.com/EMContactUS.html', '#'],
+    ['javascript:alert(1)', '#service-unavailable'],
   ]) {
     const input = field(destination, { target: '_blank' });
-    assert.equal(href(render(input)), '#service-unavailable', destination);
+    assert.equal(href(render(input)), expected, destination);
     assert.equal(safeLink(input).value.target, '');
     assert.doesNotMatch(render(input), /rel="noopener noreferrer"/);
   }
 });
 
-test('native internal and media identity retain local navigation even when their href matches an approved source URL', () => {
+test('native source identities follow verified local destinations or inert anchors without losing native metadata', () => {
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
   for (const linktype of ['internal', 'media']) {
     const input = field(how, { linktype, id: '{TEST-ONLY-NATIVE-ITEM}' });
-    assert.equal(href(render(input)), new URL(how).pathname);
+    assert.equal(href(render(input)), sourceVisitorHref(how));
     assert.equal(safeLink(input).value.id, '{TEST-ONLY-NATIVE-ITEM}');
     assert.equal(safeLink(input).value.linktype, linktype);
   }
   const implicitInternal = field(how, { linktype: undefined, id: '{TEST-ONLY-NATIVE-ITEM}' });
-  assert.equal(href(render(implicitInternal)), new URL(how).pathname);
+  assert.equal(href(render(implicitInternal)), sourceVisitorHref(how));
   const capturedShape = field(how, { linktype: undefined });
-  assert.equal(href(render(capturedShape)), how);
+  assert.equal(href(render(capturedShape)), sourceVisitorHref(how));
   const about = field('https://www.allianzlife.com/about?view=public#overview', { linktype: 'internal' });
   assert.equal(href(render(about)), '/about?view=public#overview');
   for (const destination of ['/login', '/api/private', 'https://external.example.invalid/']) {
-    assert.equal(href(render(field(destination))), '#service-unavailable');
+    assert.equal(href(render(field(destination))), destination === '/login' ? '#' : '#service-unavailable');
   }
 });
 
 
-test('Sustainability preserves its four exact source destinations and targets through the installed SDK', () => {
+test('Sustainability source destinations become inert for visitors and retain original editing fields', () => {
   const destinations = [
     ['https://www.allianzlife.com/-/media/Files/Allianz/PDFs/community-impact-report-overview.pdf', '_blank'],
     ['https://www.allianzlife.com/-/media/Files/Allianz/PDFs/EXT-1120.pdf', '_blank'],
@@ -181,10 +346,8 @@ test('Sustainability preserves its four exact source destinations and targets th
       const before = JSON.stringify(input);
       for (const isEditing of [false, true]) {
         const html = render(input, isEditing);
-        assert.equal(href(html), url);
-        assert.ok(html.includes(`target="${target}"`));
-        if (target === '_blank') assert.match(html, /rel="noopener noreferrer"/);
-        else assert.doesNotMatch(html, /rel=/);
+        assert.equal(href(html), isEditing ? url : sourceVisitorHref(url));
+        assertContext(html, isEditing ? target : '');
         if (isEditing) assert.match(html, /test-only-source-link-field/);
       }
       assert.equal(JSON.stringify(input), before);
@@ -194,11 +357,11 @@ test('Sustainability preserves its four exact source destinations and targets th
     'https://www.allianz.com/en/sustainability.html?redirect=unknown',
     'https://www.allianz.com/en/sustainability/sustainability-hub/sustainability-at-allianz/climate-change.html#unknown',
     'https://www.allianz.com.evil.invalid/en/sustainability.html',
-  ]) assert.equal(href(render(field(invalid))), '#service-unavailable');
+  ]) assert.equal(href(render(field(invalid))), invalid.includes('evil.invalid') ? '#service-unavailable' : '#');
 });
 
 
-test('early-retirement study preserves its exact proved PDF href, new-tab target and native field chrome', () => {
+test('early-retirement study uses an inert visitor PDF anchor and retains original native editing chrome', () => {
   const url = 'https://www.allianzlife.com/-/media/Files/Global/documents/2023/06/02/17/42/EXT-0080.pdf';
   const entry = source.entries.find(row => row.sourceRecordKey === 'early-retirement-study-findings-pdf');
   assert.equal(entry.url, url);
@@ -209,10 +372,9 @@ test('early-retirement study preserves its exact proved PDF href, new-tab target
     const before = JSON.stringify(input);
     for (const editing of [false, true]) {
       const html = render(input, editing);
-      assert.equal(href(html), url);
-      assert.match(html, /target="_blank"/);
+      assert.equal(href(html), editing ? url : sourceVisitorHref(url));
+      assertContext(html, editing ? '_blank' : '');
       if (!editing) assert.match(html, /aria-label="Get our study findings \(PDF\)"/);
-      assert.match(html, /rel="noopener noreferrer"/);
       if (editing) assert.match(html, /test-only-source-link-field/);
     }
     assert.strictEqual(safeLink(input).metadata, input.metadata);
@@ -245,7 +407,7 @@ function renderTools(Component, datasource, isEditing, isPreview = false, params
 }
 // React may prepend image preload links; inspect the rendered card anchor itself.
 const toolsHref = html => /<a\b[^>]*href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
-test('Tools exact four source destinations remain absolute in real finite variants and both SDK modes', () => {
+test('Tools source destinations use verified local routes or inert anchors and retain exact editing fields', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     for (const [variant, label, url, key] of toolsDestinations) {
@@ -253,7 +415,7 @@ test('Tools exact four source destinations remain absolute in real finite varian
       const data = toolsData(input, label), before = JSON.stringify(data);
       for (const editing of [false, true]) {
         const html = renderTools(toolsCards[variant], data, editing);
-        assert.equal(toolsHref(html), url, `${mode}/${variant}/${key}`);
+        assert.equal(toolsHref(html), editing ? url : sourceVisitorHref(url), `${mode}/${variant}/${key}`);
         const anchor = /<a\b[^>]*>/.exec(html)?.[0] ?? '';
         assert.match(anchor, /target=""/);
         assert.doesNotMatch(anchor, /rel=/);
@@ -271,26 +433,29 @@ test('Tools approval is limited to four exact captured URLs with the frozen sour
   assert.ok(source.sourcePins.some(pin => pin.path === 'preparation/accumulator-tools-final-qa-v1/source/SOURCE-CONTENT-LAYOUT.json'
     && pin.sha256 === 'c7f01de66ec0ef148ef3cace21b001948effe4549447106a9366c3dde9541133'));
 });
-test('Tools lookalikes and unapproved query, fragment and route variants gain no absolute-URL approval', () => {
+test('Tools source variants use exact local or inert outcomes while malformed origins remain rejected', () => {
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
   for (const [variant, label, url] of toolsDestinations) {
-    for (const modified of [url.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'),
-      `${url}?redirect=unapproved`, `${url}#unapproved`, `${url}-uncaptured`]) {
+    for (const [modified, expected] of [
+      [url.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'), '#service-unavailable'],
+      [`${url}?redirect=unapproved`, sourceVariantHref(url, '?redirect=unapproved')],
+      [`${url}#unapproved`, sourceVariantHref(url, '#unapproved')], [`${url}-uncaptured`, '#'],
+    ]) {
       const input = field(modified, { text: label, url: modified, target: '' });
       const data = toolsData(input, label), before = JSON.stringify(data);
       assert.notEqual(toolsHref(renderTools(toolsCards[variant], data, false)), modified);
-      if (modified.includes('evil.invalid')) assert.equal(toolsHref(renderTools(toolsCards[variant], data, false)), '#service-unavailable');
+      assert.equal(toolsHref(renderTools(toolsCards[variant], data, false)), expected);
       assert.match(renderTools(toolsCards[variant], data, true), /test-only-source-link-field/);
       assert.equal(JSON.stringify(data), before);
     }
   }
 });
-test('Tools native internal identity retains local navigation when its href matches an approved external source', () => {
+test('Tools native source identities follow verified local destinations or inert anchors', () => {
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
   for (const [variant, label, url] of toolsDestinations) {
     const input = field(url, { text: label, linktype: 'internal', id: '{TEST-ONLY-NATIVE-TOOLS-ITEM}', target: '' });
     const data = toolsData(input, label), before = JSON.stringify(data);
-    assert.equal(toolsHref(renderTools(toolsCards[variant], data, false)), new URL(url).pathname);
+    assert.equal(toolsHref(renderTools(toolsCards[variant], data, false)), sourceVisitorHref(url));
     assert.match(renderTools(toolsCards[variant], data, true), /test-only-source-link-field/);
     assert.equal(JSON.stringify(data), before);
   }
@@ -307,19 +472,20 @@ function overviewBenefitData(destination) {
   return { data: { id: 'test-only-life-benefits-grid', children: { results: cards } }, nativeBody };
 }
 
-test('Life benefits retain the approved absolute Index Options body link in the real finite variant and both SDK modes', () => {
+test('Life benefits use the canonical local Index Options body link and retain the original editing field', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     const { data, nativeBody } = overviewBenefitData(overviewIndexUrl), before = JSON.stringify(data);
     for (const editing of [false, true]) {
       const html = renderTools(toolsCards.LifeBenefitsGrid, data, editing);
-      assert.equal(toolsHref(html), overviewIndexUrl, `${mode}/LifeBenefitsGrid/${editing}`);
+      assert.equal(toolsHref(html), editing ? overviewIndexUrl : '/what-we-offer/index-options', `${mode}/LifeBenefitsGrid/${editing}`);
       assert.match(html, /title="Source index" class="source-index"/);
       assert.match(html, />external index<\/a>/);
       assert.match(html, /<sup>1<\/sup>/);
       assert.doesNotMatch(/<a\b[^>]*>/.exec(html)?.[0] ?? '', /target=|rel=/);
       if (editing) assert.match(html, /test-only-life-benefit-body/);
-      assert.strictEqual(safeEditorialRichText(nativeBody, editing), nativeBody);
+      assert.strictEqual(safeEditorialRichText(nativeBody, true), nativeBody);
+      assert.strictEqual(safeEditorialRichText(nativeBody, editing).metadata, nativeBody.metadata);
     }
     assert.equal(JSON.stringify(data), before);
   }
@@ -335,15 +501,21 @@ test('Life overview approval adds only the exact source body URL with final sour
     && pin.sha256 === 'c15536e72b260c651f6fad15a8668398daaa5d50ec6c17623d263e14db8de290'));
 });
 
-test('Index Options lookalikes, credentials, ports, scheme and uncaptured query/fragment/path variants gain no absolute approval', () => {
+test('Index Options source variants retain canonical local suffixes and reject unsafe authorities', () => {
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
-  for (const destination of [overviewIndexUrl.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'),
-    overviewIndexUrl.replace('https://', 'https://user:password@'), overviewIndexUrl.replace('www.allianzlife.com', 'www.allianzlife.com:444'),
-    overviewIndexUrl.replace('https://', 'http://'), `${overviewIndexUrl}?redirect=unapproved`, `${overviewIndexUrl}#unapproved`, `${overviewIndexUrl}-uncaptured`]) {
+  for (const [destination, expected] of [
+    [overviewIndexUrl.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'), '#service-unavailable'],
+    [overviewIndexUrl.replace('https://', 'https://user:password@'), '#service-unavailable'],
+    [overviewIndexUrl.replace('www.allianzlife.com', 'www.allianzlife.com:444'), '#service-unavailable'],
+    [overviewIndexUrl.replace('https://', 'http://'), '/what-we-offer/index-options'],
+    [`${overviewIndexUrl}?redirect=unapproved`, '/what-we-offer/index-options?redirect=unapproved'],
+    [`${overviewIndexUrl}#unapproved`, '/what-we-offer/index-options#unapproved'],
+    [`${overviewIndexUrl}-uncaptured`, '#'],
+  ]) {
     const { data, nativeBody } = overviewBenefitData(destination), before = JSON.stringify(data);
     const rendered = renderTools(toolsCards.LifeBenefitsGrid, data, false);
     assert.notEqual(toolsHref(rendered), destination);
-    if (/evil\.invalid|user:password|:444/.test(destination)) assert.equal(toolsHref(rendered), '#service-unavailable');
+    assert.equal(toolsHref(rendered), expected);
     assert.strictEqual(safeEditorialRichText(nativeBody, true), nativeBody);
     assert.match(renderTools(toolsCards.LifeBenefitsGrid, data, true), /test-only-life-benefit-body/);
     assert.equal(JSON.stringify(data), before);
@@ -354,7 +526,7 @@ test('Index Options approval preserves local navigation for explicitly authored 
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
   for (const linktype of ['internal', 'media']) {
     const input = field(overviewIndexUrl, { linktype, id: '{TEST-ONLY-NATIVE-INDEX-ITEM}' }), before = JSON.stringify(input);
-    assert.equal(href(render(input)), '/what-we-offer/Index-options');
+    assert.equal(href(render(input)), '/what-we-offer/index-options');
     assert.equal(safeLink(input).value.id, input.value.id);
     assert.strictEqual(safeLink(input).metadata, input.metadata);
     assert.equal(JSON.stringify(input), before);
@@ -367,7 +539,7 @@ const aboutTeaserDestinations = [
   'https://www.allianzlife.com/why-allianz/culture',
 ];
 
-test('About Us routes two verified local teasers while retaining the held Culture source fallback through the installed SDK', () => {
+test('About Us routes all three verified local teasers while retaining original editing fields', () => {
   const entries = source.entries.filter(({ kind }) => kind === 'about-teaser-page');
   assert.deepEqual(entries.map(({ url }) => url), aboutTeaserDestinations);
   assert.ok(source.sourcePins.some(pin => pin.path === 'preparation/about-us-ancestor-final-qa-v1/source/SOURCE-CONTENT-LAYOUT.json'
@@ -381,7 +553,7 @@ test('About Us routes two verified local teasers while retaining the held Cultur
       const before = JSON.stringify(input);
       for (const isEditing of [false, true]) {
         const html = render(input, isEditing);
-        assert.equal(href(html), url.endsWith('/why-allianz/culture') ? url : new URL(url).pathname);
+        assert.equal(href(html), isEditing ? url : sourceVisitorHref(url));
         assert.match(html, /target=""/);
         assert.doesNotMatch(html, /rel="noopener noreferrer"/);
         if (isEditing) assert.match(html, /test-only-source-link-field/);
@@ -392,7 +564,7 @@ test('About Us routes two verified local teasers while retaining the held Cultur
   }
 });
 
-test('About Us exact source approvals do not retain lookalike or augmented destinations', () => {
+test('About Us source variants preserve canonical local suffixes or stay inert and reject unsafe authorities', () => {
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
   for (const url of aboutTeaserDestinations) {
     for (const invalid of [
@@ -400,20 +572,25 @@ test('About Us exact source approvals do not retain lookalike or augmented desti
       url.replace('https://', 'https://user:password@'),
       url.replace('www.allianzlife.com', 'www.allianzlife.com:444'),
     ]) assert.equal(href(render(field(invalid))), '#service-unavailable');
-    for (const uncaptured of [`${url}?redirect=unknown`, `${url}#uncaptured`, `${url}/extra`, url.replace('https://', 'http://')]) {
+    for (const [uncaptured, expected] of [
+      [`${url}?redirect=unknown`, sourceVariantHref(url, '?redirect=unknown')],
+      [`${url}#uncaptured`, sourceVariantHref(url, '#uncaptured')],
+      [`${url}/extra`, '#'], [url.replace('https://', 'http://'), sourceVisitorHref(url)],
+    ]) {
       assert.notEqual(href(render(field(uncaptured))), uncaptured);
+      assert.equal(href(render(field(uncaptured))), expected);
       assert.ok(!href(render(field(uncaptured))).startsWith('https://www.allianzlife.com'));
     }
   }
 });
 
-test('About Us approved URLs preserve native internal identity and local routing', () => {
+test('About Us source policy preserves native internal identity and verified local routing', () => {
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
   for (const url of aboutTeaserDestinations) {
     for (const linktype of ['internal', 'media']) {
       const input = field(url, { linktype, id: '{TEST-ONLY-ABOUT-NATIVE-ITEM}', target: '' });
       const before = JSON.stringify(input);
-      assert.equal(href(render(input)), new URL(url).pathname);
+      assert.equal(href(render(input)), sourceVisitorHref(url));
       assert.equal(safeLink(input).value.id, '{TEST-ONLY-ABOUT-NATIVE-ITEM}');
       assert.equal(safeLink(input).value.linktype, linktype);
       assert.strictEqual(safeLink(input).metadata, input.metadata);
@@ -425,7 +602,7 @@ test('About Us approved URLs preserve native internal identity and local routing
 
 const offerAnnuitiesSourceUrl = 'https://www.allianzlife.com/what-we-offer/annuities';
 
-test('What We Offer consumed Annuities CTA preserves the exact approved source URL and native Link chrome', () => {
+test('What We Offer Annuities CTA uses its verified local route and preserves original native editing chrome', () => {
   assert.deepEqual(source.entries.filter(entry => entry.kind === 'what-we-offer-page'), [{
     kind: 'what-we-offer-page', url: offerAnnuitiesSourceUrl, sourceRecordKey: 'what-we-offer-annuities-cta',
   }]);
@@ -437,7 +614,7 @@ test('What We Offer consumed Annuities CTA preserves the exact approved source U
     const before = JSON.stringify(original);
     for (const isEditing of [false, true]) {
       const html = render(original, isEditing);
-      assert.equal(href(html), offerAnnuitiesSourceUrl);
+      assert.equal(href(html), isEditing ? offerAnnuitiesSourceUrl : '/what-we-offer/annuities');
       assert.match(html, /Learn more about which annuity might be right for you/);
       if (isEditing) assert.match(html, /test-only-source-link-field/);
     }
@@ -450,13 +627,18 @@ test('What We Offer consumed Annuities CTA preserves the exact approved source U
   }
 });
 
-test('What We Offer source approval does not preserve augmented Annuities URLs or alternate origins', () => {
+test('What We Offer source variants retain canonical local suffixes and reject unverified routes or origins', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
-    for (const candidate of [offerAnnuitiesSourceUrl + '?extra=1', offerAnnuitiesSourceUrl + '#extra',
-      offerAnnuitiesSourceUrl + '/other', 'http://www.allianzlife.com/what-we-offer/annuities',
-      'https://www.allianzlife.com.example.test/what-we-offer/annuities']) {
+    for (const [candidate, expected] of [
+      [offerAnnuitiesSourceUrl + '?extra=1', '/what-we-offer/annuities?extra=1'],
+      [offerAnnuitiesSourceUrl + '#extra', '/what-we-offer/annuities#extra'],
+      [offerAnnuitiesSourceUrl + '/other', '#'],
+      ['http://www.allianzlife.com/what-we-offer/annuities', '/what-we-offer/annuities'],
+      ['https://www.allianzlife.com.example.test/what-we-offer/annuities', '#service-unavailable'],
+    ]) {
       assert.notEqual(href(render(field(candidate))), candidate);
+      assert.equal(href(render(field(candidate))), expected);
     }
   }
 });
@@ -516,20 +698,23 @@ test('Annuities choices use local same-tab pages in visitor/preview and retain n
   }
 });
 
-test('Annuities two product approvals do not retain augmented URLs, alternate origins, credentials or schemes', () => {
+test('Annuities product variants preserve canonical local suffixes and reject unsafe authorities', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     for (const [url, text] of annuitiesProductDestinations) {
-      for (const candidate of [`${url}?redirect=unapproved`, `${url}#uncaptured`, `${url}/extra`,
-        url.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'),
-        url.replace('https://', 'https://user:password@'),
-        url.replace('www.allianzlife.com', 'www.allianzlife.com:444'),
-        url.replace('https://', 'http://')]) {
+      for (const [candidate, expected] of [
+        [`${url}?redirect=unapproved`, sourceVariantHref(url, '?redirect=unapproved')],
+        [`${url}#uncaptured`, sourceVariantHref(url, '#uncaptured')], [`${url}/extra`, '#'],
+        [url.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'), '#service-unavailable'],
+        [url.replace('https://', 'https://user:password@'), '#service-unavailable'],
+        [url.replace('www.allianzlife.com', 'www.allianzlife.com:444'), '#service-unavailable'],
+        [url.replace('https://', 'http://'), sourceVisitorHref(url)],
+      ]) {
         const original = field(candidate, { url: candidate, text, target: '' });
         const data = annuitiesChoiceData([original]), before = JSON.stringify(data);
         const anchor = annuitiesChoiceAnchors(renderTools(annuitiesProductChoices.Default, data, false))[0];
         assert.notEqual(href(anchor), candidate);
-        if (/evil\.invalid|user:password|:444/.test(candidate)) assert.equal(href(anchor), '#service-unavailable');
+        assert.equal(href(anchor), expected);
         assert.match(renderTools(annuitiesProductChoices.Default, data, true), /test-only-source-link-field/);
         assert.equal(JSON.stringify(data), before);
       }
@@ -555,7 +740,7 @@ test('Annuities product URL approvals preserve local routing and original identi
 });
 
 
-// FIA exact source destinations: product cards plus unchanged FAQ/Contact resource fields.
+// FIA source identities: product cards plus the original FAQ/Contact resource fields.
 const fiaCardSourceDestinations = [
   [
     "https://www.allianzlife.com/what-we-offer/annuities/fixed-index-annuities/accumulation-advantage-5",
@@ -651,7 +836,7 @@ function fiaAnchors(markup) {
   return [...markup.matchAll(/<a\b[^>]*class="m-card"[^>]*>/g)].map(([anchor]) => anchor);
 }
 
-test('FIA product cards and existing FAQ/Contact fields preserve fifteen exact public source destinations through installed SDK', () => {
+test('FIA product cards and FAQ/Contact resources use verified local routes or inert anchors through installed SDK', () => {
   assert.equal(fiaSourceApprovals.length, 15);
   assert.deepEqual(source.entries.filter((entry) => entry.sourceRecordKey.startsWith('fia-product-card-')),
     fiaCardSourceDestinations.map(([url, , , sourceRecordKey]) => ({ kind: 'public-page', url, sourceRecordKey })));
@@ -667,10 +852,8 @@ test('FIA product cards and existing FAQ/Contact fields preserve fifteen exact p
       const anchors = fiaAnchors(markup);
       assert.equal(anchors.length, 13);
       anchors.forEach((anchor, index) => {
-        assert.equal(href(anchor), inputs[index].value.href);
-        assert.ok(anchor.includes(`target="${inputs[index].value.target}"`));
-        if (!editing && inputs[index].value.target === '_blank') assert.match(anchor, /rel="noopener noreferrer"/);
-        if (!editing && inputs[index].value.target === '') assert.doesNotMatch(anchor, /\brel=/);
+        assert.equal(href(anchor), editing ? inputs[index].value.href : sourceVisitorHref(inputs[index].value.href));
+        assertContext(anchor, editing ? inputs[index].value.target : '');
       });
       if (editing) assert.match(markup, /test-only-source-link-field/);
     }
@@ -689,43 +872,46 @@ test('FIA product cards and existing FAQ/Contact fields preserve fifteen exact p
       const markup = renderTools(fiaHelpfulResources.Green, resourceData, editing);
       const anchors = fiaAnchors(markup);
       assert.equal(anchors.length, 3);
-      assert.equal(href(anchors[0]), resources[0][0]);
-      assert.equal(href(anchors[1]), resources[1][0]);
-      assert.equal(href(anchors[2]), resources[2][0]);
+      assert.equal(href(anchors[0]), editing ? resources[0][0] : sourceVisitorHref(resources[0][0]));
+      assert.equal(href(anchors[1]), editing ? resources[1][0] : sourceVisitorHref(resources[1][0]));
+      assert.equal(href(anchors[2]), editing ? resources[2][0] : sourceVisitorHref(resources[2][0]));
       if (editing) assert.match(markup, /test-only-source-link-field/);
     }
     assert.equal(JSON.stringify(resourceData), resourceBefore);
   }
 });
 
-test('FIA fifteen non-service source approvals do not preserve augmented URLs or unsafe origins', () => {
+test('FIA source variants use verified local suffixes or inert outcomes and reject unsafe authorities', () => {
   assert.equal(fiaSourceApprovals.length, 15);
   assert.equal(source.entries.filter(({ url }) => url === 'https://www.allianzlife.com/Login').length, 1);
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
-    assert.equal(href(render(field('https://www.allianzlife.com/Login'))), 'https://www.allianzlife.com/Login');
+    assert.equal(href(render(field('https://www.allianzlife.com/Login'))), '#');
     for (const { url } of fiaSourceApprovals) {
-      for (const variant of [`${url}?redirect=unapproved`, `${url}#uncaptured`, `${url}/extra`,
-        url.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'),
-        url.replace('https://', 'https://user:password@'),
-        url.replace('www.allianzlife.com', 'www.allianzlife.com:444'),
-        url.replace('https://', 'http://')]) {
+      for (const [variant, expected] of [
+        [`${url}?redirect=unapproved`, sourceVariantHref(url, '?redirect=unapproved')],
+        [`${url}#uncaptured`, sourceVariantHref(url, '#uncaptured')], [`${url}/extra`, '#'],
+        [url.replace('www.allianzlife.com', 'www.allianzlife.com.evil.invalid'), '#service-unavailable'],
+        [url.replace('https://', 'https://user:password@'), '#service-unavailable'],
+        [url.replace('www.allianzlife.com', 'www.allianzlife.com:444'), '#service-unavailable'],
+        [url.replace('https://', 'http://'), sourceVisitorHref(url)],
+      ]) {
         const original = field(variant, { target: '' }), before = JSON.stringify(original);
         assert.notEqual(href(render(original)), variant);
-        if (/evil\.invalid|user:password|:444/.test(variant)) assert.equal(href(render(original)), '#service-unavailable');
+        assert.equal(href(render(original)), expected);
         assert.equal(JSON.stringify(original), before);
       }
     }
   }
 });
 
-test('FIA exact source approvals preserve local routing, native identity and author metadata for internal/media fields', () => {
+test('FIA source policy preserves native identity and author metadata for internal/media fields', () => {
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
   for (const { url } of fiaSourceApprovals) {
     for (const linktype of ['internal', 'media']) {
       const original = field(url, { target: '', linktype, id: '{TEST-ONLY-FIA-NATIVE-ITEM}' });
       const before = JSON.stringify(original);
-      assert.equal(href(render(original)), new URL(url).pathname);
+      assert.equal(href(render(original)), sourceVisitorHref(url));
       assert.equal(safeLink(original).value.id, original.value.id);
       assert.equal(safeLink(original).value.linktype, linktype);
       assert.strictEqual(safeLink(original).metadata, original.metadata);
@@ -746,7 +932,7 @@ function fiaLoginData(input) {
   }] } };
 }
 
-test('FIA exact Login source link preserves href, empty target, caption and original field in all four installed SDK states', () => {
+test('FIA Login source link is inert for visitors and preserves caption and original editing field', () => {
   assert.deepEqual(source.entries.filter(({ url }) => url === fiaLoginUrl), [
     { kind: 'public-page', url: fiaLoginUrl, sourceRecordKey: 'fia-explore-login' },
   ]);
@@ -761,7 +947,7 @@ test('FIA exact Login source link preserves href, empty target, caption and orig
       const markup = renderTools(fiaHelpfulResources.Green, data, editing);
       const anchors = fiaAnchors(markup);
       assert.equal(anchors.length, 1);
-      assert.equal(href(anchors[0]), fiaLoginUrl);
+      assert.equal(href(anchors[0]), editing ? fiaLoginUrl : '#');
       assert.match(anchors[0], /target=""/);
       assert.doesNotMatch(anchors[0], /service-unavailable|title="This service is unavailable"|\brel=/);
       assert.match(markup, /Log in to manage your account/);
@@ -796,8 +982,10 @@ test('FIA exact Login approval leaves URL variants, native internal/media fields
     for (const original of inputs) {
       const data = fiaLoginData(original), before = JSON.stringify(data);
       const visitor = renderTools(fiaHelpfulResources.Green, data, false);
-      assert.equal(href(fiaAnchors(visitor)[0]), '#service-unavailable');
-      assert.match(fiaAnchors(visitor)[0], /title="This service is unavailable"/);
+      const expected = /evil\.invalid|user:password|:444/.test(original.value.href) ? '#service-unavailable' : '#';
+      assert.equal(href(fiaAnchors(visitor)[0]), expected, original.value.href);
+      if (expected === '#service-unavailable') assert.match(fiaAnchors(visitor)[0], /title="This service is unavailable"/);
+      else assert.doesNotMatch(fiaAnchors(visitor)[0], /title="This service is unavailable"/);
       const editing = renderTools(fiaHelpfulResources.Green, data, true);
       assert.match(editing, /test-only-source-link-field/);
       assert.equal(JSON.stringify(data), before);
@@ -808,7 +996,7 @@ test('FIA exact Login approval leaves URL variants, native internal/media fields
   }
 });
 
-test('Related Sites footer preserves exactly the three official external URLs and intentional new tabs', () => {
+test('Related Sites footer inerts Allianz sources and retains the exact PIMCO external destination', () => {
   const links = [
     'https://www.allianz.com/en_GB.html',
     'https://www.allianzim.com',
@@ -821,15 +1009,14 @@ test('Related Sites footer preserves exactly the three official external URLs an
       const input = field(url, { target: '_blank' });
       for (const editing of [false, true]) {
         const html = render(input, editing);
-        assert.equal(href(html), url);
-        assert.match(html, /target="_blank"/);
-        assert.match(html, /rel="noopener noreferrer"/);
+        assert.equal(href(html), editing ? url : sourceVisitorHref(url));
+        assertContext(html, editing || url === 'https://www.pimco.com/us/en' ? '_blank' : '');
       }
       for (const unverified of [`${url}/not-verified`, `${url}?redirect=https://example.invalid`, url.replace('https://', 'http://')]) {
-        assert.equal(href(render(field(unverified, { target: '_blank' }))), '#service-unavailable');
+        assert.equal(href(render(field(unverified, { target: '_blank' }))), url === 'https://www.pimco.com/us/en' ? '#service-unavailable' : '#');
       }
     }
-    assert.equal(href(render(field('https://www.allianzlife.com/login', { target: '_blank' }))), '#service-unavailable');
+    assert.equal(href(render(field('https://www.allianzlife.com/login', { target: '_blank' }))), '#');
   }
 });
 
@@ -849,7 +1036,7 @@ function corporateData(body) {
 }
 const corporateParams = { layout: 'image-left', splitRatio: '67:33', columns: '1', alignment: 'left' };
 
-test('About corporate body preserves three exact source URLs and the existing PIMCO anchor in real SDK modes', () => {
+test('About corporate body inerts Allianz sources and preserves the existing PIMCO anchor in real SDK modes', () => {
   assert.deepEqual(source.entries.filter(({ sourceRecordKey }) => sourceRecordKey.startsWith('about-parent-company-')),
     aboutCorporateDestinations.map(([url, , sourceRecordKey]) => ({ kind: 'public-page', url, sourceRecordKey })));
   assert.ok(source.sourcePins.some(pin => pin.url === 'https://www.allianzlife.com/about'
@@ -865,11 +1052,15 @@ test('About corporate body preserves three exact source URLs and the existing PI
     for (const [editing, preview] of [[false, false], [false, true], [true, false]]) {
       const markup = renderTools(toolsCards.Default, data, editing, preview, corporateParams);
       for (const [url] of destinations) {
-        assert.ok(markup.includes(`href="${url}" target="_blank" rel="noopener noreferrer"`), `${mode}/${editing}/${preview}/${url}`);
-        assert.equal(safeLink(field(url, { target: '_blank' })).value.href, url);
+        const destination = editing ? url : sourceVisitorHref(url);
+        const target = editing || url === 'https://www.pimco.com/us/en' ? '_blank' : '';
+        const rel = target === '_blank' ? ' rel="noopener noreferrer"' : '';
+        assert.ok(markup.includes(`href="${destination}" target="${target}"${rel}`), `${mode}/${editing}/${preview}/${url}`);
+        assert.equal(safeLink(field(url, { target: '_blank' })).value.href, sourceVisitorHref(url));
       }
       assert.ok(!markup.includes('#service-unavailable'));
-      assert.strictEqual(safeNativeBodyRichText(body, editing, corporateContext), body);
+      assert.strictEqual(safeNativeBodyRichText(body, true, corporateContext), body);
+      assert.strictEqual(safeNativeBodyRichText(body, false, corporateContext).metadata, body.metadata);
       if (editing) assert.ok(markup.includes(body.metadata.fieldId));
     }
     assert.equal(JSON.stringify(data), before);
@@ -887,14 +1078,15 @@ test('About corporate additions reject unrecorded URL variants without changing 
         url.replace(parsed.hostname, `${parsed.hostname}:444`), url.replace('https://', 'http://')];
       for (const candidate of variants) {
         const input = field(candidate, { target: '_blank' }), before = JSON.stringify(input);
-        assert.equal(safeLink(input).value.href, '#service-unavailable', candidate);
+        const expected = /evil\.invalid|user:password|:444|\/\/extra$/.test(candidate) ? '#service-unavailable' : '#';
+        assert.equal(safeLink(input).value.href, expected, candidate);
         assert.strictEqual(allianzLinkField(input, true), input);
         const body = { value: `<p><a href="${candidate}" target="_blank">Corporate variant</a></p>`,
           metadata: { itemId: 'test-only-corporate-variant', fieldId: 'test-only-variant-body', fieldType: 'Rich Text' } };
         const data = corporateData(body), bodyBefore = JSON.stringify(data);
         for (const preview of [false, true]) {
           const markup = renderTools(toolsCards.Default, data, false, preview, corporateParams);
-          assert.ok(markup.includes('href="#service-unavailable" target=""'));
+          assert.ok(markup.includes(`href="${expected}" target=""`));
           assert.ok(!markup.includes(`href="${candidate}"`));
         }
         assert.strictEqual(safeNativeBodyRichText(body, true, corporateContext), body);
@@ -902,12 +1094,12 @@ test('About corporate additions reject unrecorded URL variants without changing 
         assert.equal(JSON.stringify(data), bodyBefore);
       }
     }
-    assert.equal(safeLink(field('/Login')).value.href, '#service-unavailable');
+    assert.equal(safeLink(field('/Login')).value.href, '#');
     assert.equal(safeLink(field('https://unrecorded.example.invalid/')).value.href, '#service-unavailable');
   }
 });
 
-test('newsroom profile retains only its four additional verified official destinations', () => {
+test('newsroom corporate profile destinations are inert for visitors and preserved in editing', () => {
   const urls = [
     'https://www.allianz.com/en.html',
     'https://www.agcs.allianz.com/',
@@ -920,11 +1112,11 @@ test('newsroom profile retains only its four additional verified official destin
     for (const url of urls) {
       for (const editing of [false, true]) {
         const html = render(field(url, { target: '_blank' }), editing);
-        assert.equal(href(html), url);
-        assert.match(html, /target="_blank" rel="noopener noreferrer"/);
+        assert.equal(href(html), editing ? url : sourceVisitorHref(url));
+        assertContext(html, editing ? '_blank' : '');
       }
       for (const invalid of [url.replace('https://', 'http://'), `${url}?redirect=https://example.invalid`, url.replace('https://', 'https://user:password@')]) {
-        assert.equal(href(render(field(invalid, { target: '_blank' }))), '#service-unavailable');
+        assert.equal(href(render(field(invalid, { target: '_blank' }))), invalid.includes('user:password') ? '#service-unavailable' : '#');
       }
     }
   }
@@ -943,7 +1135,7 @@ const advisoryPartnerDestinations = [
 ];
 const advisorySourceDestinations = [...advisoryDestinations, ...advisoryPartnerDestinations];
 
-test('Advisory preserves its seven exact public source destinations through the installed SDK', () => {
+test('Advisory inerts the AllianzIM source and retains its six non-Allianz source destinations', () => {
   assert.deepEqual(source.entries.filter(({ sourceRecordKey }) => sourceRecordKey.startsWith('advisory-')),
     advisorySourceDestinations.map(([sourceRecordKey, url]) => ({ kind: 'public-page', url, sourceRecordKey })));
   assert.ok(source.sourcePins.some((pin) =>
@@ -955,9 +1147,8 @@ test('Advisory preserves its seven exact public source destinations through the 
       const input = field(url, { target: '_blank', rel: 'author' }), before = JSON.stringify(input);
       for (const editing of [false, true]) {
         const markup = render(input, editing);
-        assert.equal(href(markup), url);
-        assert.match(markup, /target="_blank"/);
-        assert.match(markup, /rel="author noopener noreferrer"/);
+        assert.equal(href(markup), editing ? url : sourceVisitorHref(url));
+        assertContext(markup, editing || url !== 'https://www.allianzim.com/etfs/' ? '_blank' : '', 'author');
         if (editing) assert.match(markup, /test-only-source-link-field/);
       }
       assert.strictEqual(safeLinkRenderProps(input, true).field, input);
@@ -1034,40 +1225,42 @@ test('Advisory partner body approvals reject URL lookalikes and unrecorded path,
   }
 });
 
-test('Advisory approvals reject unrecorded URL, query, fragment and authority variants', () => {
+test('Advisory AllianzIM variants stay inert while non-Allianz variants and unsafe authorities stay rejected', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     for (const [, url] of advisoryDestinations) {
       const parsed = new URL(url);
+      const inert = url === 'https://www.allianzim.com/etfs/' ? '#' : '#service-unavailable';
       const variants = [
-        `${url}?redirect=unapproved`, `${url}#unrecorded`, `${url}/extra`,
-        url.replace('https:', 'http:'), url.replace('https:', ''),
-        url.replace('https://', 'https://user:password@'),
-        url.replace(parsed.host, `${parsed.host}:443`),
-        url.replace(parsed.host, `${parsed.host}.example.invalid`),
-        url.replace('/etfs/', '/%65tfs/').replace('/form/', '/%66orm/'),
-        ` ${url}`, `${url} `,
+        [`${url}?redirect=unapproved`, inert], [`${url}#unrecorded`, inert],
+        [`${url}/extra`, url.endsWith('/') ? '#service-unavailable' : inert],
+        [url.replace('https:', 'http:'), inert], [url.replace('https:', ''), inert],
+        [url.replace('https://', 'https://user:password@'), '#service-unavailable'],
+        [url.replace(parsed.host, `${parsed.host}:443`), '#service-unavailable'],
+        [url.replace(parsed.host, `${parsed.host}.example.invalid`), '#service-unavailable'],
+        [url.replace('/etfs/', '/%65tfs/').replace('/form/', '/%66orm/'), inert],
+        [` ${url}`, '#service-unavailable'], [`${url} `, '#service-unavailable'],
       ];
-      const inputs = variants.map((variant) => field(variant, { target: '_blank' }));
-      inputs.push(field(url, { target: '_blank', querystring: 'redirect=unapproved' }));
-      inputs.push(field(url, { target: '_blank', anchor: 'unrecorded' }));
-      for (const linktype of ['internal', 'media']) inputs.push(field(url,
-        { target: '_blank', linktype, id: '{TEST-ONLY-ADVISORY-NATIVE-ITEM}' }));
-      for (const input of inputs) {
+      const inputs = variants.map(([variant, expected]) => [field(variant, { target: '_blank' }), expected]);
+      inputs.push([field(url, { target: '_blank', querystring: 'redirect=unapproved' }), inert]);
+      inputs.push([field(url, { target: '_blank', anchor: 'unrecorded' }), inert]);
+      for (const linktype of ['internal', 'media']) inputs.push([field(url,
+        { target: '_blank', linktype, id: '{TEST-ONLY-ADVISORY-NATIVE-ITEM}' }), inert]);
+      for (const [input, expected] of inputs) {
         const before = JSON.stringify(input), output = safeLink(input);
-        assert.equal(output.value.href, '#service-unavailable', input.value.href);
+        assert.equal(output.value.href, expected, input.value.href);
         assert.equal(output.value.target, '');
         assert.equal(output.value.querystring, '');
         assert.equal(output.value.anchor, '');
         assert.strictEqual(output.metadata, input.metadata);
-        assert.equal(href(render(input)), '#service-unavailable');
+        assert.equal(href(render(input)), expected);
         assert.equal(JSON.stringify(input), before);
       }
     }
-    for (const unrecorded of [
-      'https://azldigital.qualtrics.com/jfe/form/SV_UNRECORDED',
-      'https://www.allianzim.com/etfs/unrecorded', '/Login',
-    ]) assert.equal(href(render(field(unrecorded, { target: '_blank' }))), '#service-unavailable');
+    for (const [unrecorded, expected] of [
+      ['https://azldigital.qualtrics.com/jfe/form/SV_UNRECORDED', '#service-unavailable'],
+      ['https://www.allianzim.com/etfs/unrecorded', '#'], ['/Login', '#'],
+    ]) assert.equal(href(render(field(unrecorded, { target: '_blank' }))), expected);
   }
 });
 
@@ -1127,14 +1320,15 @@ test('Professionals Alliance registration does not admit URL variants or native-
       { target: '_blank', linktype, id: '{TEST-ONLY-ALLIANCE-NATIVE-ITEM}' }));
     for (const input of inputs) {
       const before = JSON.stringify(input), output = safeLink(input);
-      assert.equal(output.value.href, '#service-unavailable', JSON.stringify(input.value));
+      const expected = input.value.href === '/Login' ? '#' : '#service-unavailable';
+      assert.equal(output.value.href, expected, JSON.stringify(input.value));
       assert.equal(output.value.target, '');
       assert.equal(output.value.querystring, '');
       assert.equal(output.value.anchor, '');
       assert.strictEqual(output.metadata, input.metadata);
       assert.strictEqual(allianzLinkField(input, true), input);
       const visitor = render(input);
-      assert.equal(href(visitor), '#service-unavailable');
+      assert.equal(href(visitor), expected);
       assert.doesNotMatch(visitor, /target="_blank"|noopener|noreferrer/);
       assert.equal(JSON.stringify(input), before);
     }

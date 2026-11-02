@@ -209,7 +209,7 @@ export const FixedMvaReference = ({ fields, params }: AllianzRichTextProps) => {
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
   const heading = data.heading?.jsonValue;
-  const body = data.body?.jsonValue;
+  const body = safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true);
   // Only the source sentence shape gets its source typography. Future headings
   // outside that shape remain intact through the normal native Text surface.
   const parts = typeof heading?.value === 'string'
@@ -463,7 +463,7 @@ const RilaIntroductionBlock = ({ fields, params, contract = false }: AllianzRich
           <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <h2><Text editable={isEditing} field={data.heading?.jsonValue} />{!contract && <br />}</h2>}</div>
           <div className="tileSubHeading">{shouldRenderTextField(data.subheading?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.subheading?.jsonValue} />}</div>
         </header>
-        {contract && shouldRenderTextField(data.body?.jsonValue, isEditing) && <footer><RichText editable={isEditing} field={data.body?.jsonValue} className="tileLink" /></footer>}
+        {contract && shouldRenderTextField(data.body?.jsonValue, isEditing) && <footer><RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true)} className="tileLink" /></footer>}
         {!contract && shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
         {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <footer><div className="tileLink"><Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" /></div></footer>}
       </div></article>
@@ -483,7 +483,7 @@ export const RilaDisclosures = ({ fields, params }: AllianzRichTextProps) => {
     <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column"><div className="row"><div className="col-md-12 content-body disclosure">
       {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}
       {shouldRenderTextField(data.subheading?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.subheading?.jsonValue} />}
-      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} />}
+      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true)} />}
       {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
     </div></div></div></div></div>
   </div>;
@@ -597,7 +597,7 @@ const IapIntroductionBlock = ({ fields, params, nextStep = false }: AllianzRichT
           <div className="tileHeading">{nextStep && shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
           <div className="tileSubHeading" />
         </header>
-        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
+        {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true)} className="tileBody" />}
       </div></article>
     </div></div></div>
   </div>;
@@ -613,7 +613,7 @@ export const IapDisclosures = ({ fields, params }: AllianzRichTextProps) => {
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
   return <div className="l-container--full-width a-axlDisclosures allianz-iap-disclosures" id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column"><div className="row">
-      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="col-md-12 content-body disclosure" />}
+      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true)} className="col-md-12 content-body disclosure" />}
     </div></div></div></div>
   </div>;
 };
@@ -664,7 +664,7 @@ export const SelectResources = ({ fields, params }: AllianzRichTextProps) => {
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
   return <div className="l-container--full-width t-bg-grey-soft axlTileCollection" id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
-      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="o-richTextEditor__wrapper" />}
+      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true)} className="o-richTextEditor__wrapper" />}
     </div></div></div>
   </div>;
 };
@@ -677,7 +677,7 @@ export const SelectRiderBrochure = ({ fields, params }: AllianzRichTextProps) =>
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
   return <div className="l-container--full-width t-bg-grey-soft axlTileCollection allianz-select-rider-brochure" id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12 u-text-center">
-      <footer>{shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileLink u-margin-top-md u-margin-bottom-md" />}</footer>
+      <footer>{shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true)} className="tileLink u-margin-top-md u-margin-bottom-md" />}</footer>
     </div></div></div>
   </div>;
 };
@@ -935,7 +935,7 @@ export const EssentialIncome7MvaReference = ({ fields, params }: AllianzRichText
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
   const heading = data.heading?.jsonValue;
-  const body = data.body?.jsonValue;
+  const body = safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true);
   const parts = typeof heading?.value === 'string'
     ? /^(Current MVA reference rate:\s*)([+-]?(?:\d+(?:\.\d+)?|\.\d+))(\s*%\s*)(as of\s+)(\d{1,2}\/\d{1,2}\/\d{4})$/.exec(heading.value)
     : null;
@@ -1022,7 +1022,7 @@ export const RetirementFoundationAdvMvaReference = ({ fields, params }: AllianzR
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
   const heading = data.heading?.jsonValue;
-  const body = data.body?.jsonValue;
+  const body = safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true);
   const parts = typeof heading?.value === 'string'
     ? /^(Current MVA reference rate:\s*)([+-]?(?:\d+(?:\.\d+)?|\.\d+))(\s*%\s*)(as of\s+)(\d{1,2}\/\d{1,2}\/\d{4})$/.exec(heading.value)
     : null;
@@ -1148,7 +1148,7 @@ export const CoreIncome7MvaReference = ({ fields, params }: AllianzRichTextProps
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
   const heading = data.heading?.jsonValue;
-  const body = data.body?.jsonValue;
+  const body = safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true);
   const parts = typeof heading?.value === 'string'
     ? /^(Current MVA reference rate:\s*)([+-]?(?:\d+(?:\.\d+)?|\.\d+))(\s*%\s*)(as of\s+)(\d{1,2}\/\d{1,2}\/\d{4})$/.exec(heading.value)
     : null;

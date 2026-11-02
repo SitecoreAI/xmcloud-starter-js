@@ -3,6 +3,7 @@
 import { RichText, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
+import { safeEditorialRichText } from 'lib/allianz-editorial';
 import type { BiographyDisclosuresProps } from './biography-disclosures.props';
 
 /** Three source biography-specific notes have this grey introduction shell. */
@@ -11,7 +12,7 @@ export const Default = ({ fields, params }: BiographyDisclosuresProps) => {
   const editable = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="Biography Disclosures" />;
-  const body = data.body?.jsonValue;
+  const body = safeEditorialRichText(data.body?.jsonValue, editable, true, () => true);
   return <div className="component biography-disclosures l-container--full-width t-bg-grey-muted axlTileCollection" id={params?.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width">
       <div className="l-grid__row">

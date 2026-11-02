@@ -99,6 +99,7 @@ const attrs = (html, tag, name) => [...html.matchAll(new RegExp(`<${tag}\\b[^>]*
 const markers = html => [...html.matchAll(/<code [^>]*kind="open"[^>]*>(.*?)<\/code>/g)].map(match => JSON.parse(decode(match[1])));
 const deepFreeze = value => { if (value && typeof value === 'object') { Object.values(value).forEach(deepFreeze); Object.freeze(value); } return value; };
 const nativeFields = data => [data.title.jsonValue, ...data.children.results.flatMap(card => card.fieldCollection.filter(entry => ['Title','Text','Icon'].includes(entry.name)).map(entry => entry.jsonValue))];
+const visitorText = value => value.replace('href="https://www.allianz.com/en.html" target="_blank"', 'href="#" target=""');
 const nativeIcons = data => data.children.results.map(card => card.icon?.jsonValue ?? card.fieldCollection.find(entry => entry.name === 'Icon')?.jsonValue);
 const filledFixture = () => {
   const data = fixture();
@@ -133,19 +134,30 @@ test('AboutFacts explicit cleared fixture retains six native Title/Text values i
   assert.equal((html.match(/class="l-grid__column-medium-4"/g) || []).length, 6);
   assert.equal((html.match(/<h2\b/g) || []).length, 1); assert.equal((html.match(/<h3\b/g) || []).length, 6);
   let offset = 0;
-  for (const card of CURRENT.cards) { const next = html.indexOf(card.title, offset); assert.ok(next >= offset); offset = next + card.title.length; assert.ok(html.includes(card.text)); }
+  for (const card of CURRENT.cards) { const next = html.indexOf(card.title, offset); assert.ok(next >= offset); offset = next + card.title.length; assert.ok(html.includes(visitorText(card.text))); }
+  assert.deepEqual(attrs(html, 'a', 'href'), ['https://www.mnufc.com/stadium/', '#']);
+  assert.deepEqual(attrs(html, 'a', 'target'), ['_blank', '']);
   assert.deepEqual(attrs(html, 'img', 'src'), [], 'this explicit cleared-field fixture supplies no replacement images');
   assert.doesNotMatch(html, /allianz-ui\/about-overview|allianz-about-fact-glyph/);
   assert.equal(markers(html).length, 0); assert.doesNotMatch(html, /<h1\b|t-bg-blue-soft|tileLink/);
   assert.equal(JSON.stringify(data), before);
 });
 
-test('AboutFacts SDK receives each original title/text/icon object once after authoring without copying fields', () => {
+test('AboutFacts SDK retains original editing fields and projects only the visitor Allianz link with its metadata', () => {
   const { components, observed } = instrumented(), data = deepFreeze(filledFixture()), original = nativeFields(data), before = JSON.stringify(data);
   for (const editing of [false, true]) {
     observed.length = 0; const html = render(components.AboutFacts, data, editing);
     assert.equal(observed.length, 19); assert.equal(observed.filter(value => value.name === 'Image').length, 6);
-    for (const field of original) { const calls = observed.filter(value => value.field === field); assert.equal(calls.length, 1); assert.equal(calls[0].editable, editing); }
+    for (const field of original) {
+      const projected = !editing && typeof field.value === 'string' && visitorText(field.value) !== field.value;
+      const calls = observed.filter(value => projected ? value.field?.metadata === field.metadata : value.field === field);
+      assert.equal(calls.length, 1); assert.equal(calls[0].editable, editing);
+      if (projected) {
+        assert.notStrictEqual(calls[0].field, field);
+        assert.strictEqual(calls[0].field.metadata, field.metadata);
+        assert.equal(calls[0].field.value, visitorText(field.value));
+      }
+    }
     const author = markers(html); assert.equal(author.length, editing ? 19 : 0);
     for (const field of editing ? original : []) assert.equal(author.filter(marker => marker.itemId === field.metadata.itemId && marker.fieldId === field.metadata.fieldId).length, 1);
     assert.equal(JSON.stringify(data), before);
@@ -253,12 +265,13 @@ test('retained source witnesses and scoped source gray26/40 CSS stay unchanged w
   assert.match(css,/min-width: 704px/); assert.match(css,/brightness\(0\) invert\(23\.5294%\)/);
 });
 
-test('Default and AboutFacts keep populated canvas structure equal to normal output apart from SDK metadata', () => {
+test('Default and AboutFacts retain canvas structure apart from SDK metadata and the finite visitor Allianz projection', () => {
   const { components } = instrumented();
   for (const Component of [components.Default, components.AboutFacts]) {
     const data = deepFreeze(filledFixture()), before = JSON.stringify(data);
     const normal = render(Component, data), editing = render(Component, data, true);
-    assert.equal(editing.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, ''), normal);
+    assert.equal(visitorText(editing.replace(/<code\b[^>]*>[\s\S]*?<\/code>/g, '')), normal);
+    assert.ok(editing.includes(CURRENT.cards[5].text));
     assert.equal(markers(editing).length, 19);
     assert.doesNotMatch(editing, /No text in field|scEmptyImage/);
     assert.equal(JSON.stringify(data), before);

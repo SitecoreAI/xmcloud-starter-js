@@ -5,6 +5,7 @@ import approvedSourceLinks from './approved-source-external-links.fixture.json';
 import { isConnected } from './allianz-content-mode';
 import { isVerifiedContentHubDocumentLink } from './allianz-verified-documents';
 import { originalSourceAliasHref } from './allianz-source-aliases';
+import { allianzDemoDestination } from './allianz-demo-destinations';
 
 /** Native integrated GraphQL field shape, shared by Edge and local fixtures. */
 export type JsonField<T> = { jsonValue?: T };
@@ -151,6 +152,7 @@ export function safeLink(field?: LinkField): LinkField {
   const href = field.value?.href ?? '';
   // A cleared native field must stay cleared, including its authoring metadata.
   if (!href) return field;
+  const demoDestination = allianzDemoDestination(href);
   const unavailable = () => ({
     ...field,
     value: { ...field.value, href: '#service-unavailable', querystring: '', anchor: '', target: '', title: 'This service is unavailable' },
@@ -168,7 +170,7 @@ export function safeLink(field?: LinkField): LinkField {
   const isPublic = (url.origin === 'https://www.allianzlife.com' || isOfficialHttp) && !url.username && !url.password &&
     !/^\/(?:new-york\/)?(login|registration|spa|account|portal|secured|logout|manageuserprofile|api|sitecore)(\/|$)/i.test(url.pathname);
   const path = (() => { try { return decodeURIComponent(url.pathname).toLowerCase().replace(/\/$/, '') || '/'; } catch { return ''; } })();
-  const fixtureRouteAvailable = isConnected() ||
+  const fixtureRouteAvailable = isConnected() || demoDestination?.kind === 'local' ||
     Object.hasOwn(publicRouteIndex, path) || /^\/allianz-(?:legacy-)?assets\//.test(path) || path === '/search';
   const canNavigate = isPublic && !!path && !/%(?:2f|5c)/i.test(url.pathname) && fixtureRouteAvailable &&
     !/^\/(?:new-york\/)?(login|registration|spa|account|portal|secured|logout|manageuserprofile|api|sitecore)(\/|$)/i.test(path);
@@ -189,6 +191,18 @@ export function safeLink(field?: LinkField): LinkField {
   }
   if (isVerifiedContentHubDocumentLink(field)) {
     return { ...field, value: { ...field.value, href: sourceBase, querystring, anchor: '' } };
+  }
+  if (demoDestination?.kind === 'rejected') return unavailable();
+  if (!isUnavailable && demoDestination && demoDestination.kind !== 'local') {
+    const missing = demoDestination.pathname === '#';
+    const value = { ...field.value };
+    if (missing) delete value.download;
+    return { ...field, value: { ...value,
+      href: demoDestination.pathname,
+      querystring: missing ? '' : querystring,
+      anchor: missing ? '' : anchor,
+      ...(field.value.target && field.value.target.toLowerCase() !== '_self' ? { target: '' } : {}),
+    } };
   }
   const originalAlias = originalSourceAliasHref(url.pathname);
   if (!isUnavailable && isPublic && originalAlias) {

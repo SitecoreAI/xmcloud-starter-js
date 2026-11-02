@@ -46,14 +46,15 @@ test('footer public registry contains only the six exact captured outgoing desti
     && JSON.stringify(pin.sourceRecordKeys) === JSON.stringify(destinations.map(([key]) => `footer-public-${key}`))));
 });
 
-test('actual footer preserves all six literal URLs and new-tab targets in visitor and editing SDK states', () => {
+test('actual footer contains corporate Careers for visitors and preserves social links and exact editing fields', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     const inputs = destinations.map(([, label, url]) => field(url, { text: label, title: label }));
     const data = footerData(inputs), before = JSON.stringify(data);
     for (const editing of [false, true]) {
       const markup = render(Footer, data, editing);
-      assert.deepEqual(anchors(markup), destinations.map(([, , url]) => ({ href: url, target: '_blank' })));
+      assert.deepEqual(anchors(markup), destinations.map(([key, , url]) =>
+        !editing && key === 'careers' ? { href: '#', target: '' } : { href: url, target: '_blank' }));
       assert.doesNotMatch(markup, /service-unavailable|demo-unavailable/);
       if (editing) assert.match(markup, /test-only-footer-link/);
     }
@@ -74,24 +75,31 @@ test('footer URL entries keep malformed and unrecorded URLs, native identities a
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     for (const [, , url] of destinations) {
       const parsed = new URL(url);
+      // The boolean identifies explicit well-formed corporate-host test cases.
+      // Other origins and malformed authorities retain the previous rejection.
+      const corporate = url === 'https://careers.allianz.com/US/go/Allianz-US-Life/5140601/';
       const variants = [
-        url.replace('https:', 'http:'), url.slice('https:'.length),
-        url.replace('https://', 'https://user:password@'),
-        url.replace(parsed.host, `${parsed.host}:443`), url.replace(parsed.host, `${parsed.host}:444`),
-        url.replace(parsed.host, `${parsed.host}.example.invalid`),
-        url.replace(parsed.pathname, parsed.pathname.toUpperCase()),
-        url.endsWith('/') ? url.slice(0, -1) : `${url}/`,
-        `${url}/unregistered`, `${url}%2f`, `${url}%5c`,
-        `${url}?redirect=unapproved`, `${url}#unrecorded`, ` ${url}`, `${url} `,
-        new URL('/unrecorded-footer-target', url).href,
+        [url.replace('https:', 'http:'), true], [url.slice('https:'.length), true],
+        [url.replace('https://', 'https://user:password@'), false],
+        [url.replace(parsed.host, `${parsed.host}:443`), false], [url.replace(parsed.host, `${parsed.host}:444`), false],
+        [url.replace(parsed.host, `${parsed.host}.example.invalid`), false],
+        [url.replace(parsed.pathname, parsed.pathname.toUpperCase()), true],
+        [url.endsWith('/') ? url.slice(0, -1) : `${url}/`, true],
+        [`${url}/unregistered`, false], [`${url}%2f`, false], [`${url}%5c`, false],
+        [`${url}?redirect=unapproved`, true], [`${url}#unrecorded`, true], [` ${url}`, false], [`${url} `, false],
+        [new URL('/unrecorded-footer-target', url).href, true],
       ];
-      const inputs = variants.map((candidate) => field(candidate));
-      inputs.push(field(url, { querystring: 'redirect=unapproved' }), field(url, { anchor: 'unrecorded' }),
-        field(url, { anchor: 'demo-unavailable' }), field('#demo-unavailable', { linktype: 'anchor', anchor: 'demo-unavailable' }));
-      for (const linktype of ['internal', 'media']) inputs.push(field(url, { linktype, id: '{TEST-ONLY-NATIVE-ITEM}' }));
-      for (const input of inputs) {
+      const cases = variants.map(([candidate, containedCorporate]) => ({ input: field(candidate),
+        expected: corporate && containedCorporate ? '#' : '#service-unavailable' }));
+      cases.push({ input: field(url, { querystring: 'redirect=unapproved' }), expected: corporate ? '#' : '#service-unavailable' },
+        { input: field(url, { anchor: 'unrecorded' }), expected: corporate ? '#' : '#service-unavailable' },
+        { input: field(url, { anchor: 'demo-unavailable' }), expected: '#service-unavailable' },
+        { input: field('#demo-unavailable', { linktype: 'anchor', anchor: 'demo-unavailable' }), expected: '#service-unavailable' });
+      for (const linktype of ['internal', 'media']) cases.push({ input: field(url, { linktype, id: '{TEST-ONLY-NATIVE-ITEM}' }),
+        expected: corporate ? '#' : '#service-unavailable' });
+      for (const { input, expected } of cases) {
         const before = JSON.stringify(input), output = safeLink(input);
-        assert.equal(output.value.href, '#service-unavailable', JSON.stringify(input.value));
+        assert.equal(output.value.href, expected, JSON.stringify(input.value));
         assert.equal(output.value.target, '');
         assert.equal(output.value.querystring, '');
         assert.equal(output.value.anchor, '');
@@ -99,9 +107,9 @@ test('footer URL entries keep malformed and unrecorded URLs, native identities a
         assert.strictEqual(allianzLinkField(input, true), input);
         assert.equal(JSON.stringify(input), before);
       }
-      const unregistered = inputs[0];
+      const unregistered = cases[0].input;
       const markup = render(Footer, footerData(destinations.map(() => unregistered)));
-      assert.ok(anchors(markup).every((anchor) => anchor.href === '#service-unavailable' && anchor.target === ''));
+      assert.ok(anchors(markup).every((anchor) => anchor.href === cases[0].expected && anchor.target === ''));
     }
   }
 });
@@ -109,10 +117,11 @@ test('footer URL entries keep malformed and unrecorded URLs, native identities a
 test('footer public registrations do not enable local account services or an unrecorded social profile', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
-    for (const url of ['/Login', 'https://www.allianzlife.com/login', '/Registration/individual',
-      'https://www.allianzlife.com/Registration/individual', '/account', '/portal', '/api/private', '/sitecore',
-      'https://www.facebook.com/unrecorded-profile', 'https://www.linkedin.com/company/unrecorded-company']) {
-      assert.equal(safeLink(field(url)).value.href, '#service-unavailable', url);
+    for (const [url, expected] of [['/Login', '#'], ['https://www.allianzlife.com/login', '#'], ['/Registration/individual', '#service-unavailable'],
+      ['https://www.allianzlife.com/Registration/individual', '#'], ['/account', '#service-unavailable'], ['/portal', '#service-unavailable'],
+      ['/api/private', '#service-unavailable'], ['/sitecore', '#service-unavailable'],
+      ['https://www.facebook.com/unrecorded-profile', '#service-unavailable'], ['https://www.linkedin.com/company/unrecorded-company', '#service-unavailable']]) {
+      assert.equal(safeLink(field(url)).value.href, expected, url);
     }
   }
 });
