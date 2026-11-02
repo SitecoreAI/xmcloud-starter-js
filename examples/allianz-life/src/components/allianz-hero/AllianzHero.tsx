@@ -6,6 +6,7 @@ import MockLogin from 'components/content-sdk/MockLogin';
 import { sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { hasEditorialBlockMarkup, safeEditorialRichText } from 'lib/allianz-editorial';
+import { homeHeroHeadingField } from 'lib/allianz-home-heading';
 import './AllianzEditorialHero.css';
 import type { AllianzHeroProps, AllianzHeroStageProps } from './allianz-hero.props';
 import './AllianzFaqHero.css';
@@ -17,8 +18,10 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzHero" />;
-  const blockHeading = hasEditorialBlockMarkup(data.heading?.jsonValue?.value);
   const home = params.layout === 'home';
+  const headingField = homeHeroHeadingField(data.heading?.jsonValue, home, isEditing);
+  const blockHeading = headingField === data.heading?.jsonValue
+    && hasEditorialBlockMarkup(headingField?.value);
   const productTheme = ['fixed','variable','life'].includes(params.heroTheme) ? `c-hero__theme--${params.heroTheme}` : '';
   const useProductStageBackground = !home && productTheme !== ''
     && [undefined, '', 'transparent'].includes(params.theme)
@@ -56,7 +59,7 @@ export const Default = ({ fields, params }: AllianzHeroProps) => {
           <div className="l-grid l-grid--max-width"><div className="l-grid__row">
             <div className={params.showLogin === '1' ? 'l-grid__column-small-12 l-grid__column-large-8' : 'l-grid__column-small-12'}>
               {shouldRenderTextField(data.eyebrow?.jsonValue, isEditing) && <Text editable={isEditing} field={data.eyebrow?.jsonValue} tag="p" />}
-              {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} data-allianz-hero-block-heading={blockHeading || undefined} field={data.heading?.jsonValue} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline`} />}
+              {shouldRenderTextField(headingField, isEditing) && <RichText editable={isEditing} tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined} aria-level={blockHeading ? 1 : undefined} data-allianz-hero-block-heading={blockHeading || undefined} field={headingField} className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline`} />}
               {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="h4 c-heading c-hero__subHeadline" />}
               {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
               {shouldRenderLinkField(data.secondaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.secondaryLink?.jsonValue, isEditing)} className="a-link" />}
