@@ -81,3 +81,33 @@ test('native RateSnapshot contains its body anchor without modifying rate/date f
   assert.ok(render(Default, data, true).includes(historical));
   assert.equal(JSON.stringify(data), before);
 });
+
+test('AA5Features contains the three observed affiliate body links while preserving PIMCO, source copy and native editing', () => {
+  const { AA5Features } = loadSource(path.join(sourceRoot, 'components/allianz-card-grid/AllianzCardGrid.tsx'));
+  const affiliates = [
+    ['https://www.agcs.allianz.com/global-offices/united-states.html', 'Allianz Global Corporate &amp; Specialty'],
+    ['https://www.allianzworldwidepartners.com/usa/', 'Allianz Partners'],
+    ['https://www.allianz-trade.com/en_US.html', 'Allianz Trade'],
+  ];
+  const pimco = '<a href="https://www.pimco.com/us/en" target="_blank" rel="noopener noreferrer">PIMCO</a>';
+  const cards = affiliates.map(([href, label], index) => ({ id: `synthetic-affiliate-${index}`,
+    heading: field(`Original heading ${index}`, `heading-${index}`),
+    body: field(`<p><a href="${href}" target="_blank" rel="author">${label}</a></p>${pimco}`, `body-${index}`),
+  }));
+  const data = { id: 'synthetic-affiliate-group', children: { results: cards } }, before = JSON.stringify(data);
+  const originalFields = cards.map((card) => card.body.jsonValue);
+  const visitor = render(AA5Features, data, false);
+  assert.equal((visitor.match(/class="m-axlTile match-height t-bg-grey-soft -is--stacked "/g) ?? []).length, 3);
+  for (const [href, label] of affiliates) {
+    assert.ok(visitor.includes(`<a href="#" target="" rel="author">${label}</a>`));
+    assert.ok(!visitor.includes(href));
+  }
+  assert.equal(visitor.split(pimco).length - 1, 3);
+  const editing = render(AA5Features, data, true);
+  for (const [href] of affiliates) assert.ok(editing.includes(href));
+  for (let index = 0; index < cards.length; index++) {
+    assert.strictEqual(cards[index].body.jsonValue, originalFields[index]);
+    assert.ok(editing.includes(`synthetic-body-${index}`));
+  }
+  assert.equal(JSON.stringify(data), before);
+});

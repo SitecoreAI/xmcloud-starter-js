@@ -1672,7 +1672,7 @@ export const AA5Features = ({ fields, params }: AllianzCardGridProps) => {
             <article className="m-axlTile match-height t-bg-grey-soft -is--stacked ">
               <div className="tileContent u-text-left"><div className="tileSubGrid__content">
                 <header><div className="tileHeading">{shouldRenderTextField(card.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h3" field={card.heading?.jsonValue} />}</div></header>
-                {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" />}
+                {shouldRenderTextField(card.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(card.body?.jsonValue, isEditing, true, () => true)} className="tileBody u-font-size-md" />}
                 {links.length > 0 && <footer><div className="tileLink">{links.map((item, linkIndex) => {
                   const field = allianzLinkField(item.link?.jsonValue, isEditing);
                   const ariaLabel = field.value?.ariaLabel || field.value?.['aria-label'];
