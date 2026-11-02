@@ -5,6 +5,8 @@ import { shouldRenderTextField } from 'lib/allianz-field-state';
 import { RETIREMENT_INPUTS, validateCalculator, incomeToolsDemoMode, type AllianzCalculatorProps } from './allianz-calculator.props';
 import { IncomeLocalToolsDemo } from 'components/allianz-income-tools/IncomeLocalToolsDemo';
 import { observeLifetimeFrame } from './lifetime-frame';
+import { RilaIncomeSection } from './source-tool-frame/RilaIncomeSection.props';
+import { rilaIncomePreset } from './source-tool-frame/rila-income-presets';
 import { LifeInsuranceNative } from 'lib/life-insurance/LifeInsuranceNative';
 import { GetAnswersFinancialTool, type GetAnswersToolKind } from './get-answers-tools/GetAnswersFinancialTool.props';
 
@@ -61,6 +63,10 @@ const GetAnswersCalculatorSection = ({ kind, fields, params }: AllianzCalculator
 export const RetirementIncome = (props: AllianzCalculatorProps) => <GetAnswersCalculatorSection {...props} kind="retirement-income" />;
 export const TaxDeferral = (props: AllianzCalculatorProps) => <GetAnswersCalculatorSection {...props} kind="tax-deferral" />;
 
+export const RilaIncomeADV = (props: AllianzCalculatorProps) => <RilaIncomeSection {...props} preset="income-adv" />;
+export const RilaIncomePlus = (props: AllianzCalculatorProps) => <RilaIncomeSection {...props} preset="income-plus" />;
+export const RilaIncomeSelect = (props: AllianzCalculatorProps) => <RilaIncomeSection {...props} preset="income-select" />;
+
 export const Default = (props: AllianzCalculatorProps) => {
   const { fields, params, rendering } = props;
   const { page } = useSitecore();
@@ -82,6 +88,8 @@ export const Default = (props: AllianzCalculatorProps) => {
     else setComputed(true);
   };
   const demoMode = incomeToolsDemoMode(data?.schemaKey, rendering?.dataSource);
+  const sourceIncomePreset = rilaIncomePreset(data?.schemaKey?.jsonValue?.value);
+  if (sourceIncomePreset) return <RilaIncomeSection {...props} preset={sourceIncomePreset} />;
   // The existing native Calculator template selects this verified tool explicitly.
   if (data?.schemaKey?.jsonValue?.value === 'lifetime-income-official') return <LifetimeIncome {...props} />;
   if (data?.schemaKey?.jsonValue?.value === 'life-insurance-source-core') return <LifeInsuranceNative {...props} />;

@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "family": "rila-income",
+  "sourceOrigin": "https://www.allianzlife.com",
+  "sourceEngineAndWorkbookBytesUnmodified": true,
+  "mountId": "dx-income-index-advantage",
+  "presets": [
+    {
+      "key": "income-adv",
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/income-calculator",
+      "mountId": "dx-income-index-advantage",
+      "script": "/allianz-assets/rila-income/income-adv.js",
+      "styles": [
+        "/allianz-assets/lifetime-income/base.css",
+        "/allianz-assets/rila-income/income-adv.css"
+      ],
+      "workbookRequestPath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-income-adv-xlsx.xlsx",
+      "workbookLocalPath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-income-adv-xlsx.xlsx",
+      "framePath": "/allianz-assets/rila-income/income-adv.html",
+      "title": "Allianz Index Advantage Income ADV income calculator",
+      "framePresetId": "income-adv",
+      "sourcePagePath": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/income-calculator"
+    },
+    {
+      "key": "plus-income",
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/income-calculator",
+      "mountId": "dx-income-index-advantage",
+      "script": "/allianz-assets/rila-income/plus-income.js",
+      "styles": [
+        "/allianz-assets/lifetime-income/base.css",
+        "/allianz-assets/rila-income/plus-income.css"
+      ],
+      "workbookRequestPath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus-income-xlsx.xlsx",
+      "workbookLocalPath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus-income-xlsx.xlsx",
+      "framePath": "/allianz-assets/rila-income/plus-income.html",
+      "title": "Allianz Index Advantage+ Income income calculator",
+      "framePresetId": "income-plus",
+      "sourcePagePath": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-income/income-calculator"
+    },
+    {
+      "key": "plus-select-income",
+      "route": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/income-calculator",
+      "mountId": "dx-income-index-advantage",
+      "script": "/allianz-assets/rila-income/plus-select-income.js",
+      "styles": [
+        "/allianz-assets/lifetime-income/base.css",
+        "/allianz-assets/rila-income/plus-select-income.css"
+      ],
+      "workbookRequestPath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus--select-income-xlsx.xlsx",
+      "workbookLocalPath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus--select-income-xlsx.xlsx",
+      "framePath": "/allianz-assets/rila-income/plus-select-income.html",
+      "title": "Allianz Index Advantage+ Select Income income calculator",
+      "framePresetId": "income-select",
+      "sourcePagePath": "/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus-select-income/income-calculator"
+    }
+  ],
+  "assets": [
+    {
+      "sourcePath": "/-/media/Sites/AzlCommon/Project/styles/style.css",
+      "localPath": "/allianz-assets/lifetime-income/base.css",
+      "bytes": 398267,
+      "sha256": "11de986b98b0afc9c4cd391d4b1072ff19d65c00567b70f5ded193fffe9f8c3f",
+      "kind": "stylesheet",
+      "reusedExistingAsset": true
+    },
+    {
+      "sourcePath": "/-/media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-income-adv.js",
+      "localPath": "/allianz-assets/rila-income/income-adv.js",
+      "bytes": 1509310,
+      "sha256": "9f68a239bd4406f7530d7ad0d7980c38ba25b251670a2240710f4c318c72bf12",
+      "kind": "script"
+    },
+    {
+      "sourcePath": "/-/media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-income-adv-css.css",
+      "localPath": "/allianz-assets/rila-income/income-adv.css",
+      "bytes": 4622,
+      "sha256": "05ecaf27ef9be3f4e85a1d1b0b1e9005fb6a35859f0db01b0d6c8ea9e6e2eace",
+      "kind": "stylesheet"
+    },
+    {
+      "sourcePath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-income-adv-xlsx.xlsx",
+      "localPath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-income-adv-xlsx.xlsx",
+      "bytes": 405679,
+      "sha256": "6ff88db102fa977f262119c64e4e5341c16d71f383bc180199216bcf40260878",
+      "kind": "workbook"
+    },
+    {
+      "sourcePath": "/-/media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus-income.js",
+      "localPath": "/allianz-assets/rila-income/plus-income.js",
+      "bytes": 1905751,
+      "sha256": "ad55c962d1e4110bc756e0e01a23d5d8fb2bb727719369d24ac2b00e3d4a9a56",
+      "kind": "script"
+    },
+    {
+      "sourcePath": "/-/media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus-income-css.css",
+      "localPath": "/allianz-assets/rila-income/plus-income.css",
+      "bytes": 4624,
+      "sha256": "16bb71f66d9f535895df1ff56840f4833994874ea612064269c9f2d749c5cc97",
+      "kind": "stylesheet"
+    },
+    {
+      "sourcePath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus-income-xlsx.xlsx",
+      "localPath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus-income-xlsx.xlsx",
+      "bytes": 279499,
+      "sha256": "f0c02e5b7f63f9b5292b1cf0611a753355a888b0656b08ffbd989ddf709cecc0",
+      "kind": "workbook"
+    },
+    {
+      "sourcePath": "/-/media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus-select-income.js",
+      "localPath": "/allianz-assets/rila-income/plus-select-income.js",
+      "bytes": 1509877,
+      "sha256": "abc1166e09f5ca66ca29b1e98f3a70ea5a19026fc8d61eac38878265a8317739",
+      "kind": "script"
+    },
+    {
+      "sourcePath": "/-/media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus-select-income-css.css",
+      "localPath": "/allianz-assets/rila-income/plus-select-income.css",
+      "bytes": 4629,
+      "sha256": "70bb664674c50afebfeff430de7a7e25cfd370aa070868171a508745bd88a3b3",
+      "kind": "stylesheet"
+    },
+    {
+      "sourcePath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus--select-income-xlsx.xlsx",
+      "localPath": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus--select-income-xlsx.xlsx",
+      "bytes": 405679,
+      "sha256": "6ff88db102fa977f262119c64e4e5341c16d71f383bc180199216bcf40260878",
+      "kind": "workbook"
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-Light.woff2",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-Light.woff2",
+      "bytes": 17276,
+      "sha256": "b9839ccc0adcf82e73c521619c993b0f5488c71ce80aec4921e37da9e947fe00",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-Light.woff",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-Light.woff",
+      "bytes": 20017,
+      "sha256": "1a219989158c9ab4fe896476af1f2ef5490bc47a19a888237a6abf9740046399",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-LightItalic.woff2",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-LightItalic.woff2",
+      "bytes": 18208,
+      "sha256": "29cec9b168536f78905a86f0d42e05753157f78453ebd4b2a3d87eaa1a6f252d",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-LightItalic.woff",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-LightItalic.woff",
+      "bytes": 21200,
+      "sha256": "0502ec73bdfb9a202dbe591e442a93f01980ed3632e6e5e2968acba0c0cb795c",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-Regular.woff2",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-Regular.woff2",
+      "bytes": 17556,
+      "sha256": "c6bca25175ddd8237dd432141cff1c12bf5afea4a8da4505199c59fcbea14226",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-Regular.woff",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-Regular.woff",
+      "bytes": 20159,
+      "sha256": "bc4f733b0438e2013e76eb76ca829e0de11752747f60729cfde8af50071d14e7",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-Italic.woff2",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-Italic.woff2",
+      "bytes": 18396,
+      "sha256": "b3727d04e4d4340a1543feb4cf5069830fd965c4c3a6fcb59d90863ca948249a",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-Italic.woff",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-Italic.woff",
+      "bytes": 21231,
+      "sha256": "afa60ec6932e84bee4439bf29ac3cb642ffa8dd3d49c10268a07734515d399dd",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-SemiBold.woff2",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-SemiBold.woff2",
+      "bytes": 17296,
+      "sha256": "6f0b7ea814ab43aef5d6d74d5ece41c6a16723ca07cf68762c19128972e1c1a3",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-SemiBold.woff",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-SemiBold.woff",
+      "bytes": 20162,
+      "sha256": "1a1d66a575e0db0be43d404e08adcd348ec6eba5046cf8fc238dda559ea921c1",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-SemiBoldIt.woff2",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-SemiBoldIt.woff2",
+      "bytes": 18072,
+      "sha256": "91dec8332d7a02c79213faaddbb59adbbf95e07ed11a4b36e9ec4b7c8243d259",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-SemiBoldIt.woff",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-SemiBoldIt.woff",
+      "bytes": 21077,
+      "sha256": "908eca51838faf6fb8804064e710a9113b9b40aa81a25ef2f8449278f5040a94",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-Bold.woff2",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-Bold.woff2",
+      "bytes": 19740,
+      "sha256": "8e3d4ac519e4e10245d89e42e4474b974154bfcf69037974287fbc9853275d7c",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-Bold.woff",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-Bold.woff",
+      "bytes": 22269,
+      "sha256": "3c0e8752716636893774c1fde9cbecb21005fc837a2cf09cc8f25cd8e8de5f0a",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-BoldItalic.woff2",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-BoldItalic.woff2",
+      "bytes": 18516,
+      "sha256": "7eaa559e57d62c1aef2f83b29044ee81301419be5053c34362d39608404ea881",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-neo/AllianzNeoW01-BoldItalic.woff",
+      "localPath": "/fonts/allianz-neo/AllianzNeoW01-BoldItalic.woff",
+      "bytes": 21486,
+      "sha256": "e1069e7c168d7e56bf0245f92191f11f6c54e51897b2dc0120958c46f33ba7b2",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-icons/Allianz-Icons.woff2",
+      "localPath": "/fonts/allianz-icons/Allianz-Icons.woff2",
+      "bytes": 52796,
+      "sha256": "aad67e30ae743483c8767178a3adb6ea5146591b98e9d28b767c940e61b6c447",
+      "reusedExistingAsset": true
+    },
+    {
+      "kind": "font",
+      "sourcePath": "/fonts/allianz-icons/Allianz-Icons.woff",
+      "localPath": "/fonts/allianz-icons/Allianz-Icons.woff",
+      "bytes": 62580,
+      "sha256": "647836120600515e552b198bf49864b64ff629a89c4cd5b01cb5fff41536b730",
+      "reusedExistingAsset": true
+    }
+  ],
+  "cssDependencyReferences": [
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-Light.woff2",
+      "suffix": ".woff2",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-Light.woff",
+      "suffix": ".woff",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-LightItalic.woff2",
+      "suffix": ".woff2",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-LightItalic.woff",
+      "suffix": ".woff",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-Regular.woff2",
+      "suffix": ".woff2",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-Regular.woff",
+      "suffix": ".woff",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-Italic.woff2",
+      "suffix": ".woff2",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-Italic.woff",
+      "suffix": ".woff",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-SemiBold.woff2",
+      "suffix": ".woff2",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-SemiBold.woff",
+      "suffix": ".woff",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-SemiBoldIt.woff2",
+      "suffix": ".woff2",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-SemiBoldIt.woff",
+      "suffix": ".woff",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-Bold.woff2",
+      "suffix": ".woff2",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-Bold.woff",
+      "suffix": ".woff",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-BoldItalic.woff2",
+      "suffix": ".woff2",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-neo/AllianzNeoW01-BoldItalic.woff",
+      "suffix": ".woff",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-icons/Allianz-Icons.woff2",
+      "suffix": ".woff2",
+      "queryPresent": false,
+      "fragmentPresent": false
+    },
+    {
+      "stylesheet": "/allianz-assets/lifetime-income/base.css",
+      "host": "www.allianzlife.com",
+      "path": "/fonts/allianz-icons/Allianz-Icons.woff",
+      "suffix": ".woff",
+      "queryPresent": false,
+      "fragmentPresent": false
+    }
+  ],
+  "qualifications": [
+    "Scripts, product CSS, shared CSS, fonts and workbook bytes are pinned unchanged.",
+    "Each source workbook path is served as an exact same-origin static file; no request interception or remote fallback.",
+    "Frame main remains inert until the parent observer installs the existing link policy. Standalone activation is not release acceptance.",
+    "No source bundle has been executed by this asset collection; native, runtime network, source-output, print and responsive acceptance remain open."
+  ],
+  "networkContract": {
+    "bootstrap": [
+      {
+        "preset": "income-adv",
+        "method": "GET",
+        "path": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-income-adv-xlsx.xlsx",
+        "resource": "static same-origin XLSX"
+      },
+      {
+        "preset": "plus-income",
+        "method": "GET",
+        "path": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus-income-xlsx.xlsx",
+        "resource": "static same-origin XLSX"
+      },
+      {
+        "preset": "plus-select-income",
+        "method": "GET",
+        "path": "/~/Media/Files/Global/ToolShed/dx-income-index-advantage/dx-index-advantage-plus--select-income-xlsx.xlsx",
+        "resource": "static same-origin XLSX"
+      }
+    ],
+    "financialInputsTransmitted": false,
+    "qualification": "Expected active bootstrap from static closure review, not a browser-enforced or runtime-observed assertion; runtime network acceptance remains required."
+  },
+  "sourceNavigationReview": {
+    "directWindowOpenCalls": 0,
+    "browserLocationAssignments": 0,
+    "nativeSubmitCalls": 0,
+    "windowPrintCallsPerBundle": 1,
+    "activeResultAnchorPaths": [
+      "/calculators/index-strategy-calculator-for-index-advantage-income",
+      "/calculators/index-strategy-calculator-for-index-advantage-income-np"
+    ],
+    "qualification": "AST/static active-root review only; runtime parent policy, user activation, nested navigation and print checks remain required."
+  }
+}
