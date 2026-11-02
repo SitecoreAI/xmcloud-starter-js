@@ -7,13 +7,14 @@ const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
 const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
 const { homeHeroHeadingField } = loadSource(path.join(sourceRoot, 'lib/allianz-home-heading.ts'));
-const Hero = loadSource(path.join(sourceRoot, 'components/allianz-hero/AllianzHero.tsx'));
+const Hero = loadSource(path.join(sourceRoot, 'components/homepage-hero/HomepageHero.tsx'));
+const GenericHero = loadSource(path.join(sourceRoot, 'components/allianz-hero/AllianzHero.tsx'));
 const inline = '<span class="t-primary-brand"><strong>Allianz</strong></span> annuities and life insurance: for all that\'s ahead';
 const native = `<div class="ck-content"><p>${inline}</p></div>`;
 const metadata = Object.freeze({ itemId: 'test-home-hero', fieldId: 'test-home-heading', fieldType: 'Rich Text', rawValue: native });
 const field = (value = native) => Object.freeze({ value, metadata, editable: 'test-metadata-envelope' });
 
-function render(heading, mode = 'normal', params = { layout: 'home' }, Component = Hero.Default) {
+function render(heading, mode = 'normal', params = {}, Component = Hero.Default) {
   const before = JSON.stringify(heading);
   const html = renderToStaticMarkup(React.createElement(SitecoreProvider, {
     page: { mode: { isEditing: mode === 'editing', isNormal: mode === 'normal', isPreview: mode === 'preview' },
@@ -21,6 +22,7 @@ function render(heading, mode = 'normal', params = { layout: 'home' }, Component
     api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
   }, React.createElement(Component, { params, fields: { data: { datasource: { heading: { jsonValue: heading } } } } })));
   assert.equal(JSON.stringify(heading), before, 'rendering must not mutate native fields or metadata');
+  if (Component === Hero.Default) assert.match(html, /allianz-homepage-hero/, 'exercise the actual homepage component binding');
   return html;
 }
 
@@ -30,7 +32,8 @@ for (const mode of ['normal', 'preview']) test(`${mode}: the actual normalized h
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
   assert.ok(html.includes(`<h1 class="c-heading c-hero__headline">${inline}</h1>`));
   assert.doesNotMatch(html, /role="heading"|aria-level|<h1[^>]*>\s*<(?:div|p)\b/);
-  assert.equal(html.replace(/<[^>]*>/g, ''), inline.replace(/<[^>]*>/g, ''));
+  const headline = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1];
+  assert.equal(headline?.replace(/<[^>]*>/g, ''), inline.replace(/<[^>]*>/g, ''));
   assert.equal(heading.value, native);
 });
 
@@ -39,17 +42,17 @@ test('native editing retains original wrapper HTML, field identity and one metad
   assert.equal(homeHeroHeadingField(heading, true, true), heading);
   const html = render(heading, 'editing');
   assert.ok(html.includes(native));
-  assert.match(html, /<div role="heading" aria-level="1" data-allianz-hero-block-heading="true"/);
+  assert.match(html, /<div role="heading" aria-level="1" class="h1 c-heading c-hero__headline"/);
   assert.equal((html.match(/kind="open"/g) ?? []).length, 1);
   assert.equal((html.match(/test-home-heading/g) ?? []).length, 1);
   assert.doesNotMatch(html, /<h1\b/);
 });
 
-test('non-home Default and FixedProduct retain their established block surfaces', () => {
+test('generic Hero home, non-home and FixedProduct retain their established block surfaces', () => {
   const heading = field();
   assert.equal(homeHeroHeadingField(heading, false, false), heading);
-  for (const Component of [Hero.Default, Hero.FixedProduct]) {
-    const html = render(heading, 'normal', {}, Component);
+  for (const [Component, params] of [[GenericHero.Default, { layout: 'home' }], [GenericHero.Default, {}], [GenericHero.FixedProduct, {}]]) {
+    const html = render(heading, 'normal', params, Component);
     assert.ok(html.includes(native));
     assert.match(html, /role="heading" aria-level="1"/);
     assert.doesNotMatch(html, /<h1\b/);

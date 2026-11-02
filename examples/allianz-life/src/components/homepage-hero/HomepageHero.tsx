@@ -4,6 +4,7 @@ import { Image, RichText, useSitecore } from '@sitecore-content-sdk/nextjs';
 import MockLogin from 'components/content-sdk/MockLogin';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderImageField, shouldRenderTextField } from 'lib/allianz-field-state';
+import { homeHeroHeadingField } from 'lib/allianz-home-heading';
 import type { HomepageHeroProps } from './homepage-hero.props';
 import './HomepageHero.css';
 
@@ -18,7 +19,8 @@ export const Default = ({ fields, params }: HomepageHeroProps) => {
   const isEditing = page?.mode?.isEditing ?? false;
   const datasource = fields?.data?.datasource;
   if (!datasource) return <NoDataFallback componentName="Homepage Hero" />;
-  const blockHeading = hasBlockMarkup(datasource.heading?.jsonValue?.value);
+  const headingField = homeHeroHeadingField(datasource.heading?.jsonValue, true, isEditing);
+  const blockHeading = headingField === datasource.heading?.jsonValue && hasBlockMarkup(headingField?.value);
 
   return <div className="l-container-full-width c-hero -login allianz-homepage-hero" id={params?.RenderingIdentifier}>
     <div className="c-hero__gridWrapper">
@@ -31,8 +33,8 @@ export const Default = ({ fields, params }: HomepageHeroProps) => {
         <div className="l-grid l-grid--max-width">
           <div className="l-grid__row">
             <div className="l-grid__column-small-12 l-grid__column-large-8">
-              {shouldRenderTextField(datasource.heading?.jsonValue, isEditing) &&
-                <RichText field={datasource.heading?.jsonValue} editable={isEditing}
+              {shouldRenderTextField(headingField, isEditing) &&
+                <RichText field={headingField} editable={isEditing}
                   tag={blockHeading ? 'div' : 'h1'} role={blockHeading ? 'heading' : undefined}
                   aria-level={blockHeading ? 1 : undefined}
                   className={`${blockHeading ? 'h1 ' : ''}c-heading c-hero__headline`} />}

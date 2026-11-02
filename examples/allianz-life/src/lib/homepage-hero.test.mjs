@@ -131,11 +131,12 @@ test('authored rich body paragraphs and inline formatting stay lossless without 
   assert.equal(JSON.stringify(data), before);
 });
 
-test('fresh native CKEditor blocks retain exact values, valid heading semantics and all SDK metadata', () => {
+test('fresh native CKEditor blocks retain edit values and source-shaped visitor heading semantics', () => {
   // Readback captured 2026-10-01T19:59:55Z; these are the raw native user-edited
   // values, not the original fixture's inline heading/plain body fragments.
   const itemId = '1d6d4c70-d235-5acb-a17f-06ee43f70ded';
-  const heading = `<div class="ck-content"><p><span class="t-primary-brand"><strong>Allianz</strong></span> annuities and life insurance: for all that's ahead</p></div>`;
+  const visitorHeading = `<span class="t-primary-brand"><strong>Allianz</strong></span> annuities and life insurance: for all that's ahead`;
+  const heading = `<div class="ck-content"><p>${visitorHeading}</p></div>`;
   const body = '<div class="ck-content"><p>For more than 125 years, Allianz Life Insurance Company of North America (Allianz) has been helping Americans like you prepare for their financial future.</p></div>';
   const data = {
     heading: nativeField('2647ad79-d006-5272-88c2-d326bb013977', 'Rich Text', heading, itemId),
@@ -148,17 +149,22 @@ test('fresh native CKEditor blocks retain exact values, valid heading semantics 
   const before = JSON.stringify(data);
   for (const isEditing of [false, true]) {
     const html = render(data, {}, isEditing);
-    assert.ok(html.includes(heading));
     assert.ok(html.includes(body));
-    assert.match(html, /<div role="heading" aria-level="1" class="h1 c-heading c-hero__headline"><div class="ck-content"><p>/);
     assert.match(html, /<div class="h4 c-heading c-hero__subHeadline"><div class="ck-content"><p>/);
-    assert.doesNotMatch(html, /<h1\b|<p class="h4 c-heading c-hero__subHeadline">/);
+    assert.doesNotMatch(html, /<p class="h4 c-heading c-hero__subHeadline">/);
     assert.equal((html.match(/<img\b/g) ?? []).length, 1);
     assert.match(html, /690ad1caa1dc4c0abc3b456f6674eeda\?v=9585e8bc/);
     if (isEditing) {
+      assert.ok(html.includes(heading));
+      assert.match(html, /<div role="heading" aria-level="1" class="h1 c-heading c-hero__headline"><div class="ck-content"><p>/);
+      assert.doesNotMatch(html, /<h1\b/);
       assert.deepEqual(editingIds(html), ['eaa77571-b355-5e67-8f56-fe892a46749e',
         '2647ad79-d006-5272-88c2-d326bb013977', 'bd2c23c5-e11d-5787-9fe7-0b02f945c061']);
       assert.match(html.replaceAll('&quot;', '"'), /"itemId":"1d6d4c70-d235-5acb-a17f-06ee43f70ded"/);
+    } else {
+      assert.ok(html.includes(`<h1 class="c-heading c-hero__headline">${visitorHeading}</h1>`));
+      assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
+      assert.doesNotMatch(html, /role="heading"|<h1[^>]*>\s*<(?:div|p)\b/);
     }
   }
   assert.equal(JSON.stringify(data), before);

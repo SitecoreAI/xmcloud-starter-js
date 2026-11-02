@@ -45,16 +45,10 @@ for (const route of paths) for (const mode of modes) {
       '<div class="ck-content"><p class="native-paragraph"><span class="t-primary-brand"><strong>Native</strong> heading</span></p></div>',
     ]) {
       const input = freeze(datasource(heading)), html = render(route, input, mode);
-      const transparentHome = route.name === 'home' && mode !== 'editing' && heading === '<p>Native heading</p>';
-      if (transparentHome) {
-        assert.match(html, /<h1\b[^>]*>Native heading<\/h1>/);
-        assert.doesNotMatch(html, /role="heading"|data-allianz-hero-block-heading/);
-      } else {
-        assert.ok(html.includes(heading), 'non-transparent or editing rich values must remain unchanged');
-        assert.equal((html.match(/role="heading" aria-level="1"/g) ?? []).length, 1);
-        assert.equal((html.match(/<h1\b/g) ?? []).length, 0, 'block markup must not be nested inside an h1');
-        assert.match(html, /<div role="heading" aria-level="1" data-allianz-hero-block-heading="true" class="h1 c-heading c-hero__headline/);
-      }
+      assert.ok(html.includes(heading), 'the complete native rich value must remain unchanged');
+      assert.equal((html.match(/role="heading" aria-level="1"/g) ?? []).length, 1);
+      assert.equal((html.match(/<h1\b/g) ?? []).length, 0, 'block markup must not be nested inside an h1');
+      assert.match(html, /<div role="heading" aria-level="1" data-allianz-hero-block-heading="true" class="h1 c-heading c-hero__headline/);
       const headingControls = markers(html).filter(value => value.fieldId === 'test-only-heading');
       assert.deepEqual(headingControls, mode === 'editing' ? [input.heading.jsonValue.metadata] : []);
     }
