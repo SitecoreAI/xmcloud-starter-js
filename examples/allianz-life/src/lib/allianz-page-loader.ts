@@ -9,6 +9,8 @@ import { cache } from 'react';
 import publicRouteIndex from '../../content/public-route-index.json';
 import { getFixturePage, isConnected } from './allianz-page';
 import client from './sitecore-client';
+import scConfig from 'sitecore.config';
+import { readPageWithNyFooterProbe } from './allianz-ny-footer-client';
 
 // The SDK's App Router editing transport header is not exported from its public editing entry point.
 const EDITING_PARAMS_HEADER = 'x-sitecore-editing-params';
@@ -143,7 +145,9 @@ export const loadAllianzPage = cache(async (site: string, locale: string, ...pat
 
   const connected = isConnected();
   const page = connected
-    ? await client.getPage(path, { site, locale })
+    ? await readPageWithNyFooterProbe(
+      { ...scConfig }, [path, { site, locale }], (...args) => client.getPage(...args),
+    )
     // The legacy fixture adapter decodes its input; encode native segments to
     // preserve literal percent sequences while keeping its existing API intact.
     : getFixturePage(path.map(encodeURIComponent), site, locale);
