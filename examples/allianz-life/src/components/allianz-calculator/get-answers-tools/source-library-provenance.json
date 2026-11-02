@@ -1,0 +1,52 @@
+{
+  "scope": "Public-source Validate.js and Numeral factories only. No full application bundle, credentials, network adapters or source financial inputs.",
+  "offsetBasis": "Original downloaded UTF-8 bytes.",
+  "records": [
+    {
+      "file": "source-validation.mjs",
+      "exported": "sourceValidate",
+      "networkDependencies": [],
+      "sourceVariants": [
+        {
+          "asset": "retirement-income.js",
+          "moduleId": "79765",
+          "startByteInclusive": 2470354,
+          "endByteExclusive": 2506202,
+          "sha256": "afb793692e90a68b73f13cdb1388ee07f663ebd357721f4c6d1fb8bb5767448b",
+          "bytes": 35848
+        },
+        {
+          "asset": "benefits-tax-deferral.js",
+          "moduleId": "79765",
+          "startByteInclusive": 2470354,
+          "endByteExclusive": 2506202,
+          "sha256": "afb793692e90a68b73f13cdb1388ee07f663ebd357721f4c6d1fb8bb5767448b",
+          "bytes": 35848
+        }
+      ]
+    },
+    {
+      "file": "source-currency.mjs",
+      "exported": "sourceNumeral",
+      "networkDependencies": [],
+      "sourceVariants": [
+        {
+          "asset": "retirement-income.js",
+          "moduleId": "92077",
+          "startByteInclusive": 2171527,
+          "endByteExclusive": 2205421,
+          "sha256": "359cb69a7ea9890b65933c5f87ea84c4a4033c3c86bb148a4e58c7699092fbec",
+          "bytes": 33894
+        },
+        {
+          "asset": "benefits-tax-deferral.js",
+          "moduleId": "92077",
+          "startByteInclusive": 2171527,
+          "endByteExclusive": 2205421,
+          "sha256": "359cb69a7ea9890b65933c5f87ea84c4a4033c3c86bb148a4e58c7699092fbec",
+          "bytes": 33894
+        }
+      ]
+    }
+  ]
+}

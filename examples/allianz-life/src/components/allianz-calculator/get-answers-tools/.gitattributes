@@ -1,0 +1,2 @@
+# Hash-fenced public source factories retain their downloaded LF bytes on every checkout.
+* text eol=lf

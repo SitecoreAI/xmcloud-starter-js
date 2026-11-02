@@ -1,0 +1,24 @@
+{
+  "retrievedUTC": "2026-11-02",
+  "scope": "Published license texts only; no package installation, dependencies or runtime changes.",
+  "records": [
+    {
+      "library": "Validate.js",
+      "version": "0.12.0",
+      "source": "https://registry.npmjs.org/validate.js/-/validate.js-0.12.0.tgz",
+      "member": "package/LICENSE.txt",
+      "licenseSHA256": "44bd9321819eac60231aa55d4b7ff4fd9f083384b26a4545c1ec4678b43f5ac6",
+      "packageSHA256": "a4d88577dda373843f9fcfb5edd67f1c6012df4c7f51f0090aff8abdda0df3ec",
+      "headerCopyright": "2013-2017 Nicklas Ansman, 2013 Wrapp",
+      "publishedLicenseCopyright": "2013-2016 Nicklas Ansman, 2013 Wrapp"
+    },
+    {
+      "library": "Numeral.js",
+      "version": "2.0.6",
+      "source": "https://raw.githubusercontent.com/adamwdraper/Numeral-js/2.0.6/LICENSE",
+      "licenseSHA256": "036926dbd26f6493cf15a4ee737e4554cf738adc9bc5b89a4c05d4e1baf62f25",
+      "publishedLicenseCopyright": "2016 Adam Draper",
+      "previouslyRetainedLicenseWordEquivalent": true
+    }
+  ]
+}

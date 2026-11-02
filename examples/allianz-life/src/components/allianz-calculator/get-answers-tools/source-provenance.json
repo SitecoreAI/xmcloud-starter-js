@@ -1,0 +1,240 @@
+{
+  "retrievedUTC": "2026-11-02",
+  "scope": "Public-source recovery for three in-scope self-help tools. Financial code in this package implements retirement and tax only. No submitted inputs to external services or credentials.",
+  "sources": [
+    {
+      "name": "retirement-income",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-retirement-income/dx-retirement-income.js",
+      "bytes": 2534656,
+      "sha256": "83f5399a46adce2269b43e014022961f6adfb05958c62dc49b8d38ebc8e30a94"
+    },
+    {
+      "name": "benefits-tax-deferral",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-benefits-tax-deferral/dx-benefits-tax-deferral.js",
+      "bytes": 2537842,
+      "sha256": "5831629ec794605348d94f88d5ef89426697feeadb49d9e2d971c208448ccb01"
+    },
+    {
+      "name": "rmd-general-ed",
+      "url": "https://www.allianzlife.com/-/media/Files/Global/ToolShed/dx-required-minimum-distribution-general-ed/dx-required-minimum-distribution-general-ed.js",
+      "bytes": 3473431,
+      "sha256": "0d195538ca3475370af505e9191dfd6bbd8a016aa37c6033ce84fea22e9d2f17"
+    }
+  ],
+  "sourceModules": [
+    {
+      "asset": "retirement-income.js",
+      "module": "./apps/dx-retirement-income/src/app/services/calculator/calculator.service.js",
+      "role": "service",
+      "startByteInclusive": 2529605,
+      "endByteExclusive": 2530053,
+      "bytes": 448,
+      "sha256": "f18b236fefed19a91fd188807c38919441ccc08c18de452b7a3b403ed0e56078",
+      "evidenceFile": "dx-retirement-income-service.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "retirement-income.js",
+      "module": "./apps/dx-retirement-income/src/app/components/App/App.js",
+      "role": "app",
+      "startByteInclusive": 2512764,
+      "endByteExclusive": 2518775,
+      "bytes": 6011,
+      "sha256": "25466f0cbe25c61fabb4da107dbf52d4a8f2ce3783818c190acc43fc9abb5f59",
+      "evidenceFile": "dx-retirement-income-app.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "retirement-income.js",
+      "module": "./apps/dx-retirement-income/src/app/constants.js",
+      "role": "constants",
+      "startByteInclusive": 2530230,
+      "endByteExclusive": 2531247,
+      "bytes": 1017,
+      "sha256": "53f79b1eb70104c4b1b8f5f52a37249187e087c0f8f60ba9cafe30b52a256ac0",
+      "evidenceFile": "dx-retirement-income-constants.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "retirement-income.js",
+      "module": "./apps/dx-retirement-income/src/app/store/data/data.store.js",
+      "role": "data",
+      "startByteInclusive": 2531247,
+      "endByteExclusive": 2532806,
+      "bytes": 1559,
+      "sha256": "cb1872a83847352f4e9ba67215a9c5afc61d86ec024784c061cebbcd077b8051",
+      "evidenceFile": "dx-retirement-income-data.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "retirement-income.js",
+      "module": "./libs/shared/util-validation/src/lib/shared-util-validation.js",
+      "role": "validation",
+      "startByteInclusive": 2519440,
+      "endByteExclusive": 2522211,
+      "bytes": 2771,
+      "sha256": "3370001d4c099f316dbd388b579c6b5385dfd9765a189f35d14c02739dcb2c3a",
+      "evidenceFile": "dx-retirement-income-validation.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "retirement-income.js",
+      "module": "./libs/shared/util-formatting/src/lib/shared-util-formatting.js",
+      "role": "formatting",
+      "startByteInclusive": 2522797,
+      "endByteExclusive": 2529536,
+      "bytes": 6739,
+      "sha256": "160a40e6398e8e2e704ad0a507af20c230a8568b6e00ba6f62d569d118babcb5",
+      "evidenceFile": "dx-retirement-income-formatting.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "benefits-tax-deferral.js",
+      "module": "./apps/dx-benefits-tax-deferral/src/app/services/calculator/calculator.service.js",
+      "role": "service",
+      "startByteInclusive": 2520353,
+      "endByteExclusive": 2522311,
+      "bytes": 1958,
+      "sha256": "c157ac219264726524477c0e6f041672894b07592baa18ed03bb8a2059548665",
+      "evidenceFile": "dx-benefits-tax-deferral-service.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "benefits-tax-deferral.js",
+      "module": "./apps/dx-benefits-tax-deferral/src/app/components/App/App.js",
+      "role": "app",
+      "startByteInclusive": 2512886,
+      "endByteExclusive": 2520200,
+      "bytes": 7314,
+      "sha256": "0cf12513fe36aa5c471be5bf9231bcdc775d55d26a15ae99fe1932e9c899c179",
+      "evidenceFile": "dx-benefits-tax-deferral-app.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "benefits-tax-deferral.js",
+      "module": "./apps/dx-benefits-tax-deferral/src/app/constants.js",
+      "role": "constants",
+      "startByteInclusive": 2522492,
+      "endByteExclusive": 2524203,
+      "bytes": 1711,
+      "sha256": "daa9829d5804d39fd05fc7f4bc679158447dfe8e43426273b25138ef25cb59cc",
+      "evidenceFile": "dx-benefits-tax-deferral-constants.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "benefits-tax-deferral.js",
+      "module": "./apps/dx-benefits-tax-deferral/src/app/store/data/data.store.js",
+      "role": "data",
+      "startByteInclusive": 2534368,
+      "endByteExclusive": 2536165,
+      "bytes": 1797,
+      "sha256": "201d789c9965534e6d1b639354985a6ae91fb055b81f9d971b42b19efde04d8c",
+      "evidenceFile": "dx-benefits-tax-deferral-data.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "benefits-tax-deferral.js",
+      "module": "./libs/shared/util-validation/src/lib/shared-util-validation.js",
+      "role": "validation",
+      "startByteInclusive": 2524203,
+      "endByteExclusive": 2526974,
+      "bytes": 2771,
+      "sha256": "3370001d4c099f316dbd388b579c6b5385dfd9765a189f35d14c02739dcb2c3a",
+      "evidenceFile": "dx-benefits-tax-deferral-validation.txt",
+      "readOnlyEvidenceNotAppCode": true
+    },
+    {
+      "asset": "benefits-tax-deferral.js",
+      "module": "./libs/shared/util-formatting/src/lib/shared-util-formatting.js",
+      "role": "formatting",
+      "startByteInclusive": 2527560,
+      "endByteExclusive": 2534299,
+      "bytes": 6739,
+      "sha256": "160a40e6398e8e2e704ad0a507af20c230a8568b6e00ba6f62d569d118babcb5",
+      "evidenceFile": "dx-benefits-tax-deferral-formatting.txt",
+      "readOnlyEvidenceNotAppCode": true
+    }
+  ],
+  "engineFunctions": [
+    {
+      "file": "source-retirement-engine.mjs",
+      "startByteInclusive": 2529708,
+      "endByteExclusive": 2530052,
+      "sha256": "d721c4fd565f3fde17818bd9191465d15f3e58cdff230c8426c40608e57f4e55"
+    },
+    {
+      "file": "source-tax-deferral-engine.mjs",
+      "startByteInclusive": 2520460,
+      "endByteExclusive": 2522310,
+      "sha256": "010866e398172b1f9ec88617aed18e31677f81bfc7cccb2d93eb6423366011c7"
+    }
+  ],
+  "referenceQualification": "Local source differential/provenance checks do not constitute independently observed official financial outputs.",
+  "executionBudget": "The adapter rejects a positive iteration count over 1,000,000; this is an explicit execution safety boundary, not a financial horizon, source input maximum or alternate formula.",
+  "rmd": {
+    "status": "SOURCE_RECOVERABLE_RELEASE_GATE_OPEN_NO_IMPLEMENTATION",
+    "inputs": {
+      "clientBirthDate": "",
+      "accountBalance": "",
+      "estimatedReturnRate": "",
+      "primaryBeneficiary": "spouse",
+      "primaryBeneficiaryBirthDate": ""
+    },
+    "tableAsset": {
+      "url": "https://www.allianzlife.com/~/Media/Files/Global/ToolShed/dx-required-minimum-distribution-general-ed/dx-required-minimum-distribution-general-ed-xlsx.xlsx",
+      "bytes": 77007,
+      "sha256": "49d0b4ebd9f78d9beafa7ff50a047c1bca2e1340c32c9e7e05626841880769a5",
+      "sheets": [
+        "lifeExpectancy",
+        "jointLifeExpectancy",
+        "accountOwnerLifeExpectancy"
+      ]
+    },
+    "policyAmbiguity": "Current editorial table includes 70.5/72/73/75 ages, while source engine rmdStart branches only 72/73 at a 2022 breakpoint and chart accessibility text refers to 70.5. No financial policy correction or engine release is authorized by these observations."
+  },
+  "sourceContractsCanonicalSHA256": "a5db29924dd07db35df7ec57ea8427b5c244d3e3d5352e66e092d2a2cccd559f",
+  "sourceLifecycle": {
+    "retirement": {
+      "onChange": "Store raw value and hide calculations",
+      "onBlur": "Validate all fields but replace only touched field; hide calculations",
+      "onSubmit": "Validate all fields, show calculations only on success; hide on failure",
+      "getter": "Pass raw strings directly to compute, then original Numeral currency format"
+    },
+    "taxDeferral": {
+      "onChange": "Store raw value; do not clear calculations visibility",
+      "onBlur": "Validate all fields but replace only touched field; do not clear visibility",
+      "onSubmit": "Validate all fields; set visibility true only on success; no failure-clear branch",
+      "getter": "Recompute both results from current field values via parseFloat, then original Numeral currency format"
+    }
+  },
+  "sourceUiHarness": {
+    "kind": "Private local-only reference harness; not an independent financial oracle",
+    "mountIds": [
+      "dx-retirement-income",
+      "dx-benefits-tax-deferral"
+    ],
+    "requirements": [
+      "Serve unchanged exact public bundle on loopback",
+      "No external frames or calculation endpoints",
+      "CSP connect-src none; form-action none; frame-src none",
+      "Known mount div only; full source page scripts/telemetry not imported",
+      "Observe source displayed values separately from candidate; record source SHA and inputs locally"
+    ],
+    "staticQualification": "No fetch/XMLHttpRequest/axios or dynamic chunk loader calls in either two downloaded source bundles. No source UI executed during extraction."
+  },
+  "localSourceUiReference": {
+    "observedUTC": "2026-11-02T20:46:15.562091+00:00",
+    "execution": "Unchanged official retirement/tax bundles mounted only on loopback with connect-src, form-action and frame-src none. Temporary full bundles remain outside Git.",
+    "verified": "Source and candidate nominal result displays, tax live result updates, required-error text, corrected-field blur behavior and retirement masking; these are source UI parity observations, not independent financial-math certification.",
+    "retirementNominal": "$151,525.31",
+    "taxNominal": [
+      "$14,660.73",
+      "$16,288.95"
+    ],
+    "taxEdited": [
+      "$15,799.27",
+      "$17,908.48"
+    ],
+    "nativeBindingAndRelease": "pending"
+  }
+}

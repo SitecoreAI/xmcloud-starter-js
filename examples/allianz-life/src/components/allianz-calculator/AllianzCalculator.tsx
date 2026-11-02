@@ -6,6 +6,7 @@ import { RETIREMENT_INPUTS, validateCalculator, incomeToolsDemoMode, type Allian
 import { IncomeLocalToolsDemo } from 'components/allianz-income-tools/IncomeLocalToolsDemo';
 import { observeLifetimeFrame } from './lifetime-frame';
 import { LifeInsuranceNative } from 'lib/life-insurance/LifeInsuranceNative';
+import { GetAnswersFinancialTool, type GetAnswersToolKind } from './get-answers-tools/GetAnswersFinancialTool.props';
 
 /** Isolate the original calculator's bundled React, CSS and Highcharts globals. */
 const LifetimeIncomeFrame = () => {
@@ -42,6 +43,24 @@ export const LifetimeIncome = ({ fields, params }: AllianzCalculatorProps) => {
   </section>;
 };
 
+/** Source-backed local engines; the existing native Calculator fields own surrounding text. */
+const GetAnswersCalculatorSection = ({ kind, fields, params }: AllianzCalculatorProps & { kind: GetAnswersToolKind }) => {
+  const { page } = useSitecore();
+  const editing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  return <section className="allianz-get-answers-calculator" id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className="l-grid__row u-margin-bottom-xl"><div className="l-grid__column-medium-12">
+      {shouldRenderTextField(data?.heading?.jsonValue, editing) && <Text editable={editing} tag="h2" field={data?.heading?.jsonValue} />}
+      {shouldRenderTextField(data?.body?.jsonValue, editing) && <RichText editable={editing} field={data?.body?.jsonValue} className="o-richTextEditor__wrapper" />}
+      <GetAnswersFinancialTool kind={kind} />
+      {shouldRenderTextField(data?.disclaimer?.jsonValue, editing) && <RichText editable={editing} field={data?.disclaimer?.jsonValue} className="o-richTextEditor__wrapper" />}
+    </div></div></div>
+  </section>;
+};
+
+export const RetirementIncome = (props: AllianzCalculatorProps) => <GetAnswersCalculatorSection {...props} kind="retirement-income" />;
+export const TaxDeferral = (props: AllianzCalculatorProps) => <GetAnswersCalculatorSection {...props} kind="tax-deferral" />;
+
 export const Default = (props: AllianzCalculatorProps) => {
   const { fields, params, rendering } = props;
   const { page } = useSitecore();
@@ -66,6 +85,8 @@ export const Default = (props: AllianzCalculatorProps) => {
   // The existing native Calculator template selects this verified tool explicitly.
   if (data?.schemaKey?.jsonValue?.value === 'lifetime-income-official') return <LifetimeIncome {...props} />;
   if (data?.schemaKey?.jsonValue?.value === 'life-insurance-source-core') return <LifeInsuranceNative {...props} />;
+  if (data?.schemaKey?.jsonValue?.value === 'retirement-income-source') return <RetirementIncome {...props} />;
+  if (data?.schemaKey?.jsonValue?.value === 'tax-deferral-source') return <TaxDeferral {...props} />;
   if (demoMode) return <section className="allianz-local-calculator" id={params.RenderingIdentifier}>
     {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
     {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}
