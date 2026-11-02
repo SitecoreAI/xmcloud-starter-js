@@ -401,7 +401,7 @@ const InvestmentOptionsBlock = ({ fields, params, role }: AllianzRichTextProps &
     <div className="allianz-investment-options-frame"><div className="allianz-investment-options-column">
       {shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={level} field={data.heading?.jsonValue} className="allianz-investment-options-heading" />}
       {shouldRenderTextField(data.subheading?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.subheading?.jsonValue} className="allianz-investment-options-subheading" />}
-      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="allianz-investment-options-body" />}
+      {shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing, true)} className="allianz-investment-options-body" />}
       {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="allianz-investment-options-link" />}
     </div></div>
   </div>;
