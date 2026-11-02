@@ -1,0 +1,102 @@
+{
+  "retirement": {
+    "defaultInputs": {
+      "principal": {
+        "value": "",
+        "error": false
+      },
+      "interest": {
+        "value": "",
+        "error": false
+      },
+      "payments": {
+        "value": "",
+        "error": false
+      }
+    },
+    "validationConstraints": {
+      "principal": {
+        "length": {
+          "minimum": 2,
+          "message": "^Please provide the valid one-time deposit amount."
+        },
+        "numericality": {
+          "greaterThanOrEqualTo": 0,
+          "message": "^Please enter the amount you would like to withdraw each month."
+        }
+      },
+      "interest": {
+        "numericality": {
+          "greaterThanOrEqualTo": 0,
+          "message": "^Please enter the annual interest rate you expect to earn from your investment."
+        }
+      },
+      "payments": {
+        "length": {
+          "minimum": 2,
+          "message": "^Please provide the valid number of years."
+        },
+        "numericality": {
+          "greaterThanOrEqualTo": 0,
+          "message": "^Please enter the number of years you would like to make monthly withdrawels from your investment."
+        }
+      }
+    }
+  },
+  "taxDeferral": {
+    "defaultInputs": {
+      "principle": {
+        "value": "",
+        "error": false
+      },
+      "interestRate": {
+        "value": "",
+        "error": false
+      },
+      "investmentYears": {
+        "value": "",
+        "error": false
+      },
+      "marginalTaxRate": {
+        "value": "10",
+        "error": false
+      }
+    },
+    "validationConstraints": {
+      "principle": {
+        "presence": {
+          "allowEmpty": false,
+          "message": "^Please enter the amount invested."
+        }
+      },
+      "interestRate": {
+        "presence": {
+          "allowEmpty": false,
+          "message": "^Please enter the expected annual rate of return."
+        },
+        "numericality": {
+          "greaterThanOrEqualTo": 0,
+          "lessThanOrEqualTo": 100,
+          "message": "^You must enter a value between 0.00% and 100.00%"
+        }
+      },
+      "investmentYears": {
+        "presence": {
+          "allowEmpty": false,
+          "message": "^Please enter the number of years the amount will be invested for."
+        },
+        "numericality": {
+          "greaterThanOrEqualTo": 1,
+          "lessThanOrEqualTo": 99,
+          "message": "^Please provide the valid years."
+        }
+      },
+      "marginalTaxRate": {
+        "presence": {
+          "allowEmpty": false,
+          "message": "^Please enter the marginal tax rate."
+        }
+      }
+    }
+  }
+}
