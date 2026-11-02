@@ -20,14 +20,14 @@ const field = (name, value, type = 'Rich Text') => ({ jsonValue: { value, metada
 const accountBody = '<p><a href="/Login" class="login">Log in</a> to view your contract.</p>'
   + '<p><a href="/Login/forgot-username-individual" target="_blank">Forgot username</a> or '
   + '<a href="/Login/forgot-password-individual" target="_self">Forgot password</a>.</p>';
-const unavailableBody = '<p><a href="#service-unavailable" class="login">Log in</a> to view your contract.</p>'
+const unavailableBody = '<p><a href="#" class="login">Log in</a> to view your contract.</p>'
   + '<p><a href="#service-unavailable" target="">Forgot username</a> or '
   + '<a href="#service-unavailable" target="">Forgot password</a>.</p>';
 const otherBody = '<p><a href="tel:800-950-1962" target="_self">Call us</a> '
   + '<a href="/about?one=1&amp;two=2#details" target="_blank" rel="author">About</a> '
   + '<a href="#details">Details</a> <a href="https://example.invalid/" target="_blank">External</a></p>';
 const unavailableOtherBody = '<p><a href="#service-unavailable" target="">Call us</a> '
-  + '<a href="/about?one=1&amp;two=2#details" target="_blank" rel="author">About</a> '
+  + '<a href="/about?one=1&amp;two=2#details" target="" rel="author">About</a> '
   + '<a href="#details">Details</a> <a href="#service-unavailable" target="">External</a></p>';
 const datasource = (body) => ({ children: { results: [{ id: 'synthetic-help-card',
   heading: field('account-heading', 'Account help', 'Single-Line Text'), body: field('account-body', body),
@@ -40,7 +40,8 @@ test('Default CardGrid keeps account, contact and unapproved external services i
     const html = renderMode(Default, data, mode, params);
     assert.ok(html.includes(unavailableBody + unavailableOtherBody), mode);
     assert.doesNotMatch(html, /href="(?:\/Login(?:"|\/)|tel:|https:\/\/example\.invalid\/)/);
-    assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 5, mode);
+    assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 4, mode);
+    assert.equal((html.match(/href="#"/g) ?? []).length, 1, mode);
   }
   assert.equal(JSON.stringify(data), before);
 });
@@ -62,18 +63,19 @@ test('the Set-filter parser keeps its exact-only compatibility while Default fol
     + '<a href="https://www.allianzlife.com/Login" target="_blank">Official host</a>';
   const original = field('nonmatching-body', body).jsonValue;
   assert.equal(safeNewsroomRichText(original, false, accountHrefs), original);
-  const expected = '<a href="#service-unavailable">Lowercase</a> <a href="#service-unavailable">Uppercase</a> '
-    + '<a href="#service-unavailable">Trailing slash</a> <a href="#service-unavailable">Query</a> '
-    + '<a href="#service-unavailable">Fragment</a> <a href="#service-unavailable">Other path</a> '
-    + '<a href="https://www.allianzlife.com/Login" target="_blank">Official host</a>';
+  const expected = '<a href="#">Lowercase</a> <a href="#">Uppercase</a> '
+    + '<a href="#">Trailing slash</a> <a href="#">Query</a> '
+    + '<a href="#">Fragment</a> <a href="#service-unavailable">Other path</a> '
+    + '<a href="#" target="">Official host</a>';
   const data = datasource(body), before = JSON.stringify(data);
   for (const mode of ['normal', 'preview']) {
     const html = renderMode(Default, data, mode, params);
     assert.ok(html.includes(expected), mode);
-    assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 6, mode);
+    assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 1, mode);
+    assert.equal((html.match(/href="#"/g) ?? []).length, 6, mode);
   }
-  // This literal absolute URL is an existing finite source exception. It does
-  // not grant an exception to any relative, query or fragment account variant.
+  // The visitor policy suppresses the official URL too; editing keeps the
+  // original field and all account services remain unavailable.
   const editing = render(Default, data, true, params);
   assert.ok(editing.includes(body));
   assert.ok(editing.includes('test-account-body-field'));
@@ -84,7 +86,7 @@ test('the shared parser filters decoded href attributes and leaves unrelated att
   const original = field('attribute-body', '<a title=" href=/about target=_self " data-href="/about" HREF=\'&#47;Login\' TARGET="_blank"><strong>Log in</strong></a>'
     + '<a title="/Login" data-href="/Login" href=\'/about\' target=\'_blank\'>About</a>').jsonValue;
   const visitor = safeNewsroomRichText(original, false, accountHrefs);
-  assert.equal(visitor.value, '<a title=" href=/about target=_self " data-href="/about" href="#service-unavailable" target=""><strong>Log in</strong></a>'
+  assert.equal(visitor.value, '<a title=" href=/about target=_self " data-href="/about" href="#" target=""><strong>Log in</strong></a>'
     + '<a title="/Login" data-href="/Login" href=\'/about\' target=\'_blank\'>About</a>');
   assert.equal(visitor.metadata, original.metadata);
   assert.ok(original.value.includes("HREF='&#47;Login' TARGET=\"_blank\""));
@@ -96,7 +98,8 @@ test('the Default list and cards layouts apply the same bounded body policy', ()
     for (const mode of ['normal', 'preview']) {
       const html = renderMode(Default, data, mode, { ...params, layout });
       assert.ok(html.includes(unavailableBody + unavailableOtherBody), `${layout}:${mode}`);
-      assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 5, `${layout}:${mode}`);
+      assert.equal((html.match(/href="#service-unavailable"/g) ?? []).length, 4, `${layout}:${mode}`);
+      assert.equal((html.match(/href="#"/g) ?? []).length, 1, `${layout}:${mode}`);
     }
     assert.ok(render(Default, data, true, { ...params, layout }).includes(accountBody + otherBody));
     assert.equal(JSON.stringify(data), before);

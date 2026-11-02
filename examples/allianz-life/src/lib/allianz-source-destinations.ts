@@ -1,4 +1,6 @@
 import type { Field, LinkField, LinkProps } from '@sitecore-content-sdk/nextjs';
+import { safeLink } from './allianz-fields';
+import { allianzDemoDestination } from './allianz-demo-destinations';
 
 const SOURCE_ORIGIN = 'https://www.allianzlife.com';
 
@@ -68,13 +70,13 @@ export function sourceDestinationLinkField(
   // Match safeLink's merge: preserve encoded values, repeats and authored order.
   const querystring = destination.querystring && nativeQuery && destination.querystring !== nativeQuery
     ? `${destination.querystring}&${nativeQuery}` : nativeQuery || destination.querystring;
-  return {
+  return safeLink({
     ...field,
     value: { ...field.value, href: destination.href, querystring, anchor: nativeAnchor || destination.anchor },
-  };
+  });
 }
 
-/** Overlay after ordinary normalization so its local-route policy cannot undo the projection. */
+/** Reconcile witnessed owners without overriding the shared demo containment policy. */
 export function restoreSourceDestinationLinkProps(
   props: Pick<LinkProps, 'field' | 'rel'>,
   original: LinkField | undefined,
@@ -111,8 +113,10 @@ export function restoreSourceDestinationRichText(
         const href = doubleQuoted ?? singleQuoted ?? unquoted;
         const destination = sourceDestination(href, path);
         if (!destination) return attribute;
+        const contained = allianzDemoDestination(destination.href);
+        if (!contained) return attribute;
         const quote = doubleQuoted !== undefined ? '"' : singleQuoted !== undefined ? "'" : '';
-        return `${prefix}${quote}${destination.href}${destination.suffix}${quote}`;
+        return `${prefix}${quote}${contained.pathname}${contained.pathname === '#' ? '' : destination.suffix}${quote}`;
       })
   );
   return value === field.value ? field : { ...field, value };

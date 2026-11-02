@@ -46,11 +46,13 @@ function renderedHref(input, editable = true) {
   return /href="([^"]*)"/.exec(html)?.[1].replaceAll('&amp;', '&');
 }
 
-test('captured public routes and assets stay local; unavailable routes are service states', () => {
-  for (const value of ['/what-we-offer/annuities', '/for-financial-professionals/resources/4-ways-to-help-clients-fight-inflation', '/allianz-assets/source.pdf', '/search']) {
+test('local native routes and assets stay local; witnessed missing source counterparts use literal #', () => {
+  for (const value of ['/what-we-offer/annuities', '/what-we-offer/life-insurance/the-underwriting-process', '/for-financial-professionals/resources/4-ways-to-help-clients-fight-inflation', '/allianz-assets/source.pdf', '/search']) {
     assert.equal(href(value), value);
   }
-  for (const value of ['/rates', '/for-financial-professionals/advisory-solutions', '/what-we-offer/life-insurance/the-underwriting-process', '/about/newsroom/_local/missing']) {
+  assert.equal(href('/rates'), '#');
+  assert.equal(renderedHref(field('/rates')), '#');
+  for (const value of ['/for-financial-professionals/advisory-solutions', '/about/newsroom/_local/missing']) {
     assert.equal(href(value), '#service-unavailable');
   }
 });
@@ -61,7 +63,8 @@ test('normal production accepts new native public routes without a custom conten
   delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
   try {
     assert.equal(renderedHref(field('/new-native-public-page?view=detail#section')), '/new-native-public-page?view=detail#section');
-    for (const value of ['/api/private', '/login', 'https://external.example.invalid/']) assert.equal(href(value), '#service-unavailable');
+    assert.equal(href('/login'), '#');
+    for (const value of ['/api/private', 'https://external.example.invalid/']) assert.equal(href(value), '#service-unavailable');
   } finally {
     if (previousNode === undefined) delete process.env.NODE_ENV; else process.env.NODE_ENV = previousNode;
     if (previousMode === undefined) delete process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE; else process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = previousMode;
@@ -159,14 +162,15 @@ test('file links and same-page fragment/query links use real SDK fallback safely
 });
 
 test('blocked services discard stale query/hash/target fields and never leak their destination', () => {
+  const missingCounterparts = new Set(['/login', '/%6cogin', '/rates']);
   for (const value of ['https://external.example.invalid/', '//external.example.invalid/about', 'http://www.finra.org', 'https://www.allianzlife.com:444/about', 'https://user:password@www.allianzlife.com/about', 'javascript:alert(1)', 'mailto:service@example.invalid', 'tel:12345', 'data:text/html,blocked', '/login', '/%6cogin', '/%2flogin', '/%5clogin', '/api/private', '/sitecore', '/rates', '/about#demo-unavailable', '#service-unavailable']) {
     const input = field(value, { querystring: 'private=1', anchor: 'old', target: '_blank' });
-    assert.equal(renderedHref(input), '#service-unavailable', value);
+    assert.equal(renderedHref(input), missingCounterparts.has(value) ? '#' : '#service-unavailable', value);
     const output = safeLink(input);
     assert.equal(output.value.querystring, '');
     assert.equal(output.value.anchor, '');
     assert.equal(output.value.target, '');
-    assert.equal(output.value.title, 'This service is unavailable');
+    assert.equal(output.value.title, missingCounterparts.has(value) ? undefined : 'This service is unavailable');
     assert.doesNotMatch(render(input), /target="_blank"|rel="noopener noreferrer"/);
   }
   const unavailableAnchor = field('/about', { anchor: 'service-unavailable', target: '_blank' });
@@ -175,7 +179,8 @@ test('blocked services discard stale query/hash/target fields and never leak the
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'connected';
   try {
     assert.equal(renderedHref(field('/future-public-page?x=1#intro')), '/future-public-page?x=1#intro');
-    for (const value of ['/login', '/%6cogin', '/%2flogin', '/new-york/registration', '/api/private']) assert.equal(href(value), '#service-unavailable');
+    for (const value of ['/login', '/%6cogin']) assert.equal(href(value), '#');
+    for (const value of ['/%2flogin', '/new-york/registration', '/api/private']) assert.equal(href(value), '#service-unavailable');
   } finally { process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'fixture'; }
 });
 

@@ -3,6 +3,7 @@
 import { RichText, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
+import { safeEditorialRichText } from 'lib/allianz-editorial';
 import type { ProductRiskDisclosuresProps } from './product-risk-disclosures.props';
 
 /** Risk copy keeps the source disclosure shell and its independently authored body. */
@@ -11,7 +12,7 @@ export const Default = ({ fields, params }: ProductRiskDisclosuresProps) => {
   const isEditing = page?.mode?.isEditing ?? false;
   const datasource = fields?.data?.datasource;
   if (!datasource) return <NoDataFallback componentName="Product Risk Disclosures" />;
-  const body = datasource.body?.jsonValue;
+  const body = safeEditorialRichText(datasource.body?.jsonValue, isEditing, true, () => true);
 
   return (
     <div className="l-container--full-width a-axlDisclosures" id={params?.RenderingIdentifier}>

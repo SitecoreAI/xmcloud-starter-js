@@ -16,7 +16,7 @@ const aliases = ['/careers', '/culture', '/allianzfortomorrow', '/AllianzForTomo
 const linkHrefs = (html) => [...html.matchAll(/<a\b[^>]*\bhref=(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi)]
   .map((match) => match[1] ?? match[2] ?? match[3]);
 
-test('the 11 affected captured press bodies retain their exact original source destinations', () => {
+test('the 11 affected captured press bodies contain missing aliases while retaining exact source witnesses', () => {
   const affected = records.filter((record) => linkHrefs(record.fields.body.jsonValue.value).some((href) => aliases.includes(href)));
   assert.equal(affected.length, 11);
   const counts = new Map();
@@ -28,7 +28,8 @@ test('the 11 affected captured press bodies retain their exact original source d
       counts.set(alias, (counts.get(alias) ?? 0) + 1);
       const original = `http://www.allianzlife.com${alias}`;
       assert.ok(sourceHrefs.includes(original), `${record.route}: source witness`);
-      assert.ok(linkHrefs(html).includes(original), `${record.route}: visitor destination`);
+      assert.ok(linkHrefs(html).includes('#'), `${record.route}: contained visitor destination`);
+      assert.ok(!linkHrefs(html).includes(original), `${record.route}: production destination removed`);
       assert.ok(!linkHrefs(html).includes(alias), `${record.route}: broken alias removed`);
     }
     assert.equal(JSON.stringify(fields), before);
@@ -36,18 +37,19 @@ test('the 11 affected captured press bodies retain their exact original source d
   assert.deepEqual(Object.fromEntries(counts), { '/careers': 3, '/allianzfortomorrow': 2, '/culture': 5, '/AllianzForTomorrow': 1 });
 });
 
-test('visitor repair keeps query/hash encoding, markup, target, metadata and source labels', () => {
+test('visitor repair discards missing-alias query/hash while preserving markup, metadata and source labels', () => {
   const markup = `<p><a class="original" href='/careers?tag=one&amp;tag=two&amp;q=a%23b#jobs' target="_blank" rel="author">www.allianzlife.com/careers</a> <a HREF=/AllianzForTomorrow#giving>Give</a></p>`;
   const input = { value: markup, metadata: metadata('press-body', 'Rich Text') };
   const output = restoreSourceAliasRichText(input, false);
-  assert.equal(output.value, markup.replace("href='/careers", "href='http://www.allianzlife.com/careers")
-    .replace('HREF=/AllianzForTomorrow', 'HREF=http://www.allianzlife.com/AllianzForTomorrow'));
+  assert.equal(output.value, `<p><a class="original" href='#' target="_blank" rel="author">www.allianzlife.com/careers</a> <a HREF=#>Give</a></p>`);
   assert.strictEqual(output.metadata, input.metadata);
   assert.equal(input.value, markup);
   assert.strictEqual(restoreSourceAliasRichText(input, true), input);
   const fields = { title: { jsonValue: { value: 'Headline' } }, body: { jsonValue: input }, summary: { jsonValue: input } };
   const visitor = render(PressRelease, fields);
-  assert.equal(linkHrefs(visitor).filter((href) => href.startsWith('http://www.allianzlife.com/careers?')).length, 2);
+  assert.deepEqual(linkHrefs(visitor), ['#', '#', '#', '#']);
+  assert.doesNotMatch(visitor, /href="http:\/\/www\.allianzlife\.com|target="_blank"|tag=one|#giving/);
+  assert.match(visitor, /www\.allianzlife\.com\/careers/);
   const editor = render(PressRelease, fields, true);
   assert.ok(editor.includes(markup));
   assert.match(editor, /test-press-body-field/);
@@ -76,7 +78,7 @@ test('only the real href attribute is repaired when quoted attributes contain hr
     const value = `<a ${title} href="/careers?tag=one&amp;tag=two#jobs">Jobs</a>`;
     const input = { value, metadata: metadata('press-body', 'Rich Text') };
     const output = restoreSourceAliasRichText(input, false);
-    assert.equal(output.value, `<a ${title} href="http://www.allianzlife.com/careers?tag=one&amp;tag=two#jobs">Jobs</a>`);
+    assert.equal(output.value, `<a ${title} href="#">Jobs</a>`);
     assert.strictEqual(output.metadata, input.metadata);
     assert.equal(input.value, value);
     assert.strictEqual(restoreSourceAliasRichText(input, true), input);
@@ -88,7 +90,7 @@ test('only the real href attribute is repaired when quoted attributes contain hr
   }
 });
 
-test('the real SDK General Link renderer preserves source aliases, queries and native attributes', () => {
+test('the real SDK General Link renderer contains missing aliases and retains native attributes', () => {
   const previous = process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE;
   process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = 'fixture';
   try {
@@ -97,14 +99,18 @@ test('the real SDK General Link renderer preserves source aliases, queries and n
         linktype: 'internal', id: '{11111111-1111-1111-1111-111111111111}', text: 'Original label' }, metadata: metadata('alias', 'General Link') };
       const before = JSON.stringify(field), props = safeLinkRenderProps(field);
       const html = renderToStaticMarkup(React.createElement(Link, { ...props, editable: false }));
-      assert.ok(html.includes(`href="http://www.allianzlife.com${alias}?tag=one&amp;tag=two&amp;q=a%23b#details"`));
-      assert.match(html, /target="_blank" rel="noopener noreferrer"/);
+      assert.match(html, /href="#"/);
+      assert.match(html, /target=""/);
+      assert.doesNotMatch(html, /http:\/\/www\.allianzlife\.com|tag=one|#details|rel="noopener noreferrer"/);
+      assert.equal(props.field.value.querystring, '');
+      assert.equal(props.field.value.anchor, '');
       assert.match(html, /Original label/);
       assert.strictEqual(props.field.metadata, field.metadata);
       assert.equal(props.field.value.id, field.value.id);
       assert.equal(JSON.stringify(field), before);
     }
-    for (const destination of ['/login', '/api/private', '/about#service-unavailable', 'https://www.allianzlife.com.evil.invalid/careers']) {
+    assert.equal(safeLinkRenderProps({ value: { href: '/login' } }).field.value.href, '#');
+    for (const destination of ['/api/private', '/about#service-unavailable', 'https://www.allianzlife.com.evil.invalid/careers']) {
       assert.equal(safeLinkRenderProps({ value: { href: destination } }).field.value.href, '#service-unavailable');
     }
     assert.equal(safeLinkRenderProps({ value: { href: '/about' } }).field.value.href, '/about');
@@ -115,7 +121,7 @@ test('the real SDK General Link renderer preserves source aliases, queries and n
 });
 
 
-test('press-release visitor links stay local while external and document destinations and editing remain authored', () => {
+test('press-release visitor links localize verified pages and contain source documents while preserving external and editing HTML', () => {
   const summary = '<h4><a href="https://www.allianzlife.com/about" target="_blank">About</a></h4>';
   const body = '<p><a href="https://www.allianzlife.com/" target="_blank">Allianz Life</a> '
     + '<a href="https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/nhe-fact-sheet" target="_blank" rel="author">Official facts</a> '
@@ -128,7 +134,8 @@ test('press-release visitor links stay local while external and document destina
   assert.match(visitor, /href="\/about" target=""/);
   assert.match(visitor, /href="\/" target=""/);
   assert.ok(visitor.includes('<a href="https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/nhe-fact-sheet" target="_blank" rel="author">Official facts</a>'));
-  assert.ok(visitor.includes('<a href="https://www.allianzlife.com/-/media/files/brochure.pdf" target="_blank">Brochure</a>'));
+  assert.ok(visitor.includes('<a href="#" target="">Brochure</a>'));
+  assert.doesNotMatch(visitor, /href="https:\/\/www\.allianzlife\.com/);
   const editor = render(PressRelease, fields, true);
   assert.ok(editor.includes(summary));
   assert.ok(editor.includes(body));
@@ -147,7 +154,8 @@ test('default disclosures keep same-site links local without altering external l
   const visitor = render(LegalDisclosures, fields);
   assert.match(visitor, /href="\/" target=""/);
   assert.ok(visitor.includes('<a href="https://www.ssa.gov/" target="_blank" rel="author">Social Security</a>'));
-  assert.ok(visitor.includes('<a href="https://www.allianzlife.com/-/media/files/brochure.pdf" target="_blank">Brochure</a>'));
+  assert.ok(visitor.includes('<a href="#" target="">Brochure</a>'));
+  assert.doesNotMatch(visitor, /href="https:\/\/www\.allianzlife\.com/);
   const editor = render(LegalDisclosures, fields, true);
   assert.ok(editor.includes(value));
   assert.match(editor, /test-source-disclosure-field/);

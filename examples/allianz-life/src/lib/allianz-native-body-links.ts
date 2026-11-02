@@ -2,6 +2,7 @@ import type { Field } from '@sitecore-content-sdk/nextjs';
 import { safeNewsroomRichText } from 'components/legal-disclosures/newsroom-grey.links.props';
 import { safeEditorialRichText } from './allianz-editorial';
 import { safeLink } from './allianz-fields';
+import { allianzDemoDestination } from './allianz-demo-destinations';
 import retained from './allianz-retained-native-body-assets.fixture.json';
 import serviceLinks from './allianz-source-service-body-links.fixture.json';
 
@@ -69,13 +70,18 @@ export function isUnavailableNativeBodyHref(decodedHref: string, rawHref: string
   if (isExcludedNativeBodyOwner(context) || /#(?:demo|service)-unavailable$/.test(decodedHref)
     || isRetainedNativeBodyAssetHref(rawHref, context) || isContactUsPhoneHref(decodedHref, rawHref, context)
     || isSourceServiceBodyHref(decodedHref, rawHref, context)) return false;
-  return safeLink({ value: { href: decodedHref } }).value.href === '#service-unavailable';
+  const destination = safeLink({ value: { href: decodedHref } }).value.href;
+  return destination === '#service-unavailable' ||
+    (destination === '#' && allianzDemoDestination(decodedHref)?.pathname === '#');
 }
 
 /** Editing and explicitly held owners retain the complete original SDK Field. */
 export function safeNativeBodyRichText(field: Field<string> | undefined, isEditing: boolean,
   context?: NativeBodyLinkContext): Field<string> | undefined {
-  if (!field || isEditing || !field.value || isExcludedNativeBodyOwner(context)) return field;
+  if (!field || isEditing || !field.value) return field;
+  // Held bodies keep all other anchor bytes; the visitor-only source containment
+  // policy still applies without altering their original editable field.
+  if (isExcludedNativeBodyOwner(context)) return safeEditorialRichText(field, false, true, () => true);
   const availableBody = safeNewsroomRichText(field, false, (decodedHref, rawHref) =>
     isUnavailableNativeBodyHref(decodedHref, rawHref, context));
   return safeEditorialRichText(availableBody, false, true);

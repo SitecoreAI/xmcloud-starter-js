@@ -25,7 +25,7 @@ export const Default = ({ fields, params = {} }: AllianzParticipantHeaderProps) 
           <li>{data.tagline?.jsonValue?.value && <Text editable={isEditing} field={data.tagline?.jsonValue} />}</li>
         </ul>
         <ul className="azl-nav-list">{(data.utilityNav?.targetItems ?? []).map((item) => <li key={item.id}>
-          {item.link?.jsonValue?.value?.href && <Link editable={isEditing} {...safeLinkRenderProps(item.link?.jsonValue)} className="a-link">
+          {item.link?.jsonValue?.value?.href && <Link editable={isEditing} {...safeLinkRenderProps(item.link?.jsonValue, isEditing)} className="a-link">
             <span className="a-link__icon"><AllianzFieldIcon field={item.icon?.jsonValue} decorative /></span>
             <span className="a-link__text">{item.title?.jsonValue?.value ? <Text editable={isEditing} field={item.title?.jsonValue} /> : <></>}</span>
           </Link>}

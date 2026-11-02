@@ -13,6 +13,7 @@ const { sourceDestinationLinkField, restoreSourceDestinationLinkProps, restoreSo
   loadSource(path.join(sourceRoot, 'lib/allianz-source-destinations.ts'));
 const { isSourceDestinationRichTextHref } = loadSource(path.join(sourceRoot, 'lib/allianz-source-destinations.ts'));
 const { safeNewsroomRichText } = loadSource(path.join(sourceRoot, 'components/legal-disclosures/newsroom-grey.links.props.ts'));
+const { safeEditorialRichText } = loadSource(path.join(sourceRoot, 'lib/allianz-editorial.ts'));
 const { safeLinkRenderProps } = loadSource(path.join(sourceRoot, 'lib/allianz-fields.ts'));
 const { Default: RichText } = loadSource(path.join(sourceRoot, 'components/allianz-rich-text/AllianzRichText.tsx'));
 const { Default: Navigation, FixedTabs } = loadSource(path.join(sourceRoot, 'components/allianz-product-navigation/AllianzProductNavigation.tsx'));
@@ -25,6 +26,12 @@ const linkPairs = [
   ['b95a8d69-1735-4b27-8c57-e7bc71106800', '/what-we-offer/annuities/fixed-index-annuities/Benefit-Control-Plus/Rates'],
   ['6976acdf-f6d1-420d-a805-13e46b79fe4d', '/what-we-offer/annuities/fixed-index-annuities/Accumulation-Advantage-plus/Rates'],
 ];
+const expectedLinkDestinations = [
+  '/for-financial-professionals/life-sales-tools/flexible-estate-planning-materials',
+  '/for-financial-professionals/life-sales-tools/key-employee-compensation-materials',
+  '/for-financial-professionals/life-sales-tools/essential-concepts',
+  '/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus/rates', '#'];
+const expectedRateFallbacks = ['/what-we-offer/annuities/fixed-index-annuities/Benefit-Control-Plus/Rates', '#'];
 const richPairs = [
   ['c4f12d3c-2db1-4cc9-8dbc-1b6683ecf133', '/what-we-offer/Index-Lock'],
   ['fdedde9b-e382-46ea-b007-7164baecbf47', '/for-financial-professionals/Life-Sales-Tools/life-advanced-markets-turnkey-programs'],
@@ -71,15 +78,15 @@ function withContentMode(mode, run) {
   }
 }
 
-test('only the five exact source General Link owner/path pairs project to the official absolute destination', () => {
-  for (const [owner, destination] of linkPairs) {
+test('only the five exact source General Link owner/path pairs project to verified local destinations or inert anchors', () => {
+  for (const [index, [owner, destination]] of linkPairs.entries()) {
     for (const href of [destination, `${origin}${destination}`]) {
       const input = freeze(link(href, { title: 'Original title', class: 'native-class', target: '_self', rel: 'author',
         ariaLabel: 'Original accessible caption' }));
       const before = JSON.stringify(input), output = sourceDestinationLinkField(input, false, owner);
       assert.ok(output);
       assert.notEqual(output, input); assert.notEqual(output.value, input.value);
-      assert.equal(output.value.href, `${origin}${destination}`);
+      assert.equal(output.value.href, expectedLinkDestinations[index]);
       for (const key of ['text', 'linktype', 'title', 'class', 'target', 'rel', 'ariaLabel']) assert.equal(output.value[key], input.value[key]);
       assert.equal(output.metadata, input.metadata); assert.equal(output.editable, input.editable);
       assert.equal(JSON.stringify(input), before);
@@ -94,7 +101,7 @@ test('only the five exact source General Link owner/path pairs project to the of
 test('native owner identity accepts canonical GUID formats but never malformed, absent, or inferred IDs', () => {
   const [owner, destination] = linkPairs[0], input = link(destination);
   for (const id of [owner, owner.toUpperCase(), `{${owner.toUpperCase()}}`, owner.replaceAll('-', ''), `{${owner.replaceAll('-', '')}}`]) {
-    assert.equal(sourceDestinationLinkField(input, false, id)?.value.href, `${origin}${destination}`);
+    assert.equal(sourceDestinationLinkField(input, false, id)?.value.href, expectedLinkDestinations[0]);
   }
   for (const id of [undefined, null, '', 42, {}, otherOwner, ` ${owner}`, `${owner} `, `{${owner}`, `${owner}}`, `${owner}-extra`]) {
     assert.equal(sourceDestinationLinkField(input, false, id), undefined, String(id));
@@ -103,19 +110,20 @@ test('native owner identity accepts canonical GUID formats but never malformed, 
     'field metadata cannot silently replace the explicit native owner contract');
 });
 
-test('source projections preserve encoded query order and fragments while splitting native Link attributes', () => {
-  for (const [owner, destination] of linkPairs) {
+test('source projections preserve encoded query order and fragments only for verified local destinations', () => {
+  for (const [index, [owner, destination]] of linkPairs.entries()) {
     const input = freeze(link(`${destination}?tag=one&tag=two&q=a%23b#href-section`, {
       querystring: '?native=one&data=c%26d', anchor: '#native-section', target: '_blank', rel: 'author',
     }));
     const output = sourceDestinationLinkField(input, false, owner);
-    assert.equal(output.value.href, `${origin}${destination}`);
-    assert.equal(output.value.querystring, 'tag=one&tag=two&q=a%23b&native=one&data=c%26d');
-    assert.equal(output.value.anchor, 'native-section');
-    assert.equal(output.value.target, '_blank'); assert.equal(output.value.rel, 'author');
+    const available = index !== 4;
+    assert.equal(output.value.href, expectedLinkDestinations[index]);
+    assert.equal(output.value.querystring, available ? 'tag=one&tag=two&q=a%23b&native=one&data=c%26d' : '');
+    assert.equal(output.value.anchor, available ? 'native-section' : '');
+    assert.equal(output.value.target, ''); assert.equal(output.value.rel, 'author');
     assert.equal(output.metadata, input.metadata);
-    assert.equal(sourceDestinationLinkField(link(`${destination}?q=one#href-section`, { querystring: 'q=one' }), false, owner).value.querystring, 'q=one');
-    assert.equal(sourceDestinationLinkField(link(`${destination}#href-section`), false, owner).value.anchor, 'href-section');
+    assert.equal(sourceDestinationLinkField(link(`${destination}?q=one#href-section`, { querystring: 'q=one' }), false, owner).value.querystring, available ? 'q=one' : '');
+    assert.equal(sourceDestinationLinkField(link(`${destination}#href-section`), false, owner).value.anchor, available ? 'href-section' : '');
   }
 });
 
@@ -130,7 +138,7 @@ test('cleared, native replacements, unavailable markers and nonvisitor modes nev
   }
   for (const isEditing of [true, undefined, null, 0, 'false']) assert.equal(sourceDestinationLinkField(link(destination), isEditing, owner), undefined);
   for (const linktype of [undefined, '', 'EXTERNAL']) {
-    assert.equal(sourceDestinationLinkField(link(destination, { linktype }), false, owner)?.value.href, `${origin}${destination}`);
+    assert.equal(sourceDestinationLinkField(link(destination, { linktype }), false, owner)?.value.href, expectedLinkDestinations[0]);
   }
 });
 
@@ -148,15 +156,15 @@ test('exact source paths reject case changes, auth services, alternate origins a
   }
 });
 
-test('Link props restore raw authored attributes after ordinary fallback and recompute new-tab protection', () => withContentMode('fixture', () => {
+test('Link props retain authored attributes while keeping verified Rates navigation in the current context', () => withContentMode('fixture', () => {
   const [owner, destination] = linkPairs[3];
-  for (const [target, authoredRel, expectedRel] of [['_blank', 'author', 'author noopener noreferrer'],
-    ['_BLANK', 'author NoOpener', 'author NoOpener noreferrer'], ['_self', 'author', 'author'], [undefined, undefined, undefined]]) {
+  for (const [target, authoredRel, expectedRel] of [['_blank', 'author', 'author'],
+    ['_BLANK', 'author NoOpener', 'author NoOpener'], ['_self', 'author', 'author'], [undefined, undefined, undefined]]) {
     const input = freeze(link(destination, { target, rel: authoredRel }));
     const props = freeze({ ...safeLinkRenderProps(input), 'aria-label': 'Existing props', className: 'existing-class' });
     const output = restoreSourceDestinationLinkProps(props, input, false, owner);
-    assert.equal(output.field.value.href, `${origin}${destination}`);
-    assert.equal(output.field.value.target, target); assert.equal(output.rel, expectedRel);
+    assert.equal(output.field.value.href, '/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus/rates');
+    assert.equal(output.field.value.target, target?.toLowerCase() === '_blank' ? '' : target); assert.equal(output.rel, expectedRel);
     assert.equal(output.className, props.className); assert.equal(output['aria-label'], props['aria-label']);
     assert.equal(output.field.metadata, input.metadata); assert.notEqual(output, props);
     assert.equal(restoreSourceDestinationLinkProps(props, input, true, owner), props);
@@ -164,16 +172,19 @@ test('Link props restore raw authored attributes after ordinary fallback and rec
   }
 }));
 
-test('the two Rich Text source owners alter only matching href bases and preserve every other authored byte', () => {
+test('the two Rich Text source owners replace matching source hrefs with inert anchors and preserve all other authored bytes', () => {
   for (const [owner, destination] of richPairs) {
     for (const quote of ['"', "'", '']) for (const href of [destination, `${origin}${destination}`]) {
       const html = `<p class="copy">Before <a class='native' href=${quote}${href}?tag=one&amp;tag=two#section${quote} title="Original > title" target="_blank" rel="author">Authored <strong>caption</strong></a> after.</p>`;
       const input = freeze(rich(html)), output = restoreSourceDestinationRichText(input, false, owner);
-      assert.ok(output); assert.equal(output.value, html.replace(`href=${quote}${href}`, `href=${quote}${origin}${destination}`));
+      assert.ok(output); assert.equal(output.value, html.replace(`href=${quote}${href}?tag=one&amp;tag=two#section${quote}`, `href=${quote}#${quote}`));
       assert.equal(output.metadata, input.metadata); assert.equal(output.editable, input.editable);
       assert.equal(input.value, html);
-      if (href.startsWith('https:')) assert.equal(output, input, 'an already absolute source body keeps its identity');
-      else assert.notEqual(output, input);
+      assert.notEqual(output, input);
+      const visitor = safeEditorialRichText(output, false, true);
+      assert.equal(visitor.value, output.value.replace(`href=${quote}#${quote}`, 'href="#"').replace('target="_blank"', 'target=""'));
+      assert.strictEqual(visitor.metadata, input.metadata);
+      assert.strictEqual(restoreSourceDestinationRichText(input, true, owner), input);
     }
   }
 });
@@ -182,8 +193,8 @@ test('Rich Text href recognition respects quoted attribute contents, data attrib
   const [owner, destination] = richPairs[0];
   const body = `<p data-href="${destination}">Unchanged data</p><a title='literal href="${destination}"' href="/unchanged">Keep</a><a data-href="${destination}">Keep too</a><A title="Authored > title" HREF = '${destination}?x=1&amp;y=2#details' data-info="unchanged">Restore</A>`;
   const output = restoreSourceDestinationRichText(rich(body), false, owner);
-  assert.equal(output.value, body.replace(`HREF = '${destination}`, `HREF = '${origin}${destination}`));
-  assert.equal((output.value.match(/https:\/\/www\.allianzlife\.com/g) ?? []).length, 1);
+  assert.equal(output.value, body.replace(`HREF = '${destination}?x=1&amp;y=2#details'`, "HREF = '#'"));
+  assert.equal((output.value.match(/https:\/\/www\.allianzlife\.com/g) ?? []).length, 0);
 });
 
 test('editor, cleared, wrong-owner, native-media, auth and unavailable Rich Text values retain original field identity', () => {
@@ -205,7 +216,7 @@ test('editor, cleared, wrong-owner, native-media, auth and unavailable Rich Text
   }
 });
 
-test('actual SDK RichText.Default restores both source owners only in visitor and Preview body fields', () => {
+test('actual SDK RichText.Default inerts both source owners in visitor and Preview and preserves editing bodies', () => {
   for (const contentMode of ['fixture', 'connected']) withContentMode(contentMode, () => {
     for (const [owner, destination] of richPairs) for (const layout of ['introduction', 'rich-text', 'disclosures']) {
       const body = `<p>Source <a href="${destination}?view=public&amp;q=a%23b#section" target="_blank" rel="author">Exact source <strong>caption</strong></a>.</p>`;
@@ -216,8 +227,8 @@ test('actual SDK RichText.Default restores both source owners only in visitor an
         const html = render(RichText, data, { mode, params: { layout, RenderingIdentifier: 'native-rich-text' } });
         assert.match(html, /id="native-rich-text"/);
         const restored = anchors(html).find(({ text }) => text === 'Exact source caption');
-        assert.equal(restored?.href, `${origin}${destination}?view=public&q=a%23b#section`);
-        assert.match(restored.attributes, /target="_blank" rel="author"/);
+        assert.equal(restored?.href, '#');
+        assert.match(restored.attributes, /target="" rel="author"/);
         if (layout === 'introduction') assert.equal(anchors(html).find(({ text }) => text === 'Separate field remains local').href, destination);
         assert.deepEqual(metadata(html), []);
       }
@@ -248,7 +259,7 @@ function navigationData(index, attributes = {}) {
   ] } };
 }
 
-test('actual SDK FixedTabs restores both Rates links with native query, target, rel and labels in the matching datasource only', () => {
+test('actual SDK FixedTabs uses verified or inert Rates destinations while preserving native labels and editing metadata', () => {
   for (const contentMode of ['fixture', 'connected']) withContentMode(contentMode, () => {
     for (const index of [0, 1]) {
       const [, destination] = linkPairs[index + 3];
@@ -258,19 +269,18 @@ test('actual SDK FixedTabs restores both Rates links with native query, target, 
       for (const mode of ['normal', 'preview']) {
         const html = render(FixedTabs, data, { mode, currentId: otherOwner, params: { RenderingIdentifier: 'native-product-navigation' } });
         const rates = anchors(html).find(({ text }) => text === 'Rates');
-        assert.equal(rates.href, `${origin}${destination}?tag=one&tag=two&q=a%23b#rates`);
-        assert.match(rates.attributes, /target="_blank"/); assert.match(rates.attributes, /rel="author noopener noreferrer"/);
+        assert.equal(rates.href, index === 0 ? '/what-we-offer/annuities/fixed-index-annuities/benefit-control-plus/rates?tag=one&tag=two&q=a%23b#rates' : '#');
+        assert.match(rates.attributes, /target=""/); assert.match(rates.attributes, /rel="author"/);
         assert.match(rates.attributes, /title="Original rates title"/); assert.match(rates.attributes, /aria-label="Native Rates label"/);
         assert.match(html, /id="native-product-navigation"/);
         assert.deepEqual(anchors(html).map(({ text }) => text), ['Product title', 'Overview', 'Rates']);
         assert.match(anchors(html).find(({ text }) => text === 'Overview').attributes, /aria-current="page"/);
         assert.deepEqual(metadata(html), []);
       }
-      const original = data.primaryNav.targetItems[2].link.jsonValue;
-      const expectedEditor = safeLinkRenderProps(original).field.value;
+      const expectedEditor = index === 0 ? `${expectedRateFallbacks[0]}?tag=one&tag=two&q=a%23b#rates` : '#';
       const editor = render(FixedTabs, data, { mode: 'editing' });
       const rates = anchors(editor).find(({ text }) => text === 'Rates');
-      assert.equal(rates.href, `${expectedEditor.href}${expectedEditor.querystring ? `?${expectedEditor.querystring}` : ''}${expectedEditor.anchor ? `#${expectedEditor.anchor}` : ''}`);
+      assert.equal(rates.href, expectedEditor);
       assert.equal(metadata(editor).some(({ fieldId }) => fieldId === 'rates-link'), true);
       assert.match(editor, /aria-expanded="false"/);
       assert.doesNotMatch(editor, /<button\b[^>]*disabled=/);
@@ -281,18 +291,17 @@ test('actual SDK FixedTabs restores both Rates links with native query, target, 
 
 test('Default navigation and mismatched FixedTabs datasource keep the existing link fallback', () => withContentMode('fixture', () => {
   for (const index of [0, 1]) {
-    const data = navigationData(index), original = data.primaryNav.targetItems[2].link.jsonValue;
-    const expected = safeLinkRenderProps(original).field.value.href;
+    const data = navigationData(index), expected = expectedRateFallbacks[index];
     assert.equal(anchors(render(Navigation, data)).find(({ text }) => text === 'Rates').href, expected);
     for (const datasourceId of [otherOwner, ratesDatasources[1 - index], undefined]) {
       assert.equal(anchors(render(FixedTabs, { ...data, id: datasourceId })).find(({ text }) => text === 'Rates').href, expected);
     }
-    for (const value of [{ href: '' }, { href: '/Login', linktype: 'external' },
-      { href: linkPairs[index + 3][1], linktype: 'internal', id: otherOwner },
-      { href: linkPairs[index + 3][1], linktype: 'media', id: otherOwner }]) {
+    for (const [value, expectedReplacement] of [[{ href: '' }, ''], [{ href: '/Login', linktype: 'external' }, '#'],
+      [{ href: linkPairs[index + 3][1], linktype: 'internal', id: otherOwner }, expectedRateFallbacks[index]],
+      [{ href: linkPairs[index + 3][1], linktype: 'media', id: otherOwner }, expectedRateFallbacks[index]]]) {
       const replacement = navigationData(index); replacement.primaryNav.targetItems[2].link.jsonValue.value = value;
       const html = render(FixedTabs, replacement);
-      assert.equal(anchors(html).find(({ text }) => text === 'Rates')?.href ?? '', safeLinkRenderProps({ value }).field.value.href);
+      assert.equal(anchors(html).find(({ text }) => text === 'Rates')?.href ?? '', expectedReplacement);
     }
   }
 }));
@@ -304,10 +313,10 @@ test('missing or malformed FixedTabs datasource identities never admit Advanced 
       data.id = datasourceId;
       data.primaryNav.targetItems[2].id = owner;
       data.primaryNav.targetItems[2].link.jsonValue.value = { href: destination, text: 'Rates', linktype: 'external', target: '_blank' };
-      const before = JSON.stringify(data), expected = safeLinkRenderProps(data.primaryNav.targetItems[2].link.jsonValue);
+      const before = JSON.stringify(data), expected = destination;
       for (const mode of ['normal', 'preview', 'editing']) {
         const rates = anchors(render(FixedTabs, data, { mode })).find(({ text }) => text === 'Rates');
-        assert.equal(rates.href, expected.field.value.href, `${owner}: ${String(datasourceId)} ${mode}`);
+        assert.equal(rates.href, expected, `${owner}: ${String(datasourceId)} ${mode}`);
         assert.notEqual(rates.href, `${origin}${destination}`);
       }
       assert.equal(JSON.stringify(data), before);
@@ -315,7 +324,7 @@ test('missing or malformed FixedTabs datasource identities never admit Advanced 
   }
   for (const index of [0, 1]) for (const datasourceId of [undefined, null, '', 'malformed-native-id', `{${ratesDatasources[index]}`]) {
     const data = navigationData(index); data.id = datasourceId;
-    const expected = safeLinkRenderProps(data.primaryNav.targetItems[2].link.jsonValue).field.value.href;
+    const expected = expectedRateFallbacks[index];
     assert.equal(anchors(render(FixedTabs, data)).find(({ text }) => text === 'Rates').href, expected);
   }
 }));
@@ -332,7 +341,7 @@ test('actual SDK callers never enable source projection when editing mode is mis
       }
       for (const index of [0, 1]) {
         const data = freeze(navigationData(index));
-        const before = JSON.stringify(data), expected = safeLinkRenderProps(data.primaryNav.targetItems[2].link.jsonValue).field.value.href;
+        const before = JSON.stringify(data), expected = expectedRateFallbacks[index];
         const rates = anchors(render(FixedTabs, data, { mode })).find(({ text }) => text === 'Rates');
         assert.equal(rates.href, expected);
         assert.notEqual(rates.href, `${origin}${linkPairs[index + 3][1]}`);
@@ -372,18 +381,18 @@ function advancedCardData(asFieldCollection = true, properties = {}) {
   return { id: cardDatasources.advanced, children: { results: asFieldCollection ? cards.map(wireCard) : cards } };
 }
 const collectionField = (card, name) => card.fieldCollection.find((entry) => entry.name === name).jsonValue;
-const renderedLinkHref = (value) => `${value.href}${value.querystring ? `?${value.querystring}` : ''}${value.anchor ? `#${value.anchor}` : ''}`;
 
-test('actual SDK Default CardGrid restores only the resolved Index body owner in list, cards and stacked query shapes', () => {
+test('actual SDK Default CardGrid contains the resolved Index body owner in list, cards and stacked query shapes', () => {
   for (const contentMode of ['fixture', 'connected']) withContentMode(contentMode, () => {
     for (const layout of cardLayouts) {
       const wire = freeze(indexCardData()), named = freeze(indexCardData(false));
       const before = JSON.stringify(wire), originalBody = collectionField(wire.children.results[0], 'body');
       for (const mode of ['normal', 'preview']) {
         const html = render(CardGrid.Default, wire, { mode, params: cardParams(layout) });
-        assert.ok(html.includes(`href="${origin}${richPairs[0][1]}?tag=one&amp;tag=two&amp;q=a%23b#details" target="_blank" rel="author"`));
+        assert.ok(html.includes('href="#" target="" rel="author"'));
         assert.match(html, /Index Lock details<\/a> with <strong>original formatting<\/strong>/);
-        assert.equal(hrefAttributes(html).filter(({ href }) => href.startsWith(`${origin}${richPairs[0][1]}`)).length, 1);
+        assert.equal(hrefAttributes(html).filter(({ href }) => href === '#').length, 1);
+        assert.ok(!hrefAttributes(html).some(({ href }) => href.startsWith(origin)));
         assert.ok(hrefAttributes(html).some(({ href }) => href === '/about'), 'the separate scalar link keeps its ordinary native destination');
         assert.equal(html, render(CardGrid.Default, named, { mode, params: cardParams(layout) }));
         assert.deepEqual(metadata(html), []);
@@ -397,7 +406,7 @@ test('actual SDK Default CardGrid restores only the resolved Index body owner in
   });
 });
 
-test('actual SDK Default CardGrid restores all three Advanced scalar owners with query, hash, target and rel in every branch', () => {
+test('actual SDK Default CardGrid localizes all three verified Advanced scalar owners and preserves query, hash and editing fields', () => {
   for (const contentMode of ['fixture', 'connected']) withContentMode(contentMode, () => {
     for (const layout of cardLayouts) {
       const wire = freeze(advancedCardData()), named = freeze(advancedCardData(false)), before = JSON.stringify(wire);
@@ -405,9 +414,9 @@ test('actual SDK Default CardGrid restores all three Advanced scalar owners with
         const html = render(CardGrid.Default, wire, { mode, params: cardParams(layout) }), links = hrefAttributes(html);
         assert.equal(links.length, 3);
         for (const [index, [, destination]] of linkPairs.slice(0, 3).entries()) {
-          assert.equal(links[index].href, `${origin}${destination}?tag=one&tag=two&q=a%23b#materials`);
-          assert.match(links[index].attributes, /target="_blank"/);
-          assert.match(links[index].attributes, /rel="author noopener noreferrer"/);
+          assert.equal(links[index].href, `${expectedLinkDestinations[index]}?tag=one&tag=two&q=a%23b#materials`);
+          assert.match(links[index].attributes, /target=""/);
+          assert.match(links[index].attributes, /rel="author"/);
           assert.match(links[index].attributes, new RegExp(`title="Native source title ${index + 1}"`));
         }
         assert.equal(html, render(CardGrid.Default, named, { mode, params: cardParams(layout) }));
@@ -428,15 +437,14 @@ test('actual SDK Default CardGrid restores all three Advanced scalar owners with
 test('CardGrid scalar fallback uses real card identity and never the generated link key or field metadata as its owner', () => withContentMode('fixture', () => {
   const positive = freeze(advancedCardData());
   const positiveLinks = hrefAttributes(render(CardGrid.Default, positive, { params: cardParams('stacked') }));
-  assert.deepEqual(positiveLinks.map(({ href }) => href), linkPairs.slice(0, 3)
-    .map(([, destination]) => `${origin}${destination}?tag=one&tag=two&q=a%23b#materials`));
+  assert.deepEqual(positiveLinks.map(({ href }) => href), expectedLinkDestinations.slice(0, 3)
+    .map((destination) => `${destination}?tag=one&tag=two&q=a%23b#materials`));
   for (const index of [0, 1, 2]) for (const owner of [otherOwner, `${linkPairs[index][0]}-link`, 'malformed-native-card-id']) {
     const data = advancedCardData(); data.children.results = [data.children.results[index]];
-    const original = collectionField(data.children.results[0], 'link');
     data.children.results[0].id = owner;
-    const expected = safeLinkRenderProps(original).field.value;
+    const expected = `${linkPairs[index][1]}?tag=one&tag=two&q=a%23b#materials`;
     const links = hrefAttributes(render(CardGrid.Default, data, { params: cardParams('stacked') }));
-    assert.equal(links[0].href, renderedLinkHref(expected));
+    assert.equal(links[0].href, expected);
     assert.notEqual(links[0].href, `${origin}${linkPairs[index][1]}?tag=one&tag=two&q=a%23b#materials`);
   }
 }));
@@ -454,8 +462,8 @@ test('ordered nested CardGrid Links keep their distinct owner context and do not
         const html = render(CardGrid.Default, data, { mode, params: cardParams('stacked') });
         const actual = hrefAttributes(html);
         assert.equal(actual.length, 1);
-        const expected = mode === 'editing' ? nativeLink.value : safeLinkRenderProps(nativeLink).field.value;
-        assert.equal(actual[0].href, renderedLinkHref(expected));
+        const expected = linkPairs[index][1];
+        assert.equal(actual[0].href, expected);
         assert.notEqual(actual[0].href, `${origin}${linkPairs[index][1]}`);
         assert.match(html, /Nested owner link/);
         assert.doesNotMatch(html, /Advanced scalar link/);
@@ -477,13 +485,12 @@ test('CardGrid restoration is closed for unknown SDK modes, unrelated datasource
         assert.ok(hrefAttributes(render(CardGrid.Default, indexData, { mode, params: cardParams(layout) }))
           .some(({ href }) => href === `${richPairs[0][1]}?tag=one&tag=two&q=a%23b#details`));
         const actual = hrefAttributes(render(CardGrid.Default, advanced, { mode, params: cardParams(layout) }));
-        assert.deepEqual(actual.map(({ href }) => href), advanced.children.results.map((card) =>
-          renderedLinkHref(safeLinkRenderProps(collectionField(card, 'link')).field.value)));
+        assert.deepEqual(actual.map(({ href }) => href), linkPairs.slice(0, 3).map(([, destination]) => `${destination}?tag=one&tag=two&q=a%23b#materials`));
       }
       for (const datasourceId of [undefined, null, '', otherOwner, 'bad-native-id', cardDatasources.index]) {
         const advanced = advancedCardData(); advanced.id = datasourceId;
         assert.deepEqual(hrefAttributes(render(CardGrid.Default, advanced, { params: cardParams(layout) })).map(({ href }) => href),
-          advanced.children.results.map((card) => renderedLinkHref(safeLinkRenderProps(collectionField(card, 'link')).field.value)));
+          linkPairs.slice(0, 3).map(([, destination]) => `${destination}?tag=one&tag=two&q=a%23b#materials`));
       }
       for (const datasourceId of [undefined, null, '', otherOwner, 'bad-native-id', cardDatasources.advanced]) {
         const indexData = indexCardData(); indexData.id = datasourceId;
@@ -500,15 +507,18 @@ test('CardGrid restoration is closed for unknown SDK modes, unrelated datasource
       const wrongPathLinks = hrefAttributes(render(CardGrid.Default, wrongIndexPath, { params: cardParams(layout) }));
       assert.ok(wrongPathLinks.some(({ href }) => href === unapprovedHref(richPairs[0][1].toLowerCase())));
       assert.ok(!wrongPathLinks.some(({ href }) => href.startsWith(`${origin}${richPairs[0][1]}`)));
-      for (const value of [{ href: linkPairs[0][1].toLowerCase(), linktype: 'external' },
-        { href: linkPairs[1][1], linktype: 'external' }, { href: '/Login', linktype: 'external' },
-        { href: linkPairs[0][1], linktype: 'internal', id: otherOwner },
-        { href: linkPairs[0][1], linktype: 'media', id: otherOwner },
-        { href: linkPairs[0][1], linktype: 'external', id: otherOwner }]) {
+      for (const [value, fixtureExpected, connectedExpected] of [
+        [{ href: linkPairs[0][1].toLowerCase(), linktype: 'external' }, expectedLinkDestinations[0], expectedLinkDestinations[0]],
+        [{ href: linkPairs[1][1], linktype: 'external' }, linkPairs[1][1], linkPairs[1][1]],
+        [{ href: '/Login', linktype: 'external' }, '#', '#'],
+        [{ href: linkPairs[0][1], linktype: 'internal', id: otherOwner }, linkPairs[0][1], linkPairs[0][1]],
+        [{ href: linkPairs[0][1], linktype: 'media', id: otherOwner }, linkPairs[0][1], linkPairs[0][1]],
+        [{ href: linkPairs[0][1], linktype: 'external', id: otherOwner }, linkPairs[0][1], linkPairs[0][1]],
+      ]) {
         const advanced = advancedCardData(); advanced.children.results = [advanced.children.results[0]];
         collectionField(advanced.children.results[0], 'link').value = value;
         assert.equal(hrefAttributes(render(CardGrid.Default, advanced, { params: cardParams(layout) }))[0].href,
-          renderedLinkHref(safeLinkRenderProps({ value }).field.value));
+          contentMode === 'fixture' ? fixtureExpected : connectedExpected);
       }
     }
   });
@@ -614,7 +624,7 @@ test('opt-in Rich Text selector receives distinct raw and decoded attributes wit
     calls.push({ decodedHref, rawHref }); return decodedHref === '/Login';
   });
   assert.deepEqual(calls, [{ decodedHref: '/Login', rawHref: '&#47;Login' }]);
-  const expected = '<p><a title="href=wrong > value" data-href="/masked" href="#service-unavailable" target="" rel="author">Login</a></p>';
+  const expected = '<p><a title="href=wrong > value" data-href="/masked" href="#" target="" rel="author">Login</a></p>';
   assert.equal(result.value, expected);
   assert.equal(safeNewsroomRichText(input, false, new Set(['/Login'])).value, expected);
   assert.equal(safeNewsroomRichText(input, false, new Set(['&#47;Login'])), input);
@@ -626,9 +636,9 @@ test('omitted and Set Rich Text filters retain the existing target and href poli
   const value = '<a href="/about" target="_blank" rel="author">About</a> <a href="/Login" target="_blank">Login</a>';
   const input = freeze({ value, metadata: { itemId: 'diagnostic-owner', fieldId: 'diagnostic-body', fieldType: 'Rich Text' } });
   assert.equal(safeNewsroomRichText(input, false).value,
-    '<a href="/about" target="" rel="author">About</a> <a href="#service-unavailable" target="">Login</a>');
+    '<a href="/about" target="" rel="author">About</a> <a href="#" target="">Login</a>');
   assert.equal(safeNewsroomRichText(input, false, new Set(['/Login'])).value,
-    '<a href="/about" target="_blank" rel="author">About</a> <a href="#service-unavailable" target="">Login</a>');
+    '<a href="/about" target="_blank" rel="author">About</a> <a href="#" target="">Login</a>');
   assert.equal(safeNewsroomRichText(input, true), input);
   assert.equal(safeNewsroomRichText(input, true, new Set(['/Login'])), input);
 });
@@ -652,8 +662,8 @@ test('approved source href protection is per anchor and also covers already-abso
       freeze(data); const before = JSON.stringify(data);
       const html = render(CardGrid.Default, data, { mode, params: cardParams(layout) });
       const links = hrefAttributes(html), source = links.find(({ attributes }) => attributes.includes('data-control="source"'));
-      assert.equal(source.href, `${mode === 'editing' ? absolute ? origin : '' : origin}${richPairs[0][1]}?tag=one&tag=two#details`);
-      assert.match(source.attributes, /target="_blank" rel="author"/);
+      assert.equal(source.href, mode === 'editing' ? `${absolute ? origin : ''}${richPairs[0][1]}?tag=one&tag=two#details` : '#');
+      assert.match(source.attributes, mode === 'editing' ? /target="_blank" rel="author"/ : /target="" rel="author"/);
       assert.deepEqual(links.filter(({ attributes }) => /data-control="(?:phone|email)"/.test(attributes)).map(({ href }) => href), mode === 'editing'
         ? ['tel:763-765-6598', 'mailto:calvin.walls@allianzlife.com'] : ['#service-unavailable', '#service-unavailable']);
       if (mode === 'editing') assert.ok(html.includes(original.value));
@@ -670,7 +680,7 @@ test('same decoded source href cannot grant approval to an entity-encoded raw si
       freeze(data); const before = JSON.stringify(data);
       const html = render(CardGrid.Default, data, { mode, params: cardParams(layout) });
       const links = hrefAttributes(html);
-      assert.equal(links.find(({ attributes }) => attributes.includes('data-raw="exact"')).href, `${mode === 'editing' ? '' : origin}${richPairs[0][1]}`);
+      assert.equal(links.find(({ attributes }) => attributes.includes('data-raw="exact"')).href, mode === 'editing' ? richPairs[0][1] : '#');
       const encoded = links.find(({ attributes }) => attributes.includes('data-raw="encoded"'));
       assert.equal(encoded.href, mode !== 'editing' && contentMode === 'fixture' ? '#service-unavailable' : '&#47;what-we-offer/Index-Lock');
       assert.notEqual(encoded.href, `${origin}${richPairs[0][1]}`);
@@ -697,7 +707,7 @@ test('every actual shared card Body caller keeps contact and account services in
       const links = anchors(html).filter(({ text }) => /^(?:Email|Phone|Account) control/.test(text));
       assert.equal(links.length, 5);
       assert.deepEqual(links.map(({ href }) => href), mode === 'editing'
-        ? ['mailto:service@example.invalid', 'tel:12345', ...existingAccountHrefs] : Array(5).fill('#service-unavailable'));
+        ? ['mailto:service@example.invalid', 'tel:12345', ...existingAccountHrefs] : ['#service-unavailable', '#service-unavailable', '#', '#service-unavailable', '#service-unavailable']);
       if (mode === 'editing') {
         assert.ok(html.includes(value));
         assert.ok(metadata(html).some(({ fieldId }) => fieldId === 'source-card-body'));
@@ -707,7 +717,7 @@ test('every actual shared card Body caller keeps contact and account services in
   });
 });
 
-test('shared card Body policy preserves safe local PDF, internal and approved external anchors byte-for-byte', () => {
+test('shared card Body policy preserves local assets and editor bytes while containing the source PDF anchor', () => {
   const approved = require(path.join(sourceRoot, 'lib/approved-source-external-links.fixture.json')).entries
     .find(({ url }) => url.startsWith('https:')).url;
   const value = '<p>Mounted safe Body <a href="/about?tag=one&amp;tag=two#details" target="_blank" rel="author">About control</a> '
@@ -719,7 +729,10 @@ test('shared card Body policy preserves safe local PDF, internal and approved ex
     for (const name of sharedBodyWrappers) for (const mode of ['normal', 'preview', 'editing']) {
       const data = freeze(policyTestCardData(value)), before = JSON.stringify(data);
       const html = render(CardGrid[name], data, { mode, params: cardParams('stacked') });
-      assert.match(html, /Mounted safe Body/); assert.ok(html.includes(value), `${name}: ${mode} safe Body bytes`);
+      const expected = mode === 'editing' ? value : value
+        .replace('href="/about?tag=one&amp;tag=two#details" target="_blank"', 'href="/about?tag=one&amp;tag=two#details" target=""')
+        .replace(`href="${approved}" target="_blank"`, 'href="#" target=""');
+      assert.match(html, /Mounted safe Body/); assert.ok(html.includes(expected), `${name}: ${mode} safe Body bytes`);
       assert.equal(JSON.stringify(data), before);
     }
   });

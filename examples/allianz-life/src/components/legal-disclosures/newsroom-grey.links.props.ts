@@ -22,10 +22,12 @@ export function safeNewsroomRichText(field: Field<string> | undefined, isEditing
     const originalHref = decodeAttribute(rawHref);
     // Bounded consumers can preserve every other authored anchor byte-for-byte.
     if (onlyHrefs && !(typeof onlyHrefs === 'function' ? onlyHrefs(originalHref, rawHref) : onlyHrefs.has(originalHref))) return tag;
-    const link = safeLink({ value: { href: originalHref } }).value;
+    const download = attributes.find((attribute) => attribute[2].toLowerCase() === 'download');
+    const link = safeLink({ value: { href: originalHref, ...(download ? { download: '' } : {}) } }).value;
     const destination = `${link.href ?? ''}${link.querystring ? `?${link.querystring}` : ''}${link.anchor ? `#${link.anchor}` : ''}`;
     const target = attributes.find((attribute) => attribute[2].toLowerCase() === 'target');
     const replacements = [{ index: href.index ?? 0, original: href[0], value: `${href[1]}href="${escapeAttribute(destination)}"` }];
+    if (download && !Object.hasOwn(link, 'download')) replacements.push({ index: download.index ?? 0, original: download[0], value: '' });
     if (target) replacements.push({ index: target.index ?? 0, original: target[0], value: `${target[1]}target=""` });
     return replacements.sort((a, b) => b.index - a.index).reduce((result, replacement) =>
       result.slice(0, replacement.index) + replacement.value + result.slice(replacement.index + replacement.original.length), tag);

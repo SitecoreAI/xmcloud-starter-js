@@ -3,7 +3,8 @@ import { Image, Link, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useRouter } from 'next/navigation';
 import { useId, useState } from 'react';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
-import { safeLink, type AllianzProps } from 'lib/allianz-fields';
+import { type AllianzProps } from 'lib/allianz-fields';
+import { allianzLinkField } from 'lib/allianz-field-state';
 import { normalizeSearchQuery } from '../allianz-search/search-rules.props';
 
 /** Native legacy chrome; search uses the local demo search route. */
@@ -16,7 +17,7 @@ export const Default = ({ fields, params = {} }: AllianzProps) => {
   const id = useId().replace(/:/g, '');
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzLegacyHeader" />;
-  const homeLink = safeLink(data.link?.jsonValue || { value: { href: '/', text: 'Allianz Life home' } });
+  const homeLink = allianzLinkField(data.link?.jsonValue || { value: { href: '/', text: 'Allianz Life home' } }, isEditing);
   return <header id={params.RenderingIdentifier}><nav className="navbar navbar-default print-never" aria-label="Main navigation">
     <div className="container-fluid"><div className="navbar-header">
       <button className="navbar-toggle" type="button" aria-expanded={expanded} aria-controls={`${id}-navigation`} onClick={() => setExpanded(!expanded)}><span className="sr-only">Toggle navigation</span><span className="icon-bar" /><span className="icon-bar" /><span className="icon-bar" /></button>
@@ -36,8 +37,8 @@ export const Default = ({ fields, params = {} }: AllianzProps) => {
           <span className="input-group-btn"><button className="btn btn-default input-sm" type="submit" aria-label="Search"><svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" strokeWidth="2" /><path d="m15 15 6 6" stroke="currentColor" strokeWidth="2" /></svg></button></span>
         </div>
       </form>
-      <div className="nav-utility"><ul className="nav navbar-nav navbar-right">{(data.utilityNav?.targetItems ?? []).map((item) => <li key={item.id}>{item.link?.jsonValue?.value?.href && <Link editable={isEditing} field={safeLink(item.link?.jsonValue)}>{item.title?.jsonValue?.value ? <Text editable={isEditing} field={item.title?.jsonValue} /> : <></>}</Link>}</li>)}</ul></div>
-      {!!data.primaryNav?.targetItems?.length && <nav className="nav-main" aria-label="Primary navigation"><ul className="nav navbar-nav">{data.primaryNav.targetItems.map((item) => <li key={item.id}>{item.link?.jsonValue?.value?.href && <Link editable={isEditing} field={safeLink(item.link?.jsonValue)}>{item.title?.jsonValue?.value ? <Text editable={isEditing} field={item.title?.jsonValue} /> : <></>}</Link>}</li>)}</ul></nav>}
+      <div className="nav-utility"><ul className="nav navbar-nav navbar-right">{(data.utilityNav?.targetItems ?? []).map((item) => <li key={item.id}>{item.link?.jsonValue?.value?.href && <Link editable={isEditing} field={allianzLinkField(item.link?.jsonValue, isEditing)}>{item.title?.jsonValue?.value ? <Text editable={isEditing} field={item.title?.jsonValue} /> : <></>}</Link>}</li>)}</ul></div>
+      {!!data.primaryNav?.targetItems?.length && <nav className="nav-main" aria-label="Primary navigation"><ul className="nav navbar-nav">{data.primaryNav.targetItems.map((item) => <li key={item.id}>{item.link?.jsonValue?.value?.href && <Link editable={isEditing} field={allianzLinkField(item.link?.jsonValue, isEditing)}>{item.title?.jsonValue?.value ? <Text editable={isEditing} field={item.title?.jsonValue} /> : <></>}</Link>}</li>)}</ul></nav>}
     </div></div>
   </nav></header>;
 };

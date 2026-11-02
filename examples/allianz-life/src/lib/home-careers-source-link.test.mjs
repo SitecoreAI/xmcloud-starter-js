@@ -48,13 +48,15 @@ test('Home Careers has one distinct source-pinned registration without changing 
     && JSON.stringify(pin.sourceRecordKeys) === JSON.stringify(['home-helpful-resources-careers'])));
 });
 
-test('actual HelpfulResources preserves the exact Home URL, SDK new-tab rel, native metadata and source fields', () => {
+test('actual HelpfulResources contains corporate Careers for visitors and preserves exact editing fields and metadata', () => {
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
     const link = field(homeCareers), input = data(link), before = JSON.stringify(input);
     for (const editing of [false, true]) {
       const markup = render(HelpfulResources, input, editing);
-      assert.deepEqual(anchor(markup), { href: homeCareers, target: '_blank', rel: 'noopener noreferrer' });
+      assert.deepEqual(anchor(markup), editing
+        ? { href: homeCareers, target: '_blank', rel: 'noopener noreferrer' }
+        : { href: '#', target: '', rel: undefined });
       assert.match(markup, /<h4>Careers<\/h4>|>Careers<\/span><\/h4>/);
       assert.match(markup, /Authored careers summary/);
       assert.doesNotMatch(markup, /service-unavailable|demo-unavailable/);
@@ -64,38 +66,39 @@ test('actual HelpfulResources preserves the exact Home URL, SDK new-tab rel, nat
     assert.strictEqual(safeLink(link).metadata, link.metadata);
     assert.deepEqual(safeLink(safeLink(link)), safeLink(link));
     assert.equal(JSON.stringify(input), before);
-    assert.equal(safeLink(field(footerCareers)).value.href, footerCareers);
+    assert.equal(safeLink(field(footerCareers)).value.href, '#');
   }
 });
 
 test('Home registration does not recover placeholders or accept native identities and augmented URLs', () => {
   const variants = [
-    'http://careers.allianz.com/us/en/allianz-us-life', '//careers.allianz.com/us/en/allianz-us-life',
-    'https://user:password@careers.allianz.com/us/en/allianz-us-life',
-    'https://careers.allianz.com:443/us/en/allianz-us-life', 'https://careers.allianz.com:444/us/en/allianz-us-life',
-    'https://careers.allianz.com.example.invalid/us/en/allianz-us-life',
-    'https://careers.allianz.com/US/EN/allianz-us-life', `${homeCareers}/`, `${homeCareers}/unrecorded`,
-    'https://careers.allianz.com/us/en/%61llianz-us-life', `${homeCareers}%2f`, `${homeCareers}%5c`,
-    `${homeCareers}?team=life`, `${homeCareers}#jobs`, ` ${homeCareers}`, `${homeCareers} `,
-    'https://careers.allianz.com/us/en/unrecorded-careers',
+    ['http://careers.allianz.com/us/en/allianz-us-life', '#'], ['//careers.allianz.com/us/en/allianz-us-life', '#'],
+    ['https://user:password@careers.allianz.com/us/en/allianz-us-life', '#service-unavailable'],
+    ['https://careers.allianz.com:443/us/en/allianz-us-life', '#service-unavailable'], ['https://careers.allianz.com:444/us/en/allianz-us-life', '#service-unavailable'],
+    ['https://careers.allianz.com.example.invalid/us/en/allianz-us-life', '#service-unavailable'],
+    ['https://careers.allianz.com/US/EN/allianz-us-life', '#'], [`${homeCareers}/`, '#'], [`${homeCareers}/unrecorded`, '#'],
+    ['https://careers.allianz.com/us/en/%61llianz-us-life', '#'], [`${homeCareers}%2f`, '#service-unavailable'], [`${homeCareers}%5c`, '#service-unavailable'],
+    [`${homeCareers}?team=life`, '#'], [`${homeCareers}#jobs`, '#'], [` ${homeCareers}`, '#service-unavailable'], [`${homeCareers} `, '#service-unavailable'],
+    ['https://careers.allianz.com/us/en/unrecorded-careers', '#'],
   ];
   for (const mode of ['fixture', 'connected']) {
     process.env.NEXT_PUBLIC_ALLIANZ_CONTENT_MODE = mode;
-    const inputs = variants.map((url) => field(url));
-    inputs.push(field(homeCareers, { querystring: 'team=life' }), field(homeCareers, { anchor: 'jobs' }),
-      field(homeCareers, { anchor: 'demo-unavailable' }),
-      field('#demo-unavailable', { anchor: 'demo-unavailable', linktype: 'anchor' }));
-    for (const linktype of ['internal', 'media']) inputs.push(field(homeCareers,
-      { linktype, id: '{TEST-ONLY-NATIVE-IDENTITY}' }));
-    for (const link of inputs) {
+    const cases = variants.map(([url, expected]) => ({ link: field(url), expected }));
+    cases.push({ link: field(homeCareers, { querystring: 'team=life' }), expected: '#' },
+      { link: field(homeCareers, { anchor: 'jobs' }), expected: '#' },
+      { link: field(homeCareers, { anchor: 'demo-unavailable' }), expected: '#service-unavailable' },
+      { link: field('#demo-unavailable', { anchor: 'demo-unavailable', linktype: 'anchor' }), expected: '#service-unavailable' });
+    for (const linktype of ['internal', 'media']) cases.push({ link: field(homeCareers,
+      { linktype, id: '{TEST-ONLY-NATIVE-IDENTITY}' }), expected: '#' });
+    for (const { link, expected } of cases) {
       const input = data(link), before = JSON.stringify(input), output = safeLink(link);
-      assert.equal(output.value.href, '#service-unavailable', JSON.stringify(link.value));
+      assert.equal(output.value.href, expected, JSON.stringify(link.value));
       assert.equal(output.value.target, '');
       assert.equal(output.value.querystring, '');
       assert.equal(output.value.anchor, '');
       assert.strictEqual(output.metadata, link.metadata);
       assert.strictEqual(allianzLinkField(link, true), link);
-      assert.equal(anchor(render(HelpfulResources, input)).href, '#service-unavailable');
+      assert.equal(anchor(render(HelpfulResources, input)).href, expected);
       assert.equal(JSON.stringify(input), before);
     }
   }
@@ -107,7 +110,8 @@ test('cleared Home Careers remains cleared and unrecorded account/service URLs r
     const cleared = field('', { text: '' });
     assert.strictEqual(safeLink(cleared), cleared);
     assert.doesNotMatch(render(HelpfulResources, data(cleared)), /<a\b|service-unavailable/);
-    for (const url of ['/Login', '/Registration/individual', '/account', '/portal', '/api/private', '/sitecore']) {
+    assert.equal(safeLink(field('/Login')).value.href, '#');
+    for (const url of ['/Registration/individual', '/account', '/portal', '/api/private', '/sitecore']) {
       assert.equal(safeLink(field(url)).value.href, '#service-unavailable', url);
     }
   }

@@ -209,7 +209,7 @@ export const FixedMvaReference = ({ fields, params }: AllianzRichTextProps) => {
   const data = fields?.data?.datasource;
   if (!data) return <NoDataFallback componentName="AllianzRichText" />;
   const heading = data.heading?.jsonValue;
-  const body = data.body?.jsonValue;
+  const body = safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true);
   // Only the source sentence shape gets its source typography. Future headings
   // outside that shape remain intact through the normal native Text surface.
   const parts = typeof heading?.value === 'string'
@@ -463,7 +463,7 @@ const RilaIntroductionBlock = ({ fields, params, contract = false }: AllianzRich
           <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <h2><Text editable={isEditing} field={data.heading?.jsonValue} />{!contract && <br />}</h2>}</div>
           <div className="tileSubHeading">{shouldRenderTextField(data.subheading?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.subheading?.jsonValue} />}</div>
         </header>
-        {contract && shouldRenderTextField(data.body?.jsonValue, isEditing) && <footer><RichText editable={isEditing} field={data.body?.jsonValue} className="tileLink" /></footer>}
+        {contract && shouldRenderTextField(data.body?.jsonValue, isEditing) && <footer><RichText editable={isEditing} field={safeEditorialRichText(data.body?.jsonValue, isEditing, true, () => true)} className="tileLink" /></footer>}
         {!contract && shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
         {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <footer><div className="tileLink"><Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" /></div></footer>}
       </div></article>

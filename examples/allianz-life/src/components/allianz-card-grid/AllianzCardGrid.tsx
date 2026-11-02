@@ -187,12 +187,13 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
       && sourceDestinationId(card.id) === 'c4f12d3c2db14cc98dbc1b6683ecf133';
     const body = hasSourceBodyDestination
       ? restoreSourceDestinationRichText(card.body?.jsonValue, sourceDestinationEditing, card.id) : card.body?.jsonValue;
-    return safeFaqRichText(body, isEditing, (decodedHref, rawHref) => {
+    const availableBody = safeFaqRichText(body, isEditing, (decodedHref, rawHref) => {
       // Keep the existing source projection gate ahead of the shared Body policy.
       if (hasSourceBodyDestination && isSourceDestinationRichTextHref(rawHref, card.id)) return false;
       return isUnavailableNativeBodyHref(decodedHref, rawHref, { componentName: 'AllianzCardGrid',
         datasourceId: 'id' in data ? data.id : undefined, entryId: card.id });
     });
+    return safeEditorialRichText(availableBody, isEditing, true);
   };
   const scalarLinkProps = (card: (typeof cards)[number], props: Parameters<typeof restoreSourceDestinationLinkProps>[0]) => {
     if (sourceDataId !== '0b2c3b00952345b189e732b1b9bbd34a' || ![

@@ -1,5 +1,6 @@
 import type { Field } from '@sitecore-content-sdk/nextjs';
 import { safeLink } from './allianz-fields';
+import { allianzDemoDestination } from './allianz-demo-destinations';
 
 /** Finite editorial options; never interpolate arbitrary CMS class strings. */
 export const editorialBodyClass = (size?: string) =>
@@ -34,7 +35,10 @@ export function safeEditorialRichText(field: Field<string> | undefined, isEditin
     const attr = (name: string) => attrs.find((item) => item[2].toLowerCase() === name);
     const contents = (item: RegExpMatchArray | undefined) => decodeAttribute(item?.[3] ?? item?.[4] ?? item?.[5] ?? '');
     const href = attr('href');
-    if (!href || retainHref?.(contents(href))) return tag;
+    if (!href) return tag;
+    const demoDestination = allianzDemoDestination(contents(href));
+    const containedSource = demoDestination?.kind === 'local' ? undefined : demoDestination;
+    if (!containedSource && retainHref?.(contents(href))) return tag;
     const target = attr('target');
     const rel = attr('rel');
     const link = safeLink({ value: { href: contents(href), target: contents(target),
@@ -42,7 +46,7 @@ export function safeEditorialRichText(field: Field<string> | undefined, isEditin
     const destination = `${link.href ?? ''}${link.querystring ? `?${link.querystring}` : ''}${link.anchor ? `#${link.anchor}` : ''}`;
     // Native bodies retain their existing asset/external anchors byte-for-byte.
     // This mode only normalizes supported internal page navigation.
-    if (internalPagesOnly && (!/^(?:\/(?!\/)|#|\?)/.test(destination)
+    if (internalPagesOnly && !containedSource && (!/^(?:\/(?!\/)|#|\?)/.test(destination)
       || destination === '#service-unavailable' || destination === '#demo-unavailable'
       || /\.(?:pdf|docx?|xlsx?|pptx?|csv|zip|mp4|mp3)(?:[?#]|$)/i.test(destination)
       || attr('download'))) return tag;
@@ -50,6 +54,10 @@ export function safeEditorialRichText(field: Field<string> | undefined, isEditin
     // absolute page URL still needs local rebasing even when its target is _self.
     if (internalPagesOnly && destination === contents(href) && (!target || contents(target) === (link.target ?? ''))) return tag;
     const changes = [{ index: href.index ?? 0, length: href[0].length, value: `${href[1]}href="${escapeAttribute(destination)}"` }];
+    const download = attr('download');
+    if (containedSource && download && !Object.hasOwn(link, 'download')) {
+      changes.push({ index: download.index ?? 0, length: download[0].length, value: '' });
+    }
     if (target && contents(target) !== link.target) changes.push({ index: target.index ?? 0, length: target[0].length, value: `${target[1]}target="${escapeAttribute(link.target ?? '')}"` });
     let append = '';
     if (link.target?.toLowerCase() === '_blank') {

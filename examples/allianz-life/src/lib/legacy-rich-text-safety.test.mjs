@@ -13,7 +13,7 @@ const dataFor = item => ({ heading: field(item.scalarFields.heading, 'heading', 
 const careersHref = 'https://careers.allianz.com/US/go/Allianz-US-Life/5140601/';
 const finraHref = 'http://www.finra.org';
 const expectedVisitorBody = body => body
-  .replace(`target="_blank" href="${careersHref}"`, 'target="" href="#service-unavailable"')
+  .replace(`target="_blank" href="${careersHref}"`, 'target="" href="#"')
   .replace(`href="${finraHref}" class="disclosure-finra" target="_blank"`, 'href="#service-unavailable" class="disclosure-finra" target=""');
 
 function withMode(mode, run) {
@@ -71,7 +71,7 @@ for (const mode of ['fixture', 'connected']) {
     const subheading = `<strong>Careers</strong> <a title="Source title" class="job-link" target="_blank" href="${careersHref}">Search current job openings</a>`;
     const data = { body: field(body), subheading: field(subheading, 'subheading') }, before = JSON.stringify(data);
     const visitor = render(LegacyRichText, data);
-    assert.match(visitor, /title="Source title" class="job-link" target="" href="#service-unavailable">Search current job openings<\/a>/);
+    assert.match(visitor, /title="Source title" class="job-link" target="" href="#">Search current job openings<\/a>/);
     assert.match(visitor, /href="\/About\?tag=one&amp;tag=two#detail" target="" rel="author"/);
     assert.match(visitor, /href="#content-body">Jump<\/a>/);
     const editor = render(LegacyRichText, data, true);
@@ -81,11 +81,12 @@ for (const mode of ['fixture', 'connected']) {
   }));
 
   test(`${mode}: restricted schemes and paths stay local without changing authored text`, () => withMode(mode, () => {
-    const hrefs = ['mailto:someone@example.invalid', 'tel:123456', 'javascript:void(0)', '/login', 'https://external.example/'];
-    const body = hrefs.map((href, i) => `<a href="${href}" target="_blank" data-source="${i}">Label ${i}</a>`).join(' ');
+    const cases = [['mailto:someone@example.invalid', '#service-unavailable'], ['tel:123456', '#service-unavailable'],
+      ['javascript:void(0)', '#service-unavailable'], ['/login', '#'], ['https://external.example/', '#service-unavailable']];
+    const body = cases.map(([href], i) => `<a href="${href}" target="_blank" data-source="${i}">Label ${i}</a>`).join(' ');
     const data = { body: field(body) }, before = JSON.stringify(data);
     const visitor = render(LegacyRichText, data);
-    for (let i = 0; i < hrefs.length; i++) assert.ok(visitor.includes(`<a href="#service-unavailable" target="" data-source="${i}">Label ${i}</a>`));
+    for (const [i, [, expected]] of cases.entries()) assert.ok(visitor.includes(`<a href="${expected}" target="" data-source="${i}">Label ${i}</a>`));
     assert.ok(render(LegacyRichText, data, true).includes(body));
     assert.equal(JSON.stringify(data), before);
   }));
