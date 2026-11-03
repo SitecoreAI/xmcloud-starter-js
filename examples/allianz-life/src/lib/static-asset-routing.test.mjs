@@ -35,6 +35,14 @@ const before = { matcher: ['/', '/((?!api/|\\.well-known/|sitemap|robots|llms|_n
 const asset = '/allianz-ui/video-placeholder.svg';
 const doesMatch = (config, url, extra = {}) => matches({ config, nextConfig: {}, url, ...extra });
 const lifetimeWorkbook = '/~/Media/Files/Global/ToolShed/dx-allianz-in-plan-annuity/dx-allianz-in-plan-annuity-xlsx.xlsx';
+const rilaWorkbookDirectory = '/~/Media/Files/Global/ToolShed/dx-income-index-advantage/';
+const rilaWorkbooks = [
+  'dx-index-advantage-income-adv-xlsx.xlsx',
+  'dx-index-advantage-plus-income-xlsx.xlsx',
+  'dx-index-advantage-plus--select-income-xlsx.xlsx',
+].map(name => rilaWorkbookDirectory + name);
+// Independent pinned 6644dadc matcher, before the three RILA static files were excluded.
+const beforeRilaWorkbooks = { matcher: ['/', '/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|healthz|sitecore/api/|-/|allianz-assets/|allianz-legacy-assets/|allianz-ui/video-placeholder\\.svg$|allianz-ui/(?:about-overview|life-overview|life-faq|life-tools)/[a-z0-9-]+\\.svg$|~/Media/Files/Global/ToolShed/dx-allianz-in-plan-annuity/dx-allianz-in-plan-annuity-xlsx\\.xlsx$|fonts/|favicon.ico|sc_logo.svg|ai/).*)'] };
 
 test('the unchanged Lifetime engine workbook is a static resource, while neighboring URLs retain normal routing', () => {
   assert.equal(doesMatch(current.config, lifetimeWorkbook), false);
@@ -51,6 +59,95 @@ function env(t, values) {
     t.after(() => { if (old === undefined) delete process.env[key]; else process.env[key] = old; });
   }
 }
+
+test('the three existing RILA workbooks are exact public static resources', () => {
+  for (const workbook of rilaWorkbooks) {
+    assert.ok(fs.statSync(path.join(appRoot, 'public', workbook)).isFile(), workbook);
+    assert.equal(doesMatch(beforeRilaWorkbooks, workbook), true, workbook);
+    assert.equal(doesMatch(current.config, workbook), false, workbook);
+    assert.equal(doesMatch(current.config, workbook + '?v=source'), false, workbook);
+  }
+  assert.equal(doesMatch(current.config, lifetimeWorkbook), false);
+});
+
+test('RILA workbook exclusions do not cover neighboring files, malformed suffixes or CMS routes', () => {
+  const neighbors = rilaWorkbooks.flatMap(workbook => [
+    workbook + '/extra', workbook + '.exe', workbook + '/',
+    workbook.replace('.xlsx', 'Xxlsx'),
+  ]).concat([
+    rilaWorkbookDirectory + 'other.xlsx',
+    rilaWorkbookDirectory + 'dx-index-advantage-plus-select-income-xlsx.xlsx',
+    '/~/Media/Files/Global/ToolShed/other/dx-index-advantage-income-adv-xlsx.xlsx',
+    '/~/Media/private',
+    '/login', '/account', '/new-york/about',
+    '/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-income-adv/income-calculator',
+  ]);
+  for (const url of neighbors) {
+    assert.equal(doesMatch(beforeRilaWorkbooks, url), true, url);
+    assert.equal(doesMatch(current.config, url), true, url);
+  }
+});
+
+test('editing cookies and headers do not widen the RILA static-file exclusions', () => {
+  for (const extra of [{}, { cookies: { sc_site: 'allianz-life', sc_headless_mode: 'preview' } },
+    { headers: { 'x-sitecore-editing-params': '{"mode":"edit"}' } }]) {
+    for (const workbook of rilaWorkbooks) {
+      assert.equal(doesMatch(current.config, workbook, extra), false, workbook);
+      assert.equal(doesMatch(current.config, workbook + '/extra', extra), true, workbook);
+    }
+    assert.equal(doesMatch(current.config, rilaWorkbookDirectory + 'other.xlsx', extra), true);
+    assert.equal(doesMatch(current.config, '/new-york/about', extra), true);
+  }
+});
+
+test('the installed PreviewProxy rejects the previously matched RILA workbook paths without network calls', async t => {
+  env(t, { SITECORE: '1' });
+  const calls = [];
+  const preview = new PreviewProxy({ client: { getPage: async pathname => { calls.push(pathname); return null; } } });
+  let subsequentCalls = 0;
+  const pipeline = defineProxy(preview, { handle: async (_req, res) => { subsequentCalls++; return res; } });
+  for (const workbook of rilaWorkbooks) {
+    assert.equal(doesMatch(beforeRilaWorkbooks, workbook), true);
+    const response = await pipeline.exec(new NextRequest('https://editing.example.invalid' + workbook));
+    assert.equal(response.status, 403);
+    assert.deepEqual(await response.json(), { html: 'Preview content is not found or access is denied' });
+  }
+  assert.deepEqual(calls, rilaWorkbooks);
+  assert.equal(subsequentCalls, 0);
+});
+
+test('the current matcher leaves only the verified RILA files to Next without CMS lookup or rewrite', async t => {
+  env(t, { SITECORE: '1' });
+  let cmsCalls = 0;
+  const pipeline = defineProxy(new PreviewProxy({ client: { getPage: async () => { cmsCalls++; return null; } } }));
+  for (const workbook of rilaWorkbooks) {
+    const response = doesMatch(current.config, workbook)
+      ? await pipeline.exec(new NextRequest('https://editing.example.invalid' + workbook))
+      : NextResponse.next();
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('x-middleware-next'), '1');
+    assert.equal(response.headers.get('x-middleware-rewrite'), null);
+  }
+  assert.equal(cmsCalls, 0);
+  // Pass-through is not proof of deployed filesystem byte or MIME delivery.
+});
+
+test('fixture dispatch preserves RILA static paths while retaining page and neighboring-file rewrites', async t => {
+  env(t, { NODE_ENV: 'test', NEXT_PUBLIC_ALLIANZ_CONTENT_MODE: 'fixture' });
+  for (const workbook of rilaWorkbooks) {
+    const request = new NextRequest('https://fixture.example.invalid' + workbook);
+    // Reproduce the route the old matched request took.
+    const oldResponse = await current.default(request);
+    assert.equal(new URL(oldResponse.headers.get('x-middleware-rewrite')).pathname, '/allianz-life/en' + workbook);
+    const response = doesMatch(current.config, workbook) ? await current.default(request) : NextResponse.next();
+    assert.equal(response.headers.get('x-middleware-next'), '1');
+    assert.equal(response.headers.get('x-middleware-rewrite'), null);
+  }
+  const neighbor = rilaWorkbookDirectory + 'other.xlsx';
+  assert.equal(doesMatch(current.config, neighbor), true);
+  const response = await current.default(new NextRequest('https://fixture.example.invalid' + neighbor));
+  assert.equal(new URL(response.headers.get('x-middleware-rewrite')).pathname, '/allianz-life/en' + neighbor);
+});
 
 test('only the verified static video graphic bypasses the page proxy', () => {
   for (const url of [asset, `${asset}?v=review`, `https://editing.example.invalid${asset}?v=review`]) {
@@ -126,12 +223,14 @@ test('normal CMS routes still enter PreviewProxy and retain its denial behavior'
   env(t, { SITECORE: '1' });
   const calls = [];
   const pipeline = defineProxy(new PreviewProxy({ client: { getPage: async pathname => { calls.push(pathname); return null; } } }));
-  for (const url of ['/login', '/new-york/about', '/allianz-ui/en/private']) {
+  for (const url of ['/login', '/new-york/about', '/allianz-ui/en/private', '/~/Media/private',
+    rilaWorkbookDirectory + 'other.xlsx']) {
     assert.equal(doesMatch(current.config, url), true);
     const response = await pipeline.exec(new NextRequest(`https://editing.example.invalid${url}`));
     assert.equal(response.status, 403);
   }
-  assert.deepEqual(calls, ['/login', '/new-york/about', '/allianz-ui/en/private']);
+  assert.deepEqual(calls, ['/login', '/new-york/about', '/allianz-ui/en/private', '/~/Media/private',
+    rilaWorkbookDirectory + 'other.xlsx']);
 });
 
 test('fixture mode no longer rewrites the static image into a CMS page route', async t => {
