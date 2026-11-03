@@ -36,6 +36,7 @@ type AllianzCardGridPresentation = {
   sourceDestinations?: boolean;
   sourceIconAppearance?: boolean;
   sourceStatisticBadges?: boolean;
+  communityStatistics?: boolean;
   sourceDownloadLinks?: boolean;
   headingIconAppearance?: 'gray' | 'brand';
 };
@@ -62,7 +63,7 @@ function sourceDestinationId(ownerId: unknown): string | undefined {
 }
 
 function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearance,
-  sourceAnchor, sourceRelatedIntroduction = false, sourceFeaturesIntroduction = false, sourceDestinations = false, sourceIconAppearance = false, sourceDownloadLinks = false, headingIconAppearance, sourceStatisticBadges = false,
+  sourceAnchor, sourceRelatedIntroduction = false, sourceFeaturesIntroduction = false, sourceDestinations = false, sourceIconAppearance = false, sourceDownloadLinks = false, headingIconAppearance, sourceStatisticBadges = false, communityStatistics = false,
 }: AllianzCardGridProps & AllianzCardGridPresentation) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
@@ -83,6 +84,16 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
     && ['7a125b9dcbd649a8a0ba37c3f863500c', '78f7238c5e704a33933cde17e6cbf02a'].includes(nativeDataId ?? '')
     && params.layout === 'stacked' && params.columns === '3';
   const cards = (data.children?.results ?? []).map(allianzCardFields);
+  // Dedicated native Community variant; Default/FPro and other groups retain
+  // their existing badge contracts. Card values and order stay author-owned.
+  const communityStatisticIds = ['aff007ffe17d4573a25ca044f00cb559',
+    'c14aeaed458a4f4ebbf54e1de24d998c', 'f18e34382cc941ceb93c31c64a15b886'];
+  const isCommunityStatistics = communityStatistics
+    && sourceDestinationId(routeId) === '8fde8733c5145da3a45f032cd9248b9f'
+    && sourceDestinationId('id' in data ? data.id : undefined) === 'b804dbc9436647b18dee975a10edaa28'
+    && cards.length === communityStatisticIds.length
+    && new Set(cards.map(card => sourceDestinationId(card.id))).size === communityStatisticIds.length
+    && cards.every(card => communityStatisticIds.includes(sourceDestinationId(card.id) ?? ''));
   const iconAppearance = sourceIconAppearance ? cardIconAppearance(params.iconAppearance) : undefined;
   // Keep the witnessed Claims process in its three ordinary source columns.
   const claimsStepIds = ['2a7e982f64794ca4b1d5649f67de3b9e', 'ff80e7eae9cc4de88ab80a3badd9c4a9',
@@ -268,11 +279,15 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
             && typeof numeral === 'string' && numeral.trim().length > 0
             && !shouldRenderImageField(card.icon?.jsonValue, false)
             && !shouldRenderImageField(card.image?.jsonValue, false);
-          // The six source samples use circles for two characters, wide badges beyond.
-          const wideNumberBadge = sourceNumberBadge && Array.from(numeral.trim()).length > 2;
+          const communityNumberBadge = isCommunityStatistics && card.iconTheme?.jsonValue?.value === 'primary-brand'
+            && typeof numeral === 'string' && numeral.trim().length > 0
+            && !shouldRenderImageField(card.icon?.jsonValue, false)
+            && !shouldRenderImageField(card.image?.jsonValue, false);
+          // Community uses three wide badges. FPro retains its existing circle/wide rule.
+          const wideNumberBadge = communityNumberBadge || (sourceNumberBadge && Array.from(numeral.trim()).length > 2);
           const lifetimeNumberBadge = isLifetimeSteps && typeof numeral === 'string' && numeral.trim().length > 0;
           const claimsNumberBadge = isClaimsSteps && typeof numeral === 'string' && numeral.trim().length > 0;
-          const numberBadge = sourceNumberBadge || lifetimeNumberBadge || claimsNumberBadge;
+          const numberBadge = sourceNumberBadge || communityNumberBadge || lifetimeNumberBadge || claimsNumberBadge;
           const sourceWhiteIcon = (isLifetimeInformation
             && sourceDestinationId(card.id) === '3bed4184604d4f66a8132654c28ea1f6') || isClaimsQuestion || isFProInformation;
           const cardAppearance = iconAppearance ?? (isGlossaryQuestion ? 'white-on-purple' : undefined) ?? (sourceWhiteIcon
@@ -309,6 +324,10 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
 }
 
 export const Default = (props: AllianzCardGridDefaultProps) => <AllianzCardGrid {...props} sourceDestinations sourceIconAppearance sourceStatisticBadges />;
+
+/** Community's three native alphanumeral fields own its wide statistic badges. */
+export const CommunityStatistics = (props: AllianzCardGridProps) => <AllianzCardGrid {...props}
+  sourceDestinations sourceIconAppearance communityStatistics />;
 
 /** Exact source Download geometry, decorative inside the authored link icon span. */
 const SourceDownloadLinkIcon = () => <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
