@@ -3,6 +3,7 @@
 import { RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { shouldRenderTextField } from 'lib/allianz-field-state';
+import { getProductIntroductionStyles } from 'lib/product-introduction-styles';
 import type { ProductIntroductionProps } from './product-introduction.props';
 
 function ProductIntroduction({ fields, params, blue = false }: ProductIntroductionProps & { blue?: boolean }) {
@@ -12,15 +13,16 @@ function ProductIntroduction({ fields, params, blue = false }: ProductIntroducti
   if (!datasource) return <NoDataFallback componentName="Product Introduction" />;
   const heading = datasource.heading?.jsonValue;
   const body = datasource.body?.jsonValue;
+  const { wrapperStyles, contentAlignmentClass } = getProductIntroductionStyles(params);
 
   return (
-    <div className={`l-container--full-width ${blue ? 't-bg-blue-soft' : 't-bg-transparent'} axlTileCollection`}
+    <div className={[`l-container--full-width ${blue ? 't-bg-blue-soft' : 't-bg-transparent'} axlTileCollection`, wrapperStyles].filter(Boolean).join(' ')}
       id={params?.RenderingIdentifier}>
       <div className="l-grid l-grid--max-width">
         <div className="l-grid__row">
           <div className="l-grid__column-medium-12">
             <article className="m-axlTile match-height -is--stacked t-bg-transparent">
-              <div className="tileContent u-text-center">
+              <div className={`tileContent ${contentAlignmentClass}`}>
                 <div className="tileSubGrid__content">
                   {shouldRenderTextField(heading, isEditing) && (
                     <header><div className="tileHeading">
@@ -53,14 +55,15 @@ export const FixedIndexOverview = ({ fields, params }: ProductIntroductionProps)
   if (!datasource) return <NoDataFallback componentName="Product Introduction" />;
   const heading = datasource.heading?.jsonValue;
   const body = datasource.body?.jsonValue;
+  const { wrapperStyles, contentAlignmentClass } = getProductIntroductionStyles(params);
 
   return (
-    <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params?.RenderingIdentifier}>
+    <div className={['l-container--full-width t-bg-transparent axlTileCollection', wrapperStyles].filter(Boolean).join(' ')} id={params?.RenderingIdentifier}>
       <div className="l-grid l-grid--max-width">
         <div className="l-grid__row">
           <div className="l-grid__column-medium-12">
             <article className="m-axlTile match-height -is--stacked t-bg-transparent">
-              <div className="tileContent u-text-center">
+              <div className={`tileContent ${contentAlignmentClass}`}>
                 <div className="tileSubGrid__content">
                   <header aria-hidden="true"><div className="tileHeading" /><div className="tileSubHeading" /></header>
                   <div className="tileBody u-font-size-lg">
@@ -87,14 +90,15 @@ export const Plain = ({ fields, params }: ProductIntroductionProps) => {
   const datasource = fields?.data?.datasource;
   if (!datasource) return <NoDataFallback componentName="Product Introduction" />;
   const body = datasource.body?.jsonValue;
+  const { wrapperStyles, contentAlignmentClass } = getProductIntroductionStyles(params);
 
   return (
-    <div className="l-container--full-width t-bg-transparent axlTileCollection" id={params?.RenderingIdentifier}>
+    <div className={['l-container--full-width t-bg-transparent axlTileCollection', wrapperStyles].filter(Boolean).join(' ')} id={params?.RenderingIdentifier}>
       <div className="l-grid l-grid--max-width">
         <div className="l-grid__row u-margin-bottom-xl">
           <div className="l-grid__column-medium-12">
             <article className="m-axlIntroductionBlock -is--stacked -no--image">
-              <div className="tileContent u-text-center">
+              <div className={`tileContent ${contentAlignmentClass}`}>
                 <header aria-hidden="true"><div className="tileHeading" /><div className="tileSubHeading" /></header>
                 {shouldRenderTextField(body, isEditing)
                   ? <RichText field={body} editable={isEditing} className="tileBody" />
@@ -116,14 +120,15 @@ export const ProductGroup = ({ fields, params }: ProductIntroductionProps) => {
   if (!datasource) return <NoDataFallback componentName="Product Introduction" />;
   const heading = datasource.heading?.jsonValue;
   const body = datasource.body?.jsonValue;
+  const { wrapperStyles, contentAlignmentClass } = getProductIntroductionStyles(params);
 
   return (
-    <div className="l-container--full-width t-bg-blue-soft" id={params?.RenderingIdentifier}>
+    <div className={['l-container--full-width t-bg-blue-soft', wrapperStyles].filter(Boolean).join(' ')} id={params?.RenderingIdentifier}>
       <div className="l-grid l-grid--max-width">
         <div className="l-grid__row u-margin-bottom-lg u-padding-top-lg">
           <div className="l-grid__column-medium-12">
             <article className="m-axlIntroductionBlock -is--stacked -no--image">
-              <div className="tileContent u-text-center">
+              <div className={`tileContent ${contentAlignmentClass}`}>
                 <header>
                   <div className="tileHeading">
                     {shouldRenderTextField(heading, isEditing) && <Text field={heading} editable={isEditing} tag="h3" />}

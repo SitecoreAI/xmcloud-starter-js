@@ -8,6 +8,6 @@ export interface ProductIntroductionDatasource {
 }
 
 export type ProductIntroductionProps = Omit<ComponentProps, 'params'> & {
-  params?: { RenderingIdentifier?: string };
+  params?: ComponentProps['params'];
   fields?: { data?: { datasource?: ProductIntroductionDatasource } };
 };
