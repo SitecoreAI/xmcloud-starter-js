@@ -4,6 +4,7 @@ export const RILA_STRATEGY_PRESETS = {
     src: '/allianz-assets/rila-strategy/index-advantage-plus.html',
     title: 'Allianz Index Advantage+ strategy calculator',
     sourcePagePath: '/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator',
+    viewportProfile: 'strategy-mobile',
   },
 } as const;
 

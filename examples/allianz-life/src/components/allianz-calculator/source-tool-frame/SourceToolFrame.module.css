@@ -1,0 +1,15 @@
+/* Match the source's own frame width, including narrow native containers and
+   browser scrollbars. Income and unavailable frames never receive this class. */
+.strategyViewportContainer {
+  container-type: inline-size;
+}
+
+/* The source drawer is fixed to its own viewport. At its exact mobile width,
+   keep that viewport screen-sized; long inputs scroll inside the frame. */
+@container (max-width: 760px) {
+  .strategyMobileViewport {
+    /* Overrides the shared auto-height inline value only for this opt-in class. */
+    height: 100vh !important;
+    height: 100svh !important;
+  }
+}
