@@ -4,7 +4,7 @@ import Module from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
-import { loadSource, sourceRoot, require } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
+import { loadSource, sourceRoot, require, withTestAppRouter } from '../../executive-biography/__tests__/sdk-test-helper.mjs';
 
 export { sourceRoot, require };
 export const here = path.dirname(fileURLToPath(import.meta.url));
@@ -68,11 +68,11 @@ export function baselineSource() {
 }
 export function renderSDK(Component, data, input = params(), mode = 'normal', extraProps = {}) {
   const React = require('react'), { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
-  return require('react-dom/server').renderToStaticMarkup(React.createElement(SitecoreProvider, {
+  return require('react-dom/server').renderToStaticMarkup(withTestAppRouter(React.createElement(SitecoreProvider, {
     page: { mode: { isEditing: mode === 'editing', isNormal: mode === 'normal', isPreview: mode === 'preview' }, siteName: 'allianz-life',
       layout: { sitecore: { context: {}, route: { name: 'Synthetic optional icon fixture', fields: {}, placeholders: {} } } } },
     api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
-  }, React.createElement(Component, { ...extraProps, fields: data === undefined ? undefined : { data: { datasource: data } }, params: input })));
+  }, React.createElement(Component, { ...extraProps, fields: data === undefined ? undefined : { data: { datasource: data } }, params: input }))));
 }
 export const decode = value => value.replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&#39;', "'").replaceAll('&amp;', '&');
 export const metadata = html => [...html.matchAll(/<code [^>]*kind="open"[^>]*>(.*?)<\/code>/gs)].map(match => JSON.parse(decode(match[1])));
