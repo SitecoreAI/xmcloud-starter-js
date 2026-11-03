@@ -1,0 +1,5403 @@
+{
+  "recordedUTC": "2026-11-03T03:31:11.773Z",
+  "qualification": "Single retained Index Advantage+ source preset only. Exact source models/workbooks executed offline; no browser/native/public acceptance or independent financial certification.",
+  "noNetworkOrRemoteFinancialInputs": true,
+  "noApplicationCodeCmsOrDeploymentChanges": true,
+  "model": {
+    "sourceBytes": 1667289,
+    "sourceSha256": "ef767f7073bbbd3efc683f83a86d23e1160935f30f41c434f84a45c8629096ee",
+    "sourceSelectedNodes": 951,
+    "sourceInitializationStatements": 33,
+    "removedDomMountUtf16Offset": 1667067,
+    "extractedProgramSha256": "b7e68ac180ab97cc19f79d9cc41b025fdbc6348e3986d89265c4dc30c52bbef9",
+    "financialModelSourceHashes": {
+      "yJ": "d42d5cafcaf88d5d28bbe8a949b058f2451d537fe077b9bb928c1972b66586fd",
+      "yK": "4264ea05aada8d86375e73ffb8156be17e4f5c82c0ae4952ae56143c3807c5bd",
+      "yq": "93a96fcf0cde4a0b8565268c6154b634387e5962ebb1a018676b277eca9332a1",
+      "bV": "54534cde80375825c2000bd9c1af135b589b224a39f1bc72ce06dbecf83a668e"
+    },
+    "extraction": "Dependency-selected original AST text and original module definitions. No model formulas reimplemented or changed. DOM rendering omitted."
+  },
+  "workbookReads": {
+    "count": 108,
+    "uniquePaths": [
+      "/~/Media/Files/Global/ToolShed/dx-index-advantage-may-1/dx-index-advantage-xlsx.xlsx",
+      "/~/Media/Files/Global/ToolShed/dx-index-advantage-may-1/iva.xlsx"
+    ]
+  },
+  "catalog": [
+    {
+      "term": {
+        "id": "{27383d32-eb2f-4129-8099-9adffa45e630}",
+        "guid": "index-term-1-year",
+        "name": "1-Year Term"
+      },
+      "indices": [
+        {
+          "id": "{ee3249a3-1e8c-4360-aad5-06d4048c257d}",
+          "guid": "index-sp",
+          "name": "S&amp;P 500<sup>\u00ae</sup> Index"
+        },
+        {
+          "id": "{b92276f2-5fbd-4c44-a3ef-16790b00a354}",
+          "guid": "index-russell",
+          "name": "Russell 2000<sup>\u00ae</sup> Index"
+        },
+        {
+          "id": "{c7f82d2c-182a-40bb-a9fd-488d2ca22cd5}",
+          "guid": "index-nasdaq",
+          "name": "Nasdaq-100<sup>\u00ae</sup> Index"
+        },
+        {
+          "id": "{e77bd92e-e7cf-4db8-b8cf-f6395719e91e}",
+          "guid": "index-ishares",
+          "name": "iShares<sup>\u00ae</sup> MSCI Emerging Markets ETF"
+        },
+        {
+          "id": "{2ce6917a-6880-4a8a-8b0f-92fb65fe008c}",
+          "guid": "index-euro",
+          "name": "EURO STOXX 50<sup>\u00ae</sup>"
+        }
+      ],
+      "strategies": [
+        {
+          "id": "{e05437a4-31d2-4f10-a40c-2898f51c8fa8}",
+          "guid": "index-performance-strategy-1-year-buffer-10",
+          "name": "Index Performance Strategy 1-Year Term with 10% buffer"
+        },
+        {
+          "id": "{31a9b8f9-37b4-468a-9675-9cb355d265d0}",
+          "guid": "index-performance-strategy-1-year-buffer-20",
+          "name": "Index Performance Strategy 1-Year Term with 20% buffer"
+        },
+        {
+          "id": "{24eb0e7b-0b1d-4df2-97aa-508d2bfaab03}",
+          "guid": "index-performance-strategy-1-year-buffer-30",
+          "name": "Index Performance Strategy 1-Year Term with 30% buffer"
+        },
+        {
+          "id": "{484306b7-b146-40d4-b54b-ae98cf6d29e8}",
+          "guid": "index-guard-strategy-1-year-floor-10",
+          "name": "Index Guard Strategy 1-Year Term with -10% floor"
+        },
+        {
+          "id": "{916891a7-8552-442c-89af-adf6cc909d4f}",
+          "guid": "index-precision-strategy-1-year-buffer-10",
+          "name": "Index Precision Strategy 1-Year Term with 10% buffer"
+        },
+        {
+          "id": "{c9915dde-20e4-4899-8e7d-f8f29a46e239}",
+          "guid": "index-dual-precision-strategy-1-year-buffer-10",
+          "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer"
+        },
+        {
+          "id": "{7514c90b-4d0e-4459-9f14-7104b135ec0e}",
+          "guid": "index-dual-precision-strategy-1-year-buffer-20",
+          "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer"
+        },
+        {
+          "id": "{ebac2325-911e-4fdb-948d-991c4b725907}",
+          "guid": "index-dual-precision-strategy-1-year-buffer-30",
+          "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer"
+        },
+        {
+          "id": "{9578eecf-f031-4f04-84c8-1304c3d9c7e1}",
+          "guid": "index-protection-strategy-1-year",
+          "name": "Index Protection Strategy 1-Year Term"
+        }
+      ],
+      "initial": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 0,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 0,
+            "hypotheticalCredit": 0.048217399999999994,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "term": {
+        "id": "{760d1fb1-e59f-403f-bf88-f298af0e3259}",
+        "guid": "index-term-3-year",
+        "name": "3-Year Term"
+      },
+      "indices": [
+        {
+          "id": "{2874e92e-2f30-4b80-94f7-3dd5d4cc3fed}",
+          "guid": "index-sp",
+          "name": "S&amp;P 500<sup>\u00ae</sup> Index"
+        },
+        {
+          "id": "{f12e91a7-0e3e-46de-be1a-369975dad709}",
+          "guid": "index-russell",
+          "name": "Russell 2000<sup>\u00ae</sup> Index"
+        },
+        {
+          "id": "{2980bd12-fda1-4f3f-8334-fce96d10e404}",
+          "guid": "index-nasdaq",
+          "name": "Nasdaq-100<sup>\u00ae</sup> Index"
+        }
+      ],
+      "strategies": [
+        {
+          "id": "{6ae1d614-0988-4c6a-9fd2-87256782ceda}",
+          "guid": "index-performance-strategy-3-year-buffer-10",
+          "name": "Index Performance Strategy 3-Year Term with 10% buffer"
+        },
+        {
+          "id": "{a0f57257-78fd-46f6-9ec2-b480aa8ada40}",
+          "guid": "index-performance-strategy-3-year-buffer-20",
+          "name": "Index Performance Strategy 3-Year Term with 20% buffer"
+        },
+        {
+          "id": "{8b8cfeff-0972-47e1-919d-0c635a9a94f7}",
+          "guid": "index-performance-strategy-3-year-buffer-30",
+          "name": "Index Performance Strategy 3-Year Term with 30% buffer"
+        },
+        {
+          "id": "{b7f9ea89-d91a-4a04-969d-cd0db0bb39b9}",
+          "guid": "index-dual-precision-strategy-3-year-buffer-10",
+          "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer"
+        },
+        {
+          "id": "{23260c4b-1704-489a-97d9-913aa9f83705}",
+          "guid": "index-dual-precision-strategy-3-year-buffer-20",
+          "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer"
+        },
+        {
+          "id": "{315808d6-61f8-468a-843b-782cab1b1d21}",
+          "guid": "index-dual-precision-strategy-3-year-buffer-30",
+          "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer"
+        }
+      ],
+      "initial": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 0,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 0,
+            "hypotheticalCredit": 0.12835900000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "term": {
+        "id": "{185e3d60-bf6b-421d-b0f0-a3c1c74d3d66}",
+        "guid": "index-term-6-year",
+        "name": "6-Year Term"
+      },
+      "indices": [
+        {
+          "id": "{ec94ea1a-7ab2-4320-ba0d-c60377875fd7}",
+          "guid": "index-sp",
+          "name": "S&amp;P 500<sup>\u00ae</sup> Index"
+        },
+        {
+          "id": "{d783f154-7f53-44b9-87be-03ee86f1e0dd}",
+          "guid": "index-russell",
+          "name": "Russell 2000<sup>\u00ae</sup> Index"
+        },
+        {
+          "id": "{1752d185-d878-4527-a0db-c6da35d7e907}",
+          "guid": "index-nasdaq",
+          "name": "Nasdaq-100<sup>\u00ae</sup> Index"
+        }
+      ],
+      "strategies": [
+        {
+          "id": "{fc9fb6c2-bf24-484a-ae11-cd20535c6c56}",
+          "guid": "index-performance-strategy-6-year-buffer-10",
+          "name": "Index Performance Strategy 6-Year Term with 10% buffer"
+        },
+        {
+          "id": "{6c7cf4b2-3481-45ae-bb11-6aca0da149ef}",
+          "guid": "index-performance-strategy-6-year-buffer-20",
+          "name": "Index Performance Strategy 6-Year Term with 20% buffer"
+        },
+        {
+          "id": "{24eb3e2f-45da-42bc-89ba-fa8bcf81716a}",
+          "guid": "index-performance-strategy-6-year-buffer-30",
+          "name": "Index Performance Strategy 6-Year Term with 30% buffer"
+        },
+        {
+          "id": "{f6384a63-21ab-4acb-8965-5e5b59e8067c}",
+          "guid": "index-dual-precision-strategy-6-year-buffer-10",
+          "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer"
+        },
+        {
+          "id": "{a308c63a-a9c7-4f17-9542-c7d483627335}",
+          "guid": "index-dual-precision-strategy-6-year-buffer-20",
+          "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer"
+        },
+        {
+          "id": "{88c85c7d-e6d5-4de0-8949-9f85e51d10bd}",
+          "guid": "index-dual-precision-strategy-6-year-buffer-30",
+          "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer"
+        }
+      ],
+      "initial": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 0,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 0,
+            "hypotheticalCredit": 0.25838500000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    }
+  ],
+  "cases": [
+    {
+      "name": "index-term-1-year:return:-20",
+      "action": {
+        "term": "index-term-1-year",
+        "externalIndexReturn": -20
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": -20,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": -20,
+            "hypotheticalCredit": -0.028663800000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:return:-5",
+      "action": {
+        "term": "index-term-1-year",
+        "externalIndexReturn": -5
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": -5,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": -5,
+            "hypotheticalCredit": 0.021553399999999997,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:return:0",
+      "action": {
+        "term": "index-term-1-year",
+        "externalIndexReturn": 0
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 0,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 0,
+            "hypotheticalCredit": 0.048217399999999994,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:return:10",
+      "action": {
+        "term": "index-term-1-year",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.0926574,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:return:50",
+      "action": {
+        "term": "index-term-1-year",
+        "externalIndexReturn": 50
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 50,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 50,
+            "hypotheticalCredit": 0.11543289999999999,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:index:index-sp",
+      "action": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.0926574,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:index:index-russell",
+      "action": {
+        "term": "index-term-1-year",
+        "index": "index-russell",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-russell",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.10010109999999998,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:index:index-nasdaq",
+      "action": {
+        "term": "index-term-1-year",
+        "index": "index-nasdaq",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-nasdaq",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.09710139999999999,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:index:index-ishares",
+      "action": {
+        "term": "index-term-1-year",
+        "index": "index-ishares",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-ishares",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.09054649999999999,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:index:index-euro",
+      "action": {
+        "term": "index-term-1-year",
+        "index": "index-euro",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-euro",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.09699029999999999,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:allocation:index-performance-strategy-1-year-buffer-10",
+      "action": {
+        "term": "index-term-1-year",
+        "allocation": {
+          "strategy": "index-performance-strategy-1-year-buffer-10",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.1,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:allocation:index-performance-strategy-1-year-buffer-20",
+      "action": {
+        "term": "index-term-1-year",
+        "allocation": {
+          "strategy": "index-performance-strategy-1-year-buffer-20",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.1,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:allocation:index-performance-strategy-1-year-buffer-30",
+      "action": {
+        "term": "index-term-1-year",
+        "allocation": {
+          "strategy": "index-performance-strategy-1-year-buffer-30",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.1,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:allocation:index-guard-strategy-1-year-floor-10",
+      "action": {
+        "term": "index-term-1-year",
+        "allocation": {
+          "strategy": "index-guard-strategy-1-year-floor-10",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.1,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:allocation:index-precision-strategy-1-year-buffer-10",
+      "action": {
+        "term": "index-term-1-year",
+        "allocation": {
+          "strategy": "index-precision-strategy-1-year-buffer-10",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.11699999999999999,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:allocation:index-dual-precision-strategy-1-year-buffer-10",
+      "action": {
+        "term": "index-term-1-year",
+        "allocation": {
+          "strategy": "index-dual-precision-strategy-1-year-buffer-10",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.102,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:allocation:index-dual-precision-strategy-1-year-buffer-20",
+      "action": {
+        "term": "index-term-1-year",
+        "allocation": {
+          "strategy": "index-dual-precision-strategy-1-year-buffer-20",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.077,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:allocation:index-dual-precision-strategy-1-year-buffer-30",
+      "action": {
+        "term": "index-term-1-year",
+        "allocation": {
+          "strategy": "index-dual-precision-strategy-1-year-buffer-30",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.065,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-1-year:allocation:index-protection-strategy-1-year",
+      "action": {
+        "term": "index-term-1-year",
+        "allocation": {
+          "strategy": "index-protection-strategy-1-year",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 100,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.073,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:return:-20",
+      "action": {
+        "term": "index-term-3-year",
+        "externalIndexReturn": -20
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": -20,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": -20,
+            "hypotheticalCredit": 0.04500900000000001,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:return:-5",
+      "action": {
+        "term": "index-term-3-year",
+        "externalIndexReturn": -5
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": -5,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": -5,
+            "hypotheticalCredit": 0.12835900000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:return:0",
+      "action": {
+        "term": "index-term-3-year",
+        "externalIndexReturn": 0
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 0,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 0,
+            "hypotheticalCredit": 0.12835900000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:return:10",
+      "action": {
+        "term": "index-term-3-year",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.180036,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:return:50",
+      "action": {
+        "term": "index-term-3-year",
+        "externalIndexReturn": 50
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 50,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 50,
+            "hypotheticalCredit": 0.38674400000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:index:index-sp",
+      "action": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.180036,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:index:index-russell",
+      "action": {
+        "term": "index-term-3-year",
+        "index": "index-russell",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-russell",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.19087150000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:index:index-nasdaq",
+      "action": {
+        "term": "index-term-3-year",
+        "index": "index-nasdaq",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-nasdaq",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.19003800000000004,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:allocation:index-performance-strategy-3-year-buffer-10",
+      "action": {
+        "term": "index-term-3-year",
+        "allocation": {
+          "strategy": "index-performance-strategy-3-year-buffer-10",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.11000000000000001,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:allocation:index-performance-strategy-3-year-buffer-20",
+      "action": {
+        "term": "index-term-3-year",
+        "allocation": {
+          "strategy": "index-performance-strategy-3-year-buffer-20",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.1,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:allocation:index-performance-strategy-3-year-buffer-30",
+      "action": {
+        "term": "index-term-3-year",
+        "allocation": {
+          "strategy": "index-performance-strategy-3-year-buffer-30",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.1,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:allocation:index-dual-precision-strategy-3-year-buffer-10",
+      "action": {
+        "term": "index-term-3-year",
+        "allocation": {
+          "strategy": "index-dual-precision-strategy-3-year-buffer-10",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.3,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:allocation:index-dual-precision-strategy-3-year-buffer-20",
+      "action": {
+        "term": "index-term-3-year",
+        "allocation": {
+          "strategy": "index-dual-precision-strategy-3-year-buffer-20",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.25,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-3-year:allocation:index-dual-precision-strategy-3-year-buffer-30",
+      "action": {
+        "term": "index-term-3-year",
+        "allocation": {
+          "strategy": "index-dual-precision-strategy-3-year-buffer-30",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-3-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-3-year-buffer-10",
+            "name": "Index Performance Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-20",
+            "name": "Index Performance Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-3-year-buffer-30",
+            "name": "Index Performance Strategy 3-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-10",
+            "name": "Index Dual Precision Strategy 3-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-20",
+            "name": "Index Dual Precision Strategy 3-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-3-year-buffer-30",
+            "name": "Index Dual Precision Strategy 3-Year Term with 30% buffer",
+            "value": 100,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.22,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:return:-20",
+      "action": {
+        "term": "index-term-6-year",
+        "externalIndexReturn": -20
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": -20,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": -20,
+            "hypotheticalCredit": 0.12835900000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:return:-5",
+      "action": {
+        "term": "index-term-6-year",
+        "externalIndexReturn": -5
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": -5,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": -5,
+            "hypotheticalCredit": 0.25838500000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:return:0",
+      "action": {
+        "term": "index-term-6-year",
+        "externalIndexReturn": 0
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 0,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 0,
+            "hypotheticalCredit": 0.25838500000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:return:10",
+      "action": {
+        "term": "index-term-6-year",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.3158965,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:return:50",
+      "action": {
+        "term": "index-term-6-year",
+        "externalIndexReturn": 50
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 50,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 50,
+            "hypotheticalCredit": 0.5459425,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:index:index-sp",
+      "action": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.3158965,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:index:index-russell",
+      "action": {
+        "term": "index-term-6-year",
+        "index": "index-russell",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-russell",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.323398,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:index:index-nasdaq",
+      "action": {
+        "term": "index-term-6-year",
+        "index": "index-nasdaq",
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-nasdaq",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 16.67,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 16.67,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.31923050000000003,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:allocation:index-performance-strategy-6-year-buffer-10",
+      "action": {
+        "term": "index-term-6-year",
+        "allocation": {
+          "strategy": "index-performance-strategy-6-year-buffer-10",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.12,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:allocation:index-performance-strategy-6-year-buffer-20",
+      "action": {
+        "term": "index-term-6-year",
+        "allocation": {
+          "strategy": "index-performance-strategy-6-year-buffer-20",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.11499999999999999,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:allocation:index-performance-strategy-6-year-buffer-30",
+      "action": {
+        "term": "index-term-6-year",
+        "allocation": {
+          "strategy": "index-performance-strategy-6-year-buffer-30",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.11000000000000001,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:allocation:index-dual-precision-strategy-6-year-buffer-10",
+      "action": {
+        "term": "index-term-6-year",
+        "allocation": {
+          "strategy": "index-dual-precision-strategy-6-year-buffer-10",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.58,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:allocation:index-dual-precision-strategy-6-year-buffer-20",
+      "action": {
+        "term": "index-term-6-year",
+        "allocation": {
+          "strategy": "index-dual-precision-strategy-6-year-buffer-20",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 100,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.51,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "index-term-6-year:allocation:index-dual-precision-strategy-6-year-buffer-30",
+      "action": {
+        "term": "index-term-6-year",
+        "allocation": {
+          "strategy": "index-dual-precision-strategy-6-year-buffer-30",
+          "value": 100
+        },
+        "externalIndexReturn": 10
+      },
+      "state": {
+        "term": "index-term-6-year",
+        "index": "index-sp",
+        "returnInput": 10,
+        "returnBounds": {
+          "min": -50,
+          "max": 100
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-6-year-buffer-10",
+            "name": "Index Performance Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-20",
+            "name": "Index Performance Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-6-year-buffer-30",
+            "name": "Index Performance Strategy 6-Year Term with 30% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-10",
+            "name": "Index Dual Precision Strategy 6-Year Term with 10% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-20",
+            "name": "Index Dual Precision Strategy 6-Year Term with 20% buffer",
+            "value": 0,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-6-year-buffer-30",
+            "name": "Index Dual Precision Strategy 6-Year Term with 30% buffer",
+            "value": 100,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 10,
+            "hypotheticalCredit": 0.46,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "allocation:locked-first-second-50",
+      "action": {
+        "lockStrategy": "index-performance-strategy-1-year-buffer-10",
+        "allocation": {
+          "strategy": "index-performance-strategy-1-year-buffer-20",
+          "value": 50
+        }
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 0,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 0,
+        "bondReturn": 0,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": true
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 50,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 5.571428571428571,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 5.571428571428571,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 5.571428571428571,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 5.571428571428571,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 5.571428571428571,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 5.571428571428571,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 5.571428571428571,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 0,
+            "hypotheticalCredit": 0.024179999999999997,
+            "portfolioReturn": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "comparison:equity6-bond3",
+      "action": {
+        "equityReturn": 6,
+        "bondReturn": 3,
+        "portfolio": "source default 60/40"
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 0,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": true,
+        "equityReturn": 6,
+        "bondReturn": 3,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 0,
+            "hypotheticalCredit": 0.048217399999999994,
+            "portfolioReturn": 0.048
+          }
+        ]
+      }
+    },
+    {
+      "name": "comparison:hidden-same-inputs",
+      "action": {
+        "comparisonSelected": false
+      },
+      "state": {
+        "term": "index-term-1-year",
+        "index": "index-sp",
+        "returnInput": 0,
+        "returnBounds": {
+          "min": -50,
+          "max": 50
+        },
+        "comparison": false,
+        "equityReturn": 6,
+        "bondReturn": 3,
+        "strategies": [
+          {
+            "guid": "index-performance-strategy-1-year-buffer-10",
+            "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-20",
+            "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-performance-strategy-1-year-buffer-30",
+            "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-guard-strategy-1-year-floor-10",
+            "name": "Index Guard Strategy 1-Year Term with -10% floor",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-precision-strategy-1-year-buffer-10",
+            "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-10",
+            "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-20",
+            "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-dual-precision-strategy-1-year-buffer-30",
+            "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+            "value": 11.11,
+            "locked": false
+          },
+          {
+            "guid": "index-protection-strategy-1-year",
+            "name": "Index Protection Strategy 1-Year Term",
+            "value": 11.11,
+            "locked": false
+          }
+        ],
+        "portfolio": [
+          {
+            "guid": "portfolio-allocation-percent-equities",
+            "value": 60
+          },
+          {
+            "guid": "portfolio-allocation-percent-bonds",
+            "value": 40
+          }
+        ],
+        "outputs": [
+          {
+            "externalIndexReturnValue": 0,
+            "hypotheticalCredit": 0.048217399999999994,
+            "portfolioReturn": 0.048
+          }
+        ]
+      }
+    }
+  ],
+  "repeat": {
+    "before": {
+      "term": "index-term-1-year",
+      "index": "index-sp",
+      "returnInput": 10,
+      "returnBounds": {
+        "min": -50,
+        "max": 50
+      },
+      "comparison": true,
+      "equityReturn": 0,
+      "bondReturn": 0,
+      "strategies": [
+        {
+          "guid": "index-performance-strategy-1-year-buffer-10",
+          "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-performance-strategy-1-year-buffer-20",
+          "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-performance-strategy-1-year-buffer-30",
+          "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-guard-strategy-1-year-floor-10",
+          "name": "Index Guard Strategy 1-Year Term with -10% floor",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-precision-strategy-1-year-buffer-10",
+          "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-dual-precision-strategy-1-year-buffer-10",
+          "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-dual-precision-strategy-1-year-buffer-20",
+          "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-dual-precision-strategy-1-year-buffer-30",
+          "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-protection-strategy-1-year",
+          "name": "Index Protection Strategy 1-Year Term",
+          "value": 11.11,
+          "locked": false
+        }
+      ],
+      "portfolio": [
+        {
+          "guid": "portfolio-allocation-percent-equities",
+          "value": 60
+        },
+        {
+          "guid": "portfolio-allocation-percent-bonds",
+          "value": 40
+        }
+      ],
+      "outputs": [
+        {
+          "externalIndexReturnValue": 10,
+          "hypotheticalCredit": 0.0926574,
+          "portfolioReturn": 0
+        }
+      ]
+    },
+    "changed": {
+      "term": "index-term-1-year",
+      "index": "index-sp",
+      "returnInput": -20,
+      "returnBounds": {
+        "min": -50,
+        "max": 50
+      },
+      "comparison": true,
+      "equityReturn": 0,
+      "bondReturn": 0,
+      "strategies": [
+        {
+          "guid": "index-performance-strategy-1-year-buffer-10",
+          "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-performance-strategy-1-year-buffer-20",
+          "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-performance-strategy-1-year-buffer-30",
+          "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-guard-strategy-1-year-floor-10",
+          "name": "Index Guard Strategy 1-Year Term with -10% floor",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-precision-strategy-1-year-buffer-10",
+          "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-dual-precision-strategy-1-year-buffer-10",
+          "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-dual-precision-strategy-1-year-buffer-20",
+          "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-dual-precision-strategy-1-year-buffer-30",
+          "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-protection-strategy-1-year",
+          "name": "Index Protection Strategy 1-Year Term",
+          "value": 11.11,
+          "locked": false
+        }
+      ],
+      "portfolio": [
+        {
+          "guid": "portfolio-allocation-percent-equities",
+          "value": 60
+        },
+        {
+          "guid": "portfolio-allocation-percent-bonds",
+          "value": 40
+        }
+      ],
+      "outputs": [
+        {
+          "externalIndexReturnValue": -20,
+          "hypotheticalCredit": -0.028663800000000003,
+          "portfolioReturn": 0
+        }
+      ]
+    },
+    "restored": {
+      "term": "index-term-1-year",
+      "index": "index-sp",
+      "returnInput": 10,
+      "returnBounds": {
+        "min": -50,
+        "max": 50
+      },
+      "comparison": true,
+      "equityReturn": 0,
+      "bondReturn": 0,
+      "strategies": [
+        {
+          "guid": "index-performance-strategy-1-year-buffer-10",
+          "name": "Index Performance Strategy 1-Year Term with 10% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-performance-strategy-1-year-buffer-20",
+          "name": "Index Performance Strategy 1-Year Term with 20% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-performance-strategy-1-year-buffer-30",
+          "name": "Index Performance Strategy 1-Year Term with 30% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-guard-strategy-1-year-floor-10",
+          "name": "Index Guard Strategy 1-Year Term with -10% floor",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-precision-strategy-1-year-buffer-10",
+          "name": "Index Precision Strategy 1-Year Term with 10% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-dual-precision-strategy-1-year-buffer-10",
+          "name": "Index Dual Precision Strategy 1-Year Term with 10% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-dual-precision-strategy-1-year-buffer-20",
+          "name": "Index Dual Precision Strategy 1-Year Term with 20% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-dual-precision-strategy-1-year-buffer-30",
+          "name": "Index Dual Precision Strategy 1-Year Term with 30% buffer",
+          "value": 11.11,
+          "locked": false
+        },
+        {
+          "guid": "index-protection-strategy-1-year",
+          "name": "Index Protection Strategy 1-Year Term",
+          "value": 11.11,
+          "locked": false
+        }
+      ],
+      "portfolio": [
+        {
+          "guid": "portfolio-allocation-percent-equities",
+          "value": 60
+        },
+        {
+          "guid": "portfolio-allocation-percent-bonds",
+          "value": 40
+        }
+      ],
+      "outputs": [
+        {
+          "externalIndexReturnValue": 10,
+          "hypotheticalCredit": 0.0926574,
+          "portfolioReturn": 0
+        }
+      ]
+    },
+    "restoredExact": true
+  },
+  "curve": [
+    {
+      "externalIndexReturnValue": -50,
+      "hypotheticalCredit": -0.25553000000000003,
+      "portfolioReturn": -0.3
+    },
+    {
+      "externalIndexReturnValue": -49,
+      "hypotheticalCredit": -0.247753,
+      "portfolioReturn": -0.294
+    },
+    {
+      "externalIndexReturnValue": -48,
+      "hypotheticalCredit": -0.23997599999999997,
+      "portfolioReturn": -0.288
+    },
+    {
+      "externalIndexReturnValue": -47,
+      "hypotheticalCredit": -0.23219899999999996,
+      "portfolioReturn": -0.282
+    },
+    {
+      "externalIndexReturnValue": -46,
+      "hypotheticalCredit": -0.224422,
+      "portfolioReturn": -0.276
+    },
+    {
+      "externalIndexReturnValue": -45,
+      "hypotheticalCredit": -0.216645,
+      "portfolioReturn": -0.27
+    },
+    {
+      "externalIndexReturnValue": -44,
+      "hypotheticalCredit": -0.208868,
+      "portfolioReturn": -0.264
+    },
+    {
+      "externalIndexReturnValue": -43,
+      "hypotheticalCredit": -0.201091,
+      "portfolioReturn": -0.258
+    },
+    {
+      "externalIndexReturnValue": -42,
+      "hypotheticalCredit": -0.19331399999999999,
+      "portfolioReturn": -0.252
+    },
+    {
+      "externalIndexReturnValue": -41,
+      "hypotheticalCredit": -0.18553699999999998,
+      "portfolioReturn": -0.24599999999999997
+    },
+    {
+      "externalIndexReturnValue": -40,
+      "hypotheticalCredit": -0.17776,
+      "portfolioReturn": -0.24
+    },
+    {
+      "externalIndexReturnValue": -39,
+      "hypotheticalCredit": -0.169983,
+      "portfolioReturn": -0.23399999999999999
+    },
+    {
+      "externalIndexReturnValue": -38,
+      "hypotheticalCredit": -0.162206,
+      "portfolioReturn": -0.22799999999999998
+    },
+    {
+      "externalIndexReturnValue": -37,
+      "hypotheticalCredit": -0.15442899999999998,
+      "portfolioReturn": -0.222
+    },
+    {
+      "externalIndexReturnValue": -36,
+      "hypotheticalCredit": -0.14665199999999998,
+      "portfolioReturn": -0.216
+    },
+    {
+      "externalIndexReturnValue": -35,
+      "hypotheticalCredit": -0.13887499999999997,
+      "portfolioReturn": -0.21
+    },
+    {
+      "externalIndexReturnValue": -34,
+      "hypotheticalCredit": -0.13109800000000002,
+      "portfolioReturn": -0.20400000000000001
+    },
+    {
+      "externalIndexReturnValue": -33,
+      "hypotheticalCredit": -0.123321,
+      "portfolioReturn": -0.198
+    },
+    {
+      "externalIndexReturnValue": -32,
+      "hypotheticalCredit": -0.115544,
+      "portfolioReturn": -0.192
+    },
+    {
+      "externalIndexReturnValue": -31,
+      "hypotheticalCredit": -0.10776699999999999,
+      "portfolioReturn": -0.186
+    },
+    {
+      "externalIndexReturnValue": -30,
+      "hypotheticalCredit": -0.09276849999999998,
+      "portfolioReturn": -0.18
+    },
+    {
+      "externalIndexReturnValue": -29,
+      "hypotheticalCredit": -0.08721349999999997,
+      "portfolioReturn": -0.174
+    },
+    {
+      "externalIndexReturnValue": -28,
+      "hypotheticalCredit": -0.08165850000000001,
+      "portfolioReturn": -0.168
+    },
+    {
+      "externalIndexReturnValue": -27,
+      "hypotheticalCredit": -0.0761035,
+      "portfolioReturn": -0.162
+    },
+    {
+      "externalIndexReturnValue": -26,
+      "hypotheticalCredit": -0.0705485,
+      "portfolioReturn": -0.156
+    },
+    {
+      "externalIndexReturnValue": -25,
+      "hypotheticalCredit": -0.0649935,
+      "portfolioReturn": -0.15
+    },
+    {
+      "externalIndexReturnValue": -24,
+      "hypotheticalCredit": -0.0594385,
+      "portfolioReturn": -0.144
+    },
+    {
+      "externalIndexReturnValue": -23,
+      "hypotheticalCredit": -0.0538835,
+      "portfolioReturn": -0.138
+    },
+    {
+      "externalIndexReturnValue": -22,
+      "hypotheticalCredit": -0.048328499999999996,
+      "portfolioReturn": -0.132
+    },
+    {
+      "externalIndexReturnValue": -21,
+      "hypotheticalCredit": -0.04277349999999999,
+      "portfolioReturn": -0.126
+    },
+    {
+      "externalIndexReturnValue": -20,
+      "hypotheticalCredit": -0.028663800000000003,
+      "portfolioReturn": -0.12
+    },
+    {
+      "externalIndexReturnValue": -19,
+      "hypotheticalCredit": -0.0253308,
+      "portfolioReturn": -0.11399999999999999
+    },
+    {
+      "externalIndexReturnValue": -18,
+      "hypotheticalCredit": -0.021997799999999998,
+      "portfolioReturn": -0.108
+    },
+    {
+      "externalIndexReturnValue": -17,
+      "hypotheticalCredit": -0.018664800000000002,
+      "portfolioReturn": -0.10200000000000001
+    },
+    {
+      "externalIndexReturnValue": -16,
+      "hypotheticalCredit": -0.0153318,
+      "portfolioReturn": -0.096
+    },
+    {
+      "externalIndexReturnValue": -15,
+      "hypotheticalCredit": -0.011998799999999997,
+      "portfolioReturn": -0.09
+    },
+    {
+      "externalIndexReturnValue": -14,
+      "hypotheticalCredit": -0.008665800000000005,
+      "portfolioReturn": -0.084
+    },
+    {
+      "externalIndexReturnValue": -13,
+      "hypotheticalCredit": -0.005332800000000001,
+      "portfolioReturn": -0.078
+    },
+    {
+      "externalIndexReturnValue": -12,
+      "hypotheticalCredit": -0.0019997999999999986,
+      "portfolioReturn": -0.072
+    },
+    {
+      "externalIndexReturnValue": -11,
+      "hypotheticalCredit": 0.0013332000000000005,
+      "portfolioReturn": -0.066
+    },
+    {
+      "externalIndexReturnValue": -10,
+      "hypotheticalCredit": 0.015998399999999996,
+      "portfolioReturn": -0.06
+    },
+    {
+      "externalIndexReturnValue": -9,
+      "hypotheticalCredit": 0.017109399999999997,
+      "portfolioReturn": -0.054
+    },
+    {
+      "externalIndexReturnValue": -8,
+      "hypotheticalCredit": 0.018220399999999998,
+      "portfolioReturn": -0.048
+    },
+    {
+      "externalIndexReturnValue": -7,
+      "hypotheticalCredit": 0.019331399999999995,
+      "portfolioReturn": -0.042
+    },
+    {
+      "externalIndexReturnValue": -6,
+      "hypotheticalCredit": 0.020442399999999996,
+      "portfolioReturn": -0.036
+    },
+    {
+      "externalIndexReturnValue": -5,
+      "hypotheticalCredit": 0.021553399999999997,
+      "portfolioReturn": -0.03
+    },
+    {
+      "externalIndexReturnValue": -4,
+      "hypotheticalCredit": 0.022664399999999998,
+      "portfolioReturn": -0.024
+    },
+    {
+      "externalIndexReturnValue": -3,
+      "hypotheticalCredit": 0.023775399999999995,
+      "portfolioReturn": -0.018
+    },
+    {
+      "externalIndexReturnValue": -2,
+      "hypotheticalCredit": 0.024886399999999996,
+      "portfolioReturn": -0.012
+    },
+    {
+      "externalIndexReturnValue": -1,
+      "hypotheticalCredit": 0.025997399999999997,
+      "portfolioReturn": -0.006
+    },
+    {
+      "externalIndexReturnValue": 0,
+      "hypotheticalCredit": 0.048217399999999994,
+      "portfolioReturn": 0
+    },
+    {
+      "externalIndexReturnValue": 1,
+      "hypotheticalCredit": 0.0526614,
+      "portfolioReturn": 0.006
+    },
+    {
+      "externalIndexReturnValue": 2,
+      "hypotheticalCredit": 0.057105399999999994,
+      "portfolioReturn": 0.012
+    },
+    {
+      "externalIndexReturnValue": 3,
+      "hypotheticalCredit": 0.0615494,
+      "portfolioReturn": 0.018
+    },
+    {
+      "externalIndexReturnValue": 4,
+      "hypotheticalCredit": 0.0659934,
+      "portfolioReturn": 0.024
+    },
+    {
+      "externalIndexReturnValue": 5,
+      "hypotheticalCredit": 0.0704374,
+      "portfolioReturn": 0.03
+    },
+    {
+      "externalIndexReturnValue": 6,
+      "hypotheticalCredit": 0.0748814,
+      "portfolioReturn": 0.036
+    },
+    {
+      "externalIndexReturnValue": 7,
+      "hypotheticalCredit": 0.0793254,
+      "portfolioReturn": 0.042
+    },
+    {
+      "externalIndexReturnValue": 8,
+      "hypotheticalCredit": 0.08376940000000001,
+      "portfolioReturn": 0.048
+    },
+    {
+      "externalIndexReturnValue": 9,
+      "hypotheticalCredit": 0.0882134,
+      "portfolioReturn": 0.054
+    },
+    {
+      "externalIndexReturnValue": 10,
+      "hypotheticalCredit": 0.0926574,
+      "portfolioReturn": 0.06
+    },
+    {
+      "externalIndexReturnValue": 11,
+      "hypotheticalCredit": 0.0971014,
+      "portfolioReturn": 0.066
+    },
+    {
+      "externalIndexReturnValue": 12,
+      "hypotheticalCredit": 0.1004344,
+      "portfolioReturn": 0.072
+    },
+    {
+      "externalIndexReturnValue": 13,
+      "hypotheticalCredit": 0.10348965,
+      "portfolioReturn": 0.078
+    },
+    {
+      "externalIndexReturnValue": 14,
+      "hypotheticalCredit": 0.10571165,
+      "portfolioReturn": 0.084
+    },
+    {
+      "externalIndexReturnValue": 15,
+      "hypotheticalCredit": 0.10793365,
+      "portfolioReturn": 0.09
+    },
+    {
+      "externalIndexReturnValue": 16,
+      "hypotheticalCredit": 0.1098779,
+      "portfolioReturn": 0.096
+    },
+    {
+      "externalIndexReturnValue": 17,
+      "hypotheticalCredit": 0.11098890000000002,
+      "portfolioReturn": 0.10200000000000001
+    },
+    {
+      "externalIndexReturnValue": 18,
+      "hypotheticalCredit": 0.11209990000000002,
+      "portfolioReturn": 0.108
+    },
+    {
+      "externalIndexReturnValue": 19,
+      "hypotheticalCredit": 0.11321090000000002,
+      "portfolioReturn": 0.11399999999999999
+    },
+    {
+      "externalIndexReturnValue": 20,
+      "hypotheticalCredit": 0.11432190000000002,
+      "portfolioReturn": 0.12
+    },
+    {
+      "externalIndexReturnValue": 21,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.126
+    },
+    {
+      "externalIndexReturnValue": 22,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.132
+    },
+    {
+      "externalIndexReturnValue": 23,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.138
+    },
+    {
+      "externalIndexReturnValue": 24,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.144
+    },
+    {
+      "externalIndexReturnValue": 25,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.15
+    },
+    {
+      "externalIndexReturnValue": 26,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.156
+    },
+    {
+      "externalIndexReturnValue": 27,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.162
+    },
+    {
+      "externalIndexReturnValue": 28,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.168
+    },
+    {
+      "externalIndexReturnValue": 29,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.174
+    },
+    {
+      "externalIndexReturnValue": 30,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.18
+    },
+    {
+      "externalIndexReturnValue": 31,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.186
+    },
+    {
+      "externalIndexReturnValue": 32,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.192
+    },
+    {
+      "externalIndexReturnValue": 33,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.198
+    },
+    {
+      "externalIndexReturnValue": 34,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.20400000000000001
+    },
+    {
+      "externalIndexReturnValue": 35,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.21
+    },
+    {
+      "externalIndexReturnValue": 36,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.216
+    },
+    {
+      "externalIndexReturnValue": 37,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.222
+    },
+    {
+      "externalIndexReturnValue": 38,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.22799999999999998
+    },
+    {
+      "externalIndexReturnValue": 39,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.23399999999999999
+    },
+    {
+      "externalIndexReturnValue": 40,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.24
+    },
+    {
+      "externalIndexReturnValue": 41,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.24599999999999997
+    },
+    {
+      "externalIndexReturnValue": 42,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.252
+    },
+    {
+      "externalIndexReturnValue": 43,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.258
+    },
+    {
+      "externalIndexReturnValue": 44,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.264
+    },
+    {
+      "externalIndexReturnValue": 45,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.27
+    },
+    {
+      "externalIndexReturnValue": 46,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.276
+    },
+    {
+      "externalIndexReturnValue": 47,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.282
+    },
+    {
+      "externalIndexReturnValue": 48,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.288
+    },
+    {
+      "externalIndexReturnValue": 49,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.294
+    },
+    {
+      "externalIndexReturnValue": 50,
+      "hypotheticalCredit": 0.11543289999999999,
+      "portfolioReturn": 0.3
+    }
+  ]
+}

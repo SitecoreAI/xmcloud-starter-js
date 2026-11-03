@@ -7,6 +7,8 @@ import { IncomeLocalToolsDemo } from 'components/allianz-income-tools/IncomeLoca
 import { observeLifetimeFrame } from './lifetime-frame';
 import { RilaIncomeSection } from './source-tool-frame/RilaIncomeSection.props';
 import { rilaIncomePreset } from './source-tool-frame/rila-income-presets';
+import { RilaStrategySection } from './source-tool-frame/RilaStrategySection.props';
+import { rilaStrategyPreset } from './source-tool-frame/rila-strategy-presets.props';
 import { LifeInsuranceNative } from 'lib/life-insurance/LifeInsuranceNative';
 
 /** Isolate the original calculator's bundled React, CSS and Highcharts globals. */
@@ -47,6 +49,7 @@ export const LifetimeIncome = ({ fields, params }: AllianzCalculatorProps) => {
 export const RilaIncomeADV = (props: AllianzCalculatorProps) => <RilaIncomeSection {...props} preset="income-adv" />;
 export const RilaIncomePlus = (props: AllianzCalculatorProps) => <RilaIncomeSection {...props} preset="income-plus" />;
 export const RilaIncomeSelect = (props: AllianzCalculatorProps) => <RilaIncomeSection {...props} preset="income-select" />;
+export const RilaStrategyPlus = (props: AllianzCalculatorProps) => <RilaStrategySection {...props} preset="strategy-plus" />;
 
 export const Default = (props: AllianzCalculatorProps) => {
   const { fields, params, rendering } = props;
@@ -71,6 +74,8 @@ export const Default = (props: AllianzCalculatorProps) => {
   const demoMode = incomeToolsDemoMode(data?.schemaKey, rendering?.dataSource);
   const sourceIncomePreset = rilaIncomePreset(data?.schemaKey?.jsonValue?.value);
   if (sourceIncomePreset) return <RilaIncomeSection {...props} preset={sourceIncomePreset} />;
+  const sourceStrategyPreset = rilaStrategyPreset(data?.schemaKey?.jsonValue?.value);
+  if (sourceStrategyPreset) return <RilaStrategySection {...props} preset={sourceStrategyPreset} />;
   // The existing native Calculator template selects this verified tool explicitly.
   if (data?.schemaKey?.jsonValue?.value === 'lifetime-income-official') return <LifetimeIncome {...props} />;
   if (data?.schemaKey?.jsonValue?.value === 'life-insurance-source-core') return <LifeInsuranceNative {...props} />;

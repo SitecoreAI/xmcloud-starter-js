@@ -70,6 +70,54 @@ test('the three existing RILA workbooks are exact public static resources', () =
   assert.equal(doesMatch(current.config, lifetimeWorkbook), false);
 });
 
+const strategyDirectory = '/~/Media/Files/Global/ToolShed/dx-index-advantage-may-1/';
+const strategyWorkbooks = ['dx-index-advantage-xlsx.xlsx', 'iva.xlsx'].map(name => strategyDirectory + name);
+
+test('the two pinned Strategy workbooks bypass the page proxy without a directory-wide exemption', () => {
+  for (const workbook of strategyWorkbooks) {
+    assert.ok(fs.statSync(path.join(appRoot, 'public', workbook)).isFile());
+    assert.equal(doesMatch(current.config, workbook), false, workbook);
+    assert.equal(doesMatch(current.config, workbook + '?v=source'), false, workbook);
+  }
+  for (const url of strategyWorkbooks.flatMap(workbook => [workbook + '/extra', workbook + '/', workbook + '.exe', workbook.replace('.xlsx', 'Xxlsx')]).concat([
+    strategyDirectory + 'other.xlsx', strategyDirectory + 'IVA.xlsx',
+    '/~/Media/Files/Global/ToolShed/other/iva.xlsx', '/~/Media/private',
+    '/login', '/account', '/new-york/about',
+    '/what-we-offer/annuities/registered-index-linked-annuities/index-advantage-plus/calculator',
+  ])) assert.equal(doesMatch(current.config, url), true, url);
+});
+
+test('editing cookies and headers cannot widen the exact Strategy static-file exclusions', () => {
+  for (const extra of [{}, { cookies: { sc_site: 'allianz-life', sc_headless_mode: 'preview' } },
+    { headers: { 'x-sitecore-editing-params': '{"mode":"edit"}' } }]) {
+    for (const workbook of strategyWorkbooks) {
+      assert.equal(doesMatch(current.config, workbook, extra), false);
+      assert.equal(doesMatch(current.config, workbook + '/extra', extra), true);
+    }
+    assert.equal(doesMatch(current.config, strategyDirectory + 'other.xlsx', extra), true);
+    assert.equal(doesMatch(current.config, '/new-york/about', extra), true);
+  }
+});
+
+test('Strategy static files avoid CMS lookup while neighboring routes retain PreviewProxy denial', async t => {
+  env(t, { SITECORE: '1' });
+  const calls = [];
+  const pipeline = defineProxy(new PreviewProxy({ client: { getPage: async pathname => { calls.push(pathname); return null; } } }));
+  for (const workbook of strategyWorkbooks) {
+    const response = doesMatch(current.config, workbook)
+      ? await pipeline.exec(new NextRequest('https://editing.example.invalid' + workbook))
+      : NextResponse.next();
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('x-middleware-next'), '1');
+    assert.equal(response.headers.get('x-middleware-rewrite'), null);
+  }
+  assert.equal(calls.length, 0);
+  const neighbor = strategyDirectory + 'other.xlsx';
+  assert.equal(doesMatch(current.config, neighbor), true);
+  assert.equal((await pipeline.exec(new NextRequest('https://editing.example.invalid' + neighbor))).status, 403);
+  assert.deepEqual(calls, [neighbor]);
+});
+
 test('RILA workbook exclusions do not cover neighboring files, malformed suffixes or CMS routes', () => {
   const neighbors = rilaWorkbooks.flatMap(workbook => [
     workbook + '/extra', workbook + '.exe', workbook + '/',

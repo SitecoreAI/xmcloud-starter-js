@@ -9,3 +9,8 @@
 *.ts text eol=crlf
 *.tsx text eol=crlf
 *.js text eol=crlf
+
+# Preserve exact original Strategy engine, stylesheet and XLSX bytes.
+public/allianz-assets/rila-strategy/* -text
+public/~/Media/Files/Global/ToolShed/dx-index-advantage-may-1/dx-index-advantage-xlsx.xlsx -text
+public/~/Media/Files/Global/ToolShed/dx-index-advantage-may-1/iva.xlsx -text
