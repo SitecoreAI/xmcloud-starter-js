@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import { loadSource, sourceRoot, require } from '../components/executive-biography/__tests__/sdk-test-helper.mjs';
+import { loadSource, sourceRoot, require, withTestAppRouter } from '../components/executive-biography/__tests__/sdk-test-helper.mjs';
 
 const fixture = JSON.parse(fs.readFileSync(new URL('./allianz-source-service-body-links.fixture.json', import.meta.url), 'utf8'));
 const retained = JSON.parse(fs.readFileSync(new URL('./allianz-retained-native-body-assets.fixture.json', import.meta.url), 'utf8'));
@@ -151,8 +151,8 @@ for (const mode of ['normal', 'preview', 'editing']) test(`actual SDK ${mode} re
         itemId: owner.componentName === 'AllianzCardGrid' ? '020ebca91af55887b0716295be26d994' : '2dd1fc4fa1bb5c21bcb050f018920742', name: 'Service test fixture', fields: {}, placeholders: {},
       } } } };
     const Component = owner.componentName === 'AllianzCardGrid' ? Cards.Default : Accordion.Default;
-    const html = renderToStaticMarkup(React.createElement(sdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) },
-      React.createElement(Component, { fields: { data: { datasource: data } }, params: { layout: 'stacked', columns: '1', alignment: 'left', theme: 'transparent', headingLevel: 'h3' } })));
+    const html = renderToStaticMarkup(withTestAppRouter(React.createElement(sdk.SitecoreProvider, { page, api: {}, componentMap: new Map(), loadImportMap: async () => ({}) },
+      React.createElement(Component, { fields: { data: { datasource: data } }, params: { layout: 'stacked', columns: '1', alignment: 'left', theme: 'transparent', headingLevel: 'h3' } }))));
     assert(html.includes(body(href)), `${owner.entryId}:${href}`);
     assert.equal(entry.body.jsonValue.metadata.itemId, owner.entryId);
     count++;

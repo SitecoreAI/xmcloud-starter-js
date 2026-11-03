@@ -212,7 +212,8 @@ function* unaffectedCases() {
     card.image = field(card.id, 'image', { src: `/fixture-existing-partner-${card.id}.jpg`, alt: '' }, 'Image');
   }
   yield { label: 'native-partner-branch', ...partner, itemId: 'E8E1893A-FF9B-4B4A-81BC-A809693CCF88' };
-  for (const name of Object.keys(Cards).filter(name => name !== 'Default' && name !== 'ProfessionalContactPrompt' && name !== 'EditorialIntroArrow' && typeof Cards[name] === 'function')) {
+  // Keep the sealed historical inventory; CommunityStatistics has dedicated positive/negative coverage.
+  for (const name of Object.keys(Cards).filter(name => name !== 'Default' && name !== 'CommunityStatistics' && name !== 'ProfessionalContactPrompt' && name !== 'EditorialIntroArrow' && typeof Cards[name] === 'function')) {
     yield { label: `other-variant:${name}`, ...row(), itemId: routeId, variant: name };
   }
 }

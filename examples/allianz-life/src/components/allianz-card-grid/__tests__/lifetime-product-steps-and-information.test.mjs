@@ -170,7 +170,8 @@ function* preservationCases() {
       }
     }
     for (const [label, mutate] of mutations) { const current = fixture(kind); mutate(current); yield { label: `${kind}:${label}`, ...current }; }
-    for (const variant of Object.keys(Cards).filter(name => name !== 'Default' && name !== 'ProfessionalContactPrompt' && name !== 'EditorialIntroArrow' && typeof Cards[name] === 'function')) {
+    // Keep the sealed historical inventory; CommunityStatistics has dedicated positive/negative coverage.
+    for (const variant of Object.keys(Cards).filter(name => name !== 'Default' && name !== 'CommunityStatistics' && name !== 'ProfessionalContactPrompt' && name !== 'EditorialIntroArrow' && typeof Cards[name] === 'function')) {
       yield { label: `${kind}:variant:${variant}`, ...fixture(kind), variant };
     }
   }

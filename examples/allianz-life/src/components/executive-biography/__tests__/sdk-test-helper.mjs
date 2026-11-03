@@ -11,6 +11,14 @@ const ts = require('typescript');
 const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
 const { SitecoreProvider } = require('@sitecore-content-sdk/nextjs');
+const { AppRouterContext } = require('next/dist/shared/lib/app-router-context.shared-runtime');
+const { PathnameContext } = require('next/dist/shared/lib/hooks-client-context.shared-runtime');
+const preventSSRNavigation = () => { throw new Error('SSR must not navigate'); };
+const ssrRouter = Object.fromEntries(['push', 'replace', 'back', 'forward', 'refresh', 'prefetch']
+  .map(name => [name, preventSSRNavigation]));
+export const withTestAppRouter = (children, pathname = '/') => React.createElement(AppRouterContext.Provider, {
+  value: ssrRouter,
+}, React.createElement(PathnameContext.Provider, { value: pathname }, children));
 const modules = new Map();
 export function loadSource(filename) {
   if (modules.has(filename)) return modules.get(filename).exports;
@@ -36,13 +44,13 @@ export function loadSource(filename) {
   return compiled.exports;
 }
 export function render(Component, datasource, isEditing = false, params = {}) {
-  return renderToStaticMarkup(React.createElement(SitecoreProvider, {
+  return renderToStaticMarkup(withTestAppRouter(React.createElement(SitecoreProvider, {
     page: { mode: { isEditing, isNormal: !isEditing, isPreview: false }, siteName: 'allianz-life',
       layout: { sitecore: { context: {}, route: { name: 'Biography', fields: {}, placeholders: {} } } } },
     api: {}, componentMap: new Map(), loadImportMap: async () => ({}),
   }, React.createElement(Component, { params,
     fields: datasource === undefined ? undefined : { data: { datasource } },
-  })));
+  }))));
 }
 export const field = (value) => ({ jsonValue: { value } });
 export const metadata = (name, type) => ({ fieldId: `test-${name}-field`, fieldType: type, itemId: 'test-biography-item' });

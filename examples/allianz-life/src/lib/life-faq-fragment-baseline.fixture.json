@@ -1,0 +1,177 @@
+{
+  "qualification": "Immutable source-output witnesses from exact a363 CardGrid and installed actual SDK. Attribute order and SDK classification markers alone are excluded; all other DOM tokens/text/attributes retained.",
+  "base": "a363d5555860a65227b74030cd10c2456f3850dd",
+  "cases": {
+    "normal3": {
+      "sha256": "92c09fd70f0834df4709ede5f223fa4143babf672b7cc4e19b6b3ec7a5635e94",
+      "classification": [
+        "react",
+        "react",
+        "react"
+      ]
+    },
+    "selfCase": {
+      "sha256": "bd8aab410abad9707ad26f0793c9ee9897dbce7c46ec25ac1cdf3c8e52a08074",
+      "classification": [
+        "react",
+        "react"
+      ]
+    },
+    "mode0": {
+      "sha256": "44be754ff1723a58ea4b977108561f1ccb165433e07dfe616f11a6e0a9f1c9bd",
+      "classification": [
+        "react",
+        "react",
+        "react"
+      ]
+    },
+    "mode1": {
+      "sha256": "92c09fd70f0834df4709ede5f223fa4143babf672b7cc4e19b6b3ec7a5635e94",
+      "classification": [
+        "react",
+        "react",
+        "react"
+      ]
+    },
+    "mode2": {
+      "sha256": "44be754ff1723a58ea4b977108561f1ccb165433e07dfe616f11a6e0a9f1c9bd",
+      "classification": [
+        "react",
+        "react",
+        "react"
+      ]
+    },
+    "mode3": {
+      "sha256": "92c09fd70f0834df4709ede5f223fa4143babf672b7cc4e19b6b3ec7a5635e94",
+      "classification": [
+        "react",
+        "react",
+        "react"
+      ]
+    },
+    "mode4": {
+      "sha256": "92c09fd70f0834df4709ede5f223fa4143babf672b7cc4e19b6b3ec7a5635e94",
+      "classification": [
+        "react",
+        "react",
+        "react"
+      ]
+    },
+    "mode5": {
+      "sha256": "92c09fd70f0834df4709ede5f223fa4143babf672b7cc4e19b6b3ec7a5635e94",
+      "classification": [
+        "react",
+        "react",
+        "react"
+      ]
+    },
+    "mode6": {
+      "sha256": "92c09fd70f0834df4709ede5f223fa4143babf672b7cc4e19b6b3ec7a5635e94",
+      "classification": [
+        "react",
+        "react",
+        "react"
+      ]
+    },
+    "mode7": {
+      "sha256": "92c09fd70f0834df4709ede5f223fa4143babf672b7cc4e19b6b3ec7a5635e94",
+      "classification": [
+        "react",
+        "react",
+        "react"
+      ]
+    },
+    "rejected": {
+      "sha256": "9aad162e5f8bfaf7254e4a84d89fddb63ab3d9387a4b58567dd912e41cf6b984",
+      "classification": [
+        "react",
+        "react",
+        "react",
+        "react",
+        "react",
+        "next",
+        "react"
+      ]
+    },
+    "extra0": {
+      "sha256": "5ee62dd66aa6f7b8e3180c704f258344f0d85f89e1c818b9efc748367a3952dd",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra1": {
+      "sha256": "5ee62dd66aa6f7b8e3180c704f258344f0d85f89e1c818b9efc748367a3952dd",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra2": {
+      "sha256": "5ee62dd66aa6f7b8e3180c704f258344f0d85f89e1c818b9efc748367a3952dd",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra3": {
+      "sha256": "5ee62dd66aa6f7b8e3180c704f258344f0d85f89e1c818b9efc748367a3952dd",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra4": {
+      "sha256": "5ee62dd66aa6f7b8e3180c704f258344f0d85f89e1c818b9efc748367a3952dd",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra5": {
+      "sha256": "66ded92abc0b3d9534b522e51cd13beb8d5e1d1f31770d0ee13d4193662fe3a7",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra6": {
+      "sha256": "66ded92abc0b3d9534b522e51cd13beb8d5e1d1f31770d0ee13d4193662fe3a7",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra7": {
+      "sha256": "66ded92abc0b3d9534b522e51cd13beb8d5e1d1f31770d0ee13d4193662fe3a7",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra8": {
+      "sha256": "c715dfb8dfd4f18e96a32fc50e8eab91c4709219941487cf30bbbcf5d1ea8b08",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra9": {
+      "sha256": "5ee62dd66aa6f7b8e3180c704f258344f0d85f89e1c818b9efc748367a3952dd",
+      "classification": [
+        "react"
+      ]
+    },
+    "extra10": {
+      "sha256": "1ffeacbcab06dd393451cb2098131781895365f2c7efd578aa741679236e99b1",
+      "classification": [
+        "react"
+      ]
+    },
+    "prompt0": {
+      "sha256": "0ed0fa0d417e5e32876c45646aa7134f23d1baec45d30513930079ef66d5a9e2",
+      "classification": [
+        "react"
+      ]
+    },
+    "prompt1": {
+      "sha256": "9c68f99d0876fd4e4f3a3f448c2c8795c05ce8ce6787266c39737ca2e1ec486c",
+      "classification": [
+        "next"
+      ]
+    }
+  },
+  "baselineComponentSha256": "3bf79d3f2657ee21b2d06d7bd9bf24e843d49347e211eea0cda1bca110860162",
+  "baselineWitnessCount": 24
+}

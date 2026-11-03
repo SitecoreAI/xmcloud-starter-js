@@ -36,6 +36,7 @@ type AllianzCardGridPresentation = {
   sourceDestinations?: boolean;
   sourceIconAppearance?: boolean;
   sourceStatisticBadges?: boolean;
+  communityStatistics?: boolean;
   sourceDownloadLinks?: boolean;
   headingIconAppearance?: 'gray' | 'brand';
 };
@@ -62,7 +63,7 @@ function sourceDestinationId(ownerId: unknown): string | undefined {
 }
 
 function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearance,
-  sourceAnchor, sourceRelatedIntroduction = false, sourceFeaturesIntroduction = false, sourceDestinations = false, sourceIconAppearance = false, sourceDownloadLinks = false, headingIconAppearance, sourceStatisticBadges = false,
+  sourceAnchor, sourceRelatedIntroduction = false, sourceFeaturesIntroduction = false, sourceDestinations = false, sourceIconAppearance = false, sourceDownloadLinks = false, headingIconAppearance, sourceStatisticBadges = false, communityStatistics = false,
 }: AllianzCardGridProps & AllianzCardGridPresentation) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
@@ -83,6 +84,16 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
     && ['7a125b9dcbd649a8a0ba37c3f863500c', '78f7238c5e704a33933cde17e6cbf02a'].includes(nativeDataId ?? '')
     && params.layout === 'stacked' && params.columns === '3';
   const cards = (data.children?.results ?? []).map(allianzCardFields);
+  // Dedicated native Community variant; Default/FPro and other groups retain
+  // their existing badge contracts. Card values and order stay author-owned.
+  const communityStatisticIds = ['aff007ffe17d4573a25ca044f00cb559',
+    'c14aeaed458a4f4ebbf54e1de24d998c', 'f18e34382cc941ceb93c31c64a15b886'];
+  const isCommunityStatistics = communityStatistics
+    && sourceDestinationId(routeId) === '8fde8733c5145da3a45f032cd9248b9f'
+    && sourceDestinationId('id' in data ? data.id : undefined) === 'b804dbc9436647b18dee975a10edaa28'
+    && cards.length === communityStatisticIds.length
+    && new Set(cards.map(card => sourceDestinationId(card.id))).size === communityStatisticIds.length
+    && cards.every(card => communityStatisticIds.includes(sourceDestinationId(card.id) ?? ''));
   const iconAppearance = sourceIconAppearance ? cardIconAppearance(params.iconAppearance) : undefined;
   // Keep the witnessed Claims process in its three ordinary source columns.
   const claimsStepIds = ['2a7e982f64794ca4b1d5649f67de3b9e', 'ff80e7eae9cc4de88ab80a3badd9c4a9',
@@ -248,7 +259,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
             const field = allianzLinkField(card.link?.jsonValue, isEditing);
             const linkProps = scalarLinkProps(card, sourceRelatedIntroduction && !isEditing ? safeLinkRenderProps(field) : { field });
             const content = <>
-              {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="m-card__image"><picture className="c-image"><Image editable={isEditing} field={card.image?.jsonValue} sizes={sourceRelatedIntroduction ? '100vw' : undefined} className="c-image__img c-teaser__image-img" /></picture></div>}
+              {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="m-card__image"><picture className="c-image"><Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} sizes={sourceRelatedIntroduction ? '100vw' : undefined} className="c-image__img c-teaser__image-img" /></picture></div>}
               <div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, false) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, false) && <RichText editable={isEditing} field={sourceRelatedIntroduction ? safeEditorialRichText(card.body?.jsonValue, isEditing) : cardBodyField(card)} className="m-card__body" />}
             </>;
             return shouldRenderLinkField(field, isEditing)
@@ -268,11 +279,15 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
             && typeof numeral === 'string' && numeral.trim().length > 0
             && !shouldRenderImageField(card.icon?.jsonValue, false)
             && !shouldRenderImageField(card.image?.jsonValue, false);
-          // The six source samples use circles for two characters, wide badges beyond.
-          const wideNumberBadge = sourceNumberBadge && Array.from(numeral.trim()).length > 2;
+          const communityNumberBadge = isCommunityStatistics && card.iconTheme?.jsonValue?.value === 'primary-brand'
+            && typeof numeral === 'string' && numeral.trim().length > 0
+            && !shouldRenderImageField(card.icon?.jsonValue, false)
+            && !shouldRenderImageField(card.image?.jsonValue, false);
+          // Community uses three wide badges. FPro retains its existing circle/wide rule.
+          const wideNumberBadge = communityNumberBadge || (sourceNumberBadge && Array.from(numeral.trim()).length > 2);
           const lifetimeNumberBadge = isLifetimeSteps && typeof numeral === 'string' && numeral.trim().length > 0;
           const claimsNumberBadge = isClaimsSteps && typeof numeral === 'string' && numeral.trim().length > 0;
-          const numberBadge = sourceNumberBadge || lifetimeNumberBadge || claimsNumberBadge;
+          const numberBadge = sourceNumberBadge || communityNumberBadge || lifetimeNumberBadge || claimsNumberBadge;
           const sourceWhiteIcon = (isLifetimeInformation
             && sourceDestinationId(card.id) === '3bed4184604d4f66a8132654c28ea1f6') || isClaimsQuestion || isFProInformation;
           const cardAppearance = iconAppearance ?? (isGlossaryQuestion ? 'white-on-purple' : undefined) ?? (sourceWhiteIcon
@@ -299,7 +314,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
                 })}</div></footer>}
               </div>
             </div>
-            {shouldRenderImageField(card.image?.jsonValue, isEditing) && ['stacked','image-left','image-right'].includes(params.layout) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} className="c-image__img c-teaser__image-img" /></picture></div>}
+            {shouldRenderImageField(card.image?.jsonValue, isEditing) && ['stacked','image-left','image-right'].includes(params.layout) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} className="c-image__img c-teaser__image-img" /></picture></div>}
           </article>
         </CardColumn>;
         })}</CardGroup>}
@@ -309,6 +324,10 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
 }
 
 export const Default = (props: AllianzCardGridDefaultProps) => <AllianzCardGrid {...props} sourceDestinations sourceIconAppearance sourceStatisticBadges />;
+
+/** Community's three native alphanumeral fields own its wide statistic badges. */
+export const CommunityStatistics = (props: AllianzCardGridProps) => <AllianzCardGrid {...props}
+  sourceDestinations sourceIconAppearance communityStatistics />;
 
 /** Exact source Download geometry, decorative inside the authored link icon span. */
 const SourceDownloadLinkIcon = () => <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -473,7 +492,7 @@ function EditorialCards({ fields, params, appearance, sourceArrows = false }: Al
             <div className={`tileContent ${params.alignment === 'left' || (split && params.alignment !== 'center') ? 'u-text-left' : 'u-text-center'}`}>
               {intro ? <>{icon}{content}</> : <>{icon && <div className="tileSubGrid__image">{icon}</div>}<div className="tileSubGrid__content">{content}</div></>}
             </div>
-            {imageSplit && shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} className="c-image__img c-teaser__image-img" /></picture></div>}
+            {imageSplit && shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} className="c-image__img c-teaser__image-img" /></picture></div>}
           </article>;
         return params.container === 'content' ? <Fragment key={card.id}>{article}</Fragment> : <div key={card.id} className={editorialColumnClass(params)}>{article}</div>;
       })}
@@ -872,14 +891,28 @@ const LifeFaqIcon = ({ name }: { name: string }) => {
     alt="" aria-hidden="true" width={26} height={26} />;
 };
 
-const LifeFaqLink = ({ source, isEditing }: {
-  source: Parameters<typeof allianzLinkField>[0]; isEditing: boolean;
+const LIFE_FAQ_ROUTED_FRAGMENTS = new Set([
+  '#GeneralLifeInsuranceQuestions', '#about-indexed-universal-life', '#applying-for-life-insurance',
+]);
+
+const LifeFaqLink = ({ source, isEditing, routeFragment = false }: {
+  source: Parameters<typeof allianzLinkField>[0]; isEditing: boolean; routeFragment?: boolean;
 }) => {
   const field = allianzLinkField(source, isEditing);
   const props = isEditing ? { field } : safeLinkRenderProps(field);
+  const value = source?.value;
+  const href = field.value?.href;
+  // Keep the complete native Field. The public SDK matcher selects NextLink;
+  // its public `as` string preserves the literal hash instead of an encoded pathname.
+  const fragmentProps = routeFragment && !isEditing && typeof href === 'string'
+    && LIFE_FAQ_ROUTED_FRAGMENTS.has(href) && value?.href === href
+    && !value.querystring && (!value.anchor || '#' + value.anchor.replace(/^#/, '') === href)
+    && !Object.hasOwn(value, 'download') && !Object.hasOwn(value, 'aria-disabled') && !Object.hasOwn(value, 'disabled')
+    && (!value.target || value.target === '_self')
+    ? { internalLinkMatcher: /^#/, as: href } : {};
   const ariaLabel = source?.value?.ariaLabel || source?.value?.['aria-label'] ||
     (source?.value?.linktype === 'anchor' ? source.value.text : undefined);
-  return <Link {...props} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link"
+  return <Link {...props} {...fragmentProps} editable={isEditing} renderChildrenWhenEmpty={isEditing} className="a-link"
     aria-label={typeof ariaLabel === 'string' && ariaLabel ? ariaLabel : undefined}>
     <span className="a-link__icon" aria-hidden="true"><EditorialResourceArrow /></span>
     <span className="a-link__text">{source?.value?.text}</span>
@@ -895,6 +928,8 @@ function LifeFaqCards({ fields, params, appearance }: AllianzCardGridProps & {
   if (!data) return <NoDataFallback componentName="AllianzCardGrid" />;
   const cards = (data.children?.results ?? []).map(allianzCardFields);
   const prompt = appearance === 'prompt';
+  const routeFragments = !prompt && page?.mode?.isNormal === true
+    && page.mode.isEditing === false && page.mode.isPreview === false;
   const icons = prompt ? LIFE_FAQ_PROMPT_ICONS : LIFE_FAQ_NAVIGATION_ICONS;
   const theme = prompt ? 't-bg-green-soft' : 't-bg-transparent';
   const wrapperClass = 'l-container--full-width ' + theme + ' axlTileCollection allianz-life-faq-cards';
@@ -933,7 +968,7 @@ function LifeFaqCards({ fields, params, appearance }: AllianzCardGridProps & {
                   {shouldRenderTextField(card.body?.jsonValue, isEditing) &&
                     <RichText editable={isEditing} field={card.body?.jsonValue} className="tileBody u-font-size-md" />}
                   {!prompt && shouldRenderLinkField(card.link?.jsonValue, isEditing) &&
-                    <footer><div className="tileLink"><LifeFaqLink source={card.link?.jsonValue} isEditing={isEditing} /></div></footer>}
+                    <footer><div className="tileLink"><LifeFaqLink source={card.link?.jsonValue} isEditing={isEditing} routeFragment={routeFragments} /></div></footer>}
                 </div>
               </div>
             </article>
