@@ -6,6 +6,7 @@ import { RETIREMENT_INPUTS, validateCalculator, incomeToolsDemoMode, type Allian
 import { IncomeLocalToolsDemo } from 'components/allianz-income-tools/IncomeLocalToolsDemo';
 import { observeLifetimeFrame } from './lifetime-frame';
 import { LifeInsuranceNative } from 'lib/life-insurance/LifeInsuranceNative';
+import { RequiredMinimumDistribution as RmdNative } from './RequiredMinimumDistribution';
 
 /** Isolate the original calculator's bundled React, CSS and Highcharts globals. */
 const LifetimeIncomeFrame = () => {
@@ -42,6 +43,9 @@ export const LifetimeIncome = ({ fields, params }: AllianzCalculatorProps) => {
   </section>;
 };
 
+/** Native RMD variant retains the verified source calculation inside its document. */
+export const RequiredMinimumDistribution = (props: AllianzCalculatorProps) => <RmdNative {...props} />;
+
 export const Default = (props: AllianzCalculatorProps) => {
   const { fields, params, rendering } = props;
   const { page } = useSitecore();
@@ -64,6 +68,7 @@ export const Default = (props: AllianzCalculatorProps) => {
   };
   const demoMode = incomeToolsDemoMode(data?.schemaKey, rendering?.dataSource);
   // The existing native Calculator template selects this verified tool explicitly.
+  if (data?.schemaKey?.jsonValue?.value === 'rmd-source') return <RequiredMinimumDistribution {...props} />;
   if (data?.schemaKey?.jsonValue?.value === 'lifetime-income-official') return <LifetimeIncome {...props} />;
   if (data?.schemaKey?.jsonValue?.value === 'life-insurance-source-core') return <LifeInsuranceNative {...props} />;
   if (demoMode) return <section className="allianz-local-calculator" id={params.RenderingIdentifier}>

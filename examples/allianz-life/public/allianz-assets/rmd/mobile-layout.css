@@ -1,0 +1,13 @@
+/* RMD-only small-screen presentation. Original source controls and engine stay intact. */
+@media (max-width: 703px) {
+  #allianz-rmd-frame #dx-required-minimum-distribution-general-ed > div > .l-grid__row > .l-grid__column-4,
+  #allianz-rmd-frame #dx-required-minimum-distribution-general-ed > div > .l-grid__row > .l-grid__column-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  #allianz-rmd-frame #dx-required-minimum-distribution-general-ed > div > .l-grid__row > .l-grid__column-8 {
+    margin-top: 24px;
+  }
+}

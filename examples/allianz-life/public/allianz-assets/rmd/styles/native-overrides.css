@@ -1,0 +1,446 @@
+/* Native controls adapt the recovered public CSS, whose raw stylesheet is
+ * intentionally served without changing its media-query grammar. These scoped
+ * selectors remain stronger even when that stylesheet is loaded later. */
+.allianz-modern .c-accordion .c-accordion__item-content[hidden],
+.allianz-legacy .c-accordion .c-accordion__item-content[hidden] {
+  display: none;
+}
+/* This historical NY article prints full regulatory URLs as inline link text. */
+#page-90-day-grace-period-on-premium-payments-for-your-life-insurance-policy :is(.o-richTextEditor__wrapper, .tileBody, .allianz-legacy-editorial) a:not(.a-link) {
+  overflow-wrap: anywhere;
+}
+/* The native Index Options body keeps its semantic comparison table scrollable. */
+@media (max-width: 703px) {
+  .allianz-index-options-rich-text:has(table) {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  /* The recovered Back label is a flex item but inherits nowrap from the
+   * desktop trail. Let long native page titles fit the mobile container. */
+  .allianz-modern .azl-breadcrumb .c-breadcrumb__list > .c-breadcrumb__item:nth-last-child(2) {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+  }
+  .allianz-modern .azl-breadcrumb .c-breadcrumb__list > .c-breadcrumb__item:nth-last-child(2) > .c-breadcrumb__link {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+.allianz-modern .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]),
+.allianz-legacy .c-accordion .c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) {
+  display: block;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Reduce only the native answer wrapper's desktop inset on mobile.
+ * Keep authored paragraph margins, bottom spacing and SDK field markup intact. */
+@media (max-width: 703px) {
+  .allianz-modern .c-accordion > .c-accordion__item-wrapper > button.c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) > .accordionContent,
+  .allianz-legacy .c-accordion > .c-accordion__item-wrapper > button.c-accordion__trigger[aria-expanded="true"] + .c-accordion__item-content:not([hidden]) > .accordionContent {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* aria-hidden/inert must also remove a collapsed dropdown's layout box. The
+ * recovered 340px panel otherwise overflows the 768px viewport while closed. */
+.allianz-modern .O-azl-header .m-navigation-primary ul[aria-hidden="true"] {
+  display: none;
+}
+.allianz-modern .O-azl-header .m-navigation-primary > ul[data-level="1"] > li > a {
+  padding-right: 28px;
+}
+.allianz-modern .O-azl-header .m-navigation-primary > ul[data-level="1"] > li:last-child > .nav-list-nested {
+  right: 0;
+  left: auto;
+}
+.allianz-modern .O-azl-header .m-navigation-primary .nav-list-nested {
+  max-width: calc(100vw - 32px);
+}
+/* The source SVG centers its 122x30 viewBox inside a 7.4rem x 48px viewport.
+ * An authored image needs the same viewport and contain behavior. */
+.allianz-modern .O-azl-header .m-navigationUtility .logo-icon img {
+  width: 7.4rem;
+  height: 48px;
+  object-fit: contain;
+  vertical-align: top;
+}
+/* The recovered header used anchors for these controls. Its generic button
+ * rules add a 24px bottom margin and make every button full-width on mobile.
+ * Restore only the native adapters; keep the source visibility breakpoint and
+ * the existing link focus treatment and submenu hit targets. */
+.allianz-modern .O-azl-header .m-navigation-mobile-btn,
+.allianz-modern .O-azl-header .allianz-text-button,
+.allianz-modern .O-azl-header .allianz-nav-toggle {
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  border-radius: 0;
+  letter-spacing: normal;
+}
+.allianz-modern .O-azl-header button.m-navigation-mobile-btn {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  margin-top: 3px;
+  color: #005074;
+}
+/* Source Search is an inline-flex link with a 32px functional icon. */
+.allianz-modern .O-azl-header .allianz-text-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  line-height: 24px;
+  letter-spacing: .0625rem;
+  vertical-align: top;
+}
+.allianz-modern .O-azl-header .allianz-text-button > .c-icon--search {
+  display: block;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 24px;
+  line-height: 24px;
+}
+/* Source Search starts the wrapped tablet row. The adapter's auto left margin
+ * otherwise moves it to the right edge; put the row's free space after it. */
+@media (min-width: 704px) and (max-width: 991px) {
+  .allianz-modern .O-azl-header .allianz-header-search {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+.allianz-modern .O-azl-header .allianz-nav-toggle {
+  top: 38px;
+  min-width: 28px;
+  min-height: 28px;
+}
+.allianz-modern .O-azl-header .m-navigation-primary ul ul .allianz-nav-toggle {
+  top: 27px;
+  right: 10px;
+}
+.allianz-modern .O-azl-header .allianz-nav-toggle .c-icon {
+  display: block;
+  position: static;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  line-height: 1;
+}
+/* The authored Image field supplies the alpha shape. Visitor masks and native
+ * image filters reproduce source SVG colors without modifying media bytes. */
+.allianz-modern .allianz-field-icon {
+  display: inline-block;
+  background-color: #005074;
+  color: #005074;
+  vertical-align: middle;
+  mask-mode: alpha;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+.allianz-modern .O-azl-header .m-navigationUtility .a-link__icon > .allianz-field-icon,
+.allianz-modern .O-azl-header .m-navigationUtility .a-link__icon img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+.allianz-modern .O-azl-header .m-navigationUtility .a-link:active .allianz-field-icon,
+.allianz-modern .O-azl-header .m-navigationUtility .a-link:visited .allianz-field-icon {
+  background-color: #8a679c;
+  color: #8a679c;
+}
+.allianz-modern .O-azl-header .m-navigationUtility .a-link:hover .allianz-field-icon {
+  background-color: #06c;
+  color: #06c;
+}
+.allianz-modern .O-azl-header .m-navigationUtility .a-link:focus-visible .allianz-field-icon {
+  background-color: #fff !important;
+  color: #fff !important;
+}
+.allianz-modern .m-footer__social-link .a-icon > .allianz-field-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.allianz-modern .m-footer__social-link:visited .allianz-field-icon {
+  background-color: #006192;
+  color: #006192;
+}
+.allianz-modern .m-footer__social-link:hover .allianz-field-icon {
+  background-color: #06c;
+  color: #06c;
+}
+.allianz-modern .m-footer__social-link:active .allianz-field-icon,
+.allianz-modern .m-footer__social-link:focus .allianz-field-icon {
+  background-color: #6d3484;
+  color: #6d3484;
+}
+
+/* Ordinary native SVG images need no CORS grant. The local SourceAlpha filter
+ * follows the same inherited interaction color as the source inline vectors. */
+.allianz-modern .allianz-field-icon--native {
+  position: relative;
+  background-color: transparent !important;
+}
+.allianz-modern .allianz-field-icon--native > .allianz-field-icon__filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.allianz-modern .allianz-field-icon--native > .allianz-field-icon__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* SDK editing markers follow the final anchor, so :last-child cannot identify
+ * the final logical service link. Preserve its source padding and margin. */
+.allianz-modern .c-footer .c-footer__legal-link--last {
+  border-right: 0;
+}
+
+@media (max-width: 703px) {
+  /* The absolute source curtain panel can shrink to its social row's 332px
+   * intrinsic width. Cap it at the footer without changing link targets. */
+  .allianz-modern .c-footer .c-footer__container--curtain-panel {
+    max-width: 100%;
+  }
+  /* Fit the source 300px rows inside the service padding when a scrollbar
+   * narrows a small viewport. Keep equal social targets and centered icons. */
+  .allianz-modern .c-footer .c-footer__copyright {
+    max-width: 100%;
+  }
+  .allianz-modern .c-footer .m-footer__social {
+    max-width: 100%;
+  }
+  .allianz-modern .c-footer .m-footer__social-link {
+    flex: 0 1 60px;
+    width: 60px;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Recovered Search has zero margin below 992px. The adapter's 16px right
+   * margin adds a gap before the source hamburger that the original lacks. */
+  .allianz-modern .O-azl-header .allianz-header-search {
+    margin-right: 0;
+  }
+  /* Native buttons keep the recovered headline dimensions and source glyph;
+   * only an expanded list overrides the source mobile display:none rule. */
+  .allianz-modern .c-footer button.c-footer__navigation-headline {
+    width: 100%;
+    position: relative;
+    border: 0;
+    border-bottom: 1px solid #d9d9d9;
+    border-radius: 0;
+    background: #f5f5f5;
+    color: #5b5b5b;
+    text-align: left;
+    white-space: normal;
+  }
+  .allianz-modern .c-footer .c-footer__navigation-list:not([hidden]) {
+    display: block;
+  }
+  .allianz-modern .c-footer button.c-footer__navigation-headline[aria-expanded="true"]:before {
+    transform: rotate(180deg);
+  }
+  /* The original class was on a page-level wrapper. It is now on the header;
+   * clipping that wrapper cuts off the absolute, scrollable menu below it. */
+  .allianz-modern .O-azl-header.m-navigation-primary-open {
+    overflow: visible;
+    z-index: 3;
+  }
+  .allianz-modern .O-azl-header .m-navigation-primary[aria-hidden="true"] {
+    display: none;
+  }
+  .allianz-modern .O-azl-header.m-navigation-primary-open .m-navigation-primary {
+    height: auto;
+    max-height: calc(100dvh - 127px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .allianz-modern .O-azl-header .allianz-nav-toggle {
+    top: 28px;
+    right: 16px;
+  }
+  .allianz-modern .O-azl-header.m-navigation-primary-open .m-navigation-primary > ul > li > a {
+    padding-right: 52px;
+  }
+}
+
+/* The root link has z-index:100 on mobile. Keep the native button above it
+ * in the source toggle's 50px right-edge area, leaving the root link usable. */
+@media only screen and (max-width: 767px) {
+  .allianz-legacy .left-nav > .dropdown > button.allianz-legacy-section-toggle {
+    z-index: 101;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* User-entered queries can be a single long word at the search limit. */
+.allianz-local-search-results > p > strong {
+  overflow-wrap: anywhere;
+}
+
+/* Generic modern button rules also match these legacy controls. */
+@media (max-width: 767px) {
+  .allianz-legacy .navbar-header > button.navbar-toggle {
+    display: block;
+    width: auto;
+    min-width: 0;
+    white-space: normal;
+  }
+
+  .allianz-legacy button.allianz-legacy-accordion-trigger {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+/* The native Rates body retains the official Ratewatch classes, but not its
+ * #rates application root. Keep this adaptation inside that presentation.
+ * Values measured on the official BCP Rates page, 2026-10-26. */
+.allianz-local-rates .azl-ratewatch-product-tables figure.table {
+  border: 0 !important;
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 20px;
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 16px;
+  line-height: 1.42857143;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table th {
+  padding: 8px;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > thead > tr > th {
+  border-top: 0;
+  border-bottom: 0;
+  color: #fff;
+  text-align: center;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > thead > tr > th.primary.fia {
+  background-color: #5f259f;
+  font-weight: 700;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr:nth-of-type(odd) {
+  background-color: #f2f2f1;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr:nth-of-type(even) {
+  background-color: #e4e4e4;
+}
+/* CKEditor groups the year-label row in thead; its source class still owns
+ * the secondary gray treatment regardless of the row group's serialization. */
+.allianz-local-rates .azl-ratewatch-product-tables .product-table th.default {
+  border: 0;
+  background-color: #c1c1c1;
+  color: #fff;
+  font-weight: 400;
+  text-align: left;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td {
+  position: relative;
+  padding: 10px;
+  border: 0;
+  background-color: transparent;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td.left {
+  text-align: left;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td.right {
+  text-align: right;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td.center {
+  text-align: center;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table > tbody > tr > td.ratewatch-shading {
+  background-color: #d3effb;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table.is-fixed {
+  table-layout: fixed;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table.is-fixed col:first-child {
+  width: 50%;
+}
+
+/* Editor-inserted equal-width colgroups are presentation metadata, not rate
+ * values. Restore the source's automatic columns, with the fixed-table label
+ * column occupying half the table. Inline widths require this narrow override. */
+.allianz-local-rates .azl-ratewatch-product-tables .product-table col {
+  width: auto !important;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table.is-fixed col:first-child {
+  width: 50% !important;
+}
+.allianz-local-rates .azl-ratewatch-product-tables figure.table table.product-table {
+  border: 0 !important;
+  background-color: transparent;
+}
+@media only screen and (max-width: 767px) {
+  .allianz-local-rates .azl-ratewatch-product-tables .product-table {
+    font-size: 15px;
+  }
+}
+
+.allianz-local-rates .azl-ratewatch-product-tables figure.table .product-table th,
+.allianz-local-rates .azl-ratewatch-product-tables figure.table .product-table td {
+  border: 0 !important;
+}
+/* Match Ratewatch's own narrow-table scrolling rather than squeezing data
+ * into editor-generated columns. The row groups retain full content width. */
+@media (max-width: 992px) {
+  .allianz-local-rates .azl-ratewatch-product-tables .product-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .allianz-local-rates .azl-ratewatch-product-tables .product-table tbody,
+  .allianz-local-rates .azl-ratewatch-product-tables .product-table thead {
+    display: table;
+    width: 100%;
+  }
+}
+/* The editor moves the source's first gray label row into thead. Keep the
+ * following data-row stripe sequence equivalent to the source. */
+.allianz-local-rates .azl-ratewatch-product-tables .product-table thead:has(th.default) + tbody > tr:nth-of-type(odd) {
+  background-color: #e4e4e4;
+}
+.allianz-local-rates .azl-ratewatch-product-tables .product-table thead:has(th.default) + tbody > tr:nth-of-type(even) {
+  background-color: #f2f2f1;
+}
+
+/* The inherited legacy header gradient otherwise paints over FIA's purple. */
+.allianz-local-rates .azl-ratewatch-product-tables .product-table thead,
+.allianz-local-rates .azl-ratewatch-product-tables .product-table th {
+  background-image: none;
+}
+
+/* The official NY product page wraps this comparison table in table-responsive.
+ * Its authored native RichText has no wrapper: constrain the table itself so
+ * its four columns scroll without widening the whole mobile document. */
+@media (max-width: 767px) {
+  #page-index-advantage-plus-new-york .allianz-legacy-editorial table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}

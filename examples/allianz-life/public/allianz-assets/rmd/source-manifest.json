@@ -1,0 +1,111 @@
+{
+  "sourcePage": "https://www.allianzlife.com/get-answers/calculate-your-rmd",
+  "sourceBuild": "dx-required-minimum-distribution-general-ed production build2/26/2025",
+  "engineAndWorkbookUnmodified": false,
+  "assets": [
+    {
+      "path": "allianz-assets/rmd/index.html",
+      "bytes": 1301,
+      "sha256": "f003f33fc585e569b8e02521e27a3296f3cc32b3156de979e83851bd574b6319",
+      "newFile": true
+    },
+    {
+      "path": "allianz-assets/rmd/source-widget.js",
+      "bytes": 3473702,
+      "sha256": "daf17233b58dc5a574bd134425405176b117d0855e69bcc85ce263a792659f81",
+      "newFile": true,
+      "originalSourceSha256": "0d195538ca3475370af505e9191dfd6bbd8a016aa37c6033ce84fea22e9d2f17",
+      "adaptation": "Chart accessibility summaries only; calculation logic unchanged"
+    },
+    {
+      "path": "allianz-assets/rmd/static-workbook-boundary.js",
+      "bytes": 3107,
+      "sha256": "337204ffb4ac43351a7ee363e4f7f7838c4719c5e333becb6b81ed9041747b9b",
+      "newFile": true
+    },
+    {
+      "path": "allianz-assets/rmd/styles/globals.css",
+      "bytes": 4733,
+      "sha256": "e28b2421cf885d6ff267ae94ef08816ab2ef6620ec5c0cfefdd82dd05f2fcf36",
+      "newFile": true
+    },
+    {
+      "path": "allianz-assets/rmd/styles/native-overrides.css",
+      "bytes": 15884,
+      "sha256": "6265d6853fa807611c9fe536060d84cefed01561f776fde561e643d3a52a098d",
+      "newFile": true
+    },
+    {
+      "path": "allianz-assets/rmd/mobile-layout.css",
+      "bytes": 536,
+      "sha256": "689b61a4f1f4431dc3c53ed8b34dd02ce5654619490566e0c34092938506d1f7",
+      "newFile": true
+    },
+    {
+      "path": "~/Media/Files/Global/ToolShed/dx-required-minimum-distribution-general-ed/dx-required-minimum-distribution-general-ed-xlsx.xlsx",
+      "bytes": 77007,
+      "sha256": "49d0b4ebd9f78d9beafa7ff50a047c1bca2e1340c32c9e7e05626841880769a5",
+      "newFile": true
+    },
+    {
+      "path": "allianz-assets/source-style.css",
+      "bytes": 403706,
+      "sha256": "c23be3b4a5e0d106e798f2d7f79fc750dbf36f34f6c807d7247fe66ef0237eb6",
+      "newFile": false,
+      "source": "Existing exact a363 public asset"
+    },
+    {
+      "path": "fonts/allianz/AllianzNeoW01-Light.woff2",
+      "bytes": 17276,
+      "sha256": "b9839ccc0adcf82e73c521619c993b0f5488c71ce80aec4921e37da9e947fe00",
+      "newFile": false,
+      "source": "Existing exact a363 public asset"
+    },
+    {
+      "path": "fonts/allianz/AllianzNeoW01-Regular.woff2",
+      "bytes": 17556,
+      "sha256": "c6bca25175ddd8237dd432141cff1c12bf5afea4a8da4505199c59fcbea14226",
+      "newFile": false,
+      "source": "Existing exact a363 public asset"
+    },
+    {
+      "path": "fonts/allianz/AllianzNeoW01-SemiBold.woff2",
+      "bytes": 17296,
+      "sha256": "6f0b7ea814ab43aef5d6d74d5ece41c6a16723ca07cf68762c19128972e1c1a3",
+      "newFile": false,
+      "source": "Existing exact a363 public asset"
+    },
+    {
+      "path": "fonts/allianz/AllianzNeoW01-Bold.woff2",
+      "bytes": 19740,
+      "sha256": "8e3d4ac519e4e10245d89e42e4474b974154bfcf69037974287fbc9853275d7c",
+      "newFile": false,
+      "source": "Existing exact a363 public asset"
+    },
+    {
+      "path": "fonts/allianz/Allianz-Icons.woff2",
+      "bytes": 52796,
+      "sha256": "aad67e30ae743483c8767178a3adb6ea5146591b98e9d28b767c940e61b6c447",
+      "newFile": false,
+      "source": "Existing exact a363 public asset"
+    }
+  ],
+  "workbookStaticPath": "/~/Media/Files/Global/ToolShed/dx-required-minimum-distribution-general-ed/dx-required-minimum-distribution-general-ed-xlsx.xlsx",
+  "sourceMountId": "dx-required-minimum-distribution-general-ed",
+  "sourceBehaviorQualification": "Source calculation logic and workbook unchanged. Only chart accessibility summary presentation is adapted to the first, maximum and last displayed age/amount pairs, retaining zero values. Financial policy is not independently validated; source72/73 versus editorial75 and balance1M/10M wording discrepancies remain.",
+  "runtimeBoundary": "Exact same-origin bodyless static GET only; already-received workbook bytes verified before source form readiness. No calculation API or additional request.",
+  "responsivePresentation": {
+    "scope": "Only the RMD source mount at viewport widths703px and below",
+    "behavior": "Stack original form and chart columns vertically, retaining their source controls, order and calculation engine. Add24px separation before the chart. Original side-by-side rules remain applicable at704px and above.",
+    "sourceFidelityQualification": "Intentional mobile presentation improvement over the source fixed4/8 split; not exact source mobile geometry.",
+    "financialLogicChanged": false
+  },
+  "calculationLogicAndWorkbookUnmodified": true,
+  "accessibilityPresentationAdaptation": {
+    "scope": "Only Gc summary helper and the two seriesDescriptionFormatter text expressions",
+    "originalSourceWidgetSha256": "0d195538ca3475370af505e9191dfd6bbd8a016aa37c6033ce84fea22e9d2f17",
+    "statutoryStartAgeClaim": false,
+    "zeroValuesRetained": true,
+    "calculationCodeOutsideThreePresentationSpansUnchanged": true
+  }
+}

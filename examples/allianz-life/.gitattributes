@@ -9,3 +9,7 @@
 *.ts text eol=crlf
 *.tsx text eol=crlf
 *.js text eol=crlf
+
+# Preserve verified RMD source asset bytes through checkout.
+public/allianz-assets/rmd/source-widget.js -text
+public/allianz-assets/rmd/static-workbook-boundary.js -text
