@@ -186,8 +186,15 @@ test('source CSS contracts retain the 768px 9/3 grid, mobile relative overlay an
   assert.equal(value('.allianz-legacy .col-sm-5', 'min-width:768px', 'width'), '41.66666667%');
   assert.equal(value('.allianz-legacy .notepad', 'max-width:767px', 'position'), 'relative');
   const scoped = postcss.parse(fs.readFileSync(path.join(here, 'AllianzNewYorkHero.css'), 'utf8'));
+  const innerPageSelectors = new Set(['page-annuities', 'page-about'].flatMap((page) => [
+    `.allianz-legacy.${page}.new-york .page-header h1`,
+    `.allianz-legacy.${page}.new-york .hero-img picture > img`,
+  ]));
   scoped.walkRules((rule) => {
-    for (const selector of rule.selector.split(',')) assert.match(selector.trim(), /^\.allianz-legacy(?:\.page-new-york)? .*\.allianz-ny-(?:home|annuities)-/);
+    for (const selector of rule.selector.split(',')) {
+      const target = selector.trim();
+      if (!innerPageSelectors.has(target)) assert.match(target, /^\.allianz-legacy(?:\.page-new-york)? .*\.allianz-ny-(?:home|annuities)-/);
+    }
   });
   const declarations = [];
   scoped.walkDecls((decl) => declarations.push(decl));
@@ -196,4 +203,57 @@ test('source CSS contracts retain the 768px 9/3 grid, mobile relative overlay an
   for (const [prop, expected] of [['margin-top', '2%'], ['margin-right', '2.5%']]) {
     const decl = declarations.find((d) => d.prop === prop && d.parent.selector.includes('.notepad.right')); assert.equal(decl?.value, expected); assert.equal(decl.parent.parent.params, '(min-width: 768px)');
   }
+});
+
+
+// Fresh source measurements at1280/370 and the18-state local cascade witness
+// establish these values. This is a CSS scope contract, not browser/native QA.
+test('NY About/Annuities source heading and intrinsic-image rules require exact page identities', () => {
+  const css = postcss.parse(fs.readFileSync(path.join(here, 'AllianzNewYorkHero.css'), 'utf8'));
+  const rows = [];
+  css.walkRules((rule) => {
+    const media = rule.parent.type === 'atrule' ? rule.parent.params : '';
+    const declarationNodes = rule.nodes.filter((node) => node.type === 'decl');
+    const declarations = Object.fromEntries(declarationNodes.map((node) => [node.prop, node.value]));
+    const context = rule.parent.type === 'root' ? 'root' : `${rule.parent.name}@${rule.parent.parent?.type}`;
+    for (const selector of rule.selector.split(',')) rows.push({ selector: selector.trim(), media, declarations, context,
+      declarationCount: declarationNodes.length, important: declarationNodes.some((node) => node.important),
+      otherNodes: rule.nodes.filter((node) => !['decl', 'comment'].includes(node.type)).length });
+  });
+  const pages = ['page-annuities', 'page-about'];
+  const expectedSelectors = new Set(pages.flatMap((page) => [
+    `.allianz-legacy.${page}.new-york .page-header h1`,
+    `.allianz-legacy.${page}.new-york .hero-img picture > img`,
+  ]));
+  const targeted = rows.filter((row) => expectedSelectors.has(row.selector));
+  assert.equal(targeted.length, 6, 'Only two default heading, two desktop heading and two intrinsic-image targets');
+  for (const row of targeted) {
+    assert.equal(row.important, false, `${row.selector}: no important override`);
+    assert.equal(row.otherNodes, 0, `${row.selector}: declarations/comments only`);
+    assert.equal(row.declarationCount, Object.keys(row.declarations).length, `${row.selector}: no duplicate declarations`);
+    assert.equal(row.context, row.media ? 'media@root' : 'root', `${row.selector}: no nested/supports context`);
+  }
+  for (const page of pages) {
+    const heading = `.allianz-legacy.${page}.new-york .page-header h1`;
+    const base = targeted.filter((row) => row.selector === heading && row.media === '');
+    const desktop = targeted.filter((row) => row.selector === heading && row.media === '(min-width: 768px)');
+    assert.equal(base.length, 1); assert.equal(desktop.length, 1);
+    assert.deepEqual(base[0].declarations, { 'font-size': '32px', 'line-height': '1.1', margin: '0 0 20px' });
+    assert.deepEqual(desktop[0].declarations, { 'font-size': '40px', 'line-height': '1.1', margin: '-8px 0 19px' });
+    const image = targeted.filter((row) => row.selector === `.allianz-legacy.${page}.new-york .hero-img picture > img`);
+    assert.equal(image.length, 1); assert.equal(image[0].media, '');
+    assert.deepEqual(image[0].declarations, { width: 'auto' });
+  }
+  // These exact selectors have only a compound root-class prefix plus their
+  // fixed descendant. Verify all required identities; no prefix-only exception.
+  const requiresRoot = (selector, classes) => selector.slice(0, selector.indexOf(' ')).split('.').filter(Boolean).every((name) => classes.has(name));
+  for (const classes of [
+    ['allianz-legacy', 'page-new-york', 'new-york'],
+    ['allianz-legacy', 'page-video', 'new-york'],
+    ['allianz-legacy', 'page-contact-us', 'new-york'],
+    ['allianz-legacy', 'page-annuities'],
+    ['page-about', 'new-york'],
+    ['allianz-local-calculator'],
+  ]) assert.equal(targeted.some((row) => requiresRoot(row.selector, new Set(classes))), false, classes.join(' '));
+  for (const page of pages) assert.equal(targeted.filter((row) => requiresRoot(row.selector, new Set(['allianz-legacy', page, 'new-york']))).length, 3);
 });

@@ -27,3 +27,25 @@
   .allianz-legacy .allianz-ny-home-hero .notepad.right,
   .allianz-legacy .allianz-ny-annuities-hero .notepad.right { margin-top: 2%; margin-right: 2.5%; }
 }
+
+/* Source-measured NY inner-page corrections; no viewport/scrollbar compensation. */
+.allianz-legacy.page-annuities.new-york .page-header h1,
+.allianz-legacy.page-about.new-york .page-header h1 {
+  font-size: 32px;
+  line-height: 1.1;
+  margin: 0 0 20px;
+}
+
+/* Keep this authored image at its intrinsic size when the column is wider.
+ * The inherited max-width:100% still shrinks it on smaller screens. */
+.allianz-legacy.page-annuities.new-york .hero-img picture > img,
+.allianz-legacy.page-about.new-york .hero-img picture > img { width: auto; }
+
+@media (min-width: 768px) {
+  .allianz-legacy.page-annuities.new-york .page-header h1,
+  .allianz-legacy.page-about.new-york .page-header h1 {
+    font-size: 40px;
+    line-height: 1.1;
+    margin: -8px 0 19px;
+  }
+}
