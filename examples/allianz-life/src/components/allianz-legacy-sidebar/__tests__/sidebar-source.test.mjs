@@ -47,11 +47,11 @@ function nodes(root) {
   if (!root || typeof root !== 'object' || !root.props) return [];
   return [root, ...nodes(root.props.children)];
 }
-function harness(itemPath, pathname = itemPath) {
+function harness(itemPath, pathname = itemPath, sourceUrl) {
   const state = []; let cursor = 0, root;
   const current = { itemPath, pathname };
   const fakeReact = { ...React, useState(initial) { const slot = cursor++; if (!(slot in state)) state[slot] = initial; return [state[slot], (value) => { state[slot] = typeof value === 'function' ? value(state[slot]) : value; }]; } };
-  const load = loader({ react: fakeReact, '@sitecore-content-sdk/nextjs': { Link: 'sdk-link', Text: 'sdk-text', useSitecore: () => ({ page: page(current.itemPath) }) }, 'next/navigation': { usePathname: () => current.pathname } });
+  const load = loader({ react: fakeReact, '@sitecore-content-sdk/nextjs': { Link: 'sdk-link', Text: 'sdk-text', useSitecore: () => { const native = page(current.itemPath); native.layout.sitecore.route.fields.sourceUrl = { value: sourceUrl }; return { page: native }; } }, 'next/navigation': { usePathname: () => current.pathname } });
   const { Default } = load(componentFile);
   return { current, load, render(input) { cursor = 0; root = Default(input); return root; }, nodes() { return nodes(root); } };
 }
@@ -155,4 +155,37 @@ test('empty and missing data retain an empty sidebar and the Default export', ()
     assert.equal(h.nodes().find((n) => n.type === 'ul').props.className, 'nav navbar-nav left-nav');
   }
   assert.deepEqual(Object.keys(h.load(componentFile)), ['Default']);
+});
+
+test('native Preview derives the active leaf from authored source identity only on its transport URL', () => {
+  const witness = witnesses.find((w) => w.key === 'route01');
+  const input = props(data(witness));
+  for (const context of [undefined, '/api/editing/render', '/sitecore/content/allianz/allianz-life/Home']) {
+    const h = harness(context, '/api/editing/render', witness.sourceUrl);
+    assert.deepEqual(observedLinks(h.render(input)), expectedLinks(witness.groups));
+    assert.equal(h.render(input).props.className, 'allianz-legacy-sidebar');
+  }
+  const normal = harness(witness.route, witness.route, 'https://www.allianzlife.com/new-york/other');
+  assert.deepEqual(observedLinks(normal.render(input)), expectedLinks(witness.groups));
+  const before = JSON.stringify(input);
+  const h = harness(undefined, '/api/editing/render', witness.sourceUrl); h.render(input);
+  assert.equal(JSON.stringify(input), before);
+});
+
+test('trailing-slash identity normalization preserves SDK hrefs and segment-boundary ancestors', () => {
+  const witness = witnesses.find((w) => w.key === 'route01');
+  const target = `${witness.route}/`;
+  const input = props({ primaryNav: { targetItems: [{ id: 'root', title: field('title', 'Annuities', 'root'), link: field('link', { href: '/new-york/annuities' }, 'root'), children: { results: [
+    { id: 'leaf', title: field('title', 'Video', 'leaf'), link: field('link', { href: target }, 'leaf') },
+  ] } } ] } });
+  const before = JSON.stringify(input);
+  for (const route of [witness.route, target]) {
+    const h = harness(route); const links = observedLinks(h.render(input));
+    assert.deepEqual(links.filter((x) => x.ariaCurrent === 'page').map((x) => x.href), [target]);
+  }
+  const deeper = harness(`${witness.route}/detail`);
+  assert.deepEqual(observedLinks(deeper.render(input)).filter((x) => x.liClass === 'active').map((x) => x.href), [target]);
+  const other = harness(`${witness.route}-other/detail`);
+  assert.equal(observedLinks(other.render(input)).filter((x) => x.liClass === 'active').length, 0);
+  assert.equal(JSON.stringify(input), before, 'Comparison normalization must not rewrite authored or SDK href values');
 });
