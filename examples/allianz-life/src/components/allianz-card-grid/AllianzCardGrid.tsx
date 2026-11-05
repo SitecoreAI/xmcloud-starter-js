@@ -1,11 +1,13 @@
 'use client';
 
 import { Fragment } from 'react';
+import { CultureGlyphBlock, type CultureGlyphName } from 'components/culture-source-tile/culture-source-glyph.props';
 import { Image, Link, RichText, Text, useSitecore, type LinkField } from '@sitecore-content-sdk/nextjs';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, rowSpacing, safeLinkRenderProps, sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { allianzCardFields } from 'lib/allianz-card-fields';
+import { AllianzFieldGlyph, type AllianzFieldGlyphKind } from 'lib/allianz-field-glyph';
 import { isSourceDestinationRichTextHref, restoreSourceDestinationLinkProps, restoreSourceDestinationRichText } from 'lib/allianz-source-destinations';
 import { editorialBodyClass, editorialColumnClass, editorialHeadingTag, safeEditorialRichText } from 'lib/allianz-editorial';
 import './AllianzEditorialCards.css';
@@ -29,6 +31,7 @@ import './AllianzCardGridHeadingIcons.css';
 
 type AllianzCardGridPresentation = {
   isRilaPromotion?: boolean;
+  cultureValueGlyphs?: boolean;
   faqAppearance?: 'help' | 'professional';
   sourceAnchor?: 'impact';
   sourceRelatedIntroduction?: boolean;
@@ -38,6 +41,40 @@ type AllianzCardGridPresentation = {
   sourceStatisticBadges?: boolean;
   sourceDownloadLinks?: boolean;
   headingIconAppearance?: 'gray' | 'brand';
+  fieldGoalsPresentation?: object;
+};
+
+// Only the named Field presentation can provide this private capability. A JSON
+// rendering parameter or extra prop cannot select the fixed source glyphs.
+const FIELD_GOALS_PRESENTATION = Object.freeze({});
+const FIELD_GOAL_GLYPHS: ReadonlyMap<string, AllianzFieldGlyphKind> = new Map<string, AllianzFieldGlyphKind>([
+  ['47de939049e84a96ad1429bc29100895', 'connect'],
+  ['2ddc1a49972f421d879ce60e0508193c', 'home'],
+  ['333ecabf8e074b349ced0c831c18f400', 'globe'],
+]);
+
+/** A malformed populated Image must not become a synthetic source fallback. */
+function fieldGoalImageState(field: unknown): 'empty' | 'filled' | 'invalid' {
+  const object = (value: unknown): value is Record<string, unknown> =>
+    Boolean(value && typeof value === 'object' && !Array.isArray(value));
+  if (field === undefined || field === null) return 'empty';
+  if (!object(field)) return 'invalid';
+  const json = field.jsonValue;
+  if (json === undefined || json === null) return 'empty';
+  if (!object(json)) return 'invalid';
+  const value = json.value;
+  if (value === undefined || value === null) return 'empty';
+  if (!object(value)) return 'invalid';
+  if (value.src === undefined || value.src === '') return 'empty';
+  return typeof value.src === 'string' && value.src.trim().length > 0 ? 'filled' : 'invalid';
+}
+
+/** Fixed glyph identity inside the explicit CultureValues presentation; order remains authored. */
+const CULTURE_VALUES_GLYPHS: Record<string, CultureGlyphName> = {
+  ac294d87f50b44899e77b5cbbd3c2348: 'Handshake',
+  a9f1f55a835543e781f7478d44b36ea8: 'Light Bulb',
+  b3f34c9c36c34efda65817dbb278da88: 'Badge Ribbon',
+  d7490393c48b4c49b625a78e8194bb69: 'Collaborate',
 };
 
 type CardIconAppearance = 'white-on-black' | 'gray-on-transparent' | 'white-on-brand' | 'white-on-purple';
@@ -62,7 +99,7 @@ function sourceDestinationId(ownerId: unknown): string | undefined {
 }
 
 function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearance,
-  sourceAnchor, sourceRelatedIntroduction = false, sourceFeaturesIntroduction = false, sourceDestinations = false, sourceIconAppearance = false, sourceDownloadLinks = false, headingIconAppearance, sourceStatisticBadges = false,
+  sourceAnchor, sourceRelatedIntroduction = false, sourceFeaturesIntroduction = false, sourceDestinations = false, sourceIconAppearance = false, sourceDownloadLinks = false, headingIconAppearance, sourceStatisticBadges = false, fieldGoalsPresentation, cultureValueGlyphs = false,
 }: AllianzCardGridProps & AllianzCardGridPresentation) {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
@@ -83,6 +120,15 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
     && ['7a125b9dcbd649a8a0ba37c3f863500c', '78f7238c5e704a33933cde17e6cbf02a'].includes(nativeDataId ?? '')
     && params.layout === 'stacked' && params.columns === '3';
   const cards = (data.children?.results ?? []).map(allianzCardFields);
+  const isFieldGoals = fieldGoalsPresentation === FIELD_GOALS_PRESENTATION
+    && sourceDestinationId('id' in data ? data.id : undefined) === '7d0828394a6543b9bda90bd8735df63f';
+  // Native card identities retain their source meaning when authors reorder.
+  // Unknown or duplicate identities never acquire an invented fallback glyph.
+  const fieldGoalCounts = isFieldGoals ? cards.reduce((counts, card) => {
+    const id = sourceDestinationId(card.id);
+    if (id) counts.set(id, (counts.get(id) ?? 0) + 1);
+    return counts;
+  }, new Map<string, number>()) : undefined;
   const iconAppearance = sourceIconAppearance ? cardIconAppearance(params.iconAppearance) : undefined;
   // Keep the witnessed Claims process in its three ordinary source columns.
   const claimsStepIds = ['2a7e982f64794ca4b1d5649f67de3b9e', 'ff80e7eae9cc4de88ab80a3badd9c4a9',
@@ -242,13 +288,13 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
         {sourceFeaturesIntroduction && shouldRenderTextField(data.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data.body?.jsonValue} className="tileBody" />}
         {sourceFeaturesIntroduction && shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" />}
       </div></article></div></div>}
-      <div className={`l-grid__row ${isCards || hasSharedSourceColumn ? '' : 'match-height-row'} ${rowSpacing(params)}`}>
+      <div className={`l-grid__row ${isCards || hasSharedSourceColumn || isFieldGoals || cultureValueGlyphs ? '' : 'match-height-row'} ${rowSpacing(params)}`}>
         {isCards ? <div className="l-grid__column-medium-12"><div className={`o-cards o-cards__col${params.columns || '3'}`}>
           {cards.map((card) => {
             const field = allianzLinkField(card.link?.jsonValue, isEditing);
             const linkProps = scalarLinkProps(card, sourceRelatedIntroduction && !isEditing ? safeLinkRenderProps(field) : { field });
             const content = <>
-              {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="m-card__image"><picture className="c-image"><Image editable={isEditing} field={card.image?.jsonValue} sizes={sourceRelatedIntroduction ? '100vw' : undefined} className="c-image__img c-teaser__image-img" /></picture></div>}
+              {shouldRenderImageField(card.image?.jsonValue, isEditing) && <div className="m-card__image"><picture className="c-image"><Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} sizes={sourceRelatedIntroduction ? '100vw' : undefined} className="c-image__img c-teaser__image-img" /></picture></div>}
               <div className="m-card__header">{shouldRenderTextField(card.heading?.jsonValue, false) && <Text editable={isEditing} tag="h4" field={card.heading?.jsonValue} />}</div>{shouldRenderTextField(card.body?.jsonValue, false) && <RichText editable={isEditing} field={sourceRelatedIntroduction ? safeEditorialRichText(card.body?.jsonValue, isEditing) : cardBodyField(card)} className="m-card__body" />}
             </>;
             return shouldRenderLinkField(field, isEditing)
@@ -275,14 +321,22 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
           const numberBadge = sourceNumberBadge || lifetimeNumberBadge || claimsNumberBadge;
           const sourceWhiteIcon = (isLifetimeInformation
             && sourceDestinationId(card.id) === '3bed4184604d4f66a8132654c28ea1f6') || isClaimsQuestion || isFProInformation;
-          const cardAppearance = iconAppearance ?? (isGlossaryQuestion ? 'white-on-purple' : undefined) ?? (sourceWhiteIcon
+          const fieldGoalId = isFieldGoals ? sourceDestinationId(card.id) : undefined;
+          const fieldGoalState = isFieldGoals ? fieldGoalImageState(card.icon) : undefined;
+          const fieldGoalGlyph = fieldGoalId && fieldGoalState === 'empty' && fieldGoalCounts?.get(fieldGoalId) === 1
+            ? FIELD_GOAL_GLYPHS.get(fieldGoalId) : undefined;
+          const renderNativeIcon = isFieldGoals
+            ? fieldGoalState === 'filled' : shouldRenderImageField(card.icon?.jsonValue, isEditing);
+          const cardAppearance = (isFieldGoals ? 'gray-on-transparent' : undefined) ?? iconAppearance ?? (isGlossaryQuestion ? 'white-on-purple' : undefined) ?? (sourceWhiteIcon
             && card.iconTheme?.jsonValue?.value === 'primary-brand'
             && shouldRenderImageField(card.icon?.jsonValue, false)
             && !shouldRenderImageField(card.image?.jsonValue, false) ? 'white-on-brand' : undefined);
           return <CardColumn key={card.id} {...(hasSharedSourceColumn ? {} : { className: `l-grid__column-medium-${column}` })}>
           <article data-allianz-index-partner-logo={isPartnerLogo ? "" : undefined} data-allianz-card={isFinancialRatings ? card.id.replace(/[{}-]/g, '').toLowerCase() : undefined} className={`m-axlTile match-height ${sectionTheme(card.theme?.jsonValue?.value)} ${numberBadge || isFProIndustry ? 'tile--alphaNumeric ' : ''}${hasSharedSourceColumn ? '-is--split' : faqAppearance === 'help' ? '-is--flipped -is--stacked' : faqAppearance === 'professional' ? 'tile--stackedImage -is--stacked' : params.layout === 'image-left' || params.layout === 'image-right' ? `${splitClass} -is--split ${params.layout === 'image-right' ? '-is--flipped' : ''}` : shouldRenderImageField(card.image?.jsonValue, isEditing) && params.layout === 'stacked' ? '-is--flipped tile--stackedImage -is--stacked' : '-is--stacked'} ${params.layout === 'bordered' ? 'allianz-bordered' : ''}`}>
             <div className={`tileContent ${params.alignment === 'left' ? 'u-text-left' : 'u-text-center'}`}>
-              {shouldRenderImageField(card.icon?.jsonValue, isEditing) && <div className="tileSubGrid__image"><div className={`tileIcon ${cardIconTheme(card.iconTheme?.jsonValue?.value, cardAppearance)}`} data-allianz-card-icon-appearance={cardAppearance}><Image editable={isEditing} field={card.icon?.jsonValue} {...(cardAppearance ? { className: 'allianz-card-icon-glyph' } : {})} /></div></div>}
+              {cultureValueGlyphs ? <CultureGlyphBlock glyph={CULTURE_VALUES_GLYPHS[sourceDestinationId(card.id) ?? '']} field={card.icon?.jsonValue} isEditing={isEditing} brand={card.iconTheme?.jsonValue?.value === 'primary-brand'} appearance={cardAppearance} /> : (renderNativeIcon || fieldGoalGlyph) && <div className="tileSubGrid__image"><div className={`tileIcon ${cardIconTheme(card.iconTheme?.jsonValue?.value, cardAppearance)}`} data-allianz-card-icon-appearance={cardAppearance}>{fieldGoalGlyph
+                ? <AllianzFieldGlyph kind={fieldGoalGlyph} className="allianz-card-icon-glyph" />
+                : <Image editable={isEditing} field={card.icon?.jsonValue} {...(cardAppearance ? { className: 'allianz-card-icon-glyph' } : {})} />}</div></div>}
               {shouldRenderTextField(card.alphanumeral?.jsonValue, isEditing) && <div className="tileSubGrid__image">{numberBadge
                 ? <div className={`tileIcon${wideNumberBadge ? ' -is--wide' : ''} t-bg-primary-brand t-icon-primary-white`}><Text editable={isEditing} tag="em" field={card.alphanumeral?.jsonValue} className="alphaType" /></div>
                 : <Text editable={isEditing} tag={isFinancialRatings ? 'span' : undefined} field={card.alphanumeral?.jsonValue} className="tileAlphanumeral" />}</div>}
@@ -299,7 +353,7 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
                 })}</div></footer>}
               </div>
             </div>
-            {shouldRenderImageField(card.image?.jsonValue, isEditing) && ['stacked','image-left','image-right'].includes(params.layout) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} className="c-image__img c-teaser__image-img" /></picture></div>}
+            {shouldRenderImageField(card.image?.jsonValue, isEditing) && ['stacked','image-left','image-right'].includes(params.layout) && <div className="tileImage"><picture className="c-image c-teaser__image"><Image editable={isEditing} field={card.image?.jsonValue} alt={card.image?.jsonValue?.value?.alt ?? ''} className="c-image__img c-teaser__image-img" /></picture></div>}
           </article>
         </CardColumn>;
         })}</CardGroup>}
@@ -309,6 +363,21 @@ function AllianzCardGrid({ fields, params, isRilaPromotion = false, faqAppearanc
 }
 
 export const Default = (props: AllianzCardGridDefaultProps) => <AllianzCardGrid {...props} sourceDestinations sourceIconAppearance sourceStatisticBadges />;
+
+/** Four verified native card identities; reordering preserves each card's glyph. */
+export const CultureValues = (props: AllianzCardGridProps) => {
+  const nativeCards = props.fields?.data?.datasource?.children?.results;
+  const ids = nativeCards?.map((card) => sourceDestinationId(card.id));
+  if (!ids || ids.length !== 4 || new Set(ids).size !== 4
+    || ids.some((id) => !id || !Object.hasOwn(CULTURE_VALUES_GLYPHS, id))) return <Default {...props} />;
+  return <AllianzCardGrid {...props} sourceDestinations sourceIconAppearance sourceStatisticBadges cultureValueGlyphs
+    params={{ ...props.params, theme: 'transparent', layout: 'stacked', columns: '4', alignment: 'left',
+      headingLevel: 'h3', spacing: 'none', paddingTop: 'none', paddingBottom: 'none', marginBottom: 'none' }} />;
+};
+
+/** Source Field goal glyphs; original card fields, order and links stay native. */
+export const FieldCommonGoals = (props: AllianzCardGridProps) => <AllianzCardGrid {...props}
+  sourceDestinations sourceIconAppearance sourceStatisticBadges fieldGoalsPresentation={FIELD_GOALS_PRESENTATION} />;
 
 /** Exact source Download geometry, decorative inside the authored link icon span. */
 const SourceDownloadLinkIcon = () => <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
