@@ -1,0 +1,47 @@
+/* Only the three explicit Allianz Field RichText presentations. */
+.allianz-field-introduction .tileIcon[data-allianz-field-icon] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-bottom: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #3c3c3c;
+}
+
+.allianz-field-introduction[data-allianz-field-introduction="events"] .tileIcon[data-allianz-field-icon] {
+  margin-bottom: 32px;
+}
+
+.allianz-field-introduction .tileIcon[data-allianz-field-icon] .allianz-field-introduction-glyph {
+  display: block;
+  width: 26px;
+  height: 40px;
+  object-fit: contain;
+  filter: brightness(0) invert(23.5294117647%);
+}
+
+.allianz-field-introduction .tileIcon[data-allianz-field-icon="brand"] {
+  background-color: #003781;
+  color: #fff;
+}
+
+.allianz-field-introduction .tileIcon[data-allianz-field-icon="brand"] .allianz-field-introduction-glyph {
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 704px) {
+  .allianz-field-introduction .tileIcon[data-allianz-field-icon] {
+    width: 64px;
+    height: 64px;
+  }
+
+  .allianz-field-introduction .tileIcon[data-allianz-field-icon] .allianz-field-introduction-glyph {
+    width: 40px;
+    height: 64px;
+  }
+}

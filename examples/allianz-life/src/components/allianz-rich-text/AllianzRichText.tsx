@@ -2,12 +2,14 @@
 
 import { Image, Link, RichText, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useId } from 'react';
+import { CULTURE_INTRODUCTIONS, CultureGlyphBlock, projectCultureCareerBody } from 'components/culture-source-tile/culture-source-glyph.props';
+import { AllianzFieldGlyph } from 'lib/allianz-field-glyph';
 import { projectIndexCategoryBody } from 'lib/index-category-projection';
 import NoDataFallback from 'components/content-sdk/NoDataFallback';
 import { headingTag, rowSpacing, sectionTheme } from 'lib/allianz-fields';
 import { allianzLinkField, shouldRenderImageField, shouldRenderLinkField, shouldRenderTextField } from 'lib/allianz-field-state';
 import { AllianzFieldContent } from 'lib/allianz-field-content';
-import type { AllianzRichTextDefaultProps, AllianzRichTextProps } from './allianz-rich-text.props';
+import type { AllianzFieldIntroductionProps, AllianzProfessionalIntroductionProps, AllianzRichTextDefaultProps, AllianzRichTextProps } from './allianz-rich-text.props';
 import { safeEditorialRichText } from 'lib/allianz-editorial';
 import { isSourceDestinationRichTextHref, restoreSourceDestinationRichText } from 'lib/allianz-source-destinations';
 import { bodyArrowLinkGlyphs, bodyDownloadLinkGlyphs } from 'lib/body-download-link-glyphs';
@@ -16,8 +18,9 @@ import './AllianzAboutHeadings.css';
 import './AllianzInvestmentOptions.css';
 import './AllianzRichTextIcons.css';
 import './AllianzIndexCategoryDisclosures.css';
+import './AllianzFieldIntroductions.css';
 
-export const Default = ({ fields, params, rendering, brandIcon = false, bodyDownloadLinks = false, bodyArrowLinks = false }: AllianzRichTextDefaultProps) => {
+export const Default = ({ fields, params, rendering, brandIcon = false, bodyDownloadLinks = false, bodyArrowLinks = false, culturePresentation }: AllianzRichTextDefaultProps) => {
   const { page } = useSitecore();
   const categoryInstance = useId();
   const isEditing = page?.mode?.isEditing ?? false;
@@ -55,6 +58,32 @@ export const Default = ({ fields, params, rendering, brandIcon = false, bodyDown
       className={`${className}${category ? ' allianz-index-category-accordions' : ''}`} tabIndex={tabIndex} />;
     return projectedBody ? <AllianzFieldContent field={nativeData?.body?.jsonValue} editable>{content}</AllianzFieldContent> : content;
   };
+  if (culturePresentation) {
+    const presentation = CULTURE_INTRODUCTIONS[culturePresentation];
+    const careerProjection = culturePresentation === 'career'
+      && compactId(ownerId) === '50073e82d2c2454db38589f6c37e1142'
+      && compactId(rendering?.uid) === '83ab0baf7faa5fbba3acc8f780a4c51e'
+      && !shouldRenderLinkField(data.primaryLink?.jsonValue, false)
+      ? projectCultureCareerBody(data.body?.jsonValue) : undefined;
+    return <div className={`l-container--full-width ${sectionTheme(presentation.theme)} axlTileCollection`} id={params.RenderingIdentifier}>
+      <div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-medium-12">
+        <article className="m-axlTile match-height -is--stacked t-bg-transparent"><div className="tileContent u-text-center">
+          <CultureGlyphBlock glyph={'glyph' in presentation ? presentation.glyph : undefined} field={data.icon?.jsonValue}
+            isEditing={isEditing} brand={'brand' in presentation && presentation.brand} />
+          <div className="tileSubGrid__content"><header>
+            <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data.heading?.jsonValue} />}</div>
+            {shouldRenderTextField(data.subheading?.jsonValue, isEditing) ? <RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" /> : <div className="tileSubHeading" />}
+          </header>
+            {careerProjection ? <AllianzFieldContent field={nativeData?.body?.jsonValue} editable={isEditing}>
+              <RichText editable={false} internalLinksSelector=":not(*)" field={careerProjection.prose} className={presentation.bodyClass} />
+              <footer><RichText editable={false} internalLinksSelector=":not(*)" field={careerProjection.anchor} className="tileLink" /></footer>
+            </AllianzFieldContent> : shouldRenderTextField(data.body?.jsonValue, isEditing) && renderBody(presentation.bodyClass)}
+            {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <footer><div className="tileLink"><Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link" /></div></footer>}
+          </div>
+        </div></article>
+      </div></div></div>
+    </div>;
+  }
   const bodyValue = data.body?.jsonValue?.value;
   const hasIndexOptionsTable = !!indexOptionsScope && typeof bodyValue === 'string' && /<table\b/i.test(bodyValue);
   if (params.layout === 'rich-text' || params.layout === 'disclosures') return <div className={`l-container--full-width ${params.layout === 'disclosures' ? 'a-axlDisclosures' : sectionTheme(params.theme)}`} id={params.RenderingIdentifier}>
@@ -77,6 +106,14 @@ export const Default = ({ fields, params, rendering, brandIcon = false, bodyDown
   </div>;
 };
 
+
+/** Source-owned Culture tiles retain every native field and the Default Body/link safety path. */
+export const CulturePlainIntroduction = (props: AllianzRichTextProps) => <Default {...props} culturePresentation="plain" />;
+export const CultureCareerIntroduction = (props: AllianzRichTextProps) => <Default {...props} culturePresentation="career" />;
+export const CultureWorkplaceIntroduction = (props: AllianzRichTextProps) => <Default {...props} culturePresentation="workplace" />;
+export const CultureEmployeeIntroduction = (props: AllianzRichTextProps) => <Default {...props} culturePresentation="employees" />;
+export const CultureAwardsIntroduction = (props: AllianzRichTextProps) => <Default {...props} culturePresentation="awards" />;
+export const CultureCommitmentsIntroduction = (props: AllianzRichTextProps) => <Default {...props} culturePresentation="commitments" />;
 
 /** The brand icon treatment retains the complete Default field and layout contract. */
 export const BrandIcon = (props: AllianzRichTextProps) => <Default {...props} brandIcon />;
@@ -1270,8 +1307,8 @@ export const TakingIncomeResources = ({ fields, params }: AllianzRichTextProps) 
 };
 
 /** Source professional introductions keep Body plain or inside the header. */
-const ProfessionalIntroduction = ({ fields, params, bodyInSubheading = false }:
-  AllianzRichTextProps & { bodyInSubheading?: boolean }) => {
+const ProfessionalIntroduction = ({ fields, params, bodyInSubheading = false, sourceLoveGlyph = false }:
+  AllianzProfessionalIntroductionProps) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
@@ -1282,11 +1319,25 @@ const ProfessionalIntroduction = ({ fields, params, bodyInSubheading = false }:
   const body = safeEditorialRichText(restoredBody, isEditing, true,
     (href) => isSourceDestinationRichTextHref(href, ownerId));
   const subheading = bodyInSubheading ? body : data.subheading?.jsonValue;
+  const icon = data.icon?.jsonValue;
+  const iconValue = icon?.value;
+  const iconSource = iconValue?.src;
+  // Only this named presentation supplies its source-owned UI glyph. Malformed
+  // authored values never become an override or masquerade as a cleared field.
+  const renderNativeIcon = shouldRenderImageField(icon, isEditing)
+    && (!sourceLoveGlyph || (typeof iconSource === 'string' && iconSource.trim().length > 0));
+  const renderSourceLove = sourceLoveGlyph && (icon == null
+    || (typeof icon === 'object' && !Array.isArray(icon) && (iconValue == null
+      || (typeof iconValue === 'object' && !Array.isArray(iconValue) && (iconSource == null || iconSource === '')))));
   return <div className={`l-container--full-width ${sectionTheme(params.theme)} axlTileCollection`} id={params.RenderingIdentifier}>
     <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">
       <article className="m-axlIntroductionBlock -is--stacked -no--image"><div className={`tileContent ${params.alignment === 'left' ? 'u-text-left' : 'u-text-center'}`}>
-        {shouldRenderImageField(data.icon?.jsonValue, isEditing) && <div className="tileIcon t-bg-transparent t-icon-primary-black" data-allianz-rich-text-icon="gray">
-          <Image editable={isEditing} field={data.icon?.jsonValue} className="allianz-rich-text-icon-glyph" />
+        {renderNativeIcon ? <div className="tileIcon t-bg-transparent t-icon-primary-black" data-allianz-rich-text-icon="gray">
+          <Image editable={isEditing} field={icon} className="allianz-rich-text-icon-glyph" />
+        </div> : renderSourceLove && <div className="tileIcon t-bg-transparent t-icon-primary-black" data-allianz-rich-text-icon="gray">
+          {/* Existing source UI artwork; not an authored or synthetic ImageField. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/allianz-ui/life-faq/love.svg" alt="Love" className="allianz-rich-text-icon-glyph" />
         </div>}
         <header>
           <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag={headingTag(params.headingLevel)} field={data.heading?.jsonValue} />}</div>
@@ -1299,8 +1350,11 @@ const ProfessionalIntroduction = ({ fields, params, bodyInSubheading = false }:
   </div>;
 };
 
-export const ProfessionalPlainIntroduction = (props: AllianzRichTextProps) => <ProfessionalIntroduction {...props} />;
-export const ProfessionalSubheadingIntroduction = (props: AllianzRichTextProps) => <ProfessionalIntroduction {...props} bodyInSubheading />;
+export const ProfessionalPlainIntroduction = (props: AllianzRichTextProps) => <ProfessionalIntroduction {...props} sourceLoveGlyph={false} />;
+export const ProfessionalSubheadingIntroduction = (props: AllianzRichTextProps) => <ProfessionalIntroduction {...props} bodyInSubheading sourceLoveGlyph={false} />;
+
+/** Inclusion's fixed source Love artwork retains the complete native plain introduction. */
+export const InclusionPlainIntroduction = (props: AllianzRichTextProps) => <ProfessionalIntroduction {...props} bodyInSubheading={false} sourceLoveGlyph />;
 
 /** Source ratings history keeps its original Body inside the contained heading. */
 export const FinancialRatingsHistoryIntroduction = ({ fields, params }: AllianzRichTextProps) => {
@@ -1324,3 +1378,78 @@ export const FinancialRatingsHistoryIntroduction = ({ fields, params }: AllianzR
     </div></div></div>
   </div>;
 };
+
+/** Empty optional native Icon fields use the fixed presentation; malformed DTOs fail closed. */
+const fieldIntroductionIconState = (field: unknown): 'empty' | 'authored' | 'malformed' => {
+  const record = (value: unknown): value is Record<string, unknown> =>
+    value !== null && typeof value === 'object' && !Array.isArray(value);
+  if (field == null) return 'empty';
+  if (!record(field)) return 'malformed';
+  if (field.jsonValue == null) return 'empty';
+  if (!record(field.jsonValue)) return 'malformed';
+  const value = field.jsonValue.value;
+  if (value == null) return 'empty';
+  if (!record(value)) return 'malformed';
+  if (value.src == null || value.src === '') return 'empty';
+  return typeof value.src === 'string' && value.src.trim().length > 0 ? 'authored' : 'malformed';
+};
+
+/** Source Right geometry, decorative inside the authored native Global CTA. */
+const AllianzFieldRightArrow = () => <svg aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+  <path fillRule="evenodd" d="M23.8863661,13.0726536 C24.037878,12.7066353 24.037878,12.2926146 23.8863661,11.9265963 C23.8098601,11.7420871 23.7003516,11.5755788 23.5608407,11.4375719 L17.561872,5.43877194 C16.9768263,4.85374269 16.0272521,4.85374269 15.4407063,5.43877194 C14.8541605,6.02530127 14.8541605,6.97484874 15.4407063,7.55987799 L18.880475,10.99955 L1.5001172,10.99955 C0.670552387,10.99955 0,11.6700835 0,12.499625 C0,13.3291665 0.670552387,13.9997 1.5001172,13.9997 L18.880475,13.9997 L15.4407063,17.439372 C14.8541605,18.0259013 14.8541605,18.9754488 15.4407063,19.560478 C15.7332292,19.8544927 16.1172592,20 16.5012892,20 C16.8853192,20 17.2693492,19.8544927 17.561872,19.560478 L23.5608407,13.5616781 C23.7003516,13.4236712 23.8098601,13.2571629 23.8863661,13.0726536" />
+</svg>;
+
+/** Field-only source presentations. Existing RichText variants retain their own trees. */
+const FieldIntroduction = ({ fields, params, presentation }: AllianzFieldIntroductionProps) => {
+  const { page } = useSitecore();
+  const isEditing = page?.mode?.isEditing ?? false;
+  const data = fields?.data?.datasource;
+  if (!data) return <NoDataFallback componentName="AllianzRichText" />;
+  // Keep native anchors and unavailable destinations. No source URL is restored here.
+  const body = safeEditorialRichText(data.body?.jsonValue, isEditing, true);
+  const iconField = data.icon?.jsonValue;
+  const iconState = fieldIntroductionIconState(data.icon);
+  const emptyIcon = iconState === 'empty';
+  const authoredIcon = iconState === 'authored';
+  const events = presentation === 'events';
+  const brand = presentation === 'about';
+  const primaryLinkText = data.primaryLink?.jsonValue?.value?.text;
+  const globalCtaText = presentation === 'global-stadiums' && typeof primaryLinkText === 'string'
+    && primaryLinkText.trim().length > 0 ? primaryLinkText : undefined;
+  const icon = (emptyIcon || authoredIcon) && <div className={`tileIcon ${brand ? 't-bg-primary-brand t-icon-primary-white' : 't-bg-transparent t-icon-primary-black'}`}
+    data-allianz-field-icon={brand ? 'brand' : 'gray'}>
+    {authoredIcon
+      ? <Image editable={isEditing} field={iconField} className="allianz-field-introduction-glyph" />
+      : <AllianzFieldGlyph kind={events ? 'date-forward' : brand ? 'information' : 'game'} className="allianz-field-introduction-glyph" />}
+  </div>;
+  const content = <>
+    <header>
+      <div className="tileHeading">{shouldRenderTextField(data.heading?.jsonValue, isEditing) &&
+        <Text editable={isEditing} tag={headingTag(params.headingLevel)} field={data.heading?.jsonValue} />}</div>
+      {shouldRenderTextField(data.subheading?.jsonValue, isEditing)
+        ? <RichText editable={isEditing} field={data.subheading?.jsonValue} className="tileSubHeading" />
+        : <div className="tileSubHeading" />}
+    </header>
+    {shouldRenderTextField(body, isEditing) &&
+      <RichText editable={isEditing} field={body} className={events ? 'tileBody' : 'tileBody u-font-size-xl'} />}
+    {shouldRenderLinkField(data.primaryLink?.jsonValue, isEditing) && <footer><div className="tileLink">
+      <Link editable={isEditing} field={allianzLinkField(data.primaryLink?.jsonValue, isEditing)} className="a-link">
+        {globalCtaText !== undefined ? <><span className="a-link__icon" aria-hidden="true"><AllianzFieldRightArrow /></span><span className="a-link__text">{globalCtaText}</span></> : undefined}
+      </Link>
+    </div></footer>}
+  </>;
+  return <div className={`l-container--full-width ${sectionTheme(params.theme)} axlTileCollection allianz-field-introduction`}
+    data-allianz-field-introduction={presentation} id={params.RenderingIdentifier}>
+    <div className="l-grid l-grid--max-width"><div className={`l-grid__row ${rowSpacing(params)}`}><div className="l-grid__column-medium-12">
+      <article className={events ? 'm-axlIntroductionBlock -is--stacked -no--image' : 'm-axlTile match-height -is--stacked t-bg-transparent'}>
+        <div className={`tileContent ${params.alignment === 'left' ? 'u-text-left' : 'u-text-center'}`}>
+          {events ? <>{icon}{content}</> : <><div className="tileSubGrid__image">{icon}</div><div className="tileSubGrid__content">{content}</div></>}
+        </div>
+      </article>
+    </div></div></div>
+  </div>;
+};
+
+export const FieldEventsIntroduction = (props: AllianzRichTextProps) => <FieldIntroduction {...props} presentation="events" />;
+export const FieldGlobalStadiumsIntroduction = (props: AllianzRichTextProps) => <FieldIntroduction {...props} presentation="global-stadiums" />;
+export const FieldAboutIntroduction = (props: AllianzRichTextProps) => <FieldIntroduction {...props} presentation="about" />;
