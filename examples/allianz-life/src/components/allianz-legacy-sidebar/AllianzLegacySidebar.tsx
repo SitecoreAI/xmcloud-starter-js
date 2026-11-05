@@ -33,7 +33,7 @@ export const Default = ({ fields, params }: AllianzProps) => {
     <ul className="nav navbar-nav left-nav">
       {(data?.primaryNav?.targetItems ?? []).map((group) => <li key={group.id} className={`dropdown ${expanded.includes(group.id) ? 'open' : ''}`}>
         {group.link?.jsonValue?.value?.href && <Link editable={isEditing} className="link-dropdown" field={safeLink(group.link?.jsonValue)}>{group.title?.jsonValue?.value ? <Text editable={isEditing} field={group.title?.jsonValue} /> : <></>}</Link>}
-        <button className="dropdown-toggle visible-xs allianz-legacy-section-toggle" type="button" aria-label={`Expand ${group.title?.jsonValue?.value || 'section'}`} aria-expanded={expanded.includes(group.id)} onClick={() => setExpanded((current) => current.includes(group.id) ? current.filter((id) => id !== group.id) : [...current, group.id])}><span aria-hidden="true">{expanded.includes(group.id) ? '−' : '+'}</span></button>
+        <button className="dropdown-toggle visible-xs allianz-legacy-section-toggle" type="button" aria-label={`${expanded.includes(group.id) ? 'Collapse' : 'Expand'} ${group.title?.jsonValue?.value || 'section'}`} aria-expanded={expanded.includes(group.id)} onClick={() => setExpanded((current) => current.includes(group.id) ? current.filter((id) => id !== group.id) : [...current, group.id])}><span aria-hidden="true">{expanded.includes(group.id) ? '−' : '+'}</span></button>
         {renderLinks(group.children?.results ?? [], 0)}
       </li>)}
     </ul>
