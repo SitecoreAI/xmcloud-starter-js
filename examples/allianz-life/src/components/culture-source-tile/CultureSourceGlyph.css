@@ -1,0 +1,4 @@
+/* Only authored Icon overrides in the explicit Culture variants. Inline source SVGs use the existing source CSS. */
+.allianz-culture-native-glyph { display: block; width: 26px; height: 26px; object-fit: contain; filter: brightness(0) invert(23.5294117647%); }
+.tileIcon.t-icon-primary-white > .allianz-culture-native-glyph { filter: brightness(0) invert(1); }
+@media (min-width: 704px) { .allianz-culture-native-glyph { width: 40px; height: 40px; } }
