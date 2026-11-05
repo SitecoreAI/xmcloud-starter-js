@@ -83,7 +83,7 @@ export const Default = (props: AllianzCalculatorProps) => {
   return <section className="allianz-local-calculator" id={params.RenderingIdentifier}>
     {shouldRenderTextField(data?.heading?.jsonValue, isEditing) && <Text editable={isEditing} tag="h2" field={data?.heading?.jsonValue} />}
     {shouldRenderTextField(data?.body?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.body?.jsonValue} />}
-    {inputs.length > 0 && <div className="grid-highlight"><div className="l-container--full-width t-bg-transparent"><div className="l-grid__row"><div className="l-grid__column-12"><div className="l-grid__row"><div className="l-grid__column-6">
+    {inputs.length > 0 && <div className="grid-highlight"><div className="l-container--full-width t-bg-transparent"><div className="l-grid l-grid--max-width"><div className="l-grid__row"><div className="l-grid__column-12"><div className="l-grid__row"><div className="l-grid__column-6">
       <form ref={form} className="m-form" noValidate onSubmit={compute} autoComplete="off">
         {inputs.map((input) => {
           const name = input.name?.jsonValue?.value || input.id;
@@ -99,7 +99,7 @@ export const Default = (props: AllianzCalculatorProps) => {
     </div><div className="l-grid__column-6"><div className="o-table--container"><table className="o-table"><tbody><tr><td>How much you need to save</td><td aria-live="polite">-</td></tr></tbody></table></div>
       {computed && <p role="status">Your inputs are ready. A result is not available.</p>}
       {computed && <button className="allianz-legacy-print" type="button" onClick={() => {setValues(initialValues);setErrors({});setComputed(false);form.current?.querySelector<HTMLInputElement>('input')?.focus();}}>Reset</button>}
-    </div></div></div></div></div></div>}
+    </div></div></div></div></div></div></div>}
     {shouldRenderTextField(data?.disclaimer?.jsonValue, isEditing) && <RichText editable={isEditing} field={data?.disclaimer?.jsonValue} className="allianz-calculator-disclaimer" />}
   </section>;
 };
