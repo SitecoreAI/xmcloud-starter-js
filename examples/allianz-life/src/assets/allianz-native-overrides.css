@@ -444,3 +444,11 @@
     overflow-x: auto;
   }
 }
+
+/* The modern source stylesheet gives generic list items 12px vertical margins.
+ * The legacy source sidebar has none. Its many :not() filters make that rule
+ * highly specific, so confine this exception to the native sidebar owner. */
+.allianz-legacy .allianz-legacy-sidebar .left-nav li {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
