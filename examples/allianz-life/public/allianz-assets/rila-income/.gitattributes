@@ -1,0 +1,4 @@
+# Preserve pinned vendor source bytes across hosts with core.autocrlf enabled.
+*.js -text
+*.css -text
+*.html text eol=lf
