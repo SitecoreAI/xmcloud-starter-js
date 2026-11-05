@@ -66,3 +66,25 @@ section.allianz-local-video article.video-block {
   height: 100%;
   border: 0;
 }
+
+/* The source title rules were fused to the legacy wrapper during CSS scoping.
+ * Opt in only when this named New York player variant is present. */
+.allianz-legacy.new-york:has(.allianz-legacy-new-york-video) .page-header h1 {
+  font-size: 32px;
+  line-height: 1.1;
+  margin: 0 0 20px;
+}
+
+@media (min-width: 768px) {
+  .allianz-legacy.new-york:has(.allianz-legacy-new-york-video) .page-header h1 {
+    font-size: 40px;
+    margin: -8px 0 19px;
+  }
+}
+
+
+/* Native NY keeps the transcript in a separate floated row. That row owns the
+ * source collapsed 20px gap; the source video's 15px margin must not add to it. */
+.allianz-legacy.new-york .allianz-legacy-new-york-video {
+  margin-bottom: 0;
+}
