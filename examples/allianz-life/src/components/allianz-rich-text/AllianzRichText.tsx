@@ -18,6 +18,9 @@ import './AllianzAboutHeadings.css';
 import './AllianzInvestmentOptions.css';
 import './AllianzRichTextIcons.css';
 import './AllianzIndexCategoryDisclosures.css';
+import { FieldTextTileSection } from './field-text-tile.props';
+import { FieldUnitedIntroductionSection } from './field-united-introduction.props';
+import { InclusionSourceIntroduction } from './inclusion-source-introduction.props';
 import './AllianzFieldIntroductions.css';
 
 export const Default = ({ fields, params, rendering, brandIcon = false, bodyDownloadLinks = false, bodyArrowLinks = false, culturePresentation }: AllianzRichTextDefaultProps) => {
@@ -1453,3 +1456,16 @@ const FieldIntroduction = ({ fields, params, presentation }: AllianzFieldIntrodu
 export const FieldEventsIntroduction = (props: AllianzRichTextProps) => <FieldIntroduction {...props} presentation="events" />;
 export const FieldGlobalStadiumsIntroduction = (props: AllianzRichTextProps) => <FieldIntroduction {...props} presentation="global-stadiums" />;
 export const FieldAboutIntroduction = (props: AllianzRichTextProps) => <FieldIntroduction {...props} presentation="about" />;
+
+
+/** Source text tiles on Allianz Field keep their native fields and supported parameters. */
+export const FieldLargeTextTile = (props: AllianzRichTextProps) => <FieldTextTileSection {...props} bodySize="xl" />;
+export const FieldMediumTextTile = (props: AllianzRichTextProps) => <FieldTextTileSection {...props} bodySize="lg" />;
+
+/** Existing source UI artwork for the three remaining Inclusion introductions. */
+export const InclusionResourceGroupsIntroduction = (props: AllianzRichTextProps) => <InclusionSourceIntroduction {...props} glyph="puzzle" />;
+export const InclusionMinnesotaIntroduction = (props: AllianzRichTextProps) => <InclusionSourceIntroduction {...props} glyph="collaborate" />;
+export const InclusionCommitmentsIntroduction = (props: AllianzRichTextProps) => <InclusionSourceIntroduction {...props} glyph="information" />;
+
+/** Field United introduction retains its source header shells and native rich text. */
+export const FieldUnitedIntroduction = (props: AllianzRichTextProps) => <FieldUnitedIntroductionSection {...props} />;
