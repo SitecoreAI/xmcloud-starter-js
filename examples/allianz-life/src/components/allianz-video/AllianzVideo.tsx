@@ -44,6 +44,16 @@ export const Default = ({ fields, params }: AllianzVideoProps) => {
   </section>;
 };
 
+/** Legacy New York keeps its introduction and transcript in their existing native owners. */
+export const LegacyNewYorkVideo = ({ fields, params }: AllianzVideoProps) => {
+  if (!fields?.data?.datasource) return <NoDataFallback componentName="AllianzVideo" />;
+  return <article className="video-block allianz-legacy-new-york-video" id={params.RenderingIdentifier}>
+    <div className="video-block-content"><div className="bc-video-player"><div className="bc-video-player-inner">
+      <VideoPlayer fields={fields} />
+    </div></div></div>
+  </article>;
+};
+
 /** Source strategy row. The separate native Accordion owns the transcript. */
 export const SourceStatic = ({ fields, params }: AllianzVideoProps) => {
   const { page } = useSitecore();

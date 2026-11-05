@@ -12,6 +12,8 @@ export type AllianzVideoProps = ComponentProps & { fields?: { data?: { datasourc
 } } } };
 
 const BRIGHTCOVE_PLAYER = 'https://players.brightcove.net/1537381467001/WioKPWt4t_default/index.html';
+const NEW_YORK_PLAYER = 'https://players.brightcove.net/1537381467001/Hklewedz2G_default/index.html';
+const NEW_YORK_VIDEO_ID = '6359769793112';
 
 /** Captured Allianz account/player; the iframe/videoId format is documented by Brightcove.
  * https://player.support.brightcove.com/publish/available-options-standard-iframe-embed-code.html
@@ -21,8 +23,10 @@ export function brightcoveEmbedSource(field?: LinkField): string {
   if (typeof href !== 'string' || !href.trim()) return '';
   try {
     const url = new URL(href);
-    if (url.origin !== 'https://players.brightcove.net' || url.username || url.password
-      || url.pathname !== '/1537381467001/WioKPWt4t_default/index.html' || url.hash) return '';
+    if (url.origin !== 'https://players.brightcove.net' || url.username || url.password || url.hash) return '';
+    const player = url.pathname === '/1537381467001/WioKPWt4t_default/index.html' ? BRIGHTCOVE_PLAYER
+      : url.pathname === '/1537381467001/Hklewedz2G_default/index.html' ? NEW_YORK_PLAYER : '';
+    if (!player) return '';
     const querystring = field?.value?.querystring;
     if (typeof querystring === 'string') {
       new URLSearchParams(querystring.replace(/^\?/, '')).forEach((value, name) => url.searchParams.append(name, value));
@@ -30,7 +34,9 @@ export function brightcoveEmbedSource(field?: LinkField): string {
     const ids = url.searchParams.getAll('videoId');
     // Edge can include the native querystring in href as well as its own property.
     if (!ids.length || new Set(ids).size !== 1 || !/^[1-9]\d{0,19}$/.test(ids[0])) return '';
-    return `${BRIGHTCOVE_PLAYER}?videoId=${ids[0]}&preload=none`;
+    // This additional source player is approved only for its verified New York video.
+    if (player === NEW_YORK_PLAYER && ids[0] !== NEW_YORK_VIDEO_ID) return '';
+    return `${player}?videoId=${ids[0]}&preload=none`;
   } catch {
     return '';
   }

@@ -55,3 +55,14 @@ section.allianz-local-video article.video-block {
   max-width: 640px;
   margin: 0 auto;
 }
+
+/* The legacy shell owns full-column sizing, its 1px border and 16:9 padding. */
+.allianz-legacy .allianz-legacy-new-york-video .allianz-video-player,
+.allianz-legacy .allianz-legacy-new-york-video .allianz-video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
