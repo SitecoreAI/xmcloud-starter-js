@@ -9,7 +9,7 @@ const postcss = require('postcss');
 const css = fs.readFileSync(new URL('../../public/allianz-assets/source-style.css', import.meta.url), 'utf8');
 const root = postcss.parse(css);
 const boundary = ':where(.allianz-modern *, .allianz-legacy *)';
-const nyScrollbarBoundary = ":where(html:not(:has(#page-new-york.allianz-legacy.new-york)), html:not(:has(#page-new-york.allianz-legacy.new-york)) *, .mfe *)";
+const nyScrollbarBoundary = ":where(html:not(:has(#page-new-york.allianz-legacy.new-york, .allianz-legacy.new-york .allianz-legacy-new-york-video)), html:not(:has(#page-new-york.allianz-legacy.new-york, .allianz-legacy.new-york .allianz-legacy-new-york-video)) *, .mfe *)";
 const scrollbarFallback = "@supports not (selector(html:has(*)) and selector(:where(html))){::-webkit-scrollbar{-webkit-appearance:none;width:6px;height:6px}::-webkit-scrollbar:horizontal{height:6px}::-webkit-scrollbar:vertical{width:6px}::-webkit-scrollbar-thumb{border-radius:8px;background-color:#005074}::-webkit-scrollbar-track{background:#ececec}}";
 const scrollbarSuffixes = ['::-webkit-scrollbar', '::-webkit-scrollbar:horizontal', '::-webkit-scrollbar:vertical', '::-webkit-scrollbar-thumb', '::-webkit-scrollbar-track'];
 const typeSelector = /(^|[\s>+~,(])(?:button|input)(?=$|[^\w-])/;
