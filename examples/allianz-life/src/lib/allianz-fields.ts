@@ -152,6 +152,15 @@ export function safeLink(field?: LinkField): LinkField {
   const href = field.value?.href ?? '';
   // A cleared native field must stay cleared, including its authoring metadata.
   if (!href) return field;
+  // Sitecore may prefix the authored external '#' placeholder with 'http://'.
+  // Normalize only that exact typed, unbound value; editing keeps its raw field.
+  if (href === 'http://#' && field.value.linktype === 'external' &&
+    (field.value.id === undefined || field.value.id === '') &&
+    (field.value.querystring === undefined || field.value.querystring === '') &&
+    (field.value.anchor === undefined || field.value.anchor === '') &&
+    !('download' in field.value)) {
+    return safeLink({ ...field, value: { ...field.value, href: '#' } });
+  }
   const demoDestination = allianzDemoDestination(href);
   const unavailable = () => ({
     ...field,
