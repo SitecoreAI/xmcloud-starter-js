@@ -25,9 +25,12 @@ test('source player sizing crosses the observed Pages field span without changin
   ]);
   css.walkRules(rule => {
     if (!rule.selector.includes('allianz-video-player')) return;
-    assert.ok(['.allianz-source-static-video .allianz-video-player',
-      '.allianz-local-video .allianz-video-player'].includes(rule.selector),
-    `Player sizing escaped its existing component owners: ${rule.selector}`);
+    const allowed = ['.allianz-source-static-video .allianz-video-player',
+      '.allianz-local-video .allianz-video-player',
+      '.allianz-legacy .allianz-legacy-new-york-video .allianz-video-player',
+      '.allianz-legacy .allianz-legacy-new-york-video .allianz-video-placeholder'];
+    for (const selector of rule.selectors) assert.ok(allowed.includes(selector),
+      `Player sizing escaped its supported component owners: ${selector}`);
   });
 });
 
