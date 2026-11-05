@@ -2,20 +2,24 @@
 import { Link, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { legacySidebarCurrentPath } from './allianz-legacy-sidebar.props';
 import { safeLink, type AllianzProps, type NavigationItem } from 'lib/allianz-fields';
 
 export const Default = ({ fields, params }: AllianzProps) => {
   const pathname = usePathname();
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
-  // Page context has the public route during server rewrites and native editing.
-  const currentPath = (page?.layout?.sitecore?.context?.itemPath || pathname).toLowerCase();
+  const sourceField = page?.layout?.sitecore?.route?.fields?.sourceUrl;
+  const sourceUrl = sourceField && typeof sourceField === 'object' && 'value' in sourceField
+    ? sourceField.value : undefined;
+  const currentPath = legacySidebarCurrentPath(pathname,
+    page?.layout?.sitecore?.context?.itemPath, sourceUrl);
   const [expanded, setExpanded] = useState<string[]>([]);
   const data = fields?.data?.datasource;
   const renderLinks = (items: NavigationItem[], depth: number) => <ul className={depth ? undefined : 'dropdown-menu'}>
     {items.map((item) => {
       const link = safeLink(item.link?.jsonValue);
-      const href = (link.value.href ?? '').toLowerCase();
+      const href = legacySidebarCurrentPath(link.value.href ?? null);
       const current = !!href && href === currentPath;
       // Source emphasizes a leaf ancestor only when its deeper pages are not listed.
       const ancestor = href.startsWith('/') && !item.children?.results?.length && currentPath.startsWith(`${href}/`);
@@ -25,7 +29,7 @@ export const Default = ({ fields, params }: AllianzProps) => {
       </li>;
     })}
   </ul>;
-  return <nav aria-label={data?.heading?.jsonValue?.value || 'Section navigation'} id={params.RenderingIdentifier}>
+  return <nav className="allianz-legacy-sidebar" aria-label={data?.heading?.jsonValue?.value || 'Section navigation'} id={params.RenderingIdentifier}>
     <ul className="nav navbar-nav left-nav">
       {(data?.primaryNav?.targetItems ?? []).map((group) => <li key={group.id} className={`dropdown ${expanded.includes(group.id) ? 'open' : ''}`}>
         {group.link?.jsonValue?.value?.href && <Link editable={isEditing} className="link-dropdown" field={safeLink(group.link?.jsonValue)}>{group.title?.jsonValue?.value ? <Text editable={isEditing} field={group.title?.jsonValue} /> : <></>}</Link>}
