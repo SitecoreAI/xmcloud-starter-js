@@ -16,3 +16,8 @@
 .allianz-editorial-cover-hero .c-hero__subHeadline {
   margin-bottom: 1em;
 }
+
+/* Field's source paragraph margin is one caption em:26px desktop,24px mobile. */
+.allianz-field-editorial-hero .c-hero__subHeadline {
+  margin-bottom: 1em;
+}

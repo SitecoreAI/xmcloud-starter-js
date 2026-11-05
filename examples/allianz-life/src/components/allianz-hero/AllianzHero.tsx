@@ -95,8 +95,8 @@ export const FixedFaq = ({ fields, params }: AllianzHeroProps) => {
 };
 
 /** Shared short stage; product background support is opt-in for LifeStrategy. */
-const EditorialStage = ({ fields, params, lifeStrategy = false, sourceCover = false }:
-  AllianzHeroStageProps & { sourceCover?: boolean }) => {
+const EditorialStage = ({ fields, params, lifeStrategy = false, sourceCover = false, fieldPresentation = false }:
+  AllianzHeroStageProps & { sourceCover?: boolean; fieldPresentation?: boolean }) => {
   const { page } = useSitecore();
   const isEditing = page?.mode?.isEditing ?? false;
   const data = fields?.data?.datasource;
@@ -109,7 +109,7 @@ const EditorialStage = ({ fields, params, lifeStrategy = false, sourceCover = fa
   const stageClasses = lifeStrategy
     ? `l-container-full-width ${themeClass} ${productTheme} allianz-editorial-hero`
     : `l-container-full-width ${themeClass}${params.layout === 'home' ? ' c-hero m-hero-overlay' : ''} allianz-editorial-hero`;
-  return <div className={sourceCover ? `${stageClasses} allianz-editorial-cover-hero` : stageClasses} id={params.RenderingIdentifier}>
+  return <div className={`${stageClasses}${sourceCover ? ' allianz-editorial-cover-hero' : ''}${fieldPresentation ? ' allianz-field-editorial-hero' : ''}`} id={params.RenderingIdentifier}>
     <div className="m-axlHero">
       <picture className={`c-image c-stage__image--cover${sourceCover ? '' : ' c-stage__image--short'}`}>
         {data.mobileImage?.jsonValue?.value?.src && <source media="(max-width: 703px)" srcSet={data.mobileImage.jsonValue.value.src} />}
@@ -125,6 +125,9 @@ const EditorialStage = ({ fields, params, lifeStrategy = false, sourceCover = fa
 
 /** Short editorial stage with source subtitle typography and native DAM fields. */
 export const Editorial = (props: AllianzHeroProps) => <EditorialStage {...props} />;
+
+/** Field source caption keeps its outer paragraph margin across native block-safe wrappers. */
+export const FieldEditorial = (props: AllianzHeroProps) => <EditorialStage {...props} fieldPresentation />;
 
 /** Source overlay height follows its native subtitle rather than the short-image cap. */
 export const EditorialCover = (props: AllianzHeroProps) => <EditorialStage {...props} sourceCover />;
